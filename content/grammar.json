@@ -1,0 +1,461 @@
+[
+  {
+    "id": "negation",
+    "title": "Negation",
+    "description": "Turn “I do” into “I don’t.”",
+    "mark": "ne…",
+    "rule": "In standard written French, put ne before the conjugated verb and pas after it. Ne becomes n’ before a vowel sound, including a silent h. Keep the rest of the sentence in place.",
+    "example": "Je ne parle pas français. · Elle n’habite pas ici.",
+    "aside": "You will often hear ne dropped in conversation. Here, practise the standard written form. These examples keep definite articles such as le and la unchanged.",
+    "exercises": [
+      {
+        "id": "negation-consonant-rewrite",
+        "pattern": "consonant-ne-pas",
+        "type": "rewrite",
+        "instruction": "Make this negative in standard written French.",
+        "source": "Je parle français.",
+        "answers": ["Je ne parle pas français."],
+        "spellingAnswers": ["Je ne parle pas francais."],
+        "alternatives": [{"answer": "Je parle pas français.", "message": "That is common in casual speech. This written-form exercise asks for ne before parle as well as pas after it."}],
+        "hint": "The verb is parle. Put ne before it and pas after it.",
+        "feedback": "Check that both parts of the written negation surround the conjugated verb.",
+        "explanation": "Ne and pas surround the conjugated verb parle. Français keeps its cedilla."
+      },
+      {
+        "id": "negation-consonant-build",
+        "pattern": "consonant-ne-pas",
+        "type": "build",
+        "instruction": "Build the negative version in standard written French.",
+        "source": "Vous regardez la télé.",
+        "tokens": ["la", "pas", "Vous", "télé.", "regardez", "ne"],
+        "answers": ["Vous ne regardez pas la télé."],
+        "hint": "Begin with Vous ne regardez. Pas follows the verb.",
+        "feedback": "Keep the subject first and the object together. The verb belongs between the two parts of the negation.",
+        "explanation": "Ne comes before regardez and pas comes after it. The definite article la does not change."
+      },
+      {
+        "id": "negation-consonant-complete",
+        "pattern": "consonant-ne-pas",
+        "type": "complete",
+        "instruction": "Fill the blank to make the sentence negative in standard written French. Write only the missing word.",
+        "source": "Tu ne travailles ____ demain.",
+        "answers": ["pas"],
+        "hint": "Ne is already before travailles. What belongs after the verb?",
+        "feedback": "The first part of the negation is already present. Supply its partner after the verb.",
+        "explanation": "The two parts of the negation surround travailles: ne travailles pas."
+      },
+      {
+        "id": "negation-consonant-repair",
+        "pattern": "consonant-ne-pas",
+        "type": "repair",
+        "instruction": "Fix the word order without changing the meaning.",
+        "source": "Nous ne pas travaillons demain.",
+        "answers": ["Nous ne travaillons pas demain."],
+        "hint": "Travaillons is the verb. Put it between ne and pas.",
+        "feedback": "The two parts of the negation should not sit together before the verb.",
+        "explanation": "The order is subject, ne, conjugated verb, pas: Nous ne travaillons pas."
+      },
+      {
+        "id": "negation-vowel-rewrite",
+        "pattern": "vowel-elision",
+        "type": "rewrite",
+        "instruction": "Make this negative in standard written French.",
+        "source": "Elle écoute la radio.",
+        "answers": ["Elle n’écoute pas la radio."],
+        "spellingAnswers": ["Elle n’ecoute pas la radio."],
+        "alternatives": [{"answer": "Elle écoute pas la radio.", "message": "That is common in casual speech. In the requested written form, add n’ before écoute."}],
+        "hint": "Écoute starts with a vowel sound. Use n’ before it and pas after it.",
+        "feedback": "Check both the placement of the negation and the elision before the vowel sound.",
+        "explanation": "The vowel sound at the start of écoute requires n’ rather than ne. La radio stays unchanged."
+      },
+      {
+        "id": "negation-vowel-build",
+        "pattern": "vowel-elision",
+        "type": "build",
+        "instruction": "Build the negative version in standard written French.",
+        "source": "Tu aimes le thé.",
+        "tokens": ["le", "pas", "Tu", "thé.", "aimes", "n’"],
+        "answers": ["Tu n’aimes pas le thé."],
+        "hint": "Aimes begins with a vowel sound, so n’ joins directly to it.",
+        "feedback": "The apostrophe tile must join directly to the verb. Keep the object after the negation.",
+        "explanation": "Ne shortens to n’ before aimes. Pas follows the verb, and the definite article le stays unchanged."
+      },
+      {
+        "id": "negation-vowel-complete",
+        "pattern": "vowel-elision",
+        "type": "complete",
+        "instruction": "Fill the blank with the missing part of the written negation. Include the apostrophe.",
+        "source": "Nous ____ aimons pas le café.",
+        "answers": ["n’"],
+        "hint": "The next word, aimons, starts with a vowel sound.",
+        "feedback": "The next word begins with a vowel sound. The missing part needs an apostrophe.",
+        "explanation": "Ne becomes n’ before aimons. The apostrophe joins n’ directly to the verb."
+      },
+      {
+        "id": "negation-vowel-repair",
+        "pattern": "vowel-elision",
+        "type": "repair",
+        "instruction": "Fix the written negation. Keep the other words unchanged.",
+        "source": "Je ne aime pas le froid.",
+        "answers": ["Je n’aime pas le froid."],
+        "hint": "Aime begins with a vowel sound. Shorten ne.",
+        "feedback": "The negation is in the right position, but its first part must elide before a vowel sound.",
+        "explanation": "The e of ne disappears before aime and is replaced by an apostrophe. Pas is already in the right place."
+      },
+      {
+        "id": "negation-silent-h-rewrite",
+        "pattern": "silent-h-elision",
+        "type": "rewrite",
+        "instruction": "Make this negative in standard written French. Habiter has a silent h.",
+        "source": "Elle habite ici.",
+        "answers": ["Elle n’habite pas ici."],
+        "alternatives": [{"answer": "Elle habite pas ici.", "message": "That is common in casual speech. For this written-form exercise, include n’ before habite."}],
+        "hint": "A silent h allows the same elision as a vowel: n’habite.",
+        "feedback": "Remember both parts of the written negation. The silent h affects the form of the first part.",
+        "explanation": "The h in habiter is silent, so ne becomes n’. Not every French word beginning with h allows this elision."
+      },
+      {
+        "id": "negation-silent-h-build",
+        "pattern": "silent-h-elision",
+        "type": "build",
+        "instruction": "Build the negative version in standard written French. Hésiter has a silent h.",
+        "source": "Il hésite.",
+        "tokens": ["pas.", "hésite", "Il", "n’"],
+        "answers": ["Il n’hésite pas."],
+        "hint": "Begin with Il n’hésite. Put pas after the verb.",
+        "feedback": "Keep the subject first. The silent h allows the apostrophe tile to join directly to the verb.",
+        "explanation": "Hésiter means to hesitate. Its silent h allows n’hésite, just as a vowel allows n’aime."
+      },
+      {
+        "id": "negation-silent-h-complete",
+        "pattern": "silent-h-elision",
+        "type": "complete",
+        "instruction": "Fill the blank with the missing part of the written negation. Habiter has a silent h; include the apostrophe.",
+        "source": "Tu ____ habites pas ici.",
+        "answers": ["n’"],
+        "hint": "Use the shortened form of ne before habites.",
+        "feedback": "Treat the silent h like a vowel sound when choosing the missing form.",
+        "explanation": "The silent h in habites allows elision. N’ goes immediately before the verb and pas immediately after it."
+      },
+      {
+        "id": "negation-silent-h-repair",
+        "pattern": "silent-h-elision",
+        "type": "repair",
+        "instruction": "Fix the written negation. Hésiter has a silent h; keep the other words unchanged.",
+        "source": "Nous ne hésitons pas.",
+        "answers": ["Nous n’hésitons pas."],
+        "spellingAnswers": ["Nous n’hesitons pas."],
+        "hint": "A silent h lets ne shorten to n’.",
+        "feedback": "The silent h requires elision. Change the first part of the negation, not the verb.",
+        "explanation": "The h in hésitons is silent, so ne must elide. Pas already follows the conjugated verb."
+      }
+    ]
+  },
+  {
+    "id": "questions",
+    "title": "Questions",
+    "description": "Ask a question while keeping familiar word order.",
+    "mark": "?",
+    "rule": "Put est-ce que before a statement to make a yes-or-no question. Keep the normal subject–verb order. Que becomes qu’ before a vowel sound, as in est-ce qu’elle.",
+    "example": "Tu parles français. → Est-ce que tu parles français ?",
+    "aside": "Inversion and rising intonation are also valid ways to ask questions. These exercises specifically practise est-ce que, or est-ce qu’ before a vowel sound.",
+    "exercises": [
+      {
+        "id": "questions-pronoun-rewrite",
+        "pattern": "pronoun-normal-order",
+        "type": "rewrite",
+        "instruction": "Turn this statement into a question using est-ce que.",
+        "source": "Tu parles français.",
+        "answers": ["Est-ce que tu parles français ?"],
+        "spellingAnswers": ["Est-ce que tu parles francais ?"],
+        "alternatives": [
+          {"answer": "Parles-tu français ?", "message": "That is valid French using inversion. This exercise asks for est-ce que with tu before parles."},
+          {"answer": "Tu parles français ?", "message": "That is a valid question with rising intonation in speech. This exercise asks you to add est-ce que."}
+        ],
+        "hint": "Add Est-ce que at the beginning. Keep tu before parles.",
+        "feedback": "Use the requested question opening, then keep the statement’s subject before its verb.",
+        "explanation": "Est-ce que introduces the question without changing the order of tu parles."
+      },
+      {
+        "id": "questions-pronoun-build",
+        "pattern": "pronoun-normal-order",
+        "type": "build",
+        "instruction": "Build the question using est-ce que.",
+        "source": "Vous venez demain.",
+        "tokens": ["demain ?", "venez", "Est-ce que", "vous"],
+        "answers": ["Est-ce que vous venez demain ?"],
+        "hint": "Start with Est-ce que, then vous venez.",
+        "feedback": "The question opening comes first. After it, keep the same subject–verb order as the statement.",
+        "explanation": "After est-ce que, the statement’s normal subject–verb order stays unchanged."
+      },
+      {
+        "id": "questions-pronoun-complete",
+        "pattern": "pronoun-normal-order",
+        "type": "complete",
+        "instruction": "Complete the question with the missing word from est-ce que. Write only that word.",
+        "source": "Est-ce ____ nous partons demain ?",
+        "answers": ["que"],
+        "hint": "Nous begins with a consonant sound, so use the full form que.",
+        "feedback": "Complete the fixed question opening. The following consonant sound does not require elision.",
+        "explanation": "Que stays complete before nous. The subject nous remains before the verb partons."
+      },
+      {
+        "id": "questions-pronoun-repair",
+        "pattern": "pronoun-normal-order",
+        "type": "repair",
+        "instruction": "Fix the word order after est-ce que. Keep all the words.",
+        "source": "Est-ce que parles tu français ?",
+        "answers": ["Est-ce que tu parles français ?"],
+        "spellingAnswers": ["Est-ce que tu parles francais ?"],
+        "hint": "After est-ce que, put the subject tu before the verb parles.",
+        "feedback": "The question opening is already present. Check whether the subject comes before the verb.",
+        "explanation": "Est-ce que uses normal subject–verb order. Inversion is a separate question form, not an extra step after est-ce que."
+      },
+      {
+        "id": "questions-elision-rewrite",
+        "pattern": "que-elision",
+        "type": "rewrite",
+        "instruction": "Turn this statement into a question using est-ce que, shortened where needed.",
+        "source": "Elle aime le thé.",
+        "answers": ["Est-ce qu’elle aime le thé ?"],
+        "spellingAnswers": ["Est-ce qu’elle aime le the ?"],
+        "alternatives": [
+          {"answer": "Aime-t-elle le thé ?", "message": "That is valid French using inversion. This exercise asks for est-ce qu’elle followed by aime."},
+          {"answer": "Elle aime le thé ?", "message": "That is a valid question with rising intonation in speech. Here, use the requested est-ce qu’ form."}
+        ],
+        "hint": "Elle begins with a vowel sound, so que becomes qu’.",
+        "feedback": "Use the requested question opening and check its elision before the subject’s vowel sound.",
+        "explanation": "Que elides before elle. The subject elle still comes before the verb aime."
+      },
+      {
+        "id": "questions-elision-build",
+        "pattern": "que-elision",
+        "type": "build",
+        "instruction": "Build the question using the shortened form of est-ce que.",
+        "source": "Ils habitent ici.",
+        "tokens": ["ici ?", "ils", "Est-ce qu’", "habitent"],
+        "answers": ["Est-ce qu’ils habitent ici ?"],
+        "hint": "Join Est-ce qu’ to ils, then keep habitent ici in order.",
+        "feedback": "Join the apostrophe-ending opening to the subject, then keep the verb after the subject.",
+        "explanation": "Que becomes qu’ because the next word is ils, which begins with a vowel sound."
+      },
+      {
+        "id": "questions-elision-complete",
+        "pattern": "que-elision",
+        "type": "complete",
+        "instruction": "Fill the blank with que or its shortened form. Write only the missing part, including any apostrophe.",
+        "source": "Est-ce ____ il travaille demain ?",
+        "answers": ["qu’"],
+        "hint": "Il starts with a vowel sound, so drop the e of que.",
+        "feedback": "The following pronoun starts with a vowel sound. Include the apostrophe in the shortened form.",
+        "explanation": "Que becomes qu’ immediately before il. The apostrophe joins the two without a space."
+      },
+      {
+        "id": "questions-elision-repair",
+        "pattern": "que-elision",
+        "type": "repair",
+        "instruction": "Fix the elision in this question. Keep the other words unchanged.",
+        "source": "Est-ce que elles arrivent demain ?",
+        "answers": ["Est-ce qu’elles arrivent demain ?"],
+        "hint": "Elles starts with a vowel sound. Shorten que before it.",
+        "feedback": "The subject–verb order is correct. Check the elision immediately before the subject.",
+        "explanation": "Que must elide before elles. The order elles arrivent is already correct."
+      },
+      {
+        "id": "questions-noun-rewrite",
+        "pattern": "noun-subject-order",
+        "type": "rewrite",
+        "instruction": "Turn this statement into a question using est-ce que. Keep the noun subject.",
+        "source": "Le train arrive demain.",
+        "answers": ["Est-ce que le train arrive demain ?"],
+        "alternatives": [
+          {"answer": "Le train arrive-t-il demain ?", "message": "That is valid French using inversion. This exercise asks you to put est-ce que before le train arrive demain."},
+          {"answer": "Le train arrive demain ?", "message": "That is a valid question with rising intonation in speech. This exercise specifically asks for est-ce que."}
+        ],
+        "hint": "Put Est-ce que before the whole statement. Le train remains before arrive.",
+        "feedback": "Keep the complete noun subject before its verb and add the requested opening before both.",
+        "explanation": "The same pattern works with a noun subject: est-ce que, then le train, then arrive."
+      },
+      {
+        "id": "questions-noun-build",
+        "pattern": "noun-subject-order",
+        "type": "build",
+        "instruction": "Build the question using est-ce que. Keep the noun subject.",
+        "source": "La porte est ouverte.",
+        "tokens": ["ouverte ?", "la porte", "Est-ce que", "est"],
+        "answers": ["Est-ce que la porte est ouverte ?"],
+        "hint": "After Est-ce que, put the subject la porte before the verb est.",
+        "feedback": "The two-word noun subject belongs between the question opening and the verb.",
+        "explanation": "Est-ce que adds a question opening; it does not reverse the statement’s subject and verb."
+      },
+      {
+        "id": "questions-noun-complete",
+        "pattern": "noun-subject-order",
+        "type": "complete",
+        "instruction": "Write the missing question opening: est-ce que or its shortened form.",
+        "source": "____ le café est chaud ?",
+        "answers": ["Est-ce que"],
+        "hint": "The next word is le, so que keeps its e.",
+        "feedback": "Supply the complete question opening. Its final word is followed by a consonant sound.",
+        "explanation": "Que is followed by le, not by café. There is no elision, and le café stays before est."
+      },
+      {
+        "id": "questions-noun-repair",
+        "pattern": "noun-subject-order",
+        "type": "repair",
+        "instruction": "Fix the word order after est-ce que. Keep l’enfant as the subject and keep all the words.",
+        "source": "Est-ce que joue l’enfant ici ?",
+        "answers": ["Est-ce que l’enfant joue ici ?"],
+        "hint": "Put the complete subject l’enfant before joue.",
+        "feedback": "Keep the noun subject together and place it before the verb, just as in a statement.",
+        "explanation": "L’enfant stays together as the subject. Que does not elide here because the next sound is the l in l’enfant."
+      }
+    ]
+  },
+  {
+    "id": "agreement",
+    "title": "Adjective agreement",
+    "description": "Make the describing word match the noun.",
+    "mark": "e / s",
+    "rule": "Adjectives agree with the noun’s gender and number. A feminine form often adds e; a plural often adds s. For the regular adjectives here, feminine plural adds both: petit, petite, petits, petites. These spelling patterns are not universal.",
+    "example": "un petit sac · une petite maison · des petits sacs · des petites maisons",
+    "aside": "Un marks masculine singular; une marks feminine singular. Des marks plural but does not tell you the gender, so these exercises name it when needed. Keep the adjective in the position shown.",
+    "exercises": [
+      {
+        "id": "agreement-feminine-rewrite",
+        "pattern": "feminine-singular-e",
+        "type": "rewrite",
+        "instruction": "Replace un sac with une chaussure and make noir agree. Write the whole phrase.",
+        "source": "Un sac noir.",
+        "answers": ["Une chaussure noire."],
+        "hint": "Une tells you chaussure is feminine singular. Add e to noir.",
+        "feedback": "The new noun is feminine singular. Check the adjective’s ending as well as the noun replacement.",
+        "explanation": "Changing the noun to the feminine chaussure requires noire. The adjective keeps its place after the noun."
+      },
+      {
+        "id": "agreement-feminine-build",
+        "pattern": "feminine-singular-e",
+        "type": "build",
+        "instruction": "Build the phrase with the correct form of rond. Table is feminine singular. Leave the other adjective tiles unused.",
+        "source": "une table ____",
+        "tokens": ["ronds.", "Une", "ronde.", "table", "rond.", "rondes."],
+        "answers": ["Une table ronde."],
+        "hint": "Use the feminine form ronde after table.",
+        "feedback": "Choose just one adjective tile. It must match a feminine noun with only one item.",
+        "explanation": "Rond gains e for the feminine singular noun table. Une also shows that the noun is feminine singular."
+      },
+      {
+        "id": "agreement-feminine-complete",
+        "pattern": "feminine-singular-e",
+        "type": "complete",
+        "instruction": "Fill the blank with the correct form of petit. Write only the adjective.",
+        "source": "une ____ maison",
+        "answers": ["petite"],
+        "hint": "Une tells you maison is feminine singular.",
+        "feedback": "Check the adjective’s feminine ending. The noun is singular, so no plural ending is needed.",
+        "explanation": "Petit gains e to agree with the feminine singular noun maison. It stays before the noun in this phrase."
+      },
+      {
+        "id": "agreement-feminine-repair",
+        "pattern": "feminine-singular-e",
+        "type": "repair",
+        "instruction": "Fix the adjective so it agrees with voiture. Keep the other words unchanged.",
+        "source": "Une voiture vert.",
+        "answers": ["Une voiture verte."],
+        "hint": "Une shows feminine singular. What is the feminine form of vert?",
+        "feedback": "The article shows feminine singular. Make the adjective match those two features.",
+        "explanation": "Verte is the feminine singular form of vert. There is one car, so do not add a plural s."
+      },
+      {
+        "id": "agreement-masculine-plural-rewrite",
+        "pattern": "masculine-plural-s",
+        "type": "rewrite",
+        "instruction": "Make the whole phrase plural, replacing un with des. Sac is masculine.",
+        "source": "Un petit sac.",
+        "answers": ["Des petits sacs."],
+        "hint": "Both petit and sac gain s in the plural.",
+        "feedback": "Make both the noun and adjective plural, and replace the singular article as requested.",
+        "explanation": "Petits agrees with the masculine plural noun sacs. No feminine e is needed."
+      },
+      {
+        "id": "agreement-masculine-plural-build",
+        "pattern": "masculine-plural-s",
+        "type": "build",
+        "instruction": "Build the phrase with the correct form of vert. Livres is masculine plural. Leave the other adjective tiles unused.",
+        "source": "des livres ____",
+        "tokens": ["livres", "verte.", "Des", "vertes.", "verts.", "vert."],
+        "answers": ["Des livres verts."],
+        "hint": "The adjective needs a plural s but no feminine e.",
+        "feedback": "Choose just one adjective tile. It must be plural without a feminine ending.",
+        "explanation": "Vert becomes verts to describe more than one masculine livre."
+      },
+      {
+        "id": "agreement-masculine-plural-complete",
+        "pattern": "masculine-plural-s",
+        "type": "complete",
+        "instruction": "Fill the blank with the correct form of noir. Sacs is masculine plural. Write only the adjective.",
+        "source": "des sacs ____",
+        "answers": ["noirs"],
+        "hint": "Start with noir and add the regular plural ending.",
+        "feedback": "The noun is masculine and names more than one item. Check both features of your adjective.",
+        "explanation": "The adjective agrees with masculine plural sacs, so noir gains s but not e."
+      },
+      {
+        "id": "agreement-masculine-plural-repair",
+        "pattern": "masculine-plural-s",
+        "type": "repair",
+        "instruction": "Fix only the adjective. Chats is masculine plural.",
+        "source": "Des chats noir.",
+        "answers": ["Des chats noirs."],
+        "hint": "Chats already has its plural s. Give noir one too.",
+        "feedback": "The noun is already plural. Check whether the adjective also marks the plural.",
+        "explanation": "Noirs agrees with masculine plural chats. Des alone does not show gender; the prompt supplies it."
+      },
+      {
+        "id": "agreement-feminine-plural-rewrite",
+        "pattern": "feminine-plural-es",
+        "type": "rewrite",
+        "instruction": "Make the whole phrase plural, replacing une with des. Maison is feminine.",
+        "source": "Une petite maison.",
+        "answers": ["Des petites maisons."],
+        "hint": "Petite already has the feminine e. Add s to both petite and maison.",
+        "feedback": "Keep the adjective feminine while making both it and the noun plural. Remember to change the article.",
+        "explanation": "Petites agrees with feminine plural maisons. Its ending has both e for feminine and s for plural."
+      },
+      {
+        "id": "agreement-feminine-plural-build",
+        "pattern": "feminine-plural-es",
+        "type": "build",
+        "instruction": "Build the phrase with the correct form of rond. Tables is feminine plural. Leave the other adjective tiles unused.",
+        "source": "des tables ____",
+        "tokens": ["ronde.", "tables", "ronds.", "Des", "rondes.", "rond."],
+        "answers": ["Des tables rondes."],
+        "hint": "The adjective needs both the feminine e and the plural s.",
+        "feedback": "Choose just one adjective tile. Its ending must show both feminine and plural.",
+        "explanation": "Rond becomes rondes for feminine plural tables: add e, then s."
+      },
+      {
+        "id": "agreement-feminine-plural-complete",
+        "pattern": "feminine-plural-es",
+        "type": "complete",
+        "instruction": "Fill the blank with the correct form of vert. Voitures is feminine plural. Write only the adjective.",
+        "source": "des voitures ____",
+        "answers": ["vertes"],
+        "hint": "Use the feminine form verte, then make it plural.",
+        "feedback": "Check both gender and number: the noun is feminine and refers to more than one item.",
+        "explanation": "Vertes matches both the feminine gender and the plural number of voitures."
+      },
+      {
+        "id": "agreement-feminine-plural-repair",
+        "pattern": "feminine-plural-es",
+        "type": "repair",
+        "instruction": "Fix only the adjective. Chaussures is feminine plural.",
+        "source": "Des chaussures noir.",
+        "answers": ["Des chaussures noires."],
+        "hint": "Noir must match both feminine and plural.",
+        "feedback": "The adjective must reflect two features of the noun: feminine gender and plural number.",
+        "explanation": "Noires has the feminine e and the plural s required by chaussures."
+      }
+    ]
+  }
+]

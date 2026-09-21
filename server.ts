@@ -2,7 +2,8 @@ import { mkdirSync, existsSync, readdirSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { Database } from 'bun:sqlite';
 import { createStore, StoreError } from './lib/store';
-import type { Direction, GradeInput, Word } from './contract';
+import { createGrammarStore } from './lib/grammar-store';
+import type { Direction, GradeInput, GrammarMutation, GrammarTopicContent, Word } from './contract';
 
 const root = import.meta.dir;
 const core = await Bun.file(join(root, 'content/core.json')).json() as Word[];
@@ -17,6 +18,8 @@ const byId = new Map(words.map(word => [word.id, word]));
 if (byId.size !== words.length) throw new Error('Duplicate vocabulary IDs');
 const dbPath = process.env.ECHO_DB ?? join(root, 'data/echo.db');
 const store = createStore(words, { dbPath });
+const grammarTopics = await Bun.file(join(root, 'content/grammar.json')).json() as GrammarTopicContent[];
+const grammar = createGrammarStore(grammarTopics, { dbPath });
 const port = Number(process.env.ECHO_PORT ?? 7792);
 const prefix = '/echo';
 const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net';
@@ -41,10 +44,18 @@ async function body(req: Request): Promise<Record<string, unknown>> {
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new StoreError('The request must be an object.', 400);
   return data as Record<string, unknown>;
 }
+function grammarMutation(data: Record<string, unknown>): GrammarMutation {
+  const { sessionId, exerciseId, version, requestId } = data;
+  if (typeof sessionId !== 'string' || !sessionId || typeof exerciseId !== 'string' || !exerciseId ||
+      typeof version !== 'number' || !Number.isInteger(version) || version < 0 ||
+      typeof requestId !== 'string' || !requestId) {
+    throw new StoreError('This exercise has changed. Reload it and try again.', 400);
+  }
+  return { sessionId, exerciseId, version, requestId };
+}
 const staticFiles: Record<string, true> = {
   'index.html': true, 'app.js': true, 'app.css': true, 'icon.svg': true,
   'icon-180.png': true, 'icon-192.png': true, 'icon-512.png': true, 'manifest.webmanifest': true,
-  'fonts.css': true, 'font-license.txt': true,
 };
 
 const server = Bun.serve({
@@ -65,7 +76,34 @@ const server = Bun.serve({
       if (path === '/healthz' && req.method === 'GET') return json({ ok: true, app: 'Echo', words: words.length });
       if (path === '/api/state' && req.method === 'GET') return json(store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
       if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
-      if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(store.exportData(), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
+      if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 2, grammar: grammar.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
+      if (path === '/api/grammar' && req.method === 'GET') return json({ topics: grammar.catalog() });
+      if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('topic') ?? ''));
+      if (path === '/api/grammar/session' && req.method === 'POST') {
+        const data = await body(req);
+        if (typeof data.topicId !== 'string' || typeof data.requestId !== 'string' || !data.requestId) {
+          throw new StoreError('Choose a grammar topic and try again.', 400);
+        }
+        return json(grammar.start(data.topicId, data.requestId));
+      }
+      if (path === '/api/grammar/answer' && req.method === 'POST') {
+        const data = await body(req);
+        const mutation = grammarMutation(data);
+        if (typeof data.answer !== 'string') throw new StoreError('Enter your answer before checking it.', 400);
+        if (data.tokenOrder !== undefined && (!Array.isArray(data.tokenOrder) || !data.tokenOrder.every(Number.isInteger))) {
+          throw new StoreError('Choose words from this exercise’s tiles and try again.', 400);
+        }
+        return json(grammar.answer({ ...mutation, answer: data.answer, tokenOrder: data.tokenOrder as number[] | undefined }));
+      }
+      if (path === '/api/grammar/help' && req.method === 'POST') {
+        const data = await body(req);
+        const mutation = grammarMutation(data);
+        if (data.kind !== 'hint' && data.kind !== 'rule' && data.kind !== 'answer') {
+          throw new StoreError('Choose a hint, the rule, or the answer.', 400);
+        }
+        return json(grammar.help({ ...mutation, kind: data.kind }));
+      }
+      if (path === '/api/grammar/next' && req.method === 'POST') return json(grammar.next(grammarMutation(await body(req))));
       if (path === '/api/settings' && req.method === 'PUT') {
         const data = await body(req);
         if (typeof data.newPerDay !== 'number') throw new StoreError('New words per day must be a number.', 400);
@@ -113,7 +151,7 @@ const server = Bun.serve({
     } catch (error) {
       if (error instanceof StoreError) return json({ error: error.message }, error.status);
       console.error(error);
-      return json({ error: 'Echo could not save this action. Your card has not advanced; please try again.' }, 500);
+      return json({ error: 'Echo could not finish this request. Please try again; saved answers will not be counted twice.' }, 500);
     }
   },
 });
@@ -132,7 +170,7 @@ function backup() {
 }
 try { backup(); } catch (error) { console.error('Echo backup failed', error); }
 const backups = setInterval(() => { try { backup(); } catch (error) { console.error('Echo backup failed', error); } }, 60 * 60 * 1000);
-function stop() { clearInterval(backups); server.stop(true); store.close(); process.exit(0); }
+function stop() { clearInterval(backups); server.stop(true); grammar.close(); store.close(); process.exit(0); }
 process.on('SIGTERM', stop);
 process.on('SIGINT', stop);
 console.log(`Echo ready at http://127.0.0.1:${port}/echo/ (${words.length} words)`);
