@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.galt.echo</string>
+  <key>ProgramArguments</key><array><string>/Users/galt/.local/bin/bun</string><string>/Users/galt/echo/server.ts</string></array>
+  <key>WorkingDirectory</key><string>/Users/galt/echo</string>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/Users/galt/echo/data/server.log</string>
+  <key>StandardErrorPath</key><string>/Users/galt/echo/data/server.log</string>
+  <key>EnvironmentVariables</key><dict>
+    <key>PATH</key><string>/Users/galt/.local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+    <key>LANG</key><string>en_US.UTF-8</string>
+  </dict>
+</dict></plist>

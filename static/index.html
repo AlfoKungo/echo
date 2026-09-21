@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14131e">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Echo">
+  <meta name="description" content="A quiet place to make French words your own.">
+  <title>Echo · French, remembered.</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" id="home-button" aria-label="Echo home"><img src="icon.svg" width="38" height="38" alt=""><span>Echo</span></button>
+      <button class="quiet-button" id="about-button" aria-haspopup="dialog">How it works <span aria-hidden="true">↗</span></button>
+    </header>
+    <main id="main" tabindex="-1"><div class="loading-state" role="status">Opening your vocabulary…</div></main>
+    <footer class="footer"><span>French, remembered.</span><img src="icon.svg" width="24" height="24" alt=""><span>A little, every day.</span></footer>
+  </div>
+  <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <div id="audio-status" class="audio-status" role="status" hidden></div>
+  <dialog id="about-dialog" aria-labelledby="about-title">
+    <div class="dialog-header"><span class="eyebrow">THE ECHO METHOD</span><button class="icon-button" id="close-about" aria-label="Close How it works">×</button></div>
+    <h2 id="about-title">A word becomes<br>second nature.</h2>
+    <p>Recall first. Reveal the answer. Then be honest about whether you knew it. This is vocabulary practice, not a course.</p>
+    <ol class="method-list">
+      <li><strong>A small daily rhythm.</strong><span>Start with 30 new words a day in each direction. French → English and English → French have separate memories. Your daily allowance is shared across category filters, resets at 04:00 on your Mac’s clock, and does not accumulate on days you miss. Change the goal on the home screen; due reviews are not capped by it.</span></li>
+      <li><strong>Know it twice.</strong><span>Each due cycle needs two consecutive “Knew it” answers, with other cards between recalls when available. “Didn’t know” resets that word’s count to zero. Tap to reveal, then tap the left half if you didn’t know it or the right half if you did.</span></li>
+      <li><strong>Return at the right time.</strong><span>FSRS schedules the next long-term review once you complete a cycle. Echo’s two-recall cycle deliberately differs from Anki’s exact learning-step timing.</span></li>
+    </ol>
+    <p class="muted small">Your progress lives on your Mac, shared by your phone and desktop. French pronunciation uses Chatterbox recordings. Nothing plays automatically.</p>
+    <a class="secondary-button export-link" href="api/export" download="echo-progress.json">Download my progress <span aria-hidden="true">↓</span></a>
+  </dialog>
+</body>
+</html>

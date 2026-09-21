@@ -1,0 +1,13 @@
+{
+  "model": "mlx-community/chatterbox-multilingual-v3",
+  "language": "fr",
+  "reference": "french-reference.wav",
+  "referenceSource": "Synthetic French speech generated with mlx-community/Qwen3-TTS-12Hz-1.7B-VoiceDesign-8bit during the operator's voice comparison. Not a human recording.",
+  "referenceText": "Bonjour, prenez le temps de vous installer. Aujourd’hui, nous allons découvrir ensemble une histoire simple et agréable. Écoutez tranquillement, puis répétez à votre rythme.",
+  "selection": "Operator preferred this conditioned Chatterbox voice to Qwen and Kokoro in the comparison.",
+  "python": "/Users/galt/.local/share/qwen3-tts-benchmark/.venv/bin/python",
+  "generationCommand": "scripts/render-audio.py",
+  "processing": "Speak each entry inside a French carrier phrase, compare the local Whisper transcript with the target text or its French phonemes, then extract the vocabulary item. New renders use DTW anchors and a quiet transition; each cached recording records its own alignment method.",
+  "validatorDependencies": "whisper-cli with the local large-v3-turbo model and DTW token alignment, espeak-ng and ffmpeg.",
+  "pronunciationCaveat": "Synthetic speech can mispronounce or add words; audio checks are not native-speaker certification."
+}
