@@ -198,7 +198,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       const stats: Stats = {
         total: count, unseen, practised: 0, scheduled: 0, introducedToday,
         newAvailable: Math.min(unseen, Math.max(0, preferences.newPerDay - introducedToday)),
-        learning: 0, due: 0, completedToday: 0, remaining: 0,
+        learning: 0, due: 0, completedToday: 0, remaining: 0, recallProgress: 0,
       };
       for (const candidate of records) {
         if (candidate.completed_day !== null || candidate.successes > 0 || candidate.cycle_misses > 0) stats.practised++;
@@ -206,6 +206,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         else if (candidate.due_at <= time) stats.due++;
         else stats.scheduled++;
         if (candidate.completed_day === day) stats.completedToday++;
+        stats.recallProgress += candidate.active === 1 ? candidate.successes : candidate.completed_day === day ? 2 : 0;
       }
       stats.remaining = stats.learning + stats.due;
       return stats;

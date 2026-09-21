@@ -113,18 +113,20 @@ describe('daily admission and selected-deck state', () => {
     const { store } = fixture();
     store.setSettings(1);
     let state = store.start('fr-en', 'all');
-    expect(state.overview).toMatchObject({ practised: 0, remaining: 1, completedToday: 0 });
+    expect(state.overview).toMatchObject({ practised: 0, remaining: 1, completedToday: 0, recallProgress: 0 });
     state = store.grade(answer(state, false));
     expect(state.overview.practised).toBe(1);
     state = store.undo('fr-en', 'all', state.undoId!);
     expect(state.overview).toMatchObject({ practised: 0, remaining: 1, completedToday: 0 });
     state = store.grade(answer(state, true));
-    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, completedToday: 0 });
+    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, completedToday: 0, recallProgress: 1 });
     state = store.grade(answer(state, true));
-    expect(state.overview).toMatchObject({ practised: 1, scheduled: 1, remaining: 0, completedToday: 1 });
+    expect(state.overview).toMatchObject({ practised: 1, scheduled: 1, remaining: 0, completedToday: 1, recallProgress: 2 });
     state = store.undo('fr-en', 'all', state.undoId!);
-    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, remaining: 1, completedToday: 0 });
+    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, remaining: 1, completedToday: 0, recallProgress: 1 });
     expect(state.current?.successes).toBe(1);
+    state = store.grade(answer(state, false));
+    expect(state.overview).toMatchObject({ practised: 1, recallProgress: 0, completedToday: 0 });
   });
 
   test('lowering allowance retains cards; zero is review-only; raising it admits only the difference', () => {

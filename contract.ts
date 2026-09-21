@@ -4,7 +4,8 @@ export type Deck = { id: string; title: string; count: number };
 export type Settings = { newPerDay: number };
 export type CardView = Word & { successes: number; version: number; stage: 'new' | 'learning' | 'review'; audioUrl: string };
 // Practised excludes admitted-but-unanswered cards; scheduled means a future review, not mastery.
-export type Stats = { total: number; unseen: number; practised: number; scheduled: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number };
+// recallProgress includes partial recalls carried into the stack and two for each word finished today.
+export type Stats = { total: number; unseen: number; practised: number; scheduled: number; recallProgress: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number };
 // stats follows the selected category; overview covers all words in the selected direction.
 export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; nextDue: string | null; undoId: string | null };
 export type GradeInput = { direction: Direction; deck: string; wordId: string; version: number; known: boolean; requestId: string };
