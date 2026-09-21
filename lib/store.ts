@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { BrowseWord, CardView, Deck, Direction, GradeInput, Settings, Snapshot, Word } from '../contract';
+import type { BrowseWord, CardView, Deck, Direction, GradeInput, Settings, Snapshot, Stats, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -193,9 +193,25 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     const selected = rows.filter((row) => inDeck(row.word_id, deck));
     const total = deck === 'all' ? words.length : categories.get(deck)!;
     const introducedToday = rows.filter((row) => row.introduced_day === day).length;
-    const learning = selected.filter((row) => row.active === 1).length;
-    const due = selected.filter((row) => row.active === 0 && row.due_at <= time).length;
-    const unseen = total - selected.length;
+    function summarize(records: CardRow[], count: number): Stats {
+      const unseen = count - records.length;
+      const stats: Stats = {
+        total: count, unseen, practised: 0, scheduled: 0, introducedToday,
+        newAvailable: Math.min(unseen, Math.max(0, preferences.newPerDay - introducedToday)),
+        learning: 0, due: 0, completedToday: 0, remaining: 0,
+      };
+      for (const candidate of records) {
+        if (candidate.completed_day !== null || candidate.successes > 0 || candidate.cycle_misses > 0) stats.practised++;
+        if (candidate.active === 1) stats.learning++;
+        else if (candidate.due_at <= time) stats.due++;
+        else stats.scheduled++;
+        if (candidate.completed_day === day) stats.completedToday++;
+      }
+      stats.remaining = stats.learning + stats.due;
+      return stats;
+    }
+    const stats = summarize(selected, total);
+    const overview = deck === 'all' ? stats : summarize(rows.filter((candidate) => inDeck(candidate.word_id, 'all')), words.length);
     const row = selected.find((candidate) => candidate.active === 1 || candidate.due_at <= time);
     let current: CardView | null = null;
     if (row) {
@@ -214,13 +230,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     const latest = latestGrade.get(direction);
     return {
       day, direction, deck, settings: preferences, decks,
-      stats: {
-        total, unseen, introducedToday,
-        newAvailable: Math.min(unseen, Math.max(0, preferences.newPerDay - introducedToday)),
-        learning, due,
-        completedToday: selected.filter((candidate) => candidate.completed_day === day).length,
-        remaining: learning + due,
-      },
+      stats, overview,
       current,
       nextDue: nextDue === null ? null : new Date(nextDue).toISOString(),
       undoId: latest && inDeck(latest.word_id, deck) ? latest.request_id : null,

@@ -98,12 +98,33 @@ describe('daily admission and selected-deck state', () => {
     expect(food.stats).toMatchObject({ total: 4, unseen: 2, introducedToday: 2, remaining: 2 });
     const travel = store.start('fr-en', 'travel');
     expect(travel.stats).toMatchObject({ total: 4, unseen: 4, introducedToday: 2, newAvailable: 0, remaining: 0 });
+    expect(travel.overview).toMatchObject({ total: 8, remaining: 2, practised: 0 });
     expect(travel.current).toBeNull();
     expect(store.state('fr-en', 'all').stats.remaining).toBe(2);
     expect(store.start('en-fr', 'travel').stats).toMatchObject({ introducedToday: 2, remaining: 2 });
     store.grade(answer(food, true));
     expect(store.state('en-fr', 'travel').current?.successes).toBe(0);
+    expect(store.state('fr-en', 'travel').overview.practised).toBe(1);
+    expect(store.state('en-fr', 'travel').overview.practised).toBe(0);
     expect(store.browse('en-fr', 'food').every((word) => word.status === 'new')).toBe(true);
+  });
+
+  test('coverage counts actual practice, not admission, and undo restores coverage and completion', () => {
+    const { store } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'all');
+    expect(state.overview).toMatchObject({ practised: 0, remaining: 1, completedToday: 0 });
+    state = store.grade(answer(state, false));
+    expect(state.overview.practised).toBe(1);
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.overview).toMatchObject({ practised: 0, remaining: 1, completedToday: 0 });
+    state = store.grade(answer(state, true));
+    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, completedToday: 0 });
+    state = store.grade(answer(state, true));
+    expect(state.overview).toMatchObject({ practised: 1, scheduled: 1, remaining: 0, completedToday: 1 });
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, remaining: 1, completedToday: 0 });
+    expect(state.current?.successes).toBe(1);
   });
 
   test('lowering allowance retains cards; zero is review-only; raising it admits only the difference', () => {
@@ -190,6 +211,7 @@ describe('practice cycles and FSRS memory', () => {
     state = store.grade(answer(state, true));
     expect(state.stats.unseen).toBe(3);
     expect(state.stats.remaining).toBe(0);
+    expect(state.overview).toMatchObject({ practised: 1, scheduled: 1, completedToday: 1 });
     expect(state.nextDue).not.toBeNull();
     const dueAt = new Date(state.nextDue!);
     clock.value = new Date(dueAt.getTime() - 1);
@@ -199,6 +221,7 @@ describe('practice cycles and FSRS memory', () => {
     state = store.state('fr-en', 'food');
     expect(state.current).toMatchObject({ id: 'food-001', successes: 0, stage: 'review' });
     expect(state.stats).toMatchObject({ due: 1, learning: 0, remaining: 1, unseen: 3 });
+    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, due: 1, completedToday: 0 });
     expect(state.nextDue).toBeNull();
     expect(store.exportData()).toEqual(before);
     state = store.grade(answer(state, true));

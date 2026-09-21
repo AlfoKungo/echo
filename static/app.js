@@ -7,6 +7,8 @@ const homeButton = document.querySelector('#home-button');
 const speaker = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
 const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>';
 const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+const formatCount = new Intl.NumberFormat('en').format;
+const formatPercent = new Intl.NumberFormat('en', { style: 'percent', maximumFractionDigits: 1 }).format;
 const readPreference = (key, fallback) => { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } };
 const savePreference = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Progress is server-owned; local preferences are optional. */ } };
 let direction = readPreference('echo.direction', 'fr-en') === 'en-fr' ? 'en-fr' : 'fr-en';
@@ -120,6 +122,27 @@ function noticeHTML() {
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
 function back(label, action) { return `<button class="back" data-action="${action}" ${busy ? 'disabled' : ''}><span aria-hidden="true">←</span> ${label}</button>`; }
 function rememberScreen() { savePreference('echo.section', screen); }
+function vocabularyProgress(expanded = false) {
+  if (!snapshot) return `<div class="progress-placeholder" role="status">${loading ? 'Loading your progress…' : 'Progress is unavailable. Use Retry above.'}</div>`;
+  const stats = snapshot.overview;
+  const left = stats.remaining + stats.newAvailable;
+  const planned = stats.completedToday + left;
+  return `<section class="vocab-progress" aria-label="Vocabulary progress"><div class="progress-scope">${esc(directionLabel())} · All categories${loading ? ' · Updating…' : ''}</div><div class="daily-heading"><span>Today</span><strong>${planned ? `${formatCount(stats.completedToday)} / ${formatCount(planned)} finished` : 'Nothing waiting'}</strong><span>${left ? `${formatCount(left)} left` : planned ? 'All done' : ''}</span></div><progress class="daily-bar" value="${stats.completedToday}" max="${Math.max(1, planned)}" aria-label="Words finished today" aria-valuetext="${stats.completedToday} of ${planned} words finished; ${left} remaining"></progress><div class="coverage-heading"><span><strong>${formatCount(stats.practised)} / ${formatCount(stats.total)}</strong> words practised</span><span>${formatPercent(stats.practised / Math.max(1, stats.total))}</span></div>${expanded ? `<progress class="coverage-bar" value="${stats.practised}" max="${Math.max(1, stats.total)}" aria-label="Overall vocabulary coverage"></progress><div class="vocab-totals"><div><strong>${formatCount(stats.practised - stats.scheduled)}</strong><span>In practice</span></div><div><strong>${formatCount(stats.scheduled)}</strong><span>Review later</span></div><div><strong>${formatCount(stats.total - stats.practised)}</strong><span>Not started</span></div></div>` : ''}</section>`;
+}
+function renderHome() {
+  main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1><div class="destinations"><article class="destination vocabulary-destination"><div class="destination-heading"><h2>Vocabulary</h2><button class="quiet accent" data-action="progress" aria-haspopup="dialog" ${busy || loading || !snapshot ? 'disabled' : ''}>Details</button></div>${vocabularyProgress(true)}<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>${deck === 'all' ? 'Practise vocabulary' : `Practise ${esc(categoryTitle(deck))}`} <span aria-hidden="true">→</span></button></article><button class="destination" data-action="grammar" ${busy ? 'disabled' : ''}><span class="symbol" aria-hidden="true">≡</span><h2>Grammar & sentences</h2><p>Build, rewrite and correct sentences.</p><span class="end" aria-hidden="true">→</span></button></div></section>`;
+}
+function selectionProgress() {
+  if (deck === 'all') return '';
+  const stats = snapshot.stats;
+  return `<p class="selection-progress">${esc(categoryTitle(deck))}: ${formatCount(stats.remaining + stats.newAvailable)} left here · ${formatCount(stats.practised)} / ${formatCount(stats.total)} practised</p>`;
+}
+function openProgress() {
+  if (!snapshot) return;
+  const stats = snapshot.overview;
+  const rows = [['In the practice stack', stats.learning], ['Reviews due now', stats.due], ['New words ready to add', stats.newAvailable], ['New words introduced today', stats.introducedToday], ['Daily new-word allowance', snapshot.settings.newPerDay]];
+  openDialog('Your vocabulary', `${vocabularyProgress(true)}<dl class="progress-breakdown">${rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${formatCount(value)}</dd></div>`).join('')}</dl><div class="dialog-copy"><p>A word finishes today after <strong>two successful recalls in a row</strong>. A miss restarts that word’s recall count.</p><p>Today includes unfinished words, due reviews and available new words. The plan can grow as reviews become due. Your new-word allowance resets at <strong>04:00 on your Mac</strong>; due reviews are never capped.</p><p><strong>Practised</strong> means you’ve answered a word, not just added it to the stack. <strong>In practice</strong> includes practised words still in the stack or due again. <strong>Review later</strong> means scheduled, not permanently mastered. Each direction has its own progress.</p>${snapshot.nextDue ? `<p>Next review in ${esc(categoryTitle(deck))}: <strong>${esc(dateLabel(snapshot.nextDue))}</strong>.</p>` : ''}</div><button class="primary dialog-action" data-action="close-dialog">Back</button>`, 'progress');
+}
 function render() {
   homeButton.disabled = busy;
   document.querySelector('#about-button').disabled = busy;
@@ -127,25 +150,27 @@ function render() {
   else if (screen === 'browse') renderBrowse();
   else if (screen === 'grammar') renderTopics();
   else if (screen === 'exercise') renderExercise();
-  else main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1><div class="destinations"><button class="destination" data-action="start" ${busy ? 'disabled' : ''}><span class="symbol letters" aria-hidden="true">Aa</span><h2>Vocabulary</h2><p>Recall and review your words.</p><span class="end" aria-hidden="true">→</span></button><button class="destination" data-action="grammar" ${busy ? 'disabled' : ''}><span class="symbol" aria-hidden="true">≡</span><h2>Grammar & sentences</h2><p>Build, rewrite and correct sentences.</p><span class="end" aria-hidden="true">→</span></button></div></section>`;
+  else renderHome();
 }
 function availabilityCopy() {
   const parts = [];
+  const elsewhere = snapshot.overview.remaining + snapshot.overview.newAvailable;
+  if (deck !== 'all' && snapshot.stats.newAvailable === 0 && elsewhere > 0) parts.push(`${formatCount(elsewhere)} ${elsewhere === 1 ? 'word is' : 'words are'} waiting in other categories. Choose All words in vocabulary options to continue.`);
   if (snapshot.nextDue) parts.push(`Next review: ${dateLabel(snapshot.nextDue)}.`);
   if (snapshot.stats.unseen > 0 && snapshot.stats.newAvailable === 0) parts.push(snapshot.settings.newPerDay === 0 ? 'New words are paused with your daily allowance at 0.' : 'New words return with your next daily allowance at 04:00 on your Mac.');
   return parts.join(' ') || 'You’re up to date in this vocabulary selection.';
 }
 function renderPractice() {
-  const header = `<div class="section-top">${back('Home', 'home')}<div><button class="icon" data-action="browse" aria-label="Browse vocabulary" ${busy ? 'disabled' : ''}>${searchIcon}</button><button class="icon" data-action="options" aria-label="Vocabulary options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>`;
+  const header = `<div class="section-top">${back('Home', 'home')}<div><button class="quiet" data-action="progress" aria-haspopup="dialog" ${busy || loading || !snapshot ? 'disabled' : ''}>Progress</button><button class="icon" data-action="browse" aria-label="Browse vocabulary" ${busy ? 'disabled' : ''}>${searchIcon}</button><button class="icon" data-action="options" aria-label="Vocabulary options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>`;
   if (!snapshot || loading) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="loading-state" role="status">${loading ? 'Opening your vocabulary…' : 'Your progress is safe on your Mac.'}</div></section>`; return; }
   const card = snapshot.current;
   if (!card) {
-    main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p><div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div></div></section>`; return;
+    main.innerHTML = `${noticeHTML()}<section class="practice">${header}${vocabularyProgress()}${selectionProgress()}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p><div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div></div></section>`; return;
   }
   const reverse = direction === 'en-fr';
   const prompt = reverse ? card.en : card.fr;
   const answer = reverse ? card.fr : card.en;
-  main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content"><h1 class="main-word" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}` : ''}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button><button class="quiet" data-action="undo" ${!snapshot.undoId || locked() ? 'disabled' : ''}>Undo</button></div></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="practice">${header}${vocabularyProgress()}${selectionProgress()}<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : 'Reveal the translation'}" aria-busy="${busy}"><div class="card-progress"><span>${({ new: 'New word', learning: 'In practice', review: 'Due review' })[card.stage]}</span><span>${card.successes} / 2 recalls</span></div><div class="word-content"><h1 class="main-word" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}` : ''}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button><button class="quiet" data-action="undo" ${!snapshot.undoId || locked() ? 'disabled' : ''}>Undo</button></div></section>`;
 }
 function renderBrowse() {
   main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Vocabulary', 'vocabulary')}<button class="icon" data-action="options" aria-label="Vocabulary options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">${esc(directionLabel())}</p><div class="browse-tools"><label class="sr-only" for="vocab-search">Search French or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div id="browse-results"></div></section>`;
@@ -242,7 +267,9 @@ async function runMutation(action) {
 function move(next) {
   if (busy) return false;
   stopAudio(); ++generation; ++browseGeneration; loading = false; revealed = false;
-  screen = next; rememberScreen(); render(); window.scrollTo(0, 0); main.focus({ preventScroll: true }); return true;
+  screen = next; rememberScreen(); render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
+  if (next === 'home') fetchState();
+  return true;
 }
 async function startPractice() {
   if (busy) return;
@@ -363,6 +390,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'start') startPractice();
   else if (action === 'vocabulary') { if (move('practice')) fetchState(); }
   else if (action === 'grammar') { if (move('grammar')) loadGrammar(); }
+  else if (action === 'progress') openProgress();
   else if (action === 'browse') browseWords();
   else if (action === 'options') openOptions();
   else if (action === 'about') { dialog.close(); stopAudio(); aboutDialog.showModal(); }
@@ -404,8 +432,9 @@ for (const modal of [dialog, aboutDialog]) {
   modal.addEventListener('click', (event) => { if (event.target === modal && !busy) { const box = modal.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) modal.close(); } });
 }
 window.addEventListener('pagehide', stopAudio);
+document.addEventListener('visibilitychange', () => { if (!document.hidden && screen === 'home' && !busy && !loading && !dialog.open) fetchState(); });
 render();
 if (screen === 'exercise' && topicId) loadGrammar(topicId);
 else if (screen === 'grammar' || screen === 'exercise') { screen = 'grammar'; rememberScreen(); loadGrammar(); }
 else if (screen === 'browse') browseWords();
-else if (screen === 'practice') fetchState();
+else fetchState();
