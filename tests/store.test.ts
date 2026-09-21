@@ -66,13 +66,15 @@ describe('daily admission and selected-deck state', () => {
     const { store, clock } = fixture(new Date(2026, 8, 21, 3, 59));
     store.setSettings(1);
     const before = store.exportData();
-    expect(store.state('fr-en', 'all').stats.newAvailable).toBe(1);
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ newAvailable: 1, seenToday: 0, unseenToday: 1 });
     expect(store.state('fr-en', 'all').current).toBeNull();
     expect(store.exportData()).toEqual(before);
     let state = store.start('fr-en', 'all');
     expect(state.day).toBe('2026-09-20');
     expect(state.stats.introducedToday).toBe(1);
     expect(store.start('fr-en', 'all').stats.remaining).toBe(1);
+    state = store.grade(answer(state, true));
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, remaining: 1 });
 
     clock.value = new Date(2026, 8, 21, 4);
     state = store.state('fr-en', 'all');
@@ -80,9 +82,12 @@ describe('daily admission and selected-deck state', () => {
     expect(state.stats.introducedToday).toBe(0);
     expect(state.stats.remaining).toBe(1);
     expect(state.stats.newAvailable).toBe(1);
+    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 2 });
+    expect(state.current?.successes).toBe(1);
     state = store.start('fr-en', 'all');
     expect(state.stats.remaining).toBe(2);
     expect(state.stats.introducedToday).toBe(1);
+    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 2 });
 
     clock.value = new Date(2026, 8, 28, 4);
     state = store.start('fr-en', 'all');
@@ -93,40 +98,86 @@ describe('daily admission and selected-deck state', () => {
 
   test('filters share one admission budget while directions have independent memory and budgets', () => {
     const { store } = fixture();
+    const before = store.exportData();
+    expect(store.state('fr-en', 'food').stats).toMatchObject({ seenToday: 0, unseenToday: 4, newAvailable: 4 });
+    expect(store.state('fr-en', 'all').stats.unseenToday).toBe(8);
+    expect(store.exportData()).toEqual(before);
     store.setSettings(2);
+    expect(store.state('fr-en', 'food').stats.unseenToday).toBe(2);
     const food = store.start('fr-en', 'food');
-    expect(food.stats).toMatchObject({ total: 4, unseen: 2, introducedToday: 2, remaining: 2 });
+    expect(food.stats).toMatchObject({ total: 4, unseen: 2, introducedToday: 2, remaining: 2, seenToday: 0, unseenToday: 2 });
     const travel = store.start('fr-en', 'travel');
-    expect(travel.stats).toMatchObject({ total: 4, unseen: 4, introducedToday: 2, newAvailable: 0, remaining: 0 });
-    expect(travel.overview).toMatchObject({ total: 8, remaining: 2, practised: 0 });
+    expect(travel.stats).toMatchObject({ total: 4, unseen: 4, introducedToday: 2, newAvailable: 0, remaining: 0, seenToday: 0, unseenToday: 0 });
+    expect(travel.overview).toMatchObject({ total: 8, remaining: 2 });
     expect(travel.current).toBeNull();
     expect(store.state('fr-en', 'all').stats.remaining).toBe(2);
     expect(store.start('en-fr', 'travel').stats).toMatchObject({ introducedToday: 2, remaining: 2 });
     store.grade(answer(food, true));
     expect(store.state('en-fr', 'travel').current?.successes).toBe(0);
-    expect(store.state('fr-en', 'travel').overview.practised).toBe(1);
-    expect(store.state('en-fr', 'travel').overview.practised).toBe(0);
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ seenToday: 1, unseenToday: 1 });
+    store.grade(answer(store.state('fr-en', 'all'), false));
+    expect(store.state('fr-en', 'food').stats).toMatchObject({ seenToday: 2, unseenToday: 0 });
+    expect(store.state('fr-en', 'travel').stats).toMatchObject({ seenToday: 0, unseenToday: 0 });
+    expect(store.state('en-fr', 'travel').stats).toMatchObject({ seenToday: 0, unseenToday: 2 });
+    store.grade(answer(store.state('en-fr', 'travel'), false));
+    expect(store.state('en-fr', 'all').stats).toMatchObject({ seenToday: 1, unseenToday: 1 });
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ seenToday: 2, unseenToday: 0 });
     expect(store.browse('en-fr', 'food').every((word) => word.status === 'new')).toBe(true);
   });
 
-  test('coverage counts actual practice, not admission, and undo restores coverage and completion', () => {
+  test('distinct answers count once through misses, partial recalls, completion and undo', () => {
     const { store } = fixture();
     store.setSettings(1);
     let state = store.start('fr-en', 'all');
-    expect(state.overview).toMatchObject({ practised: 0, remaining: 1, completedToday: 0, recallProgress: 0 });
+    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 1, remaining: 1, completedToday: 0 });
     state = store.grade(answer(state, false));
-    expect(state.overview.practised).toBe(1);
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0 });
     state = store.undo('fr-en', 'all', state.undoId!);
-    expect(state.overview).toMatchObject({ practised: 0, remaining: 1, completedToday: 0 });
+    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 1 });
     state = store.grade(answer(state, true));
-    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, completedToday: 0, recallProgress: 1 });
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, completedToday: 0 });
     state = store.grade(answer(state, true));
-    expect(state.overview).toMatchObject({ practised: 1, scheduled: 1, remaining: 0, completedToday: 1, recallProgress: 2 });
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, remaining: 0, completedToday: 1 });
     state = store.undo('fr-en', 'all', state.undoId!);
-    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, remaining: 1, completedToday: 0, recallProgress: 1 });
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, remaining: 1, completedToday: 0 });
     expect(state.current?.successes).toBe(1);
     state = store.grade(answer(state, false));
-    expect(state.overview).toMatchObject({ practised: 1, recallProgress: 0, completedToday: 0 });
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0 });
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0 });
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 1 });
+  });
+
+  test.each([
+    ['spring forward', 2, 8],
+    ['fall back', 10, 1],
+  ] as const)('uses calendar-local 04:00 across %s and excludes future grades', (_name, month, date) => {
+    const originalTimezone = process.env.TZ;
+    process.env.TZ = 'America/New_York';
+    try {
+      const { store, clock } = fixture(new Date(2026, month, date - 1, 3, 59, 59, 999));
+      store.setSettings(3);
+      let state = store.start('fr-en', 'all');
+      store.setSettings(0);
+      state = store.grade(answer(state, false));
+      clock.value = new Date(2026, month, date - 1, 4);
+      state = store.grade(answer(state, false));
+      expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 2 });
+      clock.value = new Date(2026, month, date, 3, 45);
+      state = store.grade(answer(state, false));
+      expect(state.stats).toMatchObject({ seenToday: 2, unseenToday: 1 });
+
+      clock.value = new Date(2026, month, date, 3, 30);
+      const before = store.exportData();
+      expect(store.state('fr-en', 'all').stats).toMatchObject({ seenToday: 1, unseenToday: 2 });
+      expect(store.exportData()).toEqual(before);
+      clock.value = new Date(2026, month, date, 4);
+      expect(store.state('fr-en', 'all').stats).toMatchObject({ seenToday: 0, unseenToday: 3 });
+    } finally {
+      if (originalTimezone === undefined) delete process.env.TZ;
+      else process.env.TZ = originalTimezone;
+    }
   });
 
   test('lowering allowance retains cards; zero is review-only; raising it admits only the difference', () => {
@@ -134,11 +185,12 @@ describe('daily admission and selected-deck state', () => {
     store.setSettings(3);
     store.start('fr-en', 'all');
     store.setSettings(1);
-    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 3, newAvailable: 0, remaining: 3 });
+    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 3, newAvailable: 0, remaining: 3, unseenToday: 3 });
     store.setSettings(0);
     clock.value = new Date(2026, 8, 22, 10);
-    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 0, newAvailable: 0, remaining: 3 });
+    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 0, newAvailable: 0, remaining: 3, unseenToday: 3 });
     store.setSettings(2);
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ newAvailable: 2, unseenToday: 5 });
     expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 2, remaining: 5 });
     expect(store.start('fr-en', 'all').stats.remaining).toBe(5);
     store.setSettings(3);
@@ -173,6 +225,7 @@ describe('practice cycles and FSRS memory', () => {
     state = store.grade(answer(state, true));
     expect(state.current).toBeNull();
     expect(state.stats).toMatchObject({ completedToday: 2, remaining: 0, unseen: 6, newAvailable: 0 });
+    expect(state.stats).toMatchObject({ seenToday: 2, unseenToday: 0 });
     const exported = progress(store);
     expect(exported.grades.filter((grade) => grade.fsrsLog).map((grade) => grade.fsrsLog!.rating)).toEqual([Rating.Good, Rating.Again]);
     expect(exported.cards.map((card) => card.fsrs.reps)).toEqual([1, 1]);
@@ -199,8 +252,10 @@ describe('practice cycles and FSRS memory', () => {
     state = reopened.state('fr-en', 'food');
     expect(state.current).toMatchObject({ id: 'food-001', successes: 1, version: originalVersion });
     expect(state.stats.introducedToday).toBe(0);
+    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 2 });
     state = reopened.grade(answer(state, true));
     expect(state.current).toBeNull();
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 1 });
     expect(progress(reopened).grades.at(-1)?.fsrsLog?.rating).toBe(Rating.Again);
     expect(progress(reopened).cards[0].fsrs.reps).toBe(1);
   });
@@ -213,7 +268,7 @@ describe('practice cycles and FSRS memory', () => {
     state = store.grade(answer(state, true));
     expect(state.stats.unseen).toBe(3);
     expect(state.stats.remaining).toBe(0);
-    expect(state.overview).toMatchObject({ practised: 1, scheduled: 1, completedToday: 1 });
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, completedToday: 1 });
     expect(state.nextDue).not.toBeNull();
     const dueAt = new Date(state.nextDue!);
     clock.value = new Date(dueAt.getTime() - 1);
@@ -223,11 +278,17 @@ describe('practice cycles and FSRS memory', () => {
     state = store.state('fr-en', 'food');
     expect(state.current).toMatchObject({ id: 'food-001', successes: 0, stage: 'review' });
     expect(state.stats).toMatchObject({ due: 1, learning: 0, remaining: 1, unseen: 3 });
-    expect(state.overview).toMatchObject({ practised: 1, scheduled: 0, due: 1, completedToday: 0 });
+    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 2, newAvailable: 1, completedToday: 0 });
     expect(state.nextDue).toBeNull();
     expect(store.exportData()).toEqual(before);
+    store.setSettings(0);
+    const paused = store.exportData();
+    state = store.state('fr-en', 'food');
+    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 1, newAvailable: 0, due: 1 });
+    expect(store.exportData()).toEqual(paused);
     state = store.grade(answer(state, true));
     expect(state.current?.successes).toBe(1);
+    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0 });
     expect(progress(store).cards[0].fsrs.reps).toBe(1);
     state = store.grade(answer(state, true));
     expect(state.current).toBeNull();

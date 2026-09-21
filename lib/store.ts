@@ -59,9 +59,15 @@ type UndoRow = {
   after_version: number;
 };
 
+function studyDayStart(now: Date): Date {
+  const start = new Date(now);
+  if (start.getHours() < 4) start.setDate(start.getDate() - 1);
+  start.setHours(4, 0, 0, 0);
+  return start;
+}
+
 function studyDay(now: Date): string {
-  const day = new Date(now);
-  if (day.getHours() < 4) day.setDate(day.getDate() - 1);
+  const day = studyDayStart(now);
   return `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`;
 }
 
@@ -135,6 +141,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         after_version INTEGER NOT NULL
       );
       CREATE INDEX IF NOT EXISTS grades_direction_sequence ON grades(direction, sequence DESC);
+      CREATE INDEX IF NOT EXISTS grades_direction_time ON grades(direction, graded_at);
     `);
     db.query('INSERT OR IGNORE INTO settings VALUES (1, ?)').run(Math.min(30, words.length));
     db.query('INSERT OR IGNORE INTO queue_counter VALUES (1, 0)').run();
@@ -150,6 +157,11 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     SELECT grades.* FROM grades
     WHERE direction = ? AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)
     ORDER BY sequence DESC LIMIT 1
+  `);
+  const answeredWords = db.query<{ word_id: string }, [Direction, string, string]>(`
+    SELECT DISTINCT word_id FROM grades
+    WHERE direction = ? AND graded_at >= ? AND graded_at <= ?
+      AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)
   `);
   const saveCard = db.query(`
     INSERT INTO cards (direction, word_id, introduced_day, active, successes, cycle_misses,
@@ -193,22 +205,23 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     const selected = rows.filter((row) => inDeck(row.word_id, deck));
     const total = deck === 'all' ? words.length : categories.get(deck)!;
     const introducedToday = rows.filter((row) => row.introduced_day === day).length;
+    const seenToday = new Set(answeredWords.all(direction, studyDayStart(at).toISOString(), at.toISOString()).map((grade) => grade.word_id));
     function summarize(records: CardRow[], count: number): Stats {
       const unseen = count - records.length;
       const stats: Stats = {
-        total: count, unseen, practised: 0, scheduled: 0, introducedToday,
+        total: count, unseen, seenToday: 0, unseenToday: 0, introducedToday,
         newAvailable: Math.min(unseen, Math.max(0, preferences.newPerDay - introducedToday)),
-        learning: 0, due: 0, completedToday: 0, remaining: 0, recallProgress: 0,
+        learning: 0, due: 0, completedToday: 0, remaining: 0,
       };
       for (const candidate of records) {
-        if (candidate.completed_day !== null || candidate.successes > 0 || candidate.cycle_misses > 0) stats.practised++;
+        if (seenToday.has(candidate.word_id)) stats.seenToday++;
+        else if (candidate.active === 1 || candidate.due_at <= time) stats.unseenToday++;
         if (candidate.active === 1) stats.learning++;
         else if (candidate.due_at <= time) stats.due++;
-        else stats.scheduled++;
         if (candidate.completed_day === day) stats.completedToday++;
-        stats.recallProgress += candidate.active === 1 ? candidate.successes : candidate.completed_day === day ? 2 : 0;
       }
       stats.remaining = stats.learning + stats.due;
+      stats.unseenToday += stats.newAvailable;
       return stats;
     }
     const stats = summarize(selected, total);
