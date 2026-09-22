@@ -1,0 +1,152 @@
+{
+  "listening": [
+    {
+      "id": "listen-morning", "title": "A morning plan", "description": "Catch a time and a destination in one everyday sentence.", "kind": "sentence",
+      "fr": "Ce matin, je vais au marché avec ma sœur.", "en": "This morning, I am going to the market with my sister.", "audioId": "listen-morning",
+      "meaning": { "question": "Where is the speaker going this morning?", "choices": ["To the station", "To the market", "To school"], "correctIndex": 1, "explanation": "Au marché means ‘to the market’. Avec ma sœur tells you who is coming along: the speaker's sister." },
+      "gap": { "prompt": "Ce matin, je vais ____ marché avec ma sœur.", "answer": "au", "explanation": "À + le contracts to au: aller au marché. The destination is masculine singular." }
+    },
+    {
+      "id": "listen-bus", "title": "The next bus", "description": "Listen for a departure time, not an arrival time.", "kind": "sentence",
+      "fr": "Le prochain bus part à huit heures et demie.", "en": "The next bus leaves at half past eight.", "audioId": "listen-bus",
+      "meaning": { "question": "When does the next bus leave?", "choices": ["At eight o'clock", "At half past nine", "At half past eight"], "correctIndex": 2, "explanation": "Huit heures et demie is 8:30. Part means ‘leaves’; this sentence does not give the arrival time." },
+      "gap": { "prompt": "Le prochain bus part à huit heures et ____.", "answer": "demie", "explanation": "After heures, et demie adds half an hour. Demie has a final e here because heure is feminine." }
+    },
+    {
+      "id": "listen-bakery", "title": "At the bakery", "description": "Follow a short order and notice the quantity.", "kind": "dialogue",
+      "fr": "Bonjour, vous désirez ? Deux croissants, s'il vous plaît. Et avec ceci ? C'est tout, merci.", "en": "Hello, what would you like? Two croissants, please. Anything else? That's all, thank you.", "audioId": "listen-bakery",
+      "meaning": { "question": "What does the customer order?", "choices": ["Two croissants, and nothing else", "One croissant and a coffee", "Two coffees"], "correctIndex": 0, "explanation": "Deux croissants gives the order. C'est tout means ‘that's all’, so the customer does not add anything." },
+      "gap": { "prompt": "Bonjour, vous désirez ? ____ croissants, s'il vous plaît. Et avec ceci ? C'est tout, merci.", "answer": "Deux", "explanation": "Deux means ‘two’. The s on croissants is normally silent: listen to the number to catch the quantity." }
+    },
+    {
+      "id": "listen-library", "title": "Finding the library", "description": "Pick out a landmark in a short exchange.", "kind": "dialogue",
+      "fr": "Excusez-moi, où est la bibliothèque ? Elle est en face de la poste. C'est loin ? Non, c'est à deux minutes à pied.", "en": "Excuse me, where is the library? It is opposite the post office. Is it far? No, it is a two-minute walk away.", "audioId": "listen-library",
+      "meaning": { "question": "Where is the library?", "choices": ["Behind the station", "Opposite the post office", "Inside the post office"], "correctIndex": 1, "explanation": "En face de means ‘opposite’ or ‘across from’. À deux minutes à pied describes the short walking time." },
+      "gap": { "prompt": "Excusez-moi, où est la bibliothèque ? Elle est en ____ de la poste. C'est loin ? Non, c'est à deux minutes à pied.", "answer": "face", "explanation": "En face de la poste is a useful complete phrase: ‘opposite the post office’." }
+    },
+    {
+      "id": "listen-weekend", "title": "A rainy Saturday", "description": "Understand why a plan changes across three short sentences.", "kind": "passage",
+      "fr": "Le samedi, Léa fait souvent du vélo. Aujourd'hui, il pleut, alors elle reste chez elle. Elle prépare une soupe et appelle une amie.", "en": "On Saturdays, Léa often rides her bike. Today it is raining, so she stays at home. She makes soup and calls a friend.", "audioId": "listen-weekend",
+      "meaning": { "question": "Why does Léa stay at home today?", "choices": ["Her bicycle is broken", "She is waiting for a delivery", "It is raining"], "correctIndex": 2, "explanation": "Il pleut means ‘it is raining’. Alors links the weather to the result: she stays at home. A broken bicycle is not mentioned." },
+      "gap": { "prompt": "Le samedi, Léa fait souvent du vélo. Aujourd'hui, il pleut, alors elle reste ____ elle. Elle prépare une soupe et appelle une amie.", "answer": "chez", "explanation": "Chez elle means ‘at her home’. Use chez with a person or a stressed pronoun: chez moi, chez toi, chez elle." }
+    },
+    {
+      "id": "listen-lunch", "title": "Lunch at work", "description": "Separate a usual habit from today's plan.", "kind": "passage",
+      "fr": "D'habitude, je mange au bureau à midi. Aujourd'hui, un collègue propose un petit restaurant près du parc. Nous partons ensemble à midi et quart.", "en": "Usually, I eat at the office at noon. Today, a colleague suggests a small restaurant near the park. We leave together at a quarter past twelve.", "audioId": "listen-lunch",
+      "meaning": { "question": "What is different about today's lunch?", "choices": ["They are going to a restaurant instead of eating at the office", "They are eating alone at the office", "They are meeting in the park at midnight"], "correctIndex": 0, "explanation": "D'habitude introduces the normal routine. Aujourd'hui introduces the change: a restaurant near the park. Midi et quart is 12:15 in the daytime." },
+      "gap": { "prompt": "D'habitude, je mange au bureau à midi. Aujourd'hui, un collègue propose un petit restaurant près du parc. Nous partons ____ à midi et quart.", "answer": "ensemble", "explanation": "Ensemble means ‘together’. It describes how nous partons happens and does not change form." }
+    }
+  ],
+  "reading": [
+    {
+      "id": "read-new-neighbour", "title": "A new neighbour", "kind": "story",
+      "fr": "Nora habite dans un petit appartement à Lyon. Un matin, elle rencontre son nouveau voisin dans l'escalier. Il porte un grand carton. Nora lui propose de l'aide, puis ils prennent un café dans la cuisine. Ils parlent de leur quartier et d'une boulangerie près de chez eux.",
+      "en": "Nora lives in a small apartment in Lyon. One morning, she meets her new neighbour on the stairs. He is carrying a large box. Nora offers him help, then they have a coffee in the kitchen. They talk about their neighbourhood and a bakery near their homes.",
+      "explanation": "A short story told in the present tense. Follow elle for Nora, il for the neighbour and ils when both people act together.",
+      "annotations": [
+        { "phrase": "son nouveau voisin", "translation": "her new neighbour", "explanation": "Son agrees with the masculine noun voisin, not with Nora. It can mean ‘his’ or ‘her’ depending on context." },
+        { "phrase": "dans l'escalier", "translation": "on the stairs / in the stairwell", "explanation": "Dans locates the meeting. Le escalier becomes l'escalier before the vowel sound." },
+        { "phrase": "lui propose de l'aide", "translation": "offers him help", "explanation": "Lui stands for ‘to him’ here: proposer quelque chose à quelqu'un. De l'aide means ‘some help’." },
+        { "phrase": "ils prennent un café", "translation": "they have a coffee", "explanation": "Prendre un café is a common way to say ‘have a coffee’. Prennent is the ils form of prendre." },
+        { "phrase": "près de chez eux", "translation": "near their homes", "explanation": "Près de means ‘near’; chez eux refers to where they live. Eux is the stressed pronoun used after chez." }
+      ],
+      "writingPrompt": "Write a short introduction to a new neighbour. Say where you live, offer help with something, and suggest having a coffee. Use your own details; the model is only one possible answer.",
+      "modelAnswer": "Bonjour, je m'appelle Alex. J'habite au deuxième étage. Vous avez besoin d'aide avec ce carton ? On peut prendre un café ensemble demain, si vous voulez.",
+      "practice": [
+        { "prompt": "Use the phrase meaning ‘offers him help’: Nora ____, puis ils prennent un café dans la cuisine.", "answer": "lui propose de l'aide", "explanation": "Lui replaces à son voisin: she offers help to him. Proposer de l'aide means to offer help." },
+        { "prompt": "Use the phrase meaning ‘they have a coffee’: Nora lui propose de l'aide, puis ____ dans la cuisine.", "answer": "ils prennent un café", "explanation": "Prendre un café means to have a coffee. Prennent is the ils form of prendre." }
+      ]
+    },
+    {
+      "id": "read-message", "title": "A change of plan", "kind": "message",
+      "fr": "Salut Camille ! Je suis désolé, je ne peux pas venir à six heures. Je termine le travail plus tard aujourd'hui. Est-ce qu'on peut se retrouver à sept heures devant le cinéma ? Je peux réserver les places. Dis-moi si ça te va. À bientôt ! Sam",
+      "en": "Hi Camille! I'm sorry, I can't come at six. I finish work later today. Can we meet at seven in front of the cinema? I can book the tickets. Let me know if that works for you. See you soon! Sam",
+      "explanation": "An informal message uses salut, tu forms and on for ‘we’. The writer apologises, gives a reason and proposes a concrete new plan. Désolé would be désolée for a female writer.",
+      "annotations": [
+        { "phrase": "je ne peux pas venir", "translation": "I can't come", "explanation": "Ne … pas surrounds peux. The second verb stays in the infinitive: venir." },
+        { "phrase": "plus tard", "translation": "later", "explanation": "Tard means ‘late’; plus tard compares times and means ‘later’." },
+        { "phrase": "se retrouver", "translation": "to meet up", "explanation": "Se retrouver often means to meet up at an agreed place. After peut, it stays in the infinitive." },
+        { "phrase": "devant le cinéma", "translation": "in front of the cinema", "explanation": "Devant is a position: in front of. It does not mean ‘before’ in time here." },
+        { "phrase": "si ça te va", "translation": "if that works for you", "explanation": "Ça te va asks whether the plan suits you. Te makes this informal; ça vous va is the vous version." }
+      ],
+      "writingPrompt": "Reply to Sam. Say whether seven o'clock works, confirm where to meet and respond to the offer to book tickets. You may accept or suggest a different time.",
+      "modelAnswer": "Salut Sam ! Sept heures, ça me va. On se retrouve devant le cinéma. Oui, tu peux réserver les places, merci ! À ce soir !",
+      "practice": [
+        { "prompt": "Use the negative phrase meaning ‘I can't come’: Je suis désolé, ____ à six heures.", "answer": "je ne peux pas venir", "explanation": "Ne … pas surrounds peux; venir remains an infinitive after peux." },
+        { "prompt": "Use the meeting-place phrase meaning ‘in front of the cinema’: Est-ce qu'on peut se retrouver à sept heures ____ ?", "answer": "devant le cinéma", "explanation": "Devant le cinéma specifies a meeting place outside, in front of the building." }
+      ]
+    },
+    {
+      "id": "read-menu", "title": "Lunch at the café", "kind": "menu",
+      "fr": "LE PETIT CAFÉ\nFormule du midi : plat et dessert — 16 €\nPlat du jour : poulet rôti avec du riz\nOption végétarienne : tarte aux légumes et salade verte\nDesserts : mousse au chocolat ou salade de fruits\nBoissons non comprises\nService de 12 h à 14 h\nMerci de signaler vos allergies avant de commander.",
+      "en": "THE LITTLE CAFÉ\nLunch deal: main course and dessert — €16\nDish of the day: roast chicken with rice\nVegetarian option: vegetable tart and green salad\nDesserts: chocolate mousse or fruit salad\nDrinks not included\nLunch served from noon to 2 p.m.\nPlease tell us about your allergies before ordering.",
+      "explanation": "Menus often use noun phrases rather than full sentences. This deal includes one main course and a dessert, but drinks are separate. Do not infer that the vegetarian dish is vegan or free of allergens.",
+      "annotations": [
+        { "phrase": "Formule du midi", "translation": "lunch deal / set lunch", "explanation": "A formule bundles menu items for a set price. Du is the contraction of de + le." },
+        { "phrase": "Plat du jour", "translation": "dish of the day", "explanation": "Plat means a dish or main course on a menu. Du jour identifies today's special." },
+        { "phrase": "tarte aux légumes", "translation": "vegetable tart", "explanation": "Aux is à + les. On menus, à or aux often introduces an ingredient or flavour." },
+        { "phrase": "Boissons non comprises", "translation": "drinks not included", "explanation": "Comprises agrees with the feminine plural noun boissons. Drinks cost extra in this set lunch." },
+        { "phrase": "avant de commander", "translation": "before ordering", "explanation": "Avant de is followed by an infinitive when expressing ‘before doing something’." }
+      ],
+      "writingPrompt": "Write what you would say to order a vegetarian lunch with a dessert. Ask whether a drink is included. If you want, add a question about an ingredient; do not assume the menu gives allergy guarantees.",
+      "modelAnswer": "Bonjour, je voudrais la tarte aux légumes et une salade de fruits, s'il vous plaît. Est-ce qu'une boisson est comprise dans la formule ?",
+      "practice": [
+        { "prompt": "Use the dish name meaning ‘vegetable tart’: Option végétarienne : ____ et salade verte.", "answer": "tarte aux légumes", "explanation": "Aux is à + les. Tarte aux légumes names the vegetable tart." },
+        { "prompt": "Use the phrase meaning ‘before ordering’: Merci de signaler vos allergies ____.", "answer": "avant de commander", "explanation": "Avant de takes an infinitive here: avant de commander." }
+      ]
+    },
+    {
+      "id": "read-notice", "title": "A notice in your building", "kind": "everyday",
+      "fr": "Chers voisins,\nL'ascenseur est en panne. Un technicien vient demain matin. En attendant, merci de prendre l'escalier. Si vous avez besoin d'aide pour porter vos courses, appelez la gardienne. Elle est disponible jusqu'à dix-huit heures. Merci de votre patience.",
+      "en": "Dear neighbours,\nThe lift is out of order. A technician is coming tomorrow morning. In the meantime, please use the stairs. If you need help carrying your shopping, call the caretaker. She is available until six p.m. Thank you for your patience.",
+      "explanation": "A practical notice tells you what is wrong, what happens next and where to get help. The present vient can describe a scheduled future event when paired with demain matin. A visit is scheduled; the text does not promise when the lift will be repaired.",
+      "annotations": [
+        { "phrase": "en panne", "translation": "out of order / broken down", "explanation": "Être en panne describes a machine or vehicle that is not working." },
+        { "phrase": "En attendant", "translation": "in the meantime", "explanation": "This phrase introduces what to do while waiting for something else to happen." },
+        { "phrase": "besoin d'aide", "translation": "a need for help", "explanation": "Avoir besoin de means ‘to need’. De becomes d' before aide: vous avez besoin d'aide." },
+        { "phrase": "porter vos courses", "translation": "carry your shopping", "explanation": "Courses means shopping or groceries here, not lessons. Porter is to carry." },
+        { "phrase": "jusqu'à dix-huit heures", "translation": "until six p.m.", "explanation": "Jusqu'à marks the endpoint of a time period. Dix-huit heures is 18:00." }
+      ],
+      "writingPrompt": "Write a short message to the caretaker. Explain that the lift is not working, say what you need help carrying and ask whether she is available this afternoon.",
+      "modelAnswer": "Bonjour, l'ascenseur est en panne et j'ai besoin d'aide pour porter mes courses. Est-ce que vous êtes disponible cet après-midi ? Merci beaucoup.",
+      "practice": [
+        { "prompt": "Use the phrase meaning ‘out of order’: L'ascenseur est ____.", "answer": "en panne", "explanation": "En panne is used for something mechanical that is not working." },
+        { "prompt": "Use the phrase meaning ‘until six p.m.’: Elle est disponible ____.", "answer": "jusqu'à dix-huit heures", "explanation": "Jusqu'à marks the endpoint of availability. Dix-huit heures is 18:00, or six p.m." }
+      ]
+    }
+  ],
+  "conversations": [
+    {
+      "id": "conversation-breakfast", "title": "Order breakfast", "goal": "Order a coffee and a croissant, choose to eat in, then pay by card.",
+      "turns": [
+        { "id": "breakfast-order", "speaker": "Server", "fr": "Bonjour ! Qu'est-ce que vous prenez ?", "en": "Hello! What would you like?", "audioId": "breakfast-order", "prompt": "Order a coffee and a croissant politely.", "choices": ["Je voudrais un café et un croissant, s'il vous plaît.", "Je voudrais un thé et une tartine, s'il vous plaît.", "Je voudrait un café et un croissant, s'il vous plaît."], "correctIndex": 0, "explanation": "Je voudrais politely expresses your order. The tea-and-toast reply is grammatical but orders different items. Je voudrait has a conjugation error: with je, write voudrais, not voudrait. Je veux un café is grammatical too, but usually more direct than je voudrais." },
+        { "id": "breakfast-place", "speaker": "Server", "fr": "Très bien. C'est sur place ou à emporter ?", "en": "Very good. Is that to eat in or to take away?", "audioId": "breakfast-place", "prompt": "Say you want to eat here, not take the order away.", "choices": ["À emporter, s'il vous plaît.", "Sur place, s'il vous plaît.", "Sur place, hier matin."], "correctIndex": 1, "explanation": "Sur place means ‘here / to eat in’; à emporter means ‘to take away’. Both are normal, grammatical short replies, but only sur place matches your goal. Hier matin means ‘yesterday morning’, which does not fit this present order." },
+        { "id": "breakfast-payment", "speaker": "Server", "fr": "Ça fait cinq euros. Vous réglez comment ?", "en": "That's five euros. How would you like to pay?", "audioId": "breakfast-payment", "prompt": "Ask whether you can pay by card.", "choices": ["Je paie en espèces.", "Je peux paie par carte ?", "Je peux payer par carte ?"], "correctIndex": 2, "explanation": "After peux, use the infinitive payer. Je peux paie incorrectly combines two conjugated verbs. Je paie en espèces is grammatical, but it means ‘I am paying in cash’ rather than asking about a card." }
+      ]
+    },
+    {
+      "id": "conversation-meeting", "title": "Arrange a meeting", "goal": "Arrange to meet a friend on Thursday at six, outside the station, and allow for a delay.",
+      "turns": [
+        { "id": "meeting-time", "speaker": "Friend", "fr": "Tu es libre jeudi à cinq heures ?", "en": "Are you free on Thursday at five?", "audioId": "meeting-time", "prompt": "You are only free from six. Suggest six on the same day.", "choices": ["Oui, jeudi à cinq heures, c'est parfait.", "Jeudi, oui, mais plutôt à six heures. Ça te va ?", "Je suis libre mercredi à six heures."], "correctIndex": 1, "explanation": "Mais plutôt à six heures changes the time while keeping Thursday. The other replies are grammatical but agree to five or switch to Wednesday. Ça te va ? checks whether the new plan suits your friend." },
+        { "id": "meeting-place", "speaker": "Friend", "fr": "Six heures, c'est parfait. On se retrouve où ?", "en": "Six is perfect. Where shall we meet?", "audioId": "meeting-place", "prompt": "Suggest meeting in front of the station.", "choices": ["On se retrouve devant la gare.", "On se retrouve derrière la gare.", "On se retrouve devant le gare."], "correctIndex": 0, "explanation": "Devant la gare means ‘in front of the station’. Derrière la gare is grammatical but means ‘behind the station’. Gare is feminine, so le gare is an article error. On se retrouve is a natural informal way to say ‘we'll meet’." },
+        { "id": "meeting-delay", "speaker": "Friend", "fr": "D'accord. Et si tu es en retard ?", "en": "Okay. And if you are late?", "audioId": "meeting-delay", "prompt": "Say you will send a message if you are late.", "choices": ["Je t'ai envoyé un message hier.", "Je vais t'envoyé un message.", "Je vais t'envoyer un message."], "correctIndex": 2, "explanation": "Je vais + infinitive describes an upcoming action. Envoyer is the infinitive; envoyé is a past participle and does not fit after vais. Je t'ai envoyé un message hier is grammatical but talks about yesterday, not your backup plan." }
+      ]
+    },
+    {
+      "id": "conversation-directions", "title": "Ask for directions", "goal": "Find the station, check which street to take and ask about walking time.",
+      "turns": [
+        { "id": "directions-destination", "speaker": "Passer-by", "fr": "Bonjour, vous cherchez quelque chose ?", "en": "Hello, are you looking for something?", "audioId": "directions-destination", "prompt": "Politely ask where the station is.", "choices": ["Où est la mairie, s'il vous plaît ?", "Où est la gare, s'il vous plaît ?", "Où sont la gare, s'il vous plaît ?"], "correctIndex": 1, "explanation": "Où est la gare ? asks for the station. La mairie is the town hall: that reply is grammatical but asks for a different place. Où sont la gare has a number mismatch; a single station takes est." },
+        { "id": "directions-turn", "speaker": "Passer-by", "fr": "Allez tout droit, puis prenez la deuxième rue à gauche.", "en": "Go straight on, then take the second street on the left.", "audioId": "directions-turn", "prompt": "Check that you understood the turn correctly.", "choices": ["La première rue à droite, c'est ça ?", "La deuxième rue à droite, c'est ça ?", "La deuxième rue à gauche, c'est ça ?"], "correctIndex": 2, "explanation": "Repeat deuxième and à gauche: second, on the left. All three questions are grammatical; the other two change the directions. C'est ça ? is a natural way to check ‘is that right?’" },
+        { "id": "directions-distance", "speaker": "Passer-by", "fr": "Oui, la gare est juste après le pont.", "en": "Yes, the station is just after the bridge.", "audioId": "directions-distance", "prompt": "Ask how many minutes it takes to walk there.", "choices": ["Il faut combien de minutes à pied ?", "Le billet coûte combien ?", "Il faut combien minutes à pied ?"], "correctIndex": 0, "explanation": "Combien de minutes asks for a number of minutes; keep de before the noun. Le billet coûte combien ? is grammatical but asks for a ticket price. Spoken questions with combien in the middle or at the end are normal, not grammatical errors." }
+      ]
+    },
+    {
+      "id": "conversation-problem", "title": "Explain a problem", "goal": "Tell a hotel receptionist that the hot water is not working, give your room number and arrange help.",
+      "turns": [
+        { "id": "problem-description", "speaker": "Receptionist", "fr": "Bonjour, comment puis-je vous aider ?", "en": "Hello, how can I help you?", "audioId": "problem-description", "prompt": "Explain that there is no hot water in your room.", "choices": ["Il n'y a pas d'eau chaude dans ma chambre.", "Je voudrais une chambre avec un balcon.", "Il n'y a pas de l'eau chaude dans ma chambre."], "correctIndex": 0, "explanation": "For a simple absence after il n'y a pas, use de or d': pas d'eau chaude. De l'eau is the ordinary positive form, but pas de l'eau is not the neutral form for reporting this absence. It can occur in a contrast such as ‘not hot water, but cold water’, which is not the task here. The balcony request is grammatical but describes another need." },
+        { "id": "problem-room", "speaker": "Receptionist", "fr": "Je suis désolé. Quel est le numéro de votre chambre ?", "en": "I'm sorry. What is your room number?", "audioId": "problem-room", "prompt": "Your room number is twelve. Answer the question.", "choices": ["Je reste deux nuits.", "C'est la chambre douze.", "C'est le chambre douze."], "correctIndex": 1, "explanation": "La chambre douze gives the room number. Chambre is feminine, so le chambre is an article error. Je reste deux nuits is grammatical, but gives the length of your stay instead of the room number." },
+        { "id": "problem-help", "speaker": "Receptionist", "fr": "Un collègue peut venir dans dix minutes. Ça vous convient ?", "en": "A colleague can come in ten minutes. Does that work for you?", "audioId": "problem-help", "prompt": "Accept the proposed visit and say you will wait in your room.", "choices": ["Non, je pars tout de suite.", "Oui, merci. Je vais attends dans ma chambre.", "Oui, merci. Je vais attendre dans ma chambre."], "correctIndex": 2, "explanation": "Je vais attendre uses aller + infinitive for the near future. Je vais attends has a conjugation error: attends cannot follow vais here. Non, je pars tout de suite is grammatical, but refuses the visit because you are leaving immediately. A direct reply such as oui is not itself a grammar mistake." }
+      ]
+    }
+  ]
+}

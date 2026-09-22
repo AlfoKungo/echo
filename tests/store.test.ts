@@ -1,8 +1,9 @@
 import { afterEach, describe, expect, test } from 'bun:test';
+import { Database } from 'bun:sqlite';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { fsrs, Rating, type CardInput } from 'ts-fsrs';
+import { createEmptyCard, fsrs, Rating, type CardInput } from 'ts-fsrs';
 import type { Direction, GradeInput, Snapshot, Word } from '../contract';
 import { createStore, StoreError, type Store } from '../lib/store';
 
@@ -16,182 +17,154 @@ const words: Word[] = [
   { id: 'food-004', fr: 'la pomme', en: 'apple', category: 'food' },
   { id: 'travel-004', fr: 'la rue', en: 'street', category: 'travel' },
 ];
-
+const thirtyWords: Word[] = Array.from({ length: 30 }, (_, index) => ({ id: `word-${String(index).padStart(2, '0')}`, fr: `mot ${index}`, en: `word ${index}`, category: 'daily' }));
 type Progress = {
   cards: Array<{ word_id: string; direction: Direction; version: number; fsrs: CardInput }>;
-  grades: Array<{ request_id: string; fsrsLog: { rating: number } | null }>;
+  grades: Array<{ request_id: string; known: number; fsrsLog: { rating: number } | null }>;
   undos: Array<{ grade_sequence: number }>;
 };
-
 const stores: Store[] = [];
 const directories: string[] = [];
 let requestSequence = 0;
-
 afterEach(() => {
   for (const store of stores.splice(0)) store.close();
   for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true });
 });
-
-function fixture(at = new Date(2026, 8, 21, 10)) {
+function close(store: Store): void {
+  store.close();
+  stores.splice(stores.indexOf(store), 1);
+}
+function fixture(at = new Date(2026, 8, 21, 10), vocabulary = words) {
   const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
   directories.push(directory);
   const dbPath = join(directory, 'nested', 'echo.db');
   const clock = { value: at };
+  const randomness = { value: 0.999999 };
   const open = () => {
-    const store = createStore(words, { dbPath, now: () => new Date(clock.value) });
+    const store = createStore(vocabulary, { dbPath, now: () => new Date(clock.value), random: () => randomness.value });
     stores.push(store);
     return store;
   };
-  return { store: open(), open, clock };
+  return { store: open(), open, clock, randomness, dbPath };
 }
-
 function answer(snapshot: Snapshot, known: boolean, requestId = `answer-${++requestSequence}`): GradeInput {
   if (!snapshot.current) throw new Error('Test expected an active card.');
   return { direction: snapshot.direction, deck: snapshot.deck, wordId: snapshot.current.id, version: snapshot.current.version, known, requestId };
 }
-
-function progress(store: Store): Progress {
-  return store.exportData() as Progress;
-}
-
+function progress(store: Store): Progress { return store.exportData() as Progress; }
 function expectConflict(action: () => unknown): void {
-  let error: unknown;
-  try { action(); } catch (caught) { error = caught; }
-  expect(error).toBeInstanceOf(StoreError);
-  expect((error as StoreError).status).toBe(409);
+  try { action(); throw new Error('Expected a conflict.'); }
+  catch (error) { expect(error).toBeInstanceOf(StoreError); expect((error as StoreError).status).toBe(409); }
 }
 
-describe('daily admission and selected-deck state', () => {
-  test('GET is read-only and 04:00 renews only one daily allowance, without catch-up', () => {
+describe('working-deck counts and admission', () => {
+  test('GET is read-only; 04:00 renews the allowance without forgetting seen cards or granting catch-up days', () => {
     const { store, clock } = fixture(new Date(2026, 8, 21, 3, 59));
     store.setSettings(1);
     const before = store.exportData();
-    expect(store.state('fr-en', 'all').stats).toMatchObject({ newAvailable: 1, seenToday: 0, unseenToday: 1 });
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ newAvailable: 1, seenActive: 0, unseenActive: 1 });
     expect(store.state('fr-en', 'all').current).toBeNull();
     expect(store.exportData()).toEqual(before);
     let state = store.start('fr-en', 'all');
     expect(state.day).toBe('2026-09-20');
-    expect(state.stats.introducedToday).toBe(1);
     expect(store.start('fr-en', 'all').stats.remaining).toBe(1);
     state = store.grade(answer(state, true));
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, remaining: 1 });
-
+    expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0, remaining: 1 });
     clock.value = new Date(2026, 8, 21, 4);
     state = store.state('fr-en', 'all');
     expect(state.day).toBe('2026-09-21');
-    expect(state.stats.introducedToday).toBe(0);
-    expect(state.stats.remaining).toBe(1);
-    expect(state.stats.newAvailable).toBe(1);
-    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 2 });
+    expect(state.stats).toMatchObject({ introducedToday: 0, remaining: 1, newAvailable: 1, seenActive: 1, unseenActive: 1 });
     expect(state.current?.successes).toBe(1);
     state = store.start('fr-en', 'all');
-    expect(state.stats.remaining).toBe(2);
-    expect(state.stats.introducedToday).toBe(1);
-    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 2 });
-
+    expect(state.stats).toMatchObject({ introducedToday: 1, remaining: 2, seenActive: 1, unseenActive: 1 });
     clock.value = new Date(2026, 8, 28, 4);
     state = store.start('fr-en', 'all');
-    expect(state.stats.introducedToday).toBe(1);
-    expect(state.stats.remaining).toBe(3);
-    expect(state.stats.unseen).toBe(5);
+    expect(state.stats).toMatchObject({ introducedToday: 1, remaining: 3, unseen: 5, seenActive: 1, unseenActive: 2 });
   });
 
-  test('filters share one admission budget while directions have independent memory and budgets', () => {
+  test('categories share admission and stack priorities; directions keep independent memory', () => {
     const { store } = fixture();
-    const before = store.exportData();
-    expect(store.state('fr-en', 'food').stats).toMatchObject({ seenToday: 0, unseenToday: 4, newAvailable: 4 });
-    expect(store.state('fr-en', 'all').stats.unseenToday).toBe(8);
-    expect(store.exportData()).toEqual(before);
+    expect(store.state('fr-en', 'food').stats).toMatchObject({ seenActive: 0, unseenActive: 4, newAvailable: 4 });
+    expect(store.state('fr-en', 'all').stats.unseenActive).toBe(8);
     store.setSettings(2);
-    expect(store.state('fr-en', 'food').stats.unseenToday).toBe(2);
     const food = store.start('fr-en', 'food');
-    expect(food.stats).toMatchObject({ total: 4, unseen: 2, introducedToday: 2, remaining: 2, seenToday: 0, unseenToday: 2 });
+    expect(food.stats).toMatchObject({ total: 4, unseen: 2, introducedToday: 2, remaining: 2, seenActive: 0, unseenActive: 2 });
     const travel = store.start('fr-en', 'travel');
-    expect(travel.stats).toMatchObject({ total: 4, unseen: 4, introducedToday: 2, newAvailable: 0, remaining: 0, seenToday: 0, unseenToday: 0 });
-    expect(travel.overview).toMatchObject({ total: 8, remaining: 2 });
+    expect(travel.stats).toMatchObject({ total: 4, newAvailable: 0, remaining: 0, seenActive: 0, unseenActive: 0 });
     expect(travel.current).toBeNull();
-    expect(store.state('fr-en', 'all').stats.remaining).toBe(2);
-    expect(store.start('en-fr', 'travel').stats).toMatchObject({ introducedToday: 2, remaining: 2 });
+    expect(travel.overview.remaining).toBe(2);
+    store.start('en-fr', 'travel');
     store.grade(answer(food, true));
-    expect(store.state('en-fr', 'travel').current?.successes).toBe(0);
-    expect(store.state('fr-en', 'all').stats).toMatchObject({ seenToday: 1, unseenToday: 1 });
     store.grade(answer(store.state('fr-en', 'all'), false));
-    expect(store.state('fr-en', 'food').stats).toMatchObject({ seenToday: 2, unseenToday: 0 });
-    expect(store.state('fr-en', 'travel').stats).toMatchObject({ seenToday: 0, unseenToday: 0 });
-    expect(store.state('en-fr', 'travel').stats).toMatchObject({ seenToday: 0, unseenToday: 2 });
+    expect(store.state('fr-en', 'food').stats).toMatchObject({ seenActive: 2, unseenActive: 0 });
+    expect(store.state('fr-en', 'travel').stats).toMatchObject({ seenActive: 0, unseenActive: 0 });
+    expect(store.state('en-fr', 'travel').stats).toMatchObject({ seenActive: 0, unseenActive: 2 });
     store.grade(answer(store.state('en-fr', 'travel'), false));
-    expect(store.state('en-fr', 'all').stats).toMatchObject({ seenToday: 1, unseenToday: 1 });
-    expect(store.state('fr-en', 'all').stats).toMatchObject({ seenToday: 2, unseenToday: 0 });
+    expect(store.state('en-fr', 'all').stats).toMatchObject({ seenActive: 1, unseenActive: 1 });
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ seenActive: 2, unseenActive: 0 });
     expect(store.browse('en-fr', 'food').every((word) => word.status === 'new')).toBe(true);
   });
 
-  test('distinct answers count once through misses, partial recalls, completion and undo', () => {
+  test('seen counts only the two unfinished stacks, including undo through completion and stack changes', () => {
     const { store } = fixture();
     store.setSettings(1);
     let state = store.start('fr-en', 'all');
-    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 1, remaining: 1, completedToday: 0 });
+    expect(state.stats).toMatchObject({ seenActive: 0, unseenActive: 1, remaining: 1 });
     state = store.grade(answer(state, false));
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0 });
+    expect(state.current?.stack).toBe('failed');
+    expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0 });
     state = store.undo('fr-en', 'all', state.undoId!);
-    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 1 });
+    expect(state.current?.stack).toBe('unseen');
+    expect(state.stats).toMatchObject({ seenActive: 0, unseenActive: 1 });
     state = store.grade(answer(state, true));
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, completedToday: 0 });
-    state = store.grade(answer(state, true));
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, remaining: 0, completedToday: 1 });
-    state = store.undo('fr-en', 'all', state.undoId!);
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, remaining: 1, completedToday: 0 });
-    expect(state.current?.successes).toBe(1);
+    expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
     state = store.grade(answer(state, false));
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0 });
+    expect(state.current).toMatchObject({ stack: 'failed', successes: 1 });
+    expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0 });
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    expect(state.stats).toMatchObject({ seenActive: 0, unseenActive: 0, remaining: 0, completedToday: 1 });
     state = store.undo('fr-en', 'all', state.undoId!);
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0 });
+    expect(state.current).toMatchObject({ stack: 'failed', successes: 1 });
+    expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0, completedToday: 0 });
     state = store.undo('fr-en', 'all', state.undoId!);
-    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 1 });
+    expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.current).toMatchObject({ stack: 'unseen', successes: 0 });
+    expect(state.stats).toMatchObject({ seenActive: 0, unseenActive: 1 });
   });
 
-  test.each([
-    ['spring forward', 2, 8],
-    ['fall back', 10, 1],
-  ] as const)('uses calendar-local 04:00 across %s and excludes future grades', (_name, month, date) => {
+  test.each([['spring forward', 2, 8], ['fall back', 10, 1]] as const)('keeps unfinished stacks across the local 04:00 %s boundary', (_name, month, date) => {
     const originalTimezone = process.env.TZ;
     process.env.TZ = 'America/New_York';
     try {
-      const { store, clock } = fixture(new Date(2026, month, date - 1, 3, 59, 59, 999));
-      store.setSettings(3);
+      const { store, clock } = fixture(new Date(2026, month, date, 3, 59, 59));
+      store.setSettings(1);
       let state = store.start('fr-en', 'all');
-      store.setSettings(0);
       state = store.grade(answer(state, false));
-      clock.value = new Date(2026, month, date - 1, 4);
-      state = store.grade(answer(state, false));
-      expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 2 });
-      clock.value = new Date(2026, month, date, 3, 45);
-      state = store.grade(answer(state, false));
-      expect(state.stats).toMatchObject({ seenToday: 2, unseenToday: 1 });
-
-      clock.value = new Date(2026, month, date, 3, 30);
-      const before = store.exportData();
-      expect(store.state('fr-en', 'all').stats).toMatchObject({ seenToday: 1, unseenToday: 2 });
-      expect(store.exportData()).toEqual(before);
+      expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0, newAvailable: 0 });
       clock.value = new Date(2026, month, date, 4);
-      expect(store.state('fr-en', 'all').stats).toMatchObject({ seenToday: 0, unseenToday: 3 });
+      const before = store.exportData();
+      expect(store.state('fr-en', 'all').stats).toMatchObject({ seenActive: 1, unseenActive: 1, newAvailable: 1 });
+      expect(store.exportData()).toEqual(before);
     } finally {
       if (originalTimezone === undefined) delete process.env.TZ;
       else process.env.TZ = originalTimezone;
     }
   });
 
-  test('lowering allowance retains cards; zero is review-only; raising it admits only the difference', () => {
+  test('allowance changes never discard admitted cards; zero is review-only', () => {
     const { store, clock } = fixture();
     store.setSettings(3);
     store.start('fr-en', 'all');
     store.setSettings(1);
-    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 3, newAvailable: 0, remaining: 3, unseenToday: 3 });
+    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 3, newAvailable: 0, remaining: 3, unseenActive: 3 });
     store.setSettings(0);
     clock.value = new Date(2026, 8, 22, 10);
-    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 0, newAvailable: 0, remaining: 3, unseenToday: 3 });
+    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 0, newAvailable: 0, remaining: 3 });
     store.setSettings(2);
-    expect(store.state('fr-en', 'all').stats).toMatchObject({ newAvailable: 2, unseenToday: 5 });
-    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 2, remaining: 5 });
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ newAvailable: 2, unseenActive: 5 });
+    expect(store.start('fr-en', 'all').stats.remaining).toBe(5);
     expect(store.start('fr-en', 'all').stats.remaining).toBe(5);
     store.setSettings(3);
     expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 3, remaining: 6 });
@@ -203,101 +176,152 @@ describe('daily admission and selected-deck state', () => {
   });
 });
 
-describe('practice cycles and FSRS memory', () => {
-  test('interleaves cards, resets on a miss and schedules exactly once using the whole cycle outcome', () => {
-    const { store, clock } = fixture();
-    store.setSettings(2);
+describe('three-stack selection', () => {
+  test('first introduces ten, then serves unseen, failed and successful in a 3:2:1 mix', () => {
+    const { store, open } = fixture(undefined, thirtyWords);
     let state = store.start('fr-en', 'all');
-    const initial = progress(store).cards;
-    expect(state.current?.id).toBe('food-001');
-    state = store.grade(answer(state, true));
-    expect(state.current?.id).toBe('travel-001');
-    expect(progress(store).cards.find((card) => card.word_id === 'food-001')?.fsrs).toEqual(initial[0].fsrs);
-    state = store.grade(answer(state, true));
-    expect(state.current).toMatchObject({ id: 'food-001', successes: 1 });
-    state = store.grade(answer(state, false));
-    expect(state.current).toMatchObject({ id: 'travel-001', successes: 1 });
-    state = store.grade(answer(state, true));
-    expect(state.current).toMatchObject({ id: 'food-001', successes: 0 });
-    expect(state.stats.completedToday).toBe(1);
-    state = store.grade(answer(state, true));
-    expect(state.current?.successes).toBe(1);
-    state = store.grade(answer(state, true));
-    expect(state.current).toBeNull();
-    expect(state.stats).toMatchObject({ completedToday: 2, remaining: 0, unseen: 6, newAvailable: 0 });
-    expect(state.stats).toMatchObject({ seenToday: 2, unseenToday: 0 });
-    const exported = progress(store);
-    expect(exported.grades.filter((grade) => grade.fsrsLog).map((grade) => grade.fsrsLog!.rating)).toEqual([Rating.Good, Rating.Again]);
-    expect(exported.cards.map((card) => card.fsrs.reps)).toEqual([1, 1]);
-    const expected = fsrs({ enable_short_term: false, enable_fuzz: false }).next(initial[0].fsrs, clock.value, Rating.Again);
-    expect(exported.cards.find((card) => card.word_id === 'food-001')?.fsrs).toEqual(JSON.parse(JSON.stringify(expected.card)));
-    const tomorrow = new Date(2026, 8, 22, 4);
-    expect(new Date(state.nextDue!).getTime()).toBeGreaterThanOrEqual(tomorrow.getTime());
-    expect(store.browse('fr-en', 'all').filter((word) => word.status === 'scheduled')).toHaveLength(2);
-    expect(store.browse('fr-en', 'all').filter((word) => word.status === 'new')).toHaveLength(6);
+    const introduced = new Set<string>();
+    for (let index = 0; index < 10; index++) {
+      expect(state.current?.stack).toBe('unseen');
+      introduced.add(state.current!.id);
+      state = store.grade(answer(state, index % 2 === 0));
+    }
+    expect(introduced.size).toBe(10);
+    expect(state.stats).toMatchObject({ unseenActive: 20, seenActive: 10 });
+    expect(state.current?.stack).toBe('failed');
+    const other = open();
+    expect(other.start('fr-en', 'all')).toEqual(state);
+    const served: string[] = [];
+    for (let index = 0; index < 12; index++) {
+      served.push(state.current!.stack);
+      state = other.grade(answer(state, state.current!.stack !== 'failed'));
+    }
+    expect(served.filter((stack) => stack === 'unseen')).toHaveLength(6);
+    expect(served.filter((stack) => stack === 'failed')).toHaveLength(4);
+    expect(served.filter((stack) => stack === 'successful')).toHaveLength(2);
+    expect(state.stats).toMatchObject({ unseenActive: 14, seenActive: 14, completedToday: 2 });
   });
 
-  test('partial successes and misses survive reopen and missed days without applying FSRS early', () => {
+  test('does not run through all unseen cards when the first ten were correct, and empty stacks never block completion', () => {
+    const { store } = fixture(undefined, thirtyWords);
+    let state = store.start('fr-en', 'all');
+    for (let index = 0; index < 10; index++) state = store.grade(answer(state, true));
+    let extraUnseen = 0;
+    while (state.current?.stack === 'unseen' && extraUnseen < 20) {
+      extraUnseen++;
+      state = store.grade(answer(state, true));
+    }
+    expect(extraUnseen).toBeLessThan(3);
+    expect(state.current?.stack).toBe('successful');
+    let steps = 0;
+    while (state.current && steps++ < 60) state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    expect(state.stats).toMatchObject({ unseenActive: 0, seenActive: 0, completedToday: 30 });
+    expect(progress(store).grades).toHaveLength(60);
+  });
+
+  test('random reinsertion can place the same failed card at the front, back or middle, rather than forcing FIFO', () => {
+    const { store, randomness } = fixture(undefined, thirtyWords);
+    randomness.value = 0;
+    let state = store.start('fr-en', 'all');
+    expect(state.current?.id).toBe(thirtyWords.at(-1)!.id);
+    randomness.value = 0.999999;
+    const failed: string[] = [];
+    for (let index = 0; index < 10; index++) {
+      failed.push(state.current!.id);
+      state = store.grade(answer(state, false));
+    }
+    const nextFailed = () => {
+      for (let step = 0; state.current?.stack !== 'failed' && step < 6; step++) state = store.grade(answer(state, true));
+      expect(state.current?.stack).toBe('failed');
+      return state.current!.id;
+    };
+    expect(nextFailed()).toBe(failed[0]!);
+    randomness.value = 0;
+    state = store.grade(answer(state, false));
+    randomness.value = 0.999999;
+    expect(nextFailed()).toBe(failed[0]!);
+    state = store.grade(answer(state, false));
+    expect(nextFailed()).toBe(failed[1]!);
+    randomness.value = 0.5;
+    state = store.grade(answer(state, false));
+    randomness.value = 0.999999;
+    for (const id of failed.slice(2, 7)) {
+      expect(nextFailed()).toBe(id);
+      state = store.grade(answer(state, false));
+    }
+    expect(nextFailed()).toBe(failed[1]!);
+  });
+
+  test('undo restores the ten-card boundary and reopening does not restart or reshuffle the queue', () => {
+    const { store, open } = fixture(undefined, thirtyWords);
+    let state = store.start('fr-en', 'all');
+    for (let index = 0; index < 9; index++) state = store.grade(answer(state, false));
+    const tenth = state.current!;
+    state = store.grade(answer(state, false));
+    expect(state.current?.stack).toBe('failed');
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.current).toMatchObject({ id: tenth.id, stack: 'unseen' });
+    expect(state.stats).toMatchObject({ unseenActive: 21, seenActive: 9 });
+    close(store);
+    const reopened = open();
+    expect(reopened.state('fr-en', 'all')).toEqual(state);
+    state = reopened.grade(answer(state, false));
+    expect(state.current?.stack).toBe('failed');
+  });
+});
+
+describe('FSRS and transactional protection', () => {
+  test('two total successes schedule once; intervening misses affect FSRS rather than erasing a success', () => {
+    const { store, clock } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'all');
+    const initial = progress(store).cards[0]!.fsrs;
+    state = store.grade(answer(state, true));
+    state = store.grade(answer(state, false));
+    expect(state.current?.successes).toBe(1);
+    expect(progress(store).cards[0]!.fsrs).toEqual(initial);
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    const exported = progress(store);
+    expect(exported.grades.filter((grade) => grade.fsrsLog).map((grade) => grade.fsrsLog!.rating)).toEqual([Rating.Again]);
+    const expected = fsrs({ enable_short_term: false, enable_fuzz: false }).next(initial, clock.value, Rating.Again);
+    expect(exported.cards[0]!.fsrs).toEqual(JSON.parse(JSON.stringify(expected.card)));
+    expect(new Date(state.nextDue!).getTime()).toBeGreaterThanOrEqual(new Date(2026, 8, 22, 4).getTime());
+    expect(store.browse('fr-en', 'all').filter((word) => word.status === 'scheduled')).toHaveLength(1);
+  });
+
+  test('partial successes survive missed days, while scheduled cards enter unseen when they become due', () => {
     const { store, open, clock } = fixture();
     store.setSettings(1);
     let state = store.start('fr-en', 'food');
     state = store.grade(answer(state, false));
     state = store.grade(answer(state, true));
-    const originalVersion = state.current!.version;
-    expect(progress(store).cards[0].fsrs.reps).toBe(0);
-    store.close();
-    stores.splice(stores.indexOf(store), 1);
+    close(store);
     clock.value = new Date(2026, 8, 25, 10);
     const reopened = open();
     state = reopened.state('fr-en', 'food');
-    expect(state.current).toMatchObject({ id: 'food-001', successes: 1, version: originalVersion });
-    expect(state.stats.introducedToday).toBe(0);
-    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 2 });
+    expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
+    expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 1 });
+    state = reopened.grade(answer(state, true));
+    expect(state.stats).toMatchObject({ seenActive: 0, unseenActive: 1 });
+    reopened.setSettings(0);
+    const due = new Date(state.nextDue!);
+    clock.value = new Date(due.getTime() - 1);
+    expect(reopened.state('fr-en', 'food').current).toBeNull();
+    clock.value = due;
+    const before = reopened.exportData();
+    state = reopened.state('fr-en', 'food');
+    expect(state.current).toMatchObject({ stack: 'unseen', successes: 0, stage: 'review' });
+    expect(state.stats).toMatchObject({ seenActive: 0, unseenActive: 1, due: 1 });
+    expect(reopened.exportData()).toEqual(before);
+    state = reopened.grade(answer(state, true));
     state = reopened.grade(answer(state, true));
     expect(state.current).toBeNull();
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 1 });
-    expect(progress(reopened).grades.at(-1)?.fsrsLog?.rating).toBe(Rating.Again);
-    expect(progress(reopened).cards[0].fsrs.reps).toBe(1);
+    expect(progress(reopened).cards[0]!.fsrs.reps).toBe(2);
   });
 
-  test('future scheduled words are not new, and due cards become current without a GET write', () => {
-    const { store, clock } = fixture();
-    store.setSettings(1);
-    let state = store.start('fr-en', 'food');
-    state = store.grade(answer(state, true));
-    state = store.grade(answer(state, true));
-    expect(state.stats.unseen).toBe(3);
-    expect(state.stats.remaining).toBe(0);
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0, completedToday: 1 });
-    expect(state.nextDue).not.toBeNull();
-    const dueAt = new Date(state.nextDue!);
-    clock.value = new Date(dueAt.getTime() - 1);
-    expect(store.state('fr-en', 'food').current).toBeNull();
-    clock.value = dueAt;
-    const before = store.exportData();
-    state = store.state('fr-en', 'food');
-    expect(state.current).toMatchObject({ id: 'food-001', successes: 0, stage: 'review' });
-    expect(state.stats).toMatchObject({ due: 1, learning: 0, remaining: 1, unseen: 3 });
-    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 2, newAvailable: 1, completedToday: 0 });
-    expect(state.nextDue).toBeNull();
-    expect(store.exportData()).toEqual(before);
-    store.setSettings(0);
-    const paused = store.exportData();
-    state = store.state('fr-en', 'food');
-    expect(state.stats).toMatchObject({ seenToday: 0, unseenToday: 1, newAvailable: 0, due: 1 });
-    expect(store.exportData()).toEqual(paused);
-    state = store.grade(answer(state, true));
-    expect(state.current?.successes).toBe(1);
-    expect(state.stats).toMatchObject({ seenToday: 1, unseenToday: 0 });
-    expect(progress(store).cards[0].fsrs.reps).toBe(1);
-    state = store.grade(answer(state, true));
-    expect(state.current).toBeNull();
-    expect(progress(store).cards[0].fsrs.reps).toBe(2);
-  });
-});
-
-describe('transactional grade and undo protection', () => {
-  test('duplicate requests across connections are idempotent; reused IDs, stale versions and non-current cards reject', () => {
+  test('duplicate requests are idempotent across connections and reject stale or non-current cards', () => {
     const { store, open } = fixture();
     store.setSettings(2);
     const state = store.start('fr-en', 'all');
@@ -315,23 +339,20 @@ describe('transactional grade and undo protection', () => {
     expect(progress(store).grades).toHaveLength(2);
   });
 
-  test('undo restores completed scheduling and FSRS exactly, retains history, and invalidates stale versions', () => {
+  test('undo restores FSRS exactly, retains the answer history and invalidates stale versions', () => {
     const { store } = fixture();
     store.setSettings(1);
     let state = store.start('fr-en', 'food');
     state = store.grade(answer(state, true));
-    const beforeCompletion = progress(store).cards[0].fsrs;
+    const memory = progress(store).cards[0]!.fsrs;
     const completion = answer(state, true);
     state = store.grade(completion);
-    const scheduled = progress(store).cards[0].fsrs;
+    const scheduled = progress(store).cards[0]!.fsrs;
     expect(state.current).toBeNull();
-    expect(state.stats.completedToday).toBe(1);
     state = store.undo('fr-en', 'food', state.undoId!);
-    expect(state.current).toMatchObject({ id: 'food-001', successes: 1 });
+    expect(state.current).toMatchObject({ id: 'food-001', successes: 1, stack: 'successful' });
     expect(state.current!.version).toBeGreaterThan(completion.version + 1);
-    expect(state.stats).toMatchObject({ completedToday: 0, remaining: 1 });
-    expect(state.nextDue).toBeNull();
-    expect(progress(store).cards[0].fsrs).toEqual(beforeCompletion);
+    expect(progress(store).cards[0]!.fsrs).toEqual(memory);
     expect(progress(store).grades).toHaveLength(2);
     expect(progress(store).undos).toHaveLength(1);
     expect(store.grade(completion)).toEqual(state);
@@ -339,11 +360,10 @@ describe('transactional grade and undo protection', () => {
     expectConflict(() => store.undo('fr-en', 'food', completion.requestId));
     state = store.grade(answer(state, true));
     expect(state.current).toBeNull();
-    expect(progress(store).cards[0].fsrs).toEqual(scheduled);
-    expect(progress(store).grades).toHaveLength(3);
+    expect(progress(store).cards[0]!.fsrs).toEqual(scheduled);
   });
 
-  test('undo is latest-per-direction across filters and restores the queue without affecting the reverse direction', () => {
+  test('undo across categories preserves the other direction and cards admitted after the answer', () => {
     const { store } = fixture();
     store.setSettings(2);
     let state = store.start('fr-en', 'all');
@@ -355,13 +375,80 @@ describe('transactional grade and undo protection', () => {
     expectConflict(() => store.undo('fr-en', 'food', first.requestId));
     let reverse = store.start('en-fr', 'all');
     reverse = store.grade(answer(reverse, true));
+    store.setSettings(3);
+    store.start('fr-en', 'food');
     state = store.undo('fr-en', 'all', second.requestId);
-    expect(state.current).toMatchObject({ id: 'travel-001', successes: 0 });
+    expect(state.current).toMatchObject({ id: 'travel-001', stack: 'unseen' });
+    expect(state.stats).toMatchObject({ unseenActive: 2, seenActive: 1, remaining: 3 });
     state = store.undo('fr-en', 'all', first.requestId);
-    expect(state.current).toMatchObject({ id: 'food-001', successes: 0 });
-    expect(state.undoId).toBeNull();
-    expect(store.state('en-fr', 'all')).toEqual(reverse);
-    expect(progress(store).grades).toHaveLength(3);
+    expect(state.current).toMatchObject({ id: 'food-001', stack: 'unseen' });
+    expect(state.stats).toMatchObject({ unseenActive: 3, seenActive: 0 });
+    expect(store.state('en-fr', 'all').current).toEqual(reverse.current);
     expect(progress(store).undos).toHaveLength(2);
+  });
+});
+
+function legacyFixture(answers: boolean[]) {
+  const directory = mkdtempSync(join(tmpdir(), 'echo-legacy-'));
+  directories.push(directory);
+  const dbPath = join(directory, 'echo.db');
+  const at = new Date(2026, 8, 21, 10);
+  const db = new Database(dbPath);
+  db.exec(`
+    CREATE TABLE settings (singleton INTEGER PRIMARY KEY, new_per_day INTEGER NOT NULL);
+    INSERT INTO settings VALUES (1, 1);
+    CREATE TABLE queue_counter (singleton INTEGER PRIMARY KEY, value INTEGER NOT NULL);
+    INSERT INTO queue_counter VALUES (1, 100);
+    CREATE TABLE cards (direction TEXT, word_id TEXT, introduced_day TEXT, active INTEGER, successes INTEGER, cycle_misses INTEGER, completed_day TEXT, due_at INTEGER, fsrs_json TEXT, version INTEGER, queue_order INTEGER NOT NULL, PRIMARY KEY (direction, word_id));
+    CREATE TABLE grades (sequence INTEGER PRIMARY KEY AUTOINCREMENT, request_id TEXT UNIQUE, direction TEXT, deck TEXT, word_id TEXT, version INTEGER, known INTEGER, graded_at TEXT, before_json TEXT, after_json TEXT, fsrs_log TEXT);
+    CREATE TABLE undos (sequence INTEGER PRIMARY KEY AUTOINCREMENT, grade_sequence INTEGER UNIQUE, undone_at TEXT, before_version INTEGER, after_version INTEGER);
+  `);
+  let row = { direction: 'fr-en', word_id: 'food-001', introduced_day: '2026-09-21', active: 1, successes: 0, cycle_misses: 0, completed_day: null, due_at: at.getTime(), fsrs_json: JSON.stringify(createEmptyCard(at)), version: 1, queue_order: 1 };
+  for (const [index, known] of answers.entries()) {
+    const before = row;
+    row = { ...row, version: row.version + 1, queue_order: row.queue_order + 1, successes: known ? row.successes + 1 : 0, cycle_misses: row.cycle_misses + Number(!known) };
+    db.query('INSERT INTO grades (request_id, direction, deck, word_id, version, known, graded_at, before_json, after_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)').run(`legacy-${index}`, 'fr-en', 'all', row.word_id, before.version, Number(known), at.toISOString(), JSON.stringify(before), JSON.stringify(row));
+  }
+  db.query('INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)').run(row.direction, row.word_id, row.introduced_day, row.active, row.successes, row.cycle_misses, row.completed_day, row.due_at, row.fsrs_json, row.version, row.queue_order);
+  db.close();
+  const open = () => {
+    const store = createStore(words, { dbPath, now: () => at, random: () => 0.5 });
+    stores.push(store);
+    return store;
+  };
+  return { store: open(), open };
+}
+
+describe('saved progress migration', () => {
+  test('recovers a success hidden by an old miss without discarding either answer', () => {
+    const { store } = legacyFixture([true, false]);
+    let state = store.state('fr-en', 'all');
+    expect(state.current).toMatchObject({ successes: 1, stack: 'failed' });
+    expect(state.stats).toMatchObject({ unseenActive: 0, seenActive: 1 });
+    expect(progress(store).grades.map((grade) => grade.known)).toEqual([1, 0]);
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    expect(state.stats.seenActive).toBe(0);
+  });
+
+  test('graduates already-earned nonconsecutive successes, survives reopening, and can undo old answers', () => {
+    const { store, open } = legacyFixture([true, false, true, false]);
+    let state = store.state('fr-en', 'all');
+    expect(state.current).toBeNull();
+    expect(state.stats).toMatchObject({ unseenActive: 0, seenActive: 0, completedToday: 1 });
+    expect(progress(store).grades.map((grade) => grade.known)).toEqual([1, 0, 1, 0]);
+    expect(progress(store).cards[0]!.fsrs.reps).toBe(1);
+    const exported = store.exportData();
+    close(store);
+    const reopened = open();
+    expect(reopened.exportData()).toEqual(exported);
+    state = reopened.undo('fr-en', 'all', 'legacy-3');
+    expect(state.current).toBeNull();
+    state = reopened.undo('fr-en', 'all', 'legacy-2');
+    expect(state.current).toMatchObject({ successes: 1, stack: 'failed' });
+    expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0 });
+    state = reopened.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    expect(progress(reopened).cards[0]!.fsrs.reps).toBe(1);
   });
 });

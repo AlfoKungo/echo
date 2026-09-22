@@ -3,6 +3,9 @@ import { join } from 'node:path';
 import { Database } from 'bun:sqlite';
 import { createStore, StoreError } from './lib/store';
 import { createGrammarStore } from './lib/grammar-store';
+import { createLearningStore } from './lib/learning-store';
+import { LocalTutor } from './lib/local-tutor';
+import type { LearningAttemptInput, LearningContent, TutorInput } from './learning-contract';
 import type { Direction, GradeInput, GrammarMutation, GrammarTopicContent, Word } from './contract';
 
 const root = import.meta.dir;
@@ -20,6 +23,13 @@ const dbPath = process.env.ECHO_DB ?? join(root, 'data/echo.db');
 const store = createStore(words, { dbPath });
 const grammarTopics = await Bun.file(join(root, 'content/grammar.json')).json() as GrammarTopicContent[];
 const grammar = createGrammarStore(grammarTopics, { dbPath });
+const learningContent = await Bun.file(join(root, 'content/learning.json')).json() as LearningContent;
+const learning = createLearningStore(learningContent, { dbPath, words, vocabulary: store, grammar });
+const tutor = new LocalTutor(learning);
+const learningAudio = new Set([
+  ...learningContent.listening.map(lesson => lesson.audioId),
+  ...learningContent.conversations.flatMap(lesson => lesson.turns.map(turn => turn.audioId)),
+]);
 const port = Number(process.env.ECHO_PORT ?? 7792);
 const prefix = '/echo';
 const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net';
@@ -55,6 +65,7 @@ function grammarMutation(data: Record<string, unknown>): GrammarMutation {
 }
 const staticFiles: Record<string, true> = {
   'index.html': true, 'app.js': true, 'app.css': true, 'icon.svg': true,
+  'learning.html': true, 'learning.js': true, 'learning.css': true,
   'icon-180.png': true, 'icon-192.png': true, 'icon-512.png': true, 'manifest.webmanifest': true,
 };
 
@@ -76,7 +87,36 @@ const server = Bun.serve({
       if (path === '/healthz' && req.method === 'GET') return json({ ok: true, app: 'Echo', words: words.length });
       if (path === '/api/state' && req.method === 'GET') return json(store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
       if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
-      if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 2, grammar: grammar.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
+      if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 3, grammar: grammar.exportData(), learning: learning.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
+      if (path === '/learn' || path === '/learning.html') return Response.redirect(`${url.pathname.startsWith(prefix) ? prefix : ''}/learn/`, 308);
+      if (path === '/api/learning/catalog' && req.method === 'GET') return json(learning.catalog());
+      if (path === '/api/learning/materials' && req.method === 'GET') return json({ materials: learning.materials() });
+      if (path.startsWith('/api/learning/materials/') && req.method === 'GET') return json(learning.material(decodeURIComponent(path.slice('/api/learning/materials/'.length))));
+      if (path === '/api/learning/progress' && req.method === 'GET') return json(learning.progress());
+      if (path === '/api/learning/attempt' && req.method === 'POST') return json(learning.attempt(await body(req) as unknown as LearningAttemptInput));
+      if (path === '/api/learning/phrases' && req.method === 'POST') {
+        const data = await body(req);
+        if (['requestId', 'fr', 'en', 'sourceId'].some(key => typeof data[key] !== 'string' || !String(data[key]).trim()) || typeof data.explanation !== 'string') throw new StoreError('Choose a phrase and its meaning before saving it.', 400);
+        return json(learning.savePhrase(data as { requestId: string; fr: string; en: string; sourceId: string; explanation: string }));
+      }
+      if (path === '/api/learning/review' && req.method === 'POST') {
+        const data = await body(req);
+        if (typeof data.requestId !== 'string' || !data.requestId || typeof data.reviewId !== 'string' || typeof data.known !== 'boolean') throw new StoreError('Reveal this review card before rating your recall.', 400);
+        return json(learning.review(data as { requestId: string; reviewId: string; known: boolean }));
+      }
+      if (path === '/api/learning/tutor/status' && req.method === 'GET') return json(tutor.status());
+      if (path === '/api/learning/tutor/last' && req.method === 'GET') {
+        const kind = url.searchParams.get('kind');
+        if (kind !== 'writing' && kind !== 'material') throw new StoreError('Choose writing or material feedback.', 400);
+        return json({ job: learning.lastTutorJob(url.searchParams.get('sourceId') ?? '', kind) });
+      }
+      if (path === '/api/learning/tutor/stop' && req.method === 'POST') return json(await tutor.stopAll());
+      if (path === '/api/learning/tutor' && req.method === 'POST') return json(tutor.submit(await body(req) as unknown as TutorInput), 202);
+      const pendingStop = path.match(/^\/api\/learning\/tutor\/request\/([^/]+)\/stop$/);
+      if (pendingStop && req.method === 'POST') return json(tutor.cancelRequest(decodeURIComponent(pendingStop[1])));
+      const tutorMatch = path.match(/^\/api\/learning\/tutor\/([^/]+)(\/stop)?$/);
+      if (tutorMatch && req.method === 'GET' && !tutorMatch[2]) return json(tutor.get(tutorMatch[1]));
+      if (tutorMatch && req.method === 'POST' && tutorMatch[2]) return json(tutor.cancel(tutorMatch[1]));
       if (path === '/api/grammar' && req.method === 'GET') return json({ topics: grammar.catalog() });
       if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('topic') ?? ''));
       if (path === '/api/grammar/session' && req.method === 'POST') {
@@ -126,9 +166,10 @@ const server = Bun.serve({
         return json(store.undo(direction(data.direction), deck(data.deck), data.undoId));
       }
       if (path.startsWith('/audio/') && (req.method === 'GET' || req.method === 'HEAD')) {
-        const match = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
-        if (!match || !byId.has(match[1])) return json({ error: 'This word is not in the vocabulary deck.' }, 404);
-        const file = Bun.file(join(root, 'audio', `${match[1]}.mp3`));
+        const isLearning = path.startsWith('/audio/learning/');
+        const match = path.match(isLearning ? /^\/audio\/learning\/([a-z0-9-]+)\.mp3$/ : /^\/audio\/([a-z0-9-]+)\.mp3$/);
+        if (!match || !(isLearning ? learningAudio.has(match[1]) : byId.has(match[1]))) return json({ error: isLearning ? 'This recording is not part of a learning activity.' : 'This word is not in the vocabulary deck.' }, 404);
+        const file = Bun.file(join(root, 'audio', ...(isLearning ? ['learning'] : []), `${match[1]}.mp3`));
         if (!await file.exists()) return json({ error: 'This French recording is not ready. Please try again shortly.' }, 503);
         const headers = { 'Content-Type': 'audio/mpeg', 'Cache-Control': 'no-cache', 'Accept-Ranges': 'bytes' };
         const range = req.headers.get('range');
@@ -142,7 +183,7 @@ const server = Bun.serve({
         }
         return new Response(req.method === 'HEAD' ? null : file, { headers: { ...headers, 'Content-Length': String(file.size) } });
       }
-      const name = path === '/' ? 'index.html' : path.slice(1);
+      const name = path === '/' ? 'index.html' : path === '/learn/' ? 'learning.html' : path.slice(1);
       if (Object.hasOwn(staticFiles, name) && (req.method === 'GET' || req.method === 'HEAD')) {
         const file = Bun.file(join(root, 'static', name));
         if (await file.exists()) return new Response(req.method === 'HEAD' ? null : file, { headers: { 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' } });
@@ -170,7 +211,18 @@ function backup() {
 }
 try { backup(); } catch (error) { console.error('Echo backup failed', error); }
 const backups = setInterval(() => { try { backup(); } catch (error) { console.error('Echo backup failed', error); } }, 60 * 60 * 1000);
-function stop() { clearInterval(backups); server.stop(true); grammar.close(); store.close(); process.exit(0); }
+let stopping = false;
+async function stop() {
+  if (stopping) return;
+  stopping = true;
+  clearInterval(backups);
+  await server.stop(true);
+  await tutor.close();
+  learning.close();
+  grammar.close();
+  store.close();
+  process.exit(0);
+}
 process.on('SIGTERM', stop);
 process.on('SIGINT', stop);
 console.log(`Echo ready at http://127.0.0.1:${port}/echo/ (${words.length} words)`);

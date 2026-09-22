@@ -2,10 +2,11 @@ export type Direction = 'fr-en' | 'en-fr';
 export type Word = { id: string; fr: string; en: string; category: string; note?: string };
 export type Deck = { id: string; title: string; count: number };
 export type Settings = { newPerDay: number };
-export type CardView = Word & { successes: number; version: number; stage: 'new' | 'learning' | 'review'; audioUrl: string };
-// seenToday counts distinct answered cards since local 04:00, excluding undone grades.
-// unseenToday counts unanswered active/due cards plus the available daily new-word allowance.
-export type Stats = { total: number; unseen: number; seenToday: number; unseenToday: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number };
+export type VocabularyStack = 'unseen' | 'failed' | 'successful';
+export type CardView = Word & { successes: number; version: number; stack: VocabularyStack; stage: 'new' | 'learning' | 'review'; audioUrl: string };
+// Active counts exclude finished cards; unseen also includes the available daily admission allowance.
+// Stack membership survives the 04:00 allowance reset until the practice cycle is completed.
+export type Stats = { total: number; unseen: number; seenActive: number; unseenActive: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number };
 // stats follows the selected category; overview covers all words in the selected direction.
 export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; nextDue: string | null; undoId: string | null };
 export type GradeInput = { direction: Direction; deck: string; wordId: string; version: number; known: boolean; requestId: string };
