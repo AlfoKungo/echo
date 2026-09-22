@@ -157,17 +157,34 @@ function availabilityCopy() {
   if (snapshot.stats.unseen > 0 && snapshot.stats.newAvailable === 0) parts.push(snapshot.settings.newPerDay === 0 ? 'New words are paused with your daily allowance at 0.' : 'New words return with your next daily allowance at 04:00 on your Mac, or add extra words below.');
   return parts.join(' ') || 'You’re up to date in this vocabulary selection.';
 }
+let extraScope = 0;
 function extraPracticeHTML() {
   const stats = snapshot.stats;
-  const chip = (attrs, text, label, enabled) => `<button class="secondary chip" ${attrs} aria-label="${esc(label)}" ${enabled && !locked() ? '' : 'disabled'}>${text}</button>`;
-  const row = (title, detail, chips) => `<div class="extra-row"><div><p>${title}</p><small>${esc(detail)}</small></div><div class="chips">${chips}</div></div>`;
+  // Unique per render: the options dialog can open over the end screen, which renders this too.
+  const scope = ++extraScope;
+  const off = (enabled) => (enabled && !locked() ? '' : 'disabled');
+  const chip = (attrs, text, label, enabled) => `<button class="secondary chip" ${attrs} aria-label="${esc(label)}" ${off(enabled)}>${text}</button>`;
+  const custom = (kind, mode, label, verb, enabled) => {
+    const id = `custom-${kind}-${mode || 'new'}-${scope}`;
+    return `<form class="custom-count" data-kind="${kind}" ${mode ? `data-mode="${mode}"` : ''} novalidate><label class="sr-only" for="${id}">${esc(label)}</label><input id="${id}" type="number" inputmode="numeric" min="1" step="1" placeholder="Custom" ${off(enabled)}><button class="secondary chip" type="submit" ${off(enabled)}>${verb}</button></form>`;
+  };
+  const row = (title, detail, controls) => `<div class="extra-row"><div><p>${title}</p><small>${esc(detail)}</small></div><div class="extra-controls">${controls}</div></div>`;
   const newDetail = !stats.unseen ? 'Every word here is already started' : snapshot.extraToday ? `${formatCount(snapshot.extraToday)} extra added today · resets at 04:00` : 'Today only · resets at 04:00';
-  const review = (mode, available, noun) => [10, 20].map((count) => chip(`data-action="review-early" data-mode="${mode}" data-count="${count}"`, count, `Review ${count} ${noun}`, available > 0)).join('');
-  return `<section class="extra-practice" aria-labelledby="extra-title"><h2 id="extra-title">Extra practice</h2>
-    ${row('New words today', newDetail, [5, 10, 20].map((count) => chip(`data-action="extra-words" data-count="${count}"`, `+${count}`, `Add ${count} new words today`, stats.unseen > 0)).join(''))}
+  const review = (mode, available, noun) => `<div class="chips">${[10, 20].map((count) => chip(`data-action="review-early" data-mode="${mode}" data-count="${count}"`, count, `Review ${count} ${noun}`, available > 0)).join('')}</div>${custom('review-early', mode, `How many ${noun} to review`, 'Review', available > 0)}`;
+  const extra = `<div class="chips">${[5, 10, 20].map((count) => chip(`data-action="extra-words" data-count="${count}"`, `+${count}`, `Add ${count} new words today`, stats.unseen > 0)).join('')}</div>${custom('extra-words', '', 'How many new words to add today', 'Add', stats.unseen > 0)}`;
+  return `<section class="extra-practice" aria-labelledby="extra-title-${scope}"><h2 id="extra-title-${scope}">Extra practice</h2>
+    ${row('New words today', newDetail, extra)}
     ${row('Review due soonest', stats.scheduled ? `${formatCount(stats.scheduled)} waiting for a later review` : 'No finished words are waiting', review('soonest', stats.scheduled, 'words due soonest'))}
     ${row('Review most missed', stats.scheduledMissed ? `${formatCount(stats.scheduledMissed)} missed at least once` : 'No missed words are waiting', review('missed', stats.scheduledMissed, 'most-missed words'))}
-    <p class="caption">An early review counts: finishing it updates the word’s schedule, with a smaller step because it came early.</p></section>`;
+    <p class="caption">Asking for more than are available takes all of them. An early review counts: finishing it updates the word’s schedule, with a smaller step because it came early.</p></section>`;
+}
+function submitCustomCount(form) {
+  const input = form.querySelector('input');
+  const value = Number(input.value.trim());
+  if (!input.value.trim() || !Number.isInteger(value) || value < 1) {
+    input.setAttribute('aria-invalid', 'true'); input.focus(); announce('Enter a whole number of 1 or more.'); return;
+  }
+  extraPractice(form.dataset.kind, { count: value, mode: form.dataset.mode });
 }
 function extraPractice(type, data) {
   if (locked() || !snapshot) return;
@@ -453,7 +470,10 @@ document.addEventListener('input', (event) => {
   if (event.target.id === 'vocab-search') { search = event.target.value; renderBrowseResults(); }
   if (event.target.id === 'answer') draft = event.target.value;
 });
-document.addEventListener('submit', (event) => { if (event.target.id === 'goal-form') saveGoal(event); });
+document.addEventListener('submit', (event) => {
+  if (event.target.id === 'goal-form') saveGoal(event);
+  else if (event.target.matches('.custom-count')) { event.preventDefault(); submitCustomCount(event.target); }
+});
 document.addEventListener('keydown', (event) => {
   if (event.defaultPrevented || event.repeat || aboutDialog.open || dialog.open || busy || loading || locked()) return;
   if (screen === 'exercise' && (event.metaKey || event.ctrlKey) && event.key === 'Enter') { event.preventDefault(); if (grammar?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }

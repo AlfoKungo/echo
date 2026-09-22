@@ -256,7 +256,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
   }
 
   function validateBatch(count: unknown, requestId: unknown, noun: string): void {
-    if (!Number.isSafeInteger(count) || (count as number) < 1 || (count as number) > 100) throw new StoreError(`Choose from 1 to 100 ${noun}.`);
+    if (!Number.isSafeInteger(count) || (count as number) < 1) throw new StoreError(`Choose a whole number of ${noun}, 1 or more.`);
     if (typeof requestId !== 'string' || !requestId.trim()) throw new StoreError('This request is missing its ID. Reload and try again.');
   }
 

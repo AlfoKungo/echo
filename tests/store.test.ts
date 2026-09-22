@@ -503,6 +503,17 @@ describe('extra practice', () => {
     expect(state.stats.newAvailable).toBe(1);
   });
 
+  test('a custom count larger than what is available takes all of it instead of failing', () => {
+    const { store, clock } = fixture();
+    store.setSettings(0);
+    let state = store.addExtraWords({ direction: 'fr-en', deck: 'all', count: 500, requestId: 'extra-large' });
+    expect(state.stats).toMatchObject({ introducedToday: words.length, newAvailable: 0 });
+    while (state.current) state = store.grade(answer(state, true));
+    clock.value = new Date(2026, 8, 22, 5);
+    state = store.reviewEarly({ direction: 'fr-en', deck: 'all', mode: 'soonest', count: 500, requestId: 'review-large' });
+    expect(state.stats).toMatchObject({ due: words.length, scheduled: 0 });
+  });
+
   test('extra words are refused, without granting anything, once every word in the selection is started', () => {
     const { store } = fixture();
     store.setSettings(words.length);
