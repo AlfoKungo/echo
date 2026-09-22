@@ -6,7 +6,7 @@ import { createGrammarStore } from './lib/grammar-store';
 import { createLearningStore } from './lib/learning-store';
 import { LocalTutor } from './lib/local-tutor';
 import type { LearningAttemptInput, LearningContent, TutorInput } from './learning-contract';
-import type { Direction, GradeInput, GrammarMutation, GrammarTopicContent, Word } from './contract';
+import type { Direction, GradeInput, GrammarMutation, GrammarTopicContent, ReviewEarlyInput, Word } from './contract';
 
 const root = import.meta.dir;
 const core = await Bun.file(join(root, 'content/core.json')).json() as Word[];
@@ -148,6 +148,14 @@ const server = Bun.serve({
         const data = await body(req);
         if (typeof data.newPerDay !== 'number') throw new StoreError('New words per day must be a number.', 400);
         return json(store.setSettings(data.newPerDay));
+      }
+      if (path === '/api/extra-words' && req.method === 'POST') {
+        const data = await body(req);
+        return json(store.addExtraWords({ direction: direction(data.direction), deck: deck(data.deck), count: data.count as number, requestId: data.requestId as string }));
+      }
+      if (path === '/api/review-early' && req.method === 'POST') {
+        const data = await body(req);
+        return json(store.reviewEarly({ direction: direction(data.direction), deck: deck(data.deck), mode: data.mode as ReviewEarlyInput['mode'], count: data.count as number, requestId: data.requestId as string }));
       }
       if (path === '/api/session' && req.method === 'POST') {
         const data = await body(req);

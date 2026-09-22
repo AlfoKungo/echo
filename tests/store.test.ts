@@ -483,3 +483,76 @@ describe('saved progress migration', () => {
     expect(progress(reopened).cards[0]!.fsrs.reps).toBe(1);
   });
 });
+
+describe('extra practice', () => {
+  test('extra words add to today only, admit at once, and a retried request applies once', () => {
+    const { store, clock } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'all');
+    expect(state.stats.newAvailable).toBe(0);
+    const request = { direction: 'fr-en', deck: 'all', count: 2, requestId: 'extra-today' } as const;
+    state = store.addExtraWords(request);
+    expect(state.extraToday).toBe(2);
+    expect(state.stats).toMatchObject({ introducedToday: 3, newAvailable: 0, unseenActive: 3 });
+    expect(store.addExtraWords(request).stats.introducedToday).toBe(3);
+    expect(store.settings().newPerDay).toBe(1);
+    expect(store.state('en-fr', 'all').stats.newAvailable).toBe(1);
+    clock.value = new Date(2026, 8, 22, 10);
+    state = store.state('fr-en', 'all');
+    expect(state.extraToday).toBe(0);
+    expect(state.stats.newAvailable).toBe(1);
+  });
+
+  test('extra words are refused, without granting anything, once every word in the selection is started', () => {
+    const { store } = fixture();
+    store.setSettings(words.length);
+    store.start('fr-en', 'all');
+    expect(() => store.addExtraWords({ direction: 'fr-en', deck: 'all', count: 5, requestId: 'extra-none' })).toThrow('You have already started every word in Echo.');
+    expect(store.state('fr-en', 'all').extraToday).toBe(0);
+  });
+
+  test('early review pulls the soonest finished word and scores it as an early FSRS review', () => {
+    const { store, clock } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'all');
+    while (state.current) state = store.grade(answer(state, true));
+    clock.value = new Date(2026, 8, 22, 10);
+    state = store.start('fr-en', 'all');
+    while (state.current) state = store.grade(answer(state, true));
+    clock.value = new Date(2026, 8, 23, 10);
+    const firstFinish = progress(store).cards.find((card) => card.word_id === 'food-001')!.fsrs;
+    const request = { direction: 'fr-en', deck: 'all', mode: 'soonest', count: 1, requestId: 'early-soonest' } as const;
+    state = store.reviewEarly(request);
+    expect(state.current).toMatchObject({ id: 'food-001', stage: 'review' });
+    expect(state.stats).toMatchObject({ due: 1, scheduled: 1 });
+    expect(store.reviewEarly(request).stats).toMatchObject({ due: 1, scheduled: 1 });
+    state = store.grade(answer(state, true));
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    const scheduler = fsrs({ enable_short_term: false, enable_fuzz: false });
+    const early = scheduler.next(firstFinish, clock.value, Rating.Good).card;
+    const onTime = scheduler.next(firstFinish, new Date(firstFinish.due), Rating.Good).card;
+    const reviewed = progress(store).cards.find((card) => card.word_id === 'food-001')!.fsrs;
+    expect(reviewed).toEqual(JSON.parse(JSON.stringify(early)));
+    expect(new Date(reviewed.due).getTime() - clock.value.getTime()).toBeLessThan(new Date(onTime.due).getTime() - new Date(firstFinish.due).getTime());
+  });
+
+  test('most-missed review skips words never missed, and the word list reports study history', () => {
+    const { store, clock } = fixture();
+    store.setSettings(2);
+    let state = store.start('fr-en', 'all');
+    const missOnce = new Set(['food-001']);
+    while (state.current) state = store.grade(answer(state, !missOnce.delete(state.current.id)));
+    clock.value = new Date(2026, 8, 22, 5);
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ scheduled: 2, scheduledMissed: 1 });
+    state = store.reviewEarly({ direction: 'fr-en', deck: 'all', mode: 'missed', count: 5, requestId: 'early-missed' });
+    expect(state.current?.id).toBe('food-001');
+    expect(state.stats).toMatchObject({ due: 1, scheduled: 1, scheduledMissed: 0 });
+    expect(() => store.reviewEarly({ direction: 'fr-en', deck: 'all', mode: 'missed', count: 5, requestId: 'early-missed-again' })).toThrow('None of your finished words here have been missed.');
+    const list = new Map(store.browse('fr-en', 'all').map((word) => [word.id, word]));
+    expect(list.get('food-001')).toMatchObject({ misses: 1, status: 'due' });
+    expect(list.get('travel-001')).toMatchObject({ misses: 0, status: 'scheduled' });
+    expect(list.get('travel-001')!.lastStudied).not.toBeNull();
+    expect(list.get('food-002')).toMatchObject({ misses: 0, lastStudied: null, status: 'new' });
+  });
+});

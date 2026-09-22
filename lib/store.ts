@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { BrowseWord, CardView, Deck, Direction, GradeInput, Settings, Snapshot, Stats, VocabularyStack, Word } from '../contract';
+import type { BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, ReviewEarlyInput, Settings, Snapshot, Stats, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -18,6 +18,8 @@ export interface Store {
   undo(direction: Direction, deck: string, undoId: string): Snapshot;
   settings(): Settings;
   setSettings(newPerDay: number): Settings;
+  addExtraWords(input: ExtraWordsInput): Snapshot;
+  reviewEarly(input: ReviewEarlyInput): Snapshot;
   browse(direction: Direction, deck: string): BrowseWord[];
   exportData(): unknown;
   close(): void;
@@ -151,6 +153,20 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         direction TEXT PRIMARY KEY CHECK (direction IN ('fr-en', 'en-fr')),
         state_json TEXT NOT NULL
       );
+      -- Extra new words granted for one study day only; the daily setting is untouched.
+      CREATE TABLE IF NOT EXISTS extra_allowance (
+        direction TEXT NOT NULL CHECK (direction IN ('fr-en', 'en-fr')),
+        day TEXT NOT NULL,
+        extra INTEGER NOT NULL CHECK (extra > 0),
+        PRIMARY KEY (direction, day)
+      );
+      -- Makes a retried extra-words or early-review request apply once.
+      CREATE TABLE IF NOT EXISTS vocabulary_requests (
+        request_id TEXT PRIMARY KEY,
+        kind TEXT NOT NULL,
+        direction TEXT NOT NULL,
+        created_at TEXT NOT NULL
+      );
       CREATE INDEX IF NOT EXISTS grades_direction_sequence ON grades(direction, sequence DESC);
       CREATE INDEX IF NOT EXISTS grades_direction_time ON grades(direction, graded_at);
     `);
@@ -214,6 +230,35 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     INSERT INTO grades (request_id, direction, deck, word_id, version, known,
       graded_at, before_json, after_json, fsrs_log, queue_before_json) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
+  const readExtra = db.query<{ extra: number }, [Direction, string]>('SELECT extra FROM extra_allowance WHERE direction = ? AND day = ?');
+  const addExtra = db.query('INSERT INTO extra_allowance (direction, day, extra) VALUES (?, ?, ?) ON CONFLICT (direction, day) DO UPDATE SET extra = extra + excluded.extra');
+  const requestById = db.query<{ kind: string; direction: string }, [string]>('SELECT kind, direction FROM vocabulary_requests WHERE request_id = ?');
+  const recordRequest = db.query('INSERT INTO vocabulary_requests (request_id, kind, direction, created_at) VALUES (?, ?, ?, ?)');
+  const historyForDirection = db.query<{ word_id: string; misses: number; last: string }, [Direction]>(`
+    SELECT word_id, SUM(known = 0) AS misses, MAX(graded_at) AS last FROM grades
+    WHERE direction = ? AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)
+    GROUP BY word_id
+  `);
+
+  function extraToday(direction: Direction, day: string): number {
+    return readExtra.get(direction, day)?.extra ?? 0;
+  }
+
+  // False means this request already ran and must not apply again.
+  function claimRequest(requestId: string, kind: string, direction: Direction, at: Date): boolean {
+    const previous = requestById.get(requestId);
+    if (previous) {
+      if (previous.kind !== kind || previous.direction !== direction) throw new StoreError('This request ID was already used for something else. Reload and try again.', 409);
+      return false;
+    }
+    recordRequest.run(requestId, kind, direction, at.toISOString());
+    return true;
+  }
+
+  function validateBatch(count: unknown, requestId: unknown, noun: string): void {
+    if (!Number.isSafeInteger(count) || (count as number) < 1 || (count as number) > 100) throw new StoreError(`Choose from 1 to 100 ${noun}.`);
+    if (typeof requestId !== 'string' || !requestId.trim()) throw new StoreError('This request is missing its ID. Reload and try again.');
+  }
 
   function insertRandom(stack: string[], id: string): void {
     stack.splice(Math.floor(random() * (stack.length + 1)), 0, id);
@@ -317,6 +362,8 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     const selected = rows.filter((row) => inDeck(row.word_id, deck));
     const total = deck === 'all' ? words.length : categories.get(deck)!;
     const introducedToday = rows.filter((row) => row.introduced_day === day).length;
+    const extra = extraToday(direction, day);
+    const misses = new Map(historyForDirection.all(direction).map((entry) => [entry.word_id, entry.misses]));
     const queue = loadQueue(direction, at);
     reconcileQueue(queue, rows, at, false);
     const seen = new Set([...queue.failed, ...queue.successful]);
@@ -324,8 +371,8 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       const unseen = count - records.length;
       const stats: Stats = {
         total: count, unseen, seenActive: 0, unseenActive: 0, introducedToday,
-        newAvailable: Math.min(unseen, Math.max(0, preferences.newPerDay - introducedToday)),
-        learning: 0, due: 0, completedToday: 0, remaining: 0,
+        newAvailable: Math.min(unseen, Math.max(0, preferences.newPerDay + extra - introducedToday)),
+        learning: 0, due: 0, completedToday: 0, remaining: 0, scheduled: 0, scheduledMissed: 0,
       };
       for (const candidate of records) {
         if (candidate.active === 1 || candidate.due_at <= time) {
@@ -334,6 +381,10 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         }
         if (candidate.active === 1) stats.learning++;
         else if (candidate.due_at <= time) stats.due++;
+        else {
+          stats.scheduled++;
+          if ((misses.get(candidate.word_id) ?? 0) > 0) stats.scheduledMissed++;
+        }
         if (candidate.completed_day === day) stats.completedToday++;
       }
       stats.remaining = stats.learning + stats.due;
@@ -361,7 +412,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     }
     const latest = latestGrade.get(direction);
     return {
-      day, direction, deck, settings: preferences, decks,
+      day, direction, deck, settings: preferences, extraToday: extra, decks,
       stats, overview,
       current,
       nextDue: nextDue === null ? null : new Date(nextDue).toISOString(),
@@ -374,29 +425,78 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     return db.transaction(() => snapshot(direction, deck, now()))();
   }
 
+  // Admits new words up to today's allowance: the daily setting plus any extra granted today.
+  function admit(direction: Direction, deck: string, at: Date): void {
+    const day = studyDay(at);
+    const rows = rowsForDirection.all(direction);
+    const seen = new Set(rows.map((row) => row.word_id));
+    let allowance = Math.max(0, settings().newPerDay + extraToday(direction, day) - rows.filter((row) => row.introduced_day === day).length);
+    for (const word of words) {
+      if (allowance === 0) break;
+      if ((deck !== 'all' && word.category !== deck) || seen.has(word.id)) continue;
+      save({
+        direction, word_id: word.id, introduced_day: day,
+        active: 1, successes: 0, cycle_misses: 0, completed_day: null,
+        due_at: at.getTime(), fsrs_json: JSON.stringify(createEmptyCard(at)),
+        version: 1,
+      });
+      allowance -= 1;
+    }
+    const queue = loadQueue(direction, at);
+    reconcileQueue(queue, rowsForDirection.all(direction), at, true);
+    saveQueue.run(JSON.stringify(queue), direction);
+  }
+
   function start(direction: Direction, deck: string): Snapshot {
     validateSelection(direction, deck);
     return db.transaction(() => {
       const at = now();
-      const day = studyDay(at);
-      const rows = rowsForDirection.all(direction);
-      const seen = new Set(rows.map((row) => row.word_id));
-      let allowance = Math.max(0, settings().newPerDay - rows.filter((row) => row.introduced_day === day).length);
-      for (const word of words) {
-        if (allowance === 0) break;
-        if ((deck !== 'all' && word.category !== deck) || seen.has(word.id)) continue;
-        save({
-          direction, word_id: word.id, introduced_day: day,
-          active: 1, successes: 0, cycle_misses: 0, completed_day: null,
-          due_at: at.getTime(), fsrs_json: JSON.stringify(createEmptyCard(at)),
-          version: 1,
-        });
-        allowance -= 1;
-      }
-      const queue = loadQueue(direction, at);
-      reconcileQueue(queue, rowsForDirection.all(direction), at, true);
-      saveQueue.run(JSON.stringify(queue), direction);
+      admit(direction, deck, at);
       return snapshot(direction, deck, at);
+    }).immediate();
+  }
+
+  function addExtraWords(input: ExtraWordsInput): Snapshot {
+    validateSelection(input.direction, input.deck);
+    validateBatch(input.count, input.requestId, 'extra words');
+    return db.transaction(() => {
+      const at = now();
+      if (claimRequest(input.requestId, 'extra-words', input.direction, at)) {
+        const started = new Set(rowsForDirection.all(input.direction).map((row) => row.word_id));
+        if (!words.some((word) => inDeck(word.id, input.deck) && !started.has(word.id))) {
+          throw new StoreError(input.deck === 'all' ? 'You have already started every word in Echo.' : 'You have already started every word in this category. Choose All words to learn more.');
+        }
+        addExtra.run(input.direction, studyDay(at), input.count);
+        admit(input.direction, input.deck, at);
+      }
+      return snapshot(input.direction, input.deck, at);
+    }).immediate();
+  }
+
+  // Makes finished words due now. Their FSRS memory is untouched, so finishing one scores an early review.
+  function reviewEarly(input: ReviewEarlyInput): Snapshot {
+    validateSelection(input.direction, input.deck);
+    if (input.mode !== 'soonest' && input.mode !== 'missed') throw new StoreError('Choose the words due soonest or the words you missed most.');
+    validateBatch(input.count, input.requestId, 'words to review');
+    return db.transaction(() => {
+      const at = now();
+      const time = at.getTime();
+      if (claimRequest(input.requestId, 'review-early', input.direction, at)) {
+        const misses = new Map(historyForDirection.all(input.direction).map((entry) => [entry.word_id, entry.misses]));
+        const missed = (row: CardRow) => misses.get(row.word_id) ?? 0;
+        const candidates = rowsForDirection.all(input.direction)
+          .filter((row) => inDeck(row.word_id, input.deck) && row.active === 0 && row.due_at > time && (input.mode === 'soonest' || missed(row) > 0))
+          .sort((a, b) => (input.mode === 'missed' ? missed(b) - missed(a) : 0) || a.due_at - b.due_at)
+          .slice(0, input.count);
+        if (!candidates.length) {
+          throw new StoreError(input.mode === 'missed' ? 'None of your finished words here have been missed. Try the words due soonest.' : 'No finished words here are waiting for a later review.');
+        }
+        for (const row of candidates) save({ ...row, due_at: time, version: row.version + 1 });
+        const queue = loadQueue(input.direction, at);
+        reconcileQueue(queue, rowsForDirection.all(input.direction), at, true);
+        saveQueue.run(JSON.stringify(queue), input.direction);
+      }
+      return snapshot(input.direction, input.deck, at);
     }).immediate();
   }
 
@@ -505,12 +605,16 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     return db.transaction(() => {
       const time = now().getTime();
       const rows = new Map(rowsForDirection.all(direction).map((row) => [row.word_id, row]));
+      const history = new Map(historyForDirection.all(direction).map((entry) => [entry.word_id, entry]));
       return words.filter((word) => deck === 'all' || word.category === deck).map((word): BrowseWord => {
         const row = rows.get(word.id);
+        const studied = history.get(word.id);
         return {
           ...word,
           status: !row ? 'new' : row.active ? 'learning' : row.due_at <= time ? 'due' : 'scheduled',
           due: row ? new Date(row.due_at).toISOString() : null,
+          lastStudied: studied?.last ?? null,
+          misses: studied?.misses ?? 0,
         };
       });
     })();
@@ -526,8 +630,9 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         ...row, before: JSON.parse(before_json), after: JSON.parse(after_json), fsrsLog: fsrs_log ? JSON.parse(fsrs_log) : null,
       })),
       undos: db.query<UndoRow, []>('SELECT * FROM undos ORDER BY sequence').all(),
+      extraAllowance: db.query('SELECT * FROM extra_allowance ORDER BY day, direction').all(),
     }))();
   }
 
-  return { state, start, grade, undo, settings, setSettings, browse, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, browse, exportData, close: () => db.close() };
 }

@@ -6,11 +6,17 @@ export type VocabularyStack = 'unseen' | 'failed' | 'successful';
 export type CardView = Word & { successes: number; version: number; stack: VocabularyStack; stage: 'new' | 'learning' | 'review'; audioUrl: string };
 // Active counts exclude finished cards; unseen also includes the available daily admission allowance.
 // Stack membership survives the 04:00 allowance reset until the practice cycle is completed.
-export type Stats = { total: number; unseen: number; seenActive: number; unseenActive: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number };
+// scheduled counts finished words waiting for a later review; scheduledMissed is the subset ever missed.
+export type Stats = { total: number; unseen: number; seenActive: number; unseenActive: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number; scheduled: number; scheduledMissed: number };
 // stats follows the selected category; overview covers all words in the selected direction.
-export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; nextDue: string | null; undoId: string | null };
+// extraToday is the extra allowance granted for this study day in this direction.
+export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; extraToday: number; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; nextDue: string | null; undoId: string | null };
 export type GradeInput = { direction: Direction; deck: string; wordId: string; version: number; known: boolean; requestId: string };
-export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'scheduled'; due: string | null };
+export type ExtraWordsInput = { direction: Direction; deck: string; count: number; requestId: string };
+export type ReviewEarlyMode = 'soonest' | 'missed';
+export type ReviewEarlyInput = { direction: Direction; deck: string; mode: ReviewEarlyMode; count: number; requestId: string };
+// lastStudied is the latest answer's time; misses counts every miss ever recorded (undone answers excluded).
+export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'scheduled'; due: string | null; lastStudied: string | null; misses: number };
 
 // All routes are relative to the app root, so /echo/ works behind a path proxy.
 // GET api/state?direction=fr-en&deck=all -> Snapshot (does not admit new cards)
@@ -18,6 +24,8 @@ export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'schedule
 // POST api/grade GradeInput -> Snapshot; a stale card version is HTTP 409, never double-graded
 // POST api/undo {direction,deck,undoId} -> Snapshot (undo only the latest matching grade)
 // PUT api/settings {newPerDay:number} -> Settings (0..number of words, integer)
+// POST api/extra-words ExtraWordsInput -> Snapshot (adds to today's allowance only, then admits; idempotent by requestId)
+// POST api/review-early ReviewEarlyInput -> Snapshot (makes finished words due now; counts as a real FSRS review; idempotent)
 // GET api/words?direction=fr-en&deck=all -> {words:BrowseWord[]}
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
 // GET api/export -> all progress as downloadable JSON

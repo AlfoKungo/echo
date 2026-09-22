@@ -36,6 +36,9 @@ let browseCategory = deck;
 let browseLoading = false;
 let browseError = '';
 let browseGeneration = 0;
+let browseShow = 'all';
+let hideTranslations = false;
+const revealedWords = new Set();
 const audio = new Audio();
 audio.preload = 'none';
 let audioGeneration = 0;
@@ -47,6 +50,7 @@ function directionLabel() { return direction === 'fr-en' ? 'French → English' 
 function categoryTitle(category) { return snapshot?.decks.find((entry) => entry.id === category)?.title || category.replace(/[-_]/g, ' ').replace(/^./, (letter) => letter.toUpperCase()); }
 function totalWords() { return snapshot?.decks.find((entry) => entry.id === 'all')?.count ?? 0; }
 function dateLabel(value) { const date = new Date(value); return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }).format(date); }
+function dayLabel(value) { return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(new Date(value)); }
 function stopAudio() { audioGeneration++; audio.pause(); audio.removeAttribute('src'); audio.load(); clearTimeout(audioTimer); document.querySelector('#audio-status').hidden = true; }
 function audioMessage(message, url) {
   const status = document.querySelector('#audio-status');
@@ -150,15 +154,32 @@ function availabilityCopy() {
   const elsewhere = snapshot.overview.remaining + snapshot.overview.newAvailable;
   if (deck !== 'all' && snapshot.stats.newAvailable === 0 && elsewhere > 0) parts.push(`${formatCount(elsewhere)} ${elsewhere === 1 ? 'word is' : 'words are'} waiting in other categories. Choose All words in vocabulary options to continue.`);
   if (snapshot.nextDue) parts.push(`Next review: ${dateLabel(snapshot.nextDue)}.`);
-  if (snapshot.stats.unseen > 0 && snapshot.stats.newAvailable === 0) parts.push(snapshot.settings.newPerDay === 0 ? 'New words are paused with your daily allowance at 0.' : 'New words return with your next daily allowance at 04:00 on your Mac.');
+  if (snapshot.stats.unseen > 0 && snapshot.stats.newAvailable === 0) parts.push(snapshot.settings.newPerDay === 0 ? 'New words are paused with your daily allowance at 0.' : 'New words return with your next daily allowance at 04:00 on your Mac, or add extra words below.');
   return parts.join(' ') || 'You’re up to date in this vocabulary selection.';
+}
+function extraPracticeHTML() {
+  const stats = snapshot.stats;
+  const chip = (attrs, text, label, enabled) => `<button class="secondary chip" ${attrs} aria-label="${esc(label)}" ${enabled && !locked() ? '' : 'disabled'}>${text}</button>`;
+  const row = (title, detail, chips) => `<div class="extra-row"><div><p>${title}</p><small>${esc(detail)}</small></div><div class="chips">${chips}</div></div>`;
+  const newDetail = !stats.unseen ? 'Every word here is already started' : snapshot.extraToday ? `${formatCount(snapshot.extraToday)} extra added today · resets at 04:00` : 'Today only · resets at 04:00';
+  const review = (mode, available, noun) => [10, 20].map((count) => chip(`data-action="review-early" data-mode="${mode}" data-count="${count}"`, count, `Review ${count} ${noun}`, available > 0)).join('');
+  return `<section class="extra-practice" aria-labelledby="extra-title"><h2 id="extra-title">Extra practice</h2>
+    ${row('New words today', newDetail, [5, 10, 20].map((count) => chip(`data-action="extra-words" data-count="${count}"`, `+${count}`, `Add ${count} new words today`, stats.unseen > 0)).join(''))}
+    ${row('Review due soonest', stats.scheduled ? `${formatCount(stats.scheduled)} waiting for a later review` : 'No finished words are waiting', review('soonest', stats.scheduled, 'words due soonest'))}
+    ${row('Review most missed', stats.scheduledMissed ? `${formatCount(stats.scheduledMissed)} missed at least once` : 'No missed words are waiting', review('missed', stats.scheduledMissed, 'most-missed words'))}
+    <p class="caption">An early review counts: finishing it updates the word’s schedule, with a smaller step because it came early.</p></section>`;
+}
+function extraPractice(type, data) {
+  if (locked() || !snapshot) return;
+  if (dialog.open) dialog.close();
+  runMutation({ type, body: { direction, deck, count: Number(data.count), requestId: requestId(), ...(type === 'review-early' ? { mode: data.mode } : {}) } });
 }
 function renderPractice() {
   const header = `<div class="section-top">${back('Home', 'home')}<div><span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span><button class="icon" data-action="browse" aria-label="Browse vocabulary" ${busy ? 'disabled' : ''}>${searchIcon}</button><button class="icon" data-action="options" aria-label="Vocabulary options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>`;
   if (!snapshot || loading) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="loading-state" role="status">${loading ? 'Opening your vocabulary…' : 'Your progress is safe on your Mac.'}</div></section>`; return; }
   const card = snapshot.current;
   if (!card) {
-    main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p><div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div></div></section>`; return;
+    main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p><div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="studied" ${busy ? 'disabled' : ''}>Your studied words</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div>${extraPracticeHTML()}</div></section>`; return;
   }
   const reverse = direction === 'en-fr';
   const prompt = reverse ? card.en : card.fr;
@@ -166,7 +187,8 @@ function renderPractice() {
   main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content"><h1 class="main-word" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}` : ''}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button><button class="quiet" data-action="undo" ${!snapshot.undoId || locked() ? 'disabled' : ''}>Undo</button></div></section>`;
 }
 function renderBrowse() {
-  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Vocabulary', 'vocabulary')}<button class="icon" data-action="options" aria-label="Vocabulary options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">${esc(directionLabel())}</p><div class="browse-tools"><label class="sr-only" for="vocab-search">Search French or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div id="browse-results"></div></section>`;
+  const show = [['all', 'All words'], ['studied', 'Studied'], ['learning', 'Still learning'], ['missed', 'Missed at least once']].map(([value, label]) => `<option value="${value}" ${browseShow === value ? 'selected' : ''}>${label}</option>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Vocabulary', 'vocabulary')}<button class="icon" data-action="options" aria-label="Vocabulary options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">${esc(directionLabel())}</p><div class="browse-tools"><label class="sr-only" for="vocab-search">Search French or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
   renderBrowseResults();
 }
 function normalized(value) { return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase(); }
@@ -175,8 +197,26 @@ function renderBrowseResults() {
   if (browseLoading) { container.innerHTML = '<div class="loading-state" role="status">Finding your words…</div>'; return; }
   if (browseError) { container.innerHTML = `<div class="notice" role="alert"><span>${esc(browseError)}</span><button class="quiet" data-action="retry-browse">Retry</button></div>`; return; }
   const query = normalized(search.trim());
-  const filtered = (words || []).filter((word) => (browseCategory === 'all' || word.category === browseCategory) && (!query || normalized(`${word.fr} ${word.en}`).includes(query)));
-  container.innerHTML = `<p class="browse-count" role="status">${filtered.length} ${filtered.length === 1 ? 'word' : 'words'}</p>${filtered.map((word) => `<article class="word-row"><div><h2 lang="fr">${esc(word.fr)}</h2><p>${esc(word.en)}</p><small>${esc(categoryTitle(word.category))}${word.due && word.status === 'scheduled' ? ` · Review ${esc(dateLabel(word.due))}` : ''}${word.note ? ` · ${esc(word.note)}` : ''}</small></div><div class="word-controls"><small>${esc(({ new: 'New', learning: 'Learning', due: 'Due', scheduled: 'Scheduled' })[word.status])}</small><button class="icon" data-play-word="${esc(word.id)}" aria-label="Pronounce ${esc(word.fr)}">${speaker}</button></div></article>`).join('') || '<p class="empty-list">No words match. Try another spelling or category.</p>'}`;
+  const matches = { all: () => true, studied: (word) => word.lastStudied, learning: (word) => word.status === 'learning', missed: (word) => word.misses > 0 }[browseShow];
+  const filtered = (words || []).filter((word) => (browseCategory === 'all' || word.category === browseCategory) && matches(word) && (!query || normalized(`${word.fr} ${word.en}`).includes(query)));
+  // Studied views put the most recently practised words first.
+  if (browseShow !== 'all') filtered.sort((a, b) => (b.lastStudied || '').localeCompare(a.lastStudied || ''));
+  const reverse = direction === 'en-fr';
+  const rowText = (word) => {
+    const hidden = hideTranslations && !revealedWords.has(word.id);
+    if (!hidden) return `<h2 lang="fr">${esc(word.fr)}</h2><p>${esc(word.en)}</p>`;
+    const reveal = `<button class="reveal-word" data-reveal-word="${esc(word.id)}">${reverse ? 'Show French' : 'Show English'}</button>`;
+    return reverse ? `<h2 lang="en">${esc(word.en)}</h2>${reveal}` : `<h2 lang="fr">${esc(word.fr)}</h2>${reveal}`;
+  };
+  const history = (word) => [
+    categoryTitle(word.category),
+    word.lastStudied ? `Studied ${dayLabel(word.lastStudied)}` : '',
+    word.misses ? `Missed ${word.misses}×` : '',
+    word.status === 'scheduled' && word.due ? `Review ${dateLabel(word.due)}` : '',
+    word.note || '',
+  ].filter(Boolean).map(esc).join(' · ');
+  const empty = browseShow === 'all' ? 'No words match. Try another spelling or category.' : 'No words here yet. Practise some vocabulary and they will appear.';
+  container.innerHTML = `<p class="browse-count" role="status">${filtered.length} ${filtered.length === 1 ? 'word' : 'words'}${hideTranslations && filtered.length ? ' · recall each one, then check it' : ''}</p>${filtered.map((word) => `<article class="word-row"><div>${rowText(word)}<small>${history(word)}</small></div><div class="word-controls"><small>${esc(({ new: 'New', learning: 'Learning', due: 'Due', scheduled: 'Scheduled' })[word.status])}</small><button class="icon" data-play-word="${esc(word.id)}" aria-label="Pronounce ${esc(word.fr)}">${speaker}</button></div></article>`).join('') || `<p class="empty-list">${empty}</p>`}`;
 }
 function renderTopics() {
   main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}</div><h1>Grammar & sentences</h1><p class="subtitle">Pick something you want to practise.</p>${loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : `<div class="topic-list">${(topics || []).map((topic) => `<button class="topic-row" data-topic="${esc(topic.id)}" ${locked() ? 'disabled' : ''}><span class="topic-mark" aria-hidden="true">${esc(topic.mark)}</span><span class="copy"><h2>${esc(topic.title)}</h2><p>${esc(topic.description)}</p>${topic.hasActiveSession ? '<small>Continue your round</small>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button>`).join('')}</div>`}</section>`;
@@ -237,7 +277,7 @@ async function runMutation(action) {
   stopAudio(); busy = true; loading = false; ++generation;
   notice = null; retryAction = null;
   screen = action.type.startsWith('grammar-') ? 'exercise' : 'practice'; rememberScreen(); render();
-  const paths = { start: 'api/session', grade: 'api/grade', undo: 'api/undo', 'grammar-start': 'api/grammar/session', 'grammar-answer': 'api/grammar/answer', 'grammar-help': 'api/grammar/help', 'grammar-next': 'api/grammar/next' };
+  const paths = { start: 'api/session', grade: 'api/grade', undo: 'api/undo', 'extra-words': 'api/extra-words', 'review-early': 'api/review-early', 'grammar-start': 'api/grammar/session', 'grammar-answer': 'api/grammar/answer', 'grammar-help': 'api/grammar/help', 'grammar-next': 'api/grammar/next' }
   try {
     const result = await api(paths[action.type], { method: 'POST', body: JSON.stringify(action.body) });
     if (action.type.startsWith('grammar-')) {
@@ -331,7 +371,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Vocabulary options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
+  openDialog('Vocabulary options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form>${extraPracticeHTML()}<div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
 }
 async function saveGoal(event) {
   event.preventDefault(); if (locked() || !snapshot) return;
@@ -370,6 +410,7 @@ document.addEventListener('click', (event) => {
     direction = button.dataset.direction; savePreference('echo.direction', direction); dialog.close(); startPractice(); return;
   }
   if (button?.dataset.playWord) { const word = words?.find((entry) => entry.id === button.dataset.playWord); if (word) playFrench(`audio/${encodeURIComponent(word.id)}.mp3`); return; }
+  if (button?.dataset.revealWord) { revealedWords.add(button.dataset.revealWord); renderBrowseResults(); return; }
   if (button?.dataset.topic) { openTopic(button.dataset.topic); return; }
   if (button?.dataset.token !== undefined || button?.dataset.removeToken !== undefined) {
     if (locked() || grammar?.session?.current?.settled) return;
@@ -384,6 +425,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'vocabulary') { if (move('practice')) fetchState(); }
   else if (action === 'grammar') { if (move('grammar')) loadGrammar(); }
   else if (action === 'browse') browseWords();
+  else if (action === 'studied') { browseShow = 'studied'; browseWords(); }
+  else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
+  else if (action === 'extra-words' || action === 'review-early') extraPractice(action, button.dataset);
   else if (action === 'options') openOptions();
   else if (action === 'about') { dialog.close(); stopAudio(); aboutDialog.showModal(); }
   else if (action === 'again') grade(false);
@@ -402,6 +446,7 @@ document.addEventListener('click', (event) => {
 document.addEventListener('change', (event) => {
   if (event.target.id === 'deck-select' && !locked()) { deck = event.target.value; browseCategory = deck; savePreference('echo.deck', deck); dialog.close(); startPractice(); }
   else if (event.target.id === 'browse-category') { browseCategory = event.target.value; renderBrowseResults(); }
+  else if (event.target.id === 'browse-show') { browseShow = event.target.value; renderBrowseResults(); }
   else if (event.target.id === 'audio-speed') { speed = event.target.value === '0.8' ? 0.8 : 1; savePreference('echo.speed', String(speed)); audio.playbackRate = speed; }
 });
 document.addEventListener('input', (event) => {
