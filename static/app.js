@@ -14,6 +14,11 @@ let direction = readPreference('echo.direction', 'fr-en') === 'en-fr' ? 'en-fr' 
 let deck = readPreference('echo.deck', 'all');
 let speed = readPreference('echo.speed', '1') === '0.8' ? 0.8 : 1;
 let audioMode = readPreference('echo.audio-mode', 'off') === 'on';
+// Listen mode hides the French word until reveal; it only applies to French → English, where the recording is the prompt.
+let listenMode = readPreference('echo.listen-mode', 'off') === 'on';
+let heardCard = '';
+const listening = () => listenMode && direction === 'fr-en';
+const headphones = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>';
 // Echo always opens on Home; each screen change after that is a history entry, so Back returns to it.
 let screen = 'home';
 let depth = 0;
@@ -209,7 +214,15 @@ function renderPractice() {
   const reverse = direction === 'en-fr';
   const prompt = reverse ? card.en : card.fr;
   const answer = reverse ? card.fr : card.en;
-  main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content"><h1 class="main-word" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}` : ''}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button><button class="quiet" data-action="undo" ${!snapshot.undoId || locked() ? 'disabled' : ''}>Undo</button></div></section>`;
+  const hidden = listening() && !revealed;
+  const face = hidden
+    ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button><p class="source-word">Listen, then tap to see the word</p>`
+    : `<h1 class="main-word" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}` : ''}`;
+  const listenToggle = direction === 'fr-en' ? `<button class="audio-mode ${listenMode ? 'on' : ''}" data-action="listen-mode" aria-pressed="${listenMode}" aria-label="Listen only: ${listenMode ? 'on' : 'off'}" title="Hear the French word instead of reading it">${headphones}<span>Listen ${listenMode ? 'on' : 'off'}</span></button>` : '';
+  main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : hidden ? 'Reveal the meaning' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content">${face}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}</div><button class="quiet" data-action="undo" ${!snapshot.undoId || locked() ? 'disabled' : ''}>Undo</button></div></section>`;
+  // Each new card (or new version after a grade or undo) plays once on its own; re-renders don't replay it.
+  const key = `${card.id}:${card.version}`;
+  if (hidden && key !== heardCard) { heardCard = key; playFrench(card.audioUrl); }
 }
 function renderBrowse() {
   const show = [['all', 'All words'], ['studied', 'Studied'], ['learning', 'Still learning'], ['missed', 'Missed at least once']].map(([value, label]) => `<option value="${value}" ${browseShow === value ? 'selected' : ''}>${label}</option>`).join('');
@@ -443,6 +456,8 @@ document.addEventListener('click', (event) => {
   const action = button?.dataset.action;
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }
   if (action === 'audio-mode') { audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off'); if (!audioMode) stopAudio(); renderPractice(); return; }
+  if (action === 'listen-mode') { listenMode = !listenMode; savePreference('echo.listen-mode', listenMode ? 'on' : 'off'); heardCard = ''; if (!listenMode) stopAudio(); renderPractice(); return; }
+  if (action === 'replay') { if (snapshot?.current) playFrench(snapshot.current.audioUrl); return; }
   if (busy) return;
   if (button?.dataset.direction) {
     if (locked() || direction === button.dataset.direction) return;
