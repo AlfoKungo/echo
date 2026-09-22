@@ -14,8 +14,13 @@ let direction = readPreference('echo.direction', 'fr-en') === 'en-fr' ? 'en-fr' 
 let deck = readPreference('echo.deck', 'all');
 let speed = readPreference('echo.speed', '1') === '0.8' ? 0.8 : 1;
 let audioMode = readPreference('echo.audio-mode', 'off') === 'on';
-let screen = readPreference('echo.section', 'home');
-if (!['home', 'practice', 'browse', 'grammar', 'exercise'].includes(screen)) screen = 'home';
+// Echo always opens on Home; each screen change after that is a history entry, so Back returns to it.
+let screen = 'home';
+let depth = 0;
+const trail = ['home'];
+// A link may ask for one screen (#practice, #grammar); the address drops it, so a reload opens Home.
+const requestedScreen = location.hash.slice(1);
+history.replaceState({ echo: 'home', depth: 0 }, '', location.pathname + location.search);
 let topicId = readPreference('echo.topic', '');
 let snapshot = null;
 let grammar = null;
@@ -124,7 +129,10 @@ function noticeHTML() {
 }
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
 function back(label, action) { return `<button class="back" data-action="${action}" ${busy ? 'disabled' : ''}><span aria-hidden="true">←</span> ${label}</button>`; }
-function rememberScreen() { savePreference('echo.section', screen); }
+function record(next) {
+  depth += 1; trail.length = depth; trail[depth] = next;
+  history.pushState({ echo: next, depth }, '');
+}
 function workingCounts(label) {
   const unavailable = !snapshot || retryAction || snapshot.direction !== direction || snapshot.deck !== deck;
   const counts = loading ? '<span class="compact-status" role="status">Loading counts…</span>' : unavailable ? '<span class="compact-status">Counts unavailable</span>' : `<span class="compact-counts"><span class="unseen"><strong>${formatCount(snapshot.stats.unseenActive)}</strong> unseen</span><span class="separator" aria-hidden="true">·</span><span><strong>${formatCount(snapshot.stats.seenActive)}</strong> seen</span></span>`;
@@ -293,7 +301,9 @@ async function runMutation(action) {
   if (busy) return;
   stopAudio(); busy = true; loading = false; ++generation;
   notice = null; retryAction = null;
-  screen = action.type.startsWith('grammar-') ? 'exercise' : 'practice'; rememberScreen(); render();
+  const target = action.type.startsWith('grammar-') ? 'exercise' : 'practice';
+  if (target !== screen) record(target);
+  screen = target; render();
   const paths = { start: 'api/session', grade: 'api/grade', undo: 'api/undo', 'extra-words': 'api/extra-words', 'review-early': 'api/review-early', 'grammar-start': 'api/grammar/session', 'grammar-answer': 'api/grammar/answer', 'grammar-help': 'api/grammar/help', 'grammar-next': 'api/grammar/next' }
   try {
     const result = await api(paths[action.type], { method: 'POST', body: JSON.stringify(action.body) });
@@ -314,16 +324,26 @@ async function runMutation(action) {
     } else { notice = { message: error.message }; retryAction = action; render(); }
   }
 }
-function move(next) {
+// forward: an action that opens a screen (start practice, a topic, the word list) never walks back through history.
+function move(next, forward = false) {
   if (busy) return false;
-  stopAudio(); ++generation; ++browseGeneration; loading = false; revealed = false;
-  screen = next; rememberScreen(); render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
-  if (next === 'home') fetchState();
+  if (next !== screen) {
+    // Home and the screen just behind this one are reached by walking back, so history holds no duplicate copies.
+    const steps = forward ? 0 : next === 'home' ? depth : trail[depth - 1] === next ? 1 : 0;
+    if (steps) { history.go(-steps); return false; }
+    record(next);
+  }
+  show(next);
   return true;
+}
+function show(next) {
+  stopAudio(); ++generation; ++browseGeneration; loading = false; revealed = false;
+  screen = next; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
+  if (next === 'home') fetchState();
 }
 async function startPractice() {
   if (busy) return;
-  move('practice');
+  move('practice', true);
   if (locked()) return;
   if (!await fetchState()) return;
   if (screen === 'practice') runMutation({ type: 'start', body: { direction, deck } });
@@ -340,8 +360,10 @@ function grade(known) {
   runMutation({ type: 'grade', body: { direction, deck, wordId: card.id, version: card.version, known, requestId: requestId() } });
 }
 function undo() { if (snapshot?.undoId && !locked()) runMutation({ type: 'undo', body: { direction, deck, undoId: snapshot.undoId } }); }
-async function browseWords() {
-  if (!move('browse')) return;
+function browseWords() {
+  if (move('browse', true)) enterBrowse();
+}
+async function enterBrowse() {
   if (!snapshot && !await fetchState()) return;
   if (screen === 'browse') loadBrowse();
 }
@@ -359,7 +381,7 @@ async function loadBrowse() {
 async function openTopic(id) {
   if (locked()) return;
   topicId = id; savePreference('echo.topic', id); grammar = null; hintOpen = true;
-  move('exercise');
+  move('exercise', true);
   if (await loadGrammar(id) && screen === 'exercise' && !grammar.session) startRound();
 }
 function startRound() {
@@ -491,7 +513,25 @@ for (const modal of [dialog, aboutDialog]) {
 window.addEventListener('pagehide', stopAudio);
 document.addEventListener('visibilitychange', () => { if (!document.hidden && screen === 'home' && !busy && !loading && !dialog.open) fetchState(); });
 render();
-if (screen === 'exercise' && topicId) loadGrammar(topicId);
-else if (screen === 'grammar' || screen === 'exercise') { screen = 'grammar'; rememberScreen(); loadGrammar(); }
-else if (screen === 'browse') browseWords();
+window.addEventListener('popstate', (event) => {
+  const state = event.state;
+  if (!state?.echo) return;
+  if (busy) {
+    // A save is in flight; stay on this screen and keep its history entry.
+    depth = state.depth + 1; trail.length = depth; trail[depth] = screen;
+    history.pushState({ echo: screen, depth }, '');
+    return;
+  }
+  const target = state.echo === 'exercise' && !topicId ? 'grammar' : state.echo;
+  depth = state.depth; trail.length = depth + 1; trail[depth] = target;
+  if (dialog.open) dialog.close();
+  if (aboutDialog.open) aboutDialog.close();
+  show(target);
+  if (target === 'practice') fetchState();
+  else if (target === 'browse') enterBrowse();
+  else if (target === 'grammar') loadGrammar();
+  else if (target === 'exercise') loadGrammar(topicId);
+});
+if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
+else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
 else fetchState();

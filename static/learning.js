@@ -288,11 +288,11 @@ function renderReview() {
     <section class="review-section"><h2>Going well</h2>${evidenceHTML(overview.goingWell, true)}</section>
     <section class="review-section"><h2>Needs practice</h2>${evidenceHTML(overview.needsPractice, false)}</section>
     <section class="review-section"><h2>Vocabulary</h2>
-      ${overview.vocabulary.length ? overview.vocabulary.map((entry) => `<a class="review-link" data-home="practice" data-direction="${esc(entry.direction)}" href="./"><span>${entry.direction === 'fr-en' ? 'French → English' : 'English → French'}<small>${entry.unseenActive} unseen · ${entry.seenActive} seen and unfinished · self-rated recall</small></span><span aria-hidden="true">→</span></a>`).join('') : '<a href="./" data-home="practice">Open vocabulary practice →</a>'}
+      ${overview.vocabulary.length ? overview.vocabulary.map((entry) => `<a class="review-link" data-home="practice" data-direction="${esc(entry.direction)}" href="./#practice"><span>${entry.direction === 'fr-en' ? 'French → English' : 'English → French'}<small>${entry.unseenActive} unseen · ${entry.seenActive} seen and unfinished · self-rated recall</small></span><span aria-hidden="true">→</span></a>`).join('') : '<a href="./#practice" data-home="practice">Open vocabulary practice →</a>'}
     </section>
     <section class="review-section"><h2>Grammar & sentences</h2>
       ${overview.grammar.length ? overview.grammar.map((entry) => `<div class="grammar-summary"><strong>${esc(entry.title)}</strong><p>${entry.independent} independent · ${entry.helped} helped · ${entry.revisit} to revisit · prepared</p></div>`).join('') : '<p class="learning-note">No grammar rounds recorded yet.</p>'}
-      <div class="learning-actions"><a class="secondary" href="./" data-home="grammar">Open grammar practice →</a></div>
+      <div class="learning-actions"><a class="secondary" href="./#grammar" data-home="grammar">Open grammar practice →</a></div>
     </section>`;
 }
 function missing(section) { return `${title('That lesson is not available', 'It may have moved, or this link may be incomplete.')}${back(section, 'Choose another lesson')}`; }
@@ -562,7 +562,7 @@ document.addEventListener('change', (event) => {
 document.addEventListener('click', (event) => {
   const link = event.target.closest('a[data-home]');
   if (link) {
-    try { localStorage.setItem('echo.section', link.dataset.home); if (link.dataset.direction) localStorage.setItem('echo.direction', link.dataset.direction); } catch {}
+    try { if (link.dataset.direction) localStorage.setItem('echo.direction', link.dataset.direction); } catch {}
     stopOwnedJobs(true); return;
   }
   const target = event.target.closest('button');
