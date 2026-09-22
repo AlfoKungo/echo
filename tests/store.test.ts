@@ -119,14 +119,19 @@ describe('working-deck counts and admission', () => {
     state = store.grade(answer(state, true));
     expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
     state = store.grade(answer(state, false));
-    expect(state.current).toMatchObject({ stack: 'failed', successes: 1 });
+    expect(state.current).toMatchObject({ stack: 'failed', successes: 0 });
     expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0 });
+    state = store.grade(answer(state, true));
+    expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
+    expect(state.stats).toMatchObject({ seenActive: 1, completedToday: 0 });
     state = store.grade(answer(state, true));
     expect(state.current).toBeNull();
     expect(state.stats).toMatchObject({ seenActive: 0, unseenActive: 0, remaining: 0, completedToday: 1 });
     state = store.undo('fr-en', 'all', state.undoId!);
-    expect(state.current).toMatchObject({ stack: 'failed', successes: 1 });
+    expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
     expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0, completedToday: 0 });
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.current).toMatchObject({ stack: 'failed', successes: 0 });
     state = store.undo('fr-en', 'all', state.undoId!);
     expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
     state = store.undo('fr-en', 'all', state.undoId!);
@@ -272,14 +277,16 @@ describe('three-stack selection', () => {
 });
 
 describe('FSRS and transactional protection', () => {
-  test('two total successes schedule once; intervening misses affect FSRS rather than erasing a success', () => {
+  test('a miss resets the count, so the cycle finishes only after two successes following it', () => {
     const { store, clock } = fixture();
     store.setSettings(1);
     let state = store.start('fr-en', 'all');
     const initial = progress(store).cards[0]!.fsrs;
     state = store.grade(answer(state, true));
     state = store.grade(answer(state, false));
-    expect(state.current?.successes).toBe(1);
+    expect(state.current?.successes).toBe(0);
+    state = store.grade(answer(state, true));
+    expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
     expect(progress(store).cards[0]!.fsrs).toEqual(initial);
     state = store.grade(answer(state, true));
     expect(state.current).toBeNull();
@@ -289,6 +296,26 @@ describe('FSRS and transactional protection', () => {
     expect(exported.cards[0]!.fsrs).toEqual(JSON.parse(JSON.stringify(expected.card)));
     expect(new Date(state.nextDue!).getTime()).toBeGreaterThanOrEqual(new Date(2026, 8, 22, 4).getTime());
     expect(store.browse('fr-en', 'all').filter((word) => word.status === 'scheduled')).toHaveLength(1);
+  });
+
+  test('undoing into history recorded under the earlier rule cannot finish a card after one success', () => {
+    const { store, dbPath } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'all');
+    state = store.grade(answer(state, true));
+    state = store.grade(answer(state, false));
+    // The earlier rule kept the first success through a miss.
+    const db = new Database(dbPath);
+    db.query("UPDATE cards SET successes = 1 WHERE word_id = 'food-001'").run();
+    db.close();
+    state = store.grade(answer(store.state('fr-en', 'all'), true));
+    expect(state.current).toBeNull();
+    state = store.undo('fr-en', 'all', state.undoId!);
+    expect(state.current).toMatchObject({ stack: 'failed', successes: 0 });
+    state = store.grade(answer(state, true));
+    expect(state.current).toMatchObject({ stack: 'successful', successes: 1 });
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
   });
 
   test('partial successes survive missed days, while scheduled cards enter unseen when they become due', () => {
@@ -420,33 +447,37 @@ function legacyFixture(answers: boolean[]) {
 }
 
 describe('saved progress migration', () => {
-  test('recovers a success hidden by an old miss without discarding either answer', () => {
+  test('replays saved misses as resets without discarding either answer', () => {
     const { store } = legacyFixture([true, false]);
     let state = store.state('fr-en', 'all');
-    expect(state.current).toMatchObject({ successes: 1, stack: 'failed' });
+    expect(state.current).toMatchObject({ successes: 0, stack: 'failed' });
     expect(state.stats).toMatchObject({ unseenActive: 0, seenActive: 1 });
     expect(progress(store).grades.map((grade) => grade.known)).toEqual([1, 0]);
+    state = store.grade(answer(state, true));
+    expect(state.current).toMatchObject({ successes: 1, stack: 'successful' });
     state = store.grade(answer(state, true));
     expect(state.current).toBeNull();
     expect(state.stats.seenActive).toBe(0);
   });
 
-  test('graduates already-earned nonconsecutive successes, survives reopening, and can undo old answers', () => {
-    const { store, open } = legacyFixture([true, false, true, false]);
+  test('graduates two successes after the latest miss, survives reopening, and can undo old answers', () => {
+    const { store, open } = legacyFixture([true, false, true, true]);
     let state = store.state('fr-en', 'all');
     expect(state.current).toBeNull();
     expect(state.stats).toMatchObject({ unseenActive: 0, seenActive: 0, completedToday: 1 });
-    expect(progress(store).grades.map((grade) => grade.known)).toEqual([1, 0, 1, 0]);
+    expect(progress(store).grades.map((grade) => grade.known)).toEqual([1, 0, 1, 1]);
     expect(progress(store).cards[0]!.fsrs.reps).toBe(1);
     const exported = store.exportData();
     close(store);
     const reopened = open();
     expect(reopened.exportData()).toEqual(exported);
     state = reopened.undo('fr-en', 'all', 'legacy-3');
-    expect(state.current).toBeNull();
+    expect(state.current).toMatchObject({ successes: 1, stack: 'successful' });
     state = reopened.undo('fr-en', 'all', 'legacy-2');
-    expect(state.current).toMatchObject({ successes: 1, stack: 'failed' });
+    expect(state.current).toMatchObject({ successes: 0, stack: 'failed' });
     expect(state.stats).toMatchObject({ seenActive: 1, unseenActive: 0 });
+    state = reopened.grade(answer(state, true));
+    expect(state.current).toMatchObject({ successes: 1, stack: 'successful' });
     state = reopened.grade(answer(state, true));
     expect(state.current).toBeNull();
     expect(progress(reopened).cards[0]!.fsrs.reps).toBe(1);

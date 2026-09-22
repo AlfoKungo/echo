@@ -244,7 +244,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       row.successes = 0;
       row.cycle_misses = 0;
       for (const grade of cycle) {
-        row.successes += grade.known;
+        row.successes = grade.known ? row.successes + 1 : 0;
         row.cycle_misses += Number(!grade.known);
         stack = grade.known ? 'successful' : 'failed';
         if (row.successes === 2) {
@@ -429,7 +429,8 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       if (selection.stack === 'unseen') queue.warmup = Math.min(10, queue.warmup + 1);
       queue.turn = selection.nextTurn;
       const after = { ...before, active: 1, version: before.version + 1 };
-      after.successes = (before.active ? before.successes : 0) + Number(input.known);
+      // A miss restarts the count: finishing needs two successes after the latest miss.
+      after.successes = input.known ? (before.active ? before.successes : 0) + 1 : 0;
       after.cycle_misses = (before.active ? before.cycle_misses : 0) + Number(!input.known);
       let fsrsLog: string | null = null;
       if (after.successes === 2) {
@@ -476,6 +477,8 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         `).all(direction, studyDayStart(at).toISOString(), at.toISOString(), latest.sequence);
         queue.warmup = Math.min(10, firsts.filter((grade) => firstRecall(JSON.parse(grade.before_json) as CardRow)).length);
       }
+      // History recorded under the earlier rule could carry a success into the failed stack.
+      if (restored.active && queue.failed.includes(restored.word_id)) restored.successes = 0;
       // Restoring memory must never restore an old concurrency token.
       restored.version = current.version + 1;
       save(restored);
