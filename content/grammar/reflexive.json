@@ -1,0 +1,785 @@
+{
+  "id": "reflexive",
+  "unit": "present",
+  "level": "A2",
+  "title": "Reflexive verbs",
+  "description": "Talk about your daily routine and about what people do to each other with verbs like se lever and se parler.",
+  "mark": "se",
+  "rule": "A reflexive verb carries a pronoun that matches the subject: je me, tu te, il/elle/on se, nous nous, vous vous, ils/elles se. Me, te and se become m’, t’ and s’ before a vowel or a silent h (je m’appelle, tu t’amuses, il s’habille); nous and vous never change. In the negative, ne goes before the pronoun and pas after the verb: je ne me lève pas. After another verb such as aller, vouloir, pouvoir or devoir, the reflexive verb stays in the infinitive but its pronoun still matches the subject and sits just before it: je vais me coucher, tu dois te dépêcher. In the plural, se, nous and vous can also mean each other: ils se parlent, nous nous voyons. With parts of the body, French uses le, la or les, not a possessive: je me lave les mains. Some reflexive verbs change their stem: je me lève but nous nous levons, je me promène but nous nous promenons, je m’appelle but nous nous appelons.",
+  "example": "Je me lève à sept heures. · Nous ne nous dépêchons pas le dimanche. · Ils se parlent tous les jours.",
+  "aside": "Many reflexive verbs also exist without the pronoun and then act on someone else: je me lave (I wash) but je lave la voiture (I wash the car).",
+  "exercises": [
+    {
+      "id": "reflexive-pronoun-agreement-1",
+      "pattern": "pronoun-agreement",
+      "type": "choose",
+      "instruction": "Choose the reflexive pronoun.",
+      "source": "Nous ____ couchons à dix heures.",
+      "options": [
+        "nous",
+        "se",
+        "s’"
+      ],
+      "answers": [
+        "nous"
+      ],
+      "hint": "The reflexive pronoun always matches the subject.",
+      "feedback": "Se is only for il, elle, on, ils and elles.",
+      "explanation": "Nous nous couchons: with nous, the reflexive pronoun is nous too."
+    },
+    {
+      "id": "reflexive-pronoun-agreement-2",
+      "pattern": "pronoun-agreement",
+      "type": "choose",
+      "instruction": "Choose the reflexive pronoun.",
+      "source": "Mes parents ____ réveillent tôt.",
+      "options": [
+        "se",
+        "s’",
+        "leur"
+      ],
+      "answers": [
+        "se"
+      ],
+      "hint": "Mes parents means ils. Réveillent starts with a consonant.",
+      "feedback": "Only one option is a reflexive pronoun that fits ils before a consonant.",
+      "explanation": "Ils se réveillent: the pronoun for ils is se, and it does not elide before a consonant."
+    },
+    {
+      "id": "reflexive-pronoun-agreement-3",
+      "pattern": "pronoun-agreement",
+      "type": "complete",
+      "instruction": "Write the reflexive pronoun.",
+      "source": "Vous ____ dépêchez le matin ?",
+      "answers": [
+        "vous"
+      ],
+      "hint": "Match the pronoun to the subject vous.",
+      "feedback": "Se is only for the third person. Look at the subject again.",
+      "explanation": "Vous vous dépêchez: with vous, the reflexive pronoun is also vous."
+    },
+    {
+      "id": "reflexive-pronoun-agreement-4",
+      "pattern": "pronoun-agreement",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "se coucher · tu · présent",
+      "answers": [
+        "te couches",
+        "tu te couches"
+      ],
+      "hint": "Put the pronoun that matches tu before the verb.",
+      "feedback": "The reflexive pronoun for tu is not se.",
+      "explanation": "Tu te couches: te matches tu, and coucher takes -es with tu."
+    },
+    {
+      "id": "reflexive-pronoun-agreement-5",
+      "pattern": "pronoun-agreement",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Tu se couches tard.",
+      "answers": [
+        "Tu te couches tard."
+      ],
+      "hint": "Check that the pronoun matches the subject.",
+      "feedback": "Se is for il, elle, on, ils and elles only.",
+      "explanation": "Tu te couches: the reflexive pronoun for tu is te."
+    },
+    {
+      "id": "reflexive-pronoun-agreement-6",
+      "pattern": "pronoun-agreement",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "We go to bed late.",
+      "answers": [
+        "Nous nous couchons tard.",
+        "On se couche tard."
+      ],
+      "hint": "Use se coucher. The pronoun matches the subject.",
+      "feedback": "With nous, the reflexive pronoun is nous; with on, it is se.",
+      "explanation": "Nous nous couchons tard, or with on: on se couche tard."
+    },
+    {
+      "id": "reflexive-elision-1",
+      "pattern": "elision",
+      "type": "choose",
+      "instruction": "Choose the reflexive pronoun.",
+      "source": "Je ____ appelle Sophie.",
+      "options": [
+        "m’",
+        "me",
+        "se"
+      ],
+      "answers": [
+        "m’"
+      ],
+      "hint": "Appelle starts with a vowel.",
+      "feedback": "Me cannot stand before a vowel, and se does not match je.",
+      "explanation": "Je m’appelle: me becomes m’ before a vowel."
+    },
+    {
+      "id": "reflexive-elision-2",
+      "pattern": "elision",
+      "type": "complete",
+      "instruction": "Write the reflexive pronoun.",
+      "source": "Il ____ habille vite.",
+      "answers": [
+        "s’"
+      ],
+      "hint": "The h of habiller is silent, so habille sounds as if it starts with a vowel.",
+      "feedback": "Se loses its e before a vowel sound.",
+      "explanation": "Il s’habille: se becomes s’ before a vowel or a silent h."
+    },
+    {
+      "id": "reflexive-elision-3",
+      "pattern": "elision",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Tu te amuses bien ?",
+      "answers": [
+        "Tu t’amuses bien ?"
+      ],
+      "hint": "Amuses starts with a vowel.",
+      "feedback": "Te cannot stay whole before a vowel.",
+      "explanation": "Tu t’amuses: te becomes t’ before a vowel."
+    },
+    {
+      "id": "reflexive-elision-4",
+      "pattern": "elision",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "s’habiller · je · présent",
+      "answers": [
+        "m’habille",
+        "je m’habille"
+      ],
+      "hint": "The pronoun for je is me. What happens before a silent h?",
+      "feedback": "Me is elided before a silent h.",
+      "explanation": "Je m’habille: me becomes m’ before the silent h of habille."
+    },
+    {
+      "id": "reflexive-elision-5",
+      "pattern": "elision",
+      "type": "translate",
+      "instruction": "Translate into French using s’appeler.",
+      "source": "Her name is Léa.",
+      "answers": [
+        "Elle s’appelle Léa."
+      ],
+      "alternatives": [
+        {
+          "answer": "Son nom est Léa.",
+          "message": "That is understandable but stiff. This exercise asks for the reflexive verb: Elle s’appelle Léa."
+        }
+      ],
+      "hint": "French says she calls herself. Appelle starts with a vowel.",
+      "feedback": "Use the reflexive verb with elle, and elide the pronoun before the vowel.",
+      "explanation": "Elle s’appelle Léa: s’appeler with elle, s’ before a vowel, and a double l."
+    },
+    {
+      "id": "reflexive-elision-6",
+      "pattern": "elision",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "The children have fun in the garden.",
+      "tokens": [
+        "dans le jardin.",
+        "s’amusent",
+        "Les enfants",
+        "se amusent"
+      ],
+      "answers": [
+        "Les enfants s’amusent dans le jardin."
+      ],
+      "hint": "Amusent starts with a vowel.",
+      "feedback": "One tile keeps se whole before a vowel.",
+      "explanation": "Les enfants s’amusent: se becomes s’ before a vowel."
+    },
+    {
+      "id": "reflexive-elision-7",
+      "pattern": "elision",
+      "type": "rewrite",
+      "instruction": "Replace il with nous.",
+      "source": "Il s’amuse au parc.",
+      "answers": [
+        "Nous nous amusons au parc."
+      ],
+      "hint": "Change the pronoun and the verb ending. Does nous ever elide?",
+      "feedback": "The pronoun for nous is nous, and it never becomes an apostrophe form.",
+      "explanation": "Nous nous amusons: nous never elides, even before a vowel."
+    },
+    {
+      "id": "reflexive-negation-1",
+      "pattern": "negation",
+      "type": "rewrite",
+      "instruction": "Make it negative in standard written French.",
+      "source": "Je me lève tôt.",
+      "answers": [
+        "Je ne me lève pas tôt."
+      ],
+      "alternatives": [
+        {
+          "answer": "Je me lève pas tôt.",
+          "message": "That is common in speech. The written form also needs ne before me."
+        }
+      ],
+      "hint": "Ne goes before the reflexive pronoun, pas after the verb.",
+      "feedback": "The pronoun stays attached to the verb, inside the negation.",
+      "explanation": "Je ne me lève pas: ne comes before me, pas comes after lève."
+    },
+    {
+      "id": "reflexive-negation-2",
+      "pattern": "negation",
+      "type": "rewrite",
+      "instruction": "Make it negative in standard written French.",
+      "source": "Elle s’habille en noir.",
+      "answers": [
+        "Elle ne s’habille pas en noir."
+      ],
+      "alternatives": [
+        {
+          "answer": "Elle s’habille pas en noir.",
+          "message": "That is common in speech. The written form also needs ne before s’."
+        }
+      ],
+      "hint": "Ne goes before the pronoun s’.",
+      "feedback": "Do not separate s’ from the verb, and do not forget ne.",
+      "explanation": "Elle ne s’habille pas: ne before s’, pas after habille."
+    },
+    {
+      "id": "reflexive-negation-3",
+      "pattern": "negation",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Le dimanche, il ____ tôt.",
+      "options": [
+        "ne se réveille pas",
+        "se ne réveille pas",
+        "ne se pas réveille",
+        "ne réveille pas se"
+      ],
+      "answers": [
+        "ne se réveille pas"
+      ],
+      "hint": "The reflexive pronoun stays right before the verb.",
+      "feedback": "Ne and pas surround the pronoun and the verb together.",
+      "explanation": "Il ne se réveille pas: ne + pronoun + verb + pas."
+    },
+    {
+      "id": "reflexive-negation-4",
+      "pattern": "negation",
+      "type": "build",
+      "instruction": "Build the negative sentence.",
+      "source": "We aren’t going for a walk this evening.",
+      "tokens": [
+        "ne",
+        "nous",
+        "Nous",
+        "pas",
+        "promenons",
+        "ce soir."
+      ],
+      "answers": [
+        "Nous ne nous promenons pas ce soir."
+      ],
+      "hint": "Start with the subject, then ne, then the reflexive pronoun.",
+      "feedback": "The reflexive pronoun sits between ne and the verb.",
+      "explanation": "Nous ne nous promenons pas: subject, ne, pronoun, verb, pas."
+    },
+    {
+      "id": "reflexive-negation-5",
+      "pattern": "negation",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Je me ne couche pas avant minuit.",
+      "answers": [
+        "Je ne me couche pas avant minuit."
+      ],
+      "hint": "Which comes first after the subject: ne or the reflexive pronoun?",
+      "feedback": "The pronoun must stay directly before the verb.",
+      "explanation": "Je ne me couche pas: ne comes before me, and me stays next to couche."
+    },
+    {
+      "id": "reflexive-negation-6",
+      "pattern": "negation",
+      "type": "translate",
+      "instruction": "Translate into standard written French.",
+      "source": "They (masculine) don’t get up early.",
+      "answers": [
+        "Ils ne se lèvent pas tôt."
+      ],
+      "alternatives": [
+        {
+          "answer": "Ils se lèvent pas tôt.",
+          "message": "That is common in speech. The written form also needs ne before se."
+        }
+      ],
+      "hint": "Use se lever. Watch the accent in the ils form.",
+      "feedback": "Ne goes before se, pas after the verb.",
+      "explanation": "Ils ne se lèvent pas tôt: ne + se + lèvent + pas. Lever takes è when the ending is silent."
+    },
+    {
+      "id": "reflexive-negation-7",
+      "pattern": "negation",
+      "type": "complete",
+      "instruction": "Write the two missing words.",
+      "source": "Elle ____ promène pas le soir.",
+      "answers": [
+        "ne se"
+      ],
+      "hint": "Two words are missing before the verb: the first part of the negation and the reflexive pronoun.",
+      "feedback": "Check the order: the pronoun stays next to the verb.",
+      "explanation": "Elle ne se promène pas: ne, then se, then the verb."
+    },
+    {
+      "id": "reflexive-after-another-verb-1",
+      "pattern": "after-another-verb",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Je vais ____ coucher.",
+      "options": [
+        "me",
+        "se",
+        "moi"
+      ],
+      "answers": [
+        "me"
+      ],
+      "hint": "After aller, the infinitive keeps a pronoun that matches the subject.",
+      "feedback": "The subject is je, so the pronoun is not se. Moi cannot stand before a verb.",
+      "explanation": "Je vais me coucher: the pronoun matches je, even though coucher is an infinitive."
+    },
+    {
+      "id": "reflexive-after-another-verb-2",
+      "pattern": "after-another-verb",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Elles aiment ____ promener le soir.",
+      "options": [
+        "se",
+        "s’",
+        "elles"
+      ],
+      "answers": [
+        "se"
+      ],
+      "hint": "The subject is elles. Promener starts with a consonant.",
+      "feedback": "A subject pronoun cannot replace the reflexive pronoun.",
+      "explanation": "Elles aiment se promener: se matches elles and stays whole before a consonant."
+    },
+    {
+      "id": "reflexive-after-another-verb-3",
+      "pattern": "after-another-verb",
+      "type": "complete",
+      "instruction": "Write the reflexive pronoun.",
+      "source": "Tu dois ____ dépêcher !",
+      "answers": [
+        "te"
+      ],
+      "hint": "The pronoun matches the subject, not the infinitive.",
+      "feedback": "Se is the dictionary form. Here the subject is tu.",
+      "explanation": "Tu dois te dépêcher: the infinitive keeps a pronoun that matches tu."
+    },
+    {
+      "id": "reflexive-after-another-verb-4",
+      "pattern": "after-another-verb",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Nous voulons se promener au bord de la mer.",
+      "answers": [
+        "Nous voulons nous promener au bord de la mer."
+      ],
+      "hint": "Se is the dictionary form of the pronoun. Who is going for the walk?",
+      "feedback": "The reflexive pronoun must match the subject nous.",
+      "explanation": "Nous voulons nous promener: after vouloir, the pronoun still matches nous."
+    },
+    {
+      "id": "reflexive-after-another-verb-5",
+      "pattern": "after-another-verb",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I’m going to go to bed.",
+      "answers": [
+        "Je vais me coucher.",
+        "Je vais aller me coucher."
+      ],
+      "hint": "Use aller plus se coucher. The pronoun matches je.",
+      "feedback": "Do not keep se: the pronoun must match the subject.",
+      "explanation": "Je vais me coucher: aller + infinitive, with me matching je. Je vais aller me coucher is also correct."
+    },
+    {
+      "id": "reflexive-after-another-verb-6",
+      "pattern": "after-another-verb",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "You must get up at six o’clock. (formal)",
+      "tokens": [
+        "vous",
+        "Vous",
+        "devez",
+        "lever",
+        "à six heures.",
+        "se"
+      ],
+      "answers": [
+        "Vous devez vous lever à six heures."
+      ],
+      "hint": "After devoir, the infinitive keeps a pronoun that matches the subject.",
+      "feedback": "One tile is the dictionary form of the pronoun. It does not match vous.",
+      "explanation": "Vous devez vous lever: the pronoun vous matches the subject and sits before the infinitive."
+    },
+    {
+      "id": "reflexive-after-another-verb-7",
+      "pattern": "after-another-verb",
+      "type": "rewrite",
+      "instruction": "Rewrite the sentence starting with Tu peux.",
+      "source": "Tu t’habilles seul.",
+      "answers": [
+        "Tu peux t’habiller seul."
+      ],
+      "hint": "The reflexive verb becomes an infinitive after pouvoir. Keep the pronoun that matches tu.",
+      "feedback": "Keep t’ before the infinitive, and use the infinitive form of the verb.",
+      "explanation": "Tu peux t’habiller seul: t’ matches tu and stays before the infinitive."
+    },
+    {
+      "id": "reflexive-reciprocal-1",
+      "pattern": "reciprocal",
+      "type": "choose",
+      "instruction": "Choose the pronoun that means each other.",
+      "source": "Mes amis et moi, nous ____ voyons le samedi.",
+      "options": [
+        "nous",
+        "se",
+        "s’"
+      ],
+      "answers": [
+        "nous"
+      ],
+      "hint": "The subject is nous. The pronoun always matches it.",
+      "feedback": "Se does not go with nous.",
+      "explanation": "Nous nous voyons: with nous, the reciprocal pronoun is nous (we see each other)."
+    },
+    {
+      "id": "reflexive-reciprocal-2",
+      "pattern": "reciprocal",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "They (masculine) talk to each other.",
+      "answers": [
+        "Ils se parlent.",
+        "Ils se parlent entre eux."
+      ],
+      "hint": "Each other is expressed by the reflexive pronoun.",
+      "feedback": "No extra words are needed for each other: the pronoun does the job.",
+      "explanation": "Ils se parlent: se means each other with a plural subject."
+    },
+    {
+      "id": "reflexive-reciprocal-3",
+      "pattern": "reciprocal",
+      "type": "complete",
+      "instruction": "Write the pronoun that means each other.",
+      "source": "Paul et Julie ____ écrivent souvent.",
+      "answers": [
+        "s’"
+      ],
+      "hint": "Paul et Julie means ils. Écrivent starts with a vowel.",
+      "feedback": "Se loses its e before a vowel.",
+      "explanation": "Paul et Julie s’écrivent: se means each other and becomes s’ before a vowel."
+    },
+    {
+      "id": "reflexive-reciprocal-4",
+      "pattern": "reciprocal",
+      "type": "rewrite",
+      "instruction": "Combine into one sentence with a reciprocal verb.",
+      "source": "Luc aime Léa. Léa aime Luc.",
+      "answers": [
+        "Luc et Léa s’aiment.",
+        "Léa et Luc s’aiment.",
+        "Ils s’aiment."
+      ],
+      "hint": "Make both people the subject and use a pronoun that means each other.",
+      "feedback": "The verb needs a reflexive pronoun, elided before the vowel.",
+      "explanation": "Luc et Léa s’aiment: se means each other and becomes s’ before aiment."
+    },
+    {
+      "id": "reflexive-reciprocal-5",
+      "pattern": "reciprocal",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We see each other after school.",
+      "tokens": [
+        "nous",
+        "Nous",
+        "voyons",
+        "après l’école.",
+        "se"
+      ],
+      "answers": [
+        "Nous nous voyons après l’école."
+      ],
+      "hint": "Each other is the reflexive pronoun that matches nous.",
+      "feedback": "One tile only works with il, elle, on, ils or elles.",
+      "explanation": "Nous nous voyons: the second nous means each other."
+    },
+    {
+      "id": "reflexive-reciprocal-6",
+      "pattern": "reciprocal",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Mon frère et moi, nous se téléphonons le soir.",
+      "answers": [
+        "Mon frère et moi, nous nous téléphonons le soir."
+      ],
+      "hint": "The subject is nous. Does the pronoun match?",
+      "feedback": "Se does not go with nous.",
+      "explanation": "Nous nous téléphonons: the reciprocal pronoun matches nous."
+    },
+    {
+      "id": "reflexive-reciprocal-7",
+      "pattern": "reciprocal",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "se voir · ils · présent",
+      "answers": [
+        "se voient",
+        "ils se voient"
+      ],
+      "hint": "The pronoun matches ils. Voir uses y only with nous and vous.",
+      "feedback": "Both the pronoun and the verb must fit ils.",
+      "explanation": "Ils se voient: se + voient. With a plural subject, it often means they see each other. Voir takes y only in nous voyons and vous voyez."
+    },
+    {
+      "id": "reflexive-body-parts-1",
+      "pattern": "body-parts",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Je me lave ____ mains.",
+      "options": [
+        "les",
+        "mes",
+        "des"
+      ],
+      "answers": [
+        "les"
+      ],
+      "hint": "The reflexive pronoun already says whose hands they are.",
+      "feedback": "French does not add a possessive here.",
+      "explanation": "Je me lave les mains: with a reflexive verb, body parts take le, la or les."
+    },
+    {
+      "id": "reflexive-body-parts-2",
+      "pattern": "body-parts",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Elle se brosse ____ dents.",
+      "options": [
+        "les",
+        "ses",
+        "leurs"
+      ],
+      "answers": [
+        "les"
+      ],
+      "hint": "Se already shows that they are her own teeth.",
+      "feedback": "A possessive would repeat what se already says.",
+      "explanation": "Elle se brosse les dents: the definite article, not ses."
+    },
+    {
+      "id": "reflexive-body-parts-3",
+      "pattern": "body-parts",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Tu te laves tes cheveux le matin ?",
+      "answers": [
+        "Tu te laves les cheveux le matin ?"
+      ],
+      "hint": "Look at the word before cheveux.",
+      "feedback": "The pronoun te already says whose hair it is.",
+      "explanation": "Tu te laves les cheveux: the body part takes les, not tes."
+    },
+    {
+      "id": "reflexive-body-parts-4",
+      "pattern": "body-parts",
+      "type": "translate",
+      "instruction": "Translate into French using se laver.",
+      "source": "I wash my hands.",
+      "answers": [
+        "Je me lave les mains."
+      ],
+      "alternatives": [
+        {
+          "answer": "Je me lave mes mains.",
+          "message": "French does not repeat the owner: me already says whose hands. Use les: Je me lave les mains."
+        }
+      ],
+      "hint": "Use the reflexive verb. My becomes a simple article.",
+      "feedback": "French does not say my hands here.",
+      "explanation": "Je me lave les mains: me shows whose hands, so mains takes les."
+    },
+    {
+      "id": "reflexive-body-parts-5",
+      "pattern": "body-parts",
+      "type": "translate",
+      "instruction": "Translate into French using se brosser.",
+      "source": "She brushes her teeth.",
+      "answers": [
+        "Elle se brosse les dents."
+      ],
+      "alternatives": [
+        {
+          "answer": "Elle se brosse ses dents.",
+          "message": "French does not repeat the owner: se already says whose teeth. Use les: Elle se brosse les dents."
+        }
+      ],
+      "hint": "Use the reflexive verb. Her becomes a simple article.",
+      "feedback": "With se brosser, dents does not take ses.",
+      "explanation": "Elle se brosse les dents: se shows whose teeth, so dents takes les."
+    },
+    {
+      "id": "reflexive-body-parts-6",
+      "pattern": "body-parts",
+      "type": "complete",
+      "instruction": "Write the missing word.",
+      "source": "Il se lave ____ visage.",
+      "answers": [
+        "le"
+      ],
+      "hint": "Visage is masculine. The reflexive pronoun already shows whose face it is.",
+      "feedback": "Do not use a possessive here.",
+      "explanation": "Il se lave le visage: the definite article le, not son."
+    },
+    {
+      "id": "reflexive-body-parts-7",
+      "pattern": "body-parts",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "You wash your hands before dinner. (formal)",
+      "tokens": [
+        "les",
+        "vos",
+        "mains",
+        "Vous",
+        "vous lavez",
+        "avant le dîner."
+      ],
+      "answers": [
+        "Vous vous lavez les mains avant le dîner."
+      ],
+      "hint": "The reflexive pronoun already says whose hands they are.",
+      "feedback": "One tile is a possessive that French does not use here.",
+      "explanation": "Vous vous lavez les mains: les, not vos, after a reflexive verb.",
+      "alternatives": [
+        {
+          "answer": "Vous lavez vos mains avant le dîner.",
+          "message": "That is understandable, but the everyday way uses the reflexive verb with les: Vous vous lavez les mains avant le dîner."
+        }
+      ]
+    },
+    {
+      "id": "reflexive-stem-changes-1",
+      "pattern": "stem-changes",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Nous nous ____ à sept heures.",
+      "options": [
+        "levons",
+        "lèvons",
+        "lèvent"
+      ],
+      "answers": [
+        "levons"
+      ],
+      "hint": "The accent appears only when the ending is silent.",
+      "feedback": "With nous, the ending -ons is pronounced.",
+      "explanation": "Nous nous levons: no accent, because -ons is a spoken ending. Compare je me lève."
+    },
+    {
+      "id": "reflexive-stem-changes-2",
+      "pattern": "stem-changes",
+      "type": "choose",
+      "instruction": "Choose the right spelling.",
+      "source": "Elle s’____ Camille.",
+      "options": [
+        "appelle",
+        "apelle",
+        "appele"
+      ],
+      "answers": [
+        "appelle"
+      ],
+      "hint": "Appeler doubles a letter when the ending is silent.",
+      "feedback": "Look at the l.",
+      "explanation": "Elle s’appelle: the l doubles before a silent ending (je m’appelle, ils s’appellent)."
+    },
+    {
+      "id": "reflexive-stem-changes-3",
+      "pattern": "stem-changes",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "se lever · je · présent",
+      "answers": [
+        "me lève",
+        "je me lève"
+      ],
+      "strictAccents": true,
+      "hint": "The e of lever changes when the ending is silent.",
+      "feedback": "Check the accent on the stem.",
+      "explanation": "Je me lève: lever takes è before a silent ending."
+    },
+    {
+      "id": "reflexive-stem-changes-4",
+      "pattern": "stem-changes",
+      "type": "complete",
+      "instruction": "Write s’appeler in the present. Write only the verb.",
+      "source": "Mon frère et moi, nous nous ____ Martin.",
+      "answers": [
+        "appelons"
+      ],
+      "hint": "With nous, the ending is spoken, so the stem does not change.",
+      "feedback": "Nous keeps a single l.",
+      "explanation": "Nous nous appelons: one l, because the ending -ons is pronounced. Compare je m’appelle."
+    },
+    {
+      "id": "reflexive-stem-changes-5",
+      "pattern": "stem-changes",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "se promener · ils · présent",
+      "answers": [
+        "se promènent",
+        "ils se promènent"
+      ],
+      "strictAccents": true,
+      "hint": "The ils ending is silent. What happens to the e of the stem?",
+      "feedback": "Check the accent on the stem.",
+      "explanation": "Ils se promènent: promener takes è before a silent ending, like je me promène."
+    },
+    {
+      "id": "reflexive-stem-changes-6",
+      "pattern": "stem-changes",
+      "type": "complete",
+      "instruction": "Write se promener in the present. Write only the verb.",
+      "source": "Tu te ____ avec le chien ?",
+      "answers": [
+        "promènes"
+      ],
+      "strictAccents": true,
+      "hint": "The tu ending is silent. What happens to the e of the stem?",
+      "feedback": "Check the accent.",
+      "explanation": "Tu te promènes: è before the silent ending -es."
+    },
+    {
+      "id": "reflexive-stem-changes-7",
+      "pattern": "stem-changes",
+      "type": "repair",
+      "instruction": "Fix the spelling error.",
+      "source": "Ils s’appelent Tom et Max.",
+      "answers": [
+        "Ils s’appellent Tom et Max."
+      ],
+      "hint": "The ils ending is silent. What does appeler do then?",
+      "feedback": "Look at the l.",
+      "explanation": "Ils s’appellent: the l doubles before a silent ending."
+    }
+  ]
+}

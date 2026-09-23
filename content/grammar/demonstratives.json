@@ -1,0 +1,750 @@
+{
+  "id": "demonstratives",
+  "unit": "determiners",
+  "level": "A1",
+  "title": "This and that",
+  "description": "Point at things with ce, cet, cette and ces, and say c’est and ce sont.",
+  "mark": "ce · cet · cette",
+  "rule": "Ce goes before a masculine singular noun, cette before a feminine singular noun, and ces before any plural noun. Before a masculine singular noun that starts with a vowel or a silent h, ce becomes cet: cet ami, cet hôtel, cet arbre. Cette never changes, even before a vowel: cette amie, cette heure. The same word means this or that; to contrast two things, add -ci (here) or -là (there) to the noun: ce livre-ci, cette robe-là. To say it is or these are + a noun, use c’est for one thing and ce sont for several: c’est mon frère, ce sont mes amis. Do not confuse ce (this) with se (himself, herself, before a verb), or ces (these) with ses (his, her).",
+  "example": "Cet hôtel est cher. · Je préfère cette robe-là. · Ce sont mes amis.",
+  "aside": "In everyday speech many people say c’est before a plural (c’est mes amis), but written French keeps ce sont.",
+  "exercises": [
+    {
+      "id": "demonstratives-ce-cette-1",
+      "pattern": "ce-cette",
+      "type": "choose",
+      "instruction": "Choose the word for this.",
+      "source": "____ pantalon est trop grand.",
+      "options": [
+        "Ce",
+        "Cette",
+        "Ces"
+      ],
+      "answers": [
+        "Ce"
+      ],
+      "hint": "Pantalon is one masculine thing.",
+      "feedback": "Match the gender and number of pantalon.",
+      "explanation": "Pantalon is masculine singular and starts with a consonant, so this is ce."
+    },
+    {
+      "id": "demonstratives-ce-cette-2",
+      "pattern": "ce-cette",
+      "type": "choose",
+      "instruction": "Choose the word for this.",
+      "source": "Tu aimes ____ chanson ?",
+      "options": [
+        "cette",
+        "ce",
+        "cet"
+      ],
+      "answers": [
+        "cette"
+      ],
+      "hint": "Chanson is feminine.",
+      "feedback": "Match the gender of chanson.",
+      "explanation": "Chanson is feminine singular, so this song is cette chanson."
+    },
+    {
+      "id": "demonstratives-ce-cette-3",
+      "pattern": "ce-cette",
+      "type": "complete",
+      "instruction": "Write the French word for this.",
+      "source": "Je voudrais ____ gâteau, s’il vous plaît.",
+      "answers": [
+        "ce"
+      ],
+      "hint": "Gâteau is masculine and starts with a consonant.",
+      "feedback": "Use the plain masculine form.",
+      "explanation": "Gâteau is masculine singular and starts with a consonant, so this cake is ce gâteau."
+    },
+    {
+      "id": "demonstratives-ce-cette-4",
+      "pattern": "ce-cette",
+      "type": "complete",
+      "instruction": "Write the French word for this.",
+      "source": "____ semaine, je travaille beaucoup.",
+      "answers": [
+        "Cette"
+      ],
+      "hint": "Semaine is feminine.",
+      "feedback": "Use the feminine form.",
+      "explanation": "Semaine is feminine singular, so this week is cette semaine."
+    },
+    {
+      "id": "demonstratives-ce-cette-5",
+      "pattern": "ce-cette",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ce voiture est à mon père.",
+      "answers": [
+        "Cette voiture est à mon père."
+      ],
+      "hint": "What is the gender of voiture?",
+      "feedback": "Ce only goes with masculine nouns.",
+      "explanation": "Voiture is feminine singular, so this car is cette voiture."
+    },
+    {
+      "id": "demonstratives-ce-cette-6",
+      "pattern": "ce-cette",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "This bag is heavy.",
+      "answers": [
+        "Ce sac est lourd.",
+        "Ce sac-ci est lourd."
+      ],
+      "hint": "Sac is masculine.",
+      "feedback": "Match this to the gender of sac.",
+      "explanation": "Sac is masculine singular and starts with a consonant, so this bag is ce sac."
+    },
+    {
+      "id": "demonstratives-ce-cette-7",
+      "pattern": "ce-cette",
+      "type": "rewrite",
+      "instruction": "Replace siège with place and change the demonstrative to match. Write the whole sentence.",
+      "source": "Ce siège est libre.",
+      "answers": [
+        "Cette place est libre."
+      ],
+      "hint": "Place is feminine.",
+      "feedback": "The demonstrative must follow the new noun.",
+      "explanation": "Place is feminine singular, so ce becomes cette."
+    },
+    {
+      "id": "demonstratives-ce-cette-8",
+      "pattern": "ce-cette",
+      "type": "build",
+      "instruction": "Build the sentence: This cheese is very good. Leave one tile unused.",
+      "source": "This cheese is very good.",
+      "tokens": [
+        "fromage",
+        "Cette",
+        "est",
+        "Ce",
+        "très",
+        "bon."
+      ],
+      "answers": [
+        "Ce fromage est très bon."
+      ],
+      "hint": "Fromage is masculine.",
+      "feedback": "Match the demonstrative to fromage.",
+      "explanation": "Fromage is masculine singular and starts with a consonant, so this cheese is ce fromage."
+    },
+    {
+      "id": "demonstratives-ces-plural-1",
+      "pattern": "ces-plural",
+      "type": "choose",
+      "instruction": "Choose the word for these.",
+      "source": "____ fleurs sont belles.",
+      "options": [
+        "Ces",
+        "Cette",
+        "Ce"
+      ],
+      "answers": [
+        "Ces"
+      ],
+      "hint": "How many flowers?",
+      "feedback": "Fleurs is plural.",
+      "explanation": "Fleurs is plural, so these flowers is ces fleurs."
+    },
+    {
+      "id": "demonstratives-ces-plural-2",
+      "pattern": "ces-plural",
+      "type": "complete",
+      "instruction": "Write the French word for these.",
+      "source": "J’adore ____ chaussures !",
+      "answers": [
+        "ces"
+      ],
+      "hint": "Chaussures is plural.",
+      "feedback": "Plural nouns have one form for this and these, whatever the gender.",
+      "explanation": "Chaussures is plural, so these shoes is ces chaussures."
+    },
+    {
+      "id": "demonstratives-ces-plural-3",
+      "pattern": "ces-plural",
+      "type": "complete",
+      "instruction": "Write the French word for those.",
+      "source": "Qui sont ____ enfants ?",
+      "answers": [
+        "ces"
+      ],
+      "hint": "Enfants is plural.",
+      "feedback": "The vowel rule for cet is only for singular nouns.",
+      "explanation": "Enfants is plural, so those children is ces enfants. French uses the same word for these and those."
+    },
+    {
+      "id": "demonstratives-ces-plural-4",
+      "pattern": "ces-plural",
+      "type": "rewrite",
+      "instruction": "Make enfant plural and change the rest of the sentence to match.",
+      "source": "Cet enfant est sage.",
+      "answers": [
+        "Ces enfants sont sages."
+      ],
+      "hint": "The plural demonstrative has one form.",
+      "feedback": "Change the demonstrative, the noun, the verb and the adjective.",
+      "explanation": "Plural enfants takes ces, with sont and sages."
+    },
+    {
+      "id": "demonstratives-ces-plural-5",
+      "pattern": "ces-plural",
+      "type": "rewrite",
+      "instruction": "Make pomme plural and change the rest of the sentence to match.",
+      "source": "Cette pomme est rouge.",
+      "answers": [
+        "Ces pommes sont rouges."
+      ],
+      "hint": "The plural demonstrative has one form for both genders.",
+      "feedback": "Change the demonstrative, the noun, the verb and the adjective.",
+      "explanation": "Plural pommes takes ces, with sont and rouges."
+    },
+    {
+      "id": "demonstratives-ces-plural-6",
+      "pattern": "ces-plural",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "These apartments are expensive.",
+      "answers": [
+        "Ces appartements sont chers.",
+        "Ces appartements-ci sont chers."
+      ],
+      "hint": "Apartments is plural.",
+      "feedback": "Check the demonstrative for a plural noun.",
+      "explanation": "Appartements is plural, so these apartments is ces appartements."
+    },
+    {
+      "id": "demonstratives-cet-vowel-1",
+      "pattern": "cet-vowel",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "____ hôtel est très calme.",
+      "options": [
+        "Cet",
+        "Ce",
+        "Cette"
+      ],
+      "answers": [
+        "Cet"
+      ],
+      "hint": "The h of hôtel is silent.",
+      "feedback": "Hôtel is masculine and sounds as if it starts with a vowel.",
+      "explanation": "Hôtel is masculine singular with a silent h, so ce becomes cet: cet hôtel."
+    },
+    {
+      "id": "demonstratives-cet-vowel-2",
+      "pattern": "cet-vowel",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Qui est ____ homme ?",
+      "options": [
+        "cet",
+        "ce",
+        "cette"
+      ],
+      "answers": [
+        "cet"
+      ],
+      "hint": "Homme starts with a silent h.",
+      "feedback": "Ce cannot stand right before a vowel sound.",
+      "explanation": "Homme is masculine singular with a silent h, so that man is cet homme."
+    },
+    {
+      "id": "demonstratives-cet-vowel-3",
+      "pattern": "cet-vowel",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Nous aimons ____ arbre.",
+      "options": [
+        "cet",
+        "ce",
+        "ces"
+      ],
+      "answers": [
+        "cet"
+      ],
+      "hint": "Arbre is masculine and starts with a vowel.",
+      "feedback": "Ce cannot stand right before a vowel.",
+      "explanation": "Arbre is masculine singular and starts with a vowel, so this tree is cet arbre."
+    },
+    {
+      "id": "demonstratives-cet-vowel-4",
+      "pattern": "cet-vowel",
+      "type": "complete",
+      "instruction": "Write the French word for this.",
+      "source": "____ été, nous partons en Italie.",
+      "answers": [
+        "Cet"
+      ],
+      "hint": "Été is masculine and starts with a vowel.",
+      "feedback": "Think of the form used before a vowel.",
+      "explanation": "Été is masculine singular and starts with a vowel, so this summer is cet été."
+    },
+    {
+      "id": "demonstratives-cet-vowel-5",
+      "pattern": "cet-vowel",
+      "type": "complete",
+      "instruction": "Write the French word for that.",
+      "source": "Tu connais ____ acteur ?",
+      "answers": [
+        "cet"
+      ],
+      "hint": "Acteur is masculine and starts with a vowel.",
+      "feedback": "Think of the form used before a vowel.",
+      "explanation": "Acteur is masculine singular and starts with a vowel, so that actor is cet acteur."
+    },
+    {
+      "id": "demonstratives-cet-vowel-6",
+      "pattern": "cet-vowel",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ce ami habite à Lyon.",
+      "answers": [
+        "Cet ami habite à Lyon."
+      ],
+      "hint": "Say ce ami aloud: two vowels collide.",
+      "feedback": "Ami starts with a vowel.",
+      "explanation": "Ami is masculine singular and starts with a vowel, so this friend is cet ami."
+    },
+    {
+      "id": "demonstratives-cet-vowel-7",
+      "pattern": "cet-vowel",
+      "type": "build",
+      "instruction": "Build the sentence: This hospital is new. Leave one tile unused.",
+      "source": "This hospital is new.",
+      "tokens": [
+        "hôpital",
+        "Ce",
+        "est",
+        "Cet",
+        "neuf."
+      ],
+      "answers": [
+        "Cet hôpital est neuf."
+      ],
+      "hint": "The h of hôpital is silent.",
+      "feedback": "Look at the first sound of hôpital.",
+      "explanation": "Hôpital is masculine singular with a silent h, so this hospital is cet hôpital."
+    },
+    {
+      "id": "demonstratives-cet-vowel-8",
+      "pattern": "cet-vowel",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "That child (a boy) is tired.",
+      "answers": [
+        "Cet enfant est fatigué.",
+        "Cet enfant-là est fatigué."
+      ],
+      "hint": "Enfant is masculine here and starts with a vowel.",
+      "feedback": "Check the demonstrative before a vowel.",
+      "explanation": "Enfant for a boy is masculine singular and starts with a vowel, so that child is cet enfant."
+    },
+    {
+      "id": "demonstratives-cet-vowel-9",
+      "pattern": "cet-vowel",
+      "type": "choose",
+      "instruction": "Choose the word for this.",
+      "source": "Je te présente ____ amie, Claire.",
+      "options": [
+        "cette",
+        "cet",
+        "ce"
+      ],
+      "answers": [
+        "cette"
+      ],
+      "hint": "Amie is feminine. Does the feminine form need to change before a vowel?",
+      "feedback": "Cet is only for masculine nouns.",
+      "explanation": "Amie is feminine singular, so this friend is cette amie. Cet is only for masculine nouns; cette already ends in a consonant sound, so it never changes."
+    },
+    {
+      "id": "demonstratives-ci-la-1",
+      "pattern": "ci-la",
+      "type": "complete",
+      "instruction": "Write the ending that means there.",
+      "source": "Je préfère ce livre-ci, pas ce livre-____.",
+      "answers": [
+        "là"
+      ],
+      "strictAccents": true,
+      "hint": "-ci means here; the other ending means there.",
+      "feedback": "Check the accent: without it the word means the.",
+      "explanation": "Ce livre-ci is this book here; ce livre-là is that book there. Là needs its accent."
+    },
+    {
+      "id": "demonstratives-ci-la-2",
+      "pattern": "ci-la",
+      "type": "choose",
+      "instruction": "Choose the ending that means there.",
+      "source": "Tu préfères cette robe-ci ou cette robe-____ ?",
+      "options": [
+        "là",
+        "la",
+        "ci"
+      ],
+      "answers": [
+        "là"
+      ],
+      "hint": "The two dresses are in different places.",
+      "feedback": "Look closely at the accent.",
+      "explanation": "Cette robe-ci is this dress here, cette robe-là is that dress there. Là with an accent means there.",
+      "strictAccents": true
+    },
+    {
+      "id": "demonstratives-ci-la-3",
+      "pattern": "ci-la",
+      "type": "translate",
+      "instruction": "Translate into French. Use -ci and -là.",
+      "source": "This shirt (here) is blue and that shirt (there) is white.",
+      "answers": [
+        "Cette chemise-ci est bleue et cette chemise-là est blanche.",
+        "Cette chemise-ci est bleue et celle-là est blanche."
+      ],
+      "hint": "Chemise is feminine; add -ci for here and -là for there.",
+      "feedback": "Put -ci and -là on the noun with a hyphen.",
+      "explanation": "Cette chemise-ci points to the shirt here and cette chemise-là to the one there.",
+      "strictAccents": true
+    },
+    {
+      "id": "demonstratives-ci-la-4",
+      "pattern": "ci-la",
+      "type": "build",
+      "instruction": "Build the sentence: I take this bag here, not that bag there. Leave one tile unused.",
+      "source": "I take this bag here, not that bag there.",
+      "tokens": [
+        "prends",
+        "sac-là.",
+        "Je",
+        "ce",
+        "sac-ci,",
+        "cet",
+        "pas",
+        "ce"
+      ],
+      "answers": [
+        "Je prends ce sac-ci, pas ce sac-là."
+      ],
+      "hint": "Here is -ci, there is -là.",
+      "feedback": "Sac is masculine and starts with a consonant.",
+      "explanation": "Ce sac-ci is the bag here and ce sac-là the bag there."
+    },
+    {
+      "id": "demonstratives-ci-la-5",
+      "pattern": "ci-la",
+      "type": "rewrite",
+      "instruction": "Add -là to the noun to point at the house over there.",
+      "source": "Regarde cette maison.",
+      "answers": [
+        "Regarde cette maison-là."
+      ],
+      "hint": "Join the ending to the noun with a hyphen.",
+      "feedback": "Add the ending for there to maison.",
+      "explanation": "Cette maison-là means that house there.",
+      "strictAccents": true
+    },
+    {
+      "id": "demonstratives-ci-la-6",
+      "pattern": "ci-la",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je préfère ces chaussures-la.",
+      "answers": [
+        "Je préfère ces chaussures-là."
+      ],
+      "strictAccents": true,
+      "hint": "Look at the last word.",
+      "feedback": "La without an accent means the.",
+      "explanation": "The ending that means there is -là, with an accent."
+    },
+    {
+      "id": "demonstratives-cest-ce-sont-1",
+      "pattern": "cest-ce-sont",
+      "type": "choose",
+      "instruction": "Choose the written form.",
+      "source": "____ mes amis de l’école.",
+      "options": [
+        "Ce sont",
+        "Ces sont",
+        "Se sont"
+      ],
+      "answers": [
+        "Ce sont"
+      ],
+      "hint": "Amis is plural.",
+      "feedback": "Check the spelling of each word, too.",
+      "explanation": "Before a plural noun, written French uses ce sont."
+    },
+    {
+      "id": "demonstratives-cest-ce-sont-2",
+      "pattern": "cest-ce-sont",
+      "type": "choose",
+      "instruction": "Choose the right words.",
+      "source": "Regarde la photo : ____ ma grand-mère.",
+      "options": [
+        "c’est",
+        "ce sont",
+        "s’est"
+      ],
+      "answers": [
+        "c’est"
+      ],
+      "hint": "One person.",
+      "feedback": "Look at the spelling and the number.",
+      "explanation": "For one person introduced with a word like ma, use c’est."
+    },
+    {
+      "id": "demonstratives-cest-ce-sont-3",
+      "pattern": "cest-ce-sont",
+      "type": "complete",
+      "instruction": "Write c’est or ce sont.",
+      "source": "____ nos voisins.",
+      "answers": [
+        "Ce sont"
+      ],
+      "alternatives": [
+        {
+          "answer": "C’est",
+          "message": "In speech people say c’est nos voisins, but written French uses ce sont before a plural noun."
+        }
+      ],
+      "hint": "Voisins is plural.",
+      "feedback": "Written French uses a plural verb here.",
+      "explanation": "Nos voisins is plural, so written French uses ce sont."
+    },
+    {
+      "id": "demonstratives-cest-ce-sont-4",
+      "pattern": "cest-ce-sont",
+      "type": "complete",
+      "instruction": "Write c’est or ce sont.",
+      "source": "____ un bon restaurant.",
+      "answers": [
+        "C’est"
+      ],
+      "hint": "One restaurant.",
+      "feedback": "The noun is singular.",
+      "explanation": "Un bon restaurant is singular, so it is c’est."
+    },
+    {
+      "id": "demonstratives-cest-ce-sont-5",
+      "pattern": "cest-ce-sont",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It’s my brother.",
+      "answers": [
+        "C’est mon frère."
+      ],
+      "alternatives": [
+        {
+          "answer": "Il est mon frère.",
+          "message": "Before a word like mon, un or le + noun, French uses c’est, not il est: c’est mon frère."
+        }
+      ],
+      "hint": "Use the form for pointing at one person.",
+      "feedback": "Before mon + noun, French does not use il est.",
+      "explanation": "To say who someone is with a word like mon, use c’est: c’est mon frère."
+    },
+    {
+      "id": "demonstratives-cest-ce-sont-6",
+      "pattern": "cest-ce-sont",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "They are my parents.",
+      "answers": [
+        "Ce sont mes parents."
+      ],
+      "alternatives": [
+        {
+          "answer": "C’est mes parents.",
+          "message": "That is common in speech, but written French uses ce sont before a plural noun."
+        },
+        {
+          "answer": "Ils sont mes parents.",
+          "message": "Before a word like mes + noun, French uses ce sont, not ils sont."
+        }
+      ],
+      "hint": "Parents is plural, and you are saying who they are.",
+      "feedback": "Before mes + noun, French does not use ils sont.",
+      "explanation": "To say who several people are, written French uses ce sont: ce sont mes parents."
+    },
+    {
+      "id": "demonstratives-cest-ce-sont-7",
+      "pattern": "cest-ce-sont",
+      "type": "rewrite",
+      "instruction": "Make cousin plural and change the rest of the sentence to match.",
+      "source": "C’est mon cousin.",
+      "answers": [
+        "Ce sont mes cousins."
+      ],
+      "alternatives": [
+        {
+          "answer": "C’est mes cousins.",
+          "message": "That is common in speech, but written French uses ce sont before a plural noun."
+        }
+      ],
+      "hint": "The plural of c’est changes two words.",
+      "feedback": "Change c’est, the possessive and the noun.",
+      "explanation": "A plural noun takes ce sont in written French: ce sont mes cousins."
+    },
+    {
+      "id": "demonstratives-cest-ce-sont-8",
+      "pattern": "cest-ce-sont",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ces sont mes livres.",
+      "answers": [
+        "Ce sont mes livres."
+      ],
+      "hint": "The first word is not the one that means these.",
+      "feedback": "Before sont, use the word ce with no s.",
+      "explanation": "The expression is ce sont; ces means these and goes before a noun."
+    },
+    {
+      "id": "demonstratives-homophones-1",
+      "pattern": "homophones",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Il ____ réveille à sept heures.",
+      "options": [
+        "se",
+        "ce",
+        "ces"
+      ],
+      "answers": [
+        "se"
+      ],
+      "hint": "The gap is before a verb.",
+      "feedback": "Ce points at a thing; this word goes with a verb.",
+      "explanation": "Se réveiller is a reflexive verb, so it is il se réveille. Ce only goes before a noun."
+    },
+    {
+      "id": "demonstratives-homophones-2",
+      "pattern": "homophones",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "____ matin, il fait froid.",
+      "options": [
+        "Ce",
+        "Se",
+        "Ses"
+      ],
+      "answers": [
+        "Ce"
+      ],
+      "hint": "Here the word means this, before a noun.",
+      "feedback": "This word points at matin.",
+      "explanation": "Ce matin means this morning; se only goes before a verb."
+    },
+    {
+      "id": "demonstratives-homophones-3",
+      "pattern": "homophones",
+      "type": "choose",
+      "instruction": "Choose the word for his.",
+      "source": "Paul range ____ livres.",
+      "options": [
+        "ses",
+        "ces",
+        "ce"
+      ],
+      "answers": [
+        "ses"
+      ],
+      "hint": "The meaning is his, not these.",
+      "feedback": "One of these words points, the other shows the owner.",
+      "explanation": "Ses shows the owner (his books); ces would mean these books."
+    },
+    {
+      "id": "demonstratives-homophones-4",
+      "pattern": "homophones",
+      "type": "choose",
+      "instruction": "Choose the word for these.",
+      "source": "Tu vois ____ nuages ?",
+      "options": [
+        "ces",
+        "ses",
+        "se"
+      ],
+      "answers": [
+        "ces"
+      ],
+      "hint": "The meaning is these, not his.",
+      "feedback": "One of these words points, the other shows the owner.",
+      "explanation": "Ces points at the clouds: ces nuages. Ses would mean his or her clouds."
+    },
+    {
+      "id": "demonstratives-homophones-5",
+      "pattern": "homophones",
+      "type": "complete",
+      "instruction": "Write ce or se.",
+      "source": "Elle ____ promène avec son chien.",
+      "answers": [
+        "se"
+      ],
+      "hint": "The gap is before a verb.",
+      "feedback": "Ce goes before a noun; look at the next word.",
+      "explanation": "Se promener is a reflexive verb: elle se promène."
+    },
+    {
+      "id": "demonstratives-homophones-6",
+      "pattern": "homophones",
+      "type": "complete",
+      "instruction": "Write ces or ses. The meaning is these.",
+      "source": "J’aime ____ couleurs.",
+      "answers": [
+        "ces"
+      ],
+      "hint": "You are pointing, not saying whose.",
+      "feedback": "The word for these starts with c.",
+      "explanation": "Ces couleurs means these colours; ses couleurs would mean his or her colours."
+    },
+    {
+      "id": "demonstratives-homophones-7",
+      "pattern": "homophones",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Se restaurant est excellent.",
+      "answers": [
+        "Ce restaurant est excellent."
+      ],
+      "hint": "Restaurant is a noun, not a verb.",
+      "feedback": "The first word sounds right but is spelled wrong.",
+      "explanation": "Before a noun, this is ce; se only goes before a verb."
+    },
+    {
+      "id": "demonstratives-homophones-8",
+      "pattern": "homophones",
+      "type": "repair",
+      "instruction": "Fix the error. Marie loves her own parents.",
+      "source": "Marie aime beaucoup ces parents.",
+      "answers": [
+        "Marie aime beaucoup ses parents."
+      ],
+      "hint": "The meaning is her parents.",
+      "feedback": "The word you need shows the owner.",
+      "explanation": "Ses shows the owner (her parents); ces means these."
+    },
+    {
+      "id": "demonstratives-homophones-9",
+      "pattern": "homophones",
+      "type": "build",
+      "instruction": "Build the sentence: She gets up early. Leave one tile unused.",
+      "source": "She gets up early.",
+      "tokens": [
+        "lève",
+        "Elle",
+        "ce",
+        "se",
+        "tôt."
+      ],
+      "answers": [
+        "Elle se lève tôt."
+      ],
+      "hint": "Se lever is a reflexive verb.",
+      "feedback": "The word before the verb is not the one that points at things.",
+      "explanation": "Se lever is reflexive, so it is elle se lève. Ce would point at a noun."
+    }
+  ]
+}

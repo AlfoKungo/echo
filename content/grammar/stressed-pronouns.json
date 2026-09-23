@@ -1,0 +1,713 @@
+{
+  "id": "stressed-pronouns",
+  "unit": "pronouns",
+  "level": "A2",
+  "title": "Moi, toi, lui, eux",
+  "description": "Use moi, toi, lui, elle, eux and the others after prepositions, for emphasis and in short answers.",
+  "mark": "moi · toi · eux",
+  "rule": "The stressed pronouns are moi, toi, lui, elle, nous, vous, eux and elles; lui means him, elle her, eux them (men or a mixed group) and elles them (only women). Use them after a preposition (avec moi, chez eux, pour elle, sans toi), after que in comparisons (plus grand que lui, with que becoming qu’ before elle, elles and eux), and to add emphasis before a subject (Moi, je préfère le thé). Use them after c’est (c’est moi, c’est nous), with ce sont eux and ce sont elles in the plural, and in short answers without a verb: moi aussi after a positive sentence, moi non plus after a negative one, et toi ? Penser à, faire attention à and s’intéresser à keep à + stressed pronoun for a person instead of lui or leur: je pense à elle, never je lui pense. Être à + stressed pronoun says who something belongs to: ce livre est à moi.",
+  "example": "Tu viens avec moi ? · Moi, je préfère le thé. · Ce stylo est à lui.",
+  "aside": "In speech, c’est eux and c’est elles are very common; in careful written French, use ce sont eux and ce sont elles.",
+  "exercises": [
+    {
+      "id": "stressed-pronouns-after-preposition-1",
+      "pattern": "after-preposition",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Mes grands-parents ? Nous dînons chez ____ dimanche.",
+      "options": [
+        "eux",
+        "ils",
+        "leur",
+        "les"
+      ],
+      "answers": [
+        "eux"
+      ],
+      "hint": "After a preposition such as chez, use a stressed pronoun.",
+      "feedback": "Ils is a subject, leur and les go before a verb. After chez, use the stressed form.",
+      "explanation": "After chez, them is eux: nous dînons chez eux."
+    },
+    {
+      "id": "stressed-pronouns-after-preposition-2",
+      "pattern": "after-preposition",
+      "type": "complete",
+      "instruction": "Write the stressed pronoun.",
+      "source": "J’ai acheté des fleurs pour ____ (my mother).",
+      "answers": [
+        "elle"
+      ],
+      "hint": "Your mother is one woman, after the preposition pour.",
+      "feedback": "After pour, use the stressed pronoun for her.",
+      "explanation": "After a preposition, her is elle: des fleurs pour elle."
+    },
+    {
+      "id": "stressed-pronouns-after-preposition-3",
+      "pattern": "after-preposition",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "We’re eating at her place.",
+      "answers": [
+        "Nous mangeons chez elle.",
+        "On mange chez elle."
+      ],
+      "hint": "At someone’s place is chez + a stressed pronoun.",
+      "feedback": "After chez, use the stressed form for her.",
+      "explanation": "Chez elle means at her place: nous mangeons chez elle."
+    },
+    {
+      "id": "stressed-pronouns-after-preposition-4",
+      "pattern": "after-preposition",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She works with them. (men)",
+      "answers": [
+        "Elle travaille avec eux."
+      ],
+      "hint": "After avec, use a stressed pronoun; the group is masculine.",
+      "feedback": "Not ils or les: after avec, use the stressed form.",
+      "explanation": "After a preposition, them (masculine) is eux: elle travaille avec eux."
+    },
+    {
+      "id": "stressed-pronouns-after-preposition-5",
+      "pattern": "after-preposition",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Tu pars sans je ?",
+      "answers": [
+        "Tu pars sans moi ?"
+      ],
+      "hint": "Je is only a subject.",
+      "feedback": "After sans, use the stressed form for me.",
+      "explanation": "After a preposition, me is moi: tu pars sans moi ?"
+    },
+    {
+      "id": "stressed-pronouns-after-preposition-6",
+      "pattern": "after-preposition",
+      "type": "build",
+      "instruction": "Build the French sentence.",
+      "source": "This coffee is for him.",
+      "tokens": [
+        "pour",
+        "Ce",
+        "lui.",
+        "est",
+        "café",
+        "il."
+      ],
+      "answers": [
+        "Ce café est pour lui."
+      ],
+      "hint": "After pour, use a stressed pronoun.",
+      "feedback": "Il is a subject. After a preposition, him has a different form.",
+      "explanation": "After pour, him is lui: ce café est pour lui."
+    },
+    {
+      "id": "stressed-pronouns-after-preposition-7",
+      "pattern": "after-preposition",
+      "type": "rewrite",
+      "instruction": "Replace mes sœurs with a stressed pronoun.",
+      "source": "Je voyage avec mes sœurs.",
+      "answers": [
+        "Je voyage avec elles."
+      ],
+      "hint": "Your sisters are all women, and the pronoun follows avec.",
+      "feedback": "Eux is for men or a mixed group.",
+      "explanation": "After a preposition, them (only women) is elles: je voyage avec elles."
+    },
+    {
+      "id": "stressed-pronouns-emphasis-1",
+      "pattern": "emphasis",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "____, je préfère le thé.",
+      "options": [
+        "Moi",
+        "Je",
+        "Me",
+        "Mon"
+      ],
+      "answers": [
+        "Moi"
+      ],
+      "hint": "The stressed pronoun can stand before a subject pronoun to add emphasis.",
+      "feedback": "Je is already the subject. The emphatic word before it is a stressed pronoun.",
+      "explanation": "Moi adds emphasis before je: Moi, je préfère le thé."
+    },
+    {
+      "id": "stressed-pronouns-emphasis-2",
+      "pattern": "emphasis",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "____, ils habitent à Lyon, mais nous, nous habitons à Paris.",
+      "options": [
+        "Eux",
+        "Ils",
+        "Leur",
+        "Les"
+      ],
+      "answers": [
+        "Eux"
+      ],
+      "hint": "Look at how nous, nous works in the second half.",
+      "feedback": "The emphatic pronoun for ils is not ils itself.",
+      "explanation": "The stressed pronoun for ils is eux: Eux, ils habitent à Lyon."
+    },
+    {
+      "id": "stressed-pronouns-emphasis-3",
+      "pattern": "emphasis",
+      "type": "rewrite",
+      "instruction": "Add emphasis by putting a stressed pronoun at the start.",
+      "source": "Tu as raison.",
+      "answers": [
+        "Toi, tu as raison."
+      ],
+      "hint": "The stressed pronoun matching tu goes first, followed by a comma.",
+      "feedback": "Keep tu as the subject; add its stressed form before it.",
+      "explanation": "The stressed form of tu is toi: Toi, tu as raison."
+    },
+    {
+      "id": "stressed-pronouns-emphasis-4",
+      "pattern": "emphasis",
+      "type": "rewrite",
+      "instruction": "Add emphasis by putting a stressed pronoun at the start.",
+      "source": "Il travaille beaucoup.",
+      "answers": [
+        "Lui, il travaille beaucoup."
+      ],
+      "hint": "The stressed pronoun matching il goes first.",
+      "feedback": "Keep il as the subject; add its stressed form before it.",
+      "explanation": "The stressed form of il is lui: Lui, il travaille beaucoup."
+    },
+    {
+      "id": "stressed-pronouns-emphasis-5",
+      "pattern": "emphasis",
+      "type": "build",
+      "instruction": "Build the French sentence.",
+      "source": "Me, I’m staying here.",
+      "tokens": [
+        "reste",
+        "Moi,",
+        "ici.",
+        "je",
+        "Me,"
+      ],
+      "answers": [
+        "Moi, je reste ici."
+      ],
+      "hint": "The English me at the start is a stressed pronoun in French.",
+      "feedback": "Me only goes before a verb. For emphasis, use the stressed form.",
+      "explanation": "Moi adds emphasis before je: Moi, je reste ici."
+    },
+    {
+      "id": "stressed-pronouns-emphasis-6",
+      "pattern": "emphasis",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Me, j’aime le chocolat.",
+      "answers": [
+        "Moi, j’aime le chocolat."
+      ],
+      "hint": "The emphatic word at the start is wrong.",
+      "feedback": "Me is an object pronoun. Emphasis uses the stressed form.",
+      "explanation": "Emphasis uses the stressed pronoun: Moi, j’aime le chocolat."
+    },
+    {
+      "id": "stressed-pronouns-emphasis-7",
+      "pattern": "emphasis",
+      "type": "translate",
+      "instruction": "Translate into French, adding a stressed pronoun before the subject for emphasis.",
+      "source": "They are leaving tomorrow. (men)",
+      "answers": [
+        "Eux, ils partent demain."
+      ],
+      "hint": "Put the stressed form of ils first, then the normal sentence.",
+      "feedback": "Start with the stressed pronoun for a masculine they, then a comma and ils.",
+      "explanation": "The stressed form of ils is eux: Eux, ils partent demain."
+    },
+    {
+      "id": "stressed-pronouns-c-est-1",
+      "pattern": "c-est",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Tu vois Paul et Marc ? Ce sont ____, là-bas.",
+      "options": [
+        "eux",
+        "ils",
+        "les",
+        "leur"
+      ],
+      "answers": [
+        "eux"
+      ],
+      "hint": "After ce sont, use a stressed pronoun.",
+      "feedback": "Ils, les and leur cannot follow ce sont.",
+      "explanation": "After c’est and ce sont, use the stressed form: ce sont eux."
+    },
+    {
+      "id": "stressed-pronouns-c-est-2",
+      "pattern": "c-est",
+      "type": "complete",
+      "instruction": "Write the stressed pronoun.",
+      "source": "Qui a fait ce gâteau ? C’est ____, ma sœur.",
+      "answers": [
+        "elle"
+      ],
+      "hint": "Your sister is one woman, after c’est.",
+      "feedback": "After c’est, use the stressed pronoun for her.",
+      "explanation": "After c’est, her is elle: c’est elle, ma sœur."
+    },
+    {
+      "id": "stressed-pronouns-c-est-3",
+      "pattern": "c-est",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Qui a appelé ? C’est il.",
+      "answers": [
+        "Qui a appelé ? C’est lui."
+      ],
+      "hint": "Il is only a subject.",
+      "feedback": "After c’est, use the stressed form for him.",
+      "explanation": "After c’est, him is lui: c’est lui."
+    },
+    {
+      "id": "stressed-pronouns-c-est-4",
+      "pattern": "c-est",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It’s us!",
+      "answers": [
+        "C’est nous !"
+      ],
+      "hint": "It is + a stressed pronoun. Which persons change c’est to ce sont?",
+      "feedback": "Not ce sont: nous keeps c’est.",
+      "explanation": "C’est nous: only the third person plural takes ce sont."
+    },
+    {
+      "id": "stressed-pronouns-c-est-5",
+      "pattern": "c-est",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It’s them. (the girls)",
+      "answers": [
+        "Ce sont elles."
+      ],
+      "alternatives": [
+        {
+          "answer": "C’est elles.",
+          "message": "That is very common in speech. In careful written French, use ce sont before eux and elles."
+        }
+      ],
+      "hint": "The girls are all women, and it is them is plural.",
+      "feedback": "Use the plural ce sont and the stressed pronoun for women.",
+      "explanation": "In written French, it is them is ce sont + eux or elles: ce sont elles."
+    },
+    {
+      "id": "stressed-pronouns-c-est-6",
+      "pattern": "c-est",
+      "type": "rewrite",
+      "instruction": "Make it plural: the photo now shows Paul and Luc.",
+      "source": "C’est lui, sur la photo.",
+      "answers": [
+        "Ce sont eux, sur la photo."
+      ],
+      "alternatives": [
+        {
+          "answer": "C’est eux, sur la photo.",
+          "message": "That is very common in speech. In careful written French, use ce sont before eux and elles."
+        }
+      ],
+      "hint": "Two men: both c’est and lui change.",
+      "feedback": "Plural they after c’est: the verb and the pronoun both become plural.",
+      "explanation": "Ce sont eux is the plural of c’est lui."
+    },
+    {
+      "id": "stressed-pronouns-short-answers-1",
+      "pattern": "short-answers",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "J’adore le cinéma. — ____ aussi !",
+      "options": [
+        "Moi",
+        "Je",
+        "Me",
+        "Mon"
+      ],
+      "answers": [
+        "Moi"
+      ],
+      "hint": "A short answer without a verb uses a stressed pronoun.",
+      "feedback": "Je needs a verb after it. With no verb, use the stressed form.",
+      "explanation": "Moi aussi means me too: the stressed pronoun stands alone."
+    },
+    {
+      "id": "stressed-pronouns-short-answers-2",
+      "pattern": "short-answers",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Je n’aime pas le café. — Moi ____. Je préfère le thé.",
+      "options": [
+        "non plus",
+        "aussi",
+        "plus",
+        "pas aussi"
+      ],
+      "answers": [
+        "non plus"
+      ],
+      "hint": "The first sentence is negative, and the reply agrees with it.",
+      "feedback": "Aussi agrees with a positive sentence. A negative one needs another phrase.",
+      "explanation": "Moi non plus means me neither: it agrees with a negative sentence."
+    },
+    {
+      "id": "stressed-pronouns-short-answers-3",
+      "pattern": "short-answers",
+      "type": "complete",
+      "instruction": "Write the missing stressed pronoun.",
+      "source": "Je suis fatigué. Et ____ ? (to a friend)",
+      "answers": [
+        "toi"
+      ],
+      "hint": "And you? to a friend, with no verb.",
+      "feedback": "Tu needs a verb. With no verb, use the stressed form.",
+      "explanation": "Et toi ? uses the stressed pronoun because there is no verb."
+    },
+    {
+      "id": "stressed-pronouns-short-answers-4",
+      "pattern": "short-answers",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Me too!",
+      "answers": [
+        "Moi aussi !"
+      ],
+      "hint": "Me too is a stressed pronoun + aussi.",
+      "feedback": "Use the stressed form of me, not me or je.",
+      "explanation": "Me too is moi aussi."
+    },
+    {
+      "id": "stressed-pronouns-short-answers-5",
+      "pattern": "short-answers",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Neither do we. (reply to: Je ne mange pas de viande.)",
+      "answers": [
+        "Nous non plus."
+      ],
+      "hint": "The statement is negative, and the reply is about us.",
+      "feedback": "After a negative sentence, use non plus, not aussi.",
+      "explanation": "Nous non plus agrees with a negative sentence: neither do we."
+    },
+    {
+      "id": "stressed-pronouns-short-answers-6",
+      "pattern": "short-answers",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je ne vais pas à la fête. — Moi aussi.",
+      "answers": [
+        "Je ne vais pas à la fête. — Moi non plus."
+      ],
+      "hint": "Is the first sentence positive or negative?",
+      "feedback": "The reply agrees with a negative sentence.",
+      "explanation": "After a negative sentence, me neither is moi non plus."
+    },
+    {
+      "id": "stressed-pronouns-short-answers-7",
+      "pattern": "short-answers",
+      "type": "build",
+      "instruction": "Build the reply: Me too. And you? (to a friend)",
+      "source": "J’aime voyager.",
+      "tokens": [
+        "toi ?",
+        "aussi.",
+        "Moi",
+        "tu ?",
+        "Et"
+      ],
+      "answers": [
+        "Moi aussi. Et toi ?"
+      ],
+      "hint": "Both parts have no verb, so both use stressed pronouns.",
+      "feedback": "Tu needs a verb after it.",
+      "explanation": "Moi aussi. Et toi ? Both short answers use stressed pronouns."
+    },
+    {
+      "id": "stressed-pronouns-comparison-1",
+      "pattern": "comparison",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Mon frère est plus grand que ____.",
+      "options": [
+        "moi",
+        "je",
+        "me",
+        "m’"
+      ],
+      "answers": [
+        "moi"
+      ],
+      "hint": "After que in a comparison with no verb, use a stressed pronoun.",
+      "feedback": "Je and me need a verb. After que, use the stressed form.",
+      "explanation": "After que in a comparison, me is moi: plus grand que moi."
+    },
+    {
+      "id": "stressed-pronouns-comparison-2",
+      "pattern": "comparison",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Tes cousins courent vite, mais tu cours plus vite qu’____.",
+      "options": [
+        "eux",
+        "ils",
+        "leur",
+        "les"
+      ],
+      "answers": [
+        "eux"
+      ],
+      "hint": "After qu’ in a comparison, use a stressed pronoun.",
+      "feedback": "Ils needs a verb, and leur and les go before a verb.",
+      "explanation": "After que, them is eux, and que becomes qu’: plus vite qu’eux."
+    },
+    {
+      "id": "stressed-pronouns-comparison-3",
+      "pattern": "comparison",
+      "type": "complete",
+      "instruction": "Write the stressed pronoun.",
+      "source": "Je suis plus âgé qu’____ (Sophie).",
+      "answers": [
+        "elle"
+      ],
+      "hint": "Sophie is one woman, and que has already shortened before the pronoun.",
+      "feedback": "After que, use the stressed pronoun for her.",
+      "explanation": "After que, her is elle, and que becomes qu’ before it: plus âgé qu’elle."
+    },
+    {
+      "id": "stressed-pronouns-comparison-4",
+      "pattern": "comparison",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She is taller than him.",
+      "answers": [
+        "Elle est plus grande que lui."
+      ],
+      "hint": "Than him: que + a stressed pronoun. Taller agrees with she.",
+      "feedback": "Not il or le after que: use the stressed form.",
+      "explanation": "After que, him is lui: elle est plus grande que lui."
+    },
+    {
+      "id": "stressed-pronouns-comparison-5",
+      "pattern": "comparison",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Tu travailles plus que je.",
+      "answers": [
+        "Tu travailles plus que moi."
+      ],
+      "hint": "Je cannot stand alone.",
+      "feedback": "After que with no verb, use the stressed form.",
+      "explanation": "After que in a comparison, me is moi: plus que moi."
+    },
+    {
+      "id": "stressed-pronouns-comparison-6",
+      "pattern": "comparison",
+      "type": "rewrite",
+      "instruction": "Replace nos cousins with a stressed pronoun.",
+      "source": "Nous sommes plus jeunes que nos cousins.",
+      "answers": [
+        "Nous sommes plus jeunes qu’eux."
+      ],
+      "alternatives": [
+        {
+          "answer": "Nous sommes plus jeunes que eux.",
+          "message": "The pronoun is right, but que becomes qu’ before a vowel: qu’eux."
+        }
+      ],
+      "hint": "Cousins are men or a mixed group, and the pronoun begins with a vowel.",
+      "feedback": "Use the stressed pronoun for them (masculine), and check que before a vowel.",
+      "explanation": "After que, them is eux, and que becomes qu’: plus jeunes qu’eux."
+    },
+    {
+      "id": "stressed-pronouns-penser-a-1",
+      "pattern": "penser-a",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Ma grand-mère ? Je pense souvent à ____.",
+      "options": [
+        "elle",
+        "lui",
+        "la",
+        "leur"
+      ],
+      "answers": [
+        "elle"
+      ],
+      "hint": "Penser à keeps à and uses a stressed pronoun.",
+      "feedback": "Lui would be him here, la and leur cannot follow à.",
+      "explanation": "Penser à + person keeps à + stressed pronoun: je pense à elle."
+    },
+    {
+      "id": "stressed-pronouns-penser-a-2",
+      "pattern": "penser-a",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Les enfants traversent la rue. Fais attention à ____ !",
+      "options": [
+        "eux",
+        "leur",
+        "les",
+        "ils"
+      ],
+      "answers": [
+        "eux"
+      ],
+      "hint": "Faire attention à keeps à before the person.",
+      "feedback": "After à, use the stressed pronoun for them.",
+      "explanation": "Faire attention à + person takes à + stressed pronoun: fais attention à eux."
+    },
+    {
+      "id": "stressed-pronouns-penser-a-3",
+      "pattern": "penser-a",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Marie ? Je lui pense tous les jours.",
+      "answers": [
+        "Marie ? Je pense à elle tous les jours."
+      ],
+      "hint": "Penser à is one of the verbs that do not take lui.",
+      "feedback": "Keep à after the verb and use a stressed pronoun.",
+      "explanation": "With penser à, a person stays after the verb as à + stressed pronoun: je pense à elle."
+    },
+    {
+      "id": "stressed-pronouns-penser-a-4",
+      "pattern": "penser-a",
+      "type": "rewrite",
+      "instruction": "Replace à Thomas with à + a stressed pronoun.",
+      "source": "Elle s’intéresse à Thomas.",
+      "answers": [
+        "Elle s’intéresse à lui."
+      ],
+      "hint": "S’intéresser à keeps à before the person.",
+      "feedback": "Thomas is a man; the pronoun follows à.",
+      "explanation": "S’intéresser à + person keeps à + stressed pronoun: elle s’intéresse à lui."
+    },
+    {
+      "id": "stressed-pronouns-penser-a-5",
+      "pattern": "penser-a",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I’m thinking of you. (to a friend)",
+      "answers": [
+        "Je pense à toi."
+      ],
+      "hint": "Think of someone is penser à + a stressed pronoun.",
+      "feedback": "Not je te pense: penser à keeps à.",
+      "explanation": "Penser à + person keeps à + stressed pronoun: je pense à toi."
+    },
+    {
+      "id": "stressed-pronouns-penser-a-6",
+      "pattern": "penser-a",
+      "type": "complete",
+      "instruction": "Write the stressed pronoun.",
+      "source": "Mes amies ? Je pense à ____.",
+      "answers": [
+        "elles"
+      ],
+      "hint": "Amies with an e: all women.",
+      "feedback": "Eux is for men or a mixed group.",
+      "explanation": "For only women, them is elles: je pense à elles."
+    },
+    {
+      "id": "stressed-pronouns-etre-a-1",
+      "pattern": "etre-a",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Ces clés sont à Marc ? Oui, elles sont à ____.",
+      "options": [
+        "lui",
+        "il",
+        "le",
+        "son"
+      ],
+      "answers": [
+        "lui"
+      ],
+      "hint": "Être à + a stressed pronoun shows the owner.",
+      "feedback": "After à, use the stressed pronoun for him.",
+      "explanation": "Être à + stressed pronoun: elles sont à lui, they are his."
+    },
+    {
+      "id": "stressed-pronouns-etre-a-2",
+      "pattern": "etre-a",
+      "type": "complete",
+      "instruction": "Write the stressed pronoun for us.",
+      "source": "Ce jardin est à ____.",
+      "answers": [
+        "nous"
+      ],
+      "hint": "The stressed form for us looks like the subject form.",
+      "feedback": "After à, write the stressed pronoun for us.",
+      "explanation": "Être à + stressed pronoun: ce jardin est à nous, it is ours."
+    },
+    {
+      "id": "stressed-pronouns-etre-a-3",
+      "pattern": "etre-a",
+      "type": "translate",
+      "instruction": "Translate into French with être à.",
+      "source": "This book is mine.",
+      "answers": [
+        "Ce livre est à moi."
+      ],
+      "hint": "Mine becomes à + a stressed pronoun.",
+      "feedback": "Use est à + the stressed form of me.",
+      "explanation": "Être à + stressed pronoun shows the owner: ce livre est à moi."
+    },
+    {
+      "id": "stressed-pronouns-etre-a-4",
+      "pattern": "etre-a",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ce sac est à je.",
+      "answers": [
+        "Ce sac est à moi."
+      ],
+      "hint": "Je is only a subject.",
+      "feedback": "After à, use the stressed form.",
+      "explanation": "Être à + stressed pronoun: ce sac est à moi."
+    },
+    {
+      "id": "stressed-pronouns-etre-a-5",
+      "pattern": "etre-a",
+      "type": "build",
+      "instruction": "Build the French sentence.",
+      "source": "These photos are theirs. (the girls)",
+      "tokens": [
+        "à",
+        "sont",
+        "Ces",
+        "photos",
+        "elles.",
+        "leurs."
+      ],
+      "answers": [
+        "Ces photos sont à elles."
+      ],
+      "hint": "Theirs becomes à + a stressed pronoun; the owners are girls.",
+      "feedback": "Leurs goes before a noun. After à, use the stressed form.",
+      "explanation": "Être à + stressed pronoun: ces photos sont à elles."
+    },
+    {
+      "id": "stressed-pronouns-etre-a-6",
+      "pattern": "etre-a",
+      "type": "rewrite",
+      "instruction": "Rewrite as Ce stylo est à + a stressed pronoun.",
+      "source": "C’est le stylo de Paul.",
+      "answers": [
+        "Ce stylo est à lui."
+      ],
+      "hint": "Paul is one man.",
+      "feedback": "After à, use the stressed pronoun for him.",
+      "explanation": "Être à + stressed pronoun: ce stylo est à lui."
+    }
+  ]
+}

@@ -31,7 +31,16 @@ export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'schedule
 // GET api/export -> all progress as downloadable JSON
 // Errors are {error:string}; UI must display the server message and allow retry.
 
-export type GrammarExerciseType = 'rewrite' | 'build' | 'complete' | 'repair';
+export type GrammarExerciseType = 'rewrite' | 'build' | 'complete' | 'repair' | 'choose' | 'translate' | 'conjugate';
+export type GrammarLevel = 'A1' | 'A2' | 'B1';
+// Content lives in content/grammar/: units.json lists units in course order, each naming its topic files.
+// build: tokens (answers must be buildable; unused distractor tiles are allowed).
+// choose: options (2–5, distinct); exactly one answer, which is one of the options.
+// complete: source holds exactly one ____ blank; answers are the missing text.
+// translate: source is English; answers list every accepted French translation.
+// conjugate: source is "verb · subject · tense"; answers list the form with and without the subject.
+// Typed answers that differ from an accepted answer only in accents (œ/oe included) or commas count as correct
+// with a spelling note; strictAccents keeps accents strict where the accent is the point (a/à, ou/où).
 export type GrammarExercise = {
   id: string;
   pattern: string;
@@ -39,15 +48,19 @@ export type GrammarExercise = {
   instruction: string;
   source: string;
   tokens?: string[];
+  options?: string[];
   answers: string[];
   spellingAnswers?: string[];
   alternatives?: { answer: string; message: string }[];
+  strictAccents?: boolean;
   hint: string;
   feedback: string;
   explanation: string;
 };
 export type GrammarTopicContent = {
   id: string;
+  unit: string;
+  level: GrammarLevel;
   title: string;
   description: string;
   mark: string;
@@ -56,20 +69,38 @@ export type GrammarTopicContent = {
   aside: string;
   exercises: GrammarExercise[];
 };
+export type GrammarUnitContent = { id: string; title: string; description: string; topics: string[] };
 export type GrammarProgress = { seen: number; independent: number; needsReview: number };
+export type GrammarScore = { score: number; total: number };
+// taken counts finished tests of one scope; best is the highest score/total ratio, last the most recent finish.
+export type GrammarTestSummary = { taken: number; best: GrammarScore | null; last: (GrammarScore & { finishedAt: string }) | null };
 export type GrammarTopic = Omit<GrammarTopicContent, 'exercises'> & {
   exerciseCount: number;
+  practiceLength: number;
+  testLength: number;
   progress: GrammarProgress;
   hasActiveSession: boolean;
+  hasActiveTest: boolean;
+  test: GrammarTestSummary;
 };
+export type GrammarUnitView = Omit<GrammarUnitContent, 'topics'> & {
+  topics: GrammarTopic[];
+  testLength: number;
+  hasActiveTest: boolean;
+  test: GrammarTestSummary;
+};
+export type GrammarMode = 'practice' | 'test';
+export type GrammarScopeKind = 'practice' | 'topic-test' | 'unit-test';
+// In a test, answer and explanation are always present; note carries an alternative's message.
 export type GrammarFeedback = {
   kind: 'correct' | 'incorrect' | 'alternative' | 'shown';
   message: string;
   answer?: string;
   spelling?: boolean;
+  note?: string;
 };
 export type GrammarCurrent = {
-  exercise: Pick<GrammarExercise, 'id' | 'type' | 'instruction' | 'source' | 'tokens'>;
+  exercise: Pick<GrammarExercise, 'id' | 'type' | 'instruction' | 'source' | 'tokens' | 'options'> & { topicId: string; topicTitle: string };
   answer: string;
   tokenOrder: number[];
   attempts: number;
@@ -77,24 +108,37 @@ export type GrammarCurrent = {
   hint: string | null;
   feedback: GrammarFeedback | null;
   settled: boolean;
+  misses: string[];
 };
 export type GrammarResult = {
   exerciseId: string;
+  topicId: string;
+  topicTitle: string;
   type: GrammarExerciseType;
   source: string;
   answer: string;
+  given: string;
   outcome: 'independent' | 'helped' | 'revisit';
+  spelling?: boolean;
 };
 export type GrammarSession = {
   id: string;
+  mode: GrammarMode;
   version: number;
   index: number;
   total: number;
   complete: boolean;
   current: GrammarCurrent | null;
   results: GrammarResult[];
+  score?: number;
 };
-export type GrammarSnapshot = { topic: GrammarTopic; session: GrammarSession | null };
+export type GrammarSnapshot = {
+  scope: string;
+  kind: GrammarScopeKind;
+  topic: GrammarTopic | null;
+  unit: GrammarUnitView | null;
+  session: GrammarSession | null;
+};
 export type GrammarMutation = {
   sessionId: string;
   exerciseId: string;
@@ -104,14 +148,24 @@ export type GrammarMutation = {
 export type GrammarAnswerInput = GrammarMutation & { answer: string; tokenOrder?: number[] };
 export type GrammarHelpInput = GrammarMutation & { kind: 'hint' | 'rule' | 'answer' };
 
-// GET api/grammar -> {topics:GrammarTopic[]}; GET api/grammar/state?topic=id -> GrammarSnapshot.
-// POST api/grammar/session {topicId,requestId} resumes an active round or starts a new three-example round.
-// POST api/grammar/answer GrammarAnswerInput -> GrammarSnapshot; build answers derive from tokenOrder.
-// POST api/grammar/help GrammarHelpInput -> GrammarSnapshot; requesting help is saved before displaying it.
-// POST api/grammar/next GrammarMutation -> GrammarSnapshot; only a settled answer can advance.
+// A scope names one resumable session line: "<topicId>" is practice, "test:<topicId>" a topic test,
+// "unit:<unitId>" a unit test. Each scope keeps its own latest session, so a round and a test can both be open.
+// GET api/grammar -> {units:GrammarUnitView[]} in course order, topics in unit order, without exercises.
+// GET api/grammar/state?scope=key -> GrammarSnapshot; topic is set for topic scopes, unit for unit scopes.
+// POST api/grammar/session {scope,requestId} -> GrammarSnapshot; resumes the scope's unfinished session or starts one:
+//   practice 10 questions (missed test items first, then fresh variants of struggled patterns, unseen, to revisit, known;
+//   at most 3 per pattern, at least 3 question types, neighbours differ in pattern where possible);
+//   topic test 15 (round-robin over patterns, avoiding the previous test's questions); unit test 20 (round-robin over topics).
+// POST api/grammar/answer GrammarAnswerInput -> GrammarSnapshot; build answers derive from tokenOrder; choose answers must be an option.
+// POST api/grammar/help GrammarHelpInput -> GrammarSnapshot; requesting help is saved before displaying it. Tests refuse help (409).
+// POST api/grammar/next GrammarMutation -> GrammarSnapshot; only a settled answer can advance. Finishing a test records its score.
 // Mutations are idempotent by requestId and return current state on replay; stale versions return HTTP 409.
-// Session index is zero-based. Results include settled examples, including the current one before Next.
+// Practice: a correct check settles independent (helped after help or a retry); a shown answer settles revisit.
+// Test: the first non-blank answer settles; correct or spelling is independent, anything else revisit. score counts independent results.
+// Every settlement updates the exercise's own topic progress, whichever scope asked it.
+// Session index is zero-based. Results include settled examples, including the current one before Next; given is the last checked text.
+// misses lists checked answers that were not accepted (a choose question marks these options).
 // Correct checks and shown answers settle once; later rule views cannot turn unaided success into assisted success.
-// Rule and exercise prose are plain text, never HTML. Spelling variants are explicitly authored, not accent-stripped.
+// Rule and exercise prose are plain text, never HTML. The example separates sentences with " · ".
 // Word tiles may include distractors: selected indices are unique, but using every tile is not required.
-// Complete-exercise sources use ____ for the missing text, so summaries can show the finished sentence.
+// Complete sources (and most choose sources) use ____ for the missing text, so summaries can show the finished sentence.

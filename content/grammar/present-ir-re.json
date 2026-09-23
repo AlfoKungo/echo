@@ -1,0 +1,662 @@
+{
+  "id": "present-ir-re",
+  "unit": "present",
+  "level": "A2",
+  "title": "-ir and -re verbs",
+  "description": "Conjugate finir-, partir-, ouvrir- and vendre-type verbs in the present.",
+  "mark": "-is · -iss-",
+  "rule": "Regular -ir verbs like finir, choisir and réussir take -is, -is, -it in the singular and add -iss- before the plural endings: nous finissons, vous finissez, ils finissent. Verbs like partir, sortir, dormir and servir drop the last consonant of the stem in the singular (je pars, tu dors, il sert) and keep it in the plural with -ons, -ez, -ent (nous partons, ils dorment), never with -iss-. Ouvrir, offrir and découvrir end in -ir but take the -er endings: j’ouvre, tu offres, il découvre, nous ouvrons, ils ouvrent. Regular -re verbs like vendre, attendre, entendre, répondre and perdre keep their d and take -s, -s, no ending, -ons, -ez, -ent: je vends, il attend, nous répondons, ils perdent. So before conjugating an -ir verb, decide which of the three families it belongs to.",
+  "example": "Je finis à cinq heures et je pars à six heures. · Nous ouvrons la fenêtre. · Il attend le bus.",
+  "aside": "In il attend and elle répond, the final d is silent. The il form of these -dre verbs never adds a -t: il attend, not il attendt.",
+  "exercises": [
+    {
+      "id": "present-ir-re-finir-singular-1",
+      "pattern": "finir-singular",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "finir · je · présent",
+      "answers": [
+        "finis",
+        "je finis"
+      ],
+      "hint": "Remove -ir from finir. Which singular ending goes with je?",
+      "feedback": "Remove -ir and add the singular ending.",
+      "explanation": "Je finis: fin- + -is."
+    },
+    {
+      "id": "present-ir-re-finir-singular-2",
+      "pattern": "finir-singular",
+      "type": "complete",
+      "instruction": "Write choisir in the present.",
+      "source": "Tu ____ le dessert ?",
+      "answers": [
+        "choisis"
+      ],
+      "hint": "The tu form is the same as the je form.",
+      "feedback": "Singular finir-type verbs end in -is, -is, -it.",
+      "explanation": "Tu choisis: chois- + -is."
+    },
+    {
+      "id": "present-ir-re-finir-singular-3",
+      "pattern": "finir-singular",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Elle ____ toujours ses examens.",
+      "options": [
+        "réussit",
+        "réussis",
+        "réussi",
+        "réussissent"
+      ],
+      "answers": [
+        "réussit"
+      ],
+      "hint": "Match the ending to elle. Finir-type verbs do not use the same ending for je and elle.",
+      "feedback": "Réussis goes with je or tu.",
+      "explanation": "Elle réussit: réuss- + -it."
+    },
+    {
+      "id": "present-ir-re-finir-singular-4",
+      "pattern": "finir-singular",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il finis son travail.",
+      "answers": [
+        "Il finit son travail."
+      ],
+      "hint": "The ending for il is different from the ending for je.",
+      "feedback": "Il forms of finir-type verbs end in -t.",
+      "explanation": "Il finit: fin- + -it."
+    },
+    {
+      "id": "present-ir-re-finir-singular-5",
+      "pattern": "finir-singular",
+      "type": "translate",
+      "instruction": "Translate into French, using choisir.",
+      "source": "I choose the red dress.",
+      "answers": [
+        "Je choisis la robe rouge."
+      ],
+      "hint": "Choisir is a finir-type verb.",
+      "feedback": "Use the je ending -is.",
+      "explanation": "Je choisis la robe rouge: chois- + -is."
+    },
+    {
+      "id": "present-ir-re-finir-singular-6",
+      "pattern": "finir-singular",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "He finishes at noon.",
+      "tokens": [
+        "midi.",
+        "finis",
+        "Il",
+        "à",
+        "finit"
+      ],
+      "answers": [
+        "Il finit à midi."
+      ],
+      "hint": "Match the ending to il. Finir-type verbs use a different ending for il than for je and tu.",
+      "feedback": "One verb tile is the je/tu form.",
+      "explanation": "Il finit à midi: fin- + -it."
+    },
+    {
+      "id": "present-ir-re-finir-plural-1",
+      "pattern": "finir-plural",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "finir · ils · présent",
+      "answers": [
+        "finissent",
+        "ils finissent"
+      ],
+      "hint": "In the plural, finir-type verbs add a syllable before the ending.",
+      "feedback": "Plural forms of finir have -iss-.",
+      "explanation": "Ils finissent: fin- + -iss- + -ent."
+    },
+    {
+      "id": "present-ir-re-finir-plural-2",
+      "pattern": "finir-plural",
+      "type": "complete",
+      "instruction": "Write choisir in the present.",
+      "source": "Nous ____ un film.",
+      "answers": [
+        "choisissons"
+      ],
+      "hint": "The plural forms of choisir add -iss-.",
+      "feedback": "Put -iss- before the nous ending.",
+      "explanation": "Nous choisissons: chois- + -iss- + -ons."
+    },
+    {
+      "id": "present-ir-re-finir-plural-3",
+      "pattern": "finir-plural",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Vous ____ vos devoirs avant le dîner.",
+      "options": [
+        "finissez",
+        "finez",
+        "finisez",
+        "finissent"
+      ],
+      "answers": [
+        "finissez"
+      ],
+      "hint": "Plural finir forms have a double s.",
+      "feedback": "Look for -iss- and the vous ending.",
+      "explanation": "Vous finissez: fin- + -iss- + -ez."
+    },
+    {
+      "id": "present-ir-re-finir-plural-4",
+      "pattern": "finir-plural",
+      "type": "rewrite",
+      "instruction": "Change il to ils and adjust the verb.",
+      "source": "Il réussit toujours.",
+      "answers": [
+        "Ils réussissent toujours."
+      ],
+      "hint": "Plural finir-type forms add -iss-.",
+      "feedback": "Ils réussit is not enough: the plural stem is longer.",
+      "explanation": "Ils réussissent: réuss- + -iss- + -ent."
+    },
+    {
+      "id": "present-ir-re-finir-plural-5",
+      "pattern": "finir-plural",
+      "type": "translate",
+      "instruction": "Translate into French, using finir.",
+      "source": "They (feminine) finish the book.",
+      "answers": [
+        "Elles finissent le livre."
+      ],
+      "hint": "Elles needs the long plural stem.",
+      "feedback": "Plural finir forms have -iss-.",
+      "explanation": "Elles finissent le livre: fin- + -iss- + -ent."
+    },
+    {
+      "id": "present-ir-re-finir-plural-6",
+      "pattern": "finir-plural",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Nous finons à six heures.",
+      "answers": [
+        "Nous finissons à six heures."
+      ],
+      "hint": "Finir is not an -er verb.",
+      "feedback": "The plural of finir needs -iss-.",
+      "explanation": "Nous finissons: fin- + -iss- + -ons."
+    },
+    {
+      "id": "present-ir-re-partir-singular-1",
+      "pattern": "partir-singular",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "dormir · je · présent",
+      "answers": [
+        "dors",
+        "je dors"
+      ],
+      "hint": "Dormir drops a consonant in the singular.",
+      "feedback": "Remove the m as well as -ir, then add -s.",
+      "explanation": "Je dors: the m of dorm- disappears in the singular."
+    },
+    {
+      "id": "present-ir-re-partir-singular-2",
+      "pattern": "partir-singular",
+      "type": "complete",
+      "instruction": "Write sortir in the present.",
+      "source": "Il ____ avec ses amis ce soir.",
+      "answers": [
+        "sort"
+      ],
+      "hint": "Sortir is like partir, not like finir.",
+      "feedback": "The singular stem drops the t, then il adds -t back as its ending.",
+      "explanation": "Il sort: sor- + -t."
+    },
+    {
+      "id": "present-ir-re-partir-singular-3",
+      "pattern": "partir-singular",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Tu ____ à quelle heure demain ?",
+      "options": [
+        "pars",
+        "partes",
+        "part"
+      ],
+      "answers": [
+        "pars"
+      ],
+      "hint": "Partir drops its t in the singular.",
+      "feedback": "The tu ending is -s.",
+      "explanation": "Tu pars: par- + -s."
+    },
+    {
+      "id": "present-ir-re-partir-singular-4",
+      "pattern": "partir-singular",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je dorms mal.",
+      "answers": [
+        "Je dors mal."
+      ],
+      "hint": "In the singular, dormir loses a letter of its stem.",
+      "feedback": "Drop the m.",
+      "explanation": "Je dors: dormir loses its m in the singular."
+    },
+    {
+      "id": "present-ir-re-partir-singular-5",
+      "pattern": "partir-singular",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She sleeps a lot.",
+      "answers": [
+        "Elle dort beaucoup."
+      ],
+      "hint": "Dormir drops its m in the singular.",
+      "feedback": "The il/elle ending of this family is -t.",
+      "explanation": "Elle dort beaucoup: dor- + -t."
+    },
+    {
+      "id": "present-ir-re-partir-singular-6",
+      "pattern": "partir-singular",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I am leaving now.",
+      "tokens": [
+        "maintenant.",
+        "part",
+        "Je",
+        "pars"
+      ],
+      "answers": [
+        "Je pars maintenant."
+      ],
+      "hint": "Partir drops its t in the singular. Which ending goes with je?",
+      "feedback": "One verb tile is the il form.",
+      "explanation": "Je pars: par- + -s."
+    },
+    {
+      "id": "present-ir-re-partir-plural-1",
+      "pattern": "partir-plural",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "partir · nous · présent",
+      "answers": [
+        "partons",
+        "nous partons"
+      ],
+      "hint": "In the plural, the full stem comes back.",
+      "feedback": "Partir-type verbs never take -iss-.",
+      "explanation": "Nous partons: part- + -ons."
+    },
+    {
+      "id": "present-ir-re-partir-plural-2",
+      "pattern": "partir-plural",
+      "type": "complete",
+      "instruction": "Write dormir in the present.",
+      "source": "Les enfants ____ dans la chambre.",
+      "answers": [
+        "dorment"
+      ],
+      "hint": "The m comes back in the plural.",
+      "feedback": "Use the full stem and the ils ending.",
+      "explanation": "Les enfants dorment: dorm- + -ent."
+    },
+    {
+      "id": "present-ir-re-partir-plural-3",
+      "pattern": "partir-plural",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ils ____ du cinéma à dix heures.",
+      "options": [
+        "sortent",
+        "sortissent",
+        "sort",
+        "sors"
+      ],
+      "answers": [
+        "sortent"
+      ],
+      "hint": "Sortir keeps its t in the plural and does not add -iss-.",
+      "feedback": "This family takes -ent in the ils form, with no extra syllable.",
+      "explanation": "Ils sortent: sort- + -ent."
+    },
+    {
+      "id": "present-ir-re-partir-plural-4",
+      "pattern": "partir-plural",
+      "type": "rewrite",
+      "instruction": "Change il to ils and adjust the verb.",
+      "source": "Il sert le dîner.",
+      "answers": [
+        "Ils servent le dîner."
+      ],
+      "hint": "The v of servir comes back in the plural.",
+      "feedback": "Use the full stem serv- with the ils ending.",
+      "explanation": "Ils servent: serv- + -ent."
+    },
+    {
+      "id": "present-ir-re-partir-plural-5",
+      "pattern": "partir-plural",
+      "type": "translate",
+      "instruction": "Translate into French, using nous and partir.",
+      "source": "We leave at eight o’clock.",
+      "answers": [
+        "Nous partons à huit heures.",
+        "Nous partons à 8 heures."
+      ],
+      "hint": "In the plural, partir keeps its t.",
+      "feedback": "Use the full stem and the nous ending.",
+      "explanation": "Nous partons: part- + -ons."
+    },
+    {
+      "id": "present-ir-re-partir-plural-6",
+      "pattern": "partir-plural",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Vous dormissez bien ?",
+      "answers": [
+        "Vous dormez bien ?"
+      ],
+      "hint": "Dormir is not a finir-type verb.",
+      "feedback": "This family never adds -iss-.",
+      "explanation": "Vous dormez: dorm- + -ez."
+    },
+    {
+      "id": "present-ir-re-ouvrir-type-1",
+      "pattern": "ouvrir-type",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ouvrir · je · présent",
+      "answers": [
+        "ouvre",
+        "j’ouvre"
+      ],
+      "alternatives": [
+        {
+          "answer": "je ouvre",
+          "message": "The verb form is right, but je becomes j’ before a vowel: j’ouvre."
+        }
+      ],
+      "hint": "Ouvrir takes the endings of parler. Watch the elision.",
+      "feedback": "Ouvrir looks like an -ir verb but uses -er endings.",
+      "explanation": "J’ouvre: ouvr- + -e, and je becomes j’."
+    },
+    {
+      "id": "present-ir-re-ouvrir-type-2",
+      "pattern": "ouvrir-type",
+      "type": "complete",
+      "instruction": "Write offrir in the present.",
+      "source": "Tu ____ des fleurs à ta mère ?",
+      "answers": [
+        "offres"
+      ],
+      "hint": "Offrir takes the same endings as parler.",
+      "feedback": "Use the -er ending for tu.",
+      "explanation": "Tu offres: offr- + -es."
+    },
+    {
+      "id": "present-ir-re-ouvrir-type-3",
+      "pattern": "ouvrir-type",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Il ____ la fenêtre.",
+      "options": [
+        "ouvre",
+        "ouvres",
+        "ouvert"
+      ],
+      "answers": [
+        "ouvre"
+      ],
+      "hint": "Ouvrir behaves like an -er verb in the present.",
+      "feedback": "Use the il ending of -er verbs.",
+      "explanation": "Il ouvre: ouvr- + -e."
+    },
+    {
+      "id": "present-ir-re-ouvrir-type-4",
+      "pattern": "ouvrir-type",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Nous découvrissons la ville.",
+      "answers": [
+        "Nous découvrons la ville."
+      ],
+      "hint": "Découvrir is not a finir-type verb.",
+      "feedback": "Use the -er ending for nous, without -iss-.",
+      "explanation": "Nous découvrons: découvr- + -ons."
+    },
+    {
+      "id": "present-ir-re-ouvrir-type-5",
+      "pattern": "ouvrir-type",
+      "type": "rewrite",
+      "instruction": "Change elle to elles and adjust the verb.",
+      "source": "Elle offre un cadeau.",
+      "answers": [
+        "Elles offrent un cadeau."
+      ],
+      "hint": "Offrir takes the -er ending for elles.",
+      "feedback": "Add the silent plural ending.",
+      "explanation": "Elles offrent: offr- + -ent."
+    },
+    {
+      "id": "present-ir-re-ouvrir-type-6",
+      "pattern": "ouvrir-type",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I open the door.",
+      "answers": [
+        "J’ouvre la porte."
+      ],
+      "hint": "Ouvrir takes -er endings, and je changes before a vowel.",
+      "feedback": "The je form ends in -e.",
+      "explanation": "J’ouvre la porte: ouvr- + -e."
+    },
+    {
+      "id": "present-ir-re-re-verbs-1",
+      "pattern": "re-verbs",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "attendre · il · présent",
+      "answers": [
+        "attend",
+        "il attend"
+      ],
+      "hint": "Keep the stem attend-. What does an -re verb add for il?",
+      "feedback": "Keep the d and add nothing.",
+      "explanation": "Il attend: attend- with no ending, and no -t."
+    },
+    {
+      "id": "present-ir-re-re-verbs-2",
+      "pattern": "re-verbs",
+      "type": "complete",
+      "instruction": "Write vendre in the present.",
+      "source": "Je ____ mon vélo.",
+      "answers": [
+        "vends"
+      ],
+      "hint": "Keep the d and add the je ending.",
+      "feedback": "The je ending of -re verbs is -s.",
+      "explanation": "Je vends: vend- + -s."
+    },
+    {
+      "id": "present-ir-re-re-verbs-3",
+      "pattern": "re-verbs",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Elle ____ au téléphone.",
+      "options": [
+        "répond",
+        "répondt",
+        "répont"
+      ],
+      "answers": [
+        "répond"
+      ],
+      "hint": "Répondre is a regular -re verb. Its stem ends in d.",
+      "feedback": "Nothing is added after the d.",
+      "explanation": "Elle répond: répond- with no ending."
+    },
+    {
+      "id": "present-ir-re-re-verbs-4",
+      "pattern": "re-verbs",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Nous ____ souvent nos clés.",
+      "options": [
+        "perdons",
+        "perdissons",
+        "perdez"
+      ],
+      "answers": [
+        "perdons"
+      ],
+      "hint": "Perdre is a regular -re verb.",
+      "feedback": "Use the stem perd- and the nous ending, without -iss-.",
+      "explanation": "Nous perdons: perd- + -ons."
+    },
+    {
+      "id": "present-ir-re-re-verbs-5",
+      "pattern": "re-verbs",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il entent un bruit.",
+      "answers": [
+        "Il entend un bruit."
+      ],
+      "hint": "The stem of entendre ends in d, and it stays.",
+      "feedback": "The il form keeps the d and adds nothing.",
+      "explanation": "Il entend: entend- with no ending."
+    },
+    {
+      "id": "present-ir-re-re-verbs-6",
+      "pattern": "re-verbs",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "They (masculine) are waiting for the train.",
+      "answers": [
+        "Ils attendent le train."
+      ],
+      "hint": "Attendre already means “wait for”.",
+      "feedback": "Use the ils form of attendre and no word for “for”.",
+      "explanation": "Ils attendent le train: attend- + -ent, with a direct object."
+    },
+    {
+      "id": "present-ir-re-re-verbs-7",
+      "pattern": "re-verbs",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "You are selling your car. (to a friend)",
+      "tokens": [
+        "voiture.",
+        "vend",
+        "Tu",
+        "ta",
+        "vends"
+      ],
+      "answers": [
+        "Tu vends ta voiture."
+      ],
+      "hint": "Match the verb tile to tu, not to il.",
+      "feedback": "One verb tile is the il form.",
+      "explanation": "Tu vends: vend- + -s."
+    },
+    {
+      "id": "present-ir-re-verb-family-1",
+      "pattern": "verb-family",
+      "type": "choose",
+      "instruction": "Choose the right form of servir.",
+      "source": "Ils ____ le dîner à sept heures.",
+      "options": [
+        "servent",
+        "servissent",
+        "servont"
+      ],
+      "answers": [
+        "servent"
+      ],
+      "hint": "Servir belongs to the partir family.",
+      "feedback": "Partir-type verbs do not add -iss-.",
+      "explanation": "Ils servent: servir is a partir-type verb."
+    },
+    {
+      "id": "present-ir-re-verb-family-2",
+      "pattern": "verb-family",
+      "type": "choose",
+      "instruction": "Choose the right form of choisir.",
+      "source": "Vous ____ un bon restaurant.",
+      "options": [
+        "choisissez",
+        "choisez",
+        "choisissons"
+      ],
+      "answers": [
+        "choisissez"
+      ],
+      "hint": "Choisir belongs to the finir family.",
+      "feedback": "Finir-type verbs add -iss- in the plural.",
+      "explanation": "Vous choisissez: choisir is a finir-type verb."
+    },
+    {
+      "id": "present-ir-re-verb-family-3",
+      "pattern": "verb-family",
+      "type": "complete",
+      "instruction": "Write dormir in the present.",
+      "source": "Mes chats ____ et mes enfants finissent leurs devoirs.",
+      "answers": [
+        "dorment"
+      ],
+      "hint": "Finissent is a finir-type form. Is dormir in the same family?",
+      "feedback": "Dormir does not take -iss-.",
+      "explanation": "Mes chats dorment: dormir is a partir-type verb, unlike finir."
+    },
+    {
+      "id": "present-ir-re-verb-family-4",
+      "pattern": "verb-family",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ils partissent demain.",
+      "answers": [
+        "Ils partent demain."
+      ],
+      "hint": "Partir is not in the finir family.",
+      "feedback": "Remove the extra syllable.",
+      "explanation": "Ils partent: partir-type verbs never add -iss-."
+    },
+    {
+      "id": "present-ir-re-verb-family-5",
+      "pattern": "verb-family",
+      "type": "rewrite",
+      "instruction": "Change je to nous in both places and adjust the verbs.",
+      "source": "Je finis et je pars.",
+      "answers": [
+        "Nous finissons et nous partons."
+      ],
+      "hint": "The two verbs belong to different families.",
+      "feedback": "Only one of the verbs adds -iss-.",
+      "explanation": "Nous finissons (finir family) et nous partons (partir family)."
+    },
+    {
+      "id": "present-ir-re-verb-family-6",
+      "pattern": "verb-family",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "They (masculine) finish and they leave.",
+      "tokens": [
+        "partissent.",
+        "Ils",
+        "et",
+        "finissent",
+        "partent.",
+        "ils"
+      ],
+      "answers": [
+        "Ils finissent et ils partent.",
+        "Ils finissent et partent."
+      ],
+      "hint": "Finir and partir belong to different families.",
+      "feedback": "Only one of the two verbs takes -iss-.",
+      "explanation": "Ils finissent (with -iss-) et ils partent (without). Leaving out the second ils is also correct."
+    }
+  ]
+}

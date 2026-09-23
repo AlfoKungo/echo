@@ -1,0 +1,854 @@
+{
+  "id": "imperative",
+  "unit": "future-moods",
+  "level": "A2",
+  "title": "Commands",
+  "description": "Tell someone what to do or not to do, with or without pronouns.",
+  "mark": "va !",
+  "rule": "The imperative has three forms, taken from the present without the subject: tu, nous and vous (finis, finissons, finissez). In the tu form, -er verbs and aller drop the final s (parle, va), as do verbs like ouvrir whose tu form ends in -es (ouvre), but they keep it before y or en (vas-y, manges-en). Être, avoir and savoir are irregular: sois, soyons, soyez; aie, ayons, ayez; sache, sachons, sachez. In the negative, ne and pas surround the verb: ne parle pas, ne sortez pas. In the affirmative, object and reflexive pronouns follow the verb with a hyphen, and me and te become moi and toi: prends-le, donne-moi le sel, lève-toi. With two pronouns, le, la or les comes first: donne-le-moi. In the negative, the pronouns stay before the verb: ne le prends pas, ne te lève pas.",
+  "example": "Parle plus lentement, s’il te plaît. · Asseyez-vous. · Ne le mange pas !",
+  "aside": "The nous form is a suggestion rather than an order: allons-y means let’s go.",
+  "exercises": [
+    {
+      "id": "imperative-er-drop-s-1",
+      "pattern": "er-drop-s",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "parler · tu · impératif",
+      "answers": [
+        "parle"
+      ],
+      "alternatives": [
+        {
+          "answer": "parles",
+          "message": "Parles is the present. In the imperative, -er verbs drop the final s of the tu form."
+        }
+      ],
+      "hint": "Start from tu parles and remove the subject. -er verbs lose one more letter.",
+      "feedback": "The tu imperative of an -er verb has no final s.",
+      "explanation": "Tu parles becomes parle: -er verbs drop the s in the tu command."
+    },
+    {
+      "id": "imperative-er-drop-s-2",
+      "pattern": "er-drop-s",
+      "type": "complete",
+      "instruction": "Write manger as a command to a friend (tu form).",
+      "source": "____ (manger) ta soupe, s’il te plaît.",
+      "answers": [
+        "Mange"
+      ],
+      "alternatives": [
+        {
+          "answer": "Manges",
+          "message": "Manges is the present. In the imperative, -er verbs drop the final s of the tu form."
+        }
+      ],
+      "hint": "Take tu manges, remove tu, and think about the last letter.",
+      "feedback": "An -er verb has no final s in the tu command.",
+      "explanation": "The tu command of manger is mange, without s."
+    },
+    {
+      "id": "imperative-er-drop-s-3",
+      "pattern": "er-drop-s",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ la fenêtre, s’il te plaît.",
+      "options": [
+        "Ferme",
+        "Fermes",
+        "Fermer",
+        "Fermé"
+      ],
+      "answers": [
+        "Ferme"
+      ],
+      "hint": "S’il te plaît shows this is a tu command, and fermer is an -er verb.",
+      "feedback": "Look for the tu command of an -er verb.",
+      "explanation": "The tu command of fermer is ferme, with no s."
+    },
+    {
+      "id": "imperative-er-drop-s-4",
+      "pattern": "er-drop-s",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Écoutes la musique, Léa !",
+      "answers": [
+        "Écoute la musique, Léa !"
+      ],
+      "hint": "Écouter is an -er verb. Look at the last letter of the verb.",
+      "feedback": "The verb still has the ending of the present tense.",
+      "explanation": "In the tu command, -er verbs drop the s: écoute."
+    },
+    {
+      "id": "imperative-er-drop-s-5",
+      "pattern": "er-drop-s",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Let’s eat together.",
+      "answers": [
+        "Mangeons ensemble."
+      ],
+      "alternatives": [
+        {
+          "answer": "On mange ensemble.",
+          "message": "That is a casual suggestion. Here, use the nous form of the imperative, without a subject."
+        }
+      ],
+      "hint": "Let’s is the nous command: the nous form without nous.",
+      "feedback": "Use the nous form of manger, without the subject.",
+      "explanation": "Let’s eat is the nous command mangeons. Manger keeps its e before -ons."
+    },
+    {
+      "id": "imperative-er-drop-s-6",
+      "pattern": "er-drop-s",
+      "type": "build",
+      "instruction": "Build the command.",
+      "source": "Speak louder, please (to a friend).",
+      "tokens": [
+        "fort,",
+        "Parle",
+        "plaît.",
+        "plus",
+        "s’il",
+        "te",
+        "Parles"
+      ],
+      "answers": [
+        "Parle plus fort, s’il te plaît."
+      ],
+      "hint": "Two tiles are forms of parler. Only one is a command.",
+      "feedback": "The tu command of an -er verb has no final s.",
+      "explanation": "The tu command of parler is parle, without s."
+    },
+    {
+      "id": "imperative-other-verbs-1",
+      "pattern": "other-verbs",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "finir · nous · impératif",
+      "answers": [
+        "finissons"
+      ],
+      "hint": "Take the nous form of the present and remove nous.",
+      "feedback": "The nous command is the nous present form without the subject.",
+      "explanation": "Nous finissons becomes finissons."
+    },
+    {
+      "id": "imperative-other-verbs-2",
+      "pattern": "other-verbs",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "prendre · tu · impératif",
+      "answers": [
+        "prends"
+      ],
+      "alternatives": [
+        {
+          "answer": "prend",
+          "message": "Only -er verbs and aller drop the s. Prendre keeps the tu form of the present: prends."
+        }
+      ],
+      "hint": "Prendre is not an -er verb, so its tu form stays as in the present.",
+      "feedback": "Keep the tu present form of prendre, without tu.",
+      "explanation": "Tu prends becomes prends. Only -er verbs and aller drop the s."
+    },
+    {
+      "id": "imperative-other-verbs-3",
+      "pattern": "other-verbs",
+      "type": "complete",
+      "instruction": "Write faire as a command (vous form).",
+      "source": "____ (faire) vos devoirs avant le dîner.",
+      "answers": [
+        "Faites"
+      ],
+      "hint": "Take the vous form of faire in the present and remove vous.",
+      "feedback": "The vous form of faire is irregular in the present, and the command keeps it.",
+      "explanation": "Vous faites becomes faites."
+    },
+    {
+      "id": "imperative-other-verbs-4",
+      "pattern": "other-verbs",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ ici, les enfants !",
+      "options": [
+        "Venez",
+        "Vient",
+        "Venir",
+        "Venu"
+      ],
+      "answers": [
+        "Venez"
+      ],
+      "hint": "You are speaking to several children.",
+      "feedback": "Speaking to several people calls for the vous command.",
+      "explanation": "To several people, the command of venir is venez."
+    },
+    {
+      "id": "imperative-other-verbs-5",
+      "pattern": "other-verbs",
+      "type": "rewrite",
+      "instruction": "Turn this into a command: keep the tu form and drop the subject.",
+      "source": "Tu attends ici.",
+      "answers": [
+        "Attends ici."
+      ],
+      "hint": "Attendre is not an -er verb, so the verb itself does not change.",
+      "feedback": "Remove tu and keep attends as it is.",
+      "explanation": "Tu attends becomes attends: only -er verbs and aller drop the s."
+    },
+    {
+      "id": "imperative-other-verbs-6",
+      "pattern": "other-verbs",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Drink some water (to a friend).",
+      "answers": [
+        "Bois de l’eau.",
+        "Bois un peu d’eau."
+      ],
+      "hint": "Boire is irregular. Use its tu present form without tu.",
+      "feedback": "Use the tu command of boire and the partitive for some water.",
+      "explanation": "Tu bois becomes bois; some water is de l’eau."
+    },
+    {
+      "id": "imperative-aller-y-en-1",
+      "pattern": "aller-y-en",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "aller · tu · impératif",
+      "answers": [
+        "va"
+      ],
+      "alternatives": [
+        {
+          "answer": "vas",
+          "message": "Vas is the present. Aller drops the s in the tu command, except before y or en."
+        }
+      ],
+      "hint": "Aller behaves like an -er verb in the tu command.",
+      "feedback": "The tu command of aller has no s here.",
+      "explanation": "Tu vas becomes va, like the -er verbs."
+    },
+    {
+      "id": "imperative-aller-y-en-2",
+      "pattern": "aller-y-en",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ à la boulangerie, s’il te plaît.",
+      "options": [
+        "Va",
+        "Vas",
+        "Vais",
+        "Aller"
+      ],
+      "answers": [
+        "Va"
+      ],
+      "hint": "This is a tu command, and no y or en follows the verb.",
+      "feedback": "Aller drops the s in the tu command.",
+      "explanation": "The tu command of aller is va. The s only comes back before y or en."
+    },
+    {
+      "id": "imperative-aller-y-en-3",
+      "pattern": "aller-y-en",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Tu veux du gâteau ? ____ !",
+      "options": [
+        "Manges-en",
+        "Mange-en",
+        "Manges en",
+        "Mange en"
+      ],
+      "answers": [
+        "Manges-en"
+      ],
+      "hint": "Before en, the tu command gets back a letter. Pronouns also need a hyphen.",
+      "feedback": "Think about the s before en and the hyphen.",
+      "explanation": "Before en, the s returns for the sound: manges-en."
+    },
+    {
+      "id": "imperative-aller-y-en-4",
+      "pattern": "aller-y-en",
+      "type": "complete",
+      "instruction": "Write aller in the tu imperative. Write only the missing word.",
+      "source": "Le parc est ouvert : ____-y avec ton frère !",
+      "answers": [
+        "vas"
+      ],
+      "alternatives": [
+        {
+          "answer": "vas-y",
+          "message": "Right form, but -y is already in the sentence. Write only the missing word."
+        },
+        {
+          "answer": "va",
+          "message": "Aller drops the s in the tu command, but the s comes back before y."
+        }
+      ],
+      "hint": "The word after the blank is y.",
+      "feedback": "Before y, the tu command of aller keeps a letter it usually loses.",
+      "explanation": "Before y, the s returns: vas-y."
+    },
+    {
+      "id": "imperative-aller-y-en-5",
+      "pattern": "aller-y-en",
+      "type": "rewrite",
+      "instruction": "Replace au marché with y.",
+      "source": "Va au marché !",
+      "answers": [
+        "Vas-y !"
+      ],
+      "alternatives": [
+        {
+          "answer": "Va-y !",
+          "message": "Before y, the tu command of aller takes back its s: vas-y."
+        },
+        {
+          "answer": "Vas y !",
+          "message": "In the affirmative imperative, the pronoun is joined to the verb with a hyphen."
+        }
+      ],
+      "hint": "Y goes after the verb, and the verb changes slightly before it.",
+      "feedback": "Before y, the s comes back, and a hyphen joins the words.",
+      "explanation": "Au marché becomes y after the verb, and va becomes vas before y: vas-y."
+    },
+    {
+      "id": "imperative-aller-y-en-6",
+      "pattern": "aller-y-en",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Va-y, c’est ton tour !",
+      "answers": [
+        "Vas-y, c’est ton tour !"
+      ],
+      "hint": "Look at the verb before y.",
+      "feedback": "Before y, the tu command of aller keeps its s.",
+      "explanation": "Va becomes vas before y: vas-y."
+    },
+    {
+      "id": "imperative-aller-y-en-7",
+      "pattern": "aller-y-en",
+      "type": "build",
+      "instruction": "Build the command.",
+      "source": "Talk to your father about it (to a friend).",
+      "tokens": [
+        "à",
+        "Parle-en",
+        "père.",
+        "Parles-en",
+        "ton"
+      ],
+      "answers": [
+        "Parles-en à ton père."
+      ],
+      "hint": "Before en, the tu command of an -er verb changes.",
+      "feedback": "One verb tile is missing a letter that returns before en.",
+      "explanation": "Before en, the s returns: parles-en."
+    },
+    {
+      "id": "imperative-irregular-etre-avoir-savoir-1",
+      "pattern": "irregular-etre-avoir-savoir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "être · tu · impératif",
+      "answers": [
+        "sois"
+      ],
+      "hint": "Être does not take its imperative from the present.",
+      "feedback": "The imperative of être is irregular.",
+      "explanation": "The tu command of être is sois."
+    },
+    {
+      "id": "imperative-irregular-etre-avoir-savoir-2",
+      "pattern": "irregular-etre-avoir-savoir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "avoir · vous · impératif",
+      "answers": [
+        "ayez"
+      ],
+      "alternatives": [
+        {
+          "answer": "avez",
+          "message": "Avez is the present. The imperative of avoir is irregular."
+        }
+      ],
+      "hint": "Avoir does not take its imperative from the present.",
+      "feedback": "The imperative of avoir is irregular.",
+      "explanation": "The vous command of avoir is ayez."
+    },
+    {
+      "id": "imperative-irregular-etre-avoir-savoir-3",
+      "pattern": "irregular-etre-avoir-savoir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "N’____ pas peur, les enfants.",
+      "options": [
+        "ayez",
+        "avez",
+        "aie",
+        "avoir"
+      ],
+      "answers": [
+        "ayez"
+      ],
+      "hint": "Avoir is irregular in the imperative, and you are speaking to several children.",
+      "feedback": "Use the irregular vous command of avoir.",
+      "explanation": "To several people: n’ayez pas peur. Aie is the tu form."
+    },
+    {
+      "id": "imperative-irregular-etre-avoir-savoir-4",
+      "pattern": "irregular-etre-avoir-savoir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ sages, les enfants !",
+      "options": [
+        "Soyez",
+        "Êtes",
+        "Sois",
+        "Soyiez"
+      ],
+      "answers": [
+        "Soyez"
+      ],
+      "hint": "Être is irregular in the imperative, and sages is plural.",
+      "feedback": "Use the irregular vous command of être.",
+      "explanation": "To several people, the command of être is soyez."
+    },
+    {
+      "id": "imperative-irregular-etre-avoir-savoir-5",
+      "pattern": "irregular-etre-avoir-savoir",
+      "type": "complete",
+      "instruction": "Write savoir as a command to a friend (tu form).",
+      "source": "____ que je suis toujours là pour toi.",
+      "answers": [
+        "Sache"
+      ],
+      "alternatives": [
+        {
+          "answer": "Sais",
+          "message": "Sais is the present. The imperative of savoir is irregular."
+        }
+      ],
+      "hint": "Savoir has an irregular imperative, like être and avoir.",
+      "feedback": "The tu command of savoir is not taken from the present.",
+      "explanation": "The tu command of savoir is sache."
+    },
+    {
+      "id": "imperative-irregular-etre-avoir-savoir-6",
+      "pattern": "irregular-etre-avoir-savoir",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Soit gentille avec ta sœur !",
+      "answers": [
+        "Sois gentille avec ta sœur !"
+      ],
+      "hint": "Look at the last letter of the verb.",
+      "feedback": "The tu command of être ends in s.",
+      "explanation": "The tu command of être is sois. Soit is a different form."
+    },
+    {
+      "id": "imperative-irregular-etre-avoir-savoir-7",
+      "pattern": "irregular-etre-avoir-savoir",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Be on time (to several people).",
+      "answers": [
+        "Soyez à l’heure.",
+        "Soyez ponctuels.",
+        "Soyez ponctuelles."
+      ],
+      "hint": "Être has an irregular imperative. On time is à l’heure.",
+      "feedback": "Use the irregular vous command of être.",
+      "explanation": "The vous command of être is soyez: soyez à l’heure."
+    },
+    {
+      "id": "imperative-irregular-etre-avoir-savoir-8",
+      "pattern": "irregular-etre-avoir-savoir",
+      "type": "build",
+      "instruction": "Build the command.",
+      "source": "Have confidence in yourself (to a friend).",
+      "tokens": [
+        "confiance",
+        "Aie",
+        "toi.",
+        "en",
+        "Aies"
+      ],
+      "answers": [
+        "Aie confiance en toi."
+      ],
+      "hint": "Avoir has an irregular tu command. One tile is a wrong form.",
+      "feedback": "The tu command of avoir has no s.",
+      "explanation": "The tu command of avoir is aie."
+    },
+    {
+      "id": "imperative-negative-1",
+      "pattern": "negative",
+      "type": "rewrite",
+      "instruction": "Make this command negative.",
+      "source": "Mange ce gâteau !",
+      "answers": [
+        "Ne mange pas ce gâteau !"
+      ],
+      "hint": "Ne and pas go around the verb, as in a normal sentence.",
+      "feedback": "Put ne before the verb and pas after it.",
+      "explanation": "In a negative command, ne and pas surround the verb: ne mange pas."
+    },
+    {
+      "id": "imperative-negative-2",
+      "pattern": "negative",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ne ____ pas si vite, Paul !",
+      "options": [
+        "cours",
+        "coure",
+        "courir",
+        "courre"
+      ],
+      "answers": [
+        "cours"
+      ],
+      "hint": "Speaking to Paul is a tu command. Courir is not an -er verb.",
+      "feedback": "Use the tu present form of courir without tu.",
+      "explanation": "Tu cours becomes cours: ne cours pas."
+    },
+    {
+      "id": "imperative-negative-3",
+      "pattern": "negative",
+      "type": "complete",
+      "instruction": "Write attendre as a nous command.",
+      "source": "N’____ pas le bus : il est toujours en retard.",
+      "answers": [
+        "attendons"
+      ],
+      "hint": "Take the nous present form and remove nous.",
+      "feedback": "The nous command sits between n’ and pas.",
+      "explanation": "Nous attendons becomes attendons: n’attendons pas."
+    },
+    {
+      "id": "imperative-negative-4",
+      "pattern": "negative",
+      "type": "translate",
+      "instruction": "Translate into French (standard written French).",
+      "source": "Don’t touch the cake (to a friend).",
+      "answers": [
+        "Ne touche pas le gâteau.",
+        "Ne touche pas au gâteau."
+      ],
+      "alternatives": [
+        {
+          "answer": "Touche pas le gâteau.",
+          "message": "That is casual speech. In standard written French, keep ne before the verb."
+        },
+        {
+          "answer": "Touche pas au gâteau.",
+          "message": "That is casual speech. In standard written French, keep ne before the verb."
+        }
+      ],
+      "hint": "Ne and pas go around the verb. Toucher is an -er verb.",
+      "feedback": "Put ne before the tu command and pas after it.",
+      "explanation": "Ne touche pas surrounds the verb; -er verbs have no s in the tu command."
+    },
+    {
+      "id": "imperative-negative-5",
+      "pattern": "negative",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ne fermez la porte pas.",
+      "answers": [
+        "Ne fermez pas la porte."
+      ],
+      "hint": "Look at where pas is.",
+      "feedback": "Pas must come straight after the verb.",
+      "explanation": "Ne and pas surround the verb: ne fermez pas la porte."
+    },
+    {
+      "id": "imperative-negative-6",
+      "pattern": "negative",
+      "type": "build",
+      "instruction": "Build the negative command.",
+      "source": "Don’t go out tonight (to several people).",
+      "tokens": [
+        "pas",
+        "Ne",
+        "soir.",
+        "sortez",
+        "ce",
+        "sortiez"
+      ],
+      "answers": [
+        "Ne sortez pas ce soir."
+      ],
+      "hint": "Choose the vous command, then place ne and pas around it.",
+      "feedback": "Pick the vous command form of sortir.",
+      "explanation": "Ne and pas surround the vous command sortez."
+    },
+    {
+      "id": "imperative-reflexive-1",
+      "pattern": "reflexive",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "se lever · tu · impératif",
+      "answers": [
+        "lève-toi"
+      ],
+      "alternatives": [
+        {
+          "answer": "lève-te",
+          "message": "After the verb, te becomes toi: lève-toi."
+        },
+        {
+          "answer": "lève toi",
+          "message": "In the affirmative imperative, the pronoun is joined to the verb with a hyphen."
+        }
+      ],
+      "hint": "The pronoun goes after the verb in an affirmative command, and te changes.",
+      "feedback": "Put the pronoun after the verb with a hyphen, in its stressed form.",
+      "explanation": "Tu te lèves becomes lève-toi: the pronoun follows, and te becomes toi."
+    },
+    {
+      "id": "imperative-reflexive-2",
+      "pattern": "reflexive",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "s’asseoir · vous · impératif",
+      "answers": [
+        "asseyez-vous",
+        "assoyez-vous"
+      ],
+      "alternatives": [
+        {
+          "answer": "asseyez vous",
+          "message": "In the affirmative imperative, the pronoun is joined to the verb with a hyphen."
+        }
+      ],
+      "hint": "Take vous vous asseyez and move the pronoun after the verb.",
+      "feedback": "The reflexive pronoun follows the verb with a hyphen.",
+      "explanation": "Vous vous asseyez becomes asseyez-vous (assoyez-vous is the less common variant)."
+    },
+    {
+      "id": "imperative-reflexive-3",
+      "pattern": "reflexive",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____, il est sept heures !",
+      "options": [
+        "Réveille-toi",
+        "Réveille-te",
+        "Te réveille",
+        "Réveilles-toi"
+      ],
+      "answers": [
+        "Réveille-toi"
+      ],
+      "hint": "In an affirmative command, the pronoun follows the verb and te changes form.",
+      "feedback": "Check where the pronoun goes, its form, and the -er ending.",
+      "explanation": "Réveille-toi: the pronoun follows with a hyphen, te becomes toi, and the -er verb has no s."
+    },
+    {
+      "id": "imperative-reflexive-4",
+      "pattern": "reflexive",
+      "type": "rewrite",
+      "instruction": "Make this command negative.",
+      "source": "Lève-toi !",
+      "answers": [
+        "Ne te lève pas !"
+      ],
+      "hint": "In the negative, the pronoun goes back before the verb.",
+      "feedback": "In a negative command, the reflexive pronoun is te and comes before the verb.",
+      "explanation": "Lève-toi becomes ne te lève pas: te goes before the verb, inside ne…pas."
+    },
+    {
+      "id": "imperative-reflexive-5",
+      "pattern": "reflexive",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ne couche-toi pas trop tard.",
+      "answers": [
+        "Ne te couche pas trop tard."
+      ],
+      "hint": "This command is negative. Where does the pronoun go?",
+      "feedback": "In a negative command, the pronoun comes before the verb.",
+      "explanation": "In the negative, the pronoun stays in front: ne te couche pas."
+    },
+    {
+      "id": "imperative-reflexive-6",
+      "pattern": "reflexive",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Let’s hurry (se dépêcher).",
+      "answers": [
+        "Dépêchons-nous."
+      ],
+      "alternatives": [
+        {
+          "answer": "Dépêchons nous.",
+          "message": "In the affirmative imperative, the pronoun is joined to the verb with a hyphen."
+        }
+      ],
+      "hint": "Use the nous command and put the pronoun after the verb.",
+      "feedback": "The reflexive pronoun follows the nous command with a hyphen.",
+      "explanation": "Nous nous dépêchons becomes dépêchons-nous."
+    },
+    {
+      "id": "imperative-reflexive-7",
+      "pattern": "reflexive",
+      "type": "complete",
+      "instruction": "Write se laver as a vous command, with its pronoun.",
+      "source": "Les enfants, ____ les mains avant le dîner !",
+      "answers": [
+        "lavez-vous"
+      ],
+      "alternatives": [
+        {
+          "answer": "lavez vous",
+          "message": "In the affirmative imperative, the pronoun is joined to the verb with a hyphen."
+        },
+        {
+          "answer": "vous lavez",
+          "message": "In an affirmative command, the pronoun goes after the verb: lavez-vous."
+        }
+      ],
+      "hint": "The pronoun goes after the verb in an affirmative command.",
+      "feedback": "Put vous after the verb, joined with a hyphen.",
+      "explanation": "Vous vous lavez becomes lavez-vous."
+    },
+    {
+      "id": "imperative-object-pronouns-1",
+      "pattern": "object-pronouns",
+      "type": "rewrite",
+      "instruction": "Replace le livre with a pronoun.",
+      "source": "Prends le livre !",
+      "answers": [
+        "Prends-le !"
+      ],
+      "alternatives": [
+        {
+          "answer": "Le prends !",
+          "message": "In an affirmative command, the pronoun goes after the verb: prends-le."
+        },
+        {
+          "answer": "Prends le !",
+          "message": "In the affirmative imperative, the pronoun is joined to the verb with a hyphen."
+        }
+      ],
+      "hint": "In an affirmative command, the pronoun goes after the verb.",
+      "feedback": "Put the pronoun after the verb with a hyphen.",
+      "explanation": "Le livre becomes le, placed after the verb: prends-le."
+    },
+    {
+      "id": "imperative-object-pronouns-2",
+      "pattern": "object-pronouns",
+      "type": "rewrite",
+      "instruction": "Make this command negative.",
+      "source": "Regarde-les !",
+      "answers": [
+        "Ne les regarde pas !"
+      ],
+      "hint": "In the negative, the pronoun moves back in front of the verb.",
+      "feedback": "In a negative command, the pronoun comes before the verb, inside ne…pas.",
+      "explanation": "Regarde-les becomes ne les regarde pas."
+    },
+    {
+      "id": "imperative-object-pronouns-3",
+      "pattern": "object-pronouns",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ le sel, s’il te plaît.",
+      "options": [
+        "Donne-moi",
+        "Donne-me",
+        "Me donne",
+        "Donnes-moi"
+      ],
+      "answers": [
+        "Donne-moi"
+      ],
+      "hint": "After the verb, me changes form. Donner is an -er verb.",
+      "feedback": "Check the pronoun’s position and form, and the -er ending.",
+      "explanation": "Donne-moi: the pronoun follows, me becomes moi, and the -er verb has no s."
+    },
+    {
+      "id": "imperative-object-pronouns-4",
+      "pattern": "object-pronouns",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ce gâteau est pour Marie. ____ !",
+      "options": [
+        "Ne le mange pas",
+        "Ne mange-le pas",
+        "Le ne mange pas",
+        "Ne mange pas-le"
+      ],
+      "answers": [
+        "Ne le mange pas"
+      ],
+      "hint": "This command is negative. Where does the pronoun go?",
+      "feedback": "In a negative command, the pronoun comes before the verb, after ne.",
+      "explanation": "In the negative, the pronoun stays in front: ne le mange pas."
+    },
+    {
+      "id": "imperative-object-pronouns-5",
+      "pattern": "object-pronouns",
+      "type": "complete",
+      "instruction": "Write the tu command of appeler followed by the pronoun la.",
+      "source": "Ta sœur t’attend. ____ tout de suite !",
+      "answers": [
+        "Appelle-la"
+      ],
+      "alternatives": [
+        {
+          "answer": "Appelle la",
+          "message": "In the affirmative imperative, the pronoun is joined to the verb with a hyphen."
+        },
+        {
+          "answer": "La appelle",
+          "message": "In an affirmative command, the pronoun goes after the verb: appelle-la."
+        }
+      ],
+      "hint": "The pronoun goes after the verb. Appeler doubles a letter in tu appelles.",
+      "feedback": "Put la after the verb with a hyphen; the -er verb has no s.",
+      "explanation": "Tu appelles becomes appelle, and la follows: appelle-la."
+    },
+    {
+      "id": "imperative-object-pronouns-6",
+      "pattern": "object-pronouns",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Aide-me, s’il te plaît.",
+      "answers": [
+        "Aide-moi, s’il te plaît."
+      ],
+      "hint": "Look at the pronoun after the verb.",
+      "feedback": "After the verb, me takes its stressed form.",
+      "explanation": "In an affirmative command, me becomes moi: aide-moi."
+    },
+    {
+      "id": "imperative-object-pronouns-7",
+      "pattern": "object-pronouns",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Look at them (to several people).",
+      "answers": [
+        "Regardez-les."
+      ],
+      "alternatives": [
+        {
+          "answer": "Regardez les.",
+          "message": "In the affirmative imperative, the pronoun is joined to the verb with a hyphen."
+        },
+        {
+          "answer": "Les regardez.",
+          "message": "In an affirmative command, the pronoun goes after the verb: regardez-les."
+        }
+      ],
+      "hint": "Use the vous command, then the pronoun for them.",
+      "feedback": "Put the pronoun after the verb with a hyphen.",
+      "explanation": "Them is les, placed after the verb: regardez-les."
+    }
+  ]
+}

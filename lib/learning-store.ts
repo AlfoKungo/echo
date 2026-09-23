@@ -428,7 +428,7 @@ export function createLearningStore(content: LearningContent, options: {
         if (record.outcome === 'revisit') counts.revisit += 1;
         byTopic.set(record.topic_id, counts);
       }
-      for (const topic of options.grammar.catalog()) {
+      for (const topic of options.grammar.catalog().flatMap((unit) => unit.topics)) {
         grammar.push({ title: topic.title, independent: topic.progress.independent, ...(byTopic.get(topic.id) ?? { helped: 0, revisit: 0 }) });
       }
     }

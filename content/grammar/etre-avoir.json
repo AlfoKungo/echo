@@ -1,0 +1,741 @@
+{
+  "id": "etre-avoir",
+  "unit": "present",
+  "level": "A1",
+  "title": "Être and avoir",
+  "description": "Use “to be” and “to have” in the present, including age, feelings, “there is” and jobs.",
+  "mark": "suis · ai",
+  "rule": "Être: je suis, tu es, il/elle/on est, nous sommes, vous êtes, ils/elles sont. Avoir: j’ai (je becomes j’ before the vowel), tu as, il/elle/on a, nous avons, vous avez, ils/elles ont. French uses avoir, not être, for age (j’ai vingt ans) and in many expressions of physical or mental states and needs: avoir faim, soif, froid, chaud, peur, sommeil, raison, tort, besoin de, envie de. Il y a means “there is” or “there are” and stays the same before a plural: il y a trois chats. After être, a profession or nationality takes no article (elle est médecin, il est français); a nationality is an adjective, so it is lowercase and agrees (elle est italienne). With c’est you need un or une (c’est un médecin), and you must use c’est un… when the job has an adjective (c’est un bon médecin).",
+  "example": "J’ai dix-neuf ans et j’ai faim. · Il y a un café près d’ici. · Ma sœur est infirmière.",
+  "aside": "The verb form a (he has) never has an accent. À with an accent is a different word, the preposition “to” or “at”.",
+  "exercises": [
+    {
+      "id": "etre-avoir-etre-forms-1",
+      "pattern": "etre-forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "être · nous · présent",
+      "answers": [
+        "sommes",
+        "nous sommes"
+      ],
+      "hint": "Être is irregular. Its nous form does not use the usual -ons ending.",
+      "feedback": "Check the nous form of être: it is one of the irregular ones.",
+      "explanation": "Nous sommes: être has its own nous form."
+    },
+    {
+      "id": "etre-avoir-etre-forms-2",
+      "pattern": "etre-forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "être · vous · présent",
+      "answers": [
+        "êtes",
+        "vous êtes"
+      ],
+      "hint": "Like the nous form, the vous form of être is irregular. Watch the accent on its first letter.",
+      "feedback": "The vous form of être does not end in -ez.",
+      "explanation": "Vous êtes: ê with a circumflex, and the ending -tes instead of -ez."
+    },
+    {
+      "id": "etre-avoir-etre-forms-3",
+      "pattern": "etre-forms",
+      "type": "complete",
+      "instruction": "Write être in the present.",
+      "source": "Ils ____ à la maison ce soir.",
+      "answers": [
+        "sont"
+      ],
+      "hint": "Ils is third person plural.",
+      "feedback": "Look at the subject: several people, third person.",
+      "explanation": "Ils sont: the ils/elles form of être."
+    },
+    {
+      "id": "etre-avoir-etre-forms-4",
+      "pattern": "etre-forms",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Tu ____ très gentil.",
+      "options": [
+        "es",
+        "est",
+        "êtes",
+        "suis"
+      ],
+      "answers": [
+        "es"
+      ],
+      "hint": "Match the form to tu.",
+      "feedback": "Each form of être belongs to one subject. Which one goes with tu?",
+      "explanation": "Tu es. Est goes with il or elle, êtes with vous, suis with je."
+    },
+    {
+      "id": "etre-avoir-etre-forms-5",
+      "pattern": "etre-forms",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "She is in the garden.",
+      "tokens": [
+        "jardin.",
+        "est",
+        "Elle",
+        "le",
+        "dans",
+        "es"
+      ],
+      "answers": [
+        "Elle est dans le jardin."
+      ],
+      "hint": "Start with the subject, then the form of être that goes with it.",
+      "feedback": "One of the verb tiles belongs to tu, not elle.",
+      "explanation": "Elle est: est is the il/elle form. Es goes with tu."
+    },
+    {
+      "id": "etre-avoir-etre-forms-6",
+      "pattern": "etre-forms",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Je es fatigué.",
+      "answers": [
+        "Je suis fatigué."
+      ],
+      "hint": "Es is the form for tu. What does je take?",
+      "feedback": "The subject is je, so the verb must be the je form of être.",
+      "explanation": "Je suis fatigué. Je takes suis; es goes with tu."
+    },
+    {
+      "id": "etre-avoir-etre-forms-7",
+      "pattern": "etre-forms",
+      "type": "rewrite",
+      "instruction": "Change il to ils and adjust the verb.",
+      "source": "Il est en retard.",
+      "answers": [
+        "Ils sont en retard."
+      ],
+      "hint": "You need the plural form of être for ils.",
+      "feedback": "Ils needs its own form of être, which looks nothing like est.",
+      "explanation": "Ils sont en retard. En retard does not change."
+    },
+    {
+      "id": "etre-avoir-avoir-forms-1",
+      "pattern": "avoir-forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "avoir · je · présent",
+      "answers": [
+        "ai",
+        "j’ai"
+      ],
+      "alternatives": [
+        {
+          "answer": "je ai",
+          "message": "The verb form is right, but je becomes j’ before a vowel: j’ai."
+        }
+      ],
+      "hint": "Avoir begins with a vowel, so je changes.",
+      "feedback": "The je form of avoir is very short, and je loses its e before it.",
+      "explanation": "J’ai: je becomes j’ before the vowel of ai."
+    },
+    {
+      "id": "etre-avoir-avoir-forms-2",
+      "pattern": "avoir-forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "avoir · ils · présent",
+      "answers": [
+        "ont",
+        "ils ont"
+      ],
+      "hint": "The ils form of avoir is a short word ending in -t.",
+      "feedback": "Do not mix it up with sont, which is être.",
+      "explanation": "Ils ont (they have). Ils sont means “they are”."
+    },
+    {
+      "id": "etre-avoir-avoir-forms-3",
+      "pattern": "avoir-forms",
+      "type": "complete",
+      "instruction": "Write avoir in the present.",
+      "source": "Nous ____ une voiture rouge.",
+      "answers": [
+        "avons"
+      ],
+      "hint": "The nous form of avoir is regular-looking: it ends in -ons.",
+      "feedback": "Use the nous form of avoir.",
+      "explanation": "Nous avons: av- plus the -ons ending."
+    },
+    {
+      "id": "etre-avoir-avoir-forms-4",
+      "pattern": "avoir-forms",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Vous ____ un chien ?",
+      "options": [
+        "avez",
+        "avons",
+        "ont",
+        "as"
+      ],
+      "answers": [
+        "avez"
+      ],
+      "hint": "Match the form of avoir to vous.",
+      "feedback": "Only one of these forms goes with vous.",
+      "explanation": "Vous avez. Avons goes with nous, ont with ils, as with tu."
+    },
+    {
+      "id": "etre-avoir-avoir-forms-5",
+      "pattern": "avoir-forms",
+      "type": "rewrite",
+      "instruction": "Change je to nous and adjust the verb.",
+      "source": "J’ai deux frères.",
+      "answers": [
+        "Nous avons deux frères."
+      ],
+      "hint": "Nous needs the nous form of avoir.",
+      "feedback": "The nous form of avoir is longer than ai.",
+      "explanation": "Nous avons deux frères. Nous does not elide, so there is no apostrophe."
+    },
+    {
+      "id": "etre-avoir-avoir-forms-6",
+      "pattern": "avoir-forms",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Tu a un stylo ?",
+      "answers": [
+        "Tu as un stylo ?"
+      ],
+      "hint": "A goes with il or elle. What does tu take?",
+      "feedback": "Tu forms usually end in -s.",
+      "explanation": "Tu as un stylo ? The tu form of avoir is as."
+    },
+    {
+      "id": "etre-avoir-etre-or-avoir-1",
+      "pattern": "etre-or-avoir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Mon frère ____ grand.",
+      "options": [
+        "est",
+        "a",
+        "as"
+      ],
+      "answers": [
+        "est"
+      ],
+      "hint": "Grand describes what he is like.",
+      "feedback": "Describing someone with an adjective uses “to be”.",
+      "explanation": "Mon frère est grand: être + an adjective."
+    },
+    {
+      "id": "etre-avoir-etre-or-avoir-2",
+      "pattern": "etre-or-avoir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Nous ____ une grande maison.",
+      "options": [
+        "avons",
+        "sommes",
+        "êtes"
+      ],
+      "answers": [
+        "avons"
+      ],
+      "hint": "A house is something you own.",
+      "feedback": "Owning something uses “to have”.",
+      "explanation": "Nous avons une grande maison: possession uses avoir."
+    },
+    {
+      "id": "etre-avoir-etre-or-avoir-3",
+      "pattern": "etre-or-avoir",
+      "type": "complete",
+      "instruction": "Write être or avoir in the present.",
+      "source": "Julie ____ un nouveau vélo.",
+      "answers": [
+        "a"
+      ],
+      "strictAccents": true,
+      "hint": "Julie owns the bike. Which verb shows possession?",
+      "feedback": "Think about possession, and remember that the verb form has no accent.",
+      "explanation": "Julie a un nouveau vélo: the il/elle form of avoir is a, without an accent. À is a preposition."
+    },
+    {
+      "id": "etre-avoir-etre-or-avoir-4",
+      "pattern": "etre-or-avoir",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The children are in the garden.",
+      "answers": [
+        "Les enfants sont dans le jardin.",
+        "Les enfants sont au jardin."
+      ],
+      "hint": "Saying where someone is uses “to be”, in the plural.",
+      "feedback": "Use the ils form of être for les enfants.",
+      "explanation": "Les enfants sont dans le jardin: location uses être. Au jardin is also correct."
+    },
+    {
+      "id": "etre-avoir-etre-or-avoir-5",
+      "pattern": "etre-or-avoir",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Elles ont contentes.",
+      "answers": [
+        "Elles sont contentes."
+      ],
+      "hint": "Contentes describes how they are.",
+      "feedback": "An adjective describing the subject needs “to be”, not “to have”.",
+      "explanation": "Elles sont contentes: être + adjective."
+    },
+    {
+      "id": "etre-avoir-etre-or-avoir-6",
+      "pattern": "etre-or-avoir",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "Do you have a question? (formal)",
+      "tokens": [
+        "question ?",
+        "avez",
+        "Vous",
+        "une",
+        "avons"
+      ],
+      "answers": [
+        "Vous avez une question ?"
+      ],
+      "hint": "Formal you is vous. Pick the form of avoir that goes with it.",
+      "feedback": "One verb tile belongs to nous.",
+      "explanation": "Vous avez une question ? Avons goes with nous."
+    },
+    {
+      "id": "etre-avoir-age-avoir-1",
+      "pattern": "age-avoir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ma sœur ____ quinze ans.",
+      "options": [
+        "a",
+        "est",
+        "as"
+      ],
+      "answers": [
+        "a"
+      ],
+      "hint": "In French, you do not say that you “are” an age.",
+      "feedback": "Age uses “to have” in French.",
+      "explanation": "Ma sœur a quinze ans: literally “has fifteen years”."
+    },
+    {
+      "id": "etre-avoir-age-avoir-2",
+      "pattern": "age-avoir",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I am twenty years old.",
+      "answers": [
+        "J’ai vingt ans.",
+        "J’ai 20 ans."
+      ],
+      "hint": "French “has” years. Remember the elision of je.",
+      "feedback": "English uses “am” here, but French uses a different verb for age.",
+      "explanation": "J’ai vingt ans: age uses avoir + number + ans."
+    },
+    {
+      "id": "etre-avoir-age-avoir-3",
+      "pattern": "age-avoir",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "My father is fifty.",
+      "answers": [
+        "Mon père a cinquante ans.",
+        "Mon père a 50 ans."
+      ],
+      "hint": "English can leave out “years old”, but French cannot leave out ans.",
+      "feedback": "Use avoir for age and finish with the word for years.",
+      "explanation": "Mon père a cinquante ans: avoir + number + ans, even when English just says “is fifty”."
+    },
+    {
+      "id": "etre-avoir-age-avoir-4",
+      "pattern": "age-avoir",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je suis dix-huit ans.",
+      "answers": [
+        "J’ai dix-huit ans."
+      ],
+      "hint": "Age uses a different verb in French.",
+      "feedback": "Replace the verb, and watch what happens to je before a vowel.",
+      "explanation": "J’ai dix-huit ans: age uses avoir, and je becomes j’."
+    },
+    {
+      "id": "etre-avoir-age-avoir-5",
+      "pattern": "age-avoir",
+      "type": "complete",
+      "instruction": "Write avoir in the present.",
+      "source": "Quel âge ____-tu ?",
+      "answers": [
+        "as"
+      ],
+      "hint": "The subject after the hyphen is tu.",
+      "feedback": "Use the tu form of avoir.",
+      "explanation": "Quel âge as-tu ? Asking about age also uses avoir."
+    },
+    {
+      "id": "etre-avoir-age-avoir-6",
+      "pattern": "age-avoir",
+      "type": "rewrite",
+      "instruction": "Replace mon grand-père with mes grands-parents and adjust the verb.",
+      "source": "Mon grand-père a quatre-vingts ans.",
+      "answers": [
+        "Mes grands-parents ont quatre-vingts ans."
+      ],
+      "hint": "The subject becomes plural, so avoir must too.",
+      "feedback": "Use the ils form of avoir for mes grands-parents.",
+      "explanation": "Mes grands-parents ont quatre-vingts ans: the plural form of avoir is ont."
+    },
+    {
+      "id": "etre-avoir-avoir-expressions-1",
+      "pattern": "avoir-expressions",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Tu ____ faim ? Il y a du pain.",
+      "options": [
+        "as",
+        "es",
+        "est"
+      ],
+      "answers": [
+        "as"
+      ],
+      "hint": "Hunger is something French “has”.",
+      "feedback": "Faim is a noun, so it goes with “to have”.",
+      "explanation": "Tu as faim: avoir faim means “to be hungry”."
+    },
+    {
+      "id": "etre-avoir-avoir-expressions-2",
+      "pattern": "avoir-expressions",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Les enfants ____ sommeil.",
+      "options": [
+        "ont",
+        "sont",
+        "a"
+      ],
+      "answers": [
+        "ont"
+      ],
+      "hint": "Sommeil is used with the same verb as faim and soif.",
+      "feedback": "Check both the verb and the plural subject.",
+      "explanation": "Les enfants ont sommeil: avoir sommeil, with the ils form ont."
+    },
+    {
+      "id": "etre-avoir-avoir-expressions-3",
+      "pattern": "avoir-expressions",
+      "type": "complete",
+      "instruction": "Write avoir in the present.",
+      "source": "Nous ____ très soif.",
+      "answers": [
+        "avons"
+      ],
+      "hint": "Use the nous form of the verb.",
+      "feedback": "Soif goes with avoir. Write the nous form.",
+      "explanation": "Nous avons très soif: avoir soif means “to be thirsty”."
+    },
+    {
+      "id": "etre-avoir-avoir-expressions-4",
+      "pattern": "avoir-expressions",
+      "type": "translate",
+      "instruction": "Translate into French, using avoir.",
+      "source": "She is afraid of dogs.",
+      "answers": [
+        "Elle a peur des chiens."
+      ],
+      "hint": "French “has fear of”. De + les becomes des.",
+      "feedback": "Afraid is avoir peur de in French.",
+      "explanation": "Elle a peur des chiens: avoir peur de, and de + les = des."
+    },
+    {
+      "id": "etre-avoir-avoir-expressions-5",
+      "pattern": "avoir-expressions",
+      "type": "translate",
+      "instruction": "Translate into French, using avoir.",
+      "source": "I need a pen.",
+      "answers": [
+        "J’ai besoin d’un stylo."
+      ],
+      "hint": "French “has need of”. De becomes d’ before a vowel.",
+      "feedback": "Need is avoir besoin de in French.",
+      "explanation": "J’ai besoin d’un stylo: avoir besoin de, with d’ before un."
+    },
+    {
+      "id": "etre-avoir-avoir-expressions-6",
+      "pattern": "avoir-expressions",
+      "type": "translate",
+      "instruction": "Translate into French, using avoir.",
+      "source": "You are right. (to a friend)",
+      "answers": [
+        "Tu as raison."
+      ],
+      "hint": "French “has reason”. To a friend, use tu.",
+      "feedback": "Right is avoir raison in French, with no article.",
+      "explanation": "Tu as raison: avoir raison means “to be right”."
+    },
+    {
+      "id": "etre-avoir-avoir-expressions-7",
+      "pattern": "avoir-expressions",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "They (masculine) feel like going to the cinema.",
+      "tokens": [
+        "au",
+        "Ils",
+        "sont",
+        "envie",
+        "cinéma.",
+        "ont",
+        "d’aller"
+      ],
+      "answers": [
+        "Ils ont envie d’aller au cinéma."
+      ],
+      "hint": "Feeling like doing something is avoir envie de.",
+      "feedback": "One verb tile is être. This expression uses avoir.",
+      "explanation": "Ils ont envie d’aller au cinéma: avoir envie de + infinitive."
+    },
+    {
+      "id": "etre-avoir-avoir-expressions-8",
+      "pattern": "avoir-expressions",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Vous êtes tort, c’est lundi.",
+      "answers": [
+        "Vous avez tort, c’est lundi."
+      ],
+      "hint": "Tort is a noun that goes with the same verb as raison.",
+      "feedback": "Being wrong uses “to have” in French.",
+      "explanation": "Vous avez tort: avoir tort means “to be wrong”."
+    },
+    {
+      "id": "etre-avoir-il-y-a-1",
+      "pattern": "il-y-a",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ trois chats dans le jardin.",
+      "options": [
+        "Il y a",
+        "Il y ont",
+        "Il y sont"
+      ],
+      "answers": [
+        "Il y a"
+      ],
+      "hint": "The expression for “there are” does not change with a plural.",
+      "feedback": "Il y a is fixed. Its verb does not agree with what follows.",
+      "explanation": "Il y a trois chats: il y a means both “there is” and “there are”."
+    },
+    {
+      "id": "etre-avoir-il-y-a-2",
+      "pattern": "il-y-a",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "There is a bakery near the station.",
+      "answers": [
+        "Il y a une boulangerie près de la gare.",
+        "Près de la gare, il y a une boulangerie."
+      ],
+      "hint": "“There is” is a fixed three-word expression.",
+      "feedback": "Do not translate “there” and “is” separately.",
+      "explanation": "Il y a une boulangerie près de la gare. Il y a is the fixed form of “there is”."
+    },
+    {
+      "id": "etre-avoir-il-y-a-3",
+      "pattern": "il-y-a",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "There are two beds in the bedroom.",
+      "answers": [
+        "Il y a deux lits dans la chambre.",
+        "Dans la chambre, il y a deux lits.",
+        "Il y a 2 lits dans la chambre.",
+        "Dans la chambre, il y a 2 lits."
+      ],
+      "hint": "“There are” uses the same expression as “there is”.",
+      "feedback": "Il y a stays the same before a plural.",
+      "explanation": "Il y a deux lits dans la chambre: il y a does not become plural."
+    },
+    {
+      "id": "etre-avoir-il-y-a-4",
+      "pattern": "il-y-a",
+      "type": "complete",
+      "instruction": "Write the missing word.",
+      "source": "Il y ____ beaucoup de monde au marché.",
+      "answers": [
+        "a"
+      ],
+      "strictAccents": true,
+      "hint": "This is the fixed expression for “there is”. Its verb comes from avoir.",
+      "feedback": "The missing word is a verb form, so it has no accent.",
+      "explanation": "Il y a: the verb is the il form of avoir, a, without an accent."
+    },
+    {
+      "id": "etre-avoir-il-y-a-5",
+      "pattern": "il-y-a",
+      "type": "rewrite",
+      "instruction": "Make un livre plural (des livres).",
+      "source": "Il y a un livre sur la table.",
+      "answers": [
+        "Il y a des livres sur la table."
+      ],
+      "hint": "Only the noun group changes.",
+      "feedback": "Il y a does not change when what follows is plural.",
+      "explanation": "Il y a des livres sur la table: il y a stays the same."
+    },
+    {
+      "id": "etre-avoir-il-y-a-6",
+      "pattern": "il-y-a",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "There is a problem.",
+      "tokens": [
+        "un",
+        "y",
+        "Il",
+        "sont",
+        "problème.",
+        "a"
+      ],
+      "answers": [
+        "Il y a un problème."
+      ],
+      "hint": "Il y a is always three words, and its verb comes from avoir.",
+      "feedback": "One tile is a form of être. Il y a uses avoir.",
+      "explanation": "Il y a un problème: il + y + a."
+    },
+    {
+      "id": "etre-avoir-il-y-a-7",
+      "pattern": "il-y-a",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il y ont trois chambres dans l’appartement.",
+      "answers": [
+        "Il y a trois chambres dans l’appartement."
+      ],
+      "hint": "The expression for “there are” does not agree with the noun after it.",
+      "feedback": "Il y a keeps its singular verb even before a plural.",
+      "explanation": "Il y a trois chambres: il y a never changes to agree."
+    },
+    {
+      "id": "etre-avoir-profession-no-article-1",
+      "pattern": "profession-no-article",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Mon père est ____.",
+      "options": [
+        "médecin",
+        "un médecin",
+        "une médecin"
+      ],
+      "answers": [
+        "médecin"
+      ],
+      "hint": "After être, a job works like an adjective.",
+      "feedback": "After être, a profession has no article.",
+      "explanation": "Mon père est médecin: no article after être with a job."
+    },
+    {
+      "id": "etre-avoir-profession-no-article-2",
+      "pattern": "profession-no-article",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ un bon professeur.",
+      "options": [
+        "C’est",
+        "Il est",
+        "Ils sont"
+      ],
+      "answers": [
+        "C’est"
+      ],
+      "hint": "The job has an article and an adjective. Which structure allows that?",
+      "feedback": "Il est cannot be followed by un + job.",
+      "explanation": "C’est un bon professeur: with un and an adjective, use c’est."
+    },
+    {
+      "id": "etre-avoir-profession-no-article-3",
+      "pattern": "profession-no-article",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She is Italian.",
+      "answers": [
+        "Elle est italienne."
+      ],
+      "hint": "A nationality after être is an adjective: no article, no capital letter, feminine ending.",
+      "feedback": "Make the nationality agree with elle.",
+      "explanation": "Elle est italienne: a nationality adjective is lowercase and agrees with the subject."
+    },
+    {
+      "id": "etre-avoir-profession-no-article-4",
+      "pattern": "profession-no-article",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "My sister is a nurse.",
+      "answers": [
+        "Ma sœur est infirmière."
+      ],
+      "spellingAnswers": [
+        "Ma soeur est infirmière."
+      ],
+      "alternatives": [
+        {
+          "answer": "Ma sœur est une infirmière.",
+          "message": "After être, a profession takes no article in standard French: Ma sœur est infirmière."
+        },
+        {
+          "answer": "Ma soeur est une infirmière.",
+          "message": "After être, a profession takes no article in standard French: Ma sœur est infirmière. Sœur is written with œ."
+        }
+      ],
+      "hint": "English has “a” here. French does not.",
+      "feedback": "After être, drop the article before the job.",
+      "explanation": "Ma sœur est infirmière: no article after être with a profession."
+    },
+    {
+      "id": "etre-avoir-profession-no-article-5",
+      "pattern": "profession-no-article",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il est un architecte.",
+      "answers": [
+        "Il est architecte.",
+        "C’est un architecte."
+      ],
+      "hint": "Either drop something, or change the start of the sentence.",
+      "feedback": "Il est + un + job is not standard French.",
+      "explanation": "Il est architecte (no article) or c’est un architecte (with c’est)."
+    },
+    {
+      "id": "etre-avoir-profession-no-article-6",
+      "pattern": "profession-no-article",
+      "type": "rewrite",
+      "instruction": "Start the sentence with c’est instead of il est.",
+      "source": "Il est dentiste.",
+      "answers": [
+        "C’est un dentiste."
+      ],
+      "hint": "C’est needs something extra before the job.",
+      "feedback": "After c’est, the job needs an article.",
+      "explanation": "C’est un dentiste: c’est + un/une + profession."
+    },
+    {
+      "id": "etre-avoir-profession-no-article-7",
+      "pattern": "profession-no-article",
+      "type": "complete",
+      "instruction": "Write the missing word.",
+      "source": "C’est ____ acteur célèbre.",
+      "answers": [
+        "un"
+      ],
+      "hint": "After c’est, a job needs an article.",
+      "feedback": "Acteur is masculine.",
+      "explanation": "C’est un acteur célèbre: c’est + un + job."
+    }
+  ]
+}

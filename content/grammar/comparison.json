@@ -1,0 +1,747 @@
+{
+  "id": "comparison",
+  "unit": "adjectives",
+  "level": "A2",
+  "title": "Comparing",
+  "description": "Compare people and things with plus, moins, aussi, meilleur and mieux, and say the most or the least.",
+  "mark": "plus … que",
+  "rule": "With an adjective, use plus (more), moins (less) or aussi (as) + adjective + que, and the adjective still agrees: Marie est plus grande que Paul. With a noun, use plus de, moins de or autant de + noun + que (j’ai plus de livres que toi); after a verb, use plus, moins or autant + que (il travaille plus que moi). Bon becomes meilleur, which agrees like an adjective (une meilleure idée), and bien becomes mieux, which goes with a verb (elle chante mieux); never say plus bon or plus bien. The superlative is le, la or les + plus or moins + adjective, and the group it belongs to follows with de: le plus grand de la classe, la meilleure de l’équipe. Adjectives that follow the noun also follow it in the superlative, with the article repeated (le film le plus intéressant); adjectives that go before the noun can take either order (la plus belle ville or la ville la plus belle). After que, use a stressed pronoun: que moi, que toi, que lui, qu’elle.",
+  "example": "Paul est plus grand que Marie. · Elle chante mieux que moi. · C’est le film le plus intéressant de l’année.",
+  "aside": "Moins bon and aussi bon are correct; only plus bon becomes meilleur. Likewise moins bien and aussi bien are correct; only plus bien becomes mieux.",
+  "exercises": [
+    {
+      "id": "comparison-adjective-comparison-1",
+      "pattern": "adjective-comparison",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Marie est plus ____ que son frère.",
+      "options": [
+        "grande",
+        "grand",
+        "grands"
+      ],
+      "answers": [
+        "grande"
+      ],
+      "hint": "Who is being described?",
+      "feedback": "The adjective still agrees in a comparison.",
+      "explanation": "The adjective agrees with Marie, the first person: plus grande."
+    },
+    {
+      "id": "comparison-adjective-comparison-2",
+      "pattern": "adjective-comparison",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Le train est ____ rapide que le bus.",
+      "options": [
+        "plus",
+        "plus de",
+        "autant"
+      ],
+      "answers": [
+        "plus"
+      ],
+      "hint": "Rapide is an adjective.",
+      "feedback": "With an adjective, there is no de.",
+      "explanation": "Before an adjective, more is plus: plus rapide que."
+    },
+    {
+      "id": "comparison-adjective-comparison-3",
+      "pattern": "adjective-comparison",
+      "type": "complete",
+      "instruction": "Write the word for as (as … as).",
+      "source": "Ma sœur est ____ sportive que moi.",
+      "answers": [
+        "aussi"
+      ],
+      "hint": "Sportive is an adjective.",
+      "feedback": "With an adjective, as … as is not autant.",
+      "explanation": "Before an adjective, as … as is aussi … que: aussi sportive que moi."
+    },
+    {
+      "id": "comparison-adjective-comparison-4",
+      "pattern": "adjective-comparison",
+      "type": "complete",
+      "instruction": "Write the word for less.",
+      "source": "Ce film est ____ intéressant que le livre.",
+      "answers": [
+        "moins"
+      ],
+      "hint": "You need the opposite of plus.",
+      "feedback": "There is no de before an adjective.",
+      "explanation": "Before an adjective, less is moins: moins intéressant que."
+    },
+    {
+      "id": "comparison-adjective-comparison-5",
+      "pattern": "adjective-comparison",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Paul is taller than Marie.",
+      "answers": [
+        "Paul est plus grand que Marie."
+      ],
+      "hint": "Taller is more tall.",
+      "feedback": "Use the pattern plus + adjective + que.",
+      "explanation": "Taller than is plus grand que, with grand agreeing with Paul."
+    },
+    {
+      "id": "comparison-adjective-comparison-6",
+      "pattern": "adjective-comparison",
+      "type": "rewrite",
+      "instruction": "Join the two sentences with aussi … que.",
+      "source": "Léa est grande. Sa mère est grande aussi.",
+      "answers": [
+        "Léa est aussi grande que sa mère.",
+        "Sa mère est aussi grande que Léa."
+      ],
+      "hint": "They are equal.",
+      "feedback": "Put the comparison word before the adjective and que after it.",
+      "explanation": "Equal qualities take aussi + adjective + que: aussi grande que sa mère."
+    },
+    {
+      "id": "comparison-adjective-comparison-7",
+      "pattern": "adjective-comparison",
+      "type": "build",
+      "instruction": "Build the sentence: She is more patient than him. Leave one tile unused.",
+      "source": "She is more patient than him.",
+      "tokens": [
+        "patiente",
+        "Elle",
+        "que",
+        "est",
+        "plus",
+        "lui.",
+        "il."
+      ],
+      "answers": [
+        "Elle est plus patiente que lui."
+      ],
+      "hint": "After que, use a stressed pronoun.",
+      "feedback": "Check the pronoun after que.",
+      "explanation": "The pattern is plus + adjective + que, and after que the pronoun is lui, not il."
+    },
+    {
+      "id": "comparison-adjective-comparison-8",
+      "pattern": "adjective-comparison",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ma maison est plus petit que ta maison.",
+      "answers": [
+        "Ma maison est plus petite que ta maison."
+      ],
+      "hint": "Maison is feminine.",
+      "feedback": "The adjective still has to agree.",
+      "explanation": "Petite agrees with the feminine noun maison, even in a comparison."
+    },
+    {
+      "id": "comparison-noun-quantity-1",
+      "pattern": "noun-quantity",
+      "type": "choose",
+      "instruction": "Choose the right words.",
+      "source": "J’ai ____ livres que toi.",
+      "options": [
+        "plus de",
+        "plus",
+        "plus des"
+      ],
+      "answers": [
+        "plus de"
+      ],
+      "hint": "Livres is a noun.",
+      "feedback": "Before a noun, you need a small extra word.",
+      "explanation": "Before a noun, more is plus de, and de does not change: plus de livres."
+    },
+    {
+      "id": "comparison-noun-quantity-2",
+      "pattern": "noun-quantity",
+      "type": "choose",
+      "instruction": "Choose the right words.",
+      "source": "Il boit ____ café que moi.",
+      "options": [
+        "autant de",
+        "aussi",
+        "autant du"
+      ],
+      "answers": [
+        "autant de"
+      ],
+      "hint": "Café is a noun.",
+      "feedback": "Aussi goes with adjectives, not nouns.",
+      "explanation": "Before a noun, as much is autant de: autant de café."
+    },
+    {
+      "id": "comparison-noun-quantity-3",
+      "pattern": "noun-quantity",
+      "type": "complete",
+      "instruction": "Write the words for less.",
+      "source": "Nous avons ____ temps que vous.",
+      "answers": [
+        "moins de"
+      ],
+      "hint": "Temps is a noun.",
+      "feedback": "Before a noun you need two words.",
+      "explanation": "Before a noun, less is moins de: moins de temps."
+    },
+    {
+      "id": "comparison-noun-quantity-4",
+      "pattern": "noun-quantity",
+      "type": "complete",
+      "instruction": "Write the words for as many.",
+      "source": "Elle a ____ cousins que sa sœur.",
+      "answers": [
+        "autant de"
+      ],
+      "hint": "Cousins is a noun.",
+      "feedback": "Aussi does not go with nouns.",
+      "explanation": "Before a noun, as many is autant de: autant de cousins."
+    },
+    {
+      "id": "comparison-noun-quantity-5",
+      "pattern": "noun-quantity",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I have more work than you (to a friend).",
+      "answers": [
+        "J’ai plus de travail que toi.",
+        "J’ai davantage de travail que toi."
+      ],
+      "hint": "Work is a noun.",
+      "feedback": "Check the word after plus and the pronoun after que.",
+      "explanation": "Before a noun, more is plus de, and after que the pronoun is toi: plus de travail que toi."
+    },
+    {
+      "id": "comparison-noun-quantity-6",
+      "pattern": "noun-quantity",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Tom has fewer brothers than Julie.",
+      "answers": [
+        "Tom a moins de frères que Julie."
+      ],
+      "hint": "Fewer is less.",
+      "feedback": "Before a noun, add a small word after moins.",
+      "explanation": "Before a noun, fewer is moins de: moins de frères."
+    },
+    {
+      "id": "comparison-noun-quantity-7",
+      "pattern": "noun-quantity",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Paris a plus des habitants que Lyon.",
+      "answers": [
+        "Paris a plus d’habitants que Lyon."
+      ],
+      "hint": "After plus, the small word never changes to des.",
+      "feedback": "Look at the word after plus, and remember elision.",
+      "explanation": "The pattern is plus de + noun, and de becomes d’ before a vowel or silent h: plus d’habitants."
+    },
+    {
+      "id": "comparison-noun-quantity-8",
+      "pattern": "noun-quantity",
+      "type": "rewrite",
+      "instruction": "Join the two sentences with autant de … que.",
+      "source": "Paul a trois chats. Marc a trois chats aussi.",
+      "answers": [
+        "Paul a autant de chats que Marc.",
+        "Marc a autant de chats que Paul."
+      ],
+      "hint": "The numbers are the same.",
+      "feedback": "Use the pattern for equal quantities of a noun.",
+      "explanation": "Equal quantities of a noun take autant de + noun + que: autant de chats que Marc."
+    },
+    {
+      "id": "comparison-verb-comparison-1",
+      "pattern": "verb-comparison",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Il travaille ____ que moi.",
+      "options": [
+        "plus",
+        "plus de",
+        "plus bien"
+      ],
+      "answers": [
+        "plus"
+      ],
+      "hint": "You are comparing an action, not a thing.",
+      "feedback": "After a verb, no de is needed.",
+      "explanation": "After a verb, more is simply plus: il travaille plus que moi."
+    },
+    {
+      "id": "comparison-verb-comparison-2",
+      "pattern": "verb-comparison",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Tu dors ____ que ton frère.",
+      "options": [
+        "autant",
+        "aussi",
+        "autant de"
+      ],
+      "answers": [
+        "autant"
+      ],
+      "hint": "You are comparing an action.",
+      "feedback": "Aussi goes with adjectives; after a verb, as much is different.",
+      "explanation": "After a verb, as much is autant: tu dors autant que ton frère."
+    },
+    {
+      "id": "comparison-verb-comparison-3",
+      "pattern": "verb-comparison",
+      "type": "complete",
+      "instruction": "Write the word for less.",
+      "source": "Je sors ____ qu’avant.",
+      "answers": [
+        "moins"
+      ],
+      "hint": "You are comparing an action.",
+      "feedback": "After a verb, no de is needed.",
+      "explanation": "After a verb, less is moins: je sors moins qu’avant."
+    },
+    {
+      "id": "comparison-verb-comparison-4",
+      "pattern": "verb-comparison",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She reads more than me.",
+      "answers": [
+        "Elle lit plus que moi.",
+        "Elle lit davantage que moi."
+      ],
+      "hint": "You are comparing an action.",
+      "feedback": "Check the word after the verb and the pronoun after que.",
+      "explanation": "After a verb, more is plus, and after que the pronoun is moi: elle lit plus que moi."
+    },
+    {
+      "id": "comparison-verb-comparison-5",
+      "pattern": "verb-comparison",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "We eat as much as you (you, plural).",
+      "answers": [
+        "Nous mangeons autant que vous.",
+        "On mange autant que vous."
+      ],
+      "hint": "You are comparing an action.",
+      "feedback": "After a verb, as much is not aussi.",
+      "explanation": "After a verb, as much as is autant que: nous mangeons autant que vous."
+    },
+    {
+      "id": "comparison-verb-comparison-6",
+      "pattern": "verb-comparison",
+      "type": "build",
+      "instruction": "Build the sentence: He works less than her. Leave the extra tiles unused.",
+      "source": "He works less than her.",
+      "tokens": [
+        "travaille",
+        "Il",
+        "moins",
+        "qu’elle.",
+        "que",
+        "de"
+      ],
+      "answers": [
+        "Il travaille moins qu’elle."
+      ],
+      "hint": "After a verb, no de is needed.",
+      "feedback": "Check the words after moins.",
+      "explanation": "After a verb, less than is moins que, and que becomes qu’ before elle."
+    },
+    {
+      "id": "comparison-verb-comparison-7",
+      "pattern": "verb-comparison",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Mon frère mange plus de moi.",
+      "answers": [
+        "Mon frère mange plus que moi."
+      ],
+      "hint": "Moi is a person, not a quantity.",
+      "feedback": "The word before moi is wrong.",
+      "explanation": "After a verb, the comparison is plus que: il mange plus que moi. De is only for a noun after plus."
+    },
+    {
+      "id": "comparison-meilleur-mieux-1",
+      "pattern": "meilleur-mieux",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ce gâteau est ____ que l’autre.",
+      "options": [
+        "meilleur",
+        "plus bon",
+        "meilleure"
+      ],
+      "answers": [
+        "meilleur"
+      ],
+      "hint": "Better here describes gâteau, a masculine noun.",
+      "feedback": "Bon has a special comparative form.",
+      "explanation": "Better describing a masculine noun is meilleur: ce gâteau est meilleur."
+    },
+    {
+      "id": "comparison-meilleur-mieux-2",
+      "pattern": "meilleur-mieux",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Elle chante ____ que moi.",
+      "options": [
+        "mieux",
+        "meilleur",
+        "plus bien"
+      ],
+      "answers": [
+        "mieux"
+      ],
+      "hint": "Better here describes how she sings.",
+      "feedback": "Bien has a special comparative form.",
+      "explanation": "Better describing a verb is mieux: elle chante mieux que moi."
+    },
+    {
+      "id": "comparison-meilleur-mieux-3",
+      "pattern": "meilleur-mieux",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "C’est une ____ idée.",
+      "options": [
+        "meilleure",
+        "meilleur",
+        "mieux"
+      ],
+      "answers": [
+        "meilleure"
+      ],
+      "hint": "Better here describes idée, a feminine noun.",
+      "feedback": "This word agrees like an adjective.",
+      "explanation": "Better describing a noun is meilleur, and it agrees with the feminine idée: une meilleure idée."
+    },
+    {
+      "id": "comparison-meilleur-mieux-4",
+      "pattern": "meilleur-mieux",
+      "type": "complete",
+      "instruction": "Write meilleur or mieux, in the right form.",
+      "source": "Tu nages ____ que l’année dernière.",
+      "answers": [
+        "mieux"
+      ],
+      "hint": "Better here describes how you swim.",
+      "feedback": "This describes an action, not a thing.",
+      "explanation": "Better describing a verb is mieux, which never changes: tu nages mieux."
+    },
+    {
+      "id": "comparison-meilleur-mieux-5",
+      "pattern": "meilleur-mieux",
+      "type": "complete",
+      "instruction": "Write meilleur or mieux, in the right form.",
+      "source": "Ces pommes sont ____ que les autres.",
+      "answers": [
+        "meilleures"
+      ],
+      "hint": "Better here describes pommes, a feminine plural noun.",
+      "feedback": "This word agrees like an adjective.",
+      "explanation": "Better describing a noun is meilleur, and it agrees with pommes: meilleures."
+    },
+    {
+      "id": "comparison-meilleur-mieux-6",
+      "pattern": "meilleur-mieux",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ce restaurant est plus bon que l’autre.",
+      "answers": [
+        "Ce restaurant est meilleur que l’autre."
+      ],
+      "hint": "Plus bon is never used.",
+      "feedback": "Bon has a special comparative form.",
+      "explanation": "The comparative of bon is meilleur: ce restaurant est meilleur que l’autre."
+    },
+    {
+      "id": "comparison-meilleur-mieux-7",
+      "pattern": "meilleur-mieux",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il joue plus bien que son père.",
+      "answers": [
+        "Il joue mieux que son père."
+      ],
+      "hint": "Plus bien is never used.",
+      "feedback": "Bien has a special comparative form.",
+      "explanation": "The comparative of bien is mieux: il joue mieux que son père."
+    },
+    {
+      "id": "comparison-meilleur-mieux-8",
+      "pattern": "meilleur-mieux",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "My sister cooks better than me.",
+      "answers": [
+        "Ma sœur cuisine mieux que moi.",
+        "Ma sœur fait mieux la cuisine que moi."
+      ],
+      "hint": "Better describes how she cooks.",
+      "feedback": "This describes an action, and check the pronoun after que.",
+      "explanation": "Better describing a verb is mieux, and after que the pronoun is moi."
+    },
+    {
+      "id": "comparison-superlative-1",
+      "pattern": "superlative",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "C’est le plus grand élève ____ la classe.",
+      "options": [
+        "de",
+        "que",
+        "à"
+      ],
+      "answers": [
+        "de"
+      ],
+      "hint": "In the class is part of a superlative.",
+      "feedback": "After a superlative, French does not use que or à for the group.",
+      "explanation": "After a superlative, the group is introduced with de: le plus grand élève de la classe."
+    },
+    {
+      "id": "comparison-superlative-2",
+      "pattern": "superlative",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Julie est ____ plus rapide de l’équipe.",
+      "options": [
+        "la",
+        "le",
+        "les"
+      ],
+      "answers": [
+        "la"
+      ],
+      "hint": "Julie is a woman.",
+      "feedback": "The article agrees too.",
+      "explanation": "The article in a superlative agrees with the person: Julie est la plus rapide."
+    },
+    {
+      "id": "comparison-superlative-3",
+      "pattern": "superlative",
+      "type": "complete",
+      "instruction": "Write the missing article.",
+      "source": "Ce sont ____ plus beaux jours de l’année.",
+      "answers": [
+        "les"
+      ],
+      "hint": "Jours is plural.",
+      "feedback": "The article agrees with the noun.",
+      "explanation": "Jours is plural, so the superlative takes les: les plus beaux jours."
+    },
+    {
+      "id": "comparison-superlative-4",
+      "pattern": "superlative",
+      "type": "complete",
+      "instruction": "Write the words for the best.",
+      "source": "C’est ____ restaurant du quartier.",
+      "answers": [
+        "le meilleur"
+      ],
+      "hint": "Restaurant is masculine, and bon has a special form.",
+      "feedback": "Never say le plus bon.",
+      "explanation": "The superlative of bon is le meilleur: le meilleur restaurant du quartier."
+    },
+    {
+      "id": "comparison-superlative-5",
+      "pattern": "superlative",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Emma is the youngest in the family.",
+      "answers": [
+        "Emma est la plus jeune de la famille."
+      ],
+      "hint": "In the family is part of a superlative.",
+      "feedback": "Check the article and the word before la famille.",
+      "explanation": "The superlative is la plus jeune, and the group takes de: de la famille."
+    },
+    {
+      "id": "comparison-superlative-6",
+      "pattern": "superlative",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It’s the best film of the year.",
+      "answers": [
+        "C’est le meilleur film de l’année."
+      ],
+      "hint": "Best is the superlative of bon.",
+      "feedback": "Never say le plus bon.",
+      "explanation": "The best is le meilleur, and the group takes de: de l’année."
+    },
+    {
+      "id": "comparison-superlative-7",
+      "pattern": "superlative",
+      "type": "rewrite",
+      "instruction": "Rewrite it as a superlative: Léo is the most serious in the class.",
+      "source": "Léo est plus sérieux que Tom.",
+      "answers": [
+        "Léo est le plus sérieux de la classe."
+      ],
+      "hint": "Add an article, and use de for the group.",
+      "feedback": "A superlative needs an article and de, not que.",
+      "explanation": "The superlative adds le before plus and introduces the group with de: le plus sérieux de la classe."
+    },
+    {
+      "id": "comparison-superlative-8",
+      "pattern": "superlative",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Marie est la plus bonne de l’équipe.",
+      "answers": [
+        "Marie est la meilleure de l’équipe."
+      ],
+      "hint": "Plus bonne is never used.",
+      "feedback": "Bon has a special form in the superlative too.",
+      "explanation": "The superlative of bon is le meilleur, here la meilleure for Marie."
+    },
+    {
+      "id": "comparison-superlative-9",
+      "pattern": "superlative",
+      "type": "build",
+      "instruction": "Build the sentence: She is the least tired in the group. Leave the extra tiles unused.",
+      "source": "She is the least tired in the group.",
+      "tokens": [
+        "moins",
+        "la",
+        "Elle",
+        "fatiguée",
+        "de",
+        "est",
+        "du groupe.",
+        "le"
+      ],
+      "answers": [
+        "Elle est la moins fatiguée du groupe."
+      ],
+      "hint": "The article agrees with elle.",
+      "feedback": "Check the article and the word for in the.",
+      "explanation": "The superlative is la moins fatiguée, and the group takes de: du groupe."
+    },
+    {
+      "id": "comparison-superlative-position-1",
+      "pattern": "superlative-position",
+      "type": "choose",
+      "instruction": "Choose the right phrase.",
+      "source": "C’est ____ de l’année.",
+      "options": [
+        "le film le plus intéressant",
+        "le plus film intéressant",
+        "le film plus le intéressant"
+      ],
+      "answers": [
+        "le film le plus intéressant"
+      ],
+      "hint": "Intéressant normally follows the noun.",
+      "feedback": "Keep intéressant after the noun and repeat the article.",
+      "explanation": "Adjectives that follow the noun keep that place in the superlative, with the article repeated: le film le plus intéressant."
+    },
+    {
+      "id": "comparison-superlative-position-2",
+      "pattern": "superlative-position",
+      "type": "choose",
+      "instruction": "Choose the right phrase.",
+      "source": "Voici ____ de Paris.",
+      "options": [
+        "le restaurant le moins cher",
+        "le restaurant moins le cher",
+        "le moins restaurant cher"
+      ],
+      "answers": [
+        "le restaurant le moins cher"
+      ],
+      "hint": "Cher meaning expensive follows the noun.",
+      "feedback": "Keep cher after the noun and repeat the article.",
+      "explanation": "Cher follows the noun, so the superlative follows too, with the article repeated: le restaurant le moins cher."
+    },
+    {
+      "id": "comparison-superlative-position-3",
+      "pattern": "superlative-position",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Lyon is the most beautiful city in France.",
+      "answers": [
+        "Lyon est la plus belle ville de France.",
+        "Lyon est la ville la plus belle de France."
+      ],
+      "hint": "Beau can go before the noun.",
+      "feedback": "Check the article and the word before France.",
+      "explanation": "Belle can go before the noun (la plus belle ville) or after it with the article repeated (la ville la plus belle)."
+    },
+    {
+      "id": "comparison-superlative-position-4",
+      "pattern": "superlative-position",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It’s the most interesting book in the library.",
+      "answers": [
+        "C’est le livre le plus intéressant de la bibliothèque."
+      ],
+      "hint": "Intéressant follows the noun.",
+      "feedback": "Keep the adjective after the noun and repeat the article.",
+      "explanation": "Intéressant follows the noun, so the superlative does too: le livre le plus intéressant."
+    },
+    {
+      "id": "comparison-superlative-position-5",
+      "pattern": "superlative-position",
+      "type": "rewrite",
+      "instruction": "Make it the most expensive dress with plus, keeping the adjective after the noun.",
+      "source": "J’ai acheté la robe chère.",
+      "answers": [
+        "J’ai acheté la robe la plus chère."
+      ],
+      "hint": "The article is repeated.",
+      "feedback": "After the noun, the superlative needs its own article.",
+      "explanation": "Chère follows the noun, so the superlative is la robe la plus chère, with la repeated."
+    },
+    {
+      "id": "comparison-superlative-position-6",
+      "pattern": "superlative-position",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "C’est la question plus difficile de l’examen.",
+      "answers": [
+        "C’est la question la plus difficile de l’examen."
+      ],
+      "hint": "A word is missing before plus.",
+      "feedback": "After the noun, the superlative needs its own article.",
+      "explanation": "Difficile follows the noun, so the article is repeated: la question la plus difficile."
+    },
+    {
+      "id": "comparison-superlative-position-7",
+      "pattern": "superlative-position",
+      "type": "build",
+      "instruction": "Build the sentence: It’s the biggest house in the street. You may not need every tile.",
+      "source": "It’s the biggest house in the street.",
+      "tokens": [
+        "maison",
+        "la",
+        "C’est",
+        "grande",
+        "plus",
+        "de la",
+        "rue.",
+        "la"
+      ],
+      "answers": [
+        "C’est la plus grande maison de la rue.",
+        "C’est la maison la plus grande de la rue."
+      ],
+      "hint": "Grand can go before the noun.",
+      "feedback": "Check the article and the word before la rue.",
+      "explanation": "Grande can go before the noun (la plus grande maison) or after it with the article repeated (la maison la plus grande)."
+    },
+    {
+      "id": "comparison-superlative-position-8",
+      "pattern": "superlative-position",
+      "type": "complete",
+      "instruction": "Write the missing words: the quietest area in the town.",
+      "source": "C’est le quartier ____ calme de la ville.",
+      "answers": [
+        "le plus"
+      ],
+      "hint": "Calme follows the noun.",
+      "feedback": "After the noun, the superlative needs its own article.",
+      "explanation": "Calme follows the noun, so the superlative repeats the article: le quartier le plus calme."
+    }
+  ]
+}

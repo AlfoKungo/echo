@@ -1,0 +1,865 @@
+{
+  "id": "questions",
+  "unit": "sentences",
+  "level": "A1",
+  "title": "Questions",
+  "description": "Ask yes-or-no questions three ways: intonation, est-ce que and inversion.",
+  "mark": "?",
+  "rule": "A yes-or-no question can keep statement order with a rising voice (Tu viens ?), or start with est-ce que, shortened to est-ce qu’ before a vowel sound, still with normal order (Est-ce que tu viens ?). Inversion puts the verb before a subject pronoun, joined by a hyphen (Viens-tu ?); when the verb ends in a vowel and the pronoun is il, elle or on, add -t- between them (Parle-t-il ? A-t-elle ?), but not after a verb ending in -t or -d (Finit-il ? Prend-il ?). With a noun subject, keep the noun first and add the matching pronoun after the verb (Paul vient-il ?). In the passé composé, invert only the auxiliary and pronoun, then the participle (As-tu mangé ?). A negative question keeps ne and pas around the verb (Tu ne viens pas ? N’aimes-tu pas le thé ?), and a yes that contradicts it is si, not oui.",
+  "example": "Tu viens ce soir ? · Est-ce qu’elle aime le thé ? · Paul vient-il avec nous ?",
+  "aside": "Inversion sounds careful and is common in writing; in everyday speech most people use intonation or est-ce que. When an exercise does not name a form, any of the three is accepted.",
+  "exercises": [
+    {
+      "id": "questions-pronoun-rewrite",
+      "pattern": "pronoun-normal-order",
+      "type": "rewrite",
+      "instruction": "Turn this statement into a question using est-ce que.",
+      "source": "Tu parles français.",
+      "answers": [
+        "Est-ce que tu parles français ?"
+      ],
+      "spellingAnswers": [
+        "Est-ce que tu parles francais ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Parles-tu français ?",
+          "message": "That is valid French using inversion. This exercise asks for est-ce que with tu before parles."
+        },
+        {
+          "answer": "Tu parles français ?",
+          "message": "That is a valid question with rising intonation in speech. This exercise asks you to add est-ce que."
+        }
+      ],
+      "hint": "Put the question opening in front. It changes nothing in the words after it.",
+      "feedback": "Use the requested question opening, then keep the statement’s subject before its verb.",
+      "explanation": "Est-ce que introduces the question without changing the order of tu parles."
+    },
+    {
+      "id": "questions-pronoun-build",
+      "pattern": "pronoun-normal-order",
+      "type": "build",
+      "instruction": "Build the question using est-ce que.",
+      "source": "Vous venez demain.",
+      "tokens": [
+        "demain ?",
+        "venez",
+        "Est-ce que",
+        "vous"
+      ],
+      "answers": [
+        "Est-ce que vous venez demain ?"
+      ],
+      "hint": "The question opening comes first. After it, keep the statement’s order.",
+      "feedback": "The question opening comes first. After it, keep the same subject–verb order as the statement.",
+      "explanation": "After est-ce que, the statement’s normal subject–verb order stays unchanged."
+    },
+    {
+      "id": "questions-pronoun-complete",
+      "pattern": "pronoun-normal-order",
+      "type": "complete",
+      "instruction": "Complete the question with the missing word from est-ce que. Write only that word.",
+      "source": "Est-ce ____ nous partons demain ?",
+      "answers": [
+        "que"
+      ],
+      "hint": "Listen to the first sound of nous. Does que need to shorten before it?",
+      "feedback": "Complete the fixed question opening. The following consonant sound does not require elision.",
+      "explanation": "Que stays complete before nous. The subject nous remains before the verb partons."
+    },
+    {
+      "id": "questions-pronoun-repair",
+      "pattern": "pronoun-normal-order",
+      "type": "repair",
+      "instruction": "Fix the word order after est-ce que. Keep all the words.",
+      "source": "Est-ce que parles tu français ?",
+      "answers": [
+        "Est-ce que tu parles français ?"
+      ],
+      "spellingAnswers": [
+        "Est-ce que tu parles francais ?"
+      ],
+      "hint": "After est-ce que, use the same order as in a statement.",
+      "feedback": "The question opening is already present. Check whether the subject comes before the verb.",
+      "explanation": "Est-ce que uses normal subject–verb order. Inversion is a separate question form, not an extra step after est-ce que."
+    },
+    {
+      "id": "questions-elision-rewrite",
+      "pattern": "que-elision",
+      "type": "rewrite",
+      "instruction": "Turn this statement into a question using est-ce que, shortened where needed.",
+      "source": "Elle aime le thé.",
+      "answers": [
+        "Est-ce qu’elle aime le thé ?"
+      ],
+      "spellingAnswers": [
+        "Est-ce qu’elle aime le the ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Aime-t-elle le thé ?",
+          "message": "That is valid French using inversion. This exercise asks for est-ce qu’elle followed by aime."
+        },
+        {
+          "answer": "Elle aime le thé ?",
+          "message": "That is a valid question with rising intonation in speech. Here, use the requested est-ce qu’ form."
+        }
+      ],
+      "hint": "Elle begins with a vowel sound, so que becomes qu’.",
+      "feedback": "Use the requested question opening and check its elision before the subject’s vowel sound.",
+      "explanation": "Que elides before elle. The subject elle still comes before the verb aime."
+    },
+    {
+      "id": "questions-elision-build",
+      "pattern": "que-elision",
+      "type": "build",
+      "instruction": "Build the question using the shortened form of est-ce que.",
+      "source": "Ils habitent ici.",
+      "tokens": [
+        "ici ?",
+        "ils",
+        "Est-ce qu’",
+        "habitent"
+      ],
+      "answers": [
+        "Est-ce qu’ils habitent ici ?"
+      ],
+      "hint": "The tile ending in an apostrophe joins the word right after it. Then use statement order.",
+      "feedback": "Join the apostrophe-ending opening to the subject, then keep the verb after the subject.",
+      "explanation": "Que becomes qu’ because the next word is ils, which begins with a vowel sound."
+    },
+    {
+      "id": "questions-elision-complete",
+      "pattern": "que-elision",
+      "type": "complete",
+      "instruction": "Fill the blank with que or its shortened form. Write only the missing part, including any apostrophe.",
+      "source": "Est-ce ____ il travaille demain ?",
+      "answers": [
+        "qu’"
+      ],
+      "hint": "Il starts with a vowel sound. What happens to que before a vowel?",
+      "feedback": "The following pronoun starts with a vowel sound. Include the apostrophe in the shortened form.",
+      "explanation": "Que becomes qu’ immediately before il. The apostrophe joins the two without a space."
+    },
+    {
+      "id": "questions-elision-repair",
+      "pattern": "que-elision",
+      "type": "repair",
+      "instruction": "Fix the elision in this question. Keep the other words unchanged.",
+      "source": "Est-ce que elles arrivent demain ?",
+      "answers": [
+        "Est-ce qu’elles arrivent demain ?"
+      ],
+      "hint": "Elles starts with a vowel sound. What happens to que before a vowel?",
+      "feedback": "The subject–verb order is correct. Check the elision immediately before the subject.",
+      "explanation": "Que must elide before elles. The order elles arrivent is already correct."
+    },
+    {
+      "id": "questions-noun-rewrite",
+      "pattern": "noun-subject-order",
+      "type": "rewrite",
+      "instruction": "Turn this statement into a question using est-ce que. Keep the noun subject.",
+      "source": "Le train arrive demain.",
+      "answers": [
+        "Est-ce que le train arrive demain ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Le train arrive-t-il demain ?",
+          "message": "That is valid French using inversion. This exercise asks you to put est-ce que before le train arrive demain."
+        },
+        {
+          "answer": "Le train arrive demain ?",
+          "message": "That is a valid question with rising intonation in speech. This exercise specifically asks for est-ce que."
+        }
+      ],
+      "hint": "Put Est-ce que before the whole statement. Le train remains before arrive.",
+      "feedback": "Keep the complete noun subject before its verb and add the requested opening before both.",
+      "explanation": "The same pattern works with a noun subject: est-ce que, then le train, then arrive."
+    },
+    {
+      "id": "questions-noun-build",
+      "pattern": "noun-subject-order",
+      "type": "build",
+      "instruction": "Build the question using est-ce que. Keep the noun subject.",
+      "source": "La porte est ouverte.",
+      "tokens": [
+        "ouverte ?",
+        "la porte",
+        "Est-ce que",
+        "est"
+      ],
+      "answers": [
+        "Est-ce que la porte est ouverte ?"
+      ],
+      "hint": "After the question opening, keep the words of the statement in their order.",
+      "feedback": "The two-word noun subject belongs between the question opening and the verb.",
+      "explanation": "Est-ce que adds a question opening; it does not reverse the statement’s subject and verb."
+    },
+    {
+      "id": "questions-noun-complete",
+      "pattern": "noun-subject-order",
+      "type": "complete",
+      "instruction": "Write the missing question opening: est-ce que or its shortened form.",
+      "source": "____ le café est chaud ?",
+      "answers": [
+        "Est-ce que"
+      ],
+      "hint": "Look at the sound right after the blank. Does que need to shorten before it?",
+      "feedback": "Supply the complete question opening. Its final word is followed by a consonant sound.",
+      "explanation": "Que is followed by le, not by café. There is no elision, and le café stays before est."
+    },
+    {
+      "id": "questions-noun-repair",
+      "pattern": "noun-subject-order",
+      "type": "repair",
+      "instruction": "Fix the word order after est-ce que. Keep l’enfant as the subject and keep all the words.",
+      "source": "Est-ce que joue l’enfant ici ?",
+      "answers": [
+        "Est-ce que l’enfant joue ici ?"
+      ],
+      "hint": "After est-ce que, the subject comes before the verb, just as in a statement.",
+      "feedback": "Keep the noun subject together and place it before the verb, just as in a statement.",
+      "explanation": "L’enfant stays together as the subject. Que does not elide here because the next sound is the l in l’enfant."
+    },
+    {
+      "id": "questions-intonation-choose",
+      "pattern": "intonation",
+      "type": "choose",
+      "instruction": "Choose the question that uses rising intonation only.",
+      "source": "A casual question to a friend: are you coming tonight?",
+      "options": [
+        "Tu viens ce soir ?",
+        "Viens-tu ce soir ?",
+        "Est-ce que tu viens ce soir ?"
+      ],
+      "answers": [
+        "Tu viens ce soir ?"
+      ],
+      "hint": "Look for the question whose words are in exactly the same order as a statement, with nothing added.",
+      "feedback": "One option adds est-ce que and one swaps the verb and the pronoun. Intonation changes neither.",
+      "explanation": "Tu viens ce soir ? is the statement Tu viens ce soir with a rising voice. Viens-tu uses inversion and Est-ce que tu viens adds an opening."
+    },
+    {
+      "id": "questions-intonation-translate",
+      "pattern": "intonation",
+      "type": "translate",
+      "instruction": "Translate into French using rising intonation only.",
+      "source": "Do you have a car? (to a friend)",
+      "answers": [
+        "Tu as une voiture ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce que tu as une voiture ?",
+          "message": "That is a correct question, but here use intonation only, without est-ce que."
+        },
+        {
+          "answer": "As-tu une voiture ?",
+          "message": "That is correct inversion, but here keep tu before the verb and use intonation only."
+        }
+      ],
+      "hint": "Say the statement “you have a car” to a friend and let your voice rise at the end.",
+      "feedback": "Keep tu before the verb and add nothing at the start.",
+      "explanation": "An intonation question is just the statement Tu as une voiture with a question mark."
+    },
+    {
+      "id": "questions-intonation-repair",
+      "pattern": "intonation",
+      "type": "repair",
+      "instruction": "This question mixes intonation and inversion. Fix it so it uses intonation only.",
+      "source": "Vous parlez-vous anglais ?",
+      "answers": [
+        "Vous parlez anglais ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Parlez-vous anglais ?",
+          "message": "That is correct inversion, but here keep vous before the verb and use intonation only."
+        }
+      ],
+      "hint": "An intonation question says the subject only once, before the verb.",
+      "feedback": "The subject pronoun appears twice. Keep the one that gives statement order.",
+      "explanation": "With intonation, the order is the statement’s: Vous parlez anglais ? The extra -vous belongs only to inversion."
+    },
+    {
+      "id": "questions-intonation-build",
+      "pattern": "intonation",
+      "type": "build",
+      "instruction": "Build the casual question using intonation only.",
+      "source": "Is your brother arriving tonight?",
+      "tokens": [
+        "ce soir ?",
+        "arrive",
+        "Ton frère",
+        "arrive-il"
+      ],
+      "answers": [
+        "Ton frère arrive ce soir ?"
+      ],
+      "hint": "Use the statement order: subject, verb, then the time.",
+      "feedback": "Intonation needs no pronoun after the verb. Leave out the tile that adds one.",
+      "explanation": "Ton frère arrive ce soir ? keeps statement order. The tile arrive-il is wrong in any case: inversion here would need -t-."
+    },
+    {
+      "id": "questions-inversion-rewrite",
+      "pattern": "inversion-pronoun",
+      "type": "rewrite",
+      "instruction": "Turn this statement into a question using inversion.",
+      "source": "Vous aimez le fromage.",
+      "answers": [
+        "Aimez-vous le fromage ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce que vous aimez le fromage ?",
+          "message": "That is a correct question with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Vous aimez le fromage ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks for inversion."
+        }
+      ],
+      "hint": "Put the verb first, then the pronoun, joined by a hyphen.",
+      "feedback": "Swap the subject pronoun and the verb and link them with a hyphen.",
+      "explanation": "Inversion puts aimez before vous and joins them: Aimez-vous le fromage ?"
+    },
+    {
+      "id": "questions-inversion-choose",
+      "pattern": "inversion-pronoun",
+      "type": "choose",
+      "instruction": "Choose the correct inverted form.",
+      "source": "____ du thé ou du café ?",
+      "options": [
+        "Voulez-vous",
+        "Vous-voulez",
+        "Voulez-tu"
+      ],
+      "answers": [
+        "Voulez-vous"
+      ],
+      "hint": "The verb comes first and must match the pronoun that follows it.",
+      "feedback": "Check the order of verb and pronoun, and whether the verb form fits that pronoun.",
+      "explanation": "Voulez-vous is vouloir in the vous form, inverted. Vous-voulez has the wrong order and voulez does not go with tu."
+    },
+    {
+      "id": "questions-inversion-complete",
+      "pattern": "inversion-pronoun",
+      "type": "complete",
+      "instruction": "Write aller for tu, inverted with a hyphen.",
+      "source": "____ au cinéma ce soir ?",
+      "answers": [
+        "Vas-tu"
+      ],
+      "hint": "Start with the tu form of aller, then the pronoun.",
+      "feedback": "Use the present of aller for tu and put tu after it with a hyphen.",
+      "explanation": "Tu vas becomes Vas-tu in inversion: Vas-tu au cinéma ce soir ?"
+    },
+    {
+      "id": "questions-inversion-build",
+      "pattern": "inversion-pronoun",
+      "type": "build",
+      "instruction": "Build the question using inversion.",
+      "source": "Do you take the bus in the morning? (to a friend)",
+      "tokens": [
+        "le bus",
+        "Prend-tu",
+        "le matin ?",
+        "Prends-tu"
+      ],
+      "answers": [
+        "Prends-tu le bus le matin ?"
+      ],
+      "hint": "Start with the verb-pronoun tile, then the bus, then the time.",
+      "feedback": "Two tiles look alike. Only one has the right tu form of prendre.",
+      "explanation": "With tu, prendre is prends, so the inverted form is Prends-tu. Prend is the il/elle form."
+    },
+    {
+      "id": "questions-inversion-repair",
+      "pattern": "inversion-pronoun",
+      "type": "repair",
+      "instruction": "Fix the inverted question.",
+      "source": "Finissez vous à cinq heures ?",
+      "answers": [
+        "Finissez-vous à cinq heures ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce que vous finissez à cinq heures ?",
+          "message": "That is a correct question, but here keep the inversion and fix how it is written."
+        }
+      ],
+      "hint": "In inversion, the verb and the pronoun are written as one unit.",
+      "feedback": "The order is right. Check how the verb and the pronoun are joined.",
+      "explanation": "An inverted verb and pronoun are always linked by a hyphen: Finissez-vous."
+    },
+    {
+      "id": "questions-inversion-translate",
+      "pattern": "inversion-pronoun",
+      "type": "translate",
+      "instruction": "Translate into French using inversion.",
+      "source": "Do you speak English? (formal)",
+      "answers": [
+        "Parlez-vous anglais ?",
+        "Parlez-vous l’anglais ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce que vous parlez anglais ?",
+          "message": "That is a correct question with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Vous parlez anglais ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks for inversion."
+        }
+      ],
+      "hint": "Use the vous form of parler and put vous after it.",
+      "feedback": "Formal you is vous. Put the verb first and join the pronoun with a hyphen.",
+      "explanation": "Parlez-vous anglais ? inverts vous parlez. With a language after parler, the article is optional."
+    },
+    {
+      "id": "questions-inversion-t-choose",
+      "pattern": "inversion-t",
+      "type": "choose",
+      "instruction": "Choose the correct inverted form.",
+      "source": "____ un chien ?",
+      "options": [
+        "A-t-il",
+        "A-il",
+        "At-il"
+      ],
+      "answers": [
+        "A-t-il"
+      ],
+      "hint": "The verb a ends in a vowel and il begins with one.",
+      "feedback": "French does not let two vowel sounds meet here. Something must go between them.",
+      "explanation": "A-t-il adds -t- between the vowel of a and the vowel of il. Each part is joined by a hyphen."
+    },
+    {
+      "id": "questions-inversion-t-complete",
+      "pattern": "inversion-t",
+      "type": "complete",
+      "instruction": "Write the missing letter between the verb and the pronoun.",
+      "source": "Parle-____-elle espagnol ?",
+      "answers": [
+        "t"
+      ],
+      "hint": "Parle ends in a vowel and elle begins with one.",
+      "feedback": "A single sound links the two vowels. Write just that letter.",
+      "explanation": "When a verb ending in a vowel meets il, elle or on, French adds -t-: Parle-t-elle ?"
+    },
+    {
+      "id": "questions-inversion-t-rewrite",
+      "pattern": "inversion-t",
+      "type": "rewrite",
+      "instruction": "Turn this statement into a question using inversion.",
+      "source": "Elle aime le jazz.",
+      "answers": [
+        "Aime-t-elle le jazz ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce qu’elle aime le jazz ?",
+          "message": "That is a correct question with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Elle aime le jazz ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks for inversion."
+        }
+      ],
+      "hint": "Put the verb first. Aime ends in a vowel and elle starts with one.",
+      "feedback": "After inverting, check whether two vowels meet between the verb and elle.",
+      "explanation": "Aime and elle are separated by -t-: Aime-t-elle le jazz ?"
+    },
+    {
+      "id": "questions-inversion-t-repair",
+      "pattern": "inversion-t",
+      "type": "repair",
+      "instruction": "Fix the inverted question.",
+      "source": "Mange-il avec nous ?",
+      "answers": [
+        "Mange-t-il avec nous ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce qu’il mange avec nous ?",
+          "message": "That is a correct question, but here keep the inversion and fix it."
+        }
+      ],
+      "hint": "Look at the last letter of mange and the first letter of il.",
+      "feedback": "The order is right, but two vowels meet between the verb and the pronoun.",
+      "explanation": "Mange ends in a vowel, so -t- goes before il: Mange-t-il avec nous ?"
+    },
+    {
+      "id": "questions-inversion-t-translate",
+      "pattern": "inversion-t",
+      "type": "translate",
+      "instruction": "Translate into French using inversion.",
+      "source": "Does he work on Saturdays?",
+      "answers": [
+        "Travaille-t-il le samedi ?",
+        "Travaille-t-il les samedis ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce qu’il travaille le samedi ?",
+          "message": "That is a correct question with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Il travaille le samedi ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks for inversion."
+        }
+      ],
+      "hint": "Invert travaille and il. Think about the two vowels that meet.",
+      "feedback": "Put the verb first, then check what goes between travaille and il. “On Saturdays” is le samedi.",
+      "explanation": "Travaille ends in a vowel, so inversion adds -t-: Travaille-t-il le samedi ? Le samedi means every Saturday."
+    },
+    {
+      "id": "questions-inversion-t-no-t-choose",
+      "pattern": "inversion-t",
+      "type": "choose",
+      "instruction": "Choose the correct inverted form.",
+      "source": "____ ses devoirs avant le dîner ?",
+      "options": [
+        "Finit-il",
+        "Finit-t-il",
+        "Fini-t-il"
+      ],
+      "answers": [
+        "Finit-il"
+      ],
+      "hint": "Look at the last letter of the verb before you add anything.",
+      "feedback": "The extra -t- is only there to separate two vowels. Check whether this verb already ends in t.",
+      "explanation": "Finit already ends in t, so no extra -t- is added: Finit-il ? Fini without t is the past participle, not the present."
+    },
+    {
+      "id": "questions-noun-inversion-rewrite",
+      "pattern": "complex-inversion",
+      "type": "rewrite",
+      "instruction": "Turn this statement into a question using inversion. Keep Marie as the first word.",
+      "source": "Marie travaille ici.",
+      "answers": [
+        "Marie travaille-t-elle ici ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce que Marie travaille ici ?",
+          "message": "That is a correct question with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Marie travaille ici ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks for inversion."
+        }
+      ],
+      "hint": "Keep the noun, then add the pronoun that stands for Marie after the verb.",
+      "feedback": "A noun subject is not moved. It is repeated by a pronoun after the verb, and the vowel rule still applies.",
+      "explanation": "Marie stays first; elle is added after travaille with -t-: Marie travaille-t-elle ici ?"
+    },
+    {
+      "id": "questions-noun-inversion-choose",
+      "pattern": "complex-inversion",
+      "type": "choose",
+      "instruction": "Choose the correct form.",
+      "source": "Tes parents ____ ce week-end ?",
+      "options": [
+        "viennent-ils",
+        "viennent-t-ils",
+        "vient-ils"
+      ],
+      "answers": [
+        "viennent-ils"
+      ],
+      "hint": "The pronoun after the verb stands for tes parents, and the verb agrees with it.",
+      "feedback": "Check the verb ending and whether a -t- is needed between the verb and ils.",
+      "explanation": "Viennent-ils repeats tes parents with ils. Viennent ends in t, so no extra -t- is added."
+    },
+    {
+      "id": "questions-noun-inversion-repair",
+      "pattern": "complex-inversion",
+      "type": "repair",
+      "instruction": "Fix the inversion. Keep Paul as the first word.",
+      "source": "Vient Paul ce soir ?",
+      "answers": [
+        "Paul vient-il ce soir ?"
+      ],
+      "hint": "A noun subject does not move after the verb in a yes-or-no question. A pronoun does.",
+      "feedback": "Put Paul back before the verb and add the pronoun that stands for him after it.",
+      "explanation": "With a noun subject, keep the noun first and add il after the verb: Paul vient-il ce soir ?",
+      "alternatives": [
+        {
+          "answer": "Est-ce que Paul vient ce soir ?",
+          "message": "That is a correct question with est-ce que. This exercise asks you to fix the inversion: Paul vient-il ce soir ?"
+        },
+        {
+          "answer": "Paul vient ce soir ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks you to fix the inversion: Paul vient-il ce soir ?"
+        }
+      ]
+    },
+    {
+      "id": "questions-noun-inversion-build",
+      "pattern": "complex-inversion",
+      "type": "build",
+      "instruction": "Build the question using inversion with the noun subject.",
+      "source": "Does the bus leave at noon?",
+      "tokens": [
+        "Le bus",
+        "part-il",
+        "à midi ?",
+        "part-t-il"
+      ],
+      "answers": [
+        "Le bus part-il à midi ?"
+      ],
+      "hint": "Start with le bus, then the verb with the pronoun that stands for it.",
+      "feedback": "Two verb tiles look alike. Check whether part needs an extra -t-.",
+      "explanation": "Le bus stays first and il is added after part. Part already ends in t, so there is no extra -t-."
+    },
+    {
+      "id": "questions-noun-inversion-complete",
+      "pattern": "complex-inversion",
+      "type": "complete",
+      "instruction": "Write jouer in the present with the inverted pronoun that stands for ta sœur.",
+      "source": "Ta sœur ____ du piano ?",
+      "answers": [
+        "joue-t-elle"
+      ],
+      "hint": "The pronoun for ta sœur is elle, and joue ends in a vowel.",
+      "feedback": "Write the verb, a linking letter if two vowels meet, then the pronoun, all with hyphens.",
+      "explanation": "Ta sœur is repeated by elle after the verb, with -t- between the vowels: Ta sœur joue-t-elle du piano ?"
+    },
+    {
+      "id": "questions-noun-inversion-translate",
+      "pattern": "complex-inversion",
+      "type": "translate",
+      "instruction": "Translate into French using inversion. Start with Léa.",
+      "source": "Does Léa like the sea?",
+      "answers": [
+        "Léa aime-t-elle la mer ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce que Léa aime la mer ?",
+          "message": "That is a correct question with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Léa aime la mer ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks for inversion."
+        }
+      ],
+      "hint": "Keep Léa first and repeat her with a pronoun after the verb.",
+      "feedback": "Léa stays in front. Check the vowels between aime and the pronoun.",
+      "explanation": "Léa is repeated by elle, linked with -t-: Léa aime-t-elle la mer ?"
+    },
+    {
+      "id": "questions-noun-inversion-gender-choose",
+      "pattern": "complex-inversion",
+      "type": "choose",
+      "instruction": "Choose the correct form.",
+      "source": "Ta mère ____ en France ?",
+      "options": [
+        "habite-t-elle",
+        "habite-elle",
+        "habite-t-il"
+      ],
+      "answers": [
+        "habite-t-elle"
+      ],
+      "hint": "The added pronoun must match ta mère, and habite ends in a vowel.",
+      "feedback": "Check two things: the pronoun’s gender and the link between two vowels.",
+      "explanation": "Ta mère is feminine, so the pronoun is elle, joined with -t-: habite-t-elle."
+    },
+    {
+      "id": "questions-pc-inversion-rewrite",
+      "pattern": "passe-compose-inversion",
+      "type": "rewrite",
+      "instruction": "Turn this statement into a question using inversion.",
+      "source": "Tu as fini ton café.",
+      "answers": [
+        "As-tu fini ton café ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce que tu as fini ton café ?",
+          "message": "That is a correct question with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Tu as fini ton café ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks for inversion."
+        }
+      ],
+      "hint": "In the passé composé, only the auxiliary swaps places with the pronoun.",
+      "feedback": "Invert as and tu, and leave the participle after them.",
+      "explanation": "The auxiliary as is inverted with tu, and fini follows: As-tu fini ton café ?"
+    },
+    {
+      "id": "questions-pc-inversion-choose",
+      "pattern": "passe-compose-inversion",
+      "type": "choose",
+      "instruction": "Choose the correct inverted form.",
+      "source": "____ le film hier ?",
+      "options": [
+        "As-tu vu",
+        "As vu-tu",
+        "Vu as-tu"
+      ],
+      "answers": [
+        "As-tu vu"
+      ],
+      "hint": "Which word is inverted with the pronoun: the auxiliary or the participle?",
+      "feedback": "The pronoun joins the auxiliary, and the participle comes after both.",
+      "explanation": "As-tu vu inverts the auxiliary as with tu, then adds the participle vu."
+    },
+    {
+      "id": "questions-pc-inversion-complete",
+      "pattern": "passe-compose-inversion",
+      "type": "complete",
+      "instruction": "Write avoir for vous, inverted with a hyphen.",
+      "source": "____ fini le travail ?",
+      "answers": [
+        "Avez-vous"
+      ],
+      "hint": "Invert the auxiliary, not fini.",
+      "feedback": "Write the vous form of avoir, then the pronoun, joined by a hyphen.",
+      "explanation": "Vous avez fini becomes Avez-vous fini ? The participle stays after the pronoun."
+    },
+    {
+      "id": "questions-pc-inversion-build",
+      "pattern": "passe-compose-inversion",
+      "type": "build",
+      "instruction": "Build the question using inversion.",
+      "source": "Did she phone her mother?",
+      "tokens": [
+        "A-t-elle",
+        "téléphoné",
+        "à sa mère ?",
+        "A-elle"
+      ],
+      "answers": [
+        "A-t-elle téléphoné à sa mère ?"
+      ],
+      "hint": "Start with the auxiliary and pronoun, then the participle.",
+      "feedback": "Two auxiliary tiles look alike. Check what goes between a and elle.",
+      "explanation": "A and elle are separated by -t-: A-t-elle téléphoné à sa mère ?"
+    },
+    {
+      "id": "questions-pc-inversion-repair",
+      "pattern": "passe-compose-inversion",
+      "type": "repair",
+      "instruction": "Fix the word order in this inverted question.",
+      "source": "Avez vu-vous mes clés ?",
+      "answers": [
+        "Avez-vous vu mes clés ?"
+      ],
+      "hint": "The pronoun attaches to the auxiliary, not to the participle.",
+      "feedback": "Move vous next to the auxiliary and put the participle after it.",
+      "explanation": "In the passé composé, invert the auxiliary and the pronoun: Avez-vous vu mes clés ?"
+    },
+    {
+      "id": "questions-pc-inversion-translate",
+      "pattern": "passe-compose-inversion",
+      "type": "translate",
+      "instruction": "Translate into French using inversion.",
+      "source": "Did you sleep well? (formal)",
+      "answers": [
+        "Avez-vous bien dormi ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce que vous avez bien dormi ?",
+          "message": "That is a correct question with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Vous avez bien dormi ?",
+          "message": "That is a correct spoken question with rising intonation. This exercise asks for inversion."
+        }
+      ],
+      "hint": "Invert the auxiliary with vous. Short adverbs such as bien go before the participle.",
+      "feedback": "Use avoir for vous, invert it, then put bien and dormi after the pronoun.",
+      "explanation": "Avez-vous bien dormi ? inverts the auxiliary; bien sits between the pronoun and the participle."
+    },
+    {
+      "id": "questions-negative-si-choose",
+      "pattern": "negative-question-si",
+      "type": "choose",
+      "instruction": "Choose the right reply.",
+      "source": "— Tu ne viens pas ? — ____, je viens !",
+      "options": [
+        "Si",
+        "Oui",
+        "Non"
+      ],
+      "answers": [
+        "Si"
+      ],
+      "hint": "The reply contradicts a negative question.",
+      "feedback": "The speaker is coming, which goes against the question. French has a special yes for that.",
+      "explanation": "Si is the yes that contradicts a negative question. Oui answers a positive question, and non would mean the person is not coming."
+    },
+    {
+      "id": "questions-negative-si-complete",
+      "pattern": "negative-question-si",
+      "type": "complete",
+      "instruction": "Write the one-word reply that contradicts the negative question.",
+      "source": "— Vous n’aimez pas le fromage ? — ____, j’adore ça !",
+      "answers": [
+        "Si"
+      ],
+      "hint": "The answer disagrees with a question containing ne…pas.",
+      "feedback": "This is a yes, but not the usual one.",
+      "explanation": "After a negative question, yes is si: Si, j’adore ça !"
+    },
+    {
+      "id": "questions-negative-si-translate",
+      "pattern": "negative-question-si",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Aren’t you hungry? (to a friend)",
+      "answers": [
+        "Tu n’as pas faim ?",
+        "Est-ce que tu n’as pas faim ?",
+        "N’as-tu pas faim ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Tu as pas faim ?",
+          "message": "That is common in casual speech, but written French keeps ne: Tu n’as pas faim ?"
+        }
+      ],
+      "hint": "Avoir faim is the French for “to be hungry”. Put the negation around the verb.",
+      "feedback": "Use tu with avoir faim and wrap ne…pas around the conjugated verb. Ne becomes n’ before a vowel.",
+      "explanation": "Tu n’as pas faim ? keeps n’…pas around as. With inversion, the negation wraps the verb and pronoun together: N’as-tu pas faim ?"
+    },
+    {
+      "id": "questions-negative-si-rewrite",
+      "pattern": "negative-question-si",
+      "type": "rewrite",
+      "instruction": "Make this question negative. Keep the inversion.",
+      "source": "Aimes-tu le poisson ?",
+      "answers": [
+        "N’aimes-tu pas le poisson ?"
+      ],
+      "hint": "The negation wraps around the inverted verb and pronoun as one block.",
+      "feedback": "Put ne, shortened before a vowel, before the verb, and pas after the pronoun.",
+      "explanation": "In an inverted question, ne goes before aimes-tu and pas after it: N’aimes-tu pas le poisson ?"
+    },
+    {
+      "id": "questions-negative-si-repair",
+      "pattern": "negative-question-si",
+      "type": "repair",
+      "instruction": "The question was: Il ne travaille pas aujourd’hui ? Fix the reply so it means yes, he is working.",
+      "source": "Oui, il travaille aujourd’hui.",
+      "answers": [
+        "Si, il travaille aujourd’hui.",
+        "Mais si, il travaille aujourd’hui."
+      ],
+      "spellingAnswers": [
+        "Si il travaille aujourd’hui.",
+        "Mais si il travaille aujourd’hui."
+      ],
+      "hint": "A yes that answers a negative question is a different word.",
+      "feedback": "The rest of the reply is right. Change only the first word.",
+      "explanation": "The reply contradicts a negative question, so French uses si instead of oui."
+    }
+  ]
+}

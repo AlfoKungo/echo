@@ -274,6 +274,8 @@ function renderReview() {
   const phrases = overview.due.filter((item) => item.kind === 'phrase');
   const activities = overview.due.filter((item) => item.kind !== 'phrase');
   const card = phrases[0];
+  // Only topics with a settled answer: with a full course, a row of zeros per topic is noise.
+  const practised = overview.grammar.filter((entry) => entry.independent + entry.helped + entry.revisit > 0);
   const cardHTML = card ? `<section class="learning-panel review-card"><p class="learning-note">${phrases.length} saved-phrase ${phrases.length === 1 ? 'card' : 'cards'} due · ${card.mode === 'en-fr' ? 'English → French' : 'French → English'} · self-rated</p><p class="learning-text" lang="${card.mode === 'en-fr' ? 'en' : 'fr'}">${esc(card.mode === 'en-fr' ? card.en : card.fr)}</p>${reviewRevealed ? `<p class="learning-text" lang="${card.mode === 'en-fr' ? 'fr' : 'en'}">${esc(card.mode === 'en-fr' ? card.fr : card.en)}</p><p class="learning-note">${esc(card.explanation)}</p><div class="learning-actions">${button('review-again', 'Again')}${button('review-known', 'Knew it', true)}</div><p class="learning-note">Your own recall judgment, not an independently checked result.</p>` : `<div class="learning-actions">${button('review-reveal', 'Reveal answer', true)}</div><p class="learning-note">Recall first. Space reveals; ← Again and → Knew it after reveal.</p>`}</section>` : '<p class="empty-progress">No saved phrases due. Tap a phrase while reading to add it to Review.</p>';
   return `${title('Review & progress', 'A useful next step, and an honest picture of the practice you have done.')}
     <section class="review-section"><h2>Saved phrases</h2>${cardHTML}</section>
@@ -291,7 +293,7 @@ function renderReview() {
       ${overview.vocabulary.length ? overview.vocabulary.map((entry) => `<a class="review-link" data-home="practice" data-direction="${esc(entry.direction)}" href="./#practice"><span>${entry.direction === 'fr-en' ? 'French → English' : 'English → French'}<small>${entry.unseenActive} unseen · ${entry.seenActive} seen and unfinished · self-rated recall</small></span><span aria-hidden="true">→</span></a>`).join('') : '<a href="./#practice" data-home="practice">Open vocabulary practice →</a>'}
     </section>
     <section class="review-section"><h2>Grammar & sentences</h2>
-      ${overview.grammar.length ? overview.grammar.map((entry) => `<div class="grammar-summary"><strong>${esc(entry.title)}</strong><p>${entry.independent} independent · ${entry.helped} helped · ${entry.revisit} to revisit · prepared</p></div>`).join('') : '<p class="learning-note">No grammar rounds recorded yet.</p>'}
+      ${practised.length ? practised.map((entry) => `<div class="grammar-summary"><strong>${esc(entry.title)}</strong><p>${entry.independent} independent · ${entry.helped} helped · ${entry.revisit} to revisit · prepared</p></div>`).join('') : '<p class="learning-note">No grammar rounds recorded yet.</p>'}
       <div class="learning-actions"><a class="secondary" href="./#grammar" data-home="grammar">Open grammar practice →</a></div>
     </section>`;
 }

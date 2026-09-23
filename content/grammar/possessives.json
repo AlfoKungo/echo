@@ -1,0 +1,725 @@
+{
+  "id": "possessives",
+  "unit": "determiners",
+  "level": "A1",
+  "title": "My, your, his, her",
+  "description": "Say my, your, his, her, our and their with the right French form.",
+  "mark": "mon · ma · mes",
+  "rule": "A possessive agrees with the thing owned, never with the owner: mon, ton, son before a masculine singular noun, ma, ta, sa before a feminine singular noun, and mes, tes, ses before any plural noun. So sa voiture means his car or her car, and son père means his father or her father. Before a feminine singular noun that starts with a vowel or a silent h, use mon, ton, son instead of ma, ta, sa: mon amie, ton école, son histoire. For our and your (you, plural or formal), use notre and votre before a singular noun and nos and vos before a plural noun. For their, use leur before a singular noun and leurs before a plural noun.",
+  "example": "Sa voiture est rouge. · Mon amie habite à Lyon. · Leurs enfants aiment leur école.",
+  "aside": "Son, sa and ses do not show whether the owner is a man or a woman; the context does. To make it clear, French can add à lui or à elle: sa voiture à elle.",
+  "exercises": [
+    {
+      "id": "possessives-gender-singular-1",
+      "pattern": "gender-singular",
+      "type": "choose",
+      "instruction": "Choose the word for my.",
+      "source": "C’est ____ chambre.",
+      "options": [
+        "mon",
+        "ma",
+        "mes"
+      ],
+      "answers": [
+        "ma"
+      ],
+      "hint": "Is chambre masculine or feminine, one or several?",
+      "feedback": "Look at the noun chambre, not at the speaker.",
+      "explanation": "Chambre is feminine singular and starts with a consonant, so my is ma."
+    },
+    {
+      "id": "possessives-gender-singular-2",
+      "pattern": "gender-singular",
+      "type": "choose",
+      "instruction": "Choose the word for your (to a friend).",
+      "source": "Tu cherches ____ stylo ?",
+      "options": [
+        "ton",
+        "ta",
+        "tes"
+      ],
+      "answers": [
+        "ton"
+      ],
+      "hint": "Stylo is one thing. Is it masculine or feminine?",
+      "feedback": "Match the possessive to stylo.",
+      "explanation": "Stylo is masculine singular, so your (to a friend) is ton."
+    },
+    {
+      "id": "possessives-gender-singular-3",
+      "pattern": "gender-singular",
+      "type": "complete",
+      "instruction": "Write the French word for my.",
+      "source": "Je lave ____ voiture le samedi.",
+      "answers": [
+        "ma"
+      ],
+      "hint": "Think about the gender of voiture.",
+      "feedback": "The possessive takes the gender of voiture, and there is only one car.",
+      "explanation": "Voiture is feminine singular, so my car is ma voiture."
+    },
+    {
+      "id": "possessives-gender-singular-4",
+      "pattern": "gender-singular",
+      "type": "complete",
+      "instruction": "Write the French word for your (to a friend).",
+      "source": "Où est ____ sac ?",
+      "answers": [
+        "ton"
+      ],
+      "hint": "Sac is one masculine thing.",
+      "feedback": "Use the tu form that matches a masculine singular noun.",
+      "explanation": "Sac is masculine singular, so your bag (to a friend) is ton sac."
+    },
+    {
+      "id": "possessives-gender-singular-5",
+      "pattern": "gender-singular",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Elle prend ma parapluie.",
+      "answers": [
+        "Elle prend mon parapluie."
+      ],
+      "hint": "Check the gender of parapluie.",
+      "feedback": "Parapluie ends in e, but that does not make it feminine.",
+      "explanation": "Parapluie is masculine singular, so my umbrella is mon parapluie."
+    },
+    {
+      "id": "possessives-gender-singular-6",
+      "pattern": "gender-singular",
+      "type": "build",
+      "instruction": "Build the sentence: My sister works in Paris. Leave one tile unused.",
+      "source": "My sister works in Paris.",
+      "tokens": [
+        "travaille",
+        "Mon",
+        "sœur",
+        "à",
+        "Ma",
+        "Paris."
+      ],
+      "answers": [
+        "Ma sœur travaille à Paris."
+      ],
+      "hint": "Sœur is feminine.",
+      "feedback": "Only one word for my fits a feminine noun that starts with a consonant.",
+      "explanation": "Sœur is feminine singular and starts with a consonant, so my sister is ma sœur."
+    },
+    {
+      "id": "possessives-gender-singular-7",
+      "pattern": "gender-singular",
+      "type": "rewrite",
+      "instruction": "Replace livre with lampe and change the possessive to match. Write the whole sentence.",
+      "source": "Ton livre est sur la table.",
+      "answers": [
+        "Ta lampe est sur la table."
+      ],
+      "hint": "Lampe is feminine.",
+      "feedback": "The possessive must follow the new noun, not the old one.",
+      "explanation": "Lampe is feminine singular, so ton becomes ta: ta lampe."
+    },
+    {
+      "id": "possessives-plural-1",
+      "pattern": "plural",
+      "type": "choose",
+      "instruction": "Choose the word for my.",
+      "source": "J’ai perdu ____ clés.",
+      "options": [
+        "mes",
+        "ma",
+        "mon"
+      ],
+      "answers": [
+        "mes"
+      ],
+      "hint": "How many keys are there?",
+      "feedback": "The noun is plural.",
+      "explanation": "Clés is plural, so my is mes. Mes works for masculine and feminine plural nouns."
+    },
+    {
+      "id": "possessives-plural-2",
+      "pattern": "plural",
+      "type": "choose",
+      "instruction": "Choose the word for your (to a friend).",
+      "source": "Tu ranges ____ affaires ?",
+      "options": [
+        "tes",
+        "ta",
+        "ton"
+      ],
+      "answers": [
+        "tes"
+      ],
+      "hint": "Look at the end of affaires.",
+      "feedback": "The vowel rule for ton only applies to singular nouns.",
+      "explanation": "Affaires is plural, so your is tes, even though the noun starts with a vowel."
+    },
+    {
+      "id": "possessives-plural-3",
+      "pattern": "plural",
+      "type": "complete",
+      "instruction": "Write the French word for his.",
+      "source": "Il appelle ____ parents ce soir.",
+      "answers": [
+        "ses"
+      ],
+      "hint": "Parents means more than one person.",
+      "feedback": "For several things owned, his and her share one form.",
+      "explanation": "Parents is plural, so his parents is ses parents."
+    },
+    {
+      "id": "possessives-plural-4",
+      "pattern": "plural",
+      "type": "rewrite",
+      "instruction": "Make chaussure plural and change the rest of the sentence to match.",
+      "source": "Ma chaussure est sale.",
+      "answers": [
+        "Mes chaussures sont sales."
+      ],
+      "hint": "The possessive, the noun, the verb and the adjective all change.",
+      "feedback": "Check all four words: possessive, noun, verb and adjective.",
+      "explanation": "A plural noun takes mes, so ma chaussure becomes mes chaussures, with sont and sales."
+    },
+    {
+      "id": "possessives-plural-5",
+      "pattern": "plural",
+      "type": "rewrite",
+      "instruction": "Make ami plural and change the rest of the sentence to match.",
+      "source": "Ton ami est gentil.",
+      "answers": [
+        "Tes amis sont gentils."
+      ],
+      "hint": "Plural nouns take a different word for your.",
+      "feedback": "Change the possessive, the noun, the verb and the adjective.",
+      "explanation": "Ami becomes amis, so ton becomes tes, est becomes sont and gentil becomes gentils."
+    },
+    {
+      "id": "possessives-plural-6",
+      "pattern": "plural",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Elle aime beaucoup sa cousines.",
+      "answers": [
+        "Elle aime beaucoup ses cousines."
+      ],
+      "hint": "Count the cousins.",
+      "feedback": "Sa only goes with one feminine thing.",
+      "explanation": "Cousines is plural, so her cousins is ses cousines."
+    },
+    {
+      "id": "possessives-plural-7",
+      "pattern": "plural",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "My shoes are under the bed.",
+      "answers": [
+        "Mes chaussures sont sous le lit."
+      ],
+      "hint": "Shoes is plural.",
+      "feedback": "Check the possessive: the noun is plural.",
+      "explanation": "Chaussures is plural, so my shoes is mes chaussures."
+    },
+    {
+      "id": "possessives-his-or-her-1",
+      "pattern": "his-or-her",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Her father is tall.",
+      "answers": [
+        "Son père est grand."
+      ],
+      "hint": "The possessive matches père, not the woman.",
+      "feedback": "In French, her does not have to sound feminine.",
+      "explanation": "Père is masculine singular, so her father is son père."
+    },
+    {
+      "id": "possessives-his-or-her-2",
+      "pattern": "his-or-her",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "His mother lives in Nice.",
+      "answers": [
+        "Sa mère habite à Nice.",
+        "Sa mère vit à Nice.",
+        "Sa mère habite Nice."
+      ],
+      "hint": "Look at the gender of mère, not of the man.",
+      "feedback": "The possessive agrees with mère.",
+      "explanation": "Mère is feminine singular, so his mother is sa mère."
+    },
+    {
+      "id": "possessives-his-or-her-3",
+      "pattern": "his-or-her",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "His sisters are at school.",
+      "answers": [
+        "Ses sœurs sont à l’école."
+      ],
+      "hint": "How many sisters?",
+      "feedback": "For a plural noun, his and her are the same word.",
+      "explanation": "Sœurs is plural, so his sisters is ses sœurs."
+    },
+    {
+      "id": "possessives-his-or-her-4",
+      "pattern": "his-or-her",
+      "type": "choose",
+      "instruction": "Choose the word for his.",
+      "source": "Marc adore ____ voiture.",
+      "options": [
+        "sa",
+        "son",
+        "ses"
+      ],
+      "answers": [
+        "sa"
+      ],
+      "hint": "Look at voiture, not at Marc.",
+      "feedback": "Marc is a man, but the possessive does not care about him.",
+      "explanation": "Voiture is feminine singular, so his car is sa voiture."
+    },
+    {
+      "id": "possessives-his-or-her-5",
+      "pattern": "his-or-her",
+      "type": "choose",
+      "instruction": "Choose the word for her.",
+      "source": "Julie parle avec ____ père.",
+      "options": [
+        "son",
+        "sa",
+        "ses"
+      ],
+      "answers": [
+        "son"
+      ],
+      "hint": "Look at père, not at Julie.",
+      "feedback": "Julie is a woman, but the possessive does not care about her.",
+      "explanation": "Père is masculine singular, so her father is son père."
+    },
+    {
+      "id": "possessives-his-or-her-6",
+      "pattern": "his-or-her",
+      "type": "complete",
+      "instruction": "Write the French word for her.",
+      "source": "Léa cherche ____ portable.",
+      "answers": [
+        "son"
+      ],
+      "hint": "Portable (phone) is masculine.",
+      "feedback": "Match the possessive to portable, not to Léa.",
+      "explanation": "Portable is masculine singular, so her phone is son portable."
+    },
+    {
+      "id": "possessives-his-or-her-7",
+      "pattern": "his-or-her",
+      "type": "complete",
+      "instruction": "Write the French word for his.",
+      "source": "Paul range ____ chambre.",
+      "answers": [
+        "sa"
+      ],
+      "hint": "Chambre is feminine.",
+      "feedback": "Match the possessive to chambre, not to Paul.",
+      "explanation": "Chambre is feminine singular and starts with a consonant, so his room is sa chambre."
+    },
+    {
+      "id": "possessives-his-or-her-8",
+      "pattern": "his-or-her",
+      "type": "repair",
+      "instruction": "Fix the error. Anne is calling her brother.",
+      "source": "Anne téléphone à sa frère.",
+      "answers": [
+        "Anne téléphone à son frère."
+      ],
+      "hint": "Frère is masculine.",
+      "feedback": "The possessive agrees with frère, not with Anne.",
+      "explanation": "Frère is masculine singular, so her brother is son frère."
+    },
+    {
+      "id": "possessives-vowel-mon-1",
+      "pattern": "vowel-mon",
+      "type": "choose",
+      "instruction": "Choose the word for my.",
+      "source": "C’est ____ amie Claire.",
+      "options": [
+        "mon",
+        "ma",
+        "mes"
+      ],
+      "answers": [
+        "mon"
+      ],
+      "hint": "Amie is feminine, but look at its first letter.",
+      "feedback": "Ma cannot stand right before a vowel.",
+      "explanation": "Before a feminine singular noun starting with a vowel, ma becomes mon: mon amie. It still means a female friend."
+    },
+    {
+      "id": "possessives-vowel-mon-2",
+      "pattern": "vowel-mon",
+      "type": "choose",
+      "instruction": "Choose the word for your (to a friend).",
+      "source": "____ école est loin ?",
+      "options": [
+        "Ton",
+        "Ta",
+        "Tes"
+      ],
+      "answers": [
+        "Ton"
+      ],
+      "hint": "École is feminine, but look at its first letter.",
+      "feedback": "Ta cannot stand right before a vowel.",
+      "explanation": "École is feminine singular and starts with a vowel, so your school is ton école."
+    },
+    {
+      "id": "possessives-vowel-mon-3",
+      "pattern": "vowel-mon",
+      "type": "choose",
+      "instruction": "Choose the word for her.",
+      "source": "Elle nous raconte ____ histoire.",
+      "options": [
+        "son",
+        "sa",
+        "ses"
+      ],
+      "answers": [
+        "son"
+      ],
+      "hint": "The h of histoire is silent.",
+      "feedback": "A silent h counts as a vowel sound.",
+      "explanation": "Histoire is feminine singular and starts with a silent h, so her story is son histoire."
+    },
+    {
+      "id": "possessives-vowel-mon-4",
+      "pattern": "vowel-mon",
+      "type": "complete",
+      "instruction": "Write the French word for my.",
+      "source": "Je te présente ____ amie Léa.",
+      "answers": [
+        "mon"
+      ],
+      "hint": "Amie starts with a vowel.",
+      "feedback": "The feminine form cannot stand before a vowel.",
+      "explanation": "Amie is feminine singular but starts with a vowel, so my friend is mon amie."
+    },
+    {
+      "id": "possessives-vowel-mon-5",
+      "pattern": "vowel-mon",
+      "type": "complete",
+      "instruction": "Write the French word for your (to a friend).",
+      "source": "Tu me donnes ____ adresse ?",
+      "answers": [
+        "ton"
+      ],
+      "hint": "Adresse is feminine and starts with a vowel.",
+      "feedback": "Think of the vowel rule.",
+      "explanation": "Adresse is feminine singular and starts with a vowel, so your address is ton adresse."
+    },
+    {
+      "id": "possessives-vowel-mon-6",
+      "pattern": "vowel-mon",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ma amie arrive demain.",
+      "answers": [
+        "Mon amie arrive demain."
+      ],
+      "hint": "Say ma amie aloud: two vowels collide.",
+      "feedback": "Amie starts with a vowel.",
+      "explanation": "Before a feminine singular noun starting with a vowel, use mon: mon amie."
+    },
+    {
+      "id": "possessives-vowel-mon-7",
+      "pattern": "vowel-mon",
+      "type": "build",
+      "instruction": "Build the sentence: His idea is very good. Leave one tile unused.",
+      "source": "His idea is very good.",
+      "tokens": [
+        "idée",
+        "Sa",
+        "est",
+        "très",
+        "Son",
+        "bonne."
+      ],
+      "answers": [
+        "Son idée est très bonne."
+      ],
+      "hint": "Idée is feminine and starts with a vowel.",
+      "feedback": "Look at the first letter of idée.",
+      "explanation": "Idée is feminine singular and starts with a vowel, so his idea is son idée. Bonne still agrees with the feminine idée."
+    },
+    {
+      "id": "possessives-vowel-mon-8",
+      "pattern": "vowel-mon",
+      "type": "translate",
+      "instruction": "Translate into French. Julie is a woman.",
+      "source": "My friend Julie is here.",
+      "answers": [
+        "Mon amie Julie est ici.",
+        "Mon amie Julie est là."
+      ],
+      "hint": "Julie is a woman, and amie starts with a vowel.",
+      "feedback": "Check the word for my before amie.",
+      "explanation": "A female friend is une amie, and before a vowel my is mon: mon amie Julie."
+    },
+    {
+      "id": "possessives-notre-votre-1",
+      "pattern": "notre-votre",
+      "type": "choose",
+      "instruction": "Choose the word for our.",
+      "source": "Nous aimons ____ quartier.",
+      "options": [
+        "notre",
+        "nos",
+        "nôtre"
+      ],
+      "answers": [
+        "notre"
+      ],
+      "hint": "How many neighbourhoods?",
+      "feedback": "Quartier is singular, and the word before a noun has no accent.",
+      "explanation": "Quartier is singular, so our is notre. Nôtre, with a circumflex, is the pronoun in le nôtre (ours) and never goes before a noun.",
+      "strictAccents": true
+    },
+    {
+      "id": "possessives-notre-votre-2",
+      "pattern": "notre-votre",
+      "type": "choose",
+      "instruction": "Choose the word for your (formal).",
+      "source": "Madame, ____ billets, s’il vous plaît.",
+      "options": [
+        "vos",
+        "votre",
+        "ta"
+      ],
+      "answers": [
+        "vos"
+      ],
+      "hint": "Billets is plural, and this is formal.",
+      "feedback": "Use the vous form for a plural noun.",
+      "explanation": "Billets is plural and the speaker says vous, so your is vos."
+    },
+    {
+      "id": "possessives-notre-votre-3",
+      "pattern": "notre-votre",
+      "type": "complete",
+      "instruction": "Write the French word for our.",
+      "source": "____ enfants sont à l’école.",
+      "answers": [
+        "Nos"
+      ],
+      "hint": "Enfants is plural.",
+      "feedback": "The singular form does not fit a plural noun.",
+      "explanation": "Enfants is plural, so our children is nos enfants."
+    },
+    {
+      "id": "possessives-notre-votre-4",
+      "pattern": "notre-votre",
+      "type": "complete",
+      "instruction": "Write the French word for your (formal).",
+      "source": "Monsieur, ____ taxi est arrivé.",
+      "answers": [
+        "votre"
+      ],
+      "hint": "One taxi, and the speaker is polite.",
+      "feedback": "Use the vous form for a singular noun.",
+      "explanation": "Taxi is singular and the speaker is formal, so your taxi is votre taxi."
+    },
+    {
+      "id": "possessives-notre-votre-5",
+      "pattern": "notre-votre",
+      "type": "rewrite",
+      "instruction": "Make voisin plural and change the rest of the sentence to match.",
+      "source": "Notre voisin est sympathique.",
+      "answers": [
+        "Nos voisins sont sympathiques."
+      ],
+      "hint": "Our has a different form before a plural noun.",
+      "feedback": "Change the possessive, the noun, the verb and the adjective.",
+      "explanation": "Plural voisins takes nos, with sont and sympathiques."
+    },
+    {
+      "id": "possessives-notre-votre-6",
+      "pattern": "notre-votre",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Our house is small.",
+      "answers": [
+        "Notre maison est petite."
+      ],
+      "hint": "One house.",
+      "feedback": "Check the possessive for a singular noun and the ending of the adjective.",
+      "explanation": "Maison is singular, so our house is notre maison, whatever its gender."
+    },
+    {
+      "id": "possessives-notre-votre-7",
+      "pattern": "notre-votre",
+      "type": "build",
+      "instruction": "Build the sentence: Your suitcases are ready (you, plural). Leave one tile unused.",
+      "source": "Your suitcases are ready.",
+      "tokens": [
+        "valises",
+        "Votre",
+        "sont",
+        "Vos",
+        "prêtes."
+      ],
+      "answers": [
+        "Vos valises sont prêtes."
+      ],
+      "hint": "Valises is plural.",
+      "feedback": "Choose the possessive for a plural noun.",
+      "explanation": "Valises is plural, so your (you, plural) is vos."
+    },
+    {
+      "id": "possessives-notre-votre-8",
+      "pattern": "notre-votre",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Nous aimons beaucoup notre amis.",
+      "answers": [
+        "Nous aimons beaucoup nos amis."
+      ],
+      "hint": "Count the friends.",
+      "feedback": "Notre only goes with one thing.",
+      "explanation": "Amis is plural, so our friends is nos amis."
+    },
+    {
+      "id": "possessives-leur-leurs-1",
+      "pattern": "leur-leurs",
+      "type": "choose",
+      "instruction": "Choose the word for their.",
+      "source": "Ils vendent ____ maison.",
+      "options": [
+        "leur",
+        "leurs",
+        "ses"
+      ],
+      "answers": [
+        "leur"
+      ],
+      "hint": "How many houses?",
+      "feedback": "Maison is singular.",
+      "explanation": "One house shared by several owners is leur maison."
+    },
+    {
+      "id": "possessives-leur-leurs-2",
+      "pattern": "leur-leurs",
+      "type": "choose",
+      "instruction": "Choose the word for their.",
+      "source": "Les enfants jouent avec ____ chiens.",
+      "options": [
+        "leurs",
+        "leur",
+        "sa"
+      ],
+      "answers": [
+        "leurs"
+      ],
+      "hint": "How many dogs?",
+      "feedback": "Chiens is plural.",
+      "explanation": "Chiens is plural, so their dogs is leurs chiens."
+    },
+    {
+      "id": "possessives-leur-leurs-3",
+      "pattern": "leur-leurs",
+      "type": "complete",
+      "instruction": "Write the French word for their.",
+      "source": "Mes voisins promènent ____ chien.",
+      "answers": [
+        "leur"
+      ],
+      "hint": "There is one dog.",
+      "feedback": "The s depends on the number of dogs, not the number of neighbours.",
+      "explanation": "Chien is singular, so their dog is leur chien, with no s."
+    },
+    {
+      "id": "possessives-leur-leurs-4",
+      "pattern": "leur-leurs",
+      "type": "complete",
+      "instruction": "Write the French word for their.",
+      "source": "Elles appellent ____ parents.",
+      "answers": [
+        "leurs"
+      ],
+      "hint": "Parents is plural.",
+      "feedback": "The possessive must show the plural of parents.",
+      "explanation": "Parents is plural, so their parents is leurs parents."
+    },
+    {
+      "id": "possessives-leur-leurs-5",
+      "pattern": "leur-leurs",
+      "type": "repair",
+      "instruction": "Fix the error. Keep voiture singular.",
+      "source": "Ils prennent leurs voiture pour partir.",
+      "answers": [
+        "Ils prennent leur voiture pour partir."
+      ],
+      "hint": "One car.",
+      "feedback": "The s on the possessive follows the thing owned.",
+      "explanation": "Voiture is singular, so their car is leur voiture, without s."
+    },
+    {
+      "id": "possessives-leur-leurs-6",
+      "pattern": "leur-leurs",
+      "type": "rewrite",
+      "instruction": "Change il to ils, and make the verb and the possessive match.",
+      "source": "Il aime son travail.",
+      "answers": [
+        "Ils aiment leur travail."
+      ],
+      "hint": "With several owners, his becomes their.",
+      "feedback": "Change the subject, the verb and the possessive.",
+      "explanation": "Several owners take leur; travail is singular, so it stays leur travail."
+    },
+    {
+      "id": "possessives-leur-leurs-7",
+      "pattern": "leur-leurs",
+      "type": "rewrite",
+      "instruction": "Change elle to elles, and make the verb and the possessive match.",
+      "source": "Elle adore ses cousins.",
+      "answers": [
+        "Elles adorent leurs cousins."
+      ],
+      "hint": "Several owners, several cousins.",
+      "feedback": "Change the subject, the verb and the possessive.",
+      "explanation": "Several owners take leur, and cousins is plural, so their cousins is leurs cousins."
+    },
+    {
+      "id": "possessives-leur-leurs-8",
+      "pattern": "leur-leurs",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Their children are at home.",
+      "answers": [
+        "Leurs enfants sont à la maison.",
+        "Leurs enfants sont chez eux."
+      ],
+      "hint": "Children is plural.",
+      "feedback": "Check the ending of their.",
+      "explanation": "Enfants is plural, so their children is leurs enfants."
+    },
+    {
+      "id": "possessives-leur-leurs-9",
+      "pattern": "leur-leurs",
+      "type": "build",
+      "instruction": "Build the sentence: They talk to their daughter. Leave one tile unused.",
+      "source": "They talk to their daughter.",
+      "tokens": [
+        "parlent",
+        "Ils",
+        "leurs",
+        "à",
+        "leur",
+        "fille."
+      ],
+      "answers": [
+        "Ils parlent à leur fille."
+      ],
+      "hint": "One daughter.",
+      "feedback": "Choose the form of their for one thing owned.",
+      "explanation": "Fille is singular, so their daughter is leur fille."
+    }
+  ]
+}

@@ -1,0 +1,856 @@
+{
+  "id": "si-clauses",
+  "unit": "future-moods",
+  "level": "B1",
+  "title": "If sentences",
+  "description": "Say what happens, will happen or would happen if something is true.",
+  "mark": "si…",
+  "rule": "A si clause states a condition and the other clause gives the result. For a real or likely condition, put the verb after si in the présent and the result in the présent (habits and general truths), the futur simple or the impératif. For an imagined or unlikely condition, put the verb after si in the imparfait and the result in the conditionnel présent. Never put the futur or the conditionnel directly after si, even when the meaning is future. Si becomes s’ before il and ils (s’il, s’ils) but stays si before elle and elles. Either clause can come first, with a comma after the si clause when it leads; même si (even if) follows the same tense rules.",
+  "example": "Si tu viens, on ira au cinéma. · S’il pleut, prends un parapluie. · Si j’avais le temps, je voyagerais.",
+  "aside": "The imparfait after si does not point to the past here: si j’avais le temps means “if I had the time” now or in general.",
+  "exercises": [
+    {
+      "id": "si-clauses-real-present-1",
+      "pattern": "real-present",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Si on ____ du sport, on dort mieux.",
+      "options": [
+        "fait",
+        "fera",
+        "ferait"
+      ],
+      "answers": [
+        "fait"
+      ],
+      "hint": "The result, on dort, is in the présent. What tense goes after si in a real condition?",
+      "feedback": "After si, French never uses the futur or the conditionnel.",
+      "explanation": "A real condition takes si + présent: si on fait du sport, on dort mieux. It states a general truth."
+    },
+    {
+      "id": "si-clauses-real-present-2",
+      "pattern": "real-present",
+      "type": "complete",
+      "instruction": "Write chauffer in the right form.",
+      "source": "Si tu ____ (chauffer) la glace, elle fond.",
+      "answers": [
+        "chauffes"
+      ],
+      "hint": "Elle fond is a general truth in the présent. The si clause matches it.",
+      "feedback": "Use the présent after si, with the tu ending.",
+      "explanation": "Si + présent, result in the présent: si tu chauffes la glace, elle fond."
+    },
+    {
+      "id": "si-clauses-real-present-3",
+      "pattern": "real-present",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "If I’m tired, I go to bed early.",
+      "answers": [
+        "Si je suis fatigué, je me couche tôt.",
+        "Si je suis fatiguée, je me couche tôt.",
+        "Je me couche tôt si je suis fatigué.",
+        "Je me couche tôt si je suis fatiguée.",
+        "Si je suis fatigué, je vais au lit tôt.",
+        "Si je suis fatiguée, je vais au lit tôt.",
+        "Je vais au lit tôt si je suis fatigué.",
+        "Je vais au lit tôt si je suis fatiguée."
+      ],
+      "spellingAnswers": [
+        "Si je suis fatigué je me couche tôt.",
+        "Si je suis fatiguée je me couche tôt."
+      ],
+      "hint": "This is a habit: both verbs stay in the présent. Go to bed is the reflexive verb se coucher.",
+      "feedback": "Keep both verbs in the présent: a habit needs no futur or conditionnel.",
+      "explanation": "A habit takes si + présent and a result in the présent: si je suis fatigué, je me couche tôt."
+    },
+    {
+      "id": "si-clauses-real-present-4",
+      "pattern": "real-present",
+      "type": "rewrite",
+      "instruction": "Join the two sentences into one: put si before the first sentence and keep both verbs in the présent.",
+      "source": "Tu mélanges le bleu et le jaune. Tu obtiens du vert.",
+      "answers": [
+        "Si tu mélanges le bleu et le jaune, tu obtiens du vert."
+      ],
+      "spellingAnswers": [
+        "Si tu mélanges le bleu et le jaune tu obtiens du vert."
+      ],
+      "hint": "The first sentence is the condition. Si goes in front of it, then a comma, then the result.",
+      "feedback": "Start with Si tu mélanges… and separate the two clauses with a comma.",
+      "explanation": "Si + présent, then the result in the présent: a general truth about colours."
+    },
+    {
+      "id": "si-clauses-real-present-5",
+      "pattern": "real-present",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "If you eat too much, you get a stomach ache.",
+      "tokens": [
+        "on",
+        "a",
+        "Si",
+        "trop,",
+        "mangera",
+        "mal",
+        "on",
+        "mange",
+        "au",
+        "ventre."
+      ],
+      "answers": [
+        "Si on mange trop, on a mal au ventre."
+      ],
+      "hint": "A general truth: si + présent, then the result in the présent.",
+      "feedback": "One of the verb tiles is a futur, which cannot follow si.",
+      "explanation": "Si on mange trop uses the présent after si; on a mal au ventre states the general result."
+    },
+    {
+      "id": "si-clauses-real-future-1",
+      "pattern": "real-future",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Si tu viens ce soir, on ____ au cinéma.",
+      "options": [
+        "ira",
+        "irait",
+        "allait"
+      ],
+      "answers": [
+        "ira"
+      ],
+      "hint": "Tu viens is in the présent: the condition is real. What tense gives a future result?",
+      "feedback": "A présent after si pairs with a futur (or présent, or impératif), not with a conditionnel or an imparfait.",
+      "explanation": "Si + présent, result in the futur simple: si tu viens ce soir, on ira au cinéma."
+    },
+    {
+      "id": "si-clauses-real-future-2",
+      "pattern": "real-future",
+      "type": "complete",
+      "instruction": "Write téléphoner in the futur simple.",
+      "source": "Si elle a le temps, elle te ____ (téléphoner) demain.",
+      "answers": [
+        "téléphonera"
+      ],
+      "hint": "The condition is real (si + présent). The result is in the future.",
+      "feedback": "Use the futur simple: infinitive + the elle ending.",
+      "explanation": "Si elle a le temps (présent), elle te téléphonera (futur simple)."
+    },
+    {
+      "id": "si-clauses-real-future-3",
+      "pattern": "real-future",
+      "type": "translate",
+      "instruction": "Translate into French, using the futur simple. You can say we with on or nous.",
+      "source": "If you (to a friend) come, we will go to the cinema.",
+      "answers": [
+        "Si tu viens, on ira au cinéma.",
+        "Si tu viens, nous irons au cinéma.",
+        "On ira au cinéma si tu viens.",
+        "Nous irons au cinéma si tu viens."
+      ],
+      "spellingAnswers": [
+        "Si tu viens on ira au cinéma.",
+        "Si tu viens nous irons au cinéma."
+      ],
+      "hint": "English uses the present after if, and so does French. Will go becomes a futur simple.",
+      "feedback": "Do not put a futur after si: the English present come stays a présent.",
+      "explanation": "Si + présent (tu viens), result in the futur simple (on ira / nous irons).",
+      "alternatives": [
+        {
+          "answer": "Si tu viens, on va aller au cinéma.",
+          "message": "Correct French, but this exercise practises the futur simple after a si clause in the présent: on ira."
+        },
+        {
+          "answer": "Si tu viens, nous allons aller au cinéma.",
+          "message": "Correct French, but this exercise practises the futur simple after a si clause in the présent: nous irons."
+        }
+      ]
+    },
+    {
+      "id": "si-clauses-real-future-4",
+      "pattern": "real-future",
+      "type": "rewrite",
+      "instruction": "Put the result clause in the futur simple.",
+      "source": "Si tu travailles bien, tu réussis ton examen.",
+      "answers": [
+        "Si tu travailles bien, tu réussiras ton examen."
+      ],
+      "spellingAnswers": [
+        "Si tu travailles bien tu réussiras ton examen."
+      ],
+      "hint": "Only the second verb changes. The verb after si stays in the présent.",
+      "feedback": "Leave tu travailles as it is and change réussis.",
+      "explanation": "Si + présent, result in the futur simple: tu réussiras."
+    },
+    {
+      "id": "si-clauses-real-future-5",
+      "pattern": "real-future",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "aller · on · futur simple",
+      "answers": [
+        "ira",
+        "on ira"
+      ],
+      "hint": "Aller has an irregular futur stem: ir-.",
+      "feedback": "The futur of aller is built on ir-, plus the on ending.",
+      "explanation": "On ira, as in si tu viens, on ira au cinéma."
+    },
+    {
+      "id": "si-clauses-real-imperative-1",
+      "pattern": "real-imperative",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "S’il pleut, ____ un parapluie.",
+      "options": [
+        "prends",
+        "prendrais",
+        "prenais"
+      ],
+      "answers": [
+        "prends"
+      ],
+      "hint": "There is no subject in the result clause: it is an instruction.",
+      "feedback": "An instruction with no subject uses the impératif.",
+      "explanation": "Si + présent can be followed by an impératif: s’il pleut, prends un parapluie."
+    },
+    {
+      "id": "si-clauses-real-imperative-2",
+      "pattern": "real-imperative",
+      "type": "complete",
+      "instruction": "Write mettre in the impératif (tu).",
+      "source": "Si tu as froid, ____ (mettre) un pull.",
+      "answers": [
+        "mets"
+      ],
+      "hint": "Give advice to a friend with no subject pronoun.",
+      "feedback": "The tu impératif of mettre is the tu présent form without tu.",
+      "explanation": "Si + présent, then an impératif: si tu as froid, mets un pull."
+    },
+    {
+      "id": "si-clauses-real-imperative-3",
+      "pattern": "real-imperative",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "If you (to a friend) are hungry, eat an apple.",
+      "answers": [
+        "Si tu as faim, mange une pomme.",
+        "Mange une pomme si tu as faim."
+      ],
+      "spellingAnswers": [
+        "Si tu as faim mange une pomme."
+      ],
+      "hint": "Be hungry is avoir faim. Eat is an instruction to one friend.",
+      "feedback": "The -er impératif for tu has no final s: mange.",
+      "explanation": "Si + présent (tu as faim), result in the impératif (mange)."
+    },
+    {
+      "id": "si-clauses-real-imperative-4",
+      "pattern": "real-imperative",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "prendre · vous · impératif",
+      "answers": [
+        "prenez"
+      ],
+      "hint": "The vous impératif is the vous présent form without vous.",
+      "feedback": "Take the present form vous …ez and drop the pronoun.",
+      "explanation": "Prenez, as in si vous êtes pressés, prenez un taxi."
+    },
+    {
+      "id": "si-clauses-real-imperative-5",
+      "pattern": "real-imperative",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "If you (plural) are lost, call me.",
+      "tokens": [
+        "appelez-moi.",
+        "êtes",
+        "Si",
+        "perdus,",
+        "vous",
+        "étiez"
+      ],
+      "answers": [
+        "Si vous êtes perdus, appelez-moi."
+      ],
+      "hint": "The result is an instruction. Which verb form after si goes with an impératif?",
+      "feedback": "An imparfait after si belongs with a conditionnel, not an impératif.",
+      "explanation": "Si + présent (vous êtes), result in the impératif (appelez-moi)."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-1",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Si j’avais le temps, je ____ plus souvent.",
+      "options": [
+        "voyagerais",
+        "voyagerai",
+        "voyageais",
+        "voyagerait"
+      ],
+      "answers": [
+        "voyagerais"
+      ],
+      "hint": "J’avais is an imparfait after si. Which mood gives the imagined result?",
+      "feedback": "An imparfait after si needs the conditionnel présent, with the je ending.",
+      "explanation": "Si + imparfait, result in the conditionnel présent: je voyagerais."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-2",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Si nous ____ riches, nous achèterions une maison à la mer.",
+      "options": [
+        "étions",
+        "serions",
+        "sommes",
+        "serons"
+      ],
+      "answers": [
+        "étions"
+      ],
+      "hint": "Nous achèterions is a conditionnel. What tense goes after si then?",
+      "feedback": "The conditionnel never goes after si; it belongs in the result.",
+      "explanation": "Si + imparfait (étions), result in the conditionnel (achèterions)."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-3",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "complete",
+      "instruction": "Write travailler in the conditionnel présent.",
+      "source": "Si elle parlait espagnol, elle ____ (travailler) à Madrid.",
+      "answers": [
+        "travaillerait"
+      ],
+      "hint": "Parlait is an imparfait after si, so the result is imagined.",
+      "feedback": "Use the infinitive plus the imparfait ending for elle.",
+      "explanation": "Si + imparfait, result in the conditionnel présent: elle travaillerait."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-4",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "complete",
+      "instruction": "Write avoir in the imparfait.",
+      "source": "Si tu ____ (avoir) une voiture, tu viendrais nous voir.",
+      "answers": [
+        "avais"
+      ],
+      "hint": "Tu viendrais is a conditionnel: the condition is imagined.",
+      "feedback": "An imagined condition uses the imparfait after si.",
+      "explanation": "Si + imparfait (tu avais), result in the conditionnel (tu viendrais)."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-5",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "If I were rich, I would buy a house.",
+      "answers": [
+        "Si j’étais riche, j’achèterais une maison.",
+        "J’achèterais une maison si j’étais riche.",
+        "Si j’étais riche, je m’achèterais une maison.",
+        "Je m’achèterais une maison si j’étais riche."
+      ],
+      "spellingAnswers": [
+        "Si j’étais riche j’achèterais une maison."
+      ],
+      "hint": "If I were is an imparfait in French. Would buy is a conditionnel.",
+      "feedback": "Use the imparfait of être after si and the conditionnel of acheter.",
+      "explanation": "Si + imparfait (j’étais), result in the conditionnel présent (j’achèterais)."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-6",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "rewrite",
+      "instruction": "Make the condition imagined: put the verb after si in the imparfait and the result in the conditionnel présent.",
+      "source": "Si j’ai le temps, je lis ce livre.",
+      "answers": [
+        "Si j’avais le temps, je lirais ce livre."
+      ],
+      "spellingAnswers": [
+        "Si j’avais le temps je lirais ce livre."
+      ],
+      "hint": "Both verbs change: one to the imparfait, one to the conditionnel.",
+      "feedback": "Check both verbs: avoir in the imparfait, lire in the conditionnel.",
+      "explanation": "Si + imparfait (j’avais), result in the conditionnel présent (je lirais)."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-7",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "If we lived in Paris, we would go to the museum.",
+      "tokens": [
+        "on",
+        "irait",
+        "Si",
+        "à",
+        "musée.",
+        "on",
+        "au",
+        "habitait",
+        "Paris,",
+        "ira"
+      ],
+      "answers": [
+        "Si on habitait à Paris, on irait au musée.",
+        "Si on habitait Paris, on irait au musée."
+      ],
+      "hint": "An imparfait after si needs a matching mood in the result.",
+      "feedback": "One verb tile is a futur; an imparfait after si pairs with the conditionnel.",
+      "explanation": "Si + imparfait (habitait), result in the conditionnel présent (irait)."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-8",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "voyager · je · conditionnel présent",
+      "answers": [
+        "voyagerais",
+        "je voyagerais"
+      ],
+      "hint": "Infinitive plus the imparfait ending for je.",
+      "feedback": "The conditionnel ending for je is -ais, added to the whole infinitive.",
+      "explanation": "Je voyagerais, as in si j’avais le temps, je voyagerais."
+    },
+    {
+      "id": "si-clauses-unreal-imparfait-conditionnel-9",
+      "pattern": "unreal-imparfait-conditionnel",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "pouvoir · nous · conditionnel présent",
+      "answers": [
+        "pourrions",
+        "nous pourrions"
+      ],
+      "hint": "Pouvoir has the irregular stem pourr-.",
+      "feedback": "Use the stem pourr- and the nous ending -ions.",
+      "explanation": "Nous pourrions, as in si nous avions une voiture, nous pourrions partir."
+    },
+    {
+      "id": "si-clauses-no-future-after-si-1",
+      "pattern": "no-future-after-si",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Si tu viendras, on ira au cinéma.",
+      "answers": [
+        "Si tu viens, on ira au cinéma."
+      ],
+      "spellingAnswers": [
+        "Si tu viens on ira au cinéma."
+      ],
+      "hint": "Look at the verb right after si.",
+      "feedback": "The futur is fine in the result, but not after si.",
+      "explanation": "After si, use the présent even for the future: si tu viens, on ira au cinéma."
+    },
+    {
+      "id": "si-clauses-no-future-after-si-2",
+      "pattern": "no-future-after-si",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Si j’aurais le temps, je voyagerais.",
+      "answers": [
+        "Si j’avais le temps, je voyagerais."
+      ],
+      "spellingAnswers": [
+        "Si j’avais le temps je voyagerais."
+      ],
+      "hint": "The conditionnel belongs in only one of the two clauses.",
+      "feedback": "Replace the conditionnel after si with the tense that pairs with it.",
+      "explanation": "Si + imparfait (j’avais), result in the conditionnel (je voyagerais)."
+    },
+    {
+      "id": "si-clauses-no-future-after-si-3",
+      "pattern": "no-future-after-si",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "S’il fera beau demain, nous irons à la plage.",
+      "answers": [
+        "S’il fait beau demain, nous irons à la plage."
+      ],
+      "spellingAnswers": [
+        "S’il fait beau demain nous irons à la plage."
+      ],
+      "hint": "Demain makes the meaning future, but that does not change the tense after si.",
+      "feedback": "Si takes the présent here, even with demain.",
+      "explanation": "Si + présent (s’il fait beau), result in the futur (nous irons)."
+    },
+    {
+      "id": "si-clauses-no-future-after-si-4",
+      "pattern": "no-future-after-si",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Si elle serait là, elle nous aiderait.",
+      "answers": [
+        "Si elle était là, elle nous aiderait."
+      ],
+      "spellingAnswers": [
+        "Si elle était là elle nous aiderait."
+      ],
+      "hint": "Two conditionnels: one of them is in the wrong clause.",
+      "feedback": "The verb after si should be an imparfait.",
+      "explanation": "Si + imparfait (elle était), result in the conditionnel (elle nous aiderait)."
+    },
+    {
+      "id": "si-clauses-no-future-after-si-5",
+      "pattern": "no-future-after-si",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Si Paul ____ demain, il verra sa sœur.",
+      "options": [
+        "arrive",
+        "arrivera",
+        "arriverait"
+      ],
+      "answers": [
+        "arrive"
+      ],
+      "hint": "Demain points to the future. Does that change the tense after si?",
+      "feedback": "Si never takes the futur, even for a future event.",
+      "explanation": "Si + présent (arrive), result in the futur (verra)."
+    },
+    {
+      "id": "si-clauses-no-future-after-si-6",
+      "pattern": "no-future-after-si",
+      "type": "translate",
+      "instruction": "Translate into French, using the futur simple.",
+      "source": "If it rains tomorrow, I will stay at home.",
+      "answers": [
+        "S’il pleut demain, je resterai à la maison.",
+        "S’il pleut demain, je resterai chez moi.",
+        "Je resterai à la maison s’il pleut demain.",
+        "Je resterai chez moi s’il pleut demain."
+      ],
+      "spellingAnswers": [
+        "S’il pleut demain je resterai à la maison.",
+        "S’il pleut demain je resterai chez moi."
+      ],
+      "hint": "The rain is in the future, but after si the verb stays in the présent. Watch si + il.",
+      "feedback": "Do not write a futur after si; it pleut, not il pleuvra.",
+      "explanation": "Si + présent (s’il pleut), result in the futur simple (je resterai).",
+      "alternatives": [
+        {
+          "answer": "S’il pleut demain, je vais rester à la maison.",
+          "message": "Correct French, but this exercise practises the futur simple after a si clause in the présent: je resterai."
+        },
+        {
+          "answer": "S’il pleut demain, je vais rester chez moi.",
+          "message": "Correct French, but this exercise practises the futur simple after a si clause in the présent: je resterai."
+        }
+      ]
+    },
+    {
+      "id": "si-clauses-si-elision-1",
+      "pattern": "si-elision",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ elle vient, je serai content.",
+      "options": [
+        "Si",
+        "S’"
+      ],
+      "answers": [
+        "Si"
+      ],
+      "hint": "Elision of si happens only before il and ils.",
+      "feedback": "Before elle, si keeps its i.",
+      "explanation": "Si elle vient: si only becomes s’ before il and ils."
+    },
+    {
+      "id": "si-clauses-si-elision-2",
+      "pattern": "si-elision",
+      "type": "complete",
+      "instruction": "Write si and the pronoun il, correctly joined.",
+      "source": "____ fait froid, mets ton manteau.",
+      "answers": [
+        "S’il"
+      ],
+      "alternatives": [
+        {
+          "answer": "Si il",
+          "message": "Si drops its i before il: write s’il."
+        }
+      ],
+      "hint": "Si and il never stay as two separate words.",
+      "feedback": "Join the two words with an apostrophe.",
+      "explanation": "Si + il becomes s’il: s’il fait froid, mets ton manteau."
+    },
+    {
+      "id": "si-clauses-si-elision-3",
+      "pattern": "si-elision",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Si ils ont faim, ils mangeront une pizza.",
+      "answers": [
+        "S’ils ont faim, ils mangeront une pizza."
+      ],
+      "spellingAnswers": [
+        "S’ils ont faim ils mangeront une pizza."
+      ],
+      "hint": "Look at the very first two words.",
+      "feedback": "Si elides before ils as well as before il.",
+      "explanation": "Si + ils becomes s’ils."
+    },
+    {
+      "id": "si-clauses-si-elision-4",
+      "pattern": "si-elision",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "S’elle travaille demain, elle ne viendra pas.",
+      "answers": [
+        "Si elle travaille demain, elle ne viendra pas."
+      ],
+      "spellingAnswers": [
+        "Si elle travaille demain elle ne viendra pas."
+      ],
+      "hint": "Si elides before only two pronouns. Is elle one of them?",
+      "feedback": "Before elle, si stays whole.",
+      "explanation": "Si elle: si only becomes s’ before il and ils."
+    },
+    {
+      "id": "si-clauses-si-elision-5",
+      "pattern": "si-elision",
+      "type": "rewrite",
+      "instruction": "Replace elle with il in both clauses.",
+      "source": "Si elle arrive tôt, elle nous attendra.",
+      "answers": [
+        "S’il arrive tôt, il nous attendra."
+      ],
+      "spellingAnswers": [
+        "S’il arrive tôt il nous attendra."
+      ],
+      "hint": "Changing the pronoun changes si as well.",
+      "feedback": "Si before il becomes s’il.",
+      "explanation": "Si elle stays whole, but si + il becomes s’il."
+    },
+    {
+      "id": "si-clauses-si-elision-6",
+      "pattern": "si-elision",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "If they (masculine) were here, they would help us.",
+      "answers": [
+        "S’ils étaient là, ils nous aideraient.",
+        "S’ils étaient ici, ils nous aideraient.",
+        "Ils nous aideraient s’ils étaient là.",
+        "Ils nous aideraient s’ils étaient ici."
+      ],
+      "spellingAnswers": [
+        "S’ils étaient là ils nous aideraient.",
+        "S’ils étaient ici ils nous aideraient."
+      ],
+      "hint": "If they were: si + ils + imparfait. Would help: conditionnel. Watch the elision.",
+      "feedback": "Write s’ils, not si ils, and pair the imparfait with the conditionnel.",
+      "explanation": "S’ils étaient là (si + imparfait), ils nous aideraient (conditionnel présent)."
+    },
+    {
+      "id": "si-clauses-si-elision-7",
+      "pattern": "si-elision",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "If they come, we’ll make a cake.",
+      "tokens": [
+        "viennent,",
+        "ils",
+        "S’ils",
+        "on",
+        "gâteau.",
+        "Si",
+        "fera",
+        "un"
+      ],
+      "answers": [
+        "S’ils viennent, on fera un gâteau."
+      ],
+      "hint": "Two of the tiles are the same words written two ways. Only one is correct.",
+      "feedback": "Si and ils must be elided.",
+      "explanation": "Si + ils becomes s’ils; si + présent (viennent), result in the futur (fera)."
+    },
+    {
+      "id": "si-clauses-clause-order-1",
+      "pattern": "clause-order",
+      "type": "rewrite",
+      "instruction": "Rewrite the sentence so that it starts with si.",
+      "source": "Je voyagerais si j’avais le temps.",
+      "answers": [
+        "Si j’avais le temps, je voyagerais."
+      ],
+      "spellingAnswers": [
+        "Si j’avais le temps je voyagerais."
+      ],
+      "hint": "Move the whole si clause to the front and keep the tenses.",
+      "feedback": "When si comes first, a comma separates the two clauses.",
+      "explanation": "The tenses stay with their clauses whichever comes first: si + imparfait, conditionnel."
+    },
+    {
+      "id": "si-clauses-clause-order-2",
+      "pattern": "clause-order",
+      "type": "rewrite",
+      "instruction": "Rewrite the sentence so that the si clause comes last.",
+      "source": "Si tu as besoin d’aide, appelle-moi.",
+      "answers": [
+        "Appelle-moi si tu as besoin d’aide."
+      ],
+      "hint": "Start with the instruction. No comma is needed before si.",
+      "feedback": "Keep appelle-moi as it is and move it to the front.",
+      "explanation": "The si clause can follow the result; the tenses do not change."
+    },
+    {
+      "id": "si-clauses-clause-order-3",
+      "pattern": "clause-order",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Je t’aiderai si tu me le ____.",
+      "options": [
+        "demandes",
+        "demanderas",
+        "demanderais"
+      ],
+      "answers": [
+        "demandes"
+      ],
+      "hint": "The si clause comes second here, but the rule is the same.",
+      "feedback": "Whatever the order, si takes no futur and no conditionnel.",
+      "explanation": "Je t’aiderai (futur) si tu me le demandes (présent)."
+    },
+    {
+      "id": "si-clauses-clause-order-4",
+      "pattern": "clause-order",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I would call you (to a friend) if I had your number.",
+      "answers": [
+        "Si j’avais ton numéro, je t’appellerais.",
+        "Je t’appellerais si j’avais ton numéro.",
+        "Si j’avais ton numéro, je te téléphonerais.",
+        "Je te téléphonerais si j’avais ton numéro."
+      ],
+      "spellingAnswers": [
+        "Si j’avais ton numéro je t’appellerais."
+      ],
+      "hint": "Had after if is an imparfait; would call is a conditionnel. Appeler doubles its l in the conditionnel.",
+      "feedback": "Pair the imparfait after si with the conditionnel of appeler.",
+      "explanation": "Je t’appellerais (conditionnel) si j’avais ton numéro (imparfait). Either order is correct."
+    },
+    {
+      "id": "si-clauses-clause-order-5",
+      "pattern": "clause-order",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We would be happy if you (plural) came.",
+      "tokens": [
+        "si",
+        "Nous",
+        "viendriez.",
+        "serions",
+        "vous",
+        "contents",
+        "veniez."
+      ],
+      "answers": [
+        "Nous serions contents si vous veniez."
+      ],
+      "hint": "Start with the result. Which verb form follows si?",
+      "feedback": "A conditionnel cannot follow si, even at the end of the sentence.",
+      "explanation": "Nous serions contents (conditionnel) si vous veniez (imparfait)."
+    },
+    {
+      "id": "si-clauses-meme-si-1",
+      "pattern": "meme-si",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Même s’il ____, je sortirai.",
+      "options": [
+        "pleut",
+        "pleuvra",
+        "pleuvrait"
+      ],
+      "answers": [
+        "pleut"
+      ],
+      "hint": "Même si follows the same tense rules as si.",
+      "feedback": "No futur or conditionnel after même si.",
+      "explanation": "Même si + présent (pleut), result in the futur (je sortirai)."
+    },
+    {
+      "id": "si-clauses-meme-si-2",
+      "pattern": "meme-si",
+      "type": "complete",
+      "instruction": "Write être in the présent.",
+      "source": "Je finirai ce travail même si je ____ (être) fatigué.",
+      "answers": [
+        "suis"
+      ],
+      "hint": "Even if, same rule as si: the result is in the futur.",
+      "feedback": "Use the présent of être with je.",
+      "explanation": "Je finirai (futur) même si je suis fatigué (présent)."
+    },
+    {
+      "id": "si-clauses-meme-si-3",
+      "pattern": "meme-si",
+      "type": "translate",
+      "instruction": "Translate into French, using the futur simple.",
+      "source": "Even if it’s cold, I will go out.",
+      "answers": [
+        "Même s’il fait froid, je sortirai.",
+        "Je sortirai même s’il fait froid."
+      ],
+      "spellingAnswers": [
+        "Même s’il fait froid je sortirai."
+      ],
+      "hint": "Even if is même si. Weather uses il fait, and si elides before il.",
+      "feedback": "Use même s’il + présent, then the futur of sortir.",
+      "explanation": "Même s’il fait froid (présent), je sortirai (futur simple).",
+      "alternatives": [
+        {
+          "answer": "Même s’il fait froid, je vais sortir.",
+          "message": "Correct French, but this exercise practises the futur simple after a si clause in the présent: je sortirai."
+        }
+      ]
+    },
+    {
+      "id": "si-clauses-meme-si-4",
+      "pattern": "meme-si",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Même si elle aurait le temps, elle ne viendrait pas.",
+      "answers": [
+        "Même si elle avait le temps, elle ne viendrait pas."
+      ],
+      "spellingAnswers": [
+        "Même si elle avait le temps elle ne viendrait pas."
+      ],
+      "hint": "Même si takes the same tenses as si.",
+      "feedback": "The conditionnel cannot follow même si.",
+      "explanation": "Même si + imparfait (avait), result in the conditionnel (viendrait)."
+    },
+    {
+      "id": "si-clauses-meme-si-5",
+      "pattern": "meme-si",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "He will go to work even if he is sick.",
+      "tokens": [
+        "même",
+        "au",
+        "est",
+        "Il",
+        "s’il",
+        "malade.",
+        "ira",
+        "serait",
+        "travail"
+      ],
+      "answers": [
+        "Il ira au travail même s’il est malade."
+      ],
+      "hint": "Même s’il comes second. Which verb form follows it?",
+      "feedback": "Neither the futur nor the conditionnel can follow même si.",
+      "explanation": "Il ira (futur) même s’il est malade (présent)."
+    }
+  ]
+}

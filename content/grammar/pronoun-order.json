@@ -1,0 +1,760 @@
+{
+  "id": "pronoun-order",
+  "unit": "pronouns",
+  "level": "B1",
+  "title": "Two pronouns together",
+  "description": "Put two object pronouns in the right order, in statements and in commands.",
+  "mark": "le lui",
+  "rule": "When two object pronouns come before the verb, they follow a fixed order: me, te, se, nous, vous first, then le, la, les, then lui, leur, then y, then en (il me le donne, je le lui dis, je leur en parle, il y en a). Me, te, le and la elide before a vowel (il me l’a dit, il m’en donne). The pair stays together in the same order inside the negation (je ne le lui donne pas), before an infinitive it belongs to (je vais te le montrer) and before the auxiliary in the passé composé (je le lui ai dit). In an affirmative command the pronouns follow the verb with hyphens: le, la, les first, then moi, toi, lui, nous, vous, leur (donne-le-moi, dis-le-lui), and moi and toi become m’ and t’ before en (donne-m’en). In a negative command the pronouns go back before the verb in the normal order (ne me le donne pas).",
+  "example": "Je te le prête. · Elle leur en a parlé. · Donne-le-moi ! · Ne me le donne pas !",
+  "aside": "In the passé composé a preceding le, la or les can change the participle (je la lui ai donnée); these exercises use masculine objects or en so that the participle does not change.",
+  "exercises": [
+    {
+      "id": "pronoun-order-me-le-1",
+      "pattern": "me-le",
+      "type": "rewrite",
+      "instruction": "Replace le livre with a pronoun.",
+      "source": "Il me donne le livre.",
+      "answers": [
+        "Il me le donne."
+      ],
+      "hint": "Me, te, nous and vous come before le, la and les.",
+      "feedback": "Both pronouns go before donne; check which one comes first.",
+      "explanation": "Me comes before le, and both go before the verb: il me le donne."
+    },
+    {
+      "id": "pronoun-order-me-le-2",
+      "pattern": "me-le",
+      "type": "choose",
+      "instruction": "Choose the right pronouns.",
+      "source": "Tu me prêtes ta voiture ? Oui, je ____ prête.",
+      "options": [
+        "te la",
+        "la te",
+        "te le",
+        "la toi"
+      ],
+      "answers": [
+        "te la"
+      ],
+      "hint": "Voiture is feminine, and the person pronoun comes first.",
+      "feedback": "Check the order and the gender of the pronoun for ta voiture.",
+      "explanation": "Te (to you) comes before la (the car, feminine): je te la prête."
+    },
+    {
+      "id": "pronoun-order-me-le-3",
+      "pattern": "me-le",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces ces photos.",
+      "source": "Ces photos ? Elle nous ____ montre ce soir.",
+      "answers": [
+        "les"
+      ],
+      "hint": "Ces photos is plural and is the direct object.",
+      "feedback": "The direct object pronoun comes right after nous.",
+      "explanation": "Nous comes first, then les for the photos: elle nous les montre ce soir."
+    },
+    {
+      "id": "pronoun-order-me-le-4",
+      "pattern": "me-le",
+      "type": "build",
+      "instruction": "Replace la règle with a pronoun and build the sentence.",
+      "source": "Mon père vous explique la règle.",
+      "tokens": [
+        "la",
+        "Mon père",
+        "explique.",
+        "vous",
+        "lui",
+        "l’"
+      ],
+      "answers": [
+        "Mon père vous l’explique."
+      ],
+      "hint": "Vous comes first, and la shortens before a vowel.",
+      "feedback": "Check the elision: la cannot stand before explique.",
+      "explanation": "Vous comes before la, and la becomes l’ before explique: mon père vous l’explique."
+    },
+    {
+      "id": "pronoun-order-me-le-5",
+      "pattern": "me-le",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She gives it to me. (it = the key)",
+      "answers": [
+        "Elle me la donne."
+      ],
+      "hint": "La clé is feminine; to me comes first in French.",
+      "feedback": "Both pronouns go before donne, the person pronoun first.",
+      "explanation": "Me (to me) comes before la (the key): elle me la donne."
+    },
+    {
+      "id": "pronoun-order-me-le-6",
+      "pattern": "me-le",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Tu veux l’adresse ? Je la te donne.",
+      "answers": [
+        "Tu veux l’adresse ? Je te la donne.",
+        "Je te la donne."
+      ],
+      "hint": "Which group comes first: me, te, nous, vous or le, la, les?",
+      "feedback": "Te must come before la.",
+      "explanation": "The order is te before la: je te la donne."
+    },
+    {
+      "id": "pronoun-order-le-lui-1",
+      "pattern": "le-lui",
+      "type": "rewrite",
+      "instruction": "Replace la vérité and à Marie with pronouns.",
+      "source": "Je dis la vérité à Marie.",
+      "answers": [
+        "Je la lui dis."
+      ],
+      "hint": "Le, la and les come before lui and leur.",
+      "feedback": "Replace the thing first in the order, then the person.",
+      "explanation": "La (the truth) comes before lui (to Marie): je la lui dis."
+    },
+    {
+      "id": "pronoun-order-le-lui-2",
+      "pattern": "le-lui",
+      "type": "rewrite",
+      "instruction": "Replace les cartes and à nos amis with pronouns.",
+      "source": "Nous envoyons les cartes à nos amis.",
+      "answers": [
+        "Nous les leur envoyons."
+      ],
+      "hint": "The direct object pronoun comes before the indirect one.",
+      "feedback": "Nos amis are plural: which pronoun means to them?",
+      "explanation": "Les (the cards) comes before leur (to our friends): nous les leur envoyons."
+    },
+    {
+      "id": "pronoun-order-le-lui-3",
+      "pattern": "le-lui",
+      "type": "choose",
+      "instruction": "Choose the right pronouns.",
+      "source": "Le cadeau pour ma mère ? Je ____ offre demain.",
+      "options": [
+        "le lui",
+        "lui le",
+        "la lui",
+        "le leur"
+      ],
+      "answers": [
+        "le lui"
+      ],
+      "hint": "Le cadeau is masculine; ma mère is one person.",
+      "feedback": "Check the order, the gender and the number.",
+      "explanation": "Le (the present) comes before lui (to my mother): je le lui offre demain."
+    },
+    {
+      "id": "pronoun-order-le-lui-4",
+      "pattern": "le-lui",
+      "type": "complete",
+      "instruction": "Write the pronoun for aux étudiants.",
+      "source": "Les résultats ? Le professeur les ____ explique.",
+      "answers": [
+        "leur"
+      ],
+      "hint": "Aux étudiants is plural and comes after à.",
+      "feedback": "After les, use the indirect pronoun for several people.",
+      "explanation": "Les (the results) comes before leur (to the students): le professeur les leur explique."
+    },
+    {
+      "id": "pronoun-order-le-lui-5",
+      "pattern": "le-lui",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Le dessert ? Le serveur lui le sert.",
+      "answers": [
+        "Le dessert ? Le serveur le lui sert.",
+        "Le serveur le lui sert."
+      ],
+      "hint": "Which comes first: le or lui?",
+      "feedback": "Le, la and les always come before lui and leur.",
+      "explanation": "The direct object le comes before the indirect object lui: le serveur le lui sert."
+    },
+    {
+      "id": "pronoun-order-le-lui-6",
+      "pattern": "le-lui",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I lend it to them. (it = my bike)",
+      "answers": [
+        "Je le leur prête."
+      ],
+      "hint": "Mon vélo is masculine; to them is one word in French.",
+      "feedback": "Put both pronouns before prête, the thing first.",
+      "explanation": "Le (the bike) comes before leur (to them): je le leur prête."
+    },
+    {
+      "id": "pronoun-order-y-en-order-1",
+      "pattern": "y-en-order",
+      "type": "rewrite",
+      "instruction": "Replace de mon projet and à mes parents with pronouns.",
+      "source": "Je parle de mon projet à mes parents.",
+      "answers": [
+        "Je leur en parle."
+      ],
+      "hint": "En always comes last.",
+      "feedback": "Mes parents are plural; de mon projet becomes en.",
+      "explanation": "Leur (to my parents) comes before en (about my project): je leur en parle."
+    },
+    {
+      "id": "pronoun-order-y-en-order-2",
+      "pattern": "y-en-order",
+      "type": "choose",
+      "instruction": "Choose the right pronouns.",
+      "source": "Tu donnes du chocolat aux enfants ? Oui, je ____ donne un peu.",
+      "options": [
+        "leur en",
+        "en leur",
+        "le leur",
+        "leur y"
+      ],
+      "answers": [
+        "leur en"
+      ],
+      "hint": "Du chocolat is partitive, and en always comes last.",
+      "feedback": "Check which pronoun replaces du chocolat and where it goes.",
+      "explanation": "Leur (to the children) comes before en (some chocolate): je leur en donne un peu."
+    },
+    {
+      "id": "pronoun-order-y-en-order-3",
+      "pattern": "y-en-order",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces des pommes.",
+      "source": "Des pommes ? Mon voisin m’____ apporte souvent.",
+      "answers": [
+        "en"
+      ],
+      "hint": "Des pommes means some apples.",
+      "feedback": "Me has already shortened to m’: which pronoun starts with a vowel and replaces des + noun?",
+      "explanation": "M’ (to me) comes before en (some apples): mon voisin m’en apporte souvent."
+    },
+    {
+      "id": "pronoun-order-y-en-order-4",
+      "pattern": "y-en-order",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "He buys me some. (some = flowers)",
+      "answers": [
+        "Il m’en achète."
+      ],
+      "hint": "Some flowers is des fleurs, and me elides before a vowel.",
+      "feedback": "Put the person pronoun first and en last, both before the verb.",
+      "explanation": "Me becomes m’ before en: il m’en achète."
+    },
+    {
+      "id": "pronoun-order-y-en-order-5",
+      "pattern": "y-en-order",
+      "type": "build",
+      "instruction": "Replace des œufs with en and build the sentence.",
+      "source": "Il y a encore des œufs.",
+      "tokens": [
+        "encore.",
+        "en",
+        "les",
+        "a",
+        "y",
+        "Il"
+      ],
+      "answers": [
+        "Il y en a encore."
+      ],
+      "hint": "Y comes before en.",
+      "feedback": "Keep il y together and put the new pronoun before a.",
+      "explanation": "Y comes before en: il y en a encore."
+    },
+    {
+      "id": "pronoun-order-y-en-order-6",
+      "pattern": "y-en-order",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Des histoires ? Elle en leur raconte le soir.",
+      "answers": [
+        "Des histoires ? Elle leur en raconte le soir.",
+        "Elle leur en raconte le soir."
+      ],
+      "hint": "En is always the last pronoun.",
+      "feedback": "Leur must come before en.",
+      "explanation": "The order is leur before en: elle leur en raconte le soir."
+    },
+    {
+      "id": "pronoun-order-negation-order-1",
+      "pattern": "negation-order",
+      "type": "rewrite",
+      "instruction": "Make the sentence negative.",
+      "source": "Je te le donne.",
+      "answers": [
+        "Je ne te le donne pas."
+      ],
+      "hint": "The two pronouns stay together with the verb.",
+      "feedback": "Ne goes before both pronouns, pas after the verb.",
+      "explanation": "Ne comes before the whole pronoun + verb block: je ne te le donne pas."
+    },
+    {
+      "id": "pronoun-order-negation-order-2",
+      "pattern": "negation-order",
+      "type": "rewrite",
+      "instruction": "Replace le ballon and à son frère with pronouns, and make the sentence negative.",
+      "source": "Elle donne le ballon à son frère.",
+      "answers": [
+        "Elle ne le lui donne pas."
+      ],
+      "hint": "First put the pronouns in order, then wrap ne…pas around the block.",
+      "feedback": "Nothing comes between the pronouns and the verb except the other pronoun.",
+      "explanation": "Le comes before lui, and ne…pas surrounds the block: elle ne le lui donne pas."
+    },
+    {
+      "id": "pronoun-order-negation-order-3",
+      "pattern": "negation-order",
+      "type": "choose",
+      "instruction": "Choose the right sentence.",
+      "source": "Les clés ? (she does not lend them to us)",
+      "options": [
+        "Elle ne nous les prête pas.",
+        "Elle ne les nous prête pas.",
+        "Elle nous ne les prête pas.",
+        "Elle ne nous prête pas les."
+      ],
+      "answers": [
+        "Elle ne nous les prête pas."
+      ],
+      "hint": "Ne comes before both pronouns.",
+      "feedback": "Check the order of the pronouns and the place of ne.",
+      "explanation": "Ne, then nous before les, then the verb, then pas: elle ne nous les prête pas."
+    },
+    {
+      "id": "pronoun-order-negation-order-4",
+      "pattern": "negation-order",
+      "type": "complete",
+      "instruction": "Write the two pronouns for le secret and à mes parents.",
+      "source": "Le secret ? Je ne ____ dis pas.",
+      "answers": [
+        "le leur"
+      ],
+      "hint": "The thing comes before the people, and both come after ne.",
+      "feedback": "You need two pronouns here, in the right order.",
+      "explanation": "Le (the secret) comes before leur (to my parents), inside the negation: je ne le leur dis pas."
+    },
+    {
+      "id": "pronoun-order-negation-order-5",
+      "pattern": "negation-order",
+      "type": "build",
+      "instruction": "Replace la maison and aux clients with pronouns and build the sentence.",
+      "source": "Nous ne montrons pas la maison aux clients.",
+      "tokens": [
+        "ne",
+        "la",
+        "leur",
+        "montrons",
+        "Nous",
+        "lui",
+        "pas."
+      ],
+      "answers": [
+        "Nous ne la leur montrons pas."
+      ],
+      "hint": "Aux clients is plural.",
+      "feedback": "Put both pronouns between ne and the verb, the thing first.",
+      "explanation": "La (the house) comes before leur (to the clients), and ne…pas surrounds the block: nous ne la leur montrons pas."
+    },
+    {
+      "id": "pronoun-order-negation-order-6",
+      "pattern": "negation-order",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I do not give it to him. (it = the money)",
+      "answers": [
+        "Je ne le lui donne pas."
+      ],
+      "hint": "L’argent is masculine; put the two pronouns in order, then add ne…pas.",
+      "feedback": "Ne comes before both pronouns and pas after the verb.",
+      "explanation": "Le (the money) comes before lui (to him): je ne le lui donne pas."
+    },
+    {
+      "id": "pronoun-order-infinitive-order-1",
+      "pattern": "infinitive-order",
+      "type": "rewrite",
+      "instruction": "Replace la photo with a pronoun.",
+      "source": "Je vais te montrer la photo.",
+      "answers": [
+        "Je vais te la montrer."
+      ],
+      "hint": "The pronouns belong to montrer, not to vais.",
+      "feedback": "Keep te and add the new pronoun after it, both before the infinitive.",
+      "explanation": "Te comes before la, and both go before the infinitive: je vais te la montrer."
+    },
+    {
+      "id": "pronoun-order-infinitive-order-2",
+      "pattern": "infinitive-order",
+      "type": "choose",
+      "instruction": "Choose the right words.",
+      "source": "Ce mot ? Tu peux ____ ? (explain it to me)",
+      "options": [
+        "me l’expliquer",
+        "l’expliquer me",
+        "me le expliquer",
+        "le m’expliquer"
+      ],
+      "answers": [
+        "me l’expliquer"
+      ],
+      "hint": "The pronouns go before the infinitive, and le shortens before a vowel.",
+      "feedback": "Check the order and the elision.",
+      "explanation": "Me comes before le, which becomes l’ before expliquer: tu peux me l’expliquer ?"
+    },
+    {
+      "id": "pronoun-order-infinitive-order-3",
+      "pattern": "infinitive-order",
+      "type": "complete",
+      "instruction": "Write the pronoun for à mes collègues.",
+      "source": "Les documents ? Je dois les ____ envoyer ce soir.",
+      "answers": [
+        "leur"
+      ],
+      "hint": "Mes collègues are several people after à.",
+      "feedback": "After les, use the indirect pronoun for several people.",
+      "explanation": "Les comes before leur, and both go before the infinitive envoyer: je dois les leur envoyer."
+    },
+    {
+      "id": "pronoun-order-infinitive-order-4",
+      "pattern": "infinitive-order",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Le vélo ? Je le vais lui prêter.",
+      "answers": [
+        "Le vélo ? Je vais le lui prêter.",
+        "Je vais le lui prêter."
+      ],
+      "hint": "Which verb do the pronouns belong to?",
+      "feedback": "Both pronouns go before the infinitive, together.",
+      "explanation": "The pronouns belong to prêter, so they go before it: je vais le lui prêter."
+    },
+    {
+      "id": "pronoun-order-infinitive-order-5",
+      "pattern": "infinitive-order",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "We are going to give it to her. (it = the book)",
+      "answers": [
+        "Nous allons le lui donner.",
+        "On va le lui donner."
+      ],
+      "hint": "Use aller + infinitive; the pronouns go before the infinitive.",
+      "feedback": "Le comes before lui, and both come right before donner.",
+      "explanation": "Le (the book) and lui (to her) go before donner: nous allons le lui donner."
+    },
+    {
+      "id": "pronoun-order-infinitive-order-6",
+      "pattern": "infinitive-order",
+      "type": "build",
+      "instruction": "Replace sa voiture and à ses voisins with pronouns and build the sentence.",
+      "source": "Il veut vendre sa voiture à ses voisins.",
+      "tokens": [
+        "Il",
+        "la",
+        "leur",
+        "veut",
+        "vendre.",
+        "lui"
+      ],
+      "answers": [
+        "Il veut la leur vendre."
+      ],
+      "hint": "Sa voiture is feminine and ses voisins are plural.",
+      "feedback": "The pronouns go before the infinitive, not before veut.",
+      "explanation": "La (the car) comes before leur (to the neighbours), both before vendre: il veut la leur vendre."
+    },
+    {
+      "id": "pronoun-order-passe-compose-order-1",
+      "pattern": "passe-compose-order",
+      "type": "rewrite",
+      "instruction": "Replace le secret and à Paul with pronouns.",
+      "source": "J’ai dit le secret à Paul.",
+      "answers": [
+        "Je le lui ai dit."
+      ],
+      "hint": "In the passé composé the pronouns go before the auxiliary.",
+      "feedback": "Put both pronouns before ai; je no longer elides.",
+      "explanation": "Le comes before lui, and both go before ai: je le lui ai dit."
+    },
+    {
+      "id": "pronoun-order-passe-compose-order-2",
+      "pattern": "passe-compose-order",
+      "type": "rewrite",
+      "instruction": "Replace de son voyage and à ses parents with pronouns.",
+      "source": "Elle a parlé de son voyage à ses parents.",
+      "answers": [
+        "Elle leur en a parlé."
+      ],
+      "hint": "En is always last, and both pronouns go before the auxiliary.",
+      "feedback": "Check which pronoun means to her parents and which replaces de son voyage.",
+      "explanation": "Leur comes before en, and both go before a: elle leur en a parlé."
+    },
+    {
+      "id": "pronoun-order-passe-compose-order-3",
+      "pattern": "passe-compose-order",
+      "type": "choose",
+      "instruction": "Choose the right words.",
+      "source": "Le message ? Il ____ envoyé hier. (to me)",
+      "options": [
+        "me l’a",
+        "l’me a",
+        "me le a",
+        "m’a le"
+      ],
+      "answers": [
+        "me l’a"
+      ],
+      "hint": "Me comes first, and le shortens before a vowel.",
+      "feedback": "Check the order and the elision before the auxiliary.",
+      "explanation": "Me comes before le, and le becomes l’ before a: il me l’a envoyé hier."
+    },
+    {
+      "id": "pronoun-order-passe-compose-order-4",
+      "pattern": "passe-compose-order",
+      "type": "complete",
+      "instruction": "Write the two pronouns for le résultat and aux parents.",
+      "source": "Le résultat ? Le médecin ____ a expliqué.",
+      "answers": [
+        "le leur"
+      ],
+      "hint": "The thing comes first, then the people, both before the auxiliary.",
+      "feedback": "You need two pronouns here, in the right order.",
+      "explanation": "Le (the result) comes before leur (to the parents): le médecin le leur a expliqué."
+    },
+    {
+      "id": "pronoun-order-passe-compose-order-5",
+      "pattern": "passe-compose-order",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Le livre ? Je lui l’ai rendu.",
+      "answers": [
+        "Le livre ? Je le lui ai rendu.",
+        "Je le lui ai rendu."
+      ],
+      "hint": "Which comes first: le or lui?",
+      "feedback": "Le must come before lui, and it no longer touches ai.",
+      "explanation": "Le comes before lui: je le lui ai rendu. Le does not elide here because lui follows it."
+    },
+    {
+      "id": "pronoun-order-passe-compose-order-6",
+      "pattern": "passe-compose-order",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She talked to us about it. (it = the trip)",
+      "answers": [
+        "Elle nous en a parlé."
+      ],
+      "hint": "Parler à quelqu’un de quelque chose; en is always last.",
+      "feedback": "Put both pronouns before the auxiliary a.",
+      "explanation": "Nous (to us) comes before en (about the trip), both before a: elle nous en a parlé."
+    },
+    {
+      "id": "pronoun-order-passe-compose-order-7",
+      "pattern": "passe-compose-order",
+      "type": "build",
+      "instruction": "Answer yes, replacing ton stylo and à Léa with pronouns.",
+      "source": "Tu as prêté ton stylo à Léa ?",
+      "tokens": [
+        "je",
+        "leur",
+        "Oui,",
+        "lui",
+        "ai",
+        "prêté.",
+        "le"
+      ],
+      "answers": [
+        "Oui, je le lui ai prêté.",
+        "Je le lui ai prêté."
+      ],
+      "hint": "Both pronouns go before the auxiliary, the thing first.",
+      "feedback": "Léa is one person; check the pronoun for to her.",
+      "explanation": "Le (the pen) comes before lui (to Léa), both before ai: oui, je le lui ai prêté."
+    },
+    {
+      "id": "pronoun-order-imperative-affirmative-1",
+      "pattern": "imperative-affirmative",
+      "type": "rewrite",
+      "instruction": "Turn it into a command to a friend, replacing le sel with a pronoun.",
+      "source": "Tu me donnes le sel.",
+      "answers": [
+        "Donne-le-moi !"
+      ],
+      "hint": "In an affirmative command the pronouns follow the verb, with hyphens, and me becomes moi.",
+      "feedback": "Le comes straight after the verb, before the person.",
+      "explanation": "In an affirmative command the order is verb, then le, then moi: donne-le-moi !",
+      "spellingAnswers": [
+        "Donne le moi !"
+      ]
+    },
+    {
+      "id": "pronoun-order-imperative-affirmative-2",
+      "pattern": "imperative-affirmative",
+      "type": "choose",
+      "instruction": "Choose the right command.",
+      "source": "Le cadeau est pour Marie ? Alors ____ !",
+      "options": [
+        "donne-le-lui",
+        "donne-lui-le",
+        "le lui donne",
+        "donne-la-lui"
+      ],
+      "answers": [
+        "donne-le-lui"
+      ],
+      "hint": "Le cadeau is masculine, and in a command the thing comes before the person.",
+      "feedback": "Check the gender, the order and the form of the command.",
+      "explanation": "After the verb, le comes before lui: donne-le-lui !"
+    },
+    {
+      "id": "pronoun-order-imperative-affirmative-3",
+      "pattern": "imperative-affirmative",
+      "type": "complete",
+      "instruction": "Write the pronouns that mean me + some.",
+      "source": "Tu as du chocolat ? Donne-____, s’il te plaît !",
+      "answers": [
+        "m’en"
+      ],
+      "alternatives": [
+        {
+          "answer": "moi-en",
+          "message": "You will hear this in speech, but the standard written form shortens moi before en: donne-m’en."
+        }
+      ],
+      "hint": "Before en, moi shortens.",
+      "feedback": "In a command, moi becomes m’ before en.",
+      "explanation": "Moi becomes m’ before en: donne-m’en, s’il te plaît !"
+    },
+    {
+      "id": "pronoun-order-imperative-affirmative-4",
+      "pattern": "imperative-affirmative",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Tell it to them! (it = the truth; to a friend)",
+      "answers": [
+        "Dis-la-leur !"
+      ],
+      "hint": "La vérité is feminine; in an affirmative command the pronouns follow the verb.",
+      "feedback": "Put the thing first after the verb, then the people, joined by hyphens.",
+      "explanation": "After dis, la (the truth) comes before leur (to them): dis-la-leur !",
+      "spellingAnswers": [
+        "Dis la leur !"
+      ]
+    },
+    {
+      "id": "pronoun-order-imperative-affirmative-5",
+      "pattern": "imperative-affirmative",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Ta photo ? Montre-moi-la !",
+      "answers": [
+        "Ta photo ? Montre-la-moi !",
+        "Montre-la-moi !"
+      ],
+      "hint": "In an affirmative command, which comes first after the verb: the thing or the person?",
+      "feedback": "Le, la and les come straight after the verb.",
+      "explanation": "In standard French the order is verb, la, moi: montre-la-moi !",
+      "spellingAnswers": [
+        "Ta photo ? Montre la moi !",
+        "Montre la moi !"
+      ]
+    },
+    {
+      "id": "pronoun-order-imperative-negative-1",
+      "pattern": "imperative-negative",
+      "type": "rewrite",
+      "instruction": "Make the command negative.",
+      "source": "Donne-le-moi !",
+      "answers": [
+        "Ne me le donne pas !"
+      ],
+      "hint": "In a negative command the pronouns go back before the verb.",
+      "feedback": "Use the normal order, me before le, inside ne…pas.",
+      "explanation": "A negative command uses the ordinary order: ne me le donne pas !"
+    },
+    {
+      "id": "pronoun-order-imperative-negative-2",
+      "pattern": "imperative-negative",
+      "type": "choose",
+      "instruction": "Choose the right command.",
+      "source": "Les clés ? (do not lend them to him) ____ !",
+      "options": [
+        "Ne les lui prête pas",
+        "Ne prête-les-lui pas",
+        "Ne lui les prête pas",
+        "Prête-les-lui pas"
+      ],
+      "answers": [
+        "Ne les lui prête pas"
+      ],
+      "hint": "A negative command puts the pronouns before the verb.",
+      "feedback": "Check where the pronouns go and their order.",
+      "explanation": "In a negative command the pronouns come before the verb in the normal order: ne les lui prête pas !"
+    },
+    {
+      "id": "pronoun-order-imperative-negative-3",
+      "pattern": "imperative-negative",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces mes lunettes.",
+      "source": "Mes lunettes ? Ne me ____ cache pas !",
+      "answers": [
+        "les"
+      ],
+      "hint": "Mes lunettes is plural.",
+      "feedback": "In a negative command the direct object pronoun follows me.",
+      "explanation": "Me comes before les, both before the verb: ne me les cache pas !"
+    },
+    {
+      "id": "pronoun-order-imperative-negative-4",
+      "pattern": "imperative-negative",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Do not tell it to her! (it = the secret; to a friend)",
+      "answers": [
+        "Ne le lui dis pas !"
+      ],
+      "hint": "A negative command keeps the pronouns before the verb.",
+      "feedback": "Use le before lui, inside ne…pas.",
+      "explanation": "Le (the secret) comes before lui (to her): ne le lui dis pas !"
+    },
+    {
+      "id": "pronoun-order-imperative-negative-5",
+      "pattern": "imperative-negative",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Ce gâteau ? Ne donne-le-moi pas !",
+      "answers": [
+        "Ce gâteau ? Ne me le donne pas !",
+        "Ne me le donne pas !"
+      ],
+      "hint": "With ne…pas, do the pronouns follow the verb?",
+      "feedback": "In a negative command the pronouns go back before the verb, in the normal order.",
+      "explanation": "Negative commands use the normal order: ne me le donne pas !"
+    },
+    {
+      "id": "pronoun-order-imperative-negative-6",
+      "pattern": "imperative-negative",
+      "type": "build",
+      "instruction": "Build the French command.",
+      "source": "Do not send them to us! (them = the letters; formal)",
+      "tokens": [
+        "nous",
+        "les",
+        "pas !",
+        "leur",
+        "envoyez",
+        "Ne"
+      ],
+      "answers": [
+        "Ne nous les envoyez pas !"
+      ],
+      "hint": "A negative command keeps the pronouns before the verb.",
+      "feedback": "Nous comes before les.",
+      "explanation": "In a negative command the pronouns come before the verb in the normal order: ne nous les envoyez pas."
+    }
+  ]
+}

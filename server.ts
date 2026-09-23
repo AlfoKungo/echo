@@ -3,10 +3,11 @@ import { join } from 'node:path';
 import { Database } from 'bun:sqlite';
 import { createStore, StoreError } from './lib/store';
 import { createGrammarStore } from './lib/grammar-store';
+import { loadCourse } from './lib/grammar-content';
 import { createLearningStore } from './lib/learning-store';
 import { LocalTutor } from './lib/local-tutor';
 import type { LearningAttemptInput, LearningContent, TutorInput } from './learning-contract';
-import type { Direction, GradeInput, GrammarMutation, GrammarTopicContent, ReviewEarlyInput, Word } from './contract';
+import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, Word } from './contract';
 
 const root = import.meta.dir;
 const core = await Bun.file(join(root, 'content/core.json')).json() as Word[];
@@ -21,8 +22,7 @@ const byId = new Map(words.map(word => [word.id, word]));
 if (byId.size !== words.length) throw new Error('Duplicate vocabulary IDs');
 const dbPath = process.env.ECHO_DB ?? join(root, 'data/echo.db');
 const store = createStore(words, { dbPath });
-const grammarTopics = await Bun.file(join(root, 'content/grammar.json')).json() as GrammarTopicContent[];
-const grammar = createGrammarStore(grammarTopics, { dbPath });
+const grammar = createGrammarStore(await loadCourse(join(root, 'content/grammar')), { dbPath });
 const learningContent = await Bun.file(join(root, 'content/learning.json')).json() as LearningContent;
 const learning = createLearningStore(learningContent, { dbPath, words, vocabulary: store, grammar });
 const tutor = new LocalTutor(learning);
@@ -117,14 +117,14 @@ const server = Bun.serve({
       const tutorMatch = path.match(/^\/api\/learning\/tutor\/([^/]+)(\/stop)?$/);
       if (tutorMatch && req.method === 'GET' && !tutorMatch[2]) return json(tutor.get(tutorMatch[1]));
       if (tutorMatch && req.method === 'POST' && tutorMatch[2]) return json(tutor.cancel(tutorMatch[1]));
-      if (path === '/api/grammar' && req.method === 'GET') return json({ topics: grammar.catalog() });
-      if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('topic') ?? ''));
+      if (path === '/api/grammar' && req.method === 'GET') return json({ units: grammar.catalog() });
+      if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('scope') ?? ''));
       if (path === '/api/grammar/session' && req.method === 'POST') {
         const data = await body(req);
-        if (typeof data.topicId !== 'string' || typeof data.requestId !== 'string' || !data.requestId) {
-          throw new StoreError('Choose a grammar topic and try again.', 400);
+        if (typeof data.scope !== 'string' || !data.scope || typeof data.requestId !== 'string' || !data.requestId) {
+          throw new StoreError('Choose a grammar topic, test or unit test and try again.', 400);
         }
-        return json(grammar.start(data.topicId, data.requestId));
+        return json(grammar.start(data.scope, data.requestId));
       }
       if (path === '/api/grammar/answer' && req.method === 'POST') {
         const data = await body(req);

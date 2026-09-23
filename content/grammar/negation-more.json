@@ -1,0 +1,763 @@
+{
+  "id": "negation-more",
+  "unit": "sentences",
+  "level": "A2",
+  "title": "Never, nothing, no one",
+  "description": "Say never, no longer, nothing, no one, only and neither…nor.",
+  "mark": "ne…jamais",
+  "rule": "Jamais (never), plus (no longer), rien (nothing) and personne (no one) replace pas: ne goes before the conjugated verb and the second word after it, and they are never combined with pas; after jamais and plus, un, une, des, du and de la become de, as after pas. Ne…que means only: que goes right before the thing restricted, becomes qu’ before a vowel, and the article stays (il ne boit que de l’eau). Ne…ni…ni means neither…nor: ni goes before each item, le, la and les stay, but un, une, des, du and de la disappear (elle n’a ni chien ni chat). In the passé composé, jamais, plus and rien go between the auxiliary and the participle (il n’a rien dit), but personne goes after the participle (il n’a vu personne). As subjects, rien and personne come first and ne still goes before the verb, with no pas (Personne ne répond). In a short answer with no verb, jamais, rien and personne stand alone, without ne.",
+  "example": "Je ne fume plus. · Il n’a rien dit. · Personne ne répond.",
+  "aside": "In speech ne is often dropped (je sais rien). Written French keeps it, and it matters with plus: je ne mange plus de pain means I no longer eat bread, while je mange plus de pain can mean I eat more bread.",
+  "exercises": [
+    {
+      "id": "negation-more-jamais-de-choose",
+      "pattern": "jamais-de",
+      "type": "choose",
+      "instruction": "Choose the word that completes the sentence.",
+      "source": "Je ne mange jamais ____ viande.",
+      "options": [
+        "de",
+        "de la",
+        "du"
+      ],
+      "answers": [
+        "de"
+      ],
+      "hint": "Jamais works like pas: the article after it changes.",
+      "feedback": "Du and de la do not stay after ne…jamais.",
+      "explanation": "After ne…jamais, du, de la, un, une and des become de: je ne mange jamais de viande."
+    },
+    {
+      "id": "negation-more-jamais-de-rewrite",
+      "pattern": "jamais-de",
+      "type": "rewrite",
+      "instruction": "Rewrite with ne…jamais: I never watch TV in the evening.",
+      "source": "Je regarde la télé le soir.",
+      "answers": [
+        "Je ne regarde jamais la télé le soir."
+      ],
+      "alternatives": [
+        {
+          "answer": "Je regarde jamais la télé le soir.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Jamais takes the place of pas, right after the verb.",
+      "feedback": "Put ne before regarde and jamais after it. Does la change?",
+      "explanation": "Ne…jamais surrounds the verb like ne…pas, and la stays unchanged."
+    },
+    {
+      "id": "negation-more-jamais-de-translate",
+      "pattern": "jamais-de",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She never takes the bus (le bus).",
+      "answers": [
+        "Elle ne prend jamais le bus."
+      ],
+      "alternatives": [
+        {
+          "answer": "Elle prend jamais le bus.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Never is ne…jamais around the verb.",
+      "feedback": "Check that ne comes before prend and jamais right after it.",
+      "explanation": "Ne…jamais surrounds prend. The definite article le does not change."
+    },
+    {
+      "id": "negation-more-jamais-de-complete",
+      "pattern": "jamais-de",
+      "type": "complete",
+      "instruction": "Fill the blank with the word for never.",
+      "source": "Vous ne faites ____ de sport.",
+      "answers": [
+        "jamais"
+      ],
+      "hint": "Ne is already there. Which word pairs with it to mean never?",
+      "feedback": "The word you need means never, not not.",
+      "explanation": "Ne…jamais means never: vous ne faites jamais de sport."
+    },
+    {
+      "id": "negation-more-jamais-de-repair",
+      "pattern": "jamais-de",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il ne mange jamais des légumes.",
+      "answers": [
+        "Il ne mange jamais de légumes."
+      ],
+      "hint": "Jamais changes the article after it, just as pas does.",
+      "feedback": "Des does not stay after ne…jamais.",
+      "explanation": "After ne…jamais, des becomes de: il ne mange jamais de légumes."
+    },
+    {
+      "id": "negation-more-plus-de-choose",
+      "pattern": "plus-de",
+      "type": "choose",
+      "instruction": "Choose the word that completes the sentence.",
+      "source": "Je n’ai plus ____ argent.",
+      "options": [
+        "d’",
+        "de l’",
+        "de"
+      ],
+      "answers": [
+        "d’"
+      ],
+      "hint": "Plus changes the article after it, like pas. Argent begins with a vowel.",
+      "feedback": "De l’ does not stay after ne…plus.",
+      "explanation": "After ne…plus, de l’ becomes de, and de becomes d’ before argent."
+    },
+    {
+      "id": "negation-more-plus-de-translate",
+      "pattern": "plus-de",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I don’t eat meat anymore.",
+      "answers": [
+        "Je ne mange plus de viande."
+      ],
+      "alternatives": [
+        {
+          "answer": "Je mange plus de viande.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb. Without ne, this can also be read as I eat more meat."
+        }
+      ],
+      "hint": "Not anymore is ne…plus. Check the article after it.",
+      "feedback": "De la does not stay after ne…plus.",
+      "explanation": "Ne…plus surrounds mange, and de la becomes de: je ne mange plus de viande."
+    },
+    {
+      "id": "negation-more-plus-de-rewrite",
+      "pattern": "plus-de",
+      "type": "rewrite",
+      "instruction": "Rewrite with ne…plus: he no longer lives in Paris.",
+      "source": "Il habite à Paris.",
+      "answers": [
+        "Il n’habite plus à Paris."
+      ],
+      "alternatives": [
+        {
+          "answer": "Il habite plus à Paris.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb. Without ne, plus can be misread as more."
+        }
+      ],
+      "hint": "Habite starts with a silent h, so ne shortens.",
+      "feedback": "Check the elision before habite and the position of plus.",
+      "explanation": "Ne becomes n’ before the silent h, and plus follows the verb: il n’habite plus à Paris."
+    },
+    {
+      "id": "negation-more-plus-de-build",
+      "pattern": "plus-de",
+      "type": "build",
+      "instruction": "Build the sentence: We don’t have any bread left. Leave the extra tile unused.",
+      "source": "We don’t have any bread left.",
+      "tokens": [
+        "plus",
+        "pain.",
+        "Nous",
+        "du",
+        "avons",
+        "n’",
+        "de"
+      ],
+      "answers": [
+        "Nous n’avons plus de pain."
+      ],
+      "hint": "No more is ne…plus, and the article after it changes.",
+      "feedback": "Du does not stay after ne…plus.",
+      "explanation": "Nous n’avons plus de pain: du becomes de after ne…plus."
+    },
+    {
+      "id": "negation-more-plus-de-complete",
+      "pattern": "plus-de",
+      "type": "complete",
+      "instruction": "Fill the blank with the word for no longer.",
+      "source": "Ils ne travaillent ____ ici.",
+      "answers": [
+        "plus"
+      ],
+      "hint": "Ne is already there. Which word pairs with it to mean no longer?",
+      "feedback": "The word you need means no longer, not never.",
+      "explanation": "Ne…plus means no longer: ils ne travaillent plus ici."
+    },
+    {
+      "id": "negation-more-rien-personne-object-choose",
+      "pattern": "rien-personne-object",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Il fait noir : je ne vois ____.",
+      "options": [
+        "rien",
+        "pas rien",
+        "rien pas"
+      ],
+      "answers": [
+        "rien"
+      ],
+      "hint": "Rien replaces pas. It is never used with pas.",
+      "feedback": "Only one word goes after the verb with ne here.",
+      "explanation": "Ne…rien means nothing. Rien takes the place of pas, so the two are not combined."
+    },
+    {
+      "id": "negation-more-rien-personne-object-translate",
+      "pattern": "rien-personne-object",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I don’t know anyone here.",
+      "answers": [
+        "Je ne connais personne ici.",
+        "Ici, je ne connais personne."
+      ],
+      "alternatives": [
+        {
+          "answer": "Je connais personne ici.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Not anyone is ne…personne around the verb.",
+      "feedback": "Do not add pas: personne already makes the sentence negative.",
+      "explanation": "Ne…personne surrounds connais: je ne connais personne ici."
+    },
+    {
+      "id": "negation-more-rien-personne-object-complete",
+      "pattern": "rien-personne-object",
+      "type": "complete",
+      "instruction": "Fill the blank with the word for nothing.",
+      "source": "Il ne dit ____ ce matin.",
+      "answers": [
+        "rien"
+      ],
+      "hint": "Ne is already there. Which word pairs with it to mean nothing?",
+      "feedback": "The word you need means nothing, not no one.",
+      "explanation": "Ne…rien means nothing: il ne dit rien ce matin."
+    },
+    {
+      "id": "negation-more-rien-personne-object-build",
+      "pattern": "rien-personne-object",
+      "type": "build",
+      "instruction": "Build the sentence: She isn’t waiting for anyone. Leave the extra tile unused.",
+      "source": "She isn’t waiting for anyone.",
+      "tokens": [
+        "personne.",
+        "Elle",
+        "pas",
+        "attend",
+        "n’"
+      ],
+      "answers": [
+        "Elle n’attend personne."
+      ],
+      "hint": "Attendre takes a direct object: no word for for is needed.",
+      "feedback": "Personne already carries the negation, so pas is not used.",
+      "explanation": "Ne…personne surrounds attend, and ne elides before the vowel: elle n’attend personne."
+    },
+    {
+      "id": "negation-more-rien-personne-object-repair",
+      "pattern": "rien-personne-object",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Nous ne voulons pas rien.",
+      "answers": [
+        "Nous ne voulons rien."
+      ],
+      "hint": "Rien takes the place of pas.",
+      "feedback": "There is one negative word too many.",
+      "explanation": "Ne…rien already means nothing, so pas is removed: nous ne voulons rien."
+    },
+    {
+      "id": "negation-more-pc-auxiliary-choose",
+      "pattern": "pc-jamais-plus-rien",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Dans le noir, je ____.",
+      "options": [
+        "n’ai rien vu",
+        "n’ai vu rien",
+        "ne rien ai vu"
+      ],
+      "answers": [
+        "n’ai rien vu"
+      ],
+      "hint": "In the passé composé, rien goes where pas would go.",
+      "feedback": "Rien does not follow the participle.",
+      "explanation": "Like pas, rien goes between the auxiliary and the participle: je n’ai rien vu."
+    },
+    {
+      "id": "negation-more-pc-auxiliary-rewrite",
+      "pattern": "pc-jamais-plus-rien",
+      "type": "rewrite",
+      "instruction": "Rewrite with ne…rien: she ate nothing.",
+      "source": "Elle a mangé.",
+      "answers": [
+        "Elle n’a rien mangé."
+      ],
+      "alternatives": [
+        {
+          "answer": "Elle a rien mangé.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Rien goes between the auxiliary and the participle.",
+      "feedback": "Put ne before the auxiliary and check where rien goes.",
+      "explanation": "In the passé composé, ne…rien surrounds the auxiliary: elle n’a rien mangé."
+    },
+    {
+      "id": "negation-more-pc-auxiliary-translate",
+      "pattern": "pc-jamais-plus-rien",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I have never seen this film.",
+      "answers": [
+        "Je n’ai jamais vu ce film."
+      ],
+      "alternatives": [
+        {
+          "answer": "J’ai jamais vu ce film.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Use the passé composé. Jamais goes where pas would go.",
+      "feedback": "Jamais sits between the auxiliary and the participle.",
+      "explanation": "Ne…jamais surrounds the auxiliary ai: je n’ai jamais vu ce film."
+    },
+    {
+      "id": "negation-more-pc-auxiliary-complete",
+      "pattern": "pc-jamais-plus-rien",
+      "type": "complete",
+      "instruction": "Write téléphoner in the passé composé with ne…plus.",
+      "source": "Elle ____ après le dîner.",
+      "answers": [
+        "n’a plus téléphoné"
+      ],
+      "hint": "The auxiliary is avoir. Plus goes where pas would go.",
+      "feedback": "Write the auxiliary, the negation and the participle in the right order.",
+      "explanation": "Ne…plus surrounds the auxiliary a, and the participle follows: elle n’a plus téléphoné."
+    },
+    {
+      "id": "negation-more-pc-auxiliary-repair",
+      "pattern": "pc-jamais-plus-rien",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Je n’ai mangé jamais de sushis.",
+      "answers": [
+        "Je n’ai jamais mangé de sushis."
+      ],
+      "hint": "In the passé composé, jamais does not follow the participle.",
+      "feedback": "Move jamais so it sits right after the auxiliary.",
+      "explanation": "Jamais goes between the auxiliary and the participle: je n’ai jamais mangé."
+    },
+    {
+      "id": "negation-more-personne-after-participle-choose",
+      "pattern": "personne-after-participle",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Hier, je ____ au parc.",
+      "options": [
+        "n’ai vu personne",
+        "n’ai personne vu",
+        "ne personne ai vu"
+      ],
+      "answers": [
+        "n’ai vu personne"
+      ],
+      "hint": "Personne does not follow the rule for pas, jamais and rien in the passé composé.",
+      "feedback": "Personne goes after the whole verb.",
+      "explanation": "Unlike rien, personne goes after the past participle: je n’ai vu personne."
+    },
+    {
+      "id": "negation-more-personne-after-participle-rewrite",
+      "pattern": "personne-after-participle",
+      "type": "rewrite",
+      "instruction": "Replace ses amis with personne: she invited no one.",
+      "source": "Elle a invité ses amis.",
+      "answers": [
+        "Elle n’a invité personne."
+      ],
+      "alternatives": [
+        {
+          "answer": "Elle a invité personne.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Personne takes the place of the object, after the participle.",
+      "feedback": "Ne goes before the auxiliary; personne goes where ses amis was.",
+      "explanation": "In the passé composé, personne follows the participle: elle n’a invité personne."
+    },
+    {
+      "id": "negation-more-personne-after-participle-translate",
+      "pattern": "personne-after-participle",
+      "type": "translate",
+      "instruction": "Translate into French using the passé composé.",
+      "source": "He didn’t call anyone (appeler).",
+      "answers": [
+        "Il n’a appelé personne."
+      ],
+      "alternatives": [
+        {
+          "answer": "Il a appelé personne.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Personne goes in a different place from pas in the passé composé.",
+      "feedback": "Personne comes after the past participle, not before it.",
+      "explanation": "Ne goes before the auxiliary, and personne goes after the participle: il n’a appelé personne."
+    },
+    {
+      "id": "negation-more-personne-after-participle-repair",
+      "pattern": "personne-after-participle",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Tu n’as personne rencontré à la fête.",
+      "answers": [
+        "Tu n’as rencontré personne à la fête."
+      ],
+      "hint": "Personne does not go between the auxiliary and the participle.",
+      "feedback": "Move personne after the participle.",
+      "explanation": "Personne follows the past participle: tu n’as rencontré personne."
+    },
+    {
+      "id": "negation-more-personne-after-participle-build",
+      "pattern": "personne-after-participle",
+      "type": "build",
+      "instruction": "Build the sentence: I didn’t hear anyone. Leave the extra tile unused.",
+      "source": "I didn’t hear anyone.",
+      "tokens": [
+        "entendu",
+        "Je",
+        "personne.",
+        "pas",
+        "ai",
+        "n’"
+      ],
+      "answers": [
+        "Je n’ai entendu personne."
+      ],
+      "hint": "Personne comes at the end, after the participle, and replaces pas.",
+      "feedback": "Pas is not used with personne.",
+      "explanation": "Je n’ai entendu personne: ne before the auxiliary, personne after the participle."
+    },
+    {
+      "id": "negation-more-ne-que-choose",
+      "pattern": "ne-que-restriction",
+      "type": "choose",
+      "instruction": "Choose the article.",
+      "source": "Je ne bois que ____ thé.",
+      "options": [
+        "du",
+        "de",
+        "d’"
+      ],
+      "answers": [
+        "du"
+      ],
+      "hint": "Ne…que means only. It is a restriction, not a true negation.",
+      "feedback": "The article does not become de after ne…que.",
+      "explanation": "Ne…que keeps the article: je ne bois que du thé."
+    },
+    {
+      "id": "negation-more-ne-que-translate",
+      "pattern": "ne-que-restriction",
+      "type": "translate",
+      "instruction": "Translate into French using ne…que.",
+      "source": "I only have one brother.",
+      "answers": [
+        "Je n’ai qu’un frère.",
+        "Je n’ai qu’un seul frère."
+      ],
+      "alternatives": [
+        {
+          "answer": "J’ai seulement un frère.",
+          "message": "That is correct French, but this exercise practises ne…que."
+        },
+        {
+          "answer": "J’ai qu’un frère.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Put que right before what is restricted. Que shortens before a vowel.",
+      "feedback": "Check the elision of que before un, and keep the article.",
+      "explanation": "Ne…que keeps un: je n’ai qu’un frère."
+    },
+    {
+      "id": "negation-more-ne-que-rewrite",
+      "pattern": "ne-que-restriction",
+      "type": "rewrite",
+      "instruction": "Rewrite with ne…que: he eats only vegetables.",
+      "source": "Il mange des légumes.",
+      "answers": [
+        "Il ne mange que des légumes."
+      ],
+      "alternatives": [
+        {
+          "answer": "Il mange seulement des légumes.",
+          "message": "That is correct French, but this exercise practises ne…que."
+        }
+      ],
+      "hint": "Que goes right before des légumes, and des stays.",
+      "feedback": "Ne…que is not a real negation, so the article does not change.",
+      "explanation": "Ne…que keeps the article: il ne mange que des légumes."
+    },
+    {
+      "id": "negation-more-ne-que-complete",
+      "pattern": "ne-que-restriction",
+      "type": "complete",
+      "instruction": "Fill the blank with the second part of ne…que (only). Include the apostrophe if one is needed.",
+      "source": "Elle ne parle ____ anglais.",
+      "answers": [
+        "qu’",
+        "que l’"
+      ],
+      "hint": "The word after the blank begins with a vowel.",
+      "feedback": "Que elides before a vowel, like ne.",
+      "explanation": "Que becomes qu’ before anglais: elle ne parle qu’anglais (or que l’anglais, with the article kept)."
+    },
+    {
+      "id": "negation-more-ne-que-repair",
+      "pattern": "ne-que-restriction",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Nous n’avons que de pain.",
+      "answers": [
+        "Nous n’avons que du pain."
+      ],
+      "hint": "Ne…que does not change the article.",
+      "feedback": "Put back the article you would use in a positive sentence.",
+      "explanation": "Ne…que keeps the partitive article: nous n’avons que du pain."
+    },
+    {
+      "id": "negation-more-ni-ni-choose",
+      "pattern": "ni-ni",
+      "type": "choose",
+      "instruction": "Choose the word that completes the sentence.",
+      "source": "Je n’aime ni le thé ____ le café.",
+      "options": [
+        "ni",
+        "ou",
+        "et",
+        "pas"
+      ],
+      "answers": [
+        "ni"
+      ],
+      "hint": "In ne…ni…ni, the same word goes before each item.",
+      "feedback": "Neither…nor is ni…ni, not ni…ou.",
+      "explanation": "Ni goes before each item: je n’aime ni le thé ni le café."
+    },
+    {
+      "id": "negation-more-ni-ni-translate",
+      "pattern": "ni-ni",
+      "type": "translate",
+      "instruction": "Translate into French using ne…ni…ni.",
+      "source": "He likes neither cats nor dogs.",
+      "answers": [
+        "Il n’aime ni les chats ni les chiens.",
+        "Il n’aime ni les chiens ni les chats."
+      ],
+      "alternatives": [
+        {
+          "answer": "Il aime ni les chats ni les chiens.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "After aimer, use les for things in general. It stays after ni.",
+      "feedback": "Ne goes before the verb and ni before each item. Pas is not used.",
+      "explanation": "Ne elides before aime, and ni goes before each noun; les stays: il n’aime ni les chats ni les chiens."
+    },
+    {
+      "id": "negation-more-ni-ni-build",
+      "pattern": "ni-ni",
+      "type": "build",
+      "instruction": "Build the sentence: I have neither a brother nor a sister. Leave the extra tile unused.",
+      "source": "I have neither a brother nor a sister.",
+      "tokens": [
+        "ni",
+        "Je",
+        "sœur.",
+        "n’",
+        "un",
+        "ai",
+        "ni",
+        "frère"
+      ],
+      "answers": [
+        "Je n’ai ni frère ni sœur."
+      ],
+      "hint": "With ne…ni…ni, un and une disappear.",
+      "feedback": "The article un is not used after ni.",
+      "explanation": "After ni, the indefinite article disappears: je n’ai ni frère ni sœur."
+    },
+    {
+      "id": "negation-more-ni-ni-repair",
+      "pattern": "ni-ni",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Elle ne mange pas ni viande ni poisson.",
+      "answers": [
+        "Elle ne mange ni viande ni poisson."
+      ],
+      "hint": "Ni…ni replaces pas.",
+      "feedback": "There is one negative word too many.",
+      "explanation": "Ne…ni…ni needs no pas: elle ne mange ni viande ni poisson."
+    },
+    {
+      "id": "negation-more-ni-ni-rewrite",
+      "pattern": "ni-ni",
+      "type": "rewrite",
+      "instruction": "Rewrite with ne…ni…ni: we take neither milk nor sugar.",
+      "source": "Nous prenons du lait et du sucre.",
+      "answers": [
+        "Nous ne prenons ni lait ni sucre."
+      ],
+      "hint": "Ni replaces et, and it also goes before the first item. The partitive articles disappear.",
+      "feedback": "Du does not stay after ni.",
+      "explanation": "After ni, du and de la disappear: nous ne prenons ni lait ni sucre."
+    },
+    {
+      "id": "negation-more-subject-choose",
+      "pattern": "subject-rien-personne",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Personne ____ venu.",
+      "options": [
+        "n’est",
+        "n’est pas",
+        "est pas"
+      ],
+      "answers": [
+        "n’est"
+      ],
+      "hint": "Personne as the subject still needs ne before the verb, but no pas.",
+      "feedback": "Personne already makes the sentence negative.",
+      "explanation": "Personne n’est venu: ne goes before the verb and pas is not used."
+    },
+    {
+      "id": "negation-more-subject-translate",
+      "pattern": "subject-rien-personne",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Nothing works (marcher).",
+      "answers": [
+        "Rien ne marche."
+      ],
+      "alternatives": [
+        {
+          "answer": "Rien marche.",
+          "message": "That is common in casual speech, but written French keeps ne before the verb."
+        }
+      ],
+      "hint": "Rien is the subject and comes first. Ne still goes before the verb.",
+      "feedback": "Do not add pas, and do not leave out ne.",
+      "explanation": "As a subject, rien comes first and ne goes before the verb: rien ne marche."
+    },
+    {
+      "id": "negation-more-subject-complete",
+      "pattern": "subject-rien-personne",
+      "type": "complete",
+      "instruction": "Write changer in the present, with the ne it needs.",
+      "source": "Rien ____ ici.",
+      "answers": [
+        "ne change"
+      ],
+      "hint": "Rien as the subject is followed by ne and the verb.",
+      "feedback": "Include ne before the verb. Pas is not used.",
+      "explanation": "Rien ne change ici: rien is the subject, ne goes before the verb."
+    },
+    {
+      "id": "negation-more-subject-repair",
+      "pattern": "subject-rien-personne",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Personne ne sait pas la réponse.",
+      "answers": [
+        "Personne ne sait la réponse."
+      ],
+      "hint": "Personne already makes the sentence negative.",
+      "feedback": "There is one negative word too many.",
+      "explanation": "With personne as the subject, use ne but no pas: personne ne sait la réponse."
+    },
+    {
+      "id": "negation-more-subject-build",
+      "pattern": "subject-rien-personne",
+      "type": "build",
+      "instruction": "Build the sentence: No one called (téléphoner). Leave the extra tile unused.",
+      "source": "No one called.",
+      "tokens": [
+        "téléphoné.",
+        "n’",
+        "Personne",
+        "pas",
+        "a"
+      ],
+      "answers": [
+        "Personne n’a téléphoné."
+      ],
+      "hint": "Personne is the subject. Ne goes before the auxiliary.",
+      "feedback": "Pas is not used with personne.",
+      "explanation": "Personne n’a téléphoné: personne comes first, ne before the auxiliary, and no pas."
+    },
+    {
+      "id": "negation-more-short-answers-choose",
+      "pattern": "short-answers",
+      "type": "choose",
+      "instruction": "Choose the right short answer.",
+      "source": "— Qui est dans la cuisine ? — ____",
+      "options": [
+        "Personne.",
+        "Ne personne.",
+        "Pas personne."
+      ],
+      "answers": [
+        "Personne."
+      ],
+      "hint": "In a short answer without a verb, ne is not used.",
+      "feedback": "Ne needs a verb. A one-word answer does not have one.",
+      "explanation": "Personne can stand alone as an answer, without ne or pas."
+    },
+    {
+      "id": "negation-more-short-answers-choose-jamais",
+      "pattern": "short-answers",
+      "type": "choose",
+      "instruction": "Choose the right short answer.",
+      "source": "— Tu vas au cinéma le lundi ? — Non, ____ !",
+      "options": [
+        "jamais",
+        "ne jamais",
+        "pas jamais"
+      ],
+      "answers": [
+        "jamais"
+      ],
+      "hint": "There is no verb in this short answer. Does ne have anything to go before?",
+      "feedback": "There is no verb, so there is nothing for ne to go before.",
+      "explanation": "Jamais can be used alone as a short answer: Non, jamais !"
+    },
+    {
+      "id": "negation-more-short-answers-complete",
+      "pattern": "short-answers",
+      "type": "complete",
+      "instruction": "Answer with one word meaning nothing.",
+      "source": "— Qu’est-ce que tu as acheté ? — ____. Tout est trop cher.",
+      "answers": [
+        "Rien"
+      ],
+      "hint": "In a short answer, the word for nothing stands alone.",
+      "feedback": "One word is enough, with no ne.",
+      "explanation": "Rien can be used alone as an answer: — Rien."
+    },
+    {
+      "id": "negation-more-short-answers-rewrite",
+      "pattern": "short-answers",
+      "type": "rewrite",
+      "instruction": "Shorten the answer to one word.",
+      "source": "— Qui as-tu vu ? — Je n’ai vu personne.",
+      "answers": [
+        "Personne."
+      ],
+      "hint": "Keep only the word that answers the question qui.",
+      "feedback": "Keep the negative word that means no one, without ne.",
+      "explanation": "Personne can stand alone as a short answer."
+    }
+  ]
+}

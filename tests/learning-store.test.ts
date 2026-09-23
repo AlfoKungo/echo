@@ -409,10 +409,11 @@ describe('existing vocabulary and grammar integration', () => {
   test('grammar overview preserves independent, helped and revisit outcomes without substituting latest-round results', () => {
     const { dbPath, clock } = fixture();
     const topic: GrammarTopicContent = {
-      id: 'location', title: 'Locations', description: 'Express locations.', mark: 'à', rule: 'Use the location preposition.', example: 'Je suis à Paris.', aside: 'Cities use à.',
+      id: 'location', unit: 'places', level: 'A1', title: 'Locations', description: 'Express locations.', mark: 'à', rule: 'Use the location preposition.', example: 'Je suis à Paris.', aside: 'Cities use à.',
       exercises: [0, 1, 2].map((index) => ({ id: `location-${index}`, pattern: `location-${index}`, type: 'complete' as const, instruction: 'Complete the sentence.', source: 'Je suis ____ Paris.', answers: ['à'], hint: 'Use à.', explanation: 'À introduces a city.', feedback: 'Check the preposition.' })),
     };
-    const grammar = createGrammarStore([topic], { dbPath, now: () => new Date(clock.value) });
+    const units = [{ id: 'places', title: 'Places', description: 'Where things are.', topics: ['location'] }];
+    const grammar = createGrammarStore({ units, topics: [topic] }, { dbPath, now: () => new Date(clock.value) });
     closers.push(grammar);
     let state = grammar.start('location', requestId());
     const mutation = () => ({ sessionId: state.session!.id, exerciseId: state.session!.current!.exercise.id, version: state.session!.version, requestId: requestId() });

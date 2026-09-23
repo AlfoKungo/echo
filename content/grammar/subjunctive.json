@@ -1,0 +1,796 @@
+{
+  "id": "subjunctive",
+  "unit": "future-moods",
+  "level": "B1",
+  "title": "The subjunctive",
+  "description": "Use que + subjunctive after wishes, needs, feelings and some conjunctions.",
+  "mark": "que je sois",
+  "rule": "The subjonctif présent follows il faut que, vouloir que, aimer que, préférer que, être content/triste/désolé que, avoir peur que, and the conjunctions avant que, pour que, bien que and à condition que. To form it, take the ils form of the présent, drop -ent and add -e, -es, -e, -ions, -iez, -ent (ils finissent → que je finisse, que nous finissions); verbs like venir and prendre use their nous stem for nous and vous (que je vienne but que nous venions, que je prenne but que vous preniez). Être (que je sois, que nous soyons), avoir (que j’aie, qu’il ait), aller (que j’aille, que nous allions), faire (que je fasse), pouvoir (que je puisse), savoir (que je sache) and vouloir (que je veuille) are irregular. In positive statements, penser que, croire que, espérer que and être sûr que take the indicative, and so do parce que and après que. When both verbs have the same subject, use an infinitive instead of que: je veux partir, not je veux que je parte; pour partir, avant de partir.",
+  "example": "Il faut que tu viennes. · Je suis content que vous soyez là. · Je pense qu’il a raison.",
+  "aside": "After avoir peur que and avant que, formal French often adds a ne that does not make the verb negative: j’ai peur qu’il ne pleuve. Both forms are correct.",
+  "exercises": [
+    {
+      "id": "subjunctive-formation-1",
+      "pattern": "formation",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "finir · il · subjonctif présent",
+      "answers": [
+        "qu’il finisse",
+        "il finisse",
+        "finisse"
+      ],
+      "hint": "Start from ils finissent and drop -ent.",
+      "feedback": "The stem is finiss-; the il ending is -e.",
+      "explanation": "Ils finissent → finiss- + e: qu’il finisse."
+    },
+    {
+      "id": "subjunctive-formation-2",
+      "pattern": "formation",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "partir · nous · subjonctif présent",
+      "answers": [
+        "que nous partions",
+        "nous partions",
+        "partions"
+      ],
+      "hint": "Ils partent gives the stem. The nous ending looks like the imparfait.",
+      "feedback": "Stem part- plus the nous ending -ions.",
+      "explanation": "Ils partent → part- + ions: que nous partions."
+    },
+    {
+      "id": "subjunctive-formation-3",
+      "pattern": "formation",
+      "type": "complete",
+      "instruction": "Write choisir in the subjonctif présent.",
+      "source": "Il faut que vous ____ (choisir) un cadeau.",
+      "answers": [
+        "choisissiez"
+      ],
+      "hint": "Ils choisissent gives the stem. Which ending goes with vous?",
+      "feedback": "Keep the -iss- of the ils form and add the vous ending -iez.",
+      "explanation": "Ils choisissent → choisiss- + iez: que vous choisissiez."
+    },
+    {
+      "id": "subjunctive-formation-4",
+      "pattern": "formation",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Il faut qu’elle ____ la lettre ce soir.",
+      "options": [
+        "écrive",
+        "écrit",
+        "écrira",
+        "écrirait"
+      ],
+      "answers": [
+        "écrive"
+      ],
+      "hint": "Il faut que always takes the subjunctive. Start from ils écrivent.",
+      "feedback": "Only the subjunctive can follow il faut que.",
+      "explanation": "Ils écrivent → écriv- + e: qu’elle écrive."
+    },
+    {
+      "id": "subjunctive-formation-5",
+      "pattern": "formation",
+      "type": "rewrite",
+      "instruction": "Start the sentence with Il faut que.",
+      "source": "Nous finissons à six heures.",
+      "answers": [
+        "Il faut que nous finissions à six heures."
+      ],
+      "hint": "Il faut que triggers the subjunctive. Start from ils finissent.",
+      "feedback": "The nous subjunctive keeps -iss- and ends in -ions.",
+      "explanation": "Il faut que + subjunctive: que nous finissions."
+    },
+    {
+      "id": "subjunctive-stem-change-1",
+      "pattern": "stem-change",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "venir · nous · subjonctif présent",
+      "answers": [
+        "que nous venions",
+        "nous venions",
+        "venions"
+      ],
+      "hint": "For nous and vous, venir uses the stem of nous venons.",
+      "feedback": "Not vienn-: the nous form keeps the short stem ven-.",
+      "explanation": "Que je vienne, but que nous venions (from nous venons)."
+    },
+    {
+      "id": "subjunctive-stem-change-2",
+      "pattern": "stem-change",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "prendre · je · subjonctif présent",
+      "answers": [
+        "que je prenne",
+        "je prenne",
+        "prenne"
+      ],
+      "hint": "Start from ils prennent and drop -ent.",
+      "feedback": "The je form keeps the double n of ils prennent.",
+      "explanation": "Ils prennent → prenn- + e: que je prenne."
+    },
+    {
+      "id": "subjunctive-stem-change-3",
+      "pattern": "stem-change",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ma mère veut que nous ____ le train.",
+      "options": [
+        "prenions",
+        "prennions",
+        "prenons",
+        "prendrons"
+      ],
+      "answers": [
+        "prenions"
+      ],
+      "hint": "Vouloir que takes the subjunctive, and nous uses the stem of nous prenons.",
+      "feedback": "The nous subjunctive of prendre has one n.",
+      "explanation": "Que je prenne, but que nous prenions (from nous prenons)."
+    },
+    {
+      "id": "subjunctive-stem-change-4",
+      "pattern": "stem-change",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il faut qu’ils venent demain.",
+      "answers": [
+        "Il faut qu’ils viennent demain."
+      ],
+      "hint": "The ils subjunctive is the same as the ils présent.",
+      "feedback": "Only nous and vous use the short stem ven-.",
+      "explanation": "Qu’ils viennent: the ils form keeps vienn-."
+    },
+    {
+      "id": "subjunctive-etre-avoir-1",
+      "pattern": "etre-avoir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "être · nous · subjonctif présent",
+      "answers": [
+        "que nous soyons",
+        "nous soyons",
+        "soyons"
+      ],
+      "hint": "Être is irregular: que je sois, que tu sois… The nous form has a y.",
+      "feedback": "The nous form is built on soy-, with no i after the y.",
+      "explanation": "Que nous soyons."
+    },
+    {
+      "id": "subjunctive-etre-avoir-2",
+      "pattern": "etre-avoir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "avoir · elle · subjonctif présent",
+      "answers": [
+        "qu’elle ait",
+        "elle ait",
+        "ait"
+      ],
+      "hint": "Avoir is irregular: que j’aie, que tu aies…",
+      "feedback": "Unlike the je form, the il/elle form ends in -t.",
+      "explanation": "Qu’elle ait."
+    },
+    {
+      "id": "subjunctive-etre-avoir-3",
+      "pattern": "etre-avoir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Je veux que tu ____ à l’heure.",
+      "options": [
+        "sois",
+        "es",
+        "seras",
+        "soit"
+      ],
+      "answers": [
+        "sois"
+      ],
+      "hint": "Vouloir que takes the subjunctive. Watch the ending for tu.",
+      "feedback": "You need the subjunctive of être with the tu ending.",
+      "explanation": "Que tu sois: the tu form ends in -s, the il form in -t."
+    },
+    {
+      "id": "subjunctive-etre-avoir-4",
+      "pattern": "etre-avoir",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il faut que tu as ton billet.",
+      "answers": [
+        "Il faut que tu aies ton billet."
+      ],
+      "hint": "Il faut que never takes the indicative.",
+      "feedback": "Replace the present of avoir with its subjunctive.",
+      "explanation": "Il faut que tu aies: the subjunctive of avoir."
+    },
+    {
+      "id": "subjunctive-etre-avoir-5",
+      "pattern": "etre-avoir",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I want you (to a friend) to be happy.",
+      "answers": [
+        "Je veux que tu sois heureux.",
+        "Je veux que tu sois heureuse.",
+        "Je veux que tu sois content.",
+        "Je veux que tu sois contente."
+      ],
+      "hint": "French says I want that you be: vouloir que + subjunctive.",
+      "feedback": "English uses an infinitive here, but French needs que + subjunctive because the subjects differ.",
+      "explanation": "Je veux que tu sois heureux: different subjects, so que + subjunctive."
+    },
+    {
+      "id": "subjunctive-irregulars-1",
+      "pattern": "irregulars",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "aller · je · subjonctif présent",
+      "answers": [
+        "que j’aille",
+        "j’aille",
+        "aille"
+      ],
+      "hint": "Aller is irregular: the je form starts with aill-.",
+      "feedback": "Use aill- plus the je ending, with elision before que.",
+      "explanation": "Que j’aille (but que nous allions)."
+    },
+    {
+      "id": "subjunctive-irregulars-2",
+      "pattern": "irregulars",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "vouloir · il · subjonctif présent",
+      "answers": [
+        "qu’il veuille",
+        "il veuille",
+        "veuille"
+      ],
+      "hint": "Vouloir is irregular: the stem is veuill-.",
+      "feedback": "Use veuill- and the il ending -e.",
+      "explanation": "Qu’il veuille."
+    },
+    {
+      "id": "subjunctive-irregulars-3",
+      "pattern": "irregulars",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Il faut que nous ____ au marché.",
+      "options": [
+        "allions",
+        "allons",
+        "irons",
+        "aillions"
+      ],
+      "answers": [
+        "allions"
+      ],
+      "hint": "For nous, aller uses the stem of nous allons.",
+      "feedback": "The aill- stem is only for je, tu, il and ils.",
+      "explanation": "Que j’aille, but que nous allions."
+    },
+    {
+      "id": "subjunctive-irregulars-4",
+      "pattern": "irregulars",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Bien qu’il ____ nager, il n’aime pas la mer.",
+      "options": [
+        "sache",
+        "sait",
+        "saura",
+        "saurait"
+      ],
+      "answers": [
+        "sache"
+      ],
+      "hint": "Bien que takes the subjunctive. Savoir is irregular.",
+      "feedback": "Sait and saura are indicative; bien que needs the subjunctive.",
+      "explanation": "Savoir: que je sache, qu’il sache."
+    },
+    {
+      "id": "subjunctive-irregulars-5",
+      "pattern": "irregulars",
+      "type": "complete",
+      "instruction": "Write pouvoir in the subjonctif présent.",
+      "source": "Mes parents sont contents que je ____ (pouvoir) venir.",
+      "answers": [
+        "puisse"
+      ],
+      "hint": "Être content que takes the subjunctive. Pouvoir has the stem puiss-.",
+      "feedback": "Use puiss- and the je ending.",
+      "explanation": "Que je puisse."
+    },
+    {
+      "id": "subjunctive-irregulars-6",
+      "pattern": "irregulars",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il faut que je vais à la banque.",
+      "answers": [
+        "Il faut que j’aille à la banque."
+      ],
+      "hint": "Il faut que takes the subjunctive, and aller is irregular. Watch the elision.",
+      "feedback": "Replace vais with the subjunctive of aller, and remember that je elides before a vowel.",
+      "explanation": "Il faut que j’aille à la banque."
+    },
+    {
+      "id": "subjunctive-triggers-will-1",
+      "pattern": "triggers-will",
+      "type": "complete",
+      "instruction": "Write lire in the right form.",
+      "source": "Tes parents préfèrent que tu ____ (lire) un livre.",
+      "answers": [
+        "lises"
+      ],
+      "hint": "Préférer que triggers a particular mood. Start from ils lisent.",
+      "feedback": "Use the subjunctive: stem lis- plus the tu ending.",
+      "explanation": "Préférer que + subjunctive: que tu lises."
+    },
+    {
+      "id": "subjunctive-triggers-will-2",
+      "pattern": "triggers-will",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I want you (to a friend) to come.",
+      "answers": [
+        "Je veux que tu viennes."
+      ],
+      "hint": "French says I want that you come, with a subjunctive.",
+      "feedback": "Use que + the subjunctive of venir; the subjects are different.",
+      "explanation": "Je veux que tu viennes: vouloir que + subjunctive."
+    },
+    {
+      "id": "subjunctive-triggers-will-3",
+      "pattern": "triggers-will",
+      "type": "translate",
+      "instruction": "Translate into French. You can say us with nous or on.",
+      "source": "She would like us to wait.",
+      "answers": [
+        "Elle voudrait que nous attendions.",
+        "Elle aimerait que nous attendions.",
+        "Elle voudrait qu’on attende.",
+        "Elle aimerait qu’on attende."
+      ],
+      "hint": "Would like is voudrait or aimerait, then que + subjunctive.",
+      "feedback": "Attendre in the subjunctive: que nous attendions or qu’on attende.",
+      "explanation": "A wish about other people takes que + subjunctive."
+    },
+    {
+      "id": "subjunctive-triggers-will-4",
+      "pattern": "triggers-will",
+      "type": "rewrite",
+      "instruction": "Start the sentence with Il faut que.",
+      "source": "Vous faites attention.",
+      "answers": [
+        "Il faut que vous fassiez attention."
+      ],
+      "hint": "Il faut que triggers the subjunctive. Faire is irregular.",
+      "feedback": "Faire uses the stem fass- in the subjunctive.",
+      "explanation": "Il faut que vous fassiez attention."
+    },
+    {
+      "id": "subjunctive-triggers-will-5",
+      "pattern": "triggers-will",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "You (to a friend) need to sleep more.",
+      "tokens": [
+        "dors",
+        "que",
+        "Il",
+        "plus.",
+        "faut",
+        "tu",
+        "dormes"
+      ],
+      "answers": [
+        "Il faut que tu dormes plus."
+      ],
+      "hint": "Use il faut que. Which form of dormir follows it?",
+      "feedback": "Dors is the indicative; il faut que needs the subjunctive.",
+      "explanation": "Il faut que tu dormes: ils dorment → dorm- + es."
+    },
+    {
+      "id": "subjunctive-triggers-feelings-1",
+      "pattern": "triggers-feelings",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Je suis triste que tu ____ demain.",
+      "options": [
+        "partes",
+        "pars",
+        "partiras",
+        "partirais"
+      ],
+      "answers": [
+        "partes"
+      ],
+      "hint": "Être triste que expresses a feeling.",
+      "feedback": "Feelings with que take the subjunctive, even about the future.",
+      "explanation": "Être triste que + subjunctive: que tu partes."
+    },
+    {
+      "id": "subjunctive-triggers-feelings-2",
+      "pattern": "triggers-feelings",
+      "type": "complete",
+      "instruction": "Write se perdre in the subjonctif présent.",
+      "source": "Elle a peur que son chien ____ (se perdre).",
+      "answers": [
+        "se perde",
+        "ne se perde"
+      ],
+      "hint": "Avoir peur que takes the subjunctive. Keep the reflexive pronoun.",
+      "feedback": "The subjunctive stem is perd- (from ils perdent).",
+      "explanation": "Avoir peur que + subjunctive: que son chien se perde. Formal French may add ne: qu’il ne se perde."
+    },
+    {
+      "id": "subjunctive-triggers-feelings-3",
+      "pattern": "triggers-feelings",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I’m sorry that you (to a friend) are sick.",
+      "answers": [
+        "Je suis désolé que tu sois malade.",
+        "Je suis désolée que tu sois malade.",
+        "Je regrette que tu sois malade."
+      ],
+      "hint": "Être désolé que expresses a feeling.",
+      "feedback": "After désolé que, être goes into the subjunctive.",
+      "explanation": "Je suis désolé que tu sois malade: feeling + que + subjunctive."
+    },
+    {
+      "id": "subjunctive-triggers-feelings-4",
+      "pattern": "triggers-feelings",
+      "type": "rewrite",
+      "instruction": "Join the two sentences with que.",
+      "source": "Je suis content. Tu viens avec nous.",
+      "answers": [
+        "Je suis content que tu viennes avec nous."
+      ],
+      "hint": "Once they are joined, the second verb follows être content que.",
+      "feedback": "Viens must change to the subjunctive.",
+      "explanation": "Je suis content que tu viennes avec nous: feeling + que + subjunctive."
+    },
+    {
+      "id": "subjunctive-triggers-feelings-5",
+      "pattern": "triggers-feelings",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I’m afraid it will rain tomorrow.",
+      "tokens": [
+        "pleut",
+        "peur",
+        "J’ai",
+        "demain.",
+        "qu’il",
+        "pleuve"
+      ],
+      "answers": [
+        "J’ai peur qu’il pleuve demain."
+      ],
+      "hint": "Avoir peur que takes the subjunctive, even for the future.",
+      "feedback": "Pleut is the indicative.",
+      "explanation": "J’ai peur qu’il pleuve: pleuvoir → qu’il pleuve."
+    },
+    {
+      "id": "subjunctive-triggers-conjunctions-1",
+      "pattern": "triggers-conjunctions",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Je t’explique la règle pour que tu ____.",
+      "options": [
+        "comprennes",
+        "comprends",
+        "comprendras",
+        "comprendrais"
+      ],
+      "answers": [
+        "comprennes"
+      ],
+      "hint": "Pour que (so that) always takes one mood.",
+      "feedback": "Pour que takes the subjunctive: start from ils comprennent.",
+      "explanation": "Pour que + subjunctive: que tu comprennes."
+    },
+    {
+      "id": "subjunctive-triggers-conjunctions-2",
+      "pattern": "triggers-conjunctions",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "On partira à condition qu’il ____ beau.",
+      "options": [
+        "fasse",
+        "fait",
+        "fera",
+        "ferait"
+      ],
+      "answers": [
+        "fasse"
+      ],
+      "hint": "À condition que takes the subjunctive.",
+      "feedback": "Fait, fera and ferait are indicative or conditionnel forms.",
+      "explanation": "À condition que + subjunctive: qu’il fasse beau."
+    },
+    {
+      "id": "subjunctive-triggers-conjunctions-3",
+      "pattern": "triggers-conjunctions",
+      "type": "complete",
+      "instruction": "Write faire in the subjonctif présent.",
+      "source": "Rentre avant qu’il ____ (faire) nuit.",
+      "answers": [
+        "fasse",
+        "ne fasse"
+      ],
+      "hint": "Avant que takes the subjunctive.",
+      "feedback": "Faire uses the stem fass- in the subjunctive.",
+      "explanation": "Avant que + subjunctive: avant qu’il fasse nuit. Formal French may add ne: avant qu’il ne fasse nuit."
+    },
+    {
+      "id": "subjunctive-triggers-conjunctions-4",
+      "pattern": "triggers-conjunctions",
+      "type": "translate",
+      "instruction": "Translate into French using bien que.",
+      "source": "Although she is tired, she works.",
+      "answers": [
+        "Bien qu’elle soit fatiguée, elle travaille.",
+        "Elle travaille bien qu’elle soit fatiguée."
+      ],
+      "spellingAnswers": [
+        "Bien qu’elle soit fatiguée elle travaille."
+      ],
+      "hint": "Bien que takes the subjunctive; que elides before elle.",
+      "feedback": "After bien que, être goes into the subjunctive.",
+      "explanation": "Bien qu’elle soit fatiguée: bien que + subjunctive. The clause can also come second."
+    },
+    {
+      "id": "subjunctive-triggers-conjunctions-5",
+      "pattern": "triggers-conjunctions",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Bien qu’il pleut, nous sortons.",
+      "answers": [
+        "Bien qu’il pleuve, nous sortons."
+      ],
+      "spellingAnswers": [
+        "Bien qu’il pleuve nous sortons."
+      ],
+      "hint": "Look at the verb after bien que.",
+      "feedback": "Bien que never takes the indicative.",
+      "explanation": "Bien que + subjunctive: bien qu’il pleuve."
+    },
+    {
+      "id": "subjunctive-triggers-conjunctions-6",
+      "pattern": "triggers-conjunctions",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I speak slowly so that you (formal) understand.",
+      "tokens": [
+        "que",
+        "lentement",
+        "Je",
+        "comprenez.",
+        "pour",
+        "parle",
+        "vous",
+        "compreniez."
+      ],
+      "answers": [
+        "Je parle lentement pour que vous compreniez."
+      ],
+      "hint": "Pour que takes the subjunctive. Two tiles are forms of comprendre.",
+      "feedback": "Comprenez is the indicative.",
+      "explanation": "Pour que + subjunctive: que vous compreniez."
+    },
+    {
+      "id": "subjunctive-indicative-contrast-1",
+      "pattern": "indicative-contrast",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Je pense qu’il ____ malade aujourd’hui.",
+      "options": [
+        "est",
+        "soit",
+        "sois"
+      ],
+      "answers": [
+        "est"
+      ],
+      "hint": "Penser que states what you believe to be true.",
+      "feedback": "Penser que in a positive sentence takes the indicative.",
+      "explanation": "Je pense qu’il est malade: indicative after penser que."
+    },
+    {
+      "id": "subjunctive-indicative-contrast-2",
+      "pattern": "indicative-contrast",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "J’espère que tu ____ bien.",
+      "options": [
+        "vas",
+        "ailles",
+        "aille"
+      ],
+      "answers": [
+        "vas"
+      ],
+      "hint": "Espérer que looks like a wish, but it does not take the subjunctive.",
+      "feedback": "Espérer que takes the indicative.",
+      "explanation": "J’espère que tu vas bien: indicative after espérer que."
+    },
+    {
+      "id": "subjunctive-indicative-contrast-3",
+      "pattern": "indicative-contrast",
+      "type": "complete",
+      "instruction": "Write avoir in the right mood, in the present.",
+      "source": "Je suis sûr que vous ____ (avoir) raison.",
+      "answers": [
+        "avez"
+      ],
+      "hint": "Être sûr que expresses certainty.",
+      "feedback": "Certainty takes the indicative, not the subjunctive.",
+      "explanation": "Je suis sûr que vous avez raison: indicative after être sûr que."
+    },
+    {
+      "id": "subjunctive-indicative-contrast-4",
+      "pattern": "indicative-contrast",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je crois qu’elle soit à la maison.",
+      "answers": [
+        "Je crois qu’elle est à la maison."
+      ],
+      "hint": "Croire que states a belief.",
+      "feedback": "Croire que in a positive sentence takes the indicative.",
+      "explanation": "Je crois qu’elle est à la maison: indicative after croire que."
+    },
+    {
+      "id": "subjunctive-indicative-contrast-5",
+      "pattern": "indicative-contrast",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il reste à la maison parce qu’il soit malade.",
+      "answers": [
+        "Il reste à la maison parce qu’il est malade."
+      ],
+      "hint": "Parce que gives a real reason.",
+      "feedback": "Parce que takes the indicative.",
+      "explanation": "Parce qu’il est malade: indicative after parce que."
+    },
+    {
+      "id": "subjunctive-indicative-contrast-6",
+      "pattern": "indicative-contrast",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I think that he is right.",
+      "answers": [
+        "Je pense qu’il a raison.",
+        "Je crois qu’il a raison.",
+        "Je trouve qu’il a raison."
+      ],
+      "hint": "To be right is avoir raison. Think is penser or croire.",
+      "feedback": "Penser que and croire que take the indicative.",
+      "explanation": "Je pense qu’il a raison: indicative after penser que."
+    },
+    {
+      "id": "subjunctive-same-subject-1",
+      "pattern": "same-subject",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Je veux ____ tôt demain.",
+      "options": [
+        "partir",
+        "que je parte",
+        "que je pars"
+      ],
+      "answers": [
+        "partir"
+      ],
+      "hint": "Who wants, and who leaves? The same person.",
+      "feedback": "With the same subject, French uses an infinitive, not que.",
+      "explanation": "Je veux partir: same subject, so an infinitive."
+    },
+    {
+      "id": "subjunctive-same-subject-2",
+      "pattern": "same-subject",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je veux que je parte.",
+      "answers": [
+        "Je veux partir."
+      ],
+      "hint": "The two verbs have the same subject.",
+      "feedback": "Replace que + subjunctive with an infinitive.",
+      "explanation": "Same subject → infinitive: je veux partir."
+    },
+    {
+      "id": "subjunctive-same-subject-3",
+      "pattern": "same-subject",
+      "type": "rewrite",
+      "instruction": "Now we are the ones taking the trip: replace que tu fasses with an infinitive.",
+      "source": "Nous travaillons pour que tu fasses un voyage.",
+      "answers": [
+        "Nous travaillons pour faire un voyage."
+      ],
+      "hint": "Pour que + subjunctive becomes pour + infinitive when the subject is the same.",
+      "feedback": "Drop que tu and use the infinitive of faire.",
+      "explanation": "Same subject → pour + infinitive: nous travaillons pour faire un voyage."
+    },
+    {
+      "id": "subjunctive-same-subject-4",
+      "pattern": "same-subject",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Call me (to a friend) before you leave.",
+      "answers": [
+        "Appelle-moi avant de partir.",
+        "Téléphone-moi avant de partir."
+      ],
+      "alternatives": [
+        {
+          "answer": "Appelle-moi avant que tu partes.",
+          "message": "You call and you leave: the subject is the same, so French uses avant de + infinitive."
+        },
+        {
+          "answer": "Appelle-moi avant que tu ne partes.",
+          "message": "You call and you leave: the subject is the same, so French uses avant de + infinitive."
+        },
+        {
+          "answer": "Téléphone-moi avant que tu partes.",
+          "message": "You phone and you leave: the subject is the same, so French uses avant de + infinitive."
+        }
+      ],
+      "hint": "Who calls, and who leaves? The same person.",
+      "feedback": "With the same subject, avant que becomes avant de + infinitive.",
+      "explanation": "Appelle-moi avant de partir: same subject, so an infinitive."
+    },
+    {
+      "id": "subjunctive-same-subject-5",
+      "pattern": "same-subject",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She is happy to be here.",
+      "answers": [
+        "Elle est contente d’être ici.",
+        "Elle est contente d’être là.",
+        "Elle est heureuse d’être ici.",
+        "Elle est heureuse d’être là."
+      ],
+      "alternatives": [
+        {
+          "answer": "Elle est contente qu’elle soit ici.",
+          "message": "She is happy and she is here: the same subject, so French uses de + infinitive."
+        }
+      ],
+      "hint": "The same person is happy and is here. Content(e) de + infinitive.",
+      "feedback": "Use de + infinitive, not que + subjunctive.",
+      "explanation": "Elle est contente d’être ici: same subject, so de + infinitive."
+    },
+    {
+      "id": "subjunctive-same-subject-6",
+      "pattern": "same-subject",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We prefer to stay at home.",
+      "tokens": [
+        "la",
+        "que",
+        "rester",
+        "Nous",
+        "restions",
+        "maison.",
+        "préférons",
+        "à"
+      ],
+      "answers": [
+        "Nous préférons rester à la maison."
+      ],
+      "hint": "The same people prefer and stay.",
+      "feedback": "With the same subject, use the infinitive, not que.",
+      "explanation": "Nous préférons rester à la maison: same subject, so an infinitive."
+    }
+  ]
+}

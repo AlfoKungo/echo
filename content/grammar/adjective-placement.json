@@ -1,0 +1,775 @@
+{
+  "id": "adjective-placement",
+  "unit": "adjectives",
+  "level": "A2",
+  "title": "Where adjectives go",
+  "description": "Put adjectives before or after the noun, and use bel, nouvel and vieil.",
+  "mark": "bel · vieil",
+  "rule": "Most adjectives follow the noun: une voiture rouge, un film intéressant. A small group of short, common adjectives goes before the noun: beau, joli, jeune, vieux, nouveau, bon, mauvais, petit, grand, gros, long, autre, premier, dernier. Before a masculine singular noun that starts with a vowel or a silent h, beau, nouveau and vieux become bel, nouvel and vieil (un bel homme, un nouvel appartement, un vieil ami), but the plurals stay beaux, nouveaux, vieux. In careful written French, des becomes de when a plural adjective comes before the noun (de beaux jours, d’autres amis), but stays des when the adjective follows (des yeux bleus); everyday speech often keeps des, and fixed pairs keep it too (des jeunes gens, des petits pois). With two adjectives, each keeps its own place: une belle maison blanche. A few adjectives change meaning with their place: un ancien élève (former) but une maison ancienne (very old), mon cher ami (dear) but un livre cher (expensive), un grand homme (great) but un homme grand (tall).",
+  "example": "J’ai une petite voiture rouge. · C’est un vieil ami. · Nous avons passé de belles vacances.",
+  "aside": "In time expressions, dernier and prochain follow the noun: la semaine dernière, le mois prochain. Before the noun, dernier means last in a series: le dernier train.",
+  "exercises": [
+    {
+      "id": "adjective-placement-after-noun-1",
+      "pattern": "after-noun",
+      "type": "choose",
+      "instruction": "Choose the right phrase.",
+      "source": "J’ai acheté ____.",
+      "options": [
+        "une voiture rouge",
+        "une rouge voiture",
+        "une voiture rouges"
+      ],
+      "answers": [
+        "une voiture rouge"
+      ],
+      "hint": "Colours have a fixed place.",
+      "feedback": "Most adjectives, including colours, do not go before the noun.",
+      "explanation": "Colours follow the noun, and rouge stays the same in the feminine: une voiture rouge."
+    },
+    {
+      "id": "adjective-placement-after-noun-2",
+      "pattern": "after-noun",
+      "type": "choose",
+      "instruction": "Choose the right phrase.",
+      "source": "C’est ____.",
+      "options": [
+        "un film intéressant",
+        "un intéressant film",
+        "un film intéressante"
+      ],
+      "answers": [
+        "un film intéressant"
+      ],
+      "hint": "Intéressant is a long adjective.",
+      "feedback": "Long adjectives like this one are not in the short before-the-noun group.",
+      "explanation": "Intéressant is not one of the short common adjectives, so it follows the noun: un film intéressant."
+    },
+    {
+      "id": "adjective-placement-after-noun-3",
+      "pattern": "after-noun",
+      "type": "build",
+      "instruction": "Build the sentence: We have a black cat at home.",
+      "source": "We have a black cat at home.",
+      "tokens": [
+        "un",
+        "noir",
+        "chat",
+        "maison.",
+        "à la",
+        "avons",
+        "Nous"
+      ],
+      "answers": [
+        "Nous avons un chat noir à la maison."
+      ],
+      "hint": "Where do colours go?",
+      "feedback": "Check where you put the colour.",
+      "explanation": "Noir is a colour, so it follows the noun: un chat noir."
+    },
+    {
+      "id": "adjective-placement-after-noun-4",
+      "pattern": "after-noun",
+      "type": "rewrite",
+      "instruction": "Add the adjective français to the noun, in the right place.",
+      "source": "Elle lit un journal.",
+      "answers": [
+        "Elle lit un journal français."
+      ],
+      "hint": "Adjectives of nationality have a fixed place.",
+      "feedback": "Français is not in the short before-the-noun group.",
+      "explanation": "Nationality adjectives follow the noun: un journal français."
+    },
+    {
+      "id": "adjective-placement-after-noun-5",
+      "pattern": "after-noun",
+      "type": "rewrite",
+      "instruction": "Add the adjective difficile to the noun, in the right place.",
+      "source": "C’est une question.",
+      "answers": [
+        "C’est une question difficile."
+      ],
+      "hint": "Is difficile one of the short common adjectives?",
+      "feedback": "Most adjectives follow the noun.",
+      "explanation": "Difficile is not in the before-the-noun group, so it follows: une question difficile."
+    },
+    {
+      "id": "adjective-placement-after-noun-6",
+      "pattern": "after-noun",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Il a un rouge vélo.",
+      "answers": [
+        "Il a un vélo rouge."
+      ],
+      "hint": "Colours have a fixed place.",
+      "feedback": "One word is on the wrong side of the noun.",
+      "explanation": "Colours follow the noun: un vélo rouge."
+    },
+    {
+      "id": "adjective-placement-after-noun-7",
+      "pattern": "after-noun",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She has a green bike.",
+      "answers": [
+        "Elle a un vélo vert.",
+        "Elle a une bicyclette verte."
+      ],
+      "hint": "Where do colours go?",
+      "feedback": "Check the place of the colour.",
+      "explanation": "Vert is a colour, so it follows the noun: un vélo vert."
+    },
+    {
+      "id": "adjective-placement-before-noun-1",
+      "pattern": "before-noun",
+      "type": "choose",
+      "instruction": "Choose the right phrase.",
+      "source": "Ils habitent dans ____.",
+      "options": [
+        "une petite maison",
+        "une maison petite",
+        "un petit maison"
+      ],
+      "answers": [
+        "une petite maison"
+      ],
+      "hint": "Petit is short and very common.",
+      "feedback": "Petit belongs to a small group with its own place.",
+      "explanation": "Petit is one of the short common adjectives that go before the noun: une petite maison."
+    },
+    {
+      "id": "adjective-placement-before-noun-2",
+      "pattern": "before-noun",
+      "type": "choose",
+      "instruction": "Choose the right phrase.",
+      "source": "C’est ____ !",
+      "options": [
+        "une bonne idée",
+        "une idée bonne",
+        "un bon idée"
+      ],
+      "answers": [
+        "une bonne idée"
+      ],
+      "hint": "Bon is short and very common.",
+      "feedback": "Bon belongs to the group that goes before the noun.",
+      "explanation": "Bon goes before the noun and agrees with idée: une bonne idée."
+    },
+    {
+      "id": "adjective-placement-before-noun-3",
+      "pattern": "before-noun",
+      "type": "rewrite",
+      "instruction": "Add the adjective jeune to the noun, in the right place.",
+      "source": "C’est une femme.",
+      "answers": [
+        "C’est une jeune femme."
+      ],
+      "hint": "Jeune is in the short common group.",
+      "feedback": "Jeune does not go where most adjectives go.",
+      "explanation": "Jeune goes before the noun: une jeune femme."
+    },
+    {
+      "id": "adjective-placement-before-noun-4",
+      "pattern": "before-noun",
+      "type": "rewrite",
+      "instruction": "Add the adjective long to the noun, in the right place, and make it agree.",
+      "source": "Nous faisons une promenade.",
+      "answers": [
+        "Nous faisons une longue promenade."
+      ],
+      "hint": "Long is in the short common group; promenade is feminine.",
+      "feedback": "Check both the place and the feminine form.",
+      "explanation": "Long goes before the noun, and its feminine is longue: une longue promenade."
+    },
+    {
+      "id": "adjective-placement-before-noun-5",
+      "pattern": "before-noun",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "C’est la fois première que je viens ici.",
+      "answers": [
+        "C’est la première fois que je viens ici."
+      ],
+      "hint": "Premier is in the short common group.",
+      "feedback": "One adjective is on the wrong side of the noun.",
+      "explanation": "Premier goes before the noun: la première fois."
+    },
+    {
+      "id": "adjective-placement-before-noun-6",
+      "pattern": "before-noun",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Marc has a small garden.",
+      "answers": [
+        "Marc a un petit jardin."
+      ],
+      "hint": "Petit is in the short common group.",
+      "feedback": "Check the place of the adjective.",
+      "explanation": "Petit goes before the noun: un petit jardin."
+    },
+    {
+      "id": "adjective-placement-before-noun-7",
+      "pattern": "before-noun",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It’s the last train.",
+      "answers": [
+        "C’est le dernier train."
+      ],
+      "hint": "Last in a series and last week do not put dernier in the same place.",
+      "feedback": "Here last means the last one in a series, not last week.",
+      "explanation": "Dernier meaning last in a series goes before the noun: le dernier train."
+    },
+    {
+      "id": "adjective-placement-before-noun-8",
+      "pattern": "before-noun",
+      "type": "build",
+      "instruction": "Build the sentence: I have another question. Leave one tile unused.",
+      "source": "I have another question.",
+      "tokens": [
+        "autre",
+        "J’ai",
+        "une",
+        "question.",
+        "autres"
+      ],
+      "answers": [
+        "J’ai une autre question."
+      ],
+      "hint": "Autre is in the short common group.",
+      "feedback": "Another is a + other in French.",
+      "explanation": "Autre goes before the noun, after the article: une autre question."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-1",
+      "pattern": "bel-nouvel-vieil",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "C’est un ____ appartement.",
+      "options": [
+        "bel",
+        "beau",
+        "belle"
+      ],
+      "answers": [
+        "bel"
+      ],
+      "hint": "Appartement is masculine and starts with a vowel.",
+      "feedback": "The usual masculine form cannot stand before a vowel.",
+      "explanation": "Before a masculine singular noun starting with a vowel, beau becomes bel: un bel appartement."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-2",
+      "pattern": "bel-nouvel-vieil",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Voici mon ____ ami Pierre.",
+      "options": [
+        "vieil",
+        "vieux",
+        "vieille"
+      ],
+      "answers": [
+        "vieil"
+      ],
+      "hint": "Ami is masculine and starts with a vowel.",
+      "feedback": "The usual masculine form cannot stand before a vowel.",
+      "explanation": "Before a masculine singular noun starting with a vowel, vieux becomes vieil: mon vieil ami."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-3",
+      "pattern": "bel-nouvel-vieil",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Il a un ____ ordinateur.",
+      "options": [
+        "nouvel",
+        "nouveau",
+        "nouvelle"
+      ],
+      "answers": [
+        "nouvel"
+      ],
+      "hint": "Ordinateur is masculine and starts with a vowel.",
+      "feedback": "The usual masculine form cannot stand before a vowel.",
+      "explanation": "Before a masculine singular noun starting with a vowel, nouveau becomes nouvel: un nouvel ordinateur."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-4",
+      "pattern": "bel-nouvel-vieil",
+      "type": "complete",
+      "instruction": "Write the correct form of nouveau.",
+      "source": "C’est le ____ hôtel de la ville.",
+      "answers": [
+        "nouvel"
+      ],
+      "hint": "Hôtel is masculine and its h is silent.",
+      "feedback": "A silent h counts as a vowel.",
+      "explanation": "Hôtel is masculine singular with a silent h, so nouveau becomes nouvel."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-5",
+      "pattern": "bel-nouvel-vieil",
+      "type": "complete",
+      "instruction": "Write the correct form of beau.",
+      "source": "Quel ____ homme !",
+      "answers": [
+        "bel"
+      ],
+      "hint": "Homme is masculine and its h is silent.",
+      "feedback": "A silent h counts as a vowel.",
+      "explanation": "Homme is masculine singular with a silent h, so beau becomes bel: un bel homme."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-6",
+      "pattern": "bel-nouvel-vieil",
+      "type": "complete",
+      "instruction": "Write the correct form of vieux.",
+      "source": "Elle habite dans une ____ maison.",
+      "answers": [
+        "vieille"
+      ],
+      "hint": "Maison is feminine.",
+      "feedback": "Use the feminine form, not the form for vowels.",
+      "explanation": "Maison is feminine, so vieux becomes vieille: une vieille maison."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-7",
+      "pattern": "bel-nouvel-vieil",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "C’est un beau arbre.",
+      "answers": [
+        "C’est un bel arbre."
+      ],
+      "hint": "Arbre is masculine and starts with a vowel.",
+      "feedback": "Say beau arbre aloud: two vowels collide.",
+      "explanation": "Before a masculine singular noun starting with a vowel, beau becomes bel: un bel arbre."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-8",
+      "pattern": "bel-nouvel-vieil",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Mon grand-père a un vieux hôtel.",
+      "answers": [
+        "Mon grand-père a un vieil hôtel."
+      ],
+      "hint": "The h of hôtel is silent.",
+      "feedback": "A silent h counts as a vowel.",
+      "explanation": "Before a masculine singular noun with a silent h, vieux becomes vieil: un vieil hôtel."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-9",
+      "pattern": "bel-nouvel-vieil",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It’s a new apartment.",
+      "answers": [
+        "C’est un nouvel appartement.",
+        "C’est un appartement neuf."
+      ],
+      "hint": "Appartement is masculine and starts with a vowel.",
+      "feedback": "Check the form of nouveau before a vowel.",
+      "explanation": "Before a vowel, nouveau becomes nouvel: un nouvel appartement. Un appartement neuf (brand new) is also right; neuf follows the noun."
+    },
+    {
+      "id": "adjective-placement-bel-nouvel-vieil-10",
+      "pattern": "bel-nouvel-vieil",
+      "type": "build",
+      "instruction": "Build the sentence: There is a beautiful tree in the garden. Leave one tile unused.",
+      "source": "There is a beautiful tree in the garden.",
+      "tokens": [
+        "arbre",
+        "un",
+        "jardin.",
+        "beau",
+        "Il y a",
+        "bel",
+        "dans le"
+      ],
+      "answers": [
+        "Il y a un bel arbre dans le jardin."
+      ],
+      "hint": "Arbre is masculine and starts with a vowel.",
+      "feedback": "Choose the form of beau that fits before a vowel.",
+      "explanation": "Before a masculine singular noun starting with a vowel, beau becomes bel: un bel arbre."
+    },
+    {
+      "id": "adjective-placement-des-to-de-1",
+      "pattern": "des-to-de",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Elle a ____ yeux bleus.",
+      "options": [
+        "des",
+        "de",
+        "du"
+      ],
+      "answers": [
+        "des"
+      ],
+      "hint": "Where is the adjective?",
+      "feedback": "The change of des only happens when the adjective comes first.",
+      "explanation": "Bleus follows the noun, so des stays des: des yeux bleus."
+    },
+    {
+      "id": "adjective-placement-des-to-de-2",
+      "pattern": "des-to-de",
+      "type": "choose",
+      "instruction": "Choose the right word, as in careful written French.",
+      "source": "J’ai ____ nouveaux voisins.",
+      "options": [
+        "de",
+        "du",
+        "d’"
+      ],
+      "answers": [
+        "de"
+      ],
+      "hint": "The plural adjective comes before the noun.",
+      "feedback": "In careful written French, des changes before a plural adjective.",
+      "explanation": "Nouveaux comes before the noun, so des becomes de: de nouveaux voisins."
+    },
+    {
+      "id": "adjective-placement-des-to-de-3",
+      "pattern": "des-to-de",
+      "type": "choose",
+      "instruction": "Choose the right words, as in careful written French.",
+      "source": "Ce sont ____ amis.",
+      "options": [
+        "de vieux",
+        "de vieils",
+        "de vieil"
+      ],
+      "answers": [
+        "de vieux"
+      ],
+      "hint": "Amis is plural.",
+      "feedback": "The special vowel form of vieux is only for one masculine noun.",
+      "explanation": "Before a plural adjective des becomes de, and the plural of vieux stays vieux: de vieux amis."
+    },
+    {
+      "id": "adjective-placement-des-to-de-4",
+      "pattern": "des-to-de",
+      "type": "complete",
+      "instruction": "Write des or de, as in careful written French.",
+      "source": "Il y a ____ jolies fleurs dans le jardin.",
+      "answers": [
+        "de"
+      ],
+      "alternatives": [
+        {
+          "answer": "des",
+          "message": "Many people say des here in everyday speech, but careful written French uses de when a plural adjective comes before the noun."
+        }
+      ],
+      "hint": "The adjective comes before the noun.",
+      "feedback": "Look at where jolies is.",
+      "explanation": "Jolies comes before the plural noun, so careful written French uses de: de jolies fleurs."
+    },
+    {
+      "id": "adjective-placement-des-to-de-5",
+      "pattern": "des-to-de",
+      "type": "complete",
+      "instruction": "Write des or de, as in careful written French.",
+      "source": "Nous achetons ____ chaussures noires.",
+      "answers": [
+        "des"
+      ],
+      "hint": "The adjective comes after the noun.",
+      "feedback": "Look at where noires is.",
+      "explanation": "Noires follows the noun, so des does not change: des chaussures noires."
+    },
+    {
+      "id": "adjective-placement-des-to-de-6",
+      "pattern": "des-to-de",
+      "type": "rewrite",
+      "instruction": "Make the noun plural, as in careful written French.",
+      "source": "J’ai un bon ami.",
+      "answers": [
+        "J’ai de bons amis."
+      ],
+      "alternatives": [
+        {
+          "answer": "J’ai des bons amis.",
+          "message": "Many people say des here in everyday speech, but careful written French uses de when a plural adjective comes before the noun."
+        }
+      ],
+      "hint": "The plural adjective comes before the noun.",
+      "feedback": "Think about what happens to des before a plural adjective.",
+      "explanation": "Bons comes before the plural noun, so the article is de: de bons amis."
+    },
+    {
+      "id": "adjective-placement-des-to-de-7",
+      "pattern": "des-to-de",
+      "type": "rewrite",
+      "instruction": "Make the noun plural, as in careful written French.",
+      "source": "Elle a une grande valise.",
+      "answers": [
+        "Elle a de grandes valises."
+      ],
+      "alternatives": [
+        {
+          "answer": "Elle a des grandes valises.",
+          "message": "Many people say des here in everyday speech, but careful written French uses de when a plural adjective comes before the noun."
+        }
+      ],
+      "hint": "The plural adjective comes before the noun.",
+      "feedback": "Think about what happens to des before a plural adjective.",
+      "explanation": "Grandes comes before the plural noun, so the article is de: de grandes valises."
+    },
+    {
+      "id": "adjective-placement-des-to-de-8",
+      "pattern": "des-to-de",
+      "type": "translate",
+      "instruction": "Translate into French, as in careful written French.",
+      "source": "Paul has new friends.",
+      "answers": [
+        "Paul a de nouveaux amis."
+      ],
+      "alternatives": [
+        {
+          "answer": "Paul a des nouveaux amis.",
+          "message": "Many people say des here in everyday speech, but careful written French uses de when a plural adjective comes before the noun."
+        }
+      ],
+      "hint": "Nouveau goes before the noun.",
+      "feedback": "Check the article before a plural adjective.",
+      "explanation": "Nouveaux comes before the plural noun, so des becomes de: de nouveaux amis."
+    },
+    {
+      "id": "adjective-placement-des-to-de-9",
+      "pattern": "des-to-de",
+      "type": "repair",
+      "instruction": "Fix the error, as in careful written French.",
+      "source": "Il y a des petits restaurants dans ma rue.",
+      "answers": [
+        "Il y a de petits restaurants dans ma rue."
+      ],
+      "hint": "Look at the word before petits.",
+      "feedback": "The article changes before a plural adjective.",
+      "explanation": "Petits comes before the plural noun, so careful written French uses de: de petits restaurants."
+    },
+    {
+      "id": "adjective-placement-two-adjectives-1",
+      "pattern": "two-adjectives",
+      "type": "choose",
+      "instruction": "Choose the right phrase.",
+      "source": "Ils ont ____.",
+      "options": [
+        "une belle maison blanche",
+        "une blanche belle maison",
+        "une maison belle blanche"
+      ],
+      "answers": [
+        "une belle maison blanche"
+      ],
+      "hint": "Each adjective keeps its usual place.",
+      "feedback": "One adjective goes before the noun and one after.",
+      "explanation": "Belle goes before the noun and the colour blanche after it: une belle maison blanche."
+    },
+    {
+      "id": "adjective-placement-two-adjectives-2",
+      "pattern": "two-adjectives",
+      "type": "rewrite",
+      "instruction": "Add the adjectives petit and noir in their right places, and make them agree.",
+      "source": "Elle porte une robe.",
+      "answers": [
+        "Elle porte une petite robe noire."
+      ],
+      "hint": "One adjective is in the short common group, the other is a colour.",
+      "feedback": "Check the place and the feminine ending of each adjective.",
+      "explanation": "Petite goes before the noun and noire after it: une petite robe noire."
+    },
+    {
+      "id": "adjective-placement-two-adjectives-3",
+      "pattern": "two-adjectives",
+      "type": "build",
+      "instruction": "Build the sentence: He drives a big German car.",
+      "source": "He drives a big German car.",
+      "tokens": [
+        "conduit",
+        "une",
+        "allemande.",
+        "grosse",
+        "Il",
+        "voiture"
+      ],
+      "answers": [
+        "Il conduit une grosse voiture allemande."
+      ],
+      "hint": "Nationality adjectives follow the noun.",
+      "feedback": "One adjective goes before the noun and one after.",
+      "explanation": "Grosse goes before the noun and allemande after it: une grosse voiture allemande."
+    },
+    {
+      "id": "adjective-placement-two-adjectives-4",
+      "pattern": "two-adjectives",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It’s a pretty red dress.",
+      "answers": [
+        "C’est une jolie robe rouge."
+      ],
+      "hint": "Pretty and red do not go in the same place.",
+      "feedback": "Check where each adjective goes.",
+      "explanation": "Jolie goes before the noun and the colour rouge after it: une jolie robe rouge."
+    },
+    {
+      "id": "adjective-placement-two-adjectives-5",
+      "pattern": "two-adjectives",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "There is a new Italian restaurant.",
+      "answers": [
+        "Il y a un nouveau restaurant italien."
+      ],
+      "hint": "New and Italian do not go in the same place.",
+      "feedback": "Check where each adjective goes.",
+      "explanation": "Nouveau goes before the noun and italien after it: un nouveau restaurant italien."
+    },
+    {
+      "id": "adjective-placement-two-adjectives-6",
+      "pattern": "two-adjectives",
+      "type": "complete",
+      "instruction": "Write the correct form of beau.",
+      "source": "C’est une ____ voiture rouge.",
+      "answers": [
+        "belle"
+      ],
+      "hint": "Voiture is feminine.",
+      "feedback": "Use the feminine form.",
+      "explanation": "Voiture is feminine, so beau becomes belle; rouge still follows the noun."
+    },
+    {
+      "id": "adjective-placement-two-adjectives-7",
+      "pattern": "two-adjectives",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "J’ai vu un italien bon film.",
+      "answers": [
+        "J’ai vu un bon film italien."
+      ],
+      "hint": "Only one of the two adjectives goes before the noun.",
+      "feedback": "Put each adjective in its usual place.",
+      "explanation": "Bon goes before the noun and the nationality italien after it: un bon film italien."
+    },
+    {
+      "id": "adjective-placement-meaning-change-1",
+      "pattern": "meaning-change",
+      "type": "choose",
+      "instruction": "Choose the phrase that fits the meaning.",
+      "source": "Victor Hugo est ____ de l’histoire française.",
+      "options": [
+        "un grand homme",
+        "un homme grand",
+        "une grande homme"
+      ],
+      "answers": [
+        "un grand homme"
+      ],
+      "hint": "Here the meaning is great, not tall.",
+      "feedback": "The place of grand changes its meaning.",
+      "explanation": "Before homme, grand means great: un grand homme. Un homme grand is a tall man."
+    },
+    {
+      "id": "adjective-placement-meaning-change-2",
+      "pattern": "meaning-change",
+      "type": "choose",
+      "instruction": "Choose the phrase that fits the meaning.",
+      "source": "Ce sac coûte 500 euros, c’est ____.",
+      "options": [
+        "un sac cher",
+        "un cher sac",
+        "un sac chère"
+      ],
+      "answers": [
+        "un sac cher"
+      ],
+      "hint": "Here the meaning is expensive.",
+      "feedback": "The place of cher changes its meaning.",
+      "explanation": "After the noun, cher means expensive: un sac cher. Before the noun it means dear."
+    },
+    {
+      "id": "adjective-placement-meaning-change-3",
+      "pattern": "meaning-change",
+      "type": "choose",
+      "instruction": "Choose the phrase that fits the meaning.",
+      "source": "Cette maison date de 1650, c’est ____.",
+      "options": [
+        "une maison ancienne",
+        "une ancienne maison",
+        "un maison ancien"
+      ],
+      "answers": [
+        "une maison ancienne"
+      ],
+      "hint": "Here the meaning is very old.",
+      "feedback": "The place of ancien changes its meaning.",
+      "explanation": "After the noun, ancien means very old: une maison ancienne. Before the noun it means former."
+    },
+    {
+      "id": "adjective-placement-meaning-change-4",
+      "pattern": "meaning-change",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "He is a former pupil of this school.",
+      "answers": [
+        "C’est un ancien élève de cette école.",
+        "Il est ancien élève de cette école."
+      ],
+      "hint": "Former is ancien, and its place matters.",
+      "feedback": "Think about where ancien goes when it means former.",
+      "explanation": "Before the noun, ancien means former: un ancien élève. Il est ancien élève, without un, is also right."
+    },
+    {
+      "id": "adjective-placement-meaning-change-5",
+      "pattern": "meaning-change",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "My brother is a tall man.",
+      "answers": [
+        "Mon frère est un homme grand.",
+        "Mon frère est grand.",
+        "Mon frère est un homme de grande taille."
+      ],
+      "alternatives": [
+        {
+          "answer": "Mon frère est un grand homme.",
+          "message": "Before homme, grand usually means great. For tall, put grand after the noun, or simply say mon frère est grand."
+        }
+      ],
+      "hint": "The place of grand changes its meaning.",
+      "feedback": "Think about which place gives tall and which gives great.",
+      "explanation": "After homme, grand means tall: un homme grand."
+    },
+    {
+      "id": "adjective-placement-meaning-change-6",
+      "pattern": "meaning-change",
+      "type": "rewrite",
+      "instruction": "Add cher so that it means dear, in the right place and form.",
+      "source": "Bonjour, mes amis !",
+      "answers": [
+        "Bonjour, mes chers amis !"
+      ],
+      "hint": "Here cher means dear.",
+      "feedback": "Think about where cher goes when it means dear, and make it plural.",
+      "explanation": "Before the noun, cher means dear, and it agrees with amis: mes chers amis."
+    },
+    {
+      "id": "adjective-placement-meaning-change-7",
+      "pattern": "meaning-change",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Il était dans ma classe : c’est un élève ancien.",
+      "answers": [
+        "Il était dans ma classe : c’est un ancien élève."
+      ],
+      "hint": "He used to be in the class, so the meaning is former.",
+      "feedback": "The place of ancien changes its meaning.",
+      "explanation": "Meaning former, ancien goes before the noun: un ancien élève."
+    }
+  ]
+}

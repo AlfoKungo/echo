@@ -1,0 +1,735 @@
+{
+  "id": "pc-vs-imparfait",
+  "unit": "past",
+  "level": "B1",
+  "title": "Passé composé or imparfait",
+  "description": "Tell a past story, choosing between background and events.",
+  "mark": "était / a été",
+  "rule": "Use the imparfait for the background of a past story: descriptions, situations, lasting states and actions in progress (il faisait beau, je dormais). Use the passé composé for completed events that move the story forward (nous sommes partis, le téléphone a sonné). When an action in progress is interrupted, the ongoing action is in the imparfait and the interrupting event in the passé composé: je dormais quand le téléphone a sonné. A repeated habit takes the imparfait (d’habitude, souvent, chaque jour, tous les étés), and so does the verb after pendant que; a single occasion takes the passé composé (ce jour-là, un jour, une fois, soudain, tout à coup). An action with a stated, finished duration takes the passé composé, even a state: j’ai habité à Lyon pendant deux ans. A feeling or state that was already there is imparfait (j’avais peur), but one that starts at a given moment is passé composé (j’ai eu peur quand j’ai entendu le bruit).",
+  "example": "Je dormais quand le téléphone a sonné. · D’habitude, il prenait le bus, mais ce jour-là, il a pris un taxi. · J’ai habité à Lyon pendant deux ans.",
+  "aside": "A useful test: if the verb answers “what happened next?”, it is passé composé; if it answers “what was it like?” or “what was going on?”, it is imparfait.",
+  "exercises": [
+    {
+      "id": "pc-vs-imparfait-background-event-1",
+      "pattern": "background-event",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "Samedi dernier, il faisait beau, alors nous ____ à la plage et nous avons nagé.",
+      "options": [
+        "sommes allés",
+        "allions",
+        "avons allé"
+      ],
+      "answers": [
+        "sommes allés"
+      ],
+      "hint": "Going to the beach is one of the events of that Saturday, like the swimming.",
+      "feedback": "The weather is background, but what you did next moves the story on.",
+      "explanation": "Il faisait beau is the background. Going to the beach is a completed event in a sequence, so it takes the passé composé with être: nous sommes allés."
+    },
+    {
+      "id": "pc-vs-imparfait-background-event-2",
+      "pattern": "background-event",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "Quand je suis arrivé à la fête, les invités dansaient et la musique ____ très forte.",
+      "options": [
+        "était",
+        "a été",
+        "est"
+      ],
+      "answers": [
+        "était"
+      ],
+      "hint": "What did the party look like when I arrived?",
+      "feedback": "The music is part of the scene, like the dancing guests.",
+      "explanation": "The scene I found on arrival is background, so it takes the imparfait: la musique était très forte."
+    },
+    {
+      "id": "pc-vs-imparfait-background-event-3",
+      "pattern": "background-event",
+      "type": "complete",
+      "instruction": "Write pleuvoir in the passé composé or the imparfait.",
+      "source": "Quand nous sommes sortis, le ciel était gris et il ____ (pleuvoir) encore.",
+      "answers": [
+        "pleuvait"
+      ],
+      "hint": "Encore means the rain was still going on.",
+      "feedback": "This is part of the scene, not a new event.",
+      "explanation": "The rain was still in progress when we went out, so it is background: il pleuvait."
+    },
+    {
+      "id": "pc-vs-imparfait-background-event-4",
+      "pattern": "background-event",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "It was cold, so she stayed at home.",
+      "answers": [
+        "Il faisait froid, alors elle est restée à la maison.",
+        "Il faisait froid, donc elle est restée à la maison.",
+        "Il faisait froid, alors elle est restée chez elle.",
+        "Il faisait froid, donc elle est restée chez elle.",
+        "Il faisait froid, elle est donc restée à la maison.",
+        "Il faisait froid, elle est donc restée chez elle."
+      ],
+      "hint": "The weather is the background; staying at home is what she did.",
+      "feedback": "Use one tense for the situation and another for the event.",
+      "explanation": "Il faisait froid describes the situation (imparfait). Elle est restée is the completed event (passé composé with être, restée agreeing with elle)."
+    },
+    {
+      "id": "pc-vs-imparfait-background-event-5",
+      "pattern": "background-event",
+      "type": "build",
+      "instruction": "Build the French sentence.",
+      "source": "The house was empty when I (masculine) got home.",
+      "tokens": [
+        "était",
+        "a été",
+        "La",
+        "maison",
+        "vide",
+        "quand",
+        "je",
+        "suis",
+        "rentré."
+      ],
+      "answers": [
+        "La maison était vide quand je suis rentré."
+      ],
+      "hint": "One verb describes, the other tells what happened.",
+      "feedback": "The state of the house is background.",
+      "explanation": "The empty house is description (était); getting home is the event (je suis rentré)."
+    },
+    {
+      "id": "pc-vs-imparfait-background-event-6",
+      "pattern": "background-event",
+      "type": "repair",
+      "instruction": "Fix the tense error.",
+      "source": "Quand je suis rentrée, les rues ont été vides.",
+      "answers": [
+        "Quand je suis rentrée, les rues étaient vides."
+      ],
+      "hint": "Which verb describes the scene?",
+      "feedback": "The empty streets are not an event.",
+      "explanation": "The streets being empty is a description, so it takes the imparfait: les rues étaient vides."
+    },
+    {
+      "id": "pc-vs-imparfait-background-event-7",
+      "pattern": "background-event",
+      "type": "rewrite",
+      "instruction": "Tell this in the past, as something that happened yesterday.",
+      "source": "La boulangerie est fermée, alors nous achetons du pain au supermarché.",
+      "answers": [
+        "La boulangerie était fermée, alors nous avons acheté du pain au supermarché."
+      ],
+      "hint": "One verb describes the situation, the other is what you did.",
+      "feedback": "The closed bakery and the buying do not take the same tense.",
+      "explanation": "The closed bakery is the situation (la boulangerie était fermée); buying bread is the completed event (nous avons acheté)."
+    },
+    {
+      "id": "pc-vs-imparfait-interrupted-1",
+      "pattern": "interrupted",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "Je ____ quand le téléphone a sonné.",
+      "options": [
+        "dormais",
+        "ai dormi",
+        "dormait"
+      ],
+      "answers": [
+        "dormais"
+      ],
+      "hint": "What was going on when the phone rang?",
+      "feedback": "The phone ringing interrupted something that was already in progress.",
+      "explanation": "An action in progress when another event happens takes the imparfait: je dormais."
+    },
+    {
+      "id": "pc-vs-imparfait-interrupted-2",
+      "pattern": "interrupted",
+      "type": "complete",
+      "instruction": "Write prendre in the passé composé or the imparfait.",
+      "source": "Elle ____ (prendre) sa douche quand quelqu’un a frappé à la porte, alors elle n’a pas ouvert.",
+      "answers": [
+        "prenait"
+      ],
+      "hint": "The knock came in the middle of something, and she could not answer.",
+      "feedback": "The shower was already going on.",
+      "explanation": "The shower was in progress and the knock interrupted it: elle prenait sa douche."
+    },
+    {
+      "id": "pc-vs-imparfait-interrupted-3",
+      "pattern": "interrupted",
+      "type": "complete",
+      "instruction": "Write casser in the passé composé or the imparfait.",
+      "source": "Pendant que tu faisais la vaisselle, le chat ____ (casser) un verre.",
+      "answers": [
+        "a cassé"
+      ],
+      "hint": "Breaking a glass happens in one moment.",
+      "feedback": "The washing-up is the background; the cat did something once.",
+      "explanation": "Pendant que tu faisais la vaisselle is the ongoing background; the broken glass is a single event: le chat a cassé un verre."
+    },
+    {
+      "id": "pc-vs-imparfait-interrupted-4",
+      "pattern": "interrupted",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I was reading when he arrived.",
+      "answers": [
+        "Je lisais quand il est arrivé.",
+        "Je lisais lorsqu’il est arrivé.",
+        "J’étais en train de lire quand il est arrivé.",
+        "J’étais en train de lire lorsqu’il est arrivé.",
+        "Quand il est arrivé, je lisais.",
+        "Lorsqu’il est arrivé, je lisais.",
+        "Quand il est arrivé, j’étais en train de lire.",
+        "Lorsqu’il est arrivé, j’étais en train de lire."
+      ],
+      "hint": "One action was in progress; the other interrupted it.",
+      "feedback": "Was reading and arrived do not take the same tense.",
+      "explanation": "The reading was in progress (je lisais); his arrival is the interrupting event (il est arrivé)."
+    },
+    {
+      "id": "pc-vs-imparfait-interrupted-5",
+      "pattern": "interrupted",
+      "type": "build",
+      "instruction": "Build the French sentence.",
+      "source": "They were eating when the storm started.",
+      "tokens": [
+        "quand",
+        "Ils",
+        "mangeaient",
+        "ont mangé",
+        "l’orage",
+        "a commencé.",
+        "commençait."
+      ],
+      "answers": [
+        "Ils mangeaient quand l’orage a commencé."
+      ],
+      "hint": "One action was going on; the storm started at one moment.",
+      "feedback": "Use one tense for the meal and the other for the storm.",
+      "explanation": "The meal was in progress (ils mangeaient); the storm starting is the event (l’orage a commencé)."
+    },
+    {
+      "id": "pc-vs-imparfait-interrupted-6",
+      "pattern": "interrupted",
+      "type": "repair",
+      "instruction": "Fix the tense error.",
+      "source": "Je traversais la rue quand je voyais un accident.",
+      "answers": [
+        "Je traversais la rue quand j’ai vu un accident."
+      ],
+      "hint": "Which action interrupted the other?",
+      "feedback": "Seeing the accident happened at one moment.",
+      "explanation": "Crossing the street was in progress (imparfait); seeing the accident is the event that happened (passé composé): j’ai vu."
+    },
+    {
+      "id": "pc-vs-imparfait-interrupted-7",
+      "pattern": "interrupted",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "dormir · tu · imparfait",
+      "answers": [
+        "dormais",
+        "tu dormais"
+      ],
+      "hint": "Start from nous dormons.",
+      "feedback": "Use the stem dorm- and the tu ending.",
+      "explanation": "Nous dormons gives dorm-, plus -ais: tu dormais, as in tu dormais quand je suis parti."
+    },
+    {
+      "id": "pc-vs-imparfait-habit-once-1",
+      "pattern": "habit-once",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "D’habitude, je ____ le bus, mais ce jour-là, j’ai pris un taxi.",
+      "options": [
+        "prenais",
+        "ai pris",
+        "prenait"
+      ],
+      "answers": [
+        "prenais"
+      ],
+      "hint": "D’habitude tells you how things usually were.",
+      "feedback": "The bus was the usual habit; the taxi was the one-time exception.",
+      "explanation": "A habit takes the imparfait: d’habitude, je prenais le bus. Ce jour-là, a single occasion, takes the passé composé."
+    },
+    {
+      "id": "pc-vs-imparfait-habit-once-2",
+      "pattern": "habit-once",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "Tous les étés, nous allions en Bretagne, mais un été, nous ____ en Espagne.",
+      "options": [
+        "sommes partis",
+        "partions",
+        "avons parti"
+      ],
+      "answers": [
+        "sommes partis"
+      ],
+      "hint": "Un été points to one particular summer.",
+      "feedback": "The habit is already given; this verb is the exception.",
+      "explanation": "Un été is a single occasion, so it takes the passé composé: nous sommes partis. Partir takes être."
+    },
+    {
+      "id": "pc-vs-imparfait-habit-once-3",
+      "pattern": "habit-once",
+      "type": "complete",
+      "instruction": "Write aller in the passé composé or the imparfait.",
+      "source": "Quand elle était enfant, elle ____ (aller) chez sa grand-mère le mercredi.",
+      "answers": [
+        "allais"
+      ],
+      "hint": "Le mercredi here means every Wednesday.",
+      "feedback": "This is something that happened again and again.",
+      "explanation": "A repeated childhood habit takes the imparfait: elle allait chez sa grand-mère le mercredi."
+    },
+    {
+      "id": "pc-vs-imparfait-habit-once-4",
+      "pattern": "habit-once",
+      "type": "complete",
+      "instruction": "Write dormir in the passé composé or the imparfait.",
+      "source": "D’habitude, Marc se levait tôt, mais un dimanche, il ____ (dormir) jusqu’à midi.",
+      "answers": [
+        "a dormi"
+      ],
+      "hint": "Un dimanche is one particular Sunday.",
+      "feedback": "The habit is getting up early; this verb is the exception.",
+      "explanation": "Un dimanche is a single occasion with a clear end (jusqu’à midi), so it takes the passé composé: il a dormi."
+    },
+    {
+      "id": "pc-vs-imparfait-habit-once-5",
+      "pattern": "habit-once",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "One day, I saw a fox.",
+      "answers": [
+        "Un jour, j’ai vu un renard.",
+        "J’ai vu un renard un jour."
+      ],
+      "hint": "Un jour means one particular day.",
+      "feedback": "This is a single event, not a habit.",
+      "explanation": "Un jour marks a single occasion, so it takes the passé composé: j’ai vu un renard."
+    },
+    {
+      "id": "pc-vs-imparfait-habit-once-6",
+      "pattern": "habit-once",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "When I was little, I used to play the piano. (a boy speaking)",
+      "answers": [
+        "Quand j’étais petit, je jouais du piano.",
+        "Quand j’étais petit, je faisais du piano.",
+        "Lorsque j’étais petit, je jouais du piano.",
+        "Lorsque j’étais petit, je faisais du piano.",
+        "Je jouais du piano quand j’étais petit.",
+        "Je faisais du piano quand j’étais petit.",
+        "Je jouais du piano lorsque j’étais petit.",
+        "Je faisais du piano lorsque j’étais petit."
+      ],
+      "hint": "When I was little describes a period; used to play is a habit during it.",
+      "feedback": "Neither verb is a single event.",
+      "explanation": "Both verbs take the imparfait: j’étais petit is a state, je jouais du piano a habit. Instruments take jouer de (or faire de: je faisais du piano)."
+    },
+    {
+      "id": "pc-vs-imparfait-habit-once-7",
+      "pattern": "habit-once",
+      "type": "repair",
+      "instruction": "Fix the tense error.",
+      "source": "D’habitude, mon père a préparé le dîner.",
+      "answers": [
+        "D’habitude, mon père préparait le dîner."
+      ],
+      "hint": "What does d’habitude tell you?",
+      "feedback": "D’habitude does not go with a single event.",
+      "explanation": "D’habitude marks a habit, which takes the imparfait: mon père préparait le dîner."
+    },
+    {
+      "id": "pc-vs-imparfait-habit-once-8",
+      "pattern": "habit-once",
+      "type": "rewrite",
+      "instruction": "Turn this into a habit: replace Ce jour-là with D’habitude and change the tense.",
+      "source": "Ce jour-là, elle est rentrée à pied.",
+      "answers": [
+        "D’habitude, elle rentrait à pied."
+      ],
+      "hint": "A habit needs a different past tense from a single occasion.",
+      "feedback": "Change the verb as well as the time expression.",
+      "explanation": "D’habitude marks a habit, so the verb goes into the imparfait: elle rentrait à pied."
+    },
+    {
+      "id": "pc-vs-imparfait-limited-duration-1",
+      "pattern": "limited-duration",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "Il ____ à Lyon pendant deux ans, puis il est parti à Paris.",
+      "options": [
+        "a habité",
+        "habitait",
+        "est habité"
+      ],
+      "answers": [
+        "a habité"
+      ],
+      "hint": "Pendant deux ans gives a finished length of time.",
+      "feedback": "A period with a stated, finished duration is seen as a whole.",
+      "explanation": "A finished, limited duration takes the passé composé: il a habité à Lyon pendant deux ans. Habiter takes avoir."
+    },
+    {
+      "id": "pc-vs-imparfait-limited-duration-2",
+      "pattern": "limited-duration",
+      "type": "complete",
+      "instruction": "Write attendre in the passé composé or the imparfait.",
+      "source": "Hier, nous ____ (attendre) le bus pendant quarante minutes.",
+      "answers": [
+        "avons attendu"
+      ],
+      "hint": "The wait had a measured length and it is over.",
+      "feedback": "A stated duration makes the action a completed whole.",
+      "explanation": "Pendant quarante minutes gives a limited duration, so the passé composé: nous avons attendu."
+    },
+    {
+      "id": "pc-vs-imparfait-limited-duration-3",
+      "pattern": "limited-duration",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She slept for ten hours.",
+      "answers": [
+        "Elle a dormi pendant dix heures.",
+        "Elle a dormi dix heures.",
+        "Elle a dormi pendant 10 heures.",
+        "Elle a dormi 10 heures."
+      ],
+      "hint": "For ten hours is a finished length of time.",
+      "feedback": "A limited duration is not background.",
+      "explanation": "A completed, measured duration takes the passé composé: elle a dormi pendant dix heures."
+    },
+    {
+      "id": "pc-vs-imparfait-limited-duration-4",
+      "pattern": "limited-duration",
+      "type": "repair",
+      "instruction": "Fix the tense error.",
+      "source": "Mes grands-parents étaient mariés pendant cinquante ans.",
+      "answers": [
+        "Mes grands-parents ont été mariés pendant cinquante ans."
+      ],
+      "hint": "Pendant cinquante ans closes the period.",
+      "feedback": "A state with a finished duration is seen as a whole.",
+      "explanation": "With pendant and a finished period, even a state takes the passé composé: ils ont été mariés pendant cinquante ans."
+    },
+    {
+      "id": "pc-vs-imparfait-limited-duration-5",
+      "pattern": "limited-duration",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "habiter · nous · passé composé",
+      "answers": [
+        "avons habité",
+        "nous avons habité"
+      ],
+      "hint": "Habiter takes avoir.",
+      "feedback": "The passé composé needs an auxiliary and a past participle.",
+      "explanation": "Nous avons habité, as in nous avons habité à Nice pendant un an."
+    },
+    {
+      "id": "pc-vs-imparfait-limited-duration-6",
+      "pattern": "limited-duration",
+      "type": "build",
+      "instruction": "Build the French sentence.",
+      "source": "We talked for an hour.",
+      "tokens": [
+        "pendant",
+        "Nous",
+        "avons parlé",
+        "parlions",
+        "une",
+        "heure."
+      ],
+      "answers": [
+        "Nous avons parlé pendant une heure."
+      ],
+      "hint": "Pendant une heure gives a finished duration.",
+      "feedback": "A conversation with a stated length is a completed whole.",
+      "explanation": "A limited duration takes the passé composé: nous avons parlé pendant une heure."
+    },
+    {
+      "id": "pc-vs-imparfait-limited-duration-7",
+      "pattern": "limited-duration",
+      "type": "rewrite",
+      "instruction": "Put this in the past.",
+      "source": "Ils restent en Italie pendant une semaine.",
+      "answers": [
+        "Ils sont restés en Italie pendant une semaine."
+      ],
+      "hint": "Pendant une semaine gives a finished period.",
+      "feedback": "A stated duration takes the tense for completed actions. Rester takes être.",
+      "explanation": "A limited duration takes the passé composé: ils sont restés, with restés agreeing with ils."
+    },
+    {
+      "id": "pc-vs-imparfait-state-change-1",
+      "pattern": "state-change",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "Soudain, elle a vu le serpent et elle ____ peur.",
+      "options": [
+        "a eu",
+        "avait",
+        "a été"
+      ],
+      "answers": [
+        "a eu"
+      ],
+      "hint": "The fear started at that exact moment.",
+      "feedback": "This is not a feeling that was already there.",
+      "explanation": "A feeling that begins at a precise moment is an event: elle a eu peur. Être is not used with peur."
+    },
+    {
+      "id": "pc-vs-imparfait-state-change-2",
+      "pattern": "state-change",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "La petite fille ____ peur du noir, alors elle dormait avec la lumière allumée.",
+      "options": [
+        "avait",
+        "a eu",
+        "était"
+      ],
+      "answers": [
+        "avait"
+      ],
+      "hint": "Was this fear a single moment or a lasting state?",
+      "feedback": "Her fear of the dark was a lasting situation, like her sleeping habit.",
+      "explanation": "A lasting state takes the imparfait: elle avait peur du noir."
+    },
+    {
+      "id": "pc-vs-imparfait-state-change-3",
+      "pattern": "state-change",
+      "type": "complete",
+      "instruction": "Write avoir in the passé composé or the imparfait.",
+      "source": "Quand la porte a claqué, le bébé ____ (avoir) peur et il a pleuré.",
+      "answers": [
+        "a eu"
+      ],
+      "hint": "The fear was caused by the door slamming.",
+      "feedback": "The fear began at a precise moment and led to the crying.",
+      "explanation": "A state that starts at a given moment takes the passé composé: le bébé a eu peur."
+    },
+    {
+      "id": "pc-vs-imparfait-state-change-4",
+      "pattern": "state-change",
+      "type": "complete",
+      "instruction": "Write avoir in the passé composé or the imparfait.",
+      "source": "Quand nous habitions à Paris, nous ____ (avoir) un petit appartement.",
+      "answers": [
+        "avions"
+      ],
+      "hint": "Having the flat was a lasting situation during that time.",
+      "feedback": "Nothing changed at one moment here.",
+      "explanation": "A lasting state during a past period takes the imparfait: nous avions un petit appartement."
+    },
+    {
+      "id": "pc-vs-imparfait-state-change-5",
+      "pattern": "state-change",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I got scared when I saw the dog.",
+      "answers": [
+        "J’ai eu peur quand j’ai vu le chien.",
+        "J’ai eu peur lorsque j’ai vu le chien.",
+        "Quand j’ai vu le chien, j’ai eu peur.",
+        "Lorsque j’ai vu le chien, j’ai eu peur.",
+        "J’ai pris peur quand j’ai vu le chien.",
+        "Quand j’ai vu le chien, j’ai pris peur."
+      ],
+      "hint": "Got scared means the fear started at that moment.",
+      "feedback": "A fear that begins is an event.",
+      "explanation": "The fear starts when I see the dog, so both verbs take the passé composé: j’ai eu peur, j’ai vu."
+    },
+    {
+      "id": "pc-vs-imparfait-state-change-6",
+      "pattern": "state-change",
+      "type": "repair",
+      "instruction": "Fix the tense error.",
+      "source": "Soudain, le chien a aboyé et Léo avait peur.",
+      "answers": [
+        "Soudain, le chien a aboyé et Léo a eu peur."
+      ],
+      "hint": "When did Léo’s fear start?",
+      "feedback": "The fear is a reaction to the barking.",
+      "explanation": "The fear begins at that moment, so it is an event: Léo a eu peur."
+    },
+    {
+      "id": "pc-vs-imparfait-state-change-7",
+      "pattern": "state-change",
+      "type": "rewrite",
+      "instruction": "Rewrite so the fear begins at that moment instead of already being there.",
+      "source": "Marie avait peur quand l’avion a décollé.",
+      "answers": [
+        "Marie a eu peur quand l’avion a décollé."
+      ],
+      "hint": "A feeling that starts is an event.",
+      "feedback": "Change only the tense of avoir.",
+      "explanation": "Avait peur means she was already afraid; a eu peur means she became afraid at take-off."
+    },
+    {
+      "id": "pc-vs-imparfait-state-change-8",
+      "pattern": "state-change",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "avoir · je · passé composé",
+      "answers": [
+        "ai eu",
+        "j’ai eu"
+      ],
+      "hint": "Avoir is its own auxiliary.",
+      "feedback": "The past participle of avoir is irregular.",
+      "explanation": "J’ai eu, as in j’ai eu froid quand la fenêtre s’est ouverte."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-1",
+      "pattern": "time-markers",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "Je marchais dans la rue quand, tout à coup, il ____ à pleuvoir.",
+      "options": [
+        "a commencé",
+        "commençait",
+        "commence"
+      ],
+      "answers": [
+        "a commencé"
+      ],
+      "hint": "Tout à coup signals something sudden.",
+      "feedback": "A sudden event is not background.",
+      "explanation": "Tout à coup marks a sudden event, so the passé composé: il a commencé à pleuvoir."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-2",
+      "pattern": "time-markers",
+      "type": "choose",
+      "instruction": "Choose the right past tense.",
+      "source": "Au lycée, Léa rentrait tard parce qu’elle ____ à la bibliothèque chaque jour.",
+      "options": [
+        "travaillait",
+        "a travaillé",
+        "travaillais"
+      ],
+      "answers": [
+        "travaillait"
+      ],
+      "hint": "Chaque jour points to repetition.",
+      "feedback": "This happened again and again during a period.",
+      "explanation": "Chaque jour marks a habit, like rentrait, so the imparfait: elle travaillait. Travaillais is the form for je or tu."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-3",
+      "pattern": "time-markers",
+      "type": "complete",
+      "instruction": "Write manger in the passé composé or the imparfait.",
+      "source": "Une fois, nous ____ (manger) des escargots.",
+      "answers": [
+        "avons mangé"
+      ],
+      "hint": "Une fois means one time.",
+      "feedback": "A single occasion is not a habit.",
+      "explanation": "Une fois marks a single occasion, so the passé composé: nous avons mangé."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-4",
+      "pattern": "time-markers",
+      "type": "complete",
+      "instruction": "Write cuisiner in the passé composé or the imparfait.",
+      "source": "Pendant que maman ____ (cuisiner), papa mettait la table.",
+      "answers": [
+        "cuisinait"
+      ],
+      "hint": "Pendant que links two actions going on at the same time.",
+      "feedback": "Neither action interrupts the other.",
+      "explanation": "The verb after pendant que is an ongoing action, so the imparfait: maman cuisinait."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-5",
+      "pattern": "time-markers",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Suddenly, the door opened.",
+      "answers": [
+        "Soudain, la porte s’est ouverte.",
+        "Tout à coup, la porte s’est ouverte.",
+        "Tout d’un coup, la porte s’est ouverte."
+      ],
+      "hint": "Suddenly marks a single sudden event. S’ouvrir takes être.",
+      "feedback": "A sudden event is not background.",
+      "explanation": "Soudain or tout à coup takes the passé composé: la porte s’est ouverte, with ouverte agreeing with la porte."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-6",
+      "pattern": "time-markers",
+      "type": "rewrite",
+      "instruction": "Replace souvent with une fois and change the tense.",
+      "source": "Nous allions souvent au cinéma.",
+      "answers": [
+        "Nous sommes allés une fois au cinéma.",
+        "Nous sommes allées une fois au cinéma.",
+        "Nous sommes allés au cinéma une fois.",
+        "Nous sommes allées au cinéma une fois.",
+        "Une fois, nous sommes allés au cinéma.",
+        "Une fois, nous sommes allées au cinéma."
+      ],
+      "hint": "Une fois refers to one occasion.",
+      "feedback": "Change the verb as well as the time word. Aller takes être.",
+      "explanation": "Une fois marks a single occasion, so the passé composé: nous sommes allés (or allées) au cinéma."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-7",
+      "pattern": "time-markers",
+      "type": "repair",
+      "instruction": "Fix the tense error.",
+      "source": "Soudain, le chat sautait sur la table.",
+      "answers": [
+        "Soudain, le chat a sauté sur la table."
+      ],
+      "hint": "What kind of action does soudain introduce?",
+      "feedback": "Soudain does not introduce background.",
+      "explanation": "Soudain marks a sudden event, so the passé composé: le chat a sauté."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-8",
+      "pattern": "time-markers",
+      "type": "build",
+      "instruction": "Build the French sentence.",
+      "source": "All of a sudden, I heard a scream.",
+      "tokens": [
+        "un",
+        "Tout à coup,",
+        "cri.",
+        "j’entendais",
+        "j’ai entendu"
+      ],
+      "answers": [
+        "Tout à coup, j’ai entendu un cri."
+      ],
+      "hint": "Tout à coup introduces a sudden event.",
+      "feedback": "One verb tile is in the tense for background.",
+      "explanation": "Tout à coup marks a sudden event: j’ai entendu un cri."
+    },
+    {
+      "id": "pc-vs-imparfait-time-markers-9",
+      "pattern": "time-markers",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "entendre · je · passé composé",
+      "answers": [
+        "ai entendu",
+        "j’ai entendu"
+      ],
+      "hint": "Entendre takes avoir, and its participle ends in -u.",
+      "feedback": "Remember the elision of je before the auxiliary.",
+      "explanation": "J’ai entendu, as in soudain, j’ai entendu un bruit."
+    }
+  ]
+}

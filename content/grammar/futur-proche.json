@@ -1,0 +1,737 @@
+{
+  "id": "futur-proche",
+  "unit": "future-moods",
+  "level": "A1",
+  "title": "Futur proche",
+  "description": "Say what you are going to do with aller plus an infinitive.",
+  "mark": "aller + inf.",
+  "rule": "To say what is going to happen, use aller in the present followed by an infinitive: je vais partir, tu vas partir, il va partir, nous allons partir, vous allez partir, ils vont partir. Only aller changes with the subject; the second verb always stays in the infinitive. In the negative, ne and pas go around the form of aller: je ne vais pas partir (ne becomes n’ before allons and allez). Questions work as usual on aller: tu vas venir ?, est-ce que tu vas venir ?, vas-tu venir ? (with il or elle, add -t-: va-t-il pleuvoir ?). A reflexive or object pronoun goes directly before the infinitive, and a reflexive pronoun matches the subject: je vais me lever, je vais le faire. Time words such as ce soir, demain, bientôt and la semaine prochaine often go with it, whereas habits and things happening now use the simple present.",
+  "example": "Ce soir, nous allons regarder un film. · Je ne vais pas me coucher tard. · Tu vas le faire demain ?",
+  "aside": "In everyday French, the futur proche is often used where English would say will, for anything planned or certain to happen soon.",
+  "exercises": [
+    {
+      "id": "futur-proche-aller-forms-1",
+      "pattern": "aller-forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "partir · je · futur proche",
+      "answers": [
+        "vais partir",
+        "je vais partir"
+      ],
+      "hint": "Use aller in the present, then the infinitive.",
+      "feedback": "Only aller changes. Partir stays in the infinitive.",
+      "explanation": "Je vais partir: je vais (aller) + partir (infinitive)."
+    },
+    {
+      "id": "futur-proche-aller-forms-2",
+      "pattern": "aller-forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "manger · nous · futur proche",
+      "answers": [
+        "allons manger",
+        "nous allons manger"
+      ],
+      "hint": "Conjugate aller for nous, then add the infinitive.",
+      "feedback": "The second verb does not change with the subject.",
+      "explanation": "Nous allons manger: allons + the infinitive manger."
+    },
+    {
+      "id": "futur-proche-aller-forms-3",
+      "pattern": "aller-forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "finir · ils · futur proche",
+      "answers": [
+        "vont finir",
+        "ils vont finir"
+      ],
+      "hint": "The ils form of aller is irregular and short.",
+      "feedback": "Check the ils form of aller, and keep finir in the infinitive.",
+      "explanation": "Ils vont finir: vont + the infinitive finir."
+    },
+    {
+      "id": "futur-proche-aller-forms-4",
+      "pattern": "aller-forms",
+      "type": "choose",
+      "instruction": "Choose the right form of aller.",
+      "source": "Vous ____ visiter le musée demain.",
+      "options": [
+        "allez",
+        "allons",
+        "vont",
+        "aller"
+      ],
+      "answers": [
+        "allez"
+      ],
+      "hint": "Match aller to the subject vous.",
+      "feedback": "Aller changes with the subject. The vous form ends in -ez.",
+      "explanation": "Vous allez visiter: allez is the vous form of aller."
+    },
+    {
+      "id": "futur-proche-aller-forms-5",
+      "pattern": "aller-forms",
+      "type": "complete",
+      "instruction": "Write aller in the present.",
+      "source": "Elle ____ acheter du pain.",
+      "answers": [
+        "va"
+      ],
+      "hint": "The elle form of aller is very short.",
+      "feedback": "Aller is irregular. With elle, it has two letters.",
+      "explanation": "Elle va acheter: va is the elle form of aller."
+    },
+    {
+      "id": "futur-proche-aller-forms-6",
+      "pattern": "aller-forms",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Nous allons dînons chez Marie.",
+      "answers": [
+        "Nous allons dîner chez Marie."
+      ],
+      "hint": "Only one verb changes with the subject.",
+      "feedback": "After aller, the second verb stays in the infinitive.",
+      "explanation": "Nous allons dîner: aller is conjugated, dîner stays in the infinitive."
+    },
+    {
+      "id": "futur-proche-aller-forms-7",
+      "pattern": "aller-forms",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "My friends are going to arrive at noon.",
+      "tokens": [
+        "à midi.",
+        "arriver",
+        "vont",
+        "Mes amis",
+        "arrivent"
+      ],
+      "answers": [
+        "Mes amis vont arriver à midi."
+      ],
+      "hint": "Only aller is conjugated.",
+      "feedback": "One tile is a conjugated form of arriver. After aller you need the infinitive.",
+      "explanation": "Mes amis vont arriver: vont (aller) + arriver (infinitive).",
+      "alternatives": [
+        {
+          "answer": "Mes amis arrivent à midi.",
+          "message": "That is correct French in the present (my friends arrive at noon). This sentence asks for the futur proche: Mes amis vont arriver à midi."
+        }
+      ]
+    },
+    {
+      "id": "futur-proche-aller-forms-8",
+      "pattern": "aller-forms",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "They (masculine) are going to play football.",
+      "answers": [
+        "Ils vont jouer au football.",
+        "Ils vont jouer au foot."
+      ],
+      "hint": "Aller in the ils form, then jouer au football.",
+      "feedback": "Check the ils form of aller and keep jouer in the infinitive.",
+      "explanation": "Ils vont jouer au football: vont + jouer."
+    },
+    {
+      "id": "futur-proche-negation-1",
+      "pattern": "negation",
+      "type": "rewrite",
+      "instruction": "Make it negative in standard written French.",
+      "source": "Je vais partir demain.",
+      "answers": [
+        "Je ne vais pas partir demain."
+      ],
+      "alternatives": [
+        {
+          "answer": "Je vais pas partir demain.",
+          "message": "That is common in speech. The written form also needs ne before vais."
+        },
+        {
+          "answer": "Je vais ne pas partir demain.",
+          "message": "That puts the negation on the infinitive (I am going to not leave). The usual negative goes around vais: Je ne vais pas partir demain."
+        }
+      ],
+      "hint": "The negation goes around the conjugated verb.",
+      "feedback": "Aller is the conjugated verb. Ne and pas go around it.",
+      "explanation": "Je ne vais pas partir: ne + vais + pas, then the infinitive."
+    },
+    {
+      "id": "futur-proche-negation-2",
+      "pattern": "negation",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Il ____ travailler ce week-end.",
+      "options": [
+        "ne va pas",
+        "ne pas va",
+        "va pas ne",
+        "ne va"
+      ],
+      "answers": [
+        "ne va pas"
+      ],
+      "hint": "Ne and pas go around the conjugated verb.",
+      "feedback": "The conjugated verb here is va.",
+      "explanation": "Il ne va pas travailler: ne + va + pas, then the infinitive."
+    },
+    {
+      "id": "futur-proche-negation-3",
+      "pattern": "negation",
+      "type": "build",
+      "instruction": "Build the negative sentence.",
+      "source": "We are not going to watch TV.",
+      "tokens": [
+        "n’allons",
+        "pas",
+        "Nous",
+        "regarder",
+        "la télé.",
+        "ne"
+      ],
+      "answers": [
+        "Nous n’allons pas regarder la télé."
+      ],
+      "hint": "Allons starts with a vowel.",
+      "feedback": "Ne becomes n’ before a vowel. One tile is not needed.",
+      "explanation": "Nous n’allons pas regarder: ne becomes n’ before allons, and pas follows it."
+    },
+    {
+      "id": "futur-proche-negation-4",
+      "pattern": "negation",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Elles ne vont regarder pas le film.",
+      "answers": [
+        "Elles ne vont pas regarder le film."
+      ],
+      "hint": "Pas belongs right after the conjugated verb.",
+      "feedback": "The infinitive comes after the whole negation.",
+      "explanation": "Elles ne vont pas regarder: ne + vont + pas, then the infinitive."
+    },
+    {
+      "id": "futur-proche-negation-5",
+      "pattern": "negation",
+      "type": "translate",
+      "instruction": "Translate into standard written French.",
+      "source": "I’m not going to eat.",
+      "answers": [
+        "Je ne vais pas manger."
+      ],
+      "alternatives": [
+        {
+          "answer": "Je vais pas manger.",
+          "message": "That is common in speech. The written form also needs ne before vais."
+        }
+      ],
+      "hint": "Put the negation around vais.",
+      "feedback": "Ne and pas go around aller, not around manger.",
+      "explanation": "Je ne vais pas manger: ne + vais + pas + infinitive."
+    },
+    {
+      "id": "futur-proche-negation-6",
+      "pattern": "negation",
+      "type": "complete",
+      "instruction": "Write the missing word.",
+      "source": "Vous ____ allez pas sortir ce soir ?",
+      "answers": [
+        "n’"
+      ],
+      "hint": "Allez starts with a vowel.",
+      "feedback": "The first part of the negation changes before a vowel.",
+      "explanation": "Vous n’allez pas sortir: ne becomes n’ before allez."
+    },
+    {
+      "id": "futur-proche-questions-1",
+      "pattern": "questions",
+      "type": "rewrite",
+      "instruction": "Turn it into a question with est-ce que.",
+      "source": "Tu vas venir.",
+      "answers": [
+        "Est-ce que tu vas venir ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Vas-tu venir ?",
+          "message": "That is correct with inversion. This exercise asks for est-ce que."
+        },
+        {
+          "answer": "Tu vas venir ?",
+          "message": "That is a correct spoken question. This exercise asks for est-ce que."
+        }
+      ],
+      "hint": "Put est-ce que in front and keep the rest.",
+      "feedback": "With est-ce que, the word order does not change.",
+      "explanation": "Est-ce que tu vas venir ?: est-ce que + the statement."
+    },
+    {
+      "id": "futur-proche-questions-2",
+      "pattern": "questions",
+      "type": "rewrite",
+      "instruction": "Turn it into a question with inversion.",
+      "source": "Il va pleuvoir.",
+      "answers": [
+        "Va-t-il pleuvoir ?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Est-ce qu’il va pleuvoir ?",
+          "message": "That is correct with est-ce que. This exercise asks for inversion."
+        },
+        {
+          "answer": "Il va pleuvoir ?",
+          "message": "That is a correct spoken question. This exercise asks for inversion."
+        }
+      ],
+      "hint": "Swap aller and the subject, joined by hyphens. Va ends in a vowel and il starts with one.",
+      "feedback": "Between va and il, French adds a sound so the two vowels do not touch.",
+      "explanation": "Va-t-il pleuvoir ?: aller moves in front of il, with -t- between them."
+    },
+    {
+      "id": "futur-proche-questions-3",
+      "pattern": "questions",
+      "type": "choose",
+      "instruction": "Choose the right form of aller.",
+      "source": "Est-ce qu’elle ____ venir avec nous ?",
+      "options": [
+        "va",
+        "vas",
+        "vont",
+        "aller"
+      ],
+      "answers": [
+        "va"
+      ],
+      "hint": "Est-ce que does not change the verb. Match aller to elle.",
+      "feedback": "The subject is elle, not tu or ils.",
+      "explanation": "Est-ce qu’elle va venir ?: va matches elle."
+    },
+    {
+      "id": "futur-proche-questions-4",
+      "pattern": "questions",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Are you going to eat with us? (to a friend)",
+      "answers": [
+        "Tu vas manger avec nous ?",
+        "Est-ce que tu vas manger avec nous ?",
+        "Vas-tu manger avec nous ?"
+      ],
+      "hint": "Use tu and aller plus an infinitive.",
+      "feedback": "Only aller changes. Manger stays in the infinitive.",
+      "explanation": "Tu vas manger avec nous ?: you can also say est-ce que tu vas… or vas-tu…"
+    },
+    {
+      "id": "futur-proche-questions-5",
+      "pattern": "questions",
+      "type": "build",
+      "instruction": "Build the question.",
+      "source": "Are you going to take the train? (formal)",
+      "tokens": [
+        "Est-ce que",
+        "vous",
+        "allez",
+        "prendre",
+        "le train ?",
+        "allons"
+      ],
+      "answers": [
+        "Est-ce que vous allez prendre le train ?"
+      ],
+      "hint": "Start with Est-ce que, then the normal statement order.",
+      "feedback": "One tile is the nous form of aller. The subject is vous.",
+      "explanation": "Est-ce que vous allez prendre le train ?: est-ce que + vous allez + infinitive."
+    },
+    {
+      "id": "futur-proche-questions-6",
+      "pattern": "questions",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Est-ce que tu va partir ?",
+      "answers": [
+        "Est-ce que tu vas partir ?"
+      ],
+      "hint": "Check the form of aller with tu.",
+      "feedback": "The tu form of aller ends in -s.",
+      "explanation": "Est-ce que tu vas partir ?: tu vas, with an s."
+    },
+    {
+      "id": "futur-proche-time-markers-1",
+      "pattern": "time-markers",
+      "type": "choose",
+      "instruction": "Choose the time word that fits.",
+      "source": "Nous allons partir ____.",
+      "options": [
+        "demain",
+        "hier",
+        "la semaine dernière"
+      ],
+      "answers": [
+        "demain"
+      ],
+      "hint": "Nous allons partir talks about the future.",
+      "feedback": "The other options point to the past.",
+      "explanation": "Demain fits the futur proche: nous allons partir demain."
+    },
+    {
+      "id": "futur-proche-time-markers-2",
+      "pattern": "time-markers",
+      "type": "choose",
+      "instruction": "Choose the time word that fits.",
+      "source": "____, je vais faire mes devoirs.",
+      "options": [
+        "Ce soir",
+        "Hier soir",
+        "L’année dernière"
+      ],
+      "answers": [
+        "Ce soir"
+      ],
+      "hint": "Je vais faire is about something still to come.",
+      "feedback": "Hier and dernière point to the past.",
+      "explanation": "Ce soir, je vais faire mes devoirs: ce soir is still ahead."
+    },
+    {
+      "id": "futur-proche-time-markers-3",
+      "pattern": "time-markers",
+      "type": "translate",
+      "instruction": "Translate into French using voyager.",
+      "source": "We are going to travel next week.",
+      "answers": [
+        "Nous allons voyager la semaine prochaine.",
+        "On va voyager la semaine prochaine.",
+        "La semaine prochaine, nous allons voyager.",
+        "La semaine prochaine, on va voyager.",
+        "La semaine prochaine nous allons voyager.",
+        "La semaine prochaine on va voyager."
+      ],
+      "hint": "Aller plus voyager. Next week is la semaine…",
+      "feedback": "Next is prochaine, and it comes after semaine.",
+      "explanation": "Nous allons voyager la semaine prochaine: aller + infinitive, with the time phrase at the start or the end."
+    },
+    {
+      "id": "futur-proche-time-markers-4",
+      "pattern": "time-markers",
+      "type": "complete",
+      "instruction": "Write the French for the word in brackets.",
+      "source": "Il va neiger ____ (tomorrow).",
+      "answers": [
+        "demain"
+      ],
+      "hint": "Aujourd’hui is today. You need the day after it.",
+      "feedback": "Tomorrow is a single French word.",
+      "explanation": "Il va neiger demain: demain is a typical partner of the futur proche."
+    },
+    {
+      "id": "futur-proche-time-markers-5",
+      "pattern": "time-markers",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "They (masculine) are going to move house next year.",
+      "tokens": [
+        "Ils",
+        "vont",
+        "déménager",
+        "l’année prochaine.",
+        "l’année dernière."
+      ],
+      "answers": [
+        "Ils vont déménager l’année prochaine."
+      ],
+      "hint": "The sentence is about the future.",
+      "feedback": "One time tile points to the past.",
+      "explanation": "Ils vont déménager l’année prochaine: prochaine means next."
+    },
+    {
+      "id": "futur-proche-time-markers-6",
+      "pattern": "time-markers",
+      "type": "rewrite",
+      "instruction": "Replace aujourd’hui with demain and put the verb in the futur proche.",
+      "source": "Aujourd’hui, je travaille.",
+      "answers": [
+        "Demain, je vais travailler.",
+        "Demain je vais travailler.",
+        "Je vais travailler demain."
+      ],
+      "hint": "Change the time word, then use aller plus the infinitive.",
+      "feedback": "Travaille must become an infinitive after aller.",
+      "explanation": "Demain, je vais travailler: je vais + travailler."
+    },
+    {
+      "id": "futur-proche-reflexive-pronoun-1",
+      "pattern": "reflexive-pronoun",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Demain, je vais ____ lever tôt.",
+      "options": [
+        "me",
+        "se",
+        "moi"
+      ],
+      "answers": [
+        "me"
+      ],
+      "hint": "The pronoun of a reflexive verb matches the subject, even before an infinitive.",
+      "feedback": "The subject is je. Se does not match it, and moi cannot stand before a verb.",
+      "explanation": "Je vais me lever: me matches je and goes right before the infinitive."
+    },
+    {
+      "id": "futur-proche-reflexive-pronoun-2",
+      "pattern": "reflexive-pronoun",
+      "type": "complete",
+      "instruction": "Write the reflexive pronoun.",
+      "source": "Tu vas ____ coucher tard ?",
+      "answers": [
+        "te"
+      ],
+      "hint": "Match the pronoun to the subject tu.",
+      "feedback": "Se is the dictionary form. The subject is tu.",
+      "explanation": "Tu vas te coucher: te matches tu and stays before coucher."
+    },
+    {
+      "id": "futur-proche-reflexive-pronoun-3",
+      "pattern": "reflexive-pronoun",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Je me vais habiller.",
+      "answers": [
+        "Je vais m’habiller."
+      ],
+      "hint": "The pronoun belongs to the verb it goes with: habiller.",
+      "feedback": "Put the pronoun directly before the infinitive, and elide it before the silent h.",
+      "explanation": "Je vais m’habiller: the pronoun goes before the infinitive and becomes m’ before h."
+    },
+    {
+      "id": "futur-proche-reflexive-pronoun-4",
+      "pattern": "reflexive-pronoun",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She is going to get up at seven o’clock.",
+      "answers": [
+        "Elle va se lever à sept heures.",
+        "Elle va se lever à 7 heures.",
+        "Elle va se lever à 7 h."
+      ],
+      "hint": "Use se lever after aller. The pronoun matches elle.",
+      "feedback": "Put the reflexive pronoun before the infinitive.",
+      "explanation": "Elle va se lever: va + se + lever."
+    },
+    {
+      "id": "futur-proche-reflexive-pronoun-5",
+      "pattern": "reflexive-pronoun",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "se lever · vous · futur proche",
+      "answers": [
+        "allez vous lever",
+        "vous allez vous lever"
+      ],
+      "hint": "Aller for vous, then the pronoun matching vous, then the infinitive.",
+      "feedback": "The pronoun changes with the subject. Se is only the dictionary form.",
+      "explanation": "Vous allez vous lever: allez + vous + lever."
+    },
+    {
+      "id": "futur-proche-reflexive-pronoun-6",
+      "pattern": "reflexive-pronoun",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We are going to hurry.",
+      "tokens": [
+        "Nous",
+        "allons",
+        "nous",
+        "dépêcher.",
+        "se"
+      ],
+      "answers": [
+        "Nous allons nous dépêcher."
+      ],
+      "hint": "The pronoun before the infinitive matches the subject.",
+      "feedback": "One tile is the dictionary form of the pronoun. It does not match nous.",
+      "explanation": "Nous allons nous dépêcher: the pronoun nous matches the subject."
+    },
+    {
+      "id": "futur-proche-object-pronoun-1",
+      "pattern": "object-pronoun",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Les devoirs ? Je ____ faire ce soir.",
+      "options": [
+        "vais les",
+        "les vais",
+        "vais leur"
+      ],
+      "answers": [
+        "vais les"
+      ],
+      "hint": "The pronoun belongs to the verb it is the object of.",
+      "feedback": "The pronoun goes before faire, not before vais. Les devoirs is a direct object.",
+      "explanation": "Je vais les faire: les is the object of faire, so it goes right before the infinitive."
+    },
+    {
+      "id": "futur-proche-object-pronoun-2",
+      "pattern": "object-pronoun",
+      "type": "rewrite",
+      "instruction": "Replace la lettre with a pronoun.",
+      "source": "Je vais écrire la lettre.",
+      "answers": [
+        "Je vais l’écrire."
+      ],
+      "hint": "The pronoun goes before the infinitive. Écrire starts with a vowel.",
+      "feedback": "The pronoun does not go before vais, and la elides before a vowel.",
+      "explanation": "Je vais l’écrire: la becomes l’ before écrire and goes before the infinitive."
+    },
+    {
+      "id": "futur-proche-object-pronoun-3",
+      "pattern": "object-pronoun",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Elle le va acheter demain.",
+      "answers": [
+        "Elle va l’acheter demain."
+      ],
+      "hint": "The pronoun belongs to acheter.",
+      "feedback": "Put the pronoun before the infinitive, and elide it before the vowel.",
+      "explanation": "Elle va l’acheter: the pronoun goes before acheter and becomes l’."
+    },
+    {
+      "id": "futur-proche-object-pronoun-4",
+      "pattern": "object-pronoun",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "We are going to do it tomorrow.",
+      "answers": [
+        "Nous allons le faire demain.",
+        "On va le faire demain.",
+        "Demain, nous allons le faire.",
+        "Demain, on va le faire.",
+        "Demain nous allons le faire.",
+        "Demain on va le faire."
+      ],
+      "hint": "It becomes le. Where does it go?",
+      "feedback": "The pronoun goes before the infinitive, not before aller.",
+      "explanation": "Nous allons le faire: le goes directly before faire."
+    },
+    {
+      "id": "futur-proche-object-pronoun-5",
+      "pattern": "object-pronoun",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I am going to invite them on Saturday.",
+      "tokens": [
+        "Je",
+        "vais",
+        "les",
+        "inviter",
+        "samedi.",
+        "leur"
+      ],
+      "answers": [
+        "Je vais les inviter samedi."
+      ],
+      "hint": "Them is a direct object here. It goes before the infinitive.",
+      "feedback": "One pronoun tile means to them. Inviter takes a direct object.",
+      "explanation": "Je vais les inviter: les goes directly before inviter."
+    },
+    {
+      "id": "futur-proche-object-pronoun-6",
+      "pattern": "object-pronoun",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces ta chambre.",
+      "source": "Ta chambre ? Tu vas ____ ranger !",
+      "answers": [
+        "la"
+      ],
+      "hint": "Chambre is feminine and a direct object.",
+      "feedback": "The pronoun must be feminine singular.",
+      "explanation": "Tu vas la ranger: la replaces ta chambre and goes before the infinitive."
+    },
+    {
+      "id": "futur-proche-present-contrast-1",
+      "pattern": "present-contrast",
+      "type": "rewrite",
+      "instruction": "Put it in the futur proche.",
+      "source": "Nous mangeons au restaurant.",
+      "answers": [
+        "Nous allons manger au restaurant."
+      ],
+      "hint": "Use aller in the present, then the infinitive of the verb.",
+      "feedback": "Mangeons must become an infinitive.",
+      "explanation": "Nous allons manger: allons + manger."
+    },
+    {
+      "id": "futur-proche-present-contrast-2",
+      "pattern": "present-contrast",
+      "type": "rewrite",
+      "instruction": "Put it in the futur proche.",
+      "source": "Elle finit son travail.",
+      "answers": [
+        "Elle va finir son travail."
+      ],
+      "hint": "Use aller for elle, then the infinitive.",
+      "feedback": "Finit must become an infinitive.",
+      "explanation": "Elle va finir: va + finir."
+    },
+    {
+      "id": "futur-proche-present-contrast-3",
+      "pattern": "present-contrast",
+      "type": "choose",
+      "instruction": "Is it a habit or a plan? Choose the right form.",
+      "source": "D’habitude, je ____ le bus.",
+      "options": [
+        "prends",
+        "vais prendre",
+        "prendre"
+      ],
+      "answers": [
+        "prends"
+      ],
+      "hint": "D’habitude means usually.",
+      "feedback": "A habit is not a plan for the future.",
+      "explanation": "D’habitude, je prends le bus: habits use the simple present."
+    },
+    {
+      "id": "futur-proche-present-contrast-4",
+      "pattern": "present-contrast",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "aller · nous · futur proche",
+      "answers": [
+        "allons aller",
+        "nous allons aller"
+      ],
+      "hint": "Aller can be followed by its own infinitive.",
+      "feedback": "Conjugate aller, then add the infinitive aller.",
+      "explanation": "Nous allons aller: allons + the infinitive aller (we are going to go)."
+    },
+    {
+      "id": "futur-proche-present-contrast-5",
+      "pattern": "present-contrast",
+      "type": "complete",
+      "instruction": "Write se reposer in the futur proche.",
+      "source": "Aujourd’hui, je travaille, mais demain je ____.",
+      "answers": [
+        "vais me reposer"
+      ],
+      "hint": "Aller for je, then the reflexive pronoun for je, then the infinitive.",
+      "feedback": "Keep the pronoun before the infinitive and make it match je.",
+      "explanation": "Demain je vais me reposer: vais + me + reposer, in contrast with the present je travaille."
+    },
+    {
+      "id": "futur-proche-present-contrast-6",
+      "pattern": "present-contrast",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ce soir, tu vas regardes la télé ?",
+      "answers": [
+        "Ce soir, tu vas regarder la télé ?"
+      ],
+      "hint": "Only aller changes with tu.",
+      "feedback": "The second verb must be an infinitive.",
+      "explanation": "Tu vas regarder: vas + the infinitive regarder."
+    }
+  ]
+}

@@ -1,0 +1,732 @@
+{
+  "id": "prepositions-places",
+  "unit": "sentences",
+  "level": "A2",
+  "title": "Places: à, en, au, chez",
+  "description": "Say where you are, where you go and where you come from.",
+  "mark": "à · en · au",
+  "rule": "Use à before a city (à Paris), en before a feminine country or a continent (en France, en Europe) and before any country starting with a vowel (en Iran), au before a masculine country (au Canada, au Mexique) and aux before a plural one (aux États-Unis). To say where someone comes from, use de with a city or a feminine country, d’ before a vowel (de Paris, de France, d’Espagne, d’Iran), du with a masculine country (du Japon) and des with a plural one (des États-Unis). Use chez before a person or a profession: chez moi, chez Julie, chez le médecin. Before a place, à combines with the article: à la gare, au bureau, à l’école, aux toilettes; à le is never written. For position, use dans (in), sur (on), sous (under), devant (in front of), derrière (behind), entre (between), à côté de (next to) and en face de (opposite).",
+  "example": "J’habite à Lyon, en France. · Mon ami vient du Japon. · Ce soir, je dîne chez mes parents.",
+  "aside": "Most countries ending in -e are feminine (la France, l’Italie), but a few are masculine, such as le Mexique and le Cambodge.",
+  "exercises": [
+    {
+      "id": "prepositions-places-city-choose-1",
+      "pattern": "a-city",
+      "type": "choose",
+      "instruction": "Choose the right preposition.",
+      "source": "J’habite ____ Lyon.",
+      "options": [
+        "à",
+        "en",
+        "au"
+      ],
+      "answers": [
+        "à"
+      ],
+      "hint": "Lyon is a city.",
+      "feedback": "Cities take one preposition whatever their gender.",
+      "explanation": "In or to a city is à: J’habite à Lyon."
+    },
+    {
+      "id": "prepositions-places-city-choose-2",
+      "pattern": "a-city",
+      "type": "choose",
+      "instruction": "Choose the right preposition.",
+      "source": "Mon frère est ____ Tokyo pour le travail.",
+      "options": [
+        "à",
+        "au",
+        "chez"
+      ],
+      "answers": [
+        "à"
+      ],
+      "hint": "Tokyo is a city, not a country.",
+      "feedback": "A city is not a country or a person’s home.",
+      "explanation": "Before a city, French uses à: à Tokyo, à Paris, à Rome."
+    },
+    {
+      "id": "prepositions-places-city-complete",
+      "pattern": "a-city",
+      "type": "complete",
+      "instruction": "Write the preposition.",
+      "source": "Nous passons le week-end ____ Rome.",
+      "answers": [
+        "à"
+      ],
+      "strictAccents": true,
+      "hint": "Rome is a city.",
+      "feedback": "Write the preposition for cities, with its accent.",
+      "explanation": "In a city is à, with a grave accent: à Rome. Without the accent, a is the verb avoir."
+    },
+    {
+      "id": "prepositions-places-city-translate",
+      "pattern": "a-city",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I live in London.",
+      "answers": [
+        "J’habite à Londres.",
+        "Je vis à Londres."
+      ],
+      "strictAccents": true,
+      "hint": "London is Londres in French, and it is a city.",
+      "feedback": "Check the preposition before a city, and its accent.",
+      "explanation": "Cities take à: J’habite à Londres."
+    },
+    {
+      "id": "prepositions-places-city-repair",
+      "pattern": "a-city",
+      "type": "repair",
+      "instruction": "Fix the preposition.",
+      "source": "Elle travaille en Madrid.",
+      "answers": [
+        "Elle travaille à Madrid."
+      ],
+      "strictAccents": true,
+      "hint": "Madrid is a city, not a country.",
+      "feedback": "En is for some countries and continents. Cities take another word.",
+      "explanation": "Madrid is a city, so it takes à: Elle travaille à Madrid."
+    },
+    {
+      "id": "prepositions-places-city-build",
+      "pattern": "a-city",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "They are going to Berlin tomorrow.",
+      "tokens": [
+        "demain.",
+        "Berlin",
+        "Ils",
+        "en",
+        "vont",
+        "à"
+      ],
+      "answers": [
+        "Ils vont à Berlin demain."
+      ],
+      "hint": "Berlin is a city.",
+      "feedback": "One preposition tile is for countries, not cities.",
+      "explanation": "Going to a city is aller à: Ils vont à Berlin demain."
+    },
+    {
+      "id": "prepositions-places-en-choose-1",
+      "pattern": "en-feminine",
+      "type": "choose",
+      "instruction": "Choose the right preposition.",
+      "source": "Mes grands-parents habitent ____ Italie.",
+      "options": [
+        "en",
+        "au",
+        "à"
+      ],
+      "answers": [
+        "en"
+      ],
+      "hint": "L’Italie is a feminine country.",
+      "feedback": "Feminine countries take a different preposition from masculine ones.",
+      "explanation": "Feminine countries take en: en Italie, en France, en Espagne."
+    },
+    {
+      "id": "prepositions-places-en-choose-2",
+      "pattern": "en-feminine",
+      "type": "choose",
+      "instruction": "Choose the right preposition.",
+      "source": "Ma collègue est née ____ Iran.",
+      "options": [
+        "en",
+        "au",
+        "à l’"
+      ],
+      "answers": [
+        "en"
+      ],
+      "hint": "L’Iran is masculine, but it begins with a vowel.",
+      "feedback": "A country that starts with a vowel takes the same preposition as a feminine one.",
+      "explanation": "Before a country beginning with a vowel, French uses en, even when it is masculine: en Iran."
+    },
+    {
+      "id": "prepositions-places-en-complete-1",
+      "pattern": "en-feminine",
+      "type": "complete",
+      "instruction": "Write the preposition.",
+      "source": "Cet été, je vais ____ Espagne.",
+      "answers": [
+        "en"
+      ],
+      "hint": "L’Espagne is feminine.",
+      "feedback": "Use the preposition for feminine countries.",
+      "explanation": "Feminine countries take en for both in and to: Je vais en Espagne."
+    },
+    {
+      "id": "prepositions-places-en-complete-2",
+      "pattern": "en-feminine",
+      "type": "complete",
+      "instruction": "Write the preposition.",
+      "source": "Il voyage beaucoup ____ Asie.",
+      "answers": [
+        "en"
+      ],
+      "hint": "Asie is a continent.",
+      "feedback": "Continents take the same preposition as feminine countries.",
+      "explanation": "Continents are feminine and take en: en Asie, en Europe, en Afrique."
+    },
+    {
+      "id": "prepositions-places-en-translate",
+      "pattern": "en-feminine",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She works in Germany.",
+      "answers": [
+        "Elle travaille en Allemagne."
+      ],
+      "hint": "Germany is l’Allemagne, a feminine country.",
+      "feedback": "Check the preposition before a feminine country.",
+      "explanation": "L’Allemagne is feminine, so it takes en: Elle travaille en Allemagne."
+    },
+    {
+      "id": "prepositions-places-en-repair",
+      "pattern": "en-feminine",
+      "type": "repair",
+      "instruction": "Fix the preposition.",
+      "source": "Nous allons au France en mai.",
+      "answers": [
+        "Nous allons en France en mai."
+      ],
+      "hint": "La France is feminine.",
+      "feedback": "Au is for masculine countries.",
+      "explanation": "La France is feminine, so to France is en France."
+    },
+    {
+      "id": "prepositions-places-en-rewrite",
+      "pattern": "en-feminine",
+      "type": "rewrite",
+      "instruction": "Replace the city with the country in brackets. Change the preposition if needed.",
+      "source": "J’habite à Madrid. (Espagne)",
+      "answers": [
+        "J’habite en Espagne."
+      ],
+      "hint": "L’Espagne is a feminine country.",
+      "feedback": "A city takes à; a feminine country takes another preposition.",
+      "explanation": "Feminine countries take en: J’habite en Espagne."
+    },
+    {
+      "id": "prepositions-places-au-choose",
+      "pattern": "au-aux-masculine",
+      "type": "choose",
+      "instruction": "Choose the right preposition.",
+      "source": "Ils partent ____ Canada en juin.",
+      "options": [
+        "au",
+        "en",
+        "à"
+      ],
+      "answers": [
+        "au"
+      ],
+      "hint": "Le Canada is masculine and starts with a consonant.",
+      "feedback": "Masculine countries take à + le, contracted.",
+      "explanation": "Le Canada is masculine, so to Canada is au Canada."
+    },
+    {
+      "id": "prepositions-places-au-complete-1",
+      "pattern": "au-aux-masculine",
+      "type": "complete",
+      "instruction": "Write the preposition.",
+      "source": "Mon ami habite ____ Japon.",
+      "answers": [
+        "au"
+      ],
+      "hint": "Le Japon is masculine.",
+      "feedback": "Combine à and le into one word.",
+      "explanation": "À + le becomes au: au Japon."
+    },
+    {
+      "id": "prepositions-places-au-complete-2",
+      "pattern": "au-aux-masculine",
+      "type": "complete",
+      "instruction": "Write the preposition.",
+      "source": "Tu vas ____ États-Unis cet été ?",
+      "answers": [
+        "aux"
+      ],
+      "hint": "Les États-Unis is plural.",
+      "feedback": "Combine à and les into one word.",
+      "explanation": "À + les becomes aux: aux États-Unis."
+    },
+    {
+      "id": "prepositions-places-au-translate",
+      "pattern": "au-aux-masculine",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "My parents live in Brazil.",
+      "answers": [
+        "Mes parents habitent au Brésil.",
+        "Mes parents vivent au Brésil."
+      ],
+      "hint": "Brazil is le Brésil, a masculine country.",
+      "feedback": "Masculine countries take the contraction of à and le.",
+      "explanation": "Le Brésil is masculine, so in Brazil is au Brésil."
+    },
+    {
+      "id": "prepositions-places-au-repair",
+      "pattern": "au-aux-masculine",
+      "type": "repair",
+      "instruction": "Fix the preposition.",
+      "source": "Elle travaille en Mexique.",
+      "answers": [
+        "Elle travaille au Mexique."
+      ],
+      "hint": "Le Mexique is masculine, even though it ends in -e.",
+      "feedback": "The country is masculine and starts with a consonant.",
+      "explanation": "Le Mexique is one of the few masculine countries ending in -e, so it takes au: au Mexique."
+    },
+    {
+      "id": "prepositions-places-au-rewrite",
+      "pattern": "au-aux-masculine",
+      "type": "rewrite",
+      "instruction": "Replace the city with the country in brackets. Change the preposition if needed.",
+      "source": "Il habite à Lisbonne. (Portugal)",
+      "answers": [
+        "Il habite au Portugal."
+      ],
+      "hint": "Le Portugal is masculine.",
+      "feedback": "A city takes à; a masculine country needs a contraction.",
+      "explanation": "Le Portugal is masculine, so in Portugal is au Portugal."
+    },
+    {
+      "id": "prepositions-places-au-build",
+      "pattern": "au-aux-masculine",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We are going to the Netherlands in April.",
+      "tokens": [
+        "en avril.",
+        "Pays-Bas",
+        "Nous",
+        "au",
+        "allons",
+        "aux"
+      ],
+      "answers": [
+        "Nous allons aux Pays-Bas en avril."
+      ],
+      "hint": "Les Pays-Bas is plural.",
+      "feedback": "Two tiles look alike. Choose the one that matches a plural country.",
+      "explanation": "Les Pays-Bas is plural, so to the Netherlands is aux Pays-Bas."
+    },
+    {
+      "id": "prepositions-places-from-choose-1",
+      "pattern": "venir-de",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Je viens ____ Japon.",
+      "options": [
+        "du",
+        "de",
+        "des"
+      ],
+      "answers": [
+        "du"
+      ],
+      "hint": "Le Japon is masculine. De + le contracts.",
+      "feedback": "Coming from a masculine country uses de + le, contracted.",
+      "explanation": "Venir de + le Japon gives du Japon."
+    },
+    {
+      "id": "prepositions-places-from-choose-2",
+      "pattern": "venir-de",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Mon professeur vient ____ Paris.",
+      "options": [
+        "de",
+        "du",
+        "d’"
+      ],
+      "answers": [
+        "de"
+      ],
+      "hint": "Paris is a city and takes no article.",
+      "feedback": "With a city, there is no le to contract.",
+      "explanation": "Cities have no article, so from Paris is simply de Paris."
+    },
+    {
+      "id": "prepositions-places-from-complete-1",
+      "pattern": "venir-de",
+      "type": "complete",
+      "instruction": "Write de, d’, du or des.",
+      "source": "Elle vient ____ Espagne.",
+      "answers": [
+        "d’"
+      ],
+      "hint": "L’Espagne is feminine and starts with a vowel.",
+      "feedback": "With a feminine country, French drops the article after de. Check the vowel.",
+      "explanation": "From a feminine country is de with no article, and de elides before a vowel: d’Espagne."
+    },
+    {
+      "id": "prepositions-places-from-complete-2",
+      "pattern": "venir-de",
+      "type": "complete",
+      "instruction": "Write de, d’, du or des.",
+      "source": "Ils viennent ____ États-Unis.",
+      "answers": [
+        "des"
+      ],
+      "hint": "Les États-Unis is plural.",
+      "feedback": "De + les contracts into one word.",
+      "explanation": "De + les becomes des: Ils viennent des États-Unis."
+    },
+    {
+      "id": "prepositions-places-from-translate",
+      "pattern": "venir-de",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "He comes from Canada.",
+      "answers": [
+        "Il vient du Canada.",
+        "Il est originaire du Canada."
+      ],
+      "hint": "Le Canada is masculine. Use venir de.",
+      "feedback": "De + le contracts before a masculine country.",
+      "explanation": "Venir de + le Canada gives Il vient du Canada."
+    },
+    {
+      "id": "prepositions-places-from-repair",
+      "pattern": "venir-de",
+      "type": "repair",
+      "instruction": "Fix the preposition after venir.",
+      "source": "Nous venons de Portugal.",
+      "answers": [
+        "Nous venons du Portugal."
+      ],
+      "hint": "Le Portugal is masculine and keeps its article after de.",
+      "feedback": "The article of a masculine country contracts with de.",
+      "explanation": "De + le Portugal becomes du Portugal."
+    },
+    {
+      "id": "prepositions-places-from-rewrite",
+      "pattern": "venir-de",
+      "type": "rewrite",
+      "instruction": "Rewrite the sentence to say the person comes from this country. Use venir.",
+      "source": "Tu es en Italie.",
+      "answers": [
+        "Tu viens d’Italie."
+      ],
+      "hint": "L’Italie is feminine and starts with a vowel.",
+      "feedback": "Use the present of venir for tu, then the right form of de.",
+      "explanation": "From a feminine country is de with no article, elided before a vowel: Tu viens d’Italie."
+    },
+    {
+      "id": "prepositions-places-chez-choose",
+      "pattern": "chez",
+      "type": "choose",
+      "instruction": "Choose the right preposition.",
+      "source": "Ce soir, je dîne ____ mes parents.",
+      "options": [
+        "chez",
+        "à",
+        "en"
+      ],
+      "answers": [
+        "chez"
+      ],
+      "hint": "The dinner is at the home of some people.",
+      "feedback": "The place is a person’s home, not a town or a building.",
+      "explanation": "At or to someone’s home is chez: chez mes parents."
+    },
+    {
+      "id": "prepositions-places-chez-complete",
+      "pattern": "chez",
+      "type": "complete",
+      "instruction": "Write the preposition. The meaning is: at the dentist’s.",
+      "source": "J’ai rendez-vous ____ le dentiste à dix heures.",
+      "answers": [
+        "chez"
+      ],
+      "hint": "You are going to see a professional at their practice.",
+      "feedback": "Before a person or a profession, French uses a special preposition.",
+      "explanation": "With a person or a profession, at is chez: chez le dentiste.",
+      "alternatives": [
+        {
+          "answer": "avec",
+          "message": "Avoir rendez-vous avec le dentiste is also correct, but here practise the word for at the dentist’s: chez le dentiste."
+        }
+      ]
+    },
+    {
+      "id": "prepositions-places-chez-translate-1",
+      "pattern": "chez",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I am at home.",
+      "answers": [
+        "Je suis chez moi.",
+        "Je suis à la maison."
+      ],
+      "strictAccents": true,
+      "hint": "You can say “at my place” with a stressed pronoun, or “at the house”.",
+      "feedback": "Use chez with a stressed pronoun, or à with la maison.",
+      "explanation": "Je suis chez moi and Je suis à la maison both mean I am at home."
+    },
+    {
+      "id": "prepositions-places-chez-translate-2",
+      "pattern": "chez",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "They are at Julie’s. (they = masculine)",
+      "answers": [
+        "Ils sont chez Julie."
+      ],
+      "hint": "At someone’s home is one word before the person’s name.",
+      "feedback": "French has no ’s here. Put the preposition before Julie.",
+      "explanation": "At Julie’s is chez Julie: Ils sont chez Julie."
+    },
+    {
+      "id": "prepositions-places-chez-repair",
+      "pattern": "chez",
+      "type": "repair",
+      "instruction": "Fix the preposition.",
+      "source": "Elle va au médecin demain.",
+      "answers": [
+        "Elle va chez le médecin demain."
+      ],
+      "hint": "Médecin is a person, not a place.",
+      "feedback": "Before a person or a profession, French uses a different preposition from au.",
+      "explanation": "Going to see a doctor is aller chez le médecin. Au is for places such as au bureau."
+    },
+    {
+      "id": "prepositions-places-chez-build",
+      "pattern": "chez",
+      "type": "build",
+      "instruction": "Build the question.",
+      "source": "Are you coming to my place on Saturday? (to a friend)",
+      "tokens": [
+        "moi",
+        "Tu",
+        "à",
+        "samedi ?",
+        "chez",
+        "viens"
+      ],
+      "answers": [
+        "Tu viens chez moi samedi ?"
+      ],
+      "hint": "At my place is chez with a stressed pronoun.",
+      "feedback": "One preposition tile is not used before a person.",
+      "explanation": "To my place is chez moi: Tu viens chez moi samedi ?"
+    },
+    {
+      "id": "prepositions-places-location-choose",
+      "pattern": "location",
+      "type": "choose",
+      "instruction": "Choose the French for under.",
+      "source": "Le chat dort ____ le lit.",
+      "options": [
+        "sous",
+        "sur",
+        "dans"
+      ],
+      "answers": [
+        "sous"
+      ],
+      "hint": "Under is the opposite of on.",
+      "feedback": "Match each option to its meaning: on, under, in.",
+      "explanation": "Sous means under; sur means on and dans means in."
+    },
+    {
+      "id": "prepositions-places-location-complete-1",
+      "pattern": "location",
+      "type": "complete",
+      "instruction": "Write the French for next to.",
+      "source": "La pharmacie est ____ la banque.",
+      "answers": [
+        "à côté de"
+      ],
+      "strictAccents": true,
+      "hint": "Next to is a three-word expression ending in de.",
+      "feedback": "Write all three words, with the accents.",
+      "explanation": "Next to is à côté de: La pharmacie est à côté de la banque."
+    },
+    {
+      "id": "prepositions-places-location-complete-2",
+      "pattern": "location",
+      "type": "complete",
+      "instruction": "Write the French for opposite.",
+      "source": "L’arrêt de bus est ____ l’école.",
+      "answers": [
+        "en face de"
+      ],
+      "hint": "Opposite is a three-word expression ending in de.",
+      "feedback": "The expression means facing. Write all three words.",
+      "explanation": "Opposite is en face de; de stays whole before l’école."
+    },
+    {
+      "id": "prepositions-places-location-translate-1",
+      "pattern": "location",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The keys are on the table.",
+      "answers": [
+        "Les clés sont sur la table.",
+        "Les clefs sont sur la table."
+      ],
+      "hint": "On a surface is sur.",
+      "feedback": "Keys is les clés. Choose the preposition for on.",
+      "explanation": "Sur means on: Les clés sont sur la table."
+    },
+    {
+      "id": "prepositions-places-location-translate-2",
+      "pattern": "location",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The bakery is between the bank and the post office.",
+      "answers": [
+        "La boulangerie est entre la banque et la poste.",
+        "La boulangerie est entre la banque et le bureau de poste.",
+        "La boulangerie se trouve entre la banque et la poste."
+      ],
+      "hint": "Between is one word, followed by the two places joined by et.",
+      "feedback": "Bakery is la boulangerie and the post office is la poste.",
+      "explanation": "Between is entre: entre la banque et la poste."
+    },
+    {
+      "id": "prepositions-places-location-repair",
+      "pattern": "location",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Le café est à côté la gare.",
+      "answers": [
+        "Le café est à côté de la gare."
+      ],
+      "strictAccents": true,
+      "hint": "Next to is a three-word expression.",
+      "feedback": "A small word is missing between côté and la gare.",
+      "explanation": "À côté must be followed by de: à côté de la gare."
+    },
+    {
+      "id": "prepositions-places-location-build",
+      "pattern": "location",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "The bag is behind the door.",
+      "tokens": [
+        "la porte.",
+        "devant",
+        "Le sac",
+        "derrière",
+        "est"
+      ],
+      "answers": [
+        "Le sac est derrière la porte."
+      ],
+      "hint": "Behind is the opposite of in front of.",
+      "feedback": "One tile means in front of.",
+      "explanation": "Derrière means behind; devant means in front of."
+    },
+    {
+      "id": "prepositions-places-place-choose-1",
+      "pattern": "a-place",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Je t’attends ____ gare.",
+      "options": [
+        "à la",
+        "au",
+        "à l’"
+      ],
+      "answers": [
+        "à la"
+      ],
+      "hint": "Gare is feminine and starts with a consonant.",
+      "feedback": "À + la does not contract.",
+      "explanation": "La gare is feminine, so at the station is à la gare."
+    },
+    {
+      "id": "prepositions-places-place-choose-2",
+      "pattern": "a-place",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Mon père est ____ bureau.",
+      "options": [
+        "au",
+        "à le",
+        "à la"
+      ],
+      "answers": [
+        "au"
+      ],
+      "hint": "Bureau is masculine. À + le always contracts.",
+      "feedback": "À le is never written. What does it become?",
+      "explanation": "À + le becomes au: au bureau."
+    },
+    {
+      "id": "prepositions-places-place-complete-1",
+      "pattern": "a-place",
+      "type": "complete",
+      "instruction": "Write à la, au or à l’.",
+      "source": "Les enfants sont ____ école.",
+      "answers": [
+        "à l’"
+      ],
+      "strictAccents": true,
+      "hint": "École starts with a vowel.",
+      "feedback": "Before a vowel, the article elides whatever the gender.",
+      "explanation": "Before a vowel, à + la or le becomes à l’: à l’école."
+    },
+    {
+      "id": "prepositions-places-place-complete-2",
+      "pattern": "a-place",
+      "type": "complete",
+      "instruction": "Write à la, au or à l’.",
+      "source": "Ce soir, nous allons ____ cinéma.",
+      "answers": [
+        "au"
+      ],
+      "hint": "Cinéma is masculine and starts with a consonant.",
+      "feedback": "À + le contracts into one word.",
+      "explanation": "Le cinéma is masculine, so to the cinema is au cinéma."
+    },
+    {
+      "id": "prepositions-places-place-translate",
+      "pattern": "a-place",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "She is at the swimming pool.",
+      "answers": [
+        "Elle est à la piscine."
+      ],
+      "strictAccents": true,
+      "hint": "The swimming pool is la piscine, feminine.",
+      "feedback": "Use à with the right article for a feminine place.",
+      "explanation": "La piscine is feminine and does not contract: à la piscine."
+    },
+    {
+      "id": "prepositions-places-place-repair",
+      "pattern": "a-place",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "On se retrouve à le restaurant.",
+      "answers": [
+        "On se retrouve au restaurant."
+      ],
+      "hint": "À and le are never written side by side.",
+      "feedback": "The two little words before restaurant must be combined.",
+      "explanation": "À + le becomes au: au restaurant."
+    },
+    {
+      "id": "prepositions-places-place-rewrite",
+      "pattern": "a-place",
+      "type": "rewrite",
+      "instruction": "Replace the place with the one in brackets. Change à la if needed.",
+      "source": "Je vais à la banque. (hôpital)",
+      "answers": [
+        "Je vais à l’hôpital."
+      ],
+      "strictAccents": true,
+      "hint": "The h of hôpital is silent, so the word starts with a vowel sound.",
+      "feedback": "Before a vowel sound, the article elides.",
+      "explanation": "Hôpital starts with a silent h, so à + le becomes à l’: à l’hôpital."
+    }
+  ]
+}

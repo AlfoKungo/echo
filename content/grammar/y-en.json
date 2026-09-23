@@ -1,0 +1,799 @@
+{
+  "id": "y-en",
+  "unit": "pronouns",
+  "level": "B1",
+  "title": "Y and en",
+  "description": "Replace places, things and amounts with y and en, and put them in the right place.",
+  "mark": "y · en",
+  "rule": "Y replaces à + a thing or an idea (je pense à mon examen → j’y pense) and a place introduced by à, dans, chez, en, sur and similar prepositions (il habite en France → il y habite). En replaces de + a thing (je parle de mon voyage → j’en parle), a partitive or indefinite noun with du, de la, des (du pain → j’en veux), and a noun after a number or quantity, which stays at the end (j’en ai deux, il en a beaucoup); il y a + a quantity becomes il y en a. Y and en go directly before the conjugated verb, inside the negation (je n’y vais pas, je n’en ai pas), before an infinitive they belong to (je vais y aller) and before the auxiliary in the passé composé (j’y suis allé, j’en ai mangé); the participle does not agree with en. For a person, most verbs with à take lui or leur (je réponds à Paul → je lui réponds); penser à and a few others keep à + a stressed pronoun (je pense à lui), and in careful French a person after de keeps de + a stressed pronoun (je parle d’elle) rather than en. Fixed expressions: on y va (let’s go), allons-y, and vas-y, where the command va takes an s before y.",
+  "example": "Tu vas à la gare ? Oui, j’y vais. · Du café ? J’en bois deux tasses par jour. · Des chaises ? Il y en a trois.",
+  "aside": "In everyday speech you will hear j’y pense and j’en parle about people too; here, practise the careful form à lui, d’elle.",
+  "exercises": [
+    {
+      "id": "y-en-y-place-1",
+      "pattern": "y-place",
+      "type": "rewrite",
+      "instruction": "Replace à Paris with y.",
+      "source": "Je vais à Paris demain.",
+      "answers": [
+        "J’y vais demain."
+      ],
+      "hint": "The pronoun goes directly before the conjugated verb, and je shortens before a vowel.",
+      "feedback": "Take out à Paris entirely and put the pronoun before vais.",
+      "explanation": "À Paris is a place introduced by à, so y replaces it and sits before vais: j’y vais demain."
+    },
+    {
+      "id": "y-en-y-place-2",
+      "pattern": "y-place",
+      "type": "rewrite",
+      "instruction": "Replace en France with y.",
+      "source": "Il habite en France avec sa famille.",
+      "answers": [
+        "Il y habite avec sa famille."
+      ],
+      "hint": "Here en is a preposition of place, not the pronoun en.",
+      "feedback": "Which pronoun stands for a place? It goes before habite.",
+      "explanation": "Y replaces a place after any preposition of place (à, dans, chez, en, sur): il y habite avec sa famille."
+    },
+    {
+      "id": "y-en-y-place-3",
+      "pattern": "y-place",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Elle travaille dans ce bureau ? Oui, elle ____ travaille depuis mai.",
+      "options": [
+        "y",
+        "en",
+        "le",
+        "lui"
+      ],
+      "answers": [
+        "y"
+      ],
+      "hint": "Think about what dans ce bureau is.",
+      "feedback": "The pronoun stands for a place introduced by dans.",
+      "explanation": "Dans ce bureau is a place, so y replaces it: elle y travaille. En would replace de + noun; le and lui replace direct and indirect objects."
+    },
+    {
+      "id": "y-en-y-place-4",
+      "pattern": "y-place",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces chez Marc.",
+      "source": "Nous dînons chez Marc ce soir. Nous ____ dînons à huit heures.",
+      "answers": [
+        "y"
+      ],
+      "hint": "Chez Marc means at Marc’s home.",
+      "feedback": "Chez + a person names a place here, not the person.",
+      "explanation": "Chez Marc is where we are having dinner, so it is a place and y replaces it: nous y dînons."
+    },
+    {
+      "id": "y-en-y-place-5",
+      "pattern": "y-place",
+      "type": "translate",
+      "instruction": "Translate into French, using y.",
+      "source": "She lives there. (there = in Lyon)",
+      "answers": [
+        "Elle y habite.",
+        "Elle y vit."
+      ],
+      "alternatives": [
+        {
+          "answer": "Elle habite là-bas.",
+          "message": "That is correct French, but this exercise asks for the pronoun y before the verb: elle y habite."
+        },
+        {
+          "answer": "Elle vit là-bas.",
+          "message": "That is correct French, but this exercise asks for the pronoun y before the verb: elle y vit."
+        },
+        {
+          "answer": "Elle habite là.",
+          "message": "That is correct French, but this exercise asks for the pronoun y before the verb: elle y habite."
+        },
+        {
+          "answer": "Elle vit là.",
+          "message": "That is correct French, but this exercise asks for the pronoun y before the verb: elle y vit."
+        }
+      ],
+      "hint": "Use habiter or vivre; the pronoun comes before the verb.",
+      "feedback": "Put the pronoun for the place before the verb, not after it.",
+      "explanation": "In Lyon is a place, so y replaces it before the verb: elle y habite."
+    },
+    {
+      "id": "y-en-y-thing-1",
+      "pattern": "y-thing",
+      "type": "rewrite",
+      "instruction": "Replace à mon examen with y.",
+      "source": "Je pense à mon examen.",
+      "answers": [
+        "J’y pense."
+      ],
+      "hint": "Penser à + a thing: which pronoun replaces à + a thing?",
+      "feedback": "Remove à mon examen and put the pronoun before pense; remember that je elides.",
+      "explanation": "Y replaces à + a thing or an idea: je pense à mon examen → j’y pense."
+    },
+    {
+      "id": "y-en-y-thing-2",
+      "pattern": "y-thing",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Vous répondez à ce message ? Oui, nous ____ répondons ce soir.",
+      "options": [
+        "y",
+        "en",
+        "lui",
+        "le"
+      ],
+      "answers": [
+        "y"
+      ],
+      "hint": "Répondre à + a thing, not a person.",
+      "feedback": "A message is a thing, and it comes after à.",
+      "explanation": "Répondre à + a thing becomes y: nous y répondons. Lui would replace à + a person; le and en do not replace à."
+    },
+    {
+      "id": "y-en-y-thing-3",
+      "pattern": "y-thing",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces au tennis.",
+      "source": "Il joue au tennis le samedi. Il ____ joue avec son frère.",
+      "answers": [
+        "y"
+      ],
+      "hint": "Au is à + le. What replaces à + a thing?",
+      "feedback": "The pronoun must stand for à + a game.",
+      "explanation": "Jouer à + a game: au tennis is à + le tennis, so y replaces it: il y joue avec son frère."
+    },
+    {
+      "id": "y-en-y-thing-4",
+      "pattern": "y-thing",
+      "type": "repair",
+      "instruction": "Fix the pronoun.",
+      "source": "Mon travail ? J’en pense tous les jours.",
+      "answers": [
+        "Mon travail ? J’y pense tous les jours.",
+        "J’y pense tous les jours."
+      ],
+      "hint": "Which preposition follows penser when you think about something?",
+      "feedback": "Penser takes à, not de, in this meaning.",
+      "explanation": "Penser à quelque chose: à + a thing gives y, so j’y pense. En would need de."
+    },
+    {
+      "id": "y-en-en-de-1",
+      "pattern": "en-de",
+      "type": "rewrite",
+      "instruction": "Replace de mon voyage with en.",
+      "source": "Je parle de mon voyage.",
+      "answers": [
+        "J’en parle."
+      ],
+      "hint": "Parler de + a thing.",
+      "feedback": "Remove the whole of de mon voyage and put the pronoun before parle; je elides.",
+      "explanation": "En replaces de + a thing: je parle de mon voyage → j’en parle."
+    },
+    {
+      "id": "y-en-en-de-2",
+      "pattern": "en-de",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Vous avez besoin de la voiture ? Oui, nous ____ avons besoin ce soir.",
+      "options": [
+        "en",
+        "y",
+        "la",
+        "le"
+      ],
+      "answers": [
+        "en"
+      ],
+      "hint": "Look at the preposition in avoir besoin de.",
+      "feedback": "Avoir besoin is followed by de.",
+      "explanation": "Avoir besoin de + a thing: de la voiture becomes en, so nous en avons besoin. La would replace a direct object without de."
+    },
+    {
+      "id": "y-en-en-de-3",
+      "pattern": "en-de",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces de son travail.",
+      "source": "Elle est contente de son travail. Elle ____ est très contente.",
+      "answers": [
+        "en"
+      ],
+      "hint": "Être content de + a thing.",
+      "feedback": "The adjective content is followed by de.",
+      "explanation": "Être content de quelque chose: de + a thing becomes en, so elle en est très contente."
+    },
+    {
+      "id": "y-en-en-de-4",
+      "pattern": "en-de",
+      "type": "repair",
+      "instruction": "Fix the pronoun.",
+      "source": "Ce livre ? Elle y parle souvent.",
+      "answers": [
+        "Ce livre ? Elle en parle souvent.",
+        "Elle en parle souvent."
+      ],
+      "hint": "Parler takes which preposition before the topic?",
+      "feedback": "Parler de: the pronoun must replace de + a thing.",
+      "explanation": "You talk de quelque chose, so the pronoun is en: elle en parle souvent."
+    },
+    {
+      "id": "y-en-en-partitive-1",
+      "pattern": "en-partitive",
+      "type": "rewrite",
+      "instruction": "Replace du pain with en.",
+      "source": "Je veux du pain.",
+      "answers": [
+        "J’en veux."
+      ],
+      "hint": "Du pain is a partitive: some bread.",
+      "feedback": "Le would mean one specific loaf. Use the pronoun for an amount of something.",
+      "explanation": "En replaces a partitive noun (du, de la, de l’, des + noun): je veux du pain → j’en veux."
+    },
+    {
+      "id": "y-en-en-partitive-2",
+      "pattern": "en-partitive",
+      "type": "choose",
+      "instruction": "Choose the right pronoun.",
+      "source": "Elle boit du café le matin ? Oui, elle ____ boit tous les matins.",
+      "options": [
+        "en",
+        "le",
+        "la",
+        "y"
+      ],
+      "answers": [
+        "en"
+      ],
+      "hint": "Is du café a specific coffee or some coffee?",
+      "feedback": "A partitive noun is not replaced by le or la.",
+      "explanation": "Du café is partitive, so en replaces it: elle en boit. Le would replace a definite noun such as le café."
+    },
+    {
+      "id": "y-en-en-partitive-3",
+      "pattern": "en-partitive",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces des légumes.",
+      "source": "Nous mangeons des légumes. Nous ____ mangeons à chaque repas.",
+      "answers": [
+        "en"
+      ],
+      "hint": "Des légumes means some vegetables.",
+      "feedback": "Des + noun is replaced by the same pronoun as du and de la.",
+      "explanation": "Des légumes is an indefinite plural, which en replaces: nous en mangeons à chaque repas."
+    },
+    {
+      "id": "y-en-en-partitive-4",
+      "pattern": "en-partitive",
+      "type": "build",
+      "instruction": "Replace des fruits with a pronoun and build the sentence.",
+      "source": "Elle achète des fruits au marché.",
+      "tokens": [
+        "au",
+        "les",
+        "Elle",
+        "achète",
+        "en",
+        "marché."
+      ],
+      "answers": [
+        "Elle en achète au marché."
+      ],
+      "hint": "Des fruits means some fruit; it is not a definite noun.",
+      "feedback": "Les replaces a definite plural such as les fruits. Choose the pronoun for des.",
+      "explanation": "Des fruits is indefinite, so en replaces it before achète; au marché stays where it is."
+    },
+    {
+      "id": "y-en-en-partitive-5",
+      "pattern": "en-partitive",
+      "type": "translate",
+      "instruction": "Translate into French, using en.",
+      "source": "Do you want some? (some = soup; to a friend)",
+      "answers": [
+        "Tu en veux ?",
+        "Est-ce que tu en veux ?",
+        "En veux-tu ?"
+      ],
+      "hint": "Some soup is a partitive in French; the pronoun goes before veux.",
+      "feedback": "English some has no noun here, but French still needs a pronoun before the verb.",
+      "explanation": "Some soup is de la soupe, a partitive, so en replaces it: tu en veux ?"
+    },
+    {
+      "id": "y-en-en-quantity-1",
+      "pattern": "en-quantity",
+      "type": "rewrite",
+      "instruction": "Replace frères with en and keep the number.",
+      "source": "J’ai deux frères.",
+      "answers": [
+        "J’en ai deux."
+      ],
+      "hint": "The number does not disappear; it stays after the verb.",
+      "feedback": "Put the pronoun before ai and leave deux at the end.",
+      "explanation": "With a number, en replaces the noun and the number stays at the end: j’en ai deux."
+    },
+    {
+      "id": "y-en-en-quantity-2",
+      "pattern": "en-quantity",
+      "type": "choose",
+      "instruction": "Choose the right answer.",
+      "source": "Combien de livres as-tu ? (three)",
+      "options": [
+        "J’en ai trois.",
+        "J’ai en trois.",
+        "Je les ai trois.",
+        "J’y ai trois."
+      ],
+      "answers": [
+        "J’en ai trois."
+      ],
+      "hint": "Which pronoun goes with a number, and where does it sit?",
+      "feedback": "The pronoun goes before the verb; the number goes after it.",
+      "explanation": "En replaces livres and the number trois stays after the verb: j’en ai trois."
+    },
+    {
+      "id": "y-en-en-quantity-3",
+      "pattern": "en-quantity",
+      "type": "complete",
+      "instruction": "Write the missing word.",
+      "source": "Tu as une voiture ? Oui, j’en ai ____.",
+      "answers": [
+        "une"
+      ],
+      "hint": "With en, the quantity stays after the verb. Voiture is feminine.",
+      "feedback": "Keep the number from the question; do not drop it.",
+      "explanation": "Une counts the car, so it stays at the end: j’en ai une."
+    },
+    {
+      "id": "y-en-en-quantity-4",
+      "pattern": "en-quantity",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Des enfants ? Ils ont en trois.",
+      "answers": [
+        "Des enfants ? Ils en ont trois.",
+        "Ils en ont trois."
+      ],
+      "hint": "Where do object pronouns go?",
+      "feedback": "The pronoun belongs before the conjugated verb; only the number follows it.",
+      "explanation": "En goes before ont and trois stays at the end: ils en ont trois."
+    },
+    {
+      "id": "y-en-en-quantity-5",
+      "pattern": "en-quantity",
+      "type": "build",
+      "instruction": "Replace de tomates with a pronoun, keep un kilo, and build the sentence.",
+      "source": "Nous voulons un kilo de tomates.",
+      "tokens": [
+        "un",
+        "Nous",
+        "les",
+        "kilo.",
+        "voulons",
+        "en"
+      ],
+      "answers": [
+        "Nous en voulons un kilo."
+      ],
+      "hint": "The quantity un kilo stays after the verb.",
+      "feedback": "Replace the de + noun part and keep the amount at the end.",
+      "explanation": "After a quantity word, de tomates becomes en and un kilo stays: nous en voulons un kilo."
+    },
+    {
+      "id": "y-en-il-y-en-a-1",
+      "pattern": "il-y-en-a",
+      "type": "rewrite",
+      "instruction": "Replace chaises with en and keep the number.",
+      "source": "Il y a trois chaises dans la cuisine.",
+      "answers": [
+        "Il y en a trois dans la cuisine."
+      ],
+      "hint": "Il y a is fixed; the new pronoun goes between y and a.",
+      "feedback": "Keep il y together and put the pronoun just before a.",
+      "explanation": "Il y a + a quantity becomes il y en a + the quantity: il y en a trois dans la cuisine."
+    },
+    {
+      "id": "y-en-il-y-en-a-2",
+      "pattern": "il-y-en-a",
+      "type": "choose",
+      "instruction": "Choose the right words.",
+      "source": "Il reste du gâteau ? Oui, il ____ a encore.",
+      "options": [
+        "y en",
+        "en y",
+        "y",
+        "en"
+      ],
+      "answers": [
+        "y en"
+      ],
+      "hint": "Two pronouns meet here; one of them belongs to il y a.",
+      "feedback": "Keep the y of il y a and add the pronoun for du gâteau in the right order.",
+      "explanation": "Il y a keeps its y, and en replaces du gâteau; y always comes before en: il y en a encore."
+    },
+    {
+      "id": "y-en-il-y-en-a-3",
+      "pattern": "il-y-en-a",
+      "type": "complete",
+      "instruction": "Write the missing pronoun.",
+      "source": "Des cafés dans ta rue ? Il y ____ a beaucoup.",
+      "answers": [
+        "en"
+      ],
+      "hint": "Beaucoup is a quantity.",
+      "feedback": "A quantity at the end needs a pronoun for the noun.",
+      "explanation": "En replaces cafés and beaucoup stays at the end: il y en a beaucoup."
+    },
+    {
+      "id": "y-en-il-y-en-a-4",
+      "pattern": "il-y-en-a",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "There are two of them. (them = banks)",
+      "answers": [
+        "Il y en a deux."
+      ],
+      "hint": "Start from il y a and add the pronoun for of them.",
+      "feedback": "Of them is a pronoun in French, placed between y and a.",
+      "explanation": "Il y a deux banques → il y en a deux."
+    },
+    {
+      "id": "y-en-negation-placement-1",
+      "pattern": "negation-placement",
+      "type": "rewrite",
+      "instruction": "Replace à la piscine with y and make the sentence negative.",
+      "source": "Je vais à la piscine.",
+      "answers": [
+        "Je n’y vais pas."
+      ],
+      "hint": "The pronoun stays glued to the verb, inside ne…pas.",
+      "feedback": "Ne comes before the pronoun and pas after the verb. Ne elides before y.",
+      "explanation": "Ne goes before the pronoun + verb block: je n’y vais pas."
+    },
+    {
+      "id": "y-en-negation-placement-2",
+      "pattern": "negation-placement",
+      "type": "choose",
+      "instruction": "Choose the right sentence.",
+      "source": "De la viande ? (he does not eat any)",
+      "options": [
+        "Il n’en mange pas.",
+        "Il ne mange en pas.",
+        "Il ne en mange pas.",
+        "Il ne mange pas en."
+      ],
+      "answers": [
+        "Il n’en mange pas."
+      ],
+      "hint": "The pronoun never leaves the verb.",
+      "feedback": "Keep the pronoun right before mange and remember elision.",
+      "explanation": "En stays before mange, and ne goes before en and elides: il n’en mange pas."
+    },
+    {
+      "id": "y-en-negation-placement-3",
+      "pattern": "negation-placement",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces au musée.",
+      "source": "Le musée ? Nous n’____ allons jamais.",
+      "answers": [
+        "y"
+      ],
+      "hint": "N’ shows that the next word starts with a vowel.",
+      "feedback": "Aller + a place: which pronoun?",
+      "explanation": "Y replaces the place and sits between ne and allons: nous n’y allons jamais."
+    },
+    {
+      "id": "y-en-negation-placement-4",
+      "pattern": "negation-placement",
+      "type": "build",
+      "instruction": "Replace de lait with en and build the negative sentence.",
+      "source": "Il n’y a pas de lait.",
+      "tokens": [
+        "en",
+        "a",
+        "n’y",
+        "le",
+        "pas.",
+        "Il"
+      ],
+      "answers": [
+        "Il n’y en a pas."
+      ],
+      "hint": "Keep il n’y a together around the new pronoun.",
+      "feedback": "The pronoun for de lait goes between y and a.",
+      "explanation": "Il n’y a pas de lait → il n’y en a pas: en goes between y and a, inside the negation."
+    },
+    {
+      "id": "y-en-negation-placement-5",
+      "pattern": "negation-placement",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Du sucre ? Elle ne met en pas.",
+      "answers": [
+        "Du sucre ? Elle n’en met pas.",
+        "Elle n’en met pas."
+      ],
+      "hint": "Where does the pronoun go relative to the verb?",
+      "feedback": "The pronoun comes before met, and ne elides before it.",
+      "explanation": "Ne + pronoun + verb + pas: elle n’en met pas."
+    },
+    {
+      "id": "y-en-compound-placement-1",
+      "pattern": "compound-placement",
+      "type": "rewrite",
+      "instruction": "Replace à Lyon with y.",
+      "source": "Je vais aller à Lyon.",
+      "answers": [
+        "Je vais y aller."
+      ],
+      "hint": "The place belongs to aller, not to vais.",
+      "feedback": "The pronoun goes before the infinitive it belongs to.",
+      "explanation": "With aller + infinitive, the pronoun goes before the infinitive: je vais y aller."
+    },
+    {
+      "id": "y-en-compound-placement-2",
+      "pattern": "compound-placement",
+      "type": "rewrite",
+      "instruction": "Replace des cerises with en.",
+      "source": "J’ai mangé des cerises.",
+      "answers": [
+        "J’en ai mangé."
+      ],
+      "alternatives": [
+        {
+          "answer": "J’en ai mangées.",
+          "message": "The position is right, but in standard French the participle does not agree with en: j’en ai mangé."
+        }
+      ],
+      "hint": "In the passé composé the pronoun goes before the auxiliary.",
+      "feedback": "Put the pronoun before ai, not before the participle.",
+      "explanation": "En goes before the auxiliary avoir, and the participle stays mangé: j’en ai mangé."
+    },
+    {
+      "id": "y-en-compound-placement-3",
+      "pattern": "compound-placement",
+      "type": "choose",
+      "instruction": "Choose the right words.",
+      "source": "Le cinéma ? Il ____ allé hier.",
+      "options": [
+        "y est",
+        "est y",
+        "en est",
+        "y a"
+      ],
+      "answers": [
+        "y est"
+      ],
+      "hint": "Aller uses être in the passé composé, and a place needs a pronoun.",
+      "feedback": "Check both the pronoun and its position before the auxiliary.",
+      "explanation": "Y replaces the place and goes before the auxiliary être: il y est allé hier."
+    },
+    {
+      "id": "y-en-compound-placement-4",
+      "pattern": "compound-placement",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces des photos.",
+      "source": "Des photos ? Nous ____ avons pris beaucoup pendant le voyage.",
+      "answers": [
+        "en"
+      ],
+      "hint": "Beaucoup is a quantity, and the pronoun goes before the auxiliary.",
+      "feedback": "The pronoun comes before the auxiliary avons, and beaucoup stays in the sentence.",
+      "explanation": "En replaces photos and goes before avons: nous en avons pris beaucoup."
+    },
+    {
+      "id": "y-en-compound-placement-5",
+      "pattern": "compound-placement",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Le marché ? Je vais aller y samedi.",
+      "answers": [
+        "Le marché ? Je vais y aller samedi.",
+        "Je vais y aller samedi."
+      ],
+      "hint": "The pronoun goes before the verb it depends on.",
+      "feedback": "Y must come before the infinitive, not after it.",
+      "explanation": "The place belongs to aller, so y goes before it: je vais y aller samedi."
+    },
+    {
+      "id": "y-en-compound-placement-6",
+      "pattern": "compound-placement",
+      "type": "translate",
+      "instruction": "Translate into French, using y.",
+      "source": "He went there yesterday. (there = to Rome)",
+      "answers": [
+        "Il y est allé hier.",
+        "Hier, il y est allé."
+      ],
+      "hint": "Use the passé composé of aller; the pronoun goes before the auxiliary.",
+      "feedback": "Aller takes être, and y sits before it.",
+      "explanation": "Il est allé à Rome hier → il y est allé hier."
+    },
+    {
+      "id": "y-en-people-1",
+      "pattern": "people",
+      "type": "choose",
+      "instruction": "Choose the careful form.",
+      "source": "Tu penses souvent à ta grand-mère ? Oui, je pense souvent ____.",
+      "options": [
+        "à elle",
+        "y",
+        "en",
+        "lui"
+      ],
+      "answers": [
+        "à elle"
+      ],
+      "hint": "Your grandmother is a person, and penser à keeps its preposition with a person.",
+      "feedback": "Y replaces things and places. After penser à, a person needs à + a stressed pronoun.",
+      "explanation": "Penser à never takes lui, and careful French does not use y for a person: je pense souvent à elle."
+    },
+    {
+      "id": "y-en-people-2",
+      "pattern": "people",
+      "type": "rewrite",
+      "instruction": "Replace de Paul with a pronoun, in careful French.",
+      "source": "Je parle souvent de Paul.",
+      "answers": [
+        "Je parle souvent de lui."
+      ],
+      "alternatives": [
+        {
+          "answer": "J’en parle souvent.",
+          "message": "You will hear this, but in careful French en replaces things. For a person after de, keep de and use a stressed pronoun: je parle souvent de lui."
+        }
+      ],
+      "hint": "Paul is a person; keep the preposition.",
+      "feedback": "Do not use en for a person here; use de + a stressed pronoun.",
+      "explanation": "For a person after de, careful French keeps de and uses a stressed pronoun: je parle souvent de lui."
+    },
+    {
+      "id": "y-en-people-3",
+      "pattern": "people",
+      "type": "complete",
+      "instruction": "Write the pronoun that replaces à ta sœur.",
+      "source": "Tu réponds à ta sœur ? Oui, je ____ réponds ce soir.",
+      "answers": [
+        "lui"
+      ],
+      "hint": "Ta sœur is a person, and répondre à takes an indirect object.",
+      "feedback": "Y is for à + a thing; répondre à + a person takes the indirect object pronoun.",
+      "explanation": "Répondre à + a person becomes lui before the verb: je lui réponds. Compare répondre à un message → j’y réponds."
+    },
+    {
+      "id": "y-en-people-4",
+      "pattern": "people",
+      "type": "repair",
+      "instruction": "Fix the pronoun for careful French: the teacher is a person.",
+      "source": "Mon professeur ? J’y pense souvent.",
+      "answers": [
+        "Mon professeur ? Je pense souvent à lui.",
+        "Je pense souvent à lui.",
+        "Mon professeur ? Je pense à lui souvent.",
+        "Je pense à lui souvent."
+      ],
+      "hint": "Y is for things and places.",
+      "feedback": "Keep à after penser and use a stressed pronoun.",
+      "explanation": "In careful French y does not replace a person: je pense souvent à lui."
+    },
+    {
+      "id": "y-en-people-5",
+      "pattern": "people",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "We often talk about her. (her = our neighbour)",
+      "answers": [
+        "Nous parlons souvent d’elle.",
+        "On parle souvent d’elle."
+      ],
+      "alternatives": [
+        {
+          "answer": "Nous en parlons souvent.",
+          "message": "In careful French en replaces things. For a person, keep de and use elle: nous parlons souvent d’elle."
+        },
+        {
+          "answer": "On en parle souvent.",
+          "message": "In careful French en replaces things. For a person, keep de and use elle: on parle souvent d’elle."
+        }
+      ],
+      "hint": "Parler de + a person.",
+      "feedback": "Use de + a stressed pronoun after the verb.",
+      "explanation": "Our neighbour is a person, so parler de + elle: nous parlons souvent d’elle."
+    },
+    {
+      "id": "y-en-fixed-expressions-1",
+      "pattern": "fixed-expressions",
+      "type": "choose",
+      "instruction": "Choose the right expression.",
+      "source": "Tout le monde est prêt ? Alors, on ____ !",
+      "options": [
+        "y va",
+        "va y",
+        "en va",
+        "y vas"
+      ],
+      "answers": [
+        "y va"
+      ],
+      "hint": "This is the everyday way to say let’s go with on.",
+      "feedback": "The pronoun comes before the verb, and on takes the il form.",
+      "explanation": "On y va means let’s go: y comes before va, and on uses the same form as il."
+    },
+    {
+      "id": "y-en-fixed-expressions-2",
+      "pattern": "fixed-expressions",
+      "type": "translate",
+      "instruction": "Translate into French, using y.",
+      "source": "Go on! (encouraging a friend)",
+      "answers": [
+        "Vas-y !"
+      ],
+      "spellingAnswers": [
+        "Vas y !"
+      ],
+      "hint": "Use the tu command of aller followed by y.",
+      "feedback": "Before y, the command va takes an extra letter.",
+      "explanation": "Vas-y: the tu command va adds an s before y, and y joins it with a hyphen.",
+      "alternatives": [
+        {
+          "answer": "Allez-y !",
+          "message": "That is the vous form. To a friend, use the tu command: vas-y !"
+        }
+      ]
+    },
+    {
+      "id": "y-en-fixed-expressions-3",
+      "pattern": "fixed-expressions",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Tu es prêt ? Va-y !",
+      "answers": [
+        "Tu es prêt ? Vas-y !",
+        "Vas-y !"
+      ],
+      "hint": "Say the command aloud: the verb and y are linked by a sound.",
+      "feedback": "Va needs one more letter before -y.",
+      "explanation": "The tu command va takes an s before y: vas-y.",
+      "spellingAnswers": [
+        "Tu es prêt ? Vas y !",
+        "Vas y !"
+      ]
+    },
+    {
+      "id": "y-en-fixed-expressions-4",
+      "pattern": "fixed-expressions",
+      "type": "rewrite",
+      "instruction": "Replace au parc with y.",
+      "source": "Allons au parc !",
+      "answers": [
+        "Allons-y !"
+      ],
+      "spellingAnswers": [
+        "Allons y !"
+      ],
+      "hint": "In an affirmative command the pronoun comes after the verb.",
+      "feedback": "Put y after allons and join it with a hyphen.",
+      "explanation": "In an affirmative command, y follows the verb with a hyphen: allons-y."
+    },
+    {
+      "id": "y-en-fixed-expressions-5",
+      "pattern": "fixed-expressions",
+      "type": "build",
+      "instruction": "Build the French sentence, using on.",
+      "source": "Let’s go there on foot.",
+      "tokens": [
+        "pied.",
+        "vas",
+        "à",
+        "On",
+        "y",
+        "va"
+      ],
+      "answers": [
+        "On y va à pied."
+      ],
+      "hint": "Use the fixed expression for let’s go.",
+      "feedback": "On takes va, and y comes before it.",
+      "explanation": "On y va means let’s go (there); à pied means on foot."
+    }
+  ]
+}

@@ -1,0 +1,761 @@
+{
+  "id": "articles-gender",
+  "unit": "determiners",
+  "level": "A1",
+  "title": "Gender and articles",
+  "description": "Choose un, une, le, la, l’ and les, and form the plural of nouns.",
+  "mark": "le · la",
+  "rule": "Every French noun is masculine or feminine: un and le go with masculine singular nouns, une and la with feminine singular nouns, and des and les are the plural for both genders. Le and la become l’ before a vowel or a silent h: l’ami, l’école, l’hôtel. Endings help: -tion, -té, -ette and -ure are usually feminine, and -ment, -age, -eau and -isme are usually masculine, but la plage, la page, l’image, l’eau, la peau, l’été and le côté break the pattern. Use le, la, les for things in general and for likes and dislikes (j’aime le chocolat), and un, une, des for one or some of something (j’ai un chien). Plurals usually add -s; -eau and -eu add -x, -al usually becomes -aux, and nouns that already end in -s, -x or -z do not change.",
+  "example": "J’ai un chien et une tortue. · J’aime le chocolat. · Les bateaux sont sur l’eau.",
+  "aside": "In the plural the article no longer shows the gender, and there is no elision: les amis, les hôtels. A few -al nouns simply add -s (les festivals), and le pneu becomes les pneus.",
+  "exercises": [
+    {
+      "id": "articles-gender-indefinite-un-une-1",
+      "pattern": "indefinite-un-une",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "J’ai ____ voiture rouge.",
+      "options": [
+        "un",
+        "une",
+        "des"
+      ],
+      "answers": [
+        "une"
+      ],
+      "hint": "Think about the gender of voiture: nouns ending in -ure are usually feminine.",
+      "feedback": "Voiture is feminine, and there is only one car.",
+      "explanation": "Voiture is feminine singular, so it takes une. Un is for masculine nouns and des is plural."
+    },
+    {
+      "id": "articles-gender-indefinite-un-une-2",
+      "pattern": "indefinite-un-une",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "Il y a ____ stylo sur la table.",
+      "options": [
+        "un",
+        "une",
+        "des"
+      ],
+      "answers": [
+        "un"
+      ],
+      "hint": "Is stylo masculine or feminine? There is only one.",
+      "feedback": "Stylo is a masculine noun. Pick the singular article that matches.",
+      "explanation": "Stylo is masculine singular, so it takes un. Une is feminine and des is plural."
+    },
+    {
+      "id": "articles-gender-indefinite-un-une-3",
+      "pattern": "indefinite-un-une",
+      "type": "complete",
+      "instruction": "Write un or une.",
+      "source": "Nous avons ____ jardin derrière la maison.",
+      "answers": [
+        "un"
+      ],
+      "hint": "Jardin is one garden. What is its gender?",
+      "feedback": "Jardin is masculine.",
+      "explanation": "Le jardin is masculine, so one garden is un jardin."
+    },
+    {
+      "id": "articles-gender-indefinite-un-une-4",
+      "pattern": "indefinite-un-une",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I have a brother.",
+      "answers": [
+        "J’ai un frère."
+      ],
+      "hint": "A brother is male, and nouns for men are usually masculine.",
+      "feedback": "Use the masculine singular article with frère.",
+      "explanation": "Frère is masculine, so a brother is un frère. Je + ai becomes j’ai."
+    },
+    {
+      "id": "articles-gender-indefinite-un-une-5",
+      "pattern": "indefinite-un-une",
+      "type": "repair",
+      "instruction": "Fix the article.",
+      "source": "Il y a une lit dans la chambre.",
+      "answers": [
+        "Il y a un lit dans la chambre."
+      ],
+      "hint": "Check the gender of lit.",
+      "feedback": "Lit is not feminine.",
+      "explanation": "Le lit is masculine, so the indefinite article is un: un lit."
+    },
+    {
+      "id": "articles-gender-indefinite-un-une-6",
+      "pattern": "indefinite-un-une",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "She has a black cat.",
+      "tokens": [
+        "noir.",
+        "Elle",
+        "une",
+        "a",
+        "chat",
+        "un"
+      ],
+      "answers": [
+        "Elle a un chat noir."
+      ],
+      "hint": "Is chat masculine or feminine? Leave one article tile unused.",
+      "feedback": "The article must match chat, which is masculine.",
+      "explanation": "Chat is masculine singular, so it takes un. The colour adjective noir comes after the noun."
+    },
+    {
+      "id": "articles-gender-definite-le-la-1",
+      "pattern": "definite-le-la",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "____ porte est fermée.",
+      "options": [
+        "Le",
+        "La",
+        "Les"
+      ],
+      "answers": [
+        "La"
+      ],
+      "hint": "The adjective fermée is a clue to the gender of porte.",
+      "feedback": "Fermée ends in -e, so porte is feminine, and there is only one door.",
+      "explanation": "Porte is feminine singular, so the definite article is la. The adjective fermée agrees with it."
+    },
+    {
+      "id": "articles-gender-definite-le-la-2",
+      "pattern": "definite-le-la",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "Je cherche ____ sac de Marie.",
+      "options": [
+        "le",
+        "la",
+        "les"
+      ],
+      "answers": [
+        "le"
+      ],
+      "hint": "One bag, a specific one. What is the gender of sac?",
+      "feedback": "Sac is masculine and singular.",
+      "explanation": "Sac is masculine singular, so the definite article is le. Les would need a plural noun."
+    },
+    {
+      "id": "articles-gender-definite-le-la-3",
+      "pattern": "definite-le-la",
+      "type": "complete",
+      "instruction": "Write le or la.",
+      "source": "Où est ____ gare, s’il vous plaît ?",
+      "answers": [
+        "la"
+      ],
+      "hint": "One specific station. Is gare masculine or feminine?",
+      "feedback": "Gare is feminine.",
+      "explanation": "La gare is feminine, so it takes la."
+    },
+    {
+      "id": "articles-gender-definite-le-la-4",
+      "pattern": "definite-le-la",
+      "type": "repair",
+      "instruction": "Fix the article.",
+      "source": "Le maison est grande.",
+      "answers": [
+        "La maison est grande."
+      ],
+      "hint": "Look at the adjective grande: it shows the gender of maison.",
+      "feedback": "Maison is feminine.",
+      "explanation": "Maison is feminine, so it takes la. The feminine adjective grande confirms it."
+    },
+    {
+      "id": "articles-gender-definite-le-la-5",
+      "pattern": "definite-le-la",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The bread is on the table.",
+      "answers": [
+        "Le pain est sur la table."
+      ],
+      "hint": "Each noun needs its own article. What are the genders of pain and table?",
+      "feedback": "Pain is masculine and table is feminine.",
+      "explanation": "Pain is masculine (le pain) and table is feminine (la table)."
+    },
+    {
+      "id": "articles-gender-definite-le-la-6",
+      "pattern": "definite-le-la",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "The boy opens the window.",
+      "tokens": [
+        "la",
+        "Le",
+        "fenêtre.",
+        "ouvre",
+        "garçon",
+        "le"
+      ],
+      "answers": [
+        "Le garçon ouvre la fenêtre."
+      ],
+      "hint": "A boy is male. Is fenêtre masculine or feminine? One tile stays unused.",
+      "feedback": "Garçon is masculine and fenêtre is feminine: match each article to its noun.",
+      "explanation": "Garçon is masculine, so le garçon; fenêtre is feminine, so la fenêtre."
+    },
+    {
+      "id": "articles-gender-elision-l-1",
+      "pattern": "elision-l",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "____ école est près de chez moi.",
+      "options": [
+        "Le",
+        "La",
+        "L’"
+      ],
+      "answers": [
+        "L’"
+      ],
+      "hint": "École begins with a vowel sound.",
+      "feedback": "Before a vowel, le and la lose their vowel.",
+      "explanation": "École starts with a vowel, so la becomes l’: l’école."
+    },
+    {
+      "id": "articles-gender-elision-l-2",
+      "pattern": "elision-l",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "Je lave ____ assiette.",
+      "options": [
+        "le",
+        "la",
+        "l’"
+      ],
+      "answers": [
+        "l’"
+      ],
+      "hint": "Listen to the first sound of assiette.",
+      "feedback": "Assiette begins with a vowel.",
+      "explanation": "Before a vowel, la becomes l’: l’assiette."
+    },
+    {
+      "id": "articles-gender-elision-l-3",
+      "pattern": "elision-l",
+      "type": "complete",
+      "instruction": "Write le, la or l’.",
+      "source": "Tu vois ____ arbre là-bas ?",
+      "answers": [
+        "l’"
+      ],
+      "hint": "Arbre begins with a vowel sound.",
+      "feedback": "Le cannot stand before a vowel.",
+      "explanation": "Arbre starts with a vowel, so le becomes l’: l’arbre."
+    },
+    {
+      "id": "articles-gender-elision-l-4",
+      "pattern": "elision-l",
+      "type": "rewrite",
+      "instruction": "Replace maison with église. Change the article if needed.",
+      "source": "La maison est belle.",
+      "answers": [
+        "L’église est belle."
+      ],
+      "hint": "Église is feminine too, but look at its first letter.",
+      "feedback": "The gender stays the same, but the first sound of the noun changes the article.",
+      "explanation": "Église begins with a vowel, so la becomes l’: l’église."
+    },
+    {
+      "id": "articles-gender-elision-l-5",
+      "pattern": "elision-l",
+      "type": "repair",
+      "instruction": "Fix the article.",
+      "source": "Le homme parle au téléphone.",
+      "answers": [
+        "L’homme parle au téléphone."
+      ],
+      "hint": "The h in homme is silent.",
+      "feedback": "Homme sounds as if it begins with a vowel.",
+      "explanation": "The h in homme is silent, so le becomes l’: l’homme."
+    },
+    {
+      "id": "articles-gender-elision-l-6",
+      "pattern": "elision-l",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The hotel is expensive.",
+      "answers": [
+        "L’hôtel est cher.",
+        "L’hôtel coûte cher."
+      ],
+      "hint": "The h in hôtel is silent.",
+      "feedback": "Remember what happens to le before a silent h.",
+      "explanation": "Hôtel has a silent h, so le becomes l’: l’hôtel. Cher is masculine to match it (l’hôtel coûte cher works too)."
+    },
+    {
+      "id": "articles-gender-gender-endings-1",
+      "pattern": "gender-endings",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "C’est ____ question difficile.",
+      "options": [
+        "un",
+        "une",
+        "des"
+      ],
+      "answers": [
+        "une"
+      ],
+      "hint": "Nouns ending in -tion are almost always feminine.",
+      "feedback": "Look at the ending of question.",
+      "explanation": "Question ends in -tion, a feminine ending, so it takes une."
+    },
+    {
+      "id": "articles-gender-gender-endings-2",
+      "pattern": "gender-endings",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "____ plage est belle ce matin.",
+      "options": [
+        "Le",
+        "La",
+        "L’"
+      ],
+      "answers": [
+        "La"
+      ],
+      "hint": "Most -age nouns are masculine, but a few everyday ones are exceptions.",
+      "feedback": "This -age noun is one of the exceptions.",
+      "explanation": "Plage is one of the feminine -age exceptions, like page and image: la plage."
+    },
+    {
+      "id": "articles-gender-gender-endings-3",
+      "pattern": "gender-endings",
+      "type": "complete",
+      "instruction": "Write un or une.",
+      "source": "Je prends ____ médicament le soir.",
+      "answers": [
+        "un"
+      ],
+      "hint": "Nouns ending in -ment are usually masculine.",
+      "feedback": "Look at the ending of médicament.",
+      "explanation": "Médicament ends in -ment, a masculine ending: un médicament."
+    },
+    {
+      "id": "articles-gender-gender-endings-4",
+      "pattern": "gender-endings",
+      "type": "rewrite",
+      "instruction": "Replace voiture with bateau and change the article.",
+      "source": "La voiture est rouge.",
+      "answers": [
+        "Le bateau est rouge."
+      ],
+      "hint": "Nouns ending in -eau are usually masculine.",
+      "feedback": "The new noun has a masculine ending.",
+      "explanation": "Bateau ends in -eau, which is masculine, so la becomes le. Rouge does not change."
+    },
+    {
+      "id": "articles-gender-gender-endings-5",
+      "pattern": "gender-endings",
+      "type": "repair",
+      "instruction": "Fix the article.",
+      "source": "La tourisme est important ici.",
+      "answers": [
+        "Le tourisme est important ici."
+      ],
+      "hint": "Nouns ending in -isme are masculine. The adjective important is a clue too.",
+      "feedback": "Look at the ending of tourisme.",
+      "explanation": "Tourisme ends in -isme, a masculine ending, so it takes le. Important is masculine to match."
+    },
+    {
+      "id": "articles-gender-gender-endings-6",
+      "pattern": "gender-endings",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "He is buying a present.",
+      "tokens": [
+        "un",
+        "cadeau.",
+        "Il",
+        "achète",
+        "une"
+      ],
+      "answers": [
+        "Il achète un cadeau."
+      ],
+      "hint": "Nouns ending in -eau are usually masculine. One article tile stays unused.",
+      "feedback": "Cadeau has a masculine ending.",
+      "explanation": "Cadeau ends in -eau, which is masculine: un cadeau."
+    },
+    {
+      "id": "articles-gender-general-statements-1",
+      "pattern": "general-statements",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "J’adore ____ chocolat.",
+      "options": [
+        "le",
+        "un",
+        "du"
+      ],
+      "answers": [
+        "le"
+      ],
+      "hint": "After adorer you are talking about chocolate in general.",
+      "feedback": "Verbs of liking take the definite article.",
+      "explanation": "With aimer, adorer and détester, French uses le, la, les for the thing in general: j’adore le chocolat."
+    },
+    {
+      "id": "articles-gender-general-statements-2",
+      "pattern": "general-statements",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "Elle déteste ____ pluie.",
+      "options": [
+        "la",
+        "une",
+        "de la"
+      ],
+      "answers": [
+        "la"
+      ],
+      "hint": "She hates rain in general, not one rain.",
+      "feedback": "Détester works like aimer: it takes the definite article.",
+      "explanation": "Détester is a verb of liking and disliking, so it takes the definite article: la pluie."
+    },
+    {
+      "id": "articles-gender-general-statements-3",
+      "pattern": "general-statements",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "Nous avons ____ fils et une fille.",
+      "options": [
+        "un",
+        "le",
+        "du"
+      ],
+      "answers": [
+        "un"
+      ],
+      "hint": "Count them: one son and one daughter.",
+      "feedback": "This is one of something, not a general statement.",
+      "explanation": "For one of something, use the indefinite article: un fils, like une fille."
+    },
+    {
+      "id": "articles-gender-general-statements-4",
+      "pattern": "general-statements",
+      "type": "complete",
+      "instruction": "Write the article.",
+      "source": "Tu aimes ____ musique classique ?",
+      "answers": [
+        "la"
+      ],
+      "hint": "Aimer talks about something in general.",
+      "feedback": "After aimer, use the definite article that matches musique.",
+      "explanation": "Aimer takes the definite article, and musique is feminine: la musique classique."
+    },
+    {
+      "id": "articles-gender-general-statements-5",
+      "pattern": "general-statements",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I like tea.",
+      "answers": [
+        "J’aime le thé.",
+        "J’aime bien le thé."
+      ],
+      "hint": "English has no article here, but French needs one.",
+      "feedback": "French puts an article before a thing you like in general.",
+      "explanation": "Likes take the definite article in French: j’aime le thé. Thé is masculine."
+    },
+    {
+      "id": "articles-gender-general-statements-6",
+      "pattern": "general-statements",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "Cats are cute.",
+      "answers": [
+        "Les chats sont mignons."
+      ],
+      "hint": "This is about cats in general.",
+      "feedback": "A general statement needs the definite article, even with no article in English.",
+      "explanation": "A general statement about a whole group takes les: les chats sont mignons."
+    },
+    {
+      "id": "articles-gender-general-statements-7",
+      "pattern": "general-statements",
+      "type": "repair",
+      "instruction": "Fix the article.",
+      "source": "Il aime une natation.",
+      "answers": [
+        "Il aime la natation."
+      ],
+      "hint": "He likes swimming as a sport in general.",
+      "feedback": "Aimer does not take un or une for a general like.",
+      "explanation": "Aimer takes the definite article. Natation ends in -tion, so it is feminine: la natation."
+    },
+    {
+      "id": "articles-gender-general-statements-8",
+      "pattern": "general-statements",
+      "type": "rewrite",
+      "instruction": "Replace boit with aime to state a general like, and change the article.",
+      "source": "Il boit un thé.",
+      "answers": [
+        "Il aime le thé."
+      ],
+      "hint": "A general like takes a different article from one cup.",
+      "feedback": "One cup takes un, but a like in general does not.",
+      "explanation": "Un thé is one cup of tea. Aimer talks about tea in general, so it takes le: il aime le thé."
+    },
+    {
+      "id": "articles-gender-general-statements-9",
+      "pattern": "general-statements",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "Sport is good for your health.",
+      "tokens": [
+        "bon",
+        "Le",
+        "pour",
+        "santé.",
+        "une",
+        "est",
+        "sport",
+        "la"
+      ],
+      "answers": [
+        "Le sport est bon pour la santé."
+      ],
+      "hint": "Both nouns are used in a general sense. One tile stays unused.",
+      "feedback": "General statements need the definite article.",
+      "explanation": "Le sport and la santé are both general ideas, so both take the definite article. Santé ends in -té, which is feminine."
+    },
+    {
+      "id": "articles-gender-plural-articles-1",
+      "pattern": "plural-articles",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "J’achète ____ pommes au marché.",
+      "options": [
+        "des",
+        "une",
+        "un"
+      ],
+      "answers": [
+        "des"
+      ],
+      "hint": "Pommes is plural and not specific.",
+      "feedback": "Look at the ending of pommes.",
+      "explanation": "Pommes is plural, so the indefinite article is des."
+    },
+    {
+      "id": "articles-gender-plural-articles-2",
+      "pattern": "plural-articles",
+      "type": "choose",
+      "instruction": "Choose the right article.",
+      "source": "____ enfants jouent dans le jardin.",
+      "options": [
+        "Les",
+        "Le",
+        "L’"
+      ],
+      "answers": [
+        "Les"
+      ],
+      "hint": "Enfants ends in -s and the verb is plural.",
+      "feedback": "Le and l’ are only for one.",
+      "explanation": "Enfants is plural, so the definite article is les. There is no elision in the plural."
+    },
+    {
+      "id": "articles-gender-plural-articles-3",
+      "pattern": "plural-articles",
+      "type": "complete",
+      "instruction": "Write the indefinite article.",
+      "source": "Il y a ____ fleurs sur la table.",
+      "answers": [
+        "des"
+      ],
+      "hint": "Fleurs is plural.",
+      "feedback": "Un and une are only for one.",
+      "explanation": "The plural of un and une is des: des fleurs."
+    },
+    {
+      "id": "articles-gender-plural-articles-4",
+      "pattern": "plural-articles",
+      "type": "rewrite",
+      "instruction": "Make le livre plural. The verb changes too.",
+      "source": "Le livre est sur la table.",
+      "answers": [
+        "Les livres sont sur la table."
+      ],
+      "hint": "Change the article, add the plural ending and make the verb plural.",
+      "feedback": "Three words change: the article, the noun and the verb.",
+      "explanation": "Le becomes les, livre takes -s, and est becomes sont with a plural subject."
+    },
+    {
+      "id": "articles-gender-plural-articles-5",
+      "pattern": "plural-articles",
+      "type": "repair",
+      "instruction": "Fix the plural.",
+      "source": "Les voiture sont rapides.",
+      "answers": [
+        "Les voitures sont rapides."
+      ],
+      "hint": "Les tells you the noun is plural.",
+      "feedback": "The noun must show the plural too.",
+      "explanation": "After les, the noun takes the plural -s: les voitures."
+    },
+    {
+      "id": "articles-gender-plural-articles-6",
+      "pattern": "plural-articles",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The girls are at school.",
+      "answers": [
+        "Les filles sont à l’école."
+      ],
+      "hint": "The girls is plural; school begins with a vowel.",
+      "feedback": "Check the article and ending of the plural noun.",
+      "explanation": "Les filles is the plural of la fille. École begins with a vowel, so à la becomes à l’: à l’école."
+    },
+    {
+      "id": "articles-gender-plural-articles-7",
+      "pattern": "plural-articles",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "We have (some) chairs.",
+      "tokens": [
+        "chaises.",
+        "des",
+        "Nous",
+        "les",
+        "avons"
+      ],
+      "answers": [
+        "Nous avons des chaises."
+      ],
+      "hint": "Some chairs, not specific ones. One tile stays unused.",
+      "feedback": "Some chairs are not particular chairs.",
+      "explanation": "Des is the plural of une for some unspecified chairs; les would mean the chairs."
+    },
+    {
+      "id": "articles-gender-irregular-plurals-1",
+      "pattern": "irregular-plurals",
+      "type": "choose",
+      "instruction": "Choose the right plural.",
+      "source": "Il y a trois ____ sur le lac.",
+      "options": [
+        "bateau",
+        "bateaus",
+        "bateaux"
+      ],
+      "answers": [
+        "bateaux"
+      ],
+      "hint": "Nouns ending in -eau do not take -s in the plural.",
+      "feedback": "Check the plural ending for -eau nouns.",
+      "explanation": "Nouns in -eau add -x in the plural: un bateau, des bateaux."
+    },
+    {
+      "id": "articles-gender-irregular-plurals-2",
+      "pattern": "irregular-plurals",
+      "type": "choose",
+      "instruction": "Choose the right plural.",
+      "source": "Les ____ sont à la ferme.",
+      "options": [
+        "cheval",
+        "chevals",
+        "chevaux"
+      ],
+      "answers": [
+        "chevaux"
+      ],
+      "hint": "Most nouns ending in -al change their ending in the plural.",
+      "feedback": "Think about the plural of journal.",
+      "explanation": "Most nouns in -al become -aux in the plural: un cheval, des chevaux."
+    },
+    {
+      "id": "articles-gender-irregular-plurals-3",
+      "pattern": "irregular-plurals",
+      "type": "complete",
+      "instruction": "Write bus in the plural.",
+      "source": "Je prends deux ____ (bus) pour aller au travail.",
+      "answers": [
+        "bus"
+      ],
+      "hint": "Bus already ends in -s.",
+      "feedback": "Nouns that already end in -s do not add anything.",
+      "explanation": "Nouns ending in -s, -x or -z stay the same in the plural: un bus, deux bus."
+    },
+    {
+      "id": "articles-gender-irregular-plurals-4",
+      "pattern": "irregular-plurals",
+      "type": "complete",
+      "instruction": "Write journal in the plural.",
+      "source": "Tu lis les ____ (journal) le matin ?",
+      "answers": [
+        "journaux"
+      ],
+      "hint": "Journal ends in -al.",
+      "feedback": "Nouns in -al usually change their ending in the plural.",
+      "explanation": "Most nouns in -al become -aux in the plural: un journal, des journaux."
+    },
+    {
+      "id": "articles-gender-irregular-plurals-5",
+      "pattern": "irregular-plurals",
+      "type": "rewrite",
+      "instruction": "Make it plural. The verb changes too.",
+      "source": "Le gâteau est délicieux.",
+      "answers": [
+        "Les gâteaux sont délicieux."
+      ],
+      "hint": "Gâteau ends in -eau; délicieux already ends in -x.",
+      "feedback": "Check the plural ending of gâteau.",
+      "explanation": "Gâteau adds -x: les gâteaux. Délicieux already ends in -x, so it does not change, and est becomes sont."
+    },
+    {
+      "id": "articles-gender-irregular-plurals-6",
+      "pattern": "irregular-plurals",
+      "type": "repair",
+      "instruction": "Fix the plural.",
+      "source": "Les enfants aiment les jeus vidéo.",
+      "answers": [
+        "Les enfants aiment les jeux vidéo."
+      ],
+      "hint": "Jeu ends in -eu.",
+      "feedback": "Nouns in -eu usually do not take -s.",
+      "explanation": "Nouns in -eu add -x in the plural: un jeu, des jeux. Vidéo stays unchanged in jeux vidéo."
+    },
+    {
+      "id": "articles-gender-irregular-plurals-7",
+      "pattern": "irregular-plurals",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The birds are small.",
+      "answers": [
+        "Les oiseaux sont petits."
+      ],
+      "hint": "The bird is l’oiseau, which ends in -eau.",
+      "feedback": "Check the plural of oiseau and the adjective agreement.",
+      "explanation": "Oiseau adds -x in the plural: les oiseaux. Petit takes -s to agree."
+    },
+    {
+      "id": "articles-gender-irregular-plurals-8",
+      "pattern": "irregular-plurals",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "The hospitals are big.",
+      "tokens": [
+        "hôpitaux",
+        "grands.",
+        "Les",
+        "sont",
+        "hôpitals"
+      ],
+      "answers": [
+        "Les hôpitaux sont grands."
+      ],
+      "hint": "Hôpital ends in -al. One tile stays unused.",
+      "feedback": "Choose the right plural of hôpital.",
+      "explanation": "Hôpital ends in -al, so its plural is hôpitaux."
+    }
+  ]
+}

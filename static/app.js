@@ -20,16 +20,20 @@ let heardCard = '';
 const listening = () => listenMode && direction === 'fr-en';
 const headphones = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>';
 // Echo always opens on Home; each screen change after that is a history entry, so Back returns to it.
+// A place names a screen and what it shows: 'grammar', 'topic|negation', 'exercise|test:negation'.
 let screen = 'home';
 let depth = 0;
 const trail = ['home'];
 // A link may ask for one screen (#practice, #grammar); the address drops it, so a reload opens Home.
 const requestedScreen = location.hash.slice(1);
 history.replaceState({ echo: 'home', depth: 0 }, '', location.pathname + location.search);
-let topicId = readPreference('echo.topic', '');
+let topicId = '';
+// A scope is one resumable session line: '<topic>' practice, 'test:<topic>' topic test, 'unit:<unit>' unit test.
+let scope = '';
 let snapshot = null;
 let grammar = null;
-let topics = null;
+let units = null;
+let topicPage = null;
 let draft = '';
 let tokenOrder = [];
 let draftKey = '';
@@ -125,8 +129,14 @@ function applyGrammar(next, preserveDraft = false) {
     draft = next.session?.current?.answer || '';
     tokenOrder = [...(next.session?.current?.tokenOrder || [])];
   }
-  draftKey = key; grammar = next; topicId = next.topic.id;
-  savePreference('echo.topic', topicId);
+  draftKey = key; grammar = next; scope = next.scope;
+  if (next.topic) { topicId = next.topic.id; topicPage = next.topic; }
+}
+// Switching scope drops the other scope's snapshot, so a loading screen never shows another session's questions.
+function enterScope(key) {
+  if (key !== scope) { grammar = null; draftKey = ''; }
+  scope = key;
+  if (!key.startsWith('unit:')) topicId = key.replace(/^test:/, '');
 }
 function noticeHTML() {
   if (!notice) return '';
@@ -134,6 +144,7 @@ function noticeHTML() {
 }
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
 function back(label, action) { return `<button class="back" data-action="${action}" ${busy ? 'disabled' : ''}><span aria-hidden="true">←</span> ${label}</button>`; }
+function place() { return screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen; }
 function record(next) {
   depth += 1; trail.length = depth; trail[depth] = next;
   history.pushState({ echo: next, depth }, '');
@@ -158,7 +169,8 @@ function render() {
   document.querySelector('#about-button').disabled = busy;
   if (screen === 'practice') renderPractice();
   else if (screen === 'browse') renderBrowse();
-  else if (screen === 'grammar') renderTopics();
+  else if (screen === 'grammar') renderGrammar();
+  else if (screen === 'topic') renderTopic();
   else if (screen === 'exercise') renderExercise();
   else renderHome();
 }
@@ -256,28 +268,115 @@ function renderBrowseResults() {
   const empty = browseShow === 'all' ? 'No words match. Try another spelling or category.' : 'No words here yet. Practise some vocabulary and they will appear.';
   container.innerHTML = `<p class="browse-count" role="status">${filtered.length} ${filtered.length === 1 ? 'word' : 'words'}${hideTranslations && filtered.length ? ' · recall each one, then check it' : ''}</p>${filtered.map((word) => `<article class="word-row"><div>${rowText(word)}<small>${history(word)}</small></div><div class="word-controls"><small>${esc(({ new: 'New', learning: 'Learning', due: 'Due', scheduled: 'Scheduled' })[word.status])}</small><button class="icon" data-play-word="${esc(word.id)}" aria-label="Pronounce ${esc(word.fr)}">${speaker}</button></div></article>`).join('') || `<p class="empty-list">${empty}</p>`}`;
 }
-function renderTopics() {
-  main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}</div><h1>Grammar & sentences</h1><p class="subtitle">Pick something you want to practise.</p>${loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : `<div class="topic-list">${(topics || []).map((topic) => `<button class="topic-row" data-topic="${esc(topic.id)}" ${locked() ? 'disabled' : ''}><span class="topic-mark" aria-hidden="true">${esc(topic.mark)}</span><span class="copy"><h2>${esc(topic.title)}</h2><p>${esc(topic.description)}</p>${topic.hasActiveSession ? '<small>Continue your round</small>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button>`).join('')}</div>`}</section>`;
+function topicRowHTML(topic) {
+  const parts = [];
+  if (topic.progress.seen) parts.push(`${topic.progress.seen} of ${topic.exerciseCount} practised`);
+  if (topic.test.best) parts.push(`best test ${topic.test.best.score}/${topic.test.best.total}`);
+  const active = topic.hasActiveSession && topic.hasActiveTest ? 'Round and test in progress' : topic.hasActiveSession ? 'Continue your round' : topic.hasActiveTest ? 'Continue your test' : '';
+  // Marks run from "du" to "ce · cet · cette": each " · " part gets its own line so the badge column stays narrow.
+  const mark = topic.mark.split(' · ').map((part) => `<span>${esc(part)}</span>`).join('');
+  return `<button class="topic-row" data-topic="${esc(topic.id)}" ${locked() ? 'disabled' : ''}><span class="topic-mark" aria-hidden="true">${mark}</span><span class="copy"><span class="topic-name"><h3>${esc(topic.title)}</h3><span class="level-tag">${esc(topic.level)}</span></span><p>${esc(topic.description)}</p>${parts.length ? `<small class="topic-progress">${parts.join(' · ')}</small>` : ''}${active ? `<small>${active}</small>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button>`;
+}
+function renderGrammar() {
+  const list = (units || []).map((unit, index) => `<section class="unit" aria-labelledby="unit-${esc(unit.id)}"><div class="unit-head"><div class="unit-copy"><p class="unit-kicker">Unit ${index + 1}</p><h2 id="unit-${esc(unit.id)}">${esc(unit.title)}</h2><p>${esc(unit.description)}</p></div><button class="secondary unit-test" data-scope="unit:${esc(unit.id)}" ${locked() ? 'disabled' : ''}>${unit.hasActiveTest ? 'Continue unit test' : `Unit test · ${unit.testLength}`}${unit.test.best ? `<small>best ${unit.test.best.score}/${unit.test.best.total}</small>` : ''}</button></div><div class="topic-list">${unit.topics.map(topicRowHTML).join('')}</div></section>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}</div><h1>Grammar & sentences</h1><p class="subtitle">Practise a topic, then test yourself. Each unit ends with a test across its topics.</p>${units ? list : loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : ''}</section>`;
+}
+// The example holds two or three sentences separated by " · "; each gets its own line.
+function exampleHTML(topic) { return `<div class="rule-example" lang="fr">${topic.example.split(' · ').map((line) => `<p>${esc(line)}</p>`).join('')}</div>`; }
+function renderTopic() {
+  const topic = topicPage?.id === topicId ? topicPage : units?.flatMap((unit) => unit.topics).find((entry) => entry.id === topicId);
+  if (!topic) { main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div>${loading ? '<div class="loading-state" role="status">Opening the topic…</div>' : ''}</section>`; return; }
+  const { progress, test } = topic;
+  const practised = progress.seen ? `${progress.seen} of ${topic.exerciseCount} questions practised · ${progress.independent} on your own · ${progress.needsReview} to revisit` : `${topic.exerciseCount} questions to practise`;
+  const history = test.taken ? `<div class="history-row"><span>Best</span><strong>${test.best.score} / ${test.best.total}</strong></div><div class="history-row"><span>Last · ${esc(dateLabel(test.last.finishedAt))}</span><strong>${test.last.score} / ${test.last.total}</strong></div><div class="history-row"><span>Taken</span><strong>${test.taken} ${test.taken === 1 ? 'time' : 'times'}</strong></div>` : `<p class="caption">No tests yet. A test asks ${topic.testLength} questions with no help and one try each; anything you miss comes back first when you practise.</p>`;
+  main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div><p class="topic-kicker" lang="fr" aria-hidden="true">${esc(topic.mark)}</p><div class="topic-heading"><h1>${esc(topic.title)}</h1><span class="level-tag">${esc(topic.level)}</span></div><p class="subtitle">${esc(topic.description)}</p><div class="topic-actions"><button class="primary" data-scope="${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveSession ? 'Continue your round' : `Practise · ${topic.practiceLength} questions`}</button><button class="secondary" data-scope="test:${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveTest ? 'Continue your test' : `Take the test · ${topic.testLength} questions`}</button></div><p class="caption topic-meta">${practised}</p><section class="rule-card" aria-labelledby="rule-heading"><h2 id="rule-heading">The rule</h2><p>${esc(topic.rule)}</p>${exampleHTML(topic)}${topic.aside ? `<p>${esc(topic.aside)}</p>` : ''}</section><section class="test-history" aria-labelledby="history-heading"><h2 id="history-heading">Your tests</h2>${history}</section></section>`;
+}
+// Complete (and most choose) sources hold a ____ blank: show the whole sentence rather than the missing word alone.
+function completed(type, source, text) {
+  return (type === 'complete' || type === 'choose') && /_{2,}/.test(source) ? source.replace(/_{2,}/, text).replace(/(['’‘ʼ])\s+/g, '$1') : text;
+}
+function promptHTML(exercise) {
+  if (exercise.type === 'conjugate') {
+    const [verb, subject, tense] = exercise.source.split(' · ');
+    return `<dl class="conjugate-parts"><div><dt>Verb</dt><dd lang="fr">${esc(verb)}</dd></div><div><dt>Subject</dt><dd lang="fr">${esc(subject)}</dd></div><div><dt>Tense</dt><dd lang="fr">${esc(tense)}</dd></div></dl>`;
+  }
+  return `<p class="prompt-sentence" lang="${exercise.type === 'translate' ? 'en' : 'fr'}">${esc(exercise.source)}</p>`;
+}
+function answerHTML(current, disabled) {
+  const exercise = current.exercise;
+  if (exercise.type === 'build') return `<p class="answer-label">Your answer</p><div class="token-answer" role="group" aria-label="Your sentence">${tokenOrder.map((index) => `<button class="token" data-remove-token="${index}" aria-label="Remove ${esc(exercise.tokens[index])}" ${disabled ? 'disabled' : ''}>${esc(exercise.tokens[index])}</button>`).join('')}</div><div class="token-pool" role="group" aria-label="Available words">${exercise.tokens.map((text, index) => `<button class="token" data-token="${index}" ${disabled || tokenOrder.includes(index) ? 'disabled' : ''}>${esc(text)}</button>`).join('')}</div>`;
+  if (exercise.type === 'choose') {
+    const answer = current.settled ? current.feedback?.answer?.toLocaleLowerCase() : null;
+    return `<p class="answer-label" id="choice-label">Choose one</p><div class="choice-list" role="group" aria-labelledby="choice-label">${exercise.options.map((option) => {
+      const missed = current.misses.includes(option);
+      const right = option.toLocaleLowerCase() === answer;
+      const mark = missed ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">not this one</span></span>' : right ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">the answer</span></span>' : '';
+      return `<button class="choice${missed ? ' wrong' : right ? ' right' : ''}" data-choice="${esc(option)}" ${disabled || missed ? 'disabled' : ''}><span lang="fr">${esc(option)}</span>${mark}</button>`;
+    }).join('')}</div>`;
+  }
+  if (exercise.type === 'conjugate') return `<label class="answer-label" for="answer">Verb form</label><input id="answer" class="answer-line" lang="fr" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="Write the verb form…" value="${esc(draft)}" ${disabled ? 'readonly' : ''}>`;
+  const label = ({ complete: 'Missing word', translate: 'Your French' })[exercise.type] || 'Your answer';
+  const placeholder = ({ complete: 'Type the missing word…', translate: 'Write it in French…' })[exercise.type] || 'Write your sentence…';
+  return `<label class="answer-label" for="answer">${label}</label><textarea id="answer" lang="fr" autocomplete="off" autocapitalize="sentences" spellcheck="false" placeholder="${placeholder}" ${disabled ? 'readonly' : ''}>${esc(draft)}</textarea>`;
+}
+function feedbackHTML(current, test) {
+  const feedback = current.feedback;
+  if (!feedback) return '';
+  const exercise = current.exercise;
+  const tone = feedback.kind === 'incorrect' ? 'warn' : feedback.kind === 'alternative' || feedback.kind === 'shown' ? 'neutral' : '';
+  const title = test && current.settled
+    ? ({ correct: 'That’s right.', incorrect: 'Not quite.', alternative: 'Valid French, different form.' })[feedback.kind]
+    : ({ correct: current.assisted || current.attempts > 1 ? 'You’ve got it.' : 'That’s right.', incorrect: 'Not quite yet.', alternative: 'Valid French, different form.', shown: 'One correct answer' })[feedback.kind];
+  const answer = feedback.answer ? completed(exercise.type, exercise.source, feedback.answer) : '';
+  const model = answer && (feedback.kind === 'shown' || (test && feedback.kind !== 'correct')) ? `<p class="model-answer" lang="fr">${esc(answer)}</p>` : '';
+  return `<div class="feedback ${tone}" role="status"><strong>${title}</strong>${feedback.note ? `<p>${esc(feedback.note)}</p>` : ''}${model}<p>${esc(feedback.message)}</p>${feedback.spelling && answer ? `<span class="minor">A spelling detail to review: <span lang="fr">${esc(answer)}</span></span>` : ''}${feedback.kind === 'shown' ? '<span class="minor">This example stays in your revisit set.</span>' : ''}${!test && !current.settled ? `<button class="quiet" data-action="show-answer" ${locked() ? 'disabled' : ''}>Show one answer instead</button>` : ''}</div>`;
 }
 function renderExercise() {
-  if (!grammar || loading) { main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${back('Grammar', 'grammar')}</div><div class="loading-state" role="status">${loading ? 'Opening your round…' : 'Your round is saved on your Mac.'}</div></section>`; return; }
-  const { topic, session } = grammar;
+  const unitScope = scope.startsWith('unit:');
+  const testScope = unitScope || scope.startsWith('test:');
+  const backButton = unitScope ? back('Grammar', 'grammar') : back('Topic', 'topic-page');
+  if (!grammar || loading) { main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${backButton}</div><div class="loading-state" role="status">${loading || busy ? (testScope ? 'Opening your test…' : 'Opening your round…') : 'Your progress is saved on your Mac.'}</div></section>`; return; }
+  const { session } = grammar;
+  const heading = grammar.topic?.title ?? grammar.unit?.title ?? '';
   if (session?.complete) { renderSummary(); return; }
-  if (!session?.current) { main.innerHTML = `${noticeHTML()}<section class="summary"><div class="section-top">${back('Grammar', 'grammar')}</div><h1>${esc(topic.title)}</h1><p class="summary-line">${esc(topic.description)}</p><button class="primary dialog-action" data-action="new-round" ${locked() ? 'disabled' : ''}>Start a round</button></section>`; return; }
+  if (!session?.current) { main.innerHTML = `${noticeHTML()}<section class="summary"><div class="section-top">${backButton}</div><h1>${esc(heading)}</h1><p class="summary-line">${esc(grammar.topic?.description ?? grammar.unit?.description ?? '')}</p><button class="primary dialog-action" data-action="restart" ${locked() ? 'disabled' : ''}>${testScope ? 'Start the test' : 'Start a round'}</button></section>`; return; }
+  const test = session.mode === 'test';
   const current = session.current; const exercise = current.exercise;
   const disabled = locked() || current.settled;
-  const feedback = current.feedback;
-  main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${back('Grammar', 'grammar')}<button class="quiet" data-action="rule" aria-haspopup="dialog" ${locked() ? 'disabled' : ''}>The rule</button></div><div class="exercise-head"><h1>${esc(topic.title)}</h1><span class="progress">${session.index + 1} / ${session.total}</span></div><p class="prompt-instruction">${esc(exercise.instruction)}</p><p class="prompt-sentence" lang="fr">${esc(exercise.source)}</p><div class="answer-area"><label class="answer-label" ${exercise.type === 'build' ? '' : 'for="answer"'}>${exercise.type === 'complete' ? 'Missing word' : 'Your answer'}</label>${exercise.type === 'build' ? `<div class="token-answer" role="group" aria-label="Your sentence">${tokenOrder.map((index) => `<button class="token" data-remove-token="${index}" aria-label="Remove ${esc(exercise.tokens[index])}" ${disabled ? 'disabled' : ''}>${esc(exercise.tokens[index])}</button>`).join('')}</div><div class="token-pool" role="group" aria-label="Available words">${exercise.tokens.map((text, index) => `<button class="token" data-token="${index}" ${disabled || tokenOrder.includes(index) ? 'disabled' : ''}>${esc(text)}</button>`).join('')}</div>` : `<textarea id="answer" lang="fr" autocomplete="off" autocapitalize="sentences" spellcheck="false" placeholder="${exercise.type === 'complete' ? 'Type the missing word…' : 'Write your sentence…'}" ${disabled ? 'readonly' : ''}>${esc(draft)}</textarea>`}</div>${feedback ? `<div class="feedback ${feedback.kind === 'incorrect' ? 'warn' : feedback.kind === 'alternative' || feedback.kind === 'shown' ? 'neutral' : ''}" role="status"><strong>${({ correct: current.assisted || current.attempts > 1 ? 'You’ve got it.' : 'That’s right.', incorrect: 'Not quite yet.', alternative: 'Valid French, different form.', shown: 'One correct answer' })[feedback.kind]}</strong>${feedback.kind === 'shown' && feedback.answer ? `<p class="model-answer" lang="fr">${esc(feedback.answer)}</p>` : ''}<p>${esc(feedback.message)}</p>${feedback.spelling && feedback.answer ? `<span class="minor">A spelling detail to review: <span lang="fr">${esc(feedback.answer)}</span></span>` : ''}${feedback.kind === 'shown' ? '<span class="minor">This example stays in your revisit set.</span>' : ''}${!current.settled ? `<button class="quiet" data-action="show-answer" ${locked() ? 'disabled' : ''}>Show one answer instead</button>` : ''}</div>` : ''}${current.hint && hintOpen && !current.settled ? `<div class="rule-hint"><p>${esc(current.hint)}</p><button class="quiet" data-action="show-answer" ${locked() ? 'disabled' : ''}>Show one answer</button></div>` : ''}<div class="exercise-actions">${current.settled ? '<span></span>' : `<button class="quiet accent" data-action="hint" ${locked() ? 'disabled' : ''}>${current.hint && hintOpen ? 'Hide hint' : 'A little help'}</button>`}<button class="primary" data-action="${current.settled ? 'next' : 'check'}" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : current.settled ? session.index + 1 === session.total ? 'Finish round' : 'Next sentence' : 'Check answer'}</button></div>${current.assisted && !current.settled ? '<p class="assistance-note">Help used for this example.</p>' : ''}</section>`;
+  const last = session.index + 1 === session.total;
+  const nextLabel = test ? (last ? 'See your score' : 'Next question') : (last ? 'Finish round' : 'Next sentence');
+  const primary = current.settled ? `<button class="primary" data-action="next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : nextLabel}</button>`
+    : exercise.type === 'choose' ? '' : `<button class="primary" data-action="check" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Check answer'}</button>`;
+  const helpButton = !test && !current.settled ? `<button class="quiet accent" data-action="hint" ${locked() ? 'disabled' : ''}>${current.hint && hintOpen ? 'Hide hint' : 'A little help'}</button>` : '';
+  const actions = primary || helpButton ? `<div class="exercise-actions">${helpButton || '<span></span>'}${primary}</div>` : '';
+  const hint = !test && current.hint && hintOpen && !current.settled ? `<div class="rule-hint"><p>${esc(current.hint)}</p><button class="quiet" data-action="show-answer" ${locked() ? 'disabled' : ''}>Show one answer</button></div>` : '';
+  main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${backButton}${test ? '' : `<button class="quiet" data-action="rule" aria-haspopup="dialog" ${locked() ? 'disabled' : ''}>The rule</button>`}</div><div class="exercise-head"><h1>${esc(heading)}</h1><span class="progress">${test ? 'Test · ' : ''}${session.index + 1} / ${session.total}</span></div>${unitScope ? `<p class="question-topic">${esc(exercise.topicTitle)}</p>` : ''}<p class="prompt-instruction">${esc(exercise.instruction)}</p>${promptHTML(exercise)}<div class="answer-area">${answerHTML(current, disabled)}</div>${feedbackHTML(current, test)}${hint}${actions}${current.assisted && !current.settled ? '<p class="assistance-note">Help used for this example.</p>' : ''}</section>`;
+}
+function resultHTML(result, test, unitTest) {
+  const missed = result.outcome !== 'independent';
+  const context = result.type === 'translate' || result.type === 'conjugate' || (result.type === 'choose' && !/_{2,}/.test(result.source))
+    ? `<span class="result-context" lang="${result.type === 'translate' ? 'en' : 'fr'}">${esc(result.source)}</span>` : '';
+  const given = test && (missed || result.spelling) && result.given.trim()
+    ? `<span class="result-given">${result.type === 'choose' ? 'You chose' : 'You wrote'}: <span lang="fr">${esc(completed(result.type, result.source, result.given))}</span>${result.spelling ? ' · a spelling detail to review' : ''}</span>` : '';
+  const label = test ? (missed ? 'Missed' : 'Right') : ({ independent: 'On your own', helped: 'With help', revisit: 'To revisit' })[result.outcome];
+  return `<div class="result${test && missed ? ' missed' : ''}"><div class="result-text">${unitTest ? `<span class="result-topic">${esc(result.topicTitle)}</span>` : ''}<span lang="fr">${esc(completed(result.type, result.source, result.answer))}</span>${context}${given}</div><small>${label}</small></div>`;
 }
 function renderSummary() {
-  const { topic, session } = grammar;
-  const results = session.results.map((result) => {
-    const sentence = result.type === 'complete'
-      ? result.source.replace(/_{2,}/, result.answer).replace(/(['’‘ʼ])\s+/g, '$1')
-      : result.answer;
-    return `<div class="result"><span lang="fr">${esc(sentence)}</span><small>${({ independent: 'On your own', helped: 'With help', revisit: 'To revisit' })[result.outcome]}</small></div>`;
-  }).join('');
-  main.innerHTML = `${noticeHTML()}<section class="summary"><div class="section-top">${back('Grammar', 'grammar')}</div><h1>A good place to pause.</h1><p class="summary-line">${esc(topic.title)}, practised in ${session.results.length} examples.</p><div class="results">${results}</div><div class="summary-actions"><button class="primary" data-action="new-round" ${locked() ? 'disabled' : ''}>Another round</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Choose another topic</button></div></section>`;
+  const { session } = grammar;
+  const unitTest = grammar.kind === 'unit-test';
+  const backButton = unitTest ? back('Grammar', 'grammar') : back('Topic', 'topic-page');
+  const results = session.results.map((result) => resultHTML(result, session.mode === 'test', unitTest)).join('');
+  if (session.mode !== 'test') {
+    main.innerHTML = `${noticeHTML()}<section class="summary"><div class="section-top">${backButton}</div><h1>A good place to pause.</h1><p class="summary-line">${esc(grammar.topic.title)}, practised in ${session.results.length} examples.</p><div class="results">${results}</div><div class="summary-actions"><button class="primary" data-action="restart" ${locked() ? 'disabled' : ''}>Another round</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Choose another topic</button></div></section>`;
+    return;
+  }
+  const history = (grammar.topic ?? grammar.unit).test;
+  const misses = session.results.filter((result) => result.outcome !== 'independent');
+  const missedTopics = [...new Map(misses.map((result) => [result.topicId, result.topicTitle])).entries()];
+  const choices = [...(unitTest ? missedTopics.map(([id, title]) => ({ attr: `data-scope="${esc(id)}"`, label: `Practise ${title}` })) : [{ attr: `data-scope="${esc(grammar.topic.id)}"`, label: 'Practise this topic' }]), { attr: 'data-action="restart"', label: 'Take it again' }];
+  const buttons = choices.map((entry, index) => `<button class="${index ? 'secondary' : 'primary'}" ${entry.attr} ${locked() ? 'disabled' : ''}>${esc(entry.label)}</button>`).join('');
+  const line = `${misses.length ? `${misses.length} to revisit: they come back first when you practise.` : 'Every question right.'}${history.best ? ` Best ${history.best.score} / ${history.best.total} · ${history.taken} ${history.taken === 1 ? 'test' : 'tests'} taken.` : ''}`;
+  main.innerHTML = `${noticeHTML()}<section class="summary"><div class="section-top">${backButton}</div><p class="summary-kicker">${esc(grammar.topic?.title ?? grammar.unit.title)} · ${unitTest ? 'unit test' : 'test'}</p><h1 class="score"><span class="sr-only">Score: </span>${session.score} <span>/ ${session.total}</span></h1><p class="summary-line">${esc(line)}</p><div class="results">${results}</div><div class="summary-actions">${buttons}<button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Back to grammar</button></div></section>`;
 }
 async function fetchState(message = '') {
   const token = ++generation; loading = true;
@@ -294,45 +393,59 @@ async function fetchState(message = '') {
     render(); return false;
   }
 }
-async function loadGrammar(id = null, message = '', preserveDraft = false) {
+// Loads whatever the current grammar screen shows: the course, one topic, or one scope's session.
+async function loadGrammar(message = '', preserveDraft = false) {
   const token = ++generation; loading = true;
+  const target = screen;
+  const key = target === 'topic' ? topicId : target === 'exercise' ? scope : '';
   if (!retryAction?.body) { notice = message ? { kind: 'info', message } : null; retryAction = null; }
   render();
   try {
-    const result = await api(id ? `api/grammar/state?topic=${encodeURIComponent(id)}` : 'api/grammar');
+    const result = await api(key ? `api/grammar/state?scope=${encodeURIComponent(key)}` : 'api/grammar');
     if (token !== generation) return false;
-    if (id) applyGrammar(result, preserveDraft); else topics = result.topics;
+    if (target === 'topic') topicPage = result.topic;
+    else if (target === 'exercise') applyGrammar(result, preserveDraft);
+    else units = result.units;
     loading = false; render(); return true;
   } catch (error) {
     if (token !== generation) return false;
     loading = false;
-    if (!retryAction?.body) { notice = { message: error.message }; retryAction = { type: 'grammar-state', topicId: id, message, preserveDraft }; }
+    if (!retryAction?.body) { notice = { message: error.message }; retryAction = { type: 'grammar-state', place: place(), message, preserveDraft }; }
     render(); return false;
   }
+}
+function grammarAnnouncement() {
+  const session = grammar.session; const current = session?.current; const feedback = current?.feedback;
+  const test = session?.mode === 'test';
+  if (feedback) return `${test && current.settled ? (feedback.kind === 'correct' ? 'That’s right. ' : `Not quite. The answer: ${feedback.answer}. `) : ''}${feedback.message}`;
+  if (session?.complete) return test ? `Test complete: ${session.score} out of ${session.total}. Your score is saved.` : 'Round complete. Your progress is saved.';
+  return test ? 'Your test is saved.' : 'Your round is saved.';
 }
 async function runMutation(action) {
   if (busy) return;
   stopAudio(); busy = true; loading = false; ++generation;
   notice = null; retryAction = null;
-  const target = action.type.startsWith('grammar-') ? 'exercise' : 'practice';
-  if (target !== screen) record(target);
-  screen = target; render();
+  const grammarAction = action.type.startsWith('grammar-');
+  const target = grammarAction ? `exercise|${action.scope}` : 'practice';
+  if (target !== place()) record(target);
+  if (grammarAction) enterScope(action.scope);
+  screen = grammarAction ? 'exercise' : 'practice'; render();
   const paths = { start: 'api/session', grade: 'api/grade', undo: 'api/undo', 'extra-words': 'api/extra-words', 'review-early': 'api/review-early', 'grammar-start': 'api/grammar/session', 'grammar-answer': 'api/grammar/answer', 'grammar-help': 'api/grammar/help', 'grammar-next': 'api/grammar/next' }
   try {
     const result = await api(paths[action.type], { method: 'POST', body: JSON.stringify(action.body) });
-    if (action.type.startsWith('grammar-')) {
+    if (grammarAction) {
       applyGrammar(result, action.type === 'grammar-help');
       if (action.body.kind === 'hint') hintOpen = true;
     } else applySnapshot(result);
     busy = false; render();
     if (action.body.kind === 'rule') showRule();
-    else if (action.type === 'grammar-answer' && !grammar.session.current?.settled) document.querySelector('#answer')?.focus({ preventScroll: true });
+    else if (action.type === 'grammar-answer' && !grammar.session.current?.settled) (document.querySelector('#answer') || main.querySelector('.choice:not(:disabled)'))?.focus({ preventScroll: true });
     else main.focus({ preventScroll: true });
-    announce(action.type.startsWith('grammar-') ? grammar.session?.current?.feedback?.message || (grammar.session?.complete ? 'Round complete. Your progress is saved.' : 'Your round is saved.') : result.current ? `${action.type === 'undo' ? 'Last answer undone. ' : ''}${direction === 'en-fr' ? result.current.en : result.current.fr}` : 'Practice complete. Your progress is saved.');
+    announce(grammarAction ? grammarAnnouncement() : result.current ? `${action.type === 'undo' ? 'Last answer undone. ' : ''}${direction === 'en-fr' ? result.current.en : result.current.fr}` : 'Practice complete. Your progress is saved.');
   } catch (error) {
     busy = false;
     if (error.status === 409) {
-      if (action.type.startsWith('grammar-')) await loadGrammar(action.topicId, `${error.message} Your round was refreshed. Review the current example before answering.`, true);
+      if (grammarAction) await loadGrammar(`${error.message} This screen was refreshed. Review the current question before answering.`, true);
       else await fetchState(`${error.message} Your progress was refreshed. Reveal the current card again before answering.`);
     } else { notice = { message: error.message }; retryAction = action; render(); }
   }
@@ -340,10 +453,10 @@ async function runMutation(action) {
 // forward: an action that opens a screen (start practice, a topic, the word list) never walks back through history.
 function move(next, forward = false) {
   if (busy) return false;
-  if (next !== screen) {
-    // Home and the screen just behind this one are reached by walking back, so history holds no duplicate copies.
-    const steps = forward ? 0 : next === 'home' ? depth : trail[depth - 1] === next ? 1 : 0;
-    if (steps) { history.go(-steps); return false; }
+  if (next !== place()) {
+    // Home and any place already behind this one are reached by walking back, so history holds no duplicate copies.
+    const behind = forward || !depth ? -1 : trail.lastIndexOf(next, depth - 1);
+    if (behind >= 0) { history.go(behind - depth); return false; }
     record(next);
   }
   show(next);
@@ -351,8 +464,11 @@ function move(next, forward = false) {
 }
 function show(next) {
   stopAudio(); ++generation; ++browseGeneration; loading = false; revealed = false;
-  screen = next; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
-  if (next === 'home') fetchState();
+  const [name, arg = ''] = next.split('|');
+  if (name === 'topic') topicId = arg;
+  else if (name === 'exercise') enterScope(arg);
+  screen = name; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
+  if (name === 'home') fetchState();
 }
 async function startPractice() {
   if (busy) return;
@@ -391,25 +507,33 @@ async function loadBrowse() {
     browseLoading = false; browseError = error.message; renderBrowseResults();
   }
 }
-async function openTopic(id) {
+function openTopic(id) {
   if (locked()) return;
-  topicId = id; savePreference('echo.topic', id); grammar = null; hintOpen = true;
-  move('exercise', true);
-  if (await loadGrammar(id) && screen === 'exercise' && !grammar.session) startRound();
+  if (topicPage?.id !== id) topicPage = null;
+  if (move(`topic|${id}`, true)) loadGrammar();
 }
-function startRound() {
-  if (!locked() && topicId) runMutation({ type: 'grammar-start', topicId, body: { topicId, requestId: requestId() } });
+function startScope(key) {
+  if (locked() || !key) return;
+  hintOpen = true;
+  runMutation({ type: 'grammar-start', scope: key, body: { scope: key, requestId: requestId() } });
 }
 function grammarMutation(type, extra = {}) {
   const session = grammar?.session; const current = session?.current;
   if (locked() || !current || session.complete) return;
   if (type === 'answer' && current.settled || type === 'next' && !current.settled) return;
-  runMutation({ type: `grammar-${type}`, topicId, body: { sessionId: session.id, exerciseId: current.exercise.id, version: session.version, requestId: requestId(), ...extra } });
+  runMutation({ type: `grammar-${type}`, scope, body: { sessionId: session.id, exerciseId: current.exercise.id, version: session.version, requestId: requestId(), ...extra } });
 }
 function checkAnswer() {
-  const current = grammar?.session?.current; if (!current || current.settled) return;
+  const current = grammar?.session?.current; if (!current || current.settled || current.exercise.type === 'choose') return;
   if (current.exercise.type === 'build' ? !tokenOrder.length : !draft.trim()) { announce('Write an answer first.'); document.querySelector('#answer')?.focus(); return; }
   grammarMutation('answer', { answer: draft, ...(current.exercise.type === 'build' ? { tokenOrder: [...tokenOrder] } : {}) });
+}
+// A tap on an option is the check: in practice a wrong pick stays marked and the others remain; in a test it settles.
+function pickOption(option) {
+  const current = grammar?.session?.current;
+  if (!current || current.settled || current.exercise.type !== 'choose' || current.misses.includes(option)) return;
+  draft = option;
+  grammarMutation('answer', { answer: option });
 }
 function openDialog(title, body, kind) {
   stopAudio(); dialog.dataset.kind = kind;
@@ -418,7 +542,7 @@ function openDialog(title, body, kind) {
 }
 function showRule() {
   const topic = grammar.topic;
-  openDialog(topic.title, `<div class="dialog-copy"><p>${esc(topic.rule)}</p><div class="rule-example" lang="fr">${esc(topic.example)}</div><p>${esc(topic.aside)}</p></div><button class="primary dialog-action" data-action="close-dialog">Back to the sentence</button>`, 'rule');
+  openDialog(topic.title, `<div class="dialog-copy"><p>${esc(topic.rule)}</p>${exampleHTML(topic)}${topic.aside ? `<p>${esc(topic.aside)}</p>` : ''}</div><button class="primary dialog-action" data-action="close-dialog">Back to the sentence</button>`, 'rule');
 }
 function openOptions() {
   if (!snapshot) return;
@@ -447,7 +571,7 @@ function retry() {
   if (busy || !retryAction) return;
   const action = retryAction;
   if (action.body) runMutation(action);
-  else if (action.type === 'grammar-state') { if (move(action.topicId ? 'exercise' : 'grammar')) loadGrammar(action.topicId, action.message, action.preserveDraft); }
+  else if (action.type === 'grammar-state') { if (move(action.place)) loadGrammar(action.message, action.preserveDraft); }
   else fetchState(action.message);
 }
 
@@ -466,6 +590,8 @@ document.addEventListener('click', (event) => {
   if (button?.dataset.playWord) { const word = words?.find((entry) => entry.id === button.dataset.playWord); if (word) playFrench(`audio/${encodeURIComponent(word.id)}.mp3`); return; }
   if (button?.dataset.revealWord) { revealedWords.add(button.dataset.revealWord); renderBrowseResults(); return; }
   if (button?.dataset.topic) { openTopic(button.dataset.topic); return; }
+  if (button?.dataset.scope) { startScope(button.dataset.scope); return; }
+  if (button?.dataset.choice !== undefined) { pickOption(button.dataset.choice); return; }
   if (button?.dataset.token !== undefined || button?.dataset.removeToken !== undefined) {
     if (locked() || grammar?.session?.current?.settled) return;
     if (button.dataset.token !== undefined) tokenOrder.push(Number(button.dataset.token)); else tokenOrder = tokenOrder.filter((index) => index !== Number(button.dataset.removeToken));
@@ -478,6 +604,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'start') startPractice();
   else if (action === 'vocabulary') { if (move('practice')) fetchState(); }
   else if (action === 'grammar') { if (move('grammar')) loadGrammar(); }
+  else if (action === 'topic-page') { if (move(`topic|${topicId}`)) loadGrammar(); }
   else if (action === 'browse') browseWords();
   else if (action === 'studied') { browseShow = 'studied'; browseWords(); }
   else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
@@ -489,7 +616,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'undo') undo();
   else if (action === 'retry') retry();
   else if (action === 'retry-browse') loadBrowse();
-  else if (action === 'new-round') startRound();
+  else if (action === 'restart') startScope(scope);
   else if (action === 'check') checkAnswer();
   else if (action === 'next') { hintOpen = true; grammarMutation('next'); }
   else if (action === 'rule') grammarMutation('help', { kind: 'rule' });
@@ -514,6 +641,8 @@ document.addEventListener('submit', (event) => {
 document.addEventListener('keydown', (event) => {
   if (event.defaultPrevented || event.repeat || aboutDialog.open || dialog.open || busy || loading || locked()) return;
   if (screen === 'exercise' && (event.metaKey || event.ctrlKey) && event.key === 'Enter') { event.preventDefault(); if (grammar?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }
+  // The verb-form field is one line, so Enter checks it (and continues once it is settled).
+  if (screen === 'exercise' && event.key === 'Enter' && !event.shiftKey && event.target.matches('input#answer')) { event.preventDefault(); if (grammar?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }
   if (event.ctrlKey || event.altKey || event.metaKey || screen !== 'practice' || !snapshot?.current || event.target.closest('input,select,textarea,[contenteditable="true"]')) return;
   if (!revealed && (event.key === ' ' || event.key === 'Enter') && !event.target.closest('button,a')) { event.preventDefault(); reveal(); }
   else if (revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight') && (!event.target.closest('button,a') || event.target.closest('.card-zone'))) { event.preventDefault(); grade(event.key === 'ArrowRight'); }
@@ -525,6 +654,11 @@ for (const modal of [dialog, aboutDialog]) {
   modal.addEventListener('cancel', (event) => { if (busy) event.preventDefault(); });
   modal.addEventListener('click', (event) => { if (event.target === modal && !busy) { const box = modal.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) modal.close(); } });
 }
+// The control that opened the dialog was re-rendered while it opened, so return focus to its replacement.
+dialog.addEventListener('close', () => {
+  if (main.contains(document.activeElement) && document.activeElement !== main) return;
+  (main.querySelector(`[data-action="${dialog.dataset.kind}"]:not(:disabled)`) || main).focus({ preventScroll: true });
+});
 window.addEventListener('pagehide', stopAudio);
 document.addEventListener('visibilitychange', () => { if (!document.hidden && screen === 'home' && !busy && !loading && !dialog.open) fetchState(); });
 render();
@@ -533,19 +667,19 @@ window.addEventListener('popstate', (event) => {
   if (!state?.echo) return;
   if (busy) {
     // A save is in flight; stay on this screen and keep its history entry.
-    depth = state.depth + 1; trail.length = depth; trail[depth] = screen;
-    history.pushState({ echo: screen, depth }, '');
+    depth = state.depth + 1; trail.length = depth; trail[depth] = place();
+    history.pushState({ echo: place(), depth }, '');
     return;
   }
-  const target = state.echo === 'exercise' && !topicId ? 'grammar' : state.echo;
+  // Entries saved before places carried their topic or scope fall back to the grammar list.
+  const target = /^(topic|exercise)$/.test(state.echo) ? 'grammar' : state.echo;
   depth = state.depth; trail.length = depth + 1; trail[depth] = target;
   if (dialog.open) dialog.close();
   if (aboutDialog.open) aboutDialog.close();
   show(target);
-  if (target === 'practice') fetchState();
-  else if (target === 'browse') enterBrowse();
-  else if (target === 'grammar') loadGrammar();
-  else if (target === 'exercise') loadGrammar(topicId);
+  if (screen === 'practice') fetchState();
+  else if (screen === 'browse') enterBrowse();
+  else if (screen === 'grammar' || screen === 'topic' || screen === 'exercise') loadGrammar();
 });
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }

@@ -1,0 +1,753 @@
+{
+  "id": "contractions",
+  "unit": "determiners",
+  "level": "A1",
+  "title": "Au, aux, du, des",
+  "description": "Join à and de with le and les: au cinéma, aux cartes, la fin du film.",
+  "mark": "au · du",
+  "rule": "À and de merge with the articles le and les: à + le = au, à + les = aux, de + le = du, de + les = des. À la, à l’, de la and de l’ never change, and neither do the object pronouns le and les: je commence à le lire. Before a vowel or a silent h, use à l’ and de l’, never au or du: à l’école, de l’hôtel. This happens after verbs and phrases such as aller à, être à, penser à, parler de, venir de, près de, loin de, à côté de and en face de, and in phrases of belonging: la fin du film, le livre des enfants. Jouer à is for sports and games (jouer au foot, aux cartes), and jouer de is for instruments (jouer du piano, de la guitare).",
+  "example": "Je vais au cinéma, puis à la plage. · Nous parlons du film. · Elle joue du piano et au tennis.",
+  "aside": "Aux is also used before a vowel, because les never becomes l’: aux enfants, aux États-Unis. A few words with h count as starting with a consonant, so they take au and du: jouer au hockey. The preposition à always has a grave accent; a without an accent is the verb avoir.",
+  "exercises": [
+    {
+      "id": "contractions-a-le-au-1",
+      "pattern": "a-le-au",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ce soir, je vais ____ cinéma.",
+      "options": [
+        "au",
+        "à le",
+        "à la"
+      ],
+      "answers": [
+        "au"
+      ],
+      "hint": "Cinéma is masculine: à + le.",
+      "feedback": "À and the article le never stay side by side.",
+      "explanation": "À + le always contracts to au: je vais au cinéma."
+    },
+    {
+      "id": "contractions-a-le-au-2",
+      "pattern": "a-le-au",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Mon père est ____ bureau jusqu’à six heures.",
+      "options": [
+        "au",
+        "à le",
+        "à l’"
+      ],
+      "answers": [
+        "au"
+      ],
+      "hint": "Bureau is masculine and begins with a consonant.",
+      "feedback": "À + le contracts.",
+      "explanation": "Le bureau is masculine, so à + le becomes au: être au bureau."
+    },
+    {
+      "id": "contractions-a-le-au-3",
+      "pattern": "a-le-au",
+      "type": "complete",
+      "instruction": "Write au, à la, à l’ or aux.",
+      "source": "Nous allons ____ marché le samedi.",
+      "answers": [
+        "au"
+      ],
+      "hint": "Marché is masculine singular.",
+      "feedback": "À + le contracts into one word.",
+      "explanation": "Le marché is masculine, so à + le becomes au: aller au marché."
+    },
+    {
+      "id": "contractions-a-le-au-4",
+      "pattern": "a-le-au",
+      "type": "rewrite",
+      "instruction": "Replace la plage with le parc.",
+      "source": "Les enfants vont à la plage.",
+      "answers": [
+        "Les enfants vont au parc."
+      ],
+      "hint": "À la does not change, but à + le does.",
+      "feedback": "With a masculine noun, à and le merge.",
+      "explanation": "Le parc is masculine, so à + le becomes au: ils vont au parc."
+    },
+    {
+      "id": "contractions-a-le-au-5",
+      "pattern": "a-le-au",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I am going to the restaurant.",
+      "answers": [
+        "Je vais au restaurant."
+      ],
+      "hint": "Restaurant is masculine. Use aller à.",
+      "feedback": "To the with a masculine noun is one word.",
+      "explanation": "Le restaurant is masculine, so to the restaurant is au restaurant."
+    },
+    {
+      "id": "contractions-a-le-au-6",
+      "pattern": "a-le-au",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Tu penses à le match de demain ?",
+      "answers": [
+        "Tu penses au match de demain ?"
+      ],
+      "hint": "Penser à + le match.",
+      "feedback": "À + the article le is never written as two words.",
+      "explanation": "À + le always contracts to au: penser au match."
+    },
+    {
+      "id": "contractions-a-le-au-7",
+      "pattern": "a-le-au",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "He is going to the stadium.",
+      "tokens": [
+        "Il",
+        "va",
+        "au",
+        "stade.",
+        "à",
+        "le"
+      ],
+      "answers": [
+        "Il va au stade."
+      ],
+      "hint": "Stade is masculine. Two tiles stay unused.",
+      "feedback": "À + le becomes one word.",
+      "explanation": "Le stade is masculine, so à + le becomes au: il va au stade."
+    },
+    {
+      "id": "contractions-a-les-aux-1",
+      "pattern": "a-les-aux",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Je pense souvent ____ vacances.",
+      "options": [
+        "aux",
+        "à les",
+        "au"
+      ],
+      "answers": [
+        "aux"
+      ],
+      "hint": "Vacances is plural.",
+      "feedback": "À + les contracts too.",
+      "explanation": "À + les always contracts to aux: penser aux vacances."
+    },
+    {
+      "id": "contractions-a-les-aux-2",
+      "pattern": "a-les-aux",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Le professeur parle ____ élèves.",
+      "options": [
+        "aux",
+        "à les",
+        "à l’"
+      ],
+      "answers": [
+        "aux"
+      ],
+      "hint": "Élèves is plural, even though it begins with a vowel.",
+      "feedback": "À + les contracts, before a vowel as well.",
+      "explanation": "À + les becomes aux for all plurals: parler aux élèves."
+    },
+    {
+      "id": "contractions-a-les-aux-3",
+      "pattern": "a-les-aux",
+      "type": "complete",
+      "instruction": "Write au or aux.",
+      "source": "Nous téléphonons ____ parents de Julie.",
+      "answers": [
+        "aux"
+      ],
+      "hint": "Parents is plural.",
+      "feedback": "Au is only for a masculine singular noun.",
+      "explanation": "Les parents is plural, so à + les becomes aux: téléphoner aux parents."
+    },
+    {
+      "id": "contractions-a-les-aux-4",
+      "pattern": "a-les-aux",
+      "type": "rewrite",
+      "instruction": "Replace l’enfant with les enfants.",
+      "source": "Il donne un cadeau à l’enfant.",
+      "answers": [
+        "Il donne un cadeau aux enfants."
+      ],
+      "hint": "À l’ does not change, but à + les does.",
+      "feedback": "With a plural noun, à and les merge.",
+      "explanation": "À + les becomes aux: il donne un cadeau aux enfants."
+    },
+    {
+      "id": "contractions-a-les-aux-5",
+      "pattern": "a-les-aux",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je donne du pain à les oiseaux.",
+      "answers": [
+        "Je donne du pain aux oiseaux."
+      ],
+      "hint": "À + les.",
+      "feedback": "À + the article les is never written as two words.",
+      "explanation": "À + les always contracts to aux: aux oiseaux."
+    },
+    {
+      "id": "contractions-a-les-aux-6",
+      "pattern": "a-les-aux",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "They (ils) live in the United States.",
+      "answers": [
+        "Ils habitent aux États-Unis.",
+        "Ils vivent aux États-Unis."
+      ],
+      "hint": "The country name is les États-Unis, which is plural.",
+      "feedback": "In the United States uses à + les.",
+      "explanation": "Les États-Unis is plural, so à + les becomes aux: ils habitent aux États-Unis."
+    },
+    {
+      "id": "contractions-a-la-l-1",
+      "pattern": "a-la-l",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ma fille est ____ école.",
+      "options": [
+        "à l’",
+        "au",
+        "à la"
+      ],
+      "answers": [
+        "à l’"
+      ],
+      "hint": "École begins with a vowel.",
+      "feedback": "Au is not used before a vowel.",
+      "explanation": "Before a vowel, use à l’, never au: à l’école."
+    },
+    {
+      "id": "contractions-a-la-l-2",
+      "pattern": "a-la-l",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ce week-end, nous allons ____ montagne.",
+      "options": [
+        "à la",
+        "au",
+        "à le"
+      ],
+      "answers": [
+        "à la"
+      ],
+      "hint": "Montagne is feminine.",
+      "feedback": "À la never contracts.",
+      "explanation": "La montagne is feminine, and à la stays as two words: à la montagne."
+    },
+    {
+      "id": "contractions-a-la-l-3",
+      "pattern": "a-la-l",
+      "type": "complete",
+      "instruction": "Write au, à la or à l’.",
+      "source": "Il travaille ____ hôpital.",
+      "answers": [
+        "à l’"
+      ],
+      "strictAccents": true,
+      "hint": "The h in hôpital is silent.",
+      "feedback": "Hôpital sounds as if it begins with a vowel.",
+      "explanation": "Before a silent h, use à l’, not au: à l’hôpital."
+    },
+    {
+      "id": "contractions-a-la-l-4",
+      "pattern": "a-la-l",
+      "type": "complete",
+      "instruction": "Write au, à la or à l’.",
+      "source": "Tu vas ____ piscine avec nous ?",
+      "answers": [
+        "à la"
+      ],
+      "strictAccents": true,
+      "hint": "Piscine is feminine.",
+      "feedback": "With a feminine noun, à and la stay apart. Check the accent.",
+      "explanation": "La piscine is feminine, so à la does not change: aller à la piscine. À has a grave accent."
+    },
+    {
+      "id": "contractions-a-la-l-5",
+      "pattern": "a-la-l",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je vais au hôtel ce soir.",
+      "answers": [
+        "Je vais à l’hôtel ce soir."
+      ],
+      "spellingAnswers": [
+        "Je vais à l’hotel ce soir."
+      ],
+      "strictAccents": true,
+      "hint": "The h in hôtel is silent.",
+      "feedback": "Au is not used before a vowel sound.",
+      "explanation": "Hôtel has a silent h, so à + le becomes à l’, not au: à l’hôtel."
+    },
+    {
+      "id": "contractions-a-la-l-6",
+      "pattern": "a-la-l",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "We are at the beach.",
+      "answers": [
+        "Nous sommes à la plage.",
+        "On est à la plage."
+      ],
+      "strictAccents": true,
+      "hint": "Plage is feminine. Use être à.",
+      "feedback": "With a feminine noun, the preposition does not merge. Check the accent on the preposition.",
+      "explanation": "La plage is feminine, so at the beach is à la plage. À needs its grave accent."
+    },
+    {
+      "id": "contractions-a-la-l-7",
+      "pattern": "a-la-l",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "She is going to the airport.",
+      "tokens": [
+        "à",
+        "l’",
+        "Elle",
+        "au",
+        "aéroport.",
+        "va"
+      ],
+      "answers": [
+        "Elle va à l’aéroport."
+      ],
+      "hint": "Aéroport begins with a vowel. One tile stays unused.",
+      "feedback": "Au is not used before a vowel.",
+      "explanation": "Before a vowel, use à l’: elle va à l’aéroport."
+    },
+    {
+      "id": "contractions-de-le-du-1",
+      "pattern": "de-le-du",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "C’est la fin ____ film.",
+      "options": [
+        "du",
+        "de le",
+        "des"
+      ],
+      "answers": [
+        "du"
+      ],
+      "hint": "De + le film.",
+      "feedback": "De and the article le never stay side by side.",
+      "explanation": "De + le always contracts to du: la fin du film."
+    },
+    {
+      "id": "contractions-de-le-du-2",
+      "pattern": "de-le-du",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "La pharmacie est à côté ____ parc.",
+      "options": [
+        "du",
+        "de le",
+        "de la"
+      ],
+      "answers": [
+        "du"
+      ],
+      "hint": "À côté de + le parc.",
+      "feedback": "Parc is masculine; de + le contracts.",
+      "explanation": "À côté de + le parc becomes à côté du parc."
+    },
+    {
+      "id": "contractions-de-le-du-3",
+      "pattern": "de-le-du",
+      "type": "complete",
+      "instruction": "Write du, de la, de l’ or des.",
+      "source": "Il parle ____ match avec ses amis.",
+      "answers": [
+        "du"
+      ],
+      "hint": "Parler de + le match.",
+      "feedback": "Match is masculine singular.",
+      "explanation": "De + le contracts to du: parler du match."
+    },
+    {
+      "id": "contractions-de-le-du-4",
+      "pattern": "de-le-du",
+      "type": "rewrite",
+      "instruction": "Replace la gare with le musée.",
+      "source": "Nous habitons près de la gare.",
+      "answers": [
+        "Nous habitons près du musée."
+      ],
+      "hint": "De la does not change, but de + le does.",
+      "feedback": "With a masculine noun, de and le merge.",
+      "explanation": "Le musée is masculine, so près de + le becomes près du musée."
+    },
+    {
+      "id": "contractions-de-le-du-5",
+      "pattern": "de-le-du",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The school is far from the park.",
+      "answers": [
+        "L’école est loin du parc."
+      ],
+      "hint": "Loin de + le parc.",
+      "feedback": "Far from the with a masculine noun is one word.",
+      "explanation": "Le parc is masculine, so loin de + le becomes loin du parc."
+    },
+    {
+      "id": "contractions-de-le-du-6",
+      "pattern": "de-le-du",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Elle revient de le supermarché.",
+      "answers": [
+        "Elle revient du supermarché."
+      ],
+      "hint": "Revenir de + le supermarché.",
+      "feedback": "De + the article le is never written as two words.",
+      "explanation": "De + le always contracts to du: elle revient du supermarché."
+    },
+    {
+      "id": "contractions-de-le-du-7",
+      "pattern": "de-le-du",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "I am coming back from the office.",
+      "tokens": [
+        "reviens",
+        "du",
+        "Je",
+        "bureau.",
+        "de",
+        "le"
+      ],
+      "answers": [
+        "Je reviens du bureau."
+      ],
+      "hint": "Bureau is masculine. Two tiles stay unused.",
+      "feedback": "De + le becomes one word.",
+      "explanation": "Le bureau is masculine, so de + le becomes du: je reviens du bureau."
+    },
+    {
+      "id": "contractions-de-les-des-1",
+      "pattern": "de-les-des",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "C’est le livre ____ enfants.",
+      "options": [
+        "des",
+        "de les",
+        "du"
+      ],
+      "answers": [
+        "des"
+      ],
+      "hint": "De + les enfants.",
+      "feedback": "De and the article les never stay side by side.",
+      "explanation": "De + les always contracts to des: le livre des enfants."
+    },
+    {
+      "id": "contractions-de-les-des-2",
+      "pattern": "de-les-des",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ils parlent ____ vacances d’été.",
+      "options": [
+        "des",
+        "de les",
+        "de la"
+      ],
+      "answers": [
+        "des"
+      ],
+      "hint": "Parler de + les vacances.",
+      "feedback": "Vacances is plural.",
+      "explanation": "De + les contracts to des: parler des vacances."
+    },
+    {
+      "id": "contractions-de-les-des-3",
+      "pattern": "de-les-des",
+      "type": "complete",
+      "instruction": "Write du or des.",
+      "source": "La maison ____ voisins est très grande.",
+      "answers": [
+        "des"
+      ],
+      "hint": "Voisins is plural.",
+      "feedback": "Du is only for a masculine singular noun.",
+      "explanation": "The house of the neighbours: de + les voisins becomes des voisins."
+    },
+    {
+      "id": "contractions-de-les-des-4",
+      "pattern": "de-les-des",
+      "type": "rewrite",
+      "instruction": "Replace l’étudiant with les étudiants.",
+      "source": "C’est le sac de l’étudiant.",
+      "answers": [
+        "C’est le sac des étudiants."
+      ],
+      "hint": "De l’ does not change, but de + les does.",
+      "feedback": "With a plural noun, de and les merge.",
+      "explanation": "De + les becomes des: le sac des étudiants."
+    },
+    {
+      "id": "contractions-de-les-des-5",
+      "pattern": "de-les-des",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "J’ai peur de les chiens.",
+      "answers": [
+        "J’ai peur des chiens."
+      ],
+      "hint": "Avoir peur de + les chiens.",
+      "feedback": "De + the article les is never written as two words.",
+      "explanation": "De + les always contracts to des: j’ai peur des chiens."
+    },
+    {
+      "id": "contractions-de-les-des-6",
+      "pattern": "de-les-des",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The children’s room is blue.",
+      "answers": [
+        "La chambre des enfants est bleue."
+      ],
+      "hint": "French says the room of the children.",
+      "feedback": "Of the with a plural noun is one word.",
+      "explanation": "The children’s room is la chambre de + les enfants, which becomes des enfants."
+    },
+    {
+      "id": "contractions-de-la-l-1",
+      "pattern": "de-la-l",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Elle sort ____ boulangerie avec du pain.",
+      "options": [
+        "de la",
+        "du",
+        "de le"
+      ],
+      "answers": [
+        "de la"
+      ],
+      "hint": "Boulangerie is feminine.",
+      "feedback": "De la never contracts.",
+      "explanation": "La boulangerie is feminine, so de la stays: sortir de la boulangerie."
+    },
+    {
+      "id": "contractions-de-la-l-2",
+      "pattern": "de-la-l",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Nous rentrons ____ école à pied.",
+      "options": [
+        "de l’",
+        "du",
+        "de la"
+      ],
+      "answers": [
+        "de l’"
+      ],
+      "hint": "École begins with a vowel.",
+      "feedback": "Du is not used before a vowel.",
+      "explanation": "Before a vowel, use de l’: rentrer de l’école."
+    },
+    {
+      "id": "contractions-de-la-l-3",
+      "pattern": "de-la-l",
+      "type": "complete",
+      "instruction": "Write du, de la or de l’.",
+      "source": "Le parking est en face ____ hôtel.",
+      "answers": [
+        "de l’"
+      ],
+      "hint": "The h in hôtel is silent.",
+      "feedback": "Du is not used before a vowel sound.",
+      "explanation": "Hôtel has a silent h, so en face de + l’hôtel gives de l’hôtel."
+    },
+    {
+      "id": "contractions-de-la-l-4",
+      "pattern": "de-la-l",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "The bank is opposite the train station.",
+      "answers": [
+        "La banque est en face de la gare."
+      ],
+      "hint": "Opposite is en face de. Gare is feminine.",
+      "feedback": "With a feminine noun, de and la stay apart.",
+      "explanation": "La gare is feminine, so de la does not change: en face de la gare."
+    },
+    {
+      "id": "contractions-de-la-l-5",
+      "pattern": "de-la-l",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Il vient du université.",
+      "answers": [
+        "Il vient de l’université."
+      ],
+      "hint": "Université begins with a vowel.",
+      "feedback": "Du is not used before a vowel.",
+      "explanation": "Before a vowel, use de l’: il vient de l’université."
+    },
+    {
+      "id": "contractions-de-la-l-6",
+      "pattern": "de-la-l",
+      "type": "rewrite",
+      "instruction": "Replace le café with la mairie.",
+      "source": "Le bus s’arrête près du café.",
+      "answers": [
+        "Le bus s’arrête près de la mairie."
+      ],
+      "hint": "La mairie is feminine.",
+      "feedback": "With a feminine noun, de and la do not merge.",
+      "explanation": "La mairie is feminine, so près de la stays in two words: près de la mairie."
+    },
+    {
+      "id": "contractions-jouer-a-de-1",
+      "pattern": "jouer-a-de",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Le mercredi, je joue ____ tennis.",
+      "options": [
+        "au",
+        "du",
+        "de la"
+      ],
+      "answers": [
+        "au"
+      ],
+      "hint": "Tennis is a sport.",
+      "feedback": "For sports and games, jouer takes à.",
+      "explanation": "Jouer à is for sports, and tennis is masculine: jouer au tennis."
+    },
+    {
+      "id": "contractions-jouer-a-de-2",
+      "pattern": "jouer-a-de",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Mon frère joue ____ piano.",
+      "options": [
+        "du",
+        "au",
+        "à le"
+      ],
+      "answers": [
+        "du"
+      ],
+      "hint": "Piano is an instrument.",
+      "feedback": "For instruments, jouer takes de.",
+      "explanation": "Jouer de is for instruments, and piano is masculine: jouer du piano."
+    },
+    {
+      "id": "contractions-jouer-a-de-3",
+      "pattern": "jouer-a-de",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Tu joues ____ guitare ?",
+      "options": [
+        "de la",
+        "à la",
+        "du"
+      ],
+      "answers": [
+        "de la"
+      ],
+      "hint": "Guitare is an instrument and is feminine.",
+      "feedback": "For instruments, jouer takes de.",
+      "explanation": "Jouer de is for instruments, and guitare is feminine, so de la stays: jouer de la guitare."
+    },
+    {
+      "id": "contractions-jouer-a-de-4",
+      "pattern": "jouer-a-de",
+      "type": "complete",
+      "instruction": "Write au, aux, du or de la.",
+      "source": "Le soir, nous jouons ____ cartes.",
+      "answers": [
+        "aux"
+      ],
+      "hint": "Cards are a game, and cartes is plural.",
+      "feedback": "Games take à with jouer.",
+      "explanation": "Jouer à is for games, and cartes is plural: jouer aux cartes."
+    },
+    {
+      "id": "contractions-jouer-a-de-5",
+      "pattern": "jouer-a-de",
+      "type": "complete",
+      "instruction": "Write au, aux, du or de la.",
+      "source": "Elle joue ____ violon depuis dix ans.",
+      "answers": [
+        "du"
+      ],
+      "hint": "Violon is an instrument.",
+      "feedback": "Instruments take de with jouer.",
+      "explanation": "Jouer de is for instruments, and violon is masculine: jouer du violon."
+    },
+    {
+      "id": "contractions-jouer-a-de-6",
+      "pattern": "jouer-a-de",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "They (ils) play football.",
+      "answers": [
+        "Ils jouent au football.",
+        "Ils jouent au foot."
+      ],
+      "hint": "Football is a sport.",
+      "feedback": "Sports take à with jouer.",
+      "explanation": "Jouer à is for sports, and football is masculine: ils jouent au football."
+    },
+    {
+      "id": "contractions-jouer-a-de-7",
+      "pattern": "jouer-a-de",
+      "type": "translate",
+      "instruction": "Translate into French.",
+      "source": "I play the piano.",
+      "answers": [
+        "Je joue du piano."
+      ],
+      "hint": "The piano is an instrument.",
+      "feedback": "Instruments take de with jouer.",
+      "explanation": "Jouer de is for instruments: je joue du piano."
+    },
+    {
+      "id": "contractions-jouer-a-de-8",
+      "pattern": "jouer-a-de",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Je joue du basket le samedi.",
+      "answers": [
+        "Je joue au basket le samedi."
+      ],
+      "hint": "Basket is a sport, not an instrument.",
+      "feedback": "Sports and instruments take different prepositions.",
+      "explanation": "Jouer à is for sports: je joue au basket."
+    },
+    {
+      "id": "contractions-jouer-a-de-9",
+      "pattern": "jouer-a-de",
+      "type": "build",
+      "instruction": "Build the French sentence. Leave any extra tiles unused.",
+      "source": "Paul plays the guitar.",
+      "tokens": [
+        "joue",
+        "Paul",
+        "de la",
+        "guitare.",
+        "à la"
+      ],
+      "answers": [
+        "Paul joue de la guitare."
+      ],
+      "hint": "The guitar is an instrument. One tile stays unused.",
+      "feedback": "Instruments take de with jouer.",
+      "explanation": "Jouer de is for instruments, and guitare is feminine: jouer de la guitare."
+    }
+  ]
+}
