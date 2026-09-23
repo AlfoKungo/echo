@@ -298,10 +298,13 @@ function renderReview() {
     </section>`;
 }
 function missing(section) { return `${title('That lesson is not available', 'It may have moved, or this link may be incomplete.')}${back(section, 'Choose another lesson')}`; }
+// Each page's back link sits above the tutor line, like the main app's: a room's list goes Home, a lesson to its room.
 function render() {
-  document.querySelectorAll('[data-section]').forEach((link) => { if (link.dataset.section === route.section) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current'); });
   if (loading || !catalog) main.innerHTML = '<div class="loading-state" role="status">Loading your saved practice…</div>';
   else main.innerHTML = ({ listening: renderListening, reading: renderReading, conversations: renderConversations, review: renderReview })[route.section]();
+  const own = main.querySelector('.learning-back');
+  document.querySelector('#learning-back').innerHTML = own ? own.outerHTML : '<a class="learning-back" href="./" data-home="home">← Home</a>';
+  own?.remove();
 }
 
 async function loadPage() {

@@ -14,13 +14,8 @@
 </head>
 <body>
   <div class="app-shell learning-shell">
-    <header class="topbar"><a class="brand" href="./" data-home="home"><img src="icon.svg" width="32" height="32" alt=""><span>Echo</span></a><a class="quiet" href="./" data-home="home">Home</a></header>
-    <nav class="learning-nav" aria-label="Learning rooms">
-      <a href="learn/#listening" data-section="listening">Listening</a>
-      <a href="learn/#reading" data-section="reading">Reading & writing</a>
-      <a href="learn/#conversations" data-section="conversations">Conversations</a>
-      <a href="learn/#review" data-section="review">Review & progress</a>
-    </nav>
+    <header class="topbar"><a class="brand" href="./" data-home="home"><img src="icon.svg" width="32" height="32" alt=""><span>Echo</span></a></header>
+    <div id="learning-back"></div>
     <aside class="tutor-strip" aria-label="Local tutor status"><span id="tutor-status" role="status">Checking local tutor status…</span><button class="quiet" id="refresh-tutor" type="button">Refresh status</button></aside>
     <p class="local-note">Prepared practice plays saved audio files and uses prepared feedback. It never starts the local model.</p>
     <div id="learning-notice" role="alert" hidden></div>
