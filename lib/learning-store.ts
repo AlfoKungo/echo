@@ -551,7 +551,15 @@ export function createLearningStore(content: LearningContent, options: {
     return db.transaction(() => {
       const existing = db.query<MaterialRow, [string, string]>('SELECT * FROM learning_materials WHERE source_id = ? AND text = ?').get(input.sourceId, input.text);
       if (existing) return JSON.parse(existing.lesson_json) as ReadingLesson;
-      const annotations = groundedAnnotations(input.text, input.explanation.annotations);
+      // The model quotes with ’ and narrow spaces; the pasted text may use ' and plain spaces. Each swap is one
+      // character for one, so a folded match gives the exact span of the learner's own text.
+      const fold = (value: string) => value.replace(/[’‘ʼ]/g, "'").replace(/[\u00a0\u202f]/g, ' ');
+      const folded = fold(input.text);
+      const exact = input.explanation.annotations.map((annotation) => {
+        const at = annotation && typeof annotation.phrase === 'string' && annotation.phrase ? folded.indexOf(fold(annotation.phrase)) : -1;
+        return at < 0 ? annotation : { ...annotation, phrase: input.text.slice(at, at + annotation.phrase.length) };
+      });
+      const annotations = groundedAnnotations(input.text, exact);
       const omitted = annotations.length !== input.explanation.annotations.length;
       const lesson: ReadingLesson = {
         id: `material-${createHash('sha256').update(JSON.stringify([input.sourceId, input.text])).digest('hex')}`,

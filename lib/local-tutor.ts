@@ -39,13 +39,18 @@ export function splitTutorText(text: string): string[] {
   return parts;
 }
 function text(value: unknown): value is string { return typeof value === 'string'; }
-function writingFeedback(raw: unknown, original: string): WritingFeedback {
+// The model writes ’ and narrow spaces as its instructions ask; the learner may have typed ' and plain spaces.
+// Each swap is one character for one, so positions found in the folded text are positions in the original.
+const fold = (value: string) => value.replace(/[’‘ʼ]/g, "'").replace(/[\u00a0\u202f]/g, ' ');
+export function writingFeedback(raw: unknown, original: string): WritingFeedback {
   const value = raw as Record<string, unknown>;
   if (!value || !text(value.summary) || !Array.isArray(value.errors) || !Array.isArray(value.suggestions)) throw new Error('The local tutor returned incomplete feedback. Your text is saved; try again.');
+  const folded = fold(original);
   const changes = (items: unknown[]): WritingFeedback['errors'] => items.map(item => {
     const c = item as Record<string, unknown>;
-    if (!c || !text(c.original) || !c.original || !original.includes(c.original) || !text(c.replacement) || !text(c.explanation)) throw new Error('The local tutor quoted a correction that was not in your text. Your draft is saved; try again.');
-    return { original: c.original, replacement: c.replacement, explanation: c.explanation };
+    const at = c && text(c.original) && c.original ? folded.indexOf(fold(c.original)) : -1;
+    if (at < 0 || !text(c.replacement) || !text(c.explanation)) throw new Error('The local tutor quoted a correction that was not in your text. Your draft is saved; try again.');
+    return { original: original.slice(at, at + (c.original as string).length), replacement: c.replacement, explanation: c.explanation };
   });
   const errors = changes(value.errors);
   const corrections = new Set(errors.map(change => JSON.stringify([change.original, change.replacement])));

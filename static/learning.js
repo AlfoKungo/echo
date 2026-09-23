@@ -47,8 +47,6 @@ let translationOpen = false;
 let modelOpen = false;
 let reviewRevealed = false;
 let reviewRequest = state.reviewPending;
-let tutorStatus = null;
-let tutorStatusError = '';
 let submittingTutor = false;
 let leaving = false;
 let polling = false;
@@ -448,18 +446,6 @@ function updateJobUI() {
   const running = active(displayedJob(kind, route.lesson));
   main.querySelectorAll('[data-draft], [data-action="submit-writing"], [data-action="submit-material"]').forEach((element) => { element.disabled = busy || running; });
 }
-function renderTutorStatus() {
-  const target = document.querySelector('#tutor-status');
-  if (tutorStatusError) { target.textContent = `Tutor status unknown — ${tutorStatusError}`; return; }
-  if (!tutorStatus) { target.textContent = 'Checking local tutor status…'; return; }
-  const states = { off: 'Local tutor off — no Echo model process is loaded.', loading: 'Local tutor is starting its model.', working: 'Local tutor is working.', releasing: 'Local tutor is releasing its model — not off yet.' };
-  target.textContent = `${states[tutorStatus.state] || 'Tutor status unknown.'}${tutorStatus.queued ? ` ${tutorStatus.queued} request${tutorStatus.queued === 1 ? '' : 's'} queued.` : ''}`;
-}
-async function refreshTutorStatus() {
-  try { tutorStatus = await api('tutor/status'); tutorStatusError = ''; }
-  catch (error) { tutorStatusError = error.message; }
-  renderTutorStatus();
-}
 async function submitTutor(kind) {
   if (busy || submittingTutor) return;
   const source = kind === 'material' ? 'own-material' : route.lesson;
@@ -488,7 +474,6 @@ async function submitTutor(kind) {
       }
       adoptJob(job);
       updateJobUI();
-      await refreshTutorStatus();
     } finally { submittingTutor = false; }
   };
   await mutation(execute);
@@ -496,7 +481,7 @@ async function submitTutor(kind) {
 async function stopJob(id) {
   if (stoppingJobs.has(id)) return;
   stoppingJobs.add(id); updateJobUI();
-  try { adoptJob(await api(`tutor/${encodeURIComponent(id)}/stop`, {})); await refreshTutorStatus(); }
+  try { adoptJob(await api(`tutor/${encodeURIComponent(id)}/stop`, {})); }
   catch (error) { showNotice(error.message, () => stopJob(id)); }
   finally { stoppingJobs.delete(id); updateJobUI(); }
 }
@@ -512,7 +497,6 @@ async function pollTutor() {
         if (terminal(next)) announce(next.status === 'complete' ? 'Local tutor finished. Its advice is ready.' : 'Local tutor stopped. Your submitted text is preserved.');
       } catch (error) { showNotice(`Cannot refresh the tutor request. ${error.message}`, pollTutor); }
     }
-    await refreshTutorStatus();
   } finally { polling = false; }
 }
 async function stopPending(request, keepalive = false) {
@@ -523,7 +507,7 @@ async function stopPending(request, keepalive = false) {
     if (!response.ok) throw new Error('Could not confirm the stop request. Please retry.');
     for (const [key, input] of Object.entries(state.tutorPending)) if (input.requestId === request) delete state.tutorPending[key];
     ownedRequests.delete(request); saveOwnedRequests(); save();
-    if (!leaving) { showNotice('Stop requested. Your draft is preserved. The status above confirms when the model is actually off.'); await refreshTutorStatus(); }
+    if (!leaving) { showNotice('Stop requested. Your draft is preserved.'); }
   } catch (error) {
     if (!leaving) showNotice(error.message, () => stopPending(request));
   } finally { stoppingJobs.delete(request); updateJobUI(); }
@@ -533,8 +517,8 @@ function stopOwnedJobs(keepalive = false) {
   for (const job of pending) {
     fetch(`api/learning/tutor/${encodeURIComponent(job.id)}/stop`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}', keepalive }).then(async (response) => {
       if (!response.ok) throw new Error('Echo could not stop the tutor.');
-      const result = await response.json(); adoptJob(result); updateJobUI(); await refreshTutorStatus();
-    }).catch(() => { if (!leaving) showNotice('Could not confirm that the local tutor stopped. Use Stop again or refresh its status.', () => stopOwnedJobs()); });
+      const result = await response.json(); adoptJob(result); updateJobUI();
+    }).catch(() => { if (!leaving) showNotice('Could not confirm that the local tutor stopped. Try Stop again.', () => stopOwnedJobs()); });
   }
   for (const input of Object.values(state.tutorPending)) if (ownedRequests.has(input.requestId)) stopPending(input.requestId, keepalive);
 }
@@ -633,17 +617,15 @@ document.addEventListener('keydown', (event) => {
     else if (reviewRevealed && ['ArrowLeft', 'ArrowRight'].includes(event.key)) { event.preventDefault(); reviewPhrase(event.key === 'ArrowRight'); }
   }
 });
-document.querySelector('#refresh-tutor').addEventListener('click', refreshTutorStatus);
 window.addEventListener('hashchange', () => {
   stopOwnedJobs(); stopAudio(); route = parseRoute(); phraseIndex = null; translationOpen = false; modelOpen = false;
   loadPage(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
 });
 window.addEventListener('pagehide', () => { leaving = true; stopAudio(); stopOwnedJobs(true); });
-window.addEventListener('pageshow', (event) => { leaving = false; if (event.persisted) { loadPage(); refreshTutorStatus(); } });
+window.addEventListener('pageshow', (event) => { leaving = false; if (event.persisted) loadPage(); });
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { stopAudio(); stopOwnedJobs(true); }
-  else { refreshTutorStatus(); pollTutor(); }
+  else pollTutor();
 });
 setInterval(pollTutor, 1500);
 loadPage();
-refreshTutorStatus();

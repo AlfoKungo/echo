@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 import { createLearningStore } from '../lib/learning-store';
-import { LocalTutor, splitTutorText } from '../lib/local-tutor';
+import { LocalTutor, splitTutorText, writingFeedback } from '../lib/local-tutor';
 import type { LearningContent } from '../learning-contract';
 
 const empty: LearningContent = { listening: [], reading: [], conversations: [] };
@@ -11,6 +11,17 @@ test('sectioning preserves every character, separator and complete Unicode code 
   expect(sections.join('')).toBe(source);
   expect(sections.every(section => section.length <= 1200 && !/\p{Surrogate}/u.test(section))).toBe(true);
   expect(sections.at(-1)?.endsWith('La dernière phrase.')).toBe(true);
+});
+
+test('a correction quoted with the other apostrophe still applies to the learner’s own text', () => {
+  const typed = "Hier, j'ai habiter a Tel Aviv.";
+  const feedback = writingFeedback({ summary: 'Two errors.', suggestions: [], errors: [
+    { original: 'j’ai habiter', replacement: 'j’ai habité', explanation: 'Past participle after avoir.' },
+    { original: 'a Tel Aviv', replacement: 'à Tel Aviv', explanation: 'À takes an accent.' },
+  ] }, typed);
+  expect(feedback.corrected).toBe('Hier, j’ai habité à Tel Aviv.');
+  expect(feedback.errors.map((error) => error.original)).toEqual(["j'ai habiter", 'a Tel Aviv']);
+  expect(() => writingFeedback({ summary: '', suggestions: [], errors: [{ original: 'nous avons', replacement: 'x', explanation: '' }] }, typed)).toThrow('not in your text');
 });
 
 test('Stop arriving before submission prevents loading and preserves the submitted draft', async () => {

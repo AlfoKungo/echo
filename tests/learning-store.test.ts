@@ -319,6 +319,14 @@ describe('grounded imported materials and durable tutor drafts', () => {
     expectStatus(() => store.attempt(attempt({ kind: 'material', itemId: material.id, mode: 'practice', exerciseIndex: 0, answer: 'Salut' })), 404);
   });
 
+  test('a phrase quoted with the other apostrophe is kept, as the words of the pasted text', () => {
+    const { store } = fixture();
+    const text = "Ce matin, j'ai pris le bus.";
+    const material = store.storeMaterial({ sourceId: 'apostrophes', text, explanation: { translation: 'This morning I took the bus.', explanation: '', annotations: [{ phrase: 'j’ai pris le bus', translation: 'I took the bus', explanation: '' }] } });
+    expect(material.annotations.map((annotation) => annotation.phrase)).toEqual(["j'ai pris le bus"]);
+    expect(material.practice?.[0]?.answer).toBe("j'ai pris le bus");
+  });
+
   test('tutor request retries return the live job; results and errors never create mastery', () => {
     const { store } = fixture();
     const input = { requestId: requestId(), kind: 'writing' as const, text: 'Je va au café.', sourceId: 'message', prompt: 'Say where you are going.' };
