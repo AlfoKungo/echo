@@ -346,6 +346,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   const readLevels = db.query<{ mode: Mode; value: number }, []>('SELECT mode, value FROM comprehension_levels');
   const saveLevel = db.query('UPDATE comprehension_levels SET value = ? WHERE mode = ?');
   const allHistory = db.query<HistoryRow, []>('SELECT * FROM comprehension_history');
+  const itemMetAt = db.query<{ at: string | null }, [string]>('SELECT MAX(last_at) AS at FROM comprehension_history WHERE item_id = ?');
   const historyFor = db.query<HistoryRow, [string, string]>('SELECT * FROM comprehension_history WHERE exercise_key = ? AND mode = ?');
   const saveHistory = db.query(`
     INSERT INTO comprehension_history (exercise_key, mode, item_id, kind, outcome, misses, corrects, seen, due_at, due_stream, due_answers, last_at)
@@ -717,10 +718,18 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   }
 
   function ensureCurrent(row: StreamRow, stream: StreamId, at: Date): boolean {
-    if (row.current_json || row.result_json) return false;
+    if (row.result_json) return false;
+    const waiting = currentOf(row);
+    if (waiting) {
+      // An exercise left waiting here whose item was answered in another stream since would now be a repeat.
+      const met = itemMetAt.get(waiting.itemId)?.at;
+      if (!met || met < waiting.startedAt) return false;
+      row.current_json = null;
+      row.lookups_json = '[]';
+    }
     const chosen = select(stream, row, at);
-    if (!chosen) return false;
-    row.current_json = JSON.stringify(chosen);
+    if (!chosen && !waiting) return false;
+    row.current_json = chosen ? JSON.stringify(chosen) : null;
     row.version += 1;
     return true;
   }

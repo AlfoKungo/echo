@@ -262,6 +262,16 @@ describe('scheduling', () => {
     expect(Number(next.key.split(':')[2])).toBe(Number(first.key.split(':')[2]) + 1);
   });
 
+  test('an exercise waiting in one stream is replaced once its item is answered in another', () => {
+    const { store } = fixture();
+    const waiting = store.state('mix').current!.item.id;
+    let listen = store.state('listen');
+    for (let answer = 0; answer < 40 && listen.current!.item.id !== waiting; answer++) listen = step(store, 'listen');
+    expect(listen.current!.item.id).toBe(waiting);
+    step(store, 'listen');
+    expect(store.state('mix').current!.item.id).not.toBe(waiting);
+  });
+
   test('a correct answer is not offered again the same day', () => {
     const { store } = fixture();
     const first = store.state('read').current!.key;
