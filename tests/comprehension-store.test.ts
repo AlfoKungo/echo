@@ -240,6 +240,28 @@ describe('scheduling', () => {
     expect(state.current!.key).toBe(missed);
   });
 
+  test('an item met in Read is not served again in Listen while unmet items remain', () => {
+    const { store } = fixture();
+    const read = new Set<string>();
+    let state = store.state('read');
+    for (let answer = 0; answer < 5; answer++) { read.add(state.current!.item.id); state = step(store, 'read'); }
+    let listen = store.state('listen');
+    for (let answer = 0; answer < 5; answer++) {
+      expect(read.has(listen.current!.item.id)).toBe(false);
+      listen = step(store, 'listen');
+    }
+  });
+
+  test('a passage question is followed by the same passage’s next question, in the same mode', () => {
+    const { store } = fixture();
+    const state = driveTo(store, 'read', 'question');
+    const first = state.current!;
+    const next = advance(store, 'read', settle(store, 'read', state, correctInput(first))).current!;
+    expect(next.item.id).toBe(first.item.id);
+    expect(next.mode).toBe('read');
+    expect(Number(next.key.split(':')[2])).toBe(Number(first.key.split(':')[2]) + 1);
+  });
+
   test('a correct answer is not offered again the same day', () => {
     const { store } = fixture();
     const first = store.state('read').current!.key;
@@ -603,12 +625,15 @@ describe('focus streams', () => {
 });
 
 describe('the practise stream', () => {
-  test('alternates listening and reading', () => {
+  test('alternates listening and reading between items; a passage keeps its mode for its questions', () => {
     const { store } = fixture();
     const modes: string[] = [];
     let state = store.state('mix');
-    for (let answer = 0; answer < 4; answer++) {
-      modes.push(state.current!.mode);
+    let previous = '';
+    for (let answer = 0; answer < 12 && modes.length < 4; answer++) {
+      if (state.current!.item.id !== previous) modes.push(state.current!.mode);
+      else expect(state.current!.mode as string).toBe(modes.at(-1)!);
+      previous = state.current!.item.id;
       state = step(store, 'mix');
     }
     expect(modes).toEqual(['listen', 'read', 'listen', 'read']);

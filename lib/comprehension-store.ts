@@ -56,6 +56,7 @@ const MISS_STEP = 0.2;
 const MISS_ANSWERS = 8; // a first miss returns after this many answers in the stream it was missed in
 const REVIEW_DAYS = 3; // a correct exercise returns in 3 days, then ×3 for each further correct answer
 const RECENT = 20; // prefer not to repeat an item within this many answers
+const REST_DAYS = 7; // once every item at hand is met, another kind of one waits this long before it is offered
 const DAY = 86_400_000;
 const LEVEL_OF = (value: number): GrammarLevel => (value < 2 ? 'A1' : value < 3 ? 'A2' : 'B1');
 const MODES: Mode[] = ['listen', 'read'];
@@ -441,7 +442,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     return top[Math.floor(random() * top.length)] ?? list[0]!;
   }
 
-  function choose(stream: StreamId, list: Candidate[], row: StreamRow, at: Date, history: Map<string, HistoryRow>, known: Map<string, WordKnowledge>, level: number): Candidate | null {
+  function choose(stream: StreamId, list: Candidate[], row: StreamRow, at: Date, history: Map<string, HistoryRow>, known: Map<string, WordKnowledge>, level: number, metAt: Map<string, string>): Candidate | null {
     if (!list.length) return null;
     const recent = recentOf(row);
     const last = recent[0];
@@ -461,33 +462,56 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     const misses = list.filter((candidate) => { const entry = rowOf(candidate); return !!entry && entry.outcome !== 'correct'; });
     const dueMiss = notLast(misses.filter((candidate) => { const entry = rowOf(candidate)!; return dueByTime(entry) || dueByCount(entry); }));
     if (dueMiss.length) return oldest(dueMiss);
-    // The mistakes drill serves every outstanding miss, due or not, then runs dry.
-    if (stream === 'focus:missed') return oldest(notLast(misses));
+    // The mistakes drill serves every outstanding miss, due or not, then runs dry; two misses from one passage
+    // may follow each other rather than end the drill early.
+    if (stream === 'focus:missed') return oldest(notLast(misses)) ?? oldest(misses);
 
-    const unseen = fresh(list.filter((candidate) => !rowOf(candidate)));
-    const inBand = unseen.filter((candidate) => candidate.difficulty >= level - BAND_BELOW && candidate.difficulty <= level + BAND_ABOVE);
-    if (inBand.length) return pickBest(inBand, known);
+    const band = (group: Candidate[], widen = 0) => group.filter((candidate) => candidate.difficulty >= level - BAND_BELOW - widen && candidate.difficulty <= level + BAND_ABOVE + widen);
+    const untried = fresh(list.filter((candidate) => !rowOf(candidate)));
+    // An item met in any stream, as any kind, is known: its other exercises would be too easy to count as new.
+    // A new passage opens at its first question; the rest follow it (see select).
+    const unmet = untried.filter((candidate) => !metAt.has(candidate.item.id) && (candidate.kind !== 'question' || candidate.questionIndex === 1));
+    if (band(unmet).length) return pickBest(band(unmet), known);
 
     const dueReview = fresh(list.filter((candidate) => { const entry = rowOf(candidate); return !!entry && entry.outcome === 'correct' && dueByTime(entry); }));
     if (dueReview.length) return oldest(dueReview);
 
-    for (let widen = BAND_ABOVE; unseen.length && widen <= 4; widen += BAND_ABOVE) {
-      const wider = unseen.filter((candidate) => candidate.difficulty >= level - BAND_BELOW - widen && candidate.difficulty <= level + BAND_ABOVE + widen);
+    for (let widen = BAND_ABOVE; unmet.length && widen <= 4; widen += BAND_ABOVE) {
+      const wider = band(unmet, widen);
       if (wider.length) return pickBest(wider, known);
     }
-    if (unseen.length) return pickBest(unseen, known);
+    if (unmet.length) return pickBest(unmet, known);
+    // Every item at hand has been met: another kind of the one met longest ago is the next-best novelty,
+    // first among those rested for a week, then any.
+    const longestAgo = (group: Candidate[]) => [...group].sort((a, b) => metAt.get(a.item.id)!.localeCompare(metAt.get(b.item.id)!))[0] ?? null;
+    const restedBefore = new Date(time - REST_DAYS * DAY).toISOString();
+    const rested = untried.filter((candidate) => metAt.get(candidate.item.id)! <= restedBefore);
+    if (rested.length) return longestAgo(band(rested).length ? band(rested) : rested);
+    if (untried.length && stream.startsWith('focus:')) return longestAgo(untried);
     if (stream.startsWith('focus:')) return null; // a focus stream ends rather than looping over settled work
-    return oldest(fresh(list));
+    return untried.length ? longestAgo(untried) : oldest(fresh(list));
   }
 
   function select(stream: StreamId, row: StreamRow, at: Date): Current | null {
     const history = new Map(allHistory.all().map((entry) => [`${entry.exercise_key}|${entry.mode}`, entry]));
+    const metAt = new Map<string, string>();
+    for (const entry of history.values()) if ((metAt.get(entry.item_id) ?? '') < entry.last_at) metAt.set(entry.item_id, entry.last_at);
     const known = knownStatus();
     const value = levels();
     const available = pool(stream, history, known);
-    const first: Mode = stream === 'read' ? 'read' : stream === 'listen' ? 'listen' : row.answers % 2 === 0 ? 'listen' : 'read';
+    // A passage just answered keeps its reader: its remaining questions follow in the same mode while it is fresh.
+    const last = recentOf(row)[0];
+    const lastEntry = last ? [...history.values()].filter((entry) => entry.item_id === last).sort((a, b) => b.last_at.localeCompare(a.last_at))[0] : undefined;
+    if (lastEntry?.kind === 'question') {
+      const next = available
+        .filter((candidate) => candidate.item.id === last && candidate.mode === lastEntry.mode && !history.has(`${candidate.key}|${candidate.mode}`))
+        .sort((a, b) => a.questionIndex! - b.questionIndex!)[0];
+      if (next) return makeCurrent(next, at);
+    }
+    // Practise alternates by item: the mode after a passage's last question is the other one.
+    const first: Mode = stream === 'read' ? 'read' : stream === 'listen' ? 'listen' : lastEntry?.mode === 'listen' ? 'read' : 'listen';
     for (const mode of first === 'listen' ? MODES : [...MODES].reverse()) {
-      const chosen = choose(stream, available.filter((candidate) => candidate.mode === mode), row, at, history, known, value.get(mode) ?? MIN_LEVEL);
+      const chosen = choose(stream, available.filter((candidate) => candidate.mode === mode), row, at, history, known, value.get(mode) ?? MIN_LEVEL, metAt);
       if (chosen) return makeCurrent(chosen, at);
     }
     return null;
