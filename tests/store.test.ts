@@ -228,37 +228,42 @@ describe('three-stack selection', () => {
     expect(progress(store).grades).toHaveLength(60);
   });
 
-  test('random reinsertion can place the same failed card at the front, back or middle, rather than forcing FIFO', () => {
+  test('an answered word waits for three others, then a miss placed at the front beats older misses', () => {
     const { store, randomness } = fixture(undefined, thirtyWords);
-    randomness.value = 0;
+    randomness.value = 0.999999;
     let state = store.start('fr-en', 'all');
-    expect(state.current?.id).toBe(thirtyWords.at(-1)!.id);
-    randomness.value = 0.999999;
-    const failed: string[] = [];
-    for (let index = 0; index < 10; index++) {
-      failed.push(state.current!.id);
-      state = store.grade(answer(state, false));
+    for (let index = 0; index < 10; index++) state = store.grade(answer(state, false));
+    const served: string[] = [];
+    let frontMiss: string | null = null;
+    let sinceMiss = 0;
+    for (let step = 0; step < 40 && state.current; step++) {
+      const { id, stack } = state.current;
+      // The reported bug: a word shown again straight after it was answered.
+      expect(served.slice(-3)).not.toContain(id);
+      if (frontMiss && stack === 'failed' && sinceMiss >= 3) {
+        expect(id).toBe(frontMiss);
+        frontMiss = null;
+      }
+      served.push(id);
+      sinceMiss++;
+      if (stack === 'failed' && !frontMiss) {
+        randomness.value = 0;
+        state = store.grade(answer(state, false));
+        randomness.value = 0.999999;
+        frontMiss = id;
+        sinceMiss = 0;
+      } else {
+        state = store.grade(answer(state, true));
+      }
     }
-    const nextFailed = () => {
-      for (let step = 0; state.current?.stack !== 'failed' && step < 6; step++) state = store.grade(answer(state, true));
-      expect(state.current?.stack).toBe('failed');
-      return state.current!.id;
-    };
-    expect(nextFailed()).toBe(failed[0]!);
-    randomness.value = 0;
+  });
+
+  test('with a single word left, a miss still brings it back rather than ending the session', () => {
+    const { store } = fixture(undefined, thirtyWords.slice(0, 1));
+    let state = store.start('fr-en', 'all');
+    const id = state.current!.id;
     state = store.grade(answer(state, false));
-    randomness.value = 0.999999;
-    expect(nextFailed()).toBe(failed[0]!);
-    state = store.grade(answer(state, false));
-    expect(nextFailed()).toBe(failed[1]!);
-    randomness.value = 0.5;
-    state = store.grade(answer(state, false));
-    randomness.value = 0.999999;
-    for (const id of failed.slice(2, 7)) {
-      expect(nextFailed()).toBe(id);
-      state = store.grade(answer(state, false));
-    }
-    expect(nextFailed()).toBe(failed[1]!);
+    expect(state.current?.id).toBe(id);
   });
 
   test('undo restores the ten-card boundary and reopening does not restart or reshuffle the queue', () => {

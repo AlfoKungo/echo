@@ -62,7 +62,9 @@ type UndoRow = {
   after_version: number;
 };
 
-type PracticeQueue = { day: string; warmup: number; turn: number; unseen: string[]; failed: string[]; successful: string[] };
+// recent holds the last words answered, newest first; selection passes over them while anything else is left.
+type PracticeQueue = { day: string; warmup: number; turn: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
+const RECENT_GAP = 3;
 type HistoricalGrade = { before: CardRow; known: number; graded_at: string };
 const stackNames: VocabularyStack[] = ['unseen', 'failed', 'successful'];
 const stackMix: VocabularyStack[] = ['failed', 'unseen', 'successful', 'unseen', 'failed', 'unseen'];
@@ -327,13 +329,18 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
   }
 
   function selectCard(queue: PracticeQueue, deck: string): { id: string; stack: VocabularyStack; nextTurn: number } | null {
-    const unseen = queue.unseen.find((id) => inDeck(id, deck));
-    if (queue.warmup < 10 && unseen) return { id: unseen, stack: 'unseen', nextTurn: queue.turn };
-    for (let offset = 0; offset < stackMix.length; offset++) {
-      const position = (queue.turn + offset) % stackMix.length;
-      const stack = stackMix[position]!;
-      const id = queue[stack].find((candidate) => inDeck(candidate, deck));
-      if (id) return { id, stack, nextTurn: (position + 1) % stackMix.length };
+    const recent = queue.recent ?? [];
+    // A word just answered, missed or not, waits for others; it returns at once only when nothing else is left.
+    for (const avoid of [recent, recent.slice(0, 1), []]) {
+      const pick = (list: string[]) => list.find((id) => inDeck(id, deck) && !avoid.includes(id));
+      const unseen = pick(queue.unseen);
+      if (queue.warmup < 10 && unseen) return { id: unseen, stack: 'unseen', nextTurn: queue.turn };
+      for (let offset = 0; offset < stackMix.length; offset++) {
+        const position = (queue.turn + offset) % stackMix.length;
+        const stack = stackMix[position]!;
+        const id = pick(queue[stack]);
+        if (id) return { id, stack, nextTurn: (position + 1) % stackMix.length };
+      }
     }
     return null;
   }
@@ -581,6 +588,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         fsrsLog = finishCycle(after, at);
       }
       if (after.active) insertRandom(queue[input.known ? 'successful' : 'failed'], input.wordId);
+      queue.recent = [input.wordId, ...(queue.recent ?? []).filter((id) => id !== input.wordId)].slice(0, RECENT_GAP);
       save(after);
       saveQueue.run(JSON.stringify(queue), input.direction);
       appendGrade.run(input.requestId, input.direction, input.deck, input.wordId, input.version,
