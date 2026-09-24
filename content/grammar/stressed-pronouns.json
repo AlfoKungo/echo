@@ -295,7 +295,8 @@
       "alternatives": [
         {
           "answer": "C’est elles.",
-          "message": "That is very common in speech. In careful written French, use ce sont before eux and elles."
+          "message": "Accepted: that is what most people say. In careful written French, use ce sont before eux and elles: Ce sont elles.",
+          "accepted": true
         }
       ],
       "hint": "The girls are all women, and it is them is plural.",
@@ -314,7 +315,8 @@
       "alternatives": [
         {
           "answer": "C’est eux, sur la photo.",
-          "message": "That is very common in speech. In careful written French, use ce sont before eux and elles."
+          "message": "Accepted: that is what most people say. In careful written French, use ce sont before eux and elles: Ce sont eux, sur la photo.",
+          "accepted": true
         }
       ],
       "hint": "Two men: both c’est and lui change.",

@@ -40,7 +40,10 @@ const beta = topic('beta', 'basics', ['b1', 'b2', 'b3', 'b4', 'b5'].flatMap((pat
 const gamma = topic('gamma', 'more', [
   exercise('gamma-accent', 'place', 'rewrite', {
     source: 'He is in Paris.', answers: ['Il est à Paris.'],
-    alternatives: [{ answer: 'Il se trouve à Paris.', message: 'That locates him correctly, but this example practises être.' }],
+    alternatives: [
+      { answer: 'Il se trouve à Paris.', message: 'That locates him correctly, but this example practises être.' },
+      { answer: 'Il est dans Paris.', message: 'Accepted: people say it, but à Paris is the usual form.', accepted: true },
+    ],
   }),
   exercise('gamma-strict', 'place', 'complete', { source: 'Il va ____ Paris.', answers: ['à'], strictAccents: true }),
   exercise('gamma-comma', 'si', 'translate', { source: 'If you come, we will go to the cinema.', answers: ['Si tu viens, on ira au cinéma.'] }),
@@ -350,6 +353,14 @@ describe('answer classification', () => {
       state = store.next(mutation(state));
     }
     expect(checked.size).toBe(5);
+  });
+
+  test('an accepted alternative settles as right on the first try and keeps its note', () => {
+    const { store } = fixture();
+    let state = until(store, store.start('gamma', requestId()), (id) => id === 'gamma-accent');
+    state = store.answer({ ...mutation(state), answer: 'il est dans Paris' });
+    expect(state.session?.current).toMatchObject({ settled: true, misses: [], feedback: { kind: 'correct', note: 'Accepted: people say it, but à Paris is the usual form.' } });
+    expect(state.session?.results.at(-1)).toMatchObject({ exerciseId: 'gamma-accent', outcome: 'independent' });
   });
 
   test('choose accepts only the exact option, marks wrong picks, and rejects text that is not an option', () => {

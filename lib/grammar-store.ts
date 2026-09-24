@@ -540,10 +540,10 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
         current.feedback = {
           kind: accepted ? 'correct' : verdict.kind === 'alternative' ? 'alternative' : 'incorrect',
           message: exercise.explanation, answer: exercise.answers[0], ...spelling,
-          ...(verdict.kind === 'alternative' ? { note: verdict.message } : {}),
+          ...(verdict.message ? { note: verdict.message } : {}),
         };
       } else if (accepted) {
-        current.feedback = { kind: 'correct', message: exercise.explanation, answer: exercise.answers[0], ...spelling };
+        current.feedback = { kind: 'correct', message: exercise.explanation, answer: exercise.answers[0], ...spelling, ...(verdict.message ? { note: verdict.message } : {}) };
         current.settled = true;
         current.outcome = current.assisted || current.attempts > 1 ? 'helped' : 'independent';
       } else {

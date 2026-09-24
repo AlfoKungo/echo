@@ -59,7 +59,7 @@ export type GrammarExercise = {
   options?: string[];
   answers: string[];
   spellingAnswers?: string[];
-  alternatives?: { answer: string; message: string }[];
+  alternatives?: { answer: string; message: string; accepted?: boolean }[];
   strictAccents?: boolean;
   hint: string;
   feedback: string;

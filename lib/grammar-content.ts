@@ -61,6 +61,7 @@ export function canBuild(tokens: string[], answer: string): boolean {
 }
 
 // Order matters: an exact accepted answer beats a listed near-miss, and a listed near-miss beats the loose fallback.
+// An alternative marked accepted counts as right, with its message kept as a note.
 // The loose fallback forgives what no exercise tests — commas, and accents unless strictAccents — as a spelling note.
 export function classify(exercise: GrammarExercise, text: string): Classification {
   const given = normalize(text);
@@ -70,7 +71,7 @@ export function classify(exercise: GrammarExercise, text: string): Classificatio
   if (exercise.type === 'choose') return { kind: 'incorrect' };
   if (same(exercise.spellingAnswers)) return { kind: 'spelling' };
   const alternative = exercise.alternatives?.find((item) => normalize(item.answer) === given);
-  if (alternative) return { kind: 'alternative', message: alternative.message };
+  if (alternative) return { kind: alternative.accepted ? 'correct' : 'alternative', message: alternative.message };
   if (exercise.type !== 'build') {
     const loose = (value: string) => {
       const bare = value.replace(/\s*,\s*/g, ' ').replace(/\s+/g, ' ').trim();
@@ -150,6 +151,7 @@ function validateExercise(
     for (const alternative of exercise.alternatives) {
       unique(alternative?.answer, 'alternative');
       text(alternative.message, `${label} alternative message`);
+      if (alternative.accepted !== undefined && typeof alternative.accepted !== 'boolean') fail(`${label} alternative accepted must be true or false.`);
     }
   }
   if (exercise.type !== 'build' && exercise.tokens !== undefined) fail(`${label} has tiles but is not a build exercise.`);

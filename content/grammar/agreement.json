@@ -640,7 +640,8 @@
       "alternatives": [
         {
           "answer": "oranges",
-          "message": "You will sometimes see oranges, but the standard rule keeps colour words that come from nouns, like orange and marron, invariable."
+          "message": "Accepted: you will see oranges too. The standard rule keeps colour words that come from nouns, like orange and marron, invariable: des sacs orange.",
+          "accepted": true
         }
       ],
       "hint": "Orange is also a fruit. Colour words taken from nouns follow their own rule.",
