@@ -1141,7 +1141,8 @@ function reveal() {
   if (!vocabularyCard() || revealed || locked() || loading) return;
   revealed = true; render(); document.querySelector('#flashcard')?.focus({ preventScroll: true });
   announce(`Answer: ${direction === 'en-fr' ? snapshot.current.fr : snapshot.current.en}.`);
-  if (audioMode) playFrench(snapshot.current.audioUrl);
+  // Listen mode already played the word when the card appeared; the reveal only shows the answer.
+  if (audioMode && !listening()) playFrench(snapshot.current.audioUrl);
 }
 function grade(known) {
   if (!revealed || locked() || loading || !vocabularyCard()) return;

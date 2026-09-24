@@ -43,21 +43,31 @@ WHISPER = '/opt/homebrew/bin/whisper-cli'
 WHISPER_MODEL = Path.home() / '.local/share/whisper-models/ggml-large-v3-turbo.bin'
 ESPEAK = '/opt/homebrew/bin/espeak-ng'
 FFMPEG = '/opt/homebrew/bin/ffmpeg'
-PIPELINE = 'english-gloss-v1'
-# Silence is trimmed at both ends to 40 ms, so the track's own gaps set the rhythm.
-TRIM = ('silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.04,'
-        'areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.04,areverse')
-NUMBERS = {'0': 'zero', '1': 'one', '100': 'one hundred', '1000': 'one thousand', '1,000': 'one thousand'}
+PIPELINE = 'english-gloss-v2'
+# Only true silence is trimmed, keeping 80 ms at each end: a stricter threshold clipped quiet
+# edges (the f of fish, the t of ant), so the track's own gaps set the rhythm.
+TRIM = ('silenceremove=start_periods=1:start_threshold=-60dB:start_silence=0.08,'
+        'areverse,silenceremove=start_periods=1:start_threshold=-60dB:start_silence=0.08,areverse')
+ONES = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve',
+        'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 
 
 def words():
     return [word for name in ('core', 'world') for word in json.loads((ROOT / 'content' / f'{name}.json').read_text())]
 
 
+def number_words(value):
+    if value < 20:
+        return ONES[value]
+    if value < 100:
+        return TENS[value // 10] + ('' if value % 10 == 0 else ' ' + ONES[value % 10])
+    return {100: 'one hundred', 1000: 'one thousand'}.get(value, str(value))
+
+
 def normalize(text):
-    text = text.lower().replace('-', ' ')
-    for digits, said in NUMBERS.items():
-        text = re.sub(rf'\b{re.escape(digits)}\b', said, text)
+    # Whisper writes numbers as digits ("20."); the text says them in words.
+    text = re.sub(r'\b(\d{1,3}(?:,\d{3})?)\b', lambda match: number_words(int(match.group(1).replace(',', ''))), text.lower().replace('-', ' '))
     return ' '.join(re.sub(r"[^a-z0-9' ]+", ' ', text).split())
 
 
@@ -97,7 +107,7 @@ def main():
     for word in words():
         if wanted is not None and word['id'] not in wanted:
             continue
-        text = spoken(word['en'])
+        text = spoken(word['en'], word['fr'])
         signature = hashlib.sha256(json.dumps({**settings, 'text': text}, sort_keys=True).encode()).hexdigest()
         path = out / f'{word["id"]}.mp3'
         cached = manifest.get(word['id'], {})
