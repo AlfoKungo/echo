@@ -266,6 +266,20 @@ describe('three-stack selection', () => {
     expect(state.current?.id).toBe(id);
   });
 
+  test('the predicted next card is the one that follows, whether the word was known or missed', () => {
+    const { store } = fixture(undefined, thirtyWords);
+    let state = store.start('fr-en', 'all');
+    let predicted = 0;
+    for (let step = 0; step < 40 && state.current; step++) {
+      const next = state.next;
+      state = store.grade(answer(state, step % 3 !== 0));
+      if (!next) continue;
+      predicted++;
+      expect({ id: state.current?.id, version: state.current?.version }).toEqual({ id: next.id, version: next.version });
+    }
+    expect(predicted).toBeGreaterThan(30);
+  });
+
   test('undo restores the ten-card boundary and reopening does not restart or reshuffle the queue', () => {
     const { store, open } = fixture(undefined, thirtyWords);
     let state = store.start('fr-en', 'all');

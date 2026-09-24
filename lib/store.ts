@@ -345,6 +345,26 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     return null;
   }
 
+  // What answering the selected card does to the queue before the card is filed again: it leaves its stack,
+  // counts toward the ten-card warm-up, advances the stack mix and becomes the most recent word.
+  function passOver(queue: PracticeQueue, selection: { id: string; stack: VocabularyStack; nextTurn: number }, wordId: string): void {
+    queue[selection.stack].splice(queue[selection.stack].indexOf(wordId), 1);
+    if (selection.stack === 'unseen') queue.warmup = Math.min(10, queue.warmup + 1);
+    queue.turn = selection.nextTurn;
+    queue.recent = [wordId, ...(queue.recent ?? []).filter((id) => id !== wordId)].slice(0, RECENT_GAP);
+  }
+
+  function cardView(row: CardRow, stack: VocabularyStack): CardView {
+    return {
+      ...wordById.get(row.word_id)!,
+      successes: row.active ? row.successes : 0,
+      stack,
+      version: row.version,
+      stage: row.active === 0 ? 'review' : row.completed_day === null && row.successes === 0 && row.cycle_misses === 0 ? 'new' : 'learning',
+      audioUrl: `audio/${encodeURIComponent(row.word_id)}.mp3`,
+    };
+  }
+
   function validateSelection(direction: Direction, deck: string): void {
     if (direction !== 'fr-en' && direction !== 'en-fr') throw new StoreError('Choose French → English or English → French.');
     if (deck !== 'all' && !categories.has(deck)) throw new StoreError('That vocabulary category does not exist.');
@@ -405,16 +425,16 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     const overview = deck === 'all' ? stats : summarize(rows.filter((candidate) => inDeck(candidate.word_id, 'all')), words.length);
     const selection = selectCard(queue, deck);
     const row = selection ? selected.find((candidate) => candidate.word_id === selection.id) : null;
-    let current: CardView | null = null;
+    const current = row ? cardView(row, selection!.stack) : null;
+    // The card after this one. The answered word is always passed over, so knowing it or not does not change
+    // what follows; the phone shows it at once and fetches its recording ahead.
+    let next: CardView | null = null;
     if (row) {
-      current = {
-        ...wordById.get(row.word_id)!,
-        successes: row.active ? row.successes : 0,
-        stack: selection!.stack,
-        version: row.version,
-        stage: row.active === 0 ? 'review' : row.completed_day === null && row.successes === 0 && row.cycle_misses === 0 ? 'new' : 'learning',
-        audioUrl: `audio/${encodeURIComponent(row.word_id)}.mp3`,
-      };
+      const after = structuredClone(queue);
+      passOver(after, selection!, row.word_id);
+      const following = selectCard(after, deck);
+      const nextRow = following && following.id !== row.word_id ? selected.find((candidate) => candidate.word_id === following.id) : null;
+      if (nextRow) next = cardView(nextRow, following!.stack);
     }
     let nextDue: number | null = null;
     for (const candidate of selected) {
@@ -424,7 +444,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     return {
       day, direction, deck, settings: preferences, extraToday: extra, decks,
       stats, overview,
-      current,
+      current, next,
       nextDue: nextDue === null ? null : new Date(nextDue).toISOString(),
       undoId: latest && inDeck(latest.word_id, deck) ? latest.request_id : null,
     };
@@ -575,9 +595,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       reconcileQueue(queue, rowsForDirection.all(input.direction), at, false);
       const selection = selectCard(queue, input.deck)!;
       const queueBefore = JSON.stringify(queue);
-      queue[selection.stack].splice(queue[selection.stack].indexOf(input.wordId), 1);
-      if (selection.stack === 'unseen') queue.warmup = Math.min(10, queue.warmup + 1);
-      queue.turn = selection.nextTurn;
+      passOver(queue, selection, input.wordId);
       const after = { ...before, active: 1, version: before.version + 1 };
       // A miss restarts the count: finishing needs two successes after the latest miss.
       after.successes = input.known ? (before.active ? before.successes : 0) + 1 : 0;
@@ -588,7 +606,6 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         fsrsLog = finishCycle(after, at);
       }
       if (after.active) insertRandom(queue[input.known ? 'successful' : 'failed'], input.wordId);
-      queue.recent = [input.wordId, ...(queue.recent ?? []).filter((id) => id !== input.wordId)].slice(0, RECENT_GAP);
       save(after);
       saveQueue.run(JSON.stringify(queue), input.direction);
       appendGrade.run(input.requestId, input.direction, input.deck, input.wordId, input.version,

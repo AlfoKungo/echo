@@ -61,6 +61,27 @@ const audio = new Audio();
 audio.preload = 'none';
 let audioGeneration = 0;
 let audioTimer;
+// Recordings fetched ahead of need, held as in-memory object URLs: playing one starts at once, with no
+// round trip to the Mac. The oldest are dropped past a small cap.
+const clipCache = new Map();
+const CLIP_CACHE_SIZE = 40;
+function warmClip(url) {
+  if (!url || clipCache.has(url)) return;
+  clipCache.set(url, null);
+  fetch(url).then((response) => (response.ok ? response.blob() : null)).then((blob) => {
+    if (!blob || !clipCache.has(url)) { clipCache.delete(url); return; }
+    clipCache.set(url, URL.createObjectURL(blob));
+    while (clipCache.size > CLIP_CACHE_SIZE) {
+      const [oldest, source] = clipCache.entries().next().value;
+      if (source) URL.revokeObjectURL(source);
+      clipCache.delete(oldest);
+    }
+  }).catch(() => clipCache.delete(url));
+}
+const clipSource = (url) => clipCache.get(url) || url;
+// The answer being saved while the next card already shows, and a grade given before it was saved.
+let pendingGrade = null;
+let queuedGrade = null;
 // One comprehension stream at a time: the Listen and Read screens, Practise and a Mistakes focus all show one.
 let streamId = '';
 let streamState = null;
@@ -102,7 +123,7 @@ function audioMessage(message, url) {
 }
 async function playFrench(url) {
   const token = ++audioGeneration;
-  audio.pause(); audio.src = url; audio.playbackRate = speed; audio.preservesPitch = true; audio.webkitPreservesPitch = true;
+  audio.pause(); audio.src = clipSource(url); audio.playbackRate = speed; audio.preservesPitch = true; audio.webkitPreservesPitch = true;
   try {
     await audio.play();
     if (token === audioGeneration) document.querySelector('#audio-status').hidden = true;
@@ -130,7 +151,7 @@ function playClip(url, token) {
     const ended = () => done(true);
     const failed = () => { if (token === audioGeneration) audioMessage('This recording is not ready yet.'); done(false); };
     audio.addEventListener('ended', ended); audio.addEventListener('error', failed);
-    audio.pause(); audio.src = url; audio.playbackRate = speed; audio.preservesPitch = true; audio.webkitPreservesPitch = true;
+    audio.pause(); audio.src = clipSource(url); audio.playbackRate = speed; audio.preservesPitch = true; audio.webkitPreservesPitch = true;
     audio.play().then(() => {
       if (token === audioGeneration) { audioBlocked = false; document.querySelector('#audio-status').hidden = true; }
     }).catch((error) => {
@@ -321,6 +342,8 @@ function renderPractice() {
   }
   main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}${cardHTML()}</section>`;
   playCardOnce();
+  warmClip(snapshot.current.audioUrl);
+  warmClip(snapshot.next?.audioUrl);
 }
 function renderBrowse() {
   const show = [['all', 'All words'], ['studied', 'Studied'], ['learning', 'Still learning'], ['missed', 'Missed at least once']].map(([value, label]) => `<option value="${value}" ${browseShow === value ? 'selected' : ''}>${label}</option>`).join('');
@@ -998,9 +1021,43 @@ function reveal() {
 }
 function grade(known) {
   if (!revealed || locked() || loading || !vocabularyCard()) return;
+  // The previous answer is still being saved: this one follows as soon as it is.
+  if (pendingGrade) { queuedGrade = known; return; }
   const card = snapshot.current;
   const body = { direction, deck, wordId: card.id, version: card.version, known, requestId: requestId() };
-  if (mixed()) mixedGrade(body); else runMutation({ type: 'grade', body });
+  if (mixed()) mixedGrade(body);
+  else if (snapshot.next) answerAhead(body);
+  else runMutation({ type: 'grade', body });
+}
+// Shows the predicted next card at once and saves the answer behind it. The server's reply replaces the
+// prediction only when it differs; if the answer could not be saved, the answered card comes back to retry.
+function answerAhead(body) {
+  const answered = snapshot;
+  const token = ++generation;
+  stopAudio();
+  snapshot = { ...snapshot, current: snapshot.next, next: null, undoId: null };
+  revealed = false; notice = null; retryAction = null;
+  render(); main.focus({ preventScroll: true });
+  announce(direction === 'en-fr' ? snapshot.current.en : snapshot.current.fr);
+  pendingGrade = api('api/grade', { method: 'POST', body: JSON.stringify(body) }).then((result) => {
+    if (token !== generation || screen !== 'practice') return;
+    const shown = snapshot.current;
+    if (result.current && shown && result.current.id === shown.id && result.current.version === shown.version) {
+      snapshot = result; render();
+    } else { applySnapshot(result); render(); }
+  }, async (error) => {
+    if (token !== generation) return;
+    queuedGrade = null;
+    if (error.status === 409) { await fetchState(`${error.message} Your progress was refreshed. Reveal the current card again before answering.`); return; }
+    snapshot = answered; revealed = true; stopAudio();
+    notice = { message: error.message }; retryAction = { type: 'grade', body }; render();
+  }).finally(() => {
+    pendingGrade = null;
+    if (queuedGrade === null) return;
+    const known = queuedGrade;
+    queuedGrade = null;
+    grade(known);
+  });
 }
 function undo() {
   if (!snapshot?.undoId || locked()) return;

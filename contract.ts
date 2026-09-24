@@ -10,7 +10,8 @@ export type CardView = Word & { successes: number; version: number; stack: Vocab
 export type Stats = { total: number; unseen: number; seenActive: number; unseenActive: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number; scheduled: number; scheduledMissed: number };
 // stats follows the selected category; overview covers all words in the selected direction.
 // extraToday is the extra allowance granted for this study day in this direction.
-export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; extraToday: number; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; nextDue: string | null; undoId: string | null };
+// next is the card that follows current once it is answered (known or not); null when none, or when it would be current again.
+export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; extraToday: number; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; next: CardView | null; nextDue: string | null; undoId: string | null };
 export type GradeInput = { direction: Direction; deck: string; wordId: string; version: number; known: boolean; requestId: string };
 export type ExtraWordsInput = { direction: Direction; deck: string; count: number; requestId: string };
 export type ReviewEarlyMode = 'soonest' | 'missed';
