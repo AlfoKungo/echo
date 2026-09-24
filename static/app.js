@@ -23,6 +23,9 @@ const listening = () => listenMode && direction === 'fr-en';
 const headphones = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>';
 const bookIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v14M12 6C9.5 4.2 6 4 3 4.7v13.6c3-.7 6.5-.5 9 1.3 2.5-1.8 6-2 9-1.3V4.7C18 4 14.5 4.2 12 6Z"/></svg>';
 const mixIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="3.2"/><circle cx="17" cy="17" r="3.2"/><path d="M13.5 6.5h6.2m0 0-2.2-2.2m2.2 2.2-2.2 2.2M10.5 17.5H4.3m0 0 2.2-2.2m-2.2 2.2 2.2 2.2"/></svg>';
+const cassette = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><circle cx="15.5" cy="11" r="2"/><path d="M10.5 11h3M7 19l1.5-3h7L17 19"/></svg>';
+const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z"/></svg>';
+const pauseIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>';
 // Echo always opens on Home; each screen change after that is a history entry, so Back returns to it.
 // A place names a screen and what it shows: 'grammar', 'topic|negation', 'exercise|test:negation'.
 let screen = 'home';
@@ -82,6 +85,12 @@ const clipSource = (url) => clipCache.get(url) || url;
 // The answer being saved while the next card already shows, and a grade given before it was saved.
 let pendingGrade = null;
 let queuedGrade = null;
+// The Walkman plays one long tape on its own audio element, so a locked phone keeps playing it.
+// tape.words times each word; the screen and the lock screen follow currentTime.
+const walkmanAudio = new Audio();
+walkmanAudio.preload = 'auto';
+let walkman = { tape: null, index: -1, meaning: false, loading: false, started: false };
+let walkmanGeneration = 0;
 // One comprehension stream at a time: the Listen and Read screens, Practise and a Mistakes focus all show one.
 let streamId = '';
 let streamState = null;
@@ -252,6 +261,7 @@ function renderHome() {
     ${room('practise', mixIcon, 'Practise', 'A little of everything: words, grammar and understanding.')}
     ${room('listen', headphones, 'Listen', 'Hear French and show you understood it.', 'listen')}
     ${room('read', bookIcon, 'Read', 'Read French and show you understood it.', 'read')}
+    ${room('walkman', cassette, 'Walkman', 'French words, then their meaning, like an old language tape.')}
   </div><div class="side-row">
     <button class="side-link" data-action="start" ${locked() ? 'disabled' : ''}>Vocabulary</button>
     <button class="side-link" data-action="grammar" ${busy ? 'disabled' : ''}>Grammar</button>
@@ -269,7 +279,114 @@ function render() {
   else if (screen === 'listen' || screen === 'read') renderStream();
   else if (screen === 'mix' || screen === 'focus') renderMixed();
   else if (screen === 'mistakes') renderMistakes();
+  else if (screen === 'walkman') renderWalkman();
   else renderHome();
+}
+function renderWalkman() {
+  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Walkman</span></div>`;
+  const tape = walkman.tape;
+  if (walkman.loading || (!tape && !notice)) { main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}<div class="loading-state" role="status">Winding the tape…</div></section>`; return; }
+  if (!tape) { main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}</section>`; return; }
+  const word = tape.words[walkman.index];
+  const playing = !walkmanAudio.paused;
+  const face = word
+    ? `<p class="wm-fr" lang="fr">${frEsc(word.fr)}</p><p class="wm-en">${walkman.meaning ? esc(word.en) : '&nbsp;'}</p>`
+    : `<p class="wm-hint">You hear a French word, then a pause to find its meaning, then the English, then the French again.</p>`;
+  main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}
+    <div class="wm-face" aria-live="polite">${face}</div>
+    <div class="wm-controls"><button class="listen-play wm-play" data-action="walkman-toggle" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button></div>
+    <div class="wm-progress" aria-hidden="true"><span style="width:${walkmanProgress()}%"></span></div>
+    <p class="caption wm-note">Keeps playing with your phone locked. Listening doesn’t change your vocabulary progress.</p>
+  </section>`;
+}
+function walkmanProgress() {
+  const seconds = walkman.tape?.seconds;
+  return seconds ? Math.min(100, (walkmanAudio.currentTime / seconds) * 100).toFixed(2) : 0;
+}
+async function loadTape(autoplay = false) {
+  const token = ++walkmanGeneration;
+  walkman = { tape: null, index: -1, meaning: false, loading: true, started: autoplay };
+  notice = null; retryAction = null;
+  render();
+  try {
+    const tape = await api('api/walkman', { method: 'POST', body: '{}' });
+    if (token !== walkmanGeneration || screen !== 'walkman') return;
+    walkman = { ...walkman, tape, loading: false };
+    walkmanAudio.src = tape.url;
+    walkmanAudio.playbackRate = speed; walkmanAudio.preservesPitch = true; walkmanAudio.webkitPreservesPitch = true;
+    render();
+    if (autoplay) playWalkman();
+  } catch (error) {
+    if (token !== walkmanGeneration) return;
+    walkman = { ...walkman, loading: false };
+    notice = { message: error.message }; retryAction = { type: 'walkman' };
+    render();
+  }
+}
+async function playWalkman() {
+  walkmanAudio.playbackRate = speed;
+  try {
+    await walkmanAudio.play();
+    walkman.started = true;
+  } catch (error) {
+    if (error.name !== 'AbortError') { notice = { message: 'The tape could not start. Tap play to try again.' }; }
+  }
+  render();
+}
+function toggleWalkman() {
+  if (!walkman.tape) return;
+  if (walkmanAudio.paused) playWalkman(); else walkmanAudio.pause();
+}
+// The word playing at a moment is the last one to have started by then.
+function walkmanWordAt(time) {
+  const words = walkman.tape?.words ?? [];
+  let low = 0, high = words.length - 1, found = -1;
+  while (low <= high) {
+    const middle = (low + high) >> 1;
+    if (words[middle].start <= time) { found = middle; low = middle + 1; } else high = middle - 1;
+  }
+  return found;
+}
+function followTape() {
+  if (!walkman.tape) return;
+  const time = walkmanAudio.currentTime;
+  const index = walkmanWordAt(time);
+  const meaning = index >= 0 && time >= walkman.tape.words[index].meaningAt;
+  if (index !== walkman.index || meaning !== walkman.meaning) {
+    walkman.index = index; walkman.meaning = meaning;
+    const word = walkman.tape.words[index];
+    if (word && 'mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({ title: word.fr, artist: meaning ? word.en : '…', album: 'Echo · Walkman', artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
+    }
+    if (screen === 'walkman' && !document.hidden) render();
+    return;
+  }
+  const bar = document.querySelector('.wm-progress span');
+  if (bar) bar.style.width = `${walkmanProgress()}%`;
+}
+// Lock-screen skip moves a whole word: forward to the next, back to this word's start or the one before.
+function skipWord(step) {
+  const words = walkman.tape?.words;
+  if (!words?.length) return;
+  const index = walkmanWordAt(walkmanAudio.currentTime);
+  const into = index >= 0 ? walkmanAudio.currentTime - words[index].start : 0;
+  const target = step > 0 ? index + 1 : into > 1.5 ? index : index - 1;
+  walkmanAudio.currentTime = words[Math.max(0, Math.min(words.length - 1, target))].start;
+}
+walkmanAudio.addEventListener('timeupdate', followTape);
+walkmanAudio.addEventListener('play', () => { if (screen === 'walkman') render(); });
+walkmanAudio.addEventListener('pause', () => { if (screen === 'walkman') render(); });
+// A finished tape winds straight on to a new one, chosen afresh.
+walkmanAudio.addEventListener('ended', () => { if (screen === 'walkman') loadTape(true); });
+walkmanAudio.addEventListener('error', () => {
+  if (screen !== 'walkman' || !walkman.tape) return;
+  notice = { message: 'The tape stopped loading. Retry for a new one.' }; retryAction = { type: 'walkman' }; render();
+});
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.setActionHandler('play', () => playWalkman());
+  navigator.mediaSession.setActionHandler('pause', () => walkmanAudio.pause());
+  navigator.mediaSession.setActionHandler('nexttrack', () => skipWord(1));
+  navigator.mediaSession.setActionHandler('previoustrack', () => skipWord(-1));
 }
 function availabilityCopy() {
   const parts = [];
@@ -728,6 +845,7 @@ function enterStream() { loadStream(screen === 'read' ? 'read' : 'listen'); }
 function openStream(name) { if (move(name, true)) enterStream(); }
 function openMix() { if (move('mix', true)) enterMixed(); }
 function openMistakes() { if (move('mistakes', true)) loadMistakes(); }
+function openWalkman() { if (move('walkman', true)) loadTape(); }
 function openGroup(id) { focusId = id; if (move(`focus|${id}`, true)) enterMixed(); }
 async function loadMistakes(quiet = false) {
   if (!quiet) { loading = true; notice = null; retryAction = null; render(); }
@@ -1002,6 +1120,12 @@ function show(next) {
   else if (name === 'focus') focusId = arg;
   if (name !== 'mix' && name !== 'focus') { mixedSource = ''; review = null; }
   if (name !== 'listen' && name !== 'read' && name !== 'mix' && name !== 'focus') { streamState = null; streamId = ''; }
+  // Leaving the Walkman stops the tape; coming back winds a new one.
+  if (name !== 'walkman' && walkmanAudio.src) {
+    ++walkmanGeneration; walkmanAudio.pause(); walkmanAudio.removeAttribute('src'); walkmanAudio.load();
+    walkman = { tape: null, index: -1, meaning: false, loading: false, started: false };
+    if ('mediaSession' in navigator) navigator.mediaSession.metadata = null;
+  }
   screen = name; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
   if (name === 'home') fetchState();
 }
@@ -1155,6 +1279,7 @@ function retry() {
   else if (action.type === 'stream') loadStream(action.stream, action.message);
   else if (action.type === 'mixed') enterMixed();
   else if (action.type === 'mistakes') loadMistakes();
+  else if (action.type === 'walkman') loadTape();
   else fetchState(action.message);
 }
 
@@ -1214,6 +1339,8 @@ document.addEventListener('click', (event) => {
   else if (action === 'listen' || action === 'read') openStream(action);
   else if (action === 'practise') openMix();
   else if (action === 'mistakes') openMistakes();
+  else if (action === 'walkman') openWalkman();
+  else if (action === 'walkman-toggle') toggleWalkman();
   else if (action === 'stream-check') streamCheck();
   else if (action === 'stream-next') streamNext();
   else if (event.target.closest('#flashcard') && !event.target.closest('button,a,input,select')) reveal();
@@ -1286,6 +1413,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'listen' || screen === 'read') enterStream();
   else if (screen === 'mix' || screen === 'focus') enterMixed();
   else if (screen === 'mistakes') loadMistakes();
+  else if (screen === 'walkman') loadTape();
 });
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }

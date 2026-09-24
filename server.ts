@@ -1,4 +1,4 @@
-import { mkdirSync, existsSync, readdirSync, unlinkSync } from 'node:fs';
+import { mkdirSync, existsSync, readdirSync, statSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { Database } from 'bun:sqlite';
 import { createStore, StoreError } from './lib/store';
@@ -6,6 +6,7 @@ import { createGrammarStore } from './lib/grammar-store';
 import { loadCourse } from './lib/grammar-content';
 import { loadBank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
+import { buildTape, createClips, planTape, tapeView, type Tape } from './lib/walkman';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, Word } from './contract';
 
 const root = import.meta.dir;
@@ -33,6 +34,32 @@ const allowedHosts = new Set([new URL(publicOrigin).host, `127.0.0.1:${port}`, `
 const allowedOrigins = new Set([publicOrigin, `http://127.0.0.1:${port}`, `http://localhost:${port}`]);
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
+// Audio is served with byte ranges: Safari will not play a recording, or keep one playing locked, without them.
+function ranged(req: Request, size: number, slice: (start: number, end: number) => BodyInit, headers: Record<string, string>): Response {
+  const range = req.headers.get('range');
+  const all = { ...headers, 'Content-Type': 'audio/mpeg', 'Accept-Ranges': 'bytes' };
+  if (!range) return new Response(req.method === 'HEAD' ? null : slice(0, size), { headers: { ...all, 'Content-Length': String(size) } });
+  const r = /^bytes=(\d*)-(\d*)$/.exec(range);
+  if (!r || (!r[1] && !r[2])) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${size}` } });
+  const start = r[1] ? Number(r[1]) : Math.max(0, size - Number(r[2]));
+  const end = r[1] && r[2] ? Math.min(Number(r[2]), size - 1) : size - 1;
+  if (start >= size || start > end) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${size}` } });
+  return new Response(req.method === 'HEAD' ? null : slice(start, end + 1), { status: 206, headers: { ...all, 'Content-Range': `bytes ${start}-${end}/${size}`, 'Content-Length': String(end - start + 1) } });
+}
+// Walkman tapes live in memory, the latest few only; clips are re-read whenever they are rebuilt.
+const walkmanClips = createClips(join(root, 'audio'));
+const walkmanManifest = join(root, 'audio/walkman/manifest.json');
+let walkmanStamp = 0;
+const tapes = new Map<string, Tape>();
+function newTape(): Tape {
+  const stamp = existsSync(walkmanManifest) ? statSync(walkmanManifest).mtimeMs : 0;
+  if (stamp !== walkmanStamp) { walkmanClips.forget(); walkmanStamp = stamp; }
+  const tape = buildTape(crypto.randomUUID(), planTape(store.listening(), 600), byId, walkmanClips);
+  if (!tape.words.length) throw new StoreError('The Walkman recordings are not ready yet. Please try again later.', 503);
+  tapes.set(tape.id, tape);
+  for (const id of [...tapes.keys()].slice(0, -3)) tapes.delete(id);
+  return tape;
+}
 function direction(value: unknown): Direction {
   if (value !== 'fr-en' && value !== 'en-fr') throw new StoreError('Choose French to English or English to French.', 400);
   return value;
@@ -146,6 +173,13 @@ const server = Bun.serve({
         if (typeof data.undoId !== 'string') throw new StoreError('There is no answer to undo.', 400);
         return json(store.undo(direction(data.direction), deck(data.deck), data.undoId));
       }
+      if (path === '/api/walkman' && req.method === 'POST') return json(tapeView(newTape()));
+      const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);
+      if (tapeAudio && (req.method === 'GET' || req.method === 'HEAD')) {
+        const tape = tapes.get(tapeAudio[1]!);
+        if (!tape) return json({ error: 'This tape has ended. Start the Walkman again for a new one.' }, 404);
+        return ranged(req, tape.bytes.length, (start, end) => tape.bytes.subarray(start, end), { 'Cache-Control': 'no-store' });
+      }
       if (path.startsWith('/audio/') && (req.method === 'GET' || req.method === 'HEAD')) {
         const spoken = path.match(/^\/audio\/grammar\/([a-z0-9-]+)\.mp3$/);
         const word = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
@@ -158,17 +192,7 @@ const server = Bun.serve({
             ? json({ error: 'This spoken sentence has not been recorded yet.' }, 404)
             : json({ error: 'This French recording is not ready. Please try again shortly.' }, 503);
         }
-        const headers = { 'Content-Type': 'audio/mpeg', 'Cache-Control': 'no-cache', 'Accept-Ranges': 'bytes' };
-        const range = req.headers.get('range');
-        if (range) {
-          const r = /^bytes=(\d*)-(\d*)$/.exec(range);
-          if (!r || (!r[1] && !r[2])) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${file.size}` } });
-          const start = r[1] ? Number(r[1]) : Math.max(0, file.size - Number(r[2]));
-          const end = r[1] && r[2] ? Math.min(Number(r[2]), file.size - 1) : file.size - 1;
-          if (start >= file.size || start > end) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${file.size}` } });
-          return new Response(req.method === 'HEAD' ? null : file.slice(start, end + 1), { status: 206, headers: { ...headers, 'Content-Range': `bytes ${start}-${end}/${file.size}`, 'Content-Length': String(end - start + 1) } });
-        }
-        return new Response(req.method === 'HEAD' ? null : file, { headers: { ...headers, 'Content-Length': String(file.size) } });
+        return ranged(req, file.size, (start, end) => file.slice(start, end), { 'Cache-Control': 'no-cache' });
       }
       const name = path === '/' ? 'index.html' : path.slice(1);
       if (Object.hasOwn(staticFiles, name) && (req.method === 'GET' || req.method === 'HEAD')) {

@@ -22,6 +22,8 @@ export interface Store {
   reviewEarly(input: ReviewEarlyInput): Snapshot;
   addWord(input: AddWordInput): AddWordResult;
   browse(direction: Direction, deck: string): BrowseWord[];
+  // Every word as the Walkman sees it, both directions merged: a word being learnt either way is learning.
+  listening(): BrowseWord[];
   exportData(): unknown;
   close(): void;
 }
@@ -688,6 +690,23 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     })();
   }
 
+  function listening(): BrowseWord[] {
+    const rank = { learning: 3, due: 2, scheduled: 1, new: 0 } as const;
+    const reverse = new Map(browse('en-fr', 'all').map((word) => [word.id, word]));
+    return browse('fr-en', 'all').map((word) => {
+      const other = reverse.get(word.id)!;
+      const earliest = (a: string | null, b: string | null) => (!a ? b : !b ? a : a < b ? a : b);
+      const latest = (a: string | null, b: string | null) => (!a ? b : !b ? a : a > b ? a : b);
+      return {
+        ...word,
+        status: rank[other.status] > rank[word.status] ? other.status : word.status,
+        due: earliest(word.due, other.due),
+        lastStudied: latest(word.lastStudied, other.lastStudied),
+        misses: word.misses + other.misses,
+      };
+    });
+  }
+
   function exportData(): unknown {
     return db.transaction(() => ({
       format: 'echo-progress', version: 2, exportedAt: now().toISOString(),
@@ -702,5 +721,5 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     }))();
   }
 
-  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, addWord, browse, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, addWord, browse, listening, exportData, close: () => db.close() };
 }

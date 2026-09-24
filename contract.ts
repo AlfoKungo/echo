@@ -24,6 +24,10 @@ export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'schedule
 // made-due: it was finished and waiting for a later review, so it becomes due now, like an early review.
 export type AddWordInput = { wordId: string; requestId: string };
 export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due' };
+// One word on a Walkman tape, times in seconds from the tape's start: the French at start, the English at
+// meaningAt, the French again at againAt, ending at end.
+export type WalkmanWord = { id: string; fr: string; en: string; start: number; meaningAt: number; againAt: number; end: number };
+export type WalkmanTape = { id: string; url: string; seconds: number; words: WalkmanWord[] };
 
 // All routes are relative to the app root, so /echo/ works behind a path proxy.
 // GET api/state?direction=fr-en&deck=all -> Snapshot (does not admit new cards)
@@ -36,6 +40,8 @@ export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due
 // GET api/words?direction=fr-en&deck=all -> {words:BrowseWord[]}
 // POST api/vocabulary/add AddWordInput -> AddWordResult (idempotent by requestId; unknown word is HTTP 404)
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
+// POST api/walkman -> WalkmanTape: a new tape of the words worth hearing now; listening changes no progress
+// GET api/walkman/:id.mp3 -> that tape's audio, with byte ranges; only the latest few tapes are kept
 // GET api/export -> all progress as downloadable JSON
 // Errors are {error:string}; UI must display the server message and allow retry.
 

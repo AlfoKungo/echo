@@ -230,6 +230,20 @@ def clips_from(name):
     return clips
 
 
+def signature_settings():
+    voice = json.loads(VOICE_PROVENANCE.read_text())
+    reference_hash = hashlib.sha256(REFERENCE.read_bytes()).hexdigest()
+    return {'model': MODEL, 'settings': SETTINGS, 'pipeline': PIPELINE,
+            'referenceSha256': reference_hash, 'voiceProvenance': voice,
+            'encoding': ENCODING, 'validation': VALIDATION}
+
+
+def clip_signature(settings, clip):
+    # The cache key: a clip re-renders only when its text or any generation setting changes.
+    payload = {**settings, 'source': clip}
+    return hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+
+
 def render_wav(model, conds, text, seed, path, mx, np):
     mx.random.seed(seed)
     chunks = []
@@ -270,15 +284,10 @@ def build(args, audio):
     seeds = [int(value.strip()) for value in args.seeds.split(',') if value.strip()]
     if not seeds:
         raise ValueError('--seeds must contain at least one integer')
-    voice = json.loads(VOICE_PROVENANCE.read_text())
-    reference_hash = hashlib.sha256(REFERENCE.read_bytes()).hexdigest()
-    signature_settings = {'model': MODEL, 'settings': SETTINGS, 'pipeline': PIPELINE,
-                          'referenceSha256': reference_hash, 'voiceProvenance': voice,
-                          'encoding': ENCODING, 'validation': VALIDATION}
+    signature_settings_ = signature_settings()
 
     def signature(clip):
-        payload = {**signature_settings, 'source': clip}
-        return hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+        return clip_signature(signature_settings_, clip)
 
     manifest_path = audio / 'manifest.json'
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
@@ -298,7 +307,7 @@ def build(args, audio):
     espeak = executable('espeak-ng')
     if not WHISPER_MODEL.is_file():
         raise RuntimeError(f'Required local Whisper model is missing: {WHISPER_MODEL}')
-    provenance = {**signature_settings, 'set': args.set, 'source': f'scripts/list-clips.ts {args.set}',
+    provenance = {**signature_settings_, 'set': args.set, 'source': f'scripts/list-clips.ts {args.set}',
                   'python': sys.executable, 'reference': str(REFERENCE.relative_to(ROOT)),
                   'generationCommand': f'scripts/render-clips.py --set {args.set}',
                   'processing': 'Generate each complete French source without a carrier or trimming; encode MP3, decode it, then validate the entire spoken text locally.',
