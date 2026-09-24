@@ -101,8 +101,9 @@ conds = model.prepare_conditionals(str(REFERENCE), 24000, exaggeration=SETTINGS[
 failures = []
 for index, word in enumerate(pending, 1):
     started = time.monotonic()
-    # Some words follow "On dit :" with no audible pause; "On dit…" makes the voice stop before the word.
-    carriers = list(dict.fromkeys([carrier_for(word), 'On dit… ']))
+    # Some words follow "On dit :" with no audible pause; "On dit…" makes the voice stop before the word, and
+    # a lead-in that ends the sentence ("Écoutez.") separates even short words such as "mais" or "donc".
+    carriers = list(dict.fromkeys([carrier_for(word), 'On dit… ', 'Écoutez. ']))
     errors = []
     wav = AUDIO / f"{word['id']}.context.wav"
     trimmed = AUDIO / f"{word['id']}.trim.wav"
