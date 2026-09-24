@@ -124,8 +124,12 @@ def written_words(text):
     return re.findall(r'[^\W_]+', unicodedata.normalize('NFC', text.lower().replace('œ', 'oe')))
 
 
-def fold(word):
-    # Drops one ending the ear cannot hear (bains/bain, amusés/amusé, préparent/prépare).
+def fold(word, keep_vowel=False):
+    # Drops one ending the ear cannot hear (bains/bain, amusés/amusé, préparent/prépare). With keep_vowel,
+    # final -ais/-ait/-aient (/ɛ/) and -ai (/e/) stay apart, so parlerais never passes for parlerai.
+    if keep_vowel:
+        word = re.sub(r'(ais|ait|aient)$', 'Ɛ', word)
+        word = re.sub(r'ai$', 'É', word)
     return re.sub(r'(e?nt|e?s|e?x|e?t|e?d|e?z|e)$', '', word) or word
 
 
@@ -150,11 +154,12 @@ def verdict(transcript, text, expected_phonemes, espeak, clip_set):
         return 'written'
     if phonemes(transcript, espeak) == expected_phonemes:
         return 'phonetic'
-    # A grammar clip exists to model one exact form (parlerais, not parlerai), so only listening clips go further.
-    if clip_set != 'comprehension':
-        return None
-    names = proper_names(text)
-    folded_heard, folded_wanted = [fold(word) for word in heard], [fold(word) for word in wanted]
+    # A grammar clip models one exact form: it forgives silent endings (regardent/regarde) but keeps the
+    # -ais/-ai vowel apart, and only listening clips forgive how Whisper spells a proper name.
+    grammar = clip_set != 'comprehension'
+    names = set() if grammar else proper_names(text)
+    folded_heard = [fold(word, keep_vowel=grammar) for word in heard]
+    folded_wanted = [fold(word, keep_vowel=grammar) for word in wanted]
     for tag, a1, a2, b1, b2 in difflib.SequenceMatcher(None, folded_wanted, folded_heard, autojunk=False).get_opcodes():
         if tag == 'equal':
             continue
