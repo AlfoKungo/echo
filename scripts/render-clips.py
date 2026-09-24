@@ -14,6 +14,7 @@ os.environ['TRANSFORMERS_OFFLINE'] = '1'
 
 import argparse
 import fcntl
+import difflib
 import gc
 import hashlib
 import json
@@ -56,6 +57,111 @@ def atomic_json(path, value):
 def normalize(text):
     text = unicodedata.normalize('NFC', text.lower().replace('œ', 'oe'))
     return ''.join(character for character in text if character.isalnum())
+
+
+UNITS = {'zéro': 0, 'un': 1, 'une': 1, 'deux': 2, 'trois': 3, 'quatre': 4, 'cinq': 5, 'six': 6, 'sept': 7,
+         'huit': 8, 'neuf': 9, 'dix': 10, 'onze': 11, 'douze': 12, 'treize': 13, 'quatorze': 14, 'quinze': 15,
+         'seize': 16}
+TENS = {'vingt': 20, 'vingts': 20, 'trente': 30, 'quarante': 40, 'cinquante': 50, 'soixante': 60}
+
+
+def is_number(word):
+    return all(part in UNITS or part in TENS or part in ('cent', 'cents', 'mille') for part in word.lower().split('-'))
+
+
+def number_value(parts):
+    total, current = 0, 0
+    for part in parts:
+        if part in ('vingt', 'vingts') and current == 4:
+            current = 80
+        elif part in ('cent', 'cents'):
+            current = (current or 1) * 100
+        elif part == 'mille':
+            total, current = total + (current or 1) * 1000, 0
+        else:
+            current += UNITS.get(part, TENS.get(part, 0))
+    return total + current
+
+
+def digits(text):
+    # Whisper writes numbers as digits ("9h30", "80 ans"); the script writes them as words. Both sides become
+    # digits so a clip is not rejected for how the recogniser spells a number it heard correctly.
+    tokens = re.findall(r"[\w’'-]+|[^\w’'-]+", text)
+    out, index = [], 0
+    while index < len(tokens):
+        if not is_number(tokens[index]):
+            out.append(tokens[index])
+            index += 1
+            continue
+        parts, end = tokens[index].lower().split('-'), index + 1
+        while end + 1 < len(tokens) and not tokens[end].strip():
+            following = tokens[end + 1].lower()
+            # "vingt et un", "soixante et onze": "et" belongs to the number only before un/une/onze.
+            if following == 'et' and end + 3 < len(tokens) and not tokens[end + 2].strip() \
+                    and tokens[end + 3].lower() in ('un', 'une', 'onze'):
+                parts.append(tokens[end + 3].lower())
+                end += 4
+            elif is_number(following):
+                parts += following.split('-')
+                end += 2
+            else:
+                break
+        out.append(str(number_value(parts)))
+        index = end
+    return ''.join(out)
+
+
+def written_words(text):
+    # One spelling for times, prices and titles, so "neuf heures et demie" and "9h30" compare equal.
+    text = digits(text.replace('€', ' euros').replace('\u00a0', ' '))
+    text = re.sub(r'\bDr\b\.?', 'docteur', text)
+    text = re.sub(r'\bM\.\s', 'monsieur ', text)
+    text = re.sub(r'(\d+)\s*heures?\b', r'\1h', text)
+    text = re.sub(r'(\d+)h\s+et\s+demie', r'\1h30', text)
+    text = re.sub(r'(\d+)h\s+et\s+quart', r'\1h15', text)
+    text = re.sub(r'(\d+)h\s*(\d+)', r'\1h\2', text)
+    text = re.sub(r'(\d+),(\d+)\s*euros', r'\1 euros \2', text)
+    return re.findall(r'[^\W_]+', unicodedata.normalize('NFC', text.lower().replace('œ', 'oe')))
+
+
+def fold(word):
+    # Drops one ending the ear cannot hear (bains/bain, amusés/amusé, préparent/prépare).
+    return re.sub(r'(e?nt|e?s|e?x|e?t|e?d|e?z|e)$', '', word) or word
+
+
+def proper_names(text):
+    # Capitalised words that do not open a sentence: Whisper spells names its own way (Bréhat → Bréat).
+    names = set()
+    for match in re.finditer(r"[\w’'-]+", text):
+        before = text[:match.start()].rstrip()
+        if match.group()[0].isupper() and before and before[-1] not in '.!?:«—':
+            names.update(re.findall(r'[^\W_]+', match.group().lower()))
+    return names
+
+
+def verdict(transcript, text, expected_phonemes, espeak, clip_set):
+    """How the transcript matches the script, or None when it does not."""
+    if not transcript:
+        return None
+    if normalize(transcript) == normalize(text):
+        return 'text'
+    heard, wanted = written_words(transcript), written_words(text)
+    if heard == wanted:
+        return 'written'
+    if phonemes(transcript, espeak) == expected_phonemes:
+        return 'phonetic'
+    # A grammar clip exists to model one exact form (parlerais, not parlerai), so only listening clips go further.
+    if clip_set != 'comprehension':
+        return None
+    names = proper_names(text)
+    folded_heard, folded_wanted = [fold(word) for word in heard], [fold(word) for word in wanted]
+    for tag, a1, a2, b1, b2 in difflib.SequenceMatcher(None, folded_wanted, folded_heard, autojunk=False).get_opcodes():
+        if tag == 'equal':
+            continue
+        if tag == 'replace' and all(word in names for word in wanted[a1:a2]) and 1 <= b2 - b1 <= 3:
+            continue
+        return None
+    return 'homophone'
 
 
 def executable(name):
@@ -227,13 +333,13 @@ def build(args, audio):
                         run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(mp3),
                              '-ac', '1', '-ar', str(VALIDATION['sampleRate']), str(decoded)])
                         transcript = transcribe(decoded, whisper)
-                        exact = normalize(transcript) == normalize(clip['text'])
-                        if not exact and (not transcript or phonemes(transcript, espeak) != expected_phonemes):
+                        check = verdict(transcript, clip['text'], expected_phonemes, espeak, args.set)
+                        if not check:
                             errors.append({'seed': seed, 'error': 'Full spoken text mismatch', 'transcript': transcript})
                             continue
                         record = {**clip, 'set': args.set, 'signature': signature(clip), 'model': MODEL,
                                   'pipeline': PIPELINE, 'seconds': seconds, 'transcript': transcript,
-                                  'check': 'text' if exact else 'phonetic', 'seed': seed,
+                                  'check': check, 'seed': seed,
                                   'sha256': hashlib.sha256(mp3.read_bytes()).hexdigest(),
                                   'generatedAt': datetime.now(timezone.utc).isoformat(),
                                   'renderSeconds': round(time.monotonic() - started, 2)}
