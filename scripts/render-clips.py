@@ -91,7 +91,8 @@ def run(command):
 
 def phonemes(text, espeak):
     text = ' '.join(text.replace('«', '').replace('»', '').replace(':', '').replace('.', '').split())
-    return re.sub(r'[\sˈˌː]', '', run([espeak, '-q', '-v', 'fr-fr', '--ipa', text]))
+    # espeak marks a liaison with "-" (ses → "se-z", ces → "sez"); it is not a sound, so it must not decide a match.
+    return re.sub(r'[\sˈˌː-]', '', run([espeak, '-q', '-v', 'fr-fr', '--ipa', text]))
 
 
 def transcribe(path, whisper):
