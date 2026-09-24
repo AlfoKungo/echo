@@ -1,0 +1,5035 @@
+{
+  "sentences": [
+    {
+      "id": "a2-health-s01",
+      "level": "A2",
+      "fr": "Hier, j’avais mal à la tête toute la journée.",
+      "en": "Yesterday I had a headache all day.",
+      "distractors": [
+        "Yesterday I had a stomach ache all day.",
+        "Today I have a headache all day.",
+        "Yesterday I had a headache all morning."
+      ],
+      "gap": "j’avais",
+      "topics": [
+        "imparfait",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-002",
+        "health-time-003"
+      ],
+      "gloss": [
+        {
+          "fr": "Hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "j’avais",
+          "en": "I had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "mal",
+          "en": "pain (avoir mal à la tête = to have a headache)"
+        },
+        {
+          "fr": "tête",
+          "en": "head",
+          "word": "health-time-003"
+        },
+        {
+          "fr": "toute",
+          "en": "all; whole"
+        },
+        {
+          "fr": "journée",
+          "en": "day (the whole day)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s02",
+      "level": "A2",
+      "fr": "Le médecin m’a donné une ordonnance pour trois médicaments.",
+      "en": "The doctor gave me a prescription for three medicines.",
+      "distractors": [
+        "The doctor gave me a prescription for two medicines.",
+        "The pharmacist gave me a prescription for three medicines.",
+        "The doctor showed me a prescription for three medicines."
+      ],
+      "gap": "trois",
+      "topics": [
+        "passe-compose-avoir",
+        "indirect-object"
+      ],
+      "words": [
+        "work-011",
+        "verbs-024",
+        "health-time-042",
+        "health-time-084",
+        "health-time-041"
+      ],
+      "gloss": [
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "m’a donné",
+          "en": "gave me (donner)",
+          "word": "verbs-024"
+        },
+        {
+          "fr": "ordonnance",
+          "en": "prescription",
+          "word": "health-time-042"
+        },
+        {
+          "fr": "pour",
+          "en": "for"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "médicaments",
+          "en": "medicines (le médicament)",
+          "word": "health-time-041"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s03",
+      "level": "A2",
+      "fr": "J’ai pris rendez-vous chez le dentiste pour mardi prochain.",
+      "en": "I made an appointment with the dentist for next Tuesday.",
+      "distractors": [
+        "I made an appointment with the doctor for next Tuesday.",
+        "I made an appointment with the dentist for last Tuesday.",
+        "I made an appointment with the dentist for next Thursday."
+      ],
+      "gap": "mardi",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-023",
+        "work-010",
+        "work-013",
+        "health-time-063",
+        "essentials-064",
+        "essentials-062"
+      ],
+      "gloss": [
+        {
+          "fr": "J’ai pris",
+          "en": "I took; I made (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "chez",
+          "en": "at the office of; at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "dentiste",
+          "en": "dentist",
+          "word": "work-013"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "prochain",
+          "en": "next"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s04",
+      "level": "A2",
+      "fr": "Elle est restée au lit parce qu’elle avait de la fièvre.",
+      "en": "She stayed in bed because she had a fever.",
+      "distractors": [
+        "He stayed in bed because he had a fever.",
+        "She stayed at home because she had a fever.",
+        "She stayed in bed because she had a cough."
+      ],
+      "gap": "restée",
+      "topics": [
+        "passe-compose-etre",
+        "imparfait"
+      ],
+      "words": [
+        "verbs-030",
+        "home-051",
+        "verbs-002",
+        "health-time-035"
+      ],
+      "gloss": [
+        {
+          "fr": "est restée",
+          "en": "stayed (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "lit",
+          "en": "bed",
+          "word": "home-051"
+        },
+        {
+          "fr": "parce qu’",
+          "en": "because"
+        },
+        {
+          "fr": "avait",
+          "en": "had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fièvre",
+          "en": "fever",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s05",
+      "level": "A2",
+      "fr": "Tu dois boire beaucoup d’eau quand tu as de la fièvre.",
+      "en": "You have to drink a lot of water when you have a fever.",
+      "distractors": [
+        "You have to drink a lot of tea when you have a fever.",
+        "You can drink a lot of water when you have a fever.",
+        "We have to drink a lot of water when we have a fever."
+      ],
+      "gap": "dois",
+      "topics": [
+        "irregular-present",
+        "partitive"
+      ],
+      "words": [
+        "verbs-021",
+        "verbs-060",
+        "essentials-099",
+        "food-001",
+        "essentials-082",
+        "verbs-002",
+        "health-time-035"
+      ],
+      "gloss": [
+        {
+          "fr": "dois",
+          "en": "must; have to (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "boire",
+          "en": "to drink",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; much",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "d’eau",
+          "en": "of water (l’eau)",
+          "word": "food-001"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fièvre",
+          "en": "fever",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s06",
+      "level": "A2",
+      "fr": "Je me suis réveillé à six heures et demie ce matin.",
+      "en": "I woke up at half past six this morning.",
+      "distractors": [
+        "I woke up at half past seven this morning.",
+        "I woke up at half past six this evening.",
+        "I went to bed at half past six this morning."
+      ],
+      "gap": "six",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-063",
+        "health-time-087",
+        "health-time-052",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "me suis réveillé",
+          "en": "woke up (se réveiller)",
+          "word": "verbs-063"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "demie",
+          "en": "half"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning (le matin)",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s07",
+      "level": "A2",
+      "fr": "Mon frère fait du sport trois fois par semaine.",
+      "en": "My brother plays sports three times a week.",
+      "distractors": [
+        "My sister plays sports three times a week.",
+        "My brother plays sports twice a week.",
+        "My brother plays sports three times a month."
+      ],
+      "gap": "semaine",
+      "topics": [
+        "irregular-present",
+        "contractions"
+      ],
+      "words": [
+        "essentials-049",
+        "people-012",
+        "verbs-003",
+        "health-time-084",
+        "essentials-063",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "fait",
+          "en": "does (faire); faire du sport = to play sports",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "sport",
+          "en": "sport; exercise"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "fois",
+          "en": "times; occasions"
+        },
+        {
+          "fr": "par",
+          "en": "per; a",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s08",
+      "level": "A2",
+      "fr": "Est-ce que la pharmacie est ouverte le dimanche matin ?",
+      "en": "Is the pharmacy open on Sunday morning?",
+      "distractors": [
+        "Is the pharmacy open on Saturday morning?",
+        "Is the bakery open on Sunday morning?",
+        "Is the pharmacy open on Sunday evening?"
+      ],
+      "gap": "dimanche",
+      "topics": [
+        "questions",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-025",
+        "verbs-001",
+        "qualities-036",
+        "health-time-068",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "is it that (marks a question)"
+        },
+        {
+          "fr": "pharmacie",
+          "en": "pharmacy",
+          "word": "travel-025"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouverte",
+          "en": "open (ouvert, feminine)",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s09",
+      "level": "A2",
+      "fr": "Le pharmacien m’a expliqué comment prendre ces comprimés.",
+      "en": "The pharmacist explained to me how to take these tablets.",
+      "distractors": [
+        "The pharmacist explained to me when to take these tablets.",
+        "The doctor explained to me how to take these tablets.",
+        "The pharmacist asked me how to take these tablets."
+      ],
+      "gap": "comment",
+      "topics": [
+        "passe-compose-avoir",
+        "indirect-object",
+        "question-words"
+      ],
+      "words": [
+        "work-014",
+        "verbs-075",
+        "essentials-036",
+        "verbs-023",
+        "essentials-048"
+      ],
+      "gloss": [
+        {
+          "fr": "pharmacien",
+          "en": "pharmacist",
+          "word": "work-014"
+        },
+        {
+          "fr": "m’a expliqué",
+          "en": "explained to me (expliquer)",
+          "word": "verbs-075"
+        },
+        {
+          "fr": "comment",
+          "en": "how",
+          "word": "essentials-036"
+        },
+        {
+          "fr": "prendre",
+          "en": "to take",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "ces",
+          "en": "these; those",
+          "word": "essentials-048"
+        },
+        {
+          "fr": "comprimés",
+          "en": "tablets; pills"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s10",
+      "level": "A2",
+      "fr": "Nous n’avons pas dormi de la nuit à cause du bruit.",
+      "en": "We did not sleep all night because of the noise.",
+      "distractors": [
+        "We did not sleep all night because of the heat.",
+        "They did not sleep all night because of the noise.",
+        "We did not sleep all evening because of the noise."
+      ],
+      "gap": "dormi",
+      "topics": [
+        "passe-compose-avoir",
+        "negation"
+      ],
+      "words": [
+        "verbs-062",
+        "health-time-061"
+      ],
+      "gloss": [
+        {
+          "fr": "n’avons pas dormi",
+          "en": "did not sleep (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        },
+        {
+          "fr": "à cause du",
+          "en": "because of"
+        },
+        {
+          "fr": "bruit",
+          "en": "noise"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s11",
+      "level": "A2",
+      "fr": "Quand j’étais petit, je tombais souvent malade en hiver.",
+      "en": "When I was little, I often got sick in winter.",
+      "distractors": [
+        "When I was little, I rarely got sick in winter.",
+        "When I was little, I often got sick in summer.",
+        "When my brother was little, he often got sick in winter."
+      ],
+      "gap": "souvent",
+      "topics": [
+        "imparfait",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-082",
+        "verbs-001",
+        "qualities-002",
+        "essentials-091"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "j’étais",
+          "en": "I was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "petit",
+          "en": "small; little",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "tombais",
+          "en": "used to fall; used to become (tomber)"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "malade",
+          "en": "ill; sick"
+        },
+        {
+          "fr": "hiver",
+          "en": "winter"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s12",
+      "level": "A2",
+      "fr": "Elle s’est cassé la jambe pendant un match de foot.",
+      "en": "She broke her leg during a football match.",
+      "distractors": [
+        "She broke her arm during a football match.",
+        "He broke his leg during a football match.",
+        "She broke her leg after a football match."
+      ],
+      "gap": "jambe",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "health-time-013"
+      ],
+      "gloss": [
+        {
+          "fr": "s’est cassé",
+          "en": "broke (se casser)"
+        },
+        {
+          "fr": "jambe",
+          "en": "leg",
+          "word": "health-time-013"
+        },
+        {
+          "fr": "pendant",
+          "en": "during"
+        },
+        {
+          "fr": "match",
+          "en": "match; game"
+        },
+        {
+          "fr": "foot",
+          "en": "football; soccer"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s13",
+      "level": "A2",
+      "fr": "Depuis deux jours, il tousse et il a mal à la gorge.",
+      "en": "For two days he has been coughing and his throat hurts.",
+      "distractors": [
+        "For three days he has been coughing and his throat hurts.",
+        "For two days she has been coughing and her throat hurts.",
+        "For two days he has been coughing and his ears hurt."
+      ],
+      "gap": "Depuis",
+      "topics": [
+        "time-expressions",
+        "present-er"
+      ],
+      "words": [
+        "health-time-083",
+        "health-time-055",
+        "verbs-002",
+        "health-time-029"
+      ],
+      "gloss": [
+        {
+          "fr": "Depuis",
+          "en": "for; since"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "jours",
+          "en": "days (le jour)",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "tousse",
+          "en": "coughs; is coughing (tousser)"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "mal",
+          "en": "pain (avoir mal à la gorge = to have a sore throat)"
+        },
+        {
+          "fr": "gorge",
+          "en": "throat",
+          "word": "health-time-029"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s14",
+      "level": "A2",
+      "fr": "Le médecin lui a dit de se reposer jusqu’à lundi.",
+      "en": "The doctor told him to rest until Monday.",
+      "distractors": [
+        "The doctor told him to rest until Tuesday.",
+        "The nurse told him to rest until Monday.",
+        "The doctor told him to work until Monday."
+      ],
+      "gap": "lundi",
+      "topics": [
+        "passe-compose-avoir",
+        "indirect-object",
+        "reflexive"
+      ],
+      "words": [
+        "work-011",
+        "essentials-027",
+        "verbs-006",
+        "essentials-074",
+        "health-time-062"
+      ],
+      "gloss": [
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "lui",
+          "en": "to him; to her",
+          "word": "essentials-027"
+        },
+        {
+          "fr": "a dit",
+          "en": "said; told (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "se reposer",
+          "en": "to rest"
+        },
+        {
+          "fr": "jusqu’à",
+          "en": "until",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s15",
+      "level": "A2",
+      "fr": "Vous prendrez ce sirop matin et soir pendant une semaine.",
+      "en": "You will take this syrup morning and evening for a week.",
+      "distractors": [
+        "You will take this syrup morning and evening for a month.",
+        "You will take this syrup morning and evening for three days.",
+        "I will take this syrup morning and evening for a week."
+      ],
+      "gap": "prendrez",
+      "topics": [
+        "futur-simple",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-023",
+        "health-time-059",
+        "health-time-060",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "prendrez",
+          "en": "will take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "sirop",
+          "en": "syrup; cough syrup"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "pendant",
+          "en": "for; during"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s16",
+      "level": "A2",
+      "fr": "Je n’ai jamais eu la grippe, mais j’ai souvent des rhumes.",
+      "en": "I have never had the flu, but I often get colds.",
+      "distractors": [
+        "I have already had the flu, but I often get colds.",
+        "He has never had the flu, but he often gets colds.",
+        "I have never had the flu, but I rarely get colds."
+      ],
+      "gap": "jamais",
+      "topics": [
+        "negation-more",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-002",
+        "essentials-090",
+        "health-time-038",
+        "essentials-091",
+        "health-time-037"
+      ],
+      "gloss": [
+        {
+          "fr": "n’ai",
+          "en": "have not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        },
+        {
+          "fr": "eu",
+          "en": "had (past participle of avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "grippe",
+          "en": "flu",
+          "word": "health-time-038"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "rhumes",
+          "en": "colds (le rhume)",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s17",
+      "level": "A2",
+      "fr": "Est-ce que tu as pris ta température ce matin ?",
+      "en": "Did you take your temperature this morning?",
+      "distractors": [
+        "Did you take your temperature this evening?",
+        "Did he take his temperature this morning?",
+        "Did you take your medicine this morning?"
+      ],
+      "gap": "pris",
+      "topics": [
+        "questions",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-023",
+        "nature-093",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "is it that (marks a question)"
+        },
+        {
+          "fr": "as pris",
+          "en": "took (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "ta",
+          "en": "your"
+        },
+        {
+          "fr": "température",
+          "en": "temperature",
+          "word": "nature-093"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning (le matin)",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s18",
+      "level": "A2",
+      "fr": "Les urgences sont ouvertes vingt-quatre heures sur vingt-quatre.",
+      "en": "The emergency department is open twenty-four hours a day.",
+      "distractors": [
+        "The emergency department is open twelve hours a day.",
+        "The pharmacy is open twenty-four hours a day."
+      ],
+      "gap": "heures",
+      "topics": [
+        "agreement",
+        "articles-gender"
+      ],
+      "words": [
+        "health-time-046",
+        "verbs-001",
+        "qualities-036",
+        "health-time-052",
+        "essentials-058"
+      ],
+      "gloss": [
+        {
+          "fr": "urgences",
+          "en": "emergency department (les urgences)",
+          "word": "health-time-046"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouvertes",
+          "en": "open (ouvert, feminine plural)",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "vingt-quatre",
+          "en": "twenty-four"
+        },
+        {
+          "fr": "heures",
+          "en": "hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "sur",
+          "en": "out of; per",
+          "word": "essentials-058"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s19",
+      "level": "A2",
+      "fr": "Ma sœur est infirmière à l’hôpital depuis cinq ans.",
+      "en": "My sister has been a nurse at the hospital for five years.",
+      "distractors": [
+        "My sister has been a nurse at the hospital for four years.",
+        "My brother has been a nurse at the hospital for five years.",
+        "My sister has been a nurse at the pharmacy for five years."
+      ],
+      "gap": "cinq",
+      "topics": [
+        "etre-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "people-011",
+        "verbs-001",
+        "work-012",
+        "travel-026",
+        "health-time-086"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "infirmière",
+          "en": "nurse (woman)",
+          "word": "work-012"
+        },
+        {
+          "fr": "l’hôpital",
+          "en": "the hospital",
+          "word": "travel-026"
+        },
+        {
+          "fr": "depuis",
+          "en": "for; since"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "ans",
+          "en": "years (un an)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s20",
+      "level": "A2",
+      "fr": "Il s’est endormi devant la télévision avant dix heures.",
+      "en": "He fell asleep in front of the television before ten.",
+      "distractors": [
+        "He fell asleep in front of the television after ten.",
+        "She fell asleep in front of the television before ten.",
+        "He fell asleep in front of the computer before ten."
+      ],
+      "gap": "avant",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "essentials-067",
+        "work-087",
+        "health-time-091",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "s’est endormi",
+          "en": "fell asleep (s’endormir)"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "télévision",
+          "en": "television",
+          "word": "work-087"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s21",
+      "level": "A2",
+      "fr": "On a marché pendant deux heures et maintenant j’ai mal aux pieds.",
+      "en": "We walked for two hours and now my feet hurt.",
+      "distractors": [
+        "We walked for two hours and now my legs hurt.",
+        "We walked for three hours and now my feet hurt.",
+        "We ran for two hours and now my feet hurt."
+      ],
+      "gap": "pendant",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-039",
+        "health-time-083",
+        "health-time-052",
+        "verbs-002",
+        "health-time-005"
+      ],
+      "gloss": [
+        {
+          "fr": "a marché",
+          "en": "walked (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "pendant",
+          "en": "for; during"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "maintenant",
+          "en": "now"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "mal",
+          "en": "pain (avoir mal aux pieds = to have sore feet)"
+        },
+        {
+          "fr": "pieds",
+          "en": "feet (le pied)",
+          "word": "health-time-005"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s22",
+      "level": "A2",
+      "fr": "Le rendez-vous est le quinze mars à quatorze heures.",
+      "en": "The appointment is on the fifteenth of March at two in the afternoon.",
+      "distractors": [
+        "The appointment is on the fifteenth of May at two in the afternoon.",
+        "The appointment is on the fifth of March at two in the afternoon.",
+        "The appointment is on the fifteenth of March at four in the afternoon."
+      ],
+      "gap": "mars",
+      "topics": [
+        "time-expressions"
+      ],
+      "words": [
+        "work-010",
+        "verbs-001",
+        "health-time-093",
+        "health-time-071",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen; the fifteenth",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "mars",
+          "en": "March",
+          "word": "health-time-071"
+        },
+        {
+          "fr": "quatorze",
+          "en": "fourteen"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s23",
+      "level": "A2",
+      "fr": "Ne mange pas trop de sucre si tu veux rester en forme.",
+      "en": "Do not eat too much sugar if you want to stay in shape.",
+      "distractors": [
+        "Do not eat too much salt if you want to stay in shape.",
+        "Eat a lot of sugar if you want to stay in shape.",
+        "Do not eat too much sugar if he wants to stay in shape."
+      ],
+      "gap": "veux",
+      "topics": [
+        "imperative",
+        "negation",
+        "si-clauses"
+      ],
+      "words": [
+        "verbs-059",
+        "essentials-097",
+        "food-006",
+        "essentials-081",
+        "verbs-019",
+        "verbs-030"
+      ],
+      "gloss": [
+        {
+          "fr": "Ne mange pas",
+          "en": "do not eat (manger, imperative)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "trop",
+          "en": "too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "sucre",
+          "en": "sugar",
+          "word": "food-006"
+        },
+        {
+          "fr": "si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "rester",
+          "en": "to stay",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "forme",
+          "en": "shape (en forme = in good shape)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s24",
+      "level": "A2",
+      "fr": "Elle prend un cours de yoga le jeudi soir.",
+      "en": "She takes a yoga class on Thursday evenings.",
+      "distractors": [
+        "She takes a yoga class on Tuesday evenings.",
+        "She takes a yoga class on Thursday mornings.",
+        "He takes a yoga class on Thursday evenings."
+      ],
+      "gap": "jeudi",
+      "topics": [
+        "irregular-present",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-023",
+        "work-036",
+        "health-time-065",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "prend",
+          "en": "takes (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "cours",
+          "en": "class; lesson",
+          "word": "work-036"
+        },
+        {
+          "fr": "yoga",
+          "en": "yoga"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday (le jeudi = on Thursdays)",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s25",
+      "level": "A2",
+      "fr": "J’ai attendu le médecin plus d’une heure dans la salle d’attente.",
+      "en": "I waited for the doctor more than an hour in the waiting room.",
+      "distractors": [
+        "I waited for the doctor less than an hour in the waiting room.",
+        "I waited for the nurse more than an hour in the waiting room.",
+        "I waited for the doctor more than a day in the waiting room."
+      ],
+      "gap": "attendu",
+      "topics": [
+        "passe-compose-avoir",
+        "comparison"
+      ],
+      "words": [
+        "verbs-041",
+        "work-011",
+        "health-time-052",
+        "essentials-057"
+      ],
+      "gloss": [
+        {
+          "fr": "J’ai attendu",
+          "en": "I waited for (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "salle d’attente",
+          "en": "waiting room"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s26",
+      "level": "A2",
+      "fr": "Mes parents se couchent tôt parce qu’ils se lèvent à cinq heures.",
+      "en": "My parents go to bed early because they get up at five.",
+      "distractors": [
+        "My parents go to bed late because they get up at five.",
+        "My parents go to bed early because they get up at nine.",
+        "My neighbors go to bed early because they get up at five."
+      ],
+      "gap": "tôt",
+      "topics": [
+        "reflexive",
+        "present-er"
+      ],
+      "words": [
+        "people-008",
+        "verbs-066",
+        "verbs-064",
+        "health-time-086",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my (plural)"
+        },
+        {
+          "fr": "parents",
+          "en": "parents (le parent)",
+          "word": "people-008"
+        },
+        {
+          "fr": "se couchent",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        },
+        {
+          "fr": "parce qu’",
+          "en": "because"
+        },
+        {
+          "fr": "se lèvent",
+          "en": "get up (se lever)",
+          "word": "verbs-064"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s27",
+      "level": "A2",
+      "fr": "Le matin, je cours trente minutes au parc près de chez moi.",
+      "en": "In the morning I run for thirty minutes in the park near my home.",
+      "distractors": [
+        "In the morning I run for thirteen minutes in the park near my home.",
+        "In the evening I run for thirty minutes in the park near my home.",
+        "In the morning I walk for thirty minutes in the park near my home."
+      ],
+      "gap": "trente",
+      "topics": [
+        "irregular-present",
+        "prepositions-places"
+      ],
+      "words": [
+        "health-time-059",
+        "verbs-040",
+        "health-time-095",
+        "health-time-053",
+        "travel-035",
+        "essentials-064",
+        "essentials-025"
+      ],
+      "gloss": [
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "cours",
+          "en": "run (courir)",
+          "word": "verbs-040"
+        },
+        {
+          "fr": "trente",
+          "en": "thirty",
+          "word": "health-time-095"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        },
+        {
+          "fr": "près de",
+          "en": "near"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s28",
+      "level": "A2",
+      "fr": "Hier soir, j’ai pris un comprimé et la douleur a disparu.",
+      "en": "Last night I took a tablet and the pain went away.",
+      "distractors": [
+        "Last night I took two tablets and the pain went away.",
+        "Last night I took a tablet and the pain got worse.",
+        "This morning I took a tablet and the pain went away."
+      ],
+      "gap": "douleur",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-023",
+        "health-time-033",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "Hier soir",
+          "en": "last night; yesterday evening (le soir)",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "j’ai pris",
+          "en": "I took (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "comprimé",
+          "en": "tablet; pill"
+        },
+        {
+          "fr": "douleur",
+          "en": "pain",
+          "word": "health-time-033"
+        },
+        {
+          "fr": "a disparu",
+          "en": "disappeared; went away (disparaître)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s29",
+      "level": "A2",
+      "fr": "Tu te sens mieux qu’hier ?",
+      "en": "Do you feel better than yesterday?",
+      "distractors": [
+        "Do you feel worse than yesterday?",
+        "Does she feel better than yesterday?",
+        "Do you feel better than this morning?"
+      ],
+      "gap": "mieux",
+      "topics": [
+        "reflexive",
+        "comparison",
+        "questions"
+      ],
+      "words": [
+        "verbs-091"
+      ],
+      "gloss": [
+        {
+          "fr": "te sens",
+          "en": "feel (se sentir)",
+          "word": "verbs-091"
+        },
+        {
+          "fr": "mieux",
+          "en": "better"
+        },
+        {
+          "fr": "qu’hier",
+          "en": "than yesterday"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s30",
+      "level": "A2",
+      "fr": "Il n’y a plus de sirop à la pharmacie du quartier.",
+      "en": "There is no more syrup at the neighborhood pharmacy.",
+      "distractors": [
+        "There is still syrup at the neighborhood pharmacy.",
+        "There is no more syrup at the hospital pharmacy.",
+        "There is no more soap at the neighborhood pharmacy."
+      ],
+      "gap": "plus",
+      "topics": [
+        "negation-more",
+        "y-en"
+      ],
+      "words": [
+        "travel-025",
+        "travel-032"
+      ],
+      "gloss": [
+        {
+          "fr": "Il n’y a plus",
+          "en": "there is no more; there is none left"
+        },
+        {
+          "fr": "sirop",
+          "en": "syrup; cough syrup"
+        },
+        {
+          "fr": "pharmacie",
+          "en": "pharmacy",
+          "word": "travel-025"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighborhood",
+          "word": "travel-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s31",
+      "level": "A2",
+      "fr": "Si tu as encore mal demain, appelle le médecin.",
+      "en": "If it still hurts tomorrow, call the doctor.",
+      "distractors": [
+        "If it still hurts tonight, call the doctor.",
+        "If it still hurts tomorrow, call the pharmacist.",
+        "If it stops hurting tomorrow, call the doctor."
+      ],
+      "gap": "demain",
+      "topics": [
+        "si-clauses",
+        "imperative"
+      ],
+      "words": [
+        "essentials-081",
+        "verbs-002",
+        "essentials-087",
+        "verbs-085",
+        "work-011"
+      ],
+      "gloss": [
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "encore",
+          "en": "still",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "mal",
+          "en": "pain (avoir mal = to be in pain)"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "appelle",
+          "en": "call (appeler, imperative)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s32",
+      "level": "A2",
+      "fr": "Elle a passé une semaine à l’hôpital après son opération.",
+      "en": "She spent a week in the hospital after her operation.",
+      "distractors": [
+        "She spent a month in the hospital after her operation.",
+        "She spent a week in the hospital before her operation.",
+        "He spent a week in the hospital after his operation."
+      ],
+      "gap": "après",
+      "topics": [
+        "passe-compose-avoir",
+        "possessives"
+      ],
+      "words": [
+        "verbs-029",
+        "health-time-056",
+        "travel-026",
+        "essentials-051",
+        "health-time-045"
+      ],
+      "gloss": [
+        {
+          "fr": "a passé",
+          "en": "spent (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "l’hôpital",
+          "en": "the hospital",
+          "word": "travel-026"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "son",
+          "en": "her; his",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "opération",
+          "en": "operation; surgery",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s33",
+      "level": "A2",
+      "fr": "Mon grand-père marche lentement, mais il sort tous les jours.",
+      "en": "My grandfather walks slowly, but he goes out every day.",
+      "distractors": [
+        "My grandfather walks quickly, but he goes out every day.",
+        "My grandmother walks slowly, but she goes out every day.",
+        "My grandfather walks slowly, but he goes out every week."
+      ],
+      "gap": "sort",
+      "topics": [
+        "present-ir-re",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-049",
+        "people-014",
+        "verbs-039",
+        "verbs-034",
+        "health-time-055"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "grand-père",
+          "en": "grandfather",
+          "word": "people-014"
+        },
+        {
+          "fr": "marche",
+          "en": "walks (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "lentement",
+          "en": "slowly"
+        },
+        {
+          "fr": "sort",
+          "en": "goes out (sortir)",
+          "word": "verbs-034"
+        },
+        {
+          "fr": "tous les jours",
+          "en": "every day (le jour)",
+          "word": "health-time-055"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s34",
+      "level": "A2",
+      "fr": "Je me brosse les dents avant de me coucher.",
+      "en": "I brush my teeth before going to bed.",
+      "distractors": [
+        "I brush my teeth after getting up.",
+        "He brushes his teeth before going to bed.",
+        "I brush my teeth before eating."
+      ],
+      "gap": "coucher",
+      "topics": [
+        "reflexive",
+        "present-er"
+      ],
+      "words": [
+        "health-time-010",
+        "verbs-066"
+      ],
+      "gloss": [
+        {
+          "fr": "me brosse",
+          "en": "brush (se brosser)"
+        },
+        {
+          "fr": "dents",
+          "en": "teeth (la dent)",
+          "word": "health-time-010"
+        },
+        {
+          "fr": "avant de",
+          "en": "before (doing something)"
+        },
+        {
+          "fr": "me coucher",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s35",
+      "level": "A2",
+      "fr": "Le samedi, nous faisons du vélo au bord de la rivière.",
+      "en": "On Saturdays we go cycling by the river.",
+      "distractors": [
+        "On Sundays we go cycling by the river.",
+        "On Saturdays we go swimming by the river.",
+        "On Saturdays they go cycling by the river."
+      ],
+      "gap": "faisons",
+      "topics": [
+        "irregular-present",
+        "contractions"
+      ],
+      "words": [
+        "health-time-067",
+        "verbs-003",
+        "travel-008",
+        "nature-064"
+      ],
+      "gloss": [
+        {
+          "fr": "samedi",
+          "en": "Saturday (le samedi = on Saturdays)",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "faisons",
+          "en": "do (faire); faire du vélo = to cycle",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "vélo",
+          "en": "bicycle",
+          "word": "travel-008"
+        },
+        {
+          "fr": "au bord de",
+          "en": "by; on the bank of"
+        },
+        {
+          "fr": "rivière",
+          "en": "river",
+          "word": "nature-064"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s36",
+      "level": "A2",
+      "fr": "Mon fils tousse depuis hier soir et je suis inquiète.",
+      "en": "My son has been coughing since last night and I am worried.",
+      "distractors": [
+        "My daughter has been coughing since last night and I am worried.",
+        "My son has been coughing since this morning and I am worried.",
+        "My son has been sleeping since last night and I am worried."
+      ],
+      "gap": "tousse",
+      "topics": [
+        "time-expressions",
+        "agreement"
+      ],
+      "words": [
+        "essentials-049",
+        "people-028",
+        "health-time-060",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "fils",
+          "en": "son",
+          "word": "people-028"
+        },
+        {
+          "fr": "tousse",
+          "en": "is coughing (tousser)"
+        },
+        {
+          "fr": "depuis",
+          "en": "since"
+        },
+        {
+          "fr": "hier soir",
+          "en": "last night (le soir)",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "inquiète",
+          "en": "worried (a woman speaking)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s37",
+      "level": "A2",
+      "fr": "Le cours de natation commence à neuf heures et dure une heure.",
+      "en": "The swimming class starts at nine and lasts an hour.",
+      "distractors": [
+        "The swimming class starts at nine and lasts two hours.",
+        "The swimming class starts at ten and lasts an hour.",
+        "The dance class starts at nine and lasts an hour."
+      ],
+      "gap": "neuf",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "work-036",
+        "verbs-047",
+        "health-time-090",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "cours",
+          "en": "class; lesson",
+          "word": "work-036"
+        },
+        {
+          "fr": "natation",
+          "en": "swimming"
+        },
+        {
+          "fr": "commence",
+          "en": "starts (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "dure",
+          "en": "lasts (durer)"
+        },
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s38",
+      "level": "A2",
+      "fr": "Nous avons annulé notre rendez-vous parce que la voiture est tombée en panne.",
+      "en": "We cancelled our appointment because the car broke down.",
+      "distractors": [
+        "We cancelled our appointment because the bus broke down.",
+        "They cancelled their appointment because the car broke down.",
+        "We changed our appointment because the car broke down."
+      ],
+      "gap": "annulé",
+      "topics": [
+        "passe-compose-avoir",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "essentials-052",
+        "work-010",
+        "travel-004"
+      ],
+      "gloss": [
+        {
+          "fr": "avons annulé",
+          "en": "cancelled (annuler)"
+        },
+        {
+          "fr": "notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "parce que",
+          "en": "because"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "est tombée en panne",
+          "en": "broke down (tomber en panne)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s39",
+      "level": "A2",
+      "fr": "Elle dort mal quand elle boit du café le soir.",
+      "en": "She sleeps badly when she drinks coffee in the evening.",
+      "distractors": [
+        "She sleeps badly when she drinks tea in the evening.",
+        "She sleeps well when she drinks coffee in the evening.",
+        "He sleeps badly when he drinks coffee in the evening."
+      ],
+      "gap": "boit",
+      "topics": [
+        "present-ir-re",
+        "partitive"
+      ],
+      "words": [
+        "verbs-062",
+        "essentials-073",
+        "essentials-082",
+        "verbs-060",
+        "food-003",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "dort",
+          "en": "sleeps (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "mal",
+          "en": "badly",
+          "word": "essentials-073"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "boit",
+          "en": "drinks (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s40",
+      "level": "A2",
+      "fr": "Vous devez arrêter de fumer pour protéger vos poumons.",
+      "en": "You must stop smoking to protect your lungs.",
+      "distractors": [
+        "You must stop smoking to protect your heart.",
+        "He must stop smoking to protect his lungs.",
+        "You can stop smoking to protect your lungs."
+      ],
+      "gap": "poumons",
+      "topics": [
+        "irregular-present",
+        "possessives"
+      ],
+      "words": [
+        "verbs-021",
+        "verbs-050",
+        "essentials-062",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "fr": "devez",
+          "en": "must; have to (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "arrêter",
+          "en": "to stop",
+          "word": "verbs-050"
+        },
+        {
+          "fr": "fumer",
+          "en": "to smoke"
+        },
+        {
+          "fr": "pour",
+          "en": "in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "protéger",
+          "en": "to protect"
+        },
+        {
+          "fr": "vos",
+          "en": "your (plural)"
+        },
+        {
+          "fr": "poumons",
+          "en": "lungs (le poumon)",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s41",
+      "level": "A2",
+      "fr": "Le dentiste m’a arraché une dent la semaine dernière.",
+      "en": "The dentist pulled out one of my teeth last week.",
+      "distractors": [
+        "The dentist pulled out two of my teeth last week.",
+        "The dentist pulled out one of my teeth last month.",
+        "The doctor pulled out one of my teeth last week."
+      ],
+      "gap": "dernière",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "work-013",
+        "health-time-010",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "dentiste",
+          "en": "dentist",
+          "word": "work-013"
+        },
+        {
+          "fr": "m’a arraché",
+          "en": "pulled out (arracher); m’a arraché une dent = pulled out a tooth of mine"
+        },
+        {
+          "fr": "dent",
+          "en": "tooth",
+          "word": "health-time-010"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "dernière",
+          "en": "last (la semaine dernière = last week)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s42",
+      "level": "A2",
+      "fr": "Combien de fois par jour faut-il prendre ce médicament ?",
+      "en": "How many times a day do you have to take this medicine?",
+      "distractors": [
+        "How many times a week do you have to take this medicine?",
+        "How many times a day do you have to take this syrup?",
+        "How many times a day can you take this medicine?"
+      ],
+      "gap": "jour",
+      "topics": [
+        "question-words",
+        "questions"
+      ],
+      "words": [
+        "essentials-038",
+        "essentials-063",
+        "health-time-055",
+        "verbs-022",
+        "verbs-023",
+        "health-time-041"
+      ],
+      "gloss": [
+        {
+          "fr": "Combien",
+          "en": "how many; how much",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "fois",
+          "en": "times; occasions"
+        },
+        {
+          "fr": "par",
+          "en": "per; a",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "faut-il",
+          "en": "does one have to (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "prendre",
+          "en": "to take",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "médicament",
+          "en": "medicine",
+          "word": "health-time-041"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s43",
+      "level": "A2",
+      "fr": "Après l’opération, il ne pouvait plus lever le bras droit.",
+      "en": "After the operation, he could no longer lift his right arm.",
+      "distractors": [
+        "After the operation, he could no longer lift his left arm.",
+        "After the operation, he could still lift his right arm.",
+        "Before the operation, he could no longer lift his right arm."
+      ],
+      "gap": "pouvait",
+      "topics": [
+        "imparfait",
+        "negation-more"
+      ],
+      "words": [
+        "health-time-045",
+        "verbs-020",
+        "health-time-012"
+      ],
+      "gloss": [
+        {
+          "fr": "Après",
+          "en": "after"
+        },
+        {
+          "fr": "l’opération",
+          "en": "the operation; the surgery",
+          "word": "health-time-045"
+        },
+        {
+          "fr": "ne pouvait plus",
+          "en": "could no longer (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "lever",
+          "en": "to lift; to raise"
+        },
+        {
+          "fr": "bras",
+          "en": "arm",
+          "word": "health-time-012"
+        },
+        {
+          "fr": "droit",
+          "en": "right (side)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s44",
+      "level": "A2",
+      "fr": "Ce matin, la salle d’attente était pleine de patients fatigués.",
+      "en": "This morning the waiting room was full of tired patients.",
+      "distractors": [
+        "This morning the waiting room was full of tired children.",
+        "This evening the waiting room was full of tired patients.",
+        "This morning the waiting room was full of impatient patients."
+      ],
+      "gap": "était",
+      "topics": [
+        "imparfait",
+        "agreement"
+      ],
+      "words": [
+        "health-time-059",
+        "verbs-001",
+        "qualities-034"
+      ],
+      "gloss": [
+        {
+          "fr": "Ce matin",
+          "en": "this morning (le matin)",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "salle d’attente",
+          "en": "waiting room"
+        },
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pleine",
+          "en": "full (plein, feminine)",
+          "word": "qualities-034"
+        },
+        {
+          "fr": "patients",
+          "en": "patients"
+        },
+        {
+          "fr": "fatigués",
+          "en": "tired"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s45",
+      "level": "A2",
+      "fr": "Je prendrai rendez-vous chez le kinésithérapeute la semaine prochaine.",
+      "en": "I will make an appointment with the physiotherapist next week.",
+      "distractors": [
+        "I will make an appointment with the dentist next week.",
+        "I will make an appointment with the physiotherapist this week.",
+        "She will make an appointment with the physiotherapist next week."
+      ],
+      "gap": "prendrai",
+      "topics": [
+        "futur-simple",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-023",
+        "work-010",
+        "essentials-064",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "prendrai",
+          "en": "will make; will take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "chez",
+          "en": "at the office of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "kinésithérapeute",
+          "en": "physiotherapist"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "prochaine",
+          "en": "next"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s46",
+      "level": "A2",
+      "fr": "Elles se sont inscrites à un cours de danse le mercredi.",
+      "en": "They signed up for a dance class on Wednesdays.",
+      "distractors": [
+        "They signed up for a dance class on Thursdays.",
+        "They signed up for a singing class on Wednesdays.",
+        "She signed up for a dance class on Wednesdays."
+      ],
+      "gap": "mercredi",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "work-036",
+        "health-time-064"
+      ],
+      "gloss": [
+        {
+          "fr": "se sont inscrites",
+          "en": "signed up (s’inscrire)"
+        },
+        {
+          "fr": "cours",
+          "en": "class; lesson",
+          "word": "work-036"
+        },
+        {
+          "fr": "danse",
+          "en": "dance"
+        },
+        {
+          "fr": "mercredi",
+          "en": "Wednesday (le mercredi = on Wednesdays)",
+          "word": "health-time-064"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s47",
+      "level": "A2",
+      "fr": "Mon médecin est plus gentil que l’ancien, mais il parle vite.",
+      "en": "My doctor is kinder than the previous one, but he speaks fast.",
+      "distractors": [
+        "My doctor is kinder than the previous one, but he speaks softly.",
+        "My doctor is less kind than the previous one, but he speaks fast.",
+        "My dentist is kinder than the previous one, but he speaks fast."
+      ],
+      "gap": "gentil",
+      "topics": [
+        "comparison",
+        "adjective-placement"
+      ],
+      "words": [
+        "essentials-049",
+        "work-011",
+        "verbs-001",
+        "qualities-069",
+        "verbs-007"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more (plus ... que = more ... than)"
+        },
+        {
+          "fr": "gentil",
+          "en": "kind; nice",
+          "word": "qualities-069"
+        },
+        {
+          "fr": "l’ancien",
+          "en": "the previous one; the former one"
+        },
+        {
+          "fr": "parle",
+          "en": "speaks (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "vite",
+          "en": "fast; quickly"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s48",
+      "level": "A2",
+      "fr": "Est-ce qu’il y a un médecin qui parle anglais dans ce quartier ?",
+      "en": "Is there a doctor who speaks English in this neighborhood?",
+      "distractors": [
+        "Is there a doctor who speaks Spanish in this neighborhood?",
+        "Is there a pharmacist who speaks English in this neighborhood?",
+        "Is there a doctor who speaks English in this village?"
+      ],
+      "gap": "anglais",
+      "topics": [
+        "questions",
+        "relative-pronouns"
+      ],
+      "words": [
+        "work-011",
+        "essentials-032",
+        "verbs-007",
+        "essentials-057",
+        "travel-032"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce qu’il y a",
+          "en": "is there"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "parle",
+          "en": "speaks (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "anglais",
+          "en": "English"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighborhood",
+          "word": "travel-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s49",
+      "level": "A2",
+      "fr": "Ne bouge pas ton poignet pendant trois jours, d’accord ?",
+      "en": "Do not move your wrist for three days, okay?",
+      "distractors": [
+        "Do not move your ankle for three days, okay?",
+        "Do not move your wrist for three weeks, okay?",
+        "Move your wrist for three days, okay?"
+      ],
+      "gap": "poignet",
+      "topics": [
+        "imperative",
+        "negation"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-025",
+        "health-time-084",
+        "health-time-055",
+        "essentials-015"
+      ],
+      "gloss": [
+        {
+          "fr": "Ne bouge pas",
+          "en": "do not move (bouger, imperative)"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "poignet",
+          "en": "wrist",
+          "word": "health-time-025"
+        },
+        {
+          "fr": "pendant",
+          "en": "for; during"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "jours",
+          "en": "days (le jour)",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "d’accord",
+          "en": "okay; all right",
+          "word": "essentials-015"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s50",
+      "level": "A2",
+      "fr": "À quelle heure est-ce que le cabinet ferme le vendredi ?",
+      "en": "What time does the medical office close on Fridays?",
+      "distractors": [
+        "What time does the medical office open on Fridays?",
+        "What time does the medical office close on Saturdays?",
+        "What time does the pharmacy close on Fridays?"
+      ],
+      "gap": "ferme",
+      "topics": [
+        "question-words",
+        "questions"
+      ],
+      "words": [
+        "health-time-052",
+        "verbs-046",
+        "health-time-066"
+      ],
+      "gloss": [
+        {
+          "fr": "quelle",
+          "en": "what; which"
+        },
+        {
+          "fr": "heure",
+          "en": "time of day; hour",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "est-ce que",
+          "en": "is it that (marks a question)"
+        },
+        {
+          "fr": "cabinet",
+          "en": "doctor’s office; practice"
+        },
+        {
+          "fr": "ferme",
+          "en": "closes (fermer)",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "vendredi",
+          "en": "Friday (le vendredi = on Fridays)",
+          "word": "health-time-066"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a2-health-p01",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "At the doctor",
+      "lines": [
+        {
+          "speaker": "Le médecin",
+          "fr": "Bonjour Camille, qu’est-ce qui ne va pas ?",
+          "en": "Hello Camille, what is wrong?"
+        },
+        {
+          "speaker": "Camille",
+          "fr": "J’ai mal à la gorge depuis quatre jours et je tousse la nuit.",
+          "en": "I have had a sore throat for four days and I cough at night."
+        },
+        {
+          "speaker": "Le médecin",
+          "fr": "Vous avez de la fièvre ?",
+          "en": "Do you have a fever?"
+        },
+        {
+          "speaker": "Camille",
+          "fr": "Ce matin, j’avais trente-huit degrés.",
+          "en": "This morning I had a temperature of thirty-eight."
+        },
+        {
+          "speaker": "Le médecin",
+          "fr": "Ce n’est pas grave. Reposez-vous et buvez beaucoup d’eau.",
+          "en": "It is nothing serious. Rest and drink a lot of water."
+        },
+        {
+          "speaker": "Camille",
+          "fr": "Je peux aller travailler demain ?",
+          "en": "Can I go to work tomorrow?"
+        },
+        {
+          "speaker": "Le médecin",
+          "fr": "Restez chez vous deux jours, puis revenez si ça continue.",
+          "en": "Stay at home for two days, then come back if it goes on."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How long has Camille had a sore throat?",
+          "choices": [
+            "Since this morning",
+            "For two days",
+            "For four days"
+          ],
+          "answer": 2,
+          "explanation": "She says: J’ai mal à la gorge depuis quatre jours."
+        },
+        {
+          "question": "What was Camille’s temperature this morning?",
+          "choices": [
+            "Thirty-seven degrees",
+            "Thirty-eight degrees",
+            "Thirty-nine degrees"
+          ],
+          "answer": 1,
+          "explanation": "Ce matin, j’avais trente-huit degrés."
+        },
+        {
+          "question": "What does the doctor tell Camille to do?",
+          "choices": [
+            "Take antibiotics",
+            "Rest and drink a lot of water",
+            "Go to the hospital"
+          ],
+          "answer": 1,
+          "explanation": "Reposez-vous et buvez beaucoup d’eau."
+        },
+        {
+          "question": "When may Camille go back to work?",
+          "choices": [
+            "Tomorrow",
+            "After two days at home",
+            "Only next week"
+          ],
+          "answer": 1,
+          "explanation": "Restez chez vous deux jours — she must stay home for two days first."
+        }
+      ],
+      "topics": [
+        "imperative",
+        "imparfait",
+        "questions"
+      ],
+      "words": [
+        "essentials-001",
+        "health-time-029",
+        "health-time-085",
+        "health-time-055",
+        "health-time-061",
+        "health-time-035",
+        "health-time-059",
+        "health-time-083",
+        "verbs-002",
+        "verbs-001",
+        "verbs-004",
+        "verbs-069",
+        "verbs-020",
+        "verbs-030",
+        "verbs-060",
+        "verbs-035",
+        "verbs-049",
+        "essentials-099",
+        "food-001",
+        "essentials-064",
+        "essentials-081",
+        "essentials-029"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "Camille",
+          "en": "Camille (a first name)"
+        },
+        {
+          "fr": "qu’est-ce qui",
+          "en": "what (subject of the verb)"
+        },
+        {
+          "fr": "ne va pas",
+          "en": "is not going well; is wrong (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "mal",
+          "en": "pain (avoir mal à la gorge = to have a sore throat)"
+        },
+        {
+          "fr": "gorge",
+          "en": "throat",
+          "word": "health-time-029"
+        },
+        {
+          "fr": "depuis",
+          "en": "for; since"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "jours",
+          "en": "days (le jour)",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "tousse",
+          "en": "cough (tousser)"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fièvre",
+          "en": "fever",
+          "word": "health-time-035"
+        },
+        {
+          "fr": "Ce matin",
+          "en": "this morning (le matin)",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "j’avais",
+          "en": "I had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "trente-huit",
+          "en": "thirty-eight"
+        },
+        {
+          "fr": "degrés",
+          "en": "degrees"
+        },
+        {
+          "fr": "Ce n’est pas grave",
+          "en": "it is nothing serious (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "Reposez-vous",
+          "en": "rest (se reposer, imperative)"
+        },
+        {
+          "fr": "buvez",
+          "en": "drink (boire, imperative)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "d’eau",
+          "en": "of water (l’eau)",
+          "word": "food-001"
+        },
+        {
+          "fr": "peux",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "aller",
+          "en": "to go",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "travailler",
+          "en": "to work",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "Restez",
+          "en": "stay (rester, imperative)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "puis",
+          "en": "then"
+        },
+        {
+          "fr": "revenez",
+          "en": "come back (revenir, imperative)",
+          "word": "verbs-035"
+        },
+        {
+          "fr": "si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "ça",
+          "en": "it; that",
+          "word": "essentials-029"
+        },
+        {
+          "fr": "continue",
+          "en": "goes on (continuer)",
+          "word": "verbs-049"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p02",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "At the pharmacy",
+      "lines": [
+        {
+          "speaker": "Le pharmacien",
+          "fr": "Bonjour, vous avez une ordonnance ?",
+          "en": "Hello, do you have a prescription?"
+        },
+        {
+          "speaker": "Louis",
+          "fr": "Oui, voilà. C’est pour ma fille, elle a la grippe.",
+          "en": "Yes, here it is. It is for my daughter, she has the flu."
+        },
+        {
+          "speaker": "Le pharmacien",
+          "fr": "D’accord. Ce sirop, trois fois par jour, après les repas.",
+          "en": "All right. This syrup, three times a day, after meals."
+        },
+        {
+          "speaker": "Louis",
+          "fr": "Pendant combien de temps ?",
+          "en": "For how long?"
+        },
+        {
+          "speaker": "Le pharmacien",
+          "fr": "Pendant cinq jours. Si la fièvre continue, appelez le médecin.",
+          "en": "For five days. If the fever continues, call the doctor."
+        },
+        {
+          "speaker": "Louis",
+          "fr": "Merci. Ça fait combien ?",
+          "en": "Thank you. How much is it?"
+        },
+        {
+          "speaker": "Le pharmacien",
+          "fr": "Huit euros vingt, s’il vous plaît.",
+          "en": "Eight euros twenty, please."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who is the medicine for?",
+          "choices": [
+            "For Louis himself",
+            "For his daughter",
+            "For his wife"
+          ],
+          "answer": 1,
+          "explanation": "C’est pour ma fille, elle a la grippe."
+        },
+        {
+          "question": "How should the syrup be taken?",
+          "choices": [
+            "Three times a day, after meals",
+            "Three times a day, before meals",
+            "Twice a day, after meals"
+          ],
+          "answer": 0,
+          "explanation": "Ce sirop, trois fois par jour, après les repas."
+        },
+        {
+          "question": "How long should the treatment last?",
+          "choices": [
+            "Three days",
+            "Five days",
+            "Eight days"
+          ],
+          "answer": 1,
+          "explanation": "Pendant cinq jours."
+        },
+        {
+          "question": "What should Louis do if the fever does not go away?",
+          "choices": [
+            "Come back to the pharmacy",
+            "Call the doctor",
+            "Give more syrup"
+          ],
+          "answer": 1,
+          "explanation": "Si la fièvre continue, appelez le médecin."
+        }
+      ],
+      "topics": [
+        "imperative",
+        "si-clauses",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-001",
+        "verbs-002",
+        "health-time-042",
+        "essentials-004",
+        "verbs-001",
+        "essentials-062",
+        "people-007",
+        "health-time-038",
+        "essentials-015",
+        "health-time-084",
+        "essentials-063",
+        "health-time-055",
+        "food-072",
+        "essentials-038",
+        "health-time-051",
+        "health-time-086",
+        "essentials-081",
+        "health-time-035",
+        "verbs-049",
+        "verbs-085",
+        "work-011",
+        "essentials-002",
+        "verbs-003",
+        "health-time-089",
+        "health-time-094",
+        "essentials-003"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "ordonnance",
+          "en": "prescription",
+          "word": "health-time-042"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "voilà",
+          "en": "here it is"
+        },
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "fille",
+          "en": "daughter; girl",
+          "word": "people-007"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "grippe",
+          "en": "flu",
+          "word": "health-time-038"
+        },
+        {
+          "fr": "D’accord",
+          "en": "all right; okay",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "sirop",
+          "en": "syrup; cough syrup"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "fois",
+          "en": "times; occasions"
+        },
+        {
+          "fr": "par",
+          "en": "per; a",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "repas",
+          "en": "meals (le repas)",
+          "word": "food-072"
+        },
+        {
+          "fr": "Pendant",
+          "en": "for (a length of time)"
+        },
+        {
+          "fr": "combien",
+          "en": "how much; how long",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "temps",
+          "en": "time",
+          "word": "health-time-051"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "jours",
+          "en": "days (le jour)",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "fièvre",
+          "en": "fever",
+          "word": "health-time-035"
+        },
+        {
+          "fr": "continue",
+          "en": "continues (continuer)",
+          "word": "verbs-049"
+        },
+        {
+          "fr": "appelez",
+          "en": "call (appeler, imperative)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "Ça fait",
+          "en": "that comes to (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "Huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p03",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Booking an appointment",
+      "lines": [
+        {
+          "speaker": "La secrétaire",
+          "fr": "Cabinet du docteur Meyer, bonjour.",
+          "en": "Doctor Meyer’s office, hello."
+        },
+        {
+          "speaker": "Nadia",
+          "fr": "Bonjour, je voudrais un rendez-vous, s’il vous plaît.",
+          "en": "Hello, I would like an appointment, please."
+        },
+        {
+          "speaker": "La secrétaire",
+          "fr": "Mardi dix-sept à onze heures, ça vous va ?",
+          "en": "Tuesday the seventeenth at eleven, does that suit you?"
+        },
+        {
+          "speaker": "Nadia",
+          "fr": "Je travaille le mardi matin. Vous avez quelque chose le soir ?",
+          "en": "I work on Tuesday mornings. Do you have something in the evening?"
+        },
+        {
+          "speaker": "La secrétaire",
+          "fr": "Alors jeudi dix-neuf, à dix-huit heures trente.",
+          "en": "Then Thursday the nineteenth, at half past six in the evening."
+        },
+        {
+          "speaker": "Nadia",
+          "fr": "Parfait. C’est pour mon fils, il a huit ans.",
+          "en": "Perfect. It is for my son, he is eight years old."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why does Nadia refuse the first appointment?",
+          "choices": [
+            "She works on Tuesday mornings",
+            "She is away on the seventeenth",
+            "She does not like that doctor"
+          ],
+          "answer": 0,
+          "explanation": "Je travaille le mardi matin."
+        },
+        {
+          "question": "When is the appointment finally set?",
+          "choices": [
+            "Tuesday the seventeenth at eleven",
+            "Thursday the nineteenth at half past six",
+            "Thursday the seventeenth at eleven"
+          ],
+          "answer": 1,
+          "explanation": "Alors jeudi dix-neuf, à dix-huit heures trente."
+        },
+        {
+          "question": "Who is the appointment for?",
+          "choices": [
+            "For Nadia",
+            "For her son",
+            "For her husband"
+          ],
+          "answer": 1,
+          "explanation": "C’est pour mon fils, il a huit ans."
+        },
+        {
+          "question": "How old is the patient?",
+          "choices": [
+            "Eight",
+            "Eleven",
+            "Seventeen"
+          ],
+          "answer": 0,
+          "explanation": "il a huit ans — the other numbers are the time and the date."
+        }
+      ],
+      "topics": [
+        "time-expressions",
+        "questions",
+        "conditional"
+      ],
+      "words": [
+        "essentials-001",
+        "work-010",
+        "essentials-003",
+        "health-time-063",
+        "health-time-052",
+        "essentials-029",
+        "verbs-004",
+        "verbs-069",
+        "health-time-059",
+        "verbs-002",
+        "essentials-041",
+        "health-time-060",
+        "health-time-065",
+        "health-time-095",
+        "verbs-001",
+        "essentials-062",
+        "essentials-049",
+        "people-028",
+        "health-time-089",
+        "verbs-019"
+      ],
+      "gloss": [
+        {
+          "fr": "Cabinet",
+          "en": "doctor’s office; practice"
+        },
+        {
+          "fr": "docteur",
+          "en": "doctor (used with a name)"
+        },
+        {
+          "fr": "Meyer",
+          "en": "Meyer (a family name)"
+        },
+        {
+          "fr": "bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "voudrais",
+          "en": "would like (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        },
+        {
+          "fr": "Mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "dix-sept",
+          "en": "seventeen; the seventeenth"
+        },
+        {
+          "fr": "onze",
+          "en": "eleven"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "ça",
+          "en": "that",
+          "word": "essentials-029"
+        },
+        {
+          "fr": "va",
+          "en": "suits; works (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "travaille",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday (le mardi = on Tuesdays)",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "quelque chose",
+          "en": "something",
+          "word": "essentials-041"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Alors",
+          "en": "then; so"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "dix-neuf",
+          "en": "nineteen; the nineteenth"
+        },
+        {
+          "fr": "dix-huit",
+          "en": "eighteen (dix-huit heures = 6 p.m.)"
+        },
+        {
+          "fr": "trente",
+          "en": "thirty",
+          "word": "health-time-095"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect"
+        },
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "fils",
+          "en": "son",
+          "word": "people-028"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir); avoir huit ans = to be eight years old",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "ans",
+          "en": "years (un an)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p04",
+      "level": "A2",
+      "kind": "text",
+      "title": "A message to a colleague",
+      "lines": [
+        {
+          "fr": "Salut Théo, je ne viendrai pas au bureau aujourd’hui.",
+          "en": "Hi Théo, I will not come to the office today."
+        },
+        {
+          "fr": "J’ai attrapé la grippe de mon fils et j’ai de la fièvre depuis hier.",
+          "en": "I caught the flu from my son and I have had a fever since yesterday."
+        },
+        {
+          "fr": "Je vais rester au lit et je prendrai rendez-vous chez le médecin ce soir.",
+          "en": "I am going to stay in bed and I will make an appointment with the doctor this evening."
+        },
+        {
+          "fr": "Peux-tu annuler la réunion de quatorze heures et prévenir Sophie ?",
+          "en": "Can you cancel the two o’clock meeting and let Sophie know?"
+        },
+        {
+          "fr": "Je reviendrai lundi si ça va mieux. Merci beaucoup !",
+          "en": "I will come back on Monday if things are better. Thank you very much!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is the writer staying at home?",
+          "choices": [
+            "He caught the flu from his son",
+            "His son is ill and needs him",
+            "He has an appointment at the office"
+          ],
+          "answer": 0,
+          "explanation": "J’ai attrapé la grippe de mon fils et j’ai de la fièvre depuis hier."
+        },
+        {
+          "question": "What does he ask Théo to do?",
+          "choices": [
+            "Cancel the two o’clock meeting and tell Sophie",
+            "Move the meeting to the evening",
+            "Call the doctor for him"
+          ],
+          "answer": 0,
+          "explanation": "Peux-tu annuler la réunion de quatorze heures et prévenir Sophie ?"
+        },
+        {
+          "question": "When will he make the doctor’s appointment?",
+          "choices": [
+            "This evening",
+            "Tomorrow morning",
+            "On Monday"
+          ],
+          "answer": 0,
+          "explanation": "je prendrai rendez-vous chez le médecin ce soir."
+        },
+        {
+          "question": "When does he plan to come back to work?",
+          "choices": [
+            "Tomorrow",
+            "On Monday, if he feels better",
+            "He does not say"
+          ],
+          "answer": 1,
+          "explanation": "Je reviendrai lundi si ça va mieux."
+        }
+      ],
+      "topics": [
+        "futur-simple",
+        "futur-proche",
+        "si-clauses"
+      ],
+      "words": [
+        "essentials-006",
+        "verbs-005",
+        "home-050",
+        "health-time-038",
+        "essentials-049",
+        "people-028",
+        "verbs-002",
+        "health-time-035",
+        "verbs-004",
+        "verbs-030",
+        "home-051",
+        "verbs-023",
+        "work-010",
+        "essentials-064",
+        "work-011",
+        "health-time-060",
+        "verbs-020",
+        "work-007",
+        "health-time-052",
+        "verbs-035",
+        "health-time-062",
+        "essentials-081",
+        "essentials-029",
+        "essentials-002",
+        "essentials-099"
+      ],
+      "gloss": [
+        {
+          "fr": "Salut",
+          "en": "hi",
+          "word": "essentials-006"
+        },
+        {
+          "fr": "Théo",
+          "en": "Théo (a first name)"
+        },
+        {
+          "fr": "ne viendrai pas",
+          "en": "will not come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "bureau",
+          "en": "office",
+          "word": "home-050"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "J’ai attrapé",
+          "en": "I caught (attraper)"
+        },
+        {
+          "fr": "grippe",
+          "en": "flu",
+          "word": "health-time-038"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "fils",
+          "en": "son",
+          "word": "people-028"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fièvre",
+          "en": "fever",
+          "word": "health-time-035"
+        },
+        {
+          "fr": "depuis",
+          "en": "since"
+        },
+        {
+          "fr": "hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "vais",
+          "en": "am going to (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "rester",
+          "en": "to stay",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "lit",
+          "en": "bed",
+          "word": "home-051"
+        },
+        {
+          "fr": "prendrai",
+          "en": "will make; will take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "chez",
+          "en": "at the office of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening (le soir)",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Peux-tu",
+          "en": "can you (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "annuler",
+          "en": "to cancel"
+        },
+        {
+          "fr": "réunion",
+          "en": "meeting",
+          "word": "work-007"
+        },
+        {
+          "fr": "quatorze",
+          "en": "fourteen (quatorze heures = 2 p.m.)"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "prévenir",
+          "en": "to let someone know; to warn"
+        },
+        {
+          "fr": "Sophie",
+          "en": "Sophie (a first name)"
+        },
+        {
+          "fr": "reviendrai",
+          "en": "will come back (revenir)",
+          "word": "verbs-035"
+        },
+        {
+          "fr": "lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        },
+        {
+          "fr": "si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "ça va mieux",
+          "en": "things are better (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "very much; a lot",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p05",
+      "level": "A2",
+      "kind": "text",
+      "title": "Sleep advice",
+      "lines": [
+        {
+          "fr": "Le sommeil est aussi important que le sport pour la santé.",
+          "en": "Sleep is as important as sport for your health."
+        },
+        {
+          "fr": "Un adulte doit dormir entre sept et huit heures par nuit.",
+          "en": "An adult should sleep between seven and eight hours a night."
+        },
+        {
+          "fr": "Le soir, évitez le café et les écrans avant de vous coucher.",
+          "en": "In the evening, avoid coffee and screens before going to bed."
+        },
+        {
+          "fr": "Si vous vous réveillez souvent la nuit, parlez-en à votre médecin.",
+          "en": "If you often wake up at night, talk about it to your doctor."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does the text compare sleep with?",
+          "choices": [
+            "With food",
+            "With sport",
+            "With work"
+          ],
+          "answer": 1,
+          "explanation": "Le sommeil est aussi important que le sport."
+        },
+        {
+          "question": "How long should an adult sleep?",
+          "choices": [
+            "Between six and seven hours",
+            "Between seven and eight hours",
+            "At least nine hours"
+          ],
+          "answer": 1,
+          "explanation": "Un adulte doit dormir entre sept et huit heures par nuit."
+        },
+        {
+          "question": "What should you avoid in the evening?",
+          "choices": [
+            "Coffee and screens",
+            "Sport and coffee",
+            "Reading and screens"
+          ],
+          "answer": 0,
+          "explanation": "évitez le café et les écrans avant de vous coucher."
+        },
+        {
+          "question": "What should you do if you often wake up at night?",
+          "choices": [
+            "Sleep longer in the morning",
+            "Talk to your doctor about it",
+            "Drink a coffee"
+          ],
+          "answer": 1,
+          "explanation": "Si vous vous réveillez souvent la nuit, parlez-en à votre médecin."
+        }
+      ],
+      "topics": [
+        "comparison",
+        "imperative",
+        "si-clauses"
+      ],
+      "words": [
+        "health-time-048",
+        "verbs-001",
+        "essentials-086",
+        "qualities-042",
+        "essentials-062",
+        "health-time-001",
+        "people-031",
+        "verbs-021",
+        "verbs-062",
+        "essentials-065",
+        "health-time-088",
+        "health-time-089",
+        "health-time-052",
+        "essentials-063",
+        "health-time-061",
+        "health-time-060",
+        "food-003",
+        "work-063",
+        "verbs-066",
+        "essentials-081",
+        "verbs-063",
+        "essentials-091",
+        "verbs-007",
+        "essentials-053",
+        "work-011"
+      ],
+      "gloss": [
+        {
+          "fr": "sommeil",
+          "en": "sleep",
+          "word": "health-time-048"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "aussi",
+          "en": "as; also (aussi ... que = as ... as)",
+          "word": "essentials-086"
+        },
+        {
+          "fr": "important",
+          "en": "important",
+          "word": "qualities-042"
+        },
+        {
+          "fr": "sport",
+          "en": "sport; exercise"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "santé",
+          "en": "health",
+          "word": "health-time-001"
+        },
+        {
+          "fr": "adulte",
+          "en": "adult",
+          "word": "people-031"
+        },
+        {
+          "fr": "doit",
+          "en": "must; should (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "dormir",
+          "en": "to sleep",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "entre",
+          "en": "between",
+          "word": "essentials-065"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "par",
+          "en": "per; a",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "évitez",
+          "en": "avoid (éviter, imperative)"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "écrans",
+          "en": "screens (l’écran)",
+          "word": "work-063"
+        },
+        {
+          "fr": "avant de",
+          "en": "before (doing something)"
+        },
+        {
+          "fr": "vous coucher",
+          "en": "going to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "vous réveillez",
+          "en": "wake up (se réveiller)",
+          "word": "verbs-063"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "parlez-en",
+          "en": "talk about it (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p06",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Running together",
+      "lines": [
+        {
+          "speaker": "Yasmine",
+          "fr": "Tu viens courir avec moi samedi matin ?",
+          "en": "Are you coming running with me on Saturday morning?"
+        },
+        {
+          "speaker": "Karim",
+          "fr": "Je ne peux pas, je joue au foot le samedi.",
+          "en": "I cannot, I play football on Saturdays."
+        },
+        {
+          "speaker": "Yasmine",
+          "fr": "Dimanche, alors ? On peut courir une heure au parc.",
+          "en": "On Sunday, then? We can run for an hour in the park."
+        },
+        {
+          "speaker": "Karim",
+          "fr": "D’accord, mais pas trop tôt. Neuf heures, ça va ?",
+          "en": "All right, but not too early. Nine o’clock, is that okay?"
+        },
+        {
+          "speaker": "Yasmine",
+          "fr": "Parfait. La dernière fois, j’ai eu mal aux genoux pendant deux jours.",
+          "en": "Perfect. Last time my knees hurt for two days."
+        },
+        {
+          "speaker": "Karim",
+          "fr": "Il faut marcher cinq minutes avant de courir.",
+          "en": "You have to walk for five minutes before running."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why does Karim say no to Saturday?",
+          "choices": [
+            "He plays football on Saturdays",
+            "He works on Saturday mornings",
+            "He does not like running"
+          ],
+          "answer": 0,
+          "explanation": "Je ne peux pas, je joue au foot le samedi."
+        },
+        {
+          "question": "What do they finally agree on?",
+          "choices": [
+            "Sunday at nine",
+            "Sunday at seven",
+            "Saturday at nine"
+          ],
+          "answer": 0,
+          "explanation": "Dimanche, alors ? … Neuf heures, ça va ?"
+        },
+        {
+          "question": "What happened to Yasmine last time?",
+          "choices": [
+            "Her knees hurt for two days",
+            "She hurt her ankle",
+            "She ran for two hours"
+          ],
+          "answer": 0,
+          "explanation": "La dernière fois, j’ai eu mal aux genoux pendant deux jours."
+        },
+        {
+          "question": "What does Karim advise before running?",
+          "choices": [
+            "Drinking a lot of water",
+            "Walking for five minutes",
+            "Sleeping late"
+          ],
+          "answer": 1,
+          "explanation": "Il faut marcher cinq minutes avant de courir."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "negation",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-005",
+        "verbs-040",
+        "essentials-060",
+        "essentials-025",
+        "health-time-067",
+        "health-time-059",
+        "verbs-020",
+        "verbs-087",
+        "health-time-068",
+        "health-time-052",
+        "travel-035",
+        "essentials-015",
+        "essentials-097",
+        "health-time-090",
+        "essentials-029",
+        "verbs-004",
+        "verbs-002",
+        "health-time-023",
+        "health-time-083",
+        "health-time-055",
+        "verbs-022",
+        "verbs-039",
+        "health-time-086",
+        "health-time-053"
+      ],
+      "gloss": [
+        {
+          "fr": "viens",
+          "en": "are coming (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "courir",
+          "en": "to run",
+          "word": "verbs-040"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday (le samedi = on Saturdays)",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "ne peux pas",
+          "en": "cannot (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "joue",
+          "en": "play (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "foot",
+          "en": "football; soccer"
+        },
+        {
+          "fr": "Dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "alors",
+          "en": "then"
+        },
+        {
+          "fr": "peut",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        },
+        {
+          "fr": "D’accord",
+          "en": "all right; okay",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "trop",
+          "en": "too",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        },
+        {
+          "fr": "Neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "ça va",
+          "en": "is that okay (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect"
+        },
+        {
+          "fr": "dernière",
+          "en": "last"
+        },
+        {
+          "fr": "fois",
+          "en": "time; occasion"
+        },
+        {
+          "fr": "j’ai eu",
+          "en": "I had (avoir, passé composé)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "mal",
+          "en": "pain (avoir mal aux genoux = to have sore knees)"
+        },
+        {
+          "fr": "genoux",
+          "en": "knees (le genou)",
+          "word": "health-time-023"
+        },
+        {
+          "fr": "pendant",
+          "en": "for; during"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "jours",
+          "en": "days (le jour)",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "Il faut",
+          "en": "one must; you have to (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "marcher",
+          "en": "to walk",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "avant de",
+          "en": "before (doing something)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p07",
+      "level": "A2",
+      "kind": "text",
+      "title": "A tiring week",
+      "lines": [
+        {
+          "fr": "Cette semaine, j’ai très mal dormi.",
+          "en": "This week I slept very badly."
+        },
+        {
+          "fr": "Lundi et mardi, j’ai travaillé jusqu’à minuit sur un rapport.",
+          "en": "On Monday and Tuesday I worked until midnight on a report."
+        },
+        {
+          "fr": "Mercredi matin, j’étais si fatiguée que j’ai oublié mon rendez-vous chez le dentiste.",
+          "en": "On Wednesday morning I was so tired that I forgot my appointment with the dentist."
+        },
+        {
+          "fr": "Le soir, je me suis couchée à neuf heures et j’ai dormi douze heures.",
+          "en": "In the evening I went to bed at nine and slept twelve hours."
+        },
+        {
+          "fr": "Depuis jeudi, je vais beaucoup mieux.",
+          "en": "Since Thursday I have been feeling much better."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What kept the writer up on Monday and Tuesday?",
+          "choices": [
+            "A report she had to work on",
+            "A sick child",
+            "A dentist appointment"
+          ],
+          "answer": 0,
+          "explanation": "Lundi et mardi, j’ai travaillé jusqu’à minuit sur un rapport."
+        },
+        {
+          "question": "What did she forget on Wednesday morning?",
+          "choices": [
+            "Her keys",
+            "Her dentist appointment",
+            "Her medicine"
+          ],
+          "answer": 1,
+          "explanation": "j’ai oublié mon rendez-vous chez le dentiste."
+        },
+        {
+          "question": "How long did she sleep on Wednesday night?",
+          "choices": [
+            "Nine hours",
+            "Twelve hours",
+            "Until midnight"
+          ],
+          "answer": 1,
+          "explanation": "je me suis couchée à neuf heures et j’ai dormi douze heures — nine is the time she went to bed."
+        },
+        {
+          "question": "How has she felt since Thursday?",
+          "choices": [
+            "Much better",
+            "Still very tired",
+            "Worse than before"
+          ],
+          "answer": 0,
+          "explanation": "Depuis jeudi, je vais beaucoup mieux."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "passe-compose-etre",
+        "imparfait"
+      ],
+      "words": [
+        "essentials-047",
+        "health-time-056",
+        "verbs-002",
+        "essentials-096",
+        "essentials-073",
+        "verbs-062",
+        "health-time-062",
+        "health-time-063",
+        "verbs-069",
+        "essentials-074",
+        "essentials-058",
+        "work-098",
+        "health-time-064",
+        "health-time-059",
+        "verbs-001",
+        "verbs-092",
+        "essentials-049",
+        "work-010",
+        "essentials-064",
+        "work-013",
+        "health-time-060",
+        "verbs-066",
+        "health-time-090",
+        "health-time-052",
+        "health-time-092",
+        "health-time-065",
+        "verbs-004",
+        "essentials-099"
+      ],
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have (avoir, forms the past)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "mal",
+          "en": "badly",
+          "word": "essentials-073"
+        },
+        {
+          "fr": "dormi",
+          "en": "slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "Lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "travaillé",
+          "en": "worked (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "jusqu’à",
+          "en": "until",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "minuit",
+          "en": "midnight"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "rapport",
+          "en": "report",
+          "word": "work-098"
+        },
+        {
+          "fr": "Mercredi",
+          "en": "Wednesday",
+          "word": "health-time-064"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "j’étais",
+          "en": "I was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "si",
+          "en": "so (si ... que = so ... that)"
+        },
+        {
+          "fr": "fatiguée",
+          "en": "tired (a woman writing)"
+        },
+        {
+          "fr": "oublié",
+          "en": "forgot (oublier)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "chez",
+          "en": "at the office of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "dentiste",
+          "en": "dentist",
+          "word": "work-013"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "me suis couchée",
+          "en": "went to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "Depuis",
+          "en": "since"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "vais",
+          "en": "am going; am feeling (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "much; a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "mieux",
+          "en": "better"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p08",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "A fall from a bike",
+      "lines": [
+        {
+          "speaker": "L’infirmière",
+          "fr": "Qu’est-ce qui s’est passé ?",
+          "en": "What happened?"
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Je suis tombé de vélo ce matin, ma cheville est très enflée.",
+          "en": "I fell off my bike this morning, my ankle is very swollen."
+        },
+        {
+          "speaker": "L’infirmière",
+          "fr": "Vous pouvez marcher ?",
+          "en": "Can you walk?"
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Un peu, mais ça fait très mal quand je pose le pied.",
+          "en": "A little, but it hurts a lot when I put my foot down."
+        },
+        {
+          "speaker": "L’infirmière",
+          "fr": "On va faire une radio. Asseyez-vous, le médecin arrive dans dix minutes.",
+          "en": "We are going to take an X-ray. Sit down, the doctor is coming in ten minutes."
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Merci. J’ai un match de foot dimanche…",
+          "en": "Thank you. I have a football match on Sunday…"
+        },
+        {
+          "speaker": "L’infirmière",
+          "fr": "Oubliez le match : il faut du repos.",
+          "en": "Forget the match: you need rest."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How did Hugo hurt himself?",
+          "choices": [
+            "He fell off his bike",
+            "He fell down the stairs",
+            "He was hurt in a football match"
+          ],
+          "answer": 0,
+          "explanation": "Je suis tombé de vélo ce matin."
+        },
+        {
+          "question": "What does Hugo say about walking?",
+          "choices": [
+            "He cannot walk at all",
+            "He can walk a little, but it hurts when he puts his foot down",
+            "He can walk without any pain"
+          ],
+          "answer": 1,
+          "explanation": "Un peu, mais ça fait très mal quand je pose le pied."
+        },
+        {
+          "question": "What happens next?",
+          "choices": [
+            "An X-ray, and the doctor comes in ten minutes",
+            "He goes home with a bandage",
+            "The nurse calls an ambulance"
+          ],
+          "answer": 0,
+          "explanation": "On va faire une radio. … le médecin arrive dans dix minutes."
+        },
+        {
+          "question": "What does the nurse say about Sunday’s match?",
+          "choices": [
+            "He can play if the ankle is better",
+            "He must forget it and rest",
+            "She does not answer"
+          ],
+          "answer": 1,
+          "explanation": "Oubliez le match : il faut du repos."
+        }
+      ],
+      "topics": [
+        "passe-compose-etre",
+        "futur-proche",
+        "imperative"
+      ],
+      "words": [
+        "travel-008",
+        "health-time-059",
+        "health-time-024",
+        "verbs-001",
+        "essentials-096",
+        "verbs-020",
+        "verbs-039",
+        "essentials-100",
+        "essentials-029",
+        "verbs-003",
+        "essentials-082",
+        "health-time-005",
+        "verbs-004",
+        "verbs-065",
+        "work-011",
+        "verbs-032",
+        "essentials-057",
+        "health-time-091",
+        "health-time-053",
+        "essentials-002",
+        "verbs-002",
+        "health-time-068",
+        "verbs-092",
+        "verbs-022"
+      ],
+      "gloss": [
+        {
+          "fr": "Qu’est-ce qui",
+          "en": "what (subject of the verb)"
+        },
+        {
+          "fr": "s’est passé",
+          "en": "happened (se passer)"
+        },
+        {
+          "fr": "suis tombé",
+          "en": "fell (tomber)"
+        },
+        {
+          "fr": "vélo",
+          "en": "bicycle",
+          "word": "travel-008"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning (le matin)",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "cheville",
+          "en": "ankle",
+          "word": "health-time-024"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "enflée",
+          "en": "swollen"
+        },
+        {
+          "fr": "pouvez",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "marcher",
+          "en": "to walk",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "Un peu",
+          "en": "a little",
+          "word": "essentials-100"
+        },
+        {
+          "fr": "ça",
+          "en": "it",
+          "word": "essentials-029"
+        },
+        {
+          "fr": "fait",
+          "en": "makes (faire); ça fait mal = it hurts",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "mal",
+          "en": "pain (faire mal = to hurt)"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "pose",
+          "en": "put down (poser)"
+        },
+        {
+          "fr": "pied",
+          "en": "foot",
+          "word": "health-time-005"
+        },
+        {
+          "fr": "va",
+          "en": "is going to (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "faire",
+          "en": "to do; to take (an X-ray)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "radio",
+          "en": "X-ray"
+        },
+        {
+          "fr": "Asseyez-vous",
+          "en": "sit down (s’asseoir, imperative)",
+          "word": "verbs-065"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "arrive",
+          "en": "is coming (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "match",
+          "en": "match; game"
+        },
+        {
+          "fr": "foot",
+          "en": "football; soccer"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "Oubliez",
+          "en": "forget (oublier, imperative)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "il faut",
+          "en": "one needs (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "repos",
+          "en": "rest"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p09",
+      "level": "A2",
+      "kind": "text",
+      "title": "Pharmacy notice",
+      "lines": [
+        {
+          "fr": "La pharmacie du centre sera fermée du douze au quinze août.",
+          "en": "The town center pharmacy will be closed from the twelfth to the fifteenth of August."
+        },
+        {
+          "fr": "Pendant ces quatre jours, la pharmacie de la gare restera ouverte.",
+          "en": "During those four days, the station pharmacy will stay open."
+        },
+        {
+          "fr": "Elle ouvre tous les jours de huit heures à vingt heures, sauf le dimanche.",
+          "en": "It opens every day from eight in the morning to eight in the evening, except on Sundays."
+        },
+        {
+          "fr": "Pour une urgence la nuit, appelez le quinze.",
+          "en": "For an emergency at night, call fifteen."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the town center pharmacy closed?",
+          "choices": [
+            "From the twelfth to the fifteenth of August",
+            "From the fifteenth to the twentieth of August",
+            "Every Sunday in August"
+          ],
+          "answer": 0,
+          "explanation": "La pharmacie du centre sera fermée du douze au quinze août."
+        },
+        {
+          "question": "Which pharmacy stays open during those days?",
+          "choices": [
+            "The one at the station",
+            "The one in the town center",
+            "The one at the hospital"
+          ],
+          "answer": 0,
+          "explanation": "la pharmacie de la gare restera ouverte."
+        },
+        {
+          "question": "On which day is that pharmacy closed?",
+          "choices": [
+            "On Saturday",
+            "On Sunday",
+            "It is never closed"
+          ],
+          "answer": 1,
+          "explanation": "Elle ouvre tous les jours … sauf le dimanche."
+        },
+        {
+          "question": "What should you do in an emergency at night?",
+          "choices": [
+            "Go to the station pharmacy",
+            "Call fifteen",
+            "Wait until eight in the morning"
+          ],
+          "answer": 1,
+          "explanation": "Pour une urgence la nuit, appelez le quinze."
+        }
+      ],
+      "topics": [
+        "futur-simple",
+        "time-expressions",
+        "imperative"
+      ],
+      "words": [
+        "travel-025",
+        "verbs-001",
+        "qualities-037",
+        "health-time-092",
+        "health-time-093",
+        "health-time-076",
+        "health-time-085",
+        "health-time-055",
+        "travel-011",
+        "verbs-030",
+        "qualities-036",
+        "verbs-045",
+        "health-time-089",
+        "health-time-052",
+        "health-time-094",
+        "health-time-068",
+        "essentials-062",
+        "health-time-046",
+        "health-time-061",
+        "verbs-085",
+        "essentials-048"
+      ],
+      "gloss": [
+        {
+          "fr": "pharmacie",
+          "en": "pharmacy",
+          "word": "travel-025"
+        },
+        {
+          "fr": "centre",
+          "en": "town center"
+        },
+        {
+          "fr": "sera",
+          "en": "will be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermée",
+          "en": "closed (fermé, feminine)",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve; the twelfth",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen; the fifteenth",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "août",
+          "en": "August",
+          "word": "health-time-076"
+        },
+        {
+          "fr": "Pendant",
+          "en": "during"
+        },
+        {
+          "fr": "ces",
+          "en": "these; those",
+          "word": "essentials-048"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "jours",
+          "en": "days (le jour)",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        },
+        {
+          "fr": "restera",
+          "en": "will stay (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "ouverte",
+          "en": "open (ouvert, feminine)",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "ouvre",
+          "en": "opens (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "tous les jours",
+          "en": "every day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty (vingt heures = 8 p.m.)",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "sauf",
+          "en": "except"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "Pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "urgence",
+          "en": "emergency",
+          "word": "health-time-046"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        },
+        {
+          "fr": "appelez",
+          "en": "call (appeler, imperative)",
+          "word": "verbs-085"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5372 @@
+{
+  "sentences": [
+    {
+      "id": "a2-travel-s01",
+      "level": "A2",
+      "fr": "Nous sommes arrivés à la gare avec une heure de retard.",
+      "en": "We arrived at the station an hour late.",
+      "distractors": [
+        "We arrived at the airport an hour late.",
+        "We left the station an hour late.",
+        "We arrived at the station ten minutes late."
+      ],
+      "gap": "arrivés",
+      "topics": [
+        "passe-compose-etre",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-032",
+        "travel-011",
+        "health-time-052",
+        "travel-059"
+      ],
+      "gloss": [
+        {
+          "fr": "sommes arrivés",
+          "en": "arrived (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "heure",
+          "en": "hour; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "retard",
+          "en": "delay; lateness",
+          "word": "travel-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s02",
+      "level": "A2",
+      "fr": "Hier soir, j’ai réservé une chambre dans un petit hôtel.",
+      "en": "Last night I booked a room in a small hotel.",
+      "distractors": [
+        "Last night I booked a table in a small restaurant.",
+        "Tomorrow I am going to book a room in a small hotel.",
+        "Last night I booked two rooms in a small hotel."
+      ],
+      "gap": "réservé",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-060",
+        "home-006",
+        "qualities-002",
+        "travel-019"
+      ],
+      "gloss": [
+        {
+          "fr": "Hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "réservé",
+          "en": "booked (réserver)"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom; hotel room",
+          "word": "home-006"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "un",
+          "en": "a; an"
+        },
+        {
+          "fr": "petit",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "hôtel",
+          "en": "hotel",
+          "word": "travel-019"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s03",
+      "level": "A2",
+      "fr": "Le train pour Marseille part de la voie deux.",
+      "en": "The train to Marseille leaves from track two.",
+      "distractors": [
+        "The train to Marseille leaves from track three.",
+        "The bus to Marseille leaves from stop number two.",
+        "The train from Marseille arrives on track two."
+      ],
+      "gap": "deux",
+      "topics": [
+        "prepositions-places"
+      ],
+      "words": [
+        "travel-006",
+        "verbs-031",
+        "travel-062",
+        "health-time-083"
+      ],
+      "gloss": [
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "Marseille",
+          "en": "Marseille (city on the French Mediterranean coast)"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "voie",
+          "en": "track (at a station)",
+          "word": "travel-062"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s04",
+      "level": "A2",
+      "fr": "Est-ce que vous avez un plan du centre-ville, s’il vous plaît ?",
+      "en": "Do you have a map of the city center, please?",
+      "distractors": [
+        "Do you have a map of the neighborhood, please?",
+        "Do you have a ticket for the city center, please?",
+        "Do you sell maps of the city center, please?"
+      ],
+      "gap": "plan",
+      "topics": [
+        "questions",
+        "contractions"
+      ],
+      "words": [
+        "verbs-002",
+        "travel-031",
+        "travel-033",
+        "essentials-003"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "un",
+          "en": "a; an"
+        },
+        {
+          "fr": "plan",
+          "en": "map (of a town)",
+          "word": "travel-031"
+        },
+        {
+          "fr": "centre-ville",
+          "en": "city center",
+          "word": "travel-033"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s05",
+      "level": "A2",
+      "fr": "Quand nous étions enfants, nous passions nos vacances à la mer.",
+      "en": "When we were children, we used to spend our holidays by the sea.",
+      "distractors": [
+        "When we were children, we used to spend our holidays in the mountains.",
+        "When they were children, they used to spend their holidays by the sea.",
+        "Now that we have children, we spend our holidays by the sea."
+      ],
+      "gap": "étions",
+      "topics": [
+        "imparfait",
+        "possessives"
+      ],
+      "words": [
+        "essentials-082",
+        "people-004",
+        "verbs-029",
+        "travel-018",
+        "nature-007"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "étions",
+          "en": "were (être, imperfect)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "passions",
+          "en": "used to spend (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "vacances",
+          "en": "holidays",
+          "word": "travel-018"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s06",
+      "level": "A2",
+      "fr": "Je n’ai pas trouvé ma valise à l’aéroport.",
+      "en": "I did not find my suitcase at the airport.",
+      "distractors": [
+        "I found my suitcase at the airport.",
+        "I did not find my suitcase at the station.",
+        "He did not find my suitcase at the airport."
+      ],
+      "gap": "trouvé",
+      "topics": [
+        "negation",
+        "passe-compose-avoir",
+        "possessives"
+      ],
+      "words": [
+        "verbs-026",
+        "travel-054",
+        "travel-012"
+      ],
+      "gloss": [
+        {
+          "fr": "n’ai",
+          "en": "have not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "trouvé",
+          "en": "found (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "valise",
+          "en": "suitcase",
+          "word": "travel-054"
+        },
+        {
+          "fr": "l’aéroport",
+          "en": "the airport",
+          "word": "travel-012"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s07",
+      "level": "A2",
+      "fr": "Elle a oublié son passeport à la réception de l’hôtel.",
+      "en": "She left her passport at the hotel reception desk.",
+      "distractors": [
+        "She left her ticket at the hotel reception desk.",
+        "She found her passport at the hotel reception desk.",
+        "He left his passport at the hotel reception desk."
+      ],
+      "gap": "oublié",
+      "topics": [
+        "passe-compose-avoir",
+        "possessives"
+      ],
+      "words": [
+        "verbs-092",
+        "travel-051",
+        "travel-070",
+        "travel-019"
+      ],
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "oublié",
+          "en": "left behind; forgotten (oublier)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "son",
+          "en": "his; her",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "passeport",
+          "en": "passport",
+          "word": "travel-051"
+        },
+        {
+          "fr": "réception",
+          "en": "reception desk",
+          "word": "travel-070"
+        },
+        {
+          "fr": "l’hôtel",
+          "en": "the hotel",
+          "word": "travel-019"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s08",
+      "level": "A2",
+      "fr": "Il y avait beaucoup de circulation sur l’autoroute ce matin.",
+      "en": "There was a lot of traffic on the highway this morning.",
+      "distractors": [
+        "There was a lot of traffic on the highway last night.",
+        "There was no traffic on the highway this morning.",
+        "There was a lot of rain on the highway this morning."
+      ],
+      "gap": "beaucoup",
+      "topics": [
+        "imparfait",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-099",
+        "travel-087",
+        "travel-082",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y avait",
+          "en": "there was; there were"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; many",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "circulation",
+          "en": "traffic",
+          "word": "travel-087"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "l’autoroute",
+          "en": "the highway",
+          "word": "travel-082"
+        },
+        {
+          "fr": "ce",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s09",
+      "level": "A2",
+      "fr": "Nous prendrons le bateau demain matin si la mer est calme.",
+      "en": "We will take the boat tomorrow morning if the sea is calm.",
+      "distractors": [
+        "We will take the train tomorrow morning if the sea is calm.",
+        "We took the boat yesterday morning because the sea was calm.",
+        "We will take the boat tomorrow evening if the sea is calm."
+      ],
+      "gap": "prendrons",
+      "topics": [
+        "futur-simple",
+        "si-clauses"
+      ],
+      "words": [
+        "verbs-023",
+        "travel-092",
+        "health-time-059",
+        "nature-007",
+        "qualities-054"
+      ],
+      "gloss": [
+        {
+          "fr": "prendrons",
+          "en": "will take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "bateau",
+          "en": "boat",
+          "word": "travel-092"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "calme",
+          "en": "calm; quiet",
+          "word": "qualities-054"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s10",
+      "level": "A2",
+      "fr": "Tu as visité le musée pendant ton séjour à Paris ?",
+      "en": "Did you visit the museum during your stay in Paris?",
+      "distractors": [
+        "Did you visit the church during your stay in Paris?",
+        "Are you going to visit the museum during your stay in Paris?",
+        "Did they visit the museum during their stay in Paris?"
+      ],
+      "gap": "visité",
+      "topics": [
+        "passe-compose-avoir",
+        "questions"
+      ],
+      "words": [
+        "travel-073",
+        "travel-098"
+      ],
+      "gloss": [
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "visité",
+          "en": "visited (visiter)"
+        },
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "pendant",
+          "en": "during; for"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "séjour",
+          "en": "stay",
+          "word": "travel-098"
+        },
+        {
+          "fr": "Paris",
+          "en": "Paris"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s11",
+      "level": "A2",
+      "fr": "Le vol pour Lisbonne a deux heures de retard.",
+      "en": "The flight to Lisbon is two hours late.",
+      "distractors": [
+        "The flight to Lisbon is three hours late.",
+        "The train to Lisbon is two hours late.",
+        "The flight from Lisbon leaves in two hours."
+      ],
+      "gap": "heures",
+      "topics": [
+        "etre-avoir"
+      ],
+      "words": [
+        "travel-068",
+        "health-time-083",
+        "health-time-052",
+        "travel-059"
+      ],
+      "gloss": [
+        {
+          "fr": "vol",
+          "en": "flight",
+          "word": "travel-068"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "Lisbonne",
+          "en": "Lisbon"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "retard",
+          "en": "delay; lateness",
+          "word": "travel-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s12",
+      "level": "A2",
+      "fr": "Je me suis levé très tôt pour prendre mon train.",
+      "en": "I got up very early to catch my train.",
+      "distractors": [
+        "I got up very late to catch my train.",
+        "I went to bed very early to catch my train.",
+        "We got up very early to catch our train."
+      ],
+      "gap": "levé",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "verbs-064",
+        "essentials-096",
+        "verbs-023",
+        "travel-006"
+      ],
+      "gloss": [
+        {
+          "fr": "me suis levé",
+          "en": "got up (se lever)",
+          "word": "verbs-064"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "prendre",
+          "en": "to take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s13",
+      "level": "A2",
+      "fr": "Ils se sont perdus dans les petites rues du vieux quartier.",
+      "en": "They got lost in the small streets of the old district.",
+      "distractors": [
+        "They got lost in the small streets of the new district.",
+        "We got lost in the small streets of the old district.",
+        "They walked in the small streets of the old district."
+      ],
+      "gap": "perdus",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre",
+        "agreement"
+      ],
+      "words": [
+        "verbs-081",
+        "qualities-002",
+        "travel-002",
+        "qualities-009",
+        "travel-032"
+      ],
+      "gloss": [
+        {
+          "fr": "se sont perdus",
+          "en": "got lost (se perdre)"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "petites",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "rues",
+          "en": "streets",
+          "word": "travel-002"
+        },
+        {
+          "fr": "vieux",
+          "en": "old",
+          "word": "qualities-009"
+        },
+        {
+          "fr": "quartier",
+          "en": "district; neighborhood",
+          "word": "travel-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s14",
+      "level": "A2",
+      "fr": "Cet hôtel est moins cher que l’auberge près de la plage.",
+      "en": "This hotel is cheaper than the hostel near the beach.",
+      "distractors": [
+        "This hotel is more expensive than the hostel near the beach.",
+        "This hotel is cheaper than the hostel near the station.",
+        "This hostel is cheaper than the hotel near the beach."
+      ],
+      "gap": "moins",
+      "topics": [
+        "comparison",
+        "demonstratives"
+      ],
+      "words": [
+        "travel-019",
+        "qualities-059",
+        "travel-071",
+        "nature-068"
+      ],
+      "gloss": [
+        {
+          "fr": "Cet",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "hôtel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "moins",
+          "en": "less"
+        },
+        {
+          "fr": "cher",
+          "en": "expensive",
+          "word": "qualities-059"
+        },
+        {
+          "fr": "l’auberge",
+          "en": "the hostel; the inn",
+          "word": "travel-071"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "plage",
+          "en": "beach",
+          "word": "nature-068"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s15",
+      "level": "A2",
+      "fr": "On a loué des vélos pour visiter l’île.",
+      "en": "We rented bikes to visit the island.",
+      "distractors": [
+        "We rented a car to visit the island.",
+        "We are going to rent bikes to visit the island.",
+        "We bought bikes to visit the island."
+      ],
+      "gap": "loué",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "travel-008",
+        "nature-069"
+      ],
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "loué",
+          "en": "rented (louer)"
+        },
+        {
+          "fr": "vélos",
+          "en": "bicycles",
+          "word": "travel-008"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "visiter",
+          "en": "to visit (visiter)"
+        },
+        {
+          "fr": "l’île",
+          "en": "the island",
+          "word": "nature-069"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s16",
+      "level": "A2",
+      "fr": "Mon frère ne veut plus voyager en avion.",
+      "en": "My brother does not want to travel by plane any more.",
+      "distractors": [
+        "My brother does not want to travel by train any more.",
+        "My sister does not want to travel by plane any more.",
+        "My brother still wants to travel by plane."
+      ],
+      "gap": "plus",
+      "topics": [
+        "negation-more",
+        "possessives"
+      ],
+      "words": [
+        "people-012",
+        "verbs-019",
+        "travel-010"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "veut",
+          "en": "wants (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "voyager",
+          "en": "to travel (voyager)"
+        },
+        {
+          "fr": "avion",
+          "en": "plane",
+          "word": "travel-010"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s17",
+      "level": "A2",
+      "fr": "Vous devez montrer votre billet avant de monter dans le train.",
+      "en": "You must show your ticket before getting on the train.",
+      "distractors": [
+        "You must show your passport before getting on the train.",
+        "You must buy your ticket before getting on the train.",
+        "You must show your ticket before getting on the bus."
+      ],
+      "gap": "devez",
+      "topics": [
+        "possessives",
+        "prepositions-places"
+      ],
+      "words": [
+        "verbs-021",
+        "verbs-076",
+        "travel-015",
+        "verbs-037",
+        "travel-006"
+      ],
+      "gloss": [
+        {
+          "fr": "devez",
+          "en": "must (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "montrer",
+          "en": "to show (montrer)",
+          "word": "verbs-076"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "billet",
+          "en": "ticket",
+          "word": "travel-015"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "monter",
+          "en": "to go up; to get on (monter)",
+          "word": "verbs-037"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s18",
+      "level": "A2",
+      "fr": "La chambre donne sur la mer et le balcon est très grand.",
+      "en": "The room looks out on the sea and the balcony is very big.",
+      "distractors": [
+        "The room looks out on the garden and the balcony is very big.",
+        "The room looks out on the sea and the balcony is very small.",
+        "The hotel looks out on the sea and the room is very big."
+      ],
+      "gap": "balcon",
+      "topics": [
+        "agreement"
+      ],
+      "words": [
+        "home-006",
+        "verbs-024",
+        "nature-007",
+        "home-018",
+        "essentials-096",
+        "qualities-001"
+      ],
+      "gloss": [
+        {
+          "fr": "chambre",
+          "en": "bedroom; hotel room",
+          "word": "home-006"
+        },
+        {
+          "fr": "donne sur",
+          "en": "looks out on (donner sur)"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        },
+        {
+          "fr": "balcon",
+          "en": "balcony",
+          "word": "home-018"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "grand",
+          "en": "big; tall",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s19",
+      "level": "A2",
+      "fr": "Nous avons marché trois heures dans la montagne.",
+      "en": "We walked for three hours in the mountains.",
+      "distractors": [
+        "We walked for two hours in the mountains.",
+        "We walked for three hours on the beach.",
+        "We are going to walk for three hours in the mountains."
+      ],
+      "gap": "trois",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-039",
+        "health-time-084",
+        "health-time-052",
+        "nature-008"
+      ],
+      "gloss": [
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "marché",
+          "en": "walked (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "montagne",
+          "en": "mountain",
+          "word": "nature-008"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s20",
+      "level": "A2",
+      "fr": "Elle m’a envoyé une carte postale de Venise.",
+      "en": "She sent me a postcard from Venice.",
+      "distractors": [
+        "She sent me a photo from Venice.",
+        "I sent her a postcard from Venice.",
+        "She sent me a postcard from Rome."
+      ],
+      "gap": "envoyé",
+      "topics": [
+        "indirect-object",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-084"
+      ],
+      "gloss": [
+        {
+          "fr": "m’a envoyé",
+          "en": "sent me (envoyer)",
+          "word": "verbs-084"
+        },
+        {
+          "fr": "carte postale",
+          "en": "postcard"
+        },
+        {
+          "fr": "Venise",
+          "en": "Venice"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s21",
+      "level": "A2",
+      "fr": "Le bus s’arrête devant l’office de tourisme.",
+      "en": "The bus stops in front of the tourist office.",
+      "distractors": [
+        "The bus stops behind the tourist office.",
+        "The bus stops in front of the town hall.",
+        "The taxi stops in front of the tourist office."
+      ],
+      "gap": "devant",
+      "topics": [
+        "reflexive",
+        "prepositions-places"
+      ],
+      "words": [
+        "travel-005",
+        "verbs-050",
+        "essentials-067",
+        "travel-079"
+      ],
+      "gloss": [
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "s’arrête",
+          "en": "stops (s’arrêter)"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "l’office de tourisme",
+          "en": "the tourist information office",
+          "word": "travel-079"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s22",
+      "level": "A2",
+      "fr": "Je n’ai jamais dormi dans une tente.",
+      "en": "I have never slept in a tent.",
+      "distractors": [
+        "I often sleep in a tent.",
+        "I have never slept in a hostel.",
+        "She has never slept in a tent."
+      ],
+      "gap": "jamais",
+      "topics": [
+        "negation-more",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "essentials-090",
+        "verbs-062"
+      ],
+      "gloss": [
+        {
+          "fr": "n’ai",
+          "en": "have not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        },
+        {
+          "fr": "dormi",
+          "en": "slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "tente",
+          "en": "tent"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s23",
+      "level": "A2",
+      "fr": "Il pleuvait tous les jours pendant nos vacances en Bretagne.",
+      "en": "It rained every day during our holidays in Brittany.",
+      "distractors": [
+        "It rained every evening during our holidays in Brittany.",
+        "The sun shone every day during our holidays in Brittany.",
+        "It rained every day during their holidays in Brittany."
+      ],
+      "gap": "pleuvait",
+      "topics": [
+        "imparfait",
+        "time-expressions",
+        "possessives"
+      ],
+      "words": [
+        "health-time-055",
+        "travel-018"
+      ],
+      "gloss": [
+        {
+          "fr": "pleuvait",
+          "en": "was raining (pleuvoir)"
+        },
+        {
+          "fr": "tous les jours",
+          "en": "every day"
+        },
+        {
+          "fr": "pendant",
+          "en": "during; for"
+        },
+        {
+          "fr": "nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "vacances",
+          "en": "holidays",
+          "word": "travel-018"
+        },
+        {
+          "fr": "Bretagne",
+          "en": "Brittany (region in the north-west of France)"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s24",
+      "level": "A2",
+      "fr": "La gare était loin de l’hôtel, alors nous y sommes allés en taxi.",
+      "en": "The station was far from the hotel, so we went there by taxi.",
+      "distractors": [
+        "The station was far from the hotel, so we went there on foot.",
+        "The station was close to the hotel, so we went there by taxi.",
+        "The airport was far from the hotel, so we went there by taxi."
+      ],
+      "gap": "loin",
+      "topics": [
+        "y-en",
+        "passe-compose-etre",
+        "imparfait"
+      ],
+      "words": [
+        "travel-011",
+        "travel-019",
+        "verbs-004",
+        "travel-009"
+      ],
+      "gloss": [
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        },
+        {
+          "fr": "était",
+          "en": "was (être, imperfect)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "loin",
+          "en": "far"
+        },
+        {
+          "fr": "l’hôtel",
+          "en": "the hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "sommes allés",
+          "en": "went (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "taxi",
+          "en": "taxi",
+          "word": "travel-009"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s25",
+      "level": "A2",
+      "fr": "Combien coûte un aller-retour pour Bordeaux ?",
+      "en": "How much does a return ticket to Bordeaux cost?",
+      "distractors": [
+        "How much does a one-way ticket to Bordeaux cost?",
+        "How long does the journey to Bordeaux take?",
+        "How much does a return ticket to Toulouse cost?"
+      ],
+      "gap": "Combien",
+      "topics": [
+        "question-words"
+      ],
+      "words": [
+        "essentials-038",
+        "verbs-058",
+        "travel-064"
+      ],
+      "gloss": [
+        {
+          "fr": "Combien",
+          "en": "how much; how many",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "un",
+          "en": "a; an"
+        },
+        {
+          "fr": "aller-retour",
+          "en": "return ticket",
+          "word": "travel-064"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "Bordeaux",
+          "en": "Bordeaux (city in the south-west of France)"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s26",
+      "level": "A2",
+      "fr": "Le taxi nous attendait devant la sortie de l’aéroport.",
+      "en": "The taxi was waiting for us in front of the airport exit.",
+      "distractors": [
+        "The taxi was waiting for us in front of the station exit.",
+        "The taxi was waiting for them in front of the airport exit.",
+        "We were waiting for the taxi in front of the airport exit."
+      ],
+      "gap": "attendait",
+      "topics": [
+        "imparfait",
+        "direct-object"
+      ],
+      "words": [
+        "travel-009",
+        "verbs-041",
+        "essentials-067",
+        "travel-012"
+      ],
+      "gloss": [
+        {
+          "fr": "taxi",
+          "en": "taxi",
+          "word": "travel-009"
+        },
+        {
+          "fr": "attendait",
+          "en": "was waiting for (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "sortie",
+          "en": "exit; way out"
+        },
+        {
+          "fr": "l’aéroport",
+          "en": "the airport",
+          "word": "travel-012"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s27",
+      "level": "A2",
+      "fr": "Est-ce qu’il reste des places dans le train de huit heures ?",
+      "en": "Are there any seats left on the eight o’clock train?",
+      "distractors": [
+        "Are there any seats left on the nine o’clock train?",
+        "Are there any seats left on the eight o’clock bus?",
+        "Is the eight o’clock train already full?"
+      ],
+      "gap": "huit",
+      "topics": [
+        "questions",
+        "partitive"
+      ],
+      "words": [
+        "verbs-030",
+        "travel-006",
+        "health-time-089",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce qu’",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "reste",
+          "en": "is left; stays (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "places",
+          "en": "seats; places"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s28",
+      "level": "A2",
+      "fr": "J’ai perdu mon ticket de métro entre la gare et l’hôtel.",
+      "en": "I lost my metro ticket between the station and the hotel.",
+      "distractors": [
+        "I lost my train ticket between the station and the hotel.",
+        "I found my metro ticket between the station and the hotel.",
+        "She lost her metro ticket between the station and the hotel."
+      ],
+      "gap": "perdu",
+      "topics": [
+        "passe-compose-avoir",
+        "prepositions-places"
+      ],
+      "words": [
+        "verbs-081",
+        "travel-016",
+        "travel-007",
+        "essentials-065",
+        "travel-011",
+        "travel-019"
+      ],
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "perdu",
+          "en": "lost (perdre)",
+          "word": "verbs-081"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "ticket",
+          "en": "ticket (bus, metro)",
+          "word": "travel-016"
+        },
+        {
+          "fr": "métro",
+          "en": "metro; underground",
+          "word": "travel-007"
+        },
+        {
+          "fr": "entre",
+          "en": "between",
+          "word": "essentials-065"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        },
+        {
+          "fr": "l’hôtel",
+          "en": "the hotel",
+          "word": "travel-019"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s29",
+      "level": "A2",
+      "fr": "Nous partirons en vacances le premier juillet.",
+      "en": "We will go on holiday on the first of July.",
+      "distractors": [
+        "We will go on holiday on the first of June.",
+        "We went on holiday on the first of July.",
+        "They will go on holiday on the first of July."
+      ],
+      "gap": "partirons",
+      "topics": [
+        "futur-simple",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-031",
+        "travel-018",
+        "health-time-075"
+      ],
+      "gloss": [
+        {
+          "fr": "partirons",
+          "en": "will leave (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "vacances",
+          "en": "holidays",
+          "word": "travel-018"
+        },
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "juillet",
+          "en": "July",
+          "word": "health-time-075"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s30",
+      "level": "A2",
+      "fr": "Le petit déjeuner est servi entre sept heures et dix heures.",
+      "en": "Breakfast is served between seven and ten o’clock.",
+      "distractors": [
+        "Breakfast is served between six and nine o’clock.",
+        "Lunch is served between seven and ten o’clock.",
+        "Breakfast is served in the bedrooms until ten o’clock."
+      ],
+      "gap": "servi",
+      "topics": [
+        "time-expressions"
+      ],
+      "words": [
+        "food-073",
+        "essentials-065",
+        "health-time-088",
+        "health-time-052",
+        "health-time-091"
+      ],
+      "gloss": [
+        {
+          "fr": "petit déjeuner",
+          "en": "breakfast",
+          "word": "food-073"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "servi",
+          "en": "served (servir)"
+        },
+        {
+          "fr": "entre",
+          "en": "between",
+          "word": "essentials-065"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s31",
+      "level": "A2",
+      "fr": "Ma sœur a préféré la montagne à la plage cette année.",
+      "en": "My sister preferred the mountains to the beach this year.",
+      "distractors": [
+        "My sister preferred the beach to the mountains this year.",
+        "My brother preferred the mountains to the beach this year.",
+        "My sister preferred the mountains to the beach last year."
+      ],
+      "gap": "préféré",
+      "topics": [
+        "passe-compose-avoir",
+        "demonstratives"
+      ],
+      "words": [
+        "people-011",
+        "verbs-053",
+        "nature-008",
+        "nature-068",
+        "health-time-058"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "préféré",
+          "en": "preferred (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "montagne",
+          "en": "mountain",
+          "word": "nature-008"
+        },
+        {
+          "fr": "plage",
+          "en": "beach",
+          "word": "nature-068"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "année",
+          "en": "year",
+          "word": "health-time-058"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s32",
+      "level": "A2",
+      "fr": "Tu peux me réveiller à six heures demain ?",
+      "en": "Can you wake me up at six o’clock tomorrow?",
+      "distractors": [
+        "Can you wake me up at seven o’clock tomorrow?",
+        "Can you wake me up at six o’clock this evening?",
+        "Can you call me at six o’clock tomorrow?"
+      ],
+      "gap": "six",
+      "topics": [
+        "direct-object",
+        "questions"
+      ],
+      "words": [
+        "verbs-020",
+        "health-time-087",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "peux",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "réveiller",
+          "en": "to wake (someone) up (réveiller)"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s33",
+      "level": "A2",
+      "fr": "Il faisait très chaud quand nous sommes descendus du train.",
+      "en": "It was very hot when we got off the train.",
+      "distractors": [
+        "It was very cold when we got off the train.",
+        "It was very hot when we got on the train.",
+        "It was very hot when they got off the train."
+      ],
+      "gap": "descendus",
+      "topics": [
+        "pc-vs-imparfait",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "verbs-003",
+        "essentials-096",
+        "qualities-025",
+        "essentials-082",
+        "verbs-038",
+        "travel-006"
+      ],
+      "gloss": [
+        {
+          "fr": "faisait",
+          "en": "was (weather); was doing (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "chaud",
+          "en": "hot; warm",
+          "word": "qualities-025"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "sommes descendus",
+          "en": "got off (descendre)",
+          "word": "verbs-038"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s34",
+      "level": "A2",
+      "fr": "Le musée est fermé le mardi, mais l’église reste ouverte.",
+      "en": "The museum is closed on Tuesdays, but the church stays open.",
+      "distractors": [
+        "The museum is closed on Mondays, but the church stays open.",
+        "The church is closed on Tuesdays, but the museum stays open.",
+        "The museum is open on Tuesdays, but the church stays closed."
+      ],
+      "gap": "mardi",
+      "topics": [
+        "agreement",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-073",
+        "qualities-037",
+        "health-time-063",
+        "travel-075",
+        "verbs-030",
+        "qualities-036"
+      ],
+      "gloss": [
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermé",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "l’église",
+          "en": "the church",
+          "word": "travel-075"
+        },
+        {
+          "fr": "reste",
+          "en": "is left; stays (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "ouverte",
+          "en": "open",
+          "word": "qualities-036"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s35",
+      "level": "A2",
+      "fr": "Je cherche la station de métro la plus proche.",
+      "en": "I am looking for the nearest metro station.",
+      "distractors": [
+        "I am looking for the nearest bus stop.",
+        "I am looking for the biggest metro station.",
+        "I am looking for the metro station near my hotel."
+      ],
+      "gap": "proche",
+      "topics": [
+        "comparison"
+      ],
+      "words": [
+        "verbs-027",
+        "travel-014",
+        "travel-007",
+        "qualities-057"
+      ],
+      "gloss": [
+        {
+          "fr": "cherche",
+          "en": "am looking for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "station",
+          "en": "station (metro)",
+          "word": "travel-014"
+        },
+        {
+          "fr": "métro",
+          "en": "metro; underground",
+          "word": "travel-007"
+        },
+        {
+          "fr": "plus",
+          "en": "most; more"
+        },
+        {
+          "fr": "proche",
+          "en": "near; close",
+          "word": "qualities-057"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s36",
+      "level": "A2",
+      "fr": "Nous avons dû attendre nos bagages pendant quarante minutes.",
+      "en": "We had to wait for our luggage for forty minutes.",
+      "distractors": [
+        "We had to wait for our luggage for fifteen minutes.",
+        "We had to wait for our room for forty minutes.",
+        "They had to wait for their luggage for forty minutes."
+      ],
+      "gap": "quarante",
+      "topics": [
+        "passe-compose-avoir",
+        "possessives"
+      ],
+      "words": [
+        "verbs-021",
+        "verbs-041",
+        "travel-055",
+        "health-time-096",
+        "health-time-053"
+      ],
+      "gloss": [
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "dû",
+          "en": "had to (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "attendre",
+          "en": "to wait for (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "bagages",
+          "en": "luggage",
+          "word": "travel-055"
+        },
+        {
+          "fr": "pendant",
+          "en": "during; for"
+        },
+        {
+          "fr": "quarante",
+          "en": "forty",
+          "word": "health-time-096"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s37",
+      "level": "A2",
+      "fr": "Ce village de montagne est plus calme que la côte.",
+      "en": "This mountain village is quieter than the coast.",
+      "distractors": [
+        "This mountain village is noisier than the coast.",
+        "This mountain village is quieter than the city.",
+        "The coast is quieter than this mountain village."
+      ],
+      "gap": "plus",
+      "topics": [
+        "comparison",
+        "demonstratives"
+      ],
+      "words": [
+        "travel-047",
+        "nature-008",
+        "qualities-054",
+        "nature-070"
+      ],
+      "gloss": [
+        {
+          "fr": "Ce",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "village",
+          "en": "village",
+          "word": "travel-047"
+        },
+        {
+          "fr": "montagne",
+          "en": "mountain",
+          "word": "nature-008"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "calme",
+          "en": "calm; quiet",
+          "word": "qualities-054"
+        },
+        {
+          "fr": "côte",
+          "en": "coast",
+          "word": "nature-070"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s38",
+      "level": "A2",
+      "fr": "Elle lui a demandé le chemin en italien.",
+      "en": "She asked him the way in Italian.",
+      "distractors": [
+        "She asked him the time in Italian.",
+        "He asked her the way in Italian.",
+        "She asked him the way in Spanish."
+      ],
+      "gap": "lui",
+      "topics": [
+        "indirect-object",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-008"
+      ],
+      "gloss": [
+        {
+          "fr": "lui",
+          "en": "(to) him; (to) her",
+          "word": "essentials-027"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "demandé",
+          "en": "asked (demander)",
+          "word": "verbs-008"
+        },
+        {
+          "fr": "chemin",
+          "en": "way; path"
+        },
+        {
+          "fr": "italien",
+          "en": "Italian"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s39",
+      "level": "A2",
+      "fr": "À la douane, l’agent a regardé mon passeport sans rien dire.",
+      "en": "At customs, the officer looked at my passport without saying anything.",
+      "distractors": [
+        "At customs, the officer looked at my ticket without saying anything.",
+        "At customs, the officer asked me a lot of questions.",
+        "At the hotel, the manager looked at my passport without saying anything."
+      ],
+      "gap": "rien",
+      "topics": [
+        "negation-more",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "travel-053",
+        "verbs-011",
+        "travel-051",
+        "essentials-061",
+        "essentials-042",
+        "verbs-006"
+      ],
+      "gloss": [
+        {
+          "fr": "douane",
+          "en": "customs",
+          "word": "travel-053"
+        },
+        {
+          "fr": "l’agent",
+          "en": "the officer"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "regardé",
+          "en": "looked at (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "passeport",
+          "en": "passport",
+          "word": "travel-051"
+        },
+        {
+          "fr": "sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "rien",
+          "en": "nothing",
+          "word": "essentials-042"
+        },
+        {
+          "fr": "dire",
+          "en": "to say (dire)",
+          "word": "verbs-006"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s40",
+      "level": "A2",
+      "fr": "Nous n’avons pas pu visiter le château : il pleuvait trop.",
+      "en": "We could not visit the castle: it was raining too much.",
+      "distractors": [
+        "We could not visit the castle: it was too expensive.",
+        "We visited the castle even though it was raining.",
+        "They could not visit the castle: it was raining too much."
+      ],
+      "gap": "pu",
+      "topics": [
+        "negation",
+        "passe-compose-avoir",
+        "imparfait"
+      ],
+      "words": [
+        "verbs-020",
+        "essentials-097"
+      ],
+      "gloss": [
+        {
+          "fr": "n’avons",
+          "en": "have not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "pu",
+          "en": "been able to (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "visiter",
+          "en": "to visit (visiter)"
+        },
+        {
+          "fr": "château",
+          "en": "castle"
+        },
+        {
+          "fr": "pleuvait",
+          "en": "was raining (pleuvoir)"
+        },
+        {
+          "fr": "trop",
+          "en": "too; too much",
+          "word": "essentials-097"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s41",
+      "level": "A2",
+      "fr": "Est-ce que le petit déjeuner est compris dans le prix ?",
+      "en": "Is breakfast included in the price?",
+      "distractors": [
+        "Is breakfast served in the room?",
+        "Is the bedroom included in the price?",
+        "Is dinner included in the price?"
+      ],
+      "gap": "compris",
+      "topics": [
+        "questions"
+      ],
+      "words": [
+        "food-073",
+        "verbs-016"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "petit déjeuner",
+          "en": "breakfast",
+          "word": "food-073"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "compris",
+          "en": "included (comprendre)"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "prix",
+          "en": "price"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s42",
+      "level": "A2",
+      "fr": "Vous descendez au prochain arrêt ?",
+      "en": "Are you getting off at the next stop?",
+      "distractors": [
+        "Are you getting off at the last stop?",
+        "Are you getting on at the next stop?",
+        "Are we getting off at the next stop?"
+      ],
+      "gap": "prochain",
+      "topics": [
+        "questions",
+        "contractions"
+      ],
+      "words": [
+        "verbs-038",
+        "travel-013"
+      ],
+      "gloss": [
+        {
+          "fr": "descendez",
+          "en": "are getting off (descendre)",
+          "word": "verbs-038"
+        },
+        {
+          "fr": "prochain",
+          "en": "next"
+        },
+        {
+          "fr": "arrêt",
+          "en": "stop (for buses)",
+          "word": "travel-013"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s43",
+      "level": "A2",
+      "fr": "Ils ont visité trois pays en deux semaines.",
+      "en": "They visited three countries in two weeks.",
+      "distractors": [
+        "They visited two countries in three weeks.",
+        "They visited three cities in two weeks.",
+        "We visited three countries in two weeks."
+      ],
+      "gap": "pays",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-084",
+        "travel-046",
+        "health-time-083",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "visité",
+          "en": "visited (visiter)"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "pays",
+          "en": "countries",
+          "word": "travel-046"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "semaines",
+          "en": "weeks",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s44",
+      "level": "A2",
+      "fr": "Le matin, nous allions à la boulangerie du village.",
+      "en": "In the morning, we used to go to the village bakery.",
+      "distractors": [
+        "In the evening, we used to go to the village bakery.",
+        "In the morning, we used to go to the village market.",
+        "In the morning, they used to go to the village bakery."
+      ],
+      "gap": "allions",
+      "topics": [
+        "imparfait",
+        "contractions"
+      ],
+      "words": [
+        "health-time-059",
+        "verbs-004",
+        "travel-024",
+        "travel-047"
+      ],
+      "gloss": [
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "allions",
+          "en": "used to go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "boulangerie",
+          "en": "bakery",
+          "word": "travel-024"
+        },
+        {
+          "fr": "village",
+          "en": "village",
+          "word": "travel-047"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s45",
+      "level": "A2",
+      "fr": "Mon vol part à midi, donc je dois quitter l’hôtel à dix heures.",
+      "en": "My flight leaves at noon, so I have to leave the hotel at ten.",
+      "distractors": [
+        "My flight leaves at noon, so I have to leave the hotel at eight.",
+        "My train leaves at noon, so I have to leave the hotel at ten.",
+        "My flight leaves at ten, so I have to leave the hotel at noon."
+      ],
+      "gap": "dois",
+      "topics": [
+        "time-expressions"
+      ],
+      "words": [
+        "travel-068",
+        "verbs-031",
+        "verbs-021",
+        "travel-019",
+        "health-time-091",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "vol",
+          "en": "flight",
+          "word": "travel-068"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "midi",
+          "en": "noon; midday"
+        },
+        {
+          "fr": "donc",
+          "en": "so; therefore",
+          "word": "essentials-078"
+        },
+        {
+          "fr": "dois",
+          "en": "must (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "quitter",
+          "en": "to leave (quitter)"
+        },
+        {
+          "fr": "l’hôtel",
+          "en": "the hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s46",
+      "level": "A2",
+      "fr": "Nous avons dormi dans une auberge près du port.",
+      "en": "We slept in a hostel near the harbor.",
+      "distractors": [
+        "We slept in a hotel near the harbor.",
+        "We slept in a hostel near the beach.",
+        "We are going to sleep in a hostel near the harbor."
+      ],
+      "gap": "dormi",
+      "topics": [
+        "passe-compose-avoir",
+        "contractions"
+      ],
+      "words": [
+        "verbs-062",
+        "travel-071",
+        "travel-093"
+      ],
+      "gloss": [
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "dormi",
+          "en": "slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "auberge",
+          "en": "hostel; inn",
+          "word": "travel-071"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "port",
+          "en": "harbor; port",
+          "word": "travel-093"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s47",
+      "level": "A2",
+      "fr": "Elle a pris beaucoup de photos de la vieille ville.",
+      "en": "She took a lot of photos of the old town.",
+      "distractors": [
+        "She took two photos of the old town.",
+        "She took a lot of photos of the new district.",
+        "He took a lot of photos of the old town."
+      ],
+      "gap": "pris",
+      "topics": [
+        "passe-compose-avoir",
+        "adjective-placement"
+      ],
+      "words": [
+        "verbs-023",
+        "essentials-099",
+        "work-092",
+        "qualities-009",
+        "travel-001"
+      ],
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "pris",
+          "en": "took (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; many",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "photos",
+          "en": "photos",
+          "word": "work-092"
+        },
+        {
+          "fr": "vieille",
+          "en": "old",
+          "word": "qualities-009"
+        },
+        {
+          "fr": "ville",
+          "en": "town; city",
+          "word": "travel-001"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s48",
+      "level": "A2",
+      "fr": "Le train était complet, alors nous avons voyagé debout.",
+      "en": "The train was full, so we traveled standing up.",
+      "distractors": [
+        "The train was late, so we traveled standing up.",
+        "The train was full, so we waited for the next one.",
+        "The bus was full, so we traveled standing up."
+      ],
+      "gap": "complet",
+      "topics": [
+        "imparfait",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "travel-006"
+      ],
+      "gloss": [
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "était",
+          "en": "was (être, imperfect)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "complet",
+          "en": "full; sold out"
+        },
+        {
+          "fr": "alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "voyagé",
+          "en": "traveled (voyager)"
+        },
+        {
+          "fr": "debout",
+          "en": "standing up"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s49",
+      "level": "A2",
+      "fr": "Est-ce que tu as déjà fait du camping en hiver ?",
+      "en": "Have you ever been camping in winter?",
+      "distractors": [
+        "Have you ever been camping in summer?",
+        "Are you going camping this winter?",
+        "Have you ever slept in a hotel in winter?"
+      ],
+      "gap": "déjà",
+      "topics": [
+        "passe-compose-avoir",
+        "partitive",
+        "questions"
+      ],
+      "words": [
+        "essentials-088",
+        "verbs-003",
+        "travel-072"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "déjà",
+          "en": "already; ever",
+          "word": "essentials-088"
+        },
+        {
+          "fr": "fait du camping",
+          "en": "been camping (faire du camping)"
+        },
+        {
+          "fr": "hiver",
+          "en": "winter"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-s50",
+      "level": "A2",
+      "fr": "Après l’orage, la route vers la montagne était fermée.",
+      "en": "After the storm, the road to the mountain was closed.",
+      "distractors": [
+        "After the storm, the road to the mountain was open.",
+        "Before the storm, the road to the mountain was closed.",
+        "After the storm, the road to the sea was closed."
+      ],
+      "gap": "fermée",
+      "topics": [
+        "imparfait",
+        "agreement"
+      ],
+      "words": [
+        "nature-085",
+        "travel-003",
+        "essentials-069",
+        "nature-008",
+        "qualities-037"
+      ],
+      "gloss": [
+        {
+          "fr": "Après",
+          "en": "after"
+        },
+        {
+          "fr": "l’orage",
+          "en": "the storm",
+          "word": "nature-085"
+        },
+        {
+          "fr": "route",
+          "en": "road",
+          "word": "travel-003"
+        },
+        {
+          "fr": "vers",
+          "en": "towards; around",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "montagne",
+          "en": "mountain",
+          "word": "nature-008"
+        },
+        {
+          "fr": "était",
+          "en": "was (être, imperfect)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermée",
+          "en": "closed",
+          "word": "qualities-037"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a2-travel-p01",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Checking in at the hotel",
+      "lines": [
+        {
+          "speaker": "Le réceptionniste",
+          "fr": "Bonsoir, vous avez une réservation ?",
+          "en": "Good evening, do you have a reservation?"
+        },
+        {
+          "speaker": "Claire",
+          "fr": "Oui, au nom de Morel, pour trois nuits.",
+          "en": "Yes, under the name Morel, for three nights."
+        },
+        {
+          "speaker": "Le réceptionniste",
+          "fr": "Je suis désolé, la chambre avec vue sur la mer n’est plus libre.",
+          "en": "I am sorry, the room with a sea view is not available any more."
+        },
+        {
+          "speaker": "Claire",
+          "fr": "Mais je l’ai réservée il y a deux mois !",
+          "en": "But I booked it two months ago!"
+        },
+        {
+          "speaker": "Le réceptionniste",
+          "fr": "Je vous donne une chambre plus grande, au troisième étage, sans supplément.",
+          "en": "I am giving you a bigger room, on the third floor, at no extra cost."
+        },
+        {
+          "speaker": "Claire",
+          "fr": "D’accord. Le petit déjeuner est servi à quelle heure ?",
+          "en": "All right. What time is breakfast served?"
+        },
+        {
+          "speaker": "Le réceptionniste",
+          "fr": "À partir de sept heures, dans la salle près de la réception.",
+          "en": "From seven o’clock, in the room next to the reception desk."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why can’t Claire have the room she booked?",
+          "choices": [
+            "It is not available any more.",
+            "It is too expensive for her.",
+            "The hotel is full for three nights.",
+            "She arrived on the wrong day."
+          ],
+          "answer": 0,
+          "explanation": "The receptionist says the sea-view room « n’est plus libre »."
+        },
+        {
+          "question": "What does the receptionist offer her instead?",
+          "choices": [
+            "A bigger room at no extra cost.",
+            "A sea-view room on the third floor.",
+            "A free night at the end of her stay.",
+            "A room in another hotel."
+          ],
+          "answer": 0,
+          "explanation": "« une chambre plus grande, au troisième étage, sans supplément »."
+        },
+        {
+          "question": "When did Claire book?",
+          "choices": [
+            "Two months earlier.",
+            "Two weeks earlier.",
+            "Three nights earlier.",
+            "That same morning."
+          ],
+          "answer": 0,
+          "explanation": "« je l’ai réservée il y a deux mois »."
+        },
+        {
+          "question": "Where is breakfast served?",
+          "choices": [
+            "In a room next to the reception desk.",
+            "In the bedrooms, from seven o’clock.",
+            "On the third floor.",
+            "In the café across the street."
+          ],
+          "answer": 0,
+          "explanation": "« dans la salle près de la réception »."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "negation-more",
+        "questions"
+      ],
+      "words": [
+        "travel-056",
+        "people-057",
+        "health-time-061",
+        "home-006",
+        "nature-007",
+        "qualities-090",
+        "health-time-057",
+        "qualities-001",
+        "food-073",
+        "health-time-052",
+        "travel-070"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonsoir",
+          "en": "good evening",
+          "word": "essentials-008"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "réservation",
+          "en": "reservation; booking",
+          "word": "travel-056"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "nom",
+          "en": "name",
+          "word": "people-057"
+        },
+        {
+          "fr": "Morel",
+          "en": "Morel (family name)"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "nuits",
+          "en": "nights",
+          "word": "health-time-061"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "désolé",
+          "en": "sorry"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom; hotel room",
+          "word": "home-006"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "vue",
+          "en": "view"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        },
+        {
+          "fr": "n’est",
+          "en": "is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "libre",
+          "en": "free; available",
+          "word": "qualities-090"
+        },
+        {
+          "fr": "l’ai réservée",
+          "en": "booked it (réserver)"
+        },
+        {
+          "fr": "il y a",
+          "en": "there is; there are; ago"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "mois",
+          "en": "months; month",
+          "word": "health-time-057"
+        },
+        {
+          "fr": "donne",
+          "en": "gives (donner)",
+          "word": "verbs-024"
+        },
+        {
+          "fr": "grande",
+          "en": "big; large",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "troisième",
+          "en": "third"
+        },
+        {
+          "fr": "étage",
+          "en": "floor; storey"
+        },
+        {
+          "fr": "sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "supplément",
+          "en": "extra charge"
+        },
+        {
+          "fr": "D’accord",
+          "en": "all right; agreed",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "petit déjeuner",
+          "en": "breakfast",
+          "word": "food-073"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "servi",
+          "en": "served (servir)"
+        },
+        {
+          "fr": "quelle",
+          "en": "what; which"
+        },
+        {
+          "fr": "heure",
+          "en": "hour; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "À partir de",
+          "en": "from (a time)"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "salle",
+          "en": "room (public room)"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "réception",
+          "en": "reception desk",
+          "word": "travel-070"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-p02",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "At the ticket window",
+      "lines": [
+        {
+          "speaker": "Le voyageur",
+          "fr": "Bonjour, je voudrais un aller-retour pour Lyon, s’il vous plaît.",
+          "en": "Hello, I would like a return ticket to Lyon, please."
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "Pour aujourd’hui ? Le train de dix heures est complet.",
+          "en": "For today? The ten o’clock train is full."
+        },
+        {
+          "speaker": "Le voyageur",
+          "fr": "Alors le suivant, c’est à quelle heure ?",
+          "en": "Then the next one, what time is it?"
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "À onze heures vingt, avec une correspondance à Dijon.",
+          "en": "At eleven twenty, with a connection in Dijon."
+        },
+        {
+          "speaker": "Le voyageur",
+          "fr": "Et le trajet dure combien de temps ?",
+          "en": "And how long does the journey take?"
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "Environ quatre heures. Ça fait soixante-douze euros.",
+          "en": "About four hours. That comes to seventy-two euros."
+        },
+        {
+          "speaker": "Le voyageur",
+          "fr": "Très bien. Le train part de quelle voie ?",
+          "en": "Very good. Which track does the train leave from?"
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "Voie huit, mais regardez l’écran, ça change souvent.",
+          "en": "Track eight, but watch the screen, it often changes."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why does the traveler not take the ten o’clock train?",
+          "choices": [
+            "It is full.",
+            "It is too expensive.",
+            "It arrives too late.",
+            "It does not run today."
+          ],
+          "answer": 0,
+          "explanation": "« Le train de dix heures est complet »."
+        },
+        {
+          "question": "What must he do during the journey?",
+          "choices": [
+            "Change trains in Dijon.",
+            "Show his ticket in Lyon.",
+            "Wait twenty minutes in Lyon.",
+            "Book a seat at the counter."
+          ],
+          "answer": 0,
+          "explanation": "« avec une correspondance à Dijon »."
+        },
+        {
+          "question": "How long does the journey take?",
+          "choices": [
+            "About four hours.",
+            "About two hours.",
+            "Eleven hours twenty.",
+            "Seventy-two minutes."
+          ],
+          "answer": 0,
+          "explanation": "« Environ quatre heures »."
+        },
+        {
+          "question": "Why does the clerk tell him to watch the screen?",
+          "choices": [
+            "The track often changes.",
+            "The price often changes.",
+            "The delay is announced there.",
+            "The connection time is written there."
+          ],
+          "answer": 0,
+          "explanation": "« regardez l’écran, ça change souvent », about the « voie »."
+        }
+      ],
+      "topics": [
+        "questions",
+        "question-words",
+        "prepositions-places"
+      ],
+      "words": [
+        "travel-064",
+        "essentials-003",
+        "travel-006",
+        "health-time-091",
+        "health-time-052",
+        "travel-060",
+        "travel-065",
+        "essentials-038",
+        "health-time-051",
+        "health-time-085",
+        "travel-062",
+        "health-time-089",
+        "verbs-011",
+        "work-063",
+        "verbs-079",
+        "essentials-091"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "voudrais",
+          "en": "would like (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "un",
+          "en": "a; an"
+        },
+        {
+          "fr": "aller-retour",
+          "en": "return ticket",
+          "word": "travel-064"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (city in the east of France)"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        },
+        {
+          "fr": "Pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "complet",
+          "en": "full; sold out"
+        },
+        {
+          "fr": "Alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "suivant",
+          "en": "next one; following"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "quelle",
+          "en": "what; which"
+        },
+        {
+          "fr": "heure",
+          "en": "hour; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "onze",
+          "en": "eleven"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "correspondance",
+          "en": "connection (trains)",
+          "word": "travel-060"
+        },
+        {
+          "fr": "Dijon",
+          "en": "Dijon (city in Burgundy)"
+        },
+        {
+          "fr": "trajet",
+          "en": "journey",
+          "word": "travel-065"
+        },
+        {
+          "fr": "dure",
+          "en": "lasts (durer)"
+        },
+        {
+          "fr": "combien",
+          "en": "how much; how many",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "temps",
+          "en": "time",
+          "word": "health-time-051"
+        },
+        {
+          "fr": "Environ",
+          "en": "about; approximately"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "Ça fait",
+          "en": "that comes to (faire)"
+        },
+        {
+          "fr": "soixante-douze",
+          "en": "seventy-two"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "Très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "voie",
+          "en": "track (at a station)",
+          "word": "travel-062"
+        },
+        {
+          "fr": "Voie",
+          "en": "track (at a station)",
+          "word": "travel-062"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "regardez",
+          "en": "look at (regarder, imperative)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "l’écran",
+          "en": "the screen",
+          "word": "work-063"
+        },
+        {
+          "fr": "ça",
+          "en": "that; it",
+          "word": "essentials-029"
+        },
+        {
+          "fr": "change",
+          "en": "changes (changer)",
+          "word": "verbs-079"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-p03",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Where to go this weekend",
+      "lines": [
+        {
+          "speaker": "Hugo",
+          "fr": "Tu veux aller à la mer ce week-end ?",
+          "en": "Do you want to go to the seaside this weekend?"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Il va pleuvoir samedi sur la côte. J’ai regardé la météo.",
+          "en": "It is going to rain on Saturday on the coast. I have looked at the forecast."
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Alors on peut monter à la montagne. Il fera plus froid, mais sec.",
+          "en": "Then we can go up to the mountains. It will be colder, but dry."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "D’accord. On prend ta voiture ou le train ?",
+          "en": "All right. Do we take your car or the train?"
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Le train. Il y a trop de circulation le vendredi soir.",
+          "en": "The train. There is too much traffic on Friday evenings."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Parfait. Je réserve deux places pour dix-huit heures.",
+          "en": "Perfect. I am booking two seats for six in the evening."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why does Léa turn down the seaside?",
+          "choices": [
+            "Rain is forecast there on Saturday.",
+            "The coast is too far from home.",
+            "She went there last weekend.",
+            "The trains are full on Saturday."
+          ],
+          "answer": 0,
+          "explanation": "« Il va pleuvoir samedi sur la côte »."
+        },
+        {
+          "question": "What will the mountain weather be like?",
+          "choices": [
+            "Colder but dry.",
+            "Warmer and dry.",
+            "Cold and wet.",
+            "The same as on the coast."
+          ],
+          "answer": 0,
+          "explanation": "« Il fera plus froid, mais sec »."
+        },
+        {
+          "question": "How do they decide to travel, and why?",
+          "choices": [
+            "By train, because of the traffic.",
+            "By car, because the train is full.",
+            "By car, because it is cheaper.",
+            "By train, because Hugo has no car."
+          ],
+          "answer": 0,
+          "explanation": "« Le train. Il y a trop de circulation le vendredi soir »."
+        },
+        {
+          "question": "What does Léa do at the end?",
+          "choices": [
+            "She books two seats for six in the evening.",
+            "She checks the forecast again.",
+            "She books a hotel room for Saturday.",
+            "She asks Hugo to drive."
+          ],
+          "answer": 0,
+          "explanation": "« Je réserve deux places pour dix-huit heures »."
+        }
+      ],
+      "topics": [
+        "futur-proche",
+        "futur-simple",
+        "comparison"
+      ],
+      "words": [
+        "nature-007",
+        "health-time-067",
+        "nature-070",
+        "verbs-011",
+        "nature-095",
+        "verbs-037",
+        "nature-008",
+        "qualities-026",
+        "qualities-031",
+        "travel-004",
+        "travel-006",
+        "travel-087",
+        "health-time-066",
+        "health-time-060",
+        "health-time-083"
+      ],
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "aller",
+          "en": "to go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        },
+        {
+          "fr": "ce",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        },
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "pleuvoir",
+          "en": "to rain (pleuvoir)"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "côte",
+          "en": "coast",
+          "word": "nature-070"
+        },
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "regardé",
+          "en": "looked at (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "météo",
+          "en": "weather forecast",
+          "word": "nature-095"
+        },
+        {
+          "fr": "Alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "peut",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "monter",
+          "en": "to go up; to get on (monter)",
+          "word": "verbs-037"
+        },
+        {
+          "fr": "montagne",
+          "en": "mountain",
+          "word": "nature-008"
+        },
+        {
+          "fr": "fera",
+          "en": "will be (weather); will do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "froid",
+          "en": "cold",
+          "word": "qualities-026"
+        },
+        {
+          "fr": "sec",
+          "en": "dry",
+          "word": "qualities-031"
+        },
+        {
+          "fr": "D’accord",
+          "en": "all right; agreed",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "prend",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "ta",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "Il y a",
+          "en": "there is; there are; ago"
+        },
+        {
+          "fr": "trop",
+          "en": "too; too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "circulation",
+          "en": "traffic",
+          "word": "travel-087"
+        },
+        {
+          "fr": "vendredi",
+          "en": "Friday",
+          "word": "health-time-066"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect"
+        },
+        {
+          "fr": "réserve",
+          "en": "am booking (réserver)"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "places",
+          "en": "seats; places"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "dix-huit",
+          "en": "eighteen"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-p04",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "The suitcase that stayed behind",
+      "lines": [
+        {
+          "speaker": "L’employée",
+          "fr": "Bonjour, vous avez perdu un bagage ?",
+          "en": "Hello, have you lost a piece of luggage?"
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Oui, ma valise n’est pas arrivée avec le vol de Madrid.",
+          "en": "Yes, my suitcase did not arrive with the flight from Madrid."
+        },
+        {
+          "speaker": "L’employée",
+          "fr": "Comment est votre valise ?",
+          "en": "What does your suitcase look like?"
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Grise, assez grande, avec une étiquette rouge.",
+          "en": "Gray, quite big, with a red label."
+        },
+        {
+          "speaker": "L’employée",
+          "fr": "Je regarde dans le système… Elle est encore à Madrid.",
+          "en": "I am looking in the system… It is still in Madrid."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Et quand est-ce qu’elle arrivera ?",
+          "en": "And when will it arrive?"
+        },
+        {
+          "speaker": "L’employée",
+          "fr": "Demain matin. Nous la livrerons à votre hôtel avant midi.",
+          "en": "Tomorrow morning. We will deliver it to your hotel before noon."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Merci. Je vous donne l’adresse.",
+          "en": "Thank you. I will give you the address."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where is Marc’s suitcase?",
+          "choices": [
+            "Still in Madrid.",
+            "At his hotel in the city.",
+            "On the next flight.",
+            "At the customs desk."
+          ],
+          "answer": 0,
+          "explanation": "« Elle est encore à Madrid »."
+        },
+        {
+          "question": "When will Marc get his suitcase?",
+          "choices": [
+            "Tomorrow morning, before noon.",
+            "Tonight, before midnight.",
+            "Tomorrow evening.",
+            "In two days."
+          ],
+          "answer": 0,
+          "explanation": "« Demain matin. Nous la livrerons à votre hôtel avant midi »."
+        },
+        {
+          "question": "What does the airline do with the suitcase?",
+          "choices": [
+            "They bring it to his hotel.",
+            "They ask him to come back to the airport.",
+            "They send it back to Madrid.",
+            "They keep it at the counter for a week."
+          ],
+          "answer": 0,
+          "explanation": "« Nous la livrerons à votre hôtel »."
+        },
+        {
+          "question": "What does the suitcase look like?",
+          "choices": [
+            "Gray and quite big, with a red label.",
+            "Gray and small, with a red label.",
+            "Red and quite big, with a gray label.",
+            "Black, with his name on it."
+          ],
+          "answer": 0,
+          "explanation": "« Grise, assez grande, avec une étiquette rouge »."
+        }
+      ],
+      "topics": [
+        "passe-compose-etre",
+        "futur-simple",
+        "questions"
+      ],
+      "words": [
+        "verbs-081",
+        "travel-055",
+        "travel-054",
+        "verbs-032",
+        "travel-068",
+        "essentials-098",
+        "qualities-001",
+        "verbs-011",
+        "health-time-059",
+        "travel-019",
+        "travel-030",
+        "verbs-024"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "perdu",
+          "en": "lost (perdre)",
+          "word": "verbs-081"
+        },
+        {
+          "fr": "un",
+          "en": "a; an"
+        },
+        {
+          "fr": "bagage",
+          "en": "piece of luggage",
+          "word": "travel-055"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "valise",
+          "en": "suitcase",
+          "word": "travel-054"
+        },
+        {
+          "fr": "n’est",
+          "en": "is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "arrivée",
+          "en": "arrived (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "vol",
+          "en": "flight",
+          "word": "travel-068"
+        },
+        {
+          "fr": "Madrid",
+          "en": "Madrid"
+        },
+        {
+          "fr": "Comment",
+          "en": "how; what … like",
+          "word": "essentials-036"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "Grise",
+          "en": "gray"
+        },
+        {
+          "fr": "assez",
+          "en": "quite; enough",
+          "word": "essentials-098"
+        },
+        {
+          "fr": "grande",
+          "en": "big; large",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "étiquette",
+          "en": "label; tag"
+        },
+        {
+          "fr": "rouge",
+          "en": "red"
+        },
+        {
+          "fr": "regarde",
+          "en": "am looking (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "système",
+          "en": "system"
+        },
+        {
+          "fr": "encore",
+          "en": "still; again",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "est-ce qu’",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "arrivera",
+          "en": "will arrive (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "Demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "livrerons",
+          "en": "will deliver (livrer)"
+        },
+        {
+          "fr": "hôtel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "midi",
+          "en": "noon; midday"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "donne",
+          "en": "gives (donner)",
+          "word": "verbs-024"
+        },
+        {
+          "fr": "l’adresse",
+          "en": "the address",
+          "word": "travel-030"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-p05",
+      "level": "A2",
+      "kind": "text",
+      "title": "Postcard from Biarritz",
+      "lines": [
+        {
+          "fr": "Chère Mamie, nous sommes arrivés à Biarritz mardi soir, après huit heures de route.",
+          "en": "Dear Granny, we arrived in Biarritz on Tuesday evening, after eight hours on the road."
+        },
+        {
+          "fr": "L’hôtel est petit mais très propre, et notre chambre donne sur le port.",
+          "en": "The hotel is small but very clean, and our room looks out on the harbor."
+        },
+        {
+          "fr": "Il a plu pendant deux jours, alors nous avons visité le musée de la mer.",
+          "en": "It rained for two days, so we visited the sea museum."
+        },
+        {
+          "fr": "Depuis jeudi, il fait beau et les enfants passent leurs journées sur la plage.",
+          "en": "Since Thursday the weather has been fine and the children spend their days on the beach."
+        },
+        {
+          "fr": "Nous rentrons dimanche par le train de quinze heures. Je t’embrasse, Julie.",
+          "en": "We are coming home on Sunday on the three o’clock train. Love, Julie."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How did the family travel to Biarritz?",
+          "choices": [
+            "By road, for eight hours.",
+            "By train, for eight hours.",
+            "By plane on Tuesday evening.",
+            "By boat, arriving at the harbor."
+          ],
+          "answer": 0,
+          "explanation": "« après huit heures de route »."
+        },
+        {
+          "question": "What did they do while it was raining?",
+          "choices": [
+            "They visited a museum.",
+            "They stayed at the hotel.",
+            "They walked along the harbor.",
+            "They went to the beach anyway."
+          ],
+          "answer": 0,
+          "explanation": "« Il a plu pendant deux jours, alors nous avons visité le musée de la mer »."
+        },
+        {
+          "question": "What has the weather been like since Thursday?",
+          "choices": [
+            "Fine weather.",
+            "Rainy every afternoon.",
+            "Cold and windy.",
+            "Stormy at night."
+          ],
+          "answer": 0,
+          "explanation": "« Depuis jeudi, il fait beau »."
+        },
+        {
+          "question": "When are they coming home?",
+          "choices": [
+            "On Sunday, on the three o’clock train.",
+            "On Sunday, on the five o’clock train.",
+            "On Thursday, by car.",
+            "On Saturday, on the three o’clock train."
+          ],
+          "answer": 0,
+          "explanation": "« Nous rentrons dimanche par le train de quinze heures »."
+        }
+      ],
+      "topics": [
+        "passe-compose-etre",
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-032",
+        "health-time-063",
+        "health-time-060",
+        "health-time-089",
+        "health-time-052",
+        "travel-003",
+        "travel-019",
+        "qualities-002",
+        "qualities-029",
+        "home-006",
+        "verbs-024",
+        "travel-093",
+        "health-time-055",
+        "travel-073",
+        "nature-007",
+        "health-time-065",
+        "qualities-005",
+        "people-004",
+        "verbs-029",
+        "nature-068",
+        "health-time-068",
+        "travel-006",
+        "health-time-093"
+      ],
+      "gloss": [
+        {
+          "fr": "Chère",
+          "en": "Dear (in a letter)"
+        },
+        {
+          "fr": "Mamie",
+          "en": "granny"
+        },
+        {
+          "fr": "sommes arrivés",
+          "en": "arrived (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "Biarritz",
+          "en": "Biarritz (seaside town on the Atlantic coast)"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "route",
+          "en": "road",
+          "word": "travel-003"
+        },
+        {
+          "fr": "L’hôtel",
+          "en": "the hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "petit",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "propre",
+          "en": "clean",
+          "word": "qualities-029"
+        },
+        {
+          "fr": "notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom; hotel room",
+          "word": "home-006"
+        },
+        {
+          "fr": "donne sur",
+          "en": "looks out on (donner sur)"
+        },
+        {
+          "fr": "port",
+          "en": "harbor; port",
+          "word": "travel-093"
+        },
+        {
+          "fr": "a plu",
+          "en": "it rained (pleuvoir)"
+        },
+        {
+          "fr": "pendant",
+          "en": "during; for"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "jours",
+          "en": "days",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "visité",
+          "en": "visited (visiter)"
+        },
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        },
+        {
+          "fr": "Depuis",
+          "en": "since"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "fait beau",
+          "en": "the weather is fine (faire beau)"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "passent",
+          "en": "spend (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "leurs",
+          "en": "their",
+          "word": "essentials-054"
+        },
+        {
+          "fr": "journées",
+          "en": "days (whole days)"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "plage",
+          "en": "beach",
+          "word": "nature-068"
+        },
+        {
+          "fr": "rentrons",
+          "en": "are coming home (rentrer)"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "par",
+          "en": "by; through",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "t’embrasse",
+          "en": "send you a kiss (embrasser)"
+        },
+        {
+          "fr": "Julie",
+          "en": "Julie (first name)"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-p06",
+      "level": "A2",
+      "kind": "text",
+      "title": "Announcement at the station",
+      "lines": [
+        {
+          "fr": "Mesdames et messieurs, votre attention, s’il vous plaît.",
+          "en": "Ladies and gentlemen, your attention, please."
+        },
+        {
+          "fr": "Le train pour Toulouse, départ prévu à quatorze heures dix, partira avec vingt minutes de retard.",
+          "en": "The train to Toulouse, scheduled to leave at ten past two, will leave twenty minutes late."
+        },
+        {
+          "fr": "Il partira de la voie sept et non de la voie deux.",
+          "en": "It will leave from track seven and not from track two."
+        },
+        {
+          "fr": "Les voyageurs pour Montauban doivent changer à Toulouse.",
+          "en": "Passengers for Montauban must change in Toulouse."
+        },
+        {
+          "fr": "Un service de boissons chaudes est ouvert près du guichet.",
+          "en": "A hot drinks service is open next to the ticket window."
+        },
+        {
+          "fr": "Nous vous remercions de votre patience.",
+          "en": "Thank you for your patience."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How late will the Toulouse train be?",
+          "choices": [
+            "Twenty minutes.",
+            "Ten minutes.",
+            "Two hours.",
+            "Fourteen minutes."
+          ],
+          "answer": 0,
+          "explanation": "« partira avec vingt minutes de retard »."
+        },
+        {
+          "question": "What else has changed?",
+          "choices": [
+            "The track it leaves from.",
+            "The destination of the train.",
+            "The price of the tickets.",
+            "The place where tickets are sold."
+          ],
+          "answer": 0,
+          "explanation": "« Il partira de la voie sept et non de la voie deux »."
+        },
+        {
+          "question": "What must passengers for Montauban do?",
+          "choices": [
+            "Change trains in Toulouse.",
+            "Take the train on track two.",
+            "Wait for a later announcement.",
+            "Buy a new ticket at the window."
+          ],
+          "answer": 0,
+          "explanation": "« Les voyageurs pour Montauban doivent changer à Toulouse »."
+        },
+        {
+          "question": "What is open next to the ticket window?",
+          "choices": [
+            "A hot drinks service.",
+            "A left-luggage office.",
+            "A tourist office.",
+            "A waiting room."
+          ],
+          "answer": 0,
+          "explanation": "« Un service de boissons chaudes est ouvert près du guichet »."
+        }
+      ],
+      "topics": [
+        "futur-simple",
+        "prepositions-places",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-006",
+        "travel-057",
+        "health-time-052",
+        "health-time-091",
+        "health-time-094",
+        "health-time-053",
+        "travel-059",
+        "verbs-031",
+        "travel-062",
+        "health-time-088",
+        "health-time-083",
+        "verbs-079",
+        "food-071",
+        "qualities-025",
+        "qualities-036",
+        "travel-063"
+      ],
+      "gloss": [
+        {
+          "fr": "Mesdames",
+          "en": "ladies"
+        },
+        {
+          "fr": "messieurs",
+          "en": "gentlemen"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "attention",
+          "en": "attention"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "Toulouse",
+          "en": "Toulouse (city in the south-west of France)"
+        },
+        {
+          "fr": "départ",
+          "en": "departure",
+          "word": "travel-057"
+        },
+        {
+          "fr": "prévu",
+          "en": "planned; scheduled"
+        },
+        {
+          "fr": "quatorze",
+          "en": "fourteen"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "partira",
+          "en": "will leave (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "retard",
+          "en": "delay; lateness",
+          "word": "travel-059"
+        },
+        {
+          "fr": "voie",
+          "en": "track (at a station)",
+          "word": "travel-062"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "non",
+          "en": "not; no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "voyageurs",
+          "en": "passengers; travelers"
+        },
+        {
+          "fr": "Montauban",
+          "en": "Montauban (town near Toulouse)"
+        },
+        {
+          "fr": "doivent",
+          "en": "must (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "changer",
+          "en": "to change (changer)",
+          "word": "verbs-079"
+        },
+        {
+          "fr": "Un",
+          "en": "a; an"
+        },
+        {
+          "fr": "service",
+          "en": "service; stand"
+        },
+        {
+          "fr": "boissons",
+          "en": "drinks",
+          "word": "food-071"
+        },
+        {
+          "fr": "chaudes",
+          "en": "hot",
+          "word": "qualities-025"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouvert",
+          "en": "open",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "guichet",
+          "en": "ticket window",
+          "word": "travel-063"
+        },
+        {
+          "fr": "remercions",
+          "en": "thank (remercier)"
+        },
+        {
+          "fr": "patience",
+          "en": "patience"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-p07",
+      "level": "A2",
+      "kind": "text",
+      "title": "Running late",
+      "lines": [
+        {
+          "fr": "Salut Thomas, je suis dans le bus, mais il y a un embouteillage à la sortie de l’autoroute.",
+          "en": "Hi Thomas, I am on the bus, but there is a traffic jam at the highway exit."
+        },
+        {
+          "fr": "Je vais arriver à la gare vers dix-neuf heures, donc une demi-heure plus tard que prévu.",
+          "en": "I am going to get to the station around seven in the evening, so half an hour later than planned."
+        },
+        {
+          "fr": "Ne m’attends pas devant l’entrée : va directement au restaurant, je te rejoins là-bas.",
+          "en": "Do not wait for me in front of the entrance: go straight to the restaurant, I will join you there."
+        },
+        {
+          "fr": "Si le bus ne bouge pas dans dix minutes, je prendrai un taxi.",
+          "en": "If the bus does not move within ten minutes, I will take a taxi."
+        },
+        {
+          "fr": "Désolé, et à tout à l’heure !",
+          "en": "Sorry, and see you soon!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is the writer late?",
+          "choices": [
+            "There is a traffic jam.",
+            "He missed his bus.",
+            "The bus broke down.",
+            "He got off at the wrong stop."
+          ],
+          "answer": 0,
+          "explanation": "« il y a un embouteillage à la sortie de l’autoroute »."
+        },
+        {
+          "question": "How late will he be?",
+          "choices": [
+            "About half an hour.",
+            "About ten minutes.",
+            "About two hours.",
+            "Nineteen minutes."
+          ],
+          "answer": 0,
+          "explanation": "« une demi-heure plus tard que prévu »."
+        },
+        {
+          "question": "What does he ask Thomas to do?",
+          "choices": [
+            "Go straight to the restaurant.",
+            "Wait for him at the entrance.",
+            "Meet him at the bus stop.",
+            "Order a taxi for him."
+          ],
+          "answer": 0,
+          "explanation": "« Ne m’attends pas devant l’entrée : va directement au restaurant »."
+        },
+        {
+          "question": "What will he do if the bus does not move?",
+          "choices": [
+            "Take a taxi.",
+            "Walk to the restaurant.",
+            "Take the metro.",
+            "Wait for the next bus."
+          ],
+          "answer": 0,
+          "explanation": "« Si le bus ne bouge pas dans dix minutes, je prendrai un taxi »."
+        }
+      ],
+      "topics": [
+        "futur-proche",
+        "futur-simple",
+        "imperative",
+        "si-clauses"
+      ],
+      "words": [
+        "travel-005",
+        "travel-088",
+        "travel-082",
+        "verbs-032",
+        "travel-011",
+        "essentials-069",
+        "health-time-052",
+        "verbs-041",
+        "essentials-067",
+        "travel-020",
+        "health-time-091",
+        "health-time-053",
+        "verbs-023",
+        "travel-009"
+      ],
+      "gloss": [
+        {
+          "fr": "Salut",
+          "en": "hi",
+          "word": "essentials-006"
+        },
+        {
+          "fr": "Thomas",
+          "en": "Thomas (first name)"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "il y a",
+          "en": "there is; there are; ago"
+        },
+        {
+          "fr": "un",
+          "en": "a; an"
+        },
+        {
+          "fr": "embouteillage",
+          "en": "traffic jam",
+          "word": "travel-088"
+        },
+        {
+          "fr": "sortie",
+          "en": "exit; way out"
+        },
+        {
+          "fr": "l’autoroute",
+          "en": "the highway",
+          "word": "travel-082"
+        },
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "arriver",
+          "en": "to arrive (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        },
+        {
+          "fr": "vers",
+          "en": "towards; around",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "dix-neuf",
+          "en": "nineteen"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "donc",
+          "en": "so; therefore",
+          "word": "essentials-078"
+        },
+        {
+          "fr": "demi-heure",
+          "en": "half an hour"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "tard",
+          "en": "late"
+        },
+        {
+          "fr": "prévu",
+          "en": "planned; scheduled"
+        },
+        {
+          "fr": "m’attends",
+          "en": "wait for me (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "l’entrée",
+          "en": "the entrance"
+        },
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "directement",
+          "en": "straight; directly"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "fr": "rejoins",
+          "en": "will join you (rejoindre)"
+        },
+        {
+          "fr": "là-bas",
+          "en": "over there"
+        },
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "bouge",
+          "en": "moves (bouger)"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "prendrai",
+          "en": "will take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "taxi",
+          "en": "taxi",
+          "word": "travel-009"
+        },
+        {
+          "fr": "Désolé",
+          "en": "sorry"
+        },
+        {
+          "fr": "tout à l’heure",
+          "en": "in a little while"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-p08",
+      "level": "A2",
+      "kind": "text",
+      "title": "A day in the mountains",
+      "lines": [
+        {
+          "fr": "Nous sommes partis du refuge à six heures, avec une lampe et deux bouteilles d’eau.",
+          "en": "We left the refuge at six o’clock, with a lamp and two bottles of water."
+        },
+        {
+          "fr": "Le sentier montait pendant deux heures, puis nous avons marché dans la neige.",
+          "en": "The path went up for two hours, then we walked in the snow."
+        },
+        {
+          "fr": "En haut, il faisait très froid et le vent soufflait fort.",
+          "en": "At the top it was very cold and the wind was blowing hard."
+        },
+        {
+          "fr": "Nous avons mangé nos sandwichs derrière un rocher, avec une belle vue sur la vallée.",
+          "en": "We ate our sandwiches behind a rock, with a beautiful view over the valley."
+        },
+        {
+          "fr": "À la descente, Léa est tombée et s’est fait mal au genou.",
+          "en": "On the way down, Léa fell and hurt her knee."
+        },
+        {
+          "fr": "Nous sommes rentrés au village à cinq heures, fatigués mais contents.",
+          "en": "We got back to the village at five o’clock, tired but happy."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How long did the path climb?",
+          "choices": [
+            "For two hours.",
+            "For six hours.",
+            "Until they reached the snow line.",
+            "All the way down to the valley."
+          ],
+          "answer": 0,
+          "explanation": "« Le sentier montait pendant deux heures »."
+        },
+        {
+          "question": "What was the weather like at the top?",
+          "choices": [
+            "Very cold and windy.",
+            "Sunny and warm.",
+            "Rainy but calm.",
+            "Foggy and mild."
+          ],
+          "answer": 0,
+          "explanation": "« il faisait très froid et le vent soufflait fort »."
+        },
+        {
+          "question": "What happened to Léa?",
+          "choices": [
+            "She fell and hurt her knee on the way down.",
+            "She hurt her knee at the top, in the snow.",
+            "She got lost behind a rock.",
+            "She was too tired to reach the top."
+          ],
+          "answer": 0,
+          "explanation": "« À la descente, Léa est tombée et s’est fait mal au genou »."
+        },
+        {
+          "question": "How did they feel at the end of the day?",
+          "choices": [
+            "Tired but happy.",
+            "Tired and disappointed.",
+            "Cold and hungry.",
+            "Happy but still hungry."
+          ],
+          "answer": 0,
+          "explanation": "« fatigués mais contents »."
+        }
+      ],
+      "topics": [
+        "passe-compose-etre",
+        "imparfait",
+        "reflexive",
+        "pc-vs-imparfait"
+      ],
+      "words": [
+        "verbs-031",
+        "health-time-087",
+        "health-time-052",
+        "home-039",
+        "health-time-083",
+        "food-090",
+        "food-001",
+        "verbs-037",
+        "verbs-039",
+        "nature-004",
+        "qualities-015",
+        "qualities-026",
+        "nature-003",
+        "qualities-023",
+        "verbs-059",
+        "food-060",
+        "essentials-068",
+        "nature-074",
+        "qualities-005",
+        "nature-063",
+        "health-time-023",
+        "travel-047",
+        "health-time-086",
+        "qualities-065"
+      ],
+      "gloss": [
+        {
+          "fr": "sommes partis",
+          "en": "left (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "refuge",
+          "en": "mountain refuge; hut"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "lampe",
+          "en": "lamp; torch",
+          "word": "home-039"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "bouteilles",
+          "en": "bottles",
+          "word": "food-090"
+        },
+        {
+          "fr": "d’eau",
+          "en": "of water"
+        },
+        {
+          "fr": "sentier",
+          "en": "path; trail"
+        },
+        {
+          "fr": "montait",
+          "en": "went up (monter)",
+          "word": "verbs-037"
+        },
+        {
+          "fr": "pendant",
+          "en": "during; for"
+        },
+        {
+          "fr": "puis",
+          "en": "then"
+        },
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "marché",
+          "en": "walked (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "neige",
+          "en": "snow",
+          "word": "nature-004"
+        },
+        {
+          "fr": "haut",
+          "en": "top; high",
+          "word": "qualities-015"
+        },
+        {
+          "fr": "faisait",
+          "en": "was (weather); was doing (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "froid",
+          "en": "cold",
+          "word": "qualities-026"
+        },
+        {
+          "fr": "vent",
+          "en": "wind",
+          "word": "nature-003"
+        },
+        {
+          "fr": "soufflait",
+          "en": "was blowing (souffler)"
+        },
+        {
+          "fr": "fort",
+          "en": "hard; strongly",
+          "word": "qualities-023"
+        },
+        {
+          "fr": "mangé",
+          "en": "ate (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "sandwichs",
+          "en": "sandwiches",
+          "word": "food-060"
+        },
+        {
+          "fr": "derrière",
+          "en": "behind",
+          "word": "essentials-068"
+        },
+        {
+          "fr": "un",
+          "en": "a; an"
+        },
+        {
+          "fr": "rocher",
+          "en": "rock",
+          "word": "nature-074"
+        },
+        {
+          "fr": "belle",
+          "en": "beautiful",
+          "word": "qualities-005"
+        },
+        {
+          "fr": "vue",
+          "en": "view"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "vallée",
+          "en": "valley",
+          "word": "nature-063"
+        },
+        {
+          "fr": "descente",
+          "en": "way down; descent"
+        },
+        {
+          "fr": "Léa",
+          "en": "Léa (first name)"
+        },
+        {
+          "fr": "est tombée",
+          "en": "fell (tomber)"
+        },
+        {
+          "fr": "s’est fait mal",
+          "en": "hurt herself (se faire mal)"
+        },
+        {
+          "fr": "genou",
+          "en": "knee",
+          "word": "health-time-023"
+        },
+        {
+          "fr": "sommes rentrés",
+          "en": "got back (rentrer)"
+        },
+        {
+          "fr": "village",
+          "en": "village",
+          "word": "travel-047"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "fatigués",
+          "en": "tired"
+        },
+        {
+          "fr": "contents",
+          "en": "happy; pleased",
+          "word": "qualities-065"
+        }
+      ]
+    },
+    {
+      "id": "a2-travel-p09",
+      "level": "A2",
+      "kind": "text",
+      "title": "Boat trip to the island",
+      "lines": [
+        {
+          "fr": "Excursion à l’île de Bréhat : rendez-vous à neuf heures devant l’office de tourisme.",
+          "en": "Trip to the island of Bréhat: meeting point at nine o’clock in front of the tourist office."
+        },
+        {
+          "fr": "Le bateau part du port à neuf heures trente et revient à dix-sept heures.",
+          "en": "The boat leaves the harbor at half past nine and comes back at five in the afternoon."
+        },
+        {
+          "fr": "Le billet coûte vingt-deux euros pour les adultes et douze euros pour les enfants.",
+          "en": "The ticket costs twenty-two euros for adults and twelve euros for children."
+        },
+        {
+          "fr": "Prenez un pull : il fait souvent frais sur le bateau, même au mois d’août.",
+          "en": "Take a pullover: it is often chilly on the boat, even in August."
+        },
+        {
+          "fr": "En cas de tempête, l’excursion est annulée et l’argent est rendu au guichet.",
+          "en": "In case of a storm, the trip is canceled and the money is refunded at the ticket window."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where do people meet?",
+          "choices": [
+            "In front of the tourist office.",
+            "At the harbor, on the boat.",
+            "At the ticket window.",
+            "On the island of Bréhat."
+          ],
+          "answer": 0,
+          "explanation": "« rendez-vous à neuf heures devant l’office de tourisme », while the boat leaves from the port."
+        },
+        {
+          "question": "How much does a child pay?",
+          "choices": [
+            "Twelve euros.",
+            "Twenty-two euros.",
+            "Nine euros.",
+            "Nothing."
+          ],
+          "answer": 0,
+          "explanation": "« douze euros pour les enfants »."
+        },
+        {
+          "question": "Why should you take a pullover?",
+          "choices": [
+            "It is often chilly on the boat.",
+            "It often rains on the island.",
+            "The trip starts very early.",
+            "There is no shelter on the island."
+          ],
+          "answer": 0,
+          "explanation": "« il fait souvent frais sur le bateau »."
+        },
+        {
+          "question": "What happens if there is a storm?",
+          "choices": [
+            "The trip is canceled and the money refunded.",
+            "The boat leaves later the same day.",
+            "The trip costs less.",
+            "The tickets are valid another day."
+          ],
+          "answer": 0,
+          "explanation": "« l’excursion est annulée et l’argent est rendu au guichet »."
+        }
+      ],
+      "topics": [
+        "imperative",
+        "prepositions-places",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-099",
+        "nature-069",
+        "health-time-090",
+        "health-time-052",
+        "essentials-067",
+        "travel-079",
+        "travel-092",
+        "verbs-031",
+        "travel-093",
+        "health-time-095",
+        "verbs-035",
+        "travel-015",
+        "verbs-058",
+        "health-time-094",
+        "health-time-092",
+        "people-031",
+        "people-004",
+        "verbs-023",
+        "people-069",
+        "essentials-091",
+        "qualities-028",
+        "health-time-057",
+        "health-time-076",
+        "nature-088",
+        "travel-063"
+      ],
+      "gloss": [
+        {
+          "fr": "Excursion",
+          "en": "trip; excursion",
+          "word": "travel-099"
+        },
+        {
+          "fr": "l’île",
+          "en": "the island",
+          "word": "nature-069"
+        },
+        {
+          "fr": "Bréhat",
+          "en": "Bréhat (small island off Brittany)"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "meeting point; appointment"
+        },
+        {
+          "fr": "neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "l’office de tourisme",
+          "en": "the tourist information office",
+          "word": "travel-079"
+        },
+        {
+          "fr": "bateau",
+          "en": "boat",
+          "word": "travel-092"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "port",
+          "en": "harbor; port",
+          "word": "travel-093"
+        },
+        {
+          "fr": "trente",
+          "en": "thirty",
+          "word": "health-time-095"
+        },
+        {
+          "fr": "revient",
+          "en": "comes back (revenir)",
+          "word": "verbs-035"
+        },
+        {
+          "fr": "dix-sept",
+          "en": "seventeen"
+        },
+        {
+          "fr": "billet",
+          "en": "ticket",
+          "word": "travel-015"
+        },
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "vingt-deux",
+          "en": "twenty-two"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "adultes",
+          "en": "adults",
+          "word": "people-031"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "Prenez",
+          "en": "take (prendre, imperative)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "un",
+          "en": "a; an"
+        },
+        {
+          "fr": "pull",
+          "en": "pullover; sweater",
+          "word": "people-069"
+        },
+        {
+          "fr": "fait",
+          "en": "is (weather); does; makes (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "frais",
+          "en": "chilly; fresh",
+          "word": "qualities-028"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "même",
+          "en": "even"
+        },
+        {
+          "fr": "mois",
+          "en": "months; month",
+          "word": "health-time-057"
+        },
+        {
+          "fr": "d’août",
+          "en": "of August"
+        },
+        {
+          "fr": "En cas de",
+          "en": "in case of"
+        },
+        {
+          "fr": "tempête",
+          "en": "storm",
+          "word": "nature-088"
+        },
+        {
+          "fr": "l’excursion",
+          "en": "the trip; the excursion",
+          "word": "travel-099"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "annulée",
+          "en": "canceled (annuler)"
+        },
+        {
+          "fr": "l’argent",
+          "en": "the money"
+        },
+        {
+          "fr": "rendu",
+          "en": "given back (rendre)"
+        },
+        {
+          "fr": "guichet",
+          "en": "ticket window",
+          "word": "travel-063"
+        }
+      ]
+    }
+  ]
+}

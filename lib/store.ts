@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, ReviewEarlyInput, Settings, Snapshot, Stats, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, ReviewEarlyInput, Settings, Snapshot, Stats, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -20,6 +20,7 @@ export interface Store {
   setSettings(newPerDay: number): Settings;
   addExtraWords(input: ExtraWordsInput): Snapshot;
   reviewEarly(input: ReviewEarlyInput): Snapshot;
+  addWord(input: AddWordInput): AddWordResult;
   browse(direction: Direction, deck: string): BrowseWord[];
   exportData(): unknown;
   close(): void;
@@ -160,12 +161,13 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         extra INTEGER NOT NULL CHECK (extra > 0),
         PRIMARY KEY (direction, day)
       );
-      -- Makes a retried extra-words or early-review request apply once.
+      -- Makes a retried extra-words, early-review or added-word request apply once; result replays its answer.
       CREATE TABLE IF NOT EXISTS vocabulary_requests (
         request_id TEXT PRIMARY KEY,
         kind TEXT NOT NULL,
         direction TEXT NOT NULL,
-        created_at TEXT NOT NULL
+        created_at TEXT NOT NULL,
+        result TEXT
       );
       CREATE INDEX IF NOT EXISTS grades_direction_sequence ON grades(direction, sequence DESC);
       CREATE INDEX IF NOT EXISTS grades_direction_time ON grades(direction, graded_at);
@@ -173,6 +175,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     db.query('INSERT OR IGNORE INTO settings VALUES (1, ?)').run(Math.min(30, words.length));
     const hasColumn = (table: string, name: string) => db.query<{ name: string }, []>(`PRAGMA table_info(${table})`).all().some((column) => column.name === name);
     if (!hasColumn('grades', 'queue_before_json')) db.exec('ALTER TABLE grades ADD COLUMN queue_before_json TEXT');
+    if (!hasColumn('vocabulary_requests', 'result')) db.exec('ALTER TABLE vocabulary_requests ADD COLUMN result TEXT');
     const at = now();
     const day = studyDay(at);
     const putQueue = db.query('INSERT OR REPLACE INTO practice_queues (direction, state_json) VALUES (?, ?)');
@@ -232,8 +235,8 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
   `);
   const readExtra = db.query<{ extra: number }, [Direction, string]>('SELECT extra FROM extra_allowance WHERE direction = ? AND day = ?');
   const addExtra = db.query('INSERT INTO extra_allowance (direction, day, extra) VALUES (?, ?, ?) ON CONFLICT (direction, day) DO UPDATE SET extra = extra + excluded.extra');
-  const requestById = db.query<{ kind: string; direction: string }, [string]>('SELECT kind, direction FROM vocabulary_requests WHERE request_id = ?');
-  const recordRequest = db.query('INSERT INTO vocabulary_requests (request_id, kind, direction, created_at) VALUES (?, ?, ?, ?)');
+  const requestById = db.query<{ kind: string; direction: string; result: string | null }, [string]>('SELECT kind, direction, result FROM vocabulary_requests WHERE request_id = ?');
+  const recordRequest = db.query('INSERT INTO vocabulary_requests (request_id, kind, direction, created_at, result) VALUES (?, ?, ?, ?, ?)');
   const historyForDirection = db.query<{ word_id: string; misses: number; last: string }, [Direction]>(`
     SELECT word_id, SUM(known = 0) AS misses, MAX(graded_at) AS last FROM grades
     WHERE direction = ? AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)
@@ -251,7 +254,7 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       if (previous.kind !== kind || previous.direction !== direction) throw new StoreError('This request ID was already used for something else. Reload and try again.', 409);
       return false;
     }
-    recordRequest.run(requestId, kind, direction, at.toISOString());
+    recordRequest.run(requestId, kind, direction, at.toISOString(), null);
     return true;
   }
 
@@ -500,6 +503,46 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     }).immediate();
   }
 
+  // Tapping a word in a French text adds it to the fr-en deck. A word the learner has never met is admitted today
+  // on its own extra allowance, so it costs the daily new-word budget nothing; a finished word becomes due now.
+  function addWord(input: AddWordInput): AddWordResult {
+    const direction: Direction = 'fr-en';
+    if (typeof input?.wordId !== 'string' || !wordById.has(input.wordId)) throw new StoreError('That word is not in Echo’s vocabulary.', 404);
+    if (typeof input.requestId !== 'string' || !input.requestId.trim()) throw new StoreError('This request is missing its ID. Reload and try again.');
+    const kind = `add-word:${input.wordId}`;
+    return db.transaction(() => {
+      const at = now();
+      const previous = requestById.get(input.requestId);
+      if (previous) {
+        if (previous.kind !== kind || previous.direction !== direction || !previous.result) throw new StoreError('This request ID was already used for something else. Reload and try again.', 409);
+        return { status: previous.result as AddWordResult['status'] };
+      }
+      const row = rowForWord.get(direction, input.wordId);
+      let status: AddWordResult['status'];
+      if (!row) {
+        addExtra.run(direction, studyDay(at), 1);
+        save({
+          direction, word_id: input.wordId, introduced_day: studyDay(at),
+          active: 1, successes: 0, cycle_misses: 0, completed_day: null,
+          due_at: at.getTime(), fsrs_json: JSON.stringify(createEmptyCard(at)), version: 1,
+        });
+        status = 'added';
+      } else if (row.active === 1 || row.due_at <= at.getTime()) {
+        status = 'already-practising';
+      } else {
+        save({ ...row, due_at: at.getTime(), version: row.version + 1 });
+        status = 'made-due';
+      }
+      if (status !== 'already-practising') {
+        const queue = loadQueue(direction, at);
+        reconcileQueue(queue, rowsForDirection.all(direction), at, true);
+        saveQueue.run(JSON.stringify(queue), direction);
+      }
+      recordRequest.run(input.requestId, kind, direction, at.toISOString(), status);
+      return { status };
+    }).immediate();
+  }
+
   function grade(input: GradeInput): Snapshot {
     validateSelection(input.direction, input.deck);
     if (!Number.isSafeInteger(input.version) || input.version < 1 || typeof input.known !== 'boolean' || typeof input.requestId !== 'string' || !input.requestId.trim()) {
@@ -634,5 +677,5 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     }))();
   }
 
-  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, browse, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, addWord, browse, exportData, close: () => db.close() };
 }

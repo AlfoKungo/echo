@@ -52,9 +52,12 @@ function answer(snapshot: Snapshot, known: boolean, requestId = `answer-${++requ
   return { direction: snapshot.direction, deck: snapshot.deck, wordId: snapshot.current.id, version: snapshot.current.version, known, requestId };
 }
 function progress(store: Store): Progress { return store.exportData() as Progress; }
+function expectStatus(action: () => unknown, status: number): void {
+  try { action(); throw new Error(`Expected HTTP ${status}.`); }
+  catch (error) { expect(error).toBeInstanceOf(StoreError); expect((error as StoreError).status).toBe(status); }
+}
 function expectConflict(action: () => unknown): void {
-  try { action(); throw new Error('Expected a conflict.'); }
-  catch (error) { expect(error).toBeInstanceOf(StoreError); expect((error as StoreError).status).toBe(409); }
+  expectStatus(action, 409);
 }
 
 describe('working-deck counts and admission', () => {
@@ -565,5 +568,49 @@ describe('extra practice', () => {
     expect(list.get('travel-001')).toMatchObject({ misses: 0, status: 'scheduled' });
     expect(list.get('travel-001')!.lastStudied).not.toBeNull();
     expect(list.get('food-002')).toMatchObject({ misses: 0, lastStudied: null, status: 'new' });
+  });
+});
+
+describe('adding a word tapped in a French text', () => {
+  test('a word never met joins today on its own allowance, and the same tap replays', () => {
+    const { store } = fixture();
+    store.setSettings(2);
+    expect(store.state('fr-en', 'all').stats).toMatchObject({ newAvailable: 2, introducedToday: 0, learning: 0 });
+    expect(store.addWord({ wordId: 'travel-004', requestId: 'tap-rue' })).toEqual({ status: 'added' });
+    const added = store.state('fr-en', 'all');
+    expect(added.stats).toMatchObject({ newAvailable: 2, introducedToday: 1, learning: 1, remaining: 1 });
+    expect(added.extraToday).toBe(1);
+    expect(added.current).toMatchObject({ id: 'travel-004', stack: 'unseen', stage: 'new' });
+    // A retried tap neither grants a second allowance nor changes its answer.
+    expect(store.addWord({ wordId: 'travel-004', requestId: 'tap-rue' })).toEqual({ status: 'added' });
+    expect(store.state('fr-en', 'all').extraToday).toBe(1);
+    // The two new words of the day are still waiting.
+    expect(store.start('fr-en', 'all').stats).toMatchObject({ introducedToday: 3, learning: 3, newAvailable: 0 });
+  });
+
+  test('a word already in the deck stays put, and a finished one becomes due now', () => {
+    const { store } = fixture(new Date(2026, 8, 21, 10), words.slice(0, 2));
+    store.setSettings(1);
+    let state = store.start('fr-en', 'all');
+    expect(state.current?.id).toBe('food-001');
+    expect(store.addWord({ wordId: 'food-001', requestId: 'tap-active' })).toEqual({ status: 'already-practising' });
+    state = store.grade(answer(state, true));
+    state = store.grade(answer(state, true));
+    expect(state.stats).toMatchObject({ learning: 0, due: 0, scheduled: 1 });
+    expect(store.addWord({ wordId: 'food-001', requestId: 'tap-finished' })).toEqual({ status: 'made-due' });
+    state = store.state('fr-en', 'all');
+    expect(state.stats).toMatchObject({ due: 1, scheduled: 0 });
+    expect(state.current?.id).toBe('food-001');
+    // Waiting in the deck again, it is no longer something to add.
+    expect(store.addWord({ wordId: 'food-001', requestId: 'tap-due' })).toEqual({ status: 'already-practising' });
+    expect(store.state('fr-en', 'all').extraToday).toBe(0);
+  });
+
+  test('an unknown word is a 404, and one tap ID cannot add two words', () => {
+    const { store } = fixture();
+    expectStatus(() => store.addWord({ wordId: 'food-999', requestId: 'tap-unknown' }), 404);
+    expect(store.addWord({ wordId: 'food-001', requestId: 'tap-once' })).toEqual({ status: 'added' });
+    expectConflict(() => store.addWord({ wordId: 'food-002', requestId: 'tap-once' }));
+    expect(store.state('fr-en', 'all').stats.introducedToday).toBe(1);
   });
 });

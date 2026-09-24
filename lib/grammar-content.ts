@@ -23,6 +23,20 @@ export function joinTokens(tokens: string[]): string {
   return tokens.join(' ').replace(/(['’‘ʼ])\s+/g, '$1').replace(/\s+([,.;:!?…])/g, '$1');
 }
 
+// The French sentence to speak for an exercise: the finished sentence where the question hides one, the answer otherwise.
+// A conjugate answer is listed twice, bare and with its subject ("finissons", "nous finissons"); the longer one is speakable.
+// A filled sentence drops its bracketed cues — "(prendre)", "(to a girl)" tell the reader what to write and are not
+// part of the sentence — glues the answer to a leading elision ("j’" + "irais"), and keeps the space before ? ! : ;.
+export function grammarSpeech(exercise: GrammarExercise): string {
+  const answer = exercise.type === 'conjugate'
+    ? exercise.answers.reduce((longest, item) => (item.length > longest.length ? item : longest))
+    : exercise.answers[0]!;
+  if (exercise.type !== 'complete' && exercise.type !== 'choose') return answer;
+  if (!/_{2,}/.test(exercise.source)) return answer;
+  return exercise.source.replace(/_{2,}/, answer).replace(/\s*\([^()]*\)/g, '')
+    .replace(/\s+/g, ' ').replace(/(['’‘ʼ])\s+/g, '$1').replace(/\s+([,.…])/g, '$1').trim();
+}
+
 // Check token phrases as units, not a bag of words: a multiword token cannot be split. Unused tiles are distractors.
 export function canBuild(tokens: string[], answer: string): boolean {
   const target = normalize(answer);

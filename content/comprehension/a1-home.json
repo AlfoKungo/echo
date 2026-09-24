@@ -1,0 +1,4072 @@
+{
+  "sentences": [
+    {
+      "id": "a1-home-s01",
+      "level": "A1",
+      "fr": "Le matin, je me réveille à sept heures.",
+      "en": "In the morning, I wake up at seven.",
+      "distractors": [
+        "In the morning, I wake up at nine.",
+        "In the evening, I wake up at seven.",
+        "In the morning, I go to bed at seven."
+      ],
+      "gap": "sept",
+      "topics": [
+        "reflexive",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-059",
+        "verbs-063",
+        "health-time-088",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "Le matin",
+          "en": "in the morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "me réveille",
+          "en": "wake up (se réveiller)",
+          "word": "verbs-063"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s02",
+      "level": "A1",
+      "fr": "Mon réveil sonne à six heures et quart.",
+      "en": "My alarm clock goes off at a quarter past six.",
+      "distractors": [
+        "My alarm clock goes off at a quarter past seven.",
+        "My alarm clock goes off at half past six.",
+        "My phone rings at a quarter past six."
+      ],
+      "gap": "quart",
+      "topics": [
+        "possessives",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-087",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "réveil",
+          "en": "alarm clock (le réveil)"
+        },
+        {
+          "fr": "sonne",
+          "en": "rings; goes off (sonner)"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "quart",
+          "en": "quarter"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s03",
+      "level": "A1",
+      "fr": "Tu te lèves tôt le samedi ?",
+      "en": "Do you get up early on Saturdays?",
+      "distractors": [
+        "Do you get up early on Sundays?",
+        "Do you go to bed early on Saturdays?",
+        "Do you get up late on Saturdays?"
+      ],
+      "gap": "samedi",
+      "topics": [
+        "reflexive",
+        "questions",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-064",
+        "health-time-067"
+      ],
+      "gloss": [
+        {
+          "fr": "te lèves",
+          "en": "get up (se lever)",
+          "word": "verbs-064"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s04",
+      "level": "A1",
+      "fr": "Nous prenons le petit déjeuner dans la cuisine.",
+      "en": "We have breakfast in the kitchen.",
+      "distractors": [
+        "We have lunch in the kitchen.",
+        "We have breakfast in the living room.",
+        "They have breakfast in the kitchen."
+      ],
+      "gap": "cuisine",
+      "topics": [
+        "irregular-present",
+        "prepositions-places"
+      ],
+      "words": [
+        "verbs-023",
+        "food-073",
+        "home-007",
+        "essentials-057"
+      ],
+      "gloss": [
+        {
+          "fr": "prenons",
+          "en": "have; take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "petit déjeuner",
+          "en": "breakfast",
+          "word": "food-073"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen",
+          "word": "home-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s05",
+      "level": "A1",
+      "fr": "Elle boit son café avant la douche.",
+      "en": "She drinks her coffee before her shower.",
+      "distractors": [
+        "She drinks her coffee after her shower.",
+        "She drinks her tea before her shower.",
+        "He drinks his coffee before his shower."
+      ],
+      "gap": "son",
+      "topics": [
+        "irregular-present",
+        "possessives"
+      ],
+      "words": [
+        "verbs-060",
+        "essentials-051",
+        "food-003",
+        "home-069"
+      ],
+      "gloss": [
+        {
+          "fr": "boit",
+          "en": "drinks (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "son",
+          "en": "her; his",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "douche",
+          "en": "shower",
+          "word": "home-069"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s06",
+      "level": "A1",
+      "fr": "Je ne prends pas de sucre le matin.",
+      "en": "I don’t take sugar in the morning.",
+      "distractors": [
+        "I don’t take milk in the morning.",
+        "I take sugar in the morning.",
+        "I don’t take sugar in the evening."
+      ],
+      "gap": "sucre",
+      "topics": [
+        "negation",
+        "partitive"
+      ],
+      "words": [
+        "verbs-023",
+        "food-006",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "sucre",
+          "en": "sugar",
+          "word": "food-006"
+        },
+        {
+          "fr": "le matin",
+          "en": "in the morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s07",
+      "level": "A1",
+      "fr": "Mon père fait du café pour la famille.",
+      "en": "My father makes coffee for the family.",
+      "distractors": [
+        "My brother makes coffee for the family.",
+        "My father makes tea for the family.",
+        "My father buys coffee for the family."
+      ],
+      "gap": "père",
+      "topics": [
+        "partitive",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-049",
+        "people-010",
+        "verbs-003",
+        "food-003",
+        "essentials-062",
+        "people-020"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "fait",
+          "en": "makes (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "famille",
+          "en": "family",
+          "word": "people-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s08",
+      "level": "A1",
+      "fr": "Les enfants descendent l’escalier en pyjama.",
+      "en": "The children come down the stairs in their pyjamas.",
+      "distractors": [
+        "The children go up the stairs in their pyjamas.",
+        "The children come down the stairs in their coats.",
+        "The child comes down the stairs in his pyjamas."
+      ],
+      "gap": "descendent",
+      "topics": [
+        "present-ir-re"
+      ],
+      "words": [
+        "people-004",
+        "verbs-038",
+        "home-012",
+        "people-076"
+      ],
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children (l’enfant)",
+          "word": "people-004"
+        },
+        {
+          "fr": "descendent",
+          "en": "come down (descendre)",
+          "word": "verbs-038"
+        },
+        {
+          "fr": "l’escalier",
+          "en": "the stairs",
+          "word": "home-012"
+        },
+        {
+          "fr": "pyjama",
+          "en": "pyjamas (le pyjama)",
+          "word": "people-076"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s09",
+      "level": "A1",
+      "fr": "Il y a du pain frais sur la table.",
+      "en": "There is fresh bread on the table.",
+      "distractors": [
+        "There is fresh bread in the fridge.",
+        "There is fresh cheese on the table.",
+        "There is no bread on the table."
+      ],
+      "gap": "frais",
+      "topics": [
+        "partitive",
+        "adjective-placement"
+      ],
+      "words": [
+        "food-002",
+        "qualities-028",
+        "essentials-058",
+        "home-045"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "fr": "frais",
+          "en": "fresh",
+          "word": "qualities-028"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s10",
+      "level": "A1",
+      "fr": "À quelle heure est-ce que tu te couches ?",
+      "en": "What time do you go to bed?",
+      "distractors": [
+        "What time do you get up?",
+        "What time does he go to bed?",
+        "What time do we go to bed?"
+      ],
+      "gap": "couches",
+      "topics": [
+        "question-words",
+        "reflexive"
+      ],
+      "words": [
+        "health-time-052",
+        "verbs-066"
+      ],
+      "gloss": [
+        {
+          "fr": "quelle",
+          "en": "what; which"
+        },
+        {
+          "fr": "heure",
+          "en": "time; hour (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "est-ce que",
+          "en": "(asks a question)"
+        },
+        {
+          "fr": "te couches",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s11",
+      "level": "A1",
+      "fr": "Ma mère prépare le dîner à huit heures.",
+      "en": "My mother makes dinner at eight.",
+      "distractors": [
+        "My mother makes lunch at eight.",
+        "My mother makes dinner at six.",
+        "My sister makes dinner at eight."
+      ],
+      "gap": "huit",
+      "topics": [
+        "possessives",
+        "time-expressions"
+      ],
+      "words": [
+        "people-009",
+        "food-075",
+        "health-time-089",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "prépare",
+          "en": "makes; prepares (préparer)"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s12",
+      "level": "A1",
+      "fr": "On mange souvent des pâtes le mercredi.",
+      "en": "We often eat pasta on Wednesdays.",
+      "distractors": [
+        "We often eat rice on Wednesdays.",
+        "We never eat pasta on Wednesdays.",
+        "We often eat pasta on Thursdays."
+      ],
+      "gap": "mercredi",
+      "topics": [
+        "present-er",
+        "time-expressions",
+        "partitive"
+      ],
+      "words": [
+        "verbs-059",
+        "essentials-091",
+        "food-013",
+        "health-time-064"
+      ],
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "pâtes",
+          "en": "pasta",
+          "word": "food-013"
+        },
+        {
+          "fr": "mercredi",
+          "en": "Wednesday",
+          "word": "health-time-064"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s13",
+      "level": "A1",
+      "fr": "Est-ce qu’il y a du lait dans le frigo ?",
+      "en": "Is there any milk in the fridge?",
+      "distractors": [
+        "Is there any juice in the fridge?",
+        "Is there any milk in the cupboard?",
+        "Was there any milk in the fridge?"
+      ],
+      "gap": "lait",
+      "topics": [
+        "questions",
+        "partitive"
+      ],
+      "words": [
+        "food-005",
+        "essentials-057"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce qu’il y a",
+          "en": "is there"
+        },
+        {
+          "fr": "lait",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "frigo",
+          "en": "fridge (le frigo)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s14",
+      "level": "A1",
+      "fr": "Je mets la table pour quatre personnes.",
+      "en": "I’m setting the table for four people.",
+      "distractors": [
+        "I’m setting the table for five people.",
+        "I’m clearing the table for four people.",
+        "She is setting the table for four people."
+      ],
+      "gap": "quatre",
+      "topics": [
+        "irregular-present"
+      ],
+      "words": [
+        "verbs-025",
+        "home-045",
+        "essentials-062",
+        "health-time-085",
+        "people-001"
+      ],
+      "gloss": [
+        {
+          "fr": "mets",
+          "en": "set; put (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "personnes",
+          "en": "people (la personne)",
+          "word": "people-001"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s15",
+      "level": "A1",
+      "fr": "Le poulet est dans le four depuis vingt minutes.",
+      "en": "The chicken has been in the oven for twenty minutes.",
+      "distractors": [
+        "The chicken has been in the oven for thirty minutes.",
+        "The chicken has been in the fridge for twenty minutes.",
+        "The chicken will be in the oven for twenty minutes."
+      ],
+      "gap": "vingt",
+      "topics": [
+        "time-expressions"
+      ],
+      "words": [
+        "food-015",
+        "verbs-001",
+        "essentials-057",
+        "home-087",
+        "health-time-094",
+        "health-time-053"
+      ],
+      "gloss": [
+        {
+          "fr": "poulet",
+          "en": "chicken",
+          "word": "food-015"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "four",
+          "en": "oven",
+          "word": "home-087"
+        },
+        {
+          "fr": "depuis",
+          "en": "for; since"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s16",
+      "level": "A1",
+      "fr": "Nous ne dînons pas devant la télévision.",
+      "en": "We don’t have dinner in front of the television.",
+      "distractors": [
+        "We have dinner in front of the television.",
+        "We don’t have lunch in front of the television.",
+        "They don’t have dinner in front of the television."
+      ],
+      "gap": "devant",
+      "topics": [
+        "negation",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-067",
+        "work-087"
+      ],
+      "gloss": [
+        {
+          "fr": "dînons",
+          "en": "have dinner (dîner)"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "télévision",
+          "en": "television",
+          "word": "work-087"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s17",
+      "level": "A1",
+      "fr": "Qui fait la vaisselle ce soir ?",
+      "en": "Who is doing the dishes tonight?",
+      "distractors": [
+        "Who is doing the dishes tomorrow?",
+        "Who is doing the shopping tonight?",
+        "Who did the dishes last night?"
+      ],
+      "gap": "soir",
+      "topics": [
+        "question-words",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-032",
+        "verbs-003",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "fait",
+          "en": "does (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "vaisselle",
+          "en": "dishes; washing-up"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s18",
+      "level": "A1",
+      "fr": "Mon frère ne veut jamais manger de légumes.",
+      "en": "My brother never wants to eat vegetables.",
+      "distractors": [
+        "My brother always wants to eat vegetables.",
+        "My sister never wants to eat vegetables.",
+        "My brother never wants to eat fruit."
+      ],
+      "gap": "jamais",
+      "topics": [
+        "negation-more",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-049",
+        "people-012",
+        "verbs-019",
+        "essentials-090",
+        "verbs-059",
+        "food-045"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "veut",
+          "en": "wants (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        },
+        {
+          "fr": "manger",
+          "en": "to eat",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "légumes",
+          "en": "vegetables (le légume)",
+          "word": "food-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s19",
+      "level": "A1",
+      "fr": "Je passe l’aspirateur dans le salon.",
+      "en": "I’m vacuuming the living room.",
+      "distractors": [
+        "I’m vacuuming the bedroom.",
+        "I’m cleaning the windows in the living room.",
+        "He is vacuuming the living room."
+      ],
+      "gap": "salon",
+      "topics": [
+        "present-er",
+        "prepositions-places"
+      ],
+      "words": [
+        "verbs-029",
+        "home-076",
+        "essentials-057",
+        "home-005"
+      ],
+      "gloss": [
+        {
+          "fr": "passe",
+          "en": "run; pass (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "l’aspirateur",
+          "en": "the vacuum cleaner",
+          "word": "home-076"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "salon",
+          "en": "living room",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s20",
+      "level": "A1",
+      "fr": "Tu ranges ta chambre avant le déjeuner ?",
+      "en": "Are you tidying your room before lunch?",
+      "distractors": [
+        "Are you tidying your room after lunch?",
+        "Are you tidying the kitchen before lunch?",
+        "Is she tidying her room before lunch?"
+      ],
+      "gap": "ranges",
+      "topics": [
+        "present-er",
+        "questions",
+        "possessives"
+      ],
+      "words": [
+        "verbs-098",
+        "home-006",
+        "food-074"
+      ],
+      "gloss": [
+        {
+          "fr": "ranges",
+          "en": "tidy (ranger)",
+          "word": "verbs-098"
+        },
+        {
+          "fr": "ta",
+          "en": "your"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "déjeuner",
+          "en": "lunch",
+          "word": "food-074"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s21",
+      "level": "A1",
+      "fr": "Elle lave les draps tous les dimanches.",
+      "en": "She washes the sheets every Sunday.",
+      "distractors": [
+        "She washes the towels every Sunday.",
+        "She washes the sheets every Saturday.",
+        "He washes the sheets every Sunday."
+      ],
+      "gap": "dimanches",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-097",
+        "home-055",
+        "health-time-068"
+      ],
+      "gloss": [
+        {
+          "fr": "lave",
+          "en": "washes (laver)",
+          "word": "verbs-097"
+        },
+        {
+          "fr": "draps",
+          "en": "sheets (le drap)",
+          "word": "home-055"
+        },
+        {
+          "fr": "tous les",
+          "en": "every"
+        },
+        {
+          "fr": "dimanches",
+          "en": "Sundays (le dimanche)",
+          "word": "health-time-068"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s22",
+      "level": "A1",
+      "fr": "Le lave-linge ne marche plus.",
+      "en": "The washing machine doesn’t work any more.",
+      "distractors": [
+        "The washing machine is working again.",
+        "The dishwasher doesn’t work any more.",
+        "The washing machine doesn’t work well."
+      ],
+      "gap": "plus",
+      "topics": [
+        "negation-more"
+      ],
+      "words": [
+        "home-082",
+        "verbs-039"
+      ],
+      "gloss": [
+        {
+          "fr": "lave-linge",
+          "en": "washing machine",
+          "word": "home-082"
+        },
+        {
+          "fr": "marche",
+          "en": "works (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "plus",
+          "en": "(ne… plus) any more"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s23",
+      "level": "A1",
+      "fr": "Il y a trop de poussière sous le lit.",
+      "en": "There is too much dust under the bed.",
+      "distractors": [
+        "There is too much dust under the sofa.",
+        "There isn’t any dust under the bed.",
+        "There is a little dust under the bed."
+      ],
+      "gap": "sous",
+      "topics": [
+        "partitive",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-097",
+        "essentials-059",
+        "home-051"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is"
+        },
+        {
+          "fr": "trop",
+          "en": "too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "poussière",
+          "en": "dust"
+        },
+        {
+          "fr": "sous",
+          "en": "under",
+          "word": "essentials-059"
+        },
+        {
+          "fr": "lit",
+          "en": "bed",
+          "word": "home-051"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s24",
+      "level": "A1",
+      "fr": "Nous sortons la poubelle le soir.",
+      "en": "We take the bin out in the evening.",
+      "distractors": [
+        "We take the bin out in the morning.",
+        "We take the bin out on Sundays.",
+        "They take the bin out in the evening."
+      ],
+      "gap": "sortons",
+      "topics": [
+        "irregular-present",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-034",
+        "home-079",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "sortons",
+          "en": "take out (sortir)",
+          "word": "verbs-034"
+        },
+        {
+          "fr": "poubelle",
+          "en": "bin; trash can",
+          "word": "home-079"
+        },
+        {
+          "fr": "le soir",
+          "en": "in the evening",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s25",
+      "level": "A1",
+      "fr": "Mets le torchon propre dans le tiroir.",
+      "en": "Put the clean tea towel in the drawer.",
+      "distractors": [
+        "Put the dirty tea towel in the drawer.",
+        "Put the clean tea towel in the cupboard.",
+        "Take the clean tea towel out of the drawer."
+      ],
+      "gap": "propre",
+      "topics": [
+        "imperative",
+        "adjective-placement"
+      ],
+      "words": [
+        "verbs-025",
+        "home-074",
+        "qualities-029",
+        "essentials-057",
+        "home-060"
+      ],
+      "gloss": [
+        {
+          "fr": "Mets",
+          "en": "put (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "torchon",
+          "en": "tea towel",
+          "word": "home-074"
+        },
+        {
+          "fr": "propre",
+          "en": "clean",
+          "word": "qualities-029"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "tiroir",
+          "en": "drawer",
+          "word": "home-060"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s26",
+      "level": "A1",
+      "fr": "Mon père répare la porte du garage.",
+      "en": "My father is fixing the garage door.",
+      "distractors": [
+        "My father is fixing the garage light.",
+        "My uncle is fixing the garage door.",
+        "My father is painting the garage door."
+      ],
+      "gap": "garage",
+      "topics": [
+        "present-er",
+        "contractions"
+      ],
+      "words": [
+        "essentials-049",
+        "people-010",
+        "verbs-099",
+        "home-025",
+        "home-017"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "répare",
+          "en": "is fixing (réparer)",
+          "word": "verbs-099"
+        },
+        {
+          "fr": "porte",
+          "en": "door",
+          "word": "home-025"
+        },
+        {
+          "fr": "garage",
+          "en": "garage",
+          "word": "home-017"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s27",
+      "level": "A1",
+      "fr": "Je nettoie l’évier avec une éponge.",
+      "en": "I’m cleaning the sink with a sponge.",
+      "distractors": [
+        "I’m cleaning the sink with a cloth.",
+        "I’m cleaning the bathtub with a sponge.",
+        "She is cleaning the sink with a sponge."
+      ],
+      "gap": "éponge",
+      "topics": [
+        "present-er"
+      ],
+      "words": [
+        "verbs-096",
+        "home-072",
+        "essentials-060",
+        "home-073"
+      ],
+      "gloss": [
+        {
+          "fr": "nettoie",
+          "en": "am cleaning (nettoyer)",
+          "word": "verbs-096"
+        },
+        {
+          "fr": "l’évier",
+          "en": "the kitchen sink",
+          "word": "home-072"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "éponge",
+          "en": "sponge",
+          "word": "home-073"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s28",
+      "level": "A1",
+      "fr": "Vous faites le ménage le samedi matin ?",
+      "en": "Do you do the housework on Saturday mornings?",
+      "distractors": [
+        "Do you do the housework on Sunday mornings?",
+        "Do you do the shopping on Saturday mornings?",
+        "Do you do the housework on Saturday evenings?"
+      ],
+      "gap": "ménage",
+      "topics": [
+        "irregular-present",
+        "questions",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-003",
+        "health-time-067",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "faites",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "ménage",
+          "en": "housework (le ménage)"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s29",
+      "level": "A1",
+      "fr": "Notre appartement a trois pièces claires.",
+      "en": "Our flat has three bright rooms.",
+      "distractors": [
+        "Our flat has four bright rooms.",
+        "Our flat has three dark rooms.",
+        "Their flat has three bright rooms."
+      ],
+      "gap": "trois",
+      "topics": [
+        "etre-avoir",
+        "agreement"
+      ],
+      "words": [
+        "essentials-052",
+        "home-002",
+        "verbs-002",
+        "health-time-084",
+        "home-004",
+        "qualities-049"
+      ],
+      "gloss": [
+        {
+          "fr": "Notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "appartement",
+          "en": "flat; apartment",
+          "word": "home-002"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "pièces",
+          "en": "rooms (la pièce)",
+          "word": "home-004"
+        },
+        {
+          "fr": "claires",
+          "en": "bright; light (clair)",
+          "word": "qualities-049"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s30",
+      "level": "A1",
+      "fr": "La chambre des enfants est au premier étage.",
+      "en": "The children’s bedroom is on the first floor.",
+      "distractors": [
+        "The children’s bedroom is on the ground floor.",
+        "The parents’ bedroom is on the first floor.",
+        "The children’s bathroom is on the first floor."
+      ],
+      "gap": "premier",
+      "topics": [
+        "contractions",
+        "etre-avoir"
+      ],
+      "words": [
+        "home-006",
+        "people-004",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        },
+        {
+          "fr": "enfants",
+          "en": "children (l’enfant)",
+          "word": "people-004"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "premier étage",
+          "en": "first floor"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s31",
+      "level": "A1",
+      "fr": "Il y a un grand canapé devant la fenêtre.",
+      "en": "There is a big sofa in front of the window.",
+      "distractors": [
+        "There is a small sofa in front of the window.",
+        "There is a big table in front of the window.",
+        "There is a big sofa behind the window."
+      ],
+      "gap": "grand",
+      "topics": [
+        "adjective-placement",
+        "prepositions-places"
+      ],
+      "words": [
+        "qualities-001",
+        "home-048",
+        "essentials-067",
+        "home-026"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is"
+        },
+        {
+          "fr": "grand",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "canapé",
+          "en": "sofa",
+          "word": "home-048"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "fenêtre",
+          "en": "window",
+          "word": "home-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s32",
+      "level": "A1",
+      "fr": "Ma chambre est plus petite que le salon.",
+      "en": "My bedroom is smaller than the living room.",
+      "distractors": [
+        "My bedroom is bigger than the living room.",
+        "My bedroom is smaller than the kitchen.",
+        "His bedroom is smaller than the living room."
+      ],
+      "gap": "petite",
+      "topics": [
+        "comparison",
+        "agreement"
+      ],
+      "words": [
+        "home-006",
+        "verbs-001",
+        "qualities-002",
+        "home-005"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "petite",
+          "en": "small (petit)",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "salon",
+          "en": "living room",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s33",
+      "level": "A1",
+      "fr": "Les rideaux de la chambre sont fermés.",
+      "en": "The bedroom curtains are closed.",
+      "distractors": [
+        "The bedroom curtains are open.",
+        "The kitchen curtains are closed.",
+        "The bedroom windows are closed."
+      ],
+      "gap": "fermés",
+      "topics": [
+        "etre-avoir",
+        "agreement"
+      ],
+      "words": [
+        "home-028",
+        "home-006",
+        "verbs-001",
+        "qualities-037"
+      ],
+      "gloss": [
+        {
+          "fr": "rideaux",
+          "en": "curtains (le rideau)",
+          "word": "home-028"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermés",
+          "en": "closed (fermé)",
+          "word": "qualities-037"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s34",
+      "level": "A1",
+      "fr": "Où est la clé de la cave ?",
+      "en": "Where is the cellar key?",
+      "distractors": [
+        "Where is the garage key?",
+        "Who has the cellar key?",
+        "Where are the cellar keys?"
+      ],
+      "gap": "cave",
+      "topics": [
+        "question-words"
+      ],
+      "words": [
+        "essentials-035",
+        "verbs-001",
+        "home-031",
+        "home-015"
+      ],
+      "gloss": [
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "clé",
+          "en": "key",
+          "word": "home-031"
+        },
+        {
+          "fr": "cave",
+          "en": "cellar",
+          "word": "home-015"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s35",
+      "level": "A1",
+      "fr": "Le miroir est au-dessus du lavabo.",
+      "en": "The mirror is above the washbasin.",
+      "distractors": [
+        "The mirror is above the bathtub.",
+        "The mirror is next to the washbasin.",
+        "The shelf is above the washbasin."
+      ],
+      "gap": "lavabo",
+      "topics": [
+        "prepositions-places",
+        "contractions"
+      ],
+      "words": [
+        "home-063",
+        "verbs-001",
+        "home-068"
+      ],
+      "gloss": [
+        {
+          "fr": "miroir",
+          "en": "mirror",
+          "word": "home-063"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "au-dessus",
+          "en": "above"
+        },
+        {
+          "fr": "lavabo",
+          "en": "washbasin",
+          "word": "home-068"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s36",
+      "level": "A1",
+      "fr": "Nous n’avons pas de balcon mais une terrasse.",
+      "en": "We don’t have a balcony but we have a terrace.",
+      "distractors": [
+        "We don’t have a terrace but we have a balcony.",
+        "We have a balcony but no terrace.",
+        "We don’t have a balcony or a terrace."
+      ],
+      "gap": "balcon",
+      "topics": [
+        "negation",
+        "partitive"
+      ],
+      "words": [
+        "verbs-002",
+        "home-018",
+        "home-019"
+      ],
+      "gloss": [
+        {
+          "fr": "n’avons",
+          "en": "don’t have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "balcon",
+          "en": "balcony",
+          "word": "home-018"
+        },
+        {
+          "fr": "terrasse",
+          "en": "terrace",
+          "word": "home-019"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s37",
+      "level": "A1",
+      "fr": "Mets tes chaussons dans le couloir.",
+      "en": "Put your slippers in the hallway.",
+      "distractors": [
+        "Put your shoes in the hallway.",
+        "Put your slippers in the bedroom.",
+        "Put your slippers by the door."
+      ],
+      "gap": "couloir",
+      "topics": [
+        "imperative",
+        "possessives"
+      ],
+      "words": [
+        "verbs-025",
+        "people-087",
+        "essentials-057",
+        "home-010"
+      ],
+      "gloss": [
+        {
+          "fr": "Mets",
+          "en": "put (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "tes",
+          "en": "your"
+        },
+        {
+          "fr": "chaussons",
+          "en": "slippers (le chausson)",
+          "word": "people-087"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "couloir",
+          "en": "hallway",
+          "word": "home-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s38",
+      "level": "A1",
+      "fr": "Cette lampe éclaire mal la pièce.",
+      "en": "This lamp lights the room badly.",
+      "distractors": [
+        "This lamp lights the room well.",
+        "This lamp lights the hallway badly.",
+        "These lamps light the room badly."
+      ],
+      "gap": "mal",
+      "topics": [
+        "demonstratives"
+      ],
+      "words": [
+        "essentials-047",
+        "home-039",
+        "essentials-073",
+        "home-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "lampe",
+          "en": "lamp",
+          "word": "home-039"
+        },
+        {
+          "fr": "éclaire",
+          "en": "lights (éclairer)"
+        },
+        {
+          "fr": "mal",
+          "en": "badly",
+          "word": "essentials-073"
+        },
+        {
+          "fr": "pièce",
+          "en": "room",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s39",
+      "level": "A1",
+      "fr": "Le soir, on regarde une série dans le salon.",
+      "en": "In the evening, we watch a series in the living room.",
+      "distractors": [
+        "In the evening, we watch a film in the living room.",
+        "In the morning, we watch a series in the living room.",
+        "In the evening, we watch a series in the bedroom."
+      ],
+      "gap": "regarde",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-060",
+        "verbs-011",
+        "work-090",
+        "essentials-057",
+        "home-005"
+      ],
+      "gloss": [
+        {
+          "fr": "Le soir",
+          "en": "in the evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "regarde",
+          "en": "watch (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "série",
+          "en": "series",
+          "word": "work-090"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "salon",
+          "en": "living room",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s40",
+      "level": "A1",
+      "fr": "Ce soir, je vais lire dans mon lit.",
+      "en": "Tonight I’m going to read in my bed.",
+      "distractors": [
+        "Tonight I’m going to sleep in my bed.",
+        "Tomorrow I’m going to read in my bed.",
+        "Tonight I’m going to read in the living room."
+      ],
+      "gap": "vais",
+      "topics": [
+        "futur-proche"
+      ],
+      "words": [
+        "health-time-060",
+        "verbs-004",
+        "verbs-072",
+        "essentials-057",
+        "essentials-049",
+        "home-051"
+      ],
+      "gloss": [
+        {
+          "fr": "Ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "lire",
+          "en": "to read",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "lit",
+          "en": "bed",
+          "word": "home-051"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s41",
+      "level": "A1",
+      "fr": "Les enfants se couchent à neuf heures et demie.",
+      "en": "The children go to bed at half past nine.",
+      "distractors": [
+        "The children go to bed at half past eight.",
+        "The children get up at half past nine.",
+        "The children go to bed at nine o’clock."
+      ],
+      "gap": "neuf",
+      "topics": [
+        "reflexive",
+        "time-expressions"
+      ],
+      "words": [
+        "people-004",
+        "verbs-066",
+        "health-time-090",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children (l’enfant)",
+          "word": "people-004"
+        },
+        {
+          "fr": "se couchent",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "demie",
+          "en": "half"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s42",
+      "level": "A1",
+      "fr": "Tu fermes les volets avant de dormir ?",
+      "en": "Do you close the shutters before going to sleep?",
+      "distractors": [
+        "Do you close the curtains before going to sleep?",
+        "Do you open the shutters before going to sleep?",
+        "Do you close the shutters after waking up?"
+      ],
+      "gap": "volets",
+      "topics": [
+        "present-er",
+        "questions"
+      ],
+      "words": [
+        "verbs-046",
+        "home-027",
+        "verbs-062"
+      ],
+      "gloss": [
+        {
+          "fr": "fermes",
+          "en": "close (fermer)",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "volets",
+          "en": "shutters (le volet)",
+          "word": "home-027"
+        },
+        {
+          "fr": "avant de",
+          "en": "before"
+        },
+        {
+          "fr": "dormir",
+          "en": "sleeping (dormir)",
+          "word": "verbs-062"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s43",
+      "level": "A1",
+      "fr": "Ma sœur écoute de la musique sous la couette.",
+      "en": "My sister listens to music under the duvet.",
+      "distractors": [
+        "My brother listens to music under the duvet.",
+        "My sister listens to the radio under the duvet.",
+        "My sister listens to music on the sofa."
+      ],
+      "gap": "couette",
+      "topics": [
+        "present-er",
+        "partitive"
+      ],
+      "words": [
+        "people-011",
+        "verbs-013",
+        "work-094",
+        "essentials-059",
+        "home-056"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "écoute",
+          "en": "listens to (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        },
+        {
+          "fr": "sous",
+          "en": "under",
+          "word": "essentials-059"
+        },
+        {
+          "fr": "couette",
+          "en": "duvet",
+          "word": "home-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s44",
+      "level": "A1",
+      "fr": "Je n’aime pas dormir avec la lumière allumée.",
+      "en": "I don’t like sleeping with the light on.",
+      "distractors": [
+        "I like sleeping with the light on.",
+        "I don’t like sleeping with the window open.",
+        "I don’t like reading with the light on."
+      ],
+      "gap": "lumière",
+      "topics": [
+        "negation"
+      ],
+      "words": [
+        "verbs-052",
+        "verbs-062",
+        "essentials-060"
+      ],
+      "gloss": [
+        {
+          "fr": "n’aime",
+          "en": "don’t like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "dormir",
+          "en": "sleeping (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "lumière",
+          "en": "light (la lumière)"
+        },
+        {
+          "fr": "allumée",
+          "en": "on; switched on (allumé)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s45",
+      "level": "A1",
+      "fr": "Le dimanche, nous restons à la maison.",
+      "en": "On Sundays we stay at home.",
+      "distractors": [
+        "On Saturdays we stay at home.",
+        "On Sundays we leave the house.",
+        "On Sundays they stay at home."
+      ],
+      "gap": "restons",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-068",
+        "verbs-030",
+        "home-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Le dimanche",
+          "en": "on Sundays",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "restons",
+          "en": "stay (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "maison",
+          "en": "house; home",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s46",
+      "level": "A1",
+      "fr": "Le samedi, mon père fait des crêpes.",
+      "en": "On Saturdays my father makes crêpes.",
+      "distractors": [
+        "On Sundays my father makes crêpes.",
+        "On Saturdays my mother makes crêpes.",
+        "On Saturdays my father buys crêpes."
+      ],
+      "gap": "crêpes",
+      "topics": [
+        "present-er",
+        "partitive",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-067",
+        "essentials-049",
+        "people-010",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "fr": "Le samedi",
+          "en": "on Saturdays",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "fait",
+          "en": "makes (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "crêpes",
+          "en": "pancakes (la crêpe)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s47",
+      "level": "A1",
+      "fr": "Est-ce que tu veux un chocolat chaud ?",
+      "en": "Do you want a hot chocolate?",
+      "distractors": [
+        "Do you want a hot coffee?",
+        "Does she want a hot chocolate?",
+        "Do you want two hot chocolates?"
+      ],
+      "gap": "chaud",
+      "topics": [
+        "questions",
+        "irregular-present"
+      ],
+      "words": [
+        "verbs-019",
+        "food-053",
+        "qualities-025"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(asks a question)"
+        },
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "chocolat",
+          "en": "chocolate",
+          "word": "food-053"
+        },
+        {
+          "fr": "chaud",
+          "en": "hot",
+          "word": "qualities-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s48",
+      "level": "A1",
+      "fr": "Nous arrosons les plantes de la terrasse.",
+      "en": "We water the plants on the terrace.",
+      "distractors": [
+        "We water the plants on the balcony.",
+        "We move the plants on the terrace.",
+        "She waters the plants on the terrace."
+      ],
+      "gap": "plantes",
+      "topics": [
+        "present-er"
+      ],
+      "words": [
+        "nature-049",
+        "home-019"
+      ],
+      "gloss": [
+        {
+          "fr": "arrosons",
+          "en": "water (arroser)"
+        },
+        {
+          "fr": "plantes",
+          "en": "plants (la plante)",
+          "word": "nature-049"
+        },
+        {
+          "fr": "terrasse",
+          "en": "terrace",
+          "word": "home-019"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s49",
+      "level": "A1",
+      "fr": "Le chat dort toujours sur le fauteuil.",
+      "en": "The cat always sleeps on the armchair.",
+      "distractors": [
+        "The cat never sleeps on the armchair.",
+        "The cat always sleeps on the sofa.",
+        "The dog always sleeps on the armchair."
+      ],
+      "gap": "toujours",
+      "topics": [
+        "irregular-present"
+      ],
+      "words": [
+        "nature-012",
+        "verbs-062",
+        "essentials-089",
+        "essentials-058",
+        "home-047"
+      ],
+      "gloss": [
+        {
+          "fr": "chat",
+          "en": "cat",
+          "word": "nature-012"
+        },
+        {
+          "fr": "dort",
+          "en": "sleeps (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "toujours",
+          "en": "always",
+          "word": "essentials-089"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "fauteuil",
+          "en": "armchair",
+          "word": "home-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s50",
+      "level": "A1",
+      "fr": "Combien de chaises est-ce qu’il y a dans la cuisine ?",
+      "en": "How many chairs are there in the kitchen?",
+      "distractors": [
+        "How many chairs are there in the living room?",
+        "How many plates are there in the kitchen?",
+        "Where are the chairs in the kitchen?"
+      ],
+      "gap": "Combien",
+      "topics": [
+        "question-words"
+      ],
+      "words": [
+        "essentials-038",
+        "home-046",
+        "essentials-057",
+        "home-007"
+      ],
+      "gloss": [
+        {
+          "fr": "Combien",
+          "en": "how many",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "chaises",
+          "en": "chairs (la chaise)",
+          "word": "home-046"
+        },
+        {
+          "fr": "est-ce qu’il y a",
+          "en": "are there"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen",
+          "word": "home-007"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-home-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Breakfast in the kitchen",
+      "lines": [
+        {
+          "speaker": "Léa",
+          "fr": "Bonjour ! Le café est prêt ?",
+          "en": "Good morning! Is the coffee ready?"
+        },
+        {
+          "speaker": "Papa",
+          "fr": "Oui, mais il n’y a plus de pain.",
+          "en": "Yes, but there is no bread left."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Il reste des biscuits dans le placard.",
+          "en": "There are some biscuits left in the cupboard."
+        },
+        {
+          "speaker": "Papa",
+          "fr": "Parfait. Je mets la table.",
+          "en": "Perfect. I’ll set the table."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Moi, je prépare le thé.",
+          "en": "I’ll make the tea."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What has run out?",
+          "choices": [
+            "The coffee",
+            "The bread",
+            "The biscuits"
+          ],
+          "answer": 1,
+          "explanation": "Papa says \"il n’y a plus de pain\" — there is no bread left."
+        },
+        {
+          "question": "Where are the biscuits?",
+          "choices": [
+            "In the cupboard",
+            "On the table",
+            "In the fridge"
+          ],
+          "answer": 0,
+          "explanation": "Léa says \"Il reste des biscuits dans le placard\"."
+        },
+        {
+          "question": "Who sets the table?",
+          "choices": [
+            "Léa",
+            "Nobody",
+            "Papa"
+          ],
+          "answer": 2,
+          "explanation": "Papa says \"Je mets la table\", and Léa makes the tea."
+        },
+        {
+          "question": "What is Léa making?",
+          "choices": [
+            "Coffee",
+            "Tea",
+            "Breakfast"
+          ],
+          "answer": 1,
+          "explanation": "\"Moi, je prépare le thé.\""
+        }
+      ],
+      "topics": [
+        "negation-more",
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-001",
+        "food-003",
+        "verbs-001",
+        "qualities-089",
+        "essentials-004",
+        "food-002",
+        "verbs-030",
+        "food-056",
+        "essentials-057",
+        "home-061",
+        "verbs-025",
+        "home-045",
+        "essentials-025",
+        "food-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello; good morning",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "prêt",
+          "en": "ready",
+          "word": "qualities-089"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "il n’y a plus",
+          "en": "there is no more"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "fr": "reste",
+          "en": "is left; remains (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "biscuits",
+          "en": "biscuits (le biscuit)",
+          "word": "food-056"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "placard",
+          "en": "cupboard",
+          "word": "home-061"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect"
+        },
+        {
+          "fr": "mets",
+          "en": "set; put (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        },
+        {
+          "fr": "Moi",
+          "en": "me; as for me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "prépare",
+          "en": "make; prepare (préparer)"
+        },
+        {
+          "fr": "thé",
+          "en": "tea",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Saturday chores",
+      "lines": [
+        {
+          "speaker": "Maman",
+          "fr": "Hugo, tu ranges ta chambre ce matin ?",
+          "en": "Hugo, are you tidying your room this morning?"
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Oui, et après je passe l’aspirateur.",
+          "en": "Yes, and afterwards I’ll vacuum."
+        },
+        {
+          "speaker": "Maman",
+          "fr": "Merci. Ta sœur fait la vaisselle.",
+          "en": "Thank you. Your sister is doing the dishes."
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Et Papa ?",
+          "en": "And Dad?"
+        },
+        {
+          "speaker": "Maman",
+          "fr": "Il répare la porte du garage.",
+          "en": "He is fixing the garage door."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Hugo do after tidying his room?",
+          "choices": [
+            "He does the dishes",
+            "He fixes the door",
+            "He vacuums"
+          ],
+          "answer": 2,
+          "explanation": "Hugo says \"et après je passe l’aspirateur\"."
+        },
+        {
+          "question": "Who is doing the dishes?",
+          "choices": [
+            "Hugo",
+            "Hugo’s sister",
+            "Maman"
+          ],
+          "answer": 1,
+          "explanation": "\"Ta sœur fait la vaisselle.\""
+        },
+        {
+          "question": "What is Papa doing?",
+          "choices": [
+            "Fixing the garage door",
+            "Cleaning the garage",
+            "Washing the car"
+          ],
+          "answer": 0,
+          "explanation": "\"Il répare la porte du garage.\""
+        },
+        {
+          "question": "When is Hugo tidying his room?",
+          "choices": [
+            "This evening",
+            "Tomorrow",
+            "This morning"
+          ],
+          "answer": 2,
+          "explanation": "Maman asks \"tu ranges ta chambre ce matin ?\""
+        }
+      ],
+      "topics": [
+        "present-er",
+        "possessives",
+        "questions"
+      ],
+      "words": [
+        "verbs-098",
+        "home-006",
+        "health-time-059",
+        "essentials-004",
+        "verbs-029",
+        "home-076",
+        "essentials-002",
+        "people-011",
+        "verbs-003",
+        "verbs-099",
+        "home-025",
+        "home-017"
+      ],
+      "gloss": [
+        {
+          "fr": "Hugo",
+          "en": "Hugo (a first name)"
+        },
+        {
+          "fr": "ranges",
+          "en": "tidy (ranger)",
+          "word": "verbs-098"
+        },
+        {
+          "fr": "ta",
+          "en": "your"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "après",
+          "en": "afterwards; after"
+        },
+        {
+          "fr": "passe",
+          "en": "run; pass (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "l’aspirateur",
+          "en": "the vacuum cleaner",
+          "word": "home-076"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "Ta",
+          "en": "your"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "fait",
+          "en": "is doing (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "vaisselle",
+          "en": "dishes; washing-up"
+        },
+        {
+          "fr": "Papa",
+          "en": "Dad"
+        },
+        {
+          "fr": "répare",
+          "en": "is fixing (réparer)",
+          "word": "verbs-099"
+        },
+        {
+          "fr": "porte",
+          "en": "door",
+          "word": "home-025"
+        },
+        {
+          "fr": "garage",
+          "en": "garage",
+          "word": "home-017"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "The missing key",
+      "lines": [
+        {
+          "speaker": "Sarah",
+          "fr": "Où est ma clé ?",
+          "en": "Where is my key?"
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Elle n’est pas sur la table ?",
+          "en": "Isn’t it on the table?"
+        },
+        {
+          "speaker": "Sarah",
+          "fr": "Non, et elle n’est pas dans mon sac.",
+          "en": "No, and it isn’t in my bag."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Regarde dans la poche de ton manteau.",
+          "en": "Look in your coat pocket."
+        },
+        {
+          "speaker": "Sarah",
+          "fr": "Ah, elle est là ! Merci.",
+          "en": "Ah, it’s there! Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where does Marc tell Sarah to look?",
+          "choices": [
+            "In her coat pocket",
+            "In her bag",
+            "On the table"
+          ],
+          "answer": 0,
+          "explanation": "\"Regarde dans la poche de ton manteau.\""
+        },
+        {
+          "question": "What does Sarah say about her bag?",
+          "choices": [
+            "The key is in it",
+            "She has lost it",
+            "The key is not in it"
+          ],
+          "answer": 2,
+          "explanation": "\"elle n’est pas dans mon sac\"."
+        },
+        {
+          "question": "How does the conversation end?",
+          "choices": [
+            "Sarah is still looking",
+            "Sarah finds her key",
+            "Marc lends her his key"
+          ],
+          "answer": 1,
+          "explanation": "Sarah says \"Ah, elle est là !\""
+        }
+      ],
+      "topics": [
+        "negation",
+        "question-words",
+        "possessives"
+      ],
+      "words": [
+        "essentials-035",
+        "verbs-001",
+        "home-031",
+        "essentials-058",
+        "home-045",
+        "essentials-005",
+        "essentials-057",
+        "essentials-049",
+        "verbs-011",
+        "essentials-050",
+        "people-072",
+        "essentials-094",
+        "essentials-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "clé",
+          "en": "key",
+          "word": "home-031"
+        },
+        {
+          "fr": "n’est pas",
+          "en": "is not (être)"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "sac",
+          "en": "bag (le sac)"
+        },
+        {
+          "fr": "Regarde",
+          "en": "look (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "poche",
+          "en": "pocket (la poche)"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "manteau",
+          "en": "coat",
+          "word": "people-072"
+        },
+        {
+          "fr": "Ah",
+          "en": "ah"
+        },
+        {
+          "fr": "là",
+          "en": "there",
+          "word": "essentials-094"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "An early night",
+      "lines": [
+        {
+          "speaker": "Papa",
+          "fr": "Tu veux regarder un film ce soir ?",
+          "en": "Do you want to watch a film tonight?"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Non, je suis fatiguée. Je vais me coucher.",
+          "en": "No, I’m tired. I’m going to bed."
+        },
+        {
+          "speaker": "Papa",
+          "fr": "Il est seulement neuf heures !",
+          "en": "It’s only nine o’clock!"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Je sais, mais je me lève tôt demain.",
+          "en": "I know, but I’m getting up early tomorrow."
+        },
+        {
+          "speaker": "Papa",
+          "fr": "Bonne nuit. N’oublie pas d’éteindre la lampe.",
+          "en": "Good night. Don’t forget to turn off the lamp."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is Léa going to bed?",
+          "choices": [
+            "She doesn’t like films",
+            "She gets up early tomorrow",
+            "She is ill"
+          ],
+          "answer": 1,
+          "explanation": "\"je me lève tôt demain\"."
+        },
+        {
+          "question": "What time is it?",
+          "choices": [
+            "Nine o’clock",
+            "Ten o’clock",
+            "Half past nine"
+          ],
+          "answer": 0,
+          "explanation": "\"Il est seulement neuf heures !\""
+        },
+        {
+          "question": "What does Papa ask Léa to do before sleeping?",
+          "choices": [
+            "Close the shutters",
+            "Watch the film with him",
+            "Turn off the lamp"
+          ],
+          "answer": 2,
+          "explanation": "\"N’oublie pas d’éteindre la lampe.\""
+        },
+        {
+          "question": "What does Papa suggest at the start?",
+          "choices": [
+            "Going to bed",
+            "Watching a film",
+            "Making dinner"
+          ],
+          "answer": 1,
+          "explanation": "\"Tu veux regarder un film ce soir ?\""
+        }
+      ],
+      "topics": [
+        "futur-proche",
+        "reflexive",
+        "imperative"
+      ],
+      "words": [
+        "verbs-019",
+        "verbs-011",
+        "work-089",
+        "health-time-060",
+        "essentials-005",
+        "verbs-001",
+        "verbs-004",
+        "verbs-066",
+        "health-time-090",
+        "health-time-052",
+        "verbs-014",
+        "verbs-064",
+        "health-time-061",
+        "verbs-092",
+        "home-039",
+        "qualities-003"
+      ],
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "regarder",
+          "en": "to watch",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fatiguée",
+          "en": "tired (fatigué)"
+        },
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "me coucher",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "seulement",
+          "en": "only"
+        },
+        {
+          "fr": "neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "sais",
+          "en": "know (savoir)",
+          "word": "verbs-014"
+        },
+        {
+          "fr": "me lève",
+          "en": "get up (se lever)",
+          "word": "verbs-064"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "Bonne",
+          "en": "good (bon)",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        },
+        {
+          "fr": "N’oublie pas",
+          "en": "don’t forget (oublier)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "d’éteindre",
+          "en": "to turn off (éteindre)"
+        },
+        {
+          "fr": "lampe",
+          "en": "lamp",
+          "word": "home-039"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A note on the fridge",
+      "lines": [
+        {
+          "fr": "Maman n’est pas là ce soir. Elle rentre à huit heures.",
+          "en": "Mum isn’t here this evening. She gets back at eight."
+        },
+        {
+          "fr": "Il y a de la soupe dans le réfrigérateur.",
+          "en": "There is some soup in the fridge."
+        },
+        {
+          "fr": "Le pain est sur la table, et le fromage dans le placard.",
+          "en": "The bread is on the table, and the cheese in the cupboard."
+        },
+        {
+          "fr": "Après le dîner, mettez les assiettes dans le lave-vaisselle.",
+          "en": "After dinner, put the plates in the dishwasher."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When does Mum get home?",
+          "choices": [
+            "At six",
+            "At nine",
+            "At eight"
+          ],
+          "answer": 2,
+          "explanation": "\"Elle rentre à huit heures.\""
+        },
+        {
+          "question": "Where is the cheese?",
+          "choices": [
+            "On the table",
+            "In the cupboard",
+            "In the fridge"
+          ],
+          "answer": 1,
+          "explanation": "\"le fromage dans le placard\" — only the bread is on the table."
+        },
+        {
+          "question": "What is there to eat in the fridge?",
+          "choices": [
+            "Soup",
+            "Cheese",
+            "Chicken"
+          ],
+          "answer": 0,
+          "explanation": "\"Il y a de la soupe dans le réfrigérateur.\""
+        },
+        {
+          "question": "What should be done after dinner?",
+          "choices": [
+            "Wash the plates by hand",
+            "Put the soup back in the fridge",
+            "Put the plates in the dishwasher"
+          ],
+          "answer": 2,
+          "explanation": "\"mettez les assiettes dans le lave-vaisselle\"."
+        }
+      ],
+      "topics": [
+        "imperative",
+        "negation",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-001",
+        "essentials-094",
+        "health-time-060",
+        "health-time-089",
+        "health-time-052",
+        "food-019",
+        "essentials-057",
+        "home-085",
+        "food-002",
+        "essentials-058",
+        "home-045",
+        "food-010",
+        "home-061",
+        "food-075",
+        "verbs-025",
+        "food-086",
+        "home-089"
+      ],
+      "gloss": [
+        {
+          "fr": "Maman",
+          "en": "Mum"
+        },
+        {
+          "fr": "n’est pas",
+          "en": "is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "là",
+          "en": "here; there",
+          "word": "essentials-094"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "rentre",
+          "en": "gets back home (rentrer)"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "Il y a",
+          "en": "there is"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "réfrigérateur",
+          "en": "fridge",
+          "word": "home-085"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        },
+        {
+          "fr": "fromage",
+          "en": "cheese",
+          "word": "food-010"
+        },
+        {
+          "fr": "placard",
+          "en": "cupboard",
+          "word": "home-061"
+        },
+        {
+          "fr": "Après",
+          "en": "after"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        },
+        {
+          "fr": "mettez",
+          "en": "put (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "assiettes",
+          "en": "plates (l’assiette)",
+          "word": "food-086"
+        },
+        {
+          "fr": "lave-vaisselle",
+          "en": "dishwasher",
+          "word": "home-089"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "A Sunday at home",
+      "lines": [
+        {
+          "fr": "Le dimanche, je ne mets pas de réveil.",
+          "en": "On Sundays I don’t set an alarm."
+        },
+        {
+          "fr": "Je reste au lit jusqu’à dix heures.",
+          "en": "I stay in bed until ten."
+        },
+        {
+          "fr": "Ensuite, je prends un bon petit déjeuner dans la cuisine.",
+          "en": "Then I have a good breakfast in the kitchen."
+        },
+        {
+          "fr": "L’après-midi, je range la maison et je lave mes draps.",
+          "en": "In the afternoon I tidy the house and wash my sheets."
+        },
+        {
+          "fr": "Le soir, toute la famille regarde un film.",
+          "en": "In the evening the whole family watches a film."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does the writer not do on Sundays?",
+          "choices": [
+            "Set an alarm",
+            "Have breakfast",
+            "Tidy the house"
+          ],
+          "answer": 0,
+          "explanation": "\"je ne mets pas de réveil\"."
+        },
+        {
+          "question": "Until what time does the writer stay in bed?",
+          "choices": [
+            "Nine",
+            "Eleven",
+            "Ten"
+          ],
+          "answer": 2,
+          "explanation": "\"Je reste au lit jusqu’à dix heures.\""
+        },
+        {
+          "question": "What happens in the afternoon?",
+          "choices": [
+            "Watching a film",
+            "Tidying and washing the sheets",
+            "Cooking dinner"
+          ],
+          "answer": 1,
+          "explanation": "\"L’après-midi, je range la maison et je lave mes draps.\""
+        },
+        {
+          "question": "Who watches a film in the evening?",
+          "choices": [
+            "The whole family",
+            "Only the writer",
+            "The children"
+          ],
+          "answer": 0,
+          "explanation": "\"toute la famille regarde un film\"."
+        }
+      ],
+      "topics": [
+        "negation",
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-068",
+        "verbs-025",
+        "verbs-030",
+        "home-051",
+        "essentials-074",
+        "health-time-091",
+        "health-time-052",
+        "verbs-023",
+        "qualities-003",
+        "food-073",
+        "essentials-057",
+        "home-007",
+        "verbs-098",
+        "home-001",
+        "verbs-097",
+        "home-055",
+        "health-time-060",
+        "essentials-044",
+        "people-020",
+        "verbs-011",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "Le dimanche",
+          "en": "on Sundays",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "mets",
+          "en": "set; put (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "réveil",
+          "en": "alarm clock (le réveil)"
+        },
+        {
+          "fr": "reste",
+          "en": "stay (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "lit",
+          "en": "bed",
+          "word": "home-051"
+        },
+        {
+          "fr": "jusqu’à",
+          "en": "until",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "Ensuite",
+          "en": "then; next"
+        },
+        {
+          "fr": "prends",
+          "en": "have; take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "petit déjeuner",
+          "en": "breakfast",
+          "word": "food-073"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen",
+          "word": "home-007"
+        },
+        {
+          "fr": "L’après-midi",
+          "en": "in the afternoon"
+        },
+        {
+          "fr": "range",
+          "en": "tidy (ranger)",
+          "word": "verbs-098"
+        },
+        {
+          "fr": "maison",
+          "en": "house; home",
+          "word": "home-001"
+        },
+        {
+          "fr": "lave",
+          "en": "wash (laver)",
+          "word": "verbs-097"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "draps",
+          "en": "sheets (le drap)",
+          "word": "home-055"
+        },
+        {
+          "fr": "Le soir",
+          "en": "in the evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "toute",
+          "en": "whole; all (tout)",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "famille",
+          "en": "family",
+          "word": "people-020"
+        },
+        {
+          "fr": "regarde",
+          "en": "watches (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "Notice in the building",
+      "lines": [
+        {
+          "fr": "Chers voisins,",
+          "en": "Dear neighbours,"
+        },
+        {
+          "fr": "L’ascenseur ne marche pas jusqu’à vendredi.",
+          "en": "The lift is out of order until Friday."
+        },
+        {
+          "fr": "Le chauffage de l’immeuble est aussi en panne.",
+          "en": "The heating in the building is also out of order."
+        },
+        {
+          "fr": "Un technicien vient mardi matin.",
+          "en": "A technician is coming on Tuesday morning."
+        },
+        {
+          "fr": "Merci de fermer la porte du hall le soir.",
+          "en": "Please close the lobby door in the evening."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Until when is the lift out of order?",
+          "choices": [
+            "Tuesday",
+            "Friday",
+            "Monday"
+          ],
+          "answer": 1,
+          "explanation": "\"L’ascenseur ne marche pas jusqu’à vendredi.\""
+        },
+        {
+          "question": "What else is not working?",
+          "choices": [
+            "The heating",
+            "The doorbell",
+            "The lights in the stairs"
+          ],
+          "answer": 0,
+          "explanation": "\"Le chauffage de l’immeuble est aussi en panne.\""
+        },
+        {
+          "question": "When does the technician come?",
+          "choices": [
+            "Friday morning",
+            "Tuesday evening",
+            "Tuesday morning"
+          ],
+          "answer": 2,
+          "explanation": "\"Un technicien vient mardi matin.\""
+        },
+        {
+          "question": "What are the neighbours asked to do?",
+          "choices": [
+            "Take the bins out",
+            "Close the lobby door in the evening",
+            "Use the stairs in the morning"
+          ],
+          "answer": 1,
+          "explanation": "\"Merci de fermer la porte du hall le soir.\""
+        }
+      ],
+      "topics": [
+        "negation",
+        "time-expressions"
+      ],
+      "words": [
+        "qualities-059",
+        "people-034",
+        "verbs-039",
+        "essentials-074",
+        "health-time-066",
+        "home-040",
+        "verbs-001",
+        "essentials-086",
+        "verbs-005",
+        "health-time-063",
+        "health-time-059",
+        "essentials-002",
+        "verbs-046",
+        "home-025",
+        "home-011",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "Chers",
+          "en": "dear (cher)",
+          "word": "qualities-059"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours (le voisin)",
+          "word": "people-034"
+        },
+        {
+          "fr": "L’ascenseur",
+          "en": "the lift; the elevator"
+        },
+        {
+          "fr": "marche",
+          "en": "works (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "jusqu’à",
+          "en": "until",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "vendredi",
+          "en": "Friday",
+          "word": "health-time-066"
+        },
+        {
+          "fr": "chauffage",
+          "en": "heating",
+          "word": "home-040"
+        },
+        {
+          "fr": "l’immeuble",
+          "en": "the block of flats"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "aussi",
+          "en": "also",
+          "word": "essentials-086"
+        },
+        {
+          "fr": "en panne",
+          "en": "out of order; broken down"
+        },
+        {
+          "fr": "technicien",
+          "en": "technician (le technicien)"
+        },
+        {
+          "fr": "vient",
+          "en": "is coming (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "Merci de",
+          "en": "please (merci de + verb)"
+        },
+        {
+          "fr": "fermer",
+          "en": "to close",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "porte",
+          "en": "door",
+          "word": "home-025"
+        },
+        {
+          "fr": "hall",
+          "en": "lobby; entrance hall",
+          "word": "home-011"
+        },
+        {
+          "fr": "le soir",
+          "en": "in the evening",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "Email about the new flat",
+      "lines": [
+        {
+          "fr": "Salut Camille !",
+          "en": "Hi Camille!"
+        },
+        {
+          "fr": "Notre nouvel appartement est petit mais très clair.",
+          "en": "Our new flat is small but very bright."
+        },
+        {
+          "fr": "Il y a deux chambres, une cuisine et un balcon.",
+          "en": "There are two bedrooms, a kitchen and a balcony."
+        },
+        {
+          "fr": "La salle de bains est au fond du couloir.",
+          "en": "The bathroom is at the end of the hallway."
+        },
+        {
+          "fr": "Nous n’avons pas encore de canapé.",
+          "en": "We don’t have a sofa yet."
+        },
+        {
+          "fr": "Tu viens dîner samedi ?",
+          "en": "Are you coming for dinner on Saturday?"
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many bedrooms does the flat have?",
+          "choices": [
+            "Three",
+            "One",
+            "Two"
+          ],
+          "answer": 2,
+          "explanation": "\"Il y a deux chambres\"."
+        },
+        {
+          "question": "What is missing in the flat?",
+          "choices": [
+            "A table",
+            "A sofa",
+            "A bed"
+          ],
+          "answer": 1,
+          "explanation": "\"Nous n’avons pas encore de canapé.\""
+        },
+        {
+          "question": "Where is the bathroom?",
+          "choices": [
+            "At the end of the hallway",
+            "Next to the kitchen",
+            "Beside the balcony"
+          ],
+          "answer": 0,
+          "explanation": "\"La salle de bains est au fond du couloir.\""
+        },
+        {
+          "question": "What is Camille invited to do?",
+          "choices": [
+            "Help with the move on Saturday",
+            "Visit on Sunday",
+            "Come for dinner on Saturday"
+          ],
+          "answer": 2,
+          "explanation": "\"Tu viens dîner samedi ?\""
+        }
+      ],
+      "topics": [
+        "negation-more",
+        "adjective-placement",
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-006",
+        "essentials-052",
+        "qualities-008",
+        "home-002",
+        "verbs-001",
+        "qualities-002",
+        "essentials-096",
+        "qualities-049",
+        "health-time-083",
+        "home-006",
+        "home-007",
+        "home-018",
+        "home-008",
+        "home-010",
+        "verbs-002",
+        "essentials-087",
+        "home-048",
+        "verbs-005",
+        "health-time-067"
+      ],
+      "gloss": [
+        {
+          "fr": "Salut",
+          "en": "hi",
+          "word": "essentials-006"
+        },
+        {
+          "fr": "Camille",
+          "en": "Camille (a first name)"
+        },
+        {
+          "fr": "Notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "nouvel",
+          "en": "new (nouveau)",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "appartement",
+          "en": "flat; apartment",
+          "word": "home-002"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "petit",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "clair",
+          "en": "bright; light",
+          "word": "qualities-049"
+        },
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "chambres",
+          "en": "bedrooms (la chambre)",
+          "word": "home-006"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen",
+          "word": "home-007"
+        },
+        {
+          "fr": "balcon",
+          "en": "balcony",
+          "word": "home-018"
+        },
+        {
+          "fr": "salle de bains",
+          "en": "bathroom",
+          "word": "home-008"
+        },
+        {
+          "fr": "au fond",
+          "en": "at the end; at the back"
+        },
+        {
+          "fr": "couloir",
+          "en": "hallway",
+          "word": "home-010"
+        },
+        {
+          "fr": "n’avons",
+          "en": "don’t have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "pas encore",
+          "en": "not yet"
+        },
+        {
+          "fr": "canapé",
+          "en": "sofa",
+          "word": "home-048"
+        },
+        {
+          "fr": "viens",
+          "en": "are coming (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "dîner",
+          "en": "to have dinner"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Note for the cat sitter",
+      "lines": [
+        {
+          "fr": "Bonjour Julie.",
+          "en": "Hello Julie."
+        },
+        {
+          "fr": "Le chat mange deux fois par jour, matin et soir.",
+          "en": "The cat eats twice a day, morning and evening."
+        },
+        {
+          "fr": "Ses croquettes sont dans le placard de la cuisine.",
+          "en": "His dry food is in the kitchen cupboard."
+        },
+        {
+          "fr": "N’oubliez pas d’arroser les plantes de la terrasse.",
+          "en": "Don’t forget to water the plants on the terrace."
+        },
+        {
+          "fr": "Le soir, fermez bien les volets.",
+          "en": "In the evening, close the shutters properly."
+        },
+        {
+          "fr": "La clé est sous le tapis.",
+          "en": "The key is under the rug."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How often does the cat eat?",
+          "choices": [
+            "Twice a day",
+            "Once a day",
+            "Three times a day"
+          ],
+          "answer": 0,
+          "explanation": "\"Le chat mange deux fois par jour\"."
+        },
+        {
+          "question": "Where is the cat’s food?",
+          "choices": [
+            "Under the sink",
+            "On the terrace",
+            "In the kitchen cupboard"
+          ],
+          "answer": 2,
+          "explanation": "\"Ses croquettes sont dans le placard de la cuisine.\""
+        },
+        {
+          "question": "What must be done in the evening?",
+          "choices": [
+            "Water the plants",
+            "Close the shutters",
+            "Feed the cat a third time"
+          ],
+          "answer": 1,
+          "explanation": "\"Le soir, fermez bien les volets.\""
+        },
+        {
+          "question": "Where is the key?",
+          "choices": [
+            "Under the rug",
+            "In the cupboard",
+            "On the terrace"
+          ],
+          "answer": 0,
+          "explanation": "\"La clé est sous le tapis.\""
+        }
+      ],
+      "topics": [
+        "imperative",
+        "possessives",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-001",
+        "nature-012",
+        "verbs-059",
+        "health-time-083",
+        "health-time-055",
+        "health-time-059",
+        "health-time-060",
+        "verbs-001",
+        "essentials-057",
+        "home-061",
+        "home-007",
+        "verbs-092",
+        "nature-049",
+        "home-019",
+        "verbs-046",
+        "essentials-045",
+        "home-027",
+        "home-031",
+        "essentials-059",
+        "home-062",
+        "essentials-063"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "Julie",
+          "en": "Julie (a first name)"
+        },
+        {
+          "fr": "chat",
+          "en": "cat",
+          "word": "nature-012"
+        },
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "fois",
+          "en": "times (la fois)"
+        },
+        {
+          "fr": "par",
+          "en": "a; per",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Ses",
+          "en": "his; her; its"
+        },
+        {
+          "fr": "croquettes",
+          "en": "dry pet food (la croquette)"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "placard",
+          "en": "cupboard",
+          "word": "home-061"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen",
+          "word": "home-007"
+        },
+        {
+          "fr": "N’oubliez pas",
+          "en": "don’t forget (oublier)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "d’arroser",
+          "en": "to water (arroser)"
+        },
+        {
+          "fr": "plantes",
+          "en": "plants (la plante)",
+          "word": "nature-049"
+        },
+        {
+          "fr": "terrasse",
+          "en": "terrace",
+          "word": "home-019"
+        },
+        {
+          "fr": "fermez",
+          "en": "close (fermer)",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "bien",
+          "en": "well; properly",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "volets",
+          "en": "shutters (le volet)",
+          "word": "home-027"
+        },
+        {
+          "fr": "clé",
+          "en": "key",
+          "word": "home-031"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "sous",
+          "en": "under",
+          "word": "essentials-059"
+        },
+        {
+          "fr": "tapis",
+          "en": "rug; carpet",
+          "word": "home-062"
+        }
+      ]
+    }
+  ]
+}

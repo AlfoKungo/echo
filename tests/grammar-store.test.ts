@@ -1,10 +1,10 @@
 import { afterEach, describe, expect, test } from 'bun:test';
 import { Database } from 'bun:sqlite';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { GrammarExercise, GrammarExerciseType, GrammarMutation, GrammarSnapshot, GrammarTopicContent, GrammarUnitContent, Word } from '../contract';
-import { loadCourse, type Course } from '../lib/grammar-content';
+import { grammarSpeech, loadCourse, type Course } from '../lib/grammar-content';
 import { createGrammarStore, type GrammarStore } from '../lib/grammar-store';
 import { createStore, StoreError, type Store } from '../lib/store';
 
@@ -83,14 +83,16 @@ function fixture(content: Course = course) {
   const directory = mkdtempSync(join(tmpdir(), 'echo-grammar-'));
   directories.push(directory);
   const dbPath = join(directory, 'nested', 'echo.db');
+  const audioDir = join(directory, 'audio');
+  mkdirSync(audioDir, { recursive: true });
   const now = () => new Date('2026-09-22T10:00:00Z');
   const random = seeded();
   const open = () => {
-    const store = createGrammarStore(content, { dbPath, now, random });
+    const store = createGrammarStore(content, { dbPath, audioDir, now, random });
     stores.add(store);
     return store;
   };
-  return { store: open(), open, dbPath, now };
+  return { store: open(), open, dbPath, audioDir, now };
 }
 
 function mutation(snapshot: GrammarSnapshot, id = requestId()): GrammarMutation {
@@ -516,5 +518,90 @@ describe('course content', () => {
     const catalog = store.catalog();
     expect(catalog).toHaveLength(7);
     expect(catalog.flatMap((unit) => unit.topics)).toHaveLength(35);
+  });
+});
+
+describe('the spoken correct sentence', () => {
+  test('a filled blank, a bracketed cue, an elision, a conjugation and a plain answer each read as French', () => {
+    expect(grammarSpeech(exercise('speak-complete', 'p', 'complete'))).toBe('Elle est française.');
+    expect(grammarSpeech(exercise('speak-elision', 'p', 'complete', { source: 'J’____ faim.', answers: ['ai'] }))).toBe('J’ai faim.');
+    expect(grammarSpeech(exercise('speak-cue', 'p', 'complete', {
+      source: 'Tu ____ (se réveiller) tôt ce matin ? (to a girl)', answers: ['t’es réveillée'],
+    }))).toBe('Tu t’es réveillée tôt ce matin ?');
+    expect(grammarSpeech(exercise('speak-choose', 'p', 'choose'))).toBe('Tu es ici.');
+    expect(grammarSpeech(exercise('speak-answer', 'p', 'choose', {
+      source: 'The keys? (she does not lend them to us)', options: ['Elle ne nous les prête pas.', 'Elle nous les prête.'],
+      answers: ['Elle ne nous les prête pas.'],
+    }))).toBe('Elle ne nous les prête pas.');
+    // A conjugation is accepted bare or with its subject; only the subject form is a sentence to hear.
+    expect(grammarSpeech(exercise('speak-conjugate', 'p', 'conjugate'))).toBe('nous finissons');
+    expect(grammarSpeech(exercise('speak-rewrite', 'p', 'rewrite'))).toBe('Je ne parle pas.');
+    expect(grammarSpeech(exercise('speak-build', 'p', 'build'))).toBe('Tu n’aimes pas le thé.');
+  });
+
+  test('a settled exercise offers its recording only once the clip exists', () => {
+    const { store, audioDir } = fixture();
+    let state = store.start('alpha', requestId());
+    expect(state.session?.current?.audio).toBeNull();
+    writeFileSync(join(audioDir, `${currentId(state)}.mp3`), 'clip');
+    const spoken = currentId(state);
+    state = correct(store, state);
+    expect(state.session?.current).toMatchObject({ settled: true, audio: `audio/grammar/${spoken}.mp3` });
+    state = store.next(mutation(state));
+    expect(state.session?.current?.audio).toBeNull();
+    state = correct(store, state);
+    // The second question has no clip yet, so it offers none rather than a broken player.
+    expect(state.session?.current).toMatchObject({ settled: true, audio: null });
+  });
+});
+
+describe('practice across every touched topic', () => {
+  test('review needs a practised topic first, then draws only from the topics you have opened', () => {
+    const { store } = fixture();
+    expect(store.state('review')).toMatchObject({ scope: 'review', kind: 'practice', topic: null, unit: null, session: null });
+    expectError(() => store.start('review', requestId()), 409, 'Practise a grammar topic first.');
+    const alphaRound = finish(store, store.start('alpha', requestId())).ids;
+    const review = store.start('review', requestId());
+    expect(review).toMatchObject({ scope: 'review', kind: 'practice', topic: null, unit: null, session: { mode: 'practice', total: 10 } });
+    const ids = finish(store, review).ids;
+    expect(ids).toHaveLength(10);
+    expect(ids.every((id) => alpha.exercises.some((item) => item.id === id))).toBe(true);
+    // Alpha's unanswered questions come before the ones already answered alone.
+    expect(ids.filter((id) => alphaRound.includes(id))).toHaveLength(4);
+  });
+
+  test('a review round asks what a test caught out first, then what still needs review', () => {
+    const { store } = fixture();
+    let practice = store.start('alpha', requestId());
+    const shown = currentId(practice);
+    practice = store.help({ ...mutation(practice), kind: 'answer' });
+    finish(store, store.next(mutation(practice)));
+    let test = store.start('test:beta', requestId());
+    const missed = currentId(test);
+    finish(store, test, (id) => id === missed);
+    const misses = store.misses();
+    expect(misses.map((miss) => miss.exerciseId)).toEqual([missed, shown]);
+    expect(misses[0]).toMatchObject({
+      topicId: 'beta', topicTitle: 'Topic beta', exerciseId: missed, example: grammarSpeech(byId.get(missed)!),
+    });
+    expect(misses[1]).toMatchObject({ topicId: 'alpha', example: grammarSpeech(byId.get(shown)!) });
+    expect(misses[0]!.sequence).toBeGreaterThan(misses[1]!.sequence);
+    const ids = finish(store, store.start('review', requestId())).ids;
+    expect(ids[0]).toBe(missed);
+    expect(ids).toContain(shown);
+  });
+
+  test('answering a review question records progress in the question’s own topic, and misses clear when it is right', () => {
+    const { store } = fixture();
+    let practice = store.start('alpha', requestId());
+    const shown = currentId(practice);
+    practice = store.help({ ...mutation(practice), kind: 'answer' });
+    finish(store, store.next(mutation(practice)));
+    expect(store.misses().map((miss) => miss.exerciseId)).toEqual([shown]);
+    const review = until(store, store.start('review', requestId()), (id) => id === shown);
+    expect(review.session?.current?.exercise.topicId).toBe('alpha');
+    finish(store, review);
+    expect(store.misses()).toEqual([]);
+    expect(store.state('alpha').topic?.progress).toMatchObject({ needsReview: 0 });
   });
 });

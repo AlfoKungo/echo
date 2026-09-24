@@ -1,4 +1,8 @@
-"""Explicit offline build of whole French learning clips; never a page-load service.
+"""Explicit offline build of whole French clips for one set; never a page-load service.
+
+A set is `comprehension` (graded sentences and passage lines) or `grammar` (the spoken
+correct sentence of every exercise). `bun scripts/list-clips.ts <set>` names the clips, so
+this script never reads Echo's content itself.
 
 Run with the Python environment named in voices/provenance.json. This process owns
 its Chatterbox model and waits for each local validator subprocess before exiting.
@@ -26,20 +30,21 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-AUDIO = ROOT / 'audio' / 'learning'
+SETS = ('comprehension', 'grammar')
 MODEL = 'mlx-community/chatterbox-multilingual-v3'
 REFERENCE = ROOT / 'voices' / 'french-reference.wav'
 VOICE_PROVENANCE = ROOT / 'voices' / 'provenance.json'
 WHISPER_MODEL = Path.home() / '.local/share/whisper-models/ggml-large-v3-turbo.bin'
-# Same selected voice and sampling settings as render-audio.py. Whole passages
+# Same selected voice and sampling settings as render-audio.py. Whole sentences
 # receive a larger generation ceiling than single vocabulary words; no text is cut.
 SETTINGS = {'lang_code': 'fr', 'cfg_weight': 0.5, 'exaggeration': 0.1,
             'temperature': 0.5, 'max_tokens': 1000}
-PIPELINE = 'whole-learning-clip-v1'
+PIPELINE = 'whole-sentence-clip-v1'
 ENCODING = {'codec': 'libmp3lame', 'bitrate': '96k'}
 VALIDATION = {'language': 'fr', 'model': 'large-v3-turbo',
               'accept': 'full-normalized-text-or-full-french-phonemes',
               'input': 'decoded-final-mp3', 'sampleRate': 16000}
+CLIP_ID = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
 
 
 def atomic_json(path, value):
@@ -54,10 +59,13 @@ def normalize(text):
 
 
 def executable(name):
-    installed = Path('/opt/homebrew/bin') / name
-    found = str(installed) if installed.is_file() else shutil.which(name)
+    for directory in ('/opt/homebrew/bin', str(Path.home() / '.local' / 'bin')):
+        candidate = Path(directory) / name
+        if candidate.is_file():
+            return str(candidate)
+    found = shutil.which(name)
     if not found:
-        raise RuntimeError(f'Required local validator is missing: {name}')
+        raise RuntimeError(f'Required local tool is missing: {name}')
     return found
 
 
@@ -94,18 +102,16 @@ def transcribe(path, whisper):
     return ''.join(segment['text'] for segment in result['transcription']).strip()
 
 
-def clips_from(content):
-    clips = [{'id': lesson['audioId'], 'text': lesson['fr'],
-              'sourceId': lesson['id'], 'kind': lesson['kind']}
-             for lesson in content['listening']]
-    for lesson in content['conversations']:
-        clips.extend({'id': turn['audioId'], 'text': turn['fr'],
-                      'sourceId': lesson['id'], 'turnId': turn['id'], 'kind': 'conversation'}
-                     for turn in lesson['turns'])
+def clips_from(name):
+    # The app owns what a clip is; this script only asks it, so ids and text never drift.
+    listed = json.loads(run([executable('bun'), str(ROOT / 'scripts' / 'list-clips.ts'), name]))
+    clips = [{'id': clip['id'], 'text': clip['text']} for clip in listed]
+    if not clips:
+        raise ValueError(f'The {name} set lists no clips')
     seen = set()
     for clip in clips:
-        if not re.fullmatch(r'[a-z]+(?:-[a-z]+)*', clip['id']) or clip['id'] in seen:
-            raise ValueError(f'Unsafe or duplicate audioId: {clip["id"]}')
+        if not CLIP_ID.fullmatch(clip['id']) or clip['id'] in seen:
+            raise ValueError(f'Unsafe or duplicate clip id: {clip["id"]}')
         if not clip['text'].strip():
             raise ValueError(f'Empty French source for {clip["id"]}')
         seen.add(clip['id'])
@@ -141,14 +147,13 @@ def render_wav(model, conds, text, seed, path, mx, np):
         mx.clear_cache()
 
 
-def build(args):
-    content = json.loads((ROOT / 'content' / 'learning.json').read_text())
-    clips = clips_from(content)
+def build(args, audio):
+    clips = clips_from(args.set)
     if args.ids is not None:
         wanted = {value.strip() for value in args.ids.split(',') if value.strip()}
         unknown = wanted - {clip['id'] for clip in clips}
         if not wanted or unknown:
-            raise ValueError(f'--ids must name existing audioIds; unknown: {sorted(unknown)}')
+            raise ValueError(f'--ids must name existing {args.set} clips; unknown: {sorted(unknown)}')
         clips = [clip for clip in clips if clip['id'] in wanted]
     seeds = [int(value.strip()) for value in args.seeds.split(',') if value.strip()]
     if not seeds:
@@ -163,17 +168,17 @@ def build(args):
         payload = {**signature_settings, 'source': clip}
         return hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
-    manifest_path = AUDIO / 'manifest.json'
+    manifest_path = audio / 'manifest.json'
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
     pending = []
     for clip in clips:
-        path = AUDIO / f'{clip["id"]}.mp3'
+        path = audio / f'{clip["id"]}.mp3'
         cached = manifest.get(clip['id'], {})
         if (args.force or not path.is_file() or cached.get('signature') != signature(clip)
                 or cached.get('sha256') != hashlib.sha256(path.read_bytes()).hexdigest()):
             pending.append(clip)
     if not pending:
-        print(json.dumps({'cached': len(clips), 'pending': 0}), flush=True)
+        print(json.dumps({'set': args.set, 'cached': len(clips), 'pending': 0}), flush=True)
         return 0
 
     ffmpeg = executable('ffmpeg')
@@ -181,15 +186,15 @@ def build(args):
     espeak = executable('espeak-ng')
     if not WHISPER_MODEL.is_file():
         raise RuntimeError(f'Required local Whisper model is missing: {WHISPER_MODEL}')
-    provenance = {**signature_settings, 'source': 'content/learning.json',
+    provenance = {**signature_settings, 'set': args.set, 'source': f'scripts/list-clips.ts {args.set}',
                   'python': sys.executable, 'reference': str(REFERENCE.relative_to(ROOT)),
-                  'generationCommand': 'scripts/render-learning-audio.py',
+                  'generationCommand': f'scripts/render-clips.py --set {args.set}',
                   'processing': 'Generate each complete French source without a carrier or trimming; encode MP3, decode it, then validate the entire spoken text locally.',
                   'validatorDependencies': {'whisper': whisper, 'whisperModel': str(WHISPER_MODEL),
                                             'espeak': espeak, 'ffmpeg': ffmpeg},
-                  'pronunciationCaveat': 'Synthetic speech and ASR can make mistakes. Full phonetic agreement permits homophones and is not native-speaker certification. Dialogue clips use one selected voice, not separate character voices.'}
-    atomic_json(AUDIO / 'provenance.json', provenance)
-    print(json.dumps({'loading': MODEL, 'pending': len(pending), 'pipeline': PIPELINE}), flush=True)
+                  'pronunciationCaveat': 'Synthetic speech and ASR can make mistakes. Full phonetic agreement permits homophones and is not native-speaker certification. Dialogue lines use one selected voice, not separate character voices.'}
+    atomic_json(audio / 'provenance.json', provenance)
+    print(json.dumps({'set': args.set, 'loading': MODEL, 'pending': len(pending), 'pipeline': PIPELINE}), flush=True)
 
     # Import and load only after cache/dependency checks. Offline mode forbids
     # downloads; missing cached model files fail rather than starting a service.
@@ -203,12 +208,12 @@ def build(args):
     try:
         model = load_model(MODEL)
         conds = model.prepare_conditionals(str(REFERENCE), 24000, exaggeration=SETTINGS['exaggeration'])
-        with tempfile.TemporaryDirectory(prefix='.render-', dir=AUDIO) as work:
+        with tempfile.TemporaryDirectory(prefix='.render-', dir=audio) as work:
             scratch = Path(work)
             for index, clip in enumerate(pending, 1):
                 started = time.monotonic()
                 errors = []
-                final = AUDIO / f'{clip["id"]}.mp3'
+                final = audio / f'{clip["id"]}.mp3'
                 expected_phonemes = phonemes(clip['text'], espeak)
                 for seed in seeds:
                     try:
@@ -225,7 +230,7 @@ def build(args):
                         if not exact and (not transcript or phonemes(transcript, espeak) != expected_phonemes):
                             errors.append({'seed': seed, 'error': 'Full spoken text mismatch', 'transcript': transcript})
                             continue
-                        record = {**clip, 'signature': signature(clip), 'model': MODEL,
+                        record = {**clip, 'set': args.set, 'signature': signature(clip), 'model': MODEL,
                                   'pipeline': PIPELINE, 'seconds': seconds, 'transcript': transcript,
                                   'check': 'text' if exact else 'phonetic', 'seed': seed,
                                   'sha256': hashlib.sha256(mp3.read_bytes()).hexdigest(),
@@ -248,43 +253,45 @@ def build(args):
                     manifest.pop(clip['id'], None)
                     atomic_json(manifest_path, manifest)
                     print(json.dumps({'failed': clip['id'], 'attempts': errors}, ensure_ascii=False), flush=True)
-                atomic_json(AUDIO / 'failures.json', failures)
+                atomic_json(audio / 'failures.json', failures)
     finally:
         conds = model = None
         gc.collect()
         mx.clear_cache()
         # A completed/failed clip is saved immediately; an interrupted clip is
         # retried on the next explicit invocation, never by ordinary browsing.
-        atomic_json(AUDIO / 'failures.json', failures)
-    print(json.dumps({'requested': len(clips), 'cached': len(clips) - len(pending),
+        atomic_json(audio / 'failures.json', failures)
+    print(json.dumps({'set': args.set, 'requested': len(clips), 'cached': len(clips) - len(pending),
                       'rendered': completed, 'failed': len(failures), 'recordings': len(manifest)}), flush=True)
     return 1 if failures else 0
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--ids', help='Comma-separated audioIds; default: all listening and conversation clips')
+    parser.add_argument('--set', required=True, choices=SETS, help='Which clip set to render')
+    parser.add_argument('--ids', help='Comma-separated clip ids; default: every clip of the set')
     parser.add_argument('--force', action='store_true', help='Re-render selected clips even if their signature matches')
     parser.add_argument('--seeds', default='42,17,101', help='Deterministic retry seeds, tried in order')
     args = parser.parse_args()
-    AUDIO.mkdir(parents=True, exist_ok=True)
+    audio = ROOT / 'audio' / args.set
+    audio.mkdir(parents=True, exist_ok=True)
 
     def interrupt(signum, frame):
         raise KeyboardInterrupt
 
     signal.signal(signal.SIGTERM, interrupt)
     try:
-        with (AUDIO / '.render.lock').open('a') as lock:
+        with (audio / '.render.lock').open('a') as lock:
             try:
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:
-                raise RuntimeError('Another learning-audio renderer owns this output directory')
-            return build(args)
+                raise RuntimeError(f'Another renderer owns audio/{args.set}')
+            return build(args, audio)
     except KeyboardInterrupt:
-        print('Learning audio render interrupted; owned validators and model resources released.', file=sys.stderr)
+        print(f'{args.set} audio render interrupted; owned validators and model resources released.', file=sys.stderr)
         return 130
     except Exception as error:
-        print(f'Learning audio render failed: {error}', file=sys.stderr)
+        print(f'{args.set} audio render failed: {error}', file=sys.stderr)
         return 1
 
 

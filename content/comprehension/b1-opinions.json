@@ -1,0 +1,6025 @@
+{
+  "sentences": [
+    {
+      "id": "b1-opinions-s01",
+      "level": "B1",
+      "fr": "À mon avis, ce nouveau parking est inutile, alors que le quartier manque surtout d’arbres.",
+      "en": "In my opinion, this new car park is useless, whereas the neighbourhood mainly lacks trees.",
+      "distractors": [
+        "In my opinion, this new car park is useful, whereas the neighbourhood mainly lacks trees.",
+        "In my opinion, this old car park is useless, whereas the neighbourhood mainly lacks trees.",
+        "In my opinion, this new car park is useless, whereas the neighbourhood mainly lacks shops."
+      ],
+      "gap": "inutile",
+      "topics": [
+        "demonstratives",
+        "adjective-placement"
+      ],
+      "words": [
+        "qualities-008",
+        "verbs-001",
+        "qualities-044",
+        "travel-032",
+        "nature-009",
+        "travel-081"
+      ],
+      "gloss": [
+        {
+          "fr": "À mon avis",
+          "en": "in my opinion"
+        },
+        {
+          "fr": "nouveau",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "parking",
+          "en": "car park",
+          "word": "travel-081"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "inutile",
+          "en": "useless",
+          "word": "qualities-044"
+        },
+        {
+          "fr": "alors que",
+          "en": "whereas; while"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "manque",
+          "en": "lacks (manquer)"
+        },
+        {
+          "fr": "surtout",
+          "en": "above all; mainly"
+        },
+        {
+          "fr": "d’arbres",
+          "en": "trees",
+          "word": "nature-009"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s02",
+      "level": "B1",
+      "fr": "Le maire a promis que les travaux seraient finis avant l’hiver, mais personne n’y croit.",
+      "en": "The mayor promised that the work would be finished before winter, but nobody believes it.",
+      "distractors": [
+        "The mayor promised that the work would be finished before summer, but nobody believes it.",
+        "The mayor promised that the work would be finished before winter, and everybody believes it.",
+        "The mayor hoped that the work would be finished before winter, but nobody believes it."
+      ],
+      "gap": "seraient",
+      "topics": [
+        "conditional",
+        "negation-more"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-001",
+        "verbs-048",
+        "essentials-040",
+        "verbs-018"
+      ],
+      "gloss": [
+        {
+          "fr": "maire",
+          "en": "mayor"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "promis",
+          "en": "promised (promettre)"
+        },
+        {
+          "fr": "travaux",
+          "en": "roadworks; building work"
+        },
+        {
+          "fr": "seraient",
+          "en": "would be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "finis",
+          "en": "finished (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "l’hiver",
+          "en": "winter"
+        },
+        {
+          "fr": "personne",
+          "en": "nobody",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "croit",
+          "en": "believes (croire)",
+          "word": "verbs-018"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s03",
+      "level": "B1",
+      "fr": "Depuis qu’ils ont installé des bacs à compost, la rue est beaucoup plus propre.",
+      "en": "Since they installed compost bins, the street is much cleaner.",
+      "distractors": [
+        "Since they installed compost bins, the street is much dirtier.",
+        "Since they removed the compost bins, the street is much cleaner.",
+        "Since they installed compost bins, the park is much cleaner."
+      ],
+      "gap": "propre",
+      "topics": [
+        "passe-compose-avoir",
+        "comparison"
+      ],
+      "words": [
+        "verbs-002",
+        "travel-002",
+        "verbs-001",
+        "essentials-099",
+        "qualities-029"
+      ],
+      "gloss": [
+        {
+          "fr": "Depuis qu’ils",
+          "en": "since they"
+        },
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "installé",
+          "en": "installed (installer)"
+        },
+        {
+          "fr": "bacs",
+          "en": "bins; containers"
+        },
+        {
+          "fr": "compost",
+          "en": "compost"
+        },
+        {
+          "fr": "rue",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; much",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "propre",
+          "en": "clean",
+          "word": "qualities-029"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s04",
+      "level": "B1",
+      "fr": "Tu ne trouves pas que les publicités à la radio sont devenues insupportables ?",
+      "en": "Don’t you think that the adverts on the radio have become unbearable?",
+      "distractors": [
+        "Don’t you think that the adverts on television have become unbearable?",
+        "Don’t you think that the adverts on the radio have become funnier?",
+        "Don’t you think that the adverts on the radio have always been unbearable?"
+      ],
+      "gap": "devenues",
+      "topics": [
+        "negation",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "verbs-026",
+        "work-096",
+        "work-086",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "trouves",
+          "en": "find; think (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "publicités",
+          "en": "adverts",
+          "word": "work-096"
+        },
+        {
+          "fr": "radio",
+          "en": "radio",
+          "word": "work-086"
+        },
+        {
+          "fr": "sont devenues",
+          "en": "have become (devenir)"
+        },
+        {
+          "fr": "insupportables",
+          "en": "unbearable"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s05",
+      "level": "B1",
+      "fr": "Si j’avais le temps, je participerais au conseil de quartier tous les mois.",
+      "en": "If I had the time, I would take part in the neighbourhood council every month.",
+      "distractors": [
+        "If I had the time, I would take part in the neighbourhood council every week.",
+        "If I have the time, I will take part in the neighbourhood council every month.",
+        "If I had the money, I would take part in the neighbourhood council every month."
+      ],
+      "gap": "participerais",
+      "topics": [
+        "si-clauses",
+        "conditional"
+      ],
+      "words": [
+        "essentials-081",
+        "verbs-002",
+        "health-time-051",
+        "travel-032",
+        "essentials-044",
+        "health-time-057"
+      ],
+      "gloss": [
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "j’avais",
+          "en": "I had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "temps",
+          "en": "time",
+          "word": "health-time-051"
+        },
+        {
+          "fr": "participerais",
+          "en": "would take part (participer)"
+        },
+        {
+          "fr": "conseil",
+          "en": "council"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "tous",
+          "en": "every; all",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "mois",
+          "en": "month",
+          "word": "health-time-057"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s06",
+      "level": "B1",
+      "fr": "Il faut que la mairie écoute les habitants avant de fermer la bibliothèque.",
+      "en": "The town hall must listen to the residents before closing the library.",
+      "distractors": [
+        "The town hall must listen to the residents before opening the library.",
+        "The residents must listen to the town hall before closing the library.",
+        "The town hall must listen to the tourists before closing the library."
+      ],
+      "gap": "écoute",
+      "topics": [
+        "subjunctive"
+      ],
+      "words": [
+        "verbs-022",
+        "travel-076",
+        "verbs-013",
+        "verbs-046"
+      ],
+      "gloss": [
+        {
+          "fr": "Il faut",
+          "en": "it is necessary; we must (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "écoute",
+          "en": "listen(s) (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "habitants",
+          "en": "residents"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "fermer",
+          "en": "to close",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "bibliothèque",
+          "en": "library"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s07",
+      "level": "B1",
+      "fr": "Je suis d’accord avec toi sur le fond, pourtant je trouve ton exemple exagéré.",
+      "en": "I agree with you on the substance, yet I find your example exaggerated.",
+      "distractors": [
+        "I disagree with you on the substance, yet I find your example exaggerated.",
+        "I agree with you on the substance, yet I find your question exaggerated.",
+        "I agree with him on the substance, yet I find your example exaggerated."
+      ],
+      "gap": "pourtant",
+      "topics": [
+        "stressed-pronouns",
+        "possessives"
+      ],
+      "words": [
+        "verbs-001",
+        "essentials-015",
+        "essentials-060",
+        "essentials-026",
+        "essentials-058",
+        "essentials-084",
+        "verbs-026",
+        "essentials-050",
+        "work-053"
+      ],
+      "gloss": [
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "d’accord",
+          "en": "in agreement; OK",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "toi",
+          "en": "you",
+          "word": "essentials-026"
+        },
+        {
+          "fr": "sur",
+          "en": "on; about",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "fond",
+          "en": "substance; the heart of it"
+        },
+        {
+          "fr": "pourtant",
+          "en": "yet; however",
+          "word": "essentials-084"
+        },
+        {
+          "fr": "trouve",
+          "en": "find; think (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "exemple",
+          "en": "example",
+          "word": "work-053"
+        },
+        {
+          "fr": "exagéré",
+          "en": "exaggerated"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s08",
+      "level": "B1",
+      "fr": "Les gens dont je parle habitent ici depuis vingt ans et n’ont jamais vu ça.",
+      "en": "The people I am talking about have lived here for twenty years and have never seen that.",
+      "distractors": [
+        "The people I am talking about have lived here for twelve years and have never seen that.",
+        "The people I am talking about have lived here for twenty years and have often seen that.",
+        "The people I am talking about have worked here for twenty years and have never seen that."
+      ],
+      "gap": "vingt",
+      "topics": [
+        "relative-pronouns",
+        "negation-more"
+      ],
+      "words": [
+        "verbs-007",
+        "verbs-068",
+        "essentials-093",
+        "health-time-094",
+        "verbs-002",
+        "essentials-090",
+        "verbs-010",
+        "essentials-029"
+      ],
+      "gloss": [
+        {
+          "fr": "gens",
+          "en": "people"
+        },
+        {
+          "fr": "dont",
+          "en": "of whom; about whom"
+        },
+        {
+          "fr": "parle",
+          "en": "talks; is talking (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "habitent",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        },
+        {
+          "fr": "depuis",
+          "en": "for; since"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        },
+        {
+          "fr": "n’ont",
+          "en": "have not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "ça",
+          "en": "that",
+          "word": "essentials-029"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s09",
+      "level": "B1",
+      "fr": "Le journaliste a expliqué que l’inondation avait touché trois villages du sud.",
+      "en": "The journalist explained that the flood had affected three villages in the south.",
+      "distractors": [
+        "The journalist explained that the flood had affected three villages in the north.",
+        "The journalist explained that the flood had affected thirteen villages in the south.",
+        "The journalist explained that the storm had affected three villages in the south."
+      ],
+      "gap": "trois",
+      "topics": [
+        "passe-compose-avoir",
+        "contractions"
+      ],
+      "words": [
+        "work-026",
+        "verbs-002",
+        "verbs-075",
+        "nature-100",
+        "health-time-084",
+        "travel-047",
+        "travel-043"
+      ],
+      "gloss": [
+        {
+          "fr": "journaliste",
+          "en": "journalist",
+          "word": "work-026"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "expliqué",
+          "en": "explained (expliquer)",
+          "word": "verbs-075"
+        },
+        {
+          "fr": "l’inondation",
+          "en": "the flood",
+          "word": "nature-100"
+        },
+        {
+          "fr": "avait",
+          "en": "had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "touché",
+          "en": "affected (toucher)"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "villages",
+          "en": "villages",
+          "word": "travel-047"
+        },
+        {
+          "fr": "sud",
+          "en": "south",
+          "word": "travel-043"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s10",
+      "level": "B1",
+      "fr": "On parle beaucoup de pollution, mais très peu de ce que chacun peut faire.",
+      "en": "People talk a lot about pollution, but very little about what each person can do.",
+      "distractors": [
+        "People talk very little about pollution, but a lot about what each person can do.",
+        "People talk a lot about pollution, but very little about what the mayor can do.",
+        "People talk a lot about traffic, but very little about what each person can do."
+      ],
+      "gap": "chacun",
+      "topics": [
+        "relative-pronouns"
+      ],
+      "words": [
+        "verbs-007",
+        "essentials-099",
+        "nature-098",
+        "essentials-096",
+        "essentials-100",
+        "essentials-043",
+        "verbs-020",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "fr": "parle",
+          "en": "talks; is talking (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; much",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "pollution",
+          "en": "pollution",
+          "word": "nature-098"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "peu",
+          "en": "little; few",
+          "word": "essentials-100"
+        },
+        {
+          "fr": "ce que",
+          "en": "what (the thing that)"
+        },
+        {
+          "fr": "chacun",
+          "en": "each person",
+          "word": "essentials-043"
+        },
+        {
+          "fr": "peut",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "faire",
+          "en": "to do; to make",
+          "word": "verbs-003"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s11",
+      "level": "B1",
+      "fr": "Ma voisine dit qu’elle éteindra son écran dès que la réunion sera finie.",
+      "en": "My neighbour says she will switch off her screen as soon as the meeting is over.",
+      "distractors": [
+        "My neighbour says she will switch off her screen before the meeting starts.",
+        "My neighbour says she will switch off her phone as soon as the meeting is over.",
+        "My neighbour said she had switched off her screen when the meeting was over."
+      ],
+      "gap": "éteindra",
+      "topics": [
+        "futur-simple",
+        "possessives"
+      ],
+      "words": [
+        "essentials-049",
+        "people-034",
+        "verbs-006",
+        "essentials-051",
+        "work-063",
+        "work-007",
+        "verbs-001",
+        "verbs-048"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "voisine",
+          "en": "neighbour",
+          "word": "people-034"
+        },
+        {
+          "fr": "dit",
+          "en": "says; said (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "éteindra",
+          "en": "will switch off (éteindre)"
+        },
+        {
+          "fr": "son",
+          "en": "his; her",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "écran",
+          "en": "screen",
+          "word": "work-063"
+        },
+        {
+          "fr": "dès que",
+          "en": "as soon as"
+        },
+        {
+          "fr": "réunion",
+          "en": "meeting",
+          "word": "work-007"
+        },
+        {
+          "fr": "sera",
+          "en": "will be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "finie",
+          "en": "finished; over (finir)",
+          "word": "verbs-048"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s12",
+      "level": "B1",
+      "fr": "Franchement, je ne crois pas un mot de cet article : les chiffres sont faux.",
+      "en": "Honestly, I don’t believe a word of this article: the figures are wrong.",
+      "distractors": [
+        "Honestly, I don’t believe a word of this article: the figures are old.",
+        "Honestly, I believe every word of this article: the figures are wrong.",
+        "Honestly, I don’t believe a word of this report: the figures are wrong."
+      ],
+      "gap": "faux",
+      "topics": [
+        "demonstratives",
+        "negation"
+      ],
+      "words": [
+        "verbs-018",
+        "work-049",
+        "essentials-046",
+        "work-083",
+        "verbs-001",
+        "qualities-048"
+      ],
+      "gloss": [
+        {
+          "fr": "Franchement",
+          "en": "honestly; frankly"
+        },
+        {
+          "fr": "crois",
+          "en": "believe (croire)",
+          "word": "verbs-018"
+        },
+        {
+          "fr": "mot",
+          "en": "word",
+          "word": "work-049"
+        },
+        {
+          "fr": "cet",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "article",
+          "en": "article",
+          "word": "work-083"
+        },
+        {
+          "fr": "chiffres",
+          "en": "figures"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "faux",
+          "en": "false; wrong",
+          "word": "qualities-048"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s13",
+      "level": "B1",
+      "fr": "L’émission commence à vingt heures trente, juste après les actualités régionales.",
+      "en": "The programme starts at half past eight in the evening, right after the regional news.",
+      "distractors": [
+        "The programme starts at half past seven in the evening, right after the regional news.",
+        "The programme starts at half past eight in the evening, right before the regional news.",
+        "The programme starts at half past eight in the evening, right after the national news."
+      ],
+      "gap": "trente",
+      "topics": [
+        "time-expressions"
+      ],
+      "words": [
+        "work-088",
+        "verbs-047",
+        "health-time-094",
+        "health-time-052",
+        "work-085",
+        "health-time-095"
+      ],
+      "gloss": [
+        {
+          "fr": "L’émission",
+          "en": "the programme",
+          "word": "work-088"
+        },
+        {
+          "fr": "commence",
+          "en": "starts (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "trente",
+          "en": "thirty",
+          "word": "health-time-095"
+        },
+        {
+          "fr": "juste",
+          "en": "just; exactly"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "actualités",
+          "en": "the news",
+          "word": "work-085"
+        },
+        {
+          "fr": "régionales",
+          "en": "regional"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s14",
+      "level": "B1",
+      "fr": "Si tout le monde triait ses déchets, la ville économiserait des milliers d’euros.",
+      "en": "If everyone sorted their rubbish, the town would save thousands of euros.",
+      "distractors": [
+        "If everyone sorted their rubbish, the town would lose thousands of euros.",
+        "If everyone sorted their rubbish, the town would save hundreds of euros.",
+        "If nobody sorted their rubbish, the town would save thousands of euros."
+      ],
+      "gap": "économiserait",
+      "topics": [
+        "si-clauses",
+        "conditional"
+      ],
+      "words": [
+        "essentials-081",
+        "essentials-051",
+        "travel-001",
+        "essentials-044"
+      ],
+      "gloss": [
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "tout le monde",
+          "en": "everyone"
+        },
+        {
+          "fr": "triait",
+          "en": "sorted (trier)"
+        },
+        {
+          "fr": "ses",
+          "en": "his; her; their",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "déchets",
+          "en": "rubbish; waste"
+        },
+        {
+          "fr": "ville",
+          "en": "town; city",
+          "word": "travel-001"
+        },
+        {
+          "fr": "économiserait",
+          "en": "would save (économiser)"
+        },
+        {
+          "fr": "milliers",
+          "en": "thousands"
+        },
+        {
+          "fr": "d’euros",
+          "en": "euros"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s15",
+      "level": "B1",
+      "fr": "Ce qui m’énerve, c’est qu’on nous demande notre avis après la décision.",
+      "en": "What annoys me is that they ask our opinion after the decision.",
+      "distractors": [
+        "What annoys me is that they ask our opinion before the decision.",
+        "What annoys me is that they never ask our opinion about the decision.",
+        "What surprises me is that they ask our opinion after the decision."
+      ],
+      "gap": "après",
+      "topics": [
+        "relative-pronouns"
+      ],
+      "words": [
+        "verbs-001",
+        "verbs-008",
+        "essentials-052",
+        "essentials-032"
+      ],
+      "gloss": [
+        {
+          "fr": "Ce qui",
+          "en": "what (the thing that)"
+        },
+        {
+          "fr": "m’énerve",
+          "en": "annoys me (énerver)"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "demande",
+          "en": "asks (demander)",
+          "word": "verbs-008"
+        },
+        {
+          "fr": "notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "avis",
+          "en": "opinion"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "décision",
+          "en": "decision"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s16",
+      "level": "B1",
+      "fr": "Les habitants se plaignent du bruit, alors que la circulation a vraiment diminué.",
+      "en": "The residents complain about the noise, whereas the traffic has really decreased.",
+      "distractors": [
+        "The residents complain about the noise, whereas the traffic has really increased.",
+        "The residents complain about the buses, whereas the traffic has really decreased.",
+        "The shopkeepers complain about the noise, whereas the traffic has really decreased."
+      ],
+      "gap": "diminué",
+      "topics": [
+        "reflexive",
+        "contractions"
+      ],
+      "words": [
+        "travel-087",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "habitants",
+          "en": "residents"
+        },
+        {
+          "fr": "se plaignent",
+          "en": "complain (se plaindre)"
+        },
+        {
+          "fr": "bruit",
+          "en": "noise"
+        },
+        {
+          "fr": "alors que",
+          "en": "whereas; while"
+        },
+        {
+          "fr": "circulation",
+          "en": "traffic",
+          "word": "travel-087"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vraiment",
+          "en": "really"
+        },
+        {
+          "fr": "diminué",
+          "en": "decreased (diminuer)"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s17",
+      "level": "B1",
+      "fr": "Je préférerais qu’on plante des arbres plutôt que de construire un autre supermarché.",
+      "en": "I would rather we planted trees than built another supermarket.",
+      "distractors": [
+        "I would rather we planted trees than built another school.",
+        "I would rather we built another supermarket than planted trees.",
+        "I would rather we cut down trees than built another supermarket."
+      ],
+      "gap": "préférerais",
+      "topics": [
+        "conditional",
+        "subjunctive"
+      ],
+      "words": [
+        "verbs-053",
+        "nature-009",
+        "travel-023"
+      ],
+      "gloss": [
+        {
+          "fr": "préférerais",
+          "en": "would prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "plante",
+          "en": "plants (planter)"
+        },
+        {
+          "fr": "arbres",
+          "en": "trees",
+          "word": "nature-009"
+        },
+        {
+          "fr": "plutôt que de",
+          "en": "rather than"
+        },
+        {
+          "fr": "construire",
+          "en": "to build"
+        },
+        {
+          "fr": "autre",
+          "en": "other"
+        },
+        {
+          "fr": "supermarché",
+          "en": "supermarket",
+          "word": "travel-023"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s18",
+      "level": "B1",
+      "fr": "Tu as vu ce reportage sur les voitures électriques ? Il m’a beaucoup surpris.",
+      "en": "Did you see that report about electric cars? It surprised me a lot.",
+      "distractors": [
+        "Did you see that report about electric bikes? It surprised me a lot.",
+        "Did you see that report about electric cars? It bored me a lot.",
+        "Did you write that report about electric cars? It surprised me a lot."
+      ],
+      "gap": "surpris",
+      "topics": [
+        "passe-compose-avoir",
+        "direct-object"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-010",
+        "essentials-058",
+        "travel-004",
+        "essentials-099"
+      ],
+      "gloss": [
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "reportage",
+          "en": "report"
+        },
+        {
+          "fr": "sur",
+          "en": "on; about",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "voitures",
+          "en": "cars",
+          "word": "travel-004"
+        },
+        {
+          "fr": "électriques",
+          "en": "electric"
+        },
+        {
+          "fr": "m’a",
+          "en": "has ... me (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; much",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "surpris",
+          "en": "surprised (surprendre)"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s19",
+      "level": "B1",
+      "fr": "Selon la météo, il pleuvra toute la semaine, donc la fête sera annulée.",
+      "en": "According to the weather forecast, it will rain all week, so the party will be cancelled.",
+      "distractors": [
+        "According to the weather forecast, it will rain all weekend, so the party will be cancelled.",
+        "According to the weather forecast, it will rain all week, so the party will take place anyway.",
+        "According to the weather forecast, it rained all week, so the party was cancelled."
+      ],
+      "gap": "pleuvra",
+      "topics": [
+        "futur-simple"
+      ],
+      "words": [
+        "essentials-072",
+        "nature-095",
+        "essentials-044",
+        "health-time-056",
+        "essentials-078",
+        "people-054",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Selon",
+          "en": "according to",
+          "word": "essentials-072"
+        },
+        {
+          "fr": "météo",
+          "en": "weather forecast",
+          "word": "nature-095"
+        },
+        {
+          "fr": "pleuvra",
+          "en": "will rain (pleuvoir)"
+        },
+        {
+          "fr": "toute",
+          "en": "all",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "donc",
+          "en": "so; therefore",
+          "word": "essentials-078"
+        },
+        {
+          "fr": "fête",
+          "en": "party; festival",
+          "word": "people-054"
+        },
+        {
+          "fr": "sera",
+          "en": "will be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "annulée",
+          "en": "cancelled (annuler)"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s20",
+      "level": "B1",
+      "fr": "Mon voisin trouve que les jeunes ne lisent plus le journal, mais il se trompe.",
+      "en": "My neighbour thinks that young people no longer read the newspaper, but he is wrong.",
+      "distractors": [
+        "My neighbour thinks that young people no longer watch television, but he is wrong.",
+        "My neighbour thinks that young people still read the newspaper, but he is wrong.",
+        "My neighbour thinks that young people no longer read the newspaper, and he is right."
+      ],
+      "gap": "plus",
+      "topics": [
+        "negation-more",
+        "reflexive"
+      ],
+      "words": [
+        "essentials-049",
+        "people-034",
+        "verbs-026",
+        "qualities-010",
+        "verbs-072",
+        "work-081"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "voisin",
+          "en": "neighbour",
+          "word": "people-034"
+        },
+        {
+          "fr": "trouve",
+          "en": "find; think (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "jeunes",
+          "en": "young people",
+          "word": "qualities-010"
+        },
+        {
+          "fr": "lisent",
+          "en": "read (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "journal",
+          "en": "newspaper",
+          "word": "work-081"
+        },
+        {
+          "fr": "se trompe",
+          "en": "is wrong; is mistaken (se tromper)"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s21",
+      "level": "B1",
+      "fr": "Il paraît que la nouvelle application de la mairie ne fonctionne toujours pas.",
+      "en": "Apparently the town hall’s new app still doesn’t work.",
+      "distractors": [
+        "Apparently the town hall’s new app works well now.",
+        "Apparently the town hall’s new website still doesn’t work.",
+        "Apparently the school’s new app still doesn’t work."
+      ],
+      "gap": "fonctionne",
+      "topics": [
+        "negation"
+      ],
+      "words": [
+        "qualities-008",
+        "work-067",
+        "travel-076",
+        "essentials-089"
+      ],
+      "gloss": [
+        {
+          "fr": "Il paraît",
+          "en": "apparently; it seems"
+        },
+        {
+          "fr": "nouvelle",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "application",
+          "en": "app",
+          "word": "work-067"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "fonctionne",
+          "en": "works (fonctionner)"
+        },
+        {
+          "fr": "toujours",
+          "en": "still; always",
+          "word": "essentials-089"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s22",
+      "level": "B1",
+      "fr": "Quand j’étais enfant, il y avait un marché sur cette place tous les samedis.",
+      "en": "When I was a child, there was a market on this square every Saturday.",
+      "distractors": [
+        "When I was a child, there was a market on this square every Sunday.",
+        "When I was a child, there was a market in this street every Saturday.",
+        "When my son was a child, there was a market on this square every Saturday."
+      ],
+      "gap": "avait",
+      "topics": [
+        "imparfait",
+        "demonstratives"
+      ],
+      "words": [
+        "essentials-082",
+        "verbs-001",
+        "people-004",
+        "travel-022",
+        "essentials-058",
+        "essentials-047",
+        "travel-034",
+        "essentials-044",
+        "health-time-067",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "j’étais",
+          "en": "I was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "enfant",
+          "en": "child",
+          "word": "people-004"
+        },
+        {
+          "fr": "il y avait",
+          "en": "there was / there were"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "sur",
+          "en": "on; about",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "place",
+          "en": "square",
+          "word": "travel-034"
+        },
+        {
+          "fr": "tous",
+          "en": "every; all",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "samedis",
+          "en": "Saturdays",
+          "word": "health-time-067"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s23",
+      "level": "B1",
+      "fr": "Le problème, ce n’est pas la technologie, c’est la façon dont on l’utilise.",
+      "en": "The problem isn’t technology, it’s the way we use it.",
+      "distractors": [
+        "The problem isn’t the way we use it, it’s technology itself.",
+        "The problem isn’t technology, it’s the people who sell it.",
+        "The problem isn’t technology, it’s the price we pay for it."
+      ],
+      "gap": "façon",
+      "topics": [
+        "relative-pronouns",
+        "negation"
+      ],
+      "words": [
+        "verbs-001",
+        "verbs-077"
+      ],
+      "gloss": [
+        {
+          "fr": "problème",
+          "en": "problem"
+        },
+        {
+          "fr": "ce n’est pas",
+          "en": "it is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "technologie",
+          "en": "technology"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "façon",
+          "en": "way; manner"
+        },
+        {
+          "fr": "dont",
+          "en": "in which; that"
+        },
+        {
+          "fr": "l’utilise",
+          "en": "uses it (utiliser)",
+          "word": "verbs-077"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s24",
+      "level": "B1",
+      "fr": "On m’a dit que le centre-ville deviendrait piéton l’année prochaine.",
+      "en": "I was told that the town centre would become pedestrianised next year.",
+      "distractors": [
+        "I was told that the town centre would become pedestrianised this year.",
+        "I was told that the town centre had become pedestrianised last year.",
+        "I was told that the market would become pedestrianised next year."
+      ],
+      "gap": "deviendrait",
+      "topics": [
+        "conditional",
+        "indirect-object"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-006",
+        "travel-033",
+        "health-time-058"
+      ],
+      "gloss": [
+        {
+          "fr": "m’a",
+          "en": "has ... me (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "dit",
+          "en": "says; said (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "centre-ville",
+          "en": "town centre",
+          "word": "travel-033"
+        },
+        {
+          "fr": "deviendrait",
+          "en": "would become (devenir)"
+        },
+        {
+          "fr": "piéton",
+          "en": "pedestrian"
+        },
+        {
+          "fr": "l’année",
+          "en": "the year",
+          "word": "health-time-058"
+        },
+        {
+          "fr": "prochaine",
+          "en": "next"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s25",
+      "level": "B1",
+      "fr": "Beaucoup de gens partagent des informations sans vérifier d’où elles viennent.",
+      "en": "Many people share information without checking where it comes from.",
+      "distractors": [
+        "Many people share information after checking where it comes from.",
+        "Few people share information without checking where it comes from.",
+        "Many people read information without checking where it comes from."
+      ],
+      "gap": "vérifier",
+      "topics": [
+        "question-words",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-099",
+        "work-084",
+        "essentials-061",
+        "essentials-035",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "fr": "Beaucoup",
+          "en": "a lot; much",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "gens",
+          "en": "people"
+        },
+        {
+          "fr": "partagent",
+          "en": "share (partager)"
+        },
+        {
+          "fr": "informations",
+          "en": "information; news",
+          "word": "work-084"
+        },
+        {
+          "fr": "sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "vérifier",
+          "en": "to check"
+        },
+        {
+          "fr": "d’où",
+          "en": "where ... from",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "viennent",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s26",
+      "level": "B1",
+      "fr": "Pour être honnête, ce débat dure depuis des années et n’avance pas.",
+      "en": "To be honest, this debate has been going on for years and isn’t moving forward.",
+      "distractors": [
+        "To be honest, this debate started a year ago and isn’t moving forward.",
+        "To be honest, this debate has been going on for years and is finally moving forward.",
+        "To be honest, this meeting has been going on for years and isn’t moving forward."
+      ],
+      "gap": "depuis",
+      "topics": [
+        "time-expressions",
+        "negation"
+      ],
+      "words": [
+        "health-time-058",
+        "essentials-062",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Pour être honnête",
+          "en": "to be honest"
+        },
+        {
+          "fr": "débat",
+          "en": "debate"
+        },
+        {
+          "fr": "dure",
+          "en": "lasts (durer)"
+        },
+        {
+          "fr": "depuis",
+          "en": "for; since"
+        },
+        {
+          "fr": "années",
+          "en": "years",
+          "word": "health-time-058"
+        },
+        {
+          "fr": "n’avance",
+          "en": "is not moving forward (avancer)"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s27",
+      "level": "B1",
+      "fr": "Est-ce que tu as lu l’article dont tout le monde parle ce matin ?",
+      "en": "Have you read the article everyone is talking about this morning?",
+      "distractors": [
+        "Have you read the article everyone was talking about last night?",
+        "Have you written the article everyone is talking about this morning?",
+        "Have you read the article nobody is talking about this morning?"
+      ],
+      "gap": "dont",
+      "topics": [
+        "questions",
+        "relative-pronouns"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-072",
+        "work-083",
+        "verbs-007",
+        "health-time-059",
+        "essentials-044"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "lu",
+          "en": "read (past participle of lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "l’article",
+          "en": "the article",
+          "word": "work-083"
+        },
+        {
+          "fr": "dont",
+          "en": "about which; of which"
+        },
+        {
+          "fr": "tout le monde",
+          "en": "everyone"
+        },
+        {
+          "fr": "parle",
+          "en": "talks; is talking (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s28",
+      "level": "B1",
+      "fr": "Les chiffres de la mairie montrent que le recyclage a augmenté de douze pour cent.",
+      "en": "The town hall’s figures show that recycling has increased by twelve per cent.",
+      "distractors": [
+        "The town hall’s figures show that recycling has increased by two per cent.",
+        "The town hall’s figures show that recycling has fallen by twelve per cent.",
+        "The newspaper’s figures show that recycling has increased by twelve per cent."
+      ],
+      "gap": "douze",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "travel-076",
+        "verbs-076",
+        "verbs-002",
+        "health-time-092"
+      ],
+      "gloss": [
+        {
+          "fr": "chiffres",
+          "en": "figures"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "montrent",
+          "en": "show (montrer)",
+          "word": "verbs-076"
+        },
+        {
+          "fr": "recyclage",
+          "en": "recycling"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "augmenté",
+          "en": "increased (augmenter)"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "pour cent",
+          "en": "per cent"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s29",
+      "level": "B1",
+      "fr": "Si on avait planté ces arbres plus tôt, le quartier serait moins chaud aujourd’hui.",
+      "en": "If we had planted these trees earlier, the neighbourhood would be less hot today.",
+      "distractors": [
+        "If we had planted these trees earlier, the neighbourhood would be less noisy today.",
+        "If we had planted these trees later, the neighbourhood would be less hot today.",
+        "If we had planted these trees earlier, the whole town would be less hot today."
+      ],
+      "gap": "serait",
+      "topics": [
+        "si-clauses",
+        "conditional",
+        "comparison"
+      ],
+      "words": [
+        "essentials-081",
+        "verbs-002",
+        "essentials-048",
+        "nature-009",
+        "travel-032",
+        "verbs-001",
+        "qualities-025"
+      ],
+      "gloss": [
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "avait",
+          "en": "had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "planté",
+          "en": "planted (planter)"
+        },
+        {
+          "fr": "ces",
+          "en": "these",
+          "word": "essentials-048"
+        },
+        {
+          "fr": "arbres",
+          "en": "trees",
+          "word": "nature-009"
+        },
+        {
+          "fr": "plus tôt",
+          "en": "earlier"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "serait",
+          "en": "would be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "moins",
+          "en": "less; fewer"
+        },
+        {
+          "fr": "chaud",
+          "en": "hot",
+          "word": "qualities-025"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s30",
+      "level": "B1",
+      "fr": "La radio locale a annoncé que le pont resterait fermé jusqu’à jeudi.",
+      "en": "The local radio announced that the bridge would stay closed until Thursday.",
+      "distractors": [
+        "The local radio announced that the bridge would stay closed until Tuesday.",
+        "The local radio announced that the bridge would reopen on Thursday.",
+        "The local newspaper announced that the bridge would stay closed until Thursday."
+      ],
+      "gap": "resterait",
+      "topics": [
+        "conditional",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "work-086",
+        "verbs-002",
+        "travel-036",
+        "verbs-030",
+        "qualities-037",
+        "essentials-074",
+        "health-time-065"
+      ],
+      "gloss": [
+        {
+          "fr": "radio",
+          "en": "radio",
+          "word": "work-086"
+        },
+        {
+          "fr": "locale",
+          "en": "local"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "annoncé",
+          "en": "announced (annoncer)"
+        },
+        {
+          "fr": "pont",
+          "en": "bridge",
+          "word": "travel-036"
+        },
+        {
+          "fr": "resterait",
+          "en": "would stay (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "fermé",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "jusqu’à",
+          "en": "until",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s31",
+      "level": "B1",
+      "fr": "Écoute ce podcast avant d’en parler : tu changeras peut-être d’avis.",
+      "en": "Listen to this podcast before talking about it: you may change your mind.",
+      "distractors": [
+        "Listen to this podcast after talking about it: you may change your mind.",
+        "Listen to this podcast before writing about it: you may change your mind.",
+        "Listen to this podcast before talking about it: you will never change your mind."
+      ],
+      "gap": "changeras",
+      "topics": [
+        "imperative",
+        "y-en",
+        "futur-simple"
+      ],
+      "words": [
+        "verbs-013",
+        "verbs-007",
+        "verbs-079"
+      ],
+      "gloss": [
+        {
+          "fr": "Écoute",
+          "en": "listen(s) (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "podcast",
+          "en": "podcast"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "parler",
+          "en": "to talk",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "changeras",
+          "en": "will change (changer)",
+          "word": "verbs-079"
+        },
+        {
+          "fr": "peut-être",
+          "en": "maybe"
+        },
+        {
+          "fr": "d’avis",
+          "en": "(one’s) mind"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s32",
+      "level": "B1",
+      "fr": "Nous, on pense que la ville devrait interdire les voitures près des écoles.",
+      "en": "We think the town should ban cars near the schools.",
+      "distractors": [
+        "We think the town should ban cars near the shops.",
+        "We think the town should allow cars near the schools.",
+        "They think the town should ban cars near the schools."
+      ],
+      "gap": "devrait",
+      "topics": [
+        "conditional",
+        "stressed-pronouns"
+      ],
+      "words": [
+        "verbs-017",
+        "travel-001",
+        "verbs-021",
+        "travel-004",
+        "work-031"
+      ],
+      "gloss": [
+        {
+          "fr": "pense",
+          "en": "think (penser)",
+          "word": "verbs-017"
+        },
+        {
+          "fr": "ville",
+          "en": "town; city",
+          "word": "travel-001"
+        },
+        {
+          "fr": "devrait",
+          "en": "should (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "interdire",
+          "en": "to ban"
+        },
+        {
+          "fr": "voitures",
+          "en": "cars",
+          "word": "travel-004"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "écoles",
+          "en": "schools",
+          "word": "work-031"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s33",
+      "level": "B1",
+      "fr": "Cet hiver, la neige est tombée si tôt que personne n’était prêt.",
+      "en": "This winter, the snow fell so early that nobody was ready.",
+      "distractors": [
+        "This winter, the snow fell so late that nobody was ready.",
+        "Last winter, the snow fell so early that nobody was ready.",
+        "This winter, the rain fell so early that nobody was ready."
+      ],
+      "gap": "tombée",
+      "topics": [
+        "passe-compose-etre",
+        "negation-more"
+      ],
+      "words": [
+        "essentials-046",
+        "nature-004",
+        "essentials-040",
+        "verbs-001",
+        "qualities-089"
+      ],
+      "gloss": [
+        {
+          "fr": "Cet",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "hiver",
+          "en": "winter"
+        },
+        {
+          "fr": "neige",
+          "en": "snow",
+          "word": "nature-004"
+        },
+        {
+          "fr": "est tombée",
+          "en": "fell (tomber)"
+        },
+        {
+          "fr": "si tôt",
+          "en": "so early"
+        },
+        {
+          "fr": "personne",
+          "en": "nobody",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "n’était",
+          "en": "was not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "prêt",
+          "en": "ready",
+          "word": "qualities-089"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s34",
+      "level": "B1",
+      "fr": "Il y a des choses qu’on ne peut pas régler avec une application.",
+      "en": "There are things you can’t sort out with an app.",
+      "distractors": [
+        "There are things you can sort out with an app.",
+        "There are things you can’t sort out with money.",
+        "There are few things you can’t sort out with an app."
+      ],
+      "gap": "régler",
+      "topics": [
+        "relative-pronouns",
+        "negation"
+      ],
+      "words": [
+        "verbs-020",
+        "essentials-060",
+        "work-067",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "choses",
+          "en": "things"
+        },
+        {
+          "fr": "peut",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "régler",
+          "en": "to sort out; to settle"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "application",
+          "en": "app",
+          "word": "work-067"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s35",
+      "level": "B1",
+      "fr": "Tu exagères : le bus passe toutes les dix minutes, même le dimanche.",
+      "en": "You’re exaggerating: the bus comes every ten minutes, even on Sundays.",
+      "distractors": [
+        "You’re exaggerating: the bus comes every twenty minutes, even on Sundays.",
+        "You’re exaggerating: the bus comes every ten minutes, even on Saturdays.",
+        "You’re exaggerating: the train comes every ten minutes, even on Sundays."
+      ],
+      "gap": "dix",
+      "topics": [
+        "time-expressions",
+        "present-er"
+      ],
+      "words": [
+        "travel-005",
+        "verbs-029",
+        "essentials-044",
+        "health-time-091",
+        "health-time-053",
+        "health-time-068"
+      ],
+      "gloss": [
+        {
+          "fr": "exagères",
+          "en": "are exaggerating (exagérer)"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "passe",
+          "en": "comes by; passes (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "toutes",
+          "en": "every; all",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "même",
+          "en": "even"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s36",
+      "level": "B1",
+      "fr": "Mes parents regardent les actualités chaque soir, alors que moi, je les lis en ligne.",
+      "en": "My parents watch the news every evening, whereas I read it online.",
+      "distractors": [
+        "My parents watch the news every morning, whereas I read it online.",
+        "My parents listen to the news every evening, whereas I read it online.",
+        "My parents watch the news every evening, whereas I never read it."
+      ],
+      "gap": "chaque",
+      "topics": [
+        "direct-object",
+        "stressed-pronouns"
+      ],
+      "words": [
+        "essentials-049",
+        "people-008",
+        "verbs-011",
+        "work-085",
+        "health-time-060",
+        "essentials-025",
+        "verbs-072"
+      ],
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "regardent",
+          "en": "watch (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "actualités",
+          "en": "the news",
+          "word": "work-085"
+        },
+        {
+          "fr": "chaque",
+          "en": "every"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "alors que",
+          "en": "whereas; while"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "lis",
+          "en": "read (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "en ligne",
+          "en": "online"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s37",
+      "level": "B1",
+      "fr": "Franchement, cette décision me semble injuste pour les familles les plus pauvres.",
+      "en": "Honestly, this decision seems unfair to me for the poorest families.",
+      "distractors": [
+        "Honestly, this decision seems fair to me for the poorest families.",
+        "Honestly, this decision seems unfair to me for the richest families.",
+        "Honestly, this decision seems unfair to me for the largest families."
+      ],
+      "gap": "injuste",
+      "topics": [
+        "demonstratives",
+        "comparison"
+      ],
+      "words": [
+        "essentials-047",
+        "essentials-062",
+        "people-020",
+        "qualities-062"
+      ],
+      "gloss": [
+        {
+          "fr": "Franchement",
+          "en": "honestly; frankly"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "décision",
+          "en": "decision"
+        },
+        {
+          "fr": "semble",
+          "en": "seems (sembler)"
+        },
+        {
+          "fr": "injuste",
+          "en": "unfair"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "familles",
+          "en": "families",
+          "word": "people-020"
+        },
+        {
+          "fr": "les plus pauvres",
+          "en": "the poorest",
+          "word": "qualities-062"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s38",
+      "level": "B1",
+      "fr": "Quand il pleut, l’eau monte vite parce qu’il n’y a plus assez d’espaces verts.",
+      "en": "When it rains, the water rises quickly because there aren’t enough green spaces any more.",
+      "distractors": [
+        "When it rains, the water rises slowly because there aren’t enough green spaces any more.",
+        "When it snows, the water rises quickly because there aren’t enough green spaces any more.",
+        "When it rains, the water rises quickly because there are too many green spaces."
+      ],
+      "gap": "vite",
+      "topics": [
+        "negation-more",
+        "present-er"
+      ],
+      "words": [
+        "essentials-082",
+        "food-001",
+        "verbs-037",
+        "essentials-098",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "pleut",
+          "en": "is raining (pleuvoir)"
+        },
+        {
+          "fr": "l’eau",
+          "en": "the water",
+          "word": "food-001"
+        },
+        {
+          "fr": "monte",
+          "en": "rises (monter)",
+          "word": "verbs-037"
+        },
+        {
+          "fr": "vite",
+          "en": "quickly"
+        },
+        {
+          "fr": "parce qu’il",
+          "en": "because it"
+        },
+        {
+          "fr": "n’y a plus",
+          "en": "there is no longer / there are no longer"
+        },
+        {
+          "fr": "assez",
+          "en": "enough",
+          "word": "essentials-098"
+        },
+        {
+          "fr": "d’espaces",
+          "en": "spaces"
+        },
+        {
+          "fr": "verts",
+          "en": "green"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s39",
+      "level": "B1",
+      "fr": "Si tu veux mon avis, il vaudrait mieux réparer l’ancienne école que la démolir.",
+      "en": "If you want my opinion, it would be better to repair the old school than to demolish it.",
+      "distractors": [
+        "If you want my opinion, it would be better to demolish the old school than to repair it.",
+        "If you want my opinion, it would be better to repair the old library than to demolish it.",
+        "If you want my opinion, it is cheaper to repair the old school than to demolish it."
+      ],
+      "gap": "démolir",
+      "topics": [
+        "si-clauses",
+        "conditional"
+      ],
+      "words": [
+        "essentials-081",
+        "verbs-019",
+        "essentials-049",
+        "verbs-099",
+        "work-031"
+      ],
+      "gloss": [
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "avis",
+          "en": "opinion"
+        },
+        {
+          "fr": "il vaudrait mieux",
+          "en": "it would be better (valoir)"
+        },
+        {
+          "fr": "réparer",
+          "en": "to repair",
+          "word": "verbs-099"
+        },
+        {
+          "fr": "l’ancienne",
+          "en": "the old; the former"
+        },
+        {
+          "fr": "école",
+          "en": "school",
+          "word": "work-031"
+        },
+        {
+          "fr": "démolir",
+          "en": "to demolish"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s40",
+      "level": "B1",
+      "fr": "Le maire a répondu aux critiques, mais il n’a convaincu personne hier soir.",
+      "en": "The mayor answered the criticism, but he convinced nobody last night.",
+      "distractors": [
+        "The mayor answered the criticism, but he convinced nobody this morning.",
+        "The mayor answered the criticism, and he convinced everybody last night.",
+        "The journalist answered the criticism, but he convinced nobody last night."
+      ],
+      "gap": "personne",
+      "topics": [
+        "passe-compose-avoir",
+        "negation-more",
+        "contractions"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-009",
+        "essentials-040",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "maire",
+          "en": "mayor"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "répondu",
+          "en": "answered (répondre)",
+          "word": "verbs-009"
+        },
+        {
+          "fr": "critiques",
+          "en": "criticism"
+        },
+        {
+          "fr": "n’a",
+          "en": "has not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "convaincu",
+          "en": "convinced (convaincre)"
+        },
+        {
+          "fr": "personne",
+          "en": "nobody",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s41",
+      "level": "B1",
+      "fr": "On dirait que tout le monde a un avis, mais personne ne lit les documents.",
+      "en": "It seems everyone has an opinion, but nobody reads the documents.",
+      "distractors": [
+        "It seems everyone has an opinion, and everybody reads the documents.",
+        "It seems everyone has an opinion, but nobody signs the documents.",
+        "It seems everyone has a question, but nobody reads the documents."
+      ],
+      "gap": "avis",
+      "topics": [
+        "negation-more"
+      ],
+      "words": [
+        "verbs-006",
+        "verbs-002",
+        "essentials-040",
+        "verbs-072",
+        "work-070",
+        "essentials-044"
+      ],
+      "gloss": [
+        {
+          "fr": "On dirait",
+          "en": "it looks like; you’d say",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "tout le monde",
+          "en": "everyone"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "avis",
+          "en": "opinion"
+        },
+        {
+          "fr": "personne",
+          "en": "nobody",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "lit",
+          "en": "reads (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "documents",
+          "en": "documents",
+          "word": "work-070"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s42",
+      "level": "B1",
+      "fr": "Cette semaine, la bibliothèque sera ouverte dimanche après-midi, annonce la mairie.",
+      "en": "This week the library will be open on Sunday afternoon, the town hall announces.",
+      "distractors": [
+        "This week the library will be open on Saturday afternoon, the town hall announces.",
+        "This week the library will be open on Sunday morning, the town hall announces.",
+        "This week the market will be open on Sunday afternoon, the town hall announces."
+      ],
+      "gap": "dimanche",
+      "topics": [
+        "futur-simple",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-047",
+        "health-time-056",
+        "verbs-001",
+        "qualities-036",
+        "health-time-068",
+        "travel-076"
+      ],
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "bibliothèque",
+          "en": "library"
+        },
+        {
+          "fr": "sera",
+          "en": "will be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouverte",
+          "en": "open",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "après-midi",
+          "en": "afternoon"
+        },
+        {
+          "fr": "annonce",
+          "en": "announces (annoncer)"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s43",
+      "level": "B1",
+      "fr": "Je ne dis pas que c’est facile, je dis qu’il faut essayer quelque chose.",
+      "en": "I’m not saying it’s easy, I’m saying we have to try something.",
+      "distractors": [
+        "I’m not saying it’s difficult, I’m saying we have to try something.",
+        "I’m saying it’s easy, and that we have to try something.",
+        "I’m not saying it’s easy, I’m saying we have to change everything."
+      ],
+      "gap": "essayer",
+      "topics": [
+        "negation"
+      ],
+      "words": [
+        "verbs-006",
+        "verbs-001",
+        "qualities-038",
+        "verbs-022",
+        "verbs-078",
+        "essentials-041"
+      ],
+      "gloss": [
+        {
+          "fr": "dis",
+          "en": "say (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "facile",
+          "en": "easy",
+          "word": "qualities-038"
+        },
+        {
+          "fr": "faut",
+          "en": "must; is necessary (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "essayer",
+          "en": "to try",
+          "word": "verbs-078"
+        },
+        {
+          "fr": "quelque chose",
+          "en": "something",
+          "word": "essentials-041"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s44",
+      "level": "B1",
+      "fr": "Les commerçants du marché se disent inquiets depuis que le parking a fermé.",
+      "en": "The market traders say they are worried since the car park closed.",
+      "distractors": [
+        "The market traders say they are happy since the car park closed.",
+        "The market traders say they are worried since the car park opened.",
+        "The market traders say they are worried since the market moved."
+      ],
+      "gap": "inquiets",
+      "topics": [
+        "reflexive",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "travel-022",
+        "verbs-006",
+        "verbs-002",
+        "verbs-046",
+        "travel-081"
+      ],
+      "gloss": [
+        {
+          "fr": "commerçants",
+          "en": "traders; shopkeepers"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "se disent",
+          "en": "say they are (se dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "inquiets",
+          "en": "worried"
+        },
+        {
+          "fr": "depuis que",
+          "en": "since (the time when)"
+        },
+        {
+          "fr": "parking",
+          "en": "car park",
+          "word": "travel-081"
+        },
+        {
+          "fr": "a fermé",
+          "en": "closed; shut down (fermer)",
+          "word": "verbs-046"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s45",
+      "level": "B1",
+      "fr": "Vous avez raison sur un point : les réunions publiques sont beaucoup trop longues.",
+      "en": "You are right about one thing: the public meetings are far too long.",
+      "distractors": [
+        "You are wrong about one thing: the public meetings are far too long.",
+        "You are right about one thing: the public meetings are far too short.",
+        "You are right about one thing: the public meetings are far too rare."
+      ],
+      "gap": "raison",
+      "topics": [
+        "agreement"
+      ],
+      "words": [
+        "essentials-058",
+        "work-007",
+        "verbs-001",
+        "essentials-099",
+        "essentials-097",
+        "qualities-011",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "avez raison",
+          "en": "are right (avoir raison)"
+        },
+        {
+          "fr": "sur",
+          "en": "on; about",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "point",
+          "en": "point"
+        },
+        {
+          "fr": "réunions",
+          "en": "meetings",
+          "word": "work-007"
+        },
+        {
+          "fr": "publiques",
+          "en": "public"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; much",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "trop",
+          "en": "too; too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "longues",
+          "en": "long",
+          "word": "qualities-011"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s46",
+      "level": "B1",
+      "fr": "Ils ont installé des panneaux solaires sur le toit de l’école primaire.",
+      "en": "They have installed solar panels on the roof of the primary school.",
+      "distractors": [
+        "They have installed solar panels on the roof of the town hall.",
+        "They are going to install solar panels on the roof of the primary school.",
+        "They have repaired the solar panels on the roof of the primary school."
+      ],
+      "gap": "toit",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-002",
+        "essentials-058",
+        "home-021",
+        "work-031"
+      ],
+      "gloss": [
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "installé",
+          "en": "installed (installer)"
+        },
+        {
+          "fr": "panneaux solaires",
+          "en": "solar panels"
+        },
+        {
+          "fr": "sur",
+          "en": "on; about",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "toit",
+          "en": "roof",
+          "word": "home-021"
+        },
+        {
+          "fr": "l’école",
+          "en": "the school",
+          "word": "work-031"
+        },
+        {
+          "fr": "primaire",
+          "en": "primary"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s47",
+      "level": "B1",
+      "fr": "Ce que je ne comprends pas, c’est pourquoi on en parle seulement maintenant.",
+      "en": "What I don’t understand is why we’re only talking about it now.",
+      "distractors": [
+        "What I don’t understand is why we talked about it so long ago.",
+        "What I don’t like is that we’re only talking about it now.",
+        "What I don’t understand is who is talking about it now."
+      ],
+      "gap": "maintenant",
+      "topics": [
+        "relative-pronouns",
+        "y-en"
+      ],
+      "words": [
+        "verbs-016",
+        "verbs-001",
+        "essentials-037",
+        "verbs-007"
+      ],
+      "gloss": [
+        {
+          "fr": "Ce que",
+          "en": "what (the thing that)"
+        },
+        {
+          "fr": "comprends",
+          "en": "understand (comprendre)",
+          "word": "verbs-016"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pourquoi",
+          "en": "why",
+          "word": "essentials-037"
+        },
+        {
+          "fr": "parle",
+          "en": "talks; is talking (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "seulement",
+          "en": "only"
+        },
+        {
+          "fr": "maintenant",
+          "en": "now"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s48",
+      "level": "B1",
+      "fr": "Bien que le projet soit cher, la plupart des habitants le soutiennent.",
+      "en": "Although the project is expensive, most residents support it.",
+      "distractors": [
+        "Although the project is cheap, most residents support it.",
+        "Although the project is expensive, most residents are against it.",
+        "Although the project is expensive, a few residents support it."
+      ],
+      "gap": "soit",
+      "topics": [
+        "subjunctive",
+        "direct-object"
+      ],
+      "words": [
+        "work-008",
+        "verbs-001",
+        "qualities-059"
+      ],
+      "gloss": [
+        {
+          "fr": "Bien que",
+          "en": "although"
+        },
+        {
+          "fr": "projet",
+          "en": "project",
+          "word": "work-008"
+        },
+        {
+          "fr": "soit",
+          "en": "is (subjunctive of être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "cher",
+          "en": "expensive",
+          "word": "qualities-059"
+        },
+        {
+          "fr": "la plupart",
+          "en": "most"
+        },
+        {
+          "fr": "habitants",
+          "en": "residents"
+        },
+        {
+          "fr": "soutiennent",
+          "en": "support (soutenir)"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s49",
+      "level": "B1",
+      "fr": "Le train de sept heures est encore en retard : c’est la troisième fois cette semaine.",
+      "en": "The seven o’clock train is late again: it’s the third time this week.",
+      "distractors": [
+        "The seven o’clock train is late again: it’s the second time this week.",
+        "The nine o’clock train is late again: it’s the third time this week.",
+        "The seven o’clock train is on time again: it’s the third time this week."
+      ],
+      "gap": "troisième",
+      "topics": [
+        "time-expressions"
+      ],
+      "words": [
+        "travel-006",
+        "health-time-088",
+        "health-time-052",
+        "verbs-001",
+        "essentials-087",
+        "travel-059",
+        "essentials-047",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "encore",
+          "en": "again; still",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "en retard",
+          "en": "late",
+          "word": "travel-059"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "troisième",
+          "en": "third"
+        },
+        {
+          "fr": "fois",
+          "en": "time; occasion"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-s50",
+      "level": "B1",
+      "fr": "Nous espérons que la nouvelle piste cyclable rendra la rue plus sûre pour les enfants.",
+      "en": "We hope the new cycle path will make the street safer for children.",
+      "distractors": [
+        "We hope the new cycle path will make the street safer for cyclists.",
+        "We hope the new cycle path will make the street quieter for children.",
+        "We hoped the new cycle path would make the street safer for children."
+      ],
+      "gap": "rendra",
+      "topics": [
+        "futur-simple",
+        "comparison"
+      ],
+      "words": [
+        "verbs-095",
+        "qualities-008",
+        "travel-002",
+        "qualities-094",
+        "essentials-062",
+        "people-004"
+      ],
+      "gloss": [
+        {
+          "fr": "espérons",
+          "en": "hope (espérer)",
+          "word": "verbs-095"
+        },
+        {
+          "fr": "nouvelle",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "piste cyclable",
+          "en": "cycle path"
+        },
+        {
+          "fr": "rendra",
+          "en": "will make (rendre)"
+        },
+        {
+          "fr": "rue",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "sûre",
+          "en": "safe; sure",
+          "word": "qualities-094"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "b1-opinions-p01",
+      "level": "B1",
+      "kind": "dialogue",
+      "title": "A disagreement about the cycle path",
+      "lines": [
+        {
+          "speaker": "Karim",
+          "fr": "Tu as vu ? Ils ont enfin commencé les travaux de la piste cyclable.",
+          "en": "Have you seen? They’ve finally started the work on the cycle path."
+        },
+        {
+          "speaker": "Sylvie",
+          "fr": "Oui, et franchement, je trouve que c’est une mauvaise idée : on perd cinquante places de parking.",
+          "en": "Yes, and honestly, I think it’s a bad idea: we’re losing fifty parking spaces."
+        },
+        {
+          "speaker": "Karim",
+          "fr": "Peut-être, mais si les gens prenaient leur vélo, il y aurait moins de voitures devant l’école.",
+          "en": "Maybe, but if people took their bikes, there would be fewer cars in front of the school."
+        },
+        {
+          "speaker": "Sylvie",
+          "fr": "Je suis d’accord sur le principe. Pourtant, ma mère a quatre-vingts ans et elle ne peut pas venir à vélo.",
+          "en": "I agree in principle. Yet my mother is eighty and she can’t come by bike."
+        },
+        {
+          "speaker": "Karim",
+          "fr": "C’est vrai. La mairie a promis des places réservées près du marché.",
+          "en": "That’s true. The town hall has promised reserved spaces near the market."
+        },
+        {
+          "speaker": "Sylvie",
+          "fr": "Promis, oui. On verra si elles existent vraiment en septembre.",
+          "en": "Promised, yes. We’ll see whether they really exist in September."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is Sylvie against the cycle path?",
+          "choices": [
+            "Because fifty parking spaces are being lost.",
+            "Because the work will last all summer.",
+            "Because cyclists are dangerous near the school.",
+            "Because the town hall never asked her opinion."
+          ],
+          "answer": 0,
+          "explanation": "“on perd cinquante places de parking” — losing fifty parking spaces is her objection."
+        },
+        {
+          "question": "What does Karim say would happen if people cycled?",
+          "choices": [
+            "There would be fewer cars in front of the school.",
+            "There would be more room at the market.",
+            "The town hall would save money.",
+            "The work would finish sooner."
+          ],
+          "answer": 0,
+          "explanation": "“si les gens prenaient leur vélo, il y aurait moins de voitures devant l’école”."
+        },
+        {
+          "question": "What is the problem with Sylvie’s mother?",
+          "choices": [
+            "She is eighty and cannot come by bike.",
+            "She lives far from the market.",
+            "She refuses to use the new path.",
+            "She has no car any more."
+          ],
+          "answer": 0,
+          "explanation": "“ma mère a quatre-vingts ans et elle ne peut pas venir à vélo”."
+        },
+        {
+          "question": "What has the town hall promised?",
+          "choices": [
+            "Reserved parking spaces near the market.",
+            "A new car park in September.",
+            "Free bikes for older residents.",
+            "To finish the work before September."
+          ],
+          "answer": 0,
+          "explanation": "“La mairie a promis des places réservées près du marché”."
+        }
+      ],
+      "topics": [
+        "si-clauses",
+        "conditional",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-010",
+        "verbs-047",
+        "essentials-004",
+        "verbs-026",
+        "verbs-001",
+        "qualities-004",
+        "verbs-081",
+        "essentials-081",
+        "verbs-023",
+        "essentials-054",
+        "travel-008",
+        "travel-004",
+        "essentials-067",
+        "work-031",
+        "essentials-015",
+        "essentials-058",
+        "essentials-084",
+        "essentials-049",
+        "people-009",
+        "verbs-020",
+        "verbs-005",
+        "qualities-047",
+        "travel-076",
+        "travel-022",
+        "health-time-077"
+      ],
+      "gloss": [
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "enfin",
+          "en": "finally; at last"
+        },
+        {
+          "fr": "commencé",
+          "en": "started (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "travaux",
+          "en": "roadworks; building work"
+        },
+        {
+          "fr": "piste cyclable",
+          "en": "cycle path"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "franchement",
+          "en": "honestly; frankly"
+        },
+        {
+          "fr": "trouve",
+          "en": "find; think (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "mauvaise",
+          "en": "bad",
+          "word": "qualities-004"
+        },
+        {
+          "fr": "idée",
+          "en": "idea"
+        },
+        {
+          "fr": "perd",
+          "en": "loses (perdre)",
+          "word": "verbs-081"
+        },
+        {
+          "fr": "cinquante",
+          "en": "fifty"
+        },
+        {
+          "fr": "places de parking",
+          "en": "parking spaces"
+        },
+        {
+          "fr": "places",
+          "en": "spaces; spots"
+        },
+        {
+          "fr": "Peut-être",
+          "en": "maybe"
+        },
+        {
+          "fr": "si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "gens",
+          "en": "people"
+        },
+        {
+          "fr": "prenaient",
+          "en": "took (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "leur",
+          "en": "their",
+          "word": "essentials-054"
+        },
+        {
+          "fr": "vélo",
+          "en": "bike",
+          "word": "travel-008"
+        },
+        {
+          "fr": "il y aurait",
+          "en": "there would be"
+        },
+        {
+          "fr": "moins",
+          "en": "less; fewer"
+        },
+        {
+          "fr": "voitures",
+          "en": "cars",
+          "word": "travel-004"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "l’école",
+          "en": "the school",
+          "word": "work-031"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "d’accord",
+          "en": "in agreement; OK",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "sur",
+          "en": "on; about",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "principe",
+          "en": "principle"
+        },
+        {
+          "fr": "Pourtant",
+          "en": "yet; however",
+          "word": "essentials-084"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "quatre-vingts ans",
+          "en": "eighty years old"
+        },
+        {
+          "fr": "peut",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "C’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "vrai",
+          "en": "true",
+          "word": "qualities-047"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "promis",
+          "en": "promised (promettre)"
+        },
+        {
+          "fr": "réservées",
+          "en": "reserved"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "Promis",
+          "en": "promised (promettre)"
+        },
+        {
+          "fr": "oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "verra",
+          "en": "will see (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "existent",
+          "en": "exist (exister)"
+        },
+        {
+          "fr": "vraiment",
+          "en": "really"
+        },
+        {
+          "fr": "septembre",
+          "en": "September",
+          "word": "health-time-077"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-p02",
+      "level": "B1",
+      "kind": "dialogue",
+      "title": "The trader and the closed car park",
+      "lines": [
+        {
+          "speaker": "Le vendeur",
+          "fr": "Depuis que le parking est fermé, j’ai perdu un tiers de mes clients.",
+          "en": "Since the car park closed, I’ve lost a third of my customers."
+        },
+        {
+          "speaker": "Nadia",
+          "fr": "Vraiment ? Moi, je viens à pied et je trouve la place beaucoup plus agréable.",
+          "en": "Really? I come on foot and I find the square much more pleasant."
+        },
+        {
+          "speaker": "Le vendeur",
+          "fr": "Pour vous, oui. Mais les gens qui habitent à la campagne ne peuvent plus venir le samedi.",
+          "en": "For you, yes. But people who live in the countryside can’t come on Saturdays any more."
+        },
+        {
+          "speaker": "Nadia",
+          "fr": "Il y a un bus toutes les demi-heures, non ?",
+          "en": "There’s a bus every half hour, isn’t there?"
+        },
+        {
+          "speaker": "Le vendeur",
+          "fr": "Le dimanche, il n’y en a aucun. Et avec des sacs, le bus, ce n’est pas pratique.",
+          "en": "On Sundays there isn’t a single one. And with bags, the bus isn’t practical."
+        },
+        {
+          "speaker": "Nadia",
+          "fr": "Vous devriez écrire à la mairie. Il paraît qu’ils préparent une nouvelle ligne.",
+          "en": "You should write to the town hall. Apparently they’re preparing a new route."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What has the trader lost since the car park closed?",
+          "choices": [
+            "A third of his customers.",
+            "Half of his customers.",
+            "His Saturday stall.",
+            "His best supplier."
+          ],
+          "answer": 0,
+          "explanation": "“j’ai perdu un tiers de mes clients”."
+        },
+        {
+          "question": "How does Nadia get to the square?",
+          "choices": [
+            "On foot.",
+            "By bus.",
+            "By car.",
+            "By bike."
+          ],
+          "answer": 0,
+          "explanation": "“je viens à pied”."
+        },
+        {
+          "question": "What does the trader say about Sundays?",
+          "choices": [
+            "There is no bus at all.",
+            "There is a bus every half hour.",
+            "The market closes early.",
+            "Only the country people come."
+          ],
+          "answer": 0,
+          "explanation": "“Le dimanche, il n’y en a aucun.”"
+        },
+        {
+          "question": "What does Nadia suggest he does?",
+          "choices": [
+            "Write to the town hall.",
+            "Sell bags at his stall.",
+            "Open on Sundays.",
+            "Take the bus himself."
+          ],
+          "answer": 0,
+          "explanation": "“Vous devriez écrire à la mairie.”"
+        }
+      ],
+      "topics": [
+        "time-expressions",
+        "relative-pronouns",
+        "conditional"
+      ],
+      "words": [
+        "verbs-001",
+        "qualities-037",
+        "verbs-002",
+        "verbs-081",
+        "essentials-049",
+        "essentials-025",
+        "verbs-005",
+        "verbs-026",
+        "travel-034",
+        "essentials-099",
+        "essentials-062",
+        "essentials-004",
+        "essentials-032",
+        "verbs-068",
+        "nature-060",
+        "verbs-020",
+        "health-time-067",
+        "travel-005",
+        "essentials-005",
+        "health-time-068",
+        "essentials-060",
+        "verbs-021",
+        "verbs-073",
+        "travel-076",
+        "qualities-008",
+        "health-time-005",
+        "travel-081"
+      ],
+      "gloss": [
+        {
+          "fr": "Depuis que",
+          "en": "since (the time when)"
+        },
+        {
+          "fr": "parking",
+          "en": "car park",
+          "word": "travel-081"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermé",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "perdu",
+          "en": "lost (perdre)",
+          "word": "verbs-081"
+        },
+        {
+          "fr": "tiers",
+          "en": "third"
+        },
+        {
+          "fr": "mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "clients",
+          "en": "customers"
+        },
+        {
+          "fr": "Vraiment",
+          "en": "really"
+        },
+        {
+          "fr": "Moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "viens",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "à pied",
+          "en": "on foot"
+        },
+        {
+          "fr": "trouve",
+          "en": "find; think (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "place",
+          "en": "square",
+          "word": "travel-034"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; much",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "plus",
+          "en": "more; any more"
+        },
+        {
+          "fr": "agréable",
+          "en": "pleasant"
+        },
+        {
+          "fr": "Pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "gens",
+          "en": "people"
+        },
+        {
+          "fr": "qui",
+          "en": "who; which",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "habitent",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "campagne",
+          "en": "countryside",
+          "word": "nature-060"
+        },
+        {
+          "fr": "peuvent",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "Il y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "toutes les demi-heures",
+          "en": "every half hour"
+        },
+        {
+          "fr": "non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "il n’y en a aucun",
+          "en": "there isn’t a single one"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "sacs",
+          "en": "bags"
+        },
+        {
+          "fr": "ce n’est pas",
+          "en": "it is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pratique",
+          "en": "practical; handy"
+        },
+        {
+          "fr": "devriez",
+          "en": "should (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "écrire",
+          "en": "to write",
+          "word": "verbs-073"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "Il paraît",
+          "en": "apparently; it seems"
+        },
+        {
+          "fr": "préparent",
+          "en": "are preparing (préparer)"
+        },
+        {
+          "fr": "nouvelle",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "ligne",
+          "en": "line; route"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-p03",
+      "level": "B1",
+      "kind": "dialogue",
+      "title": "Screens at the dinner table",
+      "lines": [
+        {
+          "speaker": "Sa mère",
+          "fr": "Tu as passé trois heures sur ton téléphone hier soir. Ça ne t’inquiète pas ?",
+          "en": "You spent three hours on your phone last night. Doesn’t that worry you?"
+        },
+        {
+          "speaker": "Théo",
+          "fr": "Pas vraiment. Je lisais les actualités et je parlais avec mon groupe de sciences.",
+          "en": "Not really. I was reading the news and talking with my science group."
+        },
+        {
+          "speaker": "Sa mère",
+          "fr": "Les actualités, sur ce réseau ? La moitié des informations y sont fausses.",
+          "en": "The news, on that network? Half the information on it is false."
+        },
+        {
+          "speaker": "Théo",
+          "fr": "Justement, notre professeur nous a appris à vérifier les sources.",
+          "en": "That’s just it, our teacher taught us to check sources."
+        },
+        {
+          "speaker": "Sa mère",
+          "fr": "Bon. Mais je préférerais qu’on éteigne les écrans pendant le dîner.",
+          "en": "All right. But I’d rather we switched the screens off during dinner."
+        },
+        {
+          "speaker": "Théo",
+          "fr": "D’accord, si toi aussi tu laisses ton ordinateur dans le bureau.",
+          "en": "Fine, if you leave your computer in the study too."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What was Théo doing on his phone?",
+          "choices": [
+            "Reading the news and talking with his science group.",
+            "Playing a game with his friends.",
+            "Watching a science film.",
+            "Writing an article for school."
+          ],
+          "answer": 0,
+          "explanation": "“Je lisais les actualités et je parlais avec mon groupe de sciences.”"
+        },
+        {
+          "question": "What is his mother’s objection to that network?",
+          "choices": [
+            "Half of the information on it is false.",
+            "It costs too much every month.",
+            "It is only meant for adults.",
+            "It is too slow in the evening."
+          ],
+          "answer": 0,
+          "explanation": "“La moitié des informations y sont fausses.”"
+        },
+        {
+          "question": "What does Théo say his teacher did?",
+          "choices": [
+            "Taught them to check their sources.",
+            "Asked them to leave the network.",
+            "Gave them an article to read.",
+            "Told them to work in groups."
+          ],
+          "answer": 0,
+          "explanation": "“notre professeur nous a appris à vérifier les sources”."
+        },
+        {
+          "question": "What condition does Théo set?",
+          "choices": [
+            "His mother leaves her computer in the study.",
+            "He keeps his phone until dinner.",
+            "He gets an extra hour at the weekend.",
+            "The family eats earlier."
+          ],
+          "answer": 0,
+          "explanation": "“si toi aussi tu laisses ton ordinateur dans le bureau”."
+        }
+      ],
+      "topics": [
+        "imparfait",
+        "conditional",
+        "subjunctive"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-029",
+        "health-time-084",
+        "health-time-052",
+        "essentials-058",
+        "essentials-050",
+        "work-062",
+        "health-time-060",
+        "essentials-029",
+        "verbs-072",
+        "work-085",
+        "verbs-007",
+        "essentials-060",
+        "essentials-049",
+        "people-037",
+        "work-055",
+        "work-076",
+        "work-084",
+        "verbs-001",
+        "qualities-048",
+        "essentials-052",
+        "work-015",
+        "verbs-071",
+        "qualities-003",
+        "verbs-053",
+        "work-063",
+        "food-075",
+        "essentials-015",
+        "essentials-081",
+        "essentials-026",
+        "essentials-086",
+        "verbs-028",
+        "work-061",
+        "essentials-057",
+        "home-050"
+      ],
+      "gloss": [
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "passé",
+          "en": "spent (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "sur",
+          "en": "on; about",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "téléphone",
+          "en": "phone",
+          "word": "work-062"
+        },
+        {
+          "fr": "hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Ça",
+          "en": "that",
+          "word": "essentials-029"
+        },
+        {
+          "fr": "t’inquiète",
+          "en": "worries you (inquiéter)"
+        },
+        {
+          "fr": "vraiment",
+          "en": "really"
+        },
+        {
+          "fr": "lisais",
+          "en": "was reading (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "actualités",
+          "en": "the news",
+          "word": "work-085"
+        },
+        {
+          "fr": "parlais",
+          "en": "was talking (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "groupe",
+          "en": "group",
+          "word": "people-037"
+        },
+        {
+          "fr": "sciences",
+          "en": "science",
+          "word": "work-055"
+        },
+        {
+          "fr": "réseau",
+          "en": "network",
+          "word": "work-076"
+        },
+        {
+          "fr": "moitié",
+          "en": "half"
+        },
+        {
+          "fr": "informations",
+          "en": "information; news",
+          "word": "work-084"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fausses",
+          "en": "false",
+          "word": "qualities-048"
+        },
+        {
+          "fr": "Justement",
+          "en": "precisely; that’s just it"
+        },
+        {
+          "fr": "notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "professeur",
+          "en": "teacher",
+          "word": "work-015"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "appris",
+          "en": "taught; learnt (apprendre)",
+          "word": "verbs-071"
+        },
+        {
+          "fr": "vérifier",
+          "en": "to check"
+        },
+        {
+          "fr": "sources",
+          "en": "sources"
+        },
+        {
+          "fr": "Bon",
+          "en": "good; all right",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "préférerais",
+          "en": "would prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "éteigne",
+          "en": "switch off (subjunctive of éteindre)"
+        },
+        {
+          "fr": "écrans",
+          "en": "screens",
+          "word": "work-063"
+        },
+        {
+          "fr": "pendant",
+          "en": "during; for"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        },
+        {
+          "fr": "D’accord",
+          "en": "in agreement; OK",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "toi",
+          "en": "you",
+          "word": "essentials-026"
+        },
+        {
+          "fr": "aussi",
+          "en": "too; also",
+          "word": "essentials-086"
+        },
+        {
+          "fr": "laisses",
+          "en": "leave (laisser)",
+          "word": "verbs-028"
+        },
+        {
+          "fr": "ordinateur",
+          "en": "computer",
+          "word": "work-061"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "bureau",
+          "en": "study; office",
+          "word": "home-050"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-p04",
+      "level": "B1",
+      "kind": "dialogue",
+      "title": "Radio interview: the compost bin",
+      "lines": [
+        {
+          "speaker": "La journaliste",
+          "fr": "Bonjour Monsieur Robin. Vous êtes le premier habitant à avoir installé un composteur dans l’immeuble.",
+          "en": "Hello Mr Robin. You are the first resident to have installed a compost bin in the building."
+        },
+        {
+          "speaker": "Monsieur Robin",
+          "fr": "Oui, il y a deux ans. Au début, mes voisins pensaient que ça sentirait mauvais.",
+          "en": "Yes, two years ago. At first my neighbours thought it would smell bad."
+        },
+        {
+          "speaker": "La journaliste",
+          "fr": "Et aujourd’hui ?",
+          "en": "And today?"
+        },
+        {
+          "speaker": "Monsieur Robin",
+          "fr": "Aujourd’hui, douze familles s’en servent et nos poubelles sont deux fois moins lourdes.",
+          "en": "Today twelve families use it and our bins are half as heavy."
+        },
+        {
+          "speaker": "La journaliste",
+          "fr": "Que répondez-vous à ceux qui disent que c’est trop compliqué ?",
+          "en": "What do you say to those who say it’s too complicated?"
+        },
+        {
+          "speaker": "Monsieur Robin",
+          "fr": "Qu’ils viennent voir. En cinq minutes par semaine, on comprend tout.",
+          "en": "Let them come and see. In five minutes a week, you understand the whole thing."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When did Mr Robin install the compost bin?",
+          "choices": [
+            "Two years ago.",
+            "Two months ago.",
+            "Last winter.",
+            "Five weeks ago."
+          ],
+          "answer": 0,
+          "explanation": "“il y a deux ans”."
+        },
+        {
+          "question": "What did his neighbours think at first?",
+          "choices": [
+            "That it would smell bad.",
+            "That it would cost too much.",
+            "That it would be stolen.",
+            "That the town hall would forbid it."
+          ],
+          "answer": 0,
+          "explanation": "“mes voisins pensaient que ça sentirait mauvais”."
+        },
+        {
+          "question": "What has changed for the bins?",
+          "choices": [
+            "They are half as heavy.",
+            "They are twice as big.",
+            "They are emptied twice a week.",
+            "They are kept in the street."
+          ],
+          "answer": 0,
+          "explanation": "“nos poubelles sont deux fois moins lourdes”."
+        },
+        {
+          "question": "What does he answer to people who find it complicated?",
+          "choices": [
+            "They should come and see; it takes five minutes a week.",
+            "They should start with paper only.",
+            "The town hall will do it for them.",
+            "It is indeed complicated at the beginning."
+          ],
+          "answer": 0,
+          "explanation": "“Qu’ils viennent voir. En cinq minutes par semaine, on comprend tout.”"
+        }
+      ],
+      "topics": [
+        "imparfait",
+        "conditional",
+        "comparison",
+        "subjunctive"
+      ],
+      "words": [
+        "essentials-001",
+        "verbs-001",
+        "verbs-002",
+        "essentials-057",
+        "essentials-004",
+        "essentials-049",
+        "people-034",
+        "verbs-017",
+        "essentials-029",
+        "verbs-091",
+        "qualities-004",
+        "people-020",
+        "essentials-052",
+        "home-079",
+        "qualities-021",
+        "verbs-009",
+        "essentials-032",
+        "verbs-006",
+        "essentials-097",
+        "qualities-041",
+        "verbs-005",
+        "verbs-010",
+        "health-time-086",
+        "health-time-053",
+        "essentials-063",
+        "health-time-056",
+        "verbs-016",
+        "essentials-044",
+        "health-time-092"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "Monsieur",
+          "en": "Mr; sir"
+        },
+        {
+          "fr": "Robin",
+          "en": "Robin (a surname)"
+        },
+        {
+          "fr": "êtes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "habitant",
+          "en": "resident"
+        },
+        {
+          "fr": "avoir",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "installé",
+          "en": "installed (installer)"
+        },
+        {
+          "fr": "composteur",
+          "en": "compost bin"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "l’immeuble",
+          "en": "the block of flats"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "il y a deux ans",
+          "en": "two years ago"
+        },
+        {
+          "fr": "début",
+          "en": "beginning"
+        },
+        {
+          "fr": "mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        },
+        {
+          "fr": "pensaient",
+          "en": "thought (penser)",
+          "word": "verbs-017"
+        },
+        {
+          "fr": "ça",
+          "en": "that",
+          "word": "essentials-029"
+        },
+        {
+          "fr": "sentirait",
+          "en": "would smell (sentir)",
+          "word": "verbs-091"
+        },
+        {
+          "fr": "mauvais",
+          "en": "bad",
+          "word": "qualities-004"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "Aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "familles",
+          "en": "families",
+          "word": "people-020"
+        },
+        {
+          "fr": "s’en servent",
+          "en": "use it (se servir de)"
+        },
+        {
+          "fr": "nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "poubelles",
+          "en": "bins",
+          "word": "home-079"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "deux fois moins",
+          "en": "half as"
+        },
+        {
+          "fr": "lourdes",
+          "en": "heavy",
+          "word": "qualities-021"
+        },
+        {
+          "fr": "répondez-vous",
+          "en": "do you answer (répondre)",
+          "word": "verbs-009"
+        },
+        {
+          "fr": "ceux",
+          "en": "those"
+        },
+        {
+          "fr": "qui",
+          "en": "who; which",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "disent",
+          "en": "say (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "trop",
+          "en": "too; too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "compliqué",
+          "en": "complicated",
+          "word": "qualities-041"
+        },
+        {
+          "fr": "viennent",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "voir",
+          "en": "to see",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "par",
+          "en": "by",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "comprend",
+          "en": "understands (comprendre)",
+          "word": "verbs-016"
+        },
+        {
+          "fr": "tout",
+          "en": "everything; all",
+          "word": "essentials-044"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-p05",
+      "level": "B1",
+      "kind": "text",
+      "title": "Radio news: the road along the river",
+      "lines": [
+        {
+          "fr": "Il est huit heures. Voici les informations de la région.",
+          "en": "It is eight o’clock. Here is the news for the region."
+        },
+        {
+          "fr": "Après les fortes pluies de la nuit, la route qui longe la rivière reste fermée entre Saint-Clair et Mérens.",
+          "en": "After the heavy rain during the night, the road that runs along the river remains closed between Saint-Clair and Mérens."
+        },
+        {
+          "fr": "Deux écoles n’ouvriront pas ce matin ; les enfants sont accueillis à la salle des fêtes.",
+          "en": "Two schools will not open this morning; the children are being looked after in the village hall."
+        },
+        {
+          "fr": "La mairie demande aux habitants d’éviter la voiture et promet un point complet à midi.",
+          "en": "The town hall is asking residents to avoid the car and promises a full update at midday."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is the road closed?",
+          "choices": [
+            "Because of the heavy rain during the night.",
+            "Because of work on the bridge.",
+            "Because of an accident this morning.",
+            "Because of the snow."
+          ],
+          "answer": 0,
+          "explanation": "“Après les fortes pluies de la nuit, la route ... reste fermée”."
+        },
+        {
+          "question": "What is happening to the children this morning?",
+          "choices": [
+            "They are being looked after in the village hall.",
+            "They are staying at home with their parents.",
+            "They are going to a school in Saint-Clair.",
+            "They are taken to Mérens by bus."
+          ],
+          "answer": 0,
+          "explanation": "“les enfants sont accueillis à la salle des fêtes”."
+        },
+        {
+          "question": "What does the town hall ask residents to do?",
+          "choices": [
+            "Avoid using the car.",
+            "Stay at home all day.",
+            "Telephone the school.",
+            "Help clear the road."
+          ],
+          "answer": 0,
+          "explanation": "“La mairie demande aux habitants d’éviter la voiture”."
+        },
+        {
+          "question": "When will there be a full update?",
+          "choices": [
+            "At midday.",
+            "At eight o’clock.",
+            "This evening.",
+            "Tomorrow morning."
+          ],
+          "answer": 0,
+          "explanation": "“promet un point complet à midi”."
+        }
+      ],
+      "topics": [
+        "relative-pronouns",
+        "futur-simple"
+      ],
+      "words": [
+        "verbs-001",
+        "health-time-089",
+        "health-time-052",
+        "work-084",
+        "travel-048",
+        "qualities-023",
+        "health-time-061",
+        "travel-003",
+        "essentials-032",
+        "nature-064",
+        "verbs-030",
+        "qualities-037",
+        "essentials-065",
+        "health-time-083",
+        "work-031",
+        "verbs-045",
+        "health-time-059",
+        "people-004",
+        "travel-076",
+        "verbs-008",
+        "travel-004",
+        "nature-002"
+      ],
+      "gloss": [
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "Voici",
+          "en": "here is; here are"
+        },
+        {
+          "fr": "informations",
+          "en": "information; news",
+          "word": "work-084"
+        },
+        {
+          "fr": "région",
+          "en": "region",
+          "word": "travel-048"
+        },
+        {
+          "fr": "Après",
+          "en": "after"
+        },
+        {
+          "fr": "fortes",
+          "en": "heavy; strong",
+          "word": "qualities-023"
+        },
+        {
+          "fr": "pluies",
+          "en": "rain; downpours",
+          "word": "nature-002"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        },
+        {
+          "fr": "route",
+          "en": "road",
+          "word": "travel-003"
+        },
+        {
+          "fr": "qui",
+          "en": "who; which",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "longe",
+          "en": "runs along (longer)"
+        },
+        {
+          "fr": "rivière",
+          "en": "river",
+          "word": "nature-064"
+        },
+        {
+          "fr": "reste",
+          "en": "remains (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "fermée",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "entre",
+          "en": "between",
+          "word": "essentials-065"
+        },
+        {
+          "fr": "Saint-Clair",
+          "en": "Saint-Clair (a town)"
+        },
+        {
+          "fr": "Mérens",
+          "en": "Mérens (a village)"
+        },
+        {
+          "fr": "Deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "écoles",
+          "en": "schools",
+          "word": "work-031"
+        },
+        {
+          "fr": "n’ouvriront",
+          "en": "will not open (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "accueillis",
+          "en": "taken in; looked after (accueillir)"
+        },
+        {
+          "fr": "salle des fêtes",
+          "en": "village hall"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "demande",
+          "en": "asks (demander)",
+          "word": "verbs-008"
+        },
+        {
+          "fr": "habitants",
+          "en": "residents"
+        },
+        {
+          "fr": "d’éviter",
+          "en": "to avoid"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "promet",
+          "en": "promises (promettre)"
+        },
+        {
+          "fr": "point complet",
+          "en": "full update"
+        },
+        {
+          "fr": "midi",
+          "en": "midday"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-p06",
+      "level": "B1",
+      "kind": "text",
+      "title": "Town hall notice: library hours",
+      "lines": [
+        {
+          "fr": "À partir du mois d’octobre, la bibliothèque ouvrira le dimanche de dix heures à dix-sept heures.",
+          "en": "From October on, the library will open on Sundays from ten to five."
+        },
+        {
+          "fr": "En revanche, elle restera fermée le lundi, faute de personnel.",
+          "en": "On the other hand, it will stay closed on Mondays, for lack of staff."
+        },
+        {
+          "fr": "Une réunion publique aura lieu jeudi prochain à la salle du conseil pour discuter de ces horaires.",
+          "en": "A public meeting will take place next Thursday in the council chamber to discuss these hours."
+        },
+        {
+          "fr": "Les habitants qui ne peuvent pas venir peuvent envoyer leur avis par courriel avant vendredi.",
+          "en": "Residents who cannot come may send their opinion by email before Friday."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What changes from October?",
+          "choices": [
+            "The library will open on Sundays.",
+            "The library will open on Mondays.",
+            "The library will close every afternoon.",
+            "The library will move to the council chamber."
+          ],
+          "answer": 0,
+          "explanation": "“la bibliothèque ouvrira le dimanche”."
+        },
+        {
+          "question": "Why will the library stay closed on Mondays?",
+          "choices": [
+            "There are not enough staff.",
+            "There is building work.",
+            "Too few people come on Mondays.",
+            "The public meeting is held there."
+          ],
+          "answer": 0,
+          "explanation": "“elle restera fermée le lundi, faute de personnel”."
+        },
+        {
+          "question": "Where will the public meeting take place?",
+          "choices": [
+            "In the council chamber.",
+            "In the library.",
+            "At the school.",
+            "In the market square."
+          ],
+          "answer": 0,
+          "explanation": "“jeudi prochain à la salle du conseil”."
+        },
+        {
+          "question": "What can residents who cannot come do?",
+          "choices": [
+            "Send their opinion by email before Friday.",
+            "Telephone the library on Sunday.",
+            "Write in the book at the entrance.",
+            "Ask a neighbour to speak for them."
+          ],
+          "answer": 0,
+          "explanation": "“peuvent envoyer leur avis par courriel avant vendredi”."
+        }
+      ],
+      "topics": [
+        "futur-simple",
+        "time-expressions",
+        "relative-pronouns"
+      ],
+      "words": [
+        "health-time-057",
+        "health-time-078",
+        "verbs-045",
+        "health-time-068",
+        "health-time-091",
+        "health-time-052",
+        "verbs-030",
+        "qualities-037",
+        "health-time-062",
+        "work-007",
+        "health-time-065",
+        "essentials-062",
+        "essentials-048",
+        "essentials-032",
+        "verbs-020",
+        "verbs-005",
+        "verbs-084",
+        "essentials-054",
+        "essentials-063",
+        "work-071",
+        "health-time-066"
+      ],
+      "gloss": [
+        {
+          "fr": "À partir du",
+          "en": "from (a date) on"
+        },
+        {
+          "fr": "mois",
+          "en": "month",
+          "word": "health-time-057"
+        },
+        {
+          "fr": "d’octobre",
+          "en": "of October",
+          "word": "health-time-078"
+        },
+        {
+          "fr": "bibliothèque",
+          "en": "library"
+        },
+        {
+          "fr": "ouvrira",
+          "en": "will open (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "dix-sept",
+          "en": "seventeen"
+        },
+        {
+          "fr": "En revanche",
+          "en": "on the other hand"
+        },
+        {
+          "fr": "restera",
+          "en": "will stay (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "fermée",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        },
+        {
+          "fr": "faute de personnel",
+          "en": "for lack of staff"
+        },
+        {
+          "fr": "réunion",
+          "en": "meeting",
+          "word": "work-007"
+        },
+        {
+          "fr": "publique",
+          "en": "public"
+        },
+        {
+          "fr": "aura lieu",
+          "en": "will take place"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "prochain",
+          "en": "next"
+        },
+        {
+          "fr": "salle du conseil",
+          "en": "council chamber"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "discuter",
+          "en": "to discuss"
+        },
+        {
+          "fr": "ces",
+          "en": "these",
+          "word": "essentials-048"
+        },
+        {
+          "fr": "horaires",
+          "en": "opening times; timetables"
+        },
+        {
+          "fr": "habitants",
+          "en": "residents"
+        },
+        {
+          "fr": "qui",
+          "en": "who; which",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "peuvent",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "envoyer",
+          "en": "to send",
+          "word": "verbs-084"
+        },
+        {
+          "fr": "leur",
+          "en": "their",
+          "word": "essentials-054"
+        },
+        {
+          "fr": "avis",
+          "en": "opinion"
+        },
+        {
+          "fr": "par",
+          "en": "by",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "courriel",
+          "en": "email",
+          "word": "work-071"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "vendredi",
+          "en": "Friday",
+          "word": "health-time-066"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-p07",
+      "level": "B1",
+      "kind": "text",
+      "title": "Email to the neighbours about the trees",
+      "lines": [
+        {
+          "fr": "Bonjour à tous, je vous écris au sujet des travaux de la place du Marché.",
+          "en": "Hello everyone, I’m writing to you about the work on Market Square."
+        },
+        {
+          "fr": "On nous avait promis que les six vieux platanes seraient gardés ; or trois ont été coupés mardi.",
+          "en": "We had been promised that the six old plane trees would be kept; yet three were cut down on Tuesday."
+        },
+        {
+          "fr": "Je ne suis pas contre le projet, mais je voudrais qu’on nous explique cette décision.",
+          "en": "I am not against the project, but I would like someone to explain this decision to us."
+        },
+        {
+          "fr": "Si vous êtes d’accord, nous pourrions demander un rendez-vous à la mairie avant la fin du mois.",
+          "en": "If you agree, we could ask the town hall for an appointment before the end of the month."
+        },
+        {
+          "fr": "Répondez-moi vite : je dois envoyer la lettre vendredi.",
+          "en": "Answer me quickly: I have to send the letter on Friday."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What had the residents been promised?",
+          "choices": [
+            "That the six old plane trees would be kept.",
+            "That the square would be closed to cars.",
+            "That the work would end in May.",
+            "That three new trees would be planted."
+          ],
+          "answer": 0,
+          "explanation": "“On nous avait promis que les six vieux platanes seraient gardés”."
+        },
+        {
+          "question": "What happened on Tuesday?",
+          "choices": [
+            "Three of the trees were cut down.",
+            "The work was stopped.",
+            "The town hall answered the letter.",
+            "Six trees were planted."
+          ],
+          "answer": 0,
+          "explanation": "“or trois ont été coupés mardi”."
+        },
+        {
+          "question": "What is the writer’s position on the project?",
+          "choices": [
+            "Not against it, but wanting an explanation.",
+            "Completely against it.",
+            "Entirely happy with the town hall.",
+            "Ready to plant new trees instead."
+          ],
+          "answer": 0,
+          "explanation": "“Je ne suis pas contre le projet, mais je voudrais qu’on nous explique cette décision.”"
+        },
+        {
+          "question": "Why must the neighbours answer quickly?",
+          "choices": [
+            "The letter has to be sent on Friday.",
+            "The meeting is on Tuesday.",
+            "The work ends this week.",
+            "The town hall closes for the month."
+          ],
+          "answer": 0,
+          "explanation": "“je dois envoyer la lettre vendredi”."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "conditional",
+        "subjunctive"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-044",
+        "verbs-073",
+        "travel-034",
+        "travel-022",
+        "verbs-002",
+        "health-time-087",
+        "qualities-009",
+        "verbs-001",
+        "verbs-080",
+        "health-time-084",
+        "health-time-063",
+        "essentials-066",
+        "work-008",
+        "verbs-019",
+        "verbs-075",
+        "essentials-047",
+        "essentials-081",
+        "essentials-015",
+        "verbs-020",
+        "verbs-008",
+        "work-010",
+        "travel-076",
+        "health-time-057",
+        "verbs-009",
+        "verbs-021",
+        "verbs-084",
+        "health-time-066"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "tous",
+          "en": "every; all",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "écris",
+          "en": "am writing (écrire)",
+          "word": "verbs-073"
+        },
+        {
+          "fr": "au sujet des",
+          "en": "about; concerning"
+        },
+        {
+          "fr": "travaux",
+          "en": "roadworks; building work"
+        },
+        {
+          "fr": "place",
+          "en": "square",
+          "word": "travel-034"
+        },
+        {
+          "fr": "Marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "avait",
+          "en": "had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "promis",
+          "en": "promised (promettre)"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "vieux",
+          "en": "old",
+          "word": "qualities-009"
+        },
+        {
+          "fr": "platanes",
+          "en": "plane trees"
+        },
+        {
+          "fr": "seraient",
+          "en": "would be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "gardés",
+          "en": "kept (garder)",
+          "word": "verbs-080"
+        },
+        {
+          "fr": "or",
+          "en": "yet; now"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "été",
+          "en": "been (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "coupés",
+          "en": "cut down (couper)"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "contre",
+          "en": "against",
+          "word": "essentials-066"
+        },
+        {
+          "fr": "projet",
+          "en": "project",
+          "word": "work-008"
+        },
+        {
+          "fr": "voudrais",
+          "en": "would like (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "explique",
+          "en": "explain (expliquer)",
+          "word": "verbs-075"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "décision",
+          "en": "decision"
+        },
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "êtes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "d’accord",
+          "en": "in agreement; OK",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "pourrions",
+          "en": "could (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "demander",
+          "en": "to ask for",
+          "word": "verbs-008"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "fin",
+          "en": "end"
+        },
+        {
+          "fr": "mois",
+          "en": "month",
+          "word": "health-time-057"
+        },
+        {
+          "fr": "Répondez-moi",
+          "en": "answer me (répondre)",
+          "word": "verbs-009"
+        },
+        {
+          "fr": "vite",
+          "en": "quickly"
+        },
+        {
+          "fr": "dois",
+          "en": "must (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "envoyer",
+          "en": "to send",
+          "word": "verbs-084"
+        },
+        {
+          "fr": "lettre",
+          "en": "letter"
+        },
+        {
+          "fr": "vendredi",
+          "en": "Friday",
+          "word": "health-time-066"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-p08",
+      "level": "B1",
+      "kind": "text",
+      "title": "Local paper: recycling figures",
+      "lines": [
+        {
+          "fr": "Selon le rapport publié lundi par la mairie, le recyclage a augmenté de quinze pour cent en un an.",
+          "en": "According to the report published on Monday by the town hall, recycling has risen by fifteen per cent in a year."
+        },
+        {
+          "fr": "Ce sont surtout les habitants des immeubles qui trient davantage, alors qu’on attendait le contraire.",
+          "en": "It is above all the residents of blocks of flats who sort more, whereas the opposite was expected."
+        },
+        {
+          "fr": "Le verre, lui, recule : les bouteilles finissent encore trop souvent dans la poubelle grise.",
+          "en": "Glass, however, is falling back: bottles still end up far too often in the grey bin."
+        },
+        {
+          "fr": "La ville va donc installer vingt nouveaux bacs à verre près des écoles et des commerces.",
+          "en": "The town is therefore going to install twenty new glass bins near the schools and the shops."
+        }
+      ],
+      "questions": [
+        {
+          "question": "By how much has recycling risen?",
+          "choices": [
+            "Fifteen per cent in a year.",
+            "Five per cent in a year.",
+            "Fifteen per cent in a month.",
+            "Fifty per cent in a year."
+          ],
+          "answer": 0,
+          "explanation": "“le recyclage a augmenté de quinze pour cent en un an”."
+        },
+        {
+          "question": "Who sorts more than expected?",
+          "choices": [
+            "The residents of blocks of flats.",
+            "Families with young children.",
+            "The shopkeepers of the town centre.",
+            "People who live in houses."
+          ],
+          "answer": 0,
+          "explanation": "“Ce sont surtout les habitants des immeubles qui trient davantage”."
+        },
+        {
+          "question": "What is the problem with glass?",
+          "choices": [
+            "Bottles still go into the grey bin too often.",
+            "There is no glass bin in the town.",
+            "Glass is no longer collected.",
+            "Bottles are too heavy to carry."
+          ],
+          "answer": 0,
+          "explanation": "“les bouteilles finissent encore trop souvent dans la poubelle grise”."
+        },
+        {
+          "question": "What is the town going to do?",
+          "choices": [
+            "Install twenty new glass bins.",
+            "Fine people who do not sort.",
+            "Publish a second report.",
+            "Empty the grey bins twice a week."
+          ],
+          "answer": 0,
+          "explanation": "“La ville va donc installer vingt nouveaux bacs à verre”."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "relative-pronouns",
+        "futur-proche"
+      ],
+      "words": [
+        "essentials-072",
+        "work-098",
+        "health-time-062",
+        "essentials-063",
+        "travel-076",
+        "verbs-002",
+        "verbs-001",
+        "essentials-032",
+        "verbs-041",
+        "essentials-027",
+        "food-090",
+        "verbs-048",
+        "essentials-087",
+        "essentials-097",
+        "essentials-091",
+        "essentials-057",
+        "home-079",
+        "travel-001",
+        "verbs-004",
+        "essentials-078",
+        "health-time-094",
+        "qualities-008",
+        "work-031",
+        "health-time-093"
+      ],
+      "gloss": [
+        {
+          "fr": "Selon",
+          "en": "according to",
+          "word": "essentials-072"
+        },
+        {
+          "fr": "rapport",
+          "en": "report",
+          "word": "work-098"
+        },
+        {
+          "fr": "publié",
+          "en": "published (publier)"
+        },
+        {
+          "fr": "lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        },
+        {
+          "fr": "par",
+          "en": "by",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "recyclage",
+          "en": "recycling"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "augmenté",
+          "en": "increased (augmenter)"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "pour cent",
+          "en": "per cent"
+        },
+        {
+          "fr": "an",
+          "en": "year"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "surtout",
+          "en": "above all; mainly"
+        },
+        {
+          "fr": "habitants",
+          "en": "residents"
+        },
+        {
+          "fr": "immeubles",
+          "en": "blocks of flats"
+        },
+        {
+          "fr": "qui",
+          "en": "who; which",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "trient",
+          "en": "sort (trier)"
+        },
+        {
+          "fr": "davantage",
+          "en": "more"
+        },
+        {
+          "fr": "alors qu’on",
+          "en": "whereas; while"
+        },
+        {
+          "fr": "attendait",
+          "en": "was expecting (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "contraire",
+          "en": "opposite"
+        },
+        {
+          "fr": "verre",
+          "en": "glass (the material)"
+        },
+        {
+          "fr": "lui",
+          "en": "it; for its part",
+          "word": "essentials-027"
+        },
+        {
+          "fr": "recule",
+          "en": "is falling back (reculer)"
+        },
+        {
+          "fr": "bouteilles",
+          "en": "bottles",
+          "word": "food-090"
+        },
+        {
+          "fr": "finissent",
+          "en": "end up (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "encore",
+          "en": "again; still",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "trop",
+          "en": "too; too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "poubelle",
+          "en": "bin",
+          "word": "home-079"
+        },
+        {
+          "fr": "grise",
+          "en": "grey"
+        },
+        {
+          "fr": "ville",
+          "en": "town; city",
+          "word": "travel-001"
+        },
+        {
+          "fr": "va",
+          "en": "goes; is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "donc",
+          "en": "so; therefore",
+          "word": "essentials-078"
+        },
+        {
+          "fr": "installer",
+          "en": "to install"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "nouveaux",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "bacs",
+          "en": "bins; containers"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "écoles",
+          "en": "schools",
+          "word": "work-031"
+        },
+        {
+          "fr": "commerces",
+          "en": "shops"
+        }
+      ]
+    },
+    {
+      "id": "b1-opinions-p09",
+      "level": "B1",
+      "kind": "text",
+      "title": "A month with the town hall app",
+      "lines": [
+        {
+          "fr": "J’ai testé pendant un mois l’application que la mairie a lancée au printemps.",
+          "en": "I tested for a month the app that the town hall launched in the spring."
+        },
+        {
+          "fr": "L’idée est bonne : on y trouve les horaires des bus, les travaux et les décisions du conseil.",
+          "en": "The idea is good: you find the bus times, the roadworks and the council’s decisions on it."
+        },
+        {
+          "fr": "Le problème, c’est qu’elle ne marche pas sans connexion et qu’elle vide la batterie en deux heures.",
+          "en": "The problem is that it doesn’t work without a connection and that it drains the battery in two hours."
+        },
+        {
+          "fr": "Si la mairie voulait vraiment aider les habitants, elle enverrait aussi un message court chaque semaine.",
+          "en": "If the town hall really wanted to help residents, it would also send a short message every week."
+        },
+        {
+          "fr": "Pour l’instant, je continue à lire le journal du quartier, qui est gratuit et que tout le monde comprend.",
+          "en": "For now, I go on reading the neighbourhood newspaper, which is free and which everyone understands."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How long did the writer test the app?",
+          "choices": [
+            "For a month.",
+            "For a week.",
+            "Since the spring.",
+            "For two hours."
+          ],
+          "answer": 0,
+          "explanation": "“J’ai testé pendant un mois”."
+        },
+        {
+          "question": "What can you find in the app?",
+          "choices": [
+            "Bus times, roadworks and council decisions.",
+            "Weather forecasts and adverts.",
+            "Local job offers.",
+            "Photographs of the neighbourhood."
+          ],
+          "answer": 0,
+          "explanation": "“on y trouve les horaires des bus, les travaux et les décisions du conseil”."
+        },
+        {
+          "question": "What are the writer’s two complaints?",
+          "choices": [
+            "It needs a connection and it drains the battery.",
+            "It is expensive and slow.",
+            "It only works on new phones.",
+            "It gives the wrong bus times."
+          ],
+          "answer": 0,
+          "explanation": "“elle ne marche pas sans connexion et ... elle vide la batterie en deux heures”."
+        },
+        {
+          "question": "What does the writer still read?",
+          "choices": [
+            "The free neighbourhood newspaper.",
+            "The regional daily paper.",
+            "The town hall’s emails.",
+            "The notices outside the town hall."
+          ],
+          "answer": 0,
+          "explanation": "“je continue à lire le journal du quartier, qui est gratuit”."
+        }
+      ],
+      "topics": [
+        "relative-pronouns",
+        "si-clauses",
+        "conditional"
+      ],
+      "words": [
+        "verbs-002",
+        "health-time-057",
+        "work-067",
+        "travel-076",
+        "verbs-001",
+        "qualities-003",
+        "verbs-026",
+        "travel-005",
+        "verbs-039",
+        "essentials-061",
+        "work-077",
+        "work-079",
+        "health-time-083",
+        "health-time-052",
+        "essentials-081",
+        "verbs-019",
+        "verbs-051",
+        "verbs-084",
+        "essentials-086",
+        "work-072",
+        "qualities-012",
+        "health-time-056",
+        "verbs-049",
+        "verbs-072",
+        "work-081",
+        "travel-032",
+        "essentials-032",
+        "qualities-060",
+        "verbs-016",
+        "essentials-044"
+      ],
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "testé",
+          "en": "tested (tester)"
+        },
+        {
+          "fr": "pendant",
+          "en": "during; for"
+        },
+        {
+          "fr": "mois",
+          "en": "month",
+          "word": "health-time-057"
+        },
+        {
+          "fr": "l’application",
+          "en": "the app",
+          "word": "work-067"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "lancée",
+          "en": "launched (lancer)"
+        },
+        {
+          "fr": "printemps",
+          "en": "spring"
+        },
+        {
+          "fr": "L’idée",
+          "en": "the idea"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "bonne",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "trouve",
+          "en": "find; think (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "horaires",
+          "en": "opening times; timetables"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "travaux",
+          "en": "roadworks; building work"
+        },
+        {
+          "fr": "décisions",
+          "en": "decisions"
+        },
+        {
+          "fr": "conseil",
+          "en": "council"
+        },
+        {
+          "fr": "problème",
+          "en": "problem"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is / this is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "marche",
+          "en": "works (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "connexion",
+          "en": "connection",
+          "word": "work-077"
+        },
+        {
+          "fr": "vide",
+          "en": "drains; empties (vider)"
+        },
+        {
+          "fr": "batterie",
+          "en": "battery",
+          "word": "work-079"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "voulait",
+          "en": "wanted (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "vraiment",
+          "en": "really"
+        },
+        {
+          "fr": "aider",
+          "en": "to help",
+          "word": "verbs-051"
+        },
+        {
+          "fr": "habitants",
+          "en": "residents"
+        },
+        {
+          "fr": "enverrait",
+          "en": "would send (envoyer)",
+          "word": "verbs-084"
+        },
+        {
+          "fr": "aussi",
+          "en": "too; also",
+          "word": "essentials-086"
+        },
+        {
+          "fr": "message",
+          "en": "message",
+          "word": "work-072"
+        },
+        {
+          "fr": "court",
+          "en": "short",
+          "word": "qualities-012"
+        },
+        {
+          "fr": "chaque",
+          "en": "every"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "Pour l’instant",
+          "en": "for now"
+        },
+        {
+          "fr": "continue",
+          "en": "carry on (continuer)",
+          "word": "verbs-049"
+        },
+        {
+          "fr": "lire",
+          "en": "to read",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "journal",
+          "en": "newspaper",
+          "word": "work-081"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "qui",
+          "en": "who; which",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "gratuit",
+          "en": "free",
+          "word": "qualities-060"
+        },
+        {
+          "fr": "tout le monde",
+          "en": "everyone"
+        },
+        {
+          "fr": "comprend",
+          "en": "understands (comprendre)",
+          "word": "verbs-016"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4413 @@
+{
+  "sentences": [
+    {
+      "id": "a2-past-s01",
+      "level": "A2",
+      "fr": "Hier soir, j’ai oublié mes clés dans la voiture.",
+      "en": "Last night I forgot my keys in the car.",
+      "distractors": [
+        "Last night I forgot my keys in the kitchen.",
+        "This morning I forgot my keys in the car.",
+        "Last night my brother forgot his keys in the car."
+      ],
+      "gap": "oublié",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-060",
+        "verbs-092",
+        "home-031",
+        "essentials-057",
+        "travel-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Hier soir",
+          "en": "yesterday evening; last night"
+        },
+        {
+          "fr": "j’ai oublié",
+          "en": "I forgot (oublier)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "clés",
+          "en": "keys (la clé)",
+          "word": "home-031"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "voiture",
+          "en": "car (la voiture)",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s02",
+      "level": "A2",
+      "fr": "Le week-end dernier, nous sommes allés à la mer.",
+      "en": "Last weekend we went to the sea.",
+      "distractors": [
+        "Last weekend we went to the mountains.",
+        "Next weekend we are going to the sea.",
+        "Last weekend they went to the sea."
+      ],
+      "gap": "sommes",
+      "topics": [
+        "passe-compose-etre",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-004",
+        "nature-007"
+      ],
+      "gloss": [
+        {
+          "fr": "Le week-end dernier",
+          "en": "last weekend"
+        },
+        {
+          "fr": "sommes allés",
+          "en": "went (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "mer",
+          "en": "sea (la mer)",
+          "word": "nature-007"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s03",
+      "level": "A2",
+      "fr": "Quand j’étais petit, j’habitais dans un village.",
+      "en": "When I was little, I lived in a village.",
+      "distractors": [
+        "When I was little, I lived in a big city.",
+        "When my brother was little, he lived in a village.",
+        "When I was little, I worked in a village."
+      ],
+      "gap": "j’habitais",
+      "topics": [
+        "imparfait"
+      ],
+      "words": [
+        "essentials-082",
+        "verbs-001",
+        "qualities-002",
+        "verbs-068",
+        "essentials-057",
+        "travel-047"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "j’étais",
+          "en": "I was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "petit",
+          "en": "small; little",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "j’habitais",
+          "en": "I lived (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "village",
+          "en": "village (le village)",
+          "word": "travel-047"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s04",
+      "level": "A2",
+      "fr": "Tu as vu le film samedi soir ?",
+      "en": "Did you see the film on Saturday evening?",
+      "distractors": [
+        "Did you see the film on Saturday morning?",
+        "Did you see the film on Sunday evening?",
+        "Did you choose the film on Saturday evening?"
+      ],
+      "gap": "samedi",
+      "topics": [
+        "passe-compose-avoir",
+        "questions"
+      ],
+      "words": [
+        "verbs-010",
+        "work-089",
+        "health-time-067",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "as vu",
+          "en": "saw (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "film",
+          "en": "film (le film)",
+          "word": "work-089"
+        },
+        {
+          "fr": "samedi",
+          "en": "on Saturday (le samedi)",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "soir",
+          "en": "evening (le soir)",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s05",
+      "level": "A2",
+      "fr": "Je n’ai pas dormi de la nuit.",
+      "en": "I didn’t sleep all night.",
+      "distractors": [
+        "I didn’t sleep all morning.",
+        "I slept all night.",
+        "My sister didn’t sleep all night."
+      ],
+      "gap": "dormi",
+      "topics": [
+        "negation",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-062",
+        "health-time-061"
+      ],
+      "gloss": [
+        {
+          "fr": "n’ai pas dormi",
+          "en": "didn’t sleep (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "de la nuit",
+          "en": "all night long"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s06",
+      "level": "A2",
+      "fr": "Elle est tombée dans l’escalier ce matin.",
+      "en": "She fell down the stairs this morning.",
+      "distractors": [
+        "He fell down the stairs this morning.",
+        "She fell down the stairs last night.",
+        "She fell in the street this morning."
+      ],
+      "gap": "matin",
+      "topics": [
+        "passe-compose-etre",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-057",
+        "home-012",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "est tombée",
+          "en": "fell (tomber)"
+        },
+        {
+          "fr": "dans",
+          "en": "in; down",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "l’escalier",
+          "en": "the stairs (l’escalier)",
+          "word": "home-012"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s07",
+      "level": "A2",
+      "fr": "On a mangé une pizza et on a regardé un film.",
+      "en": "We ate a pizza and watched a film.",
+      "distractors": [
+        "We ate a pizza and watched a match.",
+        "We made a pizza and watched a film.",
+        "They ate a pizza and watched a film."
+      ],
+      "gap": "mangé",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-059",
+        "food-061",
+        "verbs-011",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "a mangé",
+          "en": "ate (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "pizza",
+          "en": "pizza (la pizza)",
+          "word": "food-061"
+        },
+        {
+          "fr": "a regardé",
+          "en": "watched (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "film",
+          "en": "film (le film)",
+          "word": "work-089"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s08",
+      "level": "A2",
+      "fr": "Mes parents se sont rencontrés à l’université.",
+      "en": "My parents met at university.",
+      "distractors": [
+        "My parents met at work.",
+        "My grandparents met at university.",
+        "My parents got married at university."
+      ],
+      "gap": "sont",
+      "topics": [
+        "passe-compose-etre",
+        "reflexive"
+      ],
+      "words": [
+        "people-008",
+        "verbs-086",
+        "work-032"
+      ],
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "parents",
+          "en": "parents (le parent)",
+          "word": "people-008"
+        },
+        {
+          "fr": "se sont rencontrés",
+          "en": "met (se rencontrer)",
+          "word": "verbs-086"
+        },
+        {
+          "fr": "l’université",
+          "en": "university (l’université)",
+          "word": "work-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s09",
+      "level": "A2",
+      "fr": "Il pleuvait, alors nous sommes restés à la maison.",
+      "en": "It was raining, so we stayed at home.",
+      "distractors": [
+        "It was snowing, so we stayed at home.",
+        "It was raining, so we went to the beach.",
+        "It was raining, so they stayed at home."
+      ],
+      "gap": "pleuvait",
+      "topics": [
+        "imparfait",
+        "pc-vs-imparfait"
+      ],
+      "words": [
+        "verbs-030",
+        "home-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Il pleuvait",
+          "en": "it was raining (pleuvoir)"
+        },
+        {
+          "fr": "alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "sommes restés",
+          "en": "stayed (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "à la maison",
+          "en": "at home"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s10",
+      "level": "A2",
+      "fr": "Qu’est-ce que tu as fait dimanche ?",
+      "en": "What did you do on Sunday?",
+      "distractors": [
+        "What did you do on Saturday?",
+        "What are you going to do on Sunday?",
+        "What did he do on Sunday?"
+      ],
+      "gap": "fait",
+      "topics": [
+        "questions",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-003",
+        "health-time-068"
+      ],
+      "gloss": [
+        {
+          "fr": "Qu’est-ce que",
+          "en": "what"
+        },
+        {
+          "fr": "as fait",
+          "en": "did (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "dimanche",
+          "en": "on Sunday (le dimanche)",
+          "word": "health-time-068"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s11",
+      "level": "A2",
+      "fr": "Le train est arrivé avec vingt minutes de retard.",
+      "en": "The train arrived twenty minutes late.",
+      "distractors": [
+        "The train arrived thirty minutes late.",
+        "The train left twenty minutes late.",
+        "The bus arrived twenty minutes late."
+      ],
+      "gap": "vingt",
+      "topics": [
+        "passe-compose-etre",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-006",
+        "verbs-032",
+        "essentials-060",
+        "health-time-094",
+        "health-time-053",
+        "travel-059"
+      ],
+      "gloss": [
+        {
+          "fr": "train",
+          "en": "train (le train)",
+          "word": "travel-006"
+        },
+        {
+          "fr": "est arrivé",
+          "en": "arrived (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "de retard",
+          "en": "late; behind schedule"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s12",
+      "level": "A2",
+      "fr": "Ma sœur a perdu son portefeuille dans le bus.",
+      "en": "My sister lost her wallet on the bus.",
+      "distractors": [
+        "My brother lost his wallet on the bus.",
+        "My sister lost her keys on the bus.",
+        "My sister found her wallet on the bus."
+      ],
+      "gap": "perdu",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "people-011",
+        "verbs-081",
+        "people-096",
+        "essentials-057",
+        "travel-005"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister (la sœur)",
+          "word": "people-011"
+        },
+        {
+          "fr": "a perdu",
+          "en": "lost (perdre)",
+          "word": "verbs-081"
+        },
+        {
+          "fr": "son",
+          "en": "his; her"
+        },
+        {
+          "fr": "portefeuille",
+          "en": "wallet (le portefeuille)",
+          "word": "people-096"
+        },
+        {
+          "fr": "dans",
+          "en": "in; on",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "bus",
+          "en": "bus (le bus)",
+          "word": "travel-005"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s13",
+      "level": "A2",
+      "fr": "Nous avons visité le musée dimanche matin.",
+      "en": "We visited the museum on Sunday morning.",
+      "distractors": [
+        "We visited the museum on Saturday morning.",
+        "We visited the museum on Sunday evening.",
+        "They visited the museum on Sunday morning."
+      ],
+      "gap": "visité",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-073",
+        "health-time-068",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "avons visité",
+          "en": "visited (visiter)"
+        },
+        {
+          "fr": "musée",
+          "en": "museum (le musée)",
+          "word": "travel-073"
+        },
+        {
+          "fr": "dimanche",
+          "en": "on Sunday (le dimanche)",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "matin",
+          "en": "morning (le matin)",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s14",
+      "level": "A2",
+      "fr": "Je ne me souviens plus de son prénom.",
+      "en": "I don’t remember his first name any more.",
+      "distractors": [
+        "I still remember his first name.",
+        "I don’t remember his address any more.",
+        "I don’t remember his voice any more."
+      ],
+      "gap": "plus",
+      "topics": [
+        "negation-more",
+        "reflexive"
+      ],
+      "words": [
+        "verbs-093",
+        "people-056"
+      ],
+      "gloss": [
+        {
+          "fr": "ne",
+          "en": "not (with plus)"
+        },
+        {
+          "fr": "souviens",
+          "en": "remember (se souvenir)",
+          "word": "verbs-093"
+        },
+        {
+          "fr": "plus",
+          "en": "any more; no longer"
+        },
+        {
+          "fr": "son",
+          "en": "his; her"
+        },
+        {
+          "fr": "prénom",
+          "en": "first name (le prénom)",
+          "word": "people-056"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s15",
+      "level": "A2",
+      "fr": "Quand nous étions enfants, nous jouions dans la rue.",
+      "en": "When we were children, we used to play in the street.",
+      "distractors": [
+        "When we were children, we used to play in the garden.",
+        "When they were children, they used to play in the street.",
+        "When we were children, we used to sleep in the street."
+      ],
+      "gap": "jouions",
+      "topics": [
+        "imparfait"
+      ],
+      "words": [
+        "essentials-082",
+        "verbs-001",
+        "people-004",
+        "verbs-087",
+        "essentials-057",
+        "travel-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "étions",
+          "en": "were (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "enfants",
+          "en": "children (l’enfant)",
+          "word": "people-004"
+        },
+        {
+          "fr": "jouions",
+          "en": "used to play (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "rue",
+          "en": "street (la rue)",
+          "word": "travel-002"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s16",
+      "level": "A2",
+      "fr": "Il a fait très chaud la semaine dernière.",
+      "en": "It was very hot last week.",
+      "distractors": [
+        "It was very cold last week.",
+        "It was very hot last month.",
+        "It was very hot this week."
+      ],
+      "gap": "chaud",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-003",
+        "essentials-096",
+        "qualities-025",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "a fait",
+          "en": "was (faire; il a fait chaud = the weather was hot)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "chaud",
+          "en": "hot; warm",
+          "word": "qualities-025"
+        },
+        {
+          "fr": "semaine",
+          "en": "week (la semaine)",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "dernière",
+          "en": "last"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s17",
+      "level": "A2",
+      "fr": "Tu es rentré à quelle heure hier ?",
+      "en": "What time did you get home yesterday?",
+      "distractors": [
+        "What time did you get home today?",
+        "What time did you leave yesterday?",
+        "What time did your brother get home yesterday?"
+      ],
+      "gap": "hier",
+      "topics": [
+        "questions",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "es rentré",
+          "en": "got home; came back (rentrer)"
+        },
+        {
+          "fr": "à quelle heure",
+          "en": "at what time"
+        },
+        {
+          "fr": "hier",
+          "en": "yesterday"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s18",
+      "level": "A2",
+      "fr": "Je l’ai appelée trois fois, mais elle n’a pas répondu.",
+      "en": "I called her three times, but she didn’t answer.",
+      "distractors": [
+        "I called her twice, but she didn’t answer.",
+        "I called him three times, but he didn’t answer.",
+        "I called her three times, and she answered."
+      ],
+      "gap": "trois",
+      "topics": [
+        "direct-object",
+        "passe-compose-avoir",
+        "negation"
+      ],
+      "words": [
+        "verbs-085",
+        "health-time-084",
+        "essentials-077",
+        "verbs-009"
+      ],
+      "gloss": [
+        {
+          "fr": "l’ai appelée",
+          "en": "called her (appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "fois",
+          "en": "times (la fois)"
+        },
+        {
+          "fr": "mais",
+          "en": "but",
+          "word": "essentials-077"
+        },
+        {
+          "fr": "n’a pas répondu",
+          "en": "didn’t answer (répondre)",
+          "word": "verbs-009"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s19",
+      "level": "A2",
+      "fr": "Elles ont passé une semaine en Espagne.",
+      "en": "They spent a week in Spain.",
+      "distractors": [
+        "They spent a month in Spain.",
+        "They spent a week in Italy.",
+        "They are going to spend a week in Spain."
+      ],
+      "gap": "semaine",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-029",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "ont passé",
+          "en": "spent (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "semaine",
+          "en": "week (la semaine)",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "Espagne",
+          "en": "Spain"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s20",
+      "level": "A2",
+      "fr": "Le chien a mangé tout le gâteau !",
+      "en": "The dog ate the whole cake!",
+      "distractors": [
+        "The cat ate the whole cake!",
+        "The dog ate half the cake!",
+        "The dog ate the whole chicken!"
+      ],
+      "gap": "gâteau",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "nature-011",
+        "verbs-059",
+        "essentials-044",
+        "food-054"
+      ],
+      "gloss": [
+        {
+          "fr": "chien",
+          "en": "dog (le chien)",
+          "word": "nature-011"
+        },
+        {
+          "fr": "a mangé",
+          "en": "ate (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "tout",
+          "en": "all; the whole",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake (le gâteau)",
+          "word": "food-054"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s21",
+      "level": "A2",
+      "fr": "Vous avez pris beaucoup de photos pendant les vacances ?",
+      "en": "Did you take a lot of photos during the holidays?",
+      "distractors": [
+        "Did you take a few photos during the holidays?",
+        "Did you take a lot of photos before the holidays?",
+        "Did you send a lot of photos during the holidays?"
+      ],
+      "gap": "pris",
+      "topics": [
+        "questions",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-023",
+        "essentials-099",
+        "work-092",
+        "travel-018"
+      ],
+      "gloss": [
+        {
+          "fr": "avez pris",
+          "en": "took (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "beaucoup de",
+          "en": "a lot of",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "photos",
+          "en": "photos (la photo)",
+          "word": "work-092"
+        },
+        {
+          "fr": "pendant",
+          "en": "during"
+        },
+        {
+          "fr": "vacances",
+          "en": "holidays (les vacances)",
+          "word": "travel-018"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s22",
+      "level": "A2",
+      "fr": "Je me suis levé à cinq heures pour prendre l’avion.",
+      "en": "I got up at five to catch the plane.",
+      "distractors": [
+        "I got up at nine to catch the plane.",
+        "I got up at five to catch the train.",
+        "My husband got up at five to catch the plane."
+      ],
+      "gap": "cinq",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "verbs-064",
+        "health-time-086",
+        "health-time-052",
+        "essentials-062",
+        "verbs-023",
+        "travel-010"
+      ],
+      "gloss": [
+        {
+          "fr": "me suis levé",
+          "en": "got up (se lever)",
+          "word": "verbs-064"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "pour",
+          "en": "in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "prendre",
+          "en": "to take; to catch",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "l’avion",
+          "en": "the plane (l’avion)",
+          "word": "travel-010"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s23",
+      "level": "A2",
+      "fr": "Nous ne sommes jamais retournés dans ce restaurant.",
+      "en": "We never went back to that restaurant.",
+      "distractors": [
+        "We often went back to that restaurant.",
+        "We never went back to that hotel.",
+        "They never went back to that restaurant."
+      ],
+      "gap": "jamais",
+      "topics": [
+        "negation-more",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "verbs-036",
+        "essentials-057",
+        "travel-020"
+      ],
+      "gloss": [
+        {
+          "fr": "ne",
+          "en": "not (with jamais)"
+        },
+        {
+          "fr": "sommes jamais retournés",
+          "en": "never went back (retourner)",
+          "word": "verbs-036"
+        },
+        {
+          "fr": "dans",
+          "en": "to; in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant (le restaurant)",
+          "word": "travel-020"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s24",
+      "level": "A2",
+      "fr": "Mon grand-père travaillait dans une boulangerie.",
+      "en": "My grandfather used to work in a bakery.",
+      "distractors": [
+        "My grandmother used to work in a bakery.",
+        "My grandfather used to work in a pharmacy.",
+        "My grandfather used to live above a bakery."
+      ],
+      "gap": "travaillait",
+      "topics": [
+        "imparfait"
+      ],
+      "words": [
+        "people-014",
+        "verbs-069",
+        "essentials-057",
+        "travel-024"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "grand-père",
+          "en": "grandfather (le grand-père)",
+          "word": "people-014"
+        },
+        {
+          "fr": "travaillait",
+          "en": "used to work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "boulangerie",
+          "en": "bakery (la boulangerie)",
+          "word": "travel-024"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s25",
+      "level": "A2",
+      "fr": "Elle a commencé à pleurer quand elle a vu la photo.",
+      "en": "She started to cry when she saw the photo.",
+      "distractors": [
+        "She started to laugh when she saw the photo.",
+        "She started to cry when she saw the letter.",
+        "He started to cry when he saw the photo."
+      ],
+      "gap": "pleurer",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-047",
+        "verbs-090",
+        "essentials-082",
+        "verbs-010",
+        "work-092"
+      ],
+      "gloss": [
+        {
+          "fr": "a commencé",
+          "en": "started (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "pleurer",
+          "en": "to cry (pleurer)",
+          "word": "verbs-090"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "a vu",
+          "en": "saw (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "photo",
+          "en": "photo (la photo)",
+          "word": "work-092"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s26",
+      "level": "A2",
+      "fr": "Hier, il a plu toute la journée sans s’arrêter.",
+      "en": "Yesterday it rained all day without stopping.",
+      "distractors": [
+        "Yesterday it snowed all day without stopping.",
+        "Today it rained all day without stopping.",
+        "Yesterday it rained all morning without stopping."
+      ],
+      "gap": "plu",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-061",
+        "verbs-050"
+      ],
+      "gloss": [
+        {
+          "fr": "Hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "a plu",
+          "en": "rained (pleuvoir)"
+        },
+        {
+          "fr": "toute la journée",
+          "en": "all day long"
+        },
+        {
+          "fr": "sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "s’arrêter",
+          "en": "stopping (s’arrêter)",
+          "word": "verbs-050"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s27",
+      "level": "A2",
+      "fr": "Qui a ouvert la fenêtre de la cuisine ?",
+      "en": "Who opened the kitchen window?",
+      "distractors": [
+        "Who closed the kitchen window?",
+        "Who opened the bedroom window?",
+        "Who opened the kitchen door?"
+      ],
+      "gap": "ouvert",
+      "topics": [
+        "question-words",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "essentials-032",
+        "verbs-045",
+        "home-026",
+        "home-007"
+      ],
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "a ouvert",
+          "en": "opened (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "fenêtre",
+          "en": "window (la fenêtre)",
+          "word": "home-026"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen (la cuisine)",
+          "word": "home-007"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s28",
+      "level": "A2",
+      "fr": "Nous avons attendu le bus pendant une heure.",
+      "en": "We waited for the bus for an hour.",
+      "distractors": [
+        "We waited for the train for an hour.",
+        "We waited for the bus for two hours.",
+        "They waited for the bus for an hour."
+      ],
+      "gap": "attendu",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-041",
+        "travel-005",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "avons attendu",
+          "en": "waited for (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "bus",
+          "en": "bus (le bus)",
+          "word": "travel-005"
+        },
+        {
+          "fr": "pendant",
+          "en": "for; during"
+        },
+        {
+          "fr": "heure",
+          "en": "hour (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s29",
+      "level": "A2",
+      "fr": "Il est parti sans dire au revoir.",
+      "en": "He left without saying goodbye.",
+      "distractors": [
+        "She left without saying goodbye.",
+        "He arrived without saying goodbye.",
+        "He left without paying."
+      ],
+      "gap": "parti",
+      "topics": [
+        "passe-compose-etre"
+      ],
+      "words": [
+        "verbs-031",
+        "essentials-061",
+        "verbs-006",
+        "essentials-007"
+      ],
+      "gloss": [
+        {
+          "fr": "est parti",
+          "en": "left (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "dire",
+          "en": "to say (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "au revoir",
+          "en": "goodbye",
+          "word": "essentials-007"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s30",
+      "level": "A2",
+      "fr": "Je n’ai rien compris à son histoire.",
+      "en": "I didn’t understand anything about his story.",
+      "distractors": [
+        "I understood everything about his story.",
+        "I didn’t understand anything about his question.",
+        "My wife didn’t understand anything about his story."
+      ],
+      "gap": "rien",
+      "topics": [
+        "negation-more",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-016",
+        "essentials-042",
+        "work-056"
+      ],
+      "gloss": [
+        {
+          "fr": "n’ai rien compris",
+          "en": "didn’t understand anything (comprendre)",
+          "word": "verbs-016"
+        },
+        {
+          "fr": "rien",
+          "en": "nothing; anything",
+          "word": "essentials-042"
+        },
+        {
+          "fr": "son",
+          "en": "his; her"
+        },
+        {
+          "fr": "histoire",
+          "en": "story (l’histoire)",
+          "word": "work-056"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s31",
+      "level": "A2",
+      "fr": "Tu te souviens de notre voyage en Italie ?",
+      "en": "Do you remember our trip to Italy?",
+      "distractors": [
+        "Do you remember our trip to Ireland?",
+        "Do you remember their trip to Italy?",
+        "Do you remember our first day in Italy?"
+      ],
+      "gap": "souviens",
+      "topics": [
+        "reflexive",
+        "questions"
+      ],
+      "words": [
+        "verbs-093",
+        "essentials-052",
+        "travel-017"
+      ],
+      "gloss": [
+        {
+          "fr": "te souviens",
+          "en": "remember (se souvenir)",
+          "word": "verbs-093"
+        },
+        {
+          "fr": "notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "voyage",
+          "en": "trip (le voyage)",
+          "word": "travel-017"
+        },
+        {
+          "fr": "Italie",
+          "en": "Italy"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s32",
+      "level": "A2",
+      "fr": "Samedi, ma mère est allée au marché et a acheté du poisson.",
+      "en": "On Saturday, my mother went to the market and bought some fish.",
+      "distractors": [
+        "On Saturday, my mother went to the market and bought some cheese.",
+        "On Sunday, my mother went to the market and bought some fish.",
+        "On Saturday, my sister went to the market and bought some fish."
+      ],
+      "gap": "acheté",
+      "topics": [
+        "passe-compose-etre",
+        "passe-compose-avoir",
+        "partitive"
+      ],
+      "words": [
+        "health-time-067",
+        "people-009",
+        "verbs-004",
+        "travel-022",
+        "verbs-055",
+        "nature-014"
+      ],
+      "gloss": [
+        {
+          "fr": "Samedi",
+          "en": "on Saturday (le samedi)",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "mère",
+          "en": "mother (la mère)",
+          "word": "people-009"
+        },
+        {
+          "fr": "est allée",
+          "en": "went (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "marché",
+          "en": "market (le marché)",
+          "word": "travel-022"
+        },
+        {
+          "fr": "a acheté",
+          "en": "bought (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "poisson",
+          "en": "fish (le poisson)",
+          "word": "nature-014"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s33",
+      "level": "A2",
+      "fr": "Mon frère a eu un accident de vélo samedi.",
+      "en": "My brother had a bike accident on Saturday.",
+      "distractors": [
+        "My sister had a bike accident on Saturday.",
+        "My brother had a car accident on Saturday.",
+        "My brother had a bike accident on Sunday."
+      ],
+      "gap": "eu",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "people-012",
+        "verbs-002",
+        "travel-008",
+        "health-time-067"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "frère",
+          "en": "brother (le frère)",
+          "word": "people-012"
+        },
+        {
+          "fr": "a eu",
+          "en": "had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "accident",
+          "en": "accident"
+        },
+        {
+          "fr": "vélo",
+          "en": "bicycle (le vélo)",
+          "word": "travel-008"
+        },
+        {
+          "fr": "samedi",
+          "en": "on Saturday (le samedi)",
+          "word": "health-time-067"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s34",
+      "level": "A2",
+      "fr": "Quand je suis arrivé, la fête était déjà finie.",
+      "en": "When I arrived, the party was already over.",
+      "distractors": [
+        "When I arrived, the party had not started yet.",
+        "When I arrived, the party was just beginning.",
+        "When we arrived, the party was already over."
+      ],
+      "gap": "déjà",
+      "topics": [
+        "pc-vs-imparfait",
+        "passe-compose-etre",
+        "imparfait"
+      ],
+      "words": [
+        "essentials-082",
+        "verbs-032",
+        "people-054",
+        "verbs-001",
+        "essentials-088",
+        "verbs-048"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "suis arrivé",
+          "en": "arrived (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "fête",
+          "en": "party (la fête)",
+          "word": "people-054"
+        },
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "déjà",
+          "en": "already",
+          "word": "essentials-088"
+        },
+        {
+          "fr": "finie",
+          "en": "finished; over (finir)",
+          "word": "verbs-048"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s35",
+      "level": "A2",
+      "fr": "Elle portait une robe rouge ce soir-là.",
+      "en": "She was wearing a red dress that evening.",
+      "distractors": [
+        "She was wearing a green dress that evening.",
+        "She bought a red dress that evening.",
+        "She was wearing a red dress that morning."
+      ],
+      "gap": "portait",
+      "topics": [
+        "imparfait"
+      ],
+      "words": [
+        "verbs-042",
+        "people-067",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "portait",
+          "en": "was wearing (porter)",
+          "word": "verbs-042"
+        },
+        {
+          "fr": "robe",
+          "en": "dress (la robe)",
+          "word": "people-067"
+        },
+        {
+          "fr": "rouge",
+          "en": "red"
+        },
+        {
+          "fr": "ce soir-là",
+          "en": "that evening",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s36",
+      "level": "A2",
+      "fr": "Nous avons mangé chez mes parents vendredi soir.",
+      "en": "We ate at my parents’ place on Friday evening.",
+      "distractors": [
+        "We ate at my parents’ place on Saturday evening.",
+        "We ate at my friends’ place on Friday evening.",
+        "They ate at my parents’ place on Friday evening."
+      ],
+      "gap": "vendredi",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-059",
+        "essentials-064",
+        "people-008",
+        "health-time-066",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "avons mangé",
+          "en": "ate (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "parents",
+          "en": "parents (le parent)",
+          "word": "people-008"
+        },
+        {
+          "fr": "vendredi",
+          "en": "on Friday (le vendredi)",
+          "word": "health-time-066"
+        },
+        {
+          "fr": "soir",
+          "en": "evening (le soir)",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s37",
+      "level": "A2",
+      "fr": "Il n’a pas voulu me dire la vérité.",
+      "en": "He didn’t want to tell me the truth.",
+      "distractors": [
+        "He wanted to tell me the truth.",
+        "My father didn’t want to tell me the truth.",
+        "He didn’t want to tell me the answer."
+      ],
+      "gap": "voulu",
+      "topics": [
+        "negation",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-019",
+        "verbs-006"
+      ],
+      "gloss": [
+        {
+          "fr": "n’a pas voulu",
+          "en": "didn’t want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "dire",
+          "en": "to tell (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "vérité",
+          "en": "truth"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s38",
+      "level": "A2",
+      "fr": "Pourquoi est-ce que tu n’es pas venu hier ?",
+      "en": "Why didn’t you come yesterday?",
+      "distractors": [
+        "Why didn’t you come today?",
+        "Why did you come so late yesterday?",
+        "Why didn’t your sister come yesterday?"
+      ],
+      "gap": "venu",
+      "topics": [
+        "question-words",
+        "negation",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "essentials-037",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "fr": "Pourquoi",
+          "en": "why",
+          "word": "essentials-037"
+        },
+        {
+          "fr": "est-ce que",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "n’es pas venu",
+          "en": "didn’t come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "hier",
+          "en": "yesterday"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s39",
+      "level": "A2",
+      "fr": "Ils ont dormi dans la voiture parce que l’hôtel était fermé.",
+      "en": "They slept in the car because the hotel was closed.",
+      "distractors": [
+        "They slept in the train because the hotel was closed.",
+        "They slept in the car because the restaurant was closed.",
+        "They slept in the car because the hotel was full."
+      ],
+      "gap": "fermé",
+      "topics": [
+        "passe-compose-avoir",
+        "imparfait",
+        "pc-vs-imparfait"
+      ],
+      "words": [
+        "verbs-062",
+        "essentials-057",
+        "travel-004",
+        "essentials-080",
+        "travel-019",
+        "verbs-001",
+        "qualities-037"
+      ],
+      "gloss": [
+        {
+          "fr": "ont dormi",
+          "en": "slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "voiture",
+          "en": "car (la voiture)",
+          "word": "travel-004"
+        },
+        {
+          "fr": "parce que",
+          "en": "because",
+          "word": "essentials-080"
+        },
+        {
+          "fr": "l’hôtel",
+          "en": "the hotel (l’hôtel)",
+          "word": "travel-019"
+        },
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermé",
+          "en": "closed",
+          "word": "qualities-037"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s40",
+      "level": "A2",
+      "fr": "J’ai cherché mes lunettes partout dans la cuisine.",
+      "en": "I looked for my glasses everywhere in the kitchen.",
+      "distractors": [
+        "I looked for my glasses everywhere in the bedroom.",
+        "I found my glasses in the kitchen.",
+        "I looked for my keys everywhere in the kitchen."
+      ],
+      "gap": "cherché",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-027",
+        "essentials-057",
+        "home-007"
+      ],
+      "gloss": [
+        {
+          "fr": "J’ai cherché",
+          "en": "I looked for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "lunettes",
+          "en": "glasses"
+        },
+        {
+          "fr": "partout",
+          "en": "everywhere"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen (la cuisine)",
+          "word": "home-007"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s41",
+      "level": "A2",
+      "fr": "Le dimanche, ma grand-mère faisait toujours une tarte aux pommes.",
+      "en": "On Sundays, my grandmother always used to make an apple tart.",
+      "distractors": [
+        "On Saturdays, my grandmother always used to make an apple tart.",
+        "On Sundays, my grandmother always used to make a chocolate cake.",
+        "On Sundays, my grandmother sometimes used to make an apple tart."
+      ],
+      "gap": "faisait",
+      "topics": [
+        "imparfait",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-068",
+        "people-013",
+        "verbs-003",
+        "essentials-089",
+        "food-055",
+        "food-021"
+      ],
+      "gloss": [
+        {
+          "fr": "Le dimanche",
+          "en": "on Sundays",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "grand-mère",
+          "en": "grandmother (la grand-mère)",
+          "word": "people-013"
+        },
+        {
+          "fr": "faisait",
+          "en": "used to make (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "toujours",
+          "en": "always",
+          "word": "essentials-089"
+        },
+        {
+          "fr": "tarte",
+          "en": "tart; pie (la tarte)",
+          "word": "food-055"
+        },
+        {
+          "fr": "aux pommes",
+          "en": "apple (made with apples)"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s42",
+      "level": "A2",
+      "fr": "Est-ce que tu as trouvé ton téléphone ?",
+      "en": "Did you find your phone?",
+      "distractors": [
+        "Did you find your book?",
+        "Did you lose your phone?",
+        "Did your son find your phone?"
+      ],
+      "gap": "trouvé",
+      "topics": [
+        "questions",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-026",
+        "work-062"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "as trouvé",
+          "en": "found (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "ton",
+          "en": "your"
+        },
+        {
+          "fr": "téléphone",
+          "en": "phone (le téléphone)",
+          "word": "work-062"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s43",
+      "level": "A2",
+      "fr": "Nous nous sommes perdus dans la forêt dimanche.",
+      "en": "We got lost in the forest on Sunday.",
+      "distractors": [
+        "We got lost in the forest on Saturday.",
+        "They got lost in the forest on Sunday.",
+        "We got lost in the mountains on Sunday."
+      ],
+      "gap": "perdus",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "verbs-081",
+        "essentials-057",
+        "nature-059",
+        "health-time-068"
+      ],
+      "gloss": [
+        {
+          "fr": "nous sommes perdus",
+          "en": "got lost (se perdre)"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "forêt",
+          "en": "forest (la forêt)",
+          "word": "nature-059"
+        },
+        {
+          "fr": "dimanche",
+          "en": "on Sunday (le dimanche)",
+          "word": "health-time-068"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s44",
+      "level": "A2",
+      "fr": "Elle m’a donné un livre pour mon anniversaire.",
+      "en": "She gave me a book for my birthday.",
+      "distractors": [
+        "He gave me a book for my birthday.",
+        "She gave me a photo for my birthday.",
+        "She bought me a book for my birthday."
+      ],
+      "gap": "donné",
+      "topics": [
+        "passe-compose-avoir",
+        "indirect-object"
+      ],
+      "words": [
+        "verbs-024",
+        "work-043",
+        "essentials-062"
+      ],
+      "gloss": [
+        {
+          "fr": "m’a donné",
+          "en": "gave me (donner)",
+          "word": "verbs-024"
+        },
+        {
+          "fr": "livre",
+          "en": "book (le livre)",
+          "word": "work-043"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "mon",
+          "en": "my"
+        },
+        {
+          "fr": "anniversaire",
+          "en": "birthday"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s45",
+      "level": "A2",
+      "fr": "Les enfants ont dormi chez leurs grands-parents.",
+      "en": "The children slept at their grandparents’ house.",
+      "distractors": [
+        "The children slept at their cousins’ house.",
+        "The children played at their grandparents’ house.",
+        "The children slept at our grandparents’ house."
+      ],
+      "gap": "leurs",
+      "topics": [
+        "passe-compose-avoir",
+        "possessives"
+      ],
+      "words": [
+        "people-004",
+        "verbs-062",
+        "essentials-064",
+        "essentials-054",
+        "people-015"
+      ],
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children (l’enfant)",
+          "word": "people-004"
+        },
+        {
+          "fr": "ont dormi",
+          "en": "slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "leurs",
+          "en": "their",
+          "word": "essentials-054"
+        },
+        {
+          "fr": "grands-parents",
+          "en": "grandparents (les grands-parents)",
+          "word": "people-015"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s46",
+      "level": "A2",
+      "fr": "Avant, il y avait une boulangerie au coin de la rue.",
+      "en": "There used to be a bakery on the corner of the street.",
+      "distractors": [
+        "There used to be a pharmacy on the corner of the street.",
+        "There is now a bakery on the corner of the street.",
+        "There used to be a bakery at the end of the street."
+      ],
+      "gap": "avait",
+      "topics": [
+        "imparfait",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-024",
+        "travel-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Avant",
+          "en": "before; in the past"
+        },
+        {
+          "fr": "il y avait",
+          "en": "there was; there used to be"
+        },
+        {
+          "fr": "boulangerie",
+          "en": "bakery (la boulangerie)",
+          "word": "travel-024"
+        },
+        {
+          "fr": "au coin de",
+          "en": "on the corner of"
+        },
+        {
+          "fr": "rue",
+          "en": "street (la rue)",
+          "word": "travel-002"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s47",
+      "level": "A2",
+      "fr": "J’ai raté mon train de huit heures.",
+      "en": "I missed my eight o’clock train.",
+      "distractors": [
+        "I missed my nine o’clock train.",
+        "I took my eight o’clock train.",
+        "I missed my eight o’clock bus."
+      ],
+      "gap": "huit",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-006",
+        "health-time-089",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "J’ai raté",
+          "en": "I missed (rater)"
+        },
+        {
+          "fr": "mon",
+          "en": "my"
+        },
+        {
+          "fr": "train",
+          "en": "train (le train)",
+          "word": "travel-006"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s48",
+      "level": "A2",
+      "fr": "Ce matin, personne n’a répondu au téléphone.",
+      "en": "This morning nobody answered the phone.",
+      "distractors": [
+        "This morning everybody answered the phone.",
+        "This evening nobody answered the phone.",
+        "This morning nobody answered the door."
+      ],
+      "gap": "personne",
+      "topics": [
+        "negation-more",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "health-time-059",
+        "essentials-040",
+        "verbs-009",
+        "work-062"
+      ],
+      "gloss": [
+        {
+          "fr": "Ce matin",
+          "en": "this morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "personne",
+          "en": "nobody",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "n’a répondu",
+          "en": "didn’t answer (répondre)",
+          "word": "verbs-009"
+        },
+        {
+          "fr": "téléphone",
+          "en": "phone (le téléphone)",
+          "word": "work-062"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s49",
+      "level": "A2",
+      "fr": "Après le repas, nous avons marché jusqu’au parc.",
+      "en": "After the meal, we walked to the park.",
+      "distractors": [
+        "Before the meal, we walked to the park.",
+        "After the meal, we walked to the beach.",
+        "After the meal, they walked to the park."
+      ],
+      "gap": "marché",
+      "topics": [
+        "passe-compose-avoir",
+        "prepositions-places"
+      ],
+      "words": [
+        "food-072",
+        "verbs-039",
+        "essentials-074",
+        "travel-035"
+      ],
+      "gloss": [
+        {
+          "fr": "Après",
+          "en": "after"
+        },
+        {
+          "fr": "repas",
+          "en": "meal (le repas)",
+          "word": "food-072"
+        },
+        {
+          "fr": "avons marché",
+          "en": "walked (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "jusqu’au",
+          "en": "as far as; all the way to",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "parc",
+          "en": "park (le parc)",
+          "word": "travel-035"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-s50",
+      "level": "A2",
+      "fr": "Elle a vécu à Lyon pendant cinq ans.",
+      "en": "She lived in Lyon for five years.",
+      "distractors": [
+        "She lived in Lyon for three years.",
+        "She worked in Lyon for five years.",
+        "Her daughter lived in Lyon for five years."
+      ],
+      "gap": "vécu",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "verbs-067",
+        "health-time-086"
+      ],
+      "gloss": [
+        {
+          "fr": "a vécu",
+          "en": "lived (vivre)",
+          "word": "verbs-067"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a French city)"
+        },
+        {
+          "fr": "pendant",
+          "en": "for; during"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a2-past-p01",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Léa’s weekend",
+      "lines": [
+        {
+          "speaker": "Marc",
+          "fr": "Alors, ton week-end ? Tu es allée à la mer ?",
+          "en": "So, how was your weekend? Did you go to the sea?"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Non, il a plu samedi. Nous sommes restées à la maison.",
+          "en": "No, it rained on Saturday. We stayed at home."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Et dimanche ?",
+          "en": "And on Sunday?"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Dimanche, nous avons visité le musée du chocolat avec ma cousine.",
+          "en": "On Sunday we visited the chocolate museum with my cousin."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "C’était bien ?",
+          "en": "Was it good?"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Oui, mais il y avait beaucoup de monde. Nous avons attendu une heure.",
+          "en": "Yes, but there were a lot of people. We waited for an hour."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What did Léa do on Saturday?",
+          "choices": [
+            "She went to the sea.",
+            "She stayed at home.",
+            "She visited the museum.",
+            "She waited at the station."
+          ],
+          "answer": 1,
+          "explanation": "She says «il a plu samedi. Nous sommes restées à la maison»."
+        },
+        {
+          "question": "Who went to the museum with her?",
+          "choices": [
+            "Her cousin",
+            "Her sister",
+            "Marc",
+            "Nobody"
+          ],
+          "answer": 0,
+          "explanation": "«nous avons visité le musée du chocolat avec ma cousine»."
+        },
+        {
+          "question": "What was the problem at the museum?",
+          "choices": [
+            "It was closed.",
+            "It was too expensive.",
+            "There were a lot of people.",
+            "It rained inside."
+          ],
+          "answer": 2,
+          "explanation": "«il y avait beaucoup de monde»."
+        },
+        {
+          "question": "How long did they wait?",
+          "choices": [
+            "Ten minutes",
+            "Half an hour",
+            "An hour",
+            "All afternoon"
+          ],
+          "answer": 2,
+          "explanation": "«Nous avons attendu une heure»."
+        }
+      ],
+      "topics": [
+        "passe-compose-etre",
+        "passe-compose-avoir",
+        "imparfait"
+      ],
+      "words": [
+        "verbs-004",
+        "nature-007",
+        "essentials-005",
+        "health-time-067",
+        "verbs-030",
+        "home-001",
+        "health-time-068",
+        "travel-073",
+        "food-053",
+        "essentials-060",
+        "people-021",
+        "verbs-001",
+        "essentials-045",
+        "essentials-004",
+        "essentials-077",
+        "essentials-099",
+        "verbs-041",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "Alors",
+          "en": "so; well"
+        },
+        {
+          "fr": "ton",
+          "en": "your"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        },
+        {
+          "fr": "es allée",
+          "en": "went (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "mer",
+          "en": "sea (la mer)",
+          "word": "nature-007"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "a plu",
+          "en": "rained (pleuvoir)"
+        },
+        {
+          "fr": "samedi",
+          "en": "on Saturday (le samedi)",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "sommes restées",
+          "en": "stayed (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "maison",
+          "en": "house; home (la maison)",
+          "word": "home-001"
+        },
+        {
+          "fr": "Et",
+          "en": "and"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday (le dimanche)",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "Dimanche",
+          "en": "on Sunday (le dimanche)",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "avons visité",
+          "en": "visited (visiter)"
+        },
+        {
+          "fr": "musée",
+          "en": "museum (le musée)",
+          "word": "travel-073"
+        },
+        {
+          "fr": "chocolat",
+          "en": "chocolate (le chocolat)",
+          "word": "food-053"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "cousine",
+          "en": "cousin, female (le cousin)",
+          "word": "people-021"
+        },
+        {
+          "fr": "C’était",
+          "en": "it was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "bien",
+          "en": "good; nice",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "mais",
+          "en": "but",
+          "word": "essentials-077"
+        },
+        {
+          "fr": "il y avait",
+          "en": "there was; there were"
+        },
+        {
+          "fr": "beaucoup de",
+          "en": "a lot of",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "monde",
+          "en": "people"
+        },
+        {
+          "fr": "avons attendu",
+          "en": "waited (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "heure",
+          "en": "hour (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-p02",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "The forgotten bag",
+      "lines": [
+        {
+          "speaker": "L’employé",
+          "fr": "Bonjour Madame, qu’est-ce qui s’est passé ?",
+          "en": "Hello madam, what happened?"
+        },
+        {
+          "speaker": "Sophie",
+          "fr": "J’ai oublié mon sac dans le train de Lyon hier soir.",
+          "en": "I left my bag on the Lyon train yesterday evening."
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "De quelle couleur était votre sac ?",
+          "en": "What colour was your bag?"
+        },
+        {
+          "speaker": "Sophie",
+          "fr": "Il était noir. Mon portefeuille et mes clés étaient dedans.",
+          "en": "It was black. My wallet and my keys were inside."
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "Quelqu’un a trouvé un sac noir ce matin. Il est ici.",
+          "en": "Someone found a black bag this morning. It is here."
+        },
+        {
+          "speaker": "Sophie",
+          "fr": "Super ! Est-ce que je peux le voir ?",
+          "en": "Great! Can I see it?"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where did Sophie leave her bag?",
+          "choices": [
+            "In a taxi",
+            "On the Lyon train",
+            "At the hotel",
+            "In the station café"
+          ],
+          "answer": 1,
+          "explanation": "«J’ai oublié mon sac dans le train de Lyon»."
+        },
+        {
+          "question": "When did she lose it?",
+          "choices": [
+            "Yesterday evening",
+            "This morning",
+            "Last Saturday",
+            "Two days ago"
+          ],
+          "answer": 0,
+          "explanation": "«dans le train de Lyon hier soir»."
+        },
+        {
+          "question": "What was inside the bag?",
+          "choices": [
+            "Her wallet and her keys",
+            "Her phone and a book",
+            "Her passport",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explanation": "«Mon portefeuille et mes clés étaient dedans»."
+        },
+        {
+          "question": "When was a black bag found?",
+          "choices": [
+            "Yesterday evening",
+            "This morning",
+            "Yesterday at noon",
+            "Last Saturday"
+          ],
+          "answer": 1,
+          "explanation": "«Quelqu’un a trouvé un sac noir ce matin»."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "imparfait",
+        "questions"
+      ],
+      "words": [
+        "essentials-001",
+        "verbs-029",
+        "verbs-092",
+        "essentials-057",
+        "travel-006",
+        "health-time-060",
+        "verbs-001",
+        "essentials-053",
+        "people-096",
+        "home-031",
+        "essentials-039",
+        "verbs-026",
+        "health-time-059",
+        "essentials-093",
+        "verbs-020",
+        "verbs-010"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "Madame",
+          "en": "madam"
+        },
+        {
+          "fr": "qu’est-ce qui",
+          "en": "what (as subject)"
+        },
+        {
+          "fr": "s’est passé",
+          "en": "happened (se passer)"
+        },
+        {
+          "fr": "J’ai oublié",
+          "en": "I forgot; I left behind (oublier)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "mon",
+          "en": "my"
+        },
+        {
+          "fr": "sac",
+          "en": "bag"
+        },
+        {
+          "fr": "dans",
+          "en": "in; on",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "train",
+          "en": "train (le train)",
+          "word": "travel-006"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a French city)"
+        },
+        {
+          "fr": "hier soir",
+          "en": "yesterday evening"
+        },
+        {
+          "fr": "De quelle couleur",
+          "en": "what colour"
+        },
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "noir",
+          "en": "black"
+        },
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "portefeuille",
+          "en": "wallet (le portefeuille)",
+          "word": "people-096"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "clés",
+          "en": "keys (la clé)",
+          "word": "home-031"
+        },
+        {
+          "fr": "étaient",
+          "en": "were (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dedans",
+          "en": "inside"
+        },
+        {
+          "fr": "Quelqu’un",
+          "en": "someone",
+          "word": "essentials-039"
+        },
+        {
+          "fr": "a trouvé",
+          "en": "found (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        },
+        {
+          "fr": "Super",
+          "en": "great"
+        },
+        {
+          "fr": "Est-ce que",
+          "en": "(question marker)"
+        },
+        {
+          "fr": "peux",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "voir",
+          "en": "to see (voir)",
+          "word": "verbs-010"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-p03",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "At the doctor’s",
+      "lines": [
+        {
+          "speaker": "Le médecin",
+          "fr": "Bonjour Monsieur. Où avez-vous mal ?",
+          "en": "Hello sir. Where does it hurt?"
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Au bras. Je suis tombé de mon vélo samedi.",
+          "en": "In my arm. I fell off my bike on Saturday."
+        },
+        {
+          "speaker": "Le médecin",
+          "fr": "Vous êtes allé à l’hôpital ?",
+          "en": "Did you go to the hospital?"
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Non, ma femme m’a donné un médicament et j’ai dormi.",
+          "en": "No, my wife gave me some medicine and I slept."
+        },
+        {
+          "speaker": "Le médecin",
+          "fr": "Et depuis samedi, vous avez travaillé ?",
+          "en": "And since Saturday, have you worked?"
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Oui, hier j’ai conduit deux heures pour aller à Paris.",
+          "en": "Yes, yesterday I drove for two hours to go to Paris."
+        },
+        {
+          "speaker": "Le médecin",
+          "fr": "Ce n’était pas une bonne idée !",
+          "en": "That was not a good idea!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What happened to Paul on Saturday?",
+          "choices": [
+            "He had a car accident.",
+            "He fell off his bike.",
+            "He hurt his leg at work.",
+            "He fell down the stairs."
+          ],
+          "answer": 1,
+          "explanation": "«Je suis tombé de mon vélo samedi»."
+        },
+        {
+          "question": "Where does he have pain?",
+          "choices": [
+            "In his arm",
+            "In his leg",
+            "In his back",
+            "In his head"
+          ],
+          "answer": 0,
+          "explanation": "«Au bras» answers «Où avez-vous mal ?»."
+        },
+        {
+          "question": "What did he do after the fall?",
+          "choices": [
+            "He went to the hospital.",
+            "He called the doctor at once.",
+            "He took some medicine and slept.",
+            "He stayed in bed all weekend."
+          ],
+          "answer": 2,
+          "explanation": "«ma femme m’a donné un médicament et j’ai dormi», and he did not go to hospital."
+        },
+        {
+          "question": "What did Paul do yesterday?",
+          "choices": [
+            "He rested at home.",
+            "He cycled to Paris.",
+            "He took the train to Paris.",
+            "He drove for two hours to Paris."
+          ],
+          "answer": 3,
+          "explanation": "«hier j’ai conduit deux heures pour aller à Paris»."
+        }
+      ],
+      "topics": [
+        "passe-compose-etre",
+        "passe-compose-avoir",
+        "questions"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-035",
+        "health-time-012",
+        "travel-008",
+        "health-time-067",
+        "verbs-004",
+        "travel-026",
+        "essentials-005",
+        "people-003",
+        "verbs-024",
+        "health-time-041",
+        "verbs-062",
+        "verbs-069",
+        "essentials-004",
+        "verbs-100",
+        "health-time-083",
+        "health-time-052",
+        "essentials-062",
+        "verbs-001",
+        "qualities-003"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "Monsieur",
+          "en": "sir"
+        },
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "avez-vous mal",
+          "en": "do you have pain (avoir mal)"
+        },
+        {
+          "fr": "bras",
+          "en": "arm (le bras)",
+          "word": "health-time-012"
+        },
+        {
+          "fr": "suis tombé",
+          "en": "fell (tomber)"
+        },
+        {
+          "fr": "mon",
+          "en": "my"
+        },
+        {
+          "fr": "vélo",
+          "en": "bicycle (le vélo)",
+          "word": "travel-008"
+        },
+        {
+          "fr": "samedi",
+          "en": "on Saturday (le samedi)",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "êtes allé",
+          "en": "went (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "l’hôpital",
+          "en": "the hospital (l’hôpital)",
+          "word": "travel-026"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "femme",
+          "en": "wife (la femme)",
+          "word": "people-003"
+        },
+        {
+          "fr": "m’a donné",
+          "en": "gave me (donner)",
+          "word": "verbs-024"
+        },
+        {
+          "fr": "médicament",
+          "en": "medicine (le médicament)",
+          "word": "health-time-041"
+        },
+        {
+          "fr": "j’ai dormi",
+          "en": "I slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "Et",
+          "en": "and"
+        },
+        {
+          "fr": "depuis",
+          "en": "since"
+        },
+        {
+          "fr": "avez travaillé",
+          "en": "have worked (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "j’ai conduit",
+          "en": "I drove (conduire)",
+          "word": "verbs-100"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "pour",
+          "en": "in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "aller",
+          "en": "to go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "Paris",
+          "en": "Paris"
+        },
+        {
+          "fr": "n’était pas",
+          "en": "was not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "bonne",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "idée",
+          "en": "idea"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-p04",
+      "level": "A2",
+      "kind": "text",
+      "title": "Sorry about last night",
+      "lines": [
+        {
+          "fr": "Salut Julie ! Désolé pour hier soir.",
+          "en": "Hi Julie! Sorry about yesterday evening."
+        },
+        {
+          "fr": "Mon train a eu deux heures de retard à cause de la neige.",
+          "en": "My train was two hours late because of the snow."
+        },
+        {
+          "fr": "Je suis arrivé chez moi à minuit et j’ai oublié de t’appeler.",
+          "en": "I got home at midnight and I forgot to call you."
+        },
+        {
+          "fr": "On peut se voir samedi ? Je t’invite au restaurant.",
+          "en": "Can we meet on Saturday? I’ll take you out to a restaurant."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why was his train late?",
+          "choices": [
+            "Because of the snow",
+            "Because of an accident",
+            "Because he forgot the time",
+            "Because he missed the train"
+          ],
+          "answer": 0,
+          "explanation": "«deux heures de retard à cause de la neige»."
+        },
+        {
+          "question": "What time did he get home?",
+          "choices": [
+            "At ten",
+            "At midnight",
+            "Early in the morning",
+            "At two in the afternoon"
+          ],
+          "answer": 1,
+          "explanation": "«Je suis arrivé chez moi à minuit»."
+        },
+        {
+          "question": "What did he forget to do?",
+          "choices": [
+            "To buy a ticket",
+            "To book a restaurant",
+            "To call Julie",
+            "To take his phone"
+          ],
+          "answer": 2,
+          "explanation": "«j’ai oublié de t’appeler»."
+        },
+        {
+          "question": "What does he suggest?",
+          "choices": [
+            "Meeting on Saturday",
+            "Meeting tomorrow",
+            "Cooking at his place",
+            "Taking the train together"
+          ],
+          "answer": 0,
+          "explanation": "«On peut se voir samedi ?»."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "passe-compose-etre",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-006",
+        "essentials-062",
+        "health-time-060",
+        "travel-006",
+        "verbs-002",
+        "health-time-083",
+        "health-time-052",
+        "travel-059",
+        "nature-004",
+        "verbs-032",
+        "essentials-064",
+        "verbs-092",
+        "verbs-085",
+        "verbs-020",
+        "verbs-010",
+        "health-time-067",
+        "travel-020"
+      ],
+      "gloss": [
+        {
+          "fr": "Salut",
+          "en": "hi",
+          "word": "essentials-006"
+        },
+        {
+          "fr": "Julie",
+          "en": "Julie (a first name)"
+        },
+        {
+          "fr": "Désolé",
+          "en": "sorry"
+        },
+        {
+          "fr": "pour",
+          "en": "for; about",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "hier soir",
+          "en": "yesterday evening"
+        },
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "train",
+          "en": "train (le train)",
+          "word": "travel-006"
+        },
+        {
+          "fr": "a eu",
+          "en": "had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "de retard",
+          "en": "late; behind schedule"
+        },
+        {
+          "fr": "à cause de",
+          "en": "because of"
+        },
+        {
+          "fr": "neige",
+          "en": "snow (la neige)",
+          "word": "nature-004"
+        },
+        {
+          "fr": "suis arrivé",
+          "en": "arrived; got (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "chez moi",
+          "en": "at my place; home"
+        },
+        {
+          "fr": "minuit",
+          "en": "midnight"
+        },
+        {
+          "fr": "j’ai oublié",
+          "en": "I forgot (oublier)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "t’appeler",
+          "en": "to call you (appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "peut",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "voir",
+          "en": "to see; to meet (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "samedi",
+          "en": "on Saturday (le samedi)",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "t’invite",
+          "en": "invite you; treat you (inviter)"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant (le restaurant)",
+          "word": "travel-020"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-p05",
+      "level": "A2",
+      "kind": "text",
+      "title": "Summers at my grandmother’s",
+      "lines": [
+        {
+          "fr": "Quand j’étais enfant, nous passions l’été chez ma grand-mère, à la campagne.",
+          "en": "When I was a child, we used to spend the summer at my grandmother’s, in the countryside."
+        },
+        {
+          "fr": "Elle habitait dans une petite maison près d’une rivière.",
+          "en": "She lived in a small house near a river."
+        },
+        {
+          "fr": "Le matin, nous allions chercher du pain à la boulangerie du village.",
+          "en": "In the morning, we used to go and get bread from the village bakery."
+        },
+        {
+          "fr": "L’après-midi, mon frère et moi nagions dans la rivière.",
+          "en": "In the afternoon, my brother and I used to swim in the river."
+        },
+        {
+          "fr": "Le soir, elle nous racontait des histoires jusqu’à la nuit.",
+          "en": "In the evening, she used to tell us stories until night-time."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where did the family spend the summer?",
+          "choices": [
+            "At the seaside",
+            "In the mountains",
+            "At the grandmother’s, in the countryside",
+            "In the city"
+          ],
+          "answer": 2,
+          "explanation": "«nous passions l’été chez ma grand-mère, à la campagne»."
+        },
+        {
+          "question": "What did they do in the morning?",
+          "choices": [
+            "They swam in the river.",
+            "They fetched bread from the bakery.",
+            "They listened to stories.",
+            "They worked in the garden."
+          ],
+          "answer": 1,
+          "explanation": "«Le matin, nous allions chercher du pain à la boulangerie»."
+        },
+        {
+          "question": "Who swam in the river?",
+          "choices": [
+            "The writer and their brother",
+            "The whole family",
+            "The grandmother",
+            "Nobody"
+          ],
+          "answer": 0,
+          "explanation": "«mon frère et moi nagions dans la rivière»."
+        },
+        {
+          "question": "What did the grandmother do in the evening?",
+          "choices": [
+            "She told them stories.",
+            "She baked bread.",
+            "She took them to the village.",
+            "She went to bed early."
+          ],
+          "answer": 0,
+          "explanation": "«Le soir, elle nous racontait des histoires»."
+        }
+      ],
+      "topics": [
+        "imparfait",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-082",
+        "verbs-001",
+        "people-004",
+        "verbs-029",
+        "essentials-064",
+        "people-013",
+        "nature-060",
+        "verbs-068",
+        "essentials-057",
+        "qualities-002",
+        "home-001",
+        "nature-064",
+        "health-time-059",
+        "verbs-027",
+        "food-002",
+        "travel-024",
+        "travel-047",
+        "people-012",
+        "essentials-025",
+        "health-time-060",
+        "work-056",
+        "essentials-074",
+        "health-time-061",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "j’étais",
+          "en": "I was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "enfant",
+          "en": "child (l’enfant)",
+          "word": "people-004"
+        },
+        {
+          "fr": "passions",
+          "en": "used to spend (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "l’été",
+          "en": "the summer"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "grand-mère",
+          "en": "grandmother (la grand-mère)",
+          "word": "people-013"
+        },
+        {
+          "fr": "campagne",
+          "en": "countryside (la campagne)",
+          "word": "nature-060"
+        },
+        {
+          "fr": "habitait",
+          "en": "lived (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "petite",
+          "en": "small (petit)",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "maison",
+          "en": "house (la maison)",
+          "word": "home-001"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "rivière",
+          "en": "river (la rivière)",
+          "word": "nature-064"
+        },
+        {
+          "fr": "Le matin",
+          "en": "in the morning (le matin)",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "allions chercher",
+          "en": "used to go and get (aller chercher)"
+        },
+        {
+          "fr": "pain",
+          "en": "bread (le pain)",
+          "word": "food-002"
+        },
+        {
+          "fr": "boulangerie",
+          "en": "bakery (la boulangerie)",
+          "word": "travel-024"
+        },
+        {
+          "fr": "village",
+          "en": "village (le village)",
+          "word": "travel-047"
+        },
+        {
+          "fr": "L’après-midi",
+          "en": "in the afternoon"
+        },
+        {
+          "fr": "mon",
+          "en": "my"
+        },
+        {
+          "fr": "frère",
+          "en": "brother (le frère)",
+          "word": "people-012"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "nagions",
+          "en": "used to swim (nager)"
+        },
+        {
+          "fr": "Le soir",
+          "en": "in the evening (le soir)",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "racontait",
+          "en": "used to tell (raconter)"
+        },
+        {
+          "fr": "histoires",
+          "en": "stories (l’histoire)",
+          "word": "work-056"
+        },
+        {
+          "fr": "jusqu’à",
+          "en": "until",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "nuit",
+          "en": "night (la nuit)",
+          "word": "health-time-061"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-p06",
+      "level": "A2",
+      "kind": "text",
+      "title": "A note on the kitchen table",
+      "lines": [
+        {
+          "fr": "Maman, le chat est entré dans la cuisine ce matin.",
+          "en": "Mum, the cat came into the kitchen this morning."
+        },
+        {
+          "fr": "Il a cassé le vase qui était sur la table.",
+          "en": "It broke the vase that was on the table."
+        },
+        {
+          "fr": "J’ai nettoyé le sol, mais j’ai laissé les morceaux dans un sac.",
+          "en": "I cleaned the floor, but I left the pieces in a bag."
+        },
+        {
+          "fr": "Je suis parti à l’école à huit heures. À ce soir !",
+          "en": "I left for school at eight o’clock. See you this evening!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What did the cat do?",
+          "choices": [
+            "It broke a vase.",
+            "It ate the meal.",
+            "It went out of the window.",
+            "It slept on the table."
+          ],
+          "answer": 0,
+          "explanation": "«Il a cassé le vase qui était sur la table»."
+        },
+        {
+          "question": "Where was the vase?",
+          "choices": [
+            "On the shelf",
+            "On the table",
+            "In the sink",
+            "Near the door"
+          ],
+          "answer": 1,
+          "explanation": "«le vase qui était sur la table»."
+        },
+        {
+          "question": "What did the writer clean?",
+          "choices": [
+            "The table",
+            "The window",
+            "The floor",
+            "Nothing"
+          ],
+          "answer": 2,
+          "explanation": "«J’ai nettoyé le sol»."
+        },
+        {
+          "question": "What time did the writer leave?",
+          "choices": [
+            "At seven",
+            "At eight",
+            "At nine",
+            "At ten"
+          ],
+          "answer": 1,
+          "explanation": "«Je suis parti à l’école à huit heures»."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "passe-compose-etre",
+        "relative-pronouns"
+      ],
+      "words": [
+        "nature-012",
+        "verbs-033",
+        "essentials-057",
+        "home-007",
+        "health-time-059",
+        "home-065",
+        "essentials-032",
+        "verbs-001",
+        "essentials-058",
+        "home-045",
+        "verbs-096",
+        "home-024",
+        "essentials-077",
+        "verbs-028",
+        "verbs-031",
+        "work-031",
+        "health-time-089",
+        "health-time-052",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "Maman",
+          "en": "Mum"
+        },
+        {
+          "fr": "chat",
+          "en": "cat (le chat)",
+          "word": "nature-012"
+        },
+        {
+          "fr": "est entré",
+          "en": "came in (entrer)",
+          "word": "verbs-033"
+        },
+        {
+          "fr": "dans",
+          "en": "into",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen (la cuisine)",
+          "word": "home-007"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "a cassé",
+          "en": "broke (casser)"
+        },
+        {
+          "fr": "vase",
+          "en": "vase (le vase)",
+          "word": "home-065"
+        },
+        {
+          "fr": "qui",
+          "en": "that; which",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "table",
+          "en": "table (la table)",
+          "word": "home-045"
+        },
+        {
+          "fr": "J’ai nettoyé",
+          "en": "I cleaned (nettoyer)",
+          "word": "verbs-096"
+        },
+        {
+          "fr": "sol",
+          "en": "floor (le sol)",
+          "word": "home-024"
+        },
+        {
+          "fr": "mais",
+          "en": "but",
+          "word": "essentials-077"
+        },
+        {
+          "fr": "j’ai laissé",
+          "en": "I left (laisser)",
+          "word": "verbs-028"
+        },
+        {
+          "fr": "morceaux",
+          "en": "pieces"
+        },
+        {
+          "fr": "sac",
+          "en": "bag"
+        },
+        {
+          "fr": "suis parti",
+          "en": "left (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "l’école",
+          "en": "school (l’école)",
+          "word": "work-031"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "À ce soir",
+          "en": "see you this evening"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-p07",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Monday morning at the office",
+      "lines": [
+        {
+          "speaker": "Nadia",
+          "fr": "Tu as l’air fatigué. Qu’est-ce que tu as fait ce week-end ?",
+          "en": "You look tired. What did you do this weekend?"
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "J’ai déménagé samedi. Nous avons porté des meubles toute la journée.",
+          "en": "I moved house on Saturday. We carried furniture all day long."
+        },
+        {
+          "speaker": "Nadia",
+          "fr": "Tes amis t’ont aidé ?",
+          "en": "Did your friends help you?"
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Oui, trois copains sont venus. Nous avons fini à minuit.",
+          "en": "Yes, three mates came. We finished at midnight."
+        },
+        {
+          "speaker": "Nadia",
+          "fr": "Et le nouvel appartement ?",
+          "en": "And what about the new flat?"
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Il est plus grand, mais il y a beaucoup de travail.",
+          "en": "It is bigger, but there is a lot of work to do."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What did Hugo do on Saturday?",
+          "choices": [
+            "He worked at the office.",
+            "He moved house.",
+            "He bought furniture.",
+            "He visited friends."
+          ],
+          "answer": 1,
+          "explanation": "«J’ai déménagé samedi»; they carried furniture, they did not buy any."
+        },
+        {
+          "question": "How many friends helped him?",
+          "choices": [
+            "Two",
+            "Three",
+            "Four",
+            "None"
+          ],
+          "answer": 1,
+          "explanation": "«trois copains sont venus»."
+        },
+        {
+          "question": "When did they finish?",
+          "choices": [
+            "At midday",
+            "In the afternoon",
+            "At midnight",
+            "On Sunday morning"
+          ],
+          "answer": 2,
+          "explanation": "«Nous avons fini à minuit»."
+        },
+        {
+          "question": "What does Hugo say about the new flat?",
+          "choices": [
+            "It is bigger, but there is a lot of work.",
+            "It is smaller but very pretty.",
+            "It is bigger and everything is ready.",
+            "It is too far from the office."
+          ],
+          "answer": 0,
+          "explanation": "«Il est plus grand, mais il y a beaucoup de travail»."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "passe-compose-etre",
+        "comparison"
+      ],
+      "words": [
+        "verbs-003",
+        "health-time-067",
+        "verbs-042",
+        "home-044",
+        "people-030",
+        "verbs-051",
+        "essentials-004",
+        "health-time-084",
+        "people-032",
+        "verbs-005",
+        "verbs-048",
+        "qualities-008",
+        "home-002",
+        "verbs-001",
+        "qualities-001",
+        "essentials-077",
+        "essentials-099",
+        "work-001"
+      ],
+      "gloss": [
+        {
+          "fr": "as l’air",
+          "en": "look; seem (avoir l’air)"
+        },
+        {
+          "fr": "fatigué",
+          "en": "tired"
+        },
+        {
+          "fr": "Qu’est-ce que",
+          "en": "what"
+        },
+        {
+          "fr": "as fait",
+          "en": "did (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "ce week-end",
+          "en": "this weekend"
+        },
+        {
+          "fr": "J’ai déménagé",
+          "en": "I moved house (déménager)"
+        },
+        {
+          "fr": "samedi",
+          "en": "on Saturday (le samedi)",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "avons porté",
+          "en": "carried (porter)",
+          "word": "verbs-042"
+        },
+        {
+          "fr": "meubles",
+          "en": "furniture (le meuble)",
+          "word": "home-044"
+        },
+        {
+          "fr": "toute la journée",
+          "en": "all day long"
+        },
+        {
+          "fr": "Tes",
+          "en": "your"
+        },
+        {
+          "fr": "amis",
+          "en": "friends (l’ami)",
+          "word": "people-030"
+        },
+        {
+          "fr": "t’ont aidé",
+          "en": "helped you (aider)",
+          "word": "verbs-051"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "copains",
+          "en": "mates; friends (le copain)",
+          "word": "people-032"
+        },
+        {
+          "fr": "sont venus",
+          "en": "came (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "avons fini",
+          "en": "finished (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "minuit",
+          "en": "midnight"
+        },
+        {
+          "fr": "Et",
+          "en": "and"
+        },
+        {
+          "fr": "nouvel",
+          "en": "new (nouveau)",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "appartement",
+          "en": "flat; apartment (l’appartement)",
+          "word": "home-002"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus grand",
+          "en": "bigger (grand)"
+        },
+        {
+          "fr": "mais",
+          "en": "but",
+          "word": "essentials-077"
+        },
+        {
+          "fr": "il y a",
+          "en": "there is"
+        },
+        {
+          "fr": "beaucoup de",
+          "en": "a lot of",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "travail",
+          "en": "work (le travail)",
+          "word": "work-001"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-p08",
+      "level": "A2",
+      "kind": "text",
+      "title": "Yesterday on the Tours road",
+      "lines": [
+        {
+          "fr": "Hier matin, un accident a bloqué la route entre Tours et Blois.",
+          "en": "Yesterday morning, an accident blocked the road between Tours and Blois."
+        },
+        {
+          "fr": "Les conducteurs ont attendu plus de deux heures sous la pluie.",
+          "en": "Drivers waited for more than two hours in the rain."
+        },
+        {
+          "fr": "Les policiers ont ouvert une autre route vers onze heures.",
+          "en": "The police opened another road at about eleven o’clock."
+        },
+        {
+          "fr": "Personne n’a été blessé, mais dix voitures sont restées sur place.",
+          "en": "Nobody was hurt, but ten cars stayed where they were."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What blocked the road?",
+          "choices": [
+            "Snow",
+            "An accident",
+            "Roadworks",
+            "A lorry without fuel"
+          ],
+          "answer": 1,
+          "explanation": "«un accident a bloqué la route»."
+        },
+        {
+          "question": "How long did the drivers wait?",
+          "choices": [
+            "Less than an hour",
+            "About twenty minutes",
+            "More than two hours",
+            "All day"
+          ],
+          "answer": 2,
+          "explanation": "«ont attendu plus de deux heures»."
+        },
+        {
+          "question": "What was the weather like?",
+          "choices": [
+            "It was raining.",
+            "It was snowing.",
+            "It was sunny.",
+            "It was very windy."
+          ],
+          "answer": 0,
+          "explanation": "«sous la pluie»."
+        },
+        {
+          "question": "Was anyone hurt?",
+          "choices": [
+            "Yes, two people",
+            "Yes, ten people",
+            "No, nobody",
+            "The text does not say"
+          ],
+          "answer": 2,
+          "explanation": "«Personne n’a été blessé»."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "negation-more",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-059",
+        "travel-003",
+        "essentials-065",
+        "travel-004",
+        "verbs-041",
+        "health-time-083",
+        "health-time-052",
+        "essentials-059",
+        "nature-002",
+        "work-019",
+        "verbs-045",
+        "essentials-069",
+        "essentials-040",
+        "essentials-077",
+        "health-time-091",
+        "verbs-030"
+      ],
+      "gloss": [
+        {
+          "fr": "Hier matin",
+          "en": "yesterday morning"
+        },
+        {
+          "fr": "accident",
+          "en": "accident"
+        },
+        {
+          "fr": "a bloqué",
+          "en": "blocked (bloquer)"
+        },
+        {
+          "fr": "route",
+          "en": "road (la route)",
+          "word": "travel-003"
+        },
+        {
+          "fr": "entre",
+          "en": "between",
+          "word": "essentials-065"
+        },
+        {
+          "fr": "Tours",
+          "en": "Tours (a French city)"
+        },
+        {
+          "fr": "Blois",
+          "en": "Blois (a French town)"
+        },
+        {
+          "fr": "conducteurs",
+          "en": "drivers"
+        },
+        {
+          "fr": "voitures",
+          "en": "cars (la voiture)",
+          "word": "travel-004"
+        },
+        {
+          "fr": "ont attendu",
+          "en": "waited (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "plus de",
+          "en": "more than"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "sous",
+          "en": "in; under",
+          "word": "essentials-059"
+        },
+        {
+          "fr": "pluie",
+          "en": "rain (la pluie)",
+          "word": "nature-002"
+        },
+        {
+          "fr": "policiers",
+          "en": "police officers (le policier)",
+          "word": "work-019"
+        },
+        {
+          "fr": "ont ouvert",
+          "en": "opened (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "autre",
+          "en": "other; another"
+        },
+        {
+          "fr": "vers",
+          "en": "at about",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "onze",
+          "en": "eleven"
+        },
+        {
+          "fr": "Personne",
+          "en": "nobody",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "n’a été blessé",
+          "en": "was hurt (blesser; Personne n’a été blessé = nobody was hurt)"
+        },
+        {
+          "fr": "mais",
+          "en": "but",
+          "word": "essentials-077"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "sont restées",
+          "en": "stayed (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "sur place",
+          "en": "on the spot; where they were"
+        }
+      ]
+    },
+    {
+      "id": "a2-past-p09",
+      "level": "A2",
+      "kind": "text",
+      "title": "An email from Corsica",
+      "lines": [
+        {
+          "fr": "Chère Anna, je suis rentrée de Corse hier soir.",
+          "en": "Dear Anna, I came back from Corsica yesterday evening."
+        },
+        {
+          "fr": "Le voyage a été difficile : notre avion a eu six heures de retard.",
+          "en": "The journey was hard: our plane was six hours late."
+        },
+        {
+          "fr": "À l’hôtel, la climatisation ne marchait pas et il faisait très chaud.",
+          "en": "At the hotel, the air conditioning wasn’t working and it was very hot."
+        },
+        {
+          "fr": "Mais la plage était magnifique et nous avons mangé du très bon poisson.",
+          "en": "But the beach was magnificent and we ate some very good fish."
+        },
+        {
+          "fr": "Je t’envoie des photos demain. Bises, Claire.",
+          "en": "I’ll send you photos tomorrow. Love, Claire."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When did Claire come back?",
+          "choices": [
+            "This morning",
+            "Yesterday evening",
+            "Last week",
+            "Tomorrow evening"
+          ],
+          "answer": 1,
+          "explanation": "«je suis rentrée de Corse hier soir»."
+        },
+        {
+          "question": "What went wrong with the plane?",
+          "choices": [
+            "It was cancelled.",
+            "She missed it.",
+            "It was two hours late.",
+            "It was six hours late."
+          ],
+          "answer": 3,
+          "explanation": "«notre avion a eu six heures de retard»."
+        },
+        {
+          "question": "What was the problem at the hotel?",
+          "choices": [
+            "The air conditioning wasn’t working.",
+            "The room was too small.",
+            "There was no hot water.",
+            "It was very noisy."
+          ],
+          "answer": 0,
+          "explanation": "«la climatisation ne marchait pas et il faisait très chaud»."
+        },
+        {
+          "question": "What did Claire like?",
+          "choices": [
+            "The flight and the hotel",
+            "The beach and the fish",
+            "The hotel and the weather",
+            "The photos her friend sent"
+          ],
+          "answer": 1,
+          "explanation": "«la plage était magnifique et nous avons mangé du très bon poisson»."
+        }
+      ],
+      "topics": [
+        "passe-compose-etre",
+        "imparfait",
+        "pc-vs-imparfait"
+      ],
+      "words": [
+        "health-time-060",
+        "travel-017",
+        "verbs-001",
+        "qualities-039",
+        "essentials-052",
+        "travel-010",
+        "verbs-002",
+        "health-time-087",
+        "health-time-052",
+        "travel-059",
+        "travel-019",
+        "home-042",
+        "verbs-039",
+        "qualities-025",
+        "essentials-077",
+        "nature-068",
+        "verbs-059",
+        "essentials-096",
+        "qualities-003",
+        "nature-014",
+        "verbs-084",
+        "work-092"
+      ],
+      "gloss": [
+        {
+          "fr": "Chère",
+          "en": "dear"
+        },
+        {
+          "fr": "Anna",
+          "en": "Anna (a first name)"
+        },
+        {
+          "fr": "suis rentrée",
+          "en": "came back (rentrer)"
+        },
+        {
+          "fr": "Corse",
+          "en": "Corsica"
+        },
+        {
+          "fr": "hier soir",
+          "en": "yesterday evening"
+        },
+        {
+          "fr": "voyage",
+          "en": "journey; trip (le voyage)",
+          "word": "travel-017"
+        },
+        {
+          "fr": "a été",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "difficile",
+          "en": "hard; difficult",
+          "word": "qualities-039"
+        },
+        {
+          "fr": "notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "avion",
+          "en": "plane (l’avion)",
+          "word": "travel-010"
+        },
+        {
+          "fr": "a eu",
+          "en": "had (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "heures",
+          "en": "hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "de retard",
+          "en": "late; behind schedule"
+        },
+        {
+          "fr": "l’hôtel",
+          "en": "the hotel (l’hôtel)",
+          "word": "travel-019"
+        },
+        {
+          "fr": "climatisation",
+          "en": "air conditioning (la climatisation)",
+          "word": "home-042"
+        },
+        {
+          "fr": "marchait",
+          "en": "was working (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "faisait très chaud",
+          "en": "it was very hot (faire chaud)"
+        },
+        {
+          "fr": "Mais",
+          "en": "but",
+          "word": "essentials-077"
+        },
+        {
+          "fr": "plage",
+          "en": "beach (la plage)",
+          "word": "nature-068"
+        },
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "magnifique",
+          "en": "magnificent; beautiful"
+        },
+        {
+          "fr": "avons mangé",
+          "en": "ate (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "poisson",
+          "en": "fish (le poisson)",
+          "word": "nature-014"
+        },
+        {
+          "fr": "t’envoie",
+          "en": "send you (envoyer)",
+          "word": "verbs-084"
+        },
+        {
+          "fr": "photos",
+          "en": "photos (la photo)",
+          "word": "work-092"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "Bises",
+          "en": "love; kisses (ending a message)"
+        },
+        {
+          "fr": "Claire",
+          "en": "Claire (a first name)"
+        }
+      ]
+    }
+  ]
+}

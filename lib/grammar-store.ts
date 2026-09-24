@@ -1,12 +1,12 @@
 import { Database } from 'bun:sqlite';
-import { mkdirSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { existsSync, mkdirSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import type {
-  GrammarAnswerInput, GrammarExercise, GrammarFeedback, GrammarHelpInput, GrammarMode, GrammarMutation,
+  GrammarAnswerInput, GrammarExercise, GrammarFeedback, GrammarHelpInput, GrammarMiss, GrammarMode, GrammarMutation,
   GrammarResult, GrammarScopeKind, GrammarSession, GrammarSnapshot, GrammarTestSummary, GrammarTopic,
   GrammarTopicContent, GrammarUnitContent, GrammarUnitView,
 } from '../contract';
-import { classify, joinTokens, normalize, validateCourse, type Course } from './grammar-content';
+import { classify, grammarSpeech, joinTokens, normalize, validateCourse, type Course } from './grammar-content';
 import { StoreError } from './store';
 
 export interface GrammarStore {
@@ -16,6 +16,7 @@ export interface GrammarStore {
   answer(input: GrammarAnswerInput): GrammarSnapshot;
   help(input: GrammarHelpInput): GrammarSnapshot;
   next(input: GrammarMutation): GrammarSnapshot;
+  misses(): GrammarMiss[];
   exportData(): unknown;
   close(): void;
 }
@@ -83,7 +84,7 @@ function testSummary(rows: TestRow[]): GrammarTestSummary {
   return { taken: rows.length, best, last: last ? { score: last.score, total: last.total, finishedAt: last.finished_at } : null };
 }
 
-export function createGrammarStore(course: Course, options: { dbPath?: string; now?: () => Date; random?: () => number } = {}): GrammarStore {
+export function createGrammarStore(course: Course, options: { dbPath?: string; audioDir?: string; now?: () => Date; random?: () => number } = {}): GrammarStore {
   validateCourse(course);
   const { units, topics } = course;
   const topicById = new Map(topics.map((topic) => [topic.id, topic]));
@@ -91,6 +92,17 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
   const exerciseIds = new Map(topics.map((topic) => [topic.id, new Set(topic.exercises.map((exercise) => exercise.id))]));
   const now = options.now ?? (() => new Date());
   const random = options.random ?? Math.random;
+  const audioDir = options.audioDir ?? null;
+  // Clips are rendered in the background, so a missing recording is looked for again shortly instead of never.
+  const clips = new Map<string, { at: number; exists: boolean }>();
+  function clipFor(exerciseId: string): string | null {
+    if (!audioDir) return null;
+    const at = Date.now();
+    const cached = clips.get(exerciseId);
+    const found = cached && at - cached.at < 5000 ? cached.exists : existsSync(join(audioDir, `${exerciseId}.mp3`));
+    if (!cached || at - cached.at >= 5000) clips.set(exerciseId, { at, exists: found });
+    return found ? `audio/grammar/${encodeURIComponent(exerciseId)}.mp3` : null;
+  }
   const dbPath = options.dbPath ?? './data/echo.db';
   if (dbPath !== ':memory:') mkdirSync(dirname(dbPath), { recursive: true });
   const db = new Database(dbPath, { create: true, strict: true });
@@ -141,6 +153,8 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
   const sessionById = db.query<SessionRow, [string]>('SELECT * FROM grammar_sessions WHERE id = ?');
   const requestById = db.query<RequestRow, [string]>('SELECT * FROM grammar_requests WHERE request_id = ?');
   const topicProgress = db.query<ProgressRow, [string]>('SELECT * FROM grammar_progress WHERE topic_id = ?');
+  const allProgress = db.query<ProgressRow, []>('SELECT * FROM grammar_progress');
+  const missedProgress = db.query<ProgressRow, []>("SELECT * FROM grammar_progress WHERE outcome IN ('revisit', 'helped') ORDER BY last_seen DESC");
   const activeExpression = "json_extract(round_json, '$.index') < json_array_length(round_json, '$.exercises')";
   const activeByKey = db.query<{ active: number }, [string]>(`SELECT ${activeExpression} AS active FROM grammar_sessions WHERE topic_id = ? ORDER BY sequence DESC LIMIT 1`);
   const testsByScope = db.query<TestRow, [string]>('SELECT * FROM grammar_tests WHERE scope = ? ORDER BY sequence');
@@ -183,6 +197,9 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
       } else if (key.startsWith('test:')) {
         const topic = topicById.get(key.slice(5));
         if (topic) return { key, kind: 'topic-test', topic };
+      } else if (key === 'review') {
+        // A practice round drawn from every topic the learner has touched, so it names no topic of its own.
+        return { key, kind: 'practice' };
       } else {
         const topic = topicById.get(key);
         if (topic) return { key, kind: 'practice', topic };
@@ -250,6 +267,7 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
         },
         answer: current.answer, tokenOrder: current.tokenOrder, attempts: current.attempts, assisted: current.assisted,
         hint: current.hint, feedback: current.feedback, settled: current.settled, misses: current.misses,
+        audio: current.settled ? clipFor(exercise.id) : null,
       } : null,
       results,
       ...(round.mode === 'test' ? { score: results.filter((result) => result.outcome === 'independent').length } : {}),
@@ -288,55 +306,47 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
     return copy;
   }
 
-  function practice(topic: GrammarTopicContent): Picked[] {
-    const history = new Map(topicProgress.all(topic.id).map((row) => [row.exercise_id, row]));
-    const struggling = (row: ProgressRow | undefined) => row?.outcome === 'helped' || row?.outcome === 'revisit';
-    const struggled = new Set(topic.exercises.filter((exercise) => struggling(history.get(exercise.id))).map((exercise) => exercise.pattern));
-    // Missed in a test, unseen in a pattern you struggled with, unseen, helped or to revisit, then on your own; oldest first.
-    const tier = (exercise: GrammarExercise) => {
-      const previous = history.get(exercise.id);
-      if (!previous) return struggled.has(exercise.pattern) ? 1 : 2;
-      if (previous.outcome === 'revisit' && previous.settled_in === 'test') return 0;
-      return struggling(previous) ? 3 : 4;
-    };
-    const tiers = new Map(topic.exercises.map((exercise) => [exercise, tier(exercise)]));
+  // Ten questions from a pool, in tier order and oldest first, at most three per pattern and at least three question
+  // types where the pool allows, then interleaved so neighbours differ in pattern.
+  function assemble(pool: Picked[], tier: (item: Picked) => number, lastSeen: (item: Picked) => number): Picked[] {
+    const tiers = new Map(pool.map((item) => [item, tier(item)]));
     // Among equally ranked exercises, take each pattern's first before any pattern's second.
-    const turn = new Map<GrammarExercise, number>();
+    const turn = new Map<Picked, number>();
     const turns = new Map<string, number>();
-    for (const exercise of topic.exercises) {
-      const group = `${tiers.get(exercise)}|${exercise.pattern}`;
-      turn.set(exercise, turns.get(group) ?? 0);
+    for (const item of pool) {
+      const group = `${tiers.get(item)}|${item.content.pattern}`;
+      turn.set(item, turns.get(group) ?? 0);
       turns.set(group, (turns.get(group) ?? 0) + 1);
     }
-    const ranked = [...topic.exercises].sort((left, right) => tiers.get(left)! - tiers.get(right)!
-      || (history.get(left.id)?.last_seen ?? 0) - (history.get(right.id)?.last_seen ?? 0)
+    const ranked = [...pool].sort((left, right) => tiers.get(left)! - tiers.get(right)!
+      || lastSeen(left) - lastSeen(right)
       || turn.get(left)! - turn.get(right)!);
-    const rank = new Map(ranked.map((exercise, index) => [exercise, index]));
+    const rank = new Map(ranked.map((item, index) => [item, index]));
     const size = Math.min(PRACTICE_SIZE, ranked.length);
-    const picked: GrammarExercise[] = [];
+    const picked: Picked[] = [];
     const patterns = new Map<string, number>();
-    for (const exercise of ranked) {
+    for (const item of ranked) {
       if (picked.length === size) break;
-      if ((patterns.get(exercise.pattern) ?? 0) >= PATTERN_CAP) continue;
-      picked.push(exercise);
-      patterns.set(exercise.pattern, (patterns.get(exercise.pattern) ?? 0) + 1);
+      if ((patterns.get(item.content.pattern) ?? 0) >= PATTERN_CAP) continue;
+      picked.push(item);
+      patterns.set(item.content.pattern, (patterns.get(item.content.pattern) ?? 0) + 1);
     }
-    // A topic with too few patterns to fill a round under the cap fills it anyway.
-    for (const exercise of ranked) if (picked.length < size && !picked.includes(exercise)) picked.push(exercise);
-    const wantedTypes = Math.min(MIN_TYPES, new Set(topic.exercises.map((exercise) => exercise.type)).size);
-    while (new Set(picked.map((exercise) => exercise.type)).size < wantedTypes) {
-      const types = countBy(picked, (exercise) => exercise.type);
-      const perPattern = countBy(picked, (exercise) => exercise.pattern);
+    // A pool with too few patterns to fill a round under the cap fills it anyway.
+    for (const item of ranked) if (picked.length < size && !picked.includes(item)) picked.push(item);
+    const wantedTypes = Math.min(MIN_TYPES, new Set(pool.map((item) => item.content.type)).size);
+    while (new Set(picked.map((item) => item.content.type)).size < wantedTypes) {
+      const types = countBy(picked, (item) => item.content.type);
+      const perPattern = countBy(picked, (item) => item.content.pattern);
       const limit = Math.max(PATTERN_CAP, ...perPattern.values());
       let swapped = false;
       for (const candidate of ranked) {
         if (swapped) break;
-        if (picked.includes(candidate) || types.has(candidate.type)) continue;
+        if (picked.includes(candidate) || types.has(candidate.content.type)) continue;
         // Give up the lowest-ranked exercise of a repeated type, never a missed test item.
         for (let index = picked.length - 1; index >= 0; index--) {
           const victim = picked[index]!;
-          if (types.get(victim.type)! < 2 || tiers.get(victim) === 0) continue;
-          if ((perPattern.get(candidate.pattern) ?? 0) + (victim.pattern === candidate.pattern ? 0 : 1) > limit) continue;
+          if (types.get(victim.content.type)! < 2 || tiers.get(victim) === 0) continue;
+          if ((perPattern.get(candidate.content.pattern) ?? 0) + (victim.content.pattern === candidate.content.pattern ? 0 : 1) > limit) continue;
           picked[index] = candidate;
           swapped = true;
           break;
@@ -345,7 +355,38 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
       if (!swapped) break;
     }
     picked.sort((left, right) => rank.get(left)! - rank.get(right)!);
-    return interleave(picked, (exercise) => exercise.pattern).map((content) => ({ topicId: topic.id, content }));
+    return interleave(picked, (item) => item.content.pattern);
+  }
+
+  function practice(topic: GrammarTopicContent): Picked[] {
+    const history = new Map(topicProgress.all(topic.id).map((row) => [row.exercise_id, row]));
+    const struggling = (row: ProgressRow | undefined) => row?.outcome === 'helped' || row?.outcome === 'revisit';
+    const struggled = new Set(topic.exercises.filter((exercise) => struggling(history.get(exercise.id))).map((exercise) => exercise.pattern));
+    // Missed in a test, unseen in a pattern you struggled with, unseen, helped or to revisit, then on your own; oldest first.
+    const tier = ({ content }: Picked) => {
+      const previous = history.get(content.id);
+      if (!previous) return struggled.has(content.pattern) ? 1 : 2;
+      if (previous.outcome === 'revisit' && previous.settled_in === 'test') return 0;
+      return struggling(previous) ? 3 : 4;
+    };
+    const pool = topic.exercises.map((content) => ({ topicId: topic.id, content }));
+    return assemble(pool, tier, ({ content }) => history.get(content.id)?.last_seen ?? 0);
+  }
+
+  // One round across every topic the learner has opened: what a test caught out first, then what still needs review,
+  // then the questions of those topics they have never answered, then what they last got right longest ago.
+  function review(): Picked[] {
+    const rows = allProgress.all().filter((row) => exerciseIds.get(row.topic_id)?.has(row.exercise_id));
+    const history = new Map(rows.map((row) => [row.exercise_id, row]));
+    const pool = [...new Set(rows.map((row) => row.topic_id))]
+      .flatMap((topicId) => topicById.get(topicId)!.exercises.map((content) => ({ topicId, content })));
+    const tier = ({ content }: Picked) => {
+      const previous = history.get(content.id);
+      if (!previous?.outcome) return 2;
+      if (previous.outcome === 'revisit' && previous.settled_in === 'test') return 0;
+      return previous.outcome === 'independent' ? 3 : 1;
+    };
+    return assemble(pool, tier, ({ content }) => history.get(content.id)?.last_seen ?? 0);
   }
 
   // Every exercise once: round-robin over patterns in random order, random within a pattern, questions from the
@@ -422,8 +463,9 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
       const existing = row ? loadRound(row) : null;
       if (!existing || existing.index >= existing.exercises.length) {
         const previous = new Set(existing?.exercises.map((item) => item.content.id));
-        const picked = scope.kind === 'practice' ? practice(scope.topic!)
+        const picked = scope.kind === 'practice' ? (scope.topic ? practice(scope.topic) : review())
           : scope.kind === 'topic-test' ? topicTest(scope.topic!, previous) : unitTest(scope.unit!, previous);
+        if (!picked.length) throw new StoreError('Practise a grammar topic first.', 409);
         const round: Round = { mode: scope.kind === 'practice' ? 'practice' : 'test', version: 1, index: 0, exercises: picked.map(fresh) };
         insertSession.run(crypto.randomUUID(), key, JSON.stringify(round), at, at);
         expose.run(round.exercises[0]!.topicId, round.exercises[0]!.content.id, sequence);
@@ -534,6 +576,16 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
     });
   }
 
+  // What the learner has not got right on their own, most recently met first. Rows of retired exercises are skipped.
+  function misses(): GrammarMiss[] {
+    return db.transaction(() => missedProgress.all().flatMap((row) => {
+      const topic = topicById.get(row.topic_id);
+      const exercise = topic?.exercises.find((item) => item.id === row.exercise_id);
+      if (!topic || !exercise) return [];
+      return [{ topicId: topic.id, topicTitle: topic.title, exerciseId: exercise.id, example: grammarSpeech(exercise), sequence: row.last_seen }];
+    }))();
+  }
+
   function exportData(): unknown {
     return db.transaction(() => ({
       format: 'echo-grammar-progress', version: 2, exportedAt: now().toISOString(), units, topics,
@@ -550,6 +602,6 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; n
       return units.map((unit) => unitView(unit, lookup));
     })(),
     state: (key) => db.transaction(() => snapshot(key))(),
-    start, answer, help, next, exportData, close: () => db.close(),
+    start, answer, help, next, misses, exportData, close: () => db.close(),
   };
 }

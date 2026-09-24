@@ -17,6 +17,12 @@ export type ReviewEarlyMode = 'soonest' | 'missed';
 export type ReviewEarlyInput = { direction: Direction; deck: string; mode: ReviewEarlyMode; count: number; requestId: string };
 // lastStudied is the latest answer's time; misses counts every miss ever recorded (undone answers excluded).
 export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'scheduled'; due: string | null; lastStudied: string | null; misses: number };
+// Adding a word the learner tapped in a French text, always in the fr-en direction.
+// added: it was never started, so today admits it as an extra word, leaving the daily allowance untouched.
+// already-practising: it is in the working deck already (a cycle in progress, or finished and due again).
+// made-due: it was finished and waiting for a later review, so it becomes due now, like an early review.
+export type AddWordInput = { wordId: string; requestId: string };
+export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due' };
 
 // All routes are relative to the app root, so /echo/ works behind a path proxy.
 // GET api/state?direction=fr-en&deck=all -> Snapshot (does not admit new cards)
@@ -27,6 +33,7 @@ export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'schedule
 // POST api/extra-words ExtraWordsInput -> Snapshot (adds to today's allowance only, then admits; idempotent by requestId)
 // POST api/review-early ReviewEarlyInput -> Snapshot (makes finished words due now; counts as a real FSRS review; idempotent)
 // GET api/words?direction=fr-en&deck=all -> {words:BrowseWord[]}
+// POST api/vocabulary/add AddWordInput -> AddWordResult (idempotent by requestId; unknown word is HTTP 404)
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
 // GET api/export -> all progress as downloadable JSON
 // Errors are {error:string}; UI must display the server message and allow retry.
@@ -109,6 +116,8 @@ export type GrammarCurrent = {
   feedback: GrammarFeedback | null;
   settled: boolean;
   misses: string[];
+  // Set once this exercise is settled and its recording exists: audio/grammar/<exercise id>.mp3, else null.
+  audio: string | null;
 };
 export type GrammarResult = {
   exerciseId: string;
@@ -147,15 +156,22 @@ export type GrammarMutation = {
 };
 export type GrammarAnswerInput = GrammarMutation & { answer: string; tokenOrder?: number[] };
 export type GrammarHelpInput = GrammarMutation & { kind: 'hint' | 'rule' | 'answer' };
+// One exercise the learner has not got right on their own, newest first. example is its spoken French sentence;
+// sequence orders the misses (the request that last touched the exercise).
+export type GrammarMiss = { topicId: string; topicTitle: string; exerciseId: string; example: string; sequence: number };
 
 // A scope names one resumable session line: "<topicId>" is practice, "test:<topicId>" a topic test,
-// "unit:<unitId>" a unit test. Each scope keeps its own latest session, so a round and a test can both be open.
+// "unit:<unitId>" a unit test, "review" a practice round across every topic the learner has touched.
+// Each scope keeps its own latest session, so a round and a test can both be open.
+// The review scope has no topic or unit (both are null) and never appears in the grammar list; Practise starts it.
 // GET api/grammar -> {units:GrammarUnitView[]} in course order, topics in unit order, without exercises.
 // GET api/grammar/state?scope=key -> GrammarSnapshot; topic is set for topic scopes, unit for unit scopes.
 // POST api/grammar/session {scope,requestId} -> GrammarSnapshot; resumes the scope's unfinished session or starts one:
 //   practice 10 questions (missed test items first, then fresh variants of struggled patterns, unseen, to revisit, known;
 //   at most 3 per pattern, at least 3 question types, neighbours differ in pattern where possible);
 //   topic test 15 (round-robin over patterns, avoiding the previous test's questions); unit test 20 (round-robin over topics).
+//   review 10 questions over the touched topics (missed test items first, then to revisit or helped, then their unseen
+//   questions, then the ones answered alone longest ago), with the same variety rules; 409 before any topic is touched.
 // POST api/grammar/answer GrammarAnswerInput -> GrammarSnapshot; build answers derive from tokenOrder; choose answers must be an option.
 // POST api/grammar/help GrammarHelpInput -> GrammarSnapshot; requesting help is saved before displaying it. Tests refuse help (409).
 // POST api/grammar/next GrammarMutation -> GrammarSnapshot; only a settled answer can advance. Finishing a test records its score.
@@ -169,3 +185,5 @@ export type GrammarHelpInput = GrammarMutation & { kind: 'hint' | 'rule' | 'answ
 // Rule and exercise prose are plain text, never HTML. The example separates sentences with " · ".
 // Word tiles may include distractors: selected indices are unique, but using every tile is not required.
 // Complete sources (and most choose sources) use ____ for the missing text, so summaries can show the finished sentence.
+// GrammarCurrent.audio names the settled exercise's spoken French, audio/grammar/<exercise id>.mp3, when that file exists.
+// GET audio/grammar/:id.mp3 -> the spoken correct sentence, or actionable JSON error.

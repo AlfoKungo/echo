@@ -1,0 +1,3804 @@
+{
+  "sentences": [
+    {
+      "id": "a1-food-s01",
+      "level": "A1",
+      "fr": "Je voudrais un café, s’il vous plaît.",
+      "en": "I would like a coffee, please.",
+      "distractors": [
+        "I would like a tea, please.",
+        "We would like a coffee, please.",
+        "I would like two coffees, please."
+      ],
+      "gap": "voudrais",
+      "topics": [
+        "articles-gender"
+      ],
+      "words": [
+        "verbs-019",
+        "food-003",
+        "essentials-003"
+      ],
+      "gloss": [
+        {
+          "fr": "voudrais",
+          "en": "would like (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s02",
+      "level": "A1",
+      "fr": "Le pain est encore chaud.",
+      "en": "The bread is still warm.",
+      "distractors": [
+        "The bread is already warm.",
+        "The bread is still cold.",
+        "The cake is still warm."
+      ],
+      "gap": "chaud",
+      "topics": [
+        "etre-avoir"
+      ],
+      "words": [
+        "food-002",
+        "verbs-001",
+        "essentials-087",
+        "qualities-025"
+      ],
+      "gloss": [
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "encore",
+          "en": "still; again",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "chaud",
+          "en": "warm; hot",
+          "word": "qualities-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s03",
+      "level": "A1",
+      "fr": "Tu aimes les fraises ?",
+      "en": "Do you like strawberries?",
+      "distractors": [
+        "Do you like cherries?",
+        "Does he like strawberries?",
+        "Do you want strawberries?"
+      ],
+      "gap": "fraises",
+      "topics": [
+        "present-er",
+        "questions"
+      ],
+      "words": [
+        "verbs-052",
+        "food-025"
+      ],
+      "gloss": [
+        {
+          "fr": "aimes",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "fraises",
+          "en": "strawberries",
+          "word": "food-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s04",
+      "level": "A1",
+      "fr": "Nous mangeons au restaurant ce soir.",
+      "en": "We are eating at the restaurant this evening.",
+      "distractors": [
+        "We are eating at the restaurant this morning.",
+        "They are eating at the restaurant this evening.",
+        "We are cooking at the restaurant this evening."
+      ],
+      "gap": "soir",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-059",
+        "travel-020",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "mangeons",
+          "en": "eat; are eating (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s05",
+      "level": "A1",
+      "fr": "Elle n’aime pas le fromage.",
+      "en": "She doesn't like cheese.",
+      "distractors": [
+        "He doesn't like cheese.",
+        "She likes cheese.",
+        "She doesn't like butter."
+      ],
+      "gap": "fromage",
+      "topics": [
+        "negation",
+        "present-er"
+      ],
+      "words": [
+        "verbs-052",
+        "food-010"
+      ],
+      "gloss": [
+        {
+          "fr": "n’aime",
+          "en": "like (aimer) — with ne…pas: does not like",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "fromage",
+          "en": "cheese",
+          "word": "food-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s06",
+      "level": "A1",
+      "fr": "Combien coûte ce gâteau ?",
+      "en": "How much does this cake cost?",
+      "distractors": [
+        "How much do these cakes cost?",
+        "How much does this tart cost?"
+      ],
+      "gap": "Combien",
+      "topics": [
+        "question-words",
+        "demonstratives"
+      ],
+      "words": [
+        "essentials-038",
+        "verbs-058",
+        "food-054"
+      ],
+      "gloss": [
+        {
+          "fr": "Combien",
+          "en": "how much; how many",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s07",
+      "level": "A1",
+      "fr": "Le marché ouvre à huit heures.",
+      "en": "The market opens at eight o'clock.",
+      "distractors": [
+        "The market opens at nine o'clock.",
+        "The market closes at eight o'clock.",
+        "The shop opens at eight o'clock."
+      ],
+      "gap": "huit",
+      "topics": [
+        "irregular-present",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-022",
+        "verbs-045",
+        "health-time-089",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "ouvre",
+          "en": "opens (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o'clock",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s08",
+      "level": "A1",
+      "fr": "Je vais acheter des tomates.",
+      "en": "I am going to buy some tomatoes.",
+      "distractors": [
+        "I am going to sell some tomatoes.",
+        "We are going to buy some tomatoes.",
+        "I am going to buy some potatoes."
+      ],
+      "gap": "vais",
+      "topics": [
+        "futur-proche"
+      ],
+      "words": [
+        "verbs-004",
+        "verbs-055",
+        "food-029"
+      ],
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller); vais + infinitive = am going to",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "acheter",
+          "en": "to buy",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "tomates",
+          "en": "tomatoes",
+          "word": "food-029"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s09",
+      "level": "A1",
+      "fr": "Il y a du lait dans le réfrigérateur.",
+      "en": "There is some milk in the fridge.",
+      "distractors": [
+        "There is some juice in the fridge.",
+        "There is no milk in the fridge.",
+        "There is some milk on the table."
+      ],
+      "gap": "lait",
+      "topics": [
+        "partitive",
+        "prepositions-places"
+      ],
+      "words": [
+        "food-005",
+        "essentials-057",
+        "home-085"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "lait",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "réfrigérateur",
+          "en": "fridge; refrigerator",
+          "word": "home-085"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s10",
+      "level": "A1",
+      "fr": "Vous avez une table pour deux ?",
+      "en": "Do you have a table for two?",
+      "distractors": [
+        "Do you have a table for four?",
+        "Do you have a table for tonight?",
+        "Do you want a table for two?"
+      ],
+      "gap": "deux",
+      "topics": [
+        "etre-avoir",
+        "questions"
+      ],
+      "words": [
+        "verbs-002",
+        "home-045",
+        "essentials-062",
+        "health-time-083"
+      ],
+      "gloss": [
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s11",
+      "level": "A1",
+      "fr": "L’addition, s’il vous plaît.",
+      "en": "The bill, please.",
+      "distractors": [
+        "The menu, please.",
+        "The wine list, please.",
+        "A coffee, please."
+      ],
+      "gap": "L’addition",
+      "topics": [
+        "articles-gender"
+      ],
+      "words": [
+        "food-081",
+        "essentials-003"
+      ],
+      "gloss": [
+        {
+          "fr": "L’addition",
+          "en": "the bill; the check",
+          "word": "food-081"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s12",
+      "level": "A1",
+      "fr": "Mon frère déteste les oignons.",
+      "en": "My brother hates onions.",
+      "distractors": [
+        "My sister hates onions.",
+        "My brother loves onions.",
+        "My brother hates mushrooms."
+      ],
+      "gap": "déteste",
+      "topics": [
+        "possessives",
+        "present-er"
+      ],
+      "words": [
+        "essentials-049",
+        "people-012",
+        "food-032"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "déteste",
+          "en": "hates (détester)"
+        },
+        {
+          "fr": "oignons",
+          "en": "onions",
+          "word": "food-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s13",
+      "level": "A1",
+      "fr": "Ce restaurant est trop cher.",
+      "en": "This restaurant is too expensive.",
+      "distractors": [
+        "This restaurant is not expensive.",
+        "This café is too expensive.",
+        "This restaurant is too noisy."
+      ],
+      "gap": "trop",
+      "topics": [
+        "demonstratives",
+        "etre-avoir"
+      ],
+      "words": [
+        "travel-020",
+        "verbs-001",
+        "essentials-097",
+        "qualities-059"
+      ],
+      "gloss": [
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "trop",
+          "en": "too; too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "cher",
+          "en": "expensive",
+          "word": "qualities-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s14",
+      "level": "A1",
+      "fr": "Je prends une soupe et une salade.",
+      "en": "I'll have a soup and a salad.",
+      "distractors": [
+        "I'll have a soup or a salad.",
+        "We'll have a soup and a salad.",
+        "I'll have a soup and a dessert."
+      ],
+      "gap": "soupe",
+      "topics": [
+        "irregular-present",
+        "articles-gender"
+      ],
+      "words": [
+        "verbs-023",
+        "food-019",
+        "food-020"
+      ],
+      "gloss": [
+        {
+          "fr": "prends",
+          "en": "take; I'll have (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "fr": "salade",
+          "en": "salad",
+          "word": "food-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s15",
+      "level": "A1",
+      "fr": "Est-ce que vous avez du thé vert ?",
+      "en": "Do you have any green tea?",
+      "distractors": [
+        "Do you have any black tea?",
+        "Do you want some green tea?",
+        "Do you have any green apples?"
+      ],
+      "gap": "vert",
+      "topics": [
+        "questions",
+        "partitive"
+      ],
+      "words": [
+        "verbs-002",
+        "food-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(marks a yes/no question)"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "thé",
+          "en": "tea",
+          "word": "food-004"
+        },
+        {
+          "fr": "vert",
+          "en": "green"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s16",
+      "level": "A1",
+      "fr": "Les frites sont froides.",
+      "en": "The fries are cold.",
+      "distractors": [
+        "The fries are hot.",
+        "The fries are ready.",
+        "The soup is cold."
+      ],
+      "gap": "froides",
+      "topics": [
+        "etre-avoir",
+        "agreement"
+      ],
+      "words": [
+        "food-062",
+        "verbs-001",
+        "qualities-026"
+      ],
+      "gloss": [
+        {
+          "fr": "frites",
+          "en": "fries; chips",
+          "word": "food-062"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "froides",
+          "en": "cold (froid, feminine plural)",
+          "word": "qualities-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s17",
+      "level": "A1",
+      "fr": "On boit de l’eau, pas de vin.",
+      "en": "We drink water, not wine.",
+      "distractors": [
+        "We drink wine, not water.",
+        "We drink water and wine.",
+        "I drink water, not wine."
+      ],
+      "gap": "vin",
+      "topics": [
+        "partitive",
+        "negation"
+      ],
+      "words": [
+        "verbs-060",
+        "food-001",
+        "food-069"
+      ],
+      "gloss": [
+        {
+          "fr": "boit",
+          "en": "drinks (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "l’eau",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "fr": "vin",
+          "en": "wine",
+          "word": "food-069"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s18",
+      "level": "A1",
+      "fr": "Le serveur apporte deux verres.",
+      "en": "The waiter brings two glasses.",
+      "distractors": [
+        "The waiter brings two plates.",
+        "The waiter brings three glasses.",
+        "The waiter takes away two glasses."
+      ],
+      "gap": "verres",
+      "topics": [
+        "present-er"
+      ],
+      "words": [
+        "work-022",
+        "verbs-043",
+        "health-time-083",
+        "food-089"
+      ],
+      "gloss": [
+        {
+          "fr": "serveur",
+          "en": "waiter",
+          "word": "work-022"
+        },
+        {
+          "fr": "apporte",
+          "en": "brings (apporter)",
+          "word": "verbs-043"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "verres",
+          "en": "glasses",
+          "word": "food-089"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s19",
+      "level": "A1",
+      "fr": "Ma mère fait un gâteau au chocolat.",
+      "en": "My mother is making a chocolate cake.",
+      "distractors": [
+        "My father is making a chocolate cake.",
+        "My mother is buying a chocolate cake.",
+        "My mother is making a lemon cake."
+      ],
+      "gap": "chocolat",
+      "topics": [
+        "possessives",
+        "contractions"
+      ],
+      "words": [
+        "essentials-049",
+        "people-009",
+        "verbs-003",
+        "food-054",
+        "food-053"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "fait",
+          "en": "makes; is making (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "chocolat",
+          "en": "chocolate",
+          "word": "food-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s20",
+      "level": "A1",
+      "fr": "Je n’ai pas faim ce matin.",
+      "en": "I'm not hungry this morning.",
+      "distractors": [
+        "I'm not hungry this evening.",
+        "I'm very hungry this morning.",
+        "He isn't hungry this morning."
+      ],
+      "gap": "faim",
+      "topics": [
+        "negation",
+        "etre-avoir"
+      ],
+      "words": [
+        "verbs-002",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "n’ai",
+          "en": "have (avoir) — with ne…pas: do not have",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "faim",
+          "en": "hunger (avoir faim = to be hungry)"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s21",
+      "level": "A1",
+      "fr": "Tu veux du sucre dans ton café ?",
+      "en": "Do you want some sugar in your coffee?",
+      "distractors": [
+        "Do you want some milk in your coffee?",
+        "Do you want some sugar in your tea?",
+        "Does he want some sugar in his coffee?"
+      ],
+      "gap": "ton",
+      "topics": [
+        "partitive",
+        "possessives",
+        "questions"
+      ],
+      "words": [
+        "verbs-019",
+        "food-006",
+        "essentials-057",
+        "essentials-050",
+        "food-003"
+      ],
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "sucre",
+          "en": "sugar",
+          "word": "food-006"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s22",
+      "level": "A1",
+      "fr": "Le déjeuner commence à midi.",
+      "en": "Lunch starts at noon.",
+      "distractors": [
+        "Dinner starts at noon.",
+        "Lunch starts at one o'clock.",
+        "Lunch finishes at noon."
+      ],
+      "gap": "midi",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "food-074",
+        "verbs-047"
+      ],
+      "gloss": [
+        {
+          "fr": "déjeuner",
+          "en": "lunch",
+          "word": "food-074"
+        },
+        {
+          "fr": "commence",
+          "en": "starts (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "midi",
+          "en": "midday; noon"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s23",
+      "level": "A1",
+      "fr": "Elle achète du poisson au marché.",
+      "en": "She buys fish at the market.",
+      "distractors": [
+        "She buys meat at the market.",
+        "He buys fish at the market.",
+        "She buys fish at the supermarket."
+      ],
+      "gap": "marché",
+      "topics": [
+        "present-er",
+        "contractions"
+      ],
+      "words": [
+        "verbs-055",
+        "nature-014",
+        "travel-022"
+      ],
+      "gloss": [
+        {
+          "fr": "achète",
+          "en": "buys (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "poisson",
+          "en": "fish",
+          "word": "nature-014"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s24",
+      "level": "A1",
+      "fr": "Nous n’avons pas de beurre.",
+      "en": "We don't have any butter.",
+      "distractors": [
+        "We don't have any bread.",
+        "We have some butter.",
+        "They don't have any butter."
+      ],
+      "gap": "beurre",
+      "topics": [
+        "negation",
+        "partitive"
+      ],
+      "words": [
+        "verbs-002",
+        "food-009"
+      ],
+      "gloss": [
+        {
+          "fr": "n’avons",
+          "en": "have (avoir) — with ne…pas: do not have",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "beurre",
+          "en": "butter",
+          "word": "food-009"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s25",
+      "level": "A1",
+      "fr": "Ce fromage vient de Normandie.",
+      "en": "This cheese comes from Normandy.",
+      "distractors": [
+        "This cheese comes from Brittany.",
+        "This wine comes from Normandy.",
+        "This butter comes from Normandy."
+      ],
+      "gap": "vient",
+      "topics": [
+        "irregular-present",
+        "demonstratives"
+      ],
+      "words": [
+        "food-010",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "fr": "fromage",
+          "en": "cheese",
+          "word": "food-010"
+        },
+        {
+          "fr": "vient",
+          "en": "comes (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "Normandie",
+          "en": "Normandy (a region of France)"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s26",
+      "level": "A1",
+      "fr": "Trois baguettes, ça fait quatre euros.",
+      "en": "Three baguettes, that comes to four euros.",
+      "distractors": [
+        "Three baguettes, that comes to fourteen euros.",
+        "Four baguettes, that comes to four euros.",
+        "Three croissants, that comes to four euros."
+      ],
+      "gap": "quatre",
+      "topics": [
+        "irregular-present"
+      ],
+      "words": [
+        "health-time-084",
+        "food-059",
+        "health-time-085",
+        "essentials-029"
+      ],
+      "gloss": [
+        {
+          "fr": "Trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "baguettes",
+          "en": "baguettes",
+          "word": "food-059"
+        },
+        {
+          "fr": "ça fait",
+          "en": "that comes to (a price)"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s27",
+      "level": "A1",
+      "fr": "Le menu du jour coûte quinze euros.",
+      "en": "The set menu of the day costs fifteen euros.",
+      "distractors": [
+        "The set menu of the day costs fifty euros.",
+        "The dish of the day costs fifteen euros."
+      ],
+      "gap": "quinze",
+      "topics": [
+        "contractions",
+        "present-er"
+      ],
+      "words": [
+        "food-079",
+        "health-time-055",
+        "verbs-058",
+        "health-time-093"
+      ],
+      "gloss": [
+        {
+          "fr": "menu",
+          "en": "set menu (fixed-price meal)",
+          "word": "food-079"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s28",
+      "level": "A1",
+      "fr": "Mon père prépare le dîner.",
+      "en": "My father is making dinner.",
+      "distractors": [
+        "My mother is making dinner.",
+        "My father is making lunch.",
+        "My father is eating dinner."
+      ],
+      "gap": "prépare",
+      "topics": [
+        "possessives",
+        "present-er"
+      ],
+      "words": [
+        "essentials-049",
+        "people-010",
+        "food-075"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "prépare",
+          "en": "prepares; is making (préparer)"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s29",
+      "level": "A1",
+      "fr": "J’adore le chocolat noir.",
+      "en": "I love dark chocolate.",
+      "distractors": [
+        "I love milk chocolate.",
+        "I hate dark chocolate.",
+        "She loves dark chocolate."
+      ],
+      "gap": "J’adore",
+      "topics": [
+        "present-er",
+        "articles-gender"
+      ],
+      "words": [
+        "food-053"
+      ],
+      "gloss": [
+        {
+          "fr": "J’adore",
+          "en": "I love (adorer)"
+        },
+        {
+          "fr": "chocolat",
+          "en": "chocolate",
+          "word": "food-053"
+        },
+        {
+          "fr": "noir",
+          "en": "black; dark"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s30",
+      "level": "A1",
+      "fr": "Apportez-nous la carte, s’il vous plaît.",
+      "en": "Bring us the menu, please.",
+      "distractors": [
+        "Bring us the bill, please.",
+        "Bring me the menu, please.",
+        "Bring us two menus, please."
+      ],
+      "gap": "Apportez-nous",
+      "topics": [
+        "imperative"
+      ],
+      "words": [
+        "verbs-043",
+        "food-080",
+        "essentials-003"
+      ],
+      "gloss": [
+        {
+          "fr": "Apportez-nous",
+          "en": "bring us (apporter)",
+          "word": "verbs-043"
+        },
+        {
+          "fr": "carte",
+          "en": "menu (list of dishes)",
+          "word": "food-080"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s31",
+      "level": "A1",
+      "fr": "Le café est ouvert le dimanche.",
+      "en": "The café is open on Sundays.",
+      "distractors": [
+        "The café is closed on Sundays.",
+        "The café is open on Saturdays.",
+        "The bakery is open on Sundays."
+      ],
+      "gap": "dimanche",
+      "topics": [
+        "etre-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "food-003",
+        "verbs-001",
+        "qualities-036",
+        "health-time-068"
+      ],
+      "gloss": [
+        {
+          "fr": "café",
+          "en": "café (the place); coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouvert",
+          "en": "open",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday; le dimanche = on Sundays",
+          "word": "health-time-068"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s32",
+      "level": "A1",
+      "fr": "Elle met du sel dans la soupe.",
+      "en": "She puts some salt in the soup.",
+      "distractors": [
+        "She puts some sugar in the soup.",
+        "He puts some salt in the soup.",
+        "She puts some salt in the sauce."
+      ],
+      "gap": "sel",
+      "topics": [
+        "irregular-present",
+        "partitive",
+        "prepositions-places"
+      ],
+      "words": [
+        "verbs-025",
+        "food-007",
+        "essentials-057",
+        "food-019"
+      ],
+      "gloss": [
+        {
+          "fr": "met",
+          "en": "puts (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "sel",
+          "en": "salt",
+          "word": "food-007"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s33",
+      "level": "A1",
+      "fr": "Nous cherchons un bon restaurant.",
+      "en": "We're looking for a good restaurant.",
+      "distractors": [
+        "We're looking for a cheap restaurant.",
+        "They're looking for a good restaurant.",
+        "We've found a good restaurant."
+      ],
+      "gap": "bon",
+      "topics": [
+        "present-er",
+        "adjective-placement"
+      ],
+      "words": [
+        "verbs-027",
+        "qualities-003",
+        "travel-020"
+      ],
+      "gloss": [
+        {
+          "fr": "cherchons",
+          "en": "are looking for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s34",
+      "level": "A1",
+      "fr": "Où est-ce que tu achètes ton pain ?",
+      "en": "Where do you buy your bread?",
+      "distractors": [
+        "When do you buy your bread?",
+        "Where do you buy your cheese?",
+        "Where does he buy his bread?"
+      ],
+      "gap": "pain",
+      "topics": [
+        "question-words",
+        "possessives"
+      ],
+      "words": [
+        "essentials-035",
+        "verbs-055",
+        "essentials-050",
+        "food-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "est-ce que",
+          "en": "(marks a question)"
+        },
+        {
+          "fr": "achètes",
+          "en": "buy (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s35",
+      "level": "A1",
+      "fr": "Le poulet est dans le four.",
+      "en": "The chicken is in the oven.",
+      "distractors": [
+        "The chicken is in the fridge.",
+        "The fish is in the oven.",
+        "The chicken is on the table."
+      ],
+      "gap": "four",
+      "topics": [
+        "etre-avoir",
+        "prepositions-places"
+      ],
+      "words": [
+        "food-015",
+        "verbs-001",
+        "essentials-057",
+        "home-087"
+      ],
+      "gloss": [
+        {
+          "fr": "poulet",
+          "en": "chicken",
+          "word": "food-015"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "four",
+          "en": "oven",
+          "word": "home-087"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s36",
+      "level": "A1",
+      "fr": "Je paie l’addition, tu paies les boissons.",
+      "en": "I'll pay the bill, you pay for the drinks.",
+      "distractors": [
+        "You pay the bill, I'll pay for the drinks.",
+        "I'll pay the bill, you pay for the desserts."
+      ],
+      "gap": "boissons",
+      "topics": [
+        "present-er"
+      ],
+      "words": [
+        "verbs-057",
+        "food-081",
+        "food-071"
+      ],
+      "gloss": [
+        {
+          "fr": "paie",
+          "en": "pay (payer)",
+          "word": "verbs-057"
+        },
+        {
+          "fr": "l’addition",
+          "en": "the bill; the check",
+          "word": "food-081"
+        },
+        {
+          "fr": "paies",
+          "en": "pay (payer)",
+          "word": "verbs-057"
+        },
+        {
+          "fr": "boissons",
+          "en": "drinks",
+          "word": "food-071"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s37",
+      "level": "A1",
+      "fr": "Les légumes du marché sont frais.",
+      "en": "The vegetables from the market are fresh.",
+      "distractors": [
+        "The vegetables from the market are expensive.",
+        "The fruit from the market is fresh.",
+        "The vegetables from the supermarket are fresh."
+      ],
+      "gap": "frais",
+      "topics": [
+        "etre-avoir",
+        "contractions",
+        "agreement"
+      ],
+      "words": [
+        "food-045",
+        "travel-022",
+        "verbs-001",
+        "qualities-028"
+      ],
+      "gloss": [
+        {
+          "fr": "légumes",
+          "en": "vegetables",
+          "word": "food-045"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "frais",
+          "en": "fresh",
+          "word": "qualities-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s38",
+      "level": "A1",
+      "fr": "Je prends toujours un croissant le matin.",
+      "en": "I always have a croissant in the morning.",
+      "distractors": [
+        "I always have a croissant in the evening.",
+        "I never have a croissant in the morning.",
+        "I sometimes have a croissant in the morning."
+      ],
+      "gap": "toujours",
+      "topics": [
+        "irregular-present",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-023",
+        "essentials-089",
+        "food-058",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "prends",
+          "en": "take; have (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "toujours",
+          "en": "always",
+          "word": "essentials-089"
+        },
+        {
+          "fr": "croissant",
+          "en": "croissant",
+          "word": "food-058"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s39",
+      "level": "A1",
+      "fr": "Ils dînent chez leurs amis.",
+      "en": "They're having dinner at their friends' place.",
+      "distractors": [
+        "They're having dinner at our friends' place.",
+        "They're having lunch at their friends' place.",
+        "They're having dinner at their parents' place."
+      ],
+      "gap": "chez",
+      "topics": [
+        "present-er",
+        "possessives",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-064",
+        "essentials-054",
+        "people-030"
+      ],
+      "gloss": [
+        {
+          "fr": "dînent",
+          "en": "have dinner (dîner)"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "leurs",
+          "en": "their",
+          "word": "essentials-054"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s40",
+      "level": "A1",
+      "fr": "Cette tarte aux pommes est délicieuse.",
+      "en": "This apple tart is delicious.",
+      "distractors": [
+        "This apple tart is terrible.",
+        "This pear tart is delicious.",
+        "This apple tart is expensive."
+      ],
+      "gap": "Cette",
+      "topics": [
+        "demonstratives",
+        "contractions",
+        "agreement"
+      ],
+      "words": [
+        "essentials-047",
+        "food-055",
+        "food-021",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this; that (before a feminine noun)",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "tarte",
+          "en": "tart; pie",
+          "word": "food-055"
+        },
+        {
+          "fr": "pommes",
+          "en": "apples",
+          "word": "food-021"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "délicieuse",
+          "en": "delicious (feminine)"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s41",
+      "level": "A1",
+      "fr": "Le vendeur donne un kilo de carottes.",
+      "en": "The seller hands over a kilo of carrots.",
+      "distractors": [
+        "The seller hands over two kilos of carrots.",
+        "The seller hands over a kilo of potatoes.",
+        "The seller weighs a kilo of carrots."
+      ],
+      "gap": "kilo",
+      "topics": [
+        "present-er",
+        "articles-gender"
+      ],
+      "words": [
+        "work-024",
+        "verbs-024",
+        "food-031"
+      ],
+      "gloss": [
+        {
+          "fr": "vendeur",
+          "en": "salesperson; stallholder",
+          "word": "work-024"
+        },
+        {
+          "fr": "donne",
+          "en": "gives; hands over (donner)",
+          "word": "verbs-024"
+        },
+        {
+          "fr": "kilo",
+          "en": "kilo; kilogram"
+        },
+        {
+          "fr": "carottes",
+          "en": "carrots",
+          "word": "food-031"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s42",
+      "level": "A1",
+      "fr": "Tu bois du jus d’orange ?",
+      "en": "Are you drinking orange juice?",
+      "distractors": [
+        "Are you drinking apple juice?",
+        "Do you want orange juice?",
+        "Is he drinking orange juice?"
+      ],
+      "gap": "bois",
+      "topics": [
+        "irregular-present",
+        "partitive",
+        "questions"
+      ],
+      "words": [
+        "verbs-060",
+        "food-068",
+        "food-023"
+      ],
+      "gloss": [
+        {
+          "fr": "bois",
+          "en": "drink (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "jus",
+          "en": "juice",
+          "word": "food-068"
+        },
+        {
+          "fr": "d’orange",
+          "en": "orange (fruit)",
+          "word": "food-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s43",
+      "level": "A1",
+      "fr": "Nous allons au supermarché demain.",
+      "en": "We're going to the supermarket tomorrow.",
+      "distractors": [
+        "We're going to the market tomorrow.",
+        "We're going to the supermarket today.",
+        "They're going to the supermarket tomorrow."
+      ],
+      "gap": "demain",
+      "topics": [
+        "irregular-present",
+        "contractions",
+        "time-expressions"
+      ],
+      "words": [
+        "verbs-004",
+        "travel-023"
+      ],
+      "gloss": [
+        {
+          "fr": "allons",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "supermarché",
+          "en": "supermarket",
+          "word": "travel-023"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s44",
+      "level": "A1",
+      "fr": "Le petit déjeuner est à sept heures.",
+      "en": "Breakfast is at seven o'clock.",
+      "distractors": [
+        "Breakfast is at six o'clock.",
+        "Lunch is at seven o'clock.",
+        "Dinner is at seven o'clock."
+      ],
+      "gap": "sept",
+      "topics": [
+        "etre-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "food-073",
+        "verbs-001",
+        "health-time-088",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "petit déjeuner",
+          "en": "breakfast",
+          "word": "food-073"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o'clock",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s45",
+      "level": "A1",
+      "fr": "Elle ne boit pas de bière.",
+      "en": "She doesn't drink beer.",
+      "distractors": [
+        "She doesn't drink wine.",
+        "She drinks a lot of beer.",
+        "He doesn't drink beer."
+      ],
+      "gap": "bière",
+      "topics": [
+        "negation",
+        "irregular-present"
+      ],
+      "words": [
+        "verbs-060",
+        "food-070"
+      ],
+      "gloss": [
+        {
+          "fr": "boit",
+          "en": "drinks (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "bière",
+          "en": "beer",
+          "word": "food-070"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s46",
+      "level": "A1",
+      "fr": "Il n’y a pas de dessert.",
+      "en": "There is no dessert.",
+      "distractors": [
+        "There is a dessert.",
+        "There is no starter."
+      ],
+      "gap": "dessert",
+      "topics": [
+        "negation"
+      ],
+      "words": [
+        "food-076"
+      ],
+      "gloss": [
+        {
+          "fr": "Il n’y a pas",
+          "en": "there is no; there isn't any"
+        },
+        {
+          "fr": "dessert",
+          "en": "dessert",
+          "word": "food-076"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s47",
+      "level": "A1",
+      "fr": "Vous préférez le thé ou le café ?",
+      "en": "Do you prefer tea or coffee?",
+      "distractors": [
+        "Do you prefer tea or juice?",
+        "Do you want tea or coffee?",
+        "Does she prefer tea or coffee?"
+      ],
+      "gap": "préférez",
+      "topics": [
+        "present-er",
+        "questions"
+      ],
+      "words": [
+        "verbs-053",
+        "food-004",
+        "food-003"
+      ],
+      "gloss": [
+        {
+          "fr": "préférez",
+          "en": "prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "thé",
+          "en": "tea",
+          "word": "food-004"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s48",
+      "level": "A1",
+      "fr": "Ma sœur travaille dans une boulangerie.",
+      "en": "My sister works in a bakery.",
+      "distractors": [
+        "My brother works in a bakery.",
+        "My sister works in a restaurant.",
+        "My sister shops at a bakery."
+      ],
+      "gap": "boulangerie",
+      "topics": [
+        "possessives",
+        "present-er",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-049",
+        "people-011",
+        "verbs-069",
+        "essentials-057",
+        "travel-024"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "dans",
+          "en": "in; inside",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "boulangerie",
+          "en": "bakery",
+          "word": "travel-024"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s49",
+      "level": "A1",
+      "fr": "Une bouteille de vin coûte dix euros.",
+      "en": "A bottle of wine costs ten euros.",
+      "distractors": [
+        "A bottle of wine costs two euros.",
+        "A glass of wine costs ten euros.",
+        "A bottle of beer costs ten euros."
+      ],
+      "gap": "dix",
+      "topics": [
+        "present-er",
+        "articles-gender"
+      ],
+      "words": [
+        "food-090",
+        "food-069",
+        "verbs-058",
+        "health-time-091"
+      ],
+      "gloss": [
+        {
+          "fr": "bouteille",
+          "en": "bottle",
+          "word": "food-090"
+        },
+        {
+          "fr": "vin",
+          "en": "wine",
+          "word": "food-069"
+        },
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s50",
+      "level": "A1",
+      "fr": "Qu’est-ce que tu manges le matin ?",
+      "en": "What do you eat in the morning?",
+      "distractors": [
+        "What do you drink in the morning?",
+        "What do you eat in the evening?",
+        "Where do you eat in the morning?"
+      ],
+      "gap": "manges",
+      "topics": [
+        "question-words",
+        "present-er"
+      ],
+      "words": [
+        "verbs-059",
+        "health-time-059"
+      ],
+      "gloss": [
+        {
+          "fr": "Qu’est-ce que",
+          "en": "what"
+        },
+        {
+          "fr": "manges",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-food-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Ordering at the café",
+      "lines": [
+        {
+          "speaker": "Le serveur",
+          "fr": "Bonjour ! Vous désirez ?",
+          "en": "Hello! What would you like?"
+        },
+        {
+          "speaker": "Claire",
+          "fr": "Un café et un croissant, s’il vous plaît.",
+          "en": "A coffee and a croissant, please."
+        },
+        {
+          "speaker": "Le serveur",
+          "fr": "Un café noir ou un café au lait ?",
+          "en": "A black coffee or a coffee with milk?"
+        },
+        {
+          "speaker": "Claire",
+          "fr": "Au lait, s’il vous plaît. Et un verre d’eau.",
+          "en": "With milk, please. And a glass of water."
+        },
+        {
+          "speaker": "Le serveur",
+          "fr": "Très bien. Ça fait quatre euros.",
+          "en": "Very good. That comes to four euros."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Claire order to eat?",
+          "choices": [
+            "A croissant",
+            "A sandwich",
+            "A slice of cake"
+          ],
+          "answer": 0,
+          "explanation": "She says \"Un café et un croissant, s’il vous plaît.\""
+        },
+        {
+          "question": "How does she want her coffee?",
+          "choices": [
+            "With sugar",
+            "Black",
+            "With milk"
+          ],
+          "answer": 2,
+          "explanation": "Asked \"noir ou au lait ?\", she answers \"Au lait, s’il vous plaît.\""
+        },
+        {
+          "question": "What else does she ask for?",
+          "choices": [
+            "A bottle of wine",
+            "A second coffee",
+            "A glass of water"
+          ],
+          "answer": 2,
+          "explanation": "She adds \"Et un verre d’eau.\""
+        },
+        {
+          "question": "How much does the order come to?",
+          "choices": [
+            "Four euros",
+            "Fourteen euros",
+            "Two euros"
+          ],
+          "answer": 0,
+          "explanation": "The waiter says \"Ça fait quatre euros.\""
+        }
+      ],
+      "topics": [
+        "articles-gender",
+        "questions"
+      ],
+      "words": [
+        "essentials-001",
+        "food-003",
+        "food-058",
+        "essentials-003",
+        "food-005",
+        "essentials-045",
+        "health-time-085",
+        "food-089",
+        "food-001",
+        "essentials-029",
+        "essentials-096"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello; good morning",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "désirez",
+          "en": "would like (désirer); Vous désirez ? = What would you like?"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "croissant",
+          "en": "croissant",
+          "word": "food-058"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        },
+        {
+          "fr": "noir",
+          "en": "black"
+        },
+        {
+          "fr": "lait",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "fr": "verre",
+          "en": "glass",
+          "word": "food-089"
+        },
+        {
+          "fr": "d’eau",
+          "en": "of water",
+          "word": "food-001"
+        },
+        {
+          "fr": "Très bien",
+          "en": "very good; fine",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "Ça fait",
+          "en": "that comes to (a price)"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the bakery",
+      "lines": [
+        {
+          "speaker": "Le boulanger",
+          "fr": "Bonjour ! Vous voulez une baguette ?",
+          "en": "Hello! Would you like a baguette?"
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Oui, deux baguettes et six croissants.",
+          "en": "Yes, two baguettes and six croissants."
+        },
+        {
+          "speaker": "Le boulanger",
+          "fr": "Je suis désolé, il n’y a pas de croissants ce matin.",
+          "en": "I'm sorry, there are no croissants this morning."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Alors, je prends un pain au chocolat.",
+          "en": "In that case, I'll have a pain au chocolat."
+        },
+        {
+          "speaker": "Le boulanger",
+          "fr": "Voilà. Ça fait cinq euros vingt.",
+          "en": "Here you are. That comes to five euros twenty."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Merci, au revoir !",
+          "en": "Thank you, goodbye!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Marc ask for first?",
+          "choices": [
+            "Two baguettes and two croissants",
+            "Two baguettes and six croissants",
+            "One baguette and six croissants"
+          ],
+          "answer": 1,
+          "explanation": "He says \"Oui, deux baguettes et six croissants.\""
+        },
+        {
+          "question": "Why can't he have the croissants?",
+          "choices": [
+            "They are too expensive",
+            "The bakery is closing",
+            "There are none this morning"
+          ],
+          "answer": 2,
+          "explanation": "The baker says \"il n’y a pas de croissants ce matin\"."
+        },
+        {
+          "question": "What does he take instead?",
+          "choices": [
+            "A pain au chocolat",
+            "A cake",
+            "A sandwich"
+          ],
+          "answer": 0,
+          "explanation": "He says \"je prends un pain au chocolat\"."
+        },
+        {
+          "question": "How much does he pay?",
+          "choices": [
+            "Six euros twenty",
+            "Five euros twenty",
+            "Five euros"
+          ],
+          "answer": 1,
+          "explanation": "The baker says \"Ça fait cinq euros vingt.\""
+        }
+      ],
+      "topics": [
+        "negation",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-001",
+        "verbs-019",
+        "food-059",
+        "essentials-004",
+        "health-time-083",
+        "health-time-087",
+        "food-058",
+        "verbs-001",
+        "health-time-059",
+        "verbs-023",
+        "health-time-086",
+        "health-time-094",
+        "essentials-002",
+        "essentials-007",
+        "essentials-029"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello; good morning",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "voulez",
+          "en": "want; would like (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "baguette",
+          "en": "baguette",
+          "word": "food-059"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "baguettes",
+          "en": "baguettes",
+          "word": "food-059"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "croissants",
+          "en": "croissants",
+          "word": "food-058"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "désolé",
+          "en": "sorry"
+        },
+        {
+          "fr": "il n’y a pas",
+          "en": "there is no; there aren't any"
+        },
+        {
+          "fr": "ce matin",
+          "en": "this morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "Alors",
+          "en": "so; in that case"
+        },
+        {
+          "fr": "prends",
+          "en": "take; I'll have (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "pain au chocolat",
+          "en": "pain au chocolat (chocolate pastry)"
+        },
+        {
+          "fr": "Voilà",
+          "en": "here you are; there you go"
+        },
+        {
+          "fr": "Ça fait",
+          "en": "that comes to (a price)"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "au revoir",
+          "en": "goodbye",
+          "word": "essentials-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "A table for two",
+      "lines": [
+        {
+          "speaker": "La serveuse",
+          "fr": "Bonsoir. Vous avez une réservation ?",
+          "en": "Good evening. Do you have a reservation?"
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Oui, une table pour deux, au nom de Paul.",
+          "en": "Yes, a table for two, in the name of Paul."
+        },
+        {
+          "speaker": "La serveuse",
+          "fr": "Très bien. Voici la carte.",
+          "en": "Very good. Here is the menu."
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Merci. Quel est le plat du jour ?",
+          "en": "Thank you. What is the dish of the day?"
+        },
+        {
+          "speaker": "La serveuse",
+          "fr": "Le poulet aux champignons, avec du riz.",
+          "en": "Chicken with mushrooms, with rice."
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Parfait. Deux menus, s’il vous plaît.",
+          "en": "Perfect. Two set menus, please."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many people is the table for?",
+          "choices": [
+            "Three",
+            "Four",
+            "Two"
+          ],
+          "answer": 2,
+          "explanation": "Paul says \"une table pour deux\"."
+        },
+        {
+          "question": "What does the waitress give him first?",
+          "choices": [
+            "The menu",
+            "The bill",
+            "A glass of wine"
+          ],
+          "answer": 0,
+          "explanation": "She says \"Voici la carte.\""
+        },
+        {
+          "question": "What is the dish of the day?",
+          "choices": [
+            "Fish with rice",
+            "Chicken with mushrooms",
+            "Chicken with potatoes"
+          ],
+          "answer": 1,
+          "explanation": "She says \"Le poulet aux champignons, avec du riz.\""
+        },
+        {
+          "question": "What does Paul order in the end?",
+          "choices": [
+            "Two chickens",
+            "One set menu",
+            "Two set menus"
+          ],
+          "answer": 2,
+          "explanation": "He says \"Deux menus, s’il vous plaît.\""
+        }
+      ],
+      "topics": [
+        "questions",
+        "etre-avoir",
+        "contractions"
+      ],
+      "words": [
+        "essentials-008",
+        "verbs-002",
+        "travel-056",
+        "essentials-004",
+        "home-045",
+        "essentials-062",
+        "health-time-083",
+        "essentials-045",
+        "food-080",
+        "essentials-002",
+        "verbs-001",
+        "food-078",
+        "health-time-055",
+        "food-015",
+        "food-043",
+        "essentials-060",
+        "food-012",
+        "food-079",
+        "essentials-003",
+        "essentials-096"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonsoir",
+          "en": "good evening",
+          "word": "essentials-008"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "réservation",
+          "en": "reservation; booking",
+          "word": "travel-056"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "au nom de",
+          "en": "in the name of"
+        },
+        {
+          "fr": "Paul",
+          "en": "Paul (a first name)"
+        },
+        {
+          "fr": "Très bien",
+          "en": "very good; fine",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "Voici",
+          "en": "here is"
+        },
+        {
+          "fr": "carte",
+          "en": "menu (list of dishes)",
+          "word": "food-080"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "Quel",
+          "en": "which; what (before a noun)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plat",
+          "en": "dish; course",
+          "word": "food-078"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "poulet",
+          "en": "chicken",
+          "word": "food-015"
+        },
+        {
+          "fr": "champignons",
+          "en": "mushrooms",
+          "word": "food-043"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "riz",
+          "en": "rice",
+          "word": "food-012"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect; great"
+        },
+        {
+          "fr": "Deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "menus",
+          "en": "set menus",
+          "word": "food-079"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the market stall",
+      "lines": [
+        {
+          "speaker": "Léa",
+          "fr": "Bonjour, je voudrais un kilo de tomates.",
+          "en": "Hello, I would like a kilo of tomatoes."
+        },
+        {
+          "speaker": "Le marchand",
+          "fr": "Voilà. Elles sont très bonnes aujourd’hui.",
+          "en": "Here you are. They are very good today."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Et les fraises, elles coûtent combien ?",
+          "en": "And the strawberries, how much do they cost?"
+        },
+        {
+          "speaker": "Le marchand",
+          "fr": "Quatre euros le kilo.",
+          "en": "Four euros a kilo."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "C’est cher ! Je prends seulement des pommes.",
+          "en": "That's expensive! I'll just take some apples."
+        },
+        {
+          "speaker": "Le marchand",
+          "fr": "Un kilo de pommes, ça fait deux euros.",
+          "en": "A kilo of apples, that comes to two euros."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many tomatoes does Léa ask for?",
+          "choices": [
+            "One kilo",
+            "Two kilos",
+            "Half a kilo"
+          ],
+          "answer": 0,
+          "explanation": "She says \"je voudrais un kilo de tomates\"."
+        },
+        {
+          "question": "What does the stallholder say about the tomatoes?",
+          "choices": [
+            "They are the last ones",
+            "They are very good today",
+            "They are not very fresh"
+          ],
+          "answer": 1,
+          "explanation": "He says \"Elles sont très bonnes aujourd’hui.\""
+        },
+        {
+          "question": "Why doesn't she buy the strawberries?",
+          "choices": [
+            "She doesn't like them",
+            "There are none left",
+            "She finds them expensive"
+          ],
+          "answer": 2,
+          "explanation": "After hearing \"Quatre euros le kilo\", she says \"C’est cher !\" and takes apples instead."
+        },
+        {
+          "question": "How much does she pay in the end?",
+          "choices": [
+            "Two euros",
+            "Four euros",
+            "Six euros"
+          ],
+          "answer": 0,
+          "explanation": "He says \"Un kilo de pommes, ça fait deux euros.\""
+        }
+      ],
+      "topics": [
+        "questions",
+        "agreement",
+        "articles-gender"
+      ],
+      "words": [
+        "essentials-001",
+        "verbs-019",
+        "food-029",
+        "verbs-001",
+        "essentials-096",
+        "qualities-003",
+        "food-025",
+        "verbs-058",
+        "essentials-038",
+        "health-time-085",
+        "qualities-059",
+        "verbs-023",
+        "food-021",
+        "health-time-083",
+        "essentials-029"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello; good morning",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "voudrais",
+          "en": "would like (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "kilo",
+          "en": "kilo; kilogram"
+        },
+        {
+          "fr": "tomates",
+          "en": "tomatoes",
+          "word": "food-029"
+        },
+        {
+          "fr": "Voilà",
+          "en": "here you are; there you go"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "bonnes",
+          "en": "good (bon, feminine plural)",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "fraises",
+          "en": "strawberries",
+          "word": "food-025"
+        },
+        {
+          "fr": "coûtent",
+          "en": "cost (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "combien",
+          "en": "how much",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "Quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "C’est",
+          "en": "it is; that is",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "cher",
+          "en": "expensive",
+          "word": "qualities-059"
+        },
+        {
+          "fr": "prends",
+          "en": "take; I'll have (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "seulement",
+          "en": "only; just"
+        },
+        {
+          "fr": "pommes",
+          "en": "apples",
+          "word": "food-021"
+        },
+        {
+          "fr": "ça fait",
+          "en": "that comes to (a price)"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A message about dinner",
+      "lines": [
+        {
+          "fr": "Salut Marie ! Ce soir, on mange à la maison.",
+          "en": "Hi Marie! This evening we're eating at home."
+        },
+        {
+          "fr": "Je prépare une soupe de légumes et une tarte aux pommes.",
+          "en": "I'm making a vegetable soup and an apple tart."
+        },
+        {
+          "fr": "Tu peux apporter du pain et une bouteille de vin ?",
+          "en": "Can you bring some bread and a bottle of wine?"
+        },
+        {
+          "fr": "Le dîner est à huit heures. À tout à l’heure !",
+          "en": "Dinner is at eight o'clock. See you later!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where are they eating?",
+          "choices": [
+            "At Marie's home",
+            "At the writer's home",
+            "At a restaurant"
+          ],
+          "answer": 1,
+          "explanation": "\"Ce soir, on mange à la maison.\" — and the writer is the one cooking: \"Je prépare une soupe de légumes.\""
+        },
+        {
+          "question": "What is the writer making?",
+          "choices": [
+            "Vegetable soup and chocolate cake",
+            "Fish soup and apple tart",
+            "Vegetable soup and apple tart"
+          ],
+          "answer": 2,
+          "explanation": "\"Je prépare une soupe de légumes et une tarte aux pommes.\""
+        },
+        {
+          "question": "What should Marie bring?",
+          "choices": [
+            "Bread and a bottle of wine",
+            "Bread and a dessert",
+            "Wine and a salad"
+          ],
+          "answer": 0,
+          "explanation": "\"Tu peux apporter du pain et une bouteille de vin ?\""
+        },
+        {
+          "question": "What time is dinner?",
+          "choices": [
+            "Nine o'clock",
+            "Eight o'clock",
+            "Seven o'clock"
+          ],
+          "answer": 1,
+          "explanation": "\"Le dîner est à huit heures.\""
+        }
+      ],
+      "topics": [
+        "present-er",
+        "time-expressions",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-006",
+        "health-time-060",
+        "verbs-059",
+        "home-001",
+        "food-019",
+        "food-045",
+        "food-055",
+        "food-021",
+        "verbs-020",
+        "verbs-043",
+        "food-002",
+        "food-090",
+        "food-069",
+        "food-075",
+        "verbs-001",
+        "health-time-089",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "fr": "Salut",
+          "en": "hi",
+          "word": "essentials-006"
+        },
+        {
+          "fr": "Marie",
+          "en": "Marie (a first name)"
+        },
+        {
+          "fr": "Ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "mange",
+          "en": "eat; are eating (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "maison",
+          "en": "house; home",
+          "word": "home-001"
+        },
+        {
+          "fr": "prépare",
+          "en": "am making (préparer)"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "fr": "légumes",
+          "en": "vegetables",
+          "word": "food-045"
+        },
+        {
+          "fr": "tarte",
+          "en": "tart; pie",
+          "word": "food-055"
+        },
+        {
+          "fr": "pommes",
+          "en": "apples",
+          "word": "food-021"
+        },
+        {
+          "fr": "peux",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "apporter",
+          "en": "to bring",
+          "word": "verbs-043"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "fr": "bouteille",
+          "en": "bottle",
+          "word": "food-090"
+        },
+        {
+          "fr": "vin",
+          "en": "wine",
+          "word": "food-069"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o'clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "À tout à l’heure",
+          "en": "see you later"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "The shopping list",
+      "lines": [
+        {
+          "fr": "Liste pour le supermarché.",
+          "en": "List for the supermarket."
+        },
+        {
+          "fr": "Deux litres de lait, six œufs et un morceau de fromage.",
+          "en": "Two litres of milk, six eggs and a piece of cheese."
+        },
+        {
+          "fr": "Du poisson pour ce soir, mais pas de viande.",
+          "en": "Some fish for this evening, but no meat."
+        },
+        {
+          "fr": "N’oublie pas le café ! Il est en promotion cette semaine.",
+          "en": "Don't forget the coffee! It's on special offer this week."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How much milk is on the list?",
+          "choices": [
+            "Six litres",
+            "One litre",
+            "Two litres"
+          ],
+          "answer": 2,
+          "explanation": "\"Deux litres de lait, six œufs…\" — two litres of milk, six eggs."
+        },
+        {
+          "question": "What is deliberately NOT on the list?",
+          "choices": [
+            "Meat",
+            "Fish",
+            "Cheese"
+          ],
+          "answer": 0,
+          "explanation": "\"Du poisson pour ce soir, mais pas de viande.\""
+        },
+        {
+          "question": "Why is the coffee mentioned?",
+          "choices": [
+            "There is none left at home",
+            "It is on special offer this week",
+            "It is too expensive"
+          ],
+          "answer": 1,
+          "explanation": "\"Il est en promotion cette semaine.\""
+        },
+        {
+          "question": "What is the fish for?",
+          "choices": [
+            "Tomorrow's lunch",
+            "The weekend",
+            "This evening's meal"
+          ],
+          "answer": 2,
+          "explanation": "\"Du poisson pour ce soir\"."
+        }
+      ],
+      "topics": [
+        "negation",
+        "imperative",
+        "partitive"
+      ],
+      "words": [
+        "essentials-062",
+        "travel-023",
+        "health-time-083",
+        "food-005",
+        "health-time-087",
+        "food-011",
+        "food-010",
+        "nature-014",
+        "health-time-060",
+        "food-014",
+        "verbs-092",
+        "food-003",
+        "verbs-001",
+        "essentials-047",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "Liste",
+          "en": "list"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "supermarché",
+          "en": "supermarket",
+          "word": "travel-023"
+        },
+        {
+          "fr": "Deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "litres",
+          "en": "litres"
+        },
+        {
+          "fr": "lait",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "œufs",
+          "en": "eggs",
+          "word": "food-011"
+        },
+        {
+          "fr": "morceau",
+          "en": "piece"
+        },
+        {
+          "fr": "fromage",
+          "en": "cheese",
+          "word": "food-010"
+        },
+        {
+          "fr": "poisson",
+          "en": "fish",
+          "word": "nature-014"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "viande",
+          "en": "meat",
+          "word": "food-014"
+        },
+        {
+          "fr": "N’oublie pas",
+          "en": "don't forget (oublier)",
+          "word": "verbs-092"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "en promotion",
+          "en": "on special offer"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "The menu of the day",
+      "lines": [
+        {
+          "fr": "Menu du jour : douze euros.",
+          "en": "Menu of the day: twelve euros."
+        },
+        {
+          "fr": "Entrée : salade de tomates ou soupe de légumes.",
+          "en": "Starter: tomato salad or vegetable soup."
+        },
+        {
+          "fr": "Plat : poulet au citron avec des pommes de terre.",
+          "en": "Main course: lemon chicken with potatoes."
+        },
+        {
+          "fr": "Dessert : tarte aux fraises ou glace au chocolat.",
+          "en": "Dessert: strawberry tart or chocolate ice cream."
+        },
+        {
+          "fr": "Boisson comprise. Le café est en plus.",
+          "en": "Drink included. Coffee is extra."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What are the two starters?",
+          "choices": [
+            "Tomato salad or vegetable soup",
+            "Tomato soup or green salad",
+            "Onion soup or tomato salad"
+          ],
+          "answer": 0,
+          "explanation": "\"Entrée : salade de tomates ou soupe de légumes.\""
+        },
+        {
+          "question": "What comes with the chicken?",
+          "choices": [
+            "Pasta",
+            "Potatoes",
+            "Rice"
+          ],
+          "answer": 1,
+          "explanation": "\"Plat : poulet au citron avec des pommes de terre.\""
+        },
+        {
+          "question": "Which desserts can you choose?",
+          "choices": [
+            "Apple tart or chocolate cake",
+            "Strawberry ice cream or lemon tart",
+            "Strawberry tart or chocolate ice cream"
+          ],
+          "answer": 2,
+          "explanation": "\"Dessert : tarte aux fraises ou glace au chocolat.\""
+        },
+        {
+          "question": "What is included in the twelve euros?",
+          "choices": [
+            "A drink",
+            "A coffee",
+            "A second dessert"
+          ],
+          "answer": 0,
+          "explanation": "\"Boisson comprise. Le café est en plus.\" — the drink is included, the coffee costs extra."
+        }
+      ],
+      "topics": [
+        "articles-gender",
+        "contractions"
+      ],
+      "words": [
+        "food-079",
+        "health-time-055",
+        "health-time-092",
+        "food-077",
+        "food-020",
+        "food-029",
+        "food-019",
+        "food-045",
+        "food-078",
+        "food-015",
+        "food-024",
+        "essentials-060",
+        "food-030",
+        "food-076",
+        "food-055",
+        "food-025",
+        "food-057",
+        "food-053",
+        "food-071",
+        "food-003",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Menu",
+          "en": "set menu (fixed-price meal)",
+          "word": "food-079"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "Entrée",
+          "en": "starter; first course",
+          "word": "food-077"
+        },
+        {
+          "fr": "salade",
+          "en": "salad",
+          "word": "food-020"
+        },
+        {
+          "fr": "tomates",
+          "en": "tomatoes",
+          "word": "food-029"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "fr": "légumes",
+          "en": "vegetables",
+          "word": "food-045"
+        },
+        {
+          "fr": "Plat",
+          "en": "main course; dish",
+          "word": "food-078"
+        },
+        {
+          "fr": "poulet",
+          "en": "chicken",
+          "word": "food-015"
+        },
+        {
+          "fr": "citron",
+          "en": "lemon",
+          "word": "food-024"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "pommes de terre",
+          "en": "potatoes",
+          "word": "food-030"
+        },
+        {
+          "fr": "Dessert",
+          "en": "dessert",
+          "word": "food-076"
+        },
+        {
+          "fr": "tarte",
+          "en": "tart; pie",
+          "word": "food-055"
+        },
+        {
+          "fr": "fraises",
+          "en": "strawberries",
+          "word": "food-025"
+        },
+        {
+          "fr": "glace",
+          "en": "ice cream",
+          "word": "food-057"
+        },
+        {
+          "fr": "chocolat",
+          "en": "chocolate",
+          "word": "food-053"
+        },
+        {
+          "fr": "Boisson",
+          "en": "drink",
+          "word": "food-071"
+        },
+        {
+          "fr": "comprise",
+          "en": "included"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "en plus",
+          "en": "extra; in addition"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "My breakfast",
+      "lines": [
+        {
+          "fr": "Le matin, je prends toujours un grand bol de café au lait.",
+          "en": "In the morning I always have a big bowl of coffee with milk."
+        },
+        {
+          "fr": "Avec ça, je mange deux tartines de beurre et de confiture.",
+          "en": "With that, I eat two slices of bread with butter and jam."
+        },
+        {
+          "fr": "Le dimanche, ma femme prépare des œufs et du jambon.",
+          "en": "On Sundays my wife makes eggs and ham."
+        },
+        {
+          "fr": "C’est mon repas préféré de la semaine.",
+          "en": "It's my favourite meal of the week."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does the writer have every morning?",
+          "choices": [
+            "A large glass of milk",
+            "A big bowl of coffee with milk",
+            "A cup of black coffee"
+          ],
+          "answer": 1,
+          "explanation": "\"je prends toujours un grand bol de café au lait\"."
+        },
+        {
+          "question": "What is on the tartines?",
+          "choices": [
+            "Butter and honey",
+            "Cheese and ham",
+            "Butter and jam"
+          ],
+          "answer": 2,
+          "explanation": "\"deux tartines de beurre et de confiture\"."
+        },
+        {
+          "question": "What is different on Sundays?",
+          "choices": [
+            "His wife makes eggs and ham",
+            "He eats at a café",
+            "He gets up later"
+          ],
+          "answer": 0,
+          "explanation": "\"Le dimanche, ma femme prépare des œufs et du jambon.\""
+        },
+        {
+          "question": "How does he feel about the Sunday meal?",
+          "choices": [
+            "He prefers his weekday breakfast",
+            "It is his favourite meal of the week",
+            "It is too big for him"
+          ],
+          "answer": 1,
+          "explanation": "\"C’est mon repas préféré de la semaine.\""
+        }
+      ],
+      "topics": [
+        "time-expressions",
+        "possessives",
+        "present-er"
+      ],
+      "words": [
+        "health-time-059",
+        "verbs-023",
+        "essentials-089",
+        "qualities-001",
+        "food-087",
+        "food-003",
+        "food-005",
+        "essentials-060",
+        "essentials-029",
+        "verbs-059",
+        "health-time-083",
+        "food-009",
+        "food-052",
+        "health-time-068",
+        "essentials-049",
+        "people-003",
+        "food-011",
+        "food-018",
+        "verbs-001",
+        "food-072",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "prends",
+          "en": "take; have (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "toujours",
+          "en": "always",
+          "word": "essentials-089"
+        },
+        {
+          "fr": "grand",
+          "en": "big; large",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "bol",
+          "en": "bowl",
+          "word": "food-087"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "lait",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "ça",
+          "en": "that",
+          "word": "essentials-029"
+        },
+        {
+          "fr": "mange",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "tartines",
+          "en": "slices of bread with a spread"
+        },
+        {
+          "fr": "beurre",
+          "en": "butter",
+          "word": "food-009"
+        },
+        {
+          "fr": "confiture",
+          "en": "jam",
+          "word": "food-052"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday; le dimanche = on Sundays",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "femme",
+          "en": "wife; woman",
+          "word": "people-003"
+        },
+        {
+          "fr": "prépare",
+          "en": "makes (préparer)"
+        },
+        {
+          "fr": "œufs",
+          "en": "eggs",
+          "word": "food-011"
+        },
+        {
+          "fr": "jambon",
+          "en": "ham",
+          "word": "food-018"
+        },
+        {
+          "fr": "C’est",
+          "en": "it is; that is",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "repas",
+          "en": "meal",
+          "word": "food-072"
+        },
+        {
+          "fr": "préféré",
+          "en": "favourite"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Café opening hours",
+      "lines": [
+        {
+          "fr": "Le Café des Amis est ouvert tous les jours, sauf le lundi.",
+          "en": "The Café des Amis is open every day except Monday."
+        },
+        {
+          "fr": "Petit déjeuner de sept heures à onze heures.",
+          "en": "Breakfast from seven o'clock to eleven o'clock."
+        },
+        {
+          "fr": "Le midi, nous servons un plat du jour à neuf euros.",
+          "en": "At lunchtime we serve a dish of the day for nine euros."
+        },
+        {
+          "fr": "Le soir, la cuisine ferme à vingt-deux heures.",
+          "en": "In the evening the kitchen closes at ten p.m."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the café closed?",
+          "choices": [
+            "On Sundays",
+            "On Saturdays",
+            "On Mondays"
+          ],
+          "answer": 2,
+          "explanation": "\"ouvert tous les jours, sauf le lundi\"."
+        },
+        {
+          "question": "Until what time is breakfast served?",
+          "choices": [
+            "Eleven o'clock",
+            "Seven o'clock",
+            "Nine o'clock"
+          ],
+          "answer": 0,
+          "explanation": "\"Petit déjeuner de sept heures à onze heures.\""
+        },
+        {
+          "question": "How much is the dish of the day?",
+          "choices": [
+            "Twenty-two euros",
+            "Nine euros",
+            "Seven euros"
+          ],
+          "answer": 1,
+          "explanation": "\"nous servons un plat du jour à neuf euros\"."
+        },
+        {
+          "question": "What happens at ten in the evening?",
+          "choices": [
+            "The café opens",
+            "Dinner starts",
+            "The kitchen stops serving"
+          ],
+          "answer": 2,
+          "explanation": "\"la cuisine ferme à vingt-deux heures\" — 22:00 is ten p.m."
+        }
+      ],
+      "topics": [
+        "time-expressions",
+        "etre-avoir"
+      ],
+      "words": [
+        "verbs-001",
+        "qualities-036",
+        "health-time-055",
+        "health-time-062",
+        "food-073",
+        "health-time-088",
+        "health-time-052",
+        "food-078",
+        "health-time-090",
+        "health-time-060",
+        "home-007",
+        "verbs-046",
+        "essentials-044"
+      ],
+      "gloss": [
+        {
+          "fr": "Le Café des Amis",
+          "en": "the Café des Amis (the name of the café)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouvert",
+          "en": "open",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "tous les jours",
+          "en": "every day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "sauf",
+          "en": "except"
+        },
+        {
+          "fr": "lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        },
+        {
+          "fr": "Petit déjeuner",
+          "en": "breakfast",
+          "word": "food-073"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "hours; o'clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "onze",
+          "en": "eleven"
+        },
+        {
+          "fr": "midi",
+          "en": "midday; lunchtime"
+        },
+        {
+          "fr": "servons",
+          "en": "serve (servir)"
+        },
+        {
+          "fr": "plat",
+          "en": "dish; course",
+          "word": "food-078"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen",
+          "word": "home-007"
+        },
+        {
+          "fr": "ferme",
+          "en": "closes (fermer)",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "vingt-deux",
+          "en": "twenty-two (vingt-deux heures = 10 p.m.)"
+        }
+      ]
+    }
+  ]
+}

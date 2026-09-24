@@ -1,0 +1,4489 @@
+{
+  "sentences": [
+    {
+      "id": "a1-city-s01",
+      "level": "A1",
+      "fr": "Tournez à gauche après le pont.",
+      "en": "Turn left after the bridge.",
+      "distractors": [
+        "Turn right after the bridge.",
+        "Turn left before the bridge.",
+        "Turn left after the park."
+      ],
+      "gap": "gauche",
+      "topics": [
+        "imperative",
+        "prepositions-places"
+      ],
+      "words": [
+        "travel-036"
+      ],
+      "gloss": [
+        {
+          "fr": "Tournez",
+          "en": "turn (tourner)"
+        },
+        {
+          "fr": "gauche",
+          "en": "left"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "pont",
+          "en": "bridge",
+          "word": "travel-036"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s02",
+      "level": "A1",
+      "fr": "La pharmacie est en face de la gare.",
+      "en": "The pharmacy is opposite the train station.",
+      "distractors": [
+        "The pharmacy is next to the train station.",
+        "The bakery is opposite the train station.",
+        "The pharmacy is opposite the town hall."
+      ],
+      "gap": "gare",
+      "topics": [
+        "etre-avoir",
+        "prepositions-places"
+      ],
+      "words": [
+        "travel-011",
+        "travel-025",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "pharmacie",
+          "en": "pharmacy",
+          "word": "travel-025"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "en face",
+          "en": "opposite"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s03",
+      "level": "A1",
+      "fr": "Le musée n’est pas loin d’ici.",
+      "en": "The museum isn’t far from here.",
+      "distractors": [
+        "The museum is far from here.",
+        "The church isn’t far from here.",
+        "The museum isn’t far from the station."
+      ],
+      "gap": "loin",
+      "topics": [
+        "negation",
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-093",
+        "travel-073",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "n’est",
+          "en": "is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "loin",
+          "en": "far"
+        },
+        {
+          "fr": "d’ici",
+          "en": "from here"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s04",
+      "level": "A1",
+      "fr": "Excusez-moi, où est l’arrêt de bus ?",
+      "en": "Excuse me, where is the bus stop?",
+      "distractors": [
+        "Excuse me, where is the metro station?",
+        "Excuse me, where is the taxi rank?",
+        "Excuse me, where is the car park?"
+      ],
+      "gap": "bus",
+      "topics": [
+        "question-words",
+        "questions"
+      ],
+      "words": [
+        "essentials-013",
+        "essentials-035",
+        "travel-005",
+        "travel-013",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Excusez-moi",
+          "en": "excuse me",
+          "word": "essentials-013"
+        },
+        {
+          "fr": "où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "l’arrêt",
+          "en": "the stop",
+          "word": "travel-013"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s05",
+      "level": "A1",
+      "fr": "Vous traversez la place, puis vous continuez tout droit.",
+      "en": "You cross the square, then you carry straight on.",
+      "distractors": [
+        "You cross the square, then you turn right.",
+        "You cross the bridge, then you carry straight on.",
+        "You cross the square, then you go back."
+      ],
+      "gap": "droit",
+      "topics": [
+        "present-er",
+        "prepositions-places"
+      ],
+      "words": [
+        "travel-034",
+        "verbs-049"
+      ],
+      "gloss": [
+        {
+          "fr": "traversez",
+          "en": "cross (traverser)"
+        },
+        {
+          "fr": "place",
+          "en": "square",
+          "word": "travel-034"
+        },
+        {
+          "fr": "puis",
+          "en": "then"
+        },
+        {
+          "fr": "continuez",
+          "en": "carry on (continuer)",
+          "word": "verbs-049"
+        },
+        {
+          "fr": "tout droit",
+          "en": "straight ahead"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s06",
+      "level": "A1",
+      "fr": "Il y a un parking derrière la mairie.",
+      "en": "There’s a car park behind the town hall.",
+      "distractors": [
+        "There’s a car park in front of the town hall.",
+        "There’s a park behind the town hall.",
+        "There are two car parks behind the town hall."
+      ],
+      "gap": "derrière",
+      "topics": [
+        "prepositions-places",
+        "articles-gender"
+      ],
+      "words": [
+        "essentials-068",
+        "travel-076",
+        "travel-081"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "parking",
+          "en": "car park",
+          "word": "travel-081"
+        },
+        {
+          "fr": "derrière",
+          "en": "behind",
+          "word": "essentials-068"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s07",
+      "level": "A1",
+      "fr": "Prends la deuxième rue à droite.",
+      "en": "Take the second street on the right.",
+      "distractors": [
+        "Take the first street on the right.",
+        "Take the second street on the left."
+      ],
+      "gap": "deuxième",
+      "topics": [
+        "imperative",
+        "irregular-present"
+      ],
+      "words": [
+        "travel-002",
+        "verbs-023"
+      ],
+      "gloss": [
+        {
+          "fr": "Prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "deuxième",
+          "en": "second"
+        },
+        {
+          "fr": "rue",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "fr": "droite",
+          "en": "right (direction)"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s08",
+      "level": "A1",
+      "fr": "Le passage piéton est devant la boulangerie.",
+      "en": "The pedestrian crossing is in front of the bakery.",
+      "distractors": [
+        "The pedestrian crossing is behind the bakery.",
+        "The pedestrian crossing is in front of the pharmacy.",
+        "The traffic light is in front of the bakery."
+      ],
+      "gap": "devant",
+      "topics": [
+        "prepositions-places",
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-067",
+        "travel-024",
+        "travel-040",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "passage piéton",
+          "en": "pedestrian crossing",
+          "word": "travel-040"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "boulangerie",
+          "en": "bakery",
+          "word": "travel-024"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s09",
+      "level": "A1",
+      "fr": "Tu peux aller à pied, c’est à cinq minutes.",
+      "en": "You can walk there, it’s five minutes away.",
+      "distractors": [
+        "You can walk there, it’s ten minutes away.",
+        "You can go by bike, it’s five minutes away.",
+        "You can walk there, it’s fifteen minutes away."
+      ],
+      "gap": "cinq",
+      "topics": [
+        "irregular-present",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-005",
+        "health-time-053",
+        "health-time-086",
+        "verbs-004",
+        "verbs-020"
+      ],
+      "gloss": [
+        {
+          "fr": "peux",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "aller",
+          "en": "to go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "à pied",
+          "en": "on foot"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is; that is"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s10",
+      "level": "A1",
+      "fr": "Le marché se trouve entre l’église et le parc.",
+      "en": "The market is between the church and the park.",
+      "distractors": [
+        "The market is behind the church and the park.",
+        "The market is between the church and the school.",
+        "The museum is between the church and the park."
+      ],
+      "gap": "entre",
+      "topics": [
+        "reflexive",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-065",
+        "travel-022",
+        "travel-035",
+        "travel-075"
+      ],
+      "gloss": [
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "se trouve",
+          "en": "is located (se trouver)"
+        },
+        {
+          "fr": "entre",
+          "en": "between",
+          "word": "essentials-065"
+        },
+        {
+          "fr": "l’église",
+          "en": "the church",
+          "word": "travel-075"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s11",
+      "level": "A1",
+      "fr": "Ce quartier est calme le dimanche.",
+      "en": "This neighbourhood is quiet on Sundays.",
+      "distractors": [
+        "This neighbourhood is quiet on Saturdays.",
+        "This neighbourhood is noisy on Sundays.",
+        "This street is quiet on Sundays."
+      ],
+      "gap": "dimanche",
+      "topics": [
+        "demonstratives",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-068",
+        "qualities-054",
+        "travel-032",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "calme",
+          "en": "quiet",
+          "word": "qualities-054"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s12",
+      "level": "A1",
+      "fr": "Nous cherchons l’office de tourisme.",
+      "en": "We’re looking for the tourist information office.",
+      "distractors": [
+        "They’re looking for the tourist information office.",
+        "We’re looking for the town hall.",
+        "We found the tourist information office."
+      ],
+      "gap": "cherchons",
+      "topics": [
+        "present-er"
+      ],
+      "words": [
+        "travel-079",
+        "verbs-027"
+      ],
+      "gloss": [
+        {
+          "fr": "cherchons",
+          "en": "are looking for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "l’office de tourisme",
+          "en": "the tourist information office",
+          "word": "travel-079"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s13",
+      "level": "A1",
+      "fr": "Le bus numéro douze part à huit heures.",
+      "en": "The number twelve bus leaves at eight o’clock.",
+      "distractors": [
+        "The number twelve bus leaves at nine o’clock.",
+        "The number two bus leaves at eight o’clock.",
+        "The number twelve bus arrives at eight o’clock."
+      ],
+      "gap": "douze",
+      "topics": [
+        "present-ir-re",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-052",
+        "health-time-089",
+        "health-time-092",
+        "travel-005",
+        "verbs-031"
+      ],
+      "gloss": [
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "numéro",
+          "en": "number"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s14",
+      "level": "A1",
+      "fr": "Le train pour Lyon arrive sur la voie trois.",
+      "en": "The train to Lyon arrives on track three.",
+      "distractors": [
+        "The train to Lyon arrives on track two.",
+        "The train to Lyon leaves from track three.",
+        "The train from Lyon arrives on track three."
+      ],
+      "gap": "trois",
+      "topics": [
+        "present-er",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-058",
+        "essentials-062",
+        "health-time-084",
+        "travel-006",
+        "travel-062",
+        "verbs-032"
+      ],
+      "gloss": [
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a French city)"
+        },
+        {
+          "fr": "arrive",
+          "en": "arrives (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "voie",
+          "en": "track; platform",
+          "word": "travel-062"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s15",
+      "level": "A1",
+      "fr": "Un aller-retour pour Marseille, s’il vous plaît.",
+      "en": "A return ticket to Marseille, please.",
+      "distractors": [
+        "A one-way ticket to Marseille, please.",
+        "A return ticket to Toulouse, please.",
+        "Two return tickets to Marseille, please."
+      ],
+      "gap": "aller-retour",
+      "topics": [
+        "articles-gender"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-062",
+        "travel-064"
+      ],
+      "gloss": [
+        {
+          "fr": "aller-retour",
+          "en": "return ticket",
+          "word": "travel-064"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "Marseille",
+          "en": "Marseille (a French city)"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s16",
+      "level": "A1",
+      "fr": "Le prochain métro arrive dans quatre minutes.",
+      "en": "The next metro arrives in four minutes.",
+      "distractors": [
+        "The next metro arrives in fourteen minutes.",
+        "The last metro arrives in four minutes.",
+        "The next bus arrives in four minutes."
+      ],
+      "gap": "quatre",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-057",
+        "health-time-053",
+        "health-time-085",
+        "travel-007",
+        "verbs-032"
+      ],
+      "gloss": [
+        {
+          "fr": "prochain",
+          "en": "next"
+        },
+        {
+          "fr": "métro",
+          "en": "metro; underground",
+          "word": "travel-007"
+        },
+        {
+          "fr": "arrive",
+          "en": "arrives (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s17",
+      "level": "A1",
+      "fr": "Mon billet coûte quinze euros.",
+      "en": "My ticket costs fifteen euros.",
+      "distractors": [
+        "My ticket costs five euros.",
+        "Your ticket costs fifteen euros.",
+        "My ticket costs fifty euros."
+      ],
+      "gap": "quinze",
+      "topics": [
+        "possessives",
+        "present-er"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-093",
+        "travel-015",
+        "verbs-058"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "billet",
+          "en": "ticket",
+          "word": "travel-015"
+        },
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s18",
+      "level": "A1",
+      "fr": "Les trains sont en retard ce matin.",
+      "en": "The trains are late this morning.",
+      "distractors": [
+        "The trains are late this evening.",
+        "The trains are on time this morning.",
+        "The buses are late this morning."
+      ],
+      "gap": "retard",
+      "topics": [
+        "etre-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-059",
+        "travel-006",
+        "travel-059",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "trains",
+          "en": "trains",
+          "word": "travel-006"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "retard",
+          "en": "delay; late",
+          "word": "travel-059"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s19",
+      "level": "A1",
+      "fr": "Vous descendez à la prochaine station.",
+      "en": "You get off at the next station.",
+      "distractors": [
+        "You get off at the last station.",
+        "We get off at the next station.",
+        "You get on at the next station."
+      ],
+      "gap": "descendez",
+      "topics": [
+        "present-ir-re"
+      ],
+      "words": [
+        "travel-014",
+        "verbs-038"
+      ],
+      "gloss": [
+        {
+          "fr": "descendez",
+          "en": "get off (descendre)",
+          "word": "verbs-038"
+        },
+        {
+          "fr": "prochaine",
+          "en": "next"
+        },
+        {
+          "fr": "station",
+          "en": "station (metro)",
+          "word": "travel-014"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s20",
+      "level": "A1",
+      "fr": "Il n’y a pas de taxi devant la gare.",
+      "en": "There are no taxis in front of the station.",
+      "distractors": [
+        "There are taxis in front of the station.",
+        "There are no taxis in front of the hotel.",
+        "There are no buses in front of the station."
+      ],
+      "gap": "devant",
+      "topics": [
+        "negation",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-067",
+        "travel-009",
+        "travel-011"
+      ],
+      "gloss": [
+        {
+          "fr": "Il n’y a pas",
+          "en": "there is no; there are no"
+        },
+        {
+          "fr": "taxi",
+          "en": "taxi",
+          "word": "travel-009"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s21",
+      "level": "A1",
+      "fr": "Le tramway passe toutes les dix minutes.",
+      "en": "The tram comes every ten minutes.",
+      "distractors": [
+        "The tram comes every twenty minutes.",
+        "The bus comes every ten minutes.",
+        "The metro comes every ten minutes."
+      ],
+      "gap": "dix",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-053",
+        "health-time-091",
+        "travel-091",
+        "verbs-029"
+      ],
+      "gloss": [
+        {
+          "fr": "tramway",
+          "en": "tram",
+          "word": "travel-091"
+        },
+        {
+          "fr": "passe",
+          "en": "comes by (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "toutes",
+          "en": "every (toutes les)"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s22",
+      "level": "A1",
+      "fr": "Je vais prendre le vélo aujourd’hui.",
+      "en": "I’m going to take the bike today.",
+      "distractors": [
+        "I’m going to take the bus today.",
+        "I’m going to take the bike tomorrow.",
+        "We’re going to take the bike today."
+      ],
+      "gap": "vélo",
+      "topics": [
+        "futur-proche",
+        "time-expressions"
+      ],
+      "words": [
+        "travel-008",
+        "verbs-004",
+        "verbs-023"
+      ],
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "prendre",
+          "en": "to take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "vélo",
+          "en": "bike",
+          "word": "travel-008"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s23",
+      "level": "A1",
+      "fr": "Est-ce que ce bus va au centre-ville ?",
+      "en": "Does this bus go to the city centre?",
+      "distractors": [
+        "Does this bus go to the airport?",
+        "Does this train go to the city centre?",
+        "Does this bus come from the city centre?"
+      ],
+      "gap": "centre-ville",
+      "topics": [
+        "questions",
+        "contractions"
+      ],
+      "words": [
+        "travel-005",
+        "travel-033",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce",
+          "en": "(marks a question)"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "va",
+          "en": "goes; is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "centre-ville",
+          "en": "city centre",
+          "word": "travel-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s24",
+      "level": "A1",
+      "fr": "Nous attendons le bus depuis vingt minutes.",
+      "en": "We’ve been waiting for the bus for twenty minutes.",
+      "distractors": [
+        "We’ve been waiting for the bus for thirty minutes.",
+        "We’ve been waiting for the train for twenty minutes.",
+        "They’ve been waiting for the bus for twenty minutes."
+      ],
+      "gap": "vingt",
+      "topics": [
+        "present-ir-re",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-053",
+        "health-time-094",
+        "travel-005",
+        "verbs-041"
+      ],
+      "gloss": [
+        {
+          "fr": "attendons",
+          "en": "are waiting for (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "depuis",
+          "en": "for; since"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s25",
+      "level": "A1",
+      "fr": "Le chauffeur ne vend pas de tickets.",
+      "en": "The driver doesn’t sell tickets.",
+      "distractors": [
+        "The driver sells tickets.",
+        "The drivers don’t sell tickets.",
+        "The driver doesn’t sell maps."
+      ],
+      "gap": "vend",
+      "topics": [
+        "negation",
+        "present-ir-re"
+      ],
+      "words": [
+        "travel-016",
+        "verbs-056",
+        "work-025"
+      ],
+      "gloss": [
+        {
+          "fr": "chauffeur",
+          "en": "driver",
+          "word": "work-025"
+        },
+        {
+          "fr": "vend",
+          "en": "sells (vendre)",
+          "word": "verbs-056"
+        },
+        {
+          "fr": "tickets",
+          "en": "tickets (bus, metro)",
+          "word": "travel-016"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s26",
+      "level": "A1",
+      "fr": "Le magasin ouvre à neuf heures et demie.",
+      "en": "The shop opens at half past nine.",
+      "distractors": [
+        "The shop opens at half past eight.",
+        "The shop closes at half past nine.",
+        "The shop opens at nine o’clock."
+      ],
+      "gap": "neuf",
+      "topics": [
+        "time-expressions",
+        "present-ir-re"
+      ],
+      "words": [
+        "health-time-052",
+        "health-time-090",
+        "travel-021",
+        "verbs-045"
+      ],
+      "gloss": [
+        {
+          "fr": "magasin",
+          "en": "shop",
+          "word": "travel-021"
+        },
+        {
+          "fr": "ouvre",
+          "en": "opens (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "demie",
+          "en": "half (half past)"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s27",
+      "level": "A1",
+      "fr": "La poste ferme à midi le samedi.",
+      "en": "The post office closes at midday on Saturdays.",
+      "distractors": [
+        "The post office closes at midnight on Saturdays.",
+        "The post office closes at midday on Sundays.",
+        "The post office opens at midday on Saturdays."
+      ],
+      "gap": "midi",
+      "topics": [
+        "time-expressions",
+        "present-er"
+      ],
+      "words": [
+        "health-time-067",
+        "travel-028",
+        "verbs-046"
+      ],
+      "gloss": [
+        {
+          "fr": "poste",
+          "en": "post office",
+          "word": "travel-028"
+        },
+        {
+          "fr": "ferme",
+          "en": "closes (fermer)",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "midi",
+          "en": "midday"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s28",
+      "level": "A1",
+      "fr": "Il est déjà sept heures et quart.",
+      "en": "It’s already quarter past seven.",
+      "distractors": [
+        "It’s already quarter to seven.",
+        "It’s already quarter past six.",
+        "It’s only quarter past seven."
+      ],
+      "gap": "sept",
+      "topics": [
+        "etre-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-088",
+        "health-time-052",
+        "health-time-088",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "déjà",
+          "en": "already",
+          "word": "essentials-088"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "quart",
+          "en": "quarter"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s29",
+      "level": "A1",
+      "fr": "Le premier train part à cinq heures vingt.",
+      "en": "The first train leaves at five twenty.",
+      "distractors": [
+        "The last train leaves at five twenty.",
+        "The first train leaves at six twenty.",
+        "The first train arrives at five twenty."
+      ],
+      "gap": "premier",
+      "topics": [
+        "time-expressions",
+        "present-ir-re"
+      ],
+      "words": [
+        "health-time-052",
+        "health-time-086",
+        "health-time-094",
+        "travel-006",
+        "verbs-031"
+      ],
+      "gloss": [
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s30",
+      "level": "A1",
+      "fr": "Le musée est fermé le mardi.",
+      "en": "The museum is closed on Tuesdays.",
+      "distractors": [
+        "The museum is closed on Mondays.",
+        "The museum is open on Tuesdays.",
+        "The church is closed on Tuesdays."
+      ],
+      "gap": "mardi",
+      "topics": [
+        "time-expressions",
+        "etre-avoir"
+      ],
+      "words": [
+        "health-time-063",
+        "qualities-037",
+        "travel-073",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermé",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s31",
+      "level": "A1",
+      "fr": "Les magasins ouvrent tôt le vendredi matin.",
+      "en": "The shops open early on Friday mornings.",
+      "distractors": [
+        "The shops open late on Friday mornings.",
+        "The shops open early on Friday evenings.",
+        "The shops close early on Friday mornings."
+      ],
+      "gap": "vendredi",
+      "topics": [
+        "present-ir-re",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-059",
+        "health-time-066",
+        "travel-021",
+        "verbs-045"
+      ],
+      "gloss": [
+        {
+          "fr": "magasins",
+          "en": "shops",
+          "word": "travel-021"
+        },
+        {
+          "fr": "ouvrent",
+          "en": "open (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        },
+        {
+          "fr": "vendredi",
+          "en": "Friday",
+          "word": "health-time-066"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s32",
+      "level": "A1",
+      "fr": "Mon rendez-vous est à quatorze heures trente.",
+      "en": "My appointment is at half past two in the afternoon.",
+      "distractors": [
+        "My appointment is at half past four in the afternoon.",
+        "My appointment is at two in the afternoon.",
+        "Your appointment is at half past two in the afternoon."
+      ],
+      "gap": "trente",
+      "topics": [
+        "possessives",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-052",
+        "health-time-095",
+        "verbs-001",
+        "work-010"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "quatorze",
+          "en": "fourteen"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "trente",
+          "en": "thirty",
+          "word": "health-time-095"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s33",
+      "level": "A1",
+      "fr": "Le bus du soir ne circule pas le dimanche.",
+      "en": "The evening bus doesn’t run on Sundays.",
+      "distractors": [
+        "The evening bus doesn’t run on Saturdays.",
+        "The morning bus doesn’t run on Sundays.",
+        "The evening bus runs on Sundays."
+      ],
+      "gap": "soir",
+      "topics": [
+        "negation",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-060",
+        "health-time-068",
+        "travel-005"
+      ],
+      "gloss": [
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "circule",
+          "en": "runs (circuler)"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s34",
+      "level": "A1",
+      "fr": "La boulangerie du coin vend de très bons croissants.",
+      "en": "The corner bakery sells very good croissants.",
+      "distractors": [
+        "The corner bakery sells very good bread.",
+        "The corner café sells very good croissants.",
+        "The corner bakery sells very good cakes."
+      ],
+      "gap": "coin",
+      "topics": [
+        "partitive",
+        "adjective-placement"
+      ],
+      "words": [
+        "essentials-096",
+        "food-058",
+        "qualities-003",
+        "travel-024",
+        "verbs-056"
+      ],
+      "gloss": [
+        {
+          "fr": "boulangerie",
+          "en": "bakery",
+          "word": "travel-024"
+        },
+        {
+          "fr": "coin",
+          "en": "corner"
+        },
+        {
+          "fr": "vend",
+          "en": "sells (vendre)",
+          "word": "verbs-056"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "bons",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "croissants",
+          "en": "croissants",
+          "word": "food-058"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s35",
+      "level": "A1",
+      "fr": "Il y a une banque à côté du supermarché.",
+      "en": "There’s a bank next to the supermarket.",
+      "distractors": [
+        "There’s a bank opposite the supermarket.",
+        "There’s a pharmacy next to the supermarket.",
+        "There’s a bank next to the market."
+      ],
+      "gap": "banque",
+      "topics": [
+        "contractions",
+        "prepositions-places"
+      ],
+      "words": [
+        "travel-023",
+        "travel-027"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "banque",
+          "en": "bank",
+          "word": "travel-027"
+        },
+        {
+          "fr": "à côté",
+          "en": "next to"
+        },
+        {
+          "fr": "supermarché",
+          "en": "supermarket",
+          "word": "travel-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s36",
+      "level": "A1",
+      "fr": "Je cherche un distributeur de billets.",
+      "en": "I’m looking for a cash machine.",
+      "distractors": [
+        "I’m looking for a bank.",
+        "He’s looking for a cash machine.",
+        "I found a cash machine."
+      ],
+      "gap": "cherche",
+      "topics": [
+        "present-er"
+      ],
+      "words": [
+        "travel-080",
+        "verbs-027"
+      ],
+      "gloss": [
+        {
+          "fr": "cherche",
+          "en": "am looking for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "distributeur de billets",
+          "en": "cash machine",
+          "word": "travel-080"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s37",
+      "level": "A1",
+      "fr": "Le supermarché est ouvert jusqu’à vingt heures.",
+      "en": "The supermarket is open until eight in the evening.",
+      "distractors": [
+        "The supermarket is open until ten at night.",
+        "The supermarket is closed until eight in the evening.",
+        "The market is open until eight in the evening."
+      ],
+      "gap": "ouvert",
+      "topics": [
+        "etre-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-074",
+        "health-time-052",
+        "health-time-094",
+        "qualities-036",
+        "travel-023",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "supermarché",
+          "en": "supermarket",
+          "word": "travel-023"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouvert",
+          "en": "open",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "jusqu’à",
+          "en": "until",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s38",
+      "level": "A1",
+      "fr": "Cette rue est pleine de petits magasins.",
+      "en": "This street is full of small shops.",
+      "distractors": [
+        "This street is full of big shops.",
+        "This street is full of small restaurants.",
+        "This square is full of small shops."
+      ],
+      "gap": "petits",
+      "topics": [
+        "demonstratives",
+        "adjective-placement"
+      ],
+      "words": [
+        "essentials-047",
+        "qualities-002",
+        "qualities-034",
+        "travel-002",
+        "travel-021",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "rue",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pleine",
+          "en": "full",
+          "word": "qualities-034"
+        },
+        {
+          "fr": "petits",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "magasins",
+          "en": "shops",
+          "word": "travel-021"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s39",
+      "level": "A1",
+      "fr": "Tu trouves des fruits frais au marché.",
+      "en": "You find fresh fruit at the market.",
+      "distractors": [
+        "You find fresh fruit at the supermarket.",
+        "You find fresh vegetables at the market.",
+        "We find fresh fruit at the market."
+      ],
+      "gap": "frais",
+      "topics": [
+        "present-er",
+        "contractions"
+      ],
+      "words": [
+        "food-044",
+        "qualities-028",
+        "travel-022",
+        "verbs-026"
+      ],
+      "gloss": [
+        {
+          "fr": "trouves",
+          "en": "find (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "fruits",
+          "en": "fruit",
+          "word": "food-044"
+        },
+        {
+          "fr": "frais",
+          "en": "fresh",
+          "word": "qualities-028"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s40",
+      "level": "A1",
+      "fr": "La pharmacie de la place est fermée aujourd’hui.",
+      "en": "The pharmacy on the square is closed today.",
+      "distractors": [
+        "The pharmacy on the square is open today.",
+        "The pharmacy on the square is closed tomorrow.",
+        "The bakery on the square is closed today."
+      ],
+      "gap": "fermée",
+      "topics": [
+        "agreement",
+        "time-expressions"
+      ],
+      "words": [
+        "qualities-037",
+        "travel-025",
+        "travel-034",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "pharmacie",
+          "en": "pharmacy",
+          "word": "travel-025"
+        },
+        {
+          "fr": "place",
+          "en": "square",
+          "word": "travel-034"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermée",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s41",
+      "level": "A1",
+      "fr": "Le petit café près du pont est très calme.",
+      "en": "The little café near the bridge is very quiet.",
+      "distractors": [
+        "The little café near the bridge is very noisy.",
+        "The little café near the park is very quiet.",
+        "The little shop near the bridge is very quiet."
+      ],
+      "gap": "calme",
+      "topics": [
+        "adjective-placement",
+        "contractions"
+      ],
+      "words": [
+        "essentials-096",
+        "qualities-002",
+        "qualities-054",
+        "travel-036",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "petit",
+          "en": "little",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "café",
+          "en": "café (a place to sit and drink)"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "pont",
+          "en": "bridge",
+          "word": "travel-036"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "calme",
+          "en": "quiet",
+          "word": "qualities-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s42",
+      "level": "A1",
+      "fr": "Où est-ce qu’on achète les tickets de métro ?",
+      "en": "Where do you buy metro tickets?",
+      "distractors": [
+        "Where do you buy bus tickets?",
+        "Where do you buy train tickets?",
+        "When do you buy metro tickets?"
+      ],
+      "gap": "achète",
+      "topics": [
+        "questions",
+        "question-words"
+      ],
+      "words": [
+        "essentials-035",
+        "travel-007",
+        "travel-016",
+        "verbs-055"
+      ],
+      "gloss": [
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "est-ce",
+          "en": "(marks a question)"
+        },
+        {
+          "fr": "achète",
+          "en": "buy (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "tickets",
+          "en": "tickets (bus, metro)",
+          "word": "travel-016"
+        },
+        {
+          "fr": "métro",
+          "en": "metro; underground",
+          "word": "travel-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s43",
+      "level": "A1",
+      "fr": "Le parc ferme quand il fait nuit.",
+      "en": "The park closes when it gets dark.",
+      "distractors": [
+        "The park closes when it rains.",
+        "The park opens when it gets dark.",
+        "The museum closes when it gets dark."
+      ],
+      "gap": "nuit",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-082",
+        "health-time-061",
+        "travel-035",
+        "verbs-003",
+        "verbs-046"
+      ],
+      "gloss": [
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        },
+        {
+          "fr": "ferme",
+          "en": "closes (fermer)",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "fait",
+          "en": "it is (weather) (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s44",
+      "level": "A1",
+      "fr": "Il pleut beaucoup dans le centre-ville.",
+      "en": "It’s raining a lot in the city centre.",
+      "distractors": [
+        "It’s snowing a lot in the city centre.",
+        "It’s raining a little in the city centre.",
+        "It’s raining a lot in the old town."
+      ],
+      "gap": "pleut",
+      "topics": [
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-057",
+        "essentials-099",
+        "travel-033"
+      ],
+      "gloss": [
+        {
+          "fr": "pleut",
+          "en": "is raining (pleuvoir)"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "centre-ville",
+          "en": "city centre",
+          "word": "travel-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s45",
+      "level": "A1",
+      "fr": "Aujourd’hui, il fait froid et il y a du vent.",
+      "en": "Today it’s cold and it’s windy.",
+      "distractors": [
+        "Today it’s cold and there’s fog.",
+        "Today it’s hot and it’s windy.",
+        "Today it’s cold and it’s raining."
+      ],
+      "gap": "froid",
+      "topics": [
+        "irregular-present",
+        "partitive"
+      ],
+      "words": [
+        "nature-003",
+        "qualities-026",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "fr": "Aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "fait",
+          "en": "it is (weather) (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "froid",
+          "en": "cold",
+          "word": "qualities-026"
+        },
+        {
+          "fr": "il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "vent",
+          "en": "wind",
+          "word": "nature-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s46",
+      "level": "A1",
+      "fr": "Le ciel est gris, prends ton parapluie.",
+      "en": "The sky is grey, take your umbrella.",
+      "distractors": [
+        "The sky is grey, take your coat.",
+        "The sky is blue, take your umbrella.",
+        "The sky is grey, take my umbrella."
+      ],
+      "gap": "parapluie",
+      "topics": [
+        "imperative",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "nature-005",
+        "verbs-001",
+        "verbs-023"
+      ],
+      "gloss": [
+        {
+          "fr": "ciel",
+          "en": "sky",
+          "word": "nature-005"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "gris",
+          "en": "grey"
+        },
+        {
+          "fr": "prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "parapluie",
+          "en": "umbrella"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s47",
+      "level": "A1",
+      "fr": "Il ne neige pas encore sur la ville.",
+      "en": "It isn’t snowing over the town yet.",
+      "distractors": [
+        "It’s already snowing over the town.",
+        "It isn’t raining over the town yet.",
+        "It isn’t snowing over the mountain yet."
+      ],
+      "gap": "neige",
+      "topics": [
+        "negation",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-058",
+        "essentials-087",
+        "travel-001"
+      ],
+      "gloss": [
+        {
+          "fr": "neige",
+          "en": "is snowing (neiger)"
+        },
+        {
+          "fr": "encore",
+          "en": "yet (in ne … pas encore)",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "ville",
+          "en": "city; town",
+          "word": "travel-001"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s48",
+      "level": "A1",
+      "fr": "Cet après-midi, il va faire chaud.",
+      "en": "This afternoon it’s going to be hot.",
+      "distractors": [
+        "This morning it’s going to be hot.",
+        "This afternoon it’s going to be cold.",
+        "This afternoon it’s going to rain."
+      ],
+      "gap": "chaud",
+      "topics": [
+        "futur-proche",
+        "demonstratives"
+      ],
+      "words": [
+        "essentials-046",
+        "qualities-025",
+        "verbs-003",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Cet",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "après-midi",
+          "en": "afternoon"
+        },
+        {
+          "fr": "va",
+          "en": "is going to (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "faire",
+          "en": "to be (weather) (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "chaud",
+          "en": "hot; warm",
+          "word": "qualities-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s49",
+      "level": "A1",
+      "fr": "Il y a du brouillard sur le pont ce matin.",
+      "en": "There’s fog on the bridge this morning.",
+      "distractors": [
+        "There’s fog on the bridge this evening.",
+        "There’s rain on the bridge this morning.",
+        "There’s fog on the road this morning."
+      ],
+      "gap": "brouillard",
+      "topics": [
+        "partitive",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-058",
+        "health-time-059",
+        "nature-084",
+        "travel-036"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "brouillard",
+          "en": "fog",
+          "word": "nature-084"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "pont",
+          "en": "bridge",
+          "word": "travel-036"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s50",
+      "level": "A1",
+      "fr": "La météo annonce de la pluie vers cinq heures.",
+      "en": "The forecast says rain around five o’clock.",
+      "distractors": [
+        "The forecast says snow around five o’clock.",
+        "The forecast says rain around nine o’clock.",
+        "The forecast says sun around five o’clock."
+      ],
+      "gap": "pluie",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-069",
+        "health-time-052",
+        "health-time-086",
+        "nature-002",
+        "nature-095"
+      ],
+      "gloss": [
+        {
+          "fr": "météo",
+          "en": "weather forecast",
+          "word": "nature-095"
+        },
+        {
+          "fr": "annonce",
+          "en": "says; forecasts (annoncer)"
+        },
+        {
+          "fr": "pluie",
+          "en": "rain",
+          "word": "nature-002"
+        },
+        {
+          "fr": "vers",
+          "en": "around (a time)",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-city-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Asking the way to the station",
+      "lines": [
+        {
+          "speaker": "Le touriste",
+          "fr": "Pardon, madame. Je cherche la gare, s’il vous plaît.",
+          "en": "Excuse me, madam. I’m looking for the station, please."
+        },
+        {
+          "speaker": "La passante",
+          "fr": "C’est facile. Vous continuez tout droit jusqu’au feu rouge.",
+          "en": "It’s easy. You carry straight on as far as the traffic light."
+        },
+        {
+          "speaker": "Le touriste",
+          "fr": "Et après le feu rouge ?",
+          "en": "And after the traffic light?"
+        },
+        {
+          "speaker": "La passante",
+          "fr": "Vous tournez à droite. La gare est derrière le grand parking.",
+          "en": "You turn right. The station is behind the big car park."
+        },
+        {
+          "speaker": "Le touriste",
+          "fr": "C’est loin d’ici ?",
+          "en": "Is it far from here?"
+        },
+        {
+          "speaker": "La passante",
+          "fr": "Non, dix minutes à pied. Le bus numéro six y va aussi.",
+          "en": "No, ten minutes on foot. The number six bus goes there too."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where does the tourist turn right?",
+          "choices": [
+            "Before the bridge",
+            "At the traffic light",
+            "At the car park",
+            "At the station"
+          ],
+          "answer": 1,
+          "explanation": "« Vous continuez tout droit jusqu’au feu rouge », then « Vous tournez à droite »."
+        },
+        {
+          "question": "How long is the walk?",
+          "choices": [
+            "Six minutes",
+            "Twenty minutes",
+            "Ten minutes",
+            "Five minutes"
+          ],
+          "answer": 2,
+          "explanation": "« Non, dix minutes à pied » — the six is the bus number, not the time."
+        },
+        {
+          "question": "What is the station behind?",
+          "choices": [
+            "The bakery",
+            "The traffic light",
+            "The bus stop",
+            "The big car park"
+          ],
+          "answer": 3,
+          "explanation": "« La gare est derrière le grand parking »."
+        },
+        {
+          "question": "What else can he take to the station?",
+          "choices": [
+            "Bus number six",
+            "Bus number ten",
+            "The metro",
+            "A taxi"
+          ],
+          "answer": 0,
+          "explanation": "« Le bus numéro six y va aussi »."
+        }
+      ],
+      "topics": [
+        "imperative",
+        "prepositions-places",
+        "questions"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-005",
+        "essentials-009",
+        "essentials-068",
+        "essentials-074",
+        "essentials-086",
+        "essentials-093",
+        "health-time-005",
+        "health-time-053",
+        "health-time-087",
+        "health-time-091",
+        "qualities-001",
+        "qualities-038",
+        "travel-005",
+        "travel-011",
+        "travel-039",
+        "travel-081",
+        "verbs-001",
+        "verbs-004",
+        "verbs-027",
+        "verbs-049"
+      ],
+      "gloss": [
+        {
+          "fr": "Pardon",
+          "en": "excuse me",
+          "word": "essentials-009"
+        },
+        {
+          "fr": "madame",
+          "en": "madam"
+        },
+        {
+          "fr": "cherche",
+          "en": "am looking for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        },
+        {
+          "fr": "C’est",
+          "en": "it is; that is"
+        },
+        {
+          "fr": "facile",
+          "en": "easy",
+          "word": "qualities-038"
+        },
+        {
+          "fr": "continuez",
+          "en": "carry on (continuer)",
+          "word": "verbs-049"
+        },
+        {
+          "fr": "tout droit",
+          "en": "straight ahead"
+        },
+        {
+          "fr": "jusqu’au",
+          "en": "as far as",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "feu rouge",
+          "en": "traffic light",
+          "word": "travel-039"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "tournez",
+          "en": "turn (tourner)"
+        },
+        {
+          "fr": "droite",
+          "en": "right (direction)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "derrière",
+          "en": "behind",
+          "word": "essentials-068"
+        },
+        {
+          "fr": "grand",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "parking",
+          "en": "car park",
+          "word": "travel-081"
+        },
+        {
+          "fr": "loin",
+          "en": "far"
+        },
+        {
+          "fr": "d’ici",
+          "en": "from here"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "à pied",
+          "en": "on foot"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "numéro",
+          "en": "number"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "va",
+          "en": "goes; is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "aussi",
+          "en": "also",
+          "word": "essentials-086"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Buying a train ticket",
+      "lines": [
+        {
+          "speaker": "L’employé",
+          "fr": "Bonjour. Vous allez où ?",
+          "en": "Hello. Where are you going?"
+        },
+        {
+          "speaker": "Camille",
+          "fr": "À Lille, ce soir. Un aller simple, s’il vous plaît.",
+          "en": "To Lille, this evening. A one-way ticket, please."
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "Il y a un train à dix-huit heures et un à vingt heures.",
+          "en": "There’s a train at 6 p.m. and one at 8 p.m."
+        },
+        {
+          "speaker": "Camille",
+          "fr": "Le premier, alors. Il arrive à quelle heure ?",
+          "en": "The first one, then. What time does it arrive?"
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "À vingt heures quarante. Vingt-six euros, s’il vous plaît.",
+          "en": "At 8.40 p.m. Twenty-six euros, please."
+        },
+        {
+          "speaker": "Camille",
+          "fr": "Voilà. Et le train part de quelle voie ?",
+          "en": "Here you are. And which track does the train leave from?"
+        },
+        {
+          "speaker": "L’employé",
+          "fr": "Voie quatre. Bon voyage !",
+          "en": "Track four. Have a good trip!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which train does Camille choose?",
+          "choices": [
+            "The 8.40 p.m. train",
+            "The 4 p.m. train",
+            "The 6 p.m. train",
+            "The 8 p.m. train"
+          ],
+          "answer": 2,
+          "explanation": "« Le premier, alors », and the first one is « un train à dix-huit heures »."
+        },
+        {
+          "question": "What kind of ticket does she buy?",
+          "choices": [
+            "A return ticket",
+            "Two one-way tickets",
+            "A weekly pass",
+            "A one-way ticket"
+          ],
+          "answer": 3,
+          "explanation": "« Un aller simple, s’il vous plaît »."
+        },
+        {
+          "question": "How much does she pay?",
+          "choices": [
+            "Twenty-six euros",
+            "Sixteen euros",
+            "Twenty euros",
+            "Forty euros"
+          ],
+          "answer": 0,
+          "explanation": "« Vingt-six euros, s’il vous plaît »."
+        },
+        {
+          "question": "Which track does the train leave from?",
+          "choices": [
+            "Track fourteen",
+            "Track four",
+            "Track two",
+            "Track six"
+          ],
+          "answer": 1,
+          "explanation": "« Voie quatre »."
+        }
+      ],
+      "topics": [
+        "questions",
+        "time-expressions",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-003",
+        "essentials-035",
+        "health-time-052",
+        "health-time-060",
+        "health-time-085",
+        "health-time-094",
+        "health-time-096",
+        "qualities-003",
+        "travel-006",
+        "travel-017",
+        "travel-062",
+        "verbs-004",
+        "verbs-031",
+        "verbs-032"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "allez",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "Lille",
+          "en": "Lille (a French city)"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "aller simple",
+          "en": "one-way ticket"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        },
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "dix-huit",
+          "en": "eighteen"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "arrive",
+          "en": "arrives (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "quelle",
+          "en": "what; which"
+        },
+        {
+          "fr": "heure",
+          "en": "time; hour (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "quarante",
+          "en": "forty",
+          "word": "health-time-096"
+        },
+        {
+          "fr": "Vingt-six",
+          "en": "twenty-six"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "Voilà",
+          "en": "here you are"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "voie",
+          "en": "track; platform",
+          "word": "travel-062"
+        },
+        {
+          "fr": "Voie",
+          "en": "track; platform",
+          "word": "travel-062"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "Bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "voyage",
+          "en": "trip",
+          "word": "travel-017"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "On the wrong bus",
+      "lines": [
+        {
+          "speaker": "Le voyageur",
+          "fr": "Excusez-moi, ce bus va au musée ?",
+          "en": "Excuse me, does this bus go to the museum?"
+        },
+        {
+          "speaker": "La conductrice",
+          "fr": "Non, il va à l’hôpital. Vous descendez au prochain arrêt.",
+          "en": "No, it goes to the hospital. You get off at the next stop."
+        },
+        {
+          "speaker": "Le voyageur",
+          "fr": "Et après, je prends quel bus ?",
+          "en": "And after that, which bus do I take?"
+        },
+        {
+          "speaker": "La conductrice",
+          "fr": "Le vingt-trois. L’arrêt est en face, devant la pharmacie.",
+          "en": "The twenty-three. The stop is opposite, in front of the pharmacy."
+        },
+        {
+          "speaker": "Le voyageur",
+          "fr": "Merci beaucoup. Il passe souvent ?",
+          "en": "Thank you very much. Does it come often?"
+        },
+        {
+          "speaker": "La conductrice",
+          "fr": "Toutes les quinze minutes.",
+          "en": "Every fifteen minutes."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where is this bus going?",
+          "choices": [
+            "To the museum",
+            "To the pharmacy",
+            "To the station",
+            "To the hospital"
+          ],
+          "answer": 3,
+          "explanation": "« Non, il va à l’hôpital »."
+        },
+        {
+          "question": "Which bus does he need?",
+          "choices": [
+            "Number twenty-three",
+            "Number fifteen",
+            "Number thirteen",
+            "Number three"
+          ],
+          "answer": 0,
+          "explanation": "« Le vingt-trois »."
+        },
+        {
+          "question": "Where is that stop?",
+          "choices": [
+            "At the next crossroads",
+            "Opposite, in front of the pharmacy",
+            "In front of the museum",
+            "Behind the hospital"
+          ],
+          "answer": 1,
+          "explanation": "« L’arrêt est en face, devant la pharmacie »."
+        },
+        {
+          "question": "How often does that bus come?",
+          "choices": [
+            "Every five minutes",
+            "Every twenty-three minutes",
+            "Every fifteen minutes",
+            "Every fifty minutes"
+          ],
+          "answer": 2,
+          "explanation": "« Toutes les quinze minutes »."
+        }
+      ],
+      "topics": [
+        "questions",
+        "present-ir-re",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-002",
+        "essentials-005",
+        "essentials-013",
+        "essentials-067",
+        "essentials-091",
+        "essentials-099",
+        "health-time-053",
+        "health-time-093",
+        "travel-005",
+        "travel-013",
+        "travel-025",
+        "travel-026",
+        "travel-073",
+        "verbs-001",
+        "verbs-004",
+        "verbs-023",
+        "verbs-029",
+        "verbs-038"
+      ],
+      "gloss": [
+        {
+          "fr": "Excusez-moi",
+          "en": "excuse me",
+          "word": "essentials-013"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "va",
+          "en": "goes; is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "l’hôpital",
+          "en": "the hospital",
+          "word": "travel-026"
+        },
+        {
+          "fr": "descendez",
+          "en": "get off (descendre)",
+          "word": "verbs-038"
+        },
+        {
+          "fr": "prochain",
+          "en": "next"
+        },
+        {
+          "fr": "arrêt",
+          "en": "stop",
+          "word": "travel-013"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "quel",
+          "en": "which"
+        },
+        {
+          "fr": "vingt-trois",
+          "en": "twenty-three"
+        },
+        {
+          "fr": "L’arrêt",
+          "en": "the stop",
+          "word": "travel-013"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "en face",
+          "en": "opposite"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "pharmacie",
+          "en": "pharmacy",
+          "word": "travel-025"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "passe",
+          "en": "comes by (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "Toutes",
+          "en": "every (toutes les)"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the market stall",
+      "lines": [
+        {
+          "speaker": "Léa",
+          "fr": "Bonjour ! Vous avez des fraises aujourd’hui ?",
+          "en": "Hello! Do you have strawberries today?"
+        },
+        {
+          "speaker": "Le vendeur",
+          "fr": "Oui, elles arrivent de la campagne ce matin.",
+          "en": "Yes, they’re arriving from the countryside this morning."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Elles coûtent combien ?",
+          "en": "How much do they cost?"
+        },
+        {
+          "speaker": "Le vendeur",
+          "fr": "Trois euros le kilo. Elles sont très bonnes.",
+          "en": "Three euros a kilo. They’re very good."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Je prends deux kilos. Le marché ferme quand ?",
+          "en": "I’ll take two kilos. When does the market close?"
+        },
+        {
+          "speaker": "Le vendeur",
+          "fr": "À treize heures. Le samedi, nous restons jusqu’à quinze heures.",
+          "en": "At 1 p.m. On Saturdays we stay until 3 p.m."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Parfait. Merci et à samedi !",
+          "en": "Perfect. Thank you and see you Saturday!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "How much do the strawberries cost?",
+          "choices": [
+            "Three euros a kilo",
+            "Two euros a kilo",
+            "Thirteen euros a kilo",
+            "Fifteen euros a kilo"
+          ],
+          "answer": 0,
+          "explanation": "« Trois euros le kilo »."
+        },
+        {
+          "question": "Where do the strawberries come from?",
+          "choices": [
+            "Another market",
+            "The countryside",
+            "The mountains",
+            "A supermarket"
+          ],
+          "answer": 1,
+          "explanation": "« elles arrivent de la campagne ce matin »."
+        },
+        {
+          "question": "How much does Léa buy?",
+          "choices": [
+            "One kilo",
+            "Fifteen kilos",
+            "Two kilos",
+            "Three kilos"
+          ],
+          "answer": 2,
+          "explanation": "« Je prends deux kilos »."
+        },
+        {
+          "question": "When does the market close on Saturdays?",
+          "choices": [
+            "At 1 p.m.",
+            "At 5 p.m.",
+            "At midday",
+            "At 3 p.m."
+          ],
+          "answer": 3,
+          "explanation": "« Le samedi, nous restons jusqu’à quinze heures »."
+        }
+      ],
+      "topics": [
+        "questions",
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-002",
+        "essentials-004",
+        "essentials-038",
+        "essentials-074",
+        "essentials-082",
+        "essentials-096",
+        "food-025",
+        "health-time-052",
+        "health-time-059",
+        "health-time-067",
+        "health-time-083",
+        "health-time-084",
+        "health-time-093",
+        "nature-060",
+        "qualities-003",
+        "travel-022",
+        "verbs-001",
+        "verbs-002",
+        "verbs-023",
+        "verbs-030",
+        "verbs-032",
+        "verbs-046",
+        "verbs-058"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fraises",
+          "en": "strawberries",
+          "word": "food-025"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "arrivent",
+          "en": "arrive (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "campagne",
+          "en": "countryside",
+          "word": "nature-060"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "coûtent",
+          "en": "cost (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "combien",
+          "en": "how much",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "Trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "kilo",
+          "en": "kilo"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "bonnes",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "kilos",
+          "en": "kilos"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "ferme",
+          "en": "closes (fermer)",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "treize",
+          "en": "thirteen"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "restons",
+          "en": "stay (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "jusqu’à",
+          "en": "until",
+          "word": "essentials-074"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A message from a friend",
+      "lines": [
+        {
+          "fr": "Salut ! Je suis déjà au centre-ville.",
+          "en": "Hi! I’m already in the city centre."
+        },
+        {
+          "fr": "Le métro est fermé, alors je prends le bus.",
+          "en": "The metro is closed, so I’m taking the bus."
+        },
+        {
+          "fr": "Je vais arriver vers quatre heures devant le cinéma.",
+          "en": "I’m going to arrive around four in front of the cinema."
+        },
+        {
+          "fr": "Il pleut beaucoup : apporte ton parapluie !",
+          "en": "It’s raining a lot: bring your umbrella!"
+        },
+        {
+          "fr": "Après le film, on peut boire un café près de la place.",
+          "en": "After the film, we can have a coffee near the square."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is the writer taking the bus?",
+          "choices": [
+            "The metro is late",
+            "The metro is closed",
+            "It is raining",
+            "The bus is faster"
+          ],
+          "answer": 1,
+          "explanation": "« Le métro est fermé, alors je prends le bus »."
+        },
+        {
+          "question": "Where will they meet?",
+          "choices": [
+            "In the square",
+            "At a café",
+            "In front of the cinema",
+            "At the metro station"
+          ],
+          "answer": 2,
+          "explanation": "« Je vais arriver vers quatre heures devant le cinéma »."
+        },
+        {
+          "question": "What should the friend bring?",
+          "choices": [
+            "A coat",
+            "A ticket",
+            "A map",
+            "An umbrella"
+          ],
+          "answer": 3,
+          "explanation": "« apporte ton parapluie »."
+        },
+        {
+          "question": "What do they plan to do after the film?",
+          "choices": [
+            "Have a coffee near the square",
+            "Take the metro home",
+            "Go to the cinema",
+            "Walk to the station"
+          ],
+          "answer": 0,
+          "explanation": "« Après le film, on peut boire un café près de la place »."
+        }
+      ],
+      "topics": [
+        "futur-proche",
+        "imperative",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-006",
+        "essentials-050",
+        "essentials-067",
+        "essentials-069",
+        "essentials-088",
+        "essentials-099",
+        "food-003",
+        "health-time-052",
+        "health-time-085",
+        "qualities-037",
+        "travel-005",
+        "travel-007",
+        "travel-033",
+        "travel-034",
+        "verbs-001",
+        "verbs-004",
+        "verbs-020",
+        "verbs-023",
+        "verbs-032",
+        "verbs-043",
+        "verbs-060",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "Salut",
+          "en": "hi",
+          "word": "essentials-006"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "déjà",
+          "en": "already",
+          "word": "essentials-088"
+        },
+        {
+          "fr": "centre-ville",
+          "en": "city centre",
+          "word": "travel-033"
+        },
+        {
+          "fr": "métro",
+          "en": "metro; underground",
+          "word": "travel-007"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermé",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "arriver",
+          "en": "to arrive (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "vers",
+          "en": "around (a time)",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "cinéma",
+          "en": "cinema"
+        },
+        {
+          "fr": "pleut",
+          "en": "is raining (pleuvoir)"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "apporte",
+          "en": "bring (apporter)",
+          "word": "verbs-043"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "parapluie",
+          "en": "umbrella"
+        },
+        {
+          "fr": "Après",
+          "en": "after"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "peut",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "boire",
+          "en": "to drink (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "place",
+          "en": "square",
+          "word": "travel-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "Notice at the bus stop",
+      "lines": [
+        {
+          "fr": "Attention : à partir de lundi, la ligne huit change d’itinéraire.",
+          "en": "Attention: starting from Monday, line eight changes its route."
+        },
+        {
+          "fr": "Le bus ne passe pas par la place du marché.",
+          "en": "The bus does not go through the market square."
+        },
+        {
+          "fr": "Le nouvel arrêt est devant la mairie, près du parc.",
+          "en": "The new stop is in front of the town hall, near the park."
+        },
+        {
+          "fr": "Premier bus : six heures dix. Dernier bus : vingt-trois heures.",
+          "en": "First bus: six ten. Last bus: eleven at night."
+        },
+        {
+          "fr": "Pour plus d’informations, demandez au guichet de la gare.",
+          "en": "For more information, ask at the station ticket window."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What changes on Monday?",
+          "choices": [
+            "The name of the stop",
+            "The first bus time",
+            "The route of line eight",
+            "The price of the tickets"
+          ],
+          "answer": 2,
+          "explanation": "« à partir de lundi, la ligne huit change d’itinéraire »."
+        },
+        {
+          "question": "Which place does the bus no longer serve?",
+          "choices": [
+            "The town hall",
+            "The park",
+            "The station",
+            "The market square"
+          ],
+          "answer": 3,
+          "explanation": "« Le bus ne passe pas par la place du marché »."
+        },
+        {
+          "question": "Where is the new stop?",
+          "choices": [
+            "In front of the town hall",
+            "Behind the market",
+            "Next to the station",
+            "Inside the park"
+          ],
+          "answer": 0,
+          "explanation": "« Le nouvel arrêt est devant la mairie »."
+        },
+        {
+          "question": "When does the last bus run?",
+          "choices": [
+            "At midnight",
+            "At eleven at night",
+            "At ten past six",
+            "At ten at night"
+          ],
+          "answer": 1,
+          "explanation": "« Dernier bus : vingt-trois heures »."
+        }
+      ],
+      "topics": [
+        "negation",
+        "prepositions-places",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-062",
+        "essentials-063",
+        "essentials-067",
+        "health-time-052",
+        "health-time-062",
+        "health-time-087",
+        "health-time-089",
+        "health-time-091",
+        "qualities-008",
+        "travel-005",
+        "travel-011",
+        "travel-013",
+        "travel-022",
+        "travel-034",
+        "travel-035",
+        "travel-063",
+        "travel-067",
+        "travel-076",
+        "verbs-001",
+        "verbs-008",
+        "verbs-029",
+        "verbs-079"
+      ],
+      "gloss": [
+        {
+          "fr": "Attention",
+          "en": "attention"
+        },
+        {
+          "fr": "à partir de",
+          "en": "starting from"
+        },
+        {
+          "fr": "lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        },
+        {
+          "fr": "ligne",
+          "en": "line (bus route)"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "change",
+          "en": "changes (changer)",
+          "word": "verbs-079"
+        },
+        {
+          "fr": "d’itinéraire",
+          "en": "route (l’itinéraire)"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "passe",
+          "en": "comes by (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "par",
+          "en": "through; via",
+          "word": "essentials-063"
+        },
+        {
+          "fr": "place",
+          "en": "square",
+          "word": "travel-034"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "nouvel",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "arrêt",
+          "en": "stop",
+          "word": "travel-013"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        },
+        {
+          "fr": "Premier",
+          "en": "first"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "Dernier",
+          "en": "last"
+        },
+        {
+          "fr": "vingt-trois",
+          "en": "twenty-three"
+        },
+        {
+          "fr": "Pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "d’informations",
+          "en": "information"
+        },
+        {
+          "fr": "demandez",
+          "en": "ask (demander)",
+          "word": "verbs-008"
+        },
+        {
+          "fr": "guichet",
+          "en": "ticket window",
+          "word": "travel-063"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "The weather in town today",
+      "lines": [
+        {
+          "fr": "Bonjour, voici la météo de ce mardi.",
+          "en": "Hello, here is the weather for this Tuesday."
+        },
+        {
+          "fr": "Ce matin, il fait froid dans la ville : cinq degrés seulement.",
+          "en": "This morning it’s cold in the city: only five degrees."
+        },
+        {
+          "fr": "Le ciel est gris et il y a du brouillard près du fleuve.",
+          "en": "The sky is grey and there’s fog near the river."
+        },
+        {
+          "fr": "Cet après-midi, le soleil va revenir.",
+          "en": "This afternoon the sun is going to come back."
+        },
+        {
+          "fr": "Ce soir, la pluie arrive vers vingt heures.",
+          "en": "This evening the rain arrives around 8 p.m."
+        },
+        {
+          "fr": "Prenez un parapluie !",
+          "en": "Take an umbrella!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "How cold is it this morning?",
+          "choices": [
+            "Fifteen degrees",
+            "Zero degrees",
+            "Twenty degrees",
+            "Five degrees"
+          ],
+          "answer": 3,
+          "explanation": "« cinq degrés seulement »."
+        },
+        {
+          "question": "Where is the fog?",
+          "choices": [
+            "Near the river",
+            "Near the sea",
+            "In the park",
+            "On the bridge"
+          ],
+          "answer": 0,
+          "explanation": "« il y a du brouillard près du fleuve »."
+        },
+        {
+          "question": "What happens this afternoon?",
+          "choices": [
+            "It gets colder",
+            "The sun comes back",
+            "The rain starts",
+            "The fog stays"
+          ],
+          "answer": 1,
+          "explanation": "« Cet après-midi, le soleil va revenir »."
+        },
+        {
+          "question": "When does the rain arrive?",
+          "choices": [
+            "This afternoon",
+            "Tomorrow morning",
+            "Around eight in the evening",
+            "Around five in the evening"
+          ],
+          "answer": 2,
+          "explanation": "« Ce soir, la pluie arrive vers vingt heures »."
+        }
+      ],
+      "topics": [
+        "futur-proche",
+        "time-expressions",
+        "partitive"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-046",
+        "essentials-057",
+        "essentials-069",
+        "health-time-052",
+        "health-time-059",
+        "health-time-060",
+        "health-time-063",
+        "health-time-086",
+        "health-time-094",
+        "nature-001",
+        "nature-002",
+        "nature-005",
+        "nature-065",
+        "nature-084",
+        "nature-095",
+        "qualities-026",
+        "travel-001",
+        "verbs-001",
+        "verbs-003",
+        "verbs-004",
+        "verbs-023",
+        "verbs-032",
+        "verbs-035"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "voici",
+          "en": "here is"
+        },
+        {
+          "fr": "météo",
+          "en": "weather forecast",
+          "word": "nature-095"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "fait",
+          "en": "it is (weather) (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "froid",
+          "en": "cold",
+          "word": "qualities-026"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "ville",
+          "en": "city; town",
+          "word": "travel-001"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "degrés",
+          "en": "degrees"
+        },
+        {
+          "fr": "seulement",
+          "en": "only"
+        },
+        {
+          "fr": "ciel",
+          "en": "sky",
+          "word": "nature-005"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "gris",
+          "en": "grey"
+        },
+        {
+          "fr": "il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "brouillard",
+          "en": "fog",
+          "word": "nature-084"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "fleuve",
+          "en": "river",
+          "word": "nature-065"
+        },
+        {
+          "fr": "Cet",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "après-midi",
+          "en": "afternoon"
+        },
+        {
+          "fr": "soleil",
+          "en": "sun",
+          "word": "nature-001"
+        },
+        {
+          "fr": "va",
+          "en": "goes; is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "revenir",
+          "en": "to come back (revenir)",
+          "word": "verbs-035"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "pluie",
+          "en": "rain",
+          "word": "nature-002"
+        },
+        {
+          "fr": "arrive",
+          "en": "arrives (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "vers",
+          "en": "around (a time)",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "Prenez",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "parapluie",
+          "en": "umbrella"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "A note on the bakery door",
+      "lines": [
+        {
+          "fr": "La boulangerie est fermée ce jeudi après-midi.",
+          "en": "The bakery is closed this Thursday afternoon."
+        },
+        {
+          "fr": "Nous ouvrons vendredi à sept heures.",
+          "en": "We open on Friday at seven."
+        },
+        {
+          "fr": "Le pain et les croissants sont chauds dès huit heures.",
+          "en": "The bread and the croissants are warm from eight."
+        },
+        {
+          "fr": "Pour une commande, appelez avant midi.",
+          "en": "For an order, call before midday."
+        },
+        {
+          "fr": "Merci et à bientôt !",
+          "en": "Thank you and see you soon!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the bakery closed?",
+          "choices": [
+            "Thursday afternoon",
+            "Thursday morning",
+            "Friday afternoon",
+            "All day Thursday"
+          ],
+          "answer": 0,
+          "explanation": "« La boulangerie est fermée ce jeudi après-midi »."
+        },
+        {
+          "question": "What time does it open on Friday?",
+          "choices": [
+            "At midday",
+            "At 7 a.m.",
+            "At 8 a.m.",
+            "At 6 a.m."
+          ],
+          "answer": 1,
+          "explanation": "« Nous ouvrons vendredi à sept heures »."
+        },
+        {
+          "question": "From what time is the bread warm?",
+          "choices": [
+            "From 9 a.m.",
+            "From midday",
+            "From 8 a.m.",
+            "From 7 a.m."
+          ],
+          "answer": 2,
+          "explanation": "« Le pain et les croissants sont chauds dès huit heures »."
+        },
+        {
+          "question": "How do you place an order?",
+          "choices": [
+            "Come before midday",
+            "Leave a note on the door",
+            "Order on Thursday",
+            "Call before midday"
+          ],
+          "answer": 3,
+          "explanation": "« Pour une commande, appelez avant midi »."
+        }
+      ],
+      "topics": [
+        "time-expressions",
+        "imperative",
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-002",
+        "essentials-011",
+        "essentials-062",
+        "food-002",
+        "food-058",
+        "health-time-052",
+        "health-time-065",
+        "health-time-066",
+        "health-time-088",
+        "health-time-089",
+        "qualities-025",
+        "qualities-037",
+        "travel-024",
+        "verbs-001",
+        "verbs-045",
+        "verbs-085"
+      ],
+      "gloss": [
+        {
+          "fr": "boulangerie",
+          "en": "bakery",
+          "word": "travel-024"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fermée",
+          "en": "closed",
+          "word": "qualities-037"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "après-midi",
+          "en": "afternoon"
+        },
+        {
+          "fr": "ouvrons",
+          "en": "open (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "vendredi",
+          "en": "Friday",
+          "word": "health-time-066"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "fr": "croissants",
+          "en": "croissants",
+          "word": "food-058"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "chauds",
+          "en": "warm",
+          "word": "qualities-025"
+        },
+        {
+          "fr": "dès",
+          "en": "from (a time)"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "Pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "commande",
+          "en": "order"
+        },
+        {
+          "fr": "appelez",
+          "en": "call (appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "midi",
+          "en": "midday"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "à bientôt",
+          "en": "see you soon",
+          "word": "essentials-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Announcement at the station",
+      "lines": [
+        {
+          "fr": "Mesdames et messieurs, votre attention, s’il vous plaît.",
+          "en": "Ladies and gentlemen, your attention, please."
+        },
+        {
+          "fr": "Le train de dix heures pour Bordeaux a vingt minutes de retard.",
+          "en": "The ten o’clock train to Bordeaux is twenty minutes late."
+        },
+        {
+          "fr": "Il part maintenant de la voie sept.",
+          "en": "It now leaves from track seven."
+        },
+        {
+          "fr": "Les voyageurs pour Nantes changent de train à Angers.",
+          "en": "Passengers for Nantes change trains at Angers."
+        },
+        {
+          "fr": "Le café de la gare est ouvert près du guichet.",
+          "en": "The station café is open near the ticket window."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How late is the Bordeaux train?",
+          "choices": [
+            "An hour",
+            "Twenty minutes",
+            "Ten minutes",
+            "Seven minutes"
+          ],
+          "answer": 1,
+          "explanation": "« a vingt minutes de retard »."
+        },
+        {
+          "question": "Which track does it leave from now?",
+          "choices": [
+            "Track twenty",
+            "Track one",
+            "Track seven",
+            "Track ten"
+          ],
+          "answer": 2,
+          "explanation": "« Il part maintenant de la voie sept »."
+        },
+        {
+          "question": "What must passengers for Nantes do?",
+          "choices": [
+            "Wait on track seven",
+            "Take the Bordeaux train",
+            "Go to the ticket window",
+            "Change trains at Angers"
+          ],
+          "answer": 3,
+          "explanation": "« Les voyageurs pour Nantes changent de train à Angers »."
+        },
+        {
+          "question": "Where is the station café?",
+          "choices": [
+            "Near the ticket window",
+            "On track seven",
+            "Opposite the station",
+            "Next to the trains"
+          ],
+          "answer": 0,
+          "explanation": "« Le café de la gare est ouvert près du guichet »."
+        }
+      ],
+      "topics": [
+        "prepositions-places",
+        "time-expressions",
+        "present-er"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-053",
+        "essentials-062",
+        "health-time-052",
+        "health-time-053",
+        "health-time-088",
+        "health-time-091",
+        "health-time-094",
+        "qualities-036",
+        "travel-006",
+        "travel-011",
+        "travel-059",
+        "travel-062",
+        "travel-063",
+        "verbs-001",
+        "verbs-002",
+        "verbs-031",
+        "verbs-079"
+      ],
+      "gloss": [
+        {
+          "fr": "Mesdames",
+          "en": "ladies"
+        },
+        {
+          "fr": "messieurs",
+          "en": "gentlemen"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "attention",
+          "en": "attention"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours (l’heure)",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "pour",
+          "en": "for; to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "Bordeaux",
+          "en": "Bordeaux (a French city)"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes (la minute)",
+          "word": "health-time-053"
+        },
+        {
+          "fr": "retard",
+          "en": "delay; late",
+          "word": "travel-059"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "maintenant",
+          "en": "now"
+        },
+        {
+          "fr": "voie",
+          "en": "track; platform",
+          "word": "travel-062"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "voyageurs",
+          "en": "passengers"
+        },
+        {
+          "fr": "Nantes",
+          "en": "Nantes (a French city)"
+        },
+        {
+          "fr": "changent",
+          "en": "change (changer)",
+          "word": "verbs-079"
+        },
+        {
+          "fr": "Angers",
+          "en": "Angers (a French city)"
+        },
+        {
+          "fr": "café",
+          "en": "café (a place to sit and drink)"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouvert",
+          "en": "open",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "près",
+          "en": "near"
+        },
+        {
+          "fr": "guichet",
+          "en": "ticket window",
+          "word": "travel-063"
+        }
+      ]
+    }
+  ]
+}

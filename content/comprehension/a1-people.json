@@ -1,0 +1,4659 @@
+{
+  "sentences": [
+    {
+      "id": "a1-people-s01",
+      "level": "A1",
+      "fr": "Je m’appelle Claire et j’ai vingt-trois ans.",
+      "en": "My name is Claire and I am twenty-three.",
+      "distractors": [
+        "Her name is Claire and she is twenty-three.",
+        "My name is Claire and I am thirty-three.",
+        "My name is Claire and I am twenty-two."
+      ],
+      "gap": "vingt-trois",
+      "topics": [
+        "reflexive",
+        "etre-avoir"
+      ],
+      "words": [
+        "health-time-084",
+        "health-time-094",
+        "verbs-002",
+        "verbs-085"
+      ],
+      "gloss": [
+        {
+          "fr": "m’appelle",
+          "en": "am called; my name is (s’appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "Claire",
+          "en": "Claire (a woman’s first name)"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have; I am (in ages) (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vingt-trois",
+          "en": "twenty-three"
+        },
+        {
+          "fr": "ans",
+          "en": "years (of age)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s02",
+      "level": "A1",
+      "fr": "Voici ma sœur Léa, elle est infirmière.",
+      "en": "This is my sister Léa, she is a nurse.",
+      "distractors": [
+        "This is my cousin Léa, she is a nurse.",
+        "This is my sister Léa, she is a doctor."
+      ],
+      "gap": "infirmière",
+      "topics": [
+        "possessives",
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-049",
+        "people-011",
+        "verbs-001",
+        "work-012"
+      ],
+      "gloss": [
+        {
+          "fr": "Voici",
+          "en": "this is; here is"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "Léa",
+          "en": "Léa (a woman’s first name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "infirmière",
+          "en": "nurse (woman)",
+          "word": "work-012"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s03",
+      "level": "A1",
+      "fr": "Comment s’appelle ton frère ?",
+      "en": "What is your brother’s name?",
+      "distractors": [
+        "What is your sister’s name?",
+        "Where does your brother live?",
+        "How old is your brother?"
+      ],
+      "gap": "s’appelle",
+      "topics": [
+        "question-words",
+        "reflexive"
+      ],
+      "words": [
+        "essentials-036",
+        "essentials-050",
+        "people-012",
+        "verbs-085"
+      ],
+      "gloss": [
+        {
+          "fr": "Comment",
+          "en": "how; what",
+          "word": "essentials-036"
+        },
+        {
+          "fr": "s’appelle",
+          "en": "is called (s’appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s04",
+      "level": "A1",
+      "fr": "Mon père travaille dans une banque à Lyon.",
+      "en": "My father works in a bank in Lyon.",
+      "distractors": [
+        "My mother works in a bank in Lyon.",
+        "My father works in a bakery in Lyon.",
+        "My father works in a bank in Paris."
+      ],
+      "gap": "banque",
+      "topics": [
+        "present-er",
+        "prepositions-places",
+        "possessives"
+      ],
+      "words": [
+        "essentials-049",
+        "essentials-055",
+        "essentials-057",
+        "people-010",
+        "travel-027",
+        "verbs-069"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "banque",
+          "en": "bank",
+          "word": "travel-027"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a French city)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s05",
+      "level": "A1",
+      "fr": "Ma grand-mère habite dans un petit village.",
+      "en": "My grandmother lives in a small village.",
+      "distractors": [
+        "My grandfather lives in a small village.",
+        "My grandmother works in a small village.",
+        "My grandmother lives in a big village."
+      ],
+      "gap": "petit",
+      "topics": [
+        "present-er",
+        "adjective-placement",
+        "possessives"
+      ],
+      "words": [
+        "essentials-049",
+        "essentials-057",
+        "people-013",
+        "qualities-002",
+        "travel-047",
+        "verbs-068"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "grand-mère",
+          "en": "grandmother",
+          "word": "people-013"
+        },
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "petit",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "village",
+          "en": "village",
+          "word": "travel-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s06",
+      "level": "A1",
+      "fr": "Nous avons deux enfants : un garçon et une fille.",
+      "en": "We have two children: a boy and a girl.",
+      "distractors": [
+        "We have three children: a boy and a girl.",
+        "We have two children: two girls.",
+        "They have two children: a boy and a girl."
+      ],
+      "gap": "deux",
+      "topics": [
+        "etre-avoir",
+        "articles-gender"
+      ],
+      "words": [
+        "health-time-083",
+        "people-004",
+        "people-006",
+        "people-007",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "garçon",
+          "en": "boy",
+          "word": "people-006"
+        },
+        {
+          "fr": "fille",
+          "en": "girl",
+          "word": "people-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s07",
+      "level": "A1",
+      "fr": "Mes voisins sont très gentils avec moi.",
+      "en": "My neighbours are very kind to me.",
+      "distractors": [
+        "My neighbours are very kind to us.",
+        "My neighbours are not kind to me.",
+        "My colleagues are very kind to me."
+      ],
+      "gap": "gentils",
+      "topics": [
+        "agreement",
+        "etre-avoir",
+        "stressed-pronouns"
+      ],
+      "words": [
+        "essentials-025",
+        "essentials-049",
+        "essentials-060",
+        "essentials-096",
+        "people-034",
+        "qualities-069",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "gentils",
+          "en": "kind",
+          "word": "qualities-069"
+        },
+        {
+          "fr": "avec",
+          "en": "with; to",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s08",
+      "level": "A1",
+      "fr": "Tu connais la femme qui parle avec Paul ?",
+      "en": "Do you know the woman who is talking with Paul?",
+      "distractors": [
+        "Do you know the man who is talking with Paul?",
+        "Do you know the woman who is walking with Paul?",
+        "Do you know the woman who is talking with Pierre?"
+      ],
+      "gap": "connais",
+      "topics": [
+        "questions",
+        "irregular-present",
+        "relative-pronouns"
+      ],
+      "words": [
+        "essentials-032",
+        "essentials-060",
+        "people-003",
+        "verbs-007",
+        "verbs-015"
+      ],
+      "gloss": [
+        {
+          "fr": "connais",
+          "en": "know (connaître)",
+          "word": "verbs-015"
+        },
+        {
+          "fr": "femme",
+          "en": "woman",
+          "word": "people-003"
+        },
+        {
+          "fr": "qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "parle",
+          "en": "is talking (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "Paul",
+          "en": "Paul (a man’s first name)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s09",
+      "level": "A1",
+      "fr": "Elle a les cheveux courts et les yeux verts.",
+      "en": "She has short hair and green eyes.",
+      "distractors": [
+        "She has long hair and green eyes.",
+        "She has short hair and blue eyes.",
+        "He has short hair and green eyes."
+      ],
+      "gap": "courts",
+      "topics": [
+        "etre-avoir",
+        "agreement"
+      ],
+      "words": [
+        "health-time-006",
+        "qualities-012",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "cheveux",
+          "en": "hair"
+        },
+        {
+          "fr": "courts",
+          "en": "short",
+          "word": "qualities-012"
+        },
+        {
+          "fr": "yeux",
+          "en": "eyes",
+          "word": "health-time-006"
+        },
+        {
+          "fr": "verts",
+          "en": "green"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s10",
+      "level": "A1",
+      "fr": "Mon oncle est médecin à l’hôpital de Nantes.",
+      "en": "My uncle is a doctor at the hospital in Nantes.",
+      "distractors": [
+        "My aunt is a doctor at the hospital in Nantes.",
+        "My uncle is a nurse at the hospital in Nantes.",
+        "My uncle is a doctor at the hospital in Nice."
+      ],
+      "gap": "médecin",
+      "topics": [
+        "etre-avoir",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-049",
+        "people-019",
+        "travel-026",
+        "verbs-001",
+        "work-011"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "oncle",
+          "en": "uncle",
+          "word": "people-019"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "l’hôpital",
+          "en": "the hospital",
+          "word": "travel-026"
+        },
+        {
+          "fr": "Nantes",
+          "en": "Nantes (a French city)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s11",
+      "level": "A1",
+      "fr": "Je ne connais pas bien mes nouveaux voisins.",
+      "en": "I don’t know my new neighbours well.",
+      "distractors": [
+        "I know my new neighbours well.",
+        "I don’t know my old neighbours well.",
+        "I don’t know my new colleagues well."
+      ],
+      "gap": "voisins",
+      "topics": [
+        "negation",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-045",
+        "essentials-049",
+        "people-034",
+        "qualities-008",
+        "verbs-015"
+      ],
+      "gloss": [
+        {
+          "fr": "connais",
+          "en": "know (connaître)",
+          "word": "verbs-015"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "nouveaux",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s12",
+      "level": "A1",
+      "fr": "Quel âge a ton petit frère ?",
+      "en": "How old is your little brother?",
+      "distractors": [
+        "How old is your little sister?",
+        "How old is your big brother?",
+        "What is your little brother’s name?"
+      ],
+      "gap": "âge",
+      "topics": [
+        "questions",
+        "question-words",
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-050",
+        "people-012",
+        "qualities-002",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Quel",
+          "en": "what; which"
+        },
+        {
+          "fr": "âge",
+          "en": "age"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "petit",
+          "en": "little",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s13",
+      "level": "A1",
+      "fr": "Ma mère est professeure dans un lycée.",
+      "en": "My mother is a teacher in a high school.",
+      "distractors": [
+        "My mother is a student in a high school.",
+        "My father is a teacher in a high school.",
+        "My mother is a teacher in a middle school."
+      ],
+      "gap": "lycée",
+      "topics": [
+        "etre-avoir",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-049",
+        "essentials-057",
+        "people-009",
+        "verbs-001",
+        "work-015",
+        "work-033"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "professeure",
+          "en": "teacher (woman)",
+          "word": "work-015"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "lycée",
+          "en": "high school",
+          "word": "work-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s14",
+      "level": "A1",
+      "fr": "Mes parents habitent près de la gare.",
+      "en": "My parents live near the station.",
+      "distractors": [
+        "My parents work near the station.",
+        "My parents live near the school.",
+        "My grandparents live near the station."
+      ],
+      "gap": "habitent",
+      "topics": [
+        "present-er",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-049",
+        "people-008",
+        "travel-011",
+        "verbs-068"
+      ],
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "habitent",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "près de",
+          "en": "near"
+        },
+        {
+          "fr": "gare",
+          "en": "station",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s15",
+      "level": "A1",
+      "fr": "Mon copain Hugo est très drôle.",
+      "en": "My friend Hugo is very funny.",
+      "distractors": [
+        "My friend Hugo is very serious.",
+        "My friend Hugo is not funny.",
+        "My brother Hugo is very funny."
+      ],
+      "gap": "drôle",
+      "topics": [
+        "etre-avoir",
+        "possessives"
+      ],
+      "words": [
+        "essentials-049",
+        "essentials-096",
+        "people-032",
+        "qualities-067",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "copain",
+          "en": "friend; buddy",
+          "word": "people-032"
+        },
+        {
+          "fr": "Hugo",
+          "en": "Hugo (a man’s first name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "drôle",
+          "en": "funny",
+          "word": "qualities-067"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s16",
+      "level": "A1",
+      "fr": "Vous êtes la nouvelle voisine du troisième ?",
+      "en": "Are you the new neighbour on the third floor?",
+      "distractors": [
+        "Are you the new neighbour on the second floor?",
+        "Are you the old neighbour on the third floor?",
+        "Is she the new neighbour on the third floor?"
+      ],
+      "gap": "troisième",
+      "topics": [
+        "questions",
+        "contractions",
+        "agreement"
+      ],
+      "words": [
+        "health-time-084",
+        "people-034",
+        "qualities-008",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "êtes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "nouvelle",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "voisine",
+          "en": "neighbour (woman)",
+          "word": "people-034"
+        },
+        {
+          "fr": "troisième",
+          "en": "third (floor)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s17",
+      "level": "A1",
+      "fr": "Il y a beaucoup de monde à la fête.",
+      "en": "There are a lot of people at the party.",
+      "distractors": [
+        "There are not many people at the party.",
+        "There are a lot of people at the market.",
+        "There are a lot of children at the party."
+      ],
+      "gap": "beaucoup",
+      "topics": [
+        "partitive",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-055",
+        "essentials-099",
+        "people-054"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "monde",
+          "en": "people (in beaucoup de monde)"
+        },
+        {
+          "fr": "fête",
+          "en": "party",
+          "word": "people-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s18",
+      "level": "A1",
+      "fr": "Mon frère aîné va se marier en juin.",
+      "en": "My older brother is going to get married in June.",
+      "distractors": [
+        "My older brother is going to get married in July.",
+        "My younger brother is going to get married in June.",
+        "My older sister is going to get married in June."
+      ],
+      "gap": "juin",
+      "topics": [
+        "futur-proche",
+        "reflexive"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-074",
+        "people-012",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "aîné",
+          "en": "older; eldest"
+        },
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "se marier",
+          "en": "to get married"
+        },
+        {
+          "fr": "juin",
+          "en": "June",
+          "word": "health-time-074"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s19",
+      "level": "A1",
+      "fr": "Elles sont sœurs mais elles ne se ressemblent pas.",
+      "en": "They are sisters but they don’t look alike.",
+      "distractors": [
+        "They are sisters and they look alike.",
+        "They are cousins but they don’t look alike.",
+        "We are sisters but we don’t look alike."
+      ],
+      "gap": "ressemblent",
+      "topics": [
+        "negation",
+        "reflexive",
+        "etre-avoir"
+      ],
+      "words": [
+        "people-011",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sœurs",
+          "en": "sisters",
+          "word": "people-011"
+        },
+        {
+          "fr": "se ressemblent",
+          "en": "look alike (se ressembler)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s20",
+      "level": "A1",
+      "fr": "Qui est la fille sur la photo ?",
+      "en": "Who is the girl in the photo?",
+      "distractors": [
+        "Who is the boy in the photo?",
+        "Where is the girl in the photo?",
+        "Who is the girl in the film?"
+      ],
+      "gap": "photo",
+      "topics": [
+        "questions",
+        "question-words"
+      ],
+      "words": [
+        "essentials-032",
+        "essentials-058",
+        "people-007",
+        "verbs-001",
+        "work-092"
+      ],
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fille",
+          "en": "girl",
+          "word": "people-007"
+        },
+        {
+          "fr": "sur",
+          "en": "in; on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "photo",
+          "en": "photo",
+          "word": "work-092"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s21",
+      "level": "A1",
+      "fr": "Mon voisin promène son chien tous les matins.",
+      "en": "My neighbour walks his dog every morning.",
+      "distractors": [
+        "My neighbour walks his dog every evening.",
+        "My neighbour walks his cat every morning.",
+        "My sister walks her dog every morning."
+      ],
+      "gap": "matins",
+      "topics": [
+        "present-er",
+        "time-expressions",
+        "possessives"
+      ],
+      "words": [
+        "essentials-049",
+        "essentials-051",
+        "health-time-059",
+        "nature-011",
+        "people-034"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "voisin",
+          "en": "neighbour",
+          "word": "people-034"
+        },
+        {
+          "fr": "promène",
+          "en": "walks (promener)"
+        },
+        {
+          "fr": "son",
+          "en": "his; her",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        },
+        {
+          "fr": "tous les matins",
+          "en": "every morning"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s22",
+      "level": "A1",
+      "fr": "Est-ce que tu as des frères et sœurs ?",
+      "en": "Do you have any brothers and sisters?",
+      "distractors": [
+        "Does he have any brothers and sisters?",
+        "Do you have any brothers and cousins?"
+      ],
+      "gap": "frères",
+      "topics": [
+        "questions",
+        "etre-avoir",
+        "partitive"
+      ],
+      "words": [
+        "people-011",
+        "people-012",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "do; does (question opener)"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "frères",
+          "en": "brothers",
+          "word": "people-012"
+        },
+        {
+          "fr": "sœurs",
+          "en": "sisters",
+          "word": "people-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s23",
+      "level": "A1",
+      "fr": "Ils habitent ensemble dans un grand appartement.",
+      "en": "They live together in a big apartment.",
+      "distractors": [
+        "They live together in a small apartment.",
+        "They live alone in a big apartment.",
+        "We live together in a big apartment."
+      ],
+      "gap": "ensemble",
+      "topics": [
+        "present-er",
+        "adjective-placement"
+      ],
+      "words": [
+        "essentials-057",
+        "home-002",
+        "qualities-001",
+        "verbs-068"
+      ],
+      "gloss": [
+        {
+          "fr": "habitent",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "ensemble",
+          "en": "together"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "grand",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "appartement",
+          "en": "apartment",
+          "word": "home-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s24",
+      "level": "A1",
+      "fr": "Ma tante Nadia parle trois langues.",
+      "en": "My aunt Nadia speaks three languages.",
+      "distractors": [
+        "My aunt Nadia speaks two languages.",
+        "My cousin Nadia speaks three languages.",
+        "My aunt Nadia understands three languages."
+      ],
+      "gap": "trois",
+      "topics": [
+        "present-er",
+        "possessives"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-084",
+        "people-018",
+        "verbs-007"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "tante",
+          "en": "aunt",
+          "word": "people-018"
+        },
+        {
+          "fr": "Nadia",
+          "en": "Nadia (a woman’s first name)"
+        },
+        {
+          "fr": "parle",
+          "en": "speaks (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "langues",
+          "en": "languages"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s25",
+      "level": "A1",
+      "fr": "Je vais présenter mon mari à mes collègues.",
+      "en": "I am going to introduce my husband to my colleagues.",
+      "distractors": [
+        "I am going to introduce my brother to my colleagues.",
+        "I am going to introduce my husband to my neighbours.",
+        "My husband is going to introduce me to his colleagues."
+      ],
+      "gap": "présenter",
+      "topics": [
+        "futur-proche",
+        "possessives"
+      ],
+      "words": [
+        "essentials-049",
+        "people-024",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "présenter",
+          "en": "to introduce"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "mari",
+          "en": "husband",
+          "word": "people-024"
+        },
+        {
+          "fr": "mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "collègues",
+          "en": "colleagues"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s26",
+      "level": "A1",
+      "fr": "Elle travaille comme serveuse dans un restaurant italien.",
+      "en": "She works as a waitress in an Italian restaurant.",
+      "distractors": [
+        "She works as a cook in an Italian restaurant.",
+        "She works as a waitress in a Greek restaurant.",
+        "He works as a waiter in an Italian restaurant."
+      ],
+      "gap": "serveuse",
+      "topics": [
+        "present-er",
+        "adjective-placement"
+      ],
+      "words": [
+        "essentials-057",
+        "essentials-083",
+        "travel-020",
+        "verbs-069",
+        "work-022"
+      ],
+      "gloss": [
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "comme",
+          "en": "as",
+          "word": "essentials-083"
+        },
+        {
+          "fr": "serveuse",
+          "en": "waitress",
+          "word": "work-022"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "fr": "italien",
+          "en": "Italian"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s27",
+      "level": "A1",
+      "fr": "Nous invitons nos amis samedi soir.",
+      "en": "We are inviting our friends on Saturday evening.",
+      "distractors": [
+        "We are inviting our friends on Sunday evening.",
+        "We are inviting our neighbours on Saturday evening.",
+        "We are inviting our friends on Saturday morning."
+      ],
+      "gap": "samedi",
+      "topics": [
+        "present-er",
+        "time-expressions",
+        "possessives"
+      ],
+      "words": [
+        "essentials-052",
+        "health-time-060",
+        "health-time-067",
+        "people-030"
+      ],
+      "gloss": [
+        {
+          "fr": "invitons",
+          "en": "are inviting (inviter)"
+        },
+        {
+          "fr": "nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s28",
+      "level": "A1",
+      "fr": "Mon fils a peur des gens qu’il ne connaît pas.",
+      "en": "My son is afraid of people he doesn’t know.",
+      "distractors": [
+        "My son is afraid of people he knows.",
+        "My daughter is afraid of people she doesn’t know.",
+        "My son is afraid of dogs he doesn’t know."
+      ],
+      "gap": "peur",
+      "topics": [
+        "negation",
+        "irregular-present",
+        "relative-pronouns"
+      ],
+      "words": [
+        "essentials-049",
+        "people-028",
+        "verbs-002",
+        "verbs-015"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "fils",
+          "en": "son",
+          "word": "people-028"
+        },
+        {
+          "fr": "a peur",
+          "en": "is afraid (avoir peur)"
+        },
+        {
+          "fr": "gens",
+          "en": "people"
+        },
+        {
+          "fr": "connaît",
+          "en": "knows (connaître)",
+          "word": "verbs-015"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s29",
+      "level": "A1",
+      "fr": "Ton cousin ressemble beaucoup à son père.",
+      "en": "Your cousin looks a lot like his father.",
+      "distractors": [
+        "Your cousin looks a lot like his mother.",
+        "Your brother looks a lot like his father.",
+        "Your cousin doesn’t look like his father."
+      ],
+      "gap": "ressemble",
+      "topics": [
+        "present-er",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-051",
+        "essentials-099",
+        "people-010",
+        "people-021"
+      ],
+      "gloss": [
+        {
+          "fr": "Ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "cousin",
+          "en": "cousin",
+          "word": "people-021"
+        },
+        {
+          "fr": "ressemble",
+          "en": "looks like (ressembler à)"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "son",
+          "en": "his",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s30",
+      "level": "A1",
+      "fr": "Qui va chercher les enfants à l’école ?",
+      "en": "Who is going to pick up the children from school?",
+      "distractors": [
+        "Who is going to pick up the children from the park?",
+        "Who is going to pick up your sister from school?",
+        "Who is going to take the children to school?"
+      ],
+      "gap": "chercher",
+      "topics": [
+        "questions",
+        "futur-proche"
+      ],
+      "words": [
+        "essentials-032",
+        "people-004",
+        "verbs-004",
+        "verbs-027",
+        "work-031"
+      ],
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "chercher",
+          "en": "to fetch; to pick up (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "l’école",
+          "en": "school",
+          "word": "work-031"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s31",
+      "level": "A1",
+      "fr": "Mes grands-parents sont très âgés maintenant.",
+      "en": "My grandparents are very old now.",
+      "distractors": [
+        "My grandparents are very tired now.",
+        "My parents are very old now.",
+        "My grandparents were very old then."
+      ],
+      "gap": "âgés",
+      "topics": [
+        "etre-avoir",
+        "agreement"
+      ],
+      "words": [
+        "essentials-049",
+        "essentials-096",
+        "people-015",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "grands-parents",
+          "en": "grandparents",
+          "word": "people-015"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "âgés",
+          "en": "elderly; old"
+        },
+        {
+          "fr": "maintenant",
+          "en": "now"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s32",
+      "level": "A1",
+      "fr": "Le bébé de Sophie s’appelle Antoine.",
+      "en": "Sophie’s baby is called Antoine.",
+      "distractors": [
+        "Sophie’s brother is called Antoine.",
+        "Antoine’s baby is called Sophie.",
+        "Sophie’s baby is called Julien."
+      ],
+      "gap": "bébé",
+      "topics": [
+        "reflexive",
+        "articles-gender"
+      ],
+      "words": [
+        "people-005",
+        "verbs-085"
+      ],
+      "gloss": [
+        {
+          "fr": "bébé",
+          "en": "baby",
+          "word": "people-005"
+        },
+        {
+          "fr": "Sophie",
+          "en": "Sophie (a woman’s first name)"
+        },
+        {
+          "fr": "s’appelle",
+          "en": "is called (s’appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "Antoine",
+          "en": "Antoine (a man’s first name)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s33",
+      "level": "A1",
+      "fr": "Tu viens à mon anniversaire vendredi ?",
+      "en": "Are you coming to my birthday on Friday?",
+      "distractors": [
+        "Are you coming to my birthday on Saturday?",
+        "Are you coming to my party on Friday?",
+        "Is he coming to my birthday on Friday?"
+      ],
+      "gap": "vendredi",
+      "topics": [
+        "questions",
+        "irregular-present",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-066",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "fr": "viens",
+          "en": "are coming (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "anniversaire",
+          "en": "birthday"
+        },
+        {
+          "fr": "vendredi",
+          "en": "Friday",
+          "word": "health-time-066"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s34",
+      "level": "A1",
+      "fr": "Je ne comprends pas ce que dit ton ami.",
+      "en": "I don’t understand what your friend is saying.",
+      "distractors": [
+        "I don’t understand what your friend is writing.",
+        "I understand what your friend is saying.",
+        "He doesn’t understand what your friend is saying."
+      ],
+      "gap": "comprends",
+      "topics": [
+        "negation",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-050",
+        "people-030",
+        "verbs-006",
+        "verbs-016"
+      ],
+      "gloss": [
+        {
+          "fr": "comprends",
+          "en": "understand (comprendre)",
+          "word": "verbs-016"
+        },
+        {
+          "fr": "dit",
+          "en": "says (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s35",
+      "level": "A1",
+      "fr": "Ma fille a huit ans et elle adore lire.",
+      "en": "My daughter is eight and she loves reading.",
+      "distractors": [
+        "My daughter is nine and she loves reading.",
+        "My son is eight and he loves reading.",
+        "My daughter is eight and she loves drawing."
+      ],
+      "gap": "huit",
+      "topics": [
+        "etre-avoir",
+        "present-er"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-089",
+        "people-007",
+        "verbs-002",
+        "verbs-072"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "fille",
+          "en": "daughter",
+          "word": "people-007"
+        },
+        {
+          "fr": "a",
+          "en": "is (avoir, for ages)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "ans",
+          "en": "years (of age)"
+        },
+        {
+          "fr": "adore",
+          "en": "loves (adorer)"
+        },
+        {
+          "fr": "lire",
+          "en": "reading (lire)",
+          "word": "verbs-072"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s36",
+      "level": "A1",
+      "fr": "Vous connaissez mes parents, non ?",
+      "en": "You know my parents, don’t you?",
+      "distractors": [
+        "You know my brothers, don’t you?",
+        "You don’t know my parents, do you?",
+        "You know my neighbours, don’t you?"
+      ],
+      "gap": "connaissez",
+      "topics": [
+        "questions",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-005",
+        "essentials-049",
+        "people-008",
+        "verbs-015"
+      ],
+      "gloss": [
+        {
+          "fr": "connaissez",
+          "en": "know (connaître)",
+          "word": "verbs-015"
+        },
+        {
+          "fr": "mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "non",
+          "en": "right?; no",
+          "word": "essentials-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s37",
+      "level": "A1",
+      "fr": "Nous allons chez ma sœur ce week-end.",
+      "en": "We are going to my sister’s place this weekend.",
+      "distractors": [
+        "We are going to my brother’s place this weekend.",
+        "We are going to my sister’s place next weekend.",
+        "They are going to my sister’s place this weekend."
+      ],
+      "gap": "chez",
+      "topics": [
+        "irregular-present",
+        "prepositions-places",
+        "demonstratives"
+      ],
+      "words": [
+        "essentials-046",
+        "essentials-049",
+        "essentials-064",
+        "people-011",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "allons",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "chez",
+          "en": "at; to the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s38",
+      "level": "A1",
+      "fr": "Mon meilleur ami s’appelle Karim, il est ingénieur.",
+      "en": "My best friend is called Karim, he is an engineer.",
+      "distractors": [
+        "My best friend is called Karim, he is a teacher.",
+        "My brother is called Karim, he is an engineer.",
+        "My best friend is called Karim, he is a lawyer."
+      ],
+      "gap": "ingénieur",
+      "topics": [
+        "reflexive",
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-049",
+        "people-030",
+        "verbs-001",
+        "verbs-085",
+        "work-017"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "meilleur",
+          "en": "best"
+        },
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        },
+        {
+          "fr": "s’appelle",
+          "en": "is called (s’appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "Karim",
+          "en": "Karim (a man’s first name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ingénieur",
+          "en": "engineer",
+          "word": "work-017"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s39",
+      "level": "A1",
+      "fr": "Il n’y a personne dans le salon.",
+      "en": "There is nobody in the living room.",
+      "distractors": [
+        "There is nobody in the kitchen.",
+        "There is somebody in the living room."
+      ],
+      "gap": "personne",
+      "topics": [
+        "negation-more",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-040",
+        "essentials-057",
+        "home-005"
+      ],
+      "gloss": [
+        {
+          "fr": "Il n’y a",
+          "en": "there is not; there is no"
+        },
+        {
+          "fr": "personne",
+          "en": "nobody",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "salon",
+          "en": "living room",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s40",
+      "level": "A1",
+      "fr": "Sa femme est plus grande que lui.",
+      "en": "His wife is taller than him.",
+      "distractors": [
+        "His wife is shorter than him.",
+        "His sister is taller than him.",
+        "His wife is as tall as him."
+      ],
+      "gap": "plus",
+      "topics": [
+        "comparison",
+        "etre-avoir",
+        "possessives"
+      ],
+      "words": [
+        "essentials-027",
+        "essentials-051",
+        "people-003",
+        "qualities-001",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "Sa",
+          "en": "his; her",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "femme",
+          "en": "wife",
+          "word": "people-003"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "grande",
+          "en": "tall",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "lui",
+          "en": "him",
+          "word": "essentials-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s41",
+      "level": "A1",
+      "fr": "Mes cousins arrivent de Marseille demain matin.",
+      "en": "My cousins are arriving from Marseille tomorrow morning.",
+      "distractors": [
+        "My cousins are arriving from Marseille tomorrow evening.",
+        "My cousins are leaving for Marseille tomorrow morning.",
+        "My neighbours are arriving from Marseille tomorrow morning."
+      ],
+      "gap": "demain",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-059",
+        "people-021",
+        "verbs-032"
+      ],
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "cousins",
+          "en": "cousins",
+          "word": "people-021"
+        },
+        {
+          "fr": "arrivent",
+          "en": "are arriving (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "Marseille",
+          "en": "Marseille (a French city)"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s42",
+      "level": "A1",
+      "fr": "Est-ce que ta grand-mère habite avec vous ?",
+      "en": "Does your grandmother live with you?",
+      "distractors": [
+        "Does your grandmother live near you?",
+        "Does your grandfather live with you?",
+        "Does your grandmother work with you?"
+      ],
+      "gap": "habite",
+      "topics": [
+        "questions",
+        "present-er"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-060",
+        "people-013",
+        "verbs-068"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "do; does (question opener)"
+        },
+        {
+          "fr": "ta",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "grand-mère",
+          "en": "grandmother",
+          "word": "people-013"
+        },
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s43",
+      "level": "A1",
+      "fr": "Le fils des voisins joue du piano tous les soirs.",
+      "en": "The neighbours’ son plays the piano every evening.",
+      "distractors": [
+        "The neighbours’ daughter plays the piano every evening.",
+        "The neighbours’ son plays the guitar every evening.",
+        "The neighbours’ son plays the piano every morning."
+      ],
+      "gap": "soirs",
+      "topics": [
+        "present-er",
+        "contractions"
+      ],
+      "words": [
+        "health-time-060",
+        "people-028",
+        "people-034",
+        "verbs-087"
+      ],
+      "gloss": [
+        {
+          "fr": "fils",
+          "en": "son",
+          "word": "people-028"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        },
+        {
+          "fr": "joue",
+          "en": "plays (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "piano",
+          "en": "piano"
+        },
+        {
+          "fr": "tous les soirs",
+          "en": "every evening"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s44",
+      "level": "A1",
+      "fr": "Elle ne veut pas parler de son divorce.",
+      "en": "She doesn’t want to talk about her divorce.",
+      "distractors": [
+        "She wants to talk about her divorce.",
+        "She doesn’t want to talk about her work.",
+        "He doesn’t want to talk about his divorce."
+      ],
+      "gap": "veut",
+      "topics": [
+        "negation",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-051",
+        "people-047",
+        "verbs-007",
+        "verbs-019"
+      ],
+      "gloss": [
+        {
+          "fr": "veut",
+          "en": "wants (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "parler",
+          "en": "to talk (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "son",
+          "en": "her; his",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "divorce",
+          "en": "divorce",
+          "word": "people-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s45",
+      "level": "A1",
+      "fr": "Où travaille ta mère en ce moment ?",
+      "en": "Where does your mother work at the moment?",
+      "distractors": [
+        "Where does your father work at the moment?",
+        "Where does your mother live at the moment?",
+        "Where did your mother work last year?"
+      ],
+      "gap": "travaille",
+      "topics": [
+        "question-words",
+        "present-er"
+      ],
+      "words": [
+        "essentials-035",
+        "essentials-050",
+        "people-009",
+        "verbs-069"
+      ],
+      "gloss": [
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "ta",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "en ce moment",
+          "en": "at the moment"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s46",
+      "level": "A1",
+      "fr": "Ma nièce Chloé a seulement trois mois.",
+      "en": "My niece Chloé is only three months old.",
+      "distractors": [
+        "My niece Chloé is only three years old.",
+        "My niece Chloé is only two months old.",
+        "My cousin Chloé is only three months old."
+      ],
+      "gap": "mois",
+      "topics": [
+        "etre-avoir"
+      ],
+      "words": [
+        "essentials-049",
+        "health-time-057",
+        "health-time-084",
+        "people-022",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "nièce",
+          "en": "niece",
+          "word": "people-022"
+        },
+        {
+          "fr": "Chloé",
+          "en": "Chloé (a woman’s first name)"
+        },
+        {
+          "fr": "a",
+          "en": "is (avoir, for ages)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "seulement",
+          "en": "only"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "mois",
+          "en": "months",
+          "word": "health-time-057"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s47",
+      "level": "A1",
+      "fr": "Les invités arrivent vers huit heures.",
+      "en": "The guests arrive around eight o’clock.",
+      "distractors": [
+        "The guests arrive around nine o’clock.",
+        "The guests leave around eight o’clock.",
+        "The neighbours arrive around eight o’clock."
+      ],
+      "gap": "vers",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-069",
+        "health-time-052",
+        "health-time-089",
+        "people-041",
+        "verbs-032"
+      ],
+      "gloss": [
+        {
+          "fr": "invités",
+          "en": "guests",
+          "word": "people-041"
+        },
+        {
+          "fr": "arrivent",
+          "en": "arrive (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "vers",
+          "en": "around; toward",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s48",
+      "level": "A1",
+      "fr": "Je préfère les gens calmes et honnêtes.",
+      "en": "I prefer calm and honest people.",
+      "distractors": [
+        "I prefer funny and honest people.",
+        "I prefer calm and polite people.",
+        "I don’t like calm and honest people."
+      ],
+      "gap": "calmes",
+      "topics": [
+        "present-er",
+        "agreement"
+      ],
+      "words": [
+        "qualities-054",
+        "qualities-074",
+        "verbs-053"
+      ],
+      "gloss": [
+        {
+          "fr": "préfère",
+          "en": "prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "gens",
+          "en": "people"
+        },
+        {
+          "fr": "calmes",
+          "en": "calm",
+          "word": "qualities-054"
+        },
+        {
+          "fr": "honnêtes",
+          "en": "honest",
+          "word": "qualities-074"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s49",
+      "level": "A1",
+      "fr": "Ce monsieur cherche son petit-fils devant la mairie.",
+      "en": "This man is looking for his grandson in front of the town hall.",
+      "distractors": [
+        "This man is looking for his granddaughter in front of the town hall.",
+        "This man is looking for his grandson behind the town hall.",
+        "This woman is looking for her grandson in front of the town hall."
+      ],
+      "gap": "devant",
+      "topics": [
+        "demonstratives",
+        "present-er",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-046",
+        "essentials-051",
+        "essentials-067",
+        "people-017",
+        "travel-076",
+        "verbs-027"
+      ],
+      "gloss": [
+        {
+          "fr": "monsieur",
+          "en": "gentleman; man"
+        },
+        {
+          "fr": "cherche",
+          "en": "is looking for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "son",
+          "en": "his",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "petit-fils",
+          "en": "grandson",
+          "word": "people-017"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "mairie",
+          "en": "town hall",
+          "word": "travel-076"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s50",
+      "level": "A1",
+      "fr": "Tout le monde adore mon petit neveu.",
+      "en": "Everybody adores my little nephew.",
+      "distractors": [
+        "Everybody adores my little niece.",
+        "Nobody adores my little nephew.",
+        "Everybody adores my little dog."
+      ],
+      "gap": "neveu",
+      "topics": [
+        "present-er",
+        "possessives"
+      ],
+      "words": [
+        "essentials-044",
+        "essentials-049",
+        "people-023",
+        "qualities-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Tout le monde",
+          "en": "everybody"
+        },
+        {
+          "fr": "adore",
+          "en": "adores (adorer)"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "petit",
+          "en": "little",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "neveu",
+          "en": "nephew",
+          "word": "people-023"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-people-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Meeting the new neighbour",
+      "lines": [
+        {
+          "speaker": "Sophie",
+          "fr": "Bonjour, je suis votre nouvelle voisine. Je m’appelle Sophie.",
+          "en": "Hello, I am your new neighbour. My name is Sophie."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Bienvenue ! Moi, c’est Marc. J’habite au quatrième étage.",
+          "en": "Welcome! I’m Marc. I live on the fourth floor."
+        },
+        {
+          "speaker": "Sophie",
+          "fr": "Vous habitez ici depuis longtemps ?",
+          "en": "Have you been living here for a long time?"
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Oui, depuis dix ans, avec ma femme et nos deux enfants.",
+          "en": "Yes, for ten years, with my wife and our two children."
+        },
+        {
+          "speaker": "Sophie",
+          "fr": "Nous sommes trois : mon mari, ma fille et moi.",
+          "en": "There are three of us: my husband, my daughter and me."
+        },
+        {
+          "speaker": "Marc",
+          "fr": "Alors nos filles vont jouer ensemble !",
+          "en": "Then our daughters are going to play together!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which floor does Marc live on?",
+          "choices": [
+            "The second floor.",
+            "The third floor.",
+            "The fourth floor."
+          ],
+          "answer": 2,
+          "explanation": "“J’habite au quatrième étage.”"
+        },
+        {
+          "question": "How long has Marc lived in the building?",
+          "choices": [
+            "For two years.",
+            "For ten years.",
+            "For three years."
+          ],
+          "answer": 1,
+          "explanation": "“Oui, depuis dix ans, avec ma femme et nos deux enfants.”"
+        },
+        {
+          "question": "Who lives with Sophie?",
+          "choices": [
+            "Her husband and her daughter.",
+            "Her husband and her son.",
+            "Her parents and her daughter."
+          ],
+          "answer": 0,
+          "explanation": "“Nous sommes trois : mon mari, ma fille et moi.”"
+        },
+        {
+          "question": "How many children does Marc have?",
+          "choices": [
+            "One.",
+            "Two.",
+            "Three."
+          ],
+          "answer": 1,
+          "explanation": "“avec ma femme et nos deux enfants”"
+        }
+      ],
+      "topics": [
+        "etre-avoir",
+        "possessives",
+        "futur-proche"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-004",
+        "essentials-014",
+        "essentials-025",
+        "essentials-049",
+        "essentials-052",
+        "essentials-053",
+        "essentials-060",
+        "essentials-093",
+        "health-time-083",
+        "health-time-084",
+        "health-time-085",
+        "health-time-091",
+        "people-003",
+        "people-004",
+        "people-007",
+        "people-024",
+        "people-034",
+        "qualities-008",
+        "verbs-001",
+        "verbs-004",
+        "verbs-068",
+        "verbs-085",
+        "verbs-087"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "nouvelle",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "voisine",
+          "en": "neighbour (woman)",
+          "word": "people-034"
+        },
+        {
+          "fr": "m’appelle",
+          "en": "am called (s’appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "Sophie",
+          "en": "Sophie (a woman’s first name)"
+        },
+        {
+          "fr": "Bienvenue",
+          "en": "welcome",
+          "word": "essentials-014"
+        },
+        {
+          "fr": "Moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "c’est",
+          "en": "this is; it is"
+        },
+        {
+          "fr": "Marc",
+          "en": "Marc (a man’s first name)"
+        },
+        {
+          "fr": "J’habite",
+          "en": "I live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "quatrième",
+          "en": "fourth"
+        },
+        {
+          "fr": "étage",
+          "en": "floor; storey"
+        },
+        {
+          "fr": "habitez",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        },
+        {
+          "fr": "depuis",
+          "en": "for; since"
+        },
+        {
+          "fr": "longtemps",
+          "en": "a long time"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "femme",
+          "en": "wife",
+          "word": "people-003"
+        },
+        {
+          "fr": "nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "sommes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "mari",
+          "en": "husband",
+          "word": "people-024"
+        },
+        {
+          "fr": "fille",
+          "en": "daughter",
+          "word": "people-007"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "Alors",
+          "en": "then; so"
+        },
+        {
+          "fr": "filles",
+          "en": "daughters",
+          "word": "people-007"
+        },
+        {
+          "fr": "vont",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "jouer",
+          "en": "to play",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "ensemble",
+          "en": "together"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Who is who in the photo",
+      "lines": [
+        {
+          "speaker": "Léa",
+          "fr": "Regarde cette photo : c’est ma famille.",
+          "en": "Look at this photo: it’s my family."
+        },
+        {
+          "speaker": "Tom",
+          "fr": "Qui est le monsieur à côté de toi ?",
+          "en": "Who is the man next to you?"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "C’est mon grand-père. Il a quatre-vingts ans.",
+          "en": "That’s my grandfather. He is eighty."
+        },
+        {
+          "speaker": "Tom",
+          "fr": "Et la petite fille devant lui ?",
+          "en": "And the little girl in front of him?"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "C’est ma nièce. Elle a six ans.",
+          "en": "That’s my niece. She is six."
+        },
+        {
+          "speaker": "Tom",
+          "fr": "Ta nièce ressemble beaucoup à ta sœur.",
+          "en": "Your niece looks a lot like your sister."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who is the man next to Léa in the photo?",
+          "choices": [
+            "Her father.",
+            "Her grandfather.",
+            "Her uncle."
+          ],
+          "answer": 1,
+          "explanation": "“C’est mon grand-père.”"
+        },
+        {
+          "question": "How old is he?",
+          "choices": [
+            "Eight.",
+            "Eighteen.",
+            "Eighty."
+          ],
+          "answer": 2,
+          "explanation": "“Il a quatre-vingts ans.”"
+        },
+        {
+          "question": "Who is the little girl?",
+          "choices": [
+            "Léa’s daughter.",
+            "Léa’s niece.",
+            "Léa’s sister."
+          ],
+          "answer": 1,
+          "explanation": "“C’est ma nièce.”"
+        },
+        {
+          "question": "Who does the little girl look like?",
+          "choices": [
+            "Léa’s sister.",
+            "Léa’s mother.",
+            "Léa’s grandfather."
+          ],
+          "answer": 0,
+          "explanation": "“Ta nièce ressemble beaucoup à ta sœur.”"
+        }
+      ],
+      "topics": [
+        "demonstratives",
+        "etre-avoir",
+        "possessives"
+      ],
+      "words": [
+        "essentials-026",
+        "essentials-027",
+        "essentials-032",
+        "essentials-047",
+        "essentials-049",
+        "essentials-050",
+        "essentials-067",
+        "essentials-099",
+        "health-time-087",
+        "health-time-094",
+        "people-007",
+        "people-011",
+        "people-014",
+        "people-020",
+        "people-022",
+        "qualities-002",
+        "verbs-001",
+        "verbs-002",
+        "verbs-011",
+        "work-092"
+      ],
+      "gloss": [
+        {
+          "fr": "Regarde",
+          "en": "look at (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "photo",
+          "en": "photo",
+          "word": "work-092"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is; this is"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "famille",
+          "en": "family",
+          "word": "people-020"
+        },
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "monsieur",
+          "en": "gentleman; man"
+        },
+        {
+          "fr": "à côté de",
+          "en": "next to"
+        },
+        {
+          "fr": "toi",
+          "en": "you",
+          "word": "essentials-026"
+        },
+        {
+          "fr": "C’est",
+          "en": "that is; it is"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "grand-père",
+          "en": "grandfather",
+          "word": "people-014"
+        },
+        {
+          "fr": "a",
+          "en": "is (avoir, for ages)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "quatre-vingts",
+          "en": "eighty"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        },
+        {
+          "fr": "petite",
+          "en": "little",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "fille",
+          "en": "girl",
+          "word": "people-007"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "lui",
+          "en": "him",
+          "word": "essentials-027"
+        },
+        {
+          "fr": "nièce",
+          "en": "niece",
+          "word": "people-022"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "Ta",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "ressemble",
+          "en": "looks like (ressembler à)"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "ta",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Two mothers at the school gate",
+      "lines": [
+        {
+          "speaker": "Amina",
+          "fr": "Bonjour, vous êtes la maman de Lucas ?",
+          "en": "Hello, are you Lucas’s mum?"
+        },
+        {
+          "speaker": "Claire",
+          "fr": "Oui, je suis sa mère. Et vous ?",
+          "en": "Yes, I am his mother. And you?"
+        },
+        {
+          "speaker": "Amina",
+          "fr": "Moi, je suis la maman d’Inès. Nos enfants sont dans la même classe.",
+          "en": "I am Inès’s mum. Our children are in the same class."
+        },
+        {
+          "speaker": "Claire",
+          "fr": "Lucas parle souvent de votre fille.",
+          "en": "Lucas often talks about your daughter."
+        },
+        {
+          "speaker": "Amina",
+          "fr": "Ils font leurs devoirs ensemble le mercredi.",
+          "en": "They do their homework together on Wednesdays."
+        },
+        {
+          "speaker": "Claire",
+          "fr": "Très bien ! Vous travaillez près de l’école ?",
+          "en": "Very good! Do you work near the school?"
+        },
+        {
+          "speaker": "Amina",
+          "fr": "Non, je travaille à l’hôpital du centre-ville.",
+          "en": "No, I work at the hospital downtown."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which two children are in the same class?",
+          "choices": [
+            "Lucas and Inès.",
+            "Inès and her sister.",
+            "Lucas and his brother."
+          ],
+          "answer": 0,
+          "explanation": "“vous êtes la maman de Lucas ?”, “je suis la maman d’Inès. Nos enfants sont dans la même classe.”"
+        },
+        {
+          "question": "What do the two children do on Wednesdays?",
+          "choices": [
+            "They do their homework together.",
+            "They play at the hospital.",
+            "They walk to school together."
+          ],
+          "answer": 0,
+          "explanation": "“Ils font leurs devoirs ensemble le mercredi.”"
+        },
+        {
+          "question": "What does Lucas often do?",
+          "choices": [
+            "He talks about the girl in his class.",
+            "He goes to the hospital.",
+            "He does his homework alone."
+          ],
+          "answer": 0,
+          "explanation": "“Lucas parle souvent de votre fille.”"
+        },
+        {
+          "question": "Where does Inès’s mother work?",
+          "choices": [
+            "Near the school.",
+            "At the school.",
+            "At the hospital downtown."
+          ],
+          "answer": 2,
+          "explanation": "“Non, je travaille à l’hôpital du centre-ville.”"
+        }
+      ],
+      "topics": [
+        "questions",
+        "etre-avoir",
+        "present-er"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-004",
+        "essentials-005",
+        "essentials-025",
+        "essentials-045",
+        "essentials-051",
+        "essentials-052",
+        "essentials-053",
+        "essentials-054",
+        "essentials-057",
+        "essentials-091",
+        "essentials-096",
+        "health-time-064",
+        "people-004",
+        "people-007",
+        "people-009",
+        "travel-026",
+        "travel-033",
+        "verbs-001",
+        "verbs-003",
+        "verbs-007",
+        "verbs-069",
+        "work-031",
+        "work-035",
+        "work-038"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "êtes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "maman",
+          "en": "mum"
+        },
+        {
+          "fr": "Lucas",
+          "en": "Lucas (a boy’s first name)"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sa",
+          "en": "his; her",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "fille",
+          "en": "daughter",
+          "word": "people-007"
+        },
+        {
+          "fr": "Moi",
+          "en": "me; as for me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "d’Inès",
+          "en": "of Inès (a girl’s first name)"
+        },
+        {
+          "fr": "Nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "même",
+          "en": "same"
+        },
+        {
+          "fr": "classe",
+          "en": "class",
+          "word": "work-035"
+        },
+        {
+          "fr": "parle",
+          "en": "talks (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "font",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "leurs",
+          "en": "their",
+          "word": "essentials-054"
+        },
+        {
+          "fr": "devoirs",
+          "en": "homework",
+          "word": "work-038"
+        },
+        {
+          "fr": "ensemble",
+          "en": "together"
+        },
+        {
+          "fr": "mercredi",
+          "en": "Wednesday",
+          "word": "health-time-064"
+        },
+        {
+          "fr": "Très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "bien",
+          "en": "good; well",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "travaillez",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "près de",
+          "en": "near"
+        },
+        {
+          "fr": "l’école",
+          "en": "the school",
+          "word": "work-031"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "travaille",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "l’hôpital",
+          "en": "the hospital",
+          "word": "travel-026"
+        },
+        {
+          "fr": "centre-ville",
+          "en": "city centre; downtown",
+          "word": "travel-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "A phone call about Sunday dinner",
+      "lines": [
+        {
+          "speaker": "Paul",
+          "fr": "Allô, maman ? Tu viens dîner dimanche ?",
+          "en": "Hello, Mum? Are you coming for dinner on Sunday?"
+        },
+        {
+          "speaker": "La mère",
+          "fr": "Oui, avec ton père. Ta sœur vient aussi ?",
+          "en": "Yes, with your father. Is your sister coming too?"
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Non, elle travaille ce week-end.",
+          "en": "No, she is working this weekend."
+        },
+        {
+          "speaker": "La mère",
+          "fr": "Et son mari ?",
+          "en": "And her husband?"
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Il vient avec les enfants vers midi.",
+          "en": "He is coming with the children around midday."
+        },
+        {
+          "speaker": "La mère",
+          "fr": "Parfait. Alors nous sommes sept à table.",
+          "en": "Perfect. So there are seven of us at the table."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the dinner?",
+          "choices": [
+            "On Saturday.",
+            "On Sunday.",
+            "On Wednesday."
+          ],
+          "answer": 1,
+          "explanation": "“Tu viens dîner dimanche ?”"
+        },
+        {
+          "question": "Why is Paul’s sister not coming?",
+          "choices": [
+            "She is working this weekend.",
+            "She is ill.",
+            "She lives too far away."
+          ],
+          "answer": 0,
+          "explanation": "“Non, elle travaille ce week-end.”"
+        },
+        {
+          "question": "Who is coming with the children?",
+          "choices": [
+            "Paul’s father.",
+            "Paul’s sister.",
+            "The sister’s husband."
+          ],
+          "answer": 2,
+          "explanation": "After “Et son mari ?” Paul says “Il vient avec les enfants”."
+        },
+        {
+          "question": "How many people will be at the table?",
+          "choices": [
+            "Five.",
+            "Six.",
+            "Seven."
+          ],
+          "answer": 2,
+          "explanation": "“Alors nous sommes sept à table.”"
+        }
+      ],
+      "topics": [
+        "questions",
+        "irregular-present",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-004",
+        "essentials-005",
+        "essentials-050",
+        "essentials-051",
+        "essentials-060",
+        "essentials-069",
+        "essentials-086",
+        "health-time-068",
+        "health-time-088",
+        "home-045",
+        "people-004",
+        "people-010",
+        "people-011",
+        "people-024",
+        "verbs-001",
+        "verbs-005",
+        "verbs-069"
+      ],
+      "gloss": [
+        {
+          "fr": "Allô",
+          "en": "hello (on the phone)"
+        },
+        {
+          "fr": "maman",
+          "en": "mum"
+        },
+        {
+          "fr": "viens",
+          "en": "are coming (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "dîner",
+          "en": "to have dinner"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "Ta",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "vient",
+          "en": "is coming (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "aussi",
+          "en": "too; also",
+          "word": "essentials-086"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "travaille",
+          "en": "is working (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        },
+        {
+          "fr": "son",
+          "en": "her; his",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "mari",
+          "en": "husband",
+          "word": "people-024"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "vers",
+          "en": "around",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "midi",
+          "en": "midday; noon"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect"
+        },
+        {
+          "fr": "Alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "sommes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A message about a cousin’s visit",
+      "lines": [
+        {
+          "fr": "Salut Léa ! Mon cousin Martin arrive samedi à la gare.",
+          "en": "Hi Léa! My cousin Martin is arriving on Saturday at the station."
+        },
+        {
+          "fr": "Il a dix-neuf ans et il étudie la musique à Toulouse.",
+          "en": "He is nineteen and he studies music in Toulouse."
+        },
+        {
+          "fr": "Il reste chez moi une semaine.",
+          "en": "He is staying at my place for a week."
+        },
+        {
+          "fr": "Tu veux le rencontrer dimanche après-midi ?",
+          "en": "Do you want to meet him on Sunday afternoon?"
+        }
+      ],
+      "questions": [
+        {
+          "question": "When does Martin arrive?",
+          "choices": [
+            "On Friday.",
+            "On Saturday.",
+            "On Sunday."
+          ],
+          "answer": 1,
+          "explanation": "“Mon cousin Martin arrive samedi à la gare.”"
+        },
+        {
+          "question": "What does Martin study?",
+          "choices": [
+            "Music.",
+            "Medicine.",
+            "Mathematics."
+          ],
+          "answer": 0,
+          "explanation": "“il étudie la musique à Toulouse”"
+        },
+        {
+          "question": "How long is he staying?",
+          "choices": [
+            "A weekend.",
+            "A week.",
+            "A month."
+          ],
+          "answer": 1,
+          "explanation": "“Il reste chez moi une semaine.”"
+        },
+        {
+          "question": "What does the writer suggest?",
+          "choices": [
+            "Meeting Martin on Sunday afternoon.",
+            "Going to Toulouse together.",
+            "Picking Martin up at the station."
+          ],
+          "answer": 0,
+          "explanation": "“Tu veux le rencontrer dimanche après-midi ?”"
+        }
+      ],
+      "topics": [
+        "present-er",
+        "time-expressions",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-006",
+        "essentials-025",
+        "essentials-049",
+        "essentials-064",
+        "health-time-056",
+        "health-time-067",
+        "health-time-068",
+        "health-time-091",
+        "people-021",
+        "travel-011",
+        "verbs-002",
+        "verbs-019",
+        "verbs-030",
+        "verbs-032",
+        "verbs-070",
+        "verbs-086",
+        "work-094"
+      ],
+      "gloss": [
+        {
+          "fr": "Salut",
+          "en": "hi",
+          "word": "essentials-006"
+        },
+        {
+          "fr": "Léa",
+          "en": "Léa (a woman’s first name)"
+        },
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "cousin",
+          "en": "cousin",
+          "word": "people-021"
+        },
+        {
+          "fr": "Martin",
+          "en": "Martin (a man’s first name)"
+        },
+        {
+          "fr": "arrive",
+          "en": "arrives (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "gare",
+          "en": "station",
+          "word": "travel-011"
+        },
+        {
+          "fr": "a",
+          "en": "is (avoir, for ages)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "dix-neuf",
+          "en": "nineteen"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        },
+        {
+          "fr": "étudie",
+          "en": "studies (étudier)",
+          "word": "verbs-070"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        },
+        {
+          "fr": "Toulouse",
+          "en": "Toulouse (a French city)"
+        },
+        {
+          "fr": "reste",
+          "en": "is staying (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "rencontrer",
+          "en": "to meet",
+          "word": "verbs-086"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "après-midi",
+          "en": "afternoon"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "The family at number twelve",
+      "lines": [
+        {
+          "fr": "Les Martin habitent au numéro douze de notre rue.",
+          "en": "The Martins live at number twelve on our street."
+        },
+        {
+          "fr": "Le père est boulanger et la mère est comptable.",
+          "en": "The father is a baker and the mother is an accountant."
+        },
+        {
+          "fr": "Ils ont trois filles et un chien noir.",
+          "en": "They have three daughters and a black dog."
+        },
+        {
+          "fr": "La plus grande a quinze ans et les petites ont neuf ans.",
+          "en": "The oldest is fifteen and the little ones are nine."
+        },
+        {
+          "fr": "Ils invitent tout le quartier à leur fête de juillet.",
+          "en": "They invite the whole neighbourhood to their July party."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is the father’s job?",
+          "choices": [
+            "He is a baker.",
+            "He is an accountant.",
+            "He is a teacher."
+          ],
+          "answer": 0,
+          "explanation": "“Le père est boulanger et la mère est comptable.”"
+        },
+        {
+          "question": "How many daughters does the family have?",
+          "choices": [
+            "Two.",
+            "Three.",
+            "Four."
+          ],
+          "answer": 1,
+          "explanation": "“Ils ont trois filles et un chien noir.”"
+        },
+        {
+          "question": "How old is the oldest daughter?",
+          "choices": [
+            "Nine.",
+            "Twelve.",
+            "Fifteen."
+          ],
+          "answer": 2,
+          "explanation": "“La plus grande a quinze ans et les petites ont neuf ans.”"
+        },
+        {
+          "question": "Who is invited to the July party?",
+          "choices": [
+            "Only the family.",
+            "The whole neighbourhood.",
+            "The daughters’ friends."
+          ],
+          "answer": 1,
+          "explanation": "“Ils invitent tout le quartier à leur fête de juillet.”"
+        }
+      ],
+      "topics": [
+        "present-er",
+        "etre-avoir",
+        "comparison"
+      ],
+      "words": [
+        "essentials-044",
+        "essentials-052",
+        "essentials-054",
+        "health-time-075",
+        "health-time-084",
+        "health-time-090",
+        "health-time-092",
+        "health-time-093",
+        "nature-011",
+        "people-007",
+        "people-009",
+        "people-010",
+        "people-054",
+        "qualities-001",
+        "qualities-002",
+        "travel-002",
+        "travel-032",
+        "verbs-001",
+        "verbs-002",
+        "verbs-068",
+        "work-023",
+        "work-030"
+      ],
+      "gloss": [
+        {
+          "fr": "Martin",
+          "en": "Martin (the family’s surname)"
+        },
+        {
+          "fr": "habitent",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "numéro",
+          "en": "number"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "notre",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "rue",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "boulanger",
+          "en": "baker",
+          "word": "work-023"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "comptable",
+          "en": "accountant",
+          "word": "work-030"
+        },
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "filles",
+          "en": "daughters",
+          "word": "people-007"
+        },
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        },
+        {
+          "fr": "noir",
+          "en": "black"
+        },
+        {
+          "fr": "plus",
+          "en": "more (la plus grande = the oldest)"
+        },
+        {
+          "fr": "grande",
+          "en": "big; oldest",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "a",
+          "en": "is (avoir, for ages)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        },
+        {
+          "fr": "petites",
+          "en": "little ones",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "neuf",
+          "en": "nine",
+          "word": "health-time-090"
+        },
+        {
+          "fr": "invitent",
+          "en": "invite (inviter)"
+        },
+        {
+          "fr": "tout",
+          "en": "all; the whole",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "leur",
+          "en": "their",
+          "word": "essentials-054"
+        },
+        {
+          "fr": "fête",
+          "en": "party",
+          "word": "people-054"
+        },
+        {
+          "fr": "juillet",
+          "en": "July",
+          "word": "health-time-075"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "A note for the neighbour",
+      "lines": [
+        {
+          "fr": "Madame Bernard, je pars en vacances jeudi matin.",
+          "en": "Mrs Bernard, I am leaving on holiday on Thursday morning."
+        },
+        {
+          "fr": "Ma fille Camille reste à la maison avec son chat.",
+          "en": "My daughter Camille is staying at home with her cat."
+        },
+        {
+          "fr": "Elle a dix-sept ans, mais elle est très prudente.",
+          "en": "She is seventeen, but she is very careful."
+        },
+        {
+          "fr": "Si vous avez un problème, appelez mon mari.",
+          "en": "If you have a problem, call my husband."
+        },
+        {
+          "fr": "Merci beaucoup et à bientôt !",
+          "en": "Thank you very much and see you soon!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "When does the writer leave?",
+          "choices": [
+            "On Tuesday morning.",
+            "On Thursday morning.",
+            "On Thursday evening."
+          ],
+          "answer": 1,
+          "explanation": "“je pars en vacances jeudi matin”"
+        },
+        {
+          "question": "Who stays at home?",
+          "choices": [
+            "Madame Bernard.",
+            "The writer’s husband.",
+            "The writer’s daughter."
+          ],
+          "answer": 2,
+          "explanation": "“Ma fille Camille reste à la maison avec son chat.”"
+        },
+        {
+          "question": "How old is Camille?",
+          "choices": [
+            "Seven.",
+            "Sixteen.",
+            "Seventeen."
+          ],
+          "answer": 2,
+          "explanation": "“Elle a dix-sept ans, mais elle est très prudente.”"
+        },
+        {
+          "question": "Who should the neighbour call if there is a problem?",
+          "choices": [
+            "The writer’s husband.",
+            "Camille.",
+            "The writer."
+          ],
+          "answer": 0,
+          "explanation": "“Si vous avez un problème, appelez mon mari.”"
+        }
+      ],
+      "topics": [
+        "imperative",
+        "etre-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-002",
+        "essentials-011",
+        "essentials-049",
+        "essentials-051",
+        "essentials-060",
+        "essentials-081",
+        "essentials-096",
+        "essentials-099",
+        "health-time-059",
+        "health-time-065",
+        "health-time-088",
+        "home-001",
+        "nature-012",
+        "people-007",
+        "people-024",
+        "qualities-077",
+        "travel-018",
+        "verbs-001",
+        "verbs-002",
+        "verbs-030",
+        "verbs-031",
+        "verbs-085"
+      ],
+      "gloss": [
+        {
+          "fr": "Madame",
+          "en": "Mrs; madam"
+        },
+        {
+          "fr": "Bernard",
+          "en": "Bernard (a surname)"
+        },
+        {
+          "fr": "pars",
+          "en": "am leaving (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "vacances",
+          "en": "holiday",
+          "word": "travel-018"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "fille",
+          "en": "daughter",
+          "word": "people-007"
+        },
+        {
+          "fr": "Camille",
+          "en": "Camille (a first name)"
+        },
+        {
+          "fr": "reste",
+          "en": "is staying (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "maison",
+          "en": "home; house",
+          "word": "home-001"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "son",
+          "en": "her; his",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "chat",
+          "en": "cat",
+          "word": "nature-012"
+        },
+        {
+          "fr": "a",
+          "en": "is (avoir, for ages)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "dix-sept",
+          "en": "seventeen"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "prudente",
+          "en": "careful",
+          "word": "qualities-077"
+        },
+        {
+          "fr": "Si",
+          "en": "if",
+          "word": "essentials-081"
+        },
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "problème",
+          "en": "problem"
+        },
+        {
+          "fr": "appelez",
+          "en": "call (appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "mari",
+          "en": "husband",
+          "word": "people-024"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot; very much",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "à bientôt",
+          "en": "see you soon",
+          "word": "essentials-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "Notice in the entrance hall",
+      "lines": [
+        {
+          "fr": "Fête des voisins : le samedi quatorze juin, dans la cour.",
+          "en": "Neighbours’ party: Saturday the fourteenth of June, in the courtyard."
+        },
+        {
+          "fr": "Chaque famille apporte un plat ou une boisson.",
+          "en": "Each family brings a dish or a drink."
+        },
+        {
+          "fr": "Les enfants du quartier peuvent jouer dans le jardin.",
+          "en": "The children of the neighbourhood can play in the garden."
+        },
+        {
+          "fr": "Pour venir, écrivez votre nom sur la liste du hall.",
+          "en": "To come, write your name on the list in the entrance hall."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the party?",
+          "choices": [
+            "Saturday the fourth of June.",
+            "Saturday the fourteenth of June.",
+            "Sunday the fourteenth of June."
+          ],
+          "answer": 1,
+          "explanation": "“le samedi quatorze juin”"
+        },
+        {
+          "question": "What does each family have to bring?",
+          "choices": [
+            "A chair.",
+            "A dish or a drink.",
+            "Nothing at all."
+          ],
+          "answer": 1,
+          "explanation": "“Chaque famille apporte un plat ou une boisson.”"
+        },
+        {
+          "question": "Where can the children play?",
+          "choices": [
+            "In the courtyard.",
+            "In the garden.",
+            "In the entrance hall."
+          ],
+          "answer": 1,
+          "explanation": "“Les enfants du quartier peuvent jouer dans le jardin.”"
+        },
+        {
+          "question": "How do you say you are coming?",
+          "choices": [
+            "You call a neighbour.",
+            "You send an email.",
+            "You write your name on a list."
+          ],
+          "answer": 2,
+          "explanation": "“écrivez votre nom sur la liste du hall”"
+        }
+      ],
+      "topics": [
+        "imperative",
+        "articles-gender",
+        "contractions"
+      ],
+      "words": [
+        "essentials-053",
+        "essentials-057",
+        "essentials-058",
+        "essentials-062",
+        "food-071",
+        "food-078",
+        "health-time-067",
+        "health-time-074",
+        "home-011",
+        "people-004",
+        "people-020",
+        "people-034",
+        "people-054",
+        "people-057",
+        "travel-032",
+        "verbs-005",
+        "verbs-020",
+        "verbs-043",
+        "verbs-073",
+        "verbs-087"
+      ],
+      "gloss": [
+        {
+          "fr": "Fête",
+          "en": "party",
+          "word": "people-054"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "quatorze",
+          "en": "fourteen"
+        },
+        {
+          "fr": "juin",
+          "en": "June",
+          "word": "health-time-074"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "cour",
+          "en": "courtyard"
+        },
+        {
+          "fr": "Chaque",
+          "en": "each"
+        },
+        {
+          "fr": "famille",
+          "en": "family",
+          "word": "people-020"
+        },
+        {
+          "fr": "apporte",
+          "en": "brings (apporter)",
+          "word": "verbs-043"
+        },
+        {
+          "fr": "plat",
+          "en": "dish",
+          "word": "food-078"
+        },
+        {
+          "fr": "boisson",
+          "en": "drink",
+          "word": "food-071"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "peuvent",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "jouer",
+          "en": "to play",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "jardin",
+          "en": "garden"
+        },
+        {
+          "fr": "Pour",
+          "en": "in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "écrivez",
+          "en": "write (écrire)",
+          "word": "verbs-073"
+        },
+        {
+          "fr": "votre",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "fr": "nom",
+          "en": "name",
+          "word": "people-057"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "liste",
+          "en": "list"
+        },
+        {
+          "fr": "hall",
+          "en": "entrance hall",
+          "word": "home-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "An email to a host family",
+      "lines": [
+        {
+          "fr": "Bonjour, je m’appelle Emma et je suis anglaise.",
+          "en": "Hello, my name is Emma and I am English."
+        },
+        {
+          "fr": "J’ai vingt et un ans et j’étudie le français à Londres.",
+          "en": "I am twenty-one and I study French in London."
+        },
+        {
+          "fr": "Chez moi, nous sommes quatre : mes parents, mon frère et moi.",
+          "en": "At home there are four of us: my parents, my brother and me."
+        },
+        {
+          "fr": "Mon frère est plus jeune que moi, il a seize ans.",
+          "en": "My brother is younger than me, he is sixteen."
+        },
+        {
+          "fr": "J’arrive à Paris le premier septembre.",
+          "en": "I arrive in Paris on the first of September."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How old is Emma?",
+          "choices": [
+            "Sixteen.",
+            "Twenty.",
+            "Twenty-one."
+          ],
+          "answer": 2,
+          "explanation": "“J’ai vingt et un ans et j’étudie le français à Londres.”"
+        },
+        {
+          "question": "What does she study?",
+          "choices": [
+            "English.",
+            "French.",
+            "History."
+          ],
+          "answer": 1,
+          "explanation": "“j’étudie le français à Londres”"
+        },
+        {
+          "question": "How many people live in her family home?",
+          "choices": [
+            "Three.",
+            "Four.",
+            "Five."
+          ],
+          "answer": 1,
+          "explanation": "“nous sommes quatre : mes parents, mon frère et moi”"
+        },
+        {
+          "question": "When does she arrive in Paris?",
+          "choices": [
+            "On the first of September.",
+            "On the twenty-first of September.",
+            "On the first of October."
+          ],
+          "answer": 0,
+          "explanation": "“J’arrive à Paris le premier septembre.”"
+        }
+      ],
+      "topics": [
+        "etre-avoir",
+        "comparison",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-025",
+        "essentials-049",
+        "essentials-064",
+        "health-time-077",
+        "health-time-085",
+        "health-time-094",
+        "people-008",
+        "people-012",
+        "qualities-010",
+        "verbs-001",
+        "verbs-002",
+        "verbs-032",
+        "verbs-070",
+        "verbs-085"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "m’appelle",
+          "en": "am called (s’appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "Emma",
+          "en": "Emma (a woman’s first name)"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "anglaise",
+          "en": "English (woman)"
+        },
+        {
+          "fr": "J’ai",
+          "en": "I am (avoir, for ages)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty (vingt et un = twenty-one)",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        },
+        {
+          "fr": "j’étudie",
+          "en": "I study (étudier)",
+          "word": "verbs-070"
+        },
+        {
+          "fr": "français",
+          "en": "French (the language)"
+        },
+        {
+          "fr": "Londres",
+          "en": "London"
+        },
+        {
+          "fr": "Chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "sommes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "quatre",
+          "en": "four",
+          "word": "health-time-085"
+        },
+        {
+          "fr": "mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more (plus jeune = younger)"
+        },
+        {
+          "fr": "jeune",
+          "en": "young",
+          "word": "qualities-010"
+        },
+        {
+          "fr": "a",
+          "en": "is (avoir, for ages)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "seize",
+          "en": "sixteen"
+        },
+        {
+          "fr": "J’arrive",
+          "en": "I arrive (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "Paris",
+          "en": "Paris"
+        },
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "septembre",
+          "en": "September",
+          "word": "health-time-077"
+        }
+      ]
+    }
+  ]
+}

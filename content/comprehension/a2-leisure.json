@@ -1,0 +1,5063 @@
+{
+  "sentences": [
+    {
+      "id": "a2-leisure-s01",
+      "level": "A2",
+      "fr": "Hier soir, nous avons regardé un film italien à la télévision.",
+      "en": "Last night we watched an Italian film on television.",
+      "distractors": [
+        "Last night we watched a Spanish film on television.",
+        "Tomorrow night we are watching an Italian film on television.",
+        "Last night we watched an Italian film at the cinema."
+      ],
+      "gap": "avons",
+      "topics": [
+        "passe-compose-avoir",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-060",
+        "verbs-002",
+        "verbs-011",
+        "work-087",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "Hier soir",
+          "en": "yesterday evening; last night",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "regardé",
+          "en": "watched (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "italien",
+          "en": "Italian"
+        },
+        {
+          "fr": "télévision",
+          "en": "television",
+          "word": "work-087"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s02",
+      "level": "A2",
+      "fr": "Je n’aime pas les films d’horreur, mais ma sœur les adore.",
+      "en": "I don’t like horror films, but my sister loves them.",
+      "distractors": [
+        "I don’t like horror films, but my brother loves them.",
+        "I don’t like horror films, and my sister hates them too.",
+        "I don’t like war films, but my sister loves them."
+      ],
+      "gap": "sœur",
+      "topics": [
+        "negation",
+        "direct-object"
+      ],
+      "words": [
+        "essentials-049",
+        "people-011",
+        "verbs-052",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "n’aime",
+          "en": "do not like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "films",
+          "en": "films",
+          "word": "work-089"
+        },
+        {
+          "fr": "d’horreur",
+          "en": "horror"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "adore",
+          "en": "loves (adorer)"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s03",
+      "level": "A2",
+      "fr": "Samedi prochain, on va au concert de jazz avec des amis.",
+      "en": "Next Saturday we’re going to the jazz concert with friends.",
+      "distractors": [
+        "Next Sunday we’re going to the jazz concert with friends.",
+        "Next Saturday we’re going to the jazz concert with my parents.",
+        "Last Saturday we went to the jazz concert with friends."
+      ],
+      "gap": "concert",
+      "topics": [
+        "futur-proche",
+        "contractions"
+      ],
+      "words": [
+        "essentials-060",
+        "health-time-067",
+        "people-030",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "prochain",
+          "en": "next"
+        },
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "concert",
+          "en": "concert"
+        },
+        {
+          "fr": "jazz",
+          "en": "jazz"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s04",
+      "level": "A2",
+      "fr": "Tu as déjà lu ce roman ? Il est vraiment passionnant.",
+      "en": "Have you already read this novel? It’s really gripping.",
+      "distractors": [
+        "Have you already seen this film? It’s really gripping.",
+        "Are you going to read this novel? It’s really gripping.",
+        "Have you already read this novel? It’s really boring."
+      ],
+      "gap": "déjà",
+      "topics": [
+        "passe-compose-avoir",
+        "questions"
+      ],
+      "words": [
+        "essentials-088",
+        "verbs-001",
+        "verbs-002",
+        "verbs-072"
+      ],
+      "gloss": [
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "déjà",
+          "en": "already",
+          "word": "essentials-088"
+        },
+        {
+          "fr": "lu",
+          "en": "read (lire, past)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "roman",
+          "en": "novel"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "vraiment",
+          "en": "really"
+        },
+        {
+          "fr": "passionnant",
+          "en": "gripping; fascinating"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s05",
+      "level": "A2",
+      "fr": "Quand j’étais petit, je jouais au football tous les samedis.",
+      "en": "When I was little, I played football every Saturday.",
+      "distractors": [
+        "When I was little, I played football every Sunday.",
+        "When I was little, my brother played football every Saturday.",
+        "When I was little, I played tennis every Saturday."
+      ],
+      "gap": "jouais",
+      "topics": [
+        "imparfait"
+      ],
+      "words": [
+        "essentials-044",
+        "essentials-082",
+        "health-time-067",
+        "qualities-002",
+        "verbs-001",
+        "verbs-087"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "j’étais",
+          "en": "I was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "petit",
+          "en": "small; little",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "jouais",
+          "en": "used to play (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "football",
+          "en": "football"
+        },
+        {
+          "fr": "tous les",
+          "en": "every",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "samedis",
+          "en": "Saturdays",
+          "word": "health-time-067"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s06",
+      "level": "A2",
+      "fr": "Le match commence à huit heures et demie, ne sois pas en retard !",
+      "en": "The match starts at half past eight, don’t be late!",
+      "distractors": [
+        "The match starts at half past seven, don’t be late!",
+        "The match ends at half past eight, don’t be late!",
+        "The film starts at half past eight, don’t be late!"
+      ],
+      "gap": "huit",
+      "topics": [
+        "imperative",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-052",
+        "health-time-089",
+        "travel-059",
+        "verbs-001",
+        "verbs-047"
+      ],
+      "gloss": [
+        {
+          "fr": "match",
+          "en": "match; game"
+        },
+        {
+          "fr": "commence",
+          "en": "starts (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "et demie",
+          "en": "thirty (half past)"
+        },
+        {
+          "fr": "sois",
+          "en": "be (être, order)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "en retard",
+          "en": "late (behind time)",
+          "word": "travel-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s07",
+      "level": "A2",
+      "fr": "Ce livre est plus intéressant que le film, je trouve.",
+      "en": "This book is more interesting than the film, I think.",
+      "distractors": [
+        "This book is less interesting than the film, I think.",
+        "This film is more interesting than the book, I think."
+      ],
+      "gap": "plus",
+      "topics": [
+        "comparison"
+      ],
+      "words": [
+        "qualities-082",
+        "verbs-001",
+        "verbs-026",
+        "work-043",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "intéressant",
+          "en": "interesting",
+          "word": "qualities-082"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "trouve",
+          "en": "find (trouver)",
+          "word": "verbs-026"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s08",
+      "level": "A2",
+      "fr": "Elle écoute de la musique classique quand elle court dans le parc.",
+      "en": "She listens to classical music when she runs in the park.",
+      "distractors": [
+        "She listens to rock music when she runs in the park.",
+        "She listens to classical music when she runs by the sea.",
+        "He listens to classical music when he runs in the park."
+      ],
+      "gap": "court",
+      "topics": [
+        "partitive",
+        "irregular-present"
+      ],
+      "words": [
+        "essentials-057",
+        "essentials-082",
+        "travel-035",
+        "verbs-013",
+        "verbs-040",
+        "work-094"
+      ],
+      "gloss": [
+        {
+          "fr": "écoute",
+          "en": "listens to (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        },
+        {
+          "fr": "classique",
+          "en": "classical"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "court",
+          "en": "runs (courir)",
+          "word": "verbs-040"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s09",
+      "level": "A2",
+      "fr": "Dimanche, il fera beau et nous irons à la plage.",
+      "en": "On Sunday the weather will be nice and we’ll go to the beach.",
+      "distractors": [
+        "On Sunday the weather will be nice and we’ll go to the mountains.",
+        "On Saturday the weather will be nice and we’ll go to the beach.",
+        "On Sunday the weather was nice and we went to the beach."
+      ],
+      "gap": "irons",
+      "topics": [
+        "futur-simple"
+      ],
+      "words": [
+        "health-time-068",
+        "nature-068",
+        "qualities-005",
+        "verbs-003",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "fera",
+          "en": "will be (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "beau",
+          "en": "beautiful; fine",
+          "word": "qualities-005"
+        },
+        {
+          "fr": "irons",
+          "en": "will go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "plage",
+          "en": "beach",
+          "word": "nature-068"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s10",
+      "level": "A2",
+      "fr": "Je ne vais jamais au cinéma le dimanche matin.",
+      "en": "I never go to the cinema on Sunday mornings.",
+      "distractors": [
+        "I often go to the cinema on Sunday mornings.",
+        "I never go to the theatre on Sunday mornings.",
+        "I never go to the cinema on Saturday mornings."
+      ],
+      "gap": "jamais",
+      "topics": [
+        "negation-more"
+      ],
+      "words": [
+        "essentials-090",
+        "health-time-059",
+        "health-time-068",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        },
+        {
+          "fr": "cinéma",
+          "en": "cinema"
+        },
+        {
+          "fr": "le dimanche",
+          "en": "on Sundays",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s11",
+      "level": "A2",
+      "fr": "Mon frère m’a prêté sa guitare pour le week-end.",
+      "en": "My brother lent me his guitar for the weekend.",
+      "distractors": [
+        "My brother lent me his guitar for the evening.",
+        "My sister lent me her guitar for the weekend.",
+        "My brother sold me his guitar for the weekend."
+      ],
+      "gap": "prêté",
+      "topics": [
+        "passe-compose-avoir",
+        "indirect-object"
+      ],
+      "words": [
+        "essentials-049",
+        "essentials-051",
+        "essentials-062",
+        "people-012",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "m’a",
+          "en": "has (avoir); m’ = (to) me",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "prêté",
+          "en": "lent (prêter)"
+        },
+        {
+          "fr": "sa",
+          "en": "his; her",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "guitare",
+          "en": "guitar"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s12",
+      "level": "A2",
+      "fr": "Est-ce que tu viens avec nous au théâtre jeudi soir ?",
+      "en": "Are you coming with us to the theatre on Thursday evening?",
+      "distractors": [
+        "Are you coming with us to the theatre on Tuesday evening?",
+        "Are you coming with us to the museum on Thursday evening?",
+        "Are you coming with us to the theatre on Thursday morning?"
+      ],
+      "gap": "jeudi",
+      "topics": [
+        "questions"
+      ],
+      "words": [
+        "essentials-060",
+        "health-time-060",
+        "health-time-065",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(turns the sentence into a question)"
+        },
+        {
+          "fr": "viens",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "théâtre",
+          "en": "theatre"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s13",
+      "level": "A2",
+      "fr": "Nous sommes sortis très tard hier, et je suis encore fatigué.",
+      "en": "We went out very late yesterday, and I’m still tired.",
+      "distractors": [
+        "They went out very late yesterday, and I’m still tired.",
+        "We went out very late yesterday, and I’m not tired at all.",
+        "We went out very early yesterday, and I’m still tired."
+      ],
+      "gap": "tard",
+      "topics": [
+        "passe-compose-etre"
+      ],
+      "words": [
+        "essentials-087",
+        "essentials-096",
+        "verbs-001",
+        "verbs-034"
+      ],
+      "gloss": [
+        {
+          "fr": "sommes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sortis",
+          "en": "went out (sortir)",
+          "word": "verbs-034"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "tard",
+          "en": "late"
+        },
+        {
+          "fr": "hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "encore",
+          "en": "still; yet; again",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "fatigué",
+          "en": "tired"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s14",
+      "level": "A2",
+      "fr": "Il y a un festival de musique dans le village cet été.",
+      "en": "There’s a music festival in the village this summer.",
+      "distractors": [
+        "There’s a music festival in the village this winter.",
+        "There’s a music festival in the town this summer.",
+        "There’s a film festival in the village this summer."
+      ],
+      "gap": "été",
+      "topics": [
+        "demonstratives",
+        "prepositions-places"
+      ],
+      "words": [
+        "essentials-057",
+        "travel-047",
+        "work-094"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "festival",
+          "en": "festival"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "village",
+          "en": "village",
+          "word": "travel-047"
+        },
+        {
+          "fr": "cet été",
+          "en": "this summer"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s15",
+      "level": "A2",
+      "fr": "Ma copine préfère les séries policières aux films d’action.",
+      "en": "My friend prefers crime series to action films.",
+      "distractors": [
+        "My friend prefers action films to crime series.",
+        "My brother prefers crime series to action films."
+      ],
+      "gap": "copine",
+      "topics": [
+        "contractions"
+      ],
+      "words": [
+        "essentials-049",
+        "people-032",
+        "verbs-053",
+        "work-089",
+        "work-090"
+      ],
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "copine",
+          "en": "girlfriend; friend (woman)",
+          "word": "people-032"
+        },
+        {
+          "fr": "préfère",
+          "en": "prefers (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "séries",
+          "en": "series (TV)",
+          "word": "work-090"
+        },
+        {
+          "fr": "policières",
+          "en": "crime (stories)"
+        },
+        {
+          "fr": "films",
+          "en": "films",
+          "word": "work-089"
+        },
+        {
+          "fr": "d’action",
+          "en": "action"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s16",
+      "level": "A2",
+      "fr": "On s’est bien amusés à la fête de Camille samedi dernier.",
+      "en": "We had a great time at Camille’s party last Saturday.",
+      "distractors": [
+        "We had a great time at Camille’s party last Sunday.",
+        "We were bored at Camille’s party last Saturday.",
+        "We had a great time at Camille’s party next Saturday."
+      ],
+      "gap": "dernier",
+      "topics": [
+        "reflexive",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "essentials-045",
+        "health-time-067",
+        "people-054",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "s’est",
+          "en": "is (être, auxiliary in the reflexive past)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "amusés",
+          "en": "had fun (s’amuser)"
+        },
+        {
+          "fr": "fête",
+          "en": "party",
+          "word": "people-054"
+        },
+        {
+          "fr": "Camille",
+          "en": "Camille (a first name)"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "dernier",
+          "en": "last; latest"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s17",
+      "level": "A2",
+      "fr": "Qu’est-ce que tu fais ce week-end ? Tu veux venir chez moi ?",
+      "en": "What are you doing this weekend? Do you want to come to my place?",
+      "distractors": [
+        "What are you doing this evening? Do you want to come to my place?",
+        "What are you doing this weekend? Do you want to come to the cinema?",
+        "What did you do this weekend? Do you want to come to my place?"
+      ],
+      "gap": "chez",
+      "topics": [
+        "questions",
+        "stressed-pronouns"
+      ],
+      "words": [
+        "essentials-025",
+        "essentials-064",
+        "verbs-003",
+        "verbs-005",
+        "verbs-019"
+      ],
+      "gloss": [
+        {
+          "fr": "Qu’est-ce que",
+          "en": "what"
+        },
+        {
+          "fr": "fais",
+          "en": "do; make (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        },
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s18",
+      "level": "A2",
+      "fr": "Le concert était génial, mais la salle était trop petite.",
+      "en": "The concert was brilliant, but the hall was too small.",
+      "distractors": [
+        "The concert was brilliant, but the hall was too big.",
+        "The concert was awful, but the hall was too small.",
+        "The film was brilliant, but the hall was too small."
+      ],
+      "gap": "trop",
+      "topics": [
+        "imparfait",
+        "agreement"
+      ],
+      "words": [
+        "essentials-097",
+        "qualities-002",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "concert",
+          "en": "concert"
+        },
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "génial",
+          "en": "brilliant"
+        },
+        {
+          "fr": "salle",
+          "en": "hall; room"
+        },
+        {
+          "fr": "trop",
+          "en": "too; too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "petite",
+          "en": "small; little",
+          "word": "qualities-002"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s19",
+      "level": "A2",
+      "fr": "Mes parents regardent les actualités tous les soirs après le dîner.",
+      "en": "My parents watch the news every evening after dinner.",
+      "distractors": [
+        "My parents watch the news every evening before dinner.",
+        "My parents watch a film every evening after dinner.",
+        "My parents listen to the news every evening after dinner."
+      ],
+      "gap": "actualités",
+      "topics": [
+        "present-er",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-044",
+        "essentials-049",
+        "food-075",
+        "health-time-060",
+        "people-008",
+        "verbs-011",
+        "work-085"
+      ],
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "regardent",
+          "en": "watch (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "actualités",
+          "en": "the news",
+          "word": "work-085"
+        },
+        {
+          "fr": "tous les",
+          "en": "every",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "soirs",
+          "en": "evenings",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s20",
+      "level": "A2",
+      "fr": "Je vais à la piscine deux fois par semaine depuis septembre.",
+      "en": "I’ve been going to the swimming pool twice a week since September.",
+      "distractors": [
+        "I’ve been going to the swimming pool three times a week since September.",
+        "I’ve been going to the swimming pool twice a month since September.",
+        "I’ve been going to the swimming pool twice a week since January."
+      ],
+      "gap": "deux",
+      "topics": [
+        "time-expressions",
+        "prepositions-places"
+      ],
+      "words": [
+        "health-time-056",
+        "health-time-077",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "piscine",
+          "en": "swimming pool"
+        },
+        {
+          "fr": "deux fois",
+          "en": "twice"
+        },
+        {
+          "fr": "par semaine",
+          "en": "a week; per week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "depuis",
+          "en": "since; for"
+        },
+        {
+          "fr": "septembre",
+          "en": "September",
+          "word": "health-time-077"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s21",
+      "level": "A2",
+      "fr": "Nous avons gagné le match trois à un dimanche dernier !",
+      "en": "We won the match three-one last Sunday!",
+      "distractors": [
+        "We lost the match three-one last Sunday!",
+        "We won the match two-one last Sunday!",
+        "We won the match three-one last Saturday!"
+      ],
+      "gap": "gagné",
+      "topics": [
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "health-time-068",
+        "health-time-084",
+        "verbs-002",
+        "verbs-082"
+      ],
+      "gloss": [
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "gagné",
+          "en": "won (gagner)",
+          "word": "verbs-082"
+        },
+        {
+          "fr": "match",
+          "en": "match; game"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "dernier",
+          "en": "last; latest"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s22",
+      "level": "A2",
+      "fr": "Elle a appris à jouer du piano à l’âge de sept ans.",
+      "en": "She learned to play the piano at the age of seven.",
+      "distractors": [
+        "She learned to play the guitar at the age of seven.",
+        "She learned to play the piano at the age of six.",
+        "He learned to play the piano at the age of seven."
+      ],
+      "gap": "sept",
+      "topics": [
+        "passe-compose-avoir",
+        "contractions"
+      ],
+      "words": [
+        "health-time-088",
+        "verbs-002",
+        "verbs-071",
+        "verbs-087"
+      ],
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "appris",
+          "en": "learned (apprendre)",
+          "word": "verbs-071"
+        },
+        {
+          "fr": "jouer",
+          "en": "to play",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "piano",
+          "en": "piano"
+        },
+        {
+          "fr": "l’âge",
+          "en": "age"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "ans",
+          "en": "years (old)"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s23",
+      "level": "A2",
+      "fr": "Il pleut, alors on va rester à la maison et lire.",
+      "en": "It’s raining, so we’re going to stay at home and read.",
+      "distractors": [
+        "It’s snowing, so we’re going to stay at home and read.",
+        "It’s raining, so we’re going to stay at home and sleep."
+      ],
+      "gap": "pleut",
+      "topics": [
+        "futur-proche"
+      ],
+      "words": [
+        "home-001",
+        "verbs-004",
+        "verbs-030",
+        "verbs-072"
+      ],
+      "gloss": [
+        {
+          "fr": "pleut",
+          "en": "is raining (pleuvoir)"
+        },
+        {
+          "fr": "alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "rester",
+          "en": "to stay",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "maison",
+          "en": "house; home",
+          "word": "home-001"
+        },
+        {
+          "fr": "lire",
+          "en": "to read",
+          "word": "verbs-072"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s24",
+      "level": "A2",
+      "fr": "Tu peux m’envoyer la photo du spectacle, s’il te plaît ?",
+      "en": "Can you send me the photo of the show, please?",
+      "distractors": [
+        "Can you send me the photos of the show, please?",
+        "Can you show me the photo of the show, please?",
+        "Can you send him the photo of the show, please?"
+      ],
+      "gap": "photo",
+      "topics": [
+        "contractions",
+        "questions"
+      ],
+      "words": [
+        "essentials-012",
+        "verbs-020",
+        "verbs-084",
+        "work-092"
+      ],
+      "gloss": [
+        {
+          "fr": "peux",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "m’envoyer",
+          "en": "to send me (envoyer)",
+          "word": "verbs-084"
+        },
+        {
+          "fr": "photo",
+          "en": "photo",
+          "word": "work-092"
+        },
+        {
+          "fr": "spectacle",
+          "en": "show"
+        },
+        {
+          "fr": "s’il te plaît",
+          "en": "please (informal)",
+          "word": "essentials-012"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s25",
+      "level": "A2",
+      "fr": "Le musée est gratuit le premier dimanche du mois.",
+      "en": "The museum is free on the first Sunday of the month.",
+      "distractors": [
+        "The museum is closed on the first Sunday of the month.",
+        "The museum is free on the last Sunday of the month.",
+        "The museum is free on the first Saturday of the month."
+      ],
+      "gap": "gratuit",
+      "topics": [
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-057",
+        "health-time-068",
+        "qualities-060",
+        "travel-073",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "gratuit",
+          "en": "free (no charge)",
+          "word": "qualities-060"
+        },
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "mois",
+          "en": "month",
+          "word": "health-time-057"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s26",
+      "level": "A2",
+      "fr": "Quand nous étions à Lyon, nous allions souvent au cinéma.",
+      "en": "When we were in Lyon, we often went to the cinema.",
+      "distractors": [
+        "When we were in Lyon, we never went to the cinema.",
+        "When we were in Paris, we often went to the cinema.",
+        "When we were in Lyon, we often went to the theatre."
+      ],
+      "gap": "souvent",
+      "topics": [
+        "imparfait"
+      ],
+      "words": [
+        "essentials-082",
+        "essentials-091",
+        "verbs-001",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "étions",
+          "en": "were (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a French city)"
+        },
+        {
+          "fr": "allions",
+          "en": "used to go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "cinéma",
+          "en": "cinema"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s27",
+      "level": "A2",
+      "fr": "Cette chanson me rappelle mes vacances en Espagne.",
+      "en": "This song reminds me of my holidays in Spain.",
+      "distractors": [
+        "This song reminds me of my holidays in Italy.",
+        "This film reminds me of my holidays in Spain."
+      ],
+      "gap": "rappelle",
+      "topics": [
+        "indirect-object",
+        "demonstratives"
+      ],
+      "words": [
+        "essentials-047",
+        "essentials-049",
+        "travel-018",
+        "work-095"
+      ],
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "chanson",
+          "en": "song",
+          "word": "work-095"
+        },
+        {
+          "fr": "rappelle",
+          "en": "reminds (rappeler)"
+        },
+        {
+          "fr": "mes",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "vacances",
+          "en": "holidays",
+          "word": "travel-018"
+        },
+        {
+          "fr": "Espagne",
+          "en": "Spain"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s28",
+      "level": "A2",
+      "fr": "Je n’ai pas encore vu le dernier film de ce réalisateur.",
+      "en": "I haven’t seen this director’s latest film yet.",
+      "distractors": [
+        "I have already seen this director’s latest film.",
+        "I haven’t seen this director’s first film yet.",
+        "I haven’t seen this actor’s latest film yet."
+      ],
+      "gap": "encore",
+      "topics": [
+        "negation-more",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "essentials-087",
+        "verbs-002",
+        "verbs-010",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "n’ai",
+          "en": "have not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "encore",
+          "en": "still; yet; again",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "dernier",
+          "en": "last; latest"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "réalisateur",
+          "en": "director (film)"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s29",
+      "level": "A2",
+      "fr": "On se retrouve devant le stade à sept heures moins le quart.",
+      "en": "We’re meeting in front of the stadium at a quarter to seven.",
+      "distractors": [
+        "We’re meeting in front of the stadium at a quarter past seven.",
+        "We’re meeting behind the stadium at a quarter to seven.",
+        "We’re meeting in front of the theatre at a quarter to seven."
+      ],
+      "gap": "devant",
+      "topics": [
+        "reflexive",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-067",
+        "health-time-052",
+        "health-time-088"
+      ],
+      "gloss": [
+        {
+          "fr": "retrouve",
+          "en": "meet up (se retrouver)"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "stade",
+          "en": "stadium"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "moins le quart",
+          "en": "a quarter to"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s30",
+      "level": "A2",
+      "fr": "Ils ont dansé toute la nuit et sont rentrés très tard.",
+      "en": "They danced all night and got home very late.",
+      "distractors": [
+        "They danced all night and got home very early.",
+        "They sang all night and got home very late.",
+        "They danced all evening and got home very late."
+      ],
+      "gap": "nuit",
+      "topics": [
+        "passe-compose-avoir",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "essentials-044",
+        "essentials-096",
+        "health-time-061",
+        "verbs-001",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "dansé",
+          "en": "danced (danser)"
+        },
+        {
+          "fr": "toute la",
+          "en": "all the; the whole",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "rentrés",
+          "en": "got home (rentrer)"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "tard",
+          "en": "late"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s31",
+      "level": "A2",
+      "fr": "Le samedi, je me lève tard et je lis un roman.",
+      "en": "On Saturdays I get up late and read a novel.",
+      "distractors": [
+        "On Saturdays I get up early and read a novel.",
+        "On Sundays I get up late and read a novel.",
+        "On Saturdays I get up late and write a novel."
+      ],
+      "gap": "tard",
+      "topics": [
+        "reflexive",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-067",
+        "verbs-064",
+        "verbs-072"
+      ],
+      "gloss": [
+        {
+          "fr": "Le samedi",
+          "en": "on Saturdays",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "lève",
+          "en": "get up (se lever)",
+          "word": "verbs-064"
+        },
+        {
+          "fr": "tard",
+          "en": "late"
+        },
+        {
+          "fr": "lis",
+          "en": "read (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "roman",
+          "en": "novel"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s32",
+      "level": "A2",
+      "fr": "Mon voisin joue du violon tous les soirs : c’est insupportable !",
+      "en": "My neighbour plays the violin every evening: it’s unbearable!",
+      "distractors": [
+        "My neighbour plays the violin every morning: it’s unbearable!",
+        "My neighbour plays the piano every evening: it’s unbearable!",
+        "My neighbour played the violin every evening: it was unbearable!"
+      ],
+      "gap": "violon",
+      "topics": [
+        "present-er",
+        "contractions"
+      ],
+      "words": [
+        "essentials-044",
+        "essentials-049",
+        "health-time-060",
+        "people-034",
+        "verbs-001",
+        "verbs-087"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "voisin",
+          "en": "neighbour",
+          "word": "people-034"
+        },
+        {
+          "fr": "joue",
+          "en": "plays (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "violon",
+          "en": "violin"
+        },
+        {
+          "fr": "tous les",
+          "en": "every",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "soirs",
+          "en": "evenings",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is; that is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "insupportable",
+          "en": "unbearable"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s33",
+      "level": "A2",
+      "fr": "Est-ce qu’il y a encore des places pour le spectacle de ce soir ?",
+      "en": "Are there still seats for tonight’s show?",
+      "distractors": [
+        "Are there still seats for tomorrow’s show?",
+        "Are there still seats for this afternoon’s show?",
+        "Were there still seats for tonight’s show?"
+      ],
+      "gap": "places",
+      "topics": [
+        "questions"
+      ],
+      "words": [
+        "essentials-062",
+        "essentials-087",
+        "health-time-060"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce qu’il y a",
+          "en": "is there; are there (question)"
+        },
+        {
+          "fr": "encore",
+          "en": "still; yet; again",
+          "word": "essentials-087"
+        },
+        {
+          "fr": "places",
+          "en": "seats; tickets"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "spectacle",
+          "en": "show"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s34",
+      "level": "A2",
+      "fr": "Après le film, nous sommes allés boire un verre en terrasse.",
+      "en": "After the film we went for a drink on the terrace.",
+      "distractors": [
+        "Before the film we went for a drink on the terrace.",
+        "After the film we went for a meal on the terrace.",
+        "After the match we went for a drink on the terrace."
+      ],
+      "gap": "terrasse",
+      "topics": [
+        "passe-compose-etre"
+      ],
+      "words": [
+        "food-089",
+        "home-019",
+        "verbs-001",
+        "verbs-004",
+        "verbs-060",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "Après",
+          "en": "after"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "sommes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "allés",
+          "en": "gone; went (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "boire",
+          "en": "to drink",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "verre",
+          "en": "glass; drink",
+          "word": "food-089"
+        },
+        {
+          "fr": "terrasse",
+          "en": "terrace",
+          "word": "home-019"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s35",
+      "level": "A2",
+      "fr": "Elle lit beaucoup plus que moi : trois romans par mois.",
+      "en": "She reads much more than me: three novels a month.",
+      "distractors": [
+        "She reads much more than me: two novels a month.",
+        "She reads much less than me: three novels a month.",
+        "She reads much more than me: three novels a week."
+      ],
+      "gap": "trois",
+      "topics": [
+        "comparison",
+        "stressed-pronouns"
+      ],
+      "words": [
+        "essentials-025",
+        "essentials-099",
+        "health-time-057",
+        "health-time-084",
+        "verbs-072"
+      ],
+      "gloss": [
+        {
+          "fr": "lit",
+          "en": "reads (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "beaucoup plus",
+          "en": "much more",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "romans",
+          "en": "novels"
+        },
+        {
+          "fr": "par mois",
+          "en": "a month; per month",
+          "word": "health-time-057"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s36",
+      "level": "A2",
+      "fr": "Demain, nous prendrons nos vélos pour aller au lac.",
+      "en": "Tomorrow we’ll take our bikes to go to the lake.",
+      "distractors": [
+        "Tomorrow we’ll take our bikes to go to the beach.",
+        "Yesterday we took our bikes to go to the lake.",
+        "Tomorrow we’ll take the bus to go to the lake."
+      ],
+      "gap": "prendrons",
+      "topics": [
+        "futur-simple"
+      ],
+      "words": [
+        "essentials-052",
+        "essentials-062",
+        "nature-066",
+        "travel-008",
+        "verbs-004",
+        "verbs-023"
+      ],
+      "gloss": [
+        {
+          "fr": "Demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "prendrons",
+          "en": "will take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "nos",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "fr": "vélos",
+          "en": "bikes",
+          "word": "travel-008"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "aller",
+          "en": "to go",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "lac",
+          "en": "lake",
+          "word": "nature-066"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s37",
+      "level": "A2",
+      "fr": "Je lui ai offert un livre de cuisine pour son anniversaire.",
+      "en": "I gave him a cookery book for his birthday.",
+      "distractors": [
+        "I gave him a cookery book for Christmas.",
+        "I gave him a crime novel for his birthday.",
+        "My parents gave him a cookery book for his birthday."
+      ],
+      "gap": "lui",
+      "topics": [
+        "indirect-object",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "essentials-027",
+        "essentials-051",
+        "essentials-062",
+        "home-007",
+        "verbs-002",
+        "work-043"
+      ],
+      "gloss": [
+        {
+          "fr": "lui",
+          "en": "(to) him; (to) her",
+          "word": "essentials-027"
+        },
+        {
+          "fr": "ai",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "offert",
+          "en": "gave (offrir)"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "cuisine",
+          "en": "cookery; cooking",
+          "word": "home-007"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "son",
+          "en": "his; her",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "anniversaire",
+          "en": "birthday"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s38",
+      "level": "A2",
+      "fr": "Le film commençait à vingt heures, mais nous sommes arrivés en retard.",
+      "en": "The film was starting at eight in the evening, but we arrived late.",
+      "distractors": [
+        "The film was starting at nine in the evening, but we arrived late.",
+        "The film was starting at eight in the evening, but we arrived early.",
+        "The film was starting at eight in the morning, but we arrived late."
+      ],
+      "gap": "vingt",
+      "topics": [
+        "pc-vs-imparfait",
+        "passe-compose-etre"
+      ],
+      "words": [
+        "health-time-052",
+        "health-time-094",
+        "travel-059",
+        "verbs-001",
+        "verbs-032",
+        "verbs-047",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "commençait",
+          "en": "was starting (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "sommes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "arrivés",
+          "en": "arrived (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "en retard",
+          "en": "late (behind time)",
+          "word": "travel-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s39",
+      "level": "A2",
+      "fr": "Tu écoutes souvent la radio le matin ou tu préfères le silence ?",
+      "en": "Do you often listen to the radio in the morning, or do you prefer silence?",
+      "distractors": [
+        "Do you often listen to the radio in the evening, or do you prefer silence?",
+        "Do you often listen to music in the morning, or do you prefer silence?",
+        "Did you often listen to the radio in the morning, or did you prefer silence?"
+      ],
+      "gap": "préfères",
+      "topics": [
+        "questions",
+        "present-er"
+      ],
+      "words": [
+        "essentials-091",
+        "health-time-059",
+        "verbs-013",
+        "verbs-053",
+        "work-086"
+      ],
+      "gloss": [
+        {
+          "fr": "écoutes",
+          "en": "listen to (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "radio",
+          "en": "radio",
+          "word": "work-086"
+        },
+        {
+          "fr": "le matin",
+          "en": "in the morning; mornings",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "préfères",
+          "en": "prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "silence",
+          "en": "silence"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s40",
+      "level": "A2",
+      "fr": "Mon fils ne veut plus faire de sport après l’école.",
+      "en": "My son doesn’t want to do any sport after school any more.",
+      "distractors": [
+        "My daughter doesn’t want to do any sport after school any more.",
+        "My son doesn’t want to do any sport before school any more.",
+        "My son wants to do more sport after school."
+      ],
+      "gap": "veut",
+      "topics": [
+        "negation-more",
+        "partitive"
+      ],
+      "words": [
+        "essentials-049",
+        "people-028",
+        "verbs-003",
+        "verbs-019",
+        "work-031"
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "fils",
+          "en": "son",
+          "word": "people-028"
+        },
+        {
+          "fr": "ne veut plus",
+          "en": "does not want any more (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "faire",
+          "en": "to do; to make",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "sport",
+          "en": "sport"
+        },
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "l’école",
+          "en": "school",
+          "word": "work-031"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s41",
+      "level": "A2",
+      "fr": "Cet acteur est moins connu en France qu’aux États-Unis.",
+      "en": "This actor is less well known in France than in the United States.",
+      "distractors": [
+        "This actor is better known in France than in the United States.",
+        "This singer is less well known in France than in the United States."
+      ],
+      "gap": "moins",
+      "topics": [
+        "comparison"
+      ],
+      "words": [
+        "essentials-046",
+        "verbs-001",
+        "verbs-015"
+      ],
+      "gloss": [
+        {
+          "fr": "Cet",
+          "en": "this",
+          "word": "essentials-046"
+        },
+        {
+          "fr": "acteur",
+          "en": "actor"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "moins",
+          "en": "less"
+        },
+        {
+          "fr": "connu",
+          "en": "well known",
+          "word": "verbs-015"
+        },
+        {
+          "fr": "France",
+          "en": "France"
+        },
+        {
+          "fr": "États-Unis",
+          "en": "the United States"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s42",
+      "level": "A2",
+      "fr": "Vous avez aimé le spectacle ? Moi, je l’ai trouvé un peu long.",
+      "en": "Did you like the show? Personally, I found it a bit long.",
+      "distractors": [
+        "Did you like the show? Personally, I found it a bit short.",
+        "Did you like the concert? Personally, I found it a bit long.",
+        "Will you like the show? Personally, I find it a bit long."
+      ],
+      "gap": "long",
+      "topics": [
+        "direct-object",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "essentials-025",
+        "qualities-011",
+        "verbs-002",
+        "verbs-026",
+        "verbs-052"
+      ],
+      "gloss": [
+        {
+          "fr": "avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "aimé",
+          "en": "liked (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "spectacle",
+          "en": "show"
+        },
+        {
+          "fr": "Moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "l’ai",
+          "en": "have (avoir); l’ = it",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "trouvé",
+          "en": "found (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "un peu",
+          "en": "a little; a bit"
+        },
+        {
+          "fr": "long",
+          "en": "long",
+          "word": "qualities-011"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s43",
+      "level": "A2",
+      "fr": "Il y a moins de monde au musée le lundi matin.",
+      "en": "There are fewer people at the museum on Monday mornings.",
+      "distractors": [
+        "There are fewer people at the museum on Friday mornings.",
+        "There are more people at the museum on Monday mornings.",
+        "There are fewer people at the cinema on Monday mornings."
+      ],
+      "gap": "lundi",
+      "topics": [
+        "comparison",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-059",
+        "health-time-062",
+        "travel-073"
+      ],
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "moins de",
+          "en": "fewer; less"
+        },
+        {
+          "fr": "monde",
+          "en": "people; world"
+        },
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "le lundi",
+          "en": "on Mondays",
+          "word": "health-time-062"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s44",
+      "level": "A2",
+      "fr": "À la fin du film, je n’ai rien compris.",
+      "en": "I didn’t understand anything at the end of the film.",
+      "distractors": [
+        "I didn’t understand anything at the beginning of the film.",
+        "I understood everything at the end of the film.",
+        "I didn’t understand anything at the end of the book."
+      ],
+      "gap": "rien",
+      "topics": [
+        "negation-more",
+        "passe-compose-avoir"
+      ],
+      "words": [
+        "essentials-042",
+        "verbs-002",
+        "verbs-016",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "n’ai",
+          "en": "have not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "rien",
+          "en": "nothing",
+          "word": "essentials-042"
+        },
+        {
+          "fr": "compris",
+          "en": "understood (comprendre)",
+          "word": "verbs-016"
+        },
+        {
+          "fr": "fin",
+          "en": "end"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s45",
+      "level": "A2",
+      "fr": "Est-ce que ce concert coûte cher ? Non, les billets sont à quinze euros.",
+      "en": "Is this concert expensive? No, the tickets are fifteen euros.",
+      "distractors": [
+        "Is this concert expensive? No, the tickets are fifty euros.",
+        "Is this concert expensive? No, the tickets are free.",
+        "Is this film expensive? No, the tickets are fifteen euros."
+      ],
+      "gap": "quinze",
+      "topics": [
+        "questions"
+      ],
+      "words": [
+        "essentials-005",
+        "health-time-093",
+        "qualities-059",
+        "travel-015",
+        "verbs-001",
+        "verbs-058"
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(turns the sentence into a question)"
+        },
+        {
+          "fr": "concert",
+          "en": "concert"
+        },
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "cher",
+          "en": "expensive",
+          "word": "qualities-059"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "billets",
+          "en": "tickets",
+          "word": "travel-015"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s46",
+      "level": "A2",
+      "fr": "Nous nous promenons au bord du lac tous les dimanches après-midi.",
+      "en": "We go for a walk by the lake every Sunday afternoon.",
+      "distractors": [
+        "We go for a walk by the lake every Saturday afternoon.",
+        "We go for a walk by the sea every Sunday afternoon.",
+        "We go for a walk by the lake every Sunday morning."
+      ],
+      "gap": "promenons",
+      "topics": [
+        "reflexive",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-044",
+        "health-time-068",
+        "nature-066"
+      ],
+      "gloss": [
+        {
+          "fr": "promenons",
+          "en": "go for a walk (se promener)"
+        },
+        {
+          "fr": "au bord du",
+          "en": "beside the; on the shore of"
+        },
+        {
+          "fr": "lac",
+          "en": "lake",
+          "word": "nature-066"
+        },
+        {
+          "fr": "tous les",
+          "en": "every",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "dimanches",
+          "en": "Sundays",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "après-midi",
+          "en": "afternoon"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s47",
+      "level": "A2",
+      "fr": "J’ai commencé ce roman en janvier et je ne l’ai pas fini.",
+      "en": "I started this novel in January and I haven’t finished it.",
+      "distractors": [
+        "I started this novel in June and I haven’t finished it.",
+        "I started this novel in January and I have already finished it.",
+        "My sister started this novel in January and she hasn’t finished it."
+      ],
+      "gap": "janvier",
+      "topics": [
+        "passe-compose-avoir",
+        "negation"
+      ],
+      "words": [
+        "health-time-069",
+        "verbs-002",
+        "verbs-047",
+        "verbs-048"
+      ],
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "commencé",
+          "en": "started (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "roman",
+          "en": "novel"
+        },
+        {
+          "fr": "janvier",
+          "en": "January",
+          "word": "health-time-069"
+        },
+        {
+          "fr": "l’ai",
+          "en": "have (avoir); l’ = it",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fini",
+          "en": "finished (finir)",
+          "word": "verbs-048"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s48",
+      "level": "A2",
+      "fr": "Tes amis viennent à la maison ce soir ? Prépare la musique !",
+      "en": "Are your friends coming to the house this evening? Get the music ready!",
+      "distractors": [
+        "Are your friends coming to the house tomorrow evening? Get the music ready!",
+        "Are your parents coming to the house this evening? Get the music ready!",
+        "Are your friends coming to the house this morning? Get the music ready!"
+      ],
+      "gap": "soir",
+      "topics": [
+        "imperative",
+        "questions"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-060",
+        "home-001",
+        "people-030",
+        "verbs-005",
+        "work-094"
+      ],
+      "gloss": [
+        {
+          "fr": "Tes",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        },
+        {
+          "fr": "viennent",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "maison",
+          "en": "house; home",
+          "word": "home-001"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Prépare",
+          "en": "get ready (préparer)"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s49",
+      "level": "A2",
+      "fr": "Elle adore les vieux films français en noir et blanc.",
+      "en": "She loves old French films in black and white.",
+      "distractors": [
+        "She loves new French films in black and white.",
+        "She loves old Italian films in black and white.",
+        "He loves old French films in black and white."
+      ],
+      "gap": "vieux",
+      "topics": [
+        "adjective-placement",
+        "agreement"
+      ],
+      "words": [
+        "qualities-009",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "adore",
+          "en": "loves (adorer)"
+        },
+        {
+          "fr": "vieux",
+          "en": "old",
+          "word": "qualities-009"
+        },
+        {
+          "fr": "films",
+          "en": "films",
+          "word": "work-089"
+        },
+        {
+          "fr": "français",
+          "en": "French"
+        },
+        {
+          "fr": "noir et blanc",
+          "en": "black and white"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-s50",
+      "level": "A2",
+      "fr": "Le dimanche, il y avait un marché et de la musique sur la place.",
+      "en": "On Sundays there was a market and music on the square.",
+      "distractors": [
+        "On Saturdays there was a market and music on the square.",
+        "On Sundays there is a market and music on the square.",
+        "On Sundays there was a market and dancing on the square."
+      ],
+      "gap": "avait",
+      "topics": [
+        "imparfait",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-058",
+        "health-time-068",
+        "travel-022",
+        "travel-034",
+        "work-094"
+      ],
+      "gloss": [
+        {
+          "fr": "Le dimanche",
+          "en": "on Sundays",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "il y avait",
+          "en": "there was; there were"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "place",
+          "en": "square",
+          "word": "travel-034"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a2-leisure-p01",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Choosing a film",
+      "lines": [
+        {
+          "speaker": "Léa",
+          "fr": "Tu veux aller au cinéma ce soir ? Il y a un nouveau film italien.",
+          "en": "Do you want to go to the cinema tonight? There’s a new Italian film on."
+        },
+        {
+          "speaker": "Karim",
+          "fr": "Ce soir, je ne peux pas : j’ai un match de foot. Et demain ?",
+          "en": "Tonight I can’t: I’ve got a football match. What about tomorrow?"
+        },
+        {
+          "speaker": "Léa",
+          "fr": "D’accord pour demain. La séance de dix-huit heures ou celle de vingt heures ?",
+          "en": "Okay, tomorrow then. The six o’clock showing or the eight o’clock one?"
+        },
+        {
+          "speaker": "Karim",
+          "fr": "Plutôt vingt heures : je finis le travail à sept heures.",
+          "en": "Eight o’clock, rather: I finish work at seven."
+        },
+        {
+          "speaker": "Léa",
+          "fr": "Parfait. On se retrouve devant le cinéma à huit heures moins dix.",
+          "en": "Perfect. We’ll meet in front of the cinema at ten to eight."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why can’t Karim go tonight?",
+          "choices": [
+            "He has a football match.",
+            "He has to work late.",
+            "He has already seen the film.",
+            "He does not like Italian films."
+          ],
+          "answer": 0,
+          "explanation": "Karim says: Ce soir, je ne peux pas : j’ai un match de foot."
+        },
+        {
+          "question": "Which showing do they choose?",
+          "choices": [
+            "The six o’clock one.",
+            "The eight o’clock one.",
+            "The ten o’clock one."
+          ],
+          "answer": 1,
+          "explanation": "Karim answers Plutôt vingt heures, that is eight in the evening."
+        },
+        {
+          "question": "Where and when do they meet?",
+          "choices": [
+            "Outside the cinema at ten to eight.",
+            "Inside the cinema at eight o’clock.",
+            "Outside the cinema at ten past eight."
+          ],
+          "answer": 0,
+          "explanation": "Léa ends with: On se retrouve devant le cinéma à huit heures moins dix."
+        },
+        {
+          "question": "Which day do they go in the end?",
+          "choices": [
+            "Tonight.",
+            "Tomorrow.",
+            "On Saturday."
+          ],
+          "answer": 1,
+          "explanation": "Léa says D’accord pour demain after Karim asks Et demain ?"
+        }
+      ],
+      "topics": [
+        "questions",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-015",
+        "essentials-062",
+        "essentials-067",
+        "health-time-052",
+        "health-time-060",
+        "health-time-088",
+        "health-time-089",
+        "health-time-094",
+        "qualities-008",
+        "verbs-002",
+        "verbs-004",
+        "verbs-019",
+        "verbs-020",
+        "verbs-048",
+        "work-001",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "aller",
+          "en": "to go",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "cinéma",
+          "en": "cinema"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Il y a",
+          "en": "there is; there are"
+        },
+        {
+          "fr": "nouveau",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "italien",
+          "en": "Italian"
+        },
+        {
+          "fr": "Ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "peux",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "match",
+          "en": "match; game"
+        },
+        {
+          "fr": "foot",
+          "en": "football"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "D’accord",
+          "en": "okay; agreed",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "séance",
+          "en": "showing; session"
+        },
+        {
+          "fr": "dix-huit",
+          "en": "eighteen"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "celle",
+          "en": "the one"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "Plutôt",
+          "en": "rather"
+        },
+        {
+          "fr": "finis",
+          "en": "finish (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "travail",
+          "en": "work",
+          "word": "work-001"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect"
+        },
+        {
+          "fr": "retrouve",
+          "en": "meet up (se retrouver)"
+        },
+        {
+          "fr": "devant",
+          "en": "in front of",
+          "word": "essentials-067"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "moins dix",
+          "en": "ten to (the hour)"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-p02",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Two tickets for the concert",
+      "lines": [
+        {
+          "speaker": "La vendeuse",
+          "fr": "Bonjour ! C’est pour le concert de samedi ?",
+          "en": "Hello! Is it for Saturday’s concert?"
+        },
+        {
+          "speaker": "Antoine",
+          "fr": "Oui, deux billets, s’il vous plaît. C’est combien ?",
+          "en": "Yes, two tickets please. How much is it?"
+        },
+        {
+          "speaker": "La vendeuse",
+          "fr": "Vingt-cinq euros le billet, mais les étudiants paient quinze euros.",
+          "en": "Twenty-five euros a ticket, but students pay fifteen euros."
+        },
+        {
+          "speaker": "Antoine",
+          "fr": "Ma fille est étudiante. Alors un billet normal et un billet étudiant.",
+          "en": "My daughter is a student. So one standard ticket and one student ticket."
+        },
+        {
+          "speaker": "La vendeuse",
+          "fr": "Très bien, ça fait quarante euros. Le concert commence à vingt heures trente.",
+          "en": "Very good, that comes to forty euros. The concert starts at half past eight."
+        },
+        {
+          "speaker": "Antoine",
+          "fr": "Merci. Les portes ouvrent à quelle heure ?",
+          "en": "Thank you. What time do the doors open?"
+        },
+        {
+          "speaker": "La vendeuse",
+          "fr": "Une heure avant, à dix-neuf heures trente.",
+          "en": "An hour before, at half past seven."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How much does Antoine pay in total?",
+          "choices": [
+            "Twenty-five euros.",
+            "Forty euros.",
+            "Fifty euros.",
+            "Fifteen euros."
+          ],
+          "answer": 1,
+          "explanation": "The seller says ça fait quarante euros: twenty-five plus fifteen."
+        },
+        {
+          "question": "Why is one seat cheaper?",
+          "choices": [
+            "His daughter is a student.",
+            "He is buying two seats.",
+            "He booked early.",
+            "The concert is on a Saturday."
+          ],
+          "answer": 0,
+          "explanation": "Les étudiants paient quinze euros, and he says Ma fille est étudiante."
+        },
+        {
+          "question": "What time do the doors open?",
+          "choices": [
+            "At half past seven.",
+            "At half past eight.",
+            "At seven o’clock."
+          ],
+          "answer": 0,
+          "explanation": "Une heure avant, à dix-neuf heures trente: half past seven."
+        },
+        {
+          "question": "When is the concert?",
+          "choices": [
+            "On Saturday.",
+            "On Sunday.",
+            "On Friday."
+          ],
+          "answer": 0,
+          "explanation": "The seller opens with le concert de samedi."
+        }
+      ],
+      "topics": [
+        "questions",
+        "question-words",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-002",
+        "essentials-003",
+        "essentials-004",
+        "essentials-038",
+        "essentials-045",
+        "essentials-049",
+        "essentials-062",
+        "essentials-096",
+        "health-time-052",
+        "health-time-067",
+        "health-time-083",
+        "health-time-093",
+        "health-time-094",
+        "health-time-095",
+        "health-time-096",
+        "home-025",
+        "people-007",
+        "qualities-085",
+        "travel-015",
+        "verbs-001",
+        "verbs-003",
+        "verbs-045",
+        "verbs-047",
+        "verbs-057",
+        "work-016"
+      ],
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "C’est",
+          "en": "it is; that is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "concert",
+          "en": "concert"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "billets",
+          "en": "tickets",
+          "word": "travel-015"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please (formal)",
+          "word": "essentials-003"
+        },
+        {
+          "fr": "combien",
+          "en": "how much; how many",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "Vingt-cinq",
+          "en": "twenty-five"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "billet",
+          "en": "ticket",
+          "word": "travel-015"
+        },
+        {
+          "fr": "étudiants",
+          "en": "students",
+          "word": "work-016"
+        },
+        {
+          "fr": "paient",
+          "en": "pay (payer)",
+          "word": "verbs-057"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "Ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "fille",
+          "en": "daughter; girl",
+          "word": "people-007"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "étudiante",
+          "en": "student (woman)",
+          "word": "work-016"
+        },
+        {
+          "fr": "Alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "normal",
+          "en": "standard; normal",
+          "word": "qualities-085"
+        },
+        {
+          "fr": "étudiant",
+          "en": "student",
+          "word": "work-016"
+        },
+        {
+          "fr": "Très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "ça fait",
+          "en": "that comes to",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "quarante",
+          "en": "forty",
+          "word": "health-time-096"
+        },
+        {
+          "fr": "commence",
+          "en": "starts (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "trente",
+          "en": "thirty",
+          "word": "health-time-095"
+        },
+        {
+          "fr": "Merci",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "fr": "portes",
+          "en": "doors",
+          "word": "home-025"
+        },
+        {
+          "fr": "ouvrent",
+          "en": "open (ouvrir)",
+          "word": "verbs-045"
+        },
+        {
+          "fr": "quelle",
+          "en": "what; which"
+        },
+        {
+          "fr": "heure",
+          "en": "hour; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "dix-neuf",
+          "en": "nineteen"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-p03",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "After the match",
+      "lines": [
+        {
+          "speaker": "Théo",
+          "fr": "Alors, tu as vu le match hier soir ?",
+          "en": "So, did you see the match last night?"
+        },
+        {
+          "speaker": "Sarah",
+          "fr": "Non, j’étais chez ma grand-mère et je n’avais pas la télé. On a gagné ?",
+          "en": "No, I was at my grandmother’s and I had no TV. Did we win?"
+        },
+        {
+          "speaker": "Théo",
+          "fr": "On a perdu deux à un, mais l’équipe a bien joué.",
+          "en": "We lost two-one, but the team played well."
+        },
+        {
+          "speaker": "Sarah",
+          "fr": "Dommage. Le prochain match est dimanche, non ?",
+          "en": "Too bad. The next match is on Sunday, isn’t it?"
+        },
+        {
+          "speaker": "Théo",
+          "fr": "Samedi, à quinze heures. Tu viens avec moi au stade ?",
+          "en": "Saturday, at three o’clock. Are you coming to the stadium with me?"
+        },
+        {
+          "speaker": "Sarah",
+          "fr": "Avec plaisir ! Je prends les billets ce soir.",
+          "en": "I’d love to! I’ll get the tickets tonight."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What was the result of the match?",
+          "choices": [
+            "The team won two-one.",
+            "The team lost two-one.",
+            "The team lost three-one.",
+            "The match was cancelled."
+          ],
+          "answer": 1,
+          "explanation": "Théo says On a perdu deux à un."
+        },
+        {
+          "question": "Why did Sarah miss the match?",
+          "choices": [
+            "She was working.",
+            "She was at her grandmother’s, with no TV.",
+            "She does not like football.",
+            "She was at the stadium."
+          ],
+          "answer": 1,
+          "explanation": "j’étais chez ma grand-mère et je n’avais pas la télé."
+        },
+        {
+          "question": "When is the next match?",
+          "choices": [
+            "On Sunday afternoon.",
+            "On Saturday afternoon.",
+            "On Saturday morning."
+          ],
+          "answer": 1,
+          "explanation": "Sarah says dimanche, but Théo corrects her: Samedi, à quinze heures."
+        },
+        {
+          "question": "Who is going to buy the tickets?",
+          "choices": [
+            "Sarah.",
+            "Théo.",
+            "Sarah’s grandmother."
+          ],
+          "answer": 0,
+          "explanation": "Sarah says Je prends les billets ce soir."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "imparfait"
+      ],
+      "words": [
+        "essentials-005",
+        "essentials-025",
+        "essentials-045",
+        "essentials-049",
+        "essentials-060",
+        "essentials-064",
+        "health-time-052",
+        "health-time-060",
+        "health-time-067",
+        "health-time-068",
+        "health-time-083",
+        "health-time-093",
+        "people-013",
+        "travel-015",
+        "verbs-001",
+        "verbs-002",
+        "verbs-005",
+        "verbs-010",
+        "verbs-023",
+        "verbs-081",
+        "verbs-082",
+        "verbs-087",
+        "work-087"
+      ],
+      "gloss": [
+        {
+          "fr": "Alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "match",
+          "en": "match; game"
+        },
+        {
+          "fr": "hier soir",
+          "en": "yesterday evening; last night",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "j’étais",
+          "en": "I was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "grand-mère",
+          "en": "grandmother",
+          "word": "people-013"
+        },
+        {
+          "fr": "n’avais",
+          "en": "did not have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "télé",
+          "en": "TV (la télévision)",
+          "word": "work-087"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "gagné",
+          "en": "won (gagner)",
+          "word": "verbs-082"
+        },
+        {
+          "fr": "perdu",
+          "en": "lost (perdre)",
+          "word": "verbs-081"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "l’équipe",
+          "en": "team"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "joué",
+          "en": "played (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "Dommage",
+          "en": "a shame; too bad"
+        },
+        {
+          "fr": "prochain",
+          "en": "next"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "non",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "fr": "Samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "viens",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "stade",
+          "en": "stadium"
+        },
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "plaisir",
+          "en": "pleasure"
+        },
+        {
+          "fr": "prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "billets",
+          "en": "tickets",
+          "word": "travel-015"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening; tonight",
+          "word": "health-time-060"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-p04",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Plans for the weekend",
+      "lines": [
+        {
+          "speaker": "Nora",
+          "fr": "Qu’est-ce qu’on fait ce week-end ? On va à la mer ?",
+          "en": "What are we doing this weekend? Shall we go to the sea?"
+        },
+        {
+          "speaker": "Paul",
+          "fr": "La météo annonce de la pluie samedi, mais du soleil dimanche.",
+          "en": "The forecast says rain on Saturday, but sunshine on Sunday."
+        },
+        {
+          "speaker": "Nora",
+          "fr": "Alors samedi, le musée, et dimanche, la plage. Ça te va ?",
+          "en": "Then the museum on Saturday and the beach on Sunday. Does that suit you?"
+        },
+        {
+          "speaker": "Paul",
+          "fr": "Parfait. Le musée est gratuit le premier samedi du mois.",
+          "en": "Perfect. The museum is free on the first Saturday of the month."
+        },
+        {
+          "speaker": "Nora",
+          "fr": "Et c’est ce samedi ! On économise dix euros.",
+          "en": "And that’s this Saturday! We’re saving ten euros."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is the weather going to be like on Saturday?",
+          "choices": [
+            "Sunny.",
+            "Rainy.",
+            "Windy.",
+            "Snowy."
+          ],
+          "answer": 1,
+          "explanation": "La météo annonce de la pluie samedi."
+        },
+        {
+          "question": "What are they going to do on Sunday?",
+          "choices": [
+            "Go to the beach.",
+            "Go to the museum.",
+            "Stay at home."
+          ],
+          "answer": 0,
+          "explanation": "Nora says dimanche, la plage, and Sunday is the sunny day."
+        },
+        {
+          "question": "Why does the museum cost nothing for them?",
+          "choices": [
+            "They are students.",
+            "It is the first Saturday of the month.",
+            "It is raining.",
+            "They have a subscription."
+          ],
+          "answer": 1,
+          "explanation": "Le musée est gratuit le premier samedi du mois, et c’est ce samedi."
+        },
+        {
+          "question": "How much do they save?",
+          "choices": [
+            "Ten euros.",
+            "Twelve euros.",
+            "Twenty euros."
+          ],
+          "answer": 0,
+          "explanation": "Nora says On économise dix euros."
+        }
+      ],
+      "topics": [
+        "futur-proche",
+        "time-expressions"
+      ],
+      "words": [
+        "health-time-057",
+        "health-time-067",
+        "health-time-068",
+        "health-time-091",
+        "nature-001",
+        "nature-002",
+        "nature-007",
+        "nature-068",
+        "nature-095",
+        "qualities-060",
+        "travel-073",
+        "verbs-001",
+        "verbs-003",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "fr": "Qu’est-ce qu’on",
+          "en": "what … we"
+        },
+        {
+          "fr": "fait",
+          "en": "does; is (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        },
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        },
+        {
+          "fr": "météo",
+          "en": "weather forecast",
+          "word": "nature-095"
+        },
+        {
+          "fr": "annonce",
+          "en": "announces; forecasts (annoncer)"
+        },
+        {
+          "fr": "pluie",
+          "en": "rain",
+          "word": "nature-002"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "soleil",
+          "en": "sun; sunshine",
+          "word": "nature-001"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "Alors",
+          "en": "so; then"
+        },
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "plage",
+          "en": "beach",
+          "word": "nature-068"
+        },
+        {
+          "fr": "Ça te va",
+          "en": "does that suit you?"
+        },
+        {
+          "fr": "Parfait",
+          "en": "perfect"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "gratuit",
+          "en": "free (no charge)",
+          "word": "qualities-060"
+        },
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "mois",
+          "en": "month",
+          "word": "health-time-057"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is; that is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "économise",
+          "en": "save (économiser)"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-p05",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Running on Thursday",
+      "lines": [
+        {
+          "speaker": "Hugo",
+          "fr": "Tu fais du sport en ce moment ?",
+          "en": "Are you doing any sport at the moment?"
+        },
+        {
+          "speaker": "Inès",
+          "fr": "Oui, je cours deux fois par semaine et le samedi je fais du vélo.",
+          "en": "Yes, I run twice a week and on Saturdays I cycle."
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Moi, j’ai arrêté le football l’année dernière, à cause de mon genou.",
+          "en": "I gave up football last year, because of my knee."
+        },
+        {
+          "speaker": "Inès",
+          "fr": "Viens courir avec moi jeudi ! On part du parc à sept heures du matin.",
+          "en": "Come running with me on Thursday! We leave from the park at seven in the morning."
+        },
+        {
+          "speaker": "Hugo",
+          "fr": "Sept heures, c’est tôt, mais d’accord, j’essaie.",
+          "en": "Seven o’clock is early, but all right, I’ll try."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why did Hugo stop playing football?",
+          "choices": [
+            "Because of his knee.",
+            "Because he had no time.",
+            "Because he prefers running.",
+            "Because his team lost."
+          ],
+          "answer": 0,
+          "explanation": "j’ai arrêté le football l’année dernière, à cause de mon genou."
+        },
+        {
+          "question": "How often does Inès run?",
+          "choices": [
+            "Every day.",
+            "Twice a week.",
+            "Once a week.",
+            "Twice a month."
+          ],
+          "answer": 1,
+          "explanation": "je cours deux fois par semaine."
+        },
+        {
+          "question": "What does Inès do on Saturdays?",
+          "choices": [
+            "She cycles.",
+            "She runs in the park.",
+            "She plays football."
+          ],
+          "answer": 0,
+          "explanation": "le samedi je fais du vélo."
+        },
+        {
+          "question": "What does Hugo think of the meeting time?",
+          "choices": [
+            "He thinks it is early, but he agrees.",
+            "He thinks it is too late.",
+            "He refuses to come."
+          ],
+          "answer": 0,
+          "explanation": "Sept heures, c’est tôt, mais d’accord, j’essaie."
+        }
+      ],
+      "topics": [
+        "passe-compose-avoir",
+        "imperative"
+      ],
+      "words": [
+        "essentials-004",
+        "essentials-015",
+        "essentials-025",
+        "essentials-049",
+        "essentials-060",
+        "health-time-023",
+        "health-time-052",
+        "health-time-056",
+        "health-time-058",
+        "health-time-059",
+        "health-time-065",
+        "health-time-067",
+        "health-time-088",
+        "travel-008",
+        "travel-035",
+        "verbs-001",
+        "verbs-002",
+        "verbs-003",
+        "verbs-005",
+        "verbs-031",
+        "verbs-040",
+        "verbs-050",
+        "verbs-078"
+      ],
+      "gloss": [
+        {
+          "fr": "fais",
+          "en": "do; make (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "sport",
+          "en": "sport"
+        },
+        {
+          "fr": "en ce moment",
+          "en": "at the moment"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "cours",
+          "en": "run (courir)",
+          "word": "verbs-040"
+        },
+        {
+          "fr": "deux fois",
+          "en": "twice"
+        },
+        {
+          "fr": "par semaine",
+          "en": "a week; per week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "le samedi",
+          "en": "on Saturdays",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "vélo",
+          "en": "bike",
+          "word": "travel-008"
+        },
+        {
+          "fr": "Moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "j’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "arrêté",
+          "en": "stopped; gave up (arrêter)",
+          "word": "verbs-050"
+        },
+        {
+          "fr": "football",
+          "en": "football"
+        },
+        {
+          "fr": "l’année dernière",
+          "en": "last year",
+          "word": "health-time-058"
+        },
+        {
+          "fr": "à cause de",
+          "en": "because of"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "genou",
+          "en": "knee",
+          "word": "health-time-023"
+        },
+        {
+          "fr": "Viens",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "courir",
+          "en": "to run",
+          "word": "verbs-040"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "du matin",
+          "en": "in the morning; a.m.",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "Sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is; that is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        },
+        {
+          "fr": "d’accord",
+          "en": "okay; agreed",
+          "word": "essentials-015"
+        },
+        {
+          "fr": "j’essaie",
+          "en": "will try (essayer)",
+          "word": "verbs-078"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-p06",
+      "level": "A2",
+      "kind": "text",
+      "title": "An invitation by message",
+      "lines": [
+        {
+          "fr": "Salut Julie ! Samedi, j’organise une petite fête chez moi pour mon anniversaire.",
+          "en": "Hi Julie! On Saturday I’m having a little party at my place for my birthday."
+        },
+        {
+          "fr": "On commence vers vingt heures. Apporte quelque chose à boire, je m’occupe du gâteau.",
+          "en": "We’re starting around eight. Bring something to drink; I’ll take care of the cake."
+        },
+        {
+          "fr": "Marc apporte sa guitare, donc il y aura de la musique toute la soirée.",
+          "en": "Marc is bringing his guitar, so there will be music all evening."
+        },
+        {
+          "fr": "Réponds-moi avant jeudi, s’il te plaît. Bises, Emma.",
+          "en": "Reply to me before Thursday, please. Love, Emma."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is Julie asked to bring?",
+          "choices": [
+            "Something to drink.",
+            "The cake.",
+            "A guitar.",
+            "A present."
+          ],
+          "answer": 0,
+          "explanation": "Apporte quelque chose à boire; Emma takes care of the cake herself."
+        },
+        {
+          "question": "Why will there be music?",
+          "choices": [
+            "Marc is bringing his guitar.",
+            "Emma has booked a band.",
+            "The neighbours are playing.",
+            "Julie is bringing a radio."
+          ],
+          "answer": 0,
+          "explanation": "Marc apporte sa guitare, donc il y aura de la musique."
+        },
+        {
+          "question": "By when should Julie answer?",
+          "choices": [
+            "Before Saturday.",
+            "Before Thursday.",
+            "Before eight o’clock."
+          ],
+          "answer": 1,
+          "explanation": "Réponds-moi avant jeudi."
+        },
+        {
+          "question": "What is the party for?",
+          "choices": [
+            "Emma’s birthday.",
+            "The end of the school year.",
+            "Marc’s concert."
+          ],
+          "answer": 0,
+          "explanation": "j’organise une petite fête chez moi pour mon anniversaire."
+        }
+      ],
+      "topics": [
+        "imperative",
+        "futur-simple"
+      ],
+      "words": [
+        "essentials-006",
+        "essentials-012",
+        "essentials-025",
+        "essentials-041",
+        "essentials-044",
+        "essentials-049",
+        "essentials-051",
+        "essentials-062",
+        "essentials-064",
+        "essentials-069",
+        "essentials-078",
+        "food-054",
+        "health-time-052",
+        "health-time-065",
+        "health-time-067",
+        "health-time-094",
+        "people-054",
+        "qualities-002",
+        "verbs-009",
+        "verbs-043",
+        "verbs-047",
+        "verbs-060",
+        "work-094"
+      ],
+      "gloss": [
+        {
+          "fr": "Salut",
+          "en": "hi; bye",
+          "word": "essentials-006"
+        },
+        {
+          "fr": "Julie",
+          "en": "Julie (a first name)"
+        },
+        {
+          "fr": "Samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "j’organise",
+          "en": "am organising (organiser)"
+        },
+        {
+          "fr": "petite",
+          "en": "small; little",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "fête",
+          "en": "party",
+          "word": "people-054"
+        },
+        {
+          "fr": "chez",
+          "en": "at the home of",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "moi",
+          "en": "me",
+          "word": "essentials-025"
+        },
+        {
+          "fr": "pour",
+          "en": "for; in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "anniversaire",
+          "en": "birthday"
+        },
+        {
+          "fr": "commence",
+          "en": "starts (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "vers",
+          "en": "around (a time); toward",
+          "word": "essentials-069"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "Apporte",
+          "en": "bring (apporter, order)",
+          "word": "verbs-043"
+        },
+        {
+          "fr": "quelque",
+          "en": "some (quelque chose)",
+          "word": "essentials-041"
+        },
+        {
+          "fr": "chose",
+          "en": "thing (quelque chose)",
+          "word": "essentials-041"
+        },
+        {
+          "fr": "boire",
+          "en": "to drink",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "m’occupe",
+          "en": "take care of (s’occuper de)"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "Marc",
+          "en": "Marc (a first name)"
+        },
+        {
+          "fr": "apporte",
+          "en": "brings (apporter)",
+          "word": "verbs-043"
+        },
+        {
+          "fr": "sa",
+          "en": "his; her",
+          "word": "essentials-051"
+        },
+        {
+          "fr": "guitare",
+          "en": "guitar"
+        },
+        {
+          "fr": "donc",
+          "en": "so; therefore",
+          "word": "essentials-078"
+        },
+        {
+          "fr": "il y aura",
+          "en": "there will be"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        },
+        {
+          "fr": "toute la",
+          "en": "all the; the whole",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "soirée",
+          "en": "evening (the whole evening)"
+        },
+        {
+          "fr": "Réponds-moi",
+          "en": "answer me (répondre)",
+          "word": "verbs-009"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "jeudi",
+          "en": "Thursday",
+          "word": "health-time-065"
+        },
+        {
+          "fr": "s’il te plaît",
+          "en": "please (informal)",
+          "word": "essentials-012"
+        },
+        {
+          "fr": "Bises",
+          "en": "love; kisses (ending a message)"
+        },
+        {
+          "fr": "Emma",
+          "en": "Emma (a first name)"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-p07",
+      "level": "A2",
+      "kind": "text",
+      "title": "The weekend forecast",
+      "lines": [
+        {
+          "fr": "Voici la météo du week-end.",
+          "en": "Here is the weekend forecast."
+        },
+        {
+          "fr": "Samedi matin, le ciel sera gris sur tout le nord, et il pleuvra l’après-midi.",
+          "en": "On Saturday morning the sky will be grey over the whole north, and it will rain in the afternoon."
+        },
+        {
+          "fr": "Les températures resteront basses, autour de douze degrés.",
+          "en": "Temperatures will stay low, around twelve degrees."
+        },
+        {
+          "fr": "Dimanche, le soleil reviendra et il fera dix-huit degrés à Paris.",
+          "en": "On Sunday the sun will come back and it will be eighteen degrees in Paris."
+        },
+        {
+          "fr": "Le vent sera faible. Bon week-end à tous !",
+          "en": "The wind will be light. Have a good weekend, everyone!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "When will it rain?",
+          "choices": [
+            "On Saturday afternoon.",
+            "On Saturday morning.",
+            "On Sunday afternoon.",
+            "All weekend."
+          ],
+          "answer": 0,
+          "explanation": "Samedi matin, le ciel sera gris … et il pleuvra l’après-midi."
+        },
+        {
+          "question": "How warm will it be in Paris on Sunday?",
+          "choices": [
+            "Twelve degrees.",
+            "Eighteen degrees.",
+            "Eight degrees."
+          ],
+          "answer": 1,
+          "explanation": "il fera dix-huit degrés à Paris."
+        },
+        {
+          "question": "What is said about the wind?",
+          "choices": [
+            "It will be light.",
+            "It will be strong.",
+            "There will be a storm."
+          ],
+          "answer": 0,
+          "explanation": "Le vent sera faible."
+        },
+        {
+          "question": "Which part of the country will be grey on Saturday morning?",
+          "choices": [
+            "The north.",
+            "The south.",
+            "The whole country."
+          ],
+          "answer": 0,
+          "explanation": "le ciel sera gris sur tout le nord."
+        }
+      ],
+      "topics": [
+        "futur-simple",
+        "time-expressions"
+      ],
+      "words": [
+        "essentials-044",
+        "essentials-058",
+        "health-time-067",
+        "health-time-068",
+        "health-time-092",
+        "nature-001",
+        "nature-003",
+        "nature-005",
+        "nature-093",
+        "nature-095",
+        "qualities-016",
+        "qualities-024",
+        "travel-042",
+        "verbs-001",
+        "verbs-003",
+        "verbs-030",
+        "verbs-035"
+      ],
+      "gloss": [
+        {
+          "fr": "Voici",
+          "en": "here is"
+        },
+        {
+          "fr": "météo",
+          "en": "weather forecast",
+          "word": "nature-095"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        },
+        {
+          "fr": "Samedi matin",
+          "en": "on Saturday morning",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "ciel",
+          "en": "sky",
+          "word": "nature-005"
+        },
+        {
+          "fr": "sera",
+          "en": "will be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "gris",
+          "en": "grey"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "tout le",
+          "en": "the whole; all the",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "nord",
+          "en": "north",
+          "word": "travel-042"
+        },
+        {
+          "fr": "pleuvra",
+          "en": "will rain (pleuvoir)"
+        },
+        {
+          "fr": "l’après-midi",
+          "en": "afternoon"
+        },
+        {
+          "fr": "températures",
+          "en": "temperatures",
+          "word": "nature-093"
+        },
+        {
+          "fr": "resteront",
+          "en": "will stay (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "basses",
+          "en": "low",
+          "word": "qualities-016"
+        },
+        {
+          "fr": "autour",
+          "en": "around"
+        },
+        {
+          "fr": "douze",
+          "en": "twelve",
+          "word": "health-time-092"
+        },
+        {
+          "fr": "degrés",
+          "en": "degrees"
+        },
+        {
+          "fr": "Dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "soleil",
+          "en": "sun; sunshine",
+          "word": "nature-001"
+        },
+        {
+          "fr": "reviendra",
+          "en": "will come back (revenir)",
+          "word": "verbs-035"
+        },
+        {
+          "fr": "fera",
+          "en": "will be (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "dix-huit",
+          "en": "eighteen"
+        },
+        {
+          "fr": "Paris",
+          "en": "Paris"
+        },
+        {
+          "fr": "vent",
+          "en": "wind",
+          "word": "nature-003"
+        },
+        {
+          "fr": "faible",
+          "en": "light; weak",
+          "word": "qualities-024"
+        },
+        {
+          "fr": "Bon week-end",
+          "en": "have a good weekend"
+        },
+        {
+          "fr": "à tous",
+          "en": "to everyone",
+          "word": "essentials-044"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-p08",
+      "level": "A2",
+      "kind": "text",
+      "title": "The reading club",
+      "lines": [
+        {
+          "fr": "Le club de lecture se retrouve mardi prochain à dix-neuf heures, à la bibliothèque du quartier.",
+          "en": "The reading club meets next Tuesday at seven in the evening, at the neighbourhood library."
+        },
+        {
+          "fr": "Ce mois-ci, nous lisons un roman policier de deux cents pages.",
+          "en": "This month we are reading a two-hundred-page crime novel."
+        },
+        {
+          "fr": "Vous n’avez pas fini le livre ? Venez quand même : on parle aussi des films.",
+          "en": "Haven’t you finished the book? Come all the same: we talk about films too."
+        },
+        {
+          "fr": "Le café et les gâteaux sont offerts.",
+          "en": "Coffee and cakes are provided free."
+        },
+        {
+          "fr": "La prochaine séance sera le premier mardi de juillet.",
+          "en": "The next session will be the first Tuesday in July."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where does the club meet?",
+          "choices": [
+            "At the neighbourhood library.",
+            "At the museum.",
+            "In a café.",
+            "At the cinema."
+          ],
+          "answer": 0,
+          "explanation": "à la bibliothèque du quartier."
+        },
+        {
+          "question": "What should you do if you have not finished the book?",
+          "choices": [
+            "Come anyway.",
+            "Stay at home.",
+            "Read the end quickly.",
+            "Bring another book."
+          ],
+          "answer": 0,
+          "explanation": "Vous n’avez pas fini le livre ? Venez quand même."
+        },
+        {
+          "question": "What is free at the meeting?",
+          "choices": [
+            "Coffee and cakes.",
+            "The book.",
+            "The parking."
+          ],
+          "answer": 0,
+          "explanation": "Le café et les gâteaux sont offerts."
+        },
+        {
+          "question": "When is the session after this one?",
+          "choices": [
+            "The first Tuesday in July.",
+            "Next Tuesday.",
+            "The last Tuesday in July."
+          ],
+          "answer": 0,
+          "explanation": "La prochaine séance sera le premier mardi de juillet."
+        }
+      ],
+      "topics": [
+        "negation",
+        "futur-simple"
+      ],
+      "words": [
+        "essentials-086",
+        "food-003",
+        "food-054",
+        "health-time-052",
+        "health-time-057",
+        "health-time-063",
+        "health-time-075",
+        "travel-032",
+        "verbs-001",
+        "verbs-002",
+        "verbs-005",
+        "verbs-007",
+        "verbs-048",
+        "verbs-072",
+        "work-043",
+        "work-089"
+      ],
+      "gloss": [
+        {
+          "fr": "club",
+          "en": "club"
+        },
+        {
+          "fr": "lecture",
+          "en": "reading"
+        },
+        {
+          "fr": "retrouve",
+          "en": "meet up (se retrouver)"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "prochain",
+          "en": "next"
+        },
+        {
+          "fr": "dix-neuf",
+          "en": "nineteen"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "bibliothèque",
+          "en": "library"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "Ce mois-ci",
+          "en": "this month",
+          "word": "health-time-057"
+        },
+        {
+          "fr": "lisons",
+          "en": "read (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "roman",
+          "en": "novel"
+        },
+        {
+          "fr": "policier",
+          "en": "crime (story)"
+        },
+        {
+          "fr": "deux cents",
+          "en": "two hundred"
+        },
+        {
+          "fr": "pages",
+          "en": "pages"
+        },
+        {
+          "fr": "n’avez",
+          "en": "have not (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fini",
+          "en": "finished (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "Venez",
+          "en": "come (venir, order)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "quand même",
+          "en": "all the same; anyway"
+        },
+        {
+          "fr": "parle",
+          "en": "talks (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "aussi",
+          "en": "also; too",
+          "word": "essentials-086"
+        },
+        {
+          "fr": "films",
+          "en": "films",
+          "word": "work-089"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "gâteaux",
+          "en": "cakes",
+          "word": "food-054"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "offerts",
+          "en": "provided free (offrir)"
+        },
+        {
+          "fr": "prochaine",
+          "en": "next"
+        },
+        {
+          "fr": "séance",
+          "en": "showing; session"
+        },
+        {
+          "fr": "sera",
+          "en": "will be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "juillet",
+          "en": "July",
+          "word": "health-time-075"
+        }
+      ]
+    },
+    {
+      "id": "a2-leisure-p09",
+      "level": "A2",
+      "kind": "text",
+      "title": "My first rock concert",
+      "lines": [
+        {
+          "fr": "Hier soir, je suis allée à mon premier concert de rock avec ma sœur.",
+          "en": "Last night I went to my first rock concert with my sister."
+        },
+        {
+          "fr": "La salle était pleine et il faisait très chaud.",
+          "en": "The hall was full and it was very hot."
+        },
+        {
+          "fr": "Le groupe a joué pendant deux heures et le public chantait avec eux.",
+          "en": "The band played for two hours and the audience sang along with them."
+        },
+        {
+          "fr": "Je ne connaissais pas la dernière chanson, mais c’était la plus belle.",
+          "en": "I didn’t know the last song, but it was the most beautiful one."
+        },
+        {
+          "fr": "Nous sommes rentrés à une heure du matin.",
+          "en": "We got home at one in the morning."
+        },
+        {
+          "fr": "Ce matin, je suis fatiguée, mais très heureuse.",
+          "en": "This morning I’m tired, but very happy."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How long did the band play?",
+          "choices": [
+            "Two hours.",
+            "One hour.",
+            "All night.",
+            "Twenty minutes."
+          ],
+          "answer": 0,
+          "explanation": "Le groupe a joué pendant deux heures."
+        },
+        {
+          "question": "What did the audience do?",
+          "choices": [
+            "They sang with the band.",
+            "They danced on the stage.",
+            "They left early.",
+            "They stayed silent."
+          ],
+          "answer": 0,
+          "explanation": "le public chantait avec eux."
+        },
+        {
+          "question": "What does the writer say about the last song?",
+          "choices": [
+            "She did not know it, but she found it the most beautiful.",
+            "She knew it well and sang it.",
+            "She found it too long."
+          ],
+          "answer": 0,
+          "explanation": "Je ne connaissais pas la dernière chanson, mais c’était la plus belle."
+        },
+        {
+          "question": "What time did they get home?",
+          "choices": [
+            "At one in the morning.",
+            "At eleven in the evening.",
+            "At three in the morning."
+          ],
+          "answer": 0,
+          "explanation": "Nous sommes rentrés à une heure du matin."
+        }
+      ],
+      "topics": [
+        "passe-compose-etre",
+        "pc-vs-imparfait"
+      ],
+      "words": [
+        "essentials-028",
+        "essentials-049",
+        "essentials-060",
+        "essentials-096",
+        "health-time-052",
+        "health-time-059",
+        "health-time-060",
+        "health-time-083",
+        "people-011",
+        "people-037",
+        "people-040",
+        "qualities-005",
+        "qualities-025",
+        "qualities-034",
+        "qualities-063",
+        "verbs-001",
+        "verbs-002",
+        "verbs-003",
+        "verbs-004",
+        "verbs-015",
+        "verbs-087",
+        "work-095"
+      ],
+      "gloss": [
+        {
+          "fr": "Hier soir",
+          "en": "yesterday evening; last night",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "allée",
+          "en": "gone; went (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "ma",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "premier",
+          "en": "first"
+        },
+        {
+          "fr": "concert",
+          "en": "concert"
+        },
+        {
+          "fr": "rock",
+          "en": "rock (music)"
+        },
+        {
+          "fr": "salle",
+          "en": "hall; room"
+        },
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pleine",
+          "en": "full",
+          "word": "qualities-034"
+        },
+        {
+          "fr": "faisait",
+          "en": "was (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "chaud",
+          "en": "hot; warm",
+          "word": "qualities-025"
+        },
+        {
+          "fr": "groupe",
+          "en": "band; group",
+          "word": "people-037"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "joué",
+          "en": "played (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "pendant",
+          "en": "for; during"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock; hours",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "public",
+          "en": "audience",
+          "word": "people-040"
+        },
+        {
+          "fr": "chantait",
+          "en": "was singing (chanter)"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "eux",
+          "en": "them",
+          "word": "essentials-028"
+        },
+        {
+          "fr": "connaissais",
+          "en": "knew (connaître)",
+          "word": "verbs-015"
+        },
+        {
+          "fr": "dernière",
+          "en": "last; latest"
+        },
+        {
+          "fr": "chanson",
+          "en": "song",
+          "word": "work-095"
+        },
+        {
+          "fr": "c’était",
+          "en": "it was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "la plus",
+          "en": "the most"
+        },
+        {
+          "fr": "belle",
+          "en": "beautiful",
+          "word": "qualities-005"
+        },
+        {
+          "fr": "sommes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "rentrés",
+          "en": "got home (rentrer)"
+        },
+        {
+          "fr": "heure",
+          "en": "hour; o’clock",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "du matin",
+          "en": "in the morning; a.m.",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "Ce matin",
+          "en": "this morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "fatiguée",
+          "en": "tired"
+        },
+        {
+          "fr": "heureuse",
+          "en": "happy",
+          "word": "qualities-063"
+        }
+      ]
+    }
+  ]
+}
