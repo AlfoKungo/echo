@@ -80,9 +80,10 @@ const server = Bun.serve({
     }
     try {
       if (path === '/healthz' && req.method === 'GET') return json({ ok: true, app: 'Echo', words: words.length });
-      // The learning rooms are gone; their bookmarks open the app home.
+      // The learning rooms are gone; their bookmarks open the app home. The proxy may strip /echo, so the
+      // redirect is relative: it lands on the home page under whatever prefix the browser used.
       if (path === '/learn' || path === '/learn/' || path === '/learning.html') {
-        return Response.redirect(`${url.pathname.startsWith(prefix) ? prefix : ''}/`, 308);
+        return new Response(null, { status: 308, headers: { location: path === '/learn/' ? '../' : './' } });
       }
       const comprehended = await comprehension.handle(path, req, url);
       if (comprehended) return comprehended;
