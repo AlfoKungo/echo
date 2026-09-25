@@ -7,7 +7,7 @@ import { loadCourse } from './lib/grammar-content';
 import { loadBank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
 import { buildTape, createClips, planTape, tapeView, type Tape } from './lib/walkman';
-import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, Word } from './contract';
+import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 
 const root = import.meta.dir;
 const core = await Bun.file(join(root, 'content/core.json')).json() as Word[];
@@ -51,12 +51,12 @@ const walkmanClips = createClips(join(root, 'audio'));
 const walkmanManifest = join(root, 'audio/walkman/manifest.json');
 let walkmanStamp = 0;
 const tapes = new Map<string, Tape>();
-function newTape(): Tape {
+function newTape(choice: WalkmanChoice): Tape {
   const stamp = existsSync(walkmanManifest) ? statSync(walkmanManifest).mtimeMs : 0;
   if (stamp !== walkmanStamp) { walkmanClips.forget(); walkmanStamp = stamp; }
   const listening = store.listening();
   const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
-  const tape = buildTape(crypto.randomUUID(), planTape(listening, 600), byId, walkmanClips, fresh);
+  const tape = buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), byId, walkmanClips, fresh);
   if (!tape.words.length) throw new StoreError('The Walkman recordings are not ready yet. Please try again later.', 503);
   tapes.set(tape.id, tape);
   for (const id of [...tapes.keys()].slice(0, -3)) tapes.delete(id);
@@ -175,7 +175,16 @@ const server = Bun.serve({
         if (typeof data.undoId !== 'string') throw new StoreError('There is no answer to undo.', 400);
         return json(store.undo(direction(data.direction), deck(data.deck), data.undoId));
       }
-      if (path === '/api/walkman' && req.method === 'POST') return json(tapeView(newTape()));
+      if (path === '/api/walkman' && req.method === 'POST') {
+        const data = await body(req);
+        if (data.words !== undefined && data.words !== 'scored' && data.words !== 'groups') throw new StoreError('Choose how the Walkman picks words: scored or groups.', 400);
+        return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored')));
+      }
+      if (path === '/api/walkman/heard' && req.method === 'POST') {
+        const data = await body(req);
+        store.recordHeard({ wordId: String(data.wordId ?? ''), requestId: String(data.requestId ?? '') });
+        return json({ ok: true });
+      }
       const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);
       if (tapeAudio && (req.method === 'GET' || req.method === 'HEAD')) {
         const tape = tapes.get(tapeAudio[1]!);

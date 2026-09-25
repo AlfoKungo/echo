@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { BrowseWord, WalkmanTape, WalkmanWord, Word } from '../contract';
+import type { BrowseWord, WalkmanChoice, WalkmanTape, WalkmanWord, Word } from '../contract';
 
 // Walkman clips are all encoded the same way: 24 kHz mono MPEG-2 Layer III at 64 kbps, no headers or tags.
 // Every frame is then exactly 192 bytes and 24 ms, so a tape is plain concatenation: clips and silence
@@ -20,12 +20,17 @@ const NEW_EVERY = 5;
 const NEW_PER_TAPE = 20;
 const REPEATS = [5, 14];
 export const TAPE_SECONDS = 30 * 60;
+// By score, a familiar word's chance is 2^(-score/2): a word at -6 is 64 times likelier than one at +6.
+// Scores are clamped so no word is ever certain or never heard; each pick counts the listen to come.
+const SCORE_LIMIT = 8;
+const PICK_HEARD = 0.5;
 
-// The order of a tape, word ids with repeats. Words being learnt come first, those missed most at the
-// front; then words due for review, then the known words soonest to fade. Every fifth word is new, taken
-// in content order from one category (the one already most studied that still has new words), and heard
-// twice more soon after. Listening never changes the vocabulary schedule.
-export function planTape(words: BrowseWord[], slots: number, random: () => number = Math.random): string[] {
+// The order of a tape, word ids with repeats. Every fifth word is new, taken in content order from one
+// category (the one already most studied that still has new words), and heard twice more soon after.
+// The other words are familiar ones. By groups: words being learnt come first, those missed most at the
+// front; then words due for review, then the known words soonest to fade. By score: any started word,
+// drawn at random with low scores far likelier. Listening never changes the vocabulary schedule.
+export function planTape(words: (BrowseWord & { score?: number })[], slots: number, random: () => number = Math.random, choice: WalkmanChoice = 'groups'): string[] {
   const shuffled = <T>(list: T[]) => {
     const copy = [...list];
     for (let i = copy.length - 1; i > 0; i--) {
@@ -37,8 +42,11 @@ export function planTape(words: BrowseWord[], slots: number, random: () => numbe
   const learning = shuffled(words.filter((word) => word.status === 'learning')).sort((a, b) => b.misses - a.misses);
   const byDue = (a: BrowseWord, b: BrowseWord) => (a.due ?? '').localeCompare(b.due ?? '');
   const due = words.filter((word) => word.status === 'due').sort(byDue);
-  const fading = shuffled(words.filter((word) => word.status === 'scheduled').sort(byDue).slice(0, 80));
-  const familiar = [...learning, ...due, ...fading].map((word) => word.id);
+  const scheduled = words.filter((word) => word.status === 'scheduled').sort(byDue);
+  const familiar = choice === 'scored'
+    ? [...learning, ...due, ...scheduled].map((word) => word.id)
+    : [...learning, ...due, ...shuffled(scheduled.slice(0, 80))].map((word) => word.id);
+  const score = new Map(words.map((word) => [word.id, word.score ?? 0]));
 
   const studied = new Map<string, number>();
   for (const word of words) if (word.status !== 'new') studied.set(word.category, (studied.get(word.category) ?? 0) + 1);
@@ -64,6 +72,7 @@ export function planTape(words: BrowseWord[], slots: number, random: () => numbe
     return id;
   };
   const nextFamiliar = (slot: number) => {
+    if (choice === 'scored') return drawFamiliar(slot);
     for (let step = 0; step < familiar.length; step++) {
       const index = (pointer + step) % familiar.length;
       const id = familiar[index]!;
@@ -73,6 +82,15 @@ export function planTape(words: BrowseWord[], slots: number, random: () => numbe
       }
     }
     return undefined;
+  };
+  const drawFamiliar = (slot: number) => {
+    const eligible = familiar.filter((id) => slot - (heardAt.get(id) ?? -Infinity) > SPACING);
+    const weights = eligible.map((id) => 2 ** (-Math.max(-SCORE_LIMIT, Math.min(SCORE_LIMIT, score.get(id) ?? 0)) / 2));
+    let left = random() * weights.reduce((total, weight) => total + weight, 0);
+    const index = weights.findIndex((weight) => (left -= weight) < 0);
+    const id = eligible[index < 0 ? eligible.length - 1 : index];
+    if (id) score.set(id, (score.get(id) ?? 0) + PICK_HEARD);
+    return id;
   };
   // A hole in the plan is filled by bringing the next repeat forward, never the word just played.
   const earliestRepeat = (previous: string | undefined) => {

@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { AddWordInput, AddWordResult, BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, ReviewEarlyInput, Settings, Snapshot, Stats, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -23,7 +23,9 @@ export interface Store {
   addWord(input: AddWordInput): AddWordResult;
   browse(direction: Direction, deck: string): BrowseWord[];
   // Every word as the Walkman sees it, both directions merged: a word being learnt either way is learning.
-  listening(): BrowseWord[];
+  listening(): ListeningWord[];
+  // A word heard to the end on the Walkman; a repeated requestId counts once.
+  recordHeard(input: HeardInput): void;
   exportData(): unknown;
   close(): void;
 }
@@ -64,6 +66,11 @@ type UndoRow = {
   after_version: number;
 };
 
+// Walkman scores: what each event adds to a word's score, and how fast a point fades.
+export const SCORE_RECALLED = 2;
+export const SCORE_MISSED = -3;
+export const SCORE_HEARD = 0.5;
+export const SCORE_HALF_LIFE_DAYS = 21;
 // recent holds the last words answered, newest first; selection passes over them while anything else is left.
 type PracticeQueue = { day: string; warmup: number; turn: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
 const RECENT_GAP = 3;
@@ -172,6 +179,13 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         direction TEXT NOT NULL,
         created_at TEXT NOT NULL,
         result TEXT
+      );
+      -- One row per word heard to the end on the Walkman; request_id makes a retried report count once.
+      CREATE TABLE IF NOT EXISTS walkman_heard (
+        sequence INTEGER PRIMARY KEY AUTOINCREMENT,
+        request_id TEXT NOT NULL UNIQUE,
+        word_id TEXT NOT NULL,
+        heard_at TEXT NOT NULL
       );
       CREATE INDEX IF NOT EXISTS grades_direction_sequence ON grades(direction, sequence DESC);
       CREATE INDEX IF NOT EXISTS grades_direction_time ON grades(direction, graded_at);
@@ -690,8 +704,23 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     })();
   }
 
-  function listening(): BrowseWord[] {
+  // A word's score: +2 for each recall, -3 for each miss (undone answers excluded), +0.5 for each time it
+  // was heard to the end on the Walkman. Every point halves over SCORE_HALF_LIFE_DAYS, so an untouched word
+  // drifts back towards 0 and turns up again.
+  const scoreEvents = db.query<{ word_id: string; weight: number; at: string }, []>(`
+    SELECT word_id, CASE known WHEN 1 THEN ${SCORE_RECALLED} ELSE ${SCORE_MISSED} END AS weight, graded_at AS at FROM grades
+    WHERE NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)
+    UNION ALL SELECT word_id, ${SCORE_HEARD} AS weight, heard_at AS at FROM walkman_heard`);
+  const saveHeard = db.query('INSERT OR IGNORE INTO walkman_heard (request_id, word_id, heard_at) VALUES (?, ?, ?)');
+
+  function listening(): ListeningWord[] {
     const rank = { learning: 3, due: 2, scheduled: 1, new: 0 } as const;
+    const time = now().getTime();
+    const scores = new Map<string, number>();
+    for (const event of scoreEvents.all()) {
+      const days = Math.max(0, (time - Date.parse(event.at)) / 86400000);
+      scores.set(event.word_id, (scores.get(event.word_id) ?? 0) + event.weight * 0.5 ** (days / SCORE_HALF_LIFE_DAYS));
+    }
     const reverse = new Map(browse('en-fr', 'all').map((word) => [word.id, word]));
     return browse('fr-en', 'all').map((word) => {
       const other = reverse.get(word.id)!;
@@ -703,8 +732,15 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
         due: earliest(word.due, other.due),
         lastStudied: latest(word.lastStudied, other.lastStudied),
         misses: word.misses + other.misses,
+        score: Math.round((scores.get(word.id) ?? 0) * 1000) / 1000,
       };
     });
+  }
+
+  function recordHeard(input: HeardInput): void {
+    if (!wordById.has(input.wordId)) throw new StoreError('This word is not in the vocabulary deck.', 404);
+    if (typeof input.requestId !== 'string' || !input.requestId) throw new StoreError('The listen report was incomplete.', 400);
+    saveHeard.run(input.requestId, input.wordId, now().toISOString());
   }
 
   function exportData(): unknown {
@@ -718,8 +754,9 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       })),
       undos: db.query<UndoRow, []>('SELECT * FROM undos ORDER BY sequence').all(),
       extraAllowance: db.query('SELECT * FROM extra_allowance ORDER BY day, direction').all(),
+      walkmanHeard: db.query('SELECT word_id, heard_at FROM walkman_heard ORDER BY sequence').all(),
     }))();
   }
 
-  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, addWord, browse, listening, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, addWord, browse, listening, recordHeard, exportData, close: () => db.close() };
 }

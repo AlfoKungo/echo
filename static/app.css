@@ -46,6 +46,9 @@ a.destination{color:inherit;text-decoration:none}.destination .symbol svg{displa
 .wm-progress{height:3px;margin:34px auto 0;max-width:320px;border-radius:2px;background:var(--frame);overflow:hidden}
 .wm-progress span{display:block;height:100%;background:var(--violet);transition:width .25s linear}
 .wm-note{text-align:center;margin-top:18px}
+.wm-choice{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:10px;font-size:13px;color:var(--dim)}
+.wm-choice button{padding:6px 4px;min-height:36px;color:var(--muted);font-size:13px}
+.wm-choice button[aria-pressed=true]{color:var(--violet);text-decoration:underline;text-underline-offset:4px}
 .wm-heard{margin:30px auto 0;max-width:520px}
 .wm-heard-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:46px;padding:10px 14px;border:1px solid var(--frame);border-radius:12px;color:var(--muted);font-size:14px}
 .wm-heard-toggle .chev{transition:transform .18s}

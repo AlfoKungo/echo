@@ -102,6 +102,14 @@ let walkmanHeard = (() => {
 let heardOpen = false;
 let heardSaying = '';
 function saveHeard() { try { localStorage.setItem(HEARD_KEY, JSON.stringify(walkmanHeard)); } catch { /* private mode: history lasts this visit */ } }
+// How the Walkman picks familiar words, remembered on this device: by score (the default) or by groups.
+let walkmanChoice = readPreference('echo.walkman-words', 'scored') === 'groups' ? 'groups' : 'scored';
+function chooseWalkman(choice) {
+  if (choice === walkmanChoice || walkman.loading) return;
+  walkmanChoice = choice; savePreference('echo.walkman-words', choice);
+  // The new choice starts a new tape straight away, playing on if the old one was.
+  loadTape(!walkmanAudio.paused);
+}
 // One comprehension stream at a time: the Listen and Read screens, Practise and a Mistakes focus all show one.
 let streamId = '';
 let streamState = null;
@@ -309,6 +317,7 @@ function renderWalkman() {
     <div class="wm-progress" aria-hidden="true"><span style="width:${walkmanProgress()}%"></span></div>
     ${heardHTML()}
     <p class="caption wm-note">Keeps playing with your phone locked. Listening doesn’t change your vocabulary progress.</p>
+    <p class="wm-choice">Words picked ${['scored', 'groups'].map((choice) => `<button data-action="walkman-choice" data-words="${choice}" aria-pressed="${walkmanChoice === choice}">${choice === 'scored' ? 'by score' : 'by groups'}</button>`).join('<span aria-hidden="true">·</span>')}</p>
   </section>`;
 }
 const HEARD_STATUS = { saving: 'Adding…', added: 'Added to your words', 'already-practising': 'Already in your practice', 'made-due': 'Due again now' };
@@ -331,6 +340,8 @@ function logHeard(position) {
   const added = previous?.added && previous.added !== 'saving' ? { added: previous.added } : {};
   walkmanHeard = [{ id: word.id, fr: word.fr, en: word.en, fresh: word.fresh, ...added }, ...walkmanHeard.filter((entry) => entry.id !== word.id)].slice(0, HEARD_LIMIT);
   saveHeard();
+  // Hearing a word to the end raises its score a little; a lost report only costs that little.
+  api('api/walkman/heard', { method: 'POST', body: JSON.stringify({ wordId: word.id, requestId: requestId() }), keepalive: true }).catch(() => {});
   return true;
 }
 // Hearing a word again pauses the tape, plays that word alone, then carries on if the tape was playing.
@@ -370,7 +381,7 @@ async function loadTape(autoplay = false) {
   notice = null; retryAction = null;
   render();
   try {
-    const tape = await api('api/walkman', { method: 'POST', body: '{}' });
+    const tape = await api('api/walkman', { method: 'POST', body: JSON.stringify({ words: walkmanChoice }) });
     if (token !== walkmanGeneration || screen !== 'walkman') return;
     walkman = { ...walkman, tape, loading: false };
     walkmanAudio.src = tape.url;
@@ -1413,6 +1424,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'walkman-heard') { heardOpen = !heardOpen; render(); }
   else if (action === 'walkman-say') hearAgain(button.dataset.word);
   else if (action === 'walkman-add') addHeard(button.dataset.word);
+  else if (action === 'walkman-choice') chooseWalkman(button.dataset.words);
   else if (action === 'stream-check') streamCheck();
   else if (action === 'stream-next') streamNext();
   else if (event.target.closest('#flashcard') && !event.target.closest('button,a,input,select')) reveal();

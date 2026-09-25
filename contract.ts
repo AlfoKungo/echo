@@ -18,6 +18,11 @@ export type ReviewEarlyMode = 'soonest' | 'missed';
 export type ReviewEarlyInput = { direction: Direction; deck: string; mode: ReviewEarlyMode; count: number; requestId: string };
 // lastStudied is the latest answer's time; misses counts every miss ever recorded (undone answers excluded).
 export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'scheduled'; due: string | null; lastStudied: string | null; misses: number };
+// score: recalls and Walkman listens raise it, misses lower it, and it fades with time (see lib/store.ts).
+export type ListeningWord = BrowseWord & { score: number };
+export type HeardInput = { wordId: string; requestId: string };
+// words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn.
+export type WalkmanChoice = 'scored' | 'groups';
 // Adding a word the learner tapped in a French text, always in the fr-en direction.
 // added: it was never started, so today admits it as an extra word, leaving the daily allowance untouched.
 // already-practising: it is in the working deck already (a cycle in progress, or finished and due again).
@@ -40,7 +45,8 @@ export type WalkmanTape = { id: string; url: string; seconds: number; words: Wal
 // GET api/words?direction=fr-en&deck=all -> {words:BrowseWord[]}
 // POST api/vocabulary/add AddWordInput -> AddWordResult (idempotent by requestId; unknown word is HTTP 404)
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
-// POST api/walkman -> WalkmanTape: a new tape of the words worth hearing now; listening changes no progress
+// POST api/walkman {words?:WalkmanChoice} -> WalkmanTape: a new tape of the words worth hearing now ('scored' by default)
+// POST api/walkman/heard HeardInput -> {ok:true}: a word heard to the end, which raises its score a little
 // GET api/walkman/:id.mp3 -> that tape's audio, with byte ranges; only the latest few tapes are kept
 // GET api/export -> all progress as downloadable JSON
 // Errors are {error:string}; UI must display the server message and allow retry.

@@ -105,3 +105,31 @@ describe('buildTape', () => {
     }
   });
 });
+
+describe('planTape by score', () => {
+  const scored = (): (BrowseWord & { score: number })[] => [
+    word('weak', 'food', 'learning', { misses: 3 }),
+    word('strong', 'food', 'scheduled', { due: '2026-05-01T00:00:00Z' }),
+    ...Array.from({ length: 38 }, (_, i) => word(`even-${i}`, 'food', i % 2 ? 'scheduled' : 'learning', { due: '2026-04-01T00:00:00Z' })),
+  ].map((entry) => ({ ...entry, score: entry.id === 'weak' ? -6 : entry.id === 'strong' ? 6 : 0 }));
+
+  // Real tapes: about 200 words each, twenty of them.
+  const tapes = () => Array.from({ length: 20 }, (_, i) => planTape(scored(), 200, seeded(100 + i), 'scored'));
+
+  test('a low score is heard far more often than a high one, and spacing still holds', () => {
+    const plans = tapes();
+    const count = (id: string) => plans.reduce((total, plan) => total + plan.filter((entry) => entry === id).length, 0);
+    expect(count('weak')).toBeGreaterThan(4 * Math.max(1, count('strong')));
+    for (const plan of plans) {
+      const last = new Map<string, number>();
+      plan.forEach((id, slot) => {
+        if (last.has(id)) expect(slot - last.get(id)!).toBeGreaterThan(15);
+        last.set(id, slot);
+      });
+    }
+  });
+
+  test('a high score still turns up now and then', () => {
+    expect(tapes().some((plan) => plan.includes('strong'))).toBe(true);
+  });
+});

@@ -633,3 +633,33 @@ describe('adding a word tapped in a French text', () => {
     expect(store.state('fr-en', 'all').stats.introducedToday).toBe(1);
   });
 });
+
+describe('Walkman scores', () => {
+  test('a recall raises a score, a miss lowers it more, a listen raises it a little, and every point halves in 21 days', () => {
+    const { store, clock } = fixture(undefined, thirtyWords);
+    store.setSettings(3);
+    let state = store.start('fr-en', 'all');
+    const recalled = state.current!.id;
+    state = store.grade(answer(state, true));
+    const missed = state.current!.id;
+    state = store.grade(answer(state, false));
+    const undone = state.current!.id;
+    state = store.grade(answer(state, true));
+    store.undo('fr-en', 'all', state.undoId!);
+    store.recordHeard({ wordId: 'word-20', requestId: 'heard-a' });
+    store.recordHeard({ wordId: 'word-20', requestId: 'heard-a' });
+    store.recordHeard({ wordId: 'word-21', requestId: 'heard-b' });
+    store.recordHeard({ wordId: 'word-21', requestId: 'heard-c' });
+    const scores = () => new Map(store.listening().map((word) => [word.id, word.score]));
+    let now = scores();
+    expect([now.get(recalled), now.get(missed), now.get(undone), now.get('word-20'), now.get('word-21'), now.get('word-29')]).toEqual([2, -3, 0, 0.5, 1, 0]);
+    clock.value = new Date(clock.value.getTime() + 21 * 86400000);
+    now = scores();
+    expect([now.get(recalled), now.get(missed), now.get('word-21')]).toEqual([1, -1.5, 0.5]);
+  });
+
+  test('a listen report for a word outside the deck is refused', () => {
+    const { store } = fixture(undefined, thirtyWords);
+    expect(() => store.recordHeard({ wordId: 'nope', requestId: 'x' })).toThrow(StoreError);
+  });
+});
