@@ -35,6 +35,8 @@ export interface ComprehensionStore {
   weakWords(): string[];
   // The level each mode is choosing from now, and how many answers were given in all.
   summary(): { levels: { mode: Mode; label: GrammarLevel }[]; answered: number };
+  // Unseen sentences and dialogues/texts at each level either mode is choosing from now (see BAND_BELOW/BAND_ABOVE).
+  stock(): { level: GrammarLevel; sentences: number; passages: number }[];
   exportData(): unknown;
   close(): void;
 }
@@ -857,6 +859,18 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
         levels: MODES.map((mode) => ({ mode, label: LEVEL_OF(value.get(mode) ?? MIN_LEVEL) })),
         answered: db.query<{ count: number }, []>('SELECT count(*) AS count FROM comprehension_answers').get()!.count,
       };
+    },
+    stock: () => {
+      const value = levels();
+      const reach = new Set(MODES.flatMap((mode) => {
+        const raw = value.get(mode) ?? MIN_LEVEL;
+        return [LEVEL_OF(Math.max(MIN_LEVEL, raw - BAND_BELOW)), LEVEL_OF(Math.min(MAX_LEVEL, raw + BAND_ABOVE))];
+      }));
+      const met = new Set(db.query<{ id: string }, []>('SELECT DISTINCT item_id AS id FROM comprehension_history').all().map((row) => row.id));
+      return (['A1', 'A2', 'B1'] as GrammarLevel[]).filter((level) => reach.has(level)).map((level) => {
+        const unmet = [...items.values()].filter((item) => item.level === level && !met.has(item.id));
+        return { level, sentences: unmet.filter((item) => item.type === 'sentence').length, passages: unmet.filter((item) => item.type !== 'sentence').length };
+      });
     },
     exportData,
     close: () => db.close(),

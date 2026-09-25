@@ -8,8 +8,9 @@ import { loadBank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
 import { buildTape, createClips, planTape, tapeView, type Tape } from './lib/walkman';
 import { createSongs } from './lib/songs';
-import { createClaudeReader } from './lib/claude';
+import { createClaude, createClaudeReader } from './lib/claude';
 import { createWordAudio } from './lib/word-audio';
+import { createTextTopup } from './lib/text-topup';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 
 const root = import.meta.dir;
@@ -25,23 +26,25 @@ if (new Set(words.map(word => word.id)).size !== words.length) throw new Error('
 const dbPath = process.env.ECHO_DB ?? join(root, 'data/echo.db');
 // A word added from a song joins practice once its French recording exists.
 const store = createStore(words, { dbPath, ready: (id) => existsSync(join(root, 'audio', `${id}.mp3`)) });
-// Song words are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
+// Song words and new texts are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
 const python = process.env.ECHO_PYTHON ?? JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')).python as string;
+async function runPython(args: string[], env: Record<string, string> = {}): Promise<{ ok: boolean; error: string }> {
+  if (process.env.ECHO_WORD_AUDIO === 'off') return { ok: false, error: 'Recording is switched off.' };
+  const child = Bun.spawn([python, ...args], { cwd: root, stdout: 'ignore', stderr: 'pipe', env: { ...process.env, PYTHONUNBUFFERED: '1', ...env } });
+  const error = await new Response(child.stderr).text();
+  const ok = (await child.exited) === 0;
+  if (!ok) console.error(`audio: ${args[0]} failed`, error.slice(-800));
+  return { ok, error };
+}
 const wordAudio = createWordAudio({
   root, extraWordsPath: join(dirname(dbPath), 'added-words.json'),
   addedWords: () => store.addedIds().map((id) => store.word(id)!),
-  run: async (args) => {
-    if (process.env.ECHO_WORD_AUDIO === 'off') return { ok: false, error: 'Recording is switched off.' };
-    const child = Bun.spawn([python, ...args], { cwd: root, stdout: 'ignore', stderr: 'pipe', env: { ...process.env, PYTHONUNBUFFERED: '1' } });
-    const error = await new Response(child.stderr).text();
-    const ok = (await child.exited) === 0;
-    if (!ok) console.error(`word audio: ${args[0]} failed`, error.slice(-800));
-    return { ok, error };
-  },
+  run: (args) => runPython(args),
 });
+const ask = createClaude({ command: process.env.ECHO_CLAUDE ?? join(process.env.HOME ?? '', '.local/bin/claude'), model: process.env.ECHO_CLAUDE_MODEL });
 const songs = createSongs({
   dbPath, vocabulary: store,
-  read: createClaudeReader({ command: process.env.ECHO_CLAUDE ?? join(process.env.HOME ?? '', '.local/bin/claude'), model: process.env.ECHO_SONG_MODEL }),
+  read: createClaudeReader(ask),
   fetchJson: async (url) => {
     const response = await fetch(url, { headers: { 'User-Agent': 'Echo French practice (personal, local)' }, signal: AbortSignal.timeout(20_000) });
     if (!response.ok) throw new Error(`LRCLIB ${response.status}`);
@@ -54,8 +57,25 @@ wordAudio.resume();
 const course = await loadCourse(join(root, 'content/grammar'));
 const grammar = createGrammarStore(course, { dbPath, audioDir: join(root, 'audio/grammar') });
 const grammarAudio = new Set(course.topics.flatMap(topic => topic.exercises.map(exercise => exercise.id)));
-const bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR);
-const comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar });
+// Lanes Echo writes itself (lib/text-topup.ts) live next to the database, out of the checked-in content.
+const generatedLanes = join(dirname(dbPath), 'comprehension');
+let bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
+let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar });
+const texts = createTextTopup({
+  root, dataDir: dirname(dbPath), ask, stock: () => comprehension.stock(),
+  ...(process.env.ECHO_TEXT_THRESHOLD ? { threshold: Number(process.env.ECHO_TEXT_THRESHOLD) } : {}),
+  record: (ids, dirs) => runPython(['scripts/render-clips.py', '--set', 'comprehension', '--ids', ids.join(',')], { ECHO_COMPREHENSION_GENERATED: dirs.join(':') }),
+  // A new lane joins by rebuilding the comprehension store; every stream's state is in the database. The old
+  // store closes a minute later so a request already inside it can finish.
+  reload: async () => {
+    bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
+    const previous = comprehension;
+    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar });
+    setTimeout(() => previous.close(), 60_000);
+  },
+});
+if (process.env.ECHO_TEXT_TOPUP !== 'off') void texts.resume();
+const textChecks = setInterval(() => { if (process.env.ECHO_TEXT_TOPUP !== 'off') void texts.check(); }, 10 * 60_000);
 const port = Number(process.env.ECHO_PORT ?? 7792);
 const prefix = '/echo';
 const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net';
@@ -149,7 +169,7 @@ const server = Bun.serve({
       if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
       if (path === '/api/statistics' && req.method === 'GET') {
         const grammarTopics = grammar.catalog().flatMap((unit) => unit.topics).filter((topic) => topic.progress.seen > 0).length;
-        return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics });
+        return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics, texts: texts.status() });
       }
       if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 3, grammar: grammar.exportData(), comprehension: comprehension.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
       if (path === '/api/grammar' && req.method === 'GET') return json({ units: grammar.catalog() });
@@ -294,6 +314,7 @@ async function stop() {
   if (stopping) return;
   stopping = true;
   clearInterval(backups);
+  clearInterval(textChecks);
   await server.stop(true);
   comprehension.close();
   grammar.close();

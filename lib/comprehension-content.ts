@@ -1,4 +1,4 @@
-import { readdirSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import type { ComprehensionLane, ComprehensionPassage, ComprehensionSentence, Gloss } from '../comprehension-contract';
 import { StoreError } from './store';
@@ -125,25 +125,85 @@ export function validateLane(lane: ComprehensionLane, where: string, known: Know
   return errors;
 }
 
+// Words a reader never needs to tap. Everything else in the French needs a gloss.
+const FUNCTION = new Set(['le', 'la', 'les', 'l’', 'un', 'une', 'des', 'de', 'du', 'd’', 'à', 'au', 'aux', 'et', 'ou', 'mais',
+  'je', 'j’', 'tu', 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles', 'ne', 'n’', 'pas', 'que', 'qu’', 'ce', 'c’', 'se', 's’',
+  'me', 'm’', 'te', 't’', 'y', 'en']);
+
+export function unglossed(text: string, gloss: { fr: string }[]): string[] {
+  const covered = new Array(text.length).fill(false);
+  for (const entry of gloss) for (const at of wholeMatches(text, entry.fr)) for (let i = at; i < at + entry.fr.length; i++) covered[i] = true;
+  const missing: string[] = [];
+  for (const match of text.matchAll(/[\p{L}\p{M}]+(’)?/gu)) {
+    const start = match.index!;
+    const letters = match[0].replace(/’$/, '');
+    let fully = true;
+    for (let i = start; i < start + letters.length; i++) if (!covered[i]) fully = false;
+    if (fully || FUNCTION.has(match[0].toLowerCase())) continue;
+    missing.push(match[0]);
+  }
+  return missing;
+}
+
+// The lane rules on top of the format: the file name gives the level and the id prefix, every item tags a word,
+// and every content word is glossed. Item counts are an authoring rule, checked by scripts/check-comprehension.ts.
+export function laneProblems(lane: ComprehensionLane, name: string, known: Known, ids: Set<string>): string[] {
+  const errors = validateLane(lane, `${name}.json`, known, ids);
+  const level = /^(a1|a2|b1)-/.exec(name)?.[1]?.toUpperCase();
+  if (!level) errors.push(`lane file name must start with a1-, a2- or b1-.`);
+  const sentences = Array.isArray(lane?.sentences) ? lane.sentences : [];
+  const passages = Array.isArray(lane?.passages) ? lane.passages : [];
+  for (const item of [...sentences, ...passages]) {
+    if (typeof item?.id === 'string' && !item.id.startsWith(`${name}-`)) errors.push(`${item.id}: ids must start with "${name}-".`);
+    if (level && item?.level !== level) errors.push(`${item?.id}: this lane is ${level}.`);
+    if (Array.isArray(item?.words) && !item.words.length) errors.push(`${item.id}: tag at least one vocabulary word it uses.`);
+  }
+  for (const sentence of sentences) {
+    if (typeof sentence?.fr !== 'string' || !Array.isArray(sentence.gloss)) continue;
+    const missing = unglossed(sentence.fr, sentence.gloss);
+    if (missing.length) errors.push(`${sentence.id}: no gloss covers ${missing.join(', ')}.`);
+  }
+  for (const passage of passages) {
+    if (!Array.isArray(passage?.lines) || !Array.isArray(passage.gloss)) continue;
+    const missing = [...new Set(passage.lines.flatMap((line) => typeof line?.fr === 'string' ? unglossed(line.fr, passage.gloss) : []))];
+    if (missing.length) errors.push(`${passage.id}: no gloss covers ${missing.join(', ')}.`);
+  }
+  return errors;
+}
+
 export async function loadKnown(root: string): Promise<Known> {
   const words = [...await Bun.file(join(root, 'content/core.json')).json(), ...await Bun.file(join(root, 'content/world.json')).json()] as { id: string }[];
   const units = await Bun.file(join(root, 'content/grammar/units.json')).json() as { topics: string[] }[];
   return { words: new Set(words.map((word) => word.id)), topics: new Set(units.flatMap((unit) => unit.topics)) };
 }
 
-// Loads every lane in content/comprehension (or `dir`); any invalid file stops startup with every problem listed.
-export async function loadBank(root: string, dir = join(root, 'content/comprehension')): Promise<Bank> {
+const laneFiles = (dir: string) => existsSync(dir) ? readdirSync(dir).filter((name) => name.endsWith('.json')).sort() : [];
+
+// Loads every lane in content/comprehension (or `dir`); any invalid file there stops startup with every problem
+// listed. Lanes Echo wrote itself (`generated`, see lib/text-topup.ts) passed these checks before they were saved,
+// so one that no longer does is left out with a logged reason instead of stopping Echo.
+export async function loadBank(root: string, dir = join(root, 'content/comprehension'), generated: string[] = []): Promise<Bank> {
   const known = await loadKnown(root);
   const ids = new Set<string>();
   const bank: Bank = { sentences: [], passages: [] };
   const errors: string[] = [];
-  for (const file of readdirSync(dir).filter((name) => name.endsWith('.json')).sort()) {
+  for (const file of laneFiles(dir)) {
     const lane = await Bun.file(join(dir, file)).json() as ComprehensionLane;
     errors.push(...validateLane(lane, file, known, ids));
     if (Array.isArray(lane?.sentences)) bank.sentences.push(...lane.sentences);
     if (Array.isArray(lane?.passages)) bank.passages.push(...lane.passages);
   }
   if (errors.length) throw new StoreError(`Comprehension content is invalid:\n${errors.slice(0, 40).join('\n')}${errors.length > 40 ? `\n…and ${errors.length - 40} more` : ''}`);
+  for (const extra of generated) for (const file of laneFiles(extra)) {
+    let lane: ComprehensionLane;
+    try { lane = await Bun.file(join(extra, file)).json(); } catch { console.error(`comprehension: ${join(extra, file)} is not valid JSON; left out`); continue; }
+    const trial = new Set(ids);
+    const problems = laneProblems(lane, file.slice(0, -5), known, trial);
+    if (problems.length) { console.error(`comprehension: ${join(extra, file)} left out: ${problems.slice(0, 3).join('; ')}`); continue; }
+    for (const id of trial) ids.add(id);
+    bank.sentences.push(...lane.sentences);
+    bank.passages.push(...lane.passages);
+  }
   if (!bank.sentences.length) throw new StoreError('Comprehension content is empty.');
   return bank;
 }

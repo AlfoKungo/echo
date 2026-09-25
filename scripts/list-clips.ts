@@ -13,7 +13,9 @@ if (set !== 'comprehension' && set !== 'grammar') {
 
 const clips: { id: string; text: string }[] = [];
 if (set === 'comprehension') {
-  const bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR);
+  // Lanes Echo wrote itself (lib/text-topup.ts); the server names its folders, colon-separated, when it records them.
+  const generated = process.env.ECHO_COMPREHENSION_GENERATED?.split(':').filter(Boolean) ?? [join(root, 'data/comprehension')];
+  const bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, generated);
   for (const sentence of bank.sentences) clips.push({ id: sentence.id, text: sentence.fr });
   // A passage is heard line by line, so each line is its own clip, numbered from one.
   for (const passage of bank.passages) {

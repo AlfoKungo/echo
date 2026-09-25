@@ -997,14 +997,17 @@ function renderStatistics() {
   const dayAxis = statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('');
   const today = statistics.days.at(-1);
   const shown = statistics.days.find((day) => day.day === pointsDay) ?? today;
-  const swing = Math.max(1, ...statistics.days.map((day) => Math.max(day.gained, day.lost)));
-  const pointBars = statistics.days.map((day) => `<button class="st-pt" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(day.gained - day.lost)} points"><span class="up"><span style="height:${day.gained / swing * 100}%"></span></span><span class="down"><span style="height:${day.lost / swing * 100}%"></span></span></button>`).join('');
+  const net = (day) => day.gained - day.lost;
+  // The line sits where the days put it: with no losing day, the whole height is for gains.
+  const top = Math.max(0, ...statistics.days.map(net)), bottom = Math.max(0, ...statistics.days.map((day) => -net(day)));
+  const rows = top + bottom ? `grid-template-rows:${top}fr ${bottom}fr` : '';
+  const pointBars = statistics.days.map((day) => `<button class="st-pt" style="${rows}" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(net(day))} points"><span class="up"><span style="height:${top ? Math.max(0, net(day)) / top * 100 : 0}%"></span></span><span class="down"><span style="height:${bottom ? Math.max(0, -net(day)) / bottom * 100 : 0}%"></span></span></button>`).join('');
   const shownLabel = shown.day === today.day ? 'Today' : new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`));
   const pointsBlock = `<div class="st-block"><h2>Points, last two weeks</h2>
-      <p class="st-big"><strong>${points(shown.gained - shown.lost)}</strong> ${esc(shownLabel.toLowerCase() === 'today' ? 'today' : `on ${shownLabel}`)}</p>
-      <p class="st-sub">${shown.gained || shown.lost ? `${points(shown.gained)} gained, ${points(-shown.lost)} lost` : 'Nothing practised'}</p>
+      <p class="st-big"><strong>${points(net(shown))}</strong> ${esc(shownLabel.toLowerCase() === 'today' ? 'today' : `on ${shownLabel}`)}</p>
+      ${shown.gained || shown.lost ? '' : '<p class="st-sub">Nothing practised</p>'}
       <div class="st-points">${pointBars}</div><div class="st-days-axis">${statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>
-      <p class="st-cap">The same points your word scores are made of: +2 for a word you knew, −3 for one you missed, +0.5 for a word heard to the end on the Walkman, and your ✓ and ✗ marks count like knowing or missing it. Gains rise above the line, losses fall below it. Tap a day to see its points.</p></div>`;
+      <p class="st-cap">The same points your word scores are made of: +2 for a word you knew, −3 for one you missed, +0.5 for a word heard to the end on the Walkman, and your ✓ and ✗ marks count like knowing or missing it. Each bar is the day's total: above the line when you gained more than you lost, below it when you lost more. Tap a day to see its total.</p></div>`;
   const level = (mode) => statistics.levels.find((entry) => entry.mode === mode)?.label ?? 'A1';
   const facts = [[level('listen'), 'Listen level'], [level('read'), 'Read level'], [statistics.answered, 'Listen & Read questions answered'], [statistics.grammarTopics, statistics.grammarTopics === 1 ? 'grammar topic practised' : 'grammar topics practised'], [statistics.walkmanHeard, 'words heard on the Walkman'], [counts.scheduled, 'known words waiting for review']];
   main.innerHTML = `${noticeHTML()}<section class="st">${header}
