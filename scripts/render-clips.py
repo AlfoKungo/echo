@@ -31,7 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SETS = ('comprehension', 'grammar')
+SETS = ('comprehension', 'grammar', 'story')
 MODEL = 'mlx-community/chatterbox-multilingual-v3'
 REFERENCE = ROOT / 'voices' / 'french-reference.wav'
 VOICE_PROVENANCE = ROOT / 'voices' / 'provenance.json'
@@ -156,7 +156,7 @@ def verdict(transcript, text, expected_phonemes, espeak, clip_set):
         return 'phonetic'
     # A grammar clip models one exact form: it forgives silent endings (regardent/regarde) but keeps the
     # -ais/-ai vowel apart, and only listening clips forgive how Whisper spells a proper name.
-    grammar = clip_set != 'comprehension'
+    grammar = clip_set == 'grammar'
     names = set() if grammar else proper_names(text)
     folded_heard = [fold(word, keep_vowel=grammar) for word in heard]
     folded_wanted = [fold(word, keep_vowel=grammar) for word in wanted]

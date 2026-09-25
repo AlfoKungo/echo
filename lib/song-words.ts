@@ -25,16 +25,22 @@ const LETTERS = "a-zA-ZÀ-ÖØ-öø-ÿœŒæÆ";
 const WORD = new RegExp(`[${LETTERS}]+(?:-[${LETTERS}]+)*'?`, 'g');
 const ELIDED = /^(qu|[ljdcsmnt])'(.+)$/i;
 
+// A line's words, with an elision split off ("j'arrête" → "j'", "arrête"); blank lines and [Chorus]-style tags have none.
+function lineParts(raw: string): { line: string; parts: string[] } {
+  const line = raw.trim().replace(/[’‘`]/g, "'");
+  if (!line || /^\[.*\]$/.test(line)) return { line, parts: [] };
+  const parts: string[] = [];
+  for (const match of line.match(WORD) ?? []) {
+    const elided = ELIDED.exec(match);
+    if (elided) parts.push(`${elided[1]}'`, elided[2]); else parts.push(match);
+  }
+  return { line, parts };
+}
+
 export function lyricForms(lyrics: string): LyricForm[] {
   const forms = new Map<string, LyricForm>();
   for (const raw of lyrics.split(/\r?\n/)) {
-    const line = raw.trim().replace(/[’‘`]/g, "'");
-    if (!line || /^\[.*\]$/.test(line)) continue;
-    const parts: string[] = [];
-    for (const match of line.match(WORD) ?? []) {
-      const elided = ELIDED.exec(match);
-      if (elided) parts.push(`${elided[1]}'`, elided[2]); else parts.push(match);
-    }
+    const { line, parts } = lineParts(raw);
     parts.forEach((part, index) => {
       const form = part.toLowerCase();
       const entry = forms.get(form) ?? { form, lines: [], capitalised: false };
@@ -44,6 +50,13 @@ export function lyricForms(lyrics: string): LyricForm[] {
     });
   }
   return [...forms.values()].sort((a, b) => a.form.localeCompare(b.form, 'fr'));
+}
+
+// How many times each form is sung.
+export function formCounts(lyrics: string): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const raw of lyrics.split(/\r?\n/)) for (const part of lineParts(raw).parts) counts.set(part.toLowerCase(), (counts.get(part.toLowerCase()) ?? 0) + 1);
+  return counts;
 }
 
 // Little words have one dictionary form whatever the song: answered here, never asked of the model.
@@ -191,7 +204,7 @@ export function candidateFrom(form: string, facts: WordFacts): Omit<SongCandidat
   return { fr: base, en, note, pos: facts.pos };
 }
 
-const comparable = (fr: string) => fr.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
+export const comparable = (fr: string) => fr.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
 
 // Merges forms that share a dictionary form, and marks the ones already in the deck.
 export function mergeCandidates(found: { form: string; entry: Omit<SongCandidate, 'forms' | 'existing'> }[], deck: Word[]): SongCandidate[] {

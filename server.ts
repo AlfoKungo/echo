@@ -10,6 +10,10 @@ import { createSongs } from './lib/songs';
 import { createClaude, createClaudeReader } from './lib/claude';
 import { createWordAudio } from './lib/word-audio';
 import { createTextTopup } from './lib/text-topup';
+import { createWordHooks } from './lib/word-hooks';
+import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
+import { createStory, type StoryFinish } from './lib/story';
+import { createRadio } from './lib/radio';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
@@ -88,8 +92,66 @@ const texts = createTextTopup({
     setTimeout(() => previous.close(), 60_000);
   },
 });
-if (process.env.ECHO_TEXT_TOPUP !== 'off') void texts.resume();
+const textsStarted = process.env.ECHO_TEXT_TOPUP !== 'off' ? texts.resume() : Promise.resolve();
 const textChecks = setInterval(() => { if (process.env.ECHO_TEXT_TOPUP !== 'off') void texts.check(); }, 10 * 60_000);
+// Memory hooks for stubborn words: at start and every ten minutes (ECHO_WORD_HOOKS=off switches them off).
+const hooks = createWordHooks({ ask, store });
+const hookChecks = setInterval(() => { if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check(); }, 10 * 60_000);
+if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check();
+// The Sounds drill: both sides of every pair, recorded after the texts (one voice model at a time).
+const soundsContent = await loadSounds(join(root, 'content/sounds.json'));
+const soundClips = new Set(soundsContent.contrasts.flatMap((contrast) => contrast.items.flatMap((item) => [sideClip(item.id, 'a'), sideClip(item.id, 'b')])));
+const soundExists = (id: string) => existsSync(join(root, 'audio/sounds', `${id}.mp3`));
+const sounds = createSounds(soundsContent, { dbPath, clipExists: soundExists });
+void textsStarted.then(async () => {
+  if (process.env.ECHO_WORD_AUDIO === 'off') return;
+  const missing = [...soundClips].filter((id) => !soundExists(id));
+  const skipped = attempts.skipped(missing);
+  if (skipped.length) console.log(`sounds: not retrying ${skipped.length} ${skipped.length === 1 ? 'side' : 'sides'} (failed 3 times; see data/recording-attempts.json)`);
+  const tried = attempts.allowed(missing);
+  if (!tried.length) return;
+  await runPython(['scripts/render-sounds.py', '--ids', tried.join(',')]);
+  attempts.note(tried, (id) => !soundExists(id));
+});
+// The Story: a serial written a little above what the learner knows (lib/story.ts). What they know comes from
+// the vocabulary (any word no longer new), what they understood in Read and Listen, and their grammar progress.
+const storyDir = process.env.ECHO_STORY_DIR ?? join(dirname(dbPath), 'story');
+const storyExists = (id: string) => existsSync(join(root, 'audio/story', `${id}.mp3`));
+const story = createStory({
+  dir: storyDir, dbPath, ask, clipExists: storyExists,
+  knowledge: () => {
+    const words = store.listening();
+    const met = comprehension.metWords();
+    return {
+      known: words.filter((word) => word.status !== 'new' || met.words.has(word.id)).map((word) => ({ id: word.id, fr: word.fr, en: word.en })),
+      deck: words.map((word) => ({ id: word.id, fr: word.fr })),
+      forms: [...met.forms],
+      level: comprehension.summary().levels.find((entry) => entry.mode === 'read')?.value ?? 1,
+      topics: grammar.catalog().flatMap((unit) => unit.topics.map((topic) => ({ id: topic.id, title: topic.title, level: topic.level, description: topic.description, seen: topic.progress.seen, independent: topic.progress.independent }))),
+    };
+  },
+  record: async (ids) => {
+    const tried = attempts.allowed(ids);
+    if (!tried.length) return;
+    await runPython(['scripts/render-clips.py', '--set', 'story', '--ids', tried.join(',')], { ECHO_STORY_DIR: storyDir });
+    if (process.env.ECHO_WORD_AUDIO !== 'off') attempts.note(tried, (id) => !storyExists(id));
+  },
+});
+void textsStarted.then(() => { if (process.env.ECHO_STORY !== 'off') return story.check(); });
+const storyChecks = setInterval(() => { if (process.env.ECHO_STORY !== 'off') void story.check(); }, 10 * 60_000);
+// The Radio: one episode a day from today's words, the latest recorded story episode and one grammar point.
+const radio = createRadio({
+  root, dataDir: dirname(dbPath), ask,
+  words: () => store.listening(),
+  sentences: () => bank.sentences,
+  episode: () => [...story.episodes()].reverse().find((episode) => episode.lines.every((_, index) => storyExists(`${episode.id}-${index + 1}`))) ?? null,
+  topics: () => grammar.catalog().flatMap((unit) => unit.topics.map((topic) => ({ id: topic.id, title: topic.title, level: topic.level, description: topic.description, independent: topic.progress.independent }))),
+  level: () => comprehension.summary().levels.find((entry) => entry.mode === 'read')?.label ?? 'A2',
+  record: (planPath) => runPython(['scripts/render-radio.py', '--plan', planPath]),
+  ready: () => process.env.ECHO_STORY !== 'off' ? story.check() : Promise.resolve(),
+});
+void textsStarted.then(() => { if (process.env.ECHO_RADIO !== 'off') return radio.check(); });
+const radioChecks = setInterval(() => { if (process.env.ECHO_RADIO !== 'off') void radio.check(); }, 10 * 60_000);
 const port = Number(process.env.ECHO_PORT ?? 7792);
 const prefix = '/echo';
 const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net';
@@ -181,6 +243,8 @@ const server = Bun.serve({
       if (comprehended) return comprehended;
       if (path === '/api/state' && req.method === 'GET') return json(store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
       if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
+      // Word id → gender for every noun, so the client can colour a tappable word linked to one.
+      if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));
       if (path === '/api/statistics' && req.method === 'GET') {
         const grammarTopics = grammar.catalog().flatMap((unit) => unit.topics).filter((topic) => topic.progress.seen > 0).length;
         return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics, texts: texts.status() });
@@ -284,6 +348,33 @@ const server = Bun.serve({
         if (!tape) return json({ error: 'This tape has ended. Start the Walkman again for a new one.' }, 404);
         return ranged(req, tape.bytes.length, (start, end) => tape.bytes.subarray(start, end), { 'Cache-Control': 'no-store' });
       }
+      const radioAudio = path.match(/^\/api\/radio\/(\d{4}-\d{2}-\d{2})\.mp3$/);
+      if (radioAudio && (req.method === 'GET' || req.method === 'HEAD')) {
+        const bytes = radio.audio(radioAudio[1]!);
+        if (!bytes) return json({ error: 'This Radio episode is over. Open the Radio again for today’s.' }, 404);
+        return ranged(req, bytes.length, (start, end) => bytes.subarray(start, end), { 'Cache-Control': 'no-store' });
+      }
+      if (path === '/api/radio' && req.method === 'GET') return json(radio.view());
+      const storyClip = path.match(/^\/audio\/story\/(story-\d{2}-\d+)\.mp3$/);
+      if (storyClip && (req.method === 'GET' || req.method === 'HEAD')) {
+        const file = Bun.file(join(root, 'audio/story', `${storyClip[1]}.mp3`));
+        if (!await file.exists()) return json({ error: 'This line has not been recorded yet.' }, 404);
+        return ranged(req, file.size, (start, end) => file.slice(start, end), { 'Cache-Control': 'no-cache' });
+      }
+      if (path === '/api/story' && req.method === 'GET') return json(story.status());
+      const storyEpisode = path.match(/^\/api\/story\/(\d+)(\/finish)?$/);
+      if (storyEpisode && !storyEpisode[2] && req.method === 'GET') return json(story.view(Number(storyEpisode[1])));
+      if (storyEpisode?.[2] && req.method === 'POST') { const data = await body(req); return json(story.finish(Number(storyEpisode[1]), data as unknown as StoryFinish)); }
+      const soundClip = path.match(/^\/audio\/sounds\/([a-z0-9-]+)\.mp3$/);
+      if (soundClip && (req.method === 'GET' || req.method === 'HEAD')) {
+        if (!soundClips.has(soundClip[1]!)) return json({ error: 'This sound is not part of a drill.' }, 404);
+        const file = Bun.file(join(root, 'audio/sounds', `${soundClip[1]}.mp3`));
+        if (!await file.exists()) return json({ error: 'This sound has not been recorded yet.' }, 404);
+        return ranged(req, file.size, (start, end) => file.slice(start, end), { 'Cache-Control': 'no-cache' });
+      }
+      if (path === '/api/sounds' && req.method === 'GET') return json({ contrasts: sounds.summary() });
+      if (path === '/api/sounds/round' && req.method === 'POST') { const data = await body(req); return json({ questions: sounds.round(String(data.id ?? '')) }); }
+      if (path === '/api/sounds/answer' && req.method === 'POST') { const data = await body(req); return json(sounds.answer(data as unknown as SoundAnswer)); }
       if (path.startsWith('/audio/') && (req.method === 'GET' || req.method === 'HEAD')) {
         const spoken = path.match(/^\/audio\/grammar\/([a-z0-9-]+)\.mp3$/);
         const word = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
@@ -324,8 +415,13 @@ async function stop() {
   stopping = true;
   clearInterval(backups);
   clearInterval(textChecks);
+  clearInterval(hookChecks);
+  clearInterval(storyChecks);
+  clearInterval(radioChecks);
   await server.stop(true);
   comprehension.close();
+  story.close();
+  sounds.close();
   grammar.close();
   store.close();
   process.exit(0);

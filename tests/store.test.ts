@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type CardInput } from 'ts-fsrs';
 import type { Direction, GradeInput, Snapshot, Word } from '../contract';
-import { createStore, StoreError, type Store } from '../lib/store';
+import { createStore, genderOf, StoreError, type Store } from '../lib/store';
 
 const words: Word[] = [
   { id: 'food-001', fr: 'le pain', en: 'bread', category: 'food' },
@@ -799,4 +799,30 @@ test('a word missed six times shows the words of its deck missed most with it; d
   expect(counts.travel).toEqual({ today: 0, waiting: 4 });
   expect(counts.food!.today).toBeGreaterThan(0);
   expect(counts.food!.today + counts.food!.waiting).toBe(4);
+});
+
+test('a noun’s gender comes from its article, or from the note when the article is elided or plural', () => {
+  expect(genderOf({ fr: 'le nuage' })).toBe('masculine');
+  expect(genderOf({ fr: 'la pluie' })).toBe('feminine');
+  expect(genderOf({ fr: "l'eau", note: 'Feminine noun.' })).toBe('feminine');
+  expect(genderOf({ fr: 'les lunettes', note: 'Feminine plural.' })).toBe('feminine');
+  expect(genderOf({ fr: "l'enfant", note: 'Masculine or feminine according to the child.' })).toBeUndefined();
+  expect(genderOf({ fr: "l'hôtel" })).toBeUndefined();
+  expect(genderOf({ fr: 'manger' })).toBeUndefined();
+  const { store } = fixture();
+  expect(store.word('food-002')).toMatchObject({ fr: "l'eau" });
+  expect(store.word('food-001')!.gender).toBe('masculine');
+});
+
+test('a stubborn word waits for a memory hook, then shows it on its card and waits no more', () => {
+  const { store } = fixture();
+  let snapshot = store.start('fr-en', 'food');
+  for (let turn = 0; turn < 80 && !snapshot.current?.trouble; turn++) snapshot = store.grade(answer(snapshot, false));
+  const stubborn = snapshot.current!;
+  const waiting = store.hookless();
+  expect(waiting.map((word) => word.id)).toContain(stubborn.id);
+  expect(waiting.find((word) => word.id === stubborn.id)!.alongside.length).toBeGreaterThan(0);
+  store.setHooks([{ wordId: stubborn.id, hook: 'Pain sounds like pan: bread baked in a pan.' }]);
+  expect(store.hookless().map((word) => word.id)).not.toContain(stubborn.id);
+  expect(store.state('fr-en', 'food').current?.trouble?.hook ?? store.state('fr-en', 'food').next?.trouble?.hook).toBeDefined();
 });

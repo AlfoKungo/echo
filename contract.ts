@@ -1,5 +1,6 @@
 export type Direction = 'fr-en' | 'en-fr';
-export type Word = { id: string; fr: string; en: string; category: string; note?: string };
+// gender: a noun's, worked out by the store from its article or note (lib/store.ts genderOf).
+export type Word = { id: string; fr: string; en: string; category: string; note?: string; gender?: 'masculine' | 'feminine' };
 export type Deck = { id: string; title: string; count: number };
 // songsFirst: words added from songs are introduced before all other new words; otherwise each song takes
 // its turn with the categories.
@@ -10,7 +11,7 @@ export type AddWordsInput = { category: string; title: string; words: NewWord[] 
 export type VocabularyStack = 'unseen' | 'failed' | 'successful';
 // trouble: set on a word missed TROUBLE_MISSES times or more in this direction (lib/store.ts), with the words of the
 // same deck missed most alongside it, since words learnt together are the ones that get mixed up.
-export type CardTrouble = { misses: number; alongside: { fr: string; en: string }[] };
+export type CardTrouble = { misses: number; alongside: Pick<Word, 'fr' | 'en' | 'gender'>[]; hook?: string };
 export type CardView = Word & { successes: number; version: number; stack: VocabularyStack; stage: 'new' | 'learning' | 'review'; audioUrl: string; trouble?: CardTrouble };
 // Active counts exclude finished cards; unseen also includes the available daily admission allowance.
 // Stack membership survives the 04:00 allowance reset until the practice cycle is completed.
@@ -34,7 +35,7 @@ export type HeardInput = { wordId: string; requestId: string };
 // is the mean score of its started words (null before any). days holds the last 14 study days, oldest first,
 // counting vocabulary answers in both directions, undone ones excluded. gained and lost are that day's points as
 // they were scored, before fading: recalls, Walkman listens and ✓ marks add, misses and ✗ marks take away.
-export type StatsWord = Pick<ListeningWord, 'id' | 'fr' | 'en' | 'category' | 'status' | 'score' | 'misses'>;
+export type StatsWord = Pick<ListeningWord, 'id' | 'fr' | 'en' | 'category' | 'status' | 'score' | 'misses' | 'gender'>;
 export type StatsCategory = { id: string; title: string; total: number; started: number; average: number | null };
 export type StatsDay = { day: string; knew: number; missed: number; gained: number; lost: number };
 export type VocabularyStatistics = { words: StatsWord[]; counts: Record<BrowseWord['status'], number>; categories: StatsCategory[]; days: StatsDay[]; walkmanHeard: number };

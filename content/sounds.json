@@ -1,0 +1,228 @@
+{
+  "contrasts": [
+    {
+      "id": "le-les",
+      "title": "le or les",
+      "level": "A1",
+      "labels": ["le", "les"],
+      "listen": "Le is short and soft, a quick \"luh\" with the lips pushed forward. Les sounds like the English word \"lay\". The noun after them sounds exactly the same in the singular and the plural, so that one little word is the only thing telling you how many there are.",
+      "items": [
+        { "id": "le-les-chat", "a": { "fr": "le chat", "en": "the cat" }, "b": { "fr": "les chats", "en": "the cats" } },
+        { "id": "le-les-livre", "a": { "fr": "je ferme le livre", "en": "I close the book" }, "b": { "fr": "je ferme les livres", "en": "I close the books" } },
+        { "id": "le-les-gateau", "a": { "fr": "le gâteau", "en": "the cake" }, "b": { "fr": "les gâteaux", "en": "the cakes" } },
+        { "id": "le-les-train", "a": { "fr": "le train", "en": "the train" }, "b": { "fr": "les trains", "en": "the trains" } },
+        { "id": "le-les-voisin", "a": { "fr": "le voisin", "en": "the neighbour" }, "b": { "fr": "les voisins", "en": "the neighbours" } },
+        { "id": "le-les-film", "a": { "fr": "j’aime le film", "en": "I like the film" }, "b": { "fr": "j’aime les films", "en": "I like the films" } },
+        { "id": "le-les-verre", "a": { "fr": "le verre", "en": "the glass" }, "b": { "fr": "les verres", "en": "the glasses" } },
+        { "id": "le-les-magasin", "a": { "fr": "le magasin", "en": "the shop" }, "b": { "fr": "les magasins", "en": "the shops" } },
+        { "id": "le-les-sac", "a": { "fr": "le sac", "en": "the bag" }, "b": { "fr": "les sacs", "en": "the bags" } },
+        { "id": "le-les-jour", "a": { "fr": "le jour", "en": "the day" }, "b": { "fr": "les jours", "en": "the days" } }
+      ]
+    },
+    {
+      "id": "un-une",
+      "title": "un or une",
+      "level": "A1",
+      "labels": ["un", "une"],
+      "listen": "Un goes out through your nose with the mouth barely open and nothing crisp at the end. Une starts with your lips in a tight little circle and finishes on a clear \"n\", tongue touching just behind your top teeth. Listen for whether the word ends with that n.",
+      "items": [
+        { "id": "un-une-ami", "a": { "fr": "un ami", "en": "a friend (a man)" }, "b": { "fr": "une amie", "en": "a friend (a woman)" } },
+        { "id": "un-une-eleve", "a": { "fr": "un élève", "en": "a pupil (a boy)" }, "b": { "fr": "une élève", "en": "a pupil (a girl)" } },
+        { "id": "un-une-collegue", "a": { "fr": "un collègue", "en": "a colleague (a man)" }, "b": { "fr": "une collègue", "en": "a colleague (a woman)" } },
+        { "id": "un-une-touriste", "a": { "fr": "un touriste", "en": "a tourist (a man)" }, "b": { "fr": "une touriste", "en": "a tourist (a woman)" } },
+        { "id": "un-une-artiste", "a": { "fr": "un artiste", "en": "an artist (a man)" }, "b": { "fr": "une artiste", "en": "an artist (a woman)" } },
+        { "id": "un-une-camarade", "a": { "fr": "un camarade", "en": "a classmate (a boy)" }, "b": { "fr": "une camarade", "en": "a classmate (a girl)" } },
+        { "id": "un-une-journaliste", "a": { "fr": "un journaliste", "en": "a journalist (a man)" }, "b": { "fr": "une journaliste", "en": "a journalist (a woman)" } },
+        { "id": "un-une-adulte", "a": { "fr": "un adulte", "en": "an adult (a man)" }, "b": { "fr": "une adulte", "en": "an adult (a woman)" } },
+        { "id": "un-une-veux", "a": { "fr": "j’en veux un", "en": "I want one (a masculine thing)" }, "b": { "fr": "j’en veux une", "en": "I want one (a feminine thing)" } },
+        { "id": "un-une-ilyena", "a": { "fr": "il y en a un", "en": "there is one (a masculine thing)" }, "b": { "fr": "il y en a une", "en": "there is one (a feminine thing)" } }
+      ]
+    },
+    {
+      "id": "ce-ces",
+      "title": "ce or ces",
+      "level": "A1",
+      "labels": ["ce", "ces"],
+      "listen": "Ce is a quick soft \"suh\", gone almost before it starts. Ces sounds like \"say\", longer and brighter. As with le and les, the word after them sounds the same either way, so the little word carries the whole meaning.",
+      "items": [
+        { "id": "ce-ces-livre", "a": { "fr": "ce livre", "en": "this book" }, "b": { "fr": "ces livres", "en": "these books" } },
+        { "id": "ce-ces-garcon", "a": { "fr": "ce garçon", "en": "this boy" }, "b": { "fr": "ces garçons", "en": "these boys" } },
+        { "id": "ce-ces-chien", "a": { "fr": "regarde ce chien", "en": "look at this dog" }, "b": { "fr": "regarde ces chiens", "en": "look at these dogs" } },
+        { "id": "ce-ces-gateau", "a": { "fr": "ce gâteau", "en": "this cake" }, "b": { "fr": "ces gâteaux", "en": "these cakes" } },
+        { "id": "ce-ces-train", "a": { "fr": "je prends ce train", "en": "I take this train" }, "b": { "fr": "je prends ces trains", "en": "I take these trains" } },
+        { "id": "ce-ces-pull", "a": { "fr": "ce pull", "en": "this jumper" }, "b": { "fr": "ces pulls", "en": "these jumpers" } },
+        { "id": "ce-ces-sac", "a": { "fr": "ce sac", "en": "this bag" }, "b": { "fr": "ces sacs", "en": "these bags" } },
+        { "id": "ce-ces-film", "a": { "fr": "j’aime ce film", "en": "I like this film" }, "b": { "fr": "j’aime ces films", "en": "I like these films" } },
+        { "id": "ce-ces-mot", "a": { "fr": "ce mot", "en": "this word" }, "b": { "fr": "ces mots", "en": "these words" } },
+        { "id": "ce-ces-probleme", "a": { "fr": "ce problème", "en": "this problem" }, "b": { "fr": "ces problèmes", "en": "these problems" } }
+      ]
+    },
+    {
+      "id": "je-jai",
+      "title": "je or j’ai",
+      "level": "A2",
+      "labels": ["je", "j’ai"],
+      "listen": "Both start with the soft buzzing sound in the middle of English \"measure\". After it, je is a short \"uh\" that almost disappears, while j’ai is a clear \"ay\" like in \"day\". With these verbs the rest sounds identical, so that little vowel is the whole difference between doing it now and having already done it.",
+      "items": [
+        { "id": "je-jai-finis", "a": { "fr": "je finis", "en": "I finish" }, "b": { "fr": "j’ai fini", "en": "I finished" } },
+        { "id": "je-jai-choisis", "a": { "fr": "je choisis", "en": "I choose" }, "b": { "fr": "j’ai choisi", "en": "I chose" } },
+        { "id": "je-jai-dis", "a": { "fr": "je dis oui", "en": "I say yes" }, "b": { "fr": "j’ai dit oui", "en": "I said yes" } },
+        { "id": "je-jai-ris", "a": { "fr": "je ris", "en": "I laugh" }, "b": { "fr": "j’ai ri", "en": "I laughed" } },
+        { "id": "je-jai-reussis", "a": { "fr": "je réussis", "en": "I succeed" }, "b": { "fr": "j’ai réussi", "en": "I succeeded" } },
+        { "id": "je-jai-remplis", "a": { "fr": "je remplis le verre", "en": "I fill the glass" }, "b": { "fr": "j’ai rempli le verre", "en": "I filled the glass" } },
+        { "id": "je-jai-grandis", "a": { "fr": "je grandis", "en": "I am growing" }, "b": { "fr": "j’ai grandi", "en": "I grew" } },
+        { "id": "je-jai-reflechis", "a": { "fr": "je réfléchis", "en": "I think it over" }, "b": { "fr": "j’ai réfléchi", "en": "I thought it over" } },
+        { "id": "je-jai-finis-travail", "a": { "fr": "je finis le travail", "en": "I finish the work" }, "b": { "fr": "j’ai fini le travail", "en": "I finished the work" } },
+        { "id": "je-jai-choisis-cadeau", "a": { "fr": "je choisis un cadeau", "en": "I choose a present" }, "b": { "fr": "j’ai choisi un cadeau", "en": "I chose a present" } }
+      ]
+    },
+    {
+      "id": "u-ou",
+      "title": "u or ou",
+      "level": "A1",
+      "labels": ["u", "ou"],
+      "listen": "For u, say \"ee\" as in \"see\", then push your lips forward into a tight circle without moving your tongue — the tongue stays right at the front. For ou the tongue pulls back and you get the \"oo\" of \"food\". If it sounds like a normal English \"oo\", it is ou.",
+      "items": [
+        { "id": "u-ou-tu", "a": { "fr": "tu", "en": "you" }, "b": { "fr": "tout", "en": "everything" } },
+        { "id": "u-ou-tu-vas", "a": { "fr": "tu vas bien", "en": "you are doing well" }, "b": { "fr": "tout va bien", "en": "everything is fine" } },
+        { "id": "u-ou-rue", "a": { "fr": "la rue", "en": "the street" }, "b": { "fr": "la roue", "en": "the wheel" } },
+        { "id": "u-ou-dessus", "a": { "fr": "au-dessus", "en": "above" }, "b": { "fr": "au-dessous", "en": "below" } },
+        { "id": "u-ou-vu", "a": { "fr": "vu", "en": "seen" }, "b": { "fr": "vous", "en": "you (polite or plural)" } },
+        { "id": "u-ou-russe", "a": { "fr": "elle est russe", "en": "she is Russian" }, "b": { "fr": "elle est rousse", "en": "she is a redhead" } },
+        { "id": "u-ou-buche", "a": { "fr": "la bûche", "en": "the log" }, "b": { "fr": "la bouche", "en": "the mouth" } },
+        { "id": "u-ou-bulle", "a": { "fr": "la bulle", "en": "the bubble" }, "b": { "fr": "la boule", "en": "the ball" } },
+        { "id": "u-ou-mule", "a": { "fr": "la mule", "en": "the mule" }, "b": { "fr": "la moule", "en": "the mussel" } }
+      ]
+    },
+    {
+      "id": "on-an",
+      "title": "on or an",
+      "level": "A2",
+      "labels": ["on", "an"],
+      "listen": "Both of these hum through the nose. For on the lips push forward into a small round hole, as if you were starting to say \"oh\". For an the mouth drops wide open, like the \"a\" in \"father\" sent through the nose. Watching a speaker's lips is the quickest tell: round means on, open means an.",
+      "items": [
+        { "id": "on-an-bon", "a": { "fr": "bon", "en": "good" }, "b": { "fr": "banc", "en": "bench" } },
+        { "id": "on-an-son-sac", "a": { "fr": "son sac", "en": "his bag" }, "b": { "fr": "sans sac", "en": "without a bag" } },
+        { "id": "on-an-son-livre", "a": { "fr": "son livre", "en": "her book" }, "b": { "fr": "sans livre", "en": "without a book" } },
+        { "id": "on-an-long", "a": { "fr": "c’est long", "en": "it is long" }, "b": { "fr": "c’est lent", "en": "it is slow" } },
+        { "id": "on-an-ton", "a": { "fr": "ton", "en": "your" }, "b": { "fr": "temps", "en": "time, weather" } },
+        { "id": "on-an-blond", "a": { "fr": "il est blond", "en": "he is blond" }, "b": { "fr": "il est blanc", "en": "it is white" } },
+        { "id": "on-an-rond", "a": { "fr": "un rond", "en": "a circle" }, "b": { "fr": "un rang", "en": "a row" } },
+        { "id": "on-an-talon", "a": { "fr": "le talon", "en": "the heel" }, "b": { "fr": "le talent", "en": "the talent" } },
+        { "id": "on-an-savon", "a": { "fr": "le savon", "en": "the soap" }, "b": { "fr": "le savant", "en": "the scientist" } }
+      ]
+    },
+    {
+      "id": "in-an",
+      "title": "in or an",
+      "level": "A2",
+      "labels": ["in", "an"],
+      "listen": "Both hum through the nose, but the mouth shape is different. For in your lips spread wide, almost a smile, and the sound is close to the \"a\" of \"cat\" pushed through the nose. For an the jaw drops and the sound is closer to \"ah\". Smile means in, open mouth means an.",
+      "items": [
+        { "id": "in-an-vin", "a": { "fr": "le vin", "en": "the wine" }, "b": { "fr": "le vent", "en": "the wind" } },
+        { "id": "in-an-bain", "a": { "fr": "le bain", "en": "the bath" }, "b": { "fr": "le banc", "en": "the bench" } },
+        { "id": "in-an-enfin", "a": { "fr": "enfin", "en": "at last" }, "b": { "fr": "enfant", "en": "child" } },
+        { "id": "in-an-vingt", "a": { "fr": "vingt", "en": "twenty" }, "b": { "fr": "vent", "en": "wind" } },
+        { "id": "in-an-plein", "a": { "fr": "le plein", "en": "the full tank" }, "b": { "fr": "le plan", "en": "the plan, the map" } },
+        { "id": "in-an-plainte", "a": { "fr": "la plainte", "en": "the complaint" }, "b": { "fr": "la plante", "en": "the plant" } },
+        { "id": "in-an-gant", "a": { "fr": "le gain", "en": "the winnings" }, "b": { "fr": "le gant", "en": "the glove" } },
+        { "id": "in-an-sain", "a": { "fr": "sain", "en": "healthy" }, "b": { "fr": "sang", "en": "blood" } }
+      ]
+    },
+    {
+      "id": "eu-ou",
+      "title": "eu or ou",
+      "level": "A2",
+      "labels": ["eu", "ou"],
+      "listen": "Both are said with rounded lips, so you cannot go by rounding alone. For eu the mouth is relaxed and a little open, like the vowel in English \"her\" but with the lips pushed forward. For ou the lips close to a small tight hole and you get the \"oo\" of \"food\". Eu is open and soft, ou is tight and deep.",
+      "items": [
+        { "id": "eu-ou-deux", "a": { "fr": "deux", "en": "two" }, "b": { "fr": "doux", "en": "soft, mild" } },
+        { "id": "eu-ou-peu", "a": { "fr": "un peu", "en": "a little" }, "b": { "fr": "un pou", "en": "a louse" } },
+        { "id": "eu-ou-feu", "a": { "fr": "le feu", "en": "the fire" }, "b": { "fr": "le fou", "en": "the madman" } },
+        { "id": "eu-ou-jeu", "a": { "fr": "jeu", "en": "game" }, "b": { "fr": "joue", "en": "cheek" } },
+        { "id": "eu-ou-queue", "a": { "fr": "queue", "en": "tail, queue" }, "b": { "fr": "coup", "en": "knock, blow" } },
+        { "id": "eu-ou-peur", "a": { "fr": "peur", "en": "fear" }, "b": { "fr": "pour", "en": "for" } },
+        { "id": "eu-ou-coeur", "a": { "fr": "cœur", "en": "heart" }, "b": { "fr": "cour", "en": "courtyard" } },
+        { "id": "eu-ou-eux", "a": { "fr": "eux", "en": "them" }, "b": { "fr": "où", "en": "where" } },
+        { "id": "eu-ou-noeud", "a": { "fr": "nœud", "en": "knot" }, "b": { "fr": "nous", "en": "we, us" } },
+        { "id": "eu-ou-ceux", "a": { "fr": "ceux", "en": "those ones" }, "b": { "fr": "sous", "en": "under" } }
+      ]
+    },
+    {
+      "id": "du-deux",
+      "title": "du or deux",
+      "level": "A2",
+      "labels": ["du", "deux"],
+      "listen": "Both start with d, so listen to the vowel straight after. In du the tongue stays high at the front and the lips make a tiny tight circle, the same vowel as in tu. In deux the mouth opens a bit more and the sound is softer and rounder, like the vowel in \"her\" with forward lips. This is asking for some of it or asking for two of them.",
+      "items": [
+        { "id": "du-deux-pain", "a": { "fr": "du pain", "en": "some bread" }, "b": { "fr": "deux pains", "en": "two loaves" } },
+        { "id": "du-deux-cafe", "a": { "fr": "du café", "en": "some coffee" }, "b": { "fr": "deux cafés", "en": "two coffees" } },
+        { "id": "du-deux-the", "a": { "fr": "du thé", "en": "some tea" }, "b": { "fr": "deux thés", "en": "two teas" } },
+        { "id": "du-deux-sucre", "a": { "fr": "du sucre", "en": "some sugar" }, "b": { "fr": "deux sucres", "en": "two sugars" } },
+        { "id": "du-deux-verre", "a": { "fr": "du verre", "en": "some glass" }, "b": { "fr": "deux verres", "en": "two glasses" } },
+        { "id": "du-deux-gateau", "a": { "fr": "du gâteau", "en": "some cake" }, "b": { "fr": "deux gâteaux", "en": "two cakes" } },
+        { "id": "du-deux-chocolat", "a": { "fr": "du chocolat", "en": "some chocolate" }, "b": { "fr": "deux chocolats", "en": "two chocolates" } },
+        { "id": "du-deux-poulet", "a": { "fr": "du poulet", "en": "some chicken" }, "b": { "fr": "deux poulets", "en": "two chickens" } },
+        { "id": "du-deux-fromage", "a": { "fr": "du fromage", "en": "some cheese" }, "b": { "fr": "deux fromages", "en": "two cheeses" } },
+        { "id": "du-deux-jus", "a": { "fr": "du jus", "en": "some juice" }, "b": { "fr": "deux jus", "en": "two juices" } }
+      ]
+    },
+    {
+      "id": "s-z",
+      "title": "s or z",
+      "level": "A2",
+      "labels": ["s", "z"],
+      "listen": "The s sound is a plain hiss with no voice in it; the z sound buzzes. Put a finger on your throat: it shakes for z and stays still for s. This matters most after ils, elles, nous and vous, where a buzzing z means the next word started with a vowel — ils ont, not ils sont.",
+      "items": [
+        { "id": "s-z-ils-sont", "a": { "fr": "ils sont", "en": "they are" }, "b": { "fr": "ils ont", "en": "they have" } },
+        { "id": "s-z-elles-sont", "a": { "fr": "elles sont", "en": "they are (women)" }, "b": { "fr": "elles ont", "en": "they have (women)" } },
+        { "id": "s-z-nous-savons", "a": { "fr": "nous savons", "en": "we know" }, "b": { "fr": "nous avons", "en": "we have" } },
+        { "id": "s-z-vous-savez", "a": { "fr": "vous savez", "en": "you know" }, "b": { "fr": "vous avez", "en": "you have" } },
+        { "id": "s-z-savez-tout", "a": { "fr": "vous savez tout", "en": "you know everything" }, "b": { "fr": "vous avez tout", "en": "you have everything" } },
+        { "id": "s-z-savons-ca", "a": { "fr": "nous savons ça", "en": "we know that" }, "b": { "fr": "nous avons ça", "en": "we have that" } },
+        { "id": "s-z-poisson", "a": { "fr": "le poisson", "en": "the fish" }, "b": { "fr": "le poison", "en": "the poison" } },
+        { "id": "s-z-dessert", "a": { "fr": "le dessert", "en": "the dessert" }, "b": { "fr": "le désert", "en": "the desert" } },
+        { "id": "s-z-coussin", "a": { "fr": "le coussin", "en": "the cushion" }, "b": { "fr": "le cousin", "en": "the cousin" } },
+        { "id": "s-z-douce", "a": { "fr": "douce", "en": "soft, gentle" }, "b": { "fr": "douze", "en": "twelve" } }
+      ]
+    },
+    {
+      "id": "il-ils",
+      "title": "il or ils",
+      "level": "A2",
+      "labels": ["il", "ils"],
+      "listen": "The s of ils is silent on its own, but before a verb starting with a vowel it comes back as a buzzing z that glues the two words together: il aime sounds like \"ee-lem\", ils aiment like \"eel-zem\". That buzz, and sometimes a consonant sounded at the end of the verb, is the only sign that there is more than one person.",
+      "items": [
+        { "id": "il-ils-aime", "a": { "fr": "il aime ça", "en": "he likes that" }, "b": { "fr": "ils aiment ça", "en": "they like that" } },
+        { "id": "il-ils-arrive", "a": { "fr": "il arrive", "en": "he is arriving" }, "b": { "fr": "ils arrivent", "en": "they are arriving" } },
+        { "id": "il-ils-ecoute", "a": { "fr": "il écoute", "en": "he is listening" }, "b": { "fr": "ils écoutent", "en": "they are listening" } },
+        { "id": "il-ils-habite", "a": { "fr": "il habite ici", "en": "he lives here" }, "b": { "fr": "ils habitent ici", "en": "they live here" } },
+        { "id": "il-ils-ouvre", "a": { "fr": "il ouvre la porte", "en": "he opens the door" }, "b": { "fr": "ils ouvrent la porte", "en": "they open the door" } },
+        { "id": "il-ils-invite", "a": { "fr": "il invite Marie", "en": "he invites Marie" }, "b": { "fr": "ils invitent Marie", "en": "they invite Marie" } },
+        { "id": "il-ils-entre", "a": { "fr": "il entre", "en": "he comes in" }, "b": { "fr": "ils entrent", "en": "they come in" } },
+        { "id": "il-ils-achete", "a": { "fr": "il achète le pain", "en": "he buys the bread" }, "b": { "fr": "ils achètent le pain", "en": "they buy the bread" } },
+        { "id": "il-ils-attend", "a": { "fr": "elle attend", "en": "she is waiting" }, "b": { "fr": "elles attendent", "en": "they are waiting (women)" } },
+        { "id": "il-ils-radio", "a": { "fr": "elle écoute la radio", "en": "she listens to the radio" }, "b": { "fr": "elles écoutent la radio", "en": "they listen to the radio (women)" } }
+      ]
+    },
+    {
+      "id": "rai-rais",
+      "title": "will or would",
+      "level": "B1",
+      "labels": ["-rai", "-rais"],
+      "listen": "Everything up to the last syllable is the same, so listen only to the very end. The future ending is tight and closed, like a short English \"ay\" with the mouth nearly shut. The conditional ending is wider and flatter, like the \"e\" in \"bed\". Closed and narrow means it will happen; open and wide means it only would.",
+      "items": [
+        { "id": "rai-rais-parler", "a": { "fr": "je parlerai", "en": "I will speak" }, "b": { "fr": "je parlerais", "en": "I would speak" } },
+        { "id": "rai-rais-aimer", "a": { "fr": "j’aimerai", "en": "I will love" }, "b": { "fr": "j’aimerais", "en": "I would like" } },
+        { "id": "rai-rais-etre", "a": { "fr": "je serai là", "en": "I will be there" }, "b": { "fr": "je serais là", "en": "I would be there" } },
+        { "id": "rai-rais-aller", "a": { "fr": "j’irai", "en": "I will go" }, "b": { "fr": "j’irais", "en": "I would go" } },
+        { "id": "rai-rais-faire", "a": { "fr": "je ferai ça", "en": "I will do that" }, "b": { "fr": "je ferais ça", "en": "I would do that" } },
+        { "id": "rai-rais-venir", "a": { "fr": "je viendrai", "en": "I will come" }, "b": { "fr": "je viendrais", "en": "I would come" } },
+        { "id": "rai-rais-prendre", "a": { "fr": "je prendrai le train", "en": "I will take the train" }, "b": { "fr": "je prendrais le train", "en": "I would take the train" } },
+        { "id": "rai-rais-manger", "a": { "fr": "je mangerai", "en": "I will eat" }, "b": { "fr": "je mangerais", "en": "I would eat" } },
+        { "id": "rai-rais-pouvoir", "a": { "fr": "je pourrai", "en": "I will be able to" }, "b": { "fr": "je pourrais", "en": "I could" } },
+        { "id": "rai-rais-dire", "a": { "fr": "je dirai oui", "en": "I will say yes" }, "b": { "fr": "je dirais oui", "en": "I would say yes" } }
+      ]
+    }
+  ]
+}

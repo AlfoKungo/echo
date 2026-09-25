@@ -33,9 +33,12 @@ export interface ComprehensionStore {
   misses(): ComprehensionMiss[];
   lookupCounts(): { wordId: string; count: number }[];
   weakWords(): string[];
+  // Words read or heard in items answered right at least once, without being tapped there: their gloss forms
+  // (lowercase, as written) and the vocabulary ids those glosses link. What the learner meets and understands.
+  metWords(): { forms: Set<string>; words: Set<string> };
   // The level each mode is choosing from now, how many answers were given in all, and per study day of the last
   // 14 (oldest first) how many Listen and Read answers were right (on your own or with help) out of how many.
-  summary(): { levels: { mode: Mode; label: GrammarLevel }[]; answered: number; comprehensionDays: ComprehensionDayCounts[] };
+  summary(): { levels: { mode: Mode; label: GrammarLevel; value: number }[]; answered: number; comprehensionDays: ComprehensionDayCounts[] };
   // Unseen sentences and dialogues/texts at each level either mode is choosing from now (see BAND_BELOW/BAND_ABOVE).
   stock(): { level: GrammarLevel; sentences: number; passages: number }[];
   exportData(): unknown;
@@ -834,6 +837,20 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   function lookupCounts(): { wordId: string; count: number }[] {
     return lookupTotals.all().map((row) => ({ wordId: row.word_id, count: row.count }));
   }
+  const answeredItems = db.query<{ item_id: string }, []>('SELECT DISTINCT item_id FROM comprehension_history WHERE corrects > 0');
+  const lookedUp = db.query<{ exercise_key: string; fr: string }, []>('SELECT DISTINCT exercise_key, fr FROM comprehension_lookups');
+  function metWords(): { forms: Set<string>; words: Set<string> } {
+    const tapped = new Set(lookedUp.all().map((row) => `${row.exercise_key.slice(0, row.exercise_key.lastIndexOf(':'))}|${row.fr}`));
+    const forms = new Set<string>(), words = new Set<string>();
+    for (const { item_id } of answeredItems.all()) {
+      for (const entry of items.get(item_id)?.gloss ?? []) {
+        if (tapped.has(`${item_id}|${entry.fr}`)) continue;
+        forms.add(entry.fr.toLowerCase());
+        if (entry.word) words.add(entry.word);
+      }
+    }
+    return { forms, words };
+  }
 
   function exportData(): unknown {
     return db.transaction(() => ({
@@ -852,7 +869,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
 
   return {
     state: (stream) => state(parseStream(stream)),
-    lookup, answer, next, misses, lookupCounts,
+    lookup, answer, next, misses, lookupCounts, metWords,
     weakWords: () => [...weakWordSet(knownStatus())],
     summary: () => {
       const value = levels();
@@ -864,7 +881,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
         if (count) { count.total += 1; if (row.outcome !== 'incorrect') count.right += 1; }
       }
       return {
-        levels: MODES.map((mode) => ({ mode, label: LEVEL_OF(value.get(mode) ?? MIN_LEVEL) })),
+        levels: MODES.map((mode) => ({ mode, label: LEVEL_OF(value.get(mode) ?? MIN_LEVEL), value: value.get(mode) ?? MIN_LEVEL })),
         answered: db.query<{ count: number }, []>('SELECT count(*) AS count FROM comprehension_answers').get()!.count,
         comprehensionDays,
       };

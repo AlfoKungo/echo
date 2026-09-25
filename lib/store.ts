@@ -39,6 +39,10 @@ export interface Store {
   // The learner's own say, after a Walkman listen, on whether they knew the word; knew:null withdraws it.
   recordVerdict(input: VerdictInput): void;
   statistics(): VocabularyStatistics;
+  // Words missed TROUBLE_MISSES times in either direction that have no memory hook yet, with the deck words missed
+  // most alongside them; and saving hooks for them.
+  hookless(): { id: string; fr: string; en: string; note?: string; alongside: Pick<Word, 'fr' | 'en'>[] }[];
+  setHooks(hooks: { wordId: string; hook: string }[]): void;
   exportData(): unknown;
   close(): void;
 }
@@ -127,13 +131,31 @@ function nextStudyDay(now: Date): Date {
   return next;
 }
 
+// A noun's gender from how it is written: le / un masculine, la / une feminine, and for l’ and les the note, which
+// opens with "Masculine…" or "Feminine…". A noun that can be either ("Masculine or feminine…") has none.
+export function genderOf(word: { fr: string; note?: string }): 'masculine' | 'feminine' | undefined {
+  const fr = word.fr.toLowerCase();
+  if (/^(le|un)\s/.test(fr)) return 'masculine';
+  if (/^(la|une)\s/.test(fr)) return 'feminine';
+  if (!/^(l['’]|les\s|des\s)/.test(fr)) return undefined;
+  const note = (word.note ?? '').toLowerCase();
+  if (/^(masculine|feminine) or /.test(note) || /^can be masculine or feminine/.test(note)) return undefined;
+  return /^masculine/.test(note) ? 'masculine' : /^feminine/.test(note) ? 'feminine' : undefined;
+}
+
+function withGender(word: Word): Word {
+  const { gender: _old, ...rest } = word;
+  const gender = genderOf(rest);
+  return gender ? { ...rest, gender } : rest;
+}
+
 // ready tells whether an added word can be practised yet (its recording exists); the built-in words always can.
 export function createStore(baseWords: Word[], options: { dbPath?: string; now?: () => Date; random?: () => number; ready?: (wordId: string) => boolean } = {}): Store {
   const now = options.now ?? (() => new Date());
   const random = options.random ?? Math.random;
   const ready = options.ready ?? (() => true);
   // words grows when songs are added; wordById, categories and decks follow it (rebuildDecks).
-  const words: Word[] = [...baseWords];
+  const words: Word[] = baseWords.map(withGender);
   const wordById = new Map(words.map((word) => [word.id, word]));
   if (wordById.size !== words.length) throw new StoreError('Vocabulary contains duplicate word IDs.');
   for (const word of words) {
@@ -243,6 +265,12 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         knew INTEGER NOT NULL,
         marked_at TEXT NOT NULL
       );
+      -- A memory hook Claude wrote for a word missed TROUBLE_MISSES times (lib/word-hooks.ts).
+      CREATE TABLE IF NOT EXISTS word_hooks (
+        word_id TEXT PRIMARY KEY,
+        hook TEXT NOT NULL,
+        written_at TEXT NOT NULL
+      );
       CREATE INDEX IF NOT EXISTS grades_direction_sequence ON grades(direction, sequence DESC);
       CREATE INDEX IF NOT EXISTS grades_direction_time ON grades(direction, graded_at);
     `);
@@ -306,7 +334,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   if (extra.length) db.transaction(() => { for (const row of extra) db.query('DELETE FROM added_words WHERE id = ?').run(row.id); }).immediate();
   for (const row of addedRows) {
     if (!keep.has(row.id) || wordById.has(row.id)) continue;
-    const word: Word = { id: row.id, fr: row.fr, en: row.en, category: row.category, ...(row.note ? { note: row.note } : {}) };
+    const word: Word = withGender({ id: row.id, fr: row.fr, en: row.en, category: row.category, ...(row.note ? { note: row.note } : {}) });
     words.push(word); wordById.set(word.id, word); added.add(word.id); categoryTitles.set(row.category, row.category_title);
   }
   rebuildDecks();
@@ -473,8 +501,28 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (count < TROUBLE_MISSES) return undefined;
     const category = wordById.get(wordId)!.category;
     const alongside = [...misses].filter(([id, missed]) => id !== wordId && missed >= 2 && wordById.get(id)?.category === category)
-      .sort((left, right) => right[1] - left[1]).slice(0, ALONGSIDE).map(([id]) => ({ fr: wordById.get(id)!.fr, en: wordById.get(id)!.en }));
-    return { misses: count, alongside };
+      .sort((left, right) => right[1] - left[1]).slice(0, ALONGSIDE).map(([id]) => { const { fr, en, gender } = wordById.get(id)!; return { fr, en, ...(gender ? { gender } : {}) }; });
+    const hook = hookFor.get(wordId)?.hook;
+    return { misses: count, alongside, ...(hook ? { hook } : {}) };
+  }
+
+  const hookFor = db.query<{ hook: string }, [string]>('SELECT hook FROM word_hooks WHERE word_id = ?');
+  const allHooks = db.query<{ word_id: string }, []>('SELECT word_id FROM word_hooks');
+  const saveHook = db.query('INSERT INTO word_hooks (word_id, hook, written_at) VALUES (?, ?, ?) ON CONFLICT (word_id) DO UPDATE SET hook = excluded.hook, written_at = excluded.written_at');
+
+  function hookless() {
+    const hooked = new Set(allHooks.all().map((row) => row.word_id));
+    const misses = new Map<string, number>();
+    for (const direction of ['fr-en', 'en-fr'] as const) for (const entry of historyForDirection.all(direction)) misses.set(entry.word_id, Math.max(misses.get(entry.word_id) ?? 0, entry.misses));
+    return [...misses].filter(([id, count]) => count >= TROUBLE_MISSES && !hooked.has(id) && wordById.has(id)).map(([id]) => {
+      const { fr, en, note } = wordById.get(id)!;
+      return { id, fr, en, ...(note ? { note } : {}), alongside: trouble(id, misses)!.alongside.map(({ fr: other, en: meaning }) => ({ fr: other, en: meaning })) };
+    });
+  }
+
+  function setHooks(hooks: { wordId: string; hook: string }[]): void {
+    const at = now().toISOString();
+    db.transaction(() => { for (const { wordId, hook } of hooks) if (wordById.has(wordId) && hook.trim()) saveHook.run(wordId, hook.trim(), at); })();
   }
 
   function cardView(row: CardRow, stack: VocabularyStack, misses: Map<string, number>): CardView {
@@ -823,7 +871,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         do id = `${category}-${String(++next).padStart(3, '0')}`; while (wordById.has(id));
         const note = entry.note?.trim() || undefined;
         insertAdded.run(id, entry.fr.trim(), entry.en.trim(), note ?? null, category, title.trim(), at);
-        return { id, fr: entry.fr.trim(), en: entry.en.trim(), category, ...(note ? { note } : {}) };
+        return withGender({ id, fr: entry.fr.trim(), en: entry.en.trim(), category, ...(note ? { note } : {}) });
       });
       for (const word of made) { words.push(word); wordById.set(word.id, word); added.add(word.id); }
       categoryTitles.set(category, title.trim());
@@ -929,7 +977,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         const entry = byDay.get(studyDay(new Date(event.at)));
         if (entry) { if (event.weight > 0) entry.gained += event.weight; else entry.lost -= event.weight; }
       }
-      const words = started.map(({ id, fr, en, category, status, score, misses }) => ({ id, fr, en, category, status, score, misses }));
+      const words = started.map(({ id, fr, en, category, status, score, misses, gender }) => ({ id, fr, en, category, status, score, misses, ...(gender ? { gender } : {}) }));
       return { words, counts, categories, days, walkmanHeard: heardCount.get()!.count };
     })();
   }
@@ -966,5 +1014,5 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     })();
   }
 
-  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, statistics, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, statistics, hookless, setHooks, exportData, close: () => db.close() };
 }

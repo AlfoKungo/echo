@@ -4,9 +4,12 @@
 // (lib/song-lyrics.ts).
 import { Database } from 'bun:sqlite';
 import type { Ask } from './claude';
-import { StoreError, type Store } from './store';
-import { candidateFrom, groupMatches, littleWord, lyricForms, mergeCandidates, songCategory, type LrclibTrack, type LyricForm, type SongCandidate, type SongMatch, type SongSkip, type WordFacts } from './song-words';
-import { stanzasOf, writeNotes, type SongNotes } from './song-lyrics';
+import { genderOf, StoreError, type Store } from './store';
+import { candidateFrom, comparable, formCounts, groupMatches, littleWord, lyricForms, mergeCandidates, songCategory, type LrclibTrack, type LyricForm, type SongCandidate, type SongMatch, type SongSkip, type WordFacts } from './song-words';
+import { NOTES_VERSION, stanzasOf, writeNotes, type SongNotes } from './song-lyrics';
+
+// A rewrite of older notes that failed is tried again after this long (the old notes stay on show meanwhile).
+const NOTES_RETRY = 30 * 60_000;
 
 export type SongStatus = 'reading' | 'ready' | 'added' | 'failed';
 // The song view: 'none' when the lyrics are not on this Mac (a pasted song from before they were kept).
@@ -15,6 +18,9 @@ export type SongView = {
   id: string; title: string; artist: string; category: string; status: SongStatus;
   done: number; total: number; error: string | null; candidates: SongCandidate[]; skipped: SongSkip[];
   added: string[]; createdAt: string; notes: NotesStatus;
+  // Of the song's words as sung (little words and names left out), the percentage known (the Statistics sense:
+  // scheduled or due) and still learning; null before the words are read or when the lyrics are not kept.
+  understood: { known: number; learning: number } | null;
 };
 export type SongLyricsView = { id: string; title: string; artist: string; notes: NotesStatus; done: number; total: number; error: string | null; stanzas: SongNotes };
 export type SongStart = { lrclibId: number } | { title: string; artist?: string; lyrics: string };
@@ -35,7 +41,7 @@ export type SongDeps = {
 type SongRow = {
   id: string; title: string; artist: string; category: string; source: string; source_id: number | null; status: SongStatus;
   done: number; total: number; error: string | null; words_json: string | null; added_json: string | null; created_at: string;
-  lyrics: string | null; notes_json: string | null; notes_status: string | null; notes_done: number; notes_total: number; notes_error: string | null;
+  lyrics: string | null; notes_json: string | null; notes_status: string | null; notes_done: number; notes_total: number; notes_error: string | null; notes_version: number;
 };
 
 const LRCLIB = 'https://lrclib.net/api';
@@ -57,7 +63,7 @@ export function createSongs(deps: SongDeps) {
   `);
   // Columns added once the song view kept the lyrics; older databases gain them here.
   const columns = new Set(db.query<{ name: string }, []>('PRAGMA table_info(songs)').all().map((column) => column.name));
-  for (const [name, type] of [['lyrics', 'TEXT'], ['notes_json', 'TEXT'], ['notes_status', 'TEXT'], ['notes_done', 'INTEGER NOT NULL DEFAULT 0'], ['notes_total', 'INTEGER NOT NULL DEFAULT 0'], ['notes_error', 'TEXT']] as const) {
+  for (const [name, type] of [['lyrics', 'TEXT'], ['notes_json', 'TEXT'], ['notes_status', 'TEXT'], ['notes_done', 'INTEGER NOT NULL DEFAULT 0'], ['notes_total', 'INTEGER NOT NULL DEFAULT 0'], ['notes_error', 'TEXT'], ['notes_version', 'INTEGER NOT NULL DEFAULT 1']] as const) {
     if (!columns.has(name)) db.exec(`ALTER TABLE songs ADD COLUMN ${name} ${type}`);
   }
   const byId = db.query<SongRow, [string]>('SELECT * FROM songs WHERE id = ?');
@@ -70,13 +76,32 @@ export function createSongs(deps: SongDeps) {
   let running: Promise<void> | null = null;
   const notesStatus = (row: SongRow): NotesStatus => !row.lyrics ? 'none' : (row.notes_status as NotesStatus | null) ?? 'waiting';
 
-  function view(row: SongRow): SongView {
+  // Word statuses for the understanding share, read once per call that builds views.
+  function statuses(): Map<string, string> { return new Map(deps.vocabulary.listening().map((word) => [word.id, word.status])); }
+
+  function understood(row: SongRow, candidates: SongCandidate[], status: Map<string, string>): SongView['understood'] {
+    if (!row.lyrics || !candidates.length) return null;
+    const deck = new Map(deps.vocabulary.words().map((word) => [comparable(word.fr), word.id]));
+    const byForm = new Map(candidates.filter((candidate) => !candidate.forms.every((form) => littleWord(form) !== null)).flatMap((candidate) => candidate.forms.map((form) => [form, candidate] as const)));
+    let total = 0, known = 0, learning = 0;
+    for (const [form, count] of formCounts(row.lyrics)) {
+      const candidate = byForm.get(form);
+      if (!candidate) continue;
+      total += count;
+      const state = status.get(deck.get(comparable(candidate.fr)) ?? '');
+      if (state === 'scheduled' || state === 'due') known += count; else if (state === 'learning') learning += count;
+    }
+    return total ? { known: Math.round(known / total * 100), learning: Math.round(learning / total * 100) } : null;
+  }
+
+  function view(row: SongRow, status = statuses()): SongView {
     const words = row.words_json ? JSON.parse(row.words_json) as { candidates: SongCandidate[]; skipped: SongSkip[] } : { candidates: [], skipped: [] };
     return {
       id: row.id, title: row.title, artist: row.artist, category: row.category, status: row.status,
       done: row.done, total: row.total, error: row.error, skipped: words.skipped,
-      candidates: words.candidates.map((candidate) => ({ ...candidate, little: candidate.forms.every((form) => littleWord(form) !== null) })),
+      candidates: words.candidates.map((candidate) => { const gender = genderOf(candidate); return { ...candidate, little: candidate.forms.every((form) => littleWord(form) !== null), ...(gender ? { gender } : {}) }; }),
       added: row.added_json ? JSON.parse(row.added_json) : [], createdAt: row.created_at, notes: notesStatus(row),
+      understood: understood(row, words.candidates, status),
     };
   }
 
@@ -152,9 +177,15 @@ export function createSongs(deps: SongDeps) {
     db.query("UPDATE songs SET notes_status = 'writing', notes_done = 0 WHERE id = ?").run(id);
     try {
       const written = await writeNotes(deps.ask, { title: row.title, artist: row.artist, lyrics: row.lyrics }, (done, total) => db.query('UPDATE songs SET notes_done = ?, notes_total = ? WHERE id = ?').run(done, total, id));
-      db.query("UPDATE songs SET notes_status = 'ready', notes_json = ?, notes_error = NULL WHERE id = ?").run(JSON.stringify(written), id);
+      db.query("UPDATE songs SET notes_status = 'ready', notes_json = ?, notes_error = NULL, notes_version = ? WHERE id = ?").run(JSON.stringify(written), NOTES_VERSION, id);
     } catch (error) {
-      db.query("UPDATE songs SET notes_status = 'failed', notes_error = ? WHERE id = ?").run(error instanceof Error ? error.message : 'Writing the notes failed.', id);
+      const message = error instanceof Error ? error.message : 'Writing the notes failed.';
+      // A rewrite for a newer notes version keeps the old notes on show and tries again later, so a Claude that
+      // cannot be reached (a usage limit, say) never leaves a readable song showing an error.
+      if (row.notes_json) {
+        db.query("UPDATE songs SET notes_status = 'ready', notes_error = ? WHERE id = ?").run(message, id);
+        setTimeout(() => { if (byId.get(id)) { queueNotes(id); void drain(); } }, NOTES_RETRY).unref();
+      } else db.query("UPDATE songs SET notes_status = 'failed', notes_error = ? WHERE id = ?").run(message, id);
     }
   }
 
@@ -162,7 +193,7 @@ export function createSongs(deps: SongDeps) {
   function lyrics(id: string): SongLyricsView {
     const row = byId.get(id);
     if (!row) throw new StoreError('That song is not in Echo.', 404);
-    const stanzas: SongNotes = row.notes_status === 'ready' && row.notes_json ? JSON.parse(row.notes_json)
+    const stanzas: SongNotes = row.notes_json ? JSON.parse(row.notes_json)
       : row.lyrics ? stanzasOf(row.lyrics).map((stanza) => stanza.map((fr) => ({ fr, en: null, words: [] }))) : [];
     return { id: row.id, title: row.title, artist: row.artist, notes: notesStatus(row), done: row.notes_done, total: row.notes_total, error: row.notes_error, stanzas };
   }
@@ -260,7 +291,9 @@ export function createSongs(deps: SongDeps) {
         else fail.run('Echo restarted while reading this song. Paste the lyrics again.', row.id);
       } catch (error) { fail.run(error instanceof Error ? error.message : 'The lyrics could not be fetched.', row.id); }
     }
-    for (const row of all.all().filter((song) => (song.status === 'ready' || song.status === 'added') && song.notes_status !== 'ready' && song.notes_status !== 'failed').reverse()) {
+    // Notes written before the current version are written again; the old ones stay on show until then.
+    const due = (song: SongRow) => (song.notes_status !== 'ready' && song.notes_status !== 'failed') || (song.notes_status === 'ready' && song.notes_version < NOTES_VERSION);
+    for (const row of all.all().filter((song) => (song.status === 'ready' || song.status === 'added') && due(song)).reverse()) {
       try { if (await keptLyrics(row)) queueNotes(row.id); }
       catch { /* LRCLIB unreachable: the song view waits for the next start. */ }
     }
@@ -275,6 +308,6 @@ export function createSongs(deps: SongDeps) {
     db.query('DELETE FROM songs WHERE id = ?').run(id);
   }
 
-  return { search, start, get, lyrics, rewriteNotes, list: () => all.all().map(view), add, retry, resume, remove, settled: () => running ?? Promise.resolve(), close: () => db.close() };
+  return { search, start, get, lyrics, rewriteNotes, list: () => { const status = statuses(); return all.all().map((row) => view(row, status)); }, add, retry, resume, remove, settled: () => running ?? Promise.resolve(), close: () => db.close() };
 }
 export type Songs = ReturnType<typeof createSongs>;

@@ -28,6 +28,8 @@ const mixIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="
 const cassette = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><circle cx="15.5" cy="11" r="2"/><path d="M10.5 11h3M7 19l1.5-3h7L17 19"/></svg>';
 const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z"/></svg>';
 const pauseIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>';
+const storyIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18.5V5a1.5 1.5 0 0 1 1.5-1.5h12v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h11.5v-4"/><path d="M10 3.5v6l2-1.4 2 1.4v-6"/></svg>';
+const radioIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="m7 8 9-4.5"/><circle cx="15.5" cy="14" r="2.8"/><path d="M6.5 12h3M6.5 15h3M6.5 18h3"/></svg>';
 // Echo always opens on Home; each screen change after that is a history entry, so Back returns to it.
 // A place names a screen and what it shows: 'grammar', 'topic|negation', 'exercise|test:negation'.
 let screen = 'home';
@@ -204,7 +206,10 @@ function playClip(url, token) {
   });
 }
 // The line under the speaker: the line playing now, where it stopped, or why nothing is playing.
-function clipKey() { const view = streamState?.current; return view ? `${streamId}:${view.key}` : ''; }
+function clipKey() {
+  if (screen === 'story' && storyView) return `story:${storyView.episode.id}`;
+  const view = streamState?.current; return view ? `${streamId}:${view.key}` : '';
+}
 function clipHint() {
   const view = streamState?.current;
   if (clipProgress) return `line ${clipProgress.index} of ${clipProgress.total}`;
@@ -215,6 +220,7 @@ function clipHint() {
 }
 // The speaker and its hint change as lines play, so the block is redrawn in place.
 function showClipProgress() {
+  if (screen === 'story' && storyView) { const block = document.querySelector('.story .listen-block'); if (block) block.outerHTML = storyPlayHTML(); return; }
   const block = document.querySelector('.listen-block');
   if (block && streamState?.current) block.outerHTML = streamAudioHTML(streamState.current, !!streamState.result);
 }
@@ -281,8 +287,14 @@ function noticeHTML() {
   return `<div class="notice ${notice.kind === 'info' ? 'info' : ''}" role="${notice.kind === 'info' ? 'status' : 'alert'}"><span>${esc(notice.message)}</span>${retryAction ? `<button class="quiet" data-action="retry" ${busy ? 'disabled' : ''}>Retry</button>` : ''}</div>`;
 }
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
+// Nouns are coloured by gender (lib/store.ts genderOf): a class on the French, shown when the setting is on.
+let genders = {};               // word id -> gender, for tappable words linked to a noun (api/genders)
+let genderColours = localStorage.getItem('echo.genders') !== 'off';
+document.body.classList.toggle('genders', genderColours);
+const genderClass = (gender) => gender === 'masculine' ? ' g-m' : gender === 'feminine' ? ' g-f' : '';
+fetch('api/genders').then((response) => response.ok ? response.json() : {}).then((map) => { genders = map; render(); }).catch(() => {});
 function back(label, action) { return `<button class="back" data-action="${action}" ${busy ? 'disabled' : ''}><span aria-hidden="true">←</span> ${label}</button>`; }
-function place() { return screen === 'song' ? `song|${songId}` : screen === 'lyrics' ? `lyrics|${songId}` : screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen; }
+function place() { return screen === 'song' ? `song|${songId}` : screen === 'lyrics' ? `lyrics|${songId}` : screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen === 'sound' ? `sound|${soundId}` : screen === 'story' && storyNumber ? `story|${storyNumber}` : screen; }
 function record(next) {
   depth += 1; trail.length = depth; trail[depth] = next;
   history.pushState({ echo: next, depth }, '');
@@ -302,11 +314,14 @@ function renderHome() {
     ${room('listen', headphones, 'Listen', 'Hear French and show you understood it.', 'listen')}
     ${room('read', bookIcon, 'Read', 'Read French and show you understood it.', 'read')}
     ${room('walkman', cassette, 'Walkman', 'French words, then their meaning, like an old language tape.')}
+    ${room('story', storyIcon, 'Story', 'A serial written for you, a little above your level.')}
+    ${room('radio', radioIcon, 'Radio', 'Today’s episode: your words, the story and a little grammar.')}
   </div><div class="side-row">
     <button class="side-link" data-action="start" ${locked() ? 'disabled' : ''}>Vocabulary</button>
     <button class="side-link" data-action="grammar" ${busy ? 'disabled' : ''}>Grammar</button>
     <button class="side-link" data-action="mistakes" ${busy ? 'disabled' : ''}>Mistakes</button>
     <button class="side-link" data-action="statistics" ${busy ? 'disabled' : ''}>Statistics</button>
+    <button class="side-link" data-action="sounds" ${busy ? 'disabled' : ''}>Sounds</button>
   </div></section>`;
 }
 function render() {
@@ -325,6 +340,10 @@ function render() {
   else if (screen === 'songs') renderSongs();
   else if (screen === 'song') renderSong();
   else if (screen === 'lyrics') renderLyrics();
+  else if (screen === 'sounds') renderSounds();
+  else if (screen === 'sound') renderSound();
+  else if (screen === 'story') renderStory();
+  else if (screen === 'radio') renderRadio();
   else renderHome();
 }
 function renderWalkman() {
@@ -444,6 +463,7 @@ async function loadTape(autoplay = false) {
   }
 }
 async function playWalkman() {
+  mediaPlayer = 'walkman';
   heardResume = false;
   if (heardSaying) { heardSaying = ''; stopAudio(); }
   walkmanAudio.playbackRate = speed;
@@ -508,11 +528,95 @@ walkmanAudio.addEventListener('error', () => {
   if (screen !== 'walkman' || !walkman.tape) return;
   notice = { message: 'The tape stopped loading. Retry for a new one.' }; retryAction = { type: 'walkman' }; render();
 });
+// ── Radio ────────────────────────────────────────────────────────────────────
+// One episode a day (lib/radio.ts): today's words in sentences, the story read line by line, a grammar point.
+// Like the Walkman it is one MP3, so it plays on with the phone locked; the part playing is shown as it goes.
+const radioAudio = new Audio();
+let radio = { view: null, index: -1, loading: false };
+let radioPoll = 0;
+let mediaPlayer = 'walkman';    // which player the lock-screen buttons control: the one that last started
+function openRadio() { if (move('radio', true)) loadRadio(); }
+async function loadRadio(quiet = false) {
+  clearTimeout(radioPoll);
+  if (!quiet) { radio.loading = true; notice = null; retryAction = null; render(); }
+  try {
+    const view = await api('api/radio');
+    if (view.url && radio.view?.url !== view.url) { radioAudio.src = view.url; radio.index = -1; }
+    radio.view = view;
+  } catch (error) { if (!quiet) { notice = { message: error.message }; retryAction = { type: 'radio' }; } }
+  radio.loading = false;
+  if (screen !== 'radio') return;
+  render();
+  if (radio.view?.state === 'preparing') radioPoll = setTimeout(() => { if (screen === 'radio') loadRadio(true); }, 15000);
+}
+function radioAt(time) {
+  const segments = radio.view?.segments ?? [];
+  let found = -1;
+  for (let index = 0; index < segments.length && segments[index].start <= time; index++) found = index;
+  return found;
+}
+function radioProgress() { const seconds = radio.view?.seconds; return seconds ? Math.min(100, (radioAudio.currentTime / seconds) * 100).toFixed(2) : 0; }
+async function playRadio() {
+  mediaPlayer = 'radio';
+  radioAudio.playbackRate = speed; radioAudio.preservesPitch = true; radioAudio.webkitPreservesPitch = true;
+  try { await radioAudio.play(); } catch (error) { if (error.name !== 'AbortError') notice = { message: 'The Radio could not start. Tap play to try again.' }; }
+  render();
+}
+function toggleRadio() { if (!radio.view?.url) return; if (radioAudio.paused) playRadio(); else radioAudio.pause(); }
+// Lock-screen skip moves a whole part: forward to the next, back to this part's start or the one before.
+function skipRadio(step) {
+  const segments = radio.view?.segments;
+  if (!segments?.length) return;
+  const index = radioAt(radioAudio.currentTime);
+  const into = index >= 0 ? radioAudio.currentTime - segments[index].start : 0;
+  const target = step > 0 ? index + 1 : into > 1.5 ? index : index - 1;
+  radioAudio.currentTime = segments[Math.max(0, Math.min(segments.length - 1, target))].start;
+}
+function followRadio() {
+  const index = radioAt(radioAudio.currentTime);
+  if (index !== radio.index) {
+    radio.index = index;
+    const part = radio.view?.segments[index];
+    if (part && 'mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: part.fr || part.en || part.label, artist: part.fr ? part.en || '' : part.label, album: 'Echo · Radio', artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
+    if (screen === 'radio' && !document.hidden) render();
+    return;
+  }
+  const bar = document.querySelector('.radio .wm-progress span');
+  if (bar) bar.style.width = `${radioProgress()}%`;
+}
+radioAudio.addEventListener('timeupdate', followRadio);
+for (const event of ['play', 'pause', 'ended']) radioAudio.addEventListener(event, () => { if (screen === 'radio') render(); });
+radioAudio.addEventListener('error', () => {
+  if (screen !== 'radio' || !radio.view?.url) return;
+  notice = { message: 'The Radio stopped loading. Retry to tune in again.' }; retryAction = { type: 'radio' }; radio.view = null; render();
+});
+const SECTION_TITLE = { intro: 'Echo Radio', words: 'Your words', story: 'The story', grammar: 'Grammar', outro: 'Echo Radio' };
+function renderRadio() {
+  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Radio</span></div>`;
+  const view = radio.view;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream walkman radio">${header}${body}</section>`; };
+  if (!view) { shell(radio.loading ? '<div class="loading-state" role="status">Tuning in…</div>' : ''); return; }
+  if (view.state !== 'ready') {
+    shell(`<div class="song-progress" role="status">${view.state === 'failed' ? `<p class="song-error">Today’s episode could not be made: ${esc(view.error || 'unknown error')}</p><p class="caption">Echo tries again in half an hour.</p>` : '<p>Today’s episode is being made: your words, the story and a little grammar. It takes a few minutes.</p>'}</div>`);
+    return;
+  }
+  const part = view.segments[radio.index];
+  const playing = !radioAudio.paused;
+  const face = part
+    ? `<p class="wm-hint">${esc(SECTION_TITLE[part.section])}${part.label !== SECTION_TITLE[part.section] ? ` · ${esc(part.label)}` : ''}</p>${part.fr ? `<p class="wm-fr" lang="fr">${frEsc(part.fr)}</p>` : ''}<p class="wm-en">${esc(part.en || '')}</p>`
+    : `<p class="wm-hint">Today’s episode, ${Math.max(1, Math.round(view.seconds / 60))} minutes: your words in sentences, the story, and a little grammar.</p>`;
+  const sections = view.segments.filter((segment, index, all) => segment.section !== 'intro' && segment.section !== 'outro' && all.findIndex((other) => other.section === segment.section) === index);
+  const chapters = sections.map((segment) => `<button class="secondary chip" data-action="radio-seek" data-at="${segment.start}">${esc(SECTION_TITLE[segment.section])}</button>`).join('');
+  shell(`<div class="wm-face" aria-live="polite">${face}</div>
+    <div class="wm-controls"><button class="listen-play wm-play" data-action="radio-toggle" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button></div>
+    <div class="wm-progress" aria-hidden="true"><span style="width:${radioProgress()}%"></span></div>
+    ${chapters ? `<div class="radio-chapters" role="group" aria-label="Jump to">${chapters}</div>` : ''}`);
+}
 if ('mediaSession' in navigator) {
-  navigator.mediaSession.setActionHandler('play', () => playWalkman());
-  navigator.mediaSession.setActionHandler('pause', () => walkmanAudio.pause());
-  navigator.mediaSession.setActionHandler('nexttrack', () => skipWord(1));
-  navigator.mediaSession.setActionHandler('previoustrack', () => skipWord(-1));
+  navigator.mediaSession.setActionHandler('play', () => mediaPlayer === 'radio' ? playRadio() : playWalkman());
+  navigator.mediaSession.setActionHandler('pause', () => (mediaPlayer === 'radio' ? radioAudio : walkmanAudio).pause());
+  navigator.mediaSession.setActionHandler('nexttrack', () => mediaPlayer === 'radio' ? skipRadio(1) : skipWord(1));
+  navigator.mediaSession.setActionHandler('previoustrack', () => mediaPlayer === 'radio' ? skipRadio(-1) : skipWord(-1));
 }
 function availabilityCopy() {
   const parts = [];
@@ -560,8 +664,9 @@ function extraPractice(type, data) {
 }
 // A word missed often: how often, and the words of its deck missed most with it, side by side to tell apart.
 function troubleHTML(trouble) {
-  const list = trouble.alongside.length ? `<ul>${trouble.alongside.map((word) => `<li><span lang="fr">${frEsc(word.fr)}</span> <span class="en">${esc(word.en)}</span></li>`).join('')}</ul>` : '';
-  return `<div class="word-trouble"><p>Missed ${trouble.misses} times${trouble.alongside.length ? '. Often missed with it:' : '.'}</p>${list}</div>`;
+  const list = trouble.alongside.length ? `<ul>${trouble.alongside.map((word) => `<li><span lang="fr" class="${genderClass(word.gender).trim()}">${frEsc(word.fr)}</span> <span class="en">${esc(word.en)}</span></li>`).join('')}</ul>` : '';
+  const hook = trouble.hook ? `<p class="word-hook">${esc(trouble.hook)}</p>` : '';
+  return `<div class="word-trouble">${hook}<p>Missed ${trouble.misses} times${trouble.alongside.length ? '. Often missed with it:' : '.'}</p>${list}</div>`;
 }
 // The flashcard itself: shared by the Vocabulary screen and the Practise stream.
 function cardHTML() {
@@ -572,7 +677,7 @@ function cardHTML() {
   const hidden = listening() && !revealed;
   const face = hidden
     ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button><p class="source-word">Listen, then tap to see the word</p>`
-    : `<h1 class="main-word" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : ''}`;
+    : `<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : ''}`;
   const listenToggle = direction === 'fr-en' ? `<button class="audio-mode ${listenMode ? 'on' : ''}" data-action="listen-mode" aria-pressed="${listenMode}" aria-label="Listen only: ${listenMode ? 'on' : 'off'}" title="Hear the French word instead of reading it">${headphones}<span>Listen ${listenMode ? 'on' : 'off'}</span></button>` : '';
   return `<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : hidden ? 'Reveal the meaning' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content">${face}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}</div><button class="quiet" data-action="undo" ${!snapshot.undoId || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
@@ -613,9 +718,9 @@ function renderBrowseResults() {
   const reverse = direction === 'en-fr';
   const rowText = (word) => {
     const hidden = hideTranslations && !revealedWords.has(word.id);
-    if (!hidden) return `<h2 lang="fr">${esc(word.fr)}</h2><p>${esc(word.en)}</p>`;
+    if (!hidden) return `<h2 lang="fr" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2><p>${esc(word.en)}</p>`;
     const reveal = `<button class="reveal-word" data-reveal-word="${esc(word.id)}">${reverse ? 'Show French' : 'Show English'}</button>`;
-    return reverse ? `<h2 lang="en">${esc(word.en)}</h2>${reveal}` : `<h2 lang="fr">${esc(word.fr)}</h2>${reveal}`;
+    return reverse ? `<h2 lang="en">${esc(word.en)}</h2>${reveal}` : `<h2 lang="fr" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2>${reveal}`;
   };
   const history = (word) => [
     categoryTitle(word.category),
@@ -854,14 +959,14 @@ function glossedHTML(text, glosses) {
       for (let index = at; index < end; index++) if (taken[index]) { free = false; break; }
       if (!free) continue;
       for (let index = at; index < end; index++) taken[index] = true;
-      marks.push({ at, end, fr: entry.fr });
+      marks.push({ at, end, fr: entry.fr, gender: genders[entry.word] ?? entry.gender });
     }
   }
   marks.sort((a, b) => a.at - b.at);
   let html = '';
   let at = 0;
   for (const mark of marks) {
-    const button = `<button class="gloss" data-gloss="${esc(mark.fr)}">${frEsc(text.slice(mark.at, mark.end))}</button>`;
+    const button = `<button class="gloss${genderClass(mark.gender)}" data-gloss="${esc(mark.fr)}">${frEsc(text.slice(mark.at, mark.end))}</button>`;
     // A button is an inline block, so the line may break after it; keep a following " ?" with its word.
     const tail = /^ [?!:;»]/.exec(text.slice(mark.end))?.[0] || '';
     html += `${frEsc(text.slice(at, mark.at))}${tail ? `<span class="nowrap">${button}${frEsc(tail)}</span>` : button}`;
@@ -872,6 +977,7 @@ function glossedHTML(text, glosses) {
 // The glosses of what is on screen: the tapped song line's, a grammar question's, else the Listen/Read item's.
 function glossFor(fr) {
   const lyricLine = screen === 'lyrics' ? (() => { const [s, l] = glossLine.split('.').map(Number); return songLyrics?.stanzas?.[s]?.[l]; })() : null;
+  if (screen === 'story') { const found = storyView?.episode.gloss.find((entry) => entry.fr === fr); return found?.new ? { ...found, note: 'New in this episode.' } : found ?? null; }
   const lists = screen === 'lyrics' ? [lyricLine?.words] : grammarOnScreen() ? [activeGrammar()?.session?.current?.exercise?.gloss] : [streamState?.result?.gloss, streamState?.current?.gloss];
   for (const list of lists) { const found = (list || []).find((entry) => entry.fr === fr); if (found) return found; }
   return null;
@@ -1039,12 +1145,12 @@ function renderStatistics() {
   }).join('');
   const chosen = statsBin === null ? [] : words.filter((word) => statsBinOf(word.score) === statsBin);
   const binLabel = statsBin === -8 ? '−8 or lower' : statsBin === 8 ? '8 or higher' : signed(statsBin);
-  const binList = statsBin === null ? '' : `<div class="st-bin"><button class="st-bin-head" data-action="stats-list" aria-expanded="${statsOpen}"><span>Score ${binLabel} · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}</span><span class="chev" aria-hidden="true">⌄</span></button>${statsOpen && chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : ''}</div>`;
+  const binList = statsBin === null ? '' : `<div class="st-bin"><button class="st-bin-head" data-action="stats-list" aria-expanded="${statsOpen}"><span>Score ${binLabel} · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}</span><span class="chev" aria-hidden="true">⌄</span></button>${statsOpen && chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr${genderClass(word.gender)}" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : ''}</div>`;
   const parts = [['learning', 'learning', 'var(--violet)'], ['due', 'due now', '#d7c38a'], ['scheduled', 'known', '#6e6aa8'], ['new', 'not started', 'var(--frame)']];
   const stack = parts.map(([key, , colour]) => `<span style="width:${counts[key] / total * 100}%;background:${colour}"></span>`).join('');
   const legend = parts.map(([key, label, colour]) => `<span><i style="background:${colour}"></i><b>${counts[key]}</b>${label}</span>`).join('');
   const hardest = words.filter((word) => word.score < 0).slice(0, 6);
-  const hard = hardest.length ? `<ol class="st-rows">${hardest.map((word) => `<li><div class="name"><p lang="fr" class="fr">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div><span class="st-tag shaky">missed ${word.misses}×</span></li>`).join('')}</ol>` : '<p class="st-cap">Nothing shaky right now.</p>';
+  const hard = hardest.length ? `<ol class="st-rows">${hardest.map((word) => `<li><div class="name"><p lang="fr" class="fr${genderClass(word.gender)}">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div><span class="st-tag shaky">missed ${word.misses}×</span></li>`).join('')}</ol>` : '<p class="st-cap">Nothing shaky right now.</p>';
   const feel = (average) => average === null ? '' : average < 0 ? 'shaky' : average < 2 ? 'steady' : 'solid';
   const categories = statistics.categories.map((category) => `<li><div class="name"><p>${esc(categoryTitle(category.id))}</p><small>${category.started} of ${category.total} started</small></div><div class="st-mini"><span style="width:${category.started / category.total * 100}%"></span></div>${category.average === null ? '<span class="st-tag"></span>' : `<span class="st-tag ${feel(category.average)}">${feel(category.average)}</span>`}</li>`).join('');
   const busiest = Math.max(1, ...statistics.days.map((day) => day.knew + day.missed));
@@ -1123,7 +1229,7 @@ function songStatusLine(song) {
   if (song.status === 'added') {
     // New words from every deck share one daily allowance, so "waiting" is how many are still to come in.
     const deck = songList?.decks?.[song.category];
-    return `Added · ${song.added.length} ${song.added.length === 1 ? 'word' : 'words'}${deck ? ` · ${deck.today} today · ${deck.waiting} waiting` : ''}`;
+    return `${song.understood ? `You know ${song.understood.known}%` : 'Added'} · ${song.added.length} ${song.added.length === 1 ? 'word' : 'words'}${deck ? ` · ${deck.today} today · ${deck.waiting} waiting` : ''}`;
   }
   return 'Could not be read';
 }
@@ -1143,6 +1249,11 @@ function songListHTML() {
   const list = (songList?.songs || []).map((song) => `<li><button class="song-row" data-action="song-open" data-song="${esc(song.id)}"><span class="song-copy"><strong>${esc(song.title)}</strong><span>${esc(song.artist || 'Pasted lyrics')}</span><small class="song-state ${song.status}">${esc(songStatusLine(song))}</small>${song.status === 'reading' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
   return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
 }
+// How much of the song's words you know, and how much you are learning, as one bar.
+function understoodHTML(understood) {
+  if (!understood) return '';
+  return `<div class="song-known"><p><strong>You know ${understood.known}%</strong> of the words in this song${understood.learning ? ` · ${understood.learning}% still learning` : ''}</p><span class="song-known-bar"><span class="k" style="width:${understood.known}%"></span><span class="l" style="width:${understood.learning}%"></span></span><p class="caption">Every word as it is sung, little words and names left out. A word counts once you know it in your practice.</p></div>`;
+}
 function renderSong() {
   const song = songView;
   const header = `<div class="section-top">${back('Songs', 'songs')}</div>`;
@@ -1160,7 +1271,7 @@ function renderSong() {
     const fresh = song.candidates.filter((entry) => !entry.existing && !entry.little);
     const little = song.candidates.filter((entry) => !entry.existing && entry.little);
     const known = song.candidates.filter((entry) => entry.existing);
-    const row = (entry) => `<li><button class="song-pick" role="checkbox" aria-checked="${picks.has(entry.fr)}" data-action="song-pick" data-fr="${esc(entry.fr)}"><span class="tick" aria-hidden="true"></span><span class="song-word"><strong lang="fr">${frEsc(entry.fr)}</strong><span>${esc(entry.en)}</span>${entry.note ? `<small>${esc(entry.note)}</small>` : ''}</span><span class="song-forms" lang="fr">${entry.forms.map(esc).join(', ')}</span></button></li>`;
+    const row = (entry) => `<li><button class="song-pick" role="checkbox" aria-checked="${picks.has(entry.fr)}" data-action="song-pick" data-fr="${esc(entry.fr)}"><span class="tick" aria-hidden="true"></span><span class="song-word"><strong lang="fr" class="${genderClass(entry.gender).trim()}">${frEsc(entry.fr)}</strong><span>${esc(entry.en)}</span>${entry.note ? `<small>${esc(entry.note)}</small>` : ''}</span><span class="song-forms" lang="fr">${entry.forms.map(esc).join(', ')}</span></button></li>`;
     body = `<p class="song-hint">Untick any word you don’t want. On the right: how it appears in the song.</p>
       <div class="song-tools"><button class="quiet" data-action="song-pick-all">Tick all</button><button class="quiet" data-action="song-pick-none">Untick all</button></div>
       <ol class="song-picks">${fresh.map(row).join('')}</ol>
@@ -1173,7 +1284,7 @@ function renderSong() {
     const recording = audio && (audio.pending || audio.recording) ? `Recording the new words on your Mac… ${audio.pending} left. Each one joins your practice as soon as it is recorded.` : audio?.failed?.some((id) => song.added.includes(id)) ? `${audio.failed.filter((id) => song.added.includes(id)).length} could not be recorded and stay out of practice.` : 'Every word is recorded.';
     body = `<div class="song-progress"><p><strong>${song.added.length}</strong> ${song.added.length === 1 ? 'word' : 'words'} added to the “${esc(song.title)}” deck.</p><p class="caption">${esc(recording)} New words from songs come ${snapshot?.settings?.songsFirst === false ? 'in turn with your other categories' : 'before your other new words'}; change this in Vocabulary options.</p><div class="summary-actions"><button class="primary" data-action="song-practise" data-category="${esc(song.category)}" ${busy ? 'disabled' : ''}>Practise these words</button></div></div>`;
   }
-  main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${title}${body}</section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${title}${understoodHTML(song.understood)}${body}</section>`;
 }
 function openSongs() { if (dialog.open) dialog.close(); if (move('songs', true)) loadSongs(); }
 function openSong(id) { songId = id; songView = songList?.songs.find((song) => song.id === id) ?? null; if (move(`song|${id}`, true)) loadSong(); }
@@ -1302,6 +1413,193 @@ async function loadStatistics() {
 }
 function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } render(); }
 function openWalkman() { if (move('walkman', true)) loadTape(); }
+// Sounds: pairs that differ by one sound (lib/sounds.ts). One side plays; the learner picks which one they heard,
+// then can hear both. A round is ten pairs, the ones missed most first.
+let soundList = null;          // api/sounds: each contrast with its recent record
+let soundId = '';              // the contrast drilled, or 'mix'
+let soundRound = null;         // { questions, index, chose, right }
+const soundUrl = (itemId, side) => `audio/sounds/${itemId}-${side}.mp3`;
+function openSounds() { if (move('sounds', true)) loadSounds(); }
+async function loadSounds() {
+  loading = true; notice = null; retryAction = null; render();
+  try { soundList = (await api('api/sounds')).contrasts; }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'sounds' }; }
+  loading = false;
+  if (screen === 'sounds') render();
+}
+function renderSounds() {
+  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Sounds</span></div>`;
+  if (loading || !soundList) { main.innerHTML = `${noticeHTML()}<section class="topics">${header}${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
+  const record = (entry) => entry.ready === 0 ? 'Being recorded'
+    : entry.recent.total ? `${entry.recent.right} of your last ${entry.recent.total} right` : 'Not tried yet';
+  const row = (entry) => `<button class="topic-row" data-action="sound-open" data-sound="${esc(entry.id)}" ${busy || !entry.ready ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${esc(entry.title)}</h3><span class="level-tag">${esc(entry.level)}</span></span><p lang="fr">${entry.labels.map(esc).join(' · ')}</p><small class="topic-progress">${esc(record(entry))}</small></span><span class="arrow" aria-hidden="true">→</span></button>`;
+  const ready = soundList.some((entry) => entry.ready);
+  const mix = `<button class="topic-row" data-action="sound-open" data-sound="mix" ${busy || !ready ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>All sounds</h3></span><p>A mix, with the pairs you miss most first.</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics">${header}<h1>Sounds</h1><p class="subtitle">Two phrases that differ by one sound. Listen, then choose the one you heard.</p><div class="topic-list">${mix}${soundList.map(row).join('')}</div></section>`;
+}
+function openSound(id) { soundId = id; if (move(`sound|${id}`, true)) startSoundRound(); }
+async function startSoundRound() {
+  loading = true; notice = null; retryAction = null; soundRound = null; render();
+  try {
+    if (!soundList) soundList = (await api('api/sounds')).contrasts;
+    const { questions } = await api('api/sounds/round', { method: 'POST', body: JSON.stringify({ id: soundId }) });
+    soundRound = { questions, index: 0, chose: null, right: 0 };
+  } catch (error) { notice = { message: error.message }; retryAction = { type: 'sound' }; }
+  loading = false;
+  if (screen !== 'sound') return;
+  render();
+  if (soundRound) playFrench(soundRound.questions[0].audio);
+}
+function soundContrast(id) { return soundList?.find((entry) => entry.id === id); }
+function renderSound() {
+  const title = soundId === 'mix' ? 'All sounds' : soundContrast(soundId)?.title || 'Sounds';
+  const header = `<div class="section-top">${back('Sounds', 'sounds')}<span class="stream-label">${esc(title)}</span></div>`;
+  if (loading || !soundRound) { main.innerHTML = `${noticeHTML()}<section class="stream">${header}${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
+  const { questions, index, chose } = soundRound;
+  if (index >= questions.length) {
+    main.innerHTML = `${noticeHTML()}<section class="summary">${header}<h1 class="score"><span class="sr-only">Score: </span>${soundRound.right} <span>/ ${questions.length}</span></h1><p class="summary-line">${soundRound.right === questions.length ? 'Every one heard right.' : 'The pairs you missed come back first next time.'}</p><div class="summary-actions"><button class="primary" data-action="sound-again">Another round</button><button class="secondary" data-action="sounds">All the sounds</button></div></section>`;
+    return;
+  }
+  const question = questions[index];
+  const settled = !!chose;
+  const choices = question.choices.map((choice) => {
+    const right = settled && choice.side === question.side;
+    const wrong = settled && !right && choice.side === chose;
+    const mark = right ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">what played</span></span>'
+      : wrong ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">what you chose</span></span>' : '';
+    const pick = `<button class="choice${wrong ? ' wrong' : right ? ' right' : ''}" data-action="sound-choose" data-side="${choice.side}" ${settled ? 'disabled' : ''}><span><span lang="fr">${frEsc(choice.fr)}</span><small class="sound-en">${esc(choice.en)}</small></span>${mark}</button>`;
+    const hear = settled ? `<button class="icon sound-hear" data-action="sound-hear" data-side="${choice.side}" aria-label="Hear ${esc(choice.fr)}">${speaker}</button>` : '';
+    return `<div class="sound-choice">${pick}${hear}</div>`;
+  }).join('');
+  const heard = question.choices.find((choice) => choice.side === question.side);
+  const feedback = settled ? `<div class="feedback ${chose === question.side ? '' : 'warn'}" role="status"><strong>${chose === question.side ? 'That’s right.' : 'Not quite.'}</strong><p>It was <span lang="fr">${frEsc(heard.fr)}</span>. Tap a speaker to hear each one.</p></div>` : '';
+  const tip = soundContrast(question.contrastId)?.listen;
+  main.innerHTML = `${noticeHTML()}<section class="stream sounds">${header}
+    <p class="stream-item">${index + 1} of ${questions.length}${soundId === 'mix' ? ` · ${esc(soundContrast(question.contrastId)?.title || '')}` : ''}</p>
+    <div class="listen-block big"><button class="listen-play" data-action="sound-play" aria-label="Play it again">${speaker}</button></div>
+    <div class="choice-list" role="group" aria-label="Which did you hear?">${choices}</div>
+    ${feedback}${tip ? `<p class="caption sound-tip">${esc(tip)}</p>` : ''}
+    ${settled ? `<div class="stream-actions pinned"><button class="primary" data-action="sound-next">${index + 1 === questions.length ? 'See how it went' : 'Next'}</button></div>` : ''}
+  </section>`;
+}
+function chooseSound(side) {
+  const question = soundRound?.questions[soundRound.index];
+  if (!question || soundRound.chose) return;
+  soundRound.chose = side;
+  if (side === question.side) soundRound.right += 1;
+  render();
+  main.querySelector('[data-action="sound-next"]')?.focus({ preventScroll: true });
+  api('api/sounds/answer', { method: 'POST', body: JSON.stringify({ itemId: question.itemId, heard: question.side, chose: side, requestId: requestId() }) })
+    .then((entry) => { if (soundList) soundList = soundList.map((item) => item.id === entry.id ? entry : item); })
+    .catch((error) => { notice = { message: `This answer was not saved: ${error.message}` }; if (screen === 'sound') render(); });
+}
+function nextSound() {
+  if (!soundRound?.chose) return;
+  soundRound.index += 1; soundRound.chose = null; notice = null;
+  render();
+  const question = soundRound.questions[soundRound.index];
+  if (question) playFrench(question.audio);
+}
+// Story: a serial written for the learner a little above their level (lib/story.ts). An episode is read line by
+// line, words tapped for their meaning and › for a line's; three questions follow, and finishing it lets the next
+// episode be written, harder or easier by how this one went. Taps and opened lines are counted until then.
+let storyStatus = null;         // api/story
+let storyView = null;           // api/story/<n>
+let storyNumber = 0;            // the episode shown; 0 = the latest
+let storyAnswers = [];          // the choice picked for each question, until finished
+const storyTaps = new Set();    // gloss "fr" tapped in this episode
+const storyLines = new Set();   // lines whose meaning was opened
+let storyRecap = false, storyNote = false, storyPoll = 0;
+function openStory(number = 0) { storyNumber = number; if (move(number ? `story|${number}` : 'story', true)) loadStory(); }
+async function loadStory(quiet = false) {
+  clearTimeout(storyPoll);
+  if (!quiet) { loading = true; notice = null; retryAction = null; render(); }
+  try {
+    storyStatus = await api('api/story');
+    const number = storyNumber || storyStatus.episodes.at(-1)?.number || 0;
+    if (number) {
+      const view = await api(`api/story/${number}`);
+      if (storyView?.episode.id !== view.episode.id) { storyAnswers = view.episode.questions.map(() => null); storyTaps.clear(); storyLines.clear(); storyRecap = false; storyNote = false; }
+      storyView = view;
+    } else storyView = null;
+  } catch (error) { if (!quiet) { notice = { message: error.message }; retryAction = { type: 'story' }; } }
+  loading = false;
+  if (screen !== 'story') return;
+  render();
+  // While an episode is being written or its lines recorded, the screen looks again now and then.
+  const waiting = !storyView || (storyView.last && storyView.read) || storyView.audio.some((url) => !url);
+  if (waiting && storyStatus && !storyStatus.error) storyPoll = setTimeout(() => { if (screen === 'story') loadStory(true); }, 15000);
+}
+function storyLineHTML(line, index, glosses) {
+  const open = storyLines.has(index);
+  const start = `<button class="lyric-start" data-action="story-line" data-index="${index}" aria-expanded="${open}" aria-label="What this line means">›</button>`;
+  return `<div class="lyric-line story-line" data-line="${index}">${start}<div class="lyric-text">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p lang="fr">${glossedHTML(line.fr, glosses)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div></div>`;
+}
+function storyPlayHTML() {
+  const recorded = storyView.audio.filter(Boolean).length;
+  if (!recorded) return '<div class="listen-block"><p class="caption">The lines are being recorded.</p></div>';
+  const playing = clipRun?.key === `story:${storyView.episode.id}`;
+  const hint = playing && clipProgress ? `line ${clipProgress.index} of ${clipProgress.total}` : recorded < storyView.audio.length ? `${recorded} of ${storyView.audio.length} lines recorded` : 'Listen to the episode';
+  return `<div class="listen-block"><button class="icon" data-action="story-play" aria-label="${playing ? 'Stop' : 'Listen to the episode'}">${playing ? pauseIcon : speaker}</button><p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div>`;
+}
+function storyQuestionsHTML(episode, finished) {
+  return episode.questions.map((question, q) => {
+    const chosen = storyAnswers[q];
+    const settled = finished || chosen !== null;
+    const choices = question.choices.map((choice, index) => {
+      const right = settled && index === question.answer;
+      const wrong = settled && !finished && !right && index === chosen;
+      const mark = right ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">the answer</span></span>' : wrong ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">what you chose</span></span>' : '';
+      return `<button class="choice${wrong ? ' wrong' : right ? ' right' : ''}" data-action="story-answer" data-q="${q}" data-story-choice="${index}" ${settled ? 'disabled' : ''}><span>${esc(choice)}</span>${mark}</button>`;
+    }).join('');
+    const why = settled && !finished ? `<div class="feedback ${chosen === question.answer ? '' : 'warn'}" role="status"><strong>${chosen === question.answer ? 'That’s right.' : 'Not quite.'}</strong><p>${esc(question.explanation)}</p></div>` : '';
+    return `<div class="story-question"><p class="stream-question">${esc(question.question)}</p><div class="choice-list" role="group" aria-label="Choose your answer">${choices}</div>${why}</div>`;
+  }).join('');
+}
+function renderStory() {
+  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Story</span></div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics story">${header}${body}</section>`; };
+  if (loading && !storyView) { shell('<div class="loading-state" role="status">Opening the story…</div>'); return; }
+  if (!storyStatus) { shell(''); return; }
+  if (!storyView) {
+    shell(`<h1>Your story</h1><div class="song-progress" role="status">${storyStatus.error ? `<p class="song-error">The first episode could not be written: ${esc(storyStatus.error)}</p><p class="caption">Echo tries again in half an hour.</p>` : '<p>The first episode is being written for you, from the words and grammar you know. It takes a few minutes.</p>'}</div>`);
+    return;
+  }
+  const { episode, read } = storyView;
+  const glosses = episode.gloss;
+  const recap = storyView.previously ? `<button class="quiet story-recap" data-action="story-recap" aria-expanded="${storyRecap}">Previously ${storyRecap ? '▴' : '▾'}</button>${storyRecap ? `<p class="caption story-previously">${esc(storyView.previously)}</p>` : ''}` : '';
+  const play = storyPlayHTML();
+  const lines = episode.lines.map((line, index) => storyLineHTML(line, index, glosses)).join('');
+  const note = `<button class="quiet story-grammar" data-action="story-note" aria-expanded="${storyNote}">Grammar in this episode: ${esc(episode.focus.title)} ${storyNote ? '▴' : '▾'}</button>${storyNote ? `<p class="caption">${esc(episode.focus.note)}</p>` : ''}`;
+  const answered = storyAnswers.every((answer) => answer !== null);
+  const later = storyStatus.episodes.find((entry) => entry.number === episode.number + 1);
+  const nextCopy = storyView.next === 'harder' ? 'The next episode will be a little harder.' : storyView.next === 'easier' ? 'The next episode will be a little easier.' : 'The next episode stays at this level.';
+  const end = read
+    ? `<div class="song-progress story-done"><p><strong>${read.right} of ${read.total}</strong> right${read.taps.length ? `, ${read.taps.length} ${read.taps.length === 1 ? 'word' : 'words'} looked up` : ', no words looked up'}.</p><p class="caption">${esc(nextCopy)}</p>${later ? `<div class="summary-actions"><button class="primary" data-action="story-open" data-n="${later.number}">Episode ${later.number} →</button></div>` : storyView.last ? `<p class="caption" role="status">${storyStatus.error ? `The next episode could not be written: ${esc(storyStatus.error)}` : `Episode ${episode.number + 1} is being written. It takes a few minutes.`}</p>` : ''}</div>`
+    : `<div class="summary-actions"><button class="primary" data-action="story-finish" ${!answered || busy ? 'disabled' : ''}>${busy ? 'Saving…' : answered ? 'Finish the episode' : 'Answer the questions to finish'}</button></div>`;
+  const earlier = storyStatus.episodes.filter((entry) => entry.number !== episode.number).reverse().map((entry) => `<button class="topic-row" data-action="story-open" data-n="${entry.number}"><span class="copy"><span class="topic-name"><h3 lang="fr">${esc(entry.title)}</h3></span><p>Episode ${entry.number} · ${esc(entry.titleEn)}${entry.finished ? '' : ' · not finished'}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
+  shell(`<p class="topic-kicker">Episode ${episode.number}</p><h1 lang="fr">${frEsc(episode.title)}</h1><p class="subtitle">${esc(episode.titleEn)}</p>${recap}${play}
+    <p class="song-hint">Tap a word for its meaning, or › for what a line means.</p>
+    <div class="lyric-lines">${lines}</div>${note}
+    <h2 class="story-heading">Questions</h2>${storyQuestionsHTML(episode, !!read)}${end}
+    ${earlier ? `<h2 class="story-heading">Other episodes</h2><div class="topic-list">${earlier}</div>` : ''}`);
+}
+function playStory() {
+  if (clipRun?.key === `story:${storyView?.episode.id}`) { stopAudio(); render(); return; }
+  const urls = (storyView?.audio || []).filter(Boolean);
+  if (urls.length) playClips(urls);
+}
+async function finishStory() {
+  if (busy || !storyView || storyView.read || storyAnswers.some((answer) => answer === null)) return;
+  busy = true; render();
+  try {
+    storyView = await api(`api/story/${storyView.episode.number}/finish`, { method: 'POST', body: JSON.stringify({ taps: [...storyTaps], linesOpened: storyLines.size, answers: storyAnswers, requestId: requestId() }) });
+    storyStatus = await api('api/story');
+  } catch (error) { notice = { message: error.message }; }
+  busy = false;
+  render();
+  if (storyView?.read) loadStory(true);
+}
 function openGroup(id) { focusId = id; if (move(`focus|${id}`, true)) enterMixed(); }
 async function loadMistakes(quiet = false) {
   if (!quiet) { loading = true; notice = null; retryAction = null; render(); }
@@ -1382,7 +1680,8 @@ function lookupGloss(fr) {
   if (!entry) return;
   glossWord = entry; addStatus = '';
   renderGlossSheet();
-  if (grammarOnScreen() || screen === 'lyrics') return;
+  if (screen === 'story' && storyView && !storyView.read) storyTaps.add(fr);
+  if (grammarOnScreen() || screen === 'lyrics' || screen === 'story') return;
   const view = streamState?.current;
   if (!view || streamState.result || view.mode !== 'read' || (streamState.lookups || []).includes(fr)) return;
   const id = streamId;
@@ -1397,7 +1696,8 @@ function renderGlossSheet() {
   const add = entry.word
     ? (addStatus ? `<p class="gloss-status" role="status">${esc(addStatus)}</p>` : `<button class="secondary gloss-add" data-action="add-word" ${busy ? 'disabled' : ''}>Add to my words</button>`)
     : '';
-  const extra = `${entry.base ? `<p class="gloss-base">from <span lang="fr">${frEsc(entry.base)}</span></p>` : ''}${entry.note ? `<p class="gloss-note">${esc(entry.note)}</p>` : ''}`;
+  const gender = genders[entry.word] ?? entry.gender;
+  const extra = `${gender ? `<p class="gloss-gender${genderClass(gender)}">${gender} noun</p>` : ''}${entry.base ? `<p class="gloss-base">from <span lang="fr">${frEsc(entry.base)}</span></p>` : ''}${entry.note ? `<p class="gloss-note">${esc(entry.note)}</p>` : ''}`;
   openDialog(entry.fr, `<p class="gloss-en">${esc(entry.en)}</p>${extra}${add}<button class="primary dialog-action" data-action="close-dialog">Close</button>`, 'gloss');
 }
 async function addWord() {
@@ -1581,8 +1881,13 @@ function show(next) {
   if (name === 'topic') topicId = arg;
   else if (name === 'exercise') enterScope(arg);
   else if (name === 'focus') focusId = arg;
+  else if (name === 'sound') { soundId = arg; soundRound = null; }
+  else if (name === 'story') storyNumber = Number(arg) || 0;
   else if ((name === 'song' || name === 'lyrics') && arg !== songId) { songId = arg; songView = null; songLyrics = null; }
   if (name !== 'lyrics') clearTimeout(lyricsPoll);
+  if (name !== 'story') clearTimeout(storyPoll);
+  // Leaving the Radio pauses it where it is; coming back plays on from there.
+  if (name !== 'radio') { clearTimeout(radioPoll); if (!radioAudio.paused) radioAudio.pause(); }
   if (name !== 'mix' && name !== 'focus') { mixedSource = ''; review = null; }
   if (name !== 'listen' && name !== 'read' && name !== 'mix' && name !== 'focus') { streamState = null; streamId = ''; }
   // Leaving the Walkman stops the tape; coming back winds a new one.
@@ -1722,7 +2027,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Vocabulary options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form>${extraPracticeHTML()}<p class="settings-label">Words from songs</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div><button class="secondary song-entry" data-action="songs" ${disabled}>Add words from a song…</button><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
+  openDialog('Vocabulary options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form>${extraPracticeHTML()}<p class="settings-label">Words from songs</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div><button class="secondary song-entry" data-action="songs" ${disabled}>Add words from a song…</button><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
 }
 async function saveGoal(event) {
   event.preventDefault(); if (locked() || !snapshot) return;
@@ -1753,6 +2058,10 @@ function retry() {
   else if (action.type === 'mistakes') loadMistakes();
   else if (action.type === 'walkman') loadTape();
   else if (action.type === 'statistics') loadStatistics();
+  else if (action.type === 'sounds') loadSounds();
+  else if (action.type === 'sound') startSoundRound();
+  else if (action.type === 'story') loadStory();
+  else if (action.type === 'radio') loadRadio();
   else if (action.type === 'songs') loadSongs();
   else if (action.type === 'song') loadSong();
   else fetchState(action.message);
@@ -1831,11 +2140,30 @@ document.addEventListener('click', (event) => {
   else if (action === 'song-page') openSong(songId);
   else if (action === 'lyric-line') { const key = button.dataset.line; if (openLines.has(key)) openLines.delete(key); else openLines.add(key); render(); }
   else if (action === 'song-notes') rewriteSongNotes();
+  else if (action === 'gender-colours') { genderColours = !genderColours; localStorage.setItem('echo.genders', genderColours ? 'on' : 'off'); document.body.classList.toggle('genders', genderColours); openOptions(); render(); }
   else if (action === 'songs-first') setSongsFirst(button.dataset.value === 'true');
   else if (action === 'stats-bin') chooseStatsBin(Number(button.dataset.bin));
   else if (action === 'stats-list') { statsOpen = !statsOpen; render(); }
   else if (action === 'points-day') { pointsDay = button.dataset.day; render(); }
   else if (action === 'walkman') openWalkman();
+  else if (action === 'sounds') { if (move('sounds')) loadSounds(); }
+  else if (action === 'sound-open') openSound(button.dataset.sound);
+  else if (action === 'sound-again') startSoundRound();
+  else if (action === 'sound-play') { const question = soundRound?.questions[soundRound.index]; if (question) playFrench(question.audio); }
+  else if (action === 'sound-hear') { const question = soundRound?.questions[soundRound.index]; if (question) playFrench(soundUrl(question.itemId, button.dataset.side)); }
+  else if (action === 'sound-choose') chooseSound(button.dataset.side);
+  else if (action === 'sound-next') nextSound();
+  else if (action === 'story') openStory();
+  else if (action === 'story-open') openStory(Number(button.dataset.n));
+  else if (action === 'story-play') playStory();
+  else if (action === 'story-line') { const index = Number(button.dataset.index); if (storyLines.has(index)) storyLines.delete(index); else storyLines.add(index); render(); }
+  else if (action === 'story-recap') { storyRecap = !storyRecap; render(); }
+  else if (action === 'story-note') { storyNote = !storyNote; render(); }
+  else if (action === 'story-answer') { const q = Number(button.dataset.q); if (storyAnswers[q] === null && !storyView?.read) { storyAnswers[q] = Number(button.dataset.storyChoice); render(); } }
+  else if (action === 'story-finish') finishStory();
+  else if (action === 'radio') openRadio();
+  else if (action === 'radio-toggle') toggleRadio();
+  else if (action === 'radio-seek') { radioAudio.currentTime = Number(button.dataset.at); if (radioAudio.paused) playRadio(); }
   else if (action === 'walkman-toggle') toggleWalkman();
   else if (action === 'walkman-heard') { heardOpen = !heardOpen; render(); }
   else if (action === 'walkman-say') hearAgain(button.dataset.word);
@@ -1922,6 +2250,10 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'songs') loadSongs();
   else if (screen === 'song') loadSong();
   else if (screen === 'lyrics') loadLyrics();
+  else if (screen === 'sounds') loadSounds();
+  else if (screen === 'sound') startSoundRound();
+  else if (screen === 'story') loadStory();
+  else if (screen === 'radio') loadRadio();
 });
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }

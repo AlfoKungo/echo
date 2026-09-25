@@ -285,4 +285,37 @@ describe('the song view', () => {
     expect(again.lyrics(song.id).notes).toBe('ready');
     again.close();
   });
+
+  test('a rewrite of older notes that Claude cannot do leaves the old notes readable, not failed', async () => {
+    const { ask } = notesWriter();
+    const first = setup(undefined, undefined, ask);
+    const song = await first.songs.start({ lrclibId: 7 });
+    await first.songs.settled();
+    first.songs.close();
+    const old = new Database(first.dbPath);
+    old.run('UPDATE songs SET notes_version = 1');
+    old.close();
+    const down: Ask = async () => { throw new StoreError('Claude could not help with writing the song notes.', 503); };
+    const again = createSongs({ dbPath: first.dbPath, vocabulary: first.store, read: async () => new Map(), fetchJson: async () => ({ id: 7, trackName: 'Nuages', artistName: 'Someone', plainLyrics: LYRICS }), ask: down });
+    await again.resume();
+    await again.settled();
+    const view = again.lyrics(song.id);
+    expect(view.notes).toBe('ready');
+    expect(view.stanzas.flat().every((line) => line.en?.startsWith('EN '))).toBe(true);
+    again.close();
+  });
+});
+
+test('a song’s understanding share counts every sung word, little words and names left out, by what the learner knows', async () => {
+  const { store, songs } = setup();
+  const song = await songs.start({ title: 'Nuages', lyrics: LYRICS });
+  await songs.settled();
+  expect(songs.get(song.id).understood).toEqual({ known: 0, learning: 0 });
+  songs.add(song.id, ['le nuage', 'glisser', 'rêver']);
+  // Learn "le nuage" fully: known once its review is scheduled.
+  let state = store.start('fr-en', 'song-nuages');
+  for (let turn = 0; turn < 20 && state.current; turn++) state = store.grade({ direction: 'fr-en', deck: 'song-nuages', wordId: state.current.id, version: state.current.version, known: state.current.fr === 'le nuage', requestId: `u-${turn}` });
+  const understood = songs.get(song.id).understood!;
+  expect(understood.known).toBeGreaterThan(0);
+  expect(understood.known + understood.learning).toBeLessThanOrEqual(100);
 });

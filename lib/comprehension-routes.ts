@@ -20,6 +20,7 @@ export type ComprehensionRoutes = {
   handle(path: string, req: Request, url: URL): Promise<Response | null>;
   summary: ComprehensionStore['summary'];
   stock: ComprehensionStore['stock'];
+  metWords: ComprehensionStore['metWords'];
   exportData(): unknown;
   close(): void;
 };
@@ -185,5 +186,5 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
     return null;
   }
 
-  return { handle, summary: store.summary, stock: store.stock, exportData: store.exportData, close: store.close };
+  return { handle, summary: store.summary, stock: store.stock, metWords: store.metWords, exportData: store.exportData, close: store.close };
 }

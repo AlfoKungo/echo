@@ -6,7 +6,9 @@
 import type { Ask } from './claude';
 import { unglossed, wholeMatches } from './comprehension-content';
 
-export type SongWordNote = { fr: string; en: string; base?: string; note?: string };
+export type SongWordNote = { fr: string; en: string; base?: string; note?: string; gender?: 'masculine' | 'feminine' };
+// Bumped when the notes' content changes, so songs noted before are written again (lib/songs.ts resume).
+export const NOTES_VERSION = 2;
 export type SongLine = { fr: string; en: string | null; words: SongWordNote[] };
 // Stanzas of lines, blank lines in the lyrics separating stanzas.
 export type SongNotes = SongLine[][];
@@ -49,7 +51,12 @@ function kept(fr: string, line: { en?: unknown; words?: unknown }): SongLine {
   const words = (Array.isArray(line.words) ? line.words as Partial<SongWordNote>[] : [])
     .filter((word): word is SongWordNote => !!word && typeof word.fr === 'string' && typeof word.en === 'string' && !!word.en.trim() && wholeMatches(fr, word.fr).length > 0)
     .filter((word, index, all) => all.findIndex((other) => other.fr === word.fr) === index)
-    .map(({ fr: span, en, base, note }) => ({ fr: span, en: en.trim(), ...(typeof base === 'string' && base.trim() && base.trim() !== span && !/\s/.test(span) ? { base: base.trim() } : {}), ...(typeof note === 'string' && note.trim() ? { note: note.trim() } : {}) }));
+    .map(({ fr: span, en, base, note, gender }) => ({
+      fr: span, en: en.trim(),
+      ...(typeof base === 'string' && base.trim() && base.trim() !== span && !/\s/.test(span) ? { base: base.trim() } : {}),
+      ...(typeof note === 'string' && note.trim() ? { note: note.trim() } : {}),
+      ...(gender === 'masculine' || gender === 'feminine' ? { gender } : {}),
+    }));
   return { fr, en: typeof line.en === 'string' && line.en.trim() ? line.en.trim() : null, words };
 }
 
@@ -62,6 +69,7 @@ For each numbered line give:
   - "en": its meaning here, short.
   - "base": for a single word only, its dictionary form when it differs: the infinitive of a verb (for a conjugated form, the verb it comes from, not a similar-looking one), the masculine singular of an adjective, the singular of a noun. Never on a phrase.
   - "note": one or two plain sentences on what a learner needs to read it here. A verb: its infinitive, the tense or mood, and who it goes with (for example "Vais is aller in the present with je: je vais, tu vas, il va."). An article or preposition joined to a noun: what it adds ("du = de + le: some, or of the"). Elision (l’, j’, qu’), the pieces of a negation, what a pronoun (le, lui, y, en…) stands for, spoken or slang forms (t’as = tu as, y’a = il y a), and unusual word order. Leave "note" out when the meaning says it all.
+  - "gender": "masculine" or "feminine" for a noun, alone or with its article; leave it out for every other word and for a noun that can be either.
 Every content word needs an entry. Keep a fixed expression together (il y a, tout à coup, avoir besoin de), and put an article with its noun when the article is the interesting part. Little words (le, de, et, je, que…) may have their own entry when they do something worth explaining. A word written two ways in the same line gets one entry per spelling.`;
 
 function prompt(title: string, artist: string, lyrics: string, lines: { n: number; fr: string }[]): string {
