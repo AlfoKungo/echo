@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { Word } from '../contract';
 import { createSongs } from '../lib/songs';
-import { candidateFrom, groupMatches, lyricForms, mergeCandidates, songCategory, type LyricForm, type WordFacts } from '../lib/song-words';
+import { candidateFrom, groupMatches, lyricForms, mergeCandidates, parseFacts, songCategory, songPrompt, type LyricForm, type WordFacts } from '../lib/song-words';
 import { createStore, StoreError } from '../lib/store';
 
 // Invented lyrics: the tests never need a real song.
@@ -30,7 +30,9 @@ const FACTS: Record<string, WordFacts> = {
 const directories: string[] = [];
 afterEach(() => { for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true }); });
 
-function setup(ask: (entry: LyricForm) => Promise<WordFacts> = async (entry) => FACTS[entry.form]) {
+// A stand-in for Claude: answers each form from FACTS, or as the test's own answer function says.
+type Answer = (entry: LyricForm) => WordFacts | undefined;
+function setup(answer: Answer = (entry) => FACTS[entry.form], failure?: Error) {
   const directory = mkdtempSync(join(tmpdir(), 'echo-songs-'));
   directories.push(directory);
   const dbPath = join(directory, 'echo.db');
@@ -39,7 +41,11 @@ function setup(ask: (entry: LyricForm) => Promise<WordFacts> = async (entry) => 
   const addedIds: string[][] = [];
   const songs = createSongs({
     dbPath, vocabulary: store,
-    ask: async (entry) => { asked.push(entry.form); return ask(entry); },
+    read: async (lyrics, forms) => {
+      asked.push(...forms.map((entry) => entry.form));
+      if (failure) throw failure;
+      return new Map(forms.flatMap((entry) => { const facts = answer(entry); return facts ? [[entry.form, facts] as const] : []; }));
+    },
     fetchJson: async (url) => {
       if (url.includes('/get/7')) return { id: 7, trackName: 'Nuages', artistName: 'Someone - Topic', plainLyrics: LYRICS };
       throw new Error('offline');
@@ -93,6 +99,16 @@ describe('reading lyrics', () => {
     expect(matches.map((match) => [match.artist, match.versions])).toEqual([['Someone', 2], ['A cover band', 1]]);
   });
 
+  test('reads the model reply: the facts of each listed form, malformed or missing ones left out', () => {
+    const forms = lyricForms(LYRICS).filter((entry) => ['nuages', 'glissent', 'mer'].includes(entry.form));
+    expect(songPrompt(LYRICS, forms)).toContain('nuages');
+    const reply = 'Here you go:\n' + JSON.stringify({ nuages: FACTS.nuages, glissent: { ...FACTS.glissent, pos: 'gerund' }, mer: { kind: 'place' }, extra: FACTS.vent });
+    const facts = parseFacts(reply, forms);
+    expect([...facts.keys()].sort()).toEqual(['glissent', 'nuages']);
+    expect(facts.get('glissent')!.pos).toBe('expression');
+    expect(parseFacts('no json here', forms).size).toBe(0);
+  });
+
   test('gives each song a category of its own', () => {
     expect(songCategory('Voyage, voyage', new Set())).toBe('song-voyage-voyage');
     expect(songCategory('Voyage, voyage', new Set(['song-voyage-voyage']))).toBe('song-voyage-voyage-2');
@@ -125,15 +141,15 @@ describe('songs', () => {
     expect(songs.add(song.id, ['le nuage']).added).toEqual(added.added);
   });
 
-  test('a word Qwen cannot answer is skipped, but Qwen being unreachable stops the song with its message', async () => {
-    const shaky = setup(async (entry) => { if (entry.form === 'rêver') throw new Error('no answer'); return FACTS[entry.form]; });
+  test('a word Claude leaves unanswered is skipped, but Claude being unreachable stops the song with its message', async () => {
+    const shaky = setup((entry) => (entry.form === 'rêver' ? undefined : FACTS[entry.form]));
     const one = await shaky.songs.start({ title: 'Nuages', lyrics: LYRICS });
     await shaky.songs.settled();
-    expect(shaky.songs.get(one.id).skipped).toContainEqual({ form: 'rêver', reason: 'Qwen gave no clear answer' });
-    const down = setup(async () => { throw new StoreError('Qwen is not running on your Mac.', 503); });
+    expect(shaky.songs.get(one.id).skipped).toContainEqual({ form: 'rêver', reason: 'no clear answer' });
+    const down = setup(undefined, new StoreError('Claude could not read the song.', 503));
     const two = await down.songs.start({ title: 'Nuages', lyrics: LYRICS });
     await down.songs.settled();
-    expect(down.songs.get(two.id)).toMatchObject({ status: 'failed', error: 'Qwen is not running on your Mac.' });
+    expect(down.songs.get(two.id)).toMatchObject({ status: 'failed', error: 'Claude could not read the song.' });
     await expect(down.songs.retry(two.id)).rejects.toThrow('Paste the lyrics again');
   });
 
@@ -145,20 +161,11 @@ describe('songs', () => {
     expect(songs.get(song.id).status).toBe('ready');
   });
 
-  test('a noun that comes back in its plural form is asked about once more', async () => {
-    const { songs, asked } = setup(async (entry) => entry.form === 'nuages'
-      ? { ...FACTS.nuages, base: entry.note ? 'nuage' : 'nuages' }
-      : FACTS[entry.form]);
-    const song = await songs.start({ title: 'Nuages', lyrics: LYRICS });
-    await songs.settled();
-    expect(asked.filter((form) => form === 'nuages')).toHaveLength(2);
-    expect(songs.get(song.id).candidates.map((entry) => entry.fr)).toContain('le nuage');
-  });
-
   test('a song not yet read cannot be added, and bad input is refused with a reason', async () => {
-    const { songs } = setup(() => new Promise(() => {}));
+    const { songs } = setup();
     const song = await songs.start({ title: 'Nuages', lyrics: LYRICS });
     expect(() => songs.add(song.id, ['le nuage'])).toThrow('still being read');
+    await songs.settled();
     await expect(songs.start({ title: '', lyrics: LYRICS })).rejects.toThrow('title');
     await expect(songs.start({ title: 'x', lyrics: '123 456' })).rejects.toThrow('No French words');
     await expect(songs.search('voyage')).rejects.toThrow('could not be reached');

@@ -15,8 +15,7 @@ export type WordFacts = {
 };
 // One distinct word form of the song, with up to three of its lines for the model and whether it was
 // capitalised mid-line (a hint of a name, which songs also use for emphasis).
-// note, when set, is a correction added to a second question about the same form.
-export type LyricForm = { form: string; lines: string[]; capitalised: boolean; note?: string };
+export type LyricForm = { form: string; lines: string[]; capitalised: boolean };
 // A word to offer: fr is the dictionary form in the deck's style; existing names the deck word it already is.
 // little: every form is one of the little words below (le, de, pas…); those start unticked in the review.
 export type SongCandidate = { fr: string; en: string; note: string; pos: string; forms: string[]; existing: string | null; little?: boolean };
@@ -108,35 +107,56 @@ export function littleWord(form: string): { fr: string; en: string; pos: string 
   return found ? { fr: found[0], en: found[1], pos: found[2] } : null;
 }
 
-export const FACTS_SCHEMA = {
-  type: 'object',
-  properties: {
-    kind: { type: 'string', enum: ['word', 'name', 'sound', 'foreign'] },
-    pos: { type: 'string', enum: ['noun', 'verb', 'adjective', 'adverb', 'pronoun', 'article', 'preposition', 'conjunction', 'number', 'expression'] },
-    base: { type: 'string' },
-    gender: { type: 'string', enum: ['masculine', 'feminine', 'none'] },
-    pluralOnly: { type: 'boolean' },
-    elision: { type: 'boolean' },
-    feminine: { type: 'string' },
-    en: { type: 'string' },
-  },
-  required: ['kind', 'pos', 'base', 'gender', 'pluralOnly', 'elision', 'feminine', 'en'],
-} as const;
+const FACT_RULES = `kind: "word" for any ordinary French word, little words and elided forms included; "name" for a proper noun: a place, a person, or a people or nationality written with a capital (les Sikhs, les Blacks, les Jaunes); "sound" for interjections (oh, ah); "foreign" for non-French words.
+pos: one of noun, verb, adjective, adverb, pronoun, article, preposition, conjunction, number, expression. A verb in the imperative (a command) is "verb". A past participle used as an adjective is "adjective". A word that only makes sense inside a fixed expression here (au-dessus de, il y a) is "expression".
+base: the dictionary headword, with no article: nouns in the singular (unless the noun only exists in the plural), adjectives in the masculine singular even when the song uses the feminine or plural (fatales -> fatal), verbs in the infinitive (an imperative too: voyage ! -> voyager; with "se " or "s'" for a reflexive use). For an expression, the whole expression.
+gender: for nouns, "masculine" or "feminine" (of the headword); "none" for everything else.
+pluralOnly: true only for nouns that have no singular, like les vacances or les gens.
+elision: for nouns, true when the singular article is written l' before it (l'eau, l'homme), false otherwise, including h aspiré words (la hauteur, le héros); false for everything else.
+feminine: for adjectives, the feminine singular form, always filled in (vieux -> vieille, jaune -> jaune); empty for everything else.
+en: a short English meaning of the headword in the sense the song uses: "to fly" for verbs, "wing" for nouns (singular, no article), "yellow" for adjectives, "eternally" for adverbs. Two senses separated by "; " at most.`;
 
-export const FACTS_RULES = `You help build French flashcards for an English speaker. You get one French word and the song lines it appears in, and answer facts about that word as it is used there.
-kind: "word" for any ordinary French word, little words and elided forms included; "name" for a proper noun (a place, a person, a people or group named with a capital); "sound" for interjections (oh, ah); "foreign" for non-French words.
-pos: the part of speech here. A verb in the imperative (a command, like "Regarde !") is "verb". A past participle used as an adjective is "adjective". A word that only makes sense inside a fixed expression here (au-dessus de, il y a) is "expression".
-base: the dictionary headword, with no article: nouns in the singular (unless the noun only exists in the plural), adjectives in the masculine singular even when the song uses the feminine or plural (fatales -> fatal, belles -> beau), verbs in the infinitive (an imperative too: voyage ! -> voyager) (with "se " for a reflexive use). For an expression, the whole expression.
-gender: for nouns, the grammatical gender of the headword; "none" for everything else.
-elision: for nouns, true when the singular article is written l' before it (l'eau, l'arbre, l'homme), false otherwise, including h aspiré words (la hauteur, le héros); false for everything else.
-pluralOnly: true only for nouns that have no singular, like les vacances or les gens. A noun with a normal singular (la dune, le nuage) is false even when it appears in the plural.
-feminine: for adjectives, the feminine singular form, always filled in (vieux -> vieille, jaune -> jaune); empty for other parts of speech.
-en: a short English meaning of the headword in this sense: "to fly" for verbs, "wing" for nouns (singular, no article, even when the song uses the plural), "yellow" for adjectives, "eternally" for adverbs. Two senses separated by "; " at most.
-Answer with JSON only.`;
+// One request for a whole song: the model sees every line, so each form is read in its real context.
+export function songPrompt(lyrics: string, forms: LyricForm[]): string {
+  return `You help build French flashcards for an English speaker. Below are a French song's lyrics, then some word forms that appear in it. For EACH form, give these facts about the word as it is used in this song:
+${FACT_RULES}
 
-export function factsPrompt(entry: LyricForm): string {
-  const hint = entry.capitalised ? '\n(It is written with a capital letter in the middle of a line; songs often capitalise words, so decide from meaning.)' : '';
-  return `Word: ${entry.form}${hint}\nLines where it appears:\n${entry.lines.map((line) => `- ${line}`).join('\n')}${entry.note ? `\n${entry.note}` : ''}`;
+Reply with one JSON object and nothing else: its keys are the forms exactly as listed, each value an object with the keys kind, pos, base, gender, pluralOnly, elision, feminine, en.
+
+LYRICS:
+${lyrics}
+
+FORMS:
+${forms.map((entry) => entry.form + (entry.capitalised ? ' (capitalised mid-line)' : '')).join('\n')}`;
+}
+
+const KINDS: readonly WordFacts['kind'][] = ['word', 'name', 'sound', 'foreign'];
+const PARTS: readonly WordFacts['pos'][] = ['noun', 'verb', 'adjective', 'adverb', 'pronoun', 'article', 'preposition', 'conjunction', 'number', 'expression'];
+const isKind = (value: unknown): value is WordFacts['kind'] => KINDS.some((kind) => kind === value);
+const isPart = (value: unknown): value is WordFacts['pos'] => PARTS.some((part) => part === value);
+const fields = (value: unknown): Map<string, unknown> | null => (value && typeof value === 'object' && !Array.isArray(value) ? new Map(Object.entries(value)) : null);
+
+// The facts the model gave for each form; a form whose answer is missing or malformed is left out of the map.
+export function parseFacts(reply: string, forms: LyricForm[]): Map<string, WordFacts> {
+  let parsed: unknown;
+  try { parsed = JSON.parse(reply.slice(reply.indexOf('{'), reply.lastIndexOf('}') + 1)); } catch { return new Map(); }
+  const answers = new Map<string, WordFacts>();
+  const byForm = fields(parsed);
+  if (!byForm) return answers;
+  for (const { form } of forms) {
+    const facts = fields(byForm.get(form));
+    if (!facts) continue;
+    const kind = facts.get('kind'), pos = facts.get('pos'), base = facts.get('base'), en = facts.get('en');
+    const gender = facts.get('gender'), feminine = facts.get('feminine');
+    if (!isKind(kind) || typeof base !== 'string' || typeof en !== 'string') continue;
+    answers.set(form, {
+      kind, pos: isPart(pos) ? pos : 'expression', base, en,
+      gender: gender === 'masculine' || gender === 'feminine' ? gender : 'none',
+      pluralOnly: facts.get('pluralOnly') === true, elision: facts.get('elision') === true,
+      feminine: typeof feminine === 'string' ? feminine : '',
+    });
+  }
+  return answers;
 }
 
 const STARTS_WITH_VOWEL = /^[aeiouyàâäéèêëîïôöùûüœæ]/i;
@@ -152,11 +172,6 @@ function singularEnglish(en: string): string {
 const SKIP_REASON = { name: 'a name', sound: 'a sound, not a word', foreign: 'not French' } as const;
 
 // The model answers facts; the deck's spelling of the entry is built here, so the format cannot drift.
-// A noun whose headword came back as the plural form the song uses (hauteurs), though it has a singular.
-export function needsSingular(form: string, facts: WordFacts): boolean {
-  return facts.kind === 'word' && facts.pos === 'noun' && !facts.pluralOnly && /[sx]$/.test(form) && facts.base.trim().toLowerCase() === form;
-}
-
 export function candidateFrom(form: string, facts: WordFacts): Omit<SongCandidate, 'forms' | 'existing'> | SongSkip {
   if (facts.kind !== 'word') return { form, reason: SKIP_REASON[facts.kind] ?? 'a name' };
   const base = facts.base.trim().toLowerCase().replace(/\s+/g, ' ');

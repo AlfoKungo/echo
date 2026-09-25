@@ -1,9 +1,9 @@
-// Songs: find one on LRCLIB (or take pasted lyrics), read it into dictionary-form words in the background, let
-// the learner review the list, then add the chosen words as a deck of their own. The lyrics are held in memory
-// only while a song is being read; the database keeps the title, the progress and the word list.
+// Songs: find one on LRCLIB (or take pasted lyrics), read it into dictionary-form words with Claude in the
+// background, let the learner review the list, then add the chosen words as a deck of their own. The lyrics are
+// held in memory only while a song is being read; the database keeps the title, the progress and the word list.
 import { Database } from 'bun:sqlite';
 import { StoreError, type Store } from './store';
-import { candidateFrom, groupMatches, littleWord, needsSingular, lyricForms, mergeCandidates, songCategory, type LrclibTrack, type LyricForm, type SongCandidate, type SongMatch, type SongSkip, type WordFacts } from './song-words';
+import { candidateFrom, groupMatches, littleWord, lyricForms, mergeCandidates, songCategory, type LrclibTrack, type LyricForm, type SongCandidate, type SongMatch, type SongSkip, type WordFacts } from './song-words';
 
 export type SongStatus = 'reading' | 'ready' | 'added' | 'failed';
 export type SongView = {
@@ -16,9 +16,9 @@ export type SongStart = { lrclibId: number } | { title: string; artist?: string;
 export type SongDeps = {
   dbPath: string;
   vocabulary: Store;
-  // Answers the facts about one word form. A StoreError (the model cannot be reached) stops the song; any other
-  // error skips just that word.
-  ask: (entry: LyricForm) => Promise<WordFacts>;
+  // Answers the facts for a batch of the song's word forms, with the whole song as context; a form missing from
+  // the answer is left out. A StoreError (the model cannot be reached) stops the song.
+  read: (lyrics: string, forms: LyricForm[]) => Promise<Map<string, WordFacts>>;
   fetchJson: (url: string) => Promise<unknown>;
   onAdded?: (wordIds: string[]) => void;
   now?: () => Date;
@@ -31,6 +31,8 @@ type SongRow = {
 
 const LRCLIB = 'https://lrclib.net/api';
 const MAX_LYRICS = 20_000;
+// Forms asked about in one request; a long song takes a few.
+const BATCH = 120;
 
 export function createSongs(deps: SongDeps) {
   const now = deps.now ?? (() => new Date());
@@ -121,30 +123,27 @@ export function createSongs(deps: SongDeps) {
     const forms = lyricForms(job.lyrics);
     const found: { form: string; entry: Omit<SongCandidate, 'forms' | 'existing'> }[] = [];
     const skipped: SongSkip[] = [];
-    let done = 0;
+    const open: LyricForm[] = [];
     for (const entry of forms) {
       const known = littleWord(entry.form);
-      if (known) found.push({ form: entry.form, entry: { ...known, note: '' } });
-      else {
-        let facts: WordFacts;
-        try {
-          facts = await deps.ask(entry);
-          // One second question when a noun came back in the plural: the answer is kept only if it gives a singular.
-          if (needsSingular(entry.form, facts)) {
-            const again = await deps.ask({ ...entry, note: `Note: "${entry.form}" is the plural used in the song; base must be the singular headword, unless the noun has no singular.` });
-            if (again.kind === 'word' && again.pos === 'noun' && (again.pluralOnly || again.base.trim().toLowerCase() !== entry.form)) facts = again;
-          }
-        }
-        catch (error) {
-          if (error instanceof StoreError) throw error;
-          skipped.push({ form: entry.form, reason: 'Qwen gave no clear answer' });
-          progress.run(++done, forms.length, job.id);
-          continue;
-        }
-        const result = candidateFrom(entry.form, facts);
+      if (known) found.push({ form: entry.form, entry: { ...known, note: '' } }); else open.push(entry);
+    }
+    let done = forms.length - open.length;
+    progress.run(done, forms.length, job.id);
+    for (let start = 0; start < open.length; start += BATCH) {
+      const batch = open.slice(start, start + BATCH);
+      let answers: Map<string, WordFacts>;
+      try { answers = await deps.read(job.lyrics, batch); }
+      catch (error) {
+        if (error instanceof StoreError) throw error;
+        answers = new Map();
+      }
+      for (const entry of batch) {
+        const facts = answers.get(entry.form);
+        const result = facts ? candidateFrom(entry.form, facts) : { form: entry.form, reason: 'no clear answer' };
         if ('reason' in result) skipped.push(result); else found.push({ form: entry.form, entry: result });
       }
-      progress.run(++done, forms.length, job.id);
+      progress.run(done += batch.length, forms.length, job.id);
     }
     return { candidates: mergeCandidates(found, deps.vocabulary.words()), skipped };
   }

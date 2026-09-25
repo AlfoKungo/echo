@@ -132,6 +132,8 @@ a.destination{color:inherit;text-decoration:none}.destination .symbol svg{displa
 .song-state.ready{color:var(--violet)}.song-state.failed{color:var(--danger)}
 .song-bar{display:block;height:5px;border-radius:3px;background:var(--card);overflow:hidden;margin-top:6px}
 .song-bar span{display:block;height:100%;background:var(--violet);transition:width .4s}
+.song-bar.busy span{width:35%;animation:song-busy 1.4s ease-in-out infinite alternate}
+@keyframes song-busy{from{transform:translateX(-20%)}to{transform:translateX(205%)}}
 .song-paste-open{margin-top:14px}
 .song-paste{display:flex;flex-direction:column;gap:6px;margin-top:18px}
 .song-paste label{font-size:13px;color:var(--muted);margin-top:6px}

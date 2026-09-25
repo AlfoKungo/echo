@@ -8,7 +8,7 @@ import { loadBank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
 import { buildTape, createClips, planTape, tapeView, type Tape } from './lib/walkman';
 import { createSongs } from './lib/songs';
-import { createQwen } from './lib/qwen';
+import { createClaudeReader } from './lib/claude';
 import { createWordAudio } from './lib/word-audio';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 
@@ -41,7 +41,7 @@ const wordAudio = createWordAudio({
 });
 const songs = createSongs({
   dbPath, vocabulary: store,
-  ask: createQwen({ url: process.env.ECHO_OLLAMA_URL, model: process.env.ECHO_SONG_MODEL }),
+  read: createClaudeReader({ command: process.env.ECHO_CLAUDE ?? join(process.env.HOME ?? '', '.local/bin/claude'), model: process.env.ECHO_SONG_MODEL }),
   fetchJson: async (url) => {
     const response = await fetch(url, { headers: { 'User-Agent': 'Echo French practice (personal, local)' }, signal: AbortSignal.timeout(20_000) });
     if (!response.ok) throw new Error(`LRCLIB ${response.status}`);

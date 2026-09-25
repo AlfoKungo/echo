@@ -1011,7 +1011,7 @@ function renderStatistics() {
   </section>`;
 }
 // ── Songs ────────────────────────────────────────────────────────────────────
-// A song is found on LRCLIB (or pasted), read by Qwen on the Mac in the background, reviewed here, and its ticked
+// A song is found on LRCLIB (or pasted), read by Claude (Opus) in the background, reviewed here, and its ticked
 // words join a deck of their own. Echo never shows or keeps the lyrics, only the words.
 let songList = null;        // { songs, audio } from api/songs
 let songMatches = null;     // search results, null before a search
@@ -1024,13 +1024,13 @@ const songPicks = new Map(); // song id -> Set of ticked fr, all new words ticke
 let songPoll = 0;
 const songTime = (seconds) => seconds ? `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}` : '';
 function songStatusLine(song) {
-  if (song.status === 'reading') return `Reading… ${song.done} of ${song.total} words`;
+  if (song.status === 'reading') return 'Reading…';
   if (song.status === 'ready') return `Ready to review · ${song.candidates.filter((entry) => !entry.existing).length} new words`;
   if (song.status === 'added') return `Added · ${song.added.length} ${song.added.length === 1 ? 'word' : 'words'}`;
   return 'Could not be read';
 }
 function renderSongs() {
-  const header = `<div class="section-top">${back('Vocabulary', 'start')}</div><h1>Words from a song</h1><p class="subtitle">Find a French song; Qwen on your Mac reads it and turns its words into flashcards in their dictionary form. Only the words are kept.</p>`;
+  const header = `<div class="section-top">${back('Vocabulary', 'start')}</div><h1>Words from a song</h1><p class="subtitle">Find a French song; Claude reads it and turns its words into flashcards in their dictionary form. Only the words are kept.</p>`;
   const search = `<form id="song-search-form" class="song-search" role="search"><label class="sr-only" for="song-query">Song title and artist</label><input id="song-query" type="search" placeholder="Title, and the artist if you know it" value="${esc(songQuery)}" autocomplete="off" ${songSearching ? 'disabled' : ''}><button class="primary" type="submit" ${songSearching ? 'disabled' : ''}>${songSearching ? 'Searching…' : 'Search'}</button></form>`;
   const matches = songMatches === null ? '' : songMatches.length
     ? `<p class="song-hint">Pick the one you mean. Covers that sing the same words are grouped together.</p><ol class="song-results">${songMatches.map((match) => `<li><button class="song-row" data-action="song-read" data-lrclib="${match.id}" ${busy ? 'disabled' : ''}><span class="song-copy"><strong>${esc(match.title)}</strong><span>${esc(match.artist)}${match.album && match.album !== match.title ? ` · ${esc(match.album)}` : ''}${match.seconds ? ` · ${songTime(match.seconds)}` : ''}</span>${match.versions > 1 ? `<small>${match.versions} versions${match.artists.length > 1 ? ` · also ${esc(match.artists.filter((name) => name !== match.artist).slice(0, 3).join(', '))}` : ''}</small>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('')}</ol>`
@@ -1042,7 +1042,7 @@ function renderSongs() {
 }
 // Your songs, redrawn alone while one is being read so typing in the search or paste boxes is never lost.
 function songListHTML() {
-  const list = (songList?.songs || []).map((song) => `<li><button class="song-row" data-action="song-open" data-song="${esc(song.id)}"><span class="song-copy"><strong>${esc(song.title)}</strong><span>${esc(song.artist || 'Pasted lyrics')}</span><small class="song-state ${song.status}">${esc(songStatusLine(song))}</small>${song.status === 'reading' ? `<span class="song-bar"><span style="width:${song.total ? song.done / song.total * 100 : 0}%"></span></span>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
+  const list = (songList?.songs || []).map((song) => `<li><button class="song-row" data-action="song-open" data-song="${esc(song.id)}"><span class="song-copy"><strong>${esc(song.title)}</strong><span>${esc(song.artist || 'Pasted lyrics')}</span><small class="song-state ${song.status}">${esc(songStatusLine(song))}</small>${song.status === 'reading' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
   return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
 }
 function renderSong() {
@@ -1052,7 +1052,7 @@ function renderSong() {
   const title = `<h1>${esc(song.title)}</h1><p class="subtitle">${esc(song.artist || 'Pasted lyrics')}</p>`;
   let body = '';
   if (song.status === 'reading') {
-    body = `<div class="song-progress" role="status"><p><strong>${song.done}</strong> of ${song.total} words read</p><span class="song-bar"><span style="width:${song.total ? song.done / song.total * 100 : 0}%"></span></span><p class="caption">Qwen thinks through each word — its dictionary form, gender and meaning here — about 15 seconds a word. You can leave; it carries on.</p></div>`;
+    body = `<div class="song-progress" role="status"><p>Reading the song…</p><span class="song-bar busy"><span></span></span><p class="caption">Claude reads the whole song and gives every word its dictionary form, gender and meaning here. It usually takes under a minute; you can leave and come back.</p></div>`;
   } else if (song.status === 'failed') {
     body = `<div class="song-progress"><p class="song-error">${esc(song.error || 'This song could not be read.')}</p><div class="summary-actions"><button class="primary" data-action="song-retry" data-song="${esc(song.id)}" ${busy ? 'disabled' : ''}>Try again</button><button class="secondary" data-action="song-remove" data-song="${esc(song.id)}" ${busy ? 'disabled' : ''}>Remove</button></div></div>`;
   } else if (song.status === 'ready') {
