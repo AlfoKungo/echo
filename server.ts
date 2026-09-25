@@ -58,7 +58,7 @@ const wordAudio = createWordAudio({
 const ask = createClaude({ command: process.env.ECHO_CLAUDE ?? join(process.env.HOME ?? '', '.local/bin/claude'), model: process.env.ECHO_CLAUDE_MODEL });
 const songs = createSongs({
   dbPath, vocabulary: store,
-  read: createClaudeReader(ask),
+  read: createClaudeReader(ask), ask,
   fetchJson: async (url) => {
     const response = await fetch(url, { headers: { 'User-Agent': 'Echo French practice (personal, local)' }, signal: AbortSignal.timeout(20_000) });
     if (!response.ok) throw new Error(`LRCLIB ${response.status}`);
@@ -229,7 +229,9 @@ const server = Bun.serve({
         const data = await body(req);
         return json(await songs.start(typeof data.lrclibId === 'number' ? { lrclibId: data.lrclibId } : { title: String(data.title ?? ''), artist: String(data.artist ?? ''), lyrics: String(data.lyrics ?? '') }));
       }
-      const song = path.match(/^\/api\/songs\/([0-9a-f-]{36})(?:\/(add|retry))?$/);
+      const song = path.match(/^\/api\/songs\/([0-9a-f-]{36})(?:\/(add|retry|lyrics|notes))?$/);
+      if (song?.[2] === 'lyrics' && req.method === 'GET') return json(songs.lyrics(song[1]));
+      if (song?.[2] === 'notes' && req.method === 'POST') return json(songs.rewriteNotes(song[1]));
       if (song && !song[2] && req.method === 'GET') return json(songs.get(song[1]));
       if (song && !song[2] && req.method === 'DELETE') { songs.remove(song[1]); return json({ ok: true }); }
       if (song?.[2] === 'add' && req.method === 'POST') {

@@ -282,7 +282,7 @@ function noticeHTML() {
 }
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
 function back(label, action) { return `<button class="back" data-action="${action}" ${busy ? 'disabled' : ''}><span aria-hidden="true">←</span> ${label}</button>`; }
-function place() { return screen === 'song' ? `song|${songId}` : screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen; }
+function place() { return screen === 'song' ? `song|${songId}` : screen === 'lyrics' ? `lyrics|${songId}` : screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen; }
 function record(next) {
   depth += 1; trail.length = depth; trail[depth] = next;
   history.pushState({ echo: next, depth }, '');
@@ -324,6 +324,7 @@ function render() {
   else if (screen === 'statistics') renderStatistics();
   else if (screen === 'songs') renderSongs();
   else if (screen === 'song') renderSong();
+  else if (screen === 'lyrics') renderLyrics();
   else renderHome();
 }
 function renderWalkman() {
@@ -868,9 +869,10 @@ function glossedHTML(text, glosses) {
   }
   return html + frEsc(text.slice(at));
 }
-// A grammar question's glosses while one is on screen, else the Listen/Read item's.
+// The glosses of what is on screen: the tapped song line's, a grammar question's, else the Listen/Read item's.
 function glossFor(fr) {
-  const lists = grammarOnScreen() ? [activeGrammar()?.session?.current?.exercise?.gloss] : [streamState?.result?.gloss, streamState?.current?.gloss];
+  const lyricLine = screen === 'lyrics' ? (() => { const [s, l] = glossLine.split('.').map(Number); return songLyrics?.stanzas?.[s]?.[l]; })() : null;
+  const lists = screen === 'lyrics' ? [lyricLine?.words] : grammarOnScreen() ? [activeGrammar()?.session?.current?.exercise?.gloss] : [streamState?.result?.gloss, streamState?.current?.gloss];
   for (const list of lists) { const found = (list || []).find((entry) => entry.fr === fr); if (found) return found; }
   return null;
 }
@@ -1104,7 +1106,7 @@ function renderStatistics() {
 }
 // ── Songs ────────────────────────────────────────────────────────────────────
 // A song is found on LRCLIB (or pasted), read by Claude (Opus) in the background, reviewed here, and its ticked
-// words join a deck of their own. Echo never shows or keeps the lyrics, only the words.
+// words join a deck of their own. Its lyrics stay on this Mac for the song view, which Claude annotates.
 let songList = null;        // { songs, audio } from api/songs
 let songMatches = null;     // search results, null before a search
 let songQuery = '';
@@ -1145,7 +1147,8 @@ function renderSong() {
   const song = songView;
   const header = `<div class="section-top">${back('Songs', 'songs')}</div>`;
   if (!song) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Opening the song…</div>' : ''}</section>`; return; }
-  const title = `<h1>${esc(song.title)}</h1><p class="subtitle">${esc(song.artist || 'Pasted lyrics')}</p>`;
+  const readable = (song.status === 'ready' || song.status === 'added') && song.notes !== 'none';
+  const title = `<h1>${esc(song.title)}</h1><p class="subtitle">${esc(song.artist || 'Pasted lyrics')}</p>${readable ? `<button class="secondary song-lyrics-open" data-action="song-lyrics">Read the song${song.notes === 'ready' ? '' : ' · notes on the way'}</button>` : ''}`;
   let body = '';
   if (song.status === 'reading') {
     body = `<div class="song-progress" role="status"><p>Reading the song…</p><span class="song-bar busy"><span></span></span><p class="caption">Claude reads the whole song and gives every word its dictionary form, gender and meaning here. It usually takes under a minute; you can leave and come back.</p></div>`;
@@ -1188,6 +1191,49 @@ async function loadSong() {
   loading = false;
   if (screen === 'song') render();
   watchSongs();
+}
+// ── The song view ────────────────────────────────────────────────────────────
+// The lyrics line by line: the button at a line's start shows what the line means, and a tapped word shows its
+// meaning, dictionary form and grammar note. Until Claude has written the notes, the lines show plain.
+let songLyrics = null;          // api/songs/<id>/lyrics
+const openLines = new Set();    // "stanza.line" keys whose meaning is showing
+let glossLine = '';             // the line a tapped word belongs to
+let lyricsPoll = 0;
+function openLyrics() { if (move(`lyrics|${songId}`, true)) loadLyrics(); }
+async function loadLyrics() {
+  const id = songId;
+  if (songLyrics?.id !== id) { songLyrics = null; openLines.clear(); loading = true; render(); }
+  try { const view = await api(`api/songs/${encodeURIComponent(id)}/lyrics`); if (songId === id) songLyrics = view; }
+  catch (error) { notice = { message: error.message }; }
+  loading = false;
+  if (screen === 'lyrics') render();
+  clearTimeout(lyricsPoll);
+  if (screen === 'lyrics' && (songLyrics?.notes === 'writing' || songLyrics?.notes === 'waiting')) lyricsPoll = setTimeout(() => { if (screen === 'lyrics' && songId === id) loadLyrics(); }, 8000);
+}
+function renderLyrics() {
+  const view = songLyrics;
+  const header = `<div class="section-top">${back('Song', 'song-page')}</div>`;
+  if (!view) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Opening the lyrics…</div>' : ''}</section>`; return; }
+  const status = view.notes === 'ready' ? '<p class="song-hint">Tap › at the start of a line for what it means, or tap a word for its note.</p>'
+    : view.notes === 'writing' ? `<div class="song-progress" role="status"><p>Writing the notes… ${view.done} of ${view.total} lines</p><span class="song-bar"><span style="width:${view.total ? view.done / view.total * 100 : 0}%"></span></span><p class="caption">Claude translates every line and explains its words. The lyrics are here meanwhile; the notes appear when they are all written.</p></div>`
+    : view.notes === 'waiting' ? '<p class="song-hint" role="status">The notes are waiting their turn behind another song.</p>'
+    : view.notes === 'failed' ? `<div class="song-progress"><p class="song-error">${esc(view.error || 'The notes could not be written.')}</p><div class="summary-actions"><button class="primary" data-action="song-notes" ${busy ? 'disabled' : ''}>Try again</button></div></div>`
+    : '<p class="song-hint">The lyrics of this song are not on this Mac. Paste the song again to read it here.</p>';
+  const lines = view.stanzas.map((stanza, s) => `<div class="lyric-stanza">${stanza.map((line, l) => {
+    const key = `${s}.${l}`;
+    const open = openLines.has(key);
+    const start = line.en ? `<button class="lyric-start" data-action="lyric-line" data-line="${key}" aria-expanded="${open}" aria-label="What this line means">›</button>` : '<span class="lyric-start" aria-hidden="true"></span>';
+    return `<div class="lyric-line" data-line="${key}">${start}<div class="lyric-text"><p lang="fr">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div></div>`;
+  }).join('')}</div>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics">${header}<h1>${esc(view.title)}</h1><p class="subtitle">${esc(view.artist || 'Pasted lyrics')}</p>${status}<div class="lyric-lines">${lines}</div></section>`;
+}
+async function rewriteSongNotes() {
+  if (busy) return;
+  busy = true; render();
+  try { songLyrics = await api(`api/songs/${encodeURIComponent(songId)}/notes`, { method: 'POST', body: '{}' }); }
+  catch (error) { notice = { message: error.message }; }
+  busy = false;
+  loadLyrics();
 }
 // While a song is being read or recorded, its screen refreshes every few seconds; nothing polls otherwise.
 function watchSongs() {
@@ -1336,7 +1382,7 @@ function lookupGloss(fr) {
   if (!entry) return;
   glossWord = entry; addStatus = '';
   renderGlossSheet();
-  if (grammarOnScreen()) return;
+  if (grammarOnScreen() || screen === 'lyrics') return;
   const view = streamState?.current;
   if (!view || streamState.result || view.mode !== 'read' || (streamState.lookups || []).includes(fr)) return;
   const id = streamId;
@@ -1351,7 +1397,8 @@ function renderGlossSheet() {
   const add = entry.word
     ? (addStatus ? `<p class="gloss-status" role="status">${esc(addStatus)}</p>` : `<button class="secondary gloss-add" data-action="add-word" ${busy ? 'disabled' : ''}>Add to my words</button>`)
     : '';
-  openDialog(entry.fr, `<p class="gloss-en">${esc(entry.en)}</p>${add}<button class="primary dialog-action" data-action="close-dialog">Close</button>`, 'gloss');
+  const extra = `${entry.base ? `<p class="gloss-base">from <span lang="fr">${frEsc(entry.base)}</span></p>` : ''}${entry.note ? `<p class="gloss-note">${esc(entry.note)}</p>` : ''}`;
+  openDialog(entry.fr, `<p class="gloss-en">${esc(entry.en)}</p>${extra}${add}<button class="primary dialog-action" data-action="close-dialog">Close</button>`, 'gloss');
 }
 async function addWord() {
   const entry = glossWord;
@@ -1534,7 +1581,8 @@ function show(next) {
   if (name === 'topic') topicId = arg;
   else if (name === 'exercise') enterScope(arg);
   else if (name === 'focus') focusId = arg;
-  else if (name === 'song' && arg !== songId) { songId = arg; songView = null; }
+  else if ((name === 'song' || name === 'lyrics') && arg !== songId) { songId = arg; songView = null; songLyrics = null; }
+  if (name !== 'lyrics') clearTimeout(lyricsPoll);
   if (name !== 'mix' && name !== 'focus') { mixedSource = ''; review = null; }
   if (name !== 'listen' && name !== 'read' && name !== 'mix' && name !== 'focus') { streamState = null; streamId = ''; }
   // Leaving the Walkman stops the tape; coming back winds a new one.
@@ -1720,7 +1768,7 @@ document.addEventListener('click', (event) => {
   if (action === 'play-clips') { toggleClips(); return; }
   if (action === 'clips-restart') { toggleClips(true); return; }
   if (action === 'grammar-audio') { const clip = activeGrammar()?.session?.current?.audio; if (clip) playFrench(clip); return; }
-  if (button?.dataset.gloss !== undefined) { lookupGloss(button.dataset.gloss); return; }
+  if (button?.dataset.gloss !== undefined) { glossLine = button.closest('[data-line]')?.dataset.line ?? ''; lookupGloss(button.dataset.gloss); return; }
   if (action === 'add-word') { addWord(); return; }
   if (busy) return;
   if (button?.dataset.direction) {
@@ -1779,6 +1827,10 @@ document.addEventListener('click', (event) => {
   else if (action === 'song-retry') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}/retry`, { method: 'POST', body: '{}' }, (song) => { songView = song; loadSong(); });
   else if (action === 'song-remove') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}`, { method: 'DELETE' }, () => { songView = null; move('songs'); loadSongs(); });
   else if (action === 'song-practise') { deck = button.dataset.category; savePreference('echo.deck', deck); startPractice(); }
+  else if (action === 'song-lyrics') openLyrics();
+  else if (action === 'song-page') openSong(songId);
+  else if (action === 'lyric-line') { const key = button.dataset.line; if (openLines.has(key)) openLines.delete(key); else openLines.add(key); render(); }
+  else if (action === 'song-notes') rewriteSongNotes();
   else if (action === 'songs-first') setSongsFirst(button.dataset.value === 'true');
   else if (action === 'stats-bin') chooseStatsBin(Number(button.dataset.bin));
   else if (action === 'stats-list') { statsOpen = !statsOpen; render(); }
@@ -1869,6 +1921,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'statistics') loadStatistics();
   else if (screen === 'songs') loadSongs();
   else if (screen === 'song') loadSong();
+  else if (screen === 'lyrics') loadLyrics();
 });
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }

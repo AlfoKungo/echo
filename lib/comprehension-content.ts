@@ -134,12 +134,13 @@ export function unglossed(text: string, gloss: { fr: string }[]): string[] {
   const covered = new Array(text.length).fill(false);
   for (const entry of gloss) for (const at of wholeMatches(text, entry.fr)) for (let i = at; i < at + entry.fr.length; i++) covered[i] = true;
   const missing: string[] = [];
-  for (const match of text.matchAll(/[\p{L}\p{M}]+(’)?/gu)) {
+  // A straight apostrophe (song lyrics as written) elides like ’ does.
+  for (const match of text.matchAll(/[\p{L}\p{M}]+([’'])?/gu)) {
     const start = match.index!;
-    const letters = match[0].replace(/’$/, '');
+    const letters = match[0].replace(/[’']$/, '');
     let fully = true;
     for (let i = start; i < start + letters.length; i++) if (!covered[i]) fully = false;
-    if (fully || FUNCTION.has(match[0].toLowerCase())) continue;
+    if (fully || FUNCTION.has(match[0].toLowerCase().replace(/'$/, '’'))) continue;
     missing.push(match[0]);
   }
   return missing;

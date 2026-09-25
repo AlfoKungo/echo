@@ -1,9 +1,12 @@
 import { afterEach, describe, expect, test } from 'bun:test';
+import { Database } from 'bun:sqlite';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { Word } from '../contract';
 import { createSongs } from '../lib/songs';
+import { lineProblems, stanzasOf } from '../lib/song-lyrics';
+import type { Ask } from '../lib/claude';
 import { candidateFrom, groupMatches, lyricForms, mergeCandidates, parseFacts, songCategory, songPrompt, type LyricForm, type WordFacts } from '../lib/song-words';
 import { createStore, StoreError } from '../lib/store';
 
@@ -32,7 +35,7 @@ afterEach(() => { for (const directory of directories.splice(0)) rmSync(director
 
 // A stand-in for Claude: answers each form from FACTS, or as the test's own answer function says.
 type Answer = (entry: LyricForm) => WordFacts | undefined;
-function setup(answer: Answer = (entry) => FACTS[entry.form], failure?: Error) {
+function setup(answer: Answer = (entry) => FACTS[entry.form], failure?: Error, ask?: Ask) {
   const directory = mkdtempSync(join(tmpdir(), 'echo-songs-'));
   directories.push(directory);
   const dbPath = join(directory, 'echo.db');
@@ -40,7 +43,7 @@ function setup(answer: Answer = (entry) => FACTS[entry.form], failure?: Error) {
   const asked: string[] = [];
   const addedIds: string[][] = [];
   const songs = createSongs({
-    dbPath, vocabulary: store,
+    dbPath, vocabulary: store, ask,
     read: async (lyrics, forms) => {
       asked.push(...forms.map((entry) => entry.form));
       if (failure) throw failure;
@@ -52,7 +55,7 @@ function setup(answer: Answer = (entry) => FACTS[entry.form], failure?: Error) {
     },
     onAdded: (ids) => addedIds.push(ids),
   });
-  return { store, songs, asked, addedIds };
+  return { store, songs, asked, addedIds, dbPath };
 }
 
 describe('reading lyrics', () => {
@@ -150,7 +153,8 @@ describe('songs', () => {
     const two = await down.songs.start({ title: 'Nuages', lyrics: LYRICS });
     await down.songs.settled();
     expect(down.songs.get(two.id)).toMatchObject({ status: 'failed', error: 'Claude could not read the song.' });
-    await expect(down.songs.retry(two.id)).rejects.toThrow('Paste the lyrics again');
+    // The pasted lyrics are kept, so a failed song reads again from them.
+    expect((await down.songs.retry(two.id)).status).toBe('reading');
   });
 
   test('two songs read before either is added never add the same word twice', async () => {
@@ -180,5 +184,105 @@ describe('songs', () => {
     await expect(songs.start({ title: '', lyrics: LYRICS })).rejects.toThrow('title');
     await expect(songs.start({ title: 'x', lyrics: '123 456' })).rejects.toThrow('No French words');
     await expect(songs.search('voyage')).rejects.toThrow('could not be reached');
+  });
+});
+
+// A stand-in for Claude writing song notes: each numbered line comes back with every word glossed by its capitals,
+// except that `broken` lines leave their first word out until the checker sends them back. The review corrects
+// the translation of any line named in `corrections`.
+function notesWriter(broken = new Set<string>(), corrections = new Map<string, string>()): { ask: Ask; asked: string[][] } {
+  const asked: string[][] = [];
+  const entry = (fr: string, skipFirst: boolean) => ({ en: `EN ${fr}`, words: [...fr.matchAll(/[\p{L}\p{M}]+/gu)].map((match) => match[0]).slice(skipFirst ? 1 : 0).map((word) => ({ fr: word, en: word.toUpperCase(), note: `About ${word}.` })) });
+  const sent = (prompt: string) => JSON.parse(prompt.split('\n').find((line) => line.startsWith('[{"n"'))!) as { n: number; fr: string; wrote: { en: string; words: unknown[] } }[];
+  const ask: Ask = async (prompt) => {
+    if (prompt.includes('Another writer produced')) {
+      const lines = sent(prompt).filter((line) => corrections.has(line.fr));
+      asked.push(lines.map((line) => `review ${line.fr}`));
+      return JSON.stringify({ lines: lines.map((line) => ({ n: line.n, ...line.wrote, en: corrections.get(line.fr) })) });
+    }
+    if (prompt.includes('a checker found problems')) {
+      const lines = sent(prompt);
+      asked.push(lines.map((line) => `fix ${line.fr}`));
+      return JSON.stringify({ lines: lines.map((line) => ({ n: line.n, ...entry(line.fr, false) })) });
+    }
+    const lines = [...prompt.split('The lines to write for:')[1]!.matchAll(/^(\d+)\. (.+)$/gm)].map((match) => ({ n: Number(match[1]), fr: match[2]! }));
+    asked.push(lines.map((line) => line.fr));
+    return JSON.stringify({ lines: lines.map((line) => ({ n: line.n, ...entry(line.fr, broken.has(line.fr)) })) });
+  };
+  return { ask, asked };
+}
+
+describe('the song view', () => {
+  const CHORUS = `${LYRICS}\n\nOh, les ailes jaunes du vent\nLes nuages glissent sur la mer`;
+
+  test('a read song keeps its lyrics and gets a translated, glossed line for each; a repeated line is written once', async () => {
+    const { ask, asked } = notesWriter();
+    const { songs } = setup(undefined, undefined, ask);
+    const song = await songs.start({ title: 'Nuages', lyrics: CHORUS });
+    expect(songs.lyrics(song.id).stanzas.flat().every((line) => line.en === null)).toBe(true);
+    await songs.settled();
+    const view = songs.lyrics(song.id);
+    expect(view).toMatchObject({ notes: 'ready', done: 3, total: 3 });
+    expect(view.stanzas.map((stanza) => stanza.length)).toEqual([3, 2]);
+    expect(asked.flat().filter((entry) => !entry.startsWith('review '))).toHaveLength(3);
+    const line = view.stanzas[0]![1]!;
+    expect(line.en).toBe(`EN ${line.fr}`);
+    expect(line.words.find((word) => word.fr === 'arrête')).toEqual({ fr: 'arrête', en: 'ARRÊTE', note: 'About arrête.' });
+    expect(songs.get(song.id).notes).toBe('ready');
+  });
+
+  test('the review’s correction of a line replaces what was first written', async () => {
+    const line = stanzasOf(LYRICS)[0]![1]!;
+    const { ask } = notesWriter(new Set(), new Map([[line, 'I stop dreaming, Paris is far away']]));
+    const { songs } = setup(undefined, undefined, ask);
+    const song = await songs.start({ title: 'Nuages', lyrics: LYRICS });
+    await songs.settled();
+    const [first, second] = songs.lyrics(song.id).stanzas[0]!;
+    expect(second!.en).toBe('I stop dreaming, Paris is far away');
+    expect(first!.en).toBe(`EN ${first!.fr}`);
+  });
+
+  test('a line missing a word goes back to be fixed', async () => {
+    // "Oh, les ailes…": its first word needs an entry, so leaving it out is a problem.
+    const broken = stanzasOf(LYRICS)[0]![2]!;
+    const { ask, asked } = notesWriter(new Set([broken]));
+    const { songs } = setup(undefined, undefined, ask);
+    const song = await songs.start({ title: 'Nuages', lyrics: LYRICS });
+    await songs.settled();
+    expect(asked.flat()).toContain(`fix ${broken}`);
+    const line = songs.lyrics(song.id).stanzas[0]![0]!;
+    expect(lineProblems(line.fr, line)).toEqual([]);
+  });
+
+  test('the checker names words without an entry and spans that are not in the line', () => {
+    expect(lineProblems('Paris est loin', { en: 'Paris is far', words: [{ fr: 'Paris', en: 'Paris' }, { fr: 'lo', en: 'x' }] })).toEqual([
+      '"lo" is not a whole word or phrase of the line as written.',
+      '"est", "loin" have no entry.',
+    ]);
+  });
+
+  test('after a restart, a song read before lyrics were kept fetches them from LRCLIB and gets its notes; notes Claude could not write are written again on request', async () => {
+    const first = setup();
+    const song = await first.songs.start({ lrclibId: 7 });
+    await first.songs.settled();
+    first.songs.close();
+    const old = new Database(first.dbPath);
+    old.run('UPDATE songs SET lyrics = NULL, notes_status = NULL');
+    old.close();
+    const { ask } = notesWriter();
+    let down = true;
+    const flaky: Ask = async (prompt, options) => { if (down) throw new StoreError('Claude could not help with writing the song notes.', 503); return ask(prompt, options); };
+    const fetched: string[] = [];
+    const again = createSongs({ dbPath: first.dbPath, vocabulary: first.store, read: async () => new Map(), fetchJson: async (url) => { fetched.push(url); return { id: 7, trackName: 'Nuages', artistName: 'Someone', plainLyrics: LYRICS }; }, ask: flaky });
+    expect(again.lyrics(song.id)).toMatchObject({ notes: 'none', stanzas: [] });
+    await again.resume();
+    await again.settled();
+    expect(fetched).toEqual(['https://lrclib.net/api/get/7']);
+    expect(again.lyrics(song.id)).toMatchObject({ notes: 'failed', error: 'Claude could not help with writing the song notes.' });
+    down = false;
+    again.rewriteNotes(song.id);
+    await again.settled();
+    expect(again.lyrics(song.id).notes).toBe('ready');
+    again.close();
   });
 });

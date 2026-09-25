@@ -1,16 +1,22 @@
 // Songs: find one on LRCLIB (or take pasted lyrics), read it into dictionary-form words with Claude in the
 // background, let the learner review the list, then add the chosen words as a deck of their own. The lyrics are
-// held in memory only while a song is being read; the database keeps the title, the progress and the word list.
+// kept on this Mac for the song view, whose line translations and word notes Claude writes once the words are read
+// (lib/song-lyrics.ts).
 import { Database } from 'bun:sqlite';
+import type { Ask } from './claude';
 import { StoreError, type Store } from './store';
 import { candidateFrom, groupMatches, littleWord, lyricForms, mergeCandidates, songCategory, type LrclibTrack, type LyricForm, type SongCandidate, type SongMatch, type SongSkip, type WordFacts } from './song-words';
+import { stanzasOf, writeNotes, type SongNotes } from './song-lyrics';
 
 export type SongStatus = 'reading' | 'ready' | 'added' | 'failed';
+// The song view: 'none' when the lyrics are not on this Mac (a pasted song from before they were kept).
+export type NotesStatus = 'none' | 'waiting' | 'writing' | 'ready' | 'failed';
 export type SongView = {
   id: string; title: string; artist: string; category: string; status: SongStatus;
   done: number; total: number; error: string | null; candidates: SongCandidate[]; skipped: SongSkip[];
-  added: string[]; createdAt: string;
+  added: string[]; createdAt: string; notes: NotesStatus;
 };
+export type SongLyricsView = { id: string; title: string; artist: string; notes: NotesStatus; done: number; total: number; error: string | null; stanzas: SongNotes };
 export type SongStart = { lrclibId: number } | { title: string; artist?: string; lyrics: string };
 
 export type SongDeps = {
@@ -20,6 +26,8 @@ export type SongDeps = {
   // the answer is left out. A StoreError (the model cannot be reached) stops the song.
   read: (lyrics: string, forms: LyricForm[]) => Promise<Map<string, WordFacts>>;
   fetchJson: (url: string) => Promise<unknown>;
+  // Writes the song view's notes; without it a song keeps its lyrics but gets no notes.
+  ask?: Ask;
   onAdded?: (wordIds: string[]) => void;
   now?: () => Date;
 };
@@ -27,6 +35,7 @@ export type SongDeps = {
 type SongRow = {
   id: string; title: string; artist: string; category: string; source: string; source_id: number | null; status: SongStatus;
   done: number; total: number; error: string | null; words_json: string | null; added_json: string | null; created_at: string;
+  lyrics: string | null; notes_json: string | null; notes_status: string | null; notes_done: number; notes_total: number; notes_error: string | null;
 };
 
 const LRCLIB = 'https://lrclib.net/api';
@@ -46,13 +55,20 @@ export function createSongs(deps: SongDeps) {
       total INTEGER NOT NULL DEFAULT 0, error TEXT, words_json TEXT, added_json TEXT, created_at TEXT NOT NULL
     );
   `);
+  // Columns added once the song view kept the lyrics; older databases gain them here.
+  const columns = new Set(db.query<{ name: string }, []>('PRAGMA table_info(songs)').all().map((column) => column.name));
+  for (const [name, type] of [['lyrics', 'TEXT'], ['notes_json', 'TEXT'], ['notes_status', 'TEXT'], ['notes_done', 'INTEGER NOT NULL DEFAULT 0'], ['notes_total', 'INTEGER NOT NULL DEFAULT 0'], ['notes_error', 'TEXT']] as const) {
+    if (!columns.has(name)) db.exec(`ALTER TABLE songs ADD COLUMN ${name} ${type}`);
+  }
   const byId = db.query<SongRow, [string]>('SELECT * FROM songs WHERE id = ?');
   const all = db.query<SongRow, []>('SELECT * FROM songs ORDER BY created_at DESC');
   const progress = db.query('UPDATE songs SET done = ?, total = ? WHERE id = ?');
   const finish = db.query("UPDATE songs SET status = 'ready', done = total, words_json = ?, error = NULL WHERE id = ?");
   const fail = db.query("UPDATE songs SET status = 'failed', error = ? WHERE id = ?");
   const queue: { id: string; lyrics: string }[] = [];
+  const noteQueue: string[] = [];
   let running: Promise<void> | null = null;
+  const notesStatus = (row: SongRow): NotesStatus => !row.lyrics ? 'none' : (row.notes_status as NotesStatus | null) ?? 'waiting';
 
   function view(row: SongRow): SongView {
     const words = row.words_json ? JSON.parse(row.words_json) as { candidates: SongCandidate[]; skipped: SongSkip[] } : { candidates: [], skipped: [] };
@@ -60,7 +76,7 @@ export function createSongs(deps: SongDeps) {
       id: row.id, title: row.title, artist: row.artist, category: row.category, status: row.status,
       done: row.done, total: row.total, error: row.error, skipped: words.skipped,
       candidates: words.candidates.map((candidate) => ({ ...candidate, little: candidate.forms.every((form) => littleWord(form) !== null) })),
-      added: row.added_json ? JSON.parse(row.added_json) : [], createdAt: row.created_at,
+      added: row.added_json ? JSON.parse(row.added_json) : [], createdAt: row.created_at, notes: notesStatus(row),
     };
   }
 
@@ -97,26 +113,67 @@ export function createSongs(deps: SongDeps) {
     if (!total) throw new StoreError('No French words were found in those lyrics.');
     const taken = new Set([...deps.vocabulary.words().map((word) => word.category), ...all.all().map((row) => row.category)]);
     const id = crypto.randomUUID();
-    db.query('INSERT INTO songs (id, title, artist, category, source, source_id, status, total, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')
-      .run(id, title, artist, songCategory(title, taken), source, sourceId, 'reading', total, now().toISOString());
+    db.query('INSERT INTO songs (id, title, artist, category, source, source_id, status, total, created_at, lyrics) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
+      .run(id, title, artist, songCategory(title, taken), source, sourceId, 'reading', total, now().toISOString(), lyrics);
     queue.push({ id, lyrics });
     void drain();
     return view(byId.get(id)!);
   }
 
-  // One song at a time, word forms in alphabetical order; progress is saved after each one.
+  // One song at a time, word forms in alphabetical order; progress is saved after each one. A song's notes are
+  // written after every waiting word list, so a new song's words are never held up behind another's notes.
   // running is cleared only once the loop has settled, and a song queued in that gap starts a new loop.
   function drain(): Promise<void> {
     if (running) return running;
     const work = (async () => {
-      while (queue.length) {
-        const job = queue.shift()!;
-        try { finish.run(JSON.stringify(await read(job)), job.id); }
-        catch (error) { fail.run(error instanceof Error ? error.message : 'Reading the song failed.', job.id); }
+      while (queue.length || noteQueue.length) {
+        if (queue.length) {
+          const job = queue.shift()!;
+          try { finish.run(JSON.stringify(await read(job)), job.id); queueNotes(job.id); }
+          catch (error) { fail.run(error instanceof Error ? error.message : 'Reading the song failed.', job.id); }
+          continue;
+        }
+        await notes(noteQueue.shift()!);
       }
     })();
     running = work;
-    return work.finally(() => { if (running === work) running = null; if (queue.length) void drain(); });
+    return work.finally(() => { if (running === work) running = null; if (queue.length || noteQueue.length) void drain(); });
+  }
+
+  function queueNotes(id: string): void {
+    if (!deps.ask || noteQueue.includes(id)) return;
+    db.query("UPDATE songs SET notes_status = 'waiting', notes_error = NULL WHERE id = ? AND lyrics IS NOT NULL").run(id);
+    noteQueue.push(id);
+  }
+
+  async function notes(id: string): Promise<void> {
+    const row = byId.get(id);
+    if (!row?.lyrics || !deps.ask) return;
+    db.query("UPDATE songs SET notes_status = 'writing', notes_done = 0 WHERE id = ?").run(id);
+    try {
+      const written = await writeNotes(deps.ask, { title: row.title, artist: row.artist, lyrics: row.lyrics }, (done, total) => db.query('UPDATE songs SET notes_done = ?, notes_total = ? WHERE id = ?').run(done, total, id));
+      db.query("UPDATE songs SET notes_status = 'ready', notes_json = ?, notes_error = NULL WHERE id = ?").run(JSON.stringify(written), id);
+    } catch (error) {
+      db.query("UPDATE songs SET notes_status = 'failed', notes_error = ? WHERE id = ?").run(error instanceof Error ? error.message : 'Writing the notes failed.', id);
+    }
+  }
+
+  // The song view: the lyrics in stanzas, with their notes once written (plain lines until then).
+  function lyrics(id: string): SongLyricsView {
+    const row = byId.get(id);
+    if (!row) throw new StoreError('That song is not in Echo.', 404);
+    const stanzas: SongNotes = row.notes_status === 'ready' && row.notes_json ? JSON.parse(row.notes_json)
+      : row.lyrics ? stanzasOf(row.lyrics).map((stanza) => stanza.map((fr) => ({ fr, en: null, words: [] }))) : [];
+    return { id: row.id, title: row.title, artist: row.artist, notes: notesStatus(row), done: row.notes_done, total: row.notes_total, error: row.notes_error, stanzas };
+  }
+
+  // Notes that failed (Claude could not be reached, say) are written again on request.
+  function rewriteNotes(id: string): SongLyricsView {
+    const row = byId.get(id);
+    if (!row) throw new StoreError('That song is not in Echo.', 404);
+    if (!row.lyrics) throw new StoreError('The lyrics of this song are not on this Mac. Paste it again to read it.', 409);
+    if (row.notes_status === 'failed') { queueNotes(id); void drain(); }
+    return lyrics(id);
   }
 
   async function read(job: { id: string; lyrics: string }): Promise<{ candidates: SongCandidate[]; skipped: SongSkip[] }> {
@@ -170,26 +227,42 @@ export function createSongs(deps: SongDeps) {
     return get(id);
   }
 
-  // A failed song starts again; lyrics from LRCLIB are fetched again, pasted lyrics must be pasted again.
+  // A failed song starts again from its kept lyrics; an older song without them fetches them from LRCLIB again,
+  // and an older pasted one must be pasted again.
   async function retry(id: string): Promise<SongView> {
     const row = byId.get(id);
     if (!row) throw new StoreError('That song is not in Echo.', 404);
     if (row.status !== 'failed') return view(row);
-    if (row.source !== 'lrclib' || row.source_id === null) throw new StoreError('Paste the lyrics again to read this song.', 409);
-    const { lyrics } = await lyricsFor(row.source_id);
+    const lyrics = await keptLyrics(row);
+    if (!lyrics) throw new StoreError('Paste the lyrics again to read this song.', 409);
     db.query("UPDATE songs SET status = 'reading', done = 0, error = NULL WHERE id = ?").run(id);
     queue.push({ id, lyrics });
     void drain();
     return get(id);
   }
 
-  // Songs cut short by a restart: LRCLIB ones are read again, pasted ones ask to be pasted again.
+  // The song's lyrics: the kept copy, or for a song added before they were kept, LRCLIB's, saved from now on.
+  async function keptLyrics(row: SongRow): Promise<string | null> {
+    if (row.lyrics) return row.lyrics;
+    if (row.source !== 'lrclib' || row.source_id === null) return null;
+    const { lyrics } = await lyricsFor(row.source_id);
+    db.query('UPDATE songs SET lyrics = ? WHERE id = ?').run(lyrics, row.id);
+    return lyrics;
+  }
+
+  // After a restart: songs cut short while their words were read start again, then every read song whose notes are
+  // not written yet (or were cut short) gets them. Notes that failed wait for the learner to ask again.
   async function resume(): Promise<void> {
     for (const row of all.all().filter((song) => song.status === 'reading').reverse()) {
-      if (row.source === 'lrclib' && row.source_id !== null) {
-        try { queue.push({ id: row.id, lyrics: (await lyricsFor(row.source_id)).lyrics }); db.query('UPDATE songs SET done = 0 WHERE id = ?').run(row.id); }
-        catch (error) { fail.run(error instanceof Error ? error.message : 'The lyrics could not be fetched.', row.id); }
-      } else fail.run('Echo restarted while reading this song. Paste the lyrics again.', row.id);
+      try {
+        const lyrics = await keptLyrics(row);
+        if (lyrics) { queue.push({ id: row.id, lyrics }); db.query('UPDATE songs SET done = 0 WHERE id = ?').run(row.id); }
+        else fail.run('Echo restarted while reading this song. Paste the lyrics again.', row.id);
+      } catch (error) { fail.run(error instanceof Error ? error.message : 'The lyrics could not be fetched.', row.id); }
+    }
+    for (const row of all.all().filter((song) => (song.status === 'ready' || song.status === 'added') && song.notes_status !== 'ready' && song.notes_status !== 'failed').reverse()) {
+      try { if (await keptLyrics(row)) queueNotes(row.id); }
+      catch { /* LRCLIB unreachable: the song view waits for the next start. */ }
     }
     void drain();
   }
@@ -202,6 +275,6 @@ export function createSongs(deps: SongDeps) {
     db.query('DELETE FROM songs WHERE id = ?').run(id);
   }
 
-  return { search, start, get, list: () => all.all().map(view), add, retry, resume, remove, settled: () => running ?? Promise.resolve(), close: () => db.close() };
+  return { search, start, get, lyrics, rewriteNotes, list: () => all.all().map(view), add, retry, resume, remove, settled: () => running ?? Promise.resolve(), close: () => db.close() };
 }
 export type Songs = ReturnType<typeof createSongs>;

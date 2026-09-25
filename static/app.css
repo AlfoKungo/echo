@@ -266,3 +266,10 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .feedback .fb-table .guide-table{font-size:14px}
 
 .word-trouble{margin:18px auto 0;max-width:320px;font-size:14px;color:var(--muted);text-align:center}.word-trouble p{margin:0 0 6px}.word-trouble ul{list-style:none;margin:0;padding:0}.word-trouble li{padding:2px 0;color:var(--ink)}.word-trouble .en{color:var(--muted)}
+.song-lyrics-open{margin-top:16px}
+.lyric-lines{margin-top:18px}.lyric-stanza{margin-bottom:22px}
+.lyric-line{display:grid;grid-template-columns:30px 1fr;align-items:start;gap:4px}
+.lyric-start{width:30px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--violet);font-size:20px;line-height:1;border-radius:8px}
+.lyric-start[aria-expanded="true"]{background:var(--card)}
+.lyric-text p{margin:0;font-size:18px;line-height:1.55;padding:3px 0}.lyric-text .lyric-en{font-size:15px;color:var(--muted);padding:0 0 6px}
+.gloss-base{margin:4px 0 0;color:var(--muted);font-size:15px}.gloss-note{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--ink)}
