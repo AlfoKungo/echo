@@ -122,6 +122,10 @@ let streamGeneration = 0;
 let heardKey = '';
 let audioBlocked = false;
 let clipProgress = null;
+// A passage or sentence that is playing, and where one was stopped (a tapped word, Pause, an answer), so the
+// speaker continues from that line; "From the start" plays it all again.
+let clipRun = null; // { key, index }
+let clipSpot = null; // { key, index }
 let glossWord = null;
 let addStatus = '';
 let mistakes = null;
@@ -143,7 +147,12 @@ function categoryTitle(category) { return snapshot?.decks.find((entry) => entry.
 function totalWords() { return snapshot?.decks.find((entry) => entry.id === 'all')?.count ?? 0; }
 function dateLabel(value) { const date = new Date(value); return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }).format(date); }
 function dayLabel(value) { return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(new Date(value)); }
-function stopAudio() { audioGeneration++; clipProgress = null; audio.pause(); audio.removeAttribute('src'); audio.load(); clearTimeout(audioTimer); document.querySelector('#audio-status').hidden = true; }
+function stopAudio() {
+  const stopped = clipRun;
+  if (stopped) clipSpot = { ...stopped };
+  clipRun = null; audioGeneration++; clipProgress = null; audio.pause(); audio.removeAttribute('src'); audio.load(); clearTimeout(audioTimer); document.querySelector('#audio-status').hidden = true;
+  if (stopped) showClipProgress();
+}
 function audioMessage(message, url) {
   const status = document.querySelector('#audio-status');
   clearTimeout(audioTimer);
@@ -194,30 +203,38 @@ function playClip(url, token) {
     });
   });
 }
-// The line under the speaker: the line playing now, or why nothing is playing.
+// The line under the speaker: the line playing now, where it stopped, or why nothing is playing.
+function clipKey() { const view = streamState?.current; return view ? `${streamId}:${view.key}` : ''; }
 function clipHint() {
   const view = streamState?.current;
   if (clipProgress) return `line ${clipProgress.index} of ${clipProgress.total}`;
   if (!view?.audio?.length) return '';
+  if (clipSpot?.key === clipKey() && view.audio.length > 1) return `stopped at line ${clipSpot.index + 1} of ${view.audio.length}`;
   if (audioBlocked && view.mode === 'listen' && !streamState.result) return 'Tap to listen';
   return view.audio.length > 1 ? `${view.audio.length} lines` : '';
 }
+// The speaker and its hint change as lines play, so the block is redrawn in place.
 function showClipProgress() {
-  const line = document.querySelector('#clip-progress');
-  if (line) line.textContent = clipHint();
+  const block = document.querySelector('.listen-block');
+  if (block && streamState?.current) block.outerHTML = streamAudioHTML(streamState.current, !!streamState.result);
 }
-async function playClips(urls) {
+async function playClips(urls, from = 0) {
   if (!urls?.length) return;
   const token = ++audioGeneration;
-  for (let index = 0; index < urls.length; index++) {
+  clipRun = { key: clipKey(), index: from }; clipSpot = null;
+  for (let index = from; index < urls.length; index++) {
     if (token !== audioGeneration) return;
+    clipRun.index = index;
     clipProgress = urls.length > 1 ? { index: index + 1, total: urls.length } : null;
     showClipProgress();
-    if (!await playClip(urls[index], token) || token !== audioGeneration) { clipProgress = null; showClipProgress(); return; }
-    if (index + 1 < urls.length) await new Promise((resolve) => { audioTimer = setTimeout(resolve, 500); });
+    if (!await playClip(urls[index], token) || token !== audioGeneration) {
+      if (token === audioGeneration) { clipRun = null; clipProgress = null; showClipProgress(); }
+      return;
+    }
+    if (index + 1 < urls.length) { clipRun.index = index + 1; await new Promise((resolve) => { audioTimer = setTimeout(resolve, 500); }); }
   }
   if (token !== audioGeneration) return;
-  clipProgress = null; showClipProgress();
+  clipRun = null; clipProgress = null; showClipProgress();
 }
 async function api(path, options = {}) {
   const controller = new AbortController();
@@ -830,10 +847,14 @@ function streamAudioHTML(view, settled) {
   if (!view.audio?.length) return '';
   const big = view.mode === 'listen' && !settled;
   const hint = clipHint();
-  const button = big
-    ? `<button class="listen-play" data-action="play-clips" aria-label="Play the French">${speaker}</button>`
-    : `<button class="icon" data-action="play-clips" aria-label="Play the French again">${speaker}</button>`;
-  return `<div class="listen-block${big ? ' big' : ''}">${button}<p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div>`;
+  const key = `${streamId}:${view.key}`;
+  const playing = clipRun?.key === key;
+  const spot = !playing && clipSpot?.key === key ? clipSpot : null;
+  const icon = playing ? pauseIcon : spot ? playIcon : speaker;
+  const label = playing ? 'Pause' : spot && view.audio.length > 1 ? `Continue from line ${spot.index + 1}` : big ? 'Play the French' : 'Play the French again';
+  const button = `<button class="${big ? 'listen-play' : 'icon'}" data-action="play-clips" aria-label="${esc(label)}">${icon}</button>`;
+  const restart = spot && spot.index > 0 ? '<button class="quiet clip-restart" data-action="clips-restart">From the start</button>' : '';
+  return `<div class="listen-block${big ? ' big' : ''}">${button}<p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p>${restart}</div>`;
 }
 function streamPromptHTML(view, settled) {
   const prompt = view.prompt || {};
@@ -1241,11 +1262,15 @@ function autoplay() {
   if (key === heardKey) return;
   heardKey = key; playClips(view.audio);
 }
-function replayClips() {
+// The speaker pauses while it plays and otherwise continues from the line it stopped at; "From the start"
+// (fromStart) plays every line again.
+function toggleClips(fromStart = false) {
   const view = streamState?.current;
   if (!view?.audio?.length) return;
-  audioBlocked = false; heardKey = `${streamId}:${view.key}`;
-  playClips(view.audio);
+  const key = `${streamId}:${view.key}`;
+  audioBlocked = false; heardKey = key;
+  if (!fromStart && clipRun?.key === key) { stopAudio(); return; }
+  playClips(view.audio, !fromStart && clipSpot?.key === key ? Math.min(clipSpot.index, view.audio.length - 1) : 0);
 }
 // Tapping a French word shows its meaning; before answering in Read that counts as help.
 function lookupGloss(fr) {
@@ -1628,7 +1653,8 @@ document.addEventListener('click', (event) => {
   if (action === 'audio-mode') { audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off'); if (!audioMode) stopAudio(); render(); return; }
   if (action === 'listen-mode') { listenMode = !listenMode; savePreference('echo.listen-mode', listenMode ? 'on' : 'off'); heardCard = ''; if (!listenMode) stopAudio(); render(); return; }
   if (action === 'replay') { if (snapshot?.current) playFrench(snapshot.current.audioUrl); return; }
-  if (action === 'play-clips') { replayClips(); return; }
+  if (action === 'play-clips') { toggleClips(); return; }
+  if (action === 'clips-restart') { toggleClips(true); return; }
   if (action === 'grammar-audio') { const clip = activeGrammar()?.session?.current?.audio; if (clip) playFrench(clip); return; }
   if (button?.dataset.gloss !== undefined) { lookupGloss(button.dataset.gloss); return; }
   if (action === 'add-word') { addWord(); return; }
