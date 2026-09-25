@@ -573,6 +573,17 @@
           ],
           "why": "Parle is the il/elle form. With tu the verb takes its -s ending, and adding an opening changes nothing about the verb."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "parles",
+          "en": "speak (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "français",
+          "en": "French"
+        }
       ]
     },
     {
@@ -648,6 +659,21 @@
           ],
           "why": "The sentence already shows the start of the opening, so repeating it doubles words that are there; only its final piece is missing."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce",
+          "en": "is it (être)"
+        },
+        {
+          "fr": "partons",
+          "en": "leave (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
       ]
     },
     {
@@ -683,6 +709,21 @@
             "Parles-tu français ?"
           ],
           "why": "That is a correct inverted question, but the task keeps every word, including the opening already printed."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "do / does (question opening)"
+        },
+        {
+          "fr": "parles",
+          "en": "speak (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "français",
+          "en": "French"
         }
       ]
     },
@@ -730,6 +771,18 @@
             "Est-ce qu’aime elle le thé ?"
           ],
           "why": "The opening keeps statement order, so the verb must not move in front of the subject; this asks the question twice."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "aime",
+          "en": "likes (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "le thé",
+          "en": "tea",
+          "word": "food-004"
         }
       ]
     },
@@ -804,6 +857,21 @@
           ],
           "why": "Only the missing piece goes in the blank; the pronoun after it is already printed in the sentence."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce",
+          "en": "is it (être)"
+        },
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
       ]
     },
     {
@@ -836,6 +904,21 @@
             "Est-ce qu’elle arrive demain ?"
           ],
           "why": "That changes the subject to one person. The task only asks you to fix the joint in front of the subject, not to rewrite it."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "do / does (question opening)"
+        },
+        {
+          "fr": "arrivent",
+          "en": "arrive (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
         }
       ]
     },
@@ -881,7 +964,23 @@
           "why": "This uses two question forms at once: with the opening in front, no pronoun is added after the verb."
         }
       ],
-      "row": "noun"
+      "row": "noun",
+      "gloss": [
+        {
+          "fr": "Le train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "arrive",
+          "en": "arrives (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "questions-noun-build",
@@ -956,7 +1055,23 @@
           "why": "The first two pieces of the opening are joined by a hyphen, as in every printed form of it."
         }
       ],
-      "row": "noun"
+      "row": "noun",
+      "gloss": [
+        {
+          "fr": "le café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "chaud",
+          "en": "hot",
+          "word": "qualities-025"
+        }
+      ]
     },
     {
       "id": "questions-noun-repair",
@@ -990,7 +1105,28 @@
           "why": "A pronoun after the verb belongs to the other question form; with this opening the noun subject alone is enough."
         }
       ],
-      "row": "noun"
+      "row": "noun",
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "do / does (question opening)"
+        },
+        {
+          "fr": "joue",
+          "en": "plays (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "l’enfant",
+          "en": "child",
+          "word": "people-004"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
+      ]
     },
     {
       "id": "questions-intonation-choose",
@@ -1023,7 +1159,17 @@
           "why": "This adds the fixed opening at the front. Asking with the voice adds no word at all."
         }
       ],
-      "row": "Intonation"
+      "row": "Intonation",
+      "gloss": [
+        {
+          "fr": "A casual question to a friend",
+          "en": "A casual question to a friend"
+        },
+        {
+          "fr": "are you coming tonight",
+          "en": "are you coming tonight"
+        }
+      ]
     },
     {
       "id": "questions-intonation-translate",
@@ -1107,7 +1253,18 @@
           "why": "Two pronouns in a row makes the verb reflexive: “you talk to each other”. The second one has to go, not move."
         }
       ],
-      "row": "Intonation"
+      "row": "Intonation",
+      "gloss": [
+        {
+          "fr": "parlez",
+          "en": "speak (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "anglais",
+          "en": "English"
+        }
+      ]
     },
     {
       "id": "questions-intonation-build",
@@ -1186,7 +1343,19 @@
           "why": "The verb ending no longer matches vous. Moving the pronoun behind the verb never changes how the verb is spelled."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "aimez",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "le fromage",
+          "en": "cheese",
+          "word": "food-010"
+        }
+      ]
     },
     {
       "id": "questions-inversion-choose",
@@ -1219,7 +1388,19 @@
           "why": "Voulez is the vous form of vouloir, so the pronoun after it cannot be tu; with tu the verb would be veux."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "thé",
+          "en": "tea",
+          "word": "food-004"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
     },
     {
       "id": "questions-inversion-complete",
@@ -1261,7 +1442,18 @@
           "why": "Those are other persons. The task names tu, so the verb and the pronoun both have to be that person."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "cinéma",
+          "en": "cinema"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "questions-inversion-build",
@@ -1336,7 +1528,24 @@
           "why": "That switches to tu. The sentence is addressed to vous, so the verb and the pronoun both stay in that person."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "Finissez",
+          "en": "finish (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (heure)",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "questions-inversion-translate",
@@ -1415,7 +1624,14 @@
           "why": "The linking letter is not glued to the verb; it stands on its own, with a hyphen on each side."
         }
       ],
-      "row": "a vowel (-e, -a)"
+      "row": "a vowel (-e, -a)",
+      "gloss": [
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        }
+      ]
     },
     {
       "id": "questions-inversion-t-complete",
@@ -1452,7 +1668,18 @@
           "why": "No apostrophe is involved; the letter is held by the hyphens the sentence already shows."
         }
       ],
-      "row": "a vowel (-e, -a)"
+      "row": "a vowel (-e, -a)",
+      "gloss": [
+        {
+          "fr": "Parle",
+          "en": "speaks (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "espagnol",
+          "en": "Spanish"
+        }
+      ]
     },
     {
       "id": "questions-inversion-t-rewrite",
@@ -1496,7 +1723,18 @@
           "why": "The pronoun is written twice, before and after the verb. Inversion moves it rather than doubling it."
         }
       ],
-      "row": "a vowel (-e, -a)"
+      "row": "a vowel (-e, -a)",
+      "gloss": [
+        {
+          "fr": "aime",
+          "en": "likes (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "jazz",
+          "en": "jazz"
+        }
+      ]
     },
     {
       "id": "questions-inversion-t-repair",
@@ -1542,7 +1780,19 @@
           "why": "That puts the pronoun back in front and gives a spoken question; the task keeps the inverted order and only repairs it."
         }
       ],
-      "row": "a vowel (-e, -a)"
+      "row": "a vowel (-e, -a)",
+      "gloss": [
+        {
+          "fr": "Mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        }
+      ]
     },
     {
       "id": "questions-inversion-t-translate",
@@ -1620,7 +1870,27 @@
           "why": "Fini without the t is the past participle. The present of finir for il keeps its final t."
         }
       ],
-      "row": "-t"
+      "row": "-t",
+      "gloss": [
+        {
+          "fr": "ses",
+          "en": "his / her"
+        },
+        {
+          "fr": "devoirs",
+          "en": "homework",
+          "word": "work-038"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "le dîner",
+          "en": "dinner",
+          "word": "food-075"
+        }
+      ]
     },
     {
       "id": "questions-noun-inversion-rewrite",
@@ -1670,7 +1940,23 @@
           "why": "Il stands for a masculine person, so it does not match the name in front."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "Marie",
+          "en": "Marie (a name)"
+        },
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
+      ]
     },
     {
       "id": "questions-noun-inversion-choose",
@@ -1703,7 +1989,22 @@
           "why": "Vient is the singular form. The noun in front is plural, and both the verb and the added pronoun must match it."
         }
       ],
-      "row": "masculine plural"
+      "row": "masculine plural",
+      "gloss": [
+        {
+          "fr": "Tes",
+          "en": "your"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        }
+      ]
     },
     {
       "id": "questions-noun-inversion-repair",
@@ -1747,7 +2048,23 @@
           "why": "The name has to open the question; it cannot trail after the verb and its pronoun."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "Vient",
+          "en": "comes (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "questions-noun-inversion-build",
@@ -1816,7 +2133,22 @@
           "why": "The verb alone does not ask the question here, and the noun in front is one person: the pronoun repeating it comes after the verb, in the singular."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "Ta",
+          "en": "your"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "piano",
+          "en": "piano"
+        }
+      ]
     },
     {
       "id": "questions-noun-inversion-translate",
@@ -1893,7 +2225,22 @@
           "why": "Il stands for a masculine person, and ta mère is feminine, so the pronoun repeating her does not match."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "Ta",
+          "en": "your"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "France",
+          "en": "France"
+        }
+      ]
     },
     {
       "id": "questions-pc-inversion-rewrite",
@@ -1936,6 +2283,28 @@
           ],
           "why": "The participle takes no -s here; only the helping verb changes for the person."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fini",
+          "en": "finished (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
       ]
     },
     {
@@ -1967,6 +2336,17 @@
             "Vu as-tu"
           ],
           "why": "The participle has been dragged to the front; it stays at the end of the block, after the pronoun."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "le film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "hier",
+          "en": "yesterday"
         }
       ]
     },
@@ -2009,7 +2389,19 @@
           "why": "Those are other persons. The task names vous, so the helper and the pronoun both have to be that person."
         }
       ],
-      "row": "helping verb"
+      "row": "helping verb",
+      "gloss": [
+        {
+          "fr": "fini",
+          "en": "finished (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "le travail",
+          "en": "work",
+          "word": "work-001"
+        }
+      ]
     },
     {
       "id": "questions-pc-inversion-build",
@@ -2074,6 +2466,27 @@
             "Vous avez vu mes clés ?"
           ],
           "why": "That returns to statement order, so the inversion the task asks you to repair has gone."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Avez",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "clés",
+          "en": "keys",
+          "word": "home-031"
         }
       ]
     },
@@ -2151,7 +2564,14 @@
           "why": "Non agrees with the negative question and would mean the speaker is not coming, which contradicts the rest of the reply."
         }
       ],
-      "row": "Negative question"
+      "row": "Negative question",
+      "gloss": [
+        {
+          "fr": "viens",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        }
+      ]
     },
     {
       "id": "questions-negative-si-complete",
@@ -2180,7 +2600,28 @@
           "why": "Non agrees with the negative question, so it would say the speaker dislikes cheese, while the rest of the reply says the opposite."
         }
       ],
-      "row": "Negative question"
+      "row": "Negative question",
+      "gloss": [
+        {
+          "fr": "n’aimez",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "fromage",
+          "en": "cheese",
+          "word": "food-010"
+        },
+        {
+          "fr": "j’adore",
+          "en": "I love (adorer)"
+        },
+        {
+          "fr": "ça",
+          "en": "that",
+          "word": "essentials-029"
+        }
+      ]
     },
     {
       "id": "questions-negative-si-translate",
@@ -2257,7 +2698,19 @@
           "why": "That puts the pronoun back in front of the verb, dropping the inversion the task asks you to keep."
         }
       ],
-      "row": "Negative question"
+      "row": "Negative question",
+      "gloss": [
+        {
+          "fr": "Aimes",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "le poisson",
+          "en": "fish",
+          "word": "nature-014"
+        }
+      ]
     },
     {
       "id": "questions-negative-si-repair",
@@ -2296,7 +2749,23 @@
           "why": "Mais only strengthens the word after it, and that word is still the yes used after a positive question."
         }
       ],
-      "row": "Negative question"
+      "row": "Negative question",
+      "gloss": [
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        }
+      ]
     }
   ]
 }

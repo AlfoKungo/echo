@@ -784,3 +784,19 @@ describe('Words added from a song', () => {
     expect(again.addedIds()).toHaveLength(2);
   });
 });
+
+test('a word missed six times shows the words of its deck missed most with it; deck counts split today from waiting', () => {
+  const { store } = fixture();
+  let snapshot = store.start('fr-en', 'food');
+  let troubled = snapshot.current;
+  for (let turn = 0; turn < 80 && !troubled?.trouble; turn++) { snapshot = store.grade(answer(snapshot, false)); troubled = snapshot.current; }
+  const trouble = troubled!.trouble!;
+  expect(trouble.misses).toBeGreaterThanOrEqual(6);
+  expect(trouble.alongside.length).toBeGreaterThan(0);
+  for (const word of trouble.alongside) expect(words.find((entry) => entry.fr === word.fr)?.category).toBe('food');
+  expect(trouble.alongside.map((word) => word.fr)).not.toContain(troubled!.fr);
+  const counts = store.deckCounts('fr-en');
+  expect(counts.travel).toEqual({ today: 0, waiting: 4 });
+  expect(counts.food!.today).toBeGreaterThan(0);
+  expect(counts.food!.today + counts.food!.waiting).toBe(4);
+});

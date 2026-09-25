@@ -473,7 +473,27 @@
           "why": "Pendant gives the length of something finished, or of a habit. It does not open a stretch that started three years ago and is still running."
         }
       ],
-      "row": "a length of time"
+      "row": "a length of time",
+      "gloss": [
+        {
+          "fr": "J’habite",
+          "en": "I live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a city)"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        }
+      ]
     },
     {
       "id": "time-expressions-depuis-choose-2",
@@ -504,6 +524,24 @@
             "jouait"
           ],
           "why": "Jouait is the imparfait, for a past habit that is over. Her playing goes on today."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "piano",
+          "en": "piano"
+        },
+        {
+          "fr": "depuis",
+          "en": "since"
+        },
+        {
+          "fr": "son",
+          "en": "her"
+        },
+        {
+          "fr": "enfance",
+          "en": "childhood"
         }
       ]
     },
@@ -549,7 +587,22 @@
           "why": "Attendre is the infinitive, the dictionary form. The sentence needs the verb conjugated for ils."
         }
       ],
-      "row": "a length of time"
+      "row": "a length of time",
+      "gloss": [
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "depuis",
+          "en": "for"
+        },
+        {
+          "fr": "demi-heure",
+          "en": "half hour"
+        }
+      ]
     },
     {
       "id": "time-expressions-depuis-translate",
@@ -623,7 +676,27 @@
           "why": "En 2019 names the year the work happened, and the passé composé ends it. The sentence must say the job has run from 2019 until now."
         }
       ],
-      "row": "a start point (date, day, event)"
+      "row": "a start point (date, day, event)",
+      "gloss": [
+        {
+          "fr": "a travaillé",
+          "en": "worked (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "chez",
+          "en": "at",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "Renault",
+          "en": "Renault (a company)"
+        },
+        {
+          "fr": "depuis",
+          "en": "since"
+        }
+      ]
     },
     {
       "id": "time-expressions-depuis-rewrite",
@@ -658,7 +731,23 @@
           "why": "The time expression is in the right place, but the passé composé closes the action. With a starting point that runs to today, the verb stays in the present."
         }
       ],
-      "row": "a start point (date, day, event)"
+      "row": "a start point (date, day, event)",
+      "gloss": [
+        {
+          "fr": "J’habite",
+          "en": "I live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Nantes",
+          "en": "Nantes (a city)"
+        },
+        {
+          "fr": "J’ai commencé",
+          "en": "I started (commencer)",
+          "word": "verbs-047"
+        }
+      ]
     },
     {
       "id": "time-expressions-depuis-build",
@@ -726,7 +815,19 @@
           "why": "Dans une heure counts forward from now, so he would arrive an hour from now. He is already here."
         }
       ],
-      "row": "il y a + length"
+      "row": "il y a + length",
+      "gloss": [
+        {
+          "fr": "suis arrivé",
+          "en": "arrived (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "time-expressions-ago-complete",
@@ -766,7 +867,24 @@
           "why": "Avant means “before” and needs another event to come before. It cannot say how far back something happened."
         }
       ],
-      "row": "il y a + length"
+      "row": "il y a + length",
+      "gloss": [
+        {
+          "fr": "avons mangé",
+          "en": "ate (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        }
+      ]
     },
     {
       "id": "time-expressions-ago-translate",
@@ -850,7 +968,26 @@
           "why": "Dans trois ans points forward from now, which cannot go with a finished past action."
         }
       ],
-      "row": "il y a + length"
+      "row": "il y a + length",
+      "gloss": [
+        {
+          "fr": "ont déménagé",
+          "en": "moved house (déménager)"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        }
+      ]
     },
     {
       "id": "time-expressions-ago-rewrite",
@@ -890,7 +1027,24 @@
           "why": "The imparfait describes a background situation, not one finished call at a precise point in the past."
         }
       ],
-      "row": "il y a + length"
+      "row": "il y a + length",
+      "gloss": [
+        {
+          "fr": "appelle",
+          "en": "calls (appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "time-expressions-ago-build",
@@ -958,7 +1112,28 @@
           "why": "Dans dix heures counts forward from now, so the sleeping would still be to come."
         }
       ],
-      "row": "pendant"
+      "row": "pendant",
+      "gloss": [
+        {
+          "fr": "Hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "j’ai dormi",
+          "en": "I slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "hours",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "time-expressions-pendant-choose-2",
@@ -991,7 +1166,28 @@
           "why": "Il y a une heure means an hour ago, one finished moment in the past. This reading happens every evening."
         }
       ],
-      "row": "pendant"
+      "row": "pendant",
+      "gloss": [
+        {
+          "fr": "Chaque",
+          "en": "each"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "lit",
+          "en": "reads (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "time-expressions-pendant-complete",
@@ -1031,7 +1227,27 @@
           "why": "Dans trois ans points three years into the future, which clashes with the passé composé."
         }
       ],
-      "row": "pendant"
+      "row": "pendant",
+      "gloss": [
+        {
+          "fr": "a travaillé",
+          "en": "worked (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "Londres",
+          "en": "London"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        }
+      ]
     },
     {
       "id": "time-expressions-pendant-translate",
@@ -1122,7 +1338,26 @@
           "why": "Pour gives a planned length before the trip starts, after partir, aller or venir. This journey is already finished."
         }
       ],
-      "row": "pendant"
+      "row": "pendant",
+      "gloss": [
+        {
+          "fr": "a voyagé",
+          "en": "travelled (voyager)"
+        },
+        {
+          "fr": "depuis",
+          "en": "since"
+        },
+        {
+          "fr": "mois",
+          "en": "month",
+          "word": "health-time-057"
+        },
+        {
+          "fr": "Asie",
+          "en": "Asia"
+        }
+      ]
     },
     {
       "id": "time-expressions-pendant-build",
@@ -1190,7 +1425,23 @@
           "why": "Il y a une semaine means a week ago, a finished moment in the past. The journey is ahead."
         }
       ],
-      "row": "pour"
+      "row": "pour",
+      "gloss": [
+        {
+          "fr": "pars",
+          "en": "am leaving (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "Rome",
+          "en": "Rome"
+        },
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        }
+      ]
     },
     {
       "id": "time-expressions-pour-complete",
@@ -1236,7 +1487,28 @@
           "why": "En trois jours is the time a task needs to be completed, not the length of a visit."
         }
       ],
-      "row": "pour"
+      "row": "pour",
+      "gloss": [
+        {
+          "fr": "viennent",
+          "en": "are coming (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "chez nous",
+          "en": "to our place"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "jours",
+          "en": "days",
+          "word": "health-time-055"
+        }
+      ]
     },
     {
       "id": "time-expressions-pour-translate",
@@ -1335,7 +1607,27 @@
           "why": "Il y a un mois points a month back into the past; the departure is tomorrow."
         }
       ],
-      "row": "pour"
+      "row": "pour",
+      "gloss": [
+        {
+          "fr": "part",
+          "en": "is leaving (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "depuis",
+          "en": "since"
+        },
+        {
+          "fr": "mois",
+          "en": "month",
+          "word": "health-time-057"
+        }
+      ]
     },
     {
       "id": "time-expressions-pour-build",
@@ -1403,7 +1695,29 @@
           "why": "Il y a dix minutes means ten minutes ago. The train has not left yet."
         }
       ],
-      "row": "dans"
+      "row": "dans",
+      "gloss": [
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "part",
+          "en": "leaves (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        }
+      ]
     },
     {
       "id": "time-expressions-dans-choose-2",
@@ -1436,7 +1750,44 @@
           "why": "Pendant cinq minutes gives a length: being there for five minutes and then going. The question is when he arrives."
         }
       ],
-      "row": "dans"
+      "row": "dans",
+      "gloss": [
+        {
+          "fr": "peux",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "là",
+          "en": "there",
+          "word": "essentials-094"
+        },
+        {
+          "fr": "cinq",
+          "en": "five",
+          "word": "health-time-086"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        }
+      ]
     },
     {
       "id": "time-expressions-dans-complete",
@@ -1476,7 +1827,29 @@
           "why": "En deux jours is the time a job needs to be finished, as in painting a room in two days."
         }
       ],
-      "row": "dans"
+      "row": "dans",
+      "gloss": [
+        {
+          "fr": "pars",
+          "en": "am going (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "vacances",
+          "en": "holiday",
+          "word": "travel-018"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "jours",
+          "en": "days",
+          "word": "health-time-055"
+        }
+      ]
     },
     {
       "id": "time-expressions-dans-translate",
@@ -1552,7 +1925,19 @@
           "why": "Depuis une heure would mean you have been ringing for an hour already."
         }
       ],
-      "row": "dans"
+      "row": "dans",
+      "gloss": [
+        {
+          "fr": "t’appelle",
+          "en": "call you (appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "time-expressions-dans-rewrite",
@@ -1594,7 +1979,28 @@
           "why": "En deux heures gives the time the departure itself would take, not the wait before it."
         }
       ],
-      "row": "dans"
+      "row": "dans",
+      "gloss": [
+        {
+          "fr": "est parti",
+          "en": "left (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "il y a",
+          "en": "ago"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "hours",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "time-expressions-en-choose",
@@ -1627,7 +2033,29 @@
           "why": "Depuis trois jours would mean the reading started three days ago and is still going on."
         }
       ],
-      "row": "en"
+      "row": "en",
+      "gloss": [
+        {
+          "fr": "J’ai fini",
+          "en": "I finished (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "jours",
+          "en": "days",
+          "word": "health-time-055"
+        }
+      ]
     },
     {
       "id": "time-expressions-en-complete",
@@ -1667,7 +2095,23 @@
           "why": "Il y a une heure says when they did it, one hour back, not how long it took."
         }
       ],
-      "row": "en"
+      "row": "en",
+      "gloss": [
+        {
+          "fr": "ont fait",
+          "en": "did (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "ménage",
+          "en": "housework"
+        },
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "time-expressions-en-translate",
@@ -1748,7 +2192,33 @@
           "why": "This changes the verb instead of the preposition, and now the painting is still to come. The tense was already right."
         }
       ],
-      "row": "en"
+      "row": "en",
+      "gloss": [
+        {
+          "fr": "a peint",
+          "en": "painted (peindre)"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "heures",
+          "en": "hours",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "time-expressions-dates-choose-1",
@@ -1781,7 +2251,27 @@
           "why": "Dans + a length counts forward from now (dans trois jours). It never goes before the name of a month."
         }
       ],
-      "row": "a month"
+      "row": "a month",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "anniversaire",
+          "en": "birthday"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "juillet",
+          "en": "July",
+          "word": "health-time-075"
+        }
+      ]
     },
     {
       "id": "time-expressions-dates-choose-2",
@@ -1814,7 +2304,22 @@
           "why": "À on its own goes before a clock time or a place (à midi, à Paris), not before a season."
         }
       ],
-      "row": "printemps"
+      "row": "printemps",
+      "gloss": [
+        {
+          "fr": "arbres",
+          "en": "trees",
+          "word": "nature-009"
+        },
+        {
+          "fr": "fleurissent",
+          "en": "blossom (fleurir)"
+        },
+        {
+          "fr": "printemps",
+          "en": "spring"
+        }
+      ]
     },
     {
       "id": "time-expressions-dates-complete-1",
@@ -1848,7 +2353,22 @@
           "why": "À alone goes before a clock time or a place, not before a season."
         }
       ],
-      "row": "été / automne / hiver"
+      "row": "été / automne / hiver",
+      "gloss": [
+        {
+          "fr": "neige",
+          "en": "snows (neiger)"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        },
+        {
+          "fr": "hiver",
+          "en": "winter"
+        }
+      ]
     },
     {
       "id": "time-expressions-dates-complete-2",
@@ -1888,7 +2408,13 @@
           "why": "Depuis 1998 would mean “since 1998, right up to now”, but a birth happens at one moment."
         }
       ],
-      "row": "a year"
+      "row": "a year",
+      "gloss": [
+        {
+          "fr": "suis né",
+          "en": "was born (naître)"
+        }
+      ]
     },
     {
       "id": "time-expressions-dates-translate",
@@ -1961,7 +2487,18 @@
           "why": "Dans + a length counts forward from now and is not used to name a season."
         }
       ],
-      "row": "printemps"
+      "row": "printemps",
+      "gloss": [
+        {
+          "fr": "partons",
+          "en": "are leaving (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "printemps",
+          "en": "spring"
+        }
+      ]
     },
     {
       "id": "time-expressions-dates-rewrite",
@@ -1995,7 +2532,23 @@
           "why": "Dans + a length counts forward from now; it does not name the season something happens in."
         }
       ],
-      "row": "printemps"
+      "row": "printemps",
+      "gloss": [
+        {
+          "fr": "pars",
+          "en": "am leaving (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "avril",
+          "en": "April",
+          "word": "health-time-072"
+        },
+        {
+          "fr": "printemps",
+          "en": "spring"
+        }
+      ]
     },
     {
       "id": "time-expressions-days-choose-1",
@@ -2028,7 +2581,23 @@
           "why": "Au goes before a season (au printemps) or a place, never before a day of the week."
         }
       ],
-      "row": "le lundi"
+      "row": "le lundi",
+      "gloss": [
+        {
+          "fr": "fais",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "sport",
+          "en": "sport"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        }
+      ]
     },
     {
       "id": "time-expressions-days-choose-2",
@@ -2056,7 +2625,14 @@
           "why": "An article before the day, and the plural, both turn it into a habit: every Friday, week after week. Here you are fixing one meeting, the coming one."
         }
       ],
-      "row": "lundi"
+      "row": "lundi",
+      "gloss": [
+        {
+          "fr": "voit",
+          "en": "see (voir)",
+          "word": "verbs-010"
+        }
+      ]
     },
     {
       "id": "time-expressions-days-complete",
@@ -2096,7 +2672,32 @@
           "why": "Au goes before a season or a place. Days of the week never take au."
         }
       ],
-      "row": "le lundi"
+      "row": "le lundi",
+      "gloss": [
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "déjeunons",
+          "en": "have lunch (déjeuner)"
+        },
+        {
+          "fr": "chez",
+          "en": "at",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "grand-mère",
+          "en": "grandmother",
+          "word": "people-013"
+        }
+      ]
     },
     {
       "id": "time-expressions-days-translate",
@@ -2175,7 +2776,28 @@
           "why": "Ce mercredi picks out one particular Wednesday, the nearest one, instead of a weekly habit."
         }
       ],
-      "row": "le lundi"
+      "row": "le lundi",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "cours",
+          "en": "lesson",
+          "word": "work-036"
+        },
+        {
+          "fr": "piano",
+          "en": "piano"
+        },
+        {
+          "fr": "mercredi",
+          "en": "Wednesday",
+          "word": "health-time-064"
+        }
+      ]
     },
     {
       "id": "time-expressions-days-rewrite",
@@ -2222,7 +2844,24 @@
           "why": "En goes with months, years and seasons, never with a day of the week."
         }
       ],
-      "row": "le lundi"
+      "row": "le lundi",
+      "gloss": [
+        {
+          "fr": "Mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        },
+        {
+          "fr": "travaille",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     }
   ]
 }

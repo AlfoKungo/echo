@@ -111,6 +111,8 @@ a.destination{color:inherit;text-decoration:none}.destination .symbol svg{displa
 .st-days div{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
 .st-days .k{background:var(--violet);border-radius:3px 3px 0 0}.st-days .m{background:var(--danger);opacity:.8}
 .st-days .empty{height:2px;background:var(--frame);border-radius:1px}
+.st-acc-head{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--muted);margin:14px 0 6px}.st-acc-head:first-of-type{margin-top:0}.st-acc-head strong{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.st-days.st-acc{height:44px}.st-acc .k{border-radius:3px}
 .st-points{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;height:150px}
 .st-pt{display:grid;grid-template-rows:1fr 1fr;padding:0;border-radius:4px;height:100%}
 .st-pt>span{display:flex;flex-direction:column;overflow:hidden}
@@ -262,3 +264,5 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .fb-why{margin-top:10px;color:var(--ink)}
 .fb-steps,.fb-table{margin-top:4px;color:var(--muted)}
 .feedback .fb-table .guide-table{font-size:14px}
+
+.word-trouble{margin:18px auto 0;max-width:320px;font-size:14px;color:var(--muted);text-align:center}.word-trouble p{margin:0 0 6px}.word-trouble ul{list-style:none;margin:0;padding:0}.word-trouble li{padding:2px 0;color:var(--ink)}.word-trouble .en{color:var(--muted)}

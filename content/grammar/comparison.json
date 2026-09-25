@@ -456,7 +456,31 @@
       ],
       "hint": "Who is being described?",
       "feedback": "The adjective still agrees in a comparison.",
-      "explanation": "The adjective agrees with Marie, the first person: plus grande."
+      "explanation": "The adjective agrees with Marie, the first person: plus grande.",
+      "gloss": [
+        {
+          "fr": "Marie",
+          "en": "Marie (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "son",
+          "en": "her"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        }
+      ]
     },
     {
       "id": "comparison-adjective-comparison-2",
@@ -489,7 +513,29 @@
       "row": "plus",
       "hint": "Rapide is an adjective.",
       "feedback": "With an adjective, there is no de.",
-      "explanation": "Before an adjective, more is plus: plus rapide que."
+      "explanation": "Before an adjective, more is plus: plus rapide que.",
+      "gloss": [
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "rapide",
+          "en": "fast",
+          "word": "qualities-055"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
     },
     {
       "id": "comparison-adjective-comparison-3",
@@ -524,7 +570,31 @@
       "row": "aussi",
       "hint": "Sportive is an adjective.",
       "feedback": "With an adjective, as … as is not autant.",
-      "explanation": "Before an adjective, as … as is aussi … que: aussi sportive que moi."
+      "explanation": "Before an adjective, as … as is aussi … que: aussi sportive que moi.",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sportive",
+          "en": "sporty"
+        },
+        {
+          "fr": "moi",
+          "en": "me"
+        }
+      ]
     },
     {
       "id": "comparison-adjective-comparison-4",
@@ -558,7 +628,29 @@
       "row": "moins",
       "hint": "You need the opposite of plus.",
       "feedback": "There is no de before an adjective.",
-      "explanation": "Before an adjective, less is moins: moins intéressant que."
+      "explanation": "Before an adjective, less is moins: moins intéressant que.",
+      "gloss": [
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "intéressant",
+          "en": "interesting",
+          "word": "qualities-082"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        }
+      ]
     },
     {
       "id": "comparison-adjective-comparison-5",
@@ -631,7 +723,37 @@
       ],
       "hint": "They are equal.",
       "feedback": "Put the comparison word before the adjective and que after it.",
-      "explanation": "Equal qualities take aussi + adjective + que: aussi grande que sa mère."
+      "explanation": "Equal qualities take aussi + adjective + que: aussi grande que sa mère.",
+      "gloss": [
+        {
+          "fr": "Léa",
+          "en": "Léa (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "grande",
+          "en": "tall",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "Sa",
+          "en": "her"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "aussi",
+          "en": "too",
+          "word": "essentials-086"
+        }
+      ]
     },
     {
       "id": "comparison-adjective-comparison-7",
@@ -706,7 +828,36 @@
       ],
       "hint": "Maison is feminine.",
       "feedback": "The adjective still has to agree.",
-      "explanation": "Petite agrees with the feminine noun maison, even in a comparison."
+      "explanation": "Petite agrees with the feminine noun maison, even in a comparison.",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "petit",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "ta",
+          "en": "your"
+        }
+      ]
     },
     {
       "id": "comparison-noun-quantity-1",
@@ -739,7 +890,23 @@
       "row": "plus de",
       "hint": "Livres is a noun.",
       "feedback": "Before a noun, you need a small extra word.",
-      "explanation": "Before a noun, more is plus de, and de does not change: plus de livres."
+      "explanation": "Before a noun, more is plus de, and de does not change: plus de livres.",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "livres",
+          "en": "books",
+          "word": "work-043"
+        },
+        {
+          "fr": "toi",
+          "en": "you"
+        }
+      ]
     },
     {
       "id": "comparison-noun-quantity-2",
@@ -772,7 +939,23 @@
       "row": "autant de",
       "hint": "Café is a noun.",
       "feedback": "Aussi goes with adjectives, not nouns.",
-      "explanation": "Before a noun, as much is autant de: autant de café."
+      "explanation": "Before a noun, as much is autant de: autant de café.",
+      "gloss": [
+        {
+          "fr": "boit",
+          "en": "drinks (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "moi",
+          "en": "me"
+        }
+      ]
     },
     {
       "id": "comparison-noun-quantity-3",
@@ -813,7 +996,19 @@
       "row": "moins de",
       "hint": "Temps is a noun.",
       "feedback": "Before a noun you need two words.",
-      "explanation": "Before a noun, less is moins de: moins de temps."
+      "explanation": "Before a noun, less is moins de: moins de temps.",
+      "gloss": [
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "temps",
+          "en": "time",
+          "word": "health-time-051"
+        }
+      ]
     },
     {
       "id": "comparison-noun-quantity-4",
@@ -848,7 +1043,28 @@
       "row": "autant de",
       "hint": "Cousins is a noun.",
       "feedback": "Aussi does not go with nouns.",
-      "explanation": "Before a noun, as many is autant de: autant de cousins."
+      "explanation": "Before a noun, as many is autant de: autant de cousins.",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "cousins",
+          "en": "cousins",
+          "word": "people-021"
+        },
+        {
+          "fr": "sa",
+          "en": "her"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        }
+      ]
     },
     {
       "id": "comparison-noun-quantity-5",
@@ -963,7 +1179,30 @@
       "row": "plus de",
       "hint": "After plus, the small word never changes to des.",
       "feedback": "Look at the word after plus, and remember elision.",
-      "explanation": "The pattern is plus de + noun, and de becomes d’ before a vowel or silent h: plus d’habitants."
+      "explanation": "The pattern is plus de + noun, and de becomes d’ before a vowel or silent h: plus d’habitants.",
+      "gloss": [
+        {
+          "fr": "Paris",
+          "en": "Paris"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "habitants",
+          "en": "inhabitants"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a city)"
+        }
+      ]
     },
     {
       "id": "comparison-noun-quantity-8",
@@ -998,7 +1237,37 @@
       "row": "autant de",
       "hint": "The numbers are the same.",
       "feedback": "Use the pattern for equal quantities of a noun.",
-      "explanation": "Equal quantities of a noun take autant de + noun + que: autant de chats que Marc."
+      "explanation": "Equal quantities of a noun take autant de + noun + que: autant de chats que Marc.",
+      "gloss": [
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "chats",
+          "en": "cats",
+          "word": "nature-012"
+        },
+        {
+          "fr": "Marc",
+          "en": "Marc (a name)"
+        },
+        {
+          "fr": "aussi",
+          "en": "too",
+          "word": "essentials-086"
+        }
+      ]
     },
     {
       "id": "comparison-verb-comparison-1",
@@ -1031,7 +1300,18 @@
       "row": "plus",
       "hint": "You are comparing an action, not a thing.",
       "feedback": "After a verb, no de is needed.",
-      "explanation": "After a verb, more is simply plus: il travaille plus que moi."
+      "explanation": "After a verb, more is simply plus: il travaille plus que moi.",
+      "gloss": [
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "moi",
+          "en": "me"
+        }
+      ]
     },
     {
       "id": "comparison-verb-comparison-2",
@@ -1064,7 +1344,23 @@
       "row": "autant",
       "hint": "You are comparing an action.",
       "feedback": "Aussi goes with adjectives; after a verb, as much is different.",
-      "explanation": "After a verb, as much is autant: tu dors autant que ton frère."
+      "explanation": "After a verb, as much is autant: tu dors autant que ton frère.",
+      "gloss": [
+        {
+          "fr": "dors",
+          "en": "sleep (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "ton",
+          "en": "your"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        }
+      ]
     },
     {
       "id": "comparison-verb-comparison-3",
@@ -1104,7 +1400,18 @@
       "row": "moins",
       "hint": "You are comparing an action.",
       "feedback": "After a verb, no de is needed.",
-      "explanation": "After a verb, less is moins: je sors moins qu’avant."
+      "explanation": "After a verb, less is moins: je sors moins qu’avant.",
+      "gloss": [
+        {
+          "fr": "sors",
+          "en": "go out (sortir)",
+          "word": "verbs-034"
+        },
+        {
+          "fr": "qu’avant",
+          "en": "than before"
+        }
+      ]
     },
     {
       "id": "comparison-verb-comparison-4",
@@ -1244,7 +1551,31 @@
       "row": "plus",
       "hint": "Moi is a person, not a quantity.",
       "feedback": "The word before moi is wrong.",
-      "explanation": "After a verb, the comparison is plus que: il mange plus que moi. De is only for a noun after plus."
+      "explanation": "After a verb, the comparison is plus que: il mange plus que moi. De is only for a noun after plus.",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "moi",
+          "en": "me"
+        }
+      ]
     },
     {
       "id": "comparison-meilleur-mieux-1",
@@ -1277,7 +1608,23 @@
       "row": "bon / bonne",
       "hint": "Better here describes gâteau, a masculine noun.",
       "feedback": "Bon has a special comparative form.",
-      "explanation": "Better describing a masculine noun is meilleur: ce gâteau est meilleur."
+      "explanation": "Better describing a masculine noun is meilleur: ce gâteau est meilleur.",
+      "gloss": [
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "l’autre",
+          "en": "the other one"
+        }
+      ]
     },
     {
       "id": "comparison-meilleur-mieux-2",
@@ -1310,7 +1657,17 @@
       "row": "bien",
       "hint": "Better here describes how she sings.",
       "feedback": "Bien has a special comparative form.",
-      "explanation": "Better describing a verb is mieux: elle chante mieux que moi."
+      "explanation": "Better describing a verb is mieux: elle chante mieux que moi.",
+      "gloss": [
+        {
+          "fr": "chante",
+          "en": "sings (chanter)"
+        },
+        {
+          "fr": "moi",
+          "en": "me"
+        }
+      ]
     },
     {
       "id": "comparison-meilleur-mieux-3",
@@ -1343,7 +1700,17 @@
       "row": "bon / bonne",
       "hint": "Better here describes idée, a feminine noun.",
       "feedback": "This word agrees like an adjective.",
-      "explanation": "Better describing a noun is meilleur, and it agrees with the feminine idée: une meilleure idée."
+      "explanation": "Better describing a noun is meilleur, and it agrees with the feminine idée: une meilleure idée.",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)"
+        },
+        {
+          "fr": "idée",
+          "en": "idea"
+        }
+      ]
     },
     {
       "id": "comparison-meilleur-mieux-4",
@@ -1380,7 +1747,22 @@
       "row": "bien",
       "hint": "Better here describes how you swim.",
       "feedback": "This describes an action, not a thing.",
-      "explanation": "Better describing a verb is mieux, which never changes: tu nages mieux."
+      "explanation": "Better describing a verb is mieux, which never changes: tu nages mieux.",
+      "gloss": [
+        {
+          "fr": "nages",
+          "en": "swim (nager)"
+        },
+        {
+          "fr": "l’année",
+          "en": "the year",
+          "word": "health-time-058"
+        },
+        {
+          "fr": "dernière",
+          "en": "last"
+        }
+      ]
     },
     {
       "id": "comparison-meilleur-mieux-5",
@@ -1426,7 +1808,27 @@
       "row": "bon / bonne",
       "hint": "Better here describes pommes, a feminine plural noun.",
       "feedback": "This word agrees like an adjective.",
-      "explanation": "Better describing a noun is meilleur, and it agrees with pommes: meilleures."
+      "explanation": "Better describing a noun is meilleur, and it agrees with pommes: meilleures.",
+      "gloss": [
+        {
+          "fr": "Ces",
+          "en": "these"
+        },
+        {
+          "fr": "pommes",
+          "en": "apples",
+          "word": "food-021"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "autres",
+          "en": "others"
+        }
+      ]
     },
     {
       "id": "comparison-meilleur-mieux-6",
@@ -1466,7 +1868,32 @@
       "row": "bon / bonne",
       "hint": "Plus bon is never used.",
       "feedback": "Bon has a special comparative form.",
-      "explanation": "The comparative of bon is meilleur: ce restaurant est meilleur que l’autre."
+      "explanation": "The comparative of bon is meilleur: ce restaurant est meilleur que l’autre.",
+      "gloss": [
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "l’autre",
+          "en": "the other one"
+        }
+      ]
     },
     {
       "id": "comparison-meilleur-mieux-7",
@@ -1500,7 +1927,32 @@
       "row": "bien",
       "hint": "Plus bien is never used.",
       "feedback": "Bien has a special comparative form.",
-      "explanation": "The comparative of bien is mieux: il joue mieux que son père."
+      "explanation": "The comparative of bien is mieux: il joue mieux que son père.",
+      "gloss": [
+        {
+          "fr": "joue",
+          "en": "plays (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "son",
+          "en": "his"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        }
+      ]
     },
     {
       "id": "comparison-meilleur-mieux-8",
@@ -1569,7 +2021,31 @@
       "row": "the group",
       "hint": "In the class is part of a superlative.",
       "feedback": "After a superlative, French does not use que or à for the group.",
-      "explanation": "After a superlative, the group is introduced with de: le plus grand élève de la classe."
+      "explanation": "After a superlative, the group is introduced with de: le plus grand élève de la classe.",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "grand",
+          "en": "tall",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "élève",
+          "en": "pupil"
+        },
+        {
+          "fr": "classe",
+          "en": "class",
+          "word": "work-035"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-2",
@@ -1602,7 +2078,31 @@
       "row": "feminine singular",
       "hint": "Julie is a woman.",
       "feedback": "The article agrees too.",
-      "explanation": "The article in a superlative agrees with the person: Julie est la plus rapide."
+      "explanation": "The article in a superlative agrees with the person: Julie est la plus rapide.",
+      "gloss": [
+        {
+          "fr": "Julie",
+          "en": "Julie (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "rapide",
+          "en": "fast",
+          "word": "qualities-055"
+        },
+        {
+          "fr": "l’équipe",
+          "en": "the team"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-3",
@@ -1636,7 +2136,33 @@
       "row": "plural",
       "hint": "Jours is plural.",
       "feedback": "The article agrees with the noun.",
-      "explanation": "Jours is plural, so the superlative takes les: les plus beaux jours."
+      "explanation": "Jours is plural, so the superlative takes les: les plus beaux jours.",
+      "gloss": [
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "beaux",
+          "en": "beautiful",
+          "word": "qualities-005"
+        },
+        {
+          "fr": "jours",
+          "en": "days",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "l’année",
+          "en": "the year",
+          "word": "health-time-058"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-4",
@@ -1676,7 +2202,23 @@
       "row": "bon → best",
       "hint": "Restaurant is masculine, and bon has a special form.",
       "feedback": "Never say le plus bon.",
-      "explanation": "The superlative of bon is le meilleur: le meilleur restaurant du quartier."
+      "explanation": "The superlative of bon is le meilleur: le meilleur restaurant du quartier.",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-5",
@@ -1790,7 +2332,31 @@
       "row": "masculine singular",
       "hint": "Add an article, and use de for the group.",
       "feedback": "A superlative needs an article and de, not que.",
-      "explanation": "The superlative adds le before plus and introduces the group with de: le plus sérieux de la classe."
+      "explanation": "The superlative adds le before plus and introduces the group with de: le plus sérieux de la classe.",
+      "gloss": [
+        {
+          "fr": "Léo",
+          "en": "Léo (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "sérieux",
+          "en": "serious",
+          "word": "qualities-068"
+        },
+        {
+          "fr": "Tom",
+          "en": "Tom (a name)"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-8",
@@ -1830,7 +2396,31 @@
       "row": "bon → best",
       "hint": "Plus bonne is never used.",
       "feedback": "Bon has a special form in the superlative too.",
-      "explanation": "The superlative of bon is le meilleur, here la meilleure for Marie."
+      "explanation": "The superlative of bon is le meilleur, here la meilleure for Marie.",
+      "gloss": [
+        {
+          "fr": "Marie",
+          "en": "Marie (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "bonne",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "l’équipe",
+          "en": "the team"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-9",
@@ -1901,7 +2491,18 @@
       "row": "after the noun",
       "hint": "Intéressant normally follows the noun.",
       "feedback": "Keep intéressant after the noun and repeat the article.",
-      "explanation": "Adjectives that follow the noun keep that place in the superlative, with the article repeated: le film le plus intéressant."
+      "explanation": "Adjectives that follow the noun keep that place in the superlative, with the article repeated: le film le plus intéressant.",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)"
+        },
+        {
+          "fr": "l’année",
+          "en": "the year",
+          "word": "health-time-058"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-position-2",
@@ -1934,7 +2535,17 @@
       "row": "after the noun",
       "hint": "Cher meaning expensive follows the noun.",
       "feedback": "Keep cher after the noun and repeat the article.",
-      "explanation": "Cher follows the noun, so the superlative follows too, with the article repeated: le restaurant le moins cher."
+      "explanation": "Cher follows the noun, so the superlative follows too, with the article repeated: le restaurant le moins cher.",
+      "gloss": [
+        {
+          "fr": "Voici",
+          "en": "here is"
+        },
+        {
+          "fr": "Paris",
+          "en": "Paris"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-position-3",
@@ -2042,7 +2653,29 @@
       "row": "after the noun",
       "hint": "The article is repeated.",
       "feedback": "After the noun, the superlative needs its own article.",
-      "explanation": "Chère follows the noun, so the superlative is la robe la plus chère, with la repeated."
+      "explanation": "Chère follows the noun, so the superlative is la robe la plus chère, with la repeated.",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "acheté",
+          "en": "bought (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "robe",
+          "en": "dress",
+          "word": "people-067"
+        },
+        {
+          "fr": "chère",
+          "en": "expensive",
+          "word": "qualities-059"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-position-6",
@@ -2082,7 +2715,32 @@
       "row": "after the noun",
       "hint": "A word is missing before plus.",
       "feedback": "After the noun, the superlative needs its own article.",
-      "explanation": "Difficile follows the noun, so the article is repeated: la question la plus difficile."
+      "explanation": "Difficile follows the noun, so the article is repeated: la question la plus difficile.",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)"
+        },
+        {
+          "fr": "question",
+          "en": "question",
+          "word": "work-051"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "difficile",
+          "en": "difficult",
+          "word": "qualities-039"
+        },
+        {
+          "fr": "l’examen",
+          "en": "the exam",
+          "word": "work-040"
+        }
+      ]
     },
     {
       "id": "comparison-superlative-position-7",
@@ -2160,7 +2818,28 @@
       "row": "after the noun",
       "hint": "Calme follows the noun.",
       "feedback": "After the noun, the superlative needs its own article.",
-      "explanation": "Calme follows the noun, so the superlative repeats the article: le quartier le plus calme."
+      "explanation": "Calme follows the noun, so the superlative repeats the article: le quartier le plus calme.",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        },
+        {
+          "fr": "calme",
+          "en": "quiet",
+          "word": "qualities-054"
+        },
+        {
+          "fr": "ville",
+          "en": "town",
+          "word": "travel-001"
+        }
+      ]
     }
   ]
 }

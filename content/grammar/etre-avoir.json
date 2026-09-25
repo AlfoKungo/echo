@@ -564,7 +564,19 @@
           "why": "Sommes goes only with nous and êtes only with vous. The subject here is ils."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "etre-avoir-etre-forms-4",
@@ -604,7 +616,19 @@
           "why": "Suis is the je form: it says something about the speaker, not about tu."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "gentil",
+          "en": "kind",
+          "word": "qualities-069"
+        }
+      ]
     },
     {
       "id": "etre-avoir-etre-forms-5",
@@ -679,7 +703,18 @@
           "why": "Changing the subject is not the repair: the sentence is about the speaker, so the verb is what must change."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "es",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fatigué",
+          "en": "tired"
+        }
+      ]
     },
     {
       "id": "etre-avoir-etre-forms-7",
@@ -719,7 +754,18 @@
           "why": "En retard is a fixed phrase and never takes a plural -s, whatever the subject."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "en retard",
+          "en": "late"
+        }
+      ]
     },
     {
       "id": "etre-avoir-avoir-forms-1",
@@ -855,7 +901,18 @@
           "why": "Ai is the je form, one person only, and the subject here is plural."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "rouge",
+          "en": "red"
+        }
+      ]
     },
     {
       "id": "etre-avoir-avoir-forms-4",
@@ -895,7 +952,14 @@
           "why": "As is the tu form. Vous is the polite or plural you and takes its own ending."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        }
+      ]
     },
     {
       "id": "etre-avoir-avoir-forms-5",
@@ -935,7 +999,24 @@
           "why": "Sommes is être: this says what you are, two brothers, instead of what you have."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "frères",
+          "en": "brothers",
+          "word": "people-012"
+        }
+      ]
     },
     {
       "id": "etre-avoir-avoir-forms-6",
@@ -975,7 +1056,19 @@
           "why": "Changing the subject is not the repair: the question is addressed to the listener, so the verb must match tu."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "stylo",
+          "en": "pen",
+          "word": "work-045"
+        }
+      ]
     },
     {
       "id": "etre-avoir-etre-or-avoir-1",
@@ -1008,7 +1101,24 @@
           "why": "As is avoir, and it is the tu form; mon frère is a third person, not the person addressed."
         }
       ],
-      "row": "what someone is like"
+      "row": "what someone is like",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "grand",
+          "en": "tall",
+          "word": "qualities-001"
+        }
+      ]
     },
     {
       "id": "etre-avoir-etre-or-avoir-2",
@@ -1041,7 +1151,19 @@
           "why": "Êtes is être, and it belongs to vous; the subject here is nous and the sentence is about owning."
         }
       ],
-      "row": "what someone owns"
+      "row": "what someone owns",
+      "gloss": [
+        {
+          "fr": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     },
     {
       "id": "etre-avoir-etre-or-avoir-3",
@@ -1082,7 +1204,23 @@
           "why": "Ont is plural, for ils or elles. Julie is one person."
         }
       ],
-      "row": "what someone owns"
+      "row": "what someone owns",
+      "gloss": [
+        {
+          "fr": "Julie",
+          "en": "Julie (a name)"
+        },
+        {
+          "fr": "nouveau",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "vélo",
+          "en": "bicycle",
+          "word": "travel-008"
+        }
+      ]
     },
     {
       "id": "etre-avoir-etre-or-avoir-4",
@@ -1163,7 +1301,19 @@
           "why": "The subject was feminine; switching it to masculine rewrites the sentence instead of repairing the verb."
         }
       ],
-      "row": "what someone is like"
+      "row": "what someone is like",
+      "gloss": [
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "contentes",
+          "en": "pleased",
+          "word": "qualities-065"
+        }
+      ]
     },
     {
       "id": "etre-avoir-etre-or-avoir-6",
@@ -1230,7 +1380,27 @@
           "why": "As is the right verb but the tu form; ma sœur is a third person, talked about."
         }
       ],
-      "row": "il / elle"
+      "row": "il / elle",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "quinze",
+          "en": "fifteen",
+          "word": "health-time-093"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        }
+      ]
     },
     {
       "id": "etre-avoir-age-avoir-2",
@@ -1352,7 +1522,22 @@
           "why": "This drops the years instead of repairing the verb, and the verb is still être."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dix-huit",
+          "en": "eighteen"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        }
+      ]
     },
     {
       "id": "etre-avoir-age-avoir-5",
@@ -1386,7 +1571,13 @@
           "why": "Avez goes with vous; this question is asked with tu."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "Quel âge",
+          "en": "what age"
+        }
+      ]
     },
     {
       "id": "etre-avoir-age-avoir-6",
@@ -1426,7 +1617,32 @@
           "why": "Quatre-vingts keeps its -s when no other number follows it."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "grand-père",
+          "en": "grandfather",
+          "word": "people-014"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "quatre-vingts",
+          "en": "eighty"
+        },
+        {
+          "fr": "ans",
+          "en": "years"
+        }
+      ]
     },
     {
       "id": "etre-avoir-avoir-expressions-1",
@@ -1459,7 +1675,22 @@
           "why": "Est is être and the il/elle form; the question is addressed to tu."
         }
       ],
-      "row": "hungry"
+      "row": "hungry",
+      "gloss": [
+        {
+          "fr": "faim",
+          "en": "hunger"
+        },
+        {
+          "fr": "Il y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        }
+      ]
     },
     {
       "id": "etre-avoir-avoir-expressions-2",
@@ -1492,7 +1723,19 @@
           "why": "A is avoir but singular; les enfants is plural."
         }
       ],
-      "row": "sleepy"
+      "row": "sleepy",
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "sommeil",
+          "en": "sleepiness",
+          "word": "health-time-048"
+        }
+      ]
     },
     {
       "id": "etre-avoir-avoir-expressions-3",
@@ -1532,7 +1775,18 @@
           "why": "Ai is the je form, one person, and the subject is plural."
         }
       ],
-      "row": "thirsty"
+      "row": "thirsty",
+      "gloss": [
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "soif",
+          "en": "thirst"
+        }
+      ]
     },
     {
       "id": "etre-avoir-avoir-expressions-4",
@@ -1730,7 +1984,27 @@
           "why": "Faux describes something false, not a person who is mistaken, and the verb is still être."
         }
       ],
-      "row": "right / wrong"
+      "row": "right / wrong",
+      "gloss": [
+        {
+          "fr": "êtes",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "tort",
+          "en": "wrong"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is"
+        },
+        {
+          "fr": "lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        }
+      ]
     },
     {
       "id": "etre-avoir-il-y-a-1",
@@ -1763,7 +2037,28 @@
           "why": "Sont comes from être; this expression is built on avoir and never changes."
         }
       ],
-      "row": "there are"
+      "row": "there are",
+      "gloss": [
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "chats",
+          "en": "cats",
+          "word": "nature-012"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "jardin",
+          "en": "garden"
+        }
+      ]
     },
     {
       "id": "etre-avoir-il-y-a-2",
@@ -1882,7 +2177,23 @@
           "why": "Sont is être and plural; neither fits this fixed expression."
         }
       ],
-      "row": "there is"
+      "row": "there is",
+      "gloss": [
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "monde",
+          "en": "people"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        }
+      ]
     },
     {
       "id": "etre-avoir-il-y-a-5",
@@ -1922,7 +2233,28 @@
           "why": "Les would point to particular books already known; un becomes the indefinite plural instead."
         }
       ],
-      "row": "there are"
+      "row": "there are",
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        }
+      ]
     },
     {
       "id": "etre-avoir-il-y-a-6",
@@ -2004,7 +2336,34 @@
           "why": "Chambres must stay plural after trois."
         }
       ],
-      "row": "there are"
+      "row": "there are",
+      "gloss": [
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "trois",
+          "en": "three",
+          "word": "health-time-084"
+        },
+        {
+          "fr": "chambres",
+          "en": "bedrooms",
+          "word": "home-006"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "l’appartement",
+          "en": "the apartment",
+          "word": "home-002"
+        }
+      ]
     },
     {
       "id": "etre-avoir-profession-no-article-1",
@@ -2037,7 +2396,24 @@
           "why": "Two problems: after être the job takes no article at all, and the feminine une does not match mon père."
         }
       ],
-      "row": "être + job"
+      "row": "être + job",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "etre-avoir-profession-no-article-2",
@@ -2070,7 +2446,19 @@
           "why": "Ils sont is plural while un bon professeur is one person, and it cannot be followed by un either."
         }
       ],
-      "row": "c’est + un/une + adjective + job"
+      "row": "c’est + un/une + adjective + job",
+      "gloss": [
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "professeur",
+          "en": "teacher",
+          "word": "work-015"
+        }
+      ]
     },
     {
       "id": "etre-avoir-profession-no-article-3",
@@ -2191,6 +2579,17 @@
           ],
           "why": "Ce elides in front of the verb and is written with an apostrophe."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "architecte",
+          "en": "architect"
+        }
       ]
     },
     {
@@ -2231,7 +2630,19 @@
           "why": "Il est is never followed by an article before a job; that is exactly why the start of the sentence has to change."
         }
       ],
-      "row": "c’est + un/une + job"
+      "row": "c’est + un/une + job",
+      "gloss": [
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dentiste",
+          "en": "dentist",
+          "word": "work-013"
+        }
+      ]
     },
     {
       "id": "etre-avoir-profession-no-article-7",
@@ -2265,7 +2676,21 @@
           "why": "Des is plural, and the sentence speaks about one person."
         }
       ],
-      "row": "c’est + un/une + job"
+      "row": "c’est + un/une + job",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is"
+        },
+        {
+          "fr": "acteur",
+          "en": "actor"
+        },
+        {
+          "fr": "célèbre",
+          "en": "famous"
+        }
+      ]
     }
   ]
 }

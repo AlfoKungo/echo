@@ -405,7 +405,29 @@
           "why": "Ces is the plural form, for several things. Un pantalon is one item, and it has no -s here."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "pantalon",
+          "en": "trousers",
+          "word": "people-064"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "trop",
+          "en": "too",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "grand",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
     },
     {
       "id": "demonstratives-ce-cette-2",
@@ -438,7 +460,19 @@
           "why": "Cet is a masculine form, used only before a vowel. Chanson is feminine and starts with a consonant."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "aimes",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "chanson",
+          "en": "song",
+          "word": "work-095"
+        }
+      ]
     },
     {
       "id": "demonstratives-ce-cette-3",
@@ -478,7 +512,24 @@
           "why": "Le is the article the; it does not point at anything. The English says this, so a demonstrative is needed."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "voudrais",
+          "en": "would like (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please",
+          "word": "essentials-003"
+        }
+      ]
     },
     {
       "id": "demonstratives-ce-cette-4",
@@ -518,7 +569,24 @@
           "why": "La is the article the. La semaine does not point at this particular week."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "semaine",
+          "en": "week",
+          "word": "health-time-056"
+        },
+        {
+          "fr": "travaille",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        }
+      ]
     },
     {
       "id": "demonstratives-ce-cette-5",
@@ -552,7 +620,28 @@
           "why": "That turns one car into several. Only the word in front of voiture is wrong; the number of the sentence was fine."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "mon",
+          "en": "my"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        }
+      ]
     },
     {
       "id": "demonstratives-ce-cette-6",
@@ -633,7 +722,27 @@
           "why": "Nothing has changed: the noun is still siège, and the sentence was not asked to keep it."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "Ce",
+          "en": "this"
+        },
+        {
+          "fr": "siège",
+          "en": "seat"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "libre",
+          "en": "free",
+          "word": "qualities-090"
+        }
+      ]
     },
     {
       "id": "demonstratives-ce-cette-8",
@@ -702,7 +811,24 @@
           "why": "Ce is singular and masculine. Fleurs is plural, and fleur is a feminine noun anyway."
         }
       ],
-      "row": "feminine"
+      "row": "feminine",
+      "gloss": [
+        {
+          "fr": "fleurs",
+          "en": "flowers",
+          "word": "nature-010"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "belles",
+          "en": "beautiful (beau)",
+          "word": "qualities-005"
+        }
+      ]
     },
     {
       "id": "demonstratives-ces-plural-2",
@@ -742,7 +868,18 @@
           "why": "Ses means his or her. The instruction asks for these, which points at the shoes rather than naming their owner."
         }
       ],
-      "row": "feminine"
+      "row": "feminine",
+      "gloss": [
+        {
+          "fr": "J’adore",
+          "en": "I love (adorer)"
+        },
+        {
+          "fr": "chaussures",
+          "en": "shoes",
+          "word": "people-083"
+        }
+      ]
     },
     {
       "id": "demonstratives-ces-plural-3",
@@ -782,7 +919,24 @@
           "why": "Ses means his or her children. The question points at the children in front of you instead."
         }
       ],
-      "row": "masculine"
+      "row": "masculine",
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        }
+      ]
     },
     {
       "id": "demonstratives-ces-plural-4",
@@ -828,7 +982,27 @@
           "why": "That is the sentence unchanged: the noun is still one single child."
         }
       ],
-      "row": "masculine"
+      "row": "masculine",
+      "gloss": [
+        {
+          "fr": "Cet",
+          "en": "this"
+        },
+        {
+          "fr": "enfant",
+          "en": "child",
+          "word": "people-004"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sage",
+          "en": "well-behaved"
+        }
+      ]
     },
     {
       "id": "demonstratives-ces-plural-5",
@@ -874,7 +1048,27 @@
           "why": "That is the sentence unchanged: pomme is still singular."
         }
       ],
-      "row": "feminine"
+      "row": "feminine",
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this"
+        },
+        {
+          "fr": "pomme",
+          "en": "apple",
+          "word": "food-021"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "rouge",
+          "en": "red"
+        }
+      ]
     },
     {
       "id": "demonstratives-ces-plural-6",
@@ -948,7 +1142,29 @@
           "why": "Cette is feminine. Hôtel is masculine (un hôtel), whatever letter it starts with."
         }
       ],
-      "row": "silent h"
+      "row": "silent h",
+      "gloss": [
+        {
+          "fr": "hôtel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "calme",
+          "en": "quiet",
+          "word": "qualities-054"
+        }
+      ]
     },
     {
       "id": "demonstratives-cet-vowel-2",
@@ -981,7 +1197,24 @@
           "why": "Cette is the feminine form. Homme is masculine (un homme)."
         }
       ],
-      "row": "silent h"
+      "row": "silent h",
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "homme",
+          "en": "man",
+          "word": "people-002"
+        }
+      ]
     },
     {
       "id": "demonstratives-cet-vowel-3",
@@ -1014,7 +1247,19 @@
           "why": "Ces is plural. Arbre has no -s here: it is one tree."
         }
       ],
-      "row": "vowel"
+      "row": "vowel",
+      "gloss": [
+        {
+          "fr": "aimons",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "arbre",
+          "en": "tree",
+          "word": "nature-009"
+        }
+      ]
     },
     {
       "id": "demonstratives-cet-vowel-4",
@@ -1048,7 +1293,22 @@
           "why": "Ces is plural. You are talking about one summer, the coming one."
         }
       ],
-      "row": "vowel"
+      "row": "vowel",
+      "gloss": [
+        {
+          "fr": "été",
+          "en": "summer"
+        },
+        {
+          "fr": "partons",
+          "en": "are leaving (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "Italie",
+          "en": "Italy"
+        }
+      ]
     },
     {
       "id": "demonstratives-cet-vowel-5",
@@ -1082,7 +1342,18 @@
           "why": "Ces is plural. The question is about one actor."
         }
       ],
-      "row": "vowel"
+      "row": "vowel",
+      "gloss": [
+        {
+          "fr": "connais",
+          "en": "know (connaître)",
+          "word": "verbs-015"
+        },
+        {
+          "fr": "acteur",
+          "en": "actor"
+        }
+      ]
     },
     {
       "id": "demonstratives-cet-vowel-6",
@@ -1116,7 +1387,23 @@
           "why": "That makes it several friends. The sentence talks about one friend; only the word in front of ami has to change."
         }
       ],
-      "row": "vowel"
+      "row": "vowel",
+      "gloss": [
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        },
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a city)"
+        }
+      ]
     },
     {
       "id": "demonstratives-cet-vowel-7",
@@ -1219,7 +1506,21 @@
           "why": "Ce is masculine as well, and it never stands before a vowel. Amie is feminine here."
         }
       ],
-      "row": "vowel"
+      "row": "vowel",
+      "gloss": [
+        {
+          "fr": "présente",
+          "en": "introduce (présenter)"
+        },
+        {
+          "fr": "amie",
+          "en": "friend"
+        },
+        {
+          "fr": "Claire",
+          "en": "Claire (a name)"
+        }
+      ]
     },
     {
       "id": "demonstratives-ci-la-1",
@@ -1254,7 +1555,24 @@
           "why": "Ce is the pointing word that goes before the noun, and it is already there. The gap is the small ending after the hyphen."
         }
       ],
-      "row": "-là"
+      "row": "-là",
+      "gloss": [
+        {
+          "fr": "préfère",
+          "en": "prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "livre-ci",
+          "en": "book here",
+          "word": "work-043"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        }
+      ]
     },
     {
       "id": "demonstratives-ci-la-2",
@@ -1288,7 +1606,28 @@
           "why": "-ci points at what is near the speaker, and the first dress already carries it. The second dress is the other one."
         }
       ],
-      "row": "-là"
+      "row": "-là",
+      "gloss": [
+        {
+          "fr": "préfères",
+          "en": "prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "cette",
+          "en": "this"
+        },
+        {
+          "fr": "robe-ci",
+          "en": "dress here",
+          "word": "people-067"
+        },
+        {
+          "fr": "robe",
+          "en": "dress",
+          "word": "people-067"
+        }
+      ]
     },
     {
       "id": "demonstratives-ci-la-3",
@@ -1402,7 +1741,23 @@
           "why": "The ending is not a separate word: it hangs on the noun with a hyphen."
         }
       ],
-      "row": "-là"
+      "row": "-là",
+      "gloss": [
+        {
+          "fr": "Regarde",
+          "en": "look at (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "cette",
+          "en": "this"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     },
     {
       "id": "demonstratives-ci-la-6",
@@ -1437,7 +1792,23 @@
           "why": "Dropping the hyphen does not fix it: the ending belongs to the noun, and it still needs its accent."
         }
       ],
-      "row": "-là"
+      "row": "-là",
+      "gloss": [
+        {
+          "fr": "préfère",
+          "en": "prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "ces",
+          "en": "these"
+        },
+        {
+          "fr": "chaussures",
+          "en": "shoes",
+          "word": "people-083"
+        }
+      ]
     },
     {
       "id": "demonstratives-cest-ce-sont-1",
@@ -1470,7 +1841,23 @@
           "why": "Se sont belongs to a reflexive verb in the past, as in ils se sont levés. Here you are simply saying who these people are."
         }
       ],
-      "row": "several"
+      "row": "several",
+      "gloss": [
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        },
+        {
+          "fr": "l’école",
+          "en": "school",
+          "word": "work-031"
+        }
+      ]
     },
     {
       "id": "demonstratives-cest-ce-sont-2",
@@ -1503,7 +1890,28 @@
           "why": "S’est belongs to a reflexive verb in the past, as in elle s’est levée. It cannot introduce a noun."
         }
       ],
-      "row": "one thing or person"
+      "row": "one thing or person",
+      "gloss": [
+        {
+          "fr": "Regarde",
+          "en": "look at (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "photo",
+          "en": "photo",
+          "word": "work-092"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "grand-mère",
+          "en": "grandmother",
+          "word": "people-013"
+        }
+      ]
     },
     {
       "id": "demonstratives-cest-ce-sont-3",
@@ -1543,7 +1951,18 @@
           "why": "Ils sont names people already identified. To say who someone is with nos, mes or un, French starts with the little word ce."
         }
       ],
-      "row": "several"
+      "row": "several",
+      "gloss": [
+        {
+          "fr": "nos",
+          "en": "our"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        }
+      ]
     },
     {
       "id": "demonstratives-cest-ce-sont-4",
@@ -1583,7 +2002,19 @@
           "why": "Ce loses its e before a vowel, so these two words are written as one with an apostrophe."
         }
       ],
-      "row": "one thing or person"
+      "row": "one thing or person",
+      "gloss": [
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        }
+      ]
     },
     {
       "id": "demonstratives-cest-ce-sont-5",
@@ -1719,7 +2150,23 @@
           "why": "Making cousin plural means putting an -s on the noun too, not only on the words in front of it."
         }
       ],
-      "row": "several"
+      "row": "several",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "mon",
+          "en": "my"
+        },
+        {
+          "fr": "cousin",
+          "en": "cousin",
+          "word": "people-021"
+        }
+      ]
     },
     {
       "id": "demonstratives-cest-ce-sont-8",
@@ -1753,7 +2200,27 @@
           "why": "Se sont is part of a reflexive past tense (ils se sont vus); it does not introduce a noun."
         }
       ],
-      "row": "several"
+      "row": "several",
+      "gloss": [
+        {
+          "fr": "Ces",
+          "en": "these"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "livres",
+          "en": "books",
+          "word": "work-043"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-1",
@@ -1786,7 +2253,24 @@
           "why": "Ces is the plural pointing word and goes before a plural noun. The next word here is a verb."
         }
       ],
-      "row": "se"
+      "row": "se",
+      "gloss": [
+        {
+          "fr": "réveille",
+          "en": "wakes up (réveiller)",
+          "word": "verbs-063"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o'clock (heure)",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-2",
@@ -1819,7 +2303,24 @@
           "why": "Ses means his or her and goes before a plural noun (ses livres). Matin is singular, and nobody owns the morning."
         }
       ],
-      "row": "ce"
+      "row": "ce",
+      "gloss": [
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "fait",
+          "en": "is (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "froid",
+          "en": "cold",
+          "word": "qualities-026"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-3",
@@ -1852,7 +2353,23 @@
           "why": "Ce is singular and goes before a masculine singular noun. Livres is plural, and the meaning asked for is his."
         }
       ],
-      "row": "ses"
+      "row": "ses",
+      "gloss": [
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        },
+        {
+          "fr": "range",
+          "en": "puts away (ranger)",
+          "word": "verbs-098"
+        },
+        {
+          "fr": "livres",
+          "en": "books",
+          "word": "work-043"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-4",
@@ -1885,7 +2402,19 @@
           "why": "Se is the pronoun of a reflexive verb (il se lave). Nuages is a noun, so this word cannot go with it."
         }
       ],
-      "row": "ces"
+      "row": "ces",
+      "gloss": [
+        {
+          "fr": "vois",
+          "en": "see (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "nuages",
+          "en": "clouds",
+          "word": "nature-006"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-5",
@@ -1919,7 +2448,27 @@
           "why": "Ses means his or her and goes before a noun. What follows the gap is the verb promener."
         }
       ],
-      "row": "se"
+      "row": "se",
+      "gloss": [
+        {
+          "fr": "promène",
+          "en": "walks (promener)"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "son",
+          "en": "her"
+        },
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-6",
@@ -1953,7 +2502,18 @@
           "why": "Cette is singular and feminine, but couleurs is plural, and one plural form covers both genders."
         }
       ],
-      "row": "ces"
+      "row": "ces",
+      "gloss": [
+        {
+          "fr": "J’aime",
+          "en": "I like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "couleurs",
+          "en": "colours"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-7",
@@ -1987,7 +2547,23 @@
           "why": "Ces is plural, but restaurant has no -s and the verb is est: the sentence is about one restaurant."
         }
       ],
-      "row": "ce"
+      "row": "ce",
+      "gloss": [
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "excellent",
+          "en": "excellent"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-8",
@@ -2027,7 +2603,32 @@
           "why": "Son is for a singular noun. Parents is plural, so the possessive must be plural too."
         }
       ],
-      "row": "ses"
+      "row": "ses",
+      "gloss": [
+        {
+          "fr": "Marie",
+          "en": "Marie (a name)"
+        },
+        {
+          "fr": "aime",
+          "en": "loves (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "ces",
+          "en": "these"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        }
+      ]
     },
     {
       "id": "demonstratives-homophones-9",

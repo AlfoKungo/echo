@@ -542,7 +542,24 @@
           "why": "Se and s’ belong to il, elle, on, ils and elles. The subject here is first person plural, and its reflexive pronoun simply repeats the subject word; s’ would also need a vowel sound after it."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "couchons",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "o'clock (heure)",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "reflexive-pronoun-agreement-2",
@@ -575,7 +592,27 @@
           "why": "Leur is a possessive or an indirect object pronoun (to them). It points at other people, not back at the subject, so it cannot be the reflexive pronoun."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "réveillent",
+          "en": "wake up (réveiller)",
+          "word": "verbs-063"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        }
+      ]
     },
     {
       "id": "reflexive-pronoun-agreement-3",
@@ -611,7 +648,18 @@
           "why": "Nous is the pronoun for a first person plural subject (we). Here the subject is the people spoken to, not the speaker."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "dépêchez",
+          "en": "hurry (se dépêcher)"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
     },
     {
       "id": "reflexive-pronoun-agreement-4",
@@ -692,7 +740,18 @@
           "why": "Changing the subject, or deleting the pronoun, answers a different question. The subject tu must stay and the verb still needs a reflexive pronoun."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "couches",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "tard",
+          "en": "late"
+        }
+      ]
     },
     {
       "id": "reflexive-pronoun-agreement-6",
@@ -766,7 +825,17 @@
           "why": "Se belongs to il, elle, on, ils and elles, not to je, and it would also have to shorten before appelle."
         }
       ],
-      "row": "me"
+      "row": "me",
+      "gloss": [
+        {
+          "fr": "appelle",
+          "en": "am called (s’appeler)"
+        },
+        {
+          "fr": "Sophie",
+          "en": "Sophie (a name)"
+        }
+      ]
     },
     {
       "id": "reflexive-elision-2",
@@ -808,7 +877,17 @@
           "why": "That is the direct object pronoun (him, it). A reflexive verb needs a pronoun that points back at the subject."
         }
       ],
-      "row": "se"
+      "row": "se",
+      "gloss": [
+        {
+          "fr": "habille",
+          "en": "gets dressed (s’habiller)"
+        },
+        {
+          "fr": "vite",
+          "en": "quickly"
+        }
+      ]
     },
     {
       "id": "reflexive-elision-3",
@@ -842,7 +921,18 @@
           "why": "S’ is the third person form. The subject is tu, so the shortened pronoun must be the tu one."
         }
       ],
-      "row": "te"
+      "row": "te",
+      "gloss": [
+        {
+          "fr": "amuses",
+          "en": "have fun (s’amuser)"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        }
+      ]
     },
     {
       "id": "reflexive-elision-4",
@@ -1001,7 +1091,18 @@
           "why": "That verb form goes with il or elle. The new subject needs its own ending."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "s’amuse",
+          "en": "has fun (s’amuser)"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        }
+      ]
     },
     {
       "id": "reflexive-negation-1",
@@ -1039,6 +1140,17 @@
             "Je me lève ne pas tôt."
           ],
           "why": "Ne and pas do not sit together after the verb: they wrap around the pronoun and the verb."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "lève",
+          "en": "get up (se lever)",
+          "word": "verbs-064"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
         }
       ]
     },
@@ -1080,6 +1192,16 @@
           ],
           "why": "Pas goes straight after the conjugated verb, not at the end of the sentence."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "s’habille",
+          "en": "gets dressed (s’habiller)"
+        },
+        {
+          "fr": "noir",
+          "en": "black"
+        }
       ]
     },
     {
@@ -1118,6 +1240,17 @@
             "ne réveille pas se"
           ],
           "why": "The reflexive pronoun is never left at the end. It sits in front of its verb, inside the negation."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
         }
       ]
     },
@@ -1192,6 +1325,21 @@
             "Je ne couche pas avant minuit."
           ],
           "why": "Deleting the reflexive pronoun is not the fix: it changes the meaning to putting someone else to bed. Only the word order was wrong."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "couche",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "minuit",
+          "en": "midnight"
         }
       ]
     },
@@ -1277,6 +1425,17 @@
           ],
           "why": "That is the negation of être. The verb here is promener, and it still needs its reflexive pronoun."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "promène",
+          "en": "goes for a walk (promener)"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
       ]
     },
     {
@@ -1310,7 +1469,19 @@
           "why": "Moi is a stressed pronoun, used alone or after a preposition. It never stands in front of a verb as the reflexive pronoun."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "coucher",
+          "en": "to go to bed",
+          "word": "verbs-066"
+        }
+      ]
     },
     {
       "id": "reflexive-after-another-verb-2",
@@ -1343,7 +1514,23 @@
           "why": "That is a subject pronoun, and it is already the subject of the sentence. The infinitive needs a reflexive pronoun of its own."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "aiment",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "promener",
+          "en": "to walk"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "reflexive-after-another-verb-3",
@@ -1383,7 +1570,18 @@
           "why": "Vous goes with the polite or plural subject. The subject given here is the informal singular."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "dois",
+          "en": "must (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "dépêcher",
+          "en": "to hurry"
+        }
+      ]
     },
     {
       "id": "reflexive-after-another-verb-4",
@@ -1418,7 +1616,22 @@
           "why": "The reflexive pronoun belongs to the second verb, so it stays in front of the infinitive, not in front of vouloir."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "voulons",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "promener",
+          "en": "to walk (se promener)"
+        },
+        {
+          "fr": "au bord de la mer",
+          "en": "at the seaside"
+        }
+      ]
     },
     {
       "id": "reflexive-after-another-verb-5",
@@ -1541,7 +1754,18 @@
           "why": "The pronoun belongs to the second verb and stays right in front of it, not before pouvoir."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "t’habilles",
+          "en": "get dressed (s’habiller)"
+        },
+        {
+          "fr": "seul",
+          "en": "alone",
+          "word": "qualities-088"
+        }
+      ]
     },
     {
       "id": "reflexive-reciprocal-1",
@@ -1569,7 +1793,32 @@
           "why": "Se and s’ work only with il, elle, on, ils and elles. Mes amis et moi is a first person plural subject, so the pronoun repeats that subject word."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "amis",
+          "en": "friends (ami)",
+          "word": "people-030"
+        },
+        {
+          "fr": "moi",
+          "en": "me"
+        },
+        {
+          "fr": "voyons",
+          "en": "see (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        }
+      ]
     },
     {
       "id": "reflexive-reciprocal-2",
@@ -1651,7 +1900,27 @@
           "why": "The dropped e must be replaced by an apostrophe; a bare letter is not a word."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        },
+        {
+          "fr": "Julie",
+          "en": "Julie (a name)"
+        },
+        {
+          "fr": "écrivent",
+          "en": "write (écrire)",
+          "word": "verbs-073"
+        },
+        {
+          "fr": "souvent",
+          "en": "often",
+          "word": "essentials-091"
+        }
+      ]
     },
     {
       "id": "reflexive-reciprocal-4",
@@ -1693,7 +1962,22 @@
           "why": "That pronoun and that ending belong to a first person plural subject. Here the subject is two other people."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "Luc",
+          "en": "Luc (a name)"
+        },
+        {
+          "fr": "aime",
+          "en": "loves (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "Léa",
+          "en": "Léa (a name)"
+        }
+      ]
     },
     {
       "id": "reflexive-reciprocal-5",
@@ -1768,7 +2052,31 @@
           "why": "The ending -ent belongs to ils and elles. This subject is first person plural."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "moi",
+          "en": "me"
+        },
+        {
+          "fr": "téléphonons",
+          "en": "phone each other (téléphoner)"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "reflexive-reciprocal-7",
@@ -1846,7 +2154,19 @@
           "why": "Des means some, an unspecified quantity. A body part in this construction takes a definite article."
         }
       ],
-      "row": "les mains (f. pl.)"
+      "row": "les mains (f. pl.)",
+      "gloss": [
+        {
+          "fr": "lave",
+          "en": "wash (se laver)",
+          "word": "verbs-097"
+        },
+        {
+          "fr": "mains",
+          "en": "hands (main)",
+          "word": "health-time-004"
+        }
+      ]
     },
     {
       "id": "reflexive-body-parts-2",
@@ -1874,7 +2194,18 @@
           "why": "Both are possessives, and se already shows whose teeth they are; French does not name the owner twice. Leurs would also point at several owners."
         }
       ],
-      "row": "les dents (f. pl.)"
+      "row": "les dents (f. pl.)",
+      "gloss": [
+        {
+          "fr": "brosse",
+          "en": "brushes (brosser)"
+        },
+        {
+          "fr": "dents",
+          "en": "teeth (dent)",
+          "word": "health-time-010"
+        }
+      ]
     },
     {
       "id": "reflexive-body-parts-3",
@@ -1908,7 +2239,27 @@
           "why": "Swapping one possessive for another keeps the same problem, and ses would mean somebody else’s hair."
         }
       ],
-      "row": "les cheveux (m. pl.)"
+      "row": "les cheveux (m. pl.)",
+      "gloss": [
+        {
+          "fr": "laves",
+          "en": "wash (se laver)",
+          "word": "verbs-097"
+        },
+        {
+          "fr": "tes",
+          "en": "your"
+        },
+        {
+          "fr": "cheveux",
+          "en": "hair"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
     },
     {
       "id": "reflexive-body-parts-4",
@@ -2034,7 +2385,19 @@
           "why": "The shortened article is used before a vowel or a silent h. Visage starts with a v."
         }
       ],
-      "row": "le visage (m.)"
+      "row": "le visage (m.)",
+      "gloss": [
+        {
+          "fr": "lave",
+          "en": "washes (se laver)",
+          "word": "verbs-097"
+        },
+        {
+          "fr": "visage",
+          "en": "face",
+          "word": "health-time-019"
+        }
+      ]
     },
     {
       "id": "reflexive-body-parts-7",
@@ -2109,7 +2472,19 @@
           "why": "That is the ils/elles form, with a silent ending. The subject here is first person plural."
         }
       ],
-      "row": "se lever"
+      "row": "se lever",
+      "gloss": [
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o'clock (heure)",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "reflexive-stem-changes-2",
@@ -2142,7 +2517,13 @@
           "why": "In front of a silent ending this verb doubles its l, so a single l is wrong here."
         }
       ],
-      "row": "s’appeler"
+      "row": "s’appeler",
+      "gloss": [
+        {
+          "fr": "Camille",
+          "en": "Camille (a name)"
+        }
+      ]
     },
     {
       "id": "reflexive-stem-changes-3",
@@ -2226,6 +2607,25 @@
             "appeler"
           ],
           "why": "That is the infinitive. The sentence needs the present tense form of the subject."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "moi",
+          "en": "me"
+        },
+        {
+          "fr": "Martin",
+          "en": "Martin (a name)"
         }
       ]
     },
@@ -2314,7 +2714,19 @@
           "why": "The ending -ons goes with a first person plural subject, and being pronounced it leaves the stem plain."
         }
       ],
-      "row": "se promener"
+      "row": "se promener",
+      "gloss": [
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        }
+      ]
     },
     {
       "id": "reflexive-stem-changes-7",
@@ -2354,7 +2766,21 @@
           "why": "Turning the subject into one person is not the fix: two people are named."
         }
       ],
-      "row": "s’appeler"
+      "row": "s’appeler",
+      "gloss": [
+        {
+          "fr": "s’appelent",
+          "en": "are called (s’appeler)"
+        },
+        {
+          "fr": "Tom",
+          "en": "Tom (a name)"
+        },
+        {
+          "fr": "Max",
+          "en": "Max (a name)"
+        }
+      ]
     }
   ]
 }

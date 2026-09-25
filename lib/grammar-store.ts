@@ -22,6 +22,8 @@ export interface GrammarStore {
 }
 
 const PRACTICE_SIZE = 10;
+// Questions from other topics marked to revisit that open a topic's practice round, on top of its own ten.
+const WARM_UPS = 2;
 const TOPIC_TEST_SIZE = 15;
 const UNIT_TEST_SIZE = 20;
 const PATTERN_CAP = 3;
@@ -250,7 +252,7 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
     }
     return {
       ...content, ...(full ? { guide, patterns } : {}), exerciseCount: exercises.length,
-      practiceLength: Math.min(PRACTICE_SIZE, exercises.length), testLength: Math.min(TOPIC_TEST_SIZE, exercises.length),
+      practiceLength: Math.min(PRACTICE_SIZE, exercises.length) + warmUps(topic.id).length, testLength: Math.min(TOPIC_TEST_SIZE, exercises.length),
       progress, hasActiveSession: lookup.active(topic.id), hasActiveTest: lookup.active(`test:${topic.id}`), test: testSummary(lookup.tests(`test:${topic.id}`)),
     };
   }
@@ -284,6 +286,7 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
         exercise: {
           id: exercise.id, type: exercise.type, instruction: exercise.instruction, source: exercise.source, pattern: exercise.pattern,
           ...(exercise.tokens ? { tokens: exercise.tokens } : {}), ...(exercise.options ? { options: exercise.options } : {}),
+          ...(exercise.gloss ? { gloss: exercise.gloss } : {}),
           topicId: current.topicId, topicTitle: topicTitle(current.topicId),
         },
         answer: current.answer, tokenOrder: current.tokenOrder, attempts: current.attempts, assisted: current.assisted,
@@ -391,7 +394,20 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
       return struggling(previous) ? 3 : 4;
     };
     const pool = topic.exercises.map((content) => ({ topicId: topic.id, content }));
-    return assemble(pool, tier, ({ content }) => history.get(content.id)?.last_seen ?? 0);
+    return [...warmUps(topic.id), ...assemble(pool, tier, ({ content }) => history.get(content.id)?.last_seen ?? 0)];
+  }
+
+  // What other topics still owe: questions marked to revisit, the longest unseen first and one per topic, so an old
+  // mistake comes back even while the learner works on something new.
+  function warmUps(topicId: string): Picked[] {
+    const picked: Picked[] = [];
+    for (const row of missedProgress.all().filter((entry) => entry.outcome === 'revisit').reverse()) {
+      if (picked.length === WARM_UPS) break;
+      if (row.topic_id === topicId || picked.some((item) => item.topicId === row.topic_id)) continue;
+      const content = exerciseIds.get(row.topic_id)?.has(row.exercise_id) ? exerciseById.get(row.exercise_id) : undefined;
+      if (content) picked.push({ topicId: row.topic_id, content });
+    }
+    return picked;
   }
 
   // One round across every topic the learner has opened: what a test caught out first, then what still needs review,

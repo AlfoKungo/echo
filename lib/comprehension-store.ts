@@ -5,11 +5,11 @@ import type {
   ComprehensionPassage, ComprehensionSentence, ExerciseKind, ExerciseResult, ExerciseView,
   Gloss, PassageLine, StreamId, StreamState,
 } from '../comprehension-contract';
-import type { GrammarLevel } from '../contract';
+import type { ComprehensionDayCounts, GrammarLevel } from '../contract';
 import type { Bank } from './comprehension-content';
 import { wholeMatches, wordCount } from './comprehension-content';
 import { normalize, stripAccents } from './grammar-content';
-import { StoreError } from './store';
+import { recentStudyDays, StoreError, studyDay } from './store';
 
 export type Mode = 'listen' | 'read';
 export type ItemType = 'sentence' | 'dialogue' | 'text';
@@ -33,8 +33,9 @@ export interface ComprehensionStore {
   misses(): ComprehensionMiss[];
   lookupCounts(): { wordId: string; count: number }[];
   weakWords(): string[];
-  // The level each mode is choosing from now, and how many answers were given in all.
-  summary(): { levels: { mode: Mode; label: GrammarLevel }[]; answered: number };
+  // The level each mode is choosing from now, how many answers were given in all, and per study day of the last
+  // 14 (oldest first) how many Listen and Read answers were right (on your own or with help) out of how many.
+  summary(): { levels: { mode: Mode; label: GrammarLevel }[]; answered: number; comprehensionDays: ComprehensionDayCounts[] };
   // Unseen sentences and dialogues/texts at each level either mode is choosing from now (see BAND_BELOW/BAND_ABOVE).
   stock(): { level: GrammarLevel; sentences: number; passages: number }[];
   exportData(): unknown;
@@ -855,9 +856,17 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     weakWords: () => [...weakWordSet(knownStatus())],
     summary: () => {
       const value = levels();
+      const recent = recentStudyDays(now(), 14);
+      const comprehensionDays: ComprehensionDayCounts[] = recent.days.map((day) => ({ day, listen: { right: 0, total: 0 }, read: { right: 0, total: 0 } }));
+      const byDay = new Map(comprehensionDays.map((entry) => [entry.day, entry]));
+      for (const row of db.query<{ mode: Mode; outcome: Outcome; at: string }, [string]>('SELECT mode, outcome, answered_at AS at FROM comprehension_answers WHERE answered_at >= ?').all(recent.since.toISOString())) {
+        const count = byDay.get(studyDay(new Date(row.at)))?.[row.mode];
+        if (count) { count.total += 1; if (row.outcome !== 'incorrect') count.right += 1; }
+      }
       return {
         levels: MODES.map((mode) => ({ mode, label: LEVEL_OF(value.get(mode) ?? MIN_LEVEL) })),
         answered: db.query<{ count: number }, []>('SELECT count(*) AS count FROM comprehension_answers').get()!.count,
+        comprehensionDays,
       };
     },
     stock: () => {

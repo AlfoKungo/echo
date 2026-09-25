@@ -557,6 +557,11 @@ function extraPractice(type, data) {
   if (dialog.open) dialog.close();
   runMutation({ type, body: { direction, deck, count: Number(data.count), requestId: requestId(), ...(type === 'review-early' ? { mode: data.mode } : {}) } });
 }
+// A word missed often: how often, and the words of its deck missed most with it, side by side to tell apart.
+function troubleHTML(trouble) {
+  const list = trouble.alongside.length ? `<ul>${trouble.alongside.map((word) => `<li><span lang="fr">${frEsc(word.fr)}</span> <span class="en">${esc(word.en)}</span></li>`).join('')}</ul>` : '';
+  return `<div class="word-trouble"><p>Missed ${trouble.misses} times${trouble.alongside.length ? '. Often missed with it:' : '.'}</p>${list}</div>`;
+}
 // The flashcard itself: shared by the Vocabulary screen and the Practise stream.
 function cardHTML() {
   const card = snapshot.current;
@@ -566,7 +571,7 @@ function cardHTML() {
   const hidden = listening() && !revealed;
   const face = hidden
     ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button><p class="source-word">Listen, then tap to see the word</p>`
-    : `<h1 class="main-word" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}` : ''}`;
+    : `<h1 class="main-word" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : ''}`;
   const listenToggle = direction === 'fr-en' ? `<button class="audio-mode ${listenMode ? 'on' : ''}" data-action="listen-mode" aria-pressed="${listenMode}" aria-label="Listen only: ${listenMode ? 'on' : 'off'}" title="Hear the French word instead of reading it">${headphones}<span>Listen ${listenMode ? 'on' : 'off'}</span></button>` : '';
   return `<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : hidden ? 'Reveal the meaning' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content">${face}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}</div><button class="quiet" data-action="undo" ${!snapshot.undoId || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
@@ -665,7 +670,9 @@ function promptHTML(exercise) {
     const [verb, subject, tense] = exercise.source.split(' · ');
     return `<dl class="conjugate-parts"><div><dt>Verb</dt><dd lang="fr">${esc(verb)}</dd></div><div><dt>Subject</dt><dd lang="fr">${esc(subject)}</dd></div><div><dt>Tense</dt><dd lang="fr">${esc(tense)}</dd></div></dl>`;
   }
-  return `<p class="prompt-sentence" lang="${exercise.type === 'translate' ? 'en' : 'fr'}">${exercise.type === 'translate' ? esc(exercise.source) : frEsc(exercise.source)}</p>`;
+  // An English cue in the sentence ("(she does not lend them to us)") is glossed as itself; it is not made tappable.
+  const gloss = (exercise.gloss || []).filter((entry) => !(entry.fr === entry.en && /\s/.test(entry.fr)));
+  return `<p class="prompt-sentence" lang="${exercise.type === 'translate' ? 'en' : 'fr'}">${exercise.type === 'translate' ? esc(exercise.source) : glossedHTML(exercise.source, gloss)}</p>`;
 }
 function answerHTML(current, disabled) {
   const exercise = current.exercise;
@@ -735,7 +742,8 @@ function renderExercise() {
   const current = session.current;
   const last = session.index + 1 === session.total;
   const nextText = test ? (last ? 'See your score' : 'Next question') : (last ? 'Finish round' : 'Next sentence');
-  main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${backButton}${test ? '' : `<button class="quiet" data-action="rule" aria-haspopup="dialog" ${locked() ? 'disabled' : ''}>The rule</button>`}</div><div class="exercise-head"><h1>${esc(heading)}</h1><span class="progress">${test ? 'Test · ' : ''}${session.index + 1} / ${session.total}</span></div>${unitScope ? `<p class="question-topic">${esc(current.exercise.topicTitle)}</p>` : ''}${exerciseCoreHTML(grammar, test, nextText)}</section>`;
+  const borrowed = unitScope || (grammar.topic && current.exercise.topicId !== grammar.topic.id);
+  main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${backButton}${test ? '' : `<button class="quiet" data-action="rule" aria-haspopup="dialog" ${locked() ? 'disabled' : ''}>The rule</button>`}</div><div class="exercise-head"><h1>${esc(heading)}</h1><span class="progress">${test ? 'Test · ' : ''}${session.index + 1} / ${session.total}</span></div>${borrowed ? `<p class="question-topic">${unitScope ? '' : 'From earlier · '}${esc(current.exercise.topicTitle)}</p>` : ''}${exerciseCoreHTML(grammar, test, nextText)}</section>`;
 }
 function resultHTML(result, test, unitTest) {
   const missed = result.outcome !== 'independent';
@@ -860,8 +868,9 @@ function glossedHTML(text, glosses) {
   }
   return html + frEsc(text.slice(at));
 }
+// A grammar question's glosses while one is on screen, else the Listen/Read item's.
 function glossFor(fr) {
-  const lists = [streamState?.result?.gloss, streamState?.current?.gloss];
+  const lists = grammarOnScreen() ? [activeGrammar()?.session?.current?.exercise?.gloss] : [streamState?.result?.gloss, streamState?.current?.gloss];
   for (const list of lists) { const found = (list || []).find((entry) => entry.fr === fr); if (found) return found; }
   return null;
 }
@@ -1054,6 +1063,24 @@ function renderStatistics() {
       ${shown.gained || shown.lost ? '' : '<p class="st-sub">Nothing practised</p>'}
       <div class="st-points">${pointBars}</div><div class="st-days-axis">${statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>
       <p class="st-cap">The same points your word scores are made of: +2 for a word you knew, −3 for one you missed, +0.5 for a word heard to the end on the Walkman, and your ✓ and ✗ marks count like knowing or missing it. Each bar is the day's total: above the line when you gained more than you lost, below it when you lost more. Tap a day to see its total.</p></div>`;
+  // Each row is the share right per day, always out of 100%, with its two-week share beside the label.
+  const accuracyRow = (label, counts) => {
+    const right = counts.reduce((sum, count) => sum + count.right, 0), total = counts.reduce((sum, count) => sum + count.total, 0);
+    const cells = counts.map((count, index) => {
+      const when = esc(dayLabel(`${statistics.days[index].day}T12:00`));
+      return count.total
+        ? `<div title="${when}: ${Math.round(count.right / count.total * 100)}% (${count.right} of ${count.total})"><span class="k" style="height:${count.right / count.total * 100}%"></span></div>`
+        : `<div title="${when}: nothing answered"><span class="empty"></span></div>`;
+    }).join('');
+    return `<div class="st-acc-head"><span>${label}</span><strong>${total ? `${Math.round(right / total * 100)}%` : '—'}</strong></div><div class="st-days st-acc">${cells}</div>`;
+  };
+  const comprehensionDays = statistics.comprehensionDays ?? [];
+  const accuracyBlock = `<div class="st-block"><h2>Right answers, last two weeks</h2>
+      ${accuracyRow('Words', statistics.days.map((day) => ({ right: day.knew, total: day.knew + day.missed })))}
+      ${accuracyRow('Listen', comprehensionDays.map((day) => day.listen))}
+      ${accuracyRow('Read', comprehensionDays.map((day) => day.read))}
+      <div class="st-days-axis">${dayAxis}</div>
+      <p class="st-cap">Each bar is the share of that day’s answers you got right, out of 100%; the number beside each row covers both weeks. In Listen and Read, an answer right with help counts as right.</p></div>`;
   const level = (mode) => statistics.levels.find((entry) => entry.mode === mode)?.label ?? 'A1';
   const facts = [[level('listen'), 'Listen level'], [level('read'), 'Read level'], [statistics.answered, 'Listen & Read questions answered'], [statistics.grammarTopics, statistics.grammarTopics === 1 ? 'grammar topic practised' : 'grammar topics practised'], [statistics.walkmanHeard, 'words heard on the Walkman'], [counts.scheduled, 'known words waiting for review']];
   main.innerHTML = `${noticeHTML()}<section class="st">${header}
@@ -1066,6 +1093,7 @@ function renderStatistics() {
       <p class="st-cap">Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. Tap a bar to see its words.</p>
       ${binList}</div>
     ${pointsBlock}
+    ${accuracyBlock}
     <div class="st-block"><h2>Your ${total.toLocaleString('en')} words</h2><div class="st-stack">${stack}</div><div class="st-legend">${legend}</div></div>
     <div class="st-block"><h2>Hardest right now</h2>${hard}</div>
     <div class="st-block"><h2>By category</h2><ol class="st-rows">${categories}</ol><p class="st-cap">Shaky, steady or solid is the average score of the words you’ve started there.</p></div>
@@ -1090,7 +1118,11 @@ const songTime = (seconds) => seconds ? `${Math.floor(seconds / 60)}:${String(se
 function songStatusLine(song) {
   if (song.status === 'reading') return 'Reading…';
   if (song.status === 'ready') return `Ready to review · ${song.candidates.filter((entry) => !entry.existing).length} new words`;
-  if (song.status === 'added') return `Added · ${song.added.length} ${song.added.length === 1 ? 'word' : 'words'}`;
+  if (song.status === 'added') {
+    // New words from every deck share one daily allowance, so "waiting" is how many are still to come in.
+    const deck = songList?.decks?.[song.category];
+    return `Added · ${song.added.length} ${song.added.length === 1 ? 'word' : 'words'}${deck ? ` · ${deck.today} today · ${deck.waiting} waiting` : ''}`;
+  }
   return 'Could not be read';
 }
 function renderSongs() {
@@ -1297,12 +1329,14 @@ function toggleClips(fromStart = false) {
   if (!fromStart && clipRun?.key === key) { stopAudio(); return; }
   playClips(view.audio, !fromStart && clipSpot?.key === key ? Math.min(clipSpot.index, view.audio.length - 1) : 0);
 }
-// Tapping a French word shows its meaning; before answering in Read that counts as help.
+// Tapping a French word shows its meaning; before answering in Read that counts as help. In grammar it is free:
+// the question tests the grammar, not the words around it.
 function lookupGloss(fr) {
   const entry = glossFor(fr);
   if (!entry) return;
   glossWord = entry; addStatus = '';
   renderGlossSheet();
+  if (grammarOnScreen()) return;
   const view = streamState?.current;
   if (!view || streamState.result || view.mode !== 'read' || (streamState.lookups || []).includes(fr)) return;
   const id = streamId;
@@ -1603,6 +1637,7 @@ function startScope(key) {
   runMutation({ type: 'grammar-start', scope: key, body: { scope: key, requestId: requestId() } });
 }
 function activeGrammar() { return mixed() && mixedSource === 'grammar' ? review : grammar; }
+function grammarOnScreen() { return screen === 'exercise' || (mixed() && mixedSource === 'grammar'); }
 function grammarMutation(type, extra = {}) {
   const snap = activeGrammar(); const session = snap?.session; const current = session?.current;
   if (locked() || !current || session.complete) return;
@@ -1779,7 +1814,7 @@ document.addEventListener('submit', (event) => {
 });
 document.addEventListener('keydown', (event) => {
   if (event.defaultPrevented || event.repeat || aboutDialog.open || dialog.open || busy || loading || locked()) return;
-  const grammarScreen = screen === 'exercise' || (mixed() && mixedSource === 'grammar');
+  const grammarScreen = grammarOnScreen();
   if (grammarScreen && (event.metaKey || event.ctrlKey) && event.key === 'Enter') { event.preventDefault(); if (activeGrammar()?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }
   // The verb-form field is one line, so Enter checks it (and continues once it is settled).
   if (grammarScreen && event.key === 'Enter' && !event.shiftKey && event.target.matches('input#answer')) { event.preventDefault(); if (activeGrammar()?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }

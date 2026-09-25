@@ -534,7 +534,23 @@
           "why": "Comment asks in what way or by what means, and would be answered à vélo or en train. À la mer is not a means of travel."
         }
       ],
-      "row": "où"
+      "row": "où",
+      "gloss": [
+        {
+          "fr": "vas",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        }
+      ]
     },
     {
       "id": "question-words-where-when-how-choose-2",
@@ -567,7 +583,32 @@
           "why": "Comment asks in what way something happens. Demain soir tells you the moment the film starts, not the manner."
         }
       ],
-      "row": "quand"
+      "row": "quand",
+      "gloss": [
+        {
+          "fr": "est-ce que",
+          "en": "is it that"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "commence",
+          "en": "starts (commencer)",
+          "word": "verbs-047"
+        },
+        {
+          "fr": "Demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "question-words-where-when-how-complete",
@@ -607,7 +648,24 @@
           "why": "Combien asks for a quantity or a price, answered by a number. À vélo is neither."
         }
       ],
-      "row": "comment"
+      "row": "comment",
+      "gloss": [
+        {
+          "fr": "vas",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "travail",
+          "en": "work",
+          "word": "work-001"
+        },
+        {
+          "fr": "vélo",
+          "en": "bike",
+          "word": "travel-008"
+        }
+      ]
     },
     {
       "id": "question-words-where-when-how-translate",
@@ -683,7 +741,19 @@
           "why": "Comment would ask in what way someone lives — alone, well, cheaply. À Lyon is a place."
         }
       ],
-      "row": "où"
+      "row": "où",
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "habites",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        }
+      ]
     },
     {
       "id": "question-words-why-choose",
@@ -714,6 +784,31 @@
             "Combien"
           ],
           "why": "Combien asks about a quantity or a price, answered by a number. The reply here explains a cause."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "restes",
+          "en": "stay (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "fr": "Parce que",
+          "en": "because"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "malade",
+          "en": "ill"
         }
       ]
     },
@@ -755,7 +850,28 @@
           "why": "Car links two clauses inside one sentence (Je ne mange pas, car…). It does not open a standalone reply."
         }
       ],
-      "row": "a consonant"
+      "row": "a consonant",
+      "gloss": [
+        {
+          "fr": "Pourquoi",
+          "en": "why",
+          "word": "essentials-037"
+        },
+        {
+          "fr": "manges",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "n’ai",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "faim",
+          "en": "hunger"
+        }
+      ]
     },
     {
       "id": "question-words-why-complete-2",
@@ -795,7 +911,33 @@
           "why": "Pourquoi asks the question. The reply has to give the cause, not repeat the question word."
         }
       ],
-      "row": "a vowel or silent h"
+      "row": "a vowel or silent h",
+      "gloss": [
+        {
+          "fr": "Pourquoi",
+          "en": "why",
+          "word": "essentials-037"
+        },
+        {
+          "fr": "est-ce",
+          "en": "is it that"
+        },
+        {
+          "fr": "court",
+          "en": "runs (courir)",
+          "word": "verbs-040"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "retard",
+          "en": "lateness",
+          "word": "travel-059"
+        }
+      ]
     },
     {
       "id": "question-words-why-translate",
@@ -877,7 +1019,22 @@
           "why": "That turns the reply into a question about yourself instead of giving the cause."
         }
       ],
-      "row": "a consonant"
+      "row": "a consonant",
+      "gloss": [
+        {
+          "fr": "Parce",
+          "en": "because"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fatigué",
+          "en": "tired"
+        }
+      ]
     },
     {
       "id": "question-words-combien-choose",
@@ -910,7 +1067,28 @@
           "why": "Les is the definite article (“the sisters”) and points at a known group. A quantity question points at no particular sisters."
         }
       ],
-      "row": "how many + noun"
+      "row": "how many + noun",
+      "gloss": [
+        {
+          "fr": "Combien",
+          "en": "how many",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "sœurs",
+          "en": "sisters",
+          "word": "people-011"
+        },
+        {
+          "fr": "est-ce que",
+          "en": "is it that"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        }
+      ]
     },
     {
       "id": "question-words-combien-complete",
@@ -950,7 +1128,28 @@
           "why": "Pourquoi asks for a reason and would be answered with parce que. A price is not a reason."
         }
       ],
-      "row": "a price or an amount"
+      "row": "a price or an amount",
+      "gloss": [
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "pull",
+          "en": "sweater",
+          "word": "people-069"
+        },
+        {
+          "fr": "Quarante",
+          "en": "forty",
+          "word": "health-time-096"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        }
+      ]
     },
     {
       "id": "question-words-combien-build",
@@ -1074,7 +1273,24 @@
           "why": "The e is only dropped before a vowel sound, and pommes begins with a consonant."
         }
       ],
-      "row": "how many + noun"
+      "row": "how many + noun",
+      "gloss": [
+        {
+          "fr": "Combien",
+          "en": "how many",
+          "word": "essentials-038"
+        },
+        {
+          "fr": "pommes",
+          "en": "apples",
+          "word": "food-021"
+        },
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        }
+      ]
     },
     {
       "id": "question-words-qui-choose",
@@ -1107,7 +1323,24 @@
           "why": "Quoi asks about a thing, and it only appears after a preposition or at the end of a spoken question, never in front of the verb."
         }
       ],
-      "row": "subject (who does it)"
+      "row": "subject (who does it)",
+      "gloss": [
+        {
+          "fr": "veut",
+          "en": "wants (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "Moi",
+          "en": "me",
+          "word": "essentials-025"
+        }
+      ]
     },
     {
       "id": "question-words-qui-complete",
@@ -1147,7 +1380,26 @@
           "why": "Quel needs a noun right behind it and asks which one out of a set, not which person."
         }
       ],
-      "row": "object (who you see)"
+      "row": "object (who you see)",
+      "gloss": [
+        {
+          "fr": "est-ce que",
+          "en": "is it that"
+        },
+        {
+          "fr": "invites",
+          "en": "invite (inviter)"
+        },
+        {
+          "fr": "ta",
+          "en": "your"
+        },
+        {
+          "fr": "fête",
+          "en": "party",
+          "word": "people-054"
+        }
+      ]
     },
     {
       "id": "question-words-qui-translate",
@@ -1225,7 +1477,23 @@
           "why": "Que asks about a thing. Marc is a person, so the replacement must be the person word."
         }
       ],
-      "row": "subject (who does it)"
+      "row": "subject (who does it)",
+      "gloss": [
+        {
+          "fr": "Marc",
+          "en": "Marc (a name)"
+        },
+        {
+          "fr": "cuisine",
+          "en": "cooks (cuisiner)",
+          "word": "verbs-061"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "question-words-qui-build",
@@ -1293,7 +1561,27 @@
           "why": "Quoi does follow a preposition, but it asks about a thing — a tool, an object. Julie is a person."
         }
       ],
-      "row": "avec (with)"
+      "row": "avec (with)",
+      "gloss": [
+        {
+          "fr": "vas",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "cinéma",
+          "en": "cinema"
+        },
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "Julie",
+          "en": "Julie (a name)"
+        }
+      ]
     },
     {
       "id": "question-words-preposition-qui-complete",
@@ -1333,7 +1621,33 @@
           "why": "Que cannot follow a preposition. After pour, a person is asked about with a different word."
         }
       ],
-      "row": "pour (for)"
+      "row": "pour (for)",
+      "gloss": [
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "cadeau",
+          "en": "gift",
+          "word": "people-055"
+        },
+        {
+          "fr": "Pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        }
+      ]
     },
     {
       "id": "question-words-preposition-qui-translate",
@@ -1443,7 +1757,23 @@
           "why": "Inversion joins the verb and the pronoun with a hyphen; without it the pair is not read as inverted."
         }
       ],
-      "row": "avec (with)"
+      "row": "avec (with)",
+      "gloss": [
+        {
+          "fr": "travailles",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "Sophie",
+          "en": "Sophie (a name)"
+        }
+      ]
     },
     {
       "id": "question-words-preposition-qui-repair",
@@ -1483,7 +1813,19 @@
           "why": "The missing word is added, but the rest of the sentence was fine and did not need inverting."
         }
       ],
-      "row": "à (parler à, penser à)"
+      "row": "à (parler à, penser à)",
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "parles",
+          "en": "talk (parler)",
+          "word": "verbs-007"
+        }
+      ]
     },
     {
       "id": "question-words-que-choose-1",
@@ -1516,7 +1858,19 @@
           "why": "Quoi only appears after a preposition or at the end of a spoken question; it cannot open a written one."
         }
       ],
-      "row": "verb-subject (inversion)"
+      "row": "verb-subject (inversion)",
+      "gloss": [
+        {
+          "fr": "fais",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "question-words-que-choose-2",
@@ -1549,7 +1903,19 @@
           "why": "Qui asks about a person. Ce soir shows that the question is about an activity, a thing."
         }
       ],
-      "row": "subject + verb"
+      "row": "subject + verb",
+      "gloss": [
+        {
+          "fr": "fais",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "question-words-que-rewrite-1",
@@ -1589,7 +1955,18 @@
           "why": "That asks which person you are eating. The original question is about a thing."
         }
       ],
-      "row": "subject + verb"
+      "row": "subject + verb",
+      "gloss": [
+        {
+          "fr": "Que",
+          "en": "what"
+        },
+        {
+          "fr": "manges",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        }
+      ]
     },
     {
       "id": "question-words-que-rewrite-2",
@@ -1629,7 +2006,18 @@
           "why": "Quoi cannot open a written question; it lives after a preposition or at the end of a spoken one."
         }
       ],
-      "row": "verb-subject (inversion)"
+      "row": "verb-subject (inversion)",
+      "gloss": [
+        {
+          "fr": "Qu’est-ce que",
+          "en": "what"
+        },
+        {
+          "fr": "cherchez",
+          "en": "look for (chercher)",
+          "word": "verbs-027"
+        }
+      ]
     },
     {
       "id": "question-words-que-repair",
@@ -1668,6 +2056,17 @@
             "Qu’est-ce tu veux ?"
           ],
           "why": "Half the opening was removed: est-ce still needs its linking word before the subject."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Qu’est-ce que",
+          "en": "what"
+        },
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
         }
       ]
     },
@@ -1751,7 +2150,18 @@
           "why": "After est-ce, qui opens a subject question and cannot be followed by another subject like il."
         }
       ],
-      "row": "subject starting with a vowel"
+      "row": "subject starting with a vowel",
+      "gloss": [
+        {
+          "fr": "Qu’est-ce",
+          "en": "what"
+        },
+        {
+          "fr": "regarde",
+          "en": "watches (regarder)",
+          "word": "verbs-011"
+        }
+      ]
     },
     {
       "id": "question-words-quoi-choose",
@@ -1784,7 +2194,23 @@
           "why": "Quel has to come with a noun (de quel stylo) and asks which one out of several, not what."
         }
       ],
-      "row": "de (parler de, avoir besoin de)"
+      "row": "de (parler de, avoir besoin de)",
+      "gloss": [
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "besoin",
+          "en": "need"
+        },
+        {
+          "fr": "stylo",
+          "en": "pen",
+          "word": "work-045"
+        }
+      ]
     },
     {
       "id": "question-words-quoi-complete",
@@ -1818,7 +2244,24 @@
           "why": "Quel must be followed by a noun and asks which one, not what."
         }
       ],
-      "row": "avec (with)"
+      "row": "avec (with)",
+      "gloss": [
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "écris",
+          "en": "write (écrire)",
+          "word": "verbs-073"
+        },
+        {
+          "fr": "crayon",
+          "en": "pencil",
+          "word": "work-046"
+        }
+      ]
     },
     {
       "id": "question-words-quoi-translate",
@@ -1906,7 +2349,23 @@
           "why": "Dropping avec loses the “with”, and this word still cannot stand in front of a subject."
         }
       ],
-      "row": "avec (with)"
+      "row": "avec (with)",
+      "gloss": [
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "coupes",
+          "en": "cut (couper)"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        }
+      ]
     },
     {
       "id": "question-words-quoi-build",
@@ -1973,7 +2432,19 @@
           "why": "That form is masculine and plural. Heure here is one single feminine noun."
         }
       ],
-      "row": "singular"
+      "row": "singular",
+      "gloss": [
+        {
+          "fr": "heure",
+          "en": "hour",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "question-words-quel-choose-2",
@@ -2006,7 +2477,19 @@
           "why": "That form is singular, while films carries an s and names several of them."
         }
       ],
-      "row": "plural"
+      "row": "plural",
+      "gloss": [
+        {
+          "fr": "films",
+          "en": "films",
+          "word": "work-089"
+        },
+        {
+          "fr": "aimes",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        }
+      ]
     },
     {
       "id": "question-words-quel-complete-1",
@@ -2040,7 +2523,26 @@
           "why": "That form is plural. Couleur here is one single colour."
         }
       ],
-      "row": "singular"
+      "row": "singular",
+      "gloss": [
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ta",
+          "en": "your"
+        },
+        {
+          "fr": "couleur",
+          "en": "colour"
+        },
+        {
+          "fr": "préférée",
+          "en": "favourite"
+        }
+      ]
     },
     {
       "id": "question-words-quel-complete-2",
@@ -2074,7 +2576,19 @@
           "why": "That is the masculine plural, and chaussure is feminine (une chaussure)."
         }
       ],
-      "row": "plural"
+      "row": "plural",
+      "gloss": [
+        {
+          "fr": "chaussures",
+          "en": "shoes",
+          "word": "people-083"
+        },
+        {
+          "fr": "préfères",
+          "en": "prefer (préférer)",
+          "word": "verbs-053"
+        }
+      ]
     },
     {
       "id": "question-words-quel-repair",
@@ -2114,7 +2628,22 @@
           "why": "Making the noun singular changes the question instead of repairing the agreement, and langue is feminine anyway."
         }
       ],
-      "row": "plural"
+      "row": "plural",
+      "gloss": [
+        {
+          "fr": "Quel",
+          "en": "which"
+        },
+        {
+          "fr": "langues",
+          "en": "languages"
+        },
+        {
+          "fr": "parles",
+          "en": "speak (parler)",
+          "word": "verbs-007"
+        }
+      ]
     },
     {
       "id": "question-words-quel-translate",
@@ -2224,7 +2753,19 @@
           "why": "The question word slid to the end. That happens in speech, but in writing it opens the sentence."
         }
       ],
-      "row": "est-ce que"
+      "row": "est-ce que",
+      "gloss": [
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "vas",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        }
+      ]
     },
     {
       "id": "question-words-structures-rewrite-2",
@@ -2264,7 +2805,23 @@
           "why": "The two words are in the right order, but an inverted pair is joined by a hyphen."
         }
       ],
-      "row": "inversion"
+      "row": "inversion",
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "est-ce que",
+          "en": "is it that"
+        },
+        {
+          "fr": "partez",
+          "en": "leave (partir)",
+          "word": "verbs-031"
+        }
+      ]
     },
     {
       "id": "question-words-structures-build",
@@ -2350,6 +2907,22 @@
             "Est-ce que tu travailles où ?"
           ],
           "why": "The question word slid to the end. That happens in speech, but in writing it opens the sentence."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "est-ce que",
+          "en": "is it that"
+        },
+        {
+          "fr": "travailles",
+          "en": "work (travailler)",
+          "word": "verbs-069"
         }
       ]
     }

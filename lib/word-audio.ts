@@ -1,15 +1,17 @@
 // Records words added from songs with the same scripts as the built-in deck: the French clip (render-audio.py),
 // the English one (render-english.py), then the Walkman copies (build-walkman-clips.py). A word can be practised
 // once its French clip exists; one that no take passes for stays out of practice and is counted as failed. A word
-// is re-recorded (after a restart, say) until all four of its clips exist, since the Walkman needs the English too.
+// is re-recorded (after a restart, say) until all four of its clips exist, since the Walkman needs the English too,
+// but only while it has failed fewer than three times (lib/recording-attempts.ts).
 import { existsSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Word } from '../contract';
+import type { Attempts } from './recording-attempts';
 
 export type RunScript = (args: string[]) => Promise<{ ok: boolean; error: string }>;
 export type WordAudioStatus = { pending: number; recording: boolean; failed: string[] };
 
-export function createWordAudio(options: { root: string; extraWordsPath: string; addedWords: () => Word[]; run: RunScript }) {
+export function createWordAudio(options: { root: string; extraWordsPath: string; addedWords: () => Word[]; run: RunScript; attempts: Attempts }) {
   const { root, extraWordsPath } = options;
   const pending = new Set<string>();
   const failed = new Set<string>();
@@ -34,13 +36,19 @@ export function createWordAudio(options: { root: string; extraWordsPath: string;
         await options.run(['scripts/render-english.py', '--extra-words', extraWordsPath, '--ids', ids]);
         await options.run(['scripts/build-walkman-clips.py', '--extra-words', extraWordsPath]);
         for (const id of batch) { pending.delete(id); if (!ready(id)) failed.add(id); }
+        options.attempts.note(batch, (id) => !complete(id));
       }
     } finally { recording = false; }
   }
 
   // Added words still missing a clip, e.g. after a restart mid-recording. A word no take passes for is tried
-  // again once per start.
-  function resume(): void { enqueue(options.addedWords().map((word) => word.id)); }
+  // again on each start until it has failed three times.
+  function resume(): void {
+    const incomplete = options.addedWords().map((word) => word.id).filter((id) => !complete(id));
+    const skipped = options.attempts.skipped(incomplete);
+    if (skipped.length) console.log(`word audio: not retrying ${skipped.join(', ')} (failed 3 times; see data/recording-attempts.json)`);
+    enqueue(options.attempts.allowed(incomplete));
+  }
 
   return { ready, enqueue, resume, status: (): WordAudioStatus => ({ pending: pending.size, recording, failed: [...failed] }) };
 }

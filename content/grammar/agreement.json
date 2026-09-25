@@ -589,7 +589,17 @@
           "why": "The s marks several items. Une tells you there is exactly one shoe here."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "sac",
+          "en": "bag"
+        },
+        {
+          "fr": "noir",
+          "en": "black"
+        }
+      ]
     },
     {
       "id": "agreement-feminine-build",
@@ -665,7 +675,14 @@
           "why": "The s marks several items and there is no feminine mark; maison is one feminine noun."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     },
     {
       "id": "agreement-feminine-repair",
@@ -699,7 +716,18 @@
           "why": "That ending is feminine plural. Une tells you there is a single car."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "vert",
+          "en": "green"
+        }
+      ]
     },
     {
       "id": "agreement-masculine-plural-rewrite",
@@ -733,7 +761,18 @@
           "why": "That adjective form is feminine. Sac is a masculine noun, so no e belongs on it."
         }
       ],
-      "row": "masculine plural"
+      "row": "masculine plural",
+      "gloss": [
+        {
+          "fr": "petit",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "sac",
+          "en": "bag"
+        }
+      ]
     },
     {
       "id": "agreement-masculine-plural-build",
@@ -809,7 +848,13 @@
           "why": "That is the feminine plural: the number is right, but sac is a masculine noun."
         }
       ],
-      "row": "masculine plural"
+      "row": "masculine plural",
+      "gloss": [
+        {
+          "fr": "sacs",
+          "en": "bags"
+        }
+      ]
     },
     {
       "id": "agreement-masculine-plural-repair",
@@ -843,7 +888,18 @@
           "why": "That adjective is feminine plural. The prompt says chats is masculine, so the e is wrong."
         }
       ],
-      "row": "masculine plural"
+      "row": "masculine plural",
+      "gloss": [
+        {
+          "fr": "chats",
+          "en": "cats",
+          "word": "nature-012"
+        },
+        {
+          "fr": "noir",
+          "en": "black"
+        }
+      ]
     },
     {
       "id": "agreement-feminine-plural-rewrite",
@@ -877,7 +933,19 @@
           "why": "That adjective is masculine plural. Maison is feminine, so the feminine mark must stay."
         }
       ],
-      "row": "feminine plural"
+      "row": "feminine plural",
+      "gloss": [
+        {
+          "fr": "petite",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     },
     {
       "id": "agreement-feminine-plural-build",
@@ -953,7 +1021,14 @@
           "why": "That is the plain masculine singular, with neither mark. The noun is feminine and plural."
         }
       ],
-      "row": "feminine plural"
+      "row": "feminine plural",
+      "gloss": [
+        {
+          "fr": "voitures",
+          "en": "cars",
+          "word": "travel-004"
+        }
+      ]
     },
     {
       "id": "agreement-feminine-plural-repair",
@@ -987,7 +1062,18 @@
           "why": "The plural s is there but the feminine mark is not. Chaussure is a feminine noun."
         }
       ],
-      "row": "feminine plural"
+      "row": "feminine plural",
+      "gloss": [
+        {
+          "fr": "chaussures",
+          "en": "shoes",
+          "word": "people-083"
+        },
+        {
+          "fr": "noir",
+          "en": "black"
+        }
+      ]
     },
     {
       "id": "agreement-eux-if-er-choose",
@@ -1027,7 +1113,29 @@
           "why": "The feminine spelling is right but the s makes it plural. Cette jupe is one skirt."
         }
       ],
-      "row": "-er"
+      "row": "-er",
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "jupe",
+          "en": "skirt",
+          "word": "people-068"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "trop",
+          "en": "too",
+          "word": "essentials-097"
+        }
+      ]
     },
     {
       "id": "agreement-eux-if-er-complete",
@@ -1061,7 +1169,27 @@
           "why": "The feminine ending is right, but the s makes it plural and Léa is one person."
         }
       ],
-      "row": "-eux"
+      "row": "-eux",
+      "gloss": [
+        {
+          "fr": "Aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "Léa",
+          "en": "Léa (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "heureux",
+          "en": "happy",
+          "word": "qualities-063"
+        }
+      ]
     },
     {
       "id": "agreement-eux-if-er-translate",
@@ -1135,7 +1263,32 @@
           "why": "The feminine ending is right but the s makes it plural, and there is one grandmother."
         }
       ],
-      "row": "-if"
+      "row": "-if",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "grand-mère",
+          "en": "grandmother",
+          "word": "people-013"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "actif",
+          "en": "active"
+        }
+      ]
     },
     {
       "id": "agreement-eux-if-er-build",
@@ -1204,7 +1357,22 @@
           "why": "The feminine spelling is right, but the s makes it plural and there is one neighbour."
         }
       ],
-      "row": "-en"
+      "row": "-en",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "voisine",
+          "en": "neighbour"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "agreement-doubled-consonant-complete",
@@ -1238,7 +1406,29 @@
           "why": "The feminine spelling is right, but the s makes it plural and there is one soup."
         }
       ],
-      "row": "-on"
+      "row": "-on",
+      "gloss": [
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        }
+      ]
     },
     {
       "id": "agreement-doubled-consonant-translate",
@@ -1307,7 +1497,27 @@
           "why": "Cousine is feminine, so the possessive in front of it must be the feminine one."
         }
       ],
-      "row": "-en"
+      "row": "-en",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "cousin",
+          "en": "cousin",
+          "word": "people-021"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "canadien",
+          "en": "Canadian"
+        }
+      ]
     },
     {
       "id": "agreement-doubled-consonant-build",
@@ -1376,7 +1586,19 @@
           "why": "The feminine spelling is right, but the s makes it plural and une robe is a single dress."
         }
       ],
-      "row": "blanc"
+      "row": "blanc",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "robe",
+          "en": "dress",
+          "word": "people-067"
+        }
+      ]
     },
     {
       "id": "agreement-special-complete",
@@ -1410,7 +1632,23 @@
           "why": "The feminine spelling is right, but the s makes it plural and there is one road."
         }
       ],
-      "row": "long"
+      "row": "long",
+      "gloss": [
+        {
+          "fr": "route",
+          "en": "road",
+          "word": "travel-003"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "long",
+          "en": "long"
+        }
+      ]
     },
     {
       "id": "agreement-special-translate",
@@ -1480,7 +1718,33 @@
           "why": "The plural s does not belong: cette rue is one single street."
         }
       ],
-      "row": "long"
+      "row": "long",
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this",
+          "word": "essentials-047"
+        },
+        {
+          "fr": "rue",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "long",
+          "en": "long"
+        }
+      ]
     },
     {
       "id": "agreement-already-e-choose",
@@ -1513,7 +1777,23 @@
           "why": "The s marks a plural. Ma voiture is one car."
         }
       ],
-      "row": "rouge"
+      "row": "rouge",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "agreement-already-e-rewrite",
@@ -1553,7 +1833,28 @@
           "why": "Sœur is feminine, so the possessive in front of it must be the feminine one."
         }
       ],
-      "row": "jeune"
+      "row": "jeune",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "jeune",
+          "en": "young",
+          "word": "qualities-010"
+        }
+      ]
     },
     {
       "id": "agreement-already-e-translate",
@@ -1621,7 +1922,28 @@
           "why": "An extra e was added as if for the feminine; this adjective never takes one, and that is not what is missing."
         }
       ],
-      "row": "jeune"
+      "row": "jeune",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "sœurs",
+          "en": "sisters",
+          "word": "people-011"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "jeune",
+          "en": "young",
+          "word": "qualities-010"
+        }
+      ]
     },
     {
       "id": "agreement-al-eau-choose",
@@ -1661,7 +1983,28 @@
           "why": "That is the feminine plural. The prompt says amis is masculine, so the e does not belong."
         }
       ],
-      "row": "-al"
+      "row": "-al",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        }
+      ]
     },
     {
       "id": "agreement-al-eau-complete",
@@ -1695,7 +2038,23 @@
           "why": "That is the feminine plural. Problème is a masculine noun."
         }
       ],
-      "row": "-al"
+      "row": "-al",
+      "gloss": [
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "problèmes",
+          "en": "problems"
+        },
+        {
+          "fr": "normal",
+          "en": "normal",
+          "word": "qualities-085"
+        }
+      ]
     },
     {
       "id": "agreement-al-eau-rewrite",
@@ -1729,7 +2088,24 @@
           "why": "The subject is plural now, so the verb has to be plural as well."
         }
       ],
-      "row": "-eau"
+      "row": "-eau",
+      "gloss": [
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "beau",
+          "en": "beautiful",
+          "word": "qualities-005"
+        }
+      ]
     },
     {
       "id": "agreement-al-eau-translate",
@@ -1838,7 +2214,24 @@
           "why": "That is the feminine plural. Gâteau is a masculine noun, so the feminine ending is wrong."
         }
       ],
-      "row": "-x"
+      "row": "-x",
+      "gloss": [
+        {
+          "fr": "Ces",
+          "en": "these",
+          "word": "essentials-048"
+        },
+        {
+          "fr": "gâteaux",
+          "en": "cakes",
+          "word": "food-054"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "agreement-s-x-unchanged-complete",
@@ -1872,7 +2265,28 @@
           "why": "That is the feminine plural. Chat is a masculine noun."
         }
       ],
-      "row": "-s"
+      "row": "-s",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "chats",
+          "en": "cats",
+          "word": "nature-012"
+        },
+        {
+          "fr": "gris",
+          "en": "grey"
+        }
+      ]
     },
     {
       "id": "agreement-s-x-unchanged-repair",
@@ -1906,7 +2320,32 @@
           "why": "That is the feminine singular: wrong gender, and it drops the plural as well."
         }
       ],
-      "row": "-x"
+      "row": "-x",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "très",
+          "en": "very",
+          "word": "essentials-096"
+        },
+        {
+          "fr": "heureuxs",
+          "en": "happy"
+        }
+      ]
     },
     {
       "id": "agreement-s-x-unchanged-translate",
@@ -1980,7 +2419,19 @@
           "why": "This piles a feminine and a plural ending onto a colour word that takes neither."
         }
       ],
-      "row": "marron"
+      "row": "marron",
+      "gloss": [
+        {
+          "fr": "porte",
+          "en": "wears (porter)",
+          "word": "verbs-042"
+        },
+        {
+          "fr": "chaussures",
+          "en": "shoes",
+          "word": "people-083"
+        }
+      ]
     },
     {
       "id": "agreement-colours-complete",
@@ -2017,7 +2468,27 @@
           "why": "Only the adjective goes in the blank; the words around it are already in the sentence."
         }
       ],
-      "row": "orange"
+      "row": "orange",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "sacs",
+          "en": "bags"
+        },
+        {
+          "fr": "orange",
+          "en": "orange"
+        }
+      ]
     },
     {
       "id": "agreement-colours-repair",
@@ -2046,7 +2517,23 @@
           "why": "These add feminine endings to a colour word that never changes, and yeux is masculine anyway."
         }
       ],
-      "row": "marron"
+      "row": "marron",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "yeux",
+          "en": "eyes",
+          "word": "health-time-006"
+        },
+        {
+          "fr": "marrons",
+          "en": "brown"
+        }
+      ]
     },
     {
       "id": "agreement-colours-build",
@@ -2116,7 +2603,22 @@
           "why": "That is the feminine plural. As soon as one man belongs to the group, French drops the feminine."
         }
       ],
-      "row": "masculine + feminine"
+      "row": "masculine + feminine",
+      "gloss": [
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        },
+        {
+          "fr": "Marie",
+          "en": "Marie (a name)"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "agreement-mixed-group-translate",
@@ -2192,7 +2694,22 @@
           "why": "Two people joined by et need a plural verb, and the adjective has to follow."
         }
       ],
-      "row": "masculine + feminine"
+      "row": "masculine + feminine",
+      "gloss": [
+        {
+          "fr": "Julie",
+          "en": "Julie (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fatiguée",
+          "en": "tired"
+        }
+      ]
     },
     {
       "id": "agreement-mixed-group-repair",
@@ -2226,7 +2743,37 @@
           "why": "An s was added to a word that already ends in x; that ending never takes one."
         }
       ],
-      "row": "masculine + feminine"
+      "row": "masculine + feminine",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sérieuses",
+          "en": "serious",
+          "word": "qualities-068"
+        }
+      ]
     }
   ]
 }

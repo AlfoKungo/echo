@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { ComprehensionLane } from '../comprehension-contract';
 import { createTextTopup } from '../lib/text-topup';
+import { createAttempts } from '../lib/recording-attempts';
 
 const root = join(import.meta.dir, '..');
 const directories: string[] = [];
@@ -25,15 +26,16 @@ const passage = (kind: 'dialogue' | 'text') => ({
   gloss: [{ fr: 'mangeons', en: 'eat (manger)' }, { fr: 'restaurant', en: 'restaurant' }, { fr: 'ce soir', en: 'this evening' }, { fr: 'Ce soir', en: 'this evening' }],
 });
 
-function setup(record: (ids: string[]) => { ok: boolean; error: string }) {
-  const dataDir = mkdtempSync(join(tmpdir(), 'echo-texts-'));
+function setup(record: (ids: string[]) => { ok: boolean; error: string }, options: { dataDir?: string; stock?: { level: 'A1' | 'A2' | 'B1'; sentences: number; passages: number }[] } = {}) {
+  const dataDir = options.dataDir ?? mkdtempSync(join(tmpdir(), 'echo-texts-'));
   directories.push(dataDir);
   const prompts: string[] = [];
   let reloads = 0;
   const recorded: string[][] = [];
   const texts = createTextTopup({
     root, dataDir, threshold: 10, random: () => 0,
-    stock: () => [{ level: 'A1', sentences: 40, passages: 9 }],
+    stock: () => options.stock ?? [{ level: 'A1', sentences: 40, passages: 9 }],
+    attempts: createAttempts(join(dataDir, 'recording-attempts.json')),
     ask: async (prompt) => {
       prompts.push(prompt);
       if (prompt.includes('Pick one new everyday theme')) return '{"theme": "Weather & Seasons"}';
@@ -87,4 +89,23 @@ test('a lane Echo wrote that no longer passes the checks is left out instead of 
   const bank = await loadBank(root, undefined, [dir]);
   expect(bank.sentences.some((entry) => entry.id === 'a1-broken-s01')).toBe(false);
   expect(bank.sentences.length).toBeGreaterThan(0);
+});
+
+test('of the levels running low, the one with the fewest unseen texts is written', async () => {
+  const { texts, prompts } = setup(() => ({ ok: true, error: '' }), { stock: [{ level: 'A1', sentences: 8, passages: 9 }, { level: 'A2', sentences: 12, passages: 3 }] });
+  await texts.check();
+  expect(prompts[0]).toContain('another A2 lane');
+});
+
+test('a live clip no take passes for is re-recorded on each start until it has failed three times', async () => {
+  const dataDir = mkdtempSync(join(tmpdir(), 'echo-texts-'));
+  mkdirSync(join(dataDir, 'comprehension'));
+  writeFileSync(join(dataDir, 'comprehension', 'a1-never.json'), JSON.stringify({ sentences: [{ id: 'a1-never-s01' }], passages: [] }));
+  const tries: string[][] = [];
+  for (let restart = 0; restart < 5; restart++) {
+    const { texts, recorded } = setup(() => ({ ok: false, error: '' }), { dataDir, stock: [{ level: 'A1', sentences: 40, passages: 20 }] });
+    await texts.resume();
+    tries.push(...recorded);
+  }
+  expect(tries).toEqual([['a1-never-s01'], ['a1-never-s01'], ['a1-never-s01']]);
 });

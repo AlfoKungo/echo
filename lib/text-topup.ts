@@ -10,6 +10,7 @@ import type { GrammarLevel } from '../contract';
 import type { ComprehensionLane, ComprehensionPassage, ComprehensionSentence, Gloss } from '../comprehension-contract';
 import { laneProblems, loadKnown, PASSAGE_WORDS, SENTENCE_WORDS, type Known } from './comprehension-content';
 import type { Ask } from './claude';
+import type { Attempts } from './recording-attempts';
 
 export const LOW = 10;
 const SENTENCES = 50;
@@ -155,7 +156,7 @@ Reply with only JSON: {"items": [{"ref": "...", "item": {...}}]} with one fixed 
 }
 
 export function createTextTopup(options: {
-  root: string; dataDir: string; ask: Ask; record: Record; stock: () => Stock; reload: () => Promise<void>;
+  root: string; dataDir: string; ask: Ask; record: Record; stock: () => Stock; reload: () => Promise<void>; attempts: Attempts;
   threshold?: number; now?: () => number; random?: () => number;
 }) {
   const { root, ask } = options;
@@ -280,7 +281,10 @@ ${vocabulary.map((word) => `${word.id} ${word.fr}`).join('\n')}`;
       const waiting = laneFiles(pending);
       if (waiting.length) { for (const name of waiting) await publish(name); return; }
       if (now() - failedAt < RETRY_AFTER) return;
-      const low = options.stock().find((entry) => entry.sentences < threshold || entry.passages < threshold);
+      // Of the levels in reach that are running low, the one with the fewest unseen texts is written first (on a
+      // tie, the higher level), so a new lane goes where practice will run out soonest.
+      const scarce = (entry: Stock[number]) => Math.min(entry.sentences, entry.passages);
+      const low = options.stock().filter((entry) => entry.sentences < threshold || entry.passages < threshold).reverse().sort((a, b) => scarce(a) - scarce(b))[0];
       if (!low) return;
       status.level = low.level; status.step = 'writing';
       console.log(`texts: ${low.level} has ${low.sentences} unseen sentences and ${low.passages} unseen dialogues/texts; writing a new lane`);
@@ -299,14 +303,21 @@ ${vocabulary.map((word) => `${word.id} ${word.fr}`).join('\n')}`;
     }
   }
 
-  // After a restart: re-record any clip of a live lane still missing (a failed take is tried again once per start),
-  // then check the stock.
+  // After a restart: re-record any clip of a live lane still missing (a failed take is tried again on each start
+  // until it has failed three times), then check the stock.
   async function resume(): Promise<void> {
     if (busy) return;
     busy = true;
     try {
-      const ids = (await Promise.all(laneFiles(live).map((name) => lane(live, name)))).flatMap(clipIdsOf);
-      if (ids.length) await options.record(ids, [live, pending]);
+      const missing = (id: string) => !existsSync(join(root, 'audio/comprehension', `${id}.mp3`));
+      const ids = (await Promise.all(laneFiles(live).map((name) => lane(live, name)))).flatMap(clipIdsOf).filter(missing);
+      const skipped = options.attempts.skipped(ids);
+      if (skipped.length) console.log(`texts: not retrying ${skipped.join(', ')} (failed 3 times; see data/recording-attempts.json)`);
+      const tried = options.attempts.allowed(ids);
+      if (tried.length) {
+        await options.record(tried, [live, pending]);
+        options.attempts.note(tried, missing);
+      }
     } catch (error) {
       console.error(`texts: could not re-record: ${(error as Error).message}`);
     } finally { busy = false; }

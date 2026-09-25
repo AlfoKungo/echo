@@ -703,7 +703,31 @@
           "why": "The ending -ions goes with nous, not with vous."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "voyager",
+          "en": "to travel"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "souvent",
+          "en": "often"
+        }
+      ]
     },
     {
       "id": "conditional-formation-5",
@@ -743,7 +767,23 @@
           "why": "The ending -ions goes with nous. The subject elles is third person plural."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "bien",
+          "en": "gladly",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "un peu de",
+          "en": "a little"
+        },
+        {
+          "fr": "thé",
+          "en": "tea",
+          "word": "food-004"
+        }
+      ]
     },
     {
       "id": "conditional-formation-6",
@@ -783,7 +823,28 @@
           "why": "Marchais is the imparfait, about the past, and it has lost the r of the future stem."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "Sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "marcherait",
+          "en": "would walk (marcher)",
+          "word": "verbs-039"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        }
+      ]
     },
     {
       "id": "conditional-formation-7",
@@ -991,7 +1052,32 @@
           "why": "Falloir does not keep its infinitive: it has an irregular stem in the future and the conditional."
         }
       ],
-      "row": "falloir"
+      "row": "falloir",
+      "gloss": [
+        {
+          "fr": "Sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "toi",
+          "en": "you"
+        },
+        {
+          "fr": "falloir",
+          "en": "to be necessary",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "tout",
+          "en": "everything",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "recommencer",
+          "en": "to start over"
+        }
+      ]
     },
     {
       "id": "conditional-irregular-stems-5",
@@ -1031,7 +1117,23 @@
           "why": "Allais is the imparfait: “I was going”. It has no r, so it cannot express would."
         }
       ],
-      "row": "aller"
+      "row": "aller",
+      "gloss": [
+        {
+          "fr": "À ta place",
+          "en": "if I were you"
+        },
+        {
+          "fr": "chez",
+          "en": "at / to someone's place",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        }
+      ]
     },
     {
       "id": "conditional-irregular-stems-6",
@@ -1071,7 +1173,37 @@
           "why": "The ending -ais goes with je and tu. The subject here is nous."
         }
       ],
-      "row": "avoir"
+      "row": "avoir",
+      "gloss": [
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "d’argent",
+          "en": "of money"
+        },
+        {
+          "fr": "averions",
+          "en": "would have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     },
     {
       "id": "conditional-irregular-stems-7",
@@ -1155,7 +1287,19 @@
           "why": "The stem of pouvoir has a double r; with a single r the word is misspelt."
         }
       ],
-      "row": "pouvoir"
+      "row": "pouvoir",
+      "gloss": [
+        {
+          "fr": "peut",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        }
+      ]
     },
     {
       "id": "conditional-politeness-1",
@@ -1195,7 +1339,23 @@
           "why": "The ending -ait belongs to il and elle. The person ordering is je."
         }
       ],
-      "row": "je veux"
+      "row": "je veux",
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please"
+        }
+      ]
     },
     {
       "id": "conditional-politeness-2",
@@ -1235,7 +1395,19 @@
           "why": "The verb is right, but the question has lost its inversion; you were asked to keep the verb in front of the pronoun."
         }
       ],
-      "row": "pouvez-vous ?"
+      "row": "pouvez-vous ?",
+      "gloss": [
+        {
+          "fr": "Pouvez",
+          "en": "can (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "m’aider",
+          "en": "help me (aider)",
+          "word": "verbs-051"
+        }
+      ]
     },
     {
       "id": "conditional-politeness-3",
@@ -1275,7 +1447,34 @@
           "why": "This is polite, but it changes the verb. The exercise asks for vouloir itself in the conditional."
         }
       ],
-      "row": "je veux"
+      "row": "je veux",
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "chambre",
+          "en": "room",
+          "word": "home-006"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "deux",
+          "en": "two",
+          "word": "health-time-083"
+        },
+        {
+          "fr": "nuits",
+          "en": "nights",
+          "word": "health-time-061"
+        }
+      ]
     },
     {
       "id": "conditional-politeness-4",
@@ -1371,7 +1570,23 @@
           "why": "Peux is the present with je or tu, and pouvais is the imparfait. Neither matches vous nor the politeness the sentence needs."
         }
       ],
-      "row": "pouvez-vous ?"
+      "row": "pouvez-vous ?",
+      "gloss": [
+        {
+          "fr": "dire",
+          "en": "to tell",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "l’heure",
+          "en": "the time",
+          "word": "health-time-052"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please"
+        }
+      ]
     },
     {
       "id": "conditional-politeness-6",
@@ -1441,7 +1656,22 @@
           "why": "Switching to tu makes the verb agree, but it drops the formal person that s’il vous plaît keeps."
         }
       ],
-      "row": "pouvez-vous ?"
+      "row": "pouvez-vous ?",
+      "gloss": [
+        {
+          "fr": "Pourrais",
+          "en": "could (pouvoir)",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "répéter",
+          "en": "to repeat"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please"
+        }
+      ]
     },
     {
       "id": "conditional-advice-devoir-1",
@@ -1525,7 +1755,23 @@
           "why": "Neither form exists: devoir has one short irregular stem, and these add letters taken from the infinitive or the present."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "es",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fatigué",
+          "en": "tired"
+        },
+        {
+          "fr": "dormir",
+          "en": "to sleep",
+          "word": "verbs-062"
+        }
+      ]
     },
     {
       "id": "conditional-advice-devoir-3",
@@ -1565,7 +1811,32 @@
           "why": "Deviez is the imparfait: “you had to”. The r kept from the future stem is missing."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "toussez",
+          "en": "cough (tousser)"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "devoir",
+          "en": "to have to",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "arrêter",
+          "en": "to stop",
+          "word": "verbs-050"
+        },
+        {
+          "fr": "fumer",
+          "en": "to smoke"
+        }
+      ]
     },
     {
       "id": "conditional-advice-devoir-4",
@@ -1657,7 +1928,23 @@
           "why": "This changes the subject to a plural one. Only the ending of the verb had to be corrected."
         }
       ],
-      "row": "il / elle / on"
+      "row": "il / elle / on",
+      "gloss": [
+        {
+          "fr": "devrais",
+          "en": "should (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "faire",
+          "en": "to do",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "sport",
+          "en": "sport"
+        }
+      ]
     },
     {
       "id": "conditional-advice-devoir-6",
@@ -1697,7 +1984,19 @@
           "why": "The ending -ait belongs to il and elle, and the subject here is tu."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "Mange",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "légumes",
+          "en": "vegetables",
+          "word": "food-045"
+        }
+      ]
     },
     {
       "id": "conditional-advice-devoir-7",
@@ -1815,7 +2114,27 @@
           "why": "The ending -ait is for il and elle. The subject here is j’."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "bien",
+          "en": "really",
+          "word": "essentials-045"
+        },
+        {
+          "fr": "visiter",
+          "en": "to visit"
+        },
+        {
+          "fr": "Japon",
+          "en": "Japan"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        }
+      ]
     },
     {
       "id": "conditional-wishes-3",
@@ -1855,7 +2174,37 @@
           "why": "Aiment is the present: it says they like it already, not that they wish for it."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "aimer",
+          "en": "to like",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "vivre",
+          "en": "to live",
+          "word": "verbs-067"
+        },
+        {
+          "fr": "au bord de",
+          "en": "beside"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        }
+      ]
     },
     {
       "id": "conditional-wishes-4",
@@ -1950,7 +2299,24 @@
           "why": "Aimait is the imparfait: it says what she used to like, with no r on the stem."
         }
       ],
-      "row": "il / elle"
+      "row": "il / elle",
+      "gloss": [
+        {
+          "fr": "aime",
+          "en": "likes (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "avoir",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        }
+      ]
     },
     {
       "id": "conditional-wishes-6",
@@ -1990,7 +2356,24 @@
           "why": "The ending -ait is for il and elle. The subject here is tu."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "aimerai",
+          "en": "would like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "partir",
+          "en": "to leave",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        }
+      ]
     },
     {
       "id": "conditional-imagined-1",
@@ -2028,6 +2411,17 @@
             "prendrait"
           ],
           "why": "The ending -ait is for il and elle. The speaker here is je."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "À ta place",
+          "en": "if I were you"
+        },
+        {
+          "fr": "travail",
+          "en": "job",
+          "word": "work-001"
         }
       ]
     },
@@ -2073,6 +2467,35 @@
             "a"
           ],
           "why": "A is the present: it claims the world already is like that."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "monde",
+          "en": "world"
+        },
+        {
+          "fr": "idéal",
+          "en": "ideal"
+        },
+        {
+          "fr": "tout le monde",
+          "en": "everyone"
+        },
+        {
+          "fr": "avoir",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
         }
       ]
     },
@@ -2159,6 +2582,26 @@
           ],
           "why": "Faire does not keep its infinitive as a stem; its stem is short and irregular."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "jardin",
+          "en": "garden"
+        },
+        {
+          "fr": "faisons",
+          "en": "have (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "barbecues",
+          "en": "barbecues"
+        }
       ]
     },
     {
@@ -2197,6 +2640,32 @@
             "Sans téléphone, je serait plus calme."
           ],
           "why": "The ending -ait is for il and elle. The subject here is je."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Sans",
+          "en": "without",
+          "word": "essentials-061"
+        },
+        {
+          "fr": "téléphone",
+          "en": "phone",
+          "word": "work-062"
+        },
+        {
+          "fr": "serai",
+          "en": "will be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "plus",
+          "en": "more"
+        },
+        {
+          "fr": "calme",
+          "en": "calm",
+          "word": "qualities-054"
         }
       ]
     },
@@ -2261,7 +2730,26 @@
           "why": "Donnais is the imparfait: “I used to give”. It points to the past, but demain points forward."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "promets",
+          "en": "promise (promettre)"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "réponse",
+          "en": "answer",
+          "word": "work-052"
+        }
+      ]
     },
     {
       "id": "conditional-rais-rai-ais-2",
@@ -2294,7 +2782,29 @@
           "why": "That is the future: “I will read”. The sentence is set in childhood, in the past."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "Quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "j’étais",
+          "en": "I was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "petit",
+          "en": "young",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        }
+      ]
     },
     {
       "id": "conditional-rais-rai-ais-3",
@@ -2334,7 +2844,32 @@
           "why": "The ending -ions goes with nous. Only the ending for je had to change."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "Avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "ton",
+          "en": "your"
+        },
+        {
+          "fr": "aide",
+          "en": "help"
+        },
+        {
+          "fr": "finirai",
+          "en": "will finish (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "conditional-rais-rai-ais-4",
@@ -2374,7 +2909,27 @@
           "why": "Pleut is the present: it describes now, but the sentence says hier."
         }
       ],
-      "row": "il / elle"
+      "row": "il / elle",
+      "gloss": [
+        {
+          "fr": "Hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "pleuvoir",
+          "en": "to rain"
+        },
+        {
+          "fr": "quand",
+          "en": "when",
+          "word": "essentials-082"
+        },
+        {
+          "fr": "suis sorti",
+          "en": "went out (sortir)",
+          "word": "verbs-034"
+        }
+      ]
     },
     {
       "id": "conditional-rais-rai-ais-5",
@@ -2414,7 +2969,27 @@
           "why": "Achète is the present: it states what you really do, not what you would do in someone else’s place."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "À ta place",
+          "en": "if I were you"
+        },
+        {
+          "fr": "j’achèterai",
+          "en": "I will buy (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "cette",
+          "en": "this"
+        },
+        {
+          "fr": "veste",
+          "en": "jacket",
+          "word": "people-071"
+        }
+      ]
     },
     {
       "id": "conditional-rais-rai-ais-6",

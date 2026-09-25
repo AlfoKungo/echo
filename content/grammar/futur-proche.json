@@ -657,7 +657,22 @@
           "why": "That is the infinitive, unchanged. In the futur proche it is aller that matches the subject, and visiter is the verb that stays in the infinitive."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "visiter",
+          "en": "to visit"
+        },
+        {
+          "fr": "musée",
+          "en": "museum",
+          "word": "travel-073"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "futur-proche-aller-forms-5",
@@ -697,7 +712,19 @@
           "why": "That is the infinitive. Here aller has to be conjugated to match elle, and acheter is the verb that stays in the infinitive."
         }
       ],
-      "row": "il / elle / on"
+      "row": "il / elle / on",
+      "gloss": [
+        {
+          "fr": "acheter",
+          "en": "to buy",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        }
+      ]
     },
     {
       "id": "futur-proche-aller-forms-6",
@@ -731,7 +758,27 @@
           "why": "Dîné is the past participle, used with avoir. After aller the verb takes its dictionary form."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "allons",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "dînons",
+          "en": "have dinner (dîner)"
+        },
+        {
+          "fr": "chez",
+          "en": "at someone’s home",
+          "word": "essentials-064"
+        },
+        {
+          "fr": "Marie",
+          "en": "Marie (a name)"
+        }
+      ]
     },
     {
       "id": "futur-proche-aller-forms-7",
@@ -867,7 +914,23 @@
           "why": "That wraps the negation around the infinitive and loses aller. The two words go around the conjugated verb."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "partir",
+          "en": "to leave",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "futur-proche-negation-2",
@@ -907,7 +970,18 @@
           "why": "That is only half the negation. Standard French also needs the second word, right after the conjugated verb."
         }
       ],
-      "row": "il / elle / on"
+      "row": "il / elle / on",
+      "gloss": [
+        {
+          "fr": "travailler",
+          "en": "to work",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        }
+      ]
     },
     {
       "id": "futur-proche-negation-3",
@@ -983,7 +1057,24 @@
           "why": "That deletes pas instead of moving it, so the sentence is not negative any more."
         }
       ],
-      "row": "ils / elles"
+      "row": "ils / elles",
+      "gloss": [
+        {
+          "fr": "vont",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "regarder",
+          "en": "to watch",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        }
+      ]
     },
     {
       "id": "futur-proche-negation-5",
@@ -1063,7 +1154,24 @@
           "why": "Pas is already there, after allez. Only the first part of the negation is missing."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "allez",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "sortir",
+          "en": "to go out",
+          "word": "verbs-034"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "futur-proche-questions-1",
@@ -1113,7 +1221,19 @@
           "why": "Qu’est-ce que asks what. Nothing is missing from this sentence: it is a yes/no question."
         }
       ],
-      "row": "Est-ce que"
+      "row": "Est-ce que",
+      "gloss": [
+        {
+          "fr": "vas",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        }
+      ]
     },
     {
       "id": "futur-proche-questions-2",
@@ -1157,7 +1277,18 @@
           "why": "Inversion is written with hyphens joining the verb, the linking letter and the pronoun."
         }
       ],
-      "row": "Inversion"
+      "row": "Inversion",
+      "gloss": [
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "pleuvoir",
+          "en": "to rain"
+        }
+      ]
     },
     {
       "id": "futur-proche-questions-3",
@@ -1195,6 +1326,22 @@
             "aller"
           ],
           "why": "That is the infinitive. Aller is the verb that must match the subject here, and venir is the one that stays in the infinitive."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce qu’",
+          "en": "(marks a question)"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
         }
       ]
     },
@@ -1318,6 +1465,22 @@
           ],
           "why": "That changes the subject instead of correcting the verb. Keep tu and fix the form of aller."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "Est-ce que",
+          "en": "(marks a question)"
+        },
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "partir",
+          "en": "to leave",
+          "word": "verbs-031"
+        }
       ]
     },
     {
@@ -1346,7 +1509,19 @@
           "why": "Hier is the day before today and dernière means last: both look back. Allons partir announces something still to come."
         }
       ],
-      "row": "demain"
+      "row": "demain",
+      "gloss": [
+        {
+          "fr": "allons",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "partir",
+          "en": "to leave",
+          "word": "verbs-031"
+        }
+      ]
     },
     {
       "id": "futur-proche-time-markers-2",
@@ -1374,7 +1549,28 @@
           "why": "Hier and dernière both point backwards. Je vais faire announces something that has not happened yet."
         }
       ],
-      "row": "ce soir"
+      "row": "ce soir",
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "faire",
+          "en": "to do",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "devoirs",
+          "en": "homework",
+          "word": "work-038"
+        }
+      ]
     },
     {
       "id": "futur-proche-time-markers-3",
@@ -1456,7 +1652,22 @@
           "why": "That is next week, much further away than the day right after today."
         }
       ],
-      "row": "demain"
+      "row": "demain",
+      "gloss": [
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "neiger",
+          "en": "to snow"
+        },
+        {
+          "fr": "tomorrow",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "futur-proche-time-markers-5",
@@ -1527,7 +1738,18 @@
           "why": "The verb is now in the futur proche, but the time word was not replaced: aujourd’hui is still today."
         }
       ],
-      "row": "demain"
+      "row": "demain",
+      "gloss": [
+        {
+          "fr": "Aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "travaille",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        }
+      ]
     },
     {
       "id": "futur-proche-reflexive-pronoun-1",
@@ -1560,7 +1782,26 @@
           "why": "Moi is the stressed pronoun, used after a preposition or alone (avec moi, moi aussi). It cannot stand in front of a verb."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "Demain",
+          "en": "tomorrow"
+        },
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "lever",
+          "en": "to get up"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        }
+      ]
     },
     {
       "id": "futur-proche-reflexive-pronoun-2",
@@ -1600,7 +1841,22 @@
           "why": "Vous matches the polite or plural subject, not the familiar singular one."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "vas",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "coucher",
+          "en": "to go to bed"
+        },
+        {
+          "fr": "tard",
+          "en": "late"
+        }
+      ]
     },
     {
       "id": "futur-proche-reflexive-pronoun-3",
@@ -1640,7 +1896,18 @@
           "why": "That is the simple present (I get dressed). The sentence should stay in the futur proche, with aller in front."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "habiller",
+          "en": "to get dressed"
+        }
+      ]
     },
     {
       "id": "futur-proche-reflexive-pronoun-4",
@@ -1802,7 +2069,24 @@
           "why": "Leur means to them, for people you speak or give something to. Faire les devoirs reaches its object directly, and devoirs are things."
         }
       ],
-      "row": "plural"
+      "row": "plural",
+      "gloss": [
+        {
+          "fr": "devoirs",
+          "en": "homework",
+          "word": "work-038"
+        },
+        {
+          "fr": "faire",
+          "en": "to do",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "futur-proche-object-pronoun-2",
@@ -1842,7 +2126,23 @@
           "why": "Lettre is feminine, so a masculine pronoun does not fit, and it would elide before a vowel in any case."
         }
       ],
-      "row": "feminine thing or person"
+      "row": "feminine thing or person",
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "écrire",
+          "en": "to write",
+          "word": "verbs-073"
+        },
+        {
+          "fr": "lettre",
+          "en": "letter"
+        }
+      ]
     },
     {
       "id": "futur-proche-object-pronoun-3",
@@ -1876,7 +2176,23 @@
           "why": "The pronoun never comes after the verb in a statement; it goes in front of the verb it is the object of."
         }
       ],
-      "row": "masculine thing or person"
+      "row": "masculine thing or person",
+      "gloss": [
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "acheter",
+          "en": "to buy",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "futur-proche-object-pronoun-4",
@@ -2003,7 +2319,28 @@
           "why": "The pronoun only elides in front of a vowel or silent h; ranger begins with a consonant."
         }
       ],
-      "row": "feminine thing or person"
+      "row": "feminine thing or person",
+      "gloss": [
+        {
+          "fr": "Ta",
+          "en": "your"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        },
+        {
+          "fr": "vas",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "ranger",
+          "en": "to tidy",
+          "word": "verbs-098"
+        }
+      ]
     },
     {
       "id": "futur-proche-present-contrast-1",
@@ -2043,7 +2380,19 @@
           "why": "That says we are going to the restaurant, a movement, and loses the verb of the sentence, which should follow aller in the infinitive."
         }
       ],
-      "row": "Plan or soon"
+      "row": "Plan or soon",
+      "gloss": [
+        {
+          "fr": "mangeons",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        }
+      ]
     },
     {
       "id": "futur-proche-present-contrast-2",
@@ -2083,7 +2432,23 @@
           "why": "Finira is the simple future of finir. Putting it after aller marks the future twice; the second verb stays in the infinitive."
         }
       ],
-      "row": "Plan or soon"
+      "row": "Plan or soon",
+      "gloss": [
+        {
+          "fr": "finit",
+          "en": "finishes (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "son",
+          "en": "her"
+        },
+        {
+          "fr": "travail",
+          "en": "work",
+          "word": "work-001"
+        }
+      ]
     },
     {
       "id": "futur-proche-present-contrast-3",
@@ -2116,7 +2481,18 @@
           "why": "That is the bare infinitive. With a subject in front, the verb has to be conjugated."
         }
       ],
-      "row": "Habit"
+      "row": "Habit",
+      "gloss": [
+        {
+          "fr": "D’habitude",
+          "en": "usually"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
     },
     {
       "id": "futur-proche-present-contrast-4",
@@ -2199,7 +2575,22 @@
           "why": "That is the simple present (I rest), which clashes with demain and with the contrast against je travaille."
         }
       ],
-      "row": "Plan or soon"
+      "row": "Plan or soon",
+      "gloss": [
+        {
+          "fr": "Aujourd’hui",
+          "en": "today"
+        },
+        {
+          "fr": "travaille",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "futur-proche-present-contrast-6",
@@ -2239,7 +2630,28 @@
           "why": "Regardé is the past participle, used with avoir. After aller the verb takes its dictionary form."
         }
       ],
-      "row": "Plan or soon"
+      "row": "Plan or soon",
+      "gloss": [
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "vas",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "regardes",
+          "en": "watch (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "télé",
+          "en": "TV"
+        }
+      ]
     }
   ]
 }

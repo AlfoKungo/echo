@@ -507,7 +507,24 @@
           "why": "These are the partitive articles of a positive sentence (je mange de la viande). A true negative flattens them to one short form, exactly as ne…pas does."
         }
       ],
-      "row": "du / de la"
+      "row": "du / de la",
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        },
+        {
+          "fr": "viande",
+          "en": "meat",
+          "word": "food-014"
+        }
+      ]
     },
     {
       "id": "negation-more-jamais-de-rewrite",
@@ -546,6 +563,22 @@
             "Jamais je ne regarde la télé le soir."
           ],
           "why": "The negative word does not go in front of the verb in a simple tense; only ne does. Everything else follows the conjugated verb."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "regarde",
+          "en": "watch (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "télé",
+          "en": "TV"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
         }
       ]
     },
@@ -626,6 +659,17 @@
           ],
           "why": "Encore means still or again, which is positive: it would say you do sport once more."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "faites",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "sport",
+          "en": "sport"
+        }
       ]
     },
     {
@@ -658,6 +702,23 @@
             "Il ne mange jamais les légumes."
           ],
           "why": "Les is not the shrunken article; it changes the meaning to those particular vegetables. The partitive has to be reduced, not swapped for a definite article."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        },
+        {
+          "fr": "légumes",
+          "en": "vegetables",
+          "word": "food-045"
         }
       ]
     },
@@ -692,7 +753,22 @@
           "why": "The reduction is right, but argent begins with a vowel, and this full form cannot stand in front of a vowel: it has to be elided."
         }
       ],
-      "row": "de l’"
+      "row": "de l’",
+      "gloss": [
+        {
+          "fr": "n’ai",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "plus",
+          "en": "no longer"
+        },
+        {
+          "fr": "argent",
+          "en": "money"
+        }
+      ]
     },
     {
       "id": "negation-more-plus-de-translate",
@@ -770,6 +846,17 @@
           ],
           "why": "Jamais says he has never lived there at all, which loses the idea that he lived there before."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Paris",
+          "en": "Paris"
+        }
       ]
     },
     {
@@ -845,6 +932,18 @@
           ],
           "why": "Encore means still, which keeps them at work: it says the opposite of what you want."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "travaillent",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
       ]
     },
     {
@@ -873,7 +972,23 @@
           "why": "Both keep pas alongside a second negative word. The word meaning nothing already takes the place of pas, so only one of them appears after the verb."
         }
       ],
-      "row": "rien"
+      "row": "rien",
+      "gloss": [
+        {
+          "fr": "fait",
+          "en": "is (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "noir",
+          "en": "dark"
+        },
+        {
+          "fr": "vois",
+          "en": "see (voir)",
+          "word": "verbs-010"
+        }
+      ]
     },
     {
       "id": "negation-more-rien-personne-object-translate",
@@ -954,7 +1069,19 @@
           "why": "Plus means no longer, a change over time. The blank is the object of dit, not a word about when."
         }
       ],
-      "row": "rien"
+      "row": "rien",
+      "gloss": [
+        {
+          "fr": "dit",
+          "en": "says (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
+      ]
     },
     {
       "id": "negation-more-rien-personne-object-build",
@@ -1022,6 +1149,18 @@
           ],
           "why": "You removed ne instead of pas. Ne is the part that must stay in front of the verb in writing."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "voulons",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "rien",
+          "en": "nothing",
+          "word": "essentials-042"
+        }
       ]
     },
     {
@@ -1050,7 +1189,18 @@
           "why": "One puts the negative word after the participle, the other in front of the auxiliary. In the passé composé it takes the same slot as pas: after the auxiliary and before the participle."
         }
       ],
-      "row": "rien"
+      "row": "rien",
+      "gloss": [
+        {
+          "fr": "Dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "noir",
+          "en": "dark"
+        }
+      ]
     },
     {
       "id": "negation-more-pc-auxiliary-rewrite",
@@ -1090,7 +1240,19 @@
           "why": "Nothing goes between ne and the auxiliary: ne sits directly in front of avoir."
         }
       ],
-      "row": "rien"
+      "row": "rien",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "mangé",
+          "en": "eaten (manger)",
+          "word": "verbs-059"
+        }
+      ]
     },
     {
       "id": "negation-more-pc-auxiliary-translate",
@@ -1171,7 +1333,18 @@
           "why": "Téléphoner builds its passé composé with avoir, not être."
         }
       ],
-      "row": "plus"
+      "row": "plus",
+      "gloss": [
+        {
+          "fr": "après",
+          "en": "after"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        }
+      ]
     },
     {
       "id": "negation-more-pc-auxiliary-repair",
@@ -1205,7 +1378,28 @@
           "why": "Nothing may stand between ne and the auxiliary; the negative word belongs on the other side of ai."
         }
       ],
-      "row": "jamais"
+      "row": "jamais",
+      "gloss": [
+        {
+          "fr": "n’ai",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "mangé",
+          "en": "eaten (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        },
+        {
+          "fr": "sushis",
+          "en": "sushi"
+        }
+      ]
     },
     {
       "id": "negation-more-personne-after-participle-choose",
@@ -1233,7 +1427,18 @@
           "why": "These treat the word like pas, rien or jamais and push it inside the verb. The word for a human being is the exception: it waits until the participle is done."
         }
       ],
-      "row": "personne"
+      "row": "personne",
+      "gloss": [
+        {
+          "fr": "Hier",
+          "en": "yesterday"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        }
+      ]
     },
     {
       "id": "negation-more-personne-after-participle-rewrite",
@@ -1273,7 +1478,27 @@
           "why": "This only denies that she invited her friends; the object has to be replaced by the negative word, not kept."
         }
       ],
-      "row": "personne"
+      "row": "personne",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "invité",
+          "en": "invited (inviter)"
+        },
+        {
+          "fr": "ses",
+          "en": "her"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        }
+      ]
     },
     {
       "id": "negation-more-personne-after-participle-translate",
@@ -1347,7 +1572,29 @@
           "why": "Ne has disappeared. It stays in front of the auxiliary in written French."
         }
       ],
-      "row": "personne"
+      "row": "personne",
+      "gloss": [
+        {
+          "fr": "n’as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "personne",
+          "en": "no one",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "rencontré",
+          "en": "met (rencontrer)",
+          "word": "verbs-086"
+        },
+        {
+          "fr": "fête",
+          "en": "party",
+          "word": "people-054"
+        }
+      ]
     },
     {
       "id": "negation-more-personne-after-participle-build",
@@ -1417,7 +1664,19 @@
           "why": "These are the reduced forms used after a real negative such as ne…pas or ne…jamais. Ne…que does not deny the tea, it limits the drinking to it, so the article of a positive sentence stays."
         }
       ],
-      "row": "Article"
+      "row": "Article",
+      "gloss": [
+        {
+          "fr": "bois",
+          "en": "drink (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "thé",
+          "en": "tea",
+          "word": "food-004"
+        }
+      ]
     },
     {
       "id": "negation-more-ne-que-translate",
@@ -1502,7 +1761,19 @@
           "why": "Ne is missing. It is heard that way in speech, but the written pair needs both halves."
         }
       ],
-      "row": "Article"
+      "row": "Article",
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "légumes",
+          "en": "vegetables",
+          "word": "food-045"
+        }
+      ]
     },
     {
       "id": "negation-more-ne-que-complete",
@@ -1543,7 +1814,18 @@
           "why": "Seulement means only on its own, but the sentence already began with ne, so the blank must be the second half of that pair."
         }
       ],
-      "row": "Before a vowel"
+      "row": "Before a vowel",
+      "gloss": [
+        {
+          "fr": "parle",
+          "en": "speaks (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "anglais",
+          "en": "English"
+        }
+      ]
     },
     {
       "id": "negation-more-ne-que-repair",
@@ -1577,7 +1859,19 @@
           "why": "Ne has been dropped. The article is right now, but the restriction needs both of its words in writing."
         }
       ],
-      "row": "Article"
+      "row": "Article",
+      "gloss": [
+        {
+          "fr": "n’avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        }
+      ]
     },
     {
       "id": "negation-more-ni-ni-choose",
@@ -1610,6 +1904,27 @@
             "pas"
           ],
           "why": "Pas would be a second negative word in an already negative sentence, and it cannot link two nouns."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "n’aime",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "ni",
+          "en": "neither"
+        },
+        {
+          "fr": "thé",
+          "en": "tea",
+          "word": "food-004"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
         }
       ]
     },
@@ -1730,7 +2045,28 @@
           "why": "Ne has gone instead of pas. Ne is the half that always stays in front of the verb."
         }
       ],
-      "row": "pas"
+      "row": "pas",
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "ni",
+          "en": "neither / nor"
+        },
+        {
+          "fr": "viande",
+          "en": "meat",
+          "word": "food-014"
+        },
+        {
+          "fr": "poisson",
+          "en": "fish",
+          "word": "nature-014"
+        }
+      ]
     },
     {
       "id": "negation-more-ni-ni-rewrite",
@@ -1770,7 +2106,24 @@
           "why": "The first item was left bare. The same little word must stand in front of each of the two items."
         }
       ],
-      "row": "du / de la"
+      "row": "du / de la",
+      "gloss": [
+        {
+          "fr": "prenons",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "lait",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "fr": "sucre",
+          "en": "sugar",
+          "word": "food-006"
+        }
+      ]
     },
     {
       "id": "negation-more-subject-choose",
@@ -1803,7 +2156,19 @@
           "why": "This is spoken French, with ne dropped and pas kept. Writing needs ne in front of the verb, and pas has no place after a negative subject."
         }
       ],
-      "row": "personne"
+      "row": "personne",
+      "gloss": [
+        {
+          "fr": "Personne",
+          "en": "no one",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "venu",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        }
+      ]
     },
     {
       "id": "negation-more-subject-translate",
@@ -1883,7 +2248,19 @@
           "why": "The -es ending belongs to tu. The subject of this sentence is third person."
         }
       ],
-      "row": "rien"
+      "row": "rien",
+      "gloss": [
+        {
+          "fr": "Rien",
+          "en": "nothing",
+          "word": "essentials-042"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
+      ]
     },
     {
       "id": "negation-more-subject-repair",
@@ -1917,7 +2294,24 @@
           "why": "Cutting the object changes nothing: the extra negative word is still sitting after the verb."
         }
       ],
-      "row": "personne"
+      "row": "personne",
+      "gloss": [
+        {
+          "fr": "Personne",
+          "en": "no one",
+          "word": "essentials-040"
+        },
+        {
+          "fr": "sait",
+          "en": "knows (savoir)",
+          "word": "verbs-014"
+        },
+        {
+          "fr": "réponse",
+          "en": "answer",
+          "word": "work-052"
+        }
+      ]
     },
     {
       "id": "negation-more-subject-build",
@@ -1980,7 +2374,28 @@
           "why": "Ne needs a verb to stand in front of, and pas needs one too. A one-word reply has no verb, so the negative word answers alone."
         }
       ],
-      "row": "Qui est là ?"
+      "row": "Qui est là ?",
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "cuisine",
+          "en": "kitchen",
+          "word": "home-007"
+        }
+      ]
     },
     {
       "id": "negation-more-short-answers-choose-jamais",
@@ -2008,7 +2423,28 @@
           "why": "Both drag a second word into a reply that has no verb. Ne only works in front of a verb, and pas cannot stack with another negative."
         }
       ],
-      "row": "Tu y vas le lundi ?"
+      "row": "Tu y vas le lundi ?",
+      "gloss": [
+        {
+          "fr": "vas",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "cinéma",
+          "en": "cinema"
+        },
+        {
+          "fr": "lundi",
+          "en": "Monday",
+          "word": "health-time-062"
+        },
+        {
+          "fr": "Non",
+          "en": "no",
+          "word": "essentials-005"
+        }
+      ]
     },
     {
       "id": "negation-more-short-answers-complete",
@@ -2048,7 +2484,42 @@
           "why": "Non answers a yes/no question. This one asks what you bought, so the reply has to name what you came home with."
         }
       ],
-      "row": "Qu’est-ce que tu as acheté ?"
+      "row": "Qu’est-ce que tu as acheté ?",
+      "gloss": [
+        {
+          "fr": "Qu’est-ce que",
+          "en": "what"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "acheté",
+          "en": "bought (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "Tout",
+          "en": "everything",
+          "word": "essentials-044"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "trop",
+          "en": "too",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "cher",
+          "en": "expensive",
+          "word": "qualities-059"
+        }
+      ]
     },
     {
       "id": "negation-more-short-answers-rewrite",
@@ -2088,7 +2559,34 @@
           "why": "Rien answers the question que (what). The question here is qui, so the reply must stand for a human being."
         }
       ],
-      "row": "Qui est là ?"
+      "row": "Qui est là ?",
+      "gloss": [
+        {
+          "fr": "Qui",
+          "en": "who",
+          "word": "essentials-032"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "n’ai",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "personne",
+          "en": "no one",
+          "word": "essentials-040"
+        }
+      ]
     }
   ]
 }

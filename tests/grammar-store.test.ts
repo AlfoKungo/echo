@@ -661,4 +661,20 @@ describe('practice across every touched topic', () => {
     expect(store.misses()).toEqual([]);
     expect(store.state('alpha').topic?.progress).toMatchObject({ needsReview: 0 });
   });
+
+  test('a topic round opens with a question another topic left to revisit, and answering it clears it there', () => {
+    const { store } = fixture();
+    let practice = store.start('alpha', requestId());
+    const shown = currentId(practice);
+    practice = store.help({ ...mutation(practice), kind: 'answer' });
+    finish(store, store.next(mutation(practice)));
+    expect(store.catalog()[0]!.topics[1]).toMatchObject({ id: 'beta', practiceLength: 11 });
+    const beta = store.start('beta', requestId());
+    expect(beta.session).toMatchObject({ total: 11, current: { exercise: { id: shown, topicId: 'alpha', topicTitle: 'Topic alpha' } } });
+    const ids = finish(store, beta).ids;
+    expect(ids.filter((id) => id.startsWith('alpha-'))).toEqual([shown]);
+    expect(store.misses()).toEqual([]);
+    expect(store.start('beta', requestId()).session?.total).toBe(10);
+    expect(store.state('alpha').topic?.progress).toMatchObject({ needsReview: 0 });
+  });
 });

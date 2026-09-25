@@ -393,7 +393,28 @@
           "why": "Keeping il gives habite two subjects. The pronoun has to replace il, not stand next to it."
         }
       ],
-      "row": "qui"
+      "row": "qui",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        },
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Rome",
+          "en": "Rome"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-qui-subject-2",
@@ -433,7 +454,42 @@
           "why": "Où points to a place or a moment. La femme is a person, and the gap is the missing subject of parle."
         }
       ],
-      "row": "qui"
+      "row": "qui",
+      "gloss": [
+        {
+          "fr": "femme",
+          "en": "woman",
+          "word": "people-003"
+        },
+        {
+          "fr": "parle",
+          "en": "talks (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "tante",
+          "en": "aunt",
+          "word": "people-018"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-qui-subject-3",
@@ -468,7 +524,29 @@
           "why": "La gare is the place, but the missing word is the subject of va, and the bus is what goes."
         }
       ],
-      "row": "qui"
+      "row": "qui",
+      "gloss": [
+        {
+          "fr": "Prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "va",
+          "en": "goes (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-qui-subject-4",
@@ -574,7 +652,39 @@
           "why": "Dont stands for de + a noun, and jouer dans un parc contains no de."
         }
       ],
-      "row": "qui"
+      "row": "qui",
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "jouent",
+          "en": "play (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "bruyants",
+          "en": "noisy",
+          "word": "qualities-053"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-que-object-1",
@@ -608,7 +718,29 @@
           "why": "English can drop “that”, French cannot: the two halves need a pronoun to join them."
         }
       ],
-      "row": "que / qu’"
+      "row": "que / qu’",
+      "gloss": [
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "intéressant",
+          "en": "interesting",
+          "word": "qualities-082"
+        },
+        {
+          "fr": "lis",
+          "en": "read (lire)",
+          "word": "verbs-072"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-que-object-2",
@@ -648,7 +780,29 @@
           "why": "Où points to a place or a time. Le gâteau is neither: it is what tu fais acts on."
         }
       ],
-      "row": "que / qu’"
+      "row": "que / qu’",
+      "gloss": [
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "fais",
+          "en": "make (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "sent",
+          "en": "smells (sentir)",
+          "word": "verbs-091"
+        },
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-que-object-3",
@@ -688,7 +842,28 @@
           "why": "The shortened form is only written when a vowel follows, and nous starts with a consonant."
         }
       ],
-      "row": "que / qu’"
+      "row": "que / qu’",
+      "gloss": [
+        {
+          "fr": "Voici",
+          "en": "here is"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "fr": "voulons",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "acheter",
+          "en": "to buy",
+          "word": "verbs-055"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-que-object-4",
@@ -756,7 +931,33 @@
           "why": "Dont carries de, and écouter takes its object directly: on écoute une chanson."
         }
       ],
-      "row": "que / qu’"
+      "row": "que / qu’",
+      "gloss": [
+        {
+          "fr": "chanson",
+          "en": "song",
+          "word": "work-095"
+        },
+        {
+          "fr": "qui",
+          "en": "who / that"
+        },
+        {
+          "fr": "j’écoute",
+          "en": "I listen to (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "triste",
+          "en": "sad",
+          "word": "qualities-064"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-que-object-6",
@@ -822,7 +1023,26 @@
           "why": "Dont replaces de + a noun (parler de, avoir besoin de). Arriver demain contains no de."
         }
       ],
-      "row": "qui (subject)"
+      "row": "qui (subject)",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "l’ami",
+          "en": "the friend",
+          "word": "people-030"
+        },
+        {
+          "fr": "arrive",
+          "en": "arrives (arriver)"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-elision-2",
@@ -862,7 +1082,23 @@
           "why": "Dont carries de, and aimer takes its object directly: on aime quelqu’un, with no de."
         }
       ],
-      "row": "que (object)"
+      "row": "que (object)",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "l’homme",
+          "en": "the man",
+          "word": "people-002"
+        },
+        {
+          "fr": "aime",
+          "en": "loves (aimer)",
+          "word": "verbs-052"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-elision-3",
@@ -896,7 +1132,29 @@
           "why": "The elision is right but the person is not: the subject given is il, not elle."
         }
       ],
-      "row": "que (object)"
+      "row": "que (object)",
+      "gloss": [
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "regarde",
+          "en": "watches (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "drôle",
+          "en": "funny",
+          "word": "qualities-067"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-elision-4",
@@ -930,7 +1188,23 @@
           "why": "Dropping il makes the gift the one doing the wanting, and it loses the person the sentence is about."
         }
       ],
-      "row": "que (object)"
+      "row": "que (object)",
+      "gloss": [
+        {
+          "fr": "Voici",
+          "en": "here is"
+        },
+        {
+          "fr": "cadeau",
+          "en": "gift",
+          "word": "people-055"
+        },
+        {
+          "fr": "veut",
+          "en": "wants (vouloir)",
+          "word": "verbs-019"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-elision-5",
@@ -964,7 +1238,28 @@
           "why": "Adding elle gives aime two subjects and turns the sentence into “a woman that she loves music”."
         }
       ],
-      "row": "qui (subject)"
+      "row": "qui (subject)",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "femme",
+          "en": "woman",
+          "word": "people-003"
+        },
+        {
+          "fr": "qu’aime",
+          "en": "loves (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ou-place-time-1",
@@ -999,7 +1294,33 @@
           "why": "Dont carries de, and the second sentence used dans, not de."
         }
       ],
-      "row": "a place"
+      "row": "a place",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "ville",
+          "en": "town",
+          "word": "travel-001"
+        },
+        {
+          "fr": "J’habite",
+          "en": "I live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ou-place-time-2",
@@ -1039,7 +1360,28 @@
           "why": "Dont replaces de + a noun, and partir ce jour-là contains no de."
         }
       ],
-      "row": "a time"
+      "row": "a time",
+      "gloss": [
+        {
+          "fr": "souviens",
+          "en": "remember (se souvenir)",
+          "word": "verbs-093"
+        },
+        {
+          "fr": "jour",
+          "en": "day",
+          "word": "health-time-055"
+        },
+        {
+          "fr": "est parti",
+          "en": "left (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "jour-là",
+          "en": "that day"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ou-place-time-3",
@@ -1079,7 +1421,27 @@
           "why": "Dont replaces de + a noun, and dîner dans un restaurant uses dans, not de."
         }
       ],
-      "row": "a place"
+      "row": "a place",
+      "gloss": [
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "fr": "dînons",
+          "en": "have dinner (dîner)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "près d’ici",
+          "en": "near here"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ou-place-time-4",
@@ -1126,7 +1488,31 @@
           "why": "Dont replaces de + a noun, and avoir son bac contains no de."
         }
       ],
-      "row": "a time"
+      "row": "a time",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "l’année",
+          "en": "the year",
+          "word": "health-time-058"
+        },
+        {
+          "fr": "a eu",
+          "en": "got (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "son",
+          "en": "her"
+        },
+        {
+          "fr": "bac",
+          "en": "school-leaving exam"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ou-place-time-5",
@@ -1204,7 +1590,29 @@
           "why": "French never leaves a preposition stranded at the end of the clause the way English does."
         }
       ],
-      "row": "a place"
+      "row": "a place",
+      "gloss": [
+        {
+          "fr": "plage",
+          "en": "beach",
+          "word": "nature-068"
+        },
+        {
+          "fr": "allons",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "belle",
+          "en": "beautiful",
+          "word": "qualities-005"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ou-place-time-7",
@@ -1283,7 +1691,23 @@
           "why": "Où points to a place or a moment, but here the film is the topic of the talking, not its setting."
         }
       ],
-      "row": "parler de"
+      "row": "parler de",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        },
+        {
+          "fr": "parle",
+          "en": "talk (parler)",
+          "word": "verbs-007"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-dont-2",
@@ -1323,7 +1747,38 @@
           "why": "The de is already inside the pronoun; leaving another one after frère doubles it."
         }
       ],
-      "row": "possession: le frère de…"
+      "row": "possession: le frère de…",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "cet",
+          "en": "this"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-dont-3",
@@ -1363,7 +1818,22 @@
           "why": "Qui is the subject form, and j’ai already has its subject; the tool is what is needed."
         }
       ],
-      "row": "avoir besoin de"
+      "row": "avoir besoin de",
+      "gloss": [
+        {
+          "fr": "Voici",
+          "en": "here is"
+        },
+        {
+          "fr": "l’outil",
+          "en": "the tool"
+        },
+        {
+          "fr": "j’ai besoin",
+          "en": "I need (avoir besoin)",
+          "word": "verbs-002"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-dont-4",
@@ -1404,7 +1874,26 @@
           "why": "A preposition can never stand in front of these forms, and de qui would in any case be for a person."
         }
       ],
-      "row": "rêver de"
+      "row": "rêver de",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "ville",
+          "en": "town",
+          "word": "travel-001"
+        },
+        {
+          "fr": "rêve",
+          "en": "dream (rêver)"
+        },
+        {
+          "fr": "depuis longtemps",
+          "en": "for a long time"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-dont-5",
@@ -1444,7 +1933,34 @@
           "why": "French never leaves a preposition stranded at the end of the clause the way English does."
         }
       ],
-      "row": "parler de"
+      "row": "parler de",
+      "gloss": [
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "parle",
+          "en": "talk (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-dont-6",
@@ -1525,7 +2041,22 @@
           "why": "Bare que needs a noun in front of it and marks an object, while intéresse is missing its subject."
         }
       ],
-      "row": "subject of the verb"
+      "row": "subject of the verb",
+      "gloss": [
+        {
+          "fr": "m’intéresse",
+          "en": "interests me (intéresser)"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is"
+        },
+        {
+          "fr": "l’histoire",
+          "en": "the story",
+          "word": "work-056"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-2",
@@ -1565,7 +2096,19 @@
           "why": "That form belongs to direct questions. After dis-moi the question is indirect and est-ce disappears."
         }
       ],
-      "row": "direct object"
+      "row": "direct object",
+      "gloss": [
+        {
+          "fr": "Dis-moi",
+          "en": "tell me (dire)",
+          "word": "verbs-006"
+        },
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-3",
@@ -1605,7 +2148,18 @@
           "why": "That is the direct-question form; inside a sentence like je ne comprends pas, est-ce drops out."
         }
       ],
-      "row": "subject of the verb"
+      "row": "subject of the verb",
+      "gloss": [
+        {
+          "fr": "comprends",
+          "en": "understand (comprendre)",
+          "word": "verbs-016"
+        },
+        {
+          "fr": "passe",
+          "en": "happens (se passer)"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-4",
@@ -1673,7 +2227,27 @@
           "why": "There is no noun in front for the pronoun to refer to, so it needs ce before it."
         }
       ],
-      "row": "subject of the verb"
+      "row": "subject of the verb",
+      "gloss": [
+        {
+          "fr": "plaît",
+          "en": "pleases (plaire)"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is"
+        },
+        {
+          "fr": "calme",
+          "en": "quiet",
+          "word": "qualities-054"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-6",
@@ -1707,7 +2281,23 @@
           "why": "Bare que here reads as “that you think”, and there is no noun in front for the pronoun to lean on."
         }
       ],
-      "row": "direct object"
+      "row": "direct object",
+      "gloss": [
+        {
+          "fr": "Qu’est-ce que",
+          "en": "what"
+        },
+        {
+          "fr": "penses",
+          "en": "think (penser)",
+          "word": "verbs-017"
+        },
+        {
+          "fr": "Dis-moi",
+          "en": "tell me (dire)",
+          "word": "verbs-006"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-7",
@@ -1779,7 +2369,33 @@
           "why": "Quoi after a preposition is for things, and la personne is a person."
         }
       ],
-      "row": "avec"
+      "row": "avec",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "personne",
+          "en": "person",
+          "word": "people-001"
+        },
+        {
+          "fr": "travaille",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "cette",
+          "en": "this",
+          "word": "essentials-047"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-preposition-qui-2",
@@ -1819,7 +2435,31 @@
           "why": "Où stands for a place or a time, but le collègue is a person."
         }
       ],
-      "row": "avec"
+      "row": "avec",
+      "gloss": [
+        {
+          "fr": "collègue",
+          "en": "colleague"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "déjeune",
+          "en": "have lunch (déjeuner)"
+        },
+        {
+          "fr": "s’appelle",
+          "en": "is called (s’appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "Marc",
+          "en": "Marc (a name)"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-preposition-qui-3",
@@ -1860,7 +2500,27 @@
           "why": "Où stands for a place or a time, but l’amie is a person."
         }
       ],
-      "row": "à"
+      "row": "à",
+      "gloss": [
+        {
+          "fr": "L’amie",
+          "en": "the friend"
+        },
+        {
+          "fr": "j’écris",
+          "en": "I write (écrire)",
+          "word": "verbs-073"
+        },
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Canada",
+          "en": "Canada"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-preposition-qui-4",
@@ -1942,7 +2602,37 @@
           "why": "That form is masculine, and la fille is feminine, so it does not agree."
         }
       ],
-      "row": "avec"
+      "row": "avec",
+      "gloss": [
+        {
+          "fr": "fille",
+          "en": "girl",
+          "word": "people-007"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "parle",
+          "en": "talk (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "cousine",
+          "en": "cousin"
+        }
+      ]
     },
     {
       "id": "relative-pronouns-preposition-qui-6",

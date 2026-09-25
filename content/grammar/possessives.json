@@ -463,7 +463,18 @@
           "why": "Mes is the plural form, for several things owned. There is only one room here."
         }
       ],
-      "row": "my"
+      "row": "my",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        }
+      ]
     },
     {
       "id": "possessives-gender-singular-2",
@@ -496,7 +507,19 @@
           "why": "Tes is the plural form, for several things. A pen is one object."
         }
       ],
-      "row": "your (tu)"
+      "row": "your (tu)",
+      "gloss": [
+        {
+          "fr": "cherches",
+          "en": "are looking for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "stylo",
+          "en": "pen",
+          "word": "work-045"
+        }
+      ]
     },
     {
       "id": "possessives-gender-singular-3",
@@ -530,7 +553,24 @@
           "why": "Ta means your, not my. The subject is je, so the owner is the speaker."
         }
       ],
-      "row": "my"
+      "row": "my",
+      "gloss": [
+        {
+          "fr": "lave",
+          "en": "wash (laver)",
+          "word": "verbs-097"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        }
+      ]
     },
     {
       "id": "possessives-gender-singular-4",
@@ -564,7 +604,23 @@
           "why": "Mon means my. The question is about what belongs to the friend you are speaking to."
         }
       ],
-      "row": "your (tu)"
+      "row": "your (tu)",
+      "gloss": [
+        {
+          "fr": "Où",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sac",
+          "en": "bag"
+        }
+      ]
     },
     {
       "id": "possessives-gender-singular-5",
@@ -599,7 +655,22 @@
           "why": "Son means his or her. The sentence says the umbrella is mine, and only the form has to change."
         }
       ],
-      "row": "my"
+      "row": "my",
+      "gloss": [
+        {
+          "fr": "prend",
+          "en": "takes (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "parapluie",
+          "en": "umbrella"
+        }
+      ]
     },
     {
       "id": "possessives-gender-singular-6",
@@ -663,7 +734,33 @@
           "why": "Nothing asked for a plural: one lamp replaces one book, so only the gender changes."
         }
       ],
-      "row": "your (tu)"
+      "row": "your (tu)",
+      "gloss": [
+        {
+          "fr": "Ton",
+          "en": "your"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sur",
+          "en": "on",
+          "word": "essentials-058"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
+        }
+      ]
     },
     {
       "id": "possessives-plural-1",
@@ -696,7 +793,19 @@
           "why": "Mon stands before one masculine thing. The noun here is plural, and in the plural both genders share one form."
         }
       ],
-      "row": "my"
+      "row": "my",
+      "gloss": [
+        {
+          "fr": "J’ai perdu",
+          "en": "I lost (perdre)",
+          "word": "verbs-081"
+        },
+        {
+          "fr": "clés",
+          "en": "keys",
+          "word": "home-031"
+        }
+      ]
     },
     {
       "id": "possessives-plural-2",
@@ -729,7 +838,18 @@
           "why": "Ton replaces ta before a vowel, but that swap only happens with singular nouns. Affaires is plural."
         }
       ],
-      "row": "your (tu)"
+      "row": "your (tu)",
+      "gloss": [
+        {
+          "fr": "ranges",
+          "en": "are tidying (ranger)",
+          "word": "verbs-098"
+        },
+        {
+          "fr": "affaires",
+          "en": "things"
+        }
+      ]
     },
     {
       "id": "possessives-plural-3",
@@ -769,7 +889,23 @@
           "why": "Leurs belongs to several owners, but the subject il is one person."
         }
       ],
-      "row": "his / her"
+      "row": "his / her",
+      "gloss": [
+        {
+          "fr": "appelle",
+          "en": "is calling (appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "ce soir",
+          "en": "this evening"
+        }
+      ]
     },
     {
       "id": "possessives-plural-4",
@@ -809,7 +945,28 @@
           "why": "That is the sentence unchanged: nothing was made plural."
         }
       ],
-      "row": "my"
+      "row": "my",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "chaussure",
+          "en": "shoe",
+          "word": "people-083"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sale",
+          "en": "dirty",
+          "word": "qualities-030"
+        }
+      ]
     },
     {
       "id": "possessives-plural-5",
@@ -849,7 +1006,28 @@
           "why": "That is the original sentence, still singular."
         }
       ],
-      "row": "your (tu)"
+      "row": "your (tu)",
+      "gloss": [
+        {
+          "fr": "Ton",
+          "en": "your"
+        },
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "gentil",
+          "en": "kind",
+          "word": "qualities-069"
+        }
+      ]
     },
     {
       "id": "possessives-plural-6",
@@ -883,7 +1061,27 @@
           "why": "Ces means these; it points at the cousins instead of saying whose they are."
         }
       ],
-      "row": "his / her"
+      "row": "his / her",
+      "gloss": [
+        {
+          "fr": "aime",
+          "en": "loves (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "sa",
+          "en": "her"
+        },
+        {
+          "fr": "cousines",
+          "en": "cousins"
+        }
+      ]
     },
     {
       "id": "possessives-plural-7",
@@ -1055,7 +1253,22 @@
           "why": "Ses is the plural form, but Marc loves one car."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "Marc",
+          "en": "Marc (a name)"
+        },
+        {
+          "fr": "adore",
+          "en": "loves (adorer)"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
     },
     {
       "id": "possessives-his-or-her-5",
@@ -1088,7 +1301,28 @@
           "why": "Ses is the plural form, and Julie is talking with one father."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "Julie",
+          "en": "Julie (a name)"
+        },
+        {
+          "fr": "parle",
+          "en": "is talking (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        }
+      ]
     },
     {
       "id": "possessives-his-or-her-6",
@@ -1122,7 +1356,22 @@
           "why": "Leur belongs to several owners, and Léa is one person."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "Léa",
+          "en": "Léa (a name)"
+        },
+        {
+          "fr": "cherche",
+          "en": "is looking for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "portable",
+          "en": "mobile phone"
+        }
+      ]
     },
     {
       "id": "possessives-his-or-her-7",
@@ -1156,7 +1405,23 @@
           "why": "Ma means my, and the sentence is about Paul, not about the speaker."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        },
+        {
+          "fr": "range",
+          "en": "tidies (ranger)",
+          "word": "verbs-098"
+        },
+        {
+          "fr": "chambre",
+          "en": "bedroom",
+          "word": "home-006"
+        }
+      ]
     },
     {
       "id": "possessives-his-or-her-8",
@@ -1190,7 +1455,26 @@
           "why": "Swapping the noun for a feminine one dodges the problem: the sentence is about her brother."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "Anne",
+          "en": "Anne (a name)"
+        },
+        {
+          "fr": "téléphone",
+          "en": "phones (téléphoner)"
+        },
+        {
+          "fr": "sa",
+          "en": "her"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        }
+      ]
     },
     {
       "id": "possessives-vowel-mon-1",
@@ -1223,7 +1507,21 @@
           "why": "Mes is the plural form, and Claire is one friend."
         }
       ],
-      "row": "amie (friend)"
+      "row": "amie (friend)",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "this is"
+        },
+        {
+          "fr": "amie",
+          "en": "friend"
+        },
+        {
+          "fr": "Claire",
+          "en": "Claire (a name)"
+        }
+      ]
     },
     {
       "id": "possessives-vowel-mon-2",
@@ -1256,7 +1554,23 @@
           "why": "Tes is the plural form, and the question is about one school."
         }
       ],
-      "row": "école (school)"
+      "row": "école (school)",
+      "gloss": [
+        {
+          "fr": "école",
+          "en": "school",
+          "word": "work-031"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "loin",
+          "en": "far"
+        }
+      ]
     },
     {
       "id": "possessives-vowel-mon-3",
@@ -1289,7 +1603,18 @@
           "why": "Ses is the plural form, and she is telling one story."
         }
       ],
-      "row": "histoire (story)"
+      "row": "histoire (story)",
+      "gloss": [
+        {
+          "fr": "raconte",
+          "en": "is telling (raconter)"
+        },
+        {
+          "fr": "histoire",
+          "en": "story",
+          "word": "work-056"
+        }
+      ]
     },
     {
       "id": "possessives-vowel-mon-4",
@@ -1323,7 +1648,21 @@
           "why": "Ta means your. Je te présente shows the speaker is introducing a friend of their own."
         }
       ],
-      "row": "amie (friend)"
+      "row": "amie (friend)",
+      "gloss": [
+        {
+          "fr": "présente",
+          "en": "introduce (présenter)"
+        },
+        {
+          "fr": "amie",
+          "en": "friend"
+        },
+        {
+          "fr": "Léa",
+          "en": "Léa (a name)"
+        }
+      ]
     },
     {
       "id": "possessives-vowel-mon-5",
@@ -1357,7 +1696,19 @@
           "why": "Mon means my, and the question asks for the address of the person you are speaking to."
         }
       ],
-      "row": "adresse (address)"
+      "row": "adresse (address)",
+      "gloss": [
+        {
+          "fr": "donnes",
+          "en": "give (donner)",
+          "word": "verbs-024"
+        },
+        {
+          "fr": "adresse",
+          "en": "address",
+          "word": "travel-030"
+        }
+      ]
     },
     {
       "id": "possessives-vowel-mon-6",
@@ -1391,7 +1742,26 @@
           "why": "Possessives never shorten with an apostrophe in French; the whole word changes instead."
         }
       ],
-      "row": "amie (friend)"
+      "row": "amie (friend)",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "amie",
+          "en": "friend"
+        },
+        {
+          "fr": "arrive",
+          "en": "arrives (arriver)",
+          "word": "verbs-032"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "possessives-vowel-mon-7",
@@ -1491,7 +1861,19 @@
           "why": "Nôtre with a circumflex is the pronoun in le nôtre (ours): it replaces a noun instead of standing in front of one."
         }
       ],
-      "row": "our (nous)"
+      "row": "our (nous)",
+      "gloss": [
+        {
+          "fr": "aimons",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "quartier",
+          "en": "neighbourhood",
+          "word": "travel-032"
+        }
+      ]
     },
     {
       "id": "possessives-notre-votre-2",
@@ -1524,7 +1906,22 @@
           "why": "Ta is the tu form, for friends and family. Madame is someone you address as vous."
         }
       ],
-      "row": "your (vous)"
+      "row": "your (vous)",
+      "gloss": [
+        {
+          "fr": "Madame",
+          "en": "Madam"
+        },
+        {
+          "fr": "billets",
+          "en": "tickets",
+          "word": "travel-015"
+        },
+        {
+          "fr": "s’il vous plaît",
+          "en": "please"
+        }
+      ]
     },
     {
       "id": "possessives-notre-votre-3",
@@ -1558,7 +1955,24 @@
           "why": "Vos means your: it belongs to the people spoken to, not to the speaker’s own group."
         }
       ],
-      "row": "our (nous)"
+      "row": "our (nous)",
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "l’école",
+          "en": "school",
+          "word": "work-031"
+        }
+      ]
     },
     {
       "id": "possessives-notre-votre-4",
@@ -1592,7 +2006,23 @@
           "why": "Notre means our, but the taxi belongs to the man being spoken to."
         }
       ],
-      "row": "your (vous)"
+      "row": "your (vous)",
+      "gloss": [
+        {
+          "fr": "Monsieur",
+          "en": "Sir"
+        },
+        {
+          "fr": "taxi",
+          "en": "taxi",
+          "word": "travel-009"
+        },
+        {
+          "fr": "est arrivé",
+          "en": "has arrived (arriver)",
+          "word": "verbs-032"
+        }
+      ]
     },
     {
       "id": "possessives-notre-votre-5",
@@ -1632,7 +2062,27 @@
           "why": "That is the original sentence, still about one neighbour."
         }
       ],
-      "row": "our (nous)"
+      "row": "our (nous)",
+      "gloss": [
+        {
+          "fr": "Notre",
+          "en": "our"
+        },
+        {
+          "fr": "voisin",
+          "en": "neighbour",
+          "word": "people-034"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sympathique",
+          "en": "nice"
+        }
+      ]
     },
     {
       "id": "possessives-notre-votre-6",
@@ -1729,7 +2179,28 @@
           "why": "Nôtre with a circumflex is a pronoun (le nôtre) and never goes before a noun."
         }
       ],
-      "row": "our (nous)"
+      "row": "our (nous)",
+      "gloss": [
+        {
+          "fr": "aimons",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "notre",
+          "en": "our"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        }
+      ]
     },
     {
       "id": "possessives-leur-leurs-1",
@@ -1762,7 +2233,19 @@
           "why": "Ses belongs to a single owner, and here several people share the house."
         }
       ],
-      "row": "their (ils / elles)"
+      "row": "their (ils / elles)",
+      "gloss": [
+        {
+          "fr": "vendent",
+          "en": "are selling (vendre)",
+          "word": "verbs-056"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     },
     {
       "id": "possessives-leur-leurs-2",
@@ -1795,7 +2278,29 @@
           "why": "Sa belongs to one owner and one feminine thing; here several children own several dogs."
         }
       ],
-      "row": "their (ils / elles)"
+      "row": "their (ils / elles)",
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "jouent",
+          "en": "are playing (jouer)",
+          "word": "verbs-087"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        },
+        {
+          "fr": "chiens",
+          "en": "dogs",
+          "word": "nature-011"
+        }
+      ]
     },
     {
       "id": "possessives-leur-leurs-3",
@@ -1824,7 +2329,27 @@
           "why": "Son and ses belong to a single owner, and the sentence has several neighbours."
         }
       ],
-      "row": "their (ils / elles)"
+      "row": "their (ils / elles)",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        },
+        {
+          "fr": "promènent",
+          "en": "are walking (promener)"
+        },
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        }
+      ]
     },
     {
       "id": "possessives-leur-leurs-4",
@@ -1852,7 +2377,19 @@
           "why": "Ses belongs to a single owner, but elles is several people."
         }
       ],
-      "row": "their (ils / elles)"
+      "row": "their (ils / elles)",
+      "gloss": [
+        {
+          "fr": "appellent",
+          "en": "are calling (appeler)",
+          "word": "verbs-085"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        }
+      ]
     },
     {
       "id": "possessives-leur-leurs-5",
@@ -1886,7 +2423,33 @@
           "why": "Sa belongs to one owner, and ils is several people."
         }
       ],
-      "row": "their (ils / elles)"
+      "row": "their (ils / elles)",
+      "gloss": [
+        {
+          "fr": "prennent",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "leurs",
+          "en": "their"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "pour",
+          "en": "in order to",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "partir",
+          "en": "to leave (partir)",
+          "word": "verbs-031"
+        }
+      ]
     },
     {
       "id": "possessives-leur-leurs-6",
@@ -1920,7 +2483,23 @@
           "why": "The verb kept its singular ending after a plural subject."
         }
       ],
-      "row": "their (ils / elles)"
+      "row": "their (ils / elles)",
+      "gloss": [
+        {
+          "fr": "aime",
+          "en": "likes (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "son",
+          "en": "his"
+        },
+        {
+          "fr": "travail",
+          "en": "job",
+          "word": "work-001"
+        }
+      ]
     },
     {
       "id": "possessives-leur-leurs-7",
@@ -1954,7 +2533,21 @@
           "why": "The verb kept its singular ending after a plural subject."
         }
       ],
-      "row": "their (ils / elles)"
+      "row": "their (ils / elles)",
+      "gloss": [
+        {
+          "fr": "adore",
+          "en": "loves (adorer)"
+        },
+        {
+          "fr": "ses",
+          "en": "her"
+        },
+        {
+          "fr": "cousins",
+          "en": "cousins"
+        }
+      ]
     },
     {
       "id": "possessives-leur-leurs-8",

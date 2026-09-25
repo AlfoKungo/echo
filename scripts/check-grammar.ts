@@ -3,7 +3,9 @@
 // then against the course's depth rules. Exits 1 on any problem.
 import { join } from 'node:path';
 import type { GrammarTopicContent, GrammarUnitContent } from '../contract';
-import { validateCourse } from '../lib/grammar-content';
+import { glossProblems, validateCourse } from '../lib/grammar-content';
+
+const wordIds = new Set((await Promise.all(['core.json', 'world.json'].map((name) => Bun.file(join(import.meta.dir, '..', 'content', name)).json()))).flat().map((word: { id: string }) => word.id));
 
 const dir = join(import.meta.dir, '..', 'content', 'grammar');
 const units = await Bun.file(join(dir, 'units.json')).json() as GrammarUnitContent[];
@@ -42,6 +44,7 @@ for (const id of ids) {
     const owner = allIds.get(exercise.id);
     if (owner && owner !== id) errors.push(`exercise ID ${exercise.id} is also used in ${owner}.`);
     allIds.set(exercise.id, id);
+    errors.push(...glossProblems(exercise, wordIds));
   }
   for (const [type, minimum] of Object.entries(MINIMUM)) if ((byType.get(type) ?? 0) < minimum) errors.push(`has ${byType.get(type) ?? 0} ${type}; write at least ${minimum}.`);
   if (unit && VERB_UNITS.has(unit.id) && (byType.get('conjugate') ?? 0) < 4) errors.push(`has ${byType.get('conjugate') ?? 0} conjugate; verb topics need at least 4.`);

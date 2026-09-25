@@ -770,7 +770,24 @@
           "why": "Choisirez is the futur simple. Il faut que never takes a future tense."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "Il faut",
+          "en": "it is necessary / one must (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "choisir",
+          "en": "to choose",
+          "word": "verbs-054"
+        },
+        {
+          "fr": "cadeau",
+          "en": "present",
+          "word": "people-055"
+        }
+      ]
     },
     {
       "id": "subjunctive-formation-4",
@@ -805,7 +822,23 @@
           "why": "Écrira is the futur and écrirait the conditionnel. Il faut que changes the mood of the verb, not its tense, even when the sentence is about tonight."
         }
       ],
-      "row": "il / elle / on"
+      "row": "il / elle / on",
+      "gloss": [
+        {
+          "fr": "Il faut",
+          "en": "it is necessary / one must (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "lettre",
+          "en": "letter"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "subjunctive-formation-5",
@@ -845,7 +878,24 @@
           "why": "This is correct French, but it swaps in devoir; the task is to keep the same idea and open with the given expression."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "finissons",
+          "en": "finish (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "six",
+          "en": "six",
+          "word": "health-time-087"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock (heure)",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "subjunctive-stem-change-1",
@@ -983,7 +1033,28 @@
           "why": "Prendrons is the futur simple (we will take). After vouloir que French uses the subjunctive, not a future tense."
         }
       ],
-      "row": "prendre"
+      "row": "prendre",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "mère",
+          "en": "mother",
+          "word": "people-009"
+        },
+        {
+          "fr": "veut",
+          "en": "wants (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        }
+      ]
     },
     {
       "id": "subjunctive-stem-change-4",
@@ -1023,7 +1094,22 @@
           "why": "Il faut cannot be followed straight by a subject: the clause must be opened by que, or qu’ before a vowel."
         }
       ],
-      "row": "venir"
+      "row": "venir",
+      "gloss": [
+        {
+          "fr": "Il faut",
+          "en": "it is necessary / one must (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "venent",
+          "en": "come (venir)"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "subjunctive-etre-avoir-1",
@@ -1162,7 +1248,18 @@
           "why": "Soit is indeed the subjunctive, but it is the il/elle form. The subject here is tu, which needs an -s."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "à l’heure",
+          "en": "on time"
+        }
+      ]
     },
     {
       "id": "subjunctive-etre-avoir-4",
@@ -1208,7 +1305,28 @@
           "why": "This says the same thing with devoir, but the task is to repair the verb after il faut que, not to rewrite the sentence."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "Il faut",
+          "en": "it is necessary / one must (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "ton",
+          "en": "your"
+        },
+        {
+          "fr": "billet",
+          "en": "ticket",
+          "word": "travel-015"
+        }
+      ]
     },
     {
       "id": "subjunctive-etre-avoir-5",
@@ -1405,7 +1523,19 @@
           "why": "This mixes the two stems: aill- belongs to je, tu, il and ils, while nous keeps the stem of nous allons."
         }
       ],
-      "row": "aller"
+      "row": "aller",
+      "gloss": [
+        {
+          "fr": "Il faut",
+          "en": "it is necessary / one must (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        }
+      ]
     },
     {
       "id": "subjunctive-irregulars-4",
@@ -1440,7 +1570,26 @@
           "why": "Saura is the futur and saurait the conditionnel. Bien que takes neither: the mood has to change, whatever the time."
         }
       ],
-      "row": "savoir"
+      "row": "savoir",
+      "gloss": [
+        {
+          "fr": "Bien qu’",
+          "en": "although"
+        },
+        {
+          "fr": "nager",
+          "en": "to swim"
+        },
+        {
+          "fr": "n’aime pas",
+          "en": "does not like (aimer)"
+        },
+        {
+          "fr": "mer",
+          "en": "sea",
+          "word": "nature-007"
+        }
+      ]
     },
     {
       "id": "subjunctive-irregulars-5",
@@ -1480,7 +1629,38 @@
           "why": "The ending -es belongs to tu. The subject inside the clause is je."
         }
       ],
-      "row": "pouvoir"
+      "row": "pouvoir",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "contents",
+          "en": "glad (content)",
+          "word": "qualities-065"
+        },
+        {
+          "fr": "pouvoir",
+          "en": "to be able to",
+          "word": "verbs-020"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        }
+      ]
     },
     {
       "id": "subjunctive-irregulars-6",
@@ -1520,7 +1700,24 @@
           "why": "This is correct French, but it drops je and says that someone has to go. The sentence names who, so the clause stays."
         }
       ],
-      "row": "aller"
+      "row": "aller",
+      "gloss": [
+        {
+          "fr": "Il faut",
+          "en": "it is necessary / one must (falloir)",
+          "word": "verbs-022"
+        },
+        {
+          "fr": "vais",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "banque",
+          "en": "bank",
+          "word": "travel-027"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-will-1",
@@ -1560,7 +1757,32 @@
           "why": "Liras is the futur simple. Préférer que takes the subjunctive whatever the time."
         }
       ],
-      "row": "préférer que"
+      "row": "préférer que",
+      "gloss": [
+        {
+          "fr": "Tes",
+          "en": "your"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "préfèrent",
+          "en": "prefer (préférer)"
+        },
+        {
+          "fr": "lire",
+          "en": "to read",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-will-2",
@@ -1698,7 +1920,13 @@
           "why": "This is correct French, but it drops vous: the sentence has to keep saying who must pay attention."
         }
       ],
-      "row": "il faut que"
+      "row": "il faut que",
+      "gloss": [
+        {
+          "fr": "faites attention",
+          "en": "pay attention (faire attention)"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-will-5",
@@ -1770,7 +1998,23 @@
           "why": "Partiras is the futur and partirais the conditionnel. A feeling clause takes the subjunctive even when it talks about tomorrow."
         }
       ],
-      "row": "être triste que"
+      "row": "être triste que",
+      "gloss": [
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "triste",
+          "en": "sad",
+          "word": "qualities-064"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-feelings-2",
@@ -1817,7 +2061,26 @@
           "why": "That is the infinitive. The dog and the person who is afraid are different subjects, so the verb after que is conjugated."
         }
       ],
-      "row": "avoir peur que"
+      "row": "avoir peur que",
+      "gloss": [
+        {
+          "fr": "a peur",
+          "en": "is afraid (avoir peur)"
+        },
+        {
+          "fr": "son",
+          "en": "his"
+        },
+        {
+          "fr": "chien",
+          "en": "dog",
+          "word": "nature-011"
+        },
+        {
+          "fr": "se perdre",
+          "en": "to get lost"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-feelings-3",
@@ -1900,7 +2163,29 @@
           "why": "Et just lists two facts side by side. To say the second one is what pleases you, link them with que."
         }
       ],
-      "row": "être content que"
+      "row": "être content que",
+      "gloss": [
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "content",
+          "en": "glad",
+          "word": "qualities-065"
+        },
+        {
+          "fr": "viens",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "avec",
+          "en": "with",
+          "word": "essentials-060"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-feelings-5",
@@ -1971,7 +2256,22 @@
           "why": "Comprendras is the futur and comprendrais the conditionnel. A purpose clause takes the subjunctive, not a tense of the indicative."
         }
       ],
-      "row": "pour que"
+      "row": "pour que",
+      "gloss": [
+        {
+          "fr": "t’explique",
+          "en": "explain to you (expliquer)",
+          "word": "verbs-075"
+        },
+        {
+          "fr": "règle",
+          "en": "rule"
+        },
+        {
+          "fr": "pour que",
+          "en": "so that"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-conjunctions-2",
@@ -2006,7 +2306,22 @@
           "why": "Fera is the futur and ferait the conditionnel. À condition que takes the subjunctive even when the sentence is about later."
         }
       ],
-      "row": "à condition que"
+      "row": "à condition que",
+      "gloss": [
+        {
+          "fr": "partira",
+          "en": "will leave (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "à condition qu’",
+          "en": "provided that"
+        },
+        {
+          "fr": "beau",
+          "en": "fine, sunny"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-conjunctions-3",
@@ -2047,7 +2362,27 @@
           "why": "The ending -es belongs to tu. The subject of the clause is il."
         }
       ],
-      "row": "avant que"
+      "row": "avant que",
+      "gloss": [
+        {
+          "fr": "Rentre",
+          "en": "go home (rentrer)"
+        },
+        {
+          "fr": "avant qu’",
+          "en": "before"
+        },
+        {
+          "fr": "faire",
+          "en": "to do, to make",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "nuit",
+          "en": "night",
+          "word": "health-time-061"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-conjunctions-4",
@@ -2135,7 +2470,22 @@
           "why": "This is correct French, but it changes the conjunction instead of repairing the verb that follows bien que."
         }
       ],
-      "row": "bien que"
+      "row": "bien que",
+      "gloss": [
+        {
+          "fr": "Bien qu’",
+          "en": "although"
+        },
+        {
+          "fr": "pleut",
+          "en": "is raining (pleuvoir)"
+        },
+        {
+          "fr": "sortons",
+          "en": "go out (sortir)",
+          "word": "verbs-034"
+        }
+      ]
     },
     {
       "id": "subjunctive-triggers-conjunctions-6",
@@ -2206,7 +2556,22 @@
           "why": "Sois is a subjunctive form, and it belongs to tu while the subject here is il. Penser que does not take that mood anyway."
         }
       ],
-      "row": "penser que"
+      "row": "penser que",
+      "gloss": [
+        {
+          "fr": "pense",
+          "en": "think (penser)",
+          "word": "verbs-017"
+        },
+        {
+          "fr": "malade",
+          "en": "ill"
+        },
+        {
+          "fr": "aujourd’hui",
+          "en": "today"
+        }
+      ]
     },
     {
       "id": "subjunctive-indicative-contrast-2",
@@ -2234,7 +2599,19 @@
           "why": "Both are subjunctive forms of aller. Espérer que looks like a wish, but in French it keeps the indicative."
         }
       ],
-      "row": "espérer que"
+      "row": "espérer que",
+      "gloss": [
+        {
+          "fr": "J’espère",
+          "en": "I hope (espérer)",
+          "word": "verbs-095"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        }
+      ]
     },
     {
       "id": "subjunctive-indicative-contrast-3",
@@ -2275,7 +2652,28 @@
           "why": "As is the tu form and a the il form. The subject of the clause is vous."
         }
       ],
-      "row": "être sûr que"
+      "row": "être sûr que",
+      "gloss": [
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sûr",
+          "en": "sure",
+          "word": "qualities-094"
+        },
+        {
+          "fr": "avoir",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "raison",
+          "en": "right"
+        }
+      ]
     },
     {
       "id": "subjunctive-indicative-contrast-4",
@@ -2315,7 +2713,24 @@
           "why": "The clause has to be opened by que, which elides to qu’ in front of elle."
         }
       ],
-      "row": "croire que"
+      "row": "croire que",
+      "gloss": [
+        {
+          "fr": "crois",
+          "en": "believe (croire)",
+          "word": "verbs-018"
+        },
+        {
+          "fr": "soit",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     },
     {
       "id": "subjunctive-indicative-contrast-5",
@@ -2355,7 +2770,32 @@
           "why": "Que elides in front of a vowel: parce que becomes parce qu’ before il."
         }
       ],
-      "row": "parce que"
+      "row": "parce que",
+      "gloss": [
+        {
+          "fr": "reste",
+          "en": "stays (rester)",
+          "word": "verbs-030"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "fr": "parce qu’",
+          "en": "because"
+        },
+        {
+          "fr": "soit",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "malade",
+          "en": "ill"
+        }
+      ]
     },
     {
       "id": "subjunctive-indicative-contrast-6",
@@ -2432,7 +2872,22 @@
           "why": "This is wrong twice over: a clause after vouloir would need the subjunctive, and with one single subject French uses no clause at all."
         }
       ],
-      "row": "vouloir que"
+      "row": "vouloir que",
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "tôt",
+          "en": "early"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "subjunctive-same-subject-2",
@@ -2473,7 +2928,19 @@
           "why": "This only states that you are leaving; the sentence has to keep the idea of wanting."
         }
       ],
-      "row": "vouloir que"
+      "row": "vouloir que",
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "parte",
+          "en": "leave (partir)",
+          "word": "verbs-031"
+        }
+      ]
     },
     {
       "id": "subjunctive-same-subject-3",
@@ -2513,7 +2980,28 @@
           "why": "This is the sentence you started from: the trip is still the other person’s. The task is to make the travellers the people who work."
         }
       ],
-      "row": "pour que"
+      "row": "pour que",
+      "gloss": [
+        {
+          "fr": "travaillons",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "pour que",
+          "en": "so that"
+        },
+        {
+          "fr": "fasses",
+          "en": "make (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "voyage",
+          "en": "trip",
+          "word": "travel-017"
+        }
+      ]
     },
     {
       "id": "subjunctive-same-subject-4",

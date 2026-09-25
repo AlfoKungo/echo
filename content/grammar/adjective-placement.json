@@ -580,7 +580,14 @@
           "why": "The place is fine, but the -s ending marks a plural noun, and une means one single car."
         }
       ],
-      "row": "colour"
+      "row": "colour",
+      "gloss": [
+        {
+          "fr": "J’ai acheté",
+          "en": "I bought (acheter)",
+          "word": "verbs-055"
+        }
+      ]
     },
     {
       "id": "adjective-placement-after-noun-2",
@@ -613,7 +620,14 @@
           "why": "The final -e is the feminine ending, and film is masculine. The order is fine here; the ending is not."
         }
       ],
-      "row": "long adjective"
+      "row": "long adjective",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "adjective-placement-after-noun-3",
@@ -672,7 +686,19 @@
           "why": "The -e ending is feminine, and journal is masculine (un journal), so the ending does not match the noun."
         }
       ],
-      "row": "nationality"
+      "row": "nationality",
+      "gloss": [
+        {
+          "fr": "lit",
+          "en": "reads (lire)",
+          "word": "verbs-072"
+        },
+        {
+          "fr": "journal",
+          "en": "newspaper",
+          "word": "work-081"
+        }
+      ]
     },
     {
       "id": "adjective-placement-after-noun-5",
@@ -700,7 +726,19 @@
           "why": "The -s ending marks a plural noun, but there is one single question here after une."
         }
       ],
-      "row": "long adjective"
+      "row": "long adjective",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "question",
+          "en": "question",
+          "word": "work-051"
+        }
+      ]
     },
     {
       "id": "adjective-placement-after-noun-6",
@@ -728,7 +766,23 @@
           "why": "The colour has moved to the right side, but -s is for a plural noun and there is only one bike here."
         }
       ],
-      "row": "colour"
+      "row": "colour",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "rouge",
+          "en": "red"
+        },
+        {
+          "fr": "vélo",
+          "en": "bike",
+          "word": "travel-008"
+        }
+      ]
     },
     {
       "id": "adjective-placement-after-noun-7",
@@ -796,7 +850,19 @@
           "why": "Maison is feminine (une maison), so both the article and the adjective need feminine forms."
         }
       ],
-      "row": "petit"
+      "row": "petit",
+      "gloss": [
+        {
+          "fr": "habitent",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        }
+      ]
     },
     {
       "id": "adjective-placement-before-noun-2",
@@ -829,7 +895,14 @@
           "why": "Idée is feminine (une idée), so the article and the adjective must both be feminine."
         }
       ],
-      "row": "bon"
+      "row": "bon",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "adjective-placement-before-noun-3",
@@ -857,7 +930,19 @@
           "why": "Femme is feminine, so the masculine article un cannot introduce it."
         }
       ],
-      "row": "jeune"
+      "row": "jeune",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "femme",
+          "en": "woman",
+          "word": "people-003"
+        }
+      ]
     },
     {
       "id": "adjective-placement-before-noun-4",
@@ -891,7 +976,18 @@
           "why": "Longe is a different word (a strap). The feminine of long keeps its hard g sound, which needs an extra letter before the e."
         }
       ],
-      "row": "long"
+      "row": "long",
+      "gloss": [
+        {
+          "fr": "faisons",
+          "en": "are taking (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "promenade",
+          "en": "walk"
+        }
+      ]
     },
     {
       "id": "adjective-placement-before-noun-5",
@@ -919,7 +1015,32 @@
           "why": "The adjective is still behind the noun, and it lost its feminine ending as well: fois is feminine."
         }
       ],
-      "row": "premier"
+      "row": "premier",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "fois",
+          "en": "time"
+        },
+        {
+          "fr": "première",
+          "en": "first"
+        },
+        {
+          "fr": "viens",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
+      ]
     },
     {
       "id": "adjective-placement-before-noun-6",
@@ -1049,7 +1170,19 @@
           "why": "That is the feminine form, and un appartement is masculine."
         }
       ],
-      "row": "beau"
+      "row": "beau",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "appartement",
+          "en": "apartment",
+          "word": "home-002"
+        }
+      ]
     },
     {
       "id": "adjective-placement-bel-nouvel-vieil-2",
@@ -1082,7 +1215,27 @@
           "why": "That is the feminine form, but ami here is masculine: mon ami Pierre."
         }
       ],
-      "row": "vieux"
+      "row": "vieux",
+      "gloss": [
+        {
+          "fr": "Voici",
+          "en": "here is"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        },
+        {
+          "fr": "Pierre",
+          "en": "Pierre (a name)"
+        }
+      ]
     },
     {
       "id": "adjective-placement-bel-nouvel-vieil-3",
@@ -1115,7 +1268,19 @@
           "why": "That is the feminine form, and un ordinateur is masculine."
         }
       ],
-      "row": "nouveau"
+      "row": "nouveau",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "ordinateur",
+          "en": "computer",
+          "word": "work-061"
+        }
+      ]
     },
     {
       "id": "adjective-placement-bel-nouvel-vieil-4",
@@ -1149,7 +1314,24 @@
           "why": "That is the masculine plural, but there is one single hotel here after le."
         }
       ],
-      "row": "nouveau"
+      "row": "nouveau",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "hôtel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "ville",
+          "en": "town",
+          "word": "travel-001"
+        }
+      ]
     },
     {
       "id": "adjective-placement-bel-nouvel-vieil-5",
@@ -1183,7 +1365,18 @@
           "why": "That is the masculine plural, and quel homme talks about one single man."
         }
       ],
-      "row": "beau"
+      "row": "beau",
+      "gloss": [
+        {
+          "fr": "Quel",
+          "en": "what a"
+        },
+        {
+          "fr": "homme",
+          "en": "man",
+          "word": "people-002"
+        }
+      ]
     },
     {
       "id": "adjective-placement-bel-nouvel-vieil-6",
@@ -1217,7 +1410,24 @@
           "why": "That is the plural, but there is one single house here after une."
         }
       ],
-      "row": "vieux"
+      "row": "vieux",
+      "gloss": [
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
     },
     {
       "id": "adjective-placement-bel-nouvel-vieil-7",
@@ -1245,7 +1455,24 @@
           "why": "Belle is feminine, and arbre is masculine (un arbre). The problem here is the vowel that follows, not the gender."
         }
       ],
-      "row": "beau"
+      "row": "beau",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "beau",
+          "en": "beautiful",
+          "word": "qualities-005"
+        },
+        {
+          "fr": "arbre",
+          "en": "tree",
+          "word": "nature-009"
+        }
+      ]
     },
     {
       "id": "adjective-placement-bel-nouvel-vieil-8",
@@ -1273,7 +1500,34 @@
           "why": "Hôtel is masculine (un hôtel), so the feminine pair une vieille does not fit it."
         }
       ],
-      "row": "vieux"
+      "row": "vieux",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "grand-père",
+          "en": "grandfather",
+          "word": "people-014"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vieux",
+          "en": "old",
+          "word": "qualities-009"
+        },
+        {
+          "fr": "hôtel",
+          "en": "hotel",
+          "word": "travel-019"
+        }
+      ]
     },
     {
       "id": "adjective-placement-bel-nouvel-vieil-9",
@@ -1378,7 +1632,23 @@
           "why": "Du is singular and masculine (du pain), and yeux is plural."
         }
       ],
-      "row": "adjective after the noun"
+      "row": "adjective after the noun",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "yeux",
+          "en": "eyes",
+          "word": "health-time-006"
+        },
+        {
+          "fr": "bleus",
+          "en": "blue"
+        }
+      ]
     },
     {
       "id": "adjective-placement-des-to-de-2",
@@ -1411,7 +1681,24 @@
           "why": "The elided form appears only before a vowel, and nouveaux begins with a consonant sound."
         }
       ],
-      "row": "adjective before the noun"
+      "row": "adjective before the noun",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "nouveaux",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "fr": "voisins",
+          "en": "neighbours",
+          "word": "people-034"
+        }
+      ]
     },
     {
       "id": "adjective-placement-des-to-de-3",
@@ -1444,7 +1731,19 @@
           "why": "That linking form is for one masculine noun beginning with a vowel, and amis here is plural."
         }
       ],
-      "row": "adjective before the noun"
+      "row": "adjective before the noun",
+      "gloss": [
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        }
+      ]
     },
     {
       "id": "adjective-placement-des-to-de-4",
@@ -1484,7 +1783,32 @@
           "why": "De la is singular and feminine, but there are several flowers here."
         }
       ],
-      "row": "adjective before the noun"
+      "row": "adjective before the noun",
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "jolies",
+          "en": "pretty",
+          "word": "qualities-006"
+        },
+        {
+          "fr": "fleurs",
+          "en": "flowers",
+          "word": "nature-010"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "jardin",
+          "en": "garden"
+        }
+      ]
     },
     {
       "id": "adjective-placement-des-to-de-5",
@@ -1518,7 +1842,23 @@
           "why": "De la is singular and feminine, and chaussures is plural."
         }
       ],
-      "row": "adjective after the noun"
+      "row": "adjective after the noun",
+      "gloss": [
+        {
+          "fr": "achetons",
+          "en": "buy (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "chaussures",
+          "en": "shoes",
+          "word": "people-083"
+        },
+        {
+          "fr": "noires",
+          "en": "black"
+        }
+      ]
     },
     {
       "id": "adjective-placement-des-to-de-6",
@@ -1558,7 +1898,24 @@
           "why": "Only the adjective became plural; the noun itself still reads as one single friend."
         }
       ],
-      "row": "adjective before the noun"
+      "row": "adjective before the noun",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        }
+      ]
     },
     {
       "id": "adjective-placement-des-to-de-7",
@@ -1598,7 +1955,24 @@
           "why": "Grands is the masculine plural, and valise is feminine, so the ending must be the feminine one."
         }
       ],
-      "row": "adjective before the noun"
+      "row": "adjective before the noun",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "fr": "valise",
+          "en": "suitcase",
+          "word": "travel-054"
+        }
+      ]
     },
     {
       "id": "adjective-placement-des-to-de-8",
@@ -1672,7 +2046,37 @@
           "why": "Du is singular and cannot introduce a plural noun."
         }
       ],
-      "row": "adjective before the noun"
+      "row": "adjective before the noun",
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "petits",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "fr": "restaurants",
+          "en": "restaurants",
+          "word": "travel-020"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "rue",
+          "en": "street",
+          "word": "travel-002"
+        }
+      ]
     },
     {
       "id": "adjective-placement-two-adjectives-1",
@@ -1705,7 +2109,14 @@
           "why": "Both are stacked behind the noun, yet belle is on the short list and belongs in front, so the two should sit on opposite sides."
         }
       ],
-      "row": "before + after"
+      "row": "before + after",
+      "gloss": [
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        }
+      ]
     },
     {
       "id": "adjective-placement-two-adjectives-2",
@@ -1739,7 +2150,19 @@
           "why": "The places are right, but robe is feminine and both adjectives kept their masculine forms."
         }
       ],
-      "row": "before + after"
+      "row": "before + after",
+      "gloss": [
+        {
+          "fr": "porte",
+          "en": "wears (porter)",
+          "word": "verbs-042"
+        },
+        {
+          "fr": "robe",
+          "en": "dress",
+          "word": "people-067"
+        }
+      ]
     },
     {
       "id": "adjective-placement-two-adjectives-3",
@@ -1870,6 +2293,22 @@
           ],
           "why": "That is the plural, but there is one single car here after une."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "rouge",
+          "en": "red"
+        }
       ]
     },
     {
@@ -1904,7 +2343,28 @@
           "why": "Bon is one of the short common adjectives and belongs in front of the noun, not stacked behind it with the nationality."
         }
       ],
-      "row": "before + nationality"
+      "row": "before + nationality",
+      "gloss": [
+        {
+          "fr": "J’ai vu",
+          "en": "I saw (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "italien",
+          "en": "Italian"
+        },
+        {
+          "fr": "bon",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        }
+      ]
     },
     {
       "id": "adjective-placement-meaning-change-1",
@@ -1937,7 +2397,27 @@
           "why": "Homme is masculine, so the feminine pair une grande cannot go with it."
         }
       ],
-      "row": "grand"
+      "row": "grand",
+      "gloss": [
+        {
+          "fr": "Victor Hugo",
+          "en": "Victor Hugo (a name)"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "l’histoire",
+          "en": "history",
+          "word": "work-056"
+        },
+        {
+          "fr": "française",
+          "en": "French"
+        }
+      ]
     },
     {
       "id": "adjective-placement-meaning-change-2",
@@ -1970,7 +2450,27 @@
           "why": "Chère is the feminine form, and sac is masculine."
         }
       ],
-      "row": "cher"
+      "row": "cher",
+      "gloss": [
+        {
+          "fr": "sac",
+          "en": "bag"
+        },
+        {
+          "fr": "coûte",
+          "en": "costs (coûter)",
+          "word": "verbs-058"
+        },
+        {
+          "fr": "euros",
+          "en": "euros"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "adjective-placement-meaning-change-3",
@@ -2003,7 +2503,27 @@
           "why": "Maison is feminine, so both the article and the adjective need feminine forms."
         }
       ],
-      "row": "ancien"
+      "row": "ancien",
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this"
+        },
+        {
+          "fr": "maison",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "fr": "date",
+          "en": "dates (dater)"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        }
+      ]
     },
     {
       "id": "adjective-placement-meaning-change-4",
@@ -2114,7 +2634,23 @@
           "why": "That is the feminine plural ending, and amis here is masculine plural."
         }
       ],
-      "row": "cher"
+      "row": "cher",
+      "gloss": [
+        {
+          "fr": "Bonjour",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "amis",
+          "en": "friends",
+          "word": "people-030"
+        }
+      ]
     },
     {
       "id": "adjective-placement-meaning-change-7",
@@ -2142,7 +2678,41 @@
           "why": "Vieux is about age; the sentence is about a role he no longer has."
         }
       ],
-      "row": "ancien"
+      "row": "ancien",
+      "gloss": [
+        {
+          "fr": "était",
+          "en": "was (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "ma",
+          "en": "my"
+        },
+        {
+          "fr": "classe",
+          "en": "class",
+          "word": "work-035"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "élève",
+          "en": "pupil"
+        },
+        {
+          "fr": "ancien",
+          "en": "old"
+        }
+      ]
     }
   ]
 }

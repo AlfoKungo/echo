@@ -505,7 +505,28 @@
           "why": "Lui replaces à + a person, with verbs like parler à or téléphoner à. Connaître takes its object with no à, so it needs a direct object pronoun."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "connais",
+          "en": "know (connaître)",
+          "word": "verbs-015"
+        },
+        {
+          "fr": "Marc",
+          "en": "Marc (a name)"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        }
+      ]
     },
     {
       "id": "direct-object-gender-number-2",
@@ -545,7 +566,29 @@
           "why": "Leur means to them and belongs to verbs that take à. Acheter takes its object directly, and the object here is a plural thing."
         }
       ],
-      "row": "any plural"
+      "row": "any plural",
+      "gloss": [
+        {
+          "fr": "achètes",
+          "en": "buy (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "pommes",
+          "en": "apples",
+          "word": "food-021"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "achète",
+          "en": "buy (acheter)",
+          "word": "verbs-055"
+        }
+      ]
     },
     {
       "id": "direct-object-gender-number-3",
@@ -585,7 +628,19 @@
           "why": "Lui replaces à + a person. Prendre takes its object directly, and a bus is a thing."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
     },
     {
       "id": "direct-object-gender-number-4",
@@ -631,7 +686,34 @@
           "why": "Elle is a subject pronoun, or it follows a preposition. In front of the verb an object needs its own pronoun."
         }
       ],
-      "row": "feminine singular"
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "fr": "Mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "lave",
+          "en": "washes (laver)",
+          "word": "verbs-097"
+        },
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        }
+      ]
     },
     {
       "id": "direct-object-gender-number-5",
@@ -733,7 +815,18 @@
           "why": "La is feminine, and pain is a masculine noun."
         }
       ],
-      "row": "masculine singular"
+      "row": "masculine singular",
+      "gloss": [
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "fr": "coupe",
+          "en": "cut (couper)"
+        }
+      ]
     },
     {
       "id": "direct-object-elision-1",
@@ -773,7 +866,24 @@
           "why": "Les is plural and would mean several hotels. Only one hotel is mentioned."
         }
       ],
-      "row": "le"
+      "row": "le",
+      "gloss": [
+        {
+          "fr": "L’hôtel",
+          "en": "the hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "aimons",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        }
+      ]
     },
     {
       "id": "direct-object-elision-2",
@@ -819,7 +929,29 @@
           "why": "M’ means me. The thing being liked is the coat, not the speaker."
         }
       ],
-      "row": "le"
+      "row": "le",
+      "gloss": [
+        {
+          "fr": "Ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "manteau",
+          "en": "coat",
+          "word": "people-072"
+        },
+        {
+          "fr": "aime",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "bien",
+          "en": "well",
+          "word": "essentials-045"
+        }
+      ]
     },
     {
       "id": "direct-object-elision-3",
@@ -859,7 +991,18 @@
           "why": "The subject is still tu, so the verb keeps its tu ending."
         }
       ],
-      "row": "le"
+      "row": "le",
+      "gloss": [
+        {
+          "fr": "habilles",
+          "en": "dress (habiller)"
+        },
+        {
+          "fr": "bébé",
+          "en": "baby",
+          "word": "people-005"
+        }
+      ]
     },
     {
       "id": "direct-object-elision-4",
@@ -899,7 +1042,18 @@
           "why": "The object pronoun does not go after the verb in French, and it is the pronoun, not je, that has to change here."
         }
       ],
-      "row": "le"
+      "row": "le",
+      "gloss": [
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        },
+        {
+          "fr": "adore",
+          "en": "love (adorer)"
+        }
+      ]
     },
     {
       "id": "direct-object-elision-5",
@@ -1014,7 +1168,28 @@
           "why": "Lui means to him or to her. The speaker is asking whether they themselves are heard."
         }
       ],
-      "row": "me"
+      "row": "me",
+      "gloss": [
+        {
+          "fr": "entends",
+          "en": "hear (entendre)",
+          "word": "verbs-012"
+        },
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "jardin",
+          "en": "garden"
+        }
+      ]
     },
     {
       "id": "direct-object-me-te-nous-vous-2",
@@ -1049,7 +1224,21 @@
           "why": "Leur means to them, for several people, and it belongs to verbs that take à. One person is being thanked, and remercier takes its object directly."
         }
       ],
-      "row": "you (formal or several)"
+      "row": "you (formal or several)",
+      "gloss": [
+        {
+          "fr": "remercie",
+          "en": "thank (remercier)"
+        },
+        {
+          "fr": "madame",
+          "en": "madam"
+        },
+        {
+          "fr": "you, formal",
+          "en": "you (formal)"
+        }
+      ]
     },
     {
       "id": "direct-object-me-te-nous-vous-3",
@@ -1095,7 +1284,28 @@
           "why": "Les would mean them, some other people. The sentence says who is helped: the speaker’s own group."
         }
       ],
-      "row": "us"
+      "row": "us",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "aident",
+          "en": "help (aider)",
+          "word": "verbs-051"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        }
+      ]
     },
     {
       "id": "direct-object-me-te-nous-vous-4",
@@ -1135,7 +1345,14 @@
           "why": "Vous means you, the person spoken to. The sentence should be about the speaker’s own group."
         }
       ],
-      "row": "us"
+      "row": "us",
+      "gloss": [
+        {
+          "fr": "m’aide",
+          "en": "helps me (aider)",
+          "word": "verbs-051"
+        }
+      ]
     },
     {
       "id": "direct-object-me-te-nous-vous-5",
@@ -1175,7 +1392,14 @@
           "why": "T’ means you, so that would say you love yourself. The speaker is asking about themselves."
         }
       ],
-      "row": "me"
+      "row": "me",
+      "gloss": [
+        {
+          "fr": "aimes",
+          "en": "love (aimer)",
+          "word": "verbs-052"
+        }
+      ]
     },
     {
       "id": "direct-object-me-te-nous-vous-6",
@@ -1298,6 +1522,13 @@
           ],
           "why": "Ne opens the negation and comes before the pronoun, never after it."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "vois",
+          "en": "see (voir)",
+          "word": "verbs-010"
+        }
       ]
     },
     {
@@ -1330,6 +1561,13 @@
             "Je le ne vois pas."
           ],
           "why": "Ne opens the negation and comes before the pronoun, not after it."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "vois",
+          "en": "see (voir)",
+          "word": "verbs-010"
         }
       ]
     },
@@ -1369,6 +1607,23 @@
             "ne les"
           ],
           "why": "Les is plural and would mean several coffees. One drink is meant here."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "bois",
+          "en": "drink (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
         }
       ]
     },
@@ -1496,6 +1751,28 @@
           ],
           "why": "Lui replaces à + one person. The blank stands for the shoes, the thing being put on."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "Ces",
+          "en": "these",
+          "word": "essentials-048"
+        },
+        {
+          "fr": "chaussures",
+          "en": "shoes",
+          "word": "people-083"
+        },
+        {
+          "fr": "mets",
+          "en": "put on (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "jamais",
+          "en": "never",
+          "word": "essentials-090"
+        }
       ]
     },
     {
@@ -1535,6 +1812,23 @@
           ],
           "why": "That pronoun is plural, and only one film is mentioned."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "voir",
+          "en": "to see",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        }
       ]
     },
     {
@@ -1567,6 +1861,27 @@
             "Ta sœur ? Je vais appeler la."
           ],
           "why": "French does not leave the pronoun after the infinitive; it goes in front of it, and it shortens before a vowel."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Ta",
+          "en": "your"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "appeler",
+          "en": "to call",
+          "word": "verbs-085"
         }
       ]
     },
@@ -1606,6 +1921,17 @@
             "Je vais lui porter."
           ],
           "why": "Lui replaces à + a person, as in je vais lui parler. A dress is a thing, and porter takes its object directly."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Cette",
+          "en": "this"
+        },
+        {
+          "fr": "robe",
+          "en": "dress",
+          "word": "people-067"
         }
       ]
     },
@@ -1725,6 +2051,33 @@
           ],
           "why": "The blank replaces that noun, so writing it again says the same thing twice; only a pronoun goes there."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "train",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "fr": "devons",
+          "en": "must (devoir)",
+          "word": "verbs-021"
+        },
+        {
+          "fr": "prendre",
+          "en": "to take",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "huit",
+          "en": "eight",
+          "word": "health-time-089"
+        },
+        {
+          "fr": "heures",
+          "en": "o'clock",
+          "word": "health-time-052"
+        }
       ]
     },
     {
@@ -1763,6 +2116,18 @@
             "Je ne vais pas voir le."
           ],
           "why": "The pronoun cannot be left after the infinitive; it stands in front of the verb it belongs to."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "voir",
+          "en": "to see",
+          "word": "verbs-010"
         }
       ]
     },
@@ -1803,6 +2168,23 @@
           ],
           "why": "The pronoun cannot keep its vowel in front of ai."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        }
       ]
     },
     {
@@ -1835,6 +2217,27 @@
             "Le gâteau ? Paul le a mangé."
           ],
           "why": "The place is right now, but the pronoun cannot keep its vowel in front of a."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "mangé",
+          "en": "eaten (manger)",
+          "word": "verbs-059"
         }
       ]
     },
@@ -1874,6 +2277,32 @@
             "lui ai"
           ],
           "why": "Lui replaces à + a person. A bag is a thing, and trouver takes its object directly."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "Ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "sac",
+          "en": "bag"
+        },
+        {
+          "fr": "trouvé",
+          "en": "found (trouver)",
+          "word": "verbs-026"
+        },
+        {
+          "fr": "sous",
+          "en": "under",
+          "word": "essentials-059"
+        },
+        {
+          "fr": "table",
+          "en": "table",
+          "word": "home-045"
         }
       ]
     },
@@ -2000,6 +2429,27 @@
           ],
           "why": "Lui replaces à + a person. A dessert is a thing, and préparer takes its object directly."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "dessert",
+          "en": "dessert",
+          "word": "food-076"
+        },
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "préparé",
+          "en": "prepared (préparer)"
+        },
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        }
       ]
     },
     {
@@ -2040,7 +2490,33 @@
           "why": "Leur is the plural of lui, for à + people. A bus is one thing, and attendre needs no preposition."
         }
       ],
-      "row": "attendre"
+      "row": "attendre",
+      "gloss": [
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "attends",
+          "en": "wait for (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "depuis",
+          "en": "for"
+        },
+        {
+          "fr": "vingt",
+          "en": "twenty",
+          "word": "health-time-094"
+        },
+        {
+          "fr": "minutes",
+          "en": "minutes",
+          "word": "health-time-053"
+        }
+      ]
     },
     {
       "id": "direct-object-no-preposition-2",
@@ -2080,7 +2556,33 @@
           "why": "La stands for one feminine noun. The sentence is about both parents."
         }
       ],
-      "row": "écouter"
+      "row": "écouter",
+      "gloss": [
+        {
+          "fr": "écoutes",
+          "en": "listen to (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "tes",
+          "en": "your"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        },
+        {
+          "fr": "Oui",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "fr": "écoute",
+          "en": "listen to (écouter)",
+          "word": "verbs-013"
+        }
+      ]
     },
     {
       "id": "direct-object-no-preposition-3",
@@ -2120,7 +2622,31 @@
           "why": "La is singular, and more than one key is meant."
         }
       ],
-      "row": "chercher"
+      "row": "chercher",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "clés",
+          "en": "keys",
+          "word": "home-031"
+        },
+        {
+          "fr": "leur",
+          "en": "to them"
+        },
+        {
+          "fr": "cherche",
+          "en": "look for (chercher)",
+          "word": "verbs-027"
+        },
+        {
+          "fr": "partout",
+          "en": "everywhere"
+        }
+      ]
     },
     {
       "id": "direct-object-no-preposition-4",
@@ -2229,7 +2755,19 @@
           "why": "La replaces one feminine singular noun, and several photos are meant."
         }
       ],
-      "row": "regarder"
+      "row": "regarder",
+      "gloss": [
+        {
+          "fr": "regarde",
+          "en": "looks at (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "photos",
+          "en": "photos",
+          "word": "work-092"
+        }
+      ]
     },
     {
       "id": "direct-object-no-preposition-7",
@@ -2269,7 +2807,28 @@
           "why": "Les is plural, and one sister is one single person."
         }
       ],
-      "row": "écouter"
+      "row": "écouter",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "écoute",
+          "en": "listen to (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "toujours",
+          "en": "always",
+          "word": "essentials-089"
+        }
+      ]
     }
   ]
 }

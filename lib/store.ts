@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { AddWordInput, AddWordResult, BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -29,6 +29,9 @@ export interface Store {
   reviewEarly(input: ReviewEarlyInput): Snapshot;
   addWord(input: AddWordInput): AddWordResult;
   browse(direction: Direction, deck: string): BrowseWord[];
+  // Per deck in one direction: words started today and words not started yet (the shared daily allowance decides
+  // how many of those come in).
+  deckCounts(direction: Direction): Record<string, { today: number; waiting: number }>;
   // Every word as the Walkman sees it, both directions merged: a word being learnt either way is learning.
   listening(): ListeningWord[];
   // A word heard to the end on the Walkman; a repeated requestId counts once.
@@ -84,6 +87,9 @@ export const SCORE_HALF_LIFE_DAYS = 21;
 // recent holds the last words answered, newest first; selection passes over them while anything else is left.
 type PracticeQueue = { day: string; warmup: number; turn: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
 const RECENT_GAP = 3;
+// A word missed this many times shows, on its answer side, up to ALONGSIDE words of its deck missed most with it.
+const TROUBLE_MISSES = 6;
+const ALONGSIDE = 3;
 type HistoricalGrade = { before: CardRow; known: number; graded_at: string };
 const stackNames: VocabularyStack[] = ['unseen', 'failed', 'successful'];
 const stackMix: VocabularyStack[] = ['failed', 'unseen', 'successful', 'unseen', 'failed', 'unseen'];
@@ -99,9 +105,19 @@ function studyDayStart(now: Date): Date {
   return start;
 }
 
-function studyDay(now: Date): string {
+export function studyDay(now: Date): string {
   const day = studyDayStart(now);
   return `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`;
+}
+
+// The last `count` study days, oldest first, and the moment the first one began. Days step back from today's 04:00
+// by calendar date, so a clock change never skips or repeats a day.
+export function recentStudyDays(now: Date, count: number): { days: string[]; since: Date } {
+  const start = studyDayStart(now);
+  const days = Array.from({ length: count }, (_, index) => { const day = new Date(start); day.setDate(day.getDate() - count + 1 + index); return studyDay(day); });
+  const since = new Date(start);
+  since.setDate(since.getDate() - count + 1);
+  return { days, since };
 }
 
 function nextStudyDay(now: Date): Date {
@@ -450,7 +466,19 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     queue.recent = [wordId, ...(queue.recent ?? []).filter((id) => id !== wordId)].slice(0, RECENT_GAP);
   }
 
-  function cardView(row: CardRow, stack: VocabularyStack): CardView {
+  // The words of the same deck missed most besides this one (at least twice each), when this one has been missed
+  // TROUBLE_MISSES times: the answer side shows them together so the difference can be seen.
+  function trouble(wordId: string, misses: Map<string, number>): CardTrouble | undefined {
+    const count = misses.get(wordId) ?? 0;
+    if (count < TROUBLE_MISSES) return undefined;
+    const category = wordById.get(wordId)!.category;
+    const alongside = [...misses].filter(([id, missed]) => id !== wordId && missed >= 2 && wordById.get(id)?.category === category)
+      .sort((left, right) => right[1] - left[1]).slice(0, ALONGSIDE).map(([id]) => ({ fr: wordById.get(id)!.fr, en: wordById.get(id)!.en }));
+    return { misses: count, alongside };
+  }
+
+  function cardView(row: CardRow, stack: VocabularyStack, misses: Map<string, number>): CardView {
+    const problem = trouble(row.word_id, misses);
     return {
       ...wordById.get(row.word_id)!,
       successes: row.active ? row.successes : 0,
@@ -458,6 +486,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       version: row.version,
       stage: row.active === 0 ? 'review' : row.completed_day === null && row.successes === 0 && row.cycle_misses === 0 ? 'new' : 'learning',
       audioUrl: `audio/${encodeURIComponent(row.word_id)}.mp3`,
+      ...(problem ? { trouble: problem } : {}),
     };
   }
 
@@ -525,7 +554,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     const overview = deck === 'all' ? stats : summarize(rows.filter((candidate) => inDeck(candidate.word_id, 'all')), words.length, 'all');
     const selection = selectCard(queue, deck);
     const row = selection ? selected.find((candidate) => candidate.word_id === selection.id) : null;
-    const current = row ? cardView(row, selection!.stack) : null;
+    const current = row ? cardView(row, selection!.stack, misses) : null;
     // The card after this one. The answered word is always passed over, so knowing it or not does not change
     // what follows; the phone shows it at once and fetches its recording ahead.
     let next: CardView | null = null;
@@ -534,7 +563,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       passOver(after, selection!, row.word_id);
       const following = selectCard(after, deck);
       const nextRow = following && following.id !== row.word_id ? selected.find((candidate) => candidate.word_id === following.id) : null;
-      if (nextRow) next = cardView(nextRow, following!.stack);
+      if (nextRow) next = cardView(nextRow, following!.stack, misses);
     }
     let nextDue: number | null = null;
     for (const candidate of selected) {
@@ -888,15 +917,9 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         const average = mine.length ? Math.round(mine.reduce((sum, word) => sum + word.score, 0) / mine.length * 10) / 10 : null;
         return { id: entry.id, title: entry.title, total: entry.count, started: mine.length, average };
       });
-      // Days step back from today's 04:00 by calendar date, so a clock change never skips or repeats a day.
-      const start = studyDayStart(now());
-      const days: StatsDay[] = Array.from({ length: 14 }, (_, index) => {
-        const day = new Date(start);
-        day.setDate(day.getDate() - 13 + index);
-        return { day: studyDay(day), knew: 0, missed: 0, gained: 0, lost: 0 };
-      });
-      const first = new Date(start);
-      first.setDate(first.getDate() - 13);
+      const recent = recentStudyDays(now(), 14);
+      const days: StatsDay[] = recent.days.map((day) => ({ day, knew: 0, missed: 0, gained: 0, lost: 0 }));
+      const first = recent.since;
       const byDay = new Map(days.map((entry) => [entry.day, entry]));
       for (const answer of answersSince.all(first.toISOString())) {
         const entry = byDay.get(studyDay(new Date(answer.at)));
@@ -928,5 +951,20 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     }))();
   }
 
-  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, listening, recordHeard, recordVerdict, statistics, exportData, close: () => db.close() };
+  function deckCounts(direction: Direction): Record<string, { today: number; waiting: number }> {
+    return db.transaction(() => {
+      const day = studyDay(now());
+      const counts: Record<string, { today: number; waiting: number }> = {};
+      for (const [deck, total] of categories) counts[deck] = { today: 0, waiting: total };
+      for (const row of rowsForDirection.all(direction)) {
+        const count = counts[wordById.get(row.word_id)?.category ?? ''];
+        if (!count) continue;
+        count.waiting -= 1;
+        if (row.introduced_day === day) count.today += 1;
+      }
+      return counts;
+    })();
+  }
+
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, statistics, exportData, close: () => db.close() };
 }

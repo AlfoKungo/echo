@@ -490,7 +490,17 @@
           "why": "Au appears before a masculine country such as le Canada, where the article le merges with the preposition. A town name has no article to merge."
         }
       ],
-      "row": "City"
+      "row": "City",
+      "gloss": [
+        {
+          "fr": "J’habite",
+          "en": "I live (habiter)"
+        },
+        {
+          "fr": "Lyon",
+          "en": "Lyon (a city)"
+        }
+      ]
     },
     {
       "id": "prepositions-places-city-choose-2",
@@ -523,7 +533,35 @@
           "why": "Chez introduces a person: chez Marie, chez le médecin. A city is not a person."
         }
       ],
-      "row": "City"
+      "row": "City",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "Tokyo",
+          "en": "Tokyo"
+        },
+        {
+          "fr": "pour",
+          "en": "for"
+        },
+        {
+          "fr": "travail",
+          "en": "work",
+          "word": "work-001"
+        }
+      ]
     },
     {
       "id": "prepositions-places-city-complete",
@@ -564,7 +602,22 @@
           "why": "Dans means inside a closed space, like dans la voiture. French does not use it before the name of a town."
         }
       ],
-      "row": "City"
+      "row": "City",
+      "gloss": [
+        {
+          "fr": "passons",
+          "en": "are spending (passer)",
+          "word": "verbs-029"
+        },
+        {
+          "fr": "week-end",
+          "en": "weekend"
+        },
+        {
+          "fr": "Rome",
+          "en": "Rome"
+        }
+      ]
     },
     {
       "id": "prepositions-places-city-translate",
@@ -651,7 +704,18 @@
           "why": "This changes the place instead of the preposition. The task keeps Madrid and repairs the word in front of it."
         }
       ],
-      "row": "City"
+      "row": "City",
+      "gloss": [
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "Madrid",
+          "en": "Madrid"
+        }
+      ]
     },
     {
       "id": "prepositions-places-city-build",
@@ -720,7 +784,27 @@
           "why": "On its own, à goes before a town: à Rome, à Milan. Italie is the country around those towns."
         }
       ],
-      "row": "Feminine country"
+      "row": "Feminine country",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "grands-parents",
+          "en": "grandparents",
+          "word": "people-015"
+        },
+        {
+          "fr": "habitent",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Italie",
+          "en": "Italy"
+        }
+      ]
     },
     {
       "id": "prepositions-places-en-choose-2",
@@ -753,7 +837,25 @@
           "why": "À l’ belongs before a building that keeps its article, like à l’école. Country names do not use that form."
         }
       ],
-      "row": "Vowel-start country"
+      "row": "Vowel-start country",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "collègue",
+          "en": "colleague"
+        },
+        {
+          "fr": "est née",
+          "en": "was born (naître)"
+        },
+        {
+          "fr": "Iran",
+          "en": "Iran"
+        }
+      ]
     },
     {
       "id": "prepositions-places-en-complete-1",
@@ -793,7 +895,26 @@
           "why": "Dans means inside a closed space. It is not used before the name of a country."
         }
       ],
-      "row": "Feminine country"
+      "row": "Feminine country",
+      "gloss": [
+        {
+          "fr": "Cet",
+          "en": "this"
+        },
+        {
+          "fr": "été",
+          "en": "summer"
+        },
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "Espagne",
+          "en": "Spain"
+        }
+      ]
     },
     {
       "id": "prepositions-places-en-complete-2",
@@ -833,7 +954,22 @@
           "why": "Dans presents a place as a container you are inside. A continent as a location takes its own preposition."
         }
       ],
-      "row": "Continent"
+      "row": "Continent",
+      "gloss": [
+        {
+          "fr": "voyage",
+          "en": "travels (voyager)"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "Asie",
+          "en": "Asia"
+        }
+      ]
     },
     {
       "id": "prepositions-places-en-translate",
@@ -907,7 +1043,23 @@
           "why": "Countries keep no article after à when you say where you are going. La stays only before a building, as in à la gare."
         }
       ],
-      "row": "Feminine country"
+      "row": "Feminine country",
+      "gloss": [
+        {
+          "fr": "allons",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "France",
+          "en": "France"
+        },
+        {
+          "fr": "mai",
+          "en": "May",
+          "word": "health-time-073"
+        }
+      ]
     },
     {
       "id": "prepositions-places-en-rewrite",
@@ -941,7 +1093,21 @@
           "why": "The task replaces the town with the country, so Madrid should leave the sentence."
         }
       ],
-      "row": "Feminine country"
+      "row": "Feminine country",
+      "gloss": [
+        {
+          "fr": "J’habite",
+          "en": "I live (habiter)"
+        },
+        {
+          "fr": "Madrid",
+          "en": "Madrid"
+        },
+        {
+          "fr": "Espagne",
+          "en": "Spain"
+        }
+      ]
     },
     {
       "id": "prepositions-places-au-choose",
@@ -974,7 +1140,23 @@
           "why": "À alone goes before a town: à Montréal, à Québec. A masculine country keeps its article, which must join à."
         }
       ],
-      "row": "Masculine country"
+      "row": "Masculine country",
+      "gloss": [
+        {
+          "fr": "partent",
+          "en": "are leaving (partir)",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "Canada",
+          "en": "Canada"
+        },
+        {
+          "fr": "juin",
+          "en": "June",
+          "word": "health-time-074"
+        }
+      ]
     },
     {
       "id": "prepositions-places-au-complete-1",
@@ -1014,7 +1196,27 @@
           "why": "Aux is the merger of à and les, for plural country names like les Philippines. Le Japon is singular."
         }
       ],
-      "row": "Masculine country"
+      "row": "Masculine country",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "ami",
+          "en": "friend",
+          "word": "people-030"
+        },
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Japon",
+          "en": "Japan"
+        }
+      ]
     },
     {
       "id": "prepositions-places-au-complete-2",
@@ -1054,7 +1256,26 @@
           "why": "À les is never written as two words; they always merge into one."
         }
       ],
-      "row": "Plural country"
+      "row": "Plural country",
+      "gloss": [
+        {
+          "fr": "vas",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "États-Unis",
+          "en": "United States"
+        },
+        {
+          "fr": "cet",
+          "en": "this"
+        },
+        {
+          "fr": "été",
+          "en": "summer"
+        }
+      ]
     },
     {
       "id": "prepositions-places-au-translate",
@@ -1139,7 +1360,18 @@
           "why": "Aux is à merged with les, for plural names like les Pays-Bas. This country is singular."
         }
       ],
-      "row": "Masculine country"
+      "row": "Masculine country",
+      "gloss": [
+        {
+          "fr": "travaille",
+          "en": "works (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "Mexique",
+          "en": "Mexico"
+        }
+      ]
     },
     {
       "id": "prepositions-places-au-rewrite",
@@ -1179,7 +1411,22 @@
           "why": "The task swaps the town for the country, so Lisbonne must leave the sentence."
         }
       ],
-      "row": "Masculine country"
+      "row": "Masculine country",
+      "gloss": [
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "Lisbonne",
+          "en": "Lisbon"
+        },
+        {
+          "fr": "Portugal",
+          "en": "Portugal"
+        }
+      ]
     },
     {
       "id": "prepositions-places-au-build",
@@ -1248,7 +1495,18 @@
           "why": "Des is de merged with les, for plural country names like les Pays-Bas. This country is singular."
         }
       ],
-      "row": "Masculine country"
+      "row": "Masculine country",
+      "gloss": [
+        {
+          "fr": "viens",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "Japon",
+          "en": "Japan"
+        }
+      ]
     },
     {
       "id": "prepositions-places-from-choose-2",
@@ -1281,7 +1539,27 @@
           "why": "The apostrophe form appears only before a vowel or a silent h, as in d’Italie. Paris starts with a consonant."
         }
       ],
-      "row": "City"
+      "row": "City",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "professeur",
+          "en": "teacher",
+          "word": "work-015"
+        },
+        {
+          "fr": "vient",
+          "en": "comes (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "Paris",
+          "en": "Paris"
+        }
+      ]
     },
     {
       "id": "prepositions-places-from-complete-1",
@@ -1321,7 +1599,18 @@
           "why": "Des is de merged with les, for plural names such as les États-Unis. Espagne is singular."
         }
       ],
-      "row": "Vowel start"
+      "row": "Vowel start",
+      "gloss": [
+        {
+          "fr": "vient",
+          "en": "comes (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "Espagne",
+          "en": "Spain"
+        }
+      ]
     },
     {
       "id": "prepositions-places-from-complete-2",
@@ -1361,7 +1650,18 @@
           "why": "De les is never written as two words; they always merge into one."
         }
       ],
-      "row": "Plural country"
+      "row": "Plural country",
+      "gloss": [
+        {
+          "fr": "viennent",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "États-Unis",
+          "en": "United States"
+        }
+      ]
     },
     {
       "id": "prepositions-places-from-translate",
@@ -1442,7 +1742,18 @@
           "why": "Des is de merged with les, for plural country names. Le Portugal is singular."
         }
       ],
-      "row": "Masculine country"
+      "row": "Masculine country",
+      "gloss": [
+        {
+          "fr": "venons",
+          "en": "come (venir)",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "Portugal",
+          "en": "Portugal"
+        }
+      ]
     },
     {
       "id": "prepositions-places-from-rewrite",
@@ -1483,7 +1794,17 @@
           "why": "Venir must be conjugated for tu, and every tu form ends in -s."
         }
       ],
-      "row": "Vowel start"
+      "row": "Vowel start",
+      "gloss": [
+        {
+          "fr": "es",
+          "en": "are (être)"
+        },
+        {
+          "fr": "Italie",
+          "en": "Italy"
+        }
+      ]
     },
     {
       "id": "prepositions-places-chez-choose",
@@ -1516,7 +1837,27 @@
           "why": "En goes with feminine countries and continents. It is never used before people."
         }
       ],
-      "row": "People"
+      "row": "People",
+      "gloss": [
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "dîne",
+          "en": "have dinner (dîner)"
+        },
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "parents",
+          "en": "parents",
+          "word": "people-008"
+        }
+      ]
     },
     {
       "id": "prepositions-places-chez-complete",
@@ -1562,7 +1903,33 @@
           "why": "En belongs before countries and continents, never before a person."
         }
       ],
-      "row": "A profession"
+      "row": "A profession",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)"
+        },
+        {
+          "fr": "rendez-vous",
+          "en": "appointment",
+          "word": "work-010"
+        },
+        {
+          "fr": "dentiste",
+          "en": "dentist",
+          "word": "work-013"
+        },
+        {
+          "fr": "dix",
+          "en": "ten",
+          "word": "health-time-091"
+        },
+        {
+          "fr": "heures",
+          "en": "hours",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "prepositions-places-chez-translate-1",
@@ -1682,7 +2049,23 @@
           "why": "À la is for a feminine building such as à la pharmacie, not for a person."
         }
       ],
-      "row": "A profession"
+      "row": "A profession",
+      "gloss": [
+        {
+          "fr": "va",
+          "en": "goes (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "médecin",
+          "en": "doctor",
+          "word": "work-011"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "prepositions-places-chez-build",
@@ -1751,7 +2134,24 @@
           "why": "Dans means inside: dans le lit puts the cat in the bed, between the sheets."
         }
       ],
-      "row": "sous"
+      "row": "sous",
+      "gloss": [
+        {
+          "fr": "chat",
+          "en": "cat",
+          "word": "nature-012"
+        },
+        {
+          "fr": "dort",
+          "en": "sleeps (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "fr": "lit",
+          "en": "bed",
+          "word": "home-051"
+        }
+      ]
     },
     {
       "id": "prepositions-places-location-complete-1",
@@ -1794,7 +2194,23 @@
           "why": "Près de means near, a looser distance. The English places the two shops side by side, touching."
         }
       ],
-      "row": "à côté de"
+      "row": "à côté de",
+      "gloss": [
+        {
+          "fr": "pharmacie",
+          "en": "pharmacy",
+          "word": "travel-025"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "banque",
+          "en": "bank",
+          "word": "travel-027"
+        }
+      ]
     },
     {
       "id": "prepositions-places-location-complete-2",
@@ -1834,7 +2250,22 @@
           "why": "Devant means in front of, on the same side. The English places the stop facing the school from across the street."
         }
       ],
-      "row": "en face de"
+      "row": "en face de",
+      "gloss": [
+        {
+          "fr": "L’arrêt de bus",
+          "en": "the bus stop"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "l’école",
+          "en": "the school",
+          "word": "work-031"
+        }
+      ]
     },
     {
       "id": "prepositions-places-location-translate-1",
@@ -1962,7 +2393,26 @@
           "why": "Près de means near. The sentence only needed its missing word, not a different expression."
         }
       ],
-      "row": "à côté de"
+      "row": "à côté de",
+      "gloss": [
+        {
+          "fr": "café",
+          "en": "café"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "à côté",
+          "en": "next to"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        }
+      ]
     },
     {
       "id": "prepositions-places-location-build",
@@ -2030,7 +2480,18 @@
           "why": "The elided article appears before a vowel or a silent h, as in à l’aéroport. Gare starts with a consonant."
         }
       ],
-      "row": "la (feminine)"
+      "row": "la (feminine)",
+      "gloss": [
+        {
+          "fr": "t’attends",
+          "en": "am waiting for you (attendre)"
+        },
+        {
+          "fr": "gare",
+          "en": "train station",
+          "word": "travel-011"
+        }
+      ]
     },
     {
       "id": "prepositions-places-place-choose-2",
@@ -2063,7 +2524,27 @@
           "why": "À la is for a feminine place, like à la piscine. Bureau is masculine."
         }
       ],
-      "row": "le (masculine)"
+      "row": "le (masculine)",
+      "gloss": [
+        {
+          "fr": "Mon",
+          "en": "my"
+        },
+        {
+          "fr": "père",
+          "en": "father",
+          "word": "people-010"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)"
+        },
+        {
+          "fr": "bureau",
+          "en": "office",
+          "word": "home-050"
+        }
+      ]
     },
     {
       "id": "prepositions-places-place-complete-1",
@@ -2104,7 +2585,23 @@
           "why": "Aux is à merged with les, for a plural place such as aux toilettes. One school is singular."
         }
       ],
-      "row": "l’ (vowel or silent h)"
+      "row": "l’ (vowel or silent h)",
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "sont",
+          "en": "are (être)"
+        },
+        {
+          "fr": "école",
+          "en": "school",
+          "word": "work-031"
+        }
+      ]
     },
     {
       "id": "prepositions-places-place-complete-2",
@@ -2144,7 +2641,23 @@
           "why": "Aux is à merged with les, used with plural places. One cinema is singular."
         }
       ],
-      "row": "le (masculine)"
+      "row": "le (masculine)",
+      "gloss": [
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        },
+        {
+          "fr": "allons",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "cinéma",
+          "en": "cinema"
+        }
+      ]
     },
     {
       "id": "prepositions-places-place-translate",
@@ -2225,7 +2738,18 @@
           "why": "Dropping the article is not the repair: the place keeps it, merged with à."
         }
       ],
-      "row": "le (masculine)"
+      "row": "le (masculine)",
+      "gloss": [
+        {
+          "fr": "retrouve",
+          "en": "meet up (se retrouver)"
+        },
+        {
+          "fr": "restaurant",
+          "en": "restaurant",
+          "word": "travel-020"
+        }
+      ]
     },
     {
       "id": "prepositions-places-place-rewrite",
@@ -2266,7 +2790,24 @@
           "why": "Only the grave accent is missing on the first word, and accents count in this exercise."
         }
       ],
-      "row": "l’ (vowel or silent h)"
+      "row": "l’ (vowel or silent h)",
+      "gloss": [
+        {
+          "fr": "vais",
+          "en": "am going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "banque",
+          "en": "bank",
+          "word": "travel-027"
+        },
+        {
+          "fr": "hôpital",
+          "en": "hospital",
+          "word": "travel-026"
+        }
+      ]
     }
   ]
 }

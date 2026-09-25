@@ -1,6 +1,5 @@
-import { mkdirSync, existsSync, readdirSync, statSync, unlinkSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { Database } from 'bun:sqlite';
 import { createStore, StoreError } from './lib/store';
 import { createGrammarStore } from './lib/grammar-store';
 import { loadCourse } from './lib/grammar-content';
@@ -12,6 +11,13 @@ import { createClaude, createClaudeReader } from './lib/claude';
 import { createWordAudio } from './lib/word-audio';
 import { createTextTopup } from './lib/text-topup';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
+import { backup as snapshot } from './lib/backups';
+import { createAttempts } from './lib/recording-attempts';
+// Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
+for (const level of ['log', 'error', 'warn'] as const) {
+  const write = console[level].bind(console);
+  console[level] = (...args: unknown[]) => write(new Date().toLocaleString('sv-SE'), ...args);
+}
 
 const root = import.meta.dir;
 const core = await Bun.file(join(root, 'content/core.json')).json() as Word[];
@@ -28,18 +34,26 @@ const dbPath = process.env.ECHO_DB ?? join(root, 'data/echo.db');
 const store = createStore(words, { dbPath, ready: (id) => existsSync(join(root, 'audio', `${id}.mp3`)) });
 // Song words and new texts are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
 const python = process.env.ECHO_PYTHON ?? JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')).python as string;
+// The scripts print one JSON line per clip no take passed for ({"failed": id, "attempts": [...]}); the log names
+// those, with what the checker heard last. Any other failure logs stderr without the libraries' warnings.
 async function runPython(args: string[], env: Record<string, string> = {}): Promise<{ ok: boolean; error: string }> {
   if (process.env.ECHO_WORD_AUDIO === 'off') return { ok: false, error: 'Recording is switched off.' };
-  const child = Bun.spawn([python, ...args], { cwd: root, stdout: 'ignore', stderr: 'pipe', env: { ...process.env, PYTHONUNBUFFERED: '1', ...env } });
-  const error = await new Response(child.stderr).text();
+  const child = Bun.spawn([python, ...args], { cwd: root, stdout: 'pipe', stderr: 'pipe', env: { ...process.env, PYTHONUNBUFFERED: '1', ...env } });
+  const [output, error] = await Promise.all([new Response(child.stdout).text(), new Response(child.stderr).text()]);
   const ok = (await child.exited) === 0;
-  if (!ok) console.error(`audio: ${args[0]} failed`, error.slice(-800));
+  if (ok) return { ok, error };
+  const failed = output.split('\n').flatMap((line) => {
+    try { const entry = JSON.parse(line) as { failed?: string; attempts?: { transcript?: string }[] }; return entry.failed ? [entry] : []; } catch { return []; }
+  });
+  if (failed.length) for (const entry of failed) console.error(`audio: ${args[0]} could not record ${entry.failed} (last heard: ${JSON.stringify(entry.attempts?.at(-1)?.transcript ?? '')})`);
+  else console.error(`audio: ${args[0]} failed`, error.split('\n').filter((line) => line.trim() && !/Warning|warnings\.warn|pkuseg/.test(line)).join('\n').slice(-800));
   return { ok, error };
 }
+const attempts = createAttempts(join(dirname(dbPath), 'recording-attempts.json'));
 const wordAudio = createWordAudio({
   root, extraWordsPath: join(dirname(dbPath), 'added-words.json'),
   addedWords: () => store.addedIds().map((id) => store.word(id)!),
-  run: (args) => runPython(args),
+  run: (args) => runPython(args), attempts,
 });
 const ask = createClaude({ command: process.env.ECHO_CLAUDE ?? join(process.env.HOME ?? '', '.local/bin/claude'), model: process.env.ECHO_CLAUDE_MODEL });
 const songs = createSongs({
@@ -62,7 +76,7 @@ const generatedLanes = join(dirname(dbPath), 'comprehension');
 let bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
 let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar });
 const texts = createTextTopup({
-  root, dataDir: dirname(dbPath), ask, stock: () => comprehension.stock(),
+  root, dataDir: dirname(dbPath), ask, stock: () => comprehension.stock(), attempts,
   ...(process.env.ECHO_TEXT_THRESHOLD ? { threshold: Number(process.env.ECHO_TEXT_THRESHOLD) } : {}),
   record: (ids, dirs) => runPython(['scripts/render-clips.py', '--set', 'comprehension', '--ids', ids.join(',')], { ECHO_COMPREHENSION_GENERATED: dirs.join(':') }),
   // A new lane joins by rebuilding the comprehension store; every stream's state is in the database. The old
@@ -208,7 +222,8 @@ const server = Bun.serve({
         const data = await body(req);
         return json(store.setSongsFirst(data.songsFirst as boolean));
       }
-      if (path === '/api/songs' && req.method === 'GET') return json({ songs: songs.list(), audio: wordAudio.status() });
+      // Song words are practised French → English (a word tapped in a text joins that direction too).
+      if (path === '/api/songs' && req.method === 'GET') return json({ songs: songs.list(), audio: wordAudio.status(), decks: store.deckCounts('fr-en') });
       if (path === '/api/songs/search' && req.method === 'GET') return json({ matches: await songs.search(url.searchParams.get('q') ?? '') });
       if (path === '/api/songs' && req.method === 'POST') {
         const data = await body(req);
@@ -295,17 +310,9 @@ const server = Bun.serve({
   },
 });
 
-// SQLite's snapshot copy includes WAL commits, unlike copying the .db file.
 function backup() {
-  if (process.env.ECHO_DB || !existsSync(dbPath)) return;
-  const dir = join(root, 'backup');
-  mkdirSync(dir, { recursive: true });
-  const name = `echo-${new Date().toISOString().slice(0, 13).replace('T', '-')}.db`;
-  const target = join(dir, name);
-  if (existsSync(target)) return;
-  const db = new Database(dbPath);
-  try { db.exec(`VACUUM INTO '${target.replaceAll("'", "''")}'`); } finally { db.close(); }
-  for (const entry of readdirSync(dir).filter(n => /^echo-\d{4}-\d{2}-\d{2}-\d{2}\.db$/.test(n)).sort().slice(0, -48)) unlinkSync(join(dir, entry));
+  if (process.env.ECHO_DB) return;
+  snapshot(dbPath, join(root, 'backup'));
 }
 try { backup(); } catch (error) { console.error('Echo backup failed', error); }
 const backups = setInterval(() => { try { backup(); } catch (error) { console.error('Echo backup failed', error); } }, 60 * 60 * 1000);

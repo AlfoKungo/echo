@@ -439,7 +439,24 @@
           "why": "De l’ appears only before a vowel or a silent h. Café begins with the consonant c."
         }
       ],
-      "row": "masculine"
+      "row": "masculine",
+      "gloss": [
+        {
+          "fr": "matin",
+          "en": "morning",
+          "word": "health-time-059"
+        },
+        {
+          "fr": "bois",
+          "en": "drink (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
     },
     {
       "id": "partitive-du-de-la-2",
@@ -472,7 +489,19 @@
           "why": "Des is for a plural noun. Soupe here is one singular noun."
         }
       ],
-      "row": "feminine"
+      "row": "feminine",
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        }
+      ]
     },
     {
       "id": "partitive-du-de-la-3",
@@ -512,7 +541,24 @@
           "why": "Bare de follows a negation or a quantity word. This sentence is positive and has neither."
         }
       ],
-      "row": "masculine"
+      "row": "masculine",
+      "gloss": [
+        {
+          "fr": "achetons",
+          "en": "buy (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "pain",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "fr": "boulangerie",
+          "en": "bakery",
+          "word": "travel-024"
+        }
+      ]
     },
     {
       "id": "partitive-du-de-la-4",
@@ -592,7 +638,23 @@
           "why": "Des would count several separate juices. Here it is an amount of one drink."
         }
       ],
-      "row": "masculine"
+      "row": "masculine",
+      "gloss": [
+        {
+          "fr": "boit",
+          "en": "drinks (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "jus",
+          "en": "juice",
+          "word": "food-068"
+        },
+        {
+          "fr": "d’orange",
+          "en": "orange"
+        }
+      ]
     },
     {
       "id": "partitive-du-de-la-6",
@@ -660,7 +722,19 @@
           "why": "Du is masculine and l’eau is feminine. Du could not stand before a vowel either."
         }
       ],
-      "row": "vowel or silent h"
+      "row": "vowel or silent h",
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "eau",
+          "en": "water",
+          "word": "food-001"
+        }
+      ]
     },
     {
       "id": "partitive-de-l-des-2",
@@ -693,7 +767,29 @@
           "why": "De la is for a singular feminine noun. Œufs is plural, and masculine as well."
         }
       ],
-      "row": "plural"
+      "row": "plural",
+      "gloss": [
+        {
+          "fr": "J’achète",
+          "en": "I buy (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "œufs",
+          "en": "eggs",
+          "word": "food-011"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        }
+      ]
     },
     {
       "id": "partitive-de-l-des-3",
@@ -733,7 +829,23 @@
           "why": "Bare de follows a negation or a quantity word. This sentence is positive and has neither."
         }
       ],
-      "row": "vowel or silent h"
+      "row": "vowel or silent h",
+      "gloss": [
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "huile",
+          "en": "oil",
+          "word": "food-046"
+        },
+        {
+          "fr": "d’olive",
+          "en": "olive"
+        }
+      ]
     },
     {
       "id": "partitive-de-l-des-4",
@@ -825,7 +937,19 @@
           "why": "That means the water, one particular one. The sentence is about an unspecified amount."
         }
       ],
-      "row": "vowel or silent h"
+      "row": "vowel or silent h",
+      "gloss": [
+        {
+          "fr": "bois",
+          "en": "drink (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "lait",
+          "en": "milk",
+          "word": "food-005"
+        }
+      ]
     },
     {
       "id": "partitive-de-l-des-6",
@@ -865,7 +989,19 @@
           "why": "Les pommes means the apples, particular ones. He is buying an unspecified quantity."
         }
       ],
-      "row": "plural"
+      "row": "plural",
+      "gloss": [
+        {
+          "fr": "achète",
+          "en": "buys (acheter)",
+          "word": "verbs-055"
+        },
+        {
+          "fr": "pommes",
+          "en": "apples",
+          "word": "food-021"
+        }
+      ]
     },
     {
       "id": "partitive-negation-de-1",
@@ -898,7 +1034,24 @@
           "why": "That is a positive-sentence form, and it is feminine, while le café is masculine."
         }
       ],
-      "row": "du"
+      "row": "du",
+      "gloss": [
+        {
+          "fr": "bois",
+          "en": "drink (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "partitive-negation-de-2",
@@ -931,7 +1084,28 @@
           "why": "That is a positive-sentence form too, and it could not stand before a vowel anyway."
         }
       ],
-      "row": "de l’"
+      "row": "de l’",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "there is (avoir)"
+        },
+        {
+          "fr": "eau",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "bouteille",
+          "en": "bottle",
+          "word": "food-090"
+        }
+      ]
     },
     {
       "id": "partitive-negation-de-3",
@@ -965,7 +1139,19 @@
           "why": "That is a singular positive-sentence form, and enfants is plural."
         }
       ],
-      "row": "des"
+      "row": "des",
+      "gloss": [
+        {
+          "fr": "n’avons pas",
+          "en": "do not have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        }
+      ]
     },
     {
       "id": "partitive-negation-de-4",
@@ -1005,7 +1191,19 @@
           "why": "La viande names one particular meat. The sentence denies an amount, not a specific dish."
         }
       ],
-      "row": "de la"
+      "row": "de la",
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "viande",
+          "en": "meat",
+          "word": "food-014"
+        }
+      ]
     },
     {
       "id": "partitive-negation-de-5",
@@ -1040,7 +1238,19 @@
           "why": "That leaves out ne. Written French keeps it, joined to the verb as n’."
         }
       ],
-      "row": "des"
+      "row": "des",
+      "gloss": [
+        {
+          "fr": "J’ai",
+          "en": "I have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "frères",
+          "en": "brothers",
+          "word": "people-012"
+        }
+      ]
     },
     {
       "id": "partitive-negation-de-6",
@@ -1120,7 +1330,19 @@
           "why": "That deletes ne instead of fixing the article. Written French keeps ne before the verb."
         }
       ],
-      "row": "du"
+      "row": "du",
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "sucre",
+          "en": "sugar",
+          "word": "food-006"
+        }
+      ]
     },
     {
       "id": "partitive-negation-de-8",
@@ -1189,7 +1411,29 @@
           "why": "That is de shortened before a vowel; café begins with a consonant, and this negation reduces nothing anyway."
         }
       ],
-      "row": "ce n’est pas"
+      "row": "ce n’est pas",
+      "gloss": [
+        {
+          "fr": "n’est pas",
+          "en": "is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "thé",
+          "en": "tea",
+          "word": "food-004"
+        }
+      ]
     },
     {
       "id": "partitive-etre-keeps-article-2",
@@ -1222,7 +1466,24 @@
           "why": "That is the shortened form used before a vowel; pommes begins with a consonant, and nothing is reduced here."
         }
       ],
-      "row": "ce ne sont pas"
+      "row": "ce ne sont pas",
+      "gloss": [
+        {
+          "fr": "sont",
+          "en": "are (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pommes",
+          "en": "apples",
+          "word": "food-021"
+        },
+        {
+          "fr": "poires",
+          "en": "pears",
+          "word": "food-027"
+        }
+      ]
     },
     {
       "id": "partitive-etre-keeps-article-3",
@@ -1262,7 +1523,33 @@
           "why": "Du is masculine and l’eau is feminine."
         }
       ],
-      "row": "ce n’est pas"
+      "row": "ce n’est pas",
+      "gloss": [
+        {
+          "fr": "n’est pas",
+          "en": "is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "eau",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "vin",
+          "en": "wine",
+          "word": "food-069"
+        },
+        {
+          "fr": "blanc",
+          "en": "white"
+        }
+      ]
     },
     {
       "id": "partitive-etre-keeps-article-4",
@@ -1296,7 +1583,29 @@
           "why": "That strips the second article too. Être never reduces a partitive, so both nouns keep a full one."
         }
       ],
-      "row": "ce n’est pas"
+      "row": "ce n’est pas",
+      "gloss": [
+        {
+          "fr": "n’est pas",
+          "en": "is not (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sauce",
+          "en": "sauce",
+          "word": "food-092"
+        }
+      ]
     },
     {
       "id": "partitive-etre-keeps-article-5",
@@ -1383,7 +1692,19 @@
           "why": "Ce ne sont pas is the plural form, for several things. Crème here is one singular noun."
         }
       ],
-      "row": "ce n’est pas"
+      "row": "ce n’est pas",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "crème",
+          "en": "cream",
+          "word": "food-049"
+        }
+      ]
     },
     {
       "id": "partitive-quantities-de-1",
@@ -1416,7 +1737,27 @@
           "why": "Des is a plural article; monde is singular here, and a quantity word takes no article at all."
         }
       ],
-      "row": "beaucoup de"
+      "row": "beaucoup de",
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot / many",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "monde",
+          "en": "people"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
+      ]
     },
     {
       "id": "partitive-quantities-de-2",
@@ -1449,7 +1790,24 @@
           "why": "That is the full feminine article. A container word leaves only the short link, and eau begins with a vowel."
         }
       ],
-      "row": "un verre de"
+      "row": "un verre de",
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "verre",
+          "en": "glass",
+          "word": "food-089"
+        },
+        {
+          "fr": "eau",
+          "en": "water",
+          "word": "food-001"
+        }
+      ]
     },
     {
       "id": "partitive-quantities-de-3",
@@ -1489,7 +1847,34 @@
           "why": "Des is plural, and a quantity word takes no article at all."
         }
       ],
-      "row": "trop de"
+      "row": "trop de",
+      "gloss": [
+        {
+          "fr": "met",
+          "en": "puts (mettre)",
+          "word": "verbs-025"
+        },
+        {
+          "fr": "trop",
+          "en": "too much",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "sel",
+          "en": "salt",
+          "word": "food-007"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        }
+      ]
     },
     {
       "id": "partitive-quantities-de-4",
@@ -1529,7 +1914,33 @@
           "why": "Des is plural; argent is singular, and a quantity word takes no article."
         }
       ],
-      "row": "assez de"
+      "row": "assez de",
+      "gloss": [
+        {
+          "fr": "avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "assez",
+          "en": "enough",
+          "word": "essentials-098"
+        },
+        {
+          "fr": "argent",
+          "en": "money"
+        },
+        {
+          "fr": "pour",
+          "en": "for",
+          "word": "essentials-062"
+        },
+        {
+          "fr": "voyage",
+          "en": "trip",
+          "word": "travel-017"
+        }
+      ]
     },
     {
       "id": "partitive-quantities-de-5",
@@ -1610,7 +2021,24 @@
           "why": "The e is dropped only before a vowel or a silent h, and café begins with c."
         }
       ],
-      "row": "beaucoup de"
+      "row": "beaucoup de",
+      "gloss": [
+        {
+          "fr": "boit",
+          "en": "drinks (boire)",
+          "word": "verbs-060"
+        },
+        {
+          "fr": "beaucoup",
+          "en": "a lot",
+          "word": "essentials-099"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
     },
     {
       "id": "partitive-quantities-de-7",
@@ -1644,7 +2072,19 @@
           "why": "Un peu belongs in front of the noun it measures, not at the end of the sentence."
         }
       ],
-      "row": "un peu de"
+      "row": "un peu de",
+      "gloss": [
+        {
+          "fr": "prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "sucre",
+          "en": "sugar",
+          "word": "food-006"
+        }
+      ]
     },
     {
       "id": "partitive-quantities-de-8",
@@ -1718,7 +2158,23 @@
           "why": "Bare de follows a negation or a quantity word, and there is neither here."
         }
       ],
-      "row": "masculine"
+      "row": "masculine",
+      "gloss": [
+        {
+          "fr": "J’aime",
+          "en": "I like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "fr": "noir",
+          "en": "black"
+        }
+      ]
     },
     {
       "id": "partitive-likes-definite-2",
@@ -1751,7 +2207,27 @@
           "why": "Bare de follows a negation or a quantity word, and neither appears here."
         }
       ],
-      "row": "plural"
+      "row": "plural",
+      "gloss": [
+        {
+          "fr": "Mes",
+          "en": "my"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "adorent",
+          "en": "love (adorer)"
+        },
+        {
+          "fr": "frites",
+          "en": "chips / fries",
+          "word": "food-062"
+        }
+      ]
     },
     {
       "id": "partitive-likes-definite-3",
@@ -1791,7 +2267,19 @@
           "why": "French needs an article in front of the noun; it cannot stand bare."
         }
       ],
-      "row": "masculine"
+      "row": "masculine",
+      "gloss": [
+        {
+          "fr": "n’aime pas",
+          "en": "do not like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "poisson",
+          "en": "fish",
+          "word": "nature-014"
+        }
+      ]
     },
     {
       "id": "partitive-likes-definite-4",
@@ -1825,7 +2313,19 @@
           "why": "That changes the article but keeps manger. The verb has to change too."
         }
       ],
-      "row": "feminine"
+      "row": "feminine",
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "salade",
+          "en": "salad",
+          "word": "food-020"
+        }
+      ]
     },
     {
       "id": "partitive-likes-definite-5",
@@ -1865,7 +2365,23 @@
           "why": "Bare de follows a negation or a quantity word, and there is neither here."
         }
       ],
-      "row": "masculine"
+      "row": "masculine",
+      "gloss": [
+        {
+          "fr": "aime",
+          "en": "likes (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "jus",
+          "en": "juice",
+          "word": "food-068"
+        },
+        {
+          "fr": "d’orange",
+          "en": "orange"
+        }
+      ]
     },
     {
       "id": "partitive-likes-definite-6",
@@ -1981,7 +2497,23 @@
           "why": "Faire le sport is not said. With faire, an activity takes a partitive, not the definite article."
         }
       ],
-      "row": "du"
+      "row": "du",
+      "gloss": [
+        {
+          "fr": "samedi",
+          "en": "Saturday",
+          "word": "health-time-067"
+        },
+        {
+          "fr": "fais",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "sport",
+          "en": "sport"
+        }
+      ]
     },
     {
       "id": "partitive-faire-activities-2",
@@ -2014,7 +2546,28 @@
           "why": "Bare de follows a negation or a quantity word. This sentence is positive and has neither."
         }
       ],
-      "row": "de la"
+      "row": "de la",
+      "gloss": [
+        {
+          "fr": "Ma",
+          "en": "my"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "fait",
+          "en": "does (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        }
+      ]
     },
     {
       "id": "partitive-faire-activities-3",
@@ -2054,7 +2607,23 @@
           "why": "Bare de follows a negation or a quantity word, and this sentence is positive."
         }
       ],
-      "row": "de l’"
+      "row": "de l’",
+      "gloss": [
+        {
+          "fr": "font",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "escalade",
+          "en": "climbing"
+        },
+        {
+          "fr": "montagne",
+          "en": "mountain",
+          "word": "nature-008"
+        }
+      ]
     },
     {
       "id": "partitive-faire-activities-4",
@@ -2094,7 +2663,23 @@
           "why": "Bare de follows a negation or a quantity word, and this sentence is positive."
         }
       ],
-      "row": "de la"
+      "row": "de la",
+      "gloss": [
+        {
+          "fr": "fais",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "natation",
+          "en": "swimming"
+        },
+        {
+          "fr": "mardi",
+          "en": "Tuesday",
+          "word": "health-time-063"
+        }
+      ]
     },
     {
       "id": "partitive-faire-activities-5",
@@ -2134,7 +2719,24 @@
           "why": "Le vélo is masculine, and after ne…pas no gender form survives anyway."
         }
       ],
-      "row": "du"
+      "row": "du",
+      "gloss": [
+        {
+          "fr": "faisons",
+          "en": "do (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "vélo",
+          "en": "bike",
+          "word": "travel-008"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        }
+      ]
     },
     {
       "id": "partitive-faire-activities-6",
@@ -2214,7 +2816,18 @@
           "why": "That counts several dances. The activity itself stays singular."
         }
       ],
-      "row": "de la"
+      "row": "de la",
+      "gloss": [
+        {
+          "fr": "fait",
+          "en": "does (faire)",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "danse",
+          "en": "dancing"
+        }
+      ]
     }
   ]
 }

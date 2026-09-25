@@ -1,6 +1,37 @@
 import { join } from 'node:path';
 import type { GrammarExercise, GrammarGuideSection, GrammarTopicContent, GrammarUnitContent } from '../contract';
 import { StoreError } from './store';
+import { unglossed, wholeMatches } from './comprehension-content';
+
+// Question types whose source is a French sentence the learner reads; its words carry glosses.
+export const GLOSSED_TYPES = new Set(['choose', 'complete', 'repair', 'rewrite']);
+
+// A gloss covers every content word of the source, as in Read, names words and phrases that stand whole in it, and
+// never names a word of the answer a choose or complete question asks for. `wordIds` checks vocabulary links.
+export function glossProblems(exercise: GrammarExercise, wordIds?: Set<string>): string[] {
+  const where = `${exercise.id}.gloss`;
+  const gloss = exercise.gloss;
+  if (!GLOSSED_TYPES.has(exercise.type)) return gloss === undefined ? [] : [`${where}: only ${[...GLOSSED_TYPES].join(', ')} questions carry a gloss.`];
+  if (!Array.isArray(gloss) || !gloss.length) return [`${where} is missing: list the meaning of each content word in the source.`];
+  const problems: string[] = [];
+  const seen = new Set<string>();
+  // Words of the answer the source does not already show: naming one in English would give it away.
+  const shown = new Set(normalize(exercise.source).split(/[^\p{L}]+/u));
+  const asked = exercise.type === 'choose' || exercise.type === 'complete'
+    ? exercise.answers.flatMap((answer) => normalize(answer).split(/[\s']+/)).filter((word) => word.length > 1 && !shown.has(word)) : [];
+  for (const entry of gloss) {
+    if (!entry || typeof entry.fr !== 'string' || !entry.fr.trim() || typeof entry.en !== 'string' || !entry.en.trim()) { problems.push(`${where}: every entry needs fr and en text.`); continue; }
+    if (seen.has(entry.fr)) problems.push(`${where} repeats "${entry.fr}".`);
+    seen.add(entry.fr);
+    if (!wholeMatches(exercise.source, entry.fr).length) problems.push(`${where}: "${entry.fr}" is not a whole word or phrase in the source.`);
+    if (entry.word !== undefined && wordIds && !wordIds.has(entry.word)) problems.push(`${where}: "${entry.fr}" links unknown vocabulary id ${entry.word}.`);
+    const english = ` ${normalize(entry.en).replace(/[^\p{L}' ]+/gu, ' ')} `;
+    for (const word of asked) if (english.includes(` ${word} `)) problems.push(`${where}: "${entry.fr}" is glossed "${entry.en}", which names "${word}" from the answer.`);
+  }
+  const missing = unglossed(exercise.source, gloss.filter((entry) => typeof entry?.fr === 'string'));
+  if (missing.length) problems.push(`${where} leaves ${missing.map((word) => `"${word}"`).join(', ')} without a meaning.`);
+  return problems;
+}
 
 export type Course = { units: GrammarUnitContent[]; topics: GrammarTopicContent[] };
 export type Classification = { kind: 'correct' | 'spelling' | 'alternative' | 'incorrect'; message?: string };
@@ -184,7 +215,10 @@ export function validateCourse(course: Course): void {
     if (!LEVELS.has(topic.level)) fail(`topic ${topic.id} has level ${topic.level}; use A1, A2 or B1.`);
     for (const field of ['title', 'description', 'mark'] as const) text(topic[field], `${topic.id}.${field}`);
     if (!Array.isArray(topic.exercises) || !topic.exercises.length) fail(`topic ${topic.id} has no exercises.`);
-    for (const exercise of topic.exercises) validateExercise(exercise, topic.id, exerciseIds, text, fail);
+    for (const exercise of topic.exercises) {
+      validateExercise(exercise, topic.id, exerciseIds, text, fail);
+      if (exercise.gloss !== undefined) { const problem = glossProblems(exercise)[0]; if (problem) fail(problem); }
+    }
     const sections = validateGuide(topic, text, fail);
     for (const exercise of topic.exercises) {
       if (exercise.row === undefined) continue;

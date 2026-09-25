@@ -129,44 +129,53 @@ def main():
         scratch = Path(work)
         for index, (word, text, signature) in enumerate(pending, 1):
             attempts = []
-            for speed in SPEEDS:
-                raw, trimmed, mp3, decoded = (scratch / name for name in ('raw.wav', 'trimmed.wav', 'take.mp3', 'decoded.wav'))
-                chunks = [result.audio for result in model.generate(text=text, voice=voice_path, speed=speed, lang_code='a', verbose=False)]
-                pcm = np.asarray(mx.concatenate(chunks) if len(chunks) > 1 else chunks[0], dtype=np.float32).reshape(-1)
-                with wave.open(str(raw), 'wb') as stream:
-                    stream.setnchannels(1)
-                    stream.setsampwidth(2)
-                    stream.setframerate(24000)
-                    stream.writeframes((np.clip(pcm, -1, 1) * 32767).astype('<i2').tobytes())
-                mx.clear_cache()
-                run([FFMPEG, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(raw), '-af', TRIM, str(trimmed)])
-                run([FFMPEG, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(trimmed), '-codec:a', 'libmp3lame', '-b:a', '96k', str(mp3)])
-                run([FFMPEG, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(mp3), '-ac', '1', '-ar', '16000', str(decoded)])
-                transcript = transcribe(decoded)
-                heard, said = normalize(transcript), normalize(text)
-                ratio = difflib.SequenceMatcher(None, heard.replace(' ', ''), said.replace(' ', '')).ratio()
-                attempt = {'speed': speed, 'transcript': transcript, 'ratio': round(ratio, 3)}
-                attempts.append(attempt)
-                check = 'transcript' if heard.replace(' ', '') == said.replace(' ', '') else None
-                if not check and heard and phonemes(transcript) == phonemes(text):
-                    check = 'phonemes'
-                if not check and heard:
-                    attempt['scores'] = scorer(decoded, [text, transcript])
-                    if attempt['scores'][0] >= attempt['scores'][1] - SCORE_SLACK:
-                        check = 'scored'
-                if not check:
-                    continue
-                final = out / f'{word["id"]}.mp3'
-                mp3.replace(final)
-                seconds = float(run(['/opt/homebrew/bin/ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(final)]))
-                manifest[word['id']] = {'id': word['id'], 'en': word['en'], 'text': text, 'signature': signature, 'speed': speed,
-                                        'transcript': transcript, 'check': check, 'scores': attempt.get('scores'),
-                                        'seconds': round(seconds, 3), 'sha256': hashlib.sha256(final.read_bytes()).hexdigest(),
-                                        'generatedAt': datetime.now(timezone.utc).isoformat()}
-                atomic_json(manifest_path, manifest)
-                print(json.dumps({'done': index, 'total': len(pending), 'id': word['id'], 'text': text, 'transcript': transcript, 'check': check}), flush=True)
-                break
-            else:
+            # The article added for a French noun ("the love" for l'amour) can be what fails the check; the bare
+            # gloss is tried after it, under the same signature so a passing take is not redone.
+            plain = spoken(word['en'])
+            wordings = [text] + ([plain] if plain != text else [])
+            done = False
+            for said_text in wordings:
+                for speed in SPEEDS:
+                    raw, trimmed, mp3, decoded = (scratch / name for name in ('raw.wav', 'trimmed.wav', 'take.mp3', 'decoded.wav'))
+                    chunks = [result.audio for result in model.generate(text=said_text, voice=voice_path, speed=speed, lang_code='a', verbose=False)]
+                    pcm = np.asarray(mx.concatenate(chunks) if len(chunks) > 1 else chunks[0], dtype=np.float32).reshape(-1)
+                    with wave.open(str(raw), 'wb') as stream:
+                        stream.setnchannels(1)
+                        stream.setsampwidth(2)
+                        stream.setframerate(24000)
+                        stream.writeframes((np.clip(pcm, -1, 1) * 32767).astype('<i2').tobytes())
+                    mx.clear_cache()
+                    run([FFMPEG, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(raw), '-af', TRIM, str(trimmed)])
+                    run([FFMPEG, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(trimmed), '-codec:a', 'libmp3lame', '-b:a', '96k', str(mp3)])
+                    run([FFMPEG, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(mp3), '-ac', '1', '-ar', '16000', str(decoded)])
+                    transcript = transcribe(decoded)
+                    heard, said = normalize(transcript), normalize(said_text)
+                    ratio = difflib.SequenceMatcher(None, heard.replace(' ', ''), said.replace(' ', '')).ratio()
+                    attempt = {'text': said_text, 'speed': speed, 'transcript': transcript, 'ratio': round(ratio, 3)}
+                    attempts.append(attempt)
+                    check = 'transcript' if heard.replace(' ', '') == said.replace(' ', '') else None
+                    if not check and heard and phonemes(transcript) == phonemes(said_text):
+                        check = 'phonemes'
+                    if not check and heard:
+                        attempt['scores'] = scorer(decoded, [said_text, transcript])
+                        if attempt['scores'][0] >= attempt['scores'][1] - SCORE_SLACK:
+                            check = 'scored'
+                    if not check:
+                        continue
+                    final = out / f'{word["id"]}.mp3'
+                    mp3.replace(final)
+                    seconds = float(run(['/opt/homebrew/bin/ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(final)]))
+                    manifest[word['id']] = {'id': word['id'], 'en': word['en'], 'text': said_text, 'signature': signature, 'speed': speed,
+                                            'transcript': transcript, 'check': check, 'scores': attempt.get('scores'),
+                                            'seconds': round(seconds, 3), 'sha256': hashlib.sha256(final.read_bytes()).hexdigest(),
+                                            'generatedAt': datetime.now(timezone.utc).isoformat()}
+                    atomic_json(manifest_path, manifest)
+                    print(json.dumps({'done': index, 'total': len(pending), 'id': word['id'], 'text': said_text, 'transcript': transcript, 'check': check}), flush=True)
+                    done = True
+                    break
+                if done:
+                    break
+            if not done:
                 (out / f'{word["id"]}.mp3').unlink(missing_ok=True)
                 manifest.pop(word['id'], None)
                 atomic_json(manifest_path, manifest)

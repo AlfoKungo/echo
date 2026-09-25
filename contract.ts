@@ -8,7 +8,10 @@ export type Settings = { newPerDay: number; songsFirst: boolean };
 export type NewWord = { fr: string; en: string; note?: string };
 export type AddWordsInput = { category: string; title: string; words: NewWord[] };
 export type VocabularyStack = 'unseen' | 'failed' | 'successful';
-export type CardView = Word & { successes: number; version: number; stack: VocabularyStack; stage: 'new' | 'learning' | 'review'; audioUrl: string };
+// trouble: set on a word missed TROUBLE_MISSES times or more in this direction (lib/store.ts), with the words of the
+// same deck missed most alongside it, since words learnt together are the ones that get mixed up.
+export type CardTrouble = { misses: number; alongside: { fr: string; en: string }[] };
+export type CardView = Word & { successes: number; version: number; stack: VocabularyStack; stage: 'new' | 'learning' | 'review'; audioUrl: string; trouble?: CardTrouble };
 // Active counts exclude finished cards; unseen also includes the available daily admission allowance.
 // Stack membership survives the 04:00 allowance reset until the practice cycle is completed.
 // scheduled counts finished words waiting for a later review; scheduledMissed is the subset ever missed.
@@ -35,7 +38,9 @@ export type StatsWord = Pick<ListeningWord, 'id' | 'fr' | 'en' | 'category' | 's
 export type StatsCategory = { id: string; title: string; total: number; started: number; average: number | null };
 export type StatsDay = { day: string; knew: number; missed: number; gained: number; lost: number };
 export type VocabularyStatistics = { words: StatsWord[]; counts: Record<BrowseWord['status'], number>; categories: StatsCategory[]; days: StatsDay[]; walkmanHeard: number };
-export type Statistics = VocabularyStatistics & { levels: { mode: 'listen' | 'read'; label: GrammarLevel }[]; answered: number; grammarTopics: number };
+// comprehensionDays: per study day of the last 14, Listen and Read answers right (on your own or with help) and in all.
+export type ComprehensionDayCounts = { day: string; listen: { right: number; total: number }; read: { right: number; total: number } };
+export type Statistics = VocabularyStatistics & { levels: { mode: 'listen' | 'read'; label: GrammarLevel }[]; answered: number; comprehensionDays: ComprehensionDayCounts[]; grammarTopics: number };
 // A mark on one listen: id stays the same while the learner changes their mind; knew:null withdraws it.
 export type VerdictInput = { id: string; wordId: string; knew: boolean | null };
 // words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn.
@@ -102,6 +107,8 @@ export type GrammarExercise = {
   hint: string;
   feedback: string;
   explanation: string;
+  // The meaning of each content word in a French source (choose, complete, repair, rewrite), tapped as in Read.
+  gloss?: { fr: string; en: string; word?: string }[];
 };
 // A topic's guide: what the topic is for, then sections that each teach one point with a table of forms, steps
 // for choosing, examples and traps. A table's first column labels its rows, and labels are unique in the table.
@@ -166,7 +173,7 @@ export type GrammarFeedback = {
 // section that teaches it. row (the table row holding the answer) is given only once settled, since it shows the answer.
 export type GrammarHelp = { steps: string[]; section: GrammarGuideSection; row: string | null };
 export type GrammarCurrent = {
-  exercise: Pick<GrammarExercise, 'id' | 'type' | 'instruction' | 'source' | 'tokens' | 'options' | 'pattern'> & { topicId: string; topicTitle: string };
+  exercise: Pick<GrammarExercise, 'id' | 'type' | 'instruction' | 'source' | 'tokens' | 'options' | 'pattern' | 'gloss'> & { topicId: string; topicTitle: string };
   answer: string;
   tokenOrder: number[];
   attempts: number;

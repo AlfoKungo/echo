@@ -525,7 +525,18 @@
           "why": "Ne only shortens in front of a vowel sound, and this verb begins with a consonant, so the full word stays."
         }
       ],
-      "row": "je"
+      "row": "je",
+      "gloss": [
+        {
+          "fr": "parle",
+          "en": "speak (parler)",
+          "word": "verbs-007"
+        },
+        {
+          "fr": "français",
+          "en": "French"
+        }
+      ]
     },
     {
       "id": "negation-consonant-build",
@@ -607,7 +618,18 @@
           "why": "Jamais means “never”: a different negative word that changes the meaning. The sentence just needs the ordinary second half of the negation."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "travailles",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "negation-consonant-repair",
@@ -647,7 +669,18 @@
           "why": "This deletes the first negation word and leaves the other in front of the verb. The written form keeps both, one on each side."
         }
       ],
-      "row": "nous"
+      "row": "nous",
+      "gloss": [
+        {
+          "fr": "travaillons",
+          "en": "work (travailler)",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "negation-vowel-rewrite",
@@ -696,7 +729,19 @@
           "why": "The article has been replaced as though it were un or une. La is a definite article and stays as it is after the negation."
         }
       ],
-      "row": "a vowel (a, e, i, o, u)"
+      "row": "a vowel (a, e, i, o, u)",
+      "gloss": [
+        {
+          "fr": "écoute",
+          "en": "listens to (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "radio",
+          "en": "radio",
+          "word": "work-086"
+        }
+      ]
     },
     {
       "id": "negation-vowel-build",
@@ -772,7 +817,19 @@
           "why": "The second half of the negation is already printed after the verb. The blank takes only the first half, in the form the vowel requires."
         }
       ],
-      "row": "a vowel (a, e, i, o, u)"
+      "row": "a vowel (a, e, i, o, u)",
+      "gloss": [
+        {
+          "fr": "aimons",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
     },
     {
       "id": "negation-vowel-repair",
@@ -812,7 +869,19 @@
           "why": "That is how people speak, but it drops the first negation word altogether. The written form keeps it, shortened before the vowel."
         }
       ],
-      "row": "a vowel (a, e, i, o, u)"
+      "row": "a vowel (a, e, i, o, u)",
+      "gloss": [
+        {
+          "fr": "aime",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "froid",
+          "en": "cold",
+          "word": "qualities-026"
+        }
+      ]
     },
     {
       "id": "negation-silent-h-rewrite",
@@ -852,7 +921,19 @@
           "why": "Pas has been pushed to the end, after ici. It belongs directly after the conjugated verb."
         }
       ],
-      "row": "a silent h"
+      "row": "a silent h",
+      "gloss": [
+        {
+          "fr": "habite",
+          "en": "lives (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
+      ]
     },
     {
       "id": "negation-silent-h-build",
@@ -926,7 +1007,19 @@
           "why": "The second half of the negation is already in the sentence after the verb. The blank takes only the first half, in its shortened form."
         }
       ],
-      "row": "a silent h"
+      "row": "a silent h",
+      "gloss": [
+        {
+          "fr": "habites",
+          "en": "live (habiter)",
+          "word": "verbs-068"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
+      ]
     },
     {
       "id": "negation-silent-h-repair",
@@ -969,7 +1062,13 @@
           "why": "Removing the second half is not the fix: the verb needs both halves, one on each side."
         }
       ],
-      "row": "a silent h"
+      "row": "a silent h",
+      "gloss": [
+        {
+          "fr": "hésitons",
+          "en": "hesitate (hésiter)"
+        }
+      ]
     },
     {
       "id": "negation-indefinite-to-de-choose",
@@ -1009,7 +1108,19 @@
           "why": "Des is the plural indefinite article, replaced after the negation just like un — and the noun here is singular."
         }
       ],
-      "row": "un / une"
+      "row": "un / une",
+      "gloss": [
+        {
+          "fr": "n’a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vélo",
+          "en": "bicycle",
+          "word": "travel-008"
+        }
+      ]
     },
     {
       "id": "negation-indefinite-to-de-complete",
@@ -1049,7 +1160,19 @@
           "why": "Enfants is plural, so a singular article does not fit — and after the negation an indefinite article is replaced anyway."
         }
       ],
-      "row": "de before a vowel"
+      "row": "de before a vowel",
+      "gloss": [
+        {
+          "fr": "n’avons",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        }
+      ]
     },
     {
       "id": "negation-indefinite-to-de-rewrite",
@@ -1095,7 +1218,19 @@
           "why": "De la is a partitive article, and the negation replaces it too instead of adding it."
         }
       ],
-      "row": "un / une"
+      "row": "un / une",
+      "gloss": [
+        {
+          "fr": "mange",
+          "en": "eats (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "pomme",
+          "en": "apple",
+          "word": "food-021"
+        }
+      ]
     },
     {
       "id": "negation-indefinite-to-de-translate",
@@ -1175,7 +1310,18 @@
           "why": "Swapping in a definite article changes the meaning to “the glasses”. The indefinite article is replaced by something else."
         }
       ],
-      "row": "des"
+      "row": "des",
+      "gloss": [
+        {
+          "fr": "porte",
+          "en": "wears (porter)",
+          "word": "verbs-042"
+        },
+        {
+          "fr": "lunettes",
+          "en": "glasses"
+        }
+      ]
     },
     {
       "id": "negation-definite-article-stays-choose",
@@ -1208,7 +1354,19 @@
           "why": "Du is the partitive: some coffee. It is replaced after a negation too, and aimer takes a definite article anyway."
         }
       ],
-      "row": "le / la / les"
+      "row": "le / la / les",
+      "gloss": [
+        {
+          "fr": "n’aime",
+          "en": "like (aimer)",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
     },
     {
       "id": "negation-definite-article-stays-rewrite",
@@ -1254,7 +1412,18 @@
           "why": "Pas has been moved to the end of the sentence; it belongs right after the conjugated verb."
         }
       ],
-      "row": "le / la / les"
+      "row": "le / la / les",
+      "gloss": [
+        {
+          "fr": "regardent",
+          "en": "watch (regarder)",
+          "word": "verbs-011"
+        },
+        {
+          "fr": "match",
+          "en": "match"
+        }
+      ]
     },
     {
       "id": "negation-definite-article-stays-translate",
@@ -1370,7 +1539,18 @@
           "why": "This leaves out the first half of the negation. Written French keeps both halves around the verb, and the first one shortens before a vowel."
         }
       ],
-      "row": "a possessive (mon, mes)"
+      "row": "a possessive (mon, mes)",
+      "gloss": [
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "sac",
+          "en": "bag"
+        }
+      ]
     },
     {
       "id": "negation-ce-nest-pas-choose-article",
@@ -1403,7 +1583,18 @@
           "why": "That is the vowel form of the replacement article. After être nothing is replaced, and problème begins with a consonant anyway."
         }
       ],
-      "row": "one thing"
+      "row": "one thing",
+      "gloss": [
+        {
+          "fr": "n’est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "problème",
+          "en": "problem"
+        }
+      ]
     },
     {
       "id": "negation-ce-nest-pas-complete",
@@ -1438,7 +1629,18 @@
           "why": "The first half of the negation is already printed before the blank, so this doubles it — and the verb still has to match a plural noun."
         }
       ],
-      "row": "several things"
+      "row": "several things",
+      "gloss": [
+        {
+          "fr": "mes",
+          "en": "my"
+        },
+        {
+          "fr": "chaussures",
+          "en": "shoes",
+          "word": "people-083"
+        }
+      ]
     },
     {
       "id": "negation-ce-nest-pas-rewrite",
@@ -1478,7 +1680,23 @@
           "why": "The negation has been dropped in after c’est. To negate it, c’est opens back into its two words with the negation around the verb."
         }
       ],
-      "row": "one thing"
+      "row": "one thing",
+      "gloss": [
+        {
+          "fr": "C’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "bonne",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "fr": "idée",
+          "en": "idea"
+        }
+      ]
     },
     {
       "id": "negation-ce-nest-pas-translate",
@@ -1555,7 +1773,19 @@
           "why": "The two words are in the wrong order: pas never comes first."
         }
       ],
-      "row": "verb + de + ne pas + infinitive"
+      "row": "verb + de + ne pas + infinitive",
+      "gloss": [
+        {
+          "fr": "décidons",
+          "en": "decide (décider)",
+          "word": "verbs-094"
+        },
+        {
+          "fr": "voiture",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
     },
     {
       "id": "negation-infinitive-ne-pas-build",
@@ -1637,7 +1867,19 @@
           "why": "De belongs to décider and cannot be separated from it; the negation comes after de."
         }
       ],
-      "row": "verb + de + ne pas + infinitive"
+      "row": "verb + de + ne pas + infinitive",
+      "gloss": [
+        {
+          "fr": "décide",
+          "en": "decides (décider)",
+          "word": "verbs-094"
+        },
+        {
+          "fr": "partir",
+          "en": "to leave",
+          "word": "verbs-031"
+        }
+      ]
     },
     {
       "id": "negation-infinitive-ne-pas-repair",
@@ -1671,7 +1913,24 @@
           "why": "This deletes the first negation word instead of moving the second one. Written French keeps both."
         }
       ],
-      "row": "verb + ne pas + infinitive"
+      "row": "verb + ne pas + infinitive",
+      "gloss": [
+        {
+          "fr": "préférons",
+          "en": "prefer (préférer)",
+          "word": "verbs-053"
+        },
+        {
+          "fr": "travailler",
+          "en": "to work",
+          "word": "verbs-069"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        }
+      ]
     },
     {
       "id": "negation-infinitive-ne-pas-translate",
@@ -1752,7 +2011,14 @@
           "why": "The order is right, but the auxiliary begins with a vowel, so ne cannot keep its e."
         }
       ],
-      "row": "passé composé (avoir)"
+      "row": "passé composé (avoir)",
+      "gloss": [
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        }
+      ]
     },
     {
       "id": "negation-passe-compose-auxiliary-complete",
@@ -1798,7 +2064,18 @@
           "why": "Manger builds its compound past with avoir; être is used only with a short list of verbs and with reflexives."
         }
       ],
-      "row": "passé composé (avoir)"
+      "row": "passé composé (avoir)",
+      "gloss": [
+        {
+          "fr": "mangé",
+          "en": "eaten (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "midi",
+          "en": "midday"
+        }
+      ]
     },
     {
       "id": "negation-passe-compose-auxiliary-rewrite",
@@ -1838,7 +2115,28 @@
           "why": "The two negation words are together in front of the auxiliary, which should stand between them."
         }
       ],
-      "row": "passé composé (avoir)"
+      "row": "passé composé (avoir)",
+      "gloss": [
+        {
+          "fr": "ont",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "fini",
+          "en": "finished (finir)",
+          "word": "verbs-048"
+        },
+        {
+          "fr": "leurs",
+          "en": "their"
+        },
+        {
+          "fr": "devoirs",
+          "en": "homework",
+          "word": "work-038"
+        }
+      ]
     },
     {
       "id": "negation-passe-compose-auxiliary-translate",
@@ -1924,7 +2222,29 @@
           "why": "This drops the first negation word instead of moving the second one; the written form keeps both around the auxiliary."
         }
       ],
-      "row": "passé composé (avoir)"
+      "row": "passé composé (avoir)",
+      "gloss": [
+        {
+          "fr": "n’as",
+          "en": "have (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "vu",
+          "en": "seen (voir)",
+          "word": "verbs-010"
+        },
+        {
+          "fr": "mon",
+          "en": "my",
+          "word": "essentials-049"
+        },
+        {
+          "fr": "message",
+          "en": "message",
+          "word": "work-072"
+        }
+      ]
     },
     {
       "id": "negation-futur-proche-aller-choose",
@@ -1957,7 +2277,18 @@
           "why": "Only the first half of the negation is there. Written French needs the other half right after the conjugated verb."
         }
       ],
-      "row": "futur proche"
+      "row": "futur proche",
+      "gloss": [
+        {
+          "fr": "partir",
+          "en": "to leave",
+          "word": "verbs-031"
+        },
+        {
+          "fr": "demain",
+          "en": "tomorrow"
+        }
+      ]
     },
     {
       "id": "negation-futur-proche-aller-build",
@@ -2045,7 +2376,24 @@
           "why": "The two negation words are together in front of the verb, which should stand between them."
         }
       ],
-      "row": "futur proche"
+      "row": "futur proche",
+      "gloss": [
+        {
+          "fr": "vas",
+          "en": "are going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "aimer",
+          "en": "to like",
+          "word": "verbs-052"
+        },
+        {
+          "fr": "film",
+          "en": "film",
+          "word": "work-089"
+        }
+      ]
     },
     {
       "id": "negation-futur-proche-aller-repair",
@@ -2085,7 +2433,24 @@
           "why": "This changes the tense instead of repairing the word order; the sentence keeps its two verbs."
         }
       ],
-      "row": "futur proche"
+      "row": "futur proche",
+      "gloss": [
+        {
+          "fr": "va",
+          "en": "is going (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "venir",
+          "en": "to come",
+          "word": "verbs-005"
+        },
+        {
+          "fr": "soir",
+          "en": "evening",
+          "word": "health-time-060"
+        }
+      ]
     },
     {
       "id": "negation-futur-proche-aller-translate",
@@ -2168,7 +2533,24 @@
           "why": "The order is reversed. Y stays glued in front of the verb, and the negation word comes before y."
         }
       ],
-      "row": "un / une"
+      "row": "un / une",
+      "gloss": [
+        {
+          "fr": "a",
+          "en": "has (avoir)",
+          "word": "verbs-002"
+        },
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "dimanche",
+          "en": "Sunday",
+          "word": "health-time-068"
+        }
+      ]
     },
     {
       "id": "negation-il-ny-a-pas-de-complete",
@@ -2208,7 +2590,28 @@
           "why": "The apostrophe is missing; it is what joins the word to the noun."
         }
       ],
-      "row": "before a vowel"
+      "row": "before a vowel",
+      "gloss": [
+        {
+          "fr": "Il n’y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "hôtel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "fr": "dans",
+          "en": "in",
+          "word": "essentials-057"
+        },
+        {
+          "fr": "village",
+          "en": "village",
+          "word": "travel-047"
+        }
+      ]
     },
     {
       "id": "negation-il-ny-a-pas-de-translate",
@@ -2344,7 +2747,18 @@
           "why": "Only the article was meant to change; turning the noun singular changes what the sentence says."
         }
       ],
-      "row": "des"
+      "row": "des",
+      "gloss": [
+        {
+          "fr": "Il y a",
+          "en": "there is / there are"
+        },
+        {
+          "fr": "nuages",
+          "en": "clouds",
+          "word": "nature-006"
+        }
+      ]
     }
   ]
 }

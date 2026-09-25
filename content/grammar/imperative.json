@@ -648,7 +648,28 @@
           "why": "Manger is the infinitive; a command needs a conjugated form."
         }
       ],
-      "row": "manger"
+      "row": "manger",
+      "gloss": [
+        {
+          "fr": "manger",
+          "en": "to eat",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "ta",
+          "en": "your"
+        },
+        {
+          "fr": "soupe",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "fr": "s’il te plaît",
+          "en": "please",
+          "word": "essentials-012"
+        }
+      ]
     },
     {
       "id": "imperative-er-drop-s-3",
@@ -688,7 +709,19 @@
           "why": "Fermé is the past participle, used with être or avoir (la fenêtre est fermée). It gives no order."
         }
       ],
-      "row": "fermer"
+      "row": "fermer",
+      "gloss": [
+        {
+          "fr": "fenêtre",
+          "en": "window",
+          "word": "home-026"
+        },
+        {
+          "fr": "s’il te plaît",
+          "en": "please",
+          "word": "essentials-012"
+        }
+      ]
     },
     {
       "id": "imperative-er-drop-s-4",
@@ -722,7 +755,23 @@
           "why": "Écouter is the infinitive; it describes the action instead of asking Léa to do it."
         }
       ],
-      "row": "écouter"
+      "row": "écouter",
+      "gloss": [
+        {
+          "fr": "Écoutes",
+          "en": "listen to (écouter)",
+          "word": "verbs-013"
+        },
+        {
+          "fr": "musique",
+          "en": "music",
+          "word": "work-094"
+        },
+        {
+          "fr": "Léa",
+          "en": "Léa (a name)"
+        }
+      ]
     },
     {
       "id": "imperative-er-drop-s-5",
@@ -924,7 +973,32 @@
           "why": "Faire is the infinitive; an order needs a conjugated form."
         }
       ],
-      "row": "faire"
+      "row": "faire",
+      "gloss": [
+        {
+          "fr": "faire",
+          "en": "to do",
+          "word": "verbs-003"
+        },
+        {
+          "fr": "vos",
+          "en": "your"
+        },
+        {
+          "fr": "devoirs",
+          "en": "homework",
+          "word": "work-038"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        }
+      ]
     },
     {
       "id": "imperative-other-verbs-4",
@@ -964,7 +1038,19 @@
           "why": "Venu is the past participle, used with être (il est venu). It gives no order."
         }
       ],
-      "row": "venir"
+      "row": "venir",
+      "gloss": [
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        }
+      ]
     },
     {
       "id": "imperative-other-verbs-5",
@@ -1004,7 +1090,19 @@
           "why": "That is the infinitive: it describes waiting instead of asking for it."
         }
       ],
-      "row": "attendre"
+      "row": "attendre",
+      "gloss": [
+        {
+          "fr": "attends",
+          "en": "wait (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "ici",
+          "en": "here",
+          "word": "essentials-093"
+        }
+      ]
     },
     {
       "id": "imperative-other-verbs-6",
@@ -1131,7 +1229,19 @@
           "why": "Aller is the infinitive: it names the action instead of ordering it."
         }
       ],
-      "row": "va"
+      "row": "va",
+      "gloss": [
+        {
+          "fr": "boulangerie",
+          "en": "bakery",
+          "word": "travel-024"
+        },
+        {
+          "fr": "s’il te plaît",
+          "en": "please",
+          "word": "essentials-012"
+        }
+      ]
     },
     {
       "id": "imperative-aller-y-en-3",
@@ -1171,7 +1281,19 @@
           "why": "Two things are missing: the letter the verb takes back before en, and the hyphen joining the pronoun to the verb."
         }
       ],
-      "row": "mange"
+      "row": "mange",
+      "gloss": [
+        {
+          "fr": "veux",
+          "en": "want (vouloir)",
+          "word": "verbs-019"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        }
+      ]
     },
     {
       "id": "imperative-aller-y-en-4",
@@ -1221,7 +1343,38 @@
           "why": "Aller is the infinitive; the blank needs the command form."
         }
       ],
-      "row": "va"
+      "row": "va",
+      "gloss": [
+        {
+          "fr": "parc",
+          "en": "park",
+          "word": "travel-035"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ouvert",
+          "en": "open",
+          "word": "qualities-036"
+        },
+        {
+          "fr": "avec",
+          "en": "with"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "frère",
+          "en": "brother",
+          "word": "people-012"
+        }
+      ]
     },
     {
       "id": "imperative-aller-y-en-5",
@@ -1265,7 +1418,19 @@
           "why": "Allez speaks to several people or to someone formally; the command given is in the tu form."
         }
       ],
-      "row": "va"
+      "row": "va",
+      "gloss": [
+        {
+          "fr": "Va",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "marché",
+          "en": "market",
+          "word": "travel-022"
+        }
+      ]
     },
     {
       "id": "imperative-aller-y-en-6",
@@ -1299,7 +1464,28 @@
           "why": "Allez is the vous command, but ton tour shows you are speaking to one friend."
         }
       ],
-      "row": "va"
+      "row": "va",
+      "gloss": [
+        {
+          "fr": "Va",
+          "en": "go (aller)",
+          "word": "verbs-004"
+        },
+        {
+          "fr": "c’est",
+          "en": "it is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "ton",
+          "en": "your",
+          "word": "essentials-050"
+        },
+        {
+          "fr": "tour",
+          "en": "turn"
+        }
+      ]
     },
     {
       "id": "imperative-aller-y-en-7",
@@ -1449,7 +1635,18 @@
           "why": "Avoir is the infinitive: it names the action and orders nobody."
         }
       ],
-      "row": "avoir (have)"
+      "row": "avoir (have)",
+      "gloss": [
+        {
+          "fr": "peur",
+          "en": "fear"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        }
+      ]
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-4",
@@ -1489,7 +1686,18 @@
           "why": "No form of être has that -iez ending in a command; the vous ending here is the short one."
         }
       ],
-      "row": "être (be)"
+      "row": "être (be)",
+      "gloss": [
+        {
+          "fr": "sages",
+          "en": "well-behaved"
+        },
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        }
+      ]
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-5",
@@ -1535,7 +1743,32 @@
           "why": "Savoir is the infinitive; the blank needs the command form."
         }
       ],
-      "row": "savoir (know)"
+      "row": "savoir (know)",
+      "gloss": [
+        {
+          "fr": "suis",
+          "en": "am (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "toujours",
+          "en": "always",
+          "word": "essentials-089"
+        },
+        {
+          "fr": "là",
+          "en": "there",
+          "word": "essentials-094"
+        },
+        {
+          "fr": "pour",
+          "en": "for"
+        },
+        {
+          "fr": "toi",
+          "en": "you"
+        }
+      ]
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-6",
@@ -1569,7 +1802,32 @@
           "why": "Soyez is the vous form, but ta sœur shows you are speaking to someone you call tu."
         }
       ],
-      "row": "être (be)"
+      "row": "être (be)",
+      "gloss": [
+        {
+          "fr": "Soit",
+          "en": "be (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "gentille",
+          "en": "nice",
+          "word": "qualities-069"
+        },
+        {
+          "fr": "avec",
+          "en": "with"
+        },
+        {
+          "fr": "ta",
+          "en": "your"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        }
+      ]
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-7",
@@ -1673,6 +1931,18 @@
           ],
           "why": "Ne pas + infinitive is the style of written notices, not of an order addressed to a person."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "Mange",
+          "en": "eat (manger)",
+          "word": "verbs-059"
+        },
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        }
       ]
     },
     {
@@ -1712,6 +1982,20 @@
           ],
           "why": "Courre survives only in the old hunting phrase chasse à courre; it is no command form."
         }
+      ],
+      "gloss": [
+        {
+          "fr": "si",
+          "en": "so"
+        },
+        {
+          "fr": "vite",
+          "en": "fast"
+        },
+        {
+          "fr": "Paul",
+          "en": "Paul (a name)"
+        }
       ]
     },
     {
@@ -1750,6 +2034,28 @@
             "attendre"
           ],
           "why": "Attendre is the infinitive; the blank needs a conjugated command."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "bus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "toujours",
+          "en": "always",
+          "word": "essentials-089"
+        },
+        {
+          "fr": "en retard",
+          "en": "late",
+          "word": "travel-059"
         }
       ]
     },
@@ -1833,6 +2139,18 @@
             "Ne ferme pas la porte."
           ],
           "why": "The person has been changed: the sentence given uses the vous form of the verb."
+        }
+      ],
+      "gloss": [
+        {
+          "fr": "fermez",
+          "en": "close (fermer)",
+          "word": "verbs-046"
+        },
+        {
+          "fr": "porte",
+          "en": "door",
+          "word": "home-025"
         }
       ]
     },
@@ -2014,7 +2332,24 @@
           "why": "Réveiller is an -er verb: its tu command keeps no final s, even with a pronoun attached."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "sept",
+          "en": "seven",
+          "word": "health-time-088"
+        },
+        {
+          "fr": "heures",
+          "en": "o’clock",
+          "word": "health-time-052"
+        }
+      ]
     },
     {
       "id": "imperative-reflexive-4",
@@ -2048,7 +2383,14 @@
           "why": "Lever is an -er verb, so its tu command has no final s, negative or not."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "Lève-toi",
+          "en": "get up (se lever)",
+          "word": "verbs-064"
+        }
+      ]
     },
     {
       "id": "imperative-reflexive-5",
@@ -2082,7 +2424,23 @@
           "why": "Coucher is an -er verb; its tu command has no final s."
         }
       ],
-      "row": "tu"
+      "row": "tu",
+      "gloss": [
+        {
+          "fr": "couche-toi",
+          "en": "go to bed (se coucher)",
+          "word": "verbs-066"
+        },
+        {
+          "fr": "trop",
+          "en": "too",
+          "word": "essentials-097"
+        },
+        {
+          "fr": "tard",
+          "en": "late"
+        }
+      ]
     },
     {
       "id": "imperative-reflexive-6",
@@ -2178,7 +2536,28 @@
           "why": "Laver is the infinitive; the blank needs the command form with its pronoun."
         }
       ],
-      "row": "vous"
+      "row": "vous",
+      "gloss": [
+        {
+          "fr": "enfants",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "fr": "mains",
+          "en": "hands",
+          "word": "health-time-004"
+        },
+        {
+          "fr": "avant",
+          "en": "before"
+        },
+        {
+          "fr": "dîner",
+          "en": "dinner",
+          "word": "food-075"
+        }
+      ]
     },
     {
       "id": "imperative-object-pronouns-1",
@@ -2228,7 +2607,19 @@
           "why": "The pronoun and the noun name the same thing, so keeping both says it twice."
         }
       ],
-      "row": "le"
+      "row": "le",
+      "gloss": [
+        {
+          "fr": "Prends",
+          "en": "take (prendre)",
+          "word": "verbs-023"
+        },
+        {
+          "fr": "livre",
+          "en": "book",
+          "word": "work-043"
+        }
+      ]
     },
     {
       "id": "imperative-object-pronouns-2",
@@ -2268,7 +2659,14 @@
           "why": "Ne has been dropped, which belongs to casual speech, and the pronoun is still in its affirmative place."
         }
       ],
-      "row": "les"
+      "row": "les",
+      "gloss": [
+        {
+          "fr": "Regarde",
+          "en": "look at (regarder)",
+          "word": "verbs-011"
+        }
+      ]
     },
     {
       "id": "imperative-object-pronouns-3",
@@ -2308,7 +2706,19 @@
           "why": "Donner is an -er verb, so its tu command has no final s; the s returns only before y or en."
         }
       ],
-      "row": "me → moi"
+      "row": "me → moi",
+      "gloss": [
+        {
+          "fr": "sel",
+          "en": "salt",
+          "word": "food-007"
+        },
+        {
+          "fr": "s’il te plaît",
+          "en": "please",
+          "word": "essentials-012"
+        }
+      ]
     },
     {
       "id": "imperative-object-pronouns-4",
@@ -2348,7 +2758,27 @@
           "why": "An object pronoun never follows pas, and the hyphen belongs to affirmative commands only."
         }
       ],
-      "row": "le"
+      "row": "le",
+      "gloss": [
+        {
+          "fr": "gâteau",
+          "en": "cake",
+          "word": "food-054"
+        },
+        {
+          "fr": "est",
+          "en": "is (être)",
+          "word": "verbs-001"
+        },
+        {
+          "fr": "pour",
+          "en": "for"
+        },
+        {
+          "fr": "Marie",
+          "en": "Marie (a name)"
+        }
+      ]
     },
     {
       "id": "imperative-object-pronouns-5",
@@ -2398,7 +2828,27 @@
           "why": "Appeler doubles its l before a silent ending, as in tu appelles; one l is not enough here."
         }
       ],
-      "row": "la"
+      "row": "la",
+      "gloss": [
+        {
+          "fr": "Ta",
+          "en": "your"
+        },
+        {
+          "fr": "sœur",
+          "en": "sister",
+          "word": "people-011"
+        },
+        {
+          "fr": "t’attend",
+          "en": "is waiting for you (attendre)",
+          "word": "verbs-041"
+        },
+        {
+          "fr": "tout de suite",
+          "en": "right away"
+        }
+      ]
     },
     {
       "id": "imperative-object-pronouns-6",
@@ -2432,7 +2882,19 @@
           "why": "That is the order of a statement, and me would elide before a vowel anyway."
         }
       ],
-      "row": "me → moi"
+      "row": "me → moi",
+      "gloss": [
+        {
+          "fr": "Aide",
+          "en": "help (aider)",
+          "word": "verbs-051"
+        },
+        {
+          "fr": "s’il te plaît",
+          "en": "please",
+          "word": "essentials-012"
+        }
+      ]
     },
     {
       "id": "imperative-object-pronouns-7",
