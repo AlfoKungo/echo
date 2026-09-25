@@ -54,7 +54,9 @@ const tapes = new Map<string, Tape>();
 function newTape(): Tape {
   const stamp = existsSync(walkmanManifest) ? statSync(walkmanManifest).mtimeMs : 0;
   if (stamp !== walkmanStamp) { walkmanClips.forget(); walkmanStamp = stamp; }
-  const tape = buildTape(crypto.randomUUID(), planTape(store.listening(), 600), byId, walkmanClips);
+  const listening = store.listening();
+  const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
+  const tape = buildTape(crypto.randomUUID(), planTape(listening, 600), byId, walkmanClips, fresh);
   if (!tape.words.length) throw new StoreError('The Walkman recordings are not ready yet. Please try again later.', 503);
   tapes.set(tape.id, tape);
   for (const id of [...tapes.keys()].slice(0, -3)) tapes.delete(id);

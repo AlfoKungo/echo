@@ -25,8 +25,8 @@ export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'schedule
 export type AddWordInput = { wordId: string; requestId: string };
 export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due' };
 // One word on a Walkman tape, times in seconds from the tape's start: the French at start, the English at
-// meaningAt, the French again at againAt, ending at end.
-export type WalkmanWord = { id: string; fr: string; en: string; start: number; meaningAt: number; againAt: number; end: number };
+// meaningAt, the French again at againAt, ending at end. fresh: not yet started in Vocabulary when the tape was made.
+export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; start: number; meaningAt: number; againAt: number; end: number };
 export type WalkmanTape = { id: string; url: string; seconds: number; words: WalkmanWord[] };
 
 // All routes are relative to the app root, so /echo/ works behind a path proxy.

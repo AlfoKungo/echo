@@ -89,8 +89,19 @@ let queuedGrade = null;
 // tape.words times each word; the screen and the lock screen follow currentTime.
 const walkmanAudio = new Audio();
 walkmanAudio.preload = 'auto';
-let walkman = { tape: null, index: -1, meaning: false, loading: false, started: false };
+// logged holds the tape positions already added to the history.
+let walkman = { tape: null, index: -1, meaning: false, loading: false, started: false, logged: new Set() };
 let walkmanGeneration = 0;
+// Words you heard, newest first, one entry per word, kept on this device across tapes. added records the
+// answer to "Add to my words" so the row keeps saying it. The list opens only when asked, each visit.
+const HEARD_KEY = 'echo.walkman-heard';
+const HEARD_LIMIT = 50;
+let walkmanHeard = (() => {
+  try { const list = JSON.parse(localStorage.getItem(HEARD_KEY) || '[]'); return Array.isArray(list) ? list.slice(0, HEARD_LIMIT) : []; } catch { return []; }
+})();
+let heardOpen = false;
+let heardSaying = '';
+function saveHeard() { try { localStorage.setItem(HEARD_KEY, JSON.stringify(walkmanHeard)); } catch { /* private mode: history lasts this visit */ } }
 // One comprehension stream at a time: the Listen and Read screens, Practise and a Mistakes focus all show one.
 let streamId = '';
 let streamState = null;
@@ -296,8 +307,58 @@ function renderWalkman() {
     <div class="wm-face" aria-live="polite">${face}</div>
     <div class="wm-controls"><button class="listen-play wm-play" data-action="walkman-toggle" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button></div>
     <div class="wm-progress" aria-hidden="true"><span style="width:${walkmanProgress()}%"></span></div>
+    ${heardHTML()}
     <p class="caption wm-note">Keeps playing with your phone locked. Listening doesn’t change your vocabulary progress.</p>
   </section>`;
+}
+const HEARD_STATUS = { saving: 'Adding…', added: 'Added to your words', 'already-practising': 'Already in your practice', 'made-due': 'Due again now' };
+function heardHTML() {
+  const rows = walkmanHeard.map((entry) => {
+    const add = entry.added
+      ? `<span class="wm-heard-status" role="status">${esc(HEARD_STATUS[entry.added] || '')}</span>`
+      : entry.fresh ? `<button class="wm-heard-add" data-action="walkman-add" data-word="${esc(entry.id)}">Add to my words</button>` : '';
+    return `<li class="wm-heard-row"><div class="wm-heard-text"><p class="wm-heard-fr" lang="fr">${frEsc(entry.fr)}</p><p class="wm-heard-en">${esc(entry.en)}</p>${add}</div><button class="icon${heardSaying === entry.id ? ' playing' : ''}" data-action="walkman-say" data-word="${esc(entry.id)}" aria-label="Hear ${esc(entry.fr)} again">${speaker}</button></li>`;
+  }).join('');
+  const list = heardOpen ? `<ol class="wm-heard-list">${rows || '<li class="wm-heard-empty">Words appear here as each one finishes, newest first.</li>'}</ol>` : '';
+  return `<div class="wm-heard"><button class="wm-heard-toggle" data-action="walkman-heard" aria-expanded="${heardOpen}"><span>${heardOpen ? 'Hide words you heard' : 'Words you heard'}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
+}
+// A word joins the history once it has finished, or once the tape moves on after its meaning was heard.
+function logHeard(position) {
+  if (walkman.logged.has(position)) return false;
+  walkman.logged.add(position);
+  const word = walkman.tape.words[position];
+  const previous = walkmanHeard.find((entry) => entry.id === word.id);
+  const added = previous?.added && previous.added !== 'saving' ? { added: previous.added } : {};
+  walkmanHeard = [{ id: word.id, fr: word.fr, en: word.en, fresh: word.fresh, ...added }, ...walkmanHeard.filter((entry) => entry.id !== word.id)].slice(0, HEARD_LIMIT);
+  saveHeard();
+  return true;
+}
+// Hearing a word again pauses the tape, plays that word alone, then carries on if the tape was playing.
+let heardResume = false;
+async function hearAgain(id) {
+  if (!walkmanAudio.paused) { heardResume = true; walkmanAudio.pause(); }
+  heardSaying = id; render();
+  const token = ++audioGeneration;
+  await playClip(`audio/${encodeURIComponent(id)}.mp3`, token);
+  if (token !== audioGeneration) return;
+  heardSaying = '';
+  if (screen !== 'walkman') return;
+  if (heardResume) playWalkman(); else render();
+}
+async function addHeard(id) {
+  const entry = walkmanHeard.find((item) => item.id === id);
+  if (!entry || entry.added) return;
+  entry.added = 'saving'; render();
+  try {
+    const result = await api('api/vocabulary/add', { method: 'POST', body: JSON.stringify({ wordId: id, requestId: requestId() }) });
+    entry.added = HEARD_STATUS[result.status] ? result.status : 'added';
+    announce(HEARD_STATUS[entry.added]);
+  } catch (error) {
+    delete entry.added;
+    notice = { message: error.message };
+  }
+  saveHeard();
+  if (screen === 'walkman') render();
 }
 function walkmanProgress() {
   const seconds = walkman.tape?.seconds;
@@ -305,7 +366,7 @@ function walkmanProgress() {
 }
 async function loadTape(autoplay = false) {
   const token = ++walkmanGeneration;
-  walkman = { tape: null, index: -1, meaning: false, loading: true, started: autoplay };
+  walkman = { tape: null, index: -1, meaning: false, loading: true, started: autoplay, logged: new Set() };
   notice = null; retryAction = null;
   render();
   try {
@@ -324,6 +385,8 @@ async function loadTape(autoplay = false) {
   }
 }
 async function playWalkman() {
+  heardResume = false;
+  if (heardSaying) { heardSaying = ''; stopAudio(); }
   walkmanAudio.playbackRate = speed;
   try {
     await walkmanAudio.play();
@@ -352,6 +415,9 @@ function followTape() {
   const time = walkmanAudio.currentTime;
   const index = walkmanWordAt(time);
   const meaning = index >= 0 && time >= walkman.tape.words[index].meaningAt;
+  let logged = false;
+  if (walkman.index >= 0 && index !== walkman.index && walkman.meaning) logged = logHeard(walkman.index);
+  if (index >= 0 && time >= walkman.tape.words[index].end) logged = logHeard(index) || logged;
   if (index !== walkman.index || meaning !== walkman.meaning) {
     walkman.index = index; walkman.meaning = meaning;
     const word = walkman.tape.words[index];
@@ -361,6 +427,7 @@ function followTape() {
     if (screen === 'walkman' && !document.hidden) render();
     return;
   }
+  if (logged && heardOpen && screen === 'walkman' && !document.hidden) { render(); return; }
   const bar = document.querySelector('.wm-progress span');
   if (bar) bar.style.width = `${walkmanProgress()}%`;
 }
@@ -1123,9 +1190,10 @@ function show(next) {
   // Leaving the Walkman stops the tape; coming back winds a new one.
   if (name !== 'walkman' && walkmanAudio.src) {
     ++walkmanGeneration; walkmanAudio.pause(); walkmanAudio.removeAttribute('src'); walkmanAudio.load();
-    walkman = { tape: null, index: -1, meaning: false, loading: false, started: false };
+    walkman = { tape: null, index: -1, meaning: false, loading: false, started: false, logged: new Set() };
     if ('mediaSession' in navigator) navigator.mediaSession.metadata = null;
   }
+  if (name !== 'walkman') { heardOpen = false; heardSaying = ''; heardResume = false; }
   screen = name; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
   if (name === 'home') fetchState();
 }
@@ -1342,6 +1410,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'mistakes') openMistakes();
   else if (action === 'walkman') openWalkman();
   else if (action === 'walkman-toggle') toggleWalkman();
+  else if (action === 'walkman-heard') { heardOpen = !heardOpen; render(); }
+  else if (action === 'walkman-say') hearAgain(button.dataset.word);
+  else if (action === 'walkman-add') addHeard(button.dataset.word);
   else if (action === 'stream-check') streamCheck();
   else if (action === 'stream-next') streamNext();
   else if (event.target.closest('#flashcard') && !event.target.closest('button,a,input,select')) reveal();

@@ -138,7 +138,8 @@ export function createClips(audioDir: string) {
   };
 }
 
-export function buildTape(id: string, plan: string[], byId: Map<string, Word>, clips: ReturnType<typeof createClips>, seconds = TAPE_SECONDS): Tape {
+// fresh names the words not yet started in Vocabulary, so the history can offer to add them.
+export function buildTape(id: string, plan: string[], byId: Map<string, Word>, clips: ReturnType<typeof createClips>, fresh: Set<string> = new Set(), seconds = TAPE_SECONDS): Tape {
   const silence = clips.silence();
   if (!silence) throw new Error('The Walkman silence frame is missing.');
   const parts: Uint8Array[] = [];
@@ -171,7 +172,7 @@ export function buildTape(id: string, plan: string[], byId: Map<string, Word>, c
     add(french);
     const end = now();
     pause(BETWEEN);
-    words.push({ id: wordId, fr: word.fr, en: word.en, start, meaningAt, againAt, end });
+    words.push({ id: wordId, fr: word.fr, en: word.en, fresh: fresh.has(wordId), start, meaningAt, againAt, end });
     if (now() >= seconds) break;
   }
   const bytes = new Uint8Array(frames * FRAME_BYTES);

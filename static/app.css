@@ -46,6 +46,22 @@ a.destination{color:inherit;text-decoration:none}.destination .symbol svg{displa
 .wm-progress{height:3px;margin:34px auto 0;max-width:320px;border-radius:2px;background:var(--frame);overflow:hidden}
 .wm-progress span{display:block;height:100%;background:var(--violet);transition:width .25s linear}
 .wm-note{text-align:center;margin-top:18px}
+.wm-heard{margin:30px auto 0;max-width:520px}
+.wm-heard-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:46px;padding:10px 14px;border:1px solid var(--frame);border-radius:12px;color:var(--muted);font-size:14px}
+.wm-heard-toggle .chev{transition:transform .18s}
+.wm-heard-toggle[aria-expanded=true] .chev{transform:rotate(180deg)}
+.wm-heard-list{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column}
+.wm-heard-row{display:flex;align-items:center;gap:12px;padding:13px 4px;border-top:1px solid var(--frame)}
+.wm-heard-row:first-child{border-top:0}
+.wm-heard-text{flex:1;min-width:0}
+.wm-heard-fr{font-size:21px;font-weight:500;letter-spacing:-.3px;line-height:1.3;overflow-wrap:anywhere}
+.wm-heard-en{font-size:14px;color:var(--muted);line-height:1.45;margin-top:1px}
+.wm-heard-add{margin-top:6px;padding:0;font-size:13px;color:var(--violet)}
+.wm-heard-status{display:block;margin-top:6px;font-size:13px;color:var(--muted)}
+.wm-heard-row .icon{flex:none;width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:var(--violet)}
+.wm-heard-row .icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.wm-heard-row .icon.playing{background:var(--card-hover)}
+.wm-heard-empty{padding:16px 4px;color:var(--muted);font-size:14px;text-align:center}
 
 .stream{max-width:640px;margin:auto;padding-bottom:40px}
 .stream .section-top{margin-bottom:18px}
