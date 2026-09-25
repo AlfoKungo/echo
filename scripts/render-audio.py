@@ -57,6 +57,11 @@ reference_hash = hashlib.sha256(REFERENCE.read_bytes()).hexdigest()
 def carrier_for(word):
     return args.carrier if args.carrier is not None else contexts.get(word['id'], {}).get('before', 'On dit : ')
 
+def sounds_like(word):
+    # espeak says a few words wrongly (laid as /lɛd/, like laide); contexts.json can name a word spoken the same
+    # (lait), so the phonetic check compares the take with how the word really sounds.
+    return contexts.get(word['id'], {}).get('soundsLike', word['fr'].strip().rstrip('.!?'))
+
 def signature(word):
     return hashlib.sha256(json.dumps([MODEL, SETTINGS, PIPELINE, reference_hash, word['fr'], carrier_for(word)], ensure_ascii=False).encode()).hexdigest()
 
@@ -126,7 +131,7 @@ for index, word in enumerate(pending, 1):
         result = transcribe(wav)
         transcript = result.get('text', '').strip()
         exact = normalize(transcript) == normalize(text)
-        if not exact and phonemes(transcript) != phonemes(text):
+        if not exact and phonemes(transcript) != phonemes(carrier + sounds_like(word) + '.'):
             errors.append({'seed': seed, 'transcript': transcript, 'error': 'Speech content mismatch'})
             continue
         tokens = [token for token in result['tokens'] if token['t_dtw'] >= 0 and normalize(token['text'])]
