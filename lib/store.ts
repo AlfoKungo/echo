@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { AddWordInput, AddWordResult, BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -18,6 +18,13 @@ export interface Store {
   undo(direction: Direction, deck: string, undoId: string): Snapshot;
   settings(): Settings;
   setSettings(newPerDay: number): Settings;
+  setSongsFirst(songsFirst: boolean): Settings;
+  // Adds words to a category of their own (a song); they are new words from then on. Returns them with their ids.
+  addWords(input: AddWordsInput): Word[];
+  word(id: string): Word | undefined;
+  words(): Word[];
+  // Word ids added from songs, in the order they were added.
+  addedIds(): string[];
   addExtraWords(input: ExtraWordsInput): Snapshot;
   reviewEarly(input: ReviewEarlyInput): Snapshot;
   addWord(input: AddWordInput): AddWordResult;
@@ -104,20 +111,31 @@ function nextStudyDay(now: Date): Date {
   return next;
 }
 
-export function createStore(words: Word[], options: { dbPath?: string; now?: () => Date; random?: () => number } = {}): Store {
+// ready tells whether an added word can be practised yet (its recording exists); the built-in words always can.
+export function createStore(baseWords: Word[], options: { dbPath?: string; now?: () => Date; random?: () => number; ready?: (wordId: string) => boolean } = {}): Store {
   const now = options.now ?? (() => new Date());
   const random = options.random ?? Math.random;
+  const ready = options.ready ?? (() => true);
+  // words grows when songs are added; wordById, categories and decks follow it (rebuildDecks).
+  const words: Word[] = [...baseWords];
   const wordById = new Map(words.map((word) => [word.id, word]));
   if (wordById.size !== words.length) throw new StoreError('Vocabulary contains duplicate word IDs.');
-  const categories = new Map<string, number>();
   for (const word of words) {
     if (!word.id || !word.category || word.category === 'all') throw new StoreError('Vocabulary contains an invalid word or category.');
-    categories.set(word.category, (categories.get(word.category) ?? 0) + 1);
   }
-  const decks: Deck[] = [
-    { id: 'all', title: 'All words', count: words.length },
-    ...Array.from(categories, ([id, count]) => ({ id, title: id.replace(/[-_]+/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()), count })),
-  ];
+  const categories = new Map<string, number>();
+  const categoryTitles = new Map<string, string>();
+  const added = new Set<string>();
+  const decks: Deck[] = [];
+  let order: Word[] | null = null;
+  function rebuildDecks(): void {
+    categories.clear();
+    for (const word of words) categories.set(word.category, (categories.get(word.category) ?? 0) + 1);
+    decks.length = 0;
+    decks.push({ id: 'all', title: 'All words', count: words.length },
+      ...Array.from(categories, ([id, count]) => ({ id, title: categoryTitles.get(id) ?? id.replace(/[-_]+/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()), count })));
+    order = null;
+  }
   const dbPath = options.dbPath ?? './data/echo.db';
   if (dbPath !== ':memory:') mkdirSync(dirname(dbPath), { recursive: true });
   const db = new Database(dbPath, { create: true, strict: true });
@@ -128,6 +146,17 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       CREATE TABLE IF NOT EXISTS settings (
         singleton INTEGER PRIMARY KEY CHECK (singleton = 1),
         new_per_day INTEGER NOT NULL CHECK (new_per_day >= 0)
+      );
+      -- Words added from songs; sequence keeps the order they were added in.
+      CREATE TABLE IF NOT EXISTS added_words (
+        sequence INTEGER PRIMARY KEY AUTOINCREMENT,
+        id TEXT NOT NULL UNIQUE,
+        fr TEXT NOT NULL,
+        en TEXT NOT NULL,
+        note TEXT,
+        category TEXT NOT NULL,
+        category_title TEXT NOT NULL,
+        added_at TEXT NOT NULL
       );
       CREATE TABLE IF NOT EXISTS cards (
         direction TEXT NOT NULL CHECK (direction IN ('fr-en', 'en-fr')),
@@ -201,9 +230,10 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       CREATE INDEX IF NOT EXISTS grades_direction_sequence ON grades(direction, sequence DESC);
       CREATE INDEX IF NOT EXISTS grades_direction_time ON grades(direction, graded_at);
     `);
-    db.query('INSERT OR IGNORE INTO settings VALUES (1, ?)').run(Math.min(30, words.length));
+    db.query('INSERT OR IGNORE INTO settings (singleton, new_per_day) VALUES (1, ?)').run(Math.min(30, words.length));
     const hasColumn = (table: string, name: string) => db.query<{ name: string }, []>(`PRAGMA table_info(${table})`).all().some((column) => column.name === name);
     if (!hasColumn('grades', 'queue_before_json')) db.exec('ALTER TABLE grades ADD COLUMN queue_before_json TEXT');
+    if (!hasColumn('settings', 'songs_first')) db.exec('ALTER TABLE settings ADD COLUMN songs_first INTEGER NOT NULL DEFAULT 1');
     if (!hasColumn('vocabulary_requests', 'result')) db.exec('ALTER TABLE vocabulary_requests ADD COLUMN result TEXT');
     const at = now();
     const day = studyDay(at);
@@ -239,7 +269,29 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
 
   const rowsForDirection = db.query<CardRow, [Direction]>('SELECT * FROM cards WHERE direction = ? ORDER BY word_id');
   const rowForWord = db.query<CardRow, [Direction, string]>('SELECT * FROM cards WHERE direction = ? AND word_id = ?');
-  const readSettings = db.query<{ newPerDay: number }, []>('SELECT new_per_day AS newPerDay FROM settings WHERE singleton = 1');
+  const readSettings = db.query<{ newPerDay: number; songsFirst: number }, []>('SELECT new_per_day AS newPerDay, songs_first AS songsFirst FROM settings WHERE singleton = 1');
+  const insertAdded = db.query('INSERT INTO added_words (id, fr, en, note, category, category_title, added_at) VALUES (?, ?, ?, ?, ?, ?, ?)');
+  for (const row of db.query<{ id: string; fr: string; en: string; note: string | null; category: string; category_title: string }, []>('SELECT * FROM added_words ORDER BY sequence').all()) {
+    if (wordById.has(row.id)) continue;
+    const word: Word = { id: row.id, fr: row.fr, en: row.en, category: row.category, ...(row.note ? { note: row.note } : {}) };
+    words.push(word); wordById.set(word.id, word); added.add(word.id); categoryTitles.set(row.category, row.category_title);
+  }
+  rebuildDecks();
+
+  // The order new words are introduced in. The built-in words keep their given order; with songsFirst the added
+  // words go first, otherwise every category, songs included, takes one turn in each round.
+  function admissionOrder(): Word[] {
+    if (order) return order;
+    const base = words.filter((word) => !added.has(word.id));
+    const songs = words.filter((word) => added.has(word.id));
+    if (settings().songsFirst) order = [...songs, ...base];
+    else {
+      const groups = [...Map.groupBy(words, (word) => word.category).values()];
+      order = [];
+      for (let round = 0; order.length < words.length; round++) for (const group of groups) if (group[round]) order.push(group[round]);
+    }
+    return order;
+  }
   const queueForDirection = db.query<{ state_json: string }, [Direction]>('SELECT state_json FROM practice_queues WHERE direction = ?');
   const saveQueue = db.query('UPDATE practice_queues SET state_json = ? WHERE direction = ?');
   const gradeByRequest = db.query<GradeRow, [string]>('SELECT * FROM grades WHERE request_id = ?');
@@ -403,7 +455,8 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
   }
 
   function settings(): Settings {
-    return readSettings.get()!;
+    const row = readSettings.get()!;
+    return { newPerDay: row.newPerDay, songsFirst: row.songsFirst === 1 };
   }
 
   function save(row: CardRow): void {
@@ -488,9 +541,10 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     const rows = rowsForDirection.all(direction);
     const seen = new Set(rows.map((row) => row.word_id));
     let allowance = Math.max(0, settings().newPerDay + extraToday(direction, day) - rows.filter((row) => row.introduced_day === day).length);
-    for (const word of words) {
+    for (const word of admissionOrder()) {
       if (allowance === 0) break;
       if ((deck !== 'all' && word.category !== deck) || seen.has(word.id)) continue;
+      if (added.has(word.id) && !ready(word.id)) continue;
       save({
         direction, word_id: word.id, introduced_day: day,
         active: 1, successes: 0, cycle_misses: 0, completed_day: null,
@@ -695,6 +749,40 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     }).immediate();
   }
 
+  function setSongsFirst(songsFirst: boolean): Settings {
+    if (typeof songsFirst !== 'boolean') throw new StoreError('Choose whether song words come first.');
+    return db.transaction(() => {
+      db.query('UPDATE settings SET songs_first = ? WHERE singleton = 1').run(songsFirst ? 1 : 0);
+      order = null;
+      return settings();
+    }).immediate();
+  }
+
+  function addWords(input: AddWordsInput): Word[] {
+    const { category, title } = input;
+    if (typeof category !== 'string' || !/^song-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(category)) throw new StoreError('A song needs a category of its own.');
+    if (typeof title !== 'string' || !title.trim()) throw new StoreError('A song needs a title.');
+    if (!Array.isArray(input.words) || !input.words.length) throw new StoreError('Choose at least one word to add.');
+    for (const word of input.words) {
+      if (typeof word?.fr !== 'string' || !word.fr.trim() || typeof word.en !== 'string' || !word.en.trim()) throw new StoreError('Every word needs its French and its English.');
+    }
+    return db.transaction(() => {
+      const at = now().toISOString();
+      let next = words.filter((word) => word.category === category).length;
+      const made = input.words.map((entry): Word => {
+        let id: string;
+        do id = `${category}-${String(++next).padStart(3, '0')}`; while (wordById.has(id));
+        const note = entry.note?.trim() || undefined;
+        insertAdded.run(id, entry.fr.trim(), entry.en.trim(), note ?? null, category, title.trim(), at);
+        return { id, fr: entry.fr.trim(), en: entry.en.trim(), category, ...(note ? { note } : {}) };
+      });
+      for (const word of made) { words.push(word); wordById.set(word.id, word); added.add(word.id); }
+      categoryTitles.set(category, title.trim());
+      rebuildDecks();
+      return made;
+    }).immediate();
+  }
+
   function browse(direction: Direction, deck: string): BrowseWord[] {
     validateSelection(direction, deck);
     return db.transaction(() => {
@@ -811,9 +899,10 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
       undos: db.query<UndoRow, []>('SELECT * FROM undos ORDER BY sequence').all(),
       extraAllowance: db.query('SELECT * FROM extra_allowance ORDER BY day, direction').all(),
       walkmanHeard: db.query('SELECT word_id, heard_at FROM walkman_heard ORDER BY sequence').all(),
+      addedWords: db.query('SELECT id, fr, en, note, category, category_title, added_at FROM added_words ORDER BY sequence').all(),
       walkmanVerdicts: db.query('SELECT word_id, knew, marked_at FROM walkman_verdicts ORDER BY marked_at').all(),
     }))();
   }
 
-  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, addWord, browse, listening, recordHeard, recordVerdict, statistics, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, listening, recordHeard, recordVerdict, statistics, exportData, close: () => db.close() };
 }

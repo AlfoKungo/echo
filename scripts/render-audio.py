@@ -34,6 +34,7 @@ parser.add_argument('--seeds', default='42,17,101,7,13,99', help='Seeds to try w
 parser.add_argument('--carrier', help='Override the French lead-in; use --force to replace cached clips')
 parser.add_argument('--keep-context', action='store_true', help='Keep full sentences for alignment inspection')
 parser.add_argument('--audio-dir', type=Path, default=ROOT / 'audio', help='Where clips and the manifest live; point elsewhere to trial a change')
+parser.add_argument('--extra-words', type=Path, help='A JSON list of added words (from songs) to render alongside the deck')
 args = parser.parse_args()
 AUDIO = args.audio_dir
 AUDIO.mkdir(parents=True, exist_ok=True)
@@ -41,6 +42,8 @@ contexts = json.loads((ROOT / 'voices/contexts.json').read_text())
 words = []
 for name in args.sources:
     words.extend(json.loads((ROOT / 'content' / f'{name}.json').read_text()))
+if args.extra_words:
+    words.extend(json.loads(args.extra_words.read_text()))
 groups = {}
 for word in words:
     groups.setdefault(word['category'], []).append(word)

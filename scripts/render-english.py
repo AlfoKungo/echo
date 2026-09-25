@@ -53,8 +53,9 @@ ONES = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 
 TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 
 
-def words():
-    return [word for name in ('core', 'world') for word in json.loads((ROOT / 'content' / f'{name}.json').read_text())]
+def words(extra=None):
+    found = [word for name in ('core', 'world') for word in json.loads((ROOT / 'content' / f'{name}.json').read_text())]
+    return found + (json.loads(Path(extra).read_text()) if extra else [])
 
 
 def number_words(value):
@@ -95,6 +96,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ids')
     parser.add_argument('--force', action='store_true')
+    parser.add_argument('--extra-words', help='A JSON list of added words (from songs) to render alongside the deck')
     args = parser.parse_args()
     out = ROOT / 'audio' / 'en'
     out.mkdir(exist_ok=True)
@@ -104,7 +106,7 @@ def main():
     settings = {'model': MODEL, 'voice': VOICE, 'speeds': SPEEDS, 'pipeline': PIPELINE, 'trim': TRIM, 'bitrate': '96k'}
     wanted = set(value.strip() for value in args.ids.split(',')) if args.ids else None
     pending = []
-    for word in words():
+    for word in words(args.extra_words):
         if wanted is not None and word['id'] not in wanted:
             continue
         text = spoken(word['en'], word['fr'])

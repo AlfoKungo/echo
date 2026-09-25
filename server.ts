@@ -1,5 +1,5 @@
-import { mkdirSync, existsSync, readdirSync, statSync, unlinkSync } from 'node:fs';
-import { join } from 'node:path';
+import { mkdirSync, existsSync, readdirSync, statSync, unlinkSync, readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { Database } from 'bun:sqlite';
 import { createStore, StoreError } from './lib/store';
 import { createGrammarStore } from './lib/grammar-store';
@@ -7,6 +7,9 @@ import { loadCourse } from './lib/grammar-content';
 import { loadBank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
 import { buildTape, createClips, planTape, tapeView, type Tape } from './lib/walkman';
+import { createSongs } from './lib/songs';
+import { createQwen } from './lib/qwen';
+import { createWordAudio } from './lib/word-audio';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 
 const root = import.meta.dir;
@@ -18,10 +21,36 @@ const words: Word[] = [];
 for (let i = 0; i < Math.max(...[...groups.values()].map(group => group.length)); i++) {
   for (const group of groups.values()) if (group[i]) words.push(group[i]);
 }
-const byId = new Map(words.map(word => [word.id, word]));
-if (byId.size !== words.length) throw new Error('Duplicate vocabulary IDs');
+if (new Set(words.map(word => word.id)).size !== words.length) throw new Error('Duplicate vocabulary IDs');
 const dbPath = process.env.ECHO_DB ?? join(root, 'data/echo.db');
-const store = createStore(words, { dbPath });
+// A word added from a song joins practice once its French recording exists.
+const store = createStore(words, { dbPath, ready: (id) => existsSync(join(root, 'audio', `${id}.mp3`)) });
+// Song words are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
+const python = process.env.ECHO_PYTHON ?? JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')).python as string;
+const wordAudio = createWordAudio({
+  root, extraWordsPath: join(dirname(dbPath), 'added-words.json'),
+  addedWords: () => store.addedIds().map((id) => store.word(id)!),
+  run: async (args) => {
+    if (process.env.ECHO_WORD_AUDIO === 'off') return { ok: false, error: 'Recording is switched off.' };
+    const child = Bun.spawn([python, ...args], { cwd: root, stdout: 'ignore', stderr: 'pipe', env: { ...process.env, PYTHONUNBUFFERED: '1' } });
+    const error = await new Response(child.stderr).text();
+    const ok = (await child.exited) === 0;
+    if (!ok) console.error(`word audio: ${args[0]} failed`, error.slice(-800));
+    return { ok, error };
+  },
+});
+const songs = createSongs({
+  dbPath, vocabulary: store,
+  ask: createQwen({ url: process.env.ECHO_OLLAMA_URL, model: process.env.ECHO_SONG_MODEL }),
+  fetchJson: async (url) => {
+    const response = await fetch(url, { headers: { 'User-Agent': 'Echo French practice (personal, local)' }, signal: AbortSignal.timeout(20_000) });
+    if (!response.ok) throw new Error(`LRCLIB ${response.status}`);
+    return response.json();
+  },
+  onAdded: (ids) => wordAudio.enqueue(ids),
+});
+void songs.resume();
+wordAudio.resume();
 const course = await loadCourse(join(root, 'content/grammar'));
 const grammar = createGrammarStore(course, { dbPath, audioDir: join(root, 'audio/grammar') });
 const grammarAudio = new Set(course.topics.flatMap(topic => topic.exercises.map(exercise => exercise.id)));
@@ -56,7 +85,7 @@ function newTape(choice: WalkmanChoice): Tape {
   if (stamp !== walkmanStamp) { walkmanClips.forget(); walkmanStamp = stamp; }
   const listening = store.listening();
   const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
-  const tape = buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), byId, walkmanClips, fresh);
+  const tape = buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), new Map(store.words().map((word) => [word.id, word])), walkmanClips, fresh);
   if (!tape.words.length) throw new StoreError('The Walkman recordings are not ready yet. Please try again later.', 503);
   tapes.set(tape.id, tape);
   for (const id of [...tapes.keys()].slice(0, -3)) tapes.delete(id);
@@ -155,6 +184,24 @@ const server = Bun.serve({
         if (typeof data.newPerDay !== 'number') throw new StoreError('New words per day must be a number.', 400);
         return json(store.setSettings(data.newPerDay));
       }
+      if (path === '/api/settings/songs' && req.method === 'PUT') {
+        const data = await body(req);
+        return json(store.setSongsFirst(data.songsFirst as boolean));
+      }
+      if (path === '/api/songs' && req.method === 'GET') return json({ songs: songs.list(), audio: wordAudio.status() });
+      if (path === '/api/songs/search' && req.method === 'GET') return json({ matches: await songs.search(url.searchParams.get('q') ?? '') });
+      if (path === '/api/songs' && req.method === 'POST') {
+        const data = await body(req);
+        return json(await songs.start(typeof data.lrclibId === 'number' ? { lrclibId: data.lrclibId } : { title: String(data.title ?? ''), artist: String(data.artist ?? ''), lyrics: String(data.lyrics ?? '') }));
+      }
+      const song = path.match(/^\/api\/songs\/([0-9a-f-]{36})(?:\/(add|retry))?$/);
+      if (song && !song[2] && req.method === 'GET') return json(songs.get(song[1]));
+      if (song && !song[2] && req.method === 'DELETE') { songs.remove(song[1]); return json({ ok: true }); }
+      if (song?.[2] === 'add' && req.method === 'POST') {
+        const data = await body(req);
+        return json(songs.add(song[1], Array.isArray(data.words) ? data.words.map(String) : []));
+      }
+      if (song?.[2] === 'retry' && req.method === 'POST') return json(await songs.retry(song[1]));
       if (path === '/api/extra-words' && req.method === 'POST') {
         const data = await body(req);
         return json(store.addExtraWords({ direction: direction(data.direction), deck: deck(data.deck), count: data.count as number, requestId: data.requestId as string }));
@@ -204,7 +251,7 @@ const server = Bun.serve({
         const spoken = path.match(/^\/audio\/grammar\/([a-z0-9-]+)\.mp3$/);
         const word = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
         if (spoken && !grammarAudio.has(spoken[1])) return json({ error: 'This sentence is not part of a grammar exercise.' }, 404);
-        if (!spoken && (!word || !byId.has(word[1]))) return json({ error: 'This word is not in the vocabulary deck.' }, 404);
+        if (!spoken && (!word || !store.word(word[1]))) return json({ error: 'This word is not in the vocabulary deck.' }, 404);
         const file = Bun.file(spoken ? join(root, 'audio/grammar', `${spoken[1]}.mp3`) : join(root, 'audio', `${word![1]}.mp3`));
         if (!await file.exists()) {
           // Grammar sentences are rendered clip by clip: a missing one is simply not offered yet.

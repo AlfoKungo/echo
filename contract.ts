@@ -1,7 +1,12 @@
 export type Direction = 'fr-en' | 'en-fr';
 export type Word = { id: string; fr: string; en: string; category: string; note?: string };
 export type Deck = { id: string; title: string; count: number };
-export type Settings = { newPerDay: number };
+// songsFirst: words added from songs are introduced before all other new words; otherwise each song takes
+// its turn with the categories.
+export type Settings = { newPerDay: number; songsFirst: boolean };
+// A word the learner added from a song: the store gives it an id in the song's own category.
+export type NewWord = { fr: string; en: string; note?: string };
+export type AddWordsInput = { category: string; title: string; words: NewWord[] };
 export type VocabularyStack = 'unseen' | 'failed' | 'successful';
 export type CardView = Word & { successes: number; version: number; stack: VocabularyStack; stage: 'new' | 'learning' | 'review'; audioUrl: string };
 // Active counts exclude finished cards; unseen also includes the available daily admission allowance.

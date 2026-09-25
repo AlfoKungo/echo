@@ -53,6 +53,9 @@ def convert(source, target):
 
 def main():
     words = [word for name in ('core', 'world') for word in json.loads((ROOT / 'content' / f'{name}.json').read_text())]
+    # --extra-words <file>: added words (from songs) get their Walkman clips too.
+    if '--extra-words' in sys.argv:
+        words += json.loads(Path(sys.argv[sys.argv.index('--extra-words') + 1]).read_text())
     for kind in ('fr', 'en'):
         (OUT / kind).mkdir(parents=True, exist_ok=True)
     manifest_path = OUT / 'manifest.json'

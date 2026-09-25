@@ -716,3 +716,55 @@ describe('Statistics', () => {
     expect(stats.categories.every((category) => category.total === 4)).toBe(true);
   });
 });
+
+describe('Words added from a song', () => {
+  const song = { category: 'song-rain-song', title: 'Rain song', words: [{ fr: 'la pluie', en: 'rain', note: '' }, { fr: 'chanter', en: 'to sing' }, { fr: 'le ciel', en: 'sky' }] };
+  const introduced = (snapshot: Snapshot) => snapshot.stats.unseen;
+
+  test('get a deck of their own, survive reopening, and go first when songs come first', () => {
+    const { store, open } = fixture();
+    const made = store.addWords(song);
+    expect(made.map((word) => word.id)).toEqual(['song-rain-song-001', 'song-rain-song-002', 'song-rain-song-003']);
+    expect(made[0].note).toBeUndefined();
+    store.setSettings(2);
+    let state = store.start('fr-en', 'all');
+    expect(state.decks.find((deck) => deck.id === 'song-rain-song')).toEqual({ id: 'song-rain-song', title: 'Rain song', count: 3 });
+    expect(state.overview.total).toBe(words.length + 3);
+    const again = open();
+    state = again.start('fr-en', 'song-rain-song');
+    expect(state.stats.introducedToday).toBe(2);
+    expect(new Set(again.browse('fr-en', 'all').filter((word) => word.status !== 'new').map((word) => word.id))).toEqual(new Set(['song-rain-song-001', 'song-rain-song-002']));
+    expect(introduced(state)).toBeGreaterThanOrEqual(0);
+  });
+
+  test('mixed in, a song takes one turn in each round of categories', () => {
+    const { store } = fixture();
+    store.addWords(song);
+    expect(store.setSongsFirst(false).songsFirst).toBe(false);
+    store.setSettings(3);
+    store.start('fr-en', 'all');
+    const started = store.browse('fr-en', 'all').filter((word) => word.status !== 'new').map((word) => word.category);
+    expect(started.sort()).toEqual(['food', 'song-rain-song', 'travel']);
+  });
+
+  test('wait until their recording is ready', () => {
+    const readyIds = new Set<string>();
+    const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
+    directories.push(directory);
+    const store = createStore(words, { dbPath: join(directory, 'echo.db'), now: () => new Date(2026, 8, 21, 10), ready: (id) => readyIds.has(id) });
+    stores.push(store);
+    const [first] = store.addWords(song);
+    store.setSettings(1);
+    store.start('fr-en', 'all');
+    expect(store.browse('fr-en', 'all').filter((word) => word.status !== 'new').map((word) => word.category)).not.toContain('song-rain-song');
+    readyIds.add(first.id);
+    store.addExtraWords({ direction: 'fr-en', deck: 'all', count: 1, requestId: 'more-1' });
+    expect(store.browse('fr-en', 'all').filter((word) => word.status !== 'new').map((word) => word.id)).toContain(first.id);
+  });
+
+  test('refuse a category that is not a song, and an empty word', () => {
+    const { store } = fixture();
+    expect(() => store.addWords({ ...song, category: 'food' })).toThrow(StoreError);
+    expect(() => store.addWords({ ...song, words: [{ fr: ' ', en: 'x' }] })).toThrow(StoreError);
+  });
+});

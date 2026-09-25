@@ -265,7 +265,7 @@ function noticeHTML() {
 }
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
 function back(label, action) { return `<button class="back" data-action="${action}" ${busy ? 'disabled' : ''}><span aria-hidden="true">←</span> ${label}</button>`; }
-function place() { return screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen; }
+function place() { return screen === 'song' ? `song|${songId}` : screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen; }
 function record(next) {
   depth += 1; trail.length = depth; trail[depth] = next;
   history.pushState({ echo: next, depth }, '');
@@ -305,6 +305,8 @@ function render() {
   else if (screen === 'mistakes') renderMistakes();
   else if (screen === 'walkman') renderWalkman();
   else if (screen === 'statistics') renderStatistics();
+  else if (screen === 'songs') renderSongs();
+  else if (screen === 'song') renderSong();
   else renderHome();
 }
 function renderWalkman() {
@@ -1007,6 +1009,134 @@ function renderStatistics() {
     <div class="st-block"><h2>Everything else</h2><div class="st-facts">${facts.map(([value, label]) => `<div class="st-fact"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join('')}</div></div>
   </section>`;
 }
+// ── Songs ────────────────────────────────────────────────────────────────────
+// A song is found on LRCLIB (or pasted), read by Qwen on the Mac in the background, reviewed here, and its ticked
+// words join a deck of their own. Echo never shows or keeps the lyrics, only the words.
+let songList = null;        // { songs, audio } from api/songs
+let songMatches = null;     // search results, null before a search
+let songQuery = '';
+let songSearching = false;
+let songPasting = false;
+let songId = '';
+let songView = null;
+const songPicks = new Map(); // song id -> Set of ticked fr, all new words ticked to begin with
+let songPoll = 0;
+const songTime = (seconds) => seconds ? `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}` : '';
+function songStatusLine(song) {
+  if (song.status === 'reading') return `Reading… ${song.done} of ${song.total} words`;
+  if (song.status === 'ready') return `Ready to review · ${song.candidates.filter((entry) => !entry.existing).length} new words`;
+  if (song.status === 'added') return `Added · ${song.added.length} ${song.added.length === 1 ? 'word' : 'words'}`;
+  return 'Could not be read';
+}
+function renderSongs() {
+  const header = `<div class="section-top">${back('Vocabulary', 'start')}</div><h1>Words from a song</h1><p class="subtitle">Find a French song; Qwen on your Mac reads it and turns its words into flashcards in their dictionary form. Only the words are kept.</p>`;
+  const search = `<form id="song-search-form" class="song-search" role="search"><label class="sr-only" for="song-query">Song title and artist</label><input id="song-query" type="search" placeholder="Title, and the artist if you know it" value="${esc(songQuery)}" autocomplete="off" ${songSearching ? 'disabled' : ''}><button class="primary" type="submit" ${songSearching ? 'disabled' : ''}>${songSearching ? 'Searching…' : 'Search'}</button></form>`;
+  const matches = songMatches === null ? '' : songMatches.length
+    ? `<p class="song-hint">Pick the one you mean. Covers that sing the same words are grouped together.</p><ol class="song-results">${songMatches.map((match) => `<li><button class="song-row" data-action="song-read" data-lrclib="${match.id}" ${busy ? 'disabled' : ''}><span class="song-copy"><strong>${esc(match.title)}</strong><span>${esc(match.artist)}${match.album && match.album !== match.title ? ` · ${esc(match.album)}` : ''}${match.seconds ? ` · ${songTime(match.seconds)}` : ''}</span>${match.versions > 1 ? `<small>${match.versions} versions${match.artists.length > 1 ? ` · also ${esc(match.artists.filter((name) => name !== match.artist).slice(0, 3).join(', '))}` : ''}</small>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('')}</ol>`
+    : '<p class="song-hint">No song with lyrics matched. Try the artist’s name too, or paste the lyrics.</p>';
+  const paste = songPasting
+    ? `<form id="song-paste-form" class="song-paste"><label for="song-title">Title</label><input id="song-title" required autocomplete="off"><label for="song-artist">Artist <small>(optional)</small></label><input id="song-artist" autocomplete="off"><label for="song-lyrics">Lyrics</label><textarea id="song-lyrics" rows="8" required></textarea><button class="primary" type="submit" ${busy ? 'disabled' : ''}>Read these lyrics</button></form>`
+    : '<button class="quiet song-paste-open" data-action="song-paste">Paste the lyrics instead</button>';
+  main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${search}${matches}${paste}<div id="song-list">${songListHTML()}</div></section>`;
+}
+// Your songs, redrawn alone while one is being read so typing in the search or paste boxes is never lost.
+function songListHTML() {
+  const list = (songList?.songs || []).map((song) => `<li><button class="song-row" data-action="song-open" data-song="${esc(song.id)}"><span class="song-copy"><strong>${esc(song.title)}</strong><span>${esc(song.artist || 'Pasted lyrics')}</span><small class="song-state ${song.status}">${esc(songStatusLine(song))}</small>${song.status === 'reading' ? `<span class="song-bar"><span style="width:${song.total ? song.done / song.total * 100 : 0}%"></span></span>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
+  return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
+}
+function renderSong() {
+  const song = songView;
+  const header = `<div class="section-top">${back('Songs', 'songs')}</div>`;
+  if (!song) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Opening the song…</div>' : ''}</section>`; return; }
+  const title = `<h1>${esc(song.title)}</h1><p class="subtitle">${esc(song.artist || 'Pasted lyrics')}</p>`;
+  let body = '';
+  if (song.status === 'reading') {
+    body = `<div class="song-progress" role="status"><p><strong>${song.done}</strong> of ${song.total} words read</p><span class="song-bar"><span style="width:${song.total ? song.done / song.total * 100 : 0}%"></span></span><p class="caption">Qwen thinks through each word — its dictionary form, gender and meaning here — about 15 seconds a word. You can leave; it carries on.</p></div>`;
+  } else if (song.status === 'failed') {
+    body = `<div class="song-progress"><p class="song-error">${esc(song.error || 'This song could not be read.')}</p><div class="summary-actions"><button class="primary" data-action="song-retry" data-song="${esc(song.id)}" ${busy ? 'disabled' : ''}>Try again</button><button class="secondary" data-action="song-remove" data-song="${esc(song.id)}" ${busy ? 'disabled' : ''}>Remove</button></div></div>`;
+  } else if (song.status === 'ready') {
+    const picks = songPicks.get(song.id) ?? new Set(song.candidates.filter((entry) => !entry.existing).map((entry) => entry.fr));
+    songPicks.set(song.id, picks);
+    const fresh = song.candidates.filter((entry) => !entry.existing);
+    const known = song.candidates.filter((entry) => entry.existing);
+    const row = (entry) => `<li><button class="song-pick" role="checkbox" aria-checked="${picks.has(entry.fr)}" data-action="song-pick" data-fr="${esc(entry.fr)}"><span class="tick" aria-hidden="true"></span><span class="song-word"><strong lang="fr">${frEsc(entry.fr)}</strong><span>${esc(entry.en)}</span>${entry.note ? `<small>${esc(entry.note)}</small>` : ''}</span><span class="song-forms" lang="fr">${entry.forms.map(esc).join(', ')}</span></button></li>`;
+    body = `<p class="song-hint">Untick any word you don’t want. On the right: how it appears in the song.</p>
+      <div class="song-tools"><button class="quiet" data-action="song-pick-all">Tick all</button><button class="quiet" data-action="song-pick-none">Untick all</button></div>
+      <ol class="song-picks">${fresh.map(row).join('')}</ol>
+      ${known.length ? `<details class="song-more"><summary>Already in your words · ${known.length}</summary><ol class="song-plain">${known.map((entry) => `<li><strong lang="fr">${frEsc(entry.fr)}</strong> <span>${esc(entry.en)}</span></li>`).join('')}</ol></details>` : ''}
+      ${song.skipped.length ? `<details class="song-more"><summary>Left out · ${song.skipped.length}</summary><ol class="song-plain">${song.skipped.map((skip) => `<li><strong lang="fr">${esc(skip.form)}</strong> <span>${esc(skip.reason)}</span></li>`).join('')}</ol></details>` : ''}
+      <div class="song-add"><button class="primary" data-action="song-add" data-song="${esc(song.id)}" ${busy || !picks.size ? 'disabled' : ''}>Add ${picks.size} ${picks.size === 1 ? 'word' : 'words'}</button></div>`;
+  } else {
+    const audio = songList?.audio;
+    const recording = audio && (audio.pending || audio.recording) ? `Recording the new words on your Mac… ${audio.pending} left. Each one joins your practice as soon as it is recorded.` : audio?.failed?.some((id) => song.added.includes(id)) ? `${audio.failed.filter((id) => song.added.includes(id)).length} could not be recorded and stay out of practice.` : 'Every word is recorded.';
+    body = `<div class="song-progress"><p><strong>${song.added.length}</strong> ${song.added.length === 1 ? 'word' : 'words'} added to the “${esc(song.title)}” deck.</p><p class="caption">${esc(recording)} New words from songs come ${snapshot?.settings?.songsFirst === false ? 'in turn with your other categories' : 'before your other new words'}; change this in Vocabulary options.</p><div class="summary-actions"><button class="primary" data-action="song-practise" data-category="${esc(song.category)}" ${busy ? 'disabled' : ''}>Practise these words</button></div></div>`;
+  }
+  main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${title}${body}</section>`;
+}
+function openSongs() { if (dialog.open) dialog.close(); if (move('songs', true)) loadSongs(); }
+function openSong(id) { songId = id; songView = songList?.songs.find((song) => song.id === id) ?? null; if (move(`song|${id}`, true)) loadSong(); }
+async function loadSongs(refresh = false) {
+  try { songList = await api('api/songs'); }
+  catch (error) { if (!refresh) { notice = { message: error.message }; retryAction = { type: 'songs' }; } }
+  const holder = document.querySelector('#song-list');
+  if (screen === 'songs') { if (refresh && holder) holder.innerHTML = songListHTML(); else render(); }
+  watchSongs();
+}
+async function loadSong() {
+  if (!songView) { loading = true; render(); }
+  try { const [song, list] = await Promise.all([api(`api/songs/${encodeURIComponent(songId)}`), api('api/songs')]); songView = song; songList = list; }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'song' }; }
+  loading = false;
+  if (screen === 'song') render();
+  watchSongs();
+}
+// While a song is being read or recorded, its screen refreshes every few seconds; nothing polls otherwise.
+function watchSongs() {
+  clearTimeout(songPoll);
+  const busySong = (songList?.songs || []).some((song) => song.status === 'reading') || songList?.audio?.pending > 0;
+  if (!busySong || (screen !== 'songs' && screen !== 'song')) return;
+  songPoll = setTimeout(() => { if (screen === 'song') loadSong(); else if (screen === 'songs') loadSongs(true); }, 4000);
+}
+async function searchSongs(query) {
+  songQuery = query.trim();
+  if (songQuery.length < 2) return;
+  songSearching = true; notice = null; render();
+  try { songMatches = (await api(`api/songs/search?q=${encodeURIComponent(songQuery)}`)).matches; }
+  catch (error) { notice = { message: error.message }; songMatches = null; }
+  songSearching = false;
+  if (screen === 'songs') { render(); document.querySelector('.song-results button')?.focus({ preventScroll: true }); }
+}
+async function readSong(body) {
+  if (busy) return;
+  busy = true; notice = null; render();
+  try {
+    const song = await api('api/songs', { method: 'POST', body: JSON.stringify(body) });
+    busy = false; songMatches = null; songQuery = ''; songPasting = false;
+    songList = { ...(songList || { audio: null }), songs: [song, ...(songList?.songs || [])] };
+    openSong(song.id);
+  } catch (error) { busy = false; notice = { message: error.message }; render(); }
+}
+async function songAction(path, options, afterwards) {
+  if (busy) return;
+  busy = true; notice = null; render();
+  try { const result = await api(path, options); busy = false; afterwards(result); }
+  catch (error) { busy = false; notice = { message: error.message }; render(); }
+}
+function pickSongWord(fr) {
+  const picks = songPicks.get(songId);
+  if (!picks) return;
+  if (picks.has(fr)) picks.delete(fr); else picks.add(fr);
+  render();
+}
+function pickAllSongWords(all) {
+  if (!songView) return;
+  songPicks.set(songId, new Set(all ? songView.candidates.filter((entry) => !entry.existing).map((entry) => entry.fr) : []));
+  render();
+}
+async function setSongsFirst(value) {
+  try { snapshot.settings = await api('api/settings/songs', { method: 'PUT', body: JSON.stringify({ songsFirst: value }) }); openOptions(); }
+  catch (error) { notice = { message: error.message }; render(); }
+}
 function openStatistics() { if (move('statistics', true)) loadStatistics(); }
 async function loadStatistics() {
   loading = true; notice = null; retryAction = null; render();
@@ -1294,6 +1424,7 @@ function show(next) {
   if (name === 'topic') topicId = arg;
   else if (name === 'exercise') enterScope(arg);
   else if (name === 'focus') focusId = arg;
+  else if (name === 'song' && arg !== songId) { songId = arg; songView = null; }
   if (name !== 'mix' && name !== 'focus') { mixedSource = ''; review = null; }
   if (name !== 'listen' && name !== 'read' && name !== 'mix' && name !== 'focus') { streamState = null; streamId = ''; }
   // Leaving the Walkman stops the tape; coming back winds a new one.
@@ -1428,7 +1559,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Vocabulary options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form>${extraPracticeHTML()}<div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
+  openDialog('Vocabulary options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form>${extraPracticeHTML()}<p class="settings-label">Words from songs</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div><button class="secondary song-entry" data-action="songs" ${disabled}>Add words from a song…</button><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
 }
 async function saveGoal(event) {
   event.preventDefault(); if (locked() || !snapshot) return;
@@ -1459,6 +1590,8 @@ function retry() {
   else if (action.type === 'mistakes') loadMistakes();
   else if (action.type === 'walkman') loadTape();
   else if (action.type === 'statistics') loadStatistics();
+  else if (action.type === 'songs') loadSongs();
+  else if (action.type === 'song') loadSong();
   else fetchState(action.message);
 }
 
@@ -1519,6 +1652,18 @@ document.addEventListener('click', (event) => {
   else if (action === 'practise') openMix();
   else if (action === 'mistakes') openMistakes();
   else if (action === 'statistics') openStatistics();
+  else if (action === 'songs') openSongs();
+  else if (action === 'song-open') openSong(button.dataset.song);
+  else if (action === 'song-read') readSong({ lrclibId: Number(button.dataset.lrclib) });
+  else if (action === 'song-paste') { songPasting = true; render(); document.querySelector('#song-title')?.focus(); }
+  else if (action === 'song-pick') pickSongWord(button.dataset.fr);
+  else if (action === 'song-pick-all') pickAllSongWords(true);
+  else if (action === 'song-pick-none') pickAllSongWords(false);
+  else if (action === 'song-add') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}/add`, { method: 'POST', body: JSON.stringify({ words: [...(songPicks.get(button.dataset.song) || [])] }) }, (song) => { songView = song; loadSong(); announce(`${song.added.length} words added.`); });
+  else if (action === 'song-retry') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}/retry`, { method: 'POST', body: '{}' }, (song) => { songView = song; loadSong(); });
+  else if (action === 'song-remove') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}`, { method: 'DELETE' }, () => { songView = null; move('songs'); loadSongs(); });
+  else if (action === 'song-practise') { deck = button.dataset.category; savePreference('echo.deck', deck); startPractice(); }
+  else if (action === 'songs-first') setSongsFirst(button.dataset.value === 'true');
   else if (action === 'stats-bin') chooseStatsBin(Number(button.dataset.bin));
   else if (action === 'walkman') openWalkman();
   else if (action === 'walkman-toggle') toggleWalkman();
@@ -1541,9 +1686,12 @@ document.addEventListener('input', (event) => {
   if (event.target.id === 'vocab-search') { search = event.target.value; renderBrowseResults(); }
   if (event.target.id === 'answer') draft = event.target.value;
   if (event.target.id === 'stream-answer') streamDraft = event.target.value;
+  if (event.target.id === 'song-query') songQuery = event.target.value;
 });
 document.addEventListener('submit', (event) => {
   if (event.target.id === 'goal-form') saveGoal(event);
+  else if (event.target.id === 'song-search-form') { event.preventDefault(); searchSongs(document.querySelector('#song-query').value); }
+  else if (event.target.id === 'song-paste-form') { event.preventDefault(); readSong({ title: document.querySelector('#song-title').value, artist: document.querySelector('#song-artist').value, lyrics: document.querySelector('#song-lyrics').value }); }
   else if (event.target.matches('.custom-count')) { event.preventDefault(); submitCustomCount(event.target); }
 });
 document.addEventListener('keydown', (event) => {
@@ -1601,6 +1749,8 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'mistakes') loadMistakes();
   else if (screen === 'walkman') loadTape();
   else if (screen === 'statistics') loadStatistics();
+  else if (screen === 'songs') loadSongs();
+  else if (screen === 'song') loadSong();
 });
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
