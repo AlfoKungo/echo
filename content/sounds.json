@@ -204,25 +204,6 @@
         { "id": "il-ils-attend", "a": { "fr": "elle attend", "en": "she is waiting" }, "b": { "fr": "elles attendent", "en": "they are waiting (women)" } },
         { "id": "il-ils-radio", "a": { "fr": "elle écoute la radio", "en": "she listens to the radio" }, "b": { "fr": "elles écoutent la radio", "en": "they listen to the radio (women)" } }
       ]
-    },
-    {
-      "id": "rai-rais",
-      "title": "will or would",
-      "level": "B1",
-      "labels": ["-rai", "-rais"],
-      "listen": "Everything up to the last syllable is the same, so listen only to the very end. The future ending is tight and closed, like a short English \"ay\" with the mouth nearly shut. The conditional ending is wider and flatter, like the \"e\" in \"bed\". Closed and narrow means it will happen; open and wide means it only would.",
-      "items": [
-        { "id": "rai-rais-parler", "a": { "fr": "je parlerai", "en": "I will speak" }, "b": { "fr": "je parlerais", "en": "I would speak" } },
-        { "id": "rai-rais-aimer", "a": { "fr": "j’aimerai", "en": "I will love" }, "b": { "fr": "j’aimerais", "en": "I would like" } },
-        { "id": "rai-rais-etre", "a": { "fr": "je serai là", "en": "I will be there" }, "b": { "fr": "je serais là", "en": "I would be there" } },
-        { "id": "rai-rais-aller", "a": { "fr": "j’irai", "en": "I will go" }, "b": { "fr": "j’irais", "en": "I would go" } },
-        { "id": "rai-rais-faire", "a": { "fr": "je ferai ça", "en": "I will do that" }, "b": { "fr": "je ferais ça", "en": "I would do that" } },
-        { "id": "rai-rais-venir", "a": { "fr": "je viendrai", "en": "I will come" }, "b": { "fr": "je viendrais", "en": "I would come" } },
-        { "id": "rai-rais-prendre", "a": { "fr": "je prendrai le train", "en": "I will take the train" }, "b": { "fr": "je prendrais le train", "en": "I would take the train" } },
-        { "id": "rai-rais-manger", "a": { "fr": "je mangerai", "en": "I will eat" }, "b": { "fr": "je mangerais", "en": "I would eat" } },
-        { "id": "rai-rais-pouvoir", "a": { "fr": "je pourrai", "en": "I will be able to" }, "b": { "fr": "je pourrais", "en": "I could" } },
-        { "id": "rai-rais-dire", "a": { "fr": "je dirai oui", "en": "I will say yes" }, "b": { "fr": "je dirais oui", "en": "I would say yes" } }
-      ]
     }
   ]
 }
