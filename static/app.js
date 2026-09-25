@@ -5,6 +5,8 @@ const aboutDialog = document.querySelector('#about-dialog');
 const dialog = document.querySelector('#dialog');
 const homeButton = document.querySelector('#home-button');
 const speaker = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
+const checkIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+const crossIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6.5 6.5 11 11m0-11-11 11"/></svg>';
 const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>';
 const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 // French sets a space before ? ! : ; and inside « »; a no-break space keeps the mark on its word's line.
@@ -93,7 +95,8 @@ walkmanAudio.preload = 'auto';
 let walkman = { tape: null, index: -1, meaning: false, loading: false, started: false, logged: new Set() };
 let walkmanGeneration = 0;
 // Words you heard, newest first, one entry per word, kept on this device across tapes. added records the
-// answer to "Add to my words" so the row keeps saying it. The list opens only when asked, each visit.
+// answer to "Add to my words" so the row keeps saying it, and mark is the learner's own "knew it or not"
+// ({id, knew}) for that listen. The list opens only when asked, each visit.
 const HEARD_KEY = 'echo.walkman-heard';
 const HEARD_LIMIT = 50;
 let walkmanHeard = (() => {
@@ -101,6 +104,7 @@ let walkmanHeard = (() => {
 })();
 let heardOpen = false;
 let heardSaying = '';
+const heardMarking = new Set();
 function saveHeard() { try { localStorage.setItem(HEARD_KEY, JSON.stringify(walkmanHeard)); } catch { /* private mode: history lasts this visit */ } }
 // How the Walkman picks familiar words, remembered on this device: by score (the default) or by groups.
 let walkmanChoice = readPreference('echo.walkman-words', 'scored') === 'groups' ? 'groups' : 'scored';
@@ -326,7 +330,9 @@ function heardHTML() {
     const add = entry.added
       ? `<span class="wm-heard-status" role="status">${esc(HEARD_STATUS[entry.added] || '')}</span>`
       : entry.fresh ? `<button class="wm-heard-add" data-action="walkman-add" data-word="${esc(entry.id)}">Add to my words</button>` : '';
-    return `<li class="wm-heard-row"><div class="wm-heard-text"><p class="wm-heard-fr" lang="fr">${frEsc(entry.fr)}</p><p class="wm-heard-en">${esc(entry.en)}</p>${add}</div><button class="icon${heardSaying === entry.id ? ' playing' : ''}" data-action="walkman-say" data-word="${esc(entry.id)}" aria-label="Hear ${esc(entry.fr)} again">${speaker}</button></li>`;
+    const marks = [[true, checkIcon, 'I knew'], [false, crossIcon, 'I didn’t know']].map(([knew, icon, label]) =>
+      `<button class="icon mark ${knew ? 'knew' : 'missed'}" data-action="walkman-mark" data-word="${esc(entry.id)}" data-knew="${knew}" aria-pressed="${entry.mark?.knew === knew}" aria-label="${label} ${esc(entry.fr)}"${heardMarking.has(entry.id) ? ' disabled' : ''}>${icon}</button>`).join('');
+    return `<li class="wm-heard-row"><div class="wm-heard-text"><p class="wm-heard-fr" lang="fr">${frEsc(entry.fr)}</p><p class="wm-heard-en">${esc(entry.en)}</p>${add}</div>${marks}<button class="icon${heardSaying === entry.id ? ' playing' : ''}" data-action="walkman-say" data-word="${esc(entry.id)}" aria-label="Hear ${esc(entry.fr)} again">${speaker}</button></li>`;
   }).join('');
   const list = heardOpen ? `<ol class="wm-heard-list">${rows || '<li class="wm-heard-empty">Words appear here as each one finishes, newest first.</li>'}</ol>` : '';
   return `<div class="wm-heard"><button class="wm-heard-toggle" data-action="walkman-heard" aria-expanded="${heardOpen}"><span>${heardOpen ? 'Hide words you heard' : 'Words you heard'}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
@@ -355,6 +361,26 @@ async function hearAgain(id) {
   heardSaying = '';
   if (screen !== 'walkman') return;
   if (heardResume) playWalkman(); else render();
+}
+// Marking a listen as known or not moves the word's score like a recall or a miss; tapping the same mark
+// again takes it back. The listen keeps one mark id, so changing your mind replaces the mark.
+async function markHeard(id, knew) {
+  const entry = walkmanHeard.find((item) => item.id === id);
+  if (!entry || heardMarking.has(id)) return;
+  const before = entry.mark;
+  const next = before?.knew === knew ? null : knew;
+  const markId = before?.id || requestId();
+  entry.mark = next === null ? undefined : { id: markId, knew: next };
+  heardMarking.add(id); render();
+  try {
+    await api('api/walkman/verdict', { method: 'POST', body: JSON.stringify({ id: markId, wordId: id, knew: next }) });
+  } catch (error) {
+    entry.mark = before;
+    notice = { message: error.message };
+  }
+  heardMarking.delete(id);
+  saveHeard();
+  if (screen === 'walkman') render();
 }
 async function addHeard(id) {
   const entry = walkmanHeard.find((item) => item.id === id);
@@ -1424,6 +1450,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'walkman-heard') { heardOpen = !heardOpen; render(); }
   else if (action === 'walkman-say') hearAgain(button.dataset.word);
   else if (action === 'walkman-add') addHeard(button.dataset.word);
+  else if (action === 'walkman-mark') markHeard(button.dataset.word, button.dataset.knew === 'true');
   else if (action === 'walkman-choice') chooseWalkman(button.dataset.words);
   else if (action === 'stream-check') streamCheck();
   else if (action === 'stream-next') streamNext();

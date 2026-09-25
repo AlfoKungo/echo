@@ -185,6 +185,11 @@ const server = Bun.serve({
         store.recordHeard({ wordId: String(data.wordId ?? ''), requestId: String(data.requestId ?? '') });
         return json({ ok: true });
       }
+      if (path === '/api/walkman/verdict' && req.method === 'POST') {
+        const data = await body(req);
+        store.recordVerdict({ id: String(data.id ?? ''), wordId: String(data.wordId ?? ''), knew: data.knew as boolean | null });
+        return json({ ok: true });
+      }
       const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);
       if (tapeAudio && (req.method === 'GET' || req.method === 'HEAD')) {
         const tape = tapes.get(tapeAudio[1]!);

@@ -662,4 +662,25 @@ describe('Walkman scores', () => {
     const { store } = fixture(undefined, thirtyWords);
     expect(() => store.recordHeard({ wordId: 'nope', requestId: 'x' })).toThrow(StoreError);
   });
+
+  test('marking a listen counts like a recall or a miss, a changed mark replaces it, and a withdrawn one is gone', () => {
+    const { store } = fixture(undefined, thirtyWords);
+    const score = (id: string) => store.listening().find((word) => word.id === id)!.score;
+    store.recordVerdict({ id: 'mark-a', wordId: 'word-20', knew: true });
+    store.recordVerdict({ id: 'mark-b', wordId: 'word-21', knew: true });
+    store.recordVerdict({ id: 'mark-b', wordId: 'word-21', knew: false });
+    store.recordVerdict({ id: 'mark-c', wordId: 'word-22', knew: false });
+    store.recordVerdict({ id: 'mark-c', wordId: 'word-22', knew: null });
+    expect([score('word-20'), score('word-21'), score('word-22')]).toEqual([2, -3, 0]);
+    // A mark id belongs to one word: reusing it for another word changes nothing.
+    store.recordVerdict({ id: 'mark-a', wordId: 'word-23', knew: false });
+    expect([score('word-20'), score('word-23')]).toEqual([2, 0]);
+  });
+
+  test('an incomplete mark is refused', () => {
+    const { store } = fixture(undefined, thirtyWords);
+    expect(() => store.recordVerdict({ id: '', wordId: 'word-20', knew: true })).toThrow(StoreError);
+    expect(() => store.recordVerdict({ id: 'x', wordId: 'word-20', knew: 'yes' as never })).toThrow(StoreError);
+    expect(() => store.recordVerdict({ id: 'x', wordId: 'nope', knew: true })).toThrow(StoreError);
+  });
 });

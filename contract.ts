@@ -21,6 +21,8 @@ export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'schedule
 // score: recalls and Walkman listens raise it, misses lower it, and it fades with time (see lib/store.ts).
 export type ListeningWord = BrowseWord & { score: number };
 export type HeardInput = { wordId: string; requestId: string };
+// A mark on one listen: id stays the same while the learner changes their mind; knew:null withdraws it.
+export type VerdictInput = { id: string; wordId: string; knew: boolean | null };
 // words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn.
 export type WalkmanChoice = 'scored' | 'groups';
 // Adding a word the learner tapped in a French text, always in the fr-en direction.
@@ -47,6 +49,7 @@ export type WalkmanTape = { id: string; url: string; seconds: number; words: Wal
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
 // POST api/walkman {words?:WalkmanChoice} -> WalkmanTape: a new tape of the words worth hearing now ('scored' by default)
 // POST api/walkman/heard HeardInput -> {ok:true}: a word heard to the end, which raises its score a little
+// POST api/walkman/verdict VerdictInput -> {ok:true}: 'I knew it' raises the word's score like a recall, 'I didn't' lowers it like a miss
 // GET api/walkman/:id.mp3 -> that tape's audio, with byte ranges; only the latest few tapes are kept
 // GET api/export -> all progress as downloadable JSON
 // Errors are {error:string}; UI must display the server message and allow retry.
