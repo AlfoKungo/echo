@@ -21,6 +21,14 @@ export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'schedule
 // score: recalls and Walkman listens raise it, misses lower it, and it fades with time (see lib/store.ts).
 export type ListeningWord = BrowseWord & { score: number };
 export type HeardInput = { wordId: string; requestId: string };
+// Statistics. words lists every started word, weakest score first. counts covers all words. A category's average
+// is the mean score of its started words (null before any). days holds the last 14 study days, oldest first,
+// counting vocabulary answers in both directions, undone ones excluded.
+export type StatsWord = Pick<ListeningWord, 'id' | 'fr' | 'en' | 'category' | 'status' | 'score' | 'misses'>;
+export type StatsCategory = { id: string; title: string; total: number; started: number; average: number | null };
+export type StatsDay = { day: string; knew: number; missed: number };
+export type VocabularyStatistics = { words: StatsWord[]; counts: Record<BrowseWord['status'], number>; categories: StatsCategory[]; days: StatsDay[]; walkmanHeard: number };
+export type Statistics = VocabularyStatistics & { levels: { mode: 'listen' | 'read'; label: GrammarLevel }[]; answered: number; grammarTopics: number };
 // A mark on one listen: id stays the same while the learner changes their mind; knew:null withdraws it.
 export type VerdictInput = { id: string; wordId: string; knew: boolean | null };
 // words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn.
@@ -51,6 +59,7 @@ export type WalkmanTape = { id: string; url: string; seconds: number; words: Wal
 // POST api/walkman/heard HeardInput -> {ok:true}: a word heard to the end, which raises its score a little
 // POST api/walkman/verdict VerdictInput -> {ok:true}: 'I knew it' raises the word's score like a recall, 'I didn't' lowers it like a miss
 // GET api/walkman/:id.mp3 -> that tape's audio, with byte ranges; only the latest few tapes are kept
+// GET api/statistics -> Statistics
 // GET api/export -> all progress as downloadable JSON
 // Errors are {error:string}; UI must display the server message and allow retry.
 

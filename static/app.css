@@ -72,6 +72,49 @@ a.destination{color:inherit;text-decoration:none}.destination .symbol svg{displa
 .wm-heard-row .mark:disabled{opacity:1}
 .wm-heard-empty{padding:16px 4px;color:var(--muted);font-size:14px;text-align:center}
 
+.st{max-width:640px;margin:auto;padding-bottom:60px}
+.st-block{margin-top:34px}
+.st-block h2{font-size:13px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.st-big{font-size:17px;color:var(--muted)}.st-big strong{font-size:40px;font-weight:550;letter-spacing:-1px;color:var(--ink);margin-right:6px;font-variant-numeric:tabular-nums}
+.st-sub{font-size:14px;color:var(--muted);margin:2px 0 18px}
+.st-cap{font-size:14px;color:var(--muted);margin:12px 0 0;line-height:1.5}
+.st-hist{display:grid;grid-template-columns:repeat(17,1fr);gap:3px;align-items:end;height:150px;padding:0 2px}
+.st-bar{height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0;border-radius:4px}
+.st-bar span{display:block;width:100%}
+.st-bar .learning{border-radius:4px 4px 0 0;opacity:.38}
+.st-bar .know{border-radius:0 0 2px 2px}
+.st-bar.pos span{background:var(--violet)}.st-bar.neg span{background:var(--danger)}.st-bar.zero span{background:var(--muted)}
+.st-bar[aria-pressed=true]{background:var(--card-hover);box-shadow:0 0 0 1px var(--frame)}
+.st-axis{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);margin-top:8px;padding:0 2px}
+.st-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:14px;color:var(--muted)}
+.st-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.st-legend i.know{background:var(--violet)}.st-legend i.learning{background:var(--violet);opacity:.38}
+.st-legend b{color:var(--ink);font-weight:550;margin-right:4px}
+.st-bin{margin-top:14px;border-top:1px solid var(--frame)}
+.st-bin-head{font-size:13px;color:var(--muted);padding:10px 2px 0}
+.st-bin ol{list-style:none;margin:0;padding:0}
+.st-bin li{display:flex;justify-content:space-between;gap:12px;padding:10px 2px;border-bottom:1px solid var(--frame);font-size:15px}
+.st-bin .fr{font-weight:500}.st-bin .en{color:var(--muted);text-align:right;font-size:14px}
+.st-stack{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--card)}
+.st-stack span{display:block}
+.st-rows{list-style:none;margin:0;padding:0}
+.st-rows li{display:flex;align-items:center;gap:12px;padding:11px 2px;border-top:1px solid var(--frame)}
+.st-rows li:first-child{border-top:0}
+.st-rows .name{flex:1;min-width:0}.st-rows .name p{font-size:16px}.st-rows .name .fr{font-weight:500}.st-rows .name small{display:block;color:var(--muted);font-size:13px}
+.st-mini{width:92px;height:6px;border-radius:3px;background:var(--card);overflow:hidden;flex:none}.st-mini span{display:block;height:100%;background:var(--violet)}
+.st-tag{flex:none;font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--frame);color:var(--muted);min-width:58px;text-align:center}
+.st-tag:empty{border-color:transparent}
+.st-tag.shaky{color:var(--danger);border-color:#f1b4b855}.st-tag.solid{color:var(--violet);border-color:#aaa6e455}
+.st-days{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;align-items:end;height:120px}
+.st-days div{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.st-days .k{background:var(--violet);border-radius:3px 3px 0 0}.st-days .m{background:var(--danger);opacity:.8}
+.st-days .empty{height:2px;background:var(--frame);border-radius:1px}
+.st-days-axis{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;font-size:11px;color:var(--dim);margin-top:6px;text-align:center}
+.st-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.st-fact{border:1px solid var(--frame);border-radius:14px;padding:14px 16px}
+.st-fact strong{display:block;font-size:22px;font-weight:550;letter-spacing:-.3px}
+.st-fact span{font-size:13px;color:var(--muted)}
+
 .stream{max-width:640px;margin:auto;padding-bottom:40px}
 .stream .section-top{margin-bottom:18px}
 .stream-label{font-size:12px;color:var(--muted);text-align:right;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { AddWordInput, AddWordResult, BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, VerdictInput, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -28,6 +28,7 @@ export interface Store {
   recordHeard(input: HeardInput): void;
   // The learner's own say, after a Walkman listen, on whether they knew the word; knew:null withdraws it.
   recordVerdict(input: VerdictInput): void;
+  statistics(): VocabularyStatistics;
   exportData(): unknown;
   close(): void;
 }
@@ -763,6 +764,41 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     else saveVerdict.run(input.id, input.wordId, input.knew ? 1 : 0, now().toISOString());
   }
 
+  const answersSince = db.query<{ known: number; at: string }, [string]>(`
+    SELECT known, graded_at AS at FROM grades WHERE graded_at >= ?
+    AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)`);
+  const heardCount = db.query<{ count: number }, []>('SELECT count(*) AS count FROM walkman_heard');
+
+  function statistics(): VocabularyStatistics {
+    return db.transaction(() => {
+      const all = listening();
+      const counts = { learning: 0, due: 0, scheduled: 0, new: 0 };
+      for (const word of all) counts[word.status] += 1;
+      const started = all.filter((word) => word.status !== 'new').sort((a, b) => a.score - b.score);
+      const categories = decks.filter((entry) => entry.id !== 'all').map((entry) => {
+        const mine = started.filter((word) => word.category === entry.id);
+        const average = mine.length ? Math.round(mine.reduce((sum, word) => sum + word.score, 0) / mine.length * 10) / 10 : null;
+        return { id: entry.id, title: entry.title, total: entry.count, started: mine.length, average };
+      });
+      // Days step back from today's 04:00 by calendar date, so a clock change never skips or repeats a day.
+      const start = studyDayStart(now());
+      const days: StatsDay[] = Array.from({ length: 14 }, (_, index) => {
+        const day = new Date(start);
+        day.setDate(day.getDate() - 13 + index);
+        return { day: studyDay(day), knew: 0, missed: 0 };
+      });
+      const first = new Date(start);
+      first.setDate(first.getDate() - 13);
+      const byDay = new Map(days.map((entry) => [entry.day, entry]));
+      for (const answer of answersSince.all(first.toISOString())) {
+        const entry = byDay.get(studyDay(new Date(answer.at)));
+        if (entry) { if (answer.known) entry.knew += 1; else entry.missed += 1; }
+      }
+      const words = started.map(({ id, fr, en, category, status, score, misses }) => ({ id, fr, en, category, status, score, misses }));
+      return { words, counts, categories, days, walkmanHeard: heardCount.get()!.count };
+    })();
+  }
+
   function exportData(): unknown {
     return db.transaction(() => ({
       format: 'echo-progress', version: 2, exportedAt: now().toISOString(),
@@ -779,5 +815,5 @@ export function createStore(words: Word[], options: { dbPath?: string; now?: () 
     }))();
   }
 
-  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, addWord, browse, listening, recordHeard, recordVerdict, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, addExtraWords, reviewEarly, addWord, browse, listening, recordHeard, recordVerdict, statistics, exportData, close: () => db.close() };
 }

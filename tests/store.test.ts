@@ -684,3 +684,35 @@ describe('Walkman scores', () => {
     expect(() => store.recordVerdict({ id: 'x', wordId: 'nope', knew: true })).toThrow(StoreError);
   });
 });
+
+describe('Statistics', () => {
+  test('answers fall on study days that start at 04:00, undone answers are left out, and every word is counted once', () => {
+    const { store, clock } = fixture(new Date(2026, 8, 21, 10));
+    let state = store.start('fr-en', 'all');
+    state = store.grade(answer(state, true));
+    state = store.grade(answer(state, false));
+    state = store.grade(answer(state, true));
+    store.undo('fr-en', 'all', state.undoId!);
+    clock.value = new Date(2026, 8, 22, 3, 30);
+    state = store.state('fr-en', 'all');
+    state = store.grade(answer(state, true));
+    clock.value = new Date(2026, 8, 23, 9);
+    state = store.start('fr-en', 'all');
+    store.grade(answer(state, false));
+    const stats = store.statistics();
+    const day = (value: string) => stats.days.find((entry) => entry.day === value);
+    expect(stats.days).toHaveLength(14);
+    expect(stats.days.at(-1)!.day).toBe('2026-09-23');
+    expect([day('2026-09-21'), day('2026-09-22'), day('2026-09-23')]).toEqual([
+      { day: '2026-09-21', knew: 2, missed: 1 },
+      { day: '2026-09-22', knew: 0, missed: 0 },
+      { day: '2026-09-23', knew: 0, missed: 1 },
+    ]);
+    expect(Object.values(stats.counts).reduce((sum, count) => sum + count, 0)).toBe(words.length);
+    expect(stats.words.length).toBe(words.length - stats.counts.new);
+    expect(stats.words.map((word) => word.score)).toEqual([...stats.words.map((word) => word.score)].sort((a, b) => a - b));
+    const started = new Map(stats.categories.map((category) => [category.id, category.started]));
+    expect(started.get('food')! + started.get('travel')!).toBe(stats.words.length);
+    expect(stats.categories.every((category) => category.total === 4)).toBe(true);
+  });
+});

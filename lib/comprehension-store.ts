@@ -33,6 +33,8 @@ export interface ComprehensionStore {
   misses(): ComprehensionMiss[];
   lookupCounts(): { wordId: string; count: number }[];
   weakWords(): string[];
+  // The level each mode is choosing from now, and how many answers were given in all.
+  summary(): { levels: { mode: Mode; label: GrammarLevel }[]; answered: number };
   exportData(): unknown;
   close(): void;
 }
@@ -849,6 +851,13 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     state: (stream) => state(parseStream(stream)),
     lookup, answer, next, misses, lookupCounts,
     weakWords: () => [...weakWordSet(knownStatus())],
+    summary: () => {
+      const value = levels();
+      return {
+        levels: MODES.map((mode) => ({ mode, label: LEVEL_OF(value.get(mode) ?? MIN_LEVEL) })),
+        answered: db.query<{ count: number }, []>('SELECT count(*) AS count FROM comprehension_answers').get()!.count,
+      };
+    },
     exportData,
     close: () => db.close(),
   };

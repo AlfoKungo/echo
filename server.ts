@@ -118,6 +118,10 @@ const server = Bun.serve({
       if (comprehended) return comprehended;
       if (path === '/api/state' && req.method === 'GET') return json(store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
       if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
+      if (path === '/api/statistics' && req.method === 'GET') {
+        const grammarTopics = grammar.catalog().flatMap((unit) => unit.topics).filter((topic) => topic.progress.seen > 0).length;
+        return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics });
+      }
       if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 3, grammar: grammar.exportData(), comprehension: comprehension.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
       if (path === '/api/grammar' && req.method === 'GET') return json({ units: grammar.catalog() });
       if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('scope') ?? ''));

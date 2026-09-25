@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { MistakeGroup } from '../comprehension-contract';
 import type { Bank } from './comprehension-content';
-import { createComprehensionStore, parseStream, type ComprehensionMutation, type WordKnowledge } from './comprehension-store';
+import { createComprehensionStore, parseStream, type ComprehensionMutation, type ComprehensionStore, type WordKnowledge } from './comprehension-store';
 import type { GrammarStore } from './grammar-store';
 import { StoreError, type Store } from './store';
 
@@ -18,6 +18,7 @@ export type ComprehensionDeps = {
 
 export type ComprehensionRoutes = {
   handle(path: string, req: Request, url: URL): Promise<Response | null>;
+  summary: ComprehensionStore['summary'];
   exportData(): unknown;
   close(): void;
 };
@@ -183,5 +184,5 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
     return null;
   }
 
-  return { handle, exportData: store.exportData, close: store.close };
+  return { handle, summary: store.summary, exportData: store.exportData, close: store.close };
 }

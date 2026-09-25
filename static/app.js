@@ -289,6 +289,7 @@ function renderHome() {
     <button class="side-link" data-action="start" ${locked() ? 'disabled' : ''}>Vocabulary</button>
     <button class="side-link" data-action="grammar" ${busy ? 'disabled' : ''}>Grammar</button>
     <button class="side-link" data-action="mistakes" ${busy ? 'disabled' : ''}>Mistakes</button>
+    <button class="side-link" data-action="statistics" ${busy ? 'disabled' : ''}>Statistics</button>
   </div></section>`;
 }
 function render() {
@@ -303,6 +304,7 @@ function render() {
   else if (screen === 'mix' || screen === 'focus') renderMixed();
   else if (screen === 'mistakes') renderMistakes();
   else if (screen === 'walkman') renderWalkman();
+  else if (screen === 'statistics') renderStatistics();
   else renderHome();
 }
 function renderWalkman() {
@@ -949,6 +951,76 @@ function enterStream() { loadStream(screen === 'read' ? 'read' : 'listen'); }
 function openStream(name) { if (move(name, true)) enterStream(); }
 function openMix() { if (move('mix', true)) enterMixed(); }
 function openMistakes() { if (move('mistakes', true)) loadMistakes(); }
+// ── Statistics ───────────────────────────────────────────────────────────────
+// statsBin is the score bar whose words are listed (null: none); bars run from -8 to 8, the ends holding everything beyond.
+let statistics = null;
+let statsBin = null;
+const STATS_BINS = Array.from({ length: 17 }, (_, index) => index - 8);
+const statsBinOf = (score) => Math.max(-8, Math.min(8, Math.round(score)));
+const statsKnown = (word) => word.status === 'scheduled' || word.status === 'due';
+const signed = (value) => String(value).replace('-', '−');
+function renderStatistics() {
+  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your French words are doing. Nothing here is a target.</p>`;
+  if (!statistics || loading) { main.innerHTML = `${noticeHTML()}<section class="st">${header}${loading ? '<div class="loading-state" role="status">Adding it all up…</div>' : ''}</section>`; return; }
+  const { words, counts } = statistics;
+  const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
+  const knowCount = counts.scheduled + counts.due;
+  const bins = new Map(STATS_BINS.map((bin) => [bin, { know: 0, learning: 0 }]));
+  for (const word of words) bins.get(statsBinOf(word.score))[statsKnown(word) ? 'know' : 'learning'] += 1;
+  const tallest = Math.max(1, ...[...bins.values()].map((bin) => bin.know + bin.learning));
+  const bars = STATS_BINS.map((bin) => {
+    const { know, learning } = bins.get(bin);
+    const tone = bin < 0 ? 'neg' : bin === 0 ? 'zero' : 'pos';
+    return `<button class="st-bar ${tone}" data-action="stats-bin" data-bin="${bin}" aria-pressed="${statsBin === bin}" aria-label="Score ${signed(bin)}: ${know} known, ${learning} still learning"><span class="learning" style="height:${learning / tallest * 100}%"></span><span class="know" style="height:${know / tallest * 100}%"></span></button>`;
+  }).join('');
+  const chosen = statsBin === null ? [] : words.filter((word) => statsBinOf(word.score) === statsBin);
+  const binLabel = statsBin === -8 ? '−8 or lower' : statsBin === 8 ? '8 or higher' : signed(statsBin);
+  const binList = statsBin === null ? '' : `<div class="st-bin"><p class="st-bin-head">Score ${binLabel} · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}</p>${chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : ''}</div>`;
+  const parts = [['learning', 'learning', 'var(--violet)'], ['due', 'due now', '#d7c38a'], ['scheduled', 'known', '#6e6aa8'], ['new', 'not started', 'var(--frame)']];
+  const stack = parts.map(([key, , colour]) => `<span style="width:${counts[key] / total * 100}%;background:${colour}"></span>`).join('');
+  const legend = parts.map(([key, label, colour]) => `<span><i style="background:${colour}"></i><b>${counts[key]}</b>${label}</span>`).join('');
+  const hardest = words.filter((word) => word.score < 0).slice(0, 6);
+  const hard = hardest.length ? `<ol class="st-rows">${hardest.map((word) => `<li><div class="name"><p lang="fr" class="fr">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div><span class="st-tag shaky">missed ${word.misses}×</span></li>`).join('')}</ol>` : '<p class="st-cap">Nothing shaky right now.</p>';
+  const feel = (average) => average === null ? '' : average < 0 ? 'shaky' : average < 2 ? 'steady' : 'solid';
+  const categories = statistics.categories.map((category) => `<li><div class="name"><p>${esc(categoryTitle(category.id))}</p><small>${category.started} of ${category.total} started</small></div><div class="st-mini"><span style="width:${category.started / category.total * 100}%"></span></div>${category.average === null ? '<span class="st-tag"></span>' : `<span class="st-tag ${feel(category.average)}">${feel(category.average)}</span>`}</li>`).join('');
+  const busiest = Math.max(1, ...statistics.days.map((day) => day.knew + day.missed));
+  const days = statistics.days.map((day) => day.knew + day.missed
+    ? `<div title="${esc(dayLabel(`${day.day}T12:00`))}: ${day.knew} knew, ${day.missed} missed"><span class="k" style="height:${day.knew / busiest * 100}%"></span><span class="m" style="height:${day.missed / busiest * 100}%"></span></div>`
+    : '<div><span class="empty"></span></div>').join('');
+  const dayAxis = statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('');
+  const level = (mode) => statistics.levels.find((entry) => entry.mode === mode)?.label ?? 'A1';
+  const facts = [[level('listen'), 'Listen level'], [level('read'), 'Read level'], [statistics.answered, 'Listen & Read questions answered'], [statistics.grammarTopics, statistics.grammarTopics === 1 ? 'grammar topic practised' : 'grammar topics practised'], [statistics.walkmanHeard, 'words heard on the Walkman'], [counts.scheduled, 'known words waiting for review']];
+  main.innerHTML = `${noticeHTML()}<section class="st">${header}
+    <div class="st-block"><h2>Word scores</h2>
+      <p class="st-big"><strong>${knowCount}</strong> ${knowCount === 1 ? 'word' : 'words'} you know</p>
+      <p class="st-sub">and ${counts.learning + counts.due ? `${counts.learning} still learning` : 'none still learning'}, out of ${total.toLocaleString('en')}.</p>
+      <div class="st-hist">${bars}</div>
+      <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
+      <div class="st-legend"><span><i class="know"></i>words you know</span><span><i class="learning"></i>still learning</span></div>
+      <p class="st-cap">Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. Tap a bar to see its words.</p>
+      ${binList}</div>
+    <div class="st-block"><h2>Your ${total.toLocaleString('en')} words</h2><div class="st-stack">${stack}</div><div class="st-legend">${legend}</div></div>
+    <div class="st-block"><h2>Hardest right now</h2>${hard}</div>
+    <div class="st-block"><h2>By category</h2><ol class="st-rows">${categories}</ol><p class="st-cap">Shaky, steady or solid is the average score of the words you’ve started there.</p></div>
+    <div class="st-block"><h2>Vocabulary answers, last two weeks</h2><div class="st-days">${days}</div><div class="st-days-axis">${dayAxis}</div>
+      <div class="st-legend"><span><i style="background:var(--violet)"></i>knew it</span><span><i style="background:var(--danger)"></i>missed</span></div></div>
+    <div class="st-block"><h2>Everything else</h2><div class="st-facts">${facts.map(([value, label]) => `<div class="st-fact"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join('')}</div></div>
+  </section>`;
+}
+function openStatistics() { if (move('statistics', true)) loadStatistics(); }
+async function loadStatistics() {
+  loading = true; notice = null; retryAction = null; render();
+  try {
+    statistics = await api('api/statistics');
+    // The list opens on the weakest words; tapping the open bar closes it.
+    statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
+  } catch (error) {
+    notice = { message: error.message }; retryAction = { type: 'statistics' };
+  }
+  loading = false;
+  if (screen === 'statistics') render();
+}
+function chooseStatsBin(bin) { statsBin = statsBin === bin ? null : bin; render(); }
 function openWalkman() { if (move('walkman', true)) loadTape(); }
 function openGroup(id) { focusId = id; if (move(`focus|${id}`, true)) enterMixed(); }
 async function loadMistakes(quiet = false) {
@@ -1386,6 +1458,7 @@ function retry() {
   else if (action.type === 'mixed') enterMixed();
   else if (action.type === 'mistakes') loadMistakes();
   else if (action.type === 'walkman') loadTape();
+  else if (action.type === 'statistics') loadStatistics();
   else fetchState(action.message);
 }
 
@@ -1445,6 +1518,8 @@ document.addEventListener('click', (event) => {
   else if (action === 'listen' || action === 'read') openStream(action);
   else if (action === 'practise') openMix();
   else if (action === 'mistakes') openMistakes();
+  else if (action === 'statistics') openStatistics();
+  else if (action === 'stats-bin') chooseStatsBin(Number(button.dataset.bin));
   else if (action === 'walkman') openWalkman();
   else if (action === 'walkman-toggle') toggleWalkman();
   else if (action === 'walkman-heard') { heardOpen = !heardOpen; render(); }
@@ -1525,6 +1600,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'mix' || screen === 'focus') enterMixed();
   else if (screen === 'mistakes') loadMistakes();
   else if (screen === 'walkman') loadTape();
+  else if (screen === 'statistics') loadStatistics();
 });
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
