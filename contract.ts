@@ -29,10 +29,11 @@ export type ListeningWord = BrowseWord & { score: number };
 export type HeardInput = { wordId: string; requestId: string };
 // Statistics. words lists every started word, weakest score first. counts covers all words. A category's average
 // is the mean score of its started words (null before any). days holds the last 14 study days, oldest first,
-// counting vocabulary answers in both directions, undone ones excluded.
+// counting vocabulary answers in both directions, undone ones excluded. gained and lost are that day's points as
+// they were scored, before fading: recalls, Walkman listens and ✓ marks add, misses and ✗ marks take away.
 export type StatsWord = Pick<ListeningWord, 'id' | 'fr' | 'en' | 'category' | 'status' | 'score' | 'misses'>;
 export type StatsCategory = { id: string; title: string; total: number; started: number; average: number | null };
-export type StatsDay = { day: string; knew: number; missed: number };
+export type StatsDay = { day: string; knew: number; missed: number; gained: number; lost: number };
 export type VocabularyStatistics = { words: StatsWord[]; counts: Record<BrowseWord['status'], number>; categories: StatsCategory[]; days: StatsDay[]; walkmanHeard: number };
 export type Statistics = VocabularyStatistics & { levels: { mode: 'listen' | 'read'; label: GrammarLevel }[]; answered: number; grammarTopics: number };
 // A mark on one listen: id stays the same while the learner changes their mind; knew:null withdraws it.

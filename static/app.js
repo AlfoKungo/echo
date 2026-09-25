@@ -888,7 +888,7 @@ function streamBodyHTML() {
   const action = settled
     ? `<button class="primary" data-action="stream-next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Next'}</button>`
     : view.choices?.length ? '' : `<button class="primary" data-action="stream-check" ${locked() ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check'}</button>`;
-  return `${context}<p class="prompt-instruction">${esc(STREAM_INSTRUCTION[`${view.mode}:${view.kind}`] || '')}</p>${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(view, result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions">${action}</div>` : ''}`;
+  return `${context}<p class="prompt-instruction">${esc(STREAM_INSTRUCTION[`${view.mode}:${view.kind}`] || '')}</p>${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(view, result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions${settled ? ' pinned' : ''}">${action}</div>` : ''}`;
 }
 function streamEmptyHTML(id) {
   if (id.startsWith('focus:')) return '<div class="stream-empty"><p>Nothing left to practise here for now.</p><button class="secondary" data-action="mistakes">Back to mistakes</button></div>';
@@ -960,6 +960,8 @@ function openMistakes() { if (move('mistakes', true)) loadMistakes(); }
 let statistics = null;
 let statsBin = null;
 let statsOpen = false; // the chosen bar's word list starts closed, and opens when a bar is tapped
+let pointsDay = ''; // the day whose points are spelled out under the chart; today until another is tapped
+const points = (value) => `${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(Math.round(value * 10) / 10).toLocaleString('en')}`;
 const STATS_BINS = Array.from({ length: 17 }, (_, index) => index - 8);
 const statsBinOf = (score) => Math.max(-8, Math.min(8, Math.round(score)));
 const statsKnown = (word) => word.status === 'scheduled' || word.status === 'due';
@@ -993,6 +995,16 @@ function renderStatistics() {
     ? `<div title="${esc(dayLabel(`${day.day}T12:00`))}: ${day.knew} knew, ${day.missed} missed"><span class="k" style="height:${day.knew / busiest * 100}%"></span><span class="m" style="height:${day.missed / busiest * 100}%"></span></div>`
     : '<div><span class="empty"></span></div>').join('');
   const dayAxis = statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('');
+  const today = statistics.days.at(-1);
+  const shown = statistics.days.find((day) => day.day === pointsDay) ?? today;
+  const swing = Math.max(1, ...statistics.days.map((day) => Math.max(day.gained, day.lost)));
+  const pointBars = statistics.days.map((day) => `<button class="st-pt" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(day.gained - day.lost)} points"><span class="up"><span style="height:${day.gained / swing * 100}%"></span></span><span class="down"><span style="height:${day.lost / swing * 100}%"></span></span></button>`).join('');
+  const shownLabel = shown.day === today.day ? 'Today' : new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`));
+  const pointsBlock = `<div class="st-block"><h2>Points, last two weeks</h2>
+      <p class="st-big"><strong>${points(shown.gained - shown.lost)}</strong> ${esc(shownLabel.toLowerCase() === 'today' ? 'today' : `on ${shownLabel}`)}</p>
+      <p class="st-sub">${shown.gained || shown.lost ? `${points(shown.gained)} gained, ${points(-shown.lost)} lost` : 'Nothing practised'}</p>
+      <div class="st-points">${pointBars}</div><div class="st-days-axis">${statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>
+      <p class="st-cap">The same points your word scores are made of: +2 for a word you knew, −3 for one you missed, +0.5 for a word heard to the end on the Walkman, and your ✓ and ✗ marks count like knowing or missing it. Gains rise above the line, losses fall below it. Tap a day to see its points.</p></div>`;
   const level = (mode) => statistics.levels.find((entry) => entry.mode === mode)?.label ?? 'A1';
   const facts = [[level('listen'), 'Listen level'], [level('read'), 'Read level'], [statistics.answered, 'Listen & Read questions answered'], [statistics.grammarTopics, statistics.grammarTopics === 1 ? 'grammar topic practised' : 'grammar topics practised'], [statistics.walkmanHeard, 'words heard on the Walkman'], [counts.scheduled, 'known words waiting for review']];
   main.innerHTML = `${noticeHTML()}<section class="st">${header}
@@ -1004,6 +1016,7 @@ function renderStatistics() {
       <div class="st-legend"><span><i class="know"></i>words you know</span><span><i class="learning"></i>still learning</span></div>
       <p class="st-cap">Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. Tap a bar to see its words.</p>
       ${binList}</div>
+    ${pointsBlock}
     <div class="st-block"><h2>Your ${total.toLocaleString('en')} words</h2><div class="st-stack">${stack}</div><div class="st-legend">${legend}</div></div>
     <div class="st-block"><h2>Hardest right now</h2>${hard}</div>
     <div class="st-block"><h2>By category</h2><ol class="st-rows">${categories}</ol><p class="st-cap">Shaky, steady or solid is the average score of the words you’ve started there.</p></div>
@@ -1153,6 +1166,7 @@ async function loadStatistics() {
     // The weakest bar is chosen to begin with, its list closed; tapping a bar opens its list.
     statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
     statsOpen = false;
+    pointsDay = '';
   } catch (error) {
     notice = { message: error.message }; retryAction = { type: 'statistics' };
   }
@@ -1675,6 +1689,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'songs-first') setSongsFirst(button.dataset.value === 'true');
   else if (action === 'stats-bin') chooseStatsBin(Number(button.dataset.bin));
   else if (action === 'stats-list') { statsOpen = !statsOpen; render(); }
+  else if (action === 'points-day') { pointsDay = button.dataset.day; render(); }
   else if (action === 'walkman') openWalkman();
   else if (action === 'walkman-toggle') toggleWalkman();
   else if (action === 'walkman-heard') { heardOpen = !heardOpen; render(); }

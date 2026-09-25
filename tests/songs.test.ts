@@ -153,6 +153,17 @@ describe('songs', () => {
     await expect(down.songs.retry(two.id)).rejects.toThrow('Paste the lyrics again');
   });
 
+  test('two songs read before either is added never add the same word twice', async () => {
+    const { store, songs } = setup();
+    const one = await songs.start({ title: 'Nuages', lyrics: LYRICS });
+    const two = await songs.start({ title: 'Nuages encore', lyrics: LYRICS });
+    await songs.settled();
+    songs.add(one.id, ['le nuage', 'glisser']);
+    const second = songs.add(two.id, ['le nuage', 'rêver']);
+    expect(second.added.map((id) => store.word(id)!.fr)).toEqual(['rêver']);
+    expect(store.words().filter((word) => word.fr === 'le nuage')).toHaveLength(1);
+  });
+
   test('a song started after an empty resume at startup is still read', async () => {
     const { songs } = setup();
     await songs.resume();

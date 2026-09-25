@@ -704,9 +704,9 @@ describe('Statistics', () => {
     expect(stats.days).toHaveLength(14);
     expect(stats.days.at(-1)!.day).toBe('2026-09-23');
     expect([day('2026-09-21'), day('2026-09-22'), day('2026-09-23')]).toEqual([
-      { day: '2026-09-21', knew: 2, missed: 1 },
-      { day: '2026-09-22', knew: 0, missed: 0 },
-      { day: '2026-09-23', knew: 0, missed: 1 },
+      { day: '2026-09-21', knew: 2, missed: 1, gained: 4, lost: 3 },
+      { day: '2026-09-22', knew: 0, missed: 0, gained: 0, lost: 0 },
+      { day: '2026-09-23', knew: 0, missed: 1, gained: 0, lost: 3 },
     ]);
     expect(Object.values(stats.counts).reduce((sum, count) => sum + count, 0)).toBe(words.length);
     expect(stats.words.length).toBe(words.length - stats.counts.new);
@@ -768,5 +768,19 @@ describe('Words added from a song', () => {
     const { store } = fixture();
     expect(() => store.addWords({ ...song, category: 'food' })).toThrow(StoreError);
     expect(() => store.addWords({ ...song, words: [{ fr: ' ', en: 'x' }] })).toThrow(StoreError);
+  });
+
+  test('a word added twice keeps its practised copy and loses the unpractised one when Echo next starts', () => {
+    const { store, open } = fixture();
+    const [first] = store.addWords({ category: 'song-one', title: 'One', words: [{ fr: 'la pluie', en: 'rain' }] });
+    const [second] = store.addWords({ category: 'song-two', title: 'Two', words: [{ fr: 'la pluie', en: 'rain' }, { fr: 'le ciel', en: 'sky' }] });
+    store.setSettings(1);
+    store.start('fr-en', 'song-two');
+    expect(store.browse('fr-en', 'song-two').find((word) => word.id === second.id)!.status).not.toBe('new');
+    const again = open();
+    expect(again.word(first.id)).toBeUndefined();
+    expect(again.word(second.id)?.fr).toBe('la pluie');
+    expect(again.words().filter((word) => word.fr === 'la pluie')).toHaveLength(1);
+    expect(again.addedIds()).toHaveLength(2);
   });
 });

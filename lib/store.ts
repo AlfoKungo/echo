@@ -271,8 +271,25 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   const rowForWord = db.query<CardRow, [Direction, string]>('SELECT * FROM cards WHERE direction = ? AND word_id = ?');
   const readSettings = db.query<{ newPerDay: number; songsFirst: number }, []>('SELECT new_per_day AS newPerDay, songs_first AS songsFirst FROM settings WHERE singleton = 1');
   const insertAdded = db.query('INSERT INTO added_words (id, fr, en, note, category, category_title, added_at) VALUES (?, ?, ?, ?, ?, ?, ?)');
-  for (const row of db.query<{ id: string; fr: string; en: string; note: string | null; category: string; category_title: string }, []>('SELECT * FROM added_words ORDER BY sequence').all()) {
-    if (wordById.has(row.id)) continue;
+  // A word added twice (two songs read before either was added) keeps one copy: a practised one, else the
+  // built-in word or the first added; unpractised extra copies are removed.
+  const comparable = (fr: string) => fr.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
+  const practised = db.query<{ count: number }, [string]>('SELECT count(*) AS count FROM cards WHERE word_id = ?');
+  const addedRows = db.query<{ id: string; fr: string; en: string; note: string | null; category: string; category_title: string }, []>('SELECT * FROM added_words ORDER BY sequence').all();
+  const holder = new Map(words.map((word) => [comparable(word.fr), word.id]));
+  const keep = new Set<string>();
+  for (const row of addedRows) {
+    const key = comparable(row.fr);
+    const other = holder.get(key);
+    if (!other) { holder.set(key, row.id); keep.add(row.id); continue; }
+    if (!practised.get(row.id)!.count) continue;
+    keep.add(row.id);
+    if (keep.has(other) && !practised.get(other)!.count) { keep.delete(other); holder.set(key, row.id); }
+  }
+  const extra = addedRows.filter((row) => !keep.has(row.id));
+  if (extra.length) db.transaction(() => { for (const row of extra) db.query('DELETE FROM added_words WHERE id = ?').run(row.id); }).immediate();
+  for (const row of addedRows) {
+    if (!keep.has(row.id) || wordById.has(row.id)) continue;
     const word: Word = { id: row.id, fr: row.fr, en: row.en, category: row.category, ...(row.note ? { note: row.note } : {}) };
     words.push(word); wordById.set(word.id, word); added.add(word.id); categoryTitles.set(row.category, row.category_title);
   }
@@ -807,8 +824,8 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   }
 
   // A word's score: +2 for each recall, -3 for each miss (undone answers excluded), +0.5 for each time it
-  // was heard to the end on the Walkman, and +2 or -3 when the learner marks a listen as known or not. Every point halves over SCORE_HALF_LIFE_DAYS, so an untouched word
-  // drifts back towards 0 and turns up again.
+  // was heard to the end on the Walkman, and +2 or -3 when the learner marks a listen as known or not. Every
+  // point halves over SCORE_HALF_LIFE_DAYS, so an untouched word drifts back towards 0 and turns up again.
   const scoreEvents = db.query<{ word_id: string; weight: number; at: string }, []>(`
     SELECT word_id, CASE known WHEN 1 THEN ${SCORE_RECALLED} ELSE ${SCORE_MISSED} END AS weight, graded_at AS at FROM grades
     WHERE NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)
@@ -876,7 +893,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       const days: StatsDay[] = Array.from({ length: 14 }, (_, index) => {
         const day = new Date(start);
         day.setDate(day.getDate() - 13 + index);
-        return { day: studyDay(day), knew: 0, missed: 0 };
+        return { day: studyDay(day), knew: 0, missed: 0, gained: 0, lost: 0 };
       });
       const first = new Date(start);
       first.setDate(first.getDate() - 13);
@@ -884,6 +901,10 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       for (const answer of answersSince.all(first.toISOString())) {
         const entry = byDay.get(studyDay(new Date(answer.at)));
         if (entry) { if (answer.known) entry.knew += 1; else entry.missed += 1; }
+      }
+      for (const event of scoreEvents.all()) {
+        const entry = byDay.get(studyDay(new Date(event.at)));
+        if (entry) { if (event.weight > 0) entry.gained += event.weight; else entry.lost -= event.weight; }
       }
       const words = started.map(({ id, fr, en, category, status, score, misses }) => ({ id, fr, en, category, status, score, misses }));
       return { words, counts, categories, days, walkmanHeard: heardCount.get()!.count };

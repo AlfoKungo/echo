@@ -160,7 +160,9 @@ export function createSongs(deps: SongDeps) {
     if (song.status === 'added') return song;
     if (song.status !== 'ready') throw new StoreError('This song is still being read. Wait for its word list.', 409);
     if (!Array.isArray(chosen) || !chosen.length) throw new StoreError('Tick at least one word to add.');
-    const picks = song.candidates.filter((candidate) => !candidate.existing && chosen.includes(candidate.fr));
+    // Words already in the deck are checked now, not when the song was read: another song may have added them since.
+    const have = new Set(deps.vocabulary.words().map((word) => word.fr.toLowerCase().replace(/[’‘]/g, "'").trim()));
+    const picks = song.candidates.filter((candidate) => !candidate.existing && chosen.includes(candidate.fr) && !have.has(candidate.fr.toLowerCase()));
     if (!picks.length) throw new StoreError('All the ticked words are already in your words.');
     const made = deps.vocabulary.addWords({ category: song.category, title: song.title, words: picks.map(({ fr, en, note }) => ({ fr, en, note })) });
     db.query("UPDATE songs SET status = 'added', added_json = ? WHERE id = ?").run(JSON.stringify(made.map((word) => word.id)), id);
