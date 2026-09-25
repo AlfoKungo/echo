@@ -5,9 +5,442 @@
   "title": "Time: depuis, il y a, pendant",
   "description": "Say since when, how long ago, for how long and when something happens.",
   "mark": "depuis",
-  "rule": "For something that started in the past and is still going on, use depuis with the present: J’habite ici depuis trois ans, not j’ai habité. For a finished action, il y a + time means ago (Je suis arrivé il y a une heure), and pendant gives how long it lasted (J’ai dormi pendant huit heures). After partir, aller or venir, pour gives the planned length of a stay (Je pars pour une semaine). Dans + time means that much time from now (Je pars dans deux jours), while en + time is the time an action takes (J’ai fini en une heure). Use en with months and years (en juillet, en 2020) and with été, automne and hiver, but au printemps. A day without an article is one particular day (lundi, this Monday); with le it is a habit (le lundi, every Monday).",
-  "example": "J’apprends le français depuis deux ans. · Je suis arrivé il y a une heure. · Le lundi, je vais à la piscine.",
-  "aside": "Ça fait deux ans que and Il y a deux ans que also mean depuis deux ans, with the verb in the present: Ça fait deux ans que j’habite ici.",
+  "guide": {
+    "summary": "Time in French: say how long you have been doing something, how long ago it happened, how long it lasted, and how long before it starts. The same page covers months, seasons and days of the week.",
+    "sections": [
+      {
+        "id": "choosing",
+        "title": "Which time word do you need?",
+        "text": "Six small words share the work English does with since, ago, for and in. Each one answers a different question about the same number of hours or years.",
+        "table": {
+          "columns": [
+            "Word",
+            "The question it answers",
+            "Usual verb"
+          ],
+          "rows": [
+            [
+              "depuis",
+              "since when, and still true now",
+              "present"
+            ],
+            [
+              "il y a",
+              "how long ago it happened",
+              "passé composé"
+            ],
+            [
+              "pendant",
+              "how long it lasted",
+              "any tense; finished action or habit"
+            ],
+            [
+              "pour",
+              "how long a planned stay will last",
+              "partir, aller, venir"
+            ],
+            [
+              "dans",
+              "how long before it happens, from now",
+              "present, futur proche, future"
+            ],
+            [
+              "en",
+              "how long the action took to get done",
+              "passé composé"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask first: is it still going on, over, or still to come?",
+          "Then ask what the hours or years measure: a starting point, a length, or a wait before it starts.",
+          "Check that the verb tense fits that choice."
+        ],
+        "examples": [
+          {
+            "fr": "J’habite ici depuis trois ans.",
+            "en": "I have lived here for three years."
+          },
+          {
+            "fr": "Je suis arrivé il y a une heure.",
+            "en": "I arrived an hour ago."
+          },
+          {
+            "fr": "Le train part dans dix minutes.",
+            "en": "The train leaves in ten minutes."
+          }
+        ],
+        "watch": [
+          "English “for” can be depuis, pendant or pour: ask whether it is still going on, over, or planned.",
+          "English “in” can be dans (counted from now) or en (the time the job took)."
+        ]
+      },
+      {
+        "id": "depuis",
+        "title": "Still going on: depuis + present",
+        "text": "Depuis marks something that started in the past and has not stopped. French keeps the verb in the present where English says “has been doing”.",
+        "table": {
+          "columns": [
+            "After depuis",
+            "Example",
+            "English"
+          ],
+          "rows": [
+            [
+              "a start point (date, day, event)",
+              "depuis 2019, depuis lundi, depuis son enfance",
+              "since 2019, since Monday, since childhood"
+            ],
+            [
+              "a length of time",
+              "depuis trois ans, depuis une heure",
+              "for three years, for an hour"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the situation is still true now.",
+          "Put the verb in the present, never in the passé composé.",
+          "Add depuis with the start point or the length of time."
+        ],
+        "examples": [
+          {
+            "fr": "J’apprends le français depuis deux ans.",
+            "en": "I have been learning French for two years."
+          },
+          {
+            "fr": "Elle travaille ici depuis lundi.",
+            "en": "She has been working here since Monday."
+          },
+          {
+            "fr": "Ça fait deux ans que j’habite ici.",
+            "en": "I have been living here for two years."
+          }
+        ],
+        "watch": [
+          "Not “j’ai habité ici depuis 2019” when it is still true: the passé composé closes the action.",
+          "Ça fait deux ans que… and Il y a deux ans que… say the same as depuis deux ans, also with the verb in the present.",
+          "French has no progressive form: “is working” and “has been working” are both travaille."
+        ]
+      },
+      {
+        "id": "il-y-a",
+        "title": "Finished and over: il y a means ago",
+        "text": "Il y a + a length of time counts backwards from now to an action that happened once and stopped. The verb goes in the passé composé.",
+        "table": {
+          "columns": [
+            "Expression",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "il y a + length",
+              "that long ago",
+              "Il est parti il y a cinq minutes."
+            ],
+            [
+              "dans + length",
+              "that long from now",
+              "Il part dans cinq minutes."
+            ],
+            [
+              "depuis + length",
+              "for that long, still now",
+              "Il dort depuis cinq minutes."
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the action is finished.",
+          "Put the verb in the passé composé.",
+          "Say il y a before the length of time, never after it."
+        ],
+        "examples": [
+          {
+            "fr": "Nous avons mangé il y a dix minutes.",
+            "en": "We ate ten minutes ago."
+          },
+          {
+            "fr": "J’ai vu ce film il y a deux semaines.",
+            "en": "I saw this film two weeks ago."
+          }
+        ],
+        "watch": [
+          "Avant means “before”, not “ago”.",
+          "Il y a also means “there is / there are”; with a length of time it means “ago”.",
+          "Il y a deux ans que j’habite ici is another structure: with que it means the same as depuis deux ans, still true today."
+        ]
+      },
+      {
+        "id": "duration",
+        "title": "How long it lasted: pendant and pour",
+        "text": "Both give a length, but pendant measures an action and pour measures a stay that is still to come.",
+        "table": {
+          "columns": [
+            "Word",
+            "Use",
+            "Example"
+          ],
+          "rows": [
+            [
+              "pendant",
+              "how long an action lasted or lasts, finished or repeated",
+              "Il a dormi pendant huit heures."
+            ],
+            [
+              "pour",
+              "the planned length of a stay, after partir, aller, venir",
+              "Je pars pour une semaine."
+            ]
+          ]
+        },
+        "steps": [
+          "Ask whether the time is the length of the action itself.",
+          "If the action is over, or repeated as a habit, use pendant.",
+          "If it is a trip or a visit that has not started, use pour."
+        ],
+        "examples": [
+          {
+            "fr": "Chaque soir, il lit pendant une heure.",
+            "en": "Every evening he reads for an hour."
+          },
+          {
+            "fr": "Elle a travaillé à Londres pendant trois ans.",
+            "en": "She worked in London for three years."
+          },
+          {
+            "fr": "Ils viennent chez nous pour trois jours.",
+            "en": "They are coming to us for three days."
+          }
+        ],
+        "watch": [
+          "Pendant can simply be dropped: J’ai attendu vingt minutes.",
+          "You will hear pendant with a stay too, but after partir, aller and venir, pour is the safer choice.",
+          "Never depuis for a stretch that has ended: depuis runs up to now."
+        ]
+      },
+      {
+        "id": "dans-en",
+        "title": "dans or en: when it starts, or how long it takes?",
+        "text": "Both translate English “in”. Dans counts the wait before something starts; en counts the time the action swallowed.",
+        "table": {
+          "columns": [
+            "Word",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "dans",
+              "that much time from now, before it starts",
+              "Je pars dans deux jours."
+            ],
+            [
+              "en",
+              "the time the action needed to be done",
+              "J’ai fini en une heure."
+            ]
+          ]
+        },
+        "steps": [
+          "Ask if the time is the wait before the action starts.",
+          "Ask if it is the time the action took from start to finish.",
+          "Check the tense: a moment still ahead, or a task already completed."
+        ],
+        "examples": [
+          {
+            "fr": "Le film commence dans cinq minutes.",
+            "en": "The film starts in five minutes."
+          },
+          {
+            "fr": "Elle a fait ses devoirs en vingt minutes.",
+            "en": "She did her homework in twenty minutes."
+          }
+        ],
+        "watch": [
+          "Je t’appelle en une heure would mean the phone call itself lasts an hour.",
+          "Dans deux jours is not the length of the holiday, only the wait before it starts."
+        ]
+      },
+      {
+        "id": "months-seasons",
+        "title": "Months, years and seasons",
+        "text": "Months and years take one preposition; three seasons out of four take the same one.",
+        "table": {
+          "columns": [
+            "When",
+            "Preposition",
+            "Example"
+          ],
+          "rows": [
+            [
+              "a month",
+              "en",
+              "en juillet, en janvier"
+            ],
+            [
+              "a year",
+              "en",
+              "en 1998, en 2020"
+            ],
+            [
+              "été / automne / hiver",
+              "en",
+              "en été, en automne, en hiver"
+            ],
+            [
+              "printemps",
+              "au",
+              "au printemps"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at what follows: a month, a year or a season.",
+          "Months, years and the three seasons that begin with a vowel sound all behave alike.",
+          "Listen to the season: the one starting with a consonant is the odd one out."
+        ],
+        "examples": [
+          {
+            "fr": "Mon anniversaire est en juillet.",
+            "en": "My birthday is in July."
+          },
+          {
+            "fr": "Les arbres fleurissent au printemps.",
+            "en": "Trees blossom in spring."
+          },
+          {
+            "fr": "Je suis né en 1998.",
+            "en": "I was born in 1998."
+          }
+        ],
+        "watch": [
+          "No article: en juillet, not “en le juillet”.",
+          "À l’automne also exists, but en automne is the plain form.",
+          "Dans never goes before a month, a year or a season."
+        ]
+      },
+      {
+        "id": "days",
+        "title": "One day or every week?",
+        "text": "French uses no preposition before a day of the week. The article alone says whether you mean one day or a weekly habit.",
+        "table": {
+          "columns": [
+            "Form",
+            "Means",
+            "Example"
+          ],
+          "rows": [
+            [
+              "lundi",
+              "this coming (or last) Monday",
+              "On se voit lundi ?"
+            ],
+            [
+              "le lundi",
+              "every Monday",
+              "Le lundi, je fais du sport."
+            ],
+            [
+              "les lundis / tous les lundis",
+              "every Monday",
+              "Le musée est fermé les lundis."
+            ]
+          ]
+        },
+        "steps": [
+          "Ask: one particular day, or a weekly habit?",
+          "For one particular day, leave the day bare, with nothing before it.",
+          "For a habit, put the article before the day, or use tous les / chaque."
+        ],
+        "examples": [
+          {
+            "fr": "Le dimanche, nous déjeunons chez ma grand-mère.",
+            "en": "On Sundays we have lunch at my grandmother’s."
+          },
+          {
+            "fr": "Elle a cours de piano tous les mercredis.",
+            "en": "She has piano lessons every Wednesday."
+          },
+          {
+            "fr": "On se voit vendredi ?",
+            "en": "Shall we meet on Friday?"
+          }
+        ],
+        "watch": [
+          "Never “sur lundi” or “en lundi” for “on Monday”: French uses no preposition here.",
+          "Chaque takes the singular (chaque lundi); tous les takes the plural (tous les lundis)."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "depuis-present": {
+      "section": "depuis",
+      "steps": [
+        "Ask whether the situation is still true at this moment.",
+        "If it is, keep the verb in the present, even when English says “has been doing”.",
+        "Put the start point or the length of time straight after depuis."
+      ]
+    },
+    "il-y-a-ago": {
+      "section": "il-y-a",
+      "steps": [
+        "Check that the action happened once and is over.",
+        "Measure backwards from now: how long ago was it?",
+        "Use the passé composé, and put the expression before the length of time."
+      ]
+    },
+    "pendant-duration": {
+      "section": "duration",
+      "steps": [
+        "Ask what the time measures: the length of the action itself?",
+        "Check that it does not run from a start point up to now.",
+        "Keep the verb in its own tense and put the preposition before the length."
+      ]
+    },
+    "pour-planned": {
+      "section": "duration",
+      "steps": [
+        "Look at the verb: partir, aller or venir, with a stay that has not started?",
+        "Give the planned length of that stay with the preposition of intention.",
+        "Rule out depuis and il y a: nothing has begun and nothing is over."
+      ]
+    },
+    "dans-from-now": {
+      "section": "dans-en",
+      "steps": [
+        "Ask when it will happen, counting forward from now.",
+        "If the time is the wait before it starts, take that preposition.",
+        "Keep the verb in the present, the futur proche or the future."
+      ]
+    },
+    "en-time-taken": {
+      "section": "dans-en",
+      "steps": [
+        "Ask how long the job took from start to finish.",
+        "If the action was completed inside that time, take the preposition of time taken.",
+        "Check it is not a moment still ahead: that would be another preposition."
+      ]
+    },
+    "dates-seasons": {
+      "section": "months-seasons",
+      "steps": [
+        "See what follows the blank: a month, a year or a season.",
+        "Months and years always take the same preposition.",
+        "For a season, listen to the first sound: three of them behave alike, one does not."
+      ]
+    },
+    "le-jour-habit": {
+      "section": "days",
+      "steps": [
+        "Ask: one particular day, or every week?",
+        "One particular day: the day stands alone, with nothing in front of it.",
+        "A weekly habit: add the definite article before the day, or use tous les / chaque."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "time-expressions-depuis-choose-1",
@@ -25,7 +458,22 @@
       ],
       "hint": "The action started in the past and is still going on.",
       "feedback": "The verb is in the present because the situation continues. Which word goes with that?",
-      "explanation": "Depuis + present describes something that started in the past and is still true: J’habite à Lyon depuis trois ans."
+      "explanation": "Depuis + present describes something that started in the past and is still true: J’habite à Lyon depuis trois ans.",
+      "mistakes": [
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a + a length means the thing happened that long ago and is finished. Here he still lives in Lyon, and the verb is in the present."
+        },
+        {
+          "answers": [
+            "pendant"
+          ],
+          "why": "Pendant gives the length of something finished, or of a habit. It does not open a stretch that started three years ago and is still running."
+        }
+      ],
+      "row": "a length of time"
     },
     {
       "id": "time-expressions-depuis-choose-2",
@@ -43,7 +491,21 @@
       ],
       "hint": "With depuis, an action that is still going on is not in a past tense.",
       "feedback": "English says “has played”, but French does not use the passé composé here.",
-      "explanation": "An action still going on after depuis is in the present: Elle joue du piano depuis son enfance."
+      "explanation": "An action still going on after depuis is in the present: Elle joue du piano depuis son enfance.",
+      "mistakes": [
+        {
+          "answers": [
+            "a joué"
+          ],
+          "why": "That is the passé composé, which closes the action off. She has not stopped playing, so the verb must stay in the tense used for now."
+        },
+        {
+          "answers": [
+            "jouait"
+          ],
+          "why": "Jouait is the imparfait, for a past habit that is over. Her playing goes on today."
+        }
+      ]
     },
     {
       "id": "time-expressions-depuis-complete",
@@ -56,7 +518,38 @@
       ],
       "hint": "The waiting started in the past and has not stopped.",
       "feedback": "After depuis, French uses the tense for now, not a past tense.",
-      "explanation": "An ongoing action with depuis takes the present: Ils attendent le bus depuis une demi-heure."
+      "explanation": "An ongoing action with depuis takes the present: Ils attendent le bus depuis une demi-heure.",
+      "mistakes": [
+        {
+          "answers": [
+            "ont attendu",
+            "ils ont attendu"
+          ],
+          "why": "The passé composé closes the waiting off. After depuis, an action that has not stopped stays in the present."
+        },
+        {
+          "answers": [
+            "attendaient",
+            "ils attendaient"
+          ],
+          "why": "Attendaient is the imparfait, a past tense. The bus has still not come, so the verb belongs to now."
+        },
+        {
+          "answers": [
+            "attend",
+            "ils attend"
+          ],
+          "why": "Attend is the il / elle form, for one person. The subject ils is plural and needs the ils / elles ending."
+        },
+        {
+          "answers": [
+            "attendre",
+            "ils attendre"
+          ],
+          "why": "Attendre is the infinitive, the dictionary form. The sentence needs the verb conjugated for ils."
+        }
+      ],
+      "row": "a length of time"
     },
     {
       "id": "time-expressions-depuis-translate",
@@ -69,7 +562,28 @@
       ],
       "hint": "English uses “has been working”; French uses a simpler tense.",
       "feedback": "Use depuis with the present tense, and no article before the day.",
-      "explanation": "An action still going on takes depuis + present: Elle travaille ici depuis lundi."
+      "explanation": "An action still going on takes depuis + present: Elle travaille ici depuis lundi.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle a travaillé ici depuis lundi."
+          ],
+          "why": "The passé composé says the work is over. The sentence means she started on Monday and is still at it, so the verb stays in the present."
+        },
+        {
+          "answers": [
+            "Elle travaille ici depuis le lundi."
+          ],
+          "why": "Le lundi means every Monday, a weekly habit. Here Monday is the day the job started, so the day takes no article."
+        },
+        {
+          "answers": [
+            "Elle est travaillant ici depuis lundi."
+          ],
+          "why": "French has no “-ing” form after être. One simple present verb carries both “works” and “has been working”."
+        }
+      ],
+      "row": "a start point (date, day, event)"
     },
     {
       "id": "time-expressions-depuis-repair",
@@ -82,7 +596,34 @@
       ],
       "hint": "The job has not ended.",
       "feedback": "Depuis does not go with the passé composé for an action that continues.",
-      "explanation": "He still works there, so the verb is in the present: Il travaille chez Renault depuis 2019."
+      "explanation": "He still works there, so the verb is in the present: Il travaille chez Renault depuis 2019.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a travaillé chez Renault depuis 2019."
+          ],
+          "why": "That is the sentence unchanged, with the passé composé. A job that is still going on cannot use a tense that closes the action."
+        },
+        {
+          "answers": [
+            "Il a travaillé chez Renault pendant 2019."
+          ],
+          "why": "That changes the wrong word and says he worked there during the year 2019 and stopped. The time expression was already right; the verb was not."
+        },
+        {
+          "answers": [
+            "Il travaillait chez Renault depuis 2019."
+          ],
+          "why": "The imparfait puts the job in the past, as background to something else. He works there today."
+        },
+        {
+          "answers": [
+            "Il a travaillé chez Renault en 2019."
+          ],
+          "why": "En 2019 names the year the work happened, and the passé composé ends it. The sentence must say the job has run from 2019 until now."
+        }
+      ],
+      "row": "a start point (date, day, event)"
     },
     {
       "id": "time-expressions-depuis-rewrite",
@@ -96,7 +637,28 @@
       ],
       "hint": "Keep the present verb and add depuis with the starting date.",
       "feedback": "The living is still going on. Put depuis before the year.",
-      "explanation": "Depuis + the start date, with the verb in the present: J’habite à Nantes depuis 2021."
+      "explanation": "Depuis + the start date, with the verb in the present: J’habite à Nantes depuis 2021.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai habité à Nantes depuis 2021."
+          ],
+          "why": "The passé composé says the living is over. He still lives there, so the verb stays in the present."
+        },
+        {
+          "answers": [
+            "J’habite à Nantes en 2021."
+          ],
+          "why": "En 2021 dates an event inside that year. Here 2021 is the year the living started and has not stopped."
+        },
+        {
+          "answers": [
+            "Depuis 2021, j’ai habité à Nantes."
+          ],
+          "why": "The time expression is in the right place, but the passé composé closes the action. With a starting point that runs to today, the verb stays in the present."
+        }
+      ],
+      "row": "a start point (date, day, event)"
     },
     {
       "id": "time-expressions-depuis-build",
@@ -116,7 +678,22 @@
       ],
       "hint": "The waiting is still going on.",
       "feedback": "One time tile describes a finished moment in the past.",
-      "explanation": "The waiting continues, so French uses depuis + present: Je t’attends depuis une heure !"
+      "explanation": "The waiting continues, so French uses depuis + present: Je t’attends depuis une heure !",
+      "mistakes": [
+        {
+          "answers": [
+            "Je t’attends il y a une heure !"
+          ],
+          "why": "Il y a + a length says how long ago a finished action happened. The waiting is still going on as he speaks."
+        },
+        {
+          "answers": [
+            "Je t’attends une heure !"
+          ],
+          "why": "With no time word at all, this reads as a plan: “I am waiting for you for an hour”. The sentence must say the hour started earlier and is still running."
+        }
+      ],
+      "row": "a length of time"
     },
     {
       "id": "time-expressions-ago-choose",
@@ -134,7 +711,22 @@
       ],
       "hint": "The action is finished and you are saying how long ago it happened.",
       "feedback": "Ago is a three-word expression in French.",
-      "explanation": "Il y a + a length of time with the passé composé means ago: Je suis arrivé il y a une heure."
+      "explanation": "Il y a + a length of time with the passé composé means ago: Je suis arrivé il y a une heure.",
+      "mistakes": [
+        {
+          "answers": [
+            "pendant"
+          ],
+          "why": "Pendant gives how long something lasted. An arrival is one moment, not an hour long."
+        },
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans une heure counts forward from now, so he would arrive an hour from now. He is already here."
+        }
+      ],
+      "row": "il y a + length"
     },
     {
       "id": "time-expressions-ago-complete",
@@ -147,7 +739,34 @@
       ],
       "hint": "Ago is three words in French.",
       "feedback": "The meal is over. Which expression says how long ago?",
-      "explanation": "Il y a + time means ago: Nous avons mangé il y a dix minutes."
+      "explanation": "Il y a + time means ago: Nous avons mangé il y a dix minutes.",
+      "mistakes": [
+        {
+          "answers": [
+            "pendant"
+          ],
+          "why": "Pendant dix minutes says the meal lasted ten minutes, not that it ended ten minutes ago."
+        },
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans dix minutes points forward from now: the meal would still be to come. The passé composé shows it is over."
+        },
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis dix minutes means the eating started ten minutes ago and is still going on."
+        },
+        {
+          "answers": [
+            "avant"
+          ],
+          "why": "Avant means “before” and needs another event to come before. It cannot say how far back something happened."
+        }
+      ],
+      "row": "il y a + length"
     },
     {
       "id": "time-expressions-ago-translate",
@@ -164,7 +783,34 @@
       ],
       "hint": "Use the passé composé and the French for ago.",
       "feedback": "Ago comes before the length of time in French.",
-      "explanation": "Il y a deux semaines means two weeks ago; the verb is in the passé composé."
+      "explanation": "Il y a deux semaines means two weeks ago; the verb is in the passé composé.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai vu ce film depuis deux semaines."
+          ],
+          "why": "Depuis opens a stretch that reaches today; seeing a film is one finished moment."
+        },
+        {
+          "answers": [
+            "J’ai vu ce film pendant deux semaines."
+          ],
+          "why": "Pendant deux semaines would mean the watching itself lasted a fortnight."
+        },
+        {
+          "answers": [
+            "J’ai vu ce film dans deux semaines."
+          ],
+          "why": "Dans deux semaines points two weeks into the future, which clashes with the past verb."
+        },
+        {
+          "answers": [
+            "Je vois ce film il y a deux semaines."
+          ],
+          "why": "The time expression is right, but the present tense does not go with it: a moment that far back needs the passé composé."
+        }
+      ],
+      "row": "il y a + length"
     },
     {
       "id": "time-expressions-ago-repair",
@@ -177,7 +823,34 @@
       ],
       "hint": "Avant means before, not ago.",
       "feedback": "Avant means before. Replace it with the French expression for ago.",
-      "explanation": "Ago is il y a: Ils ont déménagé il y a trois ans."
+      "explanation": "Ago is il y a: Ils ont déménagé il y a trois ans.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils ont déménagé avant trois ans."
+          ],
+          "why": "That is the sentence unchanged. Avant means “before” and needs another event; it cannot measure back from now."
+        },
+        {
+          "answers": [
+            "Ils ont déménagé depuis trois ans."
+          ],
+          "why": "Depuis trois ans would mean they have been moving house for three years without stopping."
+        },
+        {
+          "answers": [
+            "Ils ont déménagé pendant trois ans."
+          ],
+          "why": "Pendant trois ans makes the move itself last three years."
+        },
+        {
+          "answers": [
+            "Ils ont déménagé dans trois ans."
+          ],
+          "why": "Dans trois ans points forward from now, which cannot go with a finished past action."
+        }
+      ],
+      "row": "il y a + length"
     },
     {
       "id": "time-expressions-ago-rewrite",
@@ -190,7 +863,34 @@
       ],
       "hint": "Change both the verb and the time expression.",
       "feedback": "Dans points to the future. Use the expression for ago and a past verb.",
-      "explanation": "A finished action one hour ago: passé composé + il y a: Il a appelé il y a une heure."
+      "explanation": "A finished action one hour ago: passé composé + il y a: Il a appelé il y a une heure.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il appelle il y a une heure."
+          ],
+          "why": "The time expression is right, but the present tense clashes with it. A finished action an hour back needs the passé composé."
+        },
+        {
+          "answers": [
+            "Il a appelé dans une heure."
+          ],
+          "why": "The verb is right now, but dans une heure still points forward from now. The call has already happened."
+        },
+        {
+          "answers": [
+            "Il a appelé pendant une heure."
+          ],
+          "why": "Pendant une heure says the call lasted an hour, not that it happened an hour back."
+        },
+        {
+          "answers": [
+            "Il appelait il y a une heure."
+          ],
+          "why": "The imparfait describes a background situation, not one finished call at a precise point in the past."
+        }
+      ],
+      "row": "il y a + length"
     },
     {
       "id": "time-expressions-ago-build",
@@ -210,7 +910,22 @@
       ],
       "hint": "The departure is a finished action in the past.",
       "feedback": "One time tile points to the future.",
-      "explanation": "Ago is il y a after the passé composé: Elle est partie il y a cinq minutes."
+      "explanation": "Ago is il y a after the passé composé: Elle est partie il y a cinq minutes.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle est partie dans cinq minutes."
+          ],
+          "why": "Dans + a length counts forward from now, so it cannot go with a departure that is already done."
+        },
+        {
+          "answers": [
+            "Elle est partie cinq minutes."
+          ],
+          "why": "With no time word, this reads as “she went away for five minutes”. The sentence must say how long ago she left."
+        }
+      ],
+      "row": "il y a + length"
     },
     {
       "id": "time-expressions-pendant-choose-1",
@@ -228,7 +943,22 @@
       ],
       "hint": "The sleep is over and you give its length.",
       "feedback": "The action is finished, so it cannot be still going on, and it is not in the future.",
-      "explanation": "Pendant gives the duration of a finished action: J’ai dormi pendant dix heures."
+      "explanation": "Pendant gives the duration of a finished action: J’ai dormi pendant dix heures.",
+      "mistakes": [
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis opens a stretch that is still running now. Hier and the passé composé show the sleep is over."
+        },
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans dix heures counts forward from now, so the sleeping would still be to come."
+        }
+      ],
+      "row": "pendant"
     },
     {
       "id": "time-expressions-pendant-choose-2",
@@ -246,7 +976,22 @@
       ],
       "hint": "You give how long a regular action lasts.",
       "feedback": "The reading is not still going on from a starting point, and it is not in the past.",
-      "explanation": "Pendant gives the length of an action, also a habit: Chaque soir, il lit pendant une heure."
+      "explanation": "Pendant gives the length of an action, also a habit: Chaque soir, il lit pendant une heure.",
+      "mistakes": [
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis marks a start point that runs up to now. Chaque soir describes an hour repeated every evening, not one long stretch."
+        },
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a une heure means an hour ago, one finished moment in the past. This reading happens every evening."
+        }
+      ],
+      "row": "pendant"
     },
     {
       "id": "time-expressions-pendant-complete",
@@ -259,7 +1004,34 @@
       ],
       "hint": "The job is finished and you give its length.",
       "feedback": "Not depuis: the action is not still going on.",
-      "explanation": "For a finished action lasting three years, use pendant: Elle a travaillé à Londres pendant trois ans."
+      "explanation": "For a finished action lasting three years, use pendant: Elle a travaillé à Londres pendant trois ans.",
+      "mistakes": [
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis would say she is still working in London. The sentence says the job is over."
+        },
+        {
+          "answers": [
+            "pour"
+          ],
+          "why": "Pour gives the planned length of a trip or stay, with partir, aller or venir. This job is finished, and you are simply giving its length."
+        },
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a trois ans means three years ago, the moment something happened, not how long it went on."
+        },
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans trois ans points three years into the future, which clashes with the passé composé."
+        }
+      ],
+      "row": "pendant"
     },
     {
       "id": "time-expressions-pendant-translate",
@@ -283,7 +1055,34 @@
           "answer": "Nous avons regardé la télévision deux heures.",
           "message": "French can also drop the preposition here, but this exercise practises pendant: pendant deux heures."
         }
-      ]
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nous avons regardé la télé depuis deux heures."
+          ],
+          "why": "Depuis deux heures would mean the television is still on and has been for two hours."
+        },
+        {
+          "answers": [
+            "Nous avons regardé la télé pour deux heures."
+          ],
+          "why": "Pour is the planned length of a stay after partir, aller or venir. English “for” with a finished action is a different word in French."
+        },
+        {
+          "answers": [
+            "Nous regardons la télé pendant deux heures."
+          ],
+          "why": "The preposition is right, but the present tense makes it a habit or a plan. The watching is over, so use the passé composé."
+        },
+        {
+          "answers": [
+            "Nous avons regardé la télé il y a deux heures."
+          ],
+          "why": "Il y a deux heures says when the watching happened, two hours back, not how long it lasted."
+        }
+      ],
+      "row": "pendant"
     },
     {
       "id": "time-expressions-pendant-repair",
@@ -296,7 +1095,34 @@
       ],
       "hint": "Depuis is only for something still going on.",
       "feedback": "The trip has ended, so change the word before un mois.",
-      "explanation": "A finished action with its length takes pendant: Il a voyagé pendant un mois en Asie."
+      "explanation": "A finished action with its length takes pendant: Il a voyagé pendant un mois en Asie.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a voyagé depuis un mois en Asie."
+          ],
+          "why": "That is the sentence unchanged. Depuis only works for something still going on, and this trip has ended."
+        },
+        {
+          "answers": [
+            "Il voyage depuis un mois en Asie."
+          ],
+          "why": "This fixes the sentence the other way round: it now says he is still travelling. The instruction says the trip is over, so the verb stays in the passé composé."
+        },
+        {
+          "answers": [
+            "Il a voyagé il y a un mois en Asie."
+          ],
+          "why": "Il y a un mois says he travelled a month ago, not that the travelling lasted a month."
+        },
+        {
+          "answers": [
+            "Il a voyagé pour un mois en Asie."
+          ],
+          "why": "Pour gives a planned length before the trip starts, after partir, aller or venir. This journey is already finished."
+        }
+      ],
+      "row": "pendant"
     },
     {
       "id": "time-expressions-pendant-build",
@@ -322,7 +1148,16 @@
           "answer": "J’ai attendu vingt minutes.",
           "message": "French can also drop the preposition here, but this exercise practises pendant: J’ai attendu pendant vingt minutes."
         }
-      ]
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai attendu dans vingt minutes."
+          ],
+          "why": "Dans + a length counts forward from now, so the waiting would still be ahead. It is already over."
+        }
+      ],
+      "row": "pendant"
     },
     {
       "id": "time-expressions-pour-choose",
@@ -340,7 +1175,22 @@
       ],
       "hint": "You are talking about the planned length of a trip.",
       "feedback": "The trip has not started yet, so it is not still going on and it is not in the past.",
-      "explanation": "After partir, pour gives the planned length of the stay: Je pars à Rome pour une semaine."
+      "explanation": "After partir, pour gives the planned length of the stay: Je pars à Rome pour une semaine.",
+      "mistakes": [
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis + present says something began earlier and is still true. The trip has not started yet."
+        },
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a une semaine means a week ago, a finished moment in the past. The journey is ahead."
+        }
+      ],
+      "row": "pour"
     },
     {
       "id": "time-expressions-pour-complete",
@@ -359,7 +1209,34 @@
       ],
       "hint": "The visit is planned; you give how long it will last.",
       "feedback": "With venir, the planned length of a stay takes a special preposition.",
-      "explanation": "With venir, pour gives the planned length of the visit: Ils viennent chez nous pour trois jours."
+      "explanation": "With venir, pour gives the planned length of the visit: Ils viennent chez nous pour trois jours.",
+      "mistakes": [
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis trois jours would mean they arrived three days ago and are still here. The visit is still to come."
+        },
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans trois jours says when they arrive, three days from now, not how long they stay."
+        },
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a trois jours means three days ago; nothing has happened yet."
+        },
+        {
+          "answers": [
+            "en"
+          ],
+          "why": "En trois jours is the time a task needs to be completed, not the length of a visit."
+        }
+      ],
+      "row": "pour"
     },
     {
       "id": "time-expressions-pour-translate",
@@ -391,7 +1268,34 @@
       ],
       "hint": "Use aller or partir in the present, then the planned length.",
       "feedback": "Think about en before a feminine country, and the word for a planned duration.",
-      "explanation": "The trip is planned, so its length takes pour: Je vais en Espagne pour dix jours."
+      "explanation": "The trip is planned, so its length takes pour: Je vais en Espagne pour dix jours.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je vais en Espagne depuis dix jours."
+          ],
+          "why": "Depuis dix jours would mean you are already there and have been for ten days."
+        },
+        {
+          "answers": [
+            "Je vais en Espagne dans dix jours."
+          ],
+          "why": "Dans dix jours says when you leave, ten days from now, not how long you stay."
+        },
+        {
+          "answers": [
+            "Je vais en Espagne il y a dix jours."
+          ],
+          "why": "Il y a dix jours points ten days back into the past, but the trip is ahead."
+        },
+        {
+          "answers": [
+            "Je vais à Espagne pour dix jours."
+          ],
+          "why": "Espagne is a feminine country, so it does not take à. The time expression was fine."
+        }
+      ],
+      "row": "pour"
     },
     {
       "id": "time-expressions-pour-repair",
@@ -410,7 +1314,28 @@
       ],
       "hint": "The trip has not started yet.",
       "feedback": "Depuis is for something already going on. Use the word for a planned length.",
-      "explanation": "A planned length after partir takes pour: Elle part demain pour un mois."
+      "explanation": "A planned length after partir takes pour: Elle part demain pour un mois.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle part demain depuis un mois."
+          ],
+          "why": "That is the sentence unchanged. Depuis is for something already running, and she has not left yet."
+        },
+        {
+          "answers": [
+            "Elle part demain dans un mois."
+          ],
+          "why": "Dans un mois would say she leaves in a month, which contradicts demain, and it says nothing about the length of the stay."
+        },
+        {
+          "answers": [
+            "Elle part demain il y a un mois."
+          ],
+          "why": "Il y a un mois points a month back into the past; the departure is tomorrow."
+        }
+      ],
+      "row": "pour"
     },
     {
       "id": "time-expressions-pour-build",
@@ -436,7 +1361,16 @@
           "answer": "Nous partons deux semaines.",
           "message": "French can also drop the preposition here, but this exercise practises pour: Nous partons pour deux semaines."
         }
-      ]
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nous partons depuis deux semaines."
+          ],
+          "why": "Depuis deux semaines would mean the leaving started a fortnight ago and is still going on."
+        }
+      ],
+      "row": "pour"
     },
     {
       "id": "time-expressions-dans-choose-1",
@@ -454,7 +1388,22 @@
       ],
       "hint": "You say when something will happen, counting from now.",
       "feedback": "One option means the time something takes, and one means ago.",
-      "explanation": "Dans + time means in that much time from now: Le train part dans dix minutes."
+      "explanation": "Dans + time means in that much time from now: Le train part dans dix minutes.",
+      "mistakes": [
+        {
+          "answers": [
+            "en"
+          ],
+          "why": "En dix minutes gives the time an action needs to be completed: the train would take ten minutes to leave. You are giving the moment of departure, counted from now."
+        },
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a dix minutes means ten minutes ago. The train has not left yet."
+        }
+      ],
+      "row": "dans"
     },
     {
       "id": "time-expressions-dans-choose-2",
@@ -472,7 +1421,22 @@
       ],
       "hint": "The speaker will arrive five minutes from now.",
       "feedback": "You are saying when it will happen, not how long ago or for how long.",
-      "explanation": "Dans cinq minutes means five minutes from now: Je suis là dans cinq minutes."
+      "explanation": "Dans cinq minutes means five minutes from now: Je suis là dans cinq minutes.",
+      "mistakes": [
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a cinq minutes would say he was already there five minutes ago. He is answering about the next few minutes."
+        },
+        {
+          "answers": [
+            "pendant"
+          ],
+          "why": "Pendant cinq minutes gives a length: being there for five minutes and then going. The question is when he arrives."
+        }
+      ],
+      "row": "dans"
     },
     {
       "id": "time-expressions-dans-complete",
@@ -485,7 +1449,34 @@
       ],
       "hint": "Count from today to the start of the holiday.",
       "feedback": "Not the length of the holiday: the moment it starts, counted from now.",
-      "explanation": "Dans deux jours means two days from now."
+      "explanation": "Dans deux jours means two days from now.",
+      "mistakes": [
+        {
+          "answers": [
+            "pendant"
+          ],
+          "why": "Pendant deux jours gives the length of the holiday, not the moment it starts."
+        },
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis deux jours would mean the holiday began two days ago and is still running."
+        },
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a deux jours means two days ago, in the past. The departure is ahead."
+        },
+        {
+          "answers": [
+            "en"
+          ],
+          "why": "En deux jours is the time a job needs to be finished, as in painting a room in two days."
+        }
+      ],
+      "row": "dans"
     },
     {
       "id": "time-expressions-dans-translate",
@@ -500,7 +1491,28 @@
       ],
       "hint": "In here means five minutes from now.",
       "feedback": "Choose the preposition that counts forward from now.",
-      "explanation": "In five minutes from now is dans cinq minutes."
+      "explanation": "In five minutes from now is dans cinq minutes.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le film commence en cinq minutes."
+          ],
+          "why": "En cinq minutes would mean the film needs five minutes to get started. The five minutes are the wait before it begins."
+        },
+        {
+          "answers": [
+            "Le film commence pendant cinq minutes."
+          ],
+          "why": "Pendant cinq minutes says the starting lasts five minutes, which makes no sense."
+        },
+        {
+          "answers": [
+            "Le film commence il y a cinq minutes."
+          ],
+          "why": "Il y a cinq minutes points five minutes back; the film has not started yet."
+        }
+      ],
+      "row": "dans"
     },
     {
       "id": "time-expressions-dans-repair",
@@ -513,7 +1525,34 @@
       ],
       "hint": "En gives the time something takes, not when it happens.",
       "feedback": "The call will happen one hour from now.",
-      "explanation": "One hour from now is dans une heure. En une heure would mean it takes you one hour to make the call."
+      "explanation": "One hour from now is dans une heure. En une heure would mean it takes you one hour to make the call.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je t’appelle en une heure."
+          ],
+          "why": "That is the sentence unchanged: en une heure means the phone call itself takes an hour. You mean the wait before the call."
+        },
+        {
+          "answers": [
+            "Je t’appelle pendant une heure."
+          ],
+          "why": "Pendant une heure says you will talk for an hour, not when you will ring."
+        },
+        {
+          "answers": [
+            "Je t’appelle il y a une heure."
+          ],
+          "why": "Il y a une heure points an hour back into the past, but the call has not happened."
+        },
+        {
+          "answers": [
+            "Je t’appelle depuis une heure."
+          ],
+          "why": "Depuis une heure would mean you have been ringing for an hour already."
+        }
+      ],
+      "row": "dans"
     },
     {
       "id": "time-expressions-dans-rewrite",
@@ -528,7 +1567,34 @@
       ],
       "hint": "Change the verb to a present or future form and change the time expression.",
       "feedback": "Il y a looks back. Use the preposition that counts forward from now.",
-      "explanation": "Two hours from now is dans deux heures, with a present, futur proche or future verb."
+      "explanation": "Two hours from now is dans deux heures, with a present, futur proche or future verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il part il y a deux heures."
+          ],
+          "why": "The verb now points forward, but il y a still measures back into the past; the two clash."
+        },
+        {
+          "answers": [
+            "Il est parti dans deux heures."
+          ],
+          "why": "The time expression is right, but the passé composé says he has already gone. A departure ahead of us needs a present or future verb."
+        },
+        {
+          "answers": [
+            "Il part depuis deux heures."
+          ],
+          "why": "Depuis deux heures would mean he has been leaving for two hours without stopping."
+        },
+        {
+          "answers": [
+            "Il part en deux heures."
+          ],
+          "why": "En deux heures gives the time the departure itself would take, not the wait before it."
+        }
+      ],
+      "row": "dans"
     },
     {
       "id": "time-expressions-en-choose",
@@ -546,7 +1612,22 @@
       ],
       "hint": "You say how long it took to finish.",
       "feedback": "Not the moment something will happen, and not something still going on.",
-      "explanation": "En + time gives the time an action took: J’ai fini ce livre en trois jours."
+      "explanation": "En + time gives the time an action took: J’ai fini ce livre en trois jours.",
+      "mistakes": [
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans trois jours counts forward from now, so the book would still be unread. The passé composé shows it is finished."
+        },
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis trois jours would mean the reading started three days ago and is still going on."
+        }
+      ],
+      "row": "en"
     },
     {
       "id": "time-expressions-en-complete",
@@ -559,7 +1640,34 @@
       ],
       "hint": "You say how long the job took.",
       "feedback": "Use the preposition for the time needed to complete something.",
-      "explanation": "En une heure means it took one hour to finish."
+      "explanation": "En une heure means it took one hour to finish.",
+      "mistakes": [
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans une heure means one hour from now, so the housework would still be waiting."
+        },
+        {
+          "answers": [
+            "pendant"
+          ],
+          "why": "Pendant une heure says how long they spent at it, without saying the job was completed within the hour."
+        },
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis une heure would mean they started an hour ago and are still cleaning."
+        },
+        {
+          "answers": [
+            "il y a"
+          ],
+          "why": "Il y a une heure says when they did it, one hour back, not how long it took."
+        }
+      ],
+      "row": "en"
     },
     {
       "id": "time-expressions-en-translate",
@@ -573,7 +1681,34 @@
       ],
       "hint": "In here means the time it took, not a time from now.",
       "feedback": "Use the passé composé and the preposition for time taken.",
-      "explanation": "The time needed to finish takes en: en vingt minutes."
+      "explanation": "The time needed to finish takes en: en vingt minutes.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle a fait les devoirs dans vingt minutes."
+          ],
+          "why": "Dans vingt minutes counts forward from now, so the homework would still be undone."
+        },
+        {
+          "answers": [
+            "Elle a fait les devoirs pendant vingt minutes."
+          ],
+          "why": "Pendant vingt minutes says she spent twenty minutes on it, not that it was finished inside them."
+        },
+        {
+          "answers": [
+            "Elle fait les devoirs en vingt minutes."
+          ],
+          "why": "The preposition is right, but the present tense makes it a habit. The homework is done, so use the passé composé."
+        },
+        {
+          "answers": [
+            "Elle a fait les devoirs depuis vingt minutes."
+          ],
+          "why": "Depuis vingt minutes would mean she started twenty minutes ago and is still writing."
+        }
+      ],
+      "row": "en"
     },
     {
       "id": "time-expressions-en-repair",
@@ -586,7 +1721,34 @@
       ],
       "hint": "Dans counts forward from now.",
       "feedback": "The job is done. Use the preposition for time taken.",
-      "explanation": "The time a finished task took is given with en: en deux heures."
+      "explanation": "The time a finished task took is given with en: en deux heures.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a peint la chambre dans deux heures."
+          ],
+          "why": "That is the sentence unchanged: dans deux heures counts forward from now, and the painting is already done."
+        },
+        {
+          "answers": [
+            "Il a peint la chambre pendant deux heures."
+          ],
+          "why": "Pendant deux heures says he spent two hours painting, without saying the room was finished."
+        },
+        {
+          "answers": [
+            "Il a peint la chambre depuis deux heures."
+          ],
+          "why": "Depuis deux heures would mean he began two hours ago and is still painting."
+        },
+        {
+          "answers": [
+            "Il peint la chambre dans deux heures."
+          ],
+          "why": "This changes the verb instead of the preposition, and now the painting is still to come. The tense was already right."
+        }
+      ],
+      "row": "en"
     },
     {
       "id": "time-expressions-dates-choose-1",
@@ -604,7 +1766,22 @@
       ],
       "hint": "Months take the same preposition as years.",
       "feedback": "Au is only for one season. Dans is not used before a month name.",
-      "explanation": "In a month is en: en juillet, en janvier."
+      "explanation": "In a month is en: en juillet, en janvier.",
+      "mistakes": [
+        {
+          "answers": [
+            "au"
+          ],
+          "why": "Au before a time word belongs to one single season, not to the name of a month."
+        },
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans + a length counts forward from now (dans trois jours). It never goes before the name of a month."
+        }
+      ],
+      "row": "a month"
     },
     {
       "id": "time-expressions-dates-choose-2",
@@ -622,7 +1799,22 @@
       ],
       "hint": "Printemps is the only season that starts with a consonant.",
       "feedback": "Three seasons take en. The one starting with a consonant is different.",
-      "explanation": "Spring is the exception: au printemps, but en été, en automne, en hiver."
+      "explanation": "Spring is the exception: au printemps, but en été, en automne, en hiver.",
+      "mistakes": [
+        {
+          "answers": [
+            "en"
+          ],
+          "why": "En covers months, years and the three seasons that start with a vowel sound. Printemps starts with a consonant and behaves differently."
+        },
+        {
+          "answers": [
+            "à"
+          ],
+          "why": "À on its own goes before a clock time or a place (à midi, à Paris), not before a season."
+        }
+      ],
+      "row": "printemps"
     },
     {
       "id": "time-expressions-dates-complete-1",
@@ -635,7 +1827,28 @@
       ],
       "hint": "Hiver starts with a vowel sound.",
       "feedback": "Seasons starting with a vowel sound take the same preposition as months.",
-      "explanation": "In winter is en hiver, like en été and en automne."
+      "explanation": "In winter is en hiver, like en été and en automne.",
+      "mistakes": [
+        {
+          "answers": [
+            "au"
+          ],
+          "why": "Au goes with the one season that begins with a consonant sound. Hiver begins with a vowel sound."
+        },
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans + a length counts forward from now; it does not name a season."
+        },
+        {
+          "answers": [
+            "à"
+          ],
+          "why": "À alone goes before a clock time or a place, not before a season."
+        }
+      ],
+      "row": "été / automne / hiver"
     },
     {
       "id": "time-expressions-dates-complete-2",
@@ -648,7 +1861,34 @@
       ],
       "hint": "Years take the same preposition as months.",
       "feedback": "Write the one short word used before a year.",
-      "explanation": "In a year is en: en 1998, en 2020."
+      "explanation": "In a year is en: en 1998, en 2020.",
+      "mistakes": [
+        {
+          "answers": [
+            "dans"
+          ],
+          "why": "Dans + a length counts forward from now, as in dans deux ans. It cannot introduce a year."
+        },
+        {
+          "answers": [
+            "au"
+          ],
+          "why": "Au is used before one season only, never before a year."
+        },
+        {
+          "answers": [
+            "à"
+          ],
+          "why": "À goes before a clock time or a place, not before a year."
+        },
+        {
+          "answers": [
+            "depuis"
+          ],
+          "why": "Depuis 1998 would mean “since 1998, right up to now”, but a birth happens at one moment."
+        }
+      ],
+      "row": "a year"
     },
     {
       "id": "time-expressions-dates-translate",
@@ -666,7 +1906,28 @@
       ],
       "hint": "Automne starts with a vowel sound.",
       "feedback": "Use the impersonal il pleut and the preposition for autumn.",
-      "explanation": "In autumn is en automne, like en été and en hiver."
+      "explanation": "In autumn is en automne, like en été and en hiver.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il pleut beaucoup au automne."
+          ],
+          "why": "Au never stands before a vowel sound, and this season is not the one that takes au anyway."
+        },
+        {
+          "answers": [
+            "Il pleut beaucoup dans l’automne."
+          ],
+          "why": "Dans + a length counts forward from now; French does not use it to name a season."
+        },
+        {
+          "answers": [
+            "Il pleut beaucoup pendant automne."
+          ],
+          "why": "Pendant gives a length of time and would need an article (pendant l’automne). Naming the season simply takes a preposition of its own."
+        }
+      ],
+      "row": "été / automne / hiver"
     },
     {
       "id": "time-expressions-dates-repair",
@@ -679,7 +1940,28 @@
       ],
       "hint": "Printemps is the one season that works differently.",
       "feedback": "Printemps starts with a consonant.",
-      "explanation": "Spring takes au: au printemps. The other seasons take en."
+      "explanation": "Spring takes au: au printemps. The other seasons take en.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous partons en printemps."
+          ],
+          "why": "That is the sentence unchanged. Printemps is the season that does not take en, unlike été, automne and hiver."
+        },
+        {
+          "answers": [
+            "Nous partons à printemps."
+          ],
+          "why": "À never stands alone before a season; it also needs an article with a noun like this."
+        },
+        {
+          "answers": [
+            "Nous partons dans le printemps."
+          ],
+          "why": "Dans + a length counts forward from now and is not used to name a season."
+        }
+      ],
+      "row": "printemps"
     },
     {
       "id": "time-expressions-dates-rewrite",
@@ -692,7 +1974,28 @@
       ],
       "hint": "Months and most seasons take en, but not this season.",
       "feedback": "Printemps starts with a consonant.",
-      "explanation": "Spring is the exception: au printemps."
+      "explanation": "Spring is the exception: au printemps.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je pars en printemps."
+          ],
+          "why": "The season is right, but en covers months, years and the seasons that begin with a vowel sound. Printemps is the exception."
+        },
+        {
+          "answers": [
+            "Je pars à printemps."
+          ],
+          "why": "À does not stand before a season name, and it would need an article with a noun like this."
+        },
+        {
+          "answers": [
+            "Je pars dans le printemps."
+          ],
+          "why": "Dans + a length counts forward from now; it does not name the season something happens in."
+        }
+      ],
+      "row": "printemps"
     },
     {
       "id": "time-expressions-days-choose-1",
@@ -710,7 +2013,22 @@
       ],
       "hint": "A habit on a given day uses an article before the day.",
       "feedback": "Ce samedi means one Saturday only.",
-      "explanation": "Le samedi means every Saturday: Je fais du sport le samedi."
+      "explanation": "Le samedi means every Saturday: Je fais du sport le samedi.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce samedi points at one particular Saturday, the coming one. The sentence is about a weekly habit."
+        },
+        {
+          "answers": [
+            "au"
+          ],
+          "why": "Au goes before a season (au printemps) or a place, never before a day of the week."
+        }
+      ],
+      "row": "le lundi"
     },
     {
       "id": "time-expressions-days-choose-2",
@@ -728,7 +2046,17 @@
       ],
       "hint": "One particular day takes no article.",
       "feedback": "An article before the day, or a plural, means a regular habit.",
-      "explanation": "Vendredi alone means this coming Friday. Le vendredi and les vendredis mean every Friday."
+      "explanation": "Vendredi alone means this coming Friday. Le vendredi and les vendredis mean every Friday.",
+      "mistakes": [
+        {
+          "answers": [
+            "le vendredi",
+            "les vendredis"
+          ],
+          "why": "An article before the day, and the plural, both turn it into a habit: every Friday, week after week. Here you are fixing one meeting, the coming one."
+        }
+      ],
+      "row": "lundi"
     },
     {
       "id": "time-expressions-days-complete",
@@ -741,7 +2069,34 @@
       ],
       "hint": "A regular habit on a day takes an article before the day.",
       "feedback": "One small word makes dimanche mean every Sunday.",
-      "explanation": "Le dimanche means every Sunday. Dimanche alone would mean this Sunday."
+      "explanation": "Le dimanche means every Sunday. Dimanche alone would mean this Sunday.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce"
+          ],
+          "why": "Ce dimanche points at one particular Sunday, the nearest one, not at a weekly habit."
+        },
+        {
+          "answers": [
+            "Les"
+          ],
+          "why": "Les cannot stand before a singular day: the plural form needs the day in the plural too (les dimanches)."
+        },
+        {
+          "answers": [
+            "Tous les"
+          ],
+          "why": "With tous les the day goes in the plural (tous les dimanches), so it does not fit this blank."
+        },
+        {
+          "answers": [
+            "Au"
+          ],
+          "why": "Au goes before a season or a place. Days of the week never take au."
+        }
+      ],
+      "row": "le lundi"
     },
     {
       "id": "time-expressions-days-translate",
@@ -757,7 +2112,28 @@
       ],
       "hint": "On Mondays means every Monday.",
       "feedback": "French does not use a preposition before a day. Use an article instead.",
-      "explanation": "Every Monday is le lundi: Le musée est fermé le lundi."
+      "explanation": "Every Monday is le lundi: Le musée est fermé le lundi.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le musée est fermé sur lundi."
+          ],
+          "why": "Sur is a calque of English “on”. French puts no preposition at all before a day of the week."
+        },
+        {
+          "answers": [
+            "Le musée est fermé lundi."
+          ],
+          "why": "A bare day means one particular Monday, the coming one. The museum shuts every week."
+        },
+        {
+          "answers": [
+            "Le musée est fermé en lundi."
+          ],
+          "why": "En goes with months, years and seasons, never with a day of the week."
+        }
+      ],
+      "row": "le lundi"
     },
     {
       "id": "time-expressions-days-repair",
@@ -772,7 +2148,34 @@
       ],
       "hint": "Without an article, mercredi means one Wednesday only.",
       "feedback": "A regular habit needs a small word before the day.",
-      "explanation": "Le mercredi means every Wednesday. Mercredi alone means this Wednesday."
+      "explanation": "Le mercredi means every Wednesday. Mercredi alone means this Wednesday.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle a cours de piano mercredi."
+          ],
+          "why": "That is the sentence unchanged, and a bare day means one particular Wednesday. The lessons come back every week."
+        },
+        {
+          "answers": [
+            "Elle a cours de piano en mercredi."
+          ],
+          "why": "En goes with months, years and seasons, never with a day of the week."
+        },
+        {
+          "answers": [
+            "Elle a cours de piano les mercredi."
+          ],
+          "why": "With les the day must be plural (les mercredis); the singular does not work here."
+        },
+        {
+          "answers": [
+            "Elle a cours de piano ce mercredi."
+          ],
+          "why": "Ce mercredi picks out one particular Wednesday, the nearest one, instead of a weekly habit."
+        }
+      ],
+      "row": "le lundi"
     },
     {
       "id": "time-expressions-days-rewrite",
@@ -792,7 +2195,34 @@
       ],
       "hint": "A day on its own means one particular day. Something small goes before it.",
       "feedback": "A day without an article means one particular day.",
-      "explanation": "Le mardi means every Tuesday: Le mardi, je travaille à la maison."
+      "explanation": "Le mardi means every Tuesday: Le mardi, je travaille à la maison.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les mardi, je travaille à la maison."
+          ],
+          "why": "With les the day must be plural (les mardis); the singular does not work."
+        },
+        {
+          "answers": [
+            "Ce mardi, je travaille à la maison."
+          ],
+          "why": "Ce mardi points at one particular Tuesday, the coming one, which is what you are trying to move away from."
+        },
+        {
+          "answers": [
+            "Tous les mardi, je travaille à la maison."
+          ],
+          "why": "After tous les the day goes in the plural; the singular leaves the phrase incomplete."
+        },
+        {
+          "answers": [
+            "En mardi, je travaille à la maison."
+          ],
+          "why": "En goes with months, years and seasons, never with a day of the week."
+        }
+      ],
+      "row": "le lundi"
     }
   ]
 }

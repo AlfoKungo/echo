@@ -634,15 +634,27 @@ function renderGrammar() {
   const list = (units || []).map((unit, index) => `<section class="unit" aria-labelledby="unit-${esc(unit.id)}"><div class="unit-head"><div class="unit-copy"><p class="unit-kicker">Unit ${index + 1}</p><h2 id="unit-${esc(unit.id)}">${esc(unit.title)}</h2><p>${esc(unit.description)}</p></div><button class="secondary unit-test" data-scope="unit:${esc(unit.id)}" ${locked() ? 'disabled' : ''}>${unit.hasActiveTest ? 'Continue unit test' : `Unit test · ${unit.testLength}`}${unit.test.best ? `<small>best ${unit.test.best.score}/${unit.test.best.total}</small>` : ''}</button></div><div class="topic-list">${unit.topics.map(topicRowHTML).join('')}</div></section>`).join('');
   main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}</div><h1>Grammar & sentences</h1><p class="subtitle">Practise a topic, then test yourself. Each unit ends with a test across its topics.</p>${units ? list : loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : ''}</section>`;
 }
-// The example holds two or three sentences separated by " · "; each gets its own line.
-function exampleHTML(topic) { return `<div class="rule-example" lang="fr">${topic.example.split(' · ').map((line) => `<p>${frEsc(line)}</p>`).join('')}</div>`; }
+// A guide section teaches one point: a table of forms (a highlighted row holds an answer), the steps for choosing,
+// examples and traps. French and English share the cells, so every cell keeps French spacing.
+function guideTableHTML(table, row = null) {
+  return `<div class="guide-table-wrap"><table class="guide-table"><thead><tr>${table.columns.map((column) => `<th scope="col">${esc(column)}</th>`).join('')}</tr></thead><tbody>${table.rows.map((cells) => `<tr${cells[0] === row ? ' class="hit"' : ''}>${cells.map((cell, index) => index ? `<td>${frEsc(cell)}</td>` : `<th scope="row">${frEsc(cell)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+function guideSectionHTML(section, focus = false) {
+  const steps = section.steps ? `<p class="guide-label">How to choose</p><ol class="guide-steps">${section.steps.map((step) => `<li>${frEsc(step)}</li>`).join('')}</ol>` : '';
+  const examples = `<div class="guide-examples">${section.examples.map((example) => `<p><span lang="fr">${frEsc(example.fr)}</span><span class="en">${esc(example.en)}</span></p>`).join('')}</div>`;
+  const watch = section.watch ? `<p class="guide-label">Watch out</p><ul class="guide-watch">${section.watch.map((item) => `<li>${frEsc(item)}</li>`).join('')}</ul>` : '';
+  return `<section class="guide-section${focus ? ' focus' : ''}" id="guide-${esc(section.id)}"><h3>${esc(section.title)}</h3>${section.text ? `<p>${frEsc(section.text)}</p>` : ''}${section.table ? guideTableHTML(section.table) : ''}${steps}${examples}${watch}</section>`;
+}
+function guideHTML(guide, focusId = '') {
+  return `<div class="guide"><p class="guide-summary">${frEsc(guide.summary)}</p>${guide.sections.map((section) => guideSectionHTML(section, section.id === focusId)).join('')}</div>`;
+}
 function renderTopic() {
   const topic = topicPage?.id === topicId ? topicPage : units?.flatMap((unit) => unit.topics).find((entry) => entry.id === topicId);
   if (!topic) { main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div>${loading ? '<div class="loading-state" role="status">Opening the topic…</div>' : ''}</section>`; return; }
   const { progress, test } = topic;
   const practised = progress.seen ? `${progress.seen} of ${topic.exerciseCount} questions practised · ${progress.independent} on your own · ${progress.needsReview} to revisit` : `${topic.exerciseCount} questions to practise`;
   const history = test.taken ? `<div class="history-row"><span>Best</span><strong>${test.best.score} / ${test.best.total}</strong></div><div class="history-row"><span>Last · ${esc(dateLabel(test.last.finishedAt))}</span><strong>${test.last.score} / ${test.last.total}</strong></div><div class="history-row"><span>Taken</span><strong>${test.taken} ${test.taken === 1 ? 'time' : 'times'}</strong></div>` : `<p class="caption">No tests yet. A test asks ${topic.testLength} questions with no help and one try each; anything you miss comes back first when you practise.</p>`;
-  main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div><p class="topic-kicker" lang="fr" aria-hidden="true">${esc(topic.mark)}</p><div class="topic-heading"><h1>${esc(topic.title)}</h1><span class="level-tag">${esc(topic.level)}</span></div><p class="subtitle">${esc(topic.description)}</p><div class="topic-actions"><button class="primary" data-scope="${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveSession ? 'Continue your round' : `Practise · ${topic.practiceLength} questions`}</button><button class="secondary" data-scope="test:${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveTest ? 'Continue your test' : `Take the test · ${topic.testLength} questions`}</button></div><p class="caption topic-meta">${practised}</p><section class="rule-card" aria-labelledby="rule-heading"><h2 id="rule-heading">The rule</h2><p>${esc(topic.rule)}</p>${exampleHTML(topic)}${topic.aside ? `<p>${esc(topic.aside)}</p>` : ''}</section><section class="test-history" aria-labelledby="history-heading"><h2 id="history-heading">Your tests</h2>${history}</section></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div><p class="topic-kicker" lang="fr" aria-hidden="true">${esc(topic.mark)}</p><div class="topic-heading"><h1>${esc(topic.title)}</h1><span class="level-tag">${esc(topic.level)}</span></div><p class="subtitle">${esc(topic.description)}</p><div class="topic-actions"><button class="primary" data-scope="${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveSession ? 'Continue your round' : `Practise · ${topic.practiceLength} questions`}</button><button class="secondary" data-scope="test:${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveTest ? 'Continue your test' : `Take the test · ${topic.testLength} questions`}</button></div><p class="caption topic-meta">${practised}</p><section class="rule-card" aria-labelledby="rule-heading"><h2 id="rule-heading">The rule</h2>${topic.guide ? guideHTML(topic.guide) : '<p>Opening the rule…</p>'}</section><section class="test-history" aria-labelledby="history-heading"><h2 id="history-heading">Your tests</h2>${history}</section></section>`;
 }
 // Complete (and most choose) sources hold a ____ blank: show the whole sentence rather than the missing word alone.
 function completed(type, source, text) {
@@ -672,6 +684,8 @@ function answerHTML(current, disabled) {
   const placeholder = ({ complete: 'Type the missing word…', translate: 'Write it in French…' })[exercise.type] || 'Write your sentence…';
   return `<label class="answer-label" for="answer">${label}</label><textarea id="answer" lang="fr" autocomplete="off" autocapitalize="sentences" spellcheck="false" placeholder="${placeholder}" ${disabled ? 'readonly' : ''}>${esc(draft)}</textarea>`;
 }
+// After a miss: what you gave against the answer, why that answer is wrong (when it was anticipated), the steps that
+// solve this kind of question, and once settled the guide table with the answer's row marked.
 function feedbackHTML(current, test) {
   const feedback = current.feedback;
   if (!feedback) return '';
@@ -681,9 +695,20 @@ function feedbackHTML(current, test) {
     ? ({ correct: 'That’s right.', incorrect: 'Not quite.', alternative: 'Valid French, different form.' })[feedback.kind]
     : ({ correct: current.assisted || current.attempts > 1 ? 'You’ve got it.' : 'That’s right.', incorrect: 'Not quite yet.', alternative: 'Valid French, different form.', shown: 'One correct answer' })[feedback.kind];
   const answer = feedback.answer ? completed(exercise.type, exercise.source, feedback.answer) : '';
-  const model = answer && (feedback.kind === 'shown' || (test && feedback.kind !== 'correct')) ? `<p class="model-answer" lang="fr">${esc(answer)}</p>` : '';
+  const showAnswer = answer && (feedback.kind === 'shown' || (test && feedback.kind !== 'correct'));
+  const given = current.settled && feedback.kind !== 'correct' ? current.misses.at(-1) : '';
+  const compare = showAnswer && given
+    ? `<div class="fb-compare"><p><span class="fb-label">${exercise.type === 'choose' ? 'You chose' : 'You wrote'}</span><span class="fb-yours" lang="fr">${frEsc(completed(exercise.type, exercise.source, given))}</span></p><p><span class="fb-label">The answer</span><span lang="fr">${frEsc(answer)}</span></p></div>`
+    : showAnswer ? `<p class="model-answer" lang="fr">${frEsc(answer)}</p>` : '';
+  const why = feedback.why ? `<p class="fb-why">${frEsc(feedback.why)}</p>` : '';
+  // A try-again message only repeats what an anticipated mistake's why already says.
+  const message = feedback.why && !current.settled ? '' : `<p>${frEsc(feedback.message)}</p>`;
+  const independent = feedback.kind === 'correct' && current.attempts === 1 && !current.assisted;
+  const help = current.help && !independent ? current.help : null;
+  const steps = help ? `<div class="fb-steps"><p class="fb-label">${current.settled ? 'Next time' : 'How to work it out'}</p><ol>${help.steps.map((step) => `<li>${frEsc(step)}</li>`).join('')}</ol></div>` : '';
+  const table = help?.row && help.section.table ? `<div class="fb-table"><p class="fb-label">From the rule · ${esc(help.section.title)}</p>${guideTableHTML(help.section.table, help.row)}</div>` : '';
   const clip = current.settled && current.audio ? `<button class="quiet audio-line" data-action="grammar-audio" aria-label="Hear the correct French sentence">${speaker}<span>Hear it</span></button>` : '';
-  return `<div class="feedback ${tone}" role="status"><strong>${title}</strong>${feedback.note ? `<p>${esc(feedback.note)}</p>` : ''}${model}<p>${esc(feedback.message)}</p>${feedback.spelling && answer ? `<span class="minor">A spelling detail to review: <span lang="fr">${esc(answer)}</span></span>` : ''}${feedback.kind === 'shown' ? '<span class="minor">This example stays in your revisit set.</span>' : ''}${clip}${!test && !current.settled ? `<button class="quiet" data-action="show-answer" ${locked() ? 'disabled' : ''}>Show one answer instead</button>` : ''}</div>`;
+  return `<div class="feedback ${tone}" role="status"><strong>${title}</strong>${feedback.note ? `<p>${esc(feedback.note)}</p>` : ''}${compare}${why}${message}${steps}${table}${feedback.spelling && answer ? `<span class="minor">A spelling detail to review: <span lang="fr">${esc(answer)}</span></span>` : ''}${feedback.kind === 'shown' ? '<span class="minor">This example stays in your revisit set.</span>' : ''}${clip}${!test && !current.settled ? `<button class="quiet" data-action="show-answer" ${locked() ? 'disabled' : ''}>Show one answer instead</button>` : ''}</div>`;
 }
 // The question itself: instruction, prompt, answer, feedback, help and the one primary button.
 // The Grammar screens and the Practise stream both render it; only the frame around it differs.
@@ -1603,9 +1628,13 @@ function openDialog(title, body, kind) {
   dialog.innerHTML = `<div class="dialog-head"><h2 id="dialog-title">${esc(title)}</h2><button class="icon" data-action="close-dialog" aria-label="Close">×</button></div>${body}`;
   if (!dialog.open) dialog.showModal();
 }
+// The rule opens at the section that teaches the question on screen.
 function showRule() {
   const topic = grammar.topic;
-  openDialog(topic.title, `<div class="dialog-copy"><p>${esc(topic.rule)}</p>${exampleHTML(topic)}${topic.aside ? `<p>${esc(topic.aside)}</p>` : ''}</div><button class="primary dialog-action" data-action="close-dialog">Back to the sentence</button>`, 'rule');
+  if (!topic?.guide) return;
+  const focus = topic.patterns?.[grammar.session?.current?.exercise.pattern]?.section || '';
+  openDialog(topic.title, `<div class="dialog-copy">${guideHTML(topic.guide, focus)}</div><button class="primary dialog-action" data-action="close-dialog">Back to the sentence</button>`, 'rule');
+  dialog.querySelector('.guide-section.focus')?.scrollIntoView({ block: 'start' });
 }
 function openOptions() {
   if (!snapshot) return;

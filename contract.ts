@@ -80,6 +80,11 @@ export type GrammarLevel = 'A1' | 'A2' | 'B1';
 // conjugate: source is "verb · subject · tense"; answers list the form with and without the subject.
 // Typed answers that differ from an accepted answer only in accents (œ/oe included) or commas count as correct
 // with a spelling note; strictAccents keeps accents strict where the accent is the point (a/à, ou/où).
+// mistakes: wrong answers a learner is likely to give, each with why it is wrong. A choose exercise lists every
+// option that is not the answer; other types list the likeliest slips (another person's form, the unfixed repair
+// source, the sentence built with the distractor tile). `why` never contains the right answer, since practice
+// allows another try. row names the guide-table row (its first cell) that holds the answer, when there is one.
+export type GrammarMistake = { answers: string[]; why: string };
 export type GrammarExercise = {
   id: string;
   pattern: string;
@@ -91,11 +96,28 @@ export type GrammarExercise = {
   answers: string[];
   spellingAnswers?: string[];
   alternatives?: { answer: string; message: string; accepted?: boolean }[];
+  mistakes: GrammarMistake[];
+  row?: string;
   strictAccents?: boolean;
   hint: string;
   feedback: string;
   explanation: string;
 };
+// A topic's guide: what the topic is for, then sections that each teach one point with a table of forms, steps
+// for choosing, examples and traps. A table's first column labels its rows, and labels are unique in the table.
+export type GrammarGuideTable = { columns: string[]; rows: string[][] };
+export type GrammarGuideSection = {
+  id: string;
+  title: string;
+  text?: string;
+  table?: GrammarGuideTable;
+  steps?: string[];
+  examples: { fr: string; en: string }[];
+  watch?: string[];
+};
+export type GrammarGuide = { summary: string; sections: GrammarGuideSection[] };
+// Every pattern the exercises use is taught in one guide section, with the steps that solve any of its questions.
+export type GrammarPatternHelp = { section: string; steps: string[] };
 export type GrammarTopicContent = {
   id: string;
   unit: string;
@@ -103,9 +125,8 @@ export type GrammarTopicContent = {
   title: string;
   description: string;
   mark: string;
-  rule: string;
-  example: string;
-  aside: string;
+  guide: GrammarGuide;
+  patterns: Record<string, GrammarPatternHelp>;
   exercises: GrammarExercise[];
 };
 export type GrammarUnitContent = { id: string; title: string; description: string; topics: string[] };
@@ -113,7 +134,8 @@ export type GrammarProgress = { seen: number; independent: number; needsReview: 
 export type GrammarScore = { score: number; total: number };
 // taken counts finished tests of one scope; best is the highest score/total ratio, last the most recent finish.
 export type GrammarTestSummary = { taken: number; best: GrammarScore | null; last: (GrammarScore & { finishedAt: string }) | null };
-export type GrammarTopic = Omit<GrammarTopicContent, 'exercises'> & {
+// guide and patterns come with a topic's own state (GET api/grammar/state), not with the catalog.
+export type GrammarTopic = Omit<GrammarTopicContent, 'exercises' | 'guide' | 'patterns'> & Partial<Pick<GrammarTopicContent, 'guide' | 'patterns'>> & {
   exerciseCount: number;
   practiceLength: number;
   testLength: number;
@@ -131,21 +153,27 @@ export type GrammarUnitView = Omit<GrammarUnitContent, 'topics'> & {
 export type GrammarMode = 'practice' | 'test';
 export type GrammarScopeKind = 'practice' | 'topic-test' | 'unit-test';
 // In a test, answer and explanation are always present; note carries an alternative's message.
+// why explains the checked answer when it is one of the exercise's listed mistakes.
 export type GrammarFeedback = {
   kind: 'correct' | 'incorrect' | 'alternative' | 'shown';
   message: string;
   answer?: string;
   spelling?: boolean;
   note?: string;
+  why?: string;
 };
+// How to solve this kind of question, once a practice answer missed or the exercise settled: the steps and the guide
+// section that teaches it. row (the table row holding the answer) is given only once settled, since it shows the answer.
+export type GrammarHelp = { steps: string[]; section: GrammarGuideSection; row: string | null };
 export type GrammarCurrent = {
-  exercise: Pick<GrammarExercise, 'id' | 'type' | 'instruction' | 'source' | 'tokens' | 'options'> & { topicId: string; topicTitle: string };
+  exercise: Pick<GrammarExercise, 'id' | 'type' | 'instruction' | 'source' | 'tokens' | 'options' | 'pattern'> & { topicId: string; topicTitle: string };
   answer: string;
   tokenOrder: number[];
   attempts: number;
   assisted: boolean;
   hint: string | null;
   feedback: GrammarFeedback | null;
+  help: GrammarHelp | null;
   settled: boolean;
   misses: string[];
   // Set once this exercise is settled and its recording exists: audio/grammar/<exercise id>.mp3, else null.
@@ -214,7 +242,7 @@ export type GrammarMiss = { topicId: string; topicTitle: string; exerciseId: str
 // Session index is zero-based. Results include settled examples, including the current one before Next; given is the last checked text.
 // misses lists checked answers that were not accepted (a choose question marks these options).
 // Correct checks and shown answers settle once; later rule views cannot turn unaided success into assisted success.
-// Rule and exercise prose are plain text, never HTML. The example separates sentences with " · ".
+// Guide, pattern and exercise prose are plain text, never HTML.
 // Word tiles may include distractors: selected indices are unique, but using every tile is not required.
 // Complete sources (and most choose sources) use ____ for the missing text, so summaries can show the finished sentence.
 // GrammarCurrent.audio names the settled exercise's spoken French, audio/grammar/<exercise id>.mp3, when that file exists.

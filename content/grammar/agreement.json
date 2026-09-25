@@ -5,9 +5,556 @@
   "title": "Adjective agreement",
   "description": "Make the describing word match the noun.",
   "mark": "e / s",
-  "rule": "Adjectives agree with the noun’s gender and number: most add e for feminine and s for plural (petit, petite, petits, petites). An adjective that already ends in e does not change in the feminine (calme, triste) but still adds s in the plural. Some endings change in the feminine: -eux becomes -euse, -if becomes -ive, -er becomes -ère, and -en, -on, -el double the consonant (ancienne, mignonne, cruelle), as does gentil (gentille); blanc becomes blanche, long becomes longue, frais becomes fraîche. In the masculine plural, most adjectives in -al become -aux and those in -eau become -eaux, while adjectives ending in -s or -x do not change (anglais, joyeux). Most colour words that are also nouns, such as marron and orange, never change. An adjective describing a group of masculine and feminine together takes the masculine plural.",
-  "example": "Une chemise blanche. · Des chiens loyaux. · Luc et Anna sont contents.",
-  "aside": "Un marks masculine singular and une feminine singular. Des marks plural but not gender, so these exercises name it when needed. Where an adjective goes (before or after the noun) is a separate topic; keep it where it is shown.",
+  "guide": {
+    "summary": "An adjective in French copies the noun it describes: feminine or masculine, one or several. This topic gives you the endings, the irregular ones, and the cases where nothing changes at all.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "The four forms of an adjective",
+        "text": "Most adjectives build all their forms from the masculine singular: add e for the feminine, s for the plural, es for both.",
+        "table": {
+          "columns": [
+            "form",
+            "add",
+            "petit (small)"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "nothing",
+              "un petit sac"
+            ],
+            [
+              "feminine singular",
+              "+ e",
+              "une petite maison"
+            ],
+            [
+              "masculine plural",
+              "+ s",
+              "des petits sacs"
+            ],
+            [
+              "feminine plural",
+              "+ es",
+              "des petites maisons"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun the adjective describes.",
+          "Masculine or feminine? Un and le mark masculine, une and la mark feminine.",
+          "One or several? Des and les mark the plural.",
+          "Take that line of the table and add its ending."
+        ],
+        "examples": [
+          {
+            "fr": "Une voiture verte.",
+            "en": "A green car."
+          },
+          {
+            "fr": "Des chats noirs.",
+            "en": "Black cats."
+          },
+          {
+            "fr": "Des chaussures noires.",
+            "en": "Black shoes."
+          }
+        ],
+        "watch": [
+          "Des and les say plural but say nothing about gender: the exercise tells you whether the noun is masculine or feminine.",
+          "Most of these endings are silent: petit and petits sound alike, so check the spelling with your eyes, not your ear.",
+          "Where the adjective sits, before or after the noun, is another topic; leave it where the sentence puts it."
+        ]
+      },
+      {
+        "id": "already-e",
+        "title": "Adjectives that already end in e",
+        "text": "An adjective whose masculine form already ends in e does not change in the feminine. It still takes s in the plural.",
+        "table": {
+          "columns": [
+            "adjective",
+            "feminine",
+            "plural"
+          ],
+          "rows": [
+            [
+              "rouge",
+              "rouge",
+              "rouges"
+            ],
+            [
+              "jeune",
+              "jeune",
+              "jeunes"
+            ],
+            [
+              "facile",
+              "facile",
+              "faciles"
+            ],
+            [
+              "calme",
+              "calme",
+              "calmes"
+            ],
+            [
+              "triste",
+              "triste",
+              "tristes"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the last letter of the masculine form.",
+          "If it is already e, write nothing extra for a feminine noun.",
+          "Add s all the same when the noun is plural."
+        ],
+        "examples": [
+          {
+            "fr": "Ma sœur est jeune.",
+            "en": "My sister is young."
+          },
+          {
+            "fr": "Mes sœurs sont jeunes.",
+            "en": "My sisters are young."
+          }
+        ],
+        "watch": [
+          "Never write a second e: rougee, jeunee and facilee do not exist.",
+          "The plural s is still owed: mes frères sont calmes."
+        ]
+      },
+      {
+        "id": "eux-if-er",
+        "title": "-eux, -if, -er: feminines that swap the ending",
+        "text": "These three endings do not simply take an e. The whole ending changes.",
+        "table": {
+          "columns": [
+            "masculine ending",
+            "feminine ending",
+            "example"
+          ],
+          "rows": [
+            [
+              "-eux",
+              "-euse",
+              "heureux → heureuse"
+            ],
+            [
+              "-if",
+              "-ive",
+              "sportif → sportive"
+            ],
+            [
+              "-er",
+              "-ère",
+              "cher → chère"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the noun’s gender first: only a feminine noun triggers this.",
+          "Read the last letters of the masculine form.",
+          "Swap the whole ending; do not glue an e onto it.",
+          "Add s on top for a plural noun: heureuses, sportives, chères."
+        ],
+        "examples": [
+          {
+            "fr": "Léa est heureuse.",
+            "en": "Léa is happy."
+          },
+          {
+            "fr": "Ma sœur est sportive.",
+            "en": "My sister is sporty."
+          },
+          {
+            "fr": "Cette jupe est chère.",
+            "en": "This skirt is expensive."
+          }
+        ],
+        "watch": [
+          "Heureuse, not heureuxe; sportive, not sportife.",
+          "The -er feminine needs a grave accent: chère, première, dernière."
+        ]
+      },
+      {
+        "id": "doubled",
+        "title": "Endings that double their consonant",
+        "text": "Adjectives in -en, -on and -el double their last consonant before the feminine e, and so does gentil.",
+        "table": {
+          "columns": [
+            "masculine ending",
+            "feminine ending",
+            "example"
+          ],
+          "rows": [
+            [
+              "-en",
+              "-enne",
+              "italien → italienne"
+            ],
+            [
+              "-on",
+              "-onne",
+              "bon → bonne"
+            ],
+            [
+              "-el",
+              "-elle",
+              "cruel → cruelle"
+            ],
+            [
+              "-il (gentil)",
+              "-ille",
+              "gentil → gentille"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the noun is feminine.",
+          "Spot the ending: -en, -on, -el, or gentil.",
+          "Double that last consonant, then add e.",
+          "Count your letters: one n or one l is the usual slip."
+        ],
+        "examples": [
+          {
+            "fr": "Ma voisine est italienne.",
+            "en": "My neighbour is Italian."
+          },
+          {
+            "fr": "La soupe est bonne.",
+            "en": "The soup is good."
+          },
+          {
+            "fr": "C’est une fête traditionnelle.",
+            "en": "It’s a traditional party."
+          }
+        ],
+        "watch": [
+          "Italiene, bone and traditionnele are all missing a letter.",
+          "The doubling is audible: bon and bonne are not pronounced the same way.",
+          "Mignon follows the same line: mignonne."
+        ]
+      },
+      {
+        "id": "special",
+        "title": "Irregular feminines to learn by heart",
+        "text": "A few common adjectives rebuild their feminine. There is no rule: learn each pair as one word.",
+        "table": {
+          "columns": [
+            "masculine",
+            "feminine",
+            "example"
+          ],
+          "rows": [
+            [
+              "blanc",
+              "blanche",
+              "une robe blanche"
+            ],
+            [
+              "long",
+              "longue",
+              "une longue route"
+            ],
+            [
+              "frais",
+              "fraîche",
+              "l’eau fraîche"
+            ],
+            [
+              "doux",
+              "douce",
+              "une voix douce"
+            ],
+            [
+              "sec",
+              "sèche",
+              "une chemise sèche"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the noun is feminine.",
+          "Ask whether the adjective is one of these irregular ones before you write anything.",
+          "Write the memorised feminine, not the masculine plus e.",
+          "Add s on top for a plural noun: blanches, longues."
+        ],
+        "examples": [
+          {
+            "fr": "J’ai une robe blanche.",
+            "en": "I have a white dress."
+          },
+          {
+            "fr": "La route est longue.",
+            "en": "The road is long."
+          }
+        ],
+        "watch": [
+          "The feminine of frais is not fraise: une fraise is a strawberry.",
+          "The u in longue keeps the hard g sound.",
+          "Fraîche may also be spelled fraiche in the reformed spelling."
+        ]
+      },
+      {
+        "id": "masculine-plural",
+        "title": "The masculine plural: -aux, -eaux, or nothing",
+        "text": "The feminine plural is always regular. Only the masculine plural holds surprises.",
+        "table": {
+          "columns": [
+            "masculine singular ends in",
+            "masculine plural",
+            "example"
+          ],
+          "rows": [
+            [
+              "-al",
+              "-aux",
+              "normal → normaux"
+            ],
+            [
+              "-eau",
+              "-eaux",
+              "beau → beaux"
+            ],
+            [
+              "-s",
+              "no change",
+              "français → français"
+            ],
+            [
+              "-x",
+              "no change",
+              "heureux → heureux"
+            ],
+            [
+              "anything else",
+              "+ s",
+              "noir → noirs"
+            ]
+          ]
+        },
+        "steps": [
+          "Only ask this question when the noun is masculine and plural.",
+          "Read the last letters of the masculine singular and take the matching line.",
+          "For a feminine plural noun, ignore this table: add e, then s."
+        ],
+        "examples": [
+          {
+            "fr": "Mes amis sont loyaux.",
+            "en": "My friends are loyal."
+          },
+          {
+            "fr": "Les gâteaux sont beaux.",
+            "en": "The cakes are beautiful."
+          },
+          {
+            "fr": "Ces gâteaux sont délicieux.",
+            "en": "These cakes are delicious."
+          },
+          {
+            "fr": "J’ai des amies loyales.",
+            "en": "I have loyal friends (all women)."
+          }
+        ],
+        "watch": [
+          "Loyaux and normaux, never loyals or normals.",
+          "A word already ending in s or x takes no second plural letter: heureuxs does not exist.",
+          "The -aux plural is masculine only; the feminine stays regular: loyale, loyales.",
+          "Nouns behave the same way: un journal, des journaux; un gâteau, des gâteaux."
+        ]
+      },
+      {
+        "id": "colours",
+        "title": "Colour words that never change",
+        "text": "A colour word that is also the name of a thing keeps one single form, whatever the noun.",
+        "table": {
+          "columns": [
+            "colour",
+            "comes from",
+            "with any noun"
+          ],
+          "rows": [
+            [
+              "marron",
+              "a chestnut",
+              "des chaussures marron"
+            ],
+            [
+              "orange",
+              "a fruit",
+              "des sacs orange"
+            ],
+            [
+              "vert / noir / blanc",
+              "nothing",
+              "des sacs verts, noirs, blancs"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask whether the colour is also the name of an object, a fruit or a nut.",
+          "If it is, copy it exactly: no e, no s, for any noun.",
+          "Ordinary colour words still take the usual endings."
+        ],
+        "examples": [
+          {
+            "fr": "Il a les yeux marron.",
+            "en": "He has brown eyes."
+          },
+          {
+            "fr": "Nous avons des rideaux orange.",
+            "en": "We have orange curtains."
+          }
+        ],
+        "watch": [
+          "You will see des sacs oranges written; the standard rule keeps this colour invariable.",
+          "Rose and mauve are exceptions to the exception: they do agree (des robes roses)."
+        ]
+      },
+      {
+        "id": "mixed-groups",
+        "title": "Two nouns together: which form?",
+        "text": "When one adjective describes several nouns, the gender of the whole group decides.",
+        "table": {
+          "columns": [
+            "the group",
+            "adjective form",
+            "example"
+          ],
+          "rows": [
+            [
+              "all masculine",
+              "masculine plural",
+              "Paul et Marc sont contents"
+            ],
+            [
+              "all feminine",
+              "feminine plural",
+              "Marie et Léa sont contentes"
+            ],
+            [
+              "masculine + feminine",
+              "masculine plural",
+              "Paul et Marie sont contents"
+            ]
+          ]
+        },
+        "steps": [
+          "List everyone or everything the adjective describes.",
+          "If at least one of them is masculine, use the masculine plural.",
+          "Keep the feminine plural only when every member of the group is feminine."
+        ],
+        "examples": [
+          {
+            "fr": "Mon frère et ma sœur sont grands.",
+            "en": "My brother and my sister are tall."
+          },
+          {
+            "fr": "Julie et Marc sont fatigués.",
+            "en": "Julie and Marc are tired."
+          }
+        ],
+        "watch": [
+          "One man in the group is enough to cancel the feminine ending.",
+          "The verb goes plural too: sont, not est."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "feminine-singular-e": {
+      "section": "forms",
+      "steps": [
+        "Check the article: une or la means feminine singular.",
+        "Take the masculine form and add e.",
+        "Add nothing else: a single noun takes no plural s."
+      ]
+    },
+    "masculine-plural-s": {
+      "section": "forms",
+      "steps": [
+        "Confirm the noun is masculine and names more than one thing.",
+        "Add s to the masculine form.",
+        "Leave out the e: that mark belongs to feminine nouns only."
+      ]
+    },
+    "feminine-plural-es": {
+      "section": "forms",
+      "steps": [
+        "Confirm the noun is feminine and plural.",
+        "Build the feminine form first, then add the plural s.",
+        "Check that both marks are there before you submit."
+      ]
+    },
+    "already-e": {
+      "section": "already-e",
+      "steps": [
+        "Look at the masculine form: does it already end in e?",
+        "If it does, write it unchanged for a feminine noun.",
+        "Add s only when the noun is plural."
+      ]
+    },
+    "feminine-eux-if-er": {
+      "section": "eux-if-er",
+      "steps": [
+        "Check the noun’s gender first.",
+        "Read the last letters of the masculine form: -eux, -if or -er.",
+        "Swap the whole ending instead of adding a letter.",
+        "Add s at the very end if the noun is plural."
+      ]
+    },
+    "feminine-doubled-consonant": {
+      "section": "doubled",
+      "steps": [
+        "Check that the noun is feminine.",
+        "Spot the ending -en, -on or -el (and gentil).",
+        "Double the last consonant, then add e.",
+        "Re-read your spelling: the doubled letter is what learners drop."
+      ]
+    },
+    "feminine-special": {
+      "section": "special",
+      "steps": [
+        "Check that the noun is feminine.",
+        "Ask whether this adjective is one of the irregular ones before writing.",
+        "Write the memorised feminine rather than the masculine plus e."
+      ]
+    },
+    "plural-al-eau": {
+      "section": "masculine-plural",
+      "steps": [
+        "Check the noun: is it masculine as well as plural?",
+        "If the masculine singular ends in -al use -aux; if it ends in -eau use -eaux.",
+        "If the noun is feminine, forget -aux and build the regular feminine plural."
+      ]
+    },
+    "plural-s-x-unchanged": {
+      "section": "masculine-plural",
+      "steps": [
+        "Check the noun is masculine and plural.",
+        "Look at the last letter of the masculine singular.",
+        "If it is already s or x, copy the adjective exactly as it is."
+      ]
+    },
+    "invariable-colours": {
+      "section": "colours",
+      "steps": [
+        "Ask whether the colour word is also the name of a thing, a fruit or a nut.",
+        "If it is, copy it letter for letter, whatever the noun.",
+        "Other colours still take the usual feminine and plural endings."
+      ]
+    },
+    "mixed-group-masculine": {
+      "section": "mixed-groups",
+      "steps": [
+        "List everyone the adjective describes.",
+        "If one of them is masculine, use the masculine plural.",
+        "Keep the feminine plural only when the whole group is feminine."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "agreement-feminine-rewrite",
@@ -20,7 +567,29 @@
       ],
       "hint": "Une tells you chaussure is feminine singular. What does noir need to match it?",
       "feedback": "The new noun is feminine singular. Check the adjective’s ending as well as the noun replacement.",
-      "explanation": "Changing the noun to the feminine chaussure requires noire. The adjective keeps its place after the noun."
+      "explanation": "Changing the noun to the feminine chaussure requires noire. The adjective keeps its place after the noun.",
+      "mistakes": [
+        {
+          "answers": [
+            "Une chaussure noir."
+          ],
+          "why": "The noun was replaced but the adjective was left in its masculine form. A feminine singular noun needs the feminine mark on the adjective too."
+        },
+        {
+          "answers": [
+            "Un chaussure noire."
+          ],
+          "why": "Une was asked for because the noun is feminine; un marks a masculine noun."
+        },
+        {
+          "answers": [
+            "Une chaussure noires.",
+            "Une chaussure noirs."
+          ],
+          "why": "The s marks several items. Une tells you there is exactly one shoe here."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "agreement-feminine-build",
@@ -41,7 +610,28 @@
       ],
       "hint": "Table is feminine singular. The adjective needs the feminine ending, but nothing for the plural.",
       "feedback": "Choose just one adjective tile. It must match a feminine noun with only one item.",
-      "explanation": "Rond gains e for the feminine singular noun table. Une also shows that the noun is feminine singular."
+      "explanation": "Rond gains e for the feminine singular noun table. Une also shows that the noun is feminine singular.",
+      "mistakes": [
+        {
+          "answers": [
+            "Une table rond."
+          ],
+          "why": "That tile is the plain masculine form, the one a dictionary lists. Une table is feminine, so the adjective needs its feminine mark."
+        },
+        {
+          "answers": [
+            "Une table ronds."
+          ],
+          "why": "That tile carries a plural s and no feminine mark at all, while the noun is one single feminine thing."
+        },
+        {
+          "answers": [
+            "Une table rondes."
+          ],
+          "why": "That tile marks feminine and plural at once. There is only one table on the prompt."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "agreement-feminine-complete",
@@ -54,7 +644,28 @@
       ],
       "hint": "Une tells you maison is feminine singular.",
       "feedback": "Check the adjective’s feminine ending. The noun is singular, so no plural ending is needed.",
-      "explanation": "Petit gains e to agree with the feminine singular noun maison. It stays before the noun in this phrase."
+      "explanation": "Petit gains e to agree with the feminine singular noun maison. It stays before the noun in this phrase.",
+      "mistakes": [
+        {
+          "answers": [
+            "petit"
+          ],
+          "why": "That is the masculine form, straight from the dictionary. Une maison is feminine, so the adjective needs its feminine ending."
+        },
+        {
+          "answers": [
+            "petites"
+          ],
+          "why": "That form is feminine but plural. Une shows there is only one house."
+        },
+        {
+          "answers": [
+            "petits"
+          ],
+          "why": "The s marks several items and there is no feminine mark; maison is one feminine noun."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "agreement-feminine-repair",
@@ -67,7 +678,28 @@
       ],
       "hint": "Une shows feminine singular. What is the feminine form of vert?",
       "feedback": "The article shows feminine singular. Make the adjective match those two features.",
-      "explanation": "Verte is the feminine singular form of vert. There is one car, so do not add a plural s."
+      "explanation": "Verte is the feminine singular form of vert. There is one car, so do not add a plural s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Une voiture vert."
+          ],
+          "why": "This is the sentence exactly as given: the adjective is still masculine, while une voiture is feminine singular."
+        },
+        {
+          "answers": [
+            "Une voiture verts."
+          ],
+          "why": "An s was added instead of the feminine mark. There is one car, and it is feminine."
+        },
+        {
+          "answers": [
+            "Une voiture vertes."
+          ],
+          "why": "That ending is feminine plural. Une tells you there is a single car."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "agreement-masculine-plural-rewrite",
@@ -80,7 +712,28 @@
       ],
       "hint": "In the plural, both the noun and the adjective take the regular plural ending.",
       "feedback": "Make both the noun and adjective plural, and replace the singular article as requested.",
-      "explanation": "Petits agrees with the masculine plural noun sacs. No feminine e is needed."
+      "explanation": "Petits agrees with the masculine plural noun sacs. No feminine e is needed.",
+      "mistakes": [
+        {
+          "answers": [
+            "Des petit sacs."
+          ],
+          "why": "The noun went plural but the adjective stayed singular. The adjective copies the number of its noun."
+        },
+        {
+          "answers": [
+            "Des petits sac."
+          ],
+          "why": "The adjective is plural but the noun is not. Both words take the plural ending."
+        },
+        {
+          "answers": [
+            "Des petites sacs."
+          ],
+          "why": "That adjective form is feminine. Sac is a masculine noun, so no e belongs on it."
+        }
+      ],
+      "row": "masculine plural"
     },
     {
       "id": "agreement-masculine-plural-build",
@@ -101,7 +754,28 @@
       ],
       "hint": "The adjective needs a plural s but no feminine e.",
       "feedback": "Choose just one adjective tile. It must be plural without a feminine ending.",
-      "explanation": "Vert becomes verts to describe more than one masculine livre."
+      "explanation": "Vert becomes verts to describe more than one masculine livre.",
+      "mistakes": [
+        {
+          "answers": [
+            "Des livres vert."
+          ],
+          "why": "That tile is the singular masculine form. Livres names more than one book."
+        },
+        {
+          "answers": [
+            "Des livres verte."
+          ],
+          "why": "That tile is feminine singular: an e and no plural mark. The noun is masculine and plural."
+        },
+        {
+          "answers": [
+            "Des livres vertes."
+          ],
+          "why": "That tile is feminine plural. Livre is a masculine noun, so the e does not belong."
+        }
+      ],
+      "row": "masculine plural"
     },
     {
       "id": "agreement-masculine-plural-complete",
@@ -114,7 +788,28 @@
       ],
       "hint": "Start with noir and add the regular plural ending.",
       "feedback": "The noun is masculine and names more than one item. Check both features of your adjective.",
-      "explanation": "The adjective agrees with masculine plural sacs, so noir gains s but not e."
+      "explanation": "The adjective agrees with masculine plural sacs, so noir gains s but not e.",
+      "mistakes": [
+        {
+          "answers": [
+            "noir"
+          ],
+          "why": "That is the singular form. Sacs names several bags, so the plural ending is missing."
+        },
+        {
+          "answers": [
+            "noire"
+          ],
+          "why": "The e makes it feminine singular. Sacs is masculine and there is more than one."
+        },
+        {
+          "answers": [
+            "noires"
+          ],
+          "why": "That is the feminine plural: the number is right, but sac is a masculine noun."
+        }
+      ],
+      "row": "masculine plural"
     },
     {
       "id": "agreement-masculine-plural-repair",
@@ -127,7 +822,28 @@
       ],
       "hint": "Chats already has its plural s. Give noir one too.",
       "feedback": "The noun is already plural. Check whether the adjective also marks the plural.",
-      "explanation": "Noirs agrees with masculine plural chats. Des alone does not show gender; the prompt supplies it."
+      "explanation": "Noirs agrees with masculine plural chats. Des alone does not show gender; the prompt supplies it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Des chats noir."
+          ],
+          "why": "This is the sentence unchanged: the noun has its plural s but the adjective has nothing."
+        },
+        {
+          "answers": [
+            "Des chat noirs."
+          ],
+          "why": "The plural mark moved to the adjective and left the noun singular. Both words are plural here."
+        },
+        {
+          "answers": [
+            "Des chats noires."
+          ],
+          "why": "That adjective is feminine plural. The prompt says chats is masculine, so the e is wrong."
+        }
+      ],
+      "row": "masculine plural"
     },
     {
       "id": "agreement-feminine-plural-rewrite",
@@ -140,7 +856,28 @@
       ],
       "hint": "The adjective already shows the feminine. Now the adjective and the noun both need the plural ending.",
       "feedback": "Keep the adjective feminine while making both it and the noun plural. Remember to change the article.",
-      "explanation": "Petites agrees with feminine plural maisons. Its ending has both e for feminine and s for plural."
+      "explanation": "Petites agrees with feminine plural maisons. Its ending has both e for feminine and s for plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Des petite maisons."
+          ],
+          "why": "The noun went plural but the adjective stayed singular. Both words take the plural ending."
+        },
+        {
+          "answers": [
+            "Des petites maison."
+          ],
+          "why": "The adjective is plural but the noun was left singular; des asks for a plural noun."
+        },
+        {
+          "answers": [
+            "Des petits maisons."
+          ],
+          "why": "That adjective is masculine plural. Maison is feminine, so the feminine mark must stay."
+        }
+      ],
+      "row": "feminine plural"
     },
     {
       "id": "agreement-feminine-plural-build",
@@ -161,7 +898,28 @@
       ],
       "hint": "The adjective needs both the feminine e and the plural s.",
       "feedback": "Choose just one adjective tile. Its ending must show both feminine and plural.",
-      "explanation": "Rond becomes rondes for feminine plural tables: add e, then s."
+      "explanation": "Rond becomes rondes for feminine plural tables: add e, then s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Des tables ronde."
+          ],
+          "why": "That tile is feminine singular. Tables names several tables, so the plural mark is missing."
+        },
+        {
+          "answers": [
+            "Des tables ronds."
+          ],
+          "why": "That tile is masculine plural. Table is a feminine noun, so the feminine mark is missing."
+        },
+        {
+          "answers": [
+            "Des tables rond."
+          ],
+          "why": "That tile is the bare masculine singular, with neither mark, while the noun carries both."
+        }
+      ],
+      "row": "feminine plural"
     },
     {
       "id": "agreement-feminine-plural-complete",
@@ -174,7 +932,28 @@
       ],
       "hint": "Start from the feminine form of vert, then make it plural.",
       "feedback": "Check both gender and number: the noun is feminine and refers to more than one item.",
-      "explanation": "Vertes matches both the feminine gender and the plural number of voitures."
+      "explanation": "Vertes matches both the feminine gender and the plural number of voitures.",
+      "mistakes": [
+        {
+          "answers": [
+            "verte"
+          ],
+          "why": "That is the feminine singular. Voitures names more than one car."
+        },
+        {
+          "answers": [
+            "verts"
+          ],
+          "why": "That is the masculine plural. Voiture is a feminine noun, so the feminine mark is missing."
+        },
+        {
+          "answers": [
+            "vert"
+          ],
+          "why": "That is the plain masculine singular, with neither mark. The noun is feminine and plural."
+        }
+      ],
+      "row": "feminine plural"
     },
     {
       "id": "agreement-feminine-plural-repair",
@@ -187,7 +966,28 @@
       ],
       "hint": "Noir must match both feminine and plural.",
       "feedback": "The adjective must reflect two features of the noun: feminine gender and plural number.",
-      "explanation": "Noires has the feminine e and the plural s required by chaussures."
+      "explanation": "Noires has the feminine e and the plural s required by chaussures.",
+      "mistakes": [
+        {
+          "answers": [
+            "Des chaussures noir."
+          ],
+          "why": "This is the sentence unchanged: the adjective carries neither mark, while chaussures is feminine and plural."
+        },
+        {
+          "answers": [
+            "Des chaussures noire."
+          ],
+          "why": "The adjective is feminine but singular. Chaussures names several shoes."
+        },
+        {
+          "answers": [
+            "Des chaussures noirs."
+          ],
+          "why": "The plural s is there but the feminine mark is not. Chaussure is a feminine noun."
+        }
+      ],
+      "row": "feminine plural"
     },
     {
       "id": "agreement-eux-if-er-choose",
@@ -206,7 +1006,28 @@
       ],
       "hint": "Jupe is feminine singular. Adjectives ending in -er change more than just adding e.",
       "feedback": "Look for the feminine singular form, and check the accent it needs.",
-      "explanation": "Cher becomes chère in the feminine: -er turns into -ère, with a grave accent. Jupe is feminine singular, so no s."
+      "explanation": "Cher becomes chère in the feminine: -er turns into -ère, with a grave accent. Jupe is feminine singular, so no s.",
+      "mistakes": [
+        {
+          "answers": [
+            "cher"
+          ],
+          "why": "That is the masculine singular, the dictionary form. Jupe is feminine, and -er adjectives take a grave accent on the e before r."
+        },
+        {
+          "answers": [
+            "chers"
+          ],
+          "why": "That form is masculine and plural. The sentence is about one single skirt."
+        },
+        {
+          "answers": [
+            "chères"
+          ],
+          "why": "The feminine spelling is right but the s makes it plural. Cette jupe is one skirt."
+        }
+      ],
+      "row": "-er"
     },
     {
       "id": "agreement-eux-if-er-complete",
@@ -219,7 +1040,28 @@
       ],
       "hint": "Léa is one woman. Adjectives ending in -eux have their own feminine ending.",
       "feedback": "Adding e to heureux does not work. Think of the feminine of -eux adjectives.",
-      "explanation": "The -eux ending becomes -euse in the feminine: heureux, heureuse."
+      "explanation": "The -eux ending becomes -euse in the feminine: heureux, heureuse.",
+      "mistakes": [
+        {
+          "answers": [
+            "heureux"
+          ],
+          "why": "That is the masculine form. Léa is one woman, and -eux adjectives take their own feminine ending."
+        },
+        {
+          "answers": [
+            "heureuxe"
+          ],
+          "why": "This glues an e onto the masculine -eux. The x itself has to change in the feminine."
+        },
+        {
+          "answers": [
+            "heureuses"
+          ],
+          "why": "The feminine ending is right, but the s makes it plural and Léa is one person."
+        }
+      ],
+      "row": "-eux"
     },
     {
       "id": "agreement-eux-if-er-translate",
@@ -235,7 +1077,31 @@
       ],
       "hint": "Sœur is feminine. Adjectives ending in -if change their last letter in the feminine.",
       "feedback": "Check the ending of sportif: the feminine is not sportife.",
-      "explanation": "The -if ending becomes -ive in the feminine: sportif, sportive."
+      "explanation": "The -if ending becomes -ive in the feminine: sportif, sportive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma sœur est sportif.",
+            "Ma soeur est sportif."
+          ],
+          "why": "Sportif is the masculine form. Sœur is feminine, and -if adjectives change their ending in the feminine."
+        },
+        {
+          "answers": [
+            "Ma sœur est sportife.",
+            "Ma soeur est sportife."
+          ],
+          "why": "Adding e to the masculine -if is the usual guess, but the f itself has to change."
+        },
+        {
+          "answers": [
+            "Mon sœur est sportive.",
+            "Mon soeur est sportive."
+          ],
+          "why": "Sœur is a feminine noun, so the possessive in front of it must be the feminine one."
+        }
+      ],
+      "row": "-if"
     },
     {
       "id": "agreement-eux-if-er-repair",
@@ -248,7 +1114,28 @@
       ],
       "hint": "Grand-mère is feminine. What happens to -if in the feminine?",
       "feedback": "The adjective is still in its masculine form. Change its ending, not the noun.",
-      "explanation": "Actif becomes active for a feminine noun: -if turns into -ive."
+      "explanation": "Actif becomes active for a feminine noun: -if turns into -ive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma grand-mère est très actif."
+          ],
+          "why": "This leaves the adjective in its masculine -if form, but grand-mère is feminine."
+        },
+        {
+          "answers": [
+            "Ma grand-mère est très actife."
+          ],
+          "why": "Adding a plain e to -if is the usual guess; the f has to change first."
+        },
+        {
+          "answers": [
+            "Ma grand-mère est très actives."
+          ],
+          "why": "The feminine ending is right but the s makes it plural, and there is one grandmother."
+        }
+      ],
+      "row": "-if"
     },
     {
       "id": "agreement-eux-if-er-build",
@@ -268,7 +1155,16 @@
       ],
       "hint": "Question is feminine. Use the feminine of sérieux.",
       "feedback": "One adjective tile is the masculine form. Choose the one that matches une question.",
-      "explanation": "Sérieux becomes sérieuse in the feminine, like heureux and heureuse."
+      "explanation": "Sérieux becomes sérieuse in the feminine, like heureux and heureuse.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est une question sérieux."
+          ],
+          "why": "That tile is the masculine form. Une question is feminine, so the -eux ending has to change."
+        }
+      ],
+      "row": "-eux"
     },
     {
       "id": "agreement-doubled-consonant-choose",
@@ -287,7 +1183,28 @@
       ],
       "hint": "Voisine is feminine singular. Adjectives ending in -en double a letter before the e.",
       "feedback": "Check both the doubled consonant and the number.",
-      "explanation": "Italien becomes italienne: -en doubles the n before adding e. Voisine is singular, so no s."
+      "explanation": "Italien becomes italienne: -en doubles the n before adding e. Voisine is singular, so no s.",
+      "mistakes": [
+        {
+          "answers": [
+            "italien"
+          ],
+          "why": "That is the masculine form. Ma voisine is a woman, so the adjective needs its feminine ending."
+        },
+        {
+          "answers": [
+            "italiene"
+          ],
+          "why": "The e is there but the n was not doubled, and -en adjectives double that consonant first."
+        },
+        {
+          "answers": [
+            "italiennes"
+          ],
+          "why": "The feminine spelling is right, but the s makes it plural and there is one neighbour."
+        }
+      ],
+      "row": "-en"
     },
     {
       "id": "agreement-doubled-consonant-complete",
@@ -300,7 +1217,28 @@
       ],
       "hint": "Soupe is feminine singular. Adjectives ending in -on double the last consonant before e.",
       "feedback": "Just adding e is not enough for -on adjectives.",
-      "explanation": "Bon becomes bonne in the feminine: the n doubles, then e is added."
+      "explanation": "Bon becomes bonne in the feminine: the n doubles, then e is added.",
+      "mistakes": [
+        {
+          "answers": [
+            "bon"
+          ],
+          "why": "That is the masculine form. La soupe is a feminine noun."
+        },
+        {
+          "answers": [
+            "bone"
+          ],
+          "why": "The e was added without doubling the n; -on adjectives double that consonant in the feminine."
+        },
+        {
+          "answers": [
+            "bonnes"
+          ],
+          "why": "The feminine spelling is right, but the s makes it plural and there is one soup."
+        }
+      ],
+      "row": "-on"
     },
     {
       "id": "agreement-doubled-consonant-translate",
@@ -314,7 +1252,28 @@
       ],
       "hint": "Fille is feminine. Gentil doubles its last consonant in the feminine.",
       "feedback": "Check the spelling of the feminine: one letter is doubled.",
-      "explanation": "Gentil becomes gentille in the feminine, with a double l."
+      "explanation": "Gentil becomes gentille in the feminine, with a double l.",
+      "mistakes": [
+        {
+          "answers": [
+            "La fille est gentil."
+          ],
+          "why": "Gentil is the masculine form. Fille is feminine, and this adjective doubles its last consonant before the e."
+        },
+        {
+          "answers": [
+            "La fille est gentile."
+          ],
+          "why": "There is only one l here. The consonant has to be doubled before the feminine e."
+        },
+        {
+          "answers": [
+            "Le fille est gentille."
+          ],
+          "why": "Fille is a feminine noun, so the article in front of it must be feminine."
+        }
+      ],
+      "row": "-il (gentil)"
     },
     {
       "id": "agreement-doubled-consonant-rewrite",
@@ -327,7 +1286,28 @@
       ],
       "hint": "Canadien ends in -en, like italien.",
       "feedback": "Change both the noun phrase and the adjective, and check the doubled letter.",
-      "explanation": "Canadien becomes canadienne: -en becomes -enne in the feminine."
+      "explanation": "Canadien becomes canadienne: -en becomes -enne in the feminine.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma cousine est canadien."
+          ],
+          "why": "The noun phrase became feminine but the adjective stayed masculine; -en adjectives take a doubled n plus e."
+        },
+        {
+          "answers": [
+            "Ma cousine est canadiene."
+          ],
+          "why": "The e was added without doubling the n, which is what this ending asks for first."
+        },
+        {
+          "answers": [
+            "Mon cousine est canadienne."
+          ],
+          "why": "Cousine is feminine, so the possessive in front of it must be the feminine one."
+        }
+      ],
+      "row": "-en"
     },
     {
       "id": "agreement-doubled-consonant-build",
@@ -347,7 +1327,16 @@
       ],
       "hint": "Fête is feminine. Adjectives ending in -el double the l before e.",
       "feedback": "Compare the two adjective tiles letter by letter.",
-      "explanation": "Traditionnel becomes traditionnelle in the feminine: -el becomes -elle."
+      "explanation": "Traditionnel becomes traditionnelle in the feminine: -el becomes -elle.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est une fête traditionnele."
+          ],
+          "why": "That tile has a single l. Adjectives in -el double the l before the feminine e."
+        }
+      ],
+      "row": "-el"
     },
     {
       "id": "agreement-special-choose",
@@ -366,7 +1355,28 @@
       ],
       "hint": "Robe is feminine singular. Blanc has an unusual feminine.",
       "feedback": "Blanc does not simply add e in the feminine, and there is only one dress.",
-      "explanation": "Blanc becomes blanche in the feminine. One dress, so no s."
+      "explanation": "Blanc becomes blanche in the feminine. One dress, so no s.",
+      "mistakes": [
+        {
+          "answers": [
+            "blanc"
+          ],
+          "why": "That is the masculine form. Robe is feminine, and this adjective has an irregular feminine rather than a simple added e."
+        },
+        {
+          "answers": [
+            "blancs"
+          ],
+          "why": "That form is masculine and plural. There is one dress and it is feminine."
+        },
+        {
+          "answers": [
+            "blanches"
+          ],
+          "why": "The feminine spelling is right, but the s makes it plural and une robe is a single dress."
+        }
+      ],
+      "row": "blanc"
     },
     {
       "id": "agreement-special-complete",
@@ -379,7 +1389,28 @@
       ],
       "hint": "Route is feminine. Long needs an extra letter before the e to keep its sound.",
       "feedback": "Just adding e is not the right spelling here.",
-      "explanation": "Long becomes longue in the feminine: a u is added before the e."
+      "explanation": "Long becomes longue in the feminine: a u is added before the e.",
+      "mistakes": [
+        {
+          "answers": [
+            "long"
+          ],
+          "why": "That is the masculine form. La route is feminine, and this adjective needs an extra letter before the e."
+        },
+        {
+          "answers": [
+            "longe"
+          ],
+          "why": "A plain e after the g softens the sound. A letter is missing between the g and the e."
+        },
+        {
+          "answers": [
+            "longues"
+          ],
+          "why": "The feminine spelling is right, but the s makes it plural and there is one road."
+        }
+      ],
+      "row": "long"
     },
     {
       "id": "agreement-special-translate",
@@ -393,7 +1424,29 @@
       ],
       "hint": "Eau is feminine. Frais has an irregular feminine.",
       "feedback": "The feminine of frais is not fraise (that is a strawberry).",
-      "explanation": "Frais becomes fraîche in the feminine (fraiche in the reformed spelling). Eau is feminine, and la becomes l’ before the vowel."
+      "explanation": "Frais becomes fraîche in the feminine (fraiche in the reformed spelling). Eau is feminine, and la becomes l’ before the vowel.",
+      "mistakes": [
+        {
+          "answers": [
+            "L’eau est frais."
+          ],
+          "why": "Frais is the masculine form. Eau is feminine, and this adjective has an irregular feminine."
+        },
+        {
+          "answers": [
+            "L’eau est fraise."
+          ],
+          "why": "Une fraise is a strawberry. This feminine is not built by adding e to the masculine."
+        },
+        {
+          "answers": [
+            "La eau est fraîche.",
+            "La eau est fraiche."
+          ],
+          "why": "The adjective is fine, but la loses its a before a vowel and takes an apostrophe."
+        }
+      ],
+      "row": "frais"
     },
     {
       "id": "agreement-special-repair",
@@ -406,7 +1459,28 @@
       ],
       "hint": "Rue is feminine. Long has a special feminine spelling.",
       "feedback": "The adjective is still masculine. Watch the spelling of the feminine.",
-      "explanation": "Rue is feminine singular, so long becomes longue."
+      "explanation": "Rue is feminine singular, so long becomes longue.",
+      "mistakes": [
+        {
+          "answers": [
+            "Cette rue est très long."
+          ],
+          "why": "This is the sentence unchanged, with the masculine form still in place, although rue is feminine."
+        },
+        {
+          "answers": [
+            "Cette rue est très longe."
+          ],
+          "why": "A plain e after the g is not enough: another letter is needed to keep the hard g sound."
+        },
+        {
+          "answers": [
+            "Cette rue est très longues."
+          ],
+          "why": "The plural s does not belong: cette rue is one single street."
+        }
+      ],
+      "row": "long"
     },
     {
       "id": "agreement-already-e-choose",
@@ -424,7 +1498,22 @@
       ],
       "hint": "Rouge already ends in e.",
       "feedback": "Do not add a second e, and there is only one car.",
-      "explanation": "Adjectives that already end in e, like rouge, do not change in the feminine."
+      "explanation": "Adjectives that already end in e, like rouge, do not change in the feminine.",
+      "mistakes": [
+        {
+          "answers": [
+            "rougee"
+          ],
+          "why": "An extra e was added for the feminine, but this adjective already ends in e and takes nothing more."
+        },
+        {
+          "answers": [
+            "rouges"
+          ],
+          "why": "The s marks a plural. Ma voiture is one car."
+        }
+      ],
+      "row": "rouge"
     },
     {
       "id": "agreement-already-e-rewrite",
@@ -440,7 +1529,31 @@
       ],
       "hint": "Jeune already ends in e. What does it need in the feminine?",
       "feedback": "Change the noun phrase. Check whether the adjective really needs another letter.",
-      "explanation": "Jeune is the same in the masculine and the feminine, so only the noun phrase changes."
+      "explanation": "Jeune is the same in the masculine and the feminine, so only the noun phrase changes.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma sœur est jeunee.",
+            "Ma soeur est jeunee."
+          ],
+          "why": "A second e was added for the feminine, but an adjective already ending in e does not change."
+        },
+        {
+          "answers": [
+            "Ma sœur est jeunes.",
+            "Ma soeur est jeunes."
+          ],
+          "why": "The s marks a plural and there is one sister."
+        },
+        {
+          "answers": [
+            "Mon sœur est jeune.",
+            "Mon soeur est jeune."
+          ],
+          "why": "Sœur is feminine, so the possessive in front of it must be the feminine one."
+        }
+      ],
+      "row": "jeune"
     },
     {
       "id": "agreement-already-e-translate",
@@ -454,7 +1567,28 @@
       ],
       "hint": "Leçon is feminine, but facile already ends in e.",
       "feedback": "Do not add anything to facile for a single feminine noun.",
-      "explanation": "Facile ends in e, so it is the same for masculine and feminine singular."
+      "explanation": "Facile ends in e, so it is the same for masculine and feminine singular.",
+      "mistakes": [
+        {
+          "answers": [
+            "La leçon est facilee."
+          ],
+          "why": "An extra e was added for the feminine, but this adjective already ends in e."
+        },
+        {
+          "answers": [
+            "La leçon est faciles."
+          ],
+          "why": "The s marks a plural and the sentence names one lesson."
+        },
+        {
+          "answers": [
+            "Le leçon est facile."
+          ],
+          "why": "Leçon is a feminine noun, so the article in front of it must be feminine."
+        }
+      ],
+      "row": "facile"
     },
     {
       "id": "agreement-already-e-repair",
@@ -470,7 +1604,24 @@
       ],
       "hint": "Jeune does not change for the feminine, but it still marks the plural.",
       "feedback": "The adjective needs a plural ending.",
-      "explanation": "An adjective ending in e stays the same in the feminine but still adds s in the plural: jeunes."
+      "explanation": "An adjective ending in e stays the same in the feminine but still adds s in the plural: jeunes.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mes sœurs sont jeune.",
+            "Mes soeurs sont jeune."
+          ],
+          "why": "This is the sentence unchanged. The adjective does not change for the feminine, but it still has to mark the plural."
+        },
+        {
+          "answers": [
+            "Mes sœurs sont jeunees.",
+            "Mes soeurs sont jeunees."
+          ],
+          "why": "An extra e was added as if for the feminine; this adjective never takes one, and that is not what is missing."
+        }
+      ],
+      "row": "jeune"
     },
     {
       "id": "agreement-al-eau-choose",
@@ -489,7 +1640,28 @@
       ],
       "hint": "Masculine adjectives ending in -al have a special plural.",
       "feedback": "Loyal does not just add s in the masculine plural.",
-      "explanation": "In the masculine plural, -al becomes -aux: loyal, loyaux."
+      "explanation": "In the masculine plural, -al becomes -aux: loyal, loyaux.",
+      "mistakes": [
+        {
+          "answers": [
+            "loyals"
+          ],
+          "why": "This adds the regular s, but masculine adjectives in -al do not build their plural that way."
+        },
+        {
+          "answers": [
+            "loyal"
+          ],
+          "why": "That is the singular form. Mes amis names several people."
+        },
+        {
+          "answers": [
+            "loyales"
+          ],
+          "why": "That is the feminine plural. The prompt says amis is masculine, so the e does not belong."
+        }
+      ],
+      "row": "-al"
     },
     {
       "id": "agreement-al-eau-complete",
@@ -502,7 +1674,28 @@
       ],
       "hint": "Problèmes is masculine plural, and normal ends in -al.",
       "feedback": "The plural of -al adjectives in the masculine is not -als.",
-      "explanation": "Normal becomes normaux in the masculine plural: -al becomes -aux."
+      "explanation": "Normal becomes normaux in the masculine plural: -al becomes -aux.",
+      "mistakes": [
+        {
+          "answers": [
+            "normals"
+          ],
+          "why": "Masculine -al adjectives do not take a plain s in the plural: the ending itself changes."
+        },
+        {
+          "answers": [
+            "normal"
+          ],
+          "why": "That is the singular form. Problèmes names several problems."
+        },
+        {
+          "answers": [
+            "normales"
+          ],
+          "why": "That is the feminine plural. Problème is a masculine noun."
+        }
+      ],
+      "row": "-al"
     },
     {
       "id": "agreement-al-eau-rewrite",
@@ -515,7 +1708,28 @@
       ],
       "hint": "The noun and the adjective both end in -eau. Words in -eau do not take s in the plural.",
       "feedback": "Make the article, the noun, the verb and the adjective plural.",
-      "explanation": "Words ending in -eau add x in the plural: gâteaux, beaux. The verb becomes sont."
+      "explanation": "Words ending in -eau add x in the plural: gâteaux, beaux. The verb becomes sont.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les gâteaus sont beaus."
+          ],
+          "why": "Words ending in -eau take x in the plural, not s."
+        },
+        {
+          "answers": [
+            "Les gâteaux sont beau."
+          ],
+          "why": "The article, the noun and the verb went plural, but the adjective was left singular."
+        },
+        {
+          "answers": [
+            "Les gâteaux est beaux."
+          ],
+          "why": "The subject is plural now, so the verb has to be plural as well."
+        }
+      ],
+      "row": "-eau"
     },
     {
       "id": "agreement-al-eau-translate",
@@ -528,7 +1742,28 @@
       ],
       "hint": "Journal and local both end in -al, and both change the same way in the plural.",
       "feedback": "Check the plural of both the noun and the adjective.",
-      "explanation": "Masculine -al becomes -aux in the plural: journal, journaux; local, locaux."
+      "explanation": "Masculine -al becomes -aux in the plural: journal, journaux; local, locaux.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les journals sont locals."
+          ],
+          "why": "Both words end in -al in the singular, and that ending does not simply take an s in the plural."
+        },
+        {
+          "answers": [
+            "Les journaux sont local."
+          ],
+          "why": "The noun is plural but the adjective was left in the singular."
+        },
+        {
+          "answers": [
+            "Les journaux sont locales."
+          ],
+          "why": "That is the feminine plural. Journal is a masculine noun."
+        }
+      ],
+      "row": "-al"
     },
     {
       "id": "agreement-al-eau-build",
@@ -549,7 +1784,21 @@
       ],
       "hint": "The -aux plural is only for the masculine. The feminine follows the regular pattern.",
       "feedback": "Amies is feminine plural. Pick the adjective with the feminine e and the plural s.",
-      "explanation": "The feminine plural of loyal is regular: loyale, loyales. Only the masculine plural becomes loyaux."
+      "explanation": "The feminine plural of loyal is regular: loyale, loyales. Only the masculine plural becomes loyaux.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai des amies loyaux."
+          ],
+          "why": "The -aux plural belongs to masculine nouns only. Amies with an e names women."
+        },
+        {
+          "answers": [
+            "J’ai des amies loyals."
+          ],
+          "why": "That tile is a masculine plural that does not even exist, and the noun here is feminine anyway."
+        }
+      ]
     },
     {
       "id": "agreement-s-x-unchanged-choose",
@@ -568,7 +1817,28 @@
       ],
       "hint": "Délicieux already ends in x.",
       "feedback": "A masculine adjective ending in x cannot take another plural letter.",
-      "explanation": "Adjectives ending in -s or -x do not change in the masculine plural: délicieux."
+      "explanation": "Adjectives ending in -s or -x do not change in the masculine plural: délicieux.",
+      "mistakes": [
+        {
+          "answers": [
+            "délicieuxs"
+          ],
+          "why": "An s was added to a word that already ends in x. A masculine adjective in -x takes no second plural letter."
+        },
+        {
+          "answers": [
+            "délicieuse"
+          ],
+          "why": "That is the feminine singular. Gâteaux is masculine and names several cakes."
+        },
+        {
+          "answers": [
+            "délicieuses"
+          ],
+          "why": "That is the feminine plural. Gâteau is a masculine noun, so the feminine ending is wrong."
+        }
+      ],
+      "row": "-x"
     },
     {
       "id": "agreement-s-x-unchanged-complete",
@@ -581,7 +1851,28 @@
       ],
       "hint": "Look at the last letter of gris.",
       "feedback": "Nothing needs to be added for a masculine plural here.",
-      "explanation": "An adjective ending in s stays the same in the masculine plural: des chats gris."
+      "explanation": "An adjective ending in s stays the same in the masculine plural: des chats gris.",
+      "mistakes": [
+        {
+          "answers": [
+            "griss"
+          ],
+          "why": "A second s was added to a word that already ends in one. Nothing is added in the masculine plural here."
+        },
+        {
+          "answers": [
+            "grise"
+          ],
+          "why": "That is the feminine singular. The prompt says chats is masculine, and there are two of them."
+        },
+        {
+          "answers": [
+            "grises"
+          ],
+          "why": "That is the feminine plural. Chat is a masculine noun."
+        }
+      ],
+      "row": "-s"
     },
     {
       "id": "agreement-s-x-unchanged-repair",
@@ -594,7 +1885,28 @@
       ],
       "hint": "Look at the last letter of heureux before you add anything.",
       "feedback": "The masculine plural of heureux looks the same as the singular.",
-      "explanation": "Adjectives ending in -x never add s: heureux is both singular and plural."
+      "explanation": "Adjectives ending in -x never add s: heureux is both singular and plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mes voisins sont très heureuxs."
+          ],
+          "why": "This is the sentence unchanged, with an s stuck onto a word that already ends in x."
+        },
+        {
+          "answers": [
+            "Mes voisins sont très heureuses."
+          ],
+          "why": "That is the feminine plural. Voisins is masculine, so the feminine ending is wrong."
+        },
+        {
+          "answers": [
+            "Mes voisins sont très heureuse."
+          ],
+          "why": "That is the feminine singular: wrong gender, and it drops the plural as well."
+        }
+      ],
+      "row": "-x"
     },
     {
       "id": "agreement-s-x-unchanged-translate",
@@ -607,7 +1919,28 @@
       ],
       "hint": "Look at the last letter of français. In French, nationality adjectives take no capital letter.",
       "feedback": "Check the adjective ending: it already ends in s.",
-      "explanation": "Français does not change in the masculine plural because it already ends in s."
+      "explanation": "Français does not change in the masculine plural because it already ends in s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les garçons sont françaiss."
+          ],
+          "why": "An s was added to a word that already ends in s; the plural letter is there from the start."
+        },
+        {
+          "answers": [
+            "Les garçons sont françaises."
+          ],
+          "why": "That is the feminine plural. Garçons names boys, so the masculine form is needed."
+        },
+        {
+          "answers": [
+            "Les garçons sont française."
+          ],
+          "why": "That is the feminine singular: wrong gender and wrong number for several boys."
+        }
+      ],
+      "row": "-s"
     },
     {
       "id": "agreement-colours-choose",
@@ -626,7 +1959,28 @@
       ],
       "hint": "Marron is also the name of a chestnut. Colour words taken from nouns follow their own rule.",
       "feedback": "This colour word never changes, whatever the noun.",
-      "explanation": "Marron is invariable: it takes no e and no s, even with feminine plural chaussures."
+      "explanation": "Marron is invariable: it takes no e and no s, even with feminine plural chaussures.",
+      "mistakes": [
+        {
+          "answers": [
+            "marrons"
+          ],
+          "why": "The plural s treats this like an ordinary adjective. A colour word that is also the name of a nut never takes an ending."
+        },
+        {
+          "answers": [
+            "marronne"
+          ],
+          "why": "This invents a feminine with a doubled n. This colour word does not agree at all."
+        },
+        {
+          "answers": [
+            "marronnes"
+          ],
+          "why": "This piles a feminine and a plural ending onto a colour word that takes neither."
+        }
+      ],
+      "row": "marron"
     },
     {
       "id": "agreement-colours-complete",
@@ -646,7 +2000,24 @@
       ],
       "hint": "Orange is also a fruit. Colour words taken from nouns follow their own rule.",
       "feedback": "This colour word does not take a plural s.",
-      "explanation": "Orange is invariable: des sacs orange."
+      "explanation": "Orange is invariable: des sacs orange.",
+      "mistakes": [
+        {
+          "answers": [
+            "orangés",
+            "orangées"
+          ],
+          "why": "These invent an accented ending for a colour word borrowed from the name of a fruit. Such colour words keep one single form."
+        },
+        {
+          "answers": [
+            "deux sacs orange",
+            "sacs orange"
+          ],
+          "why": "Only the adjective goes in the blank; the words around it are already in the sentence."
+        }
+      ],
+      "row": "orange"
     },
     {
       "id": "agreement-colours-repair",
@@ -659,7 +2030,23 @@
       ],
       "hint": "Some colour words never take a plural s.",
       "feedback": "Yeux is plural, but this colour word stays the same.",
-      "explanation": "Marron is invariable, so les yeux marron has no s on marron."
+      "explanation": "Marron is invariable, so les yeux marron has no s on marron.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a les yeux marrons."
+          ],
+          "why": "This is the sentence unchanged, with the plural s still on a colour word taken from the name of a nut."
+        },
+        {
+          "answers": [
+            "Il a les yeux marronnes.",
+            "Il a les yeux marronne."
+          ],
+          "why": "These add feminine endings to a colour word that never changes, and yeux is masculine anyway."
+        }
+      ],
+      "row": "marron"
     },
     {
       "id": "agreement-colours-build",
@@ -680,7 +2067,16 @@
       ],
       "hint": "Orange is a colour word taken from a noun.",
       "feedback": "One adjective tile has a plural s it should not have.",
-      "explanation": "Orange does not agree, so rideaux orange has no s on orange."
+      "explanation": "Orange does not agree, so rideaux orange has no s on orange.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous avons des rideaux oranges."
+          ],
+          "why": "That tile carries a plural s. A colour word borrowed from the name of a fruit keeps one form with every noun."
+        }
+      ],
+      "row": "orange"
     },
     {
       "id": "agreement-mixed-group-choose",
@@ -699,7 +2095,28 @@
       ],
       "hint": "Paul is a man and Marie is a woman. What does a mixed group take?",
       "feedback": "A mixed group does not use the feminine form.",
-      "explanation": "A mixed group takes the masculine plural: contents."
+      "explanation": "A mixed group takes the masculine plural: contents.",
+      "mistakes": [
+        {
+          "answers": [
+            "content"
+          ],
+          "why": "That is the singular form. Paul et Marie are two people."
+        },
+        {
+          "answers": [
+            "contente"
+          ],
+          "why": "That is the feminine singular: a group of two is neither one person nor all women."
+        },
+        {
+          "answers": [
+            "contentes"
+          ],
+          "why": "That is the feminine plural. As soon as one man belongs to the group, French drops the feminine."
+        }
+      ],
+      "row": "masculine + feminine"
     },
     {
       "id": "agreement-mixed-group-translate",
@@ -717,7 +2134,31 @@
       ],
       "hint": "The adjective describes a man and a woman together.",
       "feedback": "With a mixed group, the adjective does not take the feminine e.",
-      "explanation": "Frère and sœur together form a mixed group, which takes the masculine plural: grands."
+      "explanation": "Frère and sœur together form a mixed group, which takes the masculine plural: grands.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mon frère et ma sœur sont grandes.",
+            "Mon frère et ma soeur sont grandes."
+          ],
+          "why": "That is the feminine plural, but the group includes a brother, and one man cancels the feminine."
+        },
+        {
+          "answers": [
+            "Mon frère et ma sœur sont grand.",
+            "Mon frère et ma soeur sont grand."
+          ],
+          "why": "The adjective is singular while it describes two people."
+        },
+        {
+          "answers": [
+            "Mon frère et ma sœur est grand.",
+            "Mon frère et ma soeur est grand."
+          ],
+          "why": "Two subjects joined by et take a plural verb, and the adjective is left singular too."
+        }
+      ],
+      "row": "masculine + feminine"
     },
     {
       "id": "agreement-mixed-group-rewrite",
@@ -730,7 +2171,28 @@
       ],
       "hint": "Adding Marc makes a mixed group.",
       "feedback": "The verb becomes plural, and the adjective needs the form for a mixed group.",
-      "explanation": "Julie et Marc is a mixed group, so fatigué takes the masculine plural: fatigués."
+      "explanation": "Julie et Marc is a mixed group, so fatigué takes the masculine plural: fatigués.",
+      "mistakes": [
+        {
+          "answers": [
+            "Julie et Marc sont fatiguées."
+          ],
+          "why": "This keeps the feminine ending of the original sentence, but Marc puts a man in the group."
+        },
+        {
+          "answers": [
+            "Julie et Marc sont fatigué."
+          ],
+          "why": "The adjective is still singular while the subject now names two people."
+        },
+        {
+          "answers": [
+            "Julie et Marc est fatigué."
+          ],
+          "why": "Two people joined by et need a plural verb, and the adjective has to follow."
+        }
+      ],
+      "row": "masculine + feminine"
     },
     {
       "id": "agreement-mixed-group-repair",
@@ -743,7 +2205,28 @@
       ],
       "hint": "The group has one man and one woman.",
       "feedback": "A mixed group never takes the feminine plural.",
-      "explanation": "A mixed group takes the masculine plural. Sérieux already ends in x, so it does not change."
+      "explanation": "A mixed group takes the masculine plural. Sérieux already ends in x, so it does not change.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mon père et ma mère sont sérieuses."
+          ],
+          "why": "This is the sentence unchanged: the feminine plural was taken from ma mère alone, ignoring mon père."
+        },
+        {
+          "answers": [
+            "Mon père et ma mère sont sérieuse."
+          ],
+          "why": "Feminine and singular: wrong on both counts for two people, one of them a man."
+        },
+        {
+          "answers": [
+            "Mon père et ma mère sont sérieuxs."
+          ],
+          "why": "An s was added to a word that already ends in x; that ending never takes one."
+        }
+      ],
+      "row": "masculine + feminine"
     }
   ]
 }

@@ -5,9 +5,408 @@
   "title": "Some and any",
   "description": "Say how much with du, de la, de l’ and des, and know when they become de.",
   "mark": "du",
-  "rule": "Use du (masculine), de la (feminine), de l’ (before a vowel or silent h) and des (plural) for an unspecified amount of something: je bois du café, elle mange de la soupe, tu veux de l’eau ? After a negation such as ne…pas, they all become de, or d’ before a vowel: je ne bois pas de café, il n’y a pas d’eau. Être is not a negation of quantity, so it keeps the full article: ce n’est pas du café, c’est du thé. After a word of quantity, use de or d’ alone: beaucoup de pain, un peu de sucre, trop de sel, assez d’argent, un kilo de pommes, une bouteille de lait, un verre d’eau. Verbs of liking (aimer, adorer, détester, préférer) take le, la, l’, les, even in the negative, while manger, boire, acheter and vouloir take the partitive. Activities with faire take the partitive too: faire du sport, de la musique, de l’escalade.",
-  "example": "Je bois du café et de l’eau. · Il n’y a pas de lait. · J’aime le thé, mais je bois beaucoup de café.",
-  "aside": "English often uses no word at all where French needs du or de la: I drink milk is je bois du lait.",
+  "guide": {
+    "summary": "Du, de la, de l’ and des say “some”: an amount you do not count. Learn the four forms, then learn the places where they shrink to de or give way to le, la, les.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "Which one: du, de la, de l’ or des?",
+        "text": "French cannot leave a noun bare. Where English says “I drink milk”, French marks the amount with a partitive article.",
+        "table": {
+          "columns": [
+            "Noun",
+            "Article",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine",
+              "du",
+              "du pain, du café"
+            ],
+            [
+              "feminine",
+              "de la",
+              "de la soupe, de la viande"
+            ],
+            [
+              "vowel or silent h",
+              "de l’",
+              "de l’eau, de l’huile"
+            ],
+            [
+              "plural",
+              "des",
+              "des œufs, des pommes"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask how much: an unspecified amount, not one whole thing? Then you need a partitive.",
+          "Find the noun’s gender and number.",
+          "Check its first letter: a vowel or a silent h takes the elided form, whatever the gender."
+        ],
+        "examples": [
+          {
+            "fr": "Le matin, je bois du café.",
+            "en": "In the morning I drink coffee."
+          },
+          {
+            "fr": "Elle mange de la soupe.",
+            "en": "She is eating soup."
+          },
+          {
+            "fr": "Nous achetons des œufs.",
+            "en": "We are buying eggs."
+          }
+        ],
+        "watch": [
+          "English often uses no word at all: “I drink milk” is je bois du lait, never je bois lait.",
+          "Only the noun decides the gender: du jus d’orange stays masculine because jus is.",
+          "Du and de la never stand in front of a vowel sound."
+        ]
+      },
+      {
+        "id": "general-or-some",
+        "title": "The thing in general, or some of it?",
+        "text": "Aimer, adorer, détester and préférer talk about the thing in general: they take le, la, l’, les, even in a negative sentence. Manger, boire, acheter, prendre and vouloir talk about an amount, so they take the partitive.",
+        "table": {
+          "columns": [
+            "Noun",
+            "aimer, adorer, détester, préférer",
+            "manger, boire, acheter, vouloir"
+          ],
+          "rows": [
+            [
+              "masculine",
+              "le café",
+              "du café"
+            ],
+            [
+              "feminine",
+              "la salade",
+              "de la salade"
+            ],
+            [
+              "before a vowel",
+              "l’eau",
+              "de l’eau"
+            ],
+            [
+              "plural",
+              "les frites",
+              "des frites"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the verb before you look at the noun.",
+          "Liking, loving, hating, preferring: use the definite article.",
+          "Eating, drinking, buying, wanting: use the partitive.",
+          "A negation never changes what a verb of taste takes."
+        ],
+        "examples": [
+          {
+            "fr": "J’aime le thé, mais je bois beaucoup de café.",
+            "en": "I like tea, but I drink a lot of coffee."
+          },
+          {
+            "fr": "Je n’aime pas le poisson.",
+            "en": "I don’t like fish."
+          }
+        ],
+        "watch": [
+          "Je n’aime pas de poisson is wrong: pas de denies an amount, and aimer is not about amounts.",
+          "The same noun changes article with the verb: il aime la salade, il mange de la salade."
+        ]
+      },
+      {
+        "id": "negation",
+        "title": "After ne…pas the partitive becomes de",
+        "text": "When a negation denies an amount, all four partitives collapse into de, shortened to d’ before a vowel or a silent h.",
+        "table": {
+          "columns": [
+            "Positive",
+            "Sentence",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "du",
+              "je bois du café",
+              "je ne bois pas de café"
+            ],
+            [
+              "de la",
+              "elle mange de la viande",
+              "elle ne mange pas de viande"
+            ],
+            [
+              "de l’",
+              "il y a de l’eau",
+              "il n’y a pas d’eau"
+            ],
+            [
+              "des",
+              "j’ai des frères",
+              "je n’ai pas de frères"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the negation denies an amount, not an identity.",
+          "Replace the whole partitive with the single short word de: no gender, no number.",
+          "Drop its e before a vowel or a silent h.",
+          "Keep ne in writing, as n’ before a vowel."
+        ],
+        "examples": [
+          {
+            "fr": "Je ne bois pas de café le soir.",
+            "en": "I don’t drink coffee in the evening."
+          },
+          {
+            "fr": "Il n’y a pas d’eau dans la bouteille.",
+            "en": "There is no water in the bottle."
+          }
+        ],
+        "watch": [
+          "Pas du, pas de la and pas des do not exist when an amount is denied.",
+          "Speech drops ne, writing keeps it: je n’ai pas de frères."
+        ]
+      },
+      {
+        "id": "etre",
+        "title": "Why ce n’est pas du café keeps its article",
+        "text": "Être measures nothing: a negative sentence with être says what something is not. Nothing shrinks there, so the article stays whole.",
+        "table": {
+          "columns": [
+            "Negation",
+            "What it denies",
+            "Article after pas"
+          ],
+          "rows": [
+            [
+              "ce n’est pas",
+              "what the thing is",
+              "du, de la, de l’ stay"
+            ],
+            [
+              "ce ne sont pas",
+              "what the things are",
+              "des stays"
+            ],
+            [
+              "je ne bois pas",
+              "an amount",
+              "de, or d’ before a vowel"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the negated verb.",
+          "Être: keep exactly the article the positive sentence would have.",
+          "Any other verb denying an amount: reduce the article to de."
+        ],
+        "examples": [
+          {
+            "fr": "Ce n’est pas du café, c’est du thé.",
+            "en": "It isn’t coffee, it’s tea."
+          },
+          {
+            "fr": "Ce ne sont pas des pommes, ce sont des poires.",
+            "en": "They aren’t apples, they’re pears."
+          }
+        ],
+        "watch": [
+          "Ce n’est pas de soupe is wrong: the sentence says what the food is, not how much of it there is.",
+          "For one thing say ce n’est pas, for several ce ne sont pas."
+        ]
+      },
+      {
+        "id": "quantities",
+        "title": "After a quantity word: de and nothing else",
+        "text": "A word that measures, whether an adverb of quantity or a container, is followed by de with no article at all.",
+        "table": {
+          "columns": [
+            "Quantity",
+            "English",
+            "Example"
+          ],
+          "rows": [
+            [
+              "beaucoup de",
+              "a lot of",
+              "beaucoup de monde"
+            ],
+            [
+              "un peu de",
+              "a little",
+              "un peu de sucre"
+            ],
+            [
+              "trop de",
+              "too much",
+              "trop de sel"
+            ],
+            [
+              "assez de",
+              "enough",
+              "assez d’argent"
+            ],
+            [
+              "un verre de",
+              "a glass of",
+              "un verre d’eau"
+            ],
+            [
+              "une bouteille de",
+              "a bottle of",
+              "une bouteille de lait"
+            ],
+            [
+              "un kilo de",
+              "a kilo of",
+              "un kilo de pommes"
+            ]
+          ]
+        },
+        "steps": [
+          "Spot the measuring word in front of the noun.",
+          "Put de after it and drop the article completely.",
+          "Shorten de to d’ before a vowel or a silent h."
+        ],
+        "examples": [
+          {
+            "fr": "Il met trop de sel dans la soupe.",
+            "en": "He puts too much salt in the soup."
+          },
+          {
+            "fr": "Je voudrais une bouteille de lait.",
+            "en": "I would like a bottle of milk."
+          }
+        ],
+        "watch": [
+          "Beaucoup du café is wrong: a quantity word leaves no article behind.",
+          "Two nouns never touch: une bouteille lait needs the link word."
+        ]
+      },
+      {
+        "id": "faire",
+        "title": "Faire + activity: faire du sport",
+        "text": "Doing a sport, an instrument or a hobby uses faire plus a partitive. The gender and the first letter of the activity decide which one.",
+        "table": {
+          "columns": [
+            "Article",
+            "With faire",
+            "English"
+          ],
+          "rows": [
+            [
+              "du",
+              "faire du sport, faire du vélo, faire du yoga",
+              "to do sport, to cycle, to do yoga"
+            ],
+            [
+              "de la",
+              "faire de la musique, faire de la danse, faire de la natation",
+              "to play music, to dance, to swim"
+            ],
+            [
+              "de l’",
+              "faire de l’escalade",
+              "to go climbing"
+            ],
+            [
+              "des",
+              "faire des photos",
+              "to take photos"
+            ]
+          ]
+        },
+        "steps": [
+          "Keep faire and put the activity straight after it.",
+          "Pick the partitive that matches the activity’s gender and first letter.",
+          "In a negative sentence faire behaves like any other verb: the partitive becomes de."
+        ],
+        "examples": [
+          {
+            "fr": "Le samedi, je fais du sport.",
+            "en": "On Saturdays I do sport."
+          },
+          {
+            "fr": "Ma sœur fait de la musique.",
+            "en": "My sister plays music."
+          },
+          {
+            "fr": "Nous ne faisons pas de vélo le dimanche.",
+            "en": "We don’t cycle on Sundays."
+          }
+        ],
+        "watch": [
+          "Faire le sport is not said: with faire the activity takes a partitive.",
+          "Elle fait de danse is wrong: only a negation or a quantity word reduces the article to de."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "du-de-la": {
+      "section": "forms",
+      "steps": [
+        "Check the sentence is positive and has no quantity word in front of the noun.",
+        "Find the noun’s gender: le before it means masculine, la means feminine.",
+        "Take that row of the table; words added after the noun do not change it."
+      ]
+    },
+    "de-l-des": {
+      "section": "forms",
+      "steps": [
+        "Look at the number first: a plural noun takes one single form for both genders.",
+        "For a singular noun, check its first letter: a vowel or a silent h gives the elided form.",
+        "Remember that h is usually silent, so the word counts as beginning with a vowel."
+      ]
+    },
+    "negation-de": {
+      "section": "negation",
+      "steps": [
+        "Check what the negation denies: an amount, not what something is.",
+        "Replace the whole partitive with the one short word, whatever the gender and number.",
+        "Drop its e before a vowel or a silent h, and keep ne (n’) in writing."
+      ]
+    },
+    "etre-keeps-article": {
+      "section": "etre",
+      "steps": [
+        "Find the negated verb.",
+        "If it is être, keep the article the positive sentence would use: nothing is reduced.",
+        "Then choose that article by the noun’s gender, number and first letter."
+      ]
+    },
+    "quantities-de": {
+      "section": "quantities",
+      "steps": [
+        "Spot the quantity word or container word before the noun.",
+        "Follow it with de and no article at all.",
+        "Shorten de before a vowel or a silent h."
+      ]
+    },
+    "likes-definite": {
+      "section": "general-or-some",
+      "steps": [
+        "Read the verb: does it express taste, or an amount taken?",
+        "A verb of taste takes the definite article, in positive and negative sentences alike.",
+        "Then match that article to the noun’s gender, number and first letter."
+      ]
+    },
+    "faire-activities": {
+      "section": "faire",
+      "steps": [
+        "Check it is faire plus an activity, in a positive sentence.",
+        "Choose the partitive from the activity’s gender and first letter.",
+        "If the sentence is negative, reduce the article like any ordinary verb."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "partitive-du-de-la-1",
@@ -25,7 +424,22 @@
       ],
       "hint": "An unspecified amount of coffee. Is café masculine or feminine?",
       "feedback": "Café is masculine and does not begin with a vowel.",
-      "explanation": "For some of a masculine noun, use du: je bois du café."
+      "explanation": "For some of a masculine noun, use du: je bois du café.",
+      "mistakes": [
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "De la is the feminine form. Le café is masculine, so it takes the masculine partitive."
+        },
+        {
+          "answers": [
+            "de l’"
+          ],
+          "why": "De l’ appears only before a vowel or a silent h. Café begins with the consonant c."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-du-de-la-2",
@@ -43,7 +457,22 @@
       ],
       "hint": "Some soup, not a whole soup. What is the gender of soupe?",
       "feedback": "Soupe is feminine and singular.",
-      "explanation": "For some of a feminine noun, use de la: de la soupe."
+      "explanation": "For some of a feminine noun, use de la: de la soupe.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is the masculine form. Soupe is feminine, la soupe, so it needs the feminine partitive."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is for a plural noun. Soupe here is one singular noun."
+        }
+      ],
+      "row": "feminine"
     },
     {
       "id": "partitive-du-de-la-3",
@@ -56,7 +485,34 @@
       ],
       "hint": "Some bread. What is the gender of pain?",
       "feedback": "Pain is masculine.",
-      "explanation": "Le pain is masculine, so some bread is du pain."
+      "explanation": "Le pain is masculine, so some bread is du pain.",
+      "mistakes": [
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "That is the feminine form, but le pain is masculine."
+        },
+        {
+          "answers": [
+            "de l’"
+          ],
+          "why": "The elided form stands only before a vowel or a silent h. Pain begins with p."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural. Pain here is one singular noun, not several loaves."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows a negation or a quantity word. This sentence is positive and has neither."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-du-de-la-4",
@@ -69,7 +525,34 @@
       ],
       "hint": "English has no article here, but French needs one for an amount of milk.",
       "feedback": "Boire takes the partitive, and lait is masculine.",
-      "explanation": "Milk here is an unspecified amount, so French uses du: je bois du lait."
+      "explanation": "Milk here is an unspecified amount, so French uses du: je bois du lait.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je bois lait."
+          ],
+          "why": "English needs no word before milk, but French cannot leave the noun bare: an amount always takes an article."
+        },
+        {
+          "answers": [
+            "Je bois le lait."
+          ],
+          "why": "Je bois le lait means the milk, one particular milk. Here milk is an unspecified amount."
+        },
+        {
+          "answers": [
+            "Je bois de la lait."
+          ],
+          "why": "That is the feminine form, and le lait is masculine."
+        },
+        {
+          "answers": [
+            "Je bois de lait."
+          ],
+          "why": "Bare de follows a negation or a quantity word, and this sentence has neither."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-du-de-la-5",
@@ -82,7 +565,34 @@
       ],
       "hint": "What is the gender of jus?",
       "feedback": "Jus is not feminine.",
-      "explanation": "Le jus is masculine, so some juice is du jus. The d’orange part does not change the gender."
+      "explanation": "Le jus is masculine, so some juice is du jus. The d’orange part does not change the gender.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il boit de la jus d’orange."
+          ],
+          "why": "That is the sentence unchanged. Le jus is masculine, so the feminine article in front of it is the error."
+        },
+        {
+          "answers": [
+            "Il boit le jus d’orange."
+          ],
+          "why": "That says he drinks the juice, one particular one. The sentence is about an unspecified amount."
+        },
+        {
+          "answers": [
+            "Il boit de jus d’orange."
+          ],
+          "why": "Bare de follows a negation or a quantity word, and there is neither here."
+        },
+        {
+          "answers": [
+            "Il boit des jus d’orange."
+          ],
+          "why": "Des would count several separate juices. Here it is an amount of one drink."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-du-de-la-6",
@@ -102,7 +612,22 @@
       ],
       "hint": "Some cheese: what is the gender of fromage? One tile stays unused.",
       "feedback": "Fromage is masculine. Pick the partitive that matches.",
-      "explanation": "Fromage is masculine, so some cheese is du fromage."
+      "explanation": "Fromage is masculine, so some cheese is du fromage.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous mangeons de la fromage."
+          ],
+          "why": "That tile is the feminine article, and le fromage is masculine."
+        },
+        {
+          "answers": [
+            "Nous mangeons fromage."
+          ],
+          "why": "English says “we eat cheese” with no word before it; French always puts an article in front of the noun."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-de-l-des-1",
@@ -120,7 +645,22 @@
       ],
       "hint": "Eau begins with a vowel.",
       "feedback": "Before a vowel, du and de la become one form.",
-      "explanation": "Before a vowel or silent h, both du and de la become de l’: de l’eau."
+      "explanation": "Before a vowel or silent h, both du and de la become de l’: de l’eau.",
+      "mistakes": [
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "De la is the feminine form used before a consonant. Eau begins with a vowel, so the a cannot stay."
+        },
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is masculine and l’eau is feminine. Du could not stand before a vowel either."
+        }
+      ],
+      "row": "vowel or silent h"
     },
     {
       "id": "partitive-de-l-des-2",
@@ -138,7 +678,22 @@
       ],
       "hint": "Œufs is plural.",
       "feedback": "Du and de la are only for singular nouns.",
-      "explanation": "For some of a plural noun, use des: des œufs."
+      "explanation": "For some of a plural noun, use des: des œufs.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is for a singular masculine noun. Œufs is plural."
+        },
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "De la is for a singular feminine noun. Œufs is plural, and masculine as well."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "partitive-de-l-des-3",
@@ -151,7 +706,34 @@
       ],
       "hint": "The h in huile is silent.",
       "feedback": "Huile sounds as if it begins with a vowel.",
-      "explanation": "Huile has a silent h, so the partitive is de l’: de l’huile."
+      "explanation": "Huile has a silent h, so the partitive is de l’: de l’huile.",
+      "mistakes": [
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "De la stands before a consonant sound. The h of huile is silent, so the word begins with a vowel sound."
+        },
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is masculine; l’huile is feminine, and du never stands before a vowel sound anyway."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural. Huile here is one uncountable liquid."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows a negation or a quantity word. This sentence is positive and has neither."
+        }
+      ],
+      "row": "vowel or silent h"
     },
     {
       "id": "partitive-de-l-des-4",
@@ -176,7 +758,34 @@
           "answer": "Tu voudrais de l’eau ?",
           "message": "That is correct, but it means would you like. Do you want is tu veux."
         }
-      ]
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Tu veux de la eau ?"
+          ],
+          "why": "De la keeps its a only before a consonant sound, and eau begins with a vowel."
+        },
+        {
+          "answers": [
+            "Tu veux du eau ?"
+          ],
+          "why": "Du is masculine and l’eau is feminine; du cannot sit before a vowel either."
+        },
+        {
+          "answers": [
+            "Vous voulez de l’eau ?"
+          ],
+          "why": "That is the vous form, for a stranger or several people. The question is put to a friend."
+        },
+        {
+          "answers": [
+            "Tu veux l’eau ?"
+          ],
+          "why": "That asks for the water, one particular water. The English asks for an unspecified amount."
+        }
+      ],
+      "row": "vowel or silent h"
     },
     {
       "id": "partitive-de-l-des-5",
@@ -189,7 +798,34 @@
       ],
       "hint": "The new noun begins with a vowel.",
       "feedback": "Du cannot stand before a vowel.",
-      "explanation": "Eau begins with a vowel, so du becomes de l’: je bois de l’eau."
+      "explanation": "Eau begins with a vowel, so du becomes de l’: je bois de l’eau.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je bois du lait."
+          ],
+          "why": "Nothing has changed: the task is to put the new noun in and adapt its article."
+        },
+        {
+          "answers": [
+            "Je bois du eau."
+          ],
+          "why": "Du is masculine, l’eau is feminine, and du cannot stand before a vowel."
+        },
+        {
+          "answers": [
+            "Je bois de la eau."
+          ],
+          "why": "That form fits a feminine noun beginning with a consonant; eau begins with a vowel."
+        },
+        {
+          "answers": [
+            "Je bois l’eau."
+          ],
+          "why": "That means the water, one particular one. The sentence is about an unspecified amount."
+        }
+      ],
+      "row": "vowel or silent h"
     },
     {
       "id": "partitive-de-l-des-6",
@@ -202,7 +838,34 @@
       ],
       "hint": "Pommes is plural.",
       "feedback": "Du is only for a singular masculine noun.",
-      "explanation": "Pommes is plural, so the partitive is des: des pommes."
+      "explanation": "Pommes is plural, so the partitive is des: des pommes.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il achète du pommes."
+          ],
+          "why": "That is the sentence unchanged. Du is singular and masculine, while pommes is plural."
+        },
+        {
+          "answers": [
+            "Il achète de la pommes."
+          ],
+          "why": "That is a singular feminine article in front of a plural noun."
+        },
+        {
+          "answers": [
+            "Il achète de pommes."
+          ],
+          "why": "Bare de follows a negation or a quantity word, and this sentence has neither."
+        },
+        {
+          "answers": [
+            "Il achète les pommes."
+          ],
+          "why": "Les pommes means the apples, particular ones. He is buying an unspecified quantity."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "partitive-negation-de-1",
@@ -220,7 +883,22 @@
       ],
       "hint": "After ne…pas, the partitive article changes.",
       "feedback": "The sentence is negative.",
-      "explanation": "After a negation, du, de la and des become de: je ne bois pas de café."
+      "explanation": "After a negation, du, de la and des become de: je ne bois pas de café.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du belongs in a positive sentence. Here ne…pas denies the amount, so the partitive shrinks."
+        },
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "That is a positive-sentence form, and it is feminine, while le café is masculine."
+        }
+      ],
+      "row": "du"
     },
     {
       "id": "partitive-negation-de-2",
@@ -238,7 +916,22 @@
       ],
       "hint": "Negative sentence, and eau begins with a vowel.",
       "feedback": "After ne…pas, the partitive becomes one short word.",
-      "explanation": "After a negation, de l’ becomes de, and de becomes d’ before a vowel: pas d’eau."
+      "explanation": "After a negation, de l’ becomes de, and de becomes d’ before a vowel: pas d’eau.",
+      "mistakes": [
+        {
+          "answers": [
+            "de l’"
+          ],
+          "why": "That is the form for a positive sentence. After ne…pas the article is reduced."
+        },
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "That is a positive-sentence form too, and it could not stand before a vowel anyway."
+        }
+      ],
+      "row": "de l’"
     },
     {
       "id": "partitive-negation-de-3",
@@ -251,7 +944,28 @@
       ],
       "hint": "Negative sentence, and enfants begins with a vowel.",
       "feedback": "Des becomes a short form after ne…pas.",
-      "explanation": "After a negation, des becomes de, and de becomes d’ before a vowel: pas d’enfants."
+      "explanation": "After a negation, des becomes de, and de becomes d’ before a vowel: pas d’enfants.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "The full form is kept before a consonant. Enfants begins with a vowel, so the e goes."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des belongs in the positive sentence. A negation of quantity replaces the plural article."
+        },
+        {
+          "answers": [
+            "de l’"
+          ],
+          "why": "That is a singular positive-sentence form, and enfants is plural."
+        }
+      ],
+      "row": "des"
     },
     {
       "id": "partitive-negation-de-4",
@@ -264,7 +978,34 @@
       ],
       "hint": "Put ne…pas around the verb and look at the article.",
       "feedback": "The article changes in a negative sentence.",
-      "explanation": "Ne…pas goes around mange, and de la becomes de: elle ne mange pas de viande."
+      "explanation": "Ne…pas goes around mange, and de la becomes de: elle ne mange pas de viande.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne mange pas de la viande."
+          ],
+          "why": "The negation is added but the article is not touched. After ne…pas no gender form survives."
+        },
+        {
+          "answers": [
+            "Elle ne mange pas du viande."
+          ],
+          "why": "Du is masculine, la viande is feminine, and a positive-sentence article cannot follow pas."
+        },
+        {
+          "answers": [
+            "Elle mange pas de viande."
+          ],
+          "why": "That leaves out ne. Speech drops it, but written French keeps ne in front of the verb."
+        },
+        {
+          "answers": [
+            "Elle ne mange pas la viande."
+          ],
+          "why": "La viande names one particular meat. The sentence denies an amount, not a specific dish."
+        }
+      ],
+      "row": "de la"
     },
     {
       "id": "partitive-negation-de-5",
@@ -278,7 +1019,28 @@
       ],
       "hint": "Ne becomes n’ before ai, and the article changes.",
       "feedback": "Two things change: the negation and the article.",
-      "explanation": "Ne becomes n’ before a vowel, and des becomes de after a negation: je n’ai pas de frères. Je n’ai pas de frère, in the singular, is just as correct."
+      "explanation": "Ne becomes n’ before a vowel, and des becomes de after a negation: je n’ai pas de frères. Je n’ai pas de frère, in the singular, is just as correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne ai pas de frères."
+          ],
+          "why": "Ne cannot stay whole before a vowel: it loses its e and takes an apostrophe."
+        },
+        {
+          "answers": [
+            "Je n’ai pas des frères."
+          ],
+          "why": "Des belongs in the positive sentence. After ne…pas the plural article is replaced."
+        },
+        {
+          "answers": [
+            "J’ai pas de frères."
+          ],
+          "why": "That leaves out ne. Written French keeps it, joined to the verb as n’."
+        }
+      ],
+      "row": "des"
     },
     {
       "id": "partitive-negation-de-6",
@@ -297,7 +1059,34 @@
       ],
       "hint": "Use il n’y a pas and think about the article after a negation.",
       "feedback": "After a negation, the partitive becomes one short word.",
-      "explanation": "There is no milk is il n’y a pas de lait: after ne…pas, du becomes de."
+      "explanation": "There is no milk is il n’y a pas de lait: after ne…pas, du becomes de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il n’y a pas du lait."
+          ],
+          "why": "Du belongs in a positive sentence. After ne…pas the article is reduced to its short form."
+        },
+        {
+          "answers": [
+            "Il n’y a pas lait."
+          ],
+          "why": "French cannot leave the noun bare after pas: a short word still links them."
+        },
+        {
+          "answers": [
+            "Il n’a pas de lait."
+          ],
+          "why": "That says he has no milk. There is and there are are il y a."
+        },
+        {
+          "answers": [
+            "Il n’y a pas le lait."
+          ],
+          "why": "Le lait means the milk, one particular one. The sentence says there is none at all."
+        }
+      ],
+      "row": "du"
     },
     {
       "id": "partitive-negation-de-7",
@@ -310,7 +1099,28 @@
       ],
       "hint": "The sentence is negative.",
       "feedback": "Look at the word after pas.",
-      "explanation": "After a negation, du becomes de: je ne veux pas de sucre."
+      "explanation": "After a negation, du becomes de: je ne veux pas de sucre.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne veux pas du sucre."
+          ],
+          "why": "That is the sentence unchanged. Du belongs in a positive sentence; a negation of quantity replaces it."
+        },
+        {
+          "answers": [
+            "Je ne veux pas le sucre."
+          ],
+          "why": "Le sucre means the sugar, one particular lot of it. The sentence refuses any at all."
+        },
+        {
+          "answers": [
+            "Je veux pas de sucre."
+          ],
+          "why": "That deletes ne instead of fixing the article. Written French keeps ne before the verb."
+        }
+      ],
+      "row": "du"
     },
     {
       "id": "partitive-negation-de-8",
@@ -331,7 +1141,22 @@
       ],
       "hint": "The sentence is negative. One tile stays unused.",
       "feedback": "Du does not follow pas.",
-      "explanation": "After ne…pas, du becomes de: il n’achète pas de vin."
+      "explanation": "After ne…pas, du becomes de: il n’achète pas de vin.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il n’achète pas du vin."
+          ],
+          "why": "That tile is the positive-sentence article. The sentence is negative, so the article is reduced."
+        },
+        {
+          "answers": [
+            "Il n’achète pas vin."
+          ],
+          "why": "French does not leave the noun bare after pas: one short word still stands in front of it."
+        }
+      ],
+      "row": "du"
     },
     {
       "id": "partitive-etre-keeps-article-1",
@@ -349,7 +1174,22 @@
       ],
       "hint": "Is this negation about an amount, or about what the thing is?",
       "feedback": "With être, the article does not change.",
-      "explanation": "Être is not a negation of quantity: ce n’est pas du café says what the drink is, so du stays."
+      "explanation": "Être is not a negation of quantity: ce n’est pas du café says what the drink is, so du stays.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows pas when an amount is denied. Here être says what the drink is, not how much there is."
+        },
+        {
+          "answers": [
+            "d’"
+          ],
+          "why": "That is de shortened before a vowel; café begins with a consonant, and this negation reduces nothing anyway."
+        }
+      ],
+      "row": "ce n’est pas"
     },
     {
       "id": "partitive-etre-keeps-article-2",
@@ -367,7 +1207,22 @@
       ],
       "hint": "The negation is on être, not on an amount.",
       "feedback": "Être keeps the full article.",
-      "explanation": "After a negative form of être, des stays: ce ne sont pas des pommes."
+      "explanation": "After a negative form of être, des stays: ce ne sont pas des pommes.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows pas only when an amount is denied. Ce ne sont pas says what the fruit is, so the article stays whole."
+        },
+        {
+          "answers": [
+            "d’"
+          ],
+          "why": "That is the shortened form used before a vowel; pommes begins with a consonant, and nothing is reduced here."
+        }
+      ],
+      "row": "ce ne sont pas"
     },
     {
       "id": "partitive-etre-keeps-article-3",
@@ -380,7 +1235,34 @@
       ],
       "hint": "After ce n’est pas, the article stays as it was.",
       "feedback": "This negation uses être, so the partitive keeps its full form.",
-      "explanation": "With être the partitive does not shrink, and eau begins with a vowel: ce n’est pas de l’eau."
+      "explanation": "With être the partitive does not shrink, and eau begins with a vowel: ce n’est pas de l’eau.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows pas when an amount is denied, but être only says what the liquid is."
+        },
+        {
+          "answers": [
+            "d’"
+          ],
+          "why": "That short form belongs after a negation of quantity. This negation is on être."
+        },
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "That form fits a feminine noun beginning with a consonant; eau begins with a vowel."
+        },
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is masculine and l’eau is feminine."
+        }
+      ],
+      "row": "ce n’est pas"
     },
     {
       "id": "partitive-etre-keeps-article-4",
@@ -393,7 +1275,28 @@
       ],
       "hint": "Which verb is negative here?",
       "feedback": "Être keeps the full partitive.",
-      "explanation": "The negated verb is être, so de la does not become de: ce n’est pas de la soupe."
+      "explanation": "The negated verb is être, so de la does not become de: ce n’est pas de la soupe.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce n’est pas de soupe, c’est de la sauce."
+          ],
+          "why": "That is the sentence unchanged. Bare de after pas denies an amount, but être only says what the food is."
+        },
+        {
+          "answers": [
+            "Ce n’est pas du soupe, c’est de la sauce."
+          ],
+          "why": "Du is masculine and la soupe is feminine."
+        },
+        {
+          "answers": [
+            "Ce n’est pas de soupe, c’est de sauce."
+          ],
+          "why": "That strips the second article too. Être never reduces a partitive, so both nouns keep a full one."
+        }
+      ],
+      "row": "ce n’est pas"
     },
     {
       "id": "partitive-etre-keeps-article-5",
@@ -413,7 +1316,34 @@
       ],
       "hint": "Use ce n’est pas and c’est. Does the article change with être?",
       "feedback": "With être, the partitive keeps its full form.",
-      "explanation": "Ce n’est pas du jus keeps du, because être is not a negation of quantity. Both nouns are masculine."
+      "explanation": "Ce n’est pas du jus keeps du, because être is not a negation of quantity. Both nouns are masculine.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce n’est pas de jus, c’est du lait."
+          ],
+          "why": "Bare de after pas denies an amount; here the negation is on être, which says what the drink is."
+        },
+        {
+          "answers": [
+            "Ce n’est pas de la jus, c’est du lait."
+          ],
+          "why": "Le jus is masculine, so a feminine article does not fit it."
+        },
+        {
+          "answers": [
+            "Il n’est pas du jus, c’est du lait."
+          ],
+          "why": "To say what something is, French uses ce, not il."
+        },
+        {
+          "answers": [
+            "Ce n’est pas jus, c’est lait."
+          ],
+          "why": "English can leave both nouns bare; French puts an article in front of each one."
+        }
+      ],
+      "row": "ce n’est pas"
     },
     {
       "id": "partitive-etre-keeps-article-6",
@@ -426,7 +1356,34 @@
       ],
       "hint": "Think about which verb is negative.",
       "feedback": "With être the article does not become de.",
-      "explanation": "Ce n’est pas de la crème keeps de la: être is not a negation of quantity."
+      "explanation": "Ce n’est pas de la crème keeps de la: être is not a negation of quantity.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce n’est pas de crème."
+          ],
+          "why": "Bare de after pas denies an amount. Être says what the thing is, so the article keeps its full form."
+        },
+        {
+          "answers": [
+            "C’est pas de la crème."
+          ],
+          "why": "That drops ne. Written French keeps ne before the verb, as n’ in front of a vowel."
+        },
+        {
+          "answers": [
+            "Ce n’est pas du crème."
+          ],
+          "why": "Du is masculine and la crème is feminine."
+        },
+        {
+          "answers": [
+            "Ce ne sont pas de la crème."
+          ],
+          "why": "Ce ne sont pas is the plural form, for several things. Crème here is one singular noun."
+        }
+      ],
+      "row": "ce n’est pas"
     },
     {
       "id": "partitive-quantities-de-1",
@@ -444,7 +1401,22 @@
       ],
       "hint": "Beaucoup is a word of quantity.",
       "feedback": "After a quantity, the article disappears.",
-      "explanation": "After beaucoup, use de alone: beaucoup de monde."
+      "explanation": "After beaucoup, use de alone: beaucoup de monde.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is the article you use when nothing measures the noun. Beaucoup measures it, so the article goes."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is a plural article; monde is singular here, and a quantity word takes no article at all."
+        }
+      ],
+      "row": "beaucoup de"
     },
     {
       "id": "partitive-quantities-de-2",
@@ -462,7 +1434,22 @@
       ],
       "hint": "Un verre is a quantity, and eau begins with a vowel.",
       "feedback": "After a quantity, only de remains, shortened before a vowel.",
-      "explanation": "After un verre, use de alone, and de becomes d’ before a vowel: un verre d’eau."
+      "explanation": "After un verre, use de alone, and de becomes d’ before a vowel: un verre d’eau.",
+      "mistakes": [
+        {
+          "answers": [
+            "de l’"
+          ],
+          "why": "That full article is for a noun with nothing in front of it. Un verre measures the water, so the article goes."
+        },
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "That is the full feminine article. A container word leaves only the short link, and eau begins with a vowel."
+        }
+      ],
+      "row": "un verre de"
     },
     {
       "id": "partitive-quantities-de-3",
@@ -475,7 +1462,34 @@
       ],
       "hint": "Trop is a word of quantity.",
       "feedback": "After trop, no article follows.",
-      "explanation": "After trop, use de alone: trop de sel."
+      "explanation": "After trop, use de alone: trop de sel.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is for a noun with no quantity word before it. Trop is one, so the article disappears."
+        },
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "That is feminine and le sel is masculine; after trop no gender form survives anyway."
+        },
+        {
+          "answers": [
+            "d’"
+          ],
+          "why": "The e is dropped only before a vowel or a silent h, and sel begins with s."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural, and a quantity word takes no article at all."
+        }
+      ],
+      "row": "trop de"
     },
     {
       "id": "partitive-quantities-de-4",
@@ -488,7 +1502,34 @@
       ],
       "hint": "Assez is a word of quantity, and argent begins with a vowel.",
       "feedback": "After assez, only de remains.",
-      "explanation": "After assez, use de alone, shortened to d’ before a vowel: assez d’argent."
+      "explanation": "After assez, use de alone, shortened to d’ before a vowel: assez d’argent.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "The full form stands before a consonant. Argent begins with a vowel, so the e is dropped."
+        },
+        {
+          "answers": [
+            "de l’"
+          ],
+          "why": "That full article is for a noun with nothing in front of it. Assez measures the money, so the article goes."
+        },
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is the masculine article for a noun with no quantity word, and it never stands before a vowel."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural; argent is singular, and a quantity word takes no article."
+        }
+      ],
+      "row": "assez de"
     },
     {
       "id": "partitive-quantities-de-5",
@@ -502,7 +1543,34 @@
       ],
       "hint": "Une bouteille is a quantity.",
       "feedback": "After a container word, use de alone.",
-      "explanation": "After a quantity like une bouteille, use de alone: une bouteille de lait."
+      "explanation": "After a quantity like une bouteille, use de alone: une bouteille de lait.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je voudrais une bouteille du lait."
+          ],
+          "why": "Du is the article for a noun with nothing in front of it. After a container word only the short link stays."
+        },
+        {
+          "answers": [
+            "Je voudrais une bouteille lait."
+          ],
+          "why": "A container and its content are always linked by a short word; two nouns cannot touch."
+        },
+        {
+          "answers": [
+            "Je voudrais un bouteille de lait."
+          ],
+          "why": "Bouteille is feminine, so the word for one in front of it must be feminine too."
+        },
+        {
+          "answers": [
+            "Je veux une bouteille de lait."
+          ],
+          "why": "Je veux is a blunt “I want”. “I would like” is the polite conditional form."
+        }
+      ],
+      "row": "une bouteille de"
     },
     {
       "id": "partitive-quantities-de-6",
@@ -515,7 +1583,34 @@
       ],
       "hint": "Beaucoup is a word of quantity.",
       "feedback": "After beaucoup, du does not appear.",
-      "explanation": "After beaucoup, use de alone: beaucoup de café."
+      "explanation": "After beaucoup, use de alone: beaucoup de café.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle boit beaucoup du café."
+          ],
+          "why": "That is the sentence unchanged. Beaucoup measures the coffee, so no article follows it."
+        },
+        {
+          "answers": [
+            "Elle boit beaucoup de la café."
+          ],
+          "why": "That keeps a feminine article in front of a masculine noun, and a quantity word takes no article at all."
+        },
+        {
+          "answers": [
+            "Elle boit du café."
+          ],
+          "why": "That deletes beaucoup instead of fixing what follows it. The sentence should keep its quantity word."
+        },
+        {
+          "answers": [
+            "Elle boit beaucoup d’café."
+          ],
+          "why": "The e is dropped only before a vowel or a silent h, and café begins with c."
+        }
+      ],
+      "row": "beaucoup de"
     },
     {
       "id": "partitive-quantities-de-7",
@@ -528,7 +1623,28 @@
       ],
       "hint": "Un peu is a quantity, so the article changes.",
       "feedback": "After un peu, du disappears.",
-      "explanation": "After un peu, use de alone: je prends un peu de sucre."
+      "explanation": "After un peu, use de alone: je prends un peu de sucre.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je prends un peu du sucre."
+          ],
+          "why": "The quantity word is added but the article is kept. A quantity word leaves no article behind."
+        },
+        {
+          "answers": [
+            "Je prends un peu de la sucre."
+          ],
+          "why": "Le sucre is masculine, and after a quantity word no gender form survives either."
+        },
+        {
+          "answers": [
+            "Je prends du sucre un peu."
+          ],
+          "why": "Un peu belongs in front of the noun it measures, not at the end of the sentence."
+        }
+      ],
+      "row": "un peu de"
     },
     {
       "id": "partitive-quantities-de-8",
@@ -548,7 +1664,28 @@
       ],
       "hint": "Beaucoup is a quantity. One tile stays unused.",
       "feedback": "After beaucoup, only de follows.",
-      "explanation": "After beaucoup, use de alone: beaucoup de neige."
+      "explanation": "After beaucoup, use de alone: beaucoup de neige.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il y a beaucoup de la neige."
+          ],
+          "why": "After a quantity word the article is dropped; only the short link stays."
+        },
+        {
+          "answers": [
+            "Il y a de la neige."
+          ],
+          "why": "That says there is snow but loses “a lot of”. The quantity tile has to be used."
+        },
+        {
+          "answers": [
+            "Il y a beaucoup neige."
+          ],
+          "why": "A quantity word is joined to its noun by a short word; the two cannot sit side by side."
+        }
+      ],
+      "row": "beaucoup de"
     },
     {
       "id": "partitive-likes-definite-1",
@@ -566,7 +1703,22 @@
       ],
       "hint": "Aimer talks about something in general.",
       "feedback": "Verbs of liking do not take the partitive.",
-      "explanation": "Aimer takes the definite article for the thing in general: j’aime le café noir."
+      "explanation": "Aimer takes the definite article for the thing in general: j’aime le café noir.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is for an amount you drink. Aimer is about coffee in general, so it takes the definite article."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows a negation or a quantity word, and there is neither here."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-likes-definite-2",
@@ -584,7 +1736,22 @@
       ],
       "hint": "Adorer works like aimer.",
       "feedback": "Verbs of liking take the definite article.",
-      "explanation": "Adorer takes the definite article, and frites is plural: les frites."
+      "explanation": "Adorer takes the definite article, and frites is plural: les frites.",
+      "mistakes": [
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is the partitive, for an amount eaten. Adorer is about chips in general, so it takes the definite plural article."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows a negation or a quantity word, and neither appears here."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "partitive-likes-definite-3",
@@ -597,7 +1764,34 @@
       ],
       "hint": "Aimer keeps its article even in a negative sentence.",
       "feedback": "Pas de is for amounts. Aimer is about fish in general.",
-      "explanation": "Aimer takes the definite article, and a negation does not change it: je n’aime pas le poisson."
+      "explanation": "Aimer takes the definite article, and a negation does not change it: je n’aime pas le poisson.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je n’aime pas de poisson."
+          ],
+          "why": "That is the sentence unchanged. Pas de denies an amount, but aimer is about fish in general."
+        },
+        {
+          "answers": [
+            "Je n’aime pas du poisson."
+          ],
+          "why": "Du is the partitive, for an amount eaten. Aimer never takes it, negative or not."
+        },
+        {
+          "answers": [
+            "J’aime le poisson."
+          ],
+          "why": "That turns the sentence positive. Only the article was wrong; the negation must stay."
+        },
+        {
+          "answers": [
+            "Je n’aime pas poisson."
+          ],
+          "why": "French needs an article in front of the noun; it cannot stand bare."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-likes-definite-4",
@@ -610,7 +1804,28 @@
       ],
       "hint": "Aimer talks about salad in general.",
       "feedback": "Aimer does not take the partitive.",
-      "explanation": "Manger takes the partitive (de la salade), but aimer takes the definite article: il aime la salade."
+      "explanation": "Manger takes the partitive (de la salade), but aimer takes the definite article: il aime la salade.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il aime de la salade."
+          ],
+          "why": "The verb has changed but the article has not. Aimer is about salad in general and never takes a partitive."
+        },
+        {
+          "answers": [
+            "Il aime du salade."
+          ],
+          "why": "Du is a partitive and masculine, while la salade is feminine and aimer takes no partitive."
+        },
+        {
+          "answers": [
+            "Il mange la salade."
+          ],
+          "why": "That changes the article but keeps manger. The verb has to change too."
+        }
+      ],
+      "row": "feminine"
     },
     {
       "id": "partitive-likes-definite-5",
@@ -623,7 +1838,34 @@
       ],
       "hint": "Boire is about an amount of juice.",
       "feedback": "Boire takes the partitive.",
-      "explanation": "Aimer takes le, but boire talks about an unspecified amount, so it takes du: il boit du jus d’orange."
+      "explanation": "Aimer takes le, but boire talks about an unspecified amount, so it takes du: il boit du jus d’orange.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il boit le jus d’orange."
+          ],
+          "why": "That keeps the definite article. Boire is about an amount drunk, which calls for a partitive."
+        },
+        {
+          "answers": [
+            "Il boit de la jus d’orange."
+          ],
+          "why": "Le jus is masculine, so a feminine partitive does not fit it."
+        },
+        {
+          "answers": [
+            "Il aime du jus d’orange."
+          ],
+          "why": "That changes the article but keeps aimer, which never takes a partitive. The verb has to change."
+        },
+        {
+          "answers": [
+            "Il boit de jus d’orange."
+          ],
+          "why": "Bare de follows a negation or a quantity word, and there is neither here."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-likes-definite-6",
@@ -636,7 +1878,34 @@
       ],
       "hint": "Détester works like aimer.",
       "feedback": "Fish here means fish in general.",
-      "explanation": "Détester takes the definite article: mon frère déteste le poisson."
+      "explanation": "Détester takes the definite article: mon frère déteste le poisson.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mon frère déteste du poisson."
+          ],
+          "why": "Du is the partitive, for an amount eaten. Détester is about fish in general."
+        },
+        {
+          "answers": [
+            "Mon frère déteste poisson."
+          ],
+          "why": "English leaves fish bare; French puts an article in front of the noun."
+        },
+        {
+          "answers": [
+            "Mon frère déteste de poisson."
+          ],
+          "why": "Bare de follows a negation or a quantity word, and there is neither here."
+        },
+        {
+          "answers": [
+            "Mon frère déteste les poissons."
+          ],
+          "why": "Les poissons counts the animals. Fish as a food in general stays singular."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-likes-definite-7",
@@ -658,7 +1927,28 @@
       ],
       "hint": "Aimer and manger do not take the same article.",
       "feedback": "Each verb needs its own kind of article.",
-      "explanation": "Aimer takes the definite article (le fromage), while manger takes the partitive (du fromage)."
+      "explanation": "Aimer takes the definite article (le fromage), while manger takes the partitive (du fromage).",
+      "mistakes": [
+        {
+          "answers": [
+            "Il aime du fromage, alors il mange le fromage."
+          ],
+          "why": "The two articles are swapped. Aimer is about cheese in general, manger about an amount of it."
+        },
+        {
+          "answers": [
+            "Il aime le fromage, alors il mange fromage."
+          ],
+          "why": "The second noun is left bare. French marks the amount with an article in front of it."
+        },
+        {
+          "answers": [
+            "Il mange le fromage, alors il aime du fromage."
+          ],
+          "why": "The two halves are swapped: liking is the reason, eating is the result."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "partitive-faire-activities-1",
@@ -676,7 +1966,22 @@
       ],
       "hint": "Faire + an activity takes the partitive. What is the gender of sport?",
       "feedback": "Sport is masculine.",
-      "explanation": "Activities with faire take the partitive: faire du sport."
+      "explanation": "Activities with faire take the partitive: faire du sport.",
+      "mistakes": [
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "That is the feminine partitive, and le sport is masculine."
+        },
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Faire le sport is not said. With faire, an activity takes a partitive, not the definite article."
+        }
+      ],
+      "row": "du"
     },
     {
       "id": "partitive-faire-activities-2",
@@ -694,7 +1999,22 @@
       ],
       "hint": "Faire + an activity takes the partitive. What is the gender of musique?",
       "feedback": "Musique is feminine.",
-      "explanation": "Activities with faire take the partitive, and musique is feminine: faire de la musique. De alone is only for a negation or a quantity."
+      "explanation": "Activities with faire take the partitive, and musique is feminine: faire de la musique. De alone is only for a negation or a quantity.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is the masculine partitive, and la musique is feminine."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows a negation or a quantity word. This sentence is positive and has neither."
+        }
+      ],
+      "row": "de la"
     },
     {
       "id": "partitive-faire-activities-3",
@@ -707,7 +2027,34 @@
       ],
       "hint": "Escalade begins with a vowel.",
       "feedback": "Before a vowel, du and de la change.",
-      "explanation": "Faire takes the partitive, and escalade begins with a vowel: faire de l’escalade."
+      "explanation": "Faire takes the partitive, and escalade begins with a vowel: faire de l’escalade.",
+      "mistakes": [
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "That form stands before a consonant sound; escalade begins with a vowel."
+        },
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is masculine, l’escalade is feminine, and du never stands before a vowel."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural. Escalade here is one activity."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows a negation or a quantity word, and this sentence is positive."
+        }
+      ],
+      "row": "de l’"
     },
     {
       "id": "partitive-faire-activities-4",
@@ -720,7 +2067,34 @@
       ],
       "hint": "Natation ends in -tion.",
       "feedback": "Natation is feminine.",
-      "explanation": "Faire takes the partitive, and natation is feminine: faire de la natation."
+      "explanation": "Faire takes the partitive, and natation is feminine: faire de la natation.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is the masculine partitive, and la natation is feminine: nouns ending in -tion are feminine."
+        },
+        {
+          "answers": [
+            "de l’"
+          ],
+          "why": "That form is used before a vowel or a silent h; natation begins with the consonant n."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural; natation is one singular activity."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "Bare de follows a negation or a quantity word, and this sentence is positive."
+        }
+      ],
+      "row": "de la"
     },
     {
       "id": "partitive-faire-activities-5",
@@ -733,7 +2107,34 @@
       ],
       "hint": "Faire is not être: the partitive changes after the negation.",
       "feedback": "The article after pas changes.",
-      "explanation": "After ne…pas, du becomes de, even with faire: nous ne faisons pas de vélo."
+      "explanation": "After ne…pas, du becomes de, even with faire: nous ne faisons pas de vélo.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous ne faisons pas du vélo le dimanche."
+          ],
+          "why": "The negation is added but the article is kept. Faire is not être: after ne…pas the partitive shrinks."
+        },
+        {
+          "answers": [
+            "Nous faisons pas de vélo le dimanche."
+          ],
+          "why": "That drops ne. Written French keeps ne in front of the verb."
+        },
+        {
+          "answers": [
+            "Nous ne faisons pas le vélo le dimanche."
+          ],
+          "why": "Le vélo would mean the bike itself. The sentence is about doing the activity."
+        },
+        {
+          "answers": [
+            "Nous ne faisons pas de la vélo le dimanche."
+          ],
+          "why": "Le vélo is masculine, and after ne…pas no gender form survives anyway."
+        }
+      ],
+      "row": "du"
     },
     {
       "id": "partitive-faire-activities-6",
@@ -746,7 +2147,34 @@
       ],
       "hint": "Use faire with the partitive.",
       "feedback": "French says he does some yoga.",
-      "explanation": "Activities with faire take the partitive, and yoga is masculine: il fait du yoga."
+      "explanation": "Activities with faire take the partitive, and yoga is masculine: il fait du yoga.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il fait yoga."
+          ],
+          "why": "French does not leave the activity bare after faire: an article goes in front of it."
+        },
+        {
+          "answers": [
+            "Il fait le yoga."
+          ],
+          "why": "The definite article would name yoga as a whole subject. With faire the activity takes a partitive."
+        },
+        {
+          "answers": [
+            "Il fait de la yoga."
+          ],
+          "why": "Le yoga is masculine, so a feminine partitive does not fit."
+        },
+        {
+          "answers": [
+            "Il fait de yoga."
+          ],
+          "why": "Bare de follows a negation or a quantity word, and there is neither here."
+        }
+      ],
+      "row": "du"
     },
     {
       "id": "partitive-faire-activities-7",
@@ -759,7 +2187,34 @@
       ],
       "hint": "The sentence is not negative.",
       "feedback": "Only a negation or a quantity reduces the article to de.",
-      "explanation": "This sentence is positive, so faire takes the full partitive: de la danse."
+      "explanation": "This sentence is positive, so faire takes the full partitive: de la danse.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle fait de danse."
+          ],
+          "why": "That is the sentence unchanged. Bare de belongs after a negation or a quantity word, and this sentence has neither."
+        },
+        {
+          "answers": [
+            "Elle fait du danse."
+          ],
+          "why": "Du is masculine and la danse is feminine."
+        },
+        {
+          "answers": [
+            "Elle fait la danse."
+          ],
+          "why": "The definite article would name dance as a subject. With faire the activity takes a partitive."
+        },
+        {
+          "answers": [
+            "Elle fait des danses."
+          ],
+          "why": "That counts several dances. The activity itself stays singular."
+        }
+      ],
+      "row": "de la"
     }
   ]
 }

@@ -5,9 +5,467 @@
   "title": "Him, her, it, them",
   "description": "Replace a person or thing with le, la, les and put the pronoun in the right place.",
   "mark": "le · la · les",
-  "rule": "A direct object pronoun replaces a noun that follows the verb with no preposition: me, te, le, la, nous, vous, les (me, you, him or it, her or it, us, you, them). Le replaces a masculine singular noun, la a feminine singular noun and les any plural noun. Me, te, le and la become m’, t’, l’ before a vowel or a silent h; les never elides. The pronoun goes directly before the conjugated verb, so in a negative sentence ne comes before the pronoun and pas after the verb: je ne le vois pas. With a verb + infinitive it goes before the infinitive (je vais la voir), and in the passé composé it goes before the auxiliary (je l’ai vu). Attendre, chercher, écouter and regarder take a direct object in French, even though English uses for, to or at.",
-  "example": "Le film ? Je le regarde ce soir. · Ta sœur ? Je vais l’appeler. · Ce livre ? Je ne l’ai pas lu.",
-  "aside": "In the passé composé, the participle agrees with a feminine or plural direct object placed before it (je l’ai vue). That is taught in its own topic, so the passé composé exercises here use masculine singular objects.",
+  "guide": {
+    "summary": "Le, la, les, me, te, nous and vous replace the person or thing a verb acts on, so you can say “I see him” or “I bought it” without repeating the noun. The work is picking the right pronoun and putting it in the right place.",
+    "sections": [
+      {
+        "id": "which-pronoun",
+        "title": "Which pronoun: le, la or les?",
+        "text": "A direct object is what the verb acts on, with no preposition in between: je lis le livre. Replace it with a pronoun that matches its gender and number, and put that pronoun directly in front of the conjugated verb.",
+        "table": {
+          "columns": [
+            "Object replaced",
+            "Pronoun",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "le",
+              "le journal → je le lis"
+            ],
+            [
+              "feminine singular",
+              "la",
+              "la lettre → je la lis"
+            ],
+            [
+              "any plural",
+              "les",
+              "les journaux → je les lis"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the word the verb acts on, with no à or de in front of it.",
+          "Read its gender and number off its article: le, la, les, mon, ma, mes…",
+          "Take the matching pronoun and put it straight in front of the conjugated verb."
+        ],
+        "examples": [
+          {
+            "fr": "Le journal ? Je le lis le matin.",
+            "en": "The newspaper? I read it in the morning."
+          },
+          {
+            "fr": "Mes voisins ? Elle les connaît bien.",
+            "en": "My neighbours? She knows them well."
+          }
+        ],
+        "watch": [
+          "The pronoun stands before the verb, never after it: not “je connais le”.",
+          "Lui and leur are not on this list: they replace à + a person (je lui parle).",
+          "Les covers masculine and feminine alike; there is no “las”."
+        ]
+      },
+      {
+        "id": "people",
+        "title": "Me, te, nous, vous: the people in the conversation",
+        "text": "These four point at the speaker and the listener. They sit in exactly the same place as le, la and les, and they keep the same form whether the object is direct or indirect.",
+        "table": {
+          "columns": [
+            "English",
+            "Pronoun",
+            "Example"
+          ],
+          "rows": [
+            [
+              "me",
+              "me",
+              "il me regarde"
+            ],
+            [
+              "you (a friend)",
+              "te",
+              "je te connais"
+            ],
+            [
+              "us",
+              "nous",
+              "elle nous aide"
+            ],
+            [
+              "you (formal or several)",
+              "vous",
+              "je vous écoute"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide who the object is: the speaker, the person addressed, or a group.",
+          "For you, choose te if the person is called tu, vous if the person is addressed politely or there are several.",
+          "Put the pronoun in front of the conjugated verb, exactly where le or la would go."
+        ],
+        "examples": [
+          {
+            "fr": "Tu m’entends ?",
+            "en": "Can you hear me?"
+          },
+          {
+            "fr": "Mes parents nous aident beaucoup.",
+            "en": "My parents help us a lot."
+          }
+        ],
+        "watch": [
+          "Moi, toi, lui, eux are stressed forms: they follow a preposition or stand alone, never in front of the verb.",
+          "Nous and vous never shorten: il nous aide, je vous aime.",
+          "Madame or monsieur means the polite form, even for one single person."
+        ]
+      },
+      {
+        "id": "elision",
+        "title": "Before a vowel: l’, m’, t’",
+        "text": "Me, te, le and la drop their vowel in front of a word beginning with a vowel or a silent h, and an apostrophe glues them to that word. What counts is the word that follows the pronoun, not the noun it replaces.",
+        "table": {
+          "columns": [
+            "Pronoun",
+            "Before a vowel or silent h",
+            "Example"
+          ],
+          "rows": [
+            [
+              "le",
+              "l’",
+              "je l’écoute"
+            ],
+            [
+              "la",
+              "l’",
+              "je l’invite"
+            ],
+            [
+              "me",
+              "m’",
+              "tu m’entends"
+            ],
+            [
+              "te",
+              "t’",
+              "il t’appelle"
+            ],
+            [
+              "les",
+              "les (no change)",
+              "je les écoute"
+            ],
+            [
+              "nous / vous",
+              "nous / vous (no change)",
+              "elle nous aide"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the pronoun you need from its gender and number.",
+          "Look at the very next word: does it start with a vowel or a silent h?",
+          "If it does, cut the pronoun’s vowel and add an apostrophe, with no space after it."
+        ],
+        "examples": [
+          {
+            "fr": "Cette chanson ? Je l’adore.",
+            "en": "That song? I love it."
+          },
+          {
+            "fr": "Tu l’habilles le matin ?",
+            "en": "Do you dress him in the morning?"
+          }
+        ],
+        "watch": [
+          "L’ hides the gender: it can stand for le or la, and only the noun tells you which.",
+          "Les never elides, even before a vowel: je les aime.",
+          "A silent h behaves like a vowel: l’hôtel, je l’habille."
+        ]
+      },
+      {
+        "id": "negation",
+        "title": "Where does the pronoun go in a negative sentence?",
+        "text": "Ne … pas wraps the conjugated verb, and the pronoun stays glued in front of that verb, inside the negation. Nothing ever comes between the pronoun and its verb.",
+        "table": {
+          "columns": [
+            "Piece",
+            "Where it goes",
+            "Example"
+          ],
+          "rows": [
+            [
+              "ne",
+              "first, before the pronoun",
+              "je ne le prends pas"
+            ],
+            [
+              "pronoun",
+              "directly before the verb",
+              "tu ne me crois pas"
+            ],
+            [
+              "verb",
+              "right after the pronoun",
+              "elle ne les aime pas"
+            ],
+            [
+              "pas / jamais / plus",
+              "after the conjugated verb",
+              "je ne les porte jamais"
+            ]
+          ]
+        },
+        "steps": [
+          "Build the positive sentence first, pronoun in front of the verb.",
+          "Slide ne in before the pronoun.",
+          "Put pas (or jamais, plus) straight after the conjugated verb."
+        ],
+        "examples": [
+          {
+            "fr": "Ces chaussures ? Je ne les porte jamais.",
+            "en": "These shoes? I never wear them."
+          },
+          {
+            "fr": "Tu ne me crois pas ?",
+            "en": "You don’t believe me?"
+          }
+        ],
+        "watch": [
+          "Pas belongs with the verb, not at the end of the sentence.",
+          "Ne comes before the pronoun, never after it.",
+          "In speech ne often disappears (je le vois pas), but writing keeps it."
+        ]
+      },
+      {
+        "id": "infinitive",
+        "title": "Two verbs: which one gets the pronoun?",
+        "text": "With aller, vouloir, pouvoir or devoir plus an infinitive, the pronoun belongs to the verb whose action it receives, which is the infinitive. It goes directly in front of that infinitive.",
+        "table": {
+          "columns": [
+            "Structure",
+            "Pronoun goes",
+            "Example"
+          ],
+          "rows": [
+            [
+              "aller + infinitive",
+              "before the infinitive",
+              "je vais le prendre"
+            ],
+            [
+              "vouloir + infinitive",
+              "before the infinitive",
+              "elle veut les voir"
+            ],
+            [
+              "pouvoir / devoir + infinitive",
+              "before the infinitive",
+              "tu peux m’attendre"
+            ],
+            [
+              "negative form",
+              "ne … pas around the first verb",
+              "je ne vais pas le prendre"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask which verb the object belongs to: you see the film, you do not go the film.",
+          "Put the pronoun directly in front of that verb, the infinitive.",
+          "For a negative, wrap ne … pas around the conjugated verb and leave the pronoun where it is."
+        ],
+        "examples": [
+          {
+            "fr": "Ce livre ? Je veux le lire.",
+            "en": "This book? I want to read it."
+          },
+          {
+            "fr": "Je ne peux pas t’aider aujourd’hui.",
+            "en": "I can’t help you today."
+          }
+        ],
+        "watch": [
+          "Not “je le vais voir”: the pronoun does not jump onto the first verb.",
+          "It still elides in its new place: je vais l’appeler.",
+          "Only the first verb is conjugated; the second one stays an infinitive."
+        ]
+      },
+      {
+        "id": "passe-compose",
+        "title": "Passé composé: in front of the auxiliary",
+        "text": "In the passé composé the conjugated verb is the auxiliary (ai, as, a, avons, avez, ont), so the pronoun goes in front of it, not in front of the participle.",
+        "table": {
+          "columns": [
+            "Piece",
+            "Place",
+            "Example"
+          ],
+          "rows": [
+            [
+              "pronoun",
+              "first, before the auxiliary",
+              "je l’ai pris"
+            ],
+            [
+              "auxiliary",
+              "right after the pronoun",
+              "Paul l’a fini"
+            ],
+            [
+              "participle",
+              "last",
+              "nous l’avons lu"
+            ],
+            [
+              "ne … pas",
+              "ne before the pronoun, pas after the auxiliary",
+              "je ne l’ai pas lu"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the auxiliary: the short conjugated word ai, as, a, avons, avez, ont.",
+          "Put the pronoun immediately in front of it, elided if the auxiliary starts with a vowel.",
+          "Leave the participle at the end; the negation still wraps the auxiliary only."
+        ],
+        "examples": [
+          {
+            "fr": "Ce film ? Je l’ai déjà vu.",
+            "en": "This film? I’ve already seen it."
+          },
+          {
+            "fr": "Le gâteau ? Il ne l’a pas fini.",
+            "en": "The cake? He didn’t finish it."
+          }
+        ],
+        "watch": [
+          "Je stays je in front of the pronoun: je l’ai pris, not “j’l’ai pris”.",
+          "The pronoun never slips between the auxiliary and the participle.",
+          "With a feminine or plural object placed before it, the participle agrees (je l’ai vue). That has its own topic, so the exercises here use masculine singular objects."
+        ]
+      },
+      {
+        "id": "verbs",
+        "title": "Verbs that need no preposition in French",
+        "text": "Some French verbs already carry the English for, to or at. Their object is direct, so it is replaced by le, la or les, not by lui or leur.",
+        "table": {
+          "columns": [
+            "Verb",
+            "English",
+            "Object it takes"
+          ],
+          "rows": [
+            [
+              "attendre",
+              "to wait for",
+              "direct: je l’attends"
+            ],
+            [
+              "chercher",
+              "to look for",
+              "direct: je les cherche"
+            ],
+            [
+              "écouter",
+              "to listen to",
+              "direct: je l’écoute"
+            ],
+            [
+              "regarder",
+              "to look at",
+              "direct: je les regarde"
+            ],
+            [
+              "payer",
+              "to pay for",
+              "direct: je le paie"
+            ],
+            [
+              "téléphoner à",
+              "to phone",
+              "à + person: je lui téléphone"
+            ],
+            [
+              "parler à",
+              "to speak to",
+              "à + person: je lui parle"
+            ]
+          ]
+        },
+        "steps": [
+          "Say the sentence with the noun first: j’attends le bus, with nothing before le bus.",
+          "If no à stands in front of that object, use le, la or les.",
+          "If the verb keeps à before a person, use lui or leur instead."
+        ],
+        "examples": [
+          {
+            "fr": "Mon frère ? Je l’attends devant la gare.",
+            "en": "My brother? I’m waiting for him in front of the station."
+          },
+          {
+            "fr": "Cette chanson ? Je l’écoute tous les jours.",
+            "en": "That song? I listen to it every day."
+          }
+        ],
+        "watch": [
+          "Never add pour or à with these verbs: not “j’attends pour le bus”.",
+          "Lui and leur belong to verbs that keep à: téléphoner, parler, répondre, donner.",
+          "The English for or at is already inside the French verb."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "gender-number": {
+      "section": "which-pronoun",
+      "steps": [
+        "Find the noun the verb acts on, with no preposition in front of it.",
+        "Read its gender and number off its article or possessive.",
+        "Take the matching pronoun and place it in front of the conjugated verb."
+      ]
+    },
+    "elision": {
+      "section": "elision",
+      "steps": [
+        "Choose the pronoun from the gender and number of the noun.",
+        "Look at the first letter of the word that follows it.",
+        "Before a vowel or a silent h, cut the pronoun’s vowel and add an apostrophe; leave les, nous and vous alone."
+      ]
+    },
+    "me-te-nous-vous": {
+      "section": "people",
+      "steps": [
+        "Ask who the object is: the speaker, the person addressed, or a group.",
+        "For you, check whether the person is called tu or addressed politely.",
+        "Put the pronoun before the conjugated verb, shortening it before a vowel."
+      ]
+    },
+    "negation": {
+      "section": "negation",
+      "steps": [
+        "Write the positive sentence first, pronoun glued in front of the verb.",
+        "Put ne before the pronoun.",
+        "Put pas, jamais or plus straight after the conjugated verb."
+      ]
+    },
+    "infinitive": {
+      "section": "infinitive",
+      "steps": [
+        "Ask which of the two verbs the object belongs to.",
+        "Put the pronoun in front of that verb, the infinitive.",
+        "Keep the negation around the conjugated verb, not around the pronoun."
+      ]
+    },
+    "passe-compose": {
+      "section": "passe-compose",
+      "steps": [
+        "Spot the auxiliary: ai, as, a, avons, avez, ont.",
+        "Put the pronoun in front of the auxiliary, elided if the auxiliary begins with a vowel.",
+        "Leave the participle at the end of the group."
+      ]
+    },
+    "no-preposition": {
+      "section": "verbs",
+      "steps": [
+        "Say the sentence with the noun and check whether French puts à in front of it.",
+        "No à means a direct object: use le, la or les.",
+        "Drop the English for, to or at: the French verb already contains it."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "direct-object-gender-number-1",
@@ -26,7 +484,28 @@
       ],
       "hint": "Marc is one man, and connaître takes its object with no à.",
       "feedback": "Match the pronoun to Marc: masculine, singular, direct object.",
-      "explanation": "Le replaces a masculine singular direct object: je le connais. Lui is for à + a person."
+      "explanation": "Le replaces a masculine singular direct object: je le connais. Lui is for à + a person.",
+      "mistakes": [
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "La stands for a feminine singular noun. Marc is a man, so the pronoun has to be masculine."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is the plural pronoun. Only one person is being talked about here."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui replaces à + a person, with verbs like parler à or téléphoner à. Connaître takes its object with no à, so it needs a direct object pronoun."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "direct-object-gender-number-2",
@@ -45,7 +524,28 @@
       ],
       "hint": "Count the apples.",
       "feedback": "Les pommes is plural, so the pronoun is plural. Only me, te, le and la elide.",
-      "explanation": "Les replaces any plural noun and never elides: je les achète, with a z sound linking les and achète."
+      "explanation": "Les replaces any plural noun and never elides: je les achète, with a z sound linking les and achète.",
+      "mistakes": [
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "The short form stands for one single noun, masculine or feminine. The question is about several apples."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "La replaces one feminine singular noun. More than one apple is meant here."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur means to them and belongs to verbs that take à. Acheter takes its object directly, and the object here is a plural thing."
+        }
+      ],
+      "row": "any plural"
     },
     {
       "id": "direct-object-gender-number-3",
@@ -58,7 +558,34 @@
       ],
       "hint": "Bus is masculine singular. The pronoun moves in front of the verb.",
       "feedback": "The pronoun replaces le bus completely and goes before prends, not after it.",
-      "explanation": "Le bus becomes le, placed before the verb: je le prends."
+      "explanation": "Le bus becomes le, placed before the verb: je le prends.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je prends le."
+          ],
+          "why": "This leaves the pronoun after the verb, the way English does. In French an object pronoun stands in front of the conjugated verb."
+        },
+        {
+          "answers": [
+            "Je la prends."
+          ],
+          "why": "La is feminine, and bus is a masculine noun, as its article shows."
+        },
+        {
+          "answers": [
+            "Je les prends."
+          ],
+          "why": "This pronoun stands for several things. Only one bus is mentioned."
+        },
+        {
+          "answers": [
+            "Je lui prends."
+          ],
+          "why": "Lui replaces à + a person. Prendre takes its object directly, and a bus is a thing."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "direct-object-gender-number-4",
@@ -71,7 +598,40 @@
       ],
       "hint": "The article in la voiture tells you the gender.",
       "feedback": "Voiture is feminine singular. The pronoun goes before lave.",
-      "explanation": "La replaces a feminine singular noun: mon père la lave."
+      "explanation": "La replaces a feminine singular noun: mon père la lave.",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "That is the masculine pronoun. The article in la voiture shows the noun is feminine."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural. One single car is being washed."
+        },
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "The short form is only used when the next word begins with a vowel or a silent h, and lave begins with l."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui replaces à + a person. Laver takes its object directly, and a car is a thing."
+        },
+        {
+          "answers": [
+            "elle"
+          ],
+          "why": "Elle is a subject pronoun, or it follows a preposition. In front of the verb an object needs its own pronoun."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "direct-object-gender-number-5",
@@ -90,7 +650,16 @@
       ],
       "hint": "Ses amis is plural, and inviter takes its object with no à.",
       "feedback": "Leur means to them. Inviter takes a direct object.",
-      "explanation": "Les replaces the plural direct object ses amis and goes before the verb: elle les invite."
+      "explanation": "Les replaces the plural direct object ses amis and goes before the verb: elle les invite.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle leur invite."
+          ],
+          "why": "Leur is the pronoun for à + people, used with verbs like parler or donner. Inviter takes its object with no preposition."
+        }
+      ],
+      "row": "any plural"
     },
     {
       "id": "direct-object-gender-number-6",
@@ -103,7 +672,34 @@
       ],
       "hint": "Them as a direct object is one word, placed before the verb.",
       "feedback": "The pronoun comes before connais, not after it.",
-      "explanation": "Them is les, placed before the conjugated verb: je les connais."
+      "explanation": "Them is les, placed before the conjugated verb: je les connais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je connais les."
+          ],
+          "why": "French does not leave the object pronoun after the verb as English does; it stands in front of the conjugated verb."
+        },
+        {
+          "answers": [
+            "Je connais eux."
+          ],
+          "why": "Eux is a stressed pronoun, used after a preposition or standing alone. The object of connaître is a short pronoun placed before the verb."
+        },
+        {
+          "answers": [
+            "Je leur connais."
+          ],
+          "why": "Leur is the pronoun for à + people. Connaître takes its object with no preposition."
+        },
+        {
+          "answers": [
+            "Je le connais."
+          ],
+          "why": "Le stands for one masculine person or thing, and them means more than one."
+        }
+      ],
+      "row": "any plural"
     },
     {
       "id": "direct-object-gender-number-7",
@@ -116,7 +712,28 @@
       ],
       "hint": "French object pronouns do not follow the verb the way English ones do.",
       "feedback": "Check where le sits in the second sentence.",
-      "explanation": "The pronoun goes before the conjugated verb: je le coupe."
+      "explanation": "The pronoun goes before the conjugated verb: je le coupe.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le pain ? Je coupe le."
+          ],
+          "why": "This is the sentence unchanged, with the pronoun still after the verb. French puts an object pronoun in front of the conjugated verb."
+        },
+        {
+          "answers": [
+            "Le pain ? Je coupe-le."
+          ],
+          "why": "A hyphen after the verb belongs to commands like coupe-le. In a plain statement the pronoun comes first."
+        },
+        {
+          "answers": [
+            "Le pain ? Je la coupe."
+          ],
+          "why": "La is feminine, and pain is a masculine noun."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "direct-object-elision-1",
@@ -135,7 +752,28 @@
       ],
       "hint": "Aimons begins with a vowel, and hôtel is singular.",
       "feedback": "Le and la cannot stand before a vowel, and les would mean more than one hotel.",
-      "explanation": "Le becomes l’ before a vowel: nous l’aimons."
+      "explanation": "Le becomes l’ before a vowel: nous l’aimons.",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "That form keeps its vowel only before a consonant, and aimons begins with a vowel."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "Hôtel is masculine, and the feminine form could not stand before a vowel either."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural and would mean several hotels. Only one hotel is mentioned."
+        }
+      ],
+      "row": "le"
     },
     {
       "id": "direct-object-elision-2",
@@ -148,7 +786,40 @@
       ],
       "hint": "Manteau is masculine singular, and the verb begins with a vowel.",
       "feedback": "Before a vowel, the pronoun loses its last letter.",
-      "explanation": "Le becomes l’ before aime: je l’aime bien."
+      "explanation": "Le becomes l’ before aime: je l’aime bien.",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "That form keeps its vowel only in front of a consonant, and aime begins with a vowel."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "Manteau is masculine, and the feminine form could not stand before a vowel either."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural and never shortens. One coat is one single thing."
+        },
+        {
+          "answers": [
+            "l"
+          ],
+          "why": "The apostrophe is part of the written pronoun; without it the word is incomplete."
+        },
+        {
+          "answers": [
+            "m’"
+          ],
+          "why": "M’ means me. The thing being liked is the coat, not the speaker."
+        }
+      ],
+      "row": "le"
     },
     {
       "id": "direct-object-elision-3",
@@ -161,7 +832,34 @@
       ],
       "hint": "Habiller begins with a silent h, which counts as a vowel.",
       "feedback": "Before a silent h, le changes its form.",
-      "explanation": "Le bébé becomes le, and le becomes l’ before the silent h: tu l’habilles."
+      "explanation": "Le bébé becomes le, and le becomes l’ before the silent h: tu l’habilles.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu le habilles."
+          ],
+          "why": "Habiller starts with a silent h, which behaves like a vowel, so the pronoun cannot keep its vowel in front of it."
+        },
+        {
+          "answers": [
+            "Tu habilles le."
+          ],
+          "why": "This keeps the pronoun after the verb, as English does. It belongs in front of the verb, and it also has to shorten before the silent h."
+        },
+        {
+          "answers": [
+            "Tu la habilles."
+          ],
+          "why": "Bébé is masculine, and the feminine form would have to shorten in front of a silent h as well."
+        },
+        {
+          "answers": [
+            "Tu l’habille."
+          ],
+          "why": "The subject is still tu, so the verb keeps its tu ending."
+        }
+      ],
+      "row": "le"
     },
     {
       "id": "direct-object-elision-4",
@@ -174,7 +872,34 @@
       ],
       "hint": "Look at the first letter of adore.",
       "feedback": "Le cannot stand before a vowel.",
-      "explanation": "Le becomes l’ before a vowel: je l’adore."
+      "explanation": "Le becomes l’ before a vowel: je l’adore.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce livre ? Je le adore."
+          ],
+          "why": "This is the sentence unchanged: the pronoun still keeps its vowel in front of a word beginning with a vowel."
+        },
+        {
+          "answers": [
+            "Ce livre ? Je la adore."
+          ],
+          "why": "Livre is masculine, and the feminine form would need shortening before a vowel too."
+        },
+        {
+          "answers": [
+            "Ce livre ? Je les adore."
+          ],
+          "why": "Les is plural; only one book is mentioned, and the change needed here is about the vowel that follows."
+        },
+        {
+          "answers": [
+            "Ce livre ? J’adore le."
+          ],
+          "why": "The object pronoun does not go after the verb in French, and it is the pronoun, not je, that has to change here."
+        }
+      ],
+      "row": "le"
     },
     {
       "id": "direct-object-elision-5",
@@ -194,7 +919,22 @@
       ],
       "hint": "Utilise begins with a vowel.",
       "feedback": "Le cannot stand before utilise. Choose the short form.",
-      "explanation": "L’ordinateur becomes l’, placed before the verb: je l’utilise."
+      "explanation": "L’ordinateur becomes l’, placed before the verb: je l’utilise.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je le utilise tous les jours."
+          ],
+          "why": "That form keeps its vowel only before a consonant, and utilise begins with a vowel."
+        },
+        {
+          "answers": [
+            "Je utilise tous les jours."
+          ],
+          "why": "With no pronoun the sentence no longer says what is used. The object still has to appear, shortened, in front of the verb."
+        }
+      ],
+      "row": "le"
     },
     {
       "id": "direct-object-elision-6",
@@ -207,7 +947,34 @@
       ],
       "hint": "Him goes before the verb, and aime begins with a vowel.",
       "feedback": "The pronoun goes before aime and must be shortened.",
-      "explanation": "Le becomes l’ before aime: elle l’aime."
+      "explanation": "Le becomes l’ before aime: elle l’aime.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle le aime."
+          ],
+          "why": "The pronoun cannot keep its vowel in front of a verb beginning with a vowel."
+        },
+        {
+          "answers": [
+            "Elle aime lui."
+          ],
+          "why": "Lui after the verb is a stressed pronoun and belongs to verbs that take à. Aimer takes its object directly, before the verb."
+        },
+        {
+          "answers": [
+            "Elle la aime."
+          ],
+          "why": "Him is masculine, and the feminine form would also have to shorten before a vowel."
+        },
+        {
+          "answers": [
+            "Elle aime le."
+          ],
+          "why": "The pronoun does not stay after the verb in French, and before a vowel it loses its vowel."
+        }
+      ],
+      "row": "le"
     },
     {
       "id": "direct-object-me-te-nous-vous-1",
@@ -226,7 +993,28 @@
       ],
       "hint": "The speaker means me, and entends begins with a vowel.",
       "feedback": "Moi cannot go before the verb, and me must be shortened before a vowel.",
-      "explanation": "Me becomes m’ before a vowel: tu m’entends ?"
+      "explanation": "Me becomes m’ before a vowel: tu m’entends ?",
+      "mistakes": [
+        {
+          "answers": [
+            "me"
+          ],
+          "why": "That form keeps its vowel only before a consonant, and entends begins with a vowel."
+        },
+        {
+          "answers": [
+            "moi"
+          ],
+          "why": "Moi is the stressed form, used after a preposition or alone (et moi ?). It cannot stand in front of the verb."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui means to him or to her. The speaker is asking whether they themselves are heard."
+        }
+      ],
+      "row": "me"
     },
     {
       "id": "direct-object-me-te-nous-vous-2",
@@ -245,7 +1033,23 @@
       ],
       "hint": "Madame is addressed formally.",
       "feedback": "Te is for someone you call tu, and leur means to them.",
-      "explanation": "Vous is the formal you, and remercier takes a direct object: je vous remercie."
+      "explanation": "Vous is the formal you, and remercier takes a direct object: je vous remercie.",
+      "mistakes": [
+        {
+          "answers": [
+            "te",
+            "t’"
+          ],
+          "why": "Te and its short form belong to someone you call tu. Madame is addressed politely, so the polite pronoun is needed."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur means to them, for several people, and it belongs to verbs that take à. One person is being thanked, and remercier takes its object directly."
+        }
+      ],
+      "row": "you (formal or several)"
     },
     {
       "id": "direct-object-me-te-nous-vous-3",
@@ -258,7 +1062,40 @@
       ],
       "hint": "The object pronoun for us looks like the subject pronoun.",
       "feedback": "Write the object pronoun for us before aident.",
-      "explanation": "Nous is both the subject and the object form: mes parents nous aident."
+      "explanation": "Nous is both the subject and the object form: mes parents nous aident.",
+      "mistakes": [
+        {
+          "answers": [
+            "me"
+          ],
+          "why": "That pronoun is singular: it would say the parents help the speaker alone. The sentence needs the pronoun for a group including the speaker."
+        },
+        {
+          "answers": [
+            "m’"
+          ],
+          "why": "That is the short form for one single person. The English asks about a whole group, the speaker included."
+        },
+        {
+          "answers": [
+            "notre"
+          ],
+          "why": "Notre is a possessive, our, and it goes in front of a noun. What the blank needs is an object pronoun in front of the verb."
+        },
+        {
+          "answers": [
+            "on"
+          ],
+          "why": "On is a subject pronoun; it can never be the object of a verb."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les would mean them, some other people. The sentence says who is helped: the speaker’s own group."
+        }
+      ],
+      "row": "us"
     },
     {
       "id": "direct-object-me-te-nous-vous-4",
@@ -271,7 +1108,34 @@
       ],
       "hint": "Only the pronoun changes; it stays before the verb.",
       "feedback": "Keep il and aide. Replace m’ with the pronoun for us.",
-      "explanation": "Nous replaces m’ in the same place: il nous aide. Nous never elides."
+      "explanation": "Nous replaces m’ in the same place: il nous aide. Nous never elides.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il m’aide."
+          ],
+          "why": "This is the sentence unchanged: it still says he helps the speaker alone."
+        },
+        {
+          "answers": [
+            "Il aide nous."
+          ],
+          "why": "The object pronoun does not follow the verb in French. It stays in the same place as before, right in front of the verb."
+        },
+        {
+          "answers": [
+            "Il n’aide."
+          ],
+          "why": "This pronoun keeps its full form in front of a vowel, and n’ looks like the beginning of a negation."
+        },
+        {
+          "answers": [
+            "Il vous aide."
+          ],
+          "why": "Vous means you, the person spoken to. The sentence should be about the speaker’s own group."
+        }
+      ],
+      "row": "us"
     },
     {
       "id": "direct-object-me-te-nous-vous-5",
@@ -284,7 +1148,34 @@
       ],
       "hint": "Look at the first letter of aimes.",
       "feedback": "Me cannot stand before a vowel.",
-      "explanation": "Me becomes m’ before a vowel: tu m’aimes ?"
+      "explanation": "Me becomes m’ before a vowel: tu m’aimes ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu me aimes ?"
+          ],
+          "why": "This is the sentence unchanged: the pronoun still keeps its vowel in front of a verb beginning with a vowel."
+        },
+        {
+          "answers": [
+            "Tu aimes moi ?"
+          ],
+          "why": "Moi is the stressed form, used after a preposition or alone. The object pronoun belongs in front of the verb, shortened."
+        },
+        {
+          "answers": [
+            "Tu m aimes ?"
+          ],
+          "why": "The apostrophe is what joins the shortened pronoun to the verb; a bare letter with a space is not how French writes it."
+        },
+        {
+          "answers": [
+            "Tu t’aimes ?"
+          ],
+          "why": "T’ means you, so that would say you love yourself. The speaker is asking about themselves."
+        }
+      ],
+      "row": "me"
     },
     {
       "id": "direct-object-me-te-nous-vous-6",
@@ -304,7 +1195,22 @@
       ],
       "hint": "The formal you goes before the verb.",
       "feedback": "Leur means to them. Inviter takes a direct object.",
-      "explanation": "Vous comes before the verb: je vous invite à dîner."
+      "explanation": "Vous comes before the verb: je vous invite à dîner.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je leur invite à dîner."
+          ],
+          "why": "Leur belongs to verbs that take à, like parler or écrire. Inviter takes its object directly, and the person invited is the one being spoken to."
+        },
+        {
+          "answers": [
+            "Je invite vous à dîner."
+          ],
+          "why": "This puts the pronoun after the verb, the English order. In French it goes in front of the conjugated verb."
+        }
+      ],
+      "row": "you (formal or several)"
     },
     {
       "id": "direct-object-me-te-nous-vous-7",
@@ -320,7 +1226,34 @@
       ],
       "hint": "The pronoun for me goes before the verb, not after it.",
       "feedback": "Put the pronoun before the verb, and remember the short form before a vowel.",
-      "explanation": "With appeler, me becomes m’: il m’appelle. Téléphoner à also works: il me téléphone."
+      "explanation": "With appeler, me becomes m’: il m’appelle. Téléphoner à also works: il me téléphone.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il appelle moi tous les jours."
+          ],
+          "why": "Moi is the stressed form, used after a preposition or alone. The object pronoun goes in front of the verb."
+        },
+        {
+          "answers": [
+            "Il me appelle tous les jours."
+          ],
+          "why": "The pronoun cannot keep its vowel in front of a verb beginning with a vowel."
+        },
+        {
+          "answers": [
+            "Il m’téléphone tous les jours."
+          ],
+          "why": "Téléphone begins with a consonant, so the pronoun keeps its full form there."
+        },
+        {
+          "answers": [
+            "Il lui appelle tous les jours."
+          ],
+          "why": "Lui means to him or to her, not me, and appeler takes its object directly."
+        }
+      ],
+      "row": "me"
     },
     {
       "id": "direct-object-negation-1",
@@ -339,7 +1272,33 @@
       ],
       "hint": "The pronoun stays glued to the verb; ne goes in front of both.",
       "feedback": "Ne comes before le, and pas comes after vois.",
-      "explanation": "The pronoun stays next to the verb inside the negation: je ne le vois pas."
+      "explanation": "The pronoun stays next to the verb inside the negation: je ne le vois pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne vois pas le."
+          ],
+          "why": "This sends the pronoun to the end, after pas. It has to stay glued in front of the verb it belongs to."
+        },
+        {
+          "answers": [
+            "Je ne le vois."
+          ],
+          "why": "Ne on its own is not a negation in written French; the second half after the verb is missing."
+        },
+        {
+          "answers": [
+            "Je ne vois le pas."
+          ],
+          "why": "Here the pronoun has slipped between the verb and the second half of the negation. Nothing separates a pronoun from its verb."
+        },
+        {
+          "answers": [
+            "Je le ne vois pas."
+          ],
+          "why": "Ne opens the negation and comes before the pronoun, never after it."
+        }
+      ]
     },
     {
       "id": "direct-object-negation-2",
@@ -352,7 +1311,27 @@
       ],
       "hint": "The pronoun must touch the verb.",
       "feedback": "Move le so it comes directly before vois.",
-      "explanation": "Ne + pronoun + verb + pas: je ne le vois pas."
+      "explanation": "Ne + pronoun + verb + pas: je ne le vois pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne vois le pas."
+          ],
+          "why": "This is the sentence unchanged, with the pronoun stranded between the verb and the end of the negation."
+        },
+        {
+          "answers": [
+            "Je ne vois pas le."
+          ],
+          "why": "Moving the pronoun to the end does not help: it has to touch the verb, in front of it."
+        },
+        {
+          "answers": [
+            "Je le ne vois pas."
+          ],
+          "why": "Ne opens the negation and comes before the pronoun, not after it."
+        }
+      ]
     },
     {
       "id": "direct-object-negation-3",
@@ -371,7 +1350,27 @@
       ],
       "hint": "Café is masculine singular, and ne comes first.",
       "feedback": "Ne goes before the pronoun, and the pronoun must match café.",
-      "explanation": "Ne + le + verb + pas: je ne le bois pas."
+      "explanation": "Ne + le + verb + pas: je ne le bois pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "le ne"
+          ],
+          "why": "The order is upside down: the negation word opens the group and stands before the object pronoun."
+        },
+        {
+          "answers": [
+            "ne la"
+          ],
+          "why": "La is feminine, and café is a masculine noun."
+        },
+        {
+          "answers": [
+            "ne les"
+          ],
+          "why": "Les is plural and would mean several coffees. One drink is meant here."
+        }
+      ]
     },
     {
       "id": "direct-object-negation-4",
@@ -392,7 +1391,27 @@
       ],
       "hint": "Connaître takes a direct object, and the pronoun sits between ne and the verb.",
       "feedback": "Leur means to them. Check the order: ne, pronoun, verb, pas.",
-      "explanation": "Ne + les + connais + pas: tu ne les connais pas."
+      "explanation": "Ne + les + connais + pas: tu ne les connais pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu ne leur connais pas."
+          ],
+          "why": "Leur belongs to verbs that take à, like parler or téléphoner. Connaître takes its object with no preposition."
+        },
+        {
+          "answers": [
+            "Tu les ne connais pas."
+          ],
+          "why": "Ne opens the negation and comes first, before the object pronoun."
+        },
+        {
+          "answers": [
+            "Tu ne connais les pas."
+          ],
+          "why": "The pronoun has slipped between the verb and the end of the negation. It belongs directly in front of the verb."
+        }
+      ]
     },
     {
       "id": "direct-object-negation-5",
@@ -406,7 +1425,33 @@
       ],
       "hint": "The formal you goes between ne and the verb.",
       "feedback": "Ne comes before vous, and pas after the verb.",
-      "explanation": "Ne + vous + comprenons + pas: nous ne vous comprenons pas."
+      "explanation": "Ne + vous + comprenons + pas: nous ne vous comprenons pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous ne comprenons pas vous."
+          ],
+          "why": "English puts you after the verb; French does not. The object pronoun sits between ne and the verb."
+        },
+        {
+          "answers": [
+            "Nous ne te comprenons pas."
+          ],
+          "why": "Te is for someone you call tu, and the sentence says the person is addressed formally."
+        },
+        {
+          "answers": [
+            "Nous vous ne comprenons pas."
+          ],
+          "why": "Ne opens the negation and comes before the object pronoun."
+        },
+        {
+          "answers": [
+            "Nous ne vous comprenons."
+          ],
+          "why": "Ne on its own is not a negation; the second half after the verb is missing."
+        }
+      ]
     },
     {
       "id": "direct-object-negation-6",
@@ -419,7 +1464,39 @@
       ],
       "hint": "Chaussures is plural.",
       "feedback": "The pronoun must be plural and goes between ne and the verb.",
-      "explanation": "Les replaces the plural noun and sits between ne and mets: je ne les mets jamais."
+      "explanation": "Les replaces the plural noun and sits between ne and mets: je ne les mets jamais.",
+      "mistakes": [
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "La replaces one feminine singular noun, and chaussures is a plural noun."
+        },
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Le replaces one masculine singular noun, and the shoes are several and feminine."
+        },
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "The short form stands for a single noun, and mets begins with a consonant anyway."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur belongs to verbs that take à + people. Mettre takes its object directly, and shoes are things."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui replaces à + one person. The blank stands for the shoes, the thing being put on."
+        }
+      ]
     },
     {
       "id": "direct-object-infinitive-1",
@@ -432,7 +1509,33 @@
       ],
       "hint": "The film is what you see, not what you go.",
       "feedback": "The pronoun goes before the verb it belongs to, the infinitive.",
-      "explanation": "Le belongs to voir, so it goes before voir: je vais le voir."
+      "explanation": "Le belongs to voir, so it goes before voir: je vais le voir.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je le vais voir."
+          ],
+          "why": "The pronoun has jumped onto the first verb. It belongs to the second one, the infinitive, and goes right in front of it."
+        },
+        {
+          "answers": [
+            "Je vais voir le."
+          ],
+          "why": "This keeps the noun’s old place after the infinitive. A pronoun object stands in front of the verb it belongs to."
+        },
+        {
+          "answers": [
+            "Je vais la voir."
+          ],
+          "why": "Film is a masculine noun, so a feminine pronoun does not match it."
+        },
+        {
+          "answers": [
+            "Je vais les voir."
+          ],
+          "why": "That pronoun is plural, and only one film is mentioned."
+        }
+      ]
     },
     {
       "id": "direct-object-infinitive-2",
@@ -445,7 +1548,27 @@
       ],
       "hint": "Which verb is your sister the object of?",
       "feedback": "Move the pronoun in front of the infinitive, and check the letter that follows it.",
-      "explanation": "The pronoun belongs to appeler, so it goes before it, and la becomes l’ before the vowel: je vais l’appeler."
+      "explanation": "The pronoun belongs to appeler, so it goes before it, and la becomes l’ before the vowel: je vais l’appeler.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ta sœur ? Je la vais appeler."
+          ],
+          "why": "This is the sentence unchanged: the pronoun sits in front of vais, but your sister is the person called, not the person going."
+        },
+        {
+          "answers": [
+            "Ta sœur ? Je vais la appeler."
+          ],
+          "why": "The place is right now, but the pronoun cannot keep its vowel in front of a verb beginning with a vowel."
+        },
+        {
+          "answers": [
+            "Ta sœur ? Je vais appeler la."
+          ],
+          "why": "French does not leave the pronoun after the infinitive; it goes in front of it, and it shortens before a vowel."
+        }
+      ]
     },
     {
       "id": "direct-object-infinitive-3",
@@ -464,7 +1587,27 @@
       ],
       "hint": "The dress is what you wear.",
       "feedback": "The pronoun goes before the infinitive, and porter takes a direct object.",
-      "explanation": "La belongs to porter and goes before it: je vais la porter."
+      "explanation": "La belongs to porter and goes before it: je vais la porter.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je la vais porter."
+          ],
+          "why": "The pronoun has been put in front of the first verb. The dress is what you wear, so it belongs to the second verb."
+        },
+        {
+          "answers": [
+            "Je vais porter la."
+          ],
+          "why": "This leaves the pronoun after the verb, the English order. In French it stands in front of the verb it belongs to."
+        },
+        {
+          "answers": [
+            "Je vais lui porter."
+          ],
+          "why": "Lui replaces à + a person, as in je vais lui parler. A dress is a thing, and porter takes its object directly."
+        }
+      ]
     },
     {
       "id": "direct-object-infinitive-4",
@@ -484,7 +1627,21 @@
       ],
       "hint": "Me belongs to aider, which begins with a vowel.",
       "feedback": "Put the pronoun just before the infinitive, in its short form.",
-      "explanation": "M’ goes before aider: tu peux m’aider ?"
+      "explanation": "M’ goes before aider: tu peux m’aider ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu peux me aider ?"
+          ],
+          "why": "The pronoun keeps its vowel only before a consonant, and aider begins with a vowel."
+        },
+        {
+          "answers": [
+            "Tu m’peux aider ?"
+          ],
+          "why": "The pronoun has been hooked onto the first verb. It belongs to the second one, the verb that says what is being asked."
+        }
+      ]
     },
     {
       "id": "direct-object-infinitive-5",
@@ -497,7 +1654,33 @@
       ],
       "hint": "Them belongs to invite, not to want.",
       "feedback": "Put the pronoun before the infinitive.",
-      "explanation": "Les goes before the infinitive it belongs to: je veux les inviter."
+      "explanation": "Les goes before the infinitive it belongs to: je veux les inviter.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je les veux inviter."
+          ],
+          "why": "The pronoun has been put in front of the first verb. It is the object of the second one, so it goes right before that verb."
+        },
+        {
+          "answers": [
+            "Je veux inviter les."
+          ],
+          "why": "English keeps them after the verb; French puts the object pronoun in front of the infinitive."
+        },
+        {
+          "answers": [
+            "Je veux leur inviter."
+          ],
+          "why": "Leur belongs to verbs that take à, like parler or écrire. Inviter takes its object with no preposition."
+        },
+        {
+          "answers": [
+            "Je veux le inviter."
+          ],
+          "why": "Le stands for one single person or thing, and the English says more than one."
+        }
+      ]
     },
     {
       "id": "direct-object-infinitive-6",
@@ -510,7 +1693,39 @@
       ],
       "hint": "Train is masculine singular.",
       "feedback": "The pronoun for a masculine singular noun goes before prendre.",
-      "explanation": "Le goes before the infinitive prendre: nous devons le prendre."
+      "explanation": "Le goes before the infinitive prendre: nous devons le prendre.",
+      "mistakes": [
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural, and one train is one single thing."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "Train is a masculine noun, so the feminine pronoun does not match it."
+        },
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "The short form is only used before a vowel or a silent h, and prendre begins with a consonant."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui replaces à + a person. A train is a thing, and prendre takes its object directly."
+        },
+        {
+          "answers": [
+            "le train"
+          ],
+          "why": "The blank replaces that noun, so writing it again says the same thing twice; only a pronoun goes there."
+        }
+      ]
     },
     {
       "id": "direct-object-infinitive-7",
@@ -529,7 +1744,27 @@
       ],
       "hint": "The negation goes around the conjugated verb, vais.",
       "feedback": "Le stays before voir. Ne and pas surround vais.",
-      "explanation": "Ne…pas surrounds the conjugated verb, and le stays before the infinitive: je ne vais pas le voir."
+      "explanation": "Ne…pas surrounds the conjugated verb, and le stays before the infinitive: je ne vais pas le voir.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne le vais pas voir."
+          ],
+          "why": "The pronoun has moved in front of vais. It belongs to the second verb and stays there while the negation wraps the conjugated one."
+        },
+        {
+          "answers": [
+            "Je ne vais le voir pas."
+          ],
+          "why": "Pas comes straight after the conjugated verb, not at the very end of the sentence."
+        },
+        {
+          "answers": [
+            "Je ne vais pas voir le."
+          ],
+          "why": "The pronoun cannot be left after the infinitive; it stands in front of the verb it belongs to."
+        }
+      ]
     },
     {
       "id": "direct-object-passe-compose-1",
@@ -542,7 +1777,33 @@
       ],
       "hint": "In the passé composé, the pronoun goes before avoir, which begins with a vowel.",
       "feedback": "The pronoun comes before ai, not before vu.",
-      "explanation": "Le goes before the auxiliary and becomes l’: je l’ai vu. J’ becomes je again because the pronoun now follows it."
+      "explanation": "Le goes before the auxiliary and becomes l’: je l’ai vu. J’ becomes je again because the pronoun now follows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai vu le."
+          ],
+          "why": "The noun’s old place after the participle is not the pronoun’s place. It goes in front of the conjugated auxiliary."
+        },
+        {
+          "answers": [
+            "J’ai le vu."
+          ],
+          "why": "The pronoun has slipped in front of the participle. It belongs before the auxiliary, the conjugated part of the verb."
+        },
+        {
+          "answers": [
+            "J’l’ai vu."
+          ],
+          "why": "Je only shortens in front of a vowel. Once the pronoun stands between je and the auxiliary, je keeps its vowel."
+        },
+        {
+          "answers": [
+            "Je le ai vu."
+          ],
+          "why": "The pronoun cannot keep its vowel in front of ai."
+        }
+      ]
     },
     {
       "id": "direct-object-passe-compose-2",
@@ -555,7 +1816,27 @@
       ],
       "hint": "In the passé composé, the pronoun does not go before the participle.",
       "feedback": "Move the pronoun before the auxiliary a.",
-      "explanation": "The pronoun goes before the auxiliary and elides before a: Paul l’a mangé."
+      "explanation": "The pronoun goes before the auxiliary and elides before a: Paul l’a mangé.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le gâteau ? Paul a le mangé."
+          ],
+          "why": "This is the sentence unchanged, with the pronoun in front of the participle. It belongs in front of the conjugated auxiliary."
+        },
+        {
+          "answers": [
+            "Le gâteau ? Paul a mangé le."
+          ],
+          "why": "The pronoun is not left at the end after the participle; it moves in front of the auxiliary."
+        },
+        {
+          "answers": [
+            "Le gâteau ? Paul le a mangé."
+          ],
+          "why": "The place is right now, but the pronoun cannot keep its vowel in front of a."
+        }
+      ]
     },
     {
       "id": "direct-object-passe-compose-3",
@@ -574,7 +1855,27 @@
       ],
       "hint": "The pronoun goes before the auxiliary.",
       "feedback": "Put the pronoun before ai and shorten it.",
-      "explanation": "Le goes before the auxiliary and becomes l’: je l’ai trouvé."
+      "explanation": "Le goes before the auxiliary and becomes l’: je l’ai trouvé.",
+      "mistakes": [
+        {
+          "answers": [
+            "ai le"
+          ],
+          "why": "This puts the pronoun after the auxiliary, just in front of the participle. It belongs before the auxiliary."
+        },
+        {
+          "answers": [
+            "le ai"
+          ],
+          "why": "The order is right, but the pronoun cannot keep its vowel in front of a word beginning with a vowel."
+        },
+        {
+          "answers": [
+            "lui ai"
+          ],
+          "why": "Lui replaces à + a person. A bag is a thing, and trouver takes its object directly."
+        }
+      ]
     },
     {
       "id": "direct-object-passe-compose-4",
@@ -595,7 +1896,27 @@
       ],
       "hint": "The pronoun goes before the auxiliary, which begins with a vowel.",
       "feedback": "Le cannot stand before avons.",
-      "explanation": "L’ goes before the auxiliary avons: nous l’avons acheté hier."
+      "explanation": "L’ goes before the auxiliary avons: nous l’avons acheté hier.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous le avons acheté hier."
+          ],
+          "why": "The pronoun cannot keep its vowel in front of avons, which begins with a vowel."
+        },
+        {
+          "answers": [
+            "Nous avons l’acheté hier."
+          ],
+          "why": "The pronoun has been put in front of the participle. In the passé composé it goes in front of the conjugated auxiliary."
+        },
+        {
+          "answers": [
+            "Nous avons acheté le hier."
+          ],
+          "why": "The pronoun does not stay where the noun stood, after the participle; it moves in front of the auxiliary."
+        }
+      ]
     },
     {
       "id": "direct-object-passe-compose-5",
@@ -608,7 +1929,39 @@
       ],
       "hint": "Ne and pas surround the auxiliary; the pronoun stays in front of it.",
       "feedback": "Order: ne, pronoun, auxiliary, pas, participle.",
-      "explanation": "Ne + l’ + ai + pas + vu: je ne l’ai pas vu."
+      "explanation": "Ne + l’ + ai + pas + vu: je ne l’ai pas vu.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je n’ai pas le vu."
+          ],
+          "why": "The pronoun has been placed just in front of the participle. It stands in front of the auxiliary, inside the negation."
+        },
+        {
+          "answers": [
+            "Je ne l’ai pas vue."
+          ],
+          "why": "That is the feminine participle. The object named here, le film, is masculine."
+        },
+        {
+          "answers": [
+            "Je ne l’ai vu pas."
+          ],
+          "why": "Pas comes right after the auxiliary, before the participle, not at the end."
+        },
+        {
+          "answers": [
+            "Je ne le ai pas vu."
+          ],
+          "why": "The pronoun cannot keep its vowel in front of ai."
+        },
+        {
+          "answers": [
+            "Je n’ai pas vu le."
+          ],
+          "why": "The pronoun cannot stay after the participle where the noun was; it goes in front of the auxiliary."
+        }
+      ]
     },
     {
       "id": "direct-object-passe-compose-6",
@@ -621,7 +1974,33 @@
       ],
       "hint": "Dessert is masculine singular, and the next word is a vowel.",
       "feedback": "Le cannot stand before a.",
-      "explanation": "Le becomes l’ before the auxiliary a: elle l’a préparé."
+      "explanation": "Le becomes l’ before the auxiliary a: elle l’a préparé.",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "That form cannot stand in front of a, which is a vowel."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "Dessert is masculine, and the feminine form could not stand before a vowel either."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural and never shortens; one dessert is one single thing."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui replaces à + a person. A dessert is a thing, and préparer takes its object directly."
+        }
+      ]
     },
     {
       "id": "direct-object-no-preposition-1",
@@ -640,7 +2019,28 @@
       ],
       "hint": "Attendre means to wait for, but French uses no preposition.",
       "feedback": "Attendre takes a direct object, and attends begins with a vowel.",
-      "explanation": "Attendre takes a direct object, so le is used, and it becomes l’: je l’attends."
+      "explanation": "Attendre takes a direct object, so le is used, and it becomes l’: je l’attends.",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "That form cannot stand in front of attends, which begins with a vowel."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui replaces à + a person. Attendre takes its object with no preposition, even though English says wait for."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur is the plural of lui, for à + people. A bus is one thing, and attendre needs no preposition."
+        }
+      ],
+      "row": "attendre"
     },
     {
       "id": "direct-object-no-preposition-2",
@@ -659,7 +2059,28 @@
       ],
       "hint": "English says listen to, but écouter takes no à.",
       "feedback": "Écouter takes a direct object, so leur is wrong.",
-      "explanation": "Écouter takes a direct object: je les écoute."
+      "explanation": "Écouter takes a direct object: je les écoute.",
+      "mistakes": [
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur belongs to verbs that keep à, like parler à. Écouter has no à, so it needs a direct object pronoun."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui is singular and stands for à + one person. Two parents are several people, and écouter needs no à."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "La stands for one feminine noun. The sentence is about both parents."
+        }
+      ],
+      "row": "écouter"
     },
     {
       "id": "direct-object-no-preposition-3",
@@ -672,7 +2093,34 @@
       ],
       "hint": "Chercher means to look for, with no preposition in French.",
       "feedback": "Leur is only for à + people. Chercher takes a direct object.",
-      "explanation": "Chercher takes a direct object, so the plural pronoun is les: je les cherche."
+      "explanation": "Chercher takes a direct object, so the plural pronoun is les: je les cherche.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mes clés ? Je leur cherche partout."
+          ],
+          "why": "This is the sentence unchanged. Leur is only for à + people, and keys are things."
+        },
+        {
+          "answers": [
+            "Mes clés ? Je cherche pour elles partout."
+          ],
+          "why": "Chercher already means to look for; adding pour says the for a second time."
+        },
+        {
+          "answers": [
+            "Mes clés ? Je lui cherche partout."
+          ],
+          "why": "Lui is the singular of leur and still stands for à + a person. The object here is several things."
+        },
+        {
+          "answers": [
+            "Mes clés ? Je la cherche partout."
+          ],
+          "why": "La is singular, and more than one key is meant."
+        }
+      ],
+      "row": "chercher"
     },
     {
       "id": "direct-object-no-preposition-4",
@@ -685,7 +2133,34 @@
       ],
       "hint": "The French verb for look for has no preposition.",
       "feedback": "Chercher takes a direct object, placed before the verb.",
-      "explanation": "Chercher takes a direct object: je la cherche."
+      "explanation": "Chercher takes a direct object: je la cherche.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je cherche pour elle."
+          ],
+          "why": "The French verb already carries the for; adding pour says it twice, and the pronoun belongs in front of the verb."
+        },
+        {
+          "answers": [
+            "Je lui cherche."
+          ],
+          "why": "Lui stands for à + a person, with verbs like parler or donner. This verb takes its object with no preposition."
+        },
+        {
+          "answers": [
+            "Je cherche la."
+          ],
+          "why": "The pronoun does not stay after the verb in French; it goes in front of it."
+        },
+        {
+          "answers": [
+            "Je le cherche."
+          ],
+          "why": "Le is the masculine pronoun, and the person looked for is a woman."
+        }
+      ],
+      "row": "chercher"
     },
     {
       "id": "direct-object-no-preposition-5",
@@ -699,7 +2174,28 @@
       ],
       "hint": "Wait for is one French verb with no preposition.",
       "feedback": "Attendre takes a direct object: no pour, no leur.",
-      "explanation": "Attendre takes a direct object: nous les attendons."
+      "explanation": "Attendre takes a direct object: nous les attendons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous attendons pour eux."
+          ],
+          "why": "Attendre already means to wait for; pour repeats the for that is inside the verb."
+        },
+        {
+          "answers": [
+            "Nous leur attendons."
+          ],
+          "why": "Leur belongs to verbs that keep à, like parler or répondre. Attendre takes its object with no preposition."
+        },
+        {
+          "answers": [
+            "Nous attendons les."
+          ],
+          "why": "The object pronoun does not follow the verb in French; it stands in front of it."
+        }
+      ],
+      "row": "attendre"
     },
     {
       "id": "direct-object-no-preposition-6",
@@ -712,7 +2208,28 @@
       ],
       "hint": "Regarder means to look at, with no preposition in French.",
       "feedback": "Les photos is plural and a direct object.",
-      "explanation": "Regarder takes a direct object: elle les regarde."
+      "explanation": "Regarder takes a direct object: elle les regarde.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle regarde les."
+          ],
+          "why": "This keeps the pronoun in the noun’s old place after the verb. A pronoun object stands in front of the verb."
+        },
+        {
+          "answers": [
+            "Elle leur regarde."
+          ],
+          "why": "Leur is for à + people. Regarder takes its object with no preposition, and photos are things."
+        },
+        {
+          "answers": [
+            "Elle la regarde."
+          ],
+          "why": "La replaces one feminine singular noun, and several photos are meant."
+        }
+      ],
+      "row": "regarder"
     },
     {
       "id": "direct-object-no-preposition-7",
@@ -725,7 +2242,34 @@
       ],
       "hint": "Écouter takes a direct object, and écoute begins with a vowel.",
       "feedback": "Not lui: écouter has no à. Shorten the pronoun before the vowel.",
-      "explanation": "La becomes l’ before écoute: je l’écoute toujours."
+      "explanation": "La becomes l’ before écoute: je l’écoute toujours.",
+      "mistakes": [
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "The gender is right, but that form cannot keep its vowel in front of a verb beginning with a vowel."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui replaces à + a person, as with parler à. Écouter takes its object with no à."
+        },
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Le is masculine, and a sister is feminine; it could not stand before a vowel either."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural, and one sister is one single person."
+        }
+      ],
+      "row": "écouter"
     }
   ]
 }

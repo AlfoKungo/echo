@@ -5,9 +5,613 @@
   "title": "Everyday irregular verbs",
   "description": "Use the most common irregular verbs in the present: aller, faire, venir, prendre, pouvoir, vouloir, devoir, savoir, connaître and more.",
   "mark": "je vais",
-  "rule": "The most frequent French verbs do not follow the regular patterns, so learn their six present forms by heart. Where je and tu share a form, it is listed once below (je peux, tu peux). Aller: vais, vas, va, allons, allez, vont. Faire: fais, fais, fait, faisons, faites, font; faire also gives everyday expressions such as faire la cuisine, faire les courses and il fait beau or il fait froid for the weather. Venir (and revenir, devenir): viens, viens, vient, venons, venez, viennent. Prendre (and apprendre, comprendre): prends, prends, prend, prenons, prenez, prennent. Pouvoir (peux, peut, pouvons, pouvez, peuvent), vouloir (veux, veut, voulons, voulez, veulent) and devoir (dois, doit, devons, devez, doivent) are followed directly by an infinitive. Savoir (sais, sait, savons, savez, savent) is for a fact, a question word or a skill plus an infinitive; connaître (connais, connaît, connaissons, connaissez, connaissent) is for a person, a place or a thing you are familiar with. Also: mettre (mets, met, mettons, mettez, mettent), dire (dis, dit, disons, dites, disent), voir (vois, voit, voyons, voyez, voient), boire (bois, boit, buvons, buvez, boivent), lire (lis, lit, lisons, lisez, lisent) and écrire (écris, écrit, écrivons, écrivez, écrivent).",
-  "example": "Nous faisons la cuisine ce soir. · Tu sais nager et tu connais bien la plage. · Vous dites toujours bonjour.",
-  "aside": "Only three everyday verbs end in -tes with vous: vous êtes, vous faites and vous dites (plus a few compounds such as vous refaites and vous redites, but vous interdisez). Almost everything else ends in -ez.",
+  "guide": {
+    "summary": "The verbs you use every day — aller, faire, venir, prendre, pouvoir, vouloir, devoir, savoir, connaître, mettre, dire, voir, boire, lire, écrire — build their present on their own stems. Learn the six forms of each and you can say where you go, what you do, and what you can, want or must do.",
+    "sections": [
+      {
+        "id": "endings",
+        "title": "What stays regular",
+        "text": "Irregular verbs change their stem, but the endings are almost always the same ones. Learn the endings once; then only the stems are new.",
+        "table": {
+          "columns": [
+            "",
+            "usual ending",
+            "irregular exceptions"
+          ],
+          "rows": [
+            [
+              "je",
+              "-s",
+              "je vais, j’ai, je peux, je veux"
+            ],
+            [
+              "tu",
+              "-s",
+              "tu peux, tu veux"
+            ],
+            [
+              "il / elle / on",
+              "-t",
+              "il va, il a"
+            ],
+            [
+              "nous",
+              "-ons",
+              "nous sommes"
+            ],
+            [
+              "vous",
+              "-ez",
+              "vous êtes, vous faites, vous dites"
+            ],
+            [
+              "ils / elles",
+              "-ent",
+              "ils vont, ils font, ils sont, ils ont"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject: who is doing it?",
+          "Take the verb’s stem for that person in its own table below.",
+          "Add the ending of that row, unless the verb is one of the exceptions."
+        ],
+        "examples": [
+          {
+            "fr": "Nous prenons le bus.",
+            "en": "We take the bus."
+          },
+          {
+            "fr": "Vous dites toujours bonjour.",
+            "en": "You always say hello."
+          }
+        ],
+        "watch": [
+          "Only vous êtes, vous faites and vous dites end in -tes; everything else takes -ez (vous lisez, vous interdisez).",
+          "The -ent of ils is silent: ils viennent and il vient sound almost the same.",
+          "Many of these verbs share one form for je and tu: je peux / tu peux, je mets / tu mets."
+        ]
+      },
+      {
+        "id": "aller",
+        "title": "Aller: going somewhere",
+        "text": "Aller is the most irregular verb of all. Only nous and vous keep the all- stem of the infinitive; the other four forms start with v.",
+        "table": {
+          "columns": [
+            "",
+            "aller (to go)"
+          ],
+          "rows": [
+            [
+              "je",
+              "vais"
+            ],
+            [
+              "tu",
+              "vas"
+            ],
+            [
+              "il / elle / on",
+              "va"
+            ],
+            [
+              "nous",
+              "allons"
+            ],
+            [
+              "vous",
+              "allez"
+            ],
+            [
+              "ils / elles",
+              "vont"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject and take its row.",
+          "Ask whether it is nous or vous: those two keep all-, the rest start with v.",
+          "After aller, the place follows with à, au, à la or chez."
+        ],
+        "examples": [
+          {
+            "fr": "Je vais au marché.",
+            "en": "I go to the market."
+          },
+          {
+            "fr": "Ils vont à la plage.",
+            "en": "They go to the beach."
+          },
+          {
+            "fr": "Tu vas à l’école à pied ?",
+            "en": "Do you walk to school?"
+          }
+        ],
+        "watch": [
+          "Alle, alles and allent do not exist: aller is not a regular -er verb.",
+          "Vont, font, sont and ont are the four short ils forms; they take no -ent."
+        ]
+      },
+      {
+        "id": "faire",
+        "title": "Faire: doing, making and the weather",
+        "text": "Faire covers both to do and to make, and it carries many fixed expressions. The weather is always il fait, never il est.",
+        "table": {
+          "columns": [
+            "",
+            "faire (to do, to make)"
+          ],
+          "rows": [
+            [
+              "je",
+              "fais"
+            ],
+            [
+              "tu",
+              "fais"
+            ],
+            [
+              "il / elle / on",
+              "fait"
+            ],
+            [
+              "nous",
+              "faisons"
+            ],
+            [
+              "vous",
+              "faites"
+            ],
+            [
+              "ils / elles",
+              "font"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject and take its row.",
+          "For the weather, use the impersonal il with faire: il fait beau, il fait froid, il fait chaud.",
+          "Learn the expressions as blocks: faire la cuisine, faire les courses, faire du sport."
+        ],
+        "examples": [
+          {
+            "fr": "Nous faisons la cuisine ce soir.",
+            "en": "We are cooking tonight."
+          },
+          {
+            "fr": "Aujourd’hui, il fait beau.",
+            "en": "The weather is nice today."
+          },
+          {
+            "fr": "Mes sœurs font les courses le samedi.",
+            "en": "My sisters do the shopping on Saturdays."
+          }
+        ],
+        "watch": [
+          "Faisez and faisent are invented forms; with vous the ending is -tes and the ils form is short.",
+          "Il est froid describes a thing or an unfriendly person, not the weather."
+        ]
+      },
+      {
+        "id": "venir-prendre",
+        "title": "Venir and prendre: the stem that doubles",
+        "text": "These two share one habit: nous and vous keep the quiet stem ven-/pren-, while ils/elles doubles the n. Their prefixed verbs follow exactly: revenir, devenir, apprendre, comprendre.",
+        "table": {
+          "columns": [
+            "",
+            "venir (to come)",
+            "prendre (to take)"
+          ],
+          "rows": [
+            [
+              "je",
+              "viens",
+              "prends"
+            ],
+            [
+              "tu",
+              "viens",
+              "prends"
+            ],
+            [
+              "il / elle / on",
+              "vient",
+              "prend"
+            ],
+            [
+              "nous",
+              "venons",
+              "prenons"
+            ],
+            [
+              "vous",
+              "venez",
+              "prenez"
+            ],
+            [
+              "ils / elles",
+              "viennent",
+              "prennent"
+            ]
+          ]
+        },
+        "steps": [
+          "Take off the prefix (re-, de-, ap-, com-), conjugate the base verb, then put the prefix back.",
+          "Singular: prendre keeps its d, venir uses the stem vien-.",
+          "Plural: nous and vous use ven-/pren-; ils and elles double the n and prendre loses its d."
+        ],
+        "examples": [
+          {
+            "fr": "Mon fils devient très grand.",
+            "en": "My son is getting very tall."
+          },
+          {
+            "fr": "Elles prennent le train à huit heures.",
+            "en": "They take the train at eight."
+          },
+          {
+            "fr": "Nous apprenons l’espagnol à l’école.",
+            "en": "We learn Spanish at school."
+          }
+        ],
+        "watch": [
+          "Prendent and prenent do not exist: no d, two n.",
+          "Il prend needs no extra -t: the d is already its ending.",
+          "Revienent and vienent are one n short of the plural stem."
+        ]
+      },
+      {
+        "id": "modal-verbs",
+        "title": "Pouvoir, vouloir, devoir: verb plus infinitive",
+        "text": "These three are followed directly by an infinitive, with no preposition in between. Each has three stems: one for the singular, one for nous/vous, one for ils/elles.",
+        "table": {
+          "columns": [
+            "",
+            "pouvoir (can)",
+            "vouloir (want)",
+            "devoir (must)"
+          ],
+          "rows": [
+            [
+              "je",
+              "peux",
+              "veux",
+              "dois"
+            ],
+            [
+              "tu",
+              "peux",
+              "veux",
+              "dois"
+            ],
+            [
+              "il / elle / on",
+              "peut",
+              "veut",
+              "doit"
+            ],
+            [
+              "nous",
+              "pouvons",
+              "voulons",
+              "devons"
+            ],
+            [
+              "vous",
+              "pouvez",
+              "voulez",
+              "devez"
+            ],
+            [
+              "ils / elles",
+              "peuvent",
+              "veulent",
+              "doivent"
+            ]
+          ]
+        },
+        "steps": [
+          "Take the subject’s row of pouvoir, vouloir or devoir.",
+          "Check which of the three stems that row uses before writing the ending.",
+          "Put the infinitive straight after, with no à and no de: nous devons partir."
+        ],
+        "examples": [
+          {
+            "fr": "Nous devons partir à midi.",
+            "en": "We have to leave at noon."
+          },
+          {
+            "fr": "Tu peux m’aider ?",
+            "en": "Can you help me?"
+          },
+          {
+            "fr": "Elles veulent un chien.",
+            "en": "They want a dog."
+          }
+        ],
+        "watch": [
+          "With je and tu, pouvoir and vouloir end in -x, not -s.",
+          "Peuvez, voulent as an ils form and devont mix two stems; read the row before writing.",
+          "The -t ending belongs to il, elle and on only: je dois, il doit."
+        ]
+      },
+      {
+        "id": "savoir-connaitre",
+        "title": "Savoir or connaître?",
+        "text": "Both mean to know. Savoir is for information and skills; connaître is for people, places and things you are familiar with.",
+        "table": {
+          "columns": [
+            "",
+            "savoir (know a fact)",
+            "connaître (be familiar with)"
+          ],
+          "rows": [
+            [
+              "je",
+              "sais",
+              "connais"
+            ],
+            [
+              "tu",
+              "sais",
+              "connais"
+            ],
+            [
+              "il / elle / on",
+              "sait",
+              "connaît"
+            ],
+            [
+              "nous",
+              "savons",
+              "connaissons"
+            ],
+            [
+              "vous",
+              "savez",
+              "connaissez"
+            ],
+            [
+              "ils / elles",
+              "savent",
+              "connaissent"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at what follows: an infinitive, or que, où, quand, pourquoi, si → savoir.",
+          "A person, a place or a thing standing alone → connaître.",
+          "Then take the subject’s row in that verb’s column."
+        ],
+        "examples": [
+          {
+            "fr": "Tu sais nager et tu connais bien la plage.",
+            "en": "You can swim and you know the beach well."
+          },
+          {
+            "fr": "Elle sait où j’habite.",
+            "en": "She knows where I live."
+          },
+          {
+            "fr": "Nous connaissons bien nos voisins.",
+            "en": "We know our neighbours well."
+          }
+        ],
+        "watch": [
+          "Connaître is never followed by an infinitive or by que.",
+          "Savoir never takes a person or a city as its object.",
+          "The plural stem of connaître has a double s; the circumflex survives only in il connaît."
+        ]
+      },
+      {
+        "id": "mettre-dire-voir",
+        "title": "Mettre, dire, voir",
+        "text": "All three keep a short singular and grow in the plural. Mettre also means to put on, for clothes.",
+        "table": {
+          "columns": [
+            "",
+            "mettre (put)",
+            "dire (say)",
+            "voir (see)"
+          ],
+          "rows": [
+            [
+              "je",
+              "mets",
+              "dis",
+              "vois"
+            ],
+            [
+              "tu",
+              "mets",
+              "dis",
+              "vois"
+            ],
+            [
+              "il / elle / on",
+              "met",
+              "dit",
+              "voit"
+            ],
+            [
+              "nous",
+              "mettons",
+              "disons",
+              "voyons"
+            ],
+            [
+              "vous",
+              "mettez",
+              "dites",
+              "voyez"
+            ],
+            [
+              "ils / elles",
+              "mettent",
+              "disent",
+              "voient"
+            ]
+          ]
+        },
+        "steps": [
+          "Take the subject’s row.",
+          "Singular: mettre has one t, voir keeps its i, and only il/elle/on ends in -t.",
+          "Plural: double the t of mettre, add s to dire, and turn the i of voir into y with -ons and -ez."
+        ],
+        "examples": [
+          {
+            "fr": "Je mets du sucre dans mon café.",
+            "en": "I put sugar in my coffee."
+          },
+          {
+            "fr": "Elle met son manteau.",
+            "en": "She puts on her coat."
+          },
+          {
+            "fr": "Nous voyons la mer de notre fenêtre.",
+            "en": "We see the sea from our window."
+          }
+        ],
+        "watch": [
+          "Voyent does not exist: the y appears only with nous and vous.",
+          "Il met already ends in t: never il mets or il mett.",
+          "Vous dites breaks the -ez rule, but vous mettez and vous voyez do not."
+        ]
+      },
+      {
+        "id": "boire-lire-ecrire",
+        "title": "Boire, lire, écrire",
+        "text": "Each one hides a consonant that comes back in the plural: v for boire and écrire, s for lire. Boire takes yet another stem for ils/elles.",
+        "table": {
+          "columns": [
+            "",
+            "boire (drink)",
+            "lire (read)",
+            "écrire (write)"
+          ],
+          "rows": [
+            [
+              "je",
+              "bois",
+              "lis",
+              "écris"
+            ],
+            [
+              "tu",
+              "bois",
+              "lis",
+              "écris"
+            ],
+            [
+              "il / elle / on",
+              "boit",
+              "lit",
+              "écrit"
+            ],
+            [
+              "nous",
+              "buvons",
+              "lisons",
+              "écrivons"
+            ],
+            [
+              "vous",
+              "buvez",
+              "lisez",
+              "écrivez"
+            ],
+            [
+              "ils / elles",
+              "boivent",
+              "lisent",
+              "écrivent"
+            ]
+          ]
+        },
+        "steps": [
+          "Take the subject’s row.",
+          "Singular: short forms ending -s, -s, -t.",
+          "Plural: bring the hidden consonant back (buv-, lis-, écriv-), then check ils/elles, where boire changes stem again."
+        ],
+        "examples": [
+          {
+            "fr": "Je bois de l’eau.",
+            "en": "I drink water."
+          },
+          {
+            "fr": "Les enfants boivent du lait le matin.",
+            "en": "The children drink milk in the morning."
+          },
+          {
+            "fr": "Vous écrivez une lettre à votre grand-mère.",
+            "en": "You are writing a letter to your grandmother."
+          }
+        ],
+        "watch": [
+          "Buv- stops at vous: it is not the ils stem.",
+          "Écrisez, écrient and lient are invented: keep the plural stem whole."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "aller": {
+      "section": "aller",
+      "steps": [
+        "Find the subject and take its row of aller.",
+        "Ask whether the subject is nous or vous: only those two keep the all- stem.",
+        "Never build aller like a regular -er verb."
+      ]
+    },
+    "faire": {
+      "section": "faire",
+      "steps": [
+        "Find the subject and take its row of faire.",
+        "Weather and expressions such as la cuisine, les courses or du sport use faire, not être.",
+        "With vous, remember faire is one of the three verbs that refuse -ez."
+      ]
+    },
+    "venir-prendre": {
+      "section": "venir-prendre",
+      "steps": [
+        "Take off any prefix (re-, de-, ap-, com-), conjugate the base verb, then put it back.",
+        "Decide singular or plural: the singular keeps the d of prendre and the vien- stem.",
+        "For ils/elles double the n and drop the d; for nous/vous use the quiet stem."
+      ]
+    },
+    "modal-verbs": {
+      "section": "modal-verbs",
+      "steps": [
+        "Take the subject’s row of pouvoir, vouloir or devoir.",
+        "Check which of the three stems that row uses: singular, nous/vous, or ils/elles.",
+        "Put the infinitive directly after the verb, with no preposition."
+      ]
+    },
+    "savoir-connaitre": {
+      "section": "savoir-connaitre",
+      "steps": [
+        "Read what follows the blank: an infinitive or a clause with que, où, quand calls for savoir.",
+        "A person, a place or a thing on its own calls for connaître.",
+        "Then take the subject’s row of the verb you chose."
+      ]
+    },
+    "mettre-dire-voir": {
+      "section": "mettre-dire-voir",
+      "steps": [
+        "Take the subject’s row.",
+        "Singular forms are short: one t in mettre, i in voir, and -t only for il/elle/on.",
+        "In the plural, use the long stem: mett-, dis-, voy- before -ons and -ez."
+      ]
+    },
+    "boire-lire-ecrire": {
+      "section": "boire-lire-ecrire",
+      "steps": [
+        "Take the subject’s row.",
+        "In the nous and vous forms, bring the hidden consonant back: buv-, lis-, écriv-.",
+        "Check ils/elles on its own line: boire does not keep the nous stem there."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "irregular-present-aller-1",
@@ -21,7 +625,38 @@
       ],
       "hint": "Aller is completely irregular with je. The form has three letters.",
       "feedback": "The je form of aller does not start with all-.",
-      "explanation": "Aller in the present: je vais, tu vas, il va, nous allons, vous allez, ils vont."
+      "explanation": "Aller in the present: je vais, tu vas, il va, nous allons, vous allez, ils vont.",
+      "mistakes": [
+        {
+          "answers": [
+            "alle",
+            "j’alle"
+          ],
+          "why": "Aller is not a regular -er verb, so its je form is not the infinitive stem plus -e."
+        },
+        {
+          "answers": [
+            "vas",
+            "je vas"
+          ],
+          "why": "Vas is the tu form, for the person you are speaking to, not for yourself."
+        },
+        {
+          "answers": [
+            "va",
+            "je va"
+          ],
+          "why": "Va belongs to il, elle and on; with je the form ends in -s."
+        },
+        {
+          "answers": [
+            "vont",
+            "je vont"
+          ],
+          "why": "Vont is the ils/elles form, for several people."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-aller-2",
@@ -40,7 +675,28 @@
       ],
       "hint": "The subject is nous. Only the nous and vous forms of aller keep the all- stem.",
       "feedback": "Match the verb to nous: the nous form of most verbs ends in -ons.",
-      "explanation": "Nous allons: the nous form of aller keeps the regular-looking stem all- and ends in -ons."
+      "explanation": "Nous allons: the nous form of aller keeps the regular-looking stem all- and ends in -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "allez"
+          ],
+          "why": "Allez is the vous form, the people you are speaking to. The subject here is we."
+        },
+        {
+          "answers": [
+            "vont"
+          ],
+          "why": "Vont is the ils/elles form, and it drops the all- stem that nous and vous keep."
+        },
+        {
+          "answers": [
+            "aller"
+          ],
+          "why": "That is the infinitive, the dictionary form. After a subject the verb must be conjugated."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-aller-3",
@@ -53,7 +709,34 @@
       ],
       "hint": "Mes parents means ils. The ils form of aller is short and irregular.",
       "feedback": "Mes parents is plural (they). The ils form of aller does not end in -ent.",
-      "explanation": "Ils vont: the third-person plural of aller is vont, like ils font and ils sont."
+      "explanation": "Ils vont: the third-person plural of aller is vont, like ils font and ils sont.",
+      "mistakes": [
+        {
+          "answers": [
+            "va"
+          ],
+          "why": "Va is the singular il/elle form. Mes parents is two people, so the verb must be plural."
+        },
+        {
+          "answers": [
+            "allent"
+          ],
+          "why": "Aller is irregular: its third-person plural is not the all- stem plus -ent."
+        },
+        {
+          "answers": [
+            "allons"
+          ],
+          "why": "Allons goes with nous. Mes parents is a they, not a we."
+        },
+        {
+          "answers": [
+            "vas"
+          ],
+          "why": "Vas is the tu form, one person you are speaking to."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-aller-4",
@@ -66,7 +749,28 @@
       ],
       "hint": "Aller is not a regular -er verb. Check the tu form.",
       "feedback": "Alles does not exist. The tu form of aller is irregular.",
-      "explanation": "With tu, aller becomes vas: tu vas à l’école."
+      "explanation": "With tu, aller becomes vas: tu vas à l’école.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu alles à l’école à pied ?"
+          ],
+          "why": "That is the sentence left unchanged. Alles applies regular -er endings to a verb that does not take them."
+        },
+        {
+          "answers": [
+            "Tu va à l’école à pied ?"
+          ],
+          "why": "Va is the il/elle/on form. With tu the verb needs its -s."
+        },
+        {
+          "answers": [
+            "Tu alle à l’école à pied ?"
+          ],
+          "why": "Alle would be a regular -er form, but aller changes its whole stem in the singular."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "irregular-present-aller-5",
@@ -79,7 +783,28 @@
       ],
       "hint": "Use aller in the ils form, then à la plage.",
       "feedback": "Check the ils form of aller: it is one short syllable.",
-      "explanation": "Ils vont à la plage: vont is the ils form of aller, and à la plage means to the beach."
+      "explanation": "Ils vont à la plage: vont is the ils form of aller, and à la plage means to the beach.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils allent à la plage."
+          ],
+          "why": "Aller never builds its plural on the all- stem plus -ent; that form does not exist."
+        },
+        {
+          "answers": [
+            "Ils vas à la plage."
+          ],
+          "why": "Vas is the tu form, one person you are speaking to. Ils is several people."
+        },
+        {
+          "answers": [
+            "Ils va à la plage."
+          ],
+          "why": "Va is the singular il form, so it does not agree with a plural subject."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-aller-6",
@@ -99,7 +824,16 @@
       ],
       "hint": "Start with Nous, then the matching form of aller.",
       "feedback": "One tile is the vous form of aller. The subject here is nous.",
-      "explanation": "Nous allons au marché: allons matches nous. Le dimanche means on Sundays."
+      "explanation": "Nous allons au marché: allons matches nous. Le dimanche means on Sundays.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous allez au marché le dimanche."
+          ],
+          "why": "Allez is the vous form. The first tile is nous, so the verb must match it."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-faire-1",
@@ -113,7 +847,38 @@
       ],
       "hint": "This is one of only three vous forms that do not end in -ez.",
       "feedback": "Faire does not use -ez with vous.",
-      "explanation": "Vous faites, like vous êtes and vous dites, is an irregular vous form ending in -tes."
+      "explanation": "Vous faites, like vous êtes and vous dites, is an irregular vous form ending in -tes.",
+      "mistakes": [
+        {
+          "answers": [
+            "faisez",
+            "vous faisez"
+          ],
+          "why": "Faisez applies the ordinary -ez ending, but faire is one of the three verbs that refuse it with vous."
+        },
+        {
+          "answers": [
+            "fais",
+            "vous fais"
+          ],
+          "why": "Fais is the je/tu form, for one person."
+        },
+        {
+          "answers": [
+            "faisons",
+            "vous faisons"
+          ],
+          "why": "Faisons goes with nous, the group you belong to."
+        },
+        {
+          "answers": [
+            "font",
+            "vous font"
+          ],
+          "why": "Font is the ils/elles form, the people you are talking about."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "irregular-present-faire-2",
@@ -132,7 +897,28 @@
       ],
       "hint": "The nous form of faire is built on the stem fais-.",
       "feedback": "Match the verb to nous. The nous form ends in -ons.",
-      "explanation": "Nous faisons la cuisine: faisons is the nous form of faire, and faire la cuisine means to cook."
+      "explanation": "Nous faisons la cuisine: faisons is the nous form of faire, and faire la cuisine means to cook.",
+      "mistakes": [
+        {
+          "answers": [
+            "faisez"
+          ],
+          "why": "Faisez does not exist, and -ez belongs to vous anyway; the subject here is we."
+        },
+        {
+          "answers": [
+            "font"
+          ],
+          "why": "Font is the ils/elles form, for other people."
+        },
+        {
+          "answers": [
+            "fait"
+          ],
+          "why": "Fait is the il/elle/on form, one person. A plural subject needs a plural ending."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-faire-3",
@@ -145,7 +931,34 @@
       ],
       "hint": "French talks about the weather with il and the verb faire.",
       "feedback": "The weather expression uses faire, not être: il ____ beau.",
-      "explanation": "Il fait beau means the weather is nice. Weather expressions use il fait."
+      "explanation": "Il fait beau means the weather is nice. Weather expressions use il fait.",
+      "mistakes": [
+        {
+          "answers": [
+            "est"
+          ],
+          "why": "Est is être. French does not describe the weather with être."
+        },
+        {
+          "answers": [
+            "font"
+          ],
+          "why": "Font is the ils/elles plural; the il of a weather sentence is a single impersonal subject."
+        },
+        {
+          "answers": [
+            "fais"
+          ],
+          "why": "Fais is the je/tu form; with il the ending is -t."
+        },
+        {
+          "answers": [
+            "faire"
+          ],
+          "why": "That is the infinitive. After the subject il the verb has to be conjugated."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "irregular-present-faire-4",
@@ -166,7 +979,34 @@
       ],
       "hint": "Weather in French uses il plus a form of faire.",
       "feedback": "Do not use il est for the weather. French uses another verb.",
-      "explanation": "Il fait froid: the weather uses il fait, not il est."
+      "explanation": "Il fait froid: the weather uses il fait, not il est.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a froid aujourd’hui."
+          ],
+          "why": "Il a froid means a person feels cold. The weather is not something il has."
+        },
+        {
+          "answers": [
+            "C’est froid aujourd’hui."
+          ],
+          "why": "C’est froid points at a thing that is cold to the touch, not at today’s weather."
+        },
+        {
+          "answers": [
+            "Il faire froid aujourd’hui."
+          ],
+          "why": "The verb is left in the infinitive; after il it must be conjugated."
+        },
+        {
+          "answers": [
+            "Il fais froid aujourd’hui."
+          ],
+          "why": "Fais is the je/tu ending. The impersonal il takes the third-person ending."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "irregular-present-faire-5",
@@ -179,7 +1019,28 @@
       ],
       "hint": "The vous form of faire is one of the rare vous forms without -ez.",
       "feedback": "Faisez does not exist.",
-      "explanation": "Vous faites is the correct vous form of faire."
+      "explanation": "Vous faites is the correct vous form of faire.",
+      "mistakes": [
+        {
+          "answers": [
+            "Qu’est-ce que vous faisez ce week-end ?"
+          ],
+          "why": "That is the sentence unchanged: faisez uses the regular -ez ending, which faire refuses with vous."
+        },
+        {
+          "answers": [
+            "Qu’est-ce que vous faisons ce week-end ?"
+          ],
+          "why": "Faisons is the nous form; the subject of the question is vous."
+        },
+        {
+          "answers": [
+            "Qu’est-ce que vous fait ce week-end ?"
+          ],
+          "why": "Fait is the il/elle form, one person spoken about, not the person spoken to."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "irregular-present-faire-6",
@@ -200,7 +1061,16 @@
       ],
       "hint": "Mes sœurs means they. Pick the ils form of faire.",
       "feedback": "One tile looks like a regular form but does not exist.",
-      "explanation": "Mes sœurs font les courses: font is the ils form of faire. Faire les courses means to do the shopping."
+      "explanation": "Mes sœurs font les courses: font is the ils form of faire. Faire les courses means to do the shopping.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mes sœurs faisent les courses le samedi."
+          ],
+          "why": "Faisent is a made-up regular form. Faire has a short irregular plural with no -ent ending."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-faire-7",
@@ -213,7 +1083,28 @@
       ],
       "hint": "Only the verb changes. The nous form of faire uses the stem fais-.",
       "feedback": "Check the ending that goes with nous.",
-      "explanation": "Je fais becomes nous faisons. The rest of the sentence stays the same."
+      "explanation": "Je fais becomes nous faisons. The rest of the sentence stays the same.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous fais du sport le lundi."
+          ],
+          "why": "Fais is the je form: the verb was left as it was when the subject changed."
+        },
+        {
+          "answers": [
+            "Nous faisez du sport le lundi."
+          ],
+          "why": "Faisez is not a French form, and -ez belongs to vous, not to a we."
+        },
+        {
+          "answers": [
+            "Nous font du sport le lundi."
+          ],
+          "why": "Font goes with ils and elles, people you talk about."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-venir-prendre-1",
@@ -227,7 +1118,38 @@
       ],
       "hint": "The ils form of venir has the stem vienn- with a double n.",
       "feedback": "The ils form of venir changes its stem, like tu viens and il vient.",
-      "explanation": "Ils viennent: the stem becomes vienn- (double n) before the silent -ent ending."
+      "explanation": "Ils viennent: the stem becomes vienn- (double n) before the silent -ent ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "vienent",
+            "ils vienent"
+          ],
+          "why": "One n is missing: the third-person plural stem doubles it before the silent ending."
+        },
+        {
+          "answers": [
+            "venent",
+            "ils venent"
+          ],
+          "why": "That keeps the quiet stem ven-, which only nous and vous use."
+        },
+        {
+          "answers": [
+            "vient",
+            "ils vient"
+          ],
+          "why": "Vient is the singular il/elle form, for one person."
+        },
+        {
+          "answers": [
+            "viens",
+            "ils viens"
+          ],
+          "why": "Viens goes with je and tu."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-venir-prendre-2",
@@ -246,7 +1168,28 @@
       ],
       "hint": "The ils/elles form of prendre doubles one letter.",
       "feedback": "Look at the stem: the ils form of prendre has no d and a double n.",
-      "explanation": "Elles prennent: prendre drops its d and doubles the n in the ils/elles form."
+      "explanation": "Elles prennent: prendre drops its d and doubles the n in the ils/elles form.",
+      "mistakes": [
+        {
+          "answers": [
+            "prenent"
+          ],
+          "why": "Only one n here: the third-person plural stem doubles it."
+        },
+        {
+          "answers": [
+            "prendent"
+          ],
+          "why": "The d survives only in the singular; the plural stem drops it."
+        },
+        {
+          "answers": [
+            "prend"
+          ],
+          "why": "Prend is the singular il/elle form, and elles is several people."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-venir-prendre-3",
@@ -265,7 +1208,28 @@
       ],
       "hint": "Comprendre is conjugated like prendre. Think of tu prends.",
       "feedback": "Tu needs the -s ending, and comprendre keeps its d in the singular.",
-      "explanation": "Tu comprends: like tu prends, the singular forms keep the d and tu ends in -s."
+      "explanation": "Tu comprends: like tu prends, the singular forms keep the d and tu ends in -s.",
+      "mistakes": [
+        {
+          "answers": [
+            "comprend"
+          ],
+          "why": "Comprend is the il/elle/on form; with tu the verb takes an -s."
+        },
+        {
+          "answers": [
+            "comprenons"
+          ],
+          "why": "Comprenons goes with nous."
+        },
+        {
+          "answers": [
+            "comprennent"
+          ],
+          "why": "That is the ils/elles form, with the doubled n of the plural stem."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "irregular-present-venir-prendre-4",
@@ -278,7 +1242,34 @@
       ],
       "hint": "Devenir is conjugated like venir. Think of il vient.",
       "feedback": "Mon fils means il. The il form of venir is vient.",
-      "explanation": "Il devient, like il vient: the singular forms use the stem vien- and il ends in -t."
+      "explanation": "Il devient, like il vient: the singular forms use the stem vien- and il ends in -t.",
+      "mistakes": [
+        {
+          "answers": [
+            "deviens"
+          ],
+          "why": "Deviens is the je/tu form. Mon fils is a he, so the ending is -t."
+        },
+        {
+          "answers": [
+            "deviennent"
+          ],
+          "why": "The doubled n marks the plural, but mon fils is one person."
+        },
+        {
+          "answers": [
+            "vient"
+          ],
+          "why": "That is plain venir. The sentence asks for devenir, which keeps its de- prefix."
+        },
+        {
+          "answers": [
+            "devenit"
+          ],
+          "why": "Devenir follows venir, whose singular stem is not the infinitive stem."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "irregular-present-venir-prendre-5",
@@ -291,7 +1282,28 @@
       ],
       "hint": "Revenir is conjugated like venir. Check the spelling of the ils form.",
       "feedback": "Look at the number of n letters.",
-      "explanation": "Ils reviennent, like ils viennent, has a double n."
+      "explanation": "Ils reviennent, like ils viennent, has a double n.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mes amis revienent de Rome demain."
+          ],
+          "why": "That is the sentence unchanged: with one n it is not the plural stem of the venir family."
+        },
+        {
+          "answers": [
+            "Mes amis revient de Rome demain."
+          ],
+          "why": "Revient is the singular il/elle form, but mes amis is plural."
+        },
+        {
+          "answers": [
+            "Mes amis revenent de Rome demain."
+          ],
+          "why": "Reven- is the stem of the nous and vous forms; the third-person plural changes its vowel too."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-venir-prendre-6",
@@ -315,7 +1327,34 @@
           "answer": "On étudie l’espagnol à l’école.",
           "message": "Étudier means to study. For to learn, French uses apprendre: nous apprenons l’espagnol."
         }
-      ]
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nous apprendons l’espagnol à l’école."
+          ],
+          "why": "The d disappears in the plural, so the verb is not built on apprend- here."
+        },
+        {
+          "answers": [
+            "Nous apprennons l’espagnol à l’école."
+          ],
+          "why": "The doubled n belongs to the ils/elles form only."
+        },
+        {
+          "answers": [
+            "Nous apprend l’espagnol à l’école."
+          ],
+          "why": "Apprend is the il/elle form, one person; the subject is we."
+        },
+        {
+          "answers": [
+            "Nous apprenons espagnol à l’école."
+          ],
+          "why": "A language keeps its article in French, so espagnol cannot stand bare after the verb."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-venir-prendre-7",
@@ -328,7 +1367,28 @@
       ],
       "hint": "Il becomes ils, and prendre changes its stem in the plural.",
       "feedback": "The plural form of prendre is not simply prend + -ent.",
-      "explanation": "Ils prennent: the d disappears and the n is doubled."
+      "explanation": "Ils prennent: the d disappears and the n is doubled.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils prend un café."
+          ],
+          "why": "Only the subject was made plural; the verb is still the singular form."
+        },
+        {
+          "answers": [
+            "Ils prendent un café."
+          ],
+          "why": "That adds -ent to the singular stem, but the d disappears in the plural."
+        },
+        {
+          "answers": [
+            "Ils prenent un café."
+          ],
+          "why": "One n is not enough: the plural stem doubles it."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-modal-verbs-1",
@@ -342,7 +1402,38 @@
       ],
       "hint": "Pouvoir changes its vowel in the singular, and its je ending is not the usual -s.",
       "feedback": "The je form of pouvoir changes its vowel and its ending, just like je veux.",
-      "explanation": "Je peux, tu peux, il peut: pouvoir has the stem peu- in the singular and ends in -x with je and tu."
+      "explanation": "Je peux, tu peux, il peut: pouvoir has the stem peu- in the singular and ends in -x with je and tu.",
+      "mistakes": [
+        {
+          "answers": [
+            "peut",
+            "je peut"
+          ],
+          "why": "Peut is the il/elle/on form; with je the ending is not -t."
+        },
+        {
+          "answers": [
+            "peus",
+            "je peus"
+          ],
+          "why": "Pouvoir is one of the rare verbs whose je form does not end in -s."
+        },
+        {
+          "answers": [
+            "pouve",
+            "je pouve"
+          ],
+          "why": "Pouvoir is not a regular -er verb: its singular stem changes its vowel."
+        },
+        {
+          "answers": [
+            "pouvons",
+            "je pouvons"
+          ],
+          "why": "Pouvons goes with nous."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-modal-verbs-2",
@@ -361,7 +1452,28 @@
       ],
       "hint": "With vous, pouvoir keeps the stem pouv-.",
       "feedback": "Match the verb to vous. The vous form ends in -ez.",
-      "explanation": "Vous pouvez: the nous and vous forms of pouvoir keep pouv- (nous pouvons, vous pouvez)."
+      "explanation": "Vous pouvez: the nous and vous forms of pouvoir keep pouv- (nous pouvons, vous pouvez).",
+      "mistakes": [
+        {
+          "answers": [
+            "peuvez"
+          ],
+          "why": "That glues the singular stem peu- to a plural ending; nous and vous keep pouv-."
+        },
+        {
+          "answers": [
+            "pouvons"
+          ],
+          "why": "Pouvons is the nous form, but you are addressing someone as vous."
+        },
+        {
+          "answers": [
+            "peut"
+          ],
+          "why": "Peut is the il/elle/on form, one person spoken about."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "irregular-present-modal-verbs-3",
@@ -374,7 +1486,34 @@
       ],
       "hint": "With nous, devoir keeps the stem dev-.",
       "feedback": "The nous form of devoir does not contain oi.",
-      "explanation": "Nous devons partir: devoir is followed directly by the infinitive partir."
+      "explanation": "Nous devons partir: devoir is followed directly by the infinitive partir.",
+      "mistakes": [
+        {
+          "answers": [
+            "doivent"
+          ],
+          "why": "Doivent is the ils/elles form, with the stem doiv- of the third-person plural."
+        },
+        {
+          "answers": [
+            "dois"
+          ],
+          "why": "Dois is the je/tu form, for one person."
+        },
+        {
+          "answers": [
+            "doit"
+          ],
+          "why": "Doit is the il/elle/on form, one person."
+        },
+        {
+          "answers": [
+            "devont"
+          ],
+          "why": "The nous ending is the ordinary -ons; -ont belongs to ils and only to four verbs."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-modal-verbs-4",
@@ -387,7 +1526,28 @@
       ],
       "hint": "Elle becomes elles. The plural form of vouloir keeps the stem veul-.",
       "feedback": "Vouloir in the elles form is not voulent.",
-      "explanation": "Elles veulent: vouloir has veu- in the singular and veul- in the ils/elles form."
+      "explanation": "Elles veulent: vouloir has veu- in the singular and veul- in the ils/elles form.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elles veut un chien."
+          ],
+          "why": "Only the subject was made plural; the verb is still the singular form."
+        },
+        {
+          "answers": [
+            "Elles voulent un chien."
+          ],
+          "why": "Voul- is the stem of nous and vous; the third-person plural keeps the vowel of the singular."
+        },
+        {
+          "answers": [
+            "Elle veulent un chien."
+          ],
+          "why": "The verb went plural but the subject stayed singular; both have to agree."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-modal-verbs-5",
@@ -400,7 +1560,28 @@
       ],
       "hint": "Check the ending of devoir with je.",
       "feedback": "The je form of devoir ends in -s.",
-      "explanation": "Je dois, tu dois, il doit: the -t ending is only for il, elle and on."
+      "explanation": "Je dois, tu dois, il doit: the -t ending is only for il, elle and on.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je doit finir mes devoirs."
+          ],
+          "why": "That is the sentence unchanged: doit is the il/elle/on form, and je does not take -t."
+        },
+        {
+          "answers": [
+            "Je doive finir mes devoirs."
+          ],
+          "why": "Doive is the subjunctive, used after il faut que. A plain statement takes the present."
+        },
+        {
+          "answers": [
+            "Je devoir finir mes devoirs."
+          ],
+          "why": "The verb is left in the infinitive; after je it must be conjugated."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-modal-verbs-6",
@@ -429,7 +1610,34 @@
           "answer": "Pourrais-tu m’aider ?",
           "message": "That is the polite conditional (could you). This exercise practises the present of pouvoir: tu peux m’aider ?"
         }
-      ]
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Tu peut m’aider ?"
+          ],
+          "why": "Peut is the il/elle form. With tu, pouvoir ends differently."
+        },
+        {
+          "answers": [
+            "Tu pouvez m’aider ?"
+          ],
+          "why": "Pouvez is the vous form, polite or plural; the question is asked to a friend."
+        },
+        {
+          "answers": [
+            "Tu peux aider moi ?"
+          ],
+          "why": "Moi cannot follow the infinitive here: the object pronoun goes in front of it."
+        },
+        {
+          "answers": [
+            "Tu peux me aider ?"
+          ],
+          "why": "Me loses its e before a vowel, so me aider is never written."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "irregular-present-modal-verbs-7",
@@ -449,7 +1657,16 @@
       ],
       "hint": "Devoir is followed directly by an infinitive.",
       "feedback": "One tile is the vous form. The subject is nous.",
-      "explanation": "Nous devons prendre le bus: devoir in the nous form, then the infinitive prendre."
+      "explanation": "Nous devons prendre le bus: devoir in the nous form, then the infinitive prendre.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous devez prendre le bus."
+          ],
+          "why": "Devez is the vous form, and the subject tile is nous."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-savoir-connaitre-1",
@@ -467,7 +1684,22 @@
       ],
       "hint": "Paris is a place. Which verb do you use for places you are familiar with?",
       "feedback": "Savoir is for facts and skills, not for places.",
-      "explanation": "Je connais Paris: connaître is used for places and people you are familiar with."
+      "explanation": "Je connais Paris: connaître is used for places and people you are familiar with.",
+      "mistakes": [
+        {
+          "answers": [
+            "sais"
+          ],
+          "why": "Savoir is for facts, information and skills. A city is a place you are familiar with, which calls for the other verb."
+        },
+        {
+          "answers": [
+            "connaît"
+          ],
+          "why": "That is the il/elle/on form, but the subject here is je."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-savoir-connaitre-2",
@@ -485,7 +1717,22 @@
       ],
       "hint": "Nager is an infinitive: a skill you know how to do.",
       "feedback": "Connaître is never followed by an infinitive.",
-      "explanation": "Tu sais nager: savoir plus an infinitive means to know how to do something."
+      "explanation": "Tu sais nager: savoir plus an infinitive means to know how to do something.",
+      "mistakes": [
+        {
+          "answers": [
+            "connais"
+          ],
+          "why": "Connaître is never followed by an infinitive: it takes a person, a place or a thing."
+        },
+        {
+          "answers": [
+            "sait"
+          ],
+          "why": "That is the il/elle/on form, but the subject is tu."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "irregular-present-savoir-connaitre-3",
@@ -503,7 +1750,22 @@
       ],
       "hint": "Où j’habite is a piece of information introduced by a question word.",
       "feedback": "Connaître cannot be followed by où or another question word.",
-      "explanation": "Elle sait où j’habite: savoir introduces a fact or a clause with où, quand, que and so on."
+      "explanation": "Elle sait où j’habite: savoir introduces a fact or a clause with où, quand, que and so on.",
+      "mistakes": [
+        {
+          "answers": [
+            "connaît"
+          ],
+          "why": "Connaître cannot introduce a clause with où, quand or que; it needs a noun straight after it."
+        },
+        {
+          "answers": [
+            "sais"
+          ],
+          "why": "Sais is the je/tu form; elle takes the third-person ending."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "irregular-present-savoir-connaitre-4",
@@ -516,7 +1778,34 @@
       ],
       "hint": "The plural forms of connaître use the stem connaiss-.",
       "feedback": "Nous needs -ons, and connaître gains a double s in the plural.",
-      "explanation": "Nous connaissons: the plural stem of connaître is connaiss-."
+      "explanation": "Nous connaissons: the plural stem of connaître is connaiss-.",
+      "mistakes": [
+        {
+          "answers": [
+            "connaisons"
+          ],
+          "why": "One s is missing: the plural stem of connaître has a double s."
+        },
+        {
+          "answers": [
+            "connaissez"
+          ],
+          "why": "That is the vous form; the subject here is we."
+        },
+        {
+          "answers": [
+            "connaît"
+          ],
+          "why": "Connaît is the singular il/elle form, with its circumflex. A plural subject needs a plural ending."
+        },
+        {
+          "answers": [
+            "savons"
+          ],
+          "why": "Savons is savoir, for facts and skills. Neighbours are people you are familiar with."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-savoir-connaitre-5",
@@ -529,7 +1818,22 @@
       ],
       "hint": "Ta sœur is a person.",
       "feedback": "For people, French does not use savoir.",
-      "explanation": "Je connais ta sœur: connaître is the verb for knowing people."
+      "explanation": "Je connais ta sœur: connaître is the verb for knowing people.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je sais ta sœur."
+          ],
+          "why": "That is the sentence unchanged. Savoir is for facts, information and skills, never for a person."
+        },
+        {
+          "answers": [
+            "Je connaît ta sœur."
+          ],
+          "why": "Connaît is the il/elle form; with je the verb ends in -s."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-savoir-connaitre-6",
@@ -542,7 +1846,28 @@
       ],
       "hint": "Parler is an infinitive: a skill.",
       "feedback": "Connaître is never followed by an infinitive.",
-      "explanation": "Ils savent parler anglais: savoir plus an infinitive expresses a skill."
+      "explanation": "Ils savent parler anglais: savoir plus an infinitive expresses a skill.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils connaissent parler anglais."
+          ],
+          "why": "That is the sentence unchanged: connaître can never be followed by an infinitive like parler."
+        },
+        {
+          "answers": [
+            "Ils sait parler anglais."
+          ],
+          "why": "Sait is the singular il/elle form, but ils is plural."
+        },
+        {
+          "answers": [
+            "Ils savez parler anglais."
+          ],
+          "why": "Savez is the vous form, the people you are speaking to."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-savoir-connaitre-7",
@@ -557,7 +1882,28 @@
       ],
       "hint": "Marie is a person.",
       "feedback": "For a person, use connaître, not savoir.",
-      "explanation": "Tu connais Marie ?: knowing a person is connaître."
+      "explanation": "Tu connais Marie ?: knowing a person is connaître.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu sais Marie ?"
+          ],
+          "why": "Savoir is for facts and skills. A person is someone you are familiar with, which calls for the other verb."
+        },
+        {
+          "answers": [
+            "Tu connaît Marie ?"
+          ],
+          "why": "Connaît is the il/elle form; with tu the ending is -s."
+        },
+        {
+          "answers": [
+            "Vous connaissez Marie ?"
+          ],
+          "why": "Vous is the polite or plural you, but the question is put to a friend."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "irregular-present-savoir-connaitre-8",
@@ -570,7 +1916,28 @@
       ],
       "hint": "You know a fact, introduced by que.",
       "feedback": "Connaître cannot introduce que plus a sentence. Also remember que becomes qu’ before il.",
-      "explanation": "Je sais qu’il est fatigué: savoir introduces a fact with que, which becomes qu’ before a vowel."
+      "explanation": "Je sais qu’il est fatigué: savoir introduces a fact with que, which becomes qu’ before a vowel.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je connais qu’il est fatigué."
+          ],
+          "why": "Connaître cannot introduce a clause with que: it takes a person, a place or a thing."
+        },
+        {
+          "answers": [
+            "Je sais que il est fatigué."
+          ],
+          "why": "Que loses its e before a vowel sound, so que il is never written."
+        },
+        {
+          "answers": [
+            "Je sais qu’il est fatiguée."
+          ],
+          "why": "The extra e makes the adjective feminine, but it describes il."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-mettre-dire-voir-1",
@@ -584,7 +1951,38 @@
       ],
       "hint": "Dire is one of the three verbs whose vous form ends in -tes.",
       "feedback": "The vous form of dire does not end in -ez.",
-      "explanation": "Vous dites, like vous faites and vous êtes. (Nous disons is regular-looking.)"
+      "explanation": "Vous dites, like vous faites and vous êtes. (Nous disons is regular-looking.)",
+      "mistakes": [
+        {
+          "answers": [
+            "disez",
+            "vous disez"
+          ],
+          "why": "Disez uses the ordinary -ez ending, but dire is one of the three verbs that break it with vous."
+        },
+        {
+          "answers": [
+            "disons",
+            "vous disons"
+          ],
+          "why": "Disons is the nous form."
+        },
+        {
+          "answers": [
+            "disent",
+            "vous disent"
+          ],
+          "why": "Disent is the ils/elles form, with its silent ending."
+        },
+        {
+          "answers": [
+            "dis",
+            "vous dis"
+          ],
+          "why": "Dis is the je/tu form, for one person."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "irregular-present-mettre-dire-voir-2",
@@ -603,7 +2001,28 @@
       ],
       "hint": "The singular forms of mettre have only one t. Je ends in -s.",
       "feedback": "Match the verb to je: the je form ends in -s, and the double t appears only in the plural.",
-      "explanation": "Je mets: mettre has one t in the singular (je mets, tu mets, il met) and two in the plural (nous mettons)."
+      "explanation": "Je mets: mettre has one t in the singular (je mets, tu mets, il met) and two in the plural (nous mettons).",
+      "mistakes": [
+        {
+          "answers": [
+            "met"
+          ],
+          "why": "Met is the il/elle/on form; with je the verb needs an -s."
+        },
+        {
+          "answers": [
+            "mettes"
+          ],
+          "why": "The double t belongs to the plural, and -es is not a present ending of mettre."
+        },
+        {
+          "answers": [
+            "mettons"
+          ],
+          "why": "Mettons goes with nous."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-mettre-dire-voir-3",
@@ -616,7 +2035,28 @@
       ],
       "hint": "Voir uses y only in the nous and vous forms.",
       "feedback": "The ils form of voir keeps the i.",
-      "explanation": "Ils voient: the y appears only in nous voyons and vous voyez."
+      "explanation": "Ils voient: the y appears only in nous voyons and vous voyez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils voyent leurs grands-parents le dimanche."
+          ],
+          "why": "That is the sentence unchanged: the y belongs to the nous and vous forms only."
+        },
+        {
+          "answers": [
+            "Ils voit leurs grands-parents le dimanche."
+          ],
+          "why": "Voit is the singular il/elle form, but ils is plural."
+        },
+        {
+          "answers": [
+            "Ils voyons leurs grands-parents le dimanche."
+          ],
+          "why": "Voyons is the nous form, the group the speaker belongs to."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-mettre-dire-voir-4",
@@ -635,7 +2075,28 @@
       ],
       "hint": "With nous, voir changes its i to y.",
       "feedback": "Match the verb to nous. The ending is -ons.",
-      "explanation": "Nous voyons: the nous and vous forms of voir use y (voyons, voyez)."
+      "explanation": "Nous voyons: the nous and vous forms of voir use y (voyons, voyez).",
+      "mistakes": [
+        {
+          "answers": [
+            "voions"
+          ],
+          "why": "The i turns into y before the endings -ons and -ez, so this spelling does not exist."
+        },
+        {
+          "answers": [
+            "voyez"
+          ],
+          "why": "Voyez is the vous form, the people you are speaking to."
+        },
+        {
+          "answers": [
+            "voient"
+          ],
+          "why": "Voient is the ils/elles form, other people; the subject here is we."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "irregular-present-mettre-dire-voir-5",
@@ -648,7 +2109,34 @@
       ],
       "hint": "Mettre means to put on for clothes. Manteau is masculine.",
       "feedback": "Check the il/elle form of mettre: one t.",
-      "explanation": "Elle met son manteau: the singular forms of mettre have one t (je mets, il met)."
+      "explanation": "Elle met son manteau: the singular forms of mettre have one t (je mets, il met).",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle mets son manteau."
+          ],
+          "why": "Mets is the je/tu form; the il/elle form has no -s."
+        },
+        {
+          "answers": [
+            "Elle mettes son manteau."
+          ],
+          "why": "Mettes is not a present form: the singular keeps one t and takes no -es."
+        },
+        {
+          "answers": [
+            "Elle met sa manteau."
+          ],
+          "why": "Manteau is masculine, so it takes the masculine possessive."
+        },
+        {
+          "answers": [
+            "Elle porte son manteau."
+          ],
+          "why": "Porter means to wear, a state. The exercise asks for the action of putting the coat on."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "irregular-present-mettre-dire-voir-6",
@@ -668,7 +2156,16 @@
       ],
       "hint": "Choose the je form of voir.",
       "feedback": "One tile is the il form. Je needs a form ending in -s.",
-      "explanation": "Je vois mes amis: voir with je ends in -s. The present is used for a planned evening too."
+      "explanation": "Je vois mes amis: voir with je ends in -s. The present is used for a planned evening too.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je voit mes amis ce soir."
+          ],
+          "why": "Voit is the il/elle form. With je the verb ends in -s."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-boire-lire-ecrire-1",
@@ -682,7 +2179,38 @@
       ],
       "hint": "In the plural, écrire adds a v to its stem.",
       "feedback": "The ils form of écrire is not écrient.",
-      "explanation": "Ils écrivent: the plural stem of écrire is écriv- (nous écrivons, vous écrivez, ils écrivent)."
+      "explanation": "Ils écrivent: the plural stem of écrire is écriv- (nous écrivons, vous écrivez, ils écrivent).",
+      "mistakes": [
+        {
+          "answers": [
+            "écrient",
+            "ils écrient"
+          ],
+          "why": "That drops the consonant the plural stem adds; écrire is longer in the plural."
+        },
+        {
+          "answers": [
+            "écrit",
+            "ils écrit"
+          ],
+          "why": "Écrit is the singular il/elle form, for one person."
+        },
+        {
+          "answers": [
+            "écrivons",
+            "ils écrivons"
+          ],
+          "why": "Écrivons goes with nous."
+        },
+        {
+          "answers": [
+            "écris",
+            "ils écris"
+          ],
+          "why": "Écris is the je/tu form."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-boire-lire-ecrire-2",
@@ -701,7 +2229,28 @@
       ],
       "hint": "The ils form of boire uses the stem boiv-.",
       "feedback": "Buv- is only for nous and vous.",
-      "explanation": "Ils boivent: boire uses buv- for nous and vous but boiv- for ils."
+      "explanation": "Ils boivent: boire uses buv- for nous and vous but boiv- for ils.",
+      "mistakes": [
+        {
+          "answers": [
+            "buvent"
+          ],
+          "why": "Buv- is the stem of the nous and vous forms only; it stops at vous."
+        },
+        {
+          "answers": [
+            "boient"
+          ],
+          "why": "The v of the third-person plural stem is missing here."
+        },
+        {
+          "answers": [
+            "boit"
+          ],
+          "why": "Boit is the singular il/elle form, and les enfants is plural."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-boire-lire-ecrire-3",
@@ -714,7 +2263,34 @@
       ],
       "hint": "The singular forms of lire are short. Tu ends in -s.",
       "feedback": "Tu needs the -s ending.",
-      "explanation": "Tu lis: the singular of lire is je lis, tu lis, il lit."
+      "explanation": "Tu lis: the singular of lire is je lis, tu lis, il lit.",
+      "mistakes": [
+        {
+          "answers": [
+            "lit"
+          ],
+          "why": "Lit is the il/elle/on form; with tu the verb ends in -s."
+        },
+        {
+          "answers": [
+            "lises"
+          ],
+          "why": "Lire is not a regular -er verb, so -es is not its tu ending."
+        },
+        {
+          "answers": [
+            "lisez"
+          ],
+          "why": "Lisez is the vous form, polite or plural."
+        },
+        {
+          "answers": [
+            "lire"
+          ],
+          "why": "That is the infinitive; after tu the verb must be conjugated."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "irregular-present-boire-lire-ecrire-4",
@@ -727,7 +2303,28 @@
       ],
       "hint": "Il becomes ils. The plural of lire adds an s to the stem.",
       "feedback": "The ils form of lire is not lient.",
-      "explanation": "Ils lisent: the plural stem of lire is lis- (nous lisons, vous lisez, ils lisent)."
+      "explanation": "Ils lisent: the plural stem of lire is lis- (nous lisons, vous lisez, ils lisent).",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils lit une bande dessinée."
+          ],
+          "why": "Only the subject was made plural; the verb is still the singular form."
+        },
+        {
+          "answers": [
+            "Ils lient une bande dessinée."
+          ],
+          "why": "That adds -ent to the short singular stem, but the plural stem of lire is longer."
+        },
+        {
+          "answers": [
+            "Ils lisez une bande dessinée."
+          ],
+          "why": "Lisez belongs to vous, not to the people you are talking about."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "irregular-present-boire-lire-ecrire-5",
@@ -740,7 +2337,28 @@
       ],
       "hint": "The plural forms of écrire have a v in the stem.",
       "feedback": "Écrisez does not exist.",
-      "explanation": "Vous écrivez: the plural stem of écrire is écriv-."
+      "explanation": "Vous écrivez: the plural stem of écrire is écriv-.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous écrisez une lettre à votre grand-mère."
+          ],
+          "why": "That is the sentence unchanged: the plural stem of écrire has a v, not an s."
+        },
+        {
+          "answers": [
+            "Vous écrivons une lettre à votre grand-mère."
+          ],
+          "why": "Écrivons is the nous form; the subject is vous."
+        },
+        {
+          "answers": [
+            "Vous écrivent une lettre à votre grand-mère."
+          ],
+          "why": "Écrivent is the ils/elles form, the people you are talking about."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "irregular-present-boire-lire-ecrire-6",
@@ -753,7 +2371,34 @@
       ],
       "hint": "Use boire with je, and de l’ for some water.",
       "feedback": "Check the je form of boire: it has oi.",
-      "explanation": "Je bois de l’eau: je bois, and de l’eau for an unspecified amount of water."
+      "explanation": "Je bois de l’eau: je bois, and de l’eau for an unspecified amount of water.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je boit de l’eau."
+          ],
+          "why": "Boit is the il/elle form; with je the verb ends in -s."
+        },
+        {
+          "answers": [
+            "Je buve de l’eau."
+          ],
+          "why": "Buv- is the stem of nous and vous; the singular uses the oi stem."
+        },
+        {
+          "answers": [
+            "Je bois l’eau."
+          ],
+          "why": "L’eau means the water, one particular water. Drinking an unspecified amount needs a partitive article."
+        },
+        {
+          "answers": [
+            "Je bois du eau."
+          ],
+          "why": "Du cannot stand before a vowel: the partitive changes shape there."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "irregular-present-boire-lire-ecrire-7",
@@ -773,7 +2418,16 @@
       ],
       "hint": "Elle is singular. The singular of écrire has no v.",
       "feedback": "One tile is the plural form.",
-      "explanation": "Elle écrit: the singular forms of écrire are écris, écris, écrit."
+      "explanation": "Elle écrit: the singular forms of écrire are écris, écris, écrit.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle écrivent un message à son frère."
+          ],
+          "why": "Écrivent is the ils/elles form, but the subject tile is one person."
+        }
+      ],
+      "row": "il / elle / on"
     }
   ]
 }

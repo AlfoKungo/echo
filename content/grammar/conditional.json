@@ -5,9 +5,536 @@
   "title": "The conditional",
   "description": "Ask politely, give advice, make wishes and imagine with “would”.",
   "mark": "-rais",
-  "rule": "Form the conditional with the future stem plus the imparfait endings -ais, -ais, -ait, -ions, -iez, -aient: je parlerais, nous finirions, ils prendraient. Verbs with an irregular future stem keep it: je serais, j’aurais, j’irais, je ferais, je pourrais, je voudrais, je devrais, je saurais, je viendrais, il faudrait. Use it to ask or offer politely (je voudrais un café, pourriez-vous m’aider ?), to give advice with devoir (tu devrais dormir), to express a wish (j’aimerais voyager), and for something imagined or only possible (à ta place, je partirais). Do not confuse the conditional with the future and the imparfait: je parlerais means I would speak, je parlerai means I will speak, and je parlais means I was speaking or used to speak. Only the conditional has both the r of the future stem and an imparfait ending.",
-  "example": "Je voudrais un café, s’il vous plaît. · Tu devrais dormir un peu. · À ta place, je partirais.",
-  "aside": "Je parlerai and je parlerais often sound the same, so the spelling has to show the meaning: will or would.",
+  "guide": {
+    "summary": "The conditional is how French says would. It turns a blunt demand into a polite request, an order into advice, and a fact into something only wished for or imagined.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "How do you build a conditional?",
+        "text": "Take the future stem — for most verbs the whole infinitive, minus the final e of an -re verb — and add the endings of the imparfait.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Ending",
+            "parler → parler-"
+          ],
+          "rows": [
+            [
+              "je",
+              "-ais",
+              "je parlerais"
+            ],
+            [
+              "tu",
+              "-ais",
+              "tu parlerais"
+            ],
+            [
+              "il / elle / on",
+              "-ait",
+              "elle parlerait"
+            ],
+            [
+              "nous",
+              "-ions",
+              "nous parlerions"
+            ],
+            [
+              "vous",
+              "-iez",
+              "vous parleriez"
+            ],
+            [
+              "ils / elles",
+              "-aient",
+              "ils parleraient"
+            ]
+          ]
+        },
+        "steps": [
+          "Build the stem: the infinitive, minus the final e of an -re verb (prendre → prendr-).",
+          "Check the stem ends in r; every conditional form keeps it.",
+          "Find the subject and add its ending from the table."
+        ],
+        "examples": [
+          {
+            "fr": "Je parlerais plus lentement.",
+            "en": "I would speak more slowly."
+          },
+          {
+            "fr": "Nous finirions avant midi.",
+            "en": "We would finish before noon."
+          },
+          {
+            "fr": "Ils prendraient le train.",
+            "en": "They would take the train."
+          }
+        ],
+        "watch": [
+          "The r of the stem is never dropped: je parlais is the past, not “I would speak”.",
+          "-re verbs drop only the final e: prendr-, vendr-, dir- — never prendere-.",
+          "Verbs in -ger and -yer keep the full infinitive as a stem: voyager → voyagerais."
+        ]
+      },
+      {
+        "id": "irregular-stems",
+        "title": "The stems you have to learn",
+        "text": "These verbs have their own stem in the future, and the conditional uses exactly that stem. The endings are the ones in the first table.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Stem",
+            "Conditional"
+          ],
+          "rows": [
+            [
+              "être",
+              "ser-",
+              "je serais"
+            ],
+            [
+              "avoir",
+              "aur-",
+              "j’aurais"
+            ],
+            [
+              "aller",
+              "ir-",
+              "j’irais"
+            ],
+            [
+              "faire",
+              "fer-",
+              "je ferais"
+            ],
+            [
+              "pouvoir",
+              "pourr-",
+              "je pourrais"
+            ],
+            [
+              "vouloir",
+              "voudr-",
+              "je voudrais"
+            ],
+            [
+              "devoir",
+              "devr-",
+              "je devrais"
+            ],
+            [
+              "savoir",
+              "saur-",
+              "je saurais"
+            ],
+            [
+              "voir",
+              "verr-",
+              "je verrais"
+            ],
+            [
+              "venir",
+              "viendr-",
+              "il viendrait"
+            ],
+            [
+              "falloir",
+              "faudr-",
+              "il faudrait"
+            ]
+          ]
+        },
+        "steps": [
+          "Before building a stem from the infinitive, check the verb against this list.",
+          "Take the stem from the table, then add the ending of your subject.",
+          "Falloir and pleuvoir exist only with il."
+        ],
+        "examples": [
+          {
+            "fr": "Je serais content de venir.",
+            "en": "I would be glad to come."
+          },
+          {
+            "fr": "Il faudrait partir tôt.",
+            "en": "We would have to leave early."
+          },
+          {
+            "fr": "Elle viendrait avec nous.",
+            "en": "She would come with us."
+          }
+        ],
+        "watch": [
+          "Never rebuild these on the infinitive: allerais, averions and devoirait do not exist.",
+          "Pouvoir, courir and voir have a double r: pourrais, courrais, verrais.",
+          "The stem is the same as in the future; only the ending tells the two tenses apart."
+        ]
+      },
+      {
+        "id": "politeness",
+        "title": "Asking and offering politely",
+        "text": "In a shop, a hotel or an email the present sounds abrupt. Putting vouloir or pouvoir in the conditional makes the same sentence polite.",
+        "table": {
+          "columns": [
+            "Direct",
+            "Polite",
+            "English"
+          ],
+          "rows": [
+            [
+              "je veux",
+              "je voudrais",
+              "I would like"
+            ],
+            [
+              "j’aime",
+              "j’aimerais",
+              "I would like"
+            ],
+            [
+              "pouvez-vous ?",
+              "pourriez-vous ?",
+              "could you ?"
+            ],
+            [
+              "tu peux ?",
+              "tu pourrais ?",
+              "could you ? (friend)"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide what is being asked: something you want (vouloir) or something the other person does (pouvoir).",
+          "Put that verb in the conditional for the right person.",
+          "Keep the rest of the sentence as it was — an inversion stays an inversion."
+        ],
+        "examples": [
+          {
+            "fr": "Je voudrais un café, s’il vous plaît.",
+            "en": "I would like a coffee, please."
+          },
+          {
+            "fr": "Pourriez-vous m’aider ?",
+            "en": "Could you help me?"
+          }
+        ],
+        "watch": [
+          "With vous the ending is -iez: pourriez-vous, never pourrais-vous.",
+          "The future (je voudrai, pourrez-vous) announces or predicts; it does not ask.",
+          "S’il vous plaît is a signal: the verb in front of it is usually in the conditional."
+        ]
+      },
+      {
+        "id": "advice",
+        "title": "Giving advice with devoir",
+        "text": "Devoir in the conditional means should. The verb after it stays in the infinitive.",
+        "table": {
+          "columns": [
+            "Subject",
+            "devoir",
+            "English"
+          ],
+          "rows": [
+            [
+              "je",
+              "je devrais",
+              "I should"
+            ],
+            [
+              "tu",
+              "tu devrais",
+              "you should"
+            ],
+            [
+              "il / elle / on",
+              "il devrait",
+              "he / she should"
+            ],
+            [
+              "nous",
+              "nous devrions",
+              "we should"
+            ],
+            [
+              "vous",
+              "vous devriez",
+              "you should (formal)"
+            ],
+            [
+              "ils / elles",
+              "ils devraient",
+              "they should"
+            ]
+          ]
+        },
+        "steps": [
+          "Put devoir in the conditional for the person you are advising.",
+          "Leave the following verb in the infinitive.",
+          "To soften an order, drop the imperative and start with the subject instead."
+        ],
+        "examples": [
+          {
+            "fr": "Tu devrais dormir un peu.",
+            "en": "You should get some sleep."
+          },
+          {
+            "fr": "Vous devriez prendre des vacances.",
+            "en": "You should take a holiday."
+          }
+        ],
+        "watch": [
+          "Tu dois is an obligation (must); the conditional only suggests.",
+          "Never conjugate the second verb: it is tu devrais manger, not tu devrais manges.",
+          "Vous devrez is the future (will have to), not advice."
+        ]
+      },
+      {
+        "id": "wishes",
+        "title": "Saying what you would like",
+        "text": "Aimer and vouloir in the conditional express a wish. An infinitive or a noun follows directly, with no preposition.",
+        "table": {
+          "columns": [
+            "Subject",
+            "aimer",
+            "vouloir"
+          ],
+          "rows": [
+            [
+              "je",
+              "j’aimerais",
+              "je voudrais"
+            ],
+            [
+              "tu",
+              "tu aimerais",
+              "tu voudrais"
+            ],
+            [
+              "il / elle",
+              "elle aimerait",
+              "elle voudrait"
+            ],
+            [
+              "nous",
+              "nous aimerions",
+              "nous voudrions"
+            ],
+            [
+              "vous",
+              "vous aimeriez",
+              "vous voudriez"
+            ],
+            [
+              "ils / elles",
+              "ils aimeraient",
+              "ils voudraient"
+            ]
+          ]
+        },
+        "steps": [
+          "Spot the wish: “would like”, not “like”.",
+          "Put aimer or vouloir in the conditional for the subject of the wish.",
+          "Attach the infinitive or the noun straight after, with no de."
+        ],
+        "examples": [
+          {
+            "fr": "J’aimerais voyager.",
+            "en": "I would like to travel."
+          },
+          {
+            "fr": "Mes parents aimeraient vivre au bord de la mer.",
+            "en": "My parents would like to live by the sea."
+          }
+        ],
+        "watch": [
+          "J’aime voyager states a taste; the conditional states a wish.",
+          "Bien often strengthens the wish and follows the verb: j’aimerais bien partir.",
+          "A wish is not a plan: the future says what you will do, not what you would like."
+        ]
+      },
+      {
+        "id": "imagined",
+        "title": "Imagining a situation that is not real",
+        "text": "When the situation is invented rather than true, the verb goes into the conditional. A phrase at the front usually sets it up.",
+        "table": {
+          "columns": [
+            "Opening",
+            "Example"
+          ],
+          "rows": [
+            [
+              "à ta / sa place",
+              "À ta place, je partirais."
+            ],
+            [
+              "avec / sans + noun",
+              "Avec un jardin, nous ferions des barbecues."
+            ],
+            [
+              "dans un monde idéal",
+              "Dans un monde idéal, tout le monde aurait une maison."
+            ],
+            [
+              "si + imparfait",
+              "Si j’avais le temps, je viendrais."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the phrase that makes the situation unreal: à ta place, avec…, sans…, dans un monde idéal, si + imparfait.",
+          "Put the main verb in the conditional, on its future stem.",
+          "After si itself, use the imparfait — never the conditional."
+        ],
+        "examples": [
+          {
+            "fr": "À ta place, je partirais.",
+            "en": "If I were you, I would leave."
+          },
+          {
+            "fr": "Sans téléphone, je serais plus calme.",
+            "en": "Without a phone I would be calmer."
+          }
+        ],
+        "watch": [
+          "The conditional goes in the other half of a si sentence, never straight after si.",
+          "The present would claim the situation is true: avec un jardin, nous faisons… says you have one.",
+          "Tout le monde is singular in French: tout le monde aurait, not auraient."
+        ]
+      },
+      {
+        "id": "tenses",
+        "title": "-ais, -rai or -rais?",
+        "text": "Three forms look alike. The r of the future stem separates the imparfait from the other two; the ending separates the future from the conditional.",
+        "table": {
+          "columns": [
+            "Subject",
+            "imparfait",
+            "future",
+            "conditional"
+          ],
+          "rows": [
+            [
+              "je",
+              "je parlais",
+              "je parlerai",
+              "je parlerais"
+            ],
+            [
+              "tu",
+              "tu parlais",
+              "tu parleras",
+              "tu parlerais"
+            ],
+            [
+              "il / elle",
+              "elle parlait",
+              "elle parlera",
+              "elle parlerait"
+            ],
+            [
+              "nous",
+              "nous parlions",
+              "nous parlerons",
+              "nous parlerions"
+            ],
+            [
+              "vous",
+              "vous parliez",
+              "vous parlerez",
+              "vous parleriez"
+            ],
+            [
+              "ils / elles",
+              "ils parlaient",
+              "ils parleront",
+              "ils parleraient"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the sentence about the past? No r on the stem: that is the imparfait.",
+          "Is it certain, about what will happen? Future stem plus a short future ending.",
+          "Is it would — polite, advice, wish or imagined? Future stem plus an imparfait ending."
+        ],
+        "examples": [
+          {
+            "fr": "Demain, je te donnerai ma réponse.",
+            "en": "Tomorrow I will give you my answer."
+          },
+          {
+            "fr": "Quand j’étais petit, je lisais beaucoup.",
+            "en": "When I was little, I read a lot."
+          },
+          {
+            "fr": "À ta place, j’achèterais cette veste.",
+            "en": "In your place, I would buy this jacket."
+          }
+        ],
+        "watch": [
+          "Je parlerai and je parlerais sound almost the same; only the spelling shows will or would.",
+          "With je, one letter changes everything: the future ends in -ai, the conditional in -ais.",
+          "-ait belongs to il and elle, never to je or tu."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "formation": {
+      "section": "forms",
+      "steps": [
+        "Build the future stem: the infinitive, minus the final e of an -re verb.",
+        "Find the subject and add its imparfait ending.",
+        "Check the form has both the r of the stem and an ending among -ais, -ait, -ions, -iez, -aient."
+      ]
+    },
+    "irregular-stems": {
+      "section": "irregular-stems",
+      "steps": [
+        "Check the verb against the list of irregular stems before using the infinitive.",
+        "Take its stem from the table, then add the ending of the subject.",
+        "Remember the ending is the imparfait one, not the short future one."
+      ]
+    },
+    "politeness": {
+      "section": "politeness",
+      "steps": [
+        "Decide what is asked: what you want (vouloir) or what the other person does (pouvoir).",
+        "Put that verb in the conditional for the right person.",
+        "Keep the rest of the sentence, including any inversion, exactly as it was."
+      ]
+    },
+    "advice-devoir": {
+      "section": "advice",
+      "steps": [
+        "Put devoir in the conditional for the person you are advising.",
+        "Keep the verb that follows in the infinitive.",
+        "Match the ending to the subject: -ais for je and tu, -ait for il, -ions and -iez for nous and vous."
+      ]
+    },
+    "wishes": {
+      "section": "wishes",
+      "steps": [
+        "Check it is a wish (“would like”), not a statement of taste (“like”).",
+        "Put aimer or vouloir in the conditional for the subject.",
+        "Attach the infinitive or the noun directly, with no preposition."
+      ]
+    },
+    "imagined": {
+      "section": "imagined",
+      "steps": [
+        "Find the phrase that makes the situation unreal: à ta place, avec…, sans…, dans un monde idéal.",
+        "Put the main verb in the conditional, built on its future stem.",
+        "Check the ending against the subject of that verb."
+      ]
+    },
+    "rais-rai-ais": {
+      "section": "tenses",
+      "steps": [
+        "Locate the sentence in time: past scene, certain future, or unreal situation?",
+        "No r on the stem means the imparfait.",
+        "With an r, choose the ending: the short future one for a certainty, the imparfait one for would."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "conditional-formation-1",
@@ -27,7 +554,29 @@
       ],
       "hint": "Take the future stem and add the je ending of the imparfait.",
       "feedback": "The conditional is the future stem plus the imparfait endings.",
-      "explanation": "Parler- + -ais gives je parlerais."
+      "explanation": "Parler- + -ais gives je parlerais.",
+      "mistakes": [
+        {
+          "answers": [
+            "parlais",
+            "je parlais"
+          ],
+          "why": "Parlais is the imparfait: “I was speaking”. It has no r on the stem, so it cannot carry the idea of would."
+        },
+        {
+          "answers": [
+            "parlerait"
+          ],
+          "why": "The ending -ait belongs to il and elle, one other person. The subject asked for is je."
+        },
+        {
+          "answers": [
+            "parler"
+          ],
+          "why": "That is the infinitive, the dictionary form. A conditional needs the future stem plus an ending."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "conditional-formation-2",
@@ -51,7 +600,28 @@
       ],
       "hint": "Start from the future stem and add the nous ending of the imparfait.",
       "feedback": "Check that you have both the r of the future stem and the imparfait ending.",
-      "explanation": "Finir- + -ions gives nous finirions."
+      "explanation": "Finir- + -ions gives nous finirions.",
+      "mistakes": [
+        {
+          "answers": [
+            "finirais"
+          ],
+          "why": "The ending -ais goes with je and tu. Nous has its own ending, the same one it takes in the imparfait."
+        },
+        {
+          "answers": [
+            "finiriez"
+          ],
+          "why": "The ending -iez goes with vous, and the subject asked for is nous."
+        },
+        {
+          "answers": [
+            "finissons"
+          ],
+          "why": "Finissons is the present: “we finish”. The conditional is built on the infinitive stem plus an imparfait ending."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "conditional-formation-3",
@@ -65,7 +635,35 @@
       ],
       "hint": "Prendre loses its final e in the future stem. Then add the ils ending of the imparfait.",
       "feedback": "Use the stem prendr- with the imparfait ending for ils.",
-      "explanation": "Prendr- + -aient gives ils prendraient."
+      "explanation": "Prendr- + -aient gives ils prendraient.",
+      "mistakes": [
+        {
+          "answers": [
+            "prenderaient",
+            "ils prenderaient"
+          ],
+          "why": "Prendre drops the final e of its infinitive before the ending; keeping it adds a syllable French does not say."
+        },
+        {
+          "answers": [
+            "prendrait"
+          ],
+          "why": "The ending -ait is for one person, il or elle. Ils is plural."
+        },
+        {
+          "answers": [
+            "prendront"
+          ],
+          "why": "Prendront is the future: “they will take”. The conditional takes an imparfait ending on that same stem."
+        },
+        {
+          "answers": [
+            "prenaient"
+          ],
+          "why": "Prenaient is the imparfait: “they were taking”. The r of the future stem is missing."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "conditional-formation-4",
@@ -78,7 +676,34 @@
       ],
       "hint": "Future stem plus the vous ending of the imparfait.",
       "feedback": "The vous ending of the conditional is -iez, after the future stem.",
-      "explanation": "Voyager- + -iez gives vous voyageriez."
+      "explanation": "Voyager- + -iez gives vous voyageriez.",
+      "mistakes": [
+        {
+          "answers": [
+            "voyagerez"
+          ],
+          "why": "Voyagerez is the future: “you will travel”. The conditional keeps that r but takes an imparfait ending."
+        },
+        {
+          "answers": [
+            "voyagiez"
+          ],
+          "why": "That is the imparfait of voyager, with no r. Avec une voiture imagines a situation, so the future stem is needed too."
+        },
+        {
+          "answers": [
+            "voyagerais"
+          ],
+          "why": "The ending -ais goes with je and tu. The subject in the sentence is vous."
+        },
+        {
+          "answers": [
+            "voyagerions"
+          ],
+          "why": "The ending -ions goes with nous, not with vous."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "conditional-formation-5",
@@ -97,7 +722,28 @@
       ],
       "hint": "Check the stem of prendre and the ending for elles.",
       "feedback": "The conditional is prendr- plus the imparfait ending for elles.",
-      "explanation": "Elles prendraient: stem prendr-, ending -aient."
+      "explanation": "Elles prendraient: stem prendr-, ending -aient.",
+      "mistakes": [
+        {
+          "answers": [
+            "prenderaient"
+          ],
+          "why": "Prendre drops the final e of the infinitive before the ending; this form keeps it and adds a syllable that does not exist."
+        },
+        {
+          "answers": [
+            "prendriont"
+          ],
+          "why": "-iont is not a French ending at all. The plural ending here is the same one the imparfait uses."
+        },
+        {
+          "answers": [
+            "prendrions"
+          ],
+          "why": "The ending -ions goes with nous. The subject elles is third person plural."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "conditional-formation-6",
@@ -110,7 +756,34 @@
       ],
       "hint": "Look at the ending of the verb and at the subject.",
       "feedback": "The ending does not match tu.",
-      "explanation": "With tu, the conditional ends in -ais: tu marcherais."
+      "explanation": "With tu, the conditional ends in -ais: tu marcherais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sans voiture, tu marcherait plus."
+          ],
+          "why": "The ending -ait is for il and elle. The subject of this sentence is tu, which takes the same ending as je."
+        },
+        {
+          "answers": [
+            "Sans voiture, tu marcherai plus."
+          ],
+          "why": "The ending -ai is the je form of the future. With tu the verb can never end in -ai."
+        },
+        {
+          "answers": [
+            "Sans voiture, tu marcheras plus."
+          ],
+          "why": "Marcheras is the future: “you will walk”. Sans voiture describes a situation that is not real, so the future ending is wrong."
+        },
+        {
+          "answers": [
+            "Sans voiture, tu marchais plus."
+          ],
+          "why": "Marchais is the imparfait, about the past, and it has lost the r of the future stem."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "conditional-formation-7",
@@ -132,7 +805,22 @@
       ],
       "hint": "Two tiles are forms of habiter. The conditional keeps the r of the future stem.",
       "feedback": "One verb tile is the imparfait, not the conditional.",
-      "explanation": "Habiter- + -ions gives nous habiterions. Habitions is the imparfait."
+      "explanation": "Habiter- + -ions gives nous habiterions. Habitions is the imparfait.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous habitions volontiers à la campagne."
+          ],
+          "why": "Habitions is the imparfait: “we used to live”. The tile you need also carries the r of the future stem."
+        },
+        {
+          "answers": [
+            "Nous volontiers habiterions à la campagne."
+          ],
+          "why": "Volontiers comes after the verb in French; nothing is placed between the subject and its verb."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "conditional-irregular-stems-1",
@@ -152,7 +840,35 @@
       ],
       "hint": "Être uses the same irregular stem as in the future.",
       "feedback": "Use the future stem of être with the imparfait ending.",
-      "explanation": "Ser- + -ais gives je serais."
+      "explanation": "Ser- + -ais gives je serais.",
+      "mistakes": [
+        {
+          "answers": [
+            "serait"
+          ],
+          "why": "The ending -ait is for il and elle. The subject asked for is je."
+        },
+        {
+          "answers": [
+            "étais",
+            "j’étais"
+          ],
+          "why": "Étais is the imparfait of être: “I was”. The conditional is built on the irregular future stem instead."
+        },
+        {
+          "answers": [
+            "serions"
+          ],
+          "why": "The ending -ions goes with nous, not with je."
+        },
+        {
+          "answers": [
+            "seras"
+          ],
+          "why": "Seras is the future, and with tu. Neither the person nor the tense fits."
+        }
+      ],
+      "row": "être"
     },
     {
       "id": "conditional-irregular-stems-2",
@@ -166,7 +882,35 @@
       ],
       "hint": "Faire uses the same irregular stem as in the future.",
       "feedback": "Use the future stem of faire with the vous ending -iez.",
-      "explanation": "Fer- + -iez gives vous feriez."
+      "explanation": "Fer- + -iez gives vous feriez.",
+      "mistakes": [
+        {
+          "answers": [
+            "ferez",
+            "vous ferez"
+          ],
+          "why": "Ferez is the future: “you will do”. The conditional puts an imparfait ending on that same stem."
+        },
+        {
+          "answers": [
+            "faisiez"
+          ],
+          "why": "Faisiez is the imparfait of faire. The conditional needs the short irregular stem the future uses."
+        },
+        {
+          "answers": [
+            "ferais"
+          ],
+          "why": "The ending -ais goes with je and tu, and the subject asked for is vous."
+        },
+        {
+          "answers": [
+            "faireriez"
+          ],
+          "why": "Faire never keeps its infinitive as a stem: its stem is short and irregular."
+        }
+      ],
+      "row": "faire"
     },
     {
       "id": "conditional-irregular-stems-3",
@@ -180,7 +924,34 @@
       ],
       "hint": "Venir uses the same irregular stem as in the future.",
       "feedback": "Use the future stem of venir with the imparfait ending for elle.",
-      "explanation": "Viendr- + -ait gives elle viendrait."
+      "explanation": "Viendr- + -ait gives elle viendrait.",
+      "mistakes": [
+        {
+          "answers": [
+            "viendra"
+          ],
+          "why": "Viendra is the future: “she will come”. The conditional adds an imparfait ending to that stem."
+        },
+        {
+          "answers": [
+            "venait"
+          ],
+          "why": "Venait is the imparfait: “she was coming”. Without the r of the future stem it cannot mean would."
+        },
+        {
+          "answers": [
+            "viendrais"
+          ],
+          "why": "The ending -ais goes with je and tu. Elle is third person."
+        },
+        {
+          "answers": [
+            "venirait"
+          ],
+          "why": "Venir does not keep its infinitive as a stem; its stem is irregular and contains a d."
+        }
+      ],
+      "row": "venir"
     },
     {
       "id": "conditional-irregular-stems-4",
@@ -193,7 +964,34 @@
       ],
       "hint": "Il faut has an irregular future stem. Keep it and add the il ending of the imparfait.",
       "feedback": "Use the future stem of falloir with -ait.",
-      "explanation": "Faudr- + -ait gives il faudrait."
+      "explanation": "Faudr- + -ait gives il faudrait.",
+      "mistakes": [
+        {
+          "answers": [
+            "faudra"
+          ],
+          "why": "Faudra is the future: “it will be necessary”. Sans toi imagines a situation, so an imparfait ending is needed on that stem."
+        },
+        {
+          "answers": [
+            "fallait"
+          ],
+          "why": "Fallait is the imparfait: “it was necessary”. The r of the future stem is missing."
+        },
+        {
+          "answers": [
+            "faudrais"
+          ],
+          "why": "The ending -ais goes with je and tu. Falloir only ever appears with il."
+        },
+        {
+          "answers": [
+            "falloirait"
+          ],
+          "why": "Falloir does not keep its infinitive: it has an irregular stem in the future and the conditional."
+        }
+      ],
+      "row": "falloir"
     },
     {
       "id": "conditional-irregular-stems-5",
@@ -212,7 +1010,28 @@
       ],
       "hint": "À ta place describes something imagined. Aller has an irregular future stem.",
       "feedback": "Use the conditional, built on the irregular stem of aller.",
-      "explanation": "Imagined situations take the conditional: ir- + -ais gives j’irais."
+      "explanation": "Imagined situations take the conditional: ir- + -ais gives j’irais.",
+      "mistakes": [
+        {
+          "answers": [
+            "allerais"
+          ],
+          "why": "Aller never builds on its infinitive; its stem is irregular and only two letters long."
+        },
+        {
+          "answers": [
+            "irai"
+          ],
+          "why": "That is the future: “I will go”. À ta place describes an imagined situation, which needs an imparfait ending."
+        },
+        {
+          "answers": [
+            "allais"
+          ],
+          "why": "Allais is the imparfait: “I was going”. It has no r, so it cannot express would."
+        }
+      ],
+      "row": "aller"
     },
     {
       "id": "conditional-irregular-stems-6",
@@ -225,7 +1044,34 @@
       ],
       "hint": "Avoir has an irregular stem in the future and the conditional.",
       "feedback": "The stem of avoir is wrong.",
-      "explanation": "The conditional of avoir uses the stem aur-: nous aurions."
+      "explanation": "The conditional of avoir uses the stem aur-: nous aurions.",
+      "mistakes": [
+        {
+          "answers": [
+            "Avec plus d’argent, nous averions une grande maison."
+          ],
+          "why": "This form builds the stem on the infinitive avoir. That verb has a short irregular stem instead."
+        },
+        {
+          "answers": [
+            "Avec plus d’argent, nous avions une grande maison."
+          ],
+          "why": "Avions is the imparfait: “we had”. The sentence imagines something, so the r of the future stem is needed."
+        },
+        {
+          "answers": [
+            "Avec plus d’argent, nous aurons une grande maison."
+          ],
+          "why": "Aurons is the future: “we will have”. Avec plus d’argent is imaginary, so the ending must be an imparfait one."
+        },
+        {
+          "answers": [
+            "Avec plus d’argent, nous aurais une grande maison."
+          ],
+          "why": "The ending -ais goes with je and tu. The subject here is nous."
+        }
+      ],
+      "row": "avoir"
     },
     {
       "id": "conditional-irregular-stems-7",
@@ -240,7 +1086,36 @@
       ],
       "hint": "Use être in the conditional with ce.",
       "feedback": "Être has an irregular stem in the conditional.",
-      "explanation": "Ser- + -ait gives ce serait."
+      "explanation": "Ser- + -ait gives ce serait.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce sera parfait.",
+            "Ça sera parfait."
+          ],
+          "why": "Sera is the future: “it will be”. Would needs an imparfait ending on that stem."
+        },
+        {
+          "answers": [
+            "C’est parfait.",
+            "C’était parfait."
+          ],
+          "why": "Those are the present and the imparfait of être. Neither says what would happen in an imagined case."
+        },
+        {
+          "answers": [
+            "Il serait parfait."
+          ],
+          "why": "Il points at one particular masculine thing. The instruction says the subject is the situation itself, which French names with ce."
+        },
+        {
+          "answers": [
+            "Ce serais parfait."
+          ],
+          "why": "The ending -ais goes with je and tu. Ce is a third person subject."
+        }
+      ],
+      "row": "être"
     },
     {
       "id": "conditional-irregular-stems-8",
@@ -253,7 +1128,34 @@
       ],
       "hint": "Pouvoir has an irregular future stem with a double r.",
       "feedback": "Use the future stem of pouvoir with the imparfait ending.",
-      "explanation": "Pourr- + -ait gives elle pourrait."
+      "explanation": "Pourr- + -ait gives elle pourrait.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle pourra venir."
+          ],
+          "why": "Pourra is the future: “she will be able to”. The conditional adds an imparfait ending to that stem."
+        },
+        {
+          "answers": [
+            "Elle pouvait venir."
+          ],
+          "why": "Pouvait is the imparfait: it says she was able to, in the past."
+        },
+        {
+          "answers": [
+            "Elle pourrais venir."
+          ],
+          "why": "The ending -ais goes with je and tu, and the subject is elle."
+        },
+        {
+          "answers": [
+            "Elle pourait venir."
+          ],
+          "why": "The stem of pouvoir has a double r; with a single r the word is misspelt."
+        }
+      ],
+      "row": "pouvoir"
     },
     {
       "id": "conditional-politeness-1",
@@ -272,7 +1174,28 @@
       ],
       "hint": "A polite request uses the conditional. Check the ending for je.",
       "feedback": "Look for the conditional of vouloir with the je ending.",
-      "explanation": "Je voudrais is the conditional of vouloir, the polite way to ask. Voudrai is the future."
+      "explanation": "Je voudrais is the conditional of vouloir, the polite way to ask. Voudrai is the future.",
+      "mistakes": [
+        {
+          "answers": [
+            "voudrai"
+          ],
+          "why": "That is the future: “I will want”. A request at a counter is made with an imparfait ending on that stem."
+        },
+        {
+          "answers": [
+            "voulerais"
+          ],
+          "why": "Vouloir does not keep its infinitive as a stem; its stem is short and contains a d."
+        },
+        {
+          "answers": [
+            "voudrait"
+          ],
+          "why": "The ending -ait belongs to il and elle. The person ordering is je."
+        }
+      ],
+      "row": "je veux"
     },
     {
       "id": "conditional-politeness-2",
@@ -285,7 +1208,34 @@
       ],
       "hint": "Pouvoir has an irregular stem in the conditional.",
       "feedback": "Change pouvez into the conditional vous form.",
-      "explanation": "Pourr- + -iez gives pourriez-vous, a more polite request."
+      "explanation": "Pourr- + -iez gives pourriez-vous, a more polite request.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pouvez-vous m’aider ?"
+          ],
+          "why": "That is the present, the blunt question you were given. Politeness comes from moving pouvoir into the conditional."
+        },
+        {
+          "answers": [
+            "Pourrais-vous m’aider ?"
+          ],
+          "why": "The ending -ais goes with je and tu. Vous takes the ending it also has in the imparfait."
+        },
+        {
+          "answers": [
+            "Pourrez-vous m’aider ?"
+          ],
+          "why": "Pourrez is the future: “will you be able to”. That predicts instead of asking politely."
+        },
+        {
+          "answers": [
+            "Vous pourriez m’aider ?"
+          ],
+          "why": "The verb is right, but the question has lost its inversion; you were asked to keep the verb in front of the pronoun."
+        }
+      ],
+      "row": "pouvez-vous ?"
     },
     {
       "id": "conditional-politeness-3",
@@ -298,7 +1248,34 @@
       ],
       "hint": "Vouloir has an irregular stem with a d.",
       "feedback": "Change veux into the conditional je form.",
-      "explanation": "Je veux sounds blunt; je voudrais is the polite conditional."
+      "explanation": "Je veux sounds blunt; je voudrais is the polite conditional.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je veux une chambre pour deux nuits."
+          ],
+          "why": "This is still the present, which at a hotel desk sounds like a demand."
+        },
+        {
+          "answers": [
+            "Je voudrai une chambre pour deux nuits."
+          ],
+          "why": "That ending is the future: “I will want”. It announces a plan instead of making a request."
+        },
+        {
+          "answers": [
+            "Je voulerais une chambre pour deux nuits."
+          ],
+          "why": "Vouloir has an irregular stem; building it on the infinitive gives a word that does not exist."
+        },
+        {
+          "answers": [
+            "J’aimerais une chambre pour deux nuits."
+          ],
+          "why": "This is polite, but it changes the verb. The exercise asks for vouloir itself in the conditional."
+        }
+      ],
+      "row": "je veux"
     },
     {
       "id": "conditional-politeness-4",
@@ -319,7 +1296,35 @@
       ],
       "hint": "Could here is the conditional of pouvoir.",
       "feedback": "Use the vous form of pouvoir in the conditional.",
-      "explanation": "Pourriez-vous is the polite conditional of pouvoir."
+      "explanation": "Pourriez-vous is the polite conditional of pouvoir.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pourrais-tu fermer la porte ?",
+            "Tu pourrais fermer la porte ?"
+          ],
+          "why": "Tu is for a friend. The instruction asks for the formal person, so the verb must take the vous ending."
+        },
+        {
+          "answers": [
+            "Pourrez-vous fermer la porte ?"
+          ],
+          "why": "Pourrez is the future: “will you be able to”. Could asks, it does not predict."
+        },
+        {
+          "answers": [
+            "Pourrais-vous fermer la porte ?"
+          ],
+          "why": "The ending -ais goes with je and tu, so it clashes with the pronoun vous."
+        },
+        {
+          "answers": [
+            "Vous pouvez fermer la porte ?"
+          ],
+          "why": "That is the present: it states that the person is able to. Could is more tentative and needs the conditional."
+        }
+      ],
+      "row": "pouvez-vous ?"
     },
     {
       "id": "conditional-politeness-5",
@@ -338,7 +1343,35 @@
       ],
       "hint": "Future stem of pouvoir plus the vous ending of the imparfait.",
       "feedback": "Pouvoir has an irregular stem with a double r.",
-      "explanation": "Pourr- + -iez gives pourriez-vous."
+      "explanation": "Pourr- + -iez gives pourriez-vous.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pouvez"
+          ],
+          "why": "That is the present of pouvoir, a direct question. S’il vous plaît signals a polite request, which asks for the conditional."
+        },
+        {
+          "answers": [
+            "Pourrez"
+          ],
+          "why": "Pourrez is the future: “will you be able to”. A request is not a prediction."
+        },
+        {
+          "answers": [
+            "Pourrais"
+          ],
+          "why": "The ending -ais goes with je and tu, but the pronoun after the blank is vous."
+        },
+        {
+          "answers": [
+            "Peux",
+            "Pouvais"
+          ],
+          "why": "Peux is the present with je or tu, and pouvais is the imparfait. Neither matches vous nor the politeness the sentence needs."
+        }
+      ],
+      "row": "pouvez-vous ?"
     },
     {
       "id": "conditional-politeness-6",
@@ -359,7 +1392,16 @@
       ],
       "hint": "Two tiles are forms of vouloir. Only one means would like.",
       "feedback": "The polite form is the conditional, ending in -ais.",
-      "explanation": "Je voudrais is the conditional; je voudrai is the future."
+      "explanation": "Je voudrais is the conditional; je voudrai is the future.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je voudrai parler au directeur."
+          ],
+          "why": "That tile is the future: “I will want”. At a reception desk it sounds like a plan, not a request."
+        }
+      ],
+      "row": "je veux"
     },
     {
       "id": "conditional-politeness-7",
@@ -372,7 +1414,34 @@
       ],
       "hint": "Look at the ending of the verb and at the subject.",
       "feedback": "The ending does not match vous.",
-      "explanation": "With vous, the conditional ends in -iez: pourriez-vous."
+      "explanation": "With vous, the conditional ends in -iez: pourriez-vous.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pourrais-vous répéter, s’il vous plaît ?"
+          ],
+          "why": "The ending -ais goes with je and tu, but the pronoun in the question is vous."
+        },
+        {
+          "answers": [
+            "Pouvez-vous répéter, s’il vous plaît ?"
+          ],
+          "why": "The person now matches, but this is the present again; the question was meant to stay polite."
+        },
+        {
+          "answers": [
+            "Pourrez-vous répéter, s’il vous plaît ?"
+          ],
+          "why": "Pourrez is the future. It predicts instead of asking politely."
+        },
+        {
+          "answers": [
+            "Pourrais-tu répéter, s’il vous plaît ?"
+          ],
+          "why": "Switching to tu makes the verb agree, but it drops the formal person that s’il vous plaît keeps."
+        }
+      ],
+      "row": "pouvez-vous ?"
     },
     {
       "id": "conditional-advice-devoir-1",
@@ -392,7 +1461,36 @@
       ],
       "hint": "Devoir has an irregular future stem. Add the tu ending of the imparfait.",
       "feedback": "Use the stem devr- with the imparfait ending.",
-      "explanation": "Devr- + -ais gives tu devrais."
+      "explanation": "Devr- + -ais gives tu devrais.",
+      "mistakes": [
+        {
+          "answers": [
+            "devrait"
+          ],
+          "why": "The ending -ait is for il and elle. The subject asked for is tu."
+        },
+        {
+          "answers": [
+            "devais",
+            "tu devais"
+          ],
+          "why": "Devais is the imparfait: “you had to”. Without the r of the future stem it cannot mean should."
+        },
+        {
+          "answers": [
+            "dois",
+            "tu dois"
+          ],
+          "why": "Dois is the present: “you must”. That is an obligation, not the softer advice the conditional gives."
+        },
+        {
+          "answers": [
+            "devoirais"
+          ],
+          "why": "Devoir does not keep its infinitive as a stem; the stem loses the oi."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "conditional-advice-devoir-2",
@@ -411,7 +1509,23 @@
       ],
       "hint": "Advice uses devoir in the conditional. Check the stem and the ending for tu.",
       "feedback": "Look for the irregular stem of devoir and the tu ending.",
-      "explanation": "Tu devrais (you should) is devr- + -ais."
+      "explanation": "Tu devrais (you should) is devr- + -ais.",
+      "mistakes": [
+        {
+          "answers": [
+            "devrait"
+          ],
+          "why": "The ending -ait is for il and elle. The sentence speaks to tu."
+        },
+        {
+          "answers": [
+            "devrerais",
+            "doiverais"
+          ],
+          "why": "Neither form exists: devoir has one short irregular stem, and these add letters taken from the infinitive or the present."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "conditional-advice-devoir-3",
@@ -424,7 +1538,34 @@
       ],
       "hint": "This is advice. Use the irregular stem and the vous ending.",
       "feedback": "Advice uses the conditional of devoir.",
-      "explanation": "Devr- + -iez gives vous devriez, you should."
+      "explanation": "Devr- + -iez gives vous devriez, you should.",
+      "mistakes": [
+        {
+          "answers": [
+            "devrez"
+          ],
+          "why": "Devrez is the future: “you will have to”. Advice is softer and takes an imparfait ending on that stem."
+        },
+        {
+          "answers": [
+            "devez"
+          ],
+          "why": "Devez is the present: “you must”. It gives an order instead of advice."
+        },
+        {
+          "answers": [
+            "devrais"
+          ],
+          "why": "The ending -ais goes with je and tu. The subject in the sentence is vous."
+        },
+        {
+          "answers": [
+            "deviez"
+          ],
+          "why": "Deviez is the imparfait: “you had to”. The r kept from the future stem is missing."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "conditional-advice-devoir-4",
@@ -448,7 +1589,35 @@
       ],
       "hint": "Should is devoir in the conditional, followed by an infinitive.",
       "feedback": "Use the conditional of devoir, not the present.",
-      "explanation": "Tu devrais + infinitive gives advice: tu devrais appeler ta mère."
+      "explanation": "Tu devrais + infinitive gives advice: tu devrais appeler ta mère.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous devriez appeler votre mère.",
+            "Vous devriez téléphoner à votre mère."
+          ],
+          "why": "That is the formal person. The instruction says you are talking to a friend, so the verb and the possessive both change."
+        },
+        {
+          "answers": [
+            "Tu devras appeler ta mère."
+          ],
+          "why": "Devras is the future: “you will have to”. It announces an obligation instead of advising."
+        },
+        {
+          "answers": [
+            "Tu devrait appeler ta mère."
+          ],
+          "why": "The ending -ait is for il and elle, but the subject is tu."
+        },
+        {
+          "answers": [
+            "Tu devrais appelles ta mère."
+          ],
+          "why": "After devoir the second verb stays in the infinitive; it is never conjugated."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "conditional-advice-devoir-5",
@@ -461,7 +1630,34 @@
       ],
       "hint": "Look at the ending of the verb and at the subject.",
       "feedback": "The ending does not match il.",
-      "explanation": "With il, the conditional ends in -ait: il devrait."
+      "explanation": "With il, the conditional ends in -ait: il devrait.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il devrais faire du sport."
+          ],
+          "why": "The ending -ais goes with je and tu. Il is third person and needs its own ending."
+        },
+        {
+          "answers": [
+            "Il devra faire du sport."
+          ],
+          "why": "Devra is the future: “he will have to”. The sentence gives advice, not a prediction."
+        },
+        {
+          "answers": [
+            "Il doit faire du sport."
+          ],
+          "why": "Doit is the present: “he must”. It states an obligation instead of suggesting one."
+        },
+        {
+          "answers": [
+            "Ils devraient faire du sport."
+          ],
+          "why": "This changes the subject to a plural one. Only the ending of the verb had to be corrected."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "conditional-advice-devoir-6",
@@ -474,7 +1670,34 @@
       ],
       "hint": "The command becomes an infinitive after the conditional of devoir.",
       "feedback": "Use tu + devoir in the conditional + infinitive.",
-      "explanation": "Mange ! becomes the softer advice tu devrais manger."
+      "explanation": "Mange ! becomes the softer advice tu devrais manger.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu devrais mange des légumes."
+          ],
+          "why": "Mange is a conjugated form. After devoir the second verb must stay in the infinitive."
+        },
+        {
+          "answers": [
+            "Tu dois manger des légumes."
+          ],
+          "why": "Dois is the present: “you must”. It repeats the order instead of softening it into advice."
+        },
+        {
+          "answers": [
+            "Tu devras manger des légumes."
+          ],
+          "why": "Devras is the future: “you will have to”. Advice takes an imparfait ending on that stem."
+        },
+        {
+          "answers": [
+            "Tu devrait manger des légumes."
+          ],
+          "why": "The ending -ait belongs to il and elle, and the subject here is tu."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "conditional-advice-devoir-7",
@@ -495,7 +1718,16 @@
       ],
       "hint": "Two tiles are forms of devoir. Only one means should.",
       "feedback": "Advice uses the conditional, not the future.",
-      "explanation": "Vous devriez is the conditional (should); vous devrez is the future (will have to)."
+      "explanation": "Vous devriez is the conditional (should); vous devrez is the future (will have to).",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous devrez prendre des vacances."
+          ],
+          "why": "That tile is the future: “you will have to”. It announces an obligation instead of giving advice."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "conditional-wishes-1",
@@ -515,7 +1747,35 @@
       ],
       "hint": "Future stem of aimer plus the nous ending of the imparfait.",
       "feedback": "Check that you have both the r of the stem and the imparfait ending.",
-      "explanation": "Aimer- + -ions gives nous aimerions."
+      "explanation": "Aimer- + -ions gives nous aimerions.",
+      "mistakes": [
+        {
+          "answers": [
+            "aimerais"
+          ],
+          "why": "The ending -ais goes with je and tu, not with nous."
+        },
+        {
+          "answers": [
+            "aimions",
+            "nous aimions"
+          ],
+          "why": "Aimions is the imparfait: “we liked”. With no r on the stem it cannot express a wish."
+        },
+        {
+          "answers": [
+            "aimeriez"
+          ],
+          "why": "The ending -iez goes with vous. The subject asked for is nous."
+        },
+        {
+          "answers": [
+            "aimons"
+          ],
+          "why": "Aimons is the present: “we like”. A wish needs the future stem plus an imparfait ending."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "conditional-wishes-2",
@@ -534,7 +1794,28 @@
       ],
       "hint": "This is a wish, and the subject is je.",
       "feedback": "A wish uses the conditional of aimer with the je ending.",
-      "explanation": "J’aimerais (I would like) is aimer- + -ais."
+      "explanation": "J’aimerais (I would like) is aimer- + -ais.",
+      "mistakes": [
+        {
+          "answers": [
+            "aimerai"
+          ],
+          "why": "That is the future: “I will like”. A wish about some day is not a plan, so the ending must be an imparfait one."
+        },
+        {
+          "answers": [
+            "aimais"
+          ],
+          "why": "Aimais is the imparfait: “I used to like”. It has no r and points to the past."
+        },
+        {
+          "answers": [
+            "aimerait"
+          ],
+          "why": "The ending -ait is for il and elle. The subject here is j’."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "conditional-wishes-3",
@@ -547,7 +1828,34 @@
       ],
       "hint": "Mes parents is ils. Future stem plus the imparfait ending.",
       "feedback": "The ils ending of the conditional is -aient.",
-      "explanation": "Aimer- + -aient gives ils aimeraient."
+      "explanation": "Aimer- + -aient gives ils aimeraient.",
+      "mistakes": [
+        {
+          "answers": [
+            "aimerait"
+          ],
+          "why": "The ending -ait is for one person. Mes parents is plural, so the plural ending is needed."
+        },
+        {
+          "answers": [
+            "aimeront"
+          ],
+          "why": "Aimeront is the future: “they will like”. A wish takes an imparfait ending on that stem."
+        },
+        {
+          "answers": [
+            "aimaient"
+          ],
+          "why": "Aimaient is the imparfait: “they liked”. The r of the future stem is missing."
+        },
+        {
+          "answers": [
+            "aiment"
+          ],
+          "why": "Aiment is the present: it says they like it already, not that they wish for it."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "conditional-wishes-4",
@@ -573,7 +1881,36 @@
       ],
       "hint": "Would like is aimer or vouloir in the conditional.",
       "feedback": "Use the conditional, ending in -ais for je.",
-      "explanation": "J’aimerais and je voudrais both express a wish in the conditional."
+      "explanation": "J’aimerais and je voudrais both express a wish in the conditional.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’aime voyager.",
+            "Je veux voyager."
+          ],
+          "why": "Those are the present: “I like travelling” and “I want to travel”. Would like is softer and needs the conditional."
+        },
+        {
+          "answers": [
+            "J’aimais voyager."
+          ],
+          "why": "Aimais is the imparfait: it talks about a past habit, not about a wish."
+        },
+        {
+          "answers": [
+            "J’aimerait voyager."
+          ],
+          "why": "The ending -ait is for il and elle, but the subject is je."
+        },
+        {
+          "answers": [
+            "Je voudrais de voyager.",
+            "J’aimerais de voyager."
+          ],
+          "why": "After vouloir and aimer the infinitive follows directly, with no preposition."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "conditional-wishes-5",
@@ -586,7 +1923,34 @@
       ],
       "hint": "Future stem of aimer plus the elle ending of the imparfait.",
       "feedback": "Change aime into the conditional.",
-      "explanation": "Aimer- + -ait gives elle aimerait, she would like."
+      "explanation": "Aimer- + -ait gives elle aimerait, she would like.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle aime avoir un chien."
+          ],
+          "why": "This is still the present: it reports what she likes. A wish needs the conditional."
+        },
+        {
+          "answers": [
+            "Elle aimera avoir un chien."
+          ],
+          "why": "Aimera is the future: “she will like”. A wish takes an imparfait ending on that stem."
+        },
+        {
+          "answers": [
+            "Elle aimerais avoir un chien."
+          ],
+          "why": "The ending -ais goes with je and tu, and the subject is elle."
+        },
+        {
+          "answers": [
+            "Elle aimait avoir un chien."
+          ],
+          "why": "Aimait is the imparfait: it says what she used to like, with no r on the stem."
+        }
+      ],
+      "row": "il / elle"
     },
     {
       "id": "conditional-wishes-6",
@@ -599,7 +1963,34 @@
       ],
       "hint": "Look at the ending of the verb and at the subject.",
       "feedback": "This is a wish, and the ending does not match tu.",
-      "explanation": "With tu, the conditional ends in -ais: tu aimerais."
+      "explanation": "With tu, the conditional ends in -ais: tu aimerais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu aimerai partir avec nous ?"
+          ],
+          "why": "The ending -ai is the je form of the future. With tu the conditional takes the ending it shares with the imparfait."
+        },
+        {
+          "answers": [
+            "Tu aimeras partir avec nous ?"
+          ],
+          "why": "Aimeras is the future: “will you like”. The question is a tentative invitation, so it needs the conditional."
+        },
+        {
+          "answers": [
+            "Tu aimais partir avec nous ?"
+          ],
+          "why": "Aimais is the imparfait: it asks about the past instead of about a wish."
+        },
+        {
+          "answers": [
+            "Tu aimerait partir avec nous ?"
+          ],
+          "why": "The ending -ait is for il and elle. The subject here is tu."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "conditional-imagined-1",
@@ -618,7 +2009,27 @@
       ],
       "hint": "À ta place describes something imagined. Check the ending for je.",
       "feedback": "An imagined situation uses the conditional.",
-      "explanation": "À ta place calls for the conditional: je prendrais."
+      "explanation": "À ta place calls for the conditional: je prendrais.",
+      "mistakes": [
+        {
+          "answers": [
+            "prendrai"
+          ],
+          "why": "That is the future: “I will take”. À ta place imagines a situation that is not real."
+        },
+        {
+          "answers": [
+            "prenais"
+          ],
+          "why": "Prenais is the imparfait: “I was taking”. The r of the future stem is missing."
+        },
+        {
+          "answers": [
+            "prendrait"
+          ],
+          "why": "The ending -ait is for il and elle. The speaker here is je."
+        }
+      ]
     },
     {
       "id": "conditional-imagined-2",
@@ -631,7 +2042,39 @@
       ],
       "hint": "Tout le monde takes the il form. Avoir has an irregular stem.",
       "feedback": "An imagined world calls for the conditional of avoir.",
-      "explanation": "Aur- + -ait gives tout le monde aurait."
+      "explanation": "Aur- + -ait gives tout le monde aurait.",
+      "mistakes": [
+        {
+          "answers": [
+            "aura"
+          ],
+          "why": "Aura is the future: “everyone will have”. Dans un monde idéal is imaginary, so the ending must be an imparfait one."
+        },
+        {
+          "answers": [
+            "avait"
+          ],
+          "why": "Avait is the imparfait: it describes the past, and it lacks the r of the future stem."
+        },
+        {
+          "answers": [
+            "auraient"
+          ],
+          "why": "Tout le monde sounds plural in English but takes the il form in French, so the ending stays singular."
+        },
+        {
+          "answers": [
+            "aurais"
+          ],
+          "why": "The ending -ais goes with je and tu, and this subject is third person."
+        },
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "A is the present: it claims the world already is like that."
+        }
+      ]
     },
     {
       "id": "conditional-imagined-3",
@@ -651,7 +2094,33 @@
       ],
       "hint": "The situation is imagined, so the verb is in the conditional.",
       "feedback": "Use the conditional of partir with je.",
-      "explanation": "À ta place, je partirais: partir- + -ais."
+      "explanation": "À ta place, je partirais: partir- + -ais.",
+      "mistakes": [
+        {
+          "answers": [
+            "À ta place, je pars."
+          ],
+          "why": "Pars is the present: it says you are leaving now. The sentence imagines being someone else."
+        },
+        {
+          "answers": [
+            "À ta place, je partais."
+          ],
+          "why": "Partais is the imparfait, about the past, and it has no r on the stem."
+        },
+        {
+          "answers": [
+            "À votre place, je partirais."
+          ],
+          "why": "Votre is the formal possessive. The instruction says you are speaking to a friend."
+        },
+        {
+          "answers": [
+            "À ta place, je partirait."
+          ],
+          "why": "The ending -ait is for il and elle, but the subject is je."
+        }
+      ]
     },
     {
       "id": "conditional-imagined-4",
@@ -664,7 +2133,33 @@
       ],
       "hint": "Faire has an irregular stem in the conditional.",
       "feedback": "Use the future stem of faire with the nous ending of the imparfait.",
-      "explanation": "Fer- + -ions gives nous ferions: we would have barbecues."
+      "explanation": "Fer- + -ions gives nous ferions: we would have barbecues.",
+      "mistakes": [
+        {
+          "answers": [
+            "Avec un jardin, nous faisons des barbecues."
+          ],
+          "why": "Faisons is the present: it claims you really do have barbecues. The garden is only imagined."
+        },
+        {
+          "answers": [
+            "Avec un jardin, nous ferons des barbecues."
+          ],
+          "why": "Ferons is the future: “we will have”. The garden is imaginary, so an imparfait ending belongs on that stem."
+        },
+        {
+          "answers": [
+            "Avec un jardin, nous faisions des barbecues."
+          ],
+          "why": "Faisions is the imparfait: it tells what you used to do, and it has no r."
+        },
+        {
+          "answers": [
+            "Avec un jardin, nous fairions des barbecues."
+          ],
+          "why": "Faire does not keep its infinitive as a stem; its stem is short and irregular."
+        }
+      ]
     },
     {
       "id": "conditional-imagined-5",
@@ -677,7 +2172,33 @@
       ],
       "hint": "An imagined situation needs would, not will.",
       "feedback": "Serai is the future.",
-      "explanation": "Would be is the conditional: je serais."
+      "explanation": "Would be is the conditional: je serais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sans téléphone, je serai plus calme."
+          ],
+          "why": "That ending is the future: it promises this will really happen. Sans téléphone only imagines a situation."
+        },
+        {
+          "answers": [
+            "Sans téléphone, je suis plus calme."
+          ],
+          "why": "Suis is the present: it states a fact about now, not something imagined."
+        },
+        {
+          "answers": [
+            "Sans téléphone, j’étais plus calme."
+          ],
+          "why": "Étais is the imparfait, about the past. The sentence imagines a situation instead."
+        },
+        {
+          "answers": [
+            "Sans téléphone, je serait plus calme."
+          ],
+          "why": "The ending -ait is for il and elle. The subject here is je."
+        }
+      ]
     },
     {
       "id": "conditional-imagined-6",
@@ -699,7 +2220,15 @@
       ],
       "hint": "Two tiles are forms of dire. Only one is the conditional.",
       "feedback": "Dira is the future. Would is the conditional.",
-      "explanation": "Dir- + -ait gives elle dirait."
+      "explanation": "Dir- + -ait gives elle dirait.",
+      "mistakes": [
+        {
+          "answers": [
+            "À sa place, elle dira non."
+          ],
+          "why": "Dira is the future: “she will say”. Being in his place is imagined, not something that will happen."
+        }
+      ]
     },
     {
       "id": "conditional-rais-rai-ais-1",
@@ -717,7 +2246,22 @@
       ],
       "hint": "A promise about tomorrow says what will happen.",
       "feedback": "This is a certain future event, not an imagined one.",
-      "explanation": "Will give is the future: je donnerai. Donnerais would mean would give."
+      "explanation": "Will give is the future: je donnerai. Donnerais would mean would give.",
+      "mistakes": [
+        {
+          "answers": [
+            "donnerais"
+          ],
+          "why": "That is the conditional: “I would give”. A promise about tomorrow states something certain, not something imagined."
+        },
+        {
+          "answers": [
+            "donnais"
+          ],
+          "why": "Donnais is the imparfait: “I used to give”. It points to the past, but demain points forward."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "conditional-rais-rai-ais-2",
@@ -735,7 +2279,22 @@
       ],
       "hint": "Quand j’étais petit describes a past habit.",
       "feedback": "A past habit uses the imparfait, which has no r of the future stem.",
-      "explanation": "Used to read is the imparfait: je lisais."
+      "explanation": "Used to read is the imparfait: je lisais.",
+      "mistakes": [
+        {
+          "answers": [
+            "lirais"
+          ],
+          "why": "The r marks the future stem and the ending marks would: “I would read”. Quand j’étais petit reports what really happened."
+        },
+        {
+          "answers": [
+            "lirai"
+          ],
+          "why": "That is the future: “I will read”. The sentence is set in childhood, in the past."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "conditional-rais-rai-ais-3",
@@ -748,7 +2307,34 @@
       ],
       "hint": "Keep the stem and change only the ending.",
       "feedback": "The conditional has the future stem plus the imparfait ending.",
-      "explanation": "Je finirai (will) becomes je finirais (would): the ending -ai becomes -ais."
+      "explanation": "Je finirai (will) becomes je finirais (would): the ending -ai becomes -ais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Avec ton aide, je finirai ce soir."
+          ],
+          "why": "That ending is the future: the sentence still says the work will really be done."
+        },
+        {
+          "answers": [
+            "Avec ton aide, je finissais ce soir."
+          ],
+          "why": "Finissais is the imparfait: it drops the r of the future stem and moves the sentence into the past."
+        },
+        {
+          "answers": [
+            "Avec ton aide, je finirait ce soir."
+          ],
+          "why": "The ending -ait is for il and elle, but the subject is je."
+        },
+        {
+          "answers": [
+            "Avec ton aide, je finirions ce soir."
+          ],
+          "why": "The ending -ions goes with nous. Only the ending for je had to change."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "conditional-rais-rai-ais-4",
@@ -761,7 +2347,34 @@
       ],
       "hint": "Hier sets a background scene in the past, behind je suis sorti.",
       "feedback": "The scene is in the past, so neither the future stem nor the conditional fits.",
-      "explanation": "A past background uses the imparfait: il pleuvait."
+      "explanation": "A past background uses the imparfait: il pleuvait.",
+      "mistakes": [
+        {
+          "answers": [
+            "pleuvra"
+          ],
+          "why": "Pleuvra is the future: “it will rain”. Hier puts the whole scene in the past."
+        },
+        {
+          "answers": [
+            "pleuvrait"
+          ],
+          "why": "That is the conditional: “it would rain”. Nothing is imagined here — the rain was really falling."
+        },
+        {
+          "answers": [
+            "a plu"
+          ],
+          "why": "A plu is the passé composé, which reports one finished event. Behind je suis sorti you need the background scene."
+        },
+        {
+          "answers": [
+            "pleut"
+          ],
+          "why": "Pleut is the present: it describes now, but the sentence says hier."
+        }
+      ],
+      "row": "il / elle"
     },
     {
       "id": "conditional-rais-rai-ais-5",
@@ -774,7 +2387,34 @@
       ],
       "hint": "À ta place needs would, not will.",
       "feedback": "J’achèterai is the future.",
-      "explanation": "Would buy is the conditional: j’achèterais."
+      "explanation": "Would buy is the conditional: j’achèterais.",
+      "mistakes": [
+        {
+          "answers": [
+            "À ta place, j’achèterai cette veste."
+          ],
+          "why": "That ending is the future: it says you really will buy the jacket. À ta place imagines being someone else."
+        },
+        {
+          "answers": [
+            "À ta place, j’achetais cette veste."
+          ],
+          "why": "Achetais is the imparfait: it reports a past habit and has no r on the stem."
+        },
+        {
+          "answers": [
+            "À ta place, j’achèterait cette veste."
+          ],
+          "why": "The ending -ait is for il and elle, but the subject is j’."
+        },
+        {
+          "answers": [
+            "À ta place, j’achète cette veste."
+          ],
+          "why": "Achète is the present: it states what you really do, not what you would do in someone else’s place."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "conditional-rais-rai-ais-6",
@@ -794,7 +2434,40 @@
       ],
       "hint": "Would is the conditional: irregular stem of venir plus the je ending.",
       "feedback": "Check the ending: would needs -rais.",
-      "explanation": "Viendr- + -ais gives je viendrais."
+      "explanation": "Viendr- + -ais gives je viendrais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je viens avec plaisir."
+          ],
+          "why": "Viens is the present: it says you are coming. Would come is more tentative."
+        },
+        {
+          "answers": [
+            "Je venais avec plaisir."
+          ],
+          "why": "Venais is the imparfait, about the past, and it lacks the r of the future stem."
+        },
+        {
+          "answers": [
+            "Je viendrait avec plaisir."
+          ],
+          "why": "The ending -ait is for il and elle. The subject is je."
+        },
+        {
+          "answers": [
+            "Je venirais avec plaisir."
+          ],
+          "why": "Venir does not keep its infinitive as a stem; its stem is irregular and contains a d."
+        },
+        {
+          "answers": [
+            "Je viendrai volontiers."
+          ],
+          "why": "That ending is the future: “I will come”. Would needs the imparfait ending on the same stem."
+        }
+      ],
+      "row": "je"
     }
   ]
 }

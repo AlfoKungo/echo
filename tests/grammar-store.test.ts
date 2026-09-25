@@ -17,13 +17,32 @@ const SHAPES: Record<GrammarExerciseType, Pick<GrammarExercise, 'source' | 'answ
   translate: { source: 'I am here.', answers: ['Je suis ici.'] },
   conjugate: { source: 'finir · nous · présent', answers: ['finissons', 'nous finissons'] },
 };
+// One anticipated mistake per type (every wrong option for choose), each wrong as checked and silent on the answer.
+const MISTAKES: Record<GrammarExerciseType, GrammarExercise['mistakes']> = {
+  rewrite: [{ answers: ['Je parle pas.'], why: 'Negation needs both parts around the verb.' }],
+  build: [{ answers: ['Tu n’aimes le thé.'], why: 'Negation needs both parts around the verb.' }],
+  complete: [{ answers: ['es'], why: 'Es goes with tu, and the subject is elle.' }],
+  repair: [{ answers: ['Il habite Paris.'], why: 'A city needs a preposition before it.' }],
+  choose: [{ answers: ['est'], why: 'Est goes with il or elle, and the subject is tu.' }, { answers: ['êtes'], why: 'Êtes goes only with vous.' }],
+  translate: [{ answers: ['Je es ici.'], why: 'Es goes with tu, and the subject is je.' }],
+  conjugate: [{ answers: ['finisons'], why: 'The nous form of finir keeps the double s of -iss-.' }],
+};
 
 function exercise(id: string, pattern: string, type: GrammarExerciseType, extra: Partial<GrammarExercise> = {}): GrammarExercise {
-  return { id, pattern, type, instruction: `Answer ${id}.`, hint: `Hint for ${id}.`, feedback: `Nudge for ${id}.`, explanation: `Why ${id} works.`, ...SHAPES[type], ...extra };
+  return { id, pattern, type, instruction: `Answer ${id}.`, hint: `Hint for ${id}.`, feedback: `Nudge for ${id}.`, explanation: `Why ${id} works.`, ...SHAPES[type], mistakes: MISTAKES[type], ...extra };
 }
 
+const GUIDE: GrammarTopicContent['guide'] = {
+  summary: 'What this topic lets you say.',
+  sections: [
+    { id: 'forms', title: 'The forms', table: { columns: ['', 'être'], rows: [['tu', 'es'], ['il / elle', 'est'], ['vous', 'êtes']] }, steps: ['Find the subject.', 'Take its row.'], examples: [{ fr: 'Tu es ici.', en: 'You are here.' }] },
+    { id: 'more', title: 'More', text: 'Everything else.', examples: [{ fr: 'Il est à Paris.', en: 'He is in Paris.' }] },
+  ],
+};
+
 function topic(id: string, unit: string, exercises: GrammarExercise[]): GrammarTopicContent {
-  return { id, unit, level: 'A1', title: `Topic ${id}`, description: `Practise ${id}.`, mark: id.slice(0, 2), rule: `The rule of ${id}.`, example: 'Je ne parle pas. · Il est ici.', aside: '', exercises };
+  const patterns = Object.fromEntries(exercises.map((item) => [item.pattern, { section: 'forms', steps: [`Spot ${item.pattern}.`, 'Take its row.'] }]));
+  return { id, unit, level: 'A1', title: `Topic ${id}`, description: `Practise ${id}.`, mark: id.slice(0, 2), guide: GUIDE, patterns, exercises };
 }
 
 // Alpha lists its patterns in blocks, so taking exercises in file order would break the per-pattern cap.
@@ -47,7 +66,7 @@ const gamma = topic('gamma', 'more', [
   }),
   exercise('gamma-strict', 'place', 'complete', { source: 'Il va ____ Paris.', answers: ['à'], strictAccents: true }),
   exercise('gamma-comma', 'si', 'translate', { source: 'If you come, we will go to the cinema.', answers: ['Si tu viens, on ira au cinéma.'] }),
-  exercise('gamma-choose', 'si', 'choose'),
+  exercise('gamma-choose', 'si', 'choose', { row: 'tu' }),
   exercise('gamma-build', 'si', 'build'),
 ]);
 const units: GrammarUnitContent[] = [
@@ -376,6 +395,27 @@ describe('answer classification', () => {
     expect(state.session?.results.at(-1)).toMatchObject({ exerciseId: 'gamma-choose', outcome: 'helped', given: 'ES' });
   });
 
+  test('an anticipated wrong answer is explained without giving the answer; the table row waits until it settles', () => {
+    const { store } = fixture();
+    let state = until(store, store.start('gamma', requestId()), (id) => id === 'gamma-choose');
+    expect(state.session?.current?.help).toBeNull();
+    state = store.answer({ ...mutation(state), answer: 'est' });
+    expect(state.session?.current?.feedback).toEqual({ kind: 'incorrect', message: 'Nudge for gamma-choose.', why: 'Est goes with il or elle, and the subject is tu.' });
+    expect(state.session?.current?.help).toMatchObject({ steps: ['Spot si.', 'Take its row.'], section: { id: 'forms' }, row: null });
+    state = store.help({ ...mutation(state), kind: 'answer' });
+    expect(state.session?.current?.feedback).toMatchObject({ kind: 'shown', answer: 'es', why: 'Est goes with il or elle, and the subject is tu.' });
+    expect(state.session?.current?.help?.row).toBe('tu');
+  });
+
+  test('a wrong answer nobody anticipated gets the general nudge, and accents do not hide an anticipated one', () => {
+    const { store } = fixture();
+    let state = until(store, store.start('alpha', requestId()), (id) => byId.get(id)!.type === 'conjugate');
+    state = store.answer({ ...mutation(state), answer: 'finit' });
+    expect(state.session?.current?.feedback).toEqual({ kind: 'incorrect', message: `Nudge for ${currentId(state)}.` });
+    state = store.answer({ ...mutation(state), answer: 'Finisons.' });
+    expect(state.session?.current?.feedback?.why).toBe('The nous form of finir keeps the double s of -iss-.');
+  });
+
   test('building derives the answer from unique in-range tokens and permits unused distractors', () => {
     const { store } = fixture();
     let state = until(store, store.start('gamma', requestId()), (id) => id === 'gamma-build');
@@ -516,7 +556,13 @@ describe('course content', () => {
     const invalid: Course[] = [
       { units, topics: [alpha, beta] },
       { units, topics: [alpha, beta, { ...gamma, exercises: [gamma.exercises[0]!, gamma.exercises[0]!] }] },
-      { units, topics: [alpha, beta, { ...gamma, rule: '<strong>Not plain text</strong>' }] },
+      { units, topics: [alpha, beta, { ...gamma, guide: { ...GUIDE, summary: '<strong>Not plain text</strong>' } }] },
+      // A choose option nobody explains, a mistake that is really an accepted answer, a why that gives the answer away,
+      // and a row the pattern's table does not have.
+      { units, topics: [alpha, beta, { ...gamma, exercises: gamma.exercises.map((item) => item.id === 'gamma-choose' ? { ...item, mistakes: item.mistakes.slice(0, 1) } : item) }] },
+      { units, topics: [alpha, beta, { ...gamma, exercises: gamma.exercises.map((item) => item.id === 'gamma-strict' ? { ...item, mistakes: [{ answers: ['à'], why: 'Wrong.' }] } : item) }] },
+      { units, topics: [alpha, beta, { ...gamma, exercises: gamma.exercises.map((item) => item.id === 'gamma-accent' ? { ...item, mistakes: [{ answers: ['Il est Paris.'], why: 'Say il est à Paris instead.' }] } : item) }] },
+      { units, topics: [alpha, beta, { ...gamma, exercises: gamma.exercises.map((item) => item.id === 'gamma-choose' ? { ...item, row: 'nous' } : item) }] },
       { units, topics: [alpha, beta, { ...gamma, exercises: [{ ...gamma.exercises[3]!, answers: ['vous'] }] }] },
     ];
     for (const entry of invalid) expect(() => createGrammarStore(entry, { dbPath: ':memory:' })).toThrow(StoreError);

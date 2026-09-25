@@ -5,9 +5,374 @@
   "title": "This and that",
   "description": "Point at things with ce, cet, cette and ces, and say c’est and ce sont.",
   "mark": "ce · cet · cette",
-  "rule": "Ce goes before a masculine singular noun, cette before a feminine singular noun, and ces before any plural noun. Before a masculine singular noun that starts with a vowel or a silent h, ce becomes cet: cet ami, cet hôtel, cet arbre. Cette never changes, even before a vowel: cette amie, cette heure. The same word means this or that; to contrast two things, add -ci (here) or -là (there) to the noun: ce livre-ci, cette robe-là. To say it is or these are + a noun, use c’est for one thing and ce sont for several: c’est mon frère, ce sont mes amis. Do not confuse ce (this) with se (himself, herself, before a verb), or ces (these) with ses (his, her).",
-  "example": "Cet hôtel est cher. · Je préfère cette robe-là. · Ce sont mes amis.",
-  "aside": "In everyday speech many people say c’est before a plural (c’est mes amis), but written French keeps ce sont.",
+  "guide": {
+    "summary": "Ce, cet, cette and ces are the words for this, that, these and those in front of a noun: you pick the one that matches the noun. The same little word ce also builds c’est and ce sont, for saying what or who something is.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "Which word: ce, cet, cette or ces?",
+        "text": "French has one set of words for this and that. The choice depends on the noun that follows, never on how far away the thing is.",
+        "table": {
+          "columns": [
+            "The noun",
+            "Word to use",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "ce",
+              "ce pantalon, ce gâteau"
+            ],
+            [
+              "masculine + vowel/h",
+              "cet",
+              "cet ami, cet hôtel"
+            ],
+            [
+              "feminine singular",
+              "cette",
+              "cette chanson, cette semaine"
+            ],
+            [
+              "plural (any gender)",
+              "ces",
+              "ces fleurs, ces amis"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun that follows the gap.",
+          "Plural noun: ces, for both genders.",
+          "Feminine singular: cette.",
+          "Masculine singular: ce, and cet before a vowel or a silent h."
+        ],
+        "examples": [
+          {
+            "fr": "Ce gâteau est délicieux.",
+            "en": "This cake is delicious."
+          },
+          {
+            "fr": "Cette semaine, je travaille beaucoup.",
+            "en": "This week I am working a lot."
+          },
+          {
+            "fr": "Ces fleurs sont belles.",
+            "en": "These flowers are beautiful."
+          }
+        ],
+        "watch": [
+          "The word replaces the article: ce livre, never ce le livre.",
+          "French does not choose by distance: ce livre is both this book and that book.",
+          "It agrees with the noun right after it, so check that noun’s gender, not the meaning of the sentence."
+        ]
+      },
+      {
+        "id": "vowel",
+        "title": "Before a vowel: when ce becomes cet",
+        "text": "A masculine singular noun starting with a vowel or a silent h takes cet, so two vowel sounds never collide. The feminine cette already ends in a consonant sound, so it never changes.",
+        "table": {
+          "columns": [
+            "Noun starts with",
+            "Masculine",
+            "Feminine"
+          ],
+          "rows": [
+            [
+              "consonant",
+              "ce livre, ce sac",
+              "cette porte"
+            ],
+            [
+              "vowel",
+              "cet arbre, cet ami, cet été",
+              "cette amie"
+            ],
+            [
+              "silent h",
+              "cet hôtel, cet hôpital",
+              "cette heure"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the gender first: a feminine noun keeps cette whatever letter follows.",
+          "For a masculine noun, say it aloud: does it start with a vowel sound?",
+          "Vowel or silent h: cet. Consonant: ce."
+        ],
+        "examples": [
+          {
+            "fr": "Cet hôtel est très calme.",
+            "en": "This hotel is very quiet."
+          },
+          {
+            "fr": "Cet été, nous partons en Italie.",
+            "en": "This summer we are going to Italy."
+          },
+          {
+            "fr": "Je te présente cette amie, Claire.",
+            "en": "This is my friend Claire."
+          }
+        ],
+        "watch": [
+          "Never ce ami or ce hôtel: say them aloud and you hear why.",
+          "Cette never shortens to cet: cette amie, cette heure.",
+          "A few words have a breathed h (le héros, le hamburger); there ce stays ce."
+        ]
+      },
+      {
+        "id": "plural",
+        "title": "Plural: one word for these and those",
+        "text": "Every plural noun takes ces, masculine or feminine, and it covers both these and those.",
+        "table": {
+          "columns": [
+            "Gender",
+            "Singular",
+            "Plural"
+          ],
+          "rows": [
+            [
+              "masculine",
+              "ce sac, cet ami",
+              "ces sacs, ces amis"
+            ],
+            [
+              "feminine",
+              "cette pomme",
+              "ces pommes"
+            ]
+          ]
+        },
+        "steps": [
+          "Look for the plural marks: an -s on the noun, a plural verb such as sont, or des nearby.",
+          "Plural: use ces and stop thinking about gender.",
+          "When you turn a sentence plural, move the verb and the adjective too: cette pomme est rouge → ces pommes sont rouges."
+        ],
+        "examples": [
+          {
+            "fr": "J’adore ces chaussures !",
+            "en": "I love these shoes!"
+          },
+          {
+            "fr": "Qui sont ces enfants ?",
+            "en": "Who are those children?"
+          }
+        ],
+        "watch": [
+          "The cet rule is only for singular nouns: ces amis, never cets amis.",
+          "One French word does the work of both these and those; -là marks those when you really need the contrast."
+        ]
+      },
+      {
+        "id": "ci-la",
+        "title": "Telling two things apart: -ci and -là",
+        "text": "Ce means this and that at the same time. To contrast two things, hang -ci (here) or -là (there) on the noun with a hyphen.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "-ci",
+              "here, the nearer one",
+              "ce livre-ci, cette robe-ci"
+            ],
+            [
+              "-là",
+              "there, the further one",
+              "ce livre-là, ces chaussures-là"
+            ]
+          ]
+        },
+        "steps": [
+          "Keep the normal demonstrative in front of the noun.",
+          "Put -ci on the noun for the thing near you, -là for the one further away.",
+          "Write the hyphen, and keep the accent: la with no accent is the article the."
+        ],
+        "examples": [
+          {
+            "fr": "Je préfère cette robe-là.",
+            "en": "I prefer that dress over there."
+          },
+          {
+            "fr": "Je prends ce sac-ci, pas ce sac-là.",
+            "en": "I am taking this bag here, not that bag there."
+          }
+        ],
+        "watch": [
+          "The ending goes on the noun, not on the demonstrative: ce livre-ci, never ce-ci livre.",
+          "Use them for a contrast or a real pointing gesture; plain ce livre is usually enough.",
+          "The hyphen is not optional: cette maison-là, not cette maison là."
+        ]
+      },
+      {
+        "id": "cest",
+        "title": "c’est or ce sont?",
+        "text": "To say what or who something is — with un, le, mon, mes and so on — start with c’est for one and ce sont for several. Ce loses its e before est.",
+        "table": {
+          "columns": [
+            "How many",
+            "Written French",
+            "Example"
+          ],
+          "rows": [
+            [
+              "one thing or person",
+              "c’est",
+              "c’est mon frère, c’est un bon restaurant"
+            ],
+            [
+              "several",
+              "ce sont",
+              "ce sont mes amis, ce sont nos voisins"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at what follows: one noun, or a plural noun?",
+          "One: c’est. Several: ce sont in written French.",
+          "Never write ces sont: ces belongs in front of a noun, not before a verb."
+        ],
+        "examples": [
+          {
+            "fr": "C’est un bon restaurant.",
+            "en": "It’s a good restaurant."
+          },
+          {
+            "fr": "Ce sont mes amis de l’école.",
+            "en": "They are my friends from school."
+          }
+        ],
+        "watch": [
+          "In speech many people say c’est mes amis; written French keeps ce sont.",
+          "Before mon, un or le + noun, use c’est, not il est: c’est mon frère.",
+          "Il est and elle est go with an adjective or a job with no article: il est français, elle est médecin."
+        ]
+      },
+      {
+        "id": "homophones",
+        "title": "ce, se, ces, ses: same sound, different job",
+        "text": "These pairs sound identical, so the ear cannot help you. What decides is the word that follows: a noun or a verb.",
+        "table": {
+          "columns": [
+            "Word",
+            "What it does",
+            "Example"
+          ],
+          "rows": [
+            [
+              "ce",
+              "this / that + masculine noun",
+              "ce matin, ce restaurant"
+            ],
+            [
+              "se",
+              "reflexive pronoun + verb",
+              "il se réveille, elle se lève"
+            ],
+            [
+              "ces",
+              "these / those + plural noun",
+              "ces nuages, ces couleurs"
+            ],
+            [
+              "ses",
+              "his / her + plural noun",
+              "ses livres, ses parents"
+            ],
+            [
+              "c’est",
+              "it is, that is",
+              "c’est vrai"
+            ],
+            [
+              "s’est",
+              "reflexive verb in the past",
+              "elle s’est levée"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the word right after the gap.",
+          "A verb follows: it is se (s’ before a vowel).",
+          "A noun follows: choose between the pointing words (ce, cet, cette, ces) and the owner word (ses).",
+          "Ask the meaning: are you pointing at it, or saying whose it is?"
+        ],
+        "examples": [
+          {
+            "fr": "Il se réveille à sept heures.",
+            "en": "He wakes up at seven."
+          },
+          {
+            "fr": "Ce matin, il fait froid.",
+            "en": "This morning it is cold."
+          },
+          {
+            "fr": "Paul range ses livres.",
+            "en": "Paul is tidying his books."
+          }
+        ],
+        "watch": [
+          "Ces nuages means those clouds; ses nuages would mean his clouds.",
+          "Se never stands before a noun, and ce never stands before a verb.",
+          "Ce sont has no -s on ce; se sont belongs to a past tense: ils se sont levés."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "ce-cette": {
+      "section": "forms",
+      "steps": [
+        "Find the noun after the gap and ask: masculine or feminine?",
+        "Check it is singular: no -s, and a singular verb.",
+        "Take that row of the table and put the word straight in front of the noun."
+      ]
+    },
+    "cet-vowel": {
+      "section": "vowel",
+      "steps": [
+        "Check the gender first: a feminine noun keeps its one form whatever letter follows.",
+        "For a masculine noun, say the noun aloud and listen to the first sound.",
+        "A vowel or a silent h at the start needs the longer masculine spelling; a consonant takes the short one."
+      ]
+    },
+    "ces-plural": {
+      "section": "plural",
+      "steps": [
+        "Look for plural marks: an -s on the noun, or a plural verb.",
+        "A plural noun takes one demonstrative for both genders, so gender no longer matters.",
+        "If you are rewriting, make the verb and the adjective plural as well."
+      ]
+    },
+    "ci-la": {
+      "section": "ci-la",
+      "steps": [
+        "Keep in front of the noun the demonstrative that matches it.",
+        "Decide which thing is near the speaker and which is further away.",
+        "Attach the ending to the noun with a hyphen, and check its accent."
+      ]
+    },
+    "cest-ce-sont": {
+      "section": "cest",
+      "steps": [
+        "Look at the noun after the gap: one, or several?",
+        "Use the singular form for one and the plural form for several in written French.",
+        "Keep ces for the front of a noun: it never stands before the verb sont."
+      ]
+    },
+    "homophones": {
+      "section": "homophones",
+      "steps": [
+        "Look at the word right after the gap: is it a verb or a noun?",
+        "A verb needs the reflexive pronoun; a noun needs a pointing word or an owner word.",
+        "For a noun, ask the meaning: pointing at it, or saying whose it is?",
+        "Then check singular or plural to pick the spelling."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "demonstratives-ce-cette-1",
@@ -25,7 +390,22 @@
       ],
       "hint": "Pantalon is one masculine thing.",
       "feedback": "Match the gender and number of pantalon.",
-      "explanation": "Pantalon is masculine singular and starts with a consonant, so this is ce."
+      "explanation": "Pantalon is masculine singular and starts with a consonant, so this is ce.",
+      "mistakes": [
+        {
+          "answers": [
+            "Cette"
+          ],
+          "why": "Cette is the feminine form. Pantalon is a masculine noun (un pantalon), so the feminine word does not agree with it."
+        },
+        {
+          "answers": [
+            "Ces"
+          ],
+          "why": "Ces is the plural form, for several things. Un pantalon is one item, and it has no -s here."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "demonstratives-ce-cette-2",
@@ -43,7 +423,22 @@
       ],
       "hint": "Chanson is feminine.",
       "feedback": "Match the gender of chanson.",
-      "explanation": "Chanson is feminine singular, so this song is cette chanson."
+      "explanation": "Chanson is feminine singular, so this song is cette chanson.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce goes with a masculine noun. Chanson is feminine (la chanson), so it needs the feminine demonstrative."
+        },
+        {
+          "answers": [
+            "cet"
+          ],
+          "why": "Cet is a masculine form, used only before a vowel. Chanson is feminine and starts with a consonant."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "demonstratives-ce-cette-3",
@@ -56,7 +451,34 @@
       ],
       "hint": "Gâteau is masculine and starts with a consonant.",
       "feedback": "Use the plain masculine form.",
-      "explanation": "Gâteau is masculine singular and starts with a consonant, so this cake is ce gâteau."
+      "explanation": "Gâteau is masculine singular and starts with a consonant, so this cake is ce gâteau.",
+      "mistakes": [
+        {
+          "answers": [
+            "cette"
+          ],
+          "why": "Cette is for feminine nouns. Gâteau is masculine (le gâteau), so it takes the masculine form."
+        },
+        {
+          "answers": [
+            "cet"
+          ],
+          "why": "Cet is the masculine form used before a vowel or a silent h. Gâteau begins with the consonant g."
+        },
+        {
+          "answers": [
+            "ces"
+          ],
+          "why": "Ces is plural. You are asking for one cake, so the noun is singular."
+        },
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Le is the article the; it does not point at anything. The English says this, so a demonstrative is needed."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "demonstratives-ce-cette-4",
@@ -69,7 +491,34 @@
       ],
       "hint": "Semaine is feminine.",
       "feedback": "Use the feminine form.",
-      "explanation": "Semaine is feminine singular, so this week is cette semaine."
+      "explanation": "Semaine is feminine singular, so this week is cette semaine.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce is the masculine form. Semaine is feminine (la semaine), so the demonstrative must be feminine too."
+        },
+        {
+          "answers": [
+            "cet"
+          ],
+          "why": "Cet is a masculine form used before a vowel. Semaine is feminine, and s is a consonant anyway."
+        },
+        {
+          "answers": [
+            "ces"
+          ],
+          "why": "Ces is plural. The sentence is about one week, the one you are in."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "La is the article the. La semaine does not point at this particular week."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "demonstratives-ce-cette-5",
@@ -82,7 +531,28 @@
       ],
       "hint": "What is the gender of voiture?",
       "feedback": "Ce only goes with masculine nouns.",
-      "explanation": "Voiture is feminine singular, so this car is cette voiture."
+      "explanation": "Voiture is feminine singular, so this car is cette voiture.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce voiture est à mon père."
+          ],
+          "why": "That is the sentence unchanged, and its first word is exactly the error: voiture is feminine (la voiture), so a masculine demonstrative cannot stand in front of it."
+        },
+        {
+          "answers": [
+            "Cet voiture est à mon père."
+          ],
+          "why": "Cet is another masculine form, used only before a vowel sound. Voiture is feminine and starts with v."
+        },
+        {
+          "answers": [
+            "Ces voitures sont à mon père."
+          ],
+          "why": "That turns one car into several. Only the word in front of voiture is wrong; the number of the sentence was fine."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "demonstratives-ce-cette-6",
@@ -96,7 +566,34 @@
       ],
       "hint": "Sac is masculine.",
       "feedback": "Match this to the gender of sac.",
-      "explanation": "Sac is masculine singular and starts with a consonant, so this bag is ce sac."
+      "explanation": "Sac is masculine singular and starts with a consonant, so this bag is ce sac.",
+      "mistakes": [
+        {
+          "answers": [
+            "Cette sac est lourd."
+          ],
+          "why": "Cette is feminine. Sac is masculine (le sac), so the demonstrative does not agree with it."
+        },
+        {
+          "answers": [
+            "Ces sacs sont lourds."
+          ],
+          "why": "That says these bags are heavy. The English has one bag, so noun, verb and adjective all stay singular."
+        },
+        {
+          "answers": [
+            "Ce sac est lourde."
+          ],
+          "why": "The final -e makes the adjective feminine. It describes sac, which is masculine, so it keeps its plain form."
+        },
+        {
+          "answers": [
+            "Se sac est lourd."
+          ],
+          "why": "Se is the pronoun that goes before a reflexive verb (il se lave). Before a noun the pointing word starts with c."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "demonstratives-ce-cette-7",
@@ -109,7 +606,34 @@
       ],
       "hint": "Place is feminine.",
       "feedback": "The demonstrative must follow the new noun.",
-      "explanation": "Place is feminine singular, so ce becomes cette."
+      "explanation": "Place is feminine singular, so ce becomes cette.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce place est libre."
+          ],
+          "why": "You changed the noun but left the masculine demonstrative. Place is feminine (la place), so the word in front of it has to change too."
+        },
+        {
+          "answers": [
+            "Cette siège est libre."
+          ],
+          "why": "You changed the demonstrative but kept siège. The instruction asks you to put place in, and the demonstrative follows that new noun."
+        },
+        {
+          "answers": [
+            "Cet place est libre."
+          ],
+          "why": "Cet is a masculine form used before a vowel. Place is feminine and starts with a consonant."
+        },
+        {
+          "answers": [
+            "Ce siège est libre."
+          ],
+          "why": "Nothing has changed: the noun is still siège, and the sentence was not asked to keep it."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "demonstratives-ce-cette-8",
@@ -130,7 +654,22 @@
       ],
       "hint": "Fromage is masculine.",
       "feedback": "Match the demonstrative to fromage.",
-      "explanation": "Fromage is masculine singular and starts with a consonant, so this cheese is ce fromage."
+      "explanation": "Fromage is masculine singular and starts with a consonant, so this cheese is ce fromage.",
+      "mistakes": [
+        {
+          "answers": [
+            "Cette fromage est très bon."
+          ],
+          "why": "Fromage is masculine (le fromage), so the feminine tile does not agree with it."
+        },
+        {
+          "answers": [
+            "Ce fromage très est bon."
+          ],
+          "why": "Très strengthens the adjective, so it stands right before bon, not before the verb."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "demonstratives-ces-plural-1",
@@ -148,7 +687,22 @@
       ],
       "hint": "How many flowers?",
       "feedback": "Fleurs is plural.",
-      "explanation": "Fleurs is plural, so these flowers is ces fleurs."
+      "explanation": "Fleurs is plural, so these flowers is ces fleurs.",
+      "mistakes": [
+        {
+          "answers": [
+            "Cette"
+          ],
+          "why": "Cette is singular, for one feminine thing. Fleurs ends in -s and the verb is sont: there are several flowers."
+        },
+        {
+          "answers": [
+            "Ce"
+          ],
+          "why": "Ce is singular and masculine. Fleurs is plural, and fleur is a feminine noun anyway."
+        }
+      ],
+      "row": "feminine"
     },
     {
       "id": "demonstratives-ces-plural-2",
@@ -161,7 +715,34 @@
       ],
       "hint": "Chaussures is plural.",
       "feedback": "Plural nouns have one form for this and these, whatever the gender.",
-      "explanation": "Chaussures is plural, so these shoes is ces chaussures."
+      "explanation": "Chaussures is plural, so these shoes is ces chaussures.",
+      "mistakes": [
+        {
+          "answers": [
+            "cette"
+          ],
+          "why": "Cette is singular. Chaussures ends in -s: you are talking about a pair of shoes, several things."
+        },
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce is the masculine singular form. Chaussures is plural, and it is feminine too."
+        },
+        {
+          "answers": [
+            "cet"
+          ],
+          "why": "Cet is a masculine singular form used before a vowel. Number comes first here, and chaussures is plural."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses means his or her. The instruction asks for these, which points at the shoes rather than naming their owner."
+        }
+      ],
+      "row": "feminine"
     },
     {
       "id": "demonstratives-ces-plural-3",
@@ -174,7 +755,34 @@
       ],
       "hint": "Enfants is plural.",
       "feedback": "The vowel rule for cet is only for singular nouns.",
-      "explanation": "Enfants is plural, so those children is ces enfants. French uses the same word for these and those."
+      "explanation": "Enfants is plural, so those children is ces enfants. French uses the same word for these and those.",
+      "mistakes": [
+        {
+          "answers": [
+            "cet"
+          ],
+          "why": "Cet is a singular form, used before a vowel. Enfants is plural, so the vowel rule does not apply at all."
+        },
+        {
+          "answers": [
+            "cette"
+          ],
+          "why": "Cette is singular and feminine. The verb sont and the -s of enfants both show there are several children."
+        },
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce is singular. Qui sont tells you the sentence is about more than one child."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses means his or her children. The question points at the children in front of you instead."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "demonstratives-ces-plural-4",
@@ -187,7 +795,40 @@
       ],
       "hint": "The plural demonstrative has one form.",
       "feedback": "Change the demonstrative, the noun, the verb and the adjective.",
-      "explanation": "Plural enfants takes ces, with sont and sages."
+      "explanation": "Plural enfants takes ces, with sont and sages.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ces enfant est sage."
+          ],
+          "why": "Only the first word moved to the plural. Making enfant plural means the noun, the verb and the adjective all follow."
+        },
+        {
+          "answers": [
+            "Cet enfants sont sages."
+          ],
+          "why": "Cet is a singular form; it cannot stand in front of a plural noun."
+        },
+        {
+          "answers": [
+            "Cette enfants sont sages."
+          ],
+          "why": "Cette is singular and feminine, so it matches neither the number nor the gender of enfants here."
+        },
+        {
+          "answers": [
+            "Ces enfants est sage."
+          ],
+          "why": "The subject is now several children, so the verb and the adjective have to become plural as well."
+        },
+        {
+          "answers": [
+            "Cet enfant est sage."
+          ],
+          "why": "That is the sentence unchanged: the noun is still one single child."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "demonstratives-ces-plural-5",
@@ -200,7 +841,40 @@
       ],
       "hint": "The plural demonstrative has one form for both genders.",
       "feedback": "Change the demonstrative, the noun, the verb and the adjective.",
-      "explanation": "Plural pommes takes ces, with sont and rouges."
+      "explanation": "Plural pommes takes ces, with sont and rouges.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ces pomme est rouge."
+          ],
+          "why": "Only the first word became plural. The noun, the verb and the adjective have to follow it."
+        },
+        {
+          "answers": [
+            "Cette pommes sont rouges."
+          ],
+          "why": "Cette is a singular form; it cannot stand in front of a plural noun."
+        },
+        {
+          "answers": [
+            "Ces pommes est rouge."
+          ],
+          "why": "The subject is now several apples, so the verb and the adjective need their plural forms."
+        },
+        {
+          "answers": [
+            "Ces pommes sont rouge."
+          ],
+          "why": "The adjective agrees with what it describes: with several apples it takes an -s too."
+        },
+        {
+          "answers": [
+            "Cette pomme est rouge."
+          ],
+          "why": "That is the sentence unchanged: pomme is still singular."
+        }
+      ],
+      "row": "feminine"
     },
     {
       "id": "demonstratives-ces-plural-6",
@@ -214,7 +888,34 @@
       ],
       "hint": "Apartments is plural.",
       "feedback": "Check the demonstrative for a plural noun.",
-      "explanation": "Appartements is plural, so these apartments is ces appartements."
+      "explanation": "Appartements is plural, so these apartments is ces appartements.",
+      "mistakes": [
+        {
+          "answers": [
+            "Cet appartements sont chers."
+          ],
+          "why": "Cet is a singular form used before a vowel. Appartements is plural, so the singular form cannot go with it."
+        },
+        {
+          "answers": [
+            "Cette appartements sont chers."
+          ],
+          "why": "Cette is singular and feminine. Appartement is masculine, and here there are several of them."
+        },
+        {
+          "answers": [
+            "Ces appartements sont cher."
+          ],
+          "why": "The adjective agrees with the noun: several apartments means an -s on it as well."
+        },
+        {
+          "answers": [
+            "Ses appartements sont chers."
+          ],
+          "why": "Ses means his or her apartments. The English says these, which points at them instead."
+        }
+      ],
+      "row": "masculine"
     },
     {
       "id": "demonstratives-cet-vowel-1",
@@ -232,7 +933,22 @@
       ],
       "hint": "The h of hôtel is silent.",
       "feedback": "Hôtel is masculine and sounds as if it starts with a vowel.",
-      "explanation": "Hôtel is masculine singular with a silent h, so ce becomes cet: cet hôtel."
+      "explanation": "Hôtel is masculine singular with a silent h, so ce becomes cet: cet hôtel.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce"
+          ],
+          "why": "Ce is the plain masculine form, but it never stands before a vowel sound. The h of hôtel is silent, so the word begins with an o sound."
+        },
+        {
+          "answers": [
+            "Cette"
+          ],
+          "why": "Cette is feminine. Hôtel is masculine (un hôtel), whatever letter it starts with."
+        }
+      ],
+      "row": "silent h"
     },
     {
       "id": "demonstratives-cet-vowel-2",
@@ -250,7 +966,22 @@
       ],
       "hint": "Homme starts with a silent h.",
       "feedback": "Ce cannot stand right before a vowel sound.",
-      "explanation": "Homme is masculine singular with a silent h, so that man is cet homme."
+      "explanation": "Homme is masculine singular with a silent h, so that man is cet homme.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce cannot stand right before a vowel sound, and the h of homme is silent, so two vowels would collide."
+        },
+        {
+          "answers": [
+            "cette"
+          ],
+          "why": "Cette is the feminine form. Homme is masculine (un homme)."
+        }
+      ],
+      "row": "silent h"
     },
     {
       "id": "demonstratives-cet-vowel-3",
@@ -268,7 +999,22 @@
       ],
       "hint": "Arbre is masculine and starts with a vowel.",
       "feedback": "Ce cannot stand right before a vowel.",
-      "explanation": "Arbre is masculine singular and starts with a vowel, so this tree is cet arbre."
+      "explanation": "Arbre is masculine singular and starts with a vowel, so this tree is cet arbre.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce never stands directly before a vowel, and arbre begins with a."
+        },
+        {
+          "answers": [
+            "ces"
+          ],
+          "why": "Ces is plural. Arbre has no -s here: it is one tree."
+        }
+      ],
+      "row": "vowel"
     },
     {
       "id": "demonstratives-cet-vowel-4",
@@ -281,7 +1027,28 @@
       ],
       "hint": "Été is masculine and starts with a vowel.",
       "feedback": "Think of the form used before a vowel.",
-      "explanation": "Été is masculine singular and starts with a vowel, so this summer is cet été."
+      "explanation": "Été is masculine singular and starts with a vowel, so this summer is cet été.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce"
+          ],
+          "why": "Ce is the masculine form used before a consonant. Été begins with a vowel, so the masculine form takes its longer spelling."
+        },
+        {
+          "answers": [
+            "Cette"
+          ],
+          "why": "Cette is feminine. L’été is masculine, so the feminine form does not fit even though the noun starts with a vowel."
+        },
+        {
+          "answers": [
+            "Ces"
+          ],
+          "why": "Ces is plural. You are talking about one summer, the coming one."
+        }
+      ],
+      "row": "vowel"
     },
     {
       "id": "demonstratives-cet-vowel-5",
@@ -294,7 +1061,28 @@
       ],
       "hint": "Acteur is masculine and starts with a vowel.",
       "feedback": "Think of the form used before a vowel.",
-      "explanation": "Acteur is masculine singular and starts with a vowel, so that actor is cet acteur."
+      "explanation": "Acteur is masculine singular and starts with a vowel, so that actor is cet acteur.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce is not used before a vowel sound, and acteur starts with a."
+        },
+        {
+          "answers": [
+            "cette"
+          ],
+          "why": "Cette is feminine. Un acteur is a man, so the noun is masculine; a woman would be une actrice."
+        },
+        {
+          "answers": [
+            "ces"
+          ],
+          "why": "Ces is plural. The question is about one actor."
+        }
+      ],
+      "row": "vowel"
     },
     {
       "id": "demonstratives-cet-vowel-6",
@@ -307,7 +1095,28 @@
       ],
       "hint": "Say ce ami aloud: two vowels collide.",
       "feedback": "Ami starts with a vowel.",
-      "explanation": "Ami is masculine singular and starts with a vowel, so this friend is cet ami."
+      "explanation": "Ami is masculine singular and starts with a vowel, so this friend is cet ami.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce ami habite à Lyon."
+          ],
+          "why": "That is the sentence unchanged, and its first two words are the problem: two vowel sounds cannot meet like that in French."
+        },
+        {
+          "answers": [
+            "Cette ami habite à Lyon."
+          ],
+          "why": "Cette is feminine. Ami with no -e is a male friend, so the noun is masculine."
+        },
+        {
+          "answers": [
+            "Ces amis habitent à Lyon."
+          ],
+          "why": "That makes it several friends. The sentence talks about one friend; only the word in front of ami has to change."
+        }
+      ],
+      "row": "vowel"
     },
     {
       "id": "demonstratives-cet-vowel-7",
@@ -327,7 +1136,16 @@
       ],
       "hint": "The h of hôpital is silent.",
       "feedback": "Look at the first sound of hôpital.",
-      "explanation": "Hôpital is masculine singular with a silent h, so this hospital is cet hôpital."
+      "explanation": "Hôpital is masculine singular with a silent h, so this hospital is cet hôpital.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce hôpital est neuf."
+          ],
+          "why": "The h of hôpital is silent, so the word begins with a vowel sound and the short masculine tile cannot stand in front of it."
+        }
+      ],
+      "row": "silent h"
     },
     {
       "id": "demonstratives-cet-vowel-8",
@@ -341,7 +1159,34 @@
       ],
       "hint": "Enfant is masculine here and starts with a vowel.",
       "feedback": "Check the demonstrative before a vowel.",
-      "explanation": "Enfant for a boy is masculine singular and starts with a vowel, so that child is cet enfant."
+      "explanation": "Enfant for a boy is masculine singular and starts with a vowel, so that child is cet enfant.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce enfant est fatigué."
+          ],
+          "why": "Enfant begins with a vowel, and the short masculine form is never used before one."
+        },
+        {
+          "answers": [
+            "Cette enfant est fatigué."
+          ],
+          "why": "Cette is feminine. The brackets say the child is a boy, so the noun is masculine here."
+        },
+        {
+          "answers": [
+            "Cet enfant est fatiguée."
+          ],
+          "why": "The final -e makes the adjective feminine. The child is a boy, so the adjective keeps its plain form."
+        },
+        {
+          "answers": [
+            "Ces enfants sont fatigués."
+          ],
+          "why": "That is several children. The English points at one child, so everything stays singular."
+        }
+      ],
+      "row": "vowel"
     },
     {
       "id": "demonstratives-cet-vowel-9",
@@ -359,7 +1204,22 @@
       ],
       "hint": "Amie is feminine. Does the feminine form need to change before a vowel?",
       "feedback": "Cet is only for masculine nouns.",
-      "explanation": "Amie is feminine singular, so this friend is cette amie. Cet is only for masculine nouns; cette already ends in a consonant sound, so it never changes."
+      "explanation": "Amie is feminine singular, so this friend is cette amie. Cet is only for masculine nouns; cette already ends in a consonant sound, so it never changes.",
+      "mistakes": [
+        {
+          "answers": [
+            "cet"
+          ],
+          "why": "Cet is a masculine form. Amie with an -e is a woman — Claire — so the noun is feminine, and the feminine form needs no special spelling before a vowel."
+        },
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce is masculine as well, and it never stands before a vowel. Amie is feminine here."
+        }
+      ],
+      "row": "vowel"
     },
     {
       "id": "demonstratives-ci-la-1",
@@ -373,7 +1233,28 @@
       "strictAccents": true,
       "hint": "-ci means here; the other ending means there.",
       "feedback": "Check the accent: without it the word means the.",
-      "explanation": "Ce livre-ci is this book here; ce livre-là is that book there. Là needs its accent."
+      "explanation": "Ce livre-ci is this book here; ce livre-là is that book there. Là needs its accent.",
+      "mistakes": [
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "That is the article la (the), with no accent. The ending that means there carries an accent, and the two are different words."
+        },
+        {
+          "answers": [
+            "ci"
+          ],
+          "why": "-ci marks the thing nearest you, and the first book already has it. The second one is the other book, further away."
+        },
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce is the pointing word that goes before the noun, and it is already there. The gap is the small ending after the hyphen."
+        }
+      ],
+      "row": "-là"
     },
     {
       "id": "demonstratives-ci-la-2",
@@ -392,7 +1273,22 @@
       "hint": "The two dresses are in different places.",
       "feedback": "Look closely at the accent.",
       "explanation": "Cette robe-ci is this dress here, cette robe-là is that dress there. Là with an accent means there.",
-      "strictAccents": true
+      "strictAccents": true,
+      "mistakes": [
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "La with no accent is the article the. It does not mean there, and it cannot hang on a noun with a hyphen."
+        },
+        {
+          "answers": [
+            "ci"
+          ],
+          "why": "-ci points at what is near the speaker, and the first dress already carries it. The second dress is the other one."
+        }
+      ],
+      "row": "-là"
     },
     {
       "id": "demonstratives-ci-la-3",
@@ -407,7 +1303,33 @@
       "hint": "Chemise is feminine; add -ci for here and -là for there.",
       "feedback": "Put -ci and -là on the noun with a hyphen.",
       "explanation": "Cette chemise-ci points to the shirt here and cette chemise-là to the one there.",
-      "strictAccents": true
+      "strictAccents": true,
+      "mistakes": [
+        {
+          "answers": [
+            "Cette chemise-ci est bleue et cette chemise-la est blanche."
+          ],
+          "why": "The second ending has lost its accent, which turns it into the article la."
+        },
+        {
+          "answers": [
+            "Cette chemise-là est bleue et cette chemise-ci est blanche."
+          ],
+          "why": "The two endings are swapped: the shirt marked (here) is the near one and the shirt marked (there) is the far one."
+        },
+        {
+          "answers": [
+            "Ce chemise-ci est bleu et ce chemise-là est blanc."
+          ],
+          "why": "Chemise is feminine (la chemise), so both the demonstratives and the colour adjectives need feminine forms."
+        },
+        {
+          "answers": [
+            "Cette chemise ci est bleue et cette chemise là est blanche."
+          ],
+          "why": "Both endings are floating as separate words. They are joined to the noun with a hyphen."
+        }
+      ]
     },
     {
       "id": "demonstratives-ci-la-4",
@@ -430,7 +1352,16 @@
       ],
       "hint": "Here is -ci, there is -là.",
       "feedback": "Sac is masculine and starts with a consonant.",
-      "explanation": "Ce sac-ci is the bag here and ce sac-là the bag there."
+      "explanation": "Ce sac-ci is the bag here and ce sac-là the bag there.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je prends cet sac-ci, pas ce sac-là.",
+            "Je prends ce sac-ci, pas cet sac-là."
+          ],
+          "why": "Cet is used only before a vowel or a silent h, and sac begins with the consonant s."
+        }
+      ]
     },
     {
       "id": "demonstratives-ci-la-5",
@@ -444,7 +1375,34 @@
       "hint": "Join the ending to the noun with a hyphen.",
       "feedback": "Add the ending for there to maison.",
       "explanation": "Cette maison-là means that house there.",
-      "strictAccents": true
+      "strictAccents": true,
+      "mistakes": [
+        {
+          "answers": [
+            "Regarde cette maison."
+          ],
+          "why": "Nothing has been added: the sentence still just says look at that house, without pointing over there."
+        },
+        {
+          "answers": [
+            "Regarde cette maison-la."
+          ],
+          "why": "Without its accent, la is the article the, so the ending no longer means anything after the hyphen."
+        },
+        {
+          "answers": [
+            "Regarde cette maison-ci."
+          ],
+          "why": "-ci points at what is near the speaker. The house you are told to point at is over there, further away."
+        },
+        {
+          "answers": [
+            "Regarde cette maison là."
+          ],
+          "why": "The ending is not a separate word: it hangs on the noun with a hyphen."
+        }
+      ],
+      "row": "-là"
     },
     {
       "id": "demonstratives-ci-la-6",
@@ -458,7 +1416,28 @@
       "strictAccents": true,
       "hint": "Look at the last word.",
       "feedback": "La without an accent means the.",
-      "explanation": "The ending that means there is -là, with an accent."
+      "explanation": "The ending that means there is -là, with an accent.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je préfère ces chaussures-la."
+          ],
+          "why": "That is the sentence unchanged. Its last word is the article la: the accent is missing."
+        },
+        {
+          "answers": [
+            "Je préfère ces chaussures-ci."
+          ],
+          "why": "-ci means here, near the speaker. That changes what the sentence points at instead of fixing the spelling."
+        },
+        {
+          "answers": [
+            "Je préfère ces chaussures la."
+          ],
+          "why": "Dropping the hyphen does not fix it: the ending belongs to the noun, and it still needs its accent."
+        }
+      ],
+      "row": "-là"
     },
     {
       "id": "demonstratives-cest-ce-sont-1",
@@ -476,7 +1455,22 @@
       ],
       "hint": "Amis is plural.",
       "feedback": "Check the spelling of each word, too.",
-      "explanation": "Before a plural noun, written French uses ce sont."
+      "explanation": "Before a plural noun, written French uses ce sont.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ces sont"
+          ],
+          "why": "Ces is the pointing word you put in front of a noun (ces amis); it is never the subject of a verb."
+        },
+        {
+          "answers": [
+            "Se sont"
+          ],
+          "why": "Se sont belongs to a reflexive verb in the past, as in ils se sont levés. Here you are simply saying who these people are."
+        }
+      ],
+      "row": "several"
     },
     {
       "id": "demonstratives-cest-ce-sont-2",
@@ -494,7 +1488,22 @@
       ],
       "hint": "One person.",
       "feedback": "Look at the spelling and the number.",
-      "explanation": "For one person introduced with a word like ma, use c’est."
+      "explanation": "For one person introduced with a word like ma, use c’est.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce sont"
+          ],
+          "why": "Ce sont is the plural form, used before a plural noun. Ma grand-mère is one person."
+        },
+        {
+          "answers": [
+            "s’est"
+          ],
+          "why": "S’est belongs to a reflexive verb in the past, as in elle s’est levée. It cannot introduce a noun."
+        }
+      ],
+      "row": "one thing or person"
     },
     {
       "id": "demonstratives-cest-ce-sont-3",
@@ -513,7 +1522,28 @@
       ],
       "hint": "Voisins is plural.",
       "feedback": "Written French uses a plural verb here.",
-      "explanation": "Nos voisins is plural, so written French uses ce sont."
+      "explanation": "Nos voisins is plural, so written French uses ce sont.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ces sont"
+          ],
+          "why": "Ces goes straight in front of a noun (ces voisins). It never stands before the verb sont."
+        },
+        {
+          "answers": [
+            "Se sont"
+          ],
+          "why": "Se sont is part of a reflexive past tense (ils se sont vus), not a way of saying who people are."
+        },
+        {
+          "answers": [
+            "Ils sont"
+          ],
+          "why": "Ils sont names people already identified. To say who someone is with nos, mes or un, French starts with the little word ce."
+        }
+      ],
+      "row": "several"
     },
     {
       "id": "demonstratives-cest-ce-sont-4",
@@ -526,7 +1556,34 @@
       ],
       "hint": "One restaurant.",
       "feedback": "The noun is singular.",
-      "explanation": "Un bon restaurant is singular, so it is c’est."
+      "explanation": "Un bon restaurant is singular, so it is c’est.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce sont"
+          ],
+          "why": "Ce sont goes before a plural noun. Un bon restaurant is one restaurant."
+        },
+        {
+          "answers": [
+            "Ces sont"
+          ],
+          "why": "Ces is a pointing word for a plural noun, and it never comes before the verb."
+        },
+        {
+          "answers": [
+            "Il est"
+          ],
+          "why": "Il est goes with an adjective or a job with no article (il est français). Before un + noun French uses the pointing form."
+        },
+        {
+          "answers": [
+            "Ce est"
+          ],
+          "why": "Ce loses its e before a vowel, so these two words are written as one with an apostrophe."
+        }
+      ],
+      "row": "one thing or person"
     },
     {
       "id": "demonstratives-cest-ce-sont-5",
@@ -545,7 +1602,28 @@
       ],
       "hint": "Use the form for pointing at one person.",
       "feedback": "Before mon + noun, French does not use il est.",
-      "explanation": "To say who someone is with a word like mon, use c’est: c’est mon frère."
+      "explanation": "To say who someone is with a word like mon, use c’est: c’est mon frère.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce sont mon frère."
+          ],
+          "why": "Ce sont is for several people, and mon frère is one person."
+        },
+        {
+          "answers": [
+            "S’est mon frère."
+          ],
+          "why": "S’est belongs to a reflexive past tense (il s’est levé); it is not a way to introduce someone."
+        },
+        {
+          "answers": [
+            "C’est ma frère."
+          ],
+          "why": "Frère is masculine (le frère), so the possessive in front of it must be masculine too."
+        }
+      ],
+      "row": "one thing or person"
     },
     {
       "id": "demonstratives-cest-ce-sont-6",
@@ -568,7 +1646,34 @@
       ],
       "hint": "Parents is plural, and you are saying who they are.",
       "feedback": "Before mes + noun, French does not use ils sont.",
-      "explanation": "To say who several people are, written French uses ce sont: ce sont mes parents."
+      "explanation": "To say who several people are, written French uses ce sont: ce sont mes parents.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ces sont mes parents."
+          ],
+          "why": "Ces is the pointing word used in front of a noun (ces parents), never before the verb."
+        },
+        {
+          "answers": [
+            "Se sont mes parents."
+          ],
+          "why": "Se sont belongs to a reflexive past tense (ils se sont vus), not to saying who people are."
+        },
+        {
+          "answers": [
+            "Ce sont mon parents."
+          ],
+          "why": "Mon is singular. Parents is plural, so the possessive has to be plural as well."
+        },
+        {
+          "answers": [
+            "Ce sont mes parent."
+          ],
+          "why": "The noun keeps its -s: there are two of them, so parents stays plural."
+        }
+      ],
+      "row": "several"
     },
     {
       "id": "demonstratives-cest-ce-sont-7",
@@ -587,7 +1692,34 @@
       ],
       "hint": "The plural of c’est changes two words.",
       "feedback": "Change c’est, the possessive and the noun.",
-      "explanation": "A plural noun takes ce sont in written French: ce sont mes cousins."
+      "explanation": "A plural noun takes ce sont in written French: ce sont mes cousins.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est mon cousin."
+          ],
+          "why": "Nothing has changed: cousin is still singular, and so are the two words in front of it."
+        },
+        {
+          "answers": [
+            "Ce sont mon cousin."
+          ],
+          "why": "The verb has become plural but the possessive and the noun have not followed it."
+        },
+        {
+          "answers": [
+            "Ces sont mes cousins."
+          ],
+          "why": "Ces belongs in front of a noun (ces cousins); before the verb, the word has no -s."
+        },
+        {
+          "answers": [
+            "Ce sont mes cousin."
+          ],
+          "why": "Making cousin plural means putting an -s on the noun too, not only on the words in front of it."
+        }
+      ],
+      "row": "several"
     },
     {
       "id": "demonstratives-cest-ce-sont-8",
@@ -600,7 +1732,28 @@
       ],
       "hint": "The first word is not the one that means these.",
       "feedback": "Before sont, use the word ce with no s.",
-      "explanation": "The expression is ce sont; ces means these and goes before a noun."
+      "explanation": "The expression is ce sont; ces means these and goes before a noun.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ces sont mes livres."
+          ],
+          "why": "That is the sentence unchanged. Ces is the word you put in front of a noun (ces livres), so it cannot be the subject of sont."
+        },
+        {
+          "answers": [
+            "C’est mes livres."
+          ],
+          "why": "That is what people say out loud, but written French uses the plural verb before a plural noun like mes livres."
+        },
+        {
+          "answers": [
+            "Se sont mes livres."
+          ],
+          "why": "Se sont is part of a reflexive past tense (ils se sont vus); it does not introduce a noun."
+        }
+      ],
+      "row": "several"
     },
     {
       "id": "demonstratives-homophones-1",
@@ -618,7 +1771,22 @@
       ],
       "hint": "The gap is before a verb.",
       "feedback": "Ce points at a thing; this word goes with a verb.",
-      "explanation": "Se réveiller is a reflexive verb, so it is il se réveille. Ce only goes before a noun."
+      "explanation": "Se réveiller is a reflexive verb, so it is il se réveille. Ce only goes before a noun.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce points at a noun (ce matin). Réveille is a verb, and a reflexive verb takes its pronoun right in front of it."
+        },
+        {
+          "answers": [
+            "ces"
+          ],
+          "why": "Ces is the plural pointing word and goes before a plural noun. The next word here is a verb."
+        }
+      ],
+      "row": "se"
     },
     {
       "id": "demonstratives-homophones-2",
@@ -636,7 +1804,22 @@
       ],
       "hint": "Here the word means this, before a noun.",
       "feedback": "This word points at matin.",
-      "explanation": "Ce matin means this morning; se only goes before a verb."
+      "explanation": "Ce matin means this morning; se only goes before a verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Se"
+          ],
+          "why": "Se only sits in front of a verb, as in il se lève. Matin is a noun."
+        },
+        {
+          "answers": [
+            "Ses"
+          ],
+          "why": "Ses means his or her and goes before a plural noun (ses livres). Matin is singular, and nobody owns the morning."
+        }
+      ],
+      "row": "ce"
     },
     {
       "id": "demonstratives-homophones-3",
@@ -654,7 +1837,22 @@
       ],
       "hint": "The meaning is his, not these.",
       "feedback": "One of these words points, the other shows the owner.",
-      "explanation": "Ses shows the owner (his books); ces would mean these books."
+      "explanation": "Ses shows the owner (his books); ces would mean these books.",
+      "mistakes": [
+        {
+          "answers": [
+            "ces"
+          ],
+          "why": "Ces means these or those: it points at the books instead of saying they belong to Paul."
+        },
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce is singular and goes before a masculine singular noun. Livres is plural, and the meaning asked for is his."
+        }
+      ],
+      "row": "ses"
     },
     {
       "id": "demonstratives-homophones-4",
@@ -672,7 +1870,22 @@
       ],
       "hint": "The meaning is these, not his.",
       "feedback": "One of these words points, the other shows the owner.",
-      "explanation": "Ces points at the clouds: ces nuages. Ses would mean his or her clouds."
+      "explanation": "Ces points at the clouds: ces nuages. Ses would mean his or her clouds.",
+      "mistakes": [
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses means his or her clouds, which makes no sense here: nobody owns the sky. The question points at them."
+        },
+        {
+          "answers": [
+            "se"
+          ],
+          "why": "Se is the pronoun of a reflexive verb (il se lave). Nuages is a noun, so this word cannot go with it."
+        }
+      ],
+      "row": "ces"
     },
     {
       "id": "demonstratives-homophones-5",
@@ -685,7 +1898,28 @@
       ],
       "hint": "The gap is before a verb.",
       "feedback": "Ce goes before a noun; look at the next word.",
-      "explanation": "Se promener is a reflexive verb: elle se promène."
+      "explanation": "Se promener is a reflexive verb: elle se promène.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce"
+          ],
+          "why": "Ce goes in front of a noun (ce chien). Promène is a verb, so it needs its reflexive pronoun."
+        },
+        {
+          "answers": [
+            "ces"
+          ],
+          "why": "Ces is the plural pointing word and stands before a plural noun, never before a verb."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses means his or her and goes before a noun. What follows the gap is the verb promener."
+        }
+      ],
+      "row": "se"
     },
     {
       "id": "demonstratives-homophones-6",
@@ -698,7 +1932,28 @@
       ],
       "hint": "You are pointing, not saying whose.",
       "feedback": "The word for these starts with c.",
-      "explanation": "Ces couleurs means these colours; ses couleurs would mean his or her colours."
+      "explanation": "Ces couleurs means these colours; ses couleurs would mean his or her colours.",
+      "mistakes": [
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses means his or her colours. The instruction says the meaning is these, so you are pointing, not naming an owner."
+        },
+        {
+          "answers": [
+            "se"
+          ],
+          "why": "Se only goes before a verb (il se lave). Couleurs is a noun."
+        },
+        {
+          "answers": [
+            "cette"
+          ],
+          "why": "Cette is singular and feminine, but couleurs is plural, and one plural form covers both genders."
+        }
+      ],
+      "row": "ces"
     },
     {
       "id": "demonstratives-homophones-7",
@@ -711,7 +1966,28 @@
       ],
       "hint": "Restaurant is a noun, not a verb.",
       "feedback": "The first word sounds right but is spelled wrong.",
-      "explanation": "Before a noun, this is ce; se only goes before a verb."
+      "explanation": "Before a noun, this is ce; se only goes before a verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Se restaurant est excellent."
+          ],
+          "why": "That is the sentence unchanged. Se can only stand in front of a verb, and restaurant is a noun."
+        },
+        {
+          "answers": [
+            "Ses restaurant est excellent."
+          ],
+          "why": "Ses means his or her and goes with a plural noun. Nobody owns the restaurant here, and it is singular."
+        },
+        {
+          "answers": [
+            "Ces restaurant est excellent."
+          ],
+          "why": "Ces is plural, but restaurant has no -s and the verb is est: the sentence is about one restaurant."
+        }
+      ],
+      "row": "ce"
     },
     {
       "id": "demonstratives-homophones-8",
@@ -724,7 +2000,34 @@
       ],
       "hint": "The meaning is her parents.",
       "feedback": "The word you need shows the owner.",
-      "explanation": "Ses shows the owner (her parents); ces means these."
+      "explanation": "Ses shows the owner (her parents); ces means these.",
+      "mistakes": [
+        {
+          "answers": [
+            "Marie aime beaucoup ces parents."
+          ],
+          "why": "That is the sentence unchanged: ces parents means those parents over there, not the ones who are hers."
+        },
+        {
+          "answers": [
+            "Marie aime beaucoup ce parents."
+          ],
+          "why": "Ce is singular, so it cannot go with a plural noun, and it still points instead of naming the owner."
+        },
+        {
+          "answers": [
+            "Marie aime beaucoup se parents."
+          ],
+          "why": "Se is the pronoun of a reflexive verb (elle se lève); it never stands before a noun."
+        },
+        {
+          "answers": [
+            "Marie aime beaucoup son parents."
+          ],
+          "why": "Son is for a singular noun. Parents is plural, so the possessive must be plural too."
+        }
+      ],
+      "row": "ses"
     },
     {
       "id": "demonstratives-homophones-9",
@@ -744,7 +2047,16 @@
       ],
       "hint": "Se lever is a reflexive verb.",
       "feedback": "The word before the verb is not the one that points at things.",
-      "explanation": "Se lever is reflexive, so it is elle se lève. Ce would point at a noun."
+      "explanation": "Se lever is reflexive, so it is elle se lève. Ce would point at a noun.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ce lève tôt."
+          ],
+          "why": "Ce goes before a noun, never before a verb. Lever is reflexive here, so the verb needs its own pronoun."
+        }
+      ],
+      "row": "se"
     }
   ]
 }

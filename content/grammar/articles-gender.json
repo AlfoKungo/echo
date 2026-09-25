@@ -5,9 +5,414 @@
   "title": "Gender and articles",
   "description": "Choose un, une, le, la, l’ and les, and form the plural of nouns.",
   "mark": "le · la",
-  "rule": "Every French noun is masculine or feminine: un and le go with masculine singular nouns, une and la with feminine singular nouns, and des and les are the plural for both genders. Le and la become l’ before a vowel or a silent h: l’ami, l’école, l’hôtel. Endings help: -tion, -té, -ette and -ure are usually feminine, and -ment, -age, -eau and -isme are usually masculine, but la plage, la page, l’image, l’eau, la peau, l’été and le côté break the pattern. Use le, la, les for things in general and for likes and dislikes (j’aime le chocolat), and un, une, des for one or some of something (j’ai un chien). Plurals usually add -s; -eau and -eu add -x, -al usually becomes -aux, and nouns that already end in -s, -x or -z do not change.",
-  "example": "J’ai un chien et une tortue. · J’aime le chocolat. · Les bateaux sont sur l’eau.",
-  "aside": "In the plural the article no longer shows the gender, and there is no elision: les amis, les hôtels. A few -al nouns simply add -s (les festivals), and le pneu becomes les pneus.",
+  "guide": {
+    "summary": "Every French noun is masculine or feminine, and the little word in front of it shows which. This topic gives you the six articles — un, une, des, le, la, les — the l’ form before a vowel, and how to spell a noun in the plural.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "Which article: un, une, des, le, la or les?",
+        "text": "Every noun is masculine or feminine, singular or plural, and the article must match it. Un, une and des mean “a” or “some”; le, la and les mean “the”. In the plural the article no longer shows the gender.",
+        "table": {
+          "columns": [
+            "",
+            "a / some",
+            "the"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "un",
+              "le"
+            ],
+            [
+              "feminine singular",
+              "une",
+              "la"
+            ],
+            [
+              "before a vowel sound",
+              "un / une",
+              "l’"
+            ],
+            [
+              "plural (both genders)",
+              "des",
+              "les"
+            ]
+          ]
+        },
+        "steps": [
+          "Count first: one thing, or several?",
+          "For one thing, find the gender — the article you learnt with the noun, its ending, or a final -e on the adjective (grande, fermée).",
+          "Take that row, then the column you need: “a / some” or “the”."
+        ],
+        "examples": [
+          {
+            "fr": "J’ai un chien et une tortue.",
+            "en": "I have a dog and a tortoise."
+          },
+          {
+            "fr": "Je cherche le sac de Marie.",
+            "en": "I am looking for Marie’s bag."
+          }
+        ],
+        "watch": [
+          "The gender belongs to the word, not to the thing: une voiture stays feminine with a man at the wheel.",
+          "Learn every new noun with its article: say “une table”, never just “table”.",
+          "French hardly ever leaves a noun bare; English “bread is on the table” still needs an article in French."
+        ]
+      },
+      {
+        "id": "elision",
+        "title": "Before a vowel: l’",
+        "text": "Before a vowel sound, both le and la become l’ and stick to the noun. A silent h counts as a vowel sound. The plural article never changes.",
+        "table": {
+          "columns": [
+            "First sound of the noun",
+            "Article",
+            "Example"
+          ],
+          "rows": [
+            [
+              "vowel",
+              "l’",
+              "l’école, l’arbre, l’ami"
+            ],
+            [
+              "silent h",
+              "l’",
+              "l’homme, l’hôtel"
+            ],
+            [
+              "consonant",
+              "le / la",
+              "le livre, la porte"
+            ],
+            [
+              "plural, any sound",
+              "les",
+              "les amis, les hôtels"
+            ]
+          ]
+        },
+        "steps": [
+          "Say the noun out loud and listen to its first sound.",
+          "Vowel or silent h: write l’ and join it straight to the noun, l’eau.",
+          "Consonant: keep the full article and match the gender."
+        ],
+        "examples": [
+          {
+            "fr": "L’hôtel est cher.",
+            "en": "The hotel is expensive."
+          },
+          {
+            "fr": "Les amis de Paul arrivent.",
+            "en": "Paul’s friends are arriving."
+          }
+        ],
+        "watch": [
+          "L’ hides the gender, so keep learning it: l’école is feminine, l’arbre is masculine.",
+          "Un and une never elide: un ami, une amie.",
+          "No space after the apostrophe: l’école, not l’ école."
+        ]
+      },
+      {
+        "id": "endings",
+        "title": "Guessing the gender from the ending",
+        "text": "When you have never met a noun, its last letters are the best clue you have.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Usually",
+            "Examples"
+          ],
+          "rows": [
+            [
+              "-tion",
+              "feminine",
+              "la question, la natation"
+            ],
+            [
+              "-té",
+              "feminine",
+              "la santé, la liberté"
+            ],
+            [
+              "-ette",
+              "feminine",
+              "une assiette, une baguette"
+            ],
+            [
+              "-ure",
+              "feminine",
+              "une voiture, la nature"
+            ],
+            [
+              "-ment",
+              "masculine",
+              "un médicament, le moment"
+            ],
+            [
+              "-age",
+              "masculine",
+              "le fromage, le village"
+            ],
+            [
+              "-eau",
+              "masculine",
+              "un bateau, un cadeau"
+            ],
+            [
+              "-isme",
+              "masculine",
+              "le tourisme, le cyclisme"
+            ]
+          ]
+        },
+        "steps": [
+          "Read the last three or four letters of the noun.",
+          "Find that ending in the table and take the gender it gives.",
+          "Run through the exceptions before you commit.",
+          "No listed ending? Trust the article you learnt with the word."
+        ],
+        "examples": [
+          {
+            "fr": "C’est une question difficile.",
+            "en": "That is a difficult question."
+          },
+          {
+            "fr": "Il achète un cadeau.",
+            "en": "He is buying a present."
+          }
+        ],
+        "watch": [
+          "-age exceptions: la plage, la page and l’image are feminine.",
+          "-eau exceptions: l’eau and la peau are feminine.",
+          "-té exceptions: l’été and le côté are masculine.",
+          "An ending is a clue, not a law: check the word when it really matters."
+        ]
+      },
+      {
+        "id": "general-or-some",
+        "title": "The thing in general, or one of it?",
+        "text": "French marks a difference English hides. Le, la and les name the whole thing or the one you mean; un, une and des count.",
+        "table": {
+          "columns": [
+            "Meaning",
+            "Article",
+            "Example"
+          ],
+          "rows": [
+            [
+              "in general",
+              "le / la / les",
+              "Le sport est bon pour la santé."
+            ],
+            [
+              "after aimer, adorer, détester",
+              "le / la / les",
+              "J’aime le chocolat."
+            ],
+            [
+              "one of something",
+              "un / une",
+              "J’ai un chien."
+            ],
+            [
+              "some (plural)",
+              "des",
+              "Il achète des pommes."
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the verb: aimer, adorer, détester and préférer always name the thing as a whole.",
+          "Otherwise ask whether you are counting: one, two, a few?",
+          "Counting takes un, une or des; the whole thing takes le, la or les.",
+          "English often has no article at all — “I like tea”, “cats are cute” — French still needs one."
+        ],
+        "examples": [
+          {
+            "fr": "Elle déteste la pluie.",
+            "en": "She hates rain."
+          },
+          {
+            "fr": "Nous avons un fils et une fille.",
+            "en": "We have a son and a daughter."
+          }
+        ],
+        "watch": [
+          "“J’aime un chocolat” means one bar you are eating, not a taste in general.",
+          "Du and de la mean a quantity: je bois du thé, but j’aime le thé."
+        ]
+      },
+      {
+        "id": "plural-articles",
+        "title": "Talking about several: des and les",
+        "text": "In the plural one article serves both genders and nothing elides. The noun and the verb move to the plural with it.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "un / une",
+              "des",
+              "some, a number you do not name"
+            ],
+            [
+              "le / la / l’",
+              "les",
+              "the ones you mean, or the thing in general"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide first: some unidentified ones, or the ones you mean?",
+          "Take the plural article from that row.",
+          "Give the noun its plural ending as well.",
+          "Make the verb plural: est becomes sont."
+        ],
+        "examples": [
+          {
+            "fr": "Il y a des fleurs sur la table.",
+            "en": "There are flowers on the table."
+          },
+          {
+            "fr": "Les enfants jouent dans le jardin.",
+            "en": "The children are playing in the garden."
+          }
+        ],
+        "watch": [
+          "The plural article never elides: les amis, les hôtels.",
+          "It announces a plural noun, so the noun must show it too: les voitures, not les voiture.",
+          "Des chaises is some chairs; les chaises is the chairs."
+        ]
+      },
+      {
+        "id": "plural-nouns",
+        "title": "How to spell the plural of a noun",
+        "text": "Most nouns add -s, but three endings behave differently and one group never changes.",
+        "table": {
+          "columns": [
+            "Ending of the singular",
+            "Plural",
+            "Example"
+          ],
+          "rows": [
+            [
+              "most nouns",
+              "add -s",
+              "un livre → des livres"
+            ],
+            [
+              "-eau",
+              "add -x",
+              "un bateau → des bateaux"
+            ],
+            [
+              "-eu",
+              "add -x",
+              "un jeu → des jeux"
+            ],
+            [
+              "-al",
+              "-aux",
+              "un cheval → des chevaux"
+            ],
+            [
+              "-s, -x, -z",
+              "no change",
+              "un bus → deux bus"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at how the singular noun ends.",
+          "Match it to a row and write the plural that row gives.",
+          "Check the article and the verb are plural too."
+        ],
+        "examples": [
+          {
+            "fr": "Les bateaux sont sur l’eau.",
+            "en": "The boats are on the water."
+          },
+          {
+            "fr": "Tu lis les journaux le matin ?",
+            "en": "Do you read the newspapers in the morning?"
+          }
+        ],
+        "watch": [
+          "A few -al nouns simply add -s: les festivals.",
+          "Le pneu is an exception: les pneus.",
+          "An adjective already ending in -x does not change: des gâteaux délicieux.",
+          "Vidéo stays as it is in des jeux vidéo."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "indefinite-un-une": {
+      "section": "forms",
+      "steps": [
+        "Check there is only one of the thing.",
+        "Find the gender: the article you learnt with the noun, its ending, or a final -e on the adjective.",
+        "Take the “a / some” column of that gender’s row."
+      ]
+    },
+    "definite-le-la": {
+      "section": "forms",
+      "steps": [
+        "Check the noun is singular: no plural ending, singular verb.",
+        "Find its gender from the ending or from the adjective that agrees with it.",
+        "Take the “the” column of that row."
+      ]
+    },
+    "elision-l": {
+      "section": "elision",
+      "steps": [
+        "Say the noun: does it open with a vowel sound or a silent h?",
+        "If it does, the singular article drops its own vowel and joins the noun with an apostrophe.",
+        "If it opens with a consonant, keep the full article and match the gender."
+      ]
+    },
+    "gender-endings": {
+      "section": "endings",
+      "steps": [
+        "Read the last three or four letters of the noun.",
+        "Find that ending in the table and take its gender.",
+        "Check the exceptions: plage, page, image, eau, peau, été, côté.",
+        "Then pick the article for that gender and number."
+      ]
+    },
+    "general-statements": {
+      "section": "general-or-some",
+      "steps": [
+        "Look at the verb first: aimer, adorer, détester and préférer name the whole thing.",
+        "Otherwise ask whether you are counting one or some, or naming the thing as a whole.",
+        "Counting takes un, une or des; the whole thing takes le, la or les.",
+        "Never leave the noun bare, even where English has no article."
+      ]
+    },
+    "plural-articles": {
+      "section": "plural-articles",
+      "steps": [
+        "Check the noun is plural: its ending, the verb, or the English.",
+        "Choose between some unidentified ones and the ones you mean.",
+        "Put the noun and the verb in the plural too."
+      ]
+    },
+    "irregular-plurals": {
+      "section": "plural-nouns",
+      "steps": [
+        "Look at how the singular noun ends.",
+        "Apply its row: -s for most, -x after -eau and -eu, -aux for -al, nothing after -s, -x or -z.",
+        "Check the article and the verb are plural as well."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "articles-gender-indefinite-un-une-1",
@@ -25,7 +430,22 @@
       ],
       "hint": "Think about the gender of voiture: nouns ending in -ure are usually feminine.",
       "feedback": "Voiture is feminine, and there is only one car.",
-      "explanation": "Voiture is feminine singular, so it takes une. Un is for masculine nouns and des is plural."
+      "explanation": "Voiture is feminine singular, so it takes une. Un is for masculine nouns and des is plural.",
+      "row": "feminine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "un"
+          ],
+          "why": "Un is the masculine article, but voiture ends in -ure, and -ure nouns are feminine."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural, for several cars. Here there is only one car, and rouge has no plural ending."
+        }
+      ]
     },
     {
       "id": "articles-gender-indefinite-un-une-2",
@@ -43,7 +463,22 @@
       ],
       "hint": "Is stylo masculine or feminine? There is only one.",
       "feedback": "Stylo is a masculine noun. Pick the singular article that matches.",
-      "explanation": "Stylo is masculine singular, so it takes un. Une is feminine and des is plural."
+      "explanation": "Stylo is masculine singular, so it takes un. Une is feminine and des is plural.",
+      "row": "masculine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "une"
+          ],
+          "why": "Une is the feminine article, but stylo is masculine: you say le stylo."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural. Il y a here presents one single pen on the table."
+        }
+      ]
     },
     {
       "id": "articles-gender-indefinite-un-une-3",
@@ -56,7 +491,29 @@
       ],
       "hint": "Jardin is one garden. What is its gender?",
       "feedback": "Jardin is masculine.",
-      "explanation": "Le jardin is masculine, so one garden is un jardin."
+      "explanation": "Le jardin is masculine, so one garden is un jardin.",
+      "row": "masculine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "une"
+          ],
+          "why": "Une is the feminine article, but jardin is masculine: le jardin, mon jardin."
+        },
+        {
+          "answers": [
+            "le",
+            "la"
+          ],
+          "why": "Le and la mean “the”, a garden already known. The sentence says they have one garden, not the garden."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural, for several gardens. There is one garden behind the house."
+        }
+      ]
     },
     {
       "id": "articles-gender-indefinite-un-une-4",
@@ -69,7 +526,28 @@
       ],
       "hint": "A brother is male, and nouns for men are usually masculine.",
       "feedback": "Use the masculine singular article with frère.",
-      "explanation": "Frère is masculine, so a brother is un frère. Je + ai becomes j’ai."
+      "explanation": "Frère is masculine, so a brother is un frère. Je + ai becomes j’ai.",
+      "row": "masculine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai une frère."
+          ],
+          "why": "The article is feminine, but frère is masculine, like père and fils."
+        },
+        {
+          "answers": [
+            "Je ai un frère."
+          ],
+          "why": "Je keeps its e only before a consonant; in front of the a of avoir it has to shrink."
+        },
+        {
+          "answers": [
+            "J’ai le frère."
+          ],
+          "why": "Le frère would be a brother you have both already mentioned. English “a brother” introduces him."
+        }
+      ]
     },
     {
       "id": "articles-gender-indefinite-un-une-5",
@@ -82,7 +560,28 @@
       ],
       "hint": "Check the gender of lit.",
       "feedback": "Lit is not feminine.",
-      "explanation": "Le lit is masculine, so the indefinite article is un: un lit."
+      "explanation": "Le lit is masculine, so the indefinite article is un: un lit.",
+      "row": "masculine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "Il y a une lit dans la chambre."
+          ],
+          "why": "This leaves the feminine article in place, but lit is masculine: le lit, mon lit."
+        },
+        {
+          "answers": [
+            "Il y a des lits dans la chambre."
+          ],
+          "why": "Making it plural changes the meaning; only the gender of the article was wrong."
+        },
+        {
+          "answers": [
+            "Il y a le lit dans la chambre."
+          ],
+          "why": "Le names a bed already known. Il y a introduces something new, so it needs a counting article."
+        }
+      ]
     },
     {
       "id": "articles-gender-indefinite-un-une-6",
@@ -103,7 +602,16 @@
       ],
       "hint": "Is chat masculine or feminine? Leave one article tile unused.",
       "feedback": "The article must match chat, which is masculine.",
-      "explanation": "Chat is masculine singular, so it takes un. The colour adjective noir comes after the noun."
+      "explanation": "Chat is masculine singular, so it takes un. The colour adjective noir comes after the noun.",
+      "row": "masculine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle a une chat noir."
+          ],
+          "why": "Une is feminine, but chat is masculine — and noir with no -e confirms it."
+        }
+      ]
     },
     {
       "id": "articles-gender-definite-le-la-1",
@@ -121,7 +629,22 @@
       ],
       "hint": "The adjective fermée is a clue to the gender of porte.",
       "feedback": "Fermée ends in -e, so porte is feminine, and there is only one door.",
-      "explanation": "Porte is feminine singular, so the definite article is la. The adjective fermée agrees with it."
+      "explanation": "Porte is feminine singular, so the definite article is la. The adjective fermée agrees with it.",
+      "row": "feminine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "Le"
+          ],
+          "why": "Le is the masculine article, but the -e of fermée shows that porte is feminine."
+        },
+        {
+          "answers": [
+            "Les"
+          ],
+          "why": "Les is plural, for several doors. Est is the singular verb, so there is one door."
+        }
+      ]
     },
     {
       "id": "articles-gender-definite-le-la-2",
@@ -139,7 +662,22 @@
       ],
       "hint": "One bag, a specific one. What is the gender of sac?",
       "feedback": "Sac is masculine and singular.",
-      "explanation": "Sac is masculine singular, so the definite article is le. Les would need a plural noun."
+      "explanation": "Sac is masculine singular, so the definite article is le. Les would need a plural noun.",
+      "row": "masculine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "La is the feminine article, but sac is masculine: un sac, mon sac."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural, and sac has no plural ending. Marie owns one bag here."
+        }
+      ]
     },
     {
       "id": "articles-gender-definite-le-la-3",
@@ -152,7 +690,34 @@
       ],
       "hint": "One specific station. Is gare masculine or feminine?",
       "feedback": "Gare is feminine.",
-      "explanation": "La gare is feminine, so it takes la."
+      "explanation": "La gare is feminine, so it takes la.",
+      "row": "feminine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Le is the masculine article, but gare is feminine: une gare."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural, for several stations, and est is a singular verb form."
+        },
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "L’ appears only before a vowel sound, and gare begins with the consonant g."
+        },
+        {
+          "answers": [
+            "une"
+          ],
+          "why": "Une would ask for any station at all; you are asking where the one station is."
+        }
+      ]
     },
     {
       "id": "articles-gender-definite-le-la-4",
@@ -165,7 +730,28 @@
       ],
       "hint": "Look at the adjective grande: it shows the gender of maison.",
       "feedback": "Maison is feminine.",
-      "explanation": "Maison is feminine, so it takes la. The feminine adjective grande confirms it."
+      "explanation": "Maison is feminine, so it takes la. The feminine adjective grande confirms it.",
+      "row": "feminine singular",
+      "mistakes": [
+        {
+          "answers": [
+            "Le maison est grande."
+          ],
+          "why": "The article is still masculine, although the -e of grande shows that maison is feminine."
+        },
+        {
+          "answers": [
+            "Le maison est grand."
+          ],
+          "why": "This changes the adjective instead of the article; maison is feminine, so grande was right all along."
+        },
+        {
+          "answers": [
+            "Les maisons sont grandes."
+          ],
+          "why": "Making everything plural changes the meaning. The sentence is about one house and only the article was wrong."
+        }
+      ]
     },
     {
       "id": "articles-gender-definite-le-la-5",
@@ -178,7 +764,27 @@
       ],
       "hint": "Each noun needs its own article. What are the genders of pain and table?",
       "feedback": "Pain is masculine and table is feminine.",
-      "explanation": "Pain is masculine (le pain) and table is feminine (la table)."
+      "explanation": "Pain is masculine (le pain) and table is feminine (la table).",
+      "mistakes": [
+        {
+          "answers": [
+            "La pain est sur la table."
+          ],
+          "why": "Pain is masculine — un pain, du pain — so the first article has the wrong gender."
+        },
+        {
+          "answers": [
+            "Le pain est sur le table."
+          ],
+          "why": "Table is feminine, as une table shows, so the second article has the wrong gender."
+        },
+        {
+          "answers": [
+            "Pain est sur table."
+          ],
+          "why": "English can drop “the”, but French needs an article in front of each of these nouns."
+        }
+      ]
     },
     {
       "id": "articles-gender-definite-le-la-6",
@@ -199,7 +805,21 @@
       ],
       "hint": "A boy is male. Is fenêtre masculine or feminine? One tile stays unused.",
       "feedback": "Garçon is masculine and fenêtre is feminine: match each article to its noun.",
-      "explanation": "Garçon is masculine, so le garçon; fenêtre is feminine, so la fenêtre."
+      "explanation": "Garçon is masculine, so le garçon; fenêtre is feminine, so la fenêtre.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le garçon ouvre le fenêtre."
+          ],
+          "why": "Fenêtre is feminine — une fenêtre — so the second article has the wrong gender."
+        },
+        {
+          "answers": [
+            "La garçon ouvre le fenêtre."
+          ],
+          "why": "The two articles are swapped: garçon is masculine and fenêtre is feminine."
+        }
+      ]
     },
     {
       "id": "articles-gender-elision-l-1",
@@ -217,7 +837,22 @@
       ],
       "hint": "École begins with a vowel sound.",
       "feedback": "Before a vowel, le and la lose their vowel.",
-      "explanation": "École starts with a vowel, so la becomes l’: l’école."
+      "explanation": "École starts with a vowel, so la becomes l’: l’école.",
+      "row": "vowel",
+      "mistakes": [
+        {
+          "answers": [
+            "Le"
+          ],
+          "why": "Le is masculine, but école is feminine — and a full article cannot stand before a vowel anyway."
+        },
+        {
+          "answers": [
+            "La"
+          ],
+          "why": "The gender is right, but école opens with a vowel, and the article cannot keep its own vowel there."
+        }
+      ]
     },
     {
       "id": "articles-gender-elision-l-2",
@@ -235,7 +870,22 @@
       ],
       "hint": "Listen to the first sound of assiette.",
       "feedback": "Assiette begins with a vowel.",
-      "explanation": "Before a vowel, la becomes l’: l’assiette."
+      "explanation": "Before a vowel, la becomes l’: l’assiette.",
+      "row": "vowel",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Le is masculine, but assiette ends in -ette, a feminine ending, and it also opens with a vowel."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "The gender is right, but assiette begins with a vowel sound, so the article loses its own vowel."
+        }
+      ]
     },
     {
       "id": "articles-gender-elision-l-3",
@@ -248,7 +898,34 @@
       ],
       "hint": "Arbre begins with a vowel sound.",
       "feedback": "Le cannot stand before a vowel.",
-      "explanation": "Arbre starts with a vowel, so le becomes l’: l’arbre."
+      "explanation": "Arbre starts with a vowel, so le becomes l’: l’arbre.",
+      "row": "vowel",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Arbre opens with a vowel, and a full article cannot sit in front of that sound."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "Arbre is masculine — un arbre — and it also opens with a vowel sound."
+        },
+        {
+          "answers": [
+            "l"
+          ],
+          "why": "The shortened article keeps its apostrophe; that is what glues it to the noun."
+        },
+        {
+          "answers": [
+            "un"
+          ],
+          "why": "Un introduces a tree for the first time; là-bas points at one you can both see."
+        }
+      ]
     },
     {
       "id": "articles-gender-elision-l-4",
@@ -261,7 +938,28 @@
       ],
       "hint": "Église is feminine too, but look at its first letter.",
       "feedback": "The gender stays the same, but the first sound of the noun changes the article.",
-      "explanation": "Église begins with a vowel, so la becomes l’: l’église."
+      "explanation": "Église begins with a vowel, so la becomes l’: l’église.",
+      "row": "vowel",
+      "mistakes": [
+        {
+          "answers": [
+            "La église est belle."
+          ],
+          "why": "The gender is right, but a full article cannot stand in front of the opening vowel of église."
+        },
+        {
+          "answers": [
+            "Le église est belle."
+          ],
+          "why": "This changes the gender too: église is feminine, as une église shows."
+        },
+        {
+          "answers": [
+            "L’église est beau."
+          ],
+          "why": "Beau is the masculine form, and the adjective has to stay feminine to agree with église."
+        }
+      ]
     },
     {
       "id": "articles-gender-elision-l-5",
@@ -274,7 +972,28 @@
       ],
       "hint": "The h in homme is silent.",
       "feedback": "Homme sounds as if it begins with a vowel.",
-      "explanation": "The h in homme is silent, so le becomes l’: l’homme."
+      "explanation": "The h in homme is silent, so le becomes l’: l’homme.",
+      "row": "silent h",
+      "mistakes": [
+        {
+          "answers": [
+            "Le homme parle au téléphone."
+          ],
+          "why": "The h of homme is not pronounced, so the word opens with a vowel sound and the article cannot keep its vowel."
+        },
+        {
+          "answers": [
+            "La homme parle au téléphone."
+          ],
+          "why": "Homme is masculine — un homme — and the silent h still leaves it starting on a vowel sound."
+        },
+        {
+          "answers": [
+            "Les hommes parlent au téléphone."
+          ],
+          "why": "Turning it into the plural changes the meaning; the sentence is about one man."
+        }
+      ]
     },
     {
       "id": "articles-gender-elision-l-6",
@@ -288,7 +1007,28 @@
       ],
       "hint": "The h in hôtel is silent.",
       "feedback": "Remember what happens to le before a silent h.",
-      "explanation": "Hôtel has a silent h, so le becomes l’: l’hôtel. Cher is masculine to match it (l’hôtel coûte cher works too)."
+      "explanation": "Hôtel has a silent h, so le becomes l’: l’hôtel. Cher is masculine to match it (l’hôtel coûte cher works too).",
+      "row": "silent h",
+      "mistakes": [
+        {
+          "answers": [
+            "Le hôtel est cher."
+          ],
+          "why": "The h of hôtel is silent, so the word opens with a vowel sound and the article cannot keep its own vowel."
+        },
+        {
+          "answers": [
+            "La hôtel est cher."
+          ],
+          "why": "Hôtel is masculine — un hôtel — and the silent h also blocks a full article."
+        },
+        {
+          "answers": [
+            "L’hôtel est chère."
+          ],
+          "why": "Chère is the feminine form; hôtel is masculine, so the adjective stays masculine."
+        }
+      ]
     },
     {
       "id": "articles-gender-gender-endings-1",
@@ -306,7 +1046,22 @@
       ],
       "hint": "Nouns ending in -tion are almost always feminine.",
       "feedback": "Look at the ending of question.",
-      "explanation": "Question ends in -tion, a feminine ending, so it takes une."
+      "explanation": "Question ends in -tion, a feminine ending, so it takes une.",
+      "row": "-tion",
+      "mistakes": [
+        {
+          "answers": [
+            "un"
+          ],
+          "why": "Un is the masculine article, but nouns ending in -tion are feminine, and difficile gives no clue either way."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural. C’est introduces one single thing."
+        }
+      ]
     },
     {
       "id": "articles-gender-gender-endings-2",
@@ -324,7 +1079,21 @@
       ],
       "hint": "Most -age nouns are masculine, but a few everyday ones are exceptions.",
       "feedback": "This -age noun is one of the exceptions.",
-      "explanation": "Plage is one of the feminine -age exceptions, like page and image: la plage."
+      "explanation": "Plage is one of the feminine -age exceptions, like page and image: la plage.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le"
+          ],
+          "why": "Most -age nouns are indeed masculine, but plage is one of the everyday exceptions, like page and image."
+        },
+        {
+          "answers": [
+            "L’"
+          ],
+          "why": "L’ is used only before a vowel sound, and plage begins with the consonant p."
+        }
+      ]
     },
     {
       "id": "articles-gender-gender-endings-3",
@@ -337,7 +1106,29 @@
       ],
       "hint": "Nouns ending in -ment are usually masculine.",
       "feedback": "Look at the ending of médicament.",
-      "explanation": "Médicament ends in -ment, a masculine ending: un médicament."
+      "explanation": "Médicament ends in -ment, a masculine ending: un médicament.",
+      "row": "-ment",
+      "mistakes": [
+        {
+          "answers": [
+            "une"
+          ],
+          "why": "Une is feminine, but nouns ending in -ment, like médicament, are masculine."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is plural, for several medicines. He takes one each evening."
+        },
+        {
+          "answers": [
+            "le",
+            "la"
+          ],
+          "why": "Le and la mean “the”, one particular medicine already known. Here it is simply one he takes."
+        }
+      ]
     },
     {
       "id": "articles-gender-gender-endings-4",
@@ -350,7 +1141,28 @@
       ],
       "hint": "Nouns ending in -eau are usually masculine.",
       "feedback": "The new noun has a masculine ending.",
-      "explanation": "Bateau ends in -eau, which is masculine, so la becomes le. Rouge does not change."
+      "explanation": "Bateau ends in -eau, which is masculine, so la becomes le. Rouge does not change.",
+      "row": "-eau",
+      "mistakes": [
+        {
+          "answers": [
+            "La bateau est rouge."
+          ],
+          "why": "The noun was replaced but the article was left feminine; -eau nouns are masculine."
+        },
+        {
+          "answers": [
+            "La voiture est rouge."
+          ],
+          "why": "This is the sentence you started from: the noun still has to be swapped."
+        },
+        {
+          "answers": [
+            "Un bateau est rouge."
+          ],
+          "why": "Un introduces a boat for the first time; the sentence keeps the same kind of article as before, only in the other gender."
+        }
+      ]
     },
     {
       "id": "articles-gender-gender-endings-5",
@@ -363,7 +1175,28 @@
       ],
       "hint": "Nouns ending in -isme are masculine. The adjective important is a clue too.",
       "feedback": "Look at the ending of tourisme.",
-      "explanation": "Tourisme ends in -isme, a masculine ending, so it takes le. Important is masculine to match."
+      "explanation": "Tourisme ends in -isme, a masculine ending, so it takes le. Important is masculine to match.",
+      "row": "-isme",
+      "mistakes": [
+        {
+          "answers": [
+            "La tourisme est important ici."
+          ],
+          "why": "The article is still feminine, although -isme nouns are masculine and important agrees with a masculine noun."
+        },
+        {
+          "answers": [
+            "La tourisme est importante ici."
+          ],
+          "why": "This changes the adjective instead of the article, and -isme is a masculine ending."
+        },
+        {
+          "answers": [
+            "Le tourisme est importante ici."
+          ],
+          "why": "Importante is the feminine form and no longer agrees with the noun it describes."
+        }
+      ]
     },
     {
       "id": "articles-gender-gender-endings-6",
@@ -383,7 +1216,16 @@
       ],
       "hint": "Nouns ending in -eau are usually masculine. One article tile stays unused.",
       "feedback": "Cadeau has a masculine ending.",
-      "explanation": "Cadeau ends in -eau, which is masculine: un cadeau."
+      "explanation": "Cadeau ends in -eau, which is masculine: un cadeau.",
+      "row": "-eau",
+      "mistakes": [
+        {
+          "answers": [
+            "Il achète une cadeau."
+          ],
+          "why": "Une is feminine, but cadeau ends in -eau, a masculine ending, like bateau."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-1",
@@ -401,7 +1243,22 @@
       ],
       "hint": "After adorer you are talking about chocolate in general.",
       "feedback": "Verbs of liking take the definite article.",
-      "explanation": "With aimer, adorer and détester, French uses le, la, les for the thing in general: j’adore le chocolat."
+      "explanation": "With aimer, adorer and détester, French uses le, la, les for the thing in general: j’adore le chocolat.",
+      "row": "after aimer, adorer, détester",
+      "mistakes": [
+        {
+          "answers": [
+            "un"
+          ],
+          "why": "Un chocolat is one bar or one hot chocolate. Adorer is about the thing as a whole."
+        },
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du means “some”, a quantity you eat. Verbs of liking name the thing itself, not a helping of it."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-2",
@@ -419,7 +1276,22 @@
       ],
       "hint": "She hates rain in general, not one rain.",
       "feedback": "Détester works like aimer: it takes the definite article.",
-      "explanation": "Détester is a verb of liking and disliking, so it takes the definite article: la pluie."
+      "explanation": "Détester is a verb of liking and disliking, so it takes the definite article: la pluie.",
+      "row": "after aimer, adorer, détester",
+      "mistakes": [
+        {
+          "answers": [
+            "une"
+          ],
+          "why": "Une counts one rain shower. Détester is about rain as a whole."
+        },
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "De la means “some rain”, a quantity. Verbs of liking and disliking never take a partitive."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-3",
@@ -437,7 +1309,22 @@
       ],
       "hint": "Count them: one son and one daughter.",
       "feedback": "This is one of something, not a general statement.",
-      "explanation": "For one of something, use the indefinite article: un fils, like une fille."
+      "explanation": "For one of something, use the indefinite article: un fils, like une fille.",
+      "row": "one of something",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Le would point to a son already known. Here you are counting children, as une fille shows."
+        },
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du means some of an uncountable thing, like du pain. A son is counted, not measured."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-4",
@@ -450,7 +1337,28 @@
       ],
       "hint": "Aimer talks about something in general.",
       "feedback": "After aimer, use the definite article that matches musique.",
-      "explanation": "Aimer takes the definite article, and musique is feminine: la musique classique."
+      "explanation": "Aimer takes the definite article, and musique is feminine: la musique classique.",
+      "row": "after aimer, adorer, détester",
+      "mistakes": [
+        {
+          "answers": [
+            "une"
+          ],
+          "why": "Une points to one piece of classical music; aimer asks about that music as a whole."
+        },
+        {
+          "answers": [
+            "de la"
+          ],
+          "why": "De la means “some”, a quantity you listen to. A general like takes a definite article, not a partitive."
+        },
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Le is the masculine article, but musique is feminine: une musique douce."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-5",
@@ -464,7 +1372,34 @@
       ],
       "hint": "English has no article here, but French needs one.",
       "feedback": "French puts an article before a thing you like in general.",
-      "explanation": "Likes take the definite article in French: j’aime le thé. Thé is masculine."
+      "explanation": "Likes take the definite article in French: j’aime le thé. Thé is masculine.",
+      "row": "after aimer, adorer, détester",
+      "mistakes": [
+        {
+          "answers": [
+            "J’aime thé."
+          ],
+          "why": "English drops the article before a thing you like, but French never leaves the noun bare here."
+        },
+        {
+          "answers": [
+            "J’aime un thé."
+          ],
+          "why": "Un thé is one cup, the kind of thing you order in a café; the sentence is about tea in general."
+        },
+        {
+          "answers": [
+            "J’aime du thé."
+          ],
+          "why": "Du thé is some tea, a quantity in your cup. A general like does not take a partitive."
+        },
+        {
+          "answers": [
+            "Je aime le thé."
+          ],
+          "why": "Je loses its e in front of a vowel, so this opening cannot stand."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-6",
@@ -477,7 +1412,34 @@
       ],
       "hint": "This is about cats in general.",
       "feedback": "A general statement needs the definite article, even with no article in English.",
-      "explanation": "A general statement about a whole group takes les: les chats sont mignons."
+      "explanation": "A general statement about a whole group takes les: les chats sont mignons.",
+      "row": "in general",
+      "mistakes": [
+        {
+          "answers": [
+            "Chats sont mignons."
+          ],
+          "why": "English starts a general statement with a bare noun; French puts a definite article in front of it."
+        },
+        {
+          "answers": [
+            "Des chats sont mignons."
+          ],
+          "why": "Des means some cats, an unknown few. The sentence is about cats as a whole."
+        },
+        {
+          "answers": [
+            "Le chat est mignon."
+          ],
+          "why": "This is about one particular cat, while the English sentence is about the whole group."
+        },
+        {
+          "answers": [
+            "Les chats sont mignon."
+          ],
+          "why": "The adjective must agree with a plural subject and take its plural ending."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-7",
@@ -490,7 +1452,28 @@
       ],
       "hint": "He likes swimming as a sport in general.",
       "feedback": "Aimer does not take un or une for a general like.",
-      "explanation": "Aimer takes the definite article. Natation ends in -tion, so it is feminine: la natation."
+      "explanation": "Aimer takes the definite article. Natation ends in -tion, so it is feminine: la natation.",
+      "row": "after aimer, adorer, détester",
+      "mistakes": [
+        {
+          "answers": [
+            "Il aime une natation."
+          ],
+          "why": "Une counts one of something, but swimming is a sport he likes as a whole."
+        },
+        {
+          "answers": [
+            "Il aime un natation."
+          ],
+          "why": "This only swaps the gender — natation ends in -tion, so it is feminine — and aimer does not take a counting article anyway."
+        },
+        {
+          "answers": [
+            "Il aime de la natation."
+          ],
+          "why": "De la means “some swimming”, a quantity. Aimer names the sport itself."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-8",
@@ -503,7 +1486,34 @@
       ],
       "hint": "A general like takes a different article from one cup.",
       "feedback": "One cup takes un, but a like in general does not.",
-      "explanation": "Un thé is one cup of tea. Aimer talks about tea in general, so it takes le: il aime le thé."
+      "explanation": "Un thé is one cup of tea. Aimer talks about tea in general, so it takes le: il aime le thé.",
+      "row": "after aimer, adorer, détester",
+      "mistakes": [
+        {
+          "answers": [
+            "Il aime un thé."
+          ],
+          "why": "Un thé is one cup. Once the verb is one of liking, the article has to change as well."
+        },
+        {
+          "answers": [
+            "Il aime du thé."
+          ],
+          "why": "Du thé is some tea in a cup; a general like does not take a partitive."
+        },
+        {
+          "answers": [
+            "Il boit le thé."
+          ],
+          "why": "The verb was left as it was, so the sentence still describes drinking rather than liking."
+        },
+        {
+          "answers": [
+            "Il aime thé."
+          ],
+          "why": "French does not leave the noun bare after aimer, even though English would."
+        }
+      ]
     },
     {
       "id": "articles-gender-general-statements-9",
@@ -526,7 +1536,22 @@
       ],
       "hint": "Both nouns are used in a general sense. One tile stays unused.",
       "feedback": "General statements need the definite article.",
-      "explanation": "Le sport and la santé are both general ideas, so both take the definite article. Santé ends in -té, which is feminine."
+      "explanation": "Le sport and la santé are both general ideas, so both take the definite article. Santé ends in -té, which is feminine.",
+      "row": "in general",
+      "mistakes": [
+        {
+          "answers": [
+            "Le sport est bon pour une santé."
+          ],
+          "why": "Une santé counts one health, which makes no sense; health is meant as a whole."
+        },
+        {
+          "answers": [
+            "La sport est bon pour le santé."
+          ],
+          "why": "The two articles are swapped: sport is masculine, and santé ends in -té, a feminine ending."
+        }
+      ]
     },
     {
       "id": "articles-gender-plural-articles-1",
@@ -544,7 +1569,22 @@
       ],
       "hint": "Pommes is plural and not specific.",
       "feedback": "Look at the ending of pommes.",
-      "explanation": "Pommes is plural, so the indefinite article is des."
+      "explanation": "Pommes is plural, so the indefinite article is des.",
+      "row": "un / une",
+      "mistakes": [
+        {
+          "answers": [
+            "une"
+          ],
+          "why": "Une buys one single apple, but pommes carries a plural -s."
+        },
+        {
+          "answers": [
+            "un"
+          ],
+          "why": "Un is singular and masculine, while pommes is plural — and pomme is feminine anyway."
+        }
+      ]
     },
     {
       "id": "articles-gender-plural-articles-2",
@@ -562,7 +1602,22 @@
       ],
       "hint": "Enfants ends in -s and the verb is plural.",
       "feedback": "Le and l’ are only for one.",
-      "explanation": "Enfants is plural, so the definite article is les. There is no elision in the plural."
+      "explanation": "Enfants is plural, so the definite article is les. There is no elision in the plural.",
+      "row": "le / la / l’",
+      "mistakes": [
+        {
+          "answers": [
+            "Le"
+          ],
+          "why": "Le is singular, but enfants ends in -s and jouent is a plural verb form."
+        },
+        {
+          "answers": [
+            "L’"
+          ],
+          "why": "L’ is the singular article before a vowel sound; a plural article never elides."
+        }
+      ]
     },
     {
       "id": "articles-gender-plural-articles-3",
@@ -575,7 +1630,29 @@
       ],
       "hint": "Fleurs is plural.",
       "feedback": "Un and une are only for one.",
-      "explanation": "The plural of un and une is des: des fleurs."
+      "explanation": "The plural of un and une is des: des fleurs.",
+      "row": "un / une",
+      "mistakes": [
+        {
+          "answers": [
+            "un",
+            "une"
+          ],
+          "why": "Un and une introduce one single flower, but fleurs carries the plural -s."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les means the flowers, particular ones already known; il y a simply announces some on the table."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "De on its own is what you use after a negative, not to introduce flowers that are there."
+        }
+      ]
     },
     {
       "id": "articles-gender-plural-articles-4",
@@ -588,7 +1665,33 @@
       ],
       "hint": "Change the article, add the plural ending and make the verb plural.",
       "feedback": "Three words change: the article, the noun and the verb.",
-      "explanation": "Le becomes les, livre takes -s, and est becomes sont with a plural subject."
+      "explanation": "Le becomes les, livre takes -s, and est becomes sont with a plural subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les livre sont sur la table."
+          ],
+          "why": "The article became plural but the noun did not; a plural noun needs its own ending."
+        },
+        {
+          "answers": [
+            "Les livres est sur la table."
+          ],
+          "why": "Est is the singular form of être, and the subject is now several books."
+        },
+        {
+          "answers": [
+            "Le livres sont sur la table."
+          ],
+          "why": "The noun and the verb are plural, but the article was left in the singular."
+        },
+        {
+          "answers": [
+            "Les livres sont sur les tables."
+          ],
+          "why": "Only the book had to become plural; the table stays exactly as it was."
+        }
+      ]
     },
     {
       "id": "articles-gender-plural-articles-5",
@@ -601,7 +1704,27 @@
       ],
       "hint": "Les tells you the noun is plural.",
       "feedback": "The noun must show the plural too.",
-      "explanation": "After les, the noun takes the plural -s: les voitures."
+      "explanation": "After les, the noun takes the plural -s: les voitures.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les voiture sont rapides."
+          ],
+          "why": "The noun still has no plural ending, although les and sont both announce several cars."
+        },
+        {
+          "answers": [
+            "La voiture est rapide."
+          ],
+          "why": "This makes everything singular instead; rapides already shows the sentence is about several cars."
+        },
+        {
+          "answers": [
+            "Les voiture sont rapide."
+          ],
+          "why": "This takes the plural off the adjective as well, while the noun still lacks its own plural ending."
+        }
+      ]
     },
     {
       "id": "articles-gender-plural-articles-6",
@@ -614,7 +1737,33 @@
       ],
       "hint": "The girls is plural; school begins with a vowel.",
       "feedback": "Check the article and ending of the plural noun.",
-      "explanation": "Les filles is the plural of la fille. École begins with a vowel, so à la becomes à l’: à l’école."
+      "explanation": "Les filles is the plural of la fille. École begins with a vowel, so à la becomes à l’: à l’école.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les filles sont à la école."
+          ],
+          "why": "École opens with a vowel, so the feminine article cannot keep its own vowel in front of it."
+        },
+        {
+          "answers": [
+            "Les fille sont à l’école."
+          ],
+          "why": "The noun was left in the singular although the article and the verb are plural."
+        },
+        {
+          "answers": [
+            "Des filles sont à l’école."
+          ],
+          "why": "Des means some girls, an unknown few; English “the girls” means particular ones."
+        },
+        {
+          "answers": [
+            "La fille est à l’école."
+          ],
+          "why": "This is about one girl, but the English subject is plural and the verb has to follow."
+        }
+      ]
     },
     {
       "id": "articles-gender-plural-articles-7",
@@ -634,7 +1783,16 @@
       ],
       "hint": "Some chairs, not specific ones. One tile stays unused.",
       "feedback": "Some chairs are not particular chairs.",
-      "explanation": "Des is the plural of une for some unspecified chairs; les would mean the chairs."
+      "explanation": "Des is the plural of une for some unspecified chairs; les would mean the chairs.",
+      "row": "un / une",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous avons les chaises."
+          ],
+          "why": "Les chaises are the chairs, particular ones already known; here they are simply some chairs."
+        }
+      ]
     },
     {
       "id": "articles-gender-irregular-plurals-1",
@@ -652,7 +1810,22 @@
       ],
       "hint": "Nouns ending in -eau do not take -s in the plural.",
       "feedback": "Check the plural ending for -eau nouns.",
-      "explanation": "Nouns in -eau add -x in the plural: un bateau, des bateaux."
+      "explanation": "Nouns in -eau add -x in the plural: un bateau, des bateaux.",
+      "row": "-eau",
+      "mistakes": [
+        {
+          "answers": [
+            "bateau"
+          ],
+          "why": "That is the singular form, but trois counts three of them."
+        },
+        {
+          "answers": [
+            "bateaus"
+          ],
+          "why": "Nouns ending in -eau do not take -s in the plural; they take the other plural letter."
+        }
+      ]
     },
     {
       "id": "articles-gender-irregular-plurals-2",
@@ -670,7 +1843,22 @@
       ],
       "hint": "Most nouns ending in -al change their ending in the plural.",
       "feedback": "Think about the plural of journal.",
-      "explanation": "Most nouns in -al become -aux in the plural: un cheval, des chevaux."
+      "explanation": "Most nouns in -al become -aux in the plural: un cheval, des chevaux.",
+      "row": "-al",
+      "mistakes": [
+        {
+          "answers": [
+            "cheval"
+          ],
+          "why": "That is the singular form, but les and sont announce several horses."
+        },
+        {
+          "answers": [
+            "chevals"
+          ],
+          "why": "Nouns in -al do not simply add -s: the whole ending changes in the plural."
+        }
+      ]
     },
     {
       "id": "articles-gender-irregular-plurals-3",
@@ -683,7 +1871,29 @@
       ],
       "hint": "Bus already ends in -s.",
       "feedback": "Nouns that already end in -s do not add anything.",
-      "explanation": "Nouns ending in -s, -x or -z stay the same in the plural: un bus, deux bus."
+      "explanation": "Nouns ending in -s, -x or -z stay the same in the plural: un bus, deux bus.",
+      "row": "-s, -x, -z",
+      "mistakes": [
+        {
+          "answers": [
+            "buss"
+          ],
+          "why": "French never doubles that final letter, and a noun already ending in -s is left exactly as it is."
+        },
+        {
+          "answers": [
+            "buses",
+            "busses"
+          ],
+          "why": "That is the English plural. A French noun that already ends in -s adds nothing at all."
+        },
+        {
+          "answers": [
+            "bux"
+          ],
+          "why": "The -x plural belongs to nouns ending in -eau or -eu, not to a noun that already ends in -s."
+        }
+      ]
     },
     {
       "id": "articles-gender-irregular-plurals-4",
@@ -696,7 +1906,28 @@
       ],
       "hint": "Journal ends in -al.",
       "feedback": "Nouns in -al usually change their ending in the plural.",
-      "explanation": "Most nouns in -al become -aux in the plural: un journal, des journaux."
+      "explanation": "Most nouns in -al become -aux in the plural: un journal, des journaux.",
+      "row": "-al",
+      "mistakes": [
+        {
+          "answers": [
+            "journals"
+          ],
+          "why": "That is the English plural; French -al nouns change their ending instead of adding -s."
+        },
+        {
+          "answers": [
+            "journal"
+          ],
+          "why": "That is the singular form, but les asks for the plural."
+        },
+        {
+          "answers": [
+            "journeaux"
+          ],
+          "why": "The ending -al does not turn into -eau; only its last two letters change."
+        }
+      ]
     },
     {
       "id": "articles-gender-irregular-plurals-5",
@@ -709,7 +1940,34 @@
       ],
       "hint": "Gâteau ends in -eau; délicieux already ends in -x.",
       "feedback": "Check the plural ending of gâteau.",
-      "explanation": "Gâteau adds -x: les gâteaux. Délicieux already ends in -x, so it does not change, and est becomes sont."
+      "explanation": "Gâteau adds -x: les gâteaux. Délicieux already ends in -x, so it does not change, and est becomes sont.",
+      "row": "-eau",
+      "mistakes": [
+        {
+          "answers": [
+            "Les gâteaus sont délicieux."
+          ],
+          "why": "Nouns in -eau take -x in the plural, never -s."
+        },
+        {
+          "answers": [
+            "Les gâteaux sont délicieuxs."
+          ],
+          "why": "A word that already ends in -x takes nothing more in the plural."
+        },
+        {
+          "answers": [
+            "Le gâteau est délicieux."
+          ],
+          "why": "This is still the singular sentence: the article, the noun and the verb all have to move to the plural."
+        },
+        {
+          "answers": [
+            "Les gâteaux est délicieux."
+          ],
+          "why": "Est goes with one single thing, and the subject is now several cakes."
+        }
+      ]
     },
     {
       "id": "articles-gender-irregular-plurals-6",
@@ -722,7 +1980,28 @@
       ],
       "hint": "Jeu ends in -eu.",
       "feedback": "Nouns in -eu usually do not take -s.",
-      "explanation": "Nouns in -eu add -x in the plural: un jeu, des jeux. Vidéo stays unchanged in jeux vidéo."
+      "explanation": "Nouns in -eu add -x in the plural: un jeu, des jeux. Vidéo stays unchanged in jeux vidéo.",
+      "row": "-eu",
+      "mistakes": [
+        {
+          "answers": [
+            "Les enfants aiment les jeus vidéo."
+          ],
+          "why": "Jeu ends in -eu, and -eu nouns do not take -s in the plural."
+        },
+        {
+          "answers": [
+            "Les enfants aiment les jeus vidéos."
+          ],
+          "why": "This adds a plural to vidéo, which stays unchanged here, and still leaves the wrong ending on the noun."
+        },
+        {
+          "answers": [
+            "Les enfants aiment le jeu vidéo."
+          ],
+          "why": "Making the whole thing singular changes the meaning; only the plural ending was wrong."
+        }
+      ]
     },
     {
       "id": "articles-gender-irregular-plurals-7",
@@ -735,7 +2014,34 @@
       ],
       "hint": "The bird is l’oiseau, which ends in -eau.",
       "feedback": "Check the plural of oiseau and the adjective agreement.",
-      "explanation": "Oiseau adds -x in the plural: les oiseaux. Petit takes -s to agree."
+      "explanation": "Oiseau adds -x in the plural: les oiseaux. Petit takes -s to agree.",
+      "row": "-eau",
+      "mistakes": [
+        {
+          "answers": [
+            "Les oiseaus sont petits."
+          ],
+          "why": "Nouns ending in -eau take -x in the plural, never -s."
+        },
+        {
+          "answers": [
+            "Les oiseaux sont petit."
+          ],
+          "why": "The adjective has to agree with a plural subject and take its plural ending."
+        },
+        {
+          "answers": [
+            "Les oiseau sont petits."
+          ],
+          "why": "The noun was left in the singular although the article and the verb are plural."
+        },
+        {
+          "answers": [
+            "L’oiseau est petit."
+          ],
+          "why": "This is about one bird, but the English sentence is plural."
+        }
+      ]
     },
     {
       "id": "articles-gender-irregular-plurals-8",
@@ -755,7 +2061,16 @@
       ],
       "hint": "Hôpital ends in -al. One tile stays unused.",
       "feedback": "Choose the right plural of hôpital.",
-      "explanation": "Hôpital ends in -al, so its plural is hôpitaux."
+      "explanation": "Hôpital ends in -al, so its plural is hôpitaux.",
+      "row": "-al",
+      "mistakes": [
+        {
+          "answers": [
+            "Les hôpitals sont grands."
+          ],
+          "why": "Nouns in -al do not form their plural with -s: the ending itself changes."
+        }
+      ]
     }
   ]
 }

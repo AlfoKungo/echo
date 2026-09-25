@@ -5,9 +5,488 @@
   "title": "Regular -er verbs",
   "description": "Conjugate everyday -er verbs in the present, including their spelling changes.",
   "mark": "-e · -ons",
-  "rule": "Remove -er from the infinitive and add -e, -es, -e, -ons, -ez, -ent: je parle, tu parles, il parle, nous parlons, vous parlez, ils parlent. The -e, -es and -ent endings are silent, so parle, parles and parlent sound the same. Je becomes j’ before a vowel or a silent h: j’aime, j’habite. Verbs in -ger keep an e before -ons (nous mangeons), and verbs in -cer write ç before -ons (nous commençons). Some verbs change their stem with je, tu, il and ils but not with nous and vous: acheter and lever take è (j’achète, nous achetons), préférer changes é to è (je préfère, nous préférons), appeler and jeter double their consonant (j’appelle, je jette), and payer can change y to i (je paie or je paye, but nous payons). Aimer is followed by an infinitive (j’aime danser) or by a definite article before a noun (j’aime le chocolat).",
-  "example": "J’habite à Lyon et je travaille ici. · Nous mangeons à midi. · Tu préfères le thé ?",
-  "aside": "The spelling changes keep the sound: mangeons keeps the soft g of manger, and commençons keeps the soft c of commencer.",
+  "guide": {
+    "summary": "Almost every French verb you meet ends in -er, and they all work the same way: cut off -er and add one of six endings. This page has the endings, the small spelling changes that protect the sound, and the two ways aimer is used.",
+    "sections": [
+      {
+        "id": "endings",
+        "title": "The six endings",
+        "text": "Remove -er from the infinitive to get the stem, then add the ending for your subject. The endings -e, -es and -ent are silent, so parle, parles and parlent all sound the same.",
+        "table": {
+          "columns": [
+            "subject",
+            "ending",
+            "parler"
+          ],
+          "rows": [
+            [
+              "je",
+              "-e",
+              "je parle"
+            ],
+            [
+              "tu",
+              "-es",
+              "tu parles"
+            ],
+            [
+              "il / elle / on",
+              "-e",
+              "il parle"
+            ],
+            [
+              "nous",
+              "-ons",
+              "nous parlons"
+            ],
+            [
+              "vous",
+              "-ez",
+              "vous parlez"
+            ],
+            [
+              "ils / elles",
+              "-ent",
+              "ils parlent"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject: who is doing it?",
+          "Remove -er from the infinitive to get the stem.",
+          "Add the ending written on that subject’s row.",
+          "Never use -ont here: ont and sont belong to avoir and être."
+        ],
+        "examples": [
+          {
+            "fr": "J’habite à Lyon et je travaille ici.",
+            "en": "I live in Lyon and I work here."
+          },
+          {
+            "fr": "Vous travaillez à Paris ?",
+            "en": "Do you work in Paris?"
+          },
+          {
+            "fr": "Mes parents habitent à la campagne.",
+            "en": "My parents live in the country."
+          }
+        ],
+        "watch": [
+          "Hearing nothing at the end does not mean writing nothing: il regarde and ils regardent sound the same.",
+          "-ez goes only with vous, -ons only with nous.",
+          "A noun subject counts as il/elle or ils/elles: mes parents takes the ils ending."
+        ]
+      },
+      {
+        "id": "elision",
+        "title": "Je or j’?",
+        "text": "Je keeps its e in front of a consonant and loses it in front of a vowel sound. A silent h counts as a vowel sound.",
+        "table": {
+          "columns": [
+            "The verb",
+            "je becomes",
+            "Example"
+          ],
+          "rows": [
+            [
+              "starts with a consonant",
+              "je",
+              "je parle, je danse"
+            ],
+            [
+              "starts with a vowel",
+              "j’",
+              "j’aime, j’arrive, j’écoute"
+            ],
+            [
+              "starts with a silent h",
+              "j’",
+              "j’habite, j’hésite"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the first letter of the verb, not at its meaning.",
+          "A, e, i, o, u or a silent h: write j’ glued to the verb, with no space.",
+          "Keep the je ending -e on the verb itself."
+        ],
+        "examples": [
+          {
+            "fr": "J’aime la musique.",
+            "en": "I love music."
+          },
+          {
+            "fr": "J’écoute la radio.",
+            "en": "I listen to the radio."
+          },
+          {
+            "fr": "Je parle espagnol.",
+            "en": "I speak Spanish."
+          }
+        ],
+        "watch": [
+          "The apostrophe replaces the e: j’arrive, never je’arrive and never j’ arrive.",
+          "The elision changes nothing else: the ending stays -e for je."
+        ]
+      },
+      {
+        "id": "spelling-nous",
+        "title": "-ger and -cer: what happens with nous",
+        "text": "Before o, a g and a c would harden. The nous form of these verbs adds a letter so the verb keeps the sound of its infinitive.",
+        "table": {
+          "columns": [
+            "Infinitive",
+            "nous form",
+            "What keeps the sound"
+          ],
+          "rows": [
+            [
+              "manger",
+              "nous mangeons",
+              "the e keeps the g soft"
+            ],
+            [
+              "nager",
+              "nous nageons",
+              "the e keeps the g soft"
+            ],
+            [
+              "ranger",
+              "nous rangeons",
+              "the e keeps the g soft"
+            ],
+            [
+              "voyager",
+              "nous voyageons",
+              "the e keeps the g soft"
+            ],
+            [
+              "commencer",
+              "nous commençons",
+              "the cedilla keeps the c soft"
+            ],
+            [
+              "avancer",
+              "nous avançons",
+              "the cedilla keeps the c soft"
+            ],
+            [
+              "placer",
+              "nous plaçons",
+              "the cedilla keeps the c soft"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the infinitive: does it end in -ger or in -cer?",
+          "-ger: keep an e before -ons.",
+          "-cer: put a cedilla on the c before -ons.",
+          "Only the nous form changes; je, tu, il, vous and ils are spelled as usual."
+        ],
+        "examples": [
+          {
+            "fr": "Nous mangeons à midi.",
+            "en": "We eat at noon."
+          },
+          {
+            "fr": "Nous commençons à huit heures.",
+            "en": "We start at eight."
+          }
+        ],
+        "watch": [
+          "The e and the cedilla are not endings: the ending is still -ons.",
+          "Do not swap the two tricks: manger never takes a cedilla, commencer never takes an e there."
+        ]
+      },
+      {
+        "id": "stem-accent",
+        "title": "Verbs that take è: acheter, lever, préférer",
+        "text": "When the ending is silent (je, tu, il/elle, ils/elles), the last vowel of the stem is stressed and written with a grave accent. With nous and vous the ending is heard and the stem goes back to the spelling of the infinitive.",
+        "table": {
+          "columns": [
+            "Infinitive",
+            "je, tu, il, ils",
+            "nous, vous"
+          ],
+          "rows": [
+            [
+              "acheter",
+              "j’achète, ils achètent",
+              "nous achetons, vous achetez"
+            ],
+            [
+              "lever",
+              "je lève, elles lèvent",
+              "nous levons, vous levez"
+            ],
+            [
+              "préférer",
+              "je préfère, ils préfèrent",
+              "nous préférons, vous préférez"
+            ],
+            [
+              "espérer",
+              "j’espère, ils espèrent",
+              "nous espérons, vous espérez"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the ending first and ask: is it silent (-e, -es, -ent) or heard (-ons, -ez)?",
+          "Silent ending: put a grave accent on the last vowel of the stem.",
+          "Heard ending: keep the infinitive spelling.",
+          "In préférer and espérer only the second accent moves; the first é never changes."
+        ],
+        "examples": [
+          {
+            "fr": "Tu préfères le thé ?",
+            "en": "Do you prefer tea?"
+          },
+          {
+            "fr": "Elle lève la main.",
+            "en": "She raises her hand."
+          },
+          {
+            "fr": "Nous préférons la plage.",
+            "en": "We prefer the beach."
+          }
+        ],
+        "watch": [
+          "Four persons out of six take the accent; nous and vous are the two exceptions.",
+          "The accent and the elision are separate things: j’achète needs both."
+        ]
+      },
+      {
+        "id": "stem-double",
+        "title": "Verbs that double a letter: appeler, jeter",
+        "text": "Same idea, different spelling: before a silent ending appeler doubles its l and jeter doubles its t. Before -ons and -ez the letter stays single.",
+        "table": {
+          "columns": [
+            "Infinitive",
+            "je, tu, il, ils",
+            "nous, vous"
+          ],
+          "rows": [
+            [
+              "appeler",
+              "j’appelle, ils appellent",
+              "nous appelons, vous appelez"
+            ],
+            [
+              "jeter",
+              "je jette, ils jettent",
+              "nous jetons, vous jetez"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the ending and ask whether it is silent or pronounced.",
+          "Silent ending: double the last consonant of the stem.",
+          "-ons or -ez: keep a single consonant, as in the infinitive."
+        ],
+        "examples": [
+          {
+            "fr": "J’appelle le médecin.",
+            "en": "I am calling the doctor."
+          },
+          {
+            "fr": "Nous appelons un taxi.",
+            "en": "We are calling a taxi."
+          }
+        ],
+        "watch": [
+          "The doubling never reaches nous and vous.",
+          "The endings themselves do not change: -e, -es, -ent as usual."
+        ]
+      },
+      {
+        "id": "payer",
+        "title": "payer: two spellings are allowed",
+        "text": "Before a silent ending, payer may change its y into i. Both spellings are correct. Before -ons and -ez the y always stays.",
+        "table": {
+          "columns": [
+            "subject",
+            "form(s)",
+            "note"
+          ],
+          "rows": [
+            [
+              "je",
+              "je paie / je paye",
+              "silent ending: y or i"
+            ],
+            [
+              "tu",
+              "tu paies / tu payes",
+              "silent ending: y or i"
+            ],
+            [
+              "il / elle",
+              "il paie / il paye",
+              "silent ending: y or i"
+            ],
+            [
+              "nous",
+              "nous payons",
+              "-ons is heard, so the y stays"
+            ],
+            [
+              "vous",
+              "vous payez",
+              "-ez is heard, so the y stays"
+            ],
+            [
+              "ils / elles",
+              "ils paient / ils payent",
+              "silent ending: y or i"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject and write its ending.",
+          "Silent ending: write the stem with y or with i, both count.",
+          "-ons or -ez: keep the y."
+        ],
+        "examples": [
+          {
+            "fr": "Je paie par carte.",
+            "en": "I am paying by card."
+          },
+          {
+            "fr": "Nous payons l’addition.",
+            "en": "We are paying the bill."
+          }
+        ],
+        "watch": [
+          "There is no form with i before -ons or -ez.",
+          "Pick one spelling and keep it in the same sentence."
+        ]
+      },
+      {
+        "id": "aimer",
+        "title": "After aimer: a verb or a noun",
+        "text": "Aimer is followed either by a verb in the infinitive, with no word for “to”, or by a noun with le, la or les in front of it.",
+        "table": {
+          "columns": [
+            "After aimer",
+            "French",
+            "English"
+          ],
+          "rows": [
+            [
+              "a verb",
+              "J’aime danser.",
+              "I like dancing."
+            ],
+            [
+              "a noun",
+              "J’aime le chocolat.",
+              "I like chocolate."
+            ],
+            [
+              "a plural noun",
+              "J’aime les chiens.",
+              "I like dogs."
+            ]
+          ]
+        },
+        "steps": [
+          "Decide what follows: an action or a thing.",
+          "An action: leave that verb in its dictionary form, with no preposition.",
+          "A thing: put le, la or les in front of it, even when English has no word there.",
+          "Only aimer carries the subject’s ending."
+        ],
+        "examples": [
+          {
+            "fr": "Vous aimez voyager ?",
+            "en": "Do you like travelling?"
+          },
+          {
+            "fr": "Tu aimes le chocolat ?",
+            "en": "Do you like chocolate?"
+          }
+        ],
+        "watch": [
+          "Two conjugated verbs in a row is the classic slip: aimons cuisinons is impossible.",
+          "Du chocolat means some chocolate; liking it in general takes a different article."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "endings": {
+      "section": "endings",
+      "steps": [
+        "Find the subject, then remove -er from the infinitive.",
+        "Take the ending written on that subject’s row.",
+        "Check the ending really belongs to that person: -ons only with nous, -ez only with vous."
+      ]
+    },
+    "ils-ent": {
+      "section": "endings",
+      "steps": [
+        "Ask whether the subject is several people: ils, elles, or a plural noun.",
+        "Write the plural ending even though you hear nothing.",
+        "It is spelled with -ent; -ont belongs to avoir, être and faire."
+      ]
+    },
+    "elision-je": {
+      "section": "elision",
+      "steps": [
+        "Look at the first sound of the verb, not at its meaning.",
+        "Vowel or silent h: replace the e of je with an apostrophe and glue it to the verb.",
+        "Keep the je ending on the verb itself."
+      ]
+    },
+    "ger-ons": {
+      "section": "spelling-nous",
+      "steps": [
+        "Check that the infinitive ends in -ger.",
+        "For nous, keep the e of the stem before -ons so the g stays soft.",
+        "Spell every other person normally."
+      ]
+    },
+    "cer-cons": {
+      "section": "spelling-nous",
+      "steps": [
+        "Check that the infinitive ends in -cer.",
+        "For nous, put a cedilla under the c before -ons.",
+        "Do not add an e as well: that trick belongs to -ger verbs."
+      ]
+    },
+    "accent-grave": {
+      "section": "stem-accent",
+      "steps": [
+        "Write the ending first and ask whether it is silent.",
+        "Silent ending: put a grave accent on the last vowel of the stem.",
+        "Heard ending (-ons, -ez): keep the spelling of the infinitive."
+      ]
+    },
+    "double-consonant": {
+      "section": "stem-double",
+      "steps": [
+        "Write the ending and ask whether it is silent.",
+        "Silent ending: double the last consonant of the stem.",
+        "-ons or -ez: keep a single consonant."
+      ]
+    },
+    "payer": {
+      "section": "payer",
+      "steps": [
+        "Find the subject and write its ending.",
+        "Silent ending: the y may become i, and both spellings count.",
+        "-ons or -ez: keep the y."
+      ]
+    },
+    "aimer-infinitive": {
+      "section": "aimer",
+      "steps": [
+        "Conjugate only aimer, for its own subject.",
+        "If an action follows, leave it in the infinitive with no preposition.",
+        "If a thing follows, put le, la or les in front of it."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "present-er-endings-1",
@@ -21,7 +500,44 @@
       ],
       "hint": "Start from the stem parl-. Which ending goes with vous?",
       "feedback": "Remove -er and add the vous ending.",
-      "explanation": "Vous parlez: parl- + -ez."
+      "explanation": "Vous parlez: parl- + -ez.",
+      "mistakes": [
+        {
+          "answers": [
+            "parles",
+            "tu parles"
+          ],
+          "why": "Parles is the tu ending, for one person you are close to. The subject asked for is the polite or plural you."
+        },
+        {
+          "answers": [
+            "parle",
+            "je parle"
+          ],
+          "why": "Parle is the je and il/elle form, one single person. The subject here is a different person of the verb."
+        },
+        {
+          "answers": [
+            "parlons",
+            "nous parlons"
+          ],
+          "why": "Parlons is the nous form: it includes the speaker. Vous is the group you are speaking to, not the one you belong to."
+        },
+        {
+          "answers": [
+            "parlent",
+            "ils parlent"
+          ],
+          "why": "Parlent is the ils/elles ending, for people you are talking about, not for people you address."
+        },
+        {
+          "answers": [
+            "parler"
+          ],
+          "why": "Parler is the infinitive, the dictionary form. A subject needs a conjugated ending instead of -er."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "present-er-endings-2",
@@ -34,7 +550,40 @@
       ],
       "hint": "The tu ending is silent but written.",
       "feedback": "Tu forms of -er verbs end in -es.",
-      "explanation": "Tu regardes: regard- + -es."
+      "explanation": "Tu regardes: regard- + -es.",
+      "mistakes": [
+        {
+          "answers": [
+            "regarde"
+          ],
+          "why": "That is the je and il/elle form. Tu has a written ending of its own, even though it sounds exactly the same."
+        },
+        {
+          "answers": [
+            "regardez"
+          ],
+          "why": "Regardez is the vous ending, for the polite or plural you. Tu is one person you know well."
+        },
+        {
+          "answers": [
+            "regardent"
+          ],
+          "why": "Regardent is the ils/elles ending, for several people."
+        },
+        {
+          "answers": [
+            "regardons"
+          ],
+          "why": "Regardons is the nous form and includes the speaker; the subject here is only tu."
+        },
+        {
+          "answers": [
+            "regarder"
+          ],
+          "why": "Regarder is the infinitive. Once a subject is there, the verb has to carry an ending."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "present-er-endings-3",
@@ -53,7 +602,28 @@
       ],
       "hint": "Look for the nous ending.",
       "feedback": "Nous forms end in -ons.",
-      "explanation": "Nous jouons: jou- + -ons."
+      "explanation": "Nous jouons: jou- + -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "jouez"
+          ],
+          "why": "Jouez is the vous ending: it speaks to other people. Nous means we, the group the speaker belongs to."
+        },
+        {
+          "answers": [
+            "jouent"
+          ],
+          "why": "Jouent is the ils/elles ending, for people being talked about, not for a group that includes the speaker."
+        },
+        {
+          "answers": [
+            "joue"
+          ],
+          "why": "Joue is the je and il/elle form, one single person. Nous is plural and has its own ending."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "present-er-endings-4",
@@ -73,7 +643,22 @@
       ],
       "hint": "Plural you is vous. Pick its ending.",
       "feedback": "One verb tile has the ils ending.",
-      "explanation": "Vous travaillez: travaill- + -ez."
+      "explanation": "Vous travaillez: travaill- + -ez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous travaillent à Paris."
+          ],
+          "why": "Travaillent is the ils/elles ending, for people you talk about. The subject tile addresses them directly, so the verb needs the matching ending."
+        },
+        {
+          "answers": [
+            "Vous travaillez Paris."
+          ],
+          "why": "Travailler needs à in front of a town: working somewhere is never expressed without it."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "present-er-endings-5",
@@ -87,7 +672,34 @@
       ],
       "hint": "The il ending of -er verbs is the same as the je ending. Languages are lowercase.",
       "feedback": "Use the il form of parler.",
-      "explanation": "Il parle espagnol: parl- + -e. Il parle l’espagnol is also correct."
+      "explanation": "Il parle espagnol: parl- + -e. Il parle l’espagnol is also correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il parles espagnol."
+          ],
+          "why": "Parles is the tu ending. Il is one person being talked about, so the verb takes the third-person ending."
+        },
+        {
+          "answers": [
+            "Il parle espagnole."
+          ],
+          "why": "Espagnole with an e is the feminine adjective, as in une chanteuse espagnole. The language itself is not spelled that way."
+        },
+        {
+          "answers": [
+            "Il parle en espagnol."
+          ],
+          "why": "En espagnol means “in Spanish”, the language something is said in. Naming the language you speak needs no en."
+        },
+        {
+          "answers": [
+            "Il parle le espagnol."
+          ],
+          "why": "Le cannot stay whole in front of a vowel; it loses its e and takes an apostrophe."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "present-er-endings-6",
@@ -100,7 +712,34 @@
       ],
       "hint": "Swap the je ending for the vous ending.",
       "feedback": "The vous form ends in -ez.",
-      "explanation": "Vous chantez bien: chant- + -ez."
+      "explanation": "Vous chantez bien: chant- + -ez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous chante bien."
+          ],
+          "why": "Chante is the je and il/elle form, one single person. The new subject is plural or polite you."
+        },
+        {
+          "answers": [
+            "Vous chantes bien."
+          ],
+          "why": "Chantes is the tu ending, for one person you know well, not for the subject you were asked to use."
+        },
+        {
+          "answers": [
+            "Vous chantent bien."
+          ],
+          "why": "Chantent is the ils/elles ending, for people being talked about, not for people being addressed."
+        },
+        {
+          "answers": [
+            "Vous chantons bien."
+          ],
+          "why": "Chantons is the nous form and includes the speaker. The subject changed to the person spoken to."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "present-er-ils-ent-1",
@@ -119,7 +758,28 @@
       ],
       "hint": "Mes parents means ils. Which ending goes with ils?",
       "feedback": "The ils ending of -er verbs is written -ent and is silent.",
-      "explanation": "Mes parents habitent: habit- + -ent."
+      "explanation": "Mes parents habitent: habit- + -ent.",
+      "mistakes": [
+        {
+          "answers": [
+            "habitont"
+          ],
+          "why": "There is no -ont ending on -er verbs. You are thinking of ils ont and ils sont, which belong to avoir and être."
+        },
+        {
+          "answers": [
+            "habites"
+          ],
+          "why": "Habites is the tu ending, for one person. Mes parents is several people."
+        },
+        {
+          "answers": [
+            "habitez"
+          ],
+          "why": "Habitez is the vous ending, used when you speak to people. Here the people are being talked about."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "present-er-ils-ent-2",
@@ -132,7 +792,40 @@
       ],
       "hint": "The elles ending is silent but has three letters.",
       "feedback": "Elles takes the same ending as ils.",
-      "explanation": "Elles écoutent: écout- + -ent."
+      "explanation": "Elles écoutent: écout- + -ent.",
+      "mistakes": [
+        {
+          "answers": [
+            "écoute"
+          ],
+          "why": "That is the je and il/elle form, one person. Elles is plural, and the plural ending is longer even though it sounds the same."
+        },
+        {
+          "answers": [
+            "écoutes"
+          ],
+          "why": "Écoutes is the tu ending, for one person you know well."
+        },
+        {
+          "answers": [
+            "écoutons"
+          ],
+          "why": "Écoutons is the nous form: it includes the speaker, which elles does not."
+        },
+        {
+          "answers": [
+            "écoutez"
+          ],
+          "why": "Écoutez is the vous ending, addressed to someone. Elles are being talked about."
+        },
+        {
+          "answers": [
+            "écoutont"
+          ],
+          "why": "There is no -ont ending on -er verbs; -ont belongs to ils ont and ils font."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "present-er-ils-ent-3",
@@ -145,7 +838,40 @@
       ],
       "hint": "-ons belongs to nous.",
       "feedback": "Ils needs its own ending.",
-      "explanation": "Ils dansent: the ils ending is -ent, and it is silent."
+      "explanation": "Ils dansent: the ils ending is -ent, and it is silent.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils dansons ensemble."
+          ],
+          "why": "That is the sentence unchanged. Dansons is the nous form, which includes the speaker; the subject here is a group being talked about."
+        },
+        {
+          "answers": [
+            "Ils danse ensemble."
+          ],
+          "why": "Danse is the singular form. Ils is plural and adds a written ending you cannot hear."
+        },
+        {
+          "answers": [
+            "Ils dansont ensemble."
+          ],
+          "why": "-ont is not an -er ending; it belongs to ils ont and ils sont."
+        },
+        {
+          "answers": [
+            "Nous dansons ensemble."
+          ],
+          "why": "That changes the subject instead of the verb, and the instruction is to keep ils."
+        },
+        {
+          "answers": [
+            "Ils dansez ensemble."
+          ],
+          "why": "Dansez is the vous ending, used when speaking to people, not when talking about them."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "present-er-ils-ent-4",
@@ -158,7 +884,34 @@
       ],
       "hint": "The verb sounds the same, but the spelling changes.",
       "feedback": "Add the written plural ending to the verb.",
-      "explanation": "Ils regardent: regarde and regardent sound the same, but ils needs -ent."
+      "explanation": "Ils regardent: regarde and regardent sound the same, but ils needs -ent.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils regarde un film."
+          ],
+          "why": "That is still the singular form. French writes a plural ending on the verb even when nothing changes in the sound."
+        },
+        {
+          "answers": [
+            "Ils regardes un film."
+          ],
+          "why": "Regardes is the tu ending, for one person you know well; the new subject is plural."
+        },
+        {
+          "answers": [
+            "Ils regardont un film."
+          ],
+          "why": "-ont is not an -er verb ending. It belongs to ils ont, ils sont, ils font."
+        },
+        {
+          "answers": [
+            "Il regardent un film."
+          ],
+          "why": "The subject was left singular. Making it plural means writing its s as well as changing the verb."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "present-er-ils-ent-5",
@@ -172,7 +925,44 @@
       ],
       "hint": "The ils ending is silent but written.",
       "feedback": "The ils ending of -er verbs is not -ont.",
-      "explanation": "Ils donnent: donn- + -ent."
+      "explanation": "Ils donnent: donn- + -ent.",
+      "mistakes": [
+        {
+          "answers": [
+            "donnont",
+            "ils donnont"
+          ],
+          "why": "-ont is not an -er ending; ont and sont are forms of avoir and être."
+        },
+        {
+          "answers": [
+            "donne",
+            "il donne"
+          ],
+          "why": "That is the singular form for je and il/elle. The subject asked for is plural."
+        },
+        {
+          "answers": [
+            "donnes",
+            "tu donnes"
+          ],
+          "why": "Donnes is the tu ending, for one person you know well."
+        },
+        {
+          "answers": [
+            "donnons",
+            "nous donnons"
+          ],
+          "why": "Donnons is the nous form and includes the speaker."
+        },
+        {
+          "answers": [
+            "donner"
+          ],
+          "why": "Donner is the infinitive; a subject calls for a conjugated ending."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "present-er-elision-je-1",
@@ -190,7 +980,22 @@
       ],
       "hint": "Habiter begins with a silent h.",
       "feedback": "Je changes before a vowel or a silent h, and the ending must match je.",
-      "explanation": "J’habite: je becomes j’ before the silent h of habite."
+      "explanation": "J’habite: je becomes j’ before the silent h of habite.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je habite"
+          ],
+          "why": "The h of habiter is silent, so the word begins with a vowel sound. Je cannot keep its e in front of one."
+        },
+        {
+          "answers": [
+            "J’habites"
+          ],
+          "why": "The apostrophe is right, but -es is the tu ending. The subject here is the speaker."
+        }
+      ],
+      "row": "starts with a silent h"
     },
     {
       "id": "present-er-elision-je-2",
@@ -210,7 +1015,22 @@
       ],
       "hint": "Aime begins with a vowel.",
       "feedback": "Je cannot stay whole before a vowel.",
-      "explanation": "J’aime la musique: je becomes j’ before aime."
+      "explanation": "J’aime la musique: je becomes j’ before aime.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je aime la musique."
+          ],
+          "why": "Aime begins with a vowel, so je cannot stay whole in front of it."
+        },
+        {
+          "answers": [
+            "J’aime musique."
+          ],
+          "why": "A French noun needs an article: liking something in general still takes le, la or les."
+        }
+      ],
+      "row": "starts with a vowel"
     },
     {
       "id": "present-er-elision-je-3",
@@ -223,7 +1043,28 @@
       ],
       "hint": "Look at the letter that starts the verb.",
       "feedback": "Je loses its e before a vowel.",
-      "explanation": "J’arrive: je becomes j’ before a vowel."
+      "explanation": "J’arrive: je becomes j’ before a vowel.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je arrive à huit heures."
+          ],
+          "why": "That is the sentence unchanged. Arrive begins with a vowel, and je never stands whole in front of one."
+        },
+        {
+          "answers": [
+            "J’arrives à huit heures."
+          ],
+          "why": "The apostrophe is fixed, but -es is the tu ending and the subject is the speaker."
+        },
+        {
+          "answers": [
+            "Je’arrive à huit heures."
+          ],
+          "why": "The apostrophe replaces the e of je, it is not added after it."
+        }
+      ],
+      "row": "starts with a vowel"
     },
     {
       "id": "present-er-elision-je-4",
@@ -236,7 +1077,28 @@
       ],
       "hint": "The verb begins with a vowel, so je changes. Écouter needs no word for “to”.",
       "feedback": "Check what happens to je before écoute.",
-      "explanation": "J’écoute la radio: j’ before a vowel, and écouter takes a direct object."
+      "explanation": "J’écoute la radio: j’ before a vowel, and écouter takes a direct object.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je écoute la radio."
+          ],
+          "why": "Écoute begins with a vowel, so je has to lose its e in front of it."
+        },
+        {
+          "answers": [
+            "J’écoute à la radio."
+          ],
+          "why": "Écouter takes its object directly: there is no word for “to” after it in French."
+        },
+        {
+          "answers": [
+            "J’écoutes la radio."
+          ],
+          "why": "-es is the tu ending, for one person you know well; the subject is the speaker."
+        }
+      ],
+      "row": "starts with a vowel"
     },
     {
       "id": "present-er-elision-je-5",
@@ -249,7 +1111,28 @@
       ],
       "hint": "Oublie begins with a vowel.",
       "feedback": "Je changes before a vowel.",
-      "explanation": "J’oublie: je becomes j’ before oublie."
+      "explanation": "J’oublie: je becomes j’ before oublie.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je"
+          ],
+          "why": "Oublie begins with a vowel, and je drops its e in front of a vowel sound."
+        },
+        {
+          "answers": [
+            "J"
+          ],
+          "why": "The apostrophe is part of the short form; the bare letter is not a word."
+        },
+        {
+          "answers": [
+            "Je’"
+          ],
+          "why": "Only the e disappears: the apostrophe replaces it instead of being added to the whole word."
+        }
+      ],
+      "row": "starts with a vowel"
     },
     {
       "id": "present-er-ger-ons-1",
@@ -263,7 +1146,37 @@
       ],
       "hint": "Keep the g soft before -ons.",
       "feedback": "A g before o sounds hard. The nous form needs an extra letter to keep it soft.",
-      "explanation": "Nous mangeons: mange- + -ons. The e keeps the g soft."
+      "explanation": "Nous mangeons: mange- + -ons. The e keeps the g soft.",
+      "mistakes": [
+        {
+          "answers": [
+            "mangons",
+            "nous mangons"
+          ],
+          "why": "With no e, the g sits straight before o and is read hard, like the g of gare. Manger sounds soft and has to stay soft."
+        },
+        {
+          "answers": [
+            "mangeont",
+            "nous mangeont"
+          ],
+          "why": "-ont is not an -er verb ending; it belongs to ils ont and ils sont."
+        },
+        {
+          "answers": [
+            "mangent",
+            "nous mangent"
+          ],
+          "why": "Mangent is the ils/elles form. The subject asked for includes the speaker."
+        },
+        {
+          "answers": [
+            "manger"
+          ],
+          "why": "That is the infinitive; the question asks for a form that goes with a subject."
+        }
+      ],
+      "row": "manger"
     },
     {
       "id": "present-er-ger-ons-2",
@@ -276,7 +1189,34 @@
       ],
       "hint": "Nager is a -ger verb.",
       "feedback": "The nous form of a -ger verb keeps an e before -ons.",
-      "explanation": "Nous nageons: the e keeps the g soft before -ons."
+      "explanation": "Nous nageons: the e keeps the g soft before -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "nagons"
+          ],
+          "why": "Dropping the e puts the g straight before o, which makes it hard, as in gomme."
+        },
+        {
+          "answers": [
+            "nageont"
+          ],
+          "why": "-ont is not an -er verb ending; it belongs to ont and sont."
+        },
+        {
+          "answers": [
+            "nagent"
+          ],
+          "why": "Nagent is the ils/elles form, for several people being talked about."
+        },
+        {
+          "answers": [
+            "nagez"
+          ],
+          "why": "Nagez is the vous ending, addressed to other people; the subject here includes the speaker."
+        }
+      ],
+      "row": "nager"
     },
     {
       "id": "present-er-ger-ons-3",
@@ -294,7 +1234,22 @@
       ],
       "hint": "Ranger is a -ger verb.",
       "feedback": "Look for the form that keeps the g soft before -ons.",
-      "explanation": "Nous rangeons: -ger verbs keep an e before -ons."
+      "explanation": "Nous rangeons: -ger verbs keep an e before -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "rangons"
+          ],
+          "why": "With no e the g comes straight before o and is pronounced hard, unlike the g of ranger."
+        },
+        {
+          "answers": [
+            "rangeont"
+          ],
+          "why": "-ont is not an -er ending; it belongs to ils ont and ils sont."
+        }
+      ],
+      "row": "ranger"
     },
     {
       "id": "present-er-ger-ons-4",
@@ -307,7 +1262,28 @@
       ],
       "hint": "Say the verb aloud: the g should sound like the g in manger.",
       "feedback": "One letter is missing before -ons.",
-      "explanation": "Nous mangeons: -ger verbs keep the e before -ons."
+      "explanation": "Nous mangeons: -ger verbs keep the e before -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous mangons à midi."
+          ],
+          "why": "That is the sentence unchanged. Before o the g needs help to keep the soft sound of manger."
+        },
+        {
+          "answers": [
+            "Nous mangeont à midi."
+          ],
+          "why": "-ont is not an -er verb ending, and it does not belong to this subject."
+        },
+        {
+          "answers": [
+            "Nous mangions à midi."
+          ],
+          "why": "Mangions is the imperfect, for something that used to happen. The sentence is in the present."
+        }
+      ],
+      "row": "manger"
     },
     {
       "id": "present-er-ger-ons-5",
@@ -320,7 +1296,28 @@
       ],
       "hint": "Voyager is a -ger verb.",
       "feedback": "Remember the spelling of the nous form of a -ger verb.",
-      "explanation": "Nous voyageons beaucoup: voyage- + -ons."
+      "explanation": "Nous voyageons beaucoup: voyage- + -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous voyagons beaucoup."
+          ],
+          "why": "Without the e the g stands before o and hardens; the soft g of voyager has to be protected."
+        },
+        {
+          "answers": [
+            "Nous voyagent beaucoup."
+          ],
+          "why": "Voyagent is the ils/elles form, for people being talked about, not for a group that includes the speaker."
+        },
+        {
+          "answers": [
+            "Nous voyage beaucoup."
+          ],
+          "why": "Voyage is the singular form for je and il/elle; a plural subject needs its own ending."
+        }
+      ],
+      "row": "voyager"
     },
     {
       "id": "present-er-cer-cons-1",
@@ -335,7 +1332,37 @@
       "strictAccents": true,
       "hint": "Keep the c soft before -ons.",
       "feedback": "A c before o sounds like k. The nous form needs a special c.",
-      "explanation": "Nous commençons: ç keeps the soft s sound before o."
+      "explanation": "Nous commençons: ç keeps the soft s sound before o.",
+      "mistakes": [
+        {
+          "answers": [
+            "commencons",
+            "nous commencons"
+          ],
+          "why": "A plain c before o is read like a k, so this would sound like “commenkons”. The soft c of commencer needs its hook."
+        },
+        {
+          "answers": [
+            "commenceons",
+            "nous commenceons"
+          ],
+          "why": "Adding an e is what -ger verbs do. A c is kept soft a different way."
+        },
+        {
+          "answers": [
+            "commencent",
+            "nous commencent"
+          ],
+          "why": "Commencent is the ils/elles form; the subject asked for includes the speaker."
+        },
+        {
+          "answers": [
+            "commencer"
+          ],
+          "why": "That is the infinitive, not a form that goes with a subject."
+        }
+      ],
+      "row": "commencer"
     },
     {
       "id": "present-er-cer-cons-2",
@@ -349,7 +1376,34 @@
       "strictAccents": true,
       "hint": "Avancer is a -cer verb.",
       "feedback": "The nous form of a -cer verb needs a cedilla.",
-      "explanation": "Nous avançons: ç before -ons."
+      "explanation": "Nous avançons: ç before -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "avancons"
+          ],
+          "why": "A bare c before o is read like a k, which is not how avancer sounds."
+        },
+        {
+          "answers": [
+            "avanceons"
+          ],
+          "why": "The extra e is the trick of -ger verbs such as manger; a verb in -cer keeps its c soft another way."
+        },
+        {
+          "answers": [
+            "avancent"
+          ],
+          "why": "Avancent is the ils/elles form, for several people being talked about."
+        },
+        {
+          "answers": [
+            "avancez"
+          ],
+          "why": "Avancez is the vous ending, addressed to other people; here the speaker is part of the group."
+        }
+      ],
+      "row": "avancer"
     },
     {
       "id": "present-er-cer-cons-3",
@@ -367,7 +1421,22 @@
       ],
       "hint": "The c must sound like s.",
       "feedback": "Before o, a plain c sounds like k.",
-      "explanation": "Nous commençons: ç keeps the soft sound."
+      "explanation": "Nous commençons: ç keeps the soft sound.",
+      "mistakes": [
+        {
+          "answers": [
+            "commencons"
+          ],
+          "why": "Before o a bare c sounds like k, so this would be read “commenkons”."
+        },
+        {
+          "answers": [
+            "commenceons"
+          ],
+          "why": "An e before -ons is what -ger verbs need. A c is softened with a different mark."
+        }
+      ],
+      "row": "commencer"
     },
     {
       "id": "present-er-cer-cons-4",
@@ -381,7 +1450,34 @@
       "strictAccents": true,
       "hint": "Placer is a -cer verb.",
       "feedback": "The nous form of placer needs a cedilla.",
-      "explanation": "Nous plaçons: -cer verbs write ç before -ons."
+      "explanation": "Nous plaçons: -cer verbs write ç before -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous placons les verres sur la table."
+          ],
+          "why": "The c before o would be read like a k; placer keeps a soft c in every form."
+        },
+        {
+          "answers": [
+            "Nous placeons les verres sur la table."
+          ],
+          "why": "The added e belongs to -ger verbs such as manger, not to a verb in -cer."
+        },
+        {
+          "answers": [
+            "Nous place les verres sur la table."
+          ],
+          "why": "Place is the je and il/elle form; the new subject is plural and needs its own ending."
+        },
+        {
+          "answers": [
+            "Nous plaçont les verres sur la table."
+          ],
+          "why": "-ont is not an -er verb ending; it belongs to ont and sont."
+        }
+      ],
+      "row": "placer"
     },
     {
       "id": "present-er-accent-grave-1",
@@ -402,7 +1498,37 @@
       "strictAccents": true,
       "hint": "The stem changes when the ending is silent. Watch the elision too.",
       "feedback": "The e before t needs an accent in the je form.",
-      "explanation": "J’achète: è before a silent ending, and je becomes j’."
+      "explanation": "J’achète: è before a silent ending, and je becomes j’.",
+      "mistakes": [
+        {
+          "answers": [
+            "achete",
+            "j’achete"
+          ],
+          "why": "The ending is silent, so the e of the stem carries the sound and is pronounced open. French marks that sound with an accent."
+        },
+        {
+          "answers": [
+            "achètes",
+            "j’achètes"
+          ],
+          "why": "-es is the tu ending, for one person you know well; the subject asked for is the speaker."
+        },
+        {
+          "answers": [
+            "achetons",
+            "nous achetons"
+          ],
+          "why": "Achetons is the plural form that includes the speaker, and its ending is heard, so its stem stays plain."
+        },
+        {
+          "answers": [
+            "acheter"
+          ],
+          "why": "That is the infinitive; the question asks for a form that goes with a subject."
+        }
+      ],
+      "row": "acheter"
     },
     {
       "id": "present-er-accent-grave-2",
@@ -416,7 +1542,34 @@
       "strictAccents": true,
       "hint": "The second accent changes in the tu form.",
       "feedback": "Préférer changes one of its accents before a silent ending.",
-      "explanation": "Tu préfères: the second é becomes è."
+      "explanation": "Tu préfères: the second é becomes è.",
+      "mistakes": [
+        {
+          "answers": [
+            "préféres"
+          ],
+          "why": "The ending is silent here, so the second vowel of the stem is stressed and cannot keep the closed accent of the infinitive."
+        },
+        {
+          "answers": [
+            "préfère"
+          ],
+          "why": "That is the je and il/elle form. Tu adds a written ending you cannot hear."
+        },
+        {
+          "answers": [
+            "préférons"
+          ],
+          "why": "Préférons is the form for the group including the speaker, and its ending is heard, so both accents stay as in the infinitive."
+        },
+        {
+          "answers": [
+            "préférez"
+          ],
+          "why": "Préférez is the vous ending, polite or plural; tu is one person you know well."
+        }
+      ],
+      "row": "préférer"
     },
     {
       "id": "present-er-accent-grave-3",
@@ -434,7 +1587,22 @@
       ],
       "hint": "Lever changes its stem before a silent ending.",
       "feedback": "The il/elle form of lever needs an accent.",
-      "explanation": "Elle lève la main: e becomes è before a silent ending."
+      "explanation": "Elle lève la main: e becomes è before a silent ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "leve"
+          ],
+          "why": "With no accent the e before v is read weak and almost silent. Before a silent ending that vowel is stressed and must be marked."
+        },
+        {
+          "answers": [
+            "lèvent"
+          ],
+          "why": "Lèvent is the ils/elles form, for several people. Elle is one person."
+        }
+      ],
+      "row": "lever"
     },
     {
       "id": "present-er-accent-grave-4",
@@ -448,7 +1616,28 @@
       "strictAccents": true,
       "hint": "The ils ending is silent, so the stem changes.",
       "feedback": "A letter in the stem needs an accent.",
-      "explanation": "Ils achètent: è before the silent -ent."
+      "explanation": "Ils achètent: è before the silent -ent.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils achetent des fruits au marché."
+          ],
+          "why": "That is the sentence unchanged. The -ent ending is silent, so the e of the stem carries the sound and needs its mark."
+        },
+        {
+          "answers": [
+            "Ils achètes des fruits au marché."
+          ],
+          "why": "-es is the tu ending, for one person you know well; the subject is plural."
+        },
+        {
+          "answers": [
+            "Ils achète des fruits au marché."
+          ],
+          "why": "That is the singular form. A plural subject also needs the written plural ending."
+        }
+      ],
+      "row": "acheter"
     },
     {
       "id": "present-er-accent-grave-5",
@@ -462,7 +1651,34 @@
       "strictAccents": true,
       "hint": "With nous, the ending is not silent.",
       "feedback": "The nous form keeps the accents of the infinitive.",
-      "explanation": "Nous préférons: no stem change with nous, so both accents stay é."
+      "explanation": "Nous préférons: no stem change with nous, so both accents stay é.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous préfèrons la plage."
+          ],
+          "why": "The grave accent appears only when the ending is silent. This ending is pronounced, so the stem keeps the accents of the infinitive."
+        },
+        {
+          "answers": [
+            "Nous preferons la plage."
+          ],
+          "why": "Préférer keeps both of its accents in this form; without them the word is read differently."
+        },
+        {
+          "answers": [
+            "Nous préférez la plage."
+          ],
+          "why": "Préférez is the vous ending, for the people you address, not for the group that includes the speaker."
+        },
+        {
+          "answers": [
+            "Nous préférons le plage."
+          ],
+          "why": "Plage is feminine: une plage, so the article is wrong."
+        }
+      ],
+      "row": "préférer"
     },
     {
       "id": "present-er-double-consonant-1",
@@ -482,7 +1698,37 @@
       ],
       "hint": "Appeler doubles a letter before a silent ending. Watch the elision.",
       "feedback": "The l doubles in the je form.",
-      "explanation": "J’appelle: ll before the silent -e, and je becomes j’."
+      "explanation": "J’appelle: ll before the silent -e, and je becomes j’.",
+      "mistakes": [
+        {
+          "answers": [
+            "appele",
+            "j’appele"
+          ],
+          "why": "A single l is the spelling used when the ending is heard. Before a silent ending the stem of appeler is written stronger."
+        },
+        {
+          "answers": [
+            "appelles",
+            "j’appelles"
+          ],
+          "why": "-es is the tu ending, for one person you know well; the question asks for the speaker."
+        },
+        {
+          "answers": [
+            "appelons",
+            "nous appelons"
+          ],
+          "why": "Appelons is the plural form including the speaker, and its ending is pronounced, so its stem keeps one l."
+        },
+        {
+          "answers": [
+            "appeler"
+          ],
+          "why": "That is the infinitive, not a form that goes with a subject."
+        }
+      ],
+      "row": "appeler"
     },
     {
       "id": "present-er-double-consonant-2",
@@ -495,7 +1741,40 @@
       ],
       "hint": "Jeter doubles a letter before a silent ending.",
       "feedback": "The t doubles in the ils form.",
-      "explanation": "Ils jettent: tt before the silent -ent."
+      "explanation": "Ils jettent: tt before the silent -ent.",
+      "mistakes": [
+        {
+          "answers": [
+            "jetent"
+          ],
+          "why": "One t is the spelling used when the ending is heard. This ending is silent, so the stem of jeter is written stronger."
+        },
+        {
+          "answers": [
+            "jette"
+          ],
+          "why": "That is the singular form, for je and il/elle. A plural subject adds a written plural ending."
+        },
+        {
+          "answers": [
+            "jettes"
+          ],
+          "why": "-es is the tu ending, for one person you know well."
+        },
+        {
+          "answers": [
+            "jettont"
+          ],
+          "why": "-ont is not an -er verb ending; it belongs to ont and sont."
+        },
+        {
+          "answers": [
+            "jetons"
+          ],
+          "why": "Jetons is the form for the group including the speaker, and its ending is pronounced, so the t stays single."
+        }
+      ],
+      "row": "jeter"
     },
     {
       "id": "present-er-double-consonant-3",
@@ -513,7 +1792,22 @@
       ],
       "hint": "With nous, the ending is not silent.",
       "feedback": "The doubling only happens before a silent ending.",
-      "explanation": "Nous appelons: one l, because -ons is pronounced."
+      "explanation": "Nous appelons: one l, because -ons is pronounced.",
+      "mistakes": [
+        {
+          "answers": [
+            "appellons"
+          ],
+          "why": "The doubling happens only when the ending is silent. This ending is pronounced, so the stem keeps its infinitive spelling."
+        },
+        {
+          "answers": [
+            "appelez"
+          ],
+          "why": "Appelez is the vous ending, addressed to other people. The subject here includes the speaker."
+        }
+      ],
+      "row": "appeler"
     },
     {
       "id": "present-er-double-consonant-4",
@@ -533,7 +1827,22 @@
       ],
       "hint": "Jeter doubles its consonant before a silent ending.",
       "feedback": "One verb tile is missing a letter.",
-      "explanation": "Je jette: tt before the silent -e."
+      "explanation": "Je jette: tt before the silent -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je jete le ballon."
+          ],
+          "why": "A single t belongs to the forms whose ending is heard. Here the ending is silent, so the stem is written stronger."
+        },
+        {
+          "answers": [
+            "Je le jette ballon."
+          ],
+          "why": "Le is the article of ballon and stays in front of it. Put before the verb, le becomes a pronoun meaning “it”, and the noun is left bare."
+        }
+      ],
+      "row": "jeter"
     },
     {
       "id": "present-er-double-consonant-5",
@@ -546,7 +1855,28 @@
       ],
       "hint": "The ending becomes silent, so the stem changes.",
       "feedback": "Appeler doubles its l before a silent ending.",
-      "explanation": "Elle appelle un taxi: ll before the silent -e."
+      "explanation": "Elle appelle un taxi: ll before the silent -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle appele un taxi."
+          ],
+          "why": "A single l goes with the forms whose ending is heard. The new ending is silent, so the stem changes."
+        },
+        {
+          "answers": [
+            "Elle appelles un taxi."
+          ],
+          "why": "-es is the tu ending, for the person you are talking to; elle is a person being talked about."
+        },
+        {
+          "answers": [
+            "Elle appelons un taxi."
+          ],
+          "why": "That still carries the plural ending of the old subject, which included the speaker."
+        }
+      ],
+      "row": "appeler"
     },
     {
       "id": "present-er-payer-1",
@@ -562,7 +1892,41 @@
       ],
       "hint": "Payer has two accepted spellings in this form.",
       "feedback": "Before a silent ending, payer can change one letter.",
-      "explanation": "Je paie (or je paye): y can become i before a silent ending."
+      "explanation": "Je paie (or je paye): y can become i before a silent ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "paies",
+            "je paies",
+            "payes",
+            "je payes"
+          ],
+          "why": "-es is the tu ending, for one person you know well; the question asks for the speaker."
+        },
+        {
+          "answers": [
+            "paient",
+            "ils paient",
+            "payent",
+            "ils payent"
+          ],
+          "why": "-ent is the ils/elles ending, for several people."
+        },
+        {
+          "answers": [
+            "payons",
+            "nous payons"
+          ],
+          "why": "Payons is the plural form including the speaker, and its ending is pronounced."
+        },
+        {
+          "answers": [
+            "payer"
+          ],
+          "why": "That is the infinitive; a subject calls for a conjugated form."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "present-er-payer-2",
@@ -576,7 +1940,36 @@
       ],
       "hint": "Before a silent ending, payer may change a letter.",
       "feedback": "Use the tu ending -es.",
-      "explanation": "Tu paies (or tu payes): both spellings are correct."
+      "explanation": "Tu paies (or tu payes): both spellings are correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "paie",
+            "paye"
+          ],
+          "why": "Those are the je and il/elle forms. Tu adds a written ending that you cannot hear."
+        },
+        {
+          "answers": [
+            "payez"
+          ],
+          "why": "Payez is the vous ending, polite or plural; tu is one person you know well."
+        },
+        {
+          "answers": [
+            "paient",
+            "payent"
+          ],
+          "why": "-ent is the ils/elles ending, for several people."
+        },
+        {
+          "answers": [
+            "payons"
+          ],
+          "why": "Payons is the form for a group including the speaker, and its ending is pronounced."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "present-er-payer-3",
@@ -594,7 +1987,22 @@
       ],
       "hint": "With nous, the ending is pronounced.",
       "feedback": "The y changes only before a silent ending.",
-      "explanation": "Nous payons: y stays before -ons."
+      "explanation": "Nous payons: y stays before -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "paions"
+          ],
+          "why": "The y turns into i only before a silent ending. This ending is pronounced, so the stem keeps its y."
+        },
+        {
+          "answers": [
+            "paient"
+          ],
+          "why": "Paient is the ils/elles form, for several people being talked about."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "present-er-payer-4",
@@ -608,7 +2016,28 @@
       ],
       "hint": "Payer may change a letter before the silent ils ending.",
       "feedback": "Use the ils form of payer.",
-      "explanation": "Ils paient le loyer (or ils payent): both spellings are correct."
+      "explanation": "Ils paient le loyer (or ils payent): both spellings are correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils paye le loyer."
+          ],
+          "why": "That is the singular form, for one person. The subject is plural and needs the written plural ending."
+        },
+        {
+          "answers": [
+            "Ils payez le loyer."
+          ],
+          "why": "Payez is the vous ending, used when speaking to people; here they are being talked about."
+        },
+        {
+          "answers": [
+            "Ils paient la loyer."
+          ],
+          "why": "Loyer is masculine: un loyer, le loyer, so the article does not fit."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "present-er-aimer-infinitive-1",
@@ -626,7 +2055,22 @@
       ],
       "hint": "After aimer, the second verb is not conjugated.",
       "feedback": "Look for the infinitive.",
-      "explanation": "Elle aime danser: aimer + infinitive."
+      "explanation": "Elle aime danser: aimer + infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "danse"
+          ],
+          "why": "Danse is a conjugated form (je danse, elle danse). Two conjugated verbs cannot follow each other here."
+        },
+        {
+          "answers": [
+            "dansé"
+          ],
+          "why": "Dansé is the past participle, used with avoir for something already done: elle a dansé."
+        }
+      ],
+      "row": "a verb"
     },
     {
       "id": "present-er-aimer-infinitive-2",
@@ -646,7 +2090,22 @@
       ],
       "hint": "Only one verb is conjugated.",
       "feedback": "The verb after aimer stays in the infinitive.",
-      "explanation": "Nous aimons cuisiner: aimons is conjugated, cuisiner stays in the infinitive."
+      "explanation": "Nous aimons cuisiner: aimons is conjugated, cuisiner stays in the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous aimons cuisinons."
+          ],
+          "why": "The second tile is conjugated for the subject. Only the first verb of the pair carries the subject’s ending."
+        },
+        {
+          "answers": [
+            "Nous aimer cuisiner."
+          ],
+          "why": "The first verb is the one that must show the subject and the tense; left in its dictionary form it shows neither."
+        }
+      ],
+      "row": "a verb"
     },
     {
       "id": "present-er-aimer-infinitive-3",
@@ -660,7 +2119,34 @@
       ],
       "hint": "After aimer, a noun needs an article even when English has none.",
       "feedback": "Use the definite article before chocolat.",
-      "explanation": "J’aime le chocolat: aimer + le/la/les when talking about things in general."
+      "explanation": "J’aime le chocolat: aimer + le/la/les when talking about things in general.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’aime chocolat."
+          ],
+          "why": "A French noun cannot stand bare after the verb; it needs an article even where English has none."
+        },
+        {
+          "answers": [
+            "Je aime le chocolat."
+          ],
+          "why": "Aime starts with a vowel, so je has to lose its e in front of it."
+        },
+        {
+          "answers": [
+            "J’aime du chocolat."
+          ],
+          "why": "Du chocolat means some chocolate, a quantity of it. Liking something in general points at the thing as a whole."
+        },
+        {
+          "answers": [
+            "J’aimes le chocolat."
+          ],
+          "why": "-es is the tu ending, for the person you are talking to; the subject here is the speaker."
+        }
+      ],
+      "row": "a noun"
     },
     {
       "id": "present-er-aimer-infinitive-4",
@@ -674,7 +2160,34 @@
       ],
       "hint": "After aimer, use the infinitive, with no word for “to”.",
       "feedback": "Do not conjugate the second verb.",
-      "explanation": "Il aime nager: aimer + infinitive."
+      "explanation": "Il aime nager: aimer + infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il aime nage."
+          ],
+          "why": "Nage is a conjugated form (je nage, il nage). After aimer the second verb keeps its dictionary form."
+        },
+        {
+          "answers": [
+            "Il aime à nager."
+          ],
+          "why": "No preposition comes between aimer and the following verb; the English “to” has no equivalent here."
+        },
+        {
+          "answers": [
+            "Il aime de nager."
+          ],
+          "why": "Aimer takes the next verb directly, with no de and no other little word."
+        },
+        {
+          "answers": [
+            "Il aimes nager."
+          ],
+          "why": "-es is the tu ending, for the person you are talking to; il is a person being talked about."
+        }
+      ],
+      "row": "a verb"
     },
     {
       "id": "present-er-aimer-infinitive-5",
@@ -687,7 +2200,34 @@
       ],
       "hint": "Something is missing before chocolat.",
       "feedback": "After aimer, a noun takes a definite article.",
-      "explanation": "Tu aimes le chocolat ? Aimer + le/la/les + noun."
+      "explanation": "Tu aimes le chocolat ? Aimer + le/la/les + noun.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu aimes chocolat ?"
+          ],
+          "why": "That is the sentence unchanged. A noun cannot stand alone after aimer in French."
+        },
+        {
+          "answers": [
+            "Tu aimes du chocolat ?"
+          ],
+          "why": "Du chocolat is some chocolate, a portion of it. Saying what you like in general points at the thing as a whole."
+        },
+        {
+          "answers": [
+            "Tu aimes un chocolat ?"
+          ],
+          "why": "Un chocolat is one single chocolate, an item you could count, not chocolate in general."
+        },
+        {
+          "answers": [
+            "Tu aime le chocolat ?"
+          ],
+          "why": "The article is fixed, but the verb lost its tu ending: tu always writes -es on an -er verb."
+        }
+      ],
+      "row": "a noun"
     },
     {
       "id": "present-er-aimer-infinitive-6",
@@ -700,7 +2240,34 @@
       ],
       "hint": "Aimez is already conjugated.",
       "feedback": "The second verb stays in the infinitive.",
-      "explanation": "Vous aimez voyager ? Aimer + infinitive."
+      "explanation": "Vous aimez voyager ? Aimer + infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "voyagez"
+          ],
+          "why": "Aimez already carries the vous ending. The second verb does not repeat it."
+        },
+        {
+          "answers": [
+            "voyage"
+          ],
+          "why": "Voyage is a conjugated form (je voyage, il voyage). After aimer the verb stays in its dictionary form."
+        },
+        {
+          "answers": [
+            "voyagé"
+          ],
+          "why": "Voyagé is the past participle, for something already done: vous avez voyagé."
+        },
+        {
+          "answers": [
+            "à voyager"
+          ],
+          "why": "Aimer is followed by the next verb directly; the English “to” has no equivalent here."
+        }
+      ],
+      "row": "a verb"
     }
   ]
 }

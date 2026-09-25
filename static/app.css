@@ -235,3 +235,30 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .fr-text{font-size:22px}
 .fr-line p{font-size:18px}
 }
+.guide{display:flex;flex-direction:column;gap:20px}
+.guide-summary{color:var(--ink)}
+.guide-section{padding-top:18px;border-top:1px solid var(--frame)}
+.guide-section h3{font-size:16px;letter-spacing:-.2px;color:var(--ink);margin-bottom:6px}
+.guide-section.focus h3{color:var(--violet)}
+.guide-label,.fb-label{display:block;font-size:11.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--dim);margin:14px 0 6px}
+.guide-table-wrap{overflow-x:auto;margin:10px 0 4px}
+.guide-table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.45}
+.guide-table th,.guide-table td{padding:7px 10px 7px 0;text-align:left;vertical-align:top;border-bottom:1px solid var(--frame)}
+.guide-table thead th{font-size:12px;font-weight:550;color:var(--dim)}
+.guide-table tbody th{font-weight:500;color:var(--muted)}
+.guide-table td{color:var(--ink)}
+.guide-table tr.hit th,.guide-table tr.hit td{color:var(--violet);background:#aaa6e41a}
+.guide-table tr.hit th{box-shadow:inset 3px 0 0 var(--violet);padding-left:8px}
+.guide-steps,.guide-watch,.fb-steps ol{padding-left:20px;margin:0}
+.guide-steps li,.guide-watch li,.fb-steps li{margin-top:4px}
+.guide-examples p{display:flex;flex-direction:column;margin-top:10px}
+.guide-examples [lang=fr]{font-size:17px;color:var(--ink)}
+.guide-examples .en{font-size:13px;color:var(--muted)}
+.fb-compare{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.fb-compare p{display:flex;flex-direction:column}
+.fb-compare .fb-label{margin:8px 0 0}
+.fb-compare [lang=fr]{font-size:18px;color:var(--ink)}
+.fb-compare .fb-yours{color:var(--danger)}
+.fb-why{margin-top:10px;color:var(--ink)}
+.fb-steps,.fb-table{margin-top:4px;color:var(--muted)}
+.feedback .fb-table .guide-table{font-size:14px}

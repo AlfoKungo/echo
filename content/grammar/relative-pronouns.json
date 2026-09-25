@@ -5,9 +5,361 @@
   "title": "Qui, que, où, dont",
   "description": "Join two sentences with qui, que, où, dont, ce qui or ce que.",
   "mark": "qui · que",
-  "rule": "A relative pronoun joins two sentences by replacing a noun already mentioned. Use qui when it is the subject of the next verb (la femme qui parle); qui never elides (l’ami qui arrive). Use que when it is the direct object and the next verb has its own subject (le livre que je lis); que becomes qu’ before a vowel (l’homme qu’elle aime). Use où for a place or a time (la ville où j’habite, le jour où il est parti), and dont to replace de + noun (le film dont je parle, l’ami dont le frère est médecin). With no noun before it, say ce qui for a subject and ce que for an object (ce qui m’intéresse, ce que je veux). After a preposition, use qui for a person (la personne avec qui je travaille); que and dont never follow a preposition.",
-  "example": "C’est le livre que je lis. · La ville où j’habite est petite. · Voilà l’ami dont je parle.",
-  "aside": "After a preposition you will also meet lequel and laquelle (la personne avec laquelle je travaille); it is accepted here but not practised.",
+  "guide": {
+    "summary": "A relative pronoun glues two sentences into one by standing for a noun already said: the man who…, the book that…, the town where…, the friend whose… French picks between qui, que, où and dont by the job that word does in the second half, so this page gives you the test to run each time.",
+    "sections": [
+      {
+        "id": "qui-que",
+        "title": "Subject or object: qui or que?",
+        "text": "Both mean who, that or which. The choice has nothing to do with people or things: it depends on whether the pronoun is the subject of the next verb or its direct object.",
+        "table": {
+          "columns": [
+            "Pronoun",
+            "Its job",
+            "Example"
+          ],
+          "rows": [
+            [
+              "qui",
+              "subject of the next verb, which has no other subject",
+              "la femme qui parle"
+            ],
+            [
+              "que / qu’",
+              "direct object; the next verb already has its own subject",
+              "le livre que je lis"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the verb that comes just after the gap.",
+          "Look between the gap and that verb: is there already a subject (je, tu, elle, nous, Paul…)?",
+          "A subject is there: the pronoun is the direct object, so take the object row.",
+          "No subject there: the pronoun is doing the subject’s job, so take the subject row."
+        ],
+        "examples": [
+          {
+            "fr": "Le bus qui va à la gare est rouge.",
+            "en": "The bus that goes to the station is red."
+          },
+          {
+            "fr": "Le gâteau que tu fais sent bon.",
+            "en": "The cake you are making smells good."
+          }
+        ],
+        "watch": [
+          "English can drop “that” (the book I read); French never drops the pronoun.",
+          "Do not repeat the object after the object pronoun: not “le livre que je le lis”.",
+          "Do not add a subject after the subject pronoun: not “l’ami qui il arrive”."
+        ]
+      },
+      {
+        "id": "elision",
+        "title": "When does it become qu’?",
+        "text": "Only the object pronoun elides: before a vowel or a mute h it drops its e and joins the next word with an apostrophe. The subject pronoun never changes.",
+        "table": {
+          "columns": [
+            "Pronoun",
+            "Before a consonant",
+            "Before a vowel"
+          ],
+          "rows": [
+            [
+              "que (object)",
+              "que tu fais",
+              "qu’elle aime, qu’il veut"
+            ],
+            [
+              "qui (subject)",
+              "qui parle",
+              "qui arrive, qui aime"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide first whether the pronoun is the subject or the object of the next verb.",
+          "If it is the object one and the next word starts with a vowel, write qu’ glued to that word.",
+          "Leave the subject one untouched: its i stays before any letter."
+        ],
+        "examples": [
+          {
+            "fr": "Le film qu’il regarde est drôle.",
+            "en": "The film he is watching is funny."
+          },
+          {
+            "fr": "C’est l’ami qui arrive demain.",
+            "en": "That is the friend who arrives tomorrow."
+          }
+        ],
+        "watch": [
+          "“que il” and “que elle” are never written: the apostrophe form is one block, qu’il, qu’elle.",
+          "Seeing qu’ straight in front of a verb with no subject is the sign you needed the subject pronoun."
+        ]
+      },
+      {
+        "id": "ou",
+        "title": "Where and when: où",
+        "text": "Où replaces a place or a moment in time, preposition included: dans cette ville, à Paris, ce jour-là all disappear into it.",
+        "table": {
+          "columns": [
+            "It replaces",
+            "French",
+            "English"
+          ],
+          "rows": [
+            [
+              "a place",
+              "la ville où j’habite",
+              "the town where I live"
+            ],
+            [
+              "a time",
+              "le jour où il est parti",
+              "the day (when) he left"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the noun before the gap: is it a place (ville, café, parc) or a moment (jour, année, moment)?",
+          "Check the second sentence: was that noun used with dans, à, en or a time phrase rather than as a direct object?",
+          "If so, use où and drop the preposition — it is already inside the word."
+        ],
+        "examples": [
+          {
+            "fr": "Voici le parc où je cours le matin.",
+            "en": "This is the park where I run in the morning."
+          },
+          {
+            "fr": "C’est l’année où elle a eu son bac.",
+            "en": "That is the year she got her baccalaureate."
+          }
+        ],
+        "watch": [
+          "The accent is not decoration: ou without it means “or”.",
+          "Verbs like aller, habiter or dîner point to a place, not a direct object: “la plage que nous allons” is wrong.",
+          "English says “the day when/that”; French uses the same word as for “where”, never quand after a noun."
+        ]
+      },
+      {
+        "id": "dont",
+        "title": "The de pronoun: dont",
+        "text": "When the second sentence needs de before the noun — because of the verb, an expression, or possession — dont replaces de + that noun.",
+        "table": {
+          "columns": [
+            "Expression with de",
+            "With dont"
+          ],
+          "rows": [
+            [
+              "parler de",
+              "le film dont je parle"
+            ],
+            [
+              "avoir besoin de",
+              "l’outil dont j’ai besoin"
+            ],
+            [
+              "rêver de",
+              "la ville dont je rêve"
+            ],
+            [
+              "avoir envie de",
+              "le gâteau dont j’ai envie"
+            ],
+            [
+              "s’occuper de",
+              "le projet dont je m’occupe"
+            ],
+            [
+              "possession: le frère de…",
+              "l’ami dont le frère est médecin"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the verb or expression in the second half: does it put de in front of its noun?",
+          "Possession counts as de too: le frère de cet ami, le fils de la femme.",
+          "Put dont straight after the noun, then keep the clause in normal order: subject, verb."
+        ],
+        "examples": [
+          {
+            "fr": "Voici l’outil dont j’ai besoin.",
+            "en": "Here is the tool I need."
+          },
+          {
+            "fr": "C’est la femme dont le fils est pilote.",
+            "en": "That is the woman whose son is a pilot."
+          }
+        ],
+        "watch": [
+          "No de left over: not “dont je parle de”, not “de dont”.",
+          "After it French keeps le/la: l’ami dont le frère…, never “dont son frère”.",
+          "Dont can never follow a preposition."
+        ]
+      },
+      {
+        "id": "ce-qui-ce-que",
+        "title": "No noun in front: ce qui, ce que",
+        "text": "When there is no noun for the pronoun to refer to — “what” in English — French adds ce. The subject/object test is the same as before.",
+        "table": {
+          "columns": [
+            "Job in the clause",
+            "Form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "subject of the verb",
+              "ce qui",
+              "ce qui m’intéresse"
+            ],
+            [
+              "direct object",
+              "ce que / ce qu’",
+              "ce que je veux"
+            ],
+            [
+              "after a verb with de",
+              "ce dont",
+              "ce dont j’ai besoin"
+            ]
+          ]
+        },
+        "steps": [
+          "Check in front of the gap: if there is no noun, the pronoun needs ce before it.",
+          "Then ask whether the following verb already has a subject, exactly as for qui and que.",
+          "In an indirect question (dis-moi…, je ne sais pas…), drop est-ce: qu’est-ce que becomes the two-word form."
+        ],
+        "examples": [
+          {
+            "fr": "Je ne comprends pas ce qui se passe.",
+            "en": "I don’t understand what is happening."
+          },
+          {
+            "fr": "Dis-moi ce que tu penses.",
+            "en": "Tell me what you think."
+          }
+        ],
+        "watch": [
+          "An object pronoun like me or te is not a subject: “ce ___ me plaît” still lacks one.",
+          "Qu’est-ce que belongs to direct questions only, never inside a longer sentence.",
+          "Ce que shortens to ce qu’ before a vowel: ce qu’il veut."
+        ]
+      },
+      {
+        "id": "after-preposition",
+        "title": "After a preposition",
+        "text": "French puts the preposition before the pronoun, never at the end of the clause. For a person, the form after a preposition is the same as the subject one.",
+        "table": {
+          "columns": [
+            "Preposition",
+            "With a person",
+            "English"
+          ],
+          "rows": [
+            [
+              "avec",
+              "la personne avec qui je travaille",
+              "the person I work with"
+            ],
+            [
+              "à",
+              "l’amie à qui j’écris",
+              "the friend I write to"
+            ],
+            [
+              "pour",
+              "l’homme pour qui je travaille",
+              "the man I work for"
+            ],
+            [
+              "chez",
+              "l’ami chez qui je dors",
+              "the friend whose place I sleep at"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the preposition the verb needs: parler avec, écrire à, travailler pour.",
+          "Move it in front of the pronoun — English leaves it at the end, French cannot.",
+          "For a person use qui; for a thing use lequel, laquelle, auquel, duquel."
+        ],
+        "examples": [
+          {
+            "fr": "Le collègue avec qui je déjeune s’appelle Marc.",
+            "en": "The colleague I have lunch with is called Marc."
+          },
+          {
+            "fr": "La table sur laquelle je travaille est vieille.",
+            "en": "The table I work on is old."
+          }
+        ],
+        "watch": [
+          "Que and dont can never follow a preposition: not “avec que”, not “de dont”.",
+          "Lequel and laquelle also work for people (la personne avec laquelle je travaille) and agree in gender.",
+          "For de + a person, French normally prefers dont: l’ami dont je parle."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "qui-subject": {
+      "section": "qui-que",
+      "steps": [
+        "Find the verb right after the gap.",
+        "Check whether a subject already stands between the gap and that verb.",
+        "If nothing else can be the subject, the pronoun is it: take the subject row of the table."
+      ]
+    },
+    "que-object": {
+      "section": "qui-que",
+      "steps": [
+        "Find the verb after the gap and name its subject.",
+        "If that subject is already written, the noun in front of the gap is the direct object.",
+        "Take the object row, then check the next letter in case it has to elide."
+      ]
+    },
+    "elision": {
+      "section": "elision",
+      "steps": [
+        "Decide first whether the pronoun is the subject or the object of the next verb.",
+        "Only the object one elides: before a vowel it drops its e and glues on with an apostrophe.",
+        "The subject one keeps its i before any letter, vowel or not."
+      ]
+    },
+    "ou-place-time": {
+      "section": "ou",
+      "steps": [
+        "Look at the noun before the gap: a place, or a moment in time?",
+        "Check that the second sentence used it with dans, à, en or a day/year phrase, not as a direct object.",
+        "Use the place-and-time pronoun, drop the preposition, and keep the accent."
+      ]
+    },
+    "dont": {
+      "section": "dont",
+      "steps": [
+        "Look at the verb or expression in the second half: does it need de before its noun?",
+        "Possession counts: le frère de cet ami, le fils de la femme.",
+        "Replace de + noun with the de-pronoun, right after the noun, then keep subject and verb in normal order."
+      ]
+    },
+    "ce-qui-ce-que": {
+      "section": "ce-qui-ce-que",
+      "steps": [
+        "Check in front of the gap: with no noun to refer to, the pronoun needs ce.",
+        "Then run the usual test: does the following verb already have a subject?",
+        "In an indirect question, est-ce disappears."
+      ]
+    },
+    "preposition-qui": {
+      "section": "after-preposition",
+      "steps": [
+        "Spot the preposition the verb needs and put it in front of the pronoun, never at the end.",
+        "For a person after a preposition, use the same form as the subject pronoun.",
+        "Remember the object pronoun and the de-pronoun can never follow a preposition."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "relative-pronouns-qui-subject-1",
@@ -20,7 +372,28 @@
       ],
       "hint": "In the second sentence, il is the subject of habite.",
       "feedback": "The pronoun replaces the subject il.",
-      "explanation": "Qui replaces the subject of the second verb: j’ai un ami qui habite à Rome."
+      "explanation": "Qui replaces the subject of the second verb: j’ai un ami qui habite à Rome.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai un ami que habite à Rome."
+          ],
+          "why": "Que is the direct-object form and needs its own subject after it, but habite has none: the friend is the one living there."
+        },
+        {
+          "answers": [
+            "J’ai un ami qu’habite à Rome."
+          ],
+          "why": "The apostrophe form is the object one shortened before a vowel; here habite has no other subject, so the pronoun is not the object."
+        },
+        {
+          "answers": [
+            "J’ai un ami qu’il habite à Rome."
+          ],
+          "why": "Keeping il gives habite two subjects. The pronoun has to replace il, not stand next to it."
+        }
+      ],
+      "row": "qui"
     },
     {
       "id": "relative-pronouns-qui-subject-2",
@@ -39,7 +412,28 @@
       ],
       "hint": "Who is doing the talking? Is the pronoun the subject of parle?",
       "feedback": "Parle has no other subject, so the pronoun must be the subject.",
-      "explanation": "The woman is the one who speaks, so the pronoun is the subject of parle: qui."
+      "explanation": "The woman is the one who speaks, so the pronoun is the subject of parle: qui.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Que marks the direct object and needs a subject of its own right after it; parle has none here."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont stands for de + a noun, as in parler de quelque chose. Here the verb is followed by avec Paul, not by de."
+        },
+        {
+          "answers": [
+            "où"
+          ],
+          "why": "Où points to a place or a moment. La femme is a person, and the gap is the missing subject of parle."
+        }
+      ],
+      "row": "qui"
     },
     {
       "id": "relative-pronouns-qui-subject-3",
@@ -52,7 +446,29 @@
       ],
       "hint": "Va needs a subject.",
       "feedback": "The bus does the going: it is the subject.",
-      "explanation": "Le bus is the subject of va, so the pronoun is qui: le bus qui va à la gare."
+      "explanation": "Le bus is the subject of va, so the pronoun is qui: le bus qui va à la gare.",
+      "mistakes": [
+        {
+          "answers": [
+            "que",
+            "qu’"
+          ],
+          "why": "Those are the direct-object forms: they need their own subject straight after them, and va has none."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont replaces de + a noun (parler de, avoir besoin de). Aller à la gare uses à, not de."
+        },
+        {
+          "answers": [
+            "où"
+          ],
+          "why": "La gare is the place, but the missing word is the subject of va, and the bus is what goes."
+        }
+      ],
+      "row": "qui"
     },
     {
       "id": "relative-pronouns-qui-subject-4",
@@ -66,7 +482,28 @@
       ],
       "hint": "Who sings? The girl, so the pronoun is the subject.",
       "feedback": "Use connaître for knowing a person, and a subject pronoun before chante.",
-      "explanation": "The girl is the subject of chante, so qui links the two: je connais la fille qui chante."
+      "explanation": "The girl is the subject of chante, so qui links the two: je connais la fille qui chante.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je connais la fille que chante."
+          ],
+          "why": "Que is the object form and needs a subject of its own after it; chante has none, since the girl is the one singing."
+        },
+        {
+          "answers": [
+            "Je connais la fille qu’elle chante."
+          ],
+          "why": "Adding elle gives chante two subjects, and it turns the sentence into “the girl that she sings”."
+        },
+        {
+          "answers": [
+            "Je sais la fille qui chante."
+          ],
+          "why": "Savoir is for facts and things you know how to do; knowing a person takes connaître."
+        }
+      ],
+      "row": "qui"
     },
     {
       "id": "relative-pronouns-qui-subject-5",
@@ -88,7 +525,22 @@
       ],
       "hint": "Ce film is the subject of finit.",
       "feedback": "The film does the ending, so use the subject pronoun.",
-      "explanation": "Qui replaces the subject ce film: c’est un film qui finit bien."
+      "explanation": "Qui replaces the subject ce film: c’est un film qui finit bien.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est un film que finit bien."
+          ],
+          "why": "Que is the object form and needs its own subject after it; finit has none, as the film is what ends."
+        },
+        {
+          "answers": [
+            "Un film qui finit bien."
+          ],
+          "why": "This drops c’est and leaves a bare noun phrase; the joined sentence still needs the opening the first sentence gave it."
+        }
+      ],
+      "row": "qui"
     },
     {
       "id": "relative-pronouns-qui-subject-6",
@@ -101,7 +553,28 @@
       ],
       "hint": "Does jouent have another subject?",
       "feedback": "The children do the playing, so the pronoun is the subject.",
-      "explanation": "Les enfants is the subject of jouent, so qui is needed: les enfants qui jouent dans le parc."
+      "explanation": "Les enfants is the subject of jouent, so qui is needed: les enfants qui jouent dans le parc.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les enfants que jouent dans le parc sont bruyants."
+          ],
+          "why": "This is the sentence unchanged. Que is the object form and needs a subject of its own after it, but jouent has none."
+        },
+        {
+          "answers": [
+            "Les enfants qu’ils jouent dans le parc sont bruyants."
+          ],
+          "why": "Adding ils gives jouent two subjects; the relative pronoun must replace that subject, not sit beside it."
+        },
+        {
+          "answers": [
+            "Les enfants dont jouent dans le parc sont bruyants."
+          ],
+          "why": "Dont stands for de + a noun, and jouer dans un parc contains no de."
+        }
+      ],
+      "row": "qui"
     },
     {
       "id": "relative-pronouns-que-object-1",
@@ -114,7 +587,28 @@
       ],
       "hint": "In the second sentence, ce livre is the direct object of lis; the new part goes right after le livre.",
       "feedback": "Je is already the subject, so the pronoun is the object.",
-      "explanation": "Que replaces the direct object and follows le livre: le livre que je lis est intéressant."
+      "explanation": "Que replaces the direct object and follows le livre: le livre que je lis est intéressant.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le livre qui je lis est intéressant."
+          ],
+          "why": "Qui is the subject form, but lis already has je as its subject; the book is what is read."
+        },
+        {
+          "answers": [
+            "Le livre que je le lis est intéressant."
+          ],
+          "why": "Le repeats the object the relative pronoun has already replaced. French keeps only one of the two."
+        },
+        {
+          "answers": [
+            "Le livre je lis est intéressant."
+          ],
+          "why": "English can drop “that”, French cannot: the two halves need a pronoun to join them."
+        }
+      ],
+      "row": "que / qu’"
     },
     {
       "id": "relative-pronouns-que-object-2",
@@ -133,7 +627,28 @@
       ],
       "hint": "Fais already has a subject: tu.",
       "feedback": "The cake is what you make, not the one making.",
-      "explanation": "Tu is the subject of fais and the cake is its direct object, so the pronoun is que."
+      "explanation": "Tu is the subject of fais and the cake is its direct object, so the pronoun is que.",
+      "mistakes": [
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "Qui does the subject’s job, but fais already has tu as its subject; the cake is what you make."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont replaces de + a noun (avoir besoin de, parler de). Faire un gâteau takes its object directly, with no de."
+        },
+        {
+          "answers": [
+            "où"
+          ],
+          "why": "Où points to a place or a time. Le gâteau is neither: it is what tu fais acts on."
+        }
+      ],
+      "row": "que / qu’"
     },
     {
       "id": "relative-pronouns-que-object-3",
@@ -146,7 +661,34 @@
       ],
       "hint": "Nous is the subject; what do we want to buy?",
       "feedback": "The house is the direct object of acheter.",
-      "explanation": "La maison is the direct object, so que joins it: la maison que nous voulons acheter."
+      "explanation": "La maison is the direct object, so que joins it: la maison que nous voulons acheter.",
+      "mistakes": [
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "Qui is the subject form, but acheter already has nous as its subject; la maison is what we want to buy."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont stands for de + a noun, and acheter takes its object directly, with no de."
+        },
+        {
+          "answers": [
+            "où"
+          ],
+          "why": "A house is a place in real life, but here it is what nous voulons acheter acts on, not where something happens."
+        },
+        {
+          "answers": [
+            "qu’"
+          ],
+          "why": "The shortened form is only written when a vowel follows, and nous starts with a consonant."
+        }
+      ],
+      "row": "que / qu’"
     },
     {
       "id": "relative-pronouns-que-object-4",
@@ -159,7 +701,28 @@
       ],
       "hint": "She is the subject; the coffee is what she drinks.",
       "feedback": "Use the object pronoun, and watch the vowel that follows it.",
-      "explanation": "Le café is the direct object of boit, so que, which elides before elle: le café qu’elle boit."
+      "explanation": "Le café is the direct object of boit, so que, which elides before elle: le café qu’elle boit.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le café que elle boit est fort."
+          ],
+          "why": "Que cannot stay whole in front of a vowel: elle begins with one, so the e must go and an apostrophe must join the two words."
+        },
+        {
+          "answers": [
+            "Le café qui elle boit est fort."
+          ],
+          "why": "Qui is the subject form, and elle is already the subject of boit; the coffee is what she drinks."
+        },
+        {
+          "answers": [
+            "Le café qu’elle le boit est fort."
+          ],
+          "why": "Le repeats the object the relative pronoun already stands for; only one of the two belongs there."
+        }
+      ],
+      "row": "que / qu’"
     },
     {
       "id": "relative-pronouns-que-object-5",
@@ -172,7 +735,28 @@
       ],
       "hint": "Écoute already has a subject.",
       "feedback": "The song is what I listen to, so it is the object.",
-      "explanation": "Je is the subject and la chanson the direct object, so the pronoun is que: la chanson que j’écoute."
+      "explanation": "Je is the subject and la chanson the direct object, so the pronoun is que: la chanson que j’écoute.",
+      "mistakes": [
+        {
+          "answers": [
+            "La chanson qui j’écoute est triste."
+          ],
+          "why": "This is the sentence unchanged: qui is the subject form, but écoute already has j’ as its subject."
+        },
+        {
+          "answers": [
+            "La chanson que je écoute est triste."
+          ],
+          "why": "The pronoun is fixed but je is not: it has to elide in front of the vowel of écoute."
+        },
+        {
+          "answers": [
+            "La chanson dont j’écoute est triste."
+          ],
+          "why": "Dont carries de, and écouter takes its object directly: on écoute une chanson."
+        }
+      ],
+      "row": "que / qu’"
     },
     {
       "id": "relative-pronouns-que-object-6",
@@ -194,7 +778,16 @@
       ],
       "hint": "Tu is the subject of portes.",
       "feedback": "The dress is what you wear, so use the object pronoun.",
-      "explanation": "Que replaces the direct object cette robe: j’aime la robe que tu portes."
+      "explanation": "Que replaces the direct object cette robe: j’aime la robe que tu portes.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’aime la robe qui tu portes."
+          ],
+          "why": "Qui is the subject form, but portes already has tu as its subject; the dress is what you wear."
+        }
+      ],
+      "row": "que / qu’"
     },
     {
       "id": "relative-pronouns-elision-1",
@@ -213,7 +806,23 @@
       ],
       "hint": "The friend is the subject of arrive. Does that pronoun ever shorten?",
       "feedback": "Arrive needs a subject, and that pronoun keeps its i before a vowel.",
-      "explanation": "The friend is the subject, so qui, which never elides: l’ami qui arrive."
+      "explanation": "The friend is the subject, so qui, which never elides: l’ami qui arrive.",
+      "mistakes": [
+        {
+          "answers": [
+            "qu’",
+            "que"
+          ],
+          "why": "Both are the direct-object form, which needs a subject of its own after it; arrive has none, since the friend is the one arriving."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont replaces de + a noun (parler de, avoir besoin de). Arriver demain contains no de."
+        }
+      ],
+      "row": "qui (subject)"
     },
     {
       "id": "relative-pronouns-elision-2",
@@ -232,7 +841,28 @@
       ],
       "hint": "Elle is the subject; the man is the object. Look at the next sound.",
       "feedback": "The object pronoun shortens before a vowel.",
-      "explanation": "The man is the direct object, so que, which becomes qu’ before elle: l’homme qu’elle aime."
+      "explanation": "The man is the direct object, so que, which becomes qu’ before elle: l’homme qu’elle aime.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "The object form is the right idea, but it cannot stay whole in front of a vowel: elle begins with one."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "Qui does the subject’s job, and aime already has elle as its subject; the man is the one loved."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont carries de, and aimer takes its object directly: on aime quelqu’un, with no de."
+        }
+      ],
+      "row": "que (object)"
     },
     {
       "id": "relative-pronouns-elision-3",
@@ -245,7 +875,28 @@
       ],
       "hint": "Il starts with a vowel.",
       "feedback": "Que cannot stand in front of a vowel in writing.",
-      "explanation": "Que becomes qu’ before il: le film qu’il regarde est drôle."
+      "explanation": "Que becomes qu’ before il: le film qu’il regarde est drôle.",
+      "mistakes": [
+        {
+          "answers": [
+            "que il"
+          ],
+          "why": "Written as two words it keeps its e in front of a vowel. French glues an elision together with an apostrophe instead."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "That is the subject form, and it also drops il, which the task asks you to keep in the answer."
+        },
+        {
+          "answers": [
+            "qu’elle"
+          ],
+          "why": "The elision is right but the person is not: the subject given is il, not elle."
+        }
+      ],
+      "row": "que (object)"
     },
     {
       "id": "relative-pronouns-elision-4",
@@ -258,7 +909,28 @@
       ],
       "hint": "Look at the vowel after que.",
       "feedback": "Que must shorten before il.",
-      "explanation": "Que elides before a vowel: le cadeau qu’il veut."
+      "explanation": "Que elides before a vowel: le cadeau qu’il veut.",
+      "mistakes": [
+        {
+          "answers": [
+            "Voici le cadeau que il veut."
+          ],
+          "why": "This is the sentence unchanged: que still stands whole in front of il, and a vowel forces it to lose its e."
+        },
+        {
+          "answers": [
+            "Voici le cadeau qui il veut."
+          ],
+          "why": "Qui is the subject form, and veut already has il as its subject; the present is what he wants."
+        },
+        {
+          "answers": [
+            "Voici le cadeau qui veut."
+          ],
+          "why": "Dropping il makes the gift the one doing the wanting, and it loses the person the sentence is about."
+        }
+      ],
+      "row": "que (object)"
     },
     {
       "id": "relative-pronouns-elision-5",
@@ -271,7 +943,28 @@
       ],
       "hint": "Who loves music? Is the pronoun the subject or the object?",
       "feedback": "The woman is the subject, and the subject pronoun never shortens.",
-      "explanation": "The woman is the subject of aime, so qui, which never elides: une femme qui aime la musique."
+      "explanation": "The woman is the subject of aime, so qui, which never elides: une femme qui aime la musique.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est une femme qu’aime la musique."
+          ],
+          "why": "This is the sentence unchanged. The apostrophe form belongs to the object pronoun, which needs its own subject after it, and aime has none."
+        },
+        {
+          "answers": [
+            "C’est une femme que aime la musique."
+          ],
+          "why": "Writing it out in full does not fix the job it does: the object form still needs a subject of its own after it, and aime has none."
+        },
+        {
+          "answers": [
+            "C’est une femme qu’elle aime la musique."
+          ],
+          "why": "Adding elle gives aime two subjects and turns the sentence into “a woman that she loves music”."
+        }
+      ],
+      "row": "qui (subject)"
     },
     {
       "id": "relative-pronouns-ou-place-time-1",
@@ -285,7 +978,28 @@
       ],
       "hint": "Dans cette ville is a place.",
       "feedback": "The pronoun replaces the whole place phrase, preposition included.",
-      "explanation": "Où replaces a place: c’est la ville où j’habite."
+      "explanation": "Où replaces a place: c’est la ville où j’habite.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est la ville que j’habite."
+          ],
+          "why": "Que marks a direct object, but the second sentence used dans cette ville: the pronoun has to carry that place phrase."
+        },
+        {
+          "answers": [
+            "C’est la ville qui j’habite."
+          ],
+          "why": "Qui is the subject form, and habite already has j’ as its subject."
+        },
+        {
+          "answers": [
+            "C’est la ville dont j’habite."
+          ],
+          "why": "Dont carries de, and the second sentence used dans, not de."
+        }
+      ],
+      "row": "a place"
     },
     {
       "id": "relative-pronouns-ou-place-time-2",
@@ -298,7 +1012,34 @@
       ],
       "hint": "Ce jour-là is a time, not an object.",
       "feedback": "French uses the same pronoun for when as for where.",
-      "explanation": "Où replaces a time as well as a place: le jour où il est parti."
+      "explanation": "Où replaces a time as well as a place: le jour où il est parti.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je me souviens du jour que il est parti."
+          ],
+          "why": "Que marks a direct object, but ce jour-là is a moment in time, not something est parti acts on."
+        },
+        {
+          "answers": [
+            "Je me souviens du jour qui il est parti."
+          ],
+          "why": "Qui is the subject form, and est parti already has il as its subject; le jour says when."
+        },
+        {
+          "answers": [
+            "Je me souviens du jour quand il est parti."
+          ],
+          "why": "Quand joins a time clause on its own, but after a noun such as le jour French does not use it."
+        },
+        {
+          "answers": [
+            "Je me souviens du jour dont il est parti."
+          ],
+          "why": "Dont replaces de + a noun, and partir ce jour-là contains no de."
+        }
+      ],
+      "row": "a time"
     },
     {
       "id": "relative-pronouns-ou-place-time-3",
@@ -317,7 +1058,28 @@
       ],
       "hint": "We dine in the restaurant: it is a place.",
       "feedback": "Dînons already has a subject and does not take a direct object here.",
-      "explanation": "The restaurant is where we dine, so the pronoun is où."
+      "explanation": "The restaurant is where we dine, so the pronoun is où.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Que marks a direct object, but dîner does not take one: we dine in the restaurant."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "Qui is the subject form, and dînons already has nous as its subject."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont replaces de + a noun, and dîner dans un restaurant uses dans, not de."
+        }
+      ],
+      "row": "a place"
     },
     {
       "id": "relative-pronouns-ou-place-time-4",
@@ -331,7 +1093,40 @@
       "strictAccents": true,
       "hint": "L’année is a time.",
       "feedback": "Mind the accent: without it, the word means or.",
-      "explanation": "Où replaces a time: l’année où elle a eu son bac. Ou without the accent means or."
+      "explanation": "Où replaces a time: l’année où elle a eu son bac. Ou without the accent means or.",
+      "mistakes": [
+        {
+          "answers": [
+            "ou"
+          ],
+          "why": "Without its accent the word means “or”, which offers a choice instead of pointing to a moment."
+        },
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Que marks a direct object, but l’année says when she got her bac, not what she got."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "Qui is the subject form, and a eu already has elle as its subject."
+        },
+        {
+          "answers": [
+            "quand"
+          ],
+          "why": "Quand introduces a time clause on its own; after a noun such as l’année French does not use it."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont replaces de + a noun, and avoir son bac contains no de."
+        }
+      ],
+      "row": "a time"
     },
     {
       "id": "relative-pronouns-ou-place-time-5",
@@ -347,7 +1142,28 @@
       ],
       "hint": "Where introduces a place.",
       "feedback": "Mind the accent on the relative pronoun.",
-      "explanation": "Le café is a place, so où joins it: j’aime le café où il travaille."
+      "explanation": "Le café is a place, so où joins it: j’aime le café où il travaille.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’aime le café que il travaille."
+          ],
+          "why": "Que marks a direct object, but travailler does not take one here: the café is the place he works in."
+        },
+        {
+          "answers": [
+            "J’aime le café qui il travaille."
+          ],
+          "why": "Qui is the subject form, and travaille already has il as its subject."
+        },
+        {
+          "answers": [
+            "J’aime le café dont il travaille."
+          ],
+          "why": "Dont carries de, and travailler dans un café uses dans, not de."
+        }
+      ],
+      "row": "a place"
     },
     {
       "id": "relative-pronouns-ou-place-time-6",
@@ -361,7 +1177,34 @@
       ],
       "hint": "Aller does not take a direct object; we go to the beach.",
       "feedback": "The beach is a place here, not an object.",
-      "explanation": "We go to the beach, so the beach is a place: la plage où nous allons."
+      "explanation": "We go to the beach, so the beach is a place: la plage où nous allons.",
+      "mistakes": [
+        {
+          "answers": [
+            "La plage que nous allons est belle."
+          ],
+          "why": "This is the sentence unchanged: que marks a direct object, but aller needs à before its destination."
+        },
+        {
+          "answers": [
+            "La plage qui nous allons est belle."
+          ],
+          "why": "Qui is the subject form, and allons already has nous as its subject; the beach is the destination."
+        },
+        {
+          "answers": [
+            "La plage dont nous allons est belle."
+          ],
+          "why": "Dont carries de, but on va à la plage, not de la plage."
+        },
+        {
+          "answers": [
+            "La plage que nous allons à est belle."
+          ],
+          "why": "French never leaves a preposition stranded at the end of the clause the way English does."
+        }
+      ],
+      "row": "a place"
     },
     {
       "id": "relative-pronouns-ou-place-time-7",
@@ -385,7 +1228,16 @@
       ],
       "hint": "Dans ce parc is a place.",
       "feedback": "Use the pronoun for places.",
-      "explanation": "Où replaces dans ce parc: voici le parc où je cours le matin."
+      "explanation": "Où replaces dans ce parc: voici le parc où je cours le matin.",
+      "mistakes": [
+        {
+          "answers": [
+            "Voici le parc que je cours le matin."
+          ],
+          "why": "Que marks a direct object, but courir does not take one here: the park is where you run."
+        }
+      ],
+      "row": "a place"
     },
     {
       "id": "relative-pronouns-dont-1",
@@ -404,7 +1256,34 @@
       ],
       "hint": "Parler de: look at the preposition.",
       "feedback": "The pronoun has to replace de + ce film.",
-      "explanation": "Dont replaces de + a noun: c’est le film dont je parle."
+      "explanation": "Dont replaces de + a noun: c’est le film dont je parle.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est le film que je parle."
+          ],
+          "why": "Que marks a direct object, but parler needs de in front of the topic: on parle de quelque chose."
+        },
+        {
+          "answers": [
+            "C’est le film dont je parle de."
+          ],
+          "why": "The pronoun already contains de, so keeping another one at the end doubles the preposition."
+        },
+        {
+          "answers": [
+            "C’est le film de qui je parle."
+          ],
+          "why": "De qui is only used for people, and a film is a thing."
+        },
+        {
+          "answers": [
+            "C’est le film où je parle."
+          ],
+          "why": "Où points to a place or a moment, but here the film is the topic of the talking, not its setting."
+        }
+      ],
+      "row": "parler de"
     },
     {
       "id": "relative-pronouns-dont-2",
@@ -417,7 +1296,34 @@
       ],
       "hint": "Le frère de cet ami: which preposition links them?",
       "feedback": "The pronoun replaces de cet ami and comes straight after un ami.",
-      "explanation": "Dont replaces de + noun, and the rest keeps its normal order: un ami dont le frère est médecin."
+      "explanation": "Dont replaces de + noun, and the rest keeps its normal order: un ami dont le frère est médecin.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai un ami dont son frère est médecin."
+          ],
+          "why": "The pronoun already means “of him”, so son says the same thing twice; French keeps the plain article here."
+        },
+        {
+          "answers": [
+            "J’ai un ami que son frère est médecin."
+          ],
+          "why": "Que marks a direct object, but le frère de cet ami is a possession built with de."
+        },
+        {
+          "answers": [
+            "J’ai un ami qui le frère est médecin."
+          ],
+          "why": "Qui is the subject form, and est already has le frère as its subject."
+        },
+        {
+          "answers": [
+            "J’ai un ami dont le frère de est médecin."
+          ],
+          "why": "The de is already inside the pronoun; leaving another one after frère doubles it."
+        }
+      ],
+      "row": "possession: le frère de…"
     },
     {
       "id": "relative-pronouns-dont-3",
@@ -436,7 +1342,28 @@
       ],
       "hint": "Avoir besoin is followed by a preposition.",
       "feedback": "Avoir besoin de: the pronoun must include de.",
-      "explanation": "Avoir besoin de + noun, so the pronoun is dont: l’outil dont j’ai besoin."
+      "explanation": "Avoir besoin de + noun, so the pronoun is dont: l’outil dont j’ai besoin.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Que marks a direct object, but avoir besoin always puts de in front of the thing needed."
+        },
+        {
+          "answers": [
+            "où"
+          ],
+          "why": "Où points to a place or a moment, and l’outil is neither."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "Qui is the subject form, and j’ai already has its subject; the tool is what is needed."
+        }
+      ],
+      "row": "avoir besoin de"
     },
     {
       "id": "relative-pronouns-dont-4",
@@ -449,7 +1376,35 @@
       ],
       "hint": "Rêver takes a preposition before what you dream about.",
       "feedback": "Rêver de: the pronoun replaces de + noun.",
-      "explanation": "Rêver de quelque chose, so dont: une ville dont je rêve."
+      "explanation": "Rêver de quelque chose, so dont: une ville dont je rêve.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Que marks a direct object, but rêver puts de in front of what you dream of."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "Qui is the subject form, and rêve already has je as its subject."
+        },
+        {
+          "answers": [
+            "où"
+          ],
+          "why": "A town is a place in real life, but here it is what she dreams of, not where the dreaming happens."
+        },
+        {
+          "answers": [
+            "de que",
+            "de qui"
+          ],
+          "why": "A preposition can never stand in front of these forms, and de qui would in any case be for a person."
+        }
+      ],
+      "row": "rêver de"
     },
     {
       "id": "relative-pronouns-dont-5",
@@ -462,7 +1417,34 @@
       ],
       "hint": "You do not parler a book; you parler de a book.",
       "feedback": "The pronoun must replace de + noun.",
-      "explanation": "Parler de + noun, so the pronoun is dont: le livre dont je parle."
+      "explanation": "Parler de + noun, so the pronoun is dont: le livre dont je parle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le livre que je parle est sur la table."
+          ],
+          "why": "This is the sentence unchanged: que marks a direct object, and parler needs de before its topic."
+        },
+        {
+          "answers": [
+            "Le livre de que je parle est sur la table."
+          ],
+          "why": "A preposition can never stand in front of que; the de has to be carried by the pronoun itself."
+        },
+        {
+          "answers": [
+            "Le livre qui je parle est sur la table."
+          ],
+          "why": "Qui is the subject form, and parle already has je as its subject."
+        },
+        {
+          "answers": [
+            "Le livre que je parle de est sur la table."
+          ],
+          "why": "French never leaves a preposition stranded at the end of the clause the way English does."
+        }
+      ],
+      "row": "parler de"
     },
     {
       "id": "relative-pronouns-dont-6",
@@ -476,7 +1458,34 @@
       ],
       "hint": "Whose means of whom: the son de la femme.",
       "feedback": "After dont, keep the normal order: le fils est pilote.",
-      "explanation": "Le fils de la femme becomes la femme dont le fils: c’est la femme dont le fils est pilote."
+      "explanation": "Le fils de la femme becomes la femme dont le fils: c’est la femme dont le fils est pilote.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est la femme dont son fils est pilote."
+          ],
+          "why": "The pronoun already means “of whom”, so son repeats the possession; French keeps the plain article."
+        },
+        {
+          "answers": [
+            "C’est la femme que son fils est pilote."
+          ],
+          "why": "Que marks a direct object, but “whose son” is a possession built with de."
+        },
+        {
+          "answers": [
+            "C’est la femme de qui le fils est pilote."
+          ],
+          "why": "De qui is heavy and unusual here; for possession French joins de and the person into one word."
+        },
+        {
+          "answers": [
+            "C’est la femme qui le fils est pilote."
+          ],
+          "why": "Qui is the subject form, and est already has le fils as its subject."
+        }
+      ],
+      "row": "possession: le frère de…"
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-1",
@@ -495,7 +1504,28 @@
       ],
       "hint": "There is no noun before the pronoun, and it is the subject of intéresse.",
       "feedback": "Without a noun, add ce; then decide subject or object.",
-      "explanation": "What interests me is the subject of intéresse, and there is no noun before it, so ce qui."
+      "explanation": "What interests me is the subject of intéresse, and there is no noun before it, so ce qui.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce que"
+          ],
+          "why": "That pair marks the object, but intéresse has no other subject: the thing interesting me is what acts."
+        },
+        {
+          "answers": [
+            "Qui"
+          ],
+          "why": "On its own it needs a noun in front to refer to, and there is nothing before it here; ce has to be added."
+        },
+        {
+          "answers": [
+            "Que"
+          ],
+          "why": "Bare que needs a noun in front of it and marks an object, while intéresse is missing its subject."
+        }
+      ],
+      "row": "subject of the verb"
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-2",
@@ -514,7 +1544,28 @@
       ],
       "hint": "Tu is the subject; what you want is the object.",
       "feedback": "After dis-moi, the direct-question form qu’est-ce que cannot be used.",
-      "explanation": "What you want is the object of veux and has no noun before it, so ce que."
+      "explanation": "What you want is the object of veux and has no noun before it, so ce que.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce qui"
+          ],
+          "why": "That pair is for the subject, but veux already has tu as its subject: what you want is the object."
+        },
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Bare que needs a noun in front of it, and after dis-moi there is none, so ce must be added."
+        },
+        {
+          "answers": [
+            "qu’est-ce que"
+          ],
+          "why": "That form belongs to direct questions. After dis-moi the question is indirect and est-ce disappears."
+        }
+      ],
+      "row": "direct object"
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-3",
@@ -527,7 +1578,34 @@
       ],
       "hint": "Se passe needs a subject.",
       "feedback": "There is no noun before it, so add ce.",
-      "explanation": "What is happening is the subject of se passe, so ce qui: je ne comprends pas ce qui se passe."
+      "explanation": "What is happening is the subject of se passe, so ce qui: je ne comprends pas ce qui se passe.",
+      "mistakes": [
+        {
+          "answers": [
+            "ce que"
+          ],
+          "why": "That pair marks the object, but se passe has no other subject: the thing happening is what acts."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "Alone it needs a noun in front to refer to, and there is none before the gap."
+        },
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Bare que needs a noun before it and marks an object, while se passe is missing its subject."
+        },
+        {
+          "answers": [
+            "qu’est-ce qui"
+          ],
+          "why": "That is the direct-question form; inside a sentence like je ne comprends pas, est-ce drops out."
+        }
+      ],
+      "row": "subject of the verb"
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-4",
@@ -540,7 +1618,28 @@
       ],
       "hint": "What I want is the object of veux.",
       "feedback": "With no noun before it, the pronoun needs ce.",
-      "explanation": "What = ce que, because it is the object of veux: je fais ce que je veux."
+      "explanation": "What = ce que, because it is the object of veux: je fais ce que je veux.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je fais ce qui je veux."
+          ],
+          "why": "That pair is for the subject, but veux already has je as its subject."
+        },
+        {
+          "answers": [
+            "Je fais que je veux."
+          ],
+          "why": "With no noun in front to refer to, the pronoun cannot stand alone: ce has to be added."
+        },
+        {
+          "answers": [
+            "Je fais qu’est-ce que je veux."
+          ],
+          "why": "Est-ce belongs to a direct question and has no place inside a statement."
+        }
+      ],
+      "row": "direct object"
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-5",
@@ -553,7 +1652,28 @@
       ],
       "hint": "Is the pronoun the subject of plaît?",
       "feedback": "Me is an object pronoun, so plaît still needs a subject.",
-      "explanation": "What pleases me is the subject of plaît, so ce qui: ce qui me plaît ici, c’est le calme."
+      "explanation": "What pleases me is the subject of plaît, so ce qui: ce qui me plaît ici, c’est le calme.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce que me plaît ici, c’est le calme."
+          ],
+          "why": "This is the sentence unchanged. That pair marks the object, but plaît has no subject here: me is an object pronoun."
+        },
+        {
+          "answers": [
+            "Ce qu’il me plaît ici, c’est le calme."
+          ],
+          "why": "Adding il invents a subject out of nowhere; the thing that pleases me is what the pronoun stands for."
+        },
+        {
+          "answers": [
+            "Qui me plaît ici, c’est le calme."
+          ],
+          "why": "There is no noun in front for the pronoun to refer to, so it needs ce before it."
+        }
+      ],
+      "row": "subject of the verb"
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-6",
@@ -566,7 +1686,28 @@
       ],
       "hint": "In an indirect question, the question form changes.",
       "feedback": "Qu’est-ce que becomes two words here.",
-      "explanation": "Qu’est-ce que becomes ce que after dis-moi: dis-moi ce que tu penses."
+      "explanation": "Qu’est-ce que becomes ce que after dis-moi: dis-moi ce que tu penses.",
+      "mistakes": [
+        {
+          "answers": [
+            "Dis-moi qu’est-ce que tu penses."
+          ],
+          "why": "Est-ce belongs to a direct question; inside a sentence starting with dis-moi it disappears."
+        },
+        {
+          "answers": [
+            "Dis-moi ce qui tu penses."
+          ],
+          "why": "That pair is for the subject, but penses already has tu as its subject."
+        },
+        {
+          "answers": [
+            "Dis-moi que tu penses."
+          ],
+          "why": "Bare que here reads as “that you think”, and there is no noun in front for the pronoun to lean on."
+        }
+      ],
+      "row": "direct object"
     },
     {
       "id": "relative-pronouns-ce-qui-ce-que-7",
@@ -588,7 +1729,16 @@
       ],
       "hint": "What matters is the subject of compte.",
       "feedback": "With no noun before it, the subject pronoun needs ce.",
-      "explanation": "Ce qui is the subject of compte, and c’est la santé gives the answer: ce qui compte, c’est la santé."
+      "explanation": "Ce qui is the subject of compte, and c’est la santé gives the answer: ce qui compte, c’est la santé.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce que compte, c’est la santé."
+          ],
+          "why": "That pair marks the object, but compte has no other subject: the thing that matters is what acts."
+        }
+      ],
+      "row": "subject of the verb"
     },
     {
       "id": "relative-pronouns-preposition-qui-1",
@@ -602,7 +1752,34 @@
       ],
       "hint": "Keep the preposition avec before the pronoun.",
       "feedback": "After a preposition, a person takes the same pronoun as a subject.",
-      "explanation": "Avec stays, and after a preposition a person takes qui: la personne avec qui je travaille."
+      "explanation": "Avec stays, and after a preposition a person takes qui: la personne avec qui je travaille.",
+      "mistakes": [
+        {
+          "answers": [
+            "C’est la personne que je travaille avec."
+          ],
+          "why": "French cannot leave avec at the end of the clause the way English does; it moves in front of the pronoun."
+        },
+        {
+          "answers": [
+            "C’est la personne avec que je travaille."
+          ],
+          "why": "Que can never follow a preposition."
+        },
+        {
+          "answers": [
+            "C’est la personne dont je travaille."
+          ],
+          "why": "Dont carries de, but the verb here needs avec."
+        },
+        {
+          "answers": [
+            "C’est la personne avec quoi je travaille."
+          ],
+          "why": "Quoi after a preposition is for things, and la personne is a person."
+        }
+      ],
+      "row": "avec"
     },
     {
       "id": "relative-pronouns-preposition-qui-2",
@@ -621,7 +1798,28 @@
       ],
       "hint": "After a preposition, a person takes one particular pronoun.",
       "feedback": "Que and dont never follow a preposition.",
-      "explanation": "After avec, a person takes qui: le collègue avec qui je déjeune."
+      "explanation": "After avec, a person takes qui: le collègue avec qui je déjeune.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "It can never follow a preposition such as avec."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont already carries de inside it, so it cannot come after avec."
+        },
+        {
+          "answers": [
+            "où"
+          ],
+          "why": "Où stands for a place or a time, but le collègue is a person."
+        }
+      ],
+      "row": "avec"
     },
     {
       "id": "relative-pronouns-preposition-qui-3",
@@ -635,7 +1833,34 @@
       ],
       "hint": "After a preposition, a person takes one particular pronoun.",
       "feedback": "Que never follows a preposition.",
-      "explanation": "After à, a person takes qui: l’amie à qui j’écris. À laquelle is also correct."
+      "explanation": "After à, a person takes qui: l’amie à qui j’écris. À laquelle is also correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "It can never follow a preposition such as à."
+        },
+        {
+          "answers": [
+            "dont"
+          ],
+          "why": "Dont carries de inside it, and écrire needs à before the person."
+        },
+        {
+          "answers": [
+            "lequel"
+          ],
+          "why": "That form is masculine, and l’amie is feminine, so it does not agree."
+        },
+        {
+          "answers": [
+            "où"
+          ],
+          "why": "Où stands for a place or a time, but l’amie is a person."
+        }
+      ],
+      "row": "à"
     },
     {
       "id": "relative-pronouns-preposition-qui-4",
@@ -649,7 +1874,34 @@
       ],
       "hint": "French cannot leave for at the end; put pour before the pronoun.",
       "feedback": "Preposition first, then the pronoun for a person.",
-      "explanation": "Pour moves before the pronoun, and a person takes qui: l’homme pour qui je travaille."
+      "explanation": "Pour moves before the pronoun, and a person takes qui: l’homme pour qui je travaille.",
+      "mistakes": [
+        {
+          "answers": [
+            "L’homme que je travaille pour est mon oncle."
+          ],
+          "why": "French never strands pour at the end of the clause; it has to move in front of the pronoun."
+        },
+        {
+          "answers": [
+            "L’homme pour que je travaille est mon oncle."
+          ],
+          "why": "Que can never follow a preposition."
+        },
+        {
+          "answers": [
+            "L’homme dont je travaille est mon oncle."
+          ],
+          "why": "Dont carries de, but travailler here needs pour."
+        },
+        {
+          "answers": [
+            "L’homme pour laquelle je travaille est mon oncle."
+          ],
+          "why": "That form is feminine, and l’homme is masculine, so it does not agree."
+        }
+      ],
+      "row": "pour"
     },
     {
       "id": "relative-pronouns-preposition-qui-5",
@@ -663,7 +1915,34 @@
       ],
       "hint": "Que never comes after a preposition.",
       "feedback": "After avec, a person takes the same pronoun as a subject.",
-      "explanation": "After a preposition, a person takes qui: la fille avec qui je parle."
+      "explanation": "After a preposition, a person takes qui: la fille avec qui je parle.",
+      "mistakes": [
+        {
+          "answers": [
+            "La fille avec que je parle est ma cousine."
+          ],
+          "why": "This is the sentence unchanged: que can never follow a preposition such as avec."
+        },
+        {
+          "answers": [
+            "La fille que je parle avec est ma cousine."
+          ],
+          "why": "French cannot leave avec at the end of the clause the way English does."
+        },
+        {
+          "answers": [
+            "La fille dont je parle est ma cousine."
+          ],
+          "why": "Dont carries de, so this says you talk about her, while the sentence says you talk with her."
+        },
+        {
+          "answers": [
+            "La fille avec lequel je parle est ma cousine."
+          ],
+          "why": "That form is masculine, and la fille is feminine, so it does not agree."
+        }
+      ],
+      "row": "avec"
     },
     {
       "id": "relative-pronouns-preposition-qui-6",
@@ -688,7 +1967,22 @@
       ],
       "hint": "The preposition moves to the front of the new part.",
       "feedback": "Avec comes before the pronoun, and a person takes qui.",
-      "explanation": "Avec + qui replaces avec eux and comes right after mes voisins: voici mes voisins avec qui je fais les courses."
+      "explanation": "Avec + qui replaces avec eux and comes right after mes voisins: voici mes voisins avec qui je fais les courses.",
+      "mistakes": [
+        {
+          "answers": [
+            "Voici mes voisins avec que je fais les courses."
+          ],
+          "why": "Que can never follow a preposition."
+        },
+        {
+          "answers": [
+            "Voici mes voisins qui avec je fais les courses."
+          ],
+          "why": "The preposition belongs in front of the pronoun, not after it."
+        }
+      ],
+      "row": "avec"
     }
   ]
 }

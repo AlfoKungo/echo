@@ -5,9 +5,478 @@
   "title": "Negation",
   "description": "Turn “I do” into “I don’t.”",
   "mark": "ne…pas",
-  "rule": "In standard written French, put ne before the conjugated verb and pas after it; ne becomes n’ before a vowel sound, including a silent h. After the negation, un, une and des become de (d’ before a vowel sound): je n’ai pas de chien; le, la and les do not change: je n’aime pas le fromage. After être the article does not change (ce n’est pas un chat), and before a plural noun c’est becomes ce ne sont pas. In the passé composé, ne…pas surrounds the auxiliary (je n’ai pas lu); in the futur proche, it surrounds aller (je ne vais pas rester). To negate an infinitive, put ne pas together in front of it: j’aime mieux ne pas répondre. Il y a becomes il n’y a pas de.",
-  "example": "Je ne parle pas français. · Tu n’as pas de frère. · Il n’est pas parti.",
-  "aside": "You will often hear ne dropped in conversation (je sais pas). Here, practise the standard written form. Du and de la also become de after the negation; jamais, rien and personne come in the next topic.",
+  "guide": {
+    "summary": "Negation in written French takes two words around the verb: ne before it, pas after it. This topic covers where those two words go in every common sentence, and what happens to the article that follows them.",
+    "sections": [
+      {
+        "id": "place",
+        "title": "Where do ne and pas go?",
+        "text": "A written negative sentence needs both words. Ne goes in front of the conjugated verb and pas right after it; the rest of the sentence keeps its place.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Positive",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "je",
+              "je chante",
+              "je ne chante pas"
+            ],
+            [
+              "tu",
+              "tu chantes",
+              "tu ne chantes pas"
+            ],
+            [
+              "il / elle",
+              "il chante",
+              "il ne chante pas"
+            ],
+            [
+              "nous",
+              "nous chantons",
+              "nous ne chantons pas"
+            ],
+            [
+              "vous",
+              "vous chantez",
+              "vous ne chantez pas"
+            ],
+            [
+              "ils / elles",
+              "ils chantent",
+              "ils ne chantent pas"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the conjugated verb: the one that changes with the subject.",
+          "Put ne immediately before it.",
+          "Put pas immediately after it, before the object or the rest of the sentence."
+        ],
+        "examples": [
+          {
+            "fr": "Je ne travaille pas le samedi.",
+            "en": "I don’t work on Saturdays."
+          },
+          {
+            "fr": "Ils ne chantent pas bien.",
+            "en": "They don’t sing well."
+          }
+        ],
+        "watch": [
+          "Never stack the two words in front of the verb: the verb stands between them.",
+          "Pas stays next to the verb; it does not drift to the end of the sentence.",
+          "In speech ne is often dropped (je sais pas). These exercises ask for the standard written form, which keeps it.",
+          "Jamais, rien and personne are other negative words that replace pas; they come in a later topic."
+        ]
+      },
+      {
+        "id": "elision",
+        "title": "When does ne become n’?",
+        "text": "Ne loses its e in front of a vowel sound and joins the next word with an apostrophe. A silent h is not pronounced, so it counts as a vowel sound.",
+        "table": {
+          "columns": [
+            "The verb starts with",
+            "Form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "a consonant",
+              "ne",
+              "je ne parle pas"
+            ],
+            [
+              "a vowel (a, e, i, o, u)",
+              "n’",
+              "elle n’écoute pas"
+            ],
+            [
+              "a silent h",
+              "n’",
+              "il n’habite pas ici"
+            ],
+            [
+              "an h that is pronounced",
+              "ne",
+              "il ne hurle pas"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the word right after ne: the conjugated verb.",
+          "Vowel or silent h? Write n’ glued to the verb, with no space after the apostrophe.",
+          "Consonant sound? Keep the full ne."
+        ],
+        "examples": [
+          {
+            "fr": "Je n’aime pas ce film.",
+            "en": "I don’t like this film."
+          },
+          {
+            "fr": "Il n’habite pas à Paris.",
+            "en": "He doesn’t live in Paris."
+          }
+        ],
+        "watch": [
+          "The apostrophe replaces the e and leaves no space: n’aime, never n’ aime or ne aime.",
+          "Pas never shortens: it stays pas in front of a vowel.",
+          "A few words with h keep the full ne (le hall, hurler); most verbs you meet at this level have a silent h."
+        ]
+      },
+      {
+        "id": "articles",
+        "title": "What happens to the article after pas?",
+        "text": "The negation replaces an indefinite or partitive article with de. A definite article is simply copied from the positive sentence.",
+        "table": {
+          "columns": [
+            "Article",
+            "After ne…pas",
+            "Example"
+          ],
+          "rows": [
+            [
+              "un / une",
+              "de",
+              "il n’a pas de vélo"
+            ],
+            [
+              "des",
+              "de",
+              "elle ne porte pas de gants"
+            ],
+            [
+              "du / de la",
+              "de",
+              "je ne bois pas de café"
+            ],
+            [
+              "de before a vowel",
+              "d’",
+              "nous n’avons pas d’argent"
+            ],
+            [
+              "le / la / les",
+              "unchanged",
+              "je n’aime pas le café"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the article right after pas.",
+          "Un, une, des, du, de la all become de.",
+          "Before a vowel sound or a silent h, write d’ with an apostrophe.",
+          "Le, la and les are copied unchanged."
+        ],
+        "examples": [
+          {
+            "fr": "Il n’a pas de frère.",
+            "en": "He doesn’t have a brother."
+          },
+          {
+            "fr": "Nous n’avons pas d’argent.",
+            "en": "We don’t have any money."
+          },
+          {
+            "fr": "Je n’aime pas les tomates.",
+            "en": "I don’t like tomatoes."
+          }
+        ],
+        "watch": [
+          "De replaces the article, so never write de des or de un.",
+          "The noun does not lose its article altogether: de takes its place.",
+          "After être the article does not change at all (see the next section)."
+        ]
+      },
+      {
+        "id": "etre",
+        "title": "Ce n’est pas, ce ne sont pas",
+        "text": "C’est is ce + est: to negate it, the two words open back up and the negation surrounds est. After être the article keeps the form it had in the positive sentence, and a plural noun needs the plural of être.",
+        "table": {
+          "columns": [
+            "",
+            "Positive",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "one thing",
+              "c’est un chat",
+              "ce n’est pas un chat"
+            ],
+            [
+              "several things",
+              "ce sont des chats",
+              "ce ne sont pas des chats"
+            ],
+            [
+              "a possessive (mon, mes)",
+              "c’est mon sac",
+              "ce n’est pas mon sac"
+            ]
+          ]
+        },
+        "steps": [
+          "Put the negation around the form of être, eliding ne before est.",
+          "Look at the noun: plural nouns take the plural form of être.",
+          "Copy the article of the positive sentence: être leaves it alone."
+        ],
+        "examples": [
+          {
+            "fr": "Ce n’est pas un chat.",
+            "en": "That isn’t a cat."
+          },
+          {
+            "fr": "Ce ne sont pas des amis.",
+            "en": "They aren’t friends."
+          }
+        ],
+        "watch": [
+          "Un, une and des do not turn into de here: that change happens after other verbs, not after être.",
+          "Ce n’est pas mes clés is heard in speech, but the written form uses the plural of être before a plural noun.",
+          "Ces is the word used in front of a noun (ces clés); as the subject of être, use ce."
+        ]
+      },
+      {
+        "id": "two-verbs",
+        "title": "Two verbs: which one gets the negation?",
+        "text": "When a sentence has an auxiliary or aller plus a second verb, the negation surrounds the conjugated one. The past participle or the infinitive follows pas untouched.",
+        "table": {
+          "columns": [
+            "Tense",
+            "Frame",
+            "Example"
+          ],
+          "rows": [
+            [
+              "passé composé (avoir)",
+              "ne + ai, as, a, avons, avez, ont + pas + participle",
+              "je n’ai pas lu"
+            ],
+            [
+              "passé composé (être)",
+              "ne + suis, es, est, sommes, êtes, sont + pas + participle",
+              "elle n’est pas partie"
+            ],
+            [
+              "futur proche",
+              "ne + vais, vas, va, allons, allez, vont + pas + infinitive",
+              "je ne vais pas rester"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the conjugated verb: the auxiliary, or the form of aller.",
+          "Put ne before it and pas directly after it.",
+          "Leave the participle or the infinitive after pas."
+        ],
+        "examples": [
+          {
+            "fr": "Nous n’avons pas mangé.",
+            "en": "We haven’t eaten."
+          },
+          {
+            "fr": "Elle n’est pas partie.",
+            "en": "She hasn’t left."
+          },
+          {
+            "fr": "Tu ne vas pas aimer ça.",
+            "en": "You’re not going to like that."
+          }
+        ],
+        "watch": [
+          "Pas never goes after the participle or after the infinitive.",
+          "Ne elides before ai, as, a, ont, est, êtes: n’ai, n’as, n’a, n’ont, n’est.",
+          "With être the participle still agrees with the subject: elle n’est pas venue."
+        ]
+      },
+      {
+        "id": "infinitive",
+        "title": "Saying not to do something",
+        "text": "When it is the infinitive that is negative, the two words stay together in front of it. The first verb stays positive, and the de that links the two verbs keeps its place.",
+        "table": {
+          "columns": [
+            "Structure",
+            "Example"
+          ],
+          "rows": [
+            [
+              "verb + de + ne pas + infinitive",
+              "Il décide de ne pas venir."
+            ],
+            [
+              "verb + ne pas + infinitive",
+              "Je préfère ne pas attendre."
+            ],
+            [
+              "conjugated verb: ne + verb + pas",
+              "Je ne viens pas."
+            ]
+          ]
+        },
+        "steps": [
+          "Ask which verb is negative: the conjugated one or the infinitive.",
+          "For an infinitive, keep both words side by side right in front of it.",
+          "Leave the first verb positive and keep its de if it needs one."
+        ],
+        "examples": [
+          {
+            "fr": "J’aime mieux ne pas répondre.",
+            "en": "I’d rather not answer."
+          },
+          {
+            "fr": "Il décide de ne pas venir.",
+            "en": "He decides not to come."
+          }
+        ],
+        "watch": [
+          "An infinitive is not surrounded: pas does not follow it.",
+          "Keeping the two words together happens only with an infinitive; a conjugated verb still stands between them.",
+          "Négating the first verb changes the meaning: il ne décide pas de venir says something else."
+        ]
+      },
+      {
+        "id": "il-y-a",
+        "title": "There is, there isn’t",
+        "text": "Il y a is negated like any verb. Y never leaves the verb: ne comes before y and elides, pas comes after a, and the article that follows changes.",
+        "table": {
+          "columns": [
+            "Article",
+            "Positive",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "un / une",
+              "il y a un bus",
+              "il n’y a pas de bus"
+            ],
+            [
+              "des",
+              "il y a des places",
+              "il n’y a pas de places"
+            ],
+            [
+              "du / de la",
+              "il y a du pain",
+              "il n’y a pas de pain"
+            ],
+            [
+              "before a vowel",
+              "il y a une école",
+              "il n’y a pas d’école"
+            ]
+          ]
+        },
+        "steps": [
+          "Keep y directly in front of the verb.",
+          "Put the elided ne before y and pas after the verb.",
+          "Turn un, une, des, du, de la into de, or d’ before a vowel sound."
+        ],
+        "examples": [
+          {
+            "fr": "Il n’y a pas de place.",
+            "en": "There isn’t any room."
+          },
+          {
+            "fr": "Il n’y a pas d’école ici.",
+            "en": "There isn’t a school here."
+          }
+        ],
+        "watch": [
+          "Y never moves behind the verb and never comes before the negation word.",
+          "Ne cannot keep its e in front of y."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "consonant-ne-pas": {
+      "section": "place",
+      "steps": [
+        "Find the conjugated verb: the one that changes with the subject.",
+        "Write ne in front of it and pas straight after it.",
+        "Keep the subject first and everything else after pas."
+      ]
+    },
+    "vowel-elision": {
+      "section": "elision",
+      "steps": [
+        "Look at the verb that comes after ne.",
+        "If it begins with a vowel, drop the e of ne and join the two with an apostrophe, no space.",
+        "Leave pas after the verb: it never shortens."
+      ]
+    },
+    "silent-h-elision": {
+      "section": "elision",
+      "steps": [
+        "Say the verb: a silent h is not pronounced, so the word begins with a vowel sound.",
+        "Treat it exactly like a vowel and shorten ne, gluing it on with an apostrophe.",
+        "Keep pas in its usual place after the verb."
+      ]
+    },
+    "indefinite-to-de": {
+      "section": "articles",
+      "steps": [
+        "Find the article that follows pas.",
+        "Un, une, des, du and de la are all replaced by de.",
+        "Before a vowel sound or a silent h, use the apostrophe form instead.",
+        "Check the verb is not être, which keeps its article."
+      ]
+    },
+    "definite-article-stays": {
+      "section": "articles",
+      "steps": [
+        "Find the article that follows pas.",
+        "Decide whether it is definite (le, la, les) or indefinite and partitive (un, une, des, du, de la).",
+        "A definite article is copied from the positive sentence, unchanged."
+      ]
+    },
+    "ce-nest-pas": {
+      "section": "etre",
+      "steps": [
+        "Open c’est back into its two words and put the negation around the verb.",
+        "Elide ne before est.",
+        "If the noun after the verb is plural, use the plural form of être.",
+        "Copy the article of the positive sentence: être does not change it."
+      ]
+    },
+    "infinitive-ne-pas": {
+      "section": "infinitive",
+      "steps": [
+        "Decide which verb the negation belongs to: the conjugated one or the infinitive.",
+        "For an infinitive, keep the two words together right in front of it.",
+        "Leave the first verb positive and keep the de that links the two verbs."
+      ]
+    },
+    "passe-compose-auxiliary": {
+      "section": "two-verbs",
+      "steps": [
+        "Find the auxiliary: the form of avoir or être.",
+        "Put ne before it, eliding if it starts with a vowel, and pas directly after it.",
+        "Leave the past participle after pas, with its agreement."
+      ]
+    },
+    "futur-proche-aller": {
+      "section": "two-verbs",
+      "steps": [
+        "Find the conjugated verb: the form of aller.",
+        "Put ne before it and pas directly after it.",
+        "Leave the infinitive after pas, unchanged."
+      ]
+    },
+    "il-ny-a-pas-de": {
+      "section": "il-y-a",
+      "steps": [
+        "Keep y glued in front of the verb and put the elided negation word before y.",
+        "Put pas right after the verb.",
+        "Replace un, une, des, du or de la with de, or with the apostrophe form before a vowel sound."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "negation-consonant-rewrite",
@@ -29,7 +498,34 @@
       ],
       "hint": "The verb is parle. Put ne before it and pas after it.",
       "feedback": "Check that both parts of the written negation surround the conjugated verb.",
-      "explanation": "Ne and pas surround the conjugated verb parle. Français keeps its cedilla."
+      "explanation": "Ne and pas surround the conjugated verb parle. Français keeps its cedilla.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne pas parle français."
+          ],
+          "why": "Here the two negation words are stacked in front of the verb. With a single conjugated verb they go on either side of it, not side by side."
+        },
+        {
+          "answers": [
+            "Je parle ne pas français."
+          ],
+          "why": "Both negation words have moved behind the verb. Only the second one belongs there; the first stands in front of the verb."
+        },
+        {
+          "answers": [
+            "Je ne parle français pas."
+          ],
+          "why": "Pas has been pushed to the end of the sentence. It belongs immediately after the conjugated verb, before the object."
+        },
+        {
+          "answers": [
+            "Je n’parle pas français."
+          ],
+          "why": "Ne only shortens in front of a vowel sound, and this verb begins with a consonant, so the full word stays."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "negation-consonant-build",
@@ -50,7 +546,28 @@
       ],
       "hint": "Find the conjugated verb. Ne goes right before it and pas right after it.",
       "feedback": "Keep the subject first and the object together. The verb belongs between the two parts of the negation.",
-      "explanation": "Ne comes before regardez and pas comes after it. The definite article la does not change."
+      "explanation": "Ne comes before regardez and pas comes after it. The definite article la does not change.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous ne pas regardez la télé."
+          ],
+          "why": "The two negation words are stacked before the verb. With one conjugated verb they surround it instead."
+        },
+        {
+          "answers": [
+            "Vous regardez ne pas la télé."
+          ],
+          "why": "The first negation word has landed after the verb. It belongs in front of the conjugated verb."
+        },
+        {
+          "answers": [
+            "Vous regardez pas la télé."
+          ],
+          "why": "This drops the first negation word, which is what people do in speech. The written form keeps both words, one on each side of the verb."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "negation-consonant-complete",
@@ -63,7 +580,34 @@
       ],
       "hint": "Ne is already before travailles. What belongs after the verb?",
       "feedback": "The first part of the negation is already present. Supply its partner after the verb.",
-      "explanation": "The two parts of the negation surround travailles: ne travailles pas."
+      "explanation": "The two parts of the negation surround travailles: ne travailles pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne"
+          ],
+          "why": "That is the first half of the negation, and it is already printed in front of the verb. The blank is for the half that follows the verb."
+        },
+        {
+          "answers": [
+            "n’"
+          ],
+          "why": "That is the shortened first half, used before a vowel sound — and the first half is already in the sentence. The blank needs what comes after the verb."
+        },
+        {
+          "answers": [
+            "ne pas"
+          ],
+          "why": "This writes both halves in the blank, but the first one is already there before the verb. Only one word is missing."
+        },
+        {
+          "answers": [
+            "jamais"
+          ],
+          "why": "Jamais means “never”: a different negative word that changes the meaning. The sentence just needs the ordinary second half of the negation."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "negation-consonant-repair",
@@ -76,7 +620,34 @@
       ],
       "hint": "Travaillons is the verb. Put it between ne and pas.",
       "feedback": "The two parts of the negation should not sit together before the verb.",
-      "explanation": "The order is subject, ne, conjugated verb, pas: Nous ne travaillons pas."
+      "explanation": "The order is subject, ne, conjugated verb, pas: Nous ne travaillons pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous ne pas travaillons demain."
+          ],
+          "why": "This is the sentence as given: the two negation words are still stacked in front of the verb, which should stand between them."
+        },
+        {
+          "answers": [
+            "Nous travaillons ne pas demain."
+          ],
+          "why": "Now both negation words sit after the verb. Only the second one belongs there."
+        },
+        {
+          "answers": [
+            "Nous ne travaillons demain pas."
+          ],
+          "why": "Pas has been sent to the end of the sentence. It belongs immediately after the conjugated verb, before demain."
+        },
+        {
+          "answers": [
+            "Nous pas travaillons demain."
+          ],
+          "why": "This deletes the first negation word and leaves the other in front of the verb. The written form keeps both, one on each side."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "negation-vowel-rewrite",
@@ -98,7 +669,34 @@
       ],
       "hint": "Écoute starts with a vowel sound. Use n’ before it and pas after it.",
       "feedback": "Check both the placement of the negation and the elision before the vowel sound.",
-      "explanation": "The vowel sound at the start of écoute requires n’ rather than ne. La radio stays unchanged."
+      "explanation": "The vowel sound at the start of écoute requires n’ rather than ne. La radio stays unchanged.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne écoute pas la radio."
+          ],
+          "why": "Ne keeps its e only before a consonant sound. This verb starts with a vowel, so the e drops and an apostrophe joins the two words."
+        },
+        {
+          "answers": [
+            "Elle ne pas écoute la radio."
+          ],
+          "why": "The two negation words are together in front of the verb, and the first one has not shortened. The verb belongs between them."
+        },
+        {
+          "answers": [
+            "Elle n’écoute la radio pas."
+          ],
+          "why": "Pas has slid to the end of the sentence. It belongs right after the conjugated verb, before the object."
+        },
+        {
+          "answers": [
+            "Elle n’écoute pas de radio."
+          ],
+          "why": "The article has been replaced as though it were un or une. La is a definite article and stays as it is after the negation."
+        }
+      ],
+      "row": "a vowel (a, e, i, o, u)"
     },
     {
       "id": "negation-vowel-build",
@@ -119,7 +717,28 @@
       ],
       "hint": "Aimes begins with a vowel sound, so n’ joins directly to it.",
       "feedback": "The apostrophe tile must join directly to the verb. Keep the object after the negation.",
-      "explanation": "Ne shortens to n’ before aimes. Pas follows the verb, and the definite article le stays unchanged."
+      "explanation": "Ne shortens to n’ before aimes. Pas follows the verb, and the definite article le stays unchanged.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu pas n’aimes le thé."
+          ],
+          "why": "Pas has been placed in front of the verb. The shortened negation word goes there, and pas follows the verb."
+        },
+        {
+          "answers": [
+            "Tu aimes n’pas le thé."
+          ],
+          "why": "The whole negation has moved behind the verb as a block. The first word stays in front of it."
+        },
+        {
+          "answers": [
+            "Tu n’aimes pas thé."
+          ],
+          "why": "The article has been dropped, as if the negation deleted it. Only un, une, des, du and de la change; a definite article stays."
+        }
+      ],
+      "row": "a vowel (a, e, i, o, u)"
     },
     {
       "id": "negation-vowel-complete",
@@ -132,7 +751,28 @@
       ],
       "hint": "The next word, aimons, starts with a vowel sound.",
       "feedback": "The next word begins with a vowel sound. The missing part needs an apostrophe.",
-      "explanation": "Ne becomes n’ before aimons. The apostrophe joins n’ directly to the verb."
+      "explanation": "Ne becomes n’ before aimons. The apostrophe joins n’ directly to the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne"
+          ],
+          "why": "Before a vowel sound the e cannot stay: it is replaced by an apostrophe that joins the negation to the verb. Aimons begins with a vowel."
+        },
+        {
+          "answers": [
+            "n"
+          ],
+          "why": "The apostrophe is missing, and it is what glues the shortened word to the verb."
+        },
+        {
+          "answers": [
+            "ne pas"
+          ],
+          "why": "The second half of the negation is already printed after the verb. The blank takes only the first half, in the form the vowel requires."
+        }
+      ],
+      "row": "a vowel (a, e, i, o, u)"
     },
     {
       "id": "negation-vowel-repair",
@@ -145,7 +785,34 @@
       ],
       "hint": "Aime begins with a vowel sound. Shorten ne.",
       "feedback": "The negation is in the right position, but its first part must elide before a vowel sound.",
-      "explanation": "The e of ne disappears before aime and is replaced by an apostrophe. Pas is already in the right place."
+      "explanation": "The e of ne disappears before aime and is replaced by an apostrophe. Pas is already in the right place.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne aime pas le froid."
+          ],
+          "why": "This is the sentence unchanged: the e is still there in front of a vowel. Before a vowel sound it drops and an apostrophe joins the two words."
+        },
+        {
+          "answers": [
+            "Je ne pas aime le froid."
+          ],
+          "why": "Moving the two negation words together in front of the verb fixes nothing: the verb goes between them, and the first word still has to shorten."
+        },
+        {
+          "answers": [
+            "Je n’aime pas de froid."
+          ],
+          "why": "The article has been changed as though it were un or une. Le is a definite article and does not change after the negation."
+        },
+        {
+          "answers": [
+            "J’aime pas le froid."
+          ],
+          "why": "That is how people speak, but it drops the first negation word altogether. The written form keeps it, shortened before the vowel."
+        }
+      ],
+      "row": "a vowel (a, e, i, o, u)"
     },
     {
       "id": "negation-silent-h-rewrite",
@@ -164,7 +831,28 @@
       ],
       "hint": "A silent h allows the same elision as a vowel: n’habite.",
       "feedback": "Remember both parts of the written negation. The silent h affects the form of the first part.",
-      "explanation": "The h in habiter is silent, so ne becomes n’. Not every French word beginning with h allows this elision."
+      "explanation": "The h in habiter is silent, so ne becomes n’. Not every French word beginning with h allows this elision.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne habite pas ici."
+          ],
+          "why": "The h of habiter is not pronounced, so for the ear the verb begins with a vowel. Ne cannot keep its e in front of it."
+        },
+        {
+          "answers": [
+            "Elle ne pas habite ici."
+          ],
+          "why": "The two negation words are stacked before the verb, and the first one has not elided. The verb stands between them."
+        },
+        {
+          "answers": [
+            "Elle n’habite ici pas."
+          ],
+          "why": "Pas has been pushed to the end, after ici. It belongs directly after the conjugated verb."
+        }
+      ],
+      "row": "a silent h"
     },
     {
       "id": "negation-silent-h-build",
@@ -183,7 +871,28 @@
       ],
       "hint": "The silent h works like a vowel, so the apostrophe tile joins the verb. Pas follows the verb.",
       "feedback": "Keep the subject first. The silent h allows the apostrophe tile to join directly to the verb.",
-      "explanation": "Hésiter means to hesitate. Its silent h allows n’hésite, just as a vowel allows n’aime."
+      "explanation": "Hésiter means to hesitate. Its silent h allows n’hésite, just as a vowel allows n’aime.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il hésite n’pas."
+          ],
+          "why": "The negation has moved behind the verb as a block. The shortened word goes in front of the verb and only its partner follows."
+        },
+        {
+          "answers": [
+            "Il n’hésite."
+          ],
+          "why": "Only the first half of the negation is there. On its own it does not make a written sentence negative."
+        },
+        {
+          "answers": [
+            "Il hésite pas."
+          ],
+          "why": "Dropping the first word is normal in speech, but this exercise asks for the written form, which keeps it — shortened before the silent h."
+        }
+      ],
+      "row": "a silent h"
     },
     {
       "id": "negation-silent-h-complete",
@@ -196,7 +905,28 @@
       ],
       "hint": "Habites starts with a silent h. What happens to ne before a vowel sound?",
       "feedback": "Treat the silent h like a vowel sound when choosing the missing form.",
-      "explanation": "The silent h in habites allows elision. N’ goes immediately before the verb and pas immediately after it."
+      "explanation": "The silent h in habites allows elision. N’ goes immediately before the verb and pas immediately after it.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne"
+          ],
+          "why": "The h of habiter is silent, so the verb starts with a vowel sound for the ear. The e cannot stay in front of it."
+        },
+        {
+          "answers": [
+            "n"
+          ],
+          "why": "The apostrophe is missing, and it is what joins the shortened negation to the verb."
+        },
+        {
+          "answers": [
+            "ne pas"
+          ],
+          "why": "The second half of the negation is already in the sentence after the verb. The blank takes only the first half, in its shortened form."
+        }
+      ],
+      "row": "a silent h"
     },
     {
       "id": "negation-silent-h-repair",
@@ -212,7 +942,34 @@
       ],
       "hint": "A silent h lets ne shorten to n’.",
       "feedback": "The silent h requires elision. Change the first part of the negation, not the verb.",
-      "explanation": "The h in hésitons is silent, so ne must elide. Pas already follows the conjugated verb."
+      "explanation": "The h in hésitons is silent, so ne must elide. Pas already follows the conjugated verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous ne hésitons pas."
+          ],
+          "why": "This is the sentence as given. The h of hésiter is silent, so the verb counts as beginning with a vowel sound and the e must go."
+        },
+        {
+          "answers": [
+            "Nous ne pas hésitons."
+          ],
+          "why": "The verb has been taken out from between the two negation words, and the first word still has not elided."
+        },
+        {
+          "answers": [
+            "Nous hésitons pas."
+          ],
+          "why": "Dropping the first negation word is casual speech; the written form keeps it, shortened in front of the silent h."
+        },
+        {
+          "answers": [
+            "Nous n’hésitons."
+          ],
+          "why": "Removing the second half is not the fix: the verb needs both halves, one on each side."
+        }
+      ],
+      "row": "a silent h"
     },
     {
       "id": "negation-indefinite-to-de-choose",
@@ -231,7 +988,28 @@
       ],
       "hint": "After ne…pas, the article un, une or des changes.",
       "feedback": "Un does not stay after the negation, and vélo does not begin with a vowel.",
-      "explanation": "After a negation, un, une and des become de: il n’a pas de vélo."
+      "explanation": "After a negation, un, une and des become de: il n’a pas de vélo.",
+      "mistakes": [
+        {
+          "answers": [
+            "un"
+          ],
+          "why": "Un is the article of the positive sentence. After the negation an indefinite article is replaced, so it cannot stay."
+        },
+        {
+          "answers": [
+            "d’"
+          ],
+          "why": "The apostrophe form is used only in front of a vowel sound, and vélo begins with a consonant."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is the plural indefinite article, replaced after the negation just like un — and the noun here is singular."
+        }
+      ],
+      "row": "un / une"
     },
     {
       "id": "negation-indefinite-to-de-complete",
@@ -244,7 +1022,34 @@
       ],
       "hint": "Des changes after the negation, and enfants begins with a vowel.",
       "feedback": "Des does not stay after pas. Check the word that follows the blank.",
-      "explanation": "Des becomes de after the negation, and de becomes d’ before the vowel of enfants."
+      "explanation": "Des becomes de after the negation, and de becomes d’ before the vowel of enfants.",
+      "mistakes": [
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des is the article of the positive sentence. After the negation a plural indefinite article is replaced."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "The replacement article is right, but enfants begins with a vowel sound, so its e gives way to an apostrophe."
+        },
+        {
+          "answers": [
+            "d"
+          ],
+          "why": "The apostrophe is missing; it is what joins the word to the noun that follows."
+        },
+        {
+          "answers": [
+            "un"
+          ],
+          "why": "Enfants is plural, so a singular article does not fit — and after the negation an indefinite article is replaced anyway."
+        }
+      ],
+      "row": "de before a vowel"
     },
     {
       "id": "negation-indefinite-to-de-rewrite",
@@ -263,7 +1068,34 @@
       ],
       "hint": "Put ne…pas around mange, then check what happens to une.",
       "feedback": "The negation is only half the job. Look at the article after the verb.",
-      "explanation": "Une becomes de after ne…pas: il ne mange pas de pomme."
+      "explanation": "Une becomes de after ne…pas: il ne mange pas de pomme.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il ne mange pas une pomme."
+          ],
+          "why": "The negation is placed correctly, but une has been kept. After the negation an indefinite article is replaced."
+        },
+        {
+          "answers": [
+            "Il ne mange pas d’pomme."
+          ],
+          "why": "The apostrophe form belongs before a vowel sound, and pomme begins with a consonant."
+        },
+        {
+          "answers": [
+            "Il ne pas mange une pomme."
+          ],
+          "why": "Two things went wrong: the verb must stand between the two negation words, and the indefinite article still has to change."
+        },
+        {
+          "answers": [
+            "Il ne mange pas de la pomme."
+          ],
+          "why": "De la is a partitive article, and the negation replaces it too instead of adding it."
+        }
+      ],
+      "row": "un / une"
     },
     {
       "id": "negation-indefinite-to-de-translate",
@@ -282,7 +1114,34 @@
       ],
       "hint": "Use avoir. After the negation, the word for a changes.",
       "feedback": "Check the elision of ne before ai, and the article after pas.",
-      "explanation": "Ne becomes n’ before ai, and une becomes de after the negation: je n’ai pas de voiture."
+      "explanation": "Ne becomes n’ before ai, and une becomes de after the negation: je n’ai pas de voiture.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je n’ai pas une voiture."
+          ],
+          "why": "The English a has been translated with the plain indefinite article. After a negation that article is replaced."
+        },
+        {
+          "answers": [
+            "Je ne ai pas de voiture."
+          ],
+          "why": "Ai begins with a vowel, so ne cannot keep its e in front of it."
+        },
+        {
+          "answers": [
+            "Je n’ai pas d’voiture."
+          ],
+          "why": "The apostrophe form is used only before a vowel sound, and voiture begins with a consonant."
+        },
+        {
+          "answers": [
+            "J’ai pas une voiture."
+          ],
+          "why": "This drops the first negation word, which is speech rather than writing, and keeps the article the negation replaces."
+        }
+      ],
+      "row": "un / une"
     },
     {
       "id": "negation-indefinite-to-de-repair",
@@ -295,7 +1154,28 @@
       ],
       "hint": "The negation is in the right place. Look at the article after it.",
       "feedback": "Des does not stay after pas.",
-      "explanation": "Des becomes de after a negation: elle ne porte pas de lunettes."
+      "explanation": "Des becomes de after a negation: elle ne porte pas de lunettes.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne porte pas des lunettes."
+          ],
+          "why": "This is the sentence unchanged. Des is an indefinite article and cannot survive the negation."
+        },
+        {
+          "answers": [
+            "Elle ne porte pas d’lunettes."
+          ],
+          "why": "The apostrophe form belongs before a vowel sound, and lunettes begins with a consonant."
+        },
+        {
+          "answers": [
+            "Elle ne porte pas les lunettes."
+          ],
+          "why": "Swapping in a definite article changes the meaning to “the glasses”. The indefinite article is replaced by something else."
+        }
+      ],
+      "row": "des"
     },
     {
       "id": "negation-definite-article-stays-choose",
@@ -313,7 +1193,22 @@
       ],
       "hint": "After aimer you talk about things in general with le, la, les. Does that article change after the negation?",
       "feedback": "Only un, une and des (and du, de la) change after pas. The article here does not.",
-      "explanation": "Le, la and les do not change after a negation: je n’aime pas le café."
+      "explanation": "Le, la and les do not change after a negation: je n’aime pas le café.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "That is what un, une and des turn into after a negation. The article here is definite, and definite articles do not change."
+        },
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is the partitive: some coffee. It is replaced after a negation too, and aimer takes a definite article anyway."
+        }
+      ],
+      "row": "le / la / les"
     },
     {
       "id": "negation-definite-article-stays-rewrite",
@@ -332,7 +1227,34 @@
       ],
       "hint": "Put ne…pas around the verb. Do you need to change le?",
       "feedback": "Check that the article after the verb is the same as in the original sentence.",
-      "explanation": "Le does not change after the negation: ils ne regardent pas le match."
+      "explanation": "Le does not change after the negation: ils ne regardent pas le match.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils ne regardent pas de match."
+          ],
+          "why": "The article has been replaced as if it were un or des. A definite article survives the negation unchanged."
+        },
+        {
+          "answers": [
+            "Ils ne pas regardent le match."
+          ],
+          "why": "The two negation words are together in front of the verb. The conjugated verb belongs between them."
+        },
+        {
+          "answers": [
+            "Ils n’regardent pas le match."
+          ],
+          "why": "Ne only shortens before a vowel sound, and regardent begins with a consonant."
+        },
+        {
+          "answers": [
+            "Ils ne regardent le match pas."
+          ],
+          "why": "Pas has been moved to the end of the sentence; it belongs right after the conjugated verb."
+        }
+      ],
+      "row": "le / la / les"
     },
     {
       "id": "negation-definite-article-stays-translate",
@@ -351,7 +1273,28 @@
       ],
       "hint": "Aime begins with a vowel. The article la stays as it is.",
       "feedback": "Check the elision before aime and keep the article la.",
-      "explanation": "Ne becomes n’ before aime, and la does not change after pas."
+      "explanation": "Ne becomes n’ before aime, and la does not change after pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne aime pas la ville."
+          ],
+          "why": "Aime begins with a vowel, so ne loses its e and joins the verb with an apostrophe."
+        },
+        {
+          "answers": [
+            "Elle n’aime pas de ville."
+          ],
+          "why": "The article has been replaced as though it were une. Only indefinite and partitive articles change; a definite one stays."
+        },
+        {
+          "answers": [
+            "Elle n’aime pas ville."
+          ],
+          "why": "The noun has been left bare. The negation does not delete the article of the positive sentence."
+        }
+      ],
+      "row": "le / la / les"
     },
     {
       "id": "negation-definite-article-stays-build",
@@ -373,7 +1316,28 @@
       ],
       "hint": "Only un, une and des change after the negation.",
       "feedback": "The article in the original sentence is les. Does it change?",
-      "explanation": "Les does not change after a negation: nous n’aimons pas les légumes."
+      "explanation": "Les does not change after a negation: nous n’aimons pas les légumes.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous n’aimons pas de légumes."
+          ],
+          "why": "This uses the extra tile: the article has been swapped as if it were des. A definite article does not change after the negation."
+        },
+        {
+          "answers": [
+            "Nous n’aimons pas légumes."
+          ],
+          "why": "The article has been dropped. French keeps it here; the negation does not delete it."
+        },
+        {
+          "answers": [
+            "Nous pas n’aimons les légumes."
+          ],
+          "why": "Pas has been placed in front of the verb. Only the shortened first word goes there."
+        }
+      ],
+      "row": "le / la / les"
     },
     {
       "id": "negation-ce-nest-pas-choose",
@@ -391,7 +1355,22 @@
       ],
       "hint": "Est begins with a vowel, so ne shortens.",
       "feedback": "Written French needs both parts of the negation, and ne must elide before est.",
-      "explanation": "Ce n’est pas: ne becomes n’ before est."
+      "explanation": "Ce n’est pas: ne becomes n’ before est.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne est"
+          ],
+          "why": "Est begins with a vowel, so the two words cannot stay apart: the e drops and an apostrophe joins them."
+        },
+        {
+          "answers": [
+            "est"
+          ],
+          "why": "This leaves out the first half of the negation. Written French keeps both halves around the verb, and the first one shortens before a vowel."
+        }
+      ],
+      "row": "a possessive (mon, mes)"
     },
     {
       "id": "negation-ce-nest-pas-choose-article",
@@ -409,7 +1388,22 @@
       ],
       "hint": "The verb here is être. After être, the article does not change.",
       "feedback": "The rule un → de does not apply after être.",
-      "explanation": "After être, un, une and des stay the same: ce n’est pas un problème."
+      "explanation": "After être, un, une and des stay the same: ce n’est pas un problème.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "That replacement happens after most verbs, but not after être: here the article of the positive sentence stays."
+        },
+        {
+          "answers": [
+            "d’"
+          ],
+          "why": "That is the vowel form of the replacement article. After être nothing is replaced, and problème begins with a consonant anyway."
+        }
+      ],
+      "row": "one thing"
     },
     {
       "id": "negation-ce-nest-pas-complete",
@@ -422,7 +1416,29 @@
       ],
       "hint": "Before a plural noun, c’est becomes ce sont.",
       "feedback": "The noun after the verb is plural, and ne has not been shortened.",
-      "explanation": "Before a plural noun, standard written French uses ce ne sont pas."
+      "explanation": "Before a plural noun, standard written French uses ce ne sont pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "est"
+          ],
+          "why": "Est is the singular of être, the form used when one thing is meant. Mes chaussures is plural, so the verb has to be plural too."
+        },
+        {
+          "answers": [
+            "sommes",
+            "êtes"
+          ],
+          "why": "Sommes goes only with nous and êtes only with vous. The subject here is ce, which takes a third-person form of être."
+        },
+        {
+          "answers": [
+            "n’est"
+          ],
+          "why": "The first half of the negation is already printed before the blank, so this doubles it — and the verb still has to match a plural noun."
+        }
+      ],
+      "row": "several things"
     },
     {
       "id": "negation-ce-nest-pas-rewrite",
@@ -441,7 +1457,28 @@
       ],
       "hint": "C’est is ce + est. Put ne…pas around est.",
       "feedback": "Do you need to change une after être?",
-      "explanation": "Ce n’est pas une bonne idée: une does not change after être."
+      "explanation": "Ce n’est pas une bonne idée: une does not change after être.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce n’est pas de bonne idée."
+          ],
+          "why": "The article has been replaced as if this were an ordinary verb. After être the article of the positive sentence stays."
+        },
+        {
+          "answers": [
+            "Ce ne est pas une bonne idée."
+          ],
+          "why": "Est begins with a vowel, so the e of ne cannot stay in front of it."
+        },
+        {
+          "answers": [
+            "C’est ne pas une bonne idée."
+          ],
+          "why": "The negation has been dropped in after c’est. To negate it, c’est opens back into its two words with the negation around the verb."
+        }
+      ],
+      "row": "one thing"
     },
     {
       "id": "negation-ce-nest-pas-translate",
@@ -464,7 +1501,28 @@
       ],
       "hint": "Keys is plural. Use the plural of c’est.",
       "feedback": "Check the form of être for a plural noun.",
-      "explanation": "Before a plural noun, standard written French uses ce ne sont pas: ce ne sont pas mes clés."
+      "explanation": "Before a plural noun, standard written French uses ce ne sont pas: ce ne sont pas mes clés.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils ne sont pas mes clés."
+          ],
+          "why": "A subject pronoun points at people or things already named. To say “these are”, French uses the demonstrative subject ce."
+        },
+        {
+          "answers": [
+            "Ces ne sont pas mes clés."
+          ],
+          "why": "Ces is the plural demonstrative used in front of a noun (ces clés). As the subject of être, the invariable form is used."
+        },
+        {
+          "answers": [
+            "Ce sont pas mes clés."
+          ],
+          "why": "The verb is plural as it should be, but the first half of the negation has been dropped; the written form keeps it."
+        }
+      ],
+      "row": "several things"
     },
     {
       "id": "negation-infinitive-ne-pas-choose",
@@ -482,7 +1540,22 @@
       ],
       "hint": "Before an infinitive, the two parts of the negation stay together.",
       "feedback": "The infinitive does not go between ne and pas.",
-      "explanation": "To make an infinitive negative, put ne pas together in front of it: ne pas prendre."
+      "explanation": "To make an infinitive negative, put ne pas together in front of it: ne pas prendre.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne prendre pas"
+          ],
+          "why": "This splits the negation around the infinitive, the way a conjugated verb is treated. An infinitive is not surrounded."
+        },
+        {
+          "answers": [
+            "pas ne prendre"
+          ],
+          "why": "The two words are in the wrong order: pas never comes first."
+        }
+      ],
+      "row": "verb + de + ne pas + infinitive"
     },
     {
       "id": "negation-infinitive-ne-pas-build",
@@ -503,7 +1576,28 @@
       ],
       "hint": "Essayer de is followed by an infinitive. The negation goes with the infinitive.",
       "feedback": "Ne and pas stay side by side before rire.",
-      "explanation": "Ne pas stays together before the infinitive: il essaie de ne pas rire."
+      "explanation": "Ne pas stays together before the infinitive: il essaie de ne pas rire.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il ne essaie pas de rire."
+          ],
+          "why": "This negates the first verb: it says he is not trying. The negation belongs with the second verb, the infinitive."
+        },
+        {
+          "answers": [
+            "Il essaie de pas ne rire."
+          ],
+          "why": "The two negation words are in the wrong order in front of the infinitive; pas never comes first."
+        },
+        {
+          "answers": [
+            "Il essaie ne pas de rire."
+          ],
+          "why": "The negation has jumped in front of de. De belongs to essayer and stays attached to it."
+        }
+      ],
+      "row": "verb + de + ne pas + infinitive"
     },
     {
       "id": "negation-infinitive-ne-pas-rewrite",
@@ -516,7 +1610,34 @@
       ],
       "hint": "The verb décide stays positive. Negate partir.",
       "feedback": "Put both parts of the negation in one place.",
-      "explanation": "Ne pas goes together before the infinitive partir."
+      "explanation": "Ne pas goes together before the infinitive partir.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne décide pas de partir."
+          ],
+          "why": "This negates the first verb: it says she is not deciding. The instruction asks for the second verb to be negative."
+        },
+        {
+          "answers": [
+            "Elle décide de ne partir pas."
+          ],
+          "why": "The infinitive has been placed between the two negation words. Only a conjugated verb is surrounded like that."
+        },
+        {
+          "answers": [
+            "Elle décide de pas partir."
+          ],
+          "why": "Dropping the first negation word is casual speech; the written form keeps both, side by side in front of the infinitive."
+        },
+        {
+          "answers": [
+            "Elle décide ne pas de partir."
+          ],
+          "why": "De belongs to décider and cannot be separated from it; the negation comes after de."
+        }
+      ],
+      "row": "verb + de + ne pas + infinitive"
     },
     {
       "id": "negation-infinitive-ne-pas-repair",
@@ -529,7 +1650,28 @@
       ],
       "hint": "With an infinitive, the two parts of the negation are not split.",
       "feedback": "Pas is on the wrong side of travailler.",
-      "explanation": "Ne pas stays together before the infinitive: ne pas travailler."
+      "explanation": "Ne pas stays together before the infinitive: ne pas travailler.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous préférons ne travailler pas le dimanche."
+          ],
+          "why": "This is the sentence as given: the infinitive is sitting between the two negation words, the way a conjugated verb would."
+        },
+        {
+          "answers": [
+            "Nous ne préférons pas travailler le dimanche."
+          ],
+          "why": "This moves the negation onto the first verb and changes the meaning to “we don’t prefer”. It should stay with the infinitive."
+        },
+        {
+          "answers": [
+            "Nous préférons pas travailler le dimanche."
+          ],
+          "why": "This deletes the first negation word instead of moving the second one. Written French keeps both."
+        }
+      ],
+      "row": "verb + ne pas + infinitive"
     },
     {
       "id": "negation-infinitive-ne-pas-translate",
@@ -543,7 +1685,34 @@
       ],
       "hint": "Préférer is positive here; it is sortir that is negative.",
       "feedback": "Check where ne and pas go when they negate an infinitive.",
-      "explanation": "Ne pas goes together in front of the infinitive: je préfère ne pas sortir."
+      "explanation": "Ne pas goes together in front of the infinitive: je préfère ne pas sortir.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne préfère pas sortir."
+          ],
+          "why": "This negates the first verb and means “I don’t prefer to go out”. The English puts the negation on the second verb."
+        },
+        {
+          "answers": [
+            "Je préfère ne sortir pas."
+          ],
+          "why": "The infinitive has been slipped between the two negation words; they stay together in front of it."
+        },
+        {
+          "answers": [
+            "Je préfère de ne pas sortir."
+          ],
+          "why": "Préférer is followed directly by an infinitive, with no de in between."
+        },
+        {
+          "answers": [
+            "Je préfère pas sortir."
+          ],
+          "why": "The first negation word has been dropped. That is speech, not the written form."
+        }
+      ],
+      "row": "verb + ne pas + infinitive"
     },
     {
       "id": "negation-passe-compose-auxiliary-choose",
@@ -562,7 +1731,28 @@
       ],
       "hint": "In the passé composé, the negation surrounds the auxiliary.",
       "feedback": "Pas goes before the past participle, and ne elides before ai.",
-      "explanation": "Ne…pas surrounds the auxiliary ai, and the participle vu comes after: je n’ai pas vu."
+      "explanation": "Ne…pas surrounds the auxiliary ai, and the participle vu comes after: je n’ai pas vu.",
+      "mistakes": [
+        {
+          "answers": [
+            "n’ai vu pas"
+          ],
+          "why": "Pas has been put after the participle. In a compound tense it sits between the auxiliary and the participle."
+        },
+        {
+          "answers": [
+            "ne pas ai vu"
+          ],
+          "why": "The two negation words are stacked in front of the auxiliary, which should stand between them."
+        },
+        {
+          "answers": [
+            "ne ai pas vu"
+          ],
+          "why": "The order is right, but the auxiliary begins with a vowel, so ne cannot keep its e."
+        }
+      ],
+      "row": "passé composé (avoir)"
     },
     {
       "id": "negation-passe-compose-auxiliary-complete",
@@ -575,7 +1765,40 @@
       ],
       "hint": "The negation goes around the auxiliary, which begins with a vowel.",
       "feedback": "Write the auxiliary with the negation around it, not the participle.",
-      "explanation": "Ne becomes n’ before avons, and pas follows it: nous n’avons pas mangé."
+      "explanation": "Ne becomes n’ before avons, and pas follows it: nous n’avons pas mangé.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne avons pas"
+          ],
+          "why": "The auxiliary begins with a vowel, so the e of ne has to drop and an apostrophe joins the two words."
+        },
+        {
+          "answers": [
+            "n’avons"
+          ],
+          "why": "Only the first half of the negation is written. The auxiliary needs the other half right after it, before the participle."
+        },
+        {
+          "answers": [
+            "ne pas avons"
+          ],
+          "why": "The two negation words are stacked in front of the auxiliary, and the first has not elided. The auxiliary belongs between them."
+        },
+        {
+          "answers": [
+            "n’ai pas"
+          ],
+          "why": "That is the je form of the auxiliary. The subject here is nous, so the auxiliary must match it."
+        },
+        {
+          "answers": [
+            "ne sommes pas"
+          ],
+          "why": "Manger builds its compound past with avoir; être is used only with a short list of verbs and with reflexives."
+        }
+      ],
+      "row": "passé composé (avoir)"
     },
     {
       "id": "negation-passe-compose-auxiliary-rewrite",
@@ -594,7 +1817,28 @@
       ],
       "hint": "The auxiliary is ont. Put the negation around it.",
       "feedback": "Pas goes between the auxiliary and the past participle.",
-      "explanation": "In the passé composé, ne…pas surrounds the auxiliary: ils n’ont pas fini."
+      "explanation": "In the passé composé, ne…pas surrounds the auxiliary: ils n’ont pas fini.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils n’ont fini pas leurs devoirs."
+          ],
+          "why": "Pas has been placed after the participle. It belongs directly after the auxiliary."
+        },
+        {
+          "answers": [
+            "Ils ne ont pas fini leurs devoirs."
+          ],
+          "why": "The auxiliary begins with a vowel, so ne loses its e and joins it with an apostrophe."
+        },
+        {
+          "answers": [
+            "Ils ne pas ont fini leurs devoirs."
+          ],
+          "why": "The two negation words are together in front of the auxiliary, which should stand between them."
+        }
+      ],
+      "row": "passé composé (avoir)"
     },
     {
       "id": "negation-passe-compose-auxiliary-translate",
@@ -613,7 +1857,34 @@
       ],
       "hint": "Venir uses être in the passé composé. The negation goes around the auxiliary.",
       "feedback": "Check the auxiliary, the negation around it, and the agreement of the participle.",
-      "explanation": "Elle n’est pas venue: ne…pas surrounds est, and venue agrees with elle."
+      "explanation": "Elle n’est pas venue: ne…pas surrounds est, and venue agrees with elle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle n’a pas venu."
+          ],
+          "why": "Venir is one of the verbs that build the compound past with être, not avoir, and its participle then agrees with the subject."
+        },
+        {
+          "answers": [
+            "Elle n’est pas venu."
+          ],
+          "why": "The auxiliary is right, but with être the participle agrees with the subject, and the subject here is feminine."
+        },
+        {
+          "answers": [
+            "Elle ne est pas venue."
+          ],
+          "why": "Est begins with a vowel, so ne cannot keep its e in front of it."
+        },
+        {
+          "answers": [
+            "Elle n’est venue pas."
+          ],
+          "why": "Pas has been sent after the participle; it belongs right after the auxiliary."
+        }
+      ],
+      "row": "passé composé (être)"
     },
     {
       "id": "negation-passe-compose-auxiliary-repair",
@@ -626,7 +1897,34 @@
       ],
       "hint": "In the passé composé, pas does not go after the participle.",
       "feedback": "Move pas so it sits right after the auxiliary.",
-      "explanation": "Ne…pas surrounds the auxiliary as, and the participle vu follows: tu n’as pas vu mon message."
+      "explanation": "Ne…pas surrounds the auxiliary as, and the participle vu follows: tu n’as pas vu mon message.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu n’as vu pas mon message."
+          ],
+          "why": "This is the sentence as given: pas is still standing after the participle instead of next to the auxiliary."
+        },
+        {
+          "answers": [
+            "Tu ne pas as vu mon message."
+          ],
+          "why": "Both negation words have moved in front of the auxiliary, and the elision has been lost. The auxiliary belongs between them."
+        },
+        {
+          "answers": [
+            "Tu n’as vu mon message pas."
+          ],
+          "why": "Moving pas to the end does not fix it; it belongs immediately after the auxiliary."
+        },
+        {
+          "answers": [
+            "Tu as pas vu mon message."
+          ],
+          "why": "This drops the first negation word instead of moving the second one; the written form keeps both around the auxiliary."
+        }
+      ],
+      "row": "passé composé (avoir)"
     },
     {
       "id": "negation-futur-proche-aller-choose",
@@ -644,7 +1942,22 @@
       ],
       "hint": "In the futur proche, the negation goes around the form of aller.",
       "feedback": "Aller is the conjugated verb. It needs both parts of the negation around it.",
-      "explanation": "Ne…pas surrounds allons, and the infinitive partir comes after: nous n’allons pas partir."
+      "explanation": "Ne…pas surrounds allons, and the infinitive partir comes after: nous n’allons pas partir.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne pas allons"
+          ],
+          "why": "The two negation words are stacked in front of the conjugated verb, which should stand between them — and ne has to shorten before a vowel."
+        },
+        {
+          "answers": [
+            "n’allons"
+          ],
+          "why": "Only the first half of the negation is there. Written French needs the other half right after the conjugated verb."
+        }
+      ],
+      "row": "futur proche"
     },
     {
       "id": "negation-futur-proche-aller-build",
@@ -665,7 +1978,28 @@
       ],
       "hint": "Vais is the conjugated verb. Put ne before it and pas after it.",
       "feedback": "The infinitive travailler comes after pas.",
-      "explanation": "In the futur proche, ne…pas surrounds aller: je ne vais pas travailler."
+      "explanation": "In the futur proche, ne…pas surrounds aller: je ne vais pas travailler.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne vais travailler pas demain."
+          ],
+          "why": "Pas has been put after the infinitive. It belongs right after the conjugated verb."
+        },
+        {
+          "answers": [
+            "Je ne pas vais travailler demain."
+          ],
+          "why": "The two negation words sit together before the verb; the conjugated verb goes between them."
+        },
+        {
+          "answers": [
+            "Je vais ne pas travailler demain."
+          ],
+          "why": "This negates the infinitive instead, as if it meant “I am going to not work”. Here it is the conjugated verb that is negated."
+        }
+      ],
+      "row": "futur proche"
     },
     {
       "id": "negation-futur-proche-aller-rewrite",
@@ -684,7 +2018,34 @@
       ],
       "hint": "The conjugated verb is vas. It begins with a consonant.",
       "feedback": "Negate vas, not aimer.",
-      "explanation": "Ne…pas surrounds vas, then the infinitive follows: tu ne vas pas aimer ce film."
+      "explanation": "Ne…pas surrounds vas, then the infinitive follows: tu ne vas pas aimer ce film.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu vas ne pas aimer ce film."
+          ],
+          "why": "This puts the negation on the infinitive. The instruction asks for the conjugated verb to be negated."
+        },
+        {
+          "answers": [
+            "Tu ne vas aimer pas ce film."
+          ],
+          "why": "Pas has been placed after the infinitive; it belongs directly after the conjugated verb."
+        },
+        {
+          "answers": [
+            "Tu n’vas pas aimer ce film."
+          ],
+          "why": "Ne only shortens before a vowel sound, and this verb begins with a consonant."
+        },
+        {
+          "answers": [
+            "Tu ne pas vas aimer ce film."
+          ],
+          "why": "The two negation words are together in front of the verb, which should stand between them."
+        }
+      ],
+      "row": "futur proche"
     },
     {
       "id": "negation-futur-proche-aller-repair",
@@ -697,7 +2058,34 @@
       ],
       "hint": "Pas belongs with the conjugated verb va.",
       "feedback": "Pas should not come after the infinitive.",
-      "explanation": "In the futur proche, ne…pas surrounds aller: il ne va pas venir."
+      "explanation": "In the futur proche, ne…pas surrounds aller: il ne va pas venir.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il ne va venir pas ce soir."
+          ],
+          "why": "This is the sentence as given: pas is still after the infinitive instead of next to the conjugated verb."
+        },
+        {
+          "answers": [
+            "Il ne va venir ce soir pas."
+          ],
+          "why": "Moving pas to the end does not help; it belongs right after the conjugated verb."
+        },
+        {
+          "answers": [
+            "Il va ne pas venir ce soir."
+          ],
+          "why": "This turns it into a negative infinitive. The sentence negates the conjugated verb, which takes one word on each side."
+        },
+        {
+          "answers": [
+            "Il ne vient pas ce soir."
+          ],
+          "why": "This changes the tense instead of repairing the word order; the sentence keeps its two verbs."
+        }
+      ],
+      "row": "futur proche"
     },
     {
       "id": "negation-futur-proche-aller-translate",
@@ -720,7 +2108,34 @@
       ],
       "hint": "Negate the form of aller and keep manger in the infinitive.",
       "feedback": "Check that ne and pas surround vont.",
-      "explanation": "Ne…pas surrounds vont: ils ne vont pas manger ici."
+      "explanation": "Ne…pas surrounds vont: ils ne vont pas manger ici.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils ne vont manger pas ici."
+          ],
+          "why": "Pas has been placed after the infinitive; it belongs directly after the conjugated verb."
+        },
+        {
+          "answers": [
+            "Ils vont ne pas manger ici."
+          ],
+          "why": "This makes the infinitive negative, which says they are going to not eat. The conjugated verb carries the negation here."
+        },
+        {
+          "answers": [
+            "Ils n’vont pas manger ici."
+          ],
+          "why": "Ne only shortens before a vowel sound, and the conjugated verb here begins with a consonant."
+        },
+        {
+          "answers": [
+            "Ils ne pas vont manger ici."
+          ],
+          "why": "The negation words are stacked in front of the verb instead of surrounding it."
+        }
+      ],
+      "row": "futur proche"
     },
     {
       "id": "negation-il-ny-a-pas-de-choose",
@@ -738,7 +2153,22 @@
       ],
       "hint": "Y stays right before a, and ne comes before y.",
       "feedback": "Ne goes before y, and it elides before the vowel.",
-      "explanation": "Il n’y a pas: n’ comes before y, and pas comes after a."
+      "explanation": "Il n’y a pas: n’ comes before y, and pas comes after a.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne y"
+          ],
+          "why": "The order is right, but the e cannot stay in front of y: it is replaced by an apostrophe."
+        },
+        {
+          "answers": [
+            "y n’"
+          ],
+          "why": "The order is reversed. Y stays glued in front of the verb, and the negation word comes before y."
+        }
+      ],
+      "row": "un / une"
     },
     {
       "id": "negation-il-ny-a-pas-de-complete",
@@ -751,7 +2181,34 @@
       ],
       "hint": "After il n’y a pas, un becomes de. Look at the next word.",
       "feedback": "Un does not stay after pas, and hôtel starts with a silent h.",
-      "explanation": "Un becomes de after the negation, and de becomes d’ before the silent h of hôtel."
+      "explanation": "Un becomes de after the negation, and de becomes d’ before the silent h of hôtel.",
+      "mistakes": [
+        {
+          "answers": [
+            "un"
+          ],
+          "why": "Un is the article of the positive sentence. After a negation an indefinite article is replaced."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "The replacement article is right, but hôtel starts with a silent h, which counts as a vowel sound: the e gives way to an apostrophe."
+        },
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Hôtel is singular here, and a plural indefinite article would be replaced after the negation anyway."
+        },
+        {
+          "answers": [
+            "d"
+          ],
+          "why": "The apostrophe is missing; it is what joins the word to the noun."
+        }
+      ],
+      "row": "before a vowel"
     },
     {
       "id": "negation-il-ny-a-pas-de-translate",
@@ -771,7 +2228,34 @@
       ],
       "hint": "Use il y a, then make it negative. The article changes after pas.",
       "feedback": "Check the position of ne around y a, and the word after pas.",
-      "explanation": "Il n’y a pas de: une becomes de after the negation."
+      "explanation": "Il n’y a pas de: une becomes de after the negation.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il n’y a pas une boulangerie ici."
+          ],
+          "why": "The English a has been kept as an indefinite article. After the negation that article is replaced."
+        },
+        {
+          "answers": [
+            "Il ne y a pas de boulangerie ici."
+          ],
+          "why": "The e cannot stay in front of y: the two join with an apostrophe."
+        },
+        {
+          "answers": [
+            "Il n’y a pas d’boulangerie ici."
+          ],
+          "why": "The apostrophe form is used only before a vowel sound, and boulangerie begins with a consonant."
+        },
+        {
+          "answers": [
+            "Il n’est pas une boulangerie ici."
+          ],
+          "why": "Être does not express existence here. Saying what there is uses the fixed expression with y, and its article changes after the negation."
+        }
+      ],
+      "row": "un / une"
     },
     {
       "id": "negation-il-ny-a-pas-de-build",
@@ -793,7 +2277,28 @@
       ],
       "hint": "Il y a is negated like any verb, and the article after pas changes.",
       "feedback": "Des does not stay after pas.",
-      "explanation": "Il n’y a pas de chaises: des becomes de after the negation."
+      "explanation": "Il n’y a pas de chaises: des becomes de after the negation.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il n’y a pas des chaises."
+          ],
+          "why": "This keeps the plural indefinite article from the positive sentence, using the extra tile. The negation replaces it."
+        },
+        {
+          "answers": [
+            "Il n’y a pas chaises."
+          ],
+          "why": "The noun has been left without any article. After the negation the article is replaced, not deleted."
+        },
+        {
+          "answers": [
+            "Il a n’y pas de chaises."
+          ],
+          "why": "Y has been pulled behind the verb. It stays directly in front of it, with the negation word ahead of it."
+        }
+      ],
+      "row": "des"
     },
     {
       "id": "negation-il-ny-a-pas-de-rewrite",
@@ -812,7 +2317,34 @@
       ],
       "hint": "Ne goes before y, pas after a. Then check the article.",
       "feedback": "Remember the change to des after the negation.",
-      "explanation": "Il n’y a pas de nuages: n’ comes before y, and des becomes de."
+      "explanation": "Il n’y a pas de nuages: n’ comes before y, and des becomes de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il n’y a pas des nuages."
+          ],
+          "why": "The plural indefinite article has been kept. After a negation it is replaced."
+        },
+        {
+          "answers": [
+            "Il ne y a pas de nuages."
+          ],
+          "why": "The e has to go in front of y: an apostrophe replaces it."
+        },
+        {
+          "answers": [
+            "Il y n’a pas de nuages."
+          ],
+          "why": "The negation word has been squeezed between y and the verb. Y stays glued to the verb, and the negation comes in front of y."
+        },
+        {
+          "answers": [
+            "Il n’y a pas de nuage."
+          ],
+          "why": "Only the article was meant to change; turning the noun singular changes what the sentence says."
+        }
+      ],
+      "row": "des"
     }
   ]
 }

@@ -5,9 +5,528 @@
   "title": "Questions",
   "description": "Ask yes-or-no questions three ways: intonation, est-ce que and inversion.",
   "mark": "?",
-  "rule": "A yes-or-no question can keep statement order with a rising voice (Tu viens ?), or start with est-ce que, shortened to est-ce qu’ before a vowel sound, still with normal order (Est-ce que tu viens ?). Inversion puts the verb before a subject pronoun, joined by a hyphen (Viens-tu ?); when the verb ends in a vowel and the pronoun is il, elle or on, add -t- between them (Parle-t-il ? A-t-elle ?), but not after a verb ending in -t or -d (Finit-il ? Prend-il ?). With a noun subject, keep the noun first and add the matching pronoun after the verb (Paul vient-il ?). In the passé composé, invert only the auxiliary and pronoun, then the participle (As-tu mangé ?). A negative question keeps ne and pas around the verb (Tu ne viens pas ? N’aimes-tu pas le thé ?), and a yes that contradicts it is si, not oui.",
-  "example": "Tu viens ce soir ? · Est-ce qu’elle aime le thé ? · Paul vient-il avec nous ?",
-  "aside": "Inversion sounds careful and is common in writing; in everyday speech most people use intonation or est-ce que. When an exercise does not name a form, any of the three is accepted.",
+  "guide": {
+    "summary": "A yes-or-no question can be asked three ways: with your voice alone, with est-ce que, or by putting the verb in front of the pronoun. This topic gives you all three, plus negative questions and the special yes they need.",
+    "sections": [
+      {
+        "id": "three-ways",
+        "title": "Which of the three ways?",
+        "text": "All three ask exactly the same yes-or-no question; only the style changes. Inversion sounds careful and is common in writing, while everyday speech uses the voice or est-ce que. When a task does not name a form, any of the three is accepted.",
+        "table": {
+          "columns": [
+            "Way",
+            "Example",
+            "Where you meet it"
+          ],
+          "rows": [
+            [
+              "Intonation",
+              "Tu pars ?",
+              "everyday speech; nothing is added"
+            ],
+            [
+              "Est-ce que",
+              "Est-ce que tu pars ?",
+              "speech and writing; always safe"
+            ],
+            [
+              "Inversion",
+              "Pars-tu ?",
+              "careful speech and writing"
+            ]
+          ]
+        },
+        "steps": [
+          "Read the task: it usually names the way to use.",
+          "Intonation: keep the statement as it is and add a question mark.",
+          "Est-ce que: put the opening in front and change nothing else.",
+          "Inversion: move the subject pronoun behind the verb, with a hyphen."
+        ],
+        "examples": [
+          {
+            "fr": "Tu pars ce week-end ?",
+            "en": "Are you leaving this weekend?"
+          },
+          {
+            "fr": "Est-ce que tu pars ce week-end ?",
+            "en": "Are you leaving this weekend?"
+          },
+          {
+            "fr": "Pars-tu ce week-end ?",
+            "en": "Are you leaving this weekend?"
+          }
+        ],
+        "watch": [
+          "An intonation question adds nothing at all: “Vous parlez-vous anglais ?” mixes two ways in one sentence.",
+          "Never put inversion after est-ce que: one way per question.",
+          "French leaves a space before the question mark: Pars-tu ?"
+        ]
+      },
+      {
+        "id": "est-ce-que",
+        "title": "Est-ce que: add an opening, change nothing",
+        "text": "Est-ce que is a fixed opening. Put it in front of the statement and leave every other word exactly where it was.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Statement",
+            "Question"
+          ],
+          "rows": [
+            [
+              "pronoun",
+              "Vous partez demain.",
+              "Est-ce que vous partez demain ?"
+            ],
+            [
+              "noun",
+              "Le film commence.",
+              "Est-ce que le film commence ?"
+            ],
+            [
+              "noun + être",
+              "La soupe est chaude.",
+              "Est-ce que la soupe est chaude ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the statement as it is: subject first, verb after it.",
+          "Put the opening in front of the whole statement.",
+          "Keep a noun group whole — article plus noun — and leave it before its verb.",
+          "Finish with a space and a question mark."
+        ],
+        "examples": [
+          {
+            "fr": "Est-ce que tu travailles demain ?",
+            "en": "Are you working tomorrow?"
+          },
+          {
+            "fr": "Est-ce que le magasin est ouvert ?",
+            "en": "Is the shop open?"
+          }
+        ],
+        "watch": [
+          "Not “Est-ce que parles-tu ?”: after the opening the subject stays in front of its verb.",
+          "The opening carries one hyphen, between est and ce."
+        ]
+      },
+      {
+        "id": "elision",
+        "title": "Que or qu’?",
+        "text": "The final e of que disappears before a vowel sound and an apostrophe takes its place. Nothing else in the sentence changes.",
+        "table": {
+          "columns": [
+            "Word after the opening",
+            "Write",
+            "Example"
+          ],
+          "rows": [
+            [
+              "il, elle, on",
+              "est-ce qu’",
+              "Est-ce qu’on part ?"
+            ],
+            [
+              "ils, elles",
+              "est-ce qu’",
+              "Est-ce qu’elles chantent ?"
+            ],
+            [
+              "a vowel-initial noun",
+              "est-ce qu’",
+              "Est-ce qu’un ami arrive ?"
+            ],
+            [
+              "tu, nous, vous, je",
+              "est-ce que",
+              "Est-ce que vous avez faim ?"
+            ],
+            [
+              "le, la, les + noun",
+              "est-ce que",
+              "Est-ce que le musée ferme ?"
+            ],
+            [
+              "l’ + noun",
+              "est-ce que",
+              "Est-ce que l’avion arrive ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the word that comes straight after the opening.",
+          "Vowel sound (il, elle, ils, elles, on, un ami): drop the final e and write an apostrophe against the next word.",
+          "Consonant sound (tu, nous, vous, le, la, and the l of l’avion): keep the full form."
+        ],
+        "examples": [
+          {
+            "fr": "Est-ce qu’il pleut ?",
+            "en": "Is it raining?"
+          },
+          {
+            "fr": "Est-ce que nous partons maintenant ?",
+            "en": "Are we leaving now?"
+          }
+        ],
+        "watch": [
+          "The apostrophe replaces the dropped letter: never write que’il.",
+          "L’enfant begins with the sound l, so the opening stays whole in front of it.",
+          "No space around the apostrophe: qu’ils, written as one block."
+        ]
+      },
+      {
+        "id": "inversion",
+        "title": "Inversion: verb first, pronoun after",
+        "text": "Move the subject pronoun behind the verb and join the two with a hyphen. The rest of the sentence keeps its place.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Statement",
+            "Question"
+          ],
+          "rows": [
+            [
+              "tu",
+              "tu viens",
+              "Viens-tu ?"
+            ],
+            [
+              "il / elle / on",
+              "elle part",
+              "Part-elle ?"
+            ],
+            [
+              "nous",
+              "nous partons",
+              "Partons-nous ?"
+            ],
+            [
+              "vous",
+              "vous venez",
+              "Venez-vous ?"
+            ],
+            [
+              "ils / elles",
+              "ils dorment",
+              "Dorment-ils ?"
+            ],
+            [
+              "je",
+              "je parle",
+              "rare — use est-ce que instead"
+            ]
+          ]
+        },
+        "steps": [
+          "Conjugate the verb for the subject pronoun, exactly as in the statement.",
+          "Write the verb first, then a hyphen, then the pronoun.",
+          "Leave the rest of the sentence untouched."
+        ],
+        "examples": [
+          {
+            "fr": "Venez-vous avec nous ?",
+            "en": "Are you coming with us?"
+          },
+          {
+            "fr": "Dorment-ils encore ?",
+            "en": "Are they still asleep?"
+          }
+        ],
+        "watch": [
+          "The hyphen is obligatory: the verb and the pronoun form one written unit.",
+          "Inverting never changes the verb ending: with tu the verb keeps its -s.",
+          "The pronoun is used once: “Vous parlez-vous” has written it twice."
+        ]
+      },
+      {
+        "id": "linking-t",
+        "title": "When to add -t-",
+        "text": "Two vowel sounds cannot meet between the verb and il, elle or on. A -t- is written between two hyphens to keep them apart.",
+        "table": {
+          "columns": [
+            "Verb ends in",
+            "With il / elle / on",
+            "Example"
+          ],
+          "rows": [
+            [
+              "a vowel (-e, -a)",
+              "add -t-",
+              "Chante-t-il ?"
+            ],
+            [
+              "-t",
+              "add nothing",
+              "Sort-il ?"
+            ],
+            [
+              "-d",
+              "add nothing",
+              "Vend-elle ?"
+            ],
+            [
+              "any ending, other pronouns",
+              "never -t-",
+              "Pars-tu ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Invert the verb and the pronoun first.",
+          "Check the pronoun: only il, elle and on can call for the link.",
+          "Check the verb's last letter: a vowel takes -t- between two hyphens; a t or a d takes nothing."
+        ],
+        "examples": [
+          {
+            "fr": "Écoute-t-il la radio ?",
+            "en": "Does he listen to the radio?"
+          },
+          {
+            "fr": "Finit-elle à cinq heures ?",
+            "en": "Does she finish at five?"
+          }
+        ],
+        "watch": [
+          "The link is never glued to the verb (at-il) and never doubled after a t (finit-t-il).",
+          "No apostrophe is involved: the letter sits between two hyphens.",
+          "With tu, nous, vous, ils and elles the link is never added."
+        ]
+      },
+      {
+        "id": "noun-inversion",
+        "title": "Inversion with a noun subject",
+        "text": "A noun subject does not move. It stays in front, and a pronoun standing for it is added after the verb.",
+        "table": {
+          "columns": [
+            "Noun subject",
+            "Pronoun added",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "il",
+              "Paul comprend-il ?"
+            ],
+            [
+              "feminine singular",
+              "elle",
+              "Sophie part-elle demain ?"
+            ],
+            [
+              "masculine plural",
+              "ils",
+              "Les enfants dorment-ils ?"
+            ],
+            [
+              "feminine plural",
+              "elles",
+              "Tes sœurs viennent-elles ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Leave the whole noun group in front of the verb.",
+          "Conjugate the verb to agree with that noun.",
+          "Add the pronoun matching its gender and number after the verb, with a hyphen.",
+          "Put -t- between them when the verb ends in a vowel and the pronoun is il or elle."
+        ],
+        "examples": [
+          {
+            "fr": "Ton frère travaille-t-il ici ?",
+            "en": "Does your brother work here?"
+          },
+          {
+            "fr": "Les magasins ferment-ils à midi ?",
+            "en": "Do the shops close at noon?"
+          }
+        ],
+        "watch": [
+          "The noun never goes behind the verb in a yes-or-no question: not “Vient Paul ?”.",
+          "The added pronoun only repeats the noun; the verb still agrees with the noun.",
+          "This is the careful form; est-ce que is easier in speech."
+        ]
+      },
+      {
+        "id": "passe-compose",
+        "title": "Questions in the passé composé",
+        "text": "In a two-part tense only the helping verb moves. The past participle stays behind the pronoun.",
+        "table": {
+          "columns": [
+            "Piece",
+            "Example",
+            "Where it goes"
+          ],
+          "rows": [
+            [
+              "helping verb",
+              "as, avez, es, êtes",
+              "first, inverted with the pronoun"
+            ],
+            [
+              "pronoun",
+              "-tu, -vous, -elle",
+              "hyphenated, right after the helper"
+            ],
+            [
+              "short adverb",
+              "déjà, bien",
+              "after the pronoun, before the participle"
+            ],
+            [
+              "participle",
+              "mangé, dormi, vu",
+              "last piece of the block"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the helping verb of the passé composé: a form of avoir or être.",
+          "Invert that helper with the pronoun and join them with a hyphen.",
+          "Put any short adverb, then the participle, after the pronoun.",
+          "Add -t- when the helper ends in a vowel and the pronoun is il, elle or on."
+        ],
+        "examples": [
+          {
+            "fr": "As-tu déjà mangé ?",
+            "en": "Have you eaten yet?"
+          },
+          {
+            "fr": "Est-elle partie ?",
+            "en": "Has she left?"
+          }
+        ],
+        "watch": [
+          "Never hook the pronoun to the participle: not “As mangé-tu ?”.",
+          "The participle does not change for the person; only the helper does.",
+          "The helper a ends in a vowel, so it takes the link before il and elle."
+        ]
+      },
+      {
+        "id": "negative",
+        "title": "Negative questions, and the yes that contradicts",
+        "text": "A question can be negative: ne … pas wraps the verb. Saying yes against it takes a word of its own.",
+        "table": {
+          "columns": [
+            "Question",
+            "Example",
+            "Yes",
+            "No"
+          ],
+          "rows": [
+            [
+              "Positive question",
+              "Tu viens ?",
+              "Oui",
+              "Non"
+            ],
+            [
+              "Negative question",
+              "Tu ne viens pas ?",
+              "Si",
+              "Non"
+            ]
+          ]
+        },
+        "steps": [
+          "Build the question the usual way first.",
+          "Put ne before the verb — before the whole verb-pronoun block when it is inverted — and pas after it.",
+          "Ne becomes n’ before a vowel or a mute h.",
+          "Answering yes against a negative question uses si; oui answers a positive one."
+        ],
+        "examples": [
+          {
+            "fr": "N’as-tu pas froid ?",
+            "en": "Aren’t you cold?"
+          },
+          {
+            "fr": "— Tu ne travailles pas ? — Si, je travaille.",
+            "en": "“Aren’t you working?” “Yes, I am.”"
+          }
+        ],
+        "watch": [
+          "Casual speech drops ne (Tu viens pas ?), but writing keeps it.",
+          "In inversion pas follows the whole block, never the verb alone.",
+          "Non after a negative question agrees with it: it says the thing really is not happening."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "intonation": {
+      "section": "three-ways",
+      "steps": [
+        "Say the statement, then add a space and a question mark.",
+        "Add nothing at the front and move nothing.",
+        "Check the subject appears once only, in front of its verb."
+      ]
+    },
+    "pronoun-normal-order": {
+      "section": "est-ce-que",
+      "steps": [
+        "Write the statement first: subject pronoun, then verb.",
+        "Put the opening in front of it and change nothing after it.",
+        "Check the pronoun is still before its verb, with no hyphen anywhere."
+      ]
+    },
+    "noun-subject-order": {
+      "section": "est-ce-que",
+      "steps": [
+        "Keep the noun group whole: article and noun stay together.",
+        "Put the opening in front of the whole statement.",
+        "Leave the noun in front of its verb; it never jumps behind it here."
+      ]
+    },
+    "que-elision": {
+      "section": "elision",
+      "steps": [
+        "Look at the first sound of the word that follows the opening.",
+        "Vowel sound: drop the final e and write an apostrophe against that word, with no space.",
+        "Consonant sound, including the l of l’avion: keep the full form."
+      ]
+    },
+    "inversion-pronoun": {
+      "section": "inversion",
+      "steps": [
+        "Conjugate the verb for the subject pronoun, as in the statement.",
+        "Write the verb, then a hyphen, then the pronoun.",
+        "Check the verb ending still matches that person."
+      ]
+    },
+    "inversion-t": {
+      "section": "linking-t",
+      "steps": [
+        "Invert the verb and the pronoun first.",
+        "Only il, elle and on can need the link.",
+        "Verb ending in a vowel: write the link between two hyphens. Verb ending in t or d: add nothing."
+      ]
+    },
+    "complex-inversion": {
+      "section": "noun-inversion",
+      "steps": [
+        "Leave the noun subject in front of the verb.",
+        "Pick the pronoun matching its gender and number.",
+        "Attach that pronoun after the verb with a hyphen, adding the link if two vowels would meet."
+      ]
+    },
+    "passe-compose-inversion": {
+      "section": "passe-compose",
+      "steps": [
+        "Find the helping verb: a form of avoir or être.",
+        "Invert the helper with the pronoun, joined by a hyphen.",
+        "Put any short adverb and then the participle after the pronoun."
+      ]
+    },
+    "negative-question-si": {
+      "section": "negative",
+      "steps": [
+        "Build the question, then wrap ne … pas around the verb, or around the verb-pronoun block.",
+        "Shorten ne to n’ before a vowel.",
+        "A yes that contradicts a negative question is not the ordinary one."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "questions-pronoun-rewrite",
@@ -33,7 +552,28 @@
       ],
       "hint": "Put the question opening in front. It changes nothing in the words after it.",
       "feedback": "Use the requested question opening, then keep the statement’s subject before its verb.",
-      "explanation": "Est-ce que introduces the question without changing the order of tu parles."
+      "explanation": "Est-ce que introduces the question without changing the order of tu parles.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que parles-tu français ?",
+            "Est-ce que parles tu français ?"
+          ],
+          "why": "This stacks two question forms: the opening already asks the question, so the verb must not jump in front of the pronoun as well."
+        },
+        {
+          "answers": [
+            "Est-ce qu’tu parles français ?"
+          ],
+          "why": "The shortened opening is only used before a vowel sound, and tu begins with a consonant, so nothing is dropped here."
+        },
+        {
+          "answers": [
+            "Est-ce que tu parle français ?"
+          ],
+          "why": "Parle is the il/elle form. With tu the verb takes its -s ending, and adding an opening changes nothing about the verb."
+        }
+      ]
     },
     {
       "id": "questions-pronoun-build",
@@ -52,7 +592,27 @@
       ],
       "hint": "The question opening comes first. After it, keep the statement’s order.",
       "feedback": "The question opening comes first. After it, keep the same subject–verb order as the statement.",
-      "explanation": "After est-ce que, the statement’s normal subject–verb order stays unchanged."
+      "explanation": "After est-ce que, the statement’s normal subject–verb order stays unchanged.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que venez vous demain ?"
+          ],
+          "why": "After the opening French keeps statement order, so the verb must not be placed in front of the subject."
+        },
+        {
+          "answers": [
+            "Vous venez demain ?"
+          ],
+          "why": "That is the question asked by the voice alone: correct in speech, but it leaves out the opening tile the task asks for."
+        },
+        {
+          "answers": [
+            "Venez vous demain ?"
+          ],
+          "why": "This drops the opening and tries inversion instead, and even then the two words would need a hyphen."
+        }
+      ]
     },
     {
       "id": "questions-pronoun-complete",
@@ -65,7 +625,30 @@
       ],
       "hint": "Listen to the first sound of nous. Does que need to shorten before it?",
       "feedback": "Complete the fixed question opening. The following consonant sound does not require elision.",
-      "explanation": "Que stays complete before nous. The subject nous remains before the verb partons."
+      "explanation": "Que stays complete before nous. The subject nous remains before the verb partons.",
+      "mistakes": [
+        {
+          "answers": [
+            "qu’",
+            "qu"
+          ],
+          "why": "That is the shortened form, used only when the next word starts with a vowel sound. Nous starts with the consonant n, so nothing is dropped."
+        },
+        {
+          "answers": [
+            "nous",
+            "nous partons"
+          ],
+          "why": "Only the missing piece of the opening goes in the blank; the subject is already printed after it."
+        },
+        {
+          "answers": [
+            "est-ce que",
+            "ce que"
+          ],
+          "why": "The sentence already shows the start of the opening, so repeating it doubles words that are there; only its final piece is missing."
+        }
+      ]
     },
     {
       "id": "questions-pronoun-repair",
@@ -81,7 +664,27 @@
       ],
       "hint": "After est-ce que, use the same order as in a statement.",
       "feedback": "The question opening is already present. Check whether the subject comes before the verb.",
-      "explanation": "Est-ce que uses normal subject–verb order. Inversion is a separate question form, not an extra step after est-ce que."
+      "explanation": "Est-ce que uses normal subject–verb order. Inversion is a separate question form, not an extra step after est-ce que.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que parles tu français ?"
+          ],
+          "why": "That is the sentence as given, with the verb still in front of the pronoun. The opening moves nothing, so the subject has to come back before its verb."
+        },
+        {
+          "answers": [
+            "Est-ce que parles-tu français ?"
+          ],
+          "why": "Adding a hyphen turns the end into inversion, and inversion never follows this opening: one question form at a time."
+        },
+        {
+          "answers": [
+            "Parles-tu français ?"
+          ],
+          "why": "That is a correct inverted question, but the task keeps every word, including the opening already printed."
+        }
+      ]
     },
     {
       "id": "questions-elision-rewrite",
@@ -107,7 +710,28 @@
       ],
       "hint": "Elle begins with a vowel sound, so que becomes qu’.",
       "feedback": "Use the requested question opening and check its elision before the subject’s vowel sound.",
-      "explanation": "Que elides before elle. The subject elle still comes before the verb aime."
+      "explanation": "Que elides before elle. The subject elle still comes before the verb aime.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que elle aime le thé ?"
+          ],
+          "why": "Two vowel sounds meet here: the last word of the opening cannot stay whole in front of elle. Its e drops and an apostrophe takes the place."
+        },
+        {
+          "answers": [
+            "Est-ce que’elle aime le thé ?"
+          ],
+          "why": "The apostrophe stands in place of the dropped letter, so it cannot come after the complete word."
+        },
+        {
+          "answers": [
+            "Est-ce qu’aime-t-elle le thé ?",
+            "Est-ce qu’aime elle le thé ?"
+          ],
+          "why": "The opening keeps statement order, so the verb must not move in front of the subject; this asks the question twice."
+        }
+      ]
     },
     {
       "id": "questions-elision-build",
@@ -126,7 +750,27 @@
       ],
       "hint": "The tile ending in an apostrophe joins the word right after it. Then use statement order.",
       "feedback": "Join the apostrophe-ending opening to the subject, then keep the verb after the subject.",
-      "explanation": "Que becomes qu’ because the next word is ils, which begins with a vowel sound."
+      "explanation": "Que becomes qu’ because the next word is ils, which begins with a vowel sound.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce qu’habitent ils ici ?"
+          ],
+          "why": "After the opening the order stays as in a statement, so the subject comes before the verb; here the verb has been pushed in front of it."
+        },
+        {
+          "answers": [
+            "Ils habitent ici ?"
+          ],
+          "why": "That is the question asked by the voice alone. The task asks for the opening tile, joined to the subject."
+        },
+        {
+          "answers": [
+            "Habitent ils ici ?"
+          ],
+          "why": "This drops the opening and inverts instead, and inversion would also need a hyphen between the two words."
+        }
+      ]
     },
     {
       "id": "questions-elision-complete",
@@ -139,7 +783,28 @@
       ],
       "hint": "Il starts with a vowel sound. What happens to que before a vowel?",
       "feedback": "The following pronoun starts with a vowel sound. Include the apostrophe in the shortened form.",
-      "explanation": "Que becomes qu’ immediately before il. The apostrophe joins the two without a space."
+      "explanation": "Que becomes qu’ immediately before il. The apostrophe joins the two without a space.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "That is the full form, kept only before a consonant sound. Il begins with a vowel, so the final e disappears."
+        },
+        {
+          "answers": [
+            "qu"
+          ],
+          "why": "The apostrophe is part of the written form: without it the piece is not a French word."
+        },
+        {
+          "answers": [
+            "qu’il",
+            "qu il"
+          ],
+          "why": "Only the missing piece goes in the blank; the pronoun after it is already printed in the sentence."
+        }
+      ]
     },
     {
       "id": "questions-elision-repair",
@@ -152,7 +817,27 @@
       ],
       "hint": "Elles starts with a vowel sound. What happens to que before a vowel?",
       "feedback": "The subject–verb order is correct. Check the elision immediately before the subject.",
-      "explanation": "Que must elide before elles. The order elles arrivent is already correct."
+      "explanation": "Que must elide before elles. The order elles arrivent is already correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que elles arrivent demain ?"
+          ],
+          "why": "That is the sentence as given: the opening still ends in a vowel right in front of another vowel, which French does not leave side by side here."
+        },
+        {
+          "answers": [
+            "Est-ce que’elles arrivent demain ?"
+          ],
+          "why": "The apostrophe stands in place of the dropped letter, so it cannot follow the complete word."
+        },
+        {
+          "answers": [
+            "Est-ce qu’elle arrive demain ?"
+          ],
+          "why": "That changes the subject to one person. The task only asks you to fix the joint in front of the subject, not to rewrite it."
+        }
+      ]
     },
     {
       "id": "questions-noun-rewrite",
@@ -175,7 +860,28 @@
       ],
       "hint": "Put Est-ce que before the whole statement. Le train remains before arrive.",
       "feedback": "Keep the complete noun subject before its verb and add the requested opening before both.",
-      "explanation": "The same pattern works with a noun subject: est-ce que, then le train, then arrive."
+      "explanation": "The same pattern works with a noun subject: est-ce que, then le train, then arrive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce qu’le train arrive demain ?"
+          ],
+          "why": "The opening only shortens before a vowel sound, and le begins with a consonant."
+        },
+        {
+          "answers": [
+            "Est-ce que arrive le train demain ?"
+          ],
+          "why": "The verb has jumped in front of the noun. The opening leaves the statement's order alone."
+        },
+        {
+          "answers": [
+            "Est-ce que le train arrive-t-il demain ?"
+          ],
+          "why": "This uses two question forms at once: with the opening in front, no pronoun is added after the verb."
+        }
+      ],
+      "row": "noun"
     },
     {
       "id": "questions-noun-build",
@@ -194,7 +900,28 @@
       ],
       "hint": "After the question opening, keep the words of the statement in their order.",
       "feedback": "The two-word noun subject belongs between the question opening and the verb.",
-      "explanation": "Est-ce que adds a question opening; it does not reverse the statement’s subject and verb."
+      "explanation": "Est-ce que adds a question opening; it does not reverse the statement’s subject and verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que est la porte ouverte ?"
+          ],
+          "why": "The verb has been placed in front of the subject. The opening asks the question by itself and leaves statement order untouched."
+        },
+        {
+          "answers": [
+            "La porte est ouverte ?"
+          ],
+          "why": "That is the question asked by the voice alone; correct in speech, but the opening tile is the one the task asks for."
+        },
+        {
+          "answers": [
+            "Est-ce que la porte ouverte ?"
+          ],
+          "why": "The verb is missing: French still needs est between the subject and the adjective."
+        }
+      ],
+      "row": "noun"
     },
     {
       "id": "questions-noun-complete",
@@ -207,7 +934,29 @@
       ],
       "hint": "Look at the sound right after the blank. Does que need to shorten before it?",
       "feedback": "Supply the complete question opening. Its final word is followed by a consonant sound.",
-      "explanation": "Que is followed by le, not by café. There is no elision, and le café stays before est."
+      "explanation": "Que is followed by le, not by café. There is no elision, and le café stays before est.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce qu’"
+          ],
+          "why": "The shortened form appears only before a vowel sound. The next word here is le, which begins with a consonant, so nothing is dropped."
+        },
+        {
+          "answers": [
+            "Est-ce"
+          ],
+          "why": "The opening has one more piece after this; the little word that links it to the sentence is still missing."
+        },
+        {
+          "answers": [
+            "Est ce que",
+            "Estce que"
+          ],
+          "why": "The first two pieces of the opening are joined by a hyphen, as in every printed form of it."
+        }
+      ],
+      "row": "noun"
     },
     {
       "id": "questions-noun-repair",
@@ -220,7 +969,28 @@
       ],
       "hint": "After est-ce que, the subject comes before the verb, just as in a statement.",
       "feedback": "Keep the noun subject together and place it before the verb, just as in a statement.",
-      "explanation": "L’enfant stays together as the subject. Que does not elide here because the next sound is the l in l’enfant."
+      "explanation": "L’enfant stays together as the subject. Que does not elide here because the next sound is the l in l’enfant.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que joue l’enfant ici ?"
+          ],
+          "why": "That is the sentence as given, with the verb before its subject. After the opening the order is the statement's one."
+        },
+        {
+          "answers": [
+            "Est-ce qu’l’enfant joue ici ?"
+          ],
+          "why": "The sound right after the opening is the l of l’enfant, a consonant, so nothing is dropped."
+        },
+        {
+          "answers": [
+            "Est-ce que l’enfant joue-t-il ici ?"
+          ],
+          "why": "A pronoun after the verb belongs to the other question form; with this opening the noun subject alone is enough."
+        }
+      ],
+      "row": "noun"
     },
     {
       "id": "questions-intonation-choose",
@@ -238,7 +1008,22 @@
       ],
       "hint": "Look for the question whose words are in exactly the same order as a statement, with nothing added.",
       "feedback": "One option adds est-ce que and one swaps the verb and the pronoun. Intonation changes neither.",
-      "explanation": "Tu viens ce soir ? is the statement Tu viens ce soir with a rising voice. Viens-tu uses inversion and Est-ce que tu viens adds an opening."
+      "explanation": "Tu viens ce soir ? is the statement Tu viens ce soir with a rising voice. Viens-tu uses inversion and Est-ce que tu viens adds an opening.",
+      "mistakes": [
+        {
+          "answers": [
+            "Viens-tu ce soir ?"
+          ],
+          "why": "That is inversion: the verb has been put in front of the pronoun and joined with a hyphen. Asking with the voice moves nothing."
+        },
+        {
+          "answers": [
+            "Est-ce que tu viens ce soir ?"
+          ],
+          "why": "This adds the fixed opening at the front. Asking with the voice adds no word at all."
+        }
+      ],
+      "row": "Intonation"
     },
     {
       "id": "questions-intonation-translate",
@@ -261,7 +1046,28 @@
       ],
       "hint": "Say the statement “you have a car” to a friend and let your voice rise at the end.",
       "feedback": "Keep tu before the verb and add nothing at the start.",
-      "explanation": "An intonation question is just the statement Tu as une voiture with a question mark."
+      "explanation": "An intonation question is just the statement Tu as une voiture with a question mark.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous avez une voiture ?"
+          ],
+          "why": "Vous is the formal or plural you; the task says you are speaking to a friend, so the informal pronoun is needed."
+        },
+        {
+          "answers": [
+            "Tu as un voiture ?"
+          ],
+          "why": "Voiture is feminine, so the indefinite article in front of it must be the feminine one."
+        },
+        {
+          "answers": [
+            "Tu es une voiture ?"
+          ],
+          "why": "Es is être, which would say “you are a car”. Owning something uses avoir."
+        }
+      ],
+      "row": "Intonation"
     },
     {
       "id": "questions-intonation-repair",
@@ -280,7 +1086,28 @@
       ],
       "hint": "An intonation question says the subject only once, before the verb.",
       "feedback": "The subject pronoun appears twice. Keep the one that gives statement order.",
-      "explanation": "With intonation, the order is the statement’s: Vous parlez anglais ? The extra -vous belongs only to inversion."
+      "explanation": "With intonation, the order is the statement’s: Vous parlez anglais ? The extra -vous belongs only to inversion.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous parlez-vous anglais ?"
+          ],
+          "why": "That is the sentence as given: the pronoun is written twice, once in front of the verb and once hooked to it. Only one of the two may stay."
+        },
+        {
+          "answers": [
+            "Est-ce que vous parlez anglais ?"
+          ],
+          "why": "Adding the fixed opening makes a different question form. The task asks for the one that adds nothing."
+        },
+        {
+          "answers": [
+            "Vous vous parlez anglais ?"
+          ],
+          "why": "Two pronouns in a row makes the verb reflexive: “you talk to each other”. The second one has to go, not move."
+        }
+      ],
+      "row": "Intonation"
     },
     {
       "id": "questions-intonation-build",
@@ -299,7 +1126,22 @@
       ],
       "hint": "Use the statement order: subject, verb, then the time.",
       "feedback": "Intonation needs no pronoun after the verb. Leave out the tile that adds one.",
-      "explanation": "Ton frère arrive ce soir ? keeps statement order. The tile arrive-il is wrong in any case: inversion here would need -t-."
+      "explanation": "Ton frère arrive ce soir ? keeps statement order. The tile arrive-il is wrong in any case: inversion here would need -t-.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ton frère arrive-il ce soir ?"
+          ],
+          "why": "That tile hooks a pronoun to the verb, which belongs to inversion, not to a question asked by the voice. It is badly written too: a verb ending in a vowel needs a linking letter before il."
+        },
+        {
+          "answers": [
+            "Arrive ton frère ce soir ?"
+          ],
+          "why": "The subject has been pushed behind the verb. A noun subject stays in front of its verb in this question form."
+        }
+      ],
+      "row": "Intonation"
     },
     {
       "id": "questions-inversion-rewrite",
@@ -322,7 +1164,29 @@
       ],
       "hint": "Put the verb first, then the pronoun, joined by a hyphen.",
       "feedback": "Swap the subject pronoun and the verb and link them with a hyphen.",
-      "explanation": "Inversion puts aimez before vous and joins them: Aimez-vous le fromage ?"
+      "explanation": "Inversion puts aimez before vous and joins them: Aimez-vous le fromage ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Aimez vous le fromage ?"
+          ],
+          "why": "The order is right but the two words are left loose. Here the verb and the pronoun are written as one unit, joined by a hyphen."
+        },
+        {
+          "answers": [
+            "Vous aimez-vous le fromage ?"
+          ],
+          "why": "The pronoun appears twice: once in its statement place and once after the verb. Inverting moves it, it does not copy it."
+        },
+        {
+          "answers": [
+            "Aime-vous le fromage ?",
+            "Aimes-vous le fromage ?"
+          ],
+          "why": "The verb ending no longer matches vous. Moving the pronoun behind the verb never changes how the verb is spelled."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "questions-inversion-choose",
@@ -340,7 +1204,22 @@
       ],
       "hint": "The verb comes first and must match the pronoun that follows it.",
       "feedback": "Check the order of verb and pronoun, and whether the verb form fits that pronoun.",
-      "explanation": "Voulez-vous is vouloir in the vous form, inverted. Vous-voulez has the wrong order and voulez does not go with tu."
+      "explanation": "Voulez-vous is vouloir in the vous form, inverted. Vous-voulez has the wrong order and voulez does not go with tu.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous-voulez"
+          ],
+          "why": "The two words are in statement order, simply glued with a hyphen. In this form the verb has to come first."
+        },
+        {
+          "answers": [
+            "Voulez-tu"
+          ],
+          "why": "Voulez is the vous form of vouloir, so the pronoun after it cannot be tu; with tu the verb would be veux."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "questions-inversion-complete",
@@ -353,7 +1232,36 @@
       ],
       "hint": "Start with the tu form of aller, then the pronoun.",
       "feedback": "Use the present of aller for tu and put tu after it with a hyphen.",
-      "explanation": "Tu vas becomes Vas-tu in inversion: Vas-tu au cinéma ce soir ?"
+      "explanation": "Tu vas becomes Vas-tu in inversion: Vas-tu au cinéma ce soir ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu vas",
+            "Tu-vas"
+          ],
+          "why": "That is statement order, with the pronoun still in front. The task asks for the inverted order, verb first."
+        },
+        {
+          "answers": [
+            "Vas tu"
+          ],
+          "why": "The order is right, but the two words must be written as one unit with a hyphen between them."
+        },
+        {
+          "answers": [
+            "Va-tu"
+          ],
+          "why": "Va is the il/elle form of aller; the tu form keeps its final s, and inverting never changes the ending."
+        },
+        {
+          "answers": [
+            "Allez-vous",
+            "Allons-nous"
+          ],
+          "why": "Those are other persons. The task names tu, so the verb and the pronoun both have to be that person."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "questions-inversion-build",
@@ -372,7 +1280,23 @@
       ],
       "hint": "Start with the verb-pronoun tile, then the bus, then the time.",
       "feedback": "Two tiles look alike. Only one has the right tu form of prendre.",
-      "explanation": "With tu, prendre is prends, so the inverted form is Prends-tu. Prend is the il/elle form."
+      "explanation": "With tu, prendre is prends, so the inverted form is Prends-tu. Prend is the il/elle form.",
+      "mistakes": [
+        {
+          "answers": [
+            "Prend-tu le bus le matin ?"
+          ],
+          "why": "Prend is the il/elle form of prendre. With tu the verb ends in -s, and inverting never changes the ending."
+        },
+        {
+          "answers": [
+            "Le bus prend-tu le matin ?",
+            "Le bus prends-tu le matin ?"
+          ],
+          "why": "Le bus is what is taken, not the one doing it, so it cannot open the question in front of the verb."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "questions-inversion-repair",
@@ -391,7 +1315,28 @@
       ],
       "hint": "In inversion, the verb and the pronoun are written as one unit.",
       "feedback": "The order is right. Check how the verb and the pronoun are joined.",
-      "explanation": "An inverted verb and pronoun are always linked by a hyphen: Finissez-vous."
+      "explanation": "An inverted verb and pronoun are always linked by a hyphen: Finissez-vous.",
+      "mistakes": [
+        {
+          "answers": [
+            "Finissez vous à cinq heures ?"
+          ],
+          "why": "That is the sentence as given: the verb and the pronoun are still two loose words. In an inverted question they form one written unit."
+        },
+        {
+          "answers": [
+            "Vous finissez à cinq heures ?"
+          ],
+          "why": "Putting the pronoun back in front makes a spoken question instead. The task keeps the inverted order and only fixes how it is written."
+        },
+        {
+          "answers": [
+            "Finis-tu à cinq heures ?"
+          ],
+          "why": "That switches to tu. The sentence is addressed to vous, so the verb and the pronoun both stay in that person."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "questions-inversion-translate",
@@ -415,7 +1360,29 @@
       ],
       "hint": "Use the vous form of parler and put vous after it.",
       "feedback": "Formal you is vous. Put the verb first and join the pronoun with a hyphen.",
-      "explanation": "Parlez-vous anglais ? inverts vous parlez. With a language after parler, the article is optional."
+      "explanation": "Parlez-vous anglais ? inverts vous parlez. With a language after parler, the article is optional.",
+      "mistakes": [
+        {
+          "answers": [
+            "Parlez vous anglais ?"
+          ],
+          "why": "The order is right; the hyphen is missing. An inverted verb and pronoun are always written joined."
+        },
+        {
+          "answers": [
+            "Parles-tu anglais ?",
+            "Parles-tu l’anglais ?"
+          ],
+          "why": "Tu is the friendly you. The task marks the question as formal, so the other pronoun is needed, with the verb form that goes with it."
+        },
+        {
+          "answers": [
+            "Vous parlez-vous anglais ?"
+          ],
+          "why": "The pronoun is written twice, in front of the verb and after it. Inversion moves it instead of adding a second one."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "questions-inversion-t-choose",
@@ -433,7 +1400,22 @@
       ],
       "hint": "The verb a ends in a vowel and il begins with one.",
       "feedback": "French does not let two vowel sounds meet here. Something must go between them.",
-      "explanation": "A-t-il adds -t- between the vowel of a and the vowel of il. Each part is joined by a hyphen."
+      "explanation": "A-t-il adds -t- between the vowel of a and the vowel of il. Each part is joined by a hyphen.",
+      "mistakes": [
+        {
+          "answers": [
+            "A-il"
+          ],
+          "why": "Two vowel sounds would collide here: the verb ends in a vowel and the pronoun begins with one, so a linking letter is missing."
+        },
+        {
+          "answers": [
+            "At-il"
+          ],
+          "why": "The linking letter is not glued to the verb; it stands on its own, with a hyphen on each side."
+        }
+      ],
+      "row": "a vowel (-e, -a)"
     },
     {
       "id": "questions-inversion-t-complete",
@@ -446,7 +1428,31 @@
       ],
       "hint": "Parle ends in a vowel and elle begins with one.",
       "feedback": "A single sound links the two vowels. Write just that letter.",
-      "explanation": "When a verb ending in a vowel meets il, elle or on, French adds -t-: Parle-t-elle ?"
+      "explanation": "When a verb ending in a vowel meets il, elle or on, French adds -t-: Parle-t-elle ?",
+      "mistakes": [
+        {
+          "answers": [
+            "-t-",
+            "t-",
+            "-t"
+          ],
+          "why": "The hyphens are already printed around the blank, so only the letter itself is missing."
+        },
+        {
+          "answers": [
+            "te",
+            "le"
+          ],
+          "why": "This is a single linking letter, not a word: nothing is being said about an object here, two vowels are only being kept apart."
+        },
+        {
+          "answers": [
+            "t’"
+          ],
+          "why": "No apostrophe is involved; the letter is held by the hyphens the sentence already shows."
+        }
+      ],
+      "row": "a vowel (-e, -a)"
     },
     {
       "id": "questions-inversion-t-rewrite",
@@ -469,7 +1475,28 @@
       ],
       "hint": "Put the verb first. Aime ends in a vowel and elle starts with one.",
       "feedback": "After inverting, check whether two vowels meet between the verb and elle.",
-      "explanation": "Aime and elle are separated by -t-: Aime-t-elle le jazz ?"
+      "explanation": "Aime and elle are separated by -t-: Aime-t-elle le jazz ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Aime-elle le jazz ?"
+          ],
+          "why": "Inverting is right, but two vowels now touch: the verb ends in one and the pronoun starts with one."
+        },
+        {
+          "answers": [
+            "Aimet-elle le jazz ?"
+          ],
+          "why": "The linking letter has been glued to the verb; it belongs between two hyphens of its own."
+        },
+        {
+          "answers": [
+            "Elle aime-t-elle le jazz ?"
+          ],
+          "why": "The pronoun is written twice, before and after the verb. Inversion moves it rather than doubling it."
+        }
+      ],
+      "row": "a vowel (-e, -a)"
     },
     {
       "id": "questions-inversion-t-repair",
@@ -488,7 +1515,34 @@
       ],
       "hint": "Look at the last letter of mange and the first letter of il.",
       "feedback": "The order is right, but two vowels meet between the verb and the pronoun.",
-      "explanation": "Mange ends in a vowel, so -t- goes before il: Mange-t-il avec nous ?"
+      "explanation": "Mange ends in a vowel, so -t- goes before il: Mange-t-il avec nous ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Mange-il avec nous ?"
+          ],
+          "why": "That is the sentence as given: the verb ends in a vowel and the pronoun begins with one, with nothing between them."
+        },
+        {
+          "answers": [
+            "Manget-il avec nous ?"
+          ],
+          "why": "The linking letter is not part of the verb; it stands alone between two hyphens."
+        },
+        {
+          "answers": [
+            "Mange-t’il avec nous ?"
+          ],
+          "why": "No apostrophe is used here: the letter is held by a hyphen on each side."
+        },
+        {
+          "answers": [
+            "Il mange avec nous ?"
+          ],
+          "why": "That puts the pronoun back in front and gives a spoken question; the task keeps the inverted order and only repairs it."
+        }
+      ],
+      "row": "a vowel (-e, -a)"
     },
     {
       "id": "questions-inversion-t-translate",
@@ -512,7 +1566,28 @@
       ],
       "hint": "Invert travaille and il. Think about the two vowels that meet.",
       "feedback": "Put the verb first, then check what goes between travaille and il. “On Saturdays” is le samedi.",
-      "explanation": "Travaille ends in a vowel, so inversion adds -t-: Travaille-t-il le samedi ? Le samedi means every Saturday."
+      "explanation": "Travaille ends in a vowel, so inversion adds -t-: Travaille-t-il le samedi ? Le samedi means every Saturday.",
+      "mistakes": [
+        {
+          "answers": [
+            "Travaille-il le samedi ?"
+          ],
+          "why": "Nothing separates the two vowels: the verb ends in one and the pronoun begins with one, so a linking letter is missing between the hyphens."
+        },
+        {
+          "answers": [
+            "Travaille-t-il samedi ?"
+          ],
+          "why": "Samedi with no article means one particular Saturday. “On Saturdays”, meaning every week, needs the article in front."
+        },
+        {
+          "answers": [
+            "Travaille-t-elle le samedi ?"
+          ],
+          "why": "Elle stands for a woman, but the English sentence says “he”."
+        }
+      ],
+      "row": "a vowel (-e, -a)"
     },
     {
       "id": "questions-inversion-t-no-t-choose",
@@ -530,7 +1605,22 @@
       ],
       "hint": "Look at the last letter of the verb before you add anything.",
       "feedback": "The extra -t- is only there to separate two vowels. Check whether this verb already ends in t.",
-      "explanation": "Finit already ends in t, so no extra -t- is added: Finit-il ? Fini without t is the past participle, not the present."
+      "explanation": "Finit already ends in t, so no extra -t- is added: Finit-il ? Fini without t is the past participle, not the present.",
+      "mistakes": [
+        {
+          "answers": [
+            "Finit-t-il"
+          ],
+          "why": "The linking letter is only there to keep two vowels apart, and this verb form already ends in t, so a second one is one too many."
+        },
+        {
+          "answers": [
+            "Fini-t-il"
+          ],
+          "why": "Fini without the t is the past participle. The present of finir for il keeps its final t."
+        }
+      ],
+      "row": "-t"
     },
     {
       "id": "questions-noun-inversion-rewrite",
@@ -553,7 +1643,34 @@
       ],
       "hint": "Keep the noun, then add the pronoun that stands for Marie after the verb.",
       "feedback": "A noun subject is not moved. It is repeated by a pronoun after the verb, and the vowel rule still applies.",
-      "explanation": "Marie stays first; elle is added after travaille with -t-: Marie travaille-t-elle ici ?"
+      "explanation": "Marie stays first; elle is added after travaille with -t-: Marie travaille-t-elle ici ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Marie travaille-elle ici ?"
+          ],
+          "why": "The verb ends in a vowel and the pronoun begins with one, so the linking letter between them is missing."
+        },
+        {
+          "answers": [
+            "Travaille-t-elle ici ?"
+          ],
+          "why": "The name has been dropped, but the task keeps it first; the pronoun after the verb only repeats it."
+        },
+        {
+          "answers": [
+            "Travaille Marie ici ?"
+          ],
+          "why": "The noun subject has been pushed behind the verb. A noun does not move in a yes-or-no question; a pronoun is added after the verb instead."
+        },
+        {
+          "answers": [
+            "Marie travaille-t-il ici ?"
+          ],
+          "why": "Il stands for a masculine person, so it does not match the name in front."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "questions-noun-inversion-choose",
@@ -571,7 +1688,22 @@
       ],
       "hint": "The pronoun after the verb stands for tes parents, and the verb agrees with it.",
       "feedback": "Check the verb ending and whether a -t- is needed between the verb and ils.",
-      "explanation": "Viennent-ils repeats tes parents with ils. Viennent ends in t, so no extra -t- is added."
+      "explanation": "Viennent-ils repeats tes parents with ils. Viennent ends in t, so no extra -t- is added.",
+      "mistakes": [
+        {
+          "answers": [
+            "viennent-t-ils"
+          ],
+          "why": "The linking letter is only needed to keep two vowels apart, and this verb form already ends in t."
+        },
+        {
+          "answers": [
+            "vient-ils"
+          ],
+          "why": "Vient is the singular form. The noun in front is plural, and both the verb and the added pronoun must match it."
+        }
+      ],
+      "row": "masculine plural"
     },
     {
       "id": "questions-noun-inversion-repair",
@@ -594,7 +1726,28 @@
           "answer": "Paul vient ce soir ?",
           "message": "That is a correct spoken question with rising intonation. This exercise asks you to fix the inversion: Paul vient-il ce soir ?"
         }
-      ]
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vient Paul ce soir ?"
+          ],
+          "why": "That is the sentence as given, with the noun behind the verb. A noun subject stays in front; only a pronoun may follow the verb."
+        },
+        {
+          "answers": [
+            "Paul vient-t-il ce soir ?"
+          ],
+          "why": "The extra letter is only needed to separate two vowels, and this verb already ends in t."
+        },
+        {
+          "answers": [
+            "Vient-il Paul ce soir ?"
+          ],
+          "why": "The name has to open the question; it cannot trail after the verb and its pronoun."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "questions-noun-inversion-build",
@@ -613,7 +1766,22 @@
       ],
       "hint": "Start with le bus, then the verb with the pronoun that stands for it.",
       "feedback": "Two verb tiles look alike. Check whether part needs an extra -t-.",
-      "explanation": "Le bus stays first and il is added after part. Part already ends in t, so there is no extra -t-."
+      "explanation": "Le bus stays first and il is added after part. Part already ends in t, so there is no extra -t-.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le bus part-t-il à midi ?"
+          ],
+          "why": "The linking letter separates two vowels, and this verb already ends in t, so nothing is added."
+        },
+        {
+          "answers": [
+            "Part-il le bus à midi ?"
+          ],
+          "why": "The noun subject has to stay in front of the verb; the pronoun after the verb only repeats it."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "questions-noun-inversion-complete",
@@ -626,7 +1794,29 @@
       ],
       "hint": "The pronoun for ta sœur is elle, and joue ends in a vowel.",
       "feedback": "Write the verb, a linking letter if two vowels meet, then the pronoun, all with hyphens.",
-      "explanation": "Ta sœur is repeated by elle after the verb, with -t- between the vowels: Ta sœur joue-t-elle du piano ?"
+      "explanation": "Ta sœur is repeated by elle after the verb, with -t- between the vowels: Ta sœur joue-t-elle du piano ?",
+      "mistakes": [
+        {
+          "answers": [
+            "joue-elle"
+          ],
+          "why": "The verb ends in a vowel and the pronoun begins with one, so a linking letter has to stand between them."
+        },
+        {
+          "answers": [
+            "joue-t-il"
+          ],
+          "why": "Il stands for a man. The noun in front is feminine, so the added pronoun must match her."
+        },
+        {
+          "answers": [
+            "joue",
+            "jouent-elles"
+          ],
+          "why": "The verb alone does not ask the question here, and the noun in front is one person: the pronoun repeating it comes after the verb, in the singular."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "questions-noun-inversion-translate",
@@ -649,7 +1839,28 @@
       ],
       "hint": "Keep Léa first and repeat her with a pronoun after the verb.",
       "feedback": "Léa stays in front. Check the vowels between aime and the pronoun.",
-      "explanation": "Léa is repeated by elle, linked with -t-: Léa aime-t-elle la mer ?"
+      "explanation": "Léa is repeated by elle, linked with -t-: Léa aime-t-elle la mer ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Léa aime-elle la mer ?"
+          ],
+          "why": "Two vowels touch between the verb and the pronoun; French puts a linking letter between them."
+        },
+        {
+          "answers": [
+            "Aime-t-elle la mer ?"
+          ],
+          "why": "The name has been dropped, but the task asks the question to start with her; the pronoun after the verb only repeats it."
+        },
+        {
+          "answers": [
+            "Léa aime-t-il la mer ?"
+          ],
+          "why": "Il points to a masculine person, and the added pronoun must match the noun it repeats."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "questions-noun-inversion-gender-choose",
@@ -667,7 +1878,22 @@
       ],
       "hint": "The added pronoun must match ta mère, and habite ends in a vowel.",
       "feedback": "Check two things: the pronoun’s gender and the link between two vowels.",
-      "explanation": "Ta mère is feminine, so the pronoun is elle, joined with -t-: habite-t-elle."
+      "explanation": "Ta mère is feminine, so the pronoun is elle, joined with -t-: habite-t-elle.",
+      "mistakes": [
+        {
+          "answers": [
+            "habite-elle"
+          ],
+          "why": "The verb ends in a vowel and the pronoun begins with one; without a linking letter the two would collide."
+        },
+        {
+          "answers": [
+            "habite-t-il"
+          ],
+          "why": "Il stands for a masculine person, and ta mère is feminine, so the pronoun repeating her does not match."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "questions-pc-inversion-rewrite",
@@ -690,7 +1916,27 @@
       ],
       "hint": "In the passé composé, only the auxiliary swaps places with the pronoun.",
       "feedback": "Invert as and tu, and leave the participle after them.",
-      "explanation": "The auxiliary as is inverted with tu, and fini follows: As-tu fini ton café ?"
+      "explanation": "The auxiliary as is inverted with tu, and fini follows: As-tu fini ton café ?",
+      "mistakes": [
+        {
+          "answers": [
+            "As fini-tu ton café ?"
+          ],
+          "why": "The pronoun has been hooked to the participle. In a two-part past tense only the helping verb swaps with the pronoun."
+        },
+        {
+          "answers": [
+            "Tu as-tu fini ton café ?"
+          ],
+          "why": "The pronoun is written twice. Inverting moves it behind the helper instead of adding a second one."
+        },
+        {
+          "answers": [
+            "As-tu finis ton café ?"
+          ],
+          "why": "The participle takes no -s here; only the helping verb changes for the person."
+        }
+      ]
     },
     {
       "id": "questions-pc-inversion-choose",
@@ -708,7 +1954,21 @@
       ],
       "hint": "Which word is inverted with the pronoun: the auxiliary or the participle?",
       "feedback": "The pronoun joins the auxiliary, and the participle comes after both.",
-      "explanation": "As-tu vu inverts the auxiliary as with tu, then adds the participle vu."
+      "explanation": "As-tu vu inverts the auxiliary as with tu, then adds the participle vu.",
+      "mistakes": [
+        {
+          "answers": [
+            "As vu-tu"
+          ],
+          "why": "The pronoun is stuck to the participle. It belongs right after the helping verb, the only word that inverts."
+        },
+        {
+          "answers": [
+            "Vu as-tu"
+          ],
+          "why": "The participle has been dragged to the front; it stays at the end of the block, after the pronoun."
+        }
+      ]
     },
     {
       "id": "questions-pc-inversion-complete",
@@ -721,7 +1981,35 @@
       ],
       "hint": "Invert the auxiliary, not fini.",
       "feedback": "Write the vous form of avoir, then the pronoun, joined by a hyphen.",
-      "explanation": "Vous avez fini becomes Avez-vous fini ? The participle stays after the pronoun."
+      "explanation": "Vous avez fini becomes Avez-vous fini ? The participle stays after the pronoun.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous avez"
+          ],
+          "why": "That is statement order. The task asks for the inverted order, helper first."
+        },
+        {
+          "answers": [
+            "Avez vous"
+          ],
+          "why": "The order is right, but the two words must be joined by a hyphen to form one block."
+        },
+        {
+          "answers": [
+            "Êtes-vous"
+          ],
+          "why": "Être is the wrong helper for finir: its passé composé is built with avoir."
+        },
+        {
+          "answers": [
+            "Avons-nous",
+            "As-tu"
+          ],
+          "why": "Those are other persons. The task names vous, so the helper and the pronoun both have to be that person."
+        }
+      ],
+      "row": "helping verb"
     },
     {
       "id": "questions-pc-inversion-build",
@@ -740,7 +2028,21 @@
       ],
       "hint": "Start with the auxiliary and pronoun, then the participle.",
       "feedback": "Two auxiliary tiles look alike. Check what goes between a and elle.",
-      "explanation": "A and elle are separated by -t-: A-t-elle téléphoné à sa mère ?"
+      "explanation": "A and elle are separated by -t-: A-t-elle téléphoné à sa mère ?",
+      "mistakes": [
+        {
+          "answers": [
+            "A-elle téléphoné à sa mère ?"
+          ],
+          "why": "The helper ends in a vowel and the pronoun begins with one, so a linking letter has to separate them."
+        },
+        {
+          "answers": [
+            "Téléphoné a-t-elle à sa mère ?"
+          ],
+          "why": "The participle has been moved to the front; it stays after the helper and its pronoun."
+        }
+      ]
     },
     {
       "id": "questions-pc-inversion-repair",
@@ -753,7 +2055,27 @@
       ],
       "hint": "The pronoun attaches to the auxiliary, not to the participle.",
       "feedback": "Move vous next to the auxiliary and put the participle after it.",
-      "explanation": "In the passé composé, invert the auxiliary and the pronoun: Avez-vous vu mes clés ?"
+      "explanation": "In the passé composé, invert the auxiliary and the pronoun: Avez-vous vu mes clés ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Avez vu-vous mes clés ?"
+          ],
+          "why": "That is the sentence as given: the pronoun is hooked to the participle, but only the helping verb swaps with the pronoun."
+        },
+        {
+          "answers": [
+            "Avez vous vu mes clés ?"
+          ],
+          "why": "The order is right now, yet the helper and the pronoun are left as two loose words instead of one hyphenated block."
+        },
+        {
+          "answers": [
+            "Vous avez vu mes clés ?"
+          ],
+          "why": "That returns to statement order, so the inversion the task asks you to repair has gone."
+        }
+      ]
     },
     {
       "id": "questions-pc-inversion-translate",
@@ -776,7 +2098,27 @@
       ],
       "hint": "Invert the auxiliary with vous. Short adverbs such as bien go before the participle.",
       "feedback": "Use avoir for vous, invert it, then put bien and dormi after the pronoun.",
-      "explanation": "Avez-vous bien dormi ? inverts the auxiliary; bien sits between the pronoun and the participle."
+      "explanation": "Avez-vous bien dormi ? inverts the auxiliary; bien sits between the pronoun and the participle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Avez-vous dormi bien ?"
+          ],
+          "why": "Bien is a short adverb: it sits between the pronoun and the participle, not after it."
+        },
+        {
+          "answers": [
+            "As-tu bien dormi ?"
+          ],
+          "why": "Tu is the friendly you, and the task marks the question as formal."
+        },
+        {
+          "answers": [
+            "Êtes-vous bien dormi ?"
+          ],
+          "why": "Dormir builds its passé composé with avoir, not with être."
+        }
+      ]
     },
     {
       "id": "questions-negative-si-choose",
@@ -794,7 +2136,22 @@
       ],
       "hint": "The reply contradicts a negative question.",
       "feedback": "The speaker is coming, which goes against the question. French has a special yes for that.",
-      "explanation": "Si is the yes that contradicts a negative question. Oui answers a positive question, and non would mean the person is not coming."
+      "explanation": "Si is the yes that contradicts a negative question. Oui answers a positive question, and non would mean the person is not coming.",
+      "mistakes": [
+        {
+          "answers": [
+            "Oui"
+          ],
+          "why": "Oui agrees with a question asked in the positive. This question was built with ne … pas and the reply pushes back against it, which French marks differently."
+        },
+        {
+          "answers": [
+            "Non"
+          ],
+          "why": "Non agrees with the negative question and would mean the speaker is not coming, which contradicts the rest of the reply."
+        }
+      ],
+      "row": "Negative question"
     },
     {
       "id": "questions-negative-si-complete",
@@ -807,7 +2164,23 @@
       ],
       "hint": "The answer disagrees with a question containing ne…pas.",
       "feedback": "This is a yes, but not the usual one.",
-      "explanation": "After a negative question, yes is si: Si, j’adore ça !"
+      "explanation": "After a negative question, yes is si: Si, j’adore ça !",
+      "mistakes": [
+        {
+          "answers": [
+            "Oui",
+            "Mais oui"
+          ],
+          "why": "Oui answers a question asked in the positive. Here the question carries n’… pas and the reply goes against it."
+        },
+        {
+          "answers": [
+            "Non"
+          ],
+          "why": "Non agrees with the negative question, so it would say the speaker dislikes cheese, while the rest of the reply says the opposite."
+        }
+      ],
+      "row": "Negative question"
     },
     {
       "id": "questions-negative-si-translate",
@@ -828,7 +2201,29 @@
       ],
       "hint": "Avoir faim is the French for “to be hungry”. Put the negation around the verb.",
       "feedback": "Use tu with avoir faim and wrap ne…pas around the conjugated verb. Ne becomes n’ before a vowel.",
-      "explanation": "Tu n’as pas faim ? keeps n’…pas around as. With inversion, the negation wraps the verb and pronoun together: N’as-tu pas faim ?"
+      "explanation": "Tu n’as pas faim ? keeps n’…pas around as. With inversion, the negation wraps the verb and pronoun together: N’as-tu pas faim ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu n’es pas faim ?",
+            "N’es-tu pas faim ?"
+          ],
+          "why": "Es is être, but French does not say “be hungry”: hunger is something you have, so the verb is avoir."
+        },
+        {
+          "answers": [
+            "Tu ne as pas faim ?"
+          ],
+          "why": "Ne keeps its vowel only before a consonant. The verb here starts with a vowel, so ne is shortened with an apostrophe."
+        },
+        {
+          "answers": [
+            "Tu n’as pas de faim ?"
+          ],
+          "why": "Avoir faim is a fixed pair: no article comes between the verb and faim."
+        }
+      ],
+      "row": "Negative question"
     },
     {
       "id": "questions-negative-si-rewrite",
@@ -841,7 +2236,28 @@
       ],
       "hint": "The negation wraps around the inverted verb and pronoun as one block.",
       "feedback": "Put ne, shortened before a vowel, before the verb, and pas after the pronoun.",
-      "explanation": "In an inverted question, ne goes before aimes-tu and pas after it: N’aimes-tu pas le poisson ?"
+      "explanation": "In an inverted question, ne goes before aimes-tu and pas after it: N’aimes-tu pas le poisson ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne aimes-tu pas le poisson ?"
+          ],
+          "why": "Ne cannot keep its vowel in front of another vowel; it is shortened with an apostrophe."
+        },
+        {
+          "answers": [
+            "N’aimes pas-tu le poisson ?"
+          ],
+          "why": "The verb and the pronoun form one block, so nothing may be slipped between them; the second half of the negation follows the whole block."
+        },
+        {
+          "answers": [
+            "Tu n’aimes pas le poisson ?"
+          ],
+          "why": "That puts the pronoun back in front of the verb, dropping the inversion the task asks you to keep."
+        }
+      ],
+      "row": "Negative question"
     },
     {
       "id": "questions-negative-si-repair",
@@ -859,7 +2275,28 @@
       ],
       "hint": "A yes that answers a negative question is a different word.",
       "feedback": "The rest of the reply is right. Change only the first word.",
-      "explanation": "The reply contradicts a negative question, so French uses si instead of oui."
+      "explanation": "The reply contradicts a negative question, so French uses si instead of oui.",
+      "mistakes": [
+        {
+          "answers": [
+            "Oui, il travaille aujourd’hui."
+          ],
+          "why": "That is the reply as given. Oui only agrees with a question asked in the positive, and this question carried ne … pas."
+        },
+        {
+          "answers": [
+            "Non, il travaille aujourd’hui."
+          ],
+          "why": "Non agrees with the negative question, so it would mean he is not working — the opposite of the rest of the sentence."
+        },
+        {
+          "answers": [
+            "Mais oui, il travaille aujourd’hui."
+          ],
+          "why": "Mais only strengthens the word after it, and that word is still the yes used after a positive question."
+        }
+      ],
+      "row": "Negative question"
     }
   ]
 }

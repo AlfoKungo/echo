@@ -5,9 +5,603 @@
   "title": "Passé composé with avoir",
   "description": "Say what you did, didn’t do and have already done with avoir.",
   "mark": "j’ai fait",
-  "rule": "Most verbs form the passé composé with the present of avoir (j’ai, tu as, il a, nous avons, vous avez, ils ont) plus a past participle. Regular participles: -er verbs end in -é (parlé), -ir verbs like finir end in -i (fini), and -re verbs like vendre end in -u (vendu). Many common verbs have irregular participles: fait, pris, mis, dit, écrit, ouvert, offert, and vu, bu, lu, eu, été, pu, voulu, dû, su, reçu, connu; être itself takes avoir (j’ai été). Ne…pas goes around the auxiliary (je n’ai pas mangé), and short adverbs such as bien, mal, déjà, encore, beaucoup and trop go between the auxiliary and the participle (j’ai bien dormi). For an inverted question, swap the subject and the auxiliary (as-tu fini ?), adding -t- between a and il, elle or on (a-t-il fini ?). The participle does not agree with the subject, but it agrees with a direct object placed before the verb, such as la, les or que: je les ai vues, la lettre que j’ai écrite.",
-  "example": "J’ai fini mes devoirs. · Elle n’a pas pris le bus. · As-tu déjà lu ce livre ?",
-  "aside": "Agreement with a preceding direct object is heard only when the participle ends in a consonant (prise, écrite, ouverte sound different from pris, écrit, ouvert); in vues or achetées it is silent, but it is always written.",
+  "guide": {
+    "summary": "The passé composé says what you did and finished. Most verbs build it with the present of avoir plus a past participle, so you need two things: avoir’s forms and the participle of your verb.",
+    "sections": [
+      {
+        "id": "two-parts",
+        "title": "The two parts: avoir + participle",
+        "text": "The passé composé is always two words: the present of avoir, then the past participle. The participle never changes for the subject.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Auxiliary (avoir)",
+            "Example"
+          ],
+          "rows": [
+            [
+              "je",
+              "ai → j’ai",
+              "j’ai parlé"
+            ],
+            [
+              "tu",
+              "as",
+              "tu as parlé"
+            ],
+            [
+              "il / elle / on",
+              "a",
+              "elle a parlé"
+            ],
+            [
+              "nous",
+              "avons",
+              "nous avons parlé"
+            ],
+            [
+              "vous",
+              "avez",
+              "vous avez parlé"
+            ],
+            [
+              "ils / elles",
+              "ont",
+              "ils ont parlé"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject and take its form of avoir.",
+          "Add the past participle of the verb, never the infinitive.",
+          "Write je as j’ before ai."
+        ],
+        "examples": [
+          {
+            "fr": "J’ai fini mes devoirs.",
+            "en": "I finished my homework."
+          },
+          {
+            "fr": "Nous avons acheté du pain.",
+            "en": "We bought some bread."
+          }
+        ],
+        "watch": [
+          "The participle does not agree with the subject: nous avons mangé, never mangés.",
+          "With -er verbs the participle and the infinitive sound the same: parlé, parler.",
+          "Être itself is conjugated with avoir: j’ai été."
+        ]
+      },
+      {
+        "id": "regular-participles",
+        "title": "Regular participles: which ending?",
+        "text": "Regular verbs make their participle from the infinitive ending. Three endings cover all of them.",
+        "table": {
+          "columns": [
+            "Infinitive",
+            "Participle ends in",
+            "Example"
+          ],
+          "rows": [
+            [
+              "-er",
+              "-é",
+              "parler → parlé, manger → mangé"
+            ],
+            [
+              "-ir (like finir)",
+              "-i",
+              "finir → fini, choisir → choisi"
+            ],
+            [
+              "-re (like vendre)",
+              "-u",
+              "vendre → vendu, attendre → attendu"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the last two letters of the infinitive.",
+          "Take that row and swap the infinitive ending for the participle ending.",
+          "Put the subject's form of avoir in front."
+        ],
+        "examples": [
+          {
+            "fr": "Vous avez fini.",
+            "en": "You have finished."
+          },
+          {
+            "fr": "Ils ont attendu le bus.",
+            "en": "They waited for the bus."
+          },
+          {
+            "fr": "Tu as regardé un film.",
+            "en": "You watched a film."
+          }
+        ],
+        "watch": [
+          "Do not mix the endings: fine, finé, attendi and attendé do not exist.",
+          "After the auxiliary write the participle, not the infinitive: j’ai travaillé, not j’ai travailler."
+        ]
+      },
+      {
+        "id": "irregular-participles",
+        "title": "Irregular participles ending in a consonant",
+        "text": "Many everyday verbs have a short participle ending in a silent consonant. Learn these one by one.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Participle",
+            "Example"
+          ],
+          "rows": [
+            [
+              "faire",
+              "fait",
+              "j’ai fait le ménage"
+            ],
+            [
+              "prendre (apprendre, comprendre)",
+              "pris (appris, compris)",
+              "j’ai pris le bus"
+            ],
+            [
+              "mettre",
+              "mis",
+              "il a mis son manteau"
+            ],
+            [
+              "dire",
+              "dit",
+              "elle a dit oui"
+            ],
+            [
+              "écrire",
+              "écrit",
+              "j’ai écrit une lettre"
+            ],
+            [
+              "ouvrir",
+              "ouvert",
+              "j’ai ouvert la fenêtre"
+            ],
+            [
+              "offrir",
+              "offert",
+              "ils m’ont offert des fleurs"
+            ]
+          ]
+        },
+        "steps": [
+          "Check whether the verb is on this list before applying a regular ending.",
+          "Take the participle as it stands; the final consonant is silent.",
+          "Put the subject's form of avoir in front."
+        ],
+        "examples": [
+          {
+            "fr": "Il a mis son manteau.",
+            "en": "He put on his coat."
+          },
+          {
+            "fr": "J’ai ouvert la fenêtre.",
+            "en": "I opened the window."
+          }
+        ],
+        "watch": [
+          "Ouvrir and offrir look like -ir verbs but do not take -i.",
+          "Prendre looks like an -re verb but does not take -u.",
+          "Do not use the present tense form: il met, il prend, elle dit are not participles."
+        ]
+      },
+      {
+        "id": "participles-in-u",
+        "title": "Short irregular participles (mostly -u)",
+        "text": "These come mainly from -oir and -re verbs. Être is the odd one out, and it still takes avoir as its auxiliary.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Participle",
+            "Example"
+          ],
+          "rows": [
+            [
+              "voir",
+              "vu",
+              "j’ai vu le film"
+            ],
+            [
+              "boire",
+              "bu",
+              "tu as bu un café"
+            ],
+            [
+              "lire",
+              "lu",
+              "tu as lu ce livre"
+            ],
+            [
+              "avoir",
+              "eu",
+              "nous avons eu un problème"
+            ],
+            [
+              "être",
+              "été",
+              "vous avez été malades"
+            ],
+            [
+              "pouvoir",
+              "pu",
+              "je n’ai pas pu venir"
+            ],
+            [
+              "vouloir",
+              "voulu",
+              "elle a voulu partir"
+            ],
+            [
+              "devoir",
+              "dû",
+              "il a dû travailler"
+            ],
+            [
+              "savoir",
+              "su",
+              "j’ai su la réponse"
+            ],
+            [
+              "recevoir",
+              "reçu",
+              "elle a reçu une lettre"
+            ],
+            [
+              "connaître",
+              "connu",
+              "j’ai connu ses parents"
+            ]
+          ]
+        },
+        "steps": [
+          "Look the verb up here instead of guessing a regular ending.",
+          "Keep the written accent or cedilla the participle carries.",
+          "Remember that avoir and être are both conjugated with avoir."
+        ],
+        "examples": [
+          {
+            "fr": "Tu as bu un café.",
+            "en": "You drank a coffee."
+          },
+          {
+            "fr": "Nous avons eu un problème.",
+            "en": "We had a problem."
+          }
+        ],
+        "watch": [
+          "Do not build these from the present stem: buvu, lisé and recevu are not words.",
+          "Dû keeps its circumflex and reçu keeps its cedilla.",
+          "Avoir is its own auxiliary: j’ai eu."
+        ]
+      },
+      {
+        "id": "negation",
+        "title": "Saying you didn’t do it",
+        "text": "Ne…pas wraps the auxiliary only. The participle stays outside, right after pas.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Positive",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "je",
+              "j’ai mangé",
+              "je n’ai pas mangé"
+            ],
+            [
+              "tu",
+              "tu as fini",
+              "tu n’as pas fini"
+            ],
+            [
+              "il / elle",
+              "elle a répondu",
+              "elle n’a pas répondu"
+            ],
+            [
+              "nous",
+              "nous avons vu",
+              "nous n’avons pas vu"
+            ],
+            [
+              "vous",
+              "vous avez pris",
+              "vous n’avez pas pris"
+            ],
+            [
+              "ils / elles",
+              "ils ont compris",
+              "ils n’ont pas compris"
+            ]
+          ]
+        },
+        "steps": [
+          "Build the positive sentence first.",
+          "Put ne in front of the auxiliary and pas immediately after it.",
+          "Elide ne to n’ before ai, as, a, avons, avez and ont."
+        ],
+        "examples": [
+          {
+            "fr": "Elle n’a pas pris le bus.",
+            "en": "She didn’t take the bus."
+          },
+          {
+            "fr": "Je n’ai pas vu Marie.",
+            "en": "I didn’t see Marie."
+          }
+        ],
+        "watch": [
+          "Pas never goes after the participle.",
+          "Dropping ne (j’ai pas vu) is casual speech; in writing keep both halves."
+        ]
+      },
+      {
+        "id": "adverbs",
+        "title": "Where short adverbs go",
+        "text": "Short common adverbs sit between the auxiliary and the participle, where English puts them after the verb.",
+        "table": {
+          "columns": [
+            "Adverb",
+            "Example"
+          ],
+          "rows": [
+            [
+              "bien",
+              "j’ai bien dormi"
+            ],
+            [
+              "mal",
+              "tu as mal compris"
+            ],
+            [
+              "déjà",
+              "elle a déjà mangé"
+            ],
+            [
+              "encore",
+              "je n’ai pas encore fini"
+            ],
+            [
+              "beaucoup",
+              "nous avons beaucoup mangé"
+            ],
+            [
+              "trop",
+              "il a trop bu"
+            ]
+          ]
+        },
+        "steps": [
+          "Build the passé composé: auxiliary, then participle.",
+          "Slide the short adverb in between the two.",
+          "In a negative sentence, keep it after pas and before the participle."
+        ],
+        "examples": [
+          {
+            "fr": "Vous avez déjà compris ?",
+            "en": "Have you already understood?"
+          },
+          {
+            "fr": "J’ai bien dormi.",
+            "en": "I slept well."
+          }
+        ],
+        "watch": [
+          "Time expressions stay outside the verb: j’ai travaillé hier soir.",
+          "Moving the adverb to the front of the sentence does not fix its place."
+        ]
+      },
+      {
+        "id": "questions",
+        "title": "Asking with inversion",
+        "text": "Only the auxiliary swaps with the subject pronoun, joined by a hyphen. The participle and the rest of the sentence stay put.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Inverted auxiliary",
+            "Example"
+          ],
+          "rows": [
+            [
+              "tu",
+              "as-tu",
+              "as-tu fini ?"
+            ],
+            [
+              "il",
+              "a-t-il",
+              "a-t-il mangé ?"
+            ],
+            [
+              "elle",
+              "a-t-elle",
+              "a-t-elle acheté du pain ?"
+            ],
+            [
+              "on",
+              "a-t-on",
+              "a-t-on compris ?"
+            ],
+            [
+              "nous",
+              "avons-nous",
+              "avons-nous payé ?"
+            ],
+            [
+              "vous",
+              "avez-vous",
+              "avez-vous bien dormi ?"
+            ],
+            [
+              "ils",
+              "ont-ils",
+              "ont-ils répondu ?"
+            ],
+            [
+              "elles",
+              "ont-elles",
+              "ont-elles vu le film ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the auxiliary in the statement.",
+          "Move it in front of the subject pronoun and join them with a hyphen.",
+          "Add -t- when a meets il, elle or on.",
+          "Leave the participle and the rest of the sentence after the subject."
+        ],
+        "examples": [
+          {
+            "fr": "As-tu déjà lu ce livre ?",
+            "en": "Have you already read this book?"
+          },
+          {
+            "fr": "A-t-il répondu ?",
+            "en": "Did he answer?"
+          }
+        ],
+        "watch": [
+          "Est-ce que and a simple rising tone also make questions: est-ce que tu as vu Paul ?",
+          "The linking letter is -t-, with a hyphen on each side, never an apostrophe."
+        ]
+      },
+      {
+        "id": "agreement",
+        "title": "When the participle agrees",
+        "text": "With avoir the participle ignores the subject. It agrees only with a direct object placed before the verb: le, la, l’, les or que.",
+        "table": {
+          "columns": [
+            "Direct object before the verb",
+            "Participle",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "no change",
+              "le livre : je l’ai lu"
+            ],
+            [
+              "feminine singular",
+              "add -e",
+              "la lettre : je l’ai lue"
+            ],
+            [
+              "masculine plural",
+              "add -s",
+              "les livres : je les ai lus"
+            ],
+            [
+              "feminine plural",
+              "add -es",
+              "les photos : je les ai vues"
+            ],
+            [
+              "object after the verb",
+              "no change",
+              "elle a lavé la voiture"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the direct object of the verb.",
+          "Ask whether it stands before the auxiliary (a pronoun le, la, l’, les, or que).",
+          "If it does, match the participle to its gender and number; if it comes after, change nothing."
+        ],
+        "examples": [
+          {
+            "fr": "Ces photos ? Je les ai vues hier.",
+            "en": "These photos? I saw them yesterday."
+          },
+          {
+            "fr": "Elle a lavé la voiture.",
+            "en": "She washed the car."
+          }
+        ],
+        "watch": [
+          "The subject never triggers agreement with avoir: elles ont mangé.",
+          "You hear the agreement only after a consonant (prise, écrite, ouverte); in vues it is silent but still written."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "regular-er": {
+      "section": "regular-participles",
+      "steps": [
+        "Take the subject's form of avoir.",
+        "Drop the -r of the -er infinitive and write the participle ending of that row.",
+        "Check you have not left the infinitive standing after the auxiliary."
+      ]
+    },
+    "regular-ir-re": {
+      "section": "regular-participles",
+      "steps": [
+        "Read the infinitive ending: is it -ir or -re?",
+        "Take the participle ending from that row of the table.",
+        "Put the subject's form of avoir in front of it."
+      ]
+    },
+    "irregular-common": {
+      "section": "irregular-participles",
+      "steps": [
+        "Ask first whether the verb is on the irregular list; those participles end in a consonant.",
+        "If it is, do not apply the regular -é, -i or -u endings.",
+        "Add the subject's form of avoir in front."
+      ]
+    },
+    "irregular-u": {
+      "section": "participles-in-u",
+      "steps": [
+        "Look the verb up in the short-participle table instead of building from its stem.",
+        "Copy the accent or cedilla the participle carries.",
+        "Add the subject's form of avoir, even for avoir and être themselves."
+      ]
+    },
+    "negation": {
+      "section": "negation",
+      "steps": [
+        "Find the auxiliary, not the participle.",
+        "Put ne before it and pas straight after it.",
+        "Elide ne before a vowel, and leave the participle after pas."
+      ]
+    },
+    "adverb-placement": {
+      "section": "adverbs",
+      "steps": [
+        "Split the verb into its two parts: auxiliary and participle.",
+        "Place the short adverb between them, not after the participle.",
+        "In a negative sentence, keep it after pas."
+      ]
+    },
+    "questions": {
+      "section": "questions",
+      "steps": [
+        "Find the auxiliary in the statement.",
+        "Put it in front of the subject pronoun with a hyphen.",
+        "Insert -t- if the auxiliary ends in a vowel and the subject is il, elle or on.",
+        "Keep the participle and the rest of the sentence after the subject."
+      ]
+    },
+    "preceding-object-agreement": {
+      "section": "agreement",
+      "steps": [
+        "Find the direct object and check whether it comes before the verb.",
+        "If it does, work out its gender and number.",
+        "Add the matching ending to the participle; add nothing when the object follows the verb."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "passe-compose-avoir-regular-er-1",
@@ -21,7 +615,38 @@
       ],
       "hint": "Use the present of avoir for nous, then the -er participle.",
       "feedback": "Two words: the auxiliary avoir for nous and a participle ending in -é.",
-      "explanation": "Nous takes avons, and manger becomes mangé: nous avons mangé."
+      "explanation": "Nous takes avons, and manger becomes mangé: nous avons mangé.",
+      "mistakes": [
+        {
+          "answers": [
+            "avons manger",
+            "nous avons manger"
+          ],
+          "why": "Manger is the infinitive. After the auxiliary French needs the past participle, which sounds the same but is spelt differently."
+        },
+        {
+          "answers": [
+            "ai mangé",
+            "j’ai mangé"
+          ],
+          "why": "Ai is the je form of avoir. The subject asked for here is nous, which has its own form of the auxiliary."
+        },
+        {
+          "answers": [
+            "avons mangés",
+            "nous avons mangés"
+          ],
+          "why": "This adds a plural -s for nous, but with avoir the participle never agrees with the subject."
+        },
+        {
+          "answers": [
+            "sommes mangé",
+            "nous sommes mangé"
+          ],
+          "why": "Sommes is être. Manger builds its past with avoir, like most verbs."
+        }
+      ],
+      "row": "-er"
     },
     {
       "id": "passe-compose-avoir-regular-er-2",
@@ -34,7 +659,34 @@
       ],
       "hint": "Tu goes with the tu form of avoir. An -er verb’s participle ends in -é.",
       "feedback": "Write both parts: avoir for tu, then the participle.",
-      "explanation": "Tu as regardé: as is avoir for tu, and regarder becomes regardé."
+      "explanation": "Tu as regardé: as is avoir for tu, and regarder becomes regardé.",
+      "mistakes": [
+        {
+          "answers": [
+            "as regarder"
+          ],
+          "why": "Regarder is the infinitive. The passé composé needs the past participle after the auxiliary, spelt differently even though it sounds the same."
+        },
+        {
+          "answers": [
+            "a regardé"
+          ],
+          "why": "A is the il/elle form of avoir, for one other person. The subject here is tu."
+        },
+        {
+          "answers": [
+            "es regardé"
+          ],
+          "why": "Es is être. Regarder forms its past with avoir."
+        },
+        {
+          "answers": [
+            "regardé"
+          ],
+          "why": "That is only half of the verb. The passé composé is two words, and the auxiliary comes first."
+        }
+      ],
+      "row": "-er"
     },
     {
       "id": "passe-compose-avoir-regular-er-3",
@@ -52,7 +704,22 @@
       ],
       "hint": "After the auxiliary a you need the past participle.",
       "feedback": "The infinitive and the present tense cannot follow the auxiliary.",
-      "explanation": "The passé composé is auxiliary + participle, so a appelé. The -er participle ends in -é."
+      "explanation": "The passé composé is auxiliary + participle, so a appelé. The -er participle ends in -é.",
+      "mistakes": [
+        {
+          "answers": [
+            "appeler"
+          ],
+          "why": "That is the infinitive, the dictionary form. After the auxiliary a, French needs a past participle."
+        },
+        {
+          "answers": [
+            "appelle"
+          ],
+          "why": "Appelle is the present tense: elle appelle means she is calling. The auxiliary a is already there, so what follows must be a participle."
+        }
+      ],
+      "row": "-er"
     },
     {
       "id": "passe-compose-avoir-regular-er-4",
@@ -73,7 +740,22 @@
       ],
       "hint": "Start with the subject and the auxiliary, then the participle.",
       "feedback": "The verb after avons must be a participle, not an infinitive.",
-      "explanation": "Nous avons acheté: avoir for nous plus the participle acheté."
+      "explanation": "Nous avons acheté: avoir for nous plus the participle acheté.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous avons acheter du pain."
+          ],
+          "why": "Acheter is the infinitive. After avons the verb must take its past participle form."
+        },
+        {
+          "answers": [
+            "Nous acheté du pain."
+          ],
+          "why": "The auxiliary is missing. Without avoir this is not a passé composé at all."
+        }
+      ],
+      "row": "-er"
     },
     {
       "id": "passe-compose-avoir-regular-er-5",
@@ -87,7 +769,28 @@
       "strictAccents": true,
       "hint": "Look at the word after the auxiliary.",
       "feedback": "After ai you need a past participle, not the infinitive. They sound the same but are spelt differently.",
-      "explanation": "The passé composé uses the participle travaillé, not the infinitive travailler."
+      "explanation": "The passé composé uses the participle travaillé, not the infinitive travailler.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai travailler hier soir."
+          ],
+          "why": "That is the sentence unchanged: the infinitive is still sitting after the auxiliary."
+        },
+        {
+          "answers": [
+            "J’ai travaille hier soir."
+          ],
+          "why": "Travaille without an accent is the present tense (je travaille). Here the verb is finished and past."
+        },
+        {
+          "answers": [
+            "Je ai travaillé hier soir."
+          ],
+          "why": "Je never stays whole in front of a vowel; it is shortened with an apostrophe."
+        }
+      ],
+      "row": "-er"
     },
     {
       "id": "passe-compose-avoir-regular-ir-re-1",
@@ -101,7 +804,38 @@
       ],
       "hint": "Finir is a regular -ir verb. Think of the ending of its participle.",
       "feedback": "Use avoir for vous and a participle ending in -i.",
-      "explanation": "Vous takes avez, and regular -ir verbs like finir make their participle in -i: fini."
+      "explanation": "Vous takes avez, and regular -ir verbs like finir make their participle in -i: fini.",
+      "mistakes": [
+        {
+          "answers": [
+            "avez finé",
+            "vous avez finé"
+          ],
+          "why": "The -é ending belongs to -er verbs like parler. Finir is a regular -ir verb."
+        },
+        {
+          "answers": [
+            "avez finu",
+            "vous avez finu"
+          ],
+          "why": "The -u ending belongs to regular -re verbs like vendre. Finir does not end in -re."
+        },
+        {
+          "answers": [
+            "as fini",
+            "tu as fini"
+          ],
+          "why": "As is the tu form of avoir. The subject asked for here is vous."
+        },
+        {
+          "answers": [
+            "êtes fini",
+            "vous êtes fini"
+          ],
+          "why": "Êtes is être. Finir builds its passé composé with avoir."
+        }
+      ],
+      "row": "-ir (like finir)"
     },
     {
       "id": "passe-compose-avoir-regular-ir-re-2",
@@ -115,7 +849,45 @@
       ],
       "hint": "Attendre is a regular -re verb. Its participle ends in -u.",
       "feedback": "Use avoir for ils, then the -re participle.",
-      "explanation": "Ils takes ont, and attendre becomes attendu: ils ont attendu."
+      "explanation": "Ils takes ont, and attendre becomes attendu: ils ont attendu.",
+      "mistakes": [
+        {
+          "answers": [
+            "ont attendi",
+            "ils ont attendi"
+          ],
+          "why": "The -i ending belongs to regular -ir verbs like finir. Attendre ends in -re."
+        },
+        {
+          "answers": [
+            "ont attendé",
+            "ils ont attendé"
+          ],
+          "why": "The -é ending only happens with -er verbs, and attendre is not one."
+        },
+        {
+          "answers": [
+            "ont attendre",
+            "ils ont attendre"
+          ],
+          "why": "That is the infinitive. After the auxiliary the verb must take its participle form."
+        },
+        {
+          "answers": [
+            "a attendu",
+            "il a attendu"
+          ],
+          "why": "A is the il/elle form of avoir, for one person. Ils is plural."
+        },
+        {
+          "answers": [
+            "sont attendu",
+            "ils sont attendu"
+          ],
+          "why": "Sont is être; attendre takes avoir. Sont attendu would also mean they are being awaited."
+        }
+      ],
+      "row": "-re (like vendre)"
     },
     {
       "id": "passe-compose-avoir-regular-ir-re-3",
@@ -133,7 +905,22 @@
       ],
       "hint": "Finir is a regular -ir verb.",
       "feedback": "Regular -ir verbs do not end their participle in -é or -u.",
-      "explanation": "Regular -ir verbs drop -r: finir becomes fini."
+      "explanation": "Regular -ir verbs drop -r: finir becomes fini.",
+      "mistakes": [
+        {
+          "answers": [
+            "finé"
+          ],
+          "why": "The -é ending is for -er participles like parlé. Finir is an -ir verb."
+        },
+        {
+          "answers": [
+            "finu"
+          ],
+          "why": "The -u ending is for regular -re participles like vendu. Finir does not end in -re."
+        }
+      ],
+      "row": "-ir (like finir)"
     },
     {
       "id": "passe-compose-avoir-regular-ir-re-4",
@@ -151,7 +938,22 @@
       ],
       "hint": "Entendre is a regular -re verb.",
       "feedback": "Regular -re verbs form the participle with -u.",
-      "explanation": "Regular -re verbs replace -re with -u: entendre becomes entendu."
+      "explanation": "Regular -re verbs replace -re with -u: entendre becomes entendu.",
+      "mistakes": [
+        {
+          "answers": [
+            "entendi"
+          ],
+          "why": "The -i ending belongs to regular -ir verbs like finir. Entendre ends in -re."
+        },
+        {
+          "answers": [
+            "entendé"
+          ],
+          "why": "The -é ending belongs to -er verbs. Entendre is not one of them."
+        }
+      ],
+      "row": "-re (like vendre)"
     },
     {
       "id": "passe-compose-avoir-regular-ir-re-5",
@@ -164,7 +966,34 @@
       ],
       "hint": "Répondre is a regular -re verb.",
       "feedback": "Check the ending of the participle.",
-      "explanation": "Répondre ends in -re, so its participle ends in -u: répondu."
+      "explanation": "Répondre ends in -re, so its participle ends in -u: répondu.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous avez répondi à la lettre."
+          ],
+          "why": "Nothing has changed. That is still the -ir ending, but répondre is a regular -re verb."
+        },
+        {
+          "answers": [
+            "Vous avez répondé à la lettre."
+          ],
+          "why": "The -é ending belongs to -er verbs, and répondre does not belong to that group."
+        },
+        {
+          "answers": [
+            "Vous avez répondre à la lettre."
+          ],
+          "why": "That leaves the infinitive after the auxiliary; the past needs a participle."
+        },
+        {
+          "answers": [
+            "Vous êtes répondu à la lettre."
+          ],
+          "why": "Être is the wrong auxiliary here: répondre forms its past with avoir."
+        }
+      ],
+      "row": "-re (like vendre)"
     },
     {
       "id": "passe-compose-avoir-regular-ir-re-6",
@@ -178,7 +1007,34 @@
       ],
       "hint": "Perdre (to lose) is a regular -re verb. Je becomes j’ before ai.",
       "feedback": "Use j’ai and the -re participle of perdre.",
-      "explanation": "J’ai perdu: je elides to j’ before ai, and perdre becomes perdu."
+      "explanation": "J’ai perdu: je elides to j’ before ai, and perdre becomes perdu.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai perdi mes clés."
+          ],
+          "why": "The -i ending is for regular -ir verbs like finir. Perdre ends in -re."
+        },
+        {
+          "answers": [
+            "J’ai perdé mes clés."
+          ],
+          "why": "The -é ending is for -er verbs only, and perdre is not one."
+        },
+        {
+          "answers": [
+            "Je ai perdu mes clés."
+          ],
+          "why": "Je must elide before a vowel: it loses its e and takes an apostrophe."
+        },
+        {
+          "answers": [
+            "J’ai perdre mes clés."
+          ],
+          "why": "That is the infinitive after the auxiliary. The passé composé needs the participle."
+        }
+      ],
+      "row": "-re (like vendre)"
     },
     {
       "id": "passe-compose-avoir-irregular-common-1",
@@ -192,7 +1048,37 @@
       ],
       "hint": "Faire has an irregular participle. Je elides before a vowel.",
       "feedback": "The participle of faire does not end in -é.",
-      "explanation": "Faire has the irregular participle fait: j’ai fait."
+      "explanation": "Faire has the irregular participle fait: j’ai fait.",
+      "mistakes": [
+        {
+          "answers": [
+            "ai fais",
+            "j’ai fais"
+          ],
+          "why": "Fais is the present tense (je fais, tu fais). The participle of faire ends in another consonant."
+        },
+        {
+          "answers": [
+            "ai faire",
+            "j’ai faire"
+          ],
+          "why": "That is the infinitive. After the auxiliary the verb must take its participle form."
+        },
+        {
+          "answers": [
+            "as fait",
+            "tu as fait"
+          ],
+          "why": "As is the tu form of avoir. The subject asked for here is je."
+        },
+        {
+          "answers": [
+            "je ai fait"
+          ],
+          "why": "Je never stays whole before a vowel; it is shortened with an apostrophe."
+        }
+      ],
+      "row": "faire"
     },
     {
       "id": "passe-compose-avoir-irregular-common-2",
@@ -205,7 +1091,40 @@
       ],
       "hint": "Mettre has a short irregular participle, like prendre.",
       "feedback": "Write avoir for il, then the irregular participle of mettre.",
-      "explanation": "Il takes a, and mettre has the irregular participle mis: il a mis."
+      "explanation": "Il takes a, and mettre has the irregular participle mis: il a mis.",
+      "mistakes": [
+        {
+          "answers": [
+            "a mettu"
+          ],
+          "why": "That applies the regular -re rule, but mettre is irregular and its participle is much shorter."
+        },
+        {
+          "answers": [
+            "a mit"
+          ],
+          "why": "Met is the present tense (il met son manteau). The participle of mettre ends in a different consonant."
+        },
+        {
+          "answers": [
+            "a mettre"
+          ],
+          "why": "That is the infinitive after the auxiliary; the passé composé needs a participle."
+        },
+        {
+          "answers": [
+            "est mis"
+          ],
+          "why": "Est is être. Mettre builds its past with avoir."
+        },
+        {
+          "answers": [
+            "ont mis"
+          ],
+          "why": "Ont is the ils/elles form of avoir. The subject il is one person."
+        }
+      ],
+      "row": "mettre"
     },
     {
       "id": "passe-compose-avoir-irregular-common-3",
@@ -223,7 +1142,22 @@
       ],
       "hint": "Ouvrir has an irregular participle ending in a consonant.",
       "feedback": "Ouvrir does not follow the regular -ir pattern.",
-      "explanation": "Ouvrir has the irregular participle ouvert: j’ai ouvert."
+      "explanation": "Ouvrir has the irregular participle ouvert: j’ai ouvert.",
+      "mistakes": [
+        {
+          "answers": [
+            "ouvri"
+          ],
+          "why": "That is the regular -ir ending, but ouvrir is irregular: its participle ends in a consonant."
+        },
+        {
+          "answers": [
+            "ouvré"
+          ],
+          "why": "The -é ending belongs to -er verbs. Ouvrir is an -ir verb, and an irregular one."
+        }
+      ],
+      "row": "ouvrir"
     },
     {
       "id": "passe-compose-avoir-irregular-common-4",
@@ -241,7 +1175,22 @@
       ],
       "hint": "Offrir works like ouvrir.",
       "feedback": "Offrir does not follow the regular -ir pattern.",
-      "explanation": "Offrir, like ouvrir, has an irregular participle ending in -ert: offert."
+      "explanation": "Offrir, like ouvrir, has an irregular participle ending in -ert: offert.",
+      "mistakes": [
+        {
+          "answers": [
+            "offri"
+          ],
+          "why": "That is the regular -ir ending. Offrir behaves like ouvrir, whose participle is irregular."
+        },
+        {
+          "answers": [
+            "offré"
+          ],
+          "why": "The -é ending belongs to -er verbs, and offrir is not one."
+        }
+      ],
+      "row": "offrir"
     },
     {
       "id": "passe-compose-avoir-irregular-common-5",
@@ -254,7 +1203,34 @@
       ],
       "hint": "Dire has a short irregular participle.",
       "feedback": "Use avoir for elle and the participle of dire.",
-      "explanation": "Dire has the irregular participle dit: elle a dit oui."
+      "explanation": "Dire has the irregular participle dit: elle a dit oui.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle dit oui."
+          ],
+          "why": "That is the present tense: she says yes. A finished past action needs the auxiliary plus a participle."
+        },
+        {
+          "answers": [
+            "Elle a dire oui."
+          ],
+          "why": "That leaves the infinitive after the auxiliary; the passé composé needs a participle."
+        },
+        {
+          "answers": [
+            "Elle a dis oui."
+          ],
+          "why": "Dis is the je/tu present form (je dis, tu dis), not a participle."
+        },
+        {
+          "answers": [
+            "Elle est dit oui."
+          ],
+          "why": "Est is être. Dire forms its past with avoir."
+        }
+      ],
+      "row": "dire"
     },
     {
       "id": "passe-compose-avoir-irregular-common-6",
@@ -267,7 +1243,34 @@
       ],
       "hint": "Prendre is irregular. Its participle does not end in -u.",
       "feedback": "Prendre does not follow the -re → -u pattern.",
-      "explanation": "Prendre and its family (apprendre, comprendre) have the participle pris: j’ai pris."
+      "explanation": "Prendre and its family (apprendre, comprendre) have the participle pris: j’ai pris.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai prendu le bus."
+          ],
+          "why": "Nothing has changed. That applies the regular -re rule, and prendre does not follow it."
+        },
+        {
+          "answers": [
+            "J’ai prendre le bus."
+          ],
+          "why": "That is the infinitive after the auxiliary; the past needs a participle."
+        },
+        {
+          "answers": [
+            "J’ai prend le bus."
+          ],
+          "why": "Prend is the present tense (il prend le bus), not a participle."
+        },
+        {
+          "answers": [
+            "J’ai prendé le bus."
+          ],
+          "why": "The -é ending belongs to -er verbs. Prendre is neither an -er verb nor a regular one."
+        }
+      ],
+      "row": "prendre (apprendre, comprendre)"
     },
     {
       "id": "passe-compose-avoir-irregular-u-1",
@@ -281,7 +1284,45 @@
       ],
       "hint": "Boire has a very short participle ending in -u.",
       "feedback": "Use avoir for tu and the irregular participle of boire.",
-      "explanation": "Boire has the participle bu: tu as bu."
+      "explanation": "Boire has the participle bu: tu as bu.",
+      "mistakes": [
+        {
+          "answers": [
+            "as bois",
+            "tu as bois"
+          ],
+          "why": "Bois is the present tense (tu bois). The participle of boire is a single short syllable."
+        },
+        {
+          "answers": [
+            "as boire",
+            "tu as boire"
+          ],
+          "why": "That is the infinitive. After the auxiliary the verb takes its participle form."
+        },
+        {
+          "answers": [
+            "as buvu",
+            "tu as buvu"
+          ],
+          "why": "Boire does not build its participle from the stem buv-; the real one is much shorter."
+        },
+        {
+          "answers": [
+            "a bu",
+            "il a bu"
+          ],
+          "why": "A is the il/elle form of avoir. The subject asked for here is tu."
+        },
+        {
+          "answers": [
+            "es bu",
+            "tu es bu"
+          ],
+          "why": "Es is être. Boire forms its past with avoir."
+        }
+      ],
+      "row": "boire"
     },
     {
       "id": "passe-compose-avoir-irregular-u-2",
@@ -295,7 +1336,38 @@
       ],
       "hint": "Être itself takes avoir in the passé composé.",
       "feedback": "Être is conjugated with avoir, and its participle is irregular.",
-      "explanation": "Être uses avoir as its auxiliary, and its participle is été: vous avez été."
+      "explanation": "Être uses avoir as its auxiliary, and its participle is été: vous avez été.",
+      "mistakes": [
+        {
+          "answers": [
+            "êtes été",
+            "vous êtes été"
+          ],
+          "why": "Être is not its own auxiliary: like most verbs it builds its past with avoir."
+        },
+        {
+          "answers": [
+            "avez était",
+            "vous avez était"
+          ],
+          "why": "Était is the imparfait (il était). What follows the auxiliary must be a participle."
+        },
+        {
+          "answers": [
+            "as été",
+            "tu as été"
+          ],
+          "why": "As is the tu form of avoir. The subject asked for here is vous."
+        },
+        {
+          "answers": [
+            "avez être",
+            "vous avez être"
+          ],
+          "why": "That is the infinitive. After the auxiliary the verb needs its participle form."
+        }
+      ],
+      "row": "être"
     },
     {
       "id": "passe-compose-avoir-irregular-u-3",
@@ -308,7 +1380,40 @@
       ],
       "hint": "Recevoir has a participle ending in -u, with a cedilla before u.",
       "feedback": "Write avoir for elle and the irregular participle of recevoir.",
-      "explanation": "Recevoir has the participle reçu; the cedilla keeps the soft s sound before u."
+      "explanation": "Recevoir has the participle reçu; the cedilla keeps the soft s sound before u.",
+      "mistakes": [
+        {
+          "answers": [
+            "a recevu"
+          ],
+          "why": "Recevoir does not keep its recev- stem in the participle; the real one is shorter."
+        },
+        {
+          "answers": [
+            "a recevoir"
+          ],
+          "why": "That is the infinitive after the auxiliary. The past needs a participle."
+        },
+        {
+          "answers": [
+            "a reçoit"
+          ],
+          "why": "Reçoit is the present tense (elle reçoit une lettre), not a participle."
+        },
+        {
+          "answers": [
+            "est reçue"
+          ],
+          "why": "Est is être, and this also turns the sentence into a passive: recevoir forms its past with avoir."
+        },
+        {
+          "answers": [
+            "ont reçu"
+          ],
+          "why": "Ont is the ils/elles form of avoir. Elle is one person."
+        }
+      ],
+      "row": "recevoir"
     },
     {
       "id": "passe-compose-avoir-irregular-u-4",
@@ -326,7 +1431,22 @@
       ],
       "hint": "Lire has a very short participle.",
       "feedback": "Lire does not form its participle from lis- or with -i.",
-      "explanation": "Lire has the irregular participle lu: tu as lu."
+      "explanation": "Lire has the irregular participle lu: tu as lu.",
+      "mistakes": [
+        {
+          "answers": [
+            "lisé"
+          ],
+          "why": "That builds a participle from the present stem lis- with an -er ending. Lire does neither."
+        },
+        {
+          "answers": [
+            "li"
+          ],
+          "why": "The -i ending belongs to regular -ir verbs like finir, and lire is not one."
+        }
+      ],
+      "row": "lire"
     },
     {
       "id": "passe-compose-avoir-irregular-u-5",
@@ -340,7 +1460,40 @@
       ],
       "hint": "Avoir is its own auxiliary. Its participle is only two letters.",
       "feedback": "You need avoir twice: as the auxiliary and as the participle.",
-      "explanation": "Avoir has the participle eu, so nous avons eu (or on a eu) un problème."
+      "explanation": "Avoir has the participle eu, so nous avons eu (or on a eu) un problème.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous avons un problème."
+          ],
+          "why": "That is the present tense: we have a problem. A finished past needs the auxiliary plus a participle."
+        },
+        {
+          "answers": [
+            "Nous avons avu un problème."
+          ],
+          "why": "Avoir does not make its participle by adding -u to the infinitive; its real participle is only two letters."
+        },
+        {
+          "answers": [
+            "Nous avons avoir un problème."
+          ],
+          "why": "That leaves the infinitive after the auxiliary; the passé composé needs a participle."
+        },
+        {
+          "answers": [
+            "Nous sommes eu un problème."
+          ],
+          "why": "Sommes is être. Avoir is its own auxiliary, so it uses avoir here too."
+        },
+        {
+          "answers": [
+            "Nous avons été un problème."
+          ],
+          "why": "Été is the participle of être, so this says we were a problem. The English verb is have."
+        }
+      ],
+      "row": "avoir"
     },
     {
       "id": "passe-compose-avoir-irregular-u-6",
@@ -360,7 +1513,22 @@
       ],
       "hint": "Devoir has a short participle ending in -u, with an accent.",
       "feedback": "Choose the real participle of devoir, then the infinitive.",
-      "explanation": "Devoir has the participle dû (with a circumflex), followed by an infinitive: il a dû travailler."
+      "explanation": "Devoir has the participle dû (with a circumflex), followed by an infinitive: il a dû travailler.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a devu travailler."
+          ],
+          "why": "Devu applies the regular -re rule to devoir, which is irregular; its real participle carries a written accent."
+        },
+        {
+          "answers": [
+            "Il a travailler."
+          ],
+          "why": "This drops the verb devoir altogether. Had to work needs a participle before the infinitive."
+        }
+      ],
+      "row": "devoir"
     },
     {
       "id": "passe-compose-avoir-negation-1",
@@ -379,7 +1547,34 @@
       ],
       "hint": "Ne and pas go around the auxiliary, not the participle.",
       "feedback": "Put ne before ai and pas right after it. Remember elision.",
-      "explanation": "In the passé composé, ne…pas surrounds the auxiliary: je n’ai pas vu."
+      "explanation": "In the passé composé, ne…pas surrounds the auxiliary: je n’ai pas vu.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je n’ai vu pas le film."
+          ],
+          "why": "Pas has jumped over the participle. Only the auxiliary stands between ne and pas."
+        },
+        {
+          "answers": [
+            "Je ne ai pas vu le film."
+          ],
+          "why": "Ne must elide before a vowel: it loses its e and takes an apostrophe."
+        },
+        {
+          "answers": [
+            "Je ne pas ai vu le film."
+          ],
+          "why": "Pas never comes before the auxiliary; the two halves of the negation surround it."
+        },
+        {
+          "answers": [
+            "Je n’ai pas voir le film."
+          ],
+          "why": "Voir is the infinitive; after the auxiliary the passé composé needs its participle."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "passe-compose-avoir-negation-2",
@@ -392,7 +1587,40 @@
       ],
       "hint": "The negation needs its first half, joined to the auxiliary for elle.",
       "feedback": "Ne comes right before the auxiliary and elides before a vowel.",
-      "explanation": "Ne elides before a: elle n’a pas répondu."
+      "explanation": "Ne elides before a: elle n’a pas répondu.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne a"
+          ],
+          "why": "Ne cannot stay whole in front of a vowel; it elides and joins the auxiliary with an apostrophe."
+        },
+        {
+          "answers": [
+            "n’est"
+          ],
+          "why": "Est is être. Répondre forms its past with avoir, so this is the wrong verb."
+        },
+        {
+          "answers": [
+            "n’ont"
+          ],
+          "why": "Ont is the ils/elles form of avoir. Elle is one person."
+        },
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "That is only the auxiliary. The first half of the negation is missing in front of it."
+        },
+        {
+          "answers": [
+            "ne"
+          ],
+          "why": "That leaves the sentence with no auxiliary; the blank holds the negation word and avoir together."
+        }
+      ],
+      "row": "il / elle"
     },
     {
       "id": "passe-compose-avoir-negation-3",
@@ -410,7 +1638,22 @@
       ],
       "hint": "Only the auxiliary goes between ne and pas.",
       "feedback": "The participle stays outside ne…pas.",
-      "explanation": "Ne…pas goes around ont, and the participle follows: ils n’ont pas pris le train."
+      "explanation": "Ne…pas goes around ont, and the participle follows: ils n’ont pas pris le train.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne pas ont pris"
+          ],
+          "why": "Ne and pas are stuck together in front of the auxiliary. They belong on either side of it."
+        },
+        {
+          "answers": [
+            "n’ont pris pas"
+          ],
+          "why": "Here pas has been pushed past the participle. The participle stays outside the negation."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "passe-compose-avoir-negation-4",
@@ -423,7 +1666,28 @@
       ],
       "hint": "Check where pas sits.",
       "feedback": "Pas comes straight after the auxiliary, before the participle.",
-      "explanation": "Ne…pas surrounds the auxiliary ai; the participle vu comes after pas."
+      "explanation": "Ne…pas surrounds the auxiliary ai; the participle vu comes after pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je n’ai vu pas Marie."
+          ],
+          "why": "Nothing has changed: pas is still behind the participle instead of right after the auxiliary."
+        },
+        {
+          "answers": [
+            "Je ne ai pas vu Marie."
+          ],
+          "why": "Ne has not elided. Before a vowel it loses its e and takes an apostrophe."
+        },
+        {
+          "answers": [
+            "J’ai pas vu Marie."
+          ],
+          "why": "Dropping ne is casual speech. Written French keeps both halves of the negation."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "passe-compose-avoir-negation-5",
@@ -442,7 +1706,40 @@
       ],
       "hint": "Didn’t + verb becomes a negative passé composé.",
       "feedback": "Put ne…pas around the auxiliary, then the participle.",
-      "explanation": "Elle n’a pas mangé: ne elides before a, and pas comes before the participle."
+      "explanation": "Elle n’a pas mangé: ne elides before a, and pas comes before the participle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne a pas mangé."
+          ],
+          "why": "Ne must elide in front of a vowel and attach to the auxiliary with an apostrophe."
+        },
+        {
+          "answers": [
+            "Elle n’a mangé pas."
+          ],
+          "why": "Pas has slipped behind the participle. It belongs immediately after the auxiliary."
+        },
+        {
+          "answers": [
+            "Elle n’a pas manger."
+          ],
+          "why": "Manger is the infinitive. After the auxiliary the passé composé needs a participle."
+        },
+        {
+          "answers": [
+            "Elle n’est pas mangé."
+          ],
+          "why": "Est is être, and manger takes avoir. This would also mean she is not eaten."
+        },
+        {
+          "answers": [
+            "Elle ne mange pas."
+          ],
+          "why": "That is the present tense: she doesn’t eat. A finished past needs two verb parts."
+        }
+      ],
+      "row": "il / elle"
     },
     {
       "id": "passe-compose-avoir-negation-6",
@@ -464,7 +1761,28 @@
       ],
       "hint": "The negation wraps the auxiliary.",
       "feedback": "Pas goes after n’a and before the participle.",
-      "explanation": "Il n’a pas compris: ne…pas around a, then the participle compris."
+      "explanation": "Il n’a pas compris: ne…pas around a, then the participle compris.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il ne pas compris la question."
+          ],
+          "why": "The auxiliary is missing: ne and pas must wrap avoir, not the participle alone."
+        },
+        {
+          "answers": [
+            "Il n’a compris pas la question."
+          ],
+          "why": "Pas has jumped over the participle; it goes straight after the auxiliary."
+        },
+        {
+          "answers": [
+            "Il ne n’a pas compris la question."
+          ],
+          "why": "The negation is used twice here: the tile n’ already carries ne."
+        }
+      ],
+      "row": "il / elle"
     },
     {
       "id": "passe-compose-avoir-adverb-placement-1",
@@ -477,7 +1795,28 @@
       ],
       "hint": "Short adverbs sit inside the passé composé.",
       "feedback": "Déjà goes between the auxiliary and the participle.",
-      "explanation": "Short adverbs like déjà go between the auxiliary and the participle: tu as déjà fini."
+      "explanation": "Short adverbs like déjà go between the auxiliary and the participle: tu as déjà fini.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu as fini déjà."
+          ],
+          "why": "The adverb has been left at the end, as in English. A short adverb belongs inside the verb."
+        },
+        {
+          "answers": [
+            "Déjà tu as fini."
+          ],
+          "why": "Fronting the adverb is not natural here; it stays between the two parts of the verb."
+        },
+        {
+          "answers": [
+            "Tu déjà as fini."
+          ],
+          "why": "The adverb cannot come between the subject and the auxiliary."
+        }
+      ],
+      "row": "déjà"
     },
     {
       "id": "passe-compose-avoir-adverb-placement-2",
@@ -495,7 +1834,22 @@
       ],
       "hint": "Where do short adverbs like bien go in the passé composé?",
       "feedback": "Bien is not placed after the participle or at the start.",
-      "explanation": "Bien goes between the auxiliary and the participle: j’ai bien dormi."
+      "explanation": "Bien goes between the auxiliary and the participle: j’ai bien dormi.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai dormi bien."
+          ],
+          "why": "Bien has been put after the participle, where English puts well. French keeps short adverbs inside the verb."
+        },
+        {
+          "answers": [
+            "Bien j’ai dormi."
+          ],
+          "why": "Fronting the adverb sounds like a stressed exclamation, not a plain sentence."
+        }
+      ],
+      "row": "bien"
     },
     {
       "id": "passe-compose-avoir-adverb-placement-3",
@@ -514,7 +1868,28 @@
       ],
       "hint": "Beaucoup is a short adverb.",
       "feedback": "Place beaucoup inside the verb, between its two parts.",
-      "explanation": "Beaucoup goes between avons and mangé."
+      "explanation": "Beaucoup goes between avons and mangé.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous beaucoup avons mangé."
+          ],
+          "why": "The adverb cannot sit between the subject and the auxiliary."
+        },
+        {
+          "answers": [
+            "Beaucoup nous avons mangé."
+          ],
+          "why": "Fronting the adverb is not natural French here; it belongs inside the verb."
+        },
+        {
+          "answers": [
+            "Nous avons mangé."
+          ],
+          "why": "The adverb has been left out, so the sentence no longer says how much."
+        }
+      ],
+      "row": "beaucoup"
     },
     {
       "id": "passe-compose-avoir-adverb-placement-4",
@@ -527,7 +1902,34 @@
       ],
       "hint": "The auxiliary comes first, then the short adverb.",
       "feedback": "Déjà sits between the auxiliary and the participle.",
-      "explanation": "Vous avez déjà compris: auxiliary, then déjà, then participle."
+      "explanation": "Vous avez déjà compris: auxiliary, then déjà, then participle.",
+      "mistakes": [
+        {
+          "answers": [
+            "déjà avez"
+          ],
+          "why": "The adverb has been put first. The auxiliary comes before it, then the participle."
+        },
+        {
+          "answers": [
+            "as déjà"
+          ],
+          "why": "As is the tu form of avoir. The subject here is vous."
+        },
+        {
+          "answers": [
+            "êtes déjà"
+          ],
+          "why": "Êtes is être. Comprendre forms its past with avoir."
+        },
+        {
+          "answers": [
+            "avez déjà compris"
+          ],
+          "why": "The participle is already printed after the blank; writing it again repeats it."
+        }
+      ],
+      "row": "déjà"
     },
     {
       "id": "passe-compose-avoir-adverb-placement-5",
@@ -540,7 +1942,28 @@
       ],
       "hint": "Check the position of déjà.",
       "feedback": "Déjà belongs between the two parts of the verb.",
-      "explanation": "Short adverbs go between the auxiliary and the participle: elle a déjà mangé."
+      "explanation": "Short adverbs go between the auxiliary and the participle: elle a déjà mangé.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle a mangé déjà."
+          ],
+          "why": "Nothing has changed: the adverb is still after the participle instead of inside the verb."
+        },
+        {
+          "answers": [
+            "Déjà elle a mangé."
+          ],
+          "why": "Moving the adverb to the front does not fix it; it belongs between the two parts of the verb."
+        },
+        {
+          "answers": [
+            "Elle déjà a mangé."
+          ],
+          "why": "The adverb cannot come between the subject and the auxiliary."
+        }
+      ],
+      "row": "déjà"
     },
     {
       "id": "passe-compose-avoir-adverb-placement-6",
@@ -564,7 +1987,34 @@
       ],
       "hint": "Not yet is pas encore. Both words go before the participle.",
       "feedback": "Ne goes before the auxiliary, then pas encore, then the participle.",
-      "explanation": "Je n’ai pas encore fini: ne…pas around ai, and encore stays with pas before the participle."
+      "explanation": "Je n’ai pas encore fini: ne…pas around ai, and encore stays with pas before the participle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je n’ai pas fini encore."
+          ],
+          "why": "Encore has been left after the participle. It stays with pas, in front of the participle."
+        },
+        {
+          "answers": [
+            "Je n’ai encore pas fini."
+          ],
+          "why": "The two little words have swapped: pas comes first and encore follows it."
+        },
+        {
+          "answers": [
+            "Je ne ai pas encore fini."
+          ],
+          "why": "Ne has not elided before the vowel; it loses its e and takes an apostrophe."
+        },
+        {
+          "answers": [
+            "Je n’ai pas encore finir."
+          ],
+          "why": "Finir is the infinitive; after the auxiliary the passé composé needs a participle."
+        }
+      ],
+      "row": "encore"
     },
     {
       "id": "passe-compose-avoir-questions-1",
@@ -577,7 +2027,34 @@
       ],
       "hint": "Invert the subject and the auxiliary, joined with a hyphen.",
       "feedback": "Only the auxiliary moves before the subject; the participle stays after.",
-      "explanation": "In the passé composé, inversion swaps the subject and the auxiliary: as-tu fini ?"
+      "explanation": "In the passé composé, inversion swaps the subject and the auxiliary: as-tu fini ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu as fini ?"
+          ],
+          "why": "That is the statement with a question mark: fine in speech, but the task asks for inversion, which moves the subject."
+        },
+        {
+          "answers": [
+            "Fini-tu ?"
+          ],
+          "why": "Only the auxiliary can swap with the subject. The participle stays where it is."
+        },
+        {
+          "answers": [
+            "As tu fini ?"
+          ],
+          "why": "Inversion is written with a hyphen between the auxiliary and the pronoun."
+        },
+        {
+          "answers": [
+            "Es-tu fini ?"
+          ],
+          "why": "Es is être. Finir forms its past with avoir."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "passe-compose-avoir-questions-2",
@@ -590,7 +2067,34 @@
       ],
       "hint": "When a meets il, French adds a sound between them.",
       "feedback": "Between a and il you need -t-.",
-      "explanation": "A vowel meets a vowel, so -t- is added: a-t-il mangé ?"
+      "explanation": "A vowel meets a vowel, so -t- is added: a-t-il mangé ?",
+      "mistakes": [
+        {
+          "answers": [
+            "A-il mangé ?"
+          ],
+          "why": "Two vowels collide across the hyphen. French inserts a linking consonant between them."
+        },
+        {
+          "answers": [
+            "Il a mangé ?"
+          ],
+          "why": "That is the statement with a question mark. The task asks for inversion, which moves the subject behind the auxiliary."
+        },
+        {
+          "answers": [
+            "A-t’il mangé ?"
+          ],
+          "why": "The linking letter is joined with hyphens, not with an apostrophe."
+        },
+        {
+          "answers": [
+            "Mange-t-il ?"
+          ],
+          "why": "That is a present-tense question: does he eat? A finished past keeps the auxiliary and the participle."
+        }
+      ],
+      "row": "il"
     },
     {
       "id": "passe-compose-avoir-questions-3",
@@ -608,7 +2112,22 @@
       ],
       "hint": "Inverting a and elle needs a linking letter.",
       "feedback": "Look for the form with -t- between the auxiliary and the pronoun.",
-      "explanation": "A-t-elle: the -t- separates the two vowels."
+      "explanation": "A-t-elle: the -t- separates the two vowels.",
+      "mistakes": [
+        {
+          "answers": [
+            "A-elle"
+          ],
+          "why": "Two vowels meet across the hyphen, which French avoids here; a linking consonant is needed."
+        },
+        {
+          "answers": [
+            "Elle-a"
+          ],
+          "why": "That keeps the subject first and only adds a hyphen. Inversion puts the auxiliary in front of the pronoun."
+        }
+      ],
+      "row": "elle"
     },
     {
       "id": "passe-compose-avoir-questions-4",
@@ -629,7 +2148,34 @@
       ],
       "hint": "Did you see is a passé composé question with tu.",
       "feedback": "Use tu with avoir and the participle of voir.",
-      "explanation": "Voir has the participle vu. Inversion (as-tu vu), est-ce que or rising intonation all make the question."
+      "explanation": "Voir has the participle vu. Inversion (as-tu vu), est-ce que or rising intonation all make the question.",
+      "mistakes": [
+        {
+          "answers": [
+            "As-tu voir Paul ?"
+          ],
+          "why": "Voir is the infinitive. The question still needs a participle after the subject."
+        },
+        {
+          "answers": [
+            "Avez-vous vu Paul ?"
+          ],
+          "why": "That is the formal you. The task says to a friend, so the informal subject is needed."
+        },
+        {
+          "answers": [
+            "As tu vu Paul ?"
+          ],
+          "why": "Inversion needs a hyphen between the auxiliary and the pronoun."
+        },
+        {
+          "answers": [
+            "Es-tu vu Paul ?"
+          ],
+          "why": "Es is être. Voir forms its past with avoir."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "passe-compose-avoir-questions-5",
@@ -648,7 +2194,28 @@
       ],
       "hint": "Start with the inverted auxiliary and subject.",
       "feedback": "The adverb still goes before the participle.",
-      "explanation": "Avez-vous inverts the auxiliary and subject; bien stays between it and dormi."
+      "explanation": "Avez-vous inverts the auxiliary and subject; bien stays between it and dormi.",
+      "mistakes": [
+        {
+          "answers": [
+            "Bien avez-vous dormi ?"
+          ],
+          "why": "The adverb has been fronted. In this question it stays inside the verb, before the participle."
+        },
+        {
+          "answers": [
+            "Avez-vous dormi ? bien"
+          ],
+          "why": "The adverb has been left after the participle, as in English. It belongs between the two verb parts."
+        },
+        {
+          "answers": [
+            "Avez-vous dormi ?"
+          ],
+          "why": "The adverb has been left out, so the question no longer asks how you slept."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "passe-compose-avoir-questions-6",
@@ -661,7 +2228,28 @@
       ],
       "hint": "Two vowels meet across the hyphen.",
       "feedback": "French adds a linking letter between a and il.",
-      "explanation": "A-t-il répondu ?: -t- is inserted when the verb ends in a vowel before il, elle or on."
+      "explanation": "A-t-il répondu ?: -t- is inserted when the verb ends in a vowel before il, elle or on.",
+      "mistakes": [
+        {
+          "answers": [
+            "A-il répondu ?"
+          ],
+          "why": "Nothing has changed: two vowels still meet across the hyphen and need a linking consonant."
+        },
+        {
+          "answers": [
+            "A-t’il répondu ?"
+          ],
+          "why": "The linking letter is attached with a hyphen on each side, not with an apostrophe."
+        },
+        {
+          "answers": [
+            "Il a répondu ?"
+          ],
+          "why": "That turns it back into a statement with a question mark. The task is to repair the inversion, not remove it."
+        }
+      ],
+      "row": "il"
     },
     {
       "id": "passe-compose-avoir-preceding-object-agreement-1",
@@ -679,7 +2267,22 @@
       ],
       "hint": "Les comes before the verb. What does les stand for?",
       "feedback": "A direct object before avoir makes the participle agree with it.",
-      "explanation": "Les stands for ces photos (feminine plural) and comes before the verb, so vu agrees: vues."
+      "explanation": "Les stands for ces photos (feminine plural) and comes before the verb, so vu agrees: vues.",
+      "mistakes": [
+        {
+          "answers": [
+            "vu"
+          ],
+          "why": "That is the bare participle with no agreement. Les stands for ces photos and comes before the verb, so the participle must match it."
+        },
+        {
+          "answers": [
+            "vus"
+          ],
+          "why": "That marks the plural but leaves the word masculine. Photos is a feminine noun."
+        }
+      ],
+      "row": "feminine plural"
     },
     {
       "id": "passe-compose-avoir-preceding-object-agreement-2",
@@ -697,7 +2300,22 @@
       ],
       "hint": "Que refers back to la lettre, which comes before the verb.",
       "feedback": "When que (a direct object) comes first, the participle agrees with what it refers to.",
-      "explanation": "Que stands for la lettre (feminine singular), placed before the verb, so écrit becomes écrite."
+      "explanation": "Que stands for la lettre (feminine singular), placed before the verb, so écrit becomes écrite.",
+      "mistakes": [
+        {
+          "answers": [
+            "écrit"
+          ],
+          "why": "That is the bare participle. Que stands for la lettre, placed before the verb, so an ending is needed."
+        },
+        {
+          "answers": [
+            "écrits"
+          ],
+          "why": "That is masculine plural. Lettre is one thing, and it is feminine."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-avoir-preceding-object-agreement-3",
@@ -715,7 +2333,22 @@
       ],
       "hint": "Where is the direct object: before or after the verb?",
       "feedback": "Agreement happens only when the direct object comes before the verb.",
-      "explanation": "La voiture comes after the verb, so the participle does not agree: elle a lavé la voiture. The subject never matters with avoir."
+      "explanation": "La voiture comes after the verb, so the participle does not agree: elle a lavé la voiture. The subject never matters with avoir.",
+      "mistakes": [
+        {
+          "answers": [
+            "lavée"
+          ],
+          "why": "This adds a feminine ending, but agreement only happens when the direct object comes before the verb. La voiture comes after it."
+        },
+        {
+          "answers": [
+            "lavés"
+          ],
+          "why": "This adds a masculine plural ending. Nothing here is plural, and the object follows the verb anyway."
+        }
+      ],
+      "row": "object after the verb"
     },
     {
       "id": "passe-compose-avoir-preceding-object-agreement-4",
@@ -728,7 +2361,40 @@
       ],
       "hint": "L’ stands for ta sœur and comes before the verb.",
       "feedback": "The participle agrees with a direct object pronoun placed before it.",
-      "explanation": "L’ means ta sœur (feminine singular), so vu takes -e: je l’ai vue."
+      "explanation": "L’ means ta sœur (feminine singular), so vu takes -e: je l’ai vue.",
+      "mistakes": [
+        {
+          "answers": [
+            "vu"
+          ],
+          "why": "That is the bare participle. L’ stands for ta sœur and sits before the verb, so the participle must show her gender."
+        },
+        {
+          "answers": [
+            "vues"
+          ],
+          "why": "That is feminine plural. Ta sœur is one person."
+        },
+        {
+          "answers": [
+            "vus"
+          ],
+          "why": "That is masculine plural, and neither the gender nor the number fits ta sœur."
+        },
+        {
+          "answers": [
+            "voir"
+          ],
+          "why": "That is the infinitive. The blank needs the past participle."
+        },
+        {
+          "answers": [
+            "vois"
+          ],
+          "why": "Vois is the present tense (je vois). After the auxiliary you need a participle."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-avoir-preceding-object-agreement-5",
@@ -741,7 +2407,34 @@
       ],
       "hint": "The pronoun goes before the auxiliary. Then check the participle.",
       "feedback": "Once the object moves in front of the verb, the participle agrees with it.",
-      "explanation": "La clé becomes l’ before ai, and pris agrees with the feminine object: je l’ai prise."
+      "explanation": "La clé becomes l’ before ai, and pris agrees with the feminine object: je l’ai prise.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je l’ai pris."
+          ],
+          "why": "The pronoun has moved but the participle has not changed. A direct object in front of avoir makes it agree."
+        },
+        {
+          "answers": [
+            "J’ai pris la clé."
+          ],
+          "why": "Nothing has been replaced: the noun is still spelt out after the verb."
+        },
+        {
+          "answers": [
+            "Je la ai prise."
+          ],
+          "why": "La must elide before a vowel: it loses its a and takes an apostrophe."
+        },
+        {
+          "answers": [
+            "Je l’ai prises."
+          ],
+          "why": "That is a plural ending, but only one key is being replaced."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-avoir-preceding-object-agreement-6",
@@ -754,7 +2447,34 @@
       ],
       "hint": "What does que refer to, and where is it?",
       "feedback": "The participle must agree with the direct object placed before it.",
-      "explanation": "Que stands for les fleurs (feminine plural), before the verb, so acheté becomes achetées."
+      "explanation": "Que stands for les fleurs (feminine plural), before the verb, so acheté becomes achetées.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les fleurs que tu as acheté sont belles."
+          ],
+          "why": "Nothing has changed. Que stands for les fleurs and comes before the verb, so the participle still has to agree."
+        },
+        {
+          "answers": [
+            "Les fleurs que tu as achetés sont belles."
+          ],
+          "why": "That marks the plural but leaves the word masculine, and fleurs is feminine."
+        },
+        {
+          "answers": [
+            "Les fleurs que tu as achetée sont belles."
+          ],
+          "why": "That marks the feminine but keeps it singular, and les fleurs is more than one."
+        },
+        {
+          "answers": [
+            "Les fleurs que tu as acheter sont belles."
+          ],
+          "why": "That is the infinitive. After the auxiliary the passé composé needs a participle."
+        }
+      ],
+      "row": "feminine plural"
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import type { GrammarExercise, GrammarTopicContent, GrammarUnitContent } from '../contract';
+import type { GrammarExercise, GrammarGuideSection, GrammarTopicContent, GrammarUnitContent } from '../contract';
 import { StoreError } from './store';
 
 export type Course = { units: GrammarUnitContent[]; topics: GrammarTopicContent[] };
@@ -83,6 +83,75 @@ export function classify(exercise: GrammarExercise, text: string): Classificatio
   return { kind: 'incorrect' };
 }
 
+const loosely = (value: string, strict: boolean | undefined) => {
+  const bare = normalize(value).replace(/\s*,\s*/g, ' ').replace(/\s+/g, ' ').trim();
+  return strict ? bare : stripAccents(bare);
+};
+
+// Why a wrong answer is wrong, when it is one the exercise anticipated: the same text, or the same but for accents
+// and commas (unless the accent is the point).
+export function mistakeFor(exercise: GrammarExercise, text: string): string | null {
+  const given = normalize(text);
+  if (!given) return null;
+  const exact = exercise.mistakes.find((mistake) => mistake.answers.some((answer) => normalize(answer) === given));
+  if (exact) return exact.why;
+  if (exercise.type === 'choose') return null;
+  const target = loosely(text, exercise.strictAccents);
+  return exercise.mistakes.find((mistake) => mistake.answers.some((answer) => loosely(answer, exercise.strictAccents) === target))?.why ?? null;
+}
+
+const SECTION_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function validateGuide(topic: GrammarTopicContent, text: (value: unknown, label: string, allowEmpty?: boolean) => asserts value is string, fail: (message: string) => never): Map<string, GrammarGuideSection> {
+  const guide = topic.guide;
+  const where = `${topic.id}.guide`;
+  if (!guide || typeof guide !== 'object') fail(`${where} is missing.`);
+  text(guide.summary, `${where}.summary`);
+  if (!Array.isArray(guide.sections) || guide.sections.length < 2 || guide.sections.length > 8) fail(`${where} needs 2 to 8 sections.`);
+  const sections = new Map<string, GrammarGuideSection>();
+  const list = (value: unknown, label: string, min: number, max: number) => {
+    if (!Array.isArray(value) || value.length < min || value.length > max) fail(`${label} needs ${min} to ${max} entries.`);
+    (value as unknown[]).forEach((entry) => text(entry, label));
+  };
+  for (const section of guide.sections) {
+    if (!section || typeof section !== 'object') fail(`${where} has an invalid section.`);
+    text(section.id, `${where} section id`);
+    const label = `${where}.${section.id}`;
+    if (!SECTION_ID.test(section.id) || sections.has(section.id)) fail(`${label}: section ids are unique lowercase-hyphen names.`);
+    sections.set(section.id, section);
+    text(section.title, `${label}.title`);
+    if (section.text !== undefined) text(section.text, `${label}.text`);
+    if (section.table !== undefined) {
+      const table = section.table;
+      if (!table || !Array.isArray(table.columns) || table.columns.length < 2 || table.columns.length > 4) fail(`${label}.table needs 2 to 4 columns.`);
+      table.columns.forEach((column) => text(column, `${label}.table column`, true));
+      if (!Array.isArray(table.rows) || !table.rows.length || table.rows.length > 14) fail(`${label}.table needs 1 to 14 rows.`);
+      const labels = new Set<string>();
+      for (const row of table.rows) {
+        if (!Array.isArray(row) || row.length !== table.columns.length) fail(`${label}.table: every row has one cell per column.`);
+        row.forEach((cell) => text(cell, `${label}.table cell`, true));
+        if (!row[0]!.trim() || labels.has(row[0]!)) fail(`${label}.table: row labels (first cells) must be filled and unique; "${row[0]}" is not.`);
+        labels.add(row[0]!);
+      }
+    }
+    if (section.steps !== undefined) list(section.steps, `${label}.steps`, 2, 5);
+    if (section.watch !== undefined) list(section.watch, `${label}.watch`, 1, 4);
+    if (section.text === undefined && section.table === undefined && section.steps === undefined) fail(`${label} needs text, a table or steps.`);
+    if (!Array.isArray(section.examples) || !section.examples.length || section.examples.length > 4) fail(`${label} needs 1 to 4 examples.`);
+    for (const example of section.examples) { text(example?.fr, `${label} example fr`); text(example.en, `${label} example en`); }
+  }
+  const patterns = topic.patterns;
+  if (!patterns || typeof patterns !== 'object') fail(`${topic.id}.patterns is missing.`);
+  const used = new Set(topic.exercises.map((exercise) => exercise.pattern));
+  for (const pattern of used) if (!patterns[pattern]) fail(`${topic.id}.patterns has no entry for pattern ${pattern}.`);
+  for (const [pattern, help] of Object.entries(patterns)) {
+    if (!used.has(pattern)) fail(`${topic.id}.patterns.${pattern} is not used by any exercise.`);
+    if (!sections.has(help?.section)) fail(`${topic.id}.patterns.${pattern} names section ${help?.section}, which the guide does not have.`);
+    list(help.steps, `${topic.id}.patterns.${pattern}.steps`, 2, 4);
+  }
+  return sections;
+}
+
 export function validateCourse(course: Course): void {
   const { units, topics } = course;
   const fail = (message: string): never => { throw new StoreError(`Grammar content: ${message}`); };
@@ -113,9 +182,16 @@ export function validateCourse(course: Course): void {
     topicIds.add(topic.id);
     if (listed.get(topic.id) !== topic.unit) fail(`topic ${topic.id} says unit ${topic.unit}, but units.json places it in ${listed.get(topic.id) ?? 'no unit'}.`);
     if (!LEVELS.has(topic.level)) fail(`topic ${topic.id} has level ${topic.level}; use A1, A2 or B1.`);
-    for (const field of ['title', 'description', 'mark', 'rule', 'example', 'aside'] as const) text(topic[field], `${topic.id}.${field}`, field === 'aside');
+    for (const field of ['title', 'description', 'mark'] as const) text(topic[field], `${topic.id}.${field}`);
     if (!Array.isArray(topic.exercises) || !topic.exercises.length) fail(`topic ${topic.id} has no exercises.`);
     for (const exercise of topic.exercises) validateExercise(exercise, topic.id, exerciseIds, text, fail);
+    const sections = validateGuide(topic, text, fail);
+    for (const exercise of topic.exercises) {
+      if (exercise.row === undefined) continue;
+      text(exercise.row, `${exercise.id}.row`);
+      const table = sections.get(topic.patterns[exercise.pattern]!.section)?.table;
+      if (!table?.rows.some((row) => row[0] === exercise.row)) fail(`${exercise.id}.row "${exercise.row}" is not a row label in the table of section ${topic.patterns[exercise.pattern]!.section}.`);
+    }
   }
   for (const id of listed.keys()) if (!topicIds.has(id)) fail(`units.json lists ${id}, but there is no ${id}.json.`);
 }
@@ -181,6 +257,31 @@ function validateExercise(
       if (exercise.source.split(' · ').length !== 3) fail(`${label} source must read "verb · subject · tense".`);
       break;
   }
+  // Every listed mistake must be wrong as checked: classify would otherwise accept it, note it or call it spelling.
+  if (!Array.isArray(exercise.mistakes)) fail(`${label}.mistakes must be a list.`);
+  const wrong = new Set<string>();
+  for (const mistake of exercise.mistakes) {
+    if (!mistake || !Array.isArray(mistake.answers) || !mistake.answers.length) fail(`${label}: each mistake lists at least one answer.`);
+    text(mistake.why, `${label} mistake why`);
+    for (const answer of mistake.answers) {
+      text(answer, `${label} mistake answer`);
+      const key = normalize(answer);
+      if (!key || wrong.has(key)) fail(`${label} lists the mistake "${answer}" twice or empty.`);
+      wrong.add(key);
+      if (classify(exercise, answer).kind !== 'incorrect') fail(`${label}: the mistake "${answer}" is accepted, noted or treated as spelling; it cannot be a mistake.`);
+      if (exercise.type === 'choose' && !exercise.options!.some((option) => normalize(option) === key)) fail(`${label}: the mistake "${answer}" is not one of its options.`);
+      if (exercise.type === 'build' && !canBuild(exercise.tokens!, answer)) fail(`${label}: the mistake "${answer}" cannot be built from its tiles.`);
+    }
+    for (const accepted of exercise.answers) {
+      const right = normalize(accepted).replace(/[.!?]+$/, '');
+      if (right.length > 2 && ` ${normalize(mistake.why)} `.includes(` ${right} `)) fail(`${label}: a mistake's why gives away the answer "${accepted}".`);
+    }
+  }
+  if (exercise.type === 'choose') {
+    for (const option of exercise.options!) {
+      if (normalize(option) !== normalize(exercise.answers[0]!) && !wrong.has(normalize(option))) fail(`${label}: the option "${option}" has no mistake explaining it.`);
+    }
+  } else if (!exercise.mistakes.length || exercise.mistakes.length > 5) fail(`${label} needs 1 to 5 mistakes.`);
 }
 
 export async function loadCourse(dir: string): Promise<Course> {

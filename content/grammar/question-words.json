@@ -5,9 +5,503 @@
   "title": "Who, what, where, when",
   "description": "Ask where, when, how, why, how many, who, what and which.",
   "mark": "où ? qui ?",
-  "rule": "Question words ask for information: où (where), quand (when), comment (how), pourquoi (why, answered with parce que, parce qu’ before a vowel), combien (how much, how many), always combien de or d’ before a noun. After the question word, use one of three structures: normal order in speech (Où tu vas ?), est-ce que with normal order (Où est-ce que tu vas ?), or inversion (Où vas-tu ?). Qui asks about a person, as subject (Qui vient ?) or object (Qui est-ce que tu vois ?); for a thing as object, use que with inversion (Que fais-tu ?) or qu’est-ce que with normal order (Qu’est-ce que tu fais ?). After a preposition, a person is qui and a thing is quoi, and the preposition goes first: à qui, avec qui, pour qui, de quoi, avec quoi. Quel agrees with its noun: quel, quelle, quels, quelles (Quelle heure est-il ? Quels films ?).",
-  "example": "Où est-ce que tu habites ? · Qu’est-ce que tu fais ce soir ? · Avec qui pars-tu en vacances ?",
-  "aside": "In casual speech you will hear the question word at the end, as in Tu vas où ? or Tu fais quoi ? That is fine when talking, but write the question word first.",
+  "guide": {
+    "summary": "Question words ask for one missing piece of information: a place, a time, a reason, a quantity, a person or a thing. Pick the word that matches the answer you expect, put it first, then choose one of the three ways French builds a question.",
+    "sections": [
+      {
+        "id": "question-words",
+        "title": "Which question word?",
+        "text": "Think of the answer you expect. The kind of information it gives you names the word.",
+        "table": {
+          "columns": [
+            "Question word",
+            "Asks about",
+            "The answer looks like"
+          ],
+          "rows": [
+            [
+              "où",
+              "a place",
+              "à la mer, à Lyon"
+            ],
+            [
+              "quand",
+              "a time",
+              "demain soir, à huit heures"
+            ],
+            [
+              "comment",
+              "a way or a means",
+              "à vélo, en train, bien"
+            ],
+            [
+              "pourquoi",
+              "a reason",
+              "parce que je suis malade"
+            ],
+            [
+              "combien (de)",
+              "a quantity or a price",
+              "trois, quarante euros"
+            ],
+            [
+              "qui",
+              "a person",
+              "Marc, moi"
+            ],
+            [
+              "que / qu’est-ce que",
+              "a thing",
+              "un livre, du gâteau"
+            ],
+            [
+              "quel + noun",
+              "which one out of several",
+              "le bus 12, le rouge"
+            ]
+          ]
+        },
+        "steps": [
+          "Imagine the answer: a place, a time, a means, a reason, a number, a person, a thing?",
+          "Take the word in that row.",
+          "Put it at the front of the question, then add one of the three structures."
+        ],
+        "examples": [
+          {
+            "fr": "Où est-ce que tu habites ?",
+            "en": "Where do you live?"
+          },
+          {
+            "fr": "Quand pars-tu ?",
+            "en": "When are you leaving?"
+          },
+          {
+            "fr": "Comment vas-tu au travail ?",
+            "en": "How do you get to work?"
+          }
+        ],
+        "watch": [
+          "Comment asks the way or the means (à vélo, en train), never the reason.",
+          "Où (where) carries an accent; ou without one means “or”."
+        ]
+      },
+      {
+        "id": "pourquoi",
+        "title": "Why, and how the answer starts",
+        "text": "Pourquoi asks for a reason. The reply opens with parce que, which loses its e before a vowel.",
+        "table": {
+          "columns": [
+            "Next word begins with",
+            "Because is",
+            "Example"
+          ],
+          "rows": [
+            [
+              "a consonant",
+              "parce que",
+              "Parce que je suis malade."
+            ],
+            [
+              "a vowel or silent h",
+              "parce qu’",
+              "Parce qu’il est en retard."
+            ]
+          ]
+        },
+        "steps": [
+          "Ask for a reason with pourquoi at the front.",
+          "Open the reply with both words, never with parce on its own.",
+          "Look at the word that follows: before a vowel, drop the e and write an apostrophe."
+        ],
+        "examples": [
+          {
+            "fr": "Pourquoi est-ce que tu restes ici ?",
+            "en": "Why are you staying here?"
+          },
+          {
+            "fr": "Parce qu’il pleut.",
+            "en": "Because it is raining."
+          }
+        ],
+        "watch": [
+          "Parce alone is not a word in French; it always travels with que.",
+          "Car joins two clauses inside one sentence; it does not open a reply on its own."
+        ]
+      },
+      {
+        "id": "combien",
+        "title": "How much, how many",
+        "text": "Combien asks for a quantity or a price. Before a noun it always takes de, whatever the gender or the number of that noun.",
+        "table": {
+          "columns": [
+            "Asking",
+            "Form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "a price or an amount",
+              "combien + verb",
+              "Combien coûte ce pull ?"
+            ],
+            [
+              "how many + noun",
+              "combien de + noun",
+              "Combien de frères as-tu ?"
+            ],
+            [
+              "+ noun with a vowel",
+              "combien d’ + noun",
+              "Combien d’enfants as-tu ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Is a noun coming next? If not, combien goes straight to the verb.",
+          "With a noun, put de between them: never des, never les.",
+          "Before a vowel or a silent h, de becomes d’."
+        ],
+        "examples": [
+          {
+            "fr": "Combien de cafés bois-tu par jour ?",
+            "en": "How many coffees do you drink a day?"
+          },
+          {
+            "fr": "Combien coûtent ces chaussures ?",
+            "en": "How much are these shoes?"
+          }
+        ],
+        "watch": [
+          "Never combien des pommes: the link stays de even in the plural.",
+          "Combien d’amis, but combien de livres: the apostrophe only appears before a vowel sound."
+        ]
+      },
+      {
+        "id": "structures",
+        "title": "Three ways to build the question",
+        "text": "After the question word, French offers three structures. All three are correct: plain order is spoken, est-ce que is the safe written choice, inversion is the most formal.",
+        "table": {
+          "columns": [
+            "Structure",
+            "Order after the question word",
+            "Example"
+          ],
+          "rows": [
+            [
+              "spoken",
+              "subject + verb",
+              "Où tu vas ?"
+            ],
+            [
+              "est-ce que",
+              "est-ce que + subject + verb",
+              "Où est-ce que tu vas ?"
+            ],
+            [
+              "inversion",
+              "verb-subject, joined by a hyphen",
+              "Où vas-tu ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Put the question word first.",
+          "Choose one structure and one only.",
+          "After est-ce que, the subject stays in front of the verb.",
+          "With inversion, join the verb and the pronoun with a hyphen: vas-tu, partez-vous."
+        ],
+        "examples": [
+          {
+            "fr": "Comment est-ce que tu vas à l’école ?",
+            "en": "How do you get to school?"
+          },
+          {
+            "fr": "Quand partez-vous ?",
+            "en": "When are you leaving?"
+          }
+        ],
+        "watch": [
+          "Où est-ce que travailles-tu ? marks the question twice: keep one structure.",
+          "In casual speech the question word slides to the end: Tu vas où ? Tu fais quoi ? That is fine when talking, but write the question word first."
+        ]
+      },
+      {
+        "id": "qui",
+        "title": "Asking about a person",
+        "text": "Qui asks about a person, whatever job that person has in the sentence.",
+        "table": {
+          "columns": [
+            "The person is",
+            "Ask with",
+            "Example"
+          ],
+          "rows": [
+            [
+              "subject (who does it)",
+              "qui + verb, or qui est-ce qui + verb",
+              "Qui vient ? / Qui est-ce qui vient ?"
+            ],
+            [
+              "object (who you see)",
+              "qui + est-ce que, or qui + inversion",
+              "Qui est-ce que tu vois ? / Qui vois-tu ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the missing information is a person.",
+          "Decide whether that person does the action or receives it.",
+          "As subject, the verb follows straight away, in the singular; as object, add est-ce que with normal order, or invert the verb and the pronoun."
+        ],
+        "examples": [
+          {
+            "fr": "Qui habite ici ?",
+            "en": "Who lives here?"
+          },
+          {
+            "fr": "Qui est-ce que tu invites ?",
+            "en": "Who are you inviting?"
+          }
+        ],
+        "watch": [
+          "As subject, qui takes a singular verb: Qui vient ?, not Qui viennent ?",
+          "Qui never elides: qui est, never qu’est."
+        ]
+      },
+      {
+        "id": "que",
+        "title": "Asking about a thing",
+        "text": "For a thing as object, the opening depends on the word order you use after it.",
+        "table": {
+          "columns": [
+            "Order after it",
+            "Opening",
+            "Example"
+          ],
+          "rows": [
+            [
+              "subject + verb",
+              "qu’est-ce que",
+              "Qu’est-ce que tu fais ?"
+            ],
+            [
+              "subject starting with a vowel",
+              "qu’est-ce qu’",
+              "Qu’est-ce qu’il regarde ?"
+            ],
+            [
+              "verb-subject (inversion)",
+              "que",
+              "Que fais-tu ?"
+            ],
+            [
+              "at the end, in speech only",
+              "quoi",
+              "Tu fais quoi ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide the order: subject first, or verb first?",
+          "Subject first takes the long opening; inversion takes the one-word opening.",
+          "Elide before a vowel: qu’est-ce qu’il, qu’est-ce qu’elle.",
+          "Never use the long opening and inversion together."
+        ],
+        "examples": [
+          {
+            "fr": "Qu’est-ce que tu fais ce soir ?",
+            "en": "What are you doing tonight?"
+          },
+          {
+            "fr": "Que cherchez-vous ?",
+            "en": "What are you looking for?"
+          }
+        ],
+        "watch": [
+          "Que tu fais ? is wrong: the one-word opening needs inversion behind it.",
+          "Qu’est-ce que veux-tu ? marks the question twice; after that opening the subject comes first.",
+          "In writing, a question never starts with quoi."
+        ]
+      },
+      {
+        "id": "prepositions",
+        "title": "After a preposition: qui or quoi?",
+        "text": "When the verb needs a preposition (parler à, penser à, parler de, avoir besoin de), that preposition opens the question. A person is then qui, a thing is quoi.",
+        "table": {
+          "columns": [
+            "Preposition",
+            "About a person",
+            "About a thing"
+          ],
+          "rows": [
+            [
+              "avec (with)",
+              "avec qui",
+              "avec quoi"
+            ],
+            [
+              "à (parler à, penser à)",
+              "à qui",
+              "à quoi"
+            ],
+            [
+              "de (parler de, avoir besoin de)",
+              "de qui",
+              "de quoi"
+            ],
+            [
+              "pour (for)",
+              "pour qui",
+              "pour quoi (two words)"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the preposition the verb or the answer uses.",
+          "Put it at the very front, before the question word.",
+          "A person is qui, a thing is quoi; que can never follow a preposition."
+        ],
+        "examples": [
+          {
+            "fr": "Avec qui pars-tu en vacances ?",
+            "en": "Who are you going on holiday with?"
+          },
+          {
+            "fr": "De quoi as-tu besoin ?",
+            "en": "What do you need?"
+          }
+        ],
+        "watch": [
+          "English ends with the preposition (who with?); French never does.",
+          "Avec que and de que do not exist.",
+          "Pourquoi in one word asks for a reason; pour quoi in two words asks for a purpose."
+        ]
+      },
+      {
+        "id": "quel",
+        "title": "Which one? The forms of quel",
+        "text": "Quel asks which one out of several. It belongs to a noun and agrees with it, even when est stands in between.",
+        "table": {
+          "columns": [
+            "",
+            "Masculine",
+            "Feminine"
+          ],
+          "rows": [
+            [
+              "singular",
+              "quel",
+              "quelle"
+            ],
+            [
+              "plural",
+              "quels",
+              "quelles"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun the question is about.",
+          "Check its gender and its number.",
+          "Take the matching form; all four sound the same, so only the spelling shows the agreement."
+        ],
+        "examples": [
+          {
+            "fr": "Quelle heure est-il ?",
+            "en": "What time is it?"
+          },
+          {
+            "fr": "Quels films aimes-tu ?",
+            "en": "Which films do you like?"
+          },
+          {
+            "fr": "Quel âge as-tu ?",
+            "en": "How old are you?"
+          }
+        ],
+        "watch": [
+          "Quel âge as-tu ? — French asks “which age do you have”.",
+          "In Quelle est ta couleur préférée ?, the agreement reaches across est to couleur.",
+          "Quel always comes with a noun; with no noun, another question word is needed."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "ou-quand-comment": {
+      "section": "question-words",
+      "steps": [
+        "Read the answer and name what it gives: a place, a time or a means.",
+        "Pick the question word from that row of the table.",
+        "Put it first, then keep one of the three structures."
+      ]
+    },
+    "pourquoi-parce-que": {
+      "section": "pourquoi",
+      "steps": [
+        "Asking for a cause: open the question with pourquoi.",
+        "Answering a cause: open the reply with both words, never with parce alone.",
+        "Check the next word: before a vowel the e drops and an apostrophe takes its place."
+      ]
+    },
+    "combien": {
+      "section": "combien",
+      "steps": [
+        "Ask about a quantity or a price with combien.",
+        "If a noun follows, put de between them, never des or les.",
+        "Elide de to d’ before a vowel or a silent h."
+      ]
+    },
+    "qui": {
+      "section": "qui",
+      "steps": [
+        "Check that the missing information is a person.",
+        "Decide whether that person does the action or receives it.",
+        "Subject: the verb follows directly and stays singular. Object: use est-ce que with normal order, or inversion."
+      ]
+    },
+    "preposition-qui": {
+      "section": "prepositions",
+      "steps": [
+        "Find the preposition the verb or the answer uses (à, de, avec, pour).",
+        "Move it to the very front, in front of the question word.",
+        "A person after a preposition is qui; que is impossible there."
+      ]
+    },
+    "que-quest-ce-que": {
+      "section": "que",
+      "steps": [
+        "Check that you are asking about a thing, not a person.",
+        "Look at what follows: subject first, or verb first?",
+        "Subject first takes the long opening, elided before a vowel; inversion takes the one-word opening.",
+        "Never combine the long opening with inversion."
+      ]
+    },
+    "quoi": {
+      "section": "prepositions",
+      "steps": [
+        "Check that the thing you ask about comes after a preposition.",
+        "Put that preposition at the very front of the question.",
+        "After a preposition, a thing is quoi, never que."
+      ]
+    },
+    "quel-agreement": {
+      "section": "quel",
+      "steps": [
+        "Find the noun the form belongs to, even when est separates them.",
+        "Decide that noun’s gender and number.",
+        "Write the form of the table that matches both."
+      ]
+    },
+    "three-structures": {
+      "section": "structures",
+      "steps": [
+        "Keep the question word at the front.",
+        "Choose exactly one structure: plain order, est-ce que, or inversion.",
+        "After est-ce que the subject stays before the verb; with inversion, hyphenate the verb and the pronoun."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "question-words-where-when-how-choose-1",
@@ -25,7 +519,22 @@
       ],
       "hint": "The answer names a place.",
       "feedback": "Match the question word to the kind of information in the answer.",
-      "explanation": "À la mer is a place, so the question word is où, where."
+      "explanation": "À la mer is a place, so the question word is où, where.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand"
+          ],
+          "why": "Quand asks about a time, so the reply would name a day or an hour. À la mer names a spot on the map."
+        },
+        {
+          "answers": [
+            "Comment"
+          ],
+          "why": "Comment asks in what way or by what means, and would be answered à vélo or en train. À la mer is not a means of travel."
+        }
+      ],
+      "row": "où"
     },
     {
       "id": "question-words-where-when-how-choose-2",
@@ -43,7 +552,22 @@
       ],
       "hint": "The answer names a time.",
       "feedback": "Match the question word to the kind of information in the answer.",
-      "explanation": "Demain soir is a time, so the question word is quand, when."
+      "explanation": "Demain soir is a time, so the question word is quand, when.",
+      "mistakes": [
+        {
+          "answers": [
+            "Où"
+          ],
+          "why": "Où asks about a place, so the reply would be a cinema or a town. Demain soir names a moment instead."
+        },
+        {
+          "answers": [
+            "Comment"
+          ],
+          "why": "Comment asks in what way something happens. Demain soir tells you the moment the film starts, not the manner."
+        }
+      ],
+      "row": "quand"
     },
     {
       "id": "question-words-where-when-how-complete",
@@ -56,7 +580,34 @@
       ],
       "hint": "The answer describes a way of doing something.",
       "feedback": "The reply is about the means of travel, not a place or a time.",
-      "explanation": "À vélo says how, so the question word is comment."
+      "explanation": "À vélo says how, so the question word is comment.",
+      "mistakes": [
+        {
+          "answers": [
+            "Où"
+          ],
+          "why": "Où asks about a place, and the reply would be au bureau. À vélo names the means of transport, not the destination."
+        },
+        {
+          "answers": [
+            "Quand"
+          ],
+          "why": "Quand asks about a time, answered by a day or an hour. À vélo says nothing about the moment."
+        },
+        {
+          "answers": [
+            "Pourquoi"
+          ],
+          "why": "Pourquoi asks for a reason and is answered with parce que. À vélo gives no reason."
+        },
+        {
+          "answers": [
+            "Combien"
+          ],
+          "why": "Combien asks for a quantity or a price, answered by a number. À vélo is neither."
+        }
+      ],
+      "row": "comment"
     },
     {
       "id": "question-words-where-when-how-translate",
@@ -77,7 +628,28 @@
       ],
       "hint": "Use partir for tu, with the question word first.",
       "feedback": "Start with the word for when, then use one of the three question structures.",
-      "explanation": "Quand goes first, followed by normal order, est-ce que, or inversion: Quand pars-tu ?"
+      "explanation": "Quand goes first, followed by normal order, est-ce que, or inversion: Quand pars-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand est-ce que pars-tu ?"
+          ],
+          "why": "This mixes two structures: est-ce que already marks the question, so the subject must stay in front of the verb after it."
+        },
+        {
+          "answers": [
+            "Quand est-ce tu pars ?"
+          ],
+          "why": "Est-ce on its own is not the marker; the small linking word after it is missing before the subject."
+        },
+        {
+          "answers": [
+            "Quand vous partez ?"
+          ],
+          "why": "Vous is the polite or plural form. The task says to a friend, so partir needs its tu form."
+        }
+      ],
+      "row": "quand"
     },
     {
       "id": "question-words-where-when-how-repair",
@@ -90,7 +662,28 @@
       ],
       "hint": "À Lyon answers a question about a place.",
       "feedback": "The structure is fine. Only the question word does not match the answer.",
-      "explanation": "A place is asked with où: Où habites-tu ?"
+      "explanation": "A place is asked with où: Où habites-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand habites-tu ?"
+          ],
+          "why": "This is the sentence unchanged: it still asks about a moment, while the reply À Lyon names a town."
+        },
+        {
+          "answers": [
+            "Quand est-ce que tu habites ?"
+          ],
+          "why": "Changing the structure does not help: the sentence still asks about a moment, and only the question word had to be swapped."
+        },
+        {
+          "answers": [
+            "Comment habites-tu ?"
+          ],
+          "why": "Comment would ask in what way someone lives — alone, well, cheaply. À Lyon is a place."
+        }
+      ],
+      "row": "où"
     },
     {
       "id": "question-words-why-choose",
@@ -108,7 +701,21 @@
       ],
       "hint": "The answer gives a reason.",
       "feedback": "An answer starting with parce que tells you which question was asked.",
-      "explanation": "Parce que gives a reason, so the question asks why: pourquoi."
+      "explanation": "Parce que gives a reason, so the question asks why: pourquoi.",
+      "mistakes": [
+        {
+          "answers": [
+            "Comment"
+          ],
+          "why": "Comment asks in what way, and the reply would be à pied or en voiture. Parce que je suis malade gives a cause instead."
+        },
+        {
+          "answers": [
+            "Combien"
+          ],
+          "why": "Combien asks about a quantity or a price, answered by a number. The reply here explains a cause."
+        }
+      ]
     },
     {
       "id": "question-words-why-complete-1",
@@ -121,7 +728,34 @@
       ],
       "hint": "The answer to pourquoi usually begins with two words.",
       "feedback": "Write the two-word expression that gives a reason. The next word begins with a consonant.",
-      "explanation": "Pourquoi is answered with parce que: Parce que je n’ai pas faim."
+      "explanation": "Pourquoi is answered with parce que: Parce que je n’ai pas faim.",
+      "mistakes": [
+        {
+          "answers": [
+            "Parce"
+          ],
+          "why": "Parce never stands alone in French: it is always followed by the small linking word that introduces the clause."
+        },
+        {
+          "answers": [
+            "Parce qu’"
+          ],
+          "why": "The shortened spelling is only used before a vowel sound. The next word, je, begins with a consonant, so nothing is dropped."
+        },
+        {
+          "answers": [
+            "Pourquoi"
+          ],
+          "why": "Pourquoi is the question word, not the reply. Repeating it gives no reason."
+        },
+        {
+          "answers": [
+            "Car"
+          ],
+          "why": "Car links two clauses inside one sentence (Je ne mange pas, car…). It does not open a standalone reply."
+        }
+      ],
+      "row": "a consonant"
     },
     {
       "id": "question-words-why-complete-2",
@@ -134,7 +768,34 @@
       ],
       "hint": "The next word, il, begins with a vowel.",
       "feedback": "Write the two-word expression and check what happens to que before a vowel.",
-      "explanation": "Que elides before il, so parce que becomes parce qu’: Parce qu’il est en retard."
+      "explanation": "Que elides before il, so parce que becomes parce qu’: Parce qu’il est en retard.",
+      "mistakes": [
+        {
+          "answers": [
+            "Parce que"
+          ],
+          "why": "Que keeps its e only in front of a consonant. The next word, il, starts with a vowel, so the e has to go."
+        },
+        {
+          "answers": [
+            "Parce qu"
+          ],
+          "why": "The e is rightly dropped, but a dropped letter has to be marked with an apostrophe."
+        },
+        {
+          "answers": [
+            "Parce"
+          ],
+          "why": "Parce alone is not French: the reason clause needs the linking word after it."
+        },
+        {
+          "answers": [
+            "Pourquoi"
+          ],
+          "why": "Pourquoi asks the question. The reply has to give the cause, not repeat the question word."
+        }
+      ],
+      "row": "a vowel or silent h"
     },
     {
       "id": "question-words-why-translate",
@@ -155,7 +816,27 @@
       ],
       "hint": "The verb is rire. Put the question word first.",
       "feedback": "Start with the word for why, then use one of the three question structures.",
-      "explanation": "Pourquoi comes first: Pourquoi tu ris ?, Pourquoi est-ce que tu ris ? or Pourquoi ris-tu ?"
+      "explanation": "Pourquoi comes first: Pourquoi tu ris ?, Pourquoi est-ce que tu ris ? or Pourquoi ris-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Pourquoi est-ce que ris-tu ?"
+          ],
+          "why": "Est-ce que already turns the sentence into a question, so the subject stays before the verb; inverting on top of it is one marker too many."
+        },
+        {
+          "answers": [
+            "Parce que tu ris ?"
+          ],
+          "why": "Parce que answers a why-question, it does not ask one: this says “because you laugh”."
+        },
+        {
+          "answers": [
+            "Pourquoi vous riez ?"
+          ],
+          "why": "Vous is for a group or for politeness. The task says to a friend, so rire needs its tu form."
+        }
+      ]
     },
     {
       "id": "question-words-why-repair",
@@ -169,7 +850,34 @@
       ],
       "hint": "The French for because has two words.",
       "feedback": "One small word is missing from the start of the reply.",
-      "explanation": "Because is parce que, never parce alone: Parce que je suis fatigué."
+      "explanation": "Because is parce que, never parce alone: Parce que je suis fatigué.",
+      "mistakes": [
+        {
+          "answers": [
+            "Parce je suis fatigué."
+          ],
+          "why": "Nothing changed: the reply still opens with a word that cannot stand on its own in French."
+        },
+        {
+          "answers": [
+            "Parce qu’ je suis fatigué."
+          ],
+          "why": "The shortened spelling belongs before a vowel only, and je begins with a consonant."
+        },
+        {
+          "answers": [
+            "Car je suis fatigué."
+          ],
+          "why": "Car links clauses inside one sentence, so it does not open a reply here; the task was to add the missing word, not to swap it."
+        },
+        {
+          "answers": [
+            "Pourquoi je suis fatigué."
+          ],
+          "why": "That turns the reply into a question about yourself instead of giving the cause."
+        }
+      ],
+      "row": "a consonant"
     },
     {
       "id": "question-words-combien-choose",
@@ -187,7 +895,22 @@
       ],
       "hint": "After combien, a noun is introduced by the same small word whatever its gender or number.",
       "feedback": "The word after combien never changes for plural nouns.",
-      "explanation": "Combien de is fixed: combien de sœurs, combien de frères. Des and les are wrong here."
+      "explanation": "Combien de is fixed: combien de sœurs, combien de frères. Des and les are wrong here.",
+      "mistakes": [
+        {
+          "answers": [
+            "des"
+          ],
+          "why": "Des means “some” and cannot follow a quantity word. The link after combien never changes for a plural noun."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is the definite article (“the sisters”) and points at a known group. A quantity question points at no particular sisters."
+        }
+      ],
+      "row": "how many + noun"
     },
     {
       "id": "question-words-combien-complete",
@@ -200,7 +923,34 @@
       ],
       "hint": "The answer is a price.",
       "feedback": "Ask about a quantity or an amount of money.",
-      "explanation": "A price answers combien: Combien coûte ce pull ?"
+      "explanation": "A price answers combien: Combien coûte ce pull ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Comment"
+          ],
+          "why": "Comment asks in what way, so the reply would be en carte or en espèces. Quarante euros is an amount."
+        },
+        {
+          "answers": [
+            "Quel"
+          ],
+          "why": "Quel needs a noun right behind it (quel prix), and it asks which one, not what amount."
+        },
+        {
+          "answers": [
+            "Quoi"
+          ],
+          "why": "Quoi never opens a written question, and it asks what, not what amount."
+        },
+        {
+          "answers": [
+            "Pourquoi"
+          ],
+          "why": "Pourquoi asks for a reason and would be answered with parce que. A price is not a reason."
+        }
+      ],
+      "row": "a price or an amount"
     },
     {
       "id": "question-words-combien-build",
@@ -221,7 +971,22 @@
       ],
       "hint": "Start with combien, then the small word, then the noun.",
       "feedback": "One tile is wrong after combien.",
-      "explanation": "Combien de cafés is the quantity, followed by the inverted verb: Combien de cafés bois-tu par jour ?"
+      "explanation": "Combien de cafés is the quantity, followed by the inverted verb: Combien de cafés bois-tu par jour ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Combien des cafés bois-tu par jour ?"
+          ],
+          "why": "Des cannot follow a quantity word: that tile is the trap. The link to the noun never changes for a plural."
+        },
+        {
+          "answers": [
+            "Combien cafés bois-tu par jour ?"
+          ],
+          "why": "The noun cannot come straight after the quantity word; a small linking tile has to sit between them."
+        }
+      ],
+      "row": "how many + noun"
     },
     {
       "id": "question-words-combien-translate",
@@ -242,7 +1007,34 @@
       ],
       "hint": "Combien de becomes combien d’ before a vowel.",
       "feedback": "Put combien d’enfants first, then one of the three question structures.",
-      "explanation": "Combien d’enfants starts the question; de elides before enfants: Combien d’enfants as-tu ?"
+      "explanation": "Combien d’enfants starts the question; de elides before enfants: Combien d’enfants as-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Combien de enfants as-tu ?"
+          ],
+          "why": "De cannot stay whole in front of a vowel, and enfants begins with one: the e drops and an apostrophe replaces it."
+        },
+        {
+          "answers": [
+            "Combien des enfants as-tu ?"
+          ],
+          "why": "Des would mean “how many of the children”, pointing at a known group. A plain quantity question never takes des."
+        },
+        {
+          "answers": [
+            "Combien d’enfants est-ce que as-tu ?"
+          ],
+          "why": "Est-ce que and inversion are two different structures; using both marks the question twice."
+        },
+        {
+          "answers": [
+            "Combien enfants as-tu ?"
+          ],
+          "why": "A noun cannot follow the quantity word directly; the linking word is missing, elided before the vowel."
+        }
+      ],
+      "row": "+ noun with a vowel"
     },
     {
       "id": "question-words-combien-repair",
@@ -255,7 +1047,34 @@
       ],
       "hint": "The word after combien does not change for a plural noun.",
       "feedback": "Look at the small word between combien and pommes.",
-      "explanation": "Combien is always followed by de: Combien de pommes veux-tu ?"
+      "explanation": "Combien is always followed by de: Combien de pommes veux-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Combien des pommes veux-tu ?"
+          ],
+          "why": "Unchanged: des is still sitting between the quantity word and the noun, where it cannot go."
+        },
+        {
+          "answers": [
+            "Combien les pommes veux-tu ?"
+          ],
+          "why": "Les points at particular apples (“the apples”). A quantity question takes the fixed little link, not an article."
+        },
+        {
+          "answers": [
+            "Combien pommes veux-tu ?"
+          ],
+          "why": "Removing des is only half the repair: a linking word still has to join the quantity to the noun."
+        },
+        {
+          "answers": [
+            "Combien d’pommes veux-tu ?"
+          ],
+          "why": "The e is only dropped before a vowel sound, and pommes begins with a consonant."
+        }
+      ],
+      "row": "how many + noun"
     },
     {
       "id": "question-words-qui-choose",
@@ -273,7 +1092,22 @@
       ],
       "hint": "The answer is a person.",
       "feedback": "You are asking which person does the action.",
-      "explanation": "Qui asks about a person and can be the subject of the verb: Qui veut du gâteau ?"
+      "explanation": "Qui asks about a person and can be the subject of the verb: Qui veut du gâteau ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Que"
+          ],
+          "why": "Que asks about a thing and never acts as the subject of the verb. The reply Moi names a person."
+        },
+        {
+          "answers": [
+            "Quoi"
+          ],
+          "why": "Quoi asks about a thing, and it only appears after a preposition or at the end of a spoken question, never in front of the verb."
+        }
+      ],
+      "row": "subject (who does it)"
     },
     {
       "id": "question-words-qui-complete",
@@ -286,7 +1120,34 @@
       ],
       "hint": "You are asking about people, not things.",
       "feedback": "Que and quoi ask about things. Which word asks about a person?",
-      "explanation": "Qui asks about a person, also when that person is the object: Qui est-ce que tu invites ?"
+      "explanation": "Qui asks about a person, also when that person is the object: Qui est-ce que tu invites ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Que"
+          ],
+          "why": "Que asks about a thing, and in front of est-ce que it is written qu’est-ce que. You invite people, not things."
+        },
+        {
+          "answers": [
+            "Qu’est-ce que"
+          ],
+          "why": "That opening asks what, and it would double the est-ce que already written in the sentence."
+        },
+        {
+          "answers": [
+            "Quoi"
+          ],
+          "why": "Quoi asks about a thing and cannot open a question with est-ce que."
+        },
+        {
+          "answers": [
+            "Quel"
+          ],
+          "why": "Quel needs a noun right behind it and asks which one out of a set, not which person."
+        }
+      ],
+      "row": "object (who you see)"
     },
     {
       "id": "question-words-qui-translate",
@@ -302,7 +1163,28 @@
       ],
       "hint": "The question word is the subject, so the verb follows it directly.",
       "feedback": "Start with the word for who and use the il form of the verb.",
-      "explanation": "Qui as subject takes a singular verb: Qui habite ici ?"
+      "explanation": "Qui as subject takes a singular verb: Qui habite ici ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Qui est-ce que habite ici ?"
+          ],
+          "why": "Est-ce que opens an object question and needs a subject after it. Here the missing person is the one doing the living."
+        },
+        {
+          "answers": [
+            "Qui habitent ici ?"
+          ],
+          "why": "As a subject, the question word counts as one person for the verb, so a plural ending does not agree with it."
+        },
+        {
+          "answers": [
+            "Que habite ici ?"
+          ],
+          "why": "Que asks about a thing and can never be the subject. The question is about a person."
+        }
+      ],
+      "row": "subject (who does it)"
     },
     {
       "id": "question-words-qui-rewrite",
@@ -316,7 +1198,34 @@
       ],
       "hint": "Marc is a person and the subject of the verb.",
       "feedback": "Put the question word for a person in Marc’s place and keep the rest.",
-      "explanation": "Qui replaces the subject Marc, and the verb stays singular: Qui cuisine ce soir ?"
+      "explanation": "Qui replaces the subject Marc, and the verb stays singular: Qui cuisine ce soir ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Marc cuisine ce soir ?"
+          ],
+          "why": "This only adds a question mark: Marc is still named, so it asks whether he cooks rather than which person does."
+        },
+        {
+          "answers": [
+            "Qui cuisinent ce soir ?"
+          ],
+          "why": "The subject question word keeps a singular verb, so the plural ending does not agree with it."
+        },
+        {
+          "answers": [
+            "Qui est-ce que cuisine ce soir ?"
+          ],
+          "why": "Est-ce que belongs to object questions and needs a subject behind it; here the missing person is the one cooking."
+        },
+        {
+          "answers": [
+            "Que cuisine ce soir ?"
+          ],
+          "why": "Que asks about a thing. Marc is a person, so the replacement must be the person word."
+        }
+      ],
+      "row": "subject (who does it)"
     },
     {
       "id": "question-words-qui-build",
@@ -336,7 +1245,22 @@
       ],
       "hint": "Start with the word that asks about a person.",
       "feedback": "One tile asks about a thing, not a person.",
-      "explanation": "Qui is the subject here, so it is followed directly by the verb: Qui a mangé mon gâteau ?"
+      "explanation": "Qui is the subject here, so it is followed directly by the verb: Qui a mangé mon gâteau ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Que a mangé mon gâteau ?"
+          ],
+          "why": "Que asks about a thing and can never be the subject of the verb. That tile is the distractor."
+        },
+        {
+          "answers": [
+            "Qui mangé a mon gâteau ?"
+          ],
+          "why": "The past participle cannot come before its helper verb; the helper follows the subject directly."
+        }
+      ],
+      "row": "subject (who does it)"
     },
     {
       "id": "question-words-preposition-qui-choose",
@@ -354,7 +1278,22 @@
       ],
       "hint": "The answer names a person after avec.",
       "feedback": "Keep the preposition from the answer and choose the word for a person.",
-      "explanation": "Julie is a person, so the question is avec qui. Avec quoi asks about a thing."
+      "explanation": "Julie is a person, so the question is avec qui. Avec quoi asks about a thing.",
+      "mistakes": [
+        {
+          "answers": [
+            "Avec que"
+          ],
+          "why": "Que can never follow a preposition: it only opens a question on its own, with inversion behind it."
+        },
+        {
+          "answers": [
+            "Avec quoi"
+          ],
+          "why": "Quoi does follow a preposition, but it asks about a thing — a tool, an object. Julie is a person."
+        }
+      ],
+      "row": "avec (with)"
     },
     {
       "id": "question-words-preposition-qui-complete",
@@ -367,7 +1306,34 @@
       ],
       "hint": "The answer starts with a preposition and names a person.",
       "feedback": "Use the same preposition as the answer, then the question word for a person.",
-      "explanation": "Pour ma mère answers pour qui: Pour qui est ce cadeau ?"
+      "explanation": "Pour ma mère answers pour qui: Pour qui est ce cadeau ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Pour quoi"
+          ],
+          "why": "Written in two words it asks about a thing or a purpose. Ma mère is a person."
+        },
+        {
+          "answers": [
+            "Pourquoi"
+          ],
+          "why": "In one word it asks for a reason, and the reply would start with parce que. This reply names the person who gets the present."
+        },
+        {
+          "answers": [
+            "Qui"
+          ],
+          "why": "Dropping the preposition loses the “for”: the reply keeps pour, so the question must keep it too."
+        },
+        {
+          "answers": [
+            "Pour que"
+          ],
+          "why": "Que cannot follow a preposition. After pour, a person is asked about with a different word."
+        }
+      ],
+      "row": "pour (for)"
     },
     {
       "id": "question-words-preposition-qui-translate",
@@ -400,7 +1366,34 @@
       ],
       "hint": "The verb is parler à. In French the preposition goes before the question word.",
       "feedback": "French never leaves the preposition at the end. Start with it.",
-      "explanation": "Parler à gives à qui, placed at the start: À qui parles-tu ?"
+      "explanation": "Parler à gives à qui, placed at the start: À qui parles-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Qui tu parles ?"
+          ],
+          "why": "Parler needs its preposition in front of the person; without it the sentence says “who you speak”, which is not French."
+        },
+        {
+          "answers": [
+            "Qui parles-tu à ?"
+          ],
+          "why": "French never leaves a preposition stranded at the end of a question: it travels to the very front."
+        },
+        {
+          "answers": [
+            "À qui est-ce que parles-tu ?"
+          ],
+          "why": "Est-ce que and inversion are two ways of asking. Using both marks the question twice."
+        },
+        {
+          "answers": [
+            "À quoi tu parles ?"
+          ],
+          "why": "Quoi asks about a thing, so this would mean talking to an object. The question is about a person."
+        }
+      ],
+      "row": "à (parler à, penser à)"
     },
     {
       "id": "question-words-preposition-qui-rewrite",
@@ -423,7 +1416,34 @@
       ],
       "hint": "Replace Sophie with a question word but keep avec in front of it.",
       "feedback": "Put avec and the question word first, then invert the verb and tu.",
-      "explanation": "Avec qui moves to the front together, then inversion: Avec qui travailles-tu ?"
+      "explanation": "Avec qui moves to the front together, then inversion: Avec qui travailles-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Qui travailles-tu avec ?"
+          ],
+          "why": "The preposition cannot be left at the end in French; it moves to the front together with the question word."
+        },
+        {
+          "answers": [
+            "Avec quoi travailles-tu ?"
+          ],
+          "why": "Quoi asks about a thing, so this asks what tool you work with. Sophie is a person."
+        },
+        {
+          "answers": [
+            "Tu travailles avec qui ?"
+          ],
+          "why": "Leaving the question word at the end is fine in speech, but this exercise asks for the inverted order."
+        },
+        {
+          "answers": [
+            "Avec qui travailles tu ?"
+          ],
+          "why": "Inversion joins the verb and the pronoun with a hyphen; without it the pair is not read as inverted."
+        }
+      ],
+      "row": "avec (with)"
     },
     {
       "id": "question-words-preposition-qui-repair",
@@ -436,7 +1456,34 @@
       ],
       "hint": "Parler needs a preposition before the person.",
       "feedback": "A word is missing at the very start of the question.",
-      "explanation": "The preposition of parler à goes before qui: À qui tu parles ?"
+      "explanation": "The preposition of parler à goes before qui: À qui tu parles ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Qui tu parles ?"
+          ],
+          "why": "Unchanged: parler still has no preposition in front of the person it points to."
+        },
+        {
+          "answers": [
+            "Qui tu parles à ?"
+          ],
+          "why": "French never ends a question with a stranded preposition; it belongs at the very start."
+        },
+        {
+          "answers": [
+            "Avec qui tu parles ?"
+          ],
+          "why": "That asks who you are talking with. The task repairs parler à, whose own preposition is a different one."
+        },
+        {
+          "answers": [
+            "À qui parles-tu ?"
+          ],
+          "why": "The missing word is added, but the rest of the sentence was fine and did not need inverting."
+        }
+      ],
+      "row": "à (parler à, penser à)"
     },
     {
       "id": "question-words-que-choose-1",
@@ -454,7 +1501,22 @@
       ],
       "hint": "The verb is already inverted with tu.",
       "feedback": "One option is only used with normal word order after it.",
-      "explanation": "Que is used with inversion: Que fais-tu ? Qu’est-ce que needs normal order, and quoi cannot start this question."
+      "explanation": "Que is used with inversion: Que fais-tu ? Qu’est-ce que needs normal order, and quoi cannot start this question.",
+      "mistakes": [
+        {
+          "answers": [
+            "Qu’est-ce que"
+          ],
+          "why": "That longer opening is followed by normal order, subject then verb. Here the verb already stands in front of tu."
+        },
+        {
+          "answers": [
+            "Quoi"
+          ],
+          "why": "Quoi only appears after a preposition or at the end of a spoken question; it cannot open a written one."
+        }
+      ],
+      "row": "verb-subject (inversion)"
     },
     {
       "id": "question-words-que-choose-2",
@@ -472,7 +1534,22 @@
       ],
       "hint": "Here tu comes before the verb, in normal order.",
       "feedback": "Que alone needs inversion after it. Which option allows normal order?",
-      "explanation": "Qu’est-ce que is followed by normal order: Qu’est-ce que tu fais ? Que tu fais is wrong, and qui asks about a person."
+      "explanation": "Qu’est-ce que is followed by normal order: Qu’est-ce que tu fais ? Que tu fais is wrong, and qui asks about a person.",
+      "mistakes": [
+        {
+          "answers": [
+            "Que"
+          ],
+          "why": "On its own it has to be followed by the inverted verb, verb then pronoun. Here tu comes first, in normal order."
+        },
+        {
+          "answers": [
+            "Qui"
+          ],
+          "why": "Qui asks about a person. Ce soir shows that the question is about an activity, a thing."
+        }
+      ],
+      "row": "subject + verb"
     },
     {
       "id": "question-words-que-rewrite-1",
@@ -485,7 +1562,34 @@
       ],
       "hint": "After qu’est-ce que, put tu back before the verb.",
       "feedback": "Change the opening and undo the inversion.",
-      "explanation": "Qu’est-ce que takes normal order: Qu’est-ce que tu manges ?"
+      "explanation": "Qu’est-ce que takes normal order: Qu’est-ce que tu manges ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Que manges-tu ?"
+          ],
+          "why": "Nothing was changed: the sentence still uses the one-word opening with inversion."
+        },
+        {
+          "answers": [
+            "Qu’est-ce que manges-tu ?"
+          ],
+          "why": "The opening is right, but the inversion was kept; after that opening the subject goes back in front of the verb."
+        },
+        {
+          "answers": [
+            "Qu’est-ce tu manges ?"
+          ],
+          "why": "The opening is incomplete: est-ce needs its linking word before the subject."
+        },
+        {
+          "answers": [
+            "Qui est-ce que tu manges ?"
+          ],
+          "why": "That asks which person you are eating. The original question is about a thing."
+        }
+      ],
+      "row": "subject + verb"
     },
     {
       "id": "question-words-que-rewrite-2",
@@ -498,7 +1602,34 @@
       ],
       "hint": "Que alone needs the verb before the pronoun.",
       "feedback": "Shorten the opening to one word and invert vous and the verb.",
-      "explanation": "Que is followed by inversion: Que cherchez-vous ?"
+      "explanation": "Que is followed by inversion: Que cherchez-vous ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Qu’est-ce que vous cherchez ?"
+          ],
+          "why": "Unchanged: the long opening is still there, and the task was to shorten it and invert."
+        },
+        {
+          "answers": [
+            "Que vous cherchez ?"
+          ],
+          "why": "The opening is shortened, but the short form needs the verb in front of the pronoun, and vous still comes first."
+        },
+        {
+          "answers": [
+            "Que cherchez vous ?"
+          ],
+          "why": "Inversion needs a hyphen joining the verb and the pronoun."
+        },
+        {
+          "answers": [
+            "Quoi cherchez-vous ?"
+          ],
+          "why": "Quoi cannot open a written question; it lives after a preposition or at the end of a spoken one."
+        }
+      ],
+      "row": "verb-subject (inversion)"
     },
     {
       "id": "question-words-que-repair",
@@ -512,7 +1643,33 @@
       ],
       "hint": "Qu’est-ce que and inversion do not go together.",
       "feedback": "Either keep qu’est-ce que with normal order, or keep the inversion with que alone.",
-      "explanation": "Qu’est-ce que already marks the question, so tu stays before veux. Que veux-tu ? is the inverted version."
+      "explanation": "Qu’est-ce que already marks the question, so tu stays before veux. Que veux-tu ? is the inverted version.",
+      "mistakes": [
+        {
+          "answers": [
+            "Qu’est-ce que veux-tu ?"
+          ],
+          "why": "Unchanged: the long opening and the inversion are still fighting over the same job."
+        },
+        {
+          "answers": [
+            "Qu’est-ce que tu veux-tu ?"
+          ],
+          "why": "The subject is now written twice. After that opening, one subject in front of the verb is enough."
+        },
+        {
+          "answers": [
+            "Quoi veux-tu ?"
+          ],
+          "why": "Quoi cannot open a written question; it belongs after a preposition or at the end of a spoken one."
+        },
+        {
+          "answers": [
+            "Qu’est-ce tu veux ?"
+          ],
+          "why": "Half the opening was removed: est-ce still needs its linking word before the subject."
+        }
+      ]
     },
     {
       "id": "question-words-que-translate",
@@ -534,7 +1691,33 @@
       ],
       "hint": "The verb is lire. Use qu’est-ce que with normal order, or que with inversion.",
       "feedback": "What as the object is que or qu’est-ce que. Check the word order that each one needs.",
-      "explanation": "Qu’est-ce que tu lis ? and Que lis-tu ? are both correct. Que tu lis is not."
+      "explanation": "Qu’est-ce que tu lis ? and Que lis-tu ? are both correct. Que tu lis is not.",
+      "mistakes": [
+        {
+          "answers": [
+            "Que tu lis ?"
+          ],
+          "why": "The one-word opening must be followed by the inverted verb; with the subject in front, the longer opening is the one to use."
+        },
+        {
+          "answers": [
+            "Quoi tu lis ?"
+          ],
+          "why": "Quoi never opens a written question. It is used after a preposition, or at the very end in speech."
+        },
+        {
+          "answers": [
+            "Qu’est-ce que lis-tu ?"
+          ],
+          "why": "The long opening already marks the question, so inverting on top of it marks it twice."
+        },
+        {
+          "answers": [
+            "Qu’est-ce tu lis ?"
+          ],
+          "why": "The opening is incomplete: est-ce needs its linking word before the subject."
+        }
+      ]
     },
     {
       "id": "question-words-que-complete",
@@ -547,7 +1730,28 @@
       ],
       "hint": "The next word, il, begins with a vowel.",
       "feedback": "The last part of the opening elides before a vowel.",
-      "explanation": "Before il, que becomes qu’: Qu’est-ce qu’il regarde ?"
+      "explanation": "Before il, que becomes qu’: Qu’est-ce qu’il regarde ?",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Before a vowel the e drops, and the next word, il, begins with one, so the full spelling cannot stay."
+        },
+        {
+          "answers": [
+            "qu"
+          ],
+          "why": "The e is rightly dropped, but the missing letter has to be marked with an apostrophe."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "After est-ce, qui opens a subject question and cannot be followed by another subject like il."
+        }
+      ],
+      "row": "subject starting with a vowel"
     },
     {
       "id": "question-words-quoi-choose",
@@ -565,7 +1769,22 @@
       ],
       "hint": "The answer is a thing, and the question word comes after a preposition.",
       "feedback": "After de, one word asks about a thing.",
-      "explanation": "After a preposition, a thing is asked with quoi: De quoi as-tu besoin ?"
+      "explanation": "After a preposition, a thing is asked with quoi: De quoi as-tu besoin ?",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Que never follows a preposition; it only opens a question directly, with inversion behind it."
+        },
+        {
+          "answers": [
+            "quel"
+          ],
+          "why": "Quel has to come with a noun (de quel stylo) and asks which one out of several, not what."
+        }
+      ],
+      "row": "de (parler de, avoir besoin de)"
     },
     {
       "id": "question-words-quoi-complete",
@@ -578,7 +1797,28 @@
       ],
       "hint": "The answer is a thing, and the question word comes right after a preposition.",
       "feedback": "The answer is an object, and the question word follows avec.",
-      "explanation": "Avec quoi asks about a thing: Avec quoi tu écris ? Avec qui would ask about a person."
+      "explanation": "Avec quoi asks about a thing: Avec quoi tu écris ? Avec qui would ask about a person.",
+      "mistakes": [
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Que cannot stand after a preposition; it is only used at the start of a question, with the verb inverted."
+        },
+        {
+          "answers": [
+            "qui"
+          ],
+          "why": "After a preposition, qui asks about a person. Un crayon is an object."
+        },
+        {
+          "answers": [
+            "quel"
+          ],
+          "why": "Quel must be followed by a noun and asks which one, not what."
+        }
+      ],
+      "row": "avec (with)"
     },
     {
       "id": "question-words-quoi-translate",
@@ -599,7 +1839,34 @@
       ],
       "hint": "The verb is penser à, and the preposition goes before the question word.",
       "feedback": "Start with the preposition, then the word for a thing after a preposition.",
-      "explanation": "Penser à gives à quoi, placed first: À quoi penses-tu ?"
+      "explanation": "Penser à gives à quoi, placed first: À quoi penses-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Que penses-tu ?"
+          ],
+          "why": "Without a preposition this asks for an opinion, “what do you think”. Penser à needs its preposition in front of the question word."
+        },
+        {
+          "answers": [
+            "À que tu penses ?"
+          ],
+          "why": "Que can never follow a preposition, whichever preposition it is."
+        },
+        {
+          "answers": [
+            "À qui tu penses ?"
+          ],
+          "why": "After the preposition, qui asks about a person: this means “who are you thinking of”."
+        },
+        {
+          "answers": [
+            "Quoi tu penses ?"
+          ],
+          "why": "The preposition of penser à is missing, and this word never opens a written question on its own."
+        }
+      ],
+      "row": "à (parler à, penser à)"
     },
     {
       "id": "question-words-quoi-repair",
@@ -612,7 +1879,34 @@
       ],
       "hint": "After a preposition, the word for what changes.",
       "feedback": "The structure is fine. Look at the word after avec.",
-      "explanation": "Que cannot follow a preposition; it becomes quoi: Avec quoi tu coupes le pain ?"
+      "explanation": "Que cannot follow a preposition; it becomes quoi: Avec quoi tu coupes le pain ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Avec que tu coupes le pain ?"
+          ],
+          "why": "Unchanged: que is still standing after the preposition, where it can never go."
+        },
+        {
+          "answers": [
+            "Avec qui tu coupes le pain ?"
+          ],
+          "why": "Qui asks about a person, so this asks who you cut the bread with. The question is about the tool."
+        },
+        {
+          "answers": [
+            "Avec qu’est-ce que tu coupes le pain ?"
+          ],
+          "why": "That opening cannot follow a preposition: it is a sentence opener on its own."
+        },
+        {
+          "answers": [
+            "Que tu coupes le pain ?"
+          ],
+          "why": "Dropping avec loses the “with”, and this word still cannot stand in front of a subject."
+        }
+      ],
+      "row": "avec (with)"
     },
     {
       "id": "question-words-quoi-build",
@@ -631,7 +1925,22 @@
       ],
       "hint": "The verb is parler de, and the preposition goes first.",
       "feedback": "One tile cannot follow a preposition.",
-      "explanation": "Parler de gives de quoi at the start: De quoi parlez-vous ?"
+      "explanation": "Parler de gives de quoi at the start: De quoi parlez-vous ?",
+      "mistakes": [
+        {
+          "answers": [
+            "De que parlez-vous ?"
+          ],
+          "why": "Que can never follow a preposition: that tile is the distractor here."
+        },
+        {
+          "answers": [
+            "Quoi parlez-vous ?"
+          ],
+          "why": "The preposition of parler de has been left out, and this word cannot open a question without one."
+        }
+      ],
+      "row": "de (parler de, avoir besoin de)"
     },
     {
       "id": "question-words-quel-choose-1",
@@ -649,7 +1958,22 @@
       ],
       "hint": "Quel agrees with the noun after it. Is heure masculine or feminine?",
       "feedback": "Check the gender and number of heure.",
-      "explanation": "Heure is feminine singular, so quel becomes quelle: Quelle heure est-il ?"
+      "explanation": "Heure is feminine singular, so quel becomes quelle: Quelle heure est-il ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Quel"
+          ],
+          "why": "That is the masculine form, but heure is feminine (une heure), so the spelling has to change."
+        },
+        {
+          "answers": [
+            "Quels"
+          ],
+          "why": "That form is masculine and plural. Heure here is one single feminine noun."
+        }
+      ],
+      "row": "singular"
     },
     {
       "id": "question-words-quel-choose-2",
@@ -667,7 +1991,22 @@
       ],
       "hint": "Films is plural. Is film masculine or feminine?",
       "feedback": "Match both the gender and the number of films.",
-      "explanation": "Films is masculine plural, so the form is quels."
+      "explanation": "Films is masculine plural, so the form is quels.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quelles"
+          ],
+          "why": "That is the feminine plural, but film is a masculine noun (un film)."
+        },
+        {
+          "answers": [
+            "Quel"
+          ],
+          "why": "That form is singular, while films carries an s and names several of them."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "question-words-quel-complete-1",
@@ -680,7 +2019,28 @@
       ],
       "hint": "Quel agrees with the noun it asks about, here couleur.",
       "feedback": "Couleur is feminine singular.",
-      "explanation": "Quel agrees with couleur, even with est in between: Quelle est ta couleur préférée ?"
+      "explanation": "Quel agrees with couleur, even with est in between: Quelle est ta couleur préférée ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Quel"
+          ],
+          "why": "The masculine spelling does not fit: couleur is feminine (une couleur), even with est standing in between."
+        },
+        {
+          "answers": [
+            "Quels"
+          ],
+          "why": "That form is masculine and plural, while one feminine noun is being asked about."
+        },
+        {
+          "answers": [
+            "Quelles"
+          ],
+          "why": "That form is plural. Couleur here is one single colour."
+        }
+      ],
+      "row": "singular"
     },
     {
       "id": "question-words-quel-complete-2",
@@ -693,7 +2053,28 @@
       ],
       "hint": "Chaussures is plural. Is chaussure masculine or feminine?",
       "feedback": "Match the gender and the number of chaussures.",
-      "explanation": "Chaussures is feminine plural, so the form is quelles."
+      "explanation": "Chaussures is feminine plural, so the form is quelles.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quel"
+          ],
+          "why": "That is the masculine singular form, and the noun behind it is feminine and plural."
+        },
+        {
+          "answers": [
+            "Quelle"
+          ],
+          "why": "The gender is right, but chaussures ends in s: several of them are meant."
+        },
+        {
+          "answers": [
+            "Quels"
+          ],
+          "why": "That is the masculine plural, and chaussure is feminine (une chaussure)."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "question-words-quel-repair",
@@ -706,7 +2087,34 @@
       ],
       "hint": "Langue is feminine, and here it is plural.",
       "feedback": "The form of quel does not match the noun after it.",
-      "explanation": "Langues is feminine plural, so quel becomes quelles."
+      "explanation": "Langues is feminine plural, so quel becomes quelles.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quel langues parles-tu ?"
+          ],
+          "why": "Unchanged: the form still ignores both the feminine gender and the plural s of langues."
+        },
+        {
+          "answers": [
+            "Quelle langues parles-tu ?"
+          ],
+          "why": "The gender is repaired but the number is not: langues names several."
+        },
+        {
+          "answers": [
+            "Quels langues parles-tu ?"
+          ],
+          "why": "The number is repaired but the gender is not: langue is feminine (une langue)."
+        },
+        {
+          "answers": [
+            "Quel langue parles-tu ?"
+          ],
+          "why": "Making the noun singular changes the question instead of repairing the agreement, and langue is feminine anyway."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "question-words-quel-translate",
@@ -727,7 +2135,28 @@
       ],
       "hint": "Which + noun is quel, agreeing with the noun. Bus is masculine.",
       "feedback": "Put quel and the noun first, then one of the three question structures.",
-      "explanation": "Quel bus goes first; bus is masculine singular: Quel bus prends-tu ?"
+      "explanation": "Quel bus goes first; bus is masculine singular: Quel bus prends-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Quelle bus prends-tu ?"
+          ],
+          "why": "Bus is a masculine noun (un bus), so a feminine spelling does not agree with it."
+        },
+        {
+          "answers": [
+            "Quels bus prends-tu ?"
+          ],
+          "why": "The plural form asks about several buses at once; only one bus is being taken here."
+        },
+        {
+          "answers": [
+            "Quel bus est-ce que prends-tu ?"
+          ],
+          "why": "Est-ce que and inversion are two different structures, and only one may mark the question."
+        }
+      ],
+      "row": "singular"
     },
     {
       "id": "question-words-quel-build",
@@ -746,7 +2175,16 @@
       ],
       "hint": "French asks “which age do you have”. Âge is masculine.",
       "feedback": "Two tiles are forms of quel. Choose the one that agrees with âge.",
-      "explanation": "Âge is masculine, so the form is quel: Quel âge as-tu ?"
+      "explanation": "Âge is masculine, so the form is quel: Quel âge as-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Quelle âge as-tu ?"
+          ],
+          "why": "Âge is masculine (un âge), so the feminine tile does not agree with it. That tile is the distractor."
+        }
+      ],
+      "row": "singular"
     },
     {
       "id": "question-words-structures-rewrite-1",
@@ -759,7 +2197,34 @@
       ],
       "hint": "Est-ce que goes after the question word, then normal order.",
       "feedback": "Keep où first, add est-ce que, and put tu back before the verb.",
-      "explanation": "Question word, est-ce que, then subject and verb: Où est-ce que tu vas ?"
+      "explanation": "Question word, est-ce que, then subject and verb: Où est-ce que tu vas ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Où vas-tu ?"
+          ],
+          "why": "Unchanged: the sentence still uses inversion and no marker was added."
+        },
+        {
+          "answers": [
+            "Où est-ce que vas-tu ?"
+          ],
+          "why": "The marker is added but the inversion was kept; after the marker the subject goes back in front of the verb."
+        },
+        {
+          "answers": [
+            "Où est-ce tu vas ?"
+          ],
+          "why": "The marker is incomplete: est-ce needs its linking word before the subject."
+        },
+        {
+          "answers": [
+            "Est-ce que tu vas où ?"
+          ],
+          "why": "The question word slid to the end. That happens in speech, but in writing it opens the sentence."
+        }
+      ],
+      "row": "est-ce que"
     },
     {
       "id": "question-words-structures-rewrite-2",
@@ -772,7 +2237,34 @@
       ],
       "hint": "Drop est-ce que and put the verb before the pronoun.",
       "feedback": "Keep quand first, remove est-ce que, and invert vous partez.",
-      "explanation": "Question word, then the inverted verb and pronoun: Quand partez-vous ?"
+      "explanation": "Question word, then the inverted verb and pronoun: Quand partez-vous ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand est-ce que vous partez ?"
+          ],
+          "why": "Unchanged: the marker is still there and nothing was inverted."
+        },
+        {
+          "answers": [
+            "Quand est-ce que partez-vous ?"
+          ],
+          "why": "Inversion was added but the marker was not removed; one of the two has to go."
+        },
+        {
+          "answers": [
+            "Quand vous partez ?"
+          ],
+          "why": "Removing the marker leaves plain spoken order. The task asks for the verb and the pronoun to swap places."
+        },
+        {
+          "answers": [
+            "Quand partez vous ?"
+          ],
+          "why": "The two words are in the right order, but an inverted pair is joined by a hyphen."
+        }
+      ],
+      "row": "inversion"
     },
     {
       "id": "question-words-structures-build",
@@ -798,7 +2290,28 @@
       ],
       "hint": "Question word first, then est-ce que, then subject and verb.",
       "feedback": "Est-ce que goes between the question word and the subject.",
-      "explanation": "Comment, then est-ce que, then normal order: Comment est-ce que tu vas à l’école ?"
+      "explanation": "Comment, then est-ce que, then normal order: Comment est-ce que tu vas à l’école ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Comment est-ce que vas tu à l’école ?"
+          ],
+          "why": "After the marker, the subject comes before the verb; here the two are the wrong way round."
+        },
+        {
+          "answers": [
+            "Comment vas tu à l’école ?"
+          ],
+          "why": "The marker tile was dropped and the verb put first. The task asks for the marker between the question word and the subject."
+        },
+        {
+          "answers": [
+            "Est-ce que tu vas comment à l’école ?"
+          ],
+          "why": "The question word was left inside the sentence. In writing it opens the question."
+        }
+      ],
+      "row": "est-ce que"
     },
     {
       "id": "question-words-structures-repair",
@@ -812,7 +2325,33 @@
       ],
       "hint": "Est-ce que and inversion are two different structures. Use only one.",
       "feedback": "After est-ce que, the subject goes before the verb.",
-      "explanation": "Est-ce que takes normal order: Où est-ce que tu travailles ? Without est-ce que, inversion is fine: Où travailles-tu ?"
+      "explanation": "Est-ce que takes normal order: Où est-ce que tu travailles ? Without est-ce que, inversion is fine: Où travailles-tu ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Où est-ce que travailles-tu ?"
+          ],
+          "why": "Unchanged: the marker and the inversion are both still there."
+        },
+        {
+          "answers": [
+            "Où est-ce que tu travailles-tu ?"
+          ],
+          "why": "The subject is now written twice. After the marker, one subject in front of the verb is enough."
+        },
+        {
+          "answers": [
+            "Où est-ce tu travailles ?"
+          ],
+          "why": "The inversion is undone, but the marker lost a word: est-ce cannot stand without it."
+        },
+        {
+          "answers": [
+            "Est-ce que tu travailles où ?"
+          ],
+          "why": "The question word slid to the end. That happens in speech, but in writing it opens the sentence."
+        }
+      ]
     }
   ]
 }

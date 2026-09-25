@@ -5,9 +5,499 @@
   "title": "Passé composé with être",
   "description": "Say where you went and what happened, with être and agreement.",
   "mark": "suis allé(e)",
-  "rule": "A small group of verbs forms the passé composé with the present of être: aller, venir, arriver, partir, entrer, sortir, monter, descendre, naître, mourir, rester, tomber, retourner, passer, devenir, revenir and rentrer; other verbs, even courir, marcher and voyager, take avoir. With être the participle agrees with the subject like an adjective: add -e for a feminine subject and -s for a plural one (elle est partie, ils sont arrivés, elles sont venues); a mixed group takes the masculine, and polite vous for one person agrees with that person. Irregular participles here are né (naître), mort (mourir) and venu, devenu, revenu. As with avoir, ne…pas goes around the auxiliary (elle n’est pas venue) and inversion swaps the subject and the auxiliary (es-tu allé ? est-elle partie ?). All reflexive verbs also take être, and the participle usually agrees with the subject (elle s’est levée); ne…pas wraps the pronoun and the auxiliary together (je ne me suis pas levé). When sortir, monter, descendre, passer or rentrer have a direct object, they take avoir and do not agree with the subject (j’ai sorti la poubelle, elle a monté les valises).",
-  "example": "Elle est partie à huit heures. · Nous nous sommes couchés tard. · Il a sorti le chien.",
-  "aside": "In speech most of these agreements are silent (allé, allée and allés sound the same), so writing is where they matter. Mort is the exception you can hear: morte.",
+  "guide": {
+    "summary": "A small group of verbs — going and coming, arriving and leaving, being born and dying — plus every reflexive verb build the passé composé with être instead of avoir. Their participle then agrees with the subject, like an adjective.",
+    "sections": [
+      {
+        "id": "etre-verbs",
+        "title": "Which verbs use être?",
+        "text": "Most verbs build the passé composé with avoir. A short list uses être: mostly arriving and leaving, going in and out, being born and dying. Everything outside the list takes avoir.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "aller",
+              "to go"
+            ],
+            [
+              "venir, devenir, revenir",
+              "to come, to become, to come back"
+            ],
+            [
+              "arriver, partir",
+              "to arrive, to leave"
+            ],
+            [
+              "entrer, sortir",
+              "to go in, to go out"
+            ],
+            [
+              "monter, descendre",
+              "to go up, to go down"
+            ],
+            [
+              "naître, mourir",
+              "to be born, to die"
+            ],
+            [
+              "rester, tomber",
+              "to stay, to fall"
+            ],
+            [
+              "passer, retourner",
+              "to go by, to go back"
+            ],
+            [
+              "rentrer",
+              "to come home, to go back in"
+            ]
+          ]
+        },
+        "steps": [
+          "Say the verb in the infinitive and look for it in the list.",
+          "On the list: take the present of être for the subject.",
+          "Add the past participle, then the ending the subject asks for."
+        ],
+        "examples": [
+          {
+            "fr": "Elle est partie à huit heures.",
+            "en": "She left at eight."
+          },
+          {
+            "fr": "Paul est resté à la maison.",
+            "en": "Paul stayed at home."
+          }
+        ],
+        "watch": [
+          "Rester and tomber are on the list although nobody travels: staying and falling count.",
+          "Verbs that feel like movement — courir, marcher, voyager, nager — are not on it and take avoir."
+        ]
+      },
+      {
+        "id": "agreement",
+        "title": "Making the participle agree",
+        "text": "After être the participle behaves like an adjective: it follows the gender and the number of the subject. After avoir it does not move.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Add",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "nothing",
+              "il est allé"
+            ],
+            [
+              "feminine singular",
+              "-e",
+              "elle est allée"
+            ],
+            [
+              "masculine plural",
+              "-s",
+              "ils sont allés"
+            ],
+            [
+              "feminine plural",
+              "-es",
+              "elles sont allées"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject, then decide its gender and its number.",
+          "Take that row and add its ending to the participle, never to the auxiliary.",
+          "A mixed group of men and women counts as masculine plural.",
+          "Polite vous for one person agrees with that one person."
+        ],
+        "examples": [
+          {
+            "fr": "Mes parents sont partis en vacances.",
+            "en": "My parents went away on holiday."
+          },
+          {
+            "fr": "Madame Dupont, vous êtes venue seule ?",
+            "en": "Madame Dupont, did you come alone?"
+          }
+        ],
+        "watch": [
+          "Parents, enfants and amis are masculine plural unless every single person is female.",
+          "These endings are silent: allé, allée and allés sound the same, so they only show in writing. Morte is the one you can hear.",
+          "After avoir the participle stays plain: nous avons mangé, ils ont voyagé."
+        ]
+      },
+      {
+        "id": "participles",
+        "title": "The participles to know by heart",
+        "text": "Most verbs on the list build a regular participle, but a few are irregular and come up all the time.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Participle",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "naître",
+              "né",
+              "was born"
+            ],
+            [
+              "mourir",
+              "mort",
+              "died"
+            ],
+            [
+              "venir",
+              "venu",
+              "came"
+            ],
+            [
+              "devenir",
+              "devenu",
+              "became"
+            ],
+            [
+              "revenir",
+              "revenu",
+              "came back"
+            ],
+            [
+              "aller",
+              "allé",
+              "went"
+            ],
+            [
+              "partir",
+              "parti",
+              "left"
+            ],
+            [
+              "sortir",
+              "sorti",
+              "went out"
+            ],
+            [
+              "descendre",
+              "descendu",
+              "went down"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the table before building anything: these forms are not regular.",
+          "Otherwise: -er verbs give -é, -ir verbs usually give -i.",
+          "Put the agreement ending on top of the participle you found."
+        ],
+        "examples": [
+          {
+            "fr": "Victor Hugo est né en 1802.",
+            "en": "Victor Hugo was born in 1802."
+          },
+          {
+            "fr": "Elle est devenue médecin.",
+            "en": "She became a doctor."
+          }
+        ],
+        "watch": [
+          "Mouru, mouri and naissé do not exist.",
+          "Devenir and revenir copy venir: venu, devenu, revenu."
+        ]
+      },
+      {
+        "id": "reflexive",
+        "title": "Reflexive verbs (se lever, s’amuser)",
+        "text": "Every reflexive verb takes être, with the pronoun in front of the auxiliary. The participle agrees with the subject as usual.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Pronoun + être"
+          ],
+          "rows": [
+            [
+              "je",
+              "me suis"
+            ],
+            [
+              "tu",
+              "t’es"
+            ],
+            [
+              "il / elle / on",
+              "s’est"
+            ],
+            [
+              "nous",
+              "nous sommes"
+            ],
+            [
+              "vous",
+              "vous êtes"
+            ],
+            [
+              "ils / elles",
+              "se sont"
+            ]
+          ]
+        },
+        "steps": [
+          "Keep the reflexive pronoun: it comes first, right before the auxiliary.",
+          "Take the row of the subject: me, te and se elide into m’, t’, s’ before a vowel.",
+          "Agree the participle with the subject."
+        ],
+        "examples": [
+          {
+            "fr": "Nous nous sommes couchés tard.",
+            "en": "We went to bed late."
+          },
+          {
+            "fr": "Tu t’es réveillée tôt ?",
+            "en": "Did you wake up early?"
+          }
+        ],
+        "watch": [
+          "Never s’a or nous avons with a reflexive verb: only one auxiliary is possible.",
+          "Losing the pronoun changes the meaning: elle a levé la main is not the same verb."
+        ]
+      },
+      {
+        "id": "negation-questions",
+        "title": "Saying no and asking questions",
+        "text": "Everything is built around the auxiliary: ne…pas closes on it, and inversion moves it.",
+        "table": {
+          "columns": [
+            "Sentence",
+            "Pattern"
+          ],
+          "rows": [
+            [
+              "statement",
+              "elle est venue"
+            ],
+            [
+              "negative",
+              "elle n’est pas venue"
+            ],
+            [
+              "negative with a reflexive verb",
+              "je ne me suis pas levé"
+            ],
+            [
+              "question by inversion",
+              "es-tu allé ? / est-elle partie ?"
+            ],
+            [
+              "question with est-ce que",
+              "est-ce qu’elle est partie ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the auxiliary; the participle never moves.",
+          "Negative: ne before the auxiliary (and before the reflexive pronoun), pas straight after it.",
+          "Inversion: swap subject and auxiliary and join them with a hyphen.",
+          "Ne becomes n’ before a vowel."
+        ],
+        "examples": [
+          {
+            "fr": "Je ne me suis pas levé tôt.",
+            "en": "I didn’t get up early."
+          },
+          {
+            "fr": "Es-tu allé à Rome ?",
+            "en": "Did you go to Rome?"
+          }
+        ],
+        "watch": [
+          "Pas never waits until after the participle.",
+          "Dropping ne is normal in speech, but writing keeps it."
+        ]
+      },
+      {
+        "id": "avoir-or-etre",
+        "title": "Choosing between avoir and être",
+        "text": "The list decides, not the meaning. Running and travelling are movement, but courir and voyager still take avoir.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Auxiliary",
+            "Example"
+          ],
+          "rows": [
+            [
+              "a verb on the être list",
+              "être",
+              "elle est restée chez elle"
+            ],
+            [
+              "a reflexive verb (se …)",
+              "être",
+              "il s’est levé"
+            ],
+            [
+              "courir, marcher, voyager, nager",
+              "avoir",
+              "j’ai couru"
+            ],
+            [
+              "any other verb",
+              "avoir",
+              "nous avons mangé"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the verb reflexive? Then être.",
+          "Is the infinitive on the être list? Then être.",
+          "Otherwise avoir, and the participle takes no ending for the subject.",
+          "Two verbs in one sentence: choose an auxiliary for each of them."
+        ],
+        "examples": [
+          {
+            "fr": "Il est arrivé et il a mangé.",
+            "en": "He arrived and he ate."
+          },
+          {
+            "fr": "Ils ont voyagé en train.",
+            "en": "They travelled by train."
+          }
+        ],
+        "watch": [
+          "An ending on the participle (restée, arrivés) is a sign that the auxiliary is être.",
+          "Courir has an irregular participle: couru, not couri."
+        ]
+      },
+      {
+        "id": "avoir-with-object",
+        "title": "The five verbs that change sides",
+        "text": "Sortir, monter, descendre, passer and rentrer take avoir when a noun follows the verb directly — something moved, or a stretch of time. The participle then stays plain.",
+        "table": {
+          "columns": [
+            "Verb",
+            "No object: être",
+            "Direct object: avoir"
+          ],
+          "rows": [
+            [
+              "monter",
+              "elle est montée",
+              "elle a monté les valises"
+            ],
+            [
+              "descendre",
+              "nous sommes descendus",
+              "nous avons descendu les valises"
+            ],
+            [
+              "sortir",
+              "il est sorti",
+              "il a sorti le chien"
+            ],
+            [
+              "rentrer",
+              "elle est rentrée",
+              "elle a rentré la voiture"
+            ],
+            [
+              "passer",
+              "elle est passée chez moi",
+              "elle a passé un bon week-end"
+            ]
+          ]
+        },
+        "steps": [
+          "Read what follows the verb: a noun with no preposition is a direct object.",
+          "Direct object: avoir, and no agreement with the subject.",
+          "No object, or a preposition (à, dans, du…): être, and agree with the subject."
+        ],
+        "examples": [
+          {
+            "fr": "Il a sorti le chien.",
+            "en": "He took the dog out."
+          },
+          {
+            "fr": "Elle est montée au premier étage.",
+            "en": "She went up to the first floor."
+          }
+        ],
+        "watch": [
+          "Dans le garage and au premier étage are not direct objects: no bare noun follows the verb.",
+          "With avoir here the participle keeps no ending: elle a monté les valises."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "etre-verbs": {
+      "section": "etre-verbs",
+      "steps": [
+        "Say the verb in the infinitive and check it against the être list.",
+        "Take the present of être for the subject.",
+        "Add the past participle, then its agreement ending."
+      ]
+    },
+    "feminine-agreement": {
+      "section": "agreement",
+      "steps": [
+        "Check that the auxiliary is être: only then does the participle agree.",
+        "Decide whether the subject is masculine or feminine.",
+        "Add the ending of that row to the participle, not to the auxiliary."
+      ]
+    },
+    "plural-agreement": {
+      "section": "agreement",
+      "steps": [
+        "Count the subject: one person or several?",
+        "Take the plural row that matches the group; a mixed group is masculine.",
+        "Polite vous for one person stays singular."
+      ]
+    },
+    "irregular-etre-participles": {
+      "section": "participles",
+      "steps": [
+        "Before building a participle with -é or -i, ask whether this verb is irregular.",
+        "Take the form from the table of participles.",
+        "Add the agreement ending for the subject on top of it."
+      ]
+    },
+    "reflexive": {
+      "section": "reflexive",
+      "steps": [
+        "Keep the reflexive pronoun in front of the auxiliary, elided before a vowel.",
+        "Use the form of être that matches the subject.",
+        "Agree the participle with the subject."
+      ]
+    },
+    "negation-questions": {
+      "section": "negation-questions",
+      "steps": [
+        "Find the auxiliary; the participle stays where it is.",
+        "Negative: ne before the auxiliary and any pronoun, pas immediately after it.",
+        "Inversion: swap subject and auxiliary, hyphen between them."
+      ]
+    },
+    "avoir-or-etre": {
+      "section": "avoir-or-etre",
+      "steps": [
+        "Ask if the verb is reflexive or on the être list; if so, use être.",
+        "If not, use avoir, however much movement the verb describes.",
+        "With avoir, leave the participle without an agreement ending."
+      ]
+    },
+    "avoir-with-object": {
+      "section": "avoir-with-object",
+      "steps": [
+        "Look straight after the verb: is there a noun with no preposition?",
+        "Direct object: use avoir and leave the participle plain.",
+        "No object: use être and agree the participle with the subject."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "passe-compose-etre-etre-verbs-1",
@@ -21,7 +511,38 @@
       ],
       "hint": "Arriver is one of the verbs that take être.",
       "feedback": "Use the present of être for il, then the participle.",
-      "explanation": "Arriver takes être: il est arrivé. With a masculine singular subject the participle adds nothing."
+      "explanation": "Arriver takes être: il est arrivé. With a masculine singular subject the participle adds nothing.",
+      "mistakes": [
+        {
+          "answers": [
+            "a arrivé",
+            "il a arrivé"
+          ],
+          "why": "A is the il form of avoir, and arriver is one of the verbs that refuse avoir in the passé composé."
+        },
+        {
+          "answers": [
+            "est arrivée",
+            "il est arrivée"
+          ],
+          "why": "That ending marks a feminine subject. Il is masculine singular, so the participle takes nothing extra."
+        },
+        {
+          "answers": [
+            "suis arrivé",
+            "je suis arrivé"
+          ],
+          "why": "Suis is the je form of être. The subject given is il, so the auxiliary must be its form."
+        },
+        {
+          "answers": [
+            "est arriver",
+            "il est arriver"
+          ],
+          "why": "Arriver there is still the infinitive. After the auxiliary French needs the past participle."
+        }
+      ],
+      "row": "arriver, partir"
     },
     {
       "id": "passe-compose-etre-etre-verbs-2",
@@ -37,7 +558,37 @@
       ],
       "hint": "Partir takes être. The participle agrees with je, so a woman adds -e.",
       "feedback": "Use être for je, not avoir.",
-      "explanation": "Partir takes être: je suis parti (a man) or je suis partie (a woman)."
+      "explanation": "Partir takes être: je suis parti (a man) or je suis partie (a woman).",
+      "mistakes": [
+        {
+          "answers": [
+            "ai parti",
+            "j’ai parti"
+          ],
+          "why": "Ai is the je form of avoir, and partir never builds its past with avoir."
+        },
+        {
+          "answers": [
+            "est parti",
+            "il est parti"
+          ],
+          "why": "Est is the il or elle form. The subject given is je, which has its own form of être."
+        },
+        {
+          "answers": [
+            "suis partir",
+            "je suis partir"
+          ],
+          "why": "Partir there is the infinitive; the auxiliary has to be followed by the past participle."
+        },
+        {
+          "answers": [
+            "me suis parti"
+          ],
+          "why": "Partir is not reflexive: there is no pronoun to slip in before the auxiliary."
+        }
+      ],
+      "row": "arriver, partir"
     },
     {
       "id": "passe-compose-etre-etre-verbs-3",
@@ -50,7 +601,34 @@
       ],
       "hint": "Rester is on the list of être verbs, even though nobody moves.",
       "feedback": "Rester does not take avoir.",
-      "explanation": "Rester takes être: Paul est resté. Paul is masculine singular, so resté has no ending."
+      "explanation": "Rester takes être: Paul est resté. Paul is masculine singular, so resté has no ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "a resté"
+          ],
+          "why": "A is avoir. Rester is on the list of verbs that use the other auxiliary, even though nobody moves."
+        },
+        {
+          "answers": [
+            "est restée"
+          ],
+          "why": "The -e marks a feminine subject. Paul is masculine singular, so the participle stays bare."
+        },
+        {
+          "answers": [
+            "est restés"
+          ],
+          "why": "The -s marks several people. Paul is one person."
+        },
+        {
+          "answers": [
+            "est rester"
+          ],
+          "why": "Rester there is the infinitive. What follows the auxiliary is the past participle, in -é."
+        }
+      ],
+      "row": "rester, tomber"
     },
     {
       "id": "passe-compose-etre-etre-verbs-4",
@@ -68,7 +646,22 @@
       ],
       "hint": "Tomber is a verb of movement that takes être.",
       "feedback": "Tomber does not use avoir, and the auxiliary must match mon frère.",
-      "explanation": "Tomber takes être, and mon frère is il: il est tombé."
+      "explanation": "Tomber takes être, and mon frère is il: il est tombé.",
+      "mistakes": [
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "A is the il form of avoir. Tomber belongs to the short list of verbs that build the passé composé with the other auxiliary."
+        },
+        {
+          "answers": [
+            "ai"
+          ],
+          "why": "Ai is the je form of avoir. The subject mon frère is il, and tomber refuses avoir anyway."
+        }
+      ],
+      "row": "rester, tomber"
     },
     {
       "id": "passe-compose-etre-etre-verbs-5",
@@ -81,7 +674,28 @@
       ],
       "hint": "Aller takes être. À + le contracts.",
       "feedback": "Use être for il and the participle of aller.",
-      "explanation": "Aller takes être: il est allé. À le cinéma becomes au cinéma."
+      "explanation": "Aller takes être: il est allé. À le cinéma becomes au cinéma.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a allé au cinéma."
+          ],
+          "why": "Aller never uses avoir in the passé composé; it is on the short list that takes the other auxiliary."
+        },
+        {
+          "answers": [
+            "Il est allé à le cinéma."
+          ],
+          "why": "À and le never stay apart in French: they contract into one word."
+        },
+        {
+          "answers": [
+            "Il est allée au cinéma."
+          ],
+          "why": "That -e marks a feminine subject. Il is masculine, so nothing is added to the participle."
+        }
+      ],
+      "row": "aller"
     },
     {
       "id": "passe-compose-etre-etre-verbs-6",
@@ -94,7 +708,28 @@
       ],
       "hint": "Check the auxiliary.",
       "feedback": "Entrer, with no direct object, is an être verb.",
-      "explanation": "Entrer takes être: il est entré dans la cuisine."
+      "explanation": "Entrer takes être: il est entré dans la cuisine.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a entré dans la cuisine."
+          ],
+          "why": "That is the sentence unchanged. Entrer with no direct object does not build its past with avoir."
+        },
+        {
+          "answers": [
+            "Il a entrée dans la cuisine."
+          ],
+          "why": "This adds an ending to the participle and leaves the auxiliary wrong; il is masculine, so no ending was needed."
+        },
+        {
+          "answers": [
+            "Il est entrer dans la cuisine."
+          ],
+          "why": "Entrer there is the infinitive; after the auxiliary French uses the past participle."
+        }
+      ],
+      "row": "entrer, sortir"
     },
     {
       "id": "passe-compose-etre-feminine-agreement-1",
@@ -108,7 +743,38 @@
       ],
       "hint": "Venir takes être, and its participle is irregular. Then agree with elle.",
       "feedback": "With être the participle agrees with the subject.",
-      "explanation": "Venir has the participle venu; with être it agrees with elle: elle est venue."
+      "explanation": "Venir has the participle venu; with être it agrees with elle: elle est venue.",
+      "mistakes": [
+        {
+          "answers": [
+            "est venu",
+            "elle est venu"
+          ],
+          "why": "That is the masculine form of the participle. After être it follows the subject, and elle is feminine."
+        },
+        {
+          "answers": [
+            "a venu",
+            "elle a venu"
+          ],
+          "why": "A is avoir, which venir never uses in the passé composé."
+        },
+        {
+          "answers": [
+            "est venie",
+            "elle est venie"
+          ],
+          "why": "Venir does not follow the regular -ir pattern: its participle is irregular and ends in -u."
+        },
+        {
+          "answers": [
+            "est venues",
+            "elle est venues"
+          ],
+          "why": "The -s marks a plural subject; elle is one person."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-etre-feminine-agreement-2",
@@ -126,7 +792,22 @@
       ],
       "hint": "With être, the participle agrees with the subject. Julie is one woman.",
       "feedback": "Look for feminine singular.",
-      "explanation": "Julie is feminine singular, so arrivé adds -e: Julie est arrivée."
+      "explanation": "Julie is feminine singular, so arrivé adds -e: Julie est arrivée.",
+      "mistakes": [
+        {
+          "answers": [
+            "arrivé"
+          ],
+          "why": "That is the masculine form. Julie is one woman, and after être the participle follows the subject."
+        },
+        {
+          "answers": [
+            "arrivées"
+          ],
+          "why": "That form is feminine plural. Julie is a single person, so the -s does not belong."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-etre-feminine-agreement-3",
@@ -140,7 +821,29 @@
       ],
       "hint": "Rester takes être, and the speaker is a woman.",
       "feedback": "The participle must show that je is feminine.",
-      "explanation": "Rester takes être, and the participle agrees with a female je: je suis restée."
+      "explanation": "Rester takes être, and the participle agrees with a female je: je suis restée.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je suis resté à la maison.",
+            "Je suis resté chez moi."
+          ],
+          "why": "This is the masculine participle. The speaker is a woman, so the ending has to show it."
+        },
+        {
+          "answers": [
+            "J’ai restée à la maison."
+          ],
+          "why": "Rester does not use avoir, and with avoir the participle would not agree with the subject either."
+        },
+        {
+          "answers": [
+            "Je restais à la maison."
+          ],
+          "why": "That is the imparfait. The passé composé needs an auxiliary plus a participle."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-etre-feminine-agreement-4",
@@ -153,7 +856,28 @@
       ],
       "hint": "Who is the subject, and what does être require of the participle?",
       "feedback": "Anne is feminine, so the participle needs an ending.",
-      "explanation": "With être the participle agrees with the subject: Anne est allée."
+      "explanation": "With être the participle agrees with the subject: Anne est allée.",
+      "mistakes": [
+        {
+          "answers": [
+            "Anne est allé à la plage."
+          ],
+          "why": "That is the sentence as given. After être the participle has to show that Anne is feminine."
+        },
+        {
+          "answers": [
+            "Anne a allé à la plage."
+          ],
+          "why": "This changes the auxiliary, but aller always takes être; the participle was the part to fix."
+        },
+        {
+          "answers": [
+            "Anne est allées à la plage."
+          ],
+          "why": "The -s marks several people. Anne is one woman."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-etre-feminine-agreement-5",
@@ -166,7 +890,28 @@
       ],
       "hint": "Changing the subject changes the participle too.",
       "feedback": "With être the participle follows the gender of the new subject.",
-      "explanation": "Descendre takes être here, so the participle agrees with elle: descendue."
+      "explanation": "Descendre takes être here, so the participle agrees with elle: descendue.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle est descendu du bus."
+          ],
+          "why": "Only the subject changed. After être the participle follows the new subject’s gender too."
+        },
+        {
+          "answers": [
+            "Elle a descendu du bus."
+          ],
+          "why": "Descendre uses avoir only when a noun follows it directly; du bus is a preposition phrase, not a direct object."
+        },
+        {
+          "answers": [
+            "Elles sont descendues du bus."
+          ],
+          "why": "This makes the subject plural. The task changes one person’s gender, not the number."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-etre-feminine-agreement-6",
@@ -188,7 +933,28 @@
       ],
       "hint": "Rentrer takes être here. Check the participle’s ending.",
       "feedback": "The participle agrees with ma mère.",
-      "explanation": "Rentrer (to come home) takes être, and rentrée agrees with ma mère."
+      "explanation": "Rentrer (to come home) takes être, and rentrée agrees with ma mère.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma mère a rentrée tard."
+          ],
+          "why": "Rentrer has no direct object here, so avoir is the wrong auxiliary; nothing is being brought in."
+        },
+        {
+          "answers": [
+            "Ma mère est rentré tard."
+          ],
+          "why": "The participle is left masculine. Ma mère is feminine, so it needs its ending."
+        },
+        {
+          "answers": [
+            "Ma mère a rentré tard."
+          ],
+          "why": "Both halves are off: coming home with no object does not use avoir, and the participle has to match ma mère."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-etre-plural-agreement-1",
@@ -204,7 +970,37 @@
       ],
       "hint": "Aller takes être. Nous is plural, so the participle is plural too.",
       "feedback": "Add a plural ending to the participle.",
-      "explanation": "Nous sommes allés (a mixed or male group) or allées (all women): the participle is plural."
+      "explanation": "Nous sommes allés (a mixed or male group) or allées (all women): the participle is plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "sommes allé",
+            "nous sommes allé"
+          ],
+          "why": "The participle stayed singular. Nous is more than one person, so it needs a plural mark."
+        },
+        {
+          "answers": [
+            "avons allé",
+            "nous avons allé"
+          ],
+          "why": "Avons is avoir, and aller builds its past with être."
+        },
+        {
+          "answers": [
+            "sommes aller",
+            "nous sommes aller"
+          ],
+          "why": "Aller there is the infinitive; after the auxiliary comes the past participle."
+        },
+        {
+          "answers": [
+            "est allés",
+            "nous est allés"
+          ],
+          "why": "Est goes with one person, il or elle. The subject nous has its own form of être."
+        }
+      ]
     },
     {
       "id": "passe-compose-etre-plural-agreement-2",
@@ -222,7 +1018,22 @@
       ],
       "hint": "Parents is a masculine plural noun. Which ending does that take?",
       "feedback": "The participle must be plural, and parents is masculine.",
-      "explanation": "Parents is a masculine plural noun (whatever the parents’ genders), so parti takes -s: mes parents sont partis."
+      "explanation": "Parents is a masculine plural noun (whatever the parents’ genders), so parti takes -s: mes parents sont partis.",
+      "mistakes": [
+        {
+          "answers": [
+            "parti"
+          ],
+          "why": "That is the singular form. Mes parents is plural, so the participle needs a plural mark."
+        },
+        {
+          "answers": [
+            "parties"
+          ],
+          "why": "That form is feminine plural. The noun parents is masculine in French, whatever the two people’s genders."
+        }
+      ],
+      "row": "masculine plural"
     },
     {
       "id": "passe-compose-etre-plural-agreement-3",
@@ -235,7 +1046,35 @@
       ],
       "hint": "Entrer takes être. Les filles is feminine plural.",
       "feedback": "Use être for ils/elles and a feminine plural participle.",
-      "explanation": "Les filles are feminine plural: elles sont entrées."
+      "explanation": "Les filles are feminine plural: elles sont entrées.",
+      "mistakes": [
+        {
+          "answers": [
+            "sont entrés"
+          ],
+          "why": "This is the masculine plural ending. Les filles are all female, so the participle takes the feminine one."
+        },
+        {
+          "answers": [
+            "sont entrée"
+          ],
+          "why": "That is the feminine singular ending, and there are several girls here."
+        },
+        {
+          "answers": [
+            "ont entré",
+            "ont entrées"
+          ],
+          "why": "Ont is avoir, and entrer without a direct object uses être."
+        },
+        {
+          "answers": [
+            "est entrées"
+          ],
+          "why": "Est goes with one person. Les filles is plural, so the auxiliary must be plural too."
+        }
+      ],
+      "row": "feminine plural"
     },
     {
       "id": "passe-compose-etre-plural-agreement-4",
@@ -249,7 +1088,28 @@
       ],
       "hint": "Arriver takes être. Les enfants is plural.",
       "feedback": "The participle needs a plural ending.",
-      "explanation": "Les enfants is masculine plural, so arrivé takes -s: sont arrivés."
+      "explanation": "Les enfants is masculine plural, so arrivé takes -s: sont arrivés.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les enfants sont arrivé en retard."
+          ],
+          "why": "The participle stayed singular. Les enfants is plural, so it needs a plural mark."
+        },
+        {
+          "answers": [
+            "Les enfants ont arrivé en retard."
+          ],
+          "why": "Ont is avoir, which arriver never uses."
+        },
+        {
+          "answers": [
+            "Les enfants sont arrivées en retard."
+          ],
+          "why": "That is the feminine plural form. Enfants is masculine unless every child is a girl."
+        }
+      ],
+      "row": "masculine plural"
     },
     {
       "id": "passe-compose-etre-plural-agreement-5",
@@ -262,7 +1122,28 @@
       ],
       "hint": "Both the auxiliary and the participle change.",
       "feedback": "Elles needs sont, and the participle adds -s.",
-      "explanation": "Elles sont tombées: être becomes sont, and tombée becomes feminine plural."
+      "explanation": "Elles sont tombées: être becomes sont, and tombée becomes feminine plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elles est tombées."
+          ],
+          "why": "Est goes with one person. A plural subject needs the plural form of être."
+        },
+        {
+          "answers": [
+            "Elles sont tombée."
+          ],
+          "why": "The participle still shows one person; with several women it takes -s as well."
+        },
+        {
+          "answers": [
+            "Elles sont tombés."
+          ],
+          "why": "That is the masculine plural ending, and elles is a group of women."
+        }
+      ],
+      "row": "feminine plural"
     },
     {
       "id": "passe-compose-etre-plural-agreement-6",
@@ -280,7 +1161,22 @@
       ],
       "hint": "Vous here is polite, speaking to one woman.",
       "feedback": "Polite vous for one person agrees with that one person.",
-      "explanation": "Formal vous for a single woman takes a feminine singular participle: vous êtes venue."
+      "explanation": "Formal vous for a single woman takes a feminine singular participle: vous êtes venue.",
+      "mistakes": [
+        {
+          "answers": [
+            "venues"
+          ],
+          "why": "That is feminine plural. Vous here is the polite form for one woman, so the participle stays singular."
+        },
+        {
+          "answers": [
+            "venus"
+          ],
+          "why": "That is masculine plural. Polite vous addressed to one woman agrees with that one woman."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "passe-compose-etre-irregular-etre-participles-1",
@@ -296,7 +1192,38 @@
       ],
       "hint": "Naître takes être and has a short irregular participle.",
       "feedback": "Use être, and a participle of two letters (plus agreement).",
-      "explanation": "Naître has the participle né: je suis né (a man) or je suis née (a woman)."
+      "explanation": "Naître has the participle né: je suis né (a man) or je suis née (a woman).",
+      "mistakes": [
+        {
+          "answers": [
+            "ai né",
+            "j’ai né"
+          ],
+          "why": "Ai is avoir, and naître builds its past with être."
+        },
+        {
+          "answers": [
+            "suis naissé",
+            "je suis naissé"
+          ],
+          "why": "Naiss- is the present stem; no participle is built from it. This verb is irregular."
+        },
+        {
+          "answers": [
+            "suis naître",
+            "je suis naître"
+          ],
+          "why": "That is still the infinitive. The auxiliary has to be followed by the past participle."
+        },
+        {
+          "answers": [
+            "suis nés",
+            "je suis nés"
+          ],
+          "why": "The -s marks a plural subject, and je is one person."
+        }
+      ],
+      "row": "naître"
     },
     {
       "id": "passe-compose-etre-irregular-etre-participles-2",
@@ -310,7 +1237,38 @@
       ],
       "hint": "Mourir takes être, and its participle is irregular.",
       "feedback": "The participle of mourir does not end in -i or -u.",
-      "explanation": "Mourir has the participle mort: il est mort."
+      "explanation": "Mourir has the participle mort: il est mort.",
+      "mistakes": [
+        {
+          "answers": [
+            "a mort",
+            "il a mort"
+          ],
+          "why": "A is avoir; mourir is on the list of verbs that take the other auxiliary."
+        },
+        {
+          "answers": [
+            "est mouru",
+            "il est mouru"
+          ],
+          "why": "Mouru looks regular but does not exist: this verb has an irregular participle."
+        },
+        {
+          "answers": [
+            "est mouri",
+            "il est mouri"
+          ],
+          "why": "The -ir ending does not give -i here; the participle of this verb is irregular."
+        },
+        {
+          "answers": [
+            "est morte",
+            "il est morte"
+          ],
+          "why": "The -e marks a feminine subject, and il is masculine."
+        }
+      ],
+      "row": "mourir"
     },
     {
       "id": "passe-compose-etre-irregular-etre-participles-3",
@@ -328,7 +1286,22 @@
       ],
       "hint": "You need the participle of naître.",
       "feedback": "The present tense of naître cannot follow est.",
-      "explanation": "Naître has the participle né: il est né en 1802."
+      "explanation": "Naître has the participle né: il est né en 1802.",
+      "mistakes": [
+        {
+          "answers": [
+            "naissé"
+          ],
+          "why": "No such form exists: naître does not build a participle from its present stem naiss-."
+        },
+        {
+          "answers": [
+            "naît"
+          ],
+          "why": "Naît is the present tense, he is born. After the auxiliary French needs a past participle."
+        }
+      ],
+      "row": "naître"
     },
     {
       "id": "passe-compose-etre-irregular-etre-participles-4",
@@ -341,7 +1314,35 @@
       ],
       "hint": "Devenir is built on venir, so it shares its participle and its auxiliary.",
       "feedback": "Use être, then agree the participle with elle.",
-      "explanation": "Devenir works like venir: elle est devenue médecin."
+      "explanation": "Devenir works like venir: elle est devenue médecin.",
+      "mistakes": [
+        {
+          "answers": [
+            "a devenu",
+            "a devenue"
+          ],
+          "why": "A is avoir. Devenir is built on venir, so it takes the same auxiliary as venir."
+        },
+        {
+          "answers": [
+            "est devenu"
+          ],
+          "why": "This is the masculine participle; the subject elle is feminine, so it needs an ending."
+        },
+        {
+          "answers": [
+            "est devenir"
+          ],
+          "why": "That is the infinitive. After the auxiliary comes the past participle."
+        },
+        {
+          "answers": [
+            "s’est devenue"
+          ],
+          "why": "Devenir is not reflexive: no pronoun goes in front of the auxiliary."
+        }
+      ],
+      "row": "devenir"
     },
     {
       "id": "passe-compose-etre-irregular-etre-participles-5",
@@ -354,7 +1355,34 @@
       ],
       "hint": "Was born is the passé composé of naître.",
       "feedback": "Use être and the participle of naître, agreeing with elle.",
-      "explanation": "Elle est née: naître takes être, and né adds -e for elle."
+      "explanation": "Elle est née: naître takes être, and né adds -e for elle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle est né à Lyon."
+          ],
+          "why": "The participle stayed masculine. After être it follows the subject, and elle is feminine."
+        },
+        {
+          "answers": [
+            "Elle a née à Lyon."
+          ],
+          "why": "A is avoir, which naître never uses."
+        },
+        {
+          "answers": [
+            "Elle est naissée à Lyon."
+          ],
+          "why": "Naiss- is the present stem, not a participle stem; this verb is irregular."
+        },
+        {
+          "answers": [
+            "Elle était née à Lyon."
+          ],
+          "why": "That is the pluperfect, she had been born. The passé composé uses the present of the auxiliary."
+        }
+      ],
+      "row": "naître"
     },
     {
       "id": "passe-compose-etre-irregular-etre-participles-6",
@@ -367,7 +1395,34 @@
       ],
       "hint": "Mourir has an irregular participle.",
       "feedback": "The participle of mourir is not formed with -u.",
-      "explanation": "Mourir has the participle mort: il est mort en 2010."
+      "explanation": "Mourir has the participle mort: il est mort en 2010.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mon grand-père est mouru en 2010."
+          ],
+          "why": "That is the sentence as given, and mouru is not a French word: this verb has an irregular participle."
+        },
+        {
+          "answers": [
+            "Mon grand-père a mouru en 2010."
+          ],
+          "why": "This changes the auxiliary, which was already right, and keeps an invented participle."
+        },
+        {
+          "answers": [
+            "Mon grand-père est mouri en 2010."
+          ],
+          "why": "Mourir does not take the regular -i participle of -ir verbs."
+        },
+        {
+          "answers": [
+            "Mon grand-père a mort en 2010."
+          ],
+          "why": "The participle is repaired, but this verb builds its past with être, not with avoir."
+        }
+      ],
+      "row": "mourir"
     },
     {
       "id": "passe-compose-etre-reflexive-1",
@@ -381,7 +1436,38 @@
       ],
       "hint": "Reflexive verbs take être, and the participle agrees with the subject.",
       "feedback": "Keep the reflexive pronoun before être.",
-      "explanation": "Se lever takes être: elle s’est levée, with -e for elle."
+      "explanation": "Se lever takes être: elle s’est levée, with -e for elle.",
+      "mistakes": [
+        {
+          "answers": [
+            "s’est levé",
+            "elle s’est levé"
+          ],
+          "why": "The participle stayed masculine. With a reflexive verb it normally agrees with the subject, and elle is feminine."
+        },
+        {
+          "answers": [
+            "s’a levée",
+            "elle s’a levée"
+          ],
+          "why": "S’a uses avoir, which no reflexive verb takes in the passé composé."
+        },
+        {
+          "answers": [
+            "est levée",
+            "elle est levée"
+          ],
+          "why": "The reflexive pronoun has vanished. Se lever keeps its pronoun in front of the auxiliary."
+        },
+        {
+          "answers": [
+            "se est levée",
+            "elle se est levée"
+          ],
+          "why": "Se cannot stay whole before a vowel: it elides."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "passe-compose-etre-reflexive-2",
@@ -395,7 +1481,38 @@
       ],
       "hint": "Keep se, use être, and make the participle plural.",
       "feedback": "Reflexive verbs never use avoir.",
-      "explanation": "Se coucher takes être: ils se sont couchés."
+      "explanation": "Se coucher takes être: ils se sont couchés.",
+      "mistakes": [
+        {
+          "answers": [
+            "se sont couché",
+            "ils se sont couché"
+          ],
+          "why": "The participle stayed singular; ils is a group, so it takes a plural mark."
+        },
+        {
+          "answers": [
+            "se sont couchées",
+            "ils se sont couchées"
+          ],
+          "why": "That is the feminine plural ending, and ils is masculine or mixed."
+        },
+        {
+          "answers": [
+            "ont couché",
+            "ils ont couché"
+          ],
+          "why": "This drops the pronoun and uses avoir; a reflexive verb keeps its pronoun and takes être."
+        },
+        {
+          "answers": [
+            "sont couchés",
+            "ils sont couchés"
+          ],
+          "why": "The pronoun is missing: se coucher carries it in front of the auxiliary."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "passe-compose-etre-reflexive-3",
@@ -413,7 +1530,22 @@
       ],
       "hint": "Reflexive verbs use one auxiliary only.",
       "feedback": "A reflexive verb takes être, in the form that matches nous.",
-      "explanation": "Se promener is reflexive, so it takes être: nous nous sommes promenés."
+      "explanation": "Se promener is reflexive, so it takes être: nous nous sommes promenés.",
+      "mistakes": [
+        {
+          "answers": [
+            "avons"
+          ],
+          "why": "Avons is avoir. A reflexive verb builds its passé composé with être only."
+        },
+        {
+          "answers": [
+            "sont"
+          ],
+          "why": "Sont is the ils or elles form. The subject here is nous, and the pronoun nous in front already says so."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "passe-compose-etre-reflexive-4",
@@ -426,7 +1558,34 @@
       ],
       "hint": "Se becomes te before a vowel for tu, then être and the participle.",
       "feedback": "Use the tu pronoun, être, and a feminine participle.",
-      "explanation": "Tu t’es réveillée: te elides before es, and réveillée agrees with a girl."
+      "explanation": "Tu t’es réveillée: te elides before es, and réveillée agrees with a girl.",
+      "mistakes": [
+        {
+          "answers": [
+            "t’es réveillé"
+          ],
+          "why": "That is the masculine participle, and the question is addressed to a girl."
+        },
+        {
+          "answers": [
+            "t’as réveillée"
+          ],
+          "why": "As is avoir, which reflexive verbs never take."
+        },
+        {
+          "answers": [
+            "te es réveillée"
+          ],
+          "why": "Te has to elide before a vowel; it cannot stay whole in front of the auxiliary."
+        },
+        {
+          "answers": [
+            "s’es réveillée"
+          ],
+          "why": "S’ is the pronoun of il, elle and ils. With tu the pronoun changes."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "passe-compose-etre-reflexive-5",
@@ -442,7 +1601,28 @@
       ],
       "hint": "Got dressed is s’habiller, a reflexive verb.",
       "feedback": "Use être and agree the participle with elle.",
-      "explanation": "S’habiller takes être: elle s’est habillée, with -e for elle."
+      "explanation": "S’habiller takes être: elle s’est habillée, with -e for elle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle s’est habillé vite."
+          ],
+          "why": "The participle stayed masculine; with elle it takes a feminine ending."
+        },
+        {
+          "answers": [
+            "Elle s’a habillée vite."
+          ],
+          "why": "S’a uses avoir, and reflexive verbs take être."
+        },
+        {
+          "answers": [
+            "Elle est habillée vite."
+          ],
+          "why": "The reflexive pronoun is missing, so this says she is dressed rather than that she dressed herself."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "passe-compose-etre-reflexive-6",
@@ -465,7 +1645,28 @@
       ],
       "hint": "S’amuser is reflexive.",
       "feedback": "Reflexive verbs take être, not avoir.",
-      "explanation": "S’amuser takes être: ils se sont amusés, masculine plural."
+      "explanation": "S’amuser takes être: ils se sont amusés, masculine plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils se ont amusés à la fête."
+          ],
+          "why": "Ont is avoir, and a reflexive verb builds its past with être."
+        },
+        {
+          "answers": [
+            "Ils ont amusés à la fête."
+          ],
+          "why": "This drops the pronoun and picks avoir; s’amuser keeps its pronoun and takes être."
+        },
+        {
+          "answers": [
+            "Ils sont amusés à la fête."
+          ],
+          "why": "The pronoun is missing, so the sentence no longer says that they enjoyed themselves."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "passe-compose-etre-negation-questions-1",
@@ -484,7 +1685,28 @@
       ],
       "hint": "With a reflexive verb, ne comes before the pronoun.",
       "feedback": "Ne goes before me, and pas right after suis.",
-      "explanation": "Ne…pas wraps the pronoun and the auxiliary together: je ne me suis pas levé."
+      "explanation": "Ne…pas wraps the pronoun and the auxiliary together: je ne me suis pas levé.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne suis pas me levé tôt."
+          ],
+          "why": "The pronoun me has been pushed behind pas. It belongs directly in front of the auxiliary."
+        },
+        {
+          "answers": [
+            "Je ne me suis levé pas tôt."
+          ],
+          "why": "Pas has slid past the participle; it goes immediately after the auxiliary."
+        },
+        {
+          "answers": [
+            "Je me ne suis pas levé tôt."
+          ],
+          "why": "Ne comes before the pronoun, not between the pronoun and the auxiliary."
+        }
+      ],
+      "row": "negative with a reflexive verb"
     },
     {
       "id": "passe-compose-etre-negation-questions-2",
@@ -503,7 +1725,28 @@
       ],
       "hint": "Ne…pas goes around the auxiliary. Watch the vowel.",
       "feedback": "Ne elides before est, and pas comes before the participle.",
-      "explanation": "Elle n’est pas venue: ne…pas surrounds est."
+      "explanation": "Elle n’est pas venue: ne…pas surrounds est.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne est pas venue."
+          ],
+          "why": "Ne must elide before a vowel; it cannot stay whole in front of the auxiliary."
+        },
+        {
+          "answers": [
+            "Elle n’est venue pas."
+          ],
+          "why": "Pas has been left after the participle; it follows the auxiliary straight away."
+        },
+        {
+          "answers": [
+            "Elle n’a pas venue."
+          ],
+          "why": "This swaps in avoir, which venir never uses."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "passe-compose-etre-negation-questions-3",
@@ -516,7 +1759,28 @@
       ],
       "hint": "Invert the subject and the auxiliary only.",
       "feedback": "The participle stays after the inverted pair.",
-      "explanation": "Es-tu allé à Rome ?: the auxiliary es and tu swap and join with a hyphen."
+      "explanation": "Es-tu allé à Rome ?: the auxiliary es and tu swap and join with a hyphen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu es allé à Rome ?"
+          ],
+          "why": "This only adds a question mark. The task asks for inversion, which moves the subject."
+        },
+        {
+          "answers": [
+            "Es tu allé à Rome ?"
+          ],
+          "why": "Inversion needs a hyphen joining the two words; without it the pair is not written French."
+        },
+        {
+          "answers": [
+            "Es allé-tu à Rome ?"
+          ],
+          "why": "Only the auxiliary and the subject swap. The participle stays behind the pair."
+        }
+      ],
+      "row": "question by inversion"
     },
     {
       "id": "passe-compose-etre-negation-questions-4",
@@ -537,7 +1801,28 @@
       ],
       "hint": "Ne goes before the reflexive pronoun.",
       "feedback": "Pronoun and auxiliary stay together inside ne…pas.",
-      "explanation": "Elle ne s’est pas réveillée: ne before s’, pas after est, then the participle."
+      "explanation": "Elle ne s’est pas réveillée: ne before s’, pas after est, then the participle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne s’a pas réveillée."
+          ],
+          "why": "S’a uses avoir, and a reflexive verb builds its past with être."
+        },
+        {
+          "answers": [
+            "Elle s’est pas réveillée."
+          ],
+          "why": "Ne is missing. Dropping it is casual speech; written French keeps both halves of the negative."
+        },
+        {
+          "answers": [
+            "Elle ne pas s’est réveillée."
+          ],
+          "why": "Pas comes after the auxiliary, never before the pronoun."
+        }
+      ],
+      "row": "negative with a reflexive verb"
     },
     {
       "id": "passe-compose-etre-negation-questions-5",
@@ -550,7 +1835,28 @@
       ],
       "hint": "Check where pas sits.",
       "feedback": "Pas comes straight after the auxiliary.",
-      "explanation": "Ne…pas surrounds suis, and the participle follows: je ne suis pas allé."
+      "explanation": "Ne…pas surrounds suis, and the participle follows: je ne suis pas allé.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne suis allé pas à l’école."
+          ],
+          "why": "That is the sentence unchanged: pas is still sitting after the participle."
+        },
+        {
+          "answers": [
+            "Je n’ai pas allé à l’école."
+          ],
+          "why": "This replaces the auxiliary, which was already right; aller takes être."
+        },
+        {
+          "answers": [
+            "Je ne pas suis allé à l’école."
+          ],
+          "why": "Pas never comes in front of the auxiliary; it follows it."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "passe-compose-etre-negation-questions-6",
@@ -565,7 +1871,30 @@
       ],
       "hint": "Partir takes être. Agree the participle with elle.",
       "feedback": "Use être for elle, and remember the feminine ending.",
-      "explanation": "Partir takes être, so elle est partie; inversion gives est-elle partie ?"
+      "explanation": "Partir takes être, so elle est partie; inversion gives est-elle partie ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-elle parti ?",
+            "Est-ce qu’elle est parti ?"
+          ],
+          "why": "The participle stayed masculine; the subject is one woman, so it needs an ending."
+        },
+        {
+          "answers": [
+            "A-t-elle parti ?",
+            "Elle a parti ?"
+          ],
+          "why": "This uses avoir, and partir is on the list of verbs that take the other auxiliary."
+        },
+        {
+          "answers": [
+            "Est-ce que elle est partie ?"
+          ],
+          "why": "Que cannot stay whole in front of a vowel: it elides."
+        }
+      ],
+      "row": "question by inversion"
     },
     {
       "id": "passe-compose-etre-avoir-or-etre-1",
@@ -583,7 +1912,22 @@
       ],
       "hint": "Is manger on the list of être verbs?",
       "feedback": "Manger is not a verb of movement or change of state.",
-      "explanation": "Manger takes avoir: nous avons mangé."
+      "explanation": "Manger takes avoir: nous avons mangé.",
+      "mistakes": [
+        {
+          "answers": [
+            "sommes"
+          ],
+          "why": "Sommes is être, and manger is not on the short list: it is neither movement nor a change of state."
+        },
+        {
+          "answers": [
+            "sont"
+          ],
+          "why": "Sont is être for ils or elles: the wrong auxiliary and the wrong person, since the subject is nous."
+        }
+      ],
+      "row": "any other verb"
     },
     {
       "id": "passe-compose-etre-avoir-or-etre-2",
@@ -601,7 +1945,22 @@
       ],
       "hint": "Rester is on the être list.",
       "feedback": "The ending -e on restée is a clue: it agrees with the subject.",
-      "explanation": "Rester takes être: elle est restée."
+      "explanation": "Rester takes être: elle est restée.",
+      "mistakes": [
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "A is avoir, and the -e on restée gives the game away: only one auxiliary makes the participle agree with the subject."
+        },
+        {
+          "answers": [
+            "s’est"
+          ],
+          "why": "Rester is not reflexive: there is no pronoun to put in front of the auxiliary."
+        }
+      ],
+      "row": "a verb on the être list"
     },
     {
       "id": "passe-compose-etre-avoir-or-etre-3",
@@ -614,7 +1973,35 @@
       ],
       "hint": "Travelling sounds like movement, but voyager is not on the être list.",
       "feedback": "Only the listed verbs take être.",
-      "explanation": "Voyager takes avoir: ils ont voyagé. With avoir the participle does not agree with ils."
+      "explanation": "Voyager takes avoir: ils ont voyagé. With avoir the participle does not agree with ils.",
+      "mistakes": [
+        {
+          "answers": [
+            "sont voyagé",
+            "sont voyagés"
+          ],
+          "why": "Travelling sounds like movement, but voyager is not on the list, so être is wrong."
+        },
+        {
+          "answers": [
+            "ont voyagés"
+          ],
+          "why": "After avoir the participle does not agree with the subject, so the plural mark does not belong."
+        },
+        {
+          "answers": [
+            "ont voyager"
+          ],
+          "why": "That is the infinitive; the auxiliary has to be followed by the past participle."
+        },
+        {
+          "answers": [
+            "a voyagé"
+          ],
+          "why": "A goes with one person, and the subject ils is plural."
+        }
+      ],
+      "row": "courir, marcher, voyager, nager"
     },
     {
       "id": "passe-compose-etre-avoir-or-etre-4",
@@ -628,7 +2015,37 @@
       ],
       "hint": "Running is movement, but courir is not an être verb.",
       "feedback": "Use avoir, and the irregular participle of courir.",
-      "explanation": "Courir takes avoir: j’ai couru."
+      "explanation": "Courir takes avoir: j’ai couru.",
+      "mistakes": [
+        {
+          "answers": [
+            "suis couru",
+            "je suis couru"
+          ],
+          "why": "Running is movement, but courir is not on the être list."
+        },
+        {
+          "answers": [
+            "ai courir",
+            "j’ai courir"
+          ],
+          "why": "That is the infinitive; a past participle has to follow the auxiliary."
+        },
+        {
+          "answers": [
+            "ai couri",
+            "j’ai couri"
+          ],
+          "why": "Courir does not take the regular -i participle of -ir verbs: its participle is irregular."
+        },
+        {
+          "answers": [
+            "je ai couru"
+          ],
+          "why": "Je always elides before a vowel."
+        }
+      ],
+      "row": "courir, marcher, voyager, nager"
     },
     {
       "id": "passe-compose-etre-avoir-or-etre-5",
@@ -642,7 +2059,34 @@
       ],
       "hint": "Check the auxiliary.",
       "feedback": "Tomber takes être. Je no longer elides.",
-      "explanation": "Tomber takes être: je suis tombé (a man) or je suis tombée (a woman)."
+      "explanation": "Tomber takes être: je suis tombé (a man) or je suis tombée (a woman).",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai tombé dans la rue."
+          ],
+          "why": "That is the sentence unchanged: tomber does not build its past with avoir."
+        },
+        {
+          "answers": [
+            "J’ai tombée dans la rue."
+          ],
+          "why": "This adds an ending but keeps avoir, and after avoir the participle would not agree with the subject anyway."
+        },
+        {
+          "answers": [
+            "J’suis tombé dans la rue."
+          ],
+          "why": "Je only elides before a vowel, and the auxiliary here starts with a consonant."
+        },
+        {
+          "answers": [
+            "Je suis tomber dans la rue."
+          ],
+          "why": "Tomber there is the infinitive; after the auxiliary comes the past participle."
+        }
+      ],
+      "row": "a verb on the être list"
     },
     {
       "id": "passe-compose-etre-avoir-or-etre-6",
@@ -656,7 +2100,27 @@
       ],
       "hint": "The two verbs take different auxiliaries.",
       "feedback": "Arriver takes être; manger takes avoir.",
-      "explanation": "Il est arrivé (être verb) et il a mangé (avoir verb)."
+      "explanation": "Il est arrivé (être verb) et il a mangé (avoir verb).",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a arrivé et il a mangé."
+          ],
+          "why": "Both verbs were given avoir. Arriver is on the short list that uses the other auxiliary."
+        },
+        {
+          "answers": [
+            "Il est arrivé et il est mangé."
+          ],
+          "why": "Manger is neither movement nor a change of state, and il est mangé would mean he is being eaten."
+        },
+        {
+          "answers": [
+            "Il est arrivé et il a mangée."
+          ],
+          "why": "After avoir the participle does not agree with the subject, so it takes no ending."
+        }
+      ]
     },
     {
       "id": "passe-compose-etre-avoir-with-object-1",
@@ -674,7 +2138,22 @@
       ],
       "hint": "Here monter has a direct object: les valises.",
       "feedback": "With a direct object, monter takes avoir, so monté does not agree with elle.",
-      "explanation": "Monter + direct object takes avoir: elle a monté les valises."
+      "explanation": "Monter + direct object takes avoir: elle a monté les valises.",
+      "mistakes": [
+        {
+          "answers": [
+            "est"
+          ],
+          "why": "Monter takes être only when nothing is being carried. Here les valises follows the verb directly, which sends monter to the other auxiliary."
+        },
+        {
+          "answers": [
+            "s’est"
+          ],
+          "why": "Monter is not reflexive here: there is no pronoun, and the direct object les valises decides the auxiliary anyway."
+        }
+      ],
+      "row": "monter"
     },
     {
       "id": "passe-compose-etre-avoir-with-object-2",
@@ -692,7 +2171,22 @@
       ],
       "hint": "Here monter has no direct object.",
       "feedback": "The ending -e on montée agrees with the subject, which happens with être.",
-      "explanation": "Without a direct object, monter takes être: elle est montée."
+      "explanation": "Without a direct object, monter takes être: elle est montée.",
+      "mistakes": [
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "A is avoir, and after avoir the participle would not take the -e you can see on montée. Nothing is being carried: au premier étage is not a direct object."
+        },
+        {
+          "answers": [
+            "s’est"
+          ],
+          "why": "Monter is not a reflexive verb; it needs no pronoun in front of the auxiliary."
+        }
+      ],
+      "row": "monter"
     },
     {
       "id": "passe-compose-etre-avoir-with-object-3",
@@ -705,7 +2199,35 @@
       ],
       "hint": "Here passer has a direct object: un bon week-end.",
       "feedback": "Passer + a length of time takes avoir.",
-      "explanation": "Passer with a direct object takes avoir: tu as passé un bon week-end."
+      "explanation": "Passer with a direct object takes avoir: tu as passé un bon week-end.",
+      "mistakes": [
+        {
+          "answers": [
+            "es passé",
+            "es passée"
+          ],
+          "why": "Passer takes être only with no direct object; un bon week-end is one, so the auxiliary changes."
+        },
+        {
+          "answers": [
+            "as passée"
+          ],
+          "why": "After avoir the participle does not agree with the subject, so it takes no ending."
+        },
+        {
+          "answers": [
+            "a passé"
+          ],
+          "why": "A is the il or elle form, and the subject here is tu."
+        },
+        {
+          "answers": [
+            "as passer"
+          ],
+          "why": "That is the infinitive; the auxiliary has to be followed by the past participle."
+        }
+      ],
+      "row": "passer"
     },
     {
       "id": "passe-compose-etre-avoir-with-object-4",
@@ -718,7 +2240,28 @@
       ],
       "hint": "Sortir has a direct object here.",
       "feedback": "With a direct object, sortir takes avoir.",
-      "explanation": "Sortir + direct object takes avoir: il a sorti le chien."
+      "explanation": "Sortir + direct object takes avoir: il a sorti le chien.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il est sorti le chien."
+          ],
+          "why": "Sortir uses être only when nothing is taken out; le chien follows the verb directly, so the auxiliary changes."
+        },
+        {
+          "answers": [
+            "Il a sortie le chien."
+          ],
+          "why": "After avoir the participle takes no ending for the subject, and il is masculine anyway."
+        },
+        {
+          "answers": [
+            "Il est sorti avec le chien."
+          ],
+          "why": "That says he went out with the dog. Taking the dog out makes it a direct object, which changes the auxiliary."
+        }
+      ],
+      "row": "sortir"
     },
     {
       "id": "passe-compose-etre-avoir-with-object-5",
@@ -731,7 +2274,28 @@
       ],
       "hint": "Does rentrer have a direct object here?",
       "feedback": "Rentrer + direct object takes avoir.",
-      "explanation": "La voiture is a direct object, so rentrer takes avoir: il a rentré la voiture."
+      "explanation": "La voiture is a direct object, so rentrer takes avoir: il a rentré la voiture.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il est rentré la voiture dans le garage."
+          ],
+          "why": "That is the sentence unchanged. La voiture follows the verb directly, so rentrer cannot keep this auxiliary."
+        },
+        {
+          "answers": [
+            "Il est rentrée la voiture dans le garage."
+          ],
+          "why": "This agrees the participle with la voiture. A direct object changes the auxiliary, not the ending."
+        },
+        {
+          "answers": [
+            "Il a rentrée la voiture dans le garage."
+          ],
+          "why": "The auxiliary is repaired, but with a direct object standing after the verb the participle stays plain."
+        }
+      ],
+      "row": "rentrer"
     },
     {
       "id": "passe-compose-etre-avoir-with-object-6",
@@ -753,7 +2317,28 @@
       ],
       "hint": "Descendre has a direct object here.",
       "feedback": "With a direct object, descendre takes avoir and the participle does not agree with nous.",
-      "explanation": "Descendre + direct object takes avoir: nous avons descendu les valises."
+      "explanation": "Descendre + direct object takes avoir: nous avons descendu les valises.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous sommes descendus les valises."
+          ],
+          "why": "Les valises follows the verb directly, so descendre changes auxiliary and the participle stops agreeing with nous."
+        },
+        {
+          "answers": [
+            "Nous avons descendus les valises."
+          ],
+          "why": "The auxiliary is right, but after avoir the participle takes no plural mark for the subject."
+        },
+        {
+          "answers": [
+            "Nous sommes descendu les valises."
+          ],
+          "why": "That is the auxiliary used when nobody carries anything, and here les valises stands right after the verb."
+        }
+      ],
+      "row": "descendre"
     }
   ]
 }

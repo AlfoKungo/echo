@@ -5,9 +5,505 @@
   "title": "Futur simple",
   "description": "Say what will happen with one-word future forms.",
   "mark": "-rai",
-  "rule": "Form the futur simple from the infinitive plus the endings -ai, -as, -a, -ons, -ez, -ont: je parlerai, nous finirons. Verbs ending in -re drop the final e first: prendre → je prendrai. Some common verbs have an irregular stem with the same endings: être → ser-, avoir → aur-, aller → ir-, faire → fer-, venir → viendr-, pouvoir → pourr-, vouloir → voudr-, devoir → devr-, savoir → saur-, voir → verr-, envoyer → enverr-, and il faut → il faudra, il pleut → il pleuvra. Some -er verbs change spelling in the stem: acheter → j’achèterai, appeler → j’appellerai, payer → je paierai or je payerai. After quand, a future event takes the futur simple, where English uses the present: quand j’arriverai, je t’appellerai. Time markers such as demain, l’année prochaine and dans dix ans point to the future.",
-  "example": "Demain, je finirai ce livre. · Quand tu viendras, nous irons au cinéma. · Il pleuvra ce week-end.",
-  "aside": "For near plans, speakers often use the futur proche (je vais partir); the futur simple is common for more distant or more formal plans, and after quand for a future event.",
+  "guide": {
+    "summary": "The futur simple is the one-word future: je parlerai, nous irons. Learn the six endings, then the handful of verbs whose stem is not simply the infinitive.",
+    "sections": [
+      {
+        "id": "endings",
+        "title": "The endings: one set for every verb",
+        "text": "A future form is a stem plus an ending, in one word. The endings never change, whatever the verb. For -er and -ir verbs the stem is the whole infinitive, with nothing removed.",
+        "table": {
+          "columns": [
+            "",
+            "Ending",
+            "parler (to speak)"
+          ],
+          "rows": [
+            [
+              "je",
+              "-ai",
+              "je parlerai"
+            ],
+            [
+              "tu",
+              "-as",
+              "tu parleras"
+            ],
+            [
+              "il / elle / on",
+              "-a",
+              "elle parlera"
+            ],
+            [
+              "nous",
+              "-ons",
+              "nous parlerons"
+            ],
+            [
+              "vous",
+              "-ez",
+              "vous parlerez"
+            ],
+            [
+              "ils / elles",
+              "-ont",
+              "ils parleront"
+            ]
+          ]
+        },
+        "steps": [
+          "Take the infinitive as it is: parler, finir, sortir.",
+          "Find the subject and go to its row.",
+          "Add that ending straight onto the infinitive."
+        ],
+        "examples": [
+          {
+            "fr": "Demain, je finirai ce livre.",
+            "en": "Tomorrow I will finish this book."
+          },
+          {
+            "fr": "Nous partirons à huit heures.",
+            "en": "We will leave at eight."
+          }
+        ],
+        "watch": [
+          "The endings are the present of avoir: ai, as, a, ons, ez, ont. An r always comes just before them.",
+          "-ai (je) and -as (tu) differ by one letter, and so do -ons (nous) and -ont (ils). Check the subject before the last letters.",
+          "je parlerai is the future; je parlerais, with a final s, is the conditional (I would speak)."
+        ]
+      },
+      {
+        "id": "re-verbs",
+        "title": "-re verbs: drop the final e",
+        "text": "An infinitive ending in -re loses that e before the ending. The r stays: it is the mark of the future.",
+        "table": {
+          "columns": [
+            "Infinitive",
+            "Future stem",
+            "Example"
+          ],
+          "rows": [
+            [
+              "prendre",
+              "prendr-",
+              "je prendrai"
+            ],
+            [
+              "attendre",
+              "attendr-",
+              "nous attendrons"
+            ],
+            [
+              "vendre",
+              "vendr-",
+              "tu vendras"
+            ],
+            [
+              "lire",
+              "lir-",
+              "elle lira"
+            ],
+            [
+              "écrire",
+              "écrir-",
+              "j’écrirai"
+            ],
+            [
+              "boire",
+              "boir-",
+              "ils boiront"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the infinitive and check whether it ends in -re.",
+          "Cross out that final e, and keep the r.",
+          "Add the ending for the subject."
+        ],
+        "examples": [
+          {
+            "fr": "Elle lira un livre dans le train.",
+            "en": "She will read a book on the train."
+          },
+          {
+            "fr": "Nous attendrons le bus devant l’école.",
+            "en": "We will wait for the bus in front of the school."
+          }
+        ],
+        "watch": [
+          "Never keep the e: prendreai, lirera and attenderons do not exist.",
+          "Build on the infinitive, not on the present stem: lire gives lir-, not lis-."
+        ]
+      },
+      {
+        "id": "four-irregulars",
+        "title": "Être, avoir, aller, faire",
+        "text": "The four most used verbs have stems that look nothing like their infinitives. The endings are still the same six.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Future stem",
+            "Example"
+          ],
+          "rows": [
+            [
+              "être",
+              "ser-",
+              "tu seras"
+            ],
+            [
+              "avoir",
+              "aur-",
+              "j’aurai"
+            ],
+            [
+              "aller",
+              "ir-",
+              "nous irons"
+            ],
+            [
+              "faire",
+              "fer-",
+              "ils feront"
+            ]
+          ]
+        },
+        "steps": [
+          "Name the verb first: être, avoir, aller or faire.",
+          "Take its stem from the table; never build on the infinitive.",
+          "Add the ending for the subject."
+        ],
+        "examples": [
+          {
+            "fr": "Quand tu viendras, nous irons au cinéma.",
+            "en": "When you come, we will go to the cinema."
+          },
+          {
+            "fr": "En mai, j’aurai vingt ans.",
+            "en": "In May I will be twenty."
+          }
+        ],
+        "watch": [
+          "Age, hunger and the weather use avoir or faire, not être: j’aurai vingt ans, il fera froid.",
+          "Forms built on the infinitive (avera, allera, fairera, êtrera) do not exist."
+        ]
+      },
+      {
+        "id": "other-stems",
+        "title": "The other irregular stems",
+        "text": "A short list of very common verbs. The stem always ends in r, and the endings do not change.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Future stem",
+            "Example"
+          ],
+          "rows": [
+            [
+              "venir",
+              "viendr-",
+              "elle viendra"
+            ],
+            [
+              "vouloir",
+              "voudr-",
+              "vous voudrez"
+            ],
+            [
+              "pouvoir",
+              "pourr-",
+              "vous pourrez"
+            ],
+            [
+              "devoir",
+              "devr-",
+              "je devrai"
+            ],
+            [
+              "savoir",
+              "saur-",
+              "tu sauras"
+            ],
+            [
+              "voir",
+              "verr-",
+              "nous verrons"
+            ],
+            [
+              "envoyer",
+              "enverr-",
+              "j’enverrai"
+            ],
+            [
+              "falloir (il faut)",
+              "faudr-",
+              "il faudra"
+            ],
+            [
+              "pleuvoir (il pleut)",
+              "pleuvr-",
+              "il pleuvra"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask whether the verb is on this list before you touch the infinitive.",
+          "Take its stem from the table, then add the ending for the subject.",
+          "Falloir and pleuvoir exist only with il."
+        ],
+        "examples": [
+          {
+            "fr": "Il pleuvra ce week-end.",
+            "en": "It will rain this weekend."
+          },
+          {
+            "fr": "Il faudra partir tôt demain.",
+            "en": "We will have to leave early tomorrow."
+          }
+        ],
+        "watch": [
+          "Pourr-, verr- and enverr- have two r: one from the stem, one from the future.",
+          "Do not confuse il pleuvra (it will rain) with il pleura, from pleurer, to cry."
+        ]
+      },
+      {
+        "id": "spelling",
+        "title": "-er verbs that change their spelling",
+        "text": "A few -er verbs change the stem in the future. Unlike in the present, the change is there in every person.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Future stem",
+            "Example"
+          ],
+          "rows": [
+            [
+              "acheter",
+              "achèter-",
+              "j’achèterai"
+            ],
+            [
+              "lever",
+              "lèver-",
+              "je lèverai"
+            ],
+            [
+              "appeler",
+              "appeller-",
+              "nous appellerons"
+            ],
+            [
+              "jeter",
+              "jetter-",
+              "tu jetteras"
+            ],
+            [
+              "payer",
+              "paier- / payer-",
+              "vous paierez, vous payerez"
+            ]
+          ]
+        },
+        "steps": [
+          "Say the je form of the present: j’achète, j’appelle, je paie.",
+          "Carry that change into the stem, for every person.",
+          "Add the ending for the subject."
+        ],
+        "examples": [
+          {
+            "fr": "J’achèterai un nouveau sac.",
+            "en": "I will buy a new bag."
+          },
+          {
+            "fr": "Je t’appellerai demain matin.",
+            "en": "I will call you tomorrow morning."
+          }
+        ],
+        "watch": [
+          "Acheter and lever take a grave accent (è); appeler and jeter double the consonant. Do not swap the two.",
+          "The change is in every person: nous achèterons, not nous acheterons.",
+          "With payer both spellings are accepted, and only the y may change: never drop the e of the stem.",
+          "Verbs like préférer and espérer keep their é in the future: je préférerai."
+        ]
+      },
+      {
+        "id": "after-quand",
+        "title": "After quand, French uses the future",
+        "text": "English says “when I arrive, I will call you”, with a present after when. French puts both verbs in the future when both events are still to come.",
+        "table": {
+          "columns": [
+            "English",
+            "French"
+          ],
+          "rows": [
+            [
+              "when I arrive, I will call you",
+              "quand j’arriverai, je t’appellerai"
+            ],
+            [
+              "when he comes, we will eat",
+              "quand il viendra, nous mangerons"
+            ],
+            [
+              "when we have money, we will buy",
+              "quand nous aurons de l’argent, nous achèterons"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the verb that follows quand.",
+          "Ask whether its event is still to come; if it is, put it in the future.",
+          "Put the other verb in the future too, unless it is an order: quand tu arriveras, appelle-moi."
+        ],
+        "examples": [
+          {
+            "fr": "Quand tu viendras, nous irons au cinéma.",
+            "en": "When you come, we will go to the cinema."
+          },
+          {
+            "fr": "Quand elle rentrera, elle mangera.",
+            "en": "When she gets home, she will eat."
+          }
+        ],
+        "watch": [
+          "Quand je finis mes études describes a habit; for a single future event the verb moves to the future.",
+          "Lorsque and dès que work the same way: dès que tu arriveras, appelle-moi."
+        ]
+      },
+      {
+        "id": "markers",
+        "title": "Words that call for the future",
+        "text": "A time marker tells you which tense to use: markers that point forward take the future, markers that point back take a past tense.",
+        "table": {
+          "columns": [
+            "Marker",
+            "Meaning",
+            "Points to"
+          ],
+          "rows": [
+            [
+              "demain",
+              "tomorrow",
+              "future"
+            ],
+            [
+              "ce soir",
+              "tonight",
+              "future"
+            ],
+            [
+              "la semaine prochaine",
+              "next week",
+              "future"
+            ],
+            [
+              "l’année prochaine",
+              "next year",
+              "future"
+            ],
+            [
+              "dans dix ans",
+              "in ten years’ time",
+              "future"
+            ],
+            [
+              "hier",
+              "yesterday",
+              "past"
+            ],
+            [
+              "la semaine dernière",
+              "last week",
+              "past"
+            ],
+            [
+              "il y a deux jours",
+              "two days ago",
+              "past"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the time marker and decide which way it points.",
+          "If it points forward, put the verb in the future; if it points back, use a past tense.",
+          "Then match the ending to the subject."
+        ],
+        "examples": [
+          {
+            "fr": "Dans dix ans, nous aurons une grande maison.",
+            "en": "In ten years we will have a big house."
+          },
+          {
+            "fr": "L’année prochaine, nous visiterons le Canada.",
+            "en": "Next year we will visit Canada."
+          }
+        ],
+        "watch": [
+          "Dans dix ans means in ten years’ time; il y a dix ans means ten years ago.",
+          "For a close or spoken plan the futur proche is natural (je vais partir). The one-word future suits more distant or more formal plans, and it is the tense used after quand."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "regular-endings": {
+      "section": "endings",
+      "steps": [
+        "Take the infinitive whole: nothing is removed.",
+        "Find the subject and its ending: -ai, -as, -a, -ons, -ez, -ont.",
+        "Read the last letters back and check they match the subject."
+      ]
+    },
+    "re-verbs-drop-e": {
+      "section": "re-verbs",
+      "steps": [
+        "Start from the infinitive, not from the present form.",
+        "If it ends in -re, drop the e and keep the r.",
+        "Add the ending for the subject."
+      ]
+    },
+    "irregular-etre-avoir-aller-faire": {
+      "section": "four-irregulars",
+      "steps": [
+        "Name the verb: être, avoir, aller or faire.",
+        "Use its special future stem instead of the infinitive.",
+        "Add the ending for the subject."
+      ]
+    },
+    "irregular-stems": {
+      "section": "other-stems",
+      "steps": [
+        "Check whether the verb is one of the irregular ones (venir, vouloir, pouvoir, devoir, savoir, voir, envoyer, falloir, pleuvoir).",
+        "Use its stem from the table, never the infinitive.",
+        "Add the ending, and count the r: some stems carry two."
+      ]
+    },
+    "spelling-changes": {
+      "section": "spelling",
+      "steps": [
+        "Say the je form of the present: j’achète, j’appelle, je paie.",
+        "Carry that change into the stem and keep it in every person.",
+        "Add the ending for the subject."
+      ]
+    },
+    "quand-futur": {
+      "section": "after-quand",
+      "steps": [
+        "Find the verb after quand.",
+        "Ask whether its event is still to come.",
+        "If it is, put it in the future, whatever English does.",
+        "Check the other verb of the sentence as well."
+      ]
+    },
+    "time-markers": {
+      "section": "markers",
+      "steps": [
+        "Find the time marker and decide whether it points forward or back.",
+        "If it points forward, use the future.",
+        "Match the ending to the subject."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "futur-simple-regular-endings-1",
@@ -21,7 +517,37 @@
       ],
       "hint": "Keep the whole infinitive and add the nous ending.",
       "feedback": "The futur simple starts from the full infinitive, then adds the ending for the person.",
-      "explanation": "Parler + -ons gives nous parlerons."
+      "explanation": "Parler + -ons gives nous parlerons.",
+      "mistakes": [
+        {
+          "answers": [
+            "parlerez",
+            "nous parlerez"
+          ],
+          "why": "-ez is the ending for vous. The subject given here is nous, which has an ending of its own."
+        },
+        {
+          "answers": [
+            "parleront"
+          ],
+          "why": "-ont belongs to ils and elles, several people. The subject given is nous."
+        },
+        {
+          "answers": [
+            "parlons",
+            "nous parlons"
+          ],
+          "why": "That is the present tense, we speak. A future form keeps the whole infinitive, so an r stands before the ending."
+        },
+        {
+          "answers": [
+            "parlerions",
+            "nous parlerions"
+          ],
+          "why": "That is the conditional, we would speak. The future ending for nous has no i in it."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "futur-simple-regular-endings-2",
@@ -35,7 +561,38 @@
       ],
       "hint": "Start from finir and add the ils ending.",
       "feedback": "Check the ending: the ils form of the future ends in -ont.",
-      "explanation": "Finir + -ont gives ils finiront."
+      "explanation": "Finir + -ont gives ils finiront.",
+      "mistakes": [
+        {
+          "answers": [
+            "finirons",
+            "ils finirons"
+          ],
+          "why": "-ons is the nous ending. The subject given here is ils."
+        },
+        {
+          "answers": [
+            "finira",
+            "il finira"
+          ],
+          "why": "-a is the singular il/elle ending. Ils stands for several people."
+        },
+        {
+          "answers": [
+            "finissent",
+            "ils finissent"
+          ],
+          "why": "That is the present tense, they finish. A future form keeps the whole infinitive, with r before the ending."
+        },
+        {
+          "answers": [
+            "finiraient",
+            "ils finiraient"
+          ],
+          "why": "That is the conditional, they would finish. The future ending is shorter and has no i."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "futur-simple-regular-endings-3",
@@ -48,7 +605,34 @@
       ],
       "hint": "Keep the full infinitive and add the tu ending.",
       "feedback": "The tu ending of the future is -as, added to the whole infinitive.",
-      "explanation": "Choisir + -as gives tu choisiras."
+      "explanation": "Choisir + -as gives tu choisiras.",
+      "mistakes": [
+        {
+          "answers": [
+            "choisira"
+          ],
+          "why": "-a is the il/elle ending. The subject in the sentence is tu, which takes a different one."
+        },
+        {
+          "answers": [
+            "choisirez"
+          ],
+          "why": "-ez goes with vous. The subject here is tu, one person you know well."
+        },
+        {
+          "answers": [
+            "choisis"
+          ],
+          "why": "That is the present tense, you choose. The sentence is about tonight, still to come."
+        },
+        {
+          "answers": [
+            "choisirais"
+          ],
+          "why": "That is the conditional, you would choose, not a future form."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "futur-simple-regular-endings-4",
@@ -67,7 +651,28 @@
       ],
       "hint": "All four are future forms. Which ending goes with vous?",
       "feedback": "Match the ending to the subject vous.",
-      "explanation": "Vous takes the ending -ez: vous inviterez."
+      "explanation": "Vous takes the ending -ez: vous inviterez.",
+      "mistakes": [
+        {
+          "answers": [
+            "inviterons"
+          ],
+          "why": "-ons is the nous ending, for a group including you. The subject is vous."
+        },
+        {
+          "answers": [
+            "inviteront"
+          ],
+          "why": "-ont is the ils/elles ending, for people talked about. The subject is vous, the people spoken to."
+        },
+        {
+          "answers": [
+            "inviterai"
+          ],
+          "why": "-ai is the je ending, for one speaker. The subject is vous."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "futur-simple-regular-endings-5",
@@ -80,7 +685,34 @@
       ],
       "hint": "Look at the ending of the verb and at the subject.",
       "feedback": "The verb ending does not match nous.",
-      "explanation": "With nous, the future ending is -ons: nous mangerons."
+      "explanation": "With nous, the future ending is -ons: nous mangerons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous mangerez à la maison demain."
+          ],
+          "why": "That is the sentence unchanged: -ez belongs to vous, while the subject here is nous."
+        },
+        {
+          "answers": [
+            "Nous mangeront à la maison demain."
+          ],
+          "why": "-ont belongs to ils and elles, so the ending still does not match the subject."
+        },
+        {
+          "answers": [
+            "Nous mangeons à la maison demain."
+          ],
+          "why": "That is the present tense. Demain points forward, so the verb needs the r of the infinitive before its ending."
+        },
+        {
+          "answers": [
+            "Nous mangions à la maison demain."
+          ],
+          "why": "That is the imparfait, we used to eat, a past tense; demain points forward."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "futur-simple-regular-endings-6",
@@ -103,7 +735,22 @@
       ],
       "hint": "Two tiles are future forms of parler. Only one matches je.",
       "feedback": "Check which future ending belongs with je.",
-      "explanation": "Je takes the ending -ai: je parlerai. Parleras is the tu form."
+      "explanation": "Je takes the ending -ai: je parlerai. Parleras is the tu form.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je parleras à ma sœur ce soir."
+          ],
+          "why": "Parleras is the tu form. The subject tile here is Je, so the last letters must change."
+        },
+        {
+          "answers": [
+            "Je parlerai ma sœur ce soir."
+          ],
+          "why": "Parler needs à before the person spoken to; without it the sentence says you speak your sister."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "futur-simple-regular-endings-7",
@@ -116,7 +763,34 @@
       ],
       "hint": "Start from the infinitive of the verb and add the il ending.",
       "feedback": "The future is built on the full infinitive travailler.",
-      "explanation": "Travailler + -a gives il travaillera."
+      "explanation": "Travailler + -a gives il travaillera.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il travaille à Lyon."
+          ],
+          "why": "That is the sentence unchanged, in the present tense."
+        },
+        {
+          "answers": [
+            "Il travaillerai à Lyon."
+          ],
+          "why": "-ai is the je ending. The subject of this sentence is il."
+        },
+        {
+          "answers": [
+            "Il travailleras à Lyon."
+          ],
+          "why": "-as belongs to tu. The subject here is il, one person talked about."
+        },
+        {
+          "answers": [
+            "Il travaillait à Lyon."
+          ],
+          "why": "That is the imparfait, he used to work there: a past tense, not the future."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "futur-simple-re-verbs-drop-e-1",
@@ -130,7 +804,38 @@
       ],
       "hint": "Verbs ending in -re lose one letter before the ending.",
       "feedback": "Remove the final e of prendre before adding the ending.",
-      "explanation": "Prendre loses its e: prendr- + -ai gives je prendrai."
+      "explanation": "Prendre loses its e: prendr- + -ai gives je prendrai.",
+      "mistakes": [
+        {
+          "answers": [
+            "prenderai",
+            "je prenderai"
+          ],
+          "why": "The final e of the infinitive has been kept. An -re verb loses it before the ending."
+        },
+        {
+          "answers": [
+            "prendras",
+            "tu prendras"
+          ],
+          "why": "-as is the tu ending. The subject asked for is je."
+        },
+        {
+          "answers": [
+            "prends",
+            "je prends"
+          ],
+          "why": "That is the present tense, I take. A future form needs the r of the stem before the ending."
+        },
+        {
+          "answers": [
+            "prendrais",
+            "je prendrais"
+          ],
+          "why": "That is the conditional, I would take, not the future."
+        }
+      ],
+      "row": "prendre"
     },
     {
       "id": "futur-simple-re-verbs-drop-e-2",
@@ -143,7 +848,34 @@
       ],
       "hint": "Drop the final e of the infinitive, then add the nous ending.",
       "feedback": "An -re verb keeps its r but not its final e in the future.",
-      "explanation": "Attendre becomes attendr-, and nous adds -ons: nous attendrons."
+      "explanation": "Attendre becomes attendr-, and nous adds -ons: nous attendrons.",
+      "mistakes": [
+        {
+          "answers": [
+            "attenderons"
+          ],
+          "why": "The e of attendre has been kept before the ending; an -re verb drops it."
+        },
+        {
+          "answers": [
+            "attendront"
+          ],
+          "why": "-ont is the ils/elles ending. The subject in the sentence is nous."
+        },
+        {
+          "answers": [
+            "attendons"
+          ],
+          "why": "That is the present tense, we are waiting. A future form keeps the r of the stem."
+        },
+        {
+          "answers": [
+            "attendrions"
+          ],
+          "why": "That is the conditional, we would wait, not the future."
+        }
+      ],
+      "row": "attendre"
     },
     {
       "id": "futur-simple-re-verbs-drop-e-3",
@@ -162,7 +894,28 @@
       ],
       "hint": "The verb is lire. What happens to its final e?",
       "feedback": "The future of an -re verb starts from the infinitive without its e.",
-      "explanation": "Lire becomes lir-, and elle adds -a: elle lira."
+      "explanation": "Lire becomes lir-, and elle adds -a: elle lira.",
+      "mistakes": [
+        {
+          "answers": [
+            "lirera"
+          ],
+          "why": "That keeps the e of the infinitive and adds a second r. Once the e is gone, only the ending is added."
+        },
+        {
+          "answers": [
+            "lisera"
+          ],
+          "why": "Lis- is the present stem, as in nous lisons. The future is built on the infinitive instead."
+        },
+        {
+          "answers": [
+            "lirira"
+          ],
+          "why": "That invents a stem by repeating part of the infinitive. Nothing is added between the stem and the ending."
+        }
+      ],
+      "row": "lire"
     },
     {
       "id": "futur-simple-re-verbs-drop-e-4",
@@ -175,7 +928,34 @@
       ],
       "hint": "Look at the stem of the verb: one letter is too many.",
       "feedback": "An -re verb drops its final e before the future ending.",
-      "explanation": "Prendre becomes prendr-, so the ils form is ils prendront."
+      "explanation": "Prendre becomes prendr-, so the ils form is ils prendront.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils prendreront le métro demain."
+          ],
+          "why": "That is the sentence unchanged: the e of the infinitive is still sitting before the ending."
+        },
+        {
+          "answers": [
+            "Ils prenderont le métro demain."
+          ],
+          "why": "The e has only moved. An -re verb keeps no e at all before the ending."
+        },
+        {
+          "answers": [
+            "Ils prendrons le métro demain."
+          ],
+          "why": "-ons is the nous ending, but the subject of this sentence is ils."
+        },
+        {
+          "answers": [
+            "Ils prennent le métro demain."
+          ],
+          "why": "That is the present tense, they take. Demain asks for a future form."
+        }
+      ],
+      "row": "prendre"
     },
     {
       "id": "futur-simple-re-verbs-drop-e-5",
@@ -188,7 +968,34 @@
       ],
       "hint": "The infinitive is vendre. Remove its last letter, then add the tu ending.",
       "feedback": "Build the future on vendr-, not on the present form.",
-      "explanation": "Vendre becomes vendr-, and tu adds -as: tu vendras."
+      "explanation": "Vendre becomes vendr-, and tu adds -as: tu vendras.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu venderas ton vélo."
+          ],
+          "why": "The e of the infinitive has been kept; an -re verb drops it before the ending."
+        },
+        {
+          "answers": [
+            "Tu vendra ton vélo."
+          ],
+          "why": "-a is the il/elle ending. The subject here is tu."
+        },
+        {
+          "answers": [
+            "Tu vends ton vélo."
+          ],
+          "why": "That is the sentence unchanged, in the present tense."
+        },
+        {
+          "answers": [
+            "Tu vendrais ton vélo."
+          ],
+          "why": "That is the conditional, you would sell, not the future."
+        }
+      ],
+      "row": "vendre"
     },
     {
       "id": "futur-simple-re-verbs-drop-e-6",
@@ -212,7 +1019,34 @@
       ],
       "hint": "Prendre is an -re verb, so its future stem loses the e.",
       "feedback": "Use the one-word future of prendre with nous.",
-      "explanation": "Prendre becomes prendr-, and nous adds -ons: nous prendrons. On prendra is also correct."
+      "explanation": "Prendre becomes prendr-, and nous adds -ons: nous prendrons. On prendra is also correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous prenderons un taxi."
+          ],
+          "why": "The e of the infinitive has been kept; an -re verb drops it before the ending."
+        },
+        {
+          "answers": [
+            "Nous prenons un taxi."
+          ],
+          "why": "That is the present tense, we are taking a taxi now."
+        },
+        {
+          "answers": [
+            "On prendront un taxi."
+          ],
+          "why": "On always takes the il/elle form of the verb, never the ils one."
+        },
+        {
+          "answers": [
+            "Nous prendrions un taxi."
+          ],
+          "why": "That is the conditional, we would take, not the future."
+        }
+      ],
+      "row": "prendre"
     },
     {
       "id": "futur-simple-irregular-etre-avoir-aller-faire-1",
@@ -226,7 +1060,38 @@
       ],
       "hint": "Être has its own future stem, which does not look like the infinitive.",
       "feedback": "Être uses the stem ser- in the future.",
-      "explanation": "The future stem of être is ser-, so tu seras."
+      "explanation": "The future stem of être is ser-, so tu seras.",
+      "mistakes": [
+        {
+          "answers": [
+            "sera",
+            "tu sera"
+          ],
+          "why": "That is the il/elle form of the same stem. The subject asked for is tu."
+        },
+        {
+          "answers": [
+            "êtreras",
+            "tu êtreras"
+          ],
+          "why": "That builds on the infinitive. Être does not use être- as a future stem."
+        },
+        {
+          "answers": [
+            "es",
+            "tu es"
+          ],
+          "why": "That is the present tense, you are. A future form has an r before its ending."
+        },
+        {
+          "answers": [
+            "serais",
+            "tu serais"
+          ],
+          "why": "That is the conditional, you would be, not the future."
+        }
+      ],
+      "row": "être"
     },
     {
       "id": "futur-simple-irregular-etre-avoir-aller-faire-2",
@@ -240,7 +1105,38 @@
       ],
       "hint": "Aller has a very short, irregular future stem.",
       "feedback": "The future of aller is not built on aller-.",
-      "explanation": "The future stem of aller is ir-, so nous irons."
+      "explanation": "The future stem of aller is ir-, so nous irons.",
+      "mistakes": [
+        {
+          "answers": [
+            "allerons",
+            "nous allerons"
+          ],
+          "why": "That builds on the infinitive. Aller has a very short future stem that keeps nothing of aller-."
+        },
+        {
+          "answers": [
+            "allons",
+            "nous allons"
+          ],
+          "why": "That is the present tense, we go."
+        },
+        {
+          "answers": [
+            "irez",
+            "nous irez"
+          ],
+          "why": "-ez is the vous ending. The subject asked for is nous."
+        },
+        {
+          "answers": [
+            "irions",
+            "nous irions"
+          ],
+          "why": "That is the conditional, we would go, not the future."
+        }
+      ],
+      "row": "aller"
     },
     {
       "id": "futur-simple-irregular-etre-avoir-aller-faire-3",
@@ -253,7 +1149,34 @@
       ],
       "hint": "Avoir has an irregular future stem. The je ending is -ai.",
       "feedback": "The future stem of avoir is not av-.",
-      "explanation": "The future stem of avoir is aur-, so j’aurai."
+      "explanation": "The future stem of avoir is aur-, so j’aurai.",
+      "mistakes": [
+        {
+          "answers": [
+            "averai"
+          ],
+          "why": "Av- is the present stem, as in nous avons. Avoir has an irregular stem in the future."
+        },
+        {
+          "answers": [
+            "aura"
+          ],
+          "why": "-a is the il/elle ending. The subject in the sentence is j’."
+        },
+        {
+          "answers": [
+            "ai"
+          ],
+          "why": "That is the present tense, I have. En mai points to something still to come."
+        },
+        {
+          "answers": [
+            "serai"
+          ],
+          "why": "That is the future of être. French gives an age with avoir: on a vingt ans, not on est vingt ans."
+        }
+      ],
+      "row": "avoir"
     },
     {
       "id": "futur-simple-irregular-etre-avoir-aller-faire-4",
@@ -272,7 +1195,28 @@
       ],
       "hint": "Faire has an irregular future stem. Also check the ending for ils.",
       "feedback": "Look for the irregular stem of faire together with the ils ending.",
-      "explanation": "The future stem of faire is fer-, and ils adds -ont: ils feront."
+      "explanation": "The future stem of faire is fer-, and ils adds -ont: ils feront.",
+      "mistakes": [
+        {
+          "answers": [
+            "faireront"
+          ],
+          "why": "That keeps the whole infinitive and piles the ending on top. Faire has a short irregular stem."
+        },
+        {
+          "answers": [
+            "fairont"
+          ],
+          "why": "Fair- is the infinitive minus its e. Faire does not build its future that way."
+        },
+        {
+          "answers": [
+            "ferons"
+          ],
+          "why": "The stem is right, but -ons is the nous ending and the subject here is ils."
+        }
+      ],
+      "row": "faire"
     },
     {
       "id": "futur-simple-irregular-etre-avoir-aller-faire-5",
@@ -285,7 +1229,34 @@
       ],
       "hint": "Avoir does not build its future on av-.",
       "feedback": "The stem of the verb is wrong: avoir is irregular in the future.",
-      "explanation": "The future stem of avoir is aur-, so tu auras."
+      "explanation": "The future stem of avoir is aur-, so tu auras.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu averas le temps demain."
+          ],
+          "why": "That is the sentence unchanged: av- is the present stem, and avoir is irregular in the future."
+        },
+        {
+          "answers": [
+            "Tu aura le temps demain."
+          ],
+          "why": "-a is the il/elle ending. The subject of this sentence is tu."
+        },
+        {
+          "answers": [
+            "Tu as le temps demain."
+          ],
+          "why": "That is the present tense, you have. Demain asks for a future form."
+        },
+        {
+          "answers": [
+            "Tu aurais le temps demain."
+          ],
+          "why": "That is the conditional, you would have, not the future."
+        }
+      ],
+      "row": "avoir"
     },
     {
       "id": "futur-simple-irregular-etre-avoir-aller-faire-6",
@@ -309,7 +1280,34 @@
       ],
       "hint": "Use the irregular future stem of avoir with the ils ending.",
       "feedback": "Avoir has an irregular future stem.",
-      "explanation": "The future stem of avoir is aur-, and ils adds -ont: ils auront."
+      "explanation": "The future stem of avoir is aur-, and ils adds -ont: ils auront.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils averont une grande maison."
+          ],
+          "why": "Av- is the present stem of avoir; its future stem is not built from it."
+        },
+        {
+          "answers": [
+            "Ils ont une grande maison."
+          ],
+          "why": "That is the present tense: they have a big house already."
+        },
+        {
+          "answers": [
+            "Ils auraient une grande maison."
+          ],
+          "why": "That is the conditional, they would have, not the future."
+        },
+        {
+          "answers": [
+            "Ils seront une grande maison."
+          ],
+          "why": "That is être: it would say they will be a house. Owning something takes avoir."
+        }
+      ],
+      "row": "avoir"
     },
     {
       "id": "futur-simple-irregular-stems-1",
@@ -323,7 +1321,38 @@
       ],
       "hint": "Venir has an irregular future stem with a d in it.",
       "feedback": "The future of venir is not built on venir-.",
-      "explanation": "The future stem of venir is viendr-, so elle viendra."
+      "explanation": "The future stem of venir is viendr-, so elle viendra.",
+      "mistakes": [
+        {
+          "answers": [
+            "venira",
+            "elle venira"
+          ],
+          "why": "That builds on the infinitive. Venir has an irregular future stem with a d in it."
+        },
+        {
+          "answers": [
+            "viendrai",
+            "elle viendrai"
+          ],
+          "why": "-ai is the je ending. The subject asked for is elle."
+        },
+        {
+          "answers": [
+            "viendront",
+            "elles viendront"
+          ],
+          "why": "-ont is the ils/elles ending. Elle is one person."
+        },
+        {
+          "answers": [
+            "vient",
+            "elle vient"
+          ],
+          "why": "That is the present tense, she is coming."
+        }
+      ],
+      "row": "venir"
     },
     {
       "id": "futur-simple-irregular-stems-2",
@@ -337,7 +1366,38 @@
       ],
       "hint": "Vouloir has an irregular future stem with a d in it.",
       "feedback": "The future of vouloir is not built on vouloir-.",
-      "explanation": "The future stem of vouloir is voudr-, so vous voudrez."
+      "explanation": "The future stem of vouloir is voudr-, so vous voudrez.",
+      "mistakes": [
+        {
+          "answers": [
+            "vouloirez",
+            "vous vouloirez"
+          ],
+          "why": "That adds the ending to the whole infinitive. Vouloir has an irregular stem with a d."
+        },
+        {
+          "answers": [
+            "voulez",
+            "vous voulez"
+          ],
+          "why": "That is the present tense, you want."
+        },
+        {
+          "answers": [
+            "voudra",
+            "il voudra"
+          ],
+          "why": "-a is the il/elle ending. The subject asked for is vous."
+        },
+        {
+          "answers": [
+            "voudriez",
+            "vous voudriez"
+          ],
+          "why": "That is the conditional, you would like, not the future."
+        }
+      ],
+      "row": "vouloir"
     },
     {
       "id": "futur-simple-irregular-stems-3",
@@ -350,7 +1410,34 @@
       ],
       "hint": "Falloir only exists with il. Its future stem is irregular.",
       "feedback": "Il faut becomes something quite different in the future.",
-      "explanation": "The future stem of falloir is faudr-, so il faudra."
+      "explanation": "The future stem of falloir is faudr-, so il faudra.",
+      "mistakes": [
+        {
+          "answers": [
+            "falloira"
+          ],
+          "why": "That adds the ending to the whole infinitive. Falloir has a short irregular stem with a d."
+        },
+        {
+          "answers": [
+            "faut"
+          ],
+          "why": "That is the present tense, il faut. The sentence is about tomorrow."
+        },
+        {
+          "answers": [
+            "faudrait"
+          ],
+          "why": "That is the conditional, it would be necessary, not the future."
+        },
+        {
+          "answers": [
+            "faudrai"
+          ],
+          "why": "-ai is the je ending, but falloir exists only with il."
+        }
+      ],
+      "row": "falloir (il faut)"
     },
     {
       "id": "futur-simple-irregular-stems-4",
@@ -369,7 +1456,28 @@
       ],
       "hint": "The verb is pleuvoir. Its future stem is short and irregular.",
       "feedback": "Pleuvoir loses the oi of its infinitive in the future: pleuv- + r.",
-      "explanation": "The future stem of pleuvoir is pleuvr-, so il pleuvra. Pleura is a form of pleurer, to cry."
+      "explanation": "The future stem of pleuvoir is pleuvr-, so il pleuvra. Pleura is a form of pleurer, to cry.",
+      "mistakes": [
+        {
+          "answers": [
+            "pleuvera"
+          ],
+          "why": "There is an extra e between the stem and the ending. The stem finishes straight on r."
+        },
+        {
+          "answers": [
+            "pleuvoira"
+          ],
+          "why": "That keeps the whole infinitive pleuvoir; its future stem is shorter than that."
+        },
+        {
+          "answers": [
+            "pleura"
+          ],
+          "why": "Pleura comes from pleurer, to cry. This sentence is about the weather."
+        }
+      ],
+      "row": "pleuvoir (il pleut)"
     },
     {
       "id": "futur-simple-irregular-stems-5",
@@ -388,7 +1496,28 @@
       ],
       "hint": "Envoyer has an irregular future stem with a double r.",
       "feedback": "The future of envoyer is not built on the infinitive.",
-      "explanation": "The future stem of envoyer is enverr-, so j’enverrai."
+      "explanation": "The future stem of envoyer is enverr-, so j’enverrai.",
+      "mistakes": [
+        {
+          "answers": [
+            "envoyerai"
+          ],
+          "why": "That adds the ending to the infinitive envoyer. This verb has an irregular stem instead."
+        },
+        {
+          "answers": [
+            "envoierai"
+          ],
+          "why": "That is the payer trick, y becoming i. Envoyer changes more than its y in the future."
+        },
+        {
+          "answers": [
+            "envoirai"
+          ],
+          "why": "Letters have been dropped from the infinitive at random. The real stem is irregular and carries a double r."
+        }
+      ],
+      "row": "envoyer"
     },
     {
       "id": "futur-simple-irregular-stems-6",
@@ -401,7 +1530,34 @@
       ],
       "hint": "Pouvoir has an irregular future stem with a double r.",
       "feedback": "The stem of pouvoir is wrong.",
-      "explanation": "The future stem of pouvoir is pourr-, so vous pourrez."
+      "explanation": "The future stem of pouvoir is pourr-, so vous pourrez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous pouvrez venir avec nous."
+          ],
+          "why": "That is the sentence unchanged: the stem is cut out of the infinitive, and pouvoir is irregular in the future."
+        },
+        {
+          "answers": [
+            "Vous pourez venir avec nous."
+          ],
+          "why": "This stem has a single r. The verb keeps two, one from the stem and one from the future."
+        },
+        {
+          "answers": [
+            "Vous pouvoirez venir avec nous."
+          ],
+          "why": "That adds the ending to the whole infinitive; the future stem is shorter."
+        },
+        {
+          "answers": [
+            "Vous pouvez venir avec nous."
+          ],
+          "why": "That is the present tense, you can come."
+        }
+      ],
+      "row": "pouvoir"
     },
     {
       "id": "futur-simple-irregular-stems-7",
@@ -425,7 +1581,34 @@
       ],
       "hint": "Voir has an irregular future stem with a double r.",
       "feedback": "The future of voir is not built on voir-.",
-      "explanation": "The future stem of voir is verr-, so nous verrons. On verra is also correct."
+      "explanation": "The future stem of voir is verr-, so nous verrons. On verra is also correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous voirons la mer."
+          ],
+          "why": "That builds on the infinitive voir; its future stem changes the vowel."
+        },
+        {
+          "answers": [
+            "Nous verons la mer."
+          ],
+          "why": "Only one r here. This stem keeps two before the ending."
+        },
+        {
+          "answers": [
+            "Nous voyons la mer."
+          ],
+          "why": "That is the present tense, we see the sea."
+        },
+        {
+          "answers": [
+            "Nous verrions la mer."
+          ],
+          "why": "That is the conditional, we would see, not the future."
+        }
+      ],
+      "row": "voir"
     },
     {
       "id": "futur-simple-irregular-stems-8",
@@ -446,7 +1629,16 @@
       ],
       "hint": "Savoir has an irregular future stem. One tile is a wrong form.",
       "feedback": "Only one of the two verb tiles is a real future form of savoir.",
-      "explanation": "The future stem of savoir is saur-, so vous saurez."
+      "explanation": "The future stem of savoir is saur-, so vous saurez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vous saverez la vérité demain."
+          ],
+          "why": "Saverez is built on sav-, the present stem, as in nous savons. Savoir has an irregular future stem."
+        }
+      ],
+      "row": "savoir"
     },
     {
       "id": "futur-simple-spelling-changes-1",
@@ -461,7 +1653,37 @@
       "strictAccents": true,
       "hint": "Acheter changes its first e in the future, as in j’achète.",
       "feedback": "The stem of acheter needs a grave accent in the future.",
-      "explanation": "Acheter takes a grave accent: j’achèterai."
+      "explanation": "Acheter takes a grave accent: j’achèterai.",
+      "mistakes": [
+        {
+          "answers": [
+            "acheterai",
+            "j’acheterai"
+          ],
+          "why": "The first e of the stem has no accent here. In the future acheter carries the same accent you hear in j’achète."
+        },
+        {
+          "answers": [
+            "achéterai",
+            "j’achéterai"
+          ],
+          "why": "That is an acute accent, é. Acheter takes the other one, the grave accent of j’achète."
+        },
+        {
+          "answers": [
+            "je achèterai"
+          ],
+          "why": "Je loses its e before a vowel and becomes j’. The two words cannot stay apart."
+        },
+        {
+          "answers": [
+            "achète",
+            "j’achète"
+          ],
+          "why": "That is the present tense, I am buying. A future form adds an ending after the stem."
+        }
+      ],
+      "row": "acheter"
     },
     {
       "id": "futur-simple-spelling-changes-2",
@@ -475,7 +1697,38 @@
       ],
       "hint": "Appeler changes its stem in every future form, as in j’appelle.",
       "feedback": "Appeler doubles a letter in the future stem.",
-      "explanation": "Appeler doubles its l in the future: nous appellerons."
+      "explanation": "Appeler doubles its l in the future: nous appellerons.",
+      "mistakes": [
+        {
+          "answers": [
+            "appelerons",
+            "nous appelerons"
+          ],
+          "why": "There is only one l here. Appeler doubles that letter all through the future, as in j’appelle."
+        },
+        {
+          "answers": [
+            "appelons",
+            "nous appelons"
+          ],
+          "why": "That is the present tense, we are calling."
+        },
+        {
+          "answers": [
+            "appellerez",
+            "vous appellerez"
+          ],
+          "why": "-ez is the vous ending. The subject asked for is nous."
+        },
+        {
+          "answers": [
+            "appellerions",
+            "nous appellerions"
+          ],
+          "why": "That is the conditional, we would call, not the future."
+        }
+      ],
+      "row": "appeler"
     },
     {
       "id": "futur-simple-spelling-changes-3",
@@ -489,7 +1742,34 @@
       ],
       "hint": "Payer may change its y in the future. Add the vous ending.",
       "feedback": "Use the future stem of payer with the vous ending -ez.",
-      "explanation": "Payer has two accepted future stems: vous paierez or vous payerez."
+      "explanation": "Payer has two accepted future stems: vous paierez or vous payerez.",
+      "mistakes": [
+        {
+          "answers": [
+            "payrez"
+          ],
+          "why": "The e of the stem has been dropped. In payer only the y may change; the e always stays."
+        },
+        {
+          "answers": [
+            "payez"
+          ],
+          "why": "That is the present tense, you pay."
+        },
+        {
+          "answers": [
+            "paierons"
+          ],
+          "why": "-ons is the nous ending. The subject in the sentence is vous."
+        },
+        {
+          "answers": [
+            "paieras"
+          ],
+          "why": "-as is the tu ending. The subject in the sentence is vous."
+        }
+      ],
+      "row": "payer"
     },
     {
       "id": "futur-simple-spelling-changes-4",
@@ -508,7 +1788,28 @@
       ],
       "hint": "Appeler keeps its double p and changes the letter after the e.",
       "feedback": "Look at the l: appeler changes it in the future.",
-      "explanation": "Appeler doubles its l in the future: je t’appellerai."
+      "explanation": "Appeler doubles its l in the future: je t’appellerai.",
+      "mistakes": [
+        {
+          "answers": [
+            "appelerai"
+          ],
+          "why": "Only one l. In the future appeler doubles that letter in every person, as in j’appelle."
+        },
+        {
+          "answers": [
+            "apellerai"
+          ],
+          "why": "A p has gone missing: appeler keeps its double p everywhere."
+        },
+        {
+          "answers": [
+            "appèlerai"
+          ],
+          "why": "That fixes the sound with an accent, the way acheter does. Appeler doubles a consonant instead."
+        }
+      ],
+      "row": "appeler"
     },
     {
       "id": "futur-simple-spelling-changes-5",
@@ -522,7 +1823,34 @@
       "strictAccents": true,
       "hint": "Acheter changes its stem in the future, as in j’achète.",
       "feedback": "One accent is missing in the verb.",
-      "explanation": "The future stem of acheter is achèter-, with a grave accent: nous achèterons."
+      "explanation": "The future stem of acheter is achèter-, with a grave accent: nous achèterons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous acheterons des fruits au marché."
+          ],
+          "why": "That is the sentence unchanged: the stem still has no accent on its first e."
+        },
+        {
+          "answers": [
+            "Nous achéterons des fruits au marché."
+          ],
+          "why": "That is an acute accent, é. Acheter takes the grave one you hear in j’achète."
+        },
+        {
+          "answers": [
+            "Nous achetons des fruits au marché."
+          ],
+          "why": "That is the present tense, we are buying now."
+        },
+        {
+          "answers": [
+            "Nous achèterions des fruits au marché."
+          ],
+          "why": "That is the conditional, we would buy, not the future."
+        }
+      ],
+      "row": "acheter"
     },
     {
       "id": "futur-simple-spelling-changes-6",
@@ -541,7 +1869,16 @@
       ],
       "hint": "Payer keeps its full stem before the future ending.",
       "feedback": "One verb tile has lost part of the stem.",
-      "explanation": "Payer becomes paier- (or payer-) in the future, so ils paieront."
+      "explanation": "Payer becomes paier- (or payer-) in the future, so ils paieront.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils payront l’addition."
+          ],
+          "why": "Payront has lost the e of the stem. The whole of payer stays before the ending, with or without the y change."
+        }
+      ],
+      "row": "payer"
     },
     {
       "id": "futur-simple-spelling-changes-7",
@@ -566,7 +1903,34 @@
       "strictAccents": true,
       "hint": "Acheter changes its stem in the future, as in j’achète.",
       "feedback": "Check the accent in the stem of acheter.",
-      "explanation": "Acheter takes a grave accent in the future: j’achèterai."
+      "explanation": "Acheter takes a grave accent in the future: j’achèterai.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’acheterai un nouveau sac."
+          ],
+          "why": "The stem has no accent here. Acheter takes a grave accent in the future, the one you hear in j’achète."
+        },
+        {
+          "answers": [
+            "Je achèterai un nouveau sac."
+          ],
+          "why": "Je becomes j’ before a vowel; the two words cannot stay apart."
+        },
+        {
+          "answers": [
+            "J’achète un nouveau sac."
+          ],
+          "why": "That is the present tense, I am buying it now."
+        },
+        {
+          "answers": [
+            "J’achèterais un nouveau sac."
+          ],
+          "why": "That is the conditional, I would buy, not the future."
+        }
+      ],
+      "row": "acheter"
     },
     {
       "id": "futur-simple-quand-futur-1",
@@ -585,7 +1949,27 @@
       ],
       "hint": "The arrival is in the future, and the subject is tu.",
       "feedback": "After quand for a future event, French uses the futur simple.",
-      "explanation": "The arrival is still to come, so quand takes the future: quand tu arriveras."
+      "explanation": "The arrival is still to come, so quand takes the future: quand tu arriveras.",
+      "mistakes": [
+        {
+          "answers": [
+            "arriverais"
+          ],
+          "why": "That is the conditional, you would arrive, not a future form."
+        },
+        {
+          "answers": [
+            "arrivais"
+          ],
+          "why": "That is the imparfait, a past tense. The arrival has not happened yet."
+        },
+        {
+          "answers": [
+            "arriverez"
+          ],
+          "why": "-ez is the vous ending. The subject in the sentence is tu."
+        }
+      ]
     },
     {
       "id": "futur-simple-quand-futur-2",
@@ -598,7 +1982,33 @@
       ],
       "hint": "The event after quand is in the future, so both verbs are in the future.",
       "feedback": "Use the future after quand, with the irregular stem of avoir.",
-      "explanation": "After quand for a future event, use the future: quand nous aurons."
+      "explanation": "After quand for a future event, use the future: quand nous aurons.",
+      "mistakes": [
+        {
+          "answers": [
+            "avons"
+          ],
+          "why": "English says “when we have”, but French puts an event still to come after quand in the future, not the present."
+        },
+        {
+          "answers": [
+            "aurions"
+          ],
+          "why": "That is the conditional, we would have, not the future."
+        },
+        {
+          "answers": [
+            "aurez"
+          ],
+          "why": "-ez is the vous ending. The subject in the sentence is nous."
+        },
+        {
+          "answers": [
+            "averons"
+          ],
+          "why": "Av- is the present stem of avoir; the future uses an irregular stem instead."
+        }
+      ]
     },
     {
       "id": "futur-simple-quand-futur-3",
@@ -611,7 +2021,33 @@
       ],
       "hint": "Change the verb after quand too, not only the main verb.",
       "feedback": "Both verbs must move to the future, including the one after quand.",
-      "explanation": "For a future event, French puts the verb after quand in the future as well: quand elle rentrera."
+      "explanation": "For a future event, French puts the verb after quand in the future as well: quand elle rentrera.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand elle rentre, elle mange."
+          ],
+          "why": "That is the sentence unchanged, with both verbs in the present."
+        },
+        {
+          "answers": [
+            "Quand elle rentre, elle mangera."
+          ],
+          "why": "Only the second verb has moved. After quand, an event still to come goes into the future too."
+        },
+        {
+          "answers": [
+            "Quand elle rentrera, elle mange."
+          ],
+          "why": "The second verb stayed in the present, but both events are still to come here."
+        },
+        {
+          "answers": [
+            "Quand elle rentrerait, elle mangerait."
+          ],
+          "why": "Those are conditional forms, she would come home, not the future."
+        }
+      ]
     },
     {
       "id": "futur-simple-quand-futur-4",
@@ -637,7 +2073,33 @@
       ],
       "hint": "English says “when I arrive”, but French is more logical about the time.",
       "feedback": "The arrival is in the future, so the verb after quand is in the future too.",
-      "explanation": "After quand for a future event, French uses the future: quand j’arriverai, je t’appellerai."
+      "explanation": "After quand for a future event, French uses the future: quand j’arriverai, je t’appellerai.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand j’arrive, je t’appelle."
+          ],
+          "why": "Both verbs are in the present, but neither the arrival nor the call has happened yet."
+        },
+        {
+          "answers": [
+            "Quand j’arriverai, je t’appelle."
+          ],
+          "why": "The second verb stayed in the present. The call is still to come, like the arrival."
+        },
+        {
+          "answers": [
+            "Quand j’arriverais, je t’appellerais."
+          ],
+          "why": "Those are conditional forms, I would arrive, not the future."
+        },
+        {
+          "answers": [
+            "Quand je arriverai, je t’appellerai."
+          ],
+          "why": "Je becomes j’ before a vowel; the two words cannot stay apart."
+        }
+      ]
     },
     {
       "id": "futur-simple-quand-futur-5",
@@ -659,7 +2121,15 @@
       ],
       "hint": "Two tiles are forms of venir. The coming is still in the future.",
       "feedback": "After quand for a future event, choose the future form.",
-      "explanation": "The visit is in the future, so quand takes the future: quand il viendra."
+      "explanation": "The visit is in the future, so quand takes the future: quand il viendra.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand il vient, nous mangerons ensemble."
+          ],
+          "why": "Vient is the present tense. After quand, an event still to come takes a future form."
+        }
+      ]
     },
     {
       "id": "futur-simple-quand-futur-6",
@@ -672,7 +2142,33 @@
       ],
       "hint": "The main verb is already in the future. Look at the other one.",
       "feedback": "The end of the studies is in the future, like the journey.",
-      "explanation": "After quand for a future event, use the future: quand je finirai mes études."
+      "explanation": "After quand for a future event, use the future: quand je finirai mes études.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand je finis mes études, je voyagerai en Asie."
+          ],
+          "why": "That is the sentence unchanged: the verb after quand is still in the present."
+        },
+        {
+          "answers": [
+            "Quand j’ai fini mes études, je voyagerai en Asie."
+          ],
+          "why": "That is the passé composé, a past tense. The end of the studies is still to come."
+        },
+        {
+          "answers": [
+            "Quand je finis mes études, je voyage en Asie."
+          ],
+          "why": "Both verbs are now in the present, which describes a habit rather than a plan."
+        },
+        {
+          "answers": [
+            "Quand je finirais mes études, je voyagerais en Asie."
+          ],
+          "why": "Those are conditional forms, I would finish, not the future."
+        }
+      ]
     },
     {
       "id": "futur-simple-time-markers-1",
@@ -691,7 +2187,28 @@
       ],
       "hint": "Dans dix ans points to the future. Check the subject too.",
       "feedback": "The time marker dans dix ans needs a future verb.",
-      "explanation": "Dans dix ans means in ten years’ time, so the verb is in the future: nous aurons."
+      "explanation": "Dans dix ans means in ten years’ time, so the verb is in the future: nous aurons.",
+      "mistakes": [
+        {
+          "answers": [
+            "avions"
+          ],
+          "why": "That is the imparfait, we used to have: a past tense, while dans dix ans points forward."
+        },
+        {
+          "answers": [
+            "avons eu"
+          ],
+          "why": "That is the passé composé, something already done. Dans dix ans has not come yet."
+        },
+        {
+          "answers": [
+            "aurez"
+          ],
+          "why": "The tense is right, but -ez is the vous ending and the subject here is nous."
+        }
+      ],
+      "row": "dans dix ans"
     },
     {
       "id": "futur-simple-time-markers-2",
@@ -710,7 +2227,18 @@
       ],
       "hint": "Partirai is a future form. Which marker points forward in time?",
       "feedback": "The verb is in the future, so the time marker must be too.",
-      "explanation": "Je partirai is the future, and only demain points to the future."
+      "explanation": "Je partirai is the future, and only demain points to the future.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hier",
+            "La semaine dernière",
+            "Il y a deux jours"
+          ],
+          "why": "All three point backwards, to something already finished. Partirai is a future form, so the marker must look forward."
+        }
+      ],
+      "row": "demain"
     },
     {
       "id": "futur-simple-time-markers-3",
@@ -723,7 +2251,34 @@
       ],
       "hint": "The time marker points forward. Add the tu ending to the full infinitive.",
       "feedback": "Dans dix ans needs the future tense.",
-      "explanation": "Dans dix ans calls for the future: tu parleras."
+      "explanation": "Dans dix ans calls for the future: tu parleras.",
+      "mistakes": [
+        {
+          "answers": [
+            "parles"
+          ],
+          "why": "That is the present tense, you speak. Dans dix ans points to something still to come."
+        },
+        {
+          "answers": [
+            "parlera"
+          ],
+          "why": "-a is the il/elle ending. The subject in the sentence is tu."
+        },
+        {
+          "answers": [
+            "parlais"
+          ],
+          "why": "That is the imparfait, a past tense, while the marker points forward."
+        },
+        {
+          "answers": [
+            "parlerais"
+          ],
+          "why": "That is the conditional, you would speak, not the future."
+        }
+      ],
+      "row": "dans dix ans"
     },
     {
       "id": "futur-simple-time-markers-4",
@@ -744,7 +2299,34 @@
       ],
       "hint": "Next week is la semaine prochaine. Partir builds its future on the infinitive.",
       "feedback": "Use the one-word future of partir with elles.",
-      "explanation": "Partir + -ont gives elles partiront; la semaine prochaine can go at the start or the end."
+      "explanation": "Partir + -ont gives elles partiront; la semaine prochaine can go at the start or the end.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elles partirons la semaine prochaine."
+          ],
+          "why": "-ons is the nous ending. The subject here is elles, people talked about."
+        },
+        {
+          "answers": [
+            "Ils partiront la semaine prochaine."
+          ],
+          "why": "Ils is the masculine pronoun; this sentence is about a group of women."
+        },
+        {
+          "answers": [
+            "Elles partent la semaine prochaine."
+          ],
+          "why": "That is the present tense, and next week has not come yet."
+        },
+        {
+          "answers": [
+            "Elles partiraient la semaine prochaine."
+          ],
+          "why": "That is the conditional, they would leave, not the future."
+        }
+      ],
+      "row": "la semaine prochaine"
     },
     {
       "id": "futur-simple-time-markers-5",
@@ -758,7 +2340,34 @@
       ],
       "hint": "The passé composé j’ai fini becomes a one-word future.",
       "feedback": "Demain needs the future, not the passé composé.",
-      "explanation": "With demain, the verb moves to the future: je finirai."
+      "explanation": "With demain, the verb moves to the future: je finirai.",
+      "mistakes": [
+        {
+          "answers": [
+            "Demain, j’ai fini mon livre."
+          ],
+          "why": "The marker has changed but the verb is still the passé composé, a past tense."
+        },
+        {
+          "answers": [
+            "Hier, je finirai mon livre."
+          ],
+          "why": "The verb has moved forward but the marker still points to the past."
+        },
+        {
+          "answers": [
+            "Demain, je finis mon livre."
+          ],
+          "why": "That is the present tense; the exercise asks for the one-word future form."
+        },
+        {
+          "answers": [
+            "Demain, je finirais mon livre."
+          ],
+          "why": "That is the conditional, I would finish, not the future."
+        }
+      ],
+      "row": "demain"
     },
     {
       "id": "futur-simple-time-markers-6",
@@ -771,7 +2380,34 @@
       ],
       "hint": "L’année prochaine points forward, but the verb points back.",
       "feedback": "The verb is in the imparfait, but the time marker is in the future.",
-      "explanation": "L’année prochaine calls for the future: nous visiterons."
+      "explanation": "L’année prochaine calls for the future: nous visiterons.",
+      "mistakes": [
+        {
+          "answers": [
+            "L’année prochaine, nous visitions le Canada."
+          ],
+          "why": "That is the sentence unchanged: visitions is the imparfait, a past tense."
+        },
+        {
+          "answers": [
+            "L’année prochaine, nous visitons le Canada."
+          ],
+          "why": "That is the present tense, while the marker points forward."
+        },
+        {
+          "answers": [
+            "L’année prochaine, nous avons visité le Canada."
+          ],
+          "why": "That is the passé composé, a visit already made."
+        },
+        {
+          "answers": [
+            "L’année prochaine, nous visiterions le Canada."
+          ],
+          "why": "That is the conditional, we would visit, not the future."
+        }
+      ],
+      "row": "l’année prochaine"
     }
   ]
 }

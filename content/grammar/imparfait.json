@@ -5,9 +5,577 @@
   "title": "The imparfait",
   "description": "Describe how things were, what you used to do, and what was going on.",
   "mark": "-ais",
-  "rule": "Form the imparfait from the nous form of the present: drop -ons and add -ais, -ais, -ait, -ions, -iez, -aient (nous finissons → je finissais, nous prenons → je prenais, nous avons → j’avais). Être is the only exception: its stem is ét- (j’étais, nous étions). Verbs in -ger keep an e before a (je mangeais, ils mangeaient) but not before i (nous mangions, vous mangiez); verbs in -cer write ç before a (je commençais) but c before i (nous commencions). Use the imparfait to describe a scene or situation in the past (il faisait beau, la maison était grande) and for past habits, often with tous les étés, d’habitude or autrefois. Use it too for age, feelings and states (j’avais dix ans, elle était fatiguée) and for an action that was in progress (je lisais).",
-  "example": "Quand j’étais petit, nous allions à la mer tous les étés. · Il faisait beau et je lisais dans le jardin.",
-  "aside": "The imparfait covers English “used to”, “was …-ing” and plain “was”: je lisais can mean I was reading or I used to read.",
+  "guide": {
+    "summary": "The imparfait is the past tense for backgrounds and habits: how things were, what you used to do and what was going on. You build it from the nous form of the present plus one single set of endings.",
+    "sections": [
+      {
+        "id": "endings",
+        "title": "Which ending goes with which subject?",
+        "text": "Every verb takes the same six endings. Only the subject decides which one you write.",
+        "table": {
+          "columns": [
+            "subject",
+            "ending",
+            "parler (stem parl-)"
+          ],
+          "rows": [
+            [
+              "je",
+              "-ais",
+              "je parlais"
+            ],
+            [
+              "tu",
+              "-ais",
+              "tu parlais"
+            ],
+            [
+              "il / elle / on",
+              "-ait",
+              "il parlait"
+            ],
+            [
+              "nous",
+              "-ions",
+              "nous parlions"
+            ],
+            [
+              "vous",
+              "-iez",
+              "vous parliez"
+            ],
+            [
+              "ils / elles",
+              "-aient",
+              "ils parlaient"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject and say which person it is: mes grands-parents is ils, le ciel is il.",
+          "Take that person’s row and add its ending to the stem.",
+          "On means we but counts as il, so it takes the -ait row."
+        ],
+        "examples": [
+          {
+            "fr": "Tu parlais trop vite.",
+            "en": "You were talking too fast."
+          },
+          {
+            "fr": "Nous parlions de toi.",
+            "en": "We were talking about you."
+          }
+        ],
+        "watch": [
+          "-ais, -ait and -aient sound identical; only the subject tells you which to write.",
+          "The imparfait nous and vous endings are -ions and -iez; -ons and -ez belong to the present.",
+          "The -ent of -aient is silent, so a plural ending never changes the sound."
+        ]
+      },
+      {
+        "id": "stem",
+        "title": "Where does the stem come from?",
+        "text": "Take the nous form of the present and drop -ons. That gives the imparfait stem of every verb but one, so most irregular verbs become regular here.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "nous (present)",
+            "imparfait"
+          ],
+          "rows": [
+            [
+              "parler",
+              "nous parlons",
+              "je parlais"
+            ],
+            [
+              "finir",
+              "nous finissons",
+              "je finissais"
+            ],
+            [
+              "faire",
+              "nous faisons",
+              "je faisais"
+            ],
+            [
+              "boire",
+              "nous buvons",
+              "je buvais"
+            ],
+            [
+              "lire",
+              "nous lisons",
+              "je lisais"
+            ],
+            [
+              "écrire",
+              "nous écrivons",
+              "j’écrivais"
+            ],
+            [
+              "prendre",
+              "nous prenons",
+              "je prenais"
+            ],
+            [
+              "venir",
+              "nous venons",
+              "je venais"
+            ],
+            [
+              "dormir",
+              "nous dormons",
+              "je dormais"
+            ],
+            [
+              "aller",
+              "nous allons",
+              "j’allais"
+            ],
+            [
+              "avoir",
+              "nous avons",
+              "j’avais"
+            ],
+            [
+              "voir",
+              "nous voyons",
+              "je voyais"
+            ]
+          ]
+        },
+        "steps": [
+          "Say the verb in the present with nous.",
+          "Cross off -ons: everything left is the stem, letter for letter.",
+          "Add the ending of your subject."
+        ],
+        "examples": [
+          {
+            "fr": "Je prenais le bus tous les jours.",
+            "en": "I used to take the bus every day."
+          },
+          {
+            "fr": "Nous faisions nos devoirs.",
+            "en": "We were doing our homework."
+          }
+        ],
+        "watch": [
+          "Never build the stem on the ils form: ils boivent would give boiv-, which is not the imparfait stem.",
+          "Verbs like finir keep the -iss- of nous finissons.",
+          "Aller behaves normally here: nous allons gives all-."
+        ]
+      },
+      {
+        "id": "etre",
+        "title": "Être: the one exception",
+        "text": "Nous sommes gives no usable stem, so être has its own: ét-. The endings are the ordinary ones.",
+        "table": {
+          "columns": [
+            "subject",
+            "être"
+          ],
+          "rows": [
+            [
+              "je",
+              "j’étais"
+            ],
+            [
+              "tu",
+              "tu étais"
+            ],
+            [
+              "il / elle / on",
+              "il était"
+            ],
+            [
+              "nous",
+              "nous étions"
+            ],
+            [
+              "vous",
+              "vous étiez"
+            ],
+            [
+              "ils / elles",
+              "ils étaient"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask whether the verb is être: being, feeling, describing.",
+          "Use the stem ét-, never anything taken from nous sommes.",
+          "Add the ordinary ending for your subject."
+        ],
+        "examples": [
+          {
+            "fr": "J’étais fatigué.",
+            "en": "I was tired."
+          },
+          {
+            "fr": "Vous étiez en vacances.",
+            "en": "You were on holiday."
+          }
+        ],
+        "watch": [
+          "Sommions and sommait do not exist.",
+          "Été is the past participle (il a été), not an imparfait form.",
+          "Avoir is not an exception: nous avons gives av-, so j’avais."
+        ]
+      },
+      {
+        "id": "spelling",
+        "title": "-ger and -cer verbs: an extra letter before a",
+        "text": "The g of manger and the c of commencer must keep their soft sound. Before the letter a they need help; before the letter i they do not.",
+        "table": {
+          "columns": [
+            "verb",
+            "je / tu / il / ils (ending in a)",
+            "nous / vous (ending in i)"
+          ],
+          "rows": [
+            [
+              "manger",
+              "je mangeais, ils mangeaient",
+              "nous mangions, vous mangiez"
+            ],
+            [
+              "nager",
+              "je nageais, elle nageait",
+              "nous nagions, vous nagiez"
+            ],
+            [
+              "voyager",
+              "tu voyageais",
+              "vous voyagiez"
+            ],
+            [
+              "commencer",
+              "je commençais, il commençait",
+              "nous commencions, vous commenciez"
+            ],
+            [
+              "lancer",
+              "elle lançait, ils lançaient",
+              "nous lancions, vous lanciez"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the first letter of the ending you are about to write: a or i.",
+          "Before a, a -ger verb keeps the e of nous mangeons and a -cer verb writes ç.",
+          "Before i, write plain g and plain c: both letters are already soft there."
+        ],
+        "examples": [
+          {
+            "fr": "Je mangeais à midi.",
+            "en": "I used to eat at noon."
+          },
+          {
+            "fr": "Nous commencions à huit heures.",
+            "en": "We used to start at eight."
+          }
+        ],
+        "watch": [
+          "Nageions and commençions are both over-corrected: nothing extra is written before i.",
+          "Mangait would make the g hard, as in gare.",
+          "Lancait without the mark would sound like k."
+        ]
+      },
+      {
+        "id": "description",
+        "title": "Setting the scene",
+        "text": "Use the imparfait for the background of a story: the weather, the place, how things looked. The weather takes il with faire, or a weather verb of its own.",
+        "table": {
+          "columns": [
+            "English",
+            "French"
+          ],
+          "rows": [
+            [
+              "it was fine",
+              "il faisait beau"
+            ],
+            [
+              "it was cold",
+              "il faisait froid"
+            ],
+            [
+              "it was raining",
+              "il pleuvait"
+            ],
+            [
+              "there was / there were",
+              "il y avait"
+            ],
+            [
+              "the house was big",
+              "la maison était grande"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask whether the sentence paints a scene rather than reporting one finished event.",
+          "For the weather use il with faire, or il with a weather verb; never être.",
+          "Put the verb in the imparfait and make any adjective agree with what it describes."
+        ],
+        "examples": [
+          {
+            "fr": "Il faisait beau et le jardin était calme.",
+            "en": "The weather was fine and the garden was quiet."
+          },
+          {
+            "fr": "Il y avait beaucoup de monde.",
+            "en": "There were a lot of people."
+          }
+        ],
+        "watch": [
+          "Il y a becomes il y avait, whatever follows it: it stays singular.",
+          "Être with froid describes an object, not the weather."
+        ]
+      },
+      {
+        "id": "habits",
+        "title": "Things you used to do",
+        "text": "The imparfait carries English used to and would (when would means repeatedly). French adds no extra word: the tense says it. Certain time words almost always announce it.",
+        "table": {
+          "columns": [
+            "marker",
+            "meaning"
+          ],
+          "rows": [
+            [
+              "autrefois",
+              "in the old days"
+            ],
+            [
+              "d’habitude",
+              "usually"
+            ],
+            [
+              "tous les étés",
+              "every summer"
+            ],
+            [
+              "chaque été",
+              "each summer"
+            ],
+            [
+              "le dimanche",
+              "on Sundays"
+            ],
+            [
+              "souvent",
+              "often"
+            ],
+            [
+              "quand j’étais petit",
+              "when I was little"
+            ]
+          ]
+        },
+        "steps": [
+          "Look for a habit marker, or for used to in the English.",
+          "Ask whether the action was repeated rather than done once.",
+          "Build the verb on its nous stem and add the ending of the subject."
+        ],
+        "examples": [
+          {
+            "fr": "Le dimanche, on allait chez ma grand-mère.",
+            "en": "On Sundays we used to go to my grandmother’s."
+          },
+          {
+            "fr": "D’habitude, je me levais tôt.",
+            "en": "I usually got up early."
+          }
+        ],
+        "watch": [
+          "Do not look for a French word for used to: the tense alone carries it.",
+          "On means we here but takes the singular il ending.",
+          "The passé composé would turn the habit into a single finished event."
+        ]
+      },
+      {
+        "id": "age-states",
+        "title": "Age, feelings and states",
+        "text": "Age, hunger, thirst, fear, cold and heat use avoir. Moods and qualities use être. In the past both simply go into the imparfait.",
+        "table": {
+          "columns": [
+            "English",
+            "French"
+          ],
+          "rows": [
+            [
+              "I was ten",
+              "j’avais dix ans"
+            ],
+            [
+              "I was hungry",
+              "j’avais faim"
+            ],
+            [
+              "I was thirsty",
+              "j’avais soif"
+            ],
+            [
+              "I was afraid",
+              "j’avais peur"
+            ],
+            [
+              "I was cold",
+              "j’avais froid"
+            ],
+            [
+              "I was tired",
+              "j’étais fatigué(e)"
+            ],
+            [
+              "I was sad",
+              "j’étais triste"
+            ],
+            [
+              "I was happy",
+              "j’étais content(e)"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide the verb: avoir for age, hunger, thirst, fear, cold and heat; être for moods and qualities.",
+          "Build that verb in the imparfait: av- for avoir, ét- for être.",
+          "Add the ending of the subject."
+        ],
+        "examples": [
+          {
+            "fr": "Elle avait peur du noir.",
+            "en": "She was afraid of the dark."
+          },
+          {
+            "fr": "Nous étions contents.",
+            "en": "We were happy."
+          }
+        ],
+        "watch": [
+          "English I was hides two different French verbs; check which one the meaning needs.",
+          "After avoir there is no article: avoir faim, avoir peur.",
+          "Age is counted in ans, never in années after a number."
+        ]
+      },
+      {
+        "id": "in-progress",
+        "title": "What was going on",
+        "text": "English was …-ing becomes one French verb in the imparfait. Être en train de says the same thing and is always optional.",
+        "table": {
+          "columns": [
+            "English",
+            "imparfait",
+            "être en train de"
+          ],
+          "rows": [
+            [
+              "I was reading",
+              "je lisais",
+              "j’étais en train de lire"
+            ],
+            [
+              "they were sleeping",
+              "ils dormaient",
+              "ils étaient en train de dormir"
+            ],
+            [
+              "she was writing",
+              "elle écrivait",
+              "elle était en train d’écrire"
+            ]
+          ]
+        },
+        "steps": [
+          "Spot was or were plus -ing, or a moment that cuts into the action (hier à midi).",
+          "Use one single French verb in the imparfait, built on its nous stem.",
+          "Never translate the -ing with a separate word."
+        ],
+        "examples": [
+          {
+            "fr": "Hier à midi, je préparais le repas.",
+            "en": "Yesterday at noon I was making lunch."
+          },
+          {
+            "fr": "Les enfants jouaient dans le jardin.",
+            "en": "The children were playing in the garden."
+          }
+        ],
+        "watch": [
+          "There is no j’étais lisant: French has no was …-ing built with a participle.",
+          "The passé composé would present the action as over instead of running."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "endings": {
+      "section": "endings",
+      "steps": [
+        "Find the subject and say which person of the table it matches.",
+        "Take that person’s ending: -ais, -ais, -ait, -ions, -iez, -aient.",
+        "Check a noun subject too: a plural noun needs the ils ending."
+      ]
+    },
+    "nous-stem": {
+      "section": "stem",
+      "steps": [
+        "Say the verb in the present with nous.",
+        "Drop -ons and keep every remaining letter as the stem.",
+        "Add the ending of the subject in the sentence."
+      ]
+    },
+    "etre": {
+      "section": "etre",
+      "steps": [
+        "Check whether the verb is être.",
+        "Use its own stem ét-, not a stem taken from nous sommes.",
+        "Add the ordinary imparfait ending for the subject."
+      ]
+    },
+    "spelling": {
+      "section": "spelling",
+      "steps": [
+        "Look at the first letter of the ending you are writing: a or i.",
+        "Before a, keep the e of a -ger verb and write ç in a -cer verb.",
+        "Before i, write plain g and plain c."
+      ]
+    },
+    "description": {
+      "section": "description",
+      "steps": [
+        "Ask whether the sentence describes a scene rather than one finished event.",
+        "For the weather, use il with faire or with a weather verb, never être.",
+        "Put the verb in the imparfait and make any adjective agree."
+      ]
+    },
+    "habits": {
+      "section": "habits",
+      "steps": [
+        "Look for a habit marker or for used to in the English.",
+        "Build the verb’s stem from the nous form of the present.",
+        "Add the ending of the subject; on counts as singular."
+      ]
+    },
+    "age-states": {
+      "section": "age-states",
+      "steps": [
+        "Decide the verb: avoir for age, hunger, thirst and fear; être for moods and qualities.",
+        "Put that verb in the imparfait.",
+        "Match the ending to the subject."
+      ]
+    },
+    "in-progress": {
+      "section": "in-progress",
+      "steps": [
+        "Spot was or were plus -ing, or a time that cuts into the action.",
+        "Use one verb in the imparfait, built on its nous stem.",
+        "Match the ending to the subject."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "imparfait-endings-1",
@@ -21,7 +589,43 @@
       ],
       "hint": "Start from nous parlons, drop -ons, then add the ending for tu.",
       "feedback": "Tu takes the same ending as je.",
-      "explanation": "Nous parlons gives the stem parl-. Tu takes -ais: tu parlais."
+      "explanation": "Nous parlons gives the stem parl-. Tu takes -ais: tu parlais.",
+      "mistakes": [
+        {
+          "answers": [
+            "parlait",
+            "tu parlait"
+          ],
+          "why": "-ait is the ending of il, elle and on. Tu is a different person and has its own ending."
+        },
+        {
+          "answers": [
+            "parliez",
+            "tu parliez"
+          ],
+          "why": "-iez belongs to vous, the polite or plural you. The subject given here is tu, one friend."
+        },
+        {
+          "answers": [
+            "parlions"
+          ],
+          "why": "-ions is the nous ending, for several people including yourself."
+        },
+        {
+          "answers": [
+            "parlaient"
+          ],
+          "why": "-aient goes with ils and elles, a plural subject."
+        },
+        {
+          "answers": [
+            "parles",
+            "tu parles"
+          ],
+          "why": "That is the present tense of parler with tu; the question asks for the imparfait."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "imparfait-endings-2",
@@ -40,7 +644,28 @@
       ],
       "hint": "Match the ending to the subject nous.",
       "feedback": "Each person has its own ending. Find the one that goes with nous.",
-      "explanation": "Nous takes -ions: nous jouions. -iez is for vous, -aient for ils and elles, -ais for je and tu."
+      "explanation": "Nous takes -ions: nous jouions. -iez is for vous, -aient for ils and elles, -ais for je and tu.",
+      "mistakes": [
+        {
+          "answers": [
+            "jouiez"
+          ],
+          "why": "-iez is the vous ending. The subject of this sentence is nous, which has an ending of its own."
+        },
+        {
+          "answers": [
+            "jouaient"
+          ],
+          "why": "-aient goes with a plural subject like ils or elles, not with a group that includes you."
+        },
+        {
+          "answers": [
+            "jouais"
+          ],
+          "why": "-ais is the je and tu ending, for one single person."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "imparfait-endings-3",
@@ -53,7 +678,34 @@
       ],
       "hint": "Mes grands-parents can be replaced by ils. Which ending goes with ils?",
       "feedback": "The subject is plural, so it needs the plural ending.",
-      "explanation": "The stem habit- comes from nous habitons. A plural subject takes -aient: habitaient. The -ent is silent."
+      "explanation": "The stem habit- comes from nous habitons. A plural subject takes -aient: habitaient. The -ent is silent.",
+      "mistakes": [
+        {
+          "answers": [
+            "habitait"
+          ],
+          "why": "-ait is the ending for one person, il or elle. Mes grands-parents is two people."
+        },
+        {
+          "answers": [
+            "habitions"
+          ],
+          "why": "-ions goes with nous. Mes grands-parents is a they, not a we."
+        },
+        {
+          "answers": [
+            "habitais"
+          ],
+          "why": "-ais belongs to je and tu, both singular."
+        },
+        {
+          "answers": [
+            "habitent"
+          ],
+          "why": "That is the present tense: it says where they live now, not where they lived."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "imparfait-endings-4",
@@ -66,7 +718,34 @@
       ],
       "hint": "Look at the subject: vous.",
       "feedback": "The ending -ais belongs to je and tu, not to vous.",
-      "explanation": "Vous takes -iez in the imparfait: vous regardiez."
+      "explanation": "Vous takes -iez in the imparfait: vous regardiez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le soir, vous regardais la télé."
+          ],
+          "why": "That is the sentence unchanged: -ais is the je and tu ending, and the subject is vous."
+        },
+        {
+          "answers": [
+            "Le soir, vous regardait la télé."
+          ],
+          "why": "-ait is for il, elle or on. Vous is another person entirely."
+        },
+        {
+          "answers": [
+            "Le soir, vous regardions la télé."
+          ],
+          "why": "-ions is the nous ending, for a group including yourself."
+        },
+        {
+          "answers": [
+            "Le soir, vous regardez la télé."
+          ],
+          "why": "That is the present tense: it says what you watch now, not what you used to watch."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "imparfait-endings-5",
@@ -86,7 +765,16 @@
       ],
       "hint": "Elles is plural.",
       "feedback": "Choose the verb tile whose ending matches elles.",
-      "explanation": "Elles takes -aient: elles écoutaient. Écoutait is the form for il or elle."
+      "explanation": "Elles takes -aient: elles écoutaient. Écoutait is the form for il or elle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elles écoutait la radio."
+          ],
+          "why": "That tile carries the ending for one person, il or elle. Elles is a group of women."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "imparfait-nous-stem-1",
@@ -100,7 +788,41 @@
       ],
       "hint": "Start from the nous form of the present: nous finissons.",
       "feedback": "Keep the whole nous stem, including -iss-.",
-      "explanation": "Nous finissons gives the stem finiss-, and je takes -ais: je finissais."
+      "explanation": "Nous finissons gives the stem finiss-, and je takes -ais: je finissais.",
+      "mistakes": [
+        {
+          "answers": [
+            "finais",
+            "je finais"
+          ],
+          "why": "That cuts the stem down to the infinitive. The nous form of the present keeps a longer stem, and the imparfait keeps all of it."
+        },
+        {
+          "answers": [
+            "finissait"
+          ],
+          "why": "-ait is the il, elle and on ending. The subject given is je."
+        },
+        {
+          "answers": [
+            "finissions"
+          ],
+          "why": "-ions is the nous ending."
+        },
+        {
+          "answers": [
+            "finissaient"
+          ],
+          "why": "-aient goes with ils or elles."
+        },
+        {
+          "answers": [
+            "finissons"
+          ],
+          "why": "That is the present nous form. It is where the stem comes from, not the form asked for."
+        }
+      ],
+      "row": "finir"
     },
     {
       "id": "imparfait-nous-stem-2",
@@ -119,7 +841,28 @@
       ],
       "hint": "What is the nous form of boire in the present?",
       "feedback": "The stem comes from the nous form, not from ils or from the infinitive.",
-      "explanation": "Nous buvons gives the stem buv-, so il buvait. Boiv- comes from ils boivent, and buvaient is the plural form."
+      "explanation": "Nous buvons gives the stem buv-, so il buvait. Boiv- comes from ils boivent, and buvaient is the plural form.",
+      "mistakes": [
+        {
+          "answers": [
+            "boivait"
+          ],
+          "why": "Boiv- is taken from ils boivent. The imparfait stem comes from the nous form of the present, not from the ils form."
+        },
+        {
+          "answers": [
+            "bevait"
+          ],
+          "why": "That stem exists nowhere: neither the infinitive nor the nous form of boire has bev-."
+        },
+        {
+          "answers": [
+            "buvaient"
+          ],
+          "why": "-aient is the plural ending, for ils or elles. Mon père is one person."
+        }
+      ],
+      "row": "boire"
     },
     {
       "id": "imparfait-nous-stem-3",
@@ -132,7 +875,34 @@
       ],
       "hint": "Nous faisons gives the stem.",
       "feedback": "Build the form on the nous stem, then add the tu ending.",
-      "explanation": "Nous faisons gives fais-, and tu takes -ais: tu faisais."
+      "explanation": "Nous faisons gives fais-, and tu takes -ais: tu faisais.",
+      "mistakes": [
+        {
+          "answers": [
+            "faisait"
+          ],
+          "why": "-ait is the ending of il, elle and on. The subject here is tu."
+        },
+        {
+          "answers": [
+            "faisiez"
+          ],
+          "why": "-iez belongs to vous. Tu is one person you know well."
+        },
+        {
+          "answers": [
+            "faisions"
+          ],
+          "why": "-ions goes with nous."
+        },
+        {
+          "answers": [
+            "fesais"
+          ],
+          "why": "Faire keeps the spelling fais-, taken from nous faisons, even though it is pronounced like fe."
+        }
+      ],
+      "row": "faire"
     },
     {
       "id": "imparfait-nous-stem-4",
@@ -145,7 +915,34 @@
       ],
       "hint": "Keep the stem of nous lisons and change only the ending.",
       "feedback": "In the imparfait the nous ending is not -ons.",
-      "explanation": "Nous lisons gives the stem lis-, and nous takes -ions: nous lisions."
+      "explanation": "Nous lisons gives the stem lis-, and nous takes -ions: nous lisions.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous lisons le journal."
+          ],
+          "why": "That is still the present tense: -ons is the present nous ending."
+        },
+        {
+          "answers": [
+            "Nous lisaient le journal."
+          ],
+          "why": "-aient goes with ils or elles, not with a group including yourself."
+        },
+        {
+          "answers": [
+            "Nous lisiez le journal."
+          ],
+          "why": "-iez is the vous ending."
+        },
+        {
+          "answers": [
+            "Nous lissions le journal."
+          ],
+          "why": "Lire has a single s: the stem is exactly what nous lisons leaves behind."
+        }
+      ],
+      "row": "lire"
     },
     {
       "id": "imparfait-nous-stem-5",
@@ -158,7 +955,34 @@
       ],
       "hint": "Compare the verb with nous finissons.",
       "feedback": "Part of the nous stem is missing.",
-      "explanation": "Finir keeps -iss- from nous finissons: je finissais."
+      "explanation": "Finir keeps -iss- from nous finissons: je finissais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je finisais mes devoirs à cinq heures."
+          ],
+          "why": "That is the sentence unchanged, with one s. The nous form of the present has two, and the imparfait keeps them both."
+        },
+        {
+          "answers": [
+            "Je finais mes devoirs à cinq heures."
+          ],
+          "why": "That drops the whole extra syllable. The stem of finir keeps everything the present nous form has before -ons."
+        },
+        {
+          "answers": [
+            "Je finissait mes devoirs à cinq heures."
+          ],
+          "why": "-ait is the ending for il, elle or on; the subject is je."
+        },
+        {
+          "answers": [
+            "Je finissions mes devoirs à cinq heures."
+          ],
+          "why": "-ions is the nous ending."
+        }
+      ],
+      "row": "finir"
     },
     {
       "id": "imparfait-nous-stem-6",
@@ -177,7 +1001,40 @@
       ],
       "hint": "Used to describes a habit. Think of nous buvons.",
       "feedback": "Check the stem of boire and the ending for tu.",
-      "explanation": "A past habit takes the imparfait. Nous buvons gives buv-, so tu buvais."
+      "explanation": "A past habit takes the imparfait. Nous buvons gives buv-, so tu buvais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu boivais beaucoup de lait."
+          ],
+          "why": "Boiv- comes from ils boivent. The stem has to come from the nous form of the present instead."
+        },
+        {
+          "answers": [
+            "Tu buvait beaucoup de lait."
+          ],
+          "why": "-ait is the il and elle ending. Tu takes the same ending as je."
+        },
+        {
+          "answers": [
+            "Vous buviez beaucoup de lait."
+          ],
+          "why": "That is the polite or plural you, but the exercise says you are speaking to a friend."
+        },
+        {
+          "answers": [
+            "Tu bois beaucoup de lait."
+          ],
+          "why": "That is the present tense: it says you drink milk now, not that you used to."
+        },
+        {
+          "answers": [
+            "Tu buvais beaucoup du lait."
+          ],
+          "why": "After beaucoup, French uses de alone before the noun, never du."
+        }
+      ],
+      "row": "boire"
     },
     {
       "id": "imparfait-etre-1",
@@ -191,7 +1048,42 @@
       ],
       "hint": "Être does not follow the nous-stem rule. It has a special stem.",
       "feedback": "Nous sommes cannot give the stem. Use the special stem of être.",
-      "explanation": "Être is the only exception: its stem is ét-, so nous étions."
+      "explanation": "Être is the only exception: its stem is ét-, so nous étions.",
+      "mistakes": [
+        {
+          "answers": [
+            "sommions",
+            "nous sommions"
+          ],
+          "why": "That builds a stem on nous sommes, but être is the one verb whose imparfait stem does not come from the present nous form. The word does not exist."
+        },
+        {
+          "answers": [
+            "étaient"
+          ],
+          "why": "-aient is the ils and elles ending."
+        },
+        {
+          "answers": [
+            "étiez"
+          ],
+          "why": "-iez belongs to vous."
+        },
+        {
+          "answers": [
+            "étais"
+          ],
+          "why": "-ais is for je and tu, one person only."
+        },
+        {
+          "answers": [
+            "sommes",
+            "nous sommes"
+          ],
+          "why": "That is the present tense of être; the question asks for the past."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "imparfait-etre-2",
@@ -210,7 +1102,28 @@
       ],
       "hint": "The subject is mon frère, which is like il, and être has its own stem.",
       "feedback": "Check both the special stem of être and the ending for il.",
-      "explanation": "Être uses the stem ét-, and mon frère (il) takes -ait: mon frère était. Sommait is built wrongly on nous sommes."
+      "explanation": "Être uses the stem ét-, and mon frère (il) takes -ait: mon frère était. Sommait is built wrongly on nous sommes.",
+      "mistakes": [
+        {
+          "answers": [
+            "étais"
+          ],
+          "why": "-ais is the ending of je and tu. Mon frère is a he, so it needs the il ending."
+        },
+        {
+          "answers": [
+            "étaient"
+          ],
+          "why": "-aient is for a plural subject like ils. Mon frère is one person."
+        },
+        {
+          "answers": [
+            "sommait"
+          ],
+          "why": "That builds a stem on nous sommes. Être takes a special stem instead, and sommait is not a French word."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "imparfait-etre-3",
@@ -223,7 +1136,34 @@
       ],
       "hint": "Être is the exception to the nous-stem rule.",
       "feedback": "The imparfait of être is not built on nous sommes.",
-      "explanation": "The imparfait stem of être is ét-: nous étions."
+      "explanation": "The imparfait stem of être is ét-: nous étions.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous sommions contents de te voir."
+          ],
+          "why": "That is the sentence unchanged. Sommions is built on nous sommes, and être is exactly the verb that does not work that way."
+        },
+        {
+          "answers": [
+            "Nous sommes contents de te voir."
+          ],
+          "why": "That is the present tense: it says how we feel now, not how we felt then."
+        },
+        {
+          "answers": [
+            "Nous étaient contents de te voir."
+          ],
+          "why": "-aient goes with ils or elles; nous has an ending of its own."
+        },
+        {
+          "answers": [
+            "Nous étiez contents de te voir."
+          ],
+          "why": "-iez is the vous ending, and the subject here is nous."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "imparfait-etre-4",
@@ -236,7 +1176,40 @@
       ],
       "hint": "Use the special stem of être and the vous ending.",
       "feedback": "Start with the stem ét- and add the ending for vous.",
-      "explanation": "Ét- plus -iez gives vous étiez."
+      "explanation": "Ét- plus -iez gives vous étiez.",
+      "mistakes": [
+        {
+          "answers": [
+            "étaient"
+          ],
+          "why": "-aient is the ils and elles ending; vous has its own."
+        },
+        {
+          "answers": [
+            "étions"
+          ],
+          "why": "-ions goes with nous, a group including yourself."
+        },
+        {
+          "answers": [
+            "étais"
+          ],
+          "why": "-ais belongs to je and tu, one single person."
+        },
+        {
+          "answers": [
+            "sommiez"
+          ],
+          "why": "That builds a stem on nous sommes. Être uses a special stem, and sommiez is not a word."
+        },
+        {
+          "answers": [
+            "êtes"
+          ],
+          "why": "That is the present tense of être with vous; the sentence talks about last July."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "imparfait-etre-5",
@@ -249,7 +1222,40 @@
       ],
       "hint": "Être has a special stem. Add the plural ending.",
       "feedback": "Check the stem of être and the ending for ils.",
-      "explanation": "Ét- plus -aient gives ils étaient. À plus l’école stays à l’école."
+      "explanation": "Ét- plus -aient gives ils étaient. À plus l’école stays à l’école.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elles étaient à l’école."
+          ],
+          "why": "Elles is the feminine they, and the exercise says the group is masculine."
+        },
+        {
+          "answers": [
+            "Ils était à l’école."
+          ],
+          "why": "-ait is the singular ending for il; ils is plural."
+        },
+        {
+          "answers": [
+            "Ils étions à l’école."
+          ],
+          "why": "-ions belongs to nous."
+        },
+        {
+          "answers": [
+            "Ils sont à l’école."
+          ],
+          "why": "That is the present tense: it says where they are now."
+        },
+        {
+          "answers": [
+            "Ils étaient à la école."
+          ],
+          "why": "École starts with a vowel, so la drops its vowel in front of it."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "imparfait-etre-6",
@@ -269,7 +1275,16 @@
       ],
       "hint": "Être does not use nous sommes as its stem.",
       "feedback": "One verb tile is built on the wrong stem.",
-      "explanation": "The imparfait of être is nous étions. Sommions does not exist."
+      "explanation": "The imparfait of être is nous étions. Sommions does not exist.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous sommions très fatigués."
+          ],
+          "why": "That tile is built on nous sommes. Être is the one verb that does not take its imparfait stem from the present nous form, and sommions does not exist."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "imparfait-spelling-1",
@@ -283,7 +1298,41 @@
       ],
       "hint": "Before the letter a, the g needs help to stay soft.",
       "feedback": "Without an extra letter, the g would sound hard before a.",
-      "explanation": "Nous mangeons keeps an e after the g, so je mangeais keeps it too."
+      "explanation": "Nous mangeons keeps an e after the g, so je mangeais keeps it too.",
+      "mistakes": [
+        {
+          "answers": [
+            "mangais",
+            "je mangais"
+          ],
+          "why": "Without the extra letter the g comes straight before a and would sound hard, as in gare."
+        },
+        {
+          "answers": [
+            "mangeait"
+          ],
+          "why": "-ait is the ending of il, elle and on; the subject given is je."
+        },
+        {
+          "answers": [
+            "mangeaient"
+          ],
+          "why": "-aient goes with ils or elles, a plural subject."
+        },
+        {
+          "answers": [
+            "mangeions"
+          ],
+          "why": "Before an i the g is already soft, so nothing extra is written, and -ions is the nous ending anyway."
+        },
+        {
+          "answers": [
+            "mangeons"
+          ],
+          "why": "That is the present nous form, the form the stem is taken from."
+        }
+      ],
+      "row": "manger"
     },
     {
       "id": "imparfait-spelling-2",
@@ -298,7 +1347,35 @@
       "strictAccents": true,
       "hint": "Before the letter i, does the c need a cedilla?",
       "feedback": "The cedilla is only needed before a, o and u.",
-      "explanation": "C already sounds like s before i, so there is no ç: nous commencions."
+      "explanation": "C already sounds like s before i, so there is no ç: nous commencions.",
+      "mistakes": [
+        {
+          "answers": [
+            "commençions",
+            "nous commençions"
+          ],
+          "why": "The cedilla is only needed before a, o and u. Before i, c already sounds like s."
+        },
+        {
+          "answers": [
+            "commençait"
+          ],
+          "why": "-ait is the il and elle ending; the subject given is nous."
+        },
+        {
+          "answers": [
+            "commençaient"
+          ],
+          "why": "-aient is the ils and elles ending; the subject given is nous."
+        },
+        {
+          "answers": [
+            "commencons"
+          ],
+          "why": "That is a present form, and the present nous form needs a cedilla before its o."
+        }
+      ],
+      "row": "commencer"
     },
     {
       "id": "imparfait-spelling-3",
@@ -317,7 +1394,28 @@
       ],
       "hint": "Before the i of -ions, is the extra e needed?",
       "feedback": "The g of nager only needs an e before a or o. Check the subject too.",
-      "explanation": "G is already soft before i, so nous nagions has no e. Nageaient and nageais keep the e but belong to other persons."
+      "explanation": "G is already soft before i, so nous nagions has no e. Nageaient and nageais keep the e but belong to other persons.",
+      "mistakes": [
+        {
+          "answers": [
+            "nageions"
+          ],
+          "why": "The extra e is only written before a and o, to keep the g soft. Before the i of this ending the g is soft already."
+        },
+        {
+          "answers": [
+            "nageaient"
+          ],
+          "why": "-aient goes with ils or elles; the subject here is nous."
+        },
+        {
+          "answers": [
+            "nageais"
+          ],
+          "why": "-ais is the je and tu ending, for one person."
+        }
+      ],
+      "row": "nager"
     },
     {
       "id": "imparfait-spelling-4",
@@ -331,7 +1429,40 @@
       "strictAccents": true,
       "hint": "The ending for il begins with the letter a.",
       "feedback": "Before a, the c needs a mark to keep its s sound.",
-      "explanation": "Before a, c becomes ç to stay soft: le cours commençait."
+      "explanation": "Before a, c becomes ç to stay soft: le cours commençait.",
+      "mistakes": [
+        {
+          "answers": [
+            "commencait"
+          ],
+          "why": "Without its mark, c before a sounds like k. The s sound has to be written."
+        },
+        {
+          "answers": [
+            "commençaient"
+          ],
+          "why": "-aient is for a plural subject; le cours is one thing."
+        },
+        {
+          "answers": [
+            "commençais"
+          ],
+          "why": "-ais is the je and tu ending."
+        },
+        {
+          "answers": [
+            "commençions"
+          ],
+          "why": "-ions belongs to nous, and before an i no cedilla is written."
+        },
+        {
+          "answers": [
+            "commence"
+          ],
+          "why": "That is the present tense: it says when the class starts now, not what happened every day at school."
+        }
+      ],
+      "row": "commencer"
     },
     {
       "id": "imparfait-spelling-5",
@@ -344,7 +1475,28 @@
       ],
       "hint": "Say mangaient aloud. Is the g soft?",
       "feedback": "A -ger verb needs an extra letter before a.",
-      "explanation": "Before a, -ger verbs keep the e of nous mangeons: ils mangeaient."
+      "explanation": "Before a, -ger verbs keep the e of nous mangeons: ils mangeaient.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils mangaient au restaurant le samedi."
+          ],
+          "why": "That is the sentence unchanged: the g comes straight before a and would sound hard, as in gare."
+        },
+        {
+          "answers": [
+            "Ils mangeait au restaurant le samedi."
+          ],
+          "why": "-ait is the singular ending for il or elle; ils is plural."
+        },
+        {
+          "answers": [
+            "Ils mangent au restaurant le samedi."
+          ],
+          "why": "That is the present tense: it says where they eat now, not what they used to do."
+        }
+      ],
+      "row": "manger"
     },
     {
       "id": "imparfait-spelling-6",
@@ -357,7 +1509,34 @@
       ],
       "hint": "Voyager is a -ger verb, like manger.",
       "feedback": "Check the letter between the g and the ending.",
-      "explanation": "Nous voyageons keeps the e before the ending -ais: tu voyageais."
+      "explanation": "Nous voyageons keeps the e before the ending -ais: tu voyageais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu voyages beaucoup."
+          ],
+          "why": "That is the sentence unchanged, still in the present tense."
+        },
+        {
+          "answers": [
+            "Tu voyagais beaucoup."
+          ],
+          "why": "A -ger verb needs its extra letter before a, otherwise the g sounds hard, as in gare."
+        },
+        {
+          "answers": [
+            "Tu voyageait beaucoup."
+          ],
+          "why": "-ait is the ending of il, elle and on; tu shares its ending with je."
+        },
+        {
+          "answers": [
+            "Tu voyagiez beaucoup."
+          ],
+          "why": "-iez belongs to vous, and before an i the g needs nothing extra."
+        }
+      ],
+      "row": "voyager"
     },
     {
       "id": "imparfait-spelling-7",
@@ -371,7 +1550,34 @@
       "strictAccents": true,
       "hint": "The ending for elle begins with the letter a.",
       "feedback": "As written, the c would sound like k.",
-      "explanation": "Before a, c becomes ç to keep its s sound: elle lançait."
+      "explanation": "Before a, c becomes ç to keep its s sound: elle lançait.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle lancait la balle au chien."
+          ],
+          "why": "That is the sentence unchanged. Before a, a plain c sounds like k, so the soft sound has to be marked."
+        },
+        {
+          "answers": [
+            "Elle lançaient la balle au chien."
+          ],
+          "why": "-aient is the plural ending for ils or elles; elle is one person."
+        },
+        {
+          "answers": [
+            "Elle lançais la balle au chien."
+          ],
+          "why": "-ais belongs to je and tu."
+        },
+        {
+          "answers": [
+            "Elle lance la balle au chien."
+          ],
+          "why": "That is the present tense: it says what she does now."
+        }
+      ],
+      "row": "lancer"
     },
     {
       "id": "imparfait-description-1",
@@ -384,7 +1590,40 @@
       ],
       "hint": "Weather is described with il and the verb faire.",
       "feedback": "French does not use être for the weather.",
-      "explanation": "Weather in a past description uses il faisait: il faisait froid."
+      "explanation": "Weather in a past description uses il faisait: il faisait froid.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il était froid."
+          ],
+          "why": "That says some thing was cold to the touch. French describes the weather with the verb faire."
+        },
+        {
+          "answers": [
+            "C’était froid."
+          ],
+          "why": "C’était froid comments on something you touched or tasted, not on the weather outside."
+        },
+        {
+          "answers": [
+            "Il avait froid."
+          ],
+          "why": "Avoir froid means a person feels cold; the sentence is about the weather."
+        },
+        {
+          "answers": [
+            "Il a fait froid."
+          ],
+          "why": "That is the passé composé, which reports a finished stretch of weather. A background description takes the imparfait."
+        },
+        {
+          "answers": [
+            "Il faisais froid."
+          ],
+          "why": "-ais is the je and tu ending; a weather verb always goes with il."
+        }
+      ],
+      "row": "it was cold"
     },
     {
       "id": "imparfait-description-2",
@@ -397,7 +1636,40 @@
       ],
       "hint": "Maison is feminine. This is a description, so use être.",
       "feedback": "Check the imparfait of être and the agreement of the adjective.",
-      "explanation": "A description in the past takes the imparfait: la maison était grande, with grande agreeing with maison."
+      "explanation": "A description in the past takes the imparfait: la maison était grande, with grande agreeing with maison.",
+      "mistakes": [
+        {
+          "answers": [
+            "La maison était grand."
+          ],
+          "why": "Maison is feminine, so the adjective needs its feminine form with an e."
+        },
+        {
+          "answers": [
+            "Le maison était grande."
+          ],
+          "why": "Maison is feminine, so its article is la."
+        },
+        {
+          "answers": [
+            "La maison étaient grande."
+          ],
+          "why": "-aient is the plural ending; la maison is one single thing."
+        },
+        {
+          "answers": [
+            "La maison a été grande."
+          ],
+          "why": "The passé composé presents a finished event. Describing how something looked takes the imparfait."
+        },
+        {
+          "answers": [
+            "La maison avait grande."
+          ],
+          "why": "Avoir is not used with an adjective like this; being big is a quality, so it needs the verb for being."
+        }
+      ],
+      "row": "the house was big"
     },
     {
       "id": "imparfait-description-3",
@@ -410,7 +1682,34 @@
       ],
       "hint": "Il y a becomes il y + the imparfait of avoir in a past description.",
       "feedback": "Use the stem of nous avons and the il ending.",
-      "explanation": "Il y avait means there was or there were: nous avons gives av-, plus -ait."
+      "explanation": "Il y avait means there was or there were: nous avons gives av-, plus -ait.",
+      "mistakes": [
+        {
+          "answers": [
+            "avais"
+          ],
+          "why": "-ais is the je and tu ending. Il y takes the il ending."
+        },
+        {
+          "answers": [
+            "avaient"
+          ],
+          "why": "Il y a always keeps its singular il, even when many things follow it."
+        },
+        {
+          "answers": [
+            "était"
+          ],
+          "why": "Il y a is built on avoir, not on être: il y était does not mean there was."
+        },
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "That is the present tense: it says what is in the garden now, not what was there."
+        }
+      ],
+      "row": "there was / there were"
     },
     {
       "id": "imparfait-description-4",
@@ -429,7 +1728,27 @@
       ],
       "hint": "The subject is le ciel, one thing.",
       "feedback": "Match the ending to a singular subject.",
-      "explanation": "Le ciel is like il, so the ending is -ait: était. Été is a past participle, not a conjugated form."
+      "explanation": "Le ciel is like il, so the ending is -ait: était. Été is a past participle, not a conjugated form.",
+      "mistakes": [
+        {
+          "answers": [
+            "étais"
+          ],
+          "why": "-ais is the ending of je and tu. Le ciel is an it, so it takes the il ending."
+        },
+        {
+          "answers": [
+            "étaient"
+          ],
+          "why": "-aient is for a plural subject like ils; le ciel is one thing."
+        },
+        {
+          "answers": [
+            "été"
+          ],
+          "why": "Été is the past participle, used after avoir in il a été. On its own it is not a conjugated form."
+        }
+      ]
     },
     {
       "id": "imparfait-description-5",
@@ -451,7 +1770,15 @@
       ],
       "hint": "Weather verbs take il.",
       "feedback": "One verb tile has the wrong ending for il.",
-      "explanation": "Pleuvoir and faire for the weather use il: il pleuvait, il faisait froid."
+      "explanation": "Pleuvoir and faire for the weather use il: il pleuvait, il faisait froid.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il pleuvais et il faisait froid."
+          ],
+          "why": "That tile carries the je and tu ending. A weather verb always goes with il."
+        }
+      ]
     },
     {
       "id": "imparfait-description-6",
@@ -464,7 +1791,33 @@
       ],
       "hint": "Change only the verb.",
       "feedback": "Use the special imparfait stem of être.",
-      "explanation": "A past description takes the imparfait: la cuisine était petite et sombre."
+      "explanation": "A past description takes the imparfait: la cuisine était petite et sombre.",
+      "mistakes": [
+        {
+          "answers": [
+            "La cuisine est petite et sombre."
+          ],
+          "why": "That is the sentence unchanged, still describing the kitchen as it is now."
+        },
+        {
+          "answers": [
+            "La cuisine étaient petite et sombre."
+          ],
+          "why": "-aient is the plural ending; la cuisine is one room."
+        },
+        {
+          "answers": [
+            "La cuisine étais petite et sombre."
+          ],
+          "why": "-ais belongs to je and tu."
+        },
+        {
+          "answers": [
+            "La cuisine a été petite et sombre."
+          ],
+          "why": "The passé composé presents a finished event. A description of how a place looked takes the imparfait."
+        }
+      ]
     },
     {
       "id": "imparfait-habits-1",
@@ -477,7 +1830,33 @@
       ],
       "hint": "Aller looks irregular, but nous allons gives a regular stem.",
       "feedback": "Use the nous stem and the nous ending of the imparfait.",
-      "explanation": "A repeated past action takes the imparfait. Nous allons gives all-, plus -ions: nous allions."
+      "explanation": "A repeated past action takes the imparfait. Nous allons gives all-, plus -ions: nous allions.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tous les étés, nous allons à la mer."
+          ],
+          "why": "That is the sentence unchanged, still in the present tense."
+        },
+        {
+          "answers": [
+            "Tous les étés, nous allaient à la mer."
+          ],
+          "why": "-aient goes with ils or elles, not with a group including yourself."
+        },
+        {
+          "answers": [
+            "Tous les étés, nous alliez à la mer."
+          ],
+          "why": "-iez is the vous ending."
+        },
+        {
+          "answers": [
+            "Tous les étés, nous irions à la mer."
+          ],
+          "why": "That is the conditional, we would go if something happened. A repeated past summer is not a condition."
+        }
+      ]
     },
     {
       "id": "imparfait-habits-2",
@@ -496,7 +1875,39 @@
       ],
       "hint": "Used to describes a habit.",
       "feedback": "French has no separate word for used to; the tense carries it.",
-      "explanation": "The imparfait expresses a past habit: elle travaillait dans une banque."
+      "explanation": "The imparfait expresses a past habit: elle travaillait dans une banque.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle a travaillé dans une banque."
+          ],
+          "why": "The passé composé presents the job as one finished event. Used to points to a repeated situation."
+        },
+        {
+          "answers": [
+            "Elle travaille dans une banque."
+          ],
+          "why": "That is the present tense: it says she works there now."
+        },
+        {
+          "answers": [
+            "Elle travaillais dans une banque."
+          ],
+          "why": "-ais is the je and tu ending; elle takes the il and elle ending."
+        },
+        {
+          "answers": [
+            "Elle travaillaient dans une banque."
+          ],
+          "why": "-aient is for a plural subject like elles; elle is one person."
+        },
+        {
+          "answers": [
+            "Elle travaillait dans un banque."
+          ],
+          "why": "Banque is feminine, so the article before it needs its feminine form."
+        }
+      ]
     },
     {
       "id": "imparfait-habits-3",
@@ -509,7 +1920,33 @@
       ],
       "hint": "Start from nous levons and add the je ending.",
       "feedback": "The stem comes from nous levons, so there is no accent.",
-      "explanation": "D’habitude signals a habit. Nous levons gives lev-, plus -ais: je me levais."
+      "explanation": "D’habitude signals a habit. Nous levons gives lev-, plus -ais: je me levais.",
+      "mistakes": [
+        {
+          "answers": [
+            "levait"
+          ],
+          "why": "-ait is the ending of il, elle and on; the subject here is je."
+        },
+        {
+          "answers": [
+            "levions"
+          ],
+          "why": "-ions goes with nous."
+        },
+        {
+          "answers": [
+            "levaient"
+          ],
+          "why": "-aient goes with ils or elles."
+        },
+        {
+          "answers": [
+            "lève"
+          ],
+          "why": "That is the present tense, and the present adds an accent to the e. The sentence describes a habit that is over."
+        }
+      ]
     },
     {
       "id": "imparfait-habits-4",
@@ -528,7 +1965,27 @@
       ],
       "hint": "Les enfants can be replaced by ils.",
       "feedback": "The stem of aller in the imparfait comes from nous allons.",
-      "explanation": "Les enfants is plural: ils allaient. Vaient is not a form of aller."
+      "explanation": "Les enfants is plural: ils allaient. Vaient is not a form of aller.",
+      "mistakes": [
+        {
+          "answers": [
+            "allait"
+          ],
+          "why": "-ait is the singular ending for il or elle; les enfants is plural."
+        },
+        {
+          "answers": [
+            "allions"
+          ],
+          "why": "-ions is the nous ending; les enfants is a they, not a we."
+        },
+        {
+          "answers": [
+            "vaient"
+          ],
+          "why": "That takes v- from ils vont. The imparfait stem of aller comes from the nous form of the present instead."
+        }
+      ]
     },
     {
       "id": "imparfait-habits-5",
@@ -548,7 +2005,15 @@
       ],
       "hint": "On takes the same ending as il.",
       "feedback": "On means we here, but its verb ending is singular.",
-      "explanation": "On takes the il ending -ait: on sortait. Autrefois marks a past habit."
+      "explanation": "On takes the il ending -ait: on sortait. Autrefois marks a past habit.",
+      "mistakes": [
+        {
+          "answers": [
+            "Autrefois, on sortions souvent."
+          ],
+          "why": "On means we here, but it always takes the same ending as il."
+        }
+      ]
     },
     {
       "id": "imparfait-habits-6",
@@ -561,7 +2026,39 @@
       ],
       "hint": "Mes cousins is plural.",
       "feedback": "The ending does not match the subject.",
-      "explanation": "A plural subject takes -aient: mes cousins venaient."
+      "explanation": "A plural subject takes -aient: mes cousins venaient.",
+      "mistakes": [
+        {
+          "answers": [
+            "Chaque été, mes cousins venait chez nous."
+          ],
+          "why": "That is the sentence unchanged: -ait is the ending for one person, and mes cousins is several."
+        },
+        {
+          "answers": [
+            "Chaque été, mes cousins venais chez nous."
+          ],
+          "why": "-ais belongs to je and tu, both singular."
+        },
+        {
+          "answers": [
+            "Chaque été, mes cousins venions chez nous."
+          ],
+          "why": "-ions is the nous ending; mes cousins is a they, not a we."
+        },
+        {
+          "answers": [
+            "Chaque été, mes cousins viennent chez nous."
+          ],
+          "why": "That is the present tense, and its stem comes from ils, not from the nous form of the present."
+        },
+        {
+          "answers": [
+            "Chaque été, mes cousins vienaient chez nous."
+          ],
+          "why": "The stem is what nous venons leaves behind, so it keeps the e of ven- and a single n."
+        }
+      ]
     },
     {
       "id": "imparfait-age-states-1",
@@ -575,7 +2072,40 @@
       ],
       "hint": "French uses avoir for age.",
       "feedback": "Age is not expressed with être in French.",
-      "explanation": "Age in the past takes the imparfait of avoir: j’avais dix ans."
+      "explanation": "Age in the past takes the imparfait of avoir: j’avais dix ans.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’étais dix ans."
+          ],
+          "why": "That uses the verb for being. French counts age with the verb for having: you have ten years."
+        },
+        {
+          "answers": [
+            "Je avais dix ans."
+          ],
+          "why": "Je loses its vowel before another vowel; je avais is never written."
+        },
+        {
+          "answers": [
+            "J’ai dix ans."
+          ],
+          "why": "That is the present tense: it gives your age now, not the age you were."
+        },
+        {
+          "answers": [
+            "J’avais dix années."
+          ],
+          "why": "After a number, age is counted in ans; années is used for years in other senses."
+        },
+        {
+          "answers": [
+            "J’étais dix ans vieux."
+          ],
+          "why": "That copies the English words one by one. French adds no word for old and does not use the verb for being here."
+        }
+      ],
+      "row": "I was ten"
     },
     {
       "id": "imparfait-age-states-2",
@@ -588,7 +2118,34 @@
       ],
       "hint": "Tiredness is a state. Être has a special stem.",
       "feedback": "Use the stem ét- and the ending for elle.",
-      "explanation": "A state in the past takes the imparfait: Julie était très fatiguée."
+      "explanation": "A state in the past takes the imparfait: Julie était très fatiguée.",
+      "mistakes": [
+        {
+          "answers": [
+            "étais"
+          ],
+          "why": "-ais is the je and tu ending; Julie is a she."
+        },
+        {
+          "answers": [
+            "étaient"
+          ],
+          "why": "-aient is the plural ending; Julie is one person."
+        },
+        {
+          "answers": [
+            "avait"
+          ],
+          "why": "Avoir is for age, hunger and fear. Being tired is a quality of the person, so it takes the other verb."
+        },
+        {
+          "answers": [
+            "est"
+          ],
+          "why": "That is the present tense: it says how she is now, not how she was after that long day."
+        }
+      ],
+      "row": "I was tired"
     },
     {
       "id": "imparfait-age-states-3",
@@ -607,7 +2164,27 @@
       ],
       "hint": "Which verb expresses age in French?",
       "feedback": "Check the verb used for age, then the ending for nous.",
-      "explanation": "Age uses avoir: nous avions vingt ans. Étions is the wrong verb, aviez the wrong person, and avons the present."
+      "explanation": "Age uses avoir: nous avions vingt ans. Étions is the wrong verb, aviez the wrong person, and avons the present.",
+      "mistakes": [
+        {
+          "answers": [
+            "étions"
+          ],
+          "why": "That is être. French gives age with avoir: you have twenty years."
+        },
+        {
+          "answers": [
+            "aviez"
+          ],
+          "why": "-iez is the vous ending; the subject of this sentence is nous."
+        },
+        {
+          "answers": [
+            "avons"
+          ],
+          "why": "That is the present tense of avoir with nous, but the sentence describes a past time in Paris."
+        }
+      ]
     },
     {
       "id": "imparfait-age-states-4",
@@ -620,7 +2197,39 @@
       ],
       "hint": "Avoir follows the nous-stem rule. Être does not.",
       "feedback": "Change both verbs, and use the special stem for être.",
-      "explanation": "Hunger and sadness are states: tu avais faim, from nous avons, and tu étais, from the stem ét-."
+      "explanation": "Hunger and sadness are states: tu avais faim, from nous avons, and tu étais, from the stem ét-.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu as faim et tu es triste."
+          ],
+          "why": "That is the sentence unchanged: both verbs are still in the present."
+        },
+        {
+          "answers": [
+            "Tu avais faim et tu es triste."
+          ],
+          "why": "Only the first verb has moved into the past; the second one is still in the present."
+        },
+        {
+          "answers": [
+            "Tu as faim et tu étais triste."
+          ],
+          "why": "Only the second verb has moved into the past; the first one is still in the present."
+        },
+        {
+          "answers": [
+            "Tu étais faim et tu étais triste."
+          ],
+          "why": "Hunger is expressed with avoir in French, so the first verb is the wrong one."
+        },
+        {
+          "answers": [
+            "Tu avais faim et tu étaient triste."
+          ],
+          "why": "-aient is the plural ending for ils or elles; tu is one person."
+        }
+      ]
     },
     {
       "id": "imparfait-age-states-5",
@@ -634,7 +2243,40 @@
       ],
       "hint": "Start from nous avons.",
       "feedback": "Use the stem av- and the je ending. Remember the elision of je.",
-      "explanation": "Nous avons gives av-, plus -ais: j’avais."
+      "explanation": "Nous avons gives av-, plus -ais: j’avais.",
+      "mistakes": [
+        {
+          "answers": [
+            "avait"
+          ],
+          "why": "-ait is the ending of il, elle and on; the subject given is je."
+        },
+        {
+          "answers": [
+            "avions"
+          ],
+          "why": "-ions goes with nous."
+        },
+        {
+          "answers": [
+            "aviez"
+          ],
+          "why": "-iez goes with vous."
+        },
+        {
+          "answers": [
+            "avaient"
+          ],
+          "why": "-aient goes with ils and elles."
+        },
+        {
+          "answers": [
+            "je avais"
+          ],
+          "why": "Je loses its vowel in front of another vowel, so this spelling is never written."
+        }
+      ],
+      "row": "I was ten"
     },
     {
       "id": "imparfait-age-states-6",
@@ -647,7 +2289,34 @@
       ],
       "hint": "Mon frère is one person.",
       "feedback": "The ending is plural, but the subject is not.",
-      "explanation": "Mon frère is like il, so the ending is -ait: il avait peur."
+      "explanation": "Mon frère is like il, so the ending is -ait: il avait peur.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mon frère avaient peur des chiens."
+          ],
+          "why": "That is the sentence unchanged: -aient is the plural ending and mon frère is one person."
+        },
+        {
+          "answers": [
+            "Mon frère avais peur des chiens."
+          ],
+          "why": "-ais belongs to je and tu."
+        },
+        {
+          "answers": [
+            "Mon frère était peur des chiens."
+          ],
+          "why": "Fear is expressed with avoir in French, never with the verb for being."
+        },
+        {
+          "answers": [
+            "Mon frère a peur des chiens."
+          ],
+          "why": "That is the present tense: it says he is afraid now."
+        }
+      ],
+      "row": "I was afraid"
     },
     {
       "id": "imparfait-in-progress-1",
@@ -661,7 +2330,40 @@
       ],
       "hint": "Was …-ing describes an action in progress.",
       "feedback": "French has no separate -ing form here. Use the imparfait of lire.",
-      "explanation": "An action in progress in the past takes the imparfait: je lisais. J’étais en train de lire says the same thing."
+      "explanation": "An action in progress in the past takes the imparfait: je lisais. J’étais en train de lire says the same thing.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je lisait."
+          ],
+          "why": "-ait is the ending of il, elle and on; the subject is je."
+        },
+        {
+          "answers": [
+            "Je lisai."
+          ],
+          "why": "That ending belongs to the passé simple, a tense used only in written stories, and it presents the action as finished."
+        },
+        {
+          "answers": [
+            "J’ai lu."
+          ],
+          "why": "The passé composé presents the reading as over. Was reading shows it still going on."
+        },
+        {
+          "answers": [
+            "Je lis."
+          ],
+          "why": "That is the present tense: it says what you are reading now."
+        },
+        {
+          "answers": [
+            "J’étais lisant."
+          ],
+          "why": "French has no was …-ing form built with a participle; one verb in the past carries it."
+        }
+      ],
+      "row": "I was reading"
     },
     {
       "id": "imparfait-in-progress-2",
@@ -675,7 +2377,39 @@
       ],
       "hint": "Were …-ing describes an action in progress.",
       "feedback": "Use one verb in the imparfait, with the ending for a plural subject.",
-      "explanation": "An action in progress takes the imparfait: les enfants dormaient. Étaient en train de dormir is also correct."
+      "explanation": "An action in progress takes the imparfait: les enfants dormaient. Étaient en train de dormir is also correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "Les enfants dormait."
+          ],
+          "why": "-ait is the singular ending for il or elle; les enfants is plural."
+        },
+        {
+          "answers": [
+            "Les enfants ont dormi."
+          ],
+          "why": "The passé composé presents the sleeping as a finished event; were sleeping shows it in progress."
+        },
+        {
+          "answers": [
+            "Les enfants dorment."
+          ],
+          "why": "That is the present tense: it says they are asleep now."
+        },
+        {
+          "answers": [
+            "Les enfants dormissaient."
+          ],
+          "why": "That copies the extra syllable of finir. The stem of dormir is what nous dormons leaves behind."
+        },
+        {
+          "answers": [
+            "Les enfants étaient dormant."
+          ],
+          "why": "French has no was …-ing form built with a participle."
+        }
+      ]
     },
     {
       "id": "imparfait-in-progress-3",
@@ -694,7 +2428,27 @@
       ],
       "hint": "The subject is tu.",
       "feedback": "Check the stem from nous dormons and the tu ending.",
-      "explanation": "Nous dormons gives dorm-, and tu takes -ais: tu dormais. Dormissais wrongly copies finir."
+      "explanation": "Nous dormons gives dorm-, and tu takes -ais: tu dormais. Dormissais wrongly copies finir.",
+      "mistakes": [
+        {
+          "answers": [
+            "dormait"
+          ],
+          "why": "-ait is the ending of il, elle and on; tu shares its ending with je."
+        },
+        {
+          "answers": [
+            "dormiez"
+          ],
+          "why": "-iez belongs to vous, the polite or plural you."
+        },
+        {
+          "answers": [
+            "dormissais"
+          ],
+          "why": "That copies the extra syllable of finir. Nous dormons has no such syllable, so the stem does not either."
+        }
+      ]
     },
     {
       "id": "imparfait-in-progress-4",
@@ -707,7 +2461,39 @@
       ],
       "hint": "An action in progress at a moment in the past. Match the ending to nous.",
       "feedback": "The nous ending in the imparfait is not -ons.",
-      "explanation": "At noon the action was in progress: nous préparions, with the ending -ions."
+      "explanation": "At noon the action was in progress: nous préparions, with the ending -ions.",
+      "mistakes": [
+        {
+          "answers": [
+            "préparons"
+          ],
+          "why": "-ons is the present nous ending; in the imparfait nous has a different one."
+        },
+        {
+          "answers": [
+            "préparais"
+          ],
+          "why": "-ais is the je and tu ending, for one person."
+        },
+        {
+          "answers": [
+            "prépariez"
+          ],
+          "why": "-iez belongs to vous."
+        },
+        {
+          "answers": [
+            "préparaient"
+          ],
+          "why": "-aient goes with ils or elles."
+        },
+        {
+          "answers": [
+            "avons préparé"
+          ],
+          "why": "The passé composé presents the meal as finished; at noon the cooking was still going on."
+        }
+      ]
     },
     {
       "id": "imparfait-in-progress-5",
@@ -720,7 +2506,39 @@
       ],
       "hint": "Nous écrivons gives the stem.",
       "feedback": "Use one verb: écrire in the imparfait, with the ending for elle.",
-      "explanation": "The imparfait alone shows an action in progress: nous écrivons gives écriv-, so elle écrivait."
+      "explanation": "The imparfait alone shows an action in progress: nous écrivons gives écriv-, so elle écrivait.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle était en train d’écrire une lettre."
+          ],
+          "why": "That is the sentence unchanged. The task is to say the same thing with a single verb in the past."
+        },
+        {
+          "answers": [
+            "Elle écrit une lettre."
+          ],
+          "why": "That is the present tense: it says what she is writing now."
+        },
+        {
+          "answers": [
+            "Elle a écrit une lettre."
+          ],
+          "why": "The passé composé presents the letter as finished; the original shows the writing going on."
+        },
+        {
+          "answers": [
+            "Elle écrivais une lettre."
+          ],
+          "why": "-ais is the je and tu ending; elle takes the il and elle ending."
+        },
+        {
+          "answers": [
+            "Elle écriait une lettre."
+          ],
+          "why": "The stem is what nous écrivons leaves behind, so it keeps its v."
+        }
+      ]
     },
     {
       "id": "imparfait-in-progress-6",
@@ -741,7 +2559,15 @@
       ],
       "hint": "Mon père is like il.",
       "feedback": "One verb tile has the ending for je or tu.",
-      "explanation": "Mon père takes the il ending: lisait, from nous lisons."
+      "explanation": "Mon père takes the il ending: lisait, from nous lisons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mon père lisais le journal."
+          ],
+          "why": "That tile carries the je and tu ending. Mon père is a he."
+        }
+      ]
     }
   ]
 }

@@ -2,11 +2,11 @@ import { Database } from 'bun:sqlite';
 import { existsSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import type {
-  GrammarAnswerInput, GrammarExercise, GrammarFeedback, GrammarHelpInput, GrammarMiss, GrammarMode, GrammarMutation,
+  GrammarAnswerInput, GrammarExercise, GrammarFeedback, GrammarHelp, GrammarHelpInput, GrammarMiss, GrammarMode, GrammarMutation,
   GrammarResult, GrammarScopeKind, GrammarSession, GrammarSnapshot, GrammarTestSummary, GrammarTopic,
   GrammarTopicContent, GrammarUnitContent, GrammarUnitView,
 } from '../contract';
-import { classify, grammarSpeech, joinTokens, normalize, validateCourse, type Course } from './grammar-content';
+import { classify, grammarSpeech, joinTokens, mistakeFor, normalize, validateCourse, type Course } from './grammar-content';
 import { StoreError } from './store';
 
 export interface GrammarStore {
@@ -90,6 +90,7 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
   const topicById = new Map(topics.map((topic) => [topic.id, topic]));
   const unitById = new Map(units.map((unit) => [unit.id, unit]));
   const exerciseIds = new Map(topics.map((topic) => [topic.id, new Set(topic.exercises.map((exercise) => exercise.id))]));
+  const exerciseById = new Map(topics.flatMap((topic) => topic.exercises.map((exercise) => [exercise.id, exercise] as const)));
   const now = options.now ?? (() => new Date());
   const random = options.random ?? Math.random;
   const audioDir = options.audioDir ?? null;
@@ -209,16 +210,36 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
   }
 
   // Rounds saved before tests existed have no mode, topicId or misses: they are practice rounds of their key's topic.
+  // A round keeps the exercise as it was drawn (its shuffled options), but explains mistakes with the course's
+  // current list, so rounds saved before an exercise had mistakes still get them.
   function loadRound(row: SessionRow): Round {
     const round = JSON.parse(row.round_json) as Omit<Round, 'mode'> & { mode?: GrammarMode };
     return {
       ...round, mode: round.mode ?? 'practice',
-      exercises: round.exercises.map((item) => ({ ...item, topicId: item.topicId ?? row.topic_id, misses: item.misses ?? [] })),
+      exercises: round.exercises.map((item) => {
+        const fresh = exerciseById.get(item.content.id);
+        const { row: _row, ...content } = item.content;
+        return {
+          ...item, topicId: item.topicId ?? row.topic_id, misses: item.misses ?? [],
+          content: { ...content, mistakes: fresh?.mistakes ?? [], ...(fresh?.row ? { row: fresh.row } : {}) },
+        };
+      }),
     };
   }
 
-  function topicView(topic: GrammarTopicContent, lookup: Lookup): GrammarTopic {
-    const { exercises, ...content } = topic;
+  // The steps and guide section for an exercise's pattern, once a practice try missed or the exercise settled.
+  function helpFor(item: StoredExercise, mode: GrammarMode): GrammarHelp | null {
+    if (!item.settled && (mode === 'test' || !item.misses.length)) return null;
+    const topic = topicById.get(item.topicId);
+    const pattern = topic?.patterns[item.content.pattern];
+    const section = pattern && topic.guide.sections.find((entry) => entry.id === pattern.section);
+    if (!pattern || !section) return null;
+    return { steps: pattern.steps, section, row: item.settled ? item.content.row ?? null : null };
+  }
+
+  // The catalog lists every topic, so it leaves out the guide and pattern steps; a topic's own state carries them.
+  function topicView(topic: GrammarTopicContent, lookup: Lookup, full = false): GrammarTopic {
+    const { exercises, guide, patterns, ...content } = topic;
     const ids = exerciseIds.get(topic.id)!;
     const progress = { seen: 0, independent: 0, needsReview: 0 };
     for (const record of lookup.progress(topic.id)) {
@@ -228,7 +249,7 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
       else if (record.outcome) progress.needsReview += 1;
     }
     return {
-      ...content, exerciseCount: exercises.length,
+      ...content, ...(full ? { guide, patterns } : {}), exerciseCount: exercises.length,
       practiceLength: Math.min(PRACTICE_SIZE, exercises.length), testLength: Math.min(TOPIC_TEST_SIZE, exercises.length),
       progress, hasActiveSession: lookup.active(topic.id), hasActiveTest: lookup.active(`test:${topic.id}`), test: testSummary(lookup.tests(`test:${topic.id}`)),
     };
@@ -261,12 +282,12 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
       complete: !current,
       current: current && exercise ? {
         exercise: {
-          id: exercise.id, type: exercise.type, instruction: exercise.instruction, source: exercise.source,
+          id: exercise.id, type: exercise.type, instruction: exercise.instruction, source: exercise.source, pattern: exercise.pattern,
           ...(exercise.tokens ? { tokens: exercise.tokens } : {}), ...(exercise.options ? { options: exercise.options } : {}),
           topicId: current.topicId, topicTitle: topicTitle(current.topicId),
         },
         answer: current.answer, tokenOrder: current.tokenOrder, attempts: current.attempts, assisted: current.assisted,
-        hint: current.hint, feedback: current.feedback, settled: current.settled, misses: current.misses,
+        hint: current.hint, feedback: current.feedback, help: helpFor(current, round.mode), settled: current.settled, misses: current.misses,
         audio: current.settled ? clipFor(exercise.id) : null,
       } : null,
       results,
@@ -279,7 +300,7 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
     const row = latestSession.get(key);
     return {
       scope: key, kind: scope.kind,
-      topic: scope.topic ? topicView(scope.topic, direct) : null,
+      topic: scope.topic ? topicView(scope.topic, direct, true) : null,
       unit: scope.unit ? unitView(scope.unit, direct) : null,
       session: row ? sessionView(row) : null,
     };
@@ -533,6 +554,8 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
       const accepted = verdict.kind === 'correct' || verdict.kind === 'spelling';
       const spelling = verdict.kind === 'spelling' ? { spelling: true } : {};
       if (!accepted && !current.misses.includes(current.answer)) current.misses.push(current.answer);
+      const why = accepted || verdict.kind === 'alternative' ? null : mistakeFor(exercise, current.answer);
+      const explained = why ? { why } : {};
       if (round.mode === 'test') {
         // One try: the first real answer settles, and feedback always shows the right answer and why.
         current.settled = true;
@@ -540,14 +563,14 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
         current.feedback = {
           kind: accepted ? 'correct' : verdict.kind === 'alternative' ? 'alternative' : 'incorrect',
           message: exercise.explanation, answer: exercise.answers[0], ...spelling,
-          ...(verdict.message ? { note: verdict.message } : {}),
+          ...(verdict.message ? { note: verdict.message } : {}), ...explained,
         };
       } else if (accepted) {
         current.feedback = { kind: 'correct', message: exercise.explanation, answer: exercise.answers[0], ...spelling, ...(verdict.message ? { note: verdict.message } : {}) };
         current.settled = true;
         current.outcome = current.assisted || current.attempts > 1 ? 'helped' : 'independent';
       } else {
-        current.feedback = verdict.kind === 'alternative' ? { kind: 'alternative', message: verdict.message! } : { kind: 'incorrect', message: exercise.feedback };
+        current.feedback = verdict.kind === 'alternative' ? { kind: 'alternative', message: verdict.message! } : { kind: 'incorrect', message: exercise.feedback, ...explained };
       }
     });
   }
@@ -562,7 +585,10 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
       if (current.settled) return;
       current.assisted = true;
       if (input.kind === 'answer') {
-        current.feedback = { kind: 'shown', message: current.content.explanation, answer: current.content.answers[0] };
+        // The answer shown after a miss still explains that miss.
+        const last = current.misses.at(-1);
+        const why = last ? mistakeFor(current.content, last) : null;
+        current.feedback = { kind: 'shown', message: current.content.explanation, answer: current.content.answers[0], ...(why ? { why } : {}) };
         current.settled = true;
         current.outcome = 'revisit';
       }

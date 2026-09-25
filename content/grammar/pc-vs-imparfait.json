@@ -5,9 +5,545 @@
   "title": "Passé composé or imparfait",
   "description": "Tell a past story, choosing between background and events.",
   "mark": "était / a été",
-  "rule": "Use the imparfait for the background of a past story: descriptions, situations, lasting states and actions in progress (il faisait beau, je dormais). Use the passé composé for completed events that move the story forward (nous sommes partis, le téléphone a sonné). When an action in progress is interrupted, the ongoing action is in the imparfait and the interrupting event in the passé composé: je dormais quand le téléphone a sonné. A repeated habit takes the imparfait (d’habitude, souvent, chaque jour, tous les étés), and so does the verb after pendant que; a single occasion takes the passé composé (ce jour-là, un jour, une fois, soudain, tout à coup). An action with a stated, finished duration takes the passé composé, even a state: j’ai habité à Lyon pendant deux ans. A feeling or state that was already there is imparfait (j’avais peur), but one that starts at a given moment is passé composé (j’ai eu peur quand j’ai entendu le bruit).",
-  "example": "Je dormais quand le téléphone a sonné. · D’habitude, il prenait le bus, mais ce jour-là, il a pris un taxi. · J’ai habité à Lyon pendant deux ans.",
-  "aside": "A useful test: if the verb answers “what happened next?”, it is passé composé; if it answers “what was it like?” or “what was going on?”, it is imparfait.",
+  "guide": {
+    "summary": "Telling a past story in French needs two tenses at once: the imparfait paints the scene and what was going on, the passé composé reports what happened. This page shows how to decide, verb by verb.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "Building the two tenses",
+        "text": "The imparfait is one word: take the nous form of the present, drop -ons, add the endings. The passé composé is two words: avoir or être in the present, plus the past participle.",
+        "table": {
+          "columns": [
+            "",
+            "imparfait (dormir)",
+            "passé composé (entendre)"
+          ],
+          "rows": [
+            [
+              "je",
+              "dormais",
+              "ai entendu → j’ai entendu"
+            ],
+            [
+              "tu",
+              "dormais",
+              "as entendu"
+            ],
+            [
+              "il / elle",
+              "dormait",
+              "a entendu"
+            ],
+            [
+              "nous",
+              "dormions",
+              "avons entendu"
+            ],
+            [
+              "vous",
+              "dormiez",
+              "avez entendu"
+            ],
+            [
+              "ils / elles",
+              "dormaient",
+              "ont entendu"
+            ]
+          ]
+        },
+        "steps": [
+          "Imparfait: nous dormons gives dorm-, then -ais, -ais, -ait, -ions, -iez, -aient.",
+          "Passé composé: choose avoir or être, put it in the present, then add the participle.",
+          "Movement and reflexive verbs (aller, partir, rester, rentrer, s’ouvrir) take être, and their participle agrees with the subject.",
+          "Être and avoir are irregular: j’étais, j’avais; their participles are été and eu."
+        ],
+        "examples": [
+          {
+            "fr": "Je dormais quand le téléphone a sonné.",
+            "en": "I was sleeping when the phone rang."
+          },
+          {
+            "fr": "Nous sommes allés à la plage.",
+            "en": "We went to the beach."
+          }
+        ],
+        "watch": [
+          "Je becomes j’ before a vowel: j’ai entendu, never je ai entendu.",
+          "With avoir the participle does not agree with the subject: nous avons attendu, not nous avons attendus.",
+          "-ais, -ait and -aient sound alike; only the subject tells you which one to write."
+        ]
+      },
+      {
+        "id": "choosing",
+        "title": "Which tense? Ask what the verb answers",
+        "text": "Every past verb answers one of these questions. Ask it verb by verb, not once for the whole sentence.",
+        "table": {
+          "columns": [
+            "The verb answers…",
+            "Tense",
+            "Example"
+          ],
+          "rows": [
+            [
+              "What happened next?",
+              "passé composé",
+              "il a pris un taxi"
+            ],
+            [
+              "What was it like?",
+              "imparfait",
+              "il faisait beau"
+            ],
+            [
+              "What was going on?",
+              "imparfait",
+              "je dormais"
+            ],
+            [
+              "What used to happen?",
+              "imparfait",
+              "il prenait le bus"
+            ],
+            [
+              "How long did it last?",
+              "passé composé",
+              "j’ai habité à Lyon deux ans"
+            ]
+          ]
+        },
+        "steps": [
+          "Find every past verb in the sentence.",
+          "Ask the question above for each one on its own: most stories need both tenses.",
+          "Let the time words (soudain, d’habitude, pendant deux ans) settle any doubt."
+        ],
+        "examples": [
+          {
+            "fr": "D’habitude, il prenait le bus, mais ce jour-là, il a pris un taxi.",
+            "en": "He usually took the bus, but that day he took a taxi."
+          }
+        ],
+        "watch": [
+          "Do not pick one tense for the whole sentence: a story mixes them.",
+          "English “was” is not always the imparfait: “I was scared when I saw it” starts at one moment."
+        ]
+      },
+      {
+        "id": "background-event",
+        "title": "Scene or event?",
+        "text": "A story has a stage and things that happen on it. The stage is imparfait; the events are passé composé.",
+        "table": {
+          "columns": [
+            "The verb says…",
+            "Tense",
+            "Example"
+          ],
+          "rows": [
+            [
+              "what the scene was like",
+              "imparfait",
+              "il faisait beau"
+            ],
+            [
+              "a state or situation",
+              "imparfait",
+              "la maison était vide"
+            ],
+            [
+              "an action still going on",
+              "imparfait",
+              "il pleuvait encore"
+            ],
+            [
+              "something that happened",
+              "passé composé",
+              "j’ai fermé la porte"
+            ],
+            [
+              "the next step in the story",
+              "passé composé",
+              "elle est partie"
+            ]
+          ]
+        },
+        "steps": [
+          "Put weather, places, moods and anything already under way in the imparfait.",
+          "Put each step that moves the story forward in the passé composé.",
+          "Two descriptions side by side are both imparfait; two events in a row are both passé composé."
+        ],
+        "examples": [
+          {
+            "fr": "Il faisait froid, alors je suis rentré tôt.",
+            "en": "It was cold, so I went home early."
+          },
+          {
+            "fr": "La boulangerie était fermée.",
+            "en": "The bakery was closed."
+          }
+        ],
+        "watch": [
+          "Encore, toujours and déjà with an action still running point to the imparfait.",
+          "Alors and donc introduce what you did next: that is an event, not a description."
+        ]
+      },
+      {
+        "id": "interrupted",
+        "title": "One action cut short by another",
+        "text": "When something happens in the middle of something else, the two verbs take different tenses.",
+        "table": {
+          "columns": [
+            "The verb is…",
+            "Tense",
+            "Example"
+          ],
+          "rows": [
+            [
+              "the longer action (was …-ing)",
+              "imparfait",
+              "je traversais la rue"
+            ],
+            [
+              "the short event that breaks in",
+              "passé composé",
+              "j’ai vu un accident"
+            ],
+            [
+              "two actions at once (pendant que)",
+              "imparfait",
+              "pendant que tu faisais la vaisselle"
+            ]
+          ]
+        },
+        "steps": [
+          "Say it in English: the “was …-ing” verb goes in the imparfait.",
+          "The verb you could put after “and then” goes in the passé composé.",
+          "Quand usually introduces the event; the verb right after pendant que stays background."
+        ],
+        "examples": [
+          {
+            "fr": "Je dormais quand le téléphone a sonné.",
+            "en": "I was sleeping when the phone rang."
+          },
+          {
+            "fr": "Pendant que je lisais, elle écrivait.",
+            "en": "While I was reading, she was writing."
+          }
+        ],
+        "watch": [
+          "Both verbs in the passé composé gives two events in a row, not an interruption.",
+          "Both in the imparfait removes the event: nothing happens any more."
+        ]
+      },
+      {
+        "id": "habit-once",
+        "title": "Habit or one occasion?",
+        "text": "The imparfait is the tense of “used to” and “would always”. The passé composé is for the one time it was different.",
+        "table": {
+          "columns": [
+            "Time expression",
+            "It means",
+            "Tense"
+          ],
+          "rows": [
+            [
+              "d’habitude",
+              "as a rule, usually",
+              "imparfait"
+            ],
+            [
+              "souvent",
+              "often, again and again",
+              "imparfait"
+            ],
+            [
+              "le mercredi",
+              "every Wednesday",
+              "imparfait"
+            ],
+            [
+              "tous les étés",
+              "every summer",
+              "imparfait"
+            ],
+            [
+              "quand j’étais enfant",
+              "a whole period of life",
+              "imparfait"
+            ],
+            [
+              "un jour",
+              "one particular day",
+              "passé composé"
+            ],
+            [
+              "un été / un dimanche",
+              "one particular one of them",
+              "passé composé"
+            ],
+            [
+              "ce jour-là",
+              "that one day, the exception",
+              "passé composé"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the time expression and decide: repeated, or one occasion?",
+          "Repeated, or a whole period of life, means imparfait.",
+          "One named occasion means passé composé, even inside a sentence about habits."
+        ],
+        "examples": [
+          {
+            "fr": "Tous les étés, nous allions en Bretagne.",
+            "en": "Every summer we used to go to Brittany."
+          },
+          {
+            "fr": "Ce jour-là, elle a pris le train.",
+            "en": "That day she took the train."
+          }
+        ],
+        "watch": [
+          "Le mercredi means every Wednesday; mercredi dernier means one single Wednesday.",
+          "The habit half and the exception half of one sentence take different tenses."
+        ]
+      },
+      {
+        "id": "limited-duration",
+        "title": "How long did it last?",
+        "text": "A length of time that is stated and finished makes the action a whole block, so it takes the passé composé — even when the verb describes a state.",
+        "table": {
+          "columns": [
+            "The sentence gives…",
+            "Tense",
+            "Example"
+          ],
+          "rows": [
+            [
+              "pendant + a finished length",
+              "passé composé",
+              "il a travaillé ici pendant deux ans"
+            ],
+            [
+              "a bare length of time",
+              "passé composé",
+              "il a marché trois heures"
+            ],
+            [
+              "a state with a stated length",
+              "passé composé",
+              "ils ont été malades une semaine"
+            ],
+            [
+              "no length, just the setting",
+              "imparfait",
+              "il travaillait ici à cette époque"
+            ]
+          ]
+        },
+        "steps": [
+          "Look for pendant, or a length on its own: deux ans, quarante minutes, toute la nuit.",
+          "If that length is over, use the passé composé, whatever the verb means.",
+          "With no length given, a state or a setting stays in the imparfait.",
+          "Then check the auxiliary and, with être, the agreement of the participle."
+        ],
+        "examples": [
+          {
+            "fr": "J’ai habité à Lyon pendant deux ans.",
+            "en": "I lived in Lyon for two years."
+          },
+          {
+            "fr": "Il habitait à Lyon quand je l’ai connu.",
+            "en": "He was living in Lyon when I met him."
+          }
+        ],
+        "watch": [
+          "Pendant closes a finished period; depuis keeps a state open and behaves differently.",
+          "Être, avoir and habiter follow this rule too: a counted period turns them into events."
+        ]
+      },
+      {
+        "id": "state-change",
+        "title": "A feeling: already there, or starting now?",
+        "text": "The same feeling takes either tense. What decides is the moment it began.",
+        "table": {
+          "columns": [
+            "The feeling or state is…",
+            "Tense",
+            "Example"
+          ],
+          "rows": [
+            [
+              "already there before",
+              "imparfait",
+              "il avait faim"
+            ],
+            [
+              "lasting through a period",
+              "imparfait",
+              "nous avions une vieille voiture"
+            ],
+            [
+              "starting at that moment",
+              "passé composé",
+              "elle a eu froid en sortant"
+            ],
+            [
+              "a reaction to an event",
+              "passé composé",
+              "il a eu honte quand tout le monde a ri"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask when the feeling or the state began.",
+          "Already there, lasting, part of the description: imparfait.",
+          "Arriving at a precise moment, as a reaction: passé composé.",
+          "Use avoir with peur, faim, soif, froid, chaud, honte — never être."
+        ],
+        "examples": [
+          {
+            "fr": "J’avais peur du noir quand j’étais petit.",
+            "en": "I was afraid of the dark when I was little."
+          },
+          {
+            "fr": "J’ai eu peur quand j’ai entendu le bruit.",
+            "en": "I got scared when I heard the noise."
+          }
+        ],
+        "watch": [
+          "English “was afraid” covers both; only the starting moment decides.",
+          "Avoir peur, not être peur."
+        ]
+      },
+      {
+        "id": "time-markers",
+        "title": "Words that decide the tense for you",
+        "text": "Some time expressions settle the question on their own. Learn them as two lists.",
+        "table": {
+          "columns": [
+            "Marker",
+            "It means",
+            "Tense"
+          ],
+          "rows": [
+            [
+              "soudain",
+              "suddenly",
+              "passé composé"
+            ],
+            [
+              "tout à coup",
+              "all of a sudden",
+              "passé composé"
+            ],
+            [
+              "une fois",
+              "once, one single time",
+              "passé composé"
+            ],
+            [
+              "ce jour-là",
+              "that particular day",
+              "passé composé"
+            ],
+            [
+              "chaque jour",
+              "every day, over and over",
+              "imparfait"
+            ],
+            [
+              "souvent",
+              "often",
+              "imparfait"
+            ],
+            [
+              "pendant que…",
+              "while, two things at once",
+              "imparfait"
+            ],
+            [
+              "à cette époque",
+              "back then, in those years",
+              "imparfait"
+            ]
+          ]
+        },
+        "steps": [
+          "Scan for a time expression before you choose the tense.",
+          "One-moment words take the passé composé; repetition and period words take the imparfait.",
+          "The verb right after pendant que is always background: imparfait."
+        ],
+        "examples": [
+          {
+            "fr": "Soudain, le téléphone a sonné.",
+            "en": "Suddenly the phone rang."
+          },
+          {
+            "fr": "À cette époque, je travaillais à Paris.",
+            "en": "Back then I was working in Paris."
+          }
+        ],
+        "watch": [
+          "Une fois means once and takes the passé composé; parfois means sometimes and takes the imparfait.",
+          "Ce jour-là is one day; à cette époque is a whole period."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "background-event": {
+      "section": "background-event",
+      "steps": [
+        "Ask what the verb does: set the scene, or tell what happened?",
+        "Weather, places, moods and anything still under way: imparfait.",
+        "A finished step that moves the story on: passé composé.",
+        "With the passé composé, check the auxiliary: aller, partir, rester and rentrer take être."
+      ]
+    },
+    "interrupted": {
+      "section": "interrupted",
+      "steps": [
+        "Find the two verbs and ask which one was already under way.",
+        "The “was …-ing” one goes in the imparfait.",
+        "The one that happens at a point, usually after quand, goes in the passé composé.",
+        "After pendant que, the action runs alongside: imparfait."
+      ]
+    },
+    "habit-once": {
+      "section": "habit-once",
+      "steps": [
+        "Read the time expression: again and again, or that one time?",
+        "D’habitude, souvent, tous les…, le lundi, quand j’étais petit: imparfait.",
+        "Un jour, un été, ce jour-là, une fois: passé composé.",
+        "Then check the ending for the person, and the auxiliary if you need one."
+      ]
+    },
+    "limited-duration": {
+      "section": "limited-duration",
+      "steps": [
+        "Look for a measured length: pendant deux ans, quarante minutes, toute la soirée.",
+        "A finished length makes it a whole block: passé composé, even for a state verb.",
+        "No length given means you are just describing: imparfait.",
+        "Build the passé composé with the right auxiliary and watch the participle agreement."
+      ]
+    },
+    "state-change": {
+      "section": "state-change",
+      "steps": [
+        "Ask when the feeling or the state began.",
+        "Already there and lasting: imparfait. Starting at that moment, as a reaction: passé composé.",
+        "Keep avoir with peur, faim, froid, chaud; être never goes with them."
+      ]
+    },
+    "time-markers": {
+      "section": "time-markers",
+      "steps": [
+        "Spot the time expression first.",
+        "Soudain, tout à coup, une fois, ce jour-là: one moment, so passé composé.",
+        "Chaque jour, souvent, à cette époque and the verb after pendant que: imparfait.",
+        "Then conjugate: imparfait endings on the nous stem, or auxiliary plus participle."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "pc-vs-imparfait-background-event-1",
@@ -25,7 +561,22 @@
       ],
       "hint": "Going to the beach is one of the events of that Saturday, like the swimming.",
       "feedback": "The weather is background, but what you did next moves the story on.",
-      "explanation": "Il faisait beau is the background. Going to the beach is a completed event in a sequence, so it takes the passé composé with être: nous sommes allés."
+      "explanation": "Il faisait beau is the background. Going to the beach is a completed event in a sequence, so it takes the passé composé with être: nous sommes allés.",
+      "mistakes": [
+        {
+          "answers": [
+            "allions"
+          ],
+          "why": "Allions is the imparfait, which would turn the beach trip into a background situation or a habit. Here it is one of the things you did that Saturday, just like nous avons nagé."
+        },
+        {
+          "answers": [
+            "avons allé"
+          ],
+          "why": "Aller never takes avoir in the passé composé: it takes être, and the participle then agrees with the subject."
+        }
+      ],
+      "row": "the next step in the story"
     },
     {
       "id": "pc-vs-imparfait-background-event-2",
@@ -43,7 +594,22 @@
       ],
       "hint": "What did the party look like when I arrived?",
       "feedback": "The music is part of the scene, like the dancing guests.",
-      "explanation": "The scene I found on arrival is background, so it takes the imparfait: la musique était très forte."
+      "explanation": "The scene I found on arrival is background, so it takes the imparfait: la musique était très forte.",
+      "mistakes": [
+        {
+          "answers": [
+            "a été"
+          ],
+          "why": "A été presents the loud music as a completed event with a start and an end. Here it is part of the scene you walked into, described alongside les invités dansaient."
+        },
+        {
+          "answers": [
+            "est"
+          ],
+          "why": "Est is the present. The rest of the sentence is past (je suis arrivé, dansaient), so a present form cannot fit."
+        }
+      ],
+      "row": "a state or situation"
     },
     {
       "id": "pc-vs-imparfait-background-event-3",
@@ -56,7 +622,29 @@
       ],
       "hint": "Encore means the rain was still going on.",
       "feedback": "This is part of the scene, not a new event.",
-      "explanation": "The rain was still in progress when we went out, so it is background: il pleuvait."
+      "explanation": "The rain was still in progress when we went out, so it is background: il pleuvait.",
+      "mistakes": [
+        {
+          "answers": [
+            "a plu"
+          ],
+          "why": "A plu makes the rain a finished event, but encore says it had not stopped: it was still falling as you went out."
+        },
+        {
+          "answers": [
+            "pleut"
+          ],
+          "why": "Pleut is the present, and the whole scene is past (nous sommes sortis, le ciel était gris)."
+        },
+        {
+          "answers": [
+            "pleuvais",
+            "pleuvaient"
+          ],
+          "why": "Those are the je/tu and ils/elles endings. Weather verbs have only the impersonal il as subject, so they take the il ending."
+        }
+      ],
+      "row": "an action still going on"
     },
     {
       "id": "pc-vs-imparfait-background-event-4",
@@ -74,7 +662,33 @@
       ],
       "hint": "The weather is the background; staying at home is what she did.",
       "feedback": "Use one tense for the situation and another for the event.",
-      "explanation": "Il faisait froid describes the situation (imparfait). Elle est restée is the completed event (passé composé with être, restée agreeing with elle)."
+      "explanation": "Il faisait froid describes the situation (imparfait). Elle est restée is the completed event (passé composé with être, restée agreeing with elle).",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a fait froid, alors elle est restée à la maison."
+          ],
+          "why": "A fait froid presents the cold as one finished event. Here the cold is the situation that explains her decision, so it belongs in the describing tense."
+        },
+        {
+          "answers": [
+            "Il faisait froid, alors elle restait à la maison."
+          ],
+          "why": "Restait makes staying at home a habit or an ongoing state. It was one decision on one day, so it needs the tense for completed events."
+        },
+        {
+          "answers": [
+            "Il faisait froid, alors elle a resté à la maison."
+          ],
+          "why": "Rester takes être in the passé composé, not avoir, and its participle then agrees with elle."
+        },
+        {
+          "answers": [
+            "Il était froid, alors elle est restée à la maison."
+          ],
+          "why": "Il était froid would mean that some masculine thing felt cold to the touch. Weather uses faire: il faisait froid."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-background-event-5",
@@ -98,7 +712,15 @@
       ],
       "hint": "One verb describes, the other tells what happened.",
       "feedback": "The state of the house is background.",
-      "explanation": "The empty house is description (était); getting home is the event (je suis rentré)."
+      "explanation": "The empty house is description (était); getting home is the event (je suis rentré).",
+      "mistakes": [
+        {
+          "answers": [
+            "La maison a été vide quand je suis rentré."
+          ],
+          "why": "A été vide turns the empty house into an event that happened and ended. The empty house is the scene you walked into, so it is a description."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-background-event-6",
@@ -111,7 +733,28 @@
       ],
       "hint": "Which verb describes the scene?",
       "feedback": "The empty streets are not an event.",
-      "explanation": "The streets being empty is a description, so it takes the imparfait: les rues étaient vides."
+      "explanation": "The streets being empty is a description, so it takes the imparfait: les rues étaient vides.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand je suis rentrée, les rues ont été vides."
+          ],
+          "why": "This is the sentence unchanged. Ont été vides makes the empty streets an event, but they are the scene you came home to."
+        },
+        {
+          "answers": [
+            "Quand je rentrais, les rues étaient vides."
+          ],
+          "why": "This changes the wrong verb: coming home happened at one moment and is the event the sentence is built on."
+        },
+        {
+          "answers": [
+            "Quand j’étais rentrée, les rues étaient vides."
+          ],
+          "why": "Étais rentrée is a different tense again, used for what had happened before something else. Only one verb in this sentence needed fixing, and it was not that one."
+        }
+      ],
+      "row": "a state or situation"
     },
     {
       "id": "pc-vs-imparfait-background-event-7",
@@ -124,7 +767,27 @@
       ],
       "hint": "One verb describes the situation, the other is what you did.",
       "feedback": "The closed bakery and the buying do not take the same tense.",
-      "explanation": "The closed bakery is the situation (la boulangerie était fermée); buying bread is the completed event (nous avons acheté)."
+      "explanation": "The closed bakery is the situation (la boulangerie était fermée); buying bread is the completed event (nous avons acheté).",
+      "mistakes": [
+        {
+          "answers": [
+            "La boulangerie a été fermée, alors nous avons acheté du pain au supermarché."
+          ],
+          "why": "A été fermée reports the closing as an event. The closed bakery is the situation that explains the trip to the supermarket."
+        },
+        {
+          "answers": [
+            "La boulangerie était fermée, alors nous achetions du pain au supermarché."
+          ],
+          "why": "Achetions makes the shopping a habit or an action in progress, but buying the bread is the one thing that happened."
+        },
+        {
+          "answers": [
+            "La boulangerie était fermée, alors nous achetons du pain au supermarché."
+          ],
+          "why": "Only the first verb moved into the past: achetons is still the present, and the whole sentence is about yesterday."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-interrupted-1",
@@ -142,7 +805,22 @@
       ],
       "hint": "What was going on when the phone rang?",
       "feedback": "The phone ringing interrupted something that was already in progress.",
-      "explanation": "An action in progress when another event happens takes the imparfait: je dormais."
+      "explanation": "An action in progress when another event happens takes the imparfait: je dormais.",
+      "mistakes": [
+        {
+          "answers": [
+            "ai dormi"
+          ],
+          "why": "Ai dormi makes the sleep a finished block of time. The phone rang in the middle of it, so the sleeping was still under way."
+        },
+        {
+          "answers": [
+            "dormait"
+          ],
+          "why": "Dormait carries the il/elle ending. The subject is je, which takes the -ais ending."
+        }
+      ],
+      "row": "the longer action (was …-ing)"
     },
     {
       "id": "pc-vs-imparfait-interrupted-2",
@@ -155,7 +833,29 @@
       ],
       "hint": "The knock came in the middle of something, and she could not answer.",
       "feedback": "The shower was already going on.",
-      "explanation": "The shower was in progress and the knock interrupted it: elle prenait sa douche."
+      "explanation": "The shower was in progress and the knock interrupted it: elle prenait sa douche.",
+      "mistakes": [
+        {
+          "answers": [
+            "a pris"
+          ],
+          "why": "A pris makes the shower one finished event. The knock came while she was in it, which is why she could not open the door."
+        },
+        {
+          "answers": [
+            "prend"
+          ],
+          "why": "Prend is the present, but the sentence is a past story (a frappé, n’a pas ouvert)."
+        },
+        {
+          "answers": [
+            "prenais",
+            "prenaient"
+          ],
+          "why": "Those are the je/tu and ils/elles endings. Elle is one person and takes the il/elle ending."
+        }
+      ],
+      "row": "the longer action (was …-ing)"
     },
     {
       "id": "pc-vs-imparfait-interrupted-3",
@@ -168,7 +868,28 @@
       ],
       "hint": "Breaking a glass happens in one moment.",
       "feedback": "The washing-up is the background; the cat did something once.",
-      "explanation": "Pendant que tu faisais la vaisselle is the ongoing background; the broken glass is a single event: le chat a cassé un verre."
+      "explanation": "Pendant que tu faisais la vaisselle is the ongoing background; the broken glass is a single event: le chat a cassé un verre.",
+      "mistakes": [
+        {
+          "answers": [
+            "cassait"
+          ],
+          "why": "Cassait would describe the breaking as lasting or repeated. Breaking a glass takes one instant, and it is what happened during the washing-up."
+        },
+        {
+          "answers": [
+            "a cassée"
+          ],
+          "why": "With avoir the participle does not agree with the word that follows it, so the -e is wrong here."
+        },
+        {
+          "answers": [
+            "est cassé"
+          ],
+          "why": "Casser takes avoir in the passé composé; est cassé would describe a glass that is broken, not the cat breaking it."
+        }
+      ],
+      "row": "the short event that breaks in"
     },
     {
       "id": "pc-vs-imparfait-interrupted-4",
@@ -188,7 +909,27 @@
       ],
       "hint": "One action was in progress; the other interrupted it.",
       "feedback": "Was reading and arrived do not take the same tense.",
-      "explanation": "The reading was in progress (je lisais); his arrival is the interrupting event (il est arrivé)."
+      "explanation": "The reading was in progress (je lisais); his arrival is the interrupting event (il est arrivé).",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai lu quand il est arrivé."
+          ],
+          "why": "J’ai lu presents the reading as a finished block. His arrival cut into it, so the reading was still going on."
+        },
+        {
+          "answers": [
+            "Je lisais quand il arrivait."
+          ],
+          "why": "Arrivait turns his arrival into background too. Arriving happens at one moment: it is the event that interrupts."
+        },
+        {
+          "answers": [
+            "Je lisais quand il a arrivé."
+          ],
+          "why": "Arriver takes être in the passé composé, never avoir."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-interrupted-5",
@@ -210,7 +951,27 @@
       ],
       "hint": "One action was going on; the storm started at one moment.",
       "feedback": "Use one tense for the meal and the other for the storm.",
-      "explanation": "The meal was in progress (ils mangeaient); the storm starting is the event (l’orage a commencé)."
+      "explanation": "The meal was in progress (ils mangeaient); the storm starting is the event (l’orage a commencé).",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils ont mangé quand l’orage a commencé."
+          ],
+          "why": "Ont mangé makes the meal a finished block, so nothing is left for the storm to interrupt."
+        },
+        {
+          "answers": [
+            "Ils mangeaient quand l’orage commençait."
+          ],
+          "why": "Commençait puts the storm in the background as well. A storm breaking out is a single moment."
+        },
+        {
+          "answers": [
+            "Ils ont mangé quand l’orage commençait."
+          ],
+          "why": "This swaps the two roles: the meal is what was under way, and the storm starting is the moment that cut into it."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-interrupted-6",
@@ -223,7 +984,28 @@
       ],
       "hint": "Which action interrupted the other?",
       "feedback": "Seeing the accident happened at one moment.",
-      "explanation": "Crossing the street was in progress (imparfait); seeing the accident is the event that happened (passé composé): j’ai vu."
+      "explanation": "Crossing the street was in progress (imparfait); seeing the accident is the event that happened (passé composé): j’ai vu.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je traversais la rue quand je voyais un accident."
+          ],
+          "why": "This is the sentence unchanged. Voyais describes seeing as something ongoing, but you caught sight of the accident at one point."
+        },
+        {
+          "answers": [
+            "J’ai traversé la rue quand je voyais un accident."
+          ],
+          "why": "This changes the wrong verb: crossing the street was the action in progress, and the second verb is still untouched."
+        },
+        {
+          "answers": [
+            "J’ai traversé la rue quand j’ai vu un accident."
+          ],
+          "why": "Two events in a row lose the interruption: the crossing was already under way when the accident appeared."
+        }
+      ],
+      "row": "the short event that breaks in"
     },
     {
       "id": "pc-vs-imparfait-interrupted-7",
@@ -237,7 +1019,37 @@
       ],
       "hint": "Start from nous dormons.",
       "feedback": "Use the stem dorm- and the tu ending.",
-      "explanation": "Nous dormons gives dorm-, plus -ais: tu dormais, as in tu dormais quand je suis parti."
+      "explanation": "Nous dormons gives dorm-, plus -ais: tu dormais, as in tu dormais quand je suis parti.",
+      "mistakes": [
+        {
+          "answers": [
+            "dormait",
+            "tu dormait"
+          ],
+          "why": "That is the il/elle ending. Tu takes the -ais ending in the imparfait."
+        },
+        {
+          "answers": [
+            "as dormi",
+            "tu as dormi"
+          ],
+          "why": "That is the passé composé, the tense for finished events; the question asks for the tense of an action in progress."
+        },
+        {
+          "answers": [
+            "dormions",
+            "dormiez"
+          ],
+          "why": "Those are the nous and vous endings, and the subject here is tu."
+        },
+        {
+          "answers": [
+            "dors",
+            "tu dors"
+          ],
+          "why": "Dors is the present. The imparfait is built on the nous form of the present, dormons, plus its own endings."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-habit-once-1",
@@ -255,7 +1067,22 @@
       ],
       "hint": "D’habitude tells you how things usually were.",
       "feedback": "The bus was the usual habit; the taxi was the one-time exception.",
-      "explanation": "A habit takes the imparfait: d’habitude, je prenais le bus. Ce jour-là, a single occasion, takes the passé composé."
+      "explanation": "A habit takes the imparfait: d’habitude, je prenais le bus. Ce jour-là, a single occasion, takes the passé composé.",
+      "mistakes": [
+        {
+          "answers": [
+            "ai pris"
+          ],
+          "why": "That form reports one finished event, and the sentence already has one: the taxi ce jour-là. D’habitude is about what happened over and over."
+        },
+        {
+          "answers": [
+            "prenait"
+          ],
+          "why": "Prenait carries the il/elle ending, but the subject is je."
+        }
+      ],
+      "row": "d’habitude"
     },
     {
       "id": "pc-vs-imparfait-habit-once-2",
@@ -273,7 +1100,22 @@
       ],
       "hint": "Un été points to one particular summer.",
       "feedback": "The habit is already given; this verb is the exception.",
-      "explanation": "Un été is a single occasion, so it takes the passé composé: nous sommes partis. Partir takes être."
+      "explanation": "Un été is a single occasion, so it takes the passé composé: nous sommes partis. Partir takes être.",
+      "mistakes": [
+        {
+          "answers": [
+            "partions"
+          ],
+          "why": "Partions is the habit tense, the one allions already uses. Un été singles out one summer that broke the habit."
+        },
+        {
+          "answers": [
+            "avons parti"
+          ],
+          "why": "Partir never takes avoir in the passé composé: it takes être, and the participle agrees with the subject."
+        }
+      ],
+      "row": "un été / un dimanche"
     },
     {
       "id": "pc-vs-imparfait-habit-once-3",
@@ -282,11 +1124,44 @@
       "instruction": "Write aller in the passé composé or the imparfait.",
       "source": "Quand elle était enfant, elle ____ (aller) chez sa grand-mère le mercredi.",
       "answers": [
-        "allais"
+        "allait"
       ],
       "hint": "Le mercredi here means every Wednesday.",
       "feedback": "This is something that happened again and again.",
-      "explanation": "A repeated childhood habit takes the imparfait: elle allait chez sa grand-mère le mercredi."
+      "explanation": "A repeated childhood habit takes the imparfait: elle allait chez sa grand-mère le mercredi.",
+      "mistakes": [
+        {
+          "answers": [
+            "est allée"
+          ],
+          "why": "That makes the visit one finished trip, but le mercredi here means every Wednesday, week after week."
+        },
+        {
+          "answers": [
+            "a allé"
+          ],
+          "why": "Aller takes être in the passé composé, never avoir — and one finished trip is not what le mercredi describes."
+        },
+        {
+          "answers": [
+            "va"
+          ],
+          "why": "Va is the present. The sentence is set in her childhood (quand elle était enfant), so the verb must be past."
+        },
+        {
+          "answers": [
+            "allaient"
+          ],
+          "why": "That is the ils/elles ending, for several people, and the subject here is one girl."
+        },
+        {
+          "answers": [
+            "allais"
+          ],
+          "why": "Allais is the je/tu form. The subject here is elle, which takes the il/elle ending."
+        }
+      ],
+      "row": "le mercredi"
     },
     {
       "id": "pc-vs-imparfait-habit-once-4",
@@ -299,7 +1174,28 @@
       ],
       "hint": "Un dimanche is one particular Sunday.",
       "feedback": "The habit is getting up early; this verb is the exception.",
-      "explanation": "Un dimanche is a single occasion with a clear end (jusqu’à midi), so it takes the passé composé: il a dormi."
+      "explanation": "Un dimanche is a single occasion with a clear end (jusqu’à midi), so it takes the passé composé: il a dormi.",
+      "mistakes": [
+        {
+          "answers": [
+            "dormait"
+          ],
+          "why": "Dormait is the tense of the habit, and the habit is already given by se levait tôt. Un dimanche points to the one Sunday that broke it."
+        },
+        {
+          "answers": [
+            "dormais"
+          ],
+          "why": "Dormais carries the je/tu ending of the habit tense, and the subject here is il."
+        },
+        {
+          "answers": [
+            "est dormi"
+          ],
+          "why": "Dormir takes avoir in the passé composé, not être."
+        }
+      ],
+      "row": "un été / un dimanche"
     },
     {
       "id": "pc-vs-imparfait-habit-once-5",
@@ -313,7 +1209,28 @@
       ],
       "hint": "Un jour means one particular day.",
       "feedback": "This is a single event, not a habit.",
-      "explanation": "Un jour marks a single occasion, so it takes the passé composé: j’ai vu un renard."
+      "explanation": "Un jour marks a single occasion, so it takes the passé composé: j’ai vu un renard.",
+      "mistakes": [
+        {
+          "answers": [
+            "Un jour, je voyais un renard."
+          ],
+          "why": "Je voyais describes seeing as ongoing or repeated, but un jour points to one single occasion."
+        },
+        {
+          "answers": [
+            "Un jour, je vois un renard."
+          ],
+          "why": "Je vois is the present, and the sentence tells something that already happened."
+        },
+        {
+          "answers": [
+            "Un jour, je suis vu un renard."
+          ],
+          "why": "Voir takes avoir in the passé composé, not être."
+        }
+      ],
+      "row": "un jour"
     },
     {
       "id": "pc-vs-imparfait-habit-once-6",
@@ -333,7 +1250,34 @@
       ],
       "hint": "When I was little describes a period; used to play is a habit during it.",
       "feedback": "Neither verb is a single event.",
-      "explanation": "Both verbs take the imparfait: j’étais petit is a state, je jouais du piano a habit. Instruments take jouer de (or faire de: je faisais du piano)."
+      "explanation": "Both verbs take the imparfait: j’étais petit is a state, je jouais du piano a habit. Instruments take jouer de (or faire de: je faisais du piano).",
+      "mistakes": [
+        {
+          "answers": [
+            "Quand j’étais petit, j’ai joué du piano."
+          ],
+          "why": "J’ai joué names one finished session at the piano, but “used to play” is a habit that ran through those whole years."
+        },
+        {
+          "answers": [
+            "Quand j’ai été petit, je jouais du piano."
+          ],
+          "why": "J’ai été petit turns childhood into a single finished event. A period of life you are describing is background."
+        },
+        {
+          "answers": [
+            "Quand j’étais petit, je jouais le piano."
+          ],
+          "why": "Instruments take jouer de: du piano, de la guitare. Jouer le piano is not French."
+        },
+        {
+          "answers": [
+            "Quand j’étais petite, je jouais du piano."
+          ],
+          "why": "Petite is the feminine form, but the note says a boy is speaking."
+        }
+      ],
+      "row": "quand j’étais enfant"
     },
     {
       "id": "pc-vs-imparfait-habit-once-7",
@@ -346,7 +1290,28 @@
       ],
       "hint": "What does d’habitude tell you?",
       "feedback": "D’habitude does not go with a single event.",
-      "explanation": "D’habitude marks a habit, which takes the imparfait: mon père préparait le dîner."
+      "explanation": "D’habitude marks a habit, which takes the imparfait: mon père préparait le dîner.",
+      "mistakes": [
+        {
+          "answers": [
+            "D’habitude, mon père a préparé le dîner."
+          ],
+          "why": "This is the sentence unchanged. A préparé names one finished dinner, while d’habitude says it happened again and again."
+        },
+        {
+          "answers": [
+            "D’habitude, mon père préparais le dîner."
+          ],
+          "why": "Préparais carries the je/tu ending, and mon père is he."
+        },
+        {
+          "answers": [
+            "Une fois, mon père a préparé le dîner."
+          ],
+          "why": "This fixes the time word instead of the verb. The task keeps d’habitude and changes the tense to match it."
+        }
+      ],
+      "row": "d’habitude"
     },
     {
       "id": "pc-vs-imparfait-habit-once-8",
@@ -359,7 +1324,34 @@
       ],
       "hint": "A habit needs a different past tense from a single occasion.",
       "feedback": "Change the verb as well as the time expression.",
-      "explanation": "D’habitude marks a habit, so the verb goes into the imparfait: elle rentrait à pied."
+      "explanation": "D’habitude marks a habit, so the verb goes into the imparfait: elle rentrait à pied.",
+      "mistakes": [
+        {
+          "answers": [
+            "D’habitude, elle est rentrée à pied."
+          ],
+          "why": "The time word changed but the verb did not: a single finished event does not fit d’habitude."
+        },
+        {
+          "answers": [
+            "D’habitude, elle rentrais à pied."
+          ],
+          "why": "Rentrais carries the je/tu ending, and the subject elle takes the il/elle one."
+        },
+        {
+          "answers": [
+            "Ce jour-là, elle rentrait à pied."
+          ],
+          "why": "This keeps the old time word. The sentence has to start from d’habitude, which is what makes the verb change."
+        },
+        {
+          "answers": [
+            "D’habitude, elle a rentré à pied."
+          ],
+          "why": "Rentrer takes être here, not avoir, and a habit is not a single finished event anyway."
+        }
+      ],
+      "row": "d’habitude"
     },
     {
       "id": "pc-vs-imparfait-limited-duration-1",
@@ -377,7 +1369,22 @@
       ],
       "hint": "Pendant deux ans gives a finished length of time.",
       "feedback": "A period with a stated, finished duration is seen as a whole.",
-      "explanation": "A finished, limited duration takes the passé composé: il a habité à Lyon pendant deux ans. Habiter takes avoir."
+      "explanation": "A finished, limited duration takes the passé composé: il a habité à Lyon pendant deux ans. Habiter takes avoir.",
+      "mistakes": [
+        {
+          "answers": [
+            "habitait"
+          ],
+          "why": "Habitait leaves the stay open, as the setting for something else. Pendant deux ans closes it: the two years are counted and over."
+        },
+        {
+          "answers": [
+            "est habité"
+          ],
+          "why": "Habiter takes avoir, not être; est habité would mean the place is lived in by someone."
+        }
+      ],
+      "row": "pendant + a finished length"
     },
     {
       "id": "pc-vs-imparfait-limited-duration-2",
@@ -390,7 +1397,34 @@
       ],
       "hint": "The wait had a measured length and it is over.",
       "feedback": "A stated duration makes the action a completed whole.",
-      "explanation": "Pendant quarante minutes gives a limited duration, so the passé composé: nous avons attendu."
+      "explanation": "Pendant quarante minutes gives a limited duration, so the passé composé: nous avons attendu.",
+      "mistakes": [
+        {
+          "answers": [
+            "attendions"
+          ],
+          "why": "Attendions leaves the wait open as background, but pendant quarante minutes measures it from start to finish."
+        },
+        {
+          "answers": [
+            "avons attendus"
+          ],
+          "why": "With avoir the participle does not agree with the subject, so the -s is wrong."
+        },
+        {
+          "answers": [
+            "sommes attendus"
+          ],
+          "why": "Attendre takes avoir in the passé composé, not être."
+        },
+        {
+          "answers": [
+            "avons attendre"
+          ],
+          "why": "That is still the infinitive. After the auxiliary you need the past participle."
+        }
+      ],
+      "row": "pendant + a finished length"
     },
     {
       "id": "pc-vs-imparfait-limited-duration-3",
@@ -406,7 +1440,28 @@
       ],
       "hint": "For ten hours is a finished length of time.",
       "feedback": "A limited duration is not background.",
-      "explanation": "A completed, measured duration takes the passé composé: elle a dormi pendant dix heures."
+      "explanation": "A completed, measured duration takes the passé composé: elle a dormi pendant dix heures.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle dormait pendant dix heures."
+          ],
+          "why": "Dormait describes the sleep as background with no end in sight, but “for ten hours” measures it and closes it."
+        },
+        {
+          "answers": [
+            "Elle a dormi pour dix heures."
+          ],
+          "why": "Pour is not used for a finished length of time in the past; French uses pendant, or no preposition at all."
+        },
+        {
+          "answers": [
+            "Elle est dormie pendant dix heures."
+          ],
+          "why": "Dormir takes avoir in the passé composé, not être."
+        }
+      ],
+      "row": "a bare length of time"
     },
     {
       "id": "pc-vs-imparfait-limited-duration-4",
@@ -419,7 +1474,28 @@
       ],
       "hint": "Pendant cinquante ans closes the period.",
       "feedback": "A state with a finished duration is seen as a whole.",
-      "explanation": "With pendant and a finished period, even a state takes the passé composé: ils ont été mariés pendant cinquante ans."
+      "explanation": "With pendant and a finished period, even a state takes the passé composé: ils ont été mariés pendant cinquante ans.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mes grands-parents étaient mariés pendant cinquante ans."
+          ],
+          "why": "This is the sentence unchanged. Étaient mariés leaves the marriage open as a description, but pendant cinquante ans counts it out from beginning to end."
+        },
+        {
+          "answers": [
+            "Mes grands-parents se sont mariés pendant cinquante ans."
+          ],
+          "why": "Se sont mariés means they got married, a one-day event; the sentence is about how long the marriage lasted."
+        },
+        {
+          "answers": [
+            "Mes grands-parents étaient mariés depuis cinquante ans."
+          ],
+          "why": "Depuis counts up to a later moment and keeps the state open, but this sentence gives a period that is finished, and the verb still needs changing."
+        }
+      ],
+      "row": "a state with a stated length"
     },
     {
       "id": "pc-vs-imparfait-limited-duration-5",
@@ -433,7 +1509,37 @@
       ],
       "hint": "Habiter takes avoir.",
       "feedback": "The passé composé needs an auxiliary and a past participle.",
-      "explanation": "Nous avons habité, as in nous avons habité à Nice pendant un an."
+      "explanation": "Nous avons habité, as in nous avons habité à Nice pendant un an.",
+      "mistakes": [
+        {
+          "answers": [
+            "sommes habités",
+            "nous sommes habités"
+          ],
+          "why": "Habiter takes avoir, not être."
+        },
+        {
+          "answers": [
+            "habitions",
+            "nous habitions"
+          ],
+          "why": "That is the imparfait, used for an open, undated stay; the question asks for the tense of a finished one."
+        },
+        {
+          "answers": [
+            "avons habiter",
+            "nous avons habiter"
+          ],
+          "why": "That is still the infinitive after the auxiliary; the passé composé needs the past participle."
+        },
+        {
+          "answers": [
+            "avons habités",
+            "nous avons habités"
+          ],
+          "why": "With avoir the participle does not agree with the subject, so the -s is wrong."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-limited-duration-6",
@@ -454,7 +1560,16 @@
       ],
       "hint": "Pendant une heure gives a finished duration.",
       "feedback": "A conversation with a stated length is a completed whole.",
-      "explanation": "A limited duration takes the passé composé: nous avons parlé pendant une heure."
+      "explanation": "A limited duration takes the passé composé: nous avons parlé pendant une heure.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous parlions pendant une heure."
+          ],
+          "why": "Parlions leaves the conversation open as background, but the sentence measures it: one hour, from start to finish."
+        }
+      ],
+      "row": "pendant + a finished length"
     },
     {
       "id": "pc-vs-imparfait-limited-duration-7",
@@ -467,7 +1582,34 @@
       ],
       "hint": "Pendant une semaine gives a finished period.",
       "feedback": "A stated duration takes the tense for completed actions. Rester takes être.",
-      "explanation": "A limited duration takes the passé composé: ils sont restés, with restés agreeing with ils."
+      "explanation": "A limited duration takes the passé composé: ils sont restés, with restés agreeing with ils.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils restaient en Italie pendant une semaine."
+          ],
+          "why": "Restaient describes the stay as background with no end, but pendant une semaine gives it a finished length."
+        },
+        {
+          "answers": [
+            "Ils ont resté en Italie pendant une semaine."
+          ],
+          "why": "Rester takes être in the passé composé, not avoir."
+        },
+        {
+          "answers": [
+            "Ils sont resté en Italie pendant une semaine."
+          ],
+          "why": "With être the participle agrees with the subject, and ils is plural."
+        },
+        {
+          "answers": [
+            "Ils restent en Italie pendant une semaine."
+          ],
+          "why": "This is the sentence unchanged: restent is still the present, and the task is to move it into the past."
+        }
+      ],
+      "row": "pendant + a finished length"
     },
     {
       "id": "pc-vs-imparfait-state-change-1",
@@ -485,7 +1627,22 @@
       ],
       "hint": "The fear started at that exact moment.",
       "feedback": "This is not a feeling that was already there.",
-      "explanation": "A feeling that begins at a precise moment is an event: elle a eu peur. Être is not used with peur."
+      "explanation": "A feeling that begins at a precise moment is an event: elle a eu peur. Être is not used with peur.",
+      "mistakes": [
+        {
+          "answers": [
+            "avait"
+          ],
+          "why": "Avait peur would mean the fear was already there before she saw anything. Soudain says it arrived with the snake."
+        },
+        {
+          "answers": [
+            "a été"
+          ],
+          "why": "French does not say être peur: fear goes with avoir."
+        }
+      ],
+      "row": "a reaction to an event"
     },
     {
       "id": "pc-vs-imparfait-state-change-2",
@@ -503,7 +1660,22 @@
       ],
       "hint": "Was this fear a single moment or a lasting state?",
       "feedback": "Her fear of the dark was a lasting situation, like her sleeping habit.",
-      "explanation": "A lasting state takes the imparfait: elle avait peur du noir."
+      "explanation": "A lasting state takes the imparfait: elle avait peur du noir.",
+      "mistakes": [
+        {
+          "answers": [
+            "a eu"
+          ],
+          "why": "That form marks the moment a fear starts. Her fear of the dark is a lasting trait, which is why she slept with the light on."
+        },
+        {
+          "answers": [
+            "était"
+          ],
+          "why": "Peur goes with avoir, not être: être peur is not French."
+        }
+      ],
+      "row": "already there before"
     },
     {
       "id": "pc-vs-imparfait-state-change-3",
@@ -516,7 +1688,28 @@
       ],
       "hint": "The fear was caused by the door slamming.",
       "feedback": "The fear began at a precise moment and led to the crying.",
-      "explanation": "A state that starts at a given moment takes the passé composé: le bébé a eu peur."
+      "explanation": "A state that starts at a given moment takes the passé composé: le bébé a eu peur.",
+      "mistakes": [
+        {
+          "answers": [
+            "avait"
+          ],
+          "why": "Avait peur would mean the baby was frightened before the door. The fear came from the slam and led straight to the crying."
+        },
+        {
+          "answers": [
+            "a été"
+          ],
+          "why": "Peur goes with avoir, never être."
+        },
+        {
+          "answers": [
+            "eu"
+          ],
+          "why": "Eu on its own is only the participle; this tense needs its auxiliary in front of it."
+        }
+      ],
+      "row": "a reaction to an event"
     },
     {
       "id": "pc-vs-imparfait-state-change-4",
@@ -529,7 +1722,28 @@
       ],
       "hint": "Having the flat was a lasting situation during that time.",
       "feedback": "Nothing changed at one moment here.",
-      "explanation": "A lasting state during a past period takes the imparfait: nous avions un petit appartement."
+      "explanation": "A lasting state during a past period takes the imparfait: nous avions un petit appartement.",
+      "mistakes": [
+        {
+          "answers": [
+            "avons eu"
+          ],
+          "why": "That form marks the moment you got the flat. The sentence describes what your life was like all the while you lived in Paris."
+        },
+        {
+          "answers": [
+            "avait"
+          ],
+          "why": "Avait carries the il/elle ending, and the subject is nous."
+        },
+        {
+          "answers": [
+            "avons"
+          ],
+          "why": "Avons is the present, but the sentence is past, alongside habitions."
+        }
+      ],
+      "row": "lasting through a period"
     },
     {
       "id": "pc-vs-imparfait-state-change-5",
@@ -547,7 +1761,27 @@
       ],
       "hint": "Got scared means the fear started at that moment.",
       "feedback": "A fear that begins is an event.",
-      "explanation": "The fear starts when I see the dog, so both verbs take the passé composé: j’ai eu peur, j’ai vu."
+      "explanation": "The fear starts when I see the dog, so both verbs take the passé composé: j’ai eu peur, j’ai vu.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’avais peur quand j’ai vu le chien."
+          ],
+          "why": "J’avais peur says the fear was already there before the dog appeared, but “got scared” means it started right then."
+        },
+        {
+          "answers": [
+            "J’ai eu peur quand je voyais le chien."
+          ],
+          "why": "Je voyais stretches the sighting out as background; catching sight of the dog is the instant that caused the fear."
+        },
+        {
+          "answers": [
+            "J’étais peur quand j’ai vu le chien."
+          ],
+          "why": "Peur goes with avoir, not être."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-state-change-6",
@@ -560,7 +1794,28 @@
       ],
       "hint": "When did Léo’s fear start?",
       "feedback": "The fear is a reaction to the barking.",
-      "explanation": "The fear begins at that moment, so it is an event: Léo a eu peur."
+      "explanation": "The fear begins at that moment, so it is an event: Léo a eu peur.",
+      "mistakes": [
+        {
+          "answers": [
+            "Soudain, le chien a aboyé et Léo avait peur."
+          ],
+          "why": "This is the sentence unchanged. Avait peur puts the fear there before the barking, but soudain makes the bark the trigger."
+        },
+        {
+          "answers": [
+            "Soudain, le chien aboyait et Léo avait peur."
+          ],
+          "why": "This changes the wrong verb: soudain announces the bark as the event, and the feeling is what still needs fixing."
+        },
+        {
+          "answers": [
+            "Soudain, le chien a aboyé et Léo a été peur."
+          ],
+          "why": "Peur goes with avoir, never être."
+        }
+      ],
+      "row": "a reaction to an event"
     },
     {
       "id": "pc-vs-imparfait-state-change-7",
@@ -573,7 +1828,34 @@
       ],
       "hint": "A feeling that starts is an event.",
       "feedback": "Change only the tense of avoir.",
-      "explanation": "Avait peur means she was already afraid; a eu peur means she became afraid at take-off."
+      "explanation": "Avait peur means she was already afraid; a eu peur means she became afraid at take-off.",
+      "mistakes": [
+        {
+          "answers": [
+            "Marie avait peur quand l’avion a décollé."
+          ],
+          "why": "This is the sentence unchanged: avait peur still says the fear was there before the plane moved."
+        },
+        {
+          "answers": [
+            "Marie avait peur quand l’avion décollait."
+          ],
+          "why": "This changes the take-off instead of the feeling, and it turns the take-off into background."
+        },
+        {
+          "answers": [
+            "Marie a été peur quand l’avion a décollé."
+          ],
+          "why": "Peur goes with avoir, not être."
+        },
+        {
+          "answers": [
+            "Marie a peur quand l’avion a décollé."
+          ],
+          "why": "A peur is the present: she is afraid now. The story is in the past."
+        }
+      ],
+      "row": "starting at that moment"
     },
     {
       "id": "pc-vs-imparfait-state-change-8",
@@ -587,7 +1869,37 @@
       ],
       "hint": "Avoir is its own auxiliary.",
       "feedback": "The past participle of avoir is irregular.",
-      "explanation": "J’ai eu, as in j’ai eu froid quand la fenêtre s’est ouverte."
+      "explanation": "J’ai eu, as in j’ai eu froid quand la fenêtre s’est ouverte.",
+      "mistakes": [
+        {
+          "answers": [
+            "avais",
+            "j’avais"
+          ],
+          "why": "That is the imparfait, the tense for a state already there; the question asks for the tense of a finished event."
+        },
+        {
+          "answers": [
+            "ai été",
+            "j’ai été"
+          ],
+          "why": "Été is the participle of être, not of avoir."
+        },
+        {
+          "answers": [
+            "ai avu",
+            "j’ai avu"
+          ],
+          "why": "The participle of avoir is irregular and is not built from the infinitive."
+        },
+        {
+          "answers": [
+            "suis eu",
+            "je suis eu"
+          ],
+          "why": "Avoir is its own auxiliary; it does not take être."
+        }
+      ]
     },
     {
       "id": "pc-vs-imparfait-time-markers-1",
@@ -605,7 +1917,22 @@
       ],
       "hint": "Tout à coup signals something sudden.",
       "feedback": "A sudden event is not background.",
-      "explanation": "Tout à coup marks a sudden event, so the passé composé: il a commencé à pleuvoir."
+      "explanation": "Tout à coup marks a sudden event, so the passé composé: il a commencé à pleuvoir.",
+      "mistakes": [
+        {
+          "answers": [
+            "commençait"
+          ],
+          "why": "Commençait would put the rain in the background, but tout à coup announces a break in the scene: the rain starts at one precise moment."
+        },
+        {
+          "answers": [
+            "commence"
+          ],
+          "why": "Commence is the present, and the story is being told in the past (je marchais)."
+        }
+      ],
+      "row": "tout à coup"
     },
     {
       "id": "pc-vs-imparfait-time-markers-2",
@@ -623,7 +1950,22 @@
       ],
       "hint": "Chaque jour points to repetition.",
       "feedback": "This happened again and again during a period.",
-      "explanation": "Chaque jour marks a habit, like rentrait, so the imparfait: elle travaillait. Travaillais is the form for je or tu."
+      "explanation": "Chaque jour marks a habit, like rentrait, so the imparfait: elle travaillait. Travaillais is the form for je or tu.",
+      "mistakes": [
+        {
+          "answers": [
+            "a travaillé"
+          ],
+          "why": "That form names one finished stretch of work, but chaque jour says it was repeated day after day, like rentrait."
+        },
+        {
+          "answers": [
+            "travaillais"
+          ],
+          "why": "Travaillais carries the je/tu ending, and the subject elle takes the il/elle one."
+        }
+      ],
+      "row": "chaque jour"
     },
     {
       "id": "pc-vs-imparfait-time-markers-3",
@@ -636,7 +1978,34 @@
       ],
       "hint": "Une fois means one time.",
       "feedback": "A single occasion is not a habit.",
-      "explanation": "Une fois marks a single occasion, so the passé composé: nous avons mangé."
+      "explanation": "Une fois marks a single occasion, so the passé composé: nous avons mangé.",
+      "mistakes": [
+        {
+          "answers": [
+            "mangions"
+          ],
+          "why": "Mangions would make snails a habit, but une fois says it happened one single time."
+        },
+        {
+          "answers": [
+            "avons mangés"
+          ],
+          "why": "With avoir the participle does not agree with the subject, so the -s is wrong."
+        },
+        {
+          "answers": [
+            "sommes mangés"
+          ],
+          "why": "Manger takes avoir; sommes mangés would mean you were the ones eaten."
+        },
+        {
+          "answers": [
+            "avons manger"
+          ],
+          "why": "That is still the infinitive after the auxiliary, where the past participle belongs."
+        }
+      ],
+      "row": "une fois"
     },
     {
       "id": "pc-vs-imparfait-time-markers-4",
@@ -649,7 +2018,28 @@
       ],
       "hint": "Pendant que links two actions going on at the same time.",
       "feedback": "Neither action interrupts the other.",
-      "explanation": "The verb after pendant que is an ongoing action, so the imparfait: maman cuisinait."
+      "explanation": "The verb after pendant que is an ongoing action, so the imparfait: maman cuisinait.",
+      "mistakes": [
+        {
+          "answers": [
+            "a cuisiné"
+          ],
+          "why": "A cuisiné cuts the cooking into one finished block. After pendant que the verb is what was going on while papa set the table."
+        },
+        {
+          "answers": [
+            "cuisinais"
+          ],
+          "why": "Cuisinais carries the je/tu ending, and maman is one person, il/elle."
+        },
+        {
+          "answers": [
+            "cuisine"
+          ],
+          "why": "Cuisine is the present, but mettait shows the sentence is in the past."
+        }
+      ],
+      "row": "pendant que…"
     },
     {
       "id": "pc-vs-imparfait-time-markers-5",
@@ -664,7 +2054,28 @@
       ],
       "hint": "Suddenly marks a single sudden event. S’ouvrir takes être.",
       "feedback": "A sudden event is not background.",
-      "explanation": "Soudain or tout à coup takes the passé composé: la porte s’est ouverte, with ouverte agreeing with la porte."
+      "explanation": "Soudain or tout à coup takes the passé composé: la porte s’est ouverte, with ouverte agreeing with la porte.",
+      "mistakes": [
+        {
+          "answers": [
+            "Soudain, la porte s’ouvrait."
+          ],
+          "why": "S’ouvrait stretches the opening out as background, but soudain announces one sharp moment."
+        },
+        {
+          "answers": [
+            "Soudain, la porte a ouvert."
+          ],
+          "why": "A ouvert needs someone opening something. A door that opens by itself uses s’ouvrir, which takes être in the past."
+        },
+        {
+          "answers": [
+            "Soudain, la porte s’est ouvert."
+          ],
+          "why": "With être the participle agrees with the subject, and la porte is feminine."
+        }
+      ],
+      "row": "soudain"
     },
     {
       "id": "pc-vs-imparfait-time-markers-6",
@@ -682,7 +2093,28 @@
       ],
       "hint": "Une fois refers to one occasion.",
       "feedback": "Change the verb as well as the time word. Aller takes être.",
-      "explanation": "Une fois marks a single occasion, so the passé composé: nous sommes allés (or allées) au cinéma."
+      "explanation": "Une fois marks a single occasion, so the passé composé: nous sommes allés (or allées) au cinéma.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous allions une fois au cinéma."
+          ],
+          "why": "The time word changed but the verb stayed in the habit tense, and une fois names one single visit."
+        },
+        {
+          "answers": [
+            "Nous avons allé une fois au cinéma."
+          ],
+          "why": "Aller takes être in the passé composé, never avoir."
+        },
+        {
+          "answers": [
+            "Nous sommes allé une fois au cinéma."
+          ],
+          "why": "With être the participle agrees with the subject, and nous is plural."
+        }
+      ],
+      "row": "une fois"
     },
     {
       "id": "pc-vs-imparfait-time-markers-7",
@@ -695,7 +2127,28 @@
       ],
       "hint": "What kind of action does soudain introduce?",
       "feedback": "Soudain does not introduce background.",
-      "explanation": "Soudain marks a sudden event, so the passé composé: le chat a sauté."
+      "explanation": "Soudain marks a sudden event, so the passé composé: le chat a sauté.",
+      "mistakes": [
+        {
+          "answers": [
+            "Soudain, le chat sautait sur la table."
+          ],
+          "why": "This is the sentence unchanged. Sautait describes the jumping as ongoing or repeated, while soudain marks one sharp moment."
+        },
+        {
+          "answers": [
+            "Soudain, le chat est sauté sur la table."
+          ],
+          "why": "Sauter takes avoir in the passé composé, not être."
+        },
+        {
+          "answers": [
+            "Tout à coup, le chat sautait sur la table."
+          ],
+          "why": "Swapping soudain for another word for suddenly changes nothing: the verb is what has to move."
+        }
+      ],
+      "row": "soudain"
     },
     {
       "id": "pc-vs-imparfait-time-markers-8",
@@ -715,7 +2168,16 @@
       ],
       "hint": "Tout à coup introduces a sudden event.",
       "feedback": "One verb tile is in the tense for background.",
-      "explanation": "Tout à coup marks a sudden event: j’ai entendu un cri."
+      "explanation": "Tout à coup marks a sudden event: j’ai entendu un cri.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tout à coup, j’entendais un cri."
+          ],
+          "why": "J’entendais describes hearing as something going on in the background, but tout à coup announces one sudden thing."
+        }
+      ],
+      "row": "tout à coup"
     },
     {
       "id": "pc-vs-imparfait-time-markers-9",
@@ -729,7 +2191,36 @@
       ],
       "hint": "Entendre takes avoir, and its participle ends in -u.",
       "feedback": "Remember the elision of je before the auxiliary.",
-      "explanation": "J’ai entendu, as in soudain, j’ai entendu un bruit."
+      "explanation": "J’ai entendu, as in soudain, j’ai entendu un bruit.",
+      "mistakes": [
+        {
+          "answers": [
+            "entendais",
+            "j’entendais"
+          ],
+          "why": "That is the imparfait, the background tense; the question asks for the tense of a finished event."
+        },
+        {
+          "answers": [
+            "ai entendus",
+            "j’ai entendus"
+          ],
+          "why": "With avoir the participle does not agree with the subject, so the -s is wrong."
+        },
+        {
+          "answers": [
+            "suis entendu",
+            "je suis entendu"
+          ],
+          "why": "Entendre takes avoir, not être."
+        },
+        {
+          "answers": [
+            "je ai entendu"
+          ],
+          "why": "Je becomes j’ in front of a vowel, with an apostrophe and no space."
+        }
+      ]
     }
   ]
 }

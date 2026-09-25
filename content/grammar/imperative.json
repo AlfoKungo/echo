@@ -5,9 +5,570 @@
   "title": "Commands",
   "description": "Tell someone what to do or not to do, with or without pronouns.",
   "mark": "va !",
-  "rule": "The imperative has three forms, taken from the present without the subject: tu, nous and vous (finis, finissons, finissez). In the tu form, -er verbs and aller drop the final s (parle, va), as do verbs like ouvrir whose tu form ends in -es (ouvre), but they keep it before y or en (vas-y, manges-en). Être, avoir and savoir are irregular: sois, soyons, soyez; aie, ayons, ayez; sache, sachons, sachez. In the negative, ne and pas surround the verb: ne parle pas, ne sortez pas. In the affirmative, object and reflexive pronouns follow the verb with a hyphen, and me and te become moi and toi: prends-le, donne-moi le sel, lève-toi. With two pronouns, le, la or les comes first: donne-le-moi. In the negative, the pronouns stay before the verb: ne le prends pas, ne te lève pas.",
-  "example": "Parle plus lentement, s’il te plaît. · Asseyez-vous. · Ne le mange pas !",
-  "aside": "The nous form is a suggestion rather than an order: allons-y means let’s go.",
+  "guide": {
+    "summary": "Commands tell someone to do something, or not to do it. French has only three command forms — tu, nous and vous — and the whole topic is knowing which form to write, what happens to the final s, and where the pronouns go.",
+    "sections": [
+      {
+        "id": "three-forms",
+        "title": "Which command form: tu, nous or vous?",
+        "text": "A command has no subject pronoun: the verb stands alone. Only three persons exist, so first decide who you are speaking to.",
+        "table": {
+          "columns": [
+            "Form",
+            "Who it speaks to",
+            "What it does"
+          ],
+          "rows": [
+            [
+              "tu",
+              "one friend, child or family member",
+              "gives an order or makes a request"
+            ],
+            [
+              "nous",
+              "yourself and the others",
+              "suggests: let’s …"
+            ],
+            [
+              "vous",
+              "several people, or one person you address politely",
+              "gives an order or makes a request"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask who the order is aimed at: one friend, one stranger, or several people.",
+          "One friend or child: tu. Several people or a polite single person: vous.",
+          "If English says “let’s …”, use the nous form."
+        ],
+        "examples": [
+          {
+            "fr": "Parle plus lentement, s’il te plaît.",
+            "en": "Speak more slowly, please."
+          },
+          {
+            "fr": "Asseyez-vous.",
+            "en": "Sit down."
+          },
+          {
+            "fr": "Allons-y !",
+            "en": "Let’s go!"
+          }
+        ],
+        "watch": [
+          "The nous form is a suggestion, not an order: allons-y means “let’s go”.",
+          "Never keep the subject: write the verb alone, not “tu ferme”.",
+          "Clues in the sentence tell you the person: s’il te plaît and ton frère mean tu; les enfants and vos devoirs mean vous."
+        ]
+      },
+      {
+        "id": "from-the-present",
+        "title": "Build the form from the present",
+        "text": "For almost every verb the command is simply the present form with the subject pronoun deleted. Nothing else changes, irregular verbs included.",
+        "table": {
+          "columns": [
+            "Verb",
+            "tu",
+            "nous",
+            "vous"
+          ],
+          "rows": [
+            [
+              "finir",
+              "finis",
+              "finissons",
+              "finissez"
+            ],
+            [
+              "prendre",
+              "prends",
+              "prenons",
+              "prenez"
+            ],
+            [
+              "attendre",
+              "attends",
+              "attendons",
+              "attendez"
+            ],
+            [
+              "faire",
+              "fais",
+              "faisons",
+              "faites"
+            ],
+            [
+              "venir",
+              "viens",
+              "venons",
+              "venez"
+            ],
+            [
+              "boire",
+              "bois",
+              "buvons",
+              "buvez"
+            ],
+            [
+              "sortir",
+              "sors",
+              "sortons",
+              "sortez"
+            ],
+            [
+              "courir",
+              "cours",
+              "courons",
+              "courez"
+            ]
+          ]
+        },
+        "steps": [
+          "Conjugate the verb in the present for tu, nous or vous.",
+          "Delete the subject pronoun and keep the verb letter for letter.",
+          "Only -er verbs and aller change further: see the next section."
+        ],
+        "examples": [
+          {
+            "fr": "Prends ton manteau.",
+            "en": "Take your coat."
+          },
+          {
+            "fr": "Finissons le travail.",
+            "en": "Let’s finish the work."
+          },
+          {
+            "fr": "Faites attention !",
+            "en": "Be careful!"
+          }
+        ],
+        "watch": [
+          "A verb irregular in the present stays irregular here: vous faites, vous dites.",
+          "Finir-type verbs keep -iss- in the plural: nous finissons, vous finissez.",
+          "An infinitive (finir, venir) and a past participle (venu, fermé) never give an order."
+        ]
+      },
+      {
+        "id": "er-drop-s",
+        "title": "Why an -er verb has no s in the tu command",
+        "text": "In the tu command, -er verbs and aller drop the final s of the present. Verbs like ouvrir and offrir, whose tu form also ends in -es, drop it too.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Present with tu",
+            "tu command"
+          ],
+          "rows": [
+            [
+              "parler",
+              "tu parles",
+              "parle"
+            ],
+            [
+              "manger",
+              "tu manges",
+              "mange"
+            ],
+            [
+              "fermer",
+              "tu fermes",
+              "ferme"
+            ],
+            [
+              "écouter",
+              "tu écoutes",
+              "écoute"
+            ],
+            [
+              "aller",
+              "tu vas",
+              "va"
+            ],
+            [
+              "ouvrir",
+              "tu ouvres",
+              "ouvre"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the tu form of the present.",
+          "If the verb is an -er verb, aller, or an ouvrir-type verb, cut the final s.",
+          "Every other verb keeps its s: prends, finis, attends."
+        ],
+        "examples": [
+          {
+            "fr": "Ferme la porte, s’il te plaît.",
+            "en": "Close the door, please."
+          },
+          {
+            "fr": "Écoute bien.",
+            "en": "Listen carefully."
+          },
+          {
+            "fr": "Ouvre la fenêtre.",
+            "en": "Open the window."
+          }
+        ],
+        "watch": [
+          "The nous and vous forms lose nothing: parlons, parlez, mangeons.",
+          "Manger keeps its e before -ons: mangeons, not “mangons”.",
+          "Mange (an order) and mangé (a past participle) are different words."
+        ]
+      },
+      {
+        "id": "s-before-y-en",
+        "title": "The s comes back before y and en",
+        "text": "When y or en follows the tu command straight away, the dropped s returns so the two words link in speech. The pronoun is attached with a hyphen.",
+        "table": {
+          "columns": [
+            "Command alone",
+            "Before y or en"
+          ],
+          "rows": [
+            [
+              "va",
+              "vas-y"
+            ],
+            [
+              "mange",
+              "manges-en"
+            ],
+            [
+              "parle",
+              "parles-en"
+            ],
+            [
+              "donne",
+              "donnes-en"
+            ],
+            [
+              "pense",
+              "penses-y"
+            ]
+          ]
+        },
+        "steps": [
+          "Build the tu command as usual, without its s.",
+          "Look at the word right after the verb: if it is y or en, put the s back.",
+          "Join the verb and the pronoun with a hyphen."
+        ],
+        "examples": [
+          {
+            "fr": "Vas-y, c’est ton tour !",
+            "en": "Go on, it’s your turn!"
+          },
+          {
+            "fr": "Il reste du gâteau : manges-en !",
+            "en": "There is cake left: have some!"
+          }
+        ],
+        "watch": [
+          "The s returns only before y and en, never before other words: va à la gare.",
+          "The hyphen is compulsory: vas-y, not “vas y”.",
+          "This only concerns the tu form; allez-y and allons-y never change."
+        ]
+      },
+      {
+        "id": "irregular",
+        "title": "Être, avoir and savoir: learn the nine forms",
+        "text": "These three verbs do not take their command from the present. Their forms have to be learnt.",
+        "table": {
+          "columns": [
+            "",
+            "tu",
+            "nous",
+            "vous"
+          ],
+          "rows": [
+            [
+              "être (be)",
+              "sois",
+              "soyons",
+              "soyez"
+            ],
+            [
+              "avoir (have)",
+              "aie",
+              "ayons",
+              "ayez"
+            ],
+            [
+              "savoir (know)",
+              "sache",
+              "sachons",
+              "sachez"
+            ]
+          ]
+        },
+        "steps": [
+          "Spot the verb: être, avoir or savoir.",
+          "Read the person from the sentence, then take that column of the table.",
+          "Place ne … pas around the form as with any other verb."
+        ],
+        "examples": [
+          {
+            "fr": "Sois patient.",
+            "en": "Be patient."
+          },
+          {
+            "fr": "N’aie pas peur.",
+            "en": "Don’t be afraid."
+          },
+          {
+            "fr": "Ayons du courage.",
+            "en": "Let’s be brave."
+          }
+        ],
+        "watch": [
+          "Es, avez and sais are present forms: they give no order.",
+          "The tu form of être ends in s, but the tu forms of avoir and savoir do not.",
+          "Soit and soient are the forms used after que (qu’il soit là), not commands."
+        ]
+      },
+      {
+        "id": "negative",
+        "title": "Saying don’t: ne … pas around the verb",
+        "text": "A negative command keeps the same verb form and wraps ne … pas around it. Ne becomes n’ before a vowel.",
+        "table": {
+          "columns": [
+            "Affirmative",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "Parle.",
+              "Ne parle pas."
+            ],
+            [
+              "Bois ça.",
+              "Ne bois pas ça."
+            ],
+            [
+              "Fais ça.",
+              "Ne fais pas ça."
+            ],
+            [
+              "Partons.",
+              "Ne partons pas."
+            ],
+            [
+              "Ouvrez la fenêtre.",
+              "N’ouvrez pas la fenêtre."
+            ],
+            [
+              "Écoutez-moi.",
+              "Ne m’écoutez pas."
+            ]
+          ]
+        },
+        "steps": [
+          "Build the command you would use in the affirmative.",
+          "Put ne (n’ before a vowel) in front of the verb and pas immediately after it.",
+          "Send any pronoun back in front of the verb, between ne and the verb."
+        ],
+        "examples": [
+          {
+            "fr": "Ne parle pas si vite.",
+            "en": "Don’t speak so fast."
+          },
+          {
+            "fr": "N’ouvrez pas la fenêtre.",
+            "en": "Don’t open the window."
+          },
+          {
+            "fr": "Ne le mange pas !",
+            "en": "Don’t eat it!"
+          }
+        ],
+        "watch": [
+          "Pas comes straight after the verb, never at the end of the sentence.",
+          "Dropping ne (“mange pas !”) is spoken French; write it in full.",
+          "Ne pas + infinitive is the style of written notices (ne pas fumer), not of an order to a person."
+        ]
+      },
+      {
+        "id": "reflexive",
+        "title": "Reflexive commands: where does the pronoun go?",
+        "text": "A reflexive verb keeps its pronoun, and the pronoun moves with the negation: behind the verb when the command is affirmative, in front of it when it is negative. Behind the verb, te becomes toi.",
+        "table": {
+          "columns": [
+            "Person",
+            "Affirmative",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "tu",
+              "prépare-toi",
+              "ne te prépare pas"
+            ],
+            [
+              "nous",
+              "préparons-nous",
+              "ne nous préparons pas"
+            ],
+            [
+              "vous",
+              "préparez-vous",
+              "ne vous préparez pas"
+            ]
+          ]
+        },
+        "steps": [
+          "Choose the person: tu, nous or vous, and take the matching pronoun.",
+          "Affirmative: verb first, then the pronoun, joined by a hyphen (te becomes toi).",
+          "Negative: ne, then the pronoun, then the verb, then pas."
+        ],
+        "examples": [
+          {
+            "fr": "Asseyez-vous.",
+            "en": "Sit down."
+          },
+          {
+            "fr": "Dépêche-toi !",
+            "en": "Hurry up!"
+          },
+          {
+            "fr": "Ne vous inquiétez pas.",
+            "en": "Don’t worry."
+          }
+        ],
+        "watch": [
+          "The pronoun must match the verb: no “levez-toi”, no “dépêchons-vous”.",
+          "Never write “-te” after the verb; the stressed form is toi.",
+          "The hyphen belongs to the affirmative only: in the negative the pronoun is a separate word."
+        ]
+      },
+      {
+        "id": "object-pronouns",
+        "title": "Object pronouns with a command",
+        "text": "Object pronouns follow the same rule as reflexive ones: behind the verb with a hyphen in the affirmative, in front of the verb in the negative. Me and te become moi and toi behind the verb, and with two pronouns le, la or les comes first.",
+        "table": {
+          "columns": [
+            "Pronoun",
+            "Affirmative",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "le",
+              "fais-le",
+              "ne le fais pas"
+            ],
+            [
+              "la",
+              "écoute-la",
+              "ne l’écoute pas"
+            ],
+            [
+              "les",
+              "attends-les",
+              "ne les attends pas"
+            ],
+            [
+              "me → moi",
+              "dis-moi",
+              "ne me dis pas"
+            ],
+            [
+              "nous",
+              "attends-nous",
+              "ne nous attends pas"
+            ],
+            [
+              "le + moi",
+              "donne-le-moi",
+              "ne me le donne pas"
+            ]
+          ]
+        },
+        "steps": [
+          "Choose the pronoun that replaces the noun, matching its gender and number.",
+          "Affirmative: attach it behind the verb with a hyphen; me becomes moi and te becomes toi.",
+          "Negative: put it back between ne and the verb, with pas after the verb.",
+          "With two pronouns behind the verb, le, la or les comes before moi, toi, lui or leur."
+        ],
+        "examples": [
+          {
+            "fr": "Donne-le-moi.",
+            "en": "Give it to me."
+          },
+          {
+            "fr": "Ne me le donne pas.",
+            "en": "Don’t give it to me."
+          },
+          {
+            "fr": "Écoute-la bien.",
+            "en": "Listen to her carefully."
+          }
+        ],
+        "watch": [
+          "Never “-me” or “-te” behind the verb.",
+          "Le and la become l’ before a vowel: ne l’écoute pas.",
+          "Lui and leur replace a person after à (parle-lui); a direct object takes le, la or les."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "er-drop-s": {
+      "section": "er-drop-s",
+      "steps": [
+        "Write the tu form of the present first.",
+        "If the verb ends in -er, or is aller or an ouvrir-type verb, cut the final s.",
+        "For nous and vous, take the present form unchanged and drop the subject."
+      ]
+    },
+    "other-verbs": {
+      "section": "from-the-present",
+      "steps": [
+        "Read the person asked for: tu, nous or vous.",
+        "Conjugate the verb in the present for that person.",
+        "Delete the subject pronoun and change nothing else; only -er verbs and aller lose a letter."
+      ]
+    },
+    "aller-y-en": {
+      "section": "s-before-y-en",
+      "steps": [
+        "Build the tu command as usual, without its s.",
+        "Check the word right after the verb: if it is y or en, put the s back.",
+        "Join the verb and the pronoun with a hyphen."
+      ]
+    },
+    "irregular-etre-avoir-savoir": {
+      "section": "irregular",
+      "steps": [
+        "Ask whether the verb is être, avoir or savoir: their commands are not the present forms.",
+        "Find the person from the clues in the sentence.",
+        "Take that form from the table and leave it unchanged inside ne … pas."
+      ]
+    },
+    "negative": {
+      "section": "negative",
+      "steps": [
+        "Build the command form you would use in the affirmative.",
+        "Put ne (n’ before a vowel) before the verb and pas straight after it.",
+        "Move any pronoun in front of the verb, between ne and the verb."
+      ]
+    },
+    "reflexive": {
+      "section": "reflexive",
+      "steps": [
+        "Match the pronoun to the person of the verb: with tu, with nous, with vous.",
+        "Affirmative: pronoun behind the verb, hyphen, stressed form.",
+        "Negative: pronoun in front of the verb, between ne and the verb."
+      ]
+    },
+    "object-pronouns": {
+      "section": "object-pronouns",
+      "steps": [
+        "Decide which pronoun replaces the noun, matching gender and number.",
+        "Affirmative: behind the verb with a hyphen, me and te in their stressed forms.",
+        "Negative: in front of the verb, between ne and the verb, with pas after the verb."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "imperative-er-drop-s-1",
@@ -26,7 +587,28 @@
       ],
       "hint": "Start from tu parles and remove the subject. -er verbs lose one more letter.",
       "feedback": "The tu imperative of an -er verb has no final s.",
-      "explanation": "Tu parles becomes parle: -er verbs drop the s in the tu command."
+      "explanation": "Tu parles becomes parle: -er verbs drop the s in the tu command.",
+      "mistakes": [
+        {
+          "answers": [
+            "parlez"
+          ],
+          "why": "Parlez is the vous command, for several people or someone you address formally. The cue names tu."
+        },
+        {
+          "answers": [
+            "parlons"
+          ],
+          "why": "Parlons is the nous command — “let’s speak”. It includes the speaker, which tu does not."
+        },
+        {
+          "answers": [
+            "parler"
+          ],
+          "why": "Parler is the infinitive: it names the action without ordering anyone to do it."
+        }
+      ],
+      "row": "parler"
     },
     {
       "id": "imperative-er-drop-s-2",
@@ -45,7 +627,28 @@
       ],
       "hint": "Take tu manges, remove tu, and think about the last letter.",
       "feedback": "An -er verb has no final s in the tu command.",
-      "explanation": "The tu command of manger is mange, without s."
+      "explanation": "The tu command of manger is mange, without s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mangez"
+          ],
+          "why": "Mangez is the vous command. The instruction says a friend, so the tu form is wanted."
+        },
+        {
+          "answers": [
+            "Mangeons"
+          ],
+          "why": "Mangeons is the nous command — “let’s eat”. Here you are telling someone else to eat."
+        },
+        {
+          "answers": [
+            "Manger"
+          ],
+          "why": "Manger is the infinitive; a command needs a conjugated form."
+        }
+      ],
+      "row": "manger"
     },
     {
       "id": "imperative-er-drop-s-3",
@@ -64,7 +667,28 @@
       ],
       "hint": "S’il te plaît shows this is a tu command, and fermer is an -er verb.",
       "feedback": "Look for the tu command of an -er verb.",
-      "explanation": "The tu command of fermer is ferme, with no s."
+      "explanation": "The tu command of fermer is ferme, with no s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Fermes"
+          ],
+          "why": "Fermes is the present with tu (tu fermes). An -er verb loses that final s when it becomes a command."
+        },
+        {
+          "answers": [
+            "Fermer"
+          ],
+          "why": "Fermer is the infinitive: it names the action instead of ordering it."
+        },
+        {
+          "answers": [
+            "Fermé"
+          ],
+          "why": "Fermé is the past participle, used with être or avoir (la fenêtre est fermée). It gives no order."
+        }
+      ],
+      "row": "fermer"
     },
     {
       "id": "imperative-er-drop-s-4",
@@ -77,7 +701,28 @@
       ],
       "hint": "Écouter is an -er verb. Look at the last letter of the verb.",
       "feedback": "The verb still has the ending of the present tense.",
-      "explanation": "In the tu command, -er verbs drop the s: écoute."
+      "explanation": "In the tu command, -er verbs drop the s: écoute.",
+      "mistakes": [
+        {
+          "answers": [
+            "Écoutes la musique, Léa !"
+          ],
+          "why": "That is the sentence as it stands: écoutes is the present with tu. Speaking to one friend, an -er verb loses that s."
+        },
+        {
+          "answers": [
+            "Écoutez la musique, Léa !"
+          ],
+          "why": "Écoutez is the vous command. Léa is one person you call tu, so the person has changed instead of the mistake being fixed."
+        },
+        {
+          "answers": [
+            "Écouter la musique, Léa !"
+          ],
+          "why": "Écouter is the infinitive; it describes the action instead of asking Léa to do it."
+        }
+      ],
+      "row": "écouter"
     },
     {
       "id": "imperative-er-drop-s-5",
@@ -96,7 +741,33 @@
       ],
       "hint": "Let’s is the nous command: the nous form without nous.",
       "feedback": "Use the nous form of manger, without the subject.",
-      "explanation": "Let’s eat is the nous command mangeons. Manger keeps its e before -ons."
+      "explanation": "Let’s eat is the nous command mangeons. Manger keeps its e before -ons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mangez ensemble."
+          ],
+          "why": "Mangez orders other people to eat. “Let’s” includes yourself, so another person of the verb is needed."
+        },
+        {
+          "answers": [
+            "Mange ensemble."
+          ],
+          "why": "Mange is an order to one person. “Let’s” means you and the others together."
+        },
+        {
+          "answers": [
+            "Nous mangeons ensemble."
+          ],
+          "why": "That is a statement: “we are eating together”. A command drops the subject pronoun."
+        },
+        {
+          "answers": [
+            "Allons manger ensemble."
+          ],
+          "why": "That suggests going somewhere to eat. “Let’s + verb” is simply the nous command of that verb."
+        }
+      ]
     },
     {
       "id": "imperative-er-drop-s-6",
@@ -118,7 +789,22 @@
       ],
       "hint": "Two tiles are forms of parler. Only one is a command.",
       "feedback": "The tu command of an -er verb has no final s.",
-      "explanation": "The tu command of parler is parle, without s."
+      "explanation": "The tu command of parler is parle, without s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Parles plus fort, s’il te plaît."
+          ],
+          "why": "Parles is the present with tu; the tile with the s belongs to a statement, not to a command of an -er verb."
+        },
+        {
+          "answers": [
+            "Plus fort, parle s’il te plaît."
+          ],
+          "why": "The order of the tiles is wrong: a command opens with its verb, and plus fort says how, so it follows."
+        }
+      ],
+      "row": "parler"
     },
     {
       "id": "imperative-other-verbs-1",
@@ -131,7 +817,34 @@
       ],
       "hint": "Take the nous form of the present and remove nous.",
       "feedback": "The nous command is the nous present form without the subject.",
-      "explanation": "Nous finissons becomes finissons."
+      "explanation": "Nous finissons becomes finissons.",
+      "mistakes": [
+        {
+          "answers": [
+            "finis"
+          ],
+          "why": "Finis is the command for one person you call tu. The cue names nous."
+        },
+        {
+          "answers": [
+            "finissez"
+          ],
+          "why": "Finissez is the vous command, for several people. Nous means “let’s”, including yourself."
+        },
+        {
+          "answers": [
+            "finons"
+          ],
+          "why": "Finir adds -iss- before the plural endings, so the stem is longer than fin- here."
+        },
+        {
+          "answers": [
+            "finir"
+          ],
+          "why": "Finir is the infinitive; a command needs a conjugated form."
+        }
+      ],
+      "row": "finir"
     },
     {
       "id": "imperative-other-verbs-2",
@@ -150,7 +863,28 @@
       ],
       "hint": "Prendre is not an -er verb, so its tu form stays as in the present.",
       "feedback": "Keep the tu present form of prendre, without tu.",
-      "explanation": "Tu prends becomes prends. Only -er verbs and aller drop the s."
+      "explanation": "Tu prends becomes prends. Only -er verbs and aller drop the s.",
+      "mistakes": [
+        {
+          "answers": [
+            "prenez"
+          ],
+          "why": "Prenez is the vous command, for several people or a formal you. The cue names tu."
+        },
+        {
+          "answers": [
+            "prenons"
+          ],
+          "why": "Prenons is the nous command — “let’s take”."
+        },
+        {
+          "answers": [
+            "prendre"
+          ],
+          "why": "Prendre is the infinitive; the command is a conjugated form."
+        }
+      ],
+      "row": "prendre"
     },
     {
       "id": "imperative-other-verbs-3",
@@ -163,7 +897,34 @@
       ],
       "hint": "Take the vous form of faire in the present and remove vous.",
       "feedback": "The vous form of faire is irregular in the present, and the command keeps it.",
-      "explanation": "Vous faites becomes faites."
+      "explanation": "Vous faites becomes faites.",
+      "mistakes": [
+        {
+          "answers": [
+            "Faisez"
+          ],
+          "why": "Faire does not take the regular -ez ending: its vous form is one of the few irregular ones in the present."
+        },
+        {
+          "answers": [
+            "Fais"
+          ],
+          "why": "Fais speaks to one person you call tu. Vos devoirs shows the vous form is wanted."
+        },
+        {
+          "answers": [
+            "Faisons"
+          ],
+          "why": "Faisons is the nous command — “let’s do”. The instruction asks for the vous form."
+        },
+        {
+          "answers": [
+            "Faire"
+          ],
+          "why": "Faire is the infinitive; an order needs a conjugated form."
+        }
+      ],
+      "row": "faire"
     },
     {
       "id": "imperative-other-verbs-4",
@@ -182,7 +943,28 @@
       ],
       "hint": "You are speaking to several children.",
       "feedback": "Speaking to several people calls for the vous command.",
-      "explanation": "To several people, the command of venir is venez."
+      "explanation": "To several people, the command of venir is venez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vient"
+          ],
+          "why": "Vient is the il/elle present form: “he comes”. A command is never in the third person."
+        },
+        {
+          "answers": [
+            "Venir"
+          ],
+          "why": "Venir is the infinitive: it names the action and orders nobody."
+        },
+        {
+          "answers": [
+            "Venu"
+          ],
+          "why": "Venu is the past participle, used with être (il est venu). It gives no order."
+        }
+      ],
+      "row": "venir"
     },
     {
       "id": "imperative-other-verbs-5",
@@ -195,7 +977,34 @@
       ],
       "hint": "Attendre is not an -er verb, so the verb itself does not change.",
       "feedback": "Remove tu and keep attends as it is.",
-      "explanation": "Tu attends becomes attends: only -er verbs and aller drop the s."
+      "explanation": "Tu attends becomes attends: only -er verbs and aller drop the s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu attends ici."
+          ],
+          "why": "The subject is still there, so this is still a statement. A command speaks straight to the person, with no subject pronoun."
+        },
+        {
+          "answers": [
+            "Attend ici."
+          ],
+          "why": "Attend is the il/elle form. Only -er verbs and aller lose a letter in the tu command; attendre is neither."
+        },
+        {
+          "answers": [
+            "Attendez ici."
+          ],
+          "why": "Attendez speaks to several people or to someone formally, but the sentence given uses tu."
+        },
+        {
+          "answers": [
+            "Attendre ici."
+          ],
+          "why": "That is the infinitive: it describes waiting instead of asking for it."
+        }
+      ],
+      "row": "attendre"
     },
     {
       "id": "imperative-other-verbs-6",
@@ -209,7 +1018,34 @@
       ],
       "hint": "Boire is irregular. Use its tu present form without tu.",
       "feedback": "Use the tu command of boire and the partitive for some water.",
-      "explanation": "Tu bois becomes bois; some water is de l’eau."
+      "explanation": "Tu bois becomes bois; some water is de l’eau.",
+      "mistakes": [
+        {
+          "answers": [
+            "Buvez de l’eau."
+          ],
+          "why": "Buvez addresses several people or someone formally; this order is for a friend."
+        },
+        {
+          "answers": [
+            "Buvons de l’eau."
+          ],
+          "why": "Buvons means “let’s drink”, including yourself. The order is for your friend alone."
+        },
+        {
+          "answers": [
+            "Bois l’eau."
+          ],
+          "why": "L’eau is “the water”, a particular quantity. “Some water” needs the partitive article."
+        },
+        {
+          "answers": [
+            "Boire de l’eau."
+          ],
+          "why": "Boire is the infinitive; a command needs the conjugated tu form."
+        }
+      ],
+      "row": "boire"
     },
     {
       "id": "imperative-aller-y-en-1",
@@ -228,7 +1064,34 @@
       ],
       "hint": "Aller behaves like an -er verb in the tu command.",
       "feedback": "The tu command of aller has no s here.",
-      "explanation": "Tu vas becomes va, like the -er verbs."
+      "explanation": "Tu vas becomes va, like the -er verbs.",
+      "mistakes": [
+        {
+          "answers": [
+            "allez"
+          ],
+          "why": "Allez is the vous command, for several people or a formal you. The cue names tu."
+        },
+        {
+          "answers": [
+            "allons"
+          ],
+          "why": "Allons is the nous command — “let’s go”."
+        },
+        {
+          "answers": [
+            "vais"
+          ],
+          "why": "Vais is the je form: it says what I do. A command is aimed at somebody else."
+        },
+        {
+          "answers": [
+            "aller"
+          ],
+          "why": "Aller is the infinitive; the command is a conjugated form."
+        }
+      ],
+      "row": "va"
     },
     {
       "id": "imperative-aller-y-en-2",
@@ -247,7 +1110,28 @@
       ],
       "hint": "This is a tu command, and no y or en follows the verb.",
       "feedback": "Aller drops the s in the tu command.",
-      "explanation": "The tu command of aller is va. The s only comes back before y or en."
+      "explanation": "The tu command of aller is va. The s only comes back before y or en.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vas"
+          ],
+          "why": "Vas is the present with tu (tu vas). In the tu command aller keeps that s only before y or en, and neither follows here."
+        },
+        {
+          "answers": [
+            "Vais"
+          ],
+          "why": "Vais is the je form — what I do myself. An order is addressed to the other person."
+        },
+        {
+          "answers": [
+            "Aller"
+          ],
+          "why": "Aller is the infinitive: it names the action instead of ordering it."
+        }
+      ],
+      "row": "va"
     },
     {
       "id": "imperative-aller-y-en-3",
@@ -266,7 +1150,28 @@
       ],
       "hint": "Before en, the tu command gets back a letter. Pronouns also need a hyphen.",
       "feedback": "Think about the s before en and the hyphen.",
-      "explanation": "Before en, the s returns for the sound: manges-en."
+      "explanation": "Before en, the s returns for the sound: manges-en.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mange-en"
+          ],
+          "why": "That is the plain tu command of an -er verb, but the letter it normally drops comes back when en follows."
+        },
+        {
+          "answers": [
+            "Manges en"
+          ],
+          "why": "The verb form is right, but a pronoun after an affirmative command is attached to it with a hyphen."
+        },
+        {
+          "answers": [
+            "Mange en"
+          ],
+          "why": "Two things are missing: the letter the verb takes back before en, and the hyphen joining the pronoun to the verb."
+        }
+      ],
+      "row": "mange"
     },
     {
       "id": "imperative-aller-y-en-4",
@@ -289,7 +1194,34 @@
       ],
       "hint": "The word after the blank is y.",
       "feedback": "Before y, the tu command of aller keeps a letter it usually loses.",
-      "explanation": "Before y, the s returns: vas-y."
+      "explanation": "Before y, the s returns: vas-y.",
+      "mistakes": [
+        {
+          "answers": [
+            "allez"
+          ],
+          "why": "Allez is the vous command; ton frère shows you are speaking to one person you call tu."
+        },
+        {
+          "answers": [
+            "allons"
+          ],
+          "why": "Allons is the nous command — “let’s go” — but the sentence orders someone else to go."
+        },
+        {
+          "answers": [
+            "vais"
+          ],
+          "why": "Vais is the je form, what I do myself; it never gives an order."
+        },
+        {
+          "answers": [
+            "aller"
+          ],
+          "why": "Aller is the infinitive; the blank needs the command form."
+        }
+      ],
+      "row": "va"
     },
     {
       "id": "imperative-aller-y-en-5",
@@ -312,7 +1244,28 @@
       ],
       "hint": "Y goes after the verb, and the verb changes slightly before it.",
       "feedback": "Before y, the s comes back, and a hyphen joins the words.",
-      "explanation": "Au marché becomes y after the verb, and va becomes vas before y: vas-y."
+      "explanation": "Au marché becomes y after the verb, and va becomes vas before y: vas-y.",
+      "mistakes": [
+        {
+          "answers": [
+            "Va au marché !"
+          ],
+          "why": "Nothing has been replaced: au marché is still written out. Y is the pronoun that stands for a place introduced by à or au."
+        },
+        {
+          "answers": [
+            "Vas-y au marché !"
+          ],
+          "why": "The pronoun already stands for au marché, so naming the place again says it twice."
+        },
+        {
+          "answers": [
+            "Allez-y !"
+          ],
+          "why": "Allez speaks to several people or to someone formally; the command given is in the tu form."
+        }
+      ],
+      "row": "va"
     },
     {
       "id": "imperative-aller-y-en-6",
@@ -325,7 +1278,28 @@
       ],
       "hint": "Look at the verb before y.",
       "feedback": "Before y, the tu command of aller keeps its s.",
-      "explanation": "Va becomes vas before y: vas-y."
+      "explanation": "Va becomes vas before y: vas-y.",
+      "mistakes": [
+        {
+          "answers": [
+            "Va-y, c’est ton tour !"
+          ],
+          "why": "That leaves the verb untouched: before y, the tu command of aller takes back the letter it normally drops."
+        },
+        {
+          "answers": [
+            "Va y, c’est ton tour !"
+          ],
+          "why": "Removing the hyphen makes it worse: the pronoun must be attached to the verb, and the verb itself is still missing a letter."
+        },
+        {
+          "answers": [
+            "Allez-y, c’est ton tour !"
+          ],
+          "why": "Allez is the vous command, but ton tour shows you are speaking to one friend."
+        }
+      ],
+      "row": "va"
     },
     {
       "id": "imperative-aller-y-en-7",
@@ -345,7 +1319,16 @@
       ],
       "hint": "Before en, the tu command of an -er verb changes.",
       "feedback": "One verb tile is missing a letter that returns before en.",
-      "explanation": "Before en, the s returns: parles-en."
+      "explanation": "Before en, the s returns: parles-en.",
+      "mistakes": [
+        {
+          "answers": [
+            "Parle-en à ton père."
+          ],
+          "why": "That tile is the plain tu command of an -er verb; before en the letter it normally drops comes back."
+        }
+      ],
+      "row": "parle"
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-1",
@@ -358,7 +1341,35 @@
       ],
       "hint": "Être does not take its imperative from the present.",
       "feedback": "The imperative of être is irregular.",
-      "explanation": "The tu command of être is sois."
+      "explanation": "The tu command of être is sois.",
+      "mistakes": [
+        {
+          "answers": [
+            "es",
+            "tu es"
+          ],
+          "why": "Es is the present of être with tu. This verb does not take its command from the present."
+        },
+        {
+          "answers": [
+            "soit"
+          ],
+          "why": "Soit is the form used after que (qu’il soit là). Speaking straight to someone needs the tu command."
+        },
+        {
+          "answers": [
+            "soyez"
+          ],
+          "why": "Soyez is the vous command, for several people or a formal you. The cue names tu."
+        },
+        {
+          "answers": [
+            "être"
+          ],
+          "why": "Être is the infinitive; a command is a conjugated form."
+        }
+      ],
+      "row": "être (be)"
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-2",
@@ -377,7 +1388,28 @@
       ],
       "hint": "Avoir does not take its imperative from the present.",
       "feedback": "The imperative of avoir is irregular.",
-      "explanation": "The vous command of avoir is ayez."
+      "explanation": "The vous command of avoir is ayez.",
+      "mistakes": [
+        {
+          "answers": [
+            "aie"
+          ],
+          "why": "Aie is the command for one person you call tu. The cue names vous."
+        },
+        {
+          "answers": [
+            "ayons"
+          ],
+          "why": "Ayons is the nous command — “let’s have”, including yourself."
+        },
+        {
+          "answers": [
+            "avoir"
+          ],
+          "why": "Avoir is the infinitive; the command is a conjugated form."
+        }
+      ],
+      "row": "avoir (have)"
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-3",
@@ -396,7 +1428,28 @@
       ],
       "hint": "Avoir is irregular in the imperative, and you are speaking to several children.",
       "feedback": "Use the irregular vous command of avoir.",
-      "explanation": "To several people: n’ayez pas peur. Aie is the tu form."
+      "explanation": "To several people: n’ayez pas peur. Aie is the tu form.",
+      "mistakes": [
+        {
+          "answers": [
+            "avez"
+          ],
+          "why": "Avez is the present of avoir with vous: “you have”. The command of this verb is not its present form."
+        },
+        {
+          "answers": [
+            "aie"
+          ],
+          "why": "Aie is the command for one person. Les enfants means several children."
+        },
+        {
+          "answers": [
+            "avoir"
+          ],
+          "why": "Avoir is the infinitive: it names the action and orders nobody."
+        }
+      ],
+      "row": "avoir (have)"
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-4",
@@ -415,7 +1468,28 @@
       ],
       "hint": "Être is irregular in the imperative, and sages is plural.",
       "feedback": "Use the irregular vous command of être.",
-      "explanation": "To several people, the command of être is soyez."
+      "explanation": "To several people, the command of être is soyez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Êtes"
+          ],
+          "why": "Êtes is the present of être with vous: “you are”, a statement. This verb builds its command on another stem."
+        },
+        {
+          "answers": [
+            "Sois"
+          ],
+          "why": "Sois is the command for one person. Les enfants and the plural sages show you are speaking to several."
+        },
+        {
+          "answers": [
+            "Soyiez"
+          ],
+          "why": "No form of être has that -iez ending in a command; the vous ending here is the short one."
+        }
+      ],
+      "row": "être (be)"
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-5",
@@ -434,7 +1508,34 @@
       ],
       "hint": "Savoir has an irregular imperative, like être and avoir.",
       "feedback": "The tu command of savoir is not taken from the present.",
-      "explanation": "The tu command of savoir is sache."
+      "explanation": "The tu command of savoir is sache.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sachez"
+          ],
+          "why": "Sachez is the vous command, for several people or a formal you. The instruction says a friend."
+        },
+        {
+          "answers": [
+            "Sachons"
+          ],
+          "why": "Sachons is the nous command — “let’s know”, including yourself."
+        },
+        {
+          "answers": [
+            "Saches"
+          ],
+          "why": "Saches is the form used after que (que tu saches). On its own it gives no order."
+        },
+        {
+          "answers": [
+            "Savoir"
+          ],
+          "why": "Savoir is the infinitive; the blank needs the command form."
+        }
+      ],
+      "row": "savoir (know)"
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-6",
@@ -447,7 +1548,28 @@
       ],
       "hint": "Look at the last letter of the verb.",
       "feedback": "The tu command of être ends in s.",
-      "explanation": "The tu command of être is sois. Soit is a different form."
+      "explanation": "The tu command of être is sois. Soit is a different form.",
+      "mistakes": [
+        {
+          "answers": [
+            "Soit gentille avec ta sœur !"
+          ],
+          "why": "Soit is the form used after que (qu’elle soit gentille). Speaking straight to someone calls for the tu command of être."
+        },
+        {
+          "answers": [
+            "Es gentille avec ta sœur !"
+          ],
+          "why": "Es is the present of être with tu: it states a fact instead of asking for one."
+        },
+        {
+          "answers": [
+            "Soyez gentille avec ta sœur !"
+          ],
+          "why": "Soyez is the vous form, but ta sœur shows you are speaking to someone you call tu."
+        }
+      ],
+      "row": "être (be)"
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-7",
@@ -462,7 +1584,28 @@
       ],
       "hint": "Être has an irregular imperative. On time is à l’heure.",
       "feedback": "Use the irregular vous command of être.",
-      "explanation": "The vous command of être is soyez: soyez à l’heure."
+      "explanation": "The vous command of être is soyez: soyez à l’heure.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sois à l’heure."
+          ],
+          "why": "Sois addresses one person, and the instruction says several people."
+        },
+        {
+          "answers": [
+            "Êtes à l’heure."
+          ],
+          "why": "Êtes is the present: “you are on time”, a statement. Être does not build its command from the present."
+        },
+        {
+          "answers": [
+            "Soyez ponctuel."
+          ],
+          "why": "Ponctuel in the singular describes one person; several people need the adjective in the plural."
+        }
+      ],
+      "row": "être (be)"
     },
     {
       "id": "imperative-irregular-etre-avoir-savoir-8",
@@ -482,7 +1625,16 @@
       ],
       "hint": "Avoir has an irregular tu command. One tile is a wrong form.",
       "feedback": "The tu command of avoir has no s.",
-      "explanation": "The tu command of avoir is aie."
+      "explanation": "The tu command of avoir is aie.",
+      "mistakes": [
+        {
+          "answers": [
+            "Aies confiance en toi."
+          ],
+          "why": "Aies is not a command form of avoir: this verb has no final s in the form used with tu."
+        }
+      ],
+      "row": "avoir (have)"
     },
     {
       "id": "imperative-negative-1",
@@ -495,7 +1647,33 @@
       ],
       "hint": "Ne and pas go around the verb, as in a normal sentence.",
       "feedback": "Put ne before the verb and pas after it.",
-      "explanation": "In a negative command, ne and pas surround the verb: ne mange pas."
+      "explanation": "In a negative command, ne and pas surround the verb: ne mange pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne mange ce gâteau pas !"
+          ],
+          "why": "Pas has drifted to the end. The two negative words close around the verb itself, leaving nothing between them."
+        },
+        {
+          "answers": [
+            "Mange pas ce gâteau !"
+          ],
+          "why": "That is spoken French, where the first negative word is dropped. In writing it stays in front of the verb."
+        },
+        {
+          "answers": [
+            "Ne manges pas ce gâteau !"
+          ],
+          "why": "Manges is the present with tu; an -er verb loses that s in a command, negative or not."
+        },
+        {
+          "answers": [
+            "Ne pas manger ce gâteau !"
+          ],
+          "why": "Ne pas + infinitive is the style of written notices, not of an order addressed to a person."
+        }
+      ]
     },
     {
       "id": "imperative-negative-2",
@@ -514,7 +1692,27 @@
       ],
       "hint": "Speaking to Paul is a tu command. Courir is not an -er verb.",
       "feedback": "Use the tu present form of courir without tu.",
-      "explanation": "Tu cours becomes cours: ne cours pas."
+      "explanation": "Tu cours becomes cours: ne cours pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "coure"
+          ],
+          "why": "Coure is the form used after que (que je coure); on its own it gives no order."
+        },
+        {
+          "answers": [
+            "courir"
+          ],
+          "why": "Courir is the infinitive: it names the action instead of ordering it."
+        },
+        {
+          "answers": [
+            "courre"
+          ],
+          "why": "Courre survives only in the old hunting phrase chasse à courre; it is no command form."
+        }
+      ]
     },
     {
       "id": "imperative-negative-3",
@@ -527,7 +1725,33 @@
       ],
       "hint": "Take the nous present form and remove nous.",
       "feedback": "The nous command sits between n’ and pas.",
-      "explanation": "Nous attendons becomes attendons: n’attendons pas."
+      "explanation": "Nous attendons becomes attendons: n’attendons pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "attendez"
+          ],
+          "why": "Attendez is the vous command. The instruction asks for the form that means “let’s”, including yourself."
+        },
+        {
+          "answers": [
+            "attends"
+          ],
+          "why": "Attends speaks to one person you call tu; the nous form includes you and the others."
+        },
+        {
+          "answers": [
+            "attendions"
+          ],
+          "why": "Attendions is the imperfect (nous attendions = we were waiting); a command uses the present form."
+        },
+        {
+          "answers": [
+            "attendre"
+          ],
+          "why": "Attendre is the infinitive; the blank needs a conjugated command."
+        }
+      ]
     },
     {
       "id": "imperative-negative-4",
@@ -551,7 +1775,33 @@
       ],
       "hint": "Ne and pas go around the verb. Toucher is an -er verb.",
       "feedback": "Put ne before the tu command and pas after it.",
-      "explanation": "Ne touche pas surrounds the verb; -er verbs have no s in the tu command."
+      "explanation": "Ne touche pas surrounds the verb; -er verbs have no s in the tu command.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne touches pas le gâteau."
+          ],
+          "why": "Touches is the present with tu; an -er verb drops that s in a command."
+        },
+        {
+          "answers": [
+            "Ne touche le gâteau pas."
+          ],
+          "why": "The second negative word is too far from the verb: the pair closes around the verb alone."
+        },
+        {
+          "answers": [
+            "Ne touchez pas le gâteau."
+          ],
+          "why": "Touchez addresses several people or someone formally, but this is said to a friend."
+        },
+        {
+          "answers": [
+            "Ne pas toucher le gâteau."
+          ],
+          "why": "Ne pas + infinitive is how signs and instructions are written, not how you tell a friend something."
+        }
+      ]
     },
     {
       "id": "imperative-negative-5",
@@ -564,7 +1814,27 @@
       ],
       "hint": "Look at where pas is.",
       "feedback": "Pas must come straight after the verb.",
-      "explanation": "Ne and pas surround the verb: ne fermez pas la porte."
+      "explanation": "Ne and pas surround the verb: ne fermez pas la porte.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne fermez la porte pas."
+          ],
+          "why": "Pas is still at the end. The two negative words close around the verb, so the object cannot stand between them."
+        },
+        {
+          "answers": [
+            "Fermez pas la porte."
+          ],
+          "why": "Dropping ne belongs to casual speech; written French keeps it in front of the verb."
+        },
+        {
+          "answers": [
+            "Ne ferme pas la porte."
+          ],
+          "why": "The person has been changed: the sentence given uses the vous form of the verb."
+        }
+      ]
     },
     {
       "id": "imperative-negative-6",
@@ -585,7 +1855,27 @@
       ],
       "hint": "Choose the vous command, then place ne and pas around it.",
       "feedback": "Pick the vous command form of sortir.",
-      "explanation": "Ne and pas surround the vous command sortez."
+      "explanation": "Ne and pas surround the vous command sortez.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne sortiez pas ce soir."
+          ],
+          "why": "Sortiez is the imperfect or the form used after que (que vous sortiez); it is not a command."
+        },
+        {
+          "answers": [
+            "Ne pas sortez ce soir."
+          ],
+          "why": "Pas has jumped in front of the verb. It always follows the verb it negates."
+        },
+        {
+          "answers": [
+            "Sortez pas ce soir."
+          ],
+          "why": "Ne has been dropped, which belongs to casual speech; in writing the verb keeps it in front."
+        }
+      ]
     },
     {
       "id": "imperative-reflexive-1",
@@ -608,7 +1898,35 @@
       ],
       "hint": "The pronoun goes after the verb in an affirmative command, and te changes.",
       "feedback": "Put the pronoun after the verb with a hyphen, in its stressed form.",
-      "explanation": "Tu te lèves becomes lève-toi: the pronoun follows, and te becomes toi."
+      "explanation": "Tu te lèves becomes lève-toi: the pronoun follows, and te becomes toi.",
+      "mistakes": [
+        {
+          "answers": [
+            "te lève",
+            "tu te lèves"
+          ],
+          "why": "That is the word order of a statement. In an affirmative command the pronoun does not stay in front of the verb."
+        },
+        {
+          "answers": [
+            "lèves-toi"
+          ],
+          "why": "Lever is an -er verb, so its tu command has no final s; the s only returns before y or en."
+        },
+        {
+          "answers": [
+            "lève-moi"
+          ],
+          "why": "Moi points at the speaker. A reflexive verb sends the action back to the person addressed, so the pronoun must match tu."
+        },
+        {
+          "answers": [
+            "levez-vous"
+          ],
+          "why": "That speaks to several people or to someone formally, but the cue names tu."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "imperative-reflexive-2",
@@ -628,7 +1946,35 @@
       ],
       "hint": "Take vous vous asseyez and move the pronoun after the verb.",
       "feedback": "The reflexive pronoun follows the verb with a hyphen.",
-      "explanation": "Vous vous asseyez becomes asseyez-vous (assoyez-vous is the less common variant)."
+      "explanation": "Vous vous asseyez becomes asseyez-vous (assoyez-vous is the less common variant).",
+      "mistakes": [
+        {
+          "answers": [
+            "vous asseyez",
+            "vous vous asseyez"
+          ],
+          "why": "That is the order of a present statement, with the pronoun in front. An affirmative command puts the pronoun behind the verb."
+        },
+        {
+          "answers": [
+            "assieds-toi"
+          ],
+          "why": "That is the command for one person you call tu; the cue names vous."
+        },
+        {
+          "answers": [
+            "asseyez-toi"
+          ],
+          "why": "Toi goes with a tu command only. The pronoun must match the person of the verb."
+        },
+        {
+          "answers": [
+            "asseoir-vous"
+          ],
+          "why": "Asseoir is the infinitive; a command needs the conjugated form."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "imperative-reflexive-3",
@@ -647,7 +1993,28 @@
       ],
       "hint": "In an affirmative command, the pronoun follows the verb and te changes form.",
       "feedback": "Check where the pronoun goes, its form, and the -er ending.",
-      "explanation": "Réveille-toi: the pronoun follows with a hyphen, te becomes toi, and the -er verb has no s."
+      "explanation": "Réveille-toi: the pronoun follows with a hyphen, te becomes toi, and the -er verb has no s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Réveille-te"
+          ],
+          "why": "Te is the form used in front of the verb. Behind an affirmative command the pronoun takes its stressed form."
+        },
+        {
+          "answers": [
+            "Te réveille"
+          ],
+          "why": "That is the order of a statement (tu te réveilles). An affirmative command sends the pronoun behind the verb."
+        },
+        {
+          "answers": [
+            "Réveilles-toi"
+          ],
+          "why": "Réveiller is an -er verb: its tu command keeps no final s, even with a pronoun attached."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "imperative-reflexive-4",
@@ -660,7 +2027,28 @@
       ],
       "hint": "In the negative, the pronoun goes back before the verb.",
       "feedback": "In a negative command, the reflexive pronoun is te and comes before the verb.",
-      "explanation": "Lève-toi becomes ne te lève pas: te goes before the verb, inside ne…pas."
+      "explanation": "Lève-toi becomes ne te lève pas: te goes before the verb, inside ne…pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne lève-toi pas !"
+          ],
+          "why": "The pronoun has stayed behind the verb, as in the affirmative command. A negative one sends it back in front of the verb."
+        },
+        {
+          "answers": [
+            "Ne toi lève pas !"
+          ],
+          "why": "Toi is the stressed form, used only behind an affirmative command; in front of the verb the pronoun is unstressed."
+        },
+        {
+          "answers": [
+            "Ne te lèves pas !"
+          ],
+          "why": "Lever is an -er verb, so its tu command has no final s, negative or not."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "imperative-reflexive-5",
@@ -673,7 +2061,28 @@
       ],
       "hint": "This command is negative. Where does the pronoun go?",
       "feedback": "In a negative command, the pronoun comes before the verb.",
-      "explanation": "In the negative, the pronoun stays in front: ne te couche pas."
+      "explanation": "In the negative, the pronoun stays in front: ne te couche pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne couche-toi pas trop tard."
+          ],
+          "why": "The pronoun is still attached behind the verb, as in an affirmative order. A negative command puts it back in front."
+        },
+        {
+          "answers": [
+            "Ne toi couche pas trop tard."
+          ],
+          "why": "The pronoun is in the right place now, but toi is the stressed form used only behind an affirmative command."
+        },
+        {
+          "answers": [
+            "Ne te couches pas trop tard."
+          ],
+          "why": "Coucher is an -er verb; its tu command has no final s."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "imperative-reflexive-6",
@@ -692,7 +2101,34 @@
       ],
       "hint": "Use the nous command and put the pronoun after the verb.",
       "feedback": "The reflexive pronoun follows the nous command with a hyphen.",
-      "explanation": "Nous nous dépêchons becomes dépêchons-nous."
+      "explanation": "Nous nous dépêchons becomes dépêchons-nous.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous nous dépêchons."
+          ],
+          "why": "That is a statement: “we are hurrying”. A command drops the subject and moves the pronoun behind the verb."
+        },
+        {
+          "answers": [
+            "Dépêchez-vous."
+          ],
+          "why": "That orders other people to hurry; “let’s” includes yourself."
+        },
+        {
+          "answers": [
+            "Dépêchons-vous."
+          ],
+          "why": "The pronoun does not match the verb: a nous form carries the nous pronoun."
+        },
+        {
+          "answers": [
+            "Se dépêcher."
+          ],
+          "why": "That is the dictionary form of the verb with its pronoun, not an order."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "imperative-reflexive-7",
@@ -715,7 +2151,34 @@
       ],
       "hint": "The pronoun goes after the verb in an affirmative command.",
       "feedback": "Put vous after the verb, joined with a hyphen.",
-      "explanation": "Vous vous lavez becomes lavez-vous."
+      "explanation": "Vous vous lavez becomes lavez-vous.",
+      "mistakes": [
+        {
+          "answers": [
+            "vous vous lavez"
+          ],
+          "why": "That is the present statement: it says what the children do, instead of telling them to do it."
+        },
+        {
+          "answers": [
+            "lavez-toi"
+          ],
+          "why": "Toi belongs with a tu command, but the verb here is aimed at several children."
+        },
+        {
+          "answers": [
+            "lave-toi"
+          ],
+          "why": "That speaks to one child; les enfants means you are addressing several."
+        },
+        {
+          "answers": [
+            "laver-vous"
+          ],
+          "why": "Laver is the infinitive; the blank needs the command form with its pronoun."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "imperative-object-pronouns-1",
@@ -738,7 +2201,34 @@
       ],
       "hint": "In an affirmative command, the pronoun goes after the verb.",
       "feedback": "Put the pronoun after the verb with a hyphen.",
-      "explanation": "Le livre becomes le, placed after the verb: prends-le."
+      "explanation": "Le livre becomes le, placed after the verb: prends-le.",
+      "mistakes": [
+        {
+          "answers": [
+            "Prends le livre !"
+          ],
+          "why": "Le livre is still written out; the task is to put in its place the pronoun that stands for it."
+        },
+        {
+          "answers": [
+            "Prends-la !"
+          ],
+          "why": "La stands for a feminine noun, and livre is masculine."
+        },
+        {
+          "answers": [
+            "Prends-lui !"
+          ],
+          "why": "Lui replaces a person after à (parle-lui). A book that is taken directly needs a direct-object pronoun."
+        },
+        {
+          "answers": [
+            "Prends-le livre !"
+          ],
+          "why": "The pronoun and the noun name the same thing, so keeping both says it twice."
+        }
+      ],
+      "row": "le"
     },
     {
       "id": "imperative-object-pronouns-2",
@@ -751,7 +2241,34 @@
       ],
       "hint": "In the negative, the pronoun moves back in front of the verb.",
       "feedback": "In a negative command, the pronoun comes before the verb, inside ne…pas.",
-      "explanation": "Regarde-les becomes ne les regarde pas."
+      "explanation": "Regarde-les becomes ne les regarde pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne regarde-les pas !"
+          ],
+          "why": "The pronoun has stayed behind the verb as in the affirmative order; a negative command sends it back in front of the verb."
+        },
+        {
+          "answers": [
+            "Ne les regardes pas !"
+          ],
+          "why": "Regarder is an -er verb: its tu command drops the final s of tu regardes."
+        },
+        {
+          "answers": [
+            "Ne regarde pas les !"
+          ],
+          "why": "An object pronoun never stands alone after pas; it always leans on the verb."
+        },
+        {
+          "answers": [
+            "Regarde-les pas !"
+          ],
+          "why": "Ne has been dropped, which belongs to casual speech, and the pronoun is still in its affirmative place."
+        }
+      ],
+      "row": "les"
     },
     {
       "id": "imperative-object-pronouns-3",
@@ -770,7 +2287,28 @@
       ],
       "hint": "After the verb, me changes form. Donner is an -er verb.",
       "feedback": "Check the pronoun’s position and form, and the -er ending.",
-      "explanation": "Donne-moi: the pronoun follows, me becomes moi, and the -er verb has no s."
+      "explanation": "Donne-moi: the pronoun follows, me becomes moi, and the -er verb has no s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Donne-me"
+          ],
+          "why": "Me is the form used in front of the verb. Behind an affirmative command the pronoun takes its stressed form."
+        },
+        {
+          "answers": [
+            "Me donne"
+          ],
+          "why": "That is the order of a statement (tu me donnes). An affirmative command puts the pronoun behind the verb."
+        },
+        {
+          "answers": [
+            "Donnes-moi"
+          ],
+          "why": "Donner is an -er verb, so its tu command has no final s; the s returns only before y or en."
+        }
+      ],
+      "row": "me → moi"
     },
     {
       "id": "imperative-object-pronouns-4",
@@ -789,7 +2327,28 @@
       ],
       "hint": "This command is negative. Where does the pronoun go?",
       "feedback": "In a negative command, the pronoun comes before the verb, after ne.",
-      "explanation": "In the negative, the pronoun stays in front: ne le mange pas."
+      "explanation": "In the negative, the pronoun stays in front: ne le mange pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ne mange-le pas"
+          ],
+          "why": "The pronoun is in its affirmative place, behind the verb. A negative command puts it back in front of the verb."
+        },
+        {
+          "answers": [
+            "Le ne mange pas"
+          ],
+          "why": "The pronoun has jumped in front of ne. Ne always opens the negation, and the pronoun sits between it and the verb."
+        },
+        {
+          "answers": [
+            "Ne mange pas-le"
+          ],
+          "why": "An object pronoun never follows pas, and the hyphen belongs to affirmative commands only."
+        }
+      ],
+      "row": "le"
     },
     {
       "id": "imperative-object-pronouns-5",
@@ -812,7 +2371,34 @@
       ],
       "hint": "The pronoun goes after the verb. Appeler doubles a letter in tu appelles.",
       "feedback": "Put la after the verb with a hyphen; the -er verb has no s.",
-      "explanation": "Tu appelles becomes appelle, and la follows: appelle-la."
+      "explanation": "Tu appelles becomes appelle, and la follows: appelle-la.",
+      "mistakes": [
+        {
+          "answers": [
+            "Appelle-le"
+          ],
+          "why": "Le stands for a masculine person or thing, and ta sœur is feminine."
+        },
+        {
+          "answers": [
+            "Appelles-la"
+          ],
+          "why": "Appeler is an -er verb: the tu command drops the final s of tu appelles."
+        },
+        {
+          "answers": [
+            "Appelle-lui"
+          ],
+          "why": "Lui goes with verbs built on à (téléphone-lui). Appeler takes its object directly."
+        },
+        {
+          "answers": [
+            "Appele-la"
+          ],
+          "why": "Appeler doubles its l before a silent ending, as in tu appelles; one l is not enough here."
+        }
+      ],
+      "row": "la"
     },
     {
       "id": "imperative-object-pronouns-6",
@@ -825,7 +2411,28 @@
       ],
       "hint": "Look at the pronoun after the verb.",
       "feedback": "After the verb, me takes its stressed form.",
-      "explanation": "In an affirmative command, me becomes moi: aide-moi."
+      "explanation": "In an affirmative command, me becomes moi: aide-moi.",
+      "mistakes": [
+        {
+          "answers": [
+            "Aide-me, s’il te plaît."
+          ],
+          "why": "Me is the form used in front of the verb; behind an affirmative command the pronoun must take its stressed form."
+        },
+        {
+          "answers": [
+            "Aides-moi, s’il te plaît."
+          ],
+          "why": "Aider is an -er verb, so its tu command has no final s."
+        },
+        {
+          "answers": [
+            "Me aide, s’il te plaît."
+          ],
+          "why": "That is the order of a statement, and me would elide before a vowel anyway."
+        }
+      ],
+      "row": "me → moi"
     },
     {
       "id": "imperative-object-pronouns-7",
@@ -848,7 +2455,34 @@
       ],
       "hint": "Use the vous command, then the pronoun for them.",
       "feedback": "Put the pronoun after the verb with a hyphen.",
-      "explanation": "Them is les, placed after the verb: regardez-les."
+      "explanation": "Them is les, placed after the verb: regardez-les.",
+      "mistakes": [
+        {
+          "answers": [
+            "Regarde-les."
+          ],
+          "why": "That speaks to one person, and the instruction says several."
+        },
+        {
+          "answers": [
+            "Regardez-leur."
+          ],
+          "why": "Leur replaces people after à (parle-leur). Regarder looks at them directly, so it takes a direct-object pronoun."
+        },
+        {
+          "answers": [
+            "Regardez à eux."
+          ],
+          "why": "French regarder needs no preposition: what you look at is a direct object, with no à."
+        },
+        {
+          "answers": [
+            "Regardez-eux."
+          ],
+          "why": "Eux is the stressed pronoun used after prepositions (avec eux), not the object of a verb."
+        }
+      ],
+      "row": "les"
     }
   ]
 }

@@ -5,9 +5,484 @@
   "title": "Futur proche",
   "description": "Say what you are going to do with aller plus an infinitive.",
   "mark": "aller + inf.",
-  "rule": "To say what is going to happen, use aller in the present followed by an infinitive: je vais partir, tu vas partir, il va partir, nous allons partir, vous allez partir, ils vont partir. Only aller changes with the subject; the second verb always stays in the infinitive. In the negative, ne and pas go around the form of aller: je ne vais pas partir (ne becomes n’ before allons and allez). Questions work as usual on aller: tu vas venir ?, est-ce que tu vas venir ?, vas-tu venir ? (with il or elle, add -t-: va-t-il pleuvoir ?). A reflexive or object pronoun goes directly before the infinitive, and a reflexive pronoun matches the subject: je vais me lever, je vais le faire. Time words such as ce soir, demain, bientôt and la semaine prochaine often go with it, whereas habits and things happening now use the simple present.",
-  "example": "Ce soir, nous allons regarder un film. · Je ne vais pas me coucher tard. · Tu vas le faire demain ?",
-  "aside": "In everyday French, the futur proche is often used where English would say will, for anything planned or certain to happen soon.",
+  "guide": {
+    "summary": "The futur proche says what is going to happen: aller in the present plus a verb in the infinitive. It is the everyday way to talk about plans and things about to happen, where English says going to or will.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "How do you build it?",
+        "text": "Take aller in the present, matched to the subject, then the second verb in the infinitive. Only aller changes; the infinitive never does.",
+        "table": {
+          "columns": [
+            "",
+            "aller (present)",
+            "Futur proche"
+          ],
+          "rows": [
+            [
+              "je",
+              "vais",
+              "je vais partir"
+            ],
+            [
+              "tu",
+              "vas",
+              "tu vas partir"
+            ],
+            [
+              "il / elle / on",
+              "va",
+              "elle va partir"
+            ],
+            [
+              "nous",
+              "allons",
+              "nous allons partir"
+            ],
+            [
+              "vous",
+              "allez",
+              "vous allez partir"
+            ],
+            [
+              "ils / elles",
+              "vont",
+              "ils vont partir"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject and take its row of aller.",
+          "Put the second verb in the infinitive: the dictionary form, with nothing changed.",
+          "Read the pair back: only the first verb may carry a subject ending."
+        ],
+        "examples": [
+          {
+            "fr": "Ce soir, nous allons regarder un film.",
+            "en": "Tonight we are going to watch a film."
+          },
+          {
+            "fr": "Tu vas comprendre.",
+            "en": "You are going to understand."
+          }
+        ],
+        "watch": [
+          "Never conjugate the second verb: nous allons dîner, not nous allons dînons.",
+          "Aller is irregular (va, vont, allons): do not build its forms from the infinitive.",
+          "Aller can be followed by aller itself: nous allons aller à Paris."
+        ]
+      },
+      {
+        "id": "negation",
+        "title": "Saying it is not going to happen",
+        "text": "Ne and pas close around the conjugated verb, which is aller. The infinitive stays behind them.",
+        "table": {
+          "columns": [
+            "",
+            "Affirmative",
+            "Negative"
+          ],
+          "rows": [
+            [
+              "je",
+              "je vais sortir",
+              "je ne vais pas sortir"
+            ],
+            [
+              "tu",
+              "tu vas sortir",
+              "tu ne vas pas sortir"
+            ],
+            [
+              "il / elle / on",
+              "il va sortir",
+              "il ne va pas sortir"
+            ],
+            [
+              "nous",
+              "nous allons sortir",
+              "nous n’allons pas sortir"
+            ],
+            [
+              "vous",
+              "vous allez sortir",
+              "vous n’allez pas sortir"
+            ],
+            [
+              "ils / elles",
+              "ils vont sortir",
+              "ils ne vont pas sortir"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the form of aller: that is the conjugated verb.",
+          "Put ne in front of it and pas straight after it.",
+          "Shorten ne to n’ before a vowel: n’allons, n’allez.",
+          "Leave the infinitive after pas, untouched."
+        ],
+        "examples": [
+          {
+            "fr": "Je ne vais pas me coucher tard.",
+            "en": "I am not going to go to bed late."
+          },
+          {
+            "fr": "Vous n’allez pas attendre longtemps.",
+            "en": "You are not going to wait long."
+          }
+        ],
+        "watch": [
+          "The negation closes around aller, not around the infinitive: elles ne vont pas regarder.",
+          "Ne pas side by side belongs in front of an infinitive (ne pas fumer), not in front of a conjugated verb.",
+          "In speech people drop ne (je vais pas venir); written French keeps it."
+        ]
+      },
+      {
+        "id": "questions",
+        "title": "Three ways to ask",
+        "text": "Questions work on aller, exactly as in the present tense. The infinitive stays at the end.",
+        "table": {
+          "columns": [
+            "Way",
+            "Example",
+            "When"
+          ],
+          "rows": [
+            [
+              "Intonation",
+              "Tu vas venir ?",
+              "speaking, everyday"
+            ],
+            [
+              "Est-ce que",
+              "Est-ce que tu vas venir ?",
+              "neutral, safe everywhere"
+            ],
+            [
+              "Inversion",
+              "Vas-tu venir ?",
+              "formal or written"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the statement first: subject + aller + infinitive.",
+          "Add est-ce que in front and change nothing else, or swap aller and the subject pronoun and join them with a hyphen.",
+          "With il, elle or on, inversion needs -t- between the two: va-t-il, va-t-elle.",
+          "Keep a space before the question mark."
+        ],
+        "examples": [
+          {
+            "fr": "Est-ce que vous allez prendre le train ?",
+            "en": "Are you going to take the train?"
+          },
+          {
+            "fr": "Va-t-il pleuvoir ?",
+            "en": "Is it going to rain?"
+          }
+        ],
+        "watch": [
+          "Choose one way: never est-ce que together with inversion.",
+          "Inversion moves the pronoun behind the verb; it is not repeated in front (not il va-t-il).",
+          "Est-ce que is one block: que cannot be dropped."
+        ]
+      },
+      {
+        "id": "time-markers",
+        "title": "Words that point forward",
+        "text": "The futur proche usually comes with a time word. Anything built on hier or dernier / dernière looks back and cannot go with it.",
+        "table": {
+          "columns": [
+            "Future",
+            "Past"
+          ],
+          "rows": [
+            [
+              "demain",
+              "hier"
+            ],
+            [
+              "ce soir",
+              "hier soir"
+            ],
+            [
+              "la semaine prochaine",
+              "la semaine dernière"
+            ],
+            [
+              "l’année prochaine",
+              "l’année dernière"
+            ],
+            [
+              "bientôt",
+              "il y a une heure"
+            ],
+            [
+              "dans deux jours",
+              "il y a deux jours"
+            ]
+          ]
+        },
+        "steps": [
+          "Read the verb: is it announcing something still to come?",
+          "Keep the words that look forward: demain, ce soir, bientôt, dans…, prochain(e).",
+          "Rule out hier and dernier / dernière: they belong to the past."
+        ],
+        "examples": [
+          {
+            "fr": "Nous allons voyager la semaine prochaine.",
+            "en": "We are going to travel next week."
+          },
+          {
+            "fr": "Il va neiger demain.",
+            "en": "It is going to snow tomorrow."
+          }
+        ],
+        "watch": [
+          "Prochain(e) follows the noun: la semaine prochaine, not la prochaine semaine.",
+          "Ce soir is the evening ahead of you; hier soir was last night."
+        ]
+      },
+      {
+        "id": "reflexive",
+        "title": "Reflexive verbs: where does the pronoun go?",
+        "text": "The reflexive pronoun stands directly in front of the infinitive, and it changes with the subject. Se is only the dictionary form.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Pronoun",
+            "Example"
+          ],
+          "rows": [
+            [
+              "je",
+              "me (m’)",
+              "je vais me lever"
+            ],
+            [
+              "tu",
+              "te (t’)",
+              "tu vas te lever"
+            ],
+            [
+              "il / elle / on",
+              "se (s’)",
+              "elle va se lever"
+            ],
+            [
+              "nous",
+              "nous",
+              "nous allons nous lever"
+            ],
+            [
+              "vous",
+              "vous",
+              "vous allez vous lever"
+            ],
+            [
+              "ils / elles",
+              "se (s’)",
+              "ils vont se lever"
+            ]
+          ]
+        },
+        "steps": [
+          "Conjugate aller for the subject.",
+          "Swap the dictionary se for the pronoun of that same subject.",
+          "Place the pronoun immediately before the infinitive.",
+          "Elide me, te, se to m’, t’, s’ before a vowel or a silent h."
+        ],
+        "examples": [
+          {
+            "fr": "Je vais me lever tôt.",
+            "en": "I am going to get up early."
+          },
+          {
+            "fr": "Ils vont s’habiller.",
+            "en": "They are going to get dressed."
+          }
+        ],
+        "watch": [
+          "The pronoun goes with the infinitive, not with aller: je vais me lever, not je me vais lever.",
+          "Moi and toi are stressed pronouns; they cannot stand in front of a verb here.",
+          "Without its pronoun the verb changes meaning: lever quelque chose is to lift something."
+        ]
+      },
+      {
+        "id": "object-pronouns",
+        "title": "Object pronouns before the infinitive",
+        "text": "A pronoun that replaces the object also sits just before the infinitive, because that is the verb it belongs to.",
+        "table": {
+          "columns": [
+            "Replaces",
+            "Pronoun",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine thing or person",
+              "le (l’)",
+              "je vais le faire"
+            ],
+            [
+              "feminine thing or person",
+              "la (l’)",
+              "je vais la ranger"
+            ],
+            [
+              "plural",
+              "les",
+              "je vais les inviter"
+            ],
+            [
+              "to one person (à)",
+              "lui",
+              "je vais lui parler"
+            ],
+            [
+              "to several people (à)",
+              "leur",
+              "je vais leur parler"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun to replace, and check how the verb reaches it: directly, or through à?",
+          "Pick the pronoun, matching gender and number.",
+          "Put it directly before the infinitive, after the form of aller.",
+          "Elide le or la to l’ before a vowel or a silent h."
+        ],
+        "examples": [
+          {
+            "fr": "Je vais le faire demain.",
+            "en": "I am going to do it tomorrow."
+          },
+          {
+            "fr": "Elle va l’acheter.",
+            "en": "She is going to buy it."
+          }
+        ],
+        "watch": [
+          "The pronoun never follows the verb: je vais les inviter, not je vais inviter les.",
+          "Les (them, as the thing acted on) is not leur (to them).",
+          "It goes before the infinitive, never before aller: elle va l’acheter, not elle l’va acheter."
+        ]
+      },
+      {
+        "id": "present-or-futur-proche",
+        "title": "Present or futur proche?",
+        "text": "The simple present covers habits, general facts and what is happening right now. The futur proche covers plans and things about to happen, and it is what French normally uses where English says will.",
+        "table": {
+          "columns": [
+            "Meaning",
+            "Tense",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Habit",
+              "present",
+              "D’habitude, je prends le bus."
+            ],
+            [
+              "Happening now",
+              "present",
+              "Attends, je mange."
+            ],
+            [
+              "General fact",
+              "present",
+              "Il pleut souvent ici."
+            ],
+            [
+              "Plan or soon",
+              "futur proche",
+              "Ce soir, je vais manger dehors."
+            ]
+          ]
+        },
+        "steps": [
+          "Look for the clue: d’habitude, tous les jours and souvent point to the present.",
+          "Demain, ce soir, bientôt and la semaine prochaine point to the futur proche.",
+          "To move a present sentence into the futur proche, conjugate aller for the same subject and give the verb back its infinitive."
+        ],
+        "examples": [
+          {
+            "fr": "D’habitude je prends le bus, mais demain je vais prendre le train.",
+            "en": "I usually take the bus, but tomorrow I am going to take the train."
+          },
+          {
+            "fr": "Elle va finir son travail.",
+            "en": "She is going to finish her work."
+          }
+        ],
+        "watch": [
+          "Changing the tense means changing only aller: the main verb goes back to its infinitive.",
+          "French also has a simple future (je partirai), but for plans and near events the futur proche is the everyday choice."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "aller-forms": {
+      "section": "forms",
+      "steps": [
+        "Find the subject and take its row of aller in the present.",
+        "Leave the second verb in the infinitive, whatever the subject is.",
+        "Read the pair back: only the first verb may carry a subject ending."
+      ]
+    },
+    "negation": {
+      "section": "negation",
+      "steps": [
+        "Spot the conjugated verb: it is the form of aller.",
+        "Put ne in front of it and pas straight after it.",
+        "Shorten ne to n’ when the form of aller starts with a vowel.",
+        "Leave the infinitive after pas, unchanged."
+      ]
+    },
+    "questions": {
+      "section": "questions",
+      "steps": [
+        "Build the statement first: subject + aller + infinitive.",
+        "Choose one way to ask: intonation, est-ce que in front, or inversion with a hyphen.",
+        "With il, elle or on, inversion needs -t- between the verb and the pronoun.",
+        "Check that the form of aller still matches the subject."
+      ]
+    },
+    "time-markers": {
+      "section": "time-markers",
+      "steps": [
+        "Decide whether the verb points forward or back.",
+        "Keep the time words that look forward; rule out hier and dernier / dernière.",
+        "Remember that prochain(e) comes after the noun."
+      ]
+    },
+    "reflexive-pronoun": {
+      "section": "reflexive",
+      "steps": [
+        "Conjugate aller for the subject.",
+        "Swap the dictionary se for the pronoun of that same subject.",
+        "Put that pronoun immediately before the infinitive, elided before a vowel or silent h."
+      ]
+    },
+    "object-pronoun": {
+      "section": "object-pronouns",
+      "steps": [
+        "Work out what the pronoun replaces and whether the verb reaches it directly or through à.",
+        "Pick the pronoun, checking gender and number.",
+        "Place it right before the infinitive, never before aller."
+      ]
+    },
+    "present-contrast": {
+      "section": "present-or-futur-proche",
+      "steps": [
+        "Read the time clue: a habit and now, or a plan and soon?",
+        "For a habit or a fact, conjugate the verb itself in the present.",
+        "For a plan, conjugate aller and give the main verb back its infinitive."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "futur-proche-aller-forms-1",
@@ -21,7 +496,38 @@
       ],
       "hint": "Use aller in the present, then the infinitive.",
       "feedback": "Only aller changes. Partir stays in the infinitive.",
-      "explanation": "Je vais partir: je vais (aller) + partir (infinitive)."
+      "explanation": "Je vais partir: je vais (aller) + partir (infinitive).",
+      "mistakes": [
+        {
+          "answers": [
+            "vas partir",
+            "je vas partir"
+          ],
+          "why": "Vas is the tu form of aller, so it cannot go with je. Take the je row of aller instead."
+        },
+        {
+          "answers": [
+            "va partir",
+            "je va partir"
+          ],
+          "why": "Va is the il/elle form, for one other person. The subject given is je."
+        },
+        {
+          "answers": [
+            "partir",
+            "je partir"
+          ],
+          "why": "That is the bare infinitive. The futur proche needs a present form of aller in front of it."
+        },
+        {
+          "answers": [
+            "je pars",
+            "pars"
+          ],
+          "why": "That is the simple present (I leave). Saying you are going to leave adds aller before the infinitive."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "futur-proche-aller-forms-2",
@@ -35,7 +541,38 @@
       ],
       "hint": "Conjugate aller for nous, then add the infinitive.",
       "feedback": "The second verb does not change with the subject.",
-      "explanation": "Nous allons manger: allons + the infinitive manger."
+      "explanation": "Nous allons manger: allons + the infinitive manger.",
+      "mistakes": [
+        {
+          "answers": [
+            "allez manger",
+            "vous allez manger"
+          ],
+          "why": "Allez is the vous form of aller. The subject given is nous."
+        },
+        {
+          "answers": [
+            "allons mangeons",
+            "nous allons mangeons"
+          ],
+          "why": "Mangeons is manger conjugated for nous. After aller the second verb keeps its dictionary form."
+        },
+        {
+          "answers": [
+            "mangeons",
+            "nous mangeons"
+          ],
+          "why": "That is the simple present (we eat). The futur proche puts a present form of aller in front of the infinitive."
+        },
+        {
+          "answers": [
+            "vont manger",
+            "ils vont manger"
+          ],
+          "why": "Vont goes with ils or elles. The subject given is nous."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "futur-proche-aller-forms-3",
@@ -49,7 +586,38 @@
       ],
       "hint": "The ils form of aller is irregular and short.",
       "feedback": "Check the ils form of aller, and keep finir in the infinitive.",
-      "explanation": "Ils vont finir: vont + the infinitive finir."
+      "explanation": "Ils vont finir: vont + the infinitive finir.",
+      "mistakes": [
+        {
+          "answers": [
+            "vas finir",
+            "ils vas finir"
+          ],
+          "why": "Vas is the tu form of aller. Ils is a third-person plural subject."
+        },
+        {
+          "answers": [
+            "va finir",
+            "ils va finir"
+          ],
+          "why": "Va is the singular il/elle form. Ils means several people, so aller needs its plural form."
+        },
+        {
+          "answers": [
+            "vont finissent",
+            "ils vont finissent"
+          ],
+          "why": "Finissent is finir conjugated. After aller the second verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "finissent",
+            "ils finissent"
+          ],
+          "why": "That is the simple present (they finish). The futur proche adds a present form of aller before the infinitive."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "futur-proche-aller-forms-4",
@@ -68,7 +636,28 @@
       ],
       "hint": "Match aller to the subject vous.",
       "feedback": "Aller changes with the subject. The vous form ends in -ez.",
-      "explanation": "Vous allez visiter: allez is the vous form of aller."
+      "explanation": "Vous allez visiter: allez is the vous form of aller.",
+      "mistakes": [
+        {
+          "answers": [
+            "allons"
+          ],
+          "why": "Allons is the nous form of aller. The subject here is vous."
+        },
+        {
+          "answers": [
+            "vont"
+          ],
+          "why": "Vont goes with ils or elles. Vous has its own form of aller."
+        },
+        {
+          "answers": [
+            "aller"
+          ],
+          "why": "That is the infinitive, unchanged. In the futur proche it is aller that matches the subject, and visiter is the verb that stays in the infinitive."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "futur-proche-aller-forms-5",
@@ -81,7 +670,34 @@
       ],
       "hint": "The elle form of aller is very short.",
       "feedback": "Aller is irregular. With elle, it has two letters.",
-      "explanation": "Elle va acheter: va is the elle form of aller."
+      "explanation": "Elle va acheter: va is the elle form of aller.",
+      "mistakes": [
+        {
+          "answers": [
+            "vas"
+          ],
+          "why": "Vas is the tu form. Elle is a third-person singular subject."
+        },
+        {
+          "answers": [
+            "vais"
+          ],
+          "why": "Vais goes with je only."
+        },
+        {
+          "answers": [
+            "vont"
+          ],
+          "why": "Vont is the plural ils/elles form; elle is one person."
+        },
+        {
+          "answers": [
+            "aller"
+          ],
+          "why": "That is the infinitive. Here aller has to be conjugated to match elle, and acheter is the verb that stays in the infinitive."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "futur-proche-aller-forms-6",
@@ -94,7 +710,28 @@
       ],
       "hint": "Only one verb changes with the subject.",
       "feedback": "After aller, the second verb stays in the infinitive.",
-      "explanation": "Nous allons dîner: aller is conjugated, dîner stays in the infinitive."
+      "explanation": "Nous allons dîner: aller is conjugated, dîner stays in the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous allons dînons chez Marie."
+          ],
+          "why": "That is the sentence unchanged: the second verb still carries the nous ending. Only aller matches the subject."
+        },
+        {
+          "answers": [
+            "Nous dînons chez Marie."
+          ],
+          "why": "That drops aller and gives the simple present (we are having dinner). Keep the futur proche and fix the second verb."
+        },
+        {
+          "answers": [
+            "Nous allons dîné chez Marie."
+          ],
+          "why": "Dîné is the past participle, used with avoir. After aller the verb takes its dictionary form."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "futur-proche-aller-forms-7",
@@ -120,7 +757,28 @@
           "answer": "Mes amis arrivent à midi.",
           "message": "That is correct French in the present (my friends arrive at noon). This sentence asks for the futur proche: Mes amis vont arriver à midi."
         }
-      ]
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Mes amis vont arrivent à midi."
+          ],
+          "why": "Arrivent is the conjugated present form. After a form of aller the second verb keeps its dictionary form."
+        },
+        {
+          "answers": [
+            "Mes amis arriver à midi."
+          ],
+          "why": "That leaves an infinitive with nothing conjugated: the sentence has no verb matching mes amis."
+        },
+        {
+          "answers": [
+            "Mes amis arriver vont à midi."
+          ],
+          "why": "The infinitive follows the form of aller, never comes before it."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "futur-proche-aller-forms-8",
@@ -134,7 +792,38 @@
       ],
       "hint": "Aller in the ils form, then jouer au football.",
       "feedback": "Check the ils form of aller and keep jouer in the infinitive.",
-      "explanation": "Ils vont jouer au football: vont + jouer."
+      "explanation": "Ils vont jouer au football: vont + jouer.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils vont jouent au football.",
+            "Ils vont jouent au foot."
+          ],
+          "why": "Jouent is jouer conjugated. After aller the second verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "Ils va jouer au football.",
+            "Ils va jouer au foot."
+          ],
+          "why": "Va is the singular il/elle form of aller; the subject ils is plural."
+        },
+        {
+          "answers": [
+            "Ils jouent au football.",
+            "Ils jouent au foot."
+          ],
+          "why": "That is the simple present (they play). To say they are going to play, put a present form of aller before the infinitive."
+        },
+        {
+          "answers": [
+            "Ils vont jouer le football.",
+            "Ils vont jouer football."
+          ],
+          "why": "With a sport, jouer needs à plus the article, and à + le contracts into one word."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "futur-proche-negation-1",
@@ -157,7 +846,28 @@
       ],
       "hint": "The negation goes around the conjugated verb.",
       "feedback": "Aller is the conjugated verb. Ne and pas go around it.",
-      "explanation": "Je ne vais pas partir: ne + vais + pas, then the infinitive."
+      "explanation": "Je ne vais pas partir: ne + vais + pas, then the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je vais partir demain."
+          ],
+          "why": "That is the sentence unchanged, still affirmative: nothing has been added around the conjugated verb."
+        },
+        {
+          "answers": [
+            "Je ne vais partir pas demain."
+          ],
+          "why": "The second negation word has jumped over the infinitive. It belongs immediately after the verb that carries the subject."
+        },
+        {
+          "answers": [
+            "Je ne partir pas demain."
+          ],
+          "why": "That wraps the negation around the infinitive and loses aller. The two words go around the conjugated verb."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "futur-proche-negation-2",
@@ -176,7 +886,28 @@
       ],
       "hint": "Ne and pas go around the conjugated verb.",
       "feedback": "The conjugated verb here is va.",
-      "explanation": "Il ne va pas travailler: ne + va + pas, then the infinitive."
+      "explanation": "Il ne va pas travailler: ne + va + pas, then the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne pas va"
+          ],
+          "why": "Ne pas kept together in front of a verb is what you do with an infinitive (ne pas fumer). Here the verb is conjugated, so the two words sit on either side of it."
+        },
+        {
+          "answers": [
+            "va pas ne"
+          ],
+          "why": "Ne always comes first, in front of the verb; it can never be last."
+        },
+        {
+          "answers": [
+            "ne va"
+          ],
+          "why": "That is only half the negation. Standard French also needs the second word, right after the conjugated verb."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "futur-proche-negation-3",
@@ -197,7 +928,28 @@
       ],
       "hint": "Allons starts with a vowel.",
       "feedback": "Ne becomes n’ before a vowel. One tile is not needed.",
-      "explanation": "Nous n’allons pas regarder: ne becomes n’ before allons, and pas follows it."
+      "explanation": "Nous n’allons pas regarder: ne becomes n’ before allons, and pas follows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous ne n’allons pas regarder la télé."
+          ],
+          "why": "The first negation word appears twice: n’allons already contains it, shortened before the vowel. One tile is a distractor."
+        },
+        {
+          "answers": [
+            "Nous n’allons regarder pas la télé."
+          ],
+          "why": "Pas has jumped over the infinitive. It belongs directly after the conjugated verb."
+        },
+        {
+          "answers": [
+            "Nous pas n’allons regarder la télé."
+          ],
+          "why": "Pas comes after the conjugated verb, never in front of it."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "futur-proche-negation-4",
@@ -210,7 +962,28 @@
       ],
       "hint": "Pas belongs right after the conjugated verb.",
       "feedback": "The infinitive comes after the whole negation.",
-      "explanation": "Elles ne vont pas regarder: ne + vont + pas, then the infinitive."
+      "explanation": "Elles ne vont pas regarder: ne + vont + pas, then the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elles ne vont regarder pas le film."
+          ],
+          "why": "That is the sentence unchanged, with pas sitting after the infinitive. Pas belongs directly after the verb that carries the subject."
+        },
+        {
+          "answers": [
+            "Elles ne pas vont regarder le film."
+          ],
+          "why": "Ne pas side by side goes in front of an infinitive (ne pas regarder), not in front of a conjugated verb."
+        },
+        {
+          "answers": [
+            "Elles ne vont regarder le film."
+          ],
+          "why": "That deletes pas instead of moving it, so the sentence is not negative any more."
+        }
+      ],
+      "row": "ils / elles"
     },
     {
       "id": "futur-proche-negation-5",
@@ -229,7 +1002,34 @@
       ],
       "hint": "Put the negation around vais.",
       "feedback": "Ne and pas go around aller, not around manger.",
-      "explanation": "Je ne vais pas manger: ne + vais + pas + infinitive."
+      "explanation": "Je ne vais pas manger: ne + vais + pas + infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne mange pas."
+          ],
+          "why": "That is the simple present (I do not eat). The English says going to, so aller has to be there and carry the negation."
+        },
+        {
+          "answers": [
+            "Je ne vais pas mange."
+          ],
+          "why": "Mange is a conjugated form. The verb after aller stays in the infinitive."
+        },
+        {
+          "answers": [
+            "Je ne vais manger pas."
+          ],
+          "why": "Pas belongs right after the conjugated verb, before the infinitive."
+        },
+        {
+          "answers": [
+            "Je ne vais pas à manger."
+          ],
+          "why": "Aller à means going somewhere. In the futur proche, aller is followed straight by the infinitive, with no à."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "futur-proche-negation-6",
@@ -242,7 +1042,28 @@
       ],
       "hint": "Allez starts with a vowel.",
       "feedback": "The first part of the negation changes before a vowel.",
-      "explanation": "Vous n’allez pas sortir: ne becomes n’ before allez."
+      "explanation": "Vous n’allez pas sortir: ne becomes n’ before allez.",
+      "mistakes": [
+        {
+          "answers": [
+            "ne"
+          ],
+          "why": "The full form is kept only before a consonant. Allez begins with a vowel, so the e drops out and an apostrophe takes its place."
+        },
+        {
+          "answers": [
+            "n"
+          ],
+          "why": "The bare letter is not enough: the dropped e has to be marked with an apostrophe."
+        },
+        {
+          "answers": [
+            "ne pas"
+          ],
+          "why": "Pas is already there, after allez. Only the first part of the negation is missing."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "futur-proche-questions-1",
@@ -265,7 +1086,34 @@
       ],
       "hint": "Put est-ce que in front and keep the rest.",
       "feedback": "With est-ce que, the word order does not change.",
-      "explanation": "Est-ce que tu vas venir ?: est-ce que + the statement."
+      "explanation": "Est-ce que tu vas venir ?: est-ce que + the statement.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que vas-tu venir ?"
+          ],
+          "why": "That uses two question forms at once. After est-ce que the word order stays exactly as in a statement."
+        },
+        {
+          "answers": [
+            "Est-ce que tu va venir ?"
+          ],
+          "why": "Va is the il/elle form of aller. With tu it takes an -s."
+        },
+        {
+          "answers": [
+            "Est-ce tu vas venir ?"
+          ],
+          "why": "Est-ce que is one fixed block; que cannot be dropped."
+        },
+        {
+          "answers": [
+            "Qu’est-ce que tu vas venir ?"
+          ],
+          "why": "Qu’est-ce que asks what. Nothing is missing from this sentence: it is a yes/no question."
+        }
+      ],
+      "row": "Est-ce que"
     },
     {
       "id": "futur-proche-questions-2",
@@ -288,7 +1136,28 @@
       ],
       "hint": "Swap aller and the subject, joined by hyphens. Va ends in a vowel and il starts with one.",
       "feedback": "Between va and il, French adds a sound so the two vowels do not touch.",
-      "explanation": "Va-t-il pleuvoir ?: aller moves in front of il, with -t- between them."
+      "explanation": "Va-t-il pleuvoir ?: aller moves in front of il, with -t- between them.",
+      "mistakes": [
+        {
+          "answers": [
+            "Va-il pleuvoir ?"
+          ],
+          "why": "The verb ends in a vowel and il begins with one; French inserts a linking letter between them so the two vowels do not touch."
+        },
+        {
+          "answers": [
+            "Il va-t-il pleuvoir ?"
+          ],
+          "why": "The subject appears twice. In inversion the pronoun moves behind the verb and is not repeated in front."
+        },
+        {
+          "answers": [
+            "Va t il pleuvoir ?"
+          ],
+          "why": "Inversion is written with hyphens joining the verb, the linking letter and the pronoun."
+        }
+      ],
+      "row": "Inversion"
     },
     {
       "id": "futur-proche-questions-3",
@@ -307,7 +1176,27 @@
       ],
       "hint": "Est-ce que does not change the verb. Match aller to elle.",
       "feedback": "The subject is elle, not tu or ils.",
-      "explanation": "Est-ce qu’elle va venir ?: va matches elle."
+      "explanation": "Est-ce qu’elle va venir ?: va matches elle.",
+      "mistakes": [
+        {
+          "answers": [
+            "vas"
+          ],
+          "why": "Vas is the tu form of aller. The subject of this question is elle."
+        },
+        {
+          "answers": [
+            "vont"
+          ],
+          "why": "Vont goes with ils or elles, several people; elle is one person."
+        },
+        {
+          "answers": [
+            "aller"
+          ],
+          "why": "That is the infinitive. Aller is the verb that must match the subject here, and venir is the one that stays in the infinitive."
+        }
+      ]
     },
     {
       "id": "futur-proche-questions-4",
@@ -322,7 +1211,33 @@
       ],
       "hint": "Use tu and aller plus an infinitive.",
       "feedback": "Only aller changes. Manger stays in the infinitive.",
-      "explanation": "Tu vas manger avec nous ?: you can also say est-ce que tu vas… or vas-tu…"
+      "explanation": "Tu vas manger avec nous ?: you can also say est-ce que tu vas… or vas-tu…",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu va manger avec nous ?"
+          ],
+          "why": "Va is the il/elle form of aller; with tu it ends in -s."
+        },
+        {
+          "answers": [
+            "Vous allez manger avec nous ?"
+          ],
+          "why": "Vous is the polite or plural subject. The question is put to a friend, so use the familiar one."
+        },
+        {
+          "answers": [
+            "Tu vas manges avec nous ?"
+          ],
+          "why": "Manges is conjugated for tu. Only aller changes; the second verb keeps its dictionary form."
+        },
+        {
+          "answers": [
+            "Est-ce que tu manges avec nous ?"
+          ],
+          "why": "That is the simple present (do you eat with us). The English says going to, so aller plus the infinitive is needed."
+        }
+      ]
     },
     {
       "id": "futur-proche-questions-5",
@@ -343,7 +1258,28 @@
       ],
       "hint": "Start with Est-ce que, then the normal statement order.",
       "feedback": "One tile is the nous form of aller. The subject is vous.",
-      "explanation": "Est-ce que vous allez prendre le train ?: est-ce que + vous allez + infinitive."
+      "explanation": "Est-ce que vous allez prendre le train ?: est-ce que + vous allez + infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que vous allons prendre le train ?"
+          ],
+          "why": "Allons is the nous form of aller. The subject here is vous."
+        },
+        {
+          "answers": [
+            "Est-ce que allez vous prendre le train ?"
+          ],
+          "why": "That mixes est-ce que with inversion. After est-ce que the order stays subject then verb."
+        },
+        {
+          "answers": [
+            "Est-ce que vous prendre le train ?"
+          ],
+          "why": "The infinitive is left with no conjugated verb in front of it. The futur proche needs a present form of aller."
+        }
+      ],
+      "row": "Est-ce que"
     },
     {
       "id": "futur-proche-questions-6",
@@ -356,7 +1292,33 @@
       ],
       "hint": "Check the form of aller with tu.",
       "feedback": "The tu form of aller ends in -s.",
-      "explanation": "Est-ce que tu vas partir ?: tu vas, with an s."
+      "explanation": "Est-ce que tu vas partir ?: tu vas, with an s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Est-ce que tu va partir ?"
+          ],
+          "why": "That is the sentence unchanged: va is the il/elle form, and the subject is tu."
+        },
+        {
+          "answers": [
+            "Est-ce que tu vais partir ?"
+          ],
+          "why": "Vais is the je form of aller. The subject here is tu."
+        },
+        {
+          "answers": [
+            "Est-ce que tu vas pars ?"
+          ],
+          "why": "Pars is partir conjugated for tu. Only aller matches the subject; the second verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "Est-ce qu’il va partir ?"
+          ],
+          "why": "That changes the subject instead of correcting the verb. Keep tu and fix the form of aller."
+        }
+      ]
     },
     {
       "id": "futur-proche-time-markers-1",
@@ -374,7 +1336,17 @@
       ],
       "hint": "Nous allons partir talks about the future.",
       "feedback": "The other options point to the past.",
-      "explanation": "Demain fits the futur proche: nous allons partir demain."
+      "explanation": "Demain fits the futur proche: nous allons partir demain.",
+      "mistakes": [
+        {
+          "answers": [
+            "hier",
+            "la semaine dernière"
+          ],
+          "why": "Hier is the day before today and dernière means last: both look back. Allons partir announces something still to come."
+        }
+      ],
+      "row": "demain"
     },
     {
       "id": "futur-proche-time-markers-2",
@@ -392,7 +1364,17 @@
       ],
       "hint": "Je vais faire is about something still to come.",
       "feedback": "Hier and dernière point to the past.",
-      "explanation": "Ce soir, je vais faire mes devoirs: ce soir is still ahead."
+      "explanation": "Ce soir, je vais faire mes devoirs: ce soir is still ahead.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hier soir",
+            "L’année dernière"
+          ],
+          "why": "Hier and dernière both point backwards. Je vais faire announces something that has not happened yet."
+        }
+      ],
+      "row": "ce soir"
     },
     {
       "id": "futur-proche-time-markers-3",
@@ -410,7 +1392,37 @@
       ],
       "hint": "Aller plus voyager. Next week is la semaine…",
       "feedback": "Next is prochaine, and it comes after semaine.",
-      "explanation": "Nous allons voyager la semaine prochaine: aller + infinitive, with the time phrase at the start or the end."
+      "explanation": "Nous allons voyager la semaine prochaine: aller + infinitive, with the time phrase at the start or the end.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous allons voyager la prochaine semaine.",
+            "On va voyager la prochaine semaine."
+          ],
+          "why": "In this time phrase the adjective follows the noun in French, unlike English next week."
+        },
+        {
+          "answers": [
+            "Nous allons voyager la semaine dernière.",
+            "On va voyager la semaine dernière."
+          ],
+          "why": "Dernière means last, which is the past. It clashes with a plan."
+        },
+        {
+          "answers": [
+            "Nous voyageons la semaine prochaine.",
+            "On voyage la semaine prochaine."
+          ],
+          "why": "That is the simple present. The English says are going to, so put a present form of aller before the infinitive."
+        },
+        {
+          "answers": [
+            "Nous allons voyageons la semaine prochaine."
+          ],
+          "why": "Voyageons is conjugated for nous. After aller the verb stays in the infinitive."
+        }
+      ],
+      "row": "la semaine prochaine"
     },
     {
       "id": "futur-proche-time-markers-4",
@@ -423,7 +1435,28 @@
       ],
       "hint": "Aujourd’hui is today. You need the day after it.",
       "feedback": "Tomorrow is a single French word.",
-      "explanation": "Il va neiger demain: demain is a typical partner of the futur proche."
+      "explanation": "Il va neiger demain: demain is a typical partner of the futur proche.",
+      "mistakes": [
+        {
+          "answers": [
+            "hier"
+          ],
+          "why": "Hier is the day before today. The sentence needs the day after it."
+        },
+        {
+          "answers": [
+            "aujourd’hui"
+          ],
+          "why": "That is today itself, the day you are speaking on, not the one that follows."
+        },
+        {
+          "answers": [
+            "la semaine prochaine"
+          ],
+          "why": "That is next week, much further away than the day right after today."
+        }
+      ],
+      "row": "demain"
     },
     {
       "id": "futur-proche-time-markers-5",
@@ -443,7 +1476,22 @@
       ],
       "hint": "The sentence is about the future.",
       "feedback": "One time tile points to the past.",
-      "explanation": "Ils vont déménager l’année prochaine: prochaine means next."
+      "explanation": "Ils vont déménager l’année prochaine: prochaine means next.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils vont déménager l’année dernière."
+          ],
+          "why": "Dernière means last: that puts the move in the past, which clashes with vont déménager."
+        },
+        {
+          "answers": [
+            "Ils déménager vont l’année prochaine."
+          ],
+          "why": "The infinitive comes after the conjugated form of aller, not before it."
+        }
+      ],
+      "row": "l’année prochaine"
     },
     {
       "id": "futur-proche-time-markers-6",
@@ -458,7 +1506,28 @@
       ],
       "hint": "Change the time word, then use aller plus the infinitive.",
       "feedback": "Travaille must become an infinitive after aller.",
-      "explanation": "Demain, je vais travailler: je vais + travailler."
+      "explanation": "Demain, je vais travailler: je vais + travailler.",
+      "mistakes": [
+        {
+          "answers": [
+            "Demain, je travaille."
+          ],
+          "why": "The time word is right, but the verb is still in the simple present. The exercise also asks for aller plus the infinitive."
+        },
+        {
+          "answers": [
+            "Demain, je vais travaille."
+          ],
+          "why": "Travaille is conjugated for je. After aller the verb keeps its dictionary form."
+        },
+        {
+          "answers": [
+            "Aujourd’hui, je vais travailler."
+          ],
+          "why": "The verb is now in the futur proche, but the time word was not replaced: aujourd’hui is still today."
+        }
+      ],
+      "row": "demain"
     },
     {
       "id": "futur-proche-reflexive-pronoun-1",
@@ -476,7 +1545,22 @@
       ],
       "hint": "The pronoun of a reflexive verb matches the subject, even before an infinitive.",
       "feedback": "The subject is je. Se does not match it, and moi cannot stand before a verb.",
-      "explanation": "Je vais me lever: me matches je and goes right before the infinitive."
+      "explanation": "Je vais me lever: me matches je and goes right before the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "se"
+          ],
+          "why": "Se is the dictionary form (se lever), used for il, elle, ils and elles. The subject here is je, and the pronoun copies the subject."
+        },
+        {
+          "answers": [
+            "moi"
+          ],
+          "why": "Moi is the stressed pronoun, used after a preposition or alone (avec moi, moi aussi). It cannot stand in front of a verb."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "futur-proche-reflexive-pronoun-2",
@@ -489,7 +1573,34 @@
       ],
       "hint": "Match the pronoun to the subject tu.",
       "feedback": "Se is the dictionary form. The subject is tu.",
-      "explanation": "Tu vas te coucher: te matches tu and stays before coucher."
+      "explanation": "Tu vas te coucher: te matches tu and stays before coucher.",
+      "mistakes": [
+        {
+          "answers": [
+            "se"
+          ],
+          "why": "Se is the form the dictionary lists (se coucher). It only works for il, elle, ils and elles."
+        },
+        {
+          "answers": [
+            "me"
+          ],
+          "why": "Me matches je. The subject of this sentence is tu."
+        },
+        {
+          "answers": [
+            "toi"
+          ],
+          "why": "Toi is the stressed pronoun, used after a preposition or in an order (couche-toi !). In front of a verb tu takes its unstressed pronoun."
+        },
+        {
+          "answers": [
+            "vous"
+          ],
+          "why": "Vous matches the polite or plural subject, not the familiar singular one."
+        }
+      ],
+      "row": "tu"
     },
     {
       "id": "futur-proche-reflexive-pronoun-3",
@@ -502,7 +1613,34 @@
       ],
       "hint": "The pronoun belongs to the verb it goes with: habiller.",
       "feedback": "Put the pronoun directly before the infinitive, and elide it before the silent h.",
-      "explanation": "Je vais m’habiller: the pronoun goes before the infinitive and becomes m’ before h."
+      "explanation": "Je vais m’habiller: the pronoun goes before the infinitive and becomes m’ before h.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je me vais habiller."
+          ],
+          "why": "That is the sentence unchanged, with the pronoun in front of aller. The pronoun belongs to the second verb."
+        },
+        {
+          "answers": [
+            "Je vais me habiller."
+          ],
+          "why": "The position is now right, but habiller begins with a silent h, which behaves like a vowel: the pronoun has to elide."
+        },
+        {
+          "answers": [
+            "Je vais s’habiller."
+          ],
+          "why": "Se does not match je. The reflexive pronoun always copies the subject."
+        },
+        {
+          "answers": [
+            "Je m’habille."
+          ],
+          "why": "That is the simple present (I get dressed). The sentence should stay in the futur proche, with aller in front."
+        }
+      ],
+      "row": "je"
     },
     {
       "id": "futur-proche-reflexive-pronoun-4",
@@ -517,7 +1655,35 @@
       ],
       "hint": "Use se lever after aller. The pronoun matches elle.",
       "feedback": "Put the reflexive pronoun before the infinitive.",
-      "explanation": "Elle va se lever: va + se + lever."
+      "explanation": "Elle va se lever: va + se + lever.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle va lever à sept heures.",
+            "Elle va lever à 7 heures."
+          ],
+          "why": "Without its pronoun, lever means to lift something else. Getting yourself up needs the reflexive pronoun."
+        },
+        {
+          "answers": [
+            "Elle se va lever à sept heures."
+          ],
+          "why": "The pronoun has been put in front of aller. It belongs to the verb it goes with, so it stands just before the infinitive."
+        },
+        {
+          "answers": [
+            "Elle va se lève à sept heures."
+          ],
+          "why": "Lève is conjugated. After aller the verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "Elle va me lever à sept heures."
+          ],
+          "why": "Me matches je, not elle. The reflexive pronoun copies the subject."
+        }
+      ],
+      "row": "il / elle / on"
     },
     {
       "id": "futur-proche-reflexive-pronoun-5",
@@ -531,7 +1697,38 @@
       ],
       "hint": "Aller for vous, then the pronoun matching vous, then the infinitive.",
       "feedback": "The pronoun changes with the subject. Se is only the dictionary form.",
-      "explanation": "Vous allez vous lever: allez + vous + lever."
+      "explanation": "Vous allez vous lever: allez + vous + lever.",
+      "mistakes": [
+        {
+          "answers": [
+            "allez se lever",
+            "vous allez se lever"
+          ],
+          "why": "Se is only the dictionary form of the verb. The pronoun changes with the subject, just as aller does."
+        },
+        {
+          "answers": [
+            "allez te lever",
+            "vous allez te lever"
+          ],
+          "why": "Te matches the familiar singular tu. The subject given is vous."
+        },
+        {
+          "answers": [
+            "vous levez",
+            "vous vous levez"
+          ],
+          "why": "That is the simple present (you get up). The futur proche needs a present form of aller in front."
+        },
+        {
+          "answers": [
+            "allons nous lever",
+            "nous allons nous lever"
+          ],
+          "why": "Those forms match nous. The subject given is vous."
+        }
+      ],
+      "row": "vous"
     },
     {
       "id": "futur-proche-reflexive-pronoun-6",
@@ -551,7 +1748,28 @@
       ],
       "hint": "The pronoun before the infinitive matches the subject.",
       "feedback": "One tile is the dictionary form of the pronoun. It does not match nous.",
-      "explanation": "Nous allons nous dépêcher: the pronoun nous matches the subject."
+      "explanation": "Nous allons nous dépêcher: the pronoun nous matches the subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous allons se dépêcher."
+          ],
+          "why": "Se is only the dictionary form of se dépêcher. The pronoun has to copy the subject, so that tile is a distractor."
+        },
+        {
+          "answers": [
+            "Nous nous allons dépêcher."
+          ],
+          "why": "The pronoun has slid in front of aller. It belongs to the infinitive and stands immediately before it."
+        },
+        {
+          "answers": [
+            "Nous allons dépêcher."
+          ],
+          "why": "Dépêcher is not used on its own: the verb needs its reflexive pronoun in front of the infinitive."
+        }
+      ],
+      "row": "nous"
     },
     {
       "id": "futur-proche-object-pronoun-1",
@@ -569,7 +1787,22 @@
       ],
       "hint": "The pronoun belongs to the verb it is the object of.",
       "feedback": "The pronoun goes before faire, not before vais. Les devoirs is a direct object.",
-      "explanation": "Je vais les faire: les is the object of faire, so it goes right before the infinitive."
+      "explanation": "Je vais les faire: les is the object of faire, so it goes right before the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "les vais"
+          ],
+          "why": "That puts the pronoun in front of aller. It goes with the verb it is the object of, which is the infinitive."
+        },
+        {
+          "answers": [
+            "vais leur"
+          ],
+          "why": "Leur means to them, for people you speak or give something to. Faire les devoirs reaches its object directly, and devoirs are things."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "futur-proche-object-pronoun-2",
@@ -582,7 +1815,34 @@
       ],
       "hint": "The pronoun goes before the infinitive. Écrire starts with a vowel.",
       "feedback": "The pronoun does not go before vais, and la elides before a vowel.",
-      "explanation": "Je vais l’écrire: la becomes l’ before écrire and goes before the infinitive."
+      "explanation": "Je vais l’écrire: la becomes l’ before écrire and goes before the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je vais la écrire."
+          ],
+          "why": "The position is right, but the pronoun keeps its vowel in front of écrire, which starts with one. It has to elide."
+        },
+        {
+          "answers": [
+            "Je la vais écrire."
+          ],
+          "why": "The pronoun has been placed before aller. It belongs to écrire, so it stands directly in front of that verb."
+        },
+        {
+          "answers": [
+            "Je vais écrire la."
+          ],
+          "why": "A French object pronoun never follows the verb in a statement; it stands in front of the verb it belongs to."
+        },
+        {
+          "answers": [
+            "Je vais le écrire."
+          ],
+          "why": "Lettre is feminine, so a masculine pronoun does not fit, and it would elide before a vowel in any case."
+        }
+      ],
+      "row": "feminine thing or person"
     },
     {
       "id": "futur-proche-object-pronoun-3",
@@ -595,7 +1855,28 @@
       ],
       "hint": "The pronoun belongs to acheter.",
       "feedback": "Put the pronoun before the infinitive, and elide it before the vowel.",
-      "explanation": "Elle va l’acheter: the pronoun goes before acheter and becomes l’."
+      "explanation": "Elle va l’acheter: the pronoun goes before acheter and becomes l’.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle le va acheter demain."
+          ],
+          "why": "That is the sentence unchanged, with the pronoun in front of aller. It belongs to acheter."
+        },
+        {
+          "answers": [
+            "Elle va le acheter demain."
+          ],
+          "why": "The position is now right, but the pronoun keeps its vowel in front of acheter, which begins with one."
+        },
+        {
+          "answers": [
+            "Elle va acheter le demain."
+          ],
+          "why": "The pronoun never comes after the verb in a statement; it goes in front of the verb it is the object of."
+        }
+      ],
+      "row": "masculine thing or person"
     },
     {
       "id": "futur-proche-object-pronoun-4",
@@ -613,7 +1894,34 @@
       ],
       "hint": "It becomes le. Where does it go?",
       "feedback": "The pronoun goes before the infinitive, not before aller.",
-      "explanation": "Nous allons le faire: le goes directly before faire."
+      "explanation": "Nous allons le faire: le goes directly before faire.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous le allons faire demain."
+          ],
+          "why": "The pronoun has been put in front of aller, where it does not belong: it goes with the infinitive."
+        },
+        {
+          "answers": [
+            "Nous allons faire le demain."
+          ],
+          "why": "An object pronoun stands before its verb, never after it."
+        },
+        {
+          "answers": [
+            "Nous allons il faire demain."
+          ],
+          "why": "Il is a subject pronoun. Standing in for the thing that receives the action needs an object pronoun."
+        },
+        {
+          "answers": [
+            "Nous allons le ferons demain."
+          ],
+          "why": "Ferons is conjugated for nous. After aller the verb stays in the infinitive."
+        }
+      ],
+      "row": "masculine thing or person"
     },
     {
       "id": "futur-proche-object-pronoun-5",
@@ -634,7 +1942,28 @@
       ],
       "hint": "Them is a direct object here. It goes before the infinitive.",
       "feedback": "One pronoun tile means to them. Inviter takes a direct object.",
-      "explanation": "Je vais les inviter: les goes directly before inviter."
+      "explanation": "Je vais les inviter: les goes directly before inviter.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je vais leur inviter samedi."
+          ],
+          "why": "Leur is for people you speak or give something to (je vais leur parler). Inviter reaches its object directly, with no à."
+        },
+        {
+          "answers": [
+            "Je les vais inviter samedi."
+          ],
+          "why": "The pronoun has been put before aller. It is the object of inviter, so it stands right in front of that verb."
+        },
+        {
+          "answers": [
+            "Je vais inviter les samedi."
+          ],
+          "why": "The pronoun never follows the verb here, and placed there it reads as inviting Saturday."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "futur-proche-object-pronoun-6",
@@ -647,7 +1976,34 @@
       ],
       "hint": "Chambre is feminine and a direct object.",
       "feedback": "The pronoun must be feminine singular.",
-      "explanation": "Tu vas la ranger: la replaces ta chambre and goes before the infinitive."
+      "explanation": "Tu vas la ranger: la replaces ta chambre and goes before the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "le"
+          ],
+          "why": "Le is masculine. Chambre is a feminine noun, and the pronoun copies the gender of the noun it replaces."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is plural. Ta chambre is one single room."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui means to him or to her, for a person. A room is a thing the verb reaches directly."
+        },
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "The pronoun only elides in front of a vowel or silent h; ranger begins with a consonant."
+        }
+      ],
+      "row": "feminine thing or person"
     },
     {
       "id": "futur-proche-present-contrast-1",
@@ -660,7 +2016,34 @@
       ],
       "hint": "Use aller in the present, then the infinitive of the verb.",
       "feedback": "Mangeons must become an infinitive.",
-      "explanation": "Nous allons manger: allons + manger."
+      "explanation": "Nous allons manger: allons + manger.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous mangeons au restaurant."
+          ],
+          "why": "That is the sentence unchanged, in the simple present. The futur proche needs aller plus an infinitive."
+        },
+        {
+          "answers": [
+            "Nous allons mangeons au restaurant."
+          ],
+          "why": "The second verb still carries the nous ending. Only aller matches the subject."
+        },
+        {
+          "answers": [
+            "Nous allez manger au restaurant."
+          ],
+          "why": "Allez is the vous form of aller. The subject is nous."
+        },
+        {
+          "answers": [
+            "Nous allons au restaurant."
+          ],
+          "why": "That says we are going to the restaurant, a movement, and loses the verb of the sentence, which should follow aller in the infinitive."
+        }
+      ],
+      "row": "Plan or soon"
     },
     {
       "id": "futur-proche-present-contrast-2",
@@ -673,7 +2056,34 @@
       ],
       "hint": "Use aller for elle, then the infinitive.",
       "feedback": "Finit must become an infinitive.",
-      "explanation": "Elle va finir: va + finir."
+      "explanation": "Elle va finir: va + finir.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle finit son travail."
+          ],
+          "why": "That is the sentence unchanged, in the simple present. The task is to move it into the futur proche."
+        },
+        {
+          "answers": [
+            "Elle va finit son travail."
+          ],
+          "why": "Finit is conjugated for elle. After aller the second verb keeps its dictionary form."
+        },
+        {
+          "answers": [
+            "Elle vas finir son travail."
+          ],
+          "why": "Vas is the tu form of aller; the subject is elle."
+        },
+        {
+          "answers": [
+            "Elle va finira son travail."
+          ],
+          "why": "Finira is the simple future of finir. Putting it after aller marks the future twice; the second verb stays in the infinitive."
+        }
+      ],
+      "row": "Plan or soon"
     },
     {
       "id": "futur-proche-present-contrast-3",
@@ -691,7 +2101,22 @@
       ],
       "hint": "D’habitude means usually.",
       "feedback": "A habit is not a plan for the future.",
-      "explanation": "D’habitude, je prends le bus: habits use the simple present."
+      "explanation": "D’habitude, je prends le bus: habits use the simple present.",
+      "mistakes": [
+        {
+          "answers": [
+            "vais prendre"
+          ],
+          "why": "That is the futur proche, which announces a plan. D’habitude marks something repeated, and French puts habits in the simple present."
+        },
+        {
+          "answers": [
+            "prendre"
+          ],
+          "why": "That is the bare infinitive. With a subject in front, the verb has to be conjugated."
+        }
+      ],
+      "row": "Habit"
     },
     {
       "id": "futur-proche-present-contrast-4",
@@ -705,7 +2130,36 @@
       ],
       "hint": "Aller can be followed by its own infinitive.",
       "feedback": "Conjugate aller, then add the infinitive aller.",
-      "explanation": "Nous allons aller: allons + the infinitive aller (we are going to go)."
+      "explanation": "Nous allons aller: allons + the infinitive aller (we are going to go).",
+      "mistakes": [
+        {
+          "answers": [
+            "allons",
+            "nous allons"
+          ],
+          "why": "That is only aller in the present (we are going). The futur proche needs a second verb, in the infinitive, after it."
+        },
+        {
+          "answers": [
+            "vont aller",
+            "ils vont aller"
+          ],
+          "why": "Vont goes with ils or elles. The subject given is nous."
+        },
+        {
+          "answers": [
+            "allez aller",
+            "vous allez aller"
+          ],
+          "why": "Allez is the vous form of aller. The subject given is nous."
+        },
+        {
+          "answers": [
+            "aller aller"
+          ],
+          "why": "The first verb has to match the subject; only the second one keeps its dictionary form."
+        }
+      ]
     },
     {
       "id": "futur-proche-present-contrast-5",
@@ -718,7 +2172,34 @@
       ],
       "hint": "Aller for je, then the reflexive pronoun for je, then the infinitive.",
       "feedback": "Keep the pronoun before the infinitive and make it match je.",
-      "explanation": "Demain je vais me reposer: vais + me + reposer, in contrast with the present je travaille."
+      "explanation": "Demain je vais me reposer: vais + me + reposer, in contrast with the present je travaille.",
+      "mistakes": [
+        {
+          "answers": [
+            "vais reposer"
+          ],
+          "why": "Reposer on its own means to rest something else. Resting yourself needs the reflexive pronoun before the infinitive."
+        },
+        {
+          "answers": [
+            "vais se reposer"
+          ],
+          "why": "Se is the dictionary form of the pronoun. It has to copy the subject, which is je."
+        },
+        {
+          "answers": [
+            "me vais reposer"
+          ],
+          "why": "The pronoun has slipped in front of aller. It belongs to the infinitive and stands just before it."
+        },
+        {
+          "answers": [
+            "me repose"
+          ],
+          "why": "That is the simple present (I rest), which clashes with demain and with the contrast against je travaille."
+        }
+      ],
+      "row": "Plan or soon"
     },
     {
       "id": "futur-proche-present-contrast-6",
@@ -731,7 +2212,34 @@
       ],
       "hint": "Only aller changes with tu.",
       "feedback": "The second verb must be an infinitive.",
-      "explanation": "Tu vas regarder: vas + the infinitive regarder."
+      "explanation": "Tu vas regarder: vas + the infinitive regarder.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ce soir, tu vas regardes la télé ?"
+          ],
+          "why": "That is the sentence unchanged: the second verb still carries the tu ending. Only aller matches the subject."
+        },
+        {
+          "answers": [
+            "Ce soir, tu regardes la télé ?"
+          ],
+          "why": "That drops aller and gives a present-tense question. Keep the futur proche and fix the second verb instead."
+        },
+        {
+          "answers": [
+            "Ce soir, tu va regarder la télé ?"
+          ],
+          "why": "The second verb is fixed, but the first one is now wrong: with tu, aller ends in -s."
+        },
+        {
+          "answers": [
+            "Ce soir, tu vas regardé la télé ?"
+          ],
+          "why": "Regardé is the past participle, used with avoir. After aller the verb takes its dictionary form."
+        }
+      ],
+      "row": "Plan or soon"
     }
   ]
 }

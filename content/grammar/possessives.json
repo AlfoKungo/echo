@@ -5,9 +5,432 @@
   "title": "My, your, his, her",
   "description": "Say my, your, his, her, our and their with the right French form.",
   "mark": "mon · ma · mes",
-  "rule": "A possessive agrees with the thing owned, never with the owner: mon, ton, son before a masculine singular noun, ma, ta, sa before a feminine singular noun, and mes, tes, ses before any plural noun. So sa voiture means his car or her car, and son père means his father or her father. Before a feminine singular noun that starts with a vowel or a silent h, use mon, ton, son instead of ma, ta, sa: mon amie, ton école, son histoire. For our and your (you, plural or formal), use notre and votre before a singular noun and nos and vos before a plural noun. For their, use leur before a singular noun and leurs before a plural noun.",
-  "example": "Sa voiture est rouge. · Mon amie habite à Lyon. · Leurs enfants aiment leur école.",
-  "aside": "Son, sa and ses do not show whether the owner is a man or a woman; the context does. To make it clear, French can add à lui or à elle: sa voiture à elle.",
+  "guide": {
+    "summary": "A French possessive agrees with the thing owned, never with the owner. Learn the six sets of forms and you can say whose anything is.",
+    "sections": [
+      {
+        "id": "agreement",
+        "title": "What does the possessive agree with?",
+        "text": "The word for my, your, his, her, our or their changes with the noun that follows it, not with the person who owns it. The same car is sa voiture whether the owner is a man or a woman.",
+        "table": {
+          "columns": [
+            "Owner",
+            "+ masculine singular",
+            "+ feminine singular",
+            "+ plural"
+          ],
+          "rows": [
+            [
+              "my (je)",
+              "mon",
+              "ma",
+              "mes"
+            ],
+            [
+              "your (tu)",
+              "ton",
+              "ta",
+              "tes"
+            ],
+            [
+              "his / her (il, elle)",
+              "son",
+              "sa",
+              "ses"
+            ],
+            [
+              "our (nous)",
+              "notre",
+              "notre",
+              "nos"
+            ],
+            [
+              "your (vous)",
+              "votre",
+              "votre",
+              "vos"
+            ],
+            [
+              "their (ils, elles)",
+              "leur",
+              "leur",
+              "leurs"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun right after the gap: that is the thing owned.",
+          "Is it plural? Take the plural column and stop.",
+          "If it is singular, decide masculine or feminine and take that column.",
+          "Pick the owner’s row: je, tu, il/elle, nous, vous or ils/elles."
+        ],
+        "examples": [
+          {
+            "fr": "Sa voiture est rouge.",
+            "en": "His car is red. / Her car is red."
+          },
+          {
+            "fr": "Leurs enfants aiment leur école.",
+            "en": "Their children like their school."
+          }
+        ],
+        "watch": [
+          "The owner’s gender never shows: sa mère is his mother or her mother.",
+          "For nous, vous and ils/elles only number counts; gender is never a question."
+        ]
+      },
+      {
+        "id": "singular-forms",
+        "title": "Mon or ma? Ton or ta?",
+        "text": "Before one thing, the possessive takes the gender of the noun. Learn every noun with its gender: the ending does not tell you (un parapluie, une chambre).",
+        "table": {
+          "columns": [
+            "",
+            "+ masculine singular",
+            "+ feminine singular"
+          ],
+          "rows": [
+            [
+              "my",
+              "mon",
+              "ma"
+            ],
+            [
+              "your (tu)",
+              "ton",
+              "ta"
+            ],
+            [
+              "his / her",
+              "son",
+              "sa"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the noun is singular: one thing only.",
+          "Recall its gender, un or une.",
+          "Take the owner’s row and the column for that gender."
+        ],
+        "examples": [
+          {
+            "fr": "Ton sac est là.",
+            "en": "Your bag is there."
+          },
+          {
+            "fr": "Je lave ma voiture le samedi.",
+            "en": "I wash my car on Saturdays."
+          }
+        ],
+        "watch": [
+          "A noun ending in -e is not automatically feminine: un parapluie, un livre.",
+          "The speaker’s own gender changes nothing: a woman still says mon sac."
+        ]
+      },
+      {
+        "id": "plural-forms",
+        "title": "Several things owned",
+        "text": "As soon as the noun is plural, one form covers both genders.",
+        "table": {
+          "columns": [
+            "",
+            "+ singular",
+            "+ plural (m. or f.)"
+          ],
+          "rows": [
+            [
+              "my",
+              "mon / ma",
+              "mes"
+            ],
+            [
+              "your (tu)",
+              "ton / ta",
+              "tes"
+            ],
+            [
+              "his / her",
+              "son / sa",
+              "ses"
+            ]
+          ]
+        },
+        "steps": [
+          "Look for the plural -s or -x on the noun.",
+          "If the noun is plural, take the plural form and forget gender.",
+          "When you rewrite a sentence, make the verb and the adjectives plural too."
+        ],
+        "examples": [
+          {
+            "fr": "J’ai perdu mes clés.",
+            "en": "I have lost my keys."
+          },
+          {
+            "fr": "Il appelle ses parents ce soir.",
+            "en": "He is calling his parents tonight."
+          }
+        ],
+        "watch": [
+          "Ses (his, her) and ces (these) sound alike; only ses says whose.",
+          "The vowel trick belongs to singular nouns only: tes affaires, never ton affaires."
+        ]
+      },
+      {
+        "id": "son-sa-ses",
+        "title": "His or her? French does not choose",
+        "text": "Son, sa and ses say nothing about the owner’s gender; the context does. Add à lui or à elle when you really must be clear: sa voiture à elle.",
+        "table": {
+          "columns": [
+            "Thing owned",
+            "Form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "son",
+              "son père = his father or her father"
+            ],
+            [
+              "feminine singular",
+              "sa",
+              "sa mère = his mother or her mother"
+            ],
+            [
+              "plural",
+              "ses",
+              "ses sœurs = his sisters or her sisters"
+            ],
+            [
+              "feminine singular before a vowel",
+              "son",
+              "son amie = his friend or her friend"
+            ]
+          ]
+        },
+        "steps": [
+          "Ignore the owner: man or woman makes no difference.",
+          "Look only at the noun that follows.",
+          "Take its line in the table."
+        ],
+        "examples": [
+          {
+            "fr": "Marc adore sa voiture.",
+            "en": "Marc loves his car."
+          },
+          {
+            "fr": "Julie parle avec son père.",
+            "en": "Julie is talking with her father."
+          }
+        ],
+        "watch": [
+          "Her father is son père: père is masculine.",
+          "His mother is sa mère: mère is feminine."
+        ]
+      },
+      {
+        "id": "vowel-nouns",
+        "title": "Before a vowel: mon amie, not ma amie",
+        "text": "Ma, ta and sa cannot stand in front of a vowel sound, so French uses mon, ton and son instead. The noun stays feminine, so adjectives still agree with it: mon idée est bonne.",
+        "table": {
+          "columns": [
+            "Feminine noun",
+            "my",
+            "your (tu)",
+            "his / her"
+          ],
+          "rows": [
+            [
+              "amie (friend)",
+              "mon amie",
+              "ton amie",
+              "son amie"
+            ],
+            [
+              "école (school)",
+              "mon école",
+              "ton école",
+              "son école"
+            ],
+            [
+              "histoire (story)",
+              "mon histoire",
+              "ton histoire",
+              "son histoire"
+            ],
+            [
+              "adresse (address)",
+              "mon adresse",
+              "ton adresse",
+              "son adresse"
+            ],
+            [
+              "idée (idea)",
+              "mon idée",
+              "ton idée",
+              "son idée"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the noun is feminine and singular.",
+          "Say it aloud: does it open with a vowel sound or a silent h?",
+          "If it does, use the form that looks masculine; the noun stays feminine."
+        ],
+        "examples": [
+          {
+            "fr": "Mon amie habite à Lyon.",
+            "en": "My friend lives in Lyon."
+          },
+          {
+            "fr": "Son histoire est très drôle.",
+            "en": "Her story is very funny."
+          }
+        ],
+        "watch": [
+          "A silent h counts as a vowel: son histoire, ton hôtel.",
+          "Plural nouns keep the plural form: tes amies, never ton amies.",
+          "Possessives never shorten with an apostrophe: no m’amie."
+        ]
+      },
+      {
+        "id": "notre-votre",
+        "title": "Our and your (vous): only number counts",
+        "text": "Notre and votre serve masculine and feminine alike; only the number of the noun matters. Votre and vos are also the polite forms to one person you address as vous.",
+        "table": {
+          "columns": [
+            "",
+            "+ singular noun",
+            "+ plural noun"
+          ],
+          "rows": [
+            [
+              "our (nous)",
+              "notre",
+              "nos"
+            ],
+            [
+              "your (vous)",
+              "votre",
+              "vos"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide the owner: nous or vous.",
+          "Count the things owned: one, or more than one?",
+          "Take that cell; gender never comes into it."
+        ],
+        "examples": [
+          {
+            "fr": "Notre maison est petite.",
+            "en": "Our house is small."
+          },
+          {
+            "fr": "Madame, vos billets, s’il vous plaît.",
+            "en": "Madam, your tickets, please."
+          }
+        ],
+        "watch": [
+          "Nôtre and vôtre, with a circumflex, are pronouns: le nôtre (ours). They never stand before a noun.",
+          "To a friend use ton, ta, tes; keep votre and vos for vous."
+        ]
+      },
+      {
+        "id": "leur-leurs",
+        "title": "Their: leur or leurs?",
+        "text": "Several owners take leur. The -s has nothing to do with how many owners there are: it appears only when the thing owned is plural.",
+        "table": {
+          "columns": [
+            "Owners",
+            "+ one thing owned",
+            "+ several things owned"
+          ],
+          "rows": [
+            [
+              "their (ils / elles)",
+              "leur",
+              "leurs"
+            ],
+            [
+              "one owner (il / elle)",
+              "son / sa",
+              "ses"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that several people own the thing: ils, elles, les enfants, mes voisins.",
+          "Count the things owned, not the owners.",
+          "Add the -s only when the noun is plural."
+        ],
+        "examples": [
+          {
+            "fr": "Ils vendent leur maison.",
+            "en": "They are selling their house."
+          },
+          {
+            "fr": "Les enfants jouent avec leurs chiens.",
+            "en": "The children are playing with their dogs."
+          }
+        ],
+        "watch": [
+          "One car for the whole group is leur voiture, with no -s.",
+          "Leur in front of a verb is another word (je leur donne = I give them) and never takes an -s."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "gender-singular": {
+      "section": "singular-forms",
+      "steps": [
+        "Find the noun after the gap and check it is singular.",
+        "Decide its gender, un or une; the ending is not a reliable clue.",
+        "Take the owner’s row and the column for that gender."
+      ]
+    },
+    "plural": {
+      "section": "plural-forms",
+      "steps": [
+        "Look at the noun: does it carry a plural -s or -x?",
+        "For a plural noun take the plural form and forget gender.",
+        "If you rewrite the sentence, make the verb and the adjective plural as well."
+      ]
+    },
+    "his-or-her": {
+      "section": "son-sa-ses",
+      "steps": [
+        "Ignore whether the owner is a man or a woman.",
+        "Look at the noun owned: masculine, feminine or plural?",
+        "Take the matching form of son, sa, ses."
+      ]
+    },
+    "vowel-mon": {
+      "section": "vowel-nouns",
+      "steps": [
+        "Check the noun is feminine and singular.",
+        "Say it aloud: vowel sound or silent h at the start?",
+        "If yes, use mon, ton or son; the noun stays feminine for its adjectives."
+      ]
+    },
+    "notre-votre": {
+      "section": "notre-votre",
+      "steps": [
+        "Decide the owner: nous or vous.",
+        "Count the things owned; gender is irrelevant here.",
+        "One thing takes the singular form, several take the -s form."
+      ]
+    },
+    "leur-leurs": {
+      "section": "leur-leurs",
+      "steps": [
+        "Check that the owners are several people.",
+        "Look at the noun, not at the owners, to decide the -s.",
+        "Singular noun: no -s. Plural noun: -s."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "possessives-gender-singular-1",
@@ -25,7 +448,22 @@
       ],
       "hint": "Is chambre masculine or feminine, one or several?",
       "feedback": "Look at the noun chambre, not at the speaker.",
-      "explanation": "Chambre is feminine singular and starts with a consonant, so my is ma."
+      "explanation": "Chambre is feminine singular and starts with a consonant, so my is ma.",
+      "mistakes": [
+        {
+          "answers": [
+            "mon"
+          ],
+          "why": "Mon stands before a masculine singular noun. Chambre is feminine, so a masculine form cannot sit in front of it."
+        },
+        {
+          "answers": [
+            "mes"
+          ],
+          "why": "Mes is the plural form, for several things owned. There is only one room here."
+        }
+      ],
+      "row": "my"
     },
     {
       "id": "possessives-gender-singular-2",
@@ -43,7 +481,22 @@
       ],
       "hint": "Stylo is one thing. Is it masculine or feminine?",
       "feedback": "Match the possessive to stylo.",
-      "explanation": "Stylo is masculine singular, so your (to a friend) is ton."
+      "explanation": "Stylo is masculine singular, so your (to a friend) is ton.",
+      "mistakes": [
+        {
+          "answers": [
+            "ta"
+          ],
+          "why": "Ta stands before a feminine singular noun. Stylo is masculine, so a feminine form does not fit."
+        },
+        {
+          "answers": [
+            "tes"
+          ],
+          "why": "Tes is the plural form, for several things. A pen is one object."
+        }
+      ],
+      "row": "your (tu)"
     },
     {
       "id": "possessives-gender-singular-3",
@@ -56,7 +509,28 @@
       ],
       "hint": "Think about the gender of voiture.",
       "feedback": "The possessive takes the gender of voiture, and there is only one car.",
-      "explanation": "Voiture is feminine singular, so my car is ma voiture."
+      "explanation": "Voiture is feminine singular, so my car is ma voiture.",
+      "mistakes": [
+        {
+          "answers": [
+            "mon"
+          ],
+          "why": "Mon is the form for a masculine singular noun, and voiture is feminine (une voiture)."
+        },
+        {
+          "answers": [
+            "mes"
+          ],
+          "why": "Mes is for several things owned, but the sentence washes one car."
+        },
+        {
+          "answers": [
+            "ta"
+          ],
+          "why": "Ta means your, not my. The subject is je, so the owner is the speaker."
+        }
+      ],
+      "row": "my"
     },
     {
       "id": "possessives-gender-singular-4",
@@ -69,7 +543,28 @@
       ],
       "hint": "Sac is one masculine thing.",
       "feedback": "Use the tu form that matches a masculine singular noun.",
-      "explanation": "Sac is masculine singular, so your bag (to a friend) is ton sac."
+      "explanation": "Sac is masculine singular, so your bag (to a friend) is ton sac.",
+      "mistakes": [
+        {
+          "answers": [
+            "ta"
+          ],
+          "why": "Ta is the feminine form, and sac is masculine (un sac)."
+        },
+        {
+          "answers": [
+            "tes"
+          ],
+          "why": "Tes is the plural form, but the question asks about one bag."
+        },
+        {
+          "answers": [
+            "mon"
+          ],
+          "why": "Mon means my. The question is about what belongs to the friend you are speaking to."
+        }
+      ],
+      "row": "your (tu)"
     },
     {
       "id": "possessives-gender-singular-5",
@@ -82,7 +577,29 @@
       ],
       "hint": "Check the gender of parapluie.",
       "feedback": "Parapluie ends in e, but that does not make it feminine.",
-      "explanation": "Parapluie is masculine singular, so my umbrella is mon parapluie."
+      "explanation": "Parapluie is masculine singular, so my umbrella is mon parapluie.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle prend ma parapluie."
+          ],
+          "why": "That is the sentence unchanged. Parapluie ends in -e but it is masculine (un parapluie), so the feminine form in front of it is the error."
+        },
+        {
+          "answers": [
+            "Elle prend mes parapluies.",
+            "Elle prend mes parapluie."
+          ],
+          "why": "Going plural invents umbrellas the sentence does not have; only the gender of the possessive is wrong."
+        },
+        {
+          "answers": [
+            "Elle prend son parapluie."
+          ],
+          "why": "Son means his or her. The sentence says the umbrella is mine, and only the form has to change."
+        }
+      ],
+      "row": "my"
     },
     {
       "id": "possessives-gender-singular-6",
@@ -103,7 +620,16 @@
       ],
       "hint": "Sœur is feminine.",
       "feedback": "Only one word for my fits a feminine noun that starts with a consonant.",
-      "explanation": "Sœur is feminine singular and starts with a consonant, so my sister is ma sœur."
+      "explanation": "Sœur is feminine singular and starts with a consonant, so my sister is ma sœur.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mon sœur travaille à Paris."
+          ],
+          "why": "That tile is the masculine form, and sœur is feminine (une sœur). The tile you leave unused is the one whose gender does not match the noun."
+        }
+      ],
+      "row": "my"
     },
     {
       "id": "possessives-gender-singular-7",
@@ -116,7 +642,28 @@
       ],
       "hint": "Lampe is feminine.",
       "feedback": "The possessive must follow the new noun, not the old one.",
-      "explanation": "Lampe is feminine singular, so ton becomes ta: ta lampe."
+      "explanation": "Lampe is feminine singular, so ton becomes ta: ta lampe.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ton lampe est sur la table."
+          ],
+          "why": "The possessive still matches livre. Lampe is feminine, so the masculine form leaves the two words disagreeing."
+        },
+        {
+          "answers": [
+            "Ton livre est sur la table."
+          ],
+          "why": "That is the original sentence: livre was never replaced."
+        },
+        {
+          "answers": [
+            "Tes lampes sont sur la table."
+          ],
+          "why": "Nothing asked for a plural: one lamp replaces one book, so only the gender changes."
+        }
+      ],
+      "row": "your (tu)"
     },
     {
       "id": "possessives-plural-1",
@@ -134,7 +681,22 @@
       ],
       "hint": "How many keys are there?",
       "feedback": "The noun is plural.",
-      "explanation": "Clés is plural, so my is mes. Mes works for masculine and feminine plural nouns."
+      "explanation": "Clés is plural, so my is mes. Mes works for masculine and feminine plural nouns.",
+      "mistakes": [
+        {
+          "answers": [
+            "ma"
+          ],
+          "why": "Ma stands before one feminine thing, and clés is plural."
+        },
+        {
+          "answers": [
+            "mon"
+          ],
+          "why": "Mon stands before one masculine thing. The noun here is plural, and in the plural both genders share one form."
+        }
+      ],
+      "row": "my"
     },
     {
       "id": "possessives-plural-2",
@@ -152,7 +714,22 @@
       ],
       "hint": "Look at the end of affaires.",
       "feedback": "The vowel rule for ton only applies to singular nouns.",
-      "explanation": "Affaires is plural, so your is tes, even though the noun starts with a vowel."
+      "explanation": "Affaires is plural, so your is tes, even though the noun starts with a vowel.",
+      "mistakes": [
+        {
+          "answers": [
+            "ta"
+          ],
+          "why": "Ta is a singular form, and affaires is plural."
+        },
+        {
+          "answers": [
+            "ton"
+          ],
+          "why": "Ton replaces ta before a vowel, but that swap only happens with singular nouns. Affaires is plural."
+        }
+      ],
+      "row": "your (tu)"
     },
     {
       "id": "possessives-plural-3",
@@ -165,7 +742,34 @@
       ],
       "hint": "Parents means more than one person.",
       "feedback": "For several things owned, his and her share one form.",
-      "explanation": "Parents is plural, so his parents is ses parents."
+      "explanation": "Parents is plural, so his parents is ses parents.",
+      "mistakes": [
+        {
+          "answers": [
+            "son"
+          ],
+          "why": "Son goes before one masculine thing, and parents means more than one person."
+        },
+        {
+          "answers": [
+            "sa"
+          ],
+          "why": "Sa goes before one feminine thing. The noun is plural, and gender stops mattering there."
+        },
+        {
+          "answers": [
+            "ces"
+          ],
+          "why": "Ces means these and only points at things; it does not say who they belong to."
+        },
+        {
+          "answers": [
+            "leurs"
+          ],
+          "why": "Leurs belongs to several owners, but the subject il is one person."
+        }
+      ],
+      "row": "his / her"
     },
     {
       "id": "possessives-plural-4",
@@ -178,7 +782,34 @@
       ],
       "hint": "The possessive, the noun, the verb and the adjective all change.",
       "feedback": "Check all four words: possessive, noun, verb and adjective.",
-      "explanation": "A plural noun takes mes, so ma chaussure becomes mes chaussures, with sont and sales."
+      "explanation": "A plural noun takes mes, so ma chaussure becomes mes chaussures, with sont and sales.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma chaussures sont sales."
+          ],
+          "why": "The possessive was left singular in front of a plural noun; it changes with the noun just like the verb and the adjective."
+        },
+        {
+          "answers": [
+            "Mes chaussures est sale."
+          ],
+          "why": "The verb and the adjective still describe one shoe, but the sentence now has several."
+        },
+        {
+          "answers": [
+            "Mes chaussures sont sale."
+          ],
+          "why": "The adjective kept its singular ending; sale describes several shoes now."
+        },
+        {
+          "answers": [
+            "Ma chaussure est sale."
+          ],
+          "why": "That is the sentence unchanged: nothing was made plural."
+        }
+      ],
+      "row": "my"
     },
     {
       "id": "possessives-plural-5",
@@ -191,7 +822,34 @@
       ],
       "hint": "Plural nouns take a different word for your.",
       "feedback": "Change the possessive, the noun, the verb and the adjective.",
-      "explanation": "Ami becomes amis, so ton becomes tes, est becomes sont and gentil becomes gentils."
+      "explanation": "Ami becomes amis, so ton becomes tes, est becomes sont and gentil becomes gentils.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ton amis sont gentils."
+          ],
+          "why": "Everything went plural except the possessive, which follows the noun as well."
+        },
+        {
+          "answers": [
+            "Tes amis est gentil."
+          ],
+          "why": "Only the first two words were made plural; the verb and the adjective still describe one friend."
+        },
+        {
+          "answers": [
+            "Tes amies sont gentilles."
+          ],
+          "why": "Amies with an -e is a group of girls only, and nothing says these friends are female."
+        },
+        {
+          "answers": [
+            "Ton ami est gentil."
+          ],
+          "why": "That is the original sentence, still singular."
+        }
+      ],
+      "row": "your (tu)"
     },
     {
       "id": "possessives-plural-6",
@@ -204,7 +862,28 @@
       ],
       "hint": "Count the cousins.",
       "feedback": "Sa only goes with one feminine thing.",
-      "explanation": "Cousines is plural, so her cousins is ses cousines."
+      "explanation": "Cousines is plural, so her cousins is ses cousines.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle aime beaucoup sa cousines."
+          ],
+          "why": "That is the sentence unchanged: a singular possessive still stands before a plural noun."
+        },
+        {
+          "answers": [
+            "Elle aime beaucoup sa cousine."
+          ],
+          "why": "Making the noun singular fixes the agreement the wrong way round; the sentence is about several cousins."
+        },
+        {
+          "answers": [
+            "Elle aime beaucoup ces cousines."
+          ],
+          "why": "Ces means these; it points at the cousins instead of saying whose they are."
+        }
+      ],
+      "row": "his / her"
     },
     {
       "id": "possessives-plural-7",
@@ -217,7 +896,34 @@
       ],
       "hint": "Shoes is plural.",
       "feedback": "Check the possessive: the noun is plural.",
-      "explanation": "Chaussures is plural, so my shoes is mes chaussures."
+      "explanation": "Chaussures is plural, so my shoes is mes chaussures.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma chaussures sont sous le lit."
+          ],
+          "why": "The possessive stayed singular in front of a plural noun."
+        },
+        {
+          "answers": [
+            "Mes chaussure sont sous le lit."
+          ],
+          "why": "The noun lost its plural -s; both the possessive and the noun carry the plural."
+        },
+        {
+          "answers": [
+            "Mes chaussures est sous le lit."
+          ],
+          "why": "Est describes one thing, and several shoes need the plural of être."
+        },
+        {
+          "answers": [
+            "Mes chaussures sont sous la lit."
+          ],
+          "why": "Lit is masculine (un lit), so a feminine article cannot go with it."
+        }
+      ],
+      "row": "my"
     },
     {
       "id": "possessives-his-or-her-1",
@@ -230,7 +936,28 @@
       ],
       "hint": "The possessive matches père, not the woman.",
       "feedback": "In French, her does not have to sound feminine.",
-      "explanation": "Père is masculine singular, so her father is son père."
+      "explanation": "Père is masculine singular, so her father is son père.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sa père est grand."
+          ],
+          "why": "The possessive was matched to the woman who owns him. It agrees with père, which is masculine."
+        },
+        {
+          "answers": [
+            "Son père est grande."
+          ],
+          "why": "Grande is the feminine ending, and the adjective describes père, a masculine noun."
+        },
+        {
+          "answers": [
+            "Ses pères sont grands."
+          ],
+          "why": "That gives her several fathers; the English sentence has one."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "possessives-his-or-her-2",
@@ -245,7 +972,28 @@
       ],
       "hint": "Look at the gender of mère, not of the man.",
       "feedback": "The possessive agrees with mère.",
-      "explanation": "Mère is feminine singular, so his mother is sa mère."
+      "explanation": "Mère is feminine singular, so his mother is sa mère.",
+      "mistakes": [
+        {
+          "answers": [
+            "Son mère habite à Nice."
+          ],
+          "why": "The possessive was matched to the man who owns her. It agrees with mère, which is feminine."
+        },
+        {
+          "answers": [
+            "Ses mères habitent à Nice."
+          ],
+          "why": "That makes several mothers, while the English sentence has one."
+        },
+        {
+          "answers": [
+            "Sa mère habite en Nice."
+          ],
+          "why": "Towns take à; en is for feminine countries, like en France."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "possessives-his-or-her-3",
@@ -258,7 +1006,23 @@
       ],
       "hint": "How many sisters?",
       "feedback": "For a plural noun, his and her are the same word.",
-      "explanation": "Sœurs is plural, so his sisters is ses sœurs."
+      "explanation": "Sœurs is plural, so his sisters is ses sœurs.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sa sœurs sont à l’école.",
+            "Son sœurs sont à l’école."
+          ],
+          "why": "Both of those forms stand before one thing, and the sentence has several sisters. In the plural, gender stops mattering."
+        },
+        {
+          "answers": [
+            "Ses sœurs sont à la école."
+          ],
+          "why": "École begins with a vowel, so the full article cannot stand in front of it."
+        }
+      ],
+      "row": "plural"
     },
     {
       "id": "possessives-his-or-her-4",
@@ -276,7 +1040,22 @@
       ],
       "hint": "Look at voiture, not at Marc.",
       "feedback": "Marc is a man, but the possessive does not care about him.",
-      "explanation": "Voiture is feminine singular, so his car is sa voiture."
+      "explanation": "Voiture is feminine singular, so his car is sa voiture.",
+      "mistakes": [
+        {
+          "answers": [
+            "son"
+          ],
+          "why": "Son is the form for a masculine singular noun. Voiture is feminine, and Marc being a man changes nothing."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses is the plural form, but Marc loves one car."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "possessives-his-or-her-5",
@@ -294,7 +1073,22 @@
       ],
       "hint": "Look at père, not at Julie.",
       "feedback": "Julie is a woman, but the possessive does not care about her.",
-      "explanation": "Père is masculine singular, so her father is son père."
+      "explanation": "Père is masculine singular, so her father is son père.",
+      "mistakes": [
+        {
+          "answers": [
+            "sa"
+          ],
+          "why": "Sa is the feminine form. The possessive follows père, which is masculine, not Julie."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses is the plural form, and Julie is talking with one father."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "possessives-his-or-her-6",
@@ -307,7 +1101,28 @@
       ],
       "hint": "Portable (phone) is masculine.",
       "feedback": "Match the possessive to portable, not to Léa.",
-      "explanation": "Portable is masculine singular, so her phone is son portable."
+      "explanation": "Portable is masculine singular, so her phone is son portable.",
+      "mistakes": [
+        {
+          "answers": [
+            "sa"
+          ],
+          "why": "Sa is the feminine form, and portable is masculine (un portable). Léa being a woman does not matter."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses is the plural form, but she is looking for one phone."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur belongs to several owners, and Léa is one person."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "possessives-his-or-her-7",
@@ -320,7 +1135,28 @@
       ],
       "hint": "Chambre is feminine.",
       "feedback": "Match the possessive to chambre, not to Paul.",
-      "explanation": "Chambre is feminine singular and starts with a consonant, so his room is sa chambre."
+      "explanation": "Chambre is feminine singular and starts with a consonant, so his room is sa chambre.",
+      "mistakes": [
+        {
+          "answers": [
+            "son"
+          ],
+          "why": "Son goes before a masculine singular noun. Chambre is feminine, and Paul being a man changes nothing."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses is the plural form, but Paul tidies one room."
+        },
+        {
+          "answers": [
+            "ma"
+          ],
+          "why": "Ma means my, and the sentence is about Paul, not about the speaker."
+        }
+      ],
+      "row": "feminine singular"
     },
     {
       "id": "possessives-his-or-her-8",
@@ -333,7 +1169,28 @@
       ],
       "hint": "Frère is masculine.",
       "feedback": "The possessive agrees with frère, not with Anne.",
-      "explanation": "Frère is masculine singular, so her brother is son frère."
+      "explanation": "Frère is masculine singular, so her brother is son frère.",
+      "mistakes": [
+        {
+          "answers": [
+            "Anne téléphone à sa frère."
+          ],
+          "why": "That is the sentence unchanged: a feminine form still stands before frère, which is masculine."
+        },
+        {
+          "answers": [
+            "Anne téléphone à ses frères."
+          ],
+          "why": "That gives her several brothers; only the form of the possessive needs fixing."
+        },
+        {
+          "answers": [
+            "Anne téléphone à sa sœur."
+          ],
+          "why": "Swapping the noun for a feminine one dodges the problem: the sentence is about her brother."
+        }
+      ],
+      "row": "masculine singular"
     },
     {
       "id": "possessives-vowel-mon-1",
@@ -351,7 +1208,22 @@
       ],
       "hint": "Amie is feminine, but look at its first letter.",
       "feedback": "Ma cannot stand right before a vowel.",
-      "explanation": "Before a feminine singular noun starting with a vowel, ma becomes mon: mon amie. It still means a female friend."
+      "explanation": "Before a feminine singular noun starting with a vowel, ma becomes mon: mon amie. It still means a female friend.",
+      "mistakes": [
+        {
+          "answers": [
+            "ma"
+          ],
+          "why": "Ma is right before a feminine noun that starts with a consonant, but amie opens with a vowel and the two sounds cannot meet."
+        },
+        {
+          "answers": [
+            "mes"
+          ],
+          "why": "Mes is the plural form, and Claire is one friend."
+        }
+      ],
+      "row": "amie (friend)"
     },
     {
       "id": "possessives-vowel-mon-2",
@@ -369,7 +1241,22 @@
       ],
       "hint": "École is feminine, but look at its first letter.",
       "feedback": "Ta cannot stand right before a vowel.",
-      "explanation": "École is feminine singular and starts with a vowel, so your school is ton école."
+      "explanation": "École is feminine singular and starts with a vowel, so your school is ton école.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ta"
+          ],
+          "why": "Ta is the feminine form, but it cannot stand in front of a word that opens with a vowel, and école starts with é."
+        },
+        {
+          "answers": [
+            "Tes"
+          ],
+          "why": "Tes is the plural form, and the question is about one school."
+        }
+      ],
+      "row": "école (school)"
     },
     {
       "id": "possessives-vowel-mon-3",
@@ -387,7 +1274,22 @@
       ],
       "hint": "The h of histoire is silent.",
       "feedback": "A silent h counts as a vowel sound.",
-      "explanation": "Histoire is feminine singular and starts with a silent h, so her story is son histoire."
+      "explanation": "Histoire is feminine singular and starts with a silent h, so her story is son histoire.",
+      "mistakes": [
+        {
+          "answers": [
+            "sa"
+          ],
+          "why": "Histoire is feminine, so this looks right, but its h is silent and the word begins with a vowel sound."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses is the plural form, and she is telling one story."
+        }
+      ],
+      "row": "histoire (story)"
     },
     {
       "id": "possessives-vowel-mon-4",
@@ -400,7 +1302,28 @@
       ],
       "hint": "Amie starts with a vowel.",
       "feedback": "The feminine form cannot stand before a vowel.",
-      "explanation": "Amie is feminine singular but starts with a vowel, so my friend is mon amie."
+      "explanation": "Amie is feminine singular but starts with a vowel, so my friend is mon amie.",
+      "mistakes": [
+        {
+          "answers": [
+            "ma"
+          ],
+          "why": "Ma is the feminine form, but it never stands before a vowel sound, and amie begins with one."
+        },
+        {
+          "answers": [
+            "mes"
+          ],
+          "why": "Mes is the plural form, and there is one friend here."
+        },
+        {
+          "answers": [
+            "ta"
+          ],
+          "why": "Ta means your. Je te présente shows the speaker is introducing a friend of their own."
+        }
+      ],
+      "row": "amie (friend)"
     },
     {
       "id": "possessives-vowel-mon-5",
@@ -413,7 +1336,28 @@
       ],
       "hint": "Adresse is feminine and starts with a vowel.",
       "feedback": "Think of the vowel rule.",
-      "explanation": "Adresse is feminine singular and starts with a vowel, so your address is ton adresse."
+      "explanation": "Adresse is feminine singular and starts with a vowel, so your address is ton adresse.",
+      "mistakes": [
+        {
+          "answers": [
+            "ta"
+          ],
+          "why": "Ta is the feminine form, but adresse opens with a vowel and the two sounds cannot meet."
+        },
+        {
+          "answers": [
+            "tes"
+          ],
+          "why": "Tes is the plural form, and you are asking for one address."
+        },
+        {
+          "answers": [
+            "mon"
+          ],
+          "why": "Mon means my, and the question asks for the address of the person you are speaking to."
+        }
+      ],
+      "row": "adresse (address)"
     },
     {
       "id": "possessives-vowel-mon-6",
@@ -426,7 +1370,28 @@
       ],
       "hint": "Say ma amie aloud: two vowels collide.",
       "feedback": "Amie starts with a vowel.",
-      "explanation": "Before a feminine singular noun starting with a vowel, use mon: mon amie."
+      "explanation": "Before a feminine singular noun starting with a vowel, use mon: mon amie.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma amie arrive demain."
+          ],
+          "why": "That is the sentence unchanged: two vowel sounds still collide between the possessive and amie."
+        },
+        {
+          "answers": [
+            "Mes amies arrivent demain."
+          ],
+          "why": "That turns one friend into several; only the form in front of amie is wrong."
+        },
+        {
+          "answers": [
+            "M’amie arrive demain."
+          ],
+          "why": "Possessives never shorten with an apostrophe in French; the whole word changes instead."
+        }
+      ],
+      "row": "amie (friend)"
     },
     {
       "id": "possessives-vowel-mon-7",
@@ -447,7 +1412,16 @@
       ],
       "hint": "Idée is feminine and starts with a vowel.",
       "feedback": "Look at the first letter of idée.",
-      "explanation": "Idée is feminine singular and starts with a vowel, so his idea is son idée. Bonne still agrees with the feminine idée."
+      "explanation": "Idée is feminine singular and starts with a vowel, so his idea is son idée. Bonne still agrees with the feminine idée.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sa idée est très bonne."
+          ],
+          "why": "Idée is feminine, so that tile looks right, but it cannot stand in front of a word starting with a vowel."
+        }
+      ],
+      "row": "idée (idea)"
     },
     {
       "id": "possessives-vowel-mon-8",
@@ -461,7 +1435,29 @@
       ],
       "hint": "Julie is a woman, and amie starts with a vowel.",
       "feedback": "Check the word for my before amie.",
-      "explanation": "A female friend is une amie, and before a vowel my is mon: mon amie Julie."
+      "explanation": "A female friend is une amie, and before a vowel my is mon: mon amie Julie.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ma amie Julie est ici.",
+            "Ma amie Julie est là."
+          ],
+          "why": "The feminine form is blocked in front of a vowel; French keeps the feminine noun but changes the word before it."
+        },
+        {
+          "answers": [
+            "Mon ami Julie est ici."
+          ],
+          "why": "Ami without an -e is a male friend, and Julie is a woman."
+        },
+        {
+          "answers": [
+            "Mes amies Julie sont ici."
+          ],
+          "why": "That is a plural, and the sentence introduces one person."
+        }
+      ],
+      "row": "amie (friend)"
     },
     {
       "id": "possessives-notre-votre-1",
@@ -480,7 +1476,22 @@
       "hint": "How many neighbourhoods?",
       "feedback": "Quartier is singular, and the word before a noun has no accent.",
       "explanation": "Quartier is singular, so our is notre. Nôtre, with a circumflex, is the pronoun in le nôtre (ours) and never goes before a noun.",
-      "strictAccents": true
+      "strictAccents": true,
+      "mistakes": [
+        {
+          "answers": [
+            "nos"
+          ],
+          "why": "Nos stands before a plural noun, and quartier is one neighbourhood."
+        },
+        {
+          "answers": [
+            "nôtre"
+          ],
+          "why": "Nôtre with a circumflex is the pronoun in le nôtre (ours): it replaces a noun instead of standing in front of one."
+        }
+      ],
+      "row": "our (nous)"
     },
     {
       "id": "possessives-notre-votre-2",
@@ -498,7 +1509,22 @@
       ],
       "hint": "Billets is plural, and this is formal.",
       "feedback": "Use the vous form for a plural noun.",
-      "explanation": "Billets is plural and the speaker says vous, so your is vos."
+      "explanation": "Billets is plural and the speaker says vous, so your is vos.",
+      "mistakes": [
+        {
+          "answers": [
+            "votre"
+          ],
+          "why": "Votre stands before a singular noun, and billets is plural."
+        },
+        {
+          "answers": [
+            "ta"
+          ],
+          "why": "Ta is the tu form, for friends and family. Madame is someone you address as vous."
+        }
+      ],
+      "row": "your (vous)"
     },
     {
       "id": "possessives-notre-votre-3",
@@ -511,7 +1537,28 @@
       ],
       "hint": "Enfants is plural.",
       "feedback": "The singular form does not fit a plural noun.",
-      "explanation": "Enfants is plural, so our children is nos enfants."
+      "explanation": "Enfants is plural, so our children is nos enfants.",
+      "mistakes": [
+        {
+          "answers": [
+            "Notre"
+          ],
+          "why": "Notre stands before a singular noun, and enfants is plural."
+        },
+        {
+          "answers": [
+            "Nôtre"
+          ],
+          "why": "Nôtre with a circumflex is the pronoun le nôtre (ours) and never stands in front of a noun."
+        },
+        {
+          "answers": [
+            "Vos"
+          ],
+          "why": "Vos means your: it belongs to the people spoken to, not to the speaker’s own group."
+        }
+      ],
+      "row": "our (nous)"
     },
     {
       "id": "possessives-notre-votre-4",
@@ -524,7 +1571,28 @@
       ],
       "hint": "One taxi, and the speaker is polite.",
       "feedback": "Use the vous form for a singular noun.",
-      "explanation": "Taxi is singular and the speaker is formal, so your taxi is votre taxi."
+      "explanation": "Taxi is singular and the speaker is formal, so your taxi is votre taxi.",
+      "mistakes": [
+        {
+          "answers": [
+            "vos"
+          ],
+          "why": "Vos stands before a plural noun, and there is one taxi."
+        },
+        {
+          "answers": [
+            "ton"
+          ],
+          "why": "Ton is the tu form, for friends and family, while Monsieur is addressed with vous."
+        },
+        {
+          "answers": [
+            "notre"
+          ],
+          "why": "Notre means our, but the taxi belongs to the man being spoken to."
+        }
+      ],
+      "row": "your (vous)"
     },
     {
       "id": "possessives-notre-votre-5",
@@ -537,7 +1605,34 @@
       ],
       "hint": "Our has a different form before a plural noun.",
       "feedback": "Change the possessive, the noun, the verb and the adjective.",
-      "explanation": "Plural voisins takes nos, with sont and sympathiques."
+      "explanation": "Plural voisins takes nos, with sont and sympathiques.",
+      "mistakes": [
+        {
+          "answers": [
+            "Notre voisins sont sympathiques."
+          ],
+          "why": "Everything went plural except the possessive, which follows the noun too."
+        },
+        {
+          "answers": [
+            "Nos voisin sont sympathiques."
+          ],
+          "why": "The noun lost its plural -s; it carries the plural just like the possessive."
+        },
+        {
+          "answers": [
+            "Nos voisins est sympathique."
+          ],
+          "why": "The verb and the adjective still describe one neighbour."
+        },
+        {
+          "answers": [
+            "Notre voisin est sympathique."
+          ],
+          "why": "That is the original sentence, still about one neighbour."
+        }
+      ],
+      "row": "our (nous)"
     },
     {
       "id": "possessives-notre-votre-6",
@@ -550,7 +1645,28 @@
       ],
       "hint": "One house.",
       "feedback": "Check the possessive for a singular noun and the ending of the adjective.",
-      "explanation": "Maison is singular, so our house is notre maison, whatever its gender."
+      "explanation": "Maison is singular, so our house is notre maison, whatever its gender.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nos maison est petite."
+          ],
+          "why": "Nos goes before a plural noun, and the English sentence has one house."
+        },
+        {
+          "answers": [
+            "Notre maison est petit."
+          ],
+          "why": "Petit is the masculine ending, and maison is feminine (une maison)."
+        },
+        {
+          "answers": [
+            "Nos maisons sont petites."
+          ],
+          "why": "That describes several houses, while the English says one."
+        }
+      ],
+      "row": "our (nous)"
     },
     {
       "id": "possessives-notre-votre-7",
@@ -570,7 +1686,16 @@
       ],
       "hint": "Valises is plural.",
       "feedback": "Choose the possessive for a plural noun.",
-      "explanation": "Valises is plural, so your (you, plural) is vos."
+      "explanation": "Valises is plural, so your (you, plural) is vos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Votre valises sont prêtes."
+          ],
+          "why": "The singular tile was placed in front of a plural noun; the possessive follows valises."
+        }
+      ],
+      "row": "your (vous)"
     },
     {
       "id": "possessives-notre-votre-8",
@@ -583,7 +1708,28 @@
       ],
       "hint": "Count the friends.",
       "feedback": "Notre only goes with one thing.",
-      "explanation": "Amis is plural, so our friends is nos amis."
+      "explanation": "Amis is plural, so our friends is nos amis.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous aimons beaucoup notre amis."
+          ],
+          "why": "That is the sentence unchanged: a singular possessive still stands before a plural noun."
+        },
+        {
+          "answers": [
+            "Nous aimons beaucoup notre ami."
+          ],
+          "why": "Making the noun singular changes the meaning instead of fixing the possessive."
+        },
+        {
+          "answers": [
+            "Nous aimons beaucoup nôtres amis."
+          ],
+          "why": "Nôtre with a circumflex is a pronoun (le nôtre) and never goes before a noun."
+        }
+      ],
+      "row": "our (nous)"
     },
     {
       "id": "possessives-leur-leurs-1",
@@ -601,7 +1747,22 @@
       ],
       "hint": "How many houses?",
       "feedback": "Maison is singular.",
-      "explanation": "One house shared by several owners is leur maison."
+      "explanation": "One house shared by several owners is leur maison.",
+      "mistakes": [
+        {
+          "answers": [
+            "leurs"
+          ],
+          "why": "Leurs carries the -s of a plural noun, but maison is singular. The -s follows the thing owned, not the number of owners."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses belongs to a single owner, and here several people share the house."
+        }
+      ],
+      "row": "their (ils / elles)"
     },
     {
       "id": "possessives-leur-leurs-2",
@@ -619,7 +1780,22 @@
       ],
       "hint": "How many dogs?",
       "feedback": "Chiens is plural.",
-      "explanation": "Chiens is plural, so their dogs is leurs chiens."
+      "explanation": "Chiens is plural, so their dogs is leurs chiens.",
+      "mistakes": [
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Without the -s the possessive stands before one thing, and chiens is plural."
+        },
+        {
+          "answers": [
+            "sa"
+          ],
+          "why": "Sa belongs to one owner and one feminine thing; here several children own several dogs."
+        }
+      ],
+      "row": "their (ils / elles)"
     },
     {
       "id": "possessives-leur-leurs-3",
@@ -632,7 +1808,23 @@
       ],
       "hint": "There is one dog.",
       "feedback": "The s depends on the number of dogs, not the number of neighbours.",
-      "explanation": "Chien is singular, so their dog is leur chien, with no s."
+      "explanation": "Chien is singular, so their dog is leur chien, with no s.",
+      "mistakes": [
+        {
+          "answers": [
+            "leurs"
+          ],
+          "why": "The -s was added for the several neighbours, but the possessive follows chien, which is one dog."
+        },
+        {
+          "answers": [
+            "ses",
+            "son"
+          ],
+          "why": "Son and ses belong to a single owner, and the sentence has several neighbours."
+        }
+      ],
+      "row": "their (ils / elles)"
     },
     {
       "id": "possessives-leur-leurs-4",
@@ -645,7 +1837,22 @@
       ],
       "hint": "Parents is plural.",
       "feedback": "The possessive must show the plural of parents.",
-      "explanation": "Parents is plural, so their parents is leurs parents."
+      "explanation": "Parents is plural, so their parents is leurs parents.",
+      "mistakes": [
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Without the -s the possessive stands before one thing, and parents is plural."
+        },
+        {
+          "answers": [
+            "ses"
+          ],
+          "why": "Ses belongs to a single owner, but elles is several people."
+        }
+      ],
+      "row": "their (ils / elles)"
     },
     {
       "id": "possessives-leur-leurs-5",
@@ -658,7 +1865,28 @@
       ],
       "hint": "One car.",
       "feedback": "The s on the possessive follows the thing owned.",
-      "explanation": "Voiture is singular, so their car is leur voiture, without s."
+      "explanation": "Voiture is singular, so their car is leur voiture, without s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils prennent leurs voiture pour partir."
+          ],
+          "why": "That is the sentence unchanged: the possessive still carries an -s in front of a singular noun."
+        },
+        {
+          "answers": [
+            "Ils prennent leurs voitures pour partir."
+          ],
+          "why": "Making the noun plural keeps the -s, but the instruction says to leave one car."
+        },
+        {
+          "answers": [
+            "Ils prennent sa voiture pour partir."
+          ],
+          "why": "Sa belongs to one owner, and ils is several people."
+        }
+      ],
+      "row": "their (ils / elles)"
     },
     {
       "id": "possessives-leur-leurs-6",
@@ -671,7 +1899,28 @@
       ],
       "hint": "With several owners, his becomes their.",
       "feedback": "Change the subject, the verb and the possessive.",
-      "explanation": "Several owners take leur; travail is singular, so it stays leur travail."
+      "explanation": "Several owners take leur; travail is singular, so it stays leur travail.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils aiment leurs travail."
+          ],
+          "why": "The -s was added for the several owners, but the possessive follows travail, which is one job."
+        },
+        {
+          "answers": [
+            "Ils aiment son travail."
+          ],
+          "why": "Son belongs to a single owner, and the new subject is several people."
+        },
+        {
+          "answers": [
+            "Ils aime leur travail."
+          ],
+          "why": "The verb kept its singular ending after a plural subject."
+        }
+      ],
+      "row": "their (ils / elles)"
     },
     {
       "id": "possessives-leur-leurs-7",
@@ -684,7 +1933,28 @@
       ],
       "hint": "Several owners, several cousins.",
       "feedback": "Change the subject, the verb and the possessive.",
-      "explanation": "Several owners take leur, and cousins is plural, so their cousins is leurs cousins."
+      "explanation": "Several owners take leur, and cousins is plural, so their cousins is leurs cousins.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elles adorent leur cousins."
+          ],
+          "why": "Cousins is plural, so the possessive needs its plural form too."
+        },
+        {
+          "answers": [
+            "Elles adorent ses cousins."
+          ],
+          "why": "Ses belongs to a single owner, and the subject is now several people."
+        },
+        {
+          "answers": [
+            "Elles adore leurs cousins."
+          ],
+          "why": "The verb kept its singular ending after a plural subject."
+        }
+      ],
+      "row": "their (ils / elles)"
     },
     {
       "id": "possessives-leur-leurs-8",
@@ -698,7 +1968,28 @@
       ],
       "hint": "Children is plural.",
       "feedback": "Check the ending of their.",
-      "explanation": "Enfants is plural, so their children is leurs enfants."
+      "explanation": "Enfants is plural, so their children is leurs enfants.",
+      "mistakes": [
+        {
+          "answers": [
+            "Leur enfants sont à la maison."
+          ],
+          "why": "Without the -s the possessive stands before one thing, and children is plural."
+        },
+        {
+          "answers": [
+            "Ses enfants sont à la maison."
+          ],
+          "why": "Ses belongs to a single owner, while their points to several."
+        },
+        {
+          "answers": [
+            "Leurs enfants sont à maison."
+          ],
+          "why": "À la maison keeps its article; maison never stands bare here."
+        }
+      ],
+      "row": "their (ils / elles)"
     },
     {
       "id": "possessives-leur-leurs-9",
@@ -719,7 +2010,22 @@
       ],
       "hint": "One daughter.",
       "feedback": "Choose the form of their for one thing owned.",
-      "explanation": "Fille is singular, so their daughter is leur fille."
+      "explanation": "Fille is singular, so their daughter is leur fille.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ils parlent à leurs fille."
+          ],
+          "why": "The -s tile matches several owners, but the possessive follows fille, which is one daughter."
+        },
+        {
+          "answers": [
+            "Ils parlent leur fille."
+          ],
+          "why": "Parler needs à before the person spoken to: on parle à quelqu’un."
+        }
+      ],
+      "row": "their (ils / elles)"
     }
   ]
 }

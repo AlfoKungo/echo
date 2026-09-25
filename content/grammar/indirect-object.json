@@ -5,9 +5,472 @@
   "title": "To him, to them",
   "description": "Replace à + a person with lui, leur and the other indirect pronouns.",
   "mark": "lui · leur",
-  "rule": "An indirect object pronoun replaces à + a person: me, te, lui, nous, vous, leur (to me, to you, to him or her, to us, to you, to them). Lui means both to him and to her, and leur means to them; as a pronoun, leur never takes an s (leurs is only the possessive before a plural noun, as in leurs amis). Use these pronouns with verbs built with à + person, such as parler à, téléphoner à, donner à, dire à, demander à, répondre à, écrire à, envoyer à, plaire à and sourire à; verbs that take a direct object, such as regarder, aider, écouter, attendre and remercier, use le, la, les instead (je la regarde, but je lui parle). Me and te become m’ and t’ before a vowel, but lui and leur never change. The pronoun goes before the conjugated verb (je ne lui parle pas), before an infinitive (je vais leur répondre) and before the auxiliary in the passé composé (je lui ai écrit). The past participle never agrees with an indirect object.",
-  "example": "Ta mère ? Je lui téléphone ce soir. · Mes amis ? Je vais leur écrire. · Je ne lui ai pas répondu.",
-  "aside": "English often drops the to (I gave him the key, I phoned them), so check the French verb: if it is built with à + a person, use lui or leur.",
+  "guide": {
+    "summary": "These pronouns say to me, to you, to him or her, to us, to them in one short word placed in front of the verb. The work is knowing which French verbs need them and where exactly the word goes.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "Which pronoun for which person?",
+        "text": "An indirect object pronoun replaces à + a person. It swallows the à, so the à itself disappears from the sentence.",
+        "table": {
+          "columns": [
+            "à + person",
+            "Pronoun",
+            "Example"
+          ],
+          "rows": [
+            [
+              "à moi",
+              "me (m’)",
+              "Tu me téléphones."
+            ],
+            [
+              "à toi",
+              "te (t’)",
+              "Je t’écris."
+            ],
+            [
+              "à lui / à elle",
+              "lui",
+              "Je lui parle."
+            ],
+            [
+              "à nous",
+              "nous",
+              "Elle nous écrit."
+            ],
+            [
+              "à vous",
+              "vous",
+              "Je vous donne mon adresse."
+            ],
+            [
+              "à eux / à elles",
+              "leur",
+              "Je leur réponds."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the person hidden after à.",
+          "Take that person’s row.",
+          "Put the pronoun straight in front of the verb and drop the à."
+        ],
+        "examples": [
+          {
+            "fr": "Tu me téléphones demain ?",
+            "en": "Are you phoning me tomorrow?"
+          },
+          {
+            "fr": "Je vous donne mon adresse.",
+            "en": "I’m giving you my address."
+          }
+        ],
+        "watch": [
+          "Me and te lose their vowel before a vowel or a mute h: je t’envoie une photo.",
+          "Moi, toi, eux are stressed forms, used after à or alone; they never stand in front of the verb.",
+          "Lui and leur never elide: je lui ai écrit."
+        ]
+      },
+      {
+        "id": "lui-leur",
+        "title": "Lui or leur?",
+        "text": "Lui covers both him and her: French marks no gender here. Leur is simply its plural.",
+        "table": {
+          "columns": [
+            "Who you mean",
+            "Pronoun",
+            "Example"
+          ],
+          "rows": [
+            [
+              "one person (il or elle)",
+              "lui",
+              "Je lui téléphone."
+            ],
+            [
+              "several people (ils or elles)",
+              "leur",
+              "Je leur téléphone."
+            ]
+          ]
+        },
+        "steps": [
+          "Check the verb is built with à + a person.",
+          "Count the people behind à: one, or more than one?",
+          "Take that row and ignore gender."
+        ],
+        "examples": [
+          {
+            "fr": "Ta mère ? Je lui téléphone ce soir.",
+            "en": "Your mother? I’m phoning her tonight."
+          },
+          {
+            "fr": "Mes amis ? Je vais leur écrire.",
+            "en": "My friends? I’m going to write to them."
+          }
+        ],
+        "watch": [
+          "Elle lui parle can mean she is talking to a woman: lui is not only him.",
+          "As a pronoun, leur never takes an s, however many people it stands for."
+        ]
+      },
+      {
+        "id": "leur-vs-leurs",
+        "title": "Leur or leurs?",
+        "text": "Two different words look alike. What follows tells you which one you are writing.",
+        "table": {
+          "columns": [
+            "Word",
+            "What it is",
+            "Example"
+          ],
+          "rows": [
+            [
+              "leur + verb",
+              "pronoun: to them",
+              "Je leur parle."
+            ],
+            [
+              "leur + singular noun",
+              "possessive: their",
+              "leur maison"
+            ],
+            [
+              "leurs + plural noun",
+              "possessive: their",
+              "leurs clés"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the next word: a verb, or a noun?",
+          "Before a verb it is the pronoun, and the pronoun is invariable.",
+          "Only the possessive agrees, and only with a plural noun."
+        ],
+        "examples": [
+          {
+            "fr": "Je leur rends leurs clés.",
+            "en": "I’m giving them their keys back."
+          },
+          {
+            "fr": "Je leur téléphone souvent.",
+            "en": "I phone them often."
+          }
+        ],
+        "watch": [
+          "Je leurs téléphone is always wrong.",
+          "The two words sound the same, so only the spelling shows which one you meant."
+        ]
+      },
+      {
+        "id": "which-verbs",
+        "title": "Does the French verb take à?",
+        "text": "The pronoun follows the French verb, not the English one. English often drops the to: I phoned them, I gave him the key.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Built with",
+            "Pronoun"
+          ],
+          "rows": [
+            [
+              "parler à",
+              "à + person",
+              "lui / leur"
+            ],
+            [
+              "téléphoner à",
+              "à + person",
+              "lui / leur"
+            ],
+            [
+              "répondre à",
+              "à + person",
+              "lui / leur"
+            ],
+            [
+              "écrire à",
+              "à + person",
+              "lui / leur"
+            ],
+            [
+              "dire à",
+              "quelque chose à quelqu’un",
+              "lui / leur"
+            ],
+            [
+              "demander à",
+              "quelque chose à quelqu’un",
+              "lui / leur"
+            ],
+            [
+              "donner / envoyer à",
+              "quelque chose à quelqu’un",
+              "lui / leur"
+            ],
+            [
+              "plaire / sourire à",
+              "à + person",
+              "lui / leur"
+            ],
+            [
+              "regarder",
+              "direct object, no à",
+              "le / la / les"
+            ],
+            [
+              "écouter",
+              "direct object, no à",
+              "le / la / les"
+            ],
+            [
+              "aider",
+              "direct object, no à",
+              "le / la / les"
+            ],
+            [
+              "attendre",
+              "direct object, no à",
+              "le / la / les"
+            ],
+            [
+              "remercier",
+              "direct object, no à",
+              "le / la / les"
+            ],
+            [
+              "voir",
+              "direct object, no à",
+              "le / la / les"
+            ]
+          ]
+        },
+        "steps": [
+          "Say the French verb with a noun: does the person need à in front?",
+          "With à, take an indirect pronoun; with no à, take le, la or les.",
+          "Watch for a second à belonging to another verb: je l’aide à faire ses devoirs."
+        ],
+        "examples": [
+          {
+            "fr": "Je la regarde et je lui souris.",
+            "en": "I look at her and I smile at her."
+          },
+          {
+            "fr": "Je les remercie et je leur écris.",
+            "en": "I thank them and I write to them."
+          }
+        ],
+        "watch": [
+          "Téléphoner, répondre, plaire and sourire take à in French although English has no to.",
+          "Aider, attendre, écouter, regarder and remercier take no à, so an indirect pronoun is wrong with them.",
+          "Le and la become l’ before a vowel; lui and leur stay as they are."
+        ]
+      },
+      {
+        "id": "place",
+        "title": "Where does the pronoun go?",
+        "text": "The pronoun and its verb form one block. Nothing gets in between them.",
+        "table": {
+          "columns": [
+            "Sentence",
+            "Order",
+            "Example"
+          ],
+          "rows": [
+            [
+              "statement",
+              "pronoun + verb",
+              "Je lui parle."
+            ],
+            [
+              "negative",
+              "ne + pronoun + verb + pas",
+              "Je ne lui parle pas."
+            ],
+            [
+              "question",
+              "the same order as the statement",
+              "Tu lui parles ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the conjugated verb.",
+          "Put the pronoun immediately in front of it.",
+          "To negate, wrap ne…pas around that block: ne first, pas after the verb."
+        ],
+        "examples": [
+          {
+            "fr": "Elle ne nous répond pas.",
+            "en": "She doesn’t answer us."
+          },
+          {
+            "fr": "Tu leur écris souvent ?",
+            "en": "Do you write to them often?"
+          }
+        ],
+        "watch": [
+          "Je parle lui is wrong: the pronoun never follows the verb in a statement.",
+          "Ne goes before the pronoun, never between the pronoun and the verb."
+        ]
+      },
+      {
+        "id": "two-verbs",
+        "title": "Two verbs: which one gets the pronoun?",
+        "text": "With a conjugated verb plus an infinitive, the pronoun belongs to the verb it is the object of — almost always the infinitive.",
+        "table": {
+          "columns": [
+            "Sentence",
+            "Place of the pronoun",
+            "Example"
+          ],
+          "rows": [
+            [
+              "conjugated verb + infinitive",
+              "just before the infinitive",
+              "Je vais lui parler."
+            ],
+            [
+              "negative",
+              "ne…pas around the conjugated verb",
+              "Je ne vais pas lui parler."
+            ],
+            [
+              "question",
+              "the same order as the statement",
+              "Tu peux me répondre ?"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask which verb the pronoun is the object of: you speak to someone, you do not go to someone.",
+          "Place it directly in front of that verb.",
+          "Keep ne and pas around the conjugated verb only."
+        ],
+        "examples": [
+          {
+            "fr": "Je veux leur dire merci.",
+            "en": "I want to say thank you to them."
+          },
+          {
+            "fr": "Je ne vais pas lui téléphoner.",
+            "en": "I’m not going to phone him."
+          }
+        ],
+        "watch": [
+          "Je lui vais parler is wrong: the pronoun does not jump onto the first verb.",
+          "Nothing goes after the infinitive: parler lui is wrong too."
+        ]
+      },
+      {
+        "id": "passe-compose",
+        "title": "In the passé composé",
+        "text": "The pronoun goes in front of the auxiliary, and the participle never agrees with an indirect object.",
+        "table": {
+          "columns": [
+            "Sentence",
+            "Order",
+            "Example"
+          ],
+          "rows": [
+            [
+              "statement",
+              "pronoun + avoir + participle",
+              "Je lui ai écrit."
+            ],
+            [
+              "negative",
+              "ne + pronoun + avoir + pas + participle",
+              "Je ne lui ai pas écrit."
+            ],
+            [
+              "agreement",
+              "none with an indirect object",
+              "Marie ? Je lui ai écrit."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the auxiliary: ai, as, a, avons, avez, ont.",
+          "Put the pronoun immediately before it, and ne…pas around it if the sentence is negative.",
+          "Leave the participle alone: no e, no s."
+        ],
+        "examples": [
+          {
+            "fr": "Nous leur avons téléphoné.",
+            "en": "We phoned them."
+          },
+          {
+            "fr": "Tu lui as dit la vérité ?",
+            "en": "Did you tell her the truth?"
+          }
+        ],
+        "watch": [
+          "J’ai lui parlé is wrong: the pronoun comes before the auxiliary, and je then keeps its full form.",
+          "Je lui ai écrite is wrong even about a woman: an indirect object brings no agreement."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "lui-leur": {
+      "section": "lui-leur",
+      "steps": [
+        "Check that the verb is built with à + a person.",
+        "Count the people behind à: one, or several?",
+        "Take that row; the gender of the person changes nothing."
+      ]
+    },
+    "me-te-nous-vous": {
+      "section": "forms",
+      "steps": [
+        "Read the English cue: which person does to + pronoun point at?",
+        "Take that person’s row in the table.",
+        "Drop the vowel of me and te only in front of a verb beginning with a vowel, and never use a stressed form before the verb."
+      ]
+    },
+    "leur-no-s": {
+      "section": "leur-vs-leurs",
+      "steps": [
+        "Check that the verb is built with à + people.",
+        "Look at the word that follows: a verb means you are writing the pronoun.",
+        "Write the pronoun with no s: only the possessive before a plural noun takes one."
+      ]
+    },
+    "direct-vs-indirect": {
+      "section": "which-verbs",
+      "steps": [
+        "Say the French verb with a noun: does the person need à?",
+        "With à, use an indirect pronoun; with no à, use le, la or les.",
+        "Check whether a second à in the sentence belongs to another verb."
+      ]
+    },
+    "negation": {
+      "section": "place",
+      "steps": [
+        "Build the positive sentence first: pronoun immediately before the verb.",
+        "Put ne in front of the pronoun.",
+        "Put pas after the conjugated verb, never inside the pronoun-verb block."
+      ]
+    },
+    "infinitive": {
+      "section": "two-verbs",
+      "steps": [
+        "Decide which of the two verbs the pronoun is the object of.",
+        "Place it directly in front of that verb, usually the infinitive.",
+        "Negate the conjugated verb only: ne…pas goes around it."
+      ]
+    },
+    "passe-compose": {
+      "section": "passe-compose",
+      "steps": [
+        "Find the auxiliary and put the pronoun right before it.",
+        "For a negative, ne goes before the pronoun and pas after the auxiliary.",
+        "Leave the participle unchanged: an indirect object brings no agreement."
+      ]
+    }
+  },
   "exercises": [
     {
       "id": "indirect-object-lui-leur-1",
@@ -26,7 +489,28 @@
       ],
       "hint": "Parler takes à + a person, and your mother is one person.",
       "feedback": "La is a direct object, and leur is plural. Parler à needs the singular indirect pronoun.",
-      "explanation": "Lui replaces à + one person, man or woman: je lui parle."
+      "explanation": "Lui replaces à + one person, man or woman: je lui parle.",
+      "mistakes": [
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "La is a direct-object pronoun, the one for verbs that need no à. Parler is built with à + a person."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur is the plural form, for several people. Ta mère is one person."
+        },
+        {
+          "answers": [
+            "elle"
+          ],
+          "why": "Elle is a stressed pronoun: it stands after a preposition or alone, never in front of the verb."
+        }
+      ],
+      "row": "one person (il or elle)"
     },
     {
       "id": "indirect-object-lui-leur-2",
@@ -45,7 +529,23 @@
       ],
       "hint": "Plaire is built with à: the shoes are pleasing to Anna.",
       "feedback": "Plaire takes à + person, and Anna is one person.",
-      "explanation": "Plaire à takes an indirect object: elles lui plaisent, they are pleasing to her."
+      "explanation": "Plaire à takes an indirect object: elles lui plaisent, they are pleasing to her.",
+      "mistakes": [
+        {
+          "answers": [
+            "la",
+            "l’"
+          ],
+          "why": "La and l’ are direct-object forms, used by verbs that take the person with no à. Plaire is built with à."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur points at several people. Only Anna is concerned here, even though the shoes are plural."
+        }
+      ],
+      "row": "one person (il or elle)"
     },
     {
       "id": "indirect-object-lui-leur-3",
@@ -58,7 +558,28 @@
       ],
       "hint": "Téléphoner is built with à + person, and the pronoun goes before the verb.",
       "feedback": "The pronoun replaces à Paul, including à, and goes before téléphone.",
-      "explanation": "À Paul becomes lui, placed before the verb: je lui téléphone."
+      "explanation": "À Paul becomes lui, placed before the verb: je lui téléphone.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je téléphone lui."
+          ],
+          "why": "The pronoun never trails after the verb in a statement; it belongs immediately in front of the conjugated verb."
+        },
+        {
+          "answers": [
+            "Je téléphone à lui."
+          ],
+          "why": "The pronoun already contains the à, so you never write à again in front of it. À lui after the verb is an emphatic form."
+        },
+        {
+          "answers": [
+            "Je le téléphone."
+          ],
+          "why": "Le is a direct object, but téléphoner is built with à + a person."
+        }
+      ],
+      "row": "one person (il or elle)"
     },
     {
       "id": "indirect-object-lui-leur-4",
@@ -71,7 +592,34 @@
       ],
       "hint": "Au policier means à + le policier: one person.",
       "feedback": "Only au policier is replaced; le chemin stays after the verb.",
-      "explanation": "Demander quelque chose à quelqu’un: au policier becomes lui, before the verb: nous lui demandons le chemin."
+      "explanation": "Demander quelque chose à quelqu’un: au policier becomes lui, before the verb: nous lui demandons le chemin.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous lui demandons."
+          ],
+          "why": "Only à + the person is replaced. Le chemin is the thing you ask for and must stay after the verb."
+        },
+        {
+          "answers": [
+            "Nous demandons lui le chemin."
+          ],
+          "why": "The pronoun cannot sit after the verb; it goes in front of the conjugated verb."
+        },
+        {
+          "answers": [
+            "Nous leur demandons le chemin."
+          ],
+          "why": "Leur is for several people; the sentence names one policeman."
+        },
+        {
+          "answers": [
+            "Nous le demandons le chemin."
+          ],
+          "why": "Le is a direct object, and there is already a direct object here: le chemin. The person you ask is introduced by à."
+        }
+      ],
+      "row": "one person (il or elle)"
     },
     {
       "id": "indirect-object-lui-leur-5",
@@ -85,7 +633,31 @@
       ],
       "hint": "English hides the to: you give the key to her.",
       "feedback": "Donner is built with à + person, so her is not la here.",
-      "explanation": "You give something à quelqu’un, so her is lui: je lui donne la clé."
+      "explanation": "You give something à quelqu’un, so her is lui: je lui donne la clé.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je la donne la clé.",
+            "Je la donne la clef."
+          ],
+          "why": "La would make her the thing being given. The key is already the direct object; the person receiving it is introduced by à."
+        },
+        {
+          "answers": [
+            "Je donne la clé à elle.",
+            "Je donne la clef à elle."
+          ],
+          "why": "À elle after the verb is a stressed form kept for contrast. The plain sentence puts a short pronoun before donne."
+        },
+        {
+          "answers": [
+            "Je leur donne la clé.",
+            "Je leur donne la clef."
+          ],
+          "why": "Leur is for several people; the English her is one person."
+        }
+      ],
+      "row": "one person (il or elle)"
     },
     {
       "id": "indirect-object-lui-leur-6",
@@ -98,7 +670,35 @@
       ],
       "hint": "You send a message to Karim.",
       "feedback": "Envoyer is built with à + person. Lui never elides.",
-      "explanation": "Envoyer à takes lui: je lui envoie un message. Lui stays lui before a vowel."
+      "explanation": "Envoyer à takes lui: je lui envoie un message. Lui stays lui before a vowel.",
+      "mistakes": [
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "L’ is an elided direct-object form. Envoyer un message is built with à for the person receiving it, and that pronoun keeps its spelling."
+        },
+        {
+          "answers": [
+            "le",
+            "la"
+          ],
+          "why": "Le and la are direct objects, for verbs that take the person with no à."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur is for several people; Karim is one."
+        },
+        {
+          "answers": [
+            "à lui"
+          ],
+          "why": "The à is already inside the short pronoun, so it is never written again in front of the verb."
+        }
+      ],
+      "row": "one person (il or elle)"
     },
     {
       "id": "indirect-object-lui-leur-7",
@@ -117,7 +717,22 @@
       ],
       "hint": "Sourire is built with à + person.",
       "feedback": "Le is a direct object. Sourire à needs an indirect pronoun.",
-      "explanation": "Sourire à takes lui: elle lui sourit."
+      "explanation": "Sourire à takes lui: elle lui sourit.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle le sourit."
+          ],
+          "why": "Le is a direct object. Sourire is built with à: you smile to someone in French."
+        },
+        {
+          "answers": [
+            "Elle sourit."
+          ],
+          "why": "Dropping the pronoun loses à son fils: the sentence no longer says who she smiles at."
+        }
+      ],
+      "row": "one person (il or elle)"
     },
     {
       "id": "indirect-object-me-te-nous-vous-1",
@@ -136,7 +751,28 @@
       ],
       "hint": "To me before a verb that begins with a consonant.",
       "feedback": "Moi cannot go before the verb, and m’ is only for a vowel.",
-      "explanation": "Me is also the indirect form for to me: tu me téléphones demain ?"
+      "explanation": "Me is also the indirect form for to me: tu me téléphones demain ?",
+      "mistakes": [
+        {
+          "answers": [
+            "m’"
+          ],
+          "why": "The vowel is dropped only in front of a verb beginning with a vowel or a mute h. Téléphones begins with a consonant."
+        },
+        {
+          "answers": [
+            "moi"
+          ],
+          "why": "Moi is the stressed form, used after a preposition or alone; it cannot stand in front of the verb."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui means to him or to her. The cue says to me, which is the first person."
+        }
+      ],
+      "row": "à moi"
     },
     {
       "id": "indirect-object-me-te-nous-vous-2",
@@ -149,7 +785,29 @@
       ],
       "hint": "The formal you is the same as a direct and as an indirect object.",
       "feedback": "Write the formal pronoun before donne.",
-      "explanation": "Vous means to you as well as you: je vous donne mon adresse."
+      "explanation": "Vous means to you as well as you: je vous donne mon adresse.",
+      "mistakes": [
+        {
+          "answers": [
+            "te",
+            "t’"
+          ],
+          "why": "Te is the informal form, for someone you call tu. The instruction asks for the formal one."
+        },
+        {
+          "answers": [
+            "tu"
+          ],
+          "why": "Tu is a subject pronoun; it cannot be the object in front of donne."
+        },
+        {
+          "answers": [
+            "toi"
+          ],
+          "why": "Toi is the stressed form, used after à or alone, not before the verb."
+        }
+      ],
+      "row": "à vous"
     },
     {
       "id": "indirect-object-me-te-nous-vous-3",
@@ -163,7 +821,30 @@
       ],
       "hint": "To us is one word, placed before the verb.",
       "feedback": "No à is needed: the pronoun already means to us.",
-      "explanation": "Nous means to us and goes before écrit: elle nous écrit tous les mois."
+      "explanation": "Nous means to us and goes before écrit: elle nous écrit tous les mois.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle écrit à nous tous les mois.",
+            "Elle écrit à nous chaque mois."
+          ],
+          "why": "À nous after the verb is an emphatic form used for contrast; the ordinary pronoun goes in front of the verb."
+        },
+        {
+          "answers": [
+            "Elle écrit nous tous les mois."
+          ],
+          "why": "The object pronoun never follows the conjugated verb in a statement."
+        },
+        {
+          "answers": [
+            "Elle leur écrit tous les mois.",
+            "Elle leur écrit chaque mois."
+          ],
+          "why": "Leur means to them, a third party. The English says to us, which includes the speaker."
+        }
+      ],
+      "row": "à nous"
     },
     {
       "id": "indirect-object-me-te-nous-vous-4",
@@ -176,7 +857,28 @@
       ],
       "hint": "Moi is not the form that goes before a verb.",
       "feedback": "Before the verb, use the short form for to me.",
-      "explanation": "Before the verb, to me is me: il me dit bonjour."
+      "explanation": "Before the verb, to me is me: il me dit bonjour.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il moi dit bonjour."
+          ],
+          "why": "That is the sentence left as it is: moi is a stressed form and cannot stand in front of the verb."
+        },
+        {
+          "answers": [
+            "Il dit bonjour à moi."
+          ],
+          "why": "À moi after the verb is used only for emphasis or contrast; the neutral sentence puts a short pronoun before the verb."
+        },
+        {
+          "answers": [
+            "Il m’ dit bonjour."
+          ],
+          "why": "The vowel drops only before a vowel sound, and dit begins with a consonant."
+        }
+      ],
+      "row": "à moi"
     },
     {
       "id": "indirect-object-me-te-nous-vous-5",
@@ -189,7 +891,28 @@
       ],
       "hint": "Only the pronoun changes; it stays before the verb.",
       "feedback": "Replace lui with the pronoun for to me.",
-      "explanation": "Me replaces lui in the same place: il me parle."
+      "explanation": "Me replaces lui in the same place: il me parle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il moi parle."
+          ],
+          "why": "Moi is the stressed form, used after a preposition or alone, never in front of the verb."
+        },
+        {
+          "answers": [
+            "Il parle à moi."
+          ],
+          "why": "À moi after the verb sounds like contrast; the neutral sentence keeps a short pronoun before parle."
+        },
+        {
+          "answers": [
+            "Il te parle."
+          ],
+          "why": "Te means to you. The instruction asks for the person who is speaking about themselves."
+        }
+      ],
+      "row": "à moi"
     },
     {
       "id": "indirect-object-me-te-nous-vous-6",
@@ -210,7 +933,22 @@
       ],
       "hint": "Envoie begins with a vowel.",
       "feedback": "Te cannot stand before a vowel.",
-      "explanation": "Te becomes t’ before a vowel: je t’envoie une photo."
+      "explanation": "Te becomes t’ before a vowel: je t’envoie une photo.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je te envoie une photo."
+          ],
+          "why": "Envoie begins with a vowel, so the pronoun cannot keep its own vowel in front of it."
+        },
+        {
+          "answers": [
+            "Je envoie te une photo."
+          ],
+          "why": "The pronoun goes in front of the verb, not after it — and it loses its vowel before a verb starting with one."
+        }
+      ],
+      "row": "à toi"
     },
     {
       "id": "indirect-object-leur-no-s-1",
@@ -229,7 +967,28 @@
       ],
       "hint": "You read a story to the children.",
       "feedback": "Les is a direct object and lui is singular. The pronoun for to them never has an s.",
-      "explanation": "Lire quelque chose à quelqu’un: to them is leur, with no s: je leur lis une histoire."
+      "explanation": "Lire quelque chose à quelqu’un: to them is leur, with no s: je leur lis une histoire.",
+      "mistakes": [
+        {
+          "answers": [
+            "leurs"
+          ],
+          "why": "Leurs with an s is the possessive that goes before a plural noun, as in leurs livres. The word before a verb is a pronoun and takes no s."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is a direct object. Lire une histoire à quelqu’un puts the people after à."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui is for one person; les enfants are several."
+        }
+      ],
+      "row": "leur + verb"
     },
     {
       "id": "indirect-object-leur-no-s-2",
@@ -248,7 +1007,28 @@
       ],
       "hint": "The blank is the pronoun before the verb; leurs clés is a possessive.",
       "feedback": "The pronoun before the verb never takes an s, even for many people.",
-      "explanation": "Je leur rends leurs clés: leur is the pronoun (to them), leurs is the possessive before a plural noun."
+      "explanation": "Je leur rends leurs clés: leur is the pronoun (to them), leurs is the possessive before a plural noun.",
+      "mistakes": [
+        {
+          "answers": [
+            "leurs"
+          ],
+          "why": "Leurs with an s is exactly the word in leurs clés: a possessive before a plural noun. The blank sits before a verb, so it is a pronoun."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is a direct object, but rendre quelque chose à quelqu’un puts the people after à."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui refers to one person; les voisins are several."
+        }
+      ],
+      "row": "leur + verb"
     },
     {
       "id": "indirect-object-leur-no-s-3",
@@ -261,7 +1041,28 @@
       ],
       "hint": "Look closely at the pronoun’s spelling.",
       "feedback": "The pronoun for to them never takes an s.",
-      "explanation": "Leur is an invariable pronoun: je leur téléphone. Leurs exists only as a possessive."
+      "explanation": "Leur is an invariable pronoun: je leur téléphone. Leurs exists only as a possessive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mes amis ? Je leurs téléphone souvent."
+          ],
+          "why": "That is the sentence left as it is: the s belongs only to the possessive before a plural noun, never to a pronoun in front of a verb."
+        },
+        {
+          "answers": [
+            "Mes amis ? Je les téléphone souvent."
+          ],
+          "why": "Les is a direct object, but téléphoner is built with à + a person."
+        },
+        {
+          "answers": [
+            "Mes amis ? Je téléphone souvent."
+          ],
+          "why": "Deleting the word instead of correcting it loses the people: the sentence no longer says who you phone."
+        }
+      ],
+      "row": "leur + verb"
     },
     {
       "id": "indirect-object-leur-no-s-4",
@@ -274,7 +1075,34 @@
       ],
       "hint": "You say hello to your colleagues: more than one person.",
       "feedback": "Dire is built with à + person, and the pronoun is plural but has no s.",
-      "explanation": "Dire à takes the indirect pronoun: tu leur dis bonjour."
+      "explanation": "Dire à takes the indirect pronoun: tu leur dis bonjour.",
+      "mistakes": [
+        {
+          "answers": [
+            "leurs"
+          ],
+          "why": "The s belongs to the possessive that sits before a plural noun; a pronoun in front of a verb is invariable."
+        },
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is the direct-object form. Dire bonjour à quelqu’un puts the people after à."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui points at one person; tes collègues are several."
+        },
+        {
+          "answers": [
+            "eux"
+          ],
+          "why": "Eux is a stressed form, used after à or alone, not in front of a verb."
+        }
+      ],
+      "row": "leur + verb"
     },
     {
       "id": "indirect-object-leur-no-s-5",
@@ -290,7 +1118,30 @@
       ],
       "hint": "Téléphoner is built with à + person.",
       "feedback": "Them is not les here, and the pronoun has no s.",
-      "explanation": "Téléphoner à takes leur: nous leur téléphonons le dimanche."
+      "explanation": "Téléphoner à takes leur: nous leur téléphonons le dimanche.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous les téléphonons le dimanche.",
+            "On les téléphone le dimanche."
+          ],
+          "why": "Les is a direct object; in French you phone to someone, with à."
+        },
+        {
+          "answers": [
+            "Nous leurs téléphonons le dimanche.",
+            "On leurs téléphone le dimanche."
+          ],
+          "why": "The s belongs to the possessive before a plural noun; the pronoun before a verb never takes one."
+        },
+        {
+          "answers": [
+            "Nous téléphonons à eux le dimanche."
+          ],
+          "why": "À eux after the verb is a stressed form kept for contrast; the plain pronoun goes before the verb."
+        }
+      ],
+      "row": "leur + verb"
     },
     {
       "id": "indirect-object-leur-no-s-6",
@@ -303,7 +1154,34 @@
       ],
       "hint": "Aux étudiants means à + les étudiants.",
       "feedback": "The pronoun is plural, indirect and has no s.",
-      "explanation": "Répondre à takes an indirect object: aux étudiants becomes leur: le professeur leur répond."
+      "explanation": "Répondre à takes an indirect object: aux étudiants becomes leur: le professeur leur répond.",
+      "mistakes": [
+        {
+          "answers": [
+            "Le professeur les répond."
+          ],
+          "why": "Les is a direct object; répondre is built with à + a person."
+        },
+        {
+          "answers": [
+            "Le professeur leurs répond."
+          ],
+          "why": "The pronoun is invariable: that s exists only on the possessive before a plural noun."
+        },
+        {
+          "answers": [
+            "Le professeur répond à eux."
+          ],
+          "why": "À eux after the verb is emphatic; the ordinary sentence puts a short pronoun in front of the verb."
+        },
+        {
+          "answers": [
+            "Le professeur lui répond."
+          ],
+          "why": "Lui is for one person; the students are several."
+        }
+      ],
+      "row": "leur + verb"
     },
     {
       "id": "indirect-object-direct-vs-indirect-1",
@@ -322,7 +1200,28 @@
       ],
       "hint": "In French you help someone directly, with no à.",
       "feedback": "Aider takes a direct object, and aide begins with a vowel.",
-      "explanation": "Aider takes a direct object, and la becomes l’ before the vowel: je l’aide à faire ses devoirs. The à here goes with faire, not with ma sœur."
+      "explanation": "Aider takes a direct object, and la becomes l’ before the vowel: je l’aide à faire ses devoirs. The à here goes with faire, not with ma sœur.",
+      "mistakes": [
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui replaces à + a person, but aider takes its object directly: on aide quelqu’un, with no à. The à here belongs to faire."
+        },
+        {
+          "answers": [
+            "la"
+          ],
+          "why": "That is the right kind of pronoun, but aide begins with a vowel, so the a cannot survive in front of it."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur is indirect and plural; aider needs no à, and ma sœur is one person."
+        }
+      ],
+      "row": "aider"
     },
     {
       "id": "indirect-object-direct-vs-indirect-2",
@@ -341,7 +1240,23 @@
       ],
       "hint": "You ask something of someone: demander quelque chose à quelqu’un.",
       "feedback": "Demander is built with à + person, and your brother is one person.",
-      "explanation": "Demander à takes an indirect object: je lui demande de l’aide."
+      "explanation": "Demander à takes an indirect object: je lui demande de l’aide.",
+      "mistakes": [
+        {
+          "answers": [
+            "le",
+            "l’"
+          ],
+          "why": "Le and l’ are direct-object forms, but demander is built with à: you ask something of someone."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur is the plural form; mon frère is one person."
+        }
+      ],
+      "row": "demander à"
     },
     {
       "id": "indirect-object-direct-vs-indirect-3",
@@ -354,7 +1269,28 @@
       ],
       "hint": "Téléphoner is built with à + person.",
       "feedback": "La is a direct object; téléphoner needs an indirect one.",
-      "explanation": "Téléphoner à takes lui for her: je lui téléphone."
+      "explanation": "Téléphoner à takes lui for her: je lui téléphone.",
+      "mistakes": [
+        {
+          "answers": [
+            "Julie ? Je la téléphone ce soir."
+          ],
+          "why": "That is the sentence left as it is: la is a direct object, and téléphoner is built with à + a person."
+        },
+        {
+          "answers": [
+            "Julie ? Je téléphone à elle ce soir."
+          ],
+          "why": "À elle after the verb is a stressed form used for contrast; the neutral sentence puts a short pronoun in front of the verb."
+        },
+        {
+          "answers": [
+            "Julie ? Je leur téléphone ce soir."
+          ],
+          "why": "Leur is for several people; Julie is one."
+        }
+      ],
+      "row": "téléphoner à"
     },
     {
       "id": "indirect-object-direct-vs-indirect-4",
@@ -367,7 +1303,28 @@
       ],
       "hint": "Attendre means to wait for, with no à in French.",
       "feedback": "Attendre takes a direct object, so lui is wrong.",
-      "explanation": "Attendre takes a direct object: le becomes l’ before the vowel: je l’attends."
+      "explanation": "Attendre takes a direct object: le becomes l’ before the vowel: je l’attends.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mon chef ? Je lui attends."
+          ],
+          "why": "That is the sentence left as it is: attendre means to wait for and takes its object with no à, so an indirect pronoun cannot be used."
+        },
+        {
+          "answers": [
+            "Mon chef ? Je le attends."
+          ],
+          "why": "The right kind of pronoun, but it must lose its vowel in front of a verb beginning with one."
+        },
+        {
+          "answers": [
+            "Mon chef ? J’attends lui."
+          ],
+          "why": "The pronoun never follows the verb in a statement, and lui would be indirect anyway."
+        }
+      ],
+      "row": "attendre"
     },
     {
       "id": "indirect-object-direct-vs-indirect-5",
@@ -380,7 +1337,28 @@
       ],
       "hint": "In French you thank someone directly, with no à.",
       "feedback": "Remercier takes a direct object, so leur is wrong.",
-      "explanation": "Remercier takes a direct object: je les remercie."
+      "explanation": "Remercier takes a direct object: je les remercie.",
+      "mistakes": [
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur replaces à + people, but remercier takes its object directly: on remercie quelqu’un, with no à."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui is indirect and singular; remercier needs no à, and mes parents are two people."
+        },
+        {
+          "answers": [
+            "eux"
+          ],
+          "why": "Eux is a stressed form, used after a preposition or alone; it cannot stand in front of a verb."
+        }
+      ],
+      "row": "remercier"
     },
     {
       "id": "indirect-object-direct-vs-indirect-6",
@@ -393,7 +1371,28 @@
       ],
       "hint": "Répondre is built with à + person.",
       "feedback": "Répondre à needs the indirect pronoun, not les.",
-      "explanation": "Répondre à takes an indirect object: je leur réponds."
+      "explanation": "Répondre à takes an indirect object: je leur réponds.",
+      "mistakes": [
+        {
+          "answers": [
+            "les"
+          ],
+          "why": "Les is the direct-object pronoun, but répondre is built with à: you answer to someone."
+        },
+        {
+          "answers": [
+            "lui"
+          ],
+          "why": "Lui is for one person; mes parents are two."
+        },
+        {
+          "answers": [
+            "leurs"
+          ],
+          "why": "That s belongs to the possessive before a plural noun; the pronoun before a verb is invariable."
+        }
+      ],
+      "row": "répondre à"
     },
     {
       "id": "indirect-object-direct-vs-indirect-7",
@@ -407,7 +1406,33 @@
       ],
       "hint": "The two verbs take different kinds of object.",
       "feedback": "Voir takes a direct object; parler is built with à.",
-      "explanation": "Voir takes la, parler à takes lui: je la vois et je lui parle."
+      "explanation": "Voir takes la, parler à takes lui: je la vois et je lui parle.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je lui vois et je la parle."
+          ],
+          "why": "The two pronouns are swapped: one of these verbs takes its person directly, the other needs à."
+        },
+        {
+          "answers": [
+            "Je la vois et je la parle."
+          ],
+          "why": "Parler is never followed by a direct-object pronoun: you speak à someone."
+        },
+        {
+          "answers": [
+            "Je la vois et je parle à elle."
+          ],
+          "why": "À elle after the verb is emphatic. The everyday sentence uses a short pronoun in front of parle."
+        },
+        {
+          "answers": [
+            "Je la vois et je leur parle."
+          ],
+          "why": "Leur is plural; the English says her, one person."
+        }
+      ]
     },
     {
       "id": "indirect-object-direct-vs-indirect-8",
@@ -429,7 +1454,21 @@
       ],
       "hint": "Regarder takes a direct object; sourire is built with à.",
       "feedback": "Swap the pronouns: which verb has no à?",
-      "explanation": "Regarder takes le, sourire à takes lui: je le regarde et je lui souris."
+      "explanation": "Regarder takes le, sourire à takes lui: je le regarde et je lui souris.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je lui regarde et je le souris."
+          ],
+          "why": "The pronouns are the wrong way round: one of these verbs takes its person with no à, the other is built with à."
+        },
+        {
+          "answers": [
+            "Je regarde le et je lui souris."
+          ],
+          "why": "An object pronoun goes in front of its verb, never after it."
+        }
+      ]
     },
     {
       "id": "indirect-object-negation-1",
@@ -448,7 +1487,28 @@
       ],
       "hint": "The pronoun stays glued to the verb; ne goes in front of both.",
       "feedback": "Ne comes before lui, and pas after parle.",
-      "explanation": "Ne + lui + verb + pas: je ne lui parle pas."
+      "explanation": "Ne + lui + verb + pas: je ne lui parle pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne parle pas lui."
+          ],
+          "why": "Ne…pas closes around the verb only. The pronoun stays glued in front of the verb, inside the negation."
+        },
+        {
+          "answers": [
+            "Je ne parle lui pas."
+          ],
+          "why": "The pronoun must touch its verb and come before it, not sit between the verb and pas."
+        },
+        {
+          "answers": [
+            "Ne je lui parle pas."
+          ],
+          "why": "Ne never comes before the subject: the subject opens the sentence."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "indirect-object-negation-2",
@@ -461,7 +1521,28 @@
       ],
       "hint": "The pronoun must touch the verb.",
       "feedback": "Move lui so it comes directly before répond.",
-      "explanation": "Ne + pronoun + verb + pas: elle ne lui répond pas."
+      "explanation": "Ne + pronoun + verb + pas: elle ne lui répond pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elle ne répond lui pas."
+          ],
+          "why": "That is the sentence left as it is, with the pronoun stranded between the verb and pas."
+        },
+        {
+          "answers": [
+            "Elle ne répond pas lui."
+          ],
+          "why": "Pushing the pronoun after pas leaves it outside the block it belongs to; it must sit directly before the verb."
+        },
+        {
+          "answers": [
+            "Elle lui ne répond pas."
+          ],
+          "why": "Ne opens the negation and comes first, before the object pronoun."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "indirect-object-negation-3",
@@ -480,7 +1561,28 @@
       ],
       "hint": "Ne comes first, and téléphoner is built with à.",
       "feedback": "Ne goes before the pronoun, and the pronoun for to them has no s.",
-      "explanation": "Ne + leur + verb + pas: nous ne leur téléphonons pas."
+      "explanation": "Ne + leur + verb + pas: nous ne leur téléphonons pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "leur ne"
+          ],
+          "why": "Ne comes first, right after the subject; the pronoun follows it."
+        },
+        {
+          "answers": [
+            "ne les"
+          ],
+          "why": "Les is a direct-object form, but téléphoner is built with à + a person."
+        },
+        {
+          "answers": [
+            "ne leurs"
+          ],
+          "why": "That s belongs to the possessive before a plural noun; an object pronoun never takes one."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "indirect-object-negation-4",
@@ -493,7 +1595,29 @@
       ],
       "hint": "The pronoun goes between ne and the verb.",
       "feedback": "Order: ne, pronoun, verb, pas.",
-      "explanation": "Ne + nous + écrit + pas: il ne nous écrit pas."
+      "explanation": "Ne + nous + écrit + pas: il ne nous écrit pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il nous ne écrit pas.",
+            "Il nous n’écrit pas."
+          ],
+          "why": "Ne comes before the pronoun, not between the pronoun and the verb."
+        },
+        {
+          "answers": [
+            "Il n’écrit pas à nous."
+          ],
+          "why": "À nous after a negative verb sounds like contrast; the plain pronoun belongs in front of the verb, inside ne…pas."
+        },
+        {
+          "answers": [
+            "Il ne leur écrit pas."
+          ],
+          "why": "Leur means to them, a third party; the English says to us."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "indirect-object-negation-5",
@@ -514,7 +1638,28 @@
       ],
       "hint": "Répondre is built with à + person.",
       "feedback": "Les is a direct object. Répondre needs the indirect pronoun.",
-      "explanation": "Répondre à takes leur, placed between ne and the verb: je ne leur réponds pas."
+      "explanation": "Répondre à takes leur, placed between ne and the verb: je ne leur réponds pas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne les réponds pas."
+          ],
+          "why": "Les is a direct object, but répondre is built with à + a person."
+        },
+        {
+          "answers": [
+            "Je ne réponds leur pas."
+          ],
+          "why": "The pronoun must sit directly in front of the verb, not between the verb and pas."
+        },
+        {
+          "answers": [
+            "Je ne réponds pas."
+          ],
+          "why": "Without a pronoun the sentence no longer says who is getting no answer."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "indirect-object-infinitive-1",
@@ -527,7 +1672,34 @@
       ],
       "hint": "You talk to the director; you do not go to him.",
       "feedback": "The pronoun belongs to parler, so it goes before the infinitive.",
-      "explanation": "Lui belongs to parler and goes before it: je vais lui parler."
+      "explanation": "Lui belongs to parler and goes before it: je vais lui parler.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je lui vais parler."
+          ],
+          "why": "The pronoun is the object of the second verb, so it cannot jump in front of vais."
+        },
+        {
+          "answers": [
+            "Je vais parler lui."
+          ],
+          "why": "The pronoun never follows its verb; it goes in front of the verb it belongs to."
+        },
+        {
+          "answers": [
+            "Je vais parler à lui."
+          ],
+          "why": "Keeping à lui after the verb makes an emphatic form; replacing au directeur means the à disappears into the pronoun."
+        },
+        {
+          "answers": [
+            "Je vais leur parler."
+          ],
+          "why": "Leur is plural; the director is one person."
+        }
+      ],
+      "row": "conjugated verb + infinitive"
     },
     {
       "id": "indirect-object-infinitive-2",
@@ -540,7 +1712,28 @@
       ],
       "hint": "Which verb is the pronoun the object of?",
       "feedback": "Move lui in front of the infinitive.",
-      "explanation": "Lui belongs to téléphoner, so it goes before the infinitive: je vais lui téléphoner."
+      "explanation": "Lui belongs to téléphoner, so it goes before the infinitive: je vais lui téléphoner.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je lui vais téléphoner."
+          ],
+          "why": "That is the sentence left as it is: the pronoun is standing in front of the wrong verb."
+        },
+        {
+          "answers": [
+            "Je vais téléphoner lui."
+          ],
+          "why": "The pronoun goes in front of the verb it is the object of, never after the infinitive."
+        },
+        {
+          "answers": [
+            "Je vais téléphoner à lui."
+          ],
+          "why": "À lui after the verb is an emphatic form; the ordinary sentence puts a short pronoun in front of the infinitive."
+        }
+      ],
+      "row": "conjugated verb + infinitive"
     },
     {
       "id": "indirect-object-infinitive-3",
@@ -559,7 +1752,28 @@
       ],
       "hint": "You say thank you to your parents.",
       "feedback": "Dire is built with à + person, and the pronoun goes right before dire.",
-      "explanation": "Leur belongs to dire and goes before it: je veux leur dire merci."
+      "explanation": "Leur belongs to dire and goes before it: je veux leur dire merci.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je leur veux dire merci."
+          ],
+          "why": "The pronoun has jumped in front of veux, but it is not the object of wanting: it belongs to the verb of saying."
+        },
+        {
+          "answers": [
+            "Je veux les dire merci."
+          ],
+          "why": "Les is a direct object, but dire merci à quelqu’un puts the people after à."
+        },
+        {
+          "answers": [
+            "Je veux dire leur merci."
+          ],
+          "why": "Placed after the infinitive, that word reads as a possessive (their thanks). An object pronoun goes in front of its verb."
+        }
+      ],
+      "row": "conjugated verb + infinitive"
     },
     {
       "id": "indirect-object-infinitive-4",
@@ -574,7 +1788,28 @@
       ],
       "hint": "Me belongs to answer, not to can.",
       "feedback": "Put the pronoun just before the infinitive.",
-      "explanation": "Me goes before the infinitive répondre: tu peux me répondre ?"
+      "explanation": "Me goes before the infinitive répondre: tu peux me répondre ?",
+      "mistakes": [
+        {
+          "answers": [
+            "Tu peux répondre-moi ?"
+          ],
+          "why": "A pronoun hyphenated after the verb belongs to commands (réponds-moi), not to a sentence with peux."
+        },
+        {
+          "answers": [
+            "Tu me peux répondre ?"
+          ],
+          "why": "The pronoun is the object of answering, not of being able, so it cannot stand in front of peux."
+        },
+        {
+          "answers": [
+            "Tu peux répondre à moi ?"
+          ],
+          "why": "À moi after the verb is a stressed form used for contrast; a short pronoun goes in front of the infinitive."
+        }
+      ],
+      "row": "question"
     },
     {
       "id": "indirect-object-infinitive-5",
@@ -587,7 +1822,29 @@
       ],
       "hint": "You give a book to your sister.",
       "feedback": "Donner is built with à + person, and your sister is one person.",
-      "explanation": "Lui goes before the infinitive donner: je vais lui donner un livre."
+      "explanation": "Lui goes before the infinitive donner: je vais lui donner un livre.",
+      "mistakes": [
+        {
+          "answers": [
+            "le",
+            "la"
+          ],
+          "why": "Le and la are direct objects, but donner un livre is built with à for the person receiving it."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur is for several people; ta sœur is one."
+        },
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "L’ is an elided direct-object form; the pronoun needed here is indirect, and it never elides."
+        }
+      ],
+      "row": "conjugated verb + infinitive"
     },
     {
       "id": "indirect-object-infinitive-6",
@@ -606,7 +1863,28 @@
       ],
       "hint": "The negation goes around the conjugated verb, vais.",
       "feedback": "Leur stays before répondre. Ne and pas surround vais.",
-      "explanation": "Ne…pas surrounds vais, and leur stays before the infinitive: je ne vais pas leur répondre."
+      "explanation": "Ne…pas surrounds vais, and leur stays before the infinitive: je ne vais pas leur répondre.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne leur vais pas répondre."
+          ],
+          "why": "Ne…pas wraps the conjugated verb, and the pronoun stays with the verb it is the object of."
+        },
+        {
+          "answers": [
+            "Je ne vais leur pas répondre."
+          ],
+          "why": "Pas comes straight after the conjugated verb; nothing may stand between them."
+        },
+        {
+          "answers": [
+            "Je vais ne pas leur répondre."
+          ],
+          "why": "Ne pas in front of an infinitive is a different construction, about deciding not to. Here the negation belongs around the conjugated verb."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "indirect-object-passe-compose-1",
@@ -619,7 +1897,34 @@
       ],
       "hint": "In the passé composé the pronoun goes before the auxiliary. Lui never elides.",
       "feedback": "Put lui before ai, and check whether écrit changes.",
-      "explanation": "Lui goes before the auxiliary: je lui ai écrit. The participle does not agree with an indirect object."
+      "explanation": "Lui goes before the auxiliary: je lui ai écrit. The participle does not agree with an indirect object.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai lui écrit."
+          ],
+          "why": "In the passé composé the pronoun does not slip between the auxiliary and the participle; it opens the verb group, and je then keeps its full form."
+        },
+        {
+          "answers": [
+            "Je lui ai écrite."
+          ],
+          "why": "The final e is a feminine agreement. A participle agrees with a direct object placed before the verb, and there is none here."
+        },
+        {
+          "answers": [
+            "J’ai écrit à elle."
+          ],
+          "why": "À elle after the verb is an emphatic form; replacing à Marie means the à disappears into the pronoun."
+        },
+        {
+          "answers": [
+            "Je leur ai écrit."
+          ],
+          "why": "Leur is plural; Marie is one person."
+        }
+      ],
+      "row": "statement"
     },
     {
       "id": "indirect-object-passe-compose-2",
@@ -632,7 +1937,34 @@
       ],
       "hint": "Répondre is built with à, and parents are more than one person.",
       "feedback": "The pronoun goes before the auxiliary a.",
-      "explanation": "Leur goes before the auxiliary: il leur a répondu."
+      "explanation": "Leur goes before the auxiliary: il leur a répondu.",
+      "mistakes": [
+        {
+          "answers": [
+            "Il a leur répondu."
+          ],
+          "why": "The pronoun goes in front of the whole verb group, not between the auxiliary and the participle."
+        },
+        {
+          "answers": [
+            "Il les a répondu."
+          ],
+          "why": "Les is a direct object; répondre is built with à + a person."
+        },
+        {
+          "answers": [
+            "Il leurs a répondu."
+          ],
+          "why": "That s belongs to the possessive before a plural noun; an object pronoun is invariable."
+        },
+        {
+          "answers": [
+            "Il lui a répondu."
+          ],
+          "why": "Lui is for one person; ses parents are several."
+        }
+      ],
+      "row": "statement"
     },
     {
       "id": "indirect-object-passe-compose-3",
@@ -645,7 +1977,28 @@
       ],
       "hint": "In the passé composé, the pronoun does not follow the auxiliary.",
       "feedback": "Move lui before the auxiliary; the subject then changes back to its full form.",
-      "explanation": "The pronoun goes before the auxiliary: je lui ai parlé."
+      "explanation": "The pronoun goes before the auxiliary: je lui ai parlé.",
+      "mistakes": [
+        {
+          "answers": [
+            "J’ai lui parlé hier."
+          ],
+          "why": "That is the sentence left as it is: the pronoun cannot sit between the auxiliary and the participle."
+        },
+        {
+          "answers": [
+            "J’ai parlé à lui hier."
+          ],
+          "why": "À lui after the verb is an emphatic form; the everyday sentence puts a short pronoun in front of the verb group."
+        },
+        {
+          "answers": [
+            "Je l’ai parlé hier."
+          ],
+          "why": "L’ is a direct object, but parler is built with à + a person."
+        }
+      ],
+      "row": "statement"
     },
     {
       "id": "indirect-object-passe-compose-4",
@@ -658,7 +2011,28 @@
       ],
       "hint": "Does a participle agree with an indirect object?",
       "feedback": "Lui is an indirect object, so the participle keeps its basic form.",
-      "explanation": "The participle never agrees with an indirect object: je lui ai écrit, even when lui means her."
+      "explanation": "The participle never agrees with an indirect object: je lui ai écrit, even when lui means her.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sophie ? Je lui ai écrite."
+          ],
+          "why": "That is the sentence left as it is: the final e adds a feminine agreement, and the person written to never triggers one."
+        },
+        {
+          "answers": [
+            "Sophie ? Je l’ai écrite."
+          ],
+          "why": "L’ would make Sophie a direct object, but écrire is built with à + a person — and the agreement still does not belong."
+        },
+        {
+          "answers": [
+            "Sophie ? Je lui ai écrits."
+          ],
+          "why": "An s adds a plural agreement instead of the feminine one; no agreement of any kind belongs here."
+        }
+      ],
+      "row": "agreement"
     },
     {
       "id": "indirect-object-passe-compose-5",
@@ -671,7 +2045,34 @@
       ],
       "hint": "Ne and pas surround the auxiliary; the pronoun stays in front of it.",
       "feedback": "Order: ne, pronoun, auxiliary, pas, participle.",
-      "explanation": "Ne + lui + ai + pas + écrit: je ne lui ai pas écrit."
+      "explanation": "Ne + lui + ai + pas + écrit: je ne lui ai pas écrit.",
+      "mistakes": [
+        {
+          "answers": [
+            "Je ne lui ai pas écrite."
+          ],
+          "why": "The final e is a feminine agreement; the participle does not agree with the person you write to."
+        },
+        {
+          "answers": [
+            "Je lui n’ai pas écrit."
+          ],
+          "why": "Ne comes before the pronoun, not between the pronoun and the auxiliary."
+        },
+        {
+          "answers": [
+            "Je ne l’ai pas écrit."
+          ],
+          "why": "L’ is a direct object, but écrire is built with à + a person."
+        },
+        {
+          "answers": [
+            "Je n’ai pas lui écrit."
+          ],
+          "why": "The pronoun opens the verb group; it never stands between pas and the participle."
+        }
+      ],
+      "row": "negative"
     },
     {
       "id": "indirect-object-passe-compose-6",
@@ -690,7 +2091,28 @@
       ],
       "hint": "You send something to your friends, and the pronoun goes before the auxiliary.",
       "feedback": "Envoyer is built with à + person; the pronoun has no s and comes before ai.",
-      "explanation": "Leur goes before the auxiliary: je leur ai envoyé une invitation."
+      "explanation": "Leur goes before the auxiliary: je leur ai envoyé une invitation.",
+      "mistakes": [
+        {
+          "answers": [
+            "ai leur"
+          ],
+          "why": "The auxiliary cannot come first: the pronoun opens the verb group, in front of it."
+        },
+        {
+          "answers": [
+            "les ai"
+          ],
+          "why": "Les is a direct object, but envoyer une invitation is built with à for the people who receive it."
+        },
+        {
+          "answers": [
+            "leurs ai"
+          ],
+          "why": "That s belongs to the possessive before a plural noun; an object pronoun never takes one."
+        }
+      ],
+      "row": "statement"
     },
     {
       "id": "indirect-object-passe-compose-7",
@@ -703,7 +2125,29 @@
       ],
       "hint": "You tell the truth to your mother.",
       "feedback": "Dire is built with à + person, and lui never elides before as.",
-      "explanation": "Lui goes before the auxiliary: tu lui as dit la vérité ?"
+      "explanation": "Lui goes before the auxiliary: tu lui as dit la vérité ?",
+      "mistakes": [
+        {
+          "answers": [
+            "l’"
+          ],
+          "why": "L’ is an elided direct-object form; dire la vérité is built with à for the person told, and that pronoun keeps its spelling before as."
+        },
+        {
+          "answers": [
+            "le",
+            "la"
+          ],
+          "why": "Le and la are direct objects, but dire quelque chose à quelqu’un puts the person after à."
+        },
+        {
+          "answers": [
+            "leur"
+          ],
+          "why": "Leur is for several people; ta mère is one."
+        }
+      ],
+      "row": "statement"
     },
     {
       "id": "indirect-object-passe-compose-8",
@@ -723,7 +2167,28 @@
       ],
       "hint": "Téléphoner is built with à + person.",
       "feedback": "Les is a direct object. Téléphoner needs the indirect pronoun, before the auxiliary.",
-      "explanation": "Leur goes before the auxiliary: nous leur avons téléphoné."
+      "explanation": "Leur goes before the auxiliary: nous leur avons téléphoné.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nous les avons téléphoné."
+          ],
+          "why": "Les is a direct object; téléphoner is built with à + a person."
+        },
+        {
+          "answers": [
+            "Nous avons leur téléphoné."
+          ],
+          "why": "The pronoun cannot sit between the auxiliary and the participle; it opens the verb group."
+        },
+        {
+          "answers": [
+            "Nous avons téléphoné."
+          ],
+          "why": "Without a pronoun the sentence no longer says who was phoned."
+        }
+      ],
+      "row": "statement"
     }
   ]
 }
