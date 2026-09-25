@@ -116,6 +116,8 @@ for index, word in enumerate(pending, 1):
     wav = AUDIO / f"{word['id']}.context.wav"
     trimmed = AUDIO / f"{word['id']}.trim.wav"
     final = AUDIO / f"{word['id']}.mp3"
+    fallback_wav = AUDIO / f"{word['id']}.fallback.wav"
+    chosen = fallback = None
     for carrier, seed in [(lead, seed) for lead in carriers for seed in map(int, args.seeds.split(','))]:
         text = carrier + word['fr'].strip().rstrip('.!?') + '.'
         mx.random.seed(seed)
@@ -177,16 +179,32 @@ for index, word in enumerate(pending, 1):
         fade = min(len(clip), sample_rate // 200)
         clip[:fade] *= np.linspace(0, 1, fade, dtype=np.float32)
         save_wav(trimmed, clip, sample_rate)
+        # The sentence can check out while the cut still clips the word (fatal heard as "tal"): the cut clip must be
+        # heard as the word too. A take that fails this is kept as a fallback in case no take passes.
+        isolated = transcribe(trimmed).get('text', '').strip()
+        heard = normalize(isolated) == normalize(word['fr']) or (isolated and phonemes(isolated) == phonemes(sounds_like(word)))
+        entry = {'text': word['fr'], 'signature': signature(word), 'model': MODEL, 'pipeline': PIPELINE, 'alignment': 'pause-after-carrier', 'carrier': carrier, 'seconds': round(len(clip) / sample_rate, 3), 'trimStart': round(cut, 3), 'pauseMs': (pause[1] - pause[0]) * 10, 'fullSeconds': round(len(pcm) / sample_rate, 3), 'transcript': transcript, 'isolatedTranscript': isolated, 'check': 'text' if exact else 'phonetic', 'cutCheck': 'heard' if heard else 'unconfirmed', 'seed': seed, 'renderSeconds': round(time.monotonic() - started, 2)}
+        if not heard:
+            errors.append({'seed': seed, 'carrier': carrier, 'isolatedTranscript': isolated, 'error': 'Cut clip not heard as the word'})
+            if fallback is None:
+                trimmed.replace(fallback_wav)
+                fallback = entry
+            continue
+        chosen = entry
+        break
+    if chosen is None and fallback is not None:
+        chosen = fallback
+        fallback_wav.replace(trimmed)
+    if chosen is not None:
         temporary = AUDIO / f"{word['id']}.tmp.mp3"
         subprocess.run(['/opt/homebrew/bin/ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(trimmed), '-codec:a', 'libmp3lame', '-b:a', '96k', str(temporary)], check=True)
         temporary.replace(final)
-        isolated = transcribe(trimmed).get('text', '').strip()
-        manifest[word['id']] = {'text': word['fr'], 'signature': signature(word), 'model': MODEL, 'pipeline': PIPELINE, 'alignment': 'pause-after-carrier', 'carrier': carrier, 'seconds': round(len(clip) / sample_rate, 3), 'trimStart': round(cut, 3), 'pauseMs': (pause[1] - pause[0]) * 10, 'fullSeconds': round(len(pcm) / sample_rate, 3), 'transcript': transcript, 'isolatedTranscript': isolated, 'check': 'text' if exact else 'phonetic', 'seed': seed, 'renderSeconds': round(time.monotonic() - started, 2)}
+        manifest[word['id']] = chosen
         if not args.keep_context:
             wav.unlink(missing_ok=True)
         trimmed.unlink(missing_ok=True)
-        print(json.dumps({'done': index, 'total': len(pending), 'id': word['id'], **manifest[word['id']]}), flush=True)
-        break
+        fallback_wav.unlink(missing_ok=True)
+        print(json.dumps({'done': index, 'total': len(pending), 'id': word['id'], **chosen}), flush=True)
     else:
         # Keep the previous clip when no seed gives a clean cut: an older recording beats a missing one.
         failures.append({'id': word['id'], 'text': word['fr'], 'attempts': errors})
