@@ -18,7 +18,8 @@ export type WordFacts = {
 // note, when set, is a correction added to a second question about the same form.
 export type LyricForm = { form: string; lines: string[]; capitalised: boolean; note?: string };
 // A word to offer: fr is the dictionary form in the deck's style; existing names the deck word it already is.
-export type SongCandidate = { fr: string; en: string; note: string; pos: string; forms: string[]; existing: string | null };
+// little: every form is one of the little words below (le, de, pas…); those start unticked in the review.
+export type SongCandidate = { fr: string; en: string; note: string; pos: string; forms: string[]; existing: string | null; little?: boolean };
 export type SongSkip = { form: string; reason: string };
 
 const LETTERS = "a-zA-ZÀ-ÖØ-öø-ÿœŒæÆ";

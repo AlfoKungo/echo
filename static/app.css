@@ -91,7 +91,9 @@ a.destination{color:inherit;text-decoration:none}.destination .symbol svg{displa
 .st-legend i.know{background:var(--violet)}.st-legend i.learning{background:var(--violet);opacity:.38}
 .st-legend b{color:var(--ink);font-weight:550;margin-right:4px}
 .st-bin{margin-top:14px;border-top:1px solid var(--frame)}
-.st-bin-head{font-size:13px;color:var(--muted);padding:10px 2px 0}
+.st-bin-head{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;font-size:14px;color:var(--muted);padding:10px 2px;text-align:left}
+.st-bin-head .chev{transition:transform .18s;color:var(--violet)}
+.st-bin-head[aria-expanded=true] .chev{transform:rotate(180deg)}
 .st-bin ol{list-style:none;margin:0;padding:0}
 .st-bin li{display:flex;justify-content:space-between;gap:12px;padding:10px 2px;border-bottom:1px solid var(--frame);font-size:15px}
 .st-bin .fr{font-weight:500}.st-bin .en{color:var(--muted);text-align:right;font-size:14px}

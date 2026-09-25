@@ -56,7 +56,8 @@ export function createSongs(deps: SongDeps) {
     const words = row.words_json ? JSON.parse(row.words_json) as { candidates: SongCandidate[]; skipped: SongSkip[] } : { candidates: [], skipped: [] };
     return {
       id: row.id, title: row.title, artist: row.artist, category: row.category, status: row.status,
-      done: row.done, total: row.total, error: row.error, candidates: words.candidates, skipped: words.skipped,
+      done: row.done, total: row.total, error: row.error, skipped: words.skipped,
+      candidates: words.candidates.map((candidate) => ({ ...candidate, little: candidate.forms.every((form) => littleWord(form) !== null) })),
       added: row.added_json ? JSON.parse(row.added_json) : [], createdAt: row.created_at,
     };
   }

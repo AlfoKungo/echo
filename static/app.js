@@ -957,6 +957,7 @@ function openMistakes() { if (move('mistakes', true)) loadMistakes(); }
 // statsBin is the score bar whose words are listed (null: none); bars run from -8 to 8, the ends holding everything beyond.
 let statistics = null;
 let statsBin = null;
+let statsOpen = false; // the chosen bar's word list starts closed, and opens when a bar is tapped
 const STATS_BINS = Array.from({ length: 17 }, (_, index) => index - 8);
 const statsBinOf = (score) => Math.max(-8, Math.min(8, Math.round(score)));
 const statsKnown = (word) => word.status === 'scheduled' || word.status === 'due';
@@ -977,7 +978,7 @@ function renderStatistics() {
   }).join('');
   const chosen = statsBin === null ? [] : words.filter((word) => statsBinOf(word.score) === statsBin);
   const binLabel = statsBin === -8 ? '−8 or lower' : statsBin === 8 ? '8 or higher' : signed(statsBin);
-  const binList = statsBin === null ? '' : `<div class="st-bin"><p class="st-bin-head">Score ${binLabel} · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}</p>${chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : ''}</div>`;
+  const binList = statsBin === null ? '' : `<div class="st-bin"><button class="st-bin-head" data-action="stats-list" aria-expanded="${statsOpen}"><span>Score ${binLabel} · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}</span><span class="chev" aria-hidden="true">⌄</span></button>${statsOpen && chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : ''}</div>`;
   const parts = [['learning', 'learning', 'var(--violet)'], ['due', 'due now', '#d7c38a'], ['scheduled', 'known', '#6e6aa8'], ['new', 'not started', 'var(--frame)']];
   const stack = parts.map(([key, , colour]) => `<span style="width:${counts[key] / total * 100}%;background:${colour}"></span>`).join('');
   const legend = parts.map(([key, label, colour]) => `<span><i style="background:${colour}"></i><b>${counts[key]}</b>${label}</span>`).join('');
@@ -1055,14 +1056,16 @@ function renderSong() {
   } else if (song.status === 'failed') {
     body = `<div class="song-progress"><p class="song-error">${esc(song.error || 'This song could not be read.')}</p><div class="summary-actions"><button class="primary" data-action="song-retry" data-song="${esc(song.id)}" ${busy ? 'disabled' : ''}>Try again</button><button class="secondary" data-action="song-remove" data-song="${esc(song.id)}" ${busy ? 'disabled' : ''}>Remove</button></div></div>`;
   } else if (song.status === 'ready') {
-    const picks = songPicks.get(song.id) ?? new Set(song.candidates.filter((entry) => !entry.existing).map((entry) => entry.fr));
+    const picks = songPicks.get(song.id) ?? new Set(song.candidates.filter((entry) => !entry.existing && !entry.little).map((entry) => entry.fr));
     songPicks.set(song.id, picks);
-    const fresh = song.candidates.filter((entry) => !entry.existing);
+    const fresh = song.candidates.filter((entry) => !entry.existing && !entry.little);
+    const little = song.candidates.filter((entry) => !entry.existing && entry.little);
     const known = song.candidates.filter((entry) => entry.existing);
     const row = (entry) => `<li><button class="song-pick" role="checkbox" aria-checked="${picks.has(entry.fr)}" data-action="song-pick" data-fr="${esc(entry.fr)}"><span class="tick" aria-hidden="true"></span><span class="song-word"><strong lang="fr">${frEsc(entry.fr)}</strong><span>${esc(entry.en)}</span>${entry.note ? `<small>${esc(entry.note)}</small>` : ''}</span><span class="song-forms" lang="fr">${entry.forms.map(esc).join(', ')}</span></button></li>`;
     body = `<p class="song-hint">Untick any word you don’t want. On the right: how it appears in the song.</p>
       <div class="song-tools"><button class="quiet" data-action="song-pick-all">Tick all</button><button class="quiet" data-action="song-pick-none">Untick all</button></div>
       <ol class="song-picks">${fresh.map(row).join('')}</ol>
+      ${little.length ? `<h2 class="song-list-title">Little words · ${little.length}</h2><p class="song-hint">Articles, pronouns and the like. Tick any you want as flashcards.</p><ol class="song-picks">${little.map(row).join('')}</ol>` : ''}
       ${known.length ? `<details class="song-more"><summary>Already in your words · ${known.length}</summary><ol class="song-plain">${known.map((entry) => `<li><strong lang="fr">${frEsc(entry.fr)}</strong> <span>${esc(entry.en)}</span></li>`).join('')}</ol></details>` : ''}
       ${song.skipped.length ? `<details class="song-more"><summary>Left out · ${song.skipped.length}</summary><ol class="song-plain">${song.skipped.map((skip) => `<li><strong lang="fr">${esc(skip.form)}</strong> <span>${esc(skip.reason)}</span></li>`).join('')}</ol></details>` : ''}
       <div class="song-add"><button class="primary" data-action="song-add" data-song="${esc(song.id)}" ${busy || !picks.size ? 'disabled' : ''}>Add ${picks.size} ${picks.size === 1 ? 'word' : 'words'}</button></div>`;
@@ -1130,7 +1133,10 @@ function pickSongWord(fr) {
 }
 function pickAllSongWords(all) {
   if (!songView) return;
-  songPicks.set(songId, new Set(all ? songView.candidates.filter((entry) => !entry.existing).map((entry) => entry.fr) : []));
+  // Tick all and Untick all work on the main list; the little words keep their own ticks.
+  const picks = songPicks.get(songId) ?? new Set();
+  for (const entry of songView.candidates.filter((candidate) => !candidate.existing && !candidate.little)) if (all) picks.add(entry.fr); else picks.delete(entry.fr);
+  songPicks.set(songId, picks);
   render();
 }
 async function setSongsFirst(value) {
@@ -1142,15 +1148,16 @@ async function loadStatistics() {
   loading = true; notice = null; retryAction = null; render();
   try {
     statistics = await api('api/statistics');
-    // The list opens on the weakest words; tapping the open bar closes it.
+    // The weakest bar is chosen to begin with, its list closed; tapping a bar opens its list.
     statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
+    statsOpen = false;
   } catch (error) {
     notice = { message: error.message }; retryAction = { type: 'statistics' };
   }
   loading = false;
   if (screen === 'statistics') render();
 }
-function chooseStatsBin(bin) { statsBin = statsBin === bin ? null : bin; render(); }
+function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } render(); }
 function openWalkman() { if (move('walkman', true)) loadTape(); }
 function openGroup(id) { focusId = id; if (move(`focus|${id}`, true)) enterMixed(); }
 async function loadMistakes(quiet = false) {
@@ -1665,6 +1672,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'song-practise') { deck = button.dataset.category; savePreference('echo.deck', deck); startPractice(); }
   else if (action === 'songs-first') setSongsFirst(button.dataset.value === 'true');
   else if (action === 'stats-bin') chooseStatsBin(Number(button.dataset.bin));
+  else if (action === 'stats-list') { statsOpen = !statsOpen; render(); }
   else if (action === 'walkman') openWalkman();
   else if (action === 'walkman-toggle') toggleWalkman();
   else if (action === 'walkman-heard') { heardOpen = !heardOpen; render(); }

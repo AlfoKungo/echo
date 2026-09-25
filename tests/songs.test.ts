@@ -115,6 +115,7 @@ describe('songs', () => {
     expect(byFr.get('la mer')!.existing).toBe('nature-001');
     expect(byFr.get('le vent')!.existing).toBe('nature-002');
     expect(byFr.get('je')!.forms).toEqual(["j'"]);
+    expect([byFr.get('je')!.little, byFr.get('les')!.little, byFr.get('le nuage')!.little, byFr.get('glisser')!.little]).toEqual([true, true, false, false]);
     const added = songs.add(song.id, ['le nuage', 'glisser', 'la mer']);
     expect(added.status).toBe('added');
     expect(added.added).toHaveLength(2);
