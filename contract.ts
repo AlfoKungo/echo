@@ -12,7 +12,8 @@ export type CardView = Word & { successes: number; version: number; stack: Vocab
 // Active counts exclude finished cards; unseen also includes the available daily admission allowance.
 // Stack membership survives the 04:00 allowance reset until the practice cycle is completed.
 // scheduled counts finished words waiting for a later review; scheduledMissed is the subset ever missed.
-export type Stats = { total: number; unseen: number; seenActive: number; unseenActive: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number; scheduled: number; scheduledMissed: number };
+// recording counts unseen words from songs still waiting for their recording; newAvailable leaves them out.
+export type Stats = { total: number; unseen: number; seenActive: number; unseenActive: number; introducedToday: number; newAvailable: number; learning: number; due: number; completedToday: number; remaining: number; scheduled: number; scheduledMissed: number; recording: number };
 // stats follows the selected category; overview covers all words in the selected direction.
 // extraToday is the extra allowance granted for this study day in this direction.
 // next is the card that follows current once it is answered (known or not); null when none, or when it would be current again.

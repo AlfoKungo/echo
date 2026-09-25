@@ -755,6 +755,8 @@ describe('Words added from a song', () => {
     stores.push(store);
     const [first] = store.addWords(song);
     store.setSettings(1);
+    const songDeck = store.start('fr-en', 'song-rain-song');
+    expect([songDeck.current, songDeck.stats.recording, songDeck.stats.newAvailable]).toEqual([null, 3, 0]);
     store.start('fr-en', 'all');
     expect(store.browse('fr-en', 'all').filter((word) => word.status !== 'new').map((word) => word.category)).not.toContain('song-rain-song');
     readyIds.add(first.id);

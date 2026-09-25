@@ -477,12 +477,15 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     const queue = loadQueue(direction, at);
     reconcileQueue(queue, rows, at, false);
     const seen = new Set([...queue.failed, ...queue.successful]);
-    function summarize(records: CardRow[], count: number): Stats {
+    const started = new Set(rows.map((row) => row.word_id));
+    function summarize(records: CardRow[], count: number, scope: string): Stats {
       const unseen = count - records.length;
+      // Song words without a recording cannot be introduced yet, so they are not offered as new.
+      const recording = [...added].filter((id) => !started.has(id) && inDeck(id, scope) && !ready(id)).length;
       const stats: Stats = {
         total: count, unseen, seenActive: 0, unseenActive: 0, introducedToday,
-        newAvailable: Math.min(unseen, Math.max(0, preferences.newPerDay + extra - introducedToday)),
-        learning: 0, due: 0, completedToday: 0, remaining: 0, scheduled: 0, scheduledMissed: 0,
+        newAvailable: Math.min(unseen - recording, Math.max(0, preferences.newPerDay + extra - introducedToday)),
+        learning: 0, due: 0, completedToday: 0, remaining: 0, scheduled: 0, scheduledMissed: 0, recording,
       };
       for (const candidate of records) {
         if (candidate.active === 1 || candidate.due_at <= time) {
@@ -501,8 +504,8 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       stats.unseenActive += stats.newAvailable;
       return stats;
     }
-    const stats = summarize(selected, total);
-    const overview = deck === 'all' ? stats : summarize(rows.filter((candidate) => inDeck(candidate.word_id, 'all')), words.length);
+    const stats = summarize(selected, total, deck);
+    const overview = deck === 'all' ? stats : summarize(rows.filter((candidate) => inDeck(candidate.word_id, 'all')), words.length, 'all');
     const selection = selectCard(queue, deck);
     const row = selection ? selected.find((candidate) => candidate.word_id === selection.id) : null;
     const current = row ? cardView(row, selection!.stack) : null;

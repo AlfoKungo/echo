@@ -501,7 +501,9 @@ function availabilityCopy() {
   const elsewhere = snapshot.overview.remaining + snapshot.overview.newAvailable;
   if (deck !== 'all' && snapshot.stats.newAvailable === 0 && elsewhere > 0) parts.push(`${formatCount(elsewhere)} ${elsewhere === 1 ? 'word is' : 'words are'} waiting in other categories. Choose All words in vocabulary options to continue.`);
   if (snapshot.nextDue) parts.push(`Next review: ${dateLabel(snapshot.nextDue)}.`);
-  if (snapshot.stats.unseen > 0 && snapshot.stats.newAvailable === 0) parts.push(snapshot.settings.newPerDay === 0 ? 'New words are paused with your daily allowance at 0.' : 'New words return with your next daily allowance at 04:00 on your Mac, or add extra words below.');
+  const recording = snapshot.stats.recording || 0;
+  if (recording > 0 && snapshot.stats.newAvailable === 0) parts.push(`${formatCount(recording)} ${recording === 1 ? 'word from a song is' : 'words from songs are'} still being recorded on your Mac. Each one joins your practice as soon as it is ready, usually within minutes.`);
+  if (snapshot.stats.unseen - recording > 0 && snapshot.stats.newAvailable === 0) parts.push(snapshot.settings.newPerDay === 0 ? 'New words are paused with your daily allowance at 0.' : 'New words return with your next daily allowance at 04:00 on your Mac, or add extra words below.');
   return parts.join(' ') || 'You’re up to date in this vocabulary selection.';
 }
 let extraScope = 0;
