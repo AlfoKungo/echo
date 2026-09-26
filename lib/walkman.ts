@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { BrowseWord, WalkmanChoice, WalkmanTape, WalkmanWord, Word } from '../contract';
+import type { BrowseWord, GrammarLevel, WalkmanChoice, WalkmanTape, WalkmanWord, Word } from '../contract';
 
 // Walkman clips are all encoded the same way: 24 kHz mono MPEG-2 Layer III at 64 kbps, no headers or tags.
 // Every frame is then exactly 192 bytes and 24 ms, so a tape is plain concatenation: clips and silence
@@ -11,9 +11,10 @@ const HEADER = [0xff, 0xf3];
 
 // Per word: French, a pause to recall the meaning, the English, the French again, then a breath.
 const LEAD = 0.6;
-const RECALL = 2.0;
-const AFTER_MEANING = 0.7;
-const BETWEEN = 1.8;
+export type Timing = { recall: number; afterMeaning: number; between: number };
+export const WORD_TIMING: Timing = { recall: 2.0, afterMeaning: 0.7, between: 1.8 };
+// A sentence takes longer to understand than a word to recall, and a breath more before the next.
+export const SENTENCE_TIMING: Timing = { recall: 2.5, afterMeaning: 0.8, between: 2.2 };
 // A familiar word returns only after this many others; a new word returns twice, 5 and 14 words later.
 const SPACING = 15;
 const NEW_EVERY = 5;
@@ -133,7 +134,27 @@ export function planTape(words: (BrowseWord & { score?: number })[], slots: numb
   return plan;
 }
 
-export type Tape = { id: string; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
+const LEVELS: GrammarLevel[] = ['A1', 'A2', 'B1'];
+// The order of a sentence tape: sentences up to the learner's level, each at most once, drawn at random with
+// the ones holding the words most worth hearing far likelier to come early. A sentence counts as its most
+// pressing word: one being learnt or due weighs four times its score's weight, any other started word its
+// score's weight (2^(-score/2), as on a word tape by score), and a sentence of unstarted words only a little.
+export function planSentences<T extends { level: GrammarLevel; words: string[] }>(sentences: T[], words: (BrowseWord & { score?: number })[], level: GrammarLevel, random: () => number = Math.random): T[] {
+  const top = LEVELS.indexOf(level);
+  const weight = new Map(words.filter((word) => word.status !== 'new').map((word) => {
+    const base = 2 ** (-Math.max(-SCORE_LIMIT, Math.min(SCORE_LIMIT, word.score ?? 0)) / 2);
+    return [word.id, word.status === 'learning' || word.status === 'due' ? 4 * base : base];
+  }));
+  // Weighted order without replacement: each key is random^(1/weight), highest first.
+  return sentences.filter((sentence) => LEVELS.indexOf(sentence.level) <= top)
+    .map((sentence) => ({ sentence, key: random() ** (1 / Math.max(0.05, ...sentence.words.map((id) => weight.get(id) ?? 0))) }))
+    .sort((a, b) => b.key - a.key)
+    .map((entry) => entry.sentence);
+}
+
+export type Tape = { id: string; kind: 'words' | 'sentences'; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
+// One thing on a tape with its two recordings; sentence marks a whole sentence rather than a word.
+export type TapeItem = Omit<WalkmanWord, 'start' | 'meaningAt' | 'againAt' | 'end'> & { french: Uint8Array; english: Uint8Array };
 
 // Clips are read once and kept; a clip that is missing or not in the Walkman format is skipped.
 export function createClips(audioDir: string) {
@@ -160,6 +181,20 @@ export function createClips(audioDir: string) {
 export function buildTape(id: string, plan: string[], byId: Map<string, Word>, clips: ReturnType<typeof createClips>, fresh: Set<string> = new Set(), seconds = TAPE_SECONDS): Tape {
   const silence = clips.silence();
   if (!silence) throw new Error('The Walkman silence frame is missing.');
+  function* items(): Generator<TapeItem> {
+    for (const wordId of plan) {
+      const word = byId.get(wordId);
+      const french = clips.french(wordId);
+      const english = clips.english(wordId);
+      if (word && french && english) yield { id: wordId, fr: word.fr, en: word.en, fresh: fresh.has(wordId), french, english };
+    }
+  }
+  return layTape(id, 'words', items(), silence, WORD_TIMING, seconds);
+}
+
+// Lays items end to end, each as French, a pause, the English, a breath, the French again, until the tape
+// reaches its length; items are drawn only as needed.
+export function layTape(id: string, kind: Tape['kind'], items: Iterable<TapeItem>, silence: Uint8Array, timing: Timing, seconds = TAPE_SECONDS): Tape {
   const parts: Uint8Array[] = [];
   let frames = 0;
   const add = (bytes: Uint8Array) => {
@@ -175,22 +210,18 @@ export function buildTape(id: string, plan: string[], byId: Map<string, Word>, c
   const now = () => Math.round(frames * FRAME_SECONDS * 1000) / 1000;
   const words: WalkmanWord[] = [];
   pause(LEAD);
-  for (const wordId of plan) {
-    const word = byId.get(wordId);
-    const french = clips.french(wordId);
-    const english = clips.english(wordId);
-    if (!word || !french || !english) continue;
+  for (const { french, english, ...item } of items) {
     const start = now();
     add(french);
-    pause(RECALL);
+    pause(timing.recall);
     const meaningAt = now();
     add(english);
-    pause(AFTER_MEANING);
+    pause(timing.afterMeaning);
     const againAt = now();
     add(french);
     const end = now();
-    pause(BETWEEN);
-    words.push({ id: wordId, fr: word.fr, en: word.en, fresh: fresh.has(wordId), start, meaningAt, againAt, end });
+    pause(timing.between);
+    words.push({ ...item, start, meaningAt, againAt, end });
     if (now() >= seconds) break;
   }
   const bytes = new Uint8Array(frames * FRAME_BYTES);
@@ -199,9 +230,9 @@ export function buildTape(id: string, plan: string[], byId: Map<string, Word>, c
     bytes.set(part, offset);
     offset += part.length;
   }
-  return { id, bytes, words, seconds: now() };
+  return { id, kind, bytes, words, seconds: now() };
 }
 
 export function tapeView(tape: Tape): WalkmanTape {
-  return { id: tape.id, url: `api/walkman/${tape.id}.mp3`, seconds: tape.seconds, words: tape.words };
+  return { id: tape.id, kind: tape.kind, url: `api/walkman/${tape.id}.mp3`, seconds: tape.seconds, words: tape.words };
 }

@@ -3,7 +3,7 @@ import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { BrowseWord, Word } from '../contract';
-import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, planTape } from '../lib/walkman';
+import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, planSentences, planTape } from '../lib/walkman';
 
 function seeded(seed: number) {
   return () => {
@@ -131,5 +131,33 @@ describe('planTape by score', () => {
 
   test('a high score still turns up now and then', () => {
     expect(tapes().some((plan) => plan.includes('strong'))).toBe(true);
+  });
+});
+
+describe('planSentences', () => {
+  const sentences = [
+    { id: 'plain-a1', level: 'A1' as const, words: ['known-0'] },
+    { id: 'shaky-a2', level: 'A2' as const, words: ['known-1', 'learn-0'] },
+    { id: 'unstarted-a1', level: 'A1' as const, words: ['home-new-0'] },
+    { id: 'hard-b1', level: 'B1' as const, words: ['learn-0'] },
+    ...Array.from({ length: 20 }, (_, i) => ({ id: `filler-${i}`, level: 'A1' as const, words: [`known-${i}`] })),
+  ];
+  const words = deck().map((entry) => ({ ...entry, score: entry.id === 'learn-0' ? -6 : 4 }));
+
+  test('plays each sentence up to the level once', () => {
+    const plan = planSentences(sentences, words, 'A2', seeded(3));
+    expect(plan.map((entry) => entry.id).toSorted()).toEqual(sentences.filter((entry) => entry.level !== 'B1').map((entry) => entry.id).toSorted());
+  });
+
+  test('puts a sentence holding a shaky word being learnt first, a sentence of unstarted words late', () => {
+    let first = 0, unstartedPlace = 0;
+    for (let seed = 1; seed <= 200; seed++) {
+      const plan = planSentences(sentences, words, 'A2', seeded((seed * 2654435761) % 2 ** 32)).map((entry) => entry.id);
+      if (plan[0] === 'shaky-a2') first++;
+      unstartedPlace += plan.indexOf('unstarted-a1');
+    }
+    // Drawn in proportion to weight: 32 against 21 sentences at 0.25 and one at 0.05, about 86% of tapes.
+    expect(first).toBeGreaterThan(150);
+    expect(unstartedPlace / 200).toBeGreaterThan(10);
   });
 });

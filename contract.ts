@@ -44,8 +44,9 @@ export type ComprehensionDayCounts = { day: string; listen: { right: number; tot
 export type Statistics = VocabularyStatistics & { levels: { mode: 'listen' | 'read'; label: GrammarLevel }[]; answered: number; comprehensionDays: ComprehensionDayCounts[]; grammarTopics: number };
 // A mark on one listen: id stays the same while the learner changes their mind; knew:null withdraws it.
 export type VerdictInput = { id: string; wordId: string; knew: boolean | null };
-// words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn.
-export type WalkmanChoice = 'scored' | 'groups';
+// words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn;
+// 'sentences' plays Listen/Read sentences instead of words.
+export type WalkmanChoice = 'scored' | 'groups' | 'sentences';
 // Adding a word the learner tapped in a French text, always in the fr-en direction.
 // added: it was never started, so today admits it as an extra word, leaving the daily allowance untouched.
 // already-practising: it is in the working deck already (a cycle in progress, or finished and due again).
@@ -54,8 +55,9 @@ export type AddWordInput = { wordId: string; requestId: string };
 export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due' };
 // One word on a Walkman tape, times in seconds from the tape's start: the French at start, the English at
 // meaningAt, the French again at againAt, ending at end. fresh: not yet started in Vocabulary when the tape was made.
-export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; start: number; meaningAt: number; againAt: number; end: number };
-export type WalkmanTape = { id: string; url: string; seconds: number; words: WalkmanWord[] };
+// sentence: a whole Listen/Read sentence (id is the sentence's), which hearing leaves the vocabulary untouched.
+export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; start: number; meaningAt: number; againAt: number; end: number };
+export type WalkmanTape = { id: string; kind: 'words' | 'sentences'; url: string; seconds: number; words: WalkmanWord[] };
 
 // All routes are relative to the app root, so /echo/ works behind a path proxy.
 // GET api/state?direction=fr-en&deck=all -> Snapshot (does not admit new cards)
@@ -68,7 +70,7 @@ export type WalkmanTape = { id: string; url: string; seconds: number; words: Wal
 // GET api/words?direction=fr-en&deck=all -> {words:BrowseWord[]}
 // POST api/vocabulary/add AddWordInput -> AddWordResult (idempotent by requestId; unknown word is HTTP 404)
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
-// POST api/walkman {words?:WalkmanChoice} -> WalkmanTape: a new tape of the words worth hearing now ('scored' by default)
+// POST api/walkman {words?:WalkmanChoice} -> WalkmanTape: a new tape of the words (or sentences) worth hearing now ('scored' by default)
 // POST api/walkman/heard HeardInput -> {ok:true}: a word heard to the end, which raises its score a little
 // POST api/walkman/verdict VerdictInput -> {ok:true}: 'I knew it' raises the word's score like a recall, 'I didn't' lowers it like a miss
 // GET api/walkman/:id.mp3 -> that tape's audio, with byte ranges; only the latest few tapes are kept

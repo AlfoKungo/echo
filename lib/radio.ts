@@ -37,6 +37,18 @@ const en = (text: string): Step => { const said = speakable(text); return { clip
 const translation = (text: string): Step => ({ ...(en(text) as { clip: RadioClip }), optional: true });
 const fr = (text: string): Step => ({ clip: { id: `fr-${hash(text)}`, kind: 'fr', text } });
 const recording = (source: string): Step => ({ clip: { id: `cv-${hash(source)}`, kind: 'convert', source } });
+// A Listen/Read sentence as the Radio and the Walkman's sentence tape both play it: its recording converted to
+// the Walkman format, and its English said and checked. One source of the clip ids, so both share one recording.
+export function sentenceClips(sentence: { id: string; en: string }): { fr: RadioClip; en: RadioClip } {
+  return { fr: (recording(`audio/comprehension/${sentence.id}.mp3`) as { clip: RadioClip }).clip, en: (en(sentence.en) as { clip: RadioClip }).clip };
+}
+// A made clip's bytes, or null while it is missing or not whole Walkman frames.
+export function radioClip(root: string, id: string): Uint8Array | null {
+  const path = join(root, 'audio', 'radio', `${id}.mp3`);
+  if (!existsSync(path)) return null;
+  const data = new Uint8Array(readFileSync(path));
+  return data.length && data.length % FRAME_BYTES === 0 && data[0] === 0xff && data[1] === 0xf3 ? data : null;
+}
 const pause = (seconds: number): Step => ({ pause: seconds });
 // The grammar segment's English is said by an English voice, so it must quote no French: no accented letters,
 // no French apostrophe or quotation, no common French word that is not also English. Elsewhere English only
@@ -188,12 +200,7 @@ export function createRadio(options: {
     return value;
   }
 
-  const clipOf = (id: string) => {
-    const path = join(audio, 'radio', `${id}.mp3`);
-    if (!existsSync(path)) return null;
-    const data = new Uint8Array(readFileSync(path));
-    return data.length && data.length % FRAME_BYTES === 0 && data[0] === 0xff && data[1] === 0xf3 ? data : null;
-  };
+  const clipOf = (id: string) => radioClip(options.root, id);
 
   // Joins the parts whose clips were all made, with silence frames for the pauses.
   function assemble(value: RadioScript) {

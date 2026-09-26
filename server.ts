@@ -1,11 +1,11 @@
-import { existsSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { createStore, StoreError } from './lib/store';
 import { createGrammarStore } from './lib/grammar-store';
 import { loadCourse } from './lib/grammar-content';
 import { loadBank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
-import { buildTape, createClips, planTape, tapeView, type Tape } from './lib/walkman';
+import { buildTape, createClips, layTape, planSentences, planTape, SENTENCE_TIMING, tapeView, type Tape, type TapeItem } from './lib/walkman';
 import { createSongs } from './lib/songs';
 import { createClaude, createClaudeReader } from './lib/claude';
 import { createWordAudio } from './lib/word-audio';
@@ -13,7 +13,7 @@ import { createTextTopup } from './lib/text-topup';
 import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
-import { createRadio } from './lib/radio';
+import { createRadio, radioClip, sentenceClips } from './lib/radio';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
@@ -151,8 +151,29 @@ const radio = createRadio({
   record: (planPath) => runPython(['scripts/render-radio.py', '--plan', planPath]),
   ready: () => process.env.ECHO_STORY !== 'off' ? story.check() : Promise.resolve(),
 });
-void textsStarted.then(() => { if (process.env.ECHO_RADIO !== 'off') return radio.check(); });
-const radioChecks = setInterval(() => { if (process.env.ECHO_RADIO !== 'off') void radio.check(); }, 10 * 60_000);
+// The Walkman's sentence tape plays every recorded Listen/Read sentence converted to the Walkman format, with
+// its English said and checked. They are made in the background after the day's Radio, each tried a few times.
+let sentencesRecording: Promise<void> | null = null;
+function recordSentences(): Promise<void> {
+  if (process.env.ECHO_WORD_AUDIO === 'off') return Promise.resolve();
+  sentencesRecording ??= (async () => {
+    const missing = bank.sentences.filter((sentence) => existsSync(join(root, `audio/comprehension/${sentence.id}.mp3`)))
+      .flatMap((sentence) => { const clips = sentenceClips(sentence); return [clips.fr, clips.en]; })
+      .filter((clip) => !radioClip(root, clip.id));
+    const allowed = new Set(attempts.allowed(missing.map((clip) => clip.id)));
+    const plan = missing.filter((clip) => allowed.has(clip.id));
+    if (!plan.length) return;
+    const planPath = join(dirname(dbPath), 'radio', 'sentences.plan.json');
+    mkdirSync(dirname(planPath), { recursive: true });
+    writeFileSync(planPath, JSON.stringify(plan, null, 1));
+    await runPython(['scripts/render-radio.py', '--plan', planPath]);
+    attempts.note(plan.map((clip) => clip.id), (id) => !radioClip(root, id));
+  })().catch((error: Error) => console.error(`sentence tape: ${error.message}`)).finally(() => { sentencesRecording = null; });
+  return sentencesRecording;
+}
+const radioThenSentences = async () => { if (process.env.ECHO_RADIO !== 'off') await radio.check(); await recordSentences(); };
+void textsStarted.then(radioThenSentences);
+const radioChecks = setInterval(() => void radioThenSentences(), 10 * 60_000);
 const port = Number(process.env.ECHO_PORT ?? 7792);
 const prefix = '/echo';
 const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net';
@@ -181,12 +202,29 @@ function newTape(choice: WalkmanChoice): Tape {
   const stamp = existsSync(walkmanManifest) ? statSync(walkmanManifest).mtimeMs : 0;
   if (stamp !== walkmanStamp) { walkmanClips.forget(); walkmanStamp = stamp; }
   const listening = store.listening();
-  const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
-  const tape = buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), new Map(store.words().map((word) => [word.id, word])), walkmanClips, fresh);
-  if (!tape.words.length) throw new StoreError('The Walkman recordings are not ready yet. Please try again later.', 503);
+  const tape = choice === 'sentences' ? sentenceTape(listening) : (() => {
+    const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
+    return buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), new Map(store.words().map((word) => [word.id, word])), walkmanClips, fresh);
+  })();
+  if (!tape.words.length) throw new StoreError(choice === 'sentences' ? 'The sentence recordings are still being made. Please try again later.' : 'The Walkman recordings are not ready yet. Please try again later.', 503);
   tapes.set(tape.id, tape);
   for (const id of [...tapes.keys()].slice(0, -3)) tapes.delete(id);
   return tape;
+}
+// Sentences up to the Read level, those holding the words most worth hearing likelier to come first.
+function sentenceTape(listening: ReturnType<typeof store.listening>): Tape {
+  const silence = walkmanClips.silence();
+  if (!silence) throw new Error('The Walkman silence frame is missing.');
+  const level = comprehension.summary().levels.find((entry) => entry.mode === 'read')?.label ?? 'A2';
+  function* items(): Generator<TapeItem> {
+    for (const sentence of planSentences(bank.sentences, listening, level)) {
+      const clips = sentenceClips(sentence);
+      const french = radioClip(root, clips.fr.id);
+      const english = radioClip(root, clips.en.id);
+      if (french && english) yield { id: sentence.id, fr: sentence.fr, en: sentence.en, fresh: false, sentence: true, french, english };
+    }
+  }
+  return layTape(crypto.randomUUID(), 'sentences', items(), silence, SENTENCE_TIMING);
 }
 function direction(value: unknown): Direction {
   if (value !== 'fr-en' && value !== 'en-fr') throw new StoreError('Choose French to English or English to French.', 400);
@@ -330,7 +368,7 @@ const server = Bun.serve({
       }
       if (path === '/api/walkman' && req.method === 'POST') {
         const data = await body(req);
-        if (data.words !== undefined && data.words !== 'scored' && data.words !== 'groups') throw new StoreError('Choose how the Walkman picks words: scored or groups.', 400);
+        if (data.words !== undefined && data.words !== 'scored' && data.words !== 'groups' && data.words !== 'sentences') throw new StoreError('Choose what the Walkman plays: words by score, words by groups, or sentences.', 400);
         return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored')));
       }
       if (path === '/api/walkman/heard' && req.method === 'POST') {
