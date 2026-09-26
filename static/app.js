@@ -757,31 +757,65 @@ function renderBrowse() {
   renderBrowseResults();
 }
 function normalized(value) { return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase(); }
-function renderBrowseResults() {
-  const container = document.querySelector('#browse-results'); if (!container) return;
-  if (browseLoading) { container.innerHTML = '<div class="loading-state" role="status">Finding your words…</div>'; return; }
-  if (browseError) { container.innerHTML = `<div class="notice" role="alert"><span>${esc(browseError)}</span><button class="quiet" data-action="retry-browse">Retry</button></div>`; return; }
-  const query = normalized(search.trim());
-  const matches = { all: () => true, studied: (word) => word.lastStudied, learning: (word) => word.status === 'learning', missed: (word) => word.misses > 0 }[browseShow];
-  const filtered = (words || []).filter((word) => (browseCategory === 'all' || word.category === browseCategory) && matches(word) && (!query || normalized(`${word.fr} ${word.en}`).includes(query)));
-  // Studied views put the most recently practised words first.
-  if (browseShow !== 'all') filtered.sort((a, b) => (b.lastStudied || '').localeCompare(a.lastStudied || ''));
+// Each word's searchable text, normalized once rather than on every keystroke.
+const searchKeys = new WeakMap();
+function searchKey(word) {
+  let key = searchKeys.get(word);
+  if (key === undefined) { key = normalized(`${word.fr} ${word.en}`); searchKeys.set(word, key); }
+  return key;
+}
+// The list is drawn a chunk at a time: the first at once, the rest in short background steps, so typing a search
+// or opening the list never lays out a thousand rows in one go, and each keystroke drops the steps still pending.
+const BROWSE_CHUNK = 120;
+let browseList = [];
+let browseShown = 0;
+let browseMore = 0;
+function browseRowHTML(word) {
   const reverse = direction === 'en-fr';
-  const rowText = (word) => {
-    const hidden = hideTranslations && !revealedWords.has(word.id);
-    if (!hidden) return `<h2 lang="fr" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2><p>${esc(word.en)}</p>`;
-    const reveal = `<button class="reveal-word" data-reveal-word="${esc(word.id)}">${reverse ? 'Show French' : 'Show English'}</button>`;
-    return reverse ? `<h2 lang="en">${esc(word.en)}</h2>${reveal}` : `<h2 lang="fr" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2>${reveal}`;
-  };
-  const history = (word) => [
+  const hidden = hideTranslations && !revealedWords.has(word.id);
+  const text = !hidden ? `<h2 lang="fr" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2><p>${esc(word.en)}</p>`
+    : (() => {
+      const reveal = `<button class="reveal-word" data-reveal-word="${esc(word.id)}">${reverse ? 'Show French' : 'Show English'}</button>`;
+      return reverse ? `<h2 lang="en">${esc(word.en)}</h2>${reveal}` : `<h2 lang="fr" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2>${reveal}`;
+    })();
+  const history = [
     categoryTitle(word.category),
     word.lastStudied ? `Studied ${dayLabel(word.lastStudied)}` : '',
     word.misses ? `Missed ${word.misses}×` : '',
     word.status === 'scheduled' && word.due ? `Review ${dateLabel(word.due)}` : '',
     word.note || '',
   ].filter(Boolean).map(esc).join(' · ');
+  return `<article class="word-row" data-row-word="${esc(word.id)}"><div>${text}<small>${history}</small></div><div class="word-controls"><small>${esc(({ new: 'New', learning: 'Learning', due: 'Due', scheduled: 'Scheduled' })[word.status])}</small><button class="icon" data-play-word="${esc(word.id)}" aria-label="Pronounce ${esc(word.fr)}">${speaker}</button></div></article>`;
+}
+function showMoreBrowse() {
+  const list = document.querySelector('#browse-list');
+  if (!list || browseShown >= browseList.length) return;
+  const next = browseList.slice(browseShown, browseShown + BROWSE_CHUNK);
+  browseShown += next.length;
+  list.insertAdjacentHTML('beforeend', next.map(browseRowHTML).join(''));
+  if (browseShown < browseList.length) browseMore = setTimeout(showMoreBrowse, 0);
+}
+function renderBrowseResults() {
+  const container = document.querySelector('#browse-results'); if (!container) return;
+  clearTimeout(browseMore);
+  if (browseLoading) { container.innerHTML = '<div class="loading-state" role="status">Finding your words…</div>'; return; }
+  if (browseError) { container.innerHTML = `<div class="notice" role="alert"><span>${esc(browseError)}</span><button class="quiet" data-action="retry-browse">Retry</button></div>`; return; }
+  const query = normalized(search.trim());
+  const matches = { all: () => true, studied: (word) => word.lastStudied, learning: (word) => word.status === 'learning', missed: (word) => word.misses > 0 }[browseShow];
+  const filtered = (words || []).filter((word) => (browseCategory === 'all' || word.category === browseCategory) && matches(word) && (!query || searchKey(word).includes(query)));
+  // Studied views put the most recently practised words first.
+  if (browseShow !== 'all') filtered.sort((a, b) => (b.lastStudied || '').localeCompare(a.lastStudied || ''));
+  browseList = filtered; browseShown = 0;
   const empty = browseShow === 'all' ? 'No words match. Try another spelling or category.' : 'No words here yet. Practise some vocabulary and they will appear.';
-  container.innerHTML = `<p class="browse-count" role="status">${filtered.length} ${filtered.length === 1 ? 'word' : 'words'}${hideTranslations && filtered.length ? ' · recall each one, then check it' : ''}</p>${filtered.map((word) => `<article class="word-row"><div>${rowText(word)}<small>${history(word)}</small></div><div class="word-controls"><small>${esc(({ new: 'New', learning: 'Learning', due: 'Due', scheduled: 'Scheduled' })[word.status])}</small><button class="icon" data-play-word="${esc(word.id)}" aria-label="Pronounce ${esc(word.fr)}">${speaker}</button></div></article>`).join('') || `<p class="empty-list">${empty}</p>`}`;
+  container.innerHTML = `<p class="browse-count" role="status">${filtered.length} ${filtered.length === 1 ? 'word' : 'words'}${hideTranslations && filtered.length ? ' · recall each one, then check it' : ''}</p>${filtered.length ? '<div id="browse-list"></div>' : `<p class="empty-list">${empty}</p>`}`;
+  showMoreBrowse();
+}
+// Revealing one word redraws only its row, so the list keeps its place.
+function revealBrowseWord(id) {
+  revealedWords.add(id);
+  const word = words?.find((entry) => entry.id === id);
+  const row = document.querySelector(`.word-row[data-row-word="${CSS.escape(id)}"]`);
+  if (word && row) row.outerHTML = browseRowHTML(word); else renderBrowseResults();
 }
 // A family member is known once it has finished a learning cycle (due or scheduled), learning while in one.
 const familyState = (word) => !word || word.status === 'new' ? 'new' : word.status === 'learning' ? 'learning' : 'known';
@@ -2231,7 +2265,7 @@ document.addEventListener('click', (event) => {
     direction = button.dataset.direction; savePreference('echo.direction', direction); dialog.close(); startPractice(); return;
   }
   if (button?.dataset.playWord) { const word = words?.find((entry) => entry.id === button.dataset.playWord); if (word) playFrench(`audio/${encodeURIComponent(word.id)}.mp3`); return; }
-  if (button?.dataset.revealWord) { revealedWords.add(button.dataset.revealWord); renderBrowseResults(); return; }
+  if (button?.dataset.revealWord) { revealBrowseWord(button.dataset.revealWord); return; }
   if (button?.dataset.topic) { openTopic(button.dataset.topic); return; }
   if (button?.dataset.group) { openGroup(button.dataset.group); return; }
   if (button?.dataset.pick !== undefined) { streamPick(button.dataset.pick); return; }

@@ -5,6 +5,7 @@ import type { Bank } from './comprehension-content';
 import { createComprehensionStore, parseStream, type ComprehensionMutation, type ComprehensionStore, type WordKnowledge } from './comprehension-store';
 import type { GrammarStore } from './grammar-store';
 import { StoreError, type Store } from './store';
+import { audioFile } from './http';
 
 export type ComprehensionDeps = {
   root: string;
@@ -131,20 +132,7 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
     if (!clipIds.has(clip)) return json({ error: 'This recording is not part of a comprehension exercise.' }, 404);
     const file = Bun.file(join(clipDir, `${clip}.mp3`));
     if (!await file.exists()) return json({ error: 'This French recording is not ready yet. Read this one instead, or try again shortly.' }, 404);
-    const headers = { 'Content-Type': 'audio/mpeg', 'Cache-Control': 'no-cache', 'Accept-Ranges': 'bytes' };
-    const range = req.headers.get('range');
-    if (range) {
-      const parts = /^bytes=(\d*)-(\d*)$/.exec(range);
-      if (!parts || (!parts[1] && !parts[2])) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${file.size}` } });
-      const start = parts[1] ? Number(parts[1]) : Math.max(0, file.size - Number(parts[2]));
-      const end = parts[1] && parts[2] ? Math.min(Number(parts[2]), file.size - 1) : file.size - 1;
-      if (start >= file.size || start > end) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${file.size}` } });
-      return new Response(req.method === 'HEAD' ? null : file.slice(start, end + 1), {
-        status: 206,
-        headers: { ...headers, 'Content-Range': `bytes ${start}-${end}/${file.size}`, 'Content-Length': String(end - start + 1) },
-      });
-    }
-    return new Response(req.method === 'HEAD' ? null : file, { headers: { ...headers, 'Content-Length': String(file.size) } });
+    return audioFile(req, file);
   }
 
   async function handle(path: string, req: Request, url: URL): Promise<Response | null> {

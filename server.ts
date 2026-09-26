@@ -15,6 +15,7 @@ import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/soun
 import { createStory, type StoryFinish } from './lib/story';
 import { createRadio, radioClip, sentenceClips } from './lib/radio';
 import { loadFamilies, loadPatterns } from './lib/families';
+import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
@@ -185,18 +186,6 @@ const allowedHosts = new Set([new URL(publicOrigin).host, `127.0.0.1:${port}`, `
 const allowedOrigins = new Set([publicOrigin, `http://127.0.0.1:${port}`, `http://localhost:${port}`]);
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
-// Audio is served with byte ranges: Safari will not play a recording, or keep one playing locked, without them.
-function ranged(req: Request, size: number, slice: (start: number, end: number) => BodyInit, headers: Record<string, string>): Response {
-  const range = req.headers.get('range');
-  const all = { ...headers, 'Content-Type': 'audio/mpeg', 'Accept-Ranges': 'bytes' };
-  if (!range) return new Response(req.method === 'HEAD' ? null : slice(0, size), { headers: { ...all, 'Content-Length': String(size) } });
-  const r = /^bytes=(\d*)-(\d*)$/.exec(range);
-  if (!r || (!r[1] && !r[2])) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${size}` } });
-  const start = r[1] ? Number(r[1]) : Math.max(0, size - Number(r[2]));
-  const end = r[1] && r[2] ? Math.min(Number(r[2]), size - 1) : size - 1;
-  if (start >= size || start > end) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${size}` } });
-  return new Response(req.method === 'HEAD' ? null : slice(start, end + 1), { status: 206, headers: { ...all, 'Content-Range': `bytes ${start}-${end}/${size}`, 'Content-Length': String(end - start + 1) } });
-}
 // Walkman tapes live in memory, the latest few only; clips are re-read whenever they are rebuilt.
 const walkmanClips = createClips(join(root, 'audio'));
 const walkmanManifest = join(root, 'audio/walkman/manifest.json');
@@ -263,189 +252,191 @@ const staticFiles: Record<string, true> = {
 
 const server = Bun.serve({
   hostname: '127.0.0.1', port,
-  async fetch(req) {
-    const url = new URL(req.url);
-    if (!allowedHosts.has(req.headers.get('host') ?? '')) return json({ error: 'Unknown host.' }, 403);
-    let path = url.pathname;
-    if (path === prefix) return Response.redirect(`${prefix}/`, 308);
-    if (path.startsWith(`${prefix}/`)) path = path.slice(prefix.length);
-    if (req.method !== 'GET' && req.method !== 'HEAD') {
-      const origin = req.headers.get('origin');
-      if ((origin && !allowedOrigins.has(origin)) || req.headers.get('sec-fetch-site') === 'cross-site') {
-        return json({ error: 'Open Echo directly before changing your progress.' }, 403);
-      }
-    }
-    try {
-      if (path === '/healthz' && req.method === 'GET') return json({ ok: true, app: 'Echo', words: words.length });
-      // The learning rooms are gone; their bookmarks open the app home. The proxy may strip /echo, so the
-      // redirect is relative: it lands on the home page under whatever prefix the browser used.
-      if (path === '/learn' || path === '/learn/' || path === '/learning.html') {
-        return new Response(null, { status: 308, headers: { location: path === '/learn/' ? '../' : './' } });
-      }
-      const comprehended = await comprehension.handle(path, req, url);
-      if (comprehended) return comprehended;
-      if (path === '/api/state' && req.method === 'GET') return json(store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
-      if (path === '/api/families' && req.method === 'GET') return json({ families, patterns });
-      if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
-      // Word id → gender for every noun, so the client can colour a tappable word linked to one.
-      if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));
-      if (path === '/api/statistics' && req.method === 'GET') {
-        const grammarTopics = grammar.catalog().flatMap((unit) => unit.topics).filter((topic) => topic.progress.seen > 0).length;
-        return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics, texts: texts.status() });
-      }
-      if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 3, grammar: grammar.exportData(), comprehension: comprehension.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
-      if (path === '/api/grammar' && req.method === 'GET') return json({ units: grammar.catalog() });
-      if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('scope') ?? ''));
-      if (path === '/api/grammar/session' && req.method === 'POST') {
-        const data = await body(req);
-        if (typeof data.scope !== 'string' || !data.scope || typeof data.requestId !== 'string' || !data.requestId) {
-          throw new StoreError('Choose a grammar topic, test or unit test and try again.', 400);
-        }
-        return json(grammar.start(data.scope, data.requestId));
-      }
-      if (path === '/api/grammar/answer' && req.method === 'POST') {
-        const data = await body(req);
-        const mutation = grammarMutation(data);
-        if (typeof data.answer !== 'string') throw new StoreError('Enter your answer before checking it.', 400);
-        if (data.tokenOrder !== undefined && (!Array.isArray(data.tokenOrder) || !data.tokenOrder.every(Number.isInteger))) {
-          throw new StoreError('Choose words from this exercise’s tiles and try again.', 400);
-        }
-        return json(grammar.answer({ ...mutation, answer: data.answer, tokenOrder: data.tokenOrder as number[] | undefined }));
-      }
-      if (path === '/api/grammar/help' && req.method === 'POST') {
-        const data = await body(req);
-        const mutation = grammarMutation(data);
-        if (data.kind !== 'hint' && data.kind !== 'rule' && data.kind !== 'answer') {
-          throw new StoreError('Choose a hint, the rule, or the answer.', 400);
-        }
-        return json(grammar.help({ ...mutation, kind: data.kind }));
-      }
-      if (path === '/api/grammar/next' && req.method === 'POST') return json(grammar.next(grammarMutation(await body(req))));
-      if (path === '/api/settings' && req.method === 'PUT') {
-        const data = await body(req);
-        if (typeof data.newPerDay !== 'number') throw new StoreError('New words per day must be a number.', 400);
-        return json(store.setSettings(data.newPerDay));
-      }
-      if (path === '/api/settings/songs' && req.method === 'PUT') {
-        const data = await body(req);
-        return json(store.setSongsFirst(data.songsFirst as boolean));
-      }
-      // Song words are practised French → English (a word tapped in a text joins that direction too).
-      if (path === '/api/songs' && req.method === 'GET') return json({ songs: songs.list(), audio: wordAudio.status(), decks: store.deckCounts('fr-en') });
-      if (path === '/api/songs/search' && req.method === 'GET') return json({ matches: await songs.search(url.searchParams.get('q') ?? '') });
-      if (path === '/api/songs' && req.method === 'POST') {
-        const data = await body(req);
-        return json(await songs.start(typeof data.lrclibId === 'number' ? { lrclibId: data.lrclibId } : { title: String(data.title ?? ''), artist: String(data.artist ?? ''), lyrics: String(data.lyrics ?? '') }));
-      }
-      const song = path.match(/^\/api\/songs\/([0-9a-f-]{36})(?:\/(add|retry|lyrics|notes))?$/);
-      if (song?.[2] === 'lyrics' && req.method === 'GET') return json(songs.lyrics(song[1]));
-      if (song?.[2] === 'notes' && req.method === 'POST') return json(songs.rewriteNotes(song[1]));
-      if (song && !song[2] && req.method === 'GET') return json(songs.get(song[1]));
-      if (song && !song[2] && req.method === 'DELETE') { songs.remove(song[1]); return json({ ok: true }); }
-      if (song?.[2] === 'add' && req.method === 'POST') {
-        const data = await body(req);
-        return json(songs.add(song[1], Array.isArray(data.words) ? data.words.map(String) : []));
-      }
-      if (song?.[2] === 'retry' && req.method === 'POST') return json(await songs.retry(song[1]));
-      if (path === '/api/extra-words' && req.method === 'POST') {
-        const data = await body(req);
-        return json(store.addExtraWords({ direction: direction(data.direction), deck: deck(data.deck), count: data.count as number, requestId: data.requestId as string }));
-      }
-      if (path === '/api/review-early' && req.method === 'POST') {
-        const data = await body(req);
-        return json(store.reviewEarly({ direction: direction(data.direction), deck: deck(data.deck), mode: data.mode as ReviewEarlyInput['mode'], count: data.count as number, requestId: data.requestId as string }));
-      }
-      if (path === '/api/session' && req.method === 'POST') {
-        const data = await body(req);
-        return json(store.start(direction(data.direction), deck(data.deck)));
-      }
-      if (path === '/api/grade' && req.method === 'POST') {
-        const data = await body(req);
-        if (typeof data.wordId !== 'string' || typeof data.known !== 'boolean' || !Number.isInteger(data.version) || typeof data.requestId !== 'string' || !data.requestId) {
-          throw new StoreError('The answer was incomplete. Reload this card and try again.', 400);
-        }
-        return json(store.grade({ ...data, direction: direction(data.direction), deck: deck(data.deck) } as GradeInput));
-      }
-      if (path === '/api/undo' && req.method === 'POST') {
-        const data = await body(req);
-        if (typeof data.undoId !== 'string') throw new StoreError('There is no answer to undo.', 400);
-        return json(store.undo(direction(data.direction), deck(data.deck), data.undoId));
-      }
-      if (path === '/api/walkman' && req.method === 'POST') {
-        const data = await body(req);
-        if (data.words !== undefined && data.words !== 'scored' && data.words !== 'groups' && data.words !== 'sentences') throw new StoreError('Choose what the Walkman plays: words by score, words by groups, or sentences.', 400);
-        return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored')));
-      }
-      if (path === '/api/walkman/heard' && req.method === 'POST') {
-        const data = await body(req);
-        store.recordHeard({ wordId: String(data.wordId ?? ''), requestId: String(data.requestId ?? '') });
-        return json({ ok: true });
-      }
-      if (path === '/api/walkman/verdict' && req.method === 'POST') {
-        const data = await body(req);
-        store.recordVerdict({ id: String(data.id ?? ''), wordId: String(data.wordId ?? ''), knew: data.knew as boolean | null });
-        return json({ ok: true });
-      }
-      const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);
-      if (tapeAudio && (req.method === 'GET' || req.method === 'HEAD')) {
-        const tape = tapes.get(tapeAudio[1]!);
-        if (!tape) return json({ error: 'This tape has ended. Start the Walkman again for a new one.' }, 404);
-        return ranged(req, tape.bytes.length, (start, end) => tape.bytes.subarray(start, end), { 'Cache-Control': 'no-store' });
-      }
-      const radioAudio = path.match(/^\/api\/radio\/(\d{4}-\d{2}-\d{2})\.mp3$/);
-      if (radioAudio && (req.method === 'GET' || req.method === 'HEAD')) {
-        const bytes = radio.audio(radioAudio[1]!);
-        if (!bytes) return json({ error: 'This Radio episode is over. Open the Radio again for today’s.' }, 404);
-        return ranged(req, bytes.length, (start, end) => bytes.subarray(start, end), { 'Cache-Control': 'no-store' });
-      }
-      if (path === '/api/radio' && req.method === 'GET') return json(radio.view());
-      const storyClip = path.match(/^\/audio\/story\/(story-\d{2}-\d+)\.mp3$/);
-      if (storyClip && (req.method === 'GET' || req.method === 'HEAD')) {
-        const file = Bun.file(join(root, 'audio/story', `${storyClip[1]}.mp3`));
-        if (!await file.exists()) return json({ error: 'This line has not been recorded yet.' }, 404);
-        return ranged(req, file.size, (start, end) => file.slice(start, end), { 'Cache-Control': 'no-cache' });
-      }
-      if (path === '/api/story' && req.method === 'GET') return json(story.status());
-      const storyEpisode = path.match(/^\/api\/story\/(\d+)(\/finish)?$/);
-      if (storyEpisode && !storyEpisode[2] && req.method === 'GET') return json(story.view(Number(storyEpisode[1])));
-      if (storyEpisode?.[2] && req.method === 'POST') { const data = await body(req); return json(story.finish(Number(storyEpisode[1]), data as unknown as StoryFinish)); }
-      const soundClip = path.match(/^\/audio\/sounds\/([a-z0-9-]+)\.mp3$/);
-      if (soundClip && (req.method === 'GET' || req.method === 'HEAD')) {
-        if (!soundClips.has(soundClip[1]!)) return json({ error: 'This sound is not part of a drill.' }, 404);
-        const file = Bun.file(join(root, 'audio/sounds', `${soundClip[1]}.mp3`));
-        if (!await file.exists()) return json({ error: 'This sound has not been recorded yet.' }, 404);
-        return ranged(req, file.size, (start, end) => file.slice(start, end), { 'Cache-Control': 'no-cache' });
-      }
-      if (path === '/api/sounds' && req.method === 'GET') return json({ contrasts: sounds.summary() });
-      if (path === '/api/sounds/round' && req.method === 'POST') { const data = await body(req); return json({ questions: sounds.round(String(data.id ?? '')) }); }
-      if (path === '/api/sounds/answer' && req.method === 'POST') { const data = await body(req); return json(sounds.answer(data as unknown as SoundAnswer)); }
-      if (path.startsWith('/audio/') && (req.method === 'GET' || req.method === 'HEAD')) {
-        const spoken = path.match(/^\/audio\/grammar\/([a-z0-9-]+)\.mp3$/);
-        const word = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
-        if (spoken && !grammarAudio.has(spoken[1])) return json({ error: 'This sentence is not part of a grammar exercise.' }, 404);
-        if (!spoken && (!word || !store.word(word[1]))) return json({ error: 'This word is not in the vocabulary deck.' }, 404);
-        const file = Bun.file(spoken ? join(root, 'audio/grammar', `${spoken[1]}.mp3`) : join(root, 'audio', `${word![1]}.mp3`));
-        if (!await file.exists()) {
-          // Grammar sentences are rendered clip by clip: a missing one is simply not offered yet.
-          return spoken
-            ? json({ error: 'This spoken sentence has not been recorded yet.' }, 404)
-            : json({ error: 'This French recording is not ready. Please try again shortly.' }, 503);
-        }
-        return ranged(req, file.size, (start, end) => file.slice(start, end), { 'Cache-Control': 'no-cache' });
-      }
-      const name = path === '/' ? 'index.html' : path.slice(1);
-      if (Object.hasOwn(staticFiles, name) && (req.method === 'GET' || req.method === 'HEAD')) {
-        const file = Bun.file(join(root, 'static', name));
-        if (await file.exists()) return new Response(req.method === 'HEAD' ? null : file, { headers: { 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' } });
-      }
-      return json({ error: 'This Echo page or action does not exist.' }, 404);
-    } catch (error) {
-      if (error instanceof StoreError) return json({ error: error.message }, error.status);
-      console.error(error);
-      return json({ error: 'Echo could not finish this request. Please try again; saved answers will not be counted twice.' }, 500);
-    }
-  },
+  // Every response goes out through compressed(), which gzips text for a browser that accepts it.
+  async fetch(req) { return compressed(req, await route(req)); },
 });
+async function route(req: Request): Promise<Response> {
+  const url = new URL(req.url);
+  if (!allowedHosts.has(req.headers.get('host') ?? '')) return json({ error: 'Unknown host.' }, 403);
+  let path = url.pathname;
+  if (path === prefix) return Response.redirect(`${prefix}/`, 308);
+  if (path.startsWith(`${prefix}/`)) path = path.slice(prefix.length);
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    const origin = req.headers.get('origin');
+    if ((origin && !allowedOrigins.has(origin)) || req.headers.get('sec-fetch-site') === 'cross-site') {
+      return json({ error: 'Open Echo directly before changing your progress.' }, 403);
+    }
+  }
+  try {
+    if (path === '/healthz' && req.method === 'GET') return json({ ok: true, app: 'Echo', words: words.length });
+    // The learning rooms are gone; their bookmarks open the app home. The proxy may strip /echo, so the
+    // redirect is relative: it lands on the home page under whatever prefix the browser used.
+    if (path === '/learn' || path === '/learn/' || path === '/learning.html') {
+      return new Response(null, { status: 308, headers: { location: path === '/learn/' ? '../' : './' } });
+    }
+    const comprehended = await comprehension.handle(path, req, url);
+    if (comprehended) return comprehended;
+    if (path === '/api/state' && req.method === 'GET') return json(store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
+    if (path === '/api/families' && req.method === 'GET') return json({ families, patterns });
+    if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
+    // Word id → gender for every noun, so the client can colour a tappable word linked to one.
+    if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));
+    if (path === '/api/statistics' && req.method === 'GET') {
+      const grammarTopics = grammar.catalog().flatMap((unit) => unit.topics).filter((topic) => topic.progress.seen > 0).length;
+      return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics, texts: texts.status() });
+    }
+    if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 3, grammar: grammar.exportData(), comprehension: comprehension.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
+    if (path === '/api/grammar' && req.method === 'GET') return json({ units: grammar.catalog() });
+    if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('scope') ?? ''));
+    if (path === '/api/grammar/session' && req.method === 'POST') {
+      const data = await body(req);
+      if (typeof data.scope !== 'string' || !data.scope || typeof data.requestId !== 'string' || !data.requestId) {
+        throw new StoreError('Choose a grammar topic, test or unit test and try again.', 400);
+      }
+      return json(grammar.start(data.scope, data.requestId));
+    }
+    if (path === '/api/grammar/answer' && req.method === 'POST') {
+      const data = await body(req);
+      const mutation = grammarMutation(data);
+      if (typeof data.answer !== 'string') throw new StoreError('Enter your answer before checking it.', 400);
+      if (data.tokenOrder !== undefined && (!Array.isArray(data.tokenOrder) || !data.tokenOrder.every(Number.isInteger))) {
+        throw new StoreError('Choose words from this exercise’s tiles and try again.', 400);
+      }
+      return json(grammar.answer({ ...mutation, answer: data.answer, tokenOrder: data.tokenOrder as number[] | undefined }));
+    }
+    if (path === '/api/grammar/help' && req.method === 'POST') {
+      const data = await body(req);
+      const mutation = grammarMutation(data);
+      if (data.kind !== 'hint' && data.kind !== 'rule' && data.kind !== 'answer') {
+        throw new StoreError('Choose a hint, the rule, or the answer.', 400);
+      }
+      return json(grammar.help({ ...mutation, kind: data.kind }));
+    }
+    if (path === '/api/grammar/next' && req.method === 'POST') return json(grammar.next(grammarMutation(await body(req))));
+    if (path === '/api/settings' && req.method === 'PUT') {
+      const data = await body(req);
+      if (typeof data.newPerDay !== 'number') throw new StoreError('New words per day must be a number.', 400);
+      return json(store.setSettings(data.newPerDay));
+    }
+    if (path === '/api/settings/songs' && req.method === 'PUT') {
+      const data = await body(req);
+      return json(store.setSongsFirst(data.songsFirst as boolean));
+    }
+    // Song words are practised French → English (a word tapped in a text joins that direction too).
+    if (path === '/api/songs' && req.method === 'GET') return json({ songs: songs.list(), audio: wordAudio.status(), decks: store.deckCounts('fr-en') });
+    if (path === '/api/songs/search' && req.method === 'GET') return json({ matches: await songs.search(url.searchParams.get('q') ?? '') });
+    if (path === '/api/songs' && req.method === 'POST') {
+      const data = await body(req);
+      return json(await songs.start(typeof data.lrclibId === 'number' ? { lrclibId: data.lrclibId } : { title: String(data.title ?? ''), artist: String(data.artist ?? ''), lyrics: String(data.lyrics ?? '') }));
+    }
+    const song = path.match(/^\/api\/songs\/([0-9a-f-]{36})(?:\/(add|retry|lyrics|notes))?$/);
+    if (song?.[2] === 'lyrics' && req.method === 'GET') return json(songs.lyrics(song[1]));
+    if (song?.[2] === 'notes' && req.method === 'POST') return json(songs.rewriteNotes(song[1]));
+    if (song && !song[2] && req.method === 'GET') return json(songs.get(song[1]));
+    if (song && !song[2] && req.method === 'DELETE') { songs.remove(song[1]); return json({ ok: true }); }
+    if (song?.[2] === 'add' && req.method === 'POST') {
+      const data = await body(req);
+      return json(songs.add(song[1], Array.isArray(data.words) ? data.words.map(String) : []));
+    }
+    if (song?.[2] === 'retry' && req.method === 'POST') return json(await songs.retry(song[1]));
+    if (path === '/api/extra-words' && req.method === 'POST') {
+      const data = await body(req);
+      return json(store.addExtraWords({ direction: direction(data.direction), deck: deck(data.deck), count: data.count as number, requestId: data.requestId as string }));
+    }
+    if (path === '/api/review-early' && req.method === 'POST') {
+      const data = await body(req);
+      return json(store.reviewEarly({ direction: direction(data.direction), deck: deck(data.deck), mode: data.mode as ReviewEarlyInput['mode'], count: data.count as number, requestId: data.requestId as string }));
+    }
+    if (path === '/api/session' && req.method === 'POST') {
+      const data = await body(req);
+      return json(store.start(direction(data.direction), deck(data.deck)));
+    }
+    if (path === '/api/grade' && req.method === 'POST') {
+      const data = await body(req);
+      if (typeof data.wordId !== 'string' || typeof data.known !== 'boolean' || !Number.isInteger(data.version) || typeof data.requestId !== 'string' || !data.requestId) {
+        throw new StoreError('The answer was incomplete. Reload this card and try again.', 400);
+      }
+      return json(store.grade({ ...data, direction: direction(data.direction), deck: deck(data.deck) } as GradeInput));
+    }
+    if (path === '/api/undo' && req.method === 'POST') {
+      const data = await body(req);
+      if (typeof data.undoId !== 'string') throw new StoreError('There is no answer to undo.', 400);
+      return json(store.undo(direction(data.direction), deck(data.deck), data.undoId));
+    }
+    if (path === '/api/walkman' && req.method === 'POST') {
+      const data = await body(req);
+      if (data.words !== undefined && data.words !== 'scored' && data.words !== 'groups' && data.words !== 'sentences') throw new StoreError('Choose what the Walkman plays: words by score, words by groups, or sentences.', 400);
+      return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored')));
+    }
+    if (path === '/api/walkman/heard' && req.method === 'POST') {
+      const data = await body(req);
+      store.recordHeard({ wordId: String(data.wordId ?? ''), requestId: String(data.requestId ?? '') });
+      return json({ ok: true });
+    }
+    if (path === '/api/walkman/verdict' && req.method === 'POST') {
+      const data = await body(req);
+      store.recordVerdict({ id: String(data.id ?? ''), wordId: String(data.wordId ?? ''), knew: data.knew as boolean | null });
+      return json({ ok: true });
+    }
+    const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);
+    if (tapeAudio && (req.method === 'GET' || req.method === 'HEAD')) {
+      const tape = tapes.get(tapeAudio[1]!);
+      if (!tape) return json({ error: 'This tape has ended. Start the Walkman again for a new one.' }, 404);
+      return ranged(req, tape.bytes.length, (start, end) => tape.bytes.subarray(start, end), { 'Cache-Control': 'no-store' });
+    }
+    const radioAudio = path.match(/^\/api\/radio\/(\d{4}-\d{2}-\d{2})\.mp3$/);
+    if (radioAudio && (req.method === 'GET' || req.method === 'HEAD')) {
+      const bytes = radio.audio(radioAudio[1]!);
+      if (!bytes) return json({ error: 'This Radio episode is over. Open the Radio again for today’s.' }, 404);
+      return ranged(req, bytes.length, (start, end) => bytes.subarray(start, end), { 'Cache-Control': 'no-store' });
+    }
+    if (path === '/api/radio' && req.method === 'GET') return json(radio.view());
+    const storyClip = path.match(/^\/audio\/story\/(story-\d{2}-\d+)\.mp3$/);
+    if (storyClip && (req.method === 'GET' || req.method === 'HEAD')) {
+      const file = Bun.file(join(root, 'audio/story', `${storyClip[1]}.mp3`));
+      if (!await file.exists()) return json({ error: 'This line has not been recorded yet.' }, 404);
+      return audioFile(req, file);
+    }
+    if (path === '/api/story' && req.method === 'GET') return json(story.status());
+    const storyEpisode = path.match(/^\/api\/story\/(\d+)(\/finish)?$/);
+    if (storyEpisode && !storyEpisode[2] && req.method === 'GET') return json(story.view(Number(storyEpisode[1])));
+    if (storyEpisode?.[2] && req.method === 'POST') { const data = await body(req); return json(story.finish(Number(storyEpisode[1]), data as unknown as StoryFinish)); }
+    const soundClip = path.match(/^\/audio\/sounds\/([a-z0-9-]+)\.mp3$/);
+    if (soundClip && (req.method === 'GET' || req.method === 'HEAD')) {
+      if (!soundClips.has(soundClip[1]!)) return json({ error: 'This sound is not part of a drill.' }, 404);
+      const file = Bun.file(join(root, 'audio/sounds', `${soundClip[1]}.mp3`));
+      if (!await file.exists()) return json({ error: 'This sound has not been recorded yet.' }, 404);
+      return audioFile(req, file);
+    }
+    if (path === '/api/sounds' && req.method === 'GET') return json({ contrasts: sounds.summary() });
+    if (path === '/api/sounds/round' && req.method === 'POST') { const data = await body(req); return json({ questions: sounds.round(String(data.id ?? '')) }); }
+    if (path === '/api/sounds/answer' && req.method === 'POST') { const data = await body(req); return json(sounds.answer(data as unknown as SoundAnswer)); }
+    if (path.startsWith('/audio/') && (req.method === 'GET' || req.method === 'HEAD')) {
+      const spoken = path.match(/^\/audio\/grammar\/([a-z0-9-]+)\.mp3$/);
+      const word = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
+      if (spoken && !grammarAudio.has(spoken[1])) return json({ error: 'This sentence is not part of a grammar exercise.' }, 404);
+      if (!spoken && (!word || !store.word(word[1]))) return json({ error: 'This word is not in the vocabulary deck.' }, 404);
+      const file = Bun.file(spoken ? join(root, 'audio/grammar', `${spoken[1]}.mp3`) : join(root, 'audio', `${word![1]}.mp3`));
+      if (!await file.exists()) {
+        // Grammar sentences are rendered clip by clip: a missing one is simply not offered yet.
+        return spoken
+          ? json({ error: 'This spoken sentence has not been recorded yet.' }, 404)
+          : json({ error: 'This French recording is not ready. Please try again shortly.' }, 503);
+      }
+      return audioFile(req, file);
+    }
+    const name = path === '/' ? 'index.html' : path.slice(1);
+    if (Object.hasOwn(staticFiles, name) && (req.method === 'GET' || req.method === 'HEAD')) {
+      const file = Bun.file(join(root, 'static', name));
+      if (await file.exists()) return staticFile(req, file);
+    }
+    return json({ error: 'This Echo page or action does not exist.' }, 404);
+  } catch (error) {
+    if (error instanceof StoreError) return json({ error: error.message }, error.status);
+    console.error(error);
+    return json({ error: 'Echo could not finish this request. Please try again; saved answers will not be counted twice.' }, 500);
+  }
+}
 
 function backup() {
   if (process.env.ECHO_DB) return;
