@@ -1404,11 +1404,12 @@ let songPoll = 0;
 const songTime = (seconds) => seconds ? `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}` : '';
 function songStatusLine(song) {
   if (song.status === 'reading') return 'Reading…';
-  if (song.status === 'ready') return `Ready to review · ${song.candidates.filter((entry) => !entry.existing).length} new words`;
+  if (song.status === 'ready') { const known = song.candidates.filter((entry) => entry.existing && !entry.little).length; const fresh = song.candidates.filter((entry) => !entry.existing).length; return `Ready to review · ${fresh} new ${fresh === 1 ? 'word' : 'words'}${known ? ` · ${known} already in Echo` : ''}`; }
   if (song.status === 'added') {
     // New words from every deck share one daily allowance, so "waiting" is how many are still to come in.
     const deck = songList?.decks?.[song.category];
-    return `${song.understood ? `You know ${song.understood.known}%` : 'Added'} · ${song.added.length} ${song.added.length === 1 ? 'word' : 'words'}${deck ? ` · ${deck.today} today · ${deck.waiting} waiting` : ''}`;
+    const count = song.added.length + (song.linked?.length ?? 0);
+    return `${song.understood ? `You know ${song.understood.known}%` : 'Added'} · ${count} ${count === 1 ? 'word' : 'words'}${deck ? ` · ${deck.today} today · ${deck.waiting} waiting` : ''}`;
   }
   return 'Could not be read';
 }
@@ -1445,23 +1446,26 @@ function renderSong() {
   } else if (song.status === 'failed') {
     body = `<div class="song-progress"><p class="song-error">${esc(song.error || 'This song could not be read.')}</p><div class="summary-actions"><button class="primary" data-action="song-retry" data-song="${esc(song.id)}" ${busy ? 'disabled' : ''}>Try again</button><button class="secondary" data-action="song-remove" data-song="${esc(song.id)}" ${busy ? 'disabled' : ''}>Remove</button></div></div>`;
   } else if (song.status === 'ready') {
-    const picks = songPicks.get(song.id) ?? new Set(song.candidates.filter((entry) => !entry.existing && !entry.little).map((entry) => entry.fr));
+    // Every word of the song is ticked but the little ones: new words, and the ones already in Echo, which join the
+    // song's deck as they are.
+    const picks = songPicks.get(song.id) ?? new Set(song.candidates.filter((entry) => !entry.little).map((entry) => entry.fr));
     songPicks.set(song.id, picks);
     const fresh = song.candidates.filter((entry) => !entry.existing && !entry.little);
-    const little = song.candidates.filter((entry) => !entry.existing && entry.little);
-    const known = song.candidates.filter((entry) => entry.existing);
+    const little = song.candidates.filter((entry) => entry.little);
+    const known = song.candidates.filter((entry) => entry.existing && !entry.little);
     const row = (entry) => `<li><button class="song-pick" role="checkbox" aria-checked="${picks.has(entry.fr)}" data-action="song-pick" data-fr="${esc(entry.fr)}"><span class="tick" aria-hidden="true"></span><span class="song-word"><strong lang="fr" class="${genderClass(entry.gender).trim()}">${frEsc(entry.fr)}</strong><span>${esc(entry.en)}</span>${entry.note ? `<small>${esc(entry.note)}</small>` : ''}</span><span class="song-forms" lang="fr">${entry.forms.map(esc).join(', ')}</span></button></li>`;
     body = `<p class="song-hint">Untick any word you don’t want. On the right: how it appears in the song.</p>
       <div class="song-tools"><button class="quiet" data-action="song-pick-all">Tick all</button><button class="quiet" data-action="song-pick-none">Untick all</button></div>
       <ol class="song-picks">${fresh.map(row).join('')}</ol>
+      ${known.length ? `<h2 class="song-list-title">Already in your words · ${known.length}</h2><p class="song-hint">They join this song’s deck too, keeping their place in their own category and your progress on them.</p><ol class="song-picks">${known.map(row).join('')}</ol>` : ''}
       ${little.length ? `<h2 class="song-list-title">Little words · ${little.length}</h2><p class="song-hint">Articles, pronouns and the like. Tick any you want as flashcards.</p><ol class="song-picks">${little.map(row).join('')}</ol>` : ''}
-      ${known.length ? `<details class="song-more"><summary>Already in your words · ${known.length}</summary><ol class="song-plain">${known.map((entry) => `<li><strong lang="fr">${frEsc(entry.fr)}</strong> <span>${esc(entry.en)}</span></li>`).join('')}</ol></details>` : ''}
       ${song.skipped.length ? `<details class="song-more"><summary>Left out · ${song.skipped.length}</summary><ol class="song-plain">${song.skipped.map((skip) => `<li><strong lang="fr">${esc(skip.form)}</strong> <span>${esc(skip.reason)}</span></li>`).join('')}</ol></details>` : ''}
       <div class="song-add"><button class="primary" data-action="song-add" data-song="${esc(song.id)}" ${busy || !picks.size ? 'disabled' : ''}>Add ${picks.size} ${picks.size === 1 ? 'word' : 'words'}</button></div>`;
   } else {
     const audio = songList?.audio;
     const recording = audio && (audio.pending || audio.recording) ? `Recording the new words on your Mac… ${audio.pending} left. Each one joins your practice as soon as it is recorded.` : audio?.failed?.some((id) => song.added.includes(id)) ? `${audio.failed.filter((id) => song.added.includes(id)).length} could not be recorded and stay out of practice.` : 'Every word is recorded.';
-    body = `<div class="song-progress"><p><strong>${song.added.length}</strong> ${song.added.length === 1 ? 'word' : 'words'} added to the “${esc(song.title)}” deck.</p><p class="caption">${esc(recording)} New words from songs come ${snapshot?.settings?.songsFirst === false ? 'in turn with your other categories' : 'before your other new words'}; change this in Vocabulary options.</p><div class="summary-actions"><button class="primary" data-action="song-practise" data-category="${esc(song.category)}" ${busy ? 'disabled' : ''}>Practise these words</button></div></div>`;
+    const linked = song.linked?.length ?? 0;
+    body = `<div class="song-progress"><p><strong>${song.added.length}</strong> new ${song.added.length === 1 ? 'word' : 'words'}${linked ? ` and <strong>${linked}</strong> you already had` : ''} in the “${esc(song.title)}” deck.</p><p class="caption">${esc(recording)} New words from songs come ${snapshot?.settings?.songsFirst === false ? 'in turn with your other categories' : 'before your other new words'}; change this in Vocabulary options.</p><div class="summary-actions"><button class="primary" data-action="song-practise" data-category="${esc(song.category)}" ${busy ? 'disabled' : ''}>Practise these words</button></div></div>`;
   }
   main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${title}${understoodHTML(song.understood)}${body}</section>`;
 }
@@ -1565,9 +1569,9 @@ function pickSongWord(fr) {
 }
 function pickAllSongWords(all) {
   if (!songView) return;
-  // Tick all and Untick all work on the main list; the little words keep their own ticks.
+  // Tick all and Untick all work on the song's words, new and already known; the little words keep their own ticks.
   const picks = songPicks.get(songId) ?? new Set();
-  for (const entry of songView.candidates.filter((candidate) => !candidate.existing && !candidate.little)) if (all) picks.add(entry.fr); else picks.delete(entry.fr);
+  for (const entry of songView.candidates.filter((candidate) => !candidate.little)) if (all) picks.add(entry.fr); else picks.delete(entry.fr);
   songPicks.set(songId, picks);
   render();
 }

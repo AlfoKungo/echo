@@ -8,6 +8,8 @@ export type Settings = { newPerDay: number; songsFirst: boolean };
 // A word the learner added from a song: the store gives it an id in the song's own category.
 export type NewWord = { fr: string; en: string; note?: string };
 export type AddWordsInput = { category: string; title: string; words: NewWord[] };
+// Words already in Echo that a song's deck holds too (by id); they keep their own category and progress.
+export type LinkWordsInput = { category: string; title: string; ids: string[] };
 export type VocabularyStack = 'unseen' | 'failed' | 'successful';
 // trouble: set on a word missed TROUBLE_MISSES times or more in this direction (lib/store.ts), with the words of the
 // same deck missed most alongside it, since words learnt together are the ones that get mixed up.

@@ -827,6 +827,23 @@ test('a stubborn word waits for a memory hook, then shows it on its card and wai
   expect(store.state('fr-en', 'food').current?.trouble?.hook ?? store.state('fr-en', 'food').next?.trouble?.hook).toBeDefined();
 });
 
+describe('song decks holding words already in Echo', () => {
+  test('with songs first, a song’s known-but-unstarted words come in with its new words, before other new words', () => {
+    const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
+    directories.push(directory);
+    const store = createStore(thirtyWords, { dbPath: join(directory, 'echo.db'), now: () => new Date(2026, 8, 21, 10) });
+    stores.push(store);
+    store.setSettings(3);
+    const [made] = store.addWords({ category: 'song-la-pluie', title: 'La pluie', words: [{ fr: 'la pluie', en: 'rain' }] });
+    expect(store.linkWords({ category: 'song-la-pluie', title: 'La pluie', ids: ['word-29', 'word-20', 'missing'] })).toEqual(['word-29', 'word-20']);
+    store.start('fr-en', 'all');
+    const admitted = (store.exportData() as { cards: { word_id: string; direction: string }[] }).cards.filter((card) => card.direction === 'fr-en').map((card) => card.word_id).toSorted();
+    expect(admitted).toEqual([made!.id, 'word-20', 'word-29'].toSorted());
+    expect(store.state('fr-en', 'all').decks.find((entry) => entry.id === 'song-la-pluie')?.count).toBe(3);
+    expect(store.state('fr-en', 'all').decks.find((entry) => entry.id === 'all')?.count).toBe(31);
+  });
+});
+
 describe('word families in admission', () => {
   test('up to half of a day’s new words are relatives of started words; unstarted families wait', () => {
     const vocabulary: Word[] = ['a', 'b'].flatMap((category) => Array.from({ length: 8 }, (_, index) => ({ id: `${category}-${index}`, fr: `mot ${category}${index}`, en: `word ${category}${index}`, category })));

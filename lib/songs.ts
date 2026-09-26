@@ -17,7 +17,8 @@ export type NotesStatus = 'none' | 'waiting' | 'writing' | 'ready' | 'failed';
 export type SongView = {
   id: string; title: string; artist: string; category: string; status: SongStatus;
   done: number; total: number; error: string | null; candidates: SongCandidate[]; skipped: SongSkip[];
-  added: string[]; createdAt: string; notes: NotesStatus;
+  // added: the new words the song made; linked: the words already in Echo that its deck holds too.
+  added: string[]; linked: string[]; createdAt: string; notes: NotesStatus;
   // Of the song's words as sung (little words and names left out), the percentage known (the Statistics sense:
   // scheduled or due) and still learning; null before the words are read or when the lyrics are not kept.
   understood: { known: number; learning: number } | null;
@@ -40,7 +41,7 @@ export type SongDeps = {
 
 type SongRow = {
   id: string; title: string; artist: string; category: string; source: string; source_id: number | null; status: SongStatus;
-  done: number; total: number; error: string | null; words_json: string | null; added_json: string | null; created_at: string;
+  done: number; total: number; error: string | null; words_json: string | null; added_json: string | null; linked_json: string | null; created_at: string;
   lyrics: string | null; notes_json: string | null; notes_status: string | null; notes_done: number; notes_total: number; notes_error: string | null; notes_version: number;
 };
 
@@ -63,7 +64,7 @@ export function createSongs(deps: SongDeps) {
   `);
   // Columns added once the song view kept the lyrics; older databases gain them here.
   const columns = new Set(db.query<{ name: string }, []>('PRAGMA table_info(songs)').all().map((column) => column.name));
-  for (const [name, type] of [['lyrics', 'TEXT'], ['notes_json', 'TEXT'], ['notes_status', 'TEXT'], ['notes_done', 'INTEGER NOT NULL DEFAULT 0'], ['notes_total', 'INTEGER NOT NULL DEFAULT 0'], ['notes_error', 'TEXT'], ['notes_version', 'INTEGER NOT NULL DEFAULT 1']] as const) {
+  for (const [name, type] of [['lyrics', 'TEXT'], ['notes_json', 'TEXT'], ['notes_status', 'TEXT'], ['notes_done', 'INTEGER NOT NULL DEFAULT 0'], ['notes_total', 'INTEGER NOT NULL DEFAULT 0'], ['notes_error', 'TEXT'], ['notes_version', 'INTEGER NOT NULL DEFAULT 1'], ['linked_json', 'TEXT']] as const) {
     if (!columns.has(name)) db.exec(`ALTER TABLE songs ADD COLUMN ${name} ${type}`);
   }
   const byId = db.query<SongRow, [string]>('SELECT * FROM songs WHERE id = ?');
@@ -100,7 +101,8 @@ export function createSongs(deps: SongDeps) {
       id: row.id, title: row.title, artist: row.artist, category: row.category, status: row.status,
       done: row.done, total: row.total, error: row.error, skipped: words.skipped,
       candidates: words.candidates.map((candidate) => { const gender = genderOf(candidate); return { ...candidate, little: candidate.forms.every((form) => littleWord(form) !== null), ...(gender ? { gender } : {}) }; }),
-      added: row.added_json ? JSON.parse(row.added_json) : [], createdAt: row.created_at, notes: notesStatus(row),
+      // A word the song added that Echo later dropped as a duplicate is linked from its kept copy instead.
+      added: (row.added_json ? JSON.parse(row.added_json) as string[] : []).filter((wordId) => !!deps.vocabulary.word(wordId)), linked: row.linked_json ? JSON.parse(row.linked_json) : [], createdAt: row.created_at, notes: notesStatus(row),
       understood: understood(row, words.candidates, status),
     };
   }
@@ -242,20 +244,41 @@ export function createSongs(deps: SongDeps) {
     return view(row);
   }
 
-  // fr names the chosen candidates; words already in the deck are never added twice.
+  // The deck word a candidate already is, if any: checked now, not when the song was read, since another song may
+  // have added it since.
+  function deckIds(): (candidate: SongCandidate) => string | undefined {
+    const byFr = new Map(deps.vocabulary.words().map((word) => [comparable(word.fr), word.id]));
+    return (candidate) => (candidate.existing && deps.vocabulary.word(candidate.existing) ? candidate.existing : byFr.get(comparable(candidate.fr)));
+  }
+
+  // fr names the chosen candidates. A new word is added to the song's deck; a word already in Echo joins the deck
+  // as it is, keeping its own category and progress, so practising the song covers every word of it.
   function add(id: string, chosen: string[]): SongView {
     const song = get(id);
     if (song.status === 'added') return song;
     if (song.status !== 'ready') throw new StoreError('This song is still being read. Wait for its word list.', 409);
     if (!Array.isArray(chosen) || !chosen.length) throw new StoreError('Tick at least one word to add.');
-    // Words already in the deck are checked now, not when the song was read: another song may have added them since.
-    const have = new Set(deps.vocabulary.words().map((word) => word.fr.toLowerCase().replace(/[’‘]/g, "'").trim()));
-    const picks = song.candidates.filter((candidate) => !candidate.existing && chosen.includes(candidate.fr) && !have.has(candidate.fr.toLowerCase()));
-    if (!picks.length) throw new StoreError('All the ticked words are already in your words.');
-    const made = deps.vocabulary.addWords({ category: song.category, title: song.title, words: picks.map(({ fr, en, note }) => ({ fr, en, note })) });
-    db.query("UPDATE songs SET status = 'added', added_json = ? WHERE id = ?").run(JSON.stringify(made.map((word) => word.id)), id);
-    deps.onAdded?.(made.map((word) => word.id));
+    const idOf = deckIds();
+    const ticked = song.candidates.filter((candidate) => chosen.includes(candidate.fr));
+    const fresh = ticked.filter((candidate) => !idOf(candidate));
+    const known = [...new Set(ticked.map(idOf).filter((wordId): wordId is string => !!wordId))];
+    if (!fresh.length && !known.length) throw new StoreError('Tick at least one word to add.');
+    const made = fresh.length ? deps.vocabulary.addWords({ category: song.category, title: song.title, words: fresh.map(({ fr, en, note }) => ({ fr, en, note })) }) : [];
+    const linked = known.length ? deps.vocabulary.linkWords({ category: song.category, title: song.title, ids: known }) : [];
+    db.query("UPDATE songs SET status = 'added', added_json = ?, linked_json = ? WHERE id = ?").run(JSON.stringify(made.map((word) => word.id)), JSON.stringify(linked), id);
+    if (made.length) deps.onAdded?.(made.map((word) => word.id));
     return get(id);
+  }
+
+  // Songs added before their decks could hold words already in Echo: each gets those words once, the ones it would
+  // have offered ticked (every one but the little words). linked_json records it, so a later untick stays untouched.
+  for (const row of all.all().filter((song) => song.status === 'added' && song.linked_json === null)) {
+    const song = view(row, new Map());
+    const idOf = deckIds();
+    const own = new Set(song.added);
+    const known = [...new Set(song.candidates.filter((candidate) => !candidate.little).map(idOf).filter((wordId): wordId is string => !!wordId && !own.has(wordId)))];
+    const linked = known.length ? deps.vocabulary.linkWords({ category: row.category, title: row.title, ids: known }) : [];
+    db.query('UPDATE songs SET linked_json = ? WHERE id = ?').run(JSON.stringify(linked), row.id);
   }
 
   // A failed song starts again from its kept lyrics; an older song without them fetches them from LRCLIB again,

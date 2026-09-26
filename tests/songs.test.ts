@@ -166,6 +166,41 @@ describe('songs', () => {
     const second = songs.add(two.id, ['le nuage', 'rêver']);
     expect(second.added.map((id) => store.word(id)!.fr)).toEqual(['rêver']);
     expect(store.words().filter((word) => word.fr === 'le nuage')).toHaveLength(1);
+    // The first song's word is in the second song's deck all the same.
+    expect(second.linked.map((id) => store.word(id)!.fr)).toEqual(['le nuage']);
+    expect(store.browse('fr-en', 'song-nuages-encore').map((word) => word.fr).sort()).toEqual(['le nuage', 'rêver']);
+  });
+
+  test('a ticked word already in Echo joins the song’s deck as it is, with one progress record for both decks', async () => {
+    const { store, songs } = setup();
+    const song = await songs.start({ title: 'Nuages', lyrics: LYRICS });
+    await songs.settled();
+    const added = songs.add(song.id, ['le nuage', 'la mer']);
+    expect(added.linked).toEqual(['nature-001']);
+    expect(store.word('nature-001')!.category).toBe('nature');
+    expect(store.words().filter((word) => word.fr === 'la mer')).toHaveLength(1);
+    expect(store.browse('fr-en', 'song-nuages').map((word) => word.fr).sort()).toEqual(['la mer', 'le nuage']);
+    // Practising the song brings la mer in; its own category then sees the same card, already started.
+    store.setSettings(3);
+    store.start('fr-en', 'song-nuages');
+    expect(store.browse('fr-en', 'nature').find((word) => word.id === 'nature-001')!.status).toBe('learning');
+    expect(store.deckCounts('fr-en')['song-nuages']).toEqual({ today: 2, waiting: 0 });
+  });
+
+  test('a song added before its deck could hold known words gets them once, little words left out', async () => {
+    const first = setup();
+    const song = await first.songs.start({ title: 'Nuages', lyrics: LYRICS });
+    await first.songs.settled();
+    first.songs.add(song.id, ['le nuage']);
+    // As an older Echo left it: the song added, nothing recorded about the words it already had.
+    const db = new Database(first.dbPath);
+    db.query('UPDATE songs SET linked_json = NULL').run();
+    db.query('DELETE FROM deck_links').run();
+    db.close();
+    const store = createStore(deck, { dbPath: first.dbPath });
+    const songs = createSongs({ dbPath: first.dbPath, vocabulary: store, read: async () => new Map(), fetchJson: async () => null });
+    expect(songs.get(song.id).linked.sort()).toEqual(['nature-001', 'nature-002']);
+    expect(store.browse('fr-en', 'song-nuages').map((word) => word.fr).sort()).toEqual(['la mer', 'le nuage', 'le vent']);
   });
 
   test('a song started after an empty resume at startup is still read', async () => {

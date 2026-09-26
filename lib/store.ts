@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -21,6 +21,9 @@ export interface Store {
   setSongsFirst(songsFirst: boolean): Settings;
   // Adds words to a category of their own (a song); they are new words from then on. Returns them with their ids.
   addWords(input: AddWordsInput): Word[];
+  // Puts words already in Echo into a song's deck as well, keeping their own category and their one progress
+  // record: a deck only chooses which words a practice draws from. Idempotent; returns the ids now linked.
+  linkWords(input: LinkWordsInput): string[];
   word(id: string): Word | undefined;
   words(): Word[];
   // Word ids added from songs, in the order they were added.
@@ -166,15 +169,22 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   const categories = new Map<string, number>();
   const categoryTitles = new Map<string, string>();
   const added = new Set<string>();
+  // song category -> the words already in Echo it also holds, in the order they joined it.
+  const links = new Map<string, string[]>();
+  // Song categories in the order they were made, which is the order songs-first admission takes them in.
+  const songCategories: string[] = [];
   const decks: Deck[] = [];
   let order: Word[] | null = null;
+  // The song that brings each song word in: see songHome().
+  let songOf: Map<string, string> | null = null;
   function rebuildDecks(): void {
     categories.clear();
     for (const word of words) categories.set(word.category, (categories.get(word.category) ?? 0) + 1);
+    for (const [category, ids] of links) categories.set(category, (categories.get(category) ?? 0) + ids.length);
     decks.length = 0;
     decks.push({ id: 'all', title: 'All words', count: words.length },
       ...Array.from(categories, ([id, count]) => ({ id, title: categoryTitles.get(id) ?? id.replace(/[-_]+/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()), count })));
-    order = null;
+    order = null; songOf = null;
   }
   const dbPath = options.dbPath ?? './data/echo.db';
   if (dbPath !== ':memory:') mkdirSync(dirname(dbPath), { recursive: true });
@@ -197,6 +207,14 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         category TEXT NOT NULL,
         category_title TEXT NOT NULL,
         added_at TEXT NOT NULL
+      );
+      -- Words already in Echo that a song's deck also holds; sequence keeps the order they joined it in.
+      CREATE TABLE IF NOT EXISTS deck_links (
+        sequence INTEGER PRIMARY KEY AUTOINCREMENT,
+        category TEXT NOT NULL,
+        category_title TEXT NOT NULL,
+        word_id TEXT NOT NULL,
+        UNIQUE (category, word_id)
       );
       CREATE TABLE IF NOT EXISTS cards (
         direction TEXT NOT NULL CHECK (direction IN ('fr-en', 'en-fr')),
@@ -338,20 +356,47 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (!keep.has(row.id) || wordById.has(row.id)) continue;
     const word: Word = withGender({ id: row.id, fr: row.fr, en: row.en, category: row.category, ...(row.note ? { note: row.note } : {}) });
     words.push(word); wordById.set(word.id, word); added.add(word.id); categoryTitles.set(row.category, row.category_title);
+    if (!songCategories.includes(row.category)) songCategories.push(row.category);
+  }
+  const linkRow = db.query('INSERT OR IGNORE INTO deck_links (category, category_title, word_id) VALUES (?, ?, ?)');
+  for (const row of db.query<{ category: string; category_title: string; word_id: string }, []>('SELECT category, category_title, word_id FROM deck_links ORDER BY sequence').all()) {
+    // A link to a word that has since gone (a removed duplicate) is simply not shown.
+    const word = wordById.get(row.word_id);
+    if (!word || word.category === row.category) continue;
+    links.set(row.category, [...(links.get(row.category) ?? []), row.word_id]);
+    if (!categoryTitles.has(row.category)) categoryTitles.set(row.category, row.category_title);
+    if (!songCategories.includes(row.category)) songCategories.push(row.category);
   }
   rebuildDecks();
 
-  // The order new words are introduced in. The built-in words keep their given order; with songsFirst the added
-  // words go first, otherwise every category, songs included, takes one turn in each round.
+  // The song that brings each song word in: the first song whose deck holds it, for a word it added or one already
+  // in Echo that it linked. Cleared with the admission order.
+  function songHome(): Map<string, string> {
+    if (songOf) return songOf;
+    songOf = new Map();
+    for (const category of songCategories) {
+      for (const word of words) if (word.category === category && !songOf.has(word.id)) songOf.set(word.id, category);
+      for (const id of links.get(category) ?? []) if (!songOf.has(id)) songOf.set(id, category);
+    }
+    return songOf;
+  }
+  // The order new words are introduced in. The built-in words keep their given order; with songsFirst every
+  // song's words go first, song by song, including the ones already in Echo that the song's deck holds; otherwise
+  // every category takes one turn in each round, and a song's turn brings in its words of either kind.
   function admissionOrder(): Word[] {
     if (order) return order;
-    const base = words.filter((word) => !added.has(word.id));
-    const songs = words.filter((word) => added.has(word.id));
-    if (settings().songsFirst) order = [...songs, ...base];
-    else {
-      const groups = [...Map.groupBy(words, (word) => word.category).values()];
+    const home = songHome();
+    const group = (word: Word) => home.get(word.id) ?? word.category;
+    if (settings().songsFirst) {
+      const songs = songCategories.flatMap((category) => [
+        ...words.filter((word) => word.category === category),
+        ...(links.get(category) ?? []).map((id) => wordById.get(id)!),
+      ].filter((word) => home.get(word.id) === category));
+      order = [...songs, ...words.filter((word) => !home.has(word.id))];
+    } else {
+      const groups = [...Map.groupBy(words, group).values()];
       order = [];
-      for (let round = 0; order.length < words.length; round++) for (const group of groups) if (group[round]) order.push(group[round]);
+      for (let round = 0; order.length < words.length; round++) for (const members of groups) if (members[round]) order.push(members[round]);
     }
     return order;
   }
@@ -547,7 +592,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
 
   function inDeck(wordId: string, deck: string): boolean {
     const word = wordById.get(wordId);
-    return !!word && (deck === 'all' || word.category === deck);
+    return !!word && (deck === 'all' || word.category === deck || !!links.get(deck)?.includes(wordId));
   }
 
   function settings(): Settings {
@@ -640,7 +685,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     const rows = rowsForDirection.all(direction);
     const seen = new Set(rows.map((row) => row.word_id));
     const allowance = Math.max(0, settings().newPerDay + extraToday(direction, day) - rows.filter((row) => row.introduced_day === day).length);
-    const eligible = admissionOrder().filter((word) => (deck === 'all' || word.category === deck) && !seen.has(word.id) && !(added.has(word.id) && !ready(word.id)));
+    const eligible = admissionOrder().filter((word) => inDeck(word.id, deck) && !seen.has(word.id) && !(added.has(word.id) && !ready(word.id)));
     for (const word of pickNew(eligible, seen, allowance)) {
       save({
         direction, word_id: word.id, introduced_day: day,
@@ -657,7 +702,8 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   // family first, since a word whose relative you know is half known; the rest keep the usual order, so every
   // category still moves on. With songsFirst, song words come before either.
   function pickNew(eligible: Word[], seen: Set<string>, count: number): Word[] {
-    const songs = settings().songsFirst ? eligible.filter((word) => added.has(word.id)).slice(0, count) : [];
+    const home = songHome();
+    const songs = settings().songsFirst ? eligible.filter((word) => home.has(word.id)).slice(0, count) : [];
     const rest = eligible.filter((word) => !songs.includes(word));
     const started = (word: Word) => { const members = familyOf.get(word.id); return members ? members.filter((id) => seen.has(id)).length / members.length : 0; };
     const kin = rest.filter((word) => started(word) > 0).sort((a, b) => started(b) - started(a)).slice(0, Math.ceil((count - songs.length) / 2));
@@ -860,7 +906,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (typeof songsFirst !== 'boolean') throw new StoreError('Choose whether song words come first.');
     return db.transaction(() => {
       db.query('UPDATE settings SET songs_first = ? WHERE singleton = 1').run(songsFirst ? 1 : 0);
-      order = null;
+      order = null; songOf = null;
       return settings();
     }).immediate();
   }
@@ -885,8 +931,29 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       });
       for (const word of made) { words.push(word); wordById.set(word.id, word); added.add(word.id); }
       categoryTitles.set(category, title.trim());
+      if (!songCategories.includes(category)) songCategories.push(category);
       rebuildDecks();
       return made;
+    }).immediate();
+  }
+
+  function linkWords(input: LinkWordsInput): string[] {
+    const { category, title } = input;
+    if (typeof category !== 'string' || !/^song-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(category)) throw new StoreError('A song needs a category of its own.');
+    if (typeof title !== 'string' || !title.trim()) throw new StoreError('A song needs a title.');
+    if (!Array.isArray(input.ids)) throw new StoreError('Choose the words to put in the song.');
+    const ids = [...new Set(input.ids)].filter((id) => { const word = wordById.get(id); return !!word && word.category !== category; });
+    return db.transaction(() => {
+      const held = links.get(category) ?? [];
+      for (const id of ids) {
+        linkRow.run(category, title.trim(), id);
+        if (!held.includes(id)) held.push(id);
+      }
+      if (held.length) links.set(category, held);
+      if (!categoryTitles.has(category)) categoryTitles.set(category, title.trim());
+      if (held.length && !songCategories.includes(category)) songCategories.push(category);
+      rebuildDecks();
+      return ids;
     }).immediate();
   }
 
@@ -896,7 +963,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       const time = now().getTime();
       const rows = new Map(rowsForDirection.all(direction).map((row) => [row.word_id, row]));
       const history = new Map(historyForDirection.all(direction).map((entry) => [entry.word_id, entry]));
-      return words.filter((word) => deck === 'all' || word.category === deck).map((word): BrowseWord => {
+      return words.filter((word) => inDeck(word.id, deck)).map((word): BrowseWord => {
         const row = rows.get(word.id);
         const studied = history.get(word.id);
         return {
@@ -971,7 +1038,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       for (const word of all) counts[word.status] += 1;
       const started = all.filter((word) => word.status !== 'new').sort((a, b) => a.score - b.score);
       const categories = decks.filter((entry) => entry.id !== 'all').map((entry) => {
-        const mine = started.filter((word) => word.category === entry.id);
+        const mine = started.filter((word) => inDeck(word.id, entry.id));
         const average = mine.length ? Math.round(mine.reduce((sum, word) => sum + word.score, 0) / mine.length * 10) / 10 : null;
         return { id: entry.id, title: entry.title, total: entry.count, started: mine.length, average };
       });
@@ -1005,6 +1072,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       extraAllowance: db.query('SELECT * FROM extra_allowance ORDER BY day, direction').all(),
       walkmanHeard: db.query('SELECT word_id, heard_at FROM walkman_heard ORDER BY sequence').all(),
       addedWords: db.query('SELECT id, fr, en, note, category, category_title, added_at FROM added_words ORDER BY sequence').all(),
+      deckLinks: db.query('SELECT category, category_title, word_id FROM deck_links ORDER BY sequence').all(),
       walkmanVerdicts: db.query('SELECT word_id, knew, marked_at FROM walkman_verdicts ORDER BY marked_at').all(),
     }))();
   }
@@ -1014,15 +1082,20 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       const day = studyDay(now());
       const counts: Record<string, { today: number; waiting: number }> = {};
       for (const [deck, total] of categories) counts[deck] = { today: 0, waiting: total };
+      // A started word counts in its own category and in every song deck that holds it.
+      const linkedIn = new Map<string, string[]>();
+      for (const [deck, ids] of links) for (const id of ids) linkedIn.set(id, [...(linkedIn.get(id) ?? []), deck]);
       for (const row of rowsForDirection.all(direction)) {
-        const count = counts[wordById.get(row.word_id)?.category ?? ''];
-        if (!count) continue;
-        count.waiting -= 1;
-        if (row.introduced_day === day) count.today += 1;
+        for (const deck of [wordById.get(row.word_id)?.category ?? '', ...(linkedIn.get(row.word_id) ?? [])]) {
+          const count = counts[deck];
+          if (!count) continue;
+          count.waiting -= 1;
+          if (row.introduced_day === day) count.today += 1;
+        }
       }
       return counts;
     })();
   }
 
-  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, statistics, hookless, setHooks, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, statistics, hookless, setHooks, exportData, close: () => db.close() };
 }
