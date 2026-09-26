@@ -288,3 +288,27 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .sound-choice{display:flex;align-items:center;gap:8px}.sound-choice .choice{flex:1}.sound-en{display:block;margin-top:3px;color:var(--muted);font-size:14px}.sound-hear{flex:none}.sound-tip{margin-top:18px}
 .story-heading{margin:30px 0 10px;font-size:18px;font-weight:600}.story-question{margin-bottom:18px}.story-question .feedback{margin-top:10px}.story-recap,.story-grammar{display:block;margin:10px 0 4px;padding-left:0;text-align:left}.story-previously{margin:4px 0 12px}.story .lyric-text .speaker{display:block;margin-bottom:2px;color:var(--muted);font-size:13px}.story-done{margin-top:18px}
 .radio-chapters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
+/* Word families */
+.fam-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:6px 0 0;color:var(--muted);font-size:13px}.fam-legend .fam-dot{margin-right:-8px}
+.fam-list{display:grid;gap:10px;margin-top:16px;max-width:620px}
+.fam-row{border:1px solid var(--frame);border-radius:16px;background:var(--card)}
+.fam-head{display:grid;gap:6px;width:100%;text-align:left;padding:14px 16px;border-radius:16px}
+.fam-head:hover{background:var(--card-hover)}
+.fam-title{font-size:19px;font-weight:500;letter-spacing:-.3px;color:var(--ink)}
+.fam-meta{font-size:14px;color:var(--muted)}
+.fam-bar{display:block;height:5px;border-radius:3px;background:var(--frame);overflow:hidden}.fam-bar span{display:block;height:100%;background:var(--violet)}
+.fam-dots{display:flex;gap:5px}
+.fam-dot{flex:none;display:inline-block;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--dim)}
+.fam-dot.known{background:var(--violet);border-color:var(--violet)}
+.fam-dot.learning{border-color:var(--violet);background:linear-gradient(90deg,var(--violet) 50%,transparent 50%)}
+.fam-members{list-style:none;margin:0;padding:0 8px 8px 16px}
+.fam-member{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-top:1px solid var(--frame)}
+.fam-member .fam-dot{margin-top:9px}
+.fam-text{flex:1;min-width:0}
+.fam-fr{margin:0;font-size:18px;font-weight:500;overflow-wrap:anywhere}
+.fam-en{margin:2px 0 0;color:var(--muted);font-size:15px}
+.fam-note{margin:6px 0 0;font-size:14px;line-height:1.45;color:var(--ink)}
+.fam-member .wm-heard-add,.fam-member .wm-heard-status{margin-top:8px}
+.fam-member .icon{flex:none;width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:var(--violet)}
+.fam-member .icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.fam-footer{max-width:620px;margin-top:14px}

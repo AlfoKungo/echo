@@ -14,6 +14,7 @@ import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
 import { createRadio, radioClip, sentenceClips } from './lib/radio';
+import { loadFamilies } from './lib/families';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
@@ -34,8 +35,10 @@ for (let i = 0; i < Math.max(...[...groups.values()].map(group => group.length))
 }
 if (new Set(words.map(word => word.id)).size !== words.length) throw new Error('Duplicate vocabulary IDs');
 const dbPath = process.env.ECHO_DB ?? join(root, 'data/echo.db');
+// Word families bring a new word's relatives in sooner, once one of them is started.
+const families = loadFamilies(root, words);
 // A word added from a song joins practice once its French recording exists.
-const store = createStore(words, { dbPath, ready: (id) => existsSync(join(root, 'audio', `${id}.mp3`)) });
+const store = createStore(words, { dbPath, ready: (id) => existsSync(join(root, 'audio', `${id}.mp3`)), families: families.map((family) => family.members.map((member) => member.id)) });
 // Song words and new texts are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
 const python = process.env.ECHO_PYTHON ?? JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')).python as string;
 // The scripts print one JSON line per clip no take passed for ({"failed": id, "attempts": [...]}); the log names
@@ -281,6 +284,7 @@ const server = Bun.serve({
       const comprehended = await comprehension.handle(path, req, url);
       if (comprehended) return comprehended;
       if (path === '/api/state' && req.method === 'GET') return json(store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
+      if (path === '/api/families' && req.method === 'GET') return json({ families });
       if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
       // Word id → gender for every noun, so the client can colour a tappable word linked to one.
       if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));

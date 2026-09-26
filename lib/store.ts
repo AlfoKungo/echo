@@ -150,7 +150,7 @@ function withGender(word: Word): Word {
 }
 
 // ready tells whether an added word can be practised yet (its recording exists); the built-in words always can.
-export function createStore(baseWords: Word[], options: { dbPath?: string; now?: () => Date; random?: () => number; ready?: (wordId: string) => boolean } = {}): Store {
+export function createStore(baseWords: Word[], options: { dbPath?: string; now?: () => Date; random?: () => number; ready?: (wordId: string) => boolean; families?: string[][] } = {}): Store {
   const now = options.now ?? (() => new Date());
   const random = options.random ?? Math.random;
   const ready = options.ready ?? (() => true);
@@ -158,6 +158,8 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   const words: Word[] = baseWords.map(withGender);
   const wordById = new Map(words.map((word) => [word.id, word]));
   if (wordById.size !== words.length) throw new StoreError('Vocabulary contains duplicate word IDs.');
+  // word id -> every member of its word family (itself included); a word in no family is absent.
+  const familyOf = new Map((options.families ?? []).flatMap((members) => members.map((id) => [id, members] as const)));
   for (const word of words) {
     if (!word.id || !word.category || word.category === 'all') throw new StoreError('Vocabulary contains an invalid word or category.');
   }
@@ -637,22 +639,30 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     const day = studyDay(at);
     const rows = rowsForDirection.all(direction);
     const seen = new Set(rows.map((row) => row.word_id));
-    let allowance = Math.max(0, settings().newPerDay + extraToday(direction, day) - rows.filter((row) => row.introduced_day === day).length);
-    for (const word of admissionOrder()) {
-      if (allowance === 0) break;
-      if ((deck !== 'all' && word.category !== deck) || seen.has(word.id)) continue;
-      if (added.has(word.id) && !ready(word.id)) continue;
+    const allowance = Math.max(0, settings().newPerDay + extraToday(direction, day) - rows.filter((row) => row.introduced_day === day).length);
+    const eligible = admissionOrder().filter((word) => (deck === 'all' || word.category === deck) && !seen.has(word.id) && !(added.has(word.id) && !ready(word.id)));
+    for (const word of pickNew(eligible, seen, allowance)) {
       save({
         direction, word_id: word.id, introduced_day: day,
         active: 1, successes: 0, cycle_misses: 0, completed_day: null,
         due_at: at.getTime(), fsrs_json: JSON.stringify(createEmptyCard(at)),
         version: 1,
       });
-      allowance -= 1;
     }
     const queue = loadQueue(direction, at);
     reconcileQueue(queue, rowsForDirection.all(direction), at, true);
     saveQueue.run(JSON.stringify(queue), direction);
+  }
+  // Today's new words. Up to half come from word families with a member already started, the most started
+  // family first, since a word whose relative you know is half known; the rest keep the usual order, so every
+  // category still moves on. With songsFirst, song words come before either.
+  function pickNew(eligible: Word[], seen: Set<string>, count: number): Word[] {
+    const songs = settings().songsFirst ? eligible.filter((word) => added.has(word.id)).slice(0, count) : [];
+    const rest = eligible.filter((word) => !songs.includes(word));
+    const started = (word: Word) => { const members = familyOf.get(word.id); return members ? members.filter((id) => seen.has(id)).length / members.length : 0; };
+    const kin = rest.filter((word) => started(word) > 0).sort((a, b) => started(b) - started(a)).slice(0, Math.ceil((count - songs.length) / 2));
+    const others = rest.filter((word) => !kin.includes(word)).slice(0, count - songs.length - kin.length);
+    return [...songs, ...kin, ...others];
   }
 
   function start(direction: Direction, deck: string): Snapshot {

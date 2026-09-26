@@ -58,6 +58,8 @@ export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due
 // sentence: a whole Listen/Read sentence (id is the sentence's), which hearing leaves the vocabulary untouched.
 export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; start: number; meaningAt: number; againAt: number; end: number };
 export type WalkmanTape = { id: string; kind: 'words' | 'sentences'; url: string; seconds: number; words: WalkmanWord[] };
+// A word family: deck words built from one root, simplest first; each later member's note says how it is built.
+export type WordFamily = { members: { id: string; note?: string }[] };
 
 // All routes are relative to the app root, so /echo/ works behind a path proxy.
 // GET api/state?direction=fr-en&deck=all -> Snapshot (does not admit new cards)
@@ -69,6 +71,7 @@ export type WalkmanTape = { id: string; kind: 'words' | 'sentences'; url: string
 // POST api/review-early ReviewEarlyInput -> Snapshot (makes finished words due now; counts as a real FSRS review; idempotent)
 // GET api/words?direction=fr-en&deck=all -> {words:BrowseWord[]}
 // POST api/vocabulary/add AddWordInput -> AddWordResult (idempotent by requestId; unknown word is HTTP 404)
+// GET api/families -> {families:WordFamily[]}: the deck's word families; the client joins them with api/words
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
 // POST api/walkman {words?:WalkmanChoice} -> WalkmanTape: a new tape of the words (or sentences) worth hearing now ('scored' by default)
 // POST api/walkman/heard HeardInput -> {ok:true}: a word heard to the end, which raises its score a little

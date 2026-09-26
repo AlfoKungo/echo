@@ -826,3 +826,22 @@ test('a stubborn word waits for a memory hook, then shows it on its card and wai
   expect(store.hookless().map((word) => word.id)).not.toContain(stubborn.id);
   expect(store.state('fr-en', 'food').current?.trouble?.hook ?? store.state('fr-en', 'food').next?.trouble?.hook).toBeDefined();
 });
+
+describe('word families in admission', () => {
+  test('up to half of a day’s new words are relatives of started words; unstarted families wait', () => {
+    const vocabulary: Word[] = ['a', 'b'].flatMap((category) => Array.from({ length: 8 }, (_, index) => ({ id: `${category}-${index}`, fr: `mot ${category}${index}`, en: `word ${category}${index}`, category })));
+    const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
+    directories.push(directory);
+    const clock = { value: new Date(2026, 8, 21, 10) };
+    const store = createStore(vocabulary, { dbPath: join(directory, 'echo.db'), now: () => new Date(clock.value), families: [['a-0', 'a-5'], ['b-0', 'b-7'], ['a-3', 'b-3']] });
+    stores.push(store);
+    store.setSettings(2);
+    const admitted = (day: string) => (store.exportData() as { cards: { word_id: string; direction: string; introduced_day: string }[] }).cards.filter((card) => card.direction === 'fr-en' && card.introduced_day === day).map((card) => card.word_id).toSorted();
+    store.start('fr-en', 'all');
+    expect(admitted('2026-09-21')).toEqual(['a-0', 'a-1']);
+    clock.value = new Date(2026, 8, 22, 10);
+    store.start('fr-en', 'all');
+    // a-0's relative, then the next word in the usual order; b-7 and the unstarted a-3/b-3 family wait.
+    expect(admitted('2026-09-22')).toEqual(['a-2', 'a-5']);
+  });
+});
