@@ -30,6 +30,12 @@ const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13
 const pauseIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>';
 const storyIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18.5V5a1.5 1.5 0 0 1 1.5-1.5h12v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h11.5v-4"/><path d="M10 3.5v6l2-1.4 2 1.4v-6"/></svg>';
 const radioIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="m7 8 9-4.5"/><circle cx="15.5" cy="14" r="2.8"/><path d="M6.5 12h3M6.5 15h3M6.5 18h3"/></svg>';
+const wordsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="12" height="15" rx="2"/><path d="M8 3h10a2 2 0 0 1 2 2v13"/><path d="M7.5 10h5M7.5 13.5h3.5"/></svg>';
+const grammarIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 10 5l5 14M7 14h6M17 8h3M17 12h3M17 16h3"/></svg>';
+const mistakesIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v3.5h3.5"/><path d="M12 8v4l2.5 2"/></svg>';
+const statsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M10 20V5M15 20v-7M20 20V8M3 20.5h18"/></svg>';
+const soundsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></svg>';
+const chevronIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>';
 // Echo always opens on Home; each screen change after that is a history entry, so Back returns to it.
 // A place names a screen and what it shows: 'grammar', 'topic|negation', 'exercise|test:negation'.
 let screen = 'home';
@@ -304,24 +310,50 @@ function workingCounts(label) {
   const counts = loading ? '<span class="compact-status" role="status">Loading counts…</span>' : unavailable ? '<span class="compact-status">Counts unavailable</span>' : `<span class="compact-counts"><span class="unseen"><strong>${formatCount(snapshot.stats.unseenActive)}</strong> unseen</span><span class="separator" aria-hidden="true">·</span><span><strong>${formatCount(snapshot.stats.seenActive)}</strong> seen</span></span>`;
   return `<span class="compact-line"><span class="compact-label" title="${esc(label)}">${esc(label)}</span>${counts}</span>`;
 }
+// Home: every room is a tile, Vocabulary first; each carries one live hint. The Story and Radio hints come from
+// their own endpoints, read again at most once a minute while Home is open.
+let homeInfo = { story: null, radio: null, at: 0 };
+function loadHomeInfo() {
+  if (Date.now() - homeInfo.at < 60_000) return;
+  homeInfo.at = Date.now();
+  Promise.all([api('api/story').catch(() => null), api('api/radio').catch(() => null)]).then(([story, radioView]) => {
+    homeInfo = { story, radio: radioView, at: homeInfo.at };
+    if (screen === 'home' && !busy) renderHome();
+  });
+}
+function storyHint() {
+  const last = homeInfo.story?.episodes?.at(-1);
+  if (!homeInfo.story) return 'A serial for you';
+  if (!last) return 'First episode on its way';
+  return last.finished ? `Episode ${last.number + 1} on its way` : `Episode ${last.number} to read`;
+}
+function radioHint() {
+  const view = homeInfo.radio;
+  if (view?.state === 'ready') return `Today · ${Math.max(1, Math.round(view.seconds / 60))} min`;
+  return view?.state === 'preparing' ? 'Today’s is being made' : 'An episode a day';
+}
+function vocabularyHint() {
+  const unavailable = !snapshot || retryAction || snapshot.direction !== direction || snapshot.deck !== deck;
+  return unavailable ? 'Your words' : `${formatCount(snapshot.stats.unseenActive)} unseen · ${formatCount(snapshot.stats.seenActive)} seen`;
+}
 function renderHome() {
-  const room = (action, symbol, title, copy, mode) => {
+  loadHomeInfo();
+  const tile = (action, symbol, title, hint, mode, disabled = busy) => {
     const label = mode ? levelFor(mode) : '';
-    return `<button class="room" data-action="${action}" ${busy ? 'disabled' : ''}><span class="symbol" aria-hidden="true">${symbol}</span><span class="room-title"><h2>${esc(title)}</h2>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}</span><p>${esc(copy)}</p><span class="end" aria-hidden="true">→</span></button>`;
+    return `<button class="tile" data-action="${action}" ${disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}<h2>${esc(title)}</h2><p>${esc(hint)}</p></button>`;
   };
-  main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1><div class="rooms">
-    ${room('practise', mixIcon, 'Practise', 'A little of everything: words, grammar and understanding.')}
-    ${room('listen', headphones, 'Listen', 'Hear French and show you understood it.', 'listen')}
-    ${room('read', bookIcon, 'Read', 'Read French and show you understood it.', 'read')}
-    ${room('walkman', cassette, 'Walkman', 'French words, then their meaning, like an old language tape.')}
-    ${room('story', storyIcon, 'Story', 'A serial written for you, a little above your level.')}
-    ${room('radio', radioIcon, 'Radio', 'Today’s episode: your words, the story and a little grammar.')}
-  </div><div class="side-row">
-    <button class="side-link" data-action="start" ${locked() ? 'disabled' : ''}>Vocabulary</button>
-    <button class="side-link" data-action="grammar" ${busy ? 'disabled' : ''}>Grammar</button>
-    <button class="side-link" data-action="mistakes" ${busy ? 'disabled' : ''}>Mistakes</button>
-    <button class="side-link" data-action="statistics" ${busy ? 'disabled' : ''}>Statistics</button>
-    <button class="side-link" data-action="sounds" ${busy ? 'disabled' : ''}>Sounds</button>
+  const row = (action, symbol, title) => `<button class="study-row" data-action="${action}" ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="chev" aria-hidden="true">${chevronIcon}</span></button>`;
+  main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1><div class="tiles">
+    ${tile('start', wordsIcon, 'Vocabulary', vocabularyHint(), '', locked())}
+    ${tile('practise', mixIcon, 'Practise', 'A little of everything')}
+    ${tile('listen', headphones, 'Listen', 'Hear it, show you got it', 'listen')}
+    ${tile('read', bookIcon, 'Read', 'Read it, show you got it', 'read')}
+    ${tile('walkman', cassette, 'Walkman', 'A tape of your words')}
+    ${tile('sounds', soundsIcon, 'Sounds', 'Tell twin sounds apart')}
+    ${tile('story', storyIcon, 'Story', storyHint())}
+    ${tile('radio', radioIcon, 'Radio', radioHint())}
+  </div><p class="study-label">Study</p><div class="study">
+    ${row('grammar', grammarIcon, 'Grammar')}${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}
   </div></section>`;
 }
 function render() {
@@ -1897,6 +1929,7 @@ function show(next) {
     if ('mediaSession' in navigator) navigator.mediaSession.metadata = null;
   }
   if (name !== 'walkman') { heardOpen = false; heardSaying = ''; heardResume = false; }
+  if (name === 'home') homeInfo.at = 0;
   screen = name; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
   if (name === 'home') fetchState();
 }
