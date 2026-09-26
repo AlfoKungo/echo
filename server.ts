@@ -46,10 +46,11 @@ async function runPython(args: string[], env: Record<string, string> = {}): Prom
   const [output, error] = await Promise.all([new Response(child.stdout).text(), new Response(child.stderr).text()]);
   const ok = (await child.exited) === 0;
   if (ok) return { ok, error };
+  // A clip id is a string; a script's closing summary may carry a count under the same key.
   const failed = output.split('\n').flatMap((line) => {
-    try { const entry = JSON.parse(line) as { failed?: string; attempts?: { transcript?: string }[] }; return entry.failed ? [entry] : []; } catch { return []; }
+    try { const entry = JSON.parse(line) as { failed?: unknown; error?: string; attempts?: { transcript?: string }[] }; return typeof entry.failed === 'string' ? [entry] : []; } catch { return []; }
   });
-  if (failed.length) for (const entry of failed) console.error(`audio: ${args[0]} could not record ${entry.failed} (last heard: ${JSON.stringify(entry.attempts?.at(-1)?.transcript ?? '')})`);
+  if (failed.length) for (const entry of failed) console.error(`audio: ${args[0]} could not record ${entry.failed} (${entry.attempts ? `last heard: ${JSON.stringify(entry.attempts.at(-1)?.transcript ?? '')}` : entry.error ?? 'no reason given'})`);
   else console.error(`audio: ${args[0]} failed`, error.split('\n').filter((line) => line.trim() && !/Warning|warnings\.warn|pkuseg/.test(line)).join('\n').slice(-800));
   return { ok, error };
 }

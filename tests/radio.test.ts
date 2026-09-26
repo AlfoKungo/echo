@@ -84,11 +84,14 @@ describe('the radio', () => {
     view.segments.forEach((segment, index) => { if (index) expect(segment.start).toBe(view.segments[index - 1]!.end); });
   });
 
-  test('a part whose clip could not be made is left out; an unrecorded story is not offered', async () => {
-    const { value } = radio({ skip: (clip) => clip.kind === 'en' && clip.text === 'The bread is good.', recorded: false });
+  test('a missing French clip leaves its part out, a missing translation only itself; an unrecorded story is not offered', async () => {
+    const { value } = radio({ skip: (clip) => (clip.kind === 'en' && clip.text === 'The bread is good.') || (clip.kind === 'convert' && clip.source === 'audio/walkman/fr/chat.mp3'), recorded: false });
     await value.check();
     const view = value.view();
-    expect(view.segments.some((segment) => segment.label === 'le pain')).toBe(false);
+    const bread = view.segments.find((segment) => segment.label === 'le pain')!;
+    // The French twice (10 frames each) and its pauses 1.5 + 1.8 s, without the English or the 0.8 s after it.
+    expect(Math.round((bread.end - bread.start) * 1000)).toBe(Math.round((20 * FRAME_SECONDS + Math.round(1.5 / FRAME_SECONDS) * FRAME_SECONDS + Math.round(1.8 / FRAME_SECONDS) * FRAME_SECONDS) * 1000));
+    expect(view.segments.some((segment) => segment.label === 'le chat')).toBe(false);
     expect(view.segments.some((segment) => segment.section === 'story')).toBe(false);
     expect(view.segments.some((segment) => segment.section === 'grammar')).toBe(true);
   });

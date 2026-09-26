@@ -15,7 +15,9 @@ import type { Ask } from './claude';
 import { FRAME_BYTES, FRAME_SECONDS } from './walkman';
 
 export type RadioClip = { id: string; kind: 'convert'; source: string } | { id: string; kind: 'en' | 'fr'; text: string };
-type Step = { clip: RadioClip } | { pause: number };
+// An optional clip (the English after a French line) is left out, with its pause, when it could not be made;
+// a missing required clip leaves out the whole part.
+type Step = { clip: RadioClip; optional?: true } | { pause: number };
 // A part is one thing shown on screen while it plays: a word's sentence, a story line, a grammar example.
 export type RadioPart = { section: 'intro' | 'words' | 'story' | 'grammar' | 'outro'; label: string; fr?: string; en?: string; steps: Step[] };
 export type RadioScript = { day: string; topic: string | null; parts: RadioPart[] };
@@ -32,6 +34,7 @@ const TIMEOUT = 10 * 60_000;
 const RETRY_AFTER = 30 * 60_000;
 const hash = (value: string) => createHash('sha256').update(value).digest('hex').slice(0, 16);
 const en = (text: string): Step => { const said = speakable(text); return { clip: { id: `en-${hash(said)}`, kind: 'en', text: said } }; };
+const translation = (text: string): Step => ({ ...(en(text) as { clip: RadioClip }), optional: true });
 const fr = (text: string): Step => ({ clip: { id: `fr-${hash(text)}`, kind: 'fr', text } });
 const recording = (source: string): Step => ({ clip: { id: `cv-${hash(source)}`, kind: 'convert', source } });
 const pause = (seconds: number): Step => ({ pause: seconds });
@@ -139,7 +142,7 @@ export function createRadio(options: {
         .sort((a, b) => a.fr.length - b.fr.length)[0];
       if (sentence) {
         const clip = recording(`audio/comprehension/${sentence.id}.mp3`);
-        return [{ section: 'words', label: word.fr, fr: sentence.fr, en: sentence.en, steps: [clip, pause(1.5), en(sentence.en), pause(0.8), clip, pause(1.8)] }];
+        return [{ section: 'words', label: word.fr, fr: sentence.fr, en: sentence.en, steps: [clip, pause(1.5), translation(sentence.en), pause(0.8), clip, pause(1.8)] }];
       }
       if (!exists(`audio/walkman/fr/${word.id}.mp3`) || !exists(`audio/walkman/en/${word.id}.mp3`)) return [];
       const clip = recording(`audio/walkman/fr/${word.id}.mp3`);
@@ -153,7 +156,7 @@ export function createRadio(options: {
     const opening = `Now, the story. Episode ${episode.number}: ${episode.titleEn}.`;
     return [
       { section: 'story', label: `Episode ${episode.number}`, en: episode.titleEn, steps: [en(opening), pause(0.8)] },
-      ...episode.lines.map((line, index): RadioPart => ({ section: 'story', label: `Episode ${episode.number}`, fr: line.fr, en: line.en, steps: [recording(`audio/story/${episode.id}-${index + 1}.mp3`), pause(1), en(line.en), pause(1.4)] })),
+      ...episode.lines.map((line, index): RadioPart => ({ section: 'story', label: `Episode ${episode.number}`, fr: line.fr, en: line.en, steps: [recording(`audio/story/${episode.id}-${index + 1}.mp3`), pause(1), translation(line.en), pause(1.4)] })),
     ];
   }
 
@@ -175,7 +178,7 @@ export function createRadio(options: {
         // A topic title is often unsayable in English ("-ir and -re verbs"), so it is shown, not spoken.
         { section: 'grammar', label: point.title, en: point.title, steps: [en('Now, a little grammar.'), pause(0.8)] } satisfies RadioPart,
         ...point.lines.map((line): RadioPart => 'fr' in line
-          ? { section: 'grammar', label: point.title, fr: line.fr, en: line.en, steps: [fr(line.fr), pause(1.2), en(line.en), pause(1)] }
+          ? { section: 'grammar', label: point.title, fr: line.fr, en: line.en, steps: [fr(line.fr), pause(1.2), translation(line.en), pause(1)] }
           : { section: 'grammar', label: point.title, en: line.en, steps: [en(line.en), pause(0.6)] }),
       ] : []),
       { section: 'outro', label: 'Echo Radio', en: 'That is all for today. See you tomorrow.', steps: [pause(0.6), en('That is all for today. See you tomorrow.'), pause(1)] },
@@ -203,10 +206,15 @@ export function createRadio(options: {
     const time = () => Math.round(frames * FRAME_SECONDS * 1000) / 1000;
     for (const part of value.parts) {
       const clips = part.steps.map((step) => 'clip' in step ? clipOf(step.clip.id) : null);
-      if (part.steps.some((step, index) => 'clip' in step && !clips[index])) continue;
+      if (part.steps.some((step, index) => 'clip' in step && !step.optional && !clips[index])) continue;
       const start = time();
+      let skipPause = false;
       part.steps.forEach((step, index) => {
-        if ('clip' in step) { chunks.push(clips[index]!); frames += clips[index]!.length / FRAME_BYTES; return; }
+        if ('clip' in step) {
+          if (!clips[index]) { skipPause = true; return; }
+          chunks.push(clips[index]!); frames += clips[index]!.length / FRAME_BYTES; return;
+        }
+        if (skipPause) { skipPause = false; return; }
         const count = Math.round(step.pause / FRAME_SECONDS);
         const block = new Uint8Array(count * FRAME_BYTES);
         for (let frame = 0; frame < count; frame++) block.set(silence, frame * FRAME_BYTES);
