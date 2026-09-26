@@ -71,6 +71,10 @@ let families = null;
 let familiesLoading = false;
 let familiesError = '';
 let familyOpen = -1;
+// Word building: the patterns from api/families; the word opened under a pattern ("index:id"), and where to go back to.
+let patterns = null;
+let buildingWord = '';
+let buildingFrom = 'grammar';
 const familyAdding = new Set();
 let browseError = '';
 let browseGeneration = 0;
@@ -370,6 +374,7 @@ function render() {
   if (screen === 'practice') renderPractice();
   else if (screen === 'browse') renderBrowse();
   else if (screen === 'families') renderFamilies();
+  else if (screen === 'building') renderBuilding();
   else if (screen === 'grammar') renderGrammar();
   else if (screen === 'topic') renderTopic();
   else if (screen === 'exercise') renderExercise();
@@ -801,39 +806,64 @@ function renderFamilies() {
     const head = family.members[0].word;
     const next = family.members.find((member) => member.state === 'new') ?? family.members.find((member) => member.state === 'learning');
     const nextLabel = next ? ` · ${next.state === 'new' ? 'next' : 'learning'}: <span lang="fr" class="${genderClass(next.word.gender).trim()}">${frEsc(next.word.fr)}</span>` : '';
-    const members = open ? `<ol class="fam-members">${family.members.map((member) => {
-      const status = familyAdding.has(member.id) ? 'Adding…' : member.added ? HEARD_STATUS[member.added] : '';
-      const add = member.state === 'new' && direction === 'fr-en' && !member.added
-        ? `<button class="wm-heard-add" data-action="family-add" data-word="${esc(member.id)}" ${familyAdding.has(member.id) ? 'disabled' : ''}>Add to my words</button>`
-        : status ? `<span class="wm-heard-status" role="status">${esc(status)}</span>` : '';
-      return `<li class="fam-member">${dot(member.state)}<div class="fam-text"><p class="fam-fr ${genderClass(member.word.gender).trim()}" lang="fr">${frEsc(member.word.fr)}</p><p class="fam-en">${esc(member.word.en)}</p>${member.note ? `<p class="fam-note">${esc(member.note)}</p>` : ''}${add}</div><button class="icon" data-play-word="${esc(member.id)}" aria-label="Pronounce ${esc(member.word.fr)}">${speaker}</button></li>`;
-    }).join('')}</ol>` : '';
+    const members = open ? `<ol class="fam-members">${family.members.map((member) => `<li>${familyMemberHTML(member)}</li>`).join('')}</ol>` : '';
     return `<article class="fam-row${open ? ' open' : ''}"><button class="fam-head" data-action="family" data-family="${family.index}" aria-expanded="${open}"><span class="fam-title"><span lang="fr" class="${genderClass(head.gender).trim()}">${frEsc(head.fr)}</span> family</span><span class="fam-meta">You know ${family.known} of ${family.members.length}${nextLabel}</span><span class="fam-bar" aria-hidden="true"><span style="width:${(family.known / family.members.length * 100).toFixed(0)}%"></span></span><span class="fam-dots" aria-hidden="true">${family.members.map((member) => dot(member.state)).join('')}</span></button>${members}</article>`;
   }).join('');
   const legend = `<p class="fam-legend">${dot('known')}you know it ${dot('learning')}learning ${dot('new')}not started</p>`;
   const empty = '<p class="empty-list">None yet. Once you know a word that has relatives, its family shows here.</p>';
   const footer = [waiting ? `${waiting} more ${waiting === 1 ? 'family waits' : 'families wait'} until you know one of ${waiting === 1 ? 'its' : 'their'} words.` : '', complete ? `You know every word in ${complete} ${complete === 1 ? 'family' : 'families'}.` : ''].filter(Boolean);
-  main.innerHTML = `${noticeHTML()}<section class="topics families">${header}${nearly.length ? legend : ''}<div class="fam-list">${rows || empty}</div>${footer.map((line) => `<p class="caption fam-footer">${esc(line)}</p>`).join('')}<p class="caption fam-footer">New words from these families come into your practice sooner: up to half of each day’s new words.</p></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics families">${header}${nearly.length ? legend : ''}<div class="fam-list">${rows || empty}</div>${footer.map((line) => `<p class="caption fam-footer">${esc(line)}</p>`).join('')}<p class="caption fam-footer">New words from these families come into your practice sooner: up to half of each day’s new words.</p><button class="secondary fam-link" data-action="word-building" data-from="families">How French builds these words</button></section>`;
 }
-async function enterFamilies() {
-  familiesError = ''; familiesLoading = true; familyOpen = -1; renderFamilies();
+// One family word in full: its dot, French (gender colour), English, how it is built, and add or its status.
+function familyMemberHTML(member) {
+  const status = familyAdding.has(member.id) ? 'Adding…' : member.added ? HEARD_STATUS[member.added] : '';
+  const add = member.state === 'new' && direction === 'fr-en' && !member.added
+    ? `<button class="wm-heard-add" data-action="family-add" data-word="${esc(member.id)}" ${familyAdding.has(member.id) ? 'disabled' : ''}>Add to my words</button>`
+    : status ? `<span class="wm-heard-status" role="status">${esc(status)}</span>` : '';
+  return `<div class="fam-member"><span class="fam-dot ${member.state}" aria-hidden="true"></span><div class="fam-text"><p class="fam-fr ${genderClass(member.word.gender).trim()}" lang="fr">${frEsc(member.word.fr)}</p><p class="fam-en">${esc(member.word.en)}</p>${member.note ? `<p class="fam-note">${esc(member.note)}</p>` : ''}${add}</div><button class="icon" data-play-word="${esc(member.id)}" aria-label="Pronounce ${esc(member.word.fr)}">${speaker}</button></div>`;
+}
+function renderBuilding() {
+  const header = `<div class="section-top">${back(buildingFrom === 'families' ? 'Word families' : 'Grammar', buildingFrom === 'families' ? 'families' : 'grammar')}</div><h1>Word building</h1><p class="subtitle">How French makes one word from another. Learn a pattern once, and new words arrive half known.</p>`;
+  if (familiesLoading || familiesError) { main.innerHTML = `${noticeHTML()}<section class="topics families">${header}${familiesError ? `<div class="notice" role="alert"><span>${esc(familiesError)}</span><button class="quiet" data-action="word-building">Retry</button></div>` : '<div class="loading-state" role="status">Opening word building…</div>'}</section>`; return; }
+  const byId = new Map((words || []).map((word) => [word.id, word]));
+  const members = new Map((families || []).flatMap((family) => family.members).map((member) => [member.id, member]));
+  const entry = (id) => { const word = byId.get(id); return word ? { ...members.get(id), id, word, state: familyState(word) } : null; };
+  const rank = { known: 0, learning: 1, new: 2 };
+  const chip = (index, member) => `<button class="wb-chip" data-action="building-word" data-pattern="${index}" data-word="${esc(member.id)}" aria-pressed="${buildingWord === `${index}:${member.id}`}"><span class="fam-dot ${member.state}" aria-hidden="true"></span><span lang="fr" class="${genderClass(member.word.gender).trim()}">${frEsc(member.word.fr)}</span></button>`;
+  const cards = (patterns || []).map((pattern, index) => {
+    // Pairs whose first word you know come first: they show the pattern on ground you stand on.
+    const pairs = pattern.examples.map(([from, to]) => [entry(from), entry(to)]).filter(([from, to]) => from && to)
+      .sort((a, b) => rank[a[0].state] - rank[b[0].state] || rank[a[1].state] - rank[b[1].state]);
+    if (pairs.length < 2) return '';
+    const [openIndex, openId] = buildingWord.split(':');
+    const open = Number(openIndex) === index ? entry(openId) : null;
+    return `<article class="wb-card"><h2>${esc(pattern.title)}</h2><div class="wb-chains">${pairs.map(([from, to]) => `<div class="wb-chain">${chip(index, from)}<span class="wb-arrow" aria-hidden="true">→</span>${chip(index, to)}</div>`).join('')}</div>${open ? familyMemberHTML(open) : ''}<p class="wb-text">${esc(pattern.explanation)}</p>${pattern.tip ? `<p class="caption wb-tip">${esc(pattern.tip)}</p>` : ''}</article>`;
+  }).join('');
+  const legend = `<p class="fam-legend"><span class="fam-dot known" aria-hidden="true"></span>you know it <span class="fam-dot learning" aria-hidden="true"></span>learning <span class="fam-dot new" aria-hidden="true"></span>not started</p>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics families">${header}${cards ? legend : ''}<div class="fam-list">${cards || '<p class="empty-list">Word building is not ready yet.</p>'}</div></section>`;
+}
+function enterFamilies() { familyOpen = -1; loadFamilyData('families'); }
+function enterBuilding() { buildingWord = ''; loadFamilyData('building'); }
+// Both pages join the families (and their patterns, fetched once) with the words' statuses in this direction.
+async function loadFamilyData(on) {
+  familiesError = ''; familiesLoading = true; render();
   if (!snapshot && !await fetchState()) { familiesLoading = false; return; }
   const token = ++browseGeneration;
   try {
-    const [list, found] = await Promise.all([families ? { families } : api('api/families'), api(`api/words?direction=${encodeURIComponent(direction)}&deck=all`)]);
-    if (token !== browseGeneration || screen !== 'families') return;
-    families = list.families; words = found.words;
+    const [list, found] = await Promise.all([families ? { families, patterns } : api('api/families'), api(`api/words?direction=${encodeURIComponent(direction)}&deck=all`)]);
+    if (token !== browseGeneration || screen !== on) return;
+    families = list.families; patterns = list.patterns || []; words = found.words;
   } catch (error) {
-    if (token !== browseGeneration || screen !== 'families') return;
+    if (token !== browseGeneration || screen !== on) return;
     familiesError = error.message;
   }
   familiesLoading = false;
-  renderFamilies();
+  render();
 }
 // Adding a relative from its family: the same add as a word tapped in a French text (fr-en, today, on its own allowance).
 async function addFromFamily(id) {
   if (familyAdding.has(id)) return;
-  familyAdding.add(id); renderFamilies();
+  familyAdding.add(id); render();
   try {
     const result = await api('api/vocabulary/add', { method: 'POST', body: JSON.stringify({ wordId: id, requestId: requestId() }) });
     const word = words?.find((entry) => entry.id === id);
@@ -845,7 +875,7 @@ async function addFromFamily(id) {
     notice = { message: error.message };
   }
   familyAdding.delete(id);
-  if (screen === 'families') renderFamilies();
+  if (screen === 'families' || screen === 'building') render();
 }
 function topicRowHTML(topic) {
   const parts = [];
@@ -858,7 +888,7 @@ function topicRowHTML(topic) {
 }
 function renderGrammar() {
   const list = (units || []).map((unit, index) => `<section class="unit" aria-labelledby="unit-${esc(unit.id)}"><div class="unit-head"><div class="unit-copy"><p class="unit-kicker">Unit ${index + 1}</p><h2 id="unit-${esc(unit.id)}">${esc(unit.title)}</h2><p>${esc(unit.description)}</p></div><button class="secondary unit-test" data-scope="unit:${esc(unit.id)}" ${locked() ? 'disabled' : ''}>${unit.hasActiveTest ? 'Continue unit test' : `Unit test · ${unit.testLength}`}${unit.test.best ? `<small>best ${unit.test.best.score}/${unit.test.best.total}</small>` : ''}</button></div><div class="topic-list">${unit.topics.map(topicRowHTML).join('')}</div></section>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}</div><h1>Grammar & sentences</h1><p class="subtitle">Practise a topic, then test yourself. Each unit ends with a test across its topics.</p>${units ? list : loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : ''}</section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}</div><h1>Grammar & sentences</h1><p class="subtitle">Practise a topic, then test yourself. Each unit ends with a test across its topics.</p><button class="topic-row wb-entry" data-action="word-building" ${locked() ? 'disabled' : ''}><span class="topic-mark" aria-hidden="true"><span>-er</span><span>-eur</span></span><span class="copy"><span class="topic-name"><h3>Word building</h3></span><p>Endings and prefixes that turn one word into another, shown with your own words.</p></span><span class="arrow" aria-hidden="true">→</span></button>${units ? list : loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : ''}</section>`;
 }
 // A guide section teaches one point: a table of forms (a highlighted row holds an answer), the steps for choosing,
 // examples and traps. French and English share the cells, so every cell keeps French spacing.
@@ -2225,6 +2255,8 @@ document.addEventListener('click', (event) => {
   else if (action === 'families') { if (move('families', true)) enterFamilies(); }
   else if (action === 'family') { const index = Number(button.dataset.family); familyOpen = familyOpen === index ? -1 : index; renderFamilies(); }
   else if (action === 'family-add') addFromFamily(button.dataset.word);
+  else if (action === 'word-building') { buildingFrom = button.dataset.from === 'families' ? 'families' : 'grammar'; if (move('building', true)) enterBuilding(); }
+  else if (action === 'building-word') { const key = `${button.dataset.pattern}:${button.dataset.word}`; buildingWord = buildingWord === key ? '' : key; renderBuilding(); }
   else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
   else if (action === 'extra-words' || action === 'review-early') extraPractice(action, button.dataset);
   else if (action === 'options') openOptions();
@@ -2361,6 +2393,7 @@ window.addEventListener('popstate', (event) => {
   if (screen === 'practice') fetchState();
   else if (screen === 'browse') enterBrowse();
   else if (screen === 'families') enterFamilies();
+  else if (screen === 'building') enterBuilding();
   else if (screen === 'grammar' || screen === 'topic' || screen === 'exercise') loadGrammar();
   else if (screen === 'listen' || screen === 'read') enterStream();
   else if (screen === 'mix' || screen === 'focus') enterMixed();

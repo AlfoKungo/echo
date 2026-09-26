@@ -312,3 +312,16 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .fam-member .icon{flex:none;width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:var(--violet)}
 .fam-member .icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .fam-footer{max-width:620px;margin-top:14px}
+/* Word building */
+.wb-entry{margin:18px 0 6px;max-width:620px}
+.wb-card{border:1px solid var(--frame);border-radius:16px;background:var(--card);padding:16px}
+.wb-card h2{margin:0 0 12px;font-size:18px;letter-spacing:-.3px;color:var(--ink)}
+.wb-chains{display:grid;gap:8px}
+.wb-chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.wb-arrow{color:var(--dim)}
+.wb-chip{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:6px 12px;border:1px solid var(--frame);border-radius:12px;font-size:16px;background:var(--page)}
+.wb-chip[aria-pressed=true]{border-color:var(--violet)}
+.wb-card .fam-member{margin-top:12px}
+.wb-text{margin:14px 0 0;font-size:15px;line-height:1.5;color:var(--ink)}
+.wb-tip{margin-top:8px}
+.fam-link{margin-top:16px}

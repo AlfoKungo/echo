@@ -3,7 +3,7 @@
 // words in sooner. content/families.json is written once by scripts/make-families.ts (Opus) and checked here.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { Word, WordFamily } from '../contract';
+import type { Word, WordFamily, WordPattern } from '../contract';
 
 export const MAX_MEMBERS = 8;
 const NOTE_MAX = 120;
@@ -65,4 +65,64 @@ Reply with JSON only: {"families": [{"members": [{"id": "..."}, {"id": "...", "n
 
 Deck:
 ${deck.map((word) => `${word.id} | ${word.fr} | ${word.en}`).join('\n')}`;
+}
+
+// Word building: the few patterns the families are made by (-er makes the verb, in- makes the opposite…), each
+// shown with pairs from one family. content/word-building.json is written by scripts/make-word-building.ts.
+const TITLE_MAX = 48;
+const EXPLANATION_MAX = 240;
+const TIP_MAX = 170;
+
+// Problems with one pattern: short plain text, and 2 to 6 examples, each a [from, to] pair of two members of one
+// family, used by no other pattern.
+export function patternProblems(pattern: WordPattern, familyOf: Map<string, WordFamily>, used: Set<string>): string[] {
+  const problems: string[] = [];
+  const title = typeof pattern?.title === 'string' ? pattern.title.trim() : '';
+  if (!title || title.length > TITLE_MAX) problems.push(`a pattern needs a title of at most ${TITLE_MAX} characters.`);
+  if (typeof pattern?.explanation !== 'string' || pattern.explanation.trim().length < 20 || pattern.explanation.length > EXPLANATION_MAX) problems.push(`"${title}": the explanation must be 20 to ${EXPLANATION_MAX} characters.`);
+  if (pattern?.tip !== undefined && (typeof pattern.tip !== 'string' || pattern.tip.length > TIP_MAX)) problems.push(`"${title}": a tip is at most ${TIP_MAX} characters.`);
+  const examples = Array.isArray(pattern?.examples) ? pattern.examples : [];
+  if (examples.length < 2 || examples.length > 6) problems.push(`"${title}" needs 2 to 6 examples, not ${examples.length}.`);
+  for (const example of examples) {
+    const [from, to] = Array.isArray(example) ? example : [];
+    const family = familyOf.get(from as string);
+    if (!family || from === to || familyOf.get(to as string) !== family) problems.push(`"${title}": [${from}, ${to}] is not a pair from one family.`);
+    else if (used.has(`${from}>${to}`)) problems.push(`"${title}": [${from}, ${to}] is already an example of another pattern.`);
+  }
+  return problems;
+}
+
+export function familyIndex(families: WordFamily[]): Map<string, WordFamily> {
+  return new Map(families.flatMap((family) => family.members.map((member) => [member.id, family] as const)));
+}
+
+// The committed patterns whose examples still fit the families, so a regenerated family file cannot break Grammar.
+export function loadPatterns(root: string, families: WordFamily[]): WordPattern[] {
+  const path = join(root, 'content/word-building.json');
+  if (!existsSync(path)) return [];
+  const familyOf = familyIndex(families);
+  const used = new Set<string>();
+  const sound: WordPattern[] = [];
+  for (const pattern of (JSON.parse(readFileSync(path, 'utf8')) as { patterns: WordPattern[] }).patterns) {
+    if (patternProblems(pattern, familyOf, used).length) continue;
+    for (const [from, to] of pattern.examples) used.add(`${from}>${to}`);
+    sound.push(pattern);
+  }
+  return sound;
+}
+
+export function patternsPrompt(families: WordFamily[], byId: Map<string, Word>, problems: string[] = []): string {
+  const lines = families.map((family, index) => `${index + 1}. ${family.members.map((member) => `${member.id} = ${byId.get(member.id)?.fr} (${byId.get(member.id)?.en})${member.note ? ` [${member.note}]` : ''}`).join('; ')}`);
+  return `You are helping an English speaker (level A1 to A2) learning French. Below are word families from their vocabulary: each line lists "id = French (English)", and for every word after the first, a note on how it is built.
+
+Sort how these words are built into 6 to 12 PATTERNS a learner can reuse on words they have never seen, for a short "Word building" page. For example: "-er makes the verb", "-eur, -ier: the person who does it", "in-, im-: the opposite", "re-: again or back", "-ée, -ure: the noun for the action", "Two words make one". Most useful pattern first; skip a pattern with fewer than 2 examples.
+- "title": at most ${TITLE_MAX} characters; it may quote the French ending or prefix.
+- "explanation": one or two plain English sentences (at most ${EXPLANATION_MAX} characters) on what the pattern does and how to spot it in speech or text.
+- "tip" (optional): one extra line at most ${TIP_MAX} characters, e.g. the gender such words take, or the feminine form.
+- "examples": 2 to 6 pairs ["fromId", "toId"], both ids from the SAME family line, where the second word is built from the first by this pattern. Use each pair once across all patterns.
+${problems.length ? `\nYour previous answer had these problems; fix them:\n${problems.slice(0, 30).map((problem) => `- ${problem}`).join('\n')}\n` : ''}
+Reply with JSON only: {"patterns": [{"title": "...", "explanation": "...", "tip": "...", "examples": [["fromId", "toId"]]}]}
+
+Families:
+${lines.join('\n')}`;
 }
