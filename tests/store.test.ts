@@ -185,7 +185,7 @@ describe('working-deck counts and admission', () => {
 });
 
 describe('three-stack selection', () => {
-  test('first introduces ten, then serves unseen, failed and successful in a 3:2:1 mix', () => {
+  test('first introduces ten, then serves seen words with misses ahead of successes', () => {
     const { store, open } = fixture(undefined, thirtyWords);
     let state = store.start('fr-en', 'all');
     const introduced = new Set<string>();
@@ -204,10 +204,31 @@ describe('three-stack selection', () => {
       served.push(state.current!.stack);
       state = other.grade(answer(state, state.current!.stack !== 'failed'));
     }
-    expect(served.filter((stack) => stack === 'unseen')).toHaveLength(6);
-    expect(served.filter((stack) => stack === 'failed')).toHaveLength(4);
-    expect(served.filter((stack) => stack === 'successful')).toHaveLength(2);
-    expect(state.stats).toMatchObject({ unseenActive: 14, seenActive: 14, completedToday: 2 });
+    expect(served.filter((stack) => stack === 'unseen').length).toBeGreaterThanOrEqual(4);
+    expect(served.filter((stack) => stack === 'failed').length).toBeGreaterThan(served.filter((stack) => stack === 'successful').length);
+  });
+
+  test('new words take a smaller share of turns as the seen pile grows, and never stop', () => {
+    const many: Word[] = Array.from({ length: 150 }, (_, index) => ({ id: `many-${index}`, fr: `mot ${index}`, en: `word ${index}`, category: 'daily' }));
+    const { store } = fixture(undefined, many);
+    store.setSettings(many.length);
+    let state = store.start('fr-en', 'all');
+    const newIn = (turns: number) => {
+      let fresh = 0;
+      for (let index = 0; index < turns; index++) {
+        if (state.current!.stack === 'unseen') fresh++;
+        state = store.grade(answer(state, false));
+      }
+      return fresh;
+    };
+    // Every answer is a miss, so the seen pile only grows.
+    newIn(10);
+    const small = newIn(20);
+    while (state.stats.seenActive < 70) state = store.grade(answer(state, false));
+    const large = newIn(20);
+    expect(small).toBeGreaterThanOrEqual(7);
+    expect(large).toBeLessThanOrEqual(5);
+    expect(large).toBeGreaterThan(0);
   });
 
   test('does not run through all unseen cards when the first ten were correct, and empty stacks never block completion', () => {

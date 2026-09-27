@@ -92,17 +92,28 @@ export const SCORE_MISSED = -3;
 export const SCORE_HEARD = 0.5;
 export const SCORE_HALF_LIFE_DAYS = 21;
 // recent holds the last words answered, newest first; selection passes over them while anything else is left.
-type PracticeQueue = { day: string; warmup: number; turn: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
+// credit carries the unseen share from turn to turn (see unseenShare); turn cycles seenMix.
+type PracticeQueue = { day: string; warmup: number; turn: number; credit?: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
 const RECENT_GAP = 3;
 // A word missed this many times shows, on its answer side, up to ALONGSIDE words of its deck missed most with it.
 const TROUBLE_MISSES = 6;
 const ALONGSIDE = 3;
 type HistoricalGrade = { before: CardRow; known: number; graded_at: string };
 const stackNames: VocabularyStack[] = ['unseen', 'failed', 'successful'];
-const stackMix: VocabularyStack[] = ['failed', 'unseen', 'successful', 'unseen', 'failed', 'unseen'];
+// Among words already seen today, missed ones come twice as often as ones answered right.
+const seenMix: VocabularyStack[] = ['failed', 'successful', 'failed'];
+const SEEN_EASY = 10;
+const SEEN_SCALE = 20;
+// After the warm-up, the share of turns given to words not seen yet today: half while the seen pile is small,
+// falling smoothly as it grows (a third at 30, a quarter at 50, a fifth at 70, never none), so a large pile
+// drains faster without new words stopping. A word takes about three answers a day, so the pile tends to settle
+// around 30, higher on a day of many misses.
+export function unseenShare(seen: number): number {
+  return 1 / (2 + Math.max(0, seen - SEEN_EASY) / SEEN_SCALE);
+}
 
 function emptyQueue(day: string): PracticeQueue {
-  return { day, warmup: 0, turn: 0, unseen: [], failed: [], successful: [] };
+  return { day, warmup: 0, turn: 0, credit: 0, unseen: [], failed: [], successful: [] };
 }
 
 function studyDayStart(now: Date): Date {
@@ -496,7 +507,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   function loadQueue(direction: Direction, at: Date): PracticeQueue {
     const queue = JSON.parse(queueForDirection.get(direction)!.state_json) as PracticeQueue;
     const day = studyDay(at);
-    if (queue.day !== day) Object.assign(queue, { day, warmup: 0, turn: 0 });
+    if (queue.day !== day) Object.assign(queue, { day, warmup: 0, turn: 0, credit: 0 });
     return queue;
   }
 
@@ -515,29 +526,37 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     }
   }
 
-  function selectCard(queue: PracticeQueue, deck: string): { id: string; stack: VocabularyStack; nextTurn: number } | null {
+  type Selection = { id: string; stack: VocabularyStack; nextTurn: number; nextCredit: number };
+  function selectCard(queue: PracticeQueue, deck: string): Selection | null {
     const recent = queue.recent ?? [];
+    const seen = queue.failed.filter((id) => inDeck(id, deck)).length + queue.successful.filter((id) => inDeck(id, deck)).length;
+    // Credit is capped at one turn, so a stretch with nothing unseen to offer does not save up a burst of them.
+    const credit = Math.min(1, (queue.credit ?? 0) + unseenShare(seen));
     // A word just answered, missed or not, waits for others; it returns at once only when nothing else is left.
     for (const avoid of [recent, recent.slice(0, 1), []]) {
       const pick = (list: string[]) => list.find((id) => inDeck(id, deck) && !avoid.includes(id));
       const unseen = pick(queue.unseen);
-      if (queue.warmup < 10 && unseen) return { id: unseen, stack: 'unseen', nextTurn: queue.turn };
-      for (let offset = 0; offset < stackMix.length; offset++) {
-        const position = (queue.turn + offset) % stackMix.length;
-        const stack = stackMix[position]!;
+      const fresh = (id: string): Selection => ({ id, stack: 'unseen', nextTurn: queue.turn, nextCredit: Math.max(0, credit - 1) });
+      if (queue.warmup < 10 && unseen) return { ...fresh(unseen), nextCredit: 0 };
+      if (credit >= 1 && unseen) return fresh(unseen);
+      for (let offset = 0; offset < seenMix.length; offset++) {
+        const position = (queue.turn + offset) % seenMix.length;
+        const stack = seenMix[position]!;
         const id = pick(queue[stack]);
-        if (id) return { id, stack, nextTurn: (position + 1) % stackMix.length };
+        if (id) return { id, stack, nextTurn: (position + 1) % seenMix.length, nextCredit: credit };
       }
+      if (unseen) return fresh(unseen);
     }
     return null;
   }
 
   // What answering the selected card does to the queue before the card is filed again: it leaves its stack,
   // counts toward the ten-card warm-up, advances the stack mix and becomes the most recent word.
-  function passOver(queue: PracticeQueue, selection: { id: string; stack: VocabularyStack; nextTurn: number }, wordId: string): void {
+  function passOver(queue: PracticeQueue, selection: Selection, wordId: string): void {
     queue[selection.stack].splice(queue[selection.stack].indexOf(wordId), 1);
     if (selection.stack === 'unseen') queue.warmup = Math.min(10, queue.warmup + 1);
     queue.turn = selection.nextTurn;
+    queue.credit = selection.nextCredit;
     queue.recent = [wordId, ...(queue.recent ?? []).filter((id) => id !== wordId)].slice(0, RECENT_GAP);
   }
 
@@ -862,7 +881,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       let queue: PracticeQueue;
       if (latest.queue_before_json) {
         queue = JSON.parse(latest.queue_before_json) as PracticeQueue;
-        if (queue.day !== studyDay(at)) Object.assign(queue, { day: studyDay(at), warmup: 0, turn: 0 });
+        if (queue.day !== studyDay(at)) Object.assign(queue, { day: studyDay(at), warmup: 0, turn: 0, credit: 0 });
       } else {
         const history = db.query<GradeRow, [Direction, string, number]>(`
           SELECT * FROM grades WHERE direction = ? AND word_id = ? AND sequence < ?
