@@ -143,8 +143,8 @@ const story = createStory({
     if (process.env.ECHO_WORD_AUDIO !== 'off') attempts.note(tried, (id) => !storyExists(id));
   },
 });
-void textsStarted.then(async () => { if (process.env.ECHO_STORY !== 'off') { await story.check(); void recordSentences(); } });
-const storyChecks = setInterval(async () => { if (process.env.ECHO_STORY !== 'off') { await story.check(); void recordSentences(); } }, 10 * 60_000);
+void textsStarted.then(() => { if (process.env.ECHO_STORY !== 'off') return story.check(); });
+const storyChecks = setInterval(() => { if (process.env.ECHO_STORY !== 'off') void story.check(); }, 10 * 60_000);
 // The Radio: one episode a day from today's words, the latest recorded story episode and one grammar point.
 const radio = createRadio({
   root, dataDir: dirname(dbPath), ask,
@@ -158,7 +158,7 @@ const radio = createRadio({
 });
 // The Walkman's sentence tape plays every recorded Listen/Read sentence converted to the Walkman format, with
 // its English said and checked, and the Story page's tape does the same with each recorded story line (those
-// first, as there are few). They are made in the background after the day's Radio or the story's recordings,
+// first, as there are few). They are made in the background after each Radio check, one renderer at a time,
 // each tried a few times.
 let sentencesRecording: Promise<void> | null = null;
 function recordSentences(): Promise<void> {
