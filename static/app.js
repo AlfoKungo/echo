@@ -171,6 +171,7 @@ function stopAudio() {
   const stopped = clipRun;
   if (stopped) clipSpot = { ...stopped };
   clipRun = null; audioGeneration++; clipProgress = null; audio.pause(); audio.removeAttribute('src'); audio.load(); clearTimeout(audioTimer); document.querySelector('#audio-status').hidden = true;
+  if (!storyAudio.paused) storyAudio.pause();
   if (stopped) showClipProgress();
 }
 function audioMessage(message, url) {
@@ -238,7 +239,7 @@ function clipHint() {
 }
 // The speaker and its hint change as lines play, so the block is redrawn in place.
 function showClipProgress() {
-  if (screen === 'story' && storyView) { const block = document.querySelector('.story .listen-block'); if (block) block.outerHTML = storyPlayHTML(); return; }
+  if (screen === 'story' && storyView) { const block = document.querySelector('.story .story-player'); if (block) block.outerHTML = storyPlayHTML(); return; }
   const block = document.querySelector('.listen-block');
   if (block && streamState?.current) block.outerHTML = streamAudioHTML(streamState.current, !!streamState.result);
 }
@@ -664,10 +665,11 @@ function renderRadio() {
     ${chapters ? `<div class="radio-chapters" role="group" aria-label="Jump to">${chapters}</div>` : ''}`);
 }
 if ('mediaSession' in navigator) {
-  navigator.mediaSession.setActionHandler('play', () => mediaPlayer === 'radio' ? playRadio() : playWalkman());
-  navigator.mediaSession.setActionHandler('pause', () => (mediaPlayer === 'radio' ? radioAudio : walkmanAudio).pause());
-  navigator.mediaSession.setActionHandler('nexttrack', () => mediaPlayer === 'radio' ? skipRadio(1) : skipWord(1));
-  navigator.mediaSession.setActionHandler('previoustrack', () => mediaPlayer === 'radio' ? skipRadio(-1) : skipWord(-1));
+  const player = () => mediaPlayer === 'radio' ? { play: playRadio, audio: radioAudio, skip: skipRadio } : mediaPlayer === 'story' ? { play: playStory, audio: storyAudio, skip: skipStory } : { play: playWalkman, audio: walkmanAudio, skip: skipWord };
+  navigator.mediaSession.setActionHandler('play', () => player().play());
+  navigator.mediaSession.setActionHandler('pause', () => player().audio.pause());
+  navigator.mediaSession.setActionHandler('nexttrack', () => player().skip(1));
+  navigator.mediaSession.setActionHandler('previoustrack', () => player().skip(-1));
 }
 function availabilityCopy() {
   const parts = [];
@@ -1702,7 +1704,10 @@ async function loadStory(quiet = false) {
     const number = storyNumber || storyStatus.episodes.at(-1)?.number || 0;
     if (number) {
       const view = await api(`api/story/${number}`);
-      if (storyView?.episode.id !== view.episode.id) { storyAnswers = view.episode.questions.map(() => null); storyTaps.clear(); storyLines.clear(); storyRecap = false; storyNote = false; }
+      if (storyView?.episode.id !== view.episode.id) {
+        storyAnswers = view.episode.questions.map(() => null); storyTaps.clear(); storyLines.clear(); storyRecap = false; storyNote = false;
+        storyAudio.pause(); storyAudio.removeAttribute('src'); delete storyAudio.dataset.url; storyAt = -1; storyEnglish = false;
+      }
       storyView = view;
     } else storyView = null;
   } catch (error) { if (!quiet) { notice = { message: error.message }; retryAction = { type: 'story' }; } }
@@ -1713,17 +1718,37 @@ async function loadStory(quiet = false) {
   const waiting = !storyView || (storyView.last && storyView.read) || storyView.audio.some((url) => !url);
   if (waiting && storyStatus && !storyStatus.error) storyPoll = setTimeout(() => { if (screen === 'story') loadStory(true); }, 15000);
 }
+// While the tape plays, the line playing is marked, and in French-then-English its English shows as it is said.
 function storyLineHTML(line, index, glosses) {
   const open = storyLines.has(index);
+  const current = storyTapeActive() && index === storyAt;
+  const english = open || (current && storyEnglish && !storyAudio.paused);
   const start = `<button class="lyric-start" data-action="story-line" data-index="${index}" aria-expanded="${open}" aria-label="What this line means">›</button>`;
-  return `<div class="lyric-line story-line" data-line="${index}">${start}<div class="lyric-text">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p lang="fr">${glossedHTML(line.fr, glosses)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div></div>`;
+  return `<div class="lyric-line story-line${current ? ' playing' : ''}" data-line="${index}">${start}<div class="lyric-text">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p lang="fr">${glossedHTML(line.fr, glosses)}</p>${english ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div></div>`;
 }
+// The episode as one MP3, French only or each line then its English, so lines follow each other without a wait
+// and it plays on with the phone locked. Until its recordings are converted, the lines play one by one.
+const storyAudio = new Audio();
+const STORY_MODES = { fr: 'French', both: 'French, then English' };
+let storyMode = (() => { const saved = readPreference('echo.story-mode', 'fr'); return saved in STORY_MODES ? saved : 'fr'; })();
+let storyAt = -1;          // the tape's line playing or where it paused; -1 before it starts or once it ends
+let storyEnglish = false;  // whether that line's English is being said
+function storyTape() { return storyView?.tapes?.[storyMode] ?? null; }
+function storyTapeActive() { const tape = storyTape(); return !!tape && storyAudio.dataset.url === tape.url && storyAt >= 0; }
 function storyPlayHTML() {
+  const tape = storyTape();
+  if (tape) {
+    const playing = !storyAudio.paused && storyAudio.dataset.url === tape.url;
+    const total = tape.lines.length;
+    const hint = storyAt >= 0 ? `${playing ? 'line' : 'stopped at line'} ${storyAt + 1} of ${total}` : 'Listen to the episode';
+    const modes = Object.entries(STORY_MODES).map(([mode, label]) => `<button data-action="story-mode" data-mode="${mode}" aria-pressed="${storyMode === mode}">${label}</button>`).join('<span aria-hidden="true">·</span>');
+    return `<div class="story-player"><div class="listen-block"><button class="icon" data-action="story-play" aria-label="${playing ? 'Pause' : 'Listen to the episode'}">${playing ? pauseIcon : speaker}</button><p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div><p class="wm-choice story-mode">Plays ${modes}</p></div>`;
+  }
   const recorded = storyView.audio.filter(Boolean).length;
-  if (!recorded) return '<div class="listen-block"><p class="caption">The lines are being recorded.</p></div>';
+  if (!recorded) return '<div class="story-player"><div class="listen-block"><p class="caption">The lines are being recorded.</p></div></div>';
   const playing = clipRun?.key === `story:${storyView.episode.id}`;
   const hint = playing && clipProgress ? `line ${clipProgress.index} of ${clipProgress.total}` : recorded < storyView.audio.length ? `${recorded} of ${storyView.audio.length} lines recorded` : 'Listen to the episode';
-  return `<div class="listen-block"><button class="icon" data-action="story-play" aria-label="${playing ? 'Stop' : 'Listen to the episode'}">${playing ? pauseIcon : speaker}</button><p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div>`;
+  return `<div class="story-player"><div class="listen-block"><button class="icon" data-action="story-play" aria-label="${playing ? 'Stop' : 'Listen to the episode'}">${playing ? pauseIcon : speaker}</button><p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div></div>`;
 }
 function storyQuestionsHTML(episode, finished) {
   return episode.questions.map((question, q) => {
@@ -1768,10 +1793,75 @@ function renderStory() {
     ${earlier ? `<h2 class="story-heading">Other episodes</h2><div class="topic-list">${earlier}</div>` : ''}`);
 }
 function playStory() {
-  if (clipRun?.key === `story:${storyView?.episode.id}`) { stopAudio(); render(); return; }
-  const urls = (storyView?.audio || []).filter(Boolean);
-  if (urls.length) playClips(urls);
+  const tape = storyTape();
+  if (!tape) {
+    if (clipRun?.key === `story:${storyView?.episode.id}`) { stopAudio(); render(); return; }
+    const urls = (storyView?.audio || []).filter(Boolean);
+    if (urls.length) playClips(urls);
+    return;
+  }
+  if (!storyAudio.paused) { storyAudio.pause(); return; }
+  stopAudio();
+  startStoryTape(tape, Math.max(0, storyAt));
 }
+// Plays the tape from the start of a line; a new tape opens there (a media fragment), a loaded one seeks.
+async function startStoryTape(tape, line) {
+  const at = tape.lines[Math.min(line, tape.lines.length - 1)]?.start ?? 0;
+  mediaPlayer = 'story';
+  if (storyAudio.dataset.url !== tape.url) { storyAudio.src = `${tape.url}#t=${at}`; storyAudio.dataset.url = tape.url; }
+  else storyAudio.currentTime = at;
+  storyAudio.playbackRate = speed; storyAudio.preservesPitch = true; storyAudio.webkitPreservesPitch = true;
+  try { await storyAudio.play(); } catch (error) { if (error.name !== 'AbortError') { notice = { message: 'The episode could not start. Tap the speaker to try again.' }; render(); } }
+}
+function chooseStoryMode(mode) {
+  if (mode === storyMode || !(mode in STORY_MODES)) return;
+  const playing = !storyAudio.paused;
+  storyMode = mode; savePreference('echo.story-mode', mode); storyEnglish = false;
+  // Switching carries on from the line playing, in the new way.
+  const tape = storyTape();
+  if (playing && tape) startStoryTape(tape, Math.max(0, storyAt));
+  render();
+}
+// Lock-screen skip moves a whole line: forward to the next, back to this line's start or the one before.
+function skipStory(step) {
+  const tape = storyTape();
+  if (!tape || storyAudio.dataset.url !== tape.url) return;
+  const index = Math.max(0, storyAt);
+  const into = storyAudio.currentTime - (tape.lines[index]?.start ?? 0);
+  const target = step > 0 ? index + 1 : into > 1.5 ? index : index - 1;
+  if (target >= tape.lines.length) return;
+  storyAudio.currentTime = tape.lines[Math.max(0, target)].start;
+}
+function followStory() {
+  const tape = storyTape();
+  if (!tape || storyAudio.dataset.url !== tape.url) return;
+  const time = storyAudio.currentTime;
+  let index = -1;
+  for (let line = 0; line < tape.lines.length && tape.lines[line].start <= time + 0.01; line++) index = line;
+  const english = index >= 0 && tape.lines[index].enAt !== null && time >= tape.lines[index].enAt - 0.01;
+  if (index === storyAt && english === storyEnglish) return;
+  const before = storyAt;
+  storyAt = index; storyEnglish = english;
+  const line = storyView.episode.lines[index];
+  if (line && index !== before && 'mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: line.fr, artist: line.en, album: `Echo · Story, episode ${storyView.episode.number}`, artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
+  if (screen === 'story' && !document.hidden) markStoryLines(before, index);
+}
+// Redraws only the lines whose mark changed and the hint, so reading and scrolling are undisturbed.
+function markStoryLines(...indexes) {
+  for (const index of new Set(indexes)) {
+    const element = document.querySelector(`.story-line[data-line="${index}"]`);
+    const line = storyView?.episode.lines[index];
+    if (element && line) element.outerHTML = storyLineHTML(line, index, storyView.episode.gloss);
+  }
+  showClipProgress();
+}
+storyAudio.addEventListener('timeupdate', followStory);
+for (const event of ['play', 'pause']) storyAudio.addEventListener(event, () => { if (screen === 'story' && storyView) markStoryLines(storyAt); });
+storyAudio.addEventListener('ended', () => { const last = storyAt; storyAt = -1; storyEnglish = false; if (screen === 'story' && storyView) markStoryLines(last); });
+storyAudio.addEventListener('error', () => {
+  if (screen !== 'story' || !storyAudio.dataset.url) return;
+  delete storyAudio.dataset.url; notice = { message: 'The episode stopped loading. Tap the speaker to try again.' }; render();
+});
 async function finishStory() {
   if (busy || !storyView || storyView.read || storyAnswers.some((answer) => answer === null)) return;
   busy = true; render();
@@ -2345,6 +2435,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'story') openStory();
   else if (action === 'story-open') openStory(Number(button.dataset.n));
   else if (action === 'story-play') playStory();
+  else if (action === 'story-mode') chooseStoryMode(button.dataset.mode);
   else if (action === 'story-line') { const index = Number(button.dataset.index); if (storyLines.has(index)) storyLines.delete(index); else storyLines.add(index); render(); }
   else if (action === 'story-recap') { storyRecap = !storyRecap; render(); }
   else if (action === 'story-note') { storyNote = !storyNote; render(); }

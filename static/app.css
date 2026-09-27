@@ -325,3 +325,5 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .wb-text{margin:14px 0 0;font-size:15px;line-height:1.5;color:var(--ink)}
 .wb-tip{margin-top:8px}
 .fam-link{margin-top:16px}
+.story-player .story-mode{justify-content:flex-start;margin:-14px 0 16px}
+.story-line.playing{background:var(--card);border-radius:10px}

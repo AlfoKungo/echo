@@ -2,7 +2,7 @@ import { afterEach, describe, expect, test } from 'bun:test';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createRadio, grammarProblems, radioDay, type RadioClip } from '../lib/radio';
+import { createRadio, grammarProblems, layStory, radioDay, type RadioClip } from '../lib/radio';
 import { FRAME_BYTES, FRAME_SECONDS } from '../lib/walkman';
 
 const directories: string[] = [];
@@ -111,4 +111,37 @@ test('the day’s script waits for the story, so an episode it is still recordin
   const { value } = radio({ recorded: false, ready: async (root) => { for (const index of [1, 2]) writeFileSync(join(root, `audio/story/story-01-${index}.mp3`), frames(10)); } });
   await value.check();
   expect(value.view().segments.filter((segment) => segment.section === 'story')).toHaveLength(3);
+});
+
+describe('the story tape', () => {
+  const frames = (count: number, fill: number) => { const bytes = new Uint8Array(count * FRAME_BYTES).fill(fill); for (let f = 0; f < count; f++) { bytes[f * FRAME_BYTES] = 0xff; bytes[f * FRAME_BYTES + 1] = 0xf3; } return bytes; };
+  const silence = frames(1, 0);
+  const lines = [{ fr: frames(50, 1), en: frames(25, 2) }, { fr: frames(40, 3), en: null }, { fr: frames(30, 4), en: frames(20, 5) }];
+
+  test('French only plays the lines back to back with a short gap and no English', () => {
+    const tape = layStory(lines, 'fr', silence)!;
+    const gap = tape.lines[1]!.start - tape.lines[0]!.end;
+    expect(gap).toBeGreaterThan(0);
+    expect(gap).toBeLessThan(0.5);
+    expect(tape.lines.every((line) => line.enAt === null)).toBe(true);
+    expect(tape.bytes.includes(2)).toBe(false);
+    expect(tape.seconds).toBeCloseTo(tape.lines.at(-1)!.end, 3);
+  });
+
+  test('French then English says each English after its French, and a line without English in French only', () => {
+    const tape = layStory(lines, 'both', silence)!;
+    const [first, second, third] = tape.lines;
+    expect(first!.enAt! - first!.start).toBeGreaterThan(50 * FRAME_SECONDS);
+    expect(first!.end - first!.enAt!).toBeCloseTo(25 * FRAME_SECONDS, 3);
+    expect(second!.enAt).toBeNull();
+    expect(second!.end - second!.start).toBeCloseTo(40 * FRAME_SECONDS, 3);
+    expect(third!.start).toBeGreaterThan(second!.end);
+    const english = tape.bytes[Math.round(first!.enAt! / FRAME_SECONDS) * FRAME_BYTES + 5];
+    expect(english).toBe(2);
+  });
+
+  test('waits until every line has its French', () => {
+    expect(layStory([lines[0]!, { fr: null, en: frames(10, 6) }], 'fr', silence)).toBeNull();
+    expect(layStory([], 'both', silence)).toBeNull();
+  });
 });

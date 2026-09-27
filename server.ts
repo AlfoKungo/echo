@@ -13,7 +13,7 @@ import { createTextTopup } from './lib/text-topup';
 import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
-import { createRadio, radioClip, sentenceClips } from './lib/radio';
+import { createRadio, layStory, radioClip, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
@@ -143,8 +143,8 @@ const story = createStory({
     if (process.env.ECHO_WORD_AUDIO !== 'off') attempts.note(tried, (id) => !storyExists(id));
   },
 });
-void textsStarted.then(() => { if (process.env.ECHO_STORY !== 'off') return story.check(); });
-const storyChecks = setInterval(() => { if (process.env.ECHO_STORY !== 'off') void story.check(); }, 10 * 60_000);
+void textsStarted.then(async () => { if (process.env.ECHO_STORY !== 'off') { await story.check(); void recordSentences(); } });
+const storyChecks = setInterval(async () => { if (process.env.ECHO_STORY !== 'off') { await story.check(); void recordSentences(); } }, 10 * 60_000);
 // The Radio: one episode a day from today's words, the latest recorded story episode and one grammar point.
 const radio = createRadio({
   root, dataDir: dirname(dbPath), ask,
@@ -157,14 +157,21 @@ const radio = createRadio({
   ready: () => process.env.ECHO_STORY !== 'off' ? story.check() : Promise.resolve(),
 });
 // The Walkman's sentence tape plays every recorded Listen/Read sentence converted to the Walkman format, with
-// its English said and checked. They are made in the background after the day's Radio, each tried a few times.
+// its English said and checked, and the Story page's tape does the same with each recorded story line (those
+// first, as there are few). They are made in the background after the day's Radio or the story's recordings,
+// each tried a few times.
 let sentencesRecording: Promise<void> | null = null;
 function recordSentences(): Promise<void> {
   if (process.env.ECHO_WORD_AUDIO === 'off') return Promise.resolve();
   sentencesRecording ??= (async () => {
-    const missing = bank.sentences.filter((sentence) => existsSync(join(root, `audio/comprehension/${sentence.id}.mp3`)))
-      .flatMap((sentence) => { const clips = sentenceClips(sentence); return [clips.fr, clips.en]; })
-      .filter((clip) => !radioClip(root, clip.id));
+    const storyLines = story.episodes().flatMap((episode) => episode.lines.flatMap((line, index) => {
+      if (!storyExists(`${episode.id}-${index + 1}`)) return [];
+      const clips = storyLineClips(episode.id, index, line.en);
+      return [clips.fr, clips.en];
+    }));
+    const sentences = bank.sentences.filter((sentence) => existsSync(join(root, `audio/comprehension/${sentence.id}.mp3`)))
+      .flatMap((sentence) => { const clips = sentenceClips(sentence); return [clips.fr, clips.en]; });
+    const missing = [...new Map([...storyLines, ...sentences].map((clip) => [clip.id, clip])).values()].filter((clip) => !radioClip(root, clip.id));
     const allowed = new Set(attempts.allowed(missing.map((clip) => clip.id)));
     const plan = missing.filter((clip) => allowed.has(clip.id));
     if (!plan.length) return;
@@ -218,6 +225,31 @@ function sentenceTape(listening: ReturnType<typeof store.listening>): Tape {
     }
   }
   return layTape(crypto.randomUUID(), 'sentences', items(), silence, SENTENCE_TIMING);
+}
+// The Story page's tapes, built from the made clips whenever a clip joins them; the URL carries which clips
+// went in, so a page holding an older tape asks for the new one.
+const storyTapes = new Map<string, { version: string; tape: NonNullable<ReturnType<typeof layStory>> }>();
+function storyTape(number: number, mode: StoryTapeMode) {
+  const episode = story.episodes().find((entry) => entry.number === number);
+  const silence = walkmanClips.silence();
+  if (!episode || !silence) return null;
+  const clips = episode.lines.map((line, index) => { const ids = storyLineClips(episode.id, index, line.en); return { fr: radioClip(root, ids.fr.id), en: mode === 'both' ? radioClip(root, ids.en.id) : null }; });
+  const version = Bun.hash(clips.map((clip) => `${clip.fr ? 1 : 0}${clip.en ? 1 : 0}`).join('')).toString(36);
+  const key = `${episode.id}:${mode}`;
+  const kept = storyTapes.get(key);
+  if (kept?.version === version) return kept;
+  const tape = layStory(clips, mode, silence);
+  if (!tape) return null;
+  const entry = { version, tape };
+  storyTapes.set(key, entry);
+  return entry;
+}
+function storyWithTapes(view: ReturnType<typeof story.view>) {
+  const tape = (mode: StoryTapeMode) => {
+    const built = storyTape(view.episode.number, mode);
+    return built ? { url: `api/story/${view.episode.number}/${mode}.mp3?v=${built.version}`, seconds: built.tape.seconds, lines: built.tape.lines } : null;
+  };
+  return { ...view, tapes: { fr: tape('fr'), both: tape('both') } };
 }
 function direction(value: unknown): Direction {
   if (value !== 'fr-en' && value !== 'en-fr') throw new StoreError('Choose French to English or English to French.', 400);
@@ -399,8 +431,15 @@ async function route(req: Request): Promise<Response> {
     }
     if (path === '/api/story' && req.method === 'GET') return json(story.status());
     const storyEpisode = path.match(/^\/api\/story\/(\d+)(\/finish)?$/);
-    if (storyEpisode && !storyEpisode[2] && req.method === 'GET') return json(story.view(Number(storyEpisode[1])));
-    if (storyEpisode?.[2] && req.method === 'POST') { const data = await body(req); return json(story.finish(Number(storyEpisode[1]), data as unknown as StoryFinish)); }
+    if (storyEpisode && !storyEpisode[2] && req.method === 'GET') return json(storyWithTapes(story.view(Number(storyEpisode[1]))));
+    if (storyEpisode?.[2] && req.method === 'POST') { const data = await body(req); return json(storyWithTapes(story.finish(Number(storyEpisode[1]), data as unknown as StoryFinish))); }
+    const storyAudio = path.match(/^\/api\/story\/(\d+)\/(fr|both)\.mp3$/);
+    if (storyAudio && (req.method === 'GET' || req.method === 'HEAD')) {
+      const built = storyTape(Number(storyAudio[1]), storyAudio[2] as StoryTapeMode);
+      if (!built) return json({ error: 'This episode’s recordings are still being made.' }, 404);
+      const bytes = built.tape.bytes;
+      return ranged(req, bytes.length, (start, end) => bytes.subarray(start, end), { 'Cache-Control': 'no-store' });
+    }
     const soundClip = path.match(/^\/audio\/sounds\/([a-z0-9-]+)\.mp3$/);
     if (soundClip && (req.method === 'GET' || req.method === 'HEAD')) {
       if (!soundClips.has(soundClip[1]!)) return json({ error: 'This sound is not part of a drill.' }, 404);

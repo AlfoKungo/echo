@@ -42,6 +42,43 @@ const recording = (source: string): Step => ({ clip: { id: `cv-${hash(source)}`,
 export function sentenceClips(sentence: { id: string; en: string }): { fr: RadioClip; en: RadioClip } {
   return { fr: (recording(`audio/comprehension/${sentence.id}.mp3`) as { clip: RadioClip }).clip, en: (en(sentence.en) as { clip: RadioClip }).clip };
 }
+// A story line as the Radio and the Story page's tape both play it: its recording converted, and its English.
+export function storyLineClips(episodeId: string, index: number, english: string): { fr: RadioClip; en: RadioClip } {
+  return { fr: (recording(`audio/story/${episodeId}-${index + 1}.mp3`) as { clip: RadioClip }).clip, en: (en(english) as { clip: RadioClip }).clip };
+}
+// The Story page's tape: every line in French, or each line in French and then its English. Recordings end on
+// about half a second of their own silence, so the French-only gap is short. A line whose English could not be
+// made plays in French only.
+export type StoryTapeMode = 'fr' | 'both';
+export type StoryTapeLine = { start: number; enAt: number | null; end: number };
+const STORY_TIMING = { fr: { meaning: 0, between: 0.25 }, both: { meaning: 0.5, between: 0.9 } } as const;
+export function layStory(lines: { fr: Uint8Array | null; en: Uint8Array | null }[], mode: StoryTapeMode, silence: Uint8Array): { bytes: Uint8Array<ArrayBuffer>; seconds: number; lines: StoryTapeLine[] } | null {
+  if (!lines.length || lines.some((line) => !line.fr)) return null;
+  const chunks: Uint8Array[] = [];
+  let frames = 0;
+  const add = (bytes: Uint8Array) => { chunks.push(bytes); frames += bytes.length / FRAME_BYTES; };
+  const pause = (seconds: number) => {
+    const count = Math.round(seconds / FRAME_SECONDS);
+    const block = new Uint8Array(count * FRAME_BYTES);
+    for (let frame = 0; frame < count; frame++) block.set(silence.subarray(0, FRAME_BYTES), frame * FRAME_BYTES);
+    add(block);
+  };
+  const time = () => Math.round(frames * FRAME_SECONDS * 1000) / 1000;
+  const timing = STORY_TIMING[mode];
+  const laid = lines.map((line, index) => {
+    const start = time();
+    add(line.fr!);
+    let enAt: number | null = null;
+    if (mode === 'both' && line.en) { pause(timing.meaning); enAt = time(); add(line.en); }
+    const end = time();
+    if (index + 1 < lines.length) pause(timing.between);
+    return { start, enAt, end };
+  });
+  const bytes = new Uint8Array(frames * FRAME_BYTES);
+  let offset = 0;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
+  return { bytes, seconds: time(), lines: laid };
+}
 // A made clip's bytes, or null while it is missing or not whole Walkman frames.
 export function radioClip(root: string, id: string): Uint8Array | null {
   const path = join(root, 'audio', 'radio', `${id}.mp3`);
@@ -168,7 +205,7 @@ export function createRadio(options: {
     const opening = `Now, the story. Episode ${episode.number}: ${episode.titleEn}.`;
     return [
       { section: 'story', label: `Episode ${episode.number}`, en: episode.titleEn, steps: [en(opening), pause(0.8)] },
-      ...episode.lines.map((line, index): RadioPart => ({ section: 'story', label: `Episode ${episode.number}`, fr: line.fr, en: line.en, steps: [recording(`audio/story/${episode.id}-${index + 1}.mp3`), pause(1), translation(line.en), pause(1.4)] })),
+      ...episode.lines.map((line, index): RadioPart => { const clips = storyLineClips(episode.id, index, line.en); return { section: 'story', label: `Episode ${episode.number}`, fr: line.fr, en: line.en, steps: [{ clip: clips.fr }, pause(1), { clip: clips.en, optional: true }, pause(1.4)] }; }),
     ];
   }
 
