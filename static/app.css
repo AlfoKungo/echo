@@ -223,7 +223,7 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 @media(max-width:600px){
 .tiles{grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
 .tile{min-height:96px;padding:13px 15px;border-radius:16px}
-.tile .ic{top:13px;left:15px}
+.tile .ic{position:static;margin-bottom:auto}
 .tile .ic svg{width:24px;height:24px}
 .tile .level-tag{top:13px;right:13px}
 .tile h2{font-size:17px}
