@@ -1305,28 +1305,97 @@ let statistics = null;
 let statsBin = null;
 let statsOpen = false; // the chosen bar's word list starts closed, and opens when a bar is tapped
 let pointsDay = ''; // the day whose points are spelled out under the chart; today until another is tapped
+// The Word scores chart can show the end of any past day (statistics.history, oldest first, today last); statsAt
+// is the day shown. A past day's words load when its bar list is opened, once per visit.
+let statsAt = 0;
+let statsPlay = 0;
+const statsDayWords = new Map(); // day → words, or 'loading'
 const points = (value) => `${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(Math.round(value * 10) / 10).toLocaleString('en')}`;
 const STATS_BINS = Array.from({ length: 17 }, (_, index) => index - 8);
 const statsBinOf = (score) => Math.max(-8, Math.min(8, Math.round(score)));
 const statsKnown = (word) => word.status === 'scheduled' || word.status === 'due';
 const signed = (value) => String(value).replace('-', '−');
+const statsDayLabel = (day) => new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${day}T12:00`));
+// The started words of the day shown, with the score and state they had then.
+function statsShownWords() {
+  const history = statistics.history, day = history[statsAt];
+  if (statsAt === history.length - 1) return statistics.words.map((word) => ({ ...word, known: statsKnown(word) }));
+  const then = statsDayWords.get(day.day);
+  if (!Array.isArray(then)) return null;
+  const now = new Map(statistics.words.map((word) => [word.id, word]));
+  return then.flatMap((entry) => now.has(entry.id) ? [{ ...now.get(entry.id), score: entry.score, known: entry.known }] : []);
+}
+function scoresViewHTML() {
+  const history = statistics.history, shown = history[statsAt], today = history.at(-1), past = statsAt < history.length - 1;
+  // One scale for every day, so bars grow as the words did.
+  const tallest = Math.max(1, ...history.flatMap((day) => day.bins.map(([know, learning]) => know + learning)));
+  const bars = STATS_BINS.map((bin, index) => {
+    const [know, learning] = shown.bins[index];
+    const tone = bin < 0 ? 'neg' : bin === 0 ? 'zero' : 'pos';
+    const ghost = past ? `<span class="ghost" style="height:${(today.bins[index][0] + today.bins[index][1]) / tallest * 100}%"></span>` : '';
+    return `<button class="st-bar ${tone}" data-action="stats-bin" data-bin="${bin}" aria-pressed="${statsBin === bin}" aria-label="Score ${signed(bin)}: ${know} known, ${learning} still learning">${ghost}<span class="learning" style="height:${learning / tallest * 100}%"></span><span class="know" style="height:${know / tallest * 100}%"></span></button>`;
+  }).join('');
+  return `<p class="st-big"><strong>${shown.know.toLocaleString('en')}</strong> ${shown.know === 1 ? 'word' : 'words'} you ${past ? 'knew' : 'know'}</p>
+      <p class="st-sub">and ${shown.learning ? `${shown.learning} still learning` : 'none still learning'}, out of ${shown.total.toLocaleString('en')}.</p>
+      <div class="st-hist">${bars}</div>
+      <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
+      <div class="st-legend"><span><i class="know"></i>words you know</span><span><i class="learning"></i>still learning</span>${past ? '<span><i class="ghost"></i>today</span>' : ''}</div>`;
+}
+function scoresWhenHTML() {
+  const history = statistics.history, shown = history[statsAt], past = statsAt < history.length - 1;
+  const label = past ? `${esc(statsDayLabel(shown.day))}<small>end of the day</small>` : `Today<small>${esc(statsDayLabel(shown.day))}</small>`;
+  return `<button class="icon" data-action="stats-day" data-step="-1" aria-label="Day before" ${statsAt === 0 ? 'disabled' : ''}>‹</button><p class="st-when-label" role="status">${label}</p><button class="icon" data-action="stats-day" data-step="1" aria-label="Day after" ${past ? '' : 'disabled'}>›</button><button class="icon" data-action="stats-play" aria-label="${statsPlay ? 'Stop' : 'Play from your first day'}">${statsPlay ? '❚❚' : '▶'}</button>`;
+}
+function scoresAfterHTML() {
+  const history = statistics.history, shown = history[statsAt], today = history.at(-1), past = statsAt < history.length - 1;
+  const solid = (day) => day.bins.slice(9).reduce((sum, [know, learning]) => sum + know + learning, 0);
+  const more = today.know - shown.know, firmer = solid(today) - solid(shown);
+  const change = (value) => `<strong>${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(value)}</strong>`;
+  const delta = past ? `<p class="st-delta">Since then: ${change(more)} words you know${firmer ? `, and ${Math.abs(firmer)} ${firmer > 0 ? 'more' : 'fewer'} on the solid side` : ''}.</p>` : '';
+  const words = statsBin === null ? [] : statsShownWords();
+  const chosen = words ? words.filter((word) => statsBinOf(word.score) === statsBin) : null;
+  const binLabel = statsBin === -8 ? '−8 or lower' : statsBin === 8 ? '8 or higher' : signed(statsBin);
+  const count = chosen ? ` · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}` : '';
+  const list = !statsOpen ? '' : !chosen ? '<p class="st-cap" role="status">Loading that day’s words…</p>' : chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr${genderClass(word.gender)}" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : '';
+  const binList = statsBin === null ? '' : `<div class="st-bin"><button class="st-bin-head" data-action="stats-list" aria-expanded="${statsOpen}"><span>Score ${binLabel}${count}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
+  return `${delta}<p class="st-cap">Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. ${history.length > 1 ? 'Choose a day to see the chart as it was at the end of it; the dashed outline is today. ' : ''}Tap a bar to see its words.</p>
+      ${binList}`;
+}
+// Redraws the Word scores block in place, so the slider keeps its drag and the page its scroll.
+function drawScores() {
+  if (screen !== 'statistics' || !statistics) return;
+  const view = document.querySelector('#st-scores'), when = document.querySelector('#st-when'), after = document.querySelector('#st-scores-after'), slider = document.querySelector('#st-slider');
+  if (view) view.innerHTML = scoresViewHTML();
+  if (when) when.innerHTML = scoresWhenHTML();
+  if (after) after.innerHTML = scoresAfterHTML();
+  if (slider && Number(slider.value) !== statsAt) slider.value = statsAt;
+  if (statsOpen && statsBin !== null) loadStatsDay();
+}
+async function loadStatsDay() {
+  const day = statistics?.history[statsAt];
+  if (!day || statsAt === statistics.history.length - 1 || statsDayWords.has(day.day)) return;
+  statsDayWords.set(day.day, 'loading');
+  try { statsDayWords.set(day.day, (await api(`api/statistics/day/${day.day}`)).words); }
+  catch (error) { statsDayWords.delete(day.day); notice = { message: error.message }; render(); return; }
+  drawScores();
+}
+function showStatsDay(index) { statsAt = Math.max(0, Math.min(statistics.history.length - 1, index)); drawScores(); }
+function stopStatsPlay() { clearInterval(statsPlay); statsPlay = 0; }
+// Plays from the first day to today, a step each 0.7 s; tapping again stops where it is.
+function toggleStatsPlay() {
+  if (statsPlay) { stopStatsPlay(); drawScores(); return; }
+  statsAt = 0;
+  statsPlay = setInterval(() => {
+    if (screen !== 'statistics' || !statistics || statsAt >= statistics.history.length - 1) { stopStatsPlay(); drawScores(); return; }
+    statsAt += 1; drawScores();
+  }, 700);
+  drawScores();
+}
 function renderStatistics() {
   const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your French words are doing. Nothing here is a target.</p>`;
   if (!statistics || loading) { main.innerHTML = `${noticeHTML()}<section class="st">${header}${loading ? '<div class="loading-state" role="status">Adding it all up…</div>' : ''}</section>`; return; }
   const { words, counts } = statistics;
   const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
-  const knowCount = counts.scheduled + counts.due;
-  const bins = new Map(STATS_BINS.map((bin) => [bin, { know: 0, learning: 0 }]));
-  for (const word of words) bins.get(statsBinOf(word.score))[statsKnown(word) ? 'know' : 'learning'] += 1;
-  const tallest = Math.max(1, ...[...bins.values()].map((bin) => bin.know + bin.learning));
-  const bars = STATS_BINS.map((bin) => {
-    const { know, learning } = bins.get(bin);
-    const tone = bin < 0 ? 'neg' : bin === 0 ? 'zero' : 'pos';
-    return `<button class="st-bar ${tone}" data-action="stats-bin" data-bin="${bin}" aria-pressed="${statsBin === bin}" aria-label="Score ${signed(bin)}: ${know} known, ${learning} still learning"><span class="learning" style="height:${learning / tallest * 100}%"></span><span class="know" style="height:${know / tallest * 100}%"></span></button>`;
-  }).join('');
-  const chosen = statsBin === null ? [] : words.filter((word) => statsBinOf(word.score) === statsBin);
-  const binLabel = statsBin === -8 ? '−8 or lower' : statsBin === 8 ? '8 or higher' : signed(statsBin);
-  const binList = statsBin === null ? '' : `<div class="st-bin"><button class="st-bin-head" data-action="stats-list" aria-expanded="${statsOpen}"><span>Score ${binLabel} · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}</span><span class="chev" aria-hidden="true">⌄</span></button>${statsOpen && chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr${genderClass(word.gender)}" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : ''}</div>`;
   const parts = [['learning', 'learning', 'var(--violet)'], ['due', 'due now', '#d7c38a'], ['scheduled', 'known', '#6e6aa8'], ['new', 'not started', 'var(--frame)']];
   const stack = parts.map(([key, , colour]) => `<span style="width:${counts[key] / total * 100}%;background:${colour}"></span>`).join('');
   const legend = parts.map(([key, label, colour]) => `<span><i style="background:${colour}"></i><b>${counts[key]}</b>${label}</span>`).join('');
@@ -1374,13 +1443,11 @@ function renderStatistics() {
   const facts = [[level('listen'), 'Listen level'], [level('read'), 'Read level'], [statistics.answered, 'Listen & Read questions answered'], [statistics.grammarTopics, statistics.grammarTopics === 1 ? 'grammar topic practised' : 'grammar topics practised'], [statistics.walkmanHeard, 'words heard on the Walkman'], [counts.scheduled, 'known words waiting for review']];
   main.innerHTML = `${noticeHTML()}<section class="st">${header}
     <div class="st-block"><h2>Word scores</h2>
-      <p class="st-big"><strong>${knowCount}</strong> ${knowCount === 1 ? 'word' : 'words'} you know</p>
-      <p class="st-sub">and ${counts.learning + counts.due ? `${counts.learning} still learning` : 'none still learning'}, out of ${total.toLocaleString('en')}.</p>
-      <div class="st-hist">${bars}</div>
-      <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
-      <div class="st-legend"><span><i class="know"></i>words you know</span><span><i class="learning"></i>still learning</span></div>
-      <p class="st-cap">Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. Tap a bar to see its words.</p>
-      ${binList}</div>
+      <div id="st-scores">${scoresViewHTML()}</div>
+      ${statistics.history.length > 1 ? `<div class="st-when" id="st-when">${scoresWhenHTML()}</div>
+      <input type="range" class="st-slider" id="st-slider" min="0" max="${statistics.history.length - 1}" step="1" value="${statsAt}" aria-label="Choose a day">
+      <div class="st-ticks" aria-hidden="true">${statistics.history.map((day, index, all) => `<span>${index === all.length - 1 ? 'today' : (all.length - 1 - index) % 2 === 0 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>` : ''}
+      <div id="st-scores-after">${scoresAfterHTML()}</div></div>
     ${pointsBlock}
     ${accuracyBlock}
     <div class="st-block"><h2>Your ${total.toLocaleString('en')} words</h2><div class="st-stack">${stack}</div><div class="st-legend">${legend}</div></div>
@@ -1586,6 +1653,7 @@ async function loadStatistics() {
   loading = true; notice = null; retryAction = null; render();
   try {
     statistics = await api('api/statistics');
+    stopStatsPlay(); statsAt = statistics.history.length - 1; statsDayWords.clear();
     // The weakest bar is chosen to begin with, its list closed; tapping a bar opens its list.
     statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
     statsOpen = false;
@@ -1596,7 +1664,7 @@ async function loadStatistics() {
   loading = false;
   if (screen === 'statistics') render();
 }
-function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } render(); }
+function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } drawScores(); }
 function openWalkman() { if (move('walkman', true)) loadTape(); }
 // Sounds: pairs that differ by one sound (lib/sounds.ts). One side plays; the learner picks which one they heard,
 // then can hear both. A round is ten pairs, the ones missed most first.
@@ -2160,6 +2228,7 @@ function show(next) {
   if (name !== 'lyrics') clearTimeout(lyricsPoll);
   if (name !== 'story') clearTimeout(storyPoll);
   // Leaving the Radio pauses it where it is; coming back plays on from there.
+  if (name !== 'statistics') stopStatsPlay();
   if (name !== 'radio') { clearTimeout(radioPoll); if (!radioAudio.paused) radioAudio.pause(); }
   if (name !== 'mix' && name !== 'focus') { mixedSource = ''; review = null; }
   if (name !== 'listen' && name !== 'read' && name !== 'mix' && name !== 'focus') { streamState = null; streamId = ''; }
@@ -2422,7 +2491,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'gender-colours') { genderColours = !genderColours; localStorage.setItem('echo.genders', genderColours ? 'on' : 'off'); document.body.classList.toggle('genders', genderColours); openOptions(); render(); }
   else if (action === 'songs-first') setSongsFirst(button.dataset.value === 'true');
   else if (action === 'stats-bin') chooseStatsBin(Number(button.dataset.bin));
-  else if (action === 'stats-list') { statsOpen = !statsOpen; render(); }
+  else if (action === 'stats-list') { statsOpen = !statsOpen; drawScores(); }
+  else if (action === 'stats-day') { stopStatsPlay(); showStatsDay(statsAt + Number(button.dataset.step)); }
+  else if (action === 'stats-play') toggleStatsPlay();
   else if (action === 'points-day') { pointsDay = button.dataset.day; render(); }
   else if (action === 'walkman') openWalkman();
   else if (action === 'sounds') { if (move('sounds')) loadSounds(); }
@@ -2465,6 +2536,7 @@ document.addEventListener('input', (event) => {
   if (event.target.id === 'answer') draft = event.target.value;
   if (event.target.id === 'stream-answer') streamDraft = event.target.value;
   if (event.target.id === 'song-query') songQuery = event.target.value;
+  if (event.target.id === 'st-slider') { stopStatsPlay(); showStatsDay(Number(event.target.value)); }
 });
 document.addEventListener('submit', (event) => {
   if (event.target.id === 'goal-form') saveGoal(event);

@@ -317,6 +317,8 @@ async function route(req: Request): Promise<Response> {
       const grammarTopics = grammar.catalog().flatMap((unit) => unit.topics).filter((topic) => topic.progress.seen > 0).length;
       return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics, texts: texts.status() });
     }
+    const statisticsDay = path.match(/^\/api\/statistics\/day\/(\d{4}-\d{2}-\d{2})$/);
+    if (statisticsDay && req.method === 'GET') return json(store.statisticsDay(statisticsDay[1]!));
     if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 3, grammar: grammar.exportData(), comprehension: comprehension.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
     if (path === '/api/grammar' && req.method === 'GET') return json({ units: grammar.catalog() });
     if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('scope') ?? ''));

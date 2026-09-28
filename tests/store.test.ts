@@ -906,3 +906,34 @@ describe('word families in admission', () => {
     expect(admitted('2026-09-22')).toEqual(['a-2', 'a-5']);
   });
 });
+
+describe('score history', () => {
+  test('a past day shows the chart exactly as it stood at the end of that day, and its words agree', () => {
+    const { store, clock } = fixture(new Date(2026, 8, 21, 10), thirtyWords);
+    store.setSettings(6);
+    let state = store.start('fr-en', 'all');
+    // Four of the six introduced words answered: the other two are started but not yet answered.
+    for (let index = 0; index < 4; index++) state = store.grade(answer(state, index !== 1));
+    store.recordHeard({ wordId: 'word-29', requestId: 'heard-once' });
+    clock.value = new Date(2026, 8, 22, 3, 59, 59, 999);
+    const endOfFirst = store.statistics().history.at(-1)!;
+    expect(endOfFirst).toMatchObject({ day: '2026-09-21', learning: 6 });
+    clock.value = new Date(2026, 8, 22, 10);
+    state = store.start('fr-en', 'all');
+    while (state.current) state = store.grade(answer(state, true));
+    clock.value = new Date(2026, 8, 23, 3, 59, 59, 999);
+    const endOfSecond = store.statistics().history.at(-1)!;
+    clock.value = new Date(2026, 8, 25, 12);
+    const { history } = store.statistics();
+    expect(history.map((day) => day.day)).toEqual(['2026-09-21', '2026-09-22', '2026-09-23', '2026-09-24', '2026-09-25']);
+    expect(history[0]).toEqual(endOfFirst);
+    expect(history[1]).toEqual(endOfSecond);
+    // A day with nothing done keeps the words, their scores fading towards the middle.
+    expect(history[3]!.know).toBe(history[1]!.know);
+    const day = store.statisticsDay('2026-09-21');
+    expect(day.words.filter((word) => word.known)).toHaveLength(endOfFirst.know);
+    expect(day.words.filter((word) => !word.known)).toHaveLength(endOfFirst.learning);
+    expect(() => store.statisticsDay('2026-09-25')).toThrow(StoreError);
+    expect(() => store.statisticsDay('2026-09-20')).toThrow(StoreError);
+  });
+});

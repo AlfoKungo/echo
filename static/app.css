@@ -327,3 +327,9 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .fam-link{margin-top:16px}
 .story-player .story-mode{justify-content:flex-start;margin:-14px 0 16px}
 .story-line.playing{background:var(--card);border-radius:10px}
+.st-bar{position:relative}.st-bar .ghost{position:absolute;left:0;right:0;bottom:0;border:1px dashed var(--dim);border-bottom:none;border-radius:4px 4px 0 0;background:none!important;pointer-events:none}
+.st-legend i.ghost{background:none;border:1px dashed var(--dim)}
+.st-when{display:flex;align-items:center;gap:6px;margin:18px 0 0}.st-when .icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;color:var(--violet);font-size:20px}.st-when .icon:disabled{color:var(--frame)}
+.st-when-label{flex:1;margin:0;text-align:center;font-size:15px;color:var(--ink)}.st-when-label small{display:block;font-size:12px;color:var(--dim);margin-top:1px}
+.st-slider{width:100%;margin:6px 0 0;accent-color:var(--violet)}.st-ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);padding:0 6px}
+.st-delta{font-size:14px;color:var(--muted);margin:10px 0 0}.st-delta strong{color:var(--ink);font-weight:550}

@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -42,6 +42,8 @@ export interface Store {
   // The learner's own say, after a Walkman listen, on whether they knew the word; knew:null withdraws it.
   recordVerdict(input: VerdictInput): void;
   statistics(): VocabularyStatistics;
+  // A past study day's started words, with the score and state each had at the end of that day.
+  statisticsDay(day: string): ScoreDayWords;
   // Words missed TROUBLE_MISSES times in either direction that have no memory hook yet, with the deck words missed
   // most alongside them; and saving hooks for them.
   hookless(): { id: string; fr: string; en: string; note?: string; alongside: Pick<Word, 'fr' | 'en'>[] }[];
@@ -1093,7 +1095,90 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         if (entry) { if (event.weight > 0) entry.gained += event.weight; else entry.lost -= event.weight; }
       }
       const words = started.map(({ id, fr, en, category, status, score, misses, gender }) => ({ id, fr, en, category, status, score, misses, ...(gender ? { gender } : {}) }));
-      return { words, counts, categories, days, walkmanHeard: heardCount.get()!.count };
+      // Past days are rebuilt; today is the live chart above, so the last day always matches it.
+      const bins: [number, number][] = Array.from({ length: SCORE_BINS }, () => [0, 0]);
+      for (const word of started) bins[scoreBin(word.score)]![word.status === 'scheduled' || word.status === 'due' ? 0 : 1] += 1;
+      const today = { day: studyDay(now()), know: counts.scheduled + counts.due, learning: counts.learning, total: all.length, bins };
+      const history = pastDays().map(({ day, end }): ScoreHistoryDay => {
+        const bins: [number, number][] = Array.from({ length: SCORE_BINS }, () => [0, 0]);
+        let know = 0;
+        const snapshot = replayed.get(end)!;
+        for (const [id, known] of snapshot.status) { bins[scoreBin(snapshot.scores.get(id) ?? 0)]![known ? 0 : 1] += 1; if (known) know += 1; }
+        return { day, know, learning: snapshot.status.size - know, total: snapshot.total, bins };
+      });
+      replayed.clear();
+      return { words, counts, categories, days, walkmanHeard: heardCount.get()!.count, history: [...history, today] };
+    })();
+  }
+
+  // The Word scores chart as it stood at the end of each past study day, rebuilt from the same record the live
+  // chart reads: every score event (decayed to that moment, as listening() decays to now) and the card state each
+  // answer left. A word counts as started from the day it was introduced, still learning until answers finish it.
+  const SCORE_BINS = 17;
+  const scoreBin = (score: number) => Math.max(-8, Math.min(8, Math.round(Math.round(score * 1000) / 1000))) + 8;
+  const historyGrades = db.query<{ direction: Direction; word_id: string; at: string; after_json: string }, []>(`
+    SELECT direction, word_id, graded_at AS at, after_json FROM grades
+    WHERE NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence) ORDER BY graded_at, sequence`);
+  const introductions = db.query<{ direction: Direction; word_id: string; day: string }, []>('SELECT direction, word_id, introduced_day AS day FROM cards WHERE introduced_day IS NOT NULL');
+  const addedTimes = db.query<{ id: string; at: string }, []>('SELECT id, added_at AS at FROM added_words');
+  type Replayed = { scores: Map<string, number>; status: Map<string, boolean>; total: number };
+  const replayed = new Map<number, Replayed>();
+  // Each past study day from the first score event to yesterday, with the moment it ended (the next 04:00).
+  function pastDays(): { day: string; end: number }[] {
+    const first = scoreEvents.all().reduce((earliest, event) => Math.min(earliest, Date.parse(event.at)), Infinity);
+    if (first === Infinity) return [];
+    const today = studyDayStart(now());
+    const days: { day: string; end: number }[] = [];
+    for (let start = studyDayStart(new Date(first)); start < today;) {
+      const end = new Date(start); end.setDate(end.getDate() + 1);
+      days.push({ day: studyDay(start), end: end.getTime() });
+      start = end;
+    }
+    replay(days);
+    return days;
+  }
+  // Walks the record once, oldest first, keeping a snapshot at each of the given moments (ascending).
+  function replay(ends: { day: string; end: number }[]): void {
+    const day = 86400000;
+    const events = scoreEvents.all().map((event) => ({ id: event.word_id, weight: event.weight, at: Date.parse(event.at) })).sort((a, b) => a.at - b.at);
+    const answers = historyGrades.all();
+    const addedAt = addedTimes.all().filter((entry) => wordById.has(entry.id)).map((entry) => Date.parse(entry.at));
+    const scores = new Map<string, number>();
+    const active = new Map<string, boolean>();
+    const introduced = introductions.all();
+    let reference = ends[0]?.end ?? 0, nextEvent = 0, nextAnswer = 0;
+    for (const { day: through, end } of ends) {
+      const fade = 0.5 ** ((end - reference) / day / SCORE_HALF_LIFE_DAYS);
+      for (const [id, score] of scores) scores.set(id, score * fade);
+      reference = end;
+      for (; nextEvent < events.length && events[nextEvent]!.at <= end; nextEvent++) {
+        const event = events[nextEvent]!;
+        scores.set(event.id, (scores.get(event.id) ?? 0) + event.weight * 0.5 ** (Math.max(0, end - event.at) / day / SCORE_HALF_LIFE_DAYS));
+      }
+      for (; nextAnswer < answers.length && Date.parse(answers[nextAnswer]!.at) <= end; nextAnswer++) {
+        const answer = answers[nextAnswer]!;
+        active.set(`${answer.direction}|${answer.word_id}`, (JSON.parse(answer.after_json) as CardRow).active === 1);
+      }
+      // Known: started and finished in both directions; still learning: in progress in either.
+      const status = new Map<string, boolean>();
+      const cards = new Map(active);
+      for (const card of introduced) { const key = `${card.direction}|${card.word_id}`; if (card.day <= through && !cards.has(key)) cards.set(key, true); }
+      for (const [key, on] of cards) {
+        const id = key.slice(key.indexOf('|') + 1);
+        if (!wordById.has(id)) continue;
+        status.set(id, (status.get(id) ?? true) && !on);
+      }
+      replayed.set(end, { scores: new Map(scores), status, total: words.length - addedAt.filter((at) => at > end).length });
+    }
+  }
+
+  function statisticsDay(day: string): ScoreDayWords {
+    return db.transaction(() => {
+      const entry = pastDays().find((candidate) => candidate.day === day);
+      if (!entry) { replayed.clear(); throw new StoreError('There is no record of that day.', 404); }
+      const snapshot = replayed.get(entry.end)!;
+      replayed.clear();
+      return { day, words: [...snapshot.status].map(([id, known]) => ({ id, score: Math.round((snapshot.scores.get(id) ?? 0) * 1000) / 1000, known })) };
     })();
   }
 
@@ -1135,5 +1220,5 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     })();
   }
 
-  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, statistics, hookless, setHooks, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, statistics, statisticsDay, hookless, setHooks, exportData, close: () => db.close() };
 }
