@@ -231,7 +231,7 @@ describe('three-stack selection', () => {
     expect(large).toBeGreaterThan(0);
   });
 
-  test('a word answered right waits for about half the seen pile before it returns, even filed at the front', () => {
+  test('a word answered right waits until the rest of the seen pile has had a turn, even filed at the front', () => {
     const many: Word[] = Array.from({ length: 150 }, (_, index) => ({ id: `spaced-${index}`, fr: `mot ${index}`, en: `word ${index}`, category: 'daily' }));
     const { store, randomness } = fixture(undefined, many);
     // Every answered word is filed at the front of its stack: the case where it used to come straight back.
@@ -251,7 +251,7 @@ describe('three-stack selection', () => {
       state = store.grade(answer(state, known));
     }
     expect(successGaps.length).toBeGreaterThan(10);
-    expect(Math.min(...successGaps)).toBeGreaterThanOrEqual(14);
+    expect(Math.min(...successGaps)).toBeGreaterThanOrEqual(28);
   });
 
   test('does not run through all unseen cards when the first ten were correct, and empty stacks never block completion', () => {
