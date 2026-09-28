@@ -95,6 +95,13 @@ export const SCORE_HALF_LIFE_DAYS = 21;
 // credit carries the unseen share from turn to turn (see unseenShare); turn cycles seenMix.
 type PracticeQueue = { day: string; warmup: number; turn: number; credit?: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
 const RECENT_GAP = 3;
+// A word answered right waits longer, so seeing it again tests memory rather than the last few seconds: for
+// about half as many answers as the seen pile holds (15 at 30 seen), between RECENT_GAP and SUCCESS_GAP_MAX.
+const SUCCESS_GAP_SHARE = 0.5;
+const SUCCESS_GAP_MAX = 20;
+export function successGap(seen: number): number {
+  return Math.max(RECENT_GAP, Math.min(SUCCESS_GAP_MAX, Math.round(seen * SUCCESS_GAP_SHARE)));
+}
 // A word missed this many times shows, on its answer side, up to ALONGSIDE words of its deck missed most with it.
 const TROUBLE_MISSES = 6;
 const ALONGSIDE = 3;
@@ -532,9 +539,12 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     const seen = queue.failed.filter((id) => inDeck(id, deck)).length + queue.successful.filter((id) => inDeck(id, deck)).length;
     // Credit is capped at one turn, so a stretch with nothing unseen to offer does not save up a burst of them.
     const credit = Math.min(1, (queue.credit ?? 0) + unseenShare(seen));
-    // A word just answered, missed or not, waits for others; it returns at once only when nothing else is left.
-    for (const avoid of [recent, recent.slice(0, 1), []]) {
-      const pick = (list: string[]) => list.find((id) => inDeck(id, deck) && !avoid.includes(id));
+    const gap = successGap(seen);
+    // A word just answered waits for others: RECENT_GAP answers after a miss, gap answers after a success. The
+    // waits shorten only when nothing else is left.
+    const passes: [string[], string[]][] = [[recent.slice(0, RECENT_GAP), recent.slice(0, gap)], [recent.slice(0, RECENT_GAP), recent.slice(0, RECENT_GAP)], [recent.slice(0, 1), recent.slice(0, 1)], [[], []]];
+    for (const [avoid, spaced] of passes) {
+      const pick = (list: string[], wait = avoid) => list.find((id) => inDeck(id, deck) && !wait.includes(id));
       const unseen = pick(queue.unseen);
       const fresh = (id: string): Selection => ({ id, stack: 'unseen', nextTurn: queue.turn, nextCredit: Math.max(0, credit - 1) });
       if (queue.warmup < 10 && unseen) return { ...fresh(unseen), nextCredit: 0 };
@@ -542,7 +552,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       for (let offset = 0; offset < seenMix.length; offset++) {
         const position = (queue.turn + offset) % seenMix.length;
         const stack = seenMix[position]!;
-        const id = pick(queue[stack]);
+        const id = pick(queue[stack], stack === 'successful' ? spaced : avoid);
         if (id) return { id, stack, nextTurn: (position + 1) % seenMix.length, nextCredit: credit };
       }
       if (unseen) return fresh(unseen);
@@ -557,7 +567,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (selection.stack === 'unseen') queue.warmup = Math.min(10, queue.warmup + 1);
     queue.turn = selection.nextTurn;
     queue.credit = selection.nextCredit;
-    queue.recent = [wordId, ...(queue.recent ?? []).filter((id) => id !== wordId)].slice(0, RECENT_GAP);
+    queue.recent = [wordId, ...(queue.recent ?? []).filter((id) => id !== wordId)].slice(0, SUCCESS_GAP_MAX);
   }
 
   // The words of the same deck missed most besides this one (at least twice each), when this one has been missed

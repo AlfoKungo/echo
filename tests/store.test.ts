@@ -231,6 +231,29 @@ describe('three-stack selection', () => {
     expect(large).toBeGreaterThan(0);
   });
 
+  test('a word answered right waits for about half the seen pile before it returns, even filed at the front', () => {
+    const many: Word[] = Array.from({ length: 150 }, (_, index) => ({ id: `spaced-${index}`, fr: `mot ${index}`, en: `word ${index}`, category: 'daily' }));
+    const { store, randomness } = fixture(undefined, many);
+    // Every answered word is filed at the front of its stack: the case where it used to come straight back.
+    randomness.value = 0;
+    store.setSettings(many.length);
+    let state = store.start('fr-en', 'all');
+    const shown = new Map<string, number>();
+    const successGaps: number[] = [];
+    const answered = new Map<string, boolean>();
+    for (let turn = 0; turn < 300 && state.current; turn++) {
+      const { id } = state.current;
+      const piled = state.stats.seenActive >= 30;
+      if (shown.has(id) && piled && answered.get(id)) successGaps.push(turn - shown.get(id)! - 1);
+      // Two misses to every success keeps the seen pile large.
+      const known = turn % 3 === 0;
+      shown.set(id, turn); answered.set(id, known);
+      state = store.grade(answer(state, known));
+    }
+    expect(successGaps.length).toBeGreaterThan(10);
+    expect(Math.min(...successGaps)).toBeGreaterThanOrEqual(14);
+  });
+
   test('does not run through all unseen cards when the first ten were correct, and empty stacks never block completion', () => {
     const { store } = fixture(undefined, thirtyWords);
     let state = store.start('fr-en', 'all');
