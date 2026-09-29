@@ -41,7 +41,7 @@ describe('planTape', () => {
     });
   });
 
-  test('new words come from the most studied category, in order, each heard three times close together', () => {
+  test('new words come from the most studied category, in order, each heard three times, spaced so it never comes straight back', () => {
     const plan = planTape(deck(), 300, seeded(3));
     const fresh = [...new Set(plan.filter((id) => id.includes('new')))];
     // Food holds 16 studied words and home 20, so home's new words come first.
@@ -49,7 +49,9 @@ describe('planTape', () => {
     for (const id of fresh) {
       const slots = plan.flatMap((entry, slot) => (entry === id ? [slot] : []));
       expect(slots.length).toBeGreaterThanOrEqual(3);
-      expect(slots[2]! - slots[0]!).toBeLessThanOrEqual(16);
+      expect(slots[1]! - slots[0]!).toBeGreaterThanOrEqual(10);
+      expect(slots[2]! - slots[1]!).toBeGreaterThanOrEqual(10);
+      expect(slots[2]! - slots[0]!).toBeLessThanOrEqual(34);
     }
   });
 

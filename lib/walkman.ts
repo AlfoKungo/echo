@@ -15,19 +15,22 @@ export type Timing = { recall: number; afterMeaning: number; between: number };
 export const WORD_TIMING: Timing = { recall: 2.0, afterMeaning: 0.7, between: 1.8 };
 // A sentence takes longer to understand than a word to recall, and a breath more before the next.
 export const SENTENCE_TIMING: Timing = { recall: 2.5, afterMeaning: 0.8, between: 2.2 };
-// A familiar word returns only after this many others; a new word returns twice, 5 and 14 words later.
+// A familiar word returns only after this many others; a new word returns twice, 10 and 30 words later, so each
+// return is a real recall and the start of a tape, where new words gather, does not circle the same few.
 const SPACING = 15;
-const NEW_EVERY = 5;
+const NEW_EVERY = 8;
 const NEW_PER_TAPE = 20;
-const REPEATS = [5, 14];
+const REPEATS = [10, 30];
 export const TAPE_SECONDS = 30 * 60;
-// By score, a familiar word's chance is 2^(-score/2): a word at -6 is 64 times likelier than one at +6.
+// By score, a familiar word's chance is 2^(-score/SCORE_PULL): a word at -6 is about 130 times likelier than one
+// at +6.
 // Scores are clamped so no word is ever certain or never heard; each pick counts the listen to come.
+const SCORE_PULL = 1.7;
 const SCORE_LIMIT = 8;
 const PICK_HEARD = 0.5;
 
-// The order of a tape, word ids with repeats. Every fifth word is new, taken in content order from one
-// category (the one already most studied that still has new words), and heard twice more soon after.
+// The order of a tape, word ids with repeats. Every eighth word is new, taken in content order from one
+// category (the one already most studied that still has new words), and heard twice more later on.
 // The other words are familiar ones. By groups: words being learnt come first, those missed most at the
 // front; then words due for review, then the known words soonest to fade. By score: any started word,
 // drawn at random with low scores far likelier. Listening never changes the vocabulary schedule.
@@ -86,7 +89,7 @@ export function planTape(words: (BrowseWord & { score?: number })[], slots: numb
   };
   const drawFamiliar = (slot: number) => {
     const eligible = familiar.filter((id) => slot - (heardAt.get(id) ?? -Infinity) > SPACING);
-    const weights = eligible.map((id) => 2 ** (-Math.max(-SCORE_LIMIT, Math.min(SCORE_LIMIT, score.get(id) ?? 0)) / 2));
+    const weights = eligible.map((id) => 2 ** (-Math.max(-SCORE_LIMIT, Math.min(SCORE_LIMIT, score.get(id) ?? 0)) / SCORE_PULL));
     let left = random() * weights.reduce((total, weight) => total + weight, 0);
     const index = weights.findIndex((weight) => (left -= weight) < 0);
     const id = eligible[index < 0 ? eligible.length - 1 : index];
