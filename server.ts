@@ -484,6 +484,8 @@ async function route(req: Request): Promise<Response> {
       return verb ? json(verbGuide(verb)) : json({ error: 'That verb is not in Echo.' }, 404);
     }
     if (path === '/api/verbs/round' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.round(data as never) }); }
+    if (path === '/api/verbs/cards' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.cards(data as never) }); }
+    if (path === '/api/verbs/mark' && req.method === 'POST') { const data = await body(req); return json(verbs.mark(data as never)); }
     if (path === '/api/verbs/answer' && req.method === 'POST') { const data = await body(req); return json(verbs.answer(data as never)); }
     if (path === '/api/verbs/table' && req.method === 'POST') { const data = await body(req); return json(verbs.table(data as never)); }
     if (path === '/api/verbs/ear' && req.method === 'POST') { const data = await body(req); return json({ questions: verbs.earRound(data as never) }); }

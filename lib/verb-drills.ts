@@ -1,5 +1,5 @@
 // The Verbs room's record and rounds: every answer to a form (a verb in one tense for one person), from Quick forms,
-// Whole table or By ear, kept once per request. A form's state comes from its latest answers (By ear is kept apart:
+// Whole table, Cards (the learner says whether they knew it) or By ear, kept once per request. A form's state comes from its latest answers (By ear is kept apart:
 // it tests hearing, not writing), and a round leans on the forms that are shaky or not tried yet.
 import { Database } from 'bun:sqlite';
 import { StoreError } from './store';
@@ -150,6 +150,24 @@ export function createVerbDrills(options: {
     return checked;
   }
 
+  // A Cards round: the same forms as Quick forms, each with its answer, so the card can turn over at once.
+  function cards(input: RoundInput) {
+    const verbs = byId();
+    return round(input).map((item) => {
+      const verb = verbs.get(item.verbId)!;
+      const form = conjugate(verb, item.tense)[item.person]!;
+      return { ...item, answer: subject(item.person, form.shown) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense) };
+    });
+  }
+  // The learner's own say on a card: counts for the form like a typed answer, once per request id.
+  function mark(input: { requestId: string; verbId: string; tense: Tense; person: number; knew: boolean }) {
+    const requestId = requestIdOf(input?.requestId);
+    const { verb, tense, person } = findForm(input?.verbId, input?.tense, input?.person);
+    if (typeof input.knew !== 'boolean') throw new StoreError('Say whether you knew it.');
+    insert.run(requestId, verb.id, tense, person, 'card', null, '', input.knew ? 1 : 0, now().toISOString());
+    return { ok: true };
+  }
+
   // A whole table at once: every person checked, a blank one counted as not known.
   function table(input: { requestId: string; verbId: string; tense: Tense; answers: string[] }) {
     const requestId = requestIdOf(input?.requestId);
@@ -229,6 +247,6 @@ export function createVerbDrills(options: {
     return [...new Set(verbs.filter((verb, index) => index < COMMON || started.has(verb.id)).flatMap((verb) => earQuestions(verb).map((question) => question.said)))];
   }
 
-  return { round, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
+  return { round, cards, mark, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills>;

@@ -396,6 +396,7 @@ function render() {
   else if (screen === 'verbs-forms') renderVerbForms();
   else if (screen === 'verbs-table') renderVerbTable();
   else if (screen === 'verbs-ear') renderVerbEar();
+  else if (screen === 'verbs-cards') renderVerbCards();
   else if (screen === 'verbs-tense') renderVerbTense();
   else if (screen === 'verbs-verb') renderVerbPage();
   else if (screen === 'story') renderStory();
@@ -1780,6 +1781,7 @@ let verbSet = (() => { const saved = readPreference('echo.verbs-set', 'mine'); r
 let verbChosen = (() => { try { const list = JSON.parse(readPreference('echo.verbs-chosen', '[]')); return Array.isArray(list) ? list : []; } catch { return []; } })();
 let verbTenses = (() => { try { const list = JSON.parse(readPreference('echo.verbs-tenses', '["pres"]')).filter((tense) => tense in VB_TENSES); return list.length ? list : ['pres']; } catch { return ['pres']; } })();
 let verbFormsRound = null; // { items, index, first: [], result, given }
+let verbCards = null;      // { items, index, size, revealed, marks: [], first: [] }
 let verbDraft = '';
 let verbTable = { verbId: '', tense: 'pres', answers: ['', '', '', '', '', ''], result: null };
 let verbEar = null;        // { questions, index, chose, result, right }
@@ -1821,7 +1823,7 @@ function renderVerbs() {
   const blocked = (verbSet === 'mine' && !verbsInfo.mine) || (verbSet === 'chosen' && !verbChosen.length);
   const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} phrases recorded` : 'hear a form, tell the tense or how many';
   const mode = (action, title, detail, disabled = blocked) => `<button class="topic-row" data-action="${action}" ${busy || disabled ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${title}</h3></span><p>${esc(detail)}</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
-  const modes = `${mode('vb-forms', 'Quick forms', 'type one form at a time, 20 a round')}${mode('vb-table', 'Whole table', 'all six persons of one verb', false)}${mode('vb-ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}`;
+  const modes = `${mode('vb-cards', 'Cards', 'think of the form, turn the card, say if you knew it')}${mode('vb-forms', 'Quick forms', 'type one form at a time, 20 a round')}${mode('vb-table', 'Whole table', 'all six persons of one verb', false)}${mode('vb-ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}`;
   // The map: every verb with a form practised, most shaky forms first.
   const drilled = verbsInfo.verbs.filter((verb) => Object.values(verb.states).some((states) => states.some((state) => state && state !== 'new')));
   const shaky = (verb) => Object.values(verb.states).flat().filter((state) => state === 'shaky').length;
@@ -1840,6 +1842,9 @@ function verbAction(action, button) {
   if (action === 'vb-set') { verbSet = button.dataset.set; savePreference('echo.verbs-set', verbSet); render(); }
   else if (action === 'vb-choose') { const id = button.dataset.verb; verbChosen = verbChosen.includes(id) ? verbChosen.filter((entry) => entry !== id) : [...verbChosen, id]; savePreference('echo.verbs-chosen', JSON.stringify(verbChosen)); render(); }
   else if (action === 'vb-tense') { const tense = button.dataset.tense; const next = verbTenses.includes(tense) ? verbTenses.filter((entry) => entry !== tense) : [...verbTenses, tense]; if (!next.length) return; verbTenses = Object.keys(VB_TENSES).filter((entry) => next.includes(entry)); savePreference('echo.verbs-tenses', JSON.stringify(verbTenses)); render(); }
+  else if (action === 'vb-cards') { verbFormsOverride = null; if (move('verbs-cards', true)) startVerbCards(); }
+  else if (action === 'vb-card-no' || action === 'vb-card-yes') markVerbCard(action === 'vb-card-yes');
+  else if (action === 'vb-cards-again') startVerbCards();
   else if (action === 'vb-forms') { verbFormsOverride = null; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-tense-page') { if (move(`verbs-tense|${button.dataset.tense}`, true)) loadVerbTense(); }
   else if (action === 'vb-verb') openVerbPage(button.dataset.verb);
@@ -1914,6 +1919,54 @@ function renderVerbPage() {
   const tenses = view.tenses.map((entry) => `<section class="vb-tense-block"><div class="vb-tense-head"><h2 lang="fr">${esc(entry.name)}</h2><button class="quiet" data-action="vb-tense-page" data-tense="${entry.tense}">${esc(entry.group)} →</button></div>${paradigmHTML(entry.paradigm)}<p class="vb-why vb-rule">${frEsc(entry.rule)}</p><button class="quiet vb-table-link" data-action="vb-cell" data-verb="${esc(view.id)}" data-tense="${entry.tense}">Fill in this table</button></section>`).join('');
   main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}<h1 lang="fr">${frEsc(view.inf)}</h1><p class="subtitle">${esc(view.en)}</p>
     <div class="summary-actions"><button class="primary" data-action="vb-practise-verb" data-verb="${esc(view.id)}">Practise ${esc(view.inf)}</button></div>${tenses}</section>`;
+}
+
+// ── Cards: like vocabulary cards, for forms. Think of the form, tap to turn the card, then left if you didn't know
+// it and right if you did. The mark counts for the form like a typed answer; a missed card comes back once, a
+// few cards later.
+async function startVerbCards() {
+  loading = true; notice = null; retryAction = null; verbCards = null; render();
+  try { const { items } = await api('api/verbs/cards', { method: 'POST', body: JSON.stringify(vbSettings()) }); verbCards = { items, index: 0, size: items.length, revealed: false, marks: [], first: [] }; }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-cards' }; }
+  loading = false;
+  if (screen === 'verbs-cards') render();
+}
+function renderVerbCards() {
+  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Cards</span></div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
+  if (loading || !verbCards) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
+  const { items, index, revealed, marks, first } = verbCards;
+  const progress = `<div class="vb-progress" aria-hidden="true">${items.map((_, at) => `<span class="${marks[at] === true ? 'right' : marks[at] === false ? 'wrong' : at === index ? 'now' : ''}"></span>`).join('')}</div>`;
+  if (index >= items.length) {
+    const knew = first.filter(Boolean).length;
+    shell(`${progress}<section class="summary"><h1 class="score"><span class="sr-only">Knew: </span>${knew} <span>/ ${first.length}</span></h1><p class="summary-line">known the first time. ${knew === first.length ? 'Every one.' : 'The ones you missed come back first next round.'}</p><div class="summary-actions"><button class="primary" data-action="vb-cards-again">Another round</button><button class="secondary" data-action="verbs">Back to Verbs</button></div></section>`);
+    return;
+  }
+  const card = items[index];
+  const again = index >= verbCards.size ? '<p class="caption vb-again-note">Once more, from earlier in this round.</p>' : '';
+  const face = revealed
+    ? `<h1 class="main-word vb-card-answer" lang="fr">${frEsc(card.answer)}</h1><p class="source-word" lang="fr">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>`
+    : `<p class="vb-card-who" lang="fr">${esc(VB_PERSONS[card.person])}</p><h1 class="main-word" lang="fr">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`;
+  const zones = revealed ? `<button class="card-zone left" data-action="vb-card-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-card-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
+  const after = revealed ? `${paradigmHTML(card.paradigm, card.person)}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : `<p class="caption vb-card-hint">Say the form to yourself, then tap the card.</p>`;
+  shell(`${progress}${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
+}
+function revealVerbCard() {
+  if (!verbCards || verbCards.revealed || verbCards.index >= verbCards.items.length) return;
+  verbCards.revealed = true; render();
+}
+function markVerbCard(knew) {
+  const round = verbCards;
+  const card = round?.items[round.index];
+  if (!card || !round.revealed) return;
+  round.marks[round.index] = knew;
+  if (round.index < round.size) round.first.push(knew);
+  // A miss comes back four cards later, once, as long as the round has room.
+  if (!knew && round.index < round.size) round.items.splice(Math.min(round.items.length, round.index + 5), 0, card);
+  round.index += 1; round.revealed = false; notice = null;
+  render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
+  api('api/verbs/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: card.verbId, tense: card.tense, person: card.person, knew }) })
+    .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-cards') render(); });
 }
 
 // ── Quick forms ──
@@ -2729,6 +2782,7 @@ function retry() {
   else if (action.type === 'verbs') loadVerbs();
   else if (action.type === 'verbs-forms') startVerbForms();
   else if (action.type === 'verbs-ear') startVerbEar();
+  else if (action.type === 'verbs-cards') startVerbCards();
   else if (action.type === 'verbs-tense') loadVerbTense();
   else if (action.type === 'verbs-verb') loadVerbPage();
   else if (action.type === 'story') loadStory();
@@ -2752,6 +2806,7 @@ document.addEventListener('click', (event) => {
   if (button?.dataset.gloss !== undefined) { glossLine = button.closest('[data-line]')?.dataset.line ?? ''; lookupGloss(button.dataset.gloss); return; }
   if (action === 'add-word') { addWord(); return; }
   if (action === 'vb-accent') { insertAccent(button.dataset.letter); return; }
+  if (!button && screen === 'verbs-cards' && event.target.closest('#vb-card')) { revealVerbCard(); return; }
   if (busy) return;
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }
   if (button?.dataset.direction) {
@@ -2898,6 +2953,12 @@ document.addEventListener('keydown', (event) => {
     if (streamState.result) streamNext(); else streamCheck();
     return;
   }
+  // Verb cards: Space or Enter turns the card, the arrow keys mark it.
+  if (screen === 'verbs-cards' && verbCards && !event.ctrlKey && !event.altKey && !event.metaKey && !event.target.closest('input,select,textarea')) {
+    if (!verbCards.revealed && (event.key === ' ' || event.key === 'Enter') && !event.target.closest('button,a')) { event.preventDefault(); revealVerbCard(); }
+    else if (verbCards.revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) { event.preventDefault(); markVerbCard(event.key === 'ArrowRight'); }
+    return;
+  }
   if (event.ctrlKey || event.altKey || event.metaKey || !vocabularyCard() || event.target.closest('input,select,textarea,[contenteditable="true"]')) return;
   if (!revealed && (event.key === ' ' || event.key === 'Enter') && !event.target.closest('button,a')) { event.preventDefault(); reveal(); }
   else if (revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight') && (!event.target.closest('button,a') || event.target.closest('.card-zone'))) { event.preventDefault(); grade(event.key === 'ArrowRight'); }
@@ -2952,6 +3013,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'verbs-forms') startVerbForms();
   else if (screen === 'verbs-table') render();
   else if (screen === 'verbs-ear') startVerbEar();
+  else if (screen === 'verbs-cards') startVerbCards();
   else if (screen === 'verbs-tense') loadVerbTense();
   else if (screen === 'verbs-verb') loadVerbPage();
   else if (screen === 'story') loadStory();

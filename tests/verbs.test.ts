@@ -177,6 +177,18 @@ describe('verb drills', () => {
     expect(() => drills.round({ set: 'mine', tenses: [] })).toThrow('Choose at least one tense.');
   });
 
+  test('a card carries its answer, and a mark counts for the form like a typed answer', () => {
+    const drills = fixture();
+    const [card] = drills.cards({ set: 'chosen', verbIds: ['v-aller'], tenses: ['fut'] });
+    expect(card!.answer).toBe(`${['j’', 'tu ', 'il ', 'nous ', 'vous ', 'ils '][card!.person]}${['irai', 'iras', 'ira', 'irons', 'irez', 'iront'][card!.person]}`);
+    drills.mark({ requestId: 'k1', verbId: 'v-aller', tense: 'fut', person: card!.person, knew: false });
+    drills.mark({ requestId: 'k1', verbId: 'v-aller', tense: 'fut', person: card!.person, knew: true });
+    expect(drills.summary().verbs.find((row) => row.id === 'v-aller')!.states.fut[card!.person]).toBe('shaky');
+    drills.mark({ requestId: 'k2', verbId: 'v-aller', tense: 'fut', person: card!.person, knew: true });
+    expect(drills.summary().verbs.find((row) => row.id === 'v-aller')!.states.fut[card!.person]).toBe('getting');
+    expect(() => drills.mark({ requestId: 'k3', verbId: 'v-aller', tense: 'fut', person: 0, knew: 'yes' as never })).toThrow('Say whether you knew it.');
+  });
+
   test('a whole table checks every person and names the mistakes', () => {
     const drills = fixture();
     const checked = drills.table({ requestId: 't', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prend', 'prend', 'prenons', 'prenez', 'prenent'] });
