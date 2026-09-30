@@ -1846,7 +1846,6 @@ function verbAction(action, button) {
   else if (action === 'vb-tense') { const tense = button.dataset.tense; const next = verbTenses.includes(tense) ? verbTenses.filter((entry) => entry !== tense) : [...verbTenses, tense]; if (!next.length) return; verbTenses = Object.keys(VB_TENSES).filter((entry) => next.includes(entry)); savePreference('echo.verbs-tenses', JSON.stringify(verbTenses)); render(); }
   else if (action === 'vb-cards') { verbFormsOverride = null; if (move('verbs-cards', true)) startVerbCards(); }
   else if (action === 'vb-card-no' || action === 'vb-card-yes') markVerbCard(action === 'vb-card-yes');
-  else if (action === 'vb-cards-again') startVerbCards();
   else if (action === 'vb-forms') { verbFormsOverride = null; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-tense-page') { if (move(`verbs-tense|${button.dataset.tense}`, true)) loadVerbTense(); }
   else if (action === 'vb-verb') openVerbPage(button.dataset.verb);
@@ -1923,52 +1922,76 @@ function renderVerbPage() {
     <div class="summary-actions"><button class="primary" data-action="vb-practise-verb" data-verb="${esc(view.id)}">Practise ${esc(view.inf)}</button></div>${tenses}</section>`;
 }
 
-// ── Cards: like vocabulary cards, for forms. Think of the form, tap to turn the card, then left if you didn't know
-// it and right if you did. The mark counts for the form like a typed answer; a missed card comes back once, a
-// few cards later.
+// ── Cards: like vocabulary cards, for forms, and just as endless. Think of the form, tap to turn the card, then left
+// if you didn't know it and right if you did. The mark counts for the form like a typed answer; a missed card comes
+// back once, a few cards later. More cards are fetched while a few are still waiting, chosen afresh from the marks
+// so far, so the stream goes on as long as you do.
+const VB_CARDS_AHEAD = 5;
+const VB_CARDS_RECENT = 8;
+const vbCardKey = (card) => `${card.verbId}|${card.tense}|${card.person}`;
 async function startVerbCards() {
   loading = true; notice = null; retryAction = null; verbCards = null; render();
-  try { const { items } = await api('api/verbs/cards', { method: 'POST', body: JSON.stringify(vbSettings()) }); verbCards = { items, index: 0, size: items.length, revealed: false, marks: [], first: [] }; }
+  try { const { items } = await api('api/verbs/cards', { method: 'POST', body: JSON.stringify(vbSettings()) }); verbCards = { items, index: 0, revealed: false, fetching: false, done: false }; }
   catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-cards' }; }
   loading = false;
   if (screen === 'verbs-cards') render();
+}
+// Tops the stream up; a form already waiting, or seen in the last few cards, is left out so nothing comes straight back.
+async function topUpVerbCards() {
+  const stream = verbCards;
+  if (!stream || stream.fetching || stream.done || stream.items.length - stream.index > VB_CARDS_AHEAD) return;
+  stream.fetching = true;
+  const waitingOnScreen = stream.index >= stream.items.length;
+  try {
+    const { items } = await api('api/verbs/cards', { method: 'POST', body: JSON.stringify(vbSettings()) });
+    if (verbCards !== stream) return;
+    const near = new Set(stream.items.slice(Math.max(0, stream.index - VB_CARDS_RECENT)).map(vbCardKey));
+    const fresh = items.filter((card) => !near.has(vbCardKey(card)));
+    const waiting = new Set(stream.items.slice(stream.index).map(vbCardKey));
+    // With very few forms to choose from, anything not already waiting will do.
+    const added = fresh.length ? fresh : items.filter((card) => !waiting.has(vbCardKey(card)));
+    if (!added.length && stream.index >= stream.items.length) stream.done = true;
+    stream.items.push(...added);
+  } catch (error) { notice = { message: error.message }; }
+  stream.fetching = false;
+  // Only the "choosing more" screen is redrawn; a card being looked at is left alone.
+  if (screen === 'verbs-cards' && verbCards === stream && waitingOnScreen) render();
 }
 function renderVerbCards() {
   const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Cards</span></div>`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
   if (loading || !verbCards) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
-  const { items, index, revealed, marks, first } = verbCards;
-  const progress = `<div class="vb-progress" aria-hidden="true">${items.map((_, at) => `<span class="${marks[at] === true ? 'right' : marks[at] === false ? 'wrong' : at === index ? 'now' : ''}"></span>`).join('')}</div>`;
+  const { items, index, revealed } = verbCards;
   if (index >= items.length) {
-    const knew = first.filter(Boolean).length;
-    shell(`${progress}<section class="summary"><h1 class="score"><span class="sr-only">Knew: </span>${knew} <span>/ ${first.length}</span></h1><p class="summary-line">known the first time. ${knew === first.length ? 'Every one.' : 'The ones you missed come back first next round.'}</p><div class="summary-actions"><button class="primary" data-action="vb-cards-again">Another round</button><button class="secondary" data-action="verbs">Back to Verbs</button></div></section>`);
+    shell(verbCards.done ? '<p class="caption">No forms to show for these verbs and tenses.</p>' : '<div class="loading-state" role="status">Choosing more forms…</div>');
+    topUpVerbCards();
     return;
   }
   const card = items[index];
-  const again = index >= verbCards.size ? '<p class="caption vb-again-note">Once more, from earlier in this round.</p>' : '';
+  const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
   const face = revealed
     ? `<h1 class="main-word vb-card-answer" lang="fr">${frEsc(card.answer)}</h1><p class="source-word" lang="fr">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>`
     : `<p class="vb-card-who" lang="fr">${esc(VB_PERSONS[card.person])}</p><h1 class="main-word" lang="fr">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-card-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-card-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const after = revealed ? `${paradigmHTML(card.paradigm, card.person)}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : `<p class="caption vb-card-hint">Say the form to yourself, then tap the card.</p>`;
-  shell(`${progress}${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
+  shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
 }
 function revealVerbCard() {
   if (!verbCards || verbCards.revealed || verbCards.index >= verbCards.items.length) return;
   verbCards.revealed = true; render();
 }
 function markVerbCard(knew) {
-  const round = verbCards;
-  const card = round?.items[round.index];
-  if (!card || !round.revealed) return;
-  round.marks[round.index] = knew;
-  if (round.index < round.size) round.first.push(knew);
-  // A miss comes back four cards later, once, as long as the round has room.
-  if (!knew && round.index < round.size) round.items.splice(Math.min(round.items.length, round.index + 5), 0, card);
-  round.index += 1; round.revealed = false; notice = null;
+  const stream = verbCards;
+  const card = stream?.items[stream.index];
+  if (!card || !stream.revealed) return;
+  // A miss comes back four cards later, once.
+  if (!knew && !card.again) stream.items.splice(Math.min(stream.items.length, stream.index + 5), 0, { ...card, again: true });
+  stream.index += 1; stream.revealed = false; notice = null;
   render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
   api('api/verbs/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: card.verbId, tense: card.tense, person: card.person, knew }) })
-    .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-cards') render(); });
+    .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-cards') render(); })
+    // The next cards are chosen once this mark counts, so a form just missed is weighed as shaky.
+    .finally(() => topUpVerbCards());
 }
 
 // ── Quick forms ──
