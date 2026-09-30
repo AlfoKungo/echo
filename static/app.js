@@ -364,12 +364,14 @@ function renderHome() {
     ${tile('practise', mixIcon, 'Practise', 'A little of everything')}
     ${tile('listen', headphones, 'Listen', 'Hear it, show you got it', 'listen')}
     ${tile('read', bookIcon, 'Read', 'Read it, show you got it', 'read')}
+    ${tile('grammar', grammarIcon, 'Grammar', 'Rules, then practise')}
+    ${tile('verbs', verbsIcon, 'Verbs', 'Conjugation, on its own')}
     ${tile('walkman', cassette, 'Walkman', 'A tape of your words')}
     ${tile('sounds', soundsIcon, 'Sounds', 'Tell twin sounds apart')}
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
   </div><p class="study-label">Study</p><div class="study">
-    ${row('grammar', grammarIcon, 'Grammar')}${row('verbs', verbsIcon, 'Verbs')}${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}
+    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}
   </div></section>`;
 }
 function render() {
