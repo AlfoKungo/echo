@@ -13,7 +13,9 @@ import { createTextTopup } from './lib/text-topup';
 import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
-import { createRadio, layStory, radioClip, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
+import { createRadio, frenchClip, layStory, radioClip, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
+import { createVerbTables } from './lib/verbs';
+import { createVerbDrills } from './lib/verb-drills';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
@@ -104,6 +106,16 @@ const textChecks = setInterval(() => { if (process.env.ECHO_TEXT_TOPUP !== 'off'
 const hooks = createWordHooks({ ask, store });
 const hookChecks = setInterval(() => { if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check(); }, 10 * 60_000);
 if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check();
+// The Verbs room: a conjugation table for every vocabulary verb, written by Claude in the background (at start and
+// every ten minutes; ECHO_VERBS=off switches it off), and the record of every form practised.
+const verbTables = createVerbTables({ file: join(dirname(dbPath), 'verbs.json'), words: () => store.words(), ask });
+const verbChecks = setInterval(() => { if (process.env.ECHO_VERBS !== 'off') void verbTables.check(); }, 10 * 60_000);
+if (process.env.ECHO_VERBS !== 'off') void verbTables.check();
+const earClip = (said: string) => frenchClip(said).id;
+const verbs = createVerbDrills({
+  dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(),
+  earAudio: (said) => existsSync(join(root, 'audio/radio', `${earClip(said)}.mp3`)) ? `audio/radio/${earClip(said)}.mp3` : null,
+});
 // The Sounds drill: both sides of every pair, recorded after the texts (one voice model at a time).
 const soundsContent = await loadSounds(join(root, 'content/sounds.json'));
 const soundClips = new Set(soundsContent.contrasts.flatMap((contrast) => contrast.items.flatMap((item) => [sideClip(item.id, 'a'), sideClip(item.id, 'b')])));
@@ -169,9 +181,10 @@ function recordSentences(): Promise<void> {
       const clips = storyLineClips(episode.id, index, line.en);
       return [clips.fr, clips.en];
     }));
+    const phrases = verbs.earPhrases().map(frenchClip);
     const sentences = bank.sentences.filter((sentence) => existsSync(join(root, `audio/comprehension/${sentence.id}.mp3`)))
       .flatMap((sentence) => { const clips = sentenceClips(sentence); return [clips.fr, clips.en]; });
-    const missing = [...new Map([...storyLines, ...sentences].map((clip) => [clip.id, clip])).values()].filter((clip) => !radioClip(root, clip.id));
+    const missing = [...new Map([...storyLines, ...phrases, ...sentences].map((clip) => [clip.id, clip])).values()].filter((clip) => !radioClip(root, clip.id));
     const allowed = new Set(attempts.allowed(missing.map((clip) => clip.id)));
     const plan = missing.filter((clip) => allowed.has(clip.id));
     if (!plan.length) return;
@@ -449,6 +462,19 @@ async function route(req: Request): Promise<Response> {
       if (!await file.exists()) return json({ error: 'This sound has not been recorded yet.' }, 404);
       return audioFile(req, file);
     }
+    if (path === '/api/verbs' && req.method === 'GET') return json({ ...verbs.summary(), tables: verbTables.status() });
+    if (path === '/api/verbs/round' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.round(data as never) }); }
+    if (path === '/api/verbs/answer' && req.method === 'POST') { const data = await body(req); return json(verbs.answer(data as never)); }
+    if (path === '/api/verbs/table' && req.method === 'POST') { const data = await body(req); return json(verbs.table(data as never)); }
+    if (path === '/api/verbs/ear' && req.method === 'POST') { const data = await body(req); return json({ questions: verbs.earRound(data as never) }); }
+    if (path === '/api/verbs/ear-answer' && req.method === 'POST') { const data = await body(req); return json(verbs.earAnswer(data as never)); }
+    // By ear's recorded phrases.
+    const earFile = path.match(/^\/audio\/radio\/(fr-[0-9a-f]{16})\.mp3$/);
+    if (earFile && (req.method === 'GET' || req.method === 'HEAD')) {
+      const file = Bun.file(join(root, 'audio/radio', `${earFile[1]}.mp3`));
+      if (!await file.exists()) return json({ error: 'This phrase has not been recorded yet.' }, 404);
+      return audioFile(req, file);
+    }
     if (path === '/api/sounds' && req.method === 'GET') return json({ contrasts: sounds.summary() });
     if (path === '/api/sounds/round' && req.method === 'POST') { const data = await body(req); return json({ questions: sounds.round(String(data.id ?? '')) }); }
     if (path === '/api/sounds/answer' && req.method === 'POST') { const data = await body(req); return json(sounds.answer(data as unknown as SoundAnswer)); }
@@ -492,12 +518,14 @@ async function stop() {
   clearInterval(backups);
   clearInterval(textChecks);
   clearInterval(hookChecks);
+  clearInterval(verbChecks);
   clearInterval(storyChecks);
   clearInterval(radioChecks);
   await server.stop(true);
   comprehension.close();
   story.close();
   sounds.close();
+  verbs.close();
   grammar.close();
   store.close();
   process.exit(0);

@@ -35,7 +35,9 @@ const RETRY_AFTER = 30 * 60_000;
 const hash = (value: string) => createHash('sha256').update(value).digest('hex').slice(0, 16);
 const en = (text: string): Step => { const said = speakable(text); return { clip: { id: `en-${hash(said)}`, kind: 'en', text: said } }; };
 const translation = (text: string): Step => ({ ...(en(text) as { clip: RadioClip }), optional: true });
-const fr = (text: string): Step => ({ clip: { id: `fr-${hash(text)}`, kind: 'fr', text } });
+const fr = (text: string): Step => ({ clip: frenchClip(text) });
+// French said by the Radio's French voice and checked; the Verbs room's By ear phrases are made the same way.
+export function frenchClip(text: string): RadioClip { return { id: `fr-${hash(text)}`, kind: 'fr', text }; }
 const recording = (source: string): Step => ({ clip: { id: `cv-${hash(source)}`, kind: 'convert', source } });
 // A Listen/Read sentence as the Radio and the Walkman's sentence tape both play it: its recording converted to
 // the Walkman format, and its English said and checked. One source of the clip ids, so both share one recording.
