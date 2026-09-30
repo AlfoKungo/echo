@@ -14,7 +14,7 @@ import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
 import { createRadio, frenchClip, layStory, radioClip, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
-import { createVerbTables } from './lib/verbs';
+import { createVerbTables, TENSES, tenseGuide, verbGuide, type Tense } from './lib/verbs';
 import { createVerbDrills } from './lib/verb-drills';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
@@ -112,6 +112,13 @@ const verbTables = createVerbTables({ file: join(dirname(dbPath), 'verbs.json'),
 const verbChecks = setInterval(() => { if (process.env.ECHO_VERBS !== 'off') void verbTables.check(); }, 10 * 60_000);
 if (process.env.ECHO_VERBS !== 'off') void verbTables.check();
 const earClip = (said: string) => frenchClip(said).id;
+// The grammar topics that teach each tense, shown on its page in the Verbs room.
+const TENSE_TOPICS: Record<Tense, string[]> = {
+  pres: ['etre-avoir', 'present-er', 'present-ir-re', 'irregular-present', 'reflexive'],
+  pc: ['passe-compose-avoir', 'passe-compose-etre', 'pc-vs-imparfait'],
+  imp: ['imparfait', 'pc-vs-imparfait'],
+  fut: ['futur-simple', 'futur-proche'],
+};
 const verbs = createVerbDrills({
   dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(),
   earAudio: (said) => existsSync(join(root, 'audio/radio', `${earClip(said)}.mp3`)) ? `audio/radio/${earClip(said)}.mp3` : null,
@@ -463,6 +470,19 @@ async function route(req: Request): Promise<Response> {
       return audioFile(req, file);
     }
     if (path === '/api/verbs' && req.method === 'GET') return json({ ...verbs.summary(), tables: verbTables.status() });
+    // A tense explained: the grammar guides on it, then the learner's verbs sorted by what is regular about them.
+    const tensePage = path.match(/^\/api\/verbs\/tense\/([a-z]+)$/);
+    if (tensePage && req.method === 'GET') {
+      const tense = tensePage[1] as Tense;
+      if (!TENSES.includes(tense)) return json({ error: 'Echo does not drill that tense.' }, 404);
+      const guides = TENSE_TOPICS[tense].flatMap((id) => { const topic = course.topics.find((entry) => entry.id === id); return topic ? [{ id: topic.id, title: topic.title, level: topic.level, guide: topic.guide }] : []; });
+      return json({ ...tenseGuide(verbTables.verbs(), tense), guides });
+    }
+    const verbPage = path.match(/^\/api\/verbs\/verb\/([a-z0-9-]+)$/);
+    if (verbPage && req.method === 'GET') {
+      const verb = verbTables.verbs().find((entry) => entry.id === verbPage[1]);
+      return verb ? json(verbGuide(verb)) : json({ error: 'That verb is not in Echo.' }, 404);
+    }
     if (path === '/api/verbs/round' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.round(data as never) }); }
     if (path === '/api/verbs/answer' && req.method === 'POST') { const data = await body(req); return json(verbs.answer(data as never)); }
     if (path === '/api/verbs/table' && req.method === 'POST') { const data = await body(req); return json(verbs.table(data as never)); }

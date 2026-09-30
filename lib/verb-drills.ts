@@ -94,8 +94,8 @@ export function createVerbDrills(options: {
     return ordered;
   }
 
-  // A Quick forms round: the forms most worth practising (shaky first, then untried), at most three per verb and
-  // two per verb and tense, so a round covers several verbs; for your verbs, low vocabulary scores weigh a little.
+  // A Quick forms round: the forms most worth practising (shaky first, then untried), spread so a round of many
+  // verbs covers several (at most three forms per verb, two per verb and tense); for your verbs, low vocabulary scores weigh a little.
   function round(input: RoundInput): RoundItem[] {
     const verbs = chosenVerbs(input), tenses = chosenTenses(input);
     const forms = history();
@@ -104,12 +104,14 @@ export function createVerbDrills(options: {
       const lean = input.set === 'mine' ? (2 - Math.max(-4, Math.min(4, score.get(verb.id) ?? 0))) * 0.25 : 0;
       return { verb, tense, person, weight: WEIGHT[stateOf(forms.get(key(verb.id, tense, person)))] + lean + random() * 2.5 };
     })));
+    // With few verbs chosen, each may fill more of the round: one verb alone can give all its forms.
+    const verbCap = Math.max(PER_VERB, Math.ceil(ROUND / verbs.length)), tenseCap = Math.max(PER_TENSE, Math.ceil(verbCap / tenses.length));
     const perVerb = new Map<string, number>(), perTense = new Map<string, number>();
     const picked: RoundItem[] = [];
     for (const entry of pool.sort((left, right) => right.weight - left.weight)) {
       if (picked.length >= ROUND) break;
       const tenseKey = `${entry.verb.id}|${entry.tense}`;
-      if ((perVerb.get(entry.verb.id) ?? 0) >= PER_VERB || (perTense.get(tenseKey) ?? 0) >= PER_TENSE) continue;
+      if ((perVerb.get(entry.verb.id) ?? 0) >= verbCap || (perTense.get(tenseKey) ?? 0) >= tenseCap) continue;
       perVerb.set(entry.verb.id, (perVerb.get(entry.verb.id) ?? 0) + 1);
       perTense.set(tenseKey, (perTense.get(tenseKey) ?? 0) + 1);
       picked.push({ verbId: entry.verb.id, inf: entry.verb.inf, en: entry.verb.en, tense: entry.tense, tenseName: TENSE_NAMES[entry.tense], person: entry.person });

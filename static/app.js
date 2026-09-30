@@ -396,6 +396,8 @@ function render() {
   else if (screen === 'verbs-forms') renderVerbForms();
   else if (screen === 'verbs-table') renderVerbTable();
   else if (screen === 'verbs-ear') renderVerbEar();
+  else if (screen === 'verbs-tense') renderVerbTense();
+  else if (screen === 'verbs-verb') renderVerbPage();
   else if (screen === 'story') renderStory();
   else if (screen === 'radio') renderRadio();
   else renderHome();
@@ -1769,6 +1771,7 @@ function nextSound() {
 const VB_TENSES = { pres: 'présent', pc: 'passé composé', imp: 'imparfait', fut: 'futur' };
 const VB_PERSONS = ['je', 'tu', 'il / elle', 'nous', 'vous', 'ils / elles'];
 const VB_SETS = { mine: 'Your verbs', common: 'Most common 20', chosen: 'Choose…' };
+const VB_USES = { pres: 'now, always, and what is about to happen', pc: 'what happened: a finished action', imp: 'how things were, what used to happen', fut: 'what will happen' };
 const VB_ACCENTS = ['é', 'è', 'ê', 'à', 'â', 'ç', 'î', 'ô', 'ù', 'û'];
 const verbsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h7M4 12h5M4 17h7"/><path d="M14 6l3 12 3-12"/></svg>';
 let verbsInfo = null;    // api/verbs
@@ -1781,10 +1784,14 @@ let verbDraft = '';
 let verbTable = { verbId: '', tense: 'pres', answers: ['', '', '', '', '', ''], result: null };
 let verbEar = null;        // { questions, index, chose, result, right }
 let vbLastInput = '';
-const vbSettings = () => ({ set: verbSet, verbIds: verbChosen, tenses: verbTenses });
+let verbTensePage = '', verbTenseView = null; // the tense page shown, and api/verbs/tense/<tense>
+let verbPageId = '', verbPageView = null;     // the verb page shown, and api/verbs/verb/<id>
+// A round started from a verb or tense page practises just that, without changing the room's own choice.
+let verbFormsOverride = null;
+const vbSettings = () => verbFormsOverride ?? { set: verbSet, verbIds: verbChosen, tenses: verbTenses };
 const vbVerb = (id) => verbsInfo?.verbs.find((verb) => verb.id === id);
 function paradigmHTML(rows, hit = -1) {
-  return `<table class="vb-para">${rows.map((row) => `<tr class="${row.person === hit ? 'hit' : ''}"><td>${esc(row.label)}</td><td lang="fr">${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
+  return `<table class="vb-para">${rows.map((row) => `<tr class="${row.person === hit ? 'hit' : ''}"><td lang="fr">${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
 }
 const vbAccentsHTML = () => `<div class="vb-accents" aria-label="Accented letters">${VB_ACCENTS.map((letter) => `<button type="button" data-action="vb-accent" data-letter="${letter}">${letter}</button>`).join('')}</div>`;
 
@@ -1818,20 +1825,26 @@ function renderVerbs() {
   // The map: every verb with a form practised, most shaky forms first.
   const drilled = verbsInfo.verbs.filter((verb) => Object.values(verb.states).some((states) => states.some((state) => state && state !== 'new')));
   const shaky = (verb) => Object.values(verb.states).flat().filter((state) => state === 'shaky').length;
-  const rows = drilled.sort((a, b) => shaky(b) - shaky(a)).map((verb) => `<tr><td lang="fr">${frEsc(verb.inf)}</td>${Object.keys(VB_TENSES).map((tense) => `<td><button class="vb-cell" data-action="vb-cell" data-verb="${esc(verb.id)}" data-tense="${tense}" aria-label="${esc(verb.inf)}, ${VB_TENSES[tense]}">${verb.states[tense].map((state) => `<i class="${state ?? 'none'}"></i>`).join('')}</button></td>`).join('')}</tr>`).join('');
+  const rows = drilled.sort((a, b) => shaky(b) - shaky(a)).map((verb) => `<tr><td><button class="vb-name" data-action="vb-verb" data-verb="${esc(verb.id)}" lang="fr">${frEsc(verb.inf)}</button></td>${Object.keys(VB_TENSES).map((tense) => `<td><button class="vb-cell" data-action="vb-cell" data-verb="${esc(verb.id)}" data-tense="${tense}" aria-label="${esc(verb.inf)}, ${VB_TENSES[tense]}">${verb.states[tense].map((state) => `<i class="${state ?? 'none'}"></i>`).join('')}</button></td>`).join('')}</tr>`).join('');
   const map = rows ? `<table class="vb-map"><tr><th></th>${Object.values(VB_TENSES).map((label) => `<th>${label.replace('passé composé', 'passé c.')}</th>`).join('')}</tr>${rows}</table>
     <div class="vb-legend"><span><i class="solid"></i>solid</span><span><i class="getting"></i>getting there</span><span><i class="shaky"></i>shaky</span><span><i class="new"></i>not tried</span></div>` : '<p class="caption">Your map fills in as you practise: one square per person, for each verb and tense.</p>';
   const worst = verbsInfo.worst.length ? `<p class="settings-label vb-label">Forms that catch you most</p><ol class="vb-worst">${verbsInfo.worst.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="fr">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
   shell(`${writing}<p class="settings-label vb-label">Which verbs</p><div class="vb-pills">${sets}</div>${chooser}
     <p class="settings-label vb-label">Tenses</p><div class="vb-pills">${tenses}</div>
     <div class="topic-list vb-modes">${modes}</div>
+    <h2 class="story-heading">Learn the tenses</h2><div class="topic-list">${Object.entries(VB_TENSES).map(([tense, label]) => `<button class="topic-row" data-action="vb-tense-page" data-tense="${tense}" ${busy ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3 lang="fr">${label}</h3></span><p>${esc(VB_USES[tense])}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('')}</div>
+    <div class="dialog-row vb-lookup"><label for="vb-lookup">Look up a verb</label><select id="vb-lookup"><option value="">Choose a verb…</option>${[...verbsInfo.verbs].sort((a, b) => a.inf.localeCompare(b.inf, 'fr')).map((verb) => `<option value="${esc(verb.id)}">${esc(verb.inf)}</option>`).join('')}</select></div>
     <h2 class="story-heading">Verb map</h2>${map}${worst}`);
 }
 function verbAction(action, button) {
   if (action === 'vb-set') { verbSet = button.dataset.set; savePreference('echo.verbs-set', verbSet); render(); }
   else if (action === 'vb-choose') { const id = button.dataset.verb; verbChosen = verbChosen.includes(id) ? verbChosen.filter((entry) => entry !== id) : [...verbChosen, id]; savePreference('echo.verbs-chosen', JSON.stringify(verbChosen)); render(); }
   else if (action === 'vb-tense') { const tense = button.dataset.tense; const next = verbTenses.includes(tense) ? verbTenses.filter((entry) => entry !== tense) : [...verbTenses, tense]; if (!next.length) return; verbTenses = Object.keys(VB_TENSES).filter((entry) => next.includes(entry)); savePreference('echo.verbs-tenses', JSON.stringify(verbTenses)); render(); }
-  else if (action === 'vb-forms') { if (move('verbs-forms', true)) startVerbForms(); }
+  else if (action === 'vb-forms') { verbFormsOverride = null; if (move('verbs-forms', true)) startVerbForms(); }
+  else if (action === 'vb-tense-page') { if (move(`verbs-tense|${button.dataset.tense}`, true)) loadVerbTense(); }
+  else if (action === 'vb-verb') openVerbPage(button.dataset.verb);
+  else if (action === 'vb-practise-tense') { verbFormsOverride = { set: verbSet, verbIds: verbChosen, tenses: [button.dataset.tense] }; if (move('verbs-forms', true)) startVerbForms(); }
+  else if (action === 'vb-practise-verb') { verbFormsOverride = { set: 'chosen', verbIds: [button.dataset.verb], tenses: verbTenses }; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-table') openVerbTable();
   else if (action === 'vb-cell') openVerbTable(button.dataset.verb, button.dataset.tense);
   else if (action === 'vb-ear') { if (move('verbs-ear', true)) startVerbEar(); }
@@ -1852,6 +1865,55 @@ function insertAccent(letter) {
   input.value = input.value.slice(0, start) + letter + input.value.slice(end);
   input.focus(); input.setSelectionRange(start + 1, start + 1);
   input.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+// ── Learn: a tense, and a verb ──
+async function loadVerbTense() {
+  loading = true; notice = null; retryAction = null; verbTenseView = null; render();
+  try { verbTenseView = await api(`api/verbs/tense/${verbTensePage}`); }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-tense' }; }
+  loading = false;
+  if (screen === 'verbs-tense') render();
+}
+// The model verbs side by side, one row per person, each ending lit.
+function modelsHTML(models) {
+  if (!models.length) return '';
+  const people = models[0].paradigm.map((row) => row.person).filter((person) => models.every((model) => model.paradigm.some((row) => row.person === person)));
+  const cell = (model, person) => { const row = model.paradigm.find((entry) => entry.person === person); return row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join(''); };
+  return `<div class="guide-table-wrap"><table class="guide-table vb-models"><thead><tr>${models.map((model) => `<th scope="col"><button class="vb-name" data-action="vb-verb" data-verb="${esc(model.id)}" lang="fr">${frEsc(model.inf)}</button></th>`).join('')}</tr></thead><tbody>${people.map((person) => `<tr>${models.map((model) => `<td lang="fr">${cell(model, person)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+function renderVerbTense() {
+  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Tense</span></div>`;
+  const view = verbTenseView;
+  if (loading || !view) { main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}${loading ? '<div class="loading-state" role="status">Opening the tense…</div>' : ''}</section>`; return; }
+  const groups = view.groups.map((group) => {
+    const list = group.many
+      ? `<details class="vb-many"><summary>${group.verbs.length} of your verbs</summary><div class="vb-chooser">${group.verbs.map((verb) => `<button class="vb-chip" data-action="vb-verb" data-verb="${esc(verb.id)}" lang="fr">${frEsc(verb.inf)}</button>`).join('')}</div></details>`
+      : `<ul class="vb-group-list">${group.verbs.map((verb) => `<li><button data-action="vb-verb" data-verb="${esc(verb.id)}"><span lang="fr" class="vb-inf">${frEsc(verb.inf)}</span><span lang="fr" class="vb-detail">${frEsc(verb.detail)}</span></button></li>`).join('')}</ul>`;
+    return `<section class="vb-group"><h3>${esc(group.title)} <span class="vb-count">${group.verbs.length}</span></h3><p class="vb-why">${frEsc(group.text)}</p>${list}</section>`;
+  }).join('');
+  const guides = view.guides.map((topic) => `<details class="vb-guide"><summary><span>${esc(topic.title)}</span><span class="level-tag">${esc(topic.level)}</span></summary>${guideHTML(topic.guide)}</details>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}<h1 lang="fr">${esc(view.name)}</h1><p class="subtitle">${esc(view.use)}</p>
+    <h2 class="story-heading">The pattern</h2>${modelsHTML(view.models)}<p class="caption">The lit part is what changes from person to person. Tap a verb to see all its tenses.</p>
+    <h2 class="story-heading">Your verbs in the ${esc(view.name)}</h2>${groups}
+    <h2 class="story-heading">The rules in full</h2><p class="caption">From Grammar. Tap one to open it.</p>${guides}
+    <div class="summary-actions"><button class="primary" data-action="vb-practise-tense" data-tense="${view.tense}">Practise the ${esc(view.name)}</button></div></section>`;
+}
+function openVerbPage(id) { if (move(`verbs-verb|${id}`, true)) loadVerbPage(); }
+async function loadVerbPage() {
+  loading = true; notice = null; retryAction = null; verbPageView = null; render();
+  try { verbPageView = await api(`api/verbs/verb/${verbPageId}`); }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-verb' }; }
+  loading = false;
+  if (screen === 'verbs-verb') render();
+}
+function renderVerbPage() {
+  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Verb</span></div>`;
+  const view = verbPageView;
+  if (loading || !view) { main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}${loading ? '<div class="loading-state" role="status">Opening the verb…</div>' : ''}</section>`; return; }
+  const tenses = view.tenses.map((entry) => `<section class="vb-tense-block"><div class="vb-tense-head"><h2 lang="fr">${esc(entry.name)}</h2><button class="quiet" data-action="vb-tense-page" data-tense="${entry.tense}">${esc(entry.group)} →</button></div>${paradigmHTML(entry.paradigm)}<p class="vb-why vb-rule">${frEsc(entry.rule)}</p><button class="quiet vb-table-link" data-action="vb-cell" data-verb="${esc(view.id)}" data-tense="${entry.tense}">Fill in this table</button></section>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}<h1 lang="fr">${frEsc(view.inf)}</h1><p class="subtitle">${esc(view.en)}</p>
+    <div class="summary-actions"><button class="primary" data-action="vb-practise-verb" data-verb="${esc(view.id)}">Practise ${esc(view.inf)}</button></div>${tenses}</section>`;
 }
 
 // ── Quick forms ──
@@ -2481,6 +2543,8 @@ function show(next) {
   else if (name === 'exercise') enterScope(arg);
   else if (name === 'focus') focusId = arg;
   else if (name === 'sound') { soundId = arg; soundRound = null; }
+  else if (name === 'verbs-tense' && arg !== verbTensePage) { verbTensePage = arg; verbTenseView = null; }
+  else if (name === 'verbs-verb' && arg !== verbPageId) { verbPageId = arg; verbPageView = null; }
   else if (name === 'story') storyNumber = Number(arg) || 0;
   else if ((name === 'song' || name === 'lyrics') && arg !== songId) { songId = arg; songView = null; songLyrics = null; }
   if (name !== 'lyrics') clearTimeout(lyricsPoll);
@@ -2665,6 +2729,8 @@ function retry() {
   else if (action.type === 'verbs') loadVerbs();
   else if (action.type === 'verbs-forms') startVerbForms();
   else if (action.type === 'verbs-ear') startVerbEar();
+  else if (action.type === 'verbs-tense') loadVerbTense();
+  else if (action.type === 'verbs-verb') loadVerbPage();
   else if (action.type === 'story') loadStory();
   else if (action.type === 'radio') loadRadio();
   else if (action.type === 'songs') loadSongs();
@@ -2797,6 +2863,7 @@ document.addEventListener('change', (event) => {
   if (event.target.id === 'deck-select' && !locked()) { deck = event.target.value; browseCategory = deck; savePreference('echo.deck', deck); dialog.close(); startPractice(); }
   else if (event.target.id === 'browse-category') { browseCategory = event.target.value; renderBrowseResults(); }
   else if (event.target.id === 'browse-show') { browseShow = event.target.value; renderBrowseResults(); }
+  else if (event.target.id === 'vb-lookup' && event.target.value) openVerbPage(event.target.value);
   else if (event.target.id === 'vb-table-verb' || event.target.id === 'vb-table-tense') {
     verbTable = { ...verbTable, [event.target.id === 'vb-table-verb' ? 'verbId' : 'tense']: event.target.value, answers: ['', '', '', '', '', ''], result: null };
     render(); main.querySelector('.vb-input')?.focus({ preventScroll: true });
@@ -2885,6 +2952,8 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'verbs-forms') startVerbForms();
   else if (screen === 'verbs-table') render();
   else if (screen === 'verbs-ear') startVerbEar();
+  else if (screen === 'verbs-tense') loadVerbTense();
+  else if (screen === 'verbs-verb') loadVerbPage();
   else if (screen === 'story') loadStory();
   else if (screen === 'radio') loadRadio();
 });

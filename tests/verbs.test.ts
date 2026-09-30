@@ -3,7 +3,7 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createVerbDrills } from '../lib/verb-drills';
-import { conjugate, diagnose, earQuestions, isRight, paradigm, verbOf, verbProblems, type VerbTable, type VerbWord } from '../lib/verbs';
+import { conjugate, diagnose, earQuestions, groupOf, isRight, paradigm, tenseGuide, verbGuide, verbOf, verbProblems, type VerbTable, type VerbWord } from '../lib/verbs';
 
 const words: Record<string, VerbWord> = {
   parler: { id: 'v-parler', fr: 'parler', en: 'to speak' },
@@ -17,6 +17,7 @@ const words: Record<string, VerbWord> = {
   falloir: { id: 'v-falloir', fr: 'falloir', en: 'to be necessary' },
   etre: { id: 'v-etre', fr: 'être', en: 'to be' },
   laisser: { id: 'v-laisser', fr: 'laisser', en: 'to leave' },
+  partir: { id: 'v-partir', fr: 'partir', en: 'to leave' },
   connaitre: { id: 'v-connaitre', fr: 'connaître', en: 'to know' },
 };
 const tables: Record<string, VerbTable> = {
@@ -29,6 +30,7 @@ const tables: Record<string, VerbTable> = {
   habituer: { id: 'v-habituer', pres: ['habitue', 'habitues', 'habitue', 'habituons', 'habituez', 'habituent'], imp: ['habituais', 'habituais', 'habituait', 'habituions', 'habituiez', 'habituaient'], fut: 'habituer', pp: 'habitué', aux: 'être' },
   arriver: { id: 'v-arriver', pres: ['arrive', 'arrives', 'arrive', 'arrivons', 'arrivez', 'arrivent'], imp: ['arrivais', 'arrivais', 'arrivait', 'arrivions', 'arriviez', 'arrivaient'], fut: 'arriver', pp: 'arrivé', aux: 'être' },
   falloir: { id: 'v-falloir', pres: ['faut'], imp: ['fallait'], fut: 'faudr', pp: 'fallu', aux: 'avoir' },
+  partir: { id: 'v-partir', pres: ['pars', 'pars', 'part', 'partons', 'partez', 'partent'], imp: ['partais', 'partais', 'partait', 'partions', 'partiez', 'partaient'], fut: 'partir', pp: 'parti', aux: 'être' },
   laisser: { id: 'v-laisser', pres: ['laisse', 'laisses', 'laisse', 'laissons', 'laissez', 'laissent'], imp: ['laissais', 'laissais', 'laissait', 'laissions', 'laissiez', 'laissaient'], fut: 'laisser', pp: 'laissé', aux: 'avoir' },
   connaitre: { id: 'v-connaitre', pres: ['connais', 'connais', 'connaît', 'connaissons', 'connaissez', 'connaissent'], imp: ['connaissais', 'connaissais', 'connaissait', 'connaissions', 'connaissiez', 'connaissaient'], fut: 'connaîtr', pp: 'connu', aux: 'avoir' },
   etre: { id: 'v-etre', pres: ['suis', 'es', 'est', 'sommes', 'êtes', 'sont'], imp: ['étais', 'étais', 'était', 'étions', 'étiez', 'étaient'], fut: 'ser', pp: 'été', aux: 'avoir' },
@@ -104,6 +106,27 @@ describe('conjugation and answers', () => {
   });
 });
 
+describe('guides', () => {
+  test.each([
+    ['pres', { parler: 'er', lever: 'er-change', finir: 'finir', prendre: 'prendre', partir: 'partir', aller: 'irregular', falloir: 'only-il', laisser: 'er' }],
+    ['pc', { aller: 'etre', partir: 'etre', lever: 'reflexive', prendre: 'participle', parler: 'regular', finir: 'regular', etre: 'participle' }],
+    ['imp', { etre: 'etre', manger: 'soft', prendre: 'from-nous', aller: 'from-nous', parler: 'regular', connaitre: 'from-nous' }],
+    ['fut', { aller: 'stem', etre: 'stem', lever: 'er-change', parler: 'regular', prendre: 'regular' }],
+  ] as const)('each verb falls in the group that says what is regular about it in the %s', (tense, expected) => {
+    for (const [name, group] of Object.entries(expected)) expect([name, groupOf(verb(name), tense)]).toEqual([name, group]);
+  });
+
+  test('a tense guide shows model tables and lists every verb once, in its group', () => {
+    const all = Object.keys(tables).map(verb);
+    const guide = tenseGuide(all, 'fut');
+    expect(guide.models.map((model) => model.inf)).toEqual(['parler', 'prendre', 'être']);
+    expect(guide.groups.flatMap((group) => group.verbs).length).toBe(all.length);
+    expect(guide.groups.find((group) => group.id === 'stem')!.verbs.find((entry) => entry.inf === 'aller')!.detail).toBe('j’irai');
+    const page = verbGuide(verb('aller'));
+    expect(page.tenses.map((entry) => entry.group)).toEqual(['Irregular', 'Take être', 'Irregular in the présent, regular here', 'Irregular stems']);
+  });
+});
+
 describe('verb drills', () => {
   const directories: string[] = [];
   const closers: (() => void)[] = [];
@@ -146,8 +169,11 @@ describe('verb drills', () => {
     const items = drills.round({ set: 'mine', tenses: ['pres', 'pc'] });
     expect(new Set(items.map((item) => item.verbId))).toEqual(new Set(['v-parler', 'v-prendre']));
     expect(items.some((item) => item.verbId === 'v-prendre' && item.tense === 'pres' && item.person === 5)).toBe(true);
-    for (const id of ['v-parler', 'v-prendre']) expect(items.filter((item) => item.verbId === id).length).toBeLessThanOrEqual(3);
-    expect(drills.round({ set: 'common', tenses: ['imp'] }).length).toBeGreaterThan(10);
+    const common = drills.round({ set: 'common', tenses: ['imp'] });
+    expect(common.length).toBeGreaterThan(10);
+    for (const id of new Set(common.map((item) => item.verbId))) expect(common.filter((item) => item.verbId === id).length).toBeLessThanOrEqual(3);
+    // One verb alone fills the round with its forms.
+    expect(drills.round({ set: 'chosen', verbIds: ['v-aller'], tenses: ['pres', 'fut'] }).length).toBe(12);
     expect(() => drills.round({ set: 'mine', tenses: [] })).toThrow('Choose at least one tense.');
   });
 
