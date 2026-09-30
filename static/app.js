@@ -144,8 +144,8 @@ let audioBlocked = false;
 let clipProgress = null;
 // A passage or sentence that is playing, and where one was stopped (a tapped word, Pause, an answer), so the
 // speaker continues from that line; "From the start" plays it all again.
-let clipRun = null; // { key, index }
-let clipSpot = null; // { key, index }
+let clipRun = null; // { key, index, heard }: index is where play continues, heard the line last started
+let clipSpot = null; // { key, index, heard }
 let glossWord = null;
 let addStatus = '';
 let mistakes = null;
@@ -233,7 +233,7 @@ function clipHint() {
   const view = streamState?.current;
   if (clipProgress) return `line ${clipProgress.index} of ${clipProgress.total}`;
   if (!view?.audio?.length) return '';
-  if (clipSpot?.key === clipKey() && view.audio.length > 1) return `stopped at line ${clipSpot.index + 1} of ${view.audio.length}`;
+  if (clipSpot?.key === clipKey() && view.audio.length > 1) return `paused · line ${clipSpot.heard + 1} of ${view.audio.length}`;
   if (audioBlocked && view.mode === 'listen' && !streamState.result) return 'Tap to listen';
   return view.audio.length > 1 ? `${view.audio.length} lines` : '';
 }
@@ -243,22 +243,25 @@ function showClipProgress() {
   const block = document.querySelector('.listen-block');
   if (block && streamState?.current) block.outerHTML = streamAudioHTML(streamState.current, !!streamState.result);
 }
-async function playClips(urls, from = 0) {
+// Plays lines from `from` up to (not including) `to`; stopping short of the end leaves the spot after the last
+// line played, so Continue goes on from there.
+async function playClips(urls, from = 0, to = urls?.length ?? 0) {
   if (!urls?.length) return;
   const token = ++audioGeneration;
-  clipRun = { key: clipKey(), index: from }; clipSpot = null;
-  for (let index = from; index < urls.length; index++) {
+  clipRun = { key: clipKey(), index: from, heard: from }; clipSpot = null;
+  for (let index = from; index < to; index++) {
     if (token !== audioGeneration) return;
-    clipRun.index = index;
+    clipRun.index = index; clipRun.heard = index;
     clipProgress = urls.length > 1 ? { index: index + 1, total: urls.length } : null;
     showClipProgress();
     if (!await playClip(urls[index], token) || token !== audioGeneration) {
       if (token === audioGeneration) { clipRun = null; clipProgress = null; showClipProgress(); }
       return;
     }
-    if (index + 1 < urls.length) { clipRun.index = index + 1; await new Promise((resolve) => { audioTimer = setTimeout(resolve, 500); }); }
+    if (index + 1 < to) { clipRun.index = index + 1; await new Promise((resolve) => { audioTimer = setTimeout(resolve, 500); }); }
   }
   if (token !== audioGeneration) return;
+  clipSpot = to < urls.length ? { key: clipRun.key, index: to, heard: to - 1 } : null;
   clipRun = null; clipProgress = null; showClipProgress();
 }
 async function api(path, options = {}) {
@@ -1176,8 +1179,11 @@ function streamAudioHTML(view, settled) {
   const icon = playing ? pauseIcon : spot ? playIcon : speaker;
   const label = playing ? 'Pause' : spot && view.audio.length > 1 ? `Continue from line ${spot.index + 1}` : big ? 'Play the French' : 'Play the French again';
   const button = `<button class="${big ? 'listen-play' : 'icon'}" data-action="play-clips" aria-label="${esc(label)}">${icon}</button>`;
+  // In a passage, the line just heard can be heard once more on its own, playing or paused.
+  const heard = view.audio.length > 1 ? (playing ? clipRun.heard : spot?.heard) : undefined;
+  const again = heard !== undefined ? `<button class="quiet clip-again" data-action="clips-line">Line ${heard + 1} again</button>` : '';
   const restart = spot && spot.index > 0 ? '<button class="quiet clip-restart" data-action="clips-restart">From the start</button>' : '';
-  return `<div class="listen-block${big ? ' big' : ''}">${button}<p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p>${restart}</div>`;
+  return `<div class="listen-block${big ? ' big' : ''}">${button}<p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p>${again || restart ? `<div class="clip-actions">${again}${restart}</div>` : ''}</div>`;
 }
 function streamPromptHTML(view, settled) {
   const prompt = view.prompt || {};
@@ -2006,6 +2012,16 @@ function autoplay() {
 }
 // The speaker pauses while it plays and otherwise continues from the line it stopped at; "From the start"
 // (fromStart) plays every line again.
+// Plays only the line last heard, then waits paused after it.
+function replayLine() {
+  const view = streamState?.current;
+  if (!view?.audio?.length) return;
+  const key = `${streamId}:${view.key}`;
+  const line = clipRun?.key === key ? clipRun.heard : clipSpot?.key === key ? clipSpot.heard : null;
+  if (line === null || line === undefined) return;
+  audioBlocked = false; heardKey = key;
+  playClips(view.audio, line, line + 1);
+}
 function toggleClips(fromStart = false) {
   const view = streamState?.current;
   if (!view?.audio?.length) return;
@@ -2419,6 +2435,7 @@ document.addEventListener('click', (event) => {
   if (action === 'replay') { if (snapshot?.current) playFrench(snapshot.current.audioUrl); return; }
   if (action === 'play-clips') { toggleClips(); return; }
   if (action === 'clips-restart') { toggleClips(true); return; }
+  if (action === 'clips-line') { replayLine(); return; }
   if (action === 'grammar-audio') { const clip = activeGrammar()?.session?.current?.audio; if (clip) playFrench(clip); return; }
   if (button?.dataset.gloss !== undefined) { glossLine = button.closest('[data-line]')?.dataset.line ?? ''; lookupGloss(button.dataset.gloss); return; }
   if (action === 'add-word') { addWord(); return; }
