@@ -131,6 +131,7 @@ describe('verb drills', () => {
   const directories: string[] = [];
   const closers: (() => void)[] = [];
   afterEach(() => { for (const close of closers.splice(0)) close(); for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true }); });
+  const clock = { value: new Date(2026, 8, 21, 10) };
   function fixture(recorded: (said: string) => boolean = () => true) {
     const directory = mkdtempSync(join(tmpdir(), 'echo-verbs-'));
     directories.push(directory);
@@ -141,6 +142,7 @@ describe('verb drills', () => {
       vocabulary: () => [{ id: 'v-parler', status: 'learning', score: -2 }, { id: 'v-prendre', status: 'scheduled', score: 3 }, { id: 'v-finir', status: 'new', score: 0 }],
       earAudio: (said) => recorded(said) ? `audio/radio/${encodeURIComponent(said)}.mp3` : null,
       random: () => ((seed = (seed * 16807) % 2147483647) / 2147483647),
+      now: () => new Date(clock.value),
     });
     closers.push(drills.close);
     return drills;
@@ -187,6 +189,33 @@ describe('verb drills', () => {
     drills.mark({ requestId: 'k2', verbId: 'v-aller', tense: 'fut', person: card!.person, knew: true });
     expect(drills.summary().verbs.find((row) => row.id === 'v-aller')!.states.fut[card!.person]).toBe('getting');
     expect(() => drills.mark({ requestId: 'k3', verbId: 'v-aller', tense: 'fut', person: 0, knew: 'yes' as never })).toThrow('Say whether you knew it.');
+  });
+
+  test('statistics rebuild the forms of each day, carry quiet days over, and split the last two weeks by tense, person and kind', () => {
+    const drills = fixture();
+    const mark = (id: string, person: number, knew: boolean, tense: 'pres' | 'fut' = 'pres') => drills.mark({ requestId: `${id}`, verbId: 'v-parler', tense, person, knew });
+    clock.value = new Date(2026, 8, 21, 10);
+    mark('a', 0, true); mark('b', 0, true); mark('c', 3, false);
+    // Before 04:00 still counts for the 21st.
+    clock.value = new Date(2026, 8, 22, 3, 30);
+    mark('d', 5, true);
+    clock.value = new Date(2026, 8, 23, 10);
+    mark('e', 3, true); mark('f', 0, false, 'fut');
+    clock.value = new Date(2026, 8, 24, 10);
+    const stats = drills.statistics();
+    expect(stats.history).toEqual([
+      { day: '2026-09-21', solid: 1, getting: 1, shaky: 1 },
+      { day: '2026-09-22', solid: 1, getting: 1, shaky: 1 },
+      { day: '2026-09-23', solid: 1, getting: 2, shaky: 1 },
+      { day: '2026-09-24', solid: 1, getting: 2, shaky: 1 },
+    ]);
+    expect(stats.forms).toMatchObject({ solid: 1, getting: 2, shaky: 1, practised: 4 });
+    expect(stats.tenses.pres).toEqual({ right: 4, total: 5 });
+    expect(stats.tenses.fut).toEqual({ right: 0, total: 1 });
+    expect(stats.people[3]).toEqual({ right: 1, total: 2 });
+    expect(stats.kinds.find((kind) => kind.tense === 'pres')).toMatchObject({ group: 'er', title: 'Regular -er', right: 4, total: 5 });
+    clock.value = new Date(2026, 9, 20, 10);
+    expect(drills.statistics().tenses.pres).toEqual({ right: 0, total: 0 });
   });
 
   test('a whole table checks every person and names the mistakes', () => {

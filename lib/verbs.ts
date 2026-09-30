@@ -453,6 +453,7 @@ const GROUPS: Record<Tense, { id: string; title: string; text: string; many?: tr
     { id: 'regular', title: 'The infinitive as the stem', text: 'The infinitive, without the final e of -re verbs: parler-, finir-, prendr-.', many: true, detail: () => '' },
   ],
 };
+export const GROUP_TITLES = Object.fromEntries(TENSES.map((tense) => [tense, Object.fromEntries(GROUPS[tense].map((group) => [group.id, group.title]))])) as Record<Tense, Record<string, string>>;
 const MODELS: Record<Tense, string[]> = { pres: ['parler', 'finir', 'attendre'], pc: ['parler', 'aller', 'se lever'], imp: ['parler', 'finir', 'être'], fut: ['parler', 'prendre', 'être'] };
 
 // A tense explained through the learner's verbs: three model tables, then every verb in the group that says what

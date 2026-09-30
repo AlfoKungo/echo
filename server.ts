@@ -335,7 +335,7 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));
     if (path === '/api/statistics' && req.method === 'GET') {
       const grammarTopics = grammar.catalog().flatMap((unit) => unit.topics).filter((topic) => topic.progress.seen > 0).length;
-      return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics, texts: texts.status() });
+      return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics, texts: texts.status(), verbs: verbs.statistics() });
     }
     const statisticsDay = path.match(/^\/api\/statistics\/day\/(\d{4}-\d{2}-\d{2})$/);
     if (statisticsDay && req.method === 'GET') return json(store.statisticsDay(statisticsDay[1]!));

@@ -1406,6 +1406,63 @@ function toggleStatsPlay() {
   }, 700);
   drawScores();
 }
+// The Verbs part of Statistics: forms now, the same at the end of each day (the last 30), and the last two weeks'
+// answers by tense, person and kind of verb. vStatsAt is the day shown, the last being today.
+let vStatsAt = -1, vStatsPlay = 0;
+const VS_DAYS = 30;
+const vsDays = () => (statistics?.verbs?.history ?? []).slice(-VS_DAYS);
+const vsSeg = ({ solid, getting, shaky }, height = 10) => { const all = solid + getting + shaky || 1; return `<div class="vs-seg" style="height:${height}px"><span class="s" style="width:${solid / all * 100}%"></span><span class="g" style="width:${getting / all * 100}%"></span><span class="w" style="width:${shaky / all * 100}%"></span></div>`; };
+const vsLegend = '<div class="st-legend"><span><i style="background:var(--violet)"></i>solid</span><span><i style="background:#6e6aa8"></i>getting there</span><span><i style="background:var(--danger)"></i>shaky</span></div>';
+function vsRow(label, sub, cell, action = '') {
+  const share = cell.total ? Math.round(cell.right / cell.total * 100) : null;
+  const inner = `<span class="vs-lbl" lang="fr">${esc(label)}<small>${esc(sub)}</small></span><span class="vs-track"><span style="width:${share ?? 0}%"></span></span><span class="vs-pct">${share === null ? '—' : `${share}%`}</span>`;
+  const tone = share === null ? ' none' : share < 50 ? ' low' : '';
+  return action ? `<button class="vs-row${tone}" ${action}>${inner}</button>` : `<div class="vs-row${tone}">${inner}</div>`;
+}
+function verbTimeHTML() {
+  const days = vsDays(), at = vStatsAt < 0 ? days.length - 1 : vStatsAt, shown = days[at], today = at === days.length - 1;
+  const tallest = Math.max(1, ...days.map((day) => day.solid + day.getting + day.shaky));
+  const bars = days.map((day, index) => `<button class="vs-day" data-action="stats-vday" data-index="${index}" aria-pressed="${index === at}" aria-label="${esc(statsDayLabel(day.day))}: ${day.solid} solid, ${day.getting} getting there, ${day.shaky} shaky"><span class="w" style="height:${day.shaky / tallest * 100}%"></span><span class="g" style="height:${day.getting / tallest * 100}%"></span><span class="s" style="height:${day.solid / tallest * 100}%"></span></button>`).join('');
+  const first = days[0];
+  const change = shown.solid - first.solid;
+  return `<p class="st-big"><strong>${shown.solid}</strong> forms solid</p><p class="st-sub">${today ? 'today' : `at the end of ${esc(statsDayLabel(shown.day))}`} · ${shown.getting} getting there, ${shown.shaky} shaky${days.length > 1 && change ? ` · ${change > 0 ? '+' : '−'}${Math.abs(change)} since ${esc(dayLabel(`${first.day}T12:00`))}` : ''}</p>
+    <div class="vs-days" style="grid-template-columns:repeat(${days.length},1fr)">${bars}</div>
+    <div class="st-when"><button class="icon" data-action="stats-vstep" data-step="-1" aria-label="Day before" ${at === 0 ? 'disabled' : ''}>‹</button><p class="st-when-label" role="status">${today ? `Today<small>${esc(statsDayLabel(shown.day))}</small>` : `${esc(statsDayLabel(shown.day))}<small>end of the day</small>`}</p><button class="icon" data-action="stats-vstep" data-step="1" aria-label="Day after" ${today ? 'disabled' : ''}>›</button><button class="icon" data-action="stats-vplay" aria-label="${vStatsPlay ? 'Stop' : 'Play from your first day'}" ${days.length > 1 ? '' : 'disabled'}>${vStatsPlay ? '❚❚' : '▶'}</button></div>`;
+}
+function drawVerbTime() { const block = document.querySelector('#st-verb-time'); if (screen === 'statistics' && block) block.innerHTML = verbTimeHTML(); }
+function showVerbDay(index) { vStatsAt = Math.max(0, Math.min(vsDays().length - 1, index)); drawVerbTime(); }
+function stopVerbPlay() { clearInterval(vStatsPlay); vStatsPlay = 0; }
+function toggleVerbPlay() {
+  if (vStatsPlay) { stopVerbPlay(); drawVerbTime(); return; }
+  vStatsAt = 0;
+  vStatsPlay = setInterval(() => {
+    if (screen !== 'statistics' || vStatsAt >= vsDays().length - 1) { stopVerbPlay(); drawVerbTime(); return; }
+    vStatsAt += 1; drawVerbTime();
+  }, 700);
+  drawVerbTime();
+}
+function verbStatsHTML() {
+  const verbs = statistics.verbs;
+  if (!verbs) return '';
+  const { forms } = verbs;
+  if (!forms.practised) return `<div class="st-block"><h2>Verb forms</h2><p class="st-cap">Practise in Verbs and your forms show up here: one verb, in one tense, for one person.</p></div>`;
+  const tenses = Object.entries(VB_TENSES).map(([tense, name]) => vsRow(name, verbs.tenses[tense].total ? `${verbs.tenses[tense].total} answers` : 'not practised lately', verbs.tenses[tense], `data-action="vb-tense-page" data-tense="${tense}"`)).join('');
+  const people = VB_PERSONS.map((person, index) => vsRow(person, `${verbs.people[index].total} answers`, verbs.people[index])).join('');
+  const kinds = verbs.kinds.map((kind) => vsRow(kind.title, `${VB_TENSES[kind.tense]} · ${kind.total} answers`, kind, `data-action="vb-tense-page" data-tense="${kind.tense}"`)).join('');
+  const answered = verbs.people.some((cell) => cell.total);
+  return `<div class="st-block"><h2>Verb forms</h2>
+      <p class="st-big"><strong>${forms.solid}</strong> forms solid</p>
+      <p class="st-sub">${forms.getting} getting there and ${forms.shaky} shaky, of ${forms.practised} you’ve practised — out of ${forms.total.toLocaleString('en')} forms of your verbs in four tenses.</p>
+      ${vsSeg(forms, 14)}${vsLegend}
+      <p class="st-cap">A form is one verb in one tense for one person. Solid: your last two answers right; shaky: your last one wrong. Cards, Quick forms and Whole table all count.</p></div>
+    <div class="st-block"><h2>Verb forms over time</h2><div id="st-verb-time">${verbTimeHTML()}</div>
+      <p class="st-cap">Each bar is your practised forms at the end of a day. Tap a day, or press ▶, to watch them firm up.</p></div>
+    ${answered ? `<div class="st-block"><h2>Verb answers, last two weeks</h2>
+      <p class="vs-label">By tense</p><div class="vs-rows">${tenses}</div>
+      <p class="vs-label">By person</p><div class="vs-rows">${people}</div>
+      <p class="vs-label">By kind of verb</p><div class="vs-rows">${kinds}</div>
+      <p class="st-cap">The share you got right. The kinds are the groups on each tense page: tap a tense or a kind to read about it.</p></div>` : ''}`;
+}
 function renderStatistics() {
   const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your French words are doing. Nothing here is a target.</p>`;
   if (!statistics || loading) { main.innerHTML = `${noticeHTML()}<section class="st">${header}${loading ? '<div class="loading-state" role="status">Adding it all up…</div>' : ''}</section>`; return; }
@@ -1470,6 +1527,7 @@ function renderStatistics() {
     <div class="st-block"><h2>By category</h2><ol class="st-rows">${categories}</ol><p class="st-cap">Shaky, steady or solid is the average score of the words you’ve started there.</p></div>
     <div class="st-block"><h2>Vocabulary answers, last two weeks</h2><div class="st-days">${days}</div><div class="st-days-axis">${dayAxis}</div>
       <div class="st-legend"><span><i style="background:var(--violet)"></i>knew it</span><span><i style="background:var(--danger)"></i>missed</span></div></div>
+    ${verbStatsHTML()}
     <div class="st-block"><h2>Everything else</h2><div class="st-facts">${facts.map(([value, label]) => `<div class="st-fact"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join('')}</div></div>
   </section>`;
 }
@@ -1669,6 +1727,7 @@ async function loadStatistics() {
   try {
     statistics = await api('api/statistics');
     stopStatsPlay(); statsAt = statistics.history.length - 1; statsDayWords.clear();
+    stopVerbPlay(); vStatsAt = -1;
     // The weakest bar is chosen to begin with, its list closed; tapping a bar opens its list.
     statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
     statsOpen = false;
@@ -2629,7 +2688,7 @@ function show(next) {
   if (name !== 'story') clearTimeout(storyPoll);
   if (name !== 'verbs') clearTimeout(verbsPoll);
   // Leaving the Radio pauses it where it is; coming back plays on from there.
-  if (name !== 'statistics') stopStatsPlay();
+  if (name !== 'statistics') { stopStatsPlay(); stopVerbPlay(); }
   if (name !== 'radio') { clearTimeout(radioPoll); if (!radioAudio.paused) radioAudio.pause(); }
   if (name !== 'mix' && name !== 'focus') { mixedSource = ''; review = null; }
   if (name !== 'listen' && name !== 'read' && name !== 'mix' && name !== 'focus') { streamState = null; streamId = ''; }
@@ -2905,6 +2964,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'stats-list') { statsOpen = !statsOpen; drawScores(); }
   else if (action === 'stats-day') { stopStatsPlay(); showStatsDay(statsAt + Number(button.dataset.step)); }
   else if (action === 'stats-play') toggleStatsPlay();
+  else if (action === 'stats-vday') { stopVerbPlay(); showVerbDay(Number(button.dataset.index)); }
+  else if (action === 'stats-vstep') { stopVerbPlay(); showVerbDay((vStatsAt < 0 ? vsDays().length - 1 : vStatsAt) + Number(button.dataset.step)); }
+  else if (action === 'stats-vplay') toggleVerbPlay();
   else if (action === 'points-day') { pointsDay = button.dataset.day; render(); }
   else if (action === 'walkman') openWalkman();
   else if (action === 'sounds') { if (move('sounds')) loadSounds(); }

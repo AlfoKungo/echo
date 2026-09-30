@@ -2,8 +2,8 @@
 // Whole table, Cards (the learner says whether they knew it) or By ear, kept once per request. A form's state comes from its latest answers (By ear is kept apart:
 // it tests hearing, not writing), and a round leans on the forms that are shaky or not tried yet.
 import { Database } from 'bun:sqlite';
-import { StoreError } from './store';
-import { conjugate, diagnose, earQuestion, earQuestions, isRight, paradigm, persons, rule, subject, TENSES, TENSE_NAMES, type EarKind, type ParadigmRow, type Tense, type Verb } from './verbs';
+import { recentStudyDays, StoreError, studyDay } from './store';
+import { conjugate, diagnose, earQuestion, earQuestions, GROUP_TITLES, groupOf, isRight, paradigm, persons, rule, subject, TENSES, TENSE_NAMES, type EarKind, type ParadigmRow, type Tense, type Verb } from './verbs';
 
 export type FormState = 'solid' | 'getting' | 'shaky' | 'new';
 export type VerbSet = 'mine' | 'common' | 'chosen';
@@ -19,6 +19,13 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 const WEIGHT: Record<FormState, number> = { shaky: 6, new: 3, getting: 2, solid: 0.5 };
+
+// The calendar day after a study day (YYYY-MM-DD).
+function nextDay(day: string): string {
+  const [year, month, date] = day.split('-').map(Number);
+  const next = new Date(year!, month! - 1, date! + 1, 12);
+  return `${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, '0')}-${String(next.getDate()).padStart(2, '0')}`;
+}
 
 export function createVerbDrills(options: {
   dbPath: string;
@@ -44,6 +51,7 @@ export function createVerbDrills(options: {
   `);
   const insert = db.query('INSERT OR IGNORE INTO verb_answers (request_id, verb_id, tense, person, mode, question, given, right, answered_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
   const written = db.query<{ verb_id: string; tense: Tense; person: number; right: number }, []>("SELECT verb_id, tense, person, right FROM verb_answers WHERE mode != 'ear' ORDER BY sequence DESC");
+  const everyWritten = db.query<{ verb_id: string; tense: Tense; person: number; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
   const heard = db.query<{ question: string; misses: number; answers: number }, []>("SELECT question, SUM(right = 0) AS misses, COUNT(*) AS answers FROM verb_answers WHERE mode = 'ear' GROUP BY question");
 
   const key = (verbId: string, tense: string, person: number) => `${verbId}|${tense}|${person}`;
@@ -240,6 +248,54 @@ export function createVerbDrills(options: {
     return { verbs: rows, worst, mine: rows.filter((row) => row.started).length, common: Math.min(COMMON, verbs.length), ear: { ready: ear.filter((said) => options.earAudio(said)).length, total: ear.length } };
   }
 
+  // The Statistics page's Verbs part: every form's state now, the same counts at the end of each study day since the
+  // first answer (rebuilt from the answers, as the verb map reads them), and the share right in each tense over the
+  // last two weeks, for each person and for each kind of verb (the groups of the tense pages). A form counts once
+  // practised, in any mode but By ear.
+  function statistics() {
+    const verbs = byId();
+    const total = [...verbs.values()].reduce((sum, verb) => sum + persons(verb).length * TENSES.length, 0);
+    const today = studyDay(now());
+    const since = recentStudyDays(now(), 14).since.getTime();
+    const answers = new Map<string, number[]>();
+    const tenses = Object.fromEntries(TENSES.map((tense) => [tense, { right: 0, total: 0 }])) as Record<Tense, { right: number; total: number }>;
+    const people = [0, 1, 2, 3, 4, 5].map(() => ({ right: 0, total: 0 }));
+    const kinds = new Map<string, { tense: Tense; group: string; right: number; total: number }>();
+    const count = () => {
+      const counts = { solid: 0, getting: 0, shaky: 0 };
+      for (const list of answers.values()) counts[stateOf(list) as 'solid' | 'getting' | 'shaky'] += 1;
+      return counts;
+    };
+    const history: { day: string; solid: number; getting: number; shaky: number }[] = [];
+    let day = '';
+    for (const row of everyWritten.all()) {
+      if (!verbs.has(row.verb_id)) continue;
+      const at = new Date(row.answered_at);
+      const answeredOn = studyDay(at);
+      if (day && answeredOn !== day) history.push({ day, ...count() });
+      day = answeredOn;
+      const id = key(row.verb_id, row.tense, row.person);
+      answers.set(id, [row.right, ...(answers.get(id) ?? [])].slice(0, 2));
+      if (at.getTime() >= since) {
+        const group = groupOf(verbs.get(row.verb_id)!, row.tense);
+        const kind = kinds.get(`${row.tense}|${group}`) ?? kinds.set(`${row.tense}|${group}`, { tense: row.tense, group, right: 0, total: 0 }).get(`${row.tense}|${group}`)!;
+        for (const cell of [tenses[row.tense], people[row.person]!, kind]) { cell.total += 1; cell.right += row.right; }
+      }
+    }
+    if (day) history.push({ day, ...count() });
+    // Days with nothing practised keep the day before's counts, up to today.
+    const days: typeof history = [];
+    for (const entry of history) {
+      const last = days.at(-1);
+      if (last) for (let next = nextDay(last.day); next < entry.day; next = nextDay(next)) days.push({ ...last, day: next });
+      days.push(entry);
+    }
+    const last = days.at(-1);
+    if (last) for (let next = nextDay(last.day); next <= today; next = nextDay(next)) days.push({ ...last, day: next });
+    const forms = last ? { solid: last.solid, getting: last.getting, shaky: last.shaky } : { solid: 0, getting: 0, shaky: 0 };
+    return { forms: { ...forms, practised: answers.size, total }, history: days, tenses, people, kinds: [...kinds.values()].sort((a, b) => b.total - a.total).map((kind) => ({ ...kind, title: GROUP_TITLES[kind.tense][kind.group] ?? kind.group })) };
+  }
+
   // The phrases By ear says, for the verbs it can ask about (the most common and those started), to be recorded.
   function earPhrases(): string[] {
     const verbs = options.verbs();
@@ -247,6 +303,6 @@ export function createVerbDrills(options: {
     return [...new Set(verbs.filter((verb, index) => index < COMMON || started.has(verb.id)).flatMap((verb) => earQuestions(verb).map((question) => question.said)))];
   }
 
-  return { round, cards, mark, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
+  return { round, cards, mark, statistics, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills>;
