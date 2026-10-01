@@ -518,7 +518,7 @@ async function hearAgain(id) {
   if (!walkmanAudio.paused) { heardResume = true; walkmanAudio.pause(); }
   heardSaying = id; render();
   const token = ++audioGeneration;
-  await playClip(entry?.verb ? entry.verb.audio : `audio/${entry?.sentence ? 'comprehension/' : ''}${encodeURIComponent(id)}.mp3`, token);
+  await playClip(entry?.verb ? entry.verb.audio : entry?.sentence ? `audio/comprehension/${encodeURIComponent(id)}.mp3` : wordClipUrl(id), token);
   if (token !== audioGeneration) return;
   heardSaying = '';
   if (screen !== 'walkman') return;
@@ -1804,6 +1804,8 @@ let soundList = null;          // api/sounds: each contrast with its recent reco
 let soundId = '';              // the contrast drilled, or 'mix'
 let soundRound = null;         // { questions, index, chose, right }
 // The version matches CLIP_VERSION in lib/sounds.ts.
+// The version matches WORD_CLIP_VERSION in lib/store.ts.
+const wordClipUrl = (id) => `audio/${encodeURIComponent(id)}.mp3?v=2`;
 const soundUrl = (itemId, side) => `audio/sounds/${itemId}-${side}.mp3?v=2`;
 function openSounds() { if (move('sounds', true)) loadSounds(); }
 async function loadSounds() {
@@ -2956,7 +2958,7 @@ document.addEventListener('click', (event) => {
     if (locked() || direction === button.dataset.direction) return;
     direction = button.dataset.direction; savePreference('echo.direction', direction); dialog.close(); startPractice(); return;
   }
-  if (button?.dataset.playWord) { const word = words?.find((entry) => entry.id === button.dataset.playWord); if (word) playFrench(`audio/${encodeURIComponent(word.id)}.mp3`); return; }
+  if (button?.dataset.playWord) { const word = words?.find((entry) => entry.id === button.dataset.playWord); if (word) playFrench(wordClipUrl(word.id)); return; }
   if (button?.dataset.revealWord) { revealBrowseWord(button.dataset.revealWord); return; }
   if (button?.dataset.topic) { openTopic(button.dataset.topic); return; }
   if (button?.dataset.group) { openGroup(button.dataset.group); return; }

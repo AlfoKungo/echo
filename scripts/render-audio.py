@@ -87,6 +87,10 @@ def transcribe(path):
         result_path.unlink()
     return {'text': ''.join(segment['text'] for segment in result['transcription']), 'tokens': [token for segment in result['transcription'] for token in segment['tokens']]}
 
+# Every word clip starts with the same 250 ms of quiet: a phone (and Bluetooth earbuds even more) drops the first
+# moment of a short clip while its output wakes. The Walkman copies trim it back (build-walkman-clips.py).
+LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1'
+
 def save_manifest():
     temporary = AUDIO / 'manifest.tmp.json'
     temporary.write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
@@ -197,7 +201,7 @@ for index, word in enumerate(pending, 1):
         fallback_wav.replace(trimmed)
     if chosen is not None:
         temporary = AUDIO / f"{word['id']}.tmp.mp3"
-        subprocess.run(['/opt/homebrew/bin/ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(trimmed), '-codec:a', 'libmp3lame', '-b:a', '96k', str(temporary)], check=True)
+        subprocess.run(['/opt/homebrew/bin/ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(trimmed), '-af', LEAD_IN, '-codec:a', 'libmp3lame', '-b:a', '96k', str(temporary)], check=True)
         temporary.replace(final)
         manifest[word['id']] = chosen
         if not args.keep_context:

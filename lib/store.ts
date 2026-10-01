@@ -88,6 +88,10 @@ type UndoRow = {
   after_version: number;
 };
 
+// Raised whenever the word recordings change, so a phone holding a cached clip fetches the new one; the app's
+// wordClipUrl carries the same number.
+export const WORD_CLIP_VERSION = 2;
+
 // Walkman scores: what each event adds to a word's score, and how fast a point fades.
 export const SCORE_RECALLED = 2;
 export const SCORE_MISSED = -3;
@@ -620,7 +624,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       stack,
       version: row.version,
       stage: row.active === 0 ? 'review' : row.completed_day === null && row.successes === 0 && row.cycle_misses === 0 ? 'new' : 'learning',
-      audioUrl: `audio/${encodeURIComponent(row.word_id)}.mp3`,
+      audioUrl: `audio/${encodeURIComponent(row.word_id)}.mp3?v=${WORD_CLIP_VERSION}`,
       ...(problem ? { trouble: problem } : {}),
     };
   }

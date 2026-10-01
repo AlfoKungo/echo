@@ -25,10 +25,15 @@ PEAK_CEILING_DB = -1.0
 ENCODE = ['-ar', '24000', '-ac', '1', '-codec:a', 'libmp3lame', '-b:a', '64k', '-reservoir', '0',
           '-write_xing', '0', '-id3v2_version', '0', '-write_id3v1', '0', '-f', 'mp3']
 FORMAT = 'walkman-v1:' + ' '.join(ENCODE) + f':{TARGET_MEAN_DB}:{PEAK_CEILING_DB}'
+# A word clip opens with a lead-in of quiet for playing alone on a phone; on a tape the gaps are laid by the
+# tape, so its Walkman copy keeps only 80 ms of it. Its own stamp, so the Radio's clips (stamped with FORMAT)
+# are left alone.
+WORD_TRIM = 'silenceremove=start_periods=1:start_threshold=-60dB:start_silence=0.08'
+WORD_FORMAT = FORMAT + ':' + WORD_TRIM
 
 
-def levels(path):
-    report = subprocess.run([FFMPEG, '-hide_banner', '-i', str(path), '-af', 'volumedetect', '-f', 'null', '-'],
+def levels(path, trim=None):
+    report = subprocess.run([FFMPEG, '-hide_banner', '-i', str(path), '-af', f'{trim},volumedetect' if trim else 'volumedetect', '-f', 'null', '-'],
                             capture_output=True, text=True, check=True).stderr
     mean = float(re.search(r'mean_volume: (-?[\d.]+) dB', report).group(1))
     peak = float(re.search(r'max_volume: (-?[\d.]+) dB', report).group(1))
@@ -40,11 +45,13 @@ def valid(path):
     return bool(data) and len(data) % FRAME_BYTES == 0 and all(data[i] == 0xFF and data[i + 1] == 0xF3 for i in range(0, len(data), FRAME_BYTES))
 
 
-def convert(source, target):
-    mean, peak = levels(source)
+# trim, when given, runs before the level is measured: leading quiet would otherwise lower the mean and make the
+# copy louder.
+def convert(source, target, trim=None):
+    mean, peak = levels(source, trim)
     gain = min(TARGET_MEAN_DB - mean, PEAK_CEILING_DB - peak)
     temporary = target.with_suffix('.tmp.mp3')
-    subprocess.run([FFMPEG, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(source), '-af', f'volume={gain:.2f}dB', *ENCODE, str(temporary)], check=True)
+    subprocess.run([FFMPEG, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(source), '-af', f'{trim},volume={gain:.2f}dB' if trim else f'volume={gain:.2f}dB', *ENCODE, str(temporary)], check=True)
     if not valid(temporary):
         temporary.unlink()
         raise RuntimeError(f'{source.name} did not encode to whole {FRAME_BYTES}-byte frames')
@@ -78,11 +85,11 @@ def main():
                 manifest.pop(key, None)
                 missing += 1
                 continue
-            stamp = FORMAT + ':' + hashlib.sha256(source.read_bytes()).hexdigest()
+            stamp = WORD_FORMAT + ':' + hashlib.sha256(source.read_bytes()).hexdigest()
             if target.exists() and manifest.get(key) == stamp:
                 skipped += 1
                 continue
-            convert(source, target)
+            convert(source, target, WORD_TRIM)
             manifest[key] = stamp
             built += 1
     temporary = manifest_path.with_suffix('.tmp.json')
