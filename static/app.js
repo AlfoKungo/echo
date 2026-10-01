@@ -264,16 +264,24 @@ async function playClips(urls, from = 0, to = urls?.length ?? 0) {
   clipSpot = to < urls.length ? { key: clipRun.key, index: to, heard: to - 1 } : null;
   clipRun = null; clipProgress = null; showClipProgress();
 }
+// Whether the last request failed to reach the Mac at all (no reply, or none in time). While it did and an action
+// waits to be retried, Echo retries it by itself: every retried action carries the request id it was first sent
+// with, so sending it again can never count twice.
+let offline = false;
+let autoRetryTimer = 0, autoRetryTries = 0;
+const AUTO_RETRY_SECONDS = [2, 4, 8, 15, 30];
 async function api(path, options = {}) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 25000);
   try {
     const response = await fetch(path, { ...options, signal: controller.signal, headers: { Accept: 'application/json', ...(options.body ? { 'Content-Type': 'application/json' } : {}) }, cache: 'no-store' });
+    offline = false;
     let data;
     try { data = await response.json(); } catch { throw new Error('Your Mac returned an unreadable response. Please try again.'); }
     if (!response.ok) { const error = new Error(data.error || `Request failed (${response.status}). Please try again.`); error.status = response.status; throw error; }
     return data;
   } catch (error) {
+    if (error.name === 'AbortError' || error instanceof TypeError) offline = true;
     if (error.name === 'AbortError') throw new Error('The request timed out. Retry to safely check and finish the same action.');
     if (error instanceof TypeError) throw new Error('Cannot reach your Mac. Check that Echo is running and your connection is available, then retry.');
     throw error;
@@ -306,6 +314,10 @@ function enterScope(key) {
 }
 function noticeHTML() {
   if (!notice) return '';
+  if (offline && retryAction) {
+    const kept = retryAction.body?.known !== undefined || retryAction.body?.given !== undefined || retryAction.type === 'grade' ? ' Your answer is kept and saves as soon as it’s back.' : '';
+    return `<div class="notice info" role="status"><span>Can’t reach your Mac. Trying again by itself.${kept}</span><button class="quiet" data-action="retry" ${busy ? 'disabled' : ''}>Retry now</button></div>`;
+  }
   return `<div class="notice ${notice.kind === 'info' ? 'info' : ''}" role="${notice.kind === 'info' ? 'status' : 'alert'}"><span>${esc(notice.message)}</span>${retryAction ? `<button class="quiet" data-action="retry" ${busy ? 'disabled' : ''}>Retry</button>` : ''}</div>`;
 }
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
@@ -374,7 +386,25 @@ function renderHome() {
     ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}
   </div></section>`;
 }
+// Keeps a retry scheduled while the Mac is out of reach and an action waits, sooner at first, then every 30 s.
+function syncAutoRetry() {
+  // The wait grows only while the Mac stays silent; any reply starts it again from the shortest.
+  if (!offline) autoRetryTries = 0;
+  if (!offline || !retryAction) { clearTimeout(autoRetryTimer); autoRetryTimer = 0; return; }
+  if (autoRetryTimer || busy) return;
+  const seconds = AUTO_RETRY_SECONDS[Math.min(autoRetryTries, AUTO_RETRY_SECONDS.length - 1)];
+  autoRetryTimer = setTimeout(() => { autoRetryTimer = 0; autoRetryTries += 1; retry(); }, seconds * 1000);
+}
+// Back on the network, or back in the app: try at once rather than waiting for the next turn.
+function retryNow() {
+  if (!offline || !retryAction || busy) return;
+  clearTimeout(autoRetryTimer); autoRetryTimer = 0; retry();
+}
+window.addEventListener('online', retryNow);
+window.addEventListener('pageshow', retryNow);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') retryNow(); });
 function render() {
+  syncAutoRetry();
   homeButton.disabled = busy;
   document.querySelector('#about-button').disabled = busy;
   if (screen === 'practice') renderPractice();
@@ -2931,7 +2961,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'again') grade(false);
   else if (action === 'known') grade(true);
   else if (action === 'undo') undo();
-  else if (action === 'retry') retry();
+  else if (action === 'retry') { clearTimeout(autoRetryTimer); autoRetryTimer = 0; retry(); }
   else if (action === 'retry-browse') loadBrowse();
   else if (action === 'restart') startScope(scope);
   else if (action === 'check') checkAnswer();
