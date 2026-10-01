@@ -355,9 +355,6 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-worst{list-style:none;margin:0;padding:0}
 .vb-worst button{display:flex;align-items:baseline;gap:8px;width:100%;padding:10px 0;border-top:1px solid var(--frame);font-size:16px;text-align:left}
 .vb-worst small{color:var(--dim);font-size:13px}.vb-misses{margin-left:auto;color:var(--danger);font-size:14px}
-.vb-progress{display:flex;gap:4px;margin:0 0 20px}
-.vb-progress span{flex:1;height:4px;border-radius:2px;background:var(--frame)}
-.vb-progress span.right{background:var(--violet)}.vb-progress span.wrong{background:var(--danger)}.vb-progress span.now{background:var(--muted)}
 .vb-prompt{border:1px solid var(--frame);background:var(--card);border-radius:16px;padding:24px 20px;text-align:center}
 .vb-who{font-size:32px;font-weight:550;letter-spacing:-.8px;color:var(--ink)}
 .vb-verb{font-size:20px;color:var(--violet);margin-top:6px}.vb-meta{font-size:13px;color:var(--muted);margin-top:6px}

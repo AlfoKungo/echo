@@ -1902,7 +1902,7 @@ let verbsPoll = 0;
 let verbSet = (() => { const saved = readPreference('echo.verbs-set', 'mine'); return saved in VB_SETS ? saved : 'mine'; })();
 let verbChosen = (() => { try { const list = JSON.parse(readPreference('echo.verbs-chosen', '[]')); return Array.isArray(list) ? list : []; } catch { return []; } })();
 let verbTenses = (() => { try { const list = JSON.parse(readPreference('echo.verbs-tenses', '["pres"]')).filter((tense) => tense in VB_TENSES); return list.length ? list : ['pres']; } catch { return ['pres']; } })();
-let verbFormsRound = null; // { items, index, first: [], result, given }
+let verbForms = null;      // { items, index, result, given, fetching, done }
 let verbCards = null;      // { items, index, size, revealed, marks: [], first: [] }
 let verbDraft = '';
 let verbTable = { verbId: '', tense: 'pres', answers: ['', '', '', '', '', ''], result: null };
@@ -1945,7 +1945,7 @@ function renderVerbs() {
   const blocked = (verbSet === 'mine' && !verbsInfo.mine) || (verbSet === 'chosen' && !verbChosen.length);
   const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} phrases recorded` : 'hear a form, tell the tense or how many';
   const mode = (action, title, detail, disabled = blocked) => `<button class="topic-row" data-action="${action}" ${busy || disabled ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${title}</h3></span><p>${esc(detail)}</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
-  const modes = `${mode('vb-cards', 'Cards', 'think of the form, turn the card, say if you knew it')}${mode('vb-forms', 'Quick forms', 'type one form at a time, 20 a round')}${mode('vb-table', 'Whole table', 'all six persons of one verb', false)}${mode('vb-ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}`;
+  const modes = `${mode('vb-cards', 'Cards', 'think of the form, turn the card, say if you knew it')}${mode('vb-forms', 'Quick forms', 'type one form at a time, as many as you like')}${mode('vb-table', 'Whole table', 'all six persons of one verb', false)}${mode('vb-ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}`;
   // The map: every verb with a form practised, most shaky forms first.
   const drilled = verbsInfo.verbs.filter((verb) => Object.values(verb.states).some((states) => states.some((state) => state && state !== 'new')));
   const shaky = (verb) => Object.values(verb.states).flat().filter((state) => state === 'shaky').length;
@@ -1975,7 +1975,6 @@ function verbAction(action, button) {
   else if (action === 'vb-cell') openVerbTable(button.dataset.verb, button.dataset.tense);
   else if (action === 'vb-ear') { if (move('verbs-ear', true)) startVerbEar(); }
   else if (action === 'vb-next') nextVerbForm();
-  else if (action === 'vb-again') startVerbForms();
   else if (action === 'vb-check-table') checkVerbTable();
   else if (action === 'vb-ear-play') { const question = verbEar?.questions[verbEar.index]; if (question) playFrench(question.audio); }
   else if (action === 'vb-ear-choose') chooseVerbEar(Number(button.dataset.choice));
@@ -2056,15 +2055,16 @@ async function startVerbCards() {
   loading = false;
   if (screen === 'verbs-cards') render();
 }
-// Tops the stream up; a form already waiting, or seen in the last few cards, is left out so nothing comes straight back.
-async function topUpVerbCards() {
-  const stream = verbCards;
+// Tops a stream (Cards or Quick forms) up from its endpoint; a form already waiting, or seen in the last few, is
+// left out so nothing comes straight back. Only the "choosing more" screen is redrawn; a form being looked at is
+// left alone.
+async function topUpVerbStream(stream, path, current, onScreen) {
   if (!stream || stream.fetching || stream.done || stream.items.length - stream.index > VB_CARDS_AHEAD) return;
   stream.fetching = true;
   const waitingOnScreen = stream.index >= stream.items.length;
   try {
-    const { items } = await api('api/verbs/cards', { method: 'POST', body: JSON.stringify(vbSettings()) });
-    if (verbCards !== stream) return;
+    const { items } = await api(path, { method: 'POST', body: JSON.stringify(vbSettings()) });
+    if (current() !== stream) return;
     const near = new Set(stream.items.slice(Math.max(0, stream.index - VB_CARDS_RECENT)).map(vbCardKey));
     const fresh = items.filter((card) => !near.has(vbCardKey(card)));
     const waiting = new Set(stream.items.slice(stream.index).map(vbCardKey));
@@ -2074,9 +2074,9 @@ async function topUpVerbCards() {
     stream.items.push(...added);
   } catch (error) { notice = { message: error.message }; }
   stream.fetching = false;
-  // Only the "choosing more" screen is redrawn; a card being looked at is left alone.
-  if (screen === 'verbs-cards' && verbCards === stream && waitingOnScreen) render();
+  if (screen === onScreen && current() === stream && waitingOnScreen) render();
 }
+const topUpVerbCards = () => topUpVerbStream(verbCards, 'api/verbs/cards', () => verbCards, 'verbs-cards');
 function renderVerbCards() {
   const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Cards</span></div>`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
@@ -2114,10 +2114,12 @@ function markVerbCard(knew) {
     .finally(() => topUpVerbCards());
 }
 
-// ── Quick forms ──
+// ── Quick forms: type one form at a time, as endless as Cards. A wrong answer comes back once, four forms later;
+// more forms are chosen from the answers so far while a few are still waiting.
+const topUpVerbForms = () => topUpVerbStream(verbForms, 'api/verbs/round', () => verbForms, 'verbs-forms');
 async function startVerbForms() {
-  loading = true; notice = null; retryAction = null; verbFormsRound = null; verbDraft = ''; render();
-  try { const { items } = await api('api/verbs/round', { method: 'POST', body: JSON.stringify(vbSettings()) }); verbFormsRound = { items, index: 0, first: [], result: null, given: '', size: items.length }; }
+  loading = true; notice = null; retryAction = null; verbForms = null; verbDraft = ''; render();
+  try { const { items } = await api('api/verbs/round', { method: 'POST', body: JSON.stringify(vbSettings()) }); verbForms = { items, index: 0, result: null, given: '', fetching: false, done: false }; }
   catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-forms' }; }
   loading = false;
   if (screen !== 'verbs-forms') return;
@@ -2126,47 +2128,45 @@ async function startVerbForms() {
 function renderVerbForms() {
   const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Quick forms</span></div>`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${body}</section>`; };
-  if (loading || !verbFormsRound) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
-  const { items, index, first, result } = verbFormsRound;
-  const progress = `<div class="vb-progress" aria-hidden="true">${items.map((_, at) => { const mark = verbFormsRound.marks?.[at]; return `<span class="${mark === true ? 'right' : mark === false ? 'wrong' : at === index ? 'now' : ''}"></span>`; }).join('')}</div>`;
+  if (loading || !verbForms) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
+  const { items, index, result } = verbForms;
   if (index >= items.length) {
-    const right = first.filter(Boolean).length;
-    shell(`${progress}<section class="summary"><h1 class="score"><span class="sr-only">Score: </span>${right} <span>/ ${first.length}</span></h1><p class="summary-line">right the first time. ${right === first.length ? 'Every one.' : 'The ones you missed come back first next round.'}</p><div class="summary-actions"><button class="primary" data-action="vb-again">Another round</button><button class="secondary" data-action="verbs">Back to Verbs</button></div></section>`);
+    shell(verbForms.done ? '<p class="caption">No forms to ask for these verbs and tenses.</p>' : '<div class="loading-state" role="status">Choosing more forms…</div>');
+    topUpVerbForms();
     return;
   }
   const item = items[index];
   const prompt = `<div class="vb-prompt"><div class="vb-who" lang="fr">${esc(VB_PERSONS[item.person])}</div><div class="vb-verb" lang="fr">${frEsc(item.inf)}</div><div class="vb-meta">${esc(item.en)}</div><span class="vb-tense">${esc(item.tenseName)}</span></div>`;
-  const again = index >= verbFormsRound.size ? '<p class="caption vb-again-note">Once more, from earlier in this round.</p>' : '';
+  const again = item.again ? '<p class="caption vb-again-note">Once more, from a few forms ago.</p>' : '';
   if (!result) {
-    shell(`${progress}${again}${prompt}<form class="vb-answer-row" id="vb-form"><input class="vb-input" id="vb-answer" lang="fr" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The form of ${esc(item.inf)} for ${esc(VB_PERSONS[item.person])}, ${esc(item.tenseName)}" value="${esc(verbDraft)}" ${busy ? 'disabled' : ''}><button class="primary" ${busy ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}`);
+    shell(`${again}${prompt}<form class="vb-answer-row" id="vb-form"><input class="vb-input" id="vb-answer" lang="fr" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The form of ${esc(item.inf)} for ${esc(VB_PERSONS[item.person])}, ${esc(item.tenseName)}" value="${esc(verbDraft)}" ${busy ? 'disabled' : ''}><button class="primary" ${busy ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}`);
     return;
   }
-  const back2 = !result.right && index < verbFormsRound.size ? ' · this one comes back soon' : '';
-  shell(`${progress}${again}${prompt}<div class="feedback ${result.right ? '' : 'warn'}" role="status"><strong>${result.right ? 'That’s right.' : 'Not quite.'}</strong><p><span lang="fr">${frEsc(result.expected)}</span>${result.right ? '' : ` — you wrote <span lang="fr">${esc(verbFormsRound.given)}</span>.`}</p>${result.why ? `<p class="vb-why">${esc(result.why)}</p>` : ''}${paradigmHTML(result.paradigm, item.person)}<p class="vb-why vb-rule">${esc(result.rule)}</p></div>
-    <div class="stream-actions pinned"><button class="primary" data-action="vb-next">${index + 1 === items.length ? 'See how it went' : `Next${back2}`}</button></div>`);
+  const comesBack = !result.right && !item.again ? ' · this one comes back soon' : '';
+  shell(`${again}${prompt}<div class="feedback ${result.right ? '' : 'warn'}" role="status"><strong>${result.right ? 'That’s right.' : 'Not quite.'}</strong><p><span lang="fr">${frEsc(result.expected)}</span>${result.right ? '' : ` — you wrote <span lang="fr">${esc(verbForms.given)}</span>.`}</p>${result.why ? `<p class="vb-why">${esc(result.why)}</p>` : ''}${paradigmHTML(result.paradigm, item.person)}<p class="vb-why vb-rule">${esc(result.rule)}</p></div>
+    <div class="stream-actions pinned"><button class="primary" data-action="vb-next">Next${comesBack}</button></div>`);
   main.querySelector('[data-action="vb-next"]')?.focus({ preventScroll: true });
 }
 async function submitVerbForm() {
-  const round = verbFormsRound;
-  const item = round?.items[round.index];
+  const stream = verbForms;
+  const item = stream?.items[stream.index];
   const given = main.querySelector('#vb-answer')?.value ?? verbDraft;
-  if (!item || round.result || busy || !given.trim()) return;
+  if (!item || stream.result || busy || !given.trim()) return;
   busy = true; render();
   try {
     const result = await api('api/verbs/answer', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: item.verbId, tense: item.tense, person: item.person, given }) });
-    round.result = result; round.given = given;
-    round.marks = round.marks || []; round.marks[round.index] = result.right;
-    if (round.index < round.size) round.first.push(result.right);
-    // A miss comes back four forms later, once, as long as the round has room.
-    if (!result.right && round.index < round.size) round.items.splice(Math.min(round.items.length, round.index + 5), 0, item);
+    stream.result = result; stream.given = given;
+    if (!result.right && !item.again) stream.items.splice(Math.min(stream.items.length, stream.index + 5), 0, { ...item, again: true });
   } catch (error) { notice = { message: error.message }; }
   busy = false;
   if (screen === 'verbs-forms') render();
 }
 function nextVerbForm() {
-  if (!verbFormsRound?.result) return;
-  verbFormsRound.index += 1; verbFormsRound.result = null; verbDraft = ''; notice = null;
+  if (!verbForms?.result) return;
+  verbForms.index += 1; verbForms.result = null; verbDraft = ''; notice = null;
   render(); main.querySelector('#vb-answer')?.focus({ preventScroll: true });
+  // The next forms are chosen once this answer counts, so a form just missed is weighed as shaky.
+  topUpVerbForms();
 }
 
 // ── Whole table ──
