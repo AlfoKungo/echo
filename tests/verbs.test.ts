@@ -208,7 +208,7 @@ describe('verb drills', () => {
     expect(() => drills.walkmanForms([])).toThrow('Choose at least one tense.');
     const phrases = drills.walkmanPhrases();
     expect(phrases.french).toEqual(expect.arrayContaining(['présent', 'futur', 'nous irons', 'je parle']));
-    expect(phrases.english).toEqual(['I', 'you', 'he or she', 'we', 'you, plural', 'they']);
+    expect(phrases.english).toEqual(['the I form', 'the you form', 'the he or she form', 'the we form', 'the you plural form', 'the they-form']);
   });
 
   test('statistics rebuild the forms of each day, carry quiet days over, and split the last two weeks by tense, person and kind', () => {

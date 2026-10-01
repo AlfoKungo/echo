@@ -15,7 +15,7 @@ import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/soun
 import { createStory, type StoryFinish } from './lib/story';
 import { createRadio, englishClip, frenchClip, layStory, radioClip, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
 import { createVerbTables, TENSE_NAMES, TENSES, tenseGuide, verbGuide, type Tense } from './lib/verbs';
-import { createVerbDrills, WALKMAN_PERSONS } from './lib/verb-drills';
+import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/verb-drills';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
@@ -240,7 +240,7 @@ function verbTape(tenses: Tense[]): Tape {
   const gap = (() => { const count = Math.round(0.3 / FRAME_SECONDS); const block = new Uint8Array(count * FRAME_BYTES); for (let frame = 0; frame < count; frame++) block.set(silence.subarray(0, FRAME_BYTES), frame * FRAME_BYTES); return block; })();
   const join = (parts: Uint8Array[]) => { const bytes = new Uint8Array(parts.reduce((sum, part) => sum + part.length, 0)); let at = 0; for (const part of parts) { bytes.set(part, at); at += part.length; } return bytes; };
   const tenseClips = new Map(TENSES.map((tense) => [tense, radioClip(root, frenchClip(TENSE_NAMES[tense]).id)]));
-  const personClips = WALKMAN_PERSONS.map((label) => radioClip(root, englishClip(label).id));
+  const personClips = WALKMAN_PERSONS_SAID.map((said) => radioClip(root, englishClip(said).id));
   const forms = verbs.walkmanForms(tenses);
   function* items(): Generator<TapeItem> {
     // Round after round of the same forms, each in a fresh order, until the tape is full.

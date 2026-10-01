@@ -19,8 +19,10 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 const WEIGHT: Record<FormState, number> = { shaky: 6, new: 3, getting: 2, solid: 0.5 };
-// On the verb tape the person is said in English: il and ils sound alike in French.
+// On the verb tape the person is said in English: il and ils sound alike in French. It is shown short and said as
+// a phrase: the English voice garbles a lone pronoun, and a one-word take is too short to check.
 export const WALKMAN_PERSONS = ['I', 'you', 'he or she', 'we', 'you, plural', 'they'];
+export const WALKMAN_PERSONS_SAID = ['the I form', 'the you form', 'the he or she form', 'the we form', 'the you plural form', 'the they-form'];
 
 // The calendar day after a study day (YYYY-MM-DD).
 function nextDay(day: string): string {
@@ -314,7 +316,7 @@ export function createVerbDrills(options: {
   // What the verb tape records: the four tense names, the six persons and every form of the most common verbs.
   function walkmanPhrases(): { french: string[]; english: string[] } {
     const french = options.verbs().slice(0, COMMON).flatMap((verb) => TENSES.flatMap((tense) => persons(verb).map((person) => { const form = conjugate(verb, tense)[person]!.accepted[0]!; return subject(person, form) + form; })));
-    return { french: [...TENSES.map((tense) => TENSE_NAMES[tense]), ...new Set(french)], english: [...WALKMAN_PERSONS] };
+    return { french: [...TENSES.map((tense) => TENSE_NAMES[tense]), ...new Set(french)], english: [...WALKMAN_PERSONS_SAID] };
   }
 
   // The phrases By ear says, for the verbs it can ask about (the most common and those started), to be recorded.
