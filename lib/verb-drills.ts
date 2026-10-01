@@ -3,7 +3,7 @@
 // it tests hearing, not writing), and a round leans on the forms that are shaky or not tried yet.
 import { Database } from 'bun:sqlite';
 import { recentStudyDays, StoreError, studyDay } from './store';
-import { conjugate, diagnose, earQuestion, earQuestions, GROUP_TITLES, groupOf, isRight, paradigm, persons, rule, subject, TENSES, TENSE_NAMES, type EarKind, type ParadigmRow, type Tense, type Verb } from './verbs';
+import { accentSlip, conjugate, diagnose, earQuestion, earQuestions, GROUP_TITLES, groupOf, isRight, paradigm, persons, rule, subject, TENSES, TENSE_NAMES, type EarKind, type ParadigmRow, type Tense, type Verb } from './verbs';
 
 export type FormState = 'solid' | 'getting' | 'shaky' | 'new';
 export type VerbSet = 'mine' | 'common' | 'chosen';
@@ -145,7 +145,9 @@ export function createVerbDrills(options: {
   function result(verb: Verb, tense: Tense, person: number, given: string): FormResult {
     const form = conjugate(verb, tense)[person]!;
     const right = isRight(form, given);
-    return { right, expected: subject(person, form.shown) + form.shown, why: right || !given.trim() ? '' : diagnose(verb, tense, person, given), rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
+    const expected = subject(person, form.shown) + form.shown;
+    const why = right ? (accentSlip(form, given) ? `Right — with the accents: ${expected}.` : '') : !given.trim() ? '' : diagnose(verb, tense, person, given);
+    return { right, expected, why, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
   }
   const requestIdOf = (value: unknown) => {
     if (typeof value !== 'string' || !value) throw new StoreError('This answer is missing its request ID.');

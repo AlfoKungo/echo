@@ -88,19 +88,21 @@ function readings(given: string): string[] {
   const bare = typed.replace(SUBJECT, '');
   return bare === typed ? [typed] : [typed, bare];
 }
-export const isRight = (form: Form, given: string) => readings(given).some((reading) => form.accepted.includes(reading));
+// Accents are not required: the right letters with a missing or wrong accent count, and accentSlip says so.
+const sameLetters = (form: Form, reading: string) => form.accepted.some((right) => strip(right) === strip(reading));
+export const isRight = (form: Form, given: string) => readings(given).some((reading) => sameLetters(form, reading));
+export const accentSlip = (form: Form, given: string) => isRight(form, given) && !readings(given).some((reading) => form.accepted.includes(reading));
 
 // Which mistake a wrong answer was, in one sentence, or '' when it is none Echo can name.
 export function diagnose(verb: Verb, tense: Tense, person: number, given: string): string {
   const typed = readings(given);
-  const matches = (form: Form | null) => !!form && typed.some((reading) => form.accepted.includes(reading));
+  const matches = (form: Form | null) => !!form && typed.some((reading) => sameLetters(form, reading));
   const all = conjugate(verb, tense);
   const target = all[person]!;
   for (const other of persons(verb)) if (other !== person && matches(all[other]!)) return `That’s the ${PERSON_LABELS[other]} form.`;
   for (const other of TENSES) if (other !== tense && matches(conjugate(verb, other)[person]!)) return `That’s the ${TENSE_NAMES[other]}.`;
   for (const right of target.accepted) {
     for (const reading of typed) {
-      if (strip(right) === strip(reading)) return 'The letters are right, but the accent matters here.';
       for (let at = 1; at < right.length; at++) if (right[at] === right[at - 1] && right.slice(0, at) + right.slice(at + 1) === reading) return `The ${right[at]} doubles here: ${right}.`;
       for (let at = 1; at < reading.length; at++) if (reading[at] === reading[at - 1] && reading.slice(0, at) + reading.slice(at + 1) === right) return `Only one ${right[at - 1]} here: ${right}.`;
       if (right.replace(/ge([ao])/, 'g$1') === reading && right !== reading) return `Keep the e after the g before a or o: ${right}.`;

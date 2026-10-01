@@ -3,7 +3,7 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createVerbDrills } from '../lib/verb-drills';
-import { conjugate, diagnose, persons, earQuestions, groupOf, isRight, paradigm, tenseGuide, verbGuide, verbOf, verbProblems, type VerbTable, type VerbWord } from '../lib/verbs';
+import { accentSlip, conjugate, diagnose, persons, earQuestions, groupOf, isRight, paradigm, tenseGuide, verbGuide, verbOf, verbProblems, type VerbTable, type VerbWord } from '../lib/verbs';
 
 const words: Record<string, VerbWord> = {
   parler: { id: 'v-parler', fr: 'parler', en: 'to speak' },
@@ -67,6 +67,11 @@ describe('conjugation and answers', () => {
     expect(isRight(levons, 'nous nous levons')).toBe(true);
     expect(isRight(levons, 'Nous levons.')).toBe(true);
     expect(isRight(levons, 'levons')).toBe(false);
+    // Accents are not required, and a slip is told apart from an exact answer.
+    const parle = conjugate(verb('parler'), 'pc')[0]!;
+    expect(isRight(parle, 'ai parle')).toBe(true);
+    expect(accentSlip(parle, 'ai parle')).toBe(true);
+    expect(accentSlip(parle, 'j’ai parlé')).toBe(false);
     expect(isRight(conjugate(verb('aller'), 'fut')[0]!, 'j\'irai')).toBe(true);
     expect(isRight(conjugate(verb('aller'), 'pc')[2]!, 'elle est allée')).toBe(true);
   });
@@ -74,7 +79,6 @@ describe('conjugation and answers', () => {
   test.each([
     ['another person', 'parler', 'pres', 0, 'parles', 'That’s the tu form.'],
     ['another tense', 'prendre', 'imp', 3, 'prenons', 'That’s the présent.'],
-    ['a missing accent', 'parler', 'pc', 0, 'ai parle', 'The letters are right, but the accent matters here.'],
     ['a letter not doubled', 'prendre', 'pres', 5, 'prenent', 'The n doubles here: prennent.'],
     ['the wrong helper', 'aller', 'pc', 0, 'j’ai allé', 'aller goes with être in the passé composé, not avoir.'],
     ['a plural participle for one person', 'aller', 'pc', 0, 'je suis allés', 'One person: no -s on the participle.'],
@@ -148,6 +152,16 @@ describe('verb drills', () => {
     return drills;
   }
   const state = (drills: ReturnType<typeof fixture>, verbId: string, tense: 'pres', person: number) => drills.summary().verbs.find((row) => row.id === verbId)!.states[tense][person];
+
+  test('an answer with an accent missing counts as right, in Quick forms and a whole table, and shows the accents', () => {
+    const drills = fixture();
+    const typed = drills.answer({ requestId: 'acc', verbId: 'v-parler', tense: 'pc', person: 0, given: 'ai parle' });
+    expect(typed).toMatchObject({ right: true, why: 'Right — with the accents: j’ai parlé.' });
+    expect(drills.answer({ requestId: 'acc2', verbId: 'v-parler', tense: 'pc', person: 1, given: 'as parlé' }).why).toBe('');
+    const table = drills.table({ requestId: 'tab', verbId: 'v-parler', tense: 'pc', answers: ['ai parle', 'as parlé', 'a parle', 'avons parlé', 'avez parlé', 'ont parlé'] });
+    expect(table.right).toBe(6);
+    expect(table.cells[2]).toMatchObject({ right: true, why: 'Right — with the accents: il a parlé.' });
+  });
 
   test('a form goes from untried to getting there to solid, and a miss makes it shaky; a request counts once', () => {
     const drills = fixture();
