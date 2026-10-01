@@ -116,14 +116,17 @@ type HistoricalGrade = { before: CardRow; known: number; graded_at: string };
 const stackNames: VocabularyStack[] = ['unseen', 'failed', 'successful'];
 // Among words already seen today, missed ones come twice as often as ones answered right.
 const seenMix: VocabularyStack[] = ['failed', 'successful', 'failed'];
-const SEEN_EASY = 10;
-const SEEN_SCALE = 20;
-// After the warm-up, the share of turns given to words not seen yet today: half while the seen pile is small,
-// falling smoothly as it grows (a third at 30, a quarter at 50, a fifth at 70, never none), so a large pile
-// drains faster without new words stopping. A word takes about three answers a day, so the pile tends to settle
-// around 30, higher on a day of many misses.
+// After the warm-up, the share of turns given to words not seen yet today. Turns for seen words per turn for a
+// new one double every SEEN_SPREAD words of pile: one each at SEEN_EVEN, two at 33, four at 41; the share stays
+// between UNSEEN_LEAST, so new words never stop, and UNSEEN_MOST, so a miss in a small pile still comes back soon.
+// A new word needs about 1.3 more turns before it leaves the pile on a day of few misses and about 2.5 on a day
+// of many, so the pile settles where the two match, near SEEN_EVEN + SEEN_SPREAD·log2 of that: about 27 to 35.
+const SEEN_EVEN = 25;
+const SEEN_SPREAD = 8;
+const UNSEEN_LEAST = 0.1;
+const UNSEEN_MOST = 0.75;
 export function unseenShare(seen: number): number {
-  return 1 / (2 + Math.max(0, seen - SEEN_EASY) / SEEN_SCALE);
+  return Math.max(UNSEEN_LEAST, Math.min(UNSEEN_MOST, 1 / (1 + 2 ** ((seen - SEEN_EVEN) / SEEN_SPREAD))));
 }
 
 function emptyQueue(day: string): PracticeQueue {
