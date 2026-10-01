@@ -18,7 +18,7 @@ import { createVerbTables, TENSE_NAMES, TENSES, tenseGuide, verbGuide, type Tens
 import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/verb-drills';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
-import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
+import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
@@ -460,6 +460,9 @@ async function route(req: Request): Promise<Response> {
       store.recordHeard({ wordId: String(data.wordId ?? ''), requestId: String(data.requestId ?? '') });
       return json({ ok: true });
     }
+    if (path === '/api/endless/next' && req.method === 'POST') { const data = await body(req); return json(store.endlessNext({ ...data, direction: direction(String(data.direction ?? 'fr-en')), deck: deck(String(data.deck ?? 'all')) } as EndlessInput)); }
+    if (path === '/api/endless/mark' && req.method === 'POST') { const data = await body(req); store.endlessMark(data as unknown as EndlessMarkInput); return json({ ok: true }); }
+    if (path === '/api/endless/undo' && req.method === 'POST') { const data = await body(req); store.endlessUndo(String(data.requestId ?? '')); return json({ ok: true }); }
     if (path === '/api/walkman/verdict' && req.method === 'POST') {
       const data = await body(req);
       store.recordVerdict({ id: String(data.id ?? ''), wordId: String(data.wordId ?? ''), knew: data.knew as boolean | null });

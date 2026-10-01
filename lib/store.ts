@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
-import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -41,6 +41,9 @@ export interface Store {
   recordHeard(input: HeardInput): void;
   // The learner's own say, after a Walkman listen, on whether they knew the word; knew:null withdraws it.
   recordVerdict(input: VerdictInput): void;
+  endlessNext(input: EndlessInput): EndlessPick;
+  endlessMark(input: EndlessMarkInput): void;
+  endlessUndo(requestId: string): void;
   statistics(): VocabularyStatistics;
   // A past study day's started words, with the score and state each had at the end of that day.
   statisticsDay(day: string): ScoreDayWords;
@@ -96,6 +99,11 @@ export const WORD_CLIP_VERSION = 2;
 export const SCORE_RECALLED = 2;
 export const SCORE_MISSED = -3;
 export const SCORE_HEARD = 0.5;
+// An Endless mark: smaller than a daily answer, since the same word comes round again within minutes.
+export const SCORE_ENDLESS = 1;
+// Endless picks a word with odds 2^(-score/ENDLESS_PULL), the score held within ±ENDLESS_LIMIT, as the Walkman does.
+const ENDLESS_PULL = 1.7;
+const ENDLESS_LIMIT = 8;
 export const SCORE_HALF_LIFE_DAYS = 21;
 // recent holds the last words answered, newest first; selection passes over them while anything else is left.
 // credit carries the unseen share from turn to turn (see unseenShare); turn cycles seenMix.
@@ -311,6 +319,14 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         id TEXT PRIMARY KEY,
         word_id TEXT NOT NULL,
         knew INTEGER NOT NULL,
+        marked_at TEXT NOT NULL
+      );
+      -- One mark in Endless: request_id is chosen by the phone, so a retried mark counts once; an undo deletes it.
+      CREATE TABLE IF NOT EXISTS endless_marks (
+        request_id TEXT PRIMARY KEY,
+        direction TEXT NOT NULL,
+        word_id TEXT NOT NULL,
+        known INTEGER NOT NULL,
         marked_at TEXT NOT NULL
       );
       -- A memory hook Claude wrote for a word missed TROUBLE_MISSES times (lib/word-hooks.ts).
@@ -1025,25 +1041,34 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   }
 
   // A word's score: +2 for each recall, -3 for each miss (undone answers excluded), +0.5 for each time it
-  // was heard to the end on the Walkman, and +2 or -3 when the learner marks a listen as known or not. Every
+  // was heard to the end on the Walkman, +2 or -3 when the learner marks a listen as known or not, and +1 or -1
+  // for each Endless mark. Every
   // point halves over SCORE_HALF_LIFE_DAYS, so an untouched word drifts back towards 0 and turns up again.
   const scoreEvents = db.query<{ word_id: string; weight: number; at: string }, []>(`
     SELECT word_id, CASE known WHEN 1 THEN ${SCORE_RECALLED} ELSE ${SCORE_MISSED} END AS weight, graded_at AS at FROM grades
     WHERE NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)
     UNION ALL SELECT word_id, ${SCORE_HEARD} AS weight, heard_at AS at FROM walkman_heard
-    UNION ALL SELECT word_id, CASE knew WHEN 1 THEN ${SCORE_RECALLED} ELSE ${SCORE_MISSED} END AS weight, marked_at AS at FROM walkman_verdicts`);
+    UNION ALL SELECT word_id, CASE knew WHEN 1 THEN ${SCORE_RECALLED} ELSE ${SCORE_MISSED} END AS weight, marked_at AS at FROM walkman_verdicts
+    UNION ALL SELECT word_id, CASE known WHEN 1 THEN ${SCORE_ENDLESS} ELSE ${-SCORE_ENDLESS} END AS weight, marked_at AS at FROM endless_marks`);
+  const answeredOnce = db.query<{ one: number }, [Direction, string]>('SELECT 1 AS one FROM grades WHERE direction = ? AND word_id = ? AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence) LIMIT 1');
+  const saveEndless = db.query('INSERT OR IGNORE INTO endless_marks (request_id, direction, word_id, known, marked_at) VALUES (?, ?, ?, ?, ?)');
+  const dropEndless = db.query('DELETE FROM endless_marks WHERE request_id = ?');
+
+  function scoresAt(time: number): Map<string, number> {
+    const scores = new Map<string, number>();
+    for (const event of scoreEvents.all()) {
+      const days = Math.max(0, (time - Date.parse(event.at)) / 86400000);
+      scores.set(event.word_id, (scores.get(event.word_id) ?? 0) + event.weight * 0.5 ** (days / SCORE_HALF_LIFE_DAYS));
+    }
+    return scores;
+  }
   const saveVerdict = db.query('INSERT INTO walkman_verdicts (id, word_id, knew, marked_at) VALUES (?1, ?2, ?3, ?4) ON CONFLICT(id) DO UPDATE SET knew = ?3, marked_at = ?4 WHERE word_id = ?2');
   const dropVerdict = db.query('DELETE FROM walkman_verdicts WHERE id = ? AND word_id = ?');
   const saveHeard = db.query('INSERT OR IGNORE INTO walkman_heard (request_id, word_id, heard_at) VALUES (?, ?, ?)');
 
   function listening(): ListeningWord[] {
     const rank = { learning: 3, due: 2, scheduled: 1, new: 0 } as const;
-    const time = now().getTime();
-    const scores = new Map<string, number>();
-    for (const event of scoreEvents.all()) {
-      const days = Math.max(0, (time - Date.parse(event.at)) / 86400000);
-      scores.set(event.word_id, (scores.get(event.word_id) ?? 0) + event.weight * 0.5 ** (days / SCORE_HALF_LIFE_DAYS));
-    }
+    const scores = scoresAt(now().getTime());
     const reverse = new Map(browse('en-fr', 'all').map((word) => [word.id, word]));
     return browse('fr-en', 'all').map((word) => {
       const other = reverse.get(word.id)!;
@@ -1058,6 +1083,43 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         score: Math.round((scores.get(word.id) ?? 0) * 1000) / 1000,
       };
     });
+  }
+
+  // The next Endless word: any word answered at least once in this direction, within the deck (a word admitted
+  // today but not yet shown does not count), with odds that double for
+  // every ENDLESS_PULL points its score is lower. The most recent words are passed over; with only a few words
+  // to choose from, the passed-over list is halved until something is left.
+  function endlessNext(input: EndlessInput): EndlessPick {
+    validateSelection(input.direction, input.deck);
+    const misses = new Map(historyForDirection.all(input.direction).map((entry) => [entry.word_id, entry.misses]));
+    const rows = rowsForDirection.all(input.direction).filter((row) => misses.has(row.word_id) && wordById.has(row.word_id) && inDeck(row.word_id, input.deck));
+    if (!rows.length) return { card: null, pool: 0 };
+    const exclude = Array.isArray(input.exclude) ? input.exclude.filter((id): id is string => typeof id === 'string').slice(0, 60) : [];
+    let candidates = rows;
+    for (let keep = exclude.length; keep >= 0; keep = keep > 1 ? Math.floor(keep / 2) : keep - 1) {
+      const passed = new Set(exclude.slice(0, keep));
+      candidates = rows.filter((row) => !passed.has(row.word_id));
+      if (candidates.length) break;
+    }
+    const scores = scoresAt(now().getTime());
+    const weights = candidates.map((row) => 2 ** (-Math.max(-ENDLESS_LIMIT, Math.min(ENDLESS_LIMIT, scores.get(row.word_id) ?? 0)) / ENDLESS_PULL));
+    let left = random() * weights.reduce((total, weight) => total + weight, 0);
+    const index = weights.findIndex((weight) => (left -= weight) < 0);
+    const row = candidates[index < 0 ? candidates.length - 1 : index]!;
+    // Endless has no stacks; the stack is only there to fill the card's shape.
+    return { card: cardView(row, 'unseen', misses), pool: rows.length };
+  }
+
+  function endlessMark(input: EndlessMarkInput): void {
+    if (input?.direction !== 'fr-en' && input?.direction !== 'en-fr') throw new StoreError('Choose a practice direction.');
+    if (typeof input.requestId !== 'string' || !input.requestId || typeof input.known !== 'boolean') throw new StoreError('This answer was incomplete. Try again.');
+    if (!answeredOnce.get(input.direction, input.wordId)) throw new StoreError('Endless only practises words you have started.');
+    saveEndless.run(input.requestId, input.direction, input.wordId, input.known ? 1 : 0, now().toISOString());
+  }
+
+  function endlessUndo(requestId: string): void {
+    if (typeof requestId !== 'string' || !requestId) throw new StoreError('Choose the answer to take back.');
+    dropEndless.run(requestId);
   }
 
   function recordHeard(input: HeardInput): void {
@@ -1204,6 +1266,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       addedWords: db.query('SELECT id, fr, en, note, category, category_title, added_at FROM added_words ORDER BY sequence').all(),
       deckLinks: db.query('SELECT category, category_title, word_id FROM deck_links ORDER BY sequence').all(),
       walkmanVerdicts: db.query('SELECT word_id, knew, marked_at FROM walkman_verdicts ORDER BY marked_at').all(),
+      endlessMarks: db.query('SELECT direction, word_id, known, marked_at FROM endless_marks ORDER BY marked_at').all(),
     }))();
   }
 
@@ -1227,5 +1290,5 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     })();
   }
 
-  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, statistics, statisticsDay, hookless, setHooks, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, endlessNext, endlessMark, endlessUndo, statistics, statisticsDay, hookless, setHooks, exportData, close: () => db.close() };
 }

@@ -104,6 +104,14 @@ function warmClip(url) {
 }
 const clipSource = (url) => clipCache.get(url) || url;
 // The answer being saved while the next card already shows, and a grade given before it was saved.
+// Vocabulary runs the daily stacks or Endless: started words only, picked by score, each answer +1 or -1 to it.
+let vocabMode = readPreference('echo.vocab-mode', 'daily') === 'endless' ? 'endless' : 'daily';
+const endlessMode = () => vocabMode === 'endless' && screen === 'practice';
+// cards: the word shown, then the ones fetched ahead; recent: words already answered, newest first; last: the
+// answer Undo would take back.
+let endless = null; // { direction, deck, cards, pool, recent, last, fetching, serial }
+const ENDLESS_AHEAD = 2;
+const ENDLESS_GAP = 10;
 let pendingGrade = null;
 let queuedGrade = null;
 // The Walkman plays one long tape on its own audio element, so a locked phone keeps playing it.
@@ -792,8 +800,7 @@ function troubleHTML(trouble) {
   return `<div class="word-trouble">${hook}<p>Missed ${trouble.misses} times${trouble.alongside.length ? '. Often missed with it:' : '.'}</p>${list}</div>`;
 }
 // The flashcard itself: shared by the Vocabulary screen and the Practise stream.
-function cardHTML() {
-  const card = snapshot.current;
+function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const reverse = direction === 'en-fr';
   const prompt = reverse ? card.en : card.fr;
   const answer = reverse ? card.fr : card.en;
@@ -802,17 +809,18 @@ function cardHTML() {
     ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button><p class="source-word">Listen, then tap to see the word</p>`
     : `<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : ''}`;
   const listenToggle = direction === 'fr-en' ? `<button class="audio-mode ${listenMode ? 'on' : ''}" data-action="listen-mode" aria-pressed="${listenMode}" aria-label="Listen only: ${listenMode ? 'on' : 'off'}" title="Hear the French word instead of reading it">${headphones}<span>Listen ${listenMode ? 'on' : 'off'}</span></button>` : '';
-  return `<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : hidden ? 'Reveal the meaning' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content">${face}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}</div><button class="quiet" data-action="undo" ${!snapshot.undoId || locked() ? 'disabled' : ''}>Undo</button></div>`;
+  return `<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : hidden ? 'Reveal the meaning' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content">${face}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}</div><button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
 // Each new card (or new version after a grade or undo) plays once on its own; re-renders don't replay it.
 function playCardOnce() {
-  const card = snapshot?.current;
+  const card = shownCard();
   if (!card || !listening() || revealed) return;
-  const key = `${card.id}:${card.version}`;
+  const key = `${card.id}:${card.version}:${card.serial ?? ''}`;
   if (key === heardCard) return;
   heardCard = key; playFrench(card.audioUrl);
 }
 function renderPractice() {
+  if (vocabMode === 'endless') { renderEndless(); return; }
   const header = `<div class="section-top">${back('Home', 'home')}<div><span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span><button class="icon" data-action="families" aria-label="Word families" ${busy ? 'disabled' : ''}>${familyIcon}</button><button class="icon" data-action="browse" aria-label="Browse vocabulary" ${busy ? 'disabled' : ''}>${searchIcon}</button><button class="icon" data-action="options" aria-label="Vocabulary options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>`;
   if (!snapshot || loading) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="loading-state" role="status">${loading ? 'Opening your vocabulary…' : 'Your progress is safe on your Mac.'}</div></section>`; return; }
   if (!snapshot.current) {
@@ -822,6 +830,20 @@ function renderPractice() {
   playCardOnce();
   warmClip(snapshot.current.audioUrl);
   warmClip(snapshot.next?.audioUrl);
+}
+function renderEndless() {
+  const header = `<div class="section-top">${back('Home', 'home')}<div><span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span><button class="icon" data-action="families" aria-label="Word families">${familyIcon}</button><button class="icon" data-action="browse" aria-label="Browse vocabulary">${searchIcon}</button><button class="icon" data-action="options" aria-label="Vocabulary options" aria-haspopup="dialog" ${!snapshot ? 'disabled' : ''}>•••</button></div></div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="practice">${header}${body}</section>`; };
+  if (!endless || endless.direction !== direction || endless.deck !== deck) { shell('<div class="loading-state" role="status">Choosing a word…</div>'); startEndless(); return; }
+  const counts = `<span class="compact-line"><span class="compact-label" title="${esc(categoryTitle(deck))}">${esc(categoryTitle(deck))}</span><span class="compact-counts"><span class="unseen"><strong>Endless</strong></span><span class="separator" aria-hidden="true">·</span><span><strong>${formatCount(endless.pool)}</strong> ${endless.pool === 1 ? 'word' : 'words'}</span></span></span>`;
+  const card = endless.cards[0];
+  if (!card) {
+    shell(endless.fetching || retryAction ? `${counts}<div class="loading-state" role="status">Choosing a word…</div>` : `${counts}<div class="completion"><h1>No words to practise here yet.</h1><p>Endless goes over words you have started. Practise a few in the daily mode first, or choose another category.</p></div>`);
+    return;
+  }
+  shell(`${counts}${cardHTML(card, !!endless.last)}`);
+  playCardOnce();
+  for (const ahead of endless.cards) warmClip(ahead.audioUrl);
 }
 function renderBrowse() {
   const show = [['all', 'All words'], ['studied', 'Studied'], ['learning', 'Still learning'], ['missed', 'Missed at least once']].map(([value, label]) => `<option value="${value}" ${browseShow === value ? 'selected' : ''}>${label}</option>`).join('');
@@ -2769,19 +2791,23 @@ async function startPractice() {
   move('practice', true);
   if (locked()) return;
   if (!await fetchState()) return;
+  if (vocabMode === 'endless') { if (screen === 'practice') { endless = null; render(); } return; }
   if (screen === 'practice') runMutation({ type: 'start', body: { direction, deck } });
 }
-function vocabularyCard() { return !!snapshot?.current && (screen === 'practice' || (mixed() && mixedSource === 'vocabulary')); }
+function shownCard() { return endlessMode() ? endless?.cards[0] ?? null : snapshot?.current ?? null; }
+function vocabularyCard() { return !!shownCard() && (screen === 'practice' || (mixed() && mixedSource === 'vocabulary')); }
 function reveal() {
   if (!vocabularyCard() || revealed || locked() || loading) return;
   revealed = true; render(); document.querySelector('#flashcard')?.focus({ preventScroll: true });
-  announce(`Answer: ${direction === 'en-fr' ? snapshot.current.fr : snapshot.current.en}.`);
+  const card = shownCard();
+  announce(`Answer: ${direction === 'en-fr' ? card.fr : card.en}.`);
   // Listen mode already played the word when the card appeared; the reveal only shows the answer.
-  if (audioMode && !listening()) playFrench(snapshot.current.audioUrl);
+  if (audioMode && !listening()) playFrench(card.audioUrl);
 }
 function grade(known) {
   if (!revealed || locked() || loading || !vocabularyCard()) return;
   // The previous answer is still being saved: this one follows as soon as it is.
+  if (endlessMode()) { markEndless(known); return; }
   if (pendingGrade) { queuedGrade = known; return; }
   const card = snapshot.current;
   const body = { direction, deck, wordId: card.id, version: card.version, known, requestId: requestId() };
@@ -2820,10 +2846,78 @@ function answerAhead(body) {
   });
 }
 function undo() {
+  if (endlessMode()) { undoEndless(); return; }
   if (!snapshot?.undoId || locked()) return;
   const body = { direction, deck, undoId: snapshot.undoId };
   if (mixed()) runAction(async () => { applySnapshot(await api('api/undo', { method: 'POST', body: JSON.stringify(body) })); });
   else runMutation({ type: 'undo', body });
+}
+// ── Endless ──
+// A fresh stream for the current direction and category. Each word is fetched while two wait ahead, so a card
+// answered shows the next at once; the server picks it with the latest scores, passing over the words just seen.
+function startEndless() {
+  endless = { direction, deck, cards: [], pool: 0, recent: [], last: null, fetching: false, serial: 0 };
+  revealed = false;
+  fillEndless();
+}
+async function fillEndless() {
+  const stream = endless;
+  if (!stream || stream.fetching || stream.cards.length >= ENDLESS_AHEAD) return;
+  stream.fetching = true;
+  const exclude = [...stream.cards.map((card) => card.id).reverse(), ...stream.recent].slice(0, ENDLESS_GAP);
+  try {
+    const { card, pool } = await api('api/endless/next', { method: 'POST', body: JSON.stringify({ direction: stream.direction, deck: stream.deck, exclude }) });
+    if (endless !== stream) return;
+    stream.pool = pool; stream.fetching = false;
+    if (retryAction?.type === 'endless') { retryAction = null; notice = null; }
+    const first = !stream.cards.length;
+    if (card) stream.cards.push({ ...card, serial: ++stream.serial });
+    if (first && screen === 'practice') render();
+    if (card) fillEndless();
+  } catch (error) {
+    if (endless !== stream) return;
+    stream.fetching = false;
+    notice = { message: error.message }; retryAction = { type: 'endless' };
+    if (screen === 'practice') render();
+  }
+}
+function markEndless(known) {
+  const stream = endless;
+  const card = stream?.cards.shift();
+  if (!card) return;
+  const markId = requestId();
+  stream.recent = [card.id, ...stream.recent.filter((id) => id !== card.id)].slice(0, ENDLESS_GAP);
+  stream.last = { requestId: markId, card };
+  revealed = false; stopAudio(); notice = null;
+  render(); main.focus({ preventScroll: true });
+  if (stream.cards[0]) announce(direction === 'en-fr' ? stream.cards[0].en : stream.cards[0].fr);
+  api('api/endless/mark', { method: 'POST', body: JSON.stringify({ requestId: markId, direction: stream.direction, wordId: card.id, known }) })
+    .catch((error) => { if (endless === stream) { notice = { message: `This answer was not saved: ${error.message}` }; if (stream.last?.requestId === markId) stream.last = null; if (screen === 'practice') render(); } })
+    // The next words are chosen once this answer counts, so a word just missed is likelier to come back.
+    .finally(() => fillEndless());
+}
+// Takes the last answer back and shows that word again, to answer afresh.
+async function undoEndless() {
+  const stream = endless;
+  const last = stream?.last;
+  if (!last || busy) return;
+  busy = true; render();
+  try {
+    await api('api/endless/undo', { method: 'POST', body: JSON.stringify({ requestId: last.requestId }) });
+    if (endless === stream) {
+      stream.cards.unshift({ ...last.card, serial: ++stream.serial });
+      stream.recent = stream.recent.filter((id) => id !== last.card.id);
+      stream.last = null; revealed = false;
+    }
+  } catch (error) { notice = { message: error.message }; }
+  busy = false;
+  if (screen === 'practice') render();
+}
+function chooseVocabMode(mode) {
+  if (mode === vocabMode || locked()) return;
+  vocabMode = mode; savePreference('echo.vocab-mode', mode);
+  endless = null; revealed = false;
+  dialog.close(); startPractice();
 }
 function browseWords() {
   if (move('browse', true)) enterBrowse();
@@ -2891,7 +2985,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Vocabulary options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form>${extraPracticeHTML()}<p class="settings-label">Words from songs</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div><button class="secondary song-entry" data-action="songs" ${disabled}>Add words from a song…</button><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
+  openDialog('Vocabulary options', `<p class="settings-label">Practice</p><div class="segmented" role="group" aria-label="Practice mode"><button data-action="vocab-mode" data-value="daily" aria-pressed="${vocabMode === 'daily'}" ${disabled}>Daily</button><button data-action="vocab-mode" data-value="endless" aria-pressed="${vocabMode === 'endless'}" ${disabled}>Endless</button></div><p class="caption">${vocabMode === 'endless' ? 'Endless: only words you have started, the hard ones most often, for as long as you like. Each answer moves the word’s score by one; your daily stacks and schedule stay as they are.' : 'Daily: new words and reviews in their stacks, on your schedule.'}</p><p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form>${extraPracticeHTML()}<p class="settings-label">Words from songs</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div><button class="secondary song-entry" data-action="songs" ${disabled}>Add words from a song…</button><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
 }
 async function saveGoal(event) {
   event.preventDefault(); if (locked() || !snapshot) return;
@@ -2926,6 +3020,7 @@ function retry() {
   else if (action.type === 'sound') startSoundRound();
   else if (action.type === 'verbs') loadVerbs();
   else if (action.type === 'verbs-forms') startVerbForms();
+  else if (action.type === 'endless') fillEndless();
   else if (action.type === 'verbs-ear') startVerbEar();
   else if (action.type === 'verbs-cards') startVerbCards();
   else if (action.type === 'verbs-tense') loadVerbTense();
@@ -2943,7 +3038,7 @@ document.addEventListener('click', (event) => {
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }
   if (action === 'audio-mode') { audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off'); if (!audioMode) stopAudio(); render(); return; }
   if (action === 'listen-mode') { listenMode = !listenMode; savePreference('echo.listen-mode', listenMode ? 'on' : 'off'); heardCard = ''; if (!listenMode) stopAudio(); render(); return; }
-  if (action === 'replay') { if (snapshot?.current) playFrench(snapshot.current.audioUrl); return; }
+  if (action === 'replay') { const card = shownCard(); if (card) playFrench(card.audioUrl); return; }
   if (action === 'play-clips') { toggleClips(); return; }
   if (action === 'clips-restart') { toggleClips(true); return; }
   if (action === 'clips-line') { replayLine(); return; }
@@ -2992,6 +3087,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'again') grade(false);
   else if (action === 'known') grade(true);
   else if (action === 'undo') undo();
+  else if (action === 'vocab-mode') chooseVocabMode(button.dataset.value);
   else if (action === 'retry') { clearTimeout(autoRetryTimer); autoRetryTimer = 0; retry(); }
   else if (action === 'retry-browse') loadBrowse();
   else if (action === 'restart') startScope(scope);

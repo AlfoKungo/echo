@@ -51,6 +51,11 @@ export type ComprehensionDayCounts = { day: string; listen: { right: number; tot
 export type Statistics = VocabularyStatistics & { levels: { mode: 'listen' | 'read'; label: GrammarLevel }[]; answered: number; comprehensionDays: ComprehensionDayCounts[]; grammarTopics: number };
 // A mark on one listen: id stays the same while the learner changes their mind; knew:null withdraws it.
 export type VerdictInput = { id: string; wordId: string; knew: boolean | null };
+// Endless: a stream of started words picked by score, with no stacks and no schedule. exclude lists the words
+// shown most recently, newest first; they are passed over while anything else is left.
+export type EndlessInput = { direction: Direction; deck: string; exclude?: string[] };
+export type EndlessPick = { card: CardView | null; pool: number };
+export type EndlessMarkInput = { requestId: string; direction: Direction; wordId: string; known: boolean };
 // words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn;
 // 'sentences' plays Listen/Read sentences instead of words.
 export type WalkmanChoice = 'scored' | 'groups' | 'sentences' | 'verbs';
@@ -86,6 +91,9 @@ export type WordPattern = { title: string; explanation: string; tip?: string; ex
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
 // POST api/walkman {words?:WalkmanChoice} -> WalkmanTape: a new tape of the words (or sentences) worth hearing now ('scored' by default)
 // POST api/walkman/heard HeardInput -> {ok:true}: a word heard to the end, which raises its score a little
+// POST api/endless/next EndlessInput -> EndlessPick: the next word of an Endless stream, likelier the lower its score
+// POST api/endless/mark EndlessMarkInput -> {ok:true}: knew it +1 to the score, didn't -1; a retried request counts once
+// POST api/endless/undo {requestId} -> {ok:true}: takes an Endless mark back
 // POST api/walkman/verdict VerdictInput -> {ok:true}: 'I knew it' raises the word's score like a recall, 'I didn't' lowers it like a miss
 // GET api/walkman/:id.mp3 -> that tape's audio, with byte ranges; only the latest few tapes are kept
 // GET api/statistics -> Statistics

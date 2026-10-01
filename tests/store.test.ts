@@ -937,3 +937,50 @@ describe('score history', () => {
     expect(() => store.statisticsDay('2026-09-20')).toThrow(StoreError);
   });
 });
+
+describe('endless', () => {
+  test('picks only started words, the hard ones far more often, passes over recent ones, and leaves the daily stacks alone', () => {
+    const { store, randomness } = fixture();
+    let state = store.start('fr-en', 'all');
+    const answeredIds = new Set<string>();
+    for (let turn = 0; turn < 4; turn++) { answeredIds.add(state.current!.id); state = store.grade(answer(state, true)); }
+    const started = [...answeredIds];
+    // Admitted today but never shown: not started.
+    const fresh = words.find((word) => !answeredIds.has(word.id))!.id;
+    expect(started.length).toBeGreaterThanOrEqual(3);
+    const [hard, easy] = started as [string, string];
+    for (let mark = 0; mark < 6; mark++) {
+      store.endlessMark({ requestId: `hard-${mark}`, direction: 'fr-en', wordId: hard, known: false });
+      store.endlessMark({ requestId: `easy-${mark}`, direction: 'fr-en', wordId: easy, known: true });
+    }
+    const daily = JSON.stringify(store.state('fr-en', 'all').stats);
+    const picks = Array.from({ length: 200 }, (_, index) => { randomness.value = (index + 0.5) / 200; return store.endlessNext({ direction: 'fr-en', deck: 'all' }); });
+    expect(picks.every((pick) => started.includes(pick.card!.id) && pick.pool === started.length)).toBe(true);
+    const count = (id: string) => picks.filter((pick) => pick.card!.id === id).length;
+    expect(count(hard)).toBeGreaterThan(4 * Math.max(1, count(easy)));
+    for (const value of [0.01, 0.5, 0.99]) {
+      randomness.value = value;
+      expect(store.endlessNext({ direction: 'fr-en', deck: 'all', exclude: [hard] }).card!.id).not.toBe(hard);
+    }
+    // With every word passed over, one still comes.
+    expect(started).toContain(store.endlessNext({ direction: 'fr-en', deck: 'all', exclude: started }).card!.id);
+    expect(JSON.stringify(store.state('fr-en', 'all').stats)).toBe(daily);
+    expectStatus(() => store.endlessMark({ requestId: 'new', direction: 'fr-en', wordId: fresh, known: true }), 400);
+  });
+
+  test('a mark moves the score by one, a retried mark counts once, and undo takes it back', () => {
+    const { store } = fixture();
+    let state = store.start('fr-en', 'all');
+    const id = state.current!.id;
+    state = store.grade(answer(state, true));
+    const score = () => store.listening().find((word) => word.id === id)!.score;
+    const before = score();
+    store.endlessMark({ requestId: 'm1', direction: 'fr-en', wordId: id, known: true });
+    store.endlessMark({ requestId: 'm1', direction: 'fr-en', wordId: id, known: true });
+    expect(score()).toBeCloseTo(before + 1, 3);
+    store.endlessMark({ requestId: 'm2', direction: 'fr-en', wordId: id, known: false });
+    expect(score()).toBeCloseTo(before, 3);
+    store.endlessUndo('m2');
+    expect(score()).toBeCloseTo(before + 1, 3);
+  });
+});
