@@ -284,7 +284,8 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .genders .g-m{color:var(--masc)}.genders .g-f{color:var(--fem)}.genders .gloss.g-m{border-bottom-color:var(--masc)}.genders .gloss.g-f{border-bottom-color:var(--fem)}
 .gloss-gender{margin:4px 0 0;font-size:14px;color:var(--muted)}.gender-key{display:block;font-size:12px;color:var(--muted)}.gender-key .g-m{color:var(--masc)}.gender-key .g-f{color:var(--fem)}
 .song-known{margin-top:18px}.song-known p{margin:0}.song-known .caption{margin-top:6px}.song-known-bar{display:flex;height:6px;border-radius:3px;background:var(--card);overflow:hidden;margin-top:8px}.song-known-bar .k{background:var(--violet)}.song-known-bar .l{background:var(--violet);opacity:.38}
-.word-hook{color:var(--ink);font-size:15px;line-height:1.5;margin:0 0 10px!important;padding:10px 12px;background:var(--card);border-radius:10px;text-align:left}
+/* No background of its own: it sits above the card's tap zones, and a filled box would hide a pressed zone's tint. */
+.word-hook{color:var(--ink);font-size:15px;line-height:1.5;margin:0 0 10px!important;padding:10px 12px;border-radius:10px;text-align:left}
 .sound-choice{display:flex;align-items:center;gap:8px}.sound-choice .choice{flex:1}.sound-en{display:block;margin-top:3px;color:var(--muted);font-size:14px}.sound-hear{flex:none}.sound-tip{margin-top:18px}
 .story-heading{margin:30px 0 10px;font-size:18px;font-weight:600}.story-question{margin-bottom:18px}.story-question .feedback{margin-top:10px}.story-recap,.story-grammar{display:block;margin:10px 0 4px;padding-left:0;text-align:left}.story-previously{margin:4px 0 12px}.story .lyric-text .speaker{display:block;margin-bottom:2px;color:var(--muted);font-size:13px}.story-done{margin-top:18px}
 .radio-chapters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
