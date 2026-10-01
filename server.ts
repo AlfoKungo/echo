@@ -5,7 +5,7 @@ import { createGrammarStore } from './lib/grammar-store';
 import { loadCourse } from './lib/grammar-content';
 import { loadBank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
-import { buildTape, createClips, layTape, planSentences, planTape, SENTENCE_TIMING, tapeView, type Tape, type TapeItem } from './lib/walkman';
+import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, layTape, planSentences, planTape, SENTENCE_TIMING, tapeView, VERB_TIMING, type Tape, type TapeItem } from './lib/walkman';
 import { createSongs } from './lib/songs';
 import { createClaude, createClaudeReader } from './lib/claude';
 import { createWordAudio } from './lib/word-audio';
@@ -13,9 +13,9 @@ import { createTextTopup } from './lib/text-topup';
 import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
-import { createRadio, frenchClip, layStory, radioClip, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
-import { createVerbTables, TENSES, tenseGuide, verbGuide, type Tense } from './lib/verbs';
-import { createVerbDrills } from './lib/verb-drills';
+import { createRadio, englishClip, frenchClip, layStory, radioClip, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
+import { createVerbTables, TENSE_NAMES, TENSES, tenseGuide, verbGuide, type Tense } from './lib/verbs';
+import { createVerbDrills, WALKMAN_PERSONS } from './lib/verb-drills';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
@@ -188,7 +188,8 @@ function recordSentences(): Promise<void> {
       const clips = storyLineClips(episode.id, index, line.en);
       return [clips.fr, clips.en];
     }));
-    const phrases = verbs.earPhrases().map(frenchClip);
+    const tape = verbs.walkmanPhrases();
+    const phrases = [...tape.french.map(frenchClip), ...tape.english.map(englishClip), ...verbs.earPhrases().map(frenchClip)];
     const sentences = bank.sentences.filter((sentence) => existsSync(join(root, `audio/comprehension/${sentence.id}.mp3`)))
       .flatMap((sentence) => { const clips = sentenceClips(sentence); return [clips.fr, clips.en]; });
     const missing = [...new Map([...storyLines, ...phrases, ...sentences].map((clip) => [clip.id, clip])).values()].filter((clip) => !radioClip(root, clip.id));
@@ -218,18 +219,49 @@ const walkmanClips = createClips(join(root, 'audio'));
 const walkmanManifest = join(root, 'audio/walkman/manifest.json');
 let walkmanStamp = 0;
 const tapes = new Map<string, Tape>();
-function newTape(choice: WalkmanChoice): Tape {
+function newTape(choice: WalkmanChoice, tenses: Tense[] = ['pres']): Tape {
   const stamp = existsSync(walkmanManifest) ? statSync(walkmanManifest).mtimeMs : 0;
   if (stamp !== walkmanStamp) { walkmanClips.forget(); walkmanStamp = stamp; }
   const listening = store.listening();
-  const tape = choice === 'sentences' ? sentenceTape(listening) : (() => {
+  const tape = choice === 'verbs' ? verbTape(tenses) : choice === 'sentences' ? sentenceTape(listening) : (() => {
     const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
     return buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), new Map(store.words().map((word) => [word.id, word])), walkmanClips, fresh);
   })();
-  if (!tape.words.length) throw new StoreError(choice === 'sentences' ? 'The sentence recordings are still being made. Please try again later.' : 'The Walkman recordings are not ready yet. Please try again later.', 503);
+  if (!tape.words.length) throw new StoreError(choice === 'verbs' ? 'The verb recordings are still being made on your Mac. Please try again later.' : choice === 'sentences' ? 'The sentence recordings are still being made. Please try again later.' : 'The Walkman recordings are not ready yet. Please try again later.', 503);
   tapes.set(tape.id, tape);
   for (const id of [...tapes.keys()].slice(0, -3)) tapes.delete(id);
   return tape;
+}
+// The verb tape: for each form of the most common verbs, the verb (its Walkman word recording), the tense and the
+// person, a pause to say the form in your head, then the form twice. A form not yet recorded is left out.
+function verbTape(tenses: Tense[]): Tape {
+  const silence = walkmanClips.silence();
+  if (!silence) throw new Error('The Walkman silence frame is missing.');
+  const gap = (() => { const count = Math.round(0.3 / FRAME_SECONDS); const block = new Uint8Array(count * FRAME_BYTES); for (let frame = 0; frame < count; frame++) block.set(silence.subarray(0, FRAME_BYTES), frame * FRAME_BYTES); return block; })();
+  const join = (parts: Uint8Array[]) => { const bytes = new Uint8Array(parts.reduce((sum, part) => sum + part.length, 0)); let at = 0; for (const part of parts) { bytes.set(part, at); at += part.length; } return bytes; };
+  const tenseClips = new Map(TENSES.map((tense) => [tense, radioClip(root, frenchClip(TENSE_NAMES[tense]).id)]));
+  const personClips = WALKMAN_PERSONS.map((label) => radioClip(root, englishClip(label).id));
+  const forms = verbs.walkmanForms(tenses);
+  function* items(): Generator<TapeItem> {
+    // Round after round of the same forms, each in a fresh order, until the tape is full.
+    for (let round = 0; round < 50; round++) {
+      let laid = 0;
+      for (const form of round ? verbs.walkmanForms(tenses) : forms) {
+        const name = walkmanClips.french(form.verbId), tense = tenseClips.get(form.tense), person = personClips[form.person];
+        const answerId = frenchClip(form.said).id;
+        const answer = radioClip(root, answerId);
+        if (!name || !tense || !person || !answer) continue;
+        laid++;
+        yield {
+          id: `${form.verbId}~${form.tense}~${form.person}`, fr: `${form.verb.inf} · ${TENSE_NAMES[form.tense]} · ${WALKMAN_PERSONS[form.person]}`, en: form.shown, fresh: false,
+          verb: { verbId: form.verbId, tense: form.tense, person: form.person, audio: `audio/radio/${answerId}.mp3` },
+          french: join([name, gap, tense, gap, person]), english: answer, again: answer,
+        };
+      }
+      if (!laid) return;
+    }
+  }
+  return layTape(crypto.randomUUID(), 'verbs', items(), silence, VERB_TIMING);
 }
 // Sentences up to the Read level, those holding the words most worth hearing likelier to come first.
 function sentenceTape(listening: ReturnType<typeof store.listening>): Tape {
@@ -419,8 +451,9 @@ async function route(req: Request): Promise<Response> {
     }
     if (path === '/api/walkman' && req.method === 'POST') {
       const data = await body(req);
-      if (data.words !== undefined && data.words !== 'scored' && data.words !== 'groups' && data.words !== 'sentences') throw new StoreError('Choose what the Walkman plays: words by score, words by groups, or sentences.', 400);
-      return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored')));
+      if (data.words !== undefined && !['scored', 'groups', 'sentences', 'verbs'].includes(data.words as string)) throw new StoreError('Choose what the Walkman plays: words by score, words by groups, sentences, or verbs.', 400);
+      const tenses = Array.isArray(data.tenses) ? TENSES.filter((tense) => (data.tenses as unknown[]).includes(tense)) : ['pres' as Tense];
+      return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored', tenses)));
     }
     if (path === '/api/walkman/heard' && req.method === 'POST') {
       const data = await body(req);

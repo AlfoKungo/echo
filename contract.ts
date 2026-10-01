@@ -53,7 +53,7 @@ export type Statistics = VocabularyStatistics & { levels: { mode: 'listen' | 're
 export type VerdictInput = { id: string; wordId: string; knew: boolean | null };
 // words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn;
 // 'sentences' plays Listen/Read sentences instead of words.
-export type WalkmanChoice = 'scored' | 'groups' | 'sentences';
+export type WalkmanChoice = 'scored' | 'groups' | 'sentences' | 'verbs';
 // Adding a word the learner tapped in a French text, always in the fr-en direction.
 // added: it was never started, so today admits it as an extra word, leaving the daily allowance untouched.
 // already-practising: it is in the working deck already (a cycle in progress, or finished and due again).
@@ -63,8 +63,9 @@ export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due
 // One word on a Walkman tape, times in seconds from the tape's start: the French at start, the English at
 // meaningAt, the French again at againAt, ending at end. fresh: not yet started in Vocabulary when the tape was made.
 // sentence: a whole Listen/Read sentence (id is the sentence's), which hearing leaves the vocabulary untouched.
-export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; start: number; meaningAt: number; againAt: number; end: number };
-export type WalkmanTape = { id: string; kind: 'words' | 'sentences'; url: string; seconds: number; words: WalkmanWord[] };
+// On a verb tape, fr is the prompt (verb · tense · person), en the form, and verb names the form for marks and replays.
+export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; verb?: { verbId: string; tense: string; person: number; audio: string }; start: number; meaningAt: number; againAt: number; end: number };
+export type WalkmanTape = { id: string; kind: 'words' | 'sentences' | 'verbs'; url: string; seconds: number; words: WalkmanWord[] };
 // A word family: deck words built from one root, simplest first; each later member's note says how it is built.
 export type WordFamily = { members: { id: string; note?: string }[] };
 // A way French builds one word from another, with [from, to] example pairs taken from the word families.

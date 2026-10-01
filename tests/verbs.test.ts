@@ -3,7 +3,7 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createVerbDrills } from '../lib/verb-drills';
-import { conjugate, diagnose, earQuestions, groupOf, isRight, paradigm, tenseGuide, verbGuide, verbOf, verbProblems, type VerbTable, type VerbWord } from '../lib/verbs';
+import { conjugate, diagnose, persons, earQuestions, groupOf, isRight, paradigm, tenseGuide, verbGuide, verbOf, verbProblems, type VerbTable, type VerbWord } from '../lib/verbs';
 
 const words: Record<string, VerbWord> = {
   parler: { id: 'v-parler', fr: 'parler', en: 'to speak' },
@@ -189,6 +189,26 @@ describe('verb drills', () => {
     drills.mark({ requestId: 'k2', verbId: 'v-aller', tense: 'fut', person: card!.person, knew: true });
     expect(drills.summary().verbs.find((row) => row.id === 'v-aller')!.states.fut[card!.person]).toBe('getting');
     expect(() => drills.mark({ requestId: 'k3', verbId: 'v-aller', tense: 'fut', person: 0, knew: 'yes' as never })).toThrow('Say whether you knew it.');
+  });
+
+  test('the Walkman verb tape holds every form of the chosen tenses, shaky ones early, and records every tense and form', () => {
+    const drills = fixture();
+    drills.mark({ requestId: 'w1', verbId: 'v-aller', tense: 'pres', person: 3, knew: false });
+    const forms = drills.walkmanForms(['pres', 'fut']);
+    const formsPerVerb = (id: string) => persons(verb(id)).length * 2;
+    expect(forms.length).toBe(Object.keys(tables).reduce((sum, id) => sum + formsPerVerb(id), 0));
+    expect(new Set(forms.map((form) => form.tense))).toEqual(new Set(['pres', 'fut']));
+    expect(forms.find((form) => form.verbId === 'v-aller' && form.tense === 'fut' && form.person === 3)!.said).toBe('nous irons');
+    // A shaky form comes before a solid one far more often than not.
+    drills.mark({ requestId: 'w2', verbId: 'v-parler', tense: 'pres', person: 0, knew: true });
+    drills.mark({ requestId: 'w3', verbId: 'v-parler', tense: 'pres', person: 0, knew: true });
+    const at = (order: typeof forms, verbId: string, person: number) => order.findIndex((form) => form.verbId === verbId && form.tense === 'pres' && form.person === person);
+    const shakyFirst = Array.from({ length: 20 }, () => drills.walkmanForms(['pres', 'fut'])).filter((order) => at(order, 'v-aller', 3) < at(order, 'v-parler', 0)).length;
+    expect(shakyFirst).toBeGreaterThan(16);
+    expect(() => drills.walkmanForms([])).toThrow('Choose at least one tense.');
+    const phrases = drills.walkmanPhrases();
+    expect(phrases.french).toEqual(expect.arrayContaining(['présent', 'futur', 'nous irons', 'je parle']));
+    expect(phrases.english).toEqual(['I', 'you', 'he or she', 'we', 'you, plural', 'they']);
   });
 
   test('statistics rebuild the forms of each day, carry quiet days over, and split the last two weeks by tense, person and kind', () => {

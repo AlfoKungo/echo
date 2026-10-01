@@ -126,12 +126,20 @@ let heardSaying = '';
 const heardMarking = new Set();
 function saveHeard() { try { localStorage.setItem(HEARD_KEY, JSON.stringify(walkmanHeard)); } catch { /* private mode: history lasts this visit */ } }
 // What the Walkman plays, remembered on this device: words by score (the default), words by groups, or sentences.
-const WALKMAN_CHOICES = { scored: 'words by score', groups: 'words by groups', sentences: 'sentences' };
+const WALKMAN_CHOICES = { scored: 'words by score', groups: 'words by groups', sentences: 'sentences', verbs: 'verbs' };
 let walkmanChoice = (() => { const saved = readPreference('echo.walkman-words', 'scored'); return saved in WALKMAN_CHOICES ? saved : 'scored'; })();
 function chooseWalkman(choice) {
   if (choice === walkmanChoice || walkman.loading) return;
   walkmanChoice = choice; savePreference('echo.walkman-words', choice);
   // The new choice starts a new tape straight away, playing on if the old one was.
+  loadTape(!walkmanAudio.paused);
+}
+// The verb tape plays the tenses chosen in Verbs; changing them here changes them there too.
+function chooseWalkmanTense(tense) {
+  if (walkman.loading) return;
+  const next = verbTenses.includes(tense) ? verbTenses.filter((entry) => entry !== tense) : [...verbTenses, tense];
+  if (!next.length) return;
+  verbTenses = next; savePreference('echo.verbs-tenses', JSON.stringify(next));
   loadTape(!walkmanAudio.paused);
 }
 // One comprehension stream at a time: the Listen and Read screens, Practise and a Mistakes focus all show one.
@@ -443,8 +451,10 @@ function renderWalkman() {
   const word = tape.words[walkman.index];
   const playing = !walkmanAudio.paused;
   const face = word
-    ? `<p class="wm-fr${word.sentence ? ' wm-sentence' : ''}" lang="fr">${frEsc(word.fr)}</p><p class="wm-en">${walkman.meaning ? esc(word.en) : '&nbsp;'}</p>`
-    : `<p class="wm-hint">${tape.kind === 'sentences'
+    ? `<p class="wm-fr${word.sentence || word.verb ? ' wm-sentence' : ''}" lang="fr">${frEsc(word.fr)}</p><p class="wm-en">${walkman.meaning ? esc(word.en) : '&nbsp;'}</p>`
+    : `<p class="wm-hint">${tape.kind === 'verbs'
+      ? 'You hear a verb, a tense and a person, then a pause to say the form, then the form twice. The 20 most common verbs, in the tenses you choose.'
+      : tape.kind === 'sentences'
       ? 'You hear a French sentence, then a pause to understand it, then the English, then the French again.'
       : 'You hear a French word, then a pause to find its meaning, then the English, then the French again.'}</p>`;
   main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}
@@ -453,6 +463,7 @@ function renderWalkman() {
     <div class="wm-progress" aria-hidden="true"><span style="width:${walkmanProgress()}%"></span></div>
     ${heardHTML()}
     <p class="caption wm-note">Keeps playing with your phone locked. Listening doesn’t change your vocabulary progress.</p>
+    ${walkmanChoice === 'verbs' ? `<p class="wm-choice wm-tenses">Tenses ${Object.entries(VB_TENSES).map(([tense, label]) => `<button data-action="walkman-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${esc(label)}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
     <p class="wm-choice">Plays ${Object.entries(WALKMAN_CHOICES).map(([choice, label]) => `<button data-action="walkman-choice" data-words="${choice}" aria-pressed="${walkmanChoice === choice}">${label}</button>`).join('<span aria-hidden="true">·</span>')}</p>
   </section>`;
 }
@@ -464,7 +475,7 @@ function heardHTML() {
       : entry.fresh ? `<button class="wm-heard-add" data-action="walkman-add" data-word="${esc(entry.id)}">Add to my words</button>` : '';
     // A sentence is heard for its meaning only: it has no score to mark and nothing to add.
     const marks = entry.sentence ? '' : [[true, checkIcon, 'I knew'], [false, crossIcon, 'I didn’t know']].map(([knew, icon, label]) =>
-      `<button class="icon mark ${knew ? 'knew' : 'missed'}" data-action="walkman-mark" data-word="${esc(entry.id)}" data-knew="${knew}" aria-pressed="${entry.mark?.knew === knew}" aria-label="${label} ${esc(entry.fr)}"${heardMarking.has(entry.id) ? ' disabled' : ''}>${icon}</button>`).join('');
+      `<button class="icon mark ${knew ? 'knew' : 'missed'}" data-action="walkman-mark" data-word="${esc(entry.id)}" data-knew="${knew}" aria-pressed="${entry.mark?.knew === knew}" aria-label="${label} ${esc(entry.fr)}"${heardMarking.has(entry.id) || (entry.verb && entry.mark) ? ' disabled' : ''}>${icon}</button>`).join('');
     return `<li class="wm-heard-row${entry.sentence ? ' sentence' : ''}"><div class="wm-heard-text"><p class="wm-heard-fr" lang="fr">${frEsc(entry.fr)}</p><p class="wm-heard-en">${esc(entry.en)}</p>${add}</div>${marks}<button class="icon${heardSaying === entry.id ? ' playing' : ''}" data-action="walkman-say" data-word="${esc(entry.id)}" aria-label="Hear ${esc(entry.fr)} again">${speaker}</button></li>`;
   }).join('');
   const list = heardOpen ? `<ol class="wm-heard-list">${rows || '<li class="wm-heard-empty">Words and sentences appear here as each one finishes, newest first.</li>'}</ol>` : '';
@@ -477,12 +488,28 @@ function logHeard(position) {
   const word = walkman.tape.words[position];
   const previous = walkmanHeard.find((entry) => entry.id === word.id);
   const added = previous?.added && previous.added !== 'saving' ? { added: previous.added } : {};
-  walkmanHeard = [{ id: word.id, fr: word.fr, en: word.en, fresh: word.fresh, ...(word.sentence ? { sentence: true } : {}), ...added }, ...walkmanHeard.filter((entry) => entry.id !== word.id)].slice(0, HEARD_LIMIT);
+  walkmanHeard = [{ id: word.id, fr: word.fr, en: word.en, fresh: word.fresh, ...(word.sentence ? { sentence: true } : {}), ...(word.verb ? { verb: word.verb } : {}), ...added }, ...walkmanHeard.filter((entry) => entry.id !== word.id)].slice(0, HEARD_LIMIT);
   saveHeard();
   // Hearing a word to the end raises its score a little; a lost report only costs that little. A sentence
   // leaves the vocabulary alone.
-  if (!word.sentence) api('api/walkman/heard', { method: 'POST', body: JSON.stringify({ wordId: word.id, requestId: requestId() }), keepalive: true }).catch(() => {});
+  if (!word.sentence && !word.verb) api('api/walkman/heard', { method: 'POST', body: JSON.stringify({ wordId: word.id, requestId: requestId() }), keepalive: true }).catch(() => {});
   return true;
+}
+// A form heard on the verb tape is marked like a Verbs card: saved as an answer, so it can't be taken back.
+async function markHeardForm(entry, knew) {
+  if (entry.mark) return;
+  const markId = requestId();
+  entry.mark = { id: markId, knew };
+  heardMarking.add(entry.id); render();
+  try {
+    await api('api/verbs/mark', { method: 'POST', body: JSON.stringify({ requestId: markId, verbId: entry.verb.verbId, tense: entry.verb.tense, person: entry.verb.person, knew }) });
+  } catch (error) {
+    entry.mark = undefined;
+    notice = { message: error.message };
+  }
+  heardMarking.delete(entry.id);
+  saveHeard();
+  render();
 }
 // Hearing a word or sentence again pauses the tape, plays it alone, then carries on if the tape was playing.
 let heardResume = false;
@@ -491,7 +518,7 @@ async function hearAgain(id) {
   if (!walkmanAudio.paused) { heardResume = true; walkmanAudio.pause(); }
   heardSaying = id; render();
   const token = ++audioGeneration;
-  await playClip(`audio/${entry?.sentence ? 'comprehension/' : ''}${encodeURIComponent(id)}.mp3`, token);
+  await playClip(entry?.verb ? entry.verb.audio : `audio/${entry?.sentence ? 'comprehension/' : ''}${encodeURIComponent(id)}.mp3`, token);
   if (token !== audioGeneration) return;
   heardSaying = '';
   if (screen !== 'walkman') return;
@@ -502,6 +529,7 @@ async function hearAgain(id) {
 async function markHeard(id, knew) {
   const entry = walkmanHeard.find((item) => item.id === id);
   if (!entry || heardMarking.has(id)) return;
+  if (entry.verb) return markHeardForm(entry, knew);
   const before = entry.mark;
   const next = before?.knew === knew ? null : knew;
   const markId = before?.id || requestId();
@@ -542,7 +570,7 @@ async function loadTape(autoplay = false) {
   notice = null; retryAction = null;
   render();
   try {
-    const tape = await api('api/walkman', { method: 'POST', body: JSON.stringify({ words: walkmanChoice }) });
+    const tape = await api('api/walkman', { method: 'POST', body: JSON.stringify({ words: walkmanChoice, ...(walkmanChoice === 'verbs' ? { tenses: verbTenses } : {}) }) });
     if (token !== walkmanGeneration || screen !== 'walkman') return;
     walkman = { ...walkman, tape, loading: false };
     walkmanAudio.src = tape.url;
@@ -3024,6 +3052,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'walkman-add') addHeard(button.dataset.word);
   else if (action === 'walkman-mark') markHeard(button.dataset.word, button.dataset.knew === 'true');
   else if (action === 'walkman-choice') chooseWalkman(button.dataset.words);
+  else if (action === 'walkman-tense') chooseWalkmanTense(button.dataset.tense);
   else if (action === 'stream-check') streamCheck();
   else if (action === 'stream-next') streamNext();
   else if (event.target.closest('#flashcard') && !event.target.closest('button,a,input,select')) reveal();

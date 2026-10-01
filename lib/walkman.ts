@@ -15,6 +15,8 @@ export type Timing = { recall: number; afterMeaning: number; between: number };
 export const WORD_TIMING: Timing = { recall: 2.0, afterMeaning: 0.7, between: 1.8 };
 // A sentence takes longer to understand than a word to recall, and a breath more before the next.
 export const SENTENCE_TIMING: Timing = { recall: 2.5, afterMeaning: 0.8, between: 2.2 };
+// A form: time to say it in your head after its prompt, then the form twice.
+export const VERB_TIMING: Timing = { recall: 3.0, afterMeaning: 0.7, between: 2.0 };
 // A familiar word returns only after this many others; a new word returns twice, 10 and 30 words later, so each
 // return is a real recall and the start of a tape, where new words gather, does not circle the same few.
 const SPACING = 15;
@@ -155,9 +157,10 @@ export function planSentences<T extends { level: GrammarLevel; words: string[] }
     .map((entry) => entry.sentence);
 }
 
-export type Tape = { id: string; kind: 'words' | 'sentences'; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
-// One thing on a tape with its two recordings; sentence marks a whole sentence rather than a word.
-export type TapeItem = Omit<WalkmanWord, 'start' | 'meaningAt' | 'againAt' | 'end'> & { french: Uint8Array; english: Uint8Array };
+export type Tape = { id: string; kind: 'words' | 'sentences' | 'verbs'; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
+// One thing on a tape with its two recordings; sentence marks a whole sentence rather than a word. again is what
+// plays the third time (the French, unless given: a verb tape repeats the form, not the prompt).
+export type TapeItem = Omit<WalkmanWord, 'start' | 'meaningAt' | 'againAt' | 'end'> & { french: Uint8Array; english: Uint8Array; again?: Uint8Array };
 
 // Clips are read once and kept; a clip that is missing or not in the Walkman format is skipped.
 export function createClips(audioDir: string) {
@@ -195,7 +198,7 @@ export function buildTape(id: string, plan: string[], byId: Map<string, Word>, c
   return layTape(id, 'words', items(), silence, WORD_TIMING, seconds);
 }
 
-// Lays items end to end, each as French, a pause, the English, a breath, the French again, until the tape
+// Lays items end to end, each as French, a pause, the English, a breath, the French again (or the item's again), until the tape
 // reaches its length; items are drawn only as needed.
 export function layTape(id: string, kind: Tape['kind'], items: Iterable<TapeItem>, silence: Uint8Array, timing: Timing, seconds = TAPE_SECONDS): Tape {
   const parts: Uint8Array[] = [];
@@ -213,7 +216,7 @@ export function layTape(id: string, kind: Tape['kind'], items: Iterable<TapeItem
   const now = () => Math.round(frames * FRAME_SECONDS * 1000) / 1000;
   const words: WalkmanWord[] = [];
   pause(LEAD);
-  for (const { french, english, ...item } of items) {
+  for (const { french, english, again, ...item } of items) {
     const start = now();
     add(french);
     pause(timing.recall);
@@ -221,7 +224,7 @@ export function layTape(id: string, kind: Tape['kind'], items: Iterable<TapeItem
     add(english);
     pause(timing.afterMeaning);
     const againAt = now();
-    add(french);
+    add(again ?? french);
     const end = now();
     pause(timing.between);
     words.push({ ...item, start, meaningAt, againAt, end });

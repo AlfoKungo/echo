@@ -38,6 +38,8 @@ const translation = (text: string): Step => ({ ...(en(text) as { clip: RadioClip
 const fr = (text: string): Step => ({ clip: frenchClip(text) });
 // French said by the Radio's French voice and checked; the Verbs room's By ear phrases are made the same way.
 export function frenchClip(text: string): RadioClip { return { id: `fr-${hash(text)}`, kind: 'fr', text }; }
+// English said by the Walkman's English voice and checked, the same clip the Radio would make for the text.
+export function englishClip(text: string): RadioClip { return (en(text) as { clip: RadioClip }).clip; }
 const recording = (source: string): Step => ({ clip: { id: `cv-${hash(source)}`, kind: 'convert', source } });
 // A Listen/Read sentence as the Radio and the Walkman's sentence tape both play it: its recording converted to
 // the Walkman format, and its English said and checked. One source of the clip ids, so both share one recording.

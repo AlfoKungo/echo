@@ -19,6 +19,8 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 const WEIGHT: Record<FormState, number> = { shaky: 6, new: 3, getting: 2, solid: 0.5 };
+// On the verb tape the person is said in English: il and ils sound alike in French.
+export const WALKMAN_PERSONS = ['I', 'you', 'he or she', 'we', 'you, plural', 'they'];
 
 // The calendar day after a study day (YYYY-MM-DD).
 function nextDay(day: string): string {
@@ -296,6 +298,25 @@ export function createVerbDrills(options: {
     return { forms: { ...forms, practised: answers.size, total }, history: days, tenses, people, kinds: [...kinds.values()].sort((a, b) => b.total - a.total).map((kind) => ({ ...kind, title: GROUP_TITLES[kind.tense][kind.group] ?? kind.group })) };
   }
 
+  // The Walkman's verb tape, for the most common verbs: every form of the chosen tenses, shaky and untried ones
+  // likelier to come early, with what is said for each. Neighbours differ in verb wherever the rest allows it.
+  function walkmanForms(tenses: Tense[]) {
+    const chosen = TENSES.filter((tense) => tenses.includes(tense));
+    if (!chosen.length) throw new StoreError('Choose at least one tense.');
+    const forms = history();
+    const pool = options.verbs().slice(0, COMMON).flatMap((verb) => chosen.flatMap((tense) => persons(verb).map((person) => {
+      const form = conjugate(verb, tense)[person]!;
+      // Weighted order without replacement: each key is random^(1/weight), highest first.
+      return { verbId: verb.id, verb, tense, person, said: subject(person, form.accepted[0]!) + form.accepted[0], shown: subject(person, form.shown) + form.shown, key: random() ** (1 / WEIGHT[stateOf(forms.get(key(verb.id, tense, person)))]) };
+    })));
+    return spread(pool.sort((a, b) => b.key - a.key));
+  }
+  // What the verb tape records: the four tense names, the six persons and every form of the most common verbs.
+  function walkmanPhrases(): { french: string[]; english: string[] } {
+    const french = options.verbs().slice(0, COMMON).flatMap((verb) => TENSES.flatMap((tense) => persons(verb).map((person) => { const form = conjugate(verb, tense)[person]!.accepted[0]!; return subject(person, form) + form; })));
+    return { french: [...TENSES.map((tense) => TENSE_NAMES[tense]), ...new Set(french)], english: [...WALKMAN_PERSONS] };
+  }
+
   // The phrases By ear says, for the verbs it can ask about (the most common and those started), to be recorded.
   function earPhrases(): string[] {
     const verbs = options.verbs();
@@ -303,6 +324,6 @@ export function createVerbDrills(options: {
     return [...new Set(verbs.filter((verb, index) => index < COMMON || started.has(verb.id)).flatMap((verb) => earQuestions(verb).map((question) => question.said)))];
   }
 
-  return { round, cards, mark, statistics, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
+  return { round, cards, mark, statistics, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills>;
