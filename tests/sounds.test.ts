@@ -2,7 +2,7 @@ import { afterEach, describe, expect, test } from 'bun:test';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createSounds, soundProblems, type SoundContrast, type SoundsContent } from '../lib/sounds';
+import { createSounds, soundProblems, type SoundContrast, type SoundsContent, CLIP_VERSION } from '../lib/sounds';
 import { StoreError } from '../lib/store';
 
 const directories: string[] = [];
@@ -43,7 +43,7 @@ describe('sound drills', () => {
     const drill = sounds({ contrasts: [contrast('le-les')] }, (id) => !id.startsWith('le-les-0') && id !== 'le-les-1-b');
     const round = drill.round('le-les');
     expect(round.map((question) => question.itemId).sort()).toEqual(['le-les-2', 'le-les-3', 'le-les-4', 'le-les-5', 'le-les-6', 'le-les-7']);
-    expect(round.every((question) => question.audio === `audio/sounds/${question.itemId}-${question.side}.mp3`)).toBe(true);
+    expect(round.every((question) => question.audio === `audio/sounds/${question.itemId}-${question.side}.mp3?v=${CLIP_VERSION}`)).toBe(true);
     expect(drill.summary()[0]!.ready).toBe(6);
     const empty = sounds({ contrasts: [contrast('le-les')] }, () => false);
     expect(() => empty.round('le-les')).toThrow(StoreError);

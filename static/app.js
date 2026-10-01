@@ -1803,7 +1803,8 @@ function openWalkman() { if (move('walkman', true)) loadTape(); }
 let soundList = null;          // api/sounds: each contrast with its recent record
 let soundId = '';              // the contrast drilled, or 'mix'
 let soundRound = null;         // { questions, index, chose, right }
-const soundUrl = (itemId, side) => `audio/sounds/${itemId}-${side}.mp3`;
+// The version matches CLIP_VERSION in lib/sounds.ts.
+const soundUrl = (itemId, side) => `audio/sounds/${itemId}-${side}.mp3?v=2`;
 function openSounds() { if (move('sounds', true)) loadSounds(); }
 async function loadSounds() {
   loading = true; notice = null; retryAction = null; render();

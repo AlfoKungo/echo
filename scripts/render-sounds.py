@@ -30,6 +30,9 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 from whisper_scorer import MODEL as SCORER_MODEL, Scorer  # noqa: E402
 
 MARGIN = 3.0
+# Every clip starts with the same 250 ms of quiet: a phone (and Bluetooth earbuds even more) drops the first moment
+# of a short clip while its output wakes, which turned a clip starting straight on "ils" into "…ont".
+LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1'
 SEEDS = '42,17,101,7,13,99'
 
 
@@ -94,7 +97,7 @@ def main():
                 except Exception as error:
                     takes.append({'seed': seed, 'error': str(error)})
                     continue
-                clips_module.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(wav),
+                clips_module.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(wav), '-af', LEAD_IN,
                                   '-codec:a', clips_module.ENCODING['codec'], '-b:a', clips_module.ENCODING['bitrate'], str(mp3)])
                 clips_module.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(mp3), '-ac', '1', '-ar', '16000', str(decoded)])
                 transcript = clips_module.transcribe(decoded, whisper)

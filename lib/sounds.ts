@@ -59,6 +59,10 @@ export type SoundsSummary = { id: string; title: string; level: string; labels: 
 export type SoundQuestion = { contrastId: string; itemId: string; side: 'a' | 'b'; audio: string; choices: [SoundSide & { side: 'a' }, SoundSide & { side: 'b' }] };
 export type SoundAnswer = { itemId: string; heard: 'a' | 'b'; chose: 'a' | 'b'; requestId: string };
 
+// Raised whenever the recordings change, so a phone holding a cached clip fetches the new one; the app's soundUrl
+// carries the same number.
+export const CLIP_VERSION = 2;
+
 export function createSounds(content: SoundsContent, options: { dbPath: string; clipExists: (clipId: string) => boolean; random?: () => number; now?: () => Date }) {
   const random = options.random ?? Math.random;
   const now = options.now ?? (() => new Date());
@@ -102,7 +106,7 @@ export function createSounds(content: SoundsContent, options: { dbPath: string; 
     const picked = pool.sort((left, right) => right.weight - left.weight).slice(0, ROUND);
     return picked.sort(() => random() - 0.5).map(({ contrast, item }) => {
       const side = random() < 0.5 ? 'a' : 'b';
-      return { contrastId: contrast.id, itemId: item.id, side, audio: `audio/sounds/${sideClip(item.id, side)}.mp3`, choices: [{ ...item.a, side: 'a' }, { ...item.b, side: 'b' }] };
+      return { contrastId: contrast.id, itemId: item.id, side, audio: `audio/sounds/${sideClip(item.id, side)}.mp3?v=${CLIP_VERSION}`, choices: [{ ...item.a, side: 'a' }, { ...item.b, side: 'b' }] };
     });
   }
 
