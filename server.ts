@@ -217,6 +217,11 @@ const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1
 // Rooms this Echo leaves out (the friends' pilot: story,radio,songs, which write and record for one learner). The page
 // carries the list, and the app hides those rooms.
 const roomsOff = (process.env.ECHO_ROOMS_OFF ?? '').split(',').map((room) => room.trim()).filter((room) => /^[a-z]+$/.test(room));
+// The signed-in learner's name, in the friends' Echo (pilot/router.ts): the app shows it beside Sign out.
+const learnerName = process.env.ECHO_LEARNER?.trim() ?? '';
+const attribute = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+// The friends' Echo's admin door on this Mac, for the Friends page (the owner's Echo only).
+const pilotAdmin = process.env.ECHO_PILOT_ADMIN ?? 'http://127.0.0.1:7898';
 const allowedHosts = new Set([new URL(publicOrigin).host, `127.0.0.1:${port}`, `localhost:${port}`]);
 const allowedOrigins = new Set([publicOrigin, `http://127.0.0.1:${port}`, `http://localhost:${port}`]);
 
@@ -373,6 +378,14 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
     // Word id → gender for every noun, so the client can colour a tappable word linked to one.
     if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));
+    // The Friends page: who may use the friends' Echo. Passed to its admin door, which only this Mac can reach.
+    if ((path === '/api/friends' || path === '/api/friends/remove') && !roomsOff.includes('friends')) {
+      const sent = req.method === 'POST' ? JSON.stringify(await body(req)) : undefined;
+      let reply: Response;
+      try { reply = await fetch(`${pilotAdmin}${path.slice('/api'.length)}`, { method: req.method === 'POST' ? 'POST' : 'GET', headers: { 'Content-Type': 'application/json' }, body: sent, signal: AbortSignal.timeout(5000) }); }
+      catch { throw new StoreError('The friends’ Echo is not running on this Mac.', 503); }
+      return json(await reply.json(), reply.status);
+    }
     if (path === '/api/statistics' && req.method === 'GET') {
       const grammarTopics = grammar.catalog().flatMap((unit) => unit.topics).filter((topic) => topic.progress.seen > 0).length;
       return json({ ...store.statistics(), ...comprehension.summary(), grammarTopics, texts: texts.status(), verbs: verbs.statistics() });
@@ -564,8 +577,9 @@ async function route(req: Request): Promise<Response> {
     const name = path === '/' ? 'index.html' : path.slice(1);
     if (Object.hasOwn(staticFiles, name) && (req.method === 'GET' || req.method === 'HEAD')) {
       const file = Bun.file(join(root, 'static', name));
-      if (name === 'index.html' && roomsOff.length && await file.exists()) {
-        const page = (await file.text()).replace('<body>', `<body data-rooms-off="${roomsOff.join(',')}">`);
+      if (name === 'index.html' && (roomsOff.length || learnerName) && await file.exists()) {
+        const marks = `${roomsOff.length ? ` data-rooms-off="${roomsOff.join(',')}"` : ''}${learnerName ? ` data-learner="${attribute(learnerName)}"` : ''}`;
+        const page = (await file.text()).replace('<body>', `<body${marks}>`);
         return new Response(req.method === 'HEAD' ? null : page, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' } });
       }
       if (await file.exists()) return staticFile(req, file);

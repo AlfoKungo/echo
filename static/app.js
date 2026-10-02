@@ -37,6 +37,7 @@ const grammarIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 
 const mistakesIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v3.5h3.5"/><path d="M12 8v4l2.5 2"/></svg>';
 const statsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M10 20V5M15 20v-7M20 20V8M3 20.5h18"/></svg>';
 const soundsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></svg>';
+const friendsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2c2.4.1 4 1.7 4.5 4.3"/></svg>';
 const chevronIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>';
 // Echo always opens on Home; each screen change after that is a history entry, so Back returns to it.
 // A place names a screen and what it shows: 'grammar', 'topic|negation', 'exercise|test:negation'.
@@ -389,6 +390,8 @@ function vocabularyHint() {
 }
 // Rooms this Echo leaves out, from the page (ECHO_ROOMS_OFF on the server).
 const roomsOff = new Set((document.body.dataset.roomsOff || '').split(',').filter(Boolean));
+// In the friends' Echo: who is signed in, with a way out, at the top of How it works.
+if (document.body.dataset.learner) document.querySelector('#about-dialog .dialog-copy, .dialog-copy')?.insertAdjacentHTML('afterbegin', `<form class="signed-in" method="post" action="/auth/signout"><span>Signed in as <b>${esc(document.body.dataset.learner)}</b></span><button class="quiet">Sign out</button></form>`);
 function renderHome() {
   loadHomeInfo();
   const tile = (action, symbol, title, hint, mode, disabled = busy) => {
@@ -409,7 +412,7 @@ function renderHome() {
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
   </div><p class="study-label">Study</p><div class="study">
-    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}
+    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${roomsOff.has('friends') ? '' : row('friends', friendsIcon, 'Friends')}
   </div></section>`;
 }
 // Keeps a retry scheduled while the Mac is out of reach and an action waits, sooner at first, then every 30 s.
@@ -443,6 +446,7 @@ function render() {
   else if (screen === 'listen' || screen === 'read') renderStream();
   else if (screen === 'mix' || screen === 'focus') renderMixed();
   else if (screen === 'mistakes') renderMistakes();
+  else if (screen === 'friends') renderFriends();
   else if (screen === 'walkman') renderWalkman();
   else if (screen === 'statistics') renderStatistics();
   else if (screen === 'songs') renderSongs();
@@ -1403,6 +1407,50 @@ async function loadStream(id, message = '') {
 function enterStream() { loadStream(screen === 'read' ? 'read' : 'listen'); }
 function openStream(name) { if (move(name, true)) enterStream(); }
 function openMix() { if (move('mix', true)) enterMixed(); }
+// ── Friends: who may sign in to the friends' Echo (pilot/router.ts) with Google. Only in the owner's Echo. ──
+let friendsInfo = null; // { friends, origin, signIn } from api/friends
+function openFriends() { if (move('friends', true)) loadFriends(); }
+async function loadFriends() {
+  loading = true; notice = null; retryAction = null; render();
+  try { friendsInfo = await api('api/friends'); } catch (error) { notice = { message: error.message }; retryAction = { type: 'friends' }; }
+  loading = false;
+  if (screen === 'friends') render();
+}
+async function saveFriend(email, name) {
+  if (busy) return;
+  busy = true; notice = null; render();
+  try { await api('api/friends', { method: 'POST', body: JSON.stringify({ email, name }) }); friendsInfo = await api('api/friends'); notice = { kind: 'info', message: `${email.trim().toLowerCase()} can sign in now.` }; }
+  catch (error) { notice = { message: error.message }; }
+  busy = false;
+  if (screen === 'friends') render();
+}
+async function removeFriend(id, name) {
+  if (busy || !confirm(`Take ${name} off the list? They are signed out at once; their progress is kept in case you add them back.`)) return;
+  busy = true; notice = null; render();
+  try { await api('api/friends/remove', { method: 'POST', body: JSON.stringify({ id }) }); friendsInfo = await api('api/friends'); }
+  catch (error) { notice = { message: error.message }; }
+  busy = false;
+  if (screen === 'friends') render();
+}
+async function copyFriendsLink() {
+  try { await navigator.clipboard.writeText(`${friendsInfo.origin}/`); notice = { kind: 'info', message: 'Link copied.' }; } catch { notice = { message: `Copy this link: ${friendsInfo.origin}/` }; }
+  render();
+}
+function renderFriends() {
+  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Friends</h1><p class="subtitle">Who can sign in to the friends’ Echo with Google. Each has their own progress; nobody sees anyone else’s.</p>`;
+  if (!friendsInfo || loading) { main.innerHTML = `${noticeHTML()}<section class="topics friends">${header}${loading ? '<div class="loading-state" role="status">Looking up your friends…</div>' : ''}</section>`; return; }
+  const seen = (at) => at ? `last in ${dayLabel(at).toLowerCase()}` : 'not signed in yet';
+  const active = friendsInfo.friends.filter((friend) => !friend.removedAt), removed = friendsInfo.friends.filter((friend) => friend.removedAt);
+  const rows = active.map((friend) => `<li><div class="name"><p>${esc(friend.name)}</p><small>${esc(friend.email)} · ${seen(friend.lastSeenAt)}${friend.devices ? ` · ${friend.devices} ${friend.devices === 1 ? 'device' : 'devices'}` : ''}</small></div><button class="quiet" data-action="friend-remove" data-id="${esc(friend.id)}" data-name="${esc(friend.name)}" ${busy ? 'disabled' : ''}>Remove</button></li>`).join('');
+  const gone = removed.map((friend) => `<li><div class="name"><p>${esc(friend.name)}</p><small>${esc(friend.email)} · removed, progress kept</small></div><button class="quiet" data-action="friend-restore" data-email="${esc(friend.email)}" data-name="${esc(friend.name)}" ${busy ? 'disabled' : ''}>Add back</button></li>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topics friends">${header}
+    ${friendsInfo.signIn ? '' : '<p class="feedback warn">Google sign-in is not set up yet, so nobody can sign in. Its client goes in ~/echo-pilot/google.json.</p>'}
+    <form id="friend-form" class="friend-form"><label for="friend-email">Google email</label><input id="friend-email" type="email" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="dana@gmail.com" required>
+      <label for="friend-name">Name</label><input id="friend-name" autocomplete="off" placeholder="Dana"><button class="primary" ${busy ? 'disabled' : ''}>Add</button></form>
+    ${active.length ? `<ol class="st-rows">${rows}</ol>` : '<p class="empty-list">Nobody yet. Add a friend’s Google email, then send them the link.</p>'}
+    <div class="friends-link"><p>Their link</p><code>${esc(friendsInfo.origin)}/</code><button class="secondary" data-action="friends-copy">Copy link</button></div>
+    ${gone ? `<p class="vs-label">Removed</p><ol class="st-rows">${gone}</ol>` : ''}</section>`;
+}
 function openMistakes() { if (move('mistakes', true)) loadMistakes(); }
 // ── Statistics ───────────────────────────────────────────────────────────────
 // statsBin is the score bar whose words are listed (null: none); bars run from -8 to 8, the ends holding everything beyond.
@@ -3176,6 +3224,7 @@ function retry() {
   else if (action.type === 'stream') loadStream(action.stream, action.message);
   else if (action.type === 'mixed') enterMixed();
   else if (action.type === 'mistakes') loadMistakes();
+  else if (action.type === 'friends') loadFriends();
   else if (action.type === 'walkman') loadTape();
   else if (action.type === 'statistics') loadStatistics();
   else if (action.type === 'sounds') loadSounds();
@@ -3264,6 +3313,10 @@ document.addEventListener('click', (event) => {
   else if (action === 'listen' || action === 'read') openStream(action);
   else if (action === 'practise') openMix();
   else if (action === 'mistakes') openMistakes();
+  else if (action === 'friends') openFriends();
+  else if (action === 'friend-remove') removeFriend(button.dataset.id, button.dataset.name);
+  else if (action === 'friend-restore') saveFriend(button.dataset.email, button.dataset.name);
+  else if (action === 'friends-copy') copyFriendsLink();
   else if (action === 'statistics') openStatistics();
   else if (action === 'songs') openSongs();
   else if (action === 'song-open') openSong(button.dataset.song);
@@ -3353,6 +3406,7 @@ document.addEventListener('submit', (event) => {
   else if (event.target.id === 'song-paste-form') { event.preventDefault(); readSong({ title: document.querySelector('#song-title').value, artist: document.querySelector('#song-artist').value, lyrics: document.querySelector('#song-lyrics').value }); }
   else if (event.target.matches('.custom-count')) { event.preventDefault(); submitCustomCount(event.target); }
   else if (event.target.id === 'vb-form') { event.preventDefault(); submitVerbForm(); }
+  else if (event.target.id === 'friend-form') { event.preventDefault(); saveFriend(document.querySelector('#friend-email').value, document.querySelector('#friend-name').value); }
 });
 document.addEventListener('keydown', (event) => {
   if (event.defaultPrevented || event.repeat || aboutDialog.open || dialog.open || busy || loading || locked()) return;
@@ -3415,6 +3469,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'listen' || screen === 'read') enterStream();
   else if (screen === 'mix' || screen === 'focus') enterMixed();
   else if (screen === 'mistakes') loadMistakes();
+  else if (screen === 'friends') loadFriends();
   else if (screen === 'walkman') loadTape();
   else if (screen === 'statistics') loadStatistics();
   else if (screen === 'songs') loadSongs();

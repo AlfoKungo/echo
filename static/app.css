@@ -411,3 +411,9 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vs-pct{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
 .vs-track{height:10px;border-radius:5px;background:var(--frame);overflow:hidden}.vs-track span{display:block;height:100%;background:var(--violet);border-radius:5px}
 .vs-row.low .vs-track span{background:var(--danger)}.vs-row.none .vs-lbl,.vs-row.none .vs-pct{color:var(--dim)}
+
+/* Friends (the owner's Echo) and the signed-in line (the friends' Echo). */
+.friend-form{display:grid;grid-template-columns:1fr;gap:6px;margin:6px 0 22px}.friend-form label{font-size:13px;color:var(--muted)}.friend-form input{font:inherit;padding:12px 14px;border-radius:12px;border:1px solid var(--frame);background:var(--card);color:var(--ink)}.friend-form .primary{margin-top:8px}
+.friends .st-rows li{display:flex;align-items:center;gap:12px}.friends .st-rows .name{flex:1;min-width:0}.friends .st-rows small{overflow-wrap:anywhere}
+.friends-link{margin:24px 0;display:grid;gap:8px}.friends-link p{margin:0;font-size:13px;color:var(--muted)}.friends-link code{overflow-wrap:anywhere;color:var(--violet)}
+.signed-in{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px;padding:10px 12px;border:1px solid var(--frame);border-radius:12px}
