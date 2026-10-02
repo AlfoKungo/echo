@@ -207,15 +207,15 @@ describe('verb drills', () => {
 
   test('the Walkman verb tape holds every form of the chosen tenses, shaky ones early, and records every tense and form', () => {
     const drills = fixture();
-    drills.mark({ requestId: 'w1', verbId: 'v-aller', tense: 'pres', person: 3, knew: false });
+    drills.answer({ requestId: 'w1', verbId: 'v-aller', tense: 'pres', person: 3, given: 'xyz' });
     const forms = drills.walkmanForms(['pres', 'fut']);
     const formsPerVerb = (id: string) => persons(verb(id)).length * 2;
     expect(forms.length).toBe(Object.keys(tables).reduce((sum, id) => sum + formsPerVerb(id), 0));
     expect(new Set(forms.map((form) => form.tense))).toEqual(new Set(['pres', 'fut']));
     expect(forms.find((form) => form.verbId === 'v-aller' && form.tense === 'fut' && form.person === 3)!.said).toBe('nous irons');
-    // A shaky form comes before a solid one far more often than not.
-    drills.mark({ requestId: 'w2', verbId: 'v-parler', tense: 'pres', person: 0, knew: true });
-    drills.mark({ requestId: 'w3', verbId: 'v-parler', tense: 'pres', person: 0, knew: true });
+    // A form typed wrong comes before one typed right twice far more often than not.
+    drills.answer({ requestId: 'w2', verbId: 'v-parler', tense: 'pres', person: 0, given: 'je parle' });
+    drills.answer({ requestId: 'w3', verbId: 'v-parler', tense: 'pres', person: 0, given: 'je parle' });
     const at = (order: typeof forms, verbId: string, person: number) => order.findIndex((form) => form.verbId === verbId && form.tense === 'pres' && form.person === person);
     const shakyFirst = Array.from({ length: 20 }, () => drills.walkmanForms(['pres', 'fut'])).filter((order) => at(order, 'v-aller', 3) < at(order, 'v-parler', 0)).length;
     expect(shakyFirst).toBeGreaterThan(16);
@@ -225,7 +225,7 @@ describe('verb drills', () => {
     expect(phrases.english).toEqual(['the I form', 'the you form', 'the he or she form', 'the we form', 'the you plural form', 'the they-form']);
   });
 
-  test('statistics rebuild the forms of each day, carry quiet days over, and split the last two weeks by tense, person and kind', () => {
+  test('statistics score each form by day, typed answers weighing more than marks, and split the last two weeks by tense, person and kind', () => {
     const drills = fixture();
     const mark = (id: string, person: number, knew: boolean, tense: 'pres' | 'fut' = 'pres') => drills.mark({ requestId: `${id}`, verbId: 'v-parler', tense, person, knew });
     clock.value = new Date(2026, 8, 21, 10);
@@ -235,19 +235,28 @@ describe('verb drills', () => {
     mark('d', 5, true);
     clock.value = new Date(2026, 8, 23, 10);
     mark('e', 3, true); mark('f', 0, false, 'fut');
+    drills.answer({ requestId: 'g', verbId: 'v-parler', tense: 'pres', person: 4, given: 'xyz' });
     clock.value = new Date(2026, 8, 24, 10);
     const stats = drills.statistics();
-    expect(stats.history).toEqual([
-      { day: '2026-09-21', solid: 1, getting: 1, shaky: 1 },
-      { day: '2026-09-22', solid: 1, getting: 1, shaky: 1 },
-      { day: '2026-09-23', solid: 1, getting: 2, shaky: 1 },
-      { day: '2026-09-24', solid: 1, getting: 2, shaky: 1 },
+    expect(stats.forms).toMatchObject({ solid: 1, getting: 2, shaky: 2, practised: 5 });
+    expect(stats.scores.days.map((day) => [day.day, day.practised, day.bins.reduce((sum, count) => sum + count, 0)])).toEqual([
+      ['2026-09-21', 3, 3], ['2026-09-22', 3, 3], ['2026-09-23', 5, 5], ['2026-09-24', 5, 5],
     ]);
-    expect(stats.forms).toMatchObject({ solid: 1, getting: 2, shaky: 1, practised: 4 });
-    expect(stats.tenses.pres).toEqual({ right: 4, total: 5 });
+    // Points are the day's own: +1 a mark known, -2 one missed, -3 a typed miss.
+    const day = (date: string) => stats.scores.points.find((entry) => entry.day === date);
+    expect(day('2026-09-21')).toEqual({ day: '2026-09-21', gained: 3, lost: 2 });
+    expect(day('2026-09-23')).toEqual({ day: '2026-09-23', gained: 1, lost: 5 });
+    expect(stats.scores.points).toHaveLength(14);
+    expect(stats.scores.hardest.slice(0, 2).map((form) => form.form)).toEqual(['vous parlez', 'je parlerai']);
+    expect(stats.scores.hardest[0]!.score).toBeLessThan(-2.5);
+    expect(stats.scores.tenses.fut.forms).toBe(1);
+    expect(stats.scores.tenses.imp).toEqual({ average: null, forms: 0 });
+    expect(stats.scores.people[4]!.forms).toBe(1);
+    expect(drills.scoresOn('2026-09-21').map((form) => form.form)).toEqual(['nous parlons', 'ils parlent', 'je parle']);
+    expect(stats.tenses.pres).toEqual({ right: 4, total: 6 });
     expect(stats.tenses.fut).toEqual({ right: 0, total: 1 });
     expect(stats.people[3]).toEqual({ right: 1, total: 2 });
-    expect(stats.kinds.find((kind) => kind.tense === 'pres')).toMatchObject({ group: 'er', title: 'Regular -er', right: 4, total: 5 });
+    expect(stats.kinds.find((kind) => kind.tense === 'pres')).toMatchObject({ group: 'er', title: 'Regular -er', right: 4, total: 6 });
     clock.value = new Date(2026, 9, 20, 10);
     expect(drills.statistics().tenses.pres).toEqual({ right: 0, total: 0 });
   });

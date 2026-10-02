@@ -399,10 +399,8 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-card-hint{text-align:center;margin-top:12px}.vb-cards .vb-para{margin-top:18px}
 .vs-seg{display:flex;border-radius:5px;overflow:hidden;background:var(--frame)}
 .vs-seg .s{background:var(--violet)}.vs-seg .g{background:#6e6aa8}.vs-seg .w{background:var(--danger)}
-.vs-days{display:grid;gap:3px;align-items:end;height:120px;margin-top:6px}
-.vs-day{display:flex;flex-direction:column;justify-content:flex-end;height:100%;padding:0;border-radius:4px;overflow:hidden}
-.vs-day span{display:block;width:100%}.vs-day .s{background:var(--violet)}.vs-day .g{background:#6e6aa8}.vs-day .w{background:var(--danger)}
-.vs-day[aria-pressed=true]{box-shadow:0 0 0 1px var(--frame);background:var(--card-hover)}
+/* A row that opens something (Hardest forms): the whole row is the button, laid out like the others. */
+.st-rows li:has(> .st-row-link){padding:0}.st-row-link{display:flex;align-items:center;gap:12px;width:100%;padding:11px 2px;text-align:left}
 .vs-label{font-size:13px;color:var(--muted);margin:18px 0 8px}
 .vs-rows{display:flex;flex-direction:column;gap:9px}
 .vs-row{display:grid;grid-template-columns:118px 1fr 44px;gap:10px;align-items:center;font-size:15px;width:100%;padding:0;text-align:left}

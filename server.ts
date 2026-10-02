@@ -528,6 +528,8 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/verbs/cards' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.cards(data as never) }); }
     if (path === '/api/verbs/mark' && req.method === 'POST') { const data = await body(req); return json(verbs.mark(data as never)); }
     if (path === '/api/verbs/answer' && req.method === 'POST') { const data = await body(req); return json(verbs.answer(data as never)); }
+    const verbScoresDay = path.match(/^\/api\/verbs\/scores\/(\d{4}-\d{2}-\d{2})$/);
+    if (verbScoresDay && req.method === 'GET') return json({ forms: verbs.scoresOn(verbScoresDay[1]!) });
     if (path === '/api/verbs/next-table' && req.method === 'POST') { const data = await body(req); return json(verbs.nextTable(data as never)); }
     if (path === '/api/verbs/table' && req.method === 'POST') { const data = await body(req); return json(verbs.table(data as never)); }
     if (path === '/api/verbs/ear' && req.method === 'POST') { const data = await body(req); return json({ questions: verbs.earRound(data as never) }); }

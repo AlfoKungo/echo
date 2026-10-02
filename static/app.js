@@ -1505,11 +1505,12 @@ function toggleStatsPlay() {
   }, 700);
   drawScores();
 }
-// The Verbs part of Statistics: forms now, the same at the end of each day (the last 30), and the last two weeks'
-// answers by tense, person and kind of verb. vStatsAt is the day shown, the last being today.
-let vStatsAt = -1, vStatsPlay = 0;
-const VS_DAYS = 30;
-const vsDays = () => (statistics?.verbs?.history ?? []).slice(-VS_DAYS);
+// The Verbs part of Statistics: forms now; their scores at the end of each day, with the day shown at vScoreAt (-1:
+// today), the bar picked and its list; the points of the last two weeks; and answers and scores by tense and person.
+let vScoreAt = -1, vScorePlay = 0, vScoreBin = null, vScoreOpen = true, vPointsDay = '';
+const vScoreDayForms = new Map(); // day → its forms with their scores then, or 'loading'
+const vsDays = () => statistics?.verbs?.scores.days ?? [];
+const vsIndex = () => vScoreAt < 0 ? vsDays().length - 1 : vScoreAt;
 const vsSeg = ({ solid, getting, shaky }, height = 10) => { const all = solid + getting + shaky || 1; return `<div class="vs-seg" style="height:${height}px"><span class="s" style="width:${solid / all * 100}%"></span><span class="g" style="width:${getting / all * 100}%"></span><span class="w" style="width:${shaky / all * 100}%"></span></div>`; };
 const vsLegend = '<div class="st-legend"><span><i style="background:var(--violet)"></i>solid</span><span><i style="background:#6e6aa8"></i>getting there</span><span><i style="background:var(--danger)"></i>shaky</span></div>';
 function vsRow(label, sub, cell, action = '') {
@@ -1518,32 +1519,89 @@ function vsRow(label, sub, cell, action = '') {
   const tone = share === null ? ' none' : share < 50 ? ' low' : '';
   return action ? `<button class="vs-row${tone}" ${action}>${inner}</button>` : `<div class="vs-row${tone}">${inner}</div>`;
 }
-function verbTimeHTML() {
-  const days = vsDays(), at = vStatsAt < 0 ? days.length - 1 : vStatsAt, shown = days[at], today = at === days.length - 1;
-  const tallest = Math.max(1, ...days.map((day) => day.solid + day.getting + day.shaky));
-  const bars = days.map((day, index) => `<button class="vs-day" data-action="stats-vday" data-index="${index}" aria-pressed="${index === at}" aria-label="${esc(statsDayLabel(day.day))}: ${day.solid} solid, ${day.getting} getting there, ${day.shaky} shaky"><span class="w" style="height:${day.shaky / tallest * 100}%"></span><span class="g" style="height:${day.getting / tallest * 100}%"></span><span class="s" style="height:${day.solid / tallest * 100}%"></span></button>`).join('');
-  const first = days[0];
-  const change = shown.solid - first.solid;
-  return `<p class="st-big"><strong>${shown.solid}</strong> forms solid</p><p class="st-sub">${today ? 'today' : `at the end of ${esc(statsDayLabel(shown.day))}`} · ${shown.getting} getting there, ${shown.shaky} shaky${days.length > 1 && change ? ` · ${change > 0 ? '+' : '−'}${Math.abs(change)} since ${esc(dayLabel(`${first.day}T12:00`))}` : ''}</p>
-    <div class="vs-days" style="grid-template-columns:repeat(${days.length},1fr)">${bars}</div>
-    <div class="st-when"><button class="icon" data-action="stats-vstep" data-step="-1" aria-label="Day before" ${at === 0 ? 'disabled' : ''}>‹</button><p class="st-when-label" role="status">${today ? `Today<small>${esc(statsDayLabel(shown.day))}</small>` : `${esc(statsDayLabel(shown.day))}<small>end of the day</small>`}</p><button class="icon" data-action="stats-vstep" data-step="1" aria-label="Day after" ${today ? 'disabled' : ''}>›</button><button class="icon" data-action="stats-vplay" aria-label="${vStatsPlay ? 'Stop' : 'Play from your first day'}" ${days.length > 1 ? '' : 'disabled'}>${vStatsPlay ? '❚❚' : '▶'}</button></div>`;
+function verbScoresHTML() {
+  const days = vsDays(), at = vsIndex(), shown = days[at], today = days.at(-1), past = at < days.length - 1;
+  // One scale for every day, so bars grow as the forms did.
+  const tallest = Math.max(1, ...days.flatMap((day) => day.bins));
+  const bars = STATS_BINS.map((bin, index) => {
+    const tone = bin < 0 ? 'neg' : bin === 0 ? 'zero' : 'pos';
+    const ghost = past ? `<span class="ghost" style="height:${today.bins[index] / tallest * 100}%"></span>` : '';
+    return `<button class="st-bar ${tone}" data-action="stats-vbin" data-bin="${bin}" aria-pressed="${vScoreBin === bin}" aria-label="Score ${signed(bin)}: ${shown.bins[index]} forms">${ghost}<span class="know" style="height:${shown.bins[index] / tallest * 100}%"></span></button>`;
+  }).join('');
+  return `<p class="st-big"><strong>${shown.solid}</strong> ${shown.solid === 1 ? 'form' : 'forms'} scoring +3 or more</p>
+      <p class="st-sub">${shown.shaky} at −2 or less, out of ${shown.practised} you ${past ? 'had' : 'have'} practised.</p>
+      <div class="st-hist">${bars}</div>
+      <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
+      <div class="st-legend"><span><i class="know"></i>verb forms</span>${past ? '<span><i class="ghost"></i>today</span>' : ''}</div>`;
 }
-function drawVerbTime() { const block = document.querySelector('#st-verb-time'); if (screen === 'statistics' && block) block.innerHTML = verbTimeHTML(); }
-function showVerbDay(index) { vStatsAt = Math.max(0, Math.min(vsDays().length - 1, index)); drawVerbTime(); }
-function stopVerbPlay() { clearInterval(vStatsPlay); vStatsPlay = 0; }
+function verbScoresWhenHTML() {
+  const days = vsDays(), at = vsIndex(), shown = days[at], past = at < days.length - 1;
+  const label = past ? `${esc(statsDayLabel(shown.day))}<small>end of the day</small>` : `Today<small>${esc(statsDayLabel(shown.day))}</small>`;
+  return `<button class="icon" data-action="stats-vstep" data-step="-1" aria-label="Day before" ${at === 0 ? 'disabled' : ''}>‹</button><p class="st-when-label" role="status">${label}</p><button class="icon" data-action="stats-vstep" data-step="1" aria-label="Day after" ${past ? '' : 'disabled'}>›</button><button class="icon" data-action="stats-vplay" aria-label="${vScorePlay ? 'Stop' : 'Play from your first day'}">${vScorePlay ? '❚❚' : '▶'}</button>`;
+}
+function verbScoresAfterHTML() {
+  const days = vsDays(), at = vsIndex(), shown = days[at], today = days.at(-1), past = at < days.length - 1;
+  const change = (value) => `<strong>${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(value)}</strong>`;
+  const delta = past ? `<p class="st-delta">Since then: ${change(today.solid - shown.solid)} at +3 or more, ${change(today.shaky - shown.shaky)} at −2 or less.</p>` : '';
+  if (vScoreBin === null) return delta;
+  const forms = vScoreDayForms.get(shown.day);
+  if (forms === undefined) loadVerbScoreDay(shown.day);
+  const chosen = Array.isArray(forms) ? forms.filter((form) => statsBinOf(form.score) === vScoreBin) : null;
+  const binLabel = vScoreBin === -8 ? '−8 or lower' : vScoreBin === 8 ? '8 or higher' : signed(vScoreBin);
+  const count = chosen ? ` · ${chosen.length} ${chosen.length === 1 ? 'form' : 'forms'}` : '';
+  const list = !vScoreOpen ? '' : !chosen ? '<p class="st-cap" role="status">Loading that day’s forms…</p>' : chosen.length ? `<ol>${chosen.map((form) => `<li><span class="fr" lang="fr">${frEsc(form.form)}</span><span class="en">${esc(form.inf)} · ${esc(form.tenseName)}</span></li>`).join('')}</ol>` : '';
+  return `${delta}<div class="st-bin"><button class="st-bin-head" data-action="stats-vlist" aria-expanded="${vScoreOpen}"><span>Score ${binLabel}${count}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
+}
+async function loadVerbScoreDay(day) {
+  vScoreDayForms.set(day, 'loading');
+  try { vScoreDayForms.set(day, (await api(`api/verbs/scores/${day}`)).forms); }
+  catch (error) { vScoreDayForms.delete(day); notice = { message: error.message }; render(); return; }
+  drawVerbScores();
+}
+// Redraws the score block in place, so the slider keeps its drag and the page its scroll.
+function drawVerbScores() {
+  if (screen !== 'statistics') return;
+  const view = document.querySelector('#vs-scores'), when = document.querySelector('#vs-when'), after = document.querySelector('#vs-scores-after'), slider = document.querySelector('#vs-slider');
+  if (view) view.innerHTML = verbScoresHTML();
+  if (when) when.innerHTML = verbScoresWhenHTML();
+  if (after) after.innerHTML = verbScoresAfterHTML();
+  if (slider) slider.value = String(vsIndex());
+}
+function showVerbDay(index) { vScoreAt = Math.max(0, Math.min(vsDays().length - 1, index)); if (vScoreAt === vsDays().length - 1) vScoreAt = -1; drawVerbScores(); }
+function chooseVerbBin(bin) { vScoreBin = vScoreBin === bin ? null : bin; vScoreOpen = true; drawVerbScores(); }
+function stopVerbPlay() { clearInterval(vScorePlay); vScorePlay = 0; }
 function toggleVerbPlay() {
-  if (vStatsPlay) { stopVerbPlay(); drawVerbTime(); return; }
-  vStatsAt = 0;
-  vStatsPlay = setInterval(() => {
-    if (screen !== 'statistics' || vStatsAt >= vsDays().length - 1) { stopVerbPlay(); drawVerbTime(); return; }
-    vStatsAt += 1; drawVerbTime();
+  if (vScorePlay) { stopVerbPlay(); drawVerbScores(); return; }
+  vScoreAt = 0;
+  vScorePlay = setInterval(() => {
+    if (screen !== 'statistics' || vsIndex() >= vsDays().length - 1) { stopVerbPlay(); drawVerbScores(); return; }
+    vScoreAt += 1; drawVerbScores();
   }, 700);
-  drawVerbTime();
+  drawVerbScores();
+}
+function verbPointsHTML() {
+  const days = statistics.verbs.scores.points, today = days.at(-1);
+  const shown = days.find((day) => day.day === vPointsDay) ?? today;
+  const net = (day) => day.gained - day.lost;
+  const top = Math.max(0, ...days.map(net)), bottom = Math.max(0, ...days.map((day) => -net(day)));
+  const rows = top + bottom ? `grid-template-rows:${top}fr ${bottom}fr` : '';
+  const bars = days.map((day) => `<button class="st-pt" style="${rows}" data-action="stats-vpoints" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(net(day))} points"><span class="up"><span style="height:${top ? Math.max(0, net(day)) / top * 100 : 0}%"></span></span><span class="down"><span style="height:${bottom ? Math.max(0, -net(day)) / bottom * 100 : 0}%"></span></span></button>`).join('');
+  const label = shown.day === today.day ? 'today' : `on ${new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`))}`;
+  return `<p class="st-big"><strong>${points(net(shown))}</strong> ${esc(label)}</p>
+      <p class="st-sub">${shown.gained || shown.lost ? `+${shown.gained} gained, −${shown.lost} lost` : 'Nothing practised'}</p>
+      <div class="st-points">${bars}</div><div class="st-days-axis">${days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>`;
+}
+// Average score rows (by tense, by person), tagged like the categories; the bar shows how many forms are behind it.
+function verbScoreRows(entries) {
+  const most = Math.max(1, ...entries.map(([, cell]) => cell.forms));
+  const feel = (average) => average === null ? '' : average < 0 ? 'shaky' : average < 2 ? 'steady' : 'solid';
+  // Rounded first, so an average of -0.04 reads 0.0 and is steady, not shaky.
+  return entries.map(([label, cell]) => { const average = cell.average === null ? null : Math.round(cell.average * 10) / 10 || 0; return `<li><div class="name"><p lang="fr">${esc(label)}</p><small>${cell.forms ? `${cell.forms} ${cell.forms === 1 ? 'form' : 'forms'} · average ${average > 0 ? '+' : average < 0 ? '−' : ''}${Math.abs(average).toFixed(1)}` : 'not practised yet'}</small></div><div class="st-mini"><span style="width:${cell.forms / most * 100}%"></span></div><span class="st-tag ${feel(average)}">${feel(average)}</span></li>`; }).join('');
 }
 function verbStatsHTML() {
   const verbs = statistics.verbs;
   if (!verbs) return '';
-  const { forms } = verbs;
+  const { forms, scores } = verbs;
   if (!forms.practised) return `<div class="st-block"><h2>Verb forms</h2><p class="st-cap">Practise in Verbs and your forms show up here: one verb, in one tense, for one person.</p></div>`;
   const tenses = Object.entries(VB_TENSES).map(([tense, name]) => vsRow(name, verbs.tenses[tense].total ? `${verbs.tenses[tense].total} answers` : 'not practised lately', verbs.tenses[tense], `data-action="vb-tense-page" data-tense="${tense}"`)).join('');
   const people = VB_PERSONS.map((person, index) => vsRow(person, `${verbs.people[index].total} answers`, verbs.people[index])).join('');
@@ -1553,11 +1611,20 @@ function verbStatsHTML() {
       <p class="st-big"><strong>${forms.solid}</strong> forms solid</p>
       <p class="st-sub">${forms.getting} getting there and ${forms.shaky} shaky, of ${forms.practised} you’ve practised — out of ${forms.total.toLocaleString('en')} forms of your verbs in four tenses.</p>
       ${vsSeg(forms, 14)}${vsLegend}</div>
-    <div class="st-block">${stHead('Verb forms over time', 'Each bar is your practised forms at the end of a day. Tap a day, or press ▶, to watch them firm up.')}<div id="st-verb-time">${verbTimeHTML()}</div></div>
+    <div class="st-block">${stHead('Verb form scores', 'Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or Walkman mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Quick forms, Cards, Next table and the Walkman verb tape bring the left side most. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.')}
+      <div id="vs-scores">${verbScoresHTML()}</div>
+      ${vsDays().length > 1 ? `<div class="st-when" id="vs-when">${verbScoresWhenHTML()}</div>
+      <input type="range" class="st-slider" id="vs-slider" min="0" max="${vsDays().length - 1}" step="1" value="${vsIndex()}" aria-label="Choose a day">
+      <div class="st-ticks" aria-hidden="true">${vsDays().map((day, index, all) => `<span>${index === all.length - 1 ? 'today' : (all.length - 1 - index) % 2 === 0 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>` : ''}
+      <div id="vs-scores-after">${verbScoresAfterHTML()}</div></div>
+    <div class="st-block">${stHead('Verb points, last two weeks', 'The points your verb scores are made of: +2 or −3 for a typed answer, +1 or −2 for a Cards or Walkman mark. Each bar is the day’s total: above the line when you gained more than you lost, below it when you lost more. Tap a day to see its total.')}${verbPointsHTML()}</div>
     ${answered ? `<div class="st-block">${stHead('Verb answers, last two weeks', 'The share you got right. The kinds are the groups on each tense page: tap a tense or a kind to read about it.')}
       <p class="vs-label">By tense</p><div class="vs-rows">${tenses}</div>
       <p class="vs-label">By person</p><div class="vs-rows">${people}</div>
-      <p class="vs-label">By kind of verb</p><div class="vs-rows">${kinds}</div></div>` : ''}`;
+      <p class="vs-label">By kind of verb</p><div class="vs-rows">${kinds}</div></div>` : ''}
+    <div class="st-block">${stHead('By tense', 'Shaky, steady or solid is the average score of the forms you have practised in that tense.')}<ol class="st-rows">${verbScoreRows(Object.entries(VB_TENSES).map(([tense, name]) => [name, scores.tenses[tense]]))}</ol></div>
+    <div class="st-block">${stHead('By person', 'Shaky, steady or solid is the average score of your forms for that person, across every verb and tense.')}<ol class="st-rows">${verbScoreRows(VB_PERSONS.map((person, index) => [person, scores.people[index]]))}</ol></div>
+    <div class="st-block">${stHead('Hardest forms right now', 'The five forms with the lowest score. Tap one to fill in its whole table.')}<ol class="st-rows">${scores.hardest.map((form) => `<li><button class="st-row-link" data-action="vb-cell" data-verb="${esc(form.verbId)}" data-tense="${form.tense}"><div class="name"><p lang="fr" class="fr">${frEsc(form.form)}</p><small>${esc(form.inf)} · ${esc(form.tenseName)}</small></div><span class="st-tag shaky">missed ${form.misses}×</span></button></li>`).join('')}</ol></div>`;
 }
 function renderStatistics() {
   const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your French words are doing. Nothing here is a target.</p>`;
@@ -1821,7 +1888,7 @@ async function loadStatistics() {
   try {
     statistics = await api('api/statistics');
     stopStatsPlay(); statsAt = statistics.history.length - 1; statsDayWords.clear();
-    stopVerbPlay(); vStatsAt = -1;
+    stopVerbPlay(); vScoreAt = -1; vScoreBin = null; vScoreOpen = true; vPointsDay = ''; vScoreDayForms.clear();
     // The weakest bar is chosen to begin with, its list closed; tapping a bar opens its list.
     statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
     statsOpen = false;
@@ -3177,9 +3244,11 @@ document.addEventListener('click', (event) => {
   else if (action === 'stats-list') { statsOpen = !statsOpen; drawScores(); }
   else if (action === 'stats-day') { stopStatsPlay(); showStatsDay(statsAt + Number(button.dataset.step)); }
   else if (action === 'stats-play') toggleStatsPlay();
-  else if (action === 'stats-vday') { stopVerbPlay(); showVerbDay(Number(button.dataset.index)); }
-  else if (action === 'stats-vstep') { stopVerbPlay(); showVerbDay((vStatsAt < 0 ? vsDays().length - 1 : vStatsAt) + Number(button.dataset.step)); }
+  else if (action === 'stats-vbin') chooseVerbBin(Number(button.dataset.bin));
+  else if (action === 'stats-vlist') { vScoreOpen = !vScoreOpen; drawVerbScores(); }
+  else if (action === 'stats-vstep') { stopVerbPlay(); showVerbDay(vsIndex() + Number(button.dataset.step)); }
   else if (action === 'stats-vplay') toggleVerbPlay();
+  else if (action === 'stats-vpoints') { vPointsDay = button.dataset.day; render(); }
   else if (action === 'points-day') { pointsDay = button.dataset.day; render(); }
   else if (action === 'walkman') openWalkman();
   else if (action === 'sounds') { if (move('sounds')) loadSounds(); }
@@ -3234,6 +3303,7 @@ document.addEventListener('input', (event) => {
   if (event.target.id === 'vb-answer') verbDraft = event.target.value;
   if (event.target.dataset?.vbCell !== undefined) verbTable.answers[Number(event.target.dataset.vbCell)] = event.target.value;
   if (event.target.id === 'st-slider') { stopStatsPlay(); showStatsDay(Number(event.target.value)); }
+  if (event.target.id === 'vs-slider') { stopVerbPlay(); showVerbDay(Number(event.target.value)); }
 });
 document.addEventListener('submit', (event) => {
   if (event.target.id === 'goal-form') saveGoal(event);
