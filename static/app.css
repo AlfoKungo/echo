@@ -84,6 +84,10 @@ a.destination{color:inherit;text-decoration:none}.destination .symbol svg{displa
 .st{max-width:640px;margin:auto;padding-bottom:60px}
 .st-block{margin-top:34px}
 .st-block h2{font-size:13px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.st-head{position:relative;display:flex;align-items:flex-start;gap:4px}.st-head h2{flex:1}
+.st-info{flex:none;display:grid;place-items:center;width:30px;height:30px;margin:-7px -6px 0 0;border-radius:50%;color:var(--dim)}.st-info svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}.st-info[aria-expanded=true]{color:var(--violet)}
+/* The explanation floats over the chart below, so opening it moves nothing on the page. */
+.st-tip{position:absolute;top:24px;left:0;right:0;z-index:6;margin:0;padding:12px 14px;background:var(--card-hover);border:1px solid var(--frame);border-radius:12px;box-shadow:0 10px 28px #0008;font-size:14px;line-height:1.5;color:var(--ink)}
 .st-big{font-size:17px;color:var(--muted)}.st-big strong{font-size:40px;font-weight:550;letter-spacing:-1px;color:var(--ink);margin-right:6px;font-variant-numeric:tabular-nums}
 .st-sub{font-size:14px;color:var(--muted);margin:2px 0 18px}
 .st-cap{font-size:14px;color:var(--muted);margin:12px 0 0;line-height:1.5}

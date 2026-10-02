@@ -8,6 +8,7 @@ const speaker = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H
 const checkIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
 const crossIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6.5 6.5 11 11m0-11-11 11"/></svg>';
 const familyIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5.5" r="2.5"/><circle cx="5.5" cy="18" r="2.5"/><circle cx="18.5" cy="18" r="2.5"/><path d="M11 7.8 6.6 15.8M13 7.8l4.4 8M8 18h8"/></svg>';
+const infoIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/></svg>';
 const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>';
 const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 // French sets a space before ? ! : ; and inside « »; a no-break space keeps the mark on its word's line.
@@ -1442,6 +1443,18 @@ function scoresViewHTML() {
       <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
       <div class="st-legend"><span><i class="know"></i>words you know</span><span><i class="learning"></i>still learning</span>${past ? '<span><i class="ghost"></i>today</span>' : ''}</div>`;
 }
+// A Statistics block's heading, with what it shows behind an ⓘ: tapping it opens the explanation in a bubble, and
+// tapping anywhere else closes it.
+const stHead = (title, help) => `<div class="st-head"><h2>${esc(title)}</h2><button class="st-info" data-action="st-info" aria-expanded="false" aria-label="What ${esc(title.toLowerCase())} shows">${infoIcon}</button><p class="st-tip" role="note" hidden>${esc(help)}</p></div>`;
+function closeStatsTips(except) {
+  for (const tip of document.querySelectorAll('.st-tip:not([hidden])')) if (tip !== except) { tip.hidden = true; tip.previousElementSibling?.setAttribute('aria-expanded', 'false'); }
+}
+function toggleStatsTip(button) {
+  const tip = button.nextElementSibling;
+  closeStatsTips(tip);
+  tip.hidden = !tip.hidden;
+  button.setAttribute('aria-expanded', String(!tip.hidden));
+}
 function scoresWhenHTML() {
   const history = statistics.history, shown = history[statsAt], past = statsAt < history.length - 1;
   const label = past ? `${esc(statsDayLabel(shown.day))}<small>end of the day</small>` : `Today<small>${esc(statsDayLabel(shown.day))}</small>`;
@@ -1459,7 +1472,7 @@ function scoresAfterHTML() {
   const count = chosen ? ` · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}` : '';
   const list = !statsOpen ? '' : !chosen ? '<p class="st-cap" role="status">Loading that day’s words…</p>' : chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr${genderClass(word.gender)}" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : '';
   const binList = statsBin === null ? '' : `<div class="st-bin"><button class="st-bin-head" data-action="stats-list" aria-expanded="${statsOpen}"><span>Score ${binLabel}${count}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
-  return `${delta}<p class="st-cap">Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. ${history.length > 1 ? 'Choose a day to see the chart as it was at the end of it; the dashed outline is today. ' : ''}Tap a bar to see its words.</p>
+  return `${delta}
       ${binList}`;
 }
 // Redraws the Word scores block in place, so the slider keeps its drag and the page its scroll.
@@ -1536,18 +1549,15 @@ function verbStatsHTML() {
   const people = VB_PERSONS.map((person, index) => vsRow(person, `${verbs.people[index].total} answers`, verbs.people[index])).join('');
   const kinds = verbs.kinds.map((kind) => vsRow(kind.title, `${VB_TENSES[kind.tense]} · ${kind.total} answers`, kind, `data-action="vb-tense-page" data-tense="${kind.tense}"`)).join('');
   const answered = verbs.people.some((cell) => cell.total);
-  return `<div class="st-block"><h2>Verb forms</h2>
+  return `<div class="st-block">${stHead('Verb forms', 'A form is one verb in one tense for one person. Solid: your last two answers right; shaky: your last one wrong. Cards, Quick forms and Whole table all count.')}
       <p class="st-big"><strong>${forms.solid}</strong> forms solid</p>
       <p class="st-sub">${forms.getting} getting there and ${forms.shaky} shaky, of ${forms.practised} you’ve practised — out of ${forms.total.toLocaleString('en')} forms of your verbs in four tenses.</p>
-      ${vsSeg(forms, 14)}${vsLegend}
-      <p class="st-cap">A form is one verb in one tense for one person. Solid: your last two answers right; shaky: your last one wrong. Cards, Quick forms and Whole table all count.</p></div>
-    <div class="st-block"><h2>Verb forms over time</h2><div id="st-verb-time">${verbTimeHTML()}</div>
-      <p class="st-cap">Each bar is your practised forms at the end of a day. Tap a day, or press ▶, to watch them firm up.</p></div>
-    ${answered ? `<div class="st-block"><h2>Verb answers, last two weeks</h2>
+      ${vsSeg(forms, 14)}${vsLegend}</div>
+    <div class="st-block">${stHead('Verb forms over time', 'Each bar is your practised forms at the end of a day. Tap a day, or press ▶, to watch them firm up.')}<div id="st-verb-time">${verbTimeHTML()}</div></div>
+    ${answered ? `<div class="st-block">${stHead('Verb answers, last two weeks', 'The share you got right. The kinds are the groups on each tense page: tap a tense or a kind to read about it.')}
       <p class="vs-label">By tense</p><div class="vs-rows">${tenses}</div>
       <p class="vs-label">By person</p><div class="vs-rows">${people}</div>
-      <p class="vs-label">By kind of verb</p><div class="vs-rows">${kinds}</div>
-      <p class="st-cap">The share you got right. The kinds are the groups on each tense page: tap a tense or a kind to read about it.</p></div>` : ''}`;
+      <p class="vs-label">By kind of verb</p><div class="vs-rows">${kinds}</div></div>` : ''}`;
 }
 function renderStatistics() {
   const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your French words are doing. Nothing here is a target.</p>`;
@@ -1574,11 +1584,10 @@ function renderStatistics() {
   const rows = top + bottom ? `grid-template-rows:${top}fr ${bottom}fr` : '';
   const pointBars = statistics.days.map((day) => `<button class="st-pt" style="${rows}" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(net(day))} points"><span class="up"><span style="height:${top ? Math.max(0, net(day)) / top * 100 : 0}%"></span></span><span class="down"><span style="height:${bottom ? Math.max(0, -net(day)) / bottom * 100 : 0}%"></span></span></button>`).join('');
   const shownLabel = shown.day === today.day ? 'Today' : new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`));
-  const pointsBlock = `<div class="st-block"><h2>Points, last two weeks</h2>
+  const pointsBlock = `<div class="st-block">${stHead('Points, last two weeks', 'The points your word scores are made of: +2 for a word you knew and −3 for one you missed in Vocabulary, +0.5 for a word heard to the end on the Walkman, ✓ and ✗ on the Walkman counting the same as knowing or missing, and +1 or −1 for each Endless answer. Each bar is the day’s total: above the line when you gained more than you lost, below it when you lost more. Tap a day to see its total.')}
       <p class="st-big"><strong>${points(net(shown))}</strong> ${esc(shownLabel.toLowerCase() === 'today' ? 'today' : `on ${shownLabel}`)}</p>
       ${shown.gained || shown.lost ? '' : '<p class="st-sub">Nothing practised</p>'}
-      <div class="st-points">${pointBars}</div><div class="st-days-axis">${statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>
-      <p class="st-cap">The same points your word scores are made of: +2 for a word you knew, −3 for one you missed, +0.5 for a word heard to the end on the Walkman, and your ✓ and ✗ marks count like knowing or missing it. Each bar is the day's total: above the line when you gained more than you lost, below it when you lost more. Tap a day to see its total.</p></div>`;
+      <div class="st-points">${pointBars}</div><div class="st-days-axis">${statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div></div>`;
   // Each row is the share right per day, always out of 100%, with its two-week share beside the label.
   const accuracyRow = (label, counts) => {
     const right = counts.reduce((sum, count) => sum + count.right, 0), total = counts.reduce((sum, count) => sum + count.total, 0);
@@ -1591,16 +1600,15 @@ function renderStatistics() {
     return `<div class="st-acc-head"><span>${label}</span><strong>${total ? `${Math.round(right / total * 100)}%` : '—'}</strong></div><div class="st-days st-acc">${cells}</div>`;
   };
   const comprehensionDays = statistics.comprehensionDays ?? [];
-  const accuracyBlock = `<div class="st-block"><h2>Right answers, last two weeks</h2>
+  const accuracyBlock = `<div class="st-block">${stHead('Right answers, last two weeks', 'Each bar is the share of that day’s answers you got right, out of 100%; the number beside each row covers both weeks. In Listen and Read, an answer right with help counts as right.')}
       ${accuracyRow('Words', statistics.days.map((day) => ({ right: day.knew, total: day.knew + day.missed })))}
       ${accuracyRow('Listen', comprehensionDays.map((day) => day.listen))}
       ${accuracyRow('Read', comprehensionDays.map((day) => day.read))}
-      <div class="st-days-axis">${dayAxis}</div>
-      <p class="st-cap">Each bar is the share of that day’s answers you got right, out of 100%; the number beside each row covers both weeks. In Listen and Read, an answer right with help counts as right.</p></div>`;
+      <div class="st-days-axis">${dayAxis}</div></div>`;
   const level = (mode) => statistics.levels.find((entry) => entry.mode === mode)?.label ?? 'A1';
   const facts = [[level('listen'), 'Listen level'], [level('read'), 'Read level'], [statistics.answered, 'Listen & Read questions answered'], [statistics.grammarTopics, statistics.grammarTopics === 1 ? 'grammar topic practised' : 'grammar topics practised'], [statistics.walkmanHeard, 'words heard on the Walkman'], [counts.scheduled, 'known words waiting for review']];
   main.innerHTML = `${noticeHTML()}<section class="st">${header}
-    <div class="st-block"><h2>Word scores</h2>
+    <div class="st-block">${stHead('Word scores', `Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. ${statistics.history.length > 1 ? 'Choose a day to see the chart as it was at the end of it; the dashed outline is today. ' : ''}Tap a bar to see its words.`)}
       <div id="st-scores">${scoresViewHTML()}</div>
       ${statistics.history.length > 1 ? `<div class="st-when" id="st-when">${scoresWhenHTML()}</div>
       <input type="range" class="st-slider" id="st-slider" min="0" max="${statistics.history.length - 1}" step="1" value="${statsAt}" aria-label="Choose a day">
@@ -1610,7 +1618,7 @@ function renderStatistics() {
     ${accuracyBlock}
     <div class="st-block"><h2>Your ${total.toLocaleString('en')} words</h2><div class="st-stack">${stack}</div><div class="st-legend">${legend}</div></div>
     <div class="st-block"><h2>Hardest right now</h2>${hard}</div>
-    <div class="st-block"><h2>By category</h2><ol class="st-rows">${categories}</ol><p class="st-cap">Shaky, steady or solid is the average score of the words you’ve started there.</p></div>
+    <div class="st-block">${stHead('By category', 'Shaky, steady or solid is the average score of the words you’ve started there.')}<ol class="st-rows">${categories}</ol></div>
     <div class="st-block"><h2>Vocabulary answers, last two weeks</h2><div class="st-days">${days}</div><div class="st-days-axis">${dayAxis}</div>
       <div class="st-legend"><span><i style="background:var(--violet)"></i>knew it</span><span><i style="background:var(--danger)"></i>missed</span></div></div>
     ${verbStatsHTML()}
@@ -3046,6 +3054,8 @@ function retry() {
 document.addEventListener('click', (event) => {
   const button = event.target.closest('button'); if (button?.disabled) return;
   const action = button?.dataset.action;
+  if (action === 'st-info') { toggleStatsTip(button); return; }
+  if (!event.target.closest('.st-tip')) closeStatsTips();
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }
   if (action === 'audio-mode') { audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off'); if (!audioMode) stopAudio(); render(); return; }
   if (action === 'listen-mode') { listenMode = !listenMode; savePreference('echo.listen-mode', listenMode ? 'on' : 'off'); heardCard = ''; if (!listenMode) stopAudio(); render(); return; }
