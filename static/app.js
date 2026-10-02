@@ -1942,6 +1942,12 @@ let verbForms = null;      // { items, index, result, given, fetching, done }
 let verbCards = null;      // { items, index, size, revealed, marks: [], first: [] }
 let verbDraft = '';
 let verbTable = { verbId: '', tense: 'pres', answers: ['', '', '', '', '', ''], result: null };
+// Whole table either picks the next table from the room's verbs and tenses ('next') or lets you choose one ('choose');
+// a table opened from a verb's page is chosen for that visit only. recent: the tables just done, newest first.
+let vbTableMode = readPreference('echo.verbs-table-mode', 'next') === 'choose' ? 'choose' : 'next';
+let vbTableVisit = vbTableMode;
+let vbTableRecent = [];
+const VB_TABLE_GAP = 5;
 let verbEar = null;        // { questions, index, chose, result, right }
 let vbLastInput = '';
 let verbTensePage = '', verbTenseView = null; // the tense page shown, and api/verbs/tense/<tense>
@@ -2007,7 +2013,9 @@ function verbAction(action, button) {
   else if (action === 'vb-verb') openVerbPage(button.dataset.verb);
   else if (action === 'vb-practise-tense') { verbFormsOverride = { set: verbSet, verbIds: verbChosen, tenses: [button.dataset.tense] }; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-practise-verb') { verbFormsOverride = { set: 'chosen', verbIds: [button.dataset.verb], tenses: verbTenses }; if (move('verbs-forms', true)) startVerbForms(); }
-  else if (action === 'vb-table') openVerbTable();
+  else if (action === 'vb-table') { verbFormsOverride = null; openVerbTable(); }
+  else if (action === 'vb-table-mode') chooseVerbTableMode(button.dataset.value);
+  else if (action === 'vb-next-table') nextVerbTable();
   else if (action === 'vb-cell') openVerbTable(button.dataset.verb, button.dataset.tense);
   else if (action === 'vb-ear') { if (move('verbs-ear', true)) startVerbEar(); }
   else if (action === 'vb-next') nextVerbForm();
@@ -2207,13 +2215,37 @@ function nextVerbForm() {
 
 // ── Whole table ──
 function openVerbTable(verbId, tense) {
+  vbTableVisit = verbId ? 'choose' : vbTableMode;
+  if (vbTableVisit === 'next') { if (move('verbs-table', true)) nextVerbTable(); return; }
   const verbs = verbsInfo?.verbs ?? [];
   const fallback = verbsInfo?.worst[0]?.verbId || verbs.find((verb) => verb.started)?.id || verbs[0]?.id || '';
   verbTable = { verbId: verbId || verbTable.verbId || fallback, tense: tense || (verbTenses.includes(verbTable.tense) ? verbTable.tense : verbTenses[0]), answers: ['', '', '', '', '', ''], result: null };
   if (move('verbs-table', true)) render();
 }
+// Draws the next table from the room's settings, passing over the last few done.
+async function nextVerbTable() {
+  loading = true; notice = null; retryAction = null; render();
+  try {
+    const [next] = await Promise.all([
+      api('api/verbs/next-table', { method: 'POST', body: JSON.stringify({ ...vbSettings(), exclude: vbTableRecent }) }),
+      verbsInfo ? null : loadVerbs(true),
+    ]);
+    verbTable = { verbId: next.verbId, tense: next.tense, answers: ['', '', '', '', '', ''], result: null };
+  } catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-table' }; }
+  loading = false;
+  if (screen !== 'verbs-table') return;
+  render(); main.querySelector('#vb-cell-0, .vb-input')?.focus({ preventScroll: true });
+}
+function chooseVerbTableMode(mode) {
+  if (busy || loading || mode === vbTableVisit) return;
+  vbTableMode = vbTableVisit = mode; savePreference('echo.verbs-table-mode', mode);
+  if (mode === 'next') nextVerbTable(); else { verbTable = { ...verbTable, answers: ['', '', '', '', '', ''], result: null }; render(); }
+}
 function renderVerbTable() {
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Whole table</span></div>`;
+  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Whole table</span></div><div class="segmented vb-table-modes" role="group" aria-label="How the table is picked">${[['next', 'Next table'], ['choose', 'Choose']].map(([mode, label]) => `<button data-action="vb-table-mode" data-value="${mode}" aria-pressed="${vbTableVisit === mode}" ${busy || loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
+  // Back on this screen with no table drawn yet (a reload, say): draw one, unless the last try failed.
+  if (vbTableVisit === 'next' && !verbTable.verbId && !loading && !retryAction) { nextVerbTable(); return; }
+  if (vbTableVisit === 'next' && (loading || !verbTable.verbId)) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${loading ? '<div class="loading-state" role="status">Choosing a table…</div>' : ''}</section>`; return; }
   if (!verbsInfo) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}</section>`; loadVerbs(true).then(() => { if (screen === 'verbs-table') { if (!verbTable.verbId) verbTable.verbId = verbsInfo?.verbs[0]?.id || ''; render(); } }); return; }
   const verb = vbVerb(verbTable.verbId) ?? verbsInfo.verbs[0];
   if (!verb) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}<p class="caption">No verb tables yet.</p></section>`; return; }
@@ -2230,14 +2262,16 @@ function renderVerbTable() {
   }).join('');
   const summary = result ? `<div class="feedback ${result.right === result.total ? '' : 'warn'}" role="status"><strong>${result.right} of ${result.total}.</strong><p class="vb-why">${esc(result.rule)}</p>${paradigmHTML(result.paradigm)}</div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}
-    <div class="vb-grid-head"><label class="sr-only" for="vb-table-verb">Verb</label><select id="vb-table-verb">${options}</select><label class="sr-only" for="vb-table-tense">Tense</label><select id="vb-table-tense">${tenses}</select></div>
-    <p class="caption">${esc(verb.en)}</p>
+    ${vbTableVisit === 'choose' ? `<div class="vb-grid-head"><label class="sr-only" for="vb-table-verb">Verb</label><select id="vb-table-verb">${options}</select><label class="sr-only" for="vb-table-tense">Tense</label><select id="vb-table-tense">${tenses}</select></div>
+    <p class="caption">${esc(verb.en)}</p>` : `<div class="vb-prompt vb-table-prompt"><div class="vb-verb" lang="fr">${frEsc(verb.inf)}</div><div class="vb-meta">${esc(verb.en)}</div><span class="vb-tense">${esc(VB_TENSES[verbTable.tense])}</span></div>`}
     <div class="vb-rows">${rows}</div>${vbAccentsHTML()}
-    <div class="summary-actions"><button class="primary" data-action="vb-check-table" ${busy ? 'disabled' : ''}>${busy ? 'Checking…' : result ? 'Check again' : 'Check'}</button></div>${summary}</section>`;
+    <div class="summary-actions">${vbTableVisit === 'next' && result ? `<button class="primary" data-action="vb-next-table">Next table</button><button class="secondary" data-action="vb-check-table" ${busy ? 'disabled' : ''}>Check again</button>` : `<button class="primary" data-action="vb-check-table" ${busy ? 'disabled' : ''}>${busy ? 'Checking…' : result ? 'Check again' : 'Check'}</button>`}</div>${summary}</section>`;
 }
 async function checkVerbTable() {
   if (busy) return;
   busy = true; render();
+  const done = `${verbTable.verbId}|${verbTable.tense}`;
+  vbTableRecent = [done, ...vbTableRecent.filter((entry) => entry !== done)].slice(0, VB_TABLE_GAP);
   try { verbTable.result = await api('api/verbs/table', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: verbTable.verbId, tense: verbTable.tense, answers: verbTable.answers }) }); }
   catch (error) { notice = { message: error.message }; }
   busy = false;
@@ -3039,6 +3073,7 @@ function retry() {
   else if (action.type === 'sound') startSoundRound();
   else if (action.type === 'verbs') loadVerbs();
   else if (action.type === 'verbs-forms') startVerbForms();
+  else if (action.type === 'verbs-table') nextVerbTable();
   else if (action.type === 'endless') fillEndless();
   else if (action.type === 'verbs-ear') startVerbEar();
   else if (action.type === 'verbs-cards') startVerbCards();

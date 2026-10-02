@@ -378,6 +378,7 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-pro{color:var(--muted);font-size:16px;text-align:right}
 .vb-trow input{font-size:18px;padding:10px 12px;min-width:0}.vb-trow input.ok{border-color:var(--violet)}.vb-trow input.bad{border-color:var(--danger)}
 .vb-mark{text-align:center;font-size:16px}.vb-mark.ok{color:var(--violet)}.vb-mark.bad{color:var(--danger)}
+.vb-table-modes{margin:0 0 18px}
 .vb-fix{grid-column:2/4;font-size:13px;color:var(--danger);margin:-4px 0 2px 2px}.vb-fix.vb-fix-ok{color:var(--muted)}
 .vb .summary-actions{margin-top:18px}
 .vb-name{padding:0;font-size:inherit;color:var(--ink);text-align:left;text-decoration:underline;text-decoration-color:var(--frame);text-underline-offset:3px}

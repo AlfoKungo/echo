@@ -252,6 +252,25 @@ describe('verb drills', () => {
     expect(drills.statistics().tenses.pres).toEqual({ right: 0, total: 0 });
   });
 
+  test('the next whole table comes from the chosen verbs and tenses, a shaky one far more often, never one just done', () => {
+    const drills = fixture();
+    const settings = { set: 'chosen' as const, verbIds: ['v-parler', 'v-aller'], tenses: ['pres', 'fut'] as ('pres' | 'pc' | 'imp' | 'fut')[] };
+    const parle = ['je parle', 'tu parles', 'il parle', 'nous parlons', 'vous parlez', 'ils parlent'];
+    for (let person = 0; person < 6; person++) {
+      drills.answer({ requestId: `s${person}`, verbId: 'v-aller', tense: 'fut', person, given: 'xyz' });
+      drills.answer({ requestId: `ok${person}a`, verbId: 'v-parler', tense: 'pres', person, given: parle[person]! });
+      drills.answer({ requestId: `ok${person}b`, verbId: 'v-parler', tense: 'pres', person, given: parle[person]! });
+    }
+    const picks = Array.from({ length: 200 }, () => drills.nextTable(settings));
+    expect(picks.every((pick) => settings.verbIds.includes(pick.verbId) && settings.tenses.includes(pick.tense))).toBe(true);
+    const count = (verbId: string, tense: string) => picks.filter((pick) => pick.verbId === verbId && pick.tense === tense).length;
+    expect(count('v-aller', 'fut')).toBeGreaterThan(5 * count('v-parler', 'pres'));
+    for (let draw = 0; draw < 20; draw++) expect(drills.nextTable({ ...settings, exclude: ['v-aller|fut'] })).not.toEqual({ verbId: 'v-aller', tense: 'fut' });
+    // With every table just done, one still comes.
+    expect(drills.nextTable({ ...settings, exclude: ['v-aller|fut', 'v-aller|pres', 'v-parler|fut', 'v-parler|pres'] })).toBeTruthy();
+    expect(() => drills.nextTable({ ...settings, tenses: [] })).toThrow('Choose at least one tense.');
+  });
+
   test('a whole table checks every person and names the mistakes', () => {
     const drills = fixture();
     const checked = drills.table({ requestId: 't', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prend', 'prend', 'prenons', 'prenez', 'prenent'] });

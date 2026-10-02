@@ -183,6 +183,30 @@ export function createVerbDrills(options: {
   }
 
   // A whole table at once: every person checked, a blank one counted as not known.
+  // The next whole table to fill in: one verb in one tense from the chosen verbs and tenses, drawn with odds of its
+  // forms' average weight, so a table with shaky or untried forms comes far more often than a solid one. exclude
+  // lists the tables just done ("verbId|tense", newest first); it is halved until something is left.
+  function nextTable(input: RoundInput & { exclude?: string[] }): { verbId: string; tense: Tense } {
+    const verbs = chosenVerbs(input), tenses = chosenTenses(input);
+    const forms = history();
+    const pool = verbs.flatMap((verb) => tenses.map((tense) => {
+      const people = persons(verb);
+      const weight = people.reduce((total, person) => total + WEIGHT[stateOf(forms.get(key(verb.id, tense, person)))], 0) / people.length;
+      return { verbId: verb.id, tense, weight };
+    }));
+    const exclude = Array.isArray(input.exclude) ? input.exclude.filter((entry): entry is string => typeof entry === 'string').slice(0, 20) : [];
+    let candidates = pool;
+    for (let keep = exclude.length; keep >= 0; keep = keep > 1 ? Math.floor(keep / 2) : keep - 1) {
+      const passed = new Set(exclude.slice(0, keep));
+      candidates = pool.filter((entry) => !passed.has(`${entry.verbId}|${entry.tense}`));
+      if (candidates.length) break;
+    }
+    let left = random() * candidates.reduce((total, entry) => total + entry.weight, 0);
+    const index = candidates.findIndex((entry) => (left -= entry.weight) < 0);
+    const { verbId, tense } = candidates[index < 0 ? candidates.length - 1 : index]!;
+    return { verbId, tense };
+  }
+
   function table(input: { requestId: string; verbId: string; tense: Tense; answers: string[] }) {
     const requestId = requestIdOf(input?.requestId);
     const { verb, tense } = findTense(input?.verbId, input?.tense);
@@ -328,6 +352,6 @@ export function createVerbDrills(options: {
     return [...new Set(verbs.filter((verb, index) => index < COMMON || started.has(verb.id)).flatMap((verb) => earQuestions(verb).map((question) => question.said)))];
   }
 
-  return { round, cards, mark, statistics, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
+  return { round, cards, mark, nextTable, statistics, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills>;
