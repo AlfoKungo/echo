@@ -34,16 +34,17 @@ async function signIn(claims: Record<string, unknown>, tamper: (params: URLSearc
 }
 const cookieOf = (response: Response) => response.headers.get('set-cookie')?.match(/echo_session=([^;]*)/)?.[1] ?? '';
 
-test('only emails on the list are let in, each to their own Echo, which never sees the session cookie', async () => {
-  pilot.accounts.add({ email: 'Dana@Gmail.com', name: 'Dana' });
-  const stranger = await signIn({ email: 'mallory@gmail.com' });
-  expect(stranger.headers.get('location')).toBe('/signin?denied=mallory%40gmail.com');
-  expect(cookieOf(stranger)).toBe('');
-  const dana = await signIn({ email: 'dana@gmail.com', name: 'Dana Cohen' });
+test('an email’s first sign-in makes its own Echo, named as Google names it, which never sees the session cookie', async () => {
+  const dana = await signIn({ email: 'Dana@Gmail.com', name: 'Dana Cohen' });
   expect(dana.headers.get('location')).toBe('/echo/');
   expect(dana.headers.get('set-cookie')).toContain('HttpOnly; Secure; SameSite=Lax');
   const reached = await (await get('/echo/api/state', { cookie: `other=1; echo_session=${cookieOf(dana)}` })).json();
   expect(reached).toEqual({ path: '/as/dana/echo/api/state', cookie: null });
+  const again = await signIn({ email: 'dana@gmail.com', name: 'Dana C.' });
+  expect((await (await get('/echo/api/state', { cookie: `echo_session=${cookieOf(again)}` })).json()).path).toBe('/as/dana/echo/api/state');
+  const omer = await signIn({ email: 'omer@gmail.com', name: 'Omer' });
+  expect((await (await get('/echo/api/state', { cookie: `echo_session=${cookieOf(omer)}` })).json()).path).toBe('/as/omer/echo/api/state');
+  expect(pilot.accounts.friends().filter((friend) => ['dana', 'omer'].includes(friend.id)).map((friend) => [friend.name, friend.port])).toEqual([['Dana Cohen', 7900], ['Omer', 7901]]);
 });
 
 test('without a session a page goes to sign-in and anything else is refused, before reaching any Echo', async () => {
@@ -53,18 +54,19 @@ test('without a session a page goes to sign-in and anything else is refused, bef
   expect((await get('/echo/api/state', { cookie: 'echo_session=made-up' })).status).toBe(401);
 });
 
-test('removing a friend signs them out everywhere at once; adding them back keeps their folder and port', async () => {
-  const friend = pilot.accounts.add({ email: 'noa@gmail.com', name: 'Noa' });
-  const phone = cookieOf(await signIn({ email: 'noa@gmail.com' })), laptop = cookieOf(await signIn({ email: 'noa@gmail.com' }));
+test('removing a friend signs them out everywhere and keeps them out; adding them back keeps their folder and port', async () => {
+  const phone = cookieOf(await signIn({ email: 'noa@gmail.com', name: 'Noa' })), laptop = cookieOf(await signIn({ email: 'noa@gmail.com' }));
+  const friend = pilot.accounts.friends().find((row) => row.email === 'noa@gmail.com')!;
   expect((await get('/echo/api/state', { cookie: `echo_session=${laptop}` })).status).toBe(200);
   pilot.accounts.remove(friend.id);
   for (const token of [phone, laptop]) expect((await get('/echo/api/state', { cookie: `echo_session=${token}` })).status).toBe(401);
   expect((await signIn({ email: 'noa@gmail.com' })).headers.get('location')).toBe('/signin?denied=noa%40gmail.com');
-  expect(pilot.accounts.add({ email: 'noa@gmail.com', name: 'Noa' })).toEqual(friend);
+  expect(pilot.accounts.restore('Noa@gmail.com')).toEqual({ id: friend.id, email: friend.email, name: 'Noa', port: friend.port });
+  expect((await signIn({ email: 'noa@gmail.com' })).headers.get('location')).toBe('/echo/');
+  expect(() => pilot.accounts.restore('noa@gmail.com')).toThrow();
 });
 
 test('a sign-in that is not exactly the one started here is refused', async () => {
-  pilot.accounts.add({ email: 'yael@gmail.com', name: 'Yael' });
   const refused = async (response: Response) => { expect(response.headers.get('location')).toStartWith('/signin?failed='); expect(cookieOf(response)).toBe(''); };
   await refused(await signIn({ email: 'yael@gmail.com', aud: 'someone-elses-client' }));
   await refused(await signIn({ email: 'yael@gmail.com', nonce: 'replayed' }));
@@ -80,7 +82,6 @@ test('a sign-in that is not exactly the one started here is refused', async () =
 });
 
 test('signing out needs a POST from Echo itself, and ends that session only', async () => {
-  pilot.accounts.add({ email: 'tal@gmail.com', name: 'Tal' });
   const first = cookieOf(await signIn({ email: 'tal@gmail.com' })), second = cookieOf(await signIn({ email: 'tal@gmail.com' }));
   const out = (origin: string, method = 'POST') => pilot.publicFetch(new Request(`${ORIGIN}/auth/signout`, { method, headers: { cookie: `echo_session=${first}`, origin } }));
   expect((await out('https://evil.example')).status).toBe(403);
