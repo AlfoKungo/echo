@@ -1407,6 +1407,9 @@ let statistics = null;
 let statsBin = null;
 let statsOpen = false; // the chosen bar's word list starts closed, and opens when a bar is tapped
 let pointsDay = ''; // the day whose points are spelled out under the chart; today until another is tapped
+// Statistics shows the points of words and verbs together, then one part at a time: Words, Verbs or Other.
+const STATS_TABS = { words: 'Words', verbs: 'Verbs', other: 'Other' };
+let statsTab = (() => { const saved = readPreference('echo.stats-tab', 'words'); return saved in STATS_TABS ? saved : 'words'; })();
 // The Word scores chart can show the end of any past day (statistics.history, oldest first, today last); statsAt
 // is the day shown. A past day's words load when its bar list is opened, once per visit.
 let statsAt = 0;
@@ -1505,14 +1508,12 @@ function toggleStatsPlay() {
   }, 700);
   drawScores();
 }
-// The Verbs part of Statistics: forms now; their scores at the end of each day, with the day shown at vScoreAt (-1:
-// today), the bar picked and its list; the points of the last two weeks; and answers and scores by tense and person.
-let vScoreAt = -1, vScorePlay = 0, vScoreBin = null, vScoreOpen = true, vPointsDay = '';
+// The Verbs part of Statistics: the forms' scores at the end of each day, with the day shown at vScoreAt (-1: today),
+// the bar picked and its list; the hardest forms; and scores and answers by tense, person and kind of verb.
+let vScoreAt = -1, vScorePlay = 0, vScoreBin = null, vScoreOpen = true;
 const vScoreDayForms = new Map(); // day → its forms with their scores then, or 'loading'
 const vsDays = () => statistics?.verbs?.scores.days ?? [];
 const vsIndex = () => vScoreAt < 0 ? vsDays().length - 1 : vScoreAt;
-const vsSeg = ({ solid, getting, shaky }, height = 10) => { const all = solid + getting + shaky || 1; return `<div class="vs-seg" style="height:${height}px"><span class="s" style="width:${solid / all * 100}%"></span><span class="g" style="width:${getting / all * 100}%"></span><span class="w" style="width:${shaky / all * 100}%"></span></div>`; };
-const vsLegend = '<div class="st-legend"><span><i style="background:var(--violet)"></i>solid</span><span><i style="background:#6e6aa8"></i>getting there</span><span><i style="background:var(--danger)"></i>shaky</span></div>';
 function vsRow(label, sub, cell, action = '') {
   const share = cell.total ? Math.round(cell.right / cell.total * 100) : null;
   const inner = `<span class="vs-lbl" lang="fr">${esc(label)}<small>${esc(sub)}</small></span><span class="vs-track"><span style="width:${share ?? 0}%"></span></span><span class="vs-pct">${share === null ? '—' : `${share}%`}</span>`;
@@ -1529,7 +1530,7 @@ function verbScoresHTML() {
     return `<button class="st-bar ${tone}" data-action="stats-vbin" data-bin="${bin}" aria-pressed="${vScoreBin === bin}" aria-label="Score ${signed(bin)}: ${shown.bins[index]} forms">${ghost}<span class="know" style="height:${shown.bins[index] / tallest * 100}%"></span></button>`;
   }).join('');
   return `<p class="st-big"><strong>${shown.solid}</strong> ${shown.solid === 1 ? 'form' : 'forms'} scoring +3 or more</p>
-      <p class="st-sub">${shown.shaky} at −2 or less, out of ${shown.practised} you ${past ? 'had' : 'have'} practised.</p>
+      <p class="st-sub">${shown.shaky} at −2 or less. ${shown.practised} of ${statistics.verbs.forms.total.toLocaleString('en')} forms of your verbs in four tenses practised${past ? ' by then' : ''}.</p>
       <div class="st-hist">${bars}</div>
       <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
       <div class="st-legend"><span><i class="know"></i>verb forms</span>${past ? '<span><i class="ghost"></i>today</span>' : ''}</div>`;
@@ -1579,52 +1580,37 @@ function toggleVerbPlay() {
   }, 700);
   drawVerbScores();
 }
-function verbPointsHTML() {
-  const days = statistics.verbs.scores.points, today = days.at(-1);
-  const shown = days.find((day) => day.day === vPointsDay) ?? today;
-  const net = (day) => day.gained - day.lost;
-  const top = Math.max(0, ...days.map(net)), bottom = Math.max(0, ...days.map((day) => -net(day)));
-  const rows = top + bottom ? `grid-template-rows:${top}fr ${bottom}fr` : '';
-  const bars = days.map((day) => `<button class="st-pt" style="${rows}" data-action="stats-vpoints" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(net(day))} points"><span class="up"><span style="height:${top ? Math.max(0, net(day)) / top * 100 : 0}%"></span></span><span class="down"><span style="height:${bottom ? Math.max(0, -net(day)) / bottom * 100 : 0}%"></span></span></button>`).join('');
-  const label = shown.day === today.day ? 'today' : `on ${new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`))}`;
-  return `<p class="st-big"><strong>${points(net(shown))}</strong> ${esc(label)}</p>
-      <p class="st-sub">${shown.gained || shown.lost ? `+${shown.gained} gained, −${shown.lost} lost` : 'Nothing practised'}</p>
-      <div class="st-points">${bars}</div><div class="st-days-axis">${days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>`;
-}
-// Average score rows (by tense, by person), tagged like the categories; the bar shows how many forms are behind it.
-function verbScoreRows(entries) {
-  const most = Math.max(1, ...entries.map(([, cell]) => cell.forms));
+// By tense and by person: the average score of the forms (tagged like the categories), and the share right in the
+// last two weeks as the bar. A tense row opens that tense's page.
+function verbTensePersonRows(entries) {
   const feel = (average) => average === null ? '' : average < 0 ? 'shaky' : average < 2 ? 'steady' : 'solid';
-  // Rounded first, so an average of -0.04 reads 0.0 and is steady, not shaky.
-  return entries.map(([label, cell]) => { const average = cell.average === null ? null : Math.round(cell.average * 10) / 10 || 0; return `<li><div class="name"><p lang="fr">${esc(label)}</p><small>${cell.forms ? `${cell.forms} ${cell.forms === 1 ? 'form' : 'forms'} · average ${average > 0 ? '+' : average < 0 ? '−' : ''}${Math.abs(average).toFixed(1)}` : 'not practised yet'}</small></div><div class="st-mini"><span style="width:${cell.forms / most * 100}%"></span></div><span class="st-tag ${feel(average)}">${feel(average)}</span></li>`; }).join('');
+  return entries.map(({ label, score, answered, action }) => {
+    // Rounded first, so an average of -0.04 reads 0.0 and is steady, not shaky.
+    const average = score.average === null ? null : Math.round(score.average * 10) / 10 || 0;
+    const share = answered.total ? Math.round(answered.right / answered.total * 100) : null;
+    const sub = score.forms ? `${score.forms} ${score.forms === 1 ? 'form' : 'forms'} · average ${average > 0 ? '+' : average < 0 ? '−' : ''}${Math.abs(average).toFixed(1)}${share === null ? '' : ` · ${share}% right lately`}` : 'not practised yet';
+    const inner = `<div class="name"><p lang="fr">${esc(label)}</p><small>${sub}</small></div><div class="st-mini"><span style="width:${share ?? 0}%"></span></div><span class="st-tag ${feel(average)}">${feel(average)}</span>`;
+    return action ? `<li><button class="st-row-link" ${action}>${inner}</button></li>` : `<li>${inner}</li>`;
+  }).join('');
 }
 function verbStatsHTML() {
   const verbs = statistics.verbs;
-  if (!verbs) return '';
-  const { forms, scores } = verbs;
-  if (!forms.practised) return `<div class="st-block"><h2>Verb forms</h2><p class="st-cap">Practise in Verbs and your forms show up here: one verb, in one tense, for one person.</p></div>`;
-  const tenses = Object.entries(VB_TENSES).map(([tense, name]) => vsRow(name, verbs.tenses[tense].total ? `${verbs.tenses[tense].total} answers` : 'not practised lately', verbs.tenses[tense], `data-action="vb-tense-page" data-tense="${tense}"`)).join('');
-  const people = VB_PERSONS.map((person, index) => vsRow(person, `${verbs.people[index].total} answers`, verbs.people[index])).join('');
+  if (!verbs?.forms.practised) return `<div class="st-block"><h2>Verb forms</h2><p class="st-cap">Practise in Verbs and your forms show up here: one verb, in one tense, for one person.</p></div>`;
+  const { scores } = verbs;
   const kinds = verbs.kinds.map((kind) => vsRow(kind.title, `${VB_TENSES[kind.tense]} · ${kind.total} answers`, kind, `data-action="vb-tense-page" data-tense="${kind.tense}"`)).join('');
-  const answered = verbs.people.some((cell) => cell.total);
-  return `<div class="st-block">${stHead('Verb forms', 'A form is one verb in one tense for one person. Solid: your last two answers right; shaky: your last one wrong. Cards, Quick forms and Whole table all count.')}
-      <p class="st-big"><strong>${forms.solid}</strong> forms solid</p>
-      <p class="st-sub">${forms.getting} getting there and ${forms.shaky} shaky, of ${forms.practised} you’ve practised — out of ${forms.total.toLocaleString('en')} forms of your verbs in four tenses.</p>
-      ${vsSeg(forms, 14)}${vsLegend}</div>
-    <div class="st-block">${stHead('Verb form scores', 'Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or Walkman mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Quick forms, Cards, Next table and the Walkman verb tape bring the left side most. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.')}
+  const tenses = verbTensePersonRows(Object.entries(VB_TENSES).map(([tense, name]) => ({ label: name, score: scores.tenses[tense], answered: verbs.tenses[tense], action: `data-action="vb-tense-page" data-tense="${tense}"` })));
+  const people = verbTensePersonRows(VB_PERSONS.map((person, index) => ({ label: person, score: scores.people[index], answered: verbs.people[index] })));
+  return `<div class="st-block">${stHead('Verb form scores', 'Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or Walkman mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Quick forms, Cards, Next table and the Walkman verb tape bring the left side most. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.')}
       <div id="vs-scores">${verbScoresHTML()}</div>
       ${vsDays().length > 1 ? `<div class="st-when" id="vs-when">${verbScoresWhenHTML()}</div>
       <input type="range" class="st-slider" id="vs-slider" min="0" max="${vsDays().length - 1}" step="1" value="${vsIndex()}" aria-label="Choose a day">
       <div class="st-ticks" aria-hidden="true">${vsDays().map((day, index, all) => `<span>${index === all.length - 1 ? 'today' : (all.length - 1 - index) % 2 === 0 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>` : ''}
       <div id="vs-scores-after">${verbScoresAfterHTML()}</div></div>
-    <div class="st-block">${stHead('Verb points, last two weeks', 'The points your verb scores are made of: +2 or −3 for a typed answer, +1 or −2 for a Cards or Walkman mark. Each bar is the day’s total: above the line when you gained more than you lost, below it when you lost more. Tap a day to see its total.')}${verbPointsHTML()}</div>
-    ${answered ? `<div class="st-block">${stHead('Verb answers, last two weeks', 'The share you got right. The kinds are the groups on each tense page: tap a tense or a kind to read about it.')}
-      <p class="vs-label">By tense</p><div class="vs-rows">${tenses}</div>
-      <p class="vs-label">By person</p><div class="vs-rows">${people}</div>
-      <p class="vs-label">By kind of verb</p><div class="vs-rows">${kinds}</div></div>` : ''}
-    <div class="st-block">${stHead('By tense', 'Shaky, steady or solid is the average score of the forms you have practised in that tense.')}<ol class="st-rows">${verbScoreRows(Object.entries(VB_TENSES).map(([tense, name]) => [name, scores.tenses[tense]]))}</ol></div>
-    <div class="st-block">${stHead('By person', 'Shaky, steady or solid is the average score of your forms for that person, across every verb and tense.')}<ol class="st-rows">${verbScoreRows(VB_PERSONS.map((person, index) => [person, scores.people[index]]))}</ol></div>
-    <div class="st-block">${stHead('Hardest forms right now', 'The five forms with the lowest score. Tap one to fill in its whole table.')}<ol class="st-rows">${scores.hardest.map((form) => `<li><button class="st-row-link" data-action="vb-cell" data-verb="${esc(form.verbId)}" data-tense="${form.tense}"><div class="name"><p lang="fr" class="fr">${frEsc(form.form)}</p><small>${esc(form.inf)} · ${esc(form.tenseName)}</small></div><span class="st-tag shaky">missed ${form.misses}×</span></button></li>`).join('')}</ol></div>`;
+    <div class="st-block">${stHead('Hardest forms right now', 'The five forms with the lowest score. Tap one to fill in its whole table.')}<ol class="st-rows">${scores.hardest.map((form) => `<li><button class="st-row-link" data-action="vb-cell" data-verb="${esc(form.verbId)}" data-tense="${form.tense}"><div class="name"><p lang="fr" class="fr">${frEsc(form.form)}</p><small>${esc(form.inf)} · ${esc(form.tenseName)}</small></div><span class="st-tag shaky">missed ${form.misses}×</span></button></li>`).join('')}</ol></div>
+    <div class="st-block">${stHead('By tense and person', 'Shaky, steady or solid is the average score of your forms; the bar and the percentage are the share you got right in the last two weeks. Tap a tense to read about it.')}
+      <p class="vs-label">Tenses</p><ol class="st-rows">${tenses}</ol>
+      <p class="vs-label">Persons</p><ol class="st-rows">${people}</ol></div>
+    ${kinds ? `<div class="st-block">${stHead('By kind of verb', 'The share you got right in the last two weeks, by the groups on each tense page: regular -er verbs, -ir verbs like finir, and so on. Tap one to read about it.')}<div class="vs-rows">${kinds}</div></div>` : ''}`;
 }
 function renderStatistics() {
   const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your French words are doing. Nothing here is a target.</p>`;
@@ -1643,18 +1629,23 @@ function renderStatistics() {
     ? `<div title="${esc(dayLabel(`${day.day}T12:00`))}: ${day.knew} knew, ${day.missed} missed"><span class="k" style="height:${day.knew / busiest * 100}%"></span><span class="m" style="height:${day.missed / busiest * 100}%"></span></div>`
     : '<div><span class="empty"></span></div>').join('');
   const dayAxis = statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('');
-  const today = statistics.days.at(-1);
-  const shown = statistics.days.find((day) => day.day === pointsDay) ?? today;
-  const net = (day) => day.gained - day.lost;
-  // The line sits where the days put it: with no losing day, the whole height is for gains.
-  const top = Math.max(0, ...statistics.days.map(net)), bottom = Math.max(0, ...statistics.days.map((day) => -net(day)));
+  // Points, words and verbs together: each day's gains stacked above the line and its losses below, words in violet
+  // and verbs in the darker shade. The line sits where the days put it: with no losing day, all the height is gains.
+  const verbPoints = new Map((statistics.verbs?.scores.points ?? []).map((day) => [day.day, day.gained - day.lost]));
+  const together = statistics.days.map((day) => ({ day: day.day, words: day.gained - day.lost, verbs: verbPoints.get(day.day) ?? 0 }));
+  const today = together.at(-1);
+  const shown = together.find((day) => day.day === pointsDay) ?? today;
+  const rise = (day) => Math.max(0, day.words) + Math.max(0, day.verbs), fall = (day) => Math.max(0, -day.words) + Math.max(0, -day.verbs);
+  const top = Math.max(0, ...together.map(rise)), bottom = Math.max(0, ...together.map(fall));
   const rows = top + bottom ? `grid-template-rows:${top}fr ${bottom}fr` : '';
-  const pointBars = statistics.days.map((day) => `<button class="st-pt" style="${rows}" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(net(day))} points"><span class="up"><span style="height:${top ? Math.max(0, net(day)) / top * 100 : 0}%"></span></span><span class="down"><span style="height:${bottom ? Math.max(0, -net(day)) / bottom * 100 : 0}%"></span></span></button>`).join('');
-  const shownLabel = shown.day === today.day ? 'Today' : new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`));
-  const pointsBlock = `<div class="st-block">${stHead('Points, last two weeks', 'The points your word scores are made of: +2 for a word you knew and −3 for one you missed in Vocabulary, +0.5 for a word heard to the end on the Walkman, ✓ and ✗ on the Walkman counting the same as knowing or missing, and +1 or −1 for each Endless answer. Each bar is the day’s total: above the line when you gained more than you lost, below it when you lost more. Tap a day to see its total.')}
-      <p class="st-big"><strong>${points(net(shown))}</strong> ${esc(shownLabel.toLowerCase() === 'today' ? 'today' : `on ${shownLabel}`)}</p>
-      ${shown.gained || shown.lost ? '' : '<p class="st-sub">Nothing practised</p>'}
-      <div class="st-points">${pointBars}</div><div class="st-days-axis">${statistics.days.map((day, index) => `<span>${index % 2 === 1 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div></div>`;
+  const part = (value, of, kind) => `<span class="${kind}" style="height:${of ? value / of * 100 : 0}%"></span>`;
+  const pointBars = together.map((day) => `<button class="st-pt st-pt-both" style="${rows}" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(day.words + day.verbs)} points, words ${points(day.words)}, verbs ${points(day.verbs)}"><span class="up">${part(Math.max(0, day.verbs), top, 'verbs')}${part(Math.max(0, day.words), top, 'words')}</span><span class="down">${part(Math.max(0, -day.words), bottom, 'words')}${part(Math.max(0, -day.verbs), bottom, 'verbs')}</span></button>`).join('');
+  const shownLabel = shown.day === today.day ? 'today' : `on ${new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`))}`;
+  const pointsBlock = `<div class="st-block">${stHead('Points, last two weeks', 'Every point your scores moved by, words and verbs together. Words: +2 or −3 an answer in Vocabulary, +1 or −1 in Endless, +0.5 a word heard to the end on the Walkman, and ✓ or ✗ there counting like knowing or missing it. Verbs: +2 or −3 a typed form, +1 or −2 a Cards or Walkman mark. Each bar is the day: gains stacked above the line, losses below. Tap a day to see its total and how it split.')}
+      <p class="st-big"><strong>${points(shown.words + shown.verbs)}</strong> ${esc(shownLabel)}</p>
+      <p class="st-sub">${shown.words || shown.verbs ? `words ${points(shown.words)} · verbs ${points(shown.verbs)}` : 'Nothing practised'}</p>
+      <div class="st-points">${pointBars}</div><div class="st-days-axis">${dayAxis}</div>
+      <div class="st-legend"><span><i style="background:var(--violet)"></i>words</span><span><i style="background:#6e6aa8"></i>verbs</span><span><i style="background:var(--danger)"></i>lost more than gained</span></div></div>`;
   // Each row is the share right per day, always out of 100%, with its two-week share beside the label.
   const accuracyRow = (label, counts) => {
     const right = counts.reduce((sum, count) => sum + count.right, 0), total = counts.reduce((sum, count) => sum + count.total, 0);
@@ -1667,30 +1658,39 @@ function renderStatistics() {
     return `<div class="st-acc-head"><span>${label}</span><strong>${total ? `${Math.round(right / total * 100)}%` : '—'}</strong></div><div class="st-days st-acc">${cells}</div>`;
   };
   const comprehensionDays = statistics.comprehensionDays ?? [];
-  const accuracyBlock = `<div class="st-block">${stHead('Right answers, last two weeks', 'Each bar is the share of that day’s answers you got right, out of 100%; the number beside each row covers both weeks. In Listen and Read, an answer right with help counts as right.')}
+  const answersBlock = `<div class="st-block">${stHead('Answers, last two weeks', 'Top: how many word cards you answered each day, known in violet and missed in red. Below: the share right each day, out of 100%, for Vocabulary, Listen and Read; the number beside each row covers both weeks. In Listen and Read, an answer right with help counts as right.')}
+      <div class="st-days">${days}</div><div class="st-days-axis">${dayAxis}</div>
+      <div class="st-legend"><span><i style="background:var(--violet)"></i>knew it</span><span><i style="background:var(--danger)"></i>missed</span></div>
+      <p class="vs-label">Share right</p>
       ${accuracyRow('Words', statistics.days.map((day) => ({ right: day.knew, total: day.knew + day.missed })))}
       ${accuracyRow('Listen', comprehensionDays.map((day) => day.listen))}
       ${accuracyRow('Read', comprehensionDays.map((day) => day.read))}
       <div class="st-days-axis">${dayAxis}</div></div>`;
   const level = (mode) => statistics.levels.find((entry) => entry.mode === mode)?.label ?? 'A1';
   const facts = [[level('listen'), 'Listen level'], [level('read'), 'Read level'], [statistics.answered, 'Listen & Read questions answered'], [statistics.grammarTopics, statistics.grammarTopics === 1 ? 'grammar topic practised' : 'grammar topics practised'], [statistics.walkmanHeard, 'words heard on the Walkman'], [counts.scheduled, 'known words waiting for review']];
-  main.innerHTML = `${noticeHTML()}<section class="st">${header}
-    <div class="st-block">${stHead('Word scores', `Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. ${statistics.history.length > 1 ? 'Choose a day to see the chart as it was at the end of it; the dashed outline is today. ' : ''}Tap a bar to see its words.`)}
+  const wordsPart = `<div class="st-block">${stHead('Word scores', `Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. ${statistics.history.length > 1 ? 'Choose a day to see the chart as it was at the end of it; the dashed outline is today. ' : ''}Tap a bar to see its words.`)}
       <div id="st-scores">${scoresViewHTML()}</div>
       ${statistics.history.length > 1 ? `<div class="st-when" id="st-when">${scoresWhenHTML()}</div>
       <input type="range" class="st-slider" id="st-slider" min="0" max="${statistics.history.length - 1}" step="1" value="${statsAt}" aria-label="Choose a day">
       <div class="st-ticks" aria-hidden="true">${statistics.history.map((day, index, all) => `<span>${index === all.length - 1 ? 'today' : (all.length - 1 - index) % 2 === 0 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>` : ''}
       <div id="st-scores-after">${scoresAfterHTML()}</div></div>
-    ${pointsBlock}
-    ${accuracyBlock}
     <div class="st-block"><h2>Your ${total.toLocaleString('en')} words</h2><div class="st-stack">${stack}</div><div class="st-legend">${legend}</div></div>
     <div class="st-block"><h2>Hardest right now</h2>${hard}</div>
     <div class="st-block">${stHead('By category', 'Shaky, steady or solid is the average score of the words you’ve started there.')}<ol class="st-rows">${categories}</ol></div>
-    <div class="st-block"><h2>Vocabulary answers, last two weeks</h2><div class="st-days">${days}</div><div class="st-days-axis">${dayAxis}</div>
-      <div class="st-legend"><span><i style="background:var(--violet)"></i>knew it</span><span><i style="background:var(--danger)"></i>missed</span></div></div>
-    ${verbStatsHTML()}
-    <div class="st-block"><h2>Everything else</h2><div class="st-facts">${facts.map(([value, label]) => `<div class="st-fact"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join('')}</div></div>
+    ${answersBlock}`;
+  const otherPart = `<div class="st-block"><h2>Everything else</h2><div class="st-facts">${facts.map(([value, label]) => `<div class="st-fact"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join('')}</div></div>`;
+  const tabs = `<div class="segmented st-tabs" role="group" aria-label="Show">${Object.entries(STATS_TABS).map(([tab, label]) => `<button data-action="stats-tab" data-tab="${tab}" aria-pressed="${statsTab === tab}">${label}</button>`).join('')}</div>`;
+  main.innerHTML = `${noticeHTML()}<section class="st">${header}
+    ${pointsBlock}
+    ${tabs}
+    ${statsTab === 'words' ? wordsPart : statsTab === 'verbs' ? verbStatsHTML() : otherPart}
   </section>`;
+}
+function chooseStatsTab(tab) {
+  if (!(tab in STATS_TABS) || tab === statsTab) return;
+  statsTab = tab; savePreference('echo.stats-tab', tab);
+  stopStatsPlay(); stopVerbPlay(); closeStatsTips();
+  render();
 }
 // ── Songs ────────────────────────────────────────────────────────────────────
 // A song is found on LRCLIB (or pasted), read by Claude (Opus) in the background, reviewed here, and its ticked
@@ -1888,7 +1888,7 @@ async function loadStatistics() {
   try {
     statistics = await api('api/statistics');
     stopStatsPlay(); statsAt = statistics.history.length - 1; statsDayWords.clear();
-    stopVerbPlay(); vScoreAt = -1; vScoreBin = null; vScoreOpen = true; vPointsDay = ''; vScoreDayForms.clear();
+    stopVerbPlay(); vScoreAt = -1; vScoreBin = null; vScoreOpen = true; vScoreDayForms.clear();
     // The weakest bar is chosen to begin with, its list closed; tapping a bar opens its list.
     statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
     statsOpen = false;
@@ -3248,7 +3248,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'stats-vlist') { vScoreOpen = !vScoreOpen; drawVerbScores(); }
   else if (action === 'stats-vstep') { stopVerbPlay(); showVerbDay(vsIndex() + Number(button.dataset.step)); }
   else if (action === 'stats-vplay') toggleVerbPlay();
-  else if (action === 'stats-vpoints') { vPointsDay = button.dataset.day; render(); }
+  else if (action === 'stats-tab') chooseStatsTab(button.dataset.tab);
   else if (action === 'points-day') { pointsDay = button.dataset.day; render(); }
   else if (action === 'walkman') openWalkman();
   else if (action === 'sounds') { if (move('sounds')) loadSounds(); }
