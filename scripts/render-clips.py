@@ -46,6 +46,12 @@ VALIDATION = {'language': 'fr', 'model': 'large-v3-turbo',
               'accept': 'full-normalized-text-or-full-french-phonemes',
               'input': 'decoded-final-mp3', 'sampleRate': 16000}
 CLIP_ID = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
+# Listen and Read clips start with 250 ms of quiet, as word clips do (render-audio.py): a phone, and Bluetooth earbuds
+# more, drop the first moment of a clip while the output wakes. Not part of the signature, so padding a clip never
+# makes it re-render; the record notes it (leadIn) and the check runs on the padded mp3.
+LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1'
+LEAD_IN_MS = 250
+LEAD_IN_SETS = ('comprehension',)
 
 
 def atomic_json(path, value):
@@ -342,7 +348,8 @@ def build(args, audio):
                         mp3 = scratch / 'encoded.mp3'
                         decoded = scratch / 'decoded.wav'
                         seconds = render_wav(model, conds, clip['text'], seed, wav, mx, np)
-                        run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(wav),
+                        lead_in = ['-af', LEAD_IN] if args.set in LEAD_IN_SETS else []
+                        run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(wav), *lead_in,
                              '-codec:a', ENCODING['codec'], '-b:a', ENCODING['bitrate'], str(mp3)])
                         run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(mp3),
                              '-ac', '1', '-ar', str(VALIDATION['sampleRate']), str(decoded)])
@@ -353,7 +360,7 @@ def build(args, audio):
                             continue
                         record = {**clip, 'set': args.set, 'signature': signature(clip), 'model': MODEL,
                                   'pipeline': PIPELINE, 'seconds': seconds, 'transcript': transcript,
-                                  'check': check, 'seed': seed,
+                                  'check': check, 'seed': seed, **({'leadIn': LEAD_IN_MS} if lead_in else {}),
                                   'sha256': hashlib.sha256(mp3.read_bytes()).hexdigest(),
                                   'generatedAt': datetime.now(timezone.utc).isoformat(),
                                   'renderSeconds': round(time.monotonic() - started, 2)}
@@ -387,12 +394,39 @@ def build(args, audio):
     return 1 if failures else 0
 
 
+def pad(args, audio):
+    """Give every recorded clip of the set that lacks it the lead-in, keeping its manifest record true (sha256)."""
+    if args.set not in LEAD_IN_SETS:
+        raise ValueError(f'--pad is for {", ".join(LEAD_IN_SETS)} clips')
+    ffmpeg = executable('ffmpeg')
+    manifest_path = audio / 'manifest.json'
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    padded = 0
+    for clip_id, record in sorted(manifest.items()):
+        path = audio / f'{clip_id}.mp3'
+        if record.get('leadIn') == LEAD_IN_MS or not path.is_file():
+            continue
+        temporary = audio / f'{clip_id}.pad.mp3'
+        run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(path), '-af', LEAD_IN,
+             '-codec:a', ENCODING['codec'], '-b:a', ENCODING['bitrate'], str(temporary)])
+        temporary.replace(path)
+        manifest[clip_id] = {**record, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'leadIn': LEAD_IN_MS}
+        padded += 1
+        if padded % 100 == 0:
+            atomic_json(manifest_path, manifest)
+            print(json.dumps({'padded': padded}), flush=True)
+    atomic_json(manifest_path, manifest)
+    print(json.dumps({'set': args.set, 'padded': padded, 'recordings': len(manifest)}), flush=True)
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--set', required=True, choices=SETS, help='Which clip set to render')
     parser.add_argument('--ids', help='Comma-separated clip ids; default: every clip of the set')
     parser.add_argument('--force', action='store_true', help='Re-render selected clips even if their signature matches')
     parser.add_argument('--seeds', default='42,17,101', help='Deterministic retry seeds, tried in order')
+    parser.add_argument('--pad', action='store_true', help='Only give the recorded clips that lack it the 250 ms lead-in')
     args = parser.parse_args()
     audio = ROOT / 'audio' / args.set
     audio.mkdir(parents=True, exist_ok=True)
@@ -407,7 +441,7 @@ def main():
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:
                 raise RuntimeError(f'Another renderer owns audio/{args.set}')
-            return build(args, audio)
+            return pad(args, audio) if args.pad else build(args, audio)
     except KeyboardInterrupt:
         print(f'{args.set} audio render interrupted; owned validators and model resources released.', file=sys.stderr)
         return 130

@@ -55,6 +55,8 @@ export type ComprehensionOptions = {
 };
 
 const BASE: Record<GrammarLevel, number> = { A1: 1, A2: 2, B1: 3 };
+// Bumped when the recordings change in place (2: every clip starts with 250 ms of quiet), so phones fetch them anew.
+export const SENTENCE_CLIP_VERSION = 2;
 const MIN_LEVEL = 1;
 const MAX_LEVEL = 3.99;
 const BAND_BELOW = 0.6;
@@ -587,7 +589,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     return {
       key: current.key, kind: current.kind, mode: current.mode, level: item.level,
       item: { id: item.id, type: item.type, ...(item.title === undefined ? {} : { title: item.title }) },
-      audio: clips.map((clip) => `audio/comprehension/${clip}.mp3`),
+      audio: clips.map((clip) => `audio/comprehension/${clip}.mp3?v=${SENTENCE_CLIP_VERSION}`),
       gloss: current.mode === 'read' ? item.gloss : [],
       prompt,
       ...(shown ? { choices: shown.choices } : {}),

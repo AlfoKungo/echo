@@ -533,7 +533,7 @@ async function hearAgain(id) {
   if (!walkmanAudio.paused) { heardResume = true; walkmanAudio.pause(); }
   heardSaying = id; render();
   const token = ++audioGeneration;
-  await playClip(entry?.verb ? entry.verb.audio : entry?.sentence ? `audio/comprehension/${encodeURIComponent(id)}.mp3` : wordClipUrl(id), token);
+  await playClip(entry?.verb ? entry.verb.audio : entry?.sentence ? sentenceClipUrl(id) : wordClipUrl(id), token);
   if (token !== audioGeneration) return;
   heardSaying = '';
   if (screen !== 'walkman') return;
@@ -1909,6 +1909,8 @@ let soundRound = null;         // { questions, index, chose, right }
 // The version matches CLIP_VERSION in lib/sounds.ts.
 // The version matches WORD_CLIP_VERSION in lib/store.ts.
 const wordClipUrl = (id) => `audio/${encodeURIComponent(id)}.mp3?v=2`;
+// The version matches SENTENCE_CLIP_VERSION in lib/comprehension-store.ts.
+const sentenceClipUrl = (id) => `audio/comprehension/${encodeURIComponent(id)}.mp3?v=2`;
 const soundUrl = (itemId, side) => `audio/sounds/${itemId}-${side}.mp3?v=2`;
 function openSounds() { if (move('sounds', true)) loadSounds(); }
 async function loadSounds() {
