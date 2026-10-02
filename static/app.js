@@ -371,7 +371,7 @@ function loadHomeInfo() {
   homeInfo.at = Date.now();
   const hint = (room) => roomsOff.has(room) ? Promise.resolve(null) : api(`api/${room}`).catch(() => null);
   Promise.all([hint('story'), hint('radio'), hint('friends')]).then(([story, radioView, friends]) => {
-    homeInfo = { story, radio: radioView, waiting: friends?.requests?.length ?? 0, at: homeInfo.at };
+    homeInfo = { story, radio: radioView, waiting: friends?.requests?.length ?? 0, doorOpen: !!friends?.openUntil, at: homeInfo.at };
     if (screen === 'home' && !busy) renderHome();
   });
 }
@@ -419,7 +419,7 @@ function renderHome() {
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
   </div><p class="study-label">Study</p><div class="study">
-    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${roomsOff.has('friends') ? '' : row('friends', friendsIcon, homeInfo.waiting ? `Friends · ${homeInfo.waiting} waiting` : 'Friends')}
+    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${roomsOff.has('friends') ? '' : row('friends', friendsIcon, ['Friends', homeInfo.doorOpen ? 'open to anyone' : '', homeInfo.waiting ? `${homeInfo.waiting} waiting` : ''].filter(Boolean).join(' · '))}
   </div></section>`;
 }
 // Keeps a retry scheduled while the Mac is out of reach and an action waits, sooner at first, then every 30 s.
@@ -1447,6 +1447,26 @@ async function dismissRequest(email) {
   busy = false;
   if (screen === 'friends') render();
 }
+// The door: open, anyone who signs in with Google joins at once; it closes by itself after an hour (pilot/accounts.ts).
+async function setDoor(minutes) {
+  if (busy) return;
+  busy = true; notice = null; render();
+  try { await api('api/friends/door', { method: 'POST', body: JSON.stringify({ minutes }) }); friendsInfo = await api('api/friends'); homeInfo.at = 0; }
+  catch (error) { notice = { message: error.message }; }
+  busy = false;
+  if (screen === 'friends') render();
+}
+// While the door is open the page reads the list again every 15 s, so a friend who just joined shows up.
+let friendsPoll = 0;
+function pollFriends() {
+  clearTimeout(friendsPoll);
+  if (!friendsInfo?.openUntil) return;
+  friendsPoll = setTimeout(async () => {
+    if (screen !== 'friends' || busy) return;
+    try { friendsInfo = await api('api/friends'); } catch { /* the next look tries again */ }
+    if (screen === 'friends' && !busy) render();
+  }, 15_000);
+}
 async function copyFriendsLink() {
   try { await navigator.clipboard.writeText(`${friendsInfo.origin}/`); notice = { kind: 'info', message: 'Link copied.' }; } catch { notice = { message: `Copy this link: ${friendsInfo.origin}/` }; }
   render();
@@ -1460,14 +1480,20 @@ function renderFriends() {
   const gone = removed.map((friend) => `<li><div class="name"><p>${esc(friend.name)}</p><small>${esc(friend.email)} · removed, progress kept</small></div><button class="quiet" data-action="friend-restore" data-email="${esc(friend.email)}" data-name="${esc(friend.name)}" ${busy ? 'disabled' : ''}>Add back</button></li>`).join('');
   // Google accounts that signed in while not on the list, latest first: let one in, or dismiss it.
   const waiting = (friendsInfo.requests || []).map((request) => `<li><div class="name"><p>${esc(request.name)}</p><small>${esc(request.email)} · tried ${dateLabel(request.lastAt)}${request.attempts > 1 ? ` · ${request.attempts} times` : ''}</small></div><button class="quiet" data-action="friend-restore" data-email="${esc(request.email)}" data-name="${esc(request.name)}" ${busy ? 'disabled' : ''}>Let in</button><button class="quiet" data-action="friend-dismiss" data-email="${esc(request.email)}" ${busy ? 'disabled' : ''}>Dismiss</button></li>`).join('');
+  const clock = (at) => new Date(at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  const door = friendsInfo.openUntil
+    ? `<div class="friends-door open"><p><b>Open until ${clock(friendsInfo.openUntil)}.</b> Anyone who signs in with Google joins now, under the name Google gives. It closes by itself.</p><button class="secondary" data-action="friends-door" data-minutes="0" ${busy ? 'disabled' : ''}>Close now</button></div>`
+    : `<div class="friends-door"><p><b>Closed.</b> Only the people below can sign in; anyone else waits under Tried to sign in.</p><button class="primary" data-action="friends-door" data-minutes="60" ${busy ? 'disabled' : ''}>Let anyone in for 1 hour</button></div>`;
   main.innerHTML = `${noticeHTML()}<section class="topics friends">${header}
     ${friendsInfo.signIn ? '' : '<p class="feedback warn">Google sign-in is not set up yet, so nobody can sign in. Its client goes in ~/echo-pilot/google.json.</p>'}
+    ${door}
     ${waiting ? `<p class="vs-label">Tried to sign in</p><ol class="st-rows">${waiting}</ol>` : ''}
     <form id="friend-form" class="friend-form"><label for="friend-email">Google email</label><input id="friend-email" type="email" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="dana@gmail.com" required>
       <label for="friend-name">Name</label><input id="friend-name" autocomplete="off" placeholder="Dana"><button class="primary" ${busy ? 'disabled' : ''}>Add</button></form>
     ${active.length ? `<ol class="st-rows">${rows}</ol>` : '<p class="empty-list">Nobody yet. Add a friend’s Google email, then send them the link.</p>'}
     <div class="friends-link"><p>Their link</p><code>${esc(friendsInfo.origin)}/</code><button class="secondary" data-action="friends-copy">Copy link</button></div>
     ${gone ? `<p class="vs-label">Removed</p><ol class="st-rows">${gone}</ol>` : ''}</section>`;
+  pollFriends();
 }
 function openMistakes() { if (move('mistakes', true)) loadMistakes(); }
 // ── Statistics ───────────────────────────────────────────────────────────────
@@ -3335,6 +3361,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'friend-remove') removeFriend(button.dataset.id, button.dataset.name);
   else if (action === 'friend-restore') saveFriend(button.dataset.email, button.dataset.name);
   else if (action === 'friend-dismiss') dismissRequest(button.dataset.email);
+  else if (action === 'friends-door') setDoor(Number(button.dataset.minutes));
   else if (action === 'friends-copy') copyFriendsLink();
   else if (action === 'statistics') openStatistics();
   else if (action === 'songs') openSongs();

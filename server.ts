@@ -378,8 +378,9 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
     // Word id → gender for every noun, so the client can colour a tappable word linked to one.
     if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));
-    // The Friends page: who may use the friends' Echo, and who tried. Passed to its admin door, which only this Mac can reach.
-    if (['/api/friends', '/api/friends/remove', '/api/friends/dismiss'].includes(path) && !roomsOff.includes('friends')) {
+    // The Friends page: who may use the friends' Echo, who tried, and the door for new people. Passed to its admin
+    // door, which only this Mac can reach.
+    if (['/api/friends', '/api/friends/remove', '/api/friends/dismiss', '/api/friends/door'].includes(path) && !roomsOff.includes('friends')) {
       const sent = req.method === 'POST' ? JSON.stringify(await body(req)) : undefined;
       let reply: Response;
       try { reply = await fetch(`${pilotAdmin}${path.slice('/api'.length)}`, { method: req.method === 'POST' ? 'POST' : 'GET', headers: { 'Content-Type': 'application/json' }, body: sent, signal: AbortSignal.timeout(5000) }); }

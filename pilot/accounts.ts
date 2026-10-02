@@ -2,7 +2,9 @@
 // (a port and a folder); removing one keeps their folder, so adding the same email again continues where they left
 // off. A session is a random token in a cookie; only its SHA-256 is stored, so a copy of this database signs no one in.
 // A Google account that signed in while not on the list is kept as a request, with the name Google gave, until the
-// owner adds or dismisses it: friends try first and are approved afterwards.
+// owner adds or dismisses it: friends try first and are approved afterwards. While the owner holds the door open
+// (for OPEN_MINUTES at a time, so a forgotten door closes itself), such an account joins at once instead; an email
+// the owner removed stays out either way.
 import { Database } from 'bun:sqlite';
 import { createHash, randomBytes } from 'node:crypto';
 
@@ -13,6 +15,7 @@ export type SignInRequest = { email: string; name: string; firstAt: string; last
 // A session lasts this long after its last use: each visit renews it.
 export const SESSION_DAYS = 180;
 const DAY_MS = 86_400_000;
+export const OPEN_MINUTES = 60;
 const hash = (token: string) => createHash('sha256').update(token).digest('hex');
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -30,11 +33,13 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
     );
     CREATE TABLE IF NOT EXISTS requests (
       email TEXT PRIMARY KEY, name TEXT NOT NULL, first_at TEXT NOT NULL, last_at TEXT NOT NULL, attempts INTEGER NOT NULL
-    );`);
+    );
+    CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);`);
   const byEmail = db.query<Learner & { removed_at: string | null }, [string]>('SELECT id, email, name, port, removed_at FROM learners WHERE email = ?');
   const byId = db.query<Learner, [string]>('SELECT id, email, name, port FROM learners WHERE id = ? AND removed_at IS NULL');
   const insert = db.query('INSERT INTO learners (id, email, name, port, created_at) VALUES (?, ?, ?, ?, ?)');
   const restore = db.query('UPDATE learners SET removed_at = NULL, name = ? WHERE id = ?');
+  const rename = db.query('UPDATE learners SET name = ? WHERE id = ?');
   const markRemoved = db.query('UPDATE learners SET removed_at = ? WHERE id = ? AND removed_at IS NULL');
   const highestPort = db.query<{ port: number | null }, []>('SELECT max(port) AS port FROM learners');
   const takenIds = db.query<{ id: string }, []>('SELECT id FROM learners');
@@ -52,6 +57,9 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
     ON CONFLICT (email) DO UPDATE SET name = excluded.name, last_at = excluded.last_at, attempts = attempts + 1`);
   const allRequests = db.query<{ email: string; name: string; first_at: string; last_at: string; attempts: number }, []>('SELECT * FROM requests ORDER BY last_at DESC');
   const dropRequest = db.query('DELETE FROM requests WHERE email = ?');
+  const readSetting = db.query<{ value: string }, [string]>('SELECT value FROM settings WHERE key = ?');
+  const writeSetting = db.query('INSERT INTO settings (key, value) VALUES (?1, ?2) ON CONFLICT (key) DO UPDATE SET value = excluded.value');
+  const dropSetting = db.query('DELETE FROM settings WHERE key = ?');
 
   const normalEmail = (email: unknown) => (typeof email === 'string' ? email.trim().toLowerCase() : '');
   const oldestLive = () => new Date(now().getTime() - SESSION_DAYS * DAY_MS).toISOString();
@@ -63,13 +71,49 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
     for (let n = 2; taken.has(id); n++) id = `${base}-${n}`;
     return id;
   }
+  const localPart = (email: string) => email.split('@')[0]!;
+  function create(email: string, name: string): Learner {
+    const learner = { id: newId(email), email, name, port: Math.max(options.firstPort - 1, highestPort.get()?.port ?? 0) + 1 };
+    insert.run(learner.id, learner.email, learner.name, learner.port, now().toISOString());
+    dropRequest.run(email);
+    return learner;
+  }
+  // When the door closes, as an ISO time, or null while it is closed.
+  function openUntil(): string | null {
+    const until = readSetting.get('open_until')?.value ?? null;
+    return until && until > now().toISOString() ? until : null;
+  }
 
   return {
-    // The learner allowed for a Google email, or null: removed and unknown emails are not let in.
+    // The learner a Google sign-in lets in, or null. On the list: in, and a name made up from the email takes the
+    // one Google gives. Not on the list: in as a new learner while the door is open, otherwise kept as a request.
+    // Removed: kept as a request, door open or not.
+    admit(identity: { email: string; name: string }): Learner | null {
+      const email = normalEmail(identity.email);
+      const googleName = identity.name.trim().slice(0, 40);
+      const row = byEmail.get(email);
+      if (row && !row.removed_at) {
+        const name = row.name === localPart(email) && googleName && googleName !== email ? googleName : row.name;
+        if (name !== row.name) rename.run(name, row.id);
+        return { id: row.id, email: row.email, name, port: row.port };
+      }
+      if (!row && openUntil()) return create(email, googleName && googleName !== email ? googleName : localPart(email));
+      noteRequest.run(email, googleName || localPart(email), now().toISOString());
+      return null;
+    },
+    // The learner on the list for a Google email, or null when removed or unknown.
     allowed(email: string): Learner | null {
       const row = byEmail.get(normalEmail(email));
       return row && !row.removed_at ? { id: row.id, email: row.email, name: row.name, port: row.port } : null;
     },
+    openUntil,
+    // Lets every new Google account in for the next `minutes`; returns when the door closes.
+    openDoor(minutes = OPEN_MINUTES): string {
+      const until = new Date(now().getTime() + minutes * 60_000).toISOString();
+      writeSetting.run('open_until', until);
+      return until;
+    },
+    closeDoor: () => { dropSetting.run('open_until'); },
     learner: (id: string): Learner | null => byId.get(id) ?? null,
     friends(): Friend[] {
       return all.all(oldestLive()).map((row) => ({ id: row.id, email: row.email, name: row.name, port: row.port, createdAt: row.created_at, removedAt: row.removed_at, lastSeenAt: row.last_seen_at, devices: row.devices }));
@@ -86,21 +130,13 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
         dropRequest.run(email);
         return { id: existing.id, email, name, port: existing.port };
       }
-      const learner = { id: newId(email), email, name, port: Math.max(options.firstPort - 1, highestPort.get()?.port ?? 0) + 1 };
-      insert.run(learner.id, learner.email, learner.name, learner.port, now().toISOString());
-      dropRequest.run(email);
-      return learner;
+      return create(email, name);
     },
     // Takes an email off the list and signs it out everywhere; its folder stays.
     remove(id: string): boolean {
       const removed = markRemoved.run(now().toISOString(), id).changes > 0;
       endSessionsOf.run(id);
       return removed;
-    },
-    // Remembers a Google account that signed in while not on the list.
-    request(identity: { email: string; name: string }) {
-      const email = normalEmail(identity.email);
-      noteRequest.run(email, identity.name.trim().slice(0, 40) || email.split('@')[0]!, now().toISOString());
     },
     requests(): SignInRequest[] {
       return allRequests.all().map((row) => ({ email: row.email, name: row.name, firstAt: row.first_at, lastAt: row.last_at, attempts: row.attempts }));

@@ -1,7 +1,7 @@
 // The friends' Echo: one ordinary Echo process per learner, each with its own database, behind this router, which
-// signs people in with Google and lets in only the emails the owner has allowed (pilot/accounts.ts). Google does not
-// filter: an app asking only for name, email and profile is open to every Google account even while in Testing, so
-// this list is the only lock.
+// signs people in with Google and lets in only the emails the owner has allowed, plus anyone new while the owner holds
+// the door open (pilot/accounts.ts). Google does not filter: an app asking only for name, email and profile is open to
+// every Google account even while in Testing, so this list and the door are the only lock.
 //
 // Two listeners. The public one (PILOT_PORT, behind Tailscale) serves the sign-in pages and, for a signed-in learner,
 // their Echo; without a valid session it serves nothing else. The admin one (PILOT_ADMIN_PORT) is bound to this Mac
@@ -19,7 +19,7 @@ import { homedir } from 'node:os';
 import { join } from 'node:path';
 import type { Subprocess } from 'bun';
 import { backup } from '../lib/backups';
-import { createAccounts, SESSION_DAYS, type Accounts, type Learner } from './accounts';
+import { createAccounts, OPEN_MINUTES, SESSION_DAYS, type Accounts, type Learner } from './accounts';
 import { createGoogle, SignInError, type Exchange, type GoogleConfig } from './google';
 
 const ROOT = join(import.meta.dir, '..');
@@ -137,15 +137,16 @@ export function createPilot(options: PilotOptions) {
       if (!google) return redirect('/signin');
       try {
         const identity = await google.finish(url.searchParams.get('code'), url.searchParams.get('state'));
-        const learner = accounts.allowed(identity.email);
+        const listed = accounts.allowed(identity.email);
+        const learner = accounts.admit(identity);
         if (!learner) {
-          accounts.request(identity);
           console.log(`pilot: ${identity.email} (${identity.name}) tried to sign in and is not on the list`);
           return redirect(`/signin?denied=${encodeURIComponent(identity.email)}`);
         }
+        if (!listed) console.log(`pilot: ${identity.email} (${learner.name}) joined while the door was open`);
         return redirect('/echo/', sessionCookie(accounts.startSession(learner.id, req.headers.get('user-agent') ?? '')));
       } catch (error) {
-        if (!(error instanceof SignInError)) console.error('pilot: sign-in failed', error);
+        console.error(`pilot: a sign-in failed: ${error instanceof SignInError ? error.message : (error as Error).stack ?? error}`);
         return redirect(`/signin?failed=${encodeURIComponent(error instanceof SignInError ? error.message : 'Signing in did not work. Try again.')}`);
       }
     }
@@ -173,7 +174,7 @@ export function createPilot(options: PilotOptions) {
   async function adminFetch(req: Request): Promise<Response> {
     const path = new URL(req.url).pathname;
     try {
-      if (path === '/friends' && req.method === 'GET') return Response.json({ friends: accounts.friends(), requests: accounts.requests(), origin: options.origin, signIn: !!google });
+      if (path === '/friends' && req.method === 'GET') return Response.json({ friends: accounts.friends(), requests: accounts.requests(), openUntil: accounts.openUntil(), origin: options.origin, signIn: !!google });
       if (path === '/friends' && req.method === 'POST') return Response.json({ friend: accounts.add(await req.json()) });
       if (path === '/friends/remove' && req.method === 'POST') {
         const { id } = await req.json() as { id?: unknown };
@@ -184,6 +185,15 @@ export function createPilot(options: PilotOptions) {
       if (path === '/friends/dismiss' && req.method === 'POST') {
         if (!accounts.dismiss((await req.json() as { email?: unknown }).email)) return Response.json({ error: 'Nobody with that email is waiting.' }, { status: 404 });
         return Response.json({ ok: true });
+      }
+      // The door: {"minutes": n} lets every new Google account in for n minutes (OPEN_MINUTES by default); 0 closes it.
+      if (path === '/friends/door' && req.method === 'POST') {
+        const { minutes } = await req.json() as { minutes?: unknown };
+        const span = minutes === undefined ? OPEN_MINUTES : Number(minutes);
+        if (!Number.isFinite(span) || span < 0 || span > 24 * 60) return Response.json({ error: 'Open the door for 0 to 1440 minutes.' }, { status: 400 });
+        if (span === 0) accounts.closeDoor(); else accounts.openDoor(span);
+        console.log(`pilot: the door is ${span === 0 ? 'closed' : `open until ${accounts.openUntil()}`}`);
+        return Response.json({ openUntil: accounts.openUntil() });
       }
       return Response.json({ error: 'Not found' }, { status: 404 });
     } catch (error) { return Response.json({ error: (error as Error).message }, { status: 400 }); }

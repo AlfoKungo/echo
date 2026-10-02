@@ -60,6 +60,33 @@ test('a refused sign-in waits to be let in or dismissed, and letting it in lets 
   expect((await admin('/friends/dismiss', { email: 'eve@gmail.com' })).status).toBe(404);
 });
 
+test('while the door is open a new account joins under its Google name; removed ones stay out; it closes by itself', async () => {
+  const admin = (path: string, body?: unknown) => pilot.adminFetch(new Request(`http://admin${path}`, body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) }));
+  const removed = pilot.accounts.add({ email: 'gone@gmail.com', name: 'Gone' });
+  pilot.accounts.remove(removed.id);
+  expect((await (await admin('/friends/door', {})).json() as { openUntil: string | null }).openUntil).not.toBeNull();
+  const guest = await signIn({ email: 'Guest@Gmail.com', name: 'Guest Person' });
+  expect(guest.headers.get('location')).toBe('/echo/');
+  expect(pilot.accounts.friends().find((friend) => friend.email === 'guest@gmail.com')?.name).toBe('Guest Person');
+  expect((await signIn({ email: 'gone@gmail.com' })).headers.get('location')).toBe('/signin?denied=gone%40gmail.com');
+  await admin('/friends/door', { minutes: 0 });
+  expect((await signIn({ email: 'late@gmail.com' })).headers.get('location')).toBe('/signin?denied=late%40gmail.com');
+  await admin('/friends/door', { minutes: 0.001 });
+  await Bun.sleep(120);
+  expect((await (await admin('/friends')).json() as { openUntil: string | null }).openUntil).toBeNull();
+  expect((await signIn({ email: 'later@gmail.com' })).headers.get('location')).toBe('/signin?denied=later%40gmail.com');
+  expect((await admin('/friends/door', { minutes: 5000 })).status).toBe(400);
+});
+
+test('a name made up from the email takes the one Google gives at sign-in; a name the owner chose stays', async () => {
+  pilot.accounts.add({ email: 'zed@gmail.com', name: '' });
+  pilot.accounts.add({ email: 'kim@gmail.com', name: 'Kimmy' });
+  await signIn({ email: 'zed@gmail.com', name: 'Zed Zohar' });
+  await signIn({ email: 'kim@gmail.com', name: 'Kim Levi' });
+  const names = Object.fromEntries(pilot.accounts.friends().map((friend) => [friend.email, friend.name]));
+  expect([names['zed@gmail.com'], names['kim@gmail.com']]).toEqual(['Zed Zohar', 'Kimmy']);
+});
+
 test('without a session a page goes to sign-in and anything else is refused, before reaching any Echo', async () => {
   const page = await get('/echo/', { accept: 'text/html' });
   expect(page.status).toBe(303);
