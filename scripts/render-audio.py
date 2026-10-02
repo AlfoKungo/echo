@@ -7,7 +7,6 @@ import json
 import re
 import subprocess
 import time
-import unicodedata
 import wave
 from pathlib import Path
 
@@ -15,17 +14,15 @@ import mlx.core as mx
 import numpy as np
 from mlx_audio.tts.utils import load_model
 
+import carrier_cut
+from carrier_cut import normalize
+
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = 'mlx-community/chatterbox-multilingual-v3'
 REFERENCE = ROOT / 'voices/french-reference.wav'
 SETTINGS = {'lang_code': 'fr', 'cfg_weight': 0.5, 'exaggeration': 0.1, 'temperature': 0.5, 'max_tokens': 400}
 PIPELINE = 'context-word-pause-v2'
-# The word is cut out of "On dit : <word>." inside the pause after the carrier. A cut placed by token timing
-# alone landed inside "dit" (a stray sound before the word) or inside the word (its first syllable lost).
-MIN_PAUSE = 8   # 10 ms frames: the colon pause; a stop closure inside a word is shorter
-MAX_TAIL = 30   # frames of the carrier allowed after its last token's anchor before the pause
-LEAD = 3        # frames of silence kept before the word
-QUIET_DB = 35   # a frame is silent when this far below the loudest frame
+# The word is cut out of "On dit : <word>." inside the pause after the carrier (carrier_cut.py).
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--ids', help='Comma-separated word IDs; default is the whole deck')
 parser.add_argument('--force', action='store_true')
@@ -68,10 +65,6 @@ def sounds_like(word):
 def signature(word):
     return hashlib.sha256(json.dumps([MODEL, SETTINGS, PIPELINE, reference_hash, word['fr'], carrier_for(word)], ensure_ascii=False).encode()).hexdigest()
 
-def normalize(text):
-    text = unicodedata.normalize('NFC', text.lower().replace('œ', 'oe'))
-    return ''.join(character for character in text if character.isalnum())
-
 def phonemes(text):
     text = ' '.join(text.replace('«', '').replace('»', '').replace(':', '').replace('.', '').split())
     result = subprocess.run(['/opt/homebrew/bin/espeak-ng', '-q', '-v', 'fr-fr', '--ipa', text], capture_output=True, text=True, check=True)
@@ -79,13 +72,7 @@ def phonemes(text):
     return re.sub(r'[\sˈˌː]', '', result.stdout)
 
 def transcribe(path):
-    model_path = Path.home() / '.local/share/whisper-models/ggml-large-v3-turbo.bin'
-    subprocess.run(['/opt/homebrew/bin/whisper-cli', '-m', str(model_path), '-l', 'fr', '--dtw', 'large.v3.turbo', '--no-flash-attn', '-ojf', '-np', str(path)], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, check=True)
-    result_path = Path(str(path) + '.json')
-    result = json.loads(result_path.read_text())
-    if not args.keep_context:
-        result_path.unlink()
-    return {'text': ''.join(segment['text'] for segment in result['transcription']), 'tokens': [token for segment in result['transcription'] for token in segment['tokens']]}
+    return carrier_cut.transcribe_tokens(path, keep=args.keep_context)
 
 # Every word clip starts with the same 250 ms of quiet: a phone (and Bluetooth earbuds even more) drops the first
 # moment of a short clip while its output wakes. The Walkman copies trim it back (build-walkman-clips.py).
@@ -113,9 +100,7 @@ conds = model.prepare_conditionals(str(REFERENCE), 24000, exaggeration=SETTINGS[
 failures = []
 for index, word in enumerate(pending, 1):
     started = time.monotonic()
-    # Some words follow "On dit :" with no audible pause; "On dit…" makes the voice stop before the word, and
-    # a lead-in that ends the sentence ("Écoutez.") separates even short words such as "mais" or "donc".
-    carriers = list(dict.fromkeys([carrier_for(word), 'On dit… ', 'Écoutez. ']))
+    carriers = list(dict.fromkeys([carrier_for(word), *carrier_cut.CARRIERS]))
     errors = []
     wav = AUDIO / f"{word['id']}.context.wav"
     trimmed = AUDIO / f"{word['id']}.trim.wav"
@@ -143,45 +128,11 @@ for index, word in enumerate(pending, 1):
         if not exact and phonemes(transcript) != phonemes(carrier + sounds_like(word) + '.'):
             errors.append({'seed': seed, 'transcript': transcript, 'error': 'Speech content mismatch'})
             continue
-        tokens = [token for token in result['tokens'] if token['t_dtw'] >= 0 and normalize(token['text'])]
-        prefix = ''
-        boundary = None
-        for token_index, token in enumerate(tokens):
-            prefix += normalize(token['text'])
-            if prefix == normalize(carrier):
-                boundary = token_index
-                break
-        if boundary is None or boundary + 1 >= len(tokens):
-            errors.append({'seed': seed, 'transcript': transcript, 'error': 'No reliable word boundary'})
+        try:
+            clip, cut, pause = carrier_cut.cut_after_carrier(pcm, sample_rate, result['tokens'], carrier)
+        except carrier_cut.NoCut as error:
+            errors.append({'seed': seed, 'transcript': transcript, 'error': error.error, **error.details})
             continue
-        frame = sample_rate // 100
-        count = len(pcm) // frame
-        level = 20 * np.log10(np.sqrt(np.square(pcm[:count * frame].reshape(count, frame)).mean(axis=1)) + 1e-9)
-        quiet = level < level.max() - QUIET_DB
-        carrier_anchor = int(tokens[boundary]['t_dtw'])  # t_dtw is in centiseconds, i.e. frames
-        word_anchor = int(tokens[boundary + 1]['t_dtw'])
-        pause, run = None, 0
-        for position in range(carrier_anchor, count):
-            run = run + 1 if quiet[position] else 0
-            if run == MIN_PAUSE:
-                end = position + 1
-                while end < count and quiet[end]:
-                    end += 1
-                pause = (position + 1 - MIN_PAUSE, end)
-                break
-        # The pause must follow the carrier closely and come before the word: a pause found later lies inside
-        # the word, and cutting there would drop its first syllable.
-        if pause is None or pause[0] - carrier_anchor > MAX_TAIL or pause[0] > word_anchor or pause[1] >= count:
-            errors.append({'seed': seed, 'transcript': transcript, 'error': 'No clear pause before the word',
-                           'pause': pause, 'carrierAnchor': carrier_anchor, 'wordAnchor': word_anchor})
-            continue
-        cut = max(pause[0], pause[1] - LEAD) * frame / sample_rate
-        clip = pcm[int(cut * sample_rate):].copy()
-        if np.count_nonzero(~quiet[pause[1]:]) < 10:
-            errors.append({'seed': seed, 'error': 'Too little speech after the pause'})
-            continue
-        fade = min(len(clip), sample_rate // 200)
-        clip[:fade] *= np.linspace(0, 1, fade, dtype=np.float32)
         save_wav(trimmed, clip, sample_rate)
         # The sentence can check out while the cut still clips the word (fatal heard as "tal"): the cut clip must be
         # heard as the word too. A take that fails this is kept as a fallback in case no take passes.

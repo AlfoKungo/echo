@@ -7,8 +7,9 @@ The plan (--plan FILE, written by the server) lists clips by id, each one of:
   {"id": ..., "kind": "en", "text": ...}                 English, said by the Walkman's English voice (Kokoro)
   {"id": ..., "kind": "fr", "text": ...}                 French, said by the deck's French voice (Chatterbox)
 Spoken clips are checked like the others: Whisper must hear the text (render-english.py's checks for English,
-render-clips.py's for French), else the next take is tried; a clip no take passes for is left out and the
-episode skips it. Clips go to audio/radio/<id>.mp3; a clip already made from the same text or source is kept.
+render-clips.py's for French), else the next take is tried. A short French phrase no take passes for alone (ils
+vont, tu peux) is said after a carrier and cut out, as vocabulary words are (carrier_cut.py). A clip nothing passes
+for is left out and the episode skips it. Clips go to audio/radio/<id>.mp3; a clip already made from the same text or source is kept.
 Prints {"failed": id} per clip that could not be made, and exits 1 when there is one.
 """
 import os
@@ -41,8 +42,11 @@ walkman = module('build_walkman_clips', 'build-walkman-clips.py')
 english = module('render_english', 'render-english.py')
 french = module('render_clips', 'render-clips.py')
 from whisper_scorer import Scorer  # noqa: E402
+import carrier_cut  # noqa: E402
 
 FRENCH_SEEDS = (42, 17, 101)
+# A phrase of up to this many words may be said in a carrier when it fails alone.
+CARRIER_WORDS = 4
 
 
 def signature(item):
@@ -122,7 +126,49 @@ def make_french(voices, text, scratch):
         transcript = french.transcribe(decoded, whisper)
         if french.verdict(transcript, text, expected, espeak, 'comprehension'):
             return mp3, transcript
-    return None, None
+    if len(text.split()) > CARRIER_WORDS:
+        return None, None
+    return french_in_carrier(voices, text, scratch, ffmpeg, whisper, espeak, expected)
+
+
+def french_in_carrier(voices, text, scratch, ffmpeg, whisper, espeak, expected):
+    """The phrase said after a carrier and cut out where the voice pauses. The whole sentence must be heard as said;
+    a cut also heard as the phrase on its own is taken at once, else the first clean cut is kept, as for words."""
+    import numpy as np
+    raw, trimmed, mp3, decoded, fallback = (scratch / name for name in ('carrier.wav', 'cut.wav', 'cut.mp3', 'cut-decoded.wav', 'fallback.mp3'))
+    fallback_transcript = None
+    for carrier in carrier_cut.CARRIERS:
+        sentence = carrier + text + '.'
+        said = french.phonemes(sentence, espeak)
+        for seed in FRENCH_SEEDS:
+            try:
+                voices.french_take(sentence, seed, raw)
+            except Exception:
+                continue
+            heard = carrier_cut.transcribe_tokens(raw)
+            if not french.verdict(heard['text'], sentence, said, espeak, 'comprehension'):
+                continue
+            with wave.open(str(raw), 'rb') as stream:
+                rate = stream.getframerate()
+                pcm = np.frombuffer(stream.readframes(stream.getnframes()), dtype='<i2').astype(np.float32) / 32767
+            try:
+                clip, _, _ = carrier_cut.cut_after_carrier(pcm, rate, heard['tokens'], carrier)
+            except carrier_cut.NoCut:
+                continue
+            with wave.open(str(trimmed), 'wb') as stream:
+                stream.setnchannels(1)
+                stream.setsampwidth(2)
+                stream.setframerate(rate)
+                stream.writeframes((np.clip(clip, -1, 1) * 32767).astype('<i2').tobytes())
+            french.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(trimmed), '-codec:a', french.ENCODING['codec'], '-b:a', french.ENCODING['bitrate'], str(mp3)])
+            french.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(mp3), '-ac', '1', '-ar', '16000', str(decoded)])
+            alone = french.transcribe(decoded, whisper)
+            if french.verdict(alone, text, expected, espeak, 'comprehension'):
+                return mp3, alone
+            if fallback_transcript is None:
+                mp3.replace(fallback)
+                fallback_transcript = heard['text']
+    return (fallback, fallback_transcript) if fallback_transcript is not None else (None, None)
 
 
 def main():
