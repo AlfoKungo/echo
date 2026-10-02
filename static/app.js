@@ -1883,21 +1883,52 @@ async function setSongsFirst(value) {
   catch (error) { notice = { message: error.message }; render(); }
 }
 function openStatistics() { if (move('statistics', true)) loadStatistics(); }
+// Statistics opens at once on the last figures (from this visit, or saved on this phone earlier in the study day) and
+// redraws when the fresh ones arrive, keeping the day and bar chosen; only a first open of the day waits.
+const STATS_SAVED = 'echo.statistics';
+const clientStudyDay = () => { const day = new Date(); if (day.getHours() < 4) day.setDate(day.getDate() - 1); return `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`; };
+function savedStatistics() {
+  try { const saved = JSON.parse(localStorage.getItem(STATS_SAVED) || 'null'); return saved?.history?.at(-1)?.day === clientStudyDay() ? saved : null; } catch { return null; }
+}
+function saveStatistics() { try { localStorage.setItem(STATS_SAVED, JSON.stringify(statistics)); } catch { /* a full store only costs the next open its wait */ } }
 async function loadStatistics() {
+  const shown = statistics?.history?.at(-1)?.day === clientStudyDay() ? statistics : savedStatistics();
+  if (shown) { if (shown !== statistics) { statistics = shown; resetStatsView(); } notice = null; retryAction = null; render(); refreshStatistics(); return; }
   loading = true; notice = null; retryAction = null; render();
   try {
     statistics = await api('api/statistics');
-    stopStatsPlay(); statsAt = statistics.history.length - 1; statsDayWords.clear();
-    stopVerbPlay(); vScoreAt = -1; vScoreBin = null; vScoreOpen = true; vScoreDayForms.clear();
-    // The weakest bar is chosen to begin with, its list closed; tapping a bar opens its list.
-    statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
-    statsOpen = false;
-    pointsDay = '';
+    saveStatistics();
+    resetStatsView();
   } catch (error) {
     notice = { message: error.message }; retryAction = { type: 'statistics' };
   }
   loading = false;
   if (screen === 'statistics') render();
+}
+// Fresh figures behind the ones shown. A choice made meanwhile stays where it still exists; today stays today.
+let statsRefreshing = false;
+async function refreshStatistics() {
+  if (statsRefreshing) return;
+  statsRefreshing = true;
+  try {
+    const fresh = await api('api/statistics');
+    const wasToday = statsAt >= statistics.history.length - 1;
+    statistics = fresh; saveStatistics();
+    statsAt = wasToday ? fresh.history.length - 1 : Math.min(statsAt, fresh.history.length - 1);
+    statsDayWords.clear(); vScoreDayForms.clear();
+    if (!fresh.days.some((day) => day.day === pointsDay)) pointsDay = '';
+    if (screen === 'statistics' && !statsPlay && !vScorePlay) render();
+  } catch (error) {
+    if (screen === 'statistics') { notice = { message: `These are your figures from earlier today: ${error.message}` }; render(); }
+  } finally { statsRefreshing = false; }
+}
+function resetStatsView() {
+  stopStatsPlay(); statsAt = statistics.history.length - 1; statsDayWords.clear();
+  stopVerbPlay(); vScoreAt = -1; vScoreBin = null; vScoreOpen = true; vScoreDayForms.clear();
+  // The weakest bar is chosen to begin with, its list closed; tapping a bar opens its list.
+  statsBin = statistics.words.length ? statsBinOf(statistics.words[0].score) : null;
+  statsOpen = false;
+  pointsDay = '';
 }
 function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } drawScores(); }
 function openWalkman() { if (move('walkman', true)) loadTape(); }

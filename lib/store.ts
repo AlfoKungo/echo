@@ -1139,6 +1139,17 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     SELECT known, graded_at AS at FROM grades WHERE graded_at >= ?
     AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)`);
   const heardCount = db.query<{ count: number }, []>('SELECT count(*) AS count FROM walkman_heard');
+  // What the past days' charts are built from, counted up to the start of today: they are rebuilt only when this
+  // changes (an undo, a Walkman mark moved, a card introduced late) or a new study day begins.
+  const pastRecord = db.query<{ key: string }, [string, string]>(`SELECT
+    (SELECT count(*) FROM grades WHERE graded_at < ?1) || '|' ||
+    (SELECT count(*) FROM undos JOIN grades ON grades.sequence = undos.grade_sequence WHERE graded_at < ?1) || '|' ||
+    (SELECT count(*) FROM walkman_heard WHERE heard_at < ?1) || '|' ||
+    (SELECT count(*) || ':' || coalesce(sum(knew), 0) FROM walkman_verdicts WHERE marked_at < ?1) || '|' ||
+    (SELECT count(*) || ':' || coalesce(sum(known), 0) FROM endless_marks WHERE marked_at < ?1) || '|' ||
+    (SELECT count(*) FROM cards WHERE introduced_day < ?2) || '|' ||
+    (SELECT count(*) FROM added_words WHERE added_at < ?1) AS key`);
+  let past: { key: string; history: ScoreHistoryDay[] } | null = null;
 
   function statistics(): VocabularyStatistics {
     return db.transaction(() => {
@@ -1168,15 +1179,16 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       const bins: [number, number][] = Array.from({ length: SCORE_BINS }, () => [0, 0]);
       for (const word of started) bins[scoreBin(word.score)]![word.status === 'scheduled' || word.status === 'due' ? 0 : 1] += 1;
       const today = { day: studyDay(now()), know: counts.scheduled + counts.due, learning: counts.learning, total: all.length, bins };
-      const history = pastDays().map(({ day, end }): ScoreHistoryDay => {
+      const key = `${today.day}|${words.length}|${pastRecord.get(studyDayStart(now()).toISOString(), today.day)!.key}`;
+      if (past?.key !== key) past = { key, history: pastDays().map(({ day, end }): ScoreHistoryDay => {
         const bins: [number, number][] = Array.from({ length: SCORE_BINS }, () => [0, 0]);
         let know = 0;
         const snapshot = replayed.get(end)!;
         for (const [id, known] of snapshot.status) { bins[scoreBin(snapshot.scores.get(id) ?? 0)]![known ? 0 : 1] += 1; if (known) know += 1; }
         return { day, know, learning: snapshot.status.size - know, total: snapshot.total, bins };
-      });
+      }) };
       replayed.clear();
-      return { words, counts, categories, days, walkmanHeard: heardCount.get()!.count, history: [...history, today] };
+      return { words, counts, categories, days, walkmanHeard: heardCount.get()!.count, history: [...past.history, today] };
     })();
   }
 
