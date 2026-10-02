@@ -214,6 +214,9 @@ const radioChecks = setInterval(() => { if (Date.now() - lastRequestAt >= QUIET_
 const port = Number(process.env.ECHO_PORT ?? 7792);
 const prefix = '/echo';
 const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net';
+// Rooms this Echo leaves out (the friends' pilot: story,radio,songs, which write and record for one learner). The page
+// carries the list, and the app hides those rooms.
+const roomsOff = (process.env.ECHO_ROOMS_OFF ?? '').split(',').map((room) => room.trim()).filter((room) => /^[a-z]+$/.test(room));
 const allowedHosts = new Set([new URL(publicOrigin).host, `127.0.0.1:${port}`, `localhost:${port}`]);
 const allowedOrigins = new Set([publicOrigin, `http://127.0.0.1:${port}`, `http://localhost:${port}`]);
 
@@ -561,6 +564,10 @@ async function route(req: Request): Promise<Response> {
     const name = path === '/' ? 'index.html' : path.slice(1);
     if (Object.hasOwn(staticFiles, name) && (req.method === 'GET' || req.method === 'HEAD')) {
       const file = Bun.file(join(root, 'static', name));
+      if (name === 'index.html' && roomsOff.length && await file.exists()) {
+        const page = (await file.text()).replace('<body>', `<body data-rooms-off="${roomsOff.join(',')}">`);
+        return new Response(req.method === 'HEAD' ? null : page, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' } });
+      }
       if (await file.exists()) return staticFile(req, file);
     }
     return json({ error: 'This Echo page or action does not exist.' }, 404);
