@@ -13,7 +13,7 @@ import { createTextTopup } from './lib/text-topup';
 import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
-import { createRadio, englishClip, frenchClip, layStory, radioClip, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
+import { createRadio, englishClip, frenchClip, layStory, radioClip, radioClipExists, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
 import { createVerbTables, TENSE_NAMES, TENSES, tenseGuide, verbGuide, type Tense } from './lib/verbs';
 import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/verb-drills';
 import { loadFamilies, loadPatterns } from './lib/families';
@@ -192,7 +192,7 @@ function recordSentences(): Promise<void> {
     const phrases = [...tape.french.map(frenchClip), ...tape.english.map(englishClip), ...verbs.earPhrases().map(frenchClip)];
     const sentences = bank.sentences.filter((sentence) => existsSync(join(root, `audio/comprehension/${sentence.id}.mp3`)))
       .flatMap((sentence) => { const clips = sentenceClips(sentence); return [clips.fr, clips.en]; });
-    const missing = [...new Map([...storyLines, ...phrases, ...sentences].map((clip) => [clip.id, clip])).values()].filter((clip) => !radioClip(root, clip.id));
+    const missing = [...new Map([...storyLines, ...phrases, ...sentences].map((clip) => [clip.id, clip])).values()].filter((clip) => !radioClipExists(root, clip.id));
     const allowed = new Set(attempts.allowed(missing.map((clip) => clip.id)));
     const plan = missing.filter((clip) => allowed.has(clip.id));
     if (!plan.length) return;
@@ -206,7 +206,11 @@ function recordSentences(): Promise<void> {
 }
 const radioThenSentences = async () => { if (process.env.ECHO_RADIO !== 'off') await radio.check(); await recordSentences(); };
 void textsStarted.then(radioThenSentences);
-const radioChecks = setInterval(() => void radioThenSentences(), 10 * 60_000);
+// The recorder loads voice models of several GB; while the learner is using Echo it waits for a quiet spell, so
+// the Mac never has to make room for them in the middle of a practice.
+const QUIET_BEFORE_RECORDING = 3 * 60_000;
+let lastRequestAt = 0;
+const radioChecks = setInterval(() => { if (Date.now() - lastRequestAt >= QUIET_BEFORE_RECORDING) void radioThenSentences(); }, 10 * 60_000);
 const port = Number(process.env.ECHO_PORT ?? 7792);
 const prefix = '/echo';
 const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net';
@@ -345,6 +349,7 @@ async function route(req: Request): Promise<Response> {
   let path = url.pathname;
   if (path === prefix) return Response.redirect(`${prefix}/`, 308);
   if (path.startsWith(`${prefix}/`)) path = path.slice(prefix.length);
+  if (path.startsWith('/api/')) lastRequestAt = Date.now();
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     const origin = req.headers.get('origin');
     if ((origin && !allowedOrigins.has(origin)) || req.headers.get('sec-fetch-site') === 'cross-site') {

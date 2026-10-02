@@ -84,6 +84,10 @@ export function layStory(lines: { fr: Uint8Array | null; en: Uint8Array | null }
   return { bytes, seconds: time(), lines: laid };
 }
 // A made clip's bytes, or null while it is missing or not whole Walkman frames.
+// Whether a clip has been made, without reading it: cheap enough to ask for thousands of clips at once.
+export function radioClipExists(root: string, id: string): boolean {
+  return existsSync(join(root, 'audio', 'radio', `${id}.mp3`));
+}
 export function radioClip(root: string, id: string): Uint8Array | null {
   const path = join(root, 'audio', 'radio', `${id}.mp3`);
   if (!existsSync(path)) return null;

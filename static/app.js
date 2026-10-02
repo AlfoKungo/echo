@@ -113,6 +113,10 @@ let endless = null; // { direction, deck, cards, pool, recent, last, fetching, s
 const ENDLESS_AHEAD = 2;
 const ENDLESS_GAP = 10;
 let pendingGrade = null;
+// Set once the answer being saved has taken longer than SLOW_SAVE, so the screen says so instead of ignoring taps.
+let savingSlow = false;
+const SLOW_SAVE = 1200;
+const GRADE_LIMIT = 10000;
 let queuedGrade = null;
 // The Walkman plays one long tape on its own audio element, so a locked phone keeps playing it.
 // tape.words times each word; the screen and the lock screen follow currentTime.
@@ -286,9 +290,10 @@ async function playClips(urls, from = 0, to = urls?.length ?? 0) {
 let offline = false;
 let autoRetryTimer = 0, autoRetryTries = 0;
 const AUTO_RETRY_SECONDS = [2, 4, 8, 15, 30];
-async function api(path, options = {}) {
+// limit: how long to wait for the Mac before giving up (and, for an action, retrying it by itself).
+async function api(path, { limit = 25000, ...options } = {}) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 25000);
+  const timeout = setTimeout(() => controller.abort(), limit);
   try {
     const response = await fetch(path, { ...options, signal: controller.signal, headers: { Accept: 'application/json', ...(options.body ? { 'Content-Type': 'application/json' } : {}) }, cache: 'no-store' });
     offline = false;
@@ -350,6 +355,7 @@ function record(next) {
   history.pushState({ echo: next, depth }, '');
 }
 function workingCounts(label) {
+  if (savingSlow && pendingGrade) return `<span class="compact-line"><span class="compact-label" title="${esc(label)}">${esc(label)}</span><span class="compact-status" role="status">${queuedGrade !== null ? 'Saving your last answer — this one is kept…' : 'Saving your last answer…'}</span></span>`;
   const unavailable = !snapshot || retryAction || snapshot.direction !== direction || snapshot.deck !== deck;
   const counts = loading ? '<span class="compact-status" role="status">Loading counts…</span>' : unavailable ? '<span class="compact-status">Counts unavailable</span>' : `<span class="compact-counts"><span class="unseen"><strong>${formatCount(snapshot.stats.unseenActive)}</strong> unseen</span><span class="separator" aria-hidden="true">·</span><span><strong>${formatCount(snapshot.stats.seenActive)}</strong> seen</span></span>`;
   return `<span class="compact-line"><span class="compact-label" title="${esc(label)}">${esc(label)}</span>${counts}</span>`;
@@ -2726,7 +2732,7 @@ async function runMutation(action) {
   screen = grammarAction ? 'exercise' : 'practice'; render();
   const paths = { start: 'api/session', grade: 'api/grade', undo: 'api/undo', 'extra-words': 'api/extra-words', 'review-early': 'api/review-early', 'grammar-start': 'api/grammar/session', 'grammar-answer': 'api/grammar/answer', 'grammar-help': 'api/grammar/help', 'grammar-next': 'api/grammar/next' }
   try {
-    const result = await api(paths[action.type], { method: 'POST', body: JSON.stringify(action.body) });
+    const result = await api(paths[action.type], { method: 'POST', body: JSON.stringify(action.body), ...(action.type === 'grade' ? { limit: GRADE_LIMIT } : {}) });
     if (grammarAction) {
       applyGrammar(result, action.type === 'grammar-help');
       if (action.body.kind === 'hint') hintOpen = true;
@@ -2808,7 +2814,7 @@ function grade(known) {
   if (!revealed || locked() || loading || !vocabularyCard()) return;
   // The previous answer is still being saved: this one follows as soon as it is.
   if (endlessMode()) { markEndless(known); return; }
-  if (pendingGrade) { queuedGrade = known; return; }
+  if (pendingGrade) { queuedGrade = known; if (savingSlow) render(); return; }
   const card = snapshot.current;
   const body = { direction, deck, wordId: card.id, version: card.version, known, requestId: requestId() };
   if (mixed()) mixedGrade(body);
@@ -2825,7 +2831,10 @@ function answerAhead(body) {
   revealed = false; notice = null; retryAction = null;
   render(); main.focus({ preventScroll: true });
   announce(direction === 'en-fr' ? snapshot.current.en : snapshot.current.fr);
-  pendingGrade = api('api/grade', { method: 'POST', body: JSON.stringify(body) }).then((result) => {
+  // An answer is saved in well under a second; one that takes longer says so, and one that takes over GRADE_LIMIT
+  // is retried by itself with the same request id, so it cannot count twice.
+  const saving = setTimeout(() => { if (token === generation && screen === 'practice') { savingSlow = true; render(); } }, SLOW_SAVE);
+  pendingGrade = api('api/grade', { method: 'POST', body: JSON.stringify(body), limit: GRADE_LIMIT }).then((result) => {
     if (token !== generation || screen !== 'practice') return;
     const shown = snapshot.current;
     if (result.current && shown && result.current.id === shown.id && result.current.version === shown.version) {
@@ -2838,7 +2847,9 @@ function answerAhead(body) {
     snapshot = answered; revealed = true; stopAudio();
     notice = { message: error.message }; retryAction = { type: 'grade', body }; render();
   }).finally(() => {
+    clearTimeout(saving);
     pendingGrade = null;
+    if (savingSlow) { savingSlow = false; if (screen === 'practice') render(); }
     if (queuedGrade === null) return;
     const known = queuedGrade;
     queuedGrade = null;
