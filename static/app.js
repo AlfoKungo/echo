@@ -44,7 +44,7 @@ const chevronIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7
 let screen = 'home';
 let depth = 0;
 const trail = ['home'];
-// A link may ask for one screen (#practice, #grammar); the address drops it, so a reload opens Home.
+// A link may ask for one screen (#practice, #grammar, #walkman); the address drops it, so a reload opens Home.
 const requestedScreen = location.hash.slice(1);
 history.replaceState({ echo: 'home', depth: 0 }, '', location.pathname + location.search);
 let topicId = '';
@@ -622,7 +622,8 @@ async function playWalkman() {
     await walkmanAudio.play();
     walkman.started = true;
   } catch (error) {
-    if (error.name !== 'AbortError') { notice = { message: 'The tape could not start. Tap play to try again.' }; }
+    // NotAllowedError: the browser wants a tap on the page before sound (a link opening the Walkman); Play waits for it.
+    if (error.name !== 'AbortError' && error.name !== 'NotAllowedError') { notice = { message: 'The tape could not start. Tap play to try again.' }; }
   }
   render();
 }
@@ -3535,4 +3536,6 @@ window.addEventListener('popstate', (event) => {
 });
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
+// The tape starts at once where the browser allows it; Safari wants a tap first, and then Play is right there.
+else if (requestedScreen === 'walkman') { if (move('walkman', true)) loadTape(true); }
 else fetchState();
