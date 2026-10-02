@@ -747,10 +747,11 @@ describe('Statistics', () => {
     const day = (value: string) => stats.days.find((entry) => entry.day === value);
     expect(stats.days).toHaveLength(14);
     expect(stats.days.at(-1)!.day).toBe('2026-09-23');
+    // Every miss here is a word's first answer: a word at its lowest loses nothing (lib/score-points.ts).
     expect([day('2026-09-21'), day('2026-09-22'), day('2026-09-23')]).toEqual([
-      { day: '2026-09-21', knew: 2, missed: 1, gained: 4, lost: 3 },
+      { day: '2026-09-21', knew: 2, missed: 1, gained: 4, lost: 0 },
       { day: '2026-09-22', knew: 0, missed: 0, gained: 0, lost: 0 },
-      { day: '2026-09-23', knew: 0, missed: 1, gained: 0, lost: 3 },
+      { day: '2026-09-23', knew: 0, missed: 1, gained: 0, lost: 0 },
     ]);
     expect(Object.values(stats.counts).reduce((sum, count) => sum + count, 0)).toBe(words.length);
     expect(stats.words.length).toBe(words.length - stats.counts.new);

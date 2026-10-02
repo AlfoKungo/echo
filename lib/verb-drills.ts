@@ -2,6 +2,7 @@
 // Whole table, Cards (the learner says whether they knew it) or By ear, kept once per request. A form's state comes from its latest answers (By ear is kept apart:
 // it tests hearing, not writing), and a round leans on the forms that are shaky or not tried yet.
 import { Database } from 'bun:sqlite';
+import { pointsFromLowest } from './score-points';
 import { recentStudyDays, SCORE_HALF_LIFE_DAYS, StoreError, studyDay } from './store';
 import { accentSlip, conjugate, diagnose, earQuestion, earQuestions, GROUP_TITLES, groupOf, isRight, paradigm, persons, rule, subject, TENSES, TENSE_NAMES, type EarKind, type ParadigmRow, type Tense, type Verb } from './verbs';
 
@@ -389,7 +390,12 @@ export function createVerbDrills(options: {
     const recent = recentStudyDays(now(), 14).days;
     const daily = recent.map((day) => ({ day, gained: 0, lost: 0 }));
     const byDay = new Map(daily.map((entry) => [entry.day, entry]));
-    for (const row of rows) { const entry = byDay.get(studyDay(new Date(row.answered_at))); if (!entry) continue; const value = points(row.mode, row.right); if (value > 0) entry.gained += value; else entry.lost -= value; }
+    // Each form's lowest score so far decides what a miss costs (lib/score-points.ts).
+    const events = rows.map((row) => ({ id: key(row.verb_id, row.tense, row.person), weight: points(row.mode, row.right), at: Date.parse(row.answered_at) }));
+    pointsFromLowest(events, SCORE_HALF_LIFE_DAYS).forEach((value, index) => {
+      const entry = byDay.get(studyDay(new Date(events[index]!.at)));
+      if (entry) { if (value > 0) entry.gained += value; else entry.lost -= value; }
+    });
     const { scores, misses } = scoresAt(now().getTime(), rows);
     const average = (match: (tense: string, person: number) => boolean) => {
       const list = [...scores].filter(([id]) => { const [, tense, person] = id.split('|'); return match(tense!, Number(person)); }).map(([, score]) => score);

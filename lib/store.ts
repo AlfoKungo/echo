@@ -2,6 +2,7 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
+import { pointsFromLowest } from './score-points';
 import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
@@ -1170,10 +1171,12 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         const entry = byDay.get(studyDay(new Date(answer.at)));
         if (entry) { if (answer.known) entry.knew += 1; else entry.missed += 1; }
       }
-      for (const event of scoreEvents.all()) {
-        const entry = byDay.get(studyDay(new Date(event.at)));
-        if (entry) { if (event.weight > 0) entry.gained += event.weight; else entry.lost -= event.weight; }
-      }
+      // Points come from the whole record, in time order, as each word's lowest score so far decides what a miss costs.
+      const events = scoreEvents.all().map((event) => ({ id: event.word_id, weight: event.weight, at: Date.parse(event.at) })).sort((left, right) => left.at - right.at);
+      pointsFromLowest(events, SCORE_HALF_LIFE_DAYS).forEach((value, index) => {
+        const entry = byDay.get(studyDay(new Date(events[index]!.at)));
+        if (entry) { if (value > 0) entry.gained += value; else entry.lost -= value; }
+      });
       const words = started.map(({ id, fr, en, category, status, score, misses, gender }) => ({ id, fr, en, category, status, score, misses, ...(gender ? { gender } : {}) }));
       // Past days are rebuilt; today is the live chart above, so the last day always matches it.
       const bins: [number, number][] = Array.from({ length: SCORE_BINS }, () => [0, 0]);

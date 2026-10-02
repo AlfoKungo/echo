@@ -242,10 +242,10 @@ describe('verb drills', () => {
     expect(stats.scores.days.map((day) => [day.day, day.practised, day.bins.reduce((sum, count) => sum + count, 0)])).toEqual([
       ['2026-09-21', 3, 3], ['2026-09-22', 3, 3], ['2026-09-23', 5, 5], ['2026-09-24', 5, 5],
     ]);
-    // Points are the day's own: +1 a mark known, -2 one missed, -3 a typed miss.
+    // Points are the day's own: +1 a mark known; a miss on a form at its lowest (each one here) costs nothing.
     const day = (date: string) => stats.scores.points.find((entry) => entry.day === date);
-    expect(day('2026-09-21')).toEqual({ day: '2026-09-21', gained: 3, lost: 2 });
-    expect(day('2026-09-23')).toEqual({ day: '2026-09-23', gained: 1, lost: 5 });
+    expect(day('2026-09-21')).toEqual({ day: '2026-09-21', gained: 3, lost: 0 });
+    expect(day('2026-09-23')).toEqual({ day: '2026-09-23', gained: 1, lost: 0 });
     expect(stats.scores.points).toHaveLength(14);
     expect(stats.scores.hardest.slice(0, 2).map((form) => form.form)).toEqual(['vous parlez', 'je parlerai']);
     expect(stats.scores.hardest[0]!.score).toBeLessThan(-2.5);
