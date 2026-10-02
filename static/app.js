@@ -2201,7 +2201,7 @@ function renderVerbCards() {
   const card = items[index];
   const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
   const face = revealed
-    ? `<h1 class="main-word vb-card-answer" lang="fr">${frEsc(card.answer)}</h1><p class="source-word" lang="fr">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>`
+    ? `<h1 class="main-word vb-card-answer" lang="fr">${frEsc(card.answer)}</h1><p class="source-word" lang="fr">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>${card.hook ? `<p class="word-hook">${esc(card.hook)}</p>` : ''}`
     : `<p class="vb-card-who" lang="fr">${esc(VB_PERSONS[card.person])}</p><h1 class="main-word" lang="fr">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-card-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-card-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const after = revealed ? `${paradigmHTML(card.paradigm, card.person)}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : `<p class="caption vb-card-hint">Say the form to yourself, then tap the card.</p>`;
@@ -2237,12 +2237,13 @@ async function startVerbForms() {
   render(); main.querySelector('#vb-answer')?.focus({ preventScroll: true });
 }
 function renderVerbForms() {
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Quick forms</span></div>`;
+  const fromMistakes = verbFormsOverride?.set === 'shaky';
+  const header = `<div class="section-top">${fromMistakes ? back('Mistakes', 'mistakes') : back('Verbs', 'verbs')}<span class="stream-label">${fromMistakes ? 'Shaky forms' : 'Quick forms'}</span></div>`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${body}</section>`; };
   if (loading || !verbForms) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
   const { items, index, result } = verbForms;
   if (index >= items.length) {
-    shell(verbForms.done ? '<p class="caption">No forms to ask for these verbs and tenses.</p>' : '<div class="loading-state" role="status">Choosing more forms…</div>');
+    shell(verbForms.done ? `<p class="caption">${fromMistakes ? 'Nothing shaky left: every form you have practised is above −2.' : 'No forms to ask for these verbs and tenses.'}</p>` : '<div class="loading-state" role="status">Choosing more forms…</div>');
     topUpVerbForms();
     return;
   }
@@ -2254,7 +2255,7 @@ function renderVerbForms() {
     return;
   }
   const comesBack = !result.right && !item.again ? ' · this one comes back soon' : '';
-  shell(`${again}${prompt}<div class="feedback ${result.right ? '' : 'warn'}" role="status"><strong>${result.right ? 'That’s right.' : 'Not quite.'}</strong><p><span lang="fr">${frEsc(result.expected)}</span>${result.right ? '' : ` — you wrote <span lang="fr">${esc(verbForms.given)}</span>.`}</p>${result.why ? `<p class="vb-why">${esc(result.why)}</p>` : ''}${paradigmHTML(result.paradigm, item.person)}<p class="vb-why vb-rule">${esc(result.rule)}</p></div>
+  shell(`${again}${prompt}<div class="feedback ${result.right ? '' : 'warn'}" role="status"><strong>${result.right ? 'That’s right.' : 'Not quite.'}</strong><p><span lang="fr">${frEsc(result.expected)}</span>${result.right ? '' : ` — you wrote <span lang="fr">${esc(verbForms.given)}</span>.`}</p>${result.why ? `<p class="vb-why">${esc(result.why)}</p>` : ''}${!result.right && result.hook ? `<p class="word-hook">${esc(result.hook)}</p>` : ''}${paradigmHTML(result.paradigm, item.person)}<p class="vb-why vb-rule">${esc(result.rule)}</p></div>
     <div class="stream-actions pinned"><button class="primary" data-action="vb-next">Next${comesBack}</button></div>`);
   main.querySelector('[data-action="vb-next"]')?.focus({ preventScroll: true });
 }
@@ -2327,7 +2328,8 @@ function renderVerbTable() {
     const fix = cell && !cell.right ? `<span class="vb-fix"><span lang="fr">${frEsc(cell.expected)}</span>${cell.why ? ` · ${esc(cell.why)}` : ''}</span>` : cell?.why ? `<span class="vb-fix vb-fix-ok">${esc(cell.why)}</span>` : '';
     return `<div class="vb-trow"><label class="vb-pro" for="vb-cell-${person}" lang="fr">${esc(VB_PERSONS[person])}</label><input class="vb-input${cell ? (cell.right ? ' ok' : ' bad') : ''}" id="vb-cell-${person}" data-vb-cell="${person}" lang="fr" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" value="${esc(verbTable.answers[person])}">${mark}${fix}</div>`;
   }).join('');
-  const summary = result ? `<div class="feedback ${result.right === result.total ? '' : 'warn'}" role="status"><strong>${result.right} of ${result.total}.</strong><p class="vb-why">${esc(result.rule)}</p>${paradigmHTML(result.paradigm)}</div>` : '';
+  const hooks = result ? result.cells.filter((cell) => cell && !cell.right && cell.hook).map((cell) => `<p class="word-hook">${esc(cell.hook)}</p>`).join('') : '';
+  const summary = result ? `<div class="feedback ${result.right === result.total ? '' : 'warn'}" role="status"><strong>${result.right} of ${result.total}.</strong>${hooks}<p class="vb-why">${esc(result.rule)}</p>${paradigmHTML(result.paradigm)}</div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}
     ${vbTableVisit === 'choose' ? `<div class="vb-grid-head"><label class="sr-only" for="vb-table-verb">Verb</label><select id="vb-table-verb">${options}</select><label class="sr-only" for="vb-table-tense">Tense</label><select id="vb-table-tense">${tenses}</select></div>
     <p class="caption">${esc(verb.en)}</p>` : `<div class="vb-prompt vb-table-prompt"><div class="vb-verb" lang="fr">${frEsc(verb.inf)}</div><div class="vb-meta">${esc(verb.en)}</div><span class="vb-tense">${esc(VB_TENSES[verbTable.tense])}</span></div>`}
@@ -2586,7 +2588,11 @@ async function finishStory() {
   render();
   if (storyView?.read) loadStory(true);
 }
-function openGroup(id) { focusId = id; if (move(`focus|${id}`, true)) enterMixed(); }
+function openGroup(id) {
+  // Verb forms practise the shaky forms in Quick forms; every other group is a focus stream.
+  if (mistakes?.find((group) => group.id === id)?.kind === 'verbs') { verbFormsOverride = { set: 'shaky', verbIds: [], tenses: Object.keys(VB_TENSES) }; if (move('verbs-forms', true)) startVerbForms(); return; }
+  focusId = id; if (move(`focus|${id}`, true)) enterMixed();
+}
 async function loadMistakes(quiet = false) {
   if (!quiet) { loading = true; notice = null; retryAction = null; render(); }
   try {

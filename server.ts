@@ -86,7 +86,7 @@ const grammarAudio = new Set(course.topics.flatMap(topic => topic.exercises.map(
 // Lanes Echo writes itself (lib/text-topup.ts) live next to the database, out of the checked-in content.
 const generatedLanes = join(dirname(dbPath), 'comprehension');
 let bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
-let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar });
+let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky() });
 const texts = createTextTopup({
   root, dataDir: dirname(dbPath), ask, stock: () => comprehension.stock(), attempts,
   ...(process.env.ECHO_TEXT_THRESHOLD ? { threshold: Number(process.env.ECHO_TEXT_THRESHOLD) } : {}),
@@ -96,16 +96,12 @@ const texts = createTextTopup({
   reload: async () => {
     bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
     const previous = comprehension;
-    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar });
+    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky() });
     setTimeout(() => previous.close(), 60_000);
   },
 });
 const textsStarted = process.env.ECHO_TEXT_TOPUP !== 'off' ? texts.resume() : Promise.resolve();
 const textChecks = setInterval(() => { if (process.env.ECHO_TEXT_TOPUP !== 'off') void texts.check(); }, 10 * 60_000);
-// Memory hooks for stubborn words: at start and every ten minutes (ECHO_WORD_HOOKS=off switches them off).
-const hooks = createWordHooks({ ask, store });
-const hookChecks = setInterval(() => { if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check(); }, 10 * 60_000);
-if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check();
 // The Verbs room: a conjugation table for every vocabulary verb, written by Claude in the background (at start and
 // every ten minutes; ECHO_VERBS=off switches it off), and the record of every form practised.
 const verbTables = createVerbTables({ file: join(dirname(dbPath), 'verbs.json'), words: () => store.words(), ask });
@@ -123,6 +119,10 @@ const verbs = createVerbDrills({
   dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(),
   earAudio: (said) => existsSync(join(root, 'audio/radio', `${earClip(said)}.mp3`)) ? `audio/radio/${earClip(said)}.mp3` : null,
 });
+// Memory hooks for stubborn words and verb forms: at start and every ten minutes (ECHO_WORD_HOOKS=off switches them off).
+const hooks = createWordHooks({ ask, store, verbs });
+const hookChecks = setInterval(() => { if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check(); }, 10 * 60_000);
+if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check();
 // The Sounds drill: both sides of every pair, recorded after the texts (one voice model at a time).
 const soundsContent = await loadSounds(join(root, 'content/sounds.json'));
 const soundClips = new Set(soundsContent.contrasts.flatMap((contrast) => contrast.items.flatMap((item) => [sideClip(item.id, 'a'), sideClip(item.id, 'b')])));

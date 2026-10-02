@@ -6,10 +6,11 @@ import { recentStudyDays, SCORE_HALF_LIFE_DAYS, StoreError, studyDay } from './s
 import { accentSlip, conjugate, diagnose, earQuestion, earQuestions, GROUP_TITLES, groupOf, isRight, paradigm, persons, rule, subject, TENSES, TENSE_NAMES, type EarKind, type ParadigmRow, type Tense, type Verb } from './verbs';
 
 export type FormState = 'solid' | 'getting' | 'shaky' | 'new';
-export type VerbSet = 'mine' | 'common' | 'chosen';
+// shaky: every form at SHAKY_AT or below, in any verb and tense (Mistakes practises these).
+export type VerbSet = 'mine' | 'common' | 'chosen' | 'shaky';
 export type RoundInput = { set: VerbSet; verbIds?: string[]; tenses: Tense[] };
 export type RoundItem = { verbId: string; inf: string; en: string; tense: Tense; tenseName: string; person: number };
-export type FormResult = { right: boolean; expected: string; why: string; rule: string; paradigm: ParadigmRow[] };
+export type FormResult = { right: boolean; expected: string; why: string; rule: string; paradigm: ParadigmRow[]; hook?: string };
 export type EarItem = { id: string; audio: string; question: string; choices: string[] };
 
 const ROUND = 20;
@@ -31,6 +32,8 @@ const pull = (score: number | undefined) => 2 ** (-Math.max(-LIMIT, Math.min(LIM
 const SOLID_AT = 3;
 const SHAKY_AT = -2;
 const SCORE_DAYS = 60;
+// A form at SHAKY_AT or below that was missed HOOK_MISSES times gets a memory hook (lib/word-hooks.ts).
+const HOOK_MISSES = 3;
 const DAY_MS = 86_400_000;
 // On the verb tape the person is said in English: il and ils sound alike in French. It is shown short and said as
 // a phrase: the English voice garbles a lone pronoun, and a one-word take is too short to check.
@@ -65,11 +68,21 @@ export function createVerbDrills(options: {
       right INTEGER NOT NULL, answered_at TEXT NOT NULL
     );
     CREATE INDEX IF NOT EXISTS verb_answers_form ON verb_answers(verb_id, tense, person, sequence DESC);
+    -- A memory hook Claude wrote for a stubborn form, with the form it was written for: a hook whose form no longer
+    -- matches the verb's table (a corrected table) is not shown, and is written again.
+    CREATE TABLE IF NOT EXISTS verb_hooks (
+      verb_id TEXT NOT NULL, tense TEXT NOT NULL, person INTEGER NOT NULL, form TEXT NOT NULL, hook TEXT NOT NULL,
+      written_at TEXT NOT NULL, PRIMARY KEY (verb_id, tense, person)
+    );
   `);
   const insert = db.query('INSERT OR IGNORE INTO verb_answers (request_id, verb_id, tense, person, mode, question, given, right, answered_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
   const written = db.query<{ verb_id: string; tense: Tense; person: number; right: number }, []>("SELECT verb_id, tense, person, right FROM verb_answers WHERE mode != 'ear' ORDER BY sequence DESC");
   const everyScored = db.query<{ verb_id: string; tense: Tense; person: number; mode: string; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, mode, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
   const everyWritten = db.query<{ verb_id: string; tense: Tense; person: number; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
+  const hookRows = db.query<{ verb_id: string; tense: string; person: number; form: string; hook: string }, []>('SELECT verb_id, tense, person, form, hook FROM verb_hooks');
+  const hookRow = db.query<{ form: string; hook: string }, [string, string, number]>('SELECT form, hook FROM verb_hooks WHERE verb_id = ? AND tense = ? AND person = ?');
+  const saveHook = db.query('INSERT INTO verb_hooks (verb_id, tense, person, form, hook, written_at) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (verb_id, tense, person) DO UPDATE SET form = excluded.form, hook = excluded.hook, written_at = excluded.written_at');
+  const wrongGiven = db.query<{ given: string }, [string, string, number]>("SELECT given FROM verb_answers WHERE verb_id = ? AND tense = ? AND person = ? AND right = 0 AND given != '' GROUP BY lower(given) ORDER BY MAX(sequence) DESC LIMIT 3");
   const heard = db.query<{ question: string; misses: number; answers: number }, []>("SELECT question, SUM(right = 0) AS misses, COUNT(*) AS answers FROM verb_answers WHERE mode = 'ear' GROUP BY question");
 
   const key = (verbId: string, tense: string, person: number) => `${verbId}|${tense}|${person}`;
@@ -111,6 +124,7 @@ export function createVerbDrills(options: {
       return mine;
     }
     if (input?.set === 'common') return verbs.slice(0, COMMON);
+    if (input?.set === 'shaky') return verbs;
     if (input?.set === 'chosen') {
       const found = byId();
       const picked = (Array.isArray(input.verbIds) ? input.verbIds : []).flatMap((id) => { const verb = found.get(id); return verb ? [verb] : []; });
@@ -120,6 +134,7 @@ export function createVerbDrills(options: {
     throw new StoreError('Choose which verbs to practise: yours, the most common, or your own pick.');
   }
   function chosenTenses(input: RoundInput): Tense[] {
+    if (input?.set === 'shaky') return [...TENSES];
     const tenses = Array.isArray(input?.tenses) ? TENSES.filter((tense) => input.tenses.includes(tense)) : [];
     if (!tenses.length) throw new StoreError('Choose at least one tense.');
     return tenses;
@@ -135,6 +150,42 @@ export function createVerbDrills(options: {
     return ordered;
   }
 
+  // A form's memory hook, when one was written for the form as the table has it now.
+  function hookFor(verb: Verb, tense: Tense, person: number): string | undefined {
+    const row = hookRow.get(verb.id, tense, person);
+    return row && row.form === formText(verb, tense, person) ? row.hook : undefined;
+  }
+  // Every form at SHAKY_AT or below, lowest first, with how often it was missed.
+  function shaky() {
+    const verbs = byId();
+    const { scores, misses } = scoresAt(now().getTime(), everyScored.all().filter((row) => verbs.has(row.verb_id)));
+    return [...scores].filter(([, score]) => score <= SHAKY_AT).sort((left, right) => left[1] - right[1]).map(([id, score]) => {
+      const [verbId, tense, person] = id.split('|') as [string, Tense, string];
+      const verb = verbs.get(verbId)!;
+      return { verbId, verb, tense, person: Number(person), form: formText(verb, tense, Number(person)), score, misses: misses.get(id) ?? 0 };
+    });
+  }
+  // The stubborn forms still without a hook (or with one for an older table), lowest score first, each with the
+  // wrong answers last typed for it.
+  function hookless() {
+    const written = new Map(hookRows.all().map((row) => [key(row.verb_id, row.tense, row.person), row.form]));
+    return shaky().filter((entry) => entry.misses >= HOOK_MISSES && written.get(key(entry.verbId, entry.tense, entry.person)) !== entry.form).map((entry) => ({
+      id: key(entry.verbId, entry.tense, entry.person), form: entry.form, verb: entry.verb.inf, means: entry.verb.en, tense: TENSE_NAMES[entry.tense],
+      wrongAnswers: wrongGiven.all(entry.verbId, entry.tense, entry.person).map((row) => row.given),
+    }));
+  }
+  function setHooks(hooks: { id: string; hook: string }[]): void {
+    const verbs = byId();
+    const at = now().toISOString();
+    db.transaction(() => {
+      for (const { id, hook } of hooks) {
+        const [verbId, tense, person] = id.split('|') as [string, Tense, string];
+        const verb = verbs.get(verbId);
+        if (verb && TENSES.includes(tense) && persons(verb).includes(Number(person))) saveHook.run(verbId, tense, Number(person), formText(verb, tense, Number(person)), hook, at);
+      }
+    })();
+  }
+
   // A Quick forms round: the forms most worth practising (shaky first, then untried), spread so a round of many
   // verbs covers several (at most three forms per verb, two per verb and tense); for your verbs, low vocabulary scores weigh a little.
   function round(input: RoundInput): RoundItem[] {
@@ -143,7 +194,8 @@ export function createVerbDrills(options: {
     const score = new Map(options.vocabulary().map((word) => [word.id, word.score]));
     // Weighted order without replacement: each key is random^(1/weight), highest first. Among your own verbs, a
     // verb whose word is shaky in Vocabulary leans a little earlier.
-    const pool = verbs.flatMap((verb) => tenses.flatMap((tense) => persons(verb).map((person) => {
+    const shakyOnly = input.set === 'shaky';
+    const pool = verbs.flatMap((verb) => tenses.flatMap((tense) => persons(verb).filter((person) => !shakyOnly || (scores.get(key(verb.id, tense, person)) ?? 0) <= SHAKY_AT).map((person) => {
       const lean = input.set === 'mine' ? 2 ** (-Math.max(-4, Math.min(4, score.get(verb.id) ?? 0)) / 4) : 1;
       return { verb, tense, person, weight: random() ** (1 / (pull(scores.get(key(verb.id, tense, person))) * lean)) };
     })));
@@ -178,7 +230,8 @@ export function createVerbDrills(options: {
     const right = isRight(form, given);
     const expected = subject(person, form.shown) + form.shown;
     const why = right ? (accentSlip(form, given) ? `Right — with the accents: ${expected}.` : '') : !given.trim() ? '' : diagnose(verb, tense, person, given);
-    return { right, expected, why, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
+    const hook = hookFor(verb, tense, person);
+    return { right, expected, why, rule: rule(verb, tense), paradigm: paradigm(verb, tense), ...(hook ? { hook } : {}) };
   }
   const requestIdOf = (value: unknown) => {
     if (typeof value !== 'string' || !value) throw new StoreError('This answer is missing its request ID.');
@@ -201,7 +254,8 @@ export function createVerbDrills(options: {
     return round(input).map((item) => {
       const verb = verbs.get(item.verbId)!;
       const form = conjugate(verb, item.tense)[item.person]!;
-      return { ...item, answer: subject(item.person, form.shown) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense) };
+      const hook = hookFor(verb, item.tense, item.person);
+      return { ...item, answer: subject(item.person, form.shown) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), ...(hook ? { hook } : {}) };
     });
   }
   // The learner's own say on a card: counts for the form like a typed answer, once per request id.
@@ -248,7 +302,7 @@ export function createVerbDrills(options: {
       const given = typeof input.answers[person] === 'string' ? input.answers[person]! : '';
       const checked = result(verb, tense, person, given);
       insert.run(`${requestId}:${person}`, verb.id, tense, person, 'table', null, given.slice(0, 80), checked.right ? 1 : 0, at);
-      return { right: checked.right, expected: checked.expected, why: checked.why };
+      return { right: checked.right, expected: checked.expected, why: checked.why, ...(checked.hook ? { hook: checked.hook } : {}) };
     });
     return { cells, right: cells.filter((cell) => cell?.right).length, total: persons(verb).length, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
   }
@@ -416,6 +470,6 @@ export function createVerbDrills(options: {
     return [...new Set(verbs.filter((verb, index) => index < COMMON || started.has(verb.id)).flatMap((verb) => earQuestions(verb).map((question) => question.said)))];
   }
 
-  return { round, cards, mark, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, close: () => db.close() };
+  return { round, cards, mark, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills>;

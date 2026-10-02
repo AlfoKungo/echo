@@ -13,6 +13,8 @@ export type ComprehensionDeps = {
   bank: Bank;
   vocabulary: Store;
   grammar: GrammarStore;
+  // The verb forms at -2 or lower, lowest first (lib/verb-drills.ts): Mistakes shows them as one group.
+  shakyForms?: () => { form: string }[];
   now?: () => Date;
   random?: () => number;
 };
@@ -115,6 +117,13 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
       groups.push({
         id: 'words', kind: 'words', title: 'Words you keep missing', count: weak.length,
         examples: weak.slice(0, EXAMPLES).map((word) => word.fr), stream: 'focus:words',
+      });
+    }
+    const forms = deps.shakyForms?.() ?? [];
+    if (forms.length) {
+      groups.push({
+        id: 'verb-forms', kind: 'verbs', title: 'Verb forms', count: forms.length,
+        examples: forms.slice(0, EXAMPLES).map((entry) => entry.form),
       });
     }
     if (comprehension.length) {

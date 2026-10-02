@@ -103,12 +103,13 @@ export type StreamState = {
 // Mutations are idempotent by requestId and return current state on replay; a stale version or key returns HTTP 409.
 
 export type MistakeGroup = {
-  id: string; // grammar topic id, 'words' or 'missed'
-  kind: 'grammar' | 'words' | 'sentences';
+  id: string; // grammar topic id, 'words', 'missed' or 'verb-forms'
+  kind: 'grammar' | 'words' | 'sentences' | 'verbs';
   title: string; // e.g. the grammar topic title, 'Words you keep missing', 'Sentences you didn’t catch'
   count: number;
   examples: string[]; // up to 3 short French examples
-  // What a tap starts: a grammar practice scope and/or a comprehension focus stream.
+  // What a tap starts: a grammar practice scope and/or a comprehension focus stream; a verbs group opens Quick forms
+  // on the shaky forms.
   grammarScope?: string;
   stream?: StreamId;
 };
