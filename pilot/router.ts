@@ -196,7 +196,8 @@ export function createPilot(options: PilotOptions) {
 
 if (import.meta.main) {
   const data = process.env.PILOT_DATA ?? join(homedir(), 'echo-pilot');
-  const origin = process.env.PILOT_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net:8443';
+  // Published by a second Tailscale node on the owner's private tailnet (launchd com.galt.echo-funnel), with Funnel.
+  const origin = process.env.PILOT_ORIGIN ?? 'https://echo.tail023898.ts.net';
   // The Google OAuth client, kept on this Mac only: {"clientId": "...", "clientSecret": "..."}.
   const googleFile = join(data, 'google.json');
   const google = existsSync(googleFile) ? JSON.parse(readFileSync(googleFile, 'utf8')) as { clientId: string; clientSecret: string } : null;
