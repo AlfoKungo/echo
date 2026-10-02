@@ -1,11 +1,14 @@
 // Who may use the friends' Echo, and who is signed in. A learner is an allowed Google email with its own Echo
 // (a port and a folder); removing one keeps their folder, so adding the same email again continues where they left
 // off. A session is a random token in a cookie; only its SHA-256 is stored, so a copy of this database signs no one in.
+// A Google account that signed in while not on the list is kept as a request, with the name Google gave, until the
+// owner adds or dismisses it: friends try first and are approved afterwards.
 import { Database } from 'bun:sqlite';
 import { createHash, randomBytes } from 'node:crypto';
 
 export type Learner = { id: string; email: string; name: string; port: number };
 export type Friend = Learner & { createdAt: string; removedAt: string | null; lastSeenAt: string | null; devices: number };
+export type SignInRequest = { email: string; name: string; firstAt: string; lastAt: string; attempts: number };
 
 // A session lasts this long after its last use: each visit renews it.
 export const SESSION_DAYS = 180;
@@ -24,6 +27,9 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
     CREATE TABLE IF NOT EXISTS sessions (
       token_hash TEXT PRIMARY KEY, learner_id TEXT NOT NULL REFERENCES learners(id), created_at TEXT NOT NULL,
       last_seen_at TEXT NOT NULL, device TEXT NOT NULL DEFAULT ''
+    );
+    CREATE TABLE IF NOT EXISTS requests (
+      email TEXT PRIMARY KEY, name TEXT NOT NULL, first_at TEXT NOT NULL, last_at TEXT NOT NULL, attempts INTEGER NOT NULL
     );`);
   const byEmail = db.query<Learner & { removed_at: string | null }, [string]>('SELECT id, email, name, port, removed_at FROM learners WHERE email = ?');
   const byId = db.query<Learner, [string]>('SELECT id, email, name, port FROM learners WHERE id = ? AND removed_at IS NULL');
@@ -42,6 +48,10 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
   const endSession = db.query('DELETE FROM sessions WHERE token_hash = ?');
   const endSessionsOf = db.query('DELETE FROM sessions WHERE learner_id = ?');
   const dropExpired = db.query('DELETE FROM sessions WHERE last_seen_at < ?');
+  const noteRequest = db.query(`INSERT INTO requests (email, name, first_at, last_at, attempts) VALUES (?1, ?2, ?3, ?3, 1)
+    ON CONFLICT (email) DO UPDATE SET name = excluded.name, last_at = excluded.last_at, attempts = attempts + 1`);
+  const allRequests = db.query<{ email: string; name: string; first_at: string; last_at: string; attempts: number }, []>('SELECT * FROM requests ORDER BY last_at DESC');
+  const dropRequest = db.query('DELETE FROM requests WHERE email = ?');
 
   const normalEmail = (email: unknown) => (typeof email === 'string' ? email.trim().toLowerCase() : '');
   const oldestLive = () => new Date(now().getTime() - SESSION_DAYS * DAY_MS).toISOString();
@@ -73,10 +83,12 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
       if (existing) {
         if (!existing.removed_at) throw new Error(`${email} is already on the list.`);
         restore.run(name, existing.id);
+        dropRequest.run(email);
         return { id: existing.id, email, name, port: existing.port };
       }
       const learner = { id: newId(email), email, name, port: Math.max(options.firstPort - 1, highestPort.get()?.port ?? 0) + 1 };
       insert.run(learner.id, learner.email, learner.name, learner.port, now().toISOString());
+      dropRequest.run(email);
       return learner;
     },
     // Takes an email off the list and signs it out everywhere; its folder stays.
@@ -85,6 +97,15 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
       endSessionsOf.run(id);
       return removed;
     },
+    // Remembers a Google account that signed in while not on the list.
+    request(identity: { email: string; name: string }) {
+      const email = normalEmail(identity.email);
+      noteRequest.run(email, identity.name.trim().slice(0, 40) || email.split('@')[0]!, now().toISOString());
+    },
+    requests(): SignInRequest[] {
+      return allRequests.all().map((row) => ({ email: row.email, name: row.name, firstAt: row.first_at, lastAt: row.last_at, attempts: row.attempts }));
+    },
+    dismiss(email: unknown): boolean { return dropRequest.run(normalEmail(email)).changes > 0; },
     startSession(learnerId: string, device: string): string {
       const token = randomBytes(32).toString('base64url');
       const at = now().toISOString();

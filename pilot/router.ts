@@ -125,7 +125,7 @@ export function createPilot(options: PilotOptions) {
     if (path === '/signin') {
       if (!google) return page('Echo', `<h1>Echo</h1><p>Sign-in is not set up yet.</p>`, 503);
       const denied = url.searchParams.get('denied');
-      if (denied) return page('Echo · private', `<h1>This Echo is private</h1><p><b>${esc(denied)}</b> is not on the list. Ask ${esc(owner)} to add it, then try again.</p>${signInButton('Use another Google account')}`, 403);
+      if (denied) return page('Echo · private', `<h1>This Echo is private</h1><p><b>${esc(denied)}</b> is not on the list yet. ${esc(owner)} can see that you tried and can let you in; then sign in again.</p>${signInButton('Use another Google account')}`, 403);
       const failed = url.searchParams.get('failed');
       return page('Echo · sign in', `<h1>Echo</h1><p>${failed ? esc(failed) : 'French practice, with friends.'}</p>${signInButton()}<small>Only people ${esc(owner)} has added can come in.</small>`);
     }
@@ -138,7 +138,11 @@ export function createPilot(options: PilotOptions) {
       try {
         const identity = await google.finish(url.searchParams.get('code'), url.searchParams.get('state'));
         const learner = accounts.allowed(identity.email);
-        if (!learner) return redirect(`/signin?denied=${encodeURIComponent(identity.email)}`);
+        if (!learner) {
+          accounts.request(identity);
+          console.log(`pilot: ${identity.email} (${identity.name}) tried to sign in and is not on the list`);
+          return redirect(`/signin?denied=${encodeURIComponent(identity.email)}`);
+        }
         return redirect('/echo/', sessionCookie(accounts.startSession(learner.id, req.headers.get('user-agent') ?? '')));
       } catch (error) {
         if (!(error instanceof SignInError)) console.error('pilot: sign-in failed', error);
@@ -169,12 +173,16 @@ export function createPilot(options: PilotOptions) {
   async function adminFetch(req: Request): Promise<Response> {
     const path = new URL(req.url).pathname;
     try {
-      if (path === '/friends' && req.method === 'GET') return Response.json({ friends: accounts.friends(), origin: options.origin, signIn: !!google });
+      if (path === '/friends' && req.method === 'GET') return Response.json({ friends: accounts.friends(), requests: accounts.requests(), origin: options.origin, signIn: !!google });
       if (path === '/friends' && req.method === 'POST') return Response.json({ friend: accounts.add(await req.json()) });
       if (path === '/friends/remove' && req.method === 'POST') {
         const { id } = await req.json() as { id?: unknown };
         if (typeof id !== 'string' || !accounts.remove(id)) return Response.json({ error: 'That friend is not on the list.' }, { status: 404 });
         stopLearner(id);
+        return Response.json({ ok: true });
+      }
+      if (path === '/friends/dismiss' && req.method === 'POST') {
+        if (!accounts.dismiss((await req.json() as { email?: unknown }).email)) return Response.json({ error: 'Nobody with that email is waiting.' }, { status: 404 });
         return Response.json({ ok: true });
       }
       return Response.json({ error: 'Not found' }, { status: 404 });

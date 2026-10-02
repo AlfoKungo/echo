@@ -363,14 +363,15 @@ function workingCounts(label) {
   return `<span class="compact-line"><span class="compact-label" title="${esc(label)}">${esc(label)}</span>${counts}</span>`;
 }
 // Home: every room is a tile, Vocabulary first; each carries one live hint. The Story and Radio hints come from
-// their own endpoints, read again at most once a minute while Home is open.
-let homeInfo = { story: null, radio: null, at: 0 };
+// their own endpoints, and the Friends row says how many people are waiting to be let in, all read again at most
+// once a minute while Home is open.
+let homeInfo = { story: null, radio: null, waiting: 0, at: 0 };
 function loadHomeInfo() {
   if (Date.now() - homeInfo.at < 60_000) return;
   homeInfo.at = Date.now();
   const hint = (room) => roomsOff.has(room) ? Promise.resolve(null) : api(`api/${room}`).catch(() => null);
-  Promise.all([hint('story'), hint('radio')]).then(([story, radioView]) => {
-    homeInfo = { story, radio: radioView, at: homeInfo.at };
+  Promise.all([hint('story'), hint('radio'), hint('friends')]).then(([story, radioView, friends]) => {
+    homeInfo = { story, radio: radioView, waiting: friends?.requests?.length ?? 0, at: homeInfo.at };
     if (screen === 'home' && !busy) renderHome();
   });
 }
@@ -418,7 +419,7 @@ function renderHome() {
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
   </div><p class="study-label">Study</p><div class="study">
-    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${roomsOff.has('friends') ? '' : row('friends', friendsIcon, 'Friends')}
+    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${roomsOff.has('friends') ? '' : row('friends', friendsIcon, homeInfo.waiting ? `Friends · ${homeInfo.waiting} waiting` : 'Friends')}
   </div></section>`;
 }
 // Keeps a retry scheduled while the Mac is out of reach and an action waits, sooner at first, then every 30 s.
@@ -1438,6 +1439,14 @@ async function removeFriend(id, name) {
   busy = false;
   if (screen === 'friends') render();
 }
+async function dismissRequest(email) {
+  if (busy) return;
+  busy = true; notice = null; render();
+  try { await api('api/friends/dismiss', { method: 'POST', body: JSON.stringify({ email }) }); friendsInfo = await api('api/friends'); }
+  catch (error) { notice = { message: error.message }; }
+  busy = false;
+  if (screen === 'friends') render();
+}
 async function copyFriendsLink() {
   try { await navigator.clipboard.writeText(`${friendsInfo.origin}/`); notice = { kind: 'info', message: 'Link copied.' }; } catch { notice = { message: `Copy this link: ${friendsInfo.origin}/` }; }
   render();
@@ -1449,8 +1458,11 @@ function renderFriends() {
   const active = friendsInfo.friends.filter((friend) => !friend.removedAt), removed = friendsInfo.friends.filter((friend) => friend.removedAt);
   const rows = active.map((friend) => `<li><div class="name"><p>${esc(friend.name)}</p><small>${esc(friend.email)} · ${seen(friend.lastSeenAt)}${friend.devices ? ` · ${friend.devices} ${friend.devices === 1 ? 'device' : 'devices'}` : ''}</small></div><button class="quiet" data-action="friend-remove" data-id="${esc(friend.id)}" data-name="${esc(friend.name)}" ${busy ? 'disabled' : ''}>Remove</button></li>`).join('');
   const gone = removed.map((friend) => `<li><div class="name"><p>${esc(friend.name)}</p><small>${esc(friend.email)} · removed, progress kept</small></div><button class="quiet" data-action="friend-restore" data-email="${esc(friend.email)}" data-name="${esc(friend.name)}" ${busy ? 'disabled' : ''}>Add back</button></li>`).join('');
+  // Google accounts that signed in while not on the list, latest first: let one in, or dismiss it.
+  const waiting = (friendsInfo.requests || []).map((request) => `<li><div class="name"><p>${esc(request.name)}</p><small>${esc(request.email)} · tried ${dateLabel(request.lastAt)}${request.attempts > 1 ? ` · ${request.attempts} times` : ''}</small></div><button class="quiet" data-action="friend-restore" data-email="${esc(request.email)}" data-name="${esc(request.name)}" ${busy ? 'disabled' : ''}>Let in</button><button class="quiet" data-action="friend-dismiss" data-email="${esc(request.email)}" ${busy ? 'disabled' : ''}>Dismiss</button></li>`).join('');
   main.innerHTML = `${noticeHTML()}<section class="topics friends">${header}
     ${friendsInfo.signIn ? '' : '<p class="feedback warn">Google sign-in is not set up yet, so nobody can sign in. Its client goes in ~/echo-pilot/google.json.</p>'}
+    ${waiting ? `<p class="vs-label">Tried to sign in</p><ol class="st-rows">${waiting}</ol>` : ''}
     <form id="friend-form" class="friend-form"><label for="friend-email">Google email</label><input id="friend-email" type="email" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="dana@gmail.com" required>
       <label for="friend-name">Name</label><input id="friend-name" autocomplete="off" placeholder="Dana"><button class="primary" ${busy ? 'disabled' : ''}>Add</button></form>
     ${active.length ? `<ol class="st-rows">${rows}</ol>` : '<p class="empty-list">Nobody yet. Add a friend’s Google email, then send them the link.</p>'}
@@ -3322,6 +3334,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'friends') openFriends();
   else if (action === 'friend-remove') removeFriend(button.dataset.id, button.dataset.name);
   else if (action === 'friend-restore') saveFriend(button.dataset.email, button.dataset.name);
+  else if (action === 'friend-dismiss') dismissRequest(button.dataset.email);
   else if (action === 'friends-copy') copyFriendsLink();
   else if (action === 'statistics') openStatistics();
   else if (action === 'songs') openSongs();

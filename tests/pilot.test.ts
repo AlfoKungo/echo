@@ -46,6 +46,20 @@ test('only emails on the list are let in, each to their own Echo, which never se
   expect(reached).toEqual({ path: '/as/dana/echo/api/state', cookie: null });
 });
 
+test('a refused sign-in waits to be let in or dismissed, and letting it in lets that account straight in', async () => {
+  const admin = (path: string, body?: unknown) => pilot.adminFetch(new Request(`http://admin${path}`, body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) }));
+  const waiting = async () => (await (await admin('/friends')).json() as { requests: { email: string; name: string; attempts: number }[] }).requests.filter((request) => ['roni@gmail.com', 'eve@gmail.com'].includes(request.email));
+  await signIn({ email: 'Roni@Gmail.com', name: 'Roni Levi' });
+  await signIn({ email: 'roni@gmail.com', name: 'Roni Levi' });
+  await signIn({ email: 'eve@gmail.com', name: 'Eve' });
+  expect((await waiting()).map(({ email, name, attempts }) => [email, name, attempts]).sort()).toEqual([['eve@gmail.com', 'Eve', 1], ['roni@gmail.com', 'Roni Levi', 2]]);
+  expect((await admin('/friends', { email: 'roni@gmail.com', name: 'Roni Levi' })).status).toBe(200);
+  expect((await admin('/friends/dismiss', { email: 'eve@gmail.com' })).status).toBe(200);
+  expect(await waiting()).toEqual([]);
+  expect((await signIn({ email: 'roni@gmail.com' })).headers.get('location')).toBe('/echo/');
+  expect((await admin('/friends/dismiss', { email: 'eve@gmail.com' })).status).toBe(404);
+});
+
 test('without a session a page goes to sign-in and anything else is refused, before reaching any Echo', async () => {
   const page = await get('/echo/', { accept: 'text/html' });
   expect(page.status).toBe(303);
