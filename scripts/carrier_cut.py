@@ -42,7 +42,9 @@ def transcribe_tokens(path, keep=False):
     subprocess.run(['/opt/homebrew/bin/whisper-cli', '-m', str(WHISPER_MODEL), '-l', 'fr', '--dtw', 'large.v3.turbo', '--no-flash-attn', '-ojf', '-np', str(path)],
                    stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, check=True)
     result_path = Path(str(path) + '.json')
-    result = json.loads(result_path.read_text())
+    # whisper.cpp can split one accented letter across two tokens, leaving bytes that are not UTF-8 on their own; such
+    # a token reads as U+FFFD, which normalize() drops, so at worst the carrier is not found and the take is refused.
+    result = json.loads(result_path.read_bytes().decode('utf-8', errors='replace'))
     if not keep:
         result_path.unlink()
     return {'text': ''.join(segment['text'] for segment in result['transcription']),

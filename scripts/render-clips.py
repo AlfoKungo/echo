@@ -189,8 +189,9 @@ def executable(name):
 def run(command):
     # A Ctrl-C or SIGTERM must not orphan Whisper/ffmpeg. Each short-lived child
     # gets its own process group, and only that owned group is terminated here.
-    child = subprocess.Popen(command, stdout=subprocess.PIPE,
-                             stderr=subprocess.PIPE, text=True, start_new_session=True)
+    # Whisper can print a split accented letter as bytes that are not UTF-8; they read as U+FFFD.
+    child = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                             errors='replace', start_new_session=True)
     try:
         stdout, stderr = child.communicate()
         if child.returncode:
@@ -216,7 +217,8 @@ def transcribe(path, whisper):
     # Whole-clip validation needs no vocabulary DTW boundary or word trimming.
     run([whisper, '-m', str(WHISPER_MODEL), '-l', 'fr', '--no-flash-attn',
          '-ojf', '-np', str(path)])
-    result = json.loads(Path(str(path) + '.json').read_text())
+    # whisper.cpp can leave a split accented letter as bytes that are not UTF-8; it reads as U+FFFD and fails the check.
+    result = json.loads(Path(str(path) + '.json').read_bytes().decode('utf-8', errors='replace'))
     return ''.join(segment['text'] for segment in result['transcription']).strip()
 
 
