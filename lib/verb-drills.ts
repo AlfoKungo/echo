@@ -390,9 +390,9 @@ export function createVerbDrills(options: {
     const recent = recentStudyDays(now(), 14).days;
     const daily = recent.map((day) => ({ day, gained: 0, lost: 0 }));
     const byDay = new Map(daily.map((entry) => [entry.day, entry]));
-    // Each form's lowest score so far decides what a miss costs (lib/score-points.ts).
+    // What a miss costs depends on how far the form's answers had climbed (lib/score-points.ts).
     const events = rows.map((row) => ({ id: key(row.verb_id, row.tense, row.person), weight: points(row.mode, row.right), at: Date.parse(row.answered_at) }));
-    pointsFromLowest(events, SCORE_HALF_LIFE_DAYS).forEach((value, index) => {
+    pointsFromLowest(events).forEach((value, index) => {
       const entry = byDay.get(studyDay(new Date(events[index]!.at)));
       if (entry) { if (value > 0) entry.gained += value; else entry.lost -= value; }
     });

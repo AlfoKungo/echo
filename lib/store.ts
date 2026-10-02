@@ -1171,9 +1171,9 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         const entry = byDay.get(studyDay(new Date(answer.at)));
         if (entry) { if (answer.known) entry.knew += 1; else entry.missed += 1; }
       }
-      // Points come from the whole record, in time order, as each word's lowest score so far decides what a miss costs.
+      // Points come from the whole record, in time order: what a miss costs depends on how far the word's answers had climbed (lib/score-points.ts).
       const events = scoreEvents.all().map((event) => ({ id: event.word_id, weight: event.weight, at: Date.parse(event.at) })).sort((left, right) => left.at - right.at);
-      pointsFromLowest(events, SCORE_HALF_LIFE_DAYS).forEach((value, index) => {
+      pointsFromLowest(events).forEach((value, index) => {
         const entry = byDay.get(studyDay(new Date(events[index]!.at)));
         if (entry) { if (value > 0) entry.gained += value; else entry.lost -= value; }
       });
