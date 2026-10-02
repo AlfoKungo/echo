@@ -368,7 +368,8 @@ let homeInfo = { story: null, radio: null, at: 0 };
 function loadHomeInfo() {
   if (Date.now() - homeInfo.at < 60_000) return;
   homeInfo.at = Date.now();
-  Promise.all([api('api/story').catch(() => null), api('api/radio').catch(() => null)]).then(([story, radioView]) => {
+  const hint = (room) => roomsOff.has(room) ? Promise.resolve(null) : api(`api/${room}`).catch(() => null);
+  Promise.all([hint('story'), hint('radio')]).then(([story, radioView]) => {
     homeInfo = { story, radio: radioView, at: homeInfo.at };
     if (screen === 'home' && !busy) renderHome();
   });
@@ -1412,8 +1413,7 @@ async function loadStream(id, message = '') {
 function enterStream() { loadStream(screen === 'read' ? 'read' : 'listen'); }
 function openStream(name) { if (move(name, true)) enterStream(); }
 function openMix() { if (move('mix', true)) enterMixed(); }
-// ── Friends: who has signed in to the friends' Echo (pilot/router.ts). Google's test-user list decides who can; an
-// email's first sign-in adds it here, and removing it here locks it out. Only in the owner's Echo. ──
+// ── Friends: who may sign in to the friends' Echo (pilot/router.ts) with Google. Only in the owner's Echo. ──
 let friendsInfo = null; // { friends, origin, signIn } from api/friends
 function openFriends() { if (move('friends', true)) loadFriends(); }
 async function loadFriends() {
@@ -1422,16 +1422,16 @@ async function loadFriends() {
   loading = false;
   if (screen === 'friends') render();
 }
-async function restoreFriend(email) {
+async function saveFriend(email, name) {
   if (busy) return;
   busy = true; notice = null; render();
-  try { await api('api/friends', { method: 'POST', body: JSON.stringify({ email }) }); friendsInfo = await api('api/friends'); notice = { kind: 'info', message: `${email} can sign in again.` }; }
+  try { await api('api/friends', { method: 'POST', body: JSON.stringify({ email, name }) }); friendsInfo = await api('api/friends'); notice = { kind: 'info', message: `${email.trim().toLowerCase()} can sign in now.` }; }
   catch (error) { notice = { message: error.message }; }
   busy = false;
   if (screen === 'friends') render();
 }
 async function removeFriend(id, name) {
-  if (busy || !confirm(`Remove ${name}? They are signed out at once and can’t sign in again, even while still on Google’s test users; their progress is kept in case you add them back.`)) return;
+  if (busy || !confirm(`Take ${name} off the list? They are signed out at once; their progress is kept in case you add them back.`)) return;
   busy = true; notice = null; render();
   try { await api('api/friends/remove', { method: 'POST', body: JSON.stringify({ id }) }); friendsInfo = await api('api/friends'); }
   catch (error) { notice = { message: error.message }; }
@@ -1443,18 +1443,18 @@ async function copyFriendsLink() {
   render();
 }
 function renderFriends() {
-  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Friends</h1><p class="subtitle">Who has signed in to the friends’ Echo. Each has their own progress; nobody sees anyone else’s.</p>`;
+  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Friends</h1><p class="subtitle">Who can sign in to the friends’ Echo with Google. Each has their own progress; nobody sees anyone else’s.</p>`;
   if (!friendsInfo || loading) { main.innerHTML = `${noticeHTML()}<section class="topics friends">${header}${loading ? '<div class="loading-state" role="status">Looking up your friends…</div>' : ''}</section>`; return; }
   const seen = (at) => at ? `last in ${dayLabel(at).toLowerCase()}` : 'not signed in yet';
   const active = friendsInfo.friends.filter((friend) => !friend.removedAt), removed = friendsInfo.friends.filter((friend) => friend.removedAt);
   const rows = active.map((friend) => `<li><div class="name"><p>${esc(friend.name)}</p><small>${esc(friend.email)} · ${seen(friend.lastSeenAt)}${friend.devices ? ` · ${friend.devices} ${friend.devices === 1 ? 'device' : 'devices'}` : ''}</small></div><button class="quiet" data-action="friend-remove" data-id="${esc(friend.id)}" data-name="${esc(friend.name)}" ${busy ? 'disabled' : ''}>Remove</button></li>`).join('');
-  const gone = removed.map((friend) => `<li><div class="name"><p>${esc(friend.name)}</p><small>${esc(friend.email)} · removed, progress kept</small></div><button class="quiet" data-action="friend-restore" data-email="${esc(friend.email)}" ${busy ? 'disabled' : ''}>Add back</button></li>`).join('');
+  const gone = removed.map((friend) => `<li><div class="name"><p>${esc(friend.name)}</p><small>${esc(friend.email)} · removed, progress kept</small></div><button class="quiet" data-action="friend-restore" data-email="${esc(friend.email)}" data-name="${esc(friend.name)}" ${busy ? 'disabled' : ''}>Add back</button></li>`).join('');
   main.innerHTML = `${noticeHTML()}<section class="topics friends">${header}
     ${friendsInfo.signIn ? '' : '<p class="feedback warn">Google sign-in is not set up yet, so nobody can sign in. Its client goes in ~/echo-pilot/google.json.</p>'}
-    ${active.length ? `<ol class="st-rows">${rows}</ol>` : '<p class="empty-list">Nobody has signed in yet.</p>'}
-    <div class="friends-link"><p>To invite someone, add their Gmail to Google’s test users, then send them the link. They appear here after their first sign-in.</p>
-      <a class="secondary" href="https://console.cloud.google.com/auth/audience" target="_blank" rel="noopener">Open Google’s test users</a>
-      <code>${esc(friendsInfo.origin)}/</code><button class="secondary" data-action="friends-copy">Copy link</button></div>
+    <form id="friend-form" class="friend-form"><label for="friend-email">Google email</label><input id="friend-email" type="email" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="dana@gmail.com" required>
+      <label for="friend-name">Name</label><input id="friend-name" autocomplete="off" placeholder="Dana"><button class="primary" ${busy ? 'disabled' : ''}>Add</button></form>
+    ${active.length ? `<ol class="st-rows">${rows}</ol>` : '<p class="empty-list">Nobody yet. Add a friend’s Google email, then send them the link.</p>'}
+    <div class="friends-link"><p>Their link</p><code>${esc(friendsInfo.origin)}/</code><button class="secondary" data-action="friends-copy">Copy link</button></div>
     ${gone ? `<p class="vs-label">Removed</p><ol class="st-rows">${gone}</ol>` : ''}</section>`;
 }
 function openMistakes() { if (move('mistakes', true)) loadMistakes(); }
@@ -3321,7 +3321,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'mistakes') openMistakes();
   else if (action === 'friends') openFriends();
   else if (action === 'friend-remove') removeFriend(button.dataset.id, button.dataset.name);
-  else if (action === 'friend-restore') restoreFriend(button.dataset.email);
+  else if (action === 'friend-restore') saveFriend(button.dataset.email, button.dataset.name);
   else if (action === 'friends-copy') copyFriendsLink();
   else if (action === 'statistics') openStatistics();
   else if (action === 'songs') openSongs();
@@ -3412,6 +3412,7 @@ document.addEventListener('submit', (event) => {
   else if (event.target.id === 'song-paste-form') { event.preventDefault(); readSong({ title: document.querySelector('#song-title').value, artist: document.querySelector('#song-artist').value, lyrics: document.querySelector('#song-lyrics').value }); }
   else if (event.target.matches('.custom-count')) { event.preventDefault(); submitCustomCount(event.target); }
   else if (event.target.id === 'vb-form') { event.preventDefault(); submitVerbForm(); }
+  else if (event.target.id === 'friend-form') { event.preventDefault(); saveFriend(document.querySelector('#friend-email').value, document.querySelector('#friend-name').value); }
 });
 document.addEventListener('keydown', (event) => {
   if (event.defaultPrevented || event.repeat || aboutDialog.open || dialog.open || busy || loading || locked()) return;

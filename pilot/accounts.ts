@@ -1,7 +1,6 @@
-// Who uses the friends' Echo, and who is signed in. A learner is a Google email with its own Echo (a port and a
-// folder), made at that email's first sign-in; removing one keeps their folder and refuses that email from then on,
-// until it is added back, which continues where they left off. A session is a random token in a cookie; only its
-// SHA-256 is stored, so a copy of this database signs no one in.
+// Who may use the friends' Echo, and who is signed in. A learner is an allowed Google email with its own Echo
+// (a port and a folder); removing one keeps their folder, so adding the same email again continues where they left
+// off. A session is a random token in a cookie; only its SHA-256 is stored, so a copy of this database signs no one in.
 import { Database } from 'bun:sqlite';
 import { createHash, randomBytes } from 'node:crypto';
 
@@ -12,6 +11,7 @@ export type Friend = Learner & { createdAt: string; removedAt: string | null; la
 export const SESSION_DAYS = 180;
 const DAY_MS = 86_400_000;
 const hash = (token: string) => createHash('sha256').update(token).digest('hex');
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function createAccounts(options: { dbPath: string; firstPort: number; now?: () => Date }) {
   const now = options.now ?? (() => new Date());
@@ -28,7 +28,7 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
   const byEmail = db.query<Learner & { removed_at: string | null }, [string]>('SELECT id, email, name, port, removed_at FROM learners WHERE email = ?');
   const byId = db.query<Learner, [string]>('SELECT id, email, name, port FROM learners WHERE id = ? AND removed_at IS NULL');
   const insert = db.query('INSERT INTO learners (id, email, name, port, created_at) VALUES (?, ?, ?, ?, ?)');
-  const restore = db.query('UPDATE learners SET removed_at = NULL WHERE id = ? AND removed_at IS NOT NULL');
+  const restore = db.query('UPDATE learners SET removed_at = NULL, name = ? WHERE id = ?');
   const markRemoved = db.query('UPDATE learners SET removed_at = ? WHERE id = ? AND removed_at IS NULL');
   const highestPort = db.query<{ port: number | null }, []>('SELECT max(port) AS port FROM learners');
   const takenIds = db.query<{ id: string }, []>('SELECT id FROM learners');
@@ -55,27 +55,29 @@ export function createAccounts(options: { dbPath: string; firstPort: number; now
   }
 
   return {
-    // The learner for a Google sign-in, made on the email's first one with the name Google gives; null for an email
-    // that was removed. Who may reach this at all is Google's test-user list (the OAuth app stays in Testing).
-    admit(identity: { email: string; name: string }): Learner | null {
-      const email = normalEmail(identity.email);
-      const row = byEmail.get(email);
-      if (row) return row.removed_at ? null : { id: row.id, email: row.email, name: row.name, port: row.port };
-      const name = identity.name.trim().slice(0, 40) || email.split('@')[0]!;
-      const learner = { id: newId(email), email, name, port: Math.max(options.firstPort - 1, highestPort.get()?.port ?? 0) + 1 };
-      insert.run(learner.id, learner.email, learner.name, learner.port, now().toISOString());
-      return learner;
+    // The learner allowed for a Google email, or null: removed and unknown emails are not let in.
+    allowed(email: string): Learner | null {
+      const row = byEmail.get(normalEmail(email));
+      return row && !row.removed_at ? { id: row.id, email: row.email, name: row.name, port: row.port } : null;
     },
     learner: (id: string): Learner | null => byId.get(id) ?? null,
     friends(): Friend[] {
       return all.all(oldestLive()).map((row) => ({ id: row.id, email: row.email, name: row.name, port: row.port, createdAt: row.created_at, removedAt: row.removed_at, lastSeenAt: row.last_seen_at, devices: row.devices }));
     },
-    // Lets a removed email sign in again, with its old folder.
-    restore(email: unknown): Learner {
-      const row = byEmail.get(normalEmail(email));
-      if (!row?.removed_at) throw new Error('That email is not among the removed friends.');
-      restore.run(row.id);
-      return { id: row.id, email: row.email, name: row.name, port: row.port };
+    // Allows an email; an email removed before is allowed again with its old folder.
+    add(input: { email: unknown; name: unknown }): Learner {
+      const email = normalEmail(input.email);
+      if (!EMAIL.test(email)) throw new Error('Type the Google email address your friend signs in with.');
+      const name = typeof input.name === 'string' && input.name.trim() ? input.name.trim().slice(0, 40) : email.split('@')[0]!;
+      const existing = byEmail.get(email);
+      if (existing) {
+        if (!existing.removed_at) throw new Error(`${email} is already on the list.`);
+        restore.run(name, existing.id);
+        return { id: existing.id, email, name, port: existing.port };
+      }
+      const learner = { id: newId(email), email, name, port: Math.max(options.firstPort - 1, highestPort.get()?.port ?? 0) + 1 };
+      insert.run(learner.id, learner.email, learner.name, learner.port, now().toISOString());
+      return learner;
     },
     // Takes an email off the list and signs it out everywhere; its folder stays.
     remove(id: string): boolean {

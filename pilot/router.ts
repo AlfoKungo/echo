@@ -1,11 +1,12 @@
 // The friends' Echo: one ordinary Echo process per learner, each with its own database, behind this router, which
-// signs people in with Google. Who can sign in is Google's test-user list: the OAuth app stays in Testing, so Google
-// itself turns away every other account, and an email's first sign-in here makes its learner (pilot/accounts.ts).
-// Publishing the app would open sign-in to every Google account; an allow-list here must come first.
+// signs people in with Google and lets in only the emails the owner has allowed (pilot/accounts.ts). Google does not
+// filter: an app asking only for name, email and profile is open to every Google account even while in Testing, so
+// this list is the only lock.
 //
 // Two listeners. The public one (PILOT_PORT, behind Tailscale) serves the sign-in pages and, for a signed-in learner,
 // their Echo; without a valid session it serves nothing else. The admin one (PILOT_ADMIN_PORT) is bound to this Mac
-// alone and is never exposed: the owner's Echo lists, removes and adds back learners through it (its Friends page).
+// alone and is never exposed: the owner's Echo manages the allowed emails through it (its Friends page), and so
+// does pilot/friends.ts from a shell on this Mac.
 //
 // Each learner lives in PILOT_DATA/<id>/ (echo.db, server.log, backup/). Their Echo runs from this checkout, so the
 // recordings, decks, sentence bank and grammar course are the owner's, read and never recorded twice; the verb tables
@@ -124,9 +125,9 @@ export function createPilot(options: PilotOptions) {
     if (path === '/signin') {
       if (!google) return page('Echo', `<h1>Echo</h1><p>Sign-in is not set up yet.</p>`, 503);
       const denied = url.searchParams.get('denied');
-      if (denied) return page('Echo · private', `<h1>This Echo is private</h1><p><b>${esc(denied)}</b> no longer has access. Ask ${esc(owner)} if that is a mistake.</p>${signInButton('Use another Google account')}`, 403);
+      if (denied) return page('Echo · private', `<h1>This Echo is private</h1><p><b>${esc(denied)}</b> is not on the list. Ask ${esc(owner)} to add it, then try again.</p>${signInButton('Use another Google account')}`, 403);
       const failed = url.searchParams.get('failed');
-      return page('Echo · sign in', `<h1>Echo</h1><p>${failed ? esc(failed) : 'French practice, with friends.'}</p>${signInButton()}<small>Only people ${esc(owner)} has invited can come in.</small>`);
+      return page('Echo · sign in', `<h1>Echo</h1><p>${failed ? esc(failed) : 'French practice, with friends.'}</p>${signInButton()}<small>Only people ${esc(owner)} has added can come in.</small>`);
     }
     if (path === '/auth/google') {
       if (!google) return redirect('/signin');
@@ -136,7 +137,7 @@ export function createPilot(options: PilotOptions) {
       if (!google) return redirect('/signin');
       try {
         const identity = await google.finish(url.searchParams.get('code'), url.searchParams.get('state'));
-        const learner = accounts.admit(identity);
+        const learner = accounts.allowed(identity.email);
         if (!learner) return redirect(`/signin?denied=${encodeURIComponent(identity.email)}`);
         return redirect('/echo/', sessionCookie(accounts.startSession(learner.id, req.headers.get('user-agent') ?? '')));
       } catch (error) {
@@ -169,7 +170,7 @@ export function createPilot(options: PilotOptions) {
     const path = new URL(req.url).pathname;
     try {
       if (path === '/friends' && req.method === 'GET') return Response.json({ friends: accounts.friends(), origin: options.origin, signIn: !!google });
-      if (path === '/friends' && req.method === 'POST') return Response.json({ friend: accounts.restore((await req.json() as { email?: unknown }).email) });
+      if (path === '/friends' && req.method === 'POST') return Response.json({ friend: accounts.add(await req.json()) });
       if (path === '/friends/remove' && req.method === 'POST') {
         const { id } = await req.json() as { id?: unknown };
         if (typeof id !== 'string' || !accounts.remove(id)) return Response.json({ error: 'That friend is not on the list.' }, { status: 404 });

@@ -1,7 +1,7 @@
 // Sign in with Google (OAuth 2.0 authorization code with PKCE), asking only for the email and name. start() sends the
 // browser to Google; finish() trades the code Google sends back for an ID token, straight from Google's token
 // endpoint over TLS, and checks it is meant for this client, fresh, for this very sign-in (state and nonce), and for
-// an email Google has verified. Who may come in is the router's call (accounts.admit).
+// an email Google has verified. Which emails may come in is the router's call (accounts.allowed).
 import { createHash, randomBytes } from 'node:crypto';
 
 export type GoogleConfig = { clientId: string; clientSecret: string; redirectUri: string };
