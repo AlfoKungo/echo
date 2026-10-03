@@ -2160,7 +2160,7 @@ function sayListen(token, deadline) {
     const blocks = [];
     sayCapture = blocks;
     const began = performance.now(), rate = context.sampleRate;
-    let floor = null, loudTicks = 0, spokeAt = 0, lastLoud = 0, over = false, dropped = 0;
+    let floor = null, loudTicks = 0, spokeAt = 0, lastLoud = 0, over = false, dropped = 0, shown = 0;
     const finish = (outcome) => {
       if (over) return;
       over = true; clearInterval(timer); sayInterrupt = null; sayGiveUp = null; sayCapture = null;
@@ -2190,8 +2190,12 @@ function sayListen(token, deadline) {
       const loud = level > Math.max(floor + 15, -55);
       if (loud) { loudTicks += 1; lastLoud = now; if (!spokeAt && loudTicks >= 3) spokeAt = now - 150; }
       else { loudTicks = 0; if (!spokeAt) floor += (level - floor) * (level < floor ? 0.3 : 0.05); }
+      // The bar follows the voice, not the room: it starts 8 dB over the room's quiet, rises at once and settles
+      // slowly, so it reads as speaking or not instead of flickering with every reading.
+      const target = Math.max(0, Math.min(1, (level - floor - 8) / 22));
+      shown += (target - shown) * (target > shown ? 0.6 : 0.15);
       const meter = main.querySelector('.say-meter span');
-      if (meter) meter.style.width = `${Math.round(Math.max(0, Math.min(1, (level - floor) / 30)) * 100)}%`;
+      if (meter) meter.style.transform = `scaleX(${shown.toFixed(3)})`;
       if (spokeAt && (now - lastLoud > SAY_QUIET_MS || now - spokeAt > SAY_LONGEST_MS)) finish('speech');
       else if (!spokeAt && now > deadline) finish('silent');
       // Only about a second from before the learner speaks is kept, however long they think.

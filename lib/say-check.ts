@@ -56,11 +56,11 @@ export function answerTexts(english: string): string[] {
   return [...texts].slice(0, 8);
 }
 // How much less likely (summed log-probability, lib/whisper-mlx.py) the wanted answer may be than what was heard and
-// still count as said, recognition having misread it. On 150 Mac-voice clips of the learner's words, 50 wrong answers
-// scored 7.9 to 58 below the wanted answer and none was let through; right answers misheard scored 2.8 and 3.3
-// ("trip" as "Triv.", "Trade.") and 9.1 and 10.2 ("salt" as "Sold.", "who" as "Boo."). Set just under the closest
-// wrong answer, generous on purpose; to be tuned from the learner's own clips kept in say-clips.
-export const SCORE_GAP = 7;
+// still count as said, recognition having misread it. On 150 Mac-voice clips of the learner's words, right answers
+// misheard scored 2.8 and 3.3 ("trip" as "Triv.", "Trade.") and 9.1 and 10.2 ("salt" as "Sold.", "who" as "Boo."),
+// and the learner's own "your" heard as "Yo." 9; 50 wrong answers scored 7.9 ("stop" for "sorry"), then 11 to 58.
+// Generous on purpose, by the learner's choice: one wrong answer in fifty let through rather than right ones refused.
+export const SCORE_GAP = 10.5;
 
 function heardWords(heard: string): string[] {
   let list = words(heard).filter((word) => !FILLERS.has(word));
