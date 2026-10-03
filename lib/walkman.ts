@@ -160,7 +160,7 @@ export function planSentences<T extends { level: GrammarLevel; words: string[] }
 export type Tape = { id: string; kind: 'words' | 'sentences' | 'verbs'; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
 // One thing on a tape with its two recordings; sentence marks a whole sentence rather than a word. again is what
 // plays the third time (the French, unless given: a verb tape repeats the form, not the prompt).
-export type TapeItem = Omit<WalkmanWord, 'start' | 'meaningAt' | 'againAt' | 'end'> & { french: Uint8Array; english: Uint8Array; again?: Uint8Array };
+export type TapeItem = Omit<WalkmanWord, 'start' | 'recallAt' | 'meaningAt' | 'againAt' | 'end'> & { french: Uint8Array; english: Uint8Array; again?: Uint8Array };
 
 // Clips are read once and kept; a clip that is missing or not in the Walkman format is skipped.
 export function createClips(audioDir: string) {
@@ -219,6 +219,7 @@ export function layTape(id: string, kind: Tape['kind'], items: Iterable<TapeItem
   for (const { french, english, again, ...item } of items) {
     const start = now();
     add(french);
+    const recallAt = now();
     pause(timing.recall);
     const meaningAt = now();
     add(english);
@@ -227,7 +228,7 @@ export function layTape(id: string, kind: Tape['kind'], items: Iterable<TapeItem
     add(again ?? french);
     const end = now();
     pause(timing.between);
-    words.push({ ...item, start, meaningAt, againAt, end });
+    words.push({ ...item, start, recallAt, meaningAt, againAt, end });
     if (now() >= seconds) break;
   }
   const bytes = new Uint8Array(frames * FRAME_BYTES);

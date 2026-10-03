@@ -18,6 +18,14 @@ const frEsc = (value) => esc(String(value ?? '').replace(/ ([?!:;»])/g, '\u00a0
 const formatCount = new Intl.NumberFormat('en').format;
 const readPreference = (key, fallback) => { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } };
 const savePreference = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Progress is server-owned; local preferences are optional. */ } };
+// Theme: Dusk (the default) or Paper, remembered on this device; index.html applies it before the first paint.
+const THEME_COLOURS = { dusk: '#19161e', paper: '#f6f2eb' };
+function applyTheme(theme) {
+  if (theme === 'paper') document.documentElement.dataset.theme = 'paper'; else delete document.documentElement.dataset.theme;
+  document.querySelector('meta[name=theme-color]')?.setAttribute('content', THEME_COLOURS[theme]);
+  for (const choice of document.querySelectorAll('[data-theme-choice]')) choice.setAttribute('aria-pressed', String(choice.dataset.themeChoice === theme));
+}
+applyTheme(readPreference('echo.theme', 'dusk') === 'paper' ? 'paper' : 'dusk');
 let direction = readPreference('echo.direction', 'fr-en') === 'en-fr' ? 'en-fr' : 'fr-en';
 let deck = readPreference('echo.deck', 'all');
 let speed = readPreference('echo.speed', '1') === '0.8' ? 0.8 : 1;
@@ -412,12 +420,14 @@ if (document.body.dataset.learner) document.querySelector('#about-dialog .dialog
 // move, and Study.
 function renderHome() {
   loadHomeInfo();
+  // Each room's icon is tinted by its family: lavender for words and grammar, green for listening, peach for Story.
+  const family = (action, data = '') => ['listen', 'read', 'radio'].includes(action) || data.includes('listen-tape') ? ' fam-green' : action === 'story' ? ' fam-peach' : ['mistakes', 'statistics', 'friends'].includes(action) ? ' fam-plain' : '';
   const tile = (action, symbol, title, hint, mode, disabled = busy, wide = '') => {
     if (roomsOff.has(action)) return '';
     const label = mode ? levelFor(mode) : '';
-    return `<button class="tile${wide}" data-action="${action}" ${disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}<h2>${esc(title)}</h2><p>${esc(hint)}</p></button>`;
+    return `<button class="tile${wide}${family(action)}" data-action="${action}" ${disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}<h2>${esc(title)}</h2><p>${esc(hint)}</p></button>`;
   };
-  const row = (action, symbol, title, data = '') => `<button class="study-row" data-action="${action}" ${data} ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="chev" aria-hidden="true">${chevronIcon}</span></button>`;
+  const row = (action, symbol, title, data = '') => `<button class="study-row${family(action, data)}" data-action="${action}" ${data} ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="chev" aria-hidden="true">${chevronIcon}</span></button>`;
   main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1>
     <div class="tiles">${tile('practise', mixIcon, 'Practise', 'A little of everything: words, listening and grammar, mixed for you', '', busy, ' wide hero')}</div>
     <p class="study-label">Words &amp; grammar</p><div class="tiles shelf">
@@ -510,6 +520,17 @@ function render() {
   else if (screen === 'radio') renderRadio();
   else renderHome();
 }
+// What each part of a tape word is called, by tape: its French, the pause to recall it, its meaning, the French again.
+const TAPE_PHASES = { words: ['Listen', 'Recall', 'Meaning', 'Again'], sentences: ['Listen', 'Understand', 'Meaning', 'Again'], verbs: ['Prompt', 'Say it', 'Form', 'Again'] };
+const PHASE_KEYS = ['listen', 'recall', 'meaning', 'again'];
+// The part of the word playing that the tape has reached; '' between words.
+function walkmanPhase() {
+  const word = walkman.tape?.words[walkman.index];
+  if (!word) return '';
+  const time = walkmanAudio.currentTime;
+  return time >= word.againAt ? 'again' : time >= word.meaningAt ? 'meaning' : time >= word.recallAt ? 'recall' : 'listen';
+}
+const reelIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><path d="M12 3v4.6M12 16.4V21M4.2 7.5l4 2.3M15.8 14.2l4 2.3M4.2 16.5l4-2.3M15.8 9.8l4-2.3"/></svg>';
 // The tape player: the Walkman tab in Words, or Tape in Listen or in Verbs.
 function renderWalkman() {
   const room = TAPE_SCREENS[screen];
@@ -526,10 +547,13 @@ function renderWalkman() {
       : tape.kind === 'sentences'
       ? 'You hear a French sentence, then a pause to understand it, then the English, then the French again.'
       : 'You hear a French word, then a pause to find its meaning, then the English, then the French again.'}</p>`;
+  // The phase row shows where the word playing has got to; the reels turn only while the tape plays.
+  const phase = word ? walkmanPhase() : '';
+  const phases = word ? `<div class="wm-phase" aria-hidden="true">${TAPE_PHASES[tape.kind].map((label, index) => `<span data-phase="${PHASE_KEYS[index]}"${PHASE_KEYS[index] === phase ? ' class="on"' : ''}>${label}</span>`).join('')}</div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}
-    <div class="wm-face" aria-live="polite">${face}</div>
+    <div class="wm-face" aria-live="polite">${face}</div>${phases}
+    <div class="wm-deck${playing ? ' playing' : ''}" aria-hidden="true"><span class="wm-reel">${reelIcon}</span><div class="wm-progress"><span style="width:${walkmanProgress()}%"></span></div><span class="wm-reel">${reelIcon}</span></div>
     <div class="wm-controls"><button class="listen-play wm-play" data-action="walkman-toggle" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button></div>
-    <div class="wm-progress" aria-hidden="true"><span style="width:${walkmanProgress()}%"></span></div>
     ${heardHTML()}
     <p class="caption wm-note">Keeps playing with your phone locked. Listening doesn’t change your vocabulary progress.</p>
     ${room === 'verbs' ? `<p class="wm-choice wm-tenses">Tenses ${Object.entries(VB_TENSES).map(([tense, label]) => `<button data-action="walkman-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${esc(label)}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
@@ -702,6 +726,8 @@ function followTape() {
   if (logged && heardOpen && tapeScreen() && !document.hidden) { render(); return; }
   const bar = document.querySelector('.wm-progress span');
   if (bar) bar.style.width = `${walkmanProgress()}%`;
+  const phase = walkmanPhase();
+  for (const step of document.querySelectorAll('.wm-phase span')) step.classList.toggle('on', step.dataset.phase === phase);
 }
 // Lock-screen skip moves a whole word: forward to the next, back to this word's start or the one before.
 function skipWord(step) {
@@ -872,11 +898,13 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const prompt = reverse ? card.en : card.fr;
   const answer = reverse ? card.fr : card.en;
   const hidden = listening() && !revealed;
+  // The noun's gender, in words, wherever the French is showing (the colour alone is optional).
+  const gender = card.gender && (revealed || !reverse) ? `<p class="gender-tag${genderClass(card.gender)}">${esc(card.gender)}</p>` : '';
   const face = hidden
     ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button><p class="source-word">Listen, then tap to see the word</p>`
-    : `<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : ''}`;
+    : `<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender}`;
   const listenToggle = direction === 'fr-en' ? `<button class="audio-mode ${listenMode ? 'on' : ''}" data-action="listen-mode" aria-pressed="${listenMode}" aria-label="Listen only: ${listenMode ? 'on' : 'off'}" title="Hear the French word instead of reading it">${headphones}<span>Listen ${listenMode ? 'on' : 'off'}</span></button>` : '';
-  return `<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : hidden ? 'Reveal the meaning' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content">${face}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span aria-hidden="true">→</span></button>` : ''}</div><div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}</div><button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
+  return `<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : hidden ? 'Reveal the meaning' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content">${face}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span class="zone-label" aria-hidden="true">← Didn’t know</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span class="zone-label" aria-hidden="true">Knew it →</span></button>` : hidden ? '' : '<span class="card-hint" aria-hidden="true">Tap to reveal</span>'}</div><div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}</div><button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
 // Each new card (or new version after a grade or undo) plays once on its own; re-renders don't replay it.
 function playCardOnce() {
@@ -1827,7 +1855,7 @@ function renderStatistics() {
   if (!statistics || loading) { main.innerHTML = `${noticeHTML()}<section class="st">${header}${loading ? '<div class="loading-state" role="status">Adding it all up…</div>' : ''}</section>`; return; }
   const { words, counts } = statistics;
   const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
-  const parts = [['learning', 'learning', 'var(--violet)'], ['due', 'due now', '#d7c38a'], ['scheduled', 'known', '#6e6aa8'], ['new', 'not started', 'var(--frame)']];
+  const parts = [['learning', 'learning', 'var(--violet)'], ['due', 'due now', 'var(--peach)'], ['scheduled', 'known', 'var(--getting)'], ['new', 'not started', 'var(--frame)']];
   const stack = parts.map(([key, , colour]) => `<span style="width:${counts[key] / total * 100}%;background:${colour}"></span>`).join('');
   const legend = parts.map(([key, label, colour]) => `<span><i style="background:${colour}"></i><b>${counts[key]}</b>${label}</span>`).join('');
   const hardest = words.filter((word) => word.score < 0).slice(0, 6);
@@ -1855,7 +1883,7 @@ function renderStatistics() {
       <p class="st-big"><strong>${points(shown.words + shown.verbs)}</strong> ${esc(shownLabel)}</p>
       <p class="st-sub">${shown.words || shown.verbs ? `words ${points(shown.words)} · verbs ${points(shown.verbs)}` : 'Nothing practised'}</p>
       <div class="st-points">${pointBars}</div><div class="st-days-axis">${dayAxis}</div>
-      <div class="st-legend"><span><i style="background:var(--violet)"></i>words</span><span><i style="background:#6e6aa8"></i>verbs</span><span><i style="background:var(--danger)"></i>lost more than gained</span></div></div>`;
+      <div class="st-legend"><span><i style="background:var(--violet)"></i>words</span><span><i style="background:var(--getting)"></i>verbs</span><span><i style="background:var(--danger)"></i>lost more than gained</span></div></div>`;
   // Each row is the share right per day, always out of 100%, with its two-week share beside the label.
   const accuracyRow = (label, counts) => {
     const right = counts.reduce((sum, count) => sum + count.right, 0), total = counts.reduce((sum, count) => sum + count.total, 0);
@@ -3874,6 +3902,7 @@ function retry() {
 document.addEventListener('click', (event) => {
   const button = event.target.closest('button'); if (button?.disabled) return;
   const action = button?.dataset.action;
+  if (button?.dataset.themeChoice) { const theme = button.dataset.themeChoice === 'paper' ? 'paper' : 'dusk'; savePreference('echo.theme', theme); applyTheme(theme); return; }
   if (action === 'st-info') { toggleStatsTip(button); return; }
   if (!event.target.closest('.st-tip')) closeStatsTips();
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }

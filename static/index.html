@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#14131e">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#19161e">
+  <meta name="color-scheme" content="dark light">
+  <script>try { if (localStorage.getItem('echo.theme') === 'paper') { document.documentElement.dataset.theme = 'paper'; document.querySelector('meta[name=theme-color]').content = '#f6f2eb'; } } catch {}</script>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Echo">
   <meta name="description" content="A quiet place to practise French words and sentences.">
@@ -28,6 +29,7 @@
   <dialog id="dialog" aria-labelledby="dialog-title"></dialog>
   <dialog id="about-dialog" aria-labelledby="about-title">
     <div class="dialog-head"><h2 id="about-title">A little practice, your way.</h2><button class="icon" id="close-about" aria-label="Close How it works">×</button></div>
+    <div class="segmented theme-switch" role="group" aria-label="Theme"><button data-theme-choice="dusk" aria-pressed="true">Dusk</button><button data-theme-choice="paper" aria-pressed="false">Paper</button></div>
     <div class="dialog-copy">
       <p><strong>Practise</strong> mixes a little of everything. <strong>Words</strong> is your vocabulary, as cards, Endless,<span data-room="say"> Say it</span> and the Walkman tape. <strong>Grammar</strong> teaches a topic and then practises it; <strong>Verbs</strong> drills conjugation on its own. <strong>Listen</strong> plays French and asks what you understood, trains your ear on twin sounds, and has a sentence tape; <strong>Read</strong> shows French and asks the same.<span data-room="story radio"> <strong>Story</strong> is a serial written for you, and <strong>Radio</strong> is a short episode each day.</span> <strong>Hands-free</strong> gathers the three tapes<span data-room="radio"> and today’s Radio</span> for when you’re out and about. Each room’s ⓘ explains it in full. Underneath, Mistakes gathers what keeps catching you out, and Statistics opens with the points of the last two weeks, words and verbs together (tap a day to see how it split), then shows one part at a time — Words, Verbs or Other, and it remembers which. Words: how their scores spread from shaky to solid (tap a bar to see its words; choose a day, or press ▶, to see the chart as it was at the end of any day since you started), how many you know, your hardest words, each category, and your answers over the last two weeks. Verbs: the same score chart for your verb forms, your hardest forms (tap one to fill in its table), each tense and person with its average score and share right, and each kind of verb. Other: your Listen and Read levels and the rest. Every chart’s ⓘ says what it shows. Nothing there is a target.</p>
       <div data-info="words">
@@ -77,7 +79,7 @@
       <p><strong>Continue</strong>, at the top, lists every round and test you have left open, with the question you reached. <strong>To revisit</strong> under them counts the questions you missed or needed help with, across your topics; it starts a round that leads with those (the same round Practise draws its grammar from). <strong>Next up</strong> is the first topic you haven’t started in the unit you are working through. Each unit folds: only the one you are working in is open, and a tap opens any other. A topic’s bar shows its questions answered on your own, those to revisit, and the rest not yet tried. <strong>By level</strong> lists the topics as A1, A2 and B1 instead.</p>
       <p><strong>Tests.</strong> A topic test asks 15 questions across the whole topic, and each unit ends with a test of 20 questions across its topics. Tests have no hints, rule or shown answers, and each question takes one try; you see the right answer and why straight after. Your best and latest scores are kept, and anything you miss in a test comes back first the next time you practise that topic.</p>
       </div>
-      <p>Your vocabulary progress, grammar rounds, comprehension levels and mistakes live on your Mac, shared by your phone and desktop. Your direction, category and audio choices are remembered on this device. Echo always opens on Home, and Back returns to the previous screen.</p>
+      <p>Your vocabulary progress, grammar rounds, comprehension levels and mistakes live on your Mac, shared by your phone and desktop. Your direction, category, audio choices and theme (Dusk or Paper, above) are remembered on this device. Echo always opens on Home, and Back returns to the previous screen.</p>
     </div>
     <a class="secondary dialog-action export-link" href="api/export" download="echo-progress.json">Download my progress ↓</a>
   </dialog>

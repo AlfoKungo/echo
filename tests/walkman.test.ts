@@ -95,7 +95,8 @@ describe('buildTape', () => {
       expect(tape.bytes.length % FRAME_BYTES).toBe(0);
       expect(tape.seconds).toBeCloseTo((tape.bytes.length / FRAME_BYTES) * FRAME_SECONDS, 6);
       const [a, b] = tape.words;
-      expect(a!.meaningAt - a!.start).toBeCloseTo(25 * FRAME_SECONDS + 2.0, 1);
+      expect(a!.recallAt - a!.start).toBeCloseTo(25 * FRAME_SECONDS, 6);
+      expect(a!.meaningAt - a!.recallAt).toBeCloseTo(2.0, 1);
       expect(a!.againAt - a!.meaningAt).toBeCloseTo(40 * FRAME_SECONDS + 0.7, 1);
       expect(a!.end - a!.againAt).toBeCloseTo(25 * FRAME_SECONDS, 6);
       expect(b!.start).toBeGreaterThan(a!.end);

@@ -65,11 +65,12 @@ export type WalkmanChoice = 'scored' | 'groups' | 'sentences' | 'verbs';
 // made-due: it was finished and waiting for a later review, so it becomes due now, like an early review.
 export type AddWordInput = { wordId: string; requestId: string };
 export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due' };
-// One word on a Walkman tape, times in seconds from the tape's start: the French at start, the English at
-// meaningAt, the French again at againAt, ending at end. fresh: not yet started in Vocabulary when the tape was made.
-// sentence: a whole Listen/Read sentence (id is the sentence's), which hearing leaves the vocabulary untouched.
-// On a verb tape, fr is the prompt (verb · tense · person), en the form, and verb names the form for marks and replays.
-export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; verb?: { verbId: string; tense: string; person: number; audio: string }; start: number; meaningAt: number; againAt: number; end: number };
+// One word on a Walkman tape, times in seconds from the tape's start: the French at start, the pause to recall it
+// from recallAt, the English at meaningAt, the French again at againAt, ending at end. fresh: not yet started in
+// Vocabulary when the tape was made. sentence: a whole Listen/Read sentence (id is the sentence's), which hearing
+// leaves the vocabulary untouched. On a verb tape, fr is the prompt (verb · tense · person), en the form, and verb
+// names the form for marks and replays.
+export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; verb?: { verbId: string; tense: string; person: number; audio: string }; start: number; recallAt: number; meaningAt: number; againAt: number; end: number };
 export type WalkmanTape = { id: string; kind: 'words' | 'sentences' | 'verbs'; url: string; seconds: number; words: WalkmanWord[] };
 // A word family: deck words built from one root, simplest first; each later member's note says how it is built.
 export type WordFamily = { members: { id: string; note?: string }[] };
