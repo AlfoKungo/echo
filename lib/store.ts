@@ -42,6 +42,10 @@ export interface Store {
   recordHeard(input: HeardInput): void;
   // The learner's own say, after a Walkman listen, on whether they knew the word; knew:null withdraws it.
   recordVerdict(input: VerdictInput): void;
+  // Say it: what recognition wrote down for a word when the learner says it heard them wrong; marking it right
+  // replaces the ✗ (id is the check's) with ✓, and the same words count as that word's English from then on.
+  acceptSaid(input: { id: string; wordId: string; heard: string }): void;
+  sayAccepted(wordId: string): string[];
   endlessNext(input: EndlessInput): EndlessPick;
   endlessMark(input: EndlessMarkInput): void;
   endlessUndo(requestId: string): void;
@@ -321,6 +325,14 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         word_id TEXT NOT NULL,
         knew INTEGER NOT NULL,
         marked_at TEXT NOT NULL
+      );
+      -- Say it: what recognition wrote down for a word when the learner said its English and was heard wrong
+      -- (lib/say-check.ts said()); it counts as that word's English from then on.
+      CREATE TABLE IF NOT EXISTS say_accepted (
+        word_id TEXT NOT NULL,
+        heard TEXT NOT NULL,
+        added_at TEXT NOT NULL,
+        PRIMARY KEY (word_id, heard)
       );
       -- One mark in Endless: request_id is chosen by the phone, so a retried mark counts once; an undo deletes it.
       CREATE TABLE IF NOT EXISTS endless_marks (
@@ -1065,6 +1077,8 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   }
   const saveVerdict = db.query('INSERT INTO walkman_verdicts (id, word_id, knew, marked_at) VALUES (?1, ?2, ?3, ?4) ON CONFLICT(id) DO UPDATE SET knew = ?3, marked_at = ?4 WHERE word_id = ?2');
   const dropVerdict = db.query('DELETE FROM walkman_verdicts WHERE id = ? AND word_id = ?');
+  const saveAccepted = db.query('INSERT OR IGNORE INTO say_accepted (word_id, heard, added_at) VALUES (?, ?, ?)');
+  const readAccepted = db.query<{ heard: string }, [string]>('SELECT heard FROM say_accepted WHERE word_id = ?');
   const saveHeard = db.query('INSERT OR IGNORE INTO walkman_heard (request_id, word_id, heard_at) VALUES (?, ?, ?)');
 
   function listening(): ListeningWord[] {
@@ -1135,6 +1149,14 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (input.knew === null) dropVerdict.run(input.id, input.wordId);
     else saveVerdict.run(input.id, input.wordId, input.knew ? 1 : 0, now().toISOString());
   }
+  function acceptSaid(input: { id: string; wordId: string; heard: string }): void {
+    if (typeof input.heard !== 'string' || !input.heard) throw new StoreError('Nothing was heard to accept.', 400);
+    db.transaction(() => {
+      recordVerdict({ id: input.id, wordId: input.wordId, knew: true });
+      saveAccepted.run(input.wordId, input.heard, now().toISOString());
+    })();
+  }
+  const sayAccepted = (wordId: string) => readAccepted.all(wordId).map((row) => row.heard);
 
   const answersSince = db.query<{ known: number; at: string }, [string]>(`
     SELECT known, graded_at AS at FROM grades WHERE graded_at >= ?
@@ -1281,6 +1303,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       addedWords: db.query('SELECT id, fr, en, note, category, category_title, added_at FROM added_words ORDER BY sequence').all(),
       deckLinks: db.query('SELECT category, category_title, word_id FROM deck_links ORDER BY sequence').all(),
       walkmanVerdicts: db.query('SELECT word_id, knew, marked_at FROM walkman_verdicts ORDER BY marked_at').all(),
+      sayAccepted: db.query('SELECT word_id, heard, added_at FROM say_accepted ORDER BY added_at').all(),
       endlessMarks: db.query('SELECT direction, word_id, known, marked_at FROM endless_marks ORDER BY marked_at').all(),
     }))();
   }
@@ -1305,5 +1328,5 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     })();
   }
 
-  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, endlessNext, endlessMark, endlessUndo, statistics, statisticsDay, hookless, setHooks, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, acceptSaid, sayAccepted, endlessNext, endlessMark, endlessUndo, statistics, statisticsDay, hookless, setHooks, exportData, close: () => db.close() };
 }

@@ -3,8 +3,10 @@
 // person, male)"): any one of them counts, without what is in brackets or a leading "to", "the", "a" or "an".
 // Recognition is not spelling: one slip in a long word, a plural for a singular, a filler ("um", "it's") and words
 // that only finish a phrase ("look" for "to look at") are all fine. What recognition invents from silence or noise
-// ("Thank you.", "you") is not an answer at all, so it counts neither way.
-export type SayVerdict = 'right' | 'wrong' | 'unclear';
+// ("Thank you.", "you"), and thinking aloud ("let me think", "wait"), is not an answer at all, so Echo listens on.
+// Giving up out loud ("I don't know", "no idea", "pass") is: it counts as not knowing the word. What the learner
+// once marked as heard wrong for a word (Store.sayAccepted) counts as its English.
+export type SayVerdict = 'right' | 'wrong' | 'dontknow' | 'unclear';
 
 const LEADING = new Set(['to', 'the', 'a', 'an']);
 const FILLERS = new Set(['um', 'umm', 'uh', 'uhm', 'er', 'erm', 'ah', 'hmm', 'mm', 'oh', 'so', 'well', 'okay', 'ok']);
@@ -13,6 +15,10 @@ const OPENERS = [['it', 's'], ['it', 'is'], ['its'], ['i', 'think'], ['that', 's
 const TAILS = new Set(['at', 'of', 'to', 'up', 'out', 'on', 'in', 'for', 'with', 'about', 'off', 'someone', 'something', 'oneself', 'yourself', 'sth', 'sb']);
 // What Whisper writes for silence, breath or room noise when nothing was said.
 const NOTHING = new Set(['you', 'thank you', 'thanks', 'thanks for watching', 'thank you for watching', 'bye bye', 'music', 'applause', 'silence', 'blank audio', 'inaudible']);
+// Thinking aloud, or an opener cut off before the answer, after fillers are dropped.
+const THINKING = ['let me think', 'let me see', 'wait', 'hold on', 'one second', 'one sec', 'just a second', 'just a moment', 'moment', 'i know this', 'i know this one', 'what is it', 'what was it', 'i think', 'it s', 'it is', 'its', 'that s', 'it means', 'means'];
+// Giving up, said at the start of what was heard ("I don't know this one").
+const DONT_KNOW = ['i don t know', 'don t know', 'i dont know', 'dont know', 'i do not know', 'dunno', 'i dunno', 'no idea', 'i have no idea', 'i ve got no idea', 'no clue', 'i have no clue', 'pass', 'i pass', 'skip', 'i give up', 'i forgot', 'i forget', 'i don t remember', 'don t remember', 'i can t remember', 'i m not sure', 'not sure'];
 
 const plain = (text: string) => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
   .replace(/\[[^\]]*\]|\([^)]*\)/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim();
@@ -69,9 +75,14 @@ function matches(heard: string[], wanted: string[]): boolean {
   return false;
 }
 
-export function judge(heard: string, english: string): SayVerdict {
-  const said = heardWords(heard);
-  if (said.length && answers(english).some((wanted) => matches(said, wanted))) return 'right';
-  if (!said.length || NOTHING.has(plain(heard))) return 'unclear';
+// What was said, as it is kept when the learner marks it right after Echo heard it wrong.
+export const said = (heard: string) => heardWords(heard).join(' ');
+const startsWith = (phrase: string, start: string) => phrase === start || (phrase.startsWith(start + ' ') && phrase.split(' ').length <= start.split(' ').length + 3);
+
+export function judge(heard: string, english: string, accepted: readonly string[] = []): SayVerdict {
+  const list = heardWords(heard), phrase = list.join(' ');
+  if (list.length && (accepted.includes(phrase) || answers(english).some((wanted) => matches(list, wanted)))) return 'right';
+  if (DONT_KNOW.some((start) => startsWith(phrase, start))) return 'dontknow';
+  if (!list.length || NOTHING.has(plain(heard)) || THINKING.includes(phrase)) return 'unclear';
   return 'wrong';
 }

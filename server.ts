@@ -21,7 +21,7 @@ import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
-import { hint, judge } from './lib/say-check';
+import { hint, judge, said } from './lib/say-check';
 import { createWhisper } from './lib/whisper';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
 for (const level of ['log', 'error', 'warn'] as const) {
@@ -500,8 +500,9 @@ async function route(req: Request): Promise<Response> {
       store.recordVerdict({ id: String(data.id ?? ''), wordId: String(data.wordId ?? ''), knew: data.knew as boolean | null });
       return json({ ok: true });
     }
-    // Say it: a recording of the learner saying a French word's English, judged against the word's meanings. A right
-    // or wrong answer counts like a Walkman ✓ or ✗; one recognition could not make out counts for nothing.
+    // Say it: a recording of the learner saying a French word's English, judged against the word's meanings and what
+    // they once marked right for it. Right counts like a Walkman ✓; wrong or "I don't know" like ✗; what recognition
+    // could not make out counts for nothing, and the phone listens on.
     if (path === '/api/say/check' && req.method === 'POST' && !roomsOff.includes('say')) {
       if (!req.headers.get('content-type')?.toLowerCase().startsWith('audio/')) throw new StoreError('Send the recording itself.', 415);
       const wordId = url.searchParams.get('word') ?? '', requestId = url.searchParams.get('request') ?? '';
@@ -513,9 +514,18 @@ async function route(req: Request): Promise<Response> {
       let heard: string;
       try { heard = await whisper.transcribe(clip, hint(word.en)); }
       catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
-      const verdict = judge(heard, word.en);
+      const verdict = judge(heard, word.en, store.sayAccepted(wordId));
       if (verdict !== 'unclear') store.recordVerdict({ id: `say-${requestId}`, wordId, knew: verdict === 'right' });
       return json({ verdict, heard, en: word.en });
+    }
+    // Heard wrong: the learner says they said it right. The check's ✗ becomes ✓, and what was heard counts as the
+    // word's English from then on.
+    if (path === '/api/say/correct' && req.method === 'POST' && !roomsOff.includes('say')) {
+      const data = await body(req);
+      const requestId = String(data.request ?? '');
+      if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
+      store.acceptSaid({ id: `say-${requestId}`, wordId: String(data.word ?? ''), heard: said(String(data.heard ?? '')) });
+      return json({ ok: true });
     }
     const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);
     if (tapeAudio && (req.method === 'GET' || req.method === 'HEAD')) {
