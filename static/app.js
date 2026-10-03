@@ -44,7 +44,7 @@ const chevronIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7
 let screen = 'home';
 let depth = 0;
 const trail = ['home'];
-// A link may ask for one screen (#practice, #grammar, #walkman); the address drops it, so a reload opens Home.
+// A link may ask for one screen (#practice, #grammar, #walkman, #say); the address drops it, so a reload opens Home.
 const requestedScreen = location.hash.slice(1);
 history.replaceState({ echo: 'home', depth: 0 }, '', location.pathname + location.search);
 let topicId = '';
@@ -455,6 +455,7 @@ function render() {
   else if (screen === 'mistakes') renderMistakes();
   else if (screen === 'friends') renderFriends();
   else if (screen === 'walkman') renderWalkman();
+  else if (screen === 'say') renderSay();
   else if (screen === 'statistics') renderStatistics();
   else if (screen === 'songs') renderSongs();
   else if (screen === 'song') renderSong();
@@ -494,6 +495,7 @@ function renderWalkman() {
     <p class="caption wm-note">Keeps playing with your phone locked. Listening doesn’t change your vocabulary progress.</p>
     ${walkmanChoice === 'verbs' ? `<p class="wm-choice wm-tenses">Tenses ${Object.entries(VB_TENSES).map(([tense, label]) => `<button data-action="walkman-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${esc(label)}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
     <p class="wm-choice">Plays ${Object.entries(WALKMAN_CHOICES).map(([choice, label]) => `<button data-action="walkman-choice" data-words="${choice}" aria-pressed="${walkmanChoice === choice}">${label}</button>`).join('<span aria-hidden="true">·</span>')}</p>
+    ${roomsOff.has('say') ? '' : '<p class="wm-choice">Or <button data-action="say">say the English yourself</button>, out loud</p>'}
   </section>`;
 }
 const HEARD_STATUS = { saving: 'Adding…', added: 'Added to your words', 'already-practising': 'Already in your practice', 'made-due': 'Due again now' };
@@ -2028,6 +2030,216 @@ function resetStatsView() {
 }
 function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } drawScores(); }
 function openWalkman() { if (move('walkman', true)) loadTape(); }
+// ── Say it (from the Walkman): Echo says a French word, the learner says its English aloud, and Echo checks it
+// (api/say/check, lib/say-check.ts). The microphone stays open for the whole run; between words a level meter tells
+// speech from the room's quiet, so an answer ends SAY_QUIET_MS after the learner stops, however long it took.
+// Nothing said within SAY_WAIT_MS counts as not knowing the word. iPhone stops the microphone when the screen locks
+// or Echo leaves the screen, so the screen is kept awake while Say it runs, and Say it pauses if it goes away.
+const SAY_QUIET_MS = 700;
+const SAY_WAIT_MS = 6000;
+const SAY_LONGEST_MS = 8000;
+const SAY_RECENT = 8;
+// A moment of silence played on Start, inside the tap, so Safari lets the words that follow play without one.
+const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
+const sayAudio = new Audio();
+// phase: idle · starting · loading · prompt (the French plays) · listening · checking · again (not made out) · result
+let say = { running: false, phase: 'idle', card: null, tries: 0, result: null, recent: [], error: '', token: 0 };
+let sayMic = null;          // { stream, context, analyser, data, processor } while Say it runs
+let sayCapture = null;      // the raw sound of the answer being listened to: Float32Array blocks
+let sayWake = null;         // the screen wake lock
+let sayInterrupt = null;    // ends whatever the run is waiting on (a sound or the microphone) when it stops
+function openSay() { if (move('say', true)) render(); }
+async function startSay() {
+  if (say.running) return;
+  sayAudio.src = SILENT_WAV; sayAudio.play().catch(() => {});
+  const context = sayMic?.context ?? new (window.AudioContext || window.webkitAudioContext)();
+  context.resume().catch(() => {});
+  say = { ...say, running: true, phase: 'starting', error: '', result: null, token: say.token + 1 };
+  render();
+  try {
+    if (!sayMic) {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+      const analyser = context.createAnalyser();
+      analyser.fftSize = 1024;
+      const source = context.createMediaStreamSource(stream);
+      source.connect(analyser);
+      // The raw sound, kept from the moment Echo starts listening, so the first sound of an answer is never lost to
+      // a recorder still starting. The processor's own output is silence; it is connected only so that it runs.
+      const processor = context.createScriptProcessor(4096, 1, 1);
+      processor.onaudioprocess = (event) => { sayCapture?.push(new Float32Array(event.inputBuffer.getChannelData(0))); };
+      source.connect(processor); processor.connect(context.destination);
+      sayMic = { stream, context, analyser, data: new Float32Array(analyser.fftSize), processor };
+    }
+  } catch (error) {
+    context.close().catch(() => {});
+    say = { ...say, running: false, phase: 'idle', error: error.name === 'NotAllowedError'
+      ? 'Echo needs the microphone for Say it. Allow it for this site (in Safari: aA → Website Settings → Microphone), then tap Start.'
+      : `The microphone could not start: ${error.message}` };
+    render();
+    return;
+  }
+  try { sayWake = await navigator.wakeLock?.request('screen') ?? null; } catch { sayWake = null; }
+  runSay(say.token);
+}
+// Stops the run and lets go of the microphone; `message` says why, when it was not the learner's choice.
+function stopSay(message = '') {
+  if (!say.running && !sayMic) return;
+  say = { ...say, running: false, phase: 'idle', error: message, token: say.token + 1 };
+  sayInterrupt?.();
+  sayAudio.pause();
+  sayWake?.release().catch(() => {}); sayWake = null;
+  if (sayMic) { sayMic.stream.getTracks().forEach((track) => track.stop()); sayMic.context.close().catch(() => {}); sayMic = null; }
+  if (screen === 'say') render();
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && say.running) stopSay('Say it paused when the screen locked or Echo went to the background. Tap Start to go on.'); });
+const sayCurrent = (token) => say.running && token === say.token;
+function sayWait(ms, token) {
+  return new Promise((resolve) => { const timer = setTimeout(() => { sayInterrupt = null; resolve(sayCurrent(token)); }, ms); sayInterrupt = () => { clearTimeout(timer); sayInterrupt = null; resolve(false); }; });
+}
+// Plays one recording to its end; false when it could not play or the run stopped meanwhile.
+function sayPlay(url, token) {
+  return new Promise((resolve) => {
+    const done = (played) => { sayAudio.onended = sayAudio.onerror = null; sayInterrupt = null; resolve(played && sayCurrent(token)); };
+    sayAudio.onended = () => done(true); sayAudio.onerror = () => done(false);
+    sayInterrupt = () => { sayAudio.pause(); done(false); };
+    sayAudio.src = url; sayAudio.play().catch(() => done(false));
+  });
+}
+// Two short tones: rising for right, falling otherwise.
+function sayChime(right, token) {
+  const context = sayMic?.context;
+  if (context) {
+    (right ? [660, 880] : [330, 247]).forEach((frequency, index) => {
+      const at = context.currentTime + index * 0.13, tone = context.createOscillator(), level = context.createGain();
+      tone.frequency.value = frequency;
+      level.gain.setValueAtTime(0.0001, at); level.gain.exponentialRampToValueAtTime(0.25, at + 0.02); level.gain.exponentialRampToValueAtTime(0.0001, at + 0.25);
+      tone.connect(level).connect(context.destination); tone.start(at); tone.stop(at + 0.3);
+    });
+  }
+  return sayWait(450, token);
+}
+// 16-bit mono WAV of `samples` at `rate`.
+function sayWav(samples, rate) {
+  const view = new DataView(new ArrayBuffer(44 + samples.length * 2));
+  const text = (at, value) => { for (let index = 0; index < value.length; index++) view.setUint8(at + index, value.charCodeAt(index)); };
+  text(0, 'RIFF'); view.setUint32(4, 36 + samples.length * 2, true); text(8, 'WAVEfmt '); view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true); view.setUint16(22, 1, true); view.setUint32(24, rate, true); view.setUint32(28, rate * 2, true);
+  view.setUint16(32, 2, true); view.setUint16(34, 16, true); text(36, 'data'); view.setUint32(40, samples.length * 2, true);
+  samples.forEach((sample, index) => view.setInt16(44 + index * 2, Math.max(-1, Math.min(1, sample)) * 0x7fff, true));
+  return new Blob([view], { type: 'audio/wav' });
+}
+// Listens for one answer: 'silent' when nothing was said in time, the answer as WAV once the learner stops (from
+// a third of a second before they began), null if Say it stopped meanwhile.
+function sayListen(token) {
+  return new Promise((resolve) => {
+    const { analyser, data, context } = sayMic;
+    const blocks = [];
+    sayCapture = blocks;
+    const began = performance.now();
+    let floor = null, loudTicks = 0, spokeAt = 0, lastLoud = 0, over = false;
+    const finish = (outcome) => {
+      if (over) return;
+      over = true; clearInterval(timer); sayInterrupt = null; sayCapture = null;
+      if (outcome !== 'speech') { resolve(outcome); return; }
+      const all = new Float32Array(blocks.reduce((sum, block) => sum + block.length, 0));
+      let at = 0;
+      for (const block of blocks) { all.set(block, at); at += block.length; }
+      const from = Math.max(0, Math.floor((spokeAt - began - 330) / 1000 * context.sampleRate));
+      resolve(sayWav(all.subarray(from), context.sampleRate));
+    };
+    sayInterrupt = () => finish(null);
+    // Every 50 ms: the level in dB against the room's quiet, which is learned while nobody speaks.
+    const timer = setInterval(() => {
+      if (!sayCurrent(token)) return finish(null);
+      analyser.getFloatTimeDomainData(data);
+      let sum = 0;
+      for (const sample of data) sum += sample * sample;
+      const level = 10 * Math.log10(sum / data.length + 1e-12), now = performance.now();
+      floor ??= level;
+      const loud = level > Math.max(floor + 15, -55);
+      if (loud) { loudTicks += 1; lastLoud = now; if (!spokeAt && loudTicks >= 3) spokeAt = now - 150; }
+      else { loudTicks = 0; if (!spokeAt) floor += (level - floor) * (level < floor ? 0.3 : 0.05); }
+      const meter = main.querySelector('.say-meter span');
+      if (meter) meter.style.width = `${Math.round(Math.max(0, Math.min(1, (level - floor) / 30)) * 100)}%`;
+      if (spokeAt && (now - lastLoud > SAY_QUIET_MS || now - spokeAt > SAY_LONGEST_MS)) finish('speech');
+      else if (!spokeAt && now - began > SAY_WAIT_MS) finish('silent');
+    }, 50);
+  });
+}
+async function sayCheck(card, clip) {
+  const response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${requestId()}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store' });
+  let data;
+  try { data = await response.json(); } catch { throw new Error('Your Mac returned an unreadable response.'); }
+  if (!response.ok) throw new Error(data.error || `Checking failed (${response.status}).`);
+  return data;
+}
+// One word after another until stopped: the French, the answer, the verdict, and the English after anything but a
+// right answer. A word not made out is asked once more before Echo gives its English and moves on, unscored.
+async function runSay(token) {
+  while (sayCurrent(token)) {
+    if (say.phase !== 'again') {
+      say.phase = 'loading'; say.result = null; render();
+      let pick;
+      try { pick = await api('api/endless/next', { method: 'POST', body: JSON.stringify({ direction: 'fr-en', deck: 'all', exclude: say.recent }) }); }
+      catch (error) { if (sayCurrent(token)) stopSay(error.message); return; }
+      if (!sayCurrent(token)) return;
+      if (!pick.card) { stopSay('There are no words to say yet: practise some in Vocabulary first.'); return; }
+      say.card = pick.card; say.tries = 0;
+      say.recent = [pick.card.id, ...say.recent.filter((id) => id !== pick.card.id)].slice(0, SAY_RECENT);
+    }
+    const card = say.card;
+    say.phase = 'prompt'; render();
+    if (!await sayPlay(card.audioUrl, token)) { if (!sayCurrent(token)) return; say.phase = 'result'; say.result = { verdict: 'skipped', en: card.en }; render(); if (!await sayWait(800, token)) return; continue; }
+    say.phase = 'listening'; render();
+    const clip = await sayListen(token);
+    if (!clip || !sayCurrent(token)) return;
+    let result;
+    if (clip === 'silent') {
+      result = { verdict: 'silent', heard: '', en: card.en };
+      api('api/walkman/verdict', { method: 'POST', body: JSON.stringify({ id: `say-${requestId()}`, wordId: card.id, knew: false }) }).catch(() => {});
+    } else {
+      say.phase = 'checking'; render();
+      try { result = await sayCheck(card, clip); } catch (error) { if (sayCurrent(token)) stopSay(error.message); return; }
+      if (!sayCurrent(token)) return;
+    }
+    say.tries += 1;
+    if (result.verdict === 'unclear' && say.tries < 2) {
+      say.phase = 'again'; say.result = result; render();
+      if (!await sayChime(false, token)) return;
+      continue;
+    }
+    say.phase = 'result'; say.result = result; render();
+    if (!await sayChime(result.verdict === 'right', token)) return;
+    if (result.verdict !== 'right' && !await sayPlay(`audio/en/${encodeURIComponent(card.id)}.mp3`, token) && !sayCurrent(token)) return;
+    if (!await sayWait(700, token)) return;
+  }
+}
+const SAY_VERDICTS = { right: ['right', 'Right'], wrong: ['wrong', 'Not quite'], silent: ['wrong', 'No answer'], unclear: ['unclear', 'Couldn’t make it out'], skipped: ['unclear', 'This word’s recording didn’t play'] };
+function renderSay() {
+  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Say it</span></div>`;
+  const card = say.card, result = say.result;
+  const status = {
+    starting: 'Opening the microphone…', loading: '&nbsp;', prompt: 'Listen…', checking: 'Checking…',
+    listening: 'Your turn: say it in English', again: `Didn’t catch that${result?.heard ? ` (heard “${esc(result.heard)}”)` : ''}. Say it again.`,
+  }[say.phase];
+  let verdict = '';
+  if (say.phase === 'result' && result) {
+    const [kind, label] = SAY_VERDICTS[result.verdict] || SAY_VERDICTS.unclear;
+    verdict = `<p class="say-verdict ${kind}">${kind === 'right' ? checkIcon : kind === 'wrong' ? crossIcon : ''}<span>${label}</span></p>
+      ${result.heard && result.verdict !== 'right' ? `<p class="say-heard">Heard “${esc(result.heard)}”</p>` : ''}<p class="say-en">${esc(result.en)}</p>`;
+  }
+  const face = say.running && card
+    ? `<p class="wm-fr" lang="fr">${frEsc(card.fr)}</p>${verdict || `<p class="say-status">${status || '&nbsp;'}</p>`}${say.phase === 'listening' ? '<div class="say-meter" aria-hidden="true"><span></span></div>' : ''}`
+    : say.running ? `<p class="say-status">${status || '&nbsp;'}</p>`
+    : '<p class="wm-hint">Echo says a French word; say its English out loud. Echo listens until you stop, tells you whether you had it, says the English when you didn’t, and goes on to the next word.</p>';
+  main.innerHTML = `${say.error ? `<p class="feedback warn" role="alert">${esc(say.error)}</p>` : ''}<section class="stream walkman say">${header}
+    <div class="wm-face" aria-live="polite">${face}</div>
+    <div class="wm-controls">${say.running
+      ? `<button class="secondary" data-action="say-stop">Stop</button>`
+      : `<button class="primary" data-action="say-start">${say.card ? 'Start again' : 'Start'}</button>`}</div>
+    <p class="caption wm-note">Keep the screen on and Echo open: iPhone turns the microphone off when the screen locks. A right answer counts like ✓ on the Walkman and a wrong one or none like ✗; one Echo couldn’t make out counts for nothing. Words come by score, the shakiest most often.</p>
+  </section>`;
+}
 // Sounds: pairs that differ by one sound (lib/sounds.ts). One side plays; the learner picks which one they heard,
 // then can hear both. A round is ten pairs, the ones missed most first.
 let soundList = null;          // api/sounds: each contrast with its recent record
@@ -3032,6 +3244,8 @@ function show(next) {
     if ('mediaSession' in navigator) navigator.mediaSession.metadata = null;
   }
   if (name !== 'walkman') { heardOpen = false; heardSaying = ''; heardResume = false; }
+  // Leaving Say it lets go of the microphone.
+  if (name !== 'say') stopSay();
   if (name === 'home') homeInfo.at = 0;
   screen = name; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
   if (name === 'home') fetchState();
@@ -3419,6 +3633,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'walkman-mark') markHeard(button.dataset.word, button.dataset.knew === 'true');
   else if (action === 'walkman-choice') chooseWalkman(button.dataset.words);
   else if (action === 'walkman-tense') chooseWalkmanTense(button.dataset.tense);
+  else if (action === 'say') openSay();
+  else if (action === 'say-start') startSay();
+  else if (action === 'say-stop') stopSay();
   else if (action === 'stream-check') streamCheck();
   else if (action === 'stream-next') streamNext();
   else if (event.target.closest('#flashcard') && !event.target.closest('button,a,input,select')) reveal();
@@ -3538,4 +3755,5 @@ if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); 
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
 // The tape starts at once where the browser allows it; Safari wants a tap first, and then Play is right there.
 else if (requestedScreen === 'walkman') { if (move('walkman', true)) loadTape(true); }
+else if (requestedScreen === 'say' && !roomsOff.has('say')) openSay();
 else fetchState();

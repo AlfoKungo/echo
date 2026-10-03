@@ -26,7 +26,8 @@ const ROOT = join(import.meta.dir, '..');
 const COOKIE = 'echo_session';
 const IDLE = 30 * 60_000;
 const READY_WITHIN = 30_000;
-const ROOMS_OFF = 'story,radio,songs,friends';
+// Rooms that write or record for one person, or (say) run speech recognition, which one Mac cannot do per friend.
+const ROOMS_OFF = 'story,radio,songs,friends,say';
 
 export type PilotOptions = {
   data: string; origin: string; ownerData: string; firstPort: number;

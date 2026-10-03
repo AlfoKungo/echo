@@ -21,6 +21,8 @@ import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
+import { hint, judge } from './lib/say-check';
+import { createWhisper } from './lib/whisper';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
 for (const level of ['log', 'error', 'warn'] as const) {
   const write = console[level].bind(console);
@@ -224,6 +226,14 @@ const attribute = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charC
 const pilotAdmin = process.env.ECHO_PILOT_ADMIN ?? 'http://127.0.0.1:7898';
 const allowedHosts = new Set([new URL(publicOrigin).host, `127.0.0.1:${port}`, `localhost:${port}`]);
 const allowedOrigins = new Set([publicOrigin, `http://127.0.0.1:${port}`, `http://localhost:${port}`]);
+// Say it: the learner hears a French word and says its English aloud; recognition runs on this Mac (lib/whisper.ts).
+const whisper = createWhisper({
+  server: process.env.ECHO_WHISPER_SERVER ?? '/opt/homebrew/bin/whisper-server',
+  model: process.env.ECHO_WHISPER_MODEL ?? join(process.env.HOME ?? '', '.local/share/whisper-models/ggml-large-v3-turbo.bin'),
+  ffmpeg: process.env.ECHO_FFMPEG ?? '/opt/homebrew/bin/ffmpeg',
+  port: Number(process.env.ECHO_WHISPER_PORT ?? 7793),
+});
+const whisperSweep = setInterval(() => whisper.sweep(), 60_000);
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
 // Walkman tapes live in memory, the latest few only; clips are re-read whenever they are rebuilt.
@@ -490,6 +500,23 @@ async function route(req: Request): Promise<Response> {
       store.recordVerdict({ id: String(data.id ?? ''), wordId: String(data.wordId ?? ''), knew: data.knew as boolean | null });
       return json({ ok: true });
     }
+    // Say it: a recording of the learner saying a French word's English, judged against the word's meanings. A right
+    // or wrong answer counts like a Walkman ✓ or ✗; one recognition could not make out counts for nothing.
+    if (path === '/api/say/check' && req.method === 'POST' && !roomsOff.includes('say')) {
+      if (!req.headers.get('content-type')?.toLowerCase().startsWith('audio/')) throw new StoreError('Send the recording itself.', 415);
+      const wordId = url.searchParams.get('word') ?? '', requestId = url.searchParams.get('request') ?? '';
+      const word = store.word(wordId);
+      if (!word) throw new StoreError('This word is not in the vocabulary deck.', 404);
+      if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
+      const clip = new Uint8Array(await req.arrayBuffer());
+      if (!clip.length || clip.length > 4_000_000) throw new StoreError('That recording is empty or too long.');
+      let heard: string;
+      try { heard = await whisper.transcribe(clip, hint(word.en)); }
+      catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
+      const verdict = judge(heard, word.en);
+      if (verdict !== 'unclear') store.recordVerdict({ id: `say-${requestId}`, wordId, knew: verdict === 'right' });
+      return json({ verdict, heard, en: word.en });
+    }
     const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);
     if (tapeAudio && (req.method === 'GET' || req.method === 'HEAD')) {
       const tape = tapes.get(tapeAudio[1]!);
@@ -561,6 +588,14 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/sounds' && req.method === 'GET') return json({ contrasts: sounds.summary() });
     if (path === '/api/sounds/round' && req.method === 'POST') { const data = await body(req); return json({ questions: sounds.round(String(data.id ?? '')) }); }
     if (path === '/api/sounds/answer' && req.method === 'POST') { const data = await body(req); return json(sounds.answer(data as unknown as SoundAnswer)); }
+    // A word's English, as the Walkman says it: Say it plays it after a miss.
+    const englishAnswer = path.match(/^\/audio\/en\/([a-z0-9-]+)\.mp3$/);
+    if (englishAnswer && (req.method === 'GET' || req.method === 'HEAD')) {
+      if (!store.word(englishAnswer[1]!)) return json({ error: 'This word is not in the vocabulary deck.' }, 404);
+      const file = Bun.file(join(root, 'audio/en', `${englishAnswer[1]}.mp3`));
+      if (!await file.exists()) return json({ error: 'This English recording has not been made yet.' }, 404);
+      return audioFile(req, file);
+    }
     if (path.startsWith('/audio/') && (req.method === 'GET' || req.method === 'HEAD')) {
       const spoken = path.match(/^\/audio\/grammar\/([a-z0-9-]+)\.mp3$/);
       const word = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
@@ -609,6 +644,8 @@ async function stop() {
   clearInterval(verbChecks);
   clearInterval(storyChecks);
   clearInterval(radioChecks);
+  clearInterval(whisperSweep);
+  whisper.stop();
   await server.stop(true);
   comprehension.close();
   story.close();
