@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": { "start": "bun server.ts", "test": "bun test", "typecheck": "tsc --noEmit" },
-  "dependencies": { "ts-fsrs": "5.4.2" },
+  "dependencies": { "cmu-pronouncing-dictionary": "3.0.0", "ts-fsrs": "5.4.2" },
   "devDependencies": { "@types/bun": "latest", "typescript": "~5.9.3" }
 }

@@ -1,11 +1,14 @@
 // Say it: whether what the learner said aloud, as speech recognition wrote it down, is the English for a French
 // word. A word's English is a list of meanings ("to learn; to teach someone something", "stranger (unknown
 // person, male)"): any one of them counts, without what is in brackets or a leading "to", "the", "a" or "an".
-// Recognition is not spelling: one slip in a long word, a plural for a singular, a filler ("um", "it's") and words
+// Recognition is not spelling: one slip in a long word, a word that sounds alike ("live" for "leave", "hi" for "eye";
+// lib/sounds-alike.ts), a plural for a singular, a filler ("um", "it's") and words
 // that only finish a phrase ("look" for "to look at") are all fine. What recognition invents from silence or noise
 // ("Thank you.", "you"), and thinking aloud ("let me think", "wait"), is not an answer at all, so Echo listens on.
 // Giving up out loud ("I don't know", "no idea", "pass") is: it counts as not knowing the word. What the learner
 // once marked as heard wrong for a word (Store.sayAccepted) counts as its English.
+import { soundsAlike } from './sounds-alike';
+
 export type SayVerdict = 'right' | 'wrong' | 'dontknow' | 'unclear';
 
 const LEADING = new Set(['to', 'the', 'a', 'an']);
@@ -55,12 +58,13 @@ function distance(left: string, right: string): number {
 }
 // A plural for a singular, either way: gates and gate, boxes and box.
 const forms = (word: string) => [word, ...(word.length > 2 && word.endsWith('s') ? [word.slice(0, -1)] : []), ...(word.length > 3 && word.endsWith('es') ? [word.slice(0, -2)] : [])];
-function sameWord(heard: string, wanted: string): boolean {
+// `alike` lets a word that only sounds like the wanted one count, as when the answer is said on its own.
+function sameWord(heard: string, wanted: string, alike: boolean): boolean {
   if (forms(heard).some((form) => forms(wanted).includes(form))) return true;
   const allowed = wanted.length >= 9 ? 2 : wanted.length >= 5 ? 1 : 0;
-  return allowed > 0 && distance(heard, wanted) <= allowed;
+  return (allowed > 0 && distance(heard, wanted) <= allowed) || (alike && soundsAlike(heard, wanted));
 }
-const samePhrase = (heard: string[], wanted: string[]) => heard.length === wanted.length && heard.every((word, index) => sameWord(word, wanted[index]!));
+const samePhrase = (heard: string[], wanted: string[], alike = true) => heard.length === wanted.length && heard.every((word, index) => sameWord(word, wanted[index]!, alike));
 
 function matches(heard: string[], wanted: string[]): boolean {
   if (samePhrase(heard, wanted)) return true;
@@ -68,9 +72,10 @@ function matches(heard: string[], wanted: string[]): boolean {
   let core = wanted.length;
   while (core > 1 && TAILS.has(wanted[core - 1]!)) core--;
   for (let end = core; end < wanted.length; end++) if (samePhrase(heard, wanted.slice(0, end))) return true;
-  // The answer said within a few more words: "a frog, I think", "rich, wealthy".
+  // The answer said within a few more words: "a frog, I think", "rich, wealthy". Spelt as heard, not by sound:
+  // among more words, one that only sounds like the answer ("to" in "listen to" for "tea") is no answer.
   if (heard.length > wanted.length && heard.length <= wanted.length + 3) {
-    for (let start = 0; start + wanted.length <= heard.length; start++) if (samePhrase(heard.slice(start, start + wanted.length), wanted)) return true;
+    for (let start = 0; start + wanted.length <= heard.length; start++) if (samePhrase(heard.slice(start, start + wanted.length), wanted, false)) return true;
   }
   return false;
 }

@@ -45,10 +45,21 @@ test('giving up out loud is not knowing the word; thinking aloud is not an answe
 });
 
 test('what the learner marked as heard wrong counts for that word from then on', () => {
-  expect(judge('Hi.', 'eye')).toBe('wrong');
-  expect(said('Hi.')).toBe('hi');
-  expect(judge('Hi!', 'eye', [said('Hi.')])).toBe('right');
-  expect(judge('Hello.', 'eye', [said('Hi.')])).toBe('wrong');
+  expect(judge('Umbrella.', 'lock (mechanism)')).toBe('wrong');
+  expect(said('An umbrella.')).toBe('umbrella');
+  expect(judge('Umbrella!', 'lock (mechanism)', [said('An umbrella.')])).toBe('right');
+  expect(judge('Key.', 'lock (mechanism)', [said('An umbrella.')])).toBe('wrong');
+});
+
+test('a word that sounds like the answer counts; a different word does not', () => {
+  for (const [heard, english] of [['To live.', 'to leave'], ['Hi.', 'eye'], ['I.', 'eye'], ['Hold.', 'old'], ['Ship.', 'sheep'], ['Fill.', 'to feel'], ['Fool.', 'full'], ['Tree.', 'three'], ['Sink.', 'to think'], ['Vest.', 'west']]) {
+    expect(judge(heard!, english!)).toBe('right');
+  }
+  for (const [heard, english] of [['Boy.', 'to be'], ['Train.', 'rain'], ['Run.', 'rain'], ['Back.', 'big; tall'], ['Lesson.', 'person'], ['Toad.', 'frog']]) {
+    expect(judge(heard!, english!)).toBe('wrong');
+  }
+  // Among more words, a word that only sounds like the answer is not it: the "to" of "listen to" is not "tea".
+  expect(judge('Listen to.', 'tea')).toBe('wrong');
 });
 
 test('the hint lists the meanings recognition should expect', () => {
