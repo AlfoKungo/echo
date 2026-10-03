@@ -62,6 +62,17 @@ test('a word that sounds like the answer counts; a different word does not', () 
   expect(judge('Listen to.', 'tea')).toBe('wrong');
 });
 
+test('answers missed in use: a split word, one word put another way, a word recognition made up, a start', () => {
+  expect(judge('Far away.', 'distant; faraway')).toBe('right');
+  expect(judge('Piece of clothing.', 'item of clothing; garment')).toBe('right');
+  // Not an English word: compared by its consonants, b/m-d-j/s-t like bedsheet.
+  expect(judge('Medjit.', 'bedsheet')).toBe('right');
+  expect(judge('Just a...', 'chest of drawers; dresser')).toBe('unclear');
+  // A real mix-up stays wrong.
+  expect(judge('Gift.', 'frame (for a picture)')).toBe('wrong');
+  expect(judge('Box of clothing.', 'chest of drawers')).toBe('wrong');
+});
+
 test('an apostrophe joins: "It\'s." is the answer "its", and still only an opener for another word', () => {
   expect(judge('It\'s.', 'his; her; its (before a masculine noun)')).toBe('right');
   expect(judge('It’s.', 'frog')).toBe('unclear');

@@ -23,6 +23,9 @@ const NOTHING = new Set(['you', 'thank you', 'thanks', 'thanks for watching', 't
 const THINKING = ['let me think', 'let me see', 'wait', 'hold on', 'one second', 'one sec', 'just a second', 'just a moment', 'moment', 'i know this', 'i know this one', 'what is it', 'what was it', 'i think', 'its', 'it is', 'thats', 'it means', 'means'];
 // Giving up, said at the start of what was heard ("I don't know this one").
 const DONT_KNOW = ['i dont know', 'dont know', 'i do not know', 'dunno', 'i dunno', 'no idea', 'i have no idea', 'ive got no idea', 'no clue', 'i have no clue', 'pass', 'i pass', 'skip', 'i give up', 'i forgot', 'i forget', 'i dont remember', 'dont remember', 'i cant remember', 'im not sure', 'not sure'];
+// Words that are no answer on their own: "Just a...", "It's the..." is the learner starting, so Echo listens on.
+// Checked after the answer, so "its" or "of" said for a word that means it is right.
+const SMALL = new Set(['just', 'a', 'an', 'the', 'it', 'its', 'is', 'this', 'that', 'thats', 'like', 'and', 'so', 'what', 'i', 'mean', 'kind', 'sort', 'of', 'some', 'maybe', 'um', 'er']);
 
 // Lower case, without accents or brackets, words of letters and digits only; an apostrophe joins ("it's" is "its").
 const plain = (text: string) => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
@@ -64,16 +67,22 @@ const forms = (word: string) => [word, ...(word.length > 2 && word.endsWith('s')
 function sameWord(heard: string, wanted: string, alike: boolean): boolean {
   if (forms(heard).some((form) => forms(wanted).includes(form))) return true;
   const allowed = wanted.length >= 9 ? 2 : wanted.length >= 5 ? 1 : 0;
-  return (allowed > 0 && distance(heard, wanted) <= allowed) || (alike && soundsAlike(heard, wanted));
+  return (allowed > 0 && distance(heard, wanted) <= allowed) || (alike && soundsAlike([heard], [wanted]));
 }
 const samePhrase = (heard: string[], wanted: string[], alike = true) => heard.length === wanted.length && heard.every((word, index) => sameWord(word, wanted[index]!, alike));
 
 function matches(heard: string[], wanted: string[]): boolean {
-  if (samePhrase(heard, wanted)) return true;
-  // The phrase without the words that only finish it.
+  // The phrase, and the phrase without the words that only finish it.
   let core = wanted.length;
   while (core > 1 && TAILS.has(wanted[core - 1]!)) core--;
-  for (let end = core; end < wanted.length; end++) if (samePhrase(heard, wanted.slice(0, end))) return true;
+  for (let end = wanted.length; end >= core; end--) {
+    const want = wanted.slice(0, end);
+    // Word by word; with spaces and hyphens not mattering ("far away" for "faraway"); or as one run of sounds, which
+    // also covers a word recognition split or joined.
+    if (samePhrase(heard, want) || heard.join('') === want.join('') || soundsAlike(heard, want)) return true;
+  }
+  // A long answer with one word put another way: "piece of clothing" for "item of clothing".
+  if (wanted.length >= 3 && heard.length === wanted.length && heard.filter((word, index) => sameWord(word, wanted[index]!, true)).length >= wanted.length - 1) return true;
   // The answer said within a few more words: "a frog, I think", "rich, wealthy". Spelt as heard, not by sound:
   // among more words, one that only sounds like the answer ("to" in "listen to" for "tea") is no answer.
   if (heard.length > wanted.length && heard.length <= wanted.length + 3) {
@@ -90,6 +99,6 @@ export function judge(heard: string, english: string, accepted: readonly string[
   const list = heardWords(heard), phrase = list.join(' ');
   if (list.length && (accepted.includes(phrase) || answers(english).some((wanted) => matches(list, wanted)))) return 'right';
   if (DONT_KNOW.some((start) => startsWith(phrase, start))) return 'dontknow';
-  if (!list.length || NOTHING.has(plain(heard)) || THINKING.includes(phrase)) return 'unclear';
+  if (!list.length || NOTHING.has(plain(heard)) || THINKING.includes(phrase) || list.every((word) => SMALL.has(word))) return 'unclear';
   return 'wrong';
 }

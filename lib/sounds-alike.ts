@@ -1,7 +1,9 @@
-// Say it: whether a word recognition wrote down sounds like the word wanted, by the CMU pronouncing dictionary
+// Say it: whether what recognition wrote down sounds like the answer wanted, by the CMU pronouncing dictionary
 // (126,000 English words with their sounds). Recognition mixes up words a vowel or a near sound apart — leave and
-// live, eye and hi, old and hold — and a learner who meant one hardly ever says the other by mistake, so those count
-// as the same word. The dictionary is read on the first check (about 30 ms, 20 MB) and kept.
+// live, eye and hi, old and hold — and splits or joins words (far away, faraway); a learner who meant one hardly
+// ever says the other by mistake, so those count as the same. Phrases are compared as one run of sounds. A word the
+// dictionary lacks (recognition's own inventions, "medjit") is compared by its outline of consonants instead. The
+// dictionary is read on the first check (about 30 ms, 20 MB) and kept.
 import { readFileSync } from 'node:fs';
 
 // Vowels next to each other in the mouth, which recognition (and an accent) swaps: leave and live, full and fool.
@@ -41,10 +43,36 @@ function distance(heard: string[], wanted: string[]): number {
   }
   return previous[wanted.length]!;
 }
-// How far a word may be from the wanted one: one near sound (or an h) in a word of up to four sounds, two in longer ones.
+// How far an answer may be from the wanted one: one near sound (or an h) in up to four sounds, two in up to seven.
+// Looser (two in three or four sounds) let through four times as many different words (run for rain, walk for talk)
+// and none of the real answers missed in use.
 const allowed = (length: number) => length <= 4 ? 0.5 : length <= 7 ? 1 : 1.5;
-export function soundsAlike(heard: string, wanted: string): boolean {
-  const heardSounds = sounds(heard), wantedSounds = sounds(wanted);
-  if (!heardSounds || !wantedSounds) return false;
-  return wantedSounds.some((want) => heardSounds.some((said) => distance(said, want) <= allowed(want.length)));
+
+// A phrase's sounds: its words' one after another, each word's first two ways of saying it, at most eight ways in all;
+// undefined when a word is not in the dictionary.
+function phraseSounds(list: readonly string[]): string[][] | undefined {
+  let ways: string[][] = [[]];
+  for (const word of list) {
+    const own = sounds(word);
+    if (!own) return undefined;
+    ways = ways.flatMap((start) => own.slice(0, 2).map((way) => [...start, ...way])).slice(0, 8);
+  }
+  return ways;
+}
+// The consonants of letters, with near ones written alike and vowels, h and y dropped: "medjit" and "bedsheet" are
+// both BTST.
+function outline(text: string): string {
+  const letters = text.replace(/ph/g, 'f').replace(/th/g, 't').replace(/[sc]h|j|g(?=[eiy])|c(?=[eiy])|x|z/g, 's').replace(/ck|c|q/g, 'k');
+  const marks: Record<string, string> = { b: 'B', p: 'B', m: 'B', f: 'F', v: 'F', w: 'F', d: 'T', t: 'T', n: 'T', k: 'K', g: 'K', s: 'S', l: 'L', r: 'L' };
+  let out = '';
+  for (const letter of letters) { const mark = marks[letter]; if (mark && !out.endsWith(mark)) out += mark; }
+  return out;
+}
+
+// Whether `heard` sounds like `wanted` (each plain lower-case words).
+export function soundsAlike(heard: readonly string[], wanted: readonly string[]): boolean {
+  const heardWays = phraseSounds(heard), wantedWays = phraseSounds(wanted);
+  if (heardWays && wantedWays) return wantedWays.some((want) => heardWays.some((said) => distance(said, want) <= allowed(want.length)));
+  const said = outline(heard.join('')), want = outline(wanted.join(''));
+  return want.length >= 2 && said === want;
 }
