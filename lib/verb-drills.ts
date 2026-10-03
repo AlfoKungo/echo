@@ -1,4 +1,4 @@
-// The Verbs room's record and rounds: every answer to a form (a verb in one tense for one person), from Quick forms,
+// The Verbs room's record and rounds: every answer to a form (a verb in one tense for one person), from Type it,
 // Whole table, Cards (the learner says whether they knew it) or By ear, kept once per request. A form's state comes from its latest answers (By ear is kept apart:
 // it tests hearing, not writing), and a round leans on the forms that are shaky or not tried yet.
 import { Database } from 'bun:sqlite';
@@ -20,7 +20,7 @@ const COMMON = 20;
 const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
-// A form's score: +2 for a typed answer right and -3 wrong (Quick forms, each cell of a whole table); +1 or -2 for a
+// A form's score: +2 for a typed answer right and -3 wrong (Type it, each cell of a whole table); +1 or -2 for a
 // Cards or Walkman mark, the learner's own say. By ear asks about a tense or a number, not one form, and counts for
 // none. Every point halves over SCORE_HALF_LIFE_DAYS, as a word's does.
 const points = (mode: string, right: number) => mode === 'card' ? (right ? 1 : -2) : (right ? 2 : -3);
@@ -187,7 +187,7 @@ export function createVerbDrills(options: {
     })();
   }
 
-  // A Quick forms round: the forms most worth practising (shaky first, then untried), spread so a round of many
+  // A Type it round: the forms most worth practising (shaky first, then untried), spread so a round of many
   // verbs covers several (at most three forms per verb, two per verb and tense); for your verbs, low vocabulary scores weigh a little.
   function round(input: RoundInput): RoundItem[] {
     const verbs = chosenVerbs(input), tenses = chosenTenses(input);
@@ -249,7 +249,7 @@ export function createVerbDrills(options: {
     return checked;
   }
 
-  // A Cards round: the same forms as Quick forms, each with its answer, so the card can turn over at once.
+  // A Cards round: the same forms as Type it, each with its answer, so the card can turn over at once.
   function cards(input: RoundInput) {
     const verbs = byId();
     return round(input).map((item) => {
@@ -365,7 +365,7 @@ export function createVerbDrills(options: {
   }
 
   // The Statistics page's Verbs part: every form's state now, the same counts at the end of each study day since the
-  // first answer (rebuilt from the answers, as the verb map reads them), and the share right in each tense over the
+  // first answer (rebuilt from the answers, as All your verbs reads them), and the share right in each tense over the
   // last two weeks, for each person and for each kind of verb (the groups of the tense pages). A form counts once
   // practised, in any mode but By ear.
   // The score side of Statistics: for each study day from the first answer (the last SCORE_DAYS), how many forms had

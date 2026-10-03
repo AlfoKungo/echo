@@ -153,7 +153,7 @@ describe('verb drills', () => {
   }
   const state = (drills: ReturnType<typeof fixture>, verbId: string, tense: 'pres', person: number) => drills.summary().verbs.find((row) => row.id === verbId)!.states[tense][person];
 
-  test('an answer with an accent missing counts as right, in Quick forms and a whole table, and shows the accents', () => {
+  test('an answer with an accent missing counts as right, in Type it and a whole table, and shows the accents', () => {
     const drills = fixture();
     const typed = drills.answer({ requestId: 'acc', verbId: 'v-parler', tense: 'pc', person: 0, given: 'ai parle' });
     expect(typed).toMatchObject({ right: true, why: 'Right — with the accents: j’ai parlé.' });

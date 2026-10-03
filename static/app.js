@@ -499,6 +499,7 @@ function render() {
   else if (screen === 'sounds') renderSounds();
   else if (screen === 'sound') renderSound();
   else if (screen === 'verbs') renderVerbs();
+  else if (screen === 'verbs-all') renderVerbAll();
   else if (screen === 'verbs-forms') renderVerbForms();
   else if (screen === 'verbs-table') renderVerbTable();
   else if (screen === 'verbs-ear') renderVerbEar();
@@ -1748,7 +1749,7 @@ function verbStatsHTML() {
   const kinds = verbs.kinds.map((kind) => vsRow(kind.title, `${VB_TENSES[kind.tense]} · ${kind.total} answers`, kind, `data-action="vb-tense-page" data-tense="${kind.tense}"`)).join('');
   const tenses = verbTensePersonRows(Object.entries(VB_TENSES).map(([tense, name]) => ({ label: name, score: scores.tenses[tense], answered: verbs.tenses[tense], action: `data-action="vb-tense-page" data-tense="${tense}"` })));
   const people = verbTensePersonRows(VB_PERSONS.map((person, index) => ({ label: person, score: scores.people[index], answered: verbs.people[index] })));
-  return `<div class="st-block">${stHead('Verb form scores', 'Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or Walkman mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Quick forms, Cards, Next table and the Walkman verb tape bring the left side most. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.')}
+  return `<div class="st-block">${stHead('Verb form scores', 'Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or tape mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Type it, Cards, Next table and the verb tape bring the left side most. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.')}
       <div id="vs-scores">${verbScoresHTML()}</div>
       ${vsDays().length > 1 ? `<div class="st-when" id="vs-when">${verbScoresWhenHTML()}</div>
       <input type="range" class="st-slider" id="vs-slider" min="0" max="${vsDays().length - 1}" step="1" value="${vsIndex()}" aria-label="Choose a day">
@@ -2530,15 +2531,25 @@ function nextSound() {
   const question = soundRound.questions[soundRound.index];
   if (question) playFrench(question.audio);
 }
-// Verbs: conjugation drills on the verbs in the vocabulary (lib/verbs.ts, lib/verb-drills.ts). The room picks
-// which verbs and tenses; Quick forms asks one form at a time, Whole table all six persons, By ear which tense
-// or how many; the verb map colours every form by how it is doing.
+// Verbs: conjugation drills on the verbs in the vocabulary (lib/verbs.ts, lib/verb-drills.ts). Verbs options picks
+// which verbs and tenses; Type it asks one form at a time, Whole table all six persons, By ear which tense or how
+// many; each tense row sums your forms in it, and All your verbs colours every form by how it is doing.
 const VB_TENSES = { pres: 'présent', pc: 'passé composé', imp: 'imparfait', fut: 'futur' };
 const VB_PERSONS = ['je', 'tu', 'il / elle', 'nous', 'vous', 'ils / elles'];
 const VB_SETS = { mine: 'Your verbs', common: 'Most common 20', chosen: 'Choose…' };
 const VB_USES = { pres: 'now, always, and what is about to happen', pc: 'what happened: a finished action', imp: 'how things were, what used to happen', fut: 'what will happen' };
 const VB_ACCENTS = ['é', 'è', 'ê', 'à', 'â', 'ç', 'î', 'ô', 'ù', 'û'];
 const verbsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h7M4 12h5M4 17h7"/><path d="M14 6l3 12 3-12"/></svg>';
+const VB_DRILL_ICONS = {
+  cards: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="12" height="15" rx="2"/><path d="M8 3h10a2 2 0 0 1 2 2v13"/></svg>',
+  forms: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg>',
+  table: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.3h16M4 14.6h16M12 4v16"/></svg>',
+  ear: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>',
+  tape: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><circle cx="15.5" cy="11" r="2"/><path d="M10.5 11h3M7 19l1.5-3h7L17 19"/></svg>',
+};
+let vbWorstAll = false;    // Catching you out shows every form, not just the top three
+// All your verbs: the search, the filter (practised, shaky, new, all) and whether every tense gets a column.
+let vbAllQuery = '', vbAllFilter = 'practised', vbAllTenses = false;
 let verbsInfo = null;    // api/verbs
 let verbsPoll = 0;
 let verbSet = (() => { const saved = readPreference('echo.verbs-set', 'mine'); return saved in VB_SETS ? saved : 'mine'; })();
@@ -2574,45 +2585,97 @@ async function loadVerbs(quiet = false) {
   try { verbsInfo = await api('api/verbs'); }
   catch (error) { if (!quiet) { notice = { message: error.message }; retryAction = { type: 'verbs' }; } }
   loading = false;
-  if (screen !== 'verbs') return;
+  if (screen !== 'verbs' && screen !== 'verbs-all') return;
   render();
   // While tables are being written, the room looks again now and then.
-  if (verbsInfo && verbsInfo.tables.ready < verbsInfo.tables.total && !verbsInfo.tables.error) verbsPoll = setTimeout(() => { if (screen === 'verbs') loadVerbs(true); }, 15000);
+  if (verbsInfo && verbsInfo.tables.ready < verbsInfo.tables.total && !verbsInfo.tables.error) verbsPoll = setTimeout(() => { if (screen === 'verbs' || screen === 'verbs-all') loadVerbs(true); }, 15000);
+}
+// A verb's forms: practised once any has a state past new; shaky counts its shaky forms. A null state is a form whose
+// table is not written yet.
+const vbPractised = (verb) => Object.values(verb.states).flat().some((state) => state && state !== 'new');
+const vbShaky = (verb) => Object.values(verb.states).flat().filter((state) => state === 'shaky').length;
+// What the drills will use, in one line: the verbs, then the tenses.
+function verbChoiceText() {
+  const verbs = verbSet === 'chosen' ? (verbChosen.length ? `${verbChosen.length} chosen ${verbChosen.length === 1 ? 'verb' : 'verbs'}` : 'No verbs chosen yet') : VB_SETS[verbSet];
+  return `${verbs} · ${verbTenses.map((tense) => VB_TENSES[tense]).join(', ')}`;
 }
 function renderVerbs() {
-  const header = `<div class="section-top">${back('Home', 'home')}${infoButton('verbs')}</div>`;
-  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>Verbs</h1><p class="subtitle">Conjugation on its own: pick verbs and tenses, then drill.</p>${body}</section>`; };
+  const header = `<div class="section-top">${back('Home', 'home')}<div>${infoButton('verbs')}<button class="icon" data-action="vb-options" aria-label="Verbs options" aria-haspopup="dialog" ${busy || !verbsInfo ? 'disabled' : ''}>•••</button></div></div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>Verbs</h1>${body}</section>`; };
   if (loading || !verbsInfo) { shell(loading ? '<div class="loading-state" role="status">Loading…</div>' : ''); return; }
   const { tables } = verbsInfo;
   if (!tables.ready) { shell(`<div class="song-progress" role="status"><p>${tables.error ? `Your verb tables could not be written: ${esc(tables.error)}` : `Echo is writing a table for each of your ${tables.total} verbs. It takes a few minutes.`}</p></div>`); return; }
   const writing = tables.ready < tables.total ? `<p class="caption vb-writing" role="status">${tables.ready} of ${tables.total} verb tables written; the rest follow in a few minutes.</p>` : '';
+  const blocked = (verbSet === 'mine' && !verbsInfo.mine) || (verbSet === 'chosen' && !verbChosen.length);
+  const setup = `<button class="vb-setup" data-action="vb-options" aria-haspopup="dialog" ${busy ? 'disabled' : ''}><span class="what"><small>Practising</small><b>${esc(verbChoiceText())}</b></span><span class="change">Change</span></button>`;
+  const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} recorded` : 'Tell the tense by ear';
+  const tile = (action, icon, title, detail, disabled, extra = '') => `<button class="tile${extra}" data-action="${action}" ${action === 'tape' ? 'data-tape="verbs-tape"' : ''} ${busy || disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${VB_DRILL_ICONS[icon]}</span><h2>${title}</h2><p>${esc(detail)}</p>${extra ? '<span class="go" aria-hidden="true">Start →</span>' : ''}</button>`;
+  const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Think of the form, turn the card, say if you knew it', blocked, ' wide hero')}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', 'All six persons', false)}${tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false)}</div>`;
+  const worstShown = vbWorstAll ? verbsInfo.worst : verbsInfo.worst.slice(0, 3);
+  const worst = verbsInfo.worst.length ? `<p class="study-label vb-sec">Catching you out${verbsInfo.worst.length > 3 ? `<button data-action="vb-worst-all">${vbWorstAll ? 'Fewer' : `All ${verbsInfo.worst.length}`}</button>` : ''}</p><ol class="vb-worst">${worstShown.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="fr">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
+  // Each tense: its use, and a bar of your forms in it from solid to shaky, the rest still to try.
+  const tenseRows = Object.entries(VB_TENSES).map(([tense, label]) => {
+    const count = { solid: 0, getting: 0, shaky: 0, new: 0 };
+    for (const verb of verbsInfo.verbs) for (const state of verb.states[tense]) if (state) count[state] += 1;
+    const total = count.solid + count.getting + count.shaky + count.new;
+    const width = (n) => total ? `${(100 * n / total).toFixed(2)}%` : '0';
+    const note = count.solid + count.getting + count.shaky ? `${count.solid} solid · ${count.getting} getting there · ${count.shaky} shaky · ${count.new} to try` : 'Not started · how it works, and your verbs in it';
+    return `<button class="vb-tense-row" data-action="vb-tense-page" data-tense="${tense}" ${busy ? 'disabled' : ''}><span class="top"><b lang="fr">${label}</b><span>${esc(VB_USES[tense])}</span><i aria-hidden="true">→</i></span><span class="vb-bar" aria-hidden="true"><i class="solid" style="width:${width(count.solid)}"></i><i class="getting" style="width:${width(count.getting)}"></i><i class="shaky" style="width:${width(count.shaky)}"></i></span><small>${note}</small></button>`;
+  }).join('');
+  const practised = verbsInfo.verbs.filter(vbPractised).length;
+  const all = `<div class="topic-list vb-all-row"><button class="topic-row" data-action="vb-all" ${busy ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>All your verbs</h3></span><p>${practised} practised of ${verbsInfo.verbs.length} · look one up, see every form</p></span><span class="arrow" aria-hidden="true">→</span></button></div>`;
+  shell(`${writing}${setup}${drills}${worst}<p class="study-label vb-sec">Tenses</p><div class="vb-tenses">${tenseRows}</div>${all}`);
+}
+// Verbs options: which verbs and tenses Cards, Type it, By ear and the verb tape use.
+function openVerbOptions() {
+  if (!verbsInfo) return;
   const setDetail = { mine: `${verbsInfo.mine} started, shakiest first`, common: 'être, avoir, aller, faire…', chosen: verbChosen.length ? `${verbChosen.length} chosen` : 'pick any' };
-  const sets = Object.entries(VB_SETS).map(([set, label]) => `<button class="vb-pill" data-action="vb-set" data-set="${set}" aria-pressed="${verbSet === set}">${label}<small>${esc(setDetail[set])}</small></button>`).join('');
+  const sets = Object.entries(VB_SETS).map(([set, label]) => `<button class="vb-pill" data-action="vb-set" data-set="${set}" aria-pressed="${verbSet === set}">${label}<small${set === 'chosen' ? ' class="vb-chosen-count"' : ''}>${esc(setDetail[set])}</small></button>`).join('');
   const chooser = verbSet === 'chosen' ? `<div class="vb-chooser">${[...verbsInfo.verbs].sort((a, b) => Number(b.started) - Number(a.started) || a.inf.localeCompare(b.inf, 'fr')).map((verb) => `<button class="vb-chip" data-action="vb-choose" data-verb="${esc(verb.id)}" aria-pressed="${verbChosen.includes(verb.id)}" lang="fr">${frEsc(verb.inf)}</button>`).join('')}</div>` : '';
   const tenses = Object.entries(VB_TENSES).map(([tense, label]) => `<button class="vb-pill" data-action="vb-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${label}</button>`).join('');
-  const blocked = (verbSet === 'mine' && !verbsInfo.mine) || (verbSet === 'chosen' && !verbChosen.length);
-  const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} phrases recorded` : 'hear a form, tell the tense or how many';
-  const mode = (action, title, detail, disabled = blocked) => `<button class="topic-row" data-action="${action}" ${busy || disabled ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${title}</h3></span><p>${esc(detail)}</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
-  const tape = `<button class="topic-row" data-action="tape" data-tape="verbs-tape" ${busy ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>Tape</h3></span><p>hear a verb, a tense and a person, then the form; keeps playing with your phone locked</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
-  const modes = `${mode('vb-cards', 'Cards', 'think of the form, turn the card, say if you knew it')}${mode('vb-forms', 'Quick forms', 'type one form at a time, as many as you like')}${mode('vb-table', 'Whole table', 'all six persons of one verb', false)}${mode('vb-ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tape}`;
-  // The map: every verb with a form practised, most shaky forms first.
-  const drilled = verbsInfo.verbs.filter((verb) => Object.values(verb.states).some((states) => states.some((state) => state && state !== 'new')));
-  const shaky = (verb) => Object.values(verb.states).flat().filter((state) => state === 'shaky').length;
-  const rows = drilled.sort((a, b) => shaky(b) - shaky(a)).map((verb) => `<tr><td><button class="vb-name" data-action="vb-verb" data-verb="${esc(verb.id)}" lang="fr">${frEsc(verb.inf)}</button></td>${Object.keys(VB_TENSES).map((tense) => `<td><button class="vb-cell" data-action="vb-cell" data-verb="${esc(verb.id)}" data-tense="${tense}" aria-label="${esc(verb.inf)}, ${VB_TENSES[tense]}">${verb.states[tense].map((state) => `<i class="${state ?? 'none'}"></i>`).join('')}</button></td>`).join('')}</tr>`).join('');
-  const map = rows ? `<table class="vb-map"><tr><th></th>${Object.values(VB_TENSES).map((label) => `<th>${label.replace('passé composé', 'passé c.')}</th>`).join('')}</tr>${rows}</table>
-    <div class="vb-legend"><span><i class="solid"></i>solid</span><span><i class="getting"></i>getting there</span><span><i class="shaky"></i>shaky</span><span><i class="new"></i>not tried</span></div>` : '<p class="caption">Your map fills in as you practise: one square per person, for each verb and tense.</p>';
-  const worst = verbsInfo.worst.length ? `<p class="settings-label vb-label">Forms that catch you most</p><ol class="vb-worst">${verbsInfo.worst.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="fr">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
-  shell(`${writing}<p class="settings-label vb-label">Which verbs</p><div class="vb-pills">${sets}</div>${chooser}
-    <p class="settings-label vb-label">Tenses</p><div class="vb-pills">${tenses}</div>
-    <div class="topic-list vb-modes">${modes}</div>
-    <h2 class="story-heading">Learn the tenses</h2><div class="topic-list">${Object.entries(VB_TENSES).map(([tense, label]) => `<button class="topic-row" data-action="vb-tense-page" data-tense="${tense}" ${busy ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3 lang="fr">${label}</h3></span><p>${esc(VB_USES[tense])}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('')}</div>
-    <div class="dialog-row vb-lookup"><label for="vb-lookup">Look up a verb</label><select id="vb-lookup"><option value="">Choose a verb…</option>${[...verbsInfo.verbs].sort((a, b) => a.inf.localeCompare(b.inf, 'fr')).map((verb) => `<option value="${esc(verb.id)}">${esc(verb.inf)}</option>`).join('')}</select></div>
-    <h2 class="story-heading">Verb map</h2>${map}${worst}`);
+  openDialog('Verbs options', `<p class="settings-label vb-label vb-first">Which verbs</p><div class="vb-pills">${sets}</div>${chooser}<p class="settings-label vb-label">Tenses</p><div class="vb-pills">${tenses}</div><p class="caption vb-options-note">Cards, Type it, By ear and the verb tape use these. Whole table picks its own verb.</p><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'verbs-options');
+}
+function openVerbAll() { vbAllQuery = ''; if (move('verbs-all', true)) { if (verbsInfo) render(); else loadVerbs(); } }
+// A verb's page or a table opened from All your verbs goes back there; from anywhere else, back to Verbs.
+const vbBack = () => trail[depth - 1] === 'verbs-all' ? back('All your verbs', 'vb-all-back') : back('Verbs', 'verbs');
+function renderVerbAll() {
+  const header = `<div class="section-top">${back('Verbs', 'verbs')}</div>`;
+  if (loading || !verbsInfo) { main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>All your verbs</h1>${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
+  main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>All your verbs</h1><label class="sr-only" for="vb-search">Find a verb</label><input id="vb-search" class="vb-search" type="search" placeholder="Find a verb, French or English…" value="${esc(vbAllQuery)}" autocomplete="off" autocapitalize="off" spellcheck="false"><div id="vb-all-results"></div></section>`;
+  renderVerbAllResults();
+}
+// The list under the search box, redrawn on its own so typing keeps the keyboard up. A search looks through every
+// verb, in alphabetical order; otherwise the filter applies, the shakiest first.
+function renderVerbAllResults() {
+  const target = document.querySelector('#vb-all-results');
+  if (!target || !verbsInfo) return;
+  const query = normalized(vbAllQuery.trim());
+  const verbs = verbsInfo.verbs;
+  const filters = { practised: ['Practised', vbPractised], shaky: ['Shaky', (verb) => vbShaky(verb) > 0], new: ['Not practised', (verb) => !vbPractised(verb)], all: ['All', () => true] };
+  const list = query
+    ? verbs.filter((verb) => normalized(verb.inf).includes(query) || normalized(verb.en).includes(query)).sort((a, b) => a.inf.localeCompare(b.inf, 'fr'))
+    : verbs.filter(filters[vbAllFilter][1]).sort((a, b) => vbShaky(b) - vbShaky(a) || Number(vbPractised(b)) - Number(vbPractised(a)) || a.inf.localeCompare(b.inf, 'fr'));
+  // Columns: the tenses with a form practised (the chosen tenses before any), or all four.
+  const practisedTenses = Object.keys(VB_TENSES).filter((tense) => verbs.some((verb) => verb.states[tense].some((state) => state && state !== 'new')));
+  const columns = vbAllTenses ? Object.keys(VB_TENSES) : practisedTenses.length ? practisedTenses : verbTenses;
+  const chips = Object.entries(filters).map(([id, [label, test]]) => `<button data-action="vb-all-filter" data-filter="${id}" aria-pressed="${!query && vbAllFilter === id}">${label} · ${verbs.filter(test).length}</button>`).join('');
+  const toggle = columns.length < 4 || vbAllTenses ? `<button data-action="vb-all-tenses">${vbAllTenses ? 'Only tenses you practise' : 'Show all 4 tenses'}</button>` : '';
+  const cells = (verb) => verb.states[columns[0]].every((state) => state === null) ? '<span class="vb-unwritten">table being written</span>'
+    : columns.map((tense) => `<button class="vb-cell" data-action="vb-cell" data-verb="${esc(verb.id)}" data-tense="${tense}" aria-label="${esc(verb.inf)}, ${VB_TENSES[tense]}">${verb.states[tense].map((state) => `<i class="${state ?? 'none'}"></i>`).join('')}</button>`).join('');
+  const rows = list.map((verb) => `<li class="vb-vrow"><button class="vb-vname" data-action="vb-verb" data-verb="${esc(verb.id)}"><span lang="fr">${frEsc(verb.inf)}</span><small>${esc(verb.en)}</small></button><span class="vb-vcells">${cells(verb)}</span></li>`).join('');
+  target.innerHTML = `<div class="vb-chips">${chips}</div><div class="vb-list-meta"><span>${list.length} ${list.length === 1 ? 'verb' : 'verbs'}</span>${toggle}</div>${list.length ? `<div class="vb-colhead" aria-hidden="true">${columns.map((tense) => `<span>${VB_TENSES[tense].replace('passé composé', 'passé c.')}</span>`).join('')}</div><ul class="vb-vrows">${rows}</ul><div class="vb-legend"><span><i class="solid"></i>solid</span><span><i class="getting"></i>getting there</span><span><i class="shaky"></i>shaky</span><span><i class="new"></i>not tried</span></div>` : `<p class="empty-list">${query ? 'No verb matches.' : 'None yet.'}</p>`}`;
 }
 function verbAction(action, button) {
-  if (action === 'vb-set') { verbSet = button.dataset.set; savePreference('echo.verbs-set', verbSet); render(); }
-  else if (action === 'vb-choose') { const id = button.dataset.verb; verbChosen = verbChosen.includes(id) ? verbChosen.filter((entry) => entry !== id) : [...verbChosen, id]; savePreference('echo.verbs-chosen', JSON.stringify(verbChosen)); render(); }
-  else if (action === 'vb-tense') { const tense = button.dataset.tense; const next = verbTenses.includes(tense) ? verbTenses.filter((entry) => entry !== tense) : [...verbTenses, tense]; if (!next.length) return; verbTenses = Object.keys(VB_TENSES).filter((entry) => next.includes(entry)); savePreference('echo.verbs-tenses', JSON.stringify(verbTenses)); render(); }
+  if (action === 'vb-options') openVerbOptions();
+  else if (action === 'vb-set') { verbSet = button.dataset.set; savePreference('echo.verbs-set', verbSet); render(); openVerbOptions(); }
+  // Choosing a verb only presses its chip, so the list stays where it was scrolled to.
+  else if (action === 'vb-choose') { const id = button.dataset.verb; verbChosen = verbChosen.includes(id) ? verbChosen.filter((entry) => entry !== id) : [...verbChosen, id]; savePreference('echo.verbs-chosen', JSON.stringify(verbChosen)); button.setAttribute('aria-pressed', String(verbChosen.includes(id))); const count = dialog.querySelector('.vb-chosen-count'); if (count) count.textContent = verbChosen.length ? `${verbChosen.length} chosen` : 'pick any'; render(); }
+  else if (action === 'vb-tense') { const tense = button.dataset.tense; const next = verbTenses.includes(tense) ? verbTenses.filter((entry) => entry !== tense) : [...verbTenses, tense]; if (!next.length) return; verbTenses = Object.keys(VB_TENSES).filter((entry) => next.includes(entry)); savePreference('echo.verbs-tenses', JSON.stringify(verbTenses)); render(); if (dialog.open && dialog.dataset.kind === 'verbs-options') openVerbOptions(); }
+  else if (action === 'vb-worst-all') { vbWorstAll = !vbWorstAll; render(); }
+  else if (action === 'vb-all') openVerbAll();
+  else if (action === 'vb-all-back') { if (move('verbs-all')) loadVerbs(); }
+  else if (action === 'vb-all-filter') { vbAllFilter = button.dataset.filter; vbAllQuery = ''; const input = document.querySelector('#vb-search'); if (input) input.value = ''; renderVerbAllResults(); }
+  else if (action === 'vb-all-tenses') { vbAllTenses = !vbAllTenses; renderVerbAllResults(); }
   else if (action === 'vb-cards') { verbFormsOverride = null; if (move('verbs-cards', true)) startVerbCards(); }
   else if (action === 'vb-card-no' || action === 'vb-card-yes') markVerbCard(action === 'vb-card-yes');
   else if (action === 'vb-forms') { verbFormsOverride = null; if (move('verbs-forms', true)) startVerbForms(); }
@@ -2684,7 +2747,7 @@ async function loadVerbPage() {
   if (screen === 'verbs-verb') render();
 }
 function renderVerbPage() {
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Verb</span></div>`;
+  const header = `<div class="section-top">${vbBack()}<span class="stream-label">Verb</span></div>`;
   const view = verbPageView;
   if (loading || !view) { main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}${loading ? '<div class="loading-state" role="status">Opening the verb…</div>' : ''}</section>`; return; }
   const tenses = view.tenses.map((entry) => `<section class="vb-tense-block"><div class="vb-tense-head"><h2 lang="fr">${esc(entry.name)}</h2><button class="quiet" data-action="vb-tense-page" data-tense="${entry.tense}">${esc(entry.group)} →</button></div>${paradigmHTML(entry.paradigm)}<p class="vb-why vb-rule">${frEsc(entry.rule)}</p><button class="quiet vb-table-link" data-action="vb-cell" data-verb="${esc(view.id)}" data-tense="${entry.tense}">Fill in this table</button></section>`).join('');
@@ -2706,7 +2769,7 @@ async function startVerbCards() {
   loading = false;
   if (screen === 'verbs-cards') render();
 }
-// Tops a stream (Cards or Quick forms) up from its endpoint; a form already waiting, or seen in the last few, is
+// Tops a stream (Cards or Type it) up from its endpoint; a form already waiting, or seen in the last few, is
 // left out so nothing comes straight back. Only the "choosing more" screen is redrawn; a form being looked at is
 // left alone.
 async function topUpVerbStream(stream, path, current, onScreen) {
@@ -2765,7 +2828,7 @@ function markVerbCard(knew) {
     .finally(() => topUpVerbCards());
 }
 
-// ── Quick forms: type one form at a time, as endless as Cards. A wrong answer comes back once, four forms later;
+// ── Type it: type one form at a time, as endless as Cards. A wrong answer comes back once, four forms later;
 // more forms are chosen from the answers so far while a few are still waiting.
 const topUpVerbForms = () => topUpVerbStream(verbForms, 'api/verbs/round', () => verbForms, 'verbs-forms');
 async function startVerbForms() {
@@ -2778,7 +2841,7 @@ async function startVerbForms() {
 }
 function renderVerbForms() {
   const fromMistakes = verbFormsOverride?.set === 'shaky';
-  const header = `<div class="section-top">${fromMistakes ? back('Mistakes', 'mistakes') : back('Verbs', 'verbs')}<span class="stream-label">${fromMistakes ? 'Shaky forms' : 'Quick forms'}</span></div>`;
+  const header = `<div class="section-top">${fromMistakes ? back('Mistakes', 'mistakes') : back('Verbs', 'verbs')}<span class="stream-label">${fromMistakes ? 'Shaky forms' : 'Type it'}</span></div>`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${body}</section>`; };
   if (loading || !verbForms) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
   const { items, index, result } = verbForms;
@@ -2850,7 +2913,7 @@ function chooseVerbTableMode(mode) {
   if (mode === 'next') nextVerbTable(); else { verbTable = { ...verbTable, answers: ['', '', '', '', '', ''], result: null }; render(); }
 }
 function renderVerbTable() {
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Whole table</span></div><div class="segmented vb-table-modes" role="group" aria-label="How the table is picked">${[['next', 'Next table'], ['choose', 'Choose']].map(([mode, label]) => `<button data-action="vb-table-mode" data-value="${mode}" aria-pressed="${vbTableVisit === mode}" ${busy || loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
+  const header = `<div class="section-top">${vbBack()}<span class="stream-label">Whole table</span></div><div class="segmented vb-table-modes" role="group" aria-label="How the table is picked">${[['next', 'Next table'], ['choose', 'Choose']].map(([mode, label]) => `<button data-action="vb-table-mode" data-value="${mode}" aria-pressed="${vbTableVisit === mode}" ${busy || loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
   // Back on this screen with no table drawn yet (a reload, say): draw one, unless the last try failed.
   if (vbTableVisit === 'next' && !verbTable.verbId && !loading && !retryAction) { nextVerbTable(); return; }
   if (vbTableVisit === 'next' && (loading || !verbTable.verbId)) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${loading ? '<div class="loading-state" role="status">Choosing a table…</div>' : ''}</section>`; return; }
@@ -3129,7 +3192,7 @@ async function finishStory() {
   if (storyView?.read) loadStory(true);
 }
 function openGroup(id) {
-  // Verb forms practise the shaky forms in Quick forms; every other group is a focus stream.
+  // Verb forms practise the shaky forms in Type it; every other group is a focus stream.
   if (mistakes?.find((group) => group.id === id)?.kind === 'verbs') { verbFormsOverride = { set: 'shaky', verbIds: [], tenses: Object.keys(VB_TENSES) }; if (move('verbs-forms', true)) startVerbForms(); return; }
   focusId = id; if (move(`focus|${id}`, true)) enterMixed();
 }
@@ -3898,7 +3961,6 @@ document.addEventListener('change', (event) => {
   if (event.target.id === 'deck-select' && !locked()) { deck = event.target.value; browseCategory = deck; savePreference('echo.deck', deck); dialog.close(); wordsOptionChanged(); }
   else if (event.target.id === 'browse-category') { browseCategory = event.target.value; renderBrowseResults(); }
   else if (event.target.id === 'browse-show') { browseShow = event.target.value; renderBrowseResults(); }
-  else if (event.target.id === 'vb-lookup' && event.target.value) openVerbPage(event.target.value);
   else if (event.target.id === 'vb-table-verb' || event.target.id === 'vb-table-tense') {
     verbTable = { ...verbTable, [event.target.id === 'vb-table-verb' ? 'verbId' : 'tense']: event.target.value, answers: ['', '', '', '', '', ''], result: null };
     render(); main.querySelector('.vb-input')?.focus({ preventScroll: true });
@@ -3907,6 +3969,7 @@ document.addEventListener('change', (event) => {
 });
 document.addEventListener('input', (event) => {
   if (event.target.id === 'vocab-search') { search = event.target.value; renderBrowseResults(); }
+  if (event.target.id === 'vb-search') { vbAllQuery = event.target.value; renderVerbAllResults(); }
   if (event.target.id === 'answer') draft = event.target.value;
   if (event.target.id === 'stream-answer') streamDraft = event.target.value;
   if (event.target.id === 'song-query') songQuery = event.target.value;
@@ -3992,7 +4055,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'lyrics') loadLyrics();
   else if (screen === 'sounds') loadSounds();
   else if (screen === 'sound') startSoundRound();
-  else if (screen === 'verbs') loadVerbs();
+  else if (screen === 'verbs' || screen === 'verbs-all') loadVerbs();
   else if (screen === 'verbs-forms') startVerbForms();
   else if (screen === 'verbs-table') render();
   else if (screen === 'verbs-ear') startVerbEar();

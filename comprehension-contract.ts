@@ -108,7 +108,7 @@ export type MistakeGroup = {
   title: string; // e.g. the grammar topic title, 'Words you keep missing', 'Sentences you didn’t catch'
   count: number;
   examples: string[]; // up to 3 short French examples
-  // What a tap starts: a grammar practice scope and/or a comprehension focus stream; a verbs group opens Quick forms
+  // What a tap starts: a grammar practice scope and/or a comprehension focus stream; a verbs group opens Type it
   // on the shaky forms.
   grammarScope?: string;
   stream?: StreamId;
