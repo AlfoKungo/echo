@@ -19,7 +19,7 @@ const formatCount = new Intl.NumberFormat('en').format;
 const readPreference = (key, fallback) => { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } };
 const savePreference = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Progress is server-owned; local preferences are optional. */ } };
 // Theme: Dusk (the default) or Paper, remembered on this device; index.html applies it before the first paint.
-const THEME_COLOURS = { dusk: '#19161e', paper: '#f6f2eb' };
+const THEME_COLOURS = { dusk: '#0e0d16', paper: '#f6f2eb' };
 function applyTheme(theme) {
   if (theme === 'paper') document.documentElement.dataset.theme = 'paper'; else delete document.documentElement.dataset.theme;
   document.querySelector('meta[name=theme-color]')?.setAttribute('content', THEME_COLOURS[theme]);
