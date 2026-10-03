@@ -2032,26 +2032,18 @@ function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; els
 function openWalkman() { if (move('walkman', true)) loadTape(); }
 // ── Say it (from the Walkman): Echo says a French word, the learner says its English aloud, and Echo checks it
 // (api/say/check, lib/say-check.ts). A level meter tells speech from the room's quiet, so an answer ends
-// SAY_QUIET_MS after the learner stops. The learner has SAY_WAIT_MS to start an answer, and can give up sooner by
+// SAY_QUIET_MS after the learner stops. A wrong verdict waits until SAY_RESUME_MS have passed since their last sound:
+// if they speak again before then they had only paused, and Echo listens on and checks the whole answer again. The
+// learner has SAY_WAIT_MS to start an answer, and can give up sooner by
 // saying so ("I don't know") or tapping Don't know; what Echo can't make out, or thinking aloud, is shown and
 // listened past. After a wrong verdict, "I said it right" turns the ✗ into ✓ and teaches Echo what it heard
 // (api/say/correct). iPhone stops the microphone when the screen locks or Echo leaves the screen, so the screen is
 // kept awake while Say it runs, and Say it pauses if it goes away.
 const SAY_QUIET_MS = 700;
+const SAY_RESUME_MS = 1600;
 const SAY_LONGEST_MS = 8000;
 const SAY_WAIT_MS = 40000;
 const SAY_RECENT = 8;
-// The listening ring's outline: a circle at rest; with the voice's level (0–1) it grows and ripples out of round,
-// two slow waves running opposite ways round it, and settles back to a circle in silence.
-function sayRingPath(level, seconds) {
-  const points = [];
-  for (let k = 0; k < 64; k++) {
-    const angle = (k / 64) * Math.PI * 2;
-    const radius = 21 + level * 7 + level * 4 * Math.sin(3 * angle + seconds * 5) + level * 2.5 * Math.sin(5 * angle - seconds * 7);
-    points.push(`${(radius * Math.cos(angle)).toFixed(2)},${(radius * Math.sin(angle)).toFixed(2)}`);
-  }
-  return `M${points.join('L')}Z`;
-}
 // A moment of silence played on Start, inside the tap, so Safari lets the words that follow play without one.
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
 const sayAudio = new Audio();
@@ -2163,59 +2155,94 @@ function sayWav(samples, rate) {
   samples.forEach((sample, index) => view.setInt16(44 + index * 2, Math.max(-1, Math.min(1, sample)) * 0x7fff, true));
   return new Blob([view], { type: 'audio/wav' });
 }
-// Listens for one answer: the answer as WAV once the learner stops (from a third of a second before they began),
-// 'dontknow' when they tap Don't know, 'silent' when nothing was said by `deadline`, null if Say it stopped meanwhile.
-function sayListen(token, deadline) {
+// The microphone's level now, in dB.
+function sayLevel() {
+  const { analyser, data } = sayMic;
+  analyser.getFloatTimeDomainData(data);
+  let sum = 0;
+  for (const sample of data) sum += sample * sample;
+  return 10 * Math.log10(sum / data.length + 1e-12);
+}
+// Loud enough to be the learner's voice rather than the room.
+const sayLoud = (level, floor) => level > Math.max(floor + 15, -55);
+// The listening ring breathes slowly on its own (one breath every 4 s), so it shows Echo is listening while the
+// learner thinks, and swells and glows with their voice (`level`, 0–1) on top of that.
+function sayRing(level, now) {
+  const ring = main.querySelector('.say-ring');
+  if (!ring) return;
+  const rest = 0.5 + 0.5 * Math.sin(now / 1000 * Math.PI / 2);
+  ring.style.transform = `scale(${(1 + rest * 0.08 + level * 0.45).toFixed(3)})`;
+  ring.style.opacity = (0.3 + rest * 0.2 + level * 0.5).toFixed(3);
+  ring.style.boxShadow = `0 0 ${Math.round(level * 22)}px ${Math.round(level * 4)}px #aaa6e455`;
+}
+// Listens for one answer: { clip, answer } once the learner stops, the clip as WAV from a third of a second before
+// they began; 'dontknow' when they tap Don't know, 'silent' when nothing was said by `deadline`, null if Say it
+// stopped meanwhile. `answer` is what was heard so far; passed back in, listening goes on with it after a pause, and
+// its sound goes on being kept until the next listen or sayAnswer lets it go.
+function sayListen(token, deadline, answer = null) {
   return new Promise((resolve) => {
-    const { analyser, data } = sayMic, context = sayContext;
-    const blocks = [];
-    sayCapture = blocks;
-    const began = performance.now(), rate = context.sampleRate;
-    let floor = null, loudTicks = 0, spokeAt = 0, lastLoud = 0, over = false, dropped = 0, shown = 0;
+    const rate = sayContext.sampleRate;
+    const heard = answer ?? { blocks: [], began: performance.now(), floor: null, spokeAt: 0, lastLoud: 0, dropped: 0 };
+    sayCapture = heard.blocks;
+    let loudTicks = 0, over = false, shown = 0;
     const finish = (outcome) => {
       if (over) return;
-      over = true; clearInterval(timer); sayInterrupt = null; sayGiveUp = null; sayCapture = null;
-      if (outcome !== 'speech') { resolve(outcome); return; }
-      const all = new Float32Array(blocks.reduce((sum, block) => sum + block.length, 0));
+      over = true; clearInterval(timer); sayInterrupt = null; sayGiveUp = null;
+      if (outcome !== 'speech') { sayCapture = null; resolve(outcome); return; }
+      const all = new Float32Array(heard.blocks.reduce((sum, block) => sum + block.length, 0));
       let at = 0;
-      for (const block of blocks) { all.set(block, at); at += block.length; }
-      const from = Math.max(0, Math.floor((spokeAt - began - 330) / 1000 * rate) - dropped);
-      resolve(sayWav(all.subarray(from), rate));
+      for (const block of heard.blocks) { all.set(block, at); at += block.length; }
+      const from = Math.max(0, Math.floor((heard.spokeAt - heard.began - 330) / 1000 * rate) - heard.dropped);
+      resolve({ clip: sayWav(all.subarray(from), rate), answer: heard });
     };
     sayInterrupt = () => finish(null);
     sayGiveUp = () => finish('dontknow');
     // Every 50 ms: the level in dB against the room's quiet, which is learned while nobody speaks.
     const timer = setInterval(() => {
       if (!sayCurrent(token)) return finish(null);
-      analyser.getFloatTimeDomainData(data);
-      let sum = 0;
-      for (const sample of data) sum += sample * sample;
-      const level = 10 * Math.log10(sum / data.length + 1e-12), now = performance.now();
+      const level = sayLevel(), now = performance.now();
       // A microphone can give pure zeros (just opened, or noise suppression in a silent room). The room's quiet
       // starts no louder than -50 dB, in case the first real sound is already the learner's voice, and is learned
       // from there.
-      if (floor === null) {
+      if (heard.floor === null) {
+        sayRing(0, now);
         if (level < -100) { if (now > deadline) finish('silent'); return; }
-        floor = Math.min(level, -50);
+        heard.floor = Math.min(level, -50);
       }
-      const loud = level > Math.max(floor + 15, -55);
-      if (loud) { loudTicks += 1; lastLoud = now; if (!spokeAt && loudTicks >= 3) spokeAt = now - 150; }
-      else { loudTicks = 0; if (!spokeAt) floor += (level - floor) * (level < floor ? 0.3 : 0.05); }
-      // The ring follows the voice, not the room: it starts 8 dB over the room's quiet, swells at once and
-      // settles slowly, so it rests as a circle while you think and wobbles while you speak.
-      const target = Math.max(0, Math.min(1, (level - floor - 8) / 22));
+      const loud = sayLoud(level, heard.floor);
+      if (loud) { loudTicks += 1; heard.lastLoud = now; if (!heard.spokeAt && loudTicks >= 3) heard.spokeAt = now - 150; }
+      else { loudTicks = 0; if (!heard.spokeAt) heard.floor += (level - heard.floor) * (level < heard.floor ? 0.3 : 0.05); }
+      // The ring follows the voice, not the room: it starts 8 dB over the room's quiet, swells at once and settles
+      // slowly.
+      const target = Math.max(0, Math.min(1, (level - heard.floor - 8) / 22));
       shown += (target - shown) * (target > shown ? 0.6 : 0.15);
-      const ring = main.querySelector('.say-ring path');
-      if (ring) {
-        ring.setAttribute('d', sayRingPath(shown, now / 1000));
-        ring.style.opacity = (0.4 + shown * 0.6).toFixed(3);
-      }
-      if (spokeAt && (now - lastLoud > SAY_QUIET_MS || now - spokeAt > SAY_LONGEST_MS)) finish('speech');
-      else if (!spokeAt && now > deadline) finish('silent');
+      sayRing(shown, now);
+      if (heard.spokeAt && (now - heard.lastLoud > SAY_QUIET_MS || now - heard.spokeAt > SAY_LONGEST_MS)) finish('speech');
+      else if (!heard.spokeAt && now > deadline) finish('silent');
       // Only about a second from before the learner speaks is kept, however long they think.
-      while (!spokeAt && blocks.length > 1 && (blocks.length - 1) * blocks[0].length > rate) dropped += blocks.shift().length;
+      while (!heard.spokeAt && heard.blocks.length > 1 && (heard.blocks.length - 1) * heard.blocks[0].length > rate) heard.dropped += heard.blocks.shift().length;
     }, 50);
   });
+}
+// After the pause that ended an answer: `resumed` turns true if the learner speaks again within SAY_RESUME_MS of
+// their last sound (they had not finished), and false once that passes, Say it stops, or `stop` is called.
+function sayResumes(token, answer) {
+  let stop;
+  const resumed = new Promise((resolve) => {
+    let loudTicks = 0;
+    const end = (value) => { clearInterval(timer); resolve(value); };
+    stop = () => end(false);
+    const timer = setInterval(() => {
+      if (!sayCurrent(token) || !sayMic) return end(false);
+      const now = performance.now();
+      if (sayLoud(sayLevel(), answer.floor)) {
+        loudTicks += 1;
+        if (loudTicks >= 2) { answer.lastLoud = now; return end(true); }
+      } else loudTicks = 0;
+      if (now - answer.lastLoud > SAY_RESUME_MS) end(false);
+    }, 50);
+  });
+  return { resumed, stop };
 }
 async function sayCheck(card, clip, request) {
   const response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${request}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store' });
@@ -2225,23 +2252,37 @@ async function sayCheck(card, clip, request) {
   return data;
 }
 // Listens until there is an answer to judge; what is heard but is not one ("let me think") is shown, and Echo listens
-// on, until the word's SAY_WAIT_MS are up. Null when Say it stopped.
+// on, until the word's SAY_WAIT_MS are up. Null when Say it stopped. An answer checked again after a pause keeps its
+// request, so the second verdict replaces the first.
 async function sayAnswer(card, token) {
   const deadline = performance.now() + SAY_WAIT_MS;
   say.phase = 'listening'; render();
+  let answer = null, request = null, heldWrong = false;
   for (;;) {
-    const clip = await sayListen(token, deadline);
-    if (!clip || !sayCurrent(token)) return null;
-    const request = requestId();
-    if (clip === 'dontknow' || clip === 'silent') {
+    const heard = await sayListen(token, deadline, answer);
+    if (!heard || !sayCurrent(token)) { sayCapture = null; return null; }
+    if (!answer) request = requestId();
+    if (heard === 'dontknow' || heard === 'silent') {
       api('api/walkman/verdict', { method: 'POST', body: JSON.stringify({ id: `say-${request}`, wordId: card.id, knew: false }) }).catch(() => {});
-      return { verdict: clip, heard: '', en: card.en, request };
+      return { verdict: heard, heard: '', en: card.en, request };
     }
     say.phase = 'checking'; render();
+    const more = sayResumes(token, heard.answer);
     let result;
-    try { result = await sayCheck(card, clip, request); } catch (error) { if (sayCurrent(token)) stopSay(error.message); return null; }
+    try { result = await sayCheck(card, heard.clip, request); }
+    catch (error) { more.stop(); sayCapture = null; if (sayCurrent(token)) stopSay(error.message); return null; }
+    // Wrong, and they speak again: they had only paused. Listen on and check the whole answer.
+    if (result.verdict === 'wrong' && await more.resumed && sayCurrent(token)) {
+      answer = heard.answer; heldWrong = true;
+      say.phase = 'listening'; render();
+      continue;
+    }
+    more.stop(); sayCapture = null;
     if (!sayCurrent(token)) return null;
     if (result.verdict !== 'unclear') return { ...result, request };
+    // The longer answer came to nothing: the first part's ✗ no longer stands either.
+    if (heldWrong) api('api/walkman/verdict', { method: 'POST', body: JSON.stringify({ id: `say-${request}`, wordId: card.id, knew: null }) }).catch(() => {});
+    answer = null; heldWrong = false;
     // Breath or noise heard as nothing changes nothing on screen; words that were not an answer are shown.
     say.phase = result.heard.trim() ? 'again' : 'listening'; say.result = result; render();
   }
@@ -2297,7 +2338,7 @@ function renderSay() {
       ${result.heard && result.verdict === 'wrong' ? `<p class="say-heard">Heard “${esc(result.heard)}”</p>` : ''}<p class="say-en">${esc(result.en)}</p>`;
   }
   const face = say.running && card
-    ? `<p class="wm-fr" lang="fr">${frEsc(card.fr)}</p>${verdict || `<p class="say-status">${status || '&nbsp;'}</p>`}${listening ? `<svg class="say-ring" viewBox="-40 -36 80 72" aria-hidden="true"><path d="${sayRingPath(0, 0)}"/></svg>` : ''}`
+    ? `<p class="wm-fr" lang="fr">${frEsc(card.fr)}</p>${verdict || `<p class="say-status">${status || '&nbsp;'}</p>`}${listening ? '<div class="say-ring" aria-hidden="true"></div>' : ''}`
     : say.running ? `<p class="say-status">${status || '&nbsp;'}</p>`
     : '<p class="wm-hint">Echo says a French word; say its English out loud — you have 40 seconds to start. Echo listens until you stop, tells you whether you had it, says the English when you didn’t, and goes on to the next word. Say “I don’t know” to hear the answer.</p>';
   const fix = say.fix;
