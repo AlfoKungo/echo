@@ -420,14 +420,15 @@ if (document.body.dataset.learner) document.querySelector('#about-dialog .dialog
 // move, and Study.
 function renderHome() {
   loadHomeInfo();
-  // Each room's icon is tinted by its family: lavender for words and grammar, green for listening, peach for Story.
-  const family = (action, data = '') => ['listen', 'read', 'radio'].includes(action) || data.includes('listen-tape') ? ' fam-green' : action === 'story' ? ' fam-peach' : ['mistakes', 'statistics', 'friends'].includes(action) ? ' fam-plain' : '';
+  // Each room is tinted by its family: lavender for words, grammar and the tapes, green for listening, peach for Story. Story and Radio tiles are filled with their colour.
+  const family = (action) => ['listen', 'read', 'radio'].includes(action) ? ' fam-green' : action === 'story' ? ' fam-peach' : ['mistakes', 'statistics', 'friends'].includes(action) ? ' fam-plain' : '';
+  const filled = (action) => ['story', 'radio'].includes(action) ? ' fam-fill' : '';
   const tile = (action, symbol, title, hint, mode, disabled = busy, wide = '') => {
     if (roomsOff.has(action)) return '';
     const label = mode ? levelFor(mode) : '';
-    return `<button class="tile${wide}${family(action)}" data-action="${action}" ${disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}<h2>${esc(title)}</h2><p>${esc(hint)}</p></button>`;
+    return `<button class="tile${wide}${family(action)}${filled(action)}" data-action="${action}" ${disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}<h2>${esc(title)}</h2><p>${esc(hint)}</p></button>`;
   };
-  const row = (action, symbol, title, data = '') => `<button class="study-row${family(action, data)}" data-action="${action}" ${data} ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="chev" aria-hidden="true">${chevronIcon}</span></button>`;
+  const row = (action, symbol, title, data = '') => `<button class="study-row${family(action)}" data-action="${action}" ${data} ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="chev" aria-hidden="true">${chevronIcon}</span></button>`;
   main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1>
     <div class="tiles">${tile('practise', mixIcon, 'Practise', 'A little of everything: words, listening and grammar, mixed for you', '', busy, ' wide hero')}</div>
     <p class="study-label">Words &amp; grammar</p><div class="tiles shelf">
@@ -2698,7 +2699,7 @@ function renderVerbs() {
   const blocked = (verbSet === 'mine' && !verbsInfo.mine) || (verbSet === 'chosen' && !verbChosen.length);
   const setup = `<button class="vb-setup" data-action="vb-options" aria-haspopup="dialog" ${busy ? 'disabled' : ''}><span class="what"><small>Practising</small><b>${esc(verbChoiceText())}</b></span><span class="change">Change</span></button>`;
   const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} recorded` : 'Tell the tense by ear';
-  const tile = (action, icon, title, detail, disabled, extra = '') => `<button class="tile${extra}" data-action="${action}" ${action === 'tape' ? 'data-tape="verbs-tape"' : ''} ${busy || disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${VB_DRILL_ICONS[icon]}</span><h2>${title}</h2><p>${esc(detail)}</p>${extra ? '<span class="go" aria-hidden="true">Start →</span>' : ''}</button>`;
+  const tile = (action, icon, title, detail, disabled, extra = '') => `<button class="tile${extra}${['vb-ear', 'tape'].includes(action) ? ' fam-green' : ''}" data-action="${action}" ${action === 'tape' ? 'data-tape="verbs-tape"' : ''} ${busy || disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${VB_DRILL_ICONS[icon]}</span><h2>${title}</h2><p>${esc(detail)}</p>${extra ? '<span class="go" aria-hidden="true">Start →</span>' : ''}</button>`;
   const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Think of the form, turn the card, say if you knew it', blocked, ' wide hero')}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', 'All six persons', false)}${tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false)}</div>`;
   const worstShown = vbWorstAll ? verbsInfo.worst : verbsInfo.worst.slice(0, 3);
   const worst = verbsInfo.worst.length ? `<p class="study-label vb-sec">Catching you out${verbsInfo.worst.length > 3 ? `<button data-action="vb-worst-all">${vbWorstAll ? 'Fewer' : `All ${verbsInfo.worst.length}`}</button>` : ''}</p><ol class="vb-worst">${worstShown.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="fr">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
