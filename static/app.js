@@ -2041,6 +2041,8 @@ const SAY_QUIET_MS = 700;
 const SAY_LONGEST_MS = 8000;
 const SAY_WAIT_MS = 40000;
 const SAY_RECENT = 8;
+// The five listening bars' share of the voice's level: tallest in the middle.
+const SAY_BAR_SHAPE = [0.55, 0.8, 1, 0.8, 0.55];
 // A moment of silence played on Start, inside the tap, so Safari lets the words that follow play without one.
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
 const sayAudio = new Audio();
@@ -2190,12 +2192,14 @@ function sayListen(token, deadline) {
       const loud = level > Math.max(floor + 15, -55);
       if (loud) { loudTicks += 1; lastLoud = now; if (!spokeAt && loudTicks >= 3) spokeAt = now - 150; }
       else { loudTicks = 0; if (!spokeAt) floor += (level - floor) * (level < floor ? 0.3 : 0.05); }
-      // The bar follows the voice, not the room: it starts 8 dB over the room's quiet, rises at once and settles
-      // slowly, so it reads as speaking or not instead of flickering with every reading.
+      // The bars follow the voice, not the room: they start 8 dB over the room's quiet, rise at once and settle
+      // slowly; each bar has its own share of the level and a little sway of its own, so they read as a voice.
       const target = Math.max(0, Math.min(1, (level - floor - 8) / 22));
       shown += (target - shown) * (target > shown ? 0.6 : 0.15);
-      const meter = main.querySelector('.say-meter span');
-      if (meter) meter.style.transform = `scaleX(${shown.toFixed(3)})`;
+      main.querySelectorAll('.say-bars i').forEach((bar, index) => {
+        const sway = 0.75 + 0.25 * Math.sin(now / 1000 * 13 + index * 1.9);
+        bar.style.height = `${Math.round(6 + shown * 34 * SAY_BAR_SHAPE[index] * sway)}px`;
+      });
       if (spokeAt && (now - lastLoud > SAY_QUIET_MS || now - spokeAt > SAY_LONGEST_MS)) finish('speech');
       else if (!spokeAt && now > deadline) finish('silent');
       // Only about a second from before the learner speaks is kept, however long they think.
@@ -2283,7 +2287,7 @@ function renderSay() {
       ${result.heard && result.verdict === 'wrong' ? `<p class="say-heard">Heard “${esc(result.heard)}”</p>` : ''}<p class="say-en">${esc(result.en)}</p>`;
   }
   const face = say.running && card
-    ? `<p class="wm-fr" lang="fr">${frEsc(card.fr)}</p>${verdict || `<p class="say-status">${status || '&nbsp;'}</p>`}${listening ? '<div class="say-meter" aria-hidden="true"><span></span></div>' : ''}`
+    ? `<p class="wm-fr" lang="fr">${frEsc(card.fr)}</p>${verdict || `<p class="say-status">${status || '&nbsp;'}</p>`}${listening ? '<div class="say-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>' : ''}`
     : say.running ? `<p class="say-status">${status || '&nbsp;'}</p>`
     : '<p class="wm-hint">Echo says a French word; say its English out loud — you have 40 seconds to start. Echo listens until you stop, tells you whether you had it, says the English when you didn’t, and goes on to the next word. Say “I don’t know” to hear the answer.</p>';
   const fix = say.fix;
