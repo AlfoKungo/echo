@@ -306,7 +306,7 @@ async function api(path, { limit = 25000, ...options } = {}) {
   } catch (error) {
     if (error.name === 'AbortError' || error instanceof TypeError) offline = true;
     if (error.name === 'AbortError') throw new Error('The request timed out. Retry to safely check and finish the same action.');
-    if (error instanceof TypeError) throw new Error('Cannot reach your Mac. Check that Echo is running and your connection is available, then retry.');
+    if (error instanceof TypeError) throw Object.assign(new Error('Cannot reach your Mac. Check that Echo is running and your connection is available, then retry.'), { network: true });
     throw error;
   } finally { clearTimeout(timeout); }
 }
@@ -2245,11 +2245,22 @@ function sayResumes(token, answer) {
   return { resumed, stop };
 }
 async function sayCheck(card, clip, request) {
-  const response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${request}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store' });
+  let response;
+  try { response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${request}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store' }); }
+  catch { throw Object.assign(new Error('Echo couldn’t reach your Mac to check that answer. Check your connection, then tap Start again.'), { network: true }); }
   let data;
   try { data = await response.json(); } catch { throw new Error('Your Mac returned an unreadable response.'); }
   if (!response.ok) throw new Error(data.error || `Checking failed (${response.status}).`);
   return data;
+}
+// A request Say it makes, tried again after 1 and 2 seconds when the phone loses the Mac for a moment (Safari's
+// "Load failed"). Sending a check again is safe: it keeps its request id, so its verdict is recorded once. Null if
+// Say it stopped meanwhile.
+async function sayTry(token, request) {
+  for (const pause of [1000, 2000, 0]) {
+    try { return await request(); }
+    catch (error) { if (!error.network || !pause) throw error; if (!await sayWait(pause, token)) return null; }
+  }
 }
 // Listens until there is an answer to judge; what is heard but is not one ("let me think") is shown, and Echo listens
 // on, until the word's SAY_WAIT_MS are up. Null when Say it stopped. An answer checked again after a pause keeps its
@@ -2269,8 +2280,9 @@ async function sayAnswer(card, token) {
     say.phase = 'checking'; render();
     const more = sayResumes(token, heard.answer);
     let result;
-    try { result = await sayCheck(card, heard.clip, request); }
+    try { result = await sayTry(token, () => sayCheck(card, heard.clip, request)); }
     catch (error) { more.stop(); sayCapture = null; if (sayCurrent(token)) stopSay(error.message); return null; }
+    if (!result) { more.stop(); sayCapture = null; return null; }
     // Wrong, and they speak again: they had only paused. Listen on and check the whole answer.
     if (result.verdict === 'wrong' && await more.resumed && sayCurrent(token)) {
       answer = heard.answer; heldWrong = true;
@@ -2293,9 +2305,9 @@ async function runSay(token) {
   while (sayCurrent(token)) {
     say.phase = 'loading'; say.result = null; render();
     let pick;
-    try { pick = await api('api/endless/next', { method: 'POST', body: JSON.stringify({ direction: 'fr-en', deck: 'all', exclude: say.recent }) }); }
+    try { pick = await sayTry(token, () => api('api/endless/next', { method: 'POST', body: JSON.stringify({ direction: 'fr-en', deck: 'all', exclude: say.recent }) })); }
     catch (error) { if (sayCurrent(token)) stopSay(error.message); return; }
-    if (!sayCurrent(token)) return;
+    if (!pick || !sayCurrent(token)) return;
     if (!pick.card) { stopSay('There are no words to say yet: practise some in Vocabulary first.'); return; }
     say.card = pick.card;
     say.recent = [pick.card.id, ...say.recent.filter((id) => id !== pick.card.id)].slice(0, SAY_RECENT);
