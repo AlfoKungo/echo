@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { hint, judge, said } from '../lib/say-check';
+import { answerTexts, hint, judge, said } from '../lib/say-check';
 
 test('any one meaning counts, without brackets or a leading to, the, a or an', () => {
   expect(judge('Wealthy.', 'rich; wealthy')).toBe('right');
@@ -83,4 +83,10 @@ test('an apostrophe joins: "It\'s." is the answer "its", and still only an opene
 test('the hint lists the meanings recognition should expect', () => {
   expect(hint('to learn; to teach someone something')).toBe('learn, teach someone something.');
   expect(hint('perm (hairstyle)')).toBe('perm.');
+});
+
+test('the answer is scored as Whisper writes it: each meaning with and without its "to", capitalised, with a full stop', () => {
+  expect(answerTexts('to lie')).toEqual(['To lie.', 'Lie.']);
+  expect(answerTexts('perm (hairstyle)')).toEqual(['Perm.']);
+  expect(answerTexts('his; her; its (before a masculine noun)')).toEqual(['His.', 'Her.', 'Its.']);
 });

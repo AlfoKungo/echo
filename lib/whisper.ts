@@ -1,16 +1,26 @@
-// Speech recognition for Say it: whisper.cpp's server, started on the first clip and kept running while the learner
-// talks (about 0.25 s a one-word clip, against 0.75-1.3 s when the model loads for each one), then stopped after
-// IDLE without a clip, as it holds about 1.6 GB of the GPU's memory. A clip arrives as the page captured it (WAV at
-// the phone's rate); ffmpeg turns it into 16 kHz mono with a little silence around the speech, which short words need.
+// Speech recognition for Say it: Whisper large-v3-turbo on Apple's MLX (lib/whisper-mlx.py), started on the first clip
+// and kept running while the learner talks (about 0.2 s a one-word clip), then stopped after IDLE without a clip, as
+// it holds about 1.6 GB of the GPU's memory. A clip arrives as the page captured it (WAV at the phone's rate); ffmpeg
+// turns it into 16 kHz mono with a little silence around the speech, which short words need. That file serves both
+// the transcription and, when the answer seems wrong, scoring how well the wanted answer fits it.
 import type { Subprocess } from 'bun';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const IDLE = 10 * 60_000;
-const READY_WITHIN = 60_000;
+const READY_WITHIN = 90_000;
 
-export type WhisperOptions = { server: string; model: string; ffmpeg: string; port: number };
+export type WhisperOptions = { python: string; script: string; model: string; ffmpeg: string; port: number };
+// One clip, converted and on disk until closed.
+export type Recording = {
+  wav: string;
+  // What was said, with `prompt` telling recognition which words to expect.
+  transcribe(prompt: string): Promise<string>;
+  // How likely recognition finds each text for the clip: summed log-probabilities, higher is likelier.
+  score(texts: string[]): Promise<number[]>;
+  close(): void;
+};
 
 export function createWhisper(options: WhisperOptions) {
   let child: Subprocess | null = null;
@@ -19,8 +29,9 @@ export function createWhisper(options: WhisperOptions) {
   const base = `http://127.0.0.1:${options.port}`;
 
   function start(): Promise<void> {
-    const spawned = Bun.spawn([options.server, '-m', options.model, '-l', 'en', '--host', '127.0.0.1', '--port', String(options.port), '-nt'], {
-      stdout: 'ignore', stderr: 'ignore',
+    // Offline: the model is already in the Hugging Face cache, and a start must not wait on the network.
+    const spawned = Bun.spawn([options.python, options.script, String(options.port), options.model], {
+      env: { ...process.env, HF_HUB_OFFLINE: '1' }, stdout: 'ignore', stderr: 'inherit',
       onExit: () => { if (child === spawned) { child = null; ready = null; } },
     });
     child = spawned;
@@ -42,34 +53,42 @@ export function createWhisper(options: WhisperOptions) {
     }
     return ready;
   }
-
-  // What was said in `clip`, with `prompt` telling recognition which words to expect.
-  async function transcribe(clip: Uint8Array, prompt: string): Promise<string> {
+  async function call<T>(path: string, body: unknown): Promise<T> {
     lastUse = Date.now();
+    await ensure();
+    try {
+      const reply = await fetch(`${base}${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(20_000) });
+      const data = await reply.json() as T & { error?: string };
+      if (!reply.ok) throw new Error(data.error || `Speech recognition answered ${reply.status}.`);
+      return data;
+    } finally {
+      lastUse = Date.now();
+    }
+  }
+
+  async function open(clip: Uint8Array): Promise<Recording> {
     const work = mkdtempSync(join(tmpdir(), 'echo-say-'));
+    const close = () => rmSync(work, { recursive: true, force: true });
     try {
       const input = join(work, 'clip'), wav = join(work, 'clip.wav');
       await Bun.write(input, clip);
-      const convert = Bun.spawn([options.ffmpeg, '-loglevel', 'error', '-y', '-i', input, '-af', 'adelay=300|300,apad=pad_dur=0.4', '-ar', '16000', '-ac', '1', wav], { stdout: 'ignore', stderr: 'pipe' });
+      const convert = Bun.spawn([options.ffmpeg, '-loglevel', 'error', '-y', '-i', input, '-af', 'adelay=300|300,apad=pad_dur=0.4', '-ar', '16000', '-ac', '1', '-c:a', 'pcm_s16le', wav], { stdout: 'ignore', stderr: 'pipe' });
       if (await convert.exited !== 0) throw new Error('That recording could not be read.');
-      await ensure();
-      const form = new FormData();
-      form.append('file', Bun.file(wav));
-      form.append('response_format', 'json');
-      form.append('temperature', '0');
-      form.append('prompt', prompt);
-      const reply = await fetch(`${base}/inference`, { method: 'POST', body: form, signal: AbortSignal.timeout(20_000) });
-      if (!reply.ok) throw new Error(`Speech recognition answered ${reply.status}.`);
-      return String(((await reply.json()) as { text?: unknown }).text ?? '').trim();
-    } finally {
-      lastUse = Date.now();
-      rmSync(work, { recursive: true, force: true });
+      return {
+        wav,
+        transcribe: async (prompt) => String((await call<{ text?: unknown }>('/transcribe', { path: wav, prompt })).text ?? '').trim(),
+        score: async (texts) => (await call<{ scores: number[] }>('/score', { path: wav, texts })).scores,
+        close,
+      };
+    } catch (error) {
+      close();
+      throw error;
     }
   }
 
   // Stops recognition after IDLE without a clip; the next clip starts it again.
   function sweep() { if (child && Date.now() - lastUse > IDLE) { child.kill(); child = null; ready = null; } }
   function stop() { child?.kill(); child = null; ready = null; }
-  return { transcribe, sweep, stop };
+  return { open, sweep, stop };
 }
 export type Whisper = ReturnType<typeof createWhisper>;

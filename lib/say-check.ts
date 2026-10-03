@@ -44,6 +44,23 @@ export function answers(english: string): string[][] {
 // What recognition is told to expect: the word's meanings. On 50 words said by two voices it caught 90 of 100 right
 // answers against 88 without, and still let none of 50 wrong answers through.
 export const hint = (english: string) => answers(english).map((list) => list.join(' ')).join(', ') + '.';
+// The wanted answer as Whisper writes text, to score against a clip that seemed wrong: each meaning with and without
+// its leading "to", "the", "a" or "an", capitalised, with a full stop ("To lie.", "Lie.").
+export function answerTexts(english: string): string[] {
+  const texts = new Set<string>();
+  for (const part of english.replace(/\([^)]*\)/g, ' ').split(/[;,/]/)) {
+    const full = part.trim().split(/\s+/).filter(Boolean);
+    if (!full.length) continue;
+    for (const form of [full, trimLeading(full)]) { const text = form.join(' '); texts.add(`${text[0]!.toUpperCase()}${text.slice(1)}.`); }
+  }
+  return [...texts].slice(0, 8);
+}
+// How much less likely (summed log-probability, lib/whisper-mlx.py) the wanted answer may be than what was heard and
+// still count as said, recognition having misread it. On 150 Mac-voice clips of the learner's words, 50 wrong answers
+// scored 7.9 to 58 below the wanted answer and none was let through; right answers misheard scored 2.8 and 3.3
+// ("trip" as "Triv.", "Trade.") and 9.1 and 10.2 ("salt" as "Sold.", "who" as "Boo."). Set just under the closest
+// wrong answer, generous on purpose; to be tuned from the learner's own clips kept in say-clips.
+export const SCORE_GAP = 7;
 
 function heardWords(heard: string): string[] {
   let list = words(heard).filter((word) => !FILLERS.has(word));

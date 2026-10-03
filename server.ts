@@ -21,8 +21,9 @@ import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
-import { hint, judge, said } from './lib/say-check';
-import { createWhisper } from './lib/whisper';
+import { answerTexts, hint, judge, said, SCORE_GAP } from './lib/say-check';
+import { createSayClips } from './lib/say-clips';
+import { createWhisper, type Recording } from './lib/whisper';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
 for (const level of ['log', 'error', 'warn'] as const) {
   const write = console[level].bind(console);
@@ -226,13 +227,16 @@ const attribute = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charC
 const pilotAdmin = process.env.ECHO_PILOT_ADMIN ?? 'http://127.0.0.1:7898';
 const allowedHosts = new Set([new URL(publicOrigin).host, `127.0.0.1:${port}`, `localhost:${port}`]);
 const allowedOrigins = new Set([publicOrigin, `http://127.0.0.1:${port}`, `http://localhost:${port}`]);
-// Say it: the learner hears a French word and says its English aloud; recognition runs on this Mac (lib/whisper.ts).
+// Say it: the learner hears a French word and says its English aloud; recognition runs on this Mac (lib/whisper.ts,
+// lib/whisper-mlx.py), in the Python environment set up for it under ~/.local/share/echo-whisper.
 const whisper = createWhisper({
-  server: process.env.ECHO_WHISPER_SERVER ?? '/opt/homebrew/bin/whisper-server',
-  model: process.env.ECHO_WHISPER_MODEL ?? join(process.env.HOME ?? '', '.local/share/whisper-models/ggml-large-v3-turbo.bin'),
+  python: process.env.ECHO_WHISPER_PYTHON ?? join(process.env.HOME ?? '', '.local/share/echo-whisper/venv/bin/python'),
+  script: join(root, 'lib/whisper-mlx.py'),
+  model: process.env.ECHO_WHISPER_MODEL ?? 'mlx-community/whisper-large-v3-turbo',
   ffmpeg: process.env.ECHO_FFMPEG ?? '/opt/homebrew/bin/ffmpeg',
   port: Number(process.env.ECHO_WHISPER_PORT ?? 7793),
 });
+const sayClips = createSayClips(join(dirname(dbPath), 'say-clips'));
 const whisperSweep = setInterval(() => whisper.sweep(), 60_000);
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
@@ -501,8 +505,9 @@ async function route(req: Request): Promise<Response> {
       return json({ ok: true });
     }
     // Say it: a recording of the learner saying a French word's English, judged against the word's meanings and what
-    // they once marked right for it. Right counts like a Walkman ✓; wrong or "I don't know" like ✗; what recognition
-    // could not make out counts for nothing, and the phone listens on.
+    // they once marked right for it. When that says wrong, the wanted answer is scored against the recording: nearly
+    // as likely as what was heard, it was said and recognition misread it. Right counts like a Walkman ✓; wrong or
+    // "I don't know" like ✗; what recognition could not make out counts for nothing, and the phone listens on.
     if (path === '/api/say/check' && req.method === 'POST' && !roomsOff.includes('say')) {
       if (!req.headers.get('content-type')?.toLowerCase().startsWith('audio/')) throw new StoreError('Send the recording itself.', 415);
       const wordId = url.searchParams.get('word') ?? '', requestId = url.searchParams.get('request') ?? '';
@@ -511,14 +516,30 @@ async function route(req: Request): Promise<Response> {
       if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
       const clip = new Uint8Array(await req.arrayBuffer());
       if (!clip.length || clip.length > 4_000_000) throw new StoreError('That recording is empty or too long.');
-      let heard: string;
-      try { heard = await whisper.transcribe(clip, hint(word.en)); }
+      let recording: Recording, heard: string;
+      try { recording = await whisper.open(clip); heard = await recording.transcribe(hint(word.en)); }
       catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
-      const verdict = judge(heard, word.en, store.sayAccepted(wordId));
-      if (verdict !== 'unclear') store.recordVerdict({ id: `say-${requestId}`, wordId, knew: verdict === 'right' });
-      // What was heard, kept in the log so a verdict that seems wrong can be looked into afterwards.
-      console.log(`say: ${word.fr} (${word.en}) heard ${JSON.stringify(heard.trim())} → ${verdict}`);
-      return json({ verdict, heard, en: word.en });
+      try {
+        let verdict = judge(heard, word.en, store.sayAccepted(wordId));
+        let gap: number | null = null;
+        if (verdict === 'wrong') {
+          try {
+            const [heardScore, ...answerScores] = await recording.score([heard, ...answerTexts(word.en)]);
+            gap = Math.round((heardScore! - Math.max(...answerScores)) * 10) / 10;
+            if (gap <= SCORE_GAP) verdict = 'right';
+          } catch (error) { console.error(`say: scoring failed: ${(error as Error).message}`); }
+        }
+        if (verdict !== 'unclear') store.recordVerdict({ id: `say-${requestId}`, wordId, knew: verdict === 'right' });
+        // What was heard, kept in the log so a verdict that seems wrong can be looked into afterwards.
+        console.log(`say: ${word.fr} (${word.en}) heard ${JSON.stringify(heard.trim())} → ${verdict}${gap === null ? '' : ` (answer ${gap} below what was heard)`}`);
+        if (gap !== null) {
+          try { sayClips.keep(requestId, recording.wav, { word: wordId, fr: word.fr, en: word.en, heard, verdict, gap }); }
+          catch (error) { console.error(`say: keeping the clip failed: ${(error as Error).message}`); }
+        }
+        return json({ verdict, heard, en: word.en });
+      } finally {
+        recording.close();
+      }
     }
     // Heard wrong: the learner says they said it right. The check's ✗ becomes ✓, and what was heard counts as the
     // word's English from then on.
@@ -528,6 +549,7 @@ async function route(req: Request): Promise<Response> {
       if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
       const wordId = String(data.word ?? ''), heard = said(String(data.heard ?? ''));
       store.acceptSaid({ id: `say-${requestId}`, wordId, heard });
+      sayClips.markedRight(requestId);
       console.log(`say: ${store.word(wordId)?.fr ?? wordId} marked right; "${heard}" now counts for it`);
       return json({ ok: true });
     }
