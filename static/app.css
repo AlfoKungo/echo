@@ -10,10 +10,13 @@ a.destination{color:inherit;text-decoration:none}.destination .symbol svg{displa
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 .compact-line{display:flex;align-items:baseline;justify-content:space-between;gap:14px;width:100%;font-size:12px;line-height:20px;margin-bottom:10px;font-variant-numeric:tabular-nums}.compact-label{color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.compact-counts{display:flex;gap:7px;align-items:baseline;white-space:nowrap;color:var(--muted);flex:none}.compact-counts strong{font-size:13px;font-weight:550;color:var(--ink)}.compact-counts .unseen strong{color:var(--violet)}.compact-counts .separator{color:var(--dim)}.compact-status{color:var(--muted);white-space:nowrap}.review-direction{font-size:11px;color:var(--dim);align-self:center;margin-right:8px;white-space:nowrap}.destination .compact-line{margin-top:17px;margin-bottom:0}.destination .compact-label{font-size:11px}.destination .compact-counts{font-size:12px}.app-shell:has(.practice) .topbar{height:86px}.practice .section-top{margin-bottom:5px}.practice .study-surface{max-height:none}
 /* The word card fills whatever height the header, tabs and tools leave, so the page doesn't scroll on a phone.
-   The shell is one screen tall (its padding already holds the notch and home-bar areas), up to 980px so a tall
-   desktop window doesn't stretch the card past about 670px; main and the practice section pass the leftover
-   height down to the card. The card is never shorter than what it shows, so only a long memory hook scrolls. */
-.app-shell:has(.practice){min-height:min(100svh,980px);display:flex;flex-direction:column}
+   The page is sized as a percentage of the real viewport rather than with svh, which a home-screen app can
+   measure differently from the area it scrolls; the shell's padding already holds the notch and home-bar
+   areas. It stops at 980px so a tall desktop window doesn't stretch the card past about 670px; main and the
+   practice section pass the leftover height down to the card. The card is never shorter than what it shows, so
+   only a long memory hook scrolls. With nothing to scroll, iOS's rubber-band drag is turned off too. */
+:root:has(main>.practice),:root:has(main>.practice) body{height:100%;overscroll-behavior:none}
+.app-shell:has(.practice){min-height:min(100%,980px);display:flex;flex-direction:column}
 .app-shell:has(.practice) #main{flex:1;display:flex;flex-direction:column;min-height:0}
 main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 auto}
 .practice .study-surface{flex:1 0 auto;height:auto;min-height:260px}
