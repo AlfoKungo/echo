@@ -56,11 +56,18 @@ export function answerTexts(english: string): string[] {
   return [...texts].slice(0, 8);
 }
 // How much less likely (summed log-probability, lib/whisper-mlx.py) the wanted answer may be than what was heard and
-// still count as said, recognition having misread it. On 150 Mac-voice clips of the learner's words, right answers
-// misheard scored 2.8 and 3.3 ("trip" as "Triv.", "Trade.") and 9.1 and 10.2 ("salt" as "Sold.", "who" as "Boo."),
-// and the learner's own "your" heard as "Yo." 9; 50 wrong answers scored 7.9 ("stop" for "sorry"), then 11 to 58.
-// Generous on purpose, by the learner's choice: one wrong answer in fifty let through rather than right ones refused.
-export const SCORE_GAP = 10.5;
+// still count as said, recognition having misread it. Only for a short heard answer (SCORE_EXTRA_WORDS): a sum over
+// a whole sentence is far lower than over one word, so any short answer would beat it. On 150 Mac-voice clips, right
+// answers misheard scored 2.8 and 3.3 ("trip" as "Triv.", "Trade."), 9.1 and 10.2 ("salt" as "Sold.", "who" as
+// "Boo."); wrong answers 7.9 ("stop" for "sorry"), then 11 to 58. In use the learner's "for" heard as "Full." scored
+// 7.5 for "per" and "your" heard as "Yo." 9: no line parts those two, and at 10.5 too much got through, so the
+// line sits under the closest wrong answer and I said it right covers the rest.
+export const SCORE_GAP = 7;
+// How many more words what was heard may have than the wanted answer for the score to be asked at all.
+export const SCORE_EXTRA_WORDS = 1;
+// The loudest sample a clip must reach to hold an answer. The learner's answers peaked at 0.56 to 0.69; a clip of
+// room noise the listener took for speech peaked at 0.029, and recognition made a whole sentence of it.
+export const QUIETEST_ANSWER = 0.1;
 
 function heardWords(heard: string): string[] {
   let list = words(heard).filter((word) => !FILLERS.has(word));

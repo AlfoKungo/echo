@@ -15,6 +15,8 @@ export type WhisperOptions = { python: string; script: string; model: string; ff
 // One clip, converted and on disk until closed.
 export type Recording = {
   wav: string;
+  // The loudest sample, 0 to 1: a clip that never gets loud held no answer, whatever recognition makes of it.
+  peak: number;
   // What was said, with `prompt` telling recognition which words to expect.
   transcribe(prompt: string): Promise<string>;
   // How likely recognition finds each text for the clip: summed log-probabilities, higher is likelier.
@@ -76,6 +78,7 @@ export function createWhisper(options: WhisperOptions) {
       if (await convert.exited !== 0) throw new Error('That recording could not be read.');
       return {
         wav,
+        peak: peak(new Uint8Array(await Bun.file(wav).arrayBuffer())),
         transcribe: async (prompt) => String((await call<{ text?: unknown }>('/transcribe', { path: wav, prompt })).text ?? '').trim(),
         score: async (texts) => (await call<{ scores: number[] }>('/score', { path: wav, texts })).scores,
         close,
@@ -92,3 +95,18 @@ export function createWhisper(options: WhisperOptions) {
   return { open, sweep, stop };
 }
 export type Whisper = ReturnType<typeof createWhisper>;
+// The loudest sample of a 16-bit PCM WAV, 0 to 1 (the samples are in its "data" chunk).
+function peak(bytes: Uint8Array): number {
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  let at = 12;
+  while (at + 8 <= bytes.length) {
+    const size = view.getUint32(at + 4, true);
+    if (String.fromCharCode(...bytes.subarray(at, at + 4)) === 'data') {
+      let loudest = 0;
+      for (let sample = at + 8; sample + 1 < Math.min(bytes.length, at + 8 + size); sample += 2) loudest = Math.max(loudest, Math.abs(view.getInt16(sample, true)));
+      return loudest / 32768;
+    }
+    at += 8 + size + (size % 2);
+  }
+  return 0;
+}

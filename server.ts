@@ -21,7 +21,7 @@ import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
-import { answerTexts, hint, judge, said, SCORE_GAP } from './lib/say-check';
+import { answers, answerTexts, hint, judge, QUIETEST_ANSWER, said, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
 import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
@@ -516,13 +516,22 @@ async function route(req: Request): Promise<Response> {
       if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
       const clip = new Uint8Array(await req.arrayBuffer());
       if (!clip.length || clip.length > 4_000_000) throw new StoreError('That recording is empty or too long.');
-      let recording: Recording, heard: string;
-      try { recording = await whisper.open(clip); heard = await recording.transcribe(hint(word.en)); }
+      let recording: Recording;
+      try { recording = await whisper.open(clip); }
       catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
       try {
+        // Room noise the listener took for speech: nothing was said, so nothing counts, and the phone listens on.
+        if (recording.peak < QUIETEST_ANSWER) {
+          console.log(`say: ${word.fr} (${word.en}) too quiet to be an answer (peak ${recording.peak.toFixed(3)}) → unclear`);
+          return json({ verdict: 'unclear', heard: '', en: word.en });
+        }
+        let heard: string;
+        try { heard = await recording.transcribe(hint(word.en)); }
+        catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
         let verdict = judge(heard, word.en, store.sayAccepted(wordId));
         let gap: number | null = null;
-        if (verdict === 'wrong') {
+        const longest = Math.max(...answers(word.en).map((list) => list.length));
+        if (verdict === 'wrong' && said(heard).split(' ').length <= longest + SCORE_EXTRA_WORDS) {
           try {
             const [heardScore, ...answerScores] = await recording.score([heard, ...answerTexts(word.en)]);
             gap = Math.round((heardScore! - Math.max(...answerScores)) * 10) / 10;
