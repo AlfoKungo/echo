@@ -2320,38 +2320,60 @@ async function sayCorrect() {
   catch (error) { fix.state = 'offer'; say.error = error.message; }
   if (screen === 'say') render();
 }
-const SAY_VERDICTS = { right: ['right', 'Right'], wrong: ['wrong', 'Not quite'], dontknow: ['wrong', 'Not this time'], silent: ['wrong', 'No answer'], unclear: ['unclear', 'Couldn’t make it out'], skipped: ['unclear', 'This word’s recording didn’t play'] };
+// Each verdict's look (right/wrong/none for the card's edge and badge) and the label above the word.
+const SAY_VERDICTS = { right: ['right', 'Right'], wrong: ['wrong', 'Not quite'], dontknow: ['wrong', 'Not this time'], silent: ['wrong', 'No answer'], unclear: ['none', 'Couldn’t make it out'], skipped: ['none', 'Skipped'] };
+// Say it is one card whose rows never change size — a label, the French, one answer area and the ring — with the
+// buttons and the "I said it right" row in fixed places under it, so nothing on the screen moves between steps.
 function renderSay() {
   const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Say it</span></div>`;
   const card = say.card, result = say.result;
-  // What was heard, quoted inside a sentence: without recognition's own full stop.
-  const quoted = (text) => esc((text ?? '').trim().replace(/[.!?…]+$/, ''));
-  const status = {
-    starting: 'Opening the microphone…', loading: '&nbsp;', prompt: 'Listen…', checking: 'Checking…',
-    listening: 'Your turn: say it in English, take your time', again: `Heard “${quoted(result?.heard)}”. Still listening…`,
-  }[say.phase];
-  const listening = say.phase === 'listening' || say.phase === 'again';
-  let verdict = '';
-  if (say.phase === 'result' && result) {
-    const [kind, label] = SAY_VERDICTS[result.verdict] || SAY_VERDICTS.unclear;
-    verdict = `<p class="say-verdict ${kind}">${kind === 'right' ? checkIcon : kind === 'wrong' ? crossIcon : ''}<span>${label}</span></p>
-      ${result.heard && result.verdict === 'wrong' ? `<p class="say-heard">Heard “${esc(result.heard)}”</p>` : ''}<p class="say-en">${esc(result.en)}</p>`;
+  // What was heard, quoted inside a sentence: in lower case and without recognition's own full stop.
+  const quoted = (text) => esc((text ?? '').trim().replace(/[.!?…]+$/, '').toLowerCase());
+  // A word's meanings as a card writes them: "chest of drawers · dresser".
+  const meanings = (en) => esc(en ?? '').split(/;\s*/).join(' · ');
+  const error = say.error ? `<p class="feedback warn" role="alert">${esc(say.error)}</p>` : '';
+  if (!say.running) {
+    main.innerHTML = `${error}<section class="stream say">${header}
+      <div class="say-card intro"><ol class="say-steps"><li>Echo says a French word.</li><li>Say its English out loud.</li><li>Echo tells you if you had it.</li></ol></div>
+      <div class="say-controls"><button class="primary" data-action="say-start">${card ? 'Start again' : 'Start'}</button></div>
+      <details class="say-more"><summary>How it counts</summary><p>Right counts like ✓ on the Walkman; wrong, “I don’t know” or no answer like ✗; what Echo couldn’t make out counts for nothing, and it listens on. You have 40 seconds to start each answer. The shakiest words come most often. If Echo heard you wrong, tap <b>I said it right</b>: it counts as right, and Echo accepts what it heard for that word from then on.</p></details>
+      <p class="say-tip">Keep the screen on: iPhone turns the microphone off when it locks.</p>
+    </section>`;
+    return;
   }
-  const face = say.running && card
-    ? `<p class="wm-fr" lang="fr">${frEsc(card.fr)}</p>${verdict || `<p class="say-status">${status || '&nbsp;'}</p>`}${listening ? '<div class="say-ring" aria-hidden="true"></div>' : ''}`
-    : say.running ? `<p class="say-status">${status || '&nbsp;'}</p>`
-    : '<p class="wm-hint">Echo says a French word; say its English out loud — you have 40 seconds to start. Echo listens until you stop, tells you whether you had it, says the English when you didn’t, and goes on to the next word. Say “I don’t know” to hear the answer.</p>';
+  const listening = say.phase === 'listening' || say.phase === 'again';
+  const verdict = say.phase === 'result' && result ? SAY_VERDICTS[result.verdict] || SAY_VERDICTS.unclear : null;
+  const kind = verdict?.[0] ?? '';
+  const label = verdict ? verdict[1] : { starting: 'Starting', prompt: 'Listen', listening: 'Your turn', again: 'Your turn', checking: 'Checking' }[say.phase] ?? '';
+  const answer = verdict
+    ? `<div class="say-mid say-fade">${result.en ? `<p class="say-en${result.en.length > 30 ? ' long' : ''}">${meanings(result.en)}</p>` : ''}${result.verdict === 'wrong' && result.heard ? `<p class="say-sub">Echo heard “${quoted(result.heard)}”</p>` : result.verdict === 'skipped' ? '<p class="say-sub">This word’s recording didn’t play</p>' : ''}</div>`
+    : say.phase === 'listening' ? '<div class="say-mid"><p class="say-sub">Say it in English — take your time</p></div>'
+    : say.phase === 'again' ? `<div class="say-mid say-fade"><p class="say-sub">Heard “${quoted(result?.heard)}” · still listening</p></div>`
+    : say.phase === 'starting' ? '<div class="say-mid"><p class="say-sub">Opening the microphone…</p></div>'
+    : '<div class="say-mid"></div>';
+  const slot = say.phase === 'prompt' ? `<span class="say-speaker">${speaker}</span>`
+    : listening ? '<div class="say-ring"></div>'
+    : say.phase === 'checking' || say.phase === 'starting' ? '<div class="say-busy"></div>'
+    : kind === 'right' || kind === 'wrong' ? `<div class="say-badge ${kind}">${kind === 'right' ? checkIcon : crossIcon}</div>`
+    : '';
+  // On the word itself the card already says what Echo heard, so the row holds only the button; on a later word it
+  // names the word it is about.
   const fix = say.fix;
-  const fixLine = !fix ? ''
-    : fix.state === 'done' ? `<p class="caption say-fix">Counted as right. “${quoted(fix.heard)}” now counts for <span lang="fr">${frEsc(fix.fr)}</span>.</p>`
-    : `<p class="say-fix">${say.phase === 'result' && result?.request === fix.request ? '' : `<span class="caption">Echo heard “${quoted(fix.heard)}” for <span lang="fr">${frEsc(fix.fr)}</span>.</span> `}<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right</button></p>`;
-  main.innerHTML = `${say.error ? `<p class="feedback warn" role="alert">${esc(say.error)}</p>` : ''}<section class="stream walkman say">${header}
-    <div class="wm-face" aria-live="polite">${face}</div>
-    <div class="wm-controls">${say.running
-      ? `${listening ? '<button class="secondary" data-action="say-dontknow">Don’t know</button>' : ''}<button class="secondary" data-action="say-stop">Stop</button>`
-      : `<button class="primary" data-action="say-start">${say.card ? 'Start again' : 'Start'}</button>`}</div>
-    ${fixLine}
-    <p class="caption wm-note">Keep the screen on and Echo open: iPhone turns the microphone off when the screen locks. A right answer counts like ✓ on the Walkman, and a wrong one or “I don’t know” like ✗; what Echo couldn’t make out counts for nothing, and it listens on. If Echo heard you wrong, tap I said it right: it counts as right, and Echo accepts what it heard for that word from then on. Words come by score, the shakiest most often.</p>
+  const fixButton = fix ? `<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right</button>` : '';
+  const fixRow = !fix ? ''
+    : fix.state === 'done' ? `Counted as right — “${quoted(fix.heard)}” now counts for <span lang="fr">${frEsc(fix.fr)}</span>.`
+    : say.phase === 'result' && result?.request === fix.request ? fixButton
+    : `<span><span lang="fr">${frEsc(fix.fr)}</span>: Echo heard “${quoted(fix.heard)}”</span>${fixButton}`;
+  main.innerHTML = `${error}<section class="stream say">${header}
+    <div class="say-card ${kind}" aria-live="polite">
+      <span class="say-step">${label}</span>
+      <p class="say-fr${card && card.fr.length > 13 ? ' long' : ''}" lang="fr">${card ? frEsc(card.fr) : ''}</p>
+      ${answer}
+      <div class="say-slot" aria-hidden="true">${slot}</div>
+    </div>
+    <div class="say-controls"><button class="secondary" data-action="say-dontknow" ${listening ? '' : 'disabled'}>Don’t know</button><button class="secondary" data-action="say-stop">Stop</button></div>
+    <div class="say-fix${fix?.state === 'done' ? ' done' : ''}">${fixRow}</div>
+    <p class="say-tip">Keep the screen on while you practise.</p>
   </section>`;
 }
 // Sounds: pairs that differ by one sound (lib/sounds.ts). One side plays; the learner picks which one they heard,
