@@ -1432,7 +1432,8 @@ function streamAudioHTML(view, settled) {
   const spot = !playing && clipSpot?.key === key ? clipSpot : null;
   const icon = playing ? pauseIcon : spot ? playIcon : speaker;
   const label = playing ? 'Pause' : spot && view.audio.length > 1 ? `Continue from line ${spot.index + 1}` : big ? 'Play the French' : 'Play the French again';
-  const button = `<button class="${big ? 'listen-play' : 'icon'}" data-action="play-clips" aria-label="${esc(label)}">${icon}</button>`;
+  const reading = view.mode === 'read';
+  const button = `<button class="${big ? 'listen-play' : reading ? 'primary reading-play' : 'icon'}" data-action="play-clips" aria-label="${esc(label)}">${icon}${reading ? `<span>${playing ? 'Pause' : spot ? 'Continue' : 'Listen'}</span>` : ''}</button>`;
   // In a passage, the line just heard can be heard once more on its own, playing or paused.
   const heard = view.audio.length > 1 ? (playing ? clipRun.heard : spot?.heard) : undefined;
   const again = heard !== undefined ? `<button class="quiet clip-again" data-action="clips-line">Line ${heard + 1} again</button>` : '';
@@ -1447,6 +1448,7 @@ function streamPromptHTML(view, settled) {
     const glosses = view.mode === 'read' ? view.gloss || [] : [];
     if (Array.isArray(prompt.lines) && prompt.lines.length) html += linesHTML(prompt.lines, glosses, false);
     else if (prompt.text) html += `<p class="fr-text" lang="fr">${glossedHTML(prompt.text, glosses)}</p>`;
+    if (view.mode === 'read' && html) html = `<div class="reading-body">${html}</div>`;
   }
   if (prompt.question) html += `<p class="stream-question">${esc(prompt.question)}</p>`;
   return html;
@@ -1488,11 +1490,15 @@ function streamBodyHTML() {
   const settled = !!result;
   const item = view.item || {};
   const label = ITEM_LABEL[item.type];
-  const context = label ? `<p class="stream-item">${esc(label)}${item.title ? ` · ${esc(item.title)}` : ''}</p>` : '';
+  const reading = view.mode === 'read';
+  const context = reading
+    ? `<header class="reading-heading">${label ? `<p class="reading-kicker">${esc(label)}</p>` : ''}${item.title ? `<h1>${esc(item.title)}</h1>` : ''}</header>`
+    : label ? `<p class="stream-item">${esc(label)}${item.title ? ` · ${esc(item.title)}` : ''}</p>` : '';
   const action = settled
     ? `<button class="primary" data-action="stream-next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Next'}</button>`
     : view.choices?.length ? '' : `<button class="primary" data-action="stream-check" ${locked() ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check'}</button>`;
-  return `${context}<p class="prompt-instruction">${esc(STREAM_INSTRUCTION[`${view.mode}:${view.kind}`] || '')}</p>${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(view, result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions${settled ? ' pinned' : ''}">${action}</div>` : ''}`;
+  const body = `${context}<p class="prompt-instruction">${esc(STREAM_INSTRUCTION[`${view.mode}:${view.kind}`] || '')}</p>${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(view, result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions${settled ? ' pinned' : ''}">${action}</div>` : ''}`;
+  return reading ? `<article class="reading-exercise">${body}</article>` : body;
 }
 function streamEmptyHTML(id) {
   if (id.startsWith('focus:')) return '<div class="stream-empty"><p>Nothing left to practise here for now.</p><button class="secondary" data-action="mistakes">Back to mistakes</button></div>';
@@ -3132,8 +3138,8 @@ function storyLineHTML(line, index, glosses) {
   const open = storyLines.has(index);
   const current = storyTapeActive() && index === storyAt;
   const english = open || (current && storyEnglish && !storyAudio.paused);
-  const start = `<button class="lyric-start" data-action="story-line" data-index="${index}" aria-expanded="${open}" aria-label="What this line means">›</button>`;
-  return `<div class="lyric-line story-line${current ? ' playing' : ''}" data-line="${index}">${start}<div class="lyric-text">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p lang="fr">${glossedHTML(line.fr, glosses)}</p>${english ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div></div>`;
+  const translation = `<button class="line-meaning" data-action="story-line" data-index="${index}" aria-expanded="${open}" aria-label="${open ? 'Hide' : 'Show'} translation for line ${index + 1}">›</button>`;
+  return `<div class="story-line${current ? ' playing' : ''}" data-line="${index}">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p class="reading-french" lang="fr">${glossedHTML(line.fr, glosses)} ${translation}</p>${english ? `<p class="reading-translation" lang="en">${esc(line.en)}</p>` : ''}</div>`;
 }
 // The episode as one MP3, French only or each line then its English, so lines follow each other without a wait
 // and it plays on with the phone locked. Until its recordings are converted, the lines play one by one.
@@ -3149,15 +3155,15 @@ function storyPlayHTML() {
   if (tape) {
     const playing = !storyAudio.paused && storyAudio.dataset.url === tape.url;
     const total = tape.lines.length;
-    const hint = storyAt >= 0 ? `${playing ? 'line' : 'stopped at line'} ${storyAt + 1} of ${total}` : 'Listen to the episode';
+    const hint = storyAt >= 0 ? `${playing ? 'line' : 'stopped at line'} ${storyAt + 1} of ${total}` : '';
     const modes = Object.entries(STORY_MODES).map(([mode, label]) => `<button data-action="story-mode" data-mode="${mode}" aria-pressed="${storyMode === mode}">${label}</button>`).join('<span aria-hidden="true">·</span>');
-    return `<div class="story-player"><div class="listen-block"><button class="icon" data-action="story-play" aria-label="${playing ? 'Pause' : 'Listen to the episode'}">${playing ? pauseIcon : speaker}</button><p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div><p class="wm-choice story-mode">Plays ${modes}</p></div>`;
+    return `<div class="story-player"><div class="listen-block"><button class="primary reading-play" data-action="story-play" aria-label="${playing ? 'Pause' : 'Listen to the episode'}">${playing ? pauseIcon : speaker}<span>${playing ? 'Pause' : 'Listen'}</span></button><p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div><p class="wm-choice story-mode">${modes}</p></div>`;
   }
   const recorded = storyView.audio.filter(Boolean).length;
   if (!recorded) return '<div class="story-player"><div class="listen-block"><p class="caption">The lines are being recorded.</p></div></div>';
   const playing = clipRun?.key === `story:${storyView.episode.id}`;
-  const hint = playing && clipProgress ? `line ${clipProgress.index} of ${clipProgress.total}` : recorded < storyView.audio.length ? `${recorded} of ${storyView.audio.length} lines recorded` : 'Listen to the episode';
-  return `<div class="story-player"><div class="listen-block"><button class="icon" data-action="story-play" aria-label="${playing ? 'Stop' : 'Listen to the episode'}">${playing ? pauseIcon : speaker}</button><p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div></div>`;
+  const hint = playing && clipProgress ? `line ${clipProgress.index} of ${clipProgress.total}` : recorded < storyView.audio.length ? `${recorded} of ${storyView.audio.length} lines recorded` : '';
+  return `<div class="story-player"><div class="listen-block"><button class="primary reading-play" data-action="story-play" aria-label="${playing ? 'Stop' : 'Listen to the episode'}">${playing ? pauseIcon : speaker}<span>${playing ? 'Stop' : 'Listen'}</span></button><p class="listen-hint" id="clip-progress" role="status">${esc(hint)}</p></div></div>`;
 }
 function storyQuestionsHTML(episode, finished) {
   return episode.questions.map((question, q) => {
@@ -3175,7 +3181,7 @@ function storyQuestionsHTML(episode, finished) {
 }
 function renderStory() {
   const header = `<div class="section-top">${back('Home', 'home')}<div><span class="stream-label">Story</span>${infoButton('story')}</div></div>`;
-  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics story">${header}${body}</section>`; };
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics story">${header}${body}</section>`; };
   if (loading && !storyView) { shell('<div class="loading-state" role="status">Opening the story…</div>'); return; }
   if (!storyStatus) { shell(''); return; }
   if (!storyView) {
@@ -3195,10 +3201,9 @@ function renderStory() {
     ? `<div class="song-progress story-done"><p><strong>${read.right} of ${read.total}</strong> right${read.taps.length ? `, ${read.taps.length} ${read.taps.length === 1 ? 'word' : 'words'} looked up` : ', no words looked up'}.</p><p class="caption">${esc(nextCopy)}</p>${later ? `<div class="summary-actions"><button class="primary" data-action="story-open" data-n="${later.number}">Episode ${later.number} →</button></div>` : storyView.last ? `<p class="caption" role="status">${storyStatus.error ? `The next episode could not be written: ${esc(storyStatus.error)}` : `Episode ${episode.number + 1} is being written. It takes a few minutes.`}</p>` : ''}</div>`
     : `<div class="summary-actions"><button class="primary" data-action="story-finish" ${!answered || busy ? 'disabled' : ''}>${busy ? 'Saving…' : answered ? 'Finish the episode' : 'Answer the questions to finish'}</button></div>`;
   const earlier = storyStatus.episodes.filter((entry) => entry.number !== episode.number).reverse().map((entry) => `<button class="topic-row" data-action="story-open" data-n="${entry.number}"><span class="copy"><span class="topic-name"><h3 lang="fr">${esc(entry.title)}</h3></span><p>Episode ${entry.number} · ${esc(entry.titleEn)}${entry.finished ? '' : ' · not finished'}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
-  shell(`<p class="topic-kicker">Episode ${episode.number}</p><h1 lang="fr">${frEsc(episode.title)}</h1><p class="subtitle">${esc(episode.titleEn)}</p>${recap}${play}
-    <p class="song-hint">Tap a word for its meaning, or › for what a line means.</p>
-    <div class="lyric-lines">${lines}</div>${note}
-    <h2 class="story-heading">Questions</h2>${storyQuestionsHTML(episode, !!read)}${end}
+  shell(`<article class="reading-article" aria-labelledby="story-title"><header class="reading-heading"><p class="reading-kicker">Episode ${episode.number}</p><h1 id="story-title" lang="fr">${frEsc(episode.title)}</h1><p class="reading-subtitle">${esc(episode.titleEn)}</p>${recap}</header>${play}
+    <div class="reading-body">${lines}</div><aside class="reading-note">${note}</aside></article>
+    <section class="reading-questions" aria-labelledby="story-questions"><h2 id="story-questions" class="story-heading">Questions</h2>${storyQuestionsHTML(episode, !!read)}${end}</section>
     ${earlier ? `<h2 class="story-heading">Other episodes</h2><div class="topic-list">${earlier}</div>` : ''}`);
 }
 function playStory() {

@@ -372,7 +372,7 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 /* No background of its own: it sits above the card's tap zones, and a filled box would hide a pressed zone's tint. */
 .word-hook{color:var(--ink);font-size:15px;line-height:1.5;margin:0 0 10px!important;padding:10px 12px;border-radius:10px;text-align:left}
 .sound-choice{display:flex;align-items:center;gap:8px}.sound-choice .choice{flex:1}.sound-en{display:block;margin-top:3px;color:var(--muted);font-size:14px}.sound-hear{flex:none}.sound-tip{margin-top:18px}
-.story-heading{margin:30px 0 10px;font-size:18px;font-weight:600}.story-question{margin-bottom:18px}.story-question .feedback{margin-top:10px}.story-recap,.story-grammar{display:block;margin:10px 0 4px;padding-left:0;text-align:left}.story-previously{margin:4px 0 12px}.story .lyric-text .speaker{display:block;margin-bottom:2px;color:var(--muted);font-size:13px}.story-done{margin-top:18px}
+.story-heading{margin:30px 0 10px;font-size:18px;font-weight:600}.story-question{margin-bottom:18px}.story-question .feedback{margin-top:10px}.story-recap,.story-grammar{display:block;margin:10px 0 4px;padding-left:0;text-align:left}.story-previously{margin:4px 0 12px}.story-done{margin-top:18px}
 .radio-chapters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
 /* Word families */
 .fam-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:6px 0 0;color:var(--muted);font-size:13px}.fam-legend .fam-dot{margin-right:-8px}
@@ -410,8 +410,6 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .wb-text{margin:14px 0 0;font-size:15px;line-height:1.5;color:var(--ink)}
 .wb-tip{margin-top:8px}
 .fam-link{margin-top:16px}
-.story-player .story-mode{justify-content:flex-start;margin:-14px 0 16px}
-.story-line.playing{background:var(--card);border-radius:10px}
 .st-bar{position:relative}.st-bar .ghost{position:absolute;left:0;right:0;bottom:0;border:1px dashed var(--dim);border-bottom:none;border-radius:4px 4px 0 0;background:none!important;pointer-events:none}
 .st-legend i.ghost{background:none;border:1px dashed var(--dim)}
 .st-when{display:flex;align-items:center;gap:6px;margin:18px 0 0}.st-when .icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;color:var(--violet);font-size:20px}.st-when .icon:disabled{color:var(--frame)}
@@ -616,11 +614,45 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .gloss{border-bottom-color:color-mix(in srgb,var(--violet) 50%,transparent);padding-bottom:1px}
 .gloss:focus-visible{color:var(--violet)}
 .fr-lines{gap:18px}.fr-line p{line-height:1.6}.fr-text{line-height:1.5}
-.story .lyric-lines{max-width:36em}.story .lyric-line+.lyric-line{margin-top:4px}
-.story .lyric-text p{font-size:19px;line-height:1.7}.story .lyric-text .lyric-en{font-size:15px;line-height:1.55}
-.story-line{border-radius:10px}.story-line.playing{background:color-mix(in srgb,var(--violet-soft) 70%,transparent);box-shadow:inset 2px 0 0 var(--violet)}
+/* Story is prose, not a song's line-number gutter. The translation control stays with its own paragraph. */
+.story{max-width:640px}
+.reading-article,.reading-exercise,.reading-questions{max-width:600px;margin-inline:auto}
+.reading-heading{margin-bottom:20px}
+.reading-kicker{margin-bottom:9px;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.reading-heading h1{font-size:clamp(26px,5vw,32px);line-height:1.25;letter-spacing:-.65px;overflow-wrap:anywhere}
+.reading-subtitle{margin-top:8px;color:var(--muted);font-size:14px;line-height:1.6}
+.reading-body{margin:24px 0 0;padding-top:24px;border-top:1px solid var(--frame)}
+.reading-body .fr-lines{gap:22px;margin:0}
+.reading-french,.reading-exercise .fr-text,.reading-exercise .fr-line p[lang=fr]{font-size:21px;line-height:1.85;font-weight:400;letter-spacing:0;overflow-wrap:anywhere}
+.story-line{position:relative}
+.story-line+.story-line{margin-top:22px}
+.story-line .speaker{margin:0 0 6px;color:var(--muted);font-size:12px}
+.reading-translation,.reading-exercise .fr-line .en{margin-top:9px;color:var(--muted);font-size:16px;line-height:1.65;letter-spacing:0}
+.line-meaning{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;margin-left:3px;padding:0 8px;vertical-align:middle;border-radius:8px;color:var(--dim);font-size:24px;line-height:1}
+.line-meaning[aria-expanded=true]{color:var(--violet);background:var(--card)}
+@media(hover:hover){.line-meaning:hover{color:var(--violet);background:var(--card-hover)}}
+/* A playback marker must not move the text when the active line changes. */
+.story-line.playing::before{content:"";position:absolute;left:-11px;top:5px;bottom:5px;width:2px;border-radius:2px;background:var(--violet)}
+.primary.reading-play{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:11px 16px;font-size:13px}
+.reading-play svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.story-player{display:flex;flex-direction:column;align-items:flex-start;gap:7px;margin:20px 0}
+.story-player .listen-block{width:100%;margin:0;gap:12px}
+.story-player .listen-hint{flex:1;min-width:0}
+.story-player .story-mode{justify-content:flex-start;flex-wrap:wrap;margin:0;gap:5px;font-size:12px}
+.story-player .story-mode button{font-size:12px}
+.reading-note{margin-top:28px;padding-top:12px;border-top:1px solid var(--frame)}
+.reading-note .story-grammar{font-size:13px;line-height:1.6}
+.reading-questions{margin-top:30px;padding-top:24px;border-top:1px solid var(--frame)}
+.reading-questions>.story-heading{margin:0 0 18px}
+.reading-exercise .prompt-instruction{font-size:13px;line-height:1.6;margin-bottom:16px}
+.reading-exercise .listen-block{flex-wrap:wrap;gap:10px;margin:16px 0}
+.reading-exercise .listen-hint:empty{display:none}
+.reading-exercise .clip-actions{flex-wrap:wrap;gap:8px 16px}
+.reading-exercise .stream-question{margin-top:26px;padding-top:20px;border-top:1px solid var(--frame);font-size:17px;line-height:1.6}
+.reading-exercise .answer-area{margin-top:18px}
+.reading-exercise .reveal .fr-lines{gap:22px}
+@media(max-width:600px){.reading-french,.reading-exercise .fr-text,.reading-exercise .fr-line p[lang=fr]{font-size:20px}}
 .lyric-start{color:var(--dim)}.lyric-start[aria-expanded="true"],.lyric-start:hover{color:var(--violet)}
-@media(max-width:600px){.story .lyric-text p{font-size:18px}}
 /* Grammar's topic pages read the same way: a roomier rule, its parts still folded. */
 .rule-card{line-height:1.7}.rule-card .guide-summary{font-size:16px;margin-bottom:10px}
 .gr-part>summary{padding:14px 0}.gr-part[open]{padding-bottom:12px}.guide-examples p{margin-top:12px}
