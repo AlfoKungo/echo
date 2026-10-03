@@ -37,18 +37,22 @@ function trimLeading(list: string[]): string[] {
   return list.slice(start);
 }
 
-// The ways a gloss can be said: each meaning between semicolons or commas, as words.
-export function answers(english: string): string[][] {
-  return english.replace(/\([^)]*\)/g, ' ').split(/[;,/]/).map((part) => trimLeading(words(part))).filter((list) => list.length > 0);
+// The ways a gloss can be said: each meaning between semicolons or commas, as words, without a leading "to", "the",
+// "a" or "an" unless `keepLeading`.
+export function answers(english: string, keepLeading = false): string[][] {
+  return english.replace(/\([^)]*\)/g, ' ').split(/[;,/]/).map((part) => keepLeading ? words(part) : trimLeading(words(part))).filter((list) => list.length > 0);
 }
 // What recognition is told to expect: the word's meanings. On 50 words said by two voices it caught 90 of 100 right
 // answers against 88 without, and still let none of 50 wrong answers through.
 export const hint = (english: string) => answers(english).map((list) => list.join(' ')).join(', ') + '.';
 
-function heardWords(heard: string): string[] {
+// What was said, without fillers and openers; a first "too" or "two" is "to" ("Too late." for "to lie"), and it is
+// dropped with the rest of a leading "to", "the", "a" or "an" unless `keepLeading`.
+function heardWords(heard: string, keepLeading = false): string[] {
   let list = words(heard).filter((word) => !FILLERS.has(word));
   for (const opener of OPENERS) if (opener.every((word, index) => list[index] === word) && list.length > opener.length) { list = list.slice(opener.length); break; }
-  return trimLeading(list);
+  if (list[0] === 'too' || list[0] === 'two') list = ['to', ...list.slice(1)];
+  return keepLeading ? list : trimLeading(list);
 }
 
 function distance(left: string, right: string): number {
@@ -97,7 +101,10 @@ const startsWith = (phrase: string, start: string) => phrase === start || (phras
 
 export function judge(heard: string, english: string, accepted: readonly string[] = []): SayVerdict {
   const list = heardWords(heard), phrase = list.join(' ');
-  if (list.length && (accepted.includes(phrase) || answers(english).some((wanted) => matches(list, wanted)))) return 'right';
+  // Also as said and written in full, "to" and all: "to late" sounds like "to lie" where "late" alone is far from "lie".
+  const right = (accepted.includes(phrase) || answers(english).some((wanted) => matches(list, wanted))
+    || answers(english, true).some((wanted) => soundsAlike(heardWords(heard, true), wanted)));
+  if (list.length && right) return 'right';
   if (DONT_KNOW.some((start) => startsWith(phrase, start))) return 'dontknow';
   if (!list.length || NOTHING.has(plain(heard)) || THINKING.includes(phrase) || list.every((word) => SMALL.has(word))) return 'unclear';
   return 'wrong';

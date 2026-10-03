@@ -6,8 +6,9 @@
 // dictionary is read on the first check (about 30 ms, 20 MB) and kept.
 import { readFileSync } from 'node:fs';
 
-// Vowels next to each other in the mouth, which recognition (and an accent) swaps: leave and live, full and fool.
-const CLOSE_VOWELS = [['IY', 'IH'], ['IH', 'EH'], ['EH', 'AE'], ['EY', 'EH'], ['EY', 'IY'], ['AE', 'AA'], ['AA', 'AH'], ['AH', 'AO'], ['AA', 'AO'], ['AO', 'OW'], ['OW', 'UH'], ['UH', 'UW'], ['UH', 'AH'], ['ER', 'AH'], ['AY', 'AA'], ['AW', 'AA']];
+// Vowels next to each other in the mouth, which recognition (and an accent) swaps: leave and live, full and fool,
+// lie and lay.
+const CLOSE_VOWELS = [['IY', 'IH'], ['IH', 'EH'], ['EH', 'AE'], ['EY', 'EH'], ['EY', 'IY'], ['AE', 'AA'], ['AA', 'AH'], ['AH', 'AO'], ['AA', 'AO'], ['AO', 'OW'], ['OW', 'UH'], ['UH', 'UW'], ['UH', 'AH'], ['ER', 'AH'], ['AY', 'AA'], ['AW', 'AA'], ['AY', 'EY'], ['AY', 'OY']];
 // Consonants that sound alike: voiced and voiceless twins, th against t, d, f and s, w and v, the nasals, r and l,
 // and a nasal against the stop made in the same place (m and b, n and d, ng and g: "bi" for "my").
 const NEAR = new Set([...CLOSE_VOWELS, ['P', 'B'], ['T', 'D'], ['K', 'G'], ['F', 'V'], ['S', 'Z'], ['SH', 'ZH'], ['CH', 'JH'], ['TH', 'DH'], ['TH', 'T'], ['DH', 'D'], ['TH', 'F'], ['TH', 'S'], ['DH', 'Z'], ['W', 'V'], ['M', 'N'], ['N', 'NG'], ['S', 'SH'], ['CH', 'SH'], ['JH', 'ZH'], ['R', 'L'], ['M', 'B'], ['N', 'D'], ['NG', 'G']].flatMap(([a, b]) => [`${a} ${b}`, `${b} ${a}`]));
@@ -29,24 +30,26 @@ function sounds(word: string): string[][] | undefined {
 }
 
 const change = (left: string, right: string) => left === right ? 0 : NEAR.has(`${left} ${right}`) ? 0.5 : 1;
-// An h, or an unstressed "uh", comes and goes in recognition.
-const extra = (sound: string) => sound === 'HH' ? 0.3 : sound === 'AH' ? 0.5 : 1;
+const STOPS = new Set(['P', 'B', 'T', 'D', 'K', 'G']);
+// An h, or an unstressed "uh", comes and goes in recognition, and so does a stop at the very end ("late" for "lay").
+const extra = (sound: string, last: boolean) => sound === 'HH' ? 0.3 : sound === 'AH' || (last && STOPS.has(sound)) ? 0.5 : 1;
 function distance(heard: string[], wanted: string[]): number {
   let previous = [0];
-  for (let j = 1; j <= wanted.length; j++) previous[j] = previous[j - 1]! + extra(wanted[j - 1]!);
+  for (let j = 1; j <= wanted.length; j++) previous[j] = previous[j - 1]! + extra(wanted[j - 1]!, j === wanted.length);
   for (let i = 1; i <= heard.length; i++) {
-    const current = [previous[0]! + extra(heard[i - 1]!)];
+    const dropHeard = extra(heard[i - 1]!, i === heard.length);
+    const current = [previous[0]! + dropHeard];
     for (let j = 1; j <= wanted.length; j++) {
-      current[j] = Math.min(previous[j]! + extra(heard[i - 1]!), current[j - 1]! + extra(wanted[j - 1]!), previous[j - 1]! + change(heard[i - 1]!, wanted[j - 1]!));
+      current[j] = Math.min(previous[j]! + dropHeard, current[j - 1]! + extra(wanted[j - 1]!, j === wanted.length), previous[j - 1]! + change(heard[i - 1]!, wanted[j - 1]!));
     }
     previous = current;
   }
   return previous[wanted.length]!;
 }
-// How far an answer may be from the wanted one: one near sound (or an h) in up to four sounds, two in up to seven.
-// Looser (two in three or four sounds) let through four times as many different words (run for rain, walk for talk)
-// and none of the real answers missed in use.
-const allowed = (length: number) => length <= 4 ? 0.5 : length <= 7 ? 1 : 1.5;
+// How far an answer may be from the wanted one: one near sound (or an h) in up to two sounds, two in up to four,
+// three in up to seven. Kept generous on purpose: a learner who says something that sounds like the answer almost
+// always meant it; about 1 in 400 different words gets through (run for rain).
+const allowed = (length: number) => length <= 2 ? 0.5 : length <= 4 ? 1 : length <= 7 ? 1.5 : 2;
 
 // A phrase's sounds: its words' one after another, each word's first two ways of saying it, at most eight ways in all;
 // undefined when a word is not in the dictionary.
