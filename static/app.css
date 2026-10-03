@@ -625,9 +625,9 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .rule-card{line-height:1.7}.rule-card .guide-summary{font-size:16px;margin-bottom:10px}
 .gr-part>summary{padding:14px 0}.gr-part[open]{padding-bottom:12px}.guide-examples p{margin-top:12px}
 
-/* Dusk separates the surfaces by depth; Paper keeps its warm room fills. */
+/* Dusk separates the surfaces by depth; Paper keeps its warm room fills. Inline room icons stay unboxed. */
 :root:not([data-theme=paper]) .tile.hero{background:linear-gradient(180deg,var(--card-hover),var(--card));border-color:color-mix(in srgb,var(--violet) 55%,transparent)}
-:root:not([data-theme=paper]) .tile.hero .ic{background:color-mix(in srgb,var(--violet) 10%,transparent)}
+:root:not([data-theme=paper]) .tile.hero:not(.tile-row) .ic{background:color-mix(in srgb,var(--violet) 10%,transparent)}
 :root:not([data-theme=paper]) .tile.fam-fill{background:var(--card);border-color:var(--frame)}
 :root:not([data-theme=paper]) .tile.fam-fill:hover:not(:disabled){background:var(--card-hover)}
 :root:not([data-theme=paper]) .wm-deck{background:var(--card)}
