@@ -67,7 +67,7 @@ main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 aut
 .tile.wide{grid-column:span 2;min-height:120px}.tile.hero{grid-column:1/-1;border-color:color-mix(in srgb,var(--violet) 33%,transparent);background:linear-gradient(180deg,var(--card-hover),var(--card))}
 .tiles.shelf{margin-top:0}
 .room-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:4px;margin:-8px 0 18px;border:1px solid var(--frame);border-radius:14px;background:var(--card)}
-.practice .room-tabs,.say .room-tabs,.walkman .room-tabs{margin-top:2px}
+.practice .room-tabs,.walkman .room-tabs{margin-top:2px}
 .room-tabs button{min-height:38px;border-radius:10px;font-size:14px;color:var(--muted);white-space:nowrap}
 .room-tabs button[aria-selected=true]{background:var(--card-hover);color:var(--ink);box-shadow:inset 0 0 0 1px var(--frame)}
 .section-top>div{align-items:center}
@@ -91,41 +91,33 @@ main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 aut
 .wm-controls{display:flex;justify-content:center}
 .wm-play svg{stroke-width:2}
 .wm-play svg path{fill:currentColor}
-.say{display:flex;flex-direction:column;min-height:calc(100dvh - 150px)}.stream.say .section-top{margin-bottom:12px}
-.say-card{border:1px solid var(--frame);border-radius:24px;background:var(--card);padding:20px 18px 18px;display:grid;grid-template-rows:22px 70px 80px 70px;justify-items:center;align-items:center;text-align:center;transition:border-color .3s ease}
-.say-card.right{border-color:color-mix(in srgb,var(--violet) 50%,transparent)}.say-card.wrong{border-color:color-mix(in srgb,var(--danger) 44%,transparent)}
-.say-fr.long{font-size:clamp(26px,7vw,32px);line-height:1.08;letter-spacing:-.5px}.say-en.long{font-size:16px}
-.say-step{font-size:12px;line-height:22px;letter-spacing:.09em;text-transform:uppercase;font-weight:650;color:var(--dim);transition:color .3s ease}
-.say-card.right .say-step{color:var(--violet)}.say-card.wrong .say-step{color:var(--danger)}
-.say-fr{margin:0;font-size:clamp(34px,9.5vw,44px);font-weight:500;letter-spacing:-1px;line-height:1.1;overflow-wrap:anywhere}
-.say-mid{align-self:start;padding-top:4px;display:flex;flex-direction:column;gap:3px;min-width:0;max-width:100%}
-.say-en{margin:0;font-size:20px;line-height:1.3;color:var(--ink)}.say-sub{margin:0;font-size:15px;line-height:1.4;color:var(--muted)}
-.say-fade{animation:say-in .22s ease both}
-@keyframes say-in{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
-.say-slot{width:76px;height:70px;display:grid;place-items:center}
+/* Say, on a card: its foot (the ring while it listens, a line, Don't know) in place of "Tap to reveal"; the verdict at
+   the top of the turned card, with the half it grades marked; "I said it right" in a row under the card. */
+.say-foot{position:absolute;left:12px;right:12px;bottom:22px;z-index:2;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 12px;pointer-events:none}
+.study-surface:has(.say-foot){padding-bottom:110px}
+.say-foot .quiet{pointer-events:auto;min-height:40px}
+.say-line{font-size:14px;color:var(--muted);text-align:center;overflow-wrap:anywhere}
+.say-slot{width:46px;height:46px;display:grid;place-items:center}
 .say-ring{width:46px;height:46px;border-radius:50%;border:2px solid var(--violet);opacity:.4;transition:transform 160ms ease-out,opacity 160ms ease-out,box-shadow 160ms ease-out}
 .say-busy{width:46px;height:46px;border-radius:50%;border:2px solid var(--frame);border-top-color:var(--violet);animation:say-spin .8s linear infinite}
 @keyframes say-spin{to{transform:rotate(360deg)}}
-.say-badge{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;animation:say-pop .28s cubic-bezier(.2,.9,.3,1.3) both}
-.say-badge svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.say-badge.right{background:color-mix(in srgb,var(--violet) 12%,transparent);border:2px solid var(--violet);color:var(--violet)}.say-badge.wrong{background:color-mix(in srgb,var(--danger) 10%,transparent);border:2px solid var(--danger);color:var(--danger)}
-@keyframes say-pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
 .say-speaker{color:var(--dim);animation:say-pulse 1.4s ease-in-out infinite}
 .say-speaker svg{display:block;width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @keyframes say-pulse{50%{color:var(--violet)}}
-.say-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.say-controls .primary{grid-column:1/-1}
-.say-controls button{min-height:50px}.say-controls button:disabled{opacity:.35}
-.say-fix{min-height:56px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;line-height:1.35;color:var(--muted);text-align:left}
-.say-fix .secondary{flex:none;min-height:40px;padding:0 14px;font-size:14px}.say-fix.done{color:var(--violet);text-align:center}
-.say-card.intro{grid-template-rows:auto;padding:22px 20px}
-.say-steps{margin:0;padding:0;list-style:none;display:grid;gap:12px;text-align:left;justify-self:stretch;counter-reset:say}
-.say-steps li{display:grid;grid-template-columns:28px 1fr;align-items:center;gap:12px;font-size:16px;color:var(--ink)}
-.say-steps li::before{counter-increment:say;content:counter(say);width:28px;height:28px;border-radius:50%;border:1px solid var(--frame);display:grid;place-items:center;font-size:13px;color:var(--violet);font-weight:650}
-.say-tip{margin:auto 0 0;padding-top:18px;text-align:center;font-size:13px;color:var(--dim)}
-.say-more{margin-top:10px;text-align:center;font-size:13px;color:var(--dim)}
-.say-more summary{cursor:pointer;list-style:none;color:var(--muted);display:inline-block;padding:8px 4px}.say-more summary::-webkit-details-marker{display:none}
-.say-more p{margin:6px auto 0;max-width:360px;line-height:1.55;text-align:left}
-@media(prefers-reduced-motion:reduce){.say-fade,.say-badge,.say-speaker{animation:none}.say-busy{animation-duration:2.4s}}
+.say-verdict{display:inline-flex;align-items:center;gap:6px;margin:0 auto 14px;padding:3px 12px 3px 8px;border:1px solid;border-radius:999px;font-size:13px;line-height:20px;max-width:100%;animation:say-pop .28s cubic-bezier(.2,.9,.3,1.3) both}
+.say-verdict svg{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.say-verdict span{overflow-wrap:anywhere}
+.say-verdict.right{color:var(--violet);border-color:color-mix(in srgb,var(--violet) 45%,transparent);background:var(--violet-soft)}
+.say-verdict.wrong{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 40%,transparent);background:color-mix(in srgb,var(--danger) 8%,transparent)}
+@keyframes say-pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+.study-surface.say-right{border-color:color-mix(in srgb,var(--violet) 50%,transparent)}.study-surface.say-wrong{border-color:color-mix(in srgb,var(--danger) 44%,transparent)}
+.say-fix{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 12px;margin:10px 0 0;font-size:14px;line-height:1.35;color:var(--muted);text-align:center}
+.say-fix .secondary{flex:none;min-height:40px;padding:0 14px;font-size:14px}.say-fix.done{color:var(--violet)}.say-fix.warn{color:var(--danger)}
+@media(prefers-reduced-motion:reduce){.say-verdict,.say-speaker{animation:none}.say-busy{animation-duration:2.4s}}
+/* Audio, Listen and Say share the row under the card with Undo: one line each, tighter on a phone. */
+.study-modes .audio-mode{white-space:nowrap}
+@media(max-width:600px){.study-modes{gap:0}.study-modes .audio-mode{padding:8px 7px;gap:5px}}
+@media(max-width:380px){.study-modes .audio-mode{padding:8px 5px;gap:4px}.study-modes .audio-mode svg{width:18px;height:18px}.study-tools>.quiet{padding-left:6px;padding-right:6px}}
 .wm-progress{height:3px;margin:34px auto 0;max-width:320px;border-radius:2px;background:var(--frame);overflow:hidden}
 .wm-progress span{display:block;height:100%;background:var(--violet);transition:width .25s linear}
 .wm-note{text-align:center;margin-top:18px}
@@ -571,6 +563,8 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .card-zone{padding-bottom:22px;font-size:14px}
 .zone-label{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1px solid var(--frame);border-radius:999px;background:var(--card);color:var(--muted);font-weight:550;white-space:nowrap}
 .card-zone.right .zone-label{color:var(--violet);border-color:color-mix(in srgb,var(--violet) 45%,transparent)}
+.card-zone.right .zone-label.picked{background:var(--violet-soft);border-color:var(--violet)}
+.card-zone.left .zone-label.picked{color:var(--danger);background:color-mix(in srgb,var(--danger) 8%,transparent);border-color:color-mix(in srgb,var(--danger) 55%,transparent)}
 .card-zone.left:active{background:color-mix(in srgb,var(--danger) 9%,transparent)}
 @media(hover:hover){.card-zone.left:hover:not(:disabled){background:color-mix(in srgb,var(--danger) 4%,transparent)}}
 @media(max-width:360px){.zone-label{padding:0 11px;font-size:13px}}

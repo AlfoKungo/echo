@@ -35,6 +35,7 @@ let listenMode = readPreference('echo.listen-mode', 'off') === 'on';
 let heardCard = '';
 const listening = () => listenMode && direction === 'fr-en';
 const headphones = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>';
+const micIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>';
 const bookIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v14M12 6C9.5 4.2 6 4 3 4.7v13.6c3-.7 6.5-.5 9 1.3 2.5-1.8 6-2 9-1.3V4.7C18 4 14.5 4.2 12 6Z"/></svg>';
 const mixIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="3.2"/><circle cx="17" cy="17" r="3.2"/><path d="M13.5 6.5h6.2m0 0-2.2-2.2m2.2 2.2-2.2 2.2M10.5 17.5H4.3m0 0 2.2-2.2m-2.2 2.2 2.2 2.2"/></svg>';
 const cassette = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><circle cx="15.5" cy="11" r="2"/><path d="M10.5 11h3M7 19l1.5-3h7L17 19"/></svg>';
@@ -54,7 +55,8 @@ const chevronIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7
 let screen = 'home';
 let depth = 0;
 const trail = ['home'];
-// A link may ask for one screen (#practice, #grammar, #walkman, #say); the address drops it, so a reload opens Home.
+// A link may ask for one screen (#practice, #grammar, #walkman; #say opens Endless with Say on); the address drops
+// it, so a reload opens Home.
 const requestedScreen = location.hash.slice(1);
 history.replaceState({ echo: 'home', depth: 0 }, '', location.pathname + location.search);
 let topicId = '';
@@ -164,9 +166,10 @@ const tapeScreen = (name = screen) => name in TAPE_SCREENS;
 // What the tape on screen plays: the Walkman's choice of words, or its room's sentences or verbs.
 const tapeKind = () => screen === 'walkman' ? walkmanChoice : TAPE_SCREENS[screen];
 // Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
-const WORDS_TABS = { cards: 'Cards', endless: 'Endless', say: 'Say it', walkman: 'Walkman' };
+const WORDS_TABS = { cards: 'Cards', endless: 'Endless', walkman: 'Walkman' };
 const LISTEN_TABS = { listen: 'Questions', sounds: 'Sounds', 'listen-tape': 'Tape' };
-let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved in WORDS_TABS && !(saved === 'say' && roomsOff.has('say')) ? saved : 'cards'; })();
+// A device last on the old Say it tab opens on Endless, with Say on.
+let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved === 'say' ? 'endless' : saved in WORDS_TABS ? saved : 'cards'; })();
 let listenTab = (() => { const saved = readPreference('echo.listen-tab', 'listen'); return saved in LISTEN_TABS ? saved : 'listen'; })();
 // The verb tape plays the tenses chosen in Verbs; changing them here changes them there too.
 function chooseWalkmanTense(tense) {
@@ -459,12 +462,11 @@ function openInfo(room) {
   if (!parts) return;
   openDialog(INFO_TITLES[room] ?? 'How it works', `<div class="dialog-copy">${parts}</div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'info');
 }
-const wordsTabList = () => Object.fromEntries(Object.entries(WORDS_TABS).filter(([id]) => id !== 'say' || !roomsOff.has('say')));
-const wordsTabNow = () => screen === 'say' ? 'say' : screen === 'walkman' ? 'walkman' : vocabMode === 'endless' ? 'endless' : 'cards';
+const wordsTabNow = () => screen === 'walkman' ? 'walkman' : vocabMode === 'endless' ? 'endless' : 'cards';
 // The top of every Words tab: back, the direction (for cards), Your words, ⓘ, options, then the tabs.
 function wordsTop() {
   const tab = wordsTabNow(), cards = tab === 'cards' || tab === 'endless';
-  return `<div class="section-top">${back('Home', 'home')}<div>${cards ? `<span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span>` : ''}<button class="icon" data-action="browse" aria-label="Your words" ${busy ? 'disabled' : ''}>${searchIcon}</button>${infoButton('words')}<button class="icon" data-action="options" aria-label="Words options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>${roomTabs('words-tab', tab, wordsTabList())}`;
+  return `<div class="section-top">${back('Home', 'home')}<div>${cards ? `<span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span>` : ''}<button class="icon" data-action="browse" aria-label="Your words" ${busy ? 'disabled' : ''}>${searchIcon}</button>${infoButton('words')}<button class="icon" data-action="options" aria-label="Words options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>${roomTabs('words-tab', tab, WORDS_TABS)}`;
 }
 // The top of every Listen tab: back, the level (for questions), ⓘ, then the tabs.
 function listenTop(right = '') {
@@ -503,7 +505,6 @@ function render() {
   else if (screen === 'mistakes') renderMistakes();
   else if (screen === 'friends') renderFriends();
   else if (tapeScreen()) renderWalkman();
-  else if (screen === 'say') renderSay();
   else if (screen === 'statistics') renderStatistics();
   else if (screen === 'songs') renderSongs();
   else if (screen === 'song') renderSong();
@@ -900,18 +901,27 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const prompt = reverse ? card.en : card.fr;
   const answer = reverse ? card.fr : card.en;
   const hidden = listening() && !revealed;
+  // Say, on this card: the verdict once Say turned it, and Say's foot instead of "Tap to reveal" before.
+  const saying = sayHere();
+  const verdict = saying && revealed && say.phase === 'result' && say.key === cardKey(card) ? say.result : null;
+  const right = verdict?.verdict === 'right';
   // The noun's gender, in words, wherever the French is showing (the colour alone is optional).
   const gender = card.gender && (revealed || !reverse) ? `<p class="gender-tag${genderClass(card.gender)}">${esc(card.gender)}</p>` : '';
   const face = hidden
-    ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button><p class="source-word">Listen, then tap to see the word</p>`
-    : `<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender}`;
+    ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button>${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}`
+    : `${verdict ? sayVerdictHTML() : ''}<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender}`;
   const listenToggle = direction === 'fr-en' ? `<button class="audio-mode ${listenMode ? 'on' : ''}" data-action="listen-mode" aria-pressed="${listenMode}" aria-label="Listen only: ${listenMode ? 'on' : 'off'}" title="Hear the French word instead of reading it">${headphones}<span>Listen ${listenMode ? 'on' : 'off'}</span></button>` : '';
-  return `<div class="study-surface ${revealed ? 'revealed' : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : hidden ? 'Reveal the meaning' : 'Reveal the translation'}" aria-busy="${busy}"><div class="word-content">${face}</div>${revealed ? `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span class="zone-label" aria-hidden="true">← Didn’t know</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span class="zone-label" aria-hidden="true">Knew it →</span></button>` : hidden ? '' : '<span class="card-hint" aria-hidden="true">Tap to reveal</span>'}</div><div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}</div><button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
+  const sayToggle = direction === 'fr-en' && screen === 'practice' && !roomsOff.has('say') ? `<button class="audio-mode ${sayMode ? 'on' : ''}" data-action="say-mode" aria-pressed="${sayMode}" aria-label="Say: ${sayMode ? 'on' : 'off'}" title="Say each card’s English aloud; Echo checks it">${micIcon}<span>Say ${sayMode ? 'on' : 'off'}</span></button>` : '';
+  const zones = `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span class="zone-label${verdict && !right ? ' picked' : ''}" aria-hidden="true">← Didn’t know</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span class="zone-label${right ? ' picked' : ''}" aria-hidden="true">Knew it →</span></button>`;
+  const foot = revealed ? zones : saying ? sayFootHTML() : hidden ? '' : '<span class="card-hint" aria-hidden="true">Tap to reveal</span>';
+  const label = revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : saying && !say.running ? 'Start Say' : hidden ? 'Reveal the meaning' : 'Reveal the translation';
+  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}"><div class="word-content">${face}</div>${foot}</div>${saying ? sayFixHTML() : ''}<div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}${sayToggle}</div><button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
 // Each new card (or new version after a grade or undo) plays once on its own; re-renders don't replay it.
 function playCardOnce() {
   const card = shownCard();
-  if (!card || !listening() || revealed) return;
+  // Say plays the French itself, in turn with listening.
+  if (!card || !listening() || revealed || say.running) return;
   const key = `${card.id}:${card.version}:${card.serial ?? ''}`;
   if (key === heardCard) return;
   heardCard = key; playFrench(card.audioUrl);
@@ -2179,35 +2189,44 @@ function resetStatsView() {
   pointsDay = '';
 }
 function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } drawScores(); }
-// ── Say it (a tab in Words): Echo says a French word, the learner says its English aloud, and Echo checks it
-// (api/say/check, lib/say-check.ts). A level meter tells speech from the room's quiet, so an answer ends
-// SAY_QUIET_MS after the learner stops. A wrong verdict waits until SAY_RESUME_MS have passed since their last sound:
-// if they speak again before then they had only paused, and Echo listens on and checks the whole answer again. The
-// learner has SAY_WAIT_MS to start an answer, and can give up sooner by
-// saying so ("I don't know") or tapping Don't know; what Echo can't make out, or thinking aloud, is shown and
-// listened past. After a wrong verdict, "I said it right" turns the ✗ into ✓ and teaches Echo what it heard
-// (api/say/correct). iPhone stops the microphone when the screen locks or Echo leaves the screen, so the screen is
-// kept awake while Say it runs, and Say it pauses if it goes away.
+// ── Say (a switch under the card in Words, Cards and Endless, French → English): the learner says each card's
+// English aloud and Echo checks it (api/say/check, lib/say-check.ts). The verdict turns the card, and after
+// SAY_SHOW_MS (and the English, after a miss) grades it as a tap on that half would: a Cards grade or an Endless mark.
+// A level meter tells speech from the room's quiet, so an answer ends SAY_QUIET_MS after the learner stops. A wrong
+// verdict waits until SAY_RESUME_MS have passed since their last sound: if they speak again before then they had only
+// paused, and Echo listens on and checks the whole answer again. The learner has SAY_WAIT_MS to start an answer, and
+// can give up sooner by saying so ("I don't know") or tapping Don't know; what Echo can't make out, or thinking aloud,
+// is shown and listened past. Tapping the card turns it as usual, to answer that one by hand. After a wrong verdict,
+// "I said it right" teaches Echo what it heard (api/say/correct) and re-marks that answer as right. iPhone stops the
+// microphone when the screen locks or Echo leaves the screen, so the screen is kept awake while Say listens, and Say
+// pauses if it goes away; it needs a tap to start again.
 const SAY_QUIET_MS = 700;
 const SAY_RESUME_MS = 1600;
 const SAY_LONGEST_MS = 8000;
 const SAY_WAIT_MS = 40000;
-const SAY_RECENT = 8;
+const SAY_SHOW_MS = 900;
 // A moment of silence played on Start, inside the tap, so Safari lets the words that follow play without one.
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
 const sayAudio = new Audio();
-// phase: idle · starting · loading · prompt (the French plays) · listening · checking · again (heard, not an answer) · result
-// fix: the last wrong verdict, while it can still be marked right: { wordId, fr, request, heard, state: offer|sending|done }
-let say = { running: false, phase: 'idle', card: null, result: null, fix: null, recent: [], error: '', token: 0 };
+let sayMode = readPreference('echo.say-mode', readPreference('echo.words-tab', '') === 'say' ? 'on' : 'off') === 'on';
+// Say is on this screen: the switch is on, on a Words card in French → English, in the Echo that has it.
+const sayHere = () => sayMode && screen === 'practice' && direction === 'fr-en' && !roomsOff.has('say');
+// A card as Say follows it: a grade or an undo brings a new version, an Endless word a new serial.
+const cardKey = (card) => card ? `${card.id}:${card.version}:${card.serial ?? ''}` : '';
+// phase: idle · starting · prompt (the French plays) · listening · checking · again (heard, not an answer) · result · skipped
+// key: the card Say is answering; result: its verdict { verdict, heard, en, request }
+// fix: the last wrong verdict, while it can still be marked right: { wordId, fr, request, heard, endless, state: offer|sending|done }
+let say = { running: false, phase: 'idle', key: '', result: null, fix: null, error: '', token: 0 };
 // The microphone stays open from Start to Stop. While it is, iPhone plays sound at phone-call quality; opening it
 // only to listen sounded worse on the phone than keeping it open.
-let sayContext = null;      // the AudioContext for the level, the capture and the chimes, while Say it runs
-let sayMic = null;          // { stream, source, processor, analyser, data } while Say it runs
+let sayContext = null;      // the AudioContext for the level, the capture and the chimes, while Say listens
+let sayMic = null;          // { stream, source, processor, analyser, data } while Say listens
 let sayCapture = null;      // the raw sound of the answer being listened to: Float32Array blocks
 let sayWake = null;         // the screen wake lock
 let sayInterrupt = null;    // ends whatever the run is waiting on (a sound or the microphone) when it stops
 let sayGiveUp = null;       // ends the listening as Don't know
-// Opens the microphone into sayContext; false when Say it stopped while it opened.
+let saySkip = null;         // ends the listening for this card without an answer (it was turned by hand, or changed)
+// Opens the microphone into sayContext; false when Say stopped while it opened.
 async function sayOpenMic(token) {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
   if (!sayCurrent(token) || !sayContext) { stream.getTracks().forEach((track) => track.stop()); return false; }
@@ -2245,7 +2264,7 @@ async function startSay() {
   } catch (error) {
     sayContext?.close().catch(() => {}); sayContext = null;
     say = { ...say, running: false, phase: 'idle', error: error.name === 'NotAllowedError'
-      ? 'Echo needs the microphone for Say it. Allow it for this site (in Safari: aA → Website Settings → Microphone), then tap Start.'
+      ? 'Echo needs the microphone for Say. Allow it for this site (in Safari: aA → Website Settings → Microphone), then tap the card.'
       : `The microphone could not start: ${error.message}` };
     render();
     return;
@@ -2262,9 +2281,9 @@ function stopSay(message = '') {
   sayWake?.release().catch(() => {}); sayWake = null;
   sayCloseMic();
   sayContext?.close().catch(() => {}); sayContext = null;
-  if (screen === 'say') render();
+  if (screen === 'practice') render();
 }
-document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && say.running) stopSay('Say it paused when the screen locked or Echo went to the background. Tap Start to go on.'); });
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && say.running) stopSay('Say paused when the screen locked or Echo went to the background. Tap the card to go on.'); });
 const sayCurrent = (token) => say.running && token === say.token;
 function sayWait(ms, token) {
   return new Promise((resolve) => { const timer = setTimeout(() => { sayInterrupt = null; resolve(sayCurrent(token)); }, ms); sayInterrupt = () => { clearTimeout(timer); sayInterrupt = null; resolve(false); }; });
@@ -2321,12 +2340,13 @@ function sayRing(level, now) {
   const rest = 0.5 + 0.5 * Math.sin(now / 1000 * Math.PI / 2);
   ring.style.transform = `scale(${(1 + rest * 0.08 + level * 0.45).toFixed(3)})`;
   ring.style.opacity = (0.3 + rest * 0.2 + level * 0.5).toFixed(3);
-  ring.style.boxShadow = `0 0 ${Math.round(level * 22)}px ${Math.round(level * 4)}px #aaa6e455`;
+  ring.style.boxShadow = `0 0 ${Math.round(level * 22)}px ${Math.round(level * 4)}px color-mix(in srgb,var(--violet) 33%,transparent)`;
 }
 // Listens for one answer: { clip, answer } once the learner stops, the clip as WAV from a third of a second before
-// they began; 'dontknow' when they tap Don't know, 'silent' when nothing was said by `deadline`, null if Say it
-// stopped meanwhile. `answer` is what was heard so far; passed back in, listening goes on with it after a pause, and
-// its sound goes on being kept until the next listen or sayAnswer lets it go.
+// they began; 'dontknow' when they tap Don't know, 'silent' when nothing was said by `deadline`, 'skip' when the card
+// was turned by hand or another card came, null if Say stopped meanwhile. `answer` is what was heard so far; passed
+// back in, listening goes on with it after a pause, and its sound goes on being kept until the next listen or
+// sayAnswer lets it go.
 function sayListen(token, deadline, answer = null) {
   return new Promise((resolve) => {
     const rate = sayContext.sampleRate;
@@ -2335,7 +2355,7 @@ function sayListen(token, deadline, answer = null) {
     let loudTicks = 0, over = false, shown = 0;
     const finish = (outcome) => {
       if (over) return;
-      over = true; clearInterval(timer); sayInterrupt = null; sayGiveUp = null;
+      over = true; clearInterval(timer); sayInterrupt = null; sayGiveUp = null; saySkip = null;
       if (outcome !== 'speech') { sayCapture = null; resolve(outcome); return; }
       const all = new Float32Array(heard.blocks.reduce((sum, block) => sum + block.length, 0));
       let at = 0;
@@ -2345,9 +2365,11 @@ function sayListen(token, deadline, answer = null) {
     };
     sayInterrupt = () => finish(null);
     sayGiveUp = () => finish('dontknow');
+    saySkip = () => finish('skip');
     // Every 50 ms: the level in dB against the room's quiet, which is learned while nobody speaks.
     const timer = setInterval(() => {
       if (!sayCurrent(token)) return finish(null);
+      if (revealed || cardKey(shownCard()) !== say.key) return finish('skip');
       const level = sayLevel(), now = performance.now();
       // A microphone can give pure zeros (just opened, or noise suppression in a silent room). The room's quiet
       // starts no louder than -50 dB, in case the first real sound is already the learner's voice, and is learned
@@ -2373,7 +2395,7 @@ function sayListen(token, deadline, answer = null) {
   });
 }
 // After the pause that ended an answer: `resumed` turns true if the learner speaks again within SAY_RESUME_MS of
-// their last sound (they had not finished), and false once that passes, Say it stops, or `stop` is called.
+// their last sound (they had not finished), and false once that passes, Say stops, or `stop` is called.
 function sayResumes(token, answer) {
   let stop;
   const resumed = new Promise((resolve) => {
@@ -2395,15 +2417,14 @@ function sayResumes(token, answer) {
 async function sayCheck(card, clip, request) {
   let response;
   try { response = await fetch(`api/say/check?word=${encodeURIComponent(card.id)}&request=${request}`, { method: 'POST', headers: { 'Content-Type': 'audio/wav', Accept: 'application/json' }, body: clip, cache: 'no-store' }); }
-  catch { throw Object.assign(new Error('Echo couldn’t reach your Mac to check that answer. Check your connection, then tap Start again.'), { network: true }); }
+  catch { throw Object.assign(new Error('Echo couldn’t reach your Mac to check that answer. Check your connection, then tap the card to go on.'), { network: true }); }
   let data;
   try { data = await response.json(); } catch { throw new Error('Your Mac returned an unreadable response.'); }
   if (!response.ok) throw new Error(data.error || `Checking failed (${response.status}).`);
   return data;
 }
-// A request Say it makes, tried again after 1 and 2 seconds when the phone loses the Mac for a moment (Safari's
-// "Load failed"). Sending a check again is safe: it keeps its request id, so its verdict is recorded once. Null if
-// Say it stopped meanwhile.
+// A request Say makes, tried again after 1 and 2 seconds when the phone loses the Mac for a moment (Safari's
+// "Load failed"). Sending a check again is safe: a check records nothing. Null if Say stopped meanwhile.
 async function sayTry(token, request) {
   for (const pause of [1000, 2000, 0]) {
     try { return await request(); }
@@ -2411,130 +2432,120 @@ async function sayTry(token, request) {
   }
 }
 // Listens until there is an answer to judge; what is heard but is not one ("let me think") is shown, and Echo listens
-// on, until the word's SAY_WAIT_MS are up. Null when Say it stopped. An answer checked again after a pause keeps its
-// request, so the second verdict replaces the first.
+// on, until the word's SAY_WAIT_MS are up. Null when Say stopped; { verdict: 'skip' } when the card was turned by
+// hand or another card came. An answer checked again after a pause keeps its request.
 async function sayAnswer(card, token) {
   const deadline = performance.now() + SAY_WAIT_MS;
   say.phase = 'listening'; render();
-  let answer = null, request = null, heldWrong = false;
+  let answer = null, request = null;
   for (;;) {
     const heard = await sayListen(token, deadline, answer);
     if (!heard || !sayCurrent(token)) { sayCapture = null; return null; }
+    if (heard === 'skip') return { verdict: 'skip' };
     if (!answer) request = requestId();
-    if (heard === 'dontknow' || heard === 'silent') {
-      api('api/walkman/verdict', { method: 'POST', body: JSON.stringify({ id: `say-${request}`, wordId: card.id, knew: false }) }).catch(() => {});
-      return { verdict: heard, heard: '', en: card.en, request };
-    }
+    if (heard === 'dontknow' || heard === 'silent') return { verdict: heard, heard: '', en: card.en, request };
     say.phase = 'checking'; render();
     const more = sayResumes(token, heard.answer);
     let result;
     try { result = await sayTry(token, () => sayCheck(card, heard.clip, request)); }
     catch (error) { more.stop(); sayCapture = null; if (sayCurrent(token)) stopSay(error.message); return null; }
     if (!result) { more.stop(); sayCapture = null; return null; }
+    if (revealed || cardKey(shownCard()) !== say.key) { more.stop(); sayCapture = null; return { verdict: 'skip' }; }
     // Wrong, and they speak again: they had only paused. Listen on and check the whole answer.
     if (result.verdict === 'wrong' && await more.resumed && sayCurrent(token)) {
-      answer = heard.answer; heldWrong = true;
+      answer = heard.answer;
       say.phase = 'listening'; render();
       continue;
     }
     more.stop(); sayCapture = null;
     if (!sayCurrent(token)) return null;
     if (result.verdict !== 'unclear') return { ...result, request };
-    // The longer answer came to nothing: the first part's ✗ no longer stands either.
-    if (heldWrong) api('api/walkman/verdict', { method: 'POST', body: JSON.stringify({ id: `say-${request}`, wordId: card.id, knew: null }) }).catch(() => {});
-    answer = null; heldWrong = false;
+    answer = null;
     // Breath or noise heard as nothing changes nothing on screen; words that were not an answer are shown.
     say.phase = result.heard.trim() ? 'again' : 'listening'; say.result = result; render();
   }
 }
-// One word after another until stopped: the French, the answer, the verdict, and the English after anything but a
-// right answer.
+// Card after card until stopped: the French (played when Audio or Listen is on), the answer, the card turned with
+// the verdict, the English after anything but a right answer, then the grade a tap would give. A card turned or
+// answered by hand meanwhile is left to the learner, and Say takes up the next one.
 async function runSay(token) {
   while (sayCurrent(token)) {
-    say.phase = 'loading'; say.result = null; render();
-    let pick;
-    try { pick = await sayTry(token, () => api('api/endless/next', { method: 'POST', body: JSON.stringify({ direction: 'fr-en', deck: 'all', exclude: say.recent }) })); }
-    catch (error) { if (sayCurrent(token)) stopSay(error.message); return; }
-    if (!pick || !sayCurrent(token)) return;
-    if (!pick.card) { stopSay('There are no words to say yet: practise some in Cards first.'); return; }
-    say.card = pick.card;
-    say.recent = [pick.card.id, ...say.recent.filter((id) => id !== pick.card.id)].slice(0, SAY_RECENT);
-    const card = say.card;
-    say.phase = 'prompt'; render();
-    if (!await sayPlay(card.audioUrl, token)) { if (!sayCurrent(token)) return; say.phase = 'result'; say.result = { verdict: 'skipped', en: card.en }; render(); if (!await sayWait(800, token)) return; continue; }
+    if (!sayHere()) { stopSay(); return; }
+    const card = shownCard();
+    if (!card || revealed || locked() || loading) { if (!await sayWait(150, token)) return; continue; }
+    const key = cardKey(card);
+    say.key = key; say.result = null; say.phase = 'prompt'; render();
+    if ((audioMode || listening()) && !await sayPlay(card.audioUrl, token) && !sayCurrent(token)) return;
+    if (revealed || cardKey(shownCard()) !== key) continue;
     const result = await sayAnswer(card, token);
     if (!result) return;
-    say.fix = result.verdict === 'wrong' && result.heard ? { wordId: card.id, fr: card.fr, request: result.request, heard: result.heard, state: 'offer' } : null;
-    say.phase = 'result'; say.result = result; render();
+    if (result.verdict === 'skip') { say.phase = 'skipped'; continue; }
+    revealed = true; say.phase = 'result'; say.result = result;
+    if (result.verdict !== 'right' && result.heard) say.fix = { wordId: card.id, fr: card.fr, request: result.request, heard: result.heard, endless: endlessMode(), state: 'offer' };
+    render(); announce(`${result.verdict === 'right' ? 'Right' : 'Not quite'}: ${card.en}.`);
     if (!await sayChime(result.verdict === 'right', token)) return;
     if (result.verdict !== 'right' && !await sayPlay(`audio/en/${encodeURIComponent(card.id)}.mp3`, token) && !sayCurrent(token)) return;
-    if (!await sayWait(700, token)) return;
+    if (!await sayWait(SAY_SHOW_MS, token)) return;
+    if (!revealed || cardKey(shownCard()) !== key) continue;
+    grade(result.verdict === 'right');
   }
 }
-// Echo heard the learner wrong: the last wrong verdict becomes right, and what was heard counts for that word.
+// Echo heard the learner wrong: what it heard counts for that word from then on, and the answer, still the last one
+// given, is marked again as right: the Cards grade taken back and given as known, or the Endless mark replaced.
 async function sayCorrect() {
   const fix = say.fix;
-  if (!fix || fix.state !== 'offer') return;
+  if (!fix || fix.state !== 'offer' || busy) return;
   fix.state = 'sending'; render();
-  try { await api('api/say/correct', { method: 'POST', body: JSON.stringify({ word: fix.wordId, request: fix.request, heard: fix.heard }) }); fix.state = 'done'; }
-  catch (error) { fix.state = 'offer'; say.error = error.message; }
-  if (screen === 'say') render();
+  try {
+    await api('api/say/correct', { method: 'POST', body: JSON.stringify({ word: fix.wordId, request: fix.request, heard: fix.heard }) });
+    if (fix.endless) await sayRemarkEndless(fix.wordId);
+    else await sayRegrade(fix.wordId);
+    fix.state = 'done';
+  } catch (error) { fix.state = 'offer'; notice = { message: error.message }; }
+  if (screen === 'practice') render();
 }
-// Each verdict's look (right/wrong/none for the card's edge and badge) and the label above the word.
-const SAY_VERDICTS = { right: ['right', 'Right'], wrong: ['wrong', 'Not quite'], dontknow: ['wrong', 'Not this time'], silent: ['wrong', 'No answer'], unclear: ['none', 'Couldn’t make it out'], skipped: ['none', 'Skipped'] };
-// Say it is one card whose rows never change size — a label, the French, one answer area and the ring — with the
-// buttons and the "I said it right" row in fixed places under it, so nothing on the screen moves between steps.
-function renderSay() {
-  const header = wordsTop();
-  const card = say.card, result = say.result;
-  // What was heard, quoted inside a sentence: in lower case and without recognition's own full stop.
-  const quoted = (text) => esc((text ?? '').trim().replace(/[.!?…]+$/, '').toLowerCase());
-  // A word's meanings as a card writes them: "chest of drawers · dresser".
-  const meanings = (en) => esc(en ?? '').split(/;\s*/).join(' · ');
-  const error = say.error ? `<p class="feedback warn" role="alert">${esc(say.error)}</p>` : '';
-  if (!say.running) {
-    main.innerHTML = `${error}<section class="stream say">${header}
-      <div class="say-card intro"><ol class="say-steps"><li>Echo says a French word.</li><li>Say its English out loud.</li><li>Echo tells you if you had it.</li></ol></div>
-      <div class="say-controls"><button class="primary" data-action="say-start">${card ? 'Start again' : 'Start'}</button></div>
-      <details class="say-more"><summary>How it counts</summary><p>Right counts like ✓ on the Walkman; wrong, “I don’t know” or no answer like ✗; what Echo couldn’t make out counts for nothing, and it listens on. You have 40 seconds to start each answer. The shakiest words come most often. If Echo heard you wrong, tap <b>I said it right</b>: it counts as right, and Echo accepts what it heard for that word from then on.</p></details>
-      <p class="say-tip">Keep the screen on: iPhone turns the microphone off when it locks.</p>
-    </section>`;
-    return;
-  }
-  const listening = say.phase === 'listening' || say.phase === 'again';
-  const verdict = say.phase === 'result' && result ? SAY_VERDICTS[result.verdict] || SAY_VERDICTS.unclear : null;
-  const kind = verdict?.[0] ?? '';
-  const label = verdict ? verdict[1] : { starting: 'Starting', prompt: 'Listen', listening: 'Your turn', again: 'Your turn', checking: 'Checking' }[say.phase] ?? '';
-  const answer = verdict
-    ? `<div class="say-mid say-fade">${result.en ? `<p class="say-en${result.en.length > 30 ? ' long' : ''}">${meanings(result.en)}</p>` : ''}${result.verdict === 'wrong' && result.heard ? `<p class="say-sub">Echo heard “${quoted(result.heard)}”</p>` : result.verdict === 'skipped' ? '<p class="say-sub">This word’s recording didn’t play</p>' : ''}</div>`
-    : say.phase === 'listening' ? '<div class="say-mid"><p class="say-sub">Say it in English — take your time</p></div>'
-    : say.phase === 'again' ? `<div class="say-mid say-fade"><p class="say-sub">Heard “${quoted(result?.heard)}” · still listening</p></div>`
-    : say.phase === 'starting' ? '<div class="say-mid"><p class="say-sub">Opening the microphone…</p></div>'
-    : '<div class="say-mid"></div>';
-  const slot = say.phase === 'prompt' ? `<span class="say-speaker">${speaker}</span>`
-    : listening ? '<div class="say-ring"></div>'
-    : say.phase === 'checking' || say.phase === 'starting' ? '<div class="say-busy"></div>'
-    : kind === 'right' || kind === 'wrong' ? `<div class="say-badge ${kind}">${kind === 'right' ? checkIcon : crossIcon}</div>`
-    : '';
-  // On the word itself the card already says what Echo heard, so the row holds only the button; on a later word it
-  // names the word it is about.
+async function sayRemarkEndless(wordId) {
+  const stream = endless, last = stream?.last;
+  if (!last || last.card.id !== wordId) throw new Error('Another answer came after that one, so it stays as it was.');
+  await last.saved;
+  await api('api/endless/undo', { method: 'POST', body: JSON.stringify({ requestId: last.requestId }) });
+  const markId = requestId();
+  stream.last = { requestId: markId, card: last.card, saved: Promise.resolve() };
+  await api('api/endless/mark', { method: 'POST', body: JSON.stringify({ requestId: markId, direction: stream.direction, wordId, known: true }) });
+}
+// The card on screen stays as it is: the wrong grade is undone and given again as known behind it.
+async function sayRegrade(wordId) {
+  await pendingGrade;
+  if (!snapshot?.undoId) throw new Error('Another answer came after that one, so it stays as it was.');
+  const undone = await api('api/undo', { method: 'POST', body: JSON.stringify({ direction, deck, undoId: snapshot.undoId }) });
+  if (undone.current?.id !== wordId) { applySnapshot(undone); throw new Error('Another answer came after that one, so it stays as it was.'); }
+  const body = { direction, deck, wordId, version: undone.current.version, known: true, requestId: requestId() };
+  applySnapshot(await api('api/grade', { method: 'POST', body: JSON.stringify(body), limit: GRADE_LIMIT }));
+}
+// What was heard, quoted inside a sentence: in lower case and without recognition's own full stop.
+const sayQuoted = (text) => esc((text ?? '').trim().replace(/[.!?…]+$/, '').toLowerCase());
+// The foot of a card Say is answering, in place of "Tap to reveal": what Say is doing, and Don't know while it listens.
+function sayFootHTML() {
+  if (!say.running) return `<span class="card-hint">Tap to start Say</span>`;
+  const listens = say.phase === 'listening' || say.phase === 'again';
+  const line = { starting: 'Opening the microphone…', prompt: 'Listen', listening: 'Say it in English', again: `Heard “${sayQuoted(say.result?.heard)}” · still listening`, checking: 'Checking…' }[say.phase] ?? '';
+  const slot = say.phase === 'prompt' ? `<span class="say-speaker">${speaker}</span>` : listens ? '<span class="say-ring"></span>' : say.phase === 'checking' || say.phase === 'starting' ? '<span class="say-busy"></span>' : '';
+  return `<div class="say-foot" aria-live="polite"><span class="say-slot" aria-hidden="true">${slot}</span><span class="say-line">${line}</span>${listens ? '<button class="quiet" data-action="say-dontknow">Don’t know</button>' : ''}</div>`;
+}
+// On a card Say turned: the verdict at its top, and what was heard after a miss.
+function sayVerdictHTML() {
+  const result = say.result, right = result.verdict === 'right';
+  const label = right ? 'Right' : { dontknow: 'Not this time', silent: 'No answer' }[result.verdict] ?? 'Not quite';
+  return `<p class="say-verdict ${right ? 'right' : 'wrong'}">${right ? checkIcon : crossIcon}<span>${label}${!right && result.heard ? ` · heard “${sayQuoted(result.heard)}”` : ''}</span></p>`;
+}
+// Under the card: "I said it right" after a miss (naming the word once another card is up), what it did, or why Say stopped.
+function sayFixHTML() {
   const fix = say.fix;
-  const fixButton = fix ? `<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right</button>` : '';
-  const fixRow = !fix ? ''
-    : fix.state === 'done' ? `Counted as right — “${quoted(fix.heard)}” now counts for <span lang="fr">${frEsc(fix.fr)}</span>.`
-    : say.phase === 'result' && result?.request === fix.request ? fixButton
-    : `<span><span lang="fr">${frEsc(fix.fr)}</span>: Echo heard “${quoted(fix.heard)}”</span>${fixButton}`;
-  main.innerHTML = `${error}<section class="stream say">${header}
-    <div class="say-card ${kind}" aria-live="polite">
-      <span class="say-step">${label}</span>
-      <p class="say-fr${card && card.fr.length > 13 ? ' long' : ''}" lang="fr">${card ? frEsc(card.fr) : ''}</p>
-      ${answer}
-      <div class="say-slot" aria-hidden="true">${slot}</div>
-    </div>
-    <div class="say-controls"><button class="secondary" data-action="say-dontknow" ${listening ? '' : 'disabled'}>Don’t know</button><button class="secondary" data-action="say-stop">Stop</button></div>
-    <div class="say-fix${fix?.state === 'done' ? ' done' : ''}">${fixRow}</div>
-    <p class="say-tip">Keep the screen on while you practise.</p>
-  </section>`;
+  if (say.error && !say.running) return `<p class="say-fix warn" role="alert">${esc(say.error)}</p>`;
+  if (!fix) return '';
+  if (fix.state === 'done') return `<p class="say-fix done">Counted as right — “${sayQuoted(fix.heard)}” now counts for <span lang="fr">${frEsc(fix.fr)}</span>.</p>`;
+  const onIt = say.phase === 'result' && shownCard()?.id === fix.wordId;
+  return `<p class="say-fix">${onIt ? '' : `<span><span lang="fr">${frEsc(fix.fr)}</span>: heard “${sayQuoted(fix.heard)}”</span>`}<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right</button></p>`;
 }
 // Sounds: pairs that differ by one sound (lib/sounds.ts). One side plays; the learner picks which one they heard,
 // then can hear both. A round is ten pairs, the ones missed most first.
@@ -3602,8 +3613,8 @@ function show(next) {
     if ('mediaSession' in navigator) navigator.mediaSession.metadata = null;
   }
   if (!tapeScreen(name)) { heardOpen = false; heardSaying = ''; heardResume = false; }
-  // Leaving Say it lets go of the microphone.
-  if (name !== 'say') stopSay();
+  // Leaving the cards lets go of the microphone; moving between Cards and Endless keeps it.
+  if (name !== 'practice') stopSay();
   if (name === 'home') homeInfo.at = 0;
   screen = name; render(); window.scrollTo(0, 0); main.focus({ preventScroll: true });
   if (name === 'home') fetchState();
@@ -3624,13 +3635,13 @@ async function beginPractice() {
 // history, so Back leaves the room; 'back' walks back to the tab already behind (from Your words).
 function openWords(tab = wordsTab, how = 'forward', autoplay = false) {
   if (busy) return;
-  if (!(tab in WORDS_TABS) || (tab === 'say' && roomsOff.has('say'))) tab = 'cards';
+  if (!(tab in WORDS_TABS)) tab = 'cards';
   wordsTab = tab; savePreference('echo.words-tab', tab);
   if (tab === 'cards' || tab === 'endless') {
     const mode = tab === 'endless' ? 'endless' : 'daily';
     if (mode !== vocabMode) { vocabMode = mode; savePreference('echo.vocab-mode', mode); endless = null; revealed = false; }
   }
-  const next = tab === 'say' ? 'say' : tab === 'walkman' ? 'walkman' : 'practice';
+  const next = tab === 'walkman' ? 'walkman' : 'practice';
   if (how === 'switch') switchPlace(next);
   else if (!move(next, how === 'forward')) return;
   if (next === 'practice') beginPractice(); else if (next === 'walkman') loadTape(autoplay);
@@ -3665,7 +3676,9 @@ function shownCard() { return endlessMode() ? endless?.cards[0] ?? null : snapsh
 function vocabularyCard() { return !!shownCard() && (screen === 'practice' || (mixed() && mixedSource === 'vocabulary')); }
 function reveal() {
   if (!vocabularyCard() || revealed || locked() || loading) return;
-  revealed = true; render(); document.querySelector('#flashcard')?.focus({ preventScroll: true });
+  // With Say on and not yet listening (iPhone opens the microphone only on a tap), the tap starts it instead.
+  if (sayHere() && !say.running) { startSay(); return; }
+  revealed = true; saySkip?.(); render(); document.querySelector('#flashcard')?.focus({ preventScroll: true });
   const card = shownCard();
   announce(`Answer: ${direction === 'en-fr' ? card.fr : card.en}.`);
   // Listen mode already played the word when the card appeared; the reveal only shows the answer.
@@ -3673,6 +3686,8 @@ function reveal() {
 }
 function grade(known) {
   if (!revealed || locked() || loading || !vocabularyCard()) return;
+  // "I said it right" is for the last answer only: answering another card withdraws it.
+  if (say.fix && say.fix.state !== 'sending' && say.fix.wordId !== shownCard()?.id) say.fix = null;
   // The previous answer is still being saved: this one follows as soon as it is.
   if (endlessMode()) { markEndless(known); return; }
   if (pendingGrade) { queuedGrade = known; if (savingSlow) render(); return; }
@@ -3759,11 +3774,12 @@ function markEndless(known) {
   if (!card) return;
   const markId = requestId();
   stream.recent = [card.id, ...stream.recent.filter((id) => id !== card.id)].slice(0, ENDLESS_GAP);
-  stream.last = { requestId: markId, card };
+  const last = stream.last = { requestId: markId, card, saved: null };
   revealed = false; stopAudio(); notice = null;
   render(); main.focus({ preventScroll: true });
   if (stream.cards[0]) announce(direction === 'en-fr' ? stream.cards[0].en : stream.cards[0].fr);
-  api('api/endless/mark', { method: 'POST', body: JSON.stringify({ requestId: markId, direction: stream.direction, wordId: card.id, known }) })
+  // saved: Say's "I said it right" replaces this mark only once it is stored.
+  last.saved = api('api/endless/mark', { method: 'POST', body: JSON.stringify({ requestId: markId, direction: stream.direction, wordId: card.id, known }) })
     .catch((error) => { if (endless === stream) { notice = { message: `This answer was not saved: ${error.message}` }; if (stream.last?.requestId === markId) stream.last = null; if (screen === 'practice') render(); } })
     // The next words are chosen once this answer counts, so a word just missed is likelier to come back.
     .finally(() => fillEndless());
@@ -3914,6 +3930,11 @@ document.addEventListener('click', (event) => {
   if (!event.target.closest('.st-tip')) closeStatsTips();
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }
   if (action === 'audio-mode') { audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off'); if (!audioMode) stopAudio(); render(); return; }
+  if (action === 'say-mode') {
+    sayMode = !sayMode; savePreference('echo.say-mode', sayMode ? 'on' : 'off');
+    if (sayMode && sayHere()) startSay(); else { say.fix = null; say.error = ''; stopSay(); render(); }
+    return;
+  }
   if (action === 'listen-mode') { listenMode = !listenMode; savePreference('echo.listen-mode', listenMode ? 'on' : 'off'); heardCard = ''; if (!listenMode) stopAudio(); render(); return; }
   if (action === 'replay') { const card = shownCard(); if (card) playFrench(card.audioUrl); return; }
   if (action === 'play-clips') { toggleClips(); return; }
@@ -4045,8 +4066,6 @@ document.addEventListener('click', (event) => {
   else if (action === 'walkman-mark') markHeard(button.dataset.word, button.dataset.knew === 'true');
   else if (action === 'walkman-choice') chooseWalkman(button.dataset.words);
   else if (action === 'walkman-tense') chooseWalkmanTense(button.dataset.tense);
-  else if (action === 'say-start') startSay();
-  else if (action === 'say-stop') stopSay();
   else if (action === 'say-dontknow') sayGiveUp?.();
   else if (action === 'say-fix') sayCorrect();
   else if (action === 'stream-check') streamCheck();
@@ -4168,5 +4187,5 @@ if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); 
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
 // The tape starts at once where the browser allows it; Safari wants a tap first, and then Play is right there.
 else if (requestedScreen === 'walkman') openWords('walkman', 'forward', true);
-else if (requestedScreen === 'say') openWords('say');
+else if (requestedScreen === 'say' && !roomsOff.has('say')) { sayMode = true; savePreference('echo.say-mode', 'on'); openWords('endless'); }
 else fetchState();

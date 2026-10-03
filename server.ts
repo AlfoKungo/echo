@@ -504,10 +504,10 @@ async function route(req: Request): Promise<Response> {
       store.recordVerdict({ id: String(data.id ?? ''), wordId: String(data.wordId ?? ''), knew: data.knew as boolean | null });
       return json({ ok: true });
     }
-    // Say it: a recording of the learner saying a French word's English, judged against the word's meanings and what
-    // they once marked right for it. When that says wrong, the wanted answer is scored against the recording: nearly
-    // as likely as what was heard, it was said and recognition misread it. Right counts like a Walkman ✓; wrong or
-    // "I don't know" like ✗; what recognition could not make out counts for nothing, and the phone listens on.
+    // Say (a switch in Words, Cards and Endless): a recording of the learner saying a French word's English, judged
+    // against the word's meanings and what they once marked right for it. When that says wrong, the wanted answer is
+    // scored against the recording: nearly as likely as what was heard, it was said and recognition misread it. The
+    // verdict only answers: the phone records it as that card's grade or Endless mark, as a tap would be.
     if (path === '/api/say/check' && req.method === 'POST' && !roomsOff.includes('say')) {
       if (!req.headers.get('content-type')?.toLowerCase().startsWith('audio/')) throw new StoreError('Send the recording itself.', 415);
       const wordId = url.searchParams.get('word') ?? '', requestId = url.searchParams.get('request') ?? '';
@@ -539,7 +539,6 @@ async function route(req: Request): Promise<Response> {
             if (gap <= SCORE_GAP) verdict = 'right';
           } catch (error) { console.error(`say: scoring failed: ${(error as Error).message}`); }
         }
-        if (verdict !== 'unclear') store.recordVerdict({ id: `say-${requestId}`, wordId, knew: verdict === 'right' });
         // What was heard, kept in the log so a verdict that seems wrong can be looked into afterwards.
         console.log(`say: ${word.fr} (${word.en}) heard ${JSON.stringify(heard.trim())} → ${verdict}${gap === null ? '' : ` (answer ${gap} below what was heard)`}`);
         if (gap !== null) {
@@ -551,14 +550,14 @@ async function route(req: Request): Promise<Response> {
         recording.close();
       }
     }
-    // Heard wrong: the learner says they said it right. The check's ✗ becomes ✓, and what was heard counts as the
-    // word's English from then on.
+    // Heard wrong: the learner says they said it right. What was heard counts as the word's English from then on;
+    // the phone re-marks the answer itself as right.
     if (path === '/api/say/correct' && req.method === 'POST' && !roomsOff.includes('say')) {
       const data = await body(req);
       const requestId = String(data.request ?? '');
       if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
       const wordId = String(data.word ?? ''), heard = said(String(data.heard ?? ''));
-      store.acceptSaid({ id: `say-${requestId}`, wordId, heard });
+      store.acceptSaid({ wordId, heard });
       sayClips.markedRight(requestId);
       console.log(`say: ${store.word(wordId)?.fr ?? wordId} marked right; "${heard}" now counts for it`);
       return json({ ok: true });

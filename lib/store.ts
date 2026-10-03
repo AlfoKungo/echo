@@ -42,9 +42,9 @@ export interface Store {
   recordHeard(input: HeardInput): void;
   // The learner's own say, after a Walkman listen, on whether they knew the word; knew:null withdraws it.
   recordVerdict(input: VerdictInput): void;
-  // Say it: what recognition wrote down for a word when the learner says it heard them wrong; marking it right
-  // replaces the ✗ (id is the check's) with ✓, and the same words count as that word's English from then on.
-  acceptSaid(input: { id: string; wordId: string; heard: string }): void;
+  // Say: what recognition wrote down for a word when the learner says it heard them right after all; the same words
+  // count as that word's English from then on. The answer itself is re-marked as a Cards grade or an Endless mark.
+  acceptSaid(input: { wordId: string; heard: string }): void;
   sayAccepted(wordId: string): string[];
   endlessNext(input: EndlessInput): EndlessPick;
   endlessMark(input: EndlessMarkInput): void;
@@ -1149,12 +1149,10 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (input.knew === null) dropVerdict.run(input.id, input.wordId);
     else saveVerdict.run(input.id, input.wordId, input.knew ? 1 : 0, now().toISOString());
   }
-  function acceptSaid(input: { id: string; wordId: string; heard: string }): void {
+  function acceptSaid(input: { wordId: string; heard: string }): void {
+    if (!wordById.has(input.wordId)) throw new StoreError('This word is not in the vocabulary deck.', 404);
     if (typeof input.heard !== 'string' || !input.heard) throw new StoreError('Nothing was heard to accept.', 400);
-    db.transaction(() => {
-      recordVerdict({ id: input.id, wordId: input.wordId, knew: true });
-      saveAccepted.run(input.wordId, input.heard, now().toISOString());
-    })();
+    saveAccepted.run(input.wordId, input.heard, now().toISOString());
   }
   const sayAccepted = (wordId: string) => readAccepted.all(wordId).map((row) => row.heard);
 
