@@ -2580,7 +2580,7 @@ async function loadVerbs(quiet = false) {
   if (verbsInfo && verbsInfo.tables.ready < verbsInfo.tables.total && !verbsInfo.tables.error) verbsPoll = setTimeout(() => { if (screen === 'verbs') loadVerbs(true); }, 15000);
 }
 function renderVerbs() {
-  const header = `<div class="section-top">${back('Home', 'home')}<div><span class="stream-label">Verbs</span>${infoButton('verbs')}</div></div>`;
+  const header = `<div class="section-top">${back('Home', 'home')}${infoButton('verbs')}</div>`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>Verbs</h1><p class="subtitle">Conjugation on its own: pick verbs and tenses, then drill.</p>${body}</section>`; };
   if (loading || !verbsInfo) { shell(loading ? '<div class="loading-state" role="status">Loading…</div>' : ''); return; }
   const { tables } = verbsInfo;
