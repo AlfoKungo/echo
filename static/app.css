@@ -523,10 +523,45 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .tile.hero{border-color:color-mix(in srgb,var(--violet) 35%,transparent);background:var(--violet-soft)}.tile.hero .ic{background:color-mix(in srgb,var(--violet) 16%,transparent)}
 .tile.fam-fill{background:var(--fam-soft)}.tile.fam-fill .ic{background:color-mix(in srgb,var(--fam) 14%,transparent)}
 @media(hover:hover){.tile.fam-fill:hover:not(:disabled){background:color-mix(in srgb,var(--fam) 8%,var(--fam-soft))}}
-.vb-drills .tile.hero p{padding-right:64px}
 .study{border-radius:16px}.study-row .ic{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:10px;background:var(--fam-soft);color:var(--fam)}.study-row .ic svg{width:18px;height:18px}
 @media(hover:hover){.tile:hover:not(:disabled){border-color:var(--fam)}}
 @media(max-width:600px){.tile .ic{width:38px;height:38px;border-radius:11px}.tile .ic svg{width:20px;height:20px}}
+/* Ordinary rooms and drills put the icon beside the copy; only the filled Story/Radio tiles stack it above. */
+.tile-copy{display:block;min-width:0}
+.tile-heading{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px}
+.tile .tile-heading .level-tag{position:static}
+.home{max-width:640px;margin-inline:auto}
+.home .tiles.shelf{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.home .study-label,.vb .study-label{margin:25px 0 12px;color:var(--muted);font-size:12px;font-weight:500;letter-spacing:0;text-transform:none}
+.tile.tile-row{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:12px;min-height:92px;padding:16px}
+.tile-row .tile-copy{flex:1}
+.tile.tile-row .ic{position:static;flex:none;width:26px;height:30px;margin:0;background:none;border-radius:0}
+.tile.tile-row .ic svg{width:24px;height:24px}
+.tile.tile-row h2{font-size:15px;line-height:1.3;letter-spacing:-.2px}
+.tile.tile-row p{margin-top:4px;font-size:12px;line-height:1.45}
+.tile.tile-row .go{position:static;flex:none;align-self:center;color:var(--violet);font-size:23px;line-height:1}
+.home .tile[data-action=words]{grid-column:1/-1;min-height:76px}
+.home .tile.fam-fill{min-height:132px}
+.home .tile.fam-fill .ic{width:26px;height:26px;background:none}
+.home .tile.fam-fill .ic svg{width:26px;height:26px}
+.home .tile.fam-fill h2{font-size:17px}
+.home .tile.fam-fill p{margin-top:4px;font-size:12px}
+.hands-free .study-row{min-height:62px;gap:12px}
+.hands-free .study-row .ic{width:24px;background:none}
+.hands-free .study-row .ic svg{width:23px;height:23px}
+.hands-free .name{font-size:14px}
+.shelf-play{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--violet-soft);color:var(--violet)}
+.shelf-play svg{width:18px;height:18px;fill:currentColor}
+.study.home-study{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 18px;border:0;border-top:1px solid var(--frame);border-radius:0;background:none;padding-top:7px}
+.home-study .study-row{width:auto;min-height:44px;padding:4px 0;border:0;background:none;font-size:12px;color:var(--muted);text-align:center}
+.home-study .ic,.home-study .chev{display:none}
+.vb-drills .tile.tile-row{min-height:92px}
+.vb-drills .tile.tile-row.hero{min-height:110px;padding:20px;gap:16px}
+.vb-drills .tile.tile-row.hero .ic{width:32px;height:36px}
+.vb-drills .tile.tile-row.hero .ic svg{width:30px;height:30px}
+.vb-drills .tile.tile-row.hero h2{font-size:20px}
+@media(max-width:600px){.tile.tile-row{gap:9px;padding:13px 11px}.tile.tile-row p{font-size:11px}.home .tile[data-action=words]{padding:14px 16px}.tile.tile-row .ic{width:24px}.tile.tile-row .ic svg{width:22px;height:22px}}
+@media(max-width:360px){.tile.tile-row{gap:8px;padding:12px 10px}.tile.tile-row h2{font-size:14px}}
 /* The card: the French first, the translation under a hairline, gender in words; a hint until it turns, then
    each half says what it records. The labels sit where the arrows were, so nothing moves on reveal. */
 .study-surface{border-radius:24px}
@@ -558,6 +593,14 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 @media(max-width:600px){.wm-face{min-height:150px;padding-top:16px}}
 /* Verbs: selected choices are filled, rows answer to the pointer, cells read in both themes. */
 .vb-setup,.vb-worst,.vb-tenses{border-radius:16px}
+.vb-worst button{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:3px 12px;padding:14px 16px}
+.vb-worst button>span:first-child{grid-column:1;grid-row:1;overflow-wrap:anywhere}
+.vb-worst button>small{grid-column:1;grid-row:2}
+.vb-worst .vb-misses{grid-column:2;grid-row:1/3}
+.vb-tenses{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;border:0;border-radius:0;background:none;overflow:visible}
+.vb-tense-row{min-width:0;padding:16px;border:1px solid var(--frame);border-radius:13px;background:var(--card)}
+.vb-all-row .topic-row{padding:14px 16px}
+.vb h1{margin-bottom:20px}
 .vb-pill[aria-pressed=true],.vb-chip[aria-pressed=true],.vb-chips button[aria-pressed=true]{background:var(--violet-soft)}
 .vb-cell{border-radius:8px}
 .vb-bar,.gr-bar{background:color-mix(in srgb,var(--frame) 75%,transparent)}
