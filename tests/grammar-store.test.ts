@@ -226,7 +226,7 @@ describe('tests', () => {
   test('a topic test refuses help, settles on the first answer, scores, and records the result', () => {
     const { store } = fixture();
     let state = store.start('test:alpha', requestId());
-    expect(state).toMatchObject({ scope: 'test:alpha', kind: 'topic-test', topic: { id: 'alpha', hasActiveTest: true, hasActiveSession: false }, session: { mode: 'test', total: 15, score: 0 } });
+    expect(state).toMatchObject({ scope: 'test:alpha', kind: 'topic-test', topic: { id: 'alpha', hasActiveTest: true, round: null }, session: { mode: 'test', total: 15, score: 0 } });
     for (const kind of ['hint', 'rule', 'answer'] as const) expectError(() => store.help({ ...mutation(state), kind }), 409, 'Help is off during a test.');
     expect(store.state('test:alpha')).toEqual(state);
     const blank = store.answer({ ...mutation(state), answer: '  ' });
@@ -297,8 +297,8 @@ describe('tests', () => {
     expect(store.start('alpha', requestId()).session).toEqual(practice.session);
     expect(store.start('test:alpha', requestId()).session).toEqual(test.session);
     const [basics] = store.catalog();
-    expect(basics!.topics[0]).toMatchObject({ id: 'alpha', hasActiveSession: true, hasActiveTest: true, practiceLength: 10, testLength: 15 });
-    expect(basics!.topics[1]).toMatchObject({ id: 'beta', hasActiveSession: false, hasActiveTest: false });
+    expect(basics!.topics[0]).toMatchObject({ id: 'alpha', round: { index: practice.session!.index, total: practice.session!.total }, hasActiveTest: true, practiceLength: 10, testLength: 15 });
+    expect(basics!.topics[1]).toMatchObject({ id: 'beta', round: null, hasActiveTest: false });
   });
 
   test('every stretch of a unit test covers every topic, so stopping halfway still tests the whole unit', () => {
@@ -521,7 +521,7 @@ describe('persistence and concurrency', () => {
     const raw = new Database(dbPath);
     raw.query('INSERT INTO grammar_sessions (id, topic_id, round_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?)').run('legacy-round', 'gamma', JSON.stringify(legacy), 'x', 'x');
     raw.close();
-    expect(store.catalog()[1]!.topics[0]!.hasActiveSession).toBe(true);
+    expect(store.catalog()[1]!.topics[0]!.round).toEqual({ index: 0, total: 3 });
     let state = store.start('gamma', requestId());
     expect(state.session).toMatchObject({ id: 'legacy-round', mode: 'practice', total: 3, current: { exercise: { id: 'gamma-accent', topicId: 'gamma', topicTitle: 'Topic gamma' }, misses: [] } });
     state = wrong(store, state);

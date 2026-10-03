@@ -172,7 +172,7 @@ export type GrammarTopic = Omit<GrammarTopicContent, 'exercises' | 'guide' | 'pa
   practiceLength: number;
   testLength: number;
   progress: GrammarProgress;
-  hasActiveSession: boolean;
+  round: { index: number; total: number } | null; // the topic's practice round while it is open: the question reached, of how many
   hasActiveTest: boolean;
   test: GrammarTestSummary;
 };

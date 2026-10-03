@@ -51,7 +51,9 @@ type SessionRow = { sequence: number; id: string; topic_id: string; round_json: 
 type RequestRow = { sequence: number; request_id: string; action: string; payload_json: string; topic_id: string; created_at: string };
 type ProgressRow = { topic_id: string; exercise_id: string; last_seen: number; outcome: Outcome | null; settled_in: GrammarMode | null };
 type TestRow = { sequence: number; scope: string; session_id: string; score: number; total: number; finished_at: string };
-type Lookup = { progress(topicId: string): ProgressRow[]; active(key: string): boolean; tests(key: string): TestRow[] };
+// round: the latest session of a scope while it is still open, and how far it got.
+type OpenRound = { index: number; total: number };
+type Lookup = { progress(topicId: string): ProgressRow[]; round(key: string): OpenRound | null; tests(key: string): TestRow[] };
 
 function countBy<T>(items: T[], key: (item: T) => string): Map<string, number> {
   const counts = new Map<string, number>();
@@ -158,8 +160,9 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
   const topicProgress = db.query<ProgressRow, [string]>('SELECT * FROM grammar_progress WHERE topic_id = ?');
   const allProgress = db.query<ProgressRow, []>('SELECT * FROM grammar_progress');
   const missedProgress = db.query<ProgressRow, []>("SELECT * FROM grammar_progress WHERE outcome IN ('revisit', 'helped') ORDER BY last_seen DESC");
-  const activeExpression = "json_extract(round_json, '$.index') < json_array_length(round_json, '$.exercises')";
-  const activeByKey = db.query<{ active: number }, [string]>(`SELECT ${activeExpression} AS active FROM grammar_sessions WHERE topic_id = ? ORDER BY sequence DESC LIMIT 1`);
+  const roundExpression = "json_extract(round_json, '$.index') AS idx, json_array_length(round_json, '$.exercises') AS total";
+  const roundByKey = db.query<{ idx: number; total: number }, [string]>(`SELECT ${roundExpression} FROM grammar_sessions WHERE topic_id = ? ORDER BY sequence DESC LIMIT 1`);
+  const open = (row: { idx: number; total: number } | null | undefined): OpenRound | null => row && row.idx < row.total ? { index: row.idx, total: row.total } : null;
   const testsByScope = db.query<TestRow, [string]>('SELECT * FROM grammar_tests WHERE scope = ? ORDER BY sequence');
   const appendRequest = db.query<{ sequence: number }, [string, string, string, string, string]>(`
     INSERT INTO grammar_requests (request_id, action, payload_json, topic_id, created_at)
@@ -179,17 +182,17 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
 
   const direct: Lookup = {
     progress: (topicId) => topicProgress.all(topicId),
-    active: (key) => !!activeByKey.get(key)?.active,
+    round: (key) => open(roundByKey.get(key)),
     tests: (key) => testsByScope.all(key),
   };
   function bulk(): Lookup {
     const progress = Map.groupBy(db.query<ProgressRow, []>('SELECT * FROM grammar_progress').all(), (row) => row.topic_id);
-    const active = new Map(db.query<{ topic_id: string; active: number }, []>(`
-      SELECT topic_id, ${activeExpression} AS active FROM grammar_sessions
+    const rounds = new Map(db.query<{ topic_id: string; idx: number; total: number }, []>(`
+      SELECT topic_id, ${roundExpression} FROM grammar_sessions
       WHERE sequence IN (SELECT MAX(sequence) FROM grammar_sessions GROUP BY topic_id)
-    `).all().map((row) => [row.topic_id, !!row.active]));
+    `).all().map((row) => [row.topic_id, open(row)]));
     const tests = Map.groupBy(db.query<TestRow, []>('SELECT * FROM grammar_tests ORDER BY sequence').all(), (row) => row.scope);
-    return { progress: (topicId) => progress.get(topicId) ?? [], active: (key) => active.get(key) ?? false, tests: (key) => tests.get(key) ?? [] };
+    return { progress: (topicId) => progress.get(topicId) ?? [], round: (key) => rounds.get(key) ?? null, tests: (key) => tests.get(key) ?? [] };
   }
 
   function scopeOf(key: unknown): Scope {
@@ -253,7 +256,7 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
     return {
       ...content, ...(full ? { guide, patterns } : {}), exerciseCount: exercises.length,
       practiceLength: Math.min(PRACTICE_SIZE, exercises.length) + warmUps(topic.id).length, testLength: Math.min(TOPIC_TEST_SIZE, exercises.length),
-      progress, hasActiveSession: lookup.active(topic.id), hasActiveTest: lookup.active(`test:${topic.id}`), test: testSummary(lookup.tests(`test:${topic.id}`)),
+      progress, round: lookup.round(topic.id), hasActiveTest: !!lookup.round(`test:${topic.id}`), test: testSummary(lookup.tests(`test:${topic.id}`)),
     };
   }
 
@@ -262,7 +265,7 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
     return {
       id: unit.id, title: unit.title, description: unit.description, topics: views,
       testLength: Math.min(UNIT_TEST_SIZE, views.reduce((total, topic) => total + topic.exerciseCount, 0)),
-      hasActiveTest: lookup.active(`unit:${unit.id}`), test: testSummary(lookup.tests(`unit:${unit.id}`)),
+      hasActiveTest: !!lookup.round(`unit:${unit.id}`), test: testSummary(lookup.tests(`unit:${unit.id}`)),
     };
   }
 

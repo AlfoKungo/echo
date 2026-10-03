@@ -1079,18 +1079,69 @@ async function addFromFamily(id) {
   familyAdding.delete(id);
   if (screen === 'families' || screen === 'building') render();
 }
+// Grammar: what you are in the middle of first, then the units folded with only the one you are working in open.
+let grammarBy = readPreference('echo.grammar-by', 'unit') === 'level' ? 'level' : 'unit';
+let grammarOpen = null; // the units opened by hand this visit; null opens just the current one
+const topicStarted = (topic) => topic.progress.seen > 0 || !!topic.round;
+// The unit being worked through: the first with a topic started and one not yet, else the first with one not yet.
+const currentUnit = () => units?.find((unit) => unit.topics.some(topicStarted) && !unit.topics.every(topicStarted)) ?? units?.find((unit) => !unit.topics.every(topicStarted)) ?? null;
+// Marks run from "du" to "ce · cet · cette": each " · " part gets its own line so the mark column stays narrow.
+const markHTML = (mark) => mark.split(' · ').map((part) => `<span>${esc(part)}</span>`).join('');
+// A topic's or unit's questions: answered on your own, to revisit (missed, or right with help), the rest not yet.
+function grammarBarHTML(own, revisit, total) {
+  const width = (count) => `${total ? (100 * count / total).toFixed(2) : 0}%`;
+  return `<span class="gr-bar" aria-hidden="true"><i class="own" style="width:${width(own)}"></i><i class="rev" style="width:${width(revisit)}"></i></span>`;
+}
+function grammarRowHTML(attr, mark, title, detail, end = '→', level = '') {
+  return `<button class="gr-row" ${attr} ${locked() ? 'disabled' : ''}><span class="gr-mark" aria-hidden="true">${mark}</span><span class="gr-copy"><span class="gr-title"><b>${esc(title)}</b>${level ? `<span class="level-tag">${esc(level)}</span>` : ''}</span>${detail}</span><span class="gr-end" aria-hidden="true">${end}</span></button>`;
+}
 function topicRowHTML(topic) {
-  const parts = [];
-  if (topic.progress.seen) parts.push(`${topic.progress.seen} of ${topic.exerciseCount} practised`);
-  if (topic.test.best) parts.push(`best test ${topic.test.best.score}/${topic.test.best.total}`);
-  const active = topic.hasActiveSession && topic.hasActiveTest ? 'Round and test in progress' : topic.hasActiveSession ? 'Continue your round' : topic.hasActiveTest ? 'Continue your test' : '';
-  // Marks run from "du" to "ce · cet · cette": each " · " part gets its own line so the badge column stays narrow.
-  const mark = topic.mark.split(' · ').map((part) => `<span>${esc(part)}</span>`).join('');
-  return `<button class="topic-row" data-topic="${esc(topic.id)}" ${locked() ? 'disabled' : ''}><span class="topic-mark" aria-hidden="true">${mark}</span><span class="copy"><span class="topic-name"><h3>${esc(topic.title)}</h3><span class="level-tag">${esc(topic.level)}</span></span><p>${esc(topic.description)}</p>${parts.length ? `<small class="topic-progress">${parts.join(' · ')}</small>` : ''}${active ? `<small>${active}</small>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button>`;
+  const { seen, independent, needsReview } = topic.progress;
+  const notes = [seen ? `${seen} of ${topic.exerciseCount} practised` : '', needsReview ? `${needsReview} to revisit` : '', topic.test.best ? `best test ${topic.test.best.score}/${topic.test.best.total}` : ''].filter(Boolean);
+  const detail = seen ? `${grammarBarHTML(independent, needsReview, topic.exerciseCount)}<small>${notes.join(' · ')}</small>` : notes.length ? `<small>${notes.join(' · ')}</small>` : '';
+  return grammarRowHTML(`data-topic="${esc(topic.id)}"`, markHTML(topic.mark), topic.title, detail, '→', topic.level);
 }
 function renderGrammar() {
-  const list = (units || []).map((unit, index) => `<section class="unit" aria-labelledby="unit-${esc(unit.id)}"><div class="unit-head"><div class="unit-copy"><p class="unit-kicker">Unit ${index + 1}</p><h2 id="unit-${esc(unit.id)}">${esc(unit.title)}</h2><p>${esc(unit.description)}</p></div><button class="secondary unit-test" data-scope="unit:${esc(unit.id)}" ${locked() ? 'disabled' : ''}>${unit.hasActiveTest ? 'Continue unit test' : `Unit test · ${unit.testLength}`}${unit.test.best ? `<small>best ${unit.test.best.score}/${unit.test.best.total}</small>` : ''}</button></div><div class="topic-list">${unit.topics.map(topicRowHTML).join('')}</div></section>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}${infoButton('grammar')}</div><h1>Grammar & sentences</h1><p class="subtitle">Practise a topic, then test yourself. Each unit ends with a test across its topics.</p><button class="topic-row wb-entry" data-action="word-building" ${locked() ? 'disabled' : ''}><span class="topic-mark" aria-hidden="true"><span>-er</span><span>-eur</span></span><span class="copy"><span class="topic-name"><h3>Word building</h3></span><p>Endings and prefixes that turn one word into another, shown with your own words.</p></span><span class="arrow" aria-hidden="true">→</span></button>${units ? list : loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : ''}</section>`;
+  const header = `<div class="section-top">${back('Home', 'home')}${infoButton('grammar')}</div><h1>Grammar</h1>`;
+  if (!units) { main.innerHTML = `${noticeHTML()}<section class="topics grammar">${header}${loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : ''}</section>`; return; }
+  const topics = units.flatMap((unit) => unit.topics);
+  const current = currentUnit();
+  // Continue: every open round and test, in course order, then what is waiting to be revisited.
+  const going = units.flatMap((unit, index) => [
+    ...unit.topics.flatMap((topic) => [
+      topic.round ? grammarRowHTML(`data-scope="${esc(topic.id)}"`, markHTML(topic.mark), topic.title, `<small>Round · question ${topic.round.index + 1} of ${topic.round.total}</small>`, 'Continue →') : '',
+      topic.hasActiveTest ? grammarRowHTML(`data-scope="test:${esc(topic.id)}"`, markHTML(topic.mark), topic.title, '<small>Test in progress</small>', 'Continue →') : '',
+    ]),
+    unit.hasActiveTest ? grammarRowHTML(`data-scope="unit:${esc(unit.id)}"`, `<span>Unit</span><span>${index + 1}</span>`, unit.title, '<small>Unit test in progress</small>', 'Continue →') : '',
+  ]).join('');
+  const revisit = topics.filter((topic) => topic.progress.needsReview);
+  const revisitCount = revisit.reduce((sum, topic) => sum + topic.progress.needsReview, 0);
+  const revisitRow = revisitCount ? grammarRowHTML('data-scope="review"', '<span class="gr-revisit">↺</span>', 'To revisit', `<small>${revisitCount} ${revisitCount === 1 ? 'question' : 'questions'} you missed or needed help with, in ${revisit.length} ${revisit.length === 1 ? 'topic' : 'topics'}</small>`, 'Practise →') : '';
+  const next = current?.topics.find((topic) => !topicStarted(topic));
+  const nextCard = next ? `<button class="gr-row gr-next" data-topic="${esc(next.id)}" ${locked() ? 'disabled' : ''}><span class="gr-mark" aria-hidden="true">${markHTML(next.mark)}</span><span class="gr-copy"><span class="gr-kicker">Next up · Unit ${units.indexOf(current) + 1}</span><span class="gr-title"><b>${esc(next.title)}</b><span class="level-tag">${esc(next.level)}</span></span><small>${esc(next.description)}</small></span><span class="gr-end" aria-hidden="true">→</span></button>` : '';
+  const resume = going || revisitRow ? `<p class="study-label">Continue</p><div class="gr-box">${going}${revisitRow}</div>` : '';
+  const opened = (unit) => grammarOpen ? grammarOpen.has(unit.id) : unit === current;
+  const unitCard = (unit, index) => {
+    const sum = (key) => unit.topics.reduce((total, topic) => total + topic.progress[key], 0);
+    const all = unit.topics.reduce((total, topic) => total + topic.exerciseCount, 0);
+    const started = unit.topics.filter(topicStarted).length;
+    const open = opened(unit);
+    const best = unit.test.best ? ` · best unit test ${unit.test.best.score}/${unit.test.best.total}` : '';
+    const test = grammarRowHTML(`data-scope="unit:${esc(unit.id)}"`, '<span>Unit</span><span>test</span>', `Unit test · ${unit.testLength} questions`, `<small>${unit.hasActiveTest ? 'Continue your test' : 'Questions from every topic here; no help, one try each'}</small>`);
+    return `<section class="gr-box gr-unit" aria-labelledby="unit-${esc(unit.id)}"><button class="gr-unit-top" data-action="grammar-unit" data-unit="${esc(unit.id)}" aria-expanded="${open}"><span class="gr-kicker"><span>Unit ${index + 1}</span><span class="gr-chev" aria-hidden="true">›</span></span><h2 id="unit-${esc(unit.id)}">${esc(unit.title)}</h2>${grammarBarHTML(sum('independent'), sum('needsReview'), all)}<small>${started ? `${started} of ${unit.topics.length} topics started` : `${unit.topics.length} topics · not started`}${best}</small></button>${open ? `<div class="gr-unit-body">${unit.topics.map(topicRowHTML).join('')}${test}</div>` : ''}</section>`;
+  };
+  const byLevel = ['A1', 'A2', 'B1'].map((level) => {
+    const list = topics.filter((topic) => topic.level === level);
+    return list.length ? `<p class="study-label">${level} · ${list.filter(topicStarted).length} of ${list.length} started</p><div class="gr-box">${list.map(topicRowHTML).join('')}</div>` : '';
+  }).join('');
+  const switcher = `<div class="segmented gr-by" role="group" aria-label="Show topics">${[['unit', 'By unit'], ['level', 'By level']].map(([value, label]) => `<button data-action="grammar-by" data-value="${value}" aria-pressed="${grammarBy === value}">${label}</button>`).join('')}</div>`;
+  const legend = '<div class="gr-legend"><span><i class="own"></i>on your own</span><span><i class="rev"></i>to revisit</span><span><i></i>not yet</span></div>';
+  const building = `<p class="study-label">Also</p><div class="gr-box">${grammarRowHTML('data-action="word-building"', '<span>-er</span><span>-eur</span>', 'Word building', '<small>Endings and prefixes that turn one word into another; also in Your words</small>')}</div>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics grammar">${header}${resume}${nextCard}${switcher}${grammarBy === 'unit' ? units.map(unitCard).join('') : byLevel}${legend}${building}</section>`;
+}
+// The rule on a topic page: its summary, then each part folded under its title.
+function foldedGuideHTML(guide) {
+  return `<div class="guide"><p class="guide-summary">${frEsc(guide.summary)}</p>${guide.sections.map((section) => `<details class="gr-part"><summary>${esc(section.title)}</summary>${guideSectionHTML(section)}</details>`).join('')}</div>`;
 }
 // A guide section teaches one point: a table of forms (a highlighted row holds an answer), the steps for choosing,
 // examples and traps. French and English share the cells, so every cell keeps French spacing.
@@ -1109,10 +1160,19 @@ function guideHTML(guide, focusId = '') {
 function renderTopic() {
   const topic = topicPage?.id === topicId ? topicPage : units?.flatMap((unit) => unit.topics).find((entry) => entry.id === topicId);
   if (!topic) { main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div>${loading ? '<div class="loading-state" role="status">Opening the topic…</div>' : ''}</section>`; return; }
-  const { progress, test } = topic;
-  const practised = progress.seen ? `${progress.seen} of ${topic.exerciseCount} questions practised · ${progress.independent} on your own · ${progress.needsReview} to revisit` : `${topic.exerciseCount} questions to practise`;
-  const history = test.taken ? `<div class="history-row"><span>Best</span><strong>${test.best.score} / ${test.best.total}</strong></div><div class="history-row"><span>Last · ${esc(dateLabel(test.last.finishedAt))}</span><strong>${test.last.score} / ${test.last.total}</strong></div><div class="history-row"><span>Taken</span><strong>${test.taken} ${test.taken === 1 ? 'time' : 'times'}</strong></div>` : `<p class="caption">No tests yet. A test asks ${topic.testLength} questions with no help and one try each; anything you miss comes back first when you practise.</p>`;
-  main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div><p class="topic-kicker" lang="fr" aria-hidden="true">${esc(topic.mark)}</p><div class="topic-heading"><h1>${esc(topic.title)}</h1><span class="level-tag">${esc(topic.level)}</span></div><p class="subtitle">${esc(topic.description)}</p><div class="topic-actions"><button class="primary" data-scope="${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveSession ? 'Continue your round' : `Practise · ${topic.practiceLength} questions`}</button><button class="secondary" data-scope="test:${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveTest ? 'Continue your test' : `Take the test · ${topic.testLength} questions`}</button></div><p class="caption topic-meta">${practised}</p><section class="rule-card" aria-labelledby="rule-heading"><h2 id="rule-heading">The rule</h2>${topic.guide ? guideHTML(topic.guide) : '<p>Opening the rule…</p>'}</section><section class="test-history" aria-labelledby="history-heading"><h2 id="history-heading">Your tests</h2>${history}</section></section>`;
+  const { progress, test, round } = topic;
+  const notYet = topic.exerciseCount - progress.independent - progress.needsReview;
+  const practised = progress.seen ? `${grammarBarHTML(progress.independent, progress.needsReview, topic.exerciseCount)}<p>${progress.independent} on your own · ${progress.needsReview} to revisit · ${notYet} not yet</p>` : `<p>${topic.exerciseCount} questions, none practised yet</p>`;
+  const tests = test.taken
+    ? `<strong>Best ${test.best.score} / ${test.best.total}</strong> · last ${test.last.score} / ${test.last.total}, ${esc(dateLabel(test.last.finishedAt))} · taken ${test.taken} ${test.taken === 1 ? 'time' : 'times'}`
+    : `<strong>No tests yet.</strong> ${topic.testLength} questions, no help, one try each; what you miss comes back first when you practise.`;
+  main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div><p class="topic-kicker" lang="fr" aria-hidden="true">${esc(topic.mark)}</p><div class="topic-heading"><h1>${esc(topic.title)}</h1><span class="level-tag">${esc(topic.level)}</span></div><p class="subtitle">${esc(topic.description)}</p><div class="topic-actions"><button class="primary" data-scope="${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${round ? `Continue your round · ${round.index + 1} of ${round.total}` : `Practise · ${topic.practiceLength} questions`}</button><button class="secondary" data-scope="test:${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveTest ? 'Continue your test' : `Take the test · ${topic.testLength} questions`}</button></div><div class="gr-topic-stats">${practised}</div><p class="gr-tests">${tests}</p><section class="rule-card" aria-labelledby="rule-heading"><h2 id="rule-heading">The rule</h2>${topic.guide ? foldedGuideHTML(topic.guide) : '<p>Opening the rule…</p>'}</section></section>`;
+}
+// Back from a round or its summary: Grammar for a unit test or the revisit round, else the topic, by name.
+function grammarBackHTML() {
+  if (scope.startsWith('unit:') || scope === 'review') return back('Grammar', 'grammar');
+  const title = grammar?.topic?.title ?? units?.flatMap((unit) => unit.topics).find((entry) => entry.id === topicId)?.title ?? 'Topic';
+  return back(esc(title), 'topic-page');
 }
 // Complete (and most choose) sources hold a ____ blank: show the whole sentence rather than the missing word alone.
 function completed(type, source, text) {
@@ -1185,18 +1245,19 @@ function exerciseCoreHTML(snap, test, nextText) {
 function renderExercise() {
   const unitScope = scope.startsWith('unit:');
   const testScope = unitScope || scope.startsWith('test:');
-  const backButton = unitScope ? back('Grammar', 'grammar') : back('Topic', 'topic-page');
+  const backButton = grammarBackHTML();
   if (!grammar || loading) { main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${backButton}</div><div class="loading-state" role="status">${loading || busy ? (testScope ? 'Opening your test…' : 'Opening your round…') : 'Your progress is saved on your Mac.'}</div></section>`; return; }
   const { session } = grammar;
-  const heading = grammar.topic?.title ?? grammar.unit?.title ?? '';
+  const heading = grammar.topic?.title ?? grammar.unit?.title ?? 'To revisit';
   if (session?.complete) { renderSummary(); return; }
   if (!session?.current) { main.innerHTML = `${noticeHTML()}<section class="summary"><div class="section-top">${backButton}</div><h1>${esc(heading)}</h1><p class="summary-line">${esc(grammar.topic?.description ?? grammar.unit?.description ?? '')}</p><button class="primary dialog-action" data-action="restart" ${locked() ? 'disabled' : ''}>${testScope ? 'Start the test' : 'Start a round'}</button></section>`; return; }
   const test = session.mode === 'test';
   const current = session.current;
   const last = session.index + 1 === session.total;
   const nextText = test ? (last ? 'See your score' : 'Next question') : (last ? 'Finish round' : 'Next sentence');
-  const borrowed = unitScope || (grammar.topic && current.exercise.topicId !== grammar.topic.id);
-  main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${backButton}${test ? '' : `<button class="quiet" data-action="rule" aria-haspopup="dialog" ${locked() ? 'disabled' : ''}>The rule</button>`}</div><div class="exercise-head"><h1>${esc(heading)}</h1><span class="progress">${test ? 'Test · ' : ''}${session.index + 1} / ${session.total}</span></div>${borrowed ? `<p class="question-topic">${unitScope ? '' : 'From earlier · '}${esc(current.exercise.topicTitle)}</p>` : ''}${exerciseCoreHTML(grammar, test, nextText)}</section>`;
+  // The revisit round and a unit test name each question's topic; a topic round names one borrowed from earlier.
+  const borrowed = unitScope || !grammar.topic || current.exercise.topicId !== grammar.topic.id;
+  main.innerHTML = `${noticeHTML()}<section class="exercise"><div class="section-top">${backButton}${test || !grammar.topic ? '' : `<button class="quiet" data-action="rule" aria-haspopup="dialog" ${locked() ? 'disabled' : ''}>The rule</button>`}</div><div class="exercise-head"><h1>${esc(heading)}</h1><span class="progress">${test ? 'Test · ' : ''}${session.index + 1} / ${session.total}</span></div>${borrowed ? `<p class="question-topic">${unitScope || !grammar.topic ? '' : 'From earlier · '}${esc(current.exercise.topicTitle)}</p>` : ''}${exerciseCoreHTML(grammar, test, nextText)}</section>`;
 }
 function resultHTML(result, test, unitTest) {
   const missed = result.outcome !== 'independent';
@@ -1210,10 +1271,10 @@ function resultHTML(result, test, unitTest) {
 function renderSummary() {
   const { session } = grammar;
   const unitTest = grammar.kind === 'unit-test';
-  const backButton = unitTest ? back('Grammar', 'grammar') : back('Topic', 'topic-page');
+  const backButton = grammarBackHTML();
   const results = session.results.map((result) => resultHTML(result, session.mode === 'test', unitTest)).join('');
   if (session.mode !== 'test') {
-    main.innerHTML = `${noticeHTML()}<section class="summary"><div class="section-top">${backButton}</div><h1>A good place to pause.</h1><p class="summary-line">${esc(grammar.topic.title)}, practised in ${session.results.length} examples.</p><div class="results">${results}</div><div class="summary-actions"><button class="primary" data-action="restart" ${locked() ? 'disabled' : ''}>Another round</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Choose another topic</button></div></section>`;
+    main.innerHTML = `${noticeHTML()}<section class="summary"><div class="section-top">${backButton}</div><h1>A good place to pause.</h1><p class="summary-line">${grammar.topic ? esc(grammar.topic.title) : 'What you had to revisit'}, practised in ${session.results.length} examples.</p><div class="results">${results}</div><div class="summary-actions"><button class="primary" data-action="restart" ${locked() ? 'disabled' : ''}>Another round</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Choose another topic</button></div></section>`;
     return;
   }
   const history = (grammar.topic ?? grammar.unit).test;
@@ -3858,7 +3919,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'info') openInfo(button.dataset.infoRoom);
   else if (action === 'more-today') openMoreToday();
   else if (action === 'your-words') { if (move('browse')) enterBrowse(); }
-  else if (action === 'grammar') { if (move('grammar')) loadGrammar(); }
+  else if (action === 'grammar') { if (screen === 'home') grammarOpen = null; if (move('grammar')) loadGrammar(); }
+  else if (action === 'grammar-unit') { const id = button.dataset.unit; grammarOpen ??= new Set([currentUnit()?.id].filter(Boolean)); if (!grammarOpen.delete(id)) grammarOpen.add(id); renderGrammar(); }
+  else if (action === 'grammar-by') { grammarBy = button.dataset.value === 'level' ? 'level' : 'unit'; savePreference('echo.grammar-by', grammarBy); renderGrammar(); }
   else if (action === 'topic-page') { if (move(`topic|${topicId}`)) loadGrammar(); }
   else if (action === 'browse') browseWords();
   else if (action === 'studied') { browseShow = 'studied'; browseWords(); }
