@@ -4,6 +4,8 @@ const main = document.querySelector('#main');
 const aboutDialog = document.querySelector('#about-dialog');
 const dialog = document.querySelector('#dialog');
 const homeButton = document.querySelector('#home-button');
+// Rooms this Echo leaves out, from the page (ECHO_ROOMS_OFF on the server).
+const roomsOff = new Set((document.body.dataset.roomsOff || '').split(',').filter(Boolean));
 const speaker = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
 const checkIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
 const crossIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6.5 6.5 11 11m0-11-11 11"/></svg>';
@@ -139,8 +141,8 @@ let heardOpen = false;
 let heardSaying = '';
 const heardMarking = new Set();
 function saveHeard() { try { localStorage.setItem(HEARD_KEY, JSON.stringify(walkmanHeard)); } catch { /* private mode: history lasts this visit */ } }
-// What the Walkman plays, remembered on this device: words by score (the default), words by groups, or sentences.
-const WALKMAN_CHOICES = { scored: 'words by score', groups: 'words by groups', sentences: 'sentences', verbs: 'verbs' };
+// What the Walkman tab in Words plays, remembered on this device: words by score (the default) or by groups.
+const WALKMAN_CHOICES = { scored: 'words by score', groups: 'words by groups' };
 let walkmanChoice = (() => { const saved = readPreference('echo.walkman-words', 'scored'); return saved in WALKMAN_CHOICES ? saved : 'scored'; })();
 function chooseWalkman(choice) {
   if (choice === walkmanChoice || walkman.loading) return;
@@ -148,6 +150,16 @@ function chooseWalkman(choice) {
   // The new choice starts a new tape straight away, playing on if the old one was.
   loadTape(!walkmanAudio.paused);
 }
+// The three tapes, each in its own room: the Walkman tab in Words, Tape in Listen (sentences) and Tape in Verbs.
+const TAPE_SCREENS = { walkman: 'words', 'listen-tape': 'sentences', 'verbs-tape': 'verbs' };
+const tapeScreen = (name = screen) => name in TAPE_SCREENS;
+// What the tape on screen plays: the Walkman's choice of words, or its room's sentences or verbs.
+const tapeKind = () => screen === 'walkman' ? walkmanChoice : TAPE_SCREENS[screen];
+// Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
+const WORDS_TABS = { cards: 'Cards', endless: 'Endless', say: 'Say it', walkman: 'Walkman' };
+const LISTEN_TABS = { listen: 'Questions', sounds: 'Sounds', 'listen-tape': 'Tape' };
+let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved in WORDS_TABS && !(saved === 'say' && roomsOff.has('say')) ? saved : 'cards'; })();
+let listenTab = (() => { const saved = readPreference('echo.listen-tab', 'listen'); return saved in LISTEN_TABS ? saved : 'listen'; })();
 // The verb tape plays the tenses chosen in Verbs; changing them here changes them there too.
 function chooseWalkmanTense(tense) {
   if (walkman.loading) return;
@@ -390,37 +402,61 @@ function vocabularyHint() {
   const unavailable = !snapshot || retryAction || snapshot.direction !== direction || snapshot.deck !== deck;
   return unavailable ? 'Your words' : `${formatCount(snapshot.stats.unseenActive)} unseen · ${formatCount(snapshot.stats.seenActive)} seen`;
 }
-// Rooms this Echo leaves out, from the page (ECHO_ROOMS_OFF on the server).
-const roomsOff = new Set((document.body.dataset.roomsOff || '').split(',').filter(Boolean));
 // How it works leaves out what it says about those rooms; data-room names every room a passage is about.
 if (roomsOff.size) {
   document.querySelectorAll('[data-room]').forEach((element) => { if (element.dataset.room.split(' ').some((room) => roomsOff.has(room))) element.remove(); });
-  document.querySelectorAll('[data-rooms-off-text]').forEach((element) => { element.textContent = element.dataset.roomsOffText; });
 }
 // In the friends' Echo: who is signed in, with a way out, at the top of How it works.
 if (document.body.dataset.learner) document.querySelector('#about-dialog .dialog-copy, .dialog-copy')?.insertAdjacentHTML('afterbegin', `<form class="signed-in" method="post" action="/auth/signout"><span>Signed in as <b>${esc(document.body.dataset.learner)}</b></span><button class="quiet">Sign out</button></form>`);
+// Home: Practise on top, then the rooms in two shelves, the three tapes and Radio together for listening on the
+// move, and Study.
 function renderHome() {
   loadHomeInfo();
-  const tile = (action, symbol, title, hint, mode, disabled = busy) => {
+  const tile = (action, symbol, title, hint, mode, disabled = busy, wide = '') => {
     if (roomsOff.has(action)) return '';
     const label = mode ? levelFor(mode) : '';
-    return `<button class="tile" data-action="${action}" ${disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}<h2>${esc(title)}</h2><p>${esc(hint)}</p></button>`;
+    return `<button class="tile${wide}" data-action="${action}" ${disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}<h2>${esc(title)}</h2><p>${esc(hint)}</p></button>`;
   };
-  const row = (action, symbol, title) => `<button class="study-row" data-action="${action}" ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="chev" aria-hidden="true">${chevronIcon}</span></button>`;
-  main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1><div class="tiles">
-    ${tile('start', wordsIcon, 'Vocabulary', vocabularyHint(), '', locked())}
-    ${tile('practise', mixIcon, 'Practise', 'A little of everything')}
-    ${tile('listen', headphones, 'Listen', 'Hear it, show you got it', 'listen')}
-    ${tile('read', bookIcon, 'Read', 'Read it, show you got it', 'read')}
+  const row = (action, symbol, title, data = '') => `<button class="study-row" data-action="${action}" ${data} ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="chev" aria-hidden="true">${chevronIcon}</span></button>`;
+  main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1>
+    <div class="tiles">${tile('practise', mixIcon, 'Practise', 'A little of everything: words, listening and grammar, mixed for you', '', busy, ' wide hero')}</div>
+    <p class="study-label">Words &amp; grammar</p><div class="tiles shelf">
+    ${tile('words', wordsIcon, 'Words', vocabularyHint(), '', locked(), ' wide')}
     ${tile('grammar', grammarIcon, 'Grammar', 'Rules, then practise')}
     ${tile('verbs', verbsIcon, 'Verbs', 'Conjugation, on its own')}
-    ${tile('walkman', cassette, 'Walkman', 'A tape of your words')}
-    ${tile('sounds', soundsIcon, 'Sounds', 'Tell twin sounds apart')}
+    </div><p class="study-label">Listen &amp; read</p><div class="tiles shelf">
+    ${tile('listen', headphones, 'Listen', 'Questions, twin sounds, a tape', 'listen')}
+    ${tile('read', bookIcon, 'Read', 'Read it, show you got it', 'read')}
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
-  </div><p class="study-label">Study</p><div class="study">
+    </div><p class="study-label">Hands-free</p><div class="study">
+    ${row('tape', cassette, 'Words tape', 'data-tape="walkman"')}${row('tape', cassette, 'Verbs tape', 'data-tape="verbs-tape"')}${row('tape', cassette, 'Sentences tape', 'data-tape="listen-tape"')}${roomsOff.has('radio') ? '' : row('radio', radioIcon, `Today’s Radio · ${radioHint()}`)}
+    </div><p class="study-label">Study</p><div class="study">
     ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${roomsOff.has('friends') ? '' : row('friends', friendsIcon, ['Friends', homeInfo.doorOpen ? 'open to anyone' : '', homeInfo.waiting ? `${homeInfo.waiting} waiting` : ''].filter(Boolean).join(' · '))}
   </div></section>`;
+}
+// The tabs along the top of a room; each button carries the action that opens its tab.
+function roomTabs(action, current, tabs) {
+  return `<div class="room-tabs" role="tablist">${Object.entries(tabs).map(([id, label]) => `<button role="tab" data-action="${action}" data-tab="${id}" aria-selected="${id === current}" ${busy ? 'disabled' : ''}>${esc(label)}</button>`).join('')}</div>`;
+}
+// ⓘ: what the room does, from its part of How it works (index.html, data-info).
+function infoButton(room) { return `<button class="icon" data-action="info" data-info-room="${room}" aria-label="How this works" aria-haspopup="dialog">${infoIcon}</button>`; }
+const INFO_TITLES = { words: 'Words', listen: 'Listen', read: 'Read', verbs: 'Verbs', grammar: 'Grammar', practise: 'Practise', mistakes: 'Mistakes', story: 'Story', radio: 'Radio' };
+function openInfo(room) {
+  const parts = [...aboutDialog.querySelectorAll('[data-info]')].filter((part) => part.dataset.info.split(' ').includes(room)).map((part) => part.innerHTML).join('');
+  if (!parts) return;
+  openDialog(INFO_TITLES[room] ?? 'How it works', `<div class="dialog-copy">${parts}</div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'info');
+}
+const wordsTabList = () => Object.fromEntries(Object.entries(WORDS_TABS).filter(([id]) => id !== 'say' || !roomsOff.has('say')));
+const wordsTabNow = () => screen === 'say' ? 'say' : screen === 'walkman' ? 'walkman' : vocabMode === 'endless' ? 'endless' : 'cards';
+// The top of every Words tab: back, the direction (for cards), Your words, ⓘ, options, then the tabs.
+function wordsTop() {
+  const tab = wordsTabNow(), cards = tab === 'cards' || tab === 'endless';
+  return `<div class="section-top">${back('Home', 'home')}<div>${cards ? `<span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span>` : ''}<button class="icon" data-action="browse" aria-label="Your words" ${busy ? 'disabled' : ''}>${searchIcon}</button>${infoButton('words')}<button class="icon" data-action="options" aria-label="Words options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>${roomTabs('words-tab', tab, wordsTabList())}`;
+}
+// The top of every Listen tab: back, the level (for questions), ⓘ, then the tabs.
+function listenTop(right = '') {
+  return `<div class="section-top">${back('Home', 'home')}<div>${right}${infoButton('listen')}</div></div>${roomTabs('listen-tab', screen === 'sound' ? 'sounds' : screen, LISTEN_TABS)}`;
 }
 // Keeps a retry scheduled while the Mac is out of reach and an action waits, sooner at first, then every 30 s.
 function syncAutoRetry() {
@@ -454,7 +490,7 @@ function render() {
   else if (screen === 'mix' || screen === 'focus') renderMixed();
   else if (screen === 'mistakes') renderMistakes();
   else if (screen === 'friends') renderFriends();
-  else if (screen === 'walkman') renderWalkman();
+  else if (tapeScreen()) renderWalkman();
   else if (screen === 'say') renderSay();
   else if (screen === 'statistics') renderStatistics();
   else if (screen === 'songs') renderSongs();
@@ -473,8 +509,10 @@ function render() {
   else if (screen === 'radio') renderRadio();
   else renderHome();
 }
+// The tape player: the Walkman tab in Words, or Tape in Listen or in Verbs.
 function renderWalkman() {
-  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Walkman</span></div>`;
+  const room = TAPE_SCREENS[screen];
+  const header = room === 'words' ? wordsTop() : room === 'sentences' ? listenTop() : `<div class="section-top">${back('Verbs', 'verbs')}<div><span class="stream-label">Tape</span>${infoButton('verbs')}</div></div>`;
   const tape = walkman.tape;
   if (walkman.loading || (!tape && !notice)) { main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}<div class="loading-state" role="status">Winding the tape…</div></section>`; return; }
   if (!tape) { main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}</section>`; return; }
@@ -493,9 +531,8 @@ function renderWalkman() {
     <div class="wm-progress" aria-hidden="true"><span style="width:${walkmanProgress()}%"></span></div>
     ${heardHTML()}
     <p class="caption wm-note">Keeps playing with your phone locked. Listening doesn’t change your vocabulary progress.</p>
-    ${walkmanChoice === 'verbs' ? `<p class="wm-choice wm-tenses">Tenses ${Object.entries(VB_TENSES).map(([tense, label]) => `<button data-action="walkman-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${esc(label)}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
-    <p class="wm-choice">Plays ${Object.entries(WALKMAN_CHOICES).map(([choice, label]) => `<button data-action="walkman-choice" data-words="${choice}" aria-pressed="${walkmanChoice === choice}">${label}</button>`).join('<span aria-hidden="true">·</span>')}</p>
-    ${roomsOff.has('say') ? '' : '<p class="wm-choice">Or <button data-action="say">say the English yourself</button>, out loud</p>'}
+    ${room === 'verbs' ? `<p class="wm-choice wm-tenses">Tenses ${Object.entries(VB_TENSES).map(([tense, label]) => `<button data-action="walkman-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${esc(label)}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
+    ${room === 'words' ? `<p class="wm-choice">Plays ${Object.entries(WALKMAN_CHOICES).map(([choice, label]) => `<button data-action="walkman-choice" data-words="${choice}" aria-pressed="${walkmanChoice === choice}">${label}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
   </section>`;
 }
 const HEARD_STATUS = { saving: 'Adding…', added: 'Added to your words', 'already-practising': 'Already in your practice', 'made-due': 'Due again now' };
@@ -552,7 +589,7 @@ async function hearAgain(id) {
   await playClip(entry?.verb ? entry.verb.audio : entry?.sentence ? sentenceClipUrl(id) : wordClipUrl(id), token);
   if (token !== audioGeneration) return;
   heardSaying = '';
-  if (screen !== 'walkman') return;
+  if (!tapeScreen()) return;
   if (heardResume) playWalkman(); else render();
 }
 // Marking a listen as known or not moves the word's score like a recall or a miss; tapping the same mark
@@ -574,7 +611,7 @@ async function markHeard(id, knew) {
   }
   heardMarking.delete(id);
   saveHeard();
-  if (screen === 'walkman') render();
+  if (tapeScreen()) render();
 }
 async function addHeard(id) {
   const entry = walkmanHeard.find((item) => item.id === id);
@@ -589,7 +626,7 @@ async function addHeard(id) {
     notice = { message: error.message };
   }
   saveHeard();
-  if (screen === 'walkman') render();
+  if (tapeScreen()) render();
 }
 function walkmanProgress() {
   const seconds = walkman.tape?.seconds;
@@ -601,8 +638,9 @@ async function loadTape(autoplay = false) {
   notice = null; retryAction = null;
   render();
   try {
-    const tape = await api('api/walkman', { method: 'POST', body: JSON.stringify({ words: walkmanChoice, ...(walkmanChoice === 'verbs' ? { tenses: verbTenses } : {}) }) });
-    if (token !== walkmanGeneration || screen !== 'walkman') return;
+    const kind = tapeKind(), on = screen;
+    const tape = await api('api/walkman', { method: 'POST', body: JSON.stringify({ words: kind, ...(kind === 'verbs' ? { tenses: verbTenses } : {}) }) });
+    if (token !== walkmanGeneration || screen !== on) return;
     walkman = { ...walkman, tape, loading: false };
     walkmanAudio.src = tape.url;
     walkmanAudio.playbackRate = speed; walkmanAudio.preservesPitch = true; walkmanAudio.webkitPreservesPitch = true;
@@ -657,10 +695,10 @@ function followTape() {
     if (word && 'mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({ title: word.fr, artist: meaning ? word.en : '…', album: 'Echo · Walkman', artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
     }
-    if (screen === 'walkman' && !document.hidden) render();
+    if (tapeScreen() && !document.hidden) render();
     return;
   }
-  if (logged && heardOpen && screen === 'walkman' && !document.hidden) { render(); return; }
+  if (logged && heardOpen && tapeScreen() && !document.hidden) { render(); return; }
   const bar = document.querySelector('.wm-progress span');
   if (bar) bar.style.width = `${walkmanProgress()}%`;
 }
@@ -674,12 +712,12 @@ function skipWord(step) {
   walkmanAudio.currentTime = words[Math.max(0, Math.min(words.length - 1, target))].start;
 }
 walkmanAudio.addEventListener('timeupdate', followTape);
-walkmanAudio.addEventListener('play', () => { if (screen === 'walkman') render(); });
-walkmanAudio.addEventListener('pause', () => { if (screen === 'walkman') render(); });
+walkmanAudio.addEventListener('play', () => { if (tapeScreen()) render(); });
+walkmanAudio.addEventListener('pause', () => { if (tapeScreen()) render(); });
 // A finished tape winds straight on to a new one, chosen afresh.
-walkmanAudio.addEventListener('ended', () => { if (screen === 'walkman') loadTape(true); });
+walkmanAudio.addEventListener('ended', () => { if (tapeScreen()) loadTape(true); });
 walkmanAudio.addEventListener('error', () => {
-  if (screen !== 'walkman' || !walkman.tape) return;
+  if (!tapeScreen() || !walkman.tape) return;
   notice = { message: 'The tape stopped loading. Retry for a new one.' }; retryAction = { type: 'walkman' }; render();
 });
 // ── Radio ────────────────────────────────────────────────────────────────────
@@ -746,7 +784,7 @@ radioAudio.addEventListener('error', () => {
 });
 const SECTION_TITLE = { intro: 'Echo Radio', words: 'Your words', story: 'The story', grammar: 'Grammar', outro: 'Echo Radio' };
 function renderRadio() {
-  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Radio</span></div>`;
+  const header = `<div class="section-top">${back('Home', 'home')}<div><span class="stream-label">Radio</span>${infoButton('radio')}</div></div>`;
   const view = radio.view;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream walkman radio">${header}${body}</section>`; };
   if (!view) { shell(radio.loading ? '<div class="loading-state" role="status">Tuning in…</div>' : ''); return; }
@@ -776,7 +814,7 @@ if ('mediaSession' in navigator) {
 function availabilityCopy() {
   const parts = [];
   const elsewhere = snapshot.overview.remaining + snapshot.overview.newAvailable;
-  if (deck !== 'all' && snapshot.stats.newAvailable === 0 && elsewhere > 0) parts.push(`${formatCount(elsewhere)} ${elsewhere === 1 ? 'word is' : 'words are'} waiting in other categories. Choose All words in vocabulary options to continue.`);
+  if (deck !== 'all' && snapshot.stats.newAvailable === 0 && elsewhere > 0) parts.push(`${formatCount(elsewhere)} ${elsewhere === 1 ? 'word is' : 'words are'} waiting in other categories. Choose All words in Words options to continue.`);
   if (snapshot.nextDue) parts.push(`Next review: ${dateLabel(snapshot.nextDue)}.`);
   const recording = snapshot.stats.recording || 0;
   if (recording > 0 && snapshot.stats.newAvailable === 0) parts.push(`${formatCount(recording)} ${recording === 1 ? 'word from a song is' : 'words from songs are'} still being recorded on your Mac. Each one joins your practice as soon as it is ready, usually within minutes.`);
@@ -784,9 +822,10 @@ function availabilityCopy() {
   return parts.join(' ') || 'You’re up to date in this vocabulary selection.';
 }
 let extraScope = 0;
-function extraPracticeHTML() {
+// titled: the end of the cards shows it under its own heading; More for today (in Your words) is the dialog's title.
+function extraPracticeHTML(titled = true) {
   const stats = snapshot.stats;
-  // Unique per render: the options dialog can open over the end screen, which renders this too.
+  // Unique per render: the dialog can open over the end screen, which renders this too.
   const scope = ++extraScope;
   const off = (enabled) => (enabled && !locked() ? '' : 'disabled');
   const chip = (attrs, text, label, enabled) => `<button class="secondary chip" ${attrs} aria-label="${esc(label)}" ${off(enabled)}>${text}</button>`;
@@ -798,7 +837,7 @@ function extraPracticeHTML() {
   const newDetail = !stats.unseen ? 'Every word here is already started' : snapshot.extraToday ? `${formatCount(snapshot.extraToday)} extra added today · resets at 04:00` : 'Today only · resets at 04:00';
   const review = (mode, available, noun) => `<div class="chips">${[15, 20, 30].map((count) => chip(`data-action="review-early" data-mode="${mode}" data-count="${count}"`, count, `Review ${count} ${noun}`, available > 0)).join('')}</div>${custom('review-early', mode, `How many ${noun} to review`, 'Review', available > 0)}`;
   const extra = `<div class="chips">${[15, 20, 30].map((count) => chip(`data-action="extra-words" data-count="${count}"`, `+${count}`, `Add ${count} new words today`, stats.unseen > 0)).join('')}</div>${custom('extra-words', '', 'How many new words to add today', 'Add', stats.unseen > 0)}`;
-  return `<section class="extra-practice" aria-labelledby="extra-title-${scope}"><h2 id="extra-title-${scope}">Extra practice</h2>
+  return `<section class="extra-practice" ${titled ? `aria-labelledby="extra-title-${scope}"` : ''}>${titled ? `<h2 id="extra-title-${scope}">Extra practice</h2>` : ''}
     ${row('New words today', newDetail, extra)}
     ${row('Review due soonest', stats.scheduled ? `${formatCount(stats.scheduled)} waiting for a later review` : 'No finished words are waiting', review('soonest', stats.scheduled, 'words due soonest'))}
     ${row('Review most missed', stats.scheduledMissed ? `${formatCount(stats.scheduledMissed)} missed at least once` : 'No missed words are waiting', review('missed', stats.scheduledMissed, 'most-missed words'))}
@@ -812,9 +851,12 @@ function submitCustomCount(form) {
   }
   extraPractice(form.dataset.kind, { count: value, mode: form.dataset.mode });
 }
+// Extra words and early reviews are daily cards, so they open on the Cards tab of Words.
 function extraPractice(type, data) {
   if (locked() || !snapshot) return;
   if (dialog.open) dialog.close();
+  if (vocabMode !== 'daily') { vocabMode = 'daily'; savePreference('echo.vocab-mode', 'daily'); endless = null; revealed = false; }
+  wordsTab = 'cards'; savePreference('echo.words-tab', 'cards');
   runMutation({ type, body: { direction, deck, count: Number(data.count), requestId: requestId(), ...(type === 'review-early' ? { mode: data.mode } : {}) } });
 }
 // A word missed often: how often, and the words of its deck missed most with it, side by side to tell apart.
@@ -845,7 +887,7 @@ function playCardOnce() {
 }
 function renderPractice() {
   if (vocabMode === 'endless') { renderEndless(); return; }
-  const header = `<div class="section-top">${back('Home', 'home')}<div><span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span><button class="icon" data-action="families" aria-label="Word families" ${busy ? 'disabled' : ''}>${familyIcon}</button><button class="icon" data-action="browse" aria-label="Browse vocabulary" ${busy ? 'disabled' : ''}>${searchIcon}</button><button class="icon" data-action="options" aria-label="Vocabulary options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>`;
+  const header = wordsTop();
   if (!snapshot || loading) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="loading-state" role="status">${loading ? 'Opening your vocabulary…' : 'Your progress is safe on your Mac.'}</div></section>`; return; }
   if (!snapshot.current) {
     main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p><div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="studied" ${busy ? 'disabled' : ''}>Your studied words</button><button class="secondary" data-action="families" ${busy ? 'disabled' : ''}>Word families</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div>${extraPracticeHTML()}</div></section>`; return;
@@ -856,7 +898,7 @@ function renderPractice() {
   warmClip(snapshot.next?.audioUrl);
 }
 function renderEndless() {
-  const header = `<div class="section-top">${back('Home', 'home')}<div><span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span><button class="icon" data-action="families" aria-label="Word families">${familyIcon}</button><button class="icon" data-action="browse" aria-label="Browse vocabulary">${searchIcon}</button><button class="icon" data-action="options" aria-label="Vocabulary options" aria-haspopup="dialog" ${!snapshot ? 'disabled' : ''}>•••</button></div></div>`;
+  const header = wordsTop();
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="practice">${header}${body}</section>`; };
   if (!endless || endless.direction !== direction || endless.deck !== deck) { shell('<div class="loading-state" role="status">Choosing a word…</div>'); startEndless(); return; }
   const counts = `<span class="compact-line"><span class="compact-label" title="${esc(categoryTitle(deck))}">${esc(categoryTitle(deck))}</span><span class="compact-counts"><span class="unseen"><strong>Endless</strong></span><span class="separator" aria-hidden="true">·</span><span><strong>${formatCount(endless.pool)}</strong> ${endless.pool === 1 ? 'word' : 'words'}</span></span></span>`;
@@ -871,7 +913,13 @@ function renderEndless() {
 }
 function renderBrowse() {
   const show = [['all', 'All words'], ['studied', 'Studied'], ['learning', 'Still learning'], ['missed', 'Missed at least once']].map(([value, label]) => `<option value="${value}" ${browseShow === value ? 'selected' : ''}>${label}</option>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Vocabulary', 'vocabulary')}<button class="icon" data-action="options" aria-label="Vocabulary options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">${esc(directionLabel())}</p><div class="browse-tools"><label class="sr-only" for="vocab-search">Search French or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
+  const more = [
+    ['families', 'Word families', 'Words built from one another; add a relative of one you know', ''],
+    ['word-building', 'Word building', 'How French makes one word from another: -er, -eur, in-…', 'data-from="browse"'],
+    ...(roomsOff.has('songs') ? [] : [['songs', 'Words from a song', 'Find a French song and turn its words into cards', '']]),
+    ['more-today', 'More for today', 'Extra new words, or finished words reviewed early', ''],
+  ].map(([action, title, text, data]) => `<button class="topic-row" data-action="${action}" ${data} ${busy || (action === 'more-today' && !snapshot) ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${title}</h3></span><p>${esc(text)}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Words', 'vocabulary')}<button class="icon" data-action="options" aria-label="Words options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">Everything in your deck, and ways to add to it.</p><div class="topic-list">${more}</div><h2 class="story-heading">All your words · ${esc(directionLabel())}</h2><div class="browse-tools"><label class="sr-only" for="vocab-search">Search French or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
   renderBrowseResults();
 }
 function normalized(value) { return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase(); }
@@ -945,7 +993,7 @@ function familyViews() {
   }).filter((family) => family.members.length >= 2);
 }
 function renderFamilies() {
-  const header = `<div class="section-top">${back('Vocabulary', 'vocabulary')}</div><h1>Word families</h1><p class="subtitle">Words built from one another. You know a word in each of these, so the others come easily.</p>`;
+  const header = `<div class="section-top">${back('Your words', 'your-words')}</div><h1>Word families</h1><p class="subtitle">Words built from one another. You know a word in each of these, so the others come easily.</p>`;
   if (familiesLoading || familiesError) { main.innerHTML = `${noticeHTML()}<section class="topics families">${header}${familiesError ? `<div class="notice" role="alert"><span>${esc(familiesError)}</span><button class="quiet" data-action="families">Retry</button></div>` : '<div class="loading-state" role="status">Finding your word families…</div>'}</section>`; return; }
   const views = familyViews();
   const nearly = views.filter((family) => family.known > 0 && family.known < family.members.length)
@@ -975,7 +1023,8 @@ function familyMemberHTML(member) {
   return `<div class="fam-member"><span class="fam-dot ${member.state}" aria-hidden="true"></span><div class="fam-text"><p class="fam-fr ${genderClass(member.word.gender).trim()}" lang="fr">${frEsc(member.word.fr)}</p><p class="fam-en">${esc(member.word.en)}</p>${member.note ? `<p class="fam-note">${esc(member.note)}</p>` : ''}${add}</div><button class="icon" data-play-word="${esc(member.id)}" aria-label="Pronounce ${esc(member.word.fr)}">${speaker}</button></div>`;
 }
 function renderBuilding() {
-  const header = `<div class="section-top">${back(buildingFrom === 'families' ? 'Word families' : 'Grammar', buildingFrom === 'families' ? 'families' : 'grammar')}</div><h1>Word building</h1><p class="subtitle">How French makes one word from another. Learn a pattern once, and new words arrive half known.</p>`;
+  const [label, to] = { families: ['Word families', 'families'], browse: ['Your words', 'your-words'] }[buildingFrom] ?? ['Grammar', 'grammar'];
+  const header = `<div class="section-top">${back(label, to)}</div><h1>Word building</h1><p class="subtitle">How French makes one word from another. Learn a pattern once, and new words arrive half known.</p>`;
   if (familiesLoading || familiesError) { main.innerHTML = `${noticeHTML()}<section class="topics families">${header}${familiesError ? `<div class="notice" role="alert"><span>${esc(familiesError)}</span><button class="quiet" data-action="word-building">Retry</button></div>` : '<div class="loading-state" role="status">Opening word building…</div>'}</section>`; return; }
   const byId = new Map((words || []).map((word) => [word.id, word]));
   const members = new Map((families || []).flatMap((family) => family.members).map((member) => [member.id, member]));
@@ -1040,7 +1089,7 @@ function topicRowHTML(topic) {
 }
 function renderGrammar() {
   const list = (units || []).map((unit, index) => `<section class="unit" aria-labelledby="unit-${esc(unit.id)}"><div class="unit-head"><div class="unit-copy"><p class="unit-kicker">Unit ${index + 1}</p><h2 id="unit-${esc(unit.id)}">${esc(unit.title)}</h2><p>${esc(unit.description)}</p></div><button class="secondary unit-test" data-scope="unit:${esc(unit.id)}" ${locked() ? 'disabled' : ''}>${unit.hasActiveTest ? 'Continue unit test' : `Unit test · ${unit.testLength}`}${unit.test.best ? `<small>best ${unit.test.best.score}/${unit.test.best.total}</small>` : ''}</button></div><div class="topic-list">${unit.topics.map(topicRowHTML).join('')}</div></section>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}</div><h1>Grammar & sentences</h1><p class="subtitle">Practise a topic, then test yourself. Each unit ends with a test across its topics.</p><button class="topic-row wb-entry" data-action="word-building" ${locked() ? 'disabled' : ''}><span class="topic-mark" aria-hidden="true"><span>-er</span><span>-eur</span></span><span class="copy"><span class="topic-name"><h3>Word building</h3></span><p>Endings and prefixes that turn one word into another, shown with your own words.</p></span><span class="arrow" aria-hidden="true">→</span></button>${units ? list : loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : ''}</section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics"><div class="section-top">${back('Home', 'home')}${infoButton('grammar')}</div><h1>Grammar & sentences</h1><p class="subtitle">Practise a topic, then test yourself. Each unit ends with a test across its topics.</p><button class="topic-row wb-entry" data-action="word-building" ${locked() ? 'disabled' : ''}><span class="topic-mark" aria-hidden="true"><span>-er</span><span>-eur</span></span><span class="copy"><span class="topic-name"><h3>Word building</h3></span><p>Endings and prefixes that turn one word into another, shown with your own words.</p></span><span class="arrow" aria-hidden="true">→</span></button>${units ? list : loading ? '<div class="loading-state" role="status">Opening the workshop…</div>' : ''}</section>`;
 }
 // A guide section teaches one point: a table of forms (a highlighted row holds an answer), the steps for choosing,
 // examples and traps. French and English share the cells, so every cell keeps French spacing.
@@ -1361,7 +1410,8 @@ function streamEmptyHTML(id) {
 function renderStream() {
   const mode = screen === 'read' ? 'read' : 'listen';
   const label = levelFor(mode);
-  const header = `<div class="section-top">${back('Home', 'home')}${label ? `<span class="level-tag">${esc(label)}</span>` : ''}</div>`;
+  const level = label ? `<span class="level-tag">${esc(label)}</span>` : '';
+  const header = mode === 'listen' ? listenTop(level) : `<div class="section-top">${back('Home', 'home')}<div>${level}${infoButton('read')}</div></div>`;
   if (!streamState || loading) {
     main.innerHTML = `${noticeHTML()}<section class="stream">${header}<div class="loading-state" role="status">${loading ? `Opening ${mode === 'read' ? 'Read' : 'Listen'}…` : 'Your progress is safe on your Mac.'}</div></section>`;
     return;
@@ -1373,9 +1423,9 @@ function renderMixed() {
   const focus = screen === 'focus';
   const group = focus ? mistakeGroup() : null;
   const source = mixedSource === 'comprehension' ? (streamState?.current?.mode === 'read' ? 'Read' : 'Listen')
-    : mixedSource === 'vocabulary' ? 'Vocabulary' : mixedSource === 'grammar' ? 'Grammar' : '';
+    : mixedSource === 'vocabulary' ? 'Words' : mixedSource === 'grammar' ? 'Grammar' : '';
   const label = focus ? `${group ? group.title : 'Mistakes'}${source ? ` · ${source}` : ''}` : source;
-  const header = `<div class="section-top">${back(focus ? 'Mistakes' : 'Home', focus ? 'mistakes' : 'home')}<span class="stream-label">${esc(label)}</span></div>`;
+  const header = `<div class="section-top">${back(focus ? 'Mistakes' : 'Home', focus ? 'mistakes' : 'home')}<div><span class="stream-label">${esc(label)}</span>${infoButton(focus ? 'mistakes' : 'practise')}</div></div>`;
   if (loading) { main.innerHTML = `${noticeHTML()}<section class="stream">${header}<div class="loading-state" role="status">Opening your practice…</div></section>`; return; }
   const vocabulary = mixedSource === 'vocabulary' && snapshot?.current;
   let body;
@@ -1390,7 +1440,7 @@ function renderMixed() {
   else if (mixedSource === 'comprehension') autoplay();
 }
 function renderMistakes() {
-  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Mistakes</h1><p class="subtitle">What keeps catching you out. Tap one to practise it.</p>`;
+  const header = `<div class="section-top">${back('Home', 'home')}${infoButton('mistakes')}</div><h1>Mistakes</h1><p class="subtitle">What keeps catching you out. Tap one to practise it.</p>`;
   if (!mistakes || loading) { main.innerHTML = `${noticeHTML()}<section class="topics">${header}${loading ? '<div class="loading-state" role="status">Looking at what you missed…</div>' : ''}</section>`; return; }
   if (!mistakes.length) { main.innerHTML = `${noticeHTML()}<section class="topics">${header}<p class="empty-list">No mistakes recorded yet.</p></section>`; return; }
   const rows = mistakes.map((group) => {
@@ -1739,7 +1789,7 @@ function renderStatistics() {
   const part = (value, of, kind) => `<span class="${kind}" style="height:${of ? value / of * 100 : 0}%"></span>`;
   const pointBars = together.map((day) => `<button class="st-pt st-pt-both" style="${rows}" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(day.words + day.verbs)} points, words ${points(day.words)}, verbs ${points(day.verbs)}"><span class="up">${part(Math.max(0, day.verbs), top, 'verbs')}${part(Math.max(0, day.words), top, 'words')}</span><span class="down">${part(Math.max(0, -day.words), bottom, 'words')}${part(Math.max(0, -day.verbs), bottom, 'verbs')}</span></button>`).join('');
   const shownLabel = shown.day === today.day ? 'today' : `on ${new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`))}`;
-  const pointsBlock = `<div class="st-block">${stHead('Points, last two weeks', 'How far your words and verbs climbed, together. Words: +2 an answer known in Vocabulary, +1 in Endless, +0.5 a word heard to the end on the Walkman, and ✓ there counting like knowing it. Verbs: +2 a typed form, +1 a Cards or Walkman mark. A miss (−3, or −1 in Endless, −2 a mark) only takes back what that word or form had climbed, by your answers, above the lowest it had been: missing something you never knew costs nothing, forgetting something you knew costs what you had. Each bar is the day: gains stacked above the line, losses below. Tap a day to see its total and how it split.')}
+  const pointsBlock = `<div class="st-block">${stHead('Points, last two weeks', 'How far your words and verbs climbed, together. Words: +2 an answer known in Cards, +1 in Endless, +0.5 a word heard to the end on the Walkman, and ✓ there counting like knowing it. Verbs: +2 a typed form, +1 a Cards or tape mark. A miss (−3, or −1 in Endless, −2 a mark) only takes back what that word or form had climbed, by your answers, above the lowest it had been: missing something you never knew costs nothing, forgetting something you knew costs what you had. Each bar is the day: gains stacked above the line, losses below. Tap a day to see its total and how it split.')}
       <p class="st-big"><strong>${points(shown.words + shown.verbs)}</strong> ${esc(shownLabel)}</p>
       <p class="st-sub">${shown.words || shown.verbs ? `words ${points(shown.words)} · verbs ${points(shown.verbs)}` : 'Nothing practised'}</p>
       <div class="st-points">${pointBars}</div><div class="st-days-axis">${dayAxis}</div>
@@ -1815,7 +1865,9 @@ function songStatusLine(song) {
   return 'Could not be read';
 }
 function renderSongs() {
-  const header = `<div class="section-top">${back('Vocabulary', 'start')}</div><h1>Words from a song</h1><p class="subtitle">Find a French song; Claude reads it and turns its words into flashcards in their dictionary form. Only the words are kept.</p>`;
+  const disabled = locked() || !snapshot ? 'disabled' : '';
+  const order = snapshot ? `<div class="song-order"><p class="settings-label">New words from songs come</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div></div>` : '';
+  const header = `<div class="section-top">${back('Your words', 'your-words')}</div><h1>Words from a song</h1><p class="subtitle">Find a French song; Claude reads it and turns its words into flashcards in their dictionary form. Only the words are kept.</p>${order}`;
   const search = `<form id="song-search-form" class="song-search" role="search"><label class="sr-only" for="song-query">Song title and artist</label><input id="song-query" type="search" placeholder="Title, and the artist if you know it" value="${esc(songQuery)}" autocomplete="off" ${songSearching ? 'disabled' : ''}><button class="primary" type="submit" ${songSearching ? 'disabled' : ''}>${songSearching ? 'Searching…' : 'Search'}</button></form>`;
   const matches = songMatches === null ? '' : songMatches.length
     ? `<p class="song-hint">Pick the one you mean. Covers that sing the same words are grouped together.</p><ol class="song-results">${songMatches.map((match) => `<li><button class="song-row" data-action="song-read" data-lrclib="${match.id}" ${busy ? 'disabled' : ''}><span class="song-copy"><strong>${esc(match.title)}</strong><span>${esc(match.artist)}${match.album && match.album !== match.title ? ` · ${esc(match.album)}` : ''}${match.seconds ? ` · ${songTime(match.seconds)}` : ''}</span>${match.versions > 1 ? `<small>${match.versions} versions${match.artists.length > 1 ? ` · also ${esc(match.artists.filter((name) => name !== match.artist).slice(0, 3).join(', '))}` : ''}</small>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('')}</ol>`
@@ -1866,7 +1918,7 @@ function renderSong() {
     const audio = songList?.audio;
     const recording = audio && (audio.pending || audio.recording) ? `Recording the new words on your Mac… ${audio.pending} left. Each one joins your practice as soon as it is recorded.` : audio?.failed?.some((id) => song.added.includes(id)) ? `${audio.failed.filter((id) => song.added.includes(id)).length} could not be recorded and stay out of practice.` : 'Every word is recorded.';
     const linked = song.linked?.length ?? 0;
-    body = `<div class="song-progress"><p><strong>${song.added.length}</strong> new ${song.added.length === 1 ? 'word' : 'words'}${linked ? ` and <strong>${linked}</strong> you already had` : ''} in the “${esc(song.title)}” deck.</p><p class="caption">${esc(recording)} New words from songs come ${snapshot?.settings?.songsFirst === false ? 'in turn with your other categories' : 'before your other new words'}; change this in Vocabulary options.</p><div class="summary-actions"><button class="primary" data-action="song-practise" data-category="${esc(song.category)}" ${busy ? 'disabled' : ''}>Practise these words</button></div></div>`;
+    body = `<div class="song-progress"><p><strong>${song.added.length}</strong> new ${song.added.length === 1 ? 'word' : 'words'}${linked ? ` and <strong>${linked}</strong> you already had` : ''} in the “${esc(song.title)}” deck.</p><p class="caption">${esc(recording)} New words from songs come ${snapshot?.settings?.songsFirst === false ? 'in turn with your other categories' : 'before your other new words'}; change this on the Words from a song page.</p><div class="summary-actions"><button class="primary" data-action="song-practise" data-category="${esc(song.category)}" ${busy ? 'disabled' : ''}>Practise these words</button></div></div>`;
   }
   main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${title}${understoodHTML(song.understood)}${body}</section>`;
 }
@@ -1977,7 +2029,7 @@ function pickAllSongWords(all) {
   render();
 }
 async function setSongsFirst(value) {
-  try { snapshot.settings = await api('api/settings/songs', { method: 'PUT', body: JSON.stringify({ songsFirst: value }) }); openOptions(); }
+  try { snapshot.settings = await api('api/settings/songs', { method: 'PUT', body: JSON.stringify({ songsFirst: value }) }); render(); }
   catch (error) { notice = { message: error.message }; render(); }
 }
 function openStatistics() { if (move('statistics', true)) loadStatistics(); }
@@ -2029,8 +2081,7 @@ function resetStatsView() {
   pointsDay = '';
 }
 function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } drawScores(); }
-function openWalkman() { if (move('walkman', true)) loadTape(); }
-// ── Say it (from the Walkman): Echo says a French word, the learner says its English aloud, and Echo checks it
+// ── Say it (a tab in Words): Echo says a French word, the learner says its English aloud, and Echo checks it
 // (api/say/check, lib/say-check.ts). A level meter tells speech from the room's quiet, so an answer ends
 // SAY_QUIET_MS after the learner stops. A wrong verdict waits until SAY_RESUME_MS have passed since their last sound:
 // if they speak again before then they had only paused, and Echo listens on and checks the whole answer again. The
@@ -2058,7 +2109,6 @@ let sayCapture = null;      // the raw sound of the answer being listened to: Fl
 let sayWake = null;         // the screen wake lock
 let sayInterrupt = null;    // ends whatever the run is waiting on (a sound or the microphone) when it stops
 let sayGiveUp = null;       // ends the listening as Don't know
-function openSay() { if (move('say', true)) render(); }
 // Opens the microphone into sayContext; false when Say it stopped while it opened.
 async function sayOpenMic(token) {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
@@ -2308,7 +2358,7 @@ async function runSay(token) {
     try { pick = await sayTry(token, () => api('api/endless/next', { method: 'POST', body: JSON.stringify({ direction: 'fr-en', deck: 'all', exclude: say.recent }) })); }
     catch (error) { if (sayCurrent(token)) stopSay(error.message); return; }
     if (!pick || !sayCurrent(token)) return;
-    if (!pick.card) { stopSay('There are no words to say yet: practise some in Vocabulary first.'); return; }
+    if (!pick.card) { stopSay('There are no words to say yet: practise some in Cards first.'); return; }
     say.card = pick.card;
     say.recent = [pick.card.id, ...say.recent.filter((id) => id !== pick.card.id)].slice(0, SAY_RECENT);
     const card = say.card;
@@ -2337,7 +2387,7 @@ const SAY_VERDICTS = { right: ['right', 'Right'], wrong: ['wrong', 'Not quite'],
 // Say it is one card whose rows never change size — a label, the French, one answer area and the ring — with the
 // buttons and the "I said it right" row in fixed places under it, so nothing on the screen moves between steps.
 function renderSay() {
-  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Say it</span></div>`;
+  const header = wordsTop();
   const card = say.card, result = say.result;
   // What was heard, quoted inside a sentence: in lower case and without recognition's own full stop.
   const quoted = (text) => esc((text ?? '').trim().replace(/[.!?…]+$/, '').toLowerCase());
@@ -2408,14 +2458,14 @@ async function loadSounds() {
   if (screen === 'sounds') render();
 }
 function renderSounds() {
-  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Sounds</span></div>`;
+  const header = listenTop();
   if (loading || !soundList) { main.innerHTML = `${noticeHTML()}<section class="topics">${header}${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
   const record = (entry) => entry.ready === 0 ? 'Being recorded'
     : entry.recent.total ? `${entry.recent.right} of your last ${entry.recent.total} right` : 'Not tried yet';
   const row = (entry) => `<button class="topic-row" data-action="sound-open" data-sound="${esc(entry.id)}" ${busy || !entry.ready ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${esc(entry.title)}</h3><span class="level-tag">${esc(entry.level)}</span></span><p lang="fr">${entry.labels.map(esc).join(' · ')}</p><small class="topic-progress">${esc(record(entry))}</small></span><span class="arrow" aria-hidden="true">→</span></button>`;
   const ready = soundList.some((entry) => entry.ready);
   const mix = `<button class="topic-row" data-action="sound-open" data-sound="mix" ${busy || !ready ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>All sounds</h3></span><p>A mix, with the pairs you miss most first.</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
-  main.innerHTML = `${noticeHTML()}<section class="topics">${header}<h1>Sounds</h1><p class="subtitle">Two phrases that differ by one sound. Listen, then choose the one you heard.</p><div class="topic-list">${mix}${soundList.map(row).join('')}</div></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics">${header}<p class="subtitle">Two phrases that differ by one sound. Listen, then choose the one you heard.</p><div class="topic-list">${mix}${soundList.map(row).join('')}</div></section>`;
 }
 function openSound(id) { soundId = id; if (move(`sound|${id}`, true)) startSoundRound(); }
 async function startSoundRound() {
@@ -2530,7 +2580,7 @@ async function loadVerbs(quiet = false) {
   if (verbsInfo && verbsInfo.tables.ready < verbsInfo.tables.total && !verbsInfo.tables.error) verbsPoll = setTimeout(() => { if (screen === 'verbs') loadVerbs(true); }, 15000);
 }
 function renderVerbs() {
-  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Verbs</span></div>`;
+  const header = `<div class="section-top">${back('Home', 'home')}<div><span class="stream-label">Verbs</span>${infoButton('verbs')}</div></div>`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>Verbs</h1><p class="subtitle">Conjugation on its own: pick verbs and tenses, then drill.</p>${body}</section>`; };
   if (loading || !verbsInfo) { shell(loading ? '<div class="loading-state" role="status">Loading…</div>' : ''); return; }
   const { tables } = verbsInfo;
@@ -2543,7 +2593,8 @@ function renderVerbs() {
   const blocked = (verbSet === 'mine' && !verbsInfo.mine) || (verbSet === 'chosen' && !verbChosen.length);
   const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} phrases recorded` : 'hear a form, tell the tense or how many';
   const mode = (action, title, detail, disabled = blocked) => `<button class="topic-row" data-action="${action}" ${busy || disabled ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${title}</h3></span><p>${esc(detail)}</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
-  const modes = `${mode('vb-cards', 'Cards', 'think of the form, turn the card, say if you knew it')}${mode('vb-forms', 'Quick forms', 'type one form at a time, as many as you like')}${mode('vb-table', 'Whole table', 'all six persons of one verb', false)}${mode('vb-ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}`;
+  const tape = `<button class="topic-row" data-action="tape" data-tape="verbs-tape" ${busy ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>Tape</h3></span><p>hear a verb, a tense and a person, then the form; keeps playing with your phone locked</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
+  const modes = `${mode('vb-cards', 'Cards', 'think of the form, turn the card, say if you knew it')}${mode('vb-forms', 'Quick forms', 'type one form at a time, as many as you like')}${mode('vb-table', 'Whole table', 'all six persons of one verb', false)}${mode('vb-ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tape}`;
   // The map: every verb with a form practised, most shaky forms first.
   const drilled = verbsInfo.verbs.filter((verb) => Object.values(verb.states).some((states) => states.some((state) => state && state !== 'new')));
   const shaky = (verb) => Object.values(verb.states).flat().filter((state) => state === 'shaky').length;
@@ -2969,7 +3020,7 @@ function storyQuestionsHTML(episode, finished) {
   }).join('');
 }
 function renderStory() {
-  const header = `<div class="section-top">${back('Home', 'home')}<span class="stream-label">Story</span></div>`;
+  const header = `<div class="section-top">${back('Home', 'home')}<div><span class="stream-label">Story</span>${infoButton('story')}</div></div>`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics story">${header}${body}</section>`; };
   if (loading && !storyView) { shell('<div class="loading-state" role="status">Opening the story…</div>'); return; }
   if (!storyStatus) { shell(''); return; }
@@ -3385,13 +3436,13 @@ function show(next) {
   if (name !== 'radio') { clearTimeout(radioPoll); if (!radioAudio.paused) radioAudio.pause(); }
   if (name !== 'mix' && name !== 'focus') { mixedSource = ''; review = null; }
   if (name !== 'listen' && name !== 'read' && name !== 'mix' && name !== 'focus') { streamState = null; streamId = ''; }
-  // Leaving the Walkman stops the tape; coming back winds a new one.
-  if (name !== 'walkman' && walkmanAudio.src) {
+  // Leaving a tape stops it; another tape, or coming back, winds a new one.
+  if (name !== screen && walkmanAudio.src) {
     ++walkmanGeneration; walkmanAudio.pause(); walkmanAudio.removeAttribute('src'); walkmanAudio.load();
     walkman = { tape: null, index: -1, meaning: false, loading: false, started: false, logged: new Set() };
     if ('mediaSession' in navigator) navigator.mediaSession.metadata = null;
   }
-  if (name !== 'walkman') { heardOpen = false; heardSaying = ''; heardResume = false; }
+  if (!tapeScreen(name)) { heardOpen = false; heardSaying = ''; heardResume = false; }
   // Leaving Say it lets go of the microphone.
   if (name !== 'say') stopSay();
   if (name === 'home') homeInfo.at = 0;
@@ -3401,10 +3452,55 @@ function show(next) {
 async function startPractice() {
   if (busy) return;
   move('practice', true);
+  await beginPractice();
+}
+// The cards on screen: a fresh daily session, or Endless choosing its first word.
+async function beginPractice() {
   if (locked()) return;
   if (!await fetchState()) return;
   if (vocabMode === 'endless') { if (screen === 'practice') { endless = null; render(); } return; }
   if (screen === 'practice') runMutation({ type: 'start', body: { direction, deck } });
+}
+// Words opens on a tab: the one asked for, or the one used last. Switching tabs takes the old tab's place in
+// history, so Back leaves the room; 'back' walks back to the tab already behind (from Your words).
+function openWords(tab = wordsTab, how = 'forward', autoplay = false) {
+  if (busy) return;
+  if (!(tab in WORDS_TABS) || (tab === 'say' && roomsOff.has('say'))) tab = 'cards';
+  wordsTab = tab; savePreference('echo.words-tab', tab);
+  if (tab === 'cards' || tab === 'endless') {
+    const mode = tab === 'endless' ? 'endless' : 'daily';
+    if (mode !== vocabMode) { vocabMode = mode; savePreference('echo.vocab-mode', mode); endless = null; revealed = false; }
+  }
+  const next = tab === 'say' ? 'say' : tab === 'walkman' ? 'walkman' : 'practice';
+  if (how === 'switch') switchPlace(next);
+  else if (!move(next, how === 'forward')) return;
+  if (next === 'practice') beginPractice(); else if (next === 'walkman') loadTape(autoplay);
+}
+// Listen opens on a tab the same way: Questions, Sounds or the sentence tape.
+function openListen(tab = listenTab, how = 'forward') {
+  if (busy) return;
+  if (!(tab in LISTEN_TABS)) tab = 'listen';
+  listenTab = tab; savePreference('echo.listen-tab', tab);
+  if (how === 'switch') switchPlace(tab);
+  else if (!move(tab, how === 'forward')) return;
+  if (tab === 'listen') enterStream(); else if (tab === 'sounds') loadSounds(); else loadTape();
+}
+// A tab of the same room replaces the current place in history rather than adding one.
+function switchPlace(next) {
+  if (next !== place()) { trail[depth] = next; history.replaceState({ echo: next, depth }, ''); }
+  show(next);
+}
+// A new direction or category: the cards start again on it; Your words lists it; other tabs just redraw.
+function wordsOptionChanged() {
+  if (screen === 'practice') beginPractice();
+  else if (screen === 'browse') enterBrowse();
+  else render();
+}
+// A tape from Home's Hands-free shelf or the Verbs page; the words tape is the Walkman tab of Words.
+function openTape(name) {
+  if (name === 'walkman') openWords('walkman');
+  else if (name === 'listen-tape') openListen('listen-tape');
+  else if (move(name, true)) loadTape();
 }
 function shownCard() { return endlessMode() ? endless?.cards[0] ?? null : snapshot?.current ?? null; }
 function vocabularyCard() { return !!shownCard() && (screen === 'practice' || (mixed() && mixedSource === 'vocabulary')); }
@@ -3530,12 +3626,6 @@ async function undoEndless() {
   busy = false;
   if (screen === 'practice') render();
 }
-function chooseVocabMode(mode) {
-  if (mode === vocabMode || locked()) return;
-  vocabMode = mode; savePreference('echo.vocab-mode', mode);
-  endless = null; revealed = false;
-  dialog.close(); startPractice();
-}
 function browseWords() {
   if (move('browse', true)) enterBrowse();
 }
@@ -3599,10 +3689,16 @@ function showRule() {
   openDialog(topic.title, `<div class="dialog-copy">${guideHTML(topic.guide, focus)}</div><button class="primary dialog-action" data-action="close-dialog">Back to the sentence</button>`, 'rule');
   dialog.querySelector('.guide-section.focus')?.scrollIntoView({ block: 'start' });
 }
+// Words options: what the cards follow. Daily and Endless are tabs; extra words, early reviews and songs are in Your words.
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Vocabulary options', `<p class="settings-label">Practice</p><div class="segmented" role="group" aria-label="Practice mode"><button data-action="vocab-mode" data-value="daily" aria-pressed="${vocabMode === 'daily'}" ${disabled}>Daily</button><button data-action="vocab-mode" data-value="endless" aria-pressed="${vocabMode === 'endless'}" ${disabled}>Endless</button></div><p class="caption">${vocabMode === 'endless' ? 'Endless: only words you have started, the hard ones most often, for as long as you like. Each answer moves the word’s score by one; your daily stacks and schedule stay as they are.' : 'Daily: new words and reviews in their stacks, on your schedule.'}</p><p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form>${extraPracticeHTML()}${roomsOff.has('songs') ? '' : `<p class="settings-label">Words from songs</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div><button class="secondary song-entry" data-action="songs" ${disabled}>Add words from a song…</button>`}<div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Back to practice</button>`, 'options');
+  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+}
+// More for today (in Your words): extra new words for today, and finished words reviewed early.
+function openMoreToday() {
+  if (!snapshot) return;
+  openDialog('More for today', `${extraPracticeHTML(false)}<button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'more-today');
 }
 async function saveGoal(event) {
   event.preventDefault(); if (locked() || !snapshot) return;
@@ -3672,7 +3768,7 @@ document.addEventListener('click', (event) => {
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }
   if (button?.dataset.direction) {
     if (locked() || direction === button.dataset.direction) return;
-    direction = button.dataset.direction; savePreference('echo.direction', direction); dialog.close(); startPractice(); return;
+    direction = button.dataset.direction; savePreference('echo.direction', direction); dialog.close(); wordsOptionChanged(); return;
   }
   if (button?.dataset.playWord) { const word = words?.find((entry) => entry.id === button.dataset.playWord); if (word) playFrench(wordClipUrl(word.id)); return; }
   if (button?.dataset.revealWord) { revealBrowseWord(button.dataset.revealWord); return; }
@@ -3691,7 +3787,14 @@ document.addEventListener('click', (event) => {
   }
   if (action === 'home') move('home');
   else if (action === 'start') startPractice();
-  else if (action === 'vocabulary') { if (move('practice')) fetchState(); }
+  else if (action === 'words') openWords();
+  else if (action === 'vocabulary') openWords(wordsTab, 'back');
+  else if (action === 'words-tab') openWords(button.dataset.tab, 'switch');
+  else if (action === 'listen-tab') openListen(button.dataset.tab, 'switch');
+  else if (action === 'tape') openTape(button.dataset.tape);
+  else if (action === 'info') openInfo(button.dataset.infoRoom);
+  else if (action === 'more-today') openMoreToday();
+  else if (action === 'your-words') { if (move('browse')) enterBrowse(); }
   else if (action === 'grammar') { if (move('grammar')) loadGrammar(); }
   else if (action === 'topic-page') { if (move(`topic|${topicId}`)) loadGrammar(); }
   else if (action === 'browse') browseWords();
@@ -3699,7 +3802,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'families') { if (move('families', true)) enterFamilies(); }
   else if (action === 'family') { const index = Number(button.dataset.family); familyOpen = familyOpen === index ? -1 : index; renderFamilies(); }
   else if (action === 'family-add') addFromFamily(button.dataset.word);
-  else if (action === 'word-building') { buildingFrom = button.dataset.from === 'families' ? 'families' : 'grammar'; if (move('building', true)) enterBuilding(); }
+  else if (action === 'word-building') { buildingFrom = ['families', 'browse'].includes(button.dataset.from) ? button.dataset.from : 'grammar'; if (move('building', true)) enterBuilding(); }
   else if (action === 'building-word') { const key = `${button.dataset.pattern}:${button.dataset.word}`; buildingWord = buildingWord === key ? '' : key; renderBuilding(); }
   else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
   else if (action === 'extra-words' || action === 'review-early') extraPractice(action, button.dataset);
@@ -3708,7 +3811,6 @@ document.addEventListener('click', (event) => {
   else if (action === 'again') grade(false);
   else if (action === 'known') grade(true);
   else if (action === 'undo') undo();
-  else if (action === 'vocab-mode') chooseVocabMode(button.dataset.value);
   else if (action === 'retry') { clearTimeout(autoRetryTimer); autoRetryTimer = 0; retry(); }
   else if (action === 'retry-browse') loadBrowse();
   else if (action === 'restart') startScope(scope);
@@ -3717,7 +3819,8 @@ document.addEventListener('click', (event) => {
   else if (action === 'rule') grammarMutation('help', { kind: 'rule' });
   else if (action === 'show-answer') grammarMutation('help', { kind: 'answer' });
   else if (action === 'hint') { if (activeGrammar()?.session?.current?.hint) { hintOpen = !hintOpen; render(); } else grammarMutation('help', { kind: 'hint' }); }
-  else if (action === 'listen' || action === 'read') openStream(action);
+  else if (action === 'listen') openListen();
+  else if (action === 'read') openStream('read');
   else if (action === 'practise') openMix();
   else if (action === 'mistakes') openMistakes();
   else if (action === 'friends') openFriends();
@@ -3737,7 +3840,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'song-add') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}/add`, { method: 'POST', body: JSON.stringify({ words: [...(songPicks.get(button.dataset.song) || [])] }) }, (song) => { songView = song; loadSong(); announce(`${song.added.length} words added.`); });
   else if (action === 'song-retry') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}/retry`, { method: 'POST', body: '{}' }, (song) => { songView = song; loadSong(); });
   else if (action === 'song-remove') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}`, { method: 'DELETE' }, () => { songView = null; move('songs'); loadSongs(); });
-  else if (action === 'song-practise') { deck = button.dataset.category; savePreference('echo.deck', deck); startPractice(); }
+  else if (action === 'song-practise') { deck = button.dataset.category; savePreference('echo.deck', deck); openWords('cards'); }
   else if (action === 'song-lyrics') openLyrics();
   else if (action === 'song-page') openSong(songId);
   else if (action === 'lyric-line') { const key = button.dataset.line; if (openLines.has(key)) openLines.delete(key); else openLines.add(key); render(); }
@@ -3754,8 +3857,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'stats-vplay') toggleVerbPlay();
   else if (action === 'stats-tab') chooseStatsTab(button.dataset.tab);
   else if (action === 'points-day') { pointsDay = button.dataset.day; render(); }
-  else if (action === 'walkman') openWalkman();
-  else if (action === 'sounds') { if (move('sounds')) loadSounds(); }
+  else if (action === 'sounds') openListen('sounds', 'back');
   else if (action === 'sound-open') openSound(button.dataset.sound);
   else if (action === 'sound-again') startSoundRound();
   else if (action === 'sound-play') { const question = soundRound?.questions[soundRound.index]; if (question) playFrench(question.audio); }
@@ -3781,7 +3883,6 @@ document.addEventListener('click', (event) => {
   else if (action === 'walkman-mark') markHeard(button.dataset.word, button.dataset.knew === 'true');
   else if (action === 'walkman-choice') chooseWalkman(button.dataset.words);
   else if (action === 'walkman-tense') chooseWalkmanTense(button.dataset.tense);
-  else if (action === 'say') openSay();
   else if (action === 'say-start') startSay();
   else if (action === 'say-stop') stopSay();
   else if (action === 'say-dontknow') sayGiveUp?.();
@@ -3794,7 +3895,7 @@ document.addEventListener('click', (event) => {
 document.addEventListener('focusin', (event) => { if (event.target.classList?.contains('vb-input')) vbLastInput = event.target.id; });
 document.addEventListener('pointerdown', (event) => { if (event.target.closest?.('.vb-accents button')) event.preventDefault(); });
 document.addEventListener('change', (event) => {
-  if (event.target.id === 'deck-select' && !locked()) { deck = event.target.value; browseCategory = deck; savePreference('echo.deck', deck); dialog.close(); startPractice(); }
+  if (event.target.id === 'deck-select' && !locked()) { deck = event.target.value; browseCategory = deck; savePreference('echo.deck', deck); dialog.close(); wordsOptionChanged(); }
   else if (event.target.id === 'browse-category') { browseCategory = event.target.value; renderBrowseResults(); }
   else if (event.target.id === 'browse-show') { browseShow = event.target.value; renderBrowseResults(); }
   else if (event.target.id === 'vb-lookup' && event.target.value) openVerbPage(event.target.value);
@@ -3884,7 +3985,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'mix' || screen === 'focus') enterMixed();
   else if (screen === 'mistakes') loadMistakes();
   else if (screen === 'friends') loadFriends();
-  else if (screen === 'walkman') loadTape();
+  else if (tapeScreen()) loadTape();
   else if (screen === 'statistics') loadStatistics();
   else if (screen === 'songs') loadSongs();
   else if (screen === 'song') loadSong();
@@ -3904,6 +4005,6 @@ window.addEventListener('popstate', (event) => {
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
 // The tape starts at once where the browser allows it; Safari wants a tap first, and then Play is right there.
-else if (requestedScreen === 'walkman') { if (move('walkman', true)) loadTape(true); }
-else if (requestedScreen === 'say' && !roomsOff.has('say')) openSay();
+else if (requestedScreen === 'walkman') openWords('walkman', 'forward', true);
+else if (requestedScreen === 'say') openWords('say');
 else fetchState();
