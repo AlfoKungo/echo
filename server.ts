@@ -21,7 +21,7 @@ import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
 import { backup as snapshot } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
-import { answers, answerTexts, hint, judge, QUIETEST_ANSWER, said, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
+import { answers, answerTexts, hint, judge, QUIETEST_ANSWER, said, sayEnglish, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
 import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
@@ -525,15 +525,16 @@ async function route(req: Request): Promise<Response> {
           console.log(`say: ${word.fr} (${word.en}) too quiet to be an answer (peak ${recording.peak.toFixed(3)}) → unclear`);
           return json({ verdict: 'unclear', heard: '', en: word.en });
         }
+        const english = sayEnglish(wordId, word.en);
         let heard: string;
-        try { heard = await recording.transcribe(hint(word.en)); }
+        try { heard = await recording.transcribe(hint(english)); }
         catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
-        let verdict = judge(heard, word.en, store.sayAccepted(wordId));
+        let verdict = judge(heard, english, store.sayAccepted(wordId));
         let gap: number | null = null;
-        const longest = Math.max(...answers(word.en).map((list) => list.length));
+        const longest = Math.max(...answers(english).map((list) => list.length));
         if (verdict === 'wrong' && said(heard).split(' ').length <= longest + SCORE_EXTRA_WORDS) {
           try {
-            const [heardScore, ...answerScores] = await recording.score([heard, ...answerTexts(word.en)]);
+            const [heardScore, ...answerScores] = await recording.score([heard, ...answerTexts(english)]);
             gap = Math.round((heardScore! - Math.max(...answerScores)) * 10) / 10;
             if (gap <= SCORE_GAP) verdict = 'right';
           } catch (error) { console.error(`say: scoring failed: ${(error as Error).message}`); }

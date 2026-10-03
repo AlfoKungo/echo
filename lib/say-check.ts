@@ -44,6 +44,13 @@ export function answers(english: string): string[][] {
 // What recognition is told to expect: the word's meanings. On 50 words said by two voices it caught 90 of 100 right
 // answers against 88 without, and still let none of 50 wrong answers through.
 export const hint = (english: string) => answers(english).map((list) => list.join(' ')).join(', ') + '.';
+// Common English for a word that its card does not list, counted when said aloud in Say it; the card keeps its own
+// wording. By word id.
+const SAY_ALSO: Record<string, string> = {
+  'essentials-064': 'with', // chez: "je dîne chez Paul", I'm having dinner with Paul
+};
+// The English Say it judges against: the card's meanings and any spoken extras.
+export const sayEnglish = (wordId: string, english: string) => SAY_ALSO[wordId] ? `${english}; ${SAY_ALSO[wordId]}` : english;
 // The wanted answer as Whisper writes text, to score against a clip that seemed wrong: each meaning with and without
 // its leading "to", "the", "a" or "an", capitalised, with a full stop ("To lie.", "Lie.").
 export function answerTexts(english: string): string[] {
