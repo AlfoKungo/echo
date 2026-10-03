@@ -915,7 +915,7 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const zones = `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span class="zone-label${verdict && !right ? ' picked' : ''}" aria-hidden="true">← Didn’t know</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span class="zone-label${right ? ' picked' : ''}" aria-hidden="true">Knew it →</span></button>`;
   const foot = revealed ? zones : saying ? sayFootHTML() : hidden ? '' : '<span class="card-hint" aria-hidden="true">Tap to reveal</span>';
   const label = revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : saying && !say.running ? 'Start Say' : hidden ? 'Reveal the meaning' : 'Reveal the translation';
-  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}"><div class="word-content">${face}</div>${foot}</div>${saying ? sayFixHTML() : ''}<div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}${sayToggle}</div><button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
+  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}"><div class="word-content">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}${sayToggle}</div><button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
 // Each new card (or new version after a grade or undo) plays once on its own; re-renders don't replay it.
 function playCardOnce() {
@@ -2524,13 +2524,14 @@ async function sayRegrade(wordId) {
 }
 // What was heard, quoted inside a sentence: in lower case and without recognition's own full stop.
 const sayQuoted = (text) => esc((text ?? '').trim().replace(/[.!?…]+$/, '').toLowerCase());
-// The foot of a card Say is answering, in place of "Tap to reveal": what Say is doing, and Don't know while it listens.
+// The foot of a card Say is answering, in place of "Tap to reveal", as the Say it card had it: what Say is doing,
+// then the ring while it listens (the speaker while the French plays, a spinner while it checks).
 function sayFootHTML() {
-  if (!say.running) return `<span class="card-hint">Tap to start Say</span>`;
+  if (!say.running) return say.error ? `<p class="say-foot-note warn" role="alert">${esc(say.error)}</p>` : '';
   const listens = say.phase === 'listening' || say.phase === 'again';
-  const line = { starting: 'Opening the microphone…', prompt: 'Listen', listening: 'Say it in English', again: `Heard “${sayQuoted(say.result?.heard)}” · still listening`, checking: 'Checking…' }[say.phase] ?? '';
+  const line = { starting: 'Opening the microphone…', prompt: 'Listen', listening: 'Say it in English — take your time', again: `Heard “${sayQuoted(say.result?.heard)}” · still listening`, checking: 'Checking…' }[say.phase] ?? '';
   const slot = say.phase === 'prompt' ? `<span class="say-speaker">${speaker}</span>` : listens ? '<span class="say-ring"></span>' : say.phase === 'checking' || say.phase === 'starting' ? '<span class="say-busy"></span>' : '';
-  return `<div class="say-foot" aria-live="polite"><span class="say-slot" aria-hidden="true">${slot}</span><span class="say-line">${line}</span>${listens ? '<button class="quiet" data-action="say-dontknow">Don’t know</button>' : ''}</div>`;
+  return `<div class="say-foot" aria-live="polite"><span class="say-line">${line}</span><span class="say-slot" aria-hidden="true">${slot}</span></div>`;
 }
 // On a card Say turned: the verdict at its top, and what was heard after a miss.
 function sayVerdictHTML() {
@@ -2538,14 +2539,18 @@ function sayVerdictHTML() {
   const label = right ? 'Right' : { dontknow: 'Not this time', silent: 'No answer' }[result.verdict] ?? 'Not quite';
   return `<p class="say-verdict ${right ? 'right' : 'wrong'}">${right ? checkIcon : crossIcon}<span>${label}${!right && result.heard ? ` · heard “${sayQuoted(result.heard)}”` : ''}</span></p>`;
 }
-// Under the card: "I said it right" after a miss (naming the word once another card is up), what it did, or why Say stopped.
-function sayFixHTML() {
+// Under the card, with Say on, a row that keeps its place so the card never moves: Start before Say listens; then
+// Don't know (live while it listens) and, after a miss, "I said it right" (naming the word once another card is up),
+// or what it did.
+function sayControlsHTML() {
+  if (!say.running) return '<div class="say-controls"><button class="primary" data-action="say-start">Start Say</button></div>';
+  const listens = say.phase === 'listening' || say.phase === 'again';
+  const dontKnow = `<button class="secondary" data-action="say-dontknow" ${listens ? '' : 'disabled'}>Don’t know</button>`;
   const fix = say.fix;
-  if (say.error && !say.running) return `<p class="say-fix warn" role="alert">${esc(say.error)}</p>`;
-  if (!fix) return '';
-  if (fix.state === 'done') return `<p class="say-fix done">Counted as right — “${sayQuoted(fix.heard)}” now counts for <span lang="fr">${frEsc(fix.fr)}</span>.</p>`;
+  if (!fix) return `<div class="say-controls">${dontKnow}</div>`;
+  if (fix.state === 'done') return `<div class="say-controls two">${dontKnow}<p class="say-done">Counted as right · <span lang="fr">${frEsc(fix.fr)}</span></p></div>`;
   const onIt = say.phase === 'result' && shownCard()?.id === fix.wordId;
-  return `<p class="say-fix">${onIt ? '' : `<span><span lang="fr">${frEsc(fix.fr)}</span>: heard “${sayQuoted(fix.heard)}”</span>`}<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right</button></p>`;
+  return `<div class="say-controls two">${dontKnow}<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right${onIt ? '' : `<small><span lang="fr">${frEsc(fix.fr)}</span> · “${sayQuoted(fix.heard)}”</small>`}</button></div>`;
 }
 // Sounds: pairs that differ by one sound (lib/sounds.ts). One side plays; the learner picks which one they heard,
 // then can hear both. A round is ten pairs, the ones missed most first.
@@ -4066,6 +4071,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'walkman-mark') markHeard(button.dataset.word, button.dataset.knew === 'true');
   else if (action === 'walkman-choice') chooseWalkman(button.dataset.words);
   else if (action === 'walkman-tense') chooseWalkmanTense(button.dataset.tense);
+  else if (action === 'say-start') startSay();
   else if (action === 'say-dontknow') sayGiveUp?.();
   else if (action === 'say-fix') sayCorrect();
   else if (action === 'stream-check') streamCheck();
