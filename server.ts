@@ -516,6 +516,8 @@ async function route(req: Request): Promise<Response> {
       catch (error) { throw new StoreError(`Echo could not listen: ${(error as Error).message}`, 503); }
       const verdict = judge(heard, word.en, store.sayAccepted(wordId));
       if (verdict !== 'unclear') store.recordVerdict({ id: `say-${requestId}`, wordId, knew: verdict === 'right' });
+      // What was heard, kept in the log so a verdict that seems wrong can be looked into afterwards.
+      console.log(`say: ${word.fr} (${word.en}) heard ${JSON.stringify(heard.trim())} → ${verdict}`);
       return json({ verdict, heard, en: word.en });
     }
     // Heard wrong: the learner says they said it right. The check's ✗ becomes ✓, and what was heard counts as the
@@ -524,7 +526,9 @@ async function route(req: Request): Promise<Response> {
       const data = await body(req);
       const requestId = String(data.request ?? '');
       if (!/^[A-Za-z0-9-]{8,64}$/.test(requestId)) throw new StoreError('This answer has no request id.');
-      store.acceptSaid({ id: `say-${requestId}`, wordId: String(data.word ?? ''), heard: said(String(data.heard ?? '')) });
+      const wordId = String(data.word ?? ''), heard = said(String(data.heard ?? ''));
+      store.acceptSaid({ id: `say-${requestId}`, wordId, heard });
+      console.log(`say: ${store.word(wordId)?.fr ?? wordId} marked right; "${heard}" now counts for it`);
       return json({ ok: true });
     }
     const tapeAudio = path.match(/^\/api\/walkman\/([0-9a-f-]+)\.mp3$/);

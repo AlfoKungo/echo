@@ -6,8 +6,9 @@ import { readFileSync } from 'node:fs';
 
 // Vowels next to each other in the mouth, which recognition (and an accent) swaps: leave and live, full and fool.
 const CLOSE_VOWELS = [['IY', 'IH'], ['IH', 'EH'], ['EH', 'AE'], ['EY', 'EH'], ['EY', 'IY'], ['AE', 'AA'], ['AA', 'AH'], ['AH', 'AO'], ['AA', 'AO'], ['AO', 'OW'], ['OW', 'UH'], ['UH', 'UW'], ['UH', 'AH'], ['ER', 'AH'], ['AY', 'AA'], ['AW', 'AA']];
-// Consonants that sound alike: voiced and voiceless twins, th against t, d, f and s, w and v, the nasals, r and l.
-const NEAR = new Set([...CLOSE_VOWELS, ['P', 'B'], ['T', 'D'], ['K', 'G'], ['F', 'V'], ['S', 'Z'], ['SH', 'ZH'], ['CH', 'JH'], ['TH', 'DH'], ['TH', 'T'], ['DH', 'D'], ['TH', 'F'], ['TH', 'S'], ['DH', 'Z'], ['W', 'V'], ['M', 'N'], ['N', 'NG'], ['S', 'SH'], ['CH', 'SH'], ['JH', 'ZH'], ['R', 'L']].flatMap(([a, b]) => [`${a} ${b}`, `${b} ${a}`]));
+// Consonants that sound alike: voiced and voiceless twins, th against t, d, f and s, w and v, the nasals, r and l,
+// and a nasal against the stop made in the same place (m and b, n and d, ng and g: "bi" for "my").
+const NEAR = new Set([...CLOSE_VOWELS, ['P', 'B'], ['T', 'D'], ['K', 'G'], ['F', 'V'], ['S', 'Z'], ['SH', 'ZH'], ['CH', 'JH'], ['TH', 'DH'], ['TH', 'T'], ['DH', 'D'], ['TH', 'F'], ['TH', 'S'], ['DH', 'Z'], ['W', 'V'], ['M', 'N'], ['N', 'NG'], ['S', 'SH'], ['CH', 'SH'], ['JH', 'ZH'], ['R', 'L'], ['M', 'B'], ['N', 'D'], ['NG', 'G']].flatMap(([a, b]) => [`${a} ${b}`, `${b} ${a}`]));
 
 let dictionary: Map<string, string[][]> | null = null;
 function sounds(word: string): string[][] | undefined {
@@ -16,7 +17,8 @@ function sounds(word: string): string[][] | undefined {
     // The package is one object literal; read as text it costs a sixth of what importing it does.
     const text = readFileSync(Bun.resolveSync('cmu-pronouncing-dictionary', import.meta.dir), 'utf8');
     for (const [, key, value] of text.matchAll(/^ {2}"([^"]+)": "([^"]+)",?$/gm)) {
-      const name = key!.replace(/\(\d+\)$/, ''), said = value!.replace(/\d/g, '').split(' ');
+      // Keys as say-check writes words: without apostrophes ("don't" is "dont").
+      const name = key!.replace(/\(\d+\)$/, '').replace(/'/g, ''), said = value!.replace(/\d/g, '').split(' ');
       const known = dictionary.get(name);
       if (known) known.push(said); else dictionary.set(name, [said]);
     }

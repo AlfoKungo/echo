@@ -13,18 +13,20 @@ export type SayVerdict = 'right' | 'wrong' | 'dontknow' | 'unclear';
 
 const LEADING = new Set(['to', 'the', 'a', 'an']);
 const FILLERS = new Set(['um', 'umm', 'uh', 'uhm', 'er', 'erm', 'ah', 'hmm', 'mm', 'oh', 'so', 'well', 'okay', 'ok']);
-const OPENERS = [['it', 's'], ['it', 'is'], ['its'], ['i', 'think'], ['that', 's'], ['that', 'is'], ['it', 'means'], ['means']];
+const OPENERS = [['its'], ['it', 'is'], ['i', 'think'], ['thats'], ['that', 'is'], ['it', 'means'], ['means']];
 // Words that only finish a phrase: saying "look" for "to look at" or "teach" for "to teach someone something".
 const TAILS = new Set(['at', 'of', 'to', 'up', 'out', 'on', 'in', 'for', 'with', 'about', 'off', 'someone', 'something', 'oneself', 'yourself', 'sth', 'sb']);
 // What Whisper writes for silence, breath or room noise when nothing was said.
 const NOTHING = new Set(['you', 'thank you', 'thanks', 'thanks for watching', 'thank you for watching', 'bye bye', 'music', 'applause', 'silence', 'blank audio', 'inaudible']);
-// Thinking aloud, or an opener cut off before the answer, after fillers are dropped.
-const THINKING = ['let me think', 'let me see', 'wait', 'hold on', 'one second', 'one sec', 'just a second', 'just a moment', 'moment', 'i know this', 'i know this one', 'what is it', 'what was it', 'i think', 'it s', 'it is', 'its', 'that s', 'it means', 'means'];
+// Thinking aloud, or an opener cut off before the answer, after fillers are dropped. Checked after the answer, so
+// "its" said for a word that means "its" is right.
+const THINKING = ['let me think', 'let me see', 'wait', 'hold on', 'one second', 'one sec', 'just a second', 'just a moment', 'moment', 'i know this', 'i know this one', 'what is it', 'what was it', 'i think', 'its', 'it is', 'thats', 'it means', 'means'];
 // Giving up, said at the start of what was heard ("I don't know this one").
-const DONT_KNOW = ['i don t know', 'don t know', 'i dont know', 'dont know', 'i do not know', 'dunno', 'i dunno', 'no idea', 'i have no idea', 'i ve got no idea', 'no clue', 'i have no clue', 'pass', 'i pass', 'skip', 'i give up', 'i forgot', 'i forget', 'i don t remember', 'don t remember', 'i can t remember', 'i m not sure', 'not sure'];
+const DONT_KNOW = ['i dont know', 'dont know', 'i do not know', 'dunno', 'i dunno', 'no idea', 'i have no idea', 'ive got no idea', 'no clue', 'i have no clue', 'pass', 'i pass', 'skip', 'i give up', 'i forgot', 'i forget', 'i dont remember', 'dont remember', 'i cant remember', 'im not sure', 'not sure'];
 
+// Lower case, without accents or brackets, words of letters and digits only; an apostrophe joins ("it's" is "its").
 const plain = (text: string) => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-  .replace(/\[[^\]]*\]|\([^)]*\)/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim();
+  .replace(/\[[^\]]*\]|\([^)]*\)/g, ' ').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
 const words = (text: string) => plain(text).split(' ').filter(Boolean);
 function trimLeading(list: string[]): string[] {
   let start = 0;

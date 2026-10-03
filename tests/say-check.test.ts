@@ -52,7 +52,7 @@ test('what the learner marked as heard wrong counts for that word from then on',
 });
 
 test('a word that sounds like the answer counts; a different word does not', () => {
-  for (const [heard, english] of [['To live.', 'to leave'], ['Hi.', 'eye'], ['I.', 'eye'], ['Hold.', 'old'], ['Ship.', 'sheep'], ['Fill.', 'to feel'], ['Fool.', 'full'], ['Tree.', 'three'], ['Sink.', 'to think'], ['Vest.', 'west']]) {
+  for (const [heard, english] of [['To live.', 'to leave'], ['Hi.', 'eye'], ['I.', 'eye'], ['Hold.', 'old'], ['Ship.', 'sheep'], ['Fill.', 'to feel'], ['Fool.', 'full'], ['Tree.', 'three'], ['Sink.', 'to think'], ['Vest.', 'west'], ['Bi.', 'my (before a masculine noun)']]) {
     expect(judge(heard!, english!)).toBe('right');
   }
   for (const [heard, english] of [['Boy.', 'to be'], ['Train.', 'rain'], ['Run.', 'rain'], ['Back.', 'big; tall'], ['Lesson.', 'person'], ['Toad.', 'frog']]) {
@@ -60,6 +60,13 @@ test('a word that sounds like the answer counts; a different word does not', () 
   }
   // Among more words, a word that only sounds like the answer is not it: the "to" of "listen to" is not "tea".
   expect(judge('Listen to.', 'tea')).toBe('wrong');
+});
+
+test('an apostrophe joins: "It\'s." is the answer "its", and still only an opener for another word', () => {
+  expect(judge('It\'s.', 'his; her; its (before a masculine noun)')).toBe('right');
+  expect(judge('It’s.', 'frog')).toBe('unclear');
+  expect(judge('It\'s a frog.', 'frog')).toBe('right');
+  expect(judge('I’m not sure.', 'frog')).toBe('dontknow');
 });
 
 test('the hint lists the meanings recognition should expect', () => {
