@@ -29,13 +29,22 @@ applyTheme(readPreference('echo.theme', 'dusk') === 'paper' ? 'paper' : 'dusk');
 let direction = readPreference('echo.direction', 'fr-en') === 'en-fr' ? 'en-fr' : 'fr-en';
 let deck = readPreference('echo.deck', 'all');
 let speed = readPreference('echo.speed', '1') === '0.8' ? 0.8 : 1;
+// Say the French when a card turns: for cards you turn yourself in Read, and in English → French.
 let audioMode = readPreference('echo.audio-mode', 'off') === 'on';
-// Listen mode hides the French word until reveal; it only applies to French → English, where the recording is the prompt.
-let listenMode = readPreference('echo.listen-mode', 'off') === 'on';
+// How a Words card is practised, in French → English: Read (see the French), Listen (hear it, hidden until it
+// turns) or Speak (see and hear it, then say the English aloud; Echo checks it and turns and grades the card).
+// A device that had the Listen or Say switch on starts on that way.
+let practiceWay = readPreference('echo.way', readPreference('echo.say-mode', 'off') === 'on' || readPreference('echo.words-tab', '') === 'say' ? 'speak' : readPreference('echo.listen-mode', 'off') === 'on' ? 'listen' : 'read');
+if (!['read', 'listen', 'speak'].includes(practiceWay)) practiceWay = 'read';
 let heardCard = '';
-const listening = () => listenMode && direction === 'fr-en';
+// Speak is offered on the Words cards (not in Practise), in the Echo that has it.
+const speakOffered = () => screen === 'practice' && !roomsOff.has('say');
+// The way the card on screen is practised: always Read in English → French, and Read where Speak is not offered.
+const wayNow = () => direction !== 'fr-en' || (practiceWay === 'speak' && !speakOffered()) ? 'read' : practiceWay;
+const listening = () => wayNow() === 'listen';
 const headphones = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>';
 const micIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>';
+const eyeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></svg>';
 const bookIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v14M12 6C9.5 4.2 6 4 3 4.7v13.6c3-.7 6.5-.5 9 1.3 2.5-1.8 6-2 9-1.3V4.7C18 4 14.5 4.2 12 6Z"/></svg>';
 const mixIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="3.2"/><circle cx="17" cy="17" r="3.2"/><path d="M13.5 6.5h6.2m0 0-2.2-2.2m2.2 2.2-2.2 2.2M10.5 17.5H4.3m0 0 2.2-2.2m-2.2 2.2 2.2 2.2"/></svg>';
 const cassette = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><circle cx="15.5" cy="11" r="2"/><path d="M10.5 11h3M7 19l1.5-3h7L17 19"/></svg>';
@@ -910,12 +919,13 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const face = hidden
     ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button>${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}`
     : `${verdict ? sayVerdictHTML() : ''}<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender}`;
-  const listenToggle = direction === 'fr-en' ? `<button class="audio-mode ${listenMode ? 'on' : ''}" data-action="listen-mode" aria-pressed="${listenMode}" aria-label="Listen only: ${listenMode ? 'on' : 'off'}" title="Hear the French word instead of reading it">${headphones}<span>Listen ${listenMode ? 'on' : 'off'}</span></button>` : '';
-  const sayToggle = direction === 'fr-en' && screen === 'practice' && !roomsOff.has('say') ? `<button class="audio-mode ${sayMode ? 'on' : ''}" data-action="say-mode" aria-pressed="${sayMode}" aria-label="Say: ${sayMode ? 'on' : 'off'}" title="Say each card’s English aloud; Echo checks it">${micIcon}<span>Say ${sayMode ? 'on' : 'off'}</span></button>` : '';
+  // How this card is practised, in French → English: Read, Listen, and Speak where it is offered.
+  const ways = direction === 'fr-en' ? [['read', 'Read', eyeIcon], ['listen', 'Listen', headphones], ...(speakOffered() ? [['speak', 'Speak', micIcon]] : [])] : [];
+  const wayChoice = ways.length ? `<div class="practice-way" role="group" aria-label="How you practise">${ways.map(([way, title, icon]) => `<button data-action="practice-way" data-way="${way}" aria-pressed="${wayNow() === way}">${icon}<span>${title}</span></button>`).join('')}</div>` : '';
   const zones = `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span class="zone-label${verdict && !right ? ' picked' : ''}" aria-hidden="true">← Didn’t know</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span class="zone-label${right ? ' picked' : ''}" aria-hidden="true">Knew it →</span></button>`;
   const foot = revealed ? zones : saying ? sayFootHTML() : hidden ? '' : '<span class="card-hint" aria-hidden="true">Tap to reveal</span>';
-  const label = revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : saying && !say.running ? 'Start Say' : hidden ? 'Reveal the meaning' : 'Reveal the translation';
-  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}"><div class="word-content">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools"><div class="study-modes"><button class="audio-mode ${audioMode ? 'on' : ''}" data-action="audio-mode" aria-pressed="${audioMode}" aria-label="French audio on reveal: ${audioMode ? 'on' : 'off'}" title="Play French on each reveal">${speaker}<span>Audio ${audioMode ? 'on' : 'off'}</span></button>${listenToggle}${sayToggle}</div><button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
+  const label = revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : saying && !say.running ? 'Start speaking' : hidden ? 'Reveal the meaning' : 'Reveal the translation';
+  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}"><div class="word-content">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools">${wayChoice}<button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
 // Each new card (or new version after a grade or undo) plays once on its own; re-renders don't replay it.
 function playCardOnce() {
@@ -2189,7 +2199,7 @@ function resetStatsView() {
   pointsDay = '';
 }
 function chooseStatsBin(bin) { if (statsBin === bin) statsOpen = !statsOpen; else { statsBin = bin; statsOpen = true; } drawScores(); }
-// ── Say (a switch under the card in Words, Cards and Endless, French → English): the learner says each card's
+// ── Speak (a way of practising a Words card in Cards and Endless, French → English): the learner says each card's
 // English aloud and Echo checks it (api/say/check, lib/say-check.ts). The verdict turns the card, and after
 // SAY_SHOW_MS (and the English, after a miss) grades it as a tap on that half would: a Cards grade or an Endless mark.
 // A level meter tells speech from the room's quiet, so an answer ends SAY_QUIET_MS after the learner stops. A wrong
@@ -2208,9 +2218,8 @@ const SAY_SHOW_MS = 900;
 // A moment of silence played on Start, inside the tap, so Safari lets the words that follow play without one.
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
 const sayAudio = new Audio();
-let sayMode = readPreference('echo.say-mode', readPreference('echo.words-tab', '') === 'say' ? 'on' : 'off') === 'on';
-// Say is on this screen: the switch is on, on a Words card in French → English, in the Echo that has it.
-const sayHere = () => sayMode && screen === 'practice' && direction === 'fr-en' && !roomsOff.has('say');
+// Say listens on this card: the way is Speak (French → English, on the Words cards, in the Echo that has it).
+const sayHere = () => wayNow() === 'speak';
 // A card as Say follows it: a grade or an undo brings a new version, an Endless word a new serial.
 const cardKey = (card) => card ? `${card.id}:${card.version}:${card.serial ?? ''}` : '';
 // phase: idle · starting · prompt (the French plays) · listening · checking · again (heard, not an answer) · result · skipped
@@ -2264,7 +2273,7 @@ async function startSay() {
   } catch (error) {
     sayContext?.close().catch(() => {}); sayContext = null;
     say = { ...say, running: false, phase: 'idle', error: error.name === 'NotAllowedError'
-      ? 'Echo needs the microphone for Say. Allow it for this site (in Safari: aA → Website Settings → Microphone), then tap the card.'
+      ? 'Echo needs the microphone for Speak. Allow it for this site (in Safari: aA → Website Settings → Microphone), then tap the card.'
       : `The microphone could not start: ${error.message}` };
     render();
     return;
@@ -2283,17 +2292,23 @@ function stopSay(message = '') {
   sayContext?.close().catch(() => {}); sayContext = null;
   if (screen === 'practice') render();
 }
-document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && say.running) stopSay('Say paused when the screen locked or Echo went to the background. Tap the card to go on.'); });
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && say.running) stopSay('Speak paused when the screen locked or Echo went to the background. Tap the card to go on.'); });
 const sayCurrent = (token) => say.running && token === say.token;
 function sayWait(ms, token) {
   return new Promise((resolve) => { const timer = setTimeout(() => { sayInterrupt = null; resolve(sayCurrent(token)); }, ms); sayInterrupt = () => { clearTimeout(timer); sayInterrupt = null; resolve(false); }; });
 }
-// Plays one recording to its end; false when it could not play or the run stopped meanwhile.
+// Plays one recording to its end; false when it could not play or the run stopped meanwhile. The browser can pause
+// a clip on its own (iPhone does as the microphone opens or closes, Chrome as a new capture starts): it is played on
+// once, then left; and a clip that never ends gives up after SAY_CLIP_MS, so Speak never waits on it for good.
+const SAY_CLIP_MS = 10000;
 function sayPlay(url, token) {
   return new Promise((resolve) => {
-    const done = (played) => { sayAudio.onended = sayAudio.onerror = null; sayInterrupt = null; resolve(played && sayCurrent(token)); };
+    let resumed = false;
+    const limit = setTimeout(() => done(false), SAY_CLIP_MS);
+    const done = (played) => { clearTimeout(limit); sayAudio.onended = sayAudio.onerror = sayAudio.onpause = null; sayInterrupt = null; resolve(played && sayCurrent(token)); };
     sayAudio.onended = () => done(true); sayAudio.onerror = () => done(false);
-    sayInterrupt = () => { sayAudio.pause(); done(false); };
+    sayAudio.onpause = () => { if (sayAudio.ended) return; if (resumed) { done(false); return; } resumed = true; sayAudio.play().catch(() => done(false)); };
+    sayInterrupt = () => { sayAudio.onpause = null; sayAudio.pause(); done(false); };
     sayAudio.src = url; sayAudio.play().catch(() => done(false));
   });
 }
@@ -2475,7 +2490,7 @@ async function runSay(token) {
     if (!card || revealed || locked() || loading) { if (!await sayWait(150, token)) return; continue; }
     const key = cardKey(card);
     say.key = key; say.result = null; say.phase = 'prompt'; render();
-    if ((audioMode || listening()) && !await sayPlay(card.audioUrl, token) && !sayCurrent(token)) return;
+    if (!await sayPlay(card.audioUrl, token) && !sayCurrent(token)) return;
     if (revealed || cardKey(shownCard()) !== key) continue;
     const result = await sayAnswer(card, token);
     if (!result) return;
@@ -2543,7 +2558,7 @@ function sayVerdictHTML() {
 // Don't know (live while it listens) and, after a miss, "I said it right" (naming the word once another card is up),
 // or what it did.
 function sayControlsHTML() {
-  if (!say.running) return '<div class="say-controls"><button class="primary" data-action="say-start">Start Say</button></div>';
+  if (!say.running) return '<div class="say-controls"><button class="primary" data-action="say-start">Start speaking</button></div>';
   const listens = say.phase === 'listening' || say.phase === 'again';
   const dontKnow = `<button class="secondary" data-action="say-dontknow" ${listens ? '' : 'disabled'}>Don’t know</button>`;
   const fix = say.fix;
@@ -3679,6 +3694,16 @@ function openTape(name) {
 }
 function shownCard() { return endlessMode() ? endless?.cards[0] ?? null : snapshot?.current ?? null; }
 function vocabularyCard() { return !!shownCard() && (screen === 'practice' || (mixed() && mixedSource === 'vocabulary')); }
+// Read · Listen · Speak, under the card. Speak opens the microphone inside this tap, as iPhone requires; the
+// others close it.
+function choosePracticeWay(way) {
+  if (way === practiceWay || !['read', 'listen', 'speak'].includes(way)) return;
+  practiceWay = way; savePreference('echo.way', way);
+  heardCard = ''; stopAudio();
+  if (sayHere()) { startSay(); return; }
+  say.fix = null; say.error = '';
+  stopSay(); render();
+}
 function reveal() {
   if (!vocabularyCard() || revealed || locked() || loading) return;
   // With Say on and not yet listening (iPhone opens the microphone only on a tap), the tap starts it instead.
@@ -3686,8 +3711,8 @@ function reveal() {
   revealed = true; saySkip?.(); render(); document.querySelector('#flashcard')?.focus({ preventScroll: true });
   const card = shownCard();
   announce(`Answer: ${direction === 'en-fr' ? card.fr : card.en}.`);
-  // Listen mode already played the word when the card appeared; the reveal only shows the answer.
-  if (audioMode && !listening()) playFrench(card.audioUrl);
+  // Listen and Speak already said the word when the card appeared; turning it only shows the answer.
+  if (audioMode && wayNow() === 'read') playFrench(card.audioUrl);
 }
 function grade(known) {
   if (!revealed || locked() || loading || !vocabularyCard()) return;
@@ -3873,7 +3898,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the French when a card turns<small class="dialog-note">When you Read, or practise English → French</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
 }
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
@@ -3934,13 +3959,8 @@ document.addEventListener('click', (event) => {
   if (action === 'st-info') { toggleStatsTip(button); return; }
   if (!event.target.closest('.st-tip')) closeStatsTips();
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }
-  if (action === 'audio-mode') { audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off'); if (!audioMode) stopAudio(); render(); return; }
-  if (action === 'say-mode') {
-    sayMode = !sayMode; savePreference('echo.say-mode', sayMode ? 'on' : 'off');
-    if (sayMode && sayHere()) startSay(); else { say.fix = null; say.error = ''; stopSay(); render(); }
-    return;
-  }
-  if (action === 'listen-mode') { listenMode = !listenMode; savePreference('echo.listen-mode', listenMode ? 'on' : 'off'); heardCard = ''; if (!listenMode) stopAudio(); render(); return; }
+  if (action === 'turn-sound') { audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off'); if (!audioMode) stopAudio(); openOptions(); return; }
+  if (action === 'practice-way') { choosePracticeWay(button.dataset.way); return; }
   if (action === 'replay') { const card = shownCard(); if (card) playFrench(card.audioUrl); return; }
   if (action === 'play-clips') { toggleClips(); return; }
   if (action === 'clips-restart') { toggleClips(true); return; }
@@ -4193,5 +4213,5 @@ if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); 
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
 // The tape starts at once where the browser allows it; Safari wants a tap first, and then Play is right there.
 else if (requestedScreen === 'walkman') openWords('walkman', 'forward', true);
-else if (requestedScreen === 'say' && !roomsOff.has('say')) { sayMode = true; savePreference('echo.say-mode', 'on'); openWords('endless'); }
+else if (requestedScreen === 'say' && !roomsOff.has('say')) { practiceWay = 'speak'; savePreference('echo.way', 'speak'); openWords('endless'); }
 else fetchState();

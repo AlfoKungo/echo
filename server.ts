@@ -504,7 +504,7 @@ async function route(req: Request): Promise<Response> {
       store.recordVerdict({ id: String(data.id ?? ''), wordId: String(data.wordId ?? ''), knew: data.knew as boolean | null });
       return json({ ok: true });
     }
-    // Say (a switch in Words, Cards and Endless): a recording of the learner saying a French word's English, judged
+    // Speak (a way of practising Words cards): a recording of the learner saying a French word's English, judged
     // against the word's meanings and what they once marked right for it. When that says wrong, the wanted answer is
     // scored against the recording: nearly as likely as what was heard, it was said and recognition misread it. The
     // verdict only answers: the phone records it as that card's grade or Endless mark, as a tap would be.
