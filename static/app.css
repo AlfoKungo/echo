@@ -163,10 +163,12 @@ main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 aut
 .st-info{flex:none;display:grid;place-items:center;width:30px;height:30px;margin:-7px -6px 0 0;border-radius:50%;color:var(--dim)}.st-info svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}.st-info[aria-expanded=true]{color:var(--violet)}
 /* The explanation floats over the chart below, so opening it moves nothing on the page. */
 .st-tip{position:absolute;top:24px;left:0;right:0;z-index:6;margin:0;padding:12px 14px;background:var(--card-hover);border:1px solid var(--frame);border-radius:12px;box-shadow:0 10px 28px var(--shadow);font-size:14px;line-height:1.5;color:var(--ink)}
-.st-big{font-size:17px;color:var(--muted)}.st-big strong{font-size:40px;font-weight:550;letter-spacing:-1px;color:var(--ink);margin-right:6px;font-variant-numeric:tabular-nums}
-.st-bigrow{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}.st-bigrow .st-big{margin:0}
-.st-total{flex:none;display:flex;flex-direction:column;align-items:flex-end;line-height:1.15;padding-bottom:6px;font-size:13px;color:var(--muted)}.st-total strong{font-size:22px;font-weight:550;color:var(--ink);font-variant-numeric:tabular-nums}
-.st-sub{font-size:14px;color:var(--muted);margin:2px 0 18px}
+/* Four fixed columns, the total in the last: a longer number or day label never moves the rest. */
+.st-nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 18px}
+.st-nums div{min-width:0;display:flex;flex-direction:column;gap:2px}
+.st-nums span{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-nums strong{font-size:24px;font-weight:550;letter-spacing:-.4px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.st-nums .total{grid-column:4;align-items:flex-end;text-align:right}
 .st-cap{font-size:14px;color:var(--muted);margin:12px 0 0;line-height:1.5}
 .st-hist{display:grid;grid-template-columns:repeat(17,1fr);gap:3px;align-items:end;height:150px;padding:0 2px}
 .st-bar{height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0;border-radius:4px}
