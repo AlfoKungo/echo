@@ -40,9 +40,9 @@ export type HeardInput = { wordId: string; requestId: string };
 export type StatsWord = Pick<ListeningWord, 'id' | 'fr' | 'en' | 'category' | 'status' | 'score' | 'misses' | 'gender'>;
 export type StatsCategory = { id: string; title: string; total: number; started: number; average: number | null };
 export type StatsDay = { day: string; knew: number; missed: number; gained: number; lost: number };
-// The Word scores chart at the end of a study day: words known and still learning, of how many, and each score
-// bar (-8 to 8) as [known, still learning].
-export type ScoreHistoryDay = { day: string; know: number; learning: number; total: number; bins: [number, number][] };
+// The Word scores chart at the end of a study day: words known and still learning, of how many, every score added
+// up (whole: stored scores are rounded, replayed ones are not), and each score bar (-8 to 8) as [known, still learning].
+export type ScoreHistoryDay = { day: string; know: number; learning: number; total: number; sum: number; bins: [number, number][] };
 // A past day's started words with the score and state they had at its end.
 export type ScoreDayWords = { day: string; words: { id: string; score: number; known: boolean }[] };
 export type VocabularyStatistics = { words: StatsWord[]; counts: Record<BrowseWord['status'], number>; categories: StatsCategory[]; days: StatsDay[]; walkmanHeard: number; history: ScoreHistoryDay[] };

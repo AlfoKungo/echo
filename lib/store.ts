@@ -1200,15 +1200,16 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       const words = started.map(({ id, fr, en, category, status, score, misses, gender }) => ({ id, fr, en, category, status, score, misses, ...(gender ? { gender } : {}) }));
       // Past days are rebuilt; today is the live chart above, so the last day always matches it.
       const bins: [number, number][] = Array.from({ length: SCORE_BINS }, () => [0, 0]);
-      for (const word of started) bins[scoreBin(word.score)]![word.status === 'scheduled' || word.status === 'due' ? 0 : 1] += 1;
-      const today = { day: studyDay(now()), know: counts.scheduled + counts.due, learning: counts.learning, total: all.length, bins };
+      let sum = 0;
+      for (const word of started) { bins[scoreBin(word.score)]![word.status === 'scheduled' || word.status === 'due' ? 0 : 1] += 1; sum += word.score; }
+      const today = { day: studyDay(now()), know: counts.scheduled + counts.due, learning: counts.learning, total: all.length, sum: Math.round(sum), bins };
       const key = `${today.day}|${words.length}|${pastRecord.get(studyDayStart(now()).toISOString(), today.day)!.key}`;
       if (past?.key !== key) past = { key, history: pastDays().map(({ day, end }): ScoreHistoryDay => {
         const bins: [number, number][] = Array.from({ length: SCORE_BINS }, () => [0, 0]);
-        let know = 0;
+        let know = 0, sum = 0;
         const snapshot = replayed.get(end)!;
-        for (const [id, known] of snapshot.status) { bins[scoreBin(snapshot.scores.get(id) ?? 0)]![known ? 0 : 1] += 1; if (known) know += 1; }
-        return { day, know, learning: snapshot.status.size - know, total: snapshot.total, bins };
+        for (const [id, known] of snapshot.status) { const score = snapshot.scores.get(id) ?? 0; bins[scoreBin(score)]![known ? 0 : 1] += 1; sum += score; if (known) know += 1; }
+        return { day, know, learning: snapshot.status.size - know, total: snapshot.total, sum: Math.round(sum), bins };
       }) };
       replayed.clear();
       return { words, counts, categories, days, walkmanHeard: heardCount.get()!.count, history: [...past.history, today] };

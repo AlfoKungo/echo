@@ -1682,6 +1682,8 @@ let statsAt = 0;
 let statsPlay = 0;
 const statsDayWords = new Map(); // day → words, or 'loading'
 const points = (value) => `${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(Math.round(value * 10) / 10).toLocaleString('en')}`;
+// A chart's total, beside its big figure: whole, no sign unless below zero. Figures saved before totals existed have none.
+const statTotal = (value) => typeof value === 'number' ? `<span class="st-total"><strong>${Math.round(value) < 0 ? '−' : ''}${Math.abs(Math.round(value)).toLocaleString('en')}</strong>total</span>` : '';
 const STATS_BINS = Array.from({ length: 17 }, (_, index) => index - 8);
 const statsBinOf = (score) => Math.max(-8, Math.min(8, Math.round(score)));
 const statsKnown = (word) => word.status === 'scheduled' || word.status === 'due';
@@ -1706,7 +1708,7 @@ function scoresViewHTML() {
     const ghost = past ? `<span class="ghost" style="height:${(today.bins[index][0] + today.bins[index][1]) / tallest * 100}%"></span>` : '';
     return `<button class="st-bar ${tone}" data-action="stats-bin" data-bin="${bin}" aria-pressed="${statsBin === bin}" aria-label="Score ${signed(bin)}: ${know} known, ${learning} still learning">${ghost}<span class="learning" style="height:${learning / tallest * 100}%"></span><span class="know" style="height:${know / tallest * 100}%"></span></button>`;
   }).join('');
-  return `<p class="st-big"><strong>${shown.know.toLocaleString('en')}</strong> ${shown.know === 1 ? 'word' : 'words'} you ${past ? 'knew' : 'know'}</p>
+  return `<div class="st-bigrow"><p class="st-big"><strong>${shown.know.toLocaleString('en')}</strong> ${shown.know === 1 ? 'word' : 'words'} you ${past ? 'knew' : 'know'}</p>${statTotal(shown.sum)}</div>
       <p class="st-sub">and ${shown.learning ? `${shown.learning} still learning` : 'none still learning'}, out of ${shown.total.toLocaleString('en')}.</p>
       <div class="st-hist">${bars}</div>
       <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
@@ -1795,7 +1797,7 @@ function verbScoresHTML() {
     const ghost = past ? `<span class="ghost" style="height:${today.bins[index] / tallest * 100}%"></span>` : '';
     return `<button class="st-bar ${tone}" data-action="stats-vbin" data-bin="${bin}" aria-pressed="${vScoreBin === bin}" aria-label="Score ${signed(bin)}: ${shown.bins[index]} forms">${ghost}<span class="know" style="height:${shown.bins[index] / tallest * 100}%"></span></button>`;
   }).join('');
-  return `<p class="st-big"><strong>${shown.solid}</strong> ${shown.solid === 1 ? 'form' : 'forms'} scoring +3 or more</p>
+  return `<div class="st-bigrow"><p class="st-big"><strong>${shown.solid}</strong> ${shown.solid === 1 ? 'form' : 'forms'} scoring +3 or more</p>${statTotal(shown.sum)}</div>
       <p class="st-sub">${shown.shaky} at −2 or less. ${shown.practised} of ${statistics.verbs.forms.total.toLocaleString('en')} forms of your verbs in four tenses practised${past ? ' by then' : ''}.</p>
       <div class="st-hist">${bars}</div>
       <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
@@ -1866,7 +1868,7 @@ function verbStatsHTML() {
   const kinds = verbs.kinds.map((kind) => vsRow(kind.title, `${VB_TENSES[kind.tense]} · ${kind.total} answers`, kind, `data-action="vb-tense-page" data-tense="${kind.tense}"`)).join('');
   const tenses = verbTensePersonRows(Object.entries(VB_TENSES).map(([tense, name]) => ({ label: name, score: scores.tenses[tense], answered: verbs.tenses[tense], action: `data-action="vb-tense-page" data-tense="${tense}"` })));
   const people = verbTensePersonRows(VB_PERSONS.map((person, index) => ({ label: person, score: scores.people[index], answered: verbs.people[index] })));
-  return `<div class="st-block">${stHead('Verb form scores', 'Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or tape mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Type it, Cards, Next table and the verb tape bring the left side most. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.')}
+  return `<div class="st-block">${stHead('Verb form scores', 'Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or tape mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Type it, Cards, Next table and the verb tape bring the left side most. Total is every form’s score added up. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.')}
       <div id="vs-scores">${verbScoresHTML()}</div>
       ${vsDays().length > 1 ? `<div class="st-when" id="vs-when">${verbScoresWhenHTML()}</div>
       <input type="range" class="st-slider" id="vs-slider" min="0" max="${vsDays().length - 1}" step="1" value="${vsIndex()}" aria-label="Choose a day">
@@ -1907,8 +1909,8 @@ function renderStatistics() {
   const part = (value, of, kind) => `<span class="${kind}" style="height:${of ? value / of * 100 : 0}%"></span>`;
   const pointBars = together.map((day) => `<button class="st-pt st-pt-both" style="${rows}" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(day.words + day.verbs)} points, words ${points(day.words)}, verbs ${points(day.verbs)}"><span class="up">${part(Math.max(0, day.verbs), top, 'verbs')}${part(Math.max(0, day.words), top, 'words')}</span><span class="down">${part(Math.max(0, -day.words), bottom, 'words')}${part(Math.max(0, -day.verbs), bottom, 'verbs')}</span></button>`).join('');
   const shownLabel = shown.day === today.day ? 'today' : `on ${new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`))}`;
-  const pointsBlock = `<div class="st-block">${stHead('Points, last two weeks', 'How far your words and verbs climbed, together. Words: +2 an answer known in Cards, +1 in Endless, +0.5 a word heard to the end on the Walkman, and ✓ there counting like knowing it. Verbs: +2 a typed form, +1 a Cards or tape mark. A miss (−3, or −1 in Endless, −2 a mark) only takes back what that word or form had climbed, by your answers, above the lowest it had been: missing something you never knew costs nothing, forgetting something you knew costs what you had. Each bar is the day: gains stacked above the line, losses below. Tap a day to see its total and how it split.')}
-      <p class="st-big"><strong>${points(shown.words + shown.verbs)}</strong> ${esc(shownLabel)}</p>
+  const pointsBlock = `<div class="st-block">${stHead('Points, last two weeks', 'How far your words and verbs climbed, together. Words: +2 an answer known in Cards, +1 in Endless, +0.5 a word heard to the end on the Walkman, and ✓ there counting like knowing it. Verbs: +2 a typed form, +1 a Cards or tape mark. A miss (−3, or −1 in Endless, −2 a mark) only takes back what that word or form had climbed, by your answers, above the lowest it had been: missing something you never knew costs nothing, forgetting something you knew costs what you had. Each bar is the day: gains stacked above the line, losses below. Total is the two weeks added up. Tap a day to see its total and how it split.')}
+      <div class="st-bigrow"><p class="st-big"><strong>${points(shown.words + shown.verbs)}</strong> ${esc(shownLabel)}</p>${statTotal(together.reduce((sum, day) => sum + day.words + day.verbs, 0))}</div>
       <p class="st-sub">${shown.words || shown.verbs ? `words ${points(shown.words)} · verbs ${points(shown.verbs)}` : 'Nothing practised'}</p>
       <div class="st-points">${pointBars}</div><div class="st-days-axis">${dayAxis}</div>
       <div class="st-legend"><span><i style="background:var(--violet)"></i>words</span><span><i style="background:var(--getting)"></i>verbs</span><span><i style="background:var(--danger)"></i>lost more than gained</span></div></div>`;
@@ -1934,7 +1936,7 @@ function renderStatistics() {
       <div class="st-days-axis">${dayAxis}</div></div>`;
   const level = (mode) => statistics.levels.find((entry) => entry.mode === mode)?.label ?? 'A1';
   const facts = [[level('listen'), 'Listen level'], [level('read'), 'Read level'], [statistics.answered, 'Listen & Read questions answered'], [statistics.grammarTopics, statistics.grammarTopics === 1 ? 'grammar topic practised' : 'grammar topics practised'], [statistics.walkmanHeard, 'words heard on the Walkman'], [counts.scheduled, 'known words waiting for review']];
-  const wordsPart = `<div class="st-block">${stHead('Word scores', `Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. ${statistics.history.length > 1 ? 'Choose a day to see the chart as it was at the end of it; the dashed outline is today. ' : ''}Tap a bar to see its words.`)}
+  const wordsPart = `<div class="st-block">${stHead('Word scores', `Each bar counts the started words with that score. Recalling a word moves it right, missing it moves it left, and scores drift back to the middle over a few weeks. The Walkman plays the left side most. Total is every word’s score added up. ${statistics.history.length > 1 ? 'Choose a day to see the chart as it was at the end of it; the dashed outline is today. ' : ''}Tap a bar to see its words.`)}
       <div id="st-scores">${scoresViewHTML()}</div>
       ${statistics.history.length > 1 ? `<div class="st-when" id="st-when">${scoresWhenHTML()}</div>
       <input type="range" class="st-slider" id="st-slider" min="0" max="${statistics.history.length - 1}" step="1" value="${statsAt}" aria-label="Choose a day">

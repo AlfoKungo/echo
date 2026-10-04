@@ -374,7 +374,7 @@ export function createVerbDrills(options: {
   // lowest-scoring forms.
   function scoreStatistics(verbs: Map<string, Verb>, today: string) {
     const rows = everyScored.all().filter((row) => verbs.has(row.verb_id));
-    const days: { day: string; bins: number[]; solid: number; shaky: number; practised: number }[] = [];
+    const days: { day: string; bins: number[]; solid: number; shaky: number; practised: number; sum: number }[] = [];
     if (rows.length) {
       let first = studyDay(new Date(rows[0]!.answered_at));
       const earliest = recentStudyDays(now(), SCORE_DAYS).days[0]!;
@@ -382,9 +382,9 @@ export function createVerbDrills(options: {
       for (let day = first; day <= today; day = nextDay(day)) {
         const { scores } = scoresAt(endOf(day), rows);
         const bins = Array.from({ length: 17 }, () => 0);
-        let solid = 0, shaky = 0;
-        for (const score of scores.values()) { bins[Math.max(-8, Math.min(8, Math.round(score))) + 8]! += 1; if (score >= SOLID_AT) solid++; if (score <= SHAKY_AT) shaky++; }
-        days.push({ day, bins, solid, shaky, practised: scores.size });
+        let solid = 0, shaky = 0, sum = 0;
+        for (const score of scores.values()) { bins[Math.max(-8, Math.min(8, Math.round(score))) + 8]! += 1; sum += score; if (score >= SOLID_AT) solid++; if (score <= SHAKY_AT) shaky++; }
+        days.push({ day, bins, solid, shaky, practised: scores.size, sum: Math.round(sum) });
       }
     }
     const recent = recentStudyDays(now(), 14).days;
