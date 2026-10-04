@@ -163,12 +163,13 @@ main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 aut
 .st-info{flex:none;display:grid;place-items:center;width:30px;height:30px;margin:-7px -6px 0 0;border-radius:50%;color:var(--dim)}.st-info svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}.st-info[aria-expanded=true]{color:var(--violet)}
 /* The explanation floats over the chart below, so opening it moves nothing on the page. */
 .st-tip{position:absolute;top:24px;left:0;right:0;z-index:6;margin:0;padding:12px 14px;background:var(--card-hover);border:1px solid var(--frame);border-radius:12px;box-shadow:0 10px 28px var(--shadow);font-size:14px;line-height:1.5;color:var(--ink)}
-/* Four fixed columns, the total in the last: a longer number or day label never moves the rest. */
-.st-nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 18px}
-.st-nums div{min-width:0;display:flex;flex-direction:column;gap:2px}
-.st-nums span{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.st-nums strong{font-size:24px;font-weight:550;letter-spacing:-.4px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-.st-nums .total{grid-column:4;align-items:flex-end;text-align:right}
+/* The big number holds the left edge and Total the right, so a longer number or day label moves nothing. */
+.st-figures{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin:0 0 18px}
+.st-figures div{display:flex;flex-direction:column;min-width:0}
+.st-figures span{font-size:13px;color:var(--muted)}
+.st-figures strong{font-size:44px;font-weight:550;letter-spacing:-1.2px;line-height:1.08;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.st-figures small{font-size:14px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+.st-figures .total{align-items:flex-end;text-align:right}.st-figures .total strong{font-size:24px;letter-spacing:-.4px;line-height:1.25}
 .st-cap{font-size:14px;color:var(--muted);margin:12px 0 0;line-height:1.5}
 .st-hist{display:grid;grid-template-columns:repeat(17,1fr);gap:3px;align-items:end;height:150px;padding:0 2px}
 .st-bar{height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:0;border-radius:4px}

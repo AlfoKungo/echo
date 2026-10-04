@@ -1682,10 +1682,11 @@ let statsAt = 0;
 let statsPlay = 0;
 const statsDayWords = new Map(); // day → words, or 'loading'
 const points = (value) => `${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(Math.round(value * 10) / 10).toLocaleString('en')}`;
-// The figures above a chart, in four fixed columns so a longer number or day never moves the others: whole, no sign
-// unless below zero, the total always in the last column. Figures saved before totals existed show a dash there.
+// The figures above a chart: one big number under its label, the others in a quiet line beneath, and Total small in
+// the top right. The big number sits on the left edge and Total on the right, so another day's longer number or label
+// moves nothing. Whole, no sign unless below zero; figures saved before totals existed show a dash.
 const wholeFigure = (value) => typeof value === 'number' ? `${Math.round(value) < 0 ? '−' : ''}${Math.abs(Math.round(value)).toLocaleString('en')}` : '–';
-const statNums = (cells, total) => `<div class="st-nums">${cells.map(([label, value]) => `<div><span>${esc(label)}</span><strong>${wholeFigure(value)}</strong></div>`).join('')}<div class="total"><span>Total</span><strong>${wholeFigure(total)}</strong></div></div>`;
+const statFigures = ([label, value], parts, total) => `<div class="st-figures"><div><span>${esc(label)}</span><strong>${wholeFigure(value)}</strong><small>${parts.map(([name, count]) => `${esc(name)} ${wholeFigure(count)}`).join(' · ')}</small></div><div class="total"><span>Total</span><strong>${wholeFigure(total)}</strong></div></div>`;
 const STATS_BINS = Array.from({ length: 17 }, (_, index) => index - 8);
 const statsBinOf = (score) => Math.max(-8, Math.min(8, Math.round(score)));
 const statsKnown = (word) => word.status === 'scheduled' || word.status === 'due';
@@ -1710,7 +1711,7 @@ function scoresViewHTML() {
     const ghost = past ? `<span class="ghost" style="height:${(today.bins[index][0] + today.bins[index][1]) / tallest * 100}%"></span>` : '';
     return `<button class="st-bar ${tone}" data-action="stats-bin" data-bin="${bin}" aria-pressed="${statsBin === bin}" aria-label="Score ${signed(bin)}: ${know} known, ${learning} still learning">${ghost}<span class="learning" style="height:${learning / tallest * 100}%"></span><span class="know" style="height:${know / tallest * 100}%"></span></button>`;
   }).join('');
-  return `${statNums([['Known', shown.know], ['Learning', shown.learning]], shown.sum)}
+  return `${statFigures(['Known', shown.know], [['learning', shown.learning]], shown.sum)}
       <div class="st-hist">${bars}</div>
       <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
       <div class="st-legend"><span><i class="know"></i>words you know</span><span><i class="learning"></i>still learning</span>${past ? '<span><i class="ghost"></i>today</span>' : ''}</div>`;
@@ -1798,7 +1799,7 @@ function verbScoresHTML() {
     const ghost = past ? `<span class="ghost" style="height:${today.bins[index] / tallest * 100}%"></span>` : '';
     return `<button class="st-bar ${tone}" data-action="stats-vbin" data-bin="${bin}" aria-pressed="${vScoreBin === bin}" aria-label="Score ${signed(bin)}: ${shown.bins[index]} forms">${ghost}<span class="know" style="height:${shown.bins[index] / tallest * 100}%"></span></button>`;
   }).join('');
-  return `${statNums([['Solid', shown.solid], ['Shaky', shown.shaky], ['Practised', shown.practised]], shown.sum)}
+  return `${statFigures(['Solid', shown.solid], [['shaky', shown.shaky], ['practised', shown.practised]], shown.sum)}
       <div class="st-hist">${bars}</div>
       <div class="st-axis"><span>shaky</span><span>0</span><span>solid</span></div>
       <div class="st-legend"><span><i class="know"></i>verb forms</span>${past ? '<span><i class="ghost"></i>today</span>' : ''}</div>`;
@@ -1910,7 +1911,7 @@ function renderStatistics() {
   const pointBars = together.map((day) => `<button class="st-pt st-pt-both" style="${rows}" data-action="points-day" data-day="${day.day}" aria-pressed="${day.day === shown.day}" aria-label="${esc(dayLabel(`${day.day}T12:00`))}: ${points(day.words + day.verbs)} points, words ${points(day.words)}, verbs ${points(day.verbs)}"><span class="up">${part(Math.max(0, day.verbs), top, 'verbs')}${part(Math.max(0, day.words), top, 'words')}</span><span class="down">${part(Math.max(0, -day.words), bottom, 'words')}${part(Math.max(0, -day.verbs), bottom, 'verbs')}</span></button>`).join('');
   const shownLabel = shown.day === today.day ? 'Today' : new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(new Date(`${shown.day}T12:00`));
   const pointsBlock = `<div class="st-block">${stHead('Points, last two weeks', 'How far your words and verbs climbed, together. Words: +2 an answer known in Cards, +1 in Endless, +0.5 a word heard to the end on the Walkman, and ✓ there counting like knowing it. Verbs: +2 a typed form, +1 a Cards or tape mark. A miss (−3, or −1 in Endless, −2 a mark) only takes back what that word or form had climbed, by your answers, above the lowest it had been: missing something you never knew costs nothing, forgetting something you knew costs what you had. Each bar is the day: gains stacked above the line, losses below. Tap a day to see its points and how they split; Total is the two weeks added up.')}
-      ${statNums([[shownLabel, shown.words + shown.verbs], ['Words', shown.words], ['Verbs', shown.verbs]], together.reduce((sum, day) => sum + day.words + day.verbs, 0))}
+      ${statFigures([shownLabel, shown.words + shown.verbs], [['words', shown.words], ['verbs', shown.verbs]], together.reduce((sum, day) => sum + day.words + day.verbs, 0))}
       <div class="st-points">${pointBars}</div><div class="st-days-axis">${dayAxis}</div>
       <div class="st-legend"><span><i style="background:var(--violet)"></i>words</span><span><i style="background:var(--getting)"></i>verbs</span><span><i style="background:var(--danger)"></i>lost more than gained</span></div></div>`;
   // Each row is the share right per day, always out of 100%, with its two-week share beside the label.
