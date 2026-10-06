@@ -293,7 +293,8 @@ export function createVerbDrills(options: {
     return { verbId, tense };
   }
 
-  function table(input: { requestId: string; verbId: string; tense: Tense; answers: string[] }) {
+  // looked: the table was just shown (Look, then write), so a right form proves little; only its misses are kept.
+  function table(input: { requestId: string; verbId: string; tense: Tense; answers: string[]; looked?: boolean }) {
     const requestId = requestIdOf(input?.requestId);
     const { verb, tense } = findTense(input?.verbId, input?.tense);
     if (!Array.isArray(input.answers) || input.answers.length !== 6) throw new StoreError('Send an answer for each of the six persons.');
@@ -302,7 +303,7 @@ export function createVerbDrills(options: {
       if (!persons(verb).includes(person)) return null;
       const given = typeof input.answers[person] === 'string' ? input.answers[person]! : '';
       const checked = result(verb, tense, person, given);
-      insert.run(`${requestId}:${person}`, verb.id, tense, person, 'table', null, given.slice(0, 80), checked.right ? 1 : 0, at);
+      if (!checked.right || input.looked !== true) insert.run(`${requestId}:${person}`, verb.id, tense, person, 'table', null, given.slice(0, 80), checked.right ? 1 : 0, at);
       return { right: checked.right, expected: checked.expected, why: checked.why, ...(checked.hook ? { hook: checked.hook } : {}) };
     });
     return { cells, right: cells.filter((cell) => cell?.right).length, total: persons(verb).length, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };

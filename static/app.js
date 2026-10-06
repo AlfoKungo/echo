@@ -175,7 +175,7 @@ const tapeScreen = (name = screen) => name in TAPE_SCREENS;
 // What the tape on screen plays: the Walkman's choice of words, or its room's sentences or verbs.
 const tapeKind = () => screen === 'walkman' ? walkmanChoice : TAPE_SCREENS[screen];
 // Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
-const WORDS_TABS = { cards: 'Cards', endless: 'Endless', walkman: 'Walkman' };
+const WORDS_TABS = { cards: 'Cards', endless: 'Endless', walkman: 'Walkman', ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
 const LISTEN_TABS = { listen: 'Questions', sounds: 'Sounds', 'listen-tape': 'Tape' };
 // A device last on the old Say it tab opens on Endless, with Say on.
 let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved === 'say' ? 'endless' : saved in WORDS_TABS ? saved : 'cards'; })();
@@ -471,7 +471,7 @@ function openInfo(room) {
   if (!parts) return;
   openDialog(INFO_TITLES[room] ?? 'How it works', `<div class="dialog-copy">${parts}</div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'info');
 }
-const wordsTabNow = () => screen === 'walkman' ? 'walkman' : vocabMode === 'endless' ? 'endless' : 'cards';
+const wordsTabNow = () => screen === 'walkman' || screen === 'songs' ? screen : vocabMode === 'endless' ? 'endless' : 'cards';
 // The top of every Words tab: back, the direction (for cards), Your words, ⓘ, options, then the tabs.
 function wordsTop() {
   const tab = wordsTabNow(), cards = tab === 'cards' || tab === 'endless';
@@ -967,7 +967,6 @@ function renderBrowse() {
   const more = [
     ['families', 'Word families', 'Words built from one another; add a relative of one you know', ''],
     ['word-building', 'Word building', 'How French makes one word from another: -er, -eur, in-…', 'data-from="browse"'],
-    ...(roomsOff.has('songs') ? [] : [['songs', 'Words from a song', 'Find a French song and turn its words into cards', '']]),
     ['more-today', 'More for today', 'Extra new words, or finished words reviewed early', ''],
   ].map(([action, title, text, data]) => `<button class="topic-row" data-action="${action}" ${data} ${busy || (action === 'more-today' && !snapshot) ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${title}</h3></span><p>${esc(text)}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
   main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Words', 'vocabulary')}<button class="icon" data-action="options" aria-label="Words options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">Everything in your deck, and ways to add to it.</p><div class="topic-list">${more}</div><h2 class="story-heading">All your words · ${esc(directionLabel())}</h2><div class="browse-tools"><label class="sr-only" for="vocab-search">Search French or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
@@ -1869,7 +1868,7 @@ function verbStatsHTML() {
   const kinds = verbs.kinds.map((kind) => vsRow(kind.title, `${VB_TENSES[kind.tense]} · ${kind.total} answers`, kind, `data-action="vb-tense-page" data-tense="${kind.tense}"`)).join('');
   const tenses = verbTensePersonRows(Object.entries(VB_TENSES).map(([tense, name]) => ({ label: name, score: scores.tenses[tense], answered: verbs.tenses[tense], action: `data-action="vb-tense-page" data-tense="${tense}"` })));
   const people = verbTensePersonRows(VB_PERSONS.map((person, index) => ({ label: person, score: scores.people[index], answered: verbs.people[index] })));
-  return `<div class="st-block">${stHead('Verb form scores', `Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or tape mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Type it, Cards, Next table and the verb tape bring the left side most. Solid is +3 or more, shaky −2 or less; practised counts the forms tried, of ${statistics.verbs.forms.total.toLocaleString('en')} in your verbs’ four tenses. Total is every form’s score added up. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.`)}
+  return `<div class="st-block">${stHead('Verb form scores', `Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off (in Look, then write only a miss counts); a Cards or tape mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Type it, Cards, Next table, Look, then write and the verb tape bring the left side most. Solid is +3 or more, shaky −2 or less; practised counts the forms tried, of ${statistics.verbs.forms.total.toLocaleString('en')} in your verbs’ four tenses. Total is every form’s score added up. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.`)}
       <div id="vs-scores">${verbScoresHTML()}</div>
       ${vsDays().length > 1 ? `<div class="st-when" id="vs-when">${verbScoresWhenHTML()}</div>
       <input type="range" class="st-slider" id="vs-slider" min="0" max="${vsDays().length - 1}" step="1" value="${vsIndex()}" aria-label="Choose a day">
@@ -1987,7 +1986,7 @@ function songStatusLine(song) {
 function renderSongs() {
   const disabled = locked() || !snapshot ? 'disabled' : '';
   const order = snapshot ? `<div class="song-order"><p class="settings-label">New words from songs come</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div></div>` : '';
-  const header = `<div class="section-top">${back('Your words', 'your-words')}</div><h1>Words from a song</h1><p class="subtitle">Find a French song; Claude reads it and turns its words into flashcards in their dictionary form. Only the words are kept.</p>${order}`;
+  const header = `${wordsTop()}<p class="subtitle">Find a French song; Claude reads it and turns its words into flashcards in their dictionary form. Only the words are kept.</p>${order}`;
   const search = `<form id="song-search-form" class="song-search" role="search"><label class="sr-only" for="song-query">Song title and artist</label><input id="song-query" type="search" placeholder="Title, and the artist if you know it" value="${esc(songQuery)}" autocomplete="off" ${songSearching ? 'disabled' : ''}><button class="primary" type="submit" ${songSearching ? 'disabled' : ''}>${songSearching ? 'Searching…' : 'Search'}</button></form>`;
   const matches = songMatches === null ? '' : songMatches.length
     ? `<p class="song-hint">Pick the one you mean. Covers that sing the same words are grouped together.</p><ol class="song-results">${songMatches.map((match) => `<li><button class="song-row" data-action="song-read" data-lrclib="${match.id}" ${busy ? 'disabled' : ''}><span class="song-copy"><strong>${esc(match.title)}</strong><span>${esc(match.artist)}${match.album && match.album !== match.title ? ` · ${esc(match.album)}` : ''}${match.seconds ? ` · ${songTime(match.seconds)}` : ''}</span>${match.versions > 1 ? `<small>${match.versions} versions${match.artists.length > 1 ? ` · also ${esc(match.artists.filter((name) => name !== match.artist).slice(0, 3).join(', '))}` : ''}</small>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('')}</ol>`
@@ -2038,11 +2037,10 @@ function renderSong() {
     const audio = songList?.audio;
     const recording = audio && (audio.pending || audio.recording) ? `Recording the new words on your Mac… ${audio.pending} left. Each one joins your practice as soon as it is recorded.` : audio?.failed?.some((id) => song.added.includes(id)) ? `${audio.failed.filter((id) => song.added.includes(id)).length} could not be recorded and stay out of practice.` : 'Every word is recorded.';
     const linked = song.linked?.length ?? 0;
-    body = `<div class="song-progress"><p><strong>${song.added.length}</strong> new ${song.added.length === 1 ? 'word' : 'words'}${linked ? ` and <strong>${linked}</strong> you already had` : ''} in the “${esc(song.title)}” deck.</p><p class="caption">${esc(recording)} New words from songs come ${snapshot?.settings?.songsFirst === false ? 'in turn with your other categories' : 'before your other new words'}; change this on the Words from a song page.</p><div class="summary-actions"><button class="primary" data-action="song-practise" data-category="${esc(song.category)}" ${busy ? 'disabled' : ''}>Practise these words</button></div></div>`;
+    body = `<div class="song-progress"><p><strong>${song.added.length}</strong> new ${song.added.length === 1 ? 'word' : 'words'}${linked ? ` and <strong>${linked}</strong> you already had` : ''} in the “${esc(song.title)}” deck.</p><p class="caption">${esc(recording)} New words from songs come ${snapshot?.settings?.songsFirst === false ? 'in turn with your other categories' : 'before your other new words'}; change this on the Songs tab.</p><div class="summary-actions"><button class="primary" data-action="song-practise" data-category="${esc(song.category)}" ${busy ? 'disabled' : ''}>Practise these words</button></div></div>`;
   }
   main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${title}${understoodHTML(song.understood)}${body}</section>`;
 }
-function openSongs() { if (dialog.open) dialog.close(); if (move('songs', true)) loadSongs(); }
 function openSong(id) { songId = id; songView = songList?.songs.find((song) => song.id === id) ?? null; if (move(`song|${id}`, true)) loadSong(); }
 async function loadSongs(refresh = false) {
   try { songList = await api('api/songs'); }
@@ -2688,11 +2686,14 @@ let verbTenses = (() => { try { const list = JSON.parse(readPreference('echo.ver
 let verbForms = null;      // { items, index, result, given, fetching, done }
 let verbCards = null;      // { items, index, size, revealed, marks: [], first: [] }
 let verbDraft = '';
-let verbTable = { verbId: '', tense: 'pres', answers: ['', '', '', '', '', ''], result: null };
+let verbTable = { verbId: '', tense: 'pres', answers: ['', '', '', '', '', ''], result: null, look: null };
 // Whole table either picks the next table from the room's verbs and tenses ('next') or lets you choose one ('choose');
-// a table opened from a verb's page is chosen for that visit only. recent: the tables just done, newest first.
+// a table opened from a verb's page is chosen for that visit only. Look, then write ('look') draws its tables like
+// 'next' and shows each one filled in first (verbTable.look: its paradigm and rule) until Next empties it to be
+// written. recent: the tables just done, newest first.
 let vbTableMode = readPreference('echo.verbs-table-mode', 'next') === 'choose' ? 'choose' : 'next';
 let vbTableVisit = vbTableMode;
+const vbTableDrawn = () => vbTableVisit !== 'choose';
 let vbTableRecent = [];
 const VB_TABLE_GAP = 5;
 let verbEar = null;        // { questions, index, chose, result, right }
@@ -2740,7 +2741,7 @@ function renderVerbs() {
   const setup = `<button class="vb-setup" data-action="vb-options" aria-haspopup="dialog" ${busy ? 'disabled' : ''}><span class="what"><small>Practising</small><b>${esc(verbChoiceText())}</b></span><span class="change">Change</span></button>`;
   const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} recorded` : 'Tell the tense by ear';
   const tile = (action, icon, title, detail, disabled, extra = '') => `<button class="tile tile-row${extra}${['vb-ear', 'tape'].includes(action) ? ' fam-green' : ''}" data-action="${action}" ${action === 'tape' ? 'data-tape="verbs-tape"' : ''} ${busy || disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${VB_DRILL_ICONS[icon]}</span><span class="tile-copy"><h2>${title}</h2><p>${esc(detail)}</p></span>${extra ? '<span class="go" aria-hidden="true">→</span>' : ''}</button>`;
-  const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Think of the form, turn the card, say if you knew it', blocked, ' wide hero')}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', 'All six persons', false)}${tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false)}</div>`;
+  const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Think of the form, turn the card, say if you knew it', blocked, ' wide hero')}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', 'All six persons', false)}${tile('vb-look', 'table', 'Look, then write', 'See a table, then fill it in', false)}${tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false)}</div>`;
   const worstShown = vbWorstAll ? verbsInfo.worst : verbsInfo.worst.slice(0, 3);
   const worst = verbsInfo.worst.length ? `<p class="study-label vb-sec">Catching you out${verbsInfo.worst.length > 3 ? `<button data-action="vb-worst-all">${vbWorstAll ? 'Fewer' : `All ${verbsInfo.worst.length}`}</button>` : ''}</p><ol class="vb-worst">${worstShown.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="fr">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
   // Each tense: its use, and a bar of your forms in it from solid to shaky, the rest still to try.
@@ -2814,6 +2815,8 @@ function verbAction(action, button) {
   else if (action === 'vb-practise-tense') { verbFormsOverride = { set: verbSet, verbIds: verbChosen, tenses: [button.dataset.tense] }; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-practise-verb') { verbFormsOverride = { set: 'chosen', verbIds: [button.dataset.verb], tenses: verbTenses }; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-table') { verbFormsOverride = null; openVerbTable(); }
+  else if (action === 'vb-look') { verbFormsOverride = null; vbTableVisit = 'look'; if (move('verbs-table', true)) nextVerbTable(); }
+  else if (action === 'vb-look-write') { verbTable.look = null; render(); main.querySelector('#vb-cell-0, .vb-input')?.focus({ preventScroll: true }); }
   else if (action === 'vb-table-mode') chooseVerbTableMode(button.dataset.value);
   else if (action === 'vb-next-table') nextVerbTable();
   else if (action === 'vb-cell') openVerbTable(button.dataset.verb, button.dataset.tense);
@@ -3020,10 +3023,11 @@ function openVerbTable(verbId, tense) {
   if (vbTableVisit === 'next') { if (move('verbs-table', true)) nextVerbTable(); return; }
   const verbs = verbsInfo?.verbs ?? [];
   const fallback = verbsInfo?.worst[0]?.verbId || verbs.find((verb) => verb.started)?.id || verbs[0]?.id || '';
-  verbTable = { verbId: verbId || verbTable.verbId || fallback, tense: tense || (verbTenses.includes(verbTable.tense) ? verbTable.tense : verbTenses[0]), answers: ['', '', '', '', '', ''], result: null };
+  verbTable = { verbId: verbId || verbTable.verbId || fallback, tense: tense || (verbTenses.includes(verbTable.tense) ? verbTable.tense : verbTenses[0]), answers: ['', '', '', '', '', ''], result: null, look: null };
   if (move('verbs-table', true)) render();
 }
-// Draws the next table from the room's settings, passing over the last few done.
+// Draws the next table from the room's settings, passing over the last few done; Look, then write also fetches it
+// filled in, to show first.
 async function nextVerbTable() {
   loading = true; notice = null; retryAction = null; render();
   try {
@@ -3031,22 +3035,25 @@ async function nextVerbTable() {
       api('api/verbs/next-table', { method: 'POST', body: JSON.stringify({ ...vbSettings(), exclude: vbTableRecent }) }),
       verbsInfo ? null : loadVerbs(true),
     ]);
-    verbTable = { verbId: next.verbId, tense: next.tense, answers: ['', '', '', '', '', ''], result: null };
+    const shown = vbTableVisit === 'look' ? (await api(`api/verbs/verb/${encodeURIComponent(next.verbId)}`)).tenses.find((entry) => entry.tense === next.tense) : null;
+    verbTable = { verbId: next.verbId, tense: next.tense, answers: ['', '', '', '', '', ''], result: null, look: shown ? { paradigm: shown.paradigm, rule: shown.rule } : null };
   } catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-table' }; }
   loading = false;
   if (screen !== 'verbs-table') return;
-  render(); main.querySelector('#vb-cell-0, .vb-input')?.focus({ preventScroll: true });
+  render(); if (!verbTable.look) main.querySelector('#vb-cell-0, .vb-input')?.focus({ preventScroll: true });
 }
 function chooseVerbTableMode(mode) {
   if (busy || loading || mode === vbTableVisit) return;
   vbTableMode = vbTableVisit = mode; savePreference('echo.verbs-table-mode', mode);
-  if (mode === 'next') nextVerbTable(); else { verbTable = { ...verbTable, answers: ['', '', '', '', '', ''], result: null }; render(); }
+  if (mode === 'next') nextVerbTable(); else { verbTable = { ...verbTable, answers: ['', '', '', '', '', ''], result: null, look: null }; render(); }
 }
 function renderVerbTable() {
-  const header = `<div class="section-top">${vbBack()}<span class="stream-label">Whole table</span></div><div class="segmented vb-table-modes" role="group" aria-label="How the table is picked">${[['next', 'Next table'], ['choose', 'Choose']].map(([mode, label]) => `<button data-action="vb-table-mode" data-value="${mode}" aria-pressed="${vbTableVisit === mode}" ${busy || loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
+  const look = vbTableVisit === 'look';
+  const modes = look ? '' : `<div class="segmented vb-table-modes" role="group" aria-label="How the table is picked">${[['next', 'Next table'], ['choose', 'Choose']].map(([mode, label]) => `<button data-action="vb-table-mode" data-value="${mode}" aria-pressed="${vbTableVisit === mode}" ${busy || loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
+  const header = `<div class="section-top">${vbBack()}<span class="stream-label">${look ? 'Look, then write' : 'Whole table'}</span></div>${modes}`;
   // Back on this screen with no table drawn yet (a reload, say): draw one, unless the last try failed.
-  if (vbTableVisit === 'next' && !verbTable.verbId && !loading && !retryAction) { nextVerbTable(); return; }
-  if (vbTableVisit === 'next' && (loading || !verbTable.verbId)) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${loading ? '<div class="loading-state" role="status">Choosing a table…</div>' : ''}</section>`; return; }
+  if (vbTableDrawn() && !verbTable.verbId && !loading && !retryAction) { nextVerbTable(); return; }
+  if (vbTableDrawn() && (loading || !verbTable.verbId)) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${loading ? '<div class="loading-state" role="status">Choosing a table…</div>' : ''}</section>`; return; }
   if (!verbsInfo) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}</section>`; loadVerbs(true).then(() => { if (screen === 'verbs-table') { if (!verbTable.verbId) verbTable.verbId = verbsInfo?.verbs[0]?.id || ''; render(); } }); return; }
   const verb = vbVerb(verbTable.verbId) ?? verbsInfo.verbs[0];
   if (!verb) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}<p class="caption">No verb tables yet.</p></section>`; return; }
@@ -3063,18 +3070,23 @@ function renderVerbTable() {
   }).join('');
   const hooks = result ? result.cells.filter((cell) => cell && !cell.right && cell.hook).map((cell) => `<p class="word-hook">${esc(cell.hook)}</p>`).join('') : '';
   const summary = result ? `<div class="feedback ${result.right === result.total ? '' : 'warn'}" role="status"><strong>${result.right} of ${result.total}.</strong>${hooks}<p class="vb-why">${esc(result.rule)}</p>${paradigmHTML(result.paradigm)}</div>` : '';
+  const prompt = vbTableVisit === 'choose' ? `<div class="vb-grid-head"><label class="sr-only" for="vb-table-verb">Verb</label><select id="vb-table-verb">${options}</select><label class="sr-only" for="vb-table-tense">Tense</label><select id="vb-table-tense">${tenses}</select></div>
+    <p class="caption">${esc(verb.en)}</p>` : `<div class="vb-prompt vb-table-prompt"><div class="vb-verb" lang="fr">${frEsc(verb.inf)}</div><div class="vb-meta">${esc(verb.en)}</div><span class="vb-tense">${esc(VB_TENSES[verbTable.tense])}</span></div>`;
+  if (look && verbTable.look) {
+    main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${prompt}<div class="vb-look">${paradigmHTML(verbTable.look.paradigm)}<p class="vb-why vb-rule">${frEsc(verbTable.look.rule)}</p></div><div class="summary-actions"><button class="primary" data-action="vb-look-write">Next · write it</button></div></section>`;
+    return;
+  }
   main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}
-    ${vbTableVisit === 'choose' ? `<div class="vb-grid-head"><label class="sr-only" for="vb-table-verb">Verb</label><select id="vb-table-verb">${options}</select><label class="sr-only" for="vb-table-tense">Tense</label><select id="vb-table-tense">${tenses}</select></div>
-    <p class="caption">${esc(verb.en)}</p>` : `<div class="vb-prompt vb-table-prompt"><div class="vb-verb" lang="fr">${frEsc(verb.inf)}</div><div class="vb-meta">${esc(verb.en)}</div><span class="vb-tense">${esc(VB_TENSES[verbTable.tense])}</span></div>`}
+    ${prompt}
     <div class="vb-rows">${rows}</div>${vbAccentsHTML()}
-    <div class="summary-actions">${vbTableVisit === 'next' && result ? `<button class="primary" data-action="vb-next-table">Next table</button><button class="secondary" data-action="vb-check-table" ${busy ? 'disabled' : ''}>Check again</button>` : `<button class="primary" data-action="vb-check-table" ${busy ? 'disabled' : ''}>${busy ? 'Checking…' : result ? 'Check again' : 'Check'}</button>`}</div>${summary}</section>`;
+    <div class="summary-actions">${vbTableDrawn() && result ? `<button class="primary" data-action="vb-next-table">Next table</button><button class="secondary" data-action="vb-check-table" ${busy ? 'disabled' : ''}>Check again</button>` : `<button class="primary" data-action="vb-check-table" ${busy ? 'disabled' : ''}>${busy ? 'Checking…' : result ? 'Check again' : 'Check'}</button>`}</div>${summary}</section>`;
 }
 async function checkVerbTable() {
   if (busy) return;
   busy = true; render();
   const done = `${verbTable.verbId}|${verbTable.tense}`;
   vbTableRecent = [done, ...vbTableRecent.filter((entry) => entry !== done)].slice(0, VB_TABLE_GAP);
-  try { verbTable.result = await api('api/verbs/table', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: verbTable.verbId, tense: verbTable.tense, answers: verbTable.answers }) }); }
+  try { verbTable.result = await api('api/verbs/table', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: verbTable.verbId, tense: verbTable.tense, answers: verbTable.answers, looked: vbTableVisit === 'look' }) }); }
   catch (error) { notice = { message: error.message }; }
   busy = false;
   if (screen !== 'verbs-table') return;
@@ -3663,10 +3675,10 @@ function openWords(tab = wordsTab, how = 'forward', autoplay = false) {
     const mode = tab === 'endless' ? 'endless' : 'daily';
     if (mode !== vocabMode) { vocabMode = mode; savePreference('echo.vocab-mode', mode); endless = null; revealed = false; }
   }
-  const next = tab === 'walkman' ? 'walkman' : 'practice';
+  const next = tab === 'walkman' || tab === 'songs' ? tab : 'practice';
   if (how === 'switch') switchPlace(next);
   else if (!move(next, how === 'forward')) return;
-  if (next === 'practice') beginPractice(); else if (next === 'walkman') loadTape(autoplay);
+  if (next === 'practice') beginPractice(); else if (next === 'walkman') loadTape(autoplay); else loadSongs();
 }
 // Listen opens on a tab the same way: Questions, Sounds or the sentence tape.
 function openListen(tab = listenTab, how = 'forward') {
@@ -4040,7 +4052,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'friends-door') setDoor(Number(button.dataset.minutes));
   else if (action === 'friends-copy') copyFriendsLink();
   else if (action === 'statistics') openStatistics();
-  else if (action === 'songs') openSongs();
+  else if (action === 'songs') openWords('songs', 'back');
   else if (action === 'song-open') openSong(button.dataset.song);
   else if (action === 'song-read') readSong({ lrclibId: Number(button.dataset.lrclib) });
   else if (action === 'song-paste') { songPasting = true; render(); document.querySelector('#song-title')?.focus(); }

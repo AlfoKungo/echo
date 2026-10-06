@@ -291,6 +291,14 @@ describe('verb drills', () => {
     expect([falloir.right, falloir.total, falloir.cells[0]]).toEqual([1, 1, null]);
   });
 
+  test('a table filled in just after seeing it keeps only its misses', () => {
+    const drills = fixture();
+    const checked = drills.table({ requestId: 'look', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prenent'], looked: true });
+    expect(checked.right).toBe(5);
+    expect(state(drills, 'v-prendre', 'pres', 0)).toBe('new');
+    expect(state(drills, 'v-prendre', 'pres', 5)).toBe('shaky');
+  });
+
   test('By ear asks only about recorded phrases and checks the choice', () => {
     const drills = fixture((said) => said.startsWith('nous'));
     const round = drills.earRound({ set: 'common', tenses: ['pres', 'imp', 'fut', 'pc'] });
