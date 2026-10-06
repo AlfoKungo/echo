@@ -289,26 +289,25 @@ describe('verb drills', () => {
     expect(state(drills, 'v-prendre', 'pres', 1)).toBe('shaky');
     const falloir = drills.table({ requestId: 'f', verbId: 'v-falloir', tense: 'fut', answers: ['', '', 'il faudra', '', '', ''] });
     expect([falloir.right, falloir.total, falloir.cells[0]]).toEqual([1, 1, null]);
+    // Check again, once the corrections were shown, counts for nothing.
+    drills.table({ requestId: 't-again', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prennent'], again: true });
+    expect(state(drills, 'v-prendre', 'pres', 1)).toBe('shaky');
   });
 
-  test('a table filled in just after seeing it is one item: +2 when all right, -1 when any missed, shared by its forms', () => {
+  test('a table written just after seeing it gets one grade: +2 points when perfect, -1 when not, and no form score', () => {
     const drills = fixture();
     clock.value = new Date(2026, 8, 21, 10);
-    const scores = (verbId: string) => drills.scoresOn('2026-09-21').filter((form) => form.verbId === verbId).map((form) => form.score);
+    const today = () => drills.statistics().scores.points.find((entry) => entry.day === '2026-09-21');
     const missed = drills.table({ requestId: 'look', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prenent'], looked: true });
     expect(missed.right).toBe(5);
-    expect(scores('v-prendre')).toEqual(Array(6).fill(-0.2));
-    // Each form keeps its own right or wrong: the one typed right is not counted as a miss.
-    expect(state(drills, 'v-prendre', 'pres', 0)).toBe('getting');
-    expect(state(drills, 'v-prendre', 'pres', 5)).toBe('shaky');
-    // Check again, after the corrections were shown, counts for nothing.
+    expect(today()).toMatchObject({ gained: 0, lost: 1 });
+    // Check again counts for nothing.
     drills.table({ requestId: 'look-again', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prennent'], looked: true, again: true });
-    expect(scores('v-prendre')).toEqual(Array(6).fill(-0.2));
     drills.table({ requestId: 'look-all', verbId: 'v-parler', tense: 'pres', answers: ['parle', 'parles', 'parle', 'parlons', 'parlez', 'parlent'], looked: true });
-    expect(scores('v-parler')).toEqual(Array(6).fill(0.3));
-    // A table of one form gives that form the whole grade.
-    drills.table({ requestId: 'look-one', verbId: 'v-falloir', tense: 'fut', answers: ['', '', 'il faudra', '', '', ''], looked: true });
-    expect(drills.scoresOn('2026-09-21').find((form) => form.verbId === 'v-falloir')?.score).toBe(2);
+    expect(today()).toMatchObject({ gained: 2, lost: 1 });
+    // The forms themselves are untouched.
+    expect(drills.scoresOn('2026-09-21')).toEqual([]);
+    expect(state(drills, 'v-prendre', 'pres', 5)).toBe('new');
   });
 
   test('By ear asks only about recorded phrases and checks the choice', () => {
