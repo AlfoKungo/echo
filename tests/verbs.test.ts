@@ -291,21 +291,24 @@ describe('verb drills', () => {
     expect([falloir.right, falloir.total, falloir.cells[0]]).toEqual([1, 1, null]);
   });
 
-  test('a table filled in just after seeing it is graded as one: +2 each when all right, -1 each when any missed', () => {
+  test('a table filled in just after seeing it is one item: +2 when all right, -1 when any missed, shared by its forms', () => {
     const drills = fixture();
     clock.value = new Date(2026, 8, 21, 10);
     const scores = (verbId: string) => drills.scoresOn('2026-09-21').filter((form) => form.verbId === verbId).map((form) => form.score);
     const missed = drills.table({ requestId: 'look', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prenent'], looked: true });
     expect(missed.right).toBe(5);
-    expect(scores('v-prendre')).toEqual([-1, -1, -1, -1, -1, -1]);
+    expect(scores('v-prendre')).toEqual(Array(6).fill(-0.2));
     // Each form keeps its own right or wrong: the one typed right is not counted as a miss.
     expect(state(drills, 'v-prendre', 'pres', 0)).toBe('getting');
     expect(state(drills, 'v-prendre', 'pres', 5)).toBe('shaky');
     // Check again, after the corrections were shown, counts for nothing.
     drills.table({ requestId: 'look-again', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prennent'], looked: true, again: true });
-    expect(scores('v-prendre')).toEqual([-1, -1, -1, -1, -1, -1]);
+    expect(scores('v-prendre')).toEqual(Array(6).fill(-0.2));
     drills.table({ requestId: 'look-all', verbId: 'v-parler', tense: 'pres', answers: ['parle', 'parles', 'parle', 'parlons', 'parlez', 'parlent'], looked: true });
-    expect(scores('v-parler')).toEqual([2, 2, 2, 2, 2, 2]);
+    expect(scores('v-parler')).toEqual(Array(6).fill(0.3));
+    // A table of one form gives that form the whole grade.
+    drills.table({ requestId: 'look-one', verbId: 'v-falloir', tense: 'fut', answers: ['', '', 'il faudra', '', '', ''], looked: true });
+    expect(drills.scoresOn('2026-09-21').find((form) => form.verbId === 'v-falloir')?.score).toBe(2);
   });
 
   test('By ear asks only about recorded phrases and checks the choice', () => {

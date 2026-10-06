@@ -21,12 +21,18 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 // A form's score: +2 for a typed answer right and -3 wrong (Type it, each cell of a whole table); +1 or -2 for a
-// Cards or Walkman mark, the learner's own say. A table filled in just after seeing it (mode look) is graded as one:
-// every form in it +2 when all were right, -1 when any was missed; its question column says which (LOOK_ALL or
-// LOOK_MISSED), and right stays each form's own. By ear asks about a tense or a number, not one form, and counts for
-// none. Every point halves over SCORE_HALF_LIFE_DAYS, as a word's does.
+// Cards or Walkman mark, the learner's own say. A table filled in just after seeing it (mode look) is graded as one
+// item, +2 when all its forms were right and -1 when any was missed, shared evenly by its forms; the question column
+// holds the outcome and the number of forms ("all right of 6", "missed of 6"), and right stays each form's own. By ear
+// asks about a tense or a number, not one form, and counts for none. Every point halves over SCORE_HALF_LIFE_DAYS, as
+// a word's does.
 const LOOK_ALL = 'all right', LOOK_MISSED = 'missed';
-const points = (mode: string, right: number, question: string | null) => mode === 'look' ? (question === LOOK_ALL ? 2 : -1) : mode === 'card' ? (right ? 1 : -2) : (right ? 2 : -3);
+const lookQuestion = (allRight: boolean, forms: number) => `${allRight ? LOOK_ALL : LOOK_MISSED} of ${forms}`;
+const lookPoints = (question: string | null) => {
+  const [, outcome, forms] = /^(.+) of (\d+)$/.exec(question ?? '') ?? [];
+  return (outcome === LOOK_ALL ? 2 : -1) / (Number(forms) || 1);
+};
+const points = (mode: string, right: number, question: string | null) => mode === 'look' ? lookPoints(question) : mode === 'card' ? (right ? 1 : -2) : (right ? 2 : -3);
 // Every drill picks a form with odds 2^(-score/PULL), the score held within ±LIMIT, as the Walkman picks words: an
 // untried form at 0, one missed once about three times as likely, one known twice in a row about a fifth as likely.
 const PULL = 1.7;
@@ -312,7 +318,7 @@ export function createVerbDrills(options: {
     const allRight = checks.every((entry) => !entry || entry.checked.right);
     for (const entry of checks) {
       if (!entry || (looked && input.again === true)) continue;
-      insert.run(`${requestId}:${entry.person}`, verb.id, tense, entry.person, looked ? 'look' : 'table', looked ? (allRight ? LOOK_ALL : LOOK_MISSED) : null, entry.given.slice(0, 80), entry.checked.right ? 1 : 0, at);
+      insert.run(`${requestId}:${entry.person}`, verb.id, tense, entry.person, looked ? 'look' : 'table', looked ? lookQuestion(allRight, persons(verb).length) : null, entry.given.slice(0, 80), entry.checked.right ? 1 : 0, at);
     }
     const cells = checks.map((entry) => entry && { right: entry.checked.right, expected: entry.checked.expected, why: entry.checked.why, ...(entry.checked.hook ? { hook: entry.checked.hook } : {}) });
     return { cells, right: cells.filter((cell) => cell?.right).length, total: persons(verb).length, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
