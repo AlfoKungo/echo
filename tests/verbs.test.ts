@@ -291,12 +291,21 @@ describe('verb drills', () => {
     expect([falloir.right, falloir.total, falloir.cells[0]]).toEqual([1, 1, null]);
   });
 
-  test('a table filled in just after seeing it keeps only its misses', () => {
+  test('a table filled in just after seeing it is graded as one: +2 each when all right, -1 each when any missed', () => {
     const drills = fixture();
-    const checked = drills.table({ requestId: 'look', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prenent'], looked: true });
-    expect(checked.right).toBe(5);
-    expect(state(drills, 'v-prendre', 'pres', 0)).toBe('new');
+    clock.value = new Date(2026, 8, 21, 10);
+    const scores = (verbId: string) => drills.scoresOn('2026-09-21').filter((form) => form.verbId === verbId).map((form) => form.score);
+    const missed = drills.table({ requestId: 'look', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prenent'], looked: true });
+    expect(missed.right).toBe(5);
+    expect(scores('v-prendre')).toEqual([-1, -1, -1, -1, -1, -1]);
+    // Each form keeps its own right or wrong: the one typed right is not counted as a miss.
+    expect(state(drills, 'v-prendre', 'pres', 0)).toBe('getting');
     expect(state(drills, 'v-prendre', 'pres', 5)).toBe('shaky');
+    // Check again, after the corrections were shown, counts for nothing.
+    drills.table({ requestId: 'look-again', verbId: 'v-prendre', tense: 'pres', answers: ['prends', 'prends', 'prend', 'prenons', 'prenez', 'prennent'], looked: true, again: true });
+    expect(scores('v-prendre')).toEqual([-1, -1, -1, -1, -1, -1]);
+    drills.table({ requestId: 'look-all', verbId: 'v-parler', tense: 'pres', answers: ['parle', 'parles', 'parle', 'parlons', 'parlez', 'parlent'], looked: true });
+    expect(scores('v-parler')).toEqual([2, 2, 2, 2, 2, 2]);
   });
 
   test('By ear asks only about recorded phrases and checks the choice', () => {

@@ -21,9 +21,12 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 // A form's score: +2 for a typed answer right and -3 wrong (Type it, each cell of a whole table); +1 or -2 for a
-// Cards or Walkman mark, the learner's own say. By ear asks about a tense or a number, not one form, and counts for
+// Cards or Walkman mark, the learner's own say. A table filled in just after seeing it (mode look) is graded as one:
+// every form in it +2 when all were right, -1 when any was missed; its question column says which (LOOK_ALL or
+// LOOK_MISSED), and right stays each form's own. By ear asks about a tense or a number, not one form, and counts for
 // none. Every point halves over SCORE_HALF_LIFE_DAYS, as a word's does.
-const points = (mode: string, right: number) => mode === 'card' ? (right ? 1 : -2) : (right ? 2 : -3);
+const LOOK_ALL = 'all right', LOOK_MISSED = 'missed';
+const points = (mode: string, right: number, question: string | null) => mode === 'look' ? (question === LOOK_ALL ? 2 : -1) : mode === 'card' ? (right ? 1 : -2) : (right ? 2 : -3);
 // Every drill picks a form with odds 2^(-score/PULL), the score held within ±LIMIT, as the Walkman picks words: an
 // untried form at 0, one missed once about three times as likely, one known twice in a row about a fifth as likely.
 const PULL = 1.7;
@@ -78,7 +81,7 @@ export function createVerbDrills(options: {
   `);
   const insert = db.query('INSERT OR IGNORE INTO verb_answers (request_id, verb_id, tense, person, mode, question, given, right, answered_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
   const written = db.query<{ verb_id: string; tense: Tense; person: number; right: number }, []>("SELECT verb_id, tense, person, right FROM verb_answers WHERE mode != 'ear' ORDER BY sequence DESC");
-  const everyScored = db.query<{ verb_id: string; tense: Tense; person: number; mode: string; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, mode, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
+  const everyScored = db.query<{ verb_id: string; tense: Tense; person: number; mode: string; question: string | null; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, mode, question, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
   const everyWritten = db.query<{ verb_id: string; tense: Tense; person: number; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
   const hookRows = db.query<{ verb_id: string; tense: string; person: number; form: string; hook: string }, []>('SELECT verb_id, tense, person, form, hook FROM verb_hooks');
   const hookRow = db.query<{ form: string; hook: string }, [string, string, number]>('SELECT form, hook FROM verb_hooks WHERE verb_id = ? AND tense = ? AND person = ?');
@@ -108,7 +111,7 @@ export function createVerbDrills(options: {
       const at = Date.parse(row.answered_at);
       if (at > end) continue;
       const id = key(row.verb_id, row.tense, row.person);
-      scores.set(id, (scores.get(id) ?? 0) + points(row.mode, row.right) * 0.5 ** ((end - at) / DAY_MS / SCORE_HALF_LIFE_DAYS));
+      scores.set(id, (scores.get(id) ?? 0) + points(row.mode, row.right, row.question) * 0.5 ** ((end - at) / DAY_MS / SCORE_HALF_LIFE_DAYS));
       if (!row.right) misses.set(id, (misses.get(id) ?? 0) + 1);
     }
     return { scores, misses };
@@ -293,19 +296,25 @@ export function createVerbDrills(options: {
     return { verbId, tense };
   }
 
-  // looked: the table was just shown (Look, then write), so a right form proves little; only its misses are kept.
-  function table(input: { requestId: string; verbId: string; tense: Tense; answers: string[]; looked?: boolean }) {
+  // looked: the table was just shown (Look, then write), so it is graded as one (see points); again: Check again on a
+  // table already checked, which for a looked table counts for nothing more.
+  function table(input: { requestId: string; verbId: string; tense: Tense; answers: string[]; looked?: boolean; again?: boolean }) {
     const requestId = requestIdOf(input?.requestId);
     const { verb, tense } = findTense(input?.verbId, input?.tense);
     if (!Array.isArray(input.answers) || input.answers.length !== 6) throw new StoreError('Send an answer for each of the six persons.');
     const at = now().toISOString();
-    const cells = [0, 1, 2, 3, 4, 5].map((person) => {
+    const looked = input.looked === true;
+    const checks = [0, 1, 2, 3, 4, 5].map((person) => {
       if (!persons(verb).includes(person)) return null;
       const given = typeof input.answers[person] === 'string' ? input.answers[person]! : '';
-      const checked = result(verb, tense, person, given);
-      if (!checked.right || input.looked !== true) insert.run(`${requestId}:${person}`, verb.id, tense, person, 'table', null, given.slice(0, 80), checked.right ? 1 : 0, at);
-      return { right: checked.right, expected: checked.expected, why: checked.why, ...(checked.hook ? { hook: checked.hook } : {}) };
+      return { person, given, checked: result(verb, tense, person, given) };
     });
+    const allRight = checks.every((entry) => !entry || entry.checked.right);
+    for (const entry of checks) {
+      if (!entry || (looked && input.again === true)) continue;
+      insert.run(`${requestId}:${entry.person}`, verb.id, tense, entry.person, looked ? 'look' : 'table', looked ? (allRight ? LOOK_ALL : LOOK_MISSED) : null, entry.given.slice(0, 80), entry.checked.right ? 1 : 0, at);
+    }
+    const cells = checks.map((entry) => entry && { right: entry.checked.right, expected: entry.checked.expected, why: entry.checked.why, ...(entry.checked.hook ? { hook: entry.checked.hook } : {}) });
     return { cells, right: cells.filter((cell) => cell?.right).length, total: persons(verb).length, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
   }
 
@@ -392,7 +401,7 @@ export function createVerbDrills(options: {
     const daily = recent.map((day) => ({ day, gained: 0, lost: 0 }));
     const byDay = new Map(daily.map((entry) => [entry.day, entry]));
     // What a miss costs depends on how far the form's answers had climbed (lib/score-points.ts).
-    const events = rows.map((row) => ({ id: key(row.verb_id, row.tense, row.person), weight: points(row.mode, row.right), at: Date.parse(row.answered_at) }));
+    const events = rows.map((row) => ({ id: key(row.verb_id, row.tense, row.person), weight: points(row.mode, row.right, row.question), at: Date.parse(row.answered_at) }));
     pointsFromLowest(events).forEach((value, index) => {
       const entry = byDay.get(studyDay(new Date(events[index]!.at)));
       if (entry) { if (value > 0) entry.gained += value; else entry.lost -= value; }
