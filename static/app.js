@@ -3758,7 +3758,9 @@ function answerAhead(body) {
     if (token !== generation || screen !== 'practice') return;
     const shown = snapshot.current;
     if (result.current && shown && result.current.id === shown.id && result.current.version === shown.version) {
-      snapshot = result; render();
+      // The card on screen was the right guess: only the counts and Undo change. Redrawing the card here would
+      // replace it under a finger that may already be on it, and a tap whose target is replaced mid-tap can be lost.
+      snapshot = result; refreshPracticeChrome();
     } else { applySnapshot(result); render(); }
   }, async (error) => {
     if (token !== generation) return;
@@ -3775,6 +3777,13 @@ function answerAhead(body) {
     queuedGrade = null;
     grade(known);
   });
+}
+// The counts line and Undo under the card, brought up to date without redrawing the card itself.
+function refreshPracticeChrome() {
+  main.querySelector('.practice > .compact-line')?.replaceWith(document.createRange().createContextualFragment(workingCounts(categoryTitle(deck))));
+  const undo = main.querySelector('.study-tools [data-action=undo]');
+  if (undo) undo.disabled = !snapshot.undoId || locked();
+  warmClip(snapshot.next?.audioUrl);
 }
 function undo() {
   if (endlessMode()) { undoEndless(); return; }

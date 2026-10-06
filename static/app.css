@@ -563,6 +563,11 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 /* The card: the French first, the translation under a hairline, gender in words; a hint until it turns, then
    each half says what it records. The labels sit where the arrows were, so nothing moves on reveal. */
 .study-surface{border-radius:24px}
+/* Taps land at once: no double-tap zoom to wait for anywhere (pinch zoom stays), and on the card no text selection
+   or callout under a resting finger. Pressing the face-down card shades it, so a tap is seen to land. */
+html{touch-action:manipulation}
+.study-surface{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+.study-surface:not(.revealed):active{background:var(--card-hover)}
 .study-surface.revealed .source-word{display:inline-block;min-width:min(240px,70%);margin-top:16px;padding-top:14px;border-top:1px solid var(--frame)}
 .gender-tag{display:inline-block;margin-top:14px;padding:1px 10px;border:1px solid var(--frame);border-radius:999px;font-size:12px;line-height:20px;color:var(--muted)}
 .genders .gender-tag.g-m{color:var(--masc);border-color:color-mix(in srgb,var(--masc) 40%,transparent)}.genders .gender-tag.g-f{color:var(--fem);border-color:color-mix(in srgb,var(--fem) 40%,transparent)}
