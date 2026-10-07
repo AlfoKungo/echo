@@ -1,40 +1,102 @@
 {
  "patterns": [
   {
-   "title": "-eur, -ier, -ien, -iste, -ant: the person",
-   "explanation": "Add one of these endings to a verb or a thing, and you get the person who does that job or activity. Listen for the ending at the end of a job word.",
-   "tip": "Feminine forms: vendeuse, cuisinière, pharmacienne, étudiante. Words ending in -iste stay the same: la dentiste.",
+   "title": "\"-ment\" on an adjective: the -ly word",
+   "explanation": "Add -ment to an adjective to say how something is done, like English -ly. If you hear a word ending in -ment after a verb, it often means \"in this way\".",
+   "tip": "Add -ment to the feminine form: lente → lentement, douce → doucement.",
+   "examples": [
+    [
+     "qualities-038",
+     "qualities-114"
+    ],
+    [
+     "qualities-047",
+     "qualities-101"
+    ],
+    [
+     "qualities-056",
+     "qualities-105"
+    ],
+    [
+     "qualities-098",
+     "qualities-108"
+    ],
+    [
+     "qualities-088",
+     "qualities-109"
+    ],
+    [
+     "qualities-184",
+     "qualities-113"
+    ]
+   ]
+  },
+  {
+   "title": "\"-er\" makes the verb",
+   "explanation": "Add -er (or just -r after an -e) to a noun to get the verb for doing it. Many French verbs end in -er, so a noun you know can turn into a verb you can use.",
+   "tip": "These verbs are regular -er verbs: je danse, tu danses, nous dansons.",
+   "examples": [
+    [
+     "home-007",
+     "verbs-061"
+    ],
+    [
+     "feelings-018",
+     "feelings-019"
+    ],
+    [
+     "leisure-026",
+     "leisure-025"
+    ],
+    [
+     "leisure-045",
+     "leisure-046"
+    ],
+    [
+     "leisure-073",
+     "leisure-074"
+    ],
+    [
+     "work-089",
+     "media-051"
+    ]
+   ]
+  },
+  {
+   "title": "\"-eur\", \"-ier\": the person who does it",
+   "explanation": "Replace the verb ending with -eur, or add -ier to a noun, to name the person who does that thing or job. Listen for -eur or -ier at the end of job words.",
+   "tip": "Feminine forms: -eur → -euse (la vendeuse), -ier → -ière (la cuisinière).",
    "examples": [
     [
      "verbs-056",
      "work-024"
     ],
     [
-     "home-007",
+     "leisure-027",
+     "leisure-028"
+    ],
+    [
+     "verbs-087",
+     "leisure-005"
+    ],
+    [
+     "verbs-189",
+     "work-022"
+    ],
+    [
+     "verbs-061",
      "work-021"
     ],
     [
-     "travel-025",
-     "work-014"
-    ],
-    [
-     "health-time-010",
-     "work-013"
-    ],
-    [
-     "work-081",
-     "work-026"
-    ],
-    [
-     "verbs-070",
-     "work-016"
+     "town-005",
+     "work-019"
     ]
    ]
   },
   {
-   "title": "in-, im-, mé-: the opposite",
-   "explanation": "Put in-, im- or mé- at the front of a describing word and it means 'not'. Use im- before p or b.",
-   "tip": "The word's meaning flips, but its gender and endings stay the same: impatient, impatiente.",
+   "title": "\"in-\", \"im-\", \"mé-\": the opposite",
+   "explanation": "Put in-, im- or mé- in front of a word to make it mean \"not\". Use im- before p, b and m.",
+   "tip": "The gender stays the same: l'égalité, l'inégalité (both feminine).",
    "examples": [
     [
      "qualities-043",
@@ -45,121 +107,232 @@
      "qualities-046"
     ],
     [
-     "qualities-078",
-     "qualities-079"
-    ],
-    [
      "qualities-072",
      "qualities-073"
     ],
     [
+     "qualities-078",
+     "qualities-079"
+    ],
+    [
+     "society-023",
+     "society-062"
+    ],
+    [
      "qualities-065",
      "qualities-066"
-    ],
-    [
-     "verbs-015",
-     "people-035"
     ]
    ]
   },
   {
-   "title": "-er makes the verb",
-   "explanation": "Add -er (or -iser) to a noun or a describing word to make a verb: doing the thing. Most French verbs end in -er.",
-   "tip": "-er verbs are the most regular kind, so they are the easiest to conjugate.",
+   "title": "\"se\" + verb: doing it to yourself",
+   "explanation": "Put se (me, te, se...) before a verb when you do the action to yourself. Sometimes the meaning changes a little: demander is to ask, se demander is to wonder.",
+   "tip": "Before a vowel, se becomes s': s'excuser. In the past tense these verbs use être.",
    "examples": [
     [
-     "home-007",
-     "verbs-061"
+     "verbs-097",
+     "verbs-125"
     ],
     [
-     "work-001",
-     "verbs-069"
+     "verbs-008",
+     "verbs-117"
     ],
     [
-     "qualities-043",
-     "verbs-077"
+     "verbs-081",
+     "verbs-132"
+    ],
+    [
+     "verbs-152",
+     "verbs-126"
+    ],
+    [
+     "verbs-181",
+     "verbs-182"
+    ],
+    [
+     "verbs-091",
+     "verbs-120"
     ]
    ]
   },
   {
-   "title": "re-: again or back",
-   "explanation": "re- at the start of a verb means doing it again or going back. Take off the re- and you often find a verb you already know.",
+   "title": "\"-tion\", \"-ment\": the noun for the action",
+   "explanation": "Change a verb into a noun with -tion/-sion or -ment, often the same as English -tion or -ment. Words ending in -tion are usually easy to guess from English.",
+   "tip": "-tion and -sion nouns are feminine (la décision). -ment nouns are masculine (le remboursement).",
    "examples": [
     [
-     "verbs-005",
-     "verbs-035"
+     "verbs-162",
+     "work-059"
     ],
     [
-     "verbs-010",
-     "essentials-007"
+     "verbs-094",
+     "society-084"
     ],
     [
-     "verbs-027",
-     "work-054"
+     "verbs-147",
+     "leisure-024"
+    ],
+    [
+     "society-044",
+     "society-012"
+    ],
+    [
+     "school-014",
+     "school-091"
+    ],
+    [
+     "shopping-033",
+     "shopping-034"
     ]
    ]
   },
   {
-   "title": "Verb minus -er, or plus -ée: the noun",
-   "explanation": "Cut the verb ending, or change -er to -ée, and you get the noun for the action or the moment: arriver gives l'arrivée.",
-   "tip": "Nouns ending in -ée are almost always feminine: l'arrivée, l'entrée (but le musée).",
+   "title": "\"-ée\", \"-ure\": the noun for the act or result",
+   "explanation": "Add -ée or -ure to a verb or noun to name the act, its result, or a stretch of time. Une soirée is a whole evening, une entrée is a way in.",
+   "tip": "These nouns are almost always feminine: la soirée, l'arrivée, la peinture.",
    "examples": [
+    [
+     "health-time-060",
+     "leisure-023"
+    ],
     [
      "verbs-032",
      "travel-058"
+    ],
+    [
+     "verbs-017",
+     "feelings-050"
     ],
     [
      "verbs-033",
      "food-077"
     ],
     [
-     "verbs-050",
-     "travel-013"
+     "verbs-073",
+     "school-037"
     ],
     [
-     "verbs-086",
-     "people-052"
-    ],
-    [
-     "verbs-009",
-     "work-052"
-    ],
-    [
-     "verbs-031",
-     "travel-057"
+     "leisure-076",
+     "leisure-075"
     ]
    ]
   },
   {
-   "title": "-age: the thing or the action",
-   "explanation": "-age turns a verb or a noun into a noun for the action, the result, or a whole set of something: passer gives le passage.",
-   "tip": "Nouns ending in -age are almost always masculine: le mariage, le paysage.",
+   "title": "\"-é\": how you feel or the state it's in",
+   "explanation": "Add -é to a noun or a verb stem to describe the state someone or something is in, like English -ed: stressed, closed, broken.",
+   "tip": "Add -e for a woman or a feminine noun: fatiguée, la porte fermée. The sound does not change.",
    "examples": [
     [
-     "verbs-029",
-     "travel-040"
+     "health-time-049",
+     "feelings-009"
     ],
     [
-     "travel-046",
-     "nature-080"
+     "feelings-029",
+     "feelings-030"
     ],
     [
-     "people-024",
-     "people-048"
+     "verbs-046",
+     "qualities-037"
     ],
     [
-     "qualities-025",
-     "home-040"
+     "verbs-197",
+     "qualities-133"
     ],
     [
-     "food-090",
-     "travel-088"
+     "feelings-076",
+     "feelings-077"
+    ],
+    [
+     "feelings-065",
+     "feelings-066"
     ]
    ]
   },
   {
-   "title": "Two words hidden in one",
-   "explanation": "Some everyday words are two short words glued together. Split them and the meaning often shows: bon + jour = good day.",
+   "title": "\"-té\", \"-esse\": the noun for a quality",
+   "explanation": "Add -té or -esse to an adjective to name the quality itself: proud becomes pride, sad becomes sadness. -té often matches English -ty.",
+   "tip": "These nouns are feminine: la liberté, la tristesse.",
+   "examples": [
+    [
+     "feelings-013",
+     "feelings-069"
+    ],
+    [
+     "qualities-062",
+     "society-033"
+    ],
+    [
+     "qualities-090",
+     "society-022"
+    ],
+    [
+     "qualities-064",
+     "feelings-006"
+    ],
+    [
+     "qualities-132",
+     "feelings-087"
+    ],
+    [
+     "qualities-031",
+     "nature-099"
+    ]
+   ]
+  },
+  {
+   "title": "\"-erie\", \"-ie\": the shop or the place",
+   "explanation": "Add -erie or -ie to a seller or a product to name the shop or building. On a street sign, -erie usually means a shop.",
+   "tip": "These places are feminine: la boulangerie, la mairie.",
+   "examples": [
+    [
+     "work-023",
+     "travel-024"
+    ],
+    [
+     "nature-014",
+     "shopping-054"
+    ],
+    [
+     "food-094",
+     "shopping-051"
+    ],
+    [
+     "town-033",
+     "travel-076"
+    ]
+   ]
+  },
+  {
+   "title": "\"re-\": again or back",
+   "explanation": "Put re- (or r- before a vowel) in front of a word to mean doing it again or going back. Revenir is to come back, recopier is to copy out again.",
+   "tip": "In au revoir, re- + voir means \"until we see each other again\".",
+   "examples": [
+    [
+     "verbs-005",
+     "verbs-035"
+    ],
+    [
+     "verbs-015",
+     "verbs-113"
+    ],
+    [
+     "media-061",
+     "school-097"
+    ],
+    [
+     "food-077",
+     "school-027"
+    ],
+    [
+     "verbs-010",
+     "essentials-007"
+    ]
+   ]
+  },
+  {
+   "title": "Two words make one",
+   "explanation": "Two short words can join into one new word. Split it into its parts to find the meaning: bon + jour is good day, lave + linge is washes laundry.",
+   "tip": "Compounds with a hyphen often take le: le lave-linge. Family words keep the gender of the person: la grand-mère.",
    "examples": [
     [
      "health-time-055",
@@ -170,158 +343,20 @@
      "essentials-008"
     ],
     [
-     "health-time-055",
-     "essentials-089"
-    ],
-    [
-     "essentials-062",
-     "essentials-037"
-    ],
-    [
-     "essentials-045",
-     "essentials-014"
-    ],
-    [
-     "verbs-060",
-     "food-082"
-    ]
-   ]
-  },
-  {
-   "title": "Two words joined with a hyphen",
-   "explanation": "A hyphen (-) joins two words into one new noun. The first word often describes the second: grand + mère = grandmother.",
-   "tip": "grand- and petit- make family words: grand-père, petit-fils.",
-   "examples": [
-    [
-     "qualities-001",
+     "people-009",
      "people-013"
     ],
     [
-     "qualities-001",
-     "people-014"
-    ],
-    [
-     "qualities-002",
-     "people-016"
-    ],
-    [
-     "qualities-002",
+     "people-028",
      "people-017"
     ],
-    [
-     "travel-001",
-     "travel-033"
-    ],
-    [
-     "home-079",
-     "home-080"
-    ]
-   ]
-  },
-  {
-   "title": "X de Y, X à Y: a thing of or for",
-   "explanation": "de (of) or à (for) links two nouns into one name. The main thing comes first and the detail comes after: sac à main = bag for the hand.",
-   "tip": "The gender comes from the first word: la pomme de terre, le sac à main.",
-   "examples": [
-    [
-     "food-021",
-     "food-030"
-    ],
-    [
-     "food-044",
-     "food-067"
-    ],
-    [
-     "home-067",
-     "food-091"
-    ],
-    [
-     "health-time-004",
-     "people-095"
-    ],
-    [
-     "work-049",
-     "work-073"
-    ],
-    [
-     "verbs-100",
-     "travel-086"
-    ]
-   ]
-  },
-  {
-   "title": "Action + object: the tool",
-   "explanation": "A verb (lave, sèche, tourne, porte) plus the thing it works on names the tool or machine that does the job: lave-linge washes laundry.",
-   "tip": "These tool words are usually masculine: le lave-linge, le tournevis.",
-   "examples": [
     [
      "verbs-097",
      "home-082"
     ],
     [
-     "verbs-097",
-     "home-089"
-    ],
-    [
-     "qualities-031",
-     "home-083"
-    ],
-    [
-     "home-096",
-     "home-093"
-    ],
-    [
-     "verbs-042",
-     "people-096"
-    ]
-   ]
-  },
-  {
-   "title": "a-, ap-, em-, com-, sou-: new verbs",
-   "explanation": "A short prefix on a verb you know makes a related verb. porter (carry) gives apporter (bring here) and emporter (take away).",
-   "examples": [
-    [
-     "verbs-042",
-     "verbs-043"
-    ],
-    [
-     "verbs-042",
-     "verbs-044"
-    ],
-    [
-     "verbs-023",
-     "verbs-071"
-    ],
-    [
-     "verbs-023",
-     "verbs-016"
-    ],
-    [
-     "verbs-088",
-     "verbs-089"
-    ]
-   ]
-  },
-  {
-   "title": "Past form as a word: -é, -t, -is",
-   "explanation": "The past form of a verb (fermé, ouvert, pris) can be used on its own as a describing word or a noun: fermer gives fermé (closed).",
-   "tip": "-er verbs make it with -é. Add -e for feminine: fermée, ouverte, prise.",
-   "examples": [
-    [
-     "verbs-045",
-     "qualities-036"
-    ],
-    [
-     "verbs-046",
-     "qualities-037"
-    ],
-    [
-     "verbs-024",
-     "work-078"
-    ],
-    [
-     "verbs-023",
-     "home-037"
+     "health-time-051",
+     "essentials-141"
     ]
    ]
   }
