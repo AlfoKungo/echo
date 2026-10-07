@@ -2006,12 +2006,12 @@ function understoodHTML(understood) {
   if (!understood) return '';
   return `<div class="song-known"><p><strong>You know ${understood.known}%</strong> of the words in this song${understood.learning ? ` · ${understood.learning}% still learning` : ''}</p><span class="song-known-bar"><span class="k" style="width:${understood.known}%"></span><span class="l" style="width:${understood.learning}%"></span></span><p class="caption">Every word as it is sung, little words and names left out. A word counts once you know it in your practice.</p></div>`;
 }
+// The song's words page, under its lyrics: choosing the words to add, then their deck and recordings.
 function renderSong() {
   const song = songView;
-  const header = `<div class="section-top">${back('Songs', 'songs')}</div>`;
+  const header = `<div class="section-top">${song && song.notes === 'none' ? back('Songs', 'songs') : back('Lyrics', 'song-lyrics')}</div>`;
   if (!song) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Opening the song…</div>' : ''}</section>`; return; }
-  const readable = (song.status === 'ready' || song.status === 'added') && song.notes !== 'none';
-  const title = `<h1>${esc(song.title)}</h1><p class="subtitle">${esc(song.artist || 'Pasted lyrics')}</p>${readable ? `<button class="secondary song-lyrics-open" data-action="song-lyrics">Read the song${song.notes === 'ready' ? '' : ' · notes on the way'}</button>` : ''}`;
+  const title = `<h1>${esc(song.title)}</h1><p class="subtitle">${esc(song.artist || 'Pasted lyrics')}</p>`;
   let body = '';
   if (song.status === 'reading') {
     body = `<div class="song-progress" role="status"><p>Reading the song…</p><span class="song-bar busy"><span></span></span><p class="caption">Claude reads the whole song and gives every word its dictionary form, gender and meaning here. It usually takes under a minute; you can leave and come back.</p></div>`;
@@ -2041,7 +2041,12 @@ function renderSong() {
   }
   main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${title}${understoodHTML(song.understood)}${body}</section>`;
 }
-function openSong(id) { songId = id; songView = songList?.songs.find((song) => song.id === id) ?? null; if (move(`song|${id}`, true)) loadSong(); }
+// A song opens on its lyrics; one whose lyrics are not on this Mac opens on its words page.
+function openSong(id) {
+  songId = id; songView = songList?.songs.find((song) => song.id === id) ?? null;
+  if (songView?.notes === 'none') openSongPage(); else openLyrics();
+}
+function openSongPage() { if (move(`song|${songId}`, true)) loadSong(); }
 async function loadSongs(refresh = false) {
   try { songList = await api('api/songs'); }
   catch (error) { if (!refresh) { notice = { message: error.message }; retryAction = { type: 'songs' }; } }
@@ -2068,16 +2073,27 @@ function openLyrics() { if (move(`lyrics|${songId}`, true)) loadLyrics(); }
 async function loadLyrics() {
   const id = songId;
   if (songLyrics?.id !== id) { songLyrics = null; openLines.clear(); loading = true; render(); }
-  try { const view = await api(`api/songs/${encodeURIComponent(id)}/lyrics`); if (songId === id) songLyrics = view; }
+  // The song itself too: its row under the title says where its words stand.
+  try { const [view, song, list] = await Promise.all([api(`api/songs/${encodeURIComponent(id)}/lyrics`), api(`api/songs/${encodeURIComponent(id)}`), api('api/songs')]); if (songId === id) { songLyrics = view; songView = song; songList = list; } }
   catch (error) { notice = { message: error.message }; }
   loading = false;
   if (screen === 'lyrics') render();
   clearTimeout(lyricsPoll);
-  if (screen === 'lyrics' && (songLyrics?.notes === 'writing' || songLyrics?.notes === 'waiting')) lyricsPoll = setTimeout(() => { if (screen === 'lyrics' && songId === id) loadLyrics(); }, 8000);
+  const waiting = songLyrics?.notes === 'writing' || songLyrics?.notes === 'waiting' || songView?.status === 'reading';
+  if (screen === 'lyrics' && waiting) lyricsPoll = setTimeout(() => { if (screen === 'lyrics' && songId === id) loadLyrics(); }, songView?.status === 'reading' ? 4000 : 8000);
+}
+// The way from the lyrics to the song's words page, saying where its words stand.
+function songPageRowHTML(song) {
+  if (!song) return '';
+  const [title, detail] = song.status === 'reading' ? ['Reading the words…', 'Claude gives every word its dictionary form; usually under a minute']
+    : song.status === 'ready' ? ['Choose the words to add', songStatusLine(song)]
+    : song.status === 'added' ? ['Words and deck', songStatusLine(song)]
+    : ['The words could not be read', 'Try again, or remove the song'];
+  return `<button class="song-row song-page-row" data-action="song-page"><span class="song-copy"><strong>${esc(title)}</strong><small class="song-state ${song.status}">${esc(detail)}</small>${song.status === 'reading' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button>`;
 }
 function renderLyrics() {
   const view = songLyrics;
-  const header = `<div class="section-top">${back('Song', 'song-page')}</div>`;
+  const header = `<div class="section-top">${back('Songs', 'songs')}</div>`;
   if (!view) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Opening the lyrics…</div>' : ''}</section>`; return; }
   const status = view.notes === 'ready' ? '<p class="song-hint">Tap › at the start of a line for what it means, or tap a word for its note.</p>'
     : view.notes === 'writing' ? `<div class="song-progress" role="status"><p>Writing the notes… ${view.done} of ${view.total} lines</p><span class="song-bar"><span style="width:${view.total ? view.done / view.total * 100 : 0}%"></span></span><p class="caption">Claude translates every line and explains its words. The lyrics are here meanwhile; the notes appear when they are all written.</p></div>`
@@ -2090,7 +2106,7 @@ function renderLyrics() {
     const start = line.en ? `<button class="lyric-start" data-action="lyric-line" data-line="${key}" aria-expanded="${open}" aria-label="What this line means">›</button>` : '<span class="lyric-start" aria-hidden="true"></span>';
     return `<div class="lyric-line" data-line="${key}">${start}<div class="lyric-text"><p lang="fr">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div></div>`;
   }).join('')}</div>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics">${header}<h1>${esc(view.title)}</h1><p class="subtitle">${esc(view.artist || 'Pasted lyrics')}</p>${status}<div class="lyric-lines">${lines}</div></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics">${header}<h1>${esc(view.title)}</h1><p class="subtitle">${esc(view.artist || 'Pasted lyrics')}</p>${songPageRowHTML(songView?.id === view.id ? songView : null)}${status}<div class="lyric-lines">${lines}</div></section>`;
 }
 async function rewriteSongNotes() {
   if (busy) return;
@@ -4072,8 +4088,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'song-retry') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}/retry`, { method: 'POST', body: '{}' }, (song) => { songView = song; loadSong(); });
   else if (action === 'song-remove') songAction(`api/songs/${encodeURIComponent(button.dataset.song)}`, { method: 'DELETE' }, () => { songView = null; move('songs'); loadSongs(); });
   else if (action === 'song-practise') { deck = button.dataset.category; savePreference('echo.deck', deck); openWords('cards'); }
-  else if (action === 'song-lyrics') openLyrics();
-  else if (action === 'song-page') openSong(songId);
+  // From the words page back up to the lyrics: walks back when the lyrics are behind it.
+  else if (action === 'song-lyrics') { if (move(`lyrics|${songId}`)) loadLyrics(); }
+  else if (action === 'song-page') openSongPage();
   else if (action === 'lyric-line') { const key = button.dataset.line; if (openLines.has(key)) openLines.delete(key); else openLines.add(key); render(); }
   else if (action === 'song-notes') rewriteSongNotes();
   else if (action === 'gender-colours') { genderColours = !genderColours; localStorage.setItem('echo.genders', genderColours ? 'on' : 'off'); document.body.classList.toggle('genders', genderColours); openOptions(); render(); }
