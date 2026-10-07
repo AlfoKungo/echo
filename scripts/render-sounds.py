@@ -32,7 +32,7 @@ from whisper_scorer import MODEL as SCORER_MODEL, Scorer  # noqa: E402
 MARGIN = 3.0
 # Every clip starts with the same 250 ms of quiet: a phone (and Bluetooth earbuds even more) drops the first moment
 # of a short clip while its output wakes, which turned a clip starting straight on "ils" into "…ont".
-LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1'
+LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1,asetnsamples=n=1152:p=1'
 SEEDS = '42,17,101,7,13,99'
 
 

@@ -76,7 +76,8 @@ def transcribe(path):
 
 # Every word clip starts with the same 250 ms of quiet: a phone (and Bluetooth earbuds even more) drops the first
 # moment of a short clip while its output wakes. The Walkman copies trim it back (build-walkman-clips.py).
-LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1'
+# asetnsamples pads the last frame to a whole MP3 frame: ffmpeg 9's libmp3lame refuses a short one from adelay.
+LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1,asetnsamples=n=1152:p=1'
 
 def save_manifest():
     temporary = AUDIO / 'manifest.tmp.json'

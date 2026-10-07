@@ -809,6 +809,20 @@ describe('Words added from a song', () => {
     expect(store.browse('fr-en', 'all').filter((word) => word.status !== 'new').map((word) => word.id)).toContain(first.id);
   });
 
+  test('a deck word waits for its recording too', () => {
+    const readyIds = new Set<string>();
+    const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
+    directories.push(directory);
+    const store = createStore(words, { dbPath: join(directory, 'echo.db'), now: () => new Date(2026, 8, 21, 10), ready: (id) => readyIds.has(id) });
+    stores.push(store);
+    store.setSettings(2);
+    const none = store.start('fr-en', 'all');
+    expect([none.current, none.stats.recording, none.stats.newAvailable]).toEqual([null, words.length, 0]);
+    readyIds.add(words[3]!.id);
+    store.addExtraWords({ direction: 'fr-en', deck: 'all', count: 2, requestId: 'more-deck' });
+    expect(store.browse('fr-en', 'all').filter((word) => word.status !== 'new').map((word) => word.id)).toEqual([words[3]!.id]);
+  });
+
   test('refuse a category that is not a song, and an empty word', () => {
     const { store } = fixture();
     expect(() => store.addWords({ ...song, category: 'food' })).toThrow(StoreError);

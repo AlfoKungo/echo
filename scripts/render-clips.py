@@ -49,7 +49,7 @@ CLIP_ID = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
 # Listen and Read clips start with 250 ms of quiet, as word clips do (render-audio.py): a phone, and Bluetooth earbuds
 # more, drop the first moment of a clip while the output wakes. Not part of the signature, so padding a clip never
 # makes it re-render; the record notes it (leadIn) and the check runs on the padded mp3.
-LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1'
+LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1,asetnsamples=n=1152:p=1'
 LEAD_IN_MS = 250
 LEAD_IN_SETS = ('comprehension',)
 

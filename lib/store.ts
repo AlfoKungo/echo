@@ -697,8 +697,9 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     const started = new Set(rows.map((row) => row.word_id));
     function summarize(records: CardRow[], count: number, scope: string): Stats {
       const unseen = count - records.length;
-      // Song words without a recording cannot be introduced yet, so they are not offered as new.
-      const recording = [...added].filter((id) => !started.has(id) && inDeck(id, scope) && !ready(id)).length;
+      // A word without its French recording (a song word still being recorded, a deck word whose recording failed)
+      // cannot be introduced yet, so it is not offered as new.
+      const recording = words.filter((word) => !started.has(word.id) && inDeck(word.id, scope) && !ready(word.id)).length;
       const stats: Stats = {
         total: count, unseen, seenActive: 0, unseenActive: 0, introducedToday,
         newAvailable: Math.min(unseen - recording, Math.max(0, preferences.newPerDay + extra - introducedToday)),
@@ -761,7 +762,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     const rows = rowsForDirection.all(direction);
     const seen = new Set(rows.map((row) => row.word_id));
     const allowance = Math.max(0, settings().newPerDay + extraToday(direction, day) - rows.filter((row) => row.introduced_day === day).length);
-    const eligible = admissionOrder().filter((word) => inDeck(word.id, deck) && !seen.has(word.id) && !(added.has(word.id) && !ready(word.id)));
+    const eligible = admissionOrder().filter((word) => inDeck(word.id, deck) && !seen.has(word.id) && ready(word.id));
     for (const word of pickNew(eligible, seen, allowance)) {
       save({
         direction, word_id: word.id, introduced_day: day,
