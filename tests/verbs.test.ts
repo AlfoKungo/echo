@@ -214,6 +214,15 @@ describe('verb drills', () => {
     expect(parle.readings!.map((reading) => [reading.verbId, reading.persons])).toEqual([['v-parler', [0, 2]]]);
   });
 
+  test('a Form → verb mark is worth +1 or −1, a Cards mark +1 or −2', () => {
+    const drills = fixture();
+    clock.value = new Date(2026, 8, 21, 10);
+    drills.mark({ requestId: 'r1', verbId: 'v-partir', tense: 'pres', person: 0, knew: false, way: 'recognize' });
+    drills.mark({ requestId: 'r2', verbId: 'v-partir', tense: 'pres', person: 3, knew: true, way: 'recognize' });
+    drills.mark({ requestId: 'r3', verbId: 'v-partir', tense: 'pres', person: 4, knew: false });
+    expect(drills.scoresOn('2026-09-21').map((form) => [form.form, form.score])).toEqual([['vous partez', -2], ['je pars', -1], ['nous partons', 1]]);
+  });
+
   test('the Walkman verb tape holds every form of the chosen tenses, shaky ones early, and records every tense and form', () => {
     const drills = fixture();
     drills.answer({ requestId: 'w1', verbId: 'v-aller', tense: 'pres', person: 3, given: 'xyz' });

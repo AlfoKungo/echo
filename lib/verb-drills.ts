@@ -24,10 +24,11 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 // A form's score: +2 for a typed answer right and -3 wrong (Type it, each cell of a whole table); +1 or -2 for a
-// Cards or Walkman mark, the learner's own say. By ear asks about a tense or a number, not one form, and counts for
-// none. Every point halves over SCORE_HALF_LIFE_DAYS, as a word's does. A table written in Look, then write is graded
-// as a whole, apart from its forms: TABLE_PERFECT points when every form was right, TABLE_MISSED when any was not.
-const points = (mode: string, right: number) => mode === 'card' ? (right ? 1 : -2) : (right ? 2 : -3);
+// Cards or Walkman mark, the learner's own say; +1 or -1 for a Form → verb mark, since knowing a form when you see
+// it is the easier half. By ear asks about a tense or a number, not one form, and counts for none. Every point
+// halves over SCORE_HALF_LIFE_DAYS, as a word's does. A table written in Look, then write is graded as a whole,
+// apart from its forms: TABLE_PERFECT points when every form was right, TABLE_MISSED when any was not.
+const points = (mode: string, right: number) => mode === 'card' ? (right ? 1 : -2) : mode === 'recognize' ? (right ? 1 : -1) : (right ? 2 : -3);
 const TABLE_PERFECT = 2, TABLE_MISSED = -1;
 // Every drill picks a form with odds 2^(-score/PULL), the score held within ±LIMIT, as the Walkman picks words: an
 // untried form at 0, one missed once about three times as likely, one known twice in a row about a fifth as likely.
@@ -303,12 +304,12 @@ export function createVerbDrills(options: {
     }
     return readings;
   }
-  // The learner's own say on a card: counts for the form like a typed answer, once per request id.
-  function mark(input: { requestId: string; verbId: string; tense: Tense; person: number; knew: boolean }) {
+  // The learner's own say on a card: counts for the form, once per request id; way 'recognize' is a Form → verb card.
+  function mark(input: { requestId: string; verbId: string; tense: Tense; person: number; knew: boolean; way?: string }) {
     const requestId = requestIdOf(input?.requestId);
     const { verb, tense, person } = findForm(input?.verbId, input?.tense, input?.person);
     if (typeof input.knew !== 'boolean') throw new StoreError('Say whether you knew it.');
-    insert.run(requestId, verb.id, tense, person, 'card', null, '', input.knew ? 1 : 0, now().toISOString());
+    insert.run(requestId, verb.id, tense, person, input.way === 'recognize' ? 'recognize' : 'card', null, '', input.knew ? 1 : 0, now().toISOString());
     return { ok: true };
   }
 

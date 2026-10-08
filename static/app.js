@@ -3043,7 +3043,7 @@ function markVerbCard(knew) {
   if (!knew && !card.again) stream.items.splice(Math.min(stream.items.length, stream.index + 5), 0, { ...card, again: true });
   stream.index += 1; stream.revealed = false; notice = null;
   render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
-  api('api/verbs/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: card.verbId, tense: card.tense, person: card.person, knew }) })
+  api('api/verbs/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: card.verbId, tense: card.tense, person: card.person, knew, ...(card.readings ? { way: 'recognize' } : {}) }) })
     .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-cards') render(); })
     // The next cards are chosen once this mark counts, so a form just missed is weighed as shaky.
     .finally(() => topUpVerbCards());
