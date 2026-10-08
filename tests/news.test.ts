@@ -1,0 +1,123 @@
+import { afterEach, describe, expect, test } from 'bun:test';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { createNews, heardWords, KEEP, lineStarts, LIST_URL, parseEditionPage, sentencesOf, type HeardWord } from '../lib/news';
+
+// A real edition's page (7 October 2026), trimmed to a few paragraphs of its transcript and two of its players.
+const PAGE = await Bun.file(join(import.meta.dir, 'fixtures/rfi-journal-20261007.html')).text();
+const directories: string[] = [];
+afterEach(() => { for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true }); });
+
+describe('the transcript on an edition page', () => {
+  const page = parseEditionPage(PAGE, '20261007');
+
+  test('takes this edition’s recording, not the other editions the page plays', () => {
+    expect(page.mp3).toBe('https://aod-fle.akamaized.net/rfi/francais/audio/jff/202610/journal_francais_facile_16h00_-_16h10_gmt_20261007.mp3');
+    expect(parseEditionPage(PAGE, '20261008').mp3).toBeNull();
+    expect(page.title).toBe('7-Octobre: trois ans de traumatismes pour Gaza / Soupçon de peste en Russie / France: le mouvement lycéen persiste / Auditrice du JFF');
+  });
+
+  test('keeps each paragraph as a stanza of its sentences, entities decoded and spacing single', () => {
+    expect(page.stanzas).toHaveLength(14);
+    expect(page.stanzas[0]).toEqual(['Bonjour à toutes et à tous.', 'À l\'écoute de RFI en direct de Paris, il est 18 heures.']);
+    expect(page.stanzas[6]).toEqual(['Une date qui réveille de douloureux souvenirs.', 'Il y a trois ans, en Israël, le Hamas massacre une partie de la population.', 'Depuis, l\'armée israélienne s\'est largement vengée.', 'Nous sommes à Gaza dans un instant.']);
+    // A quotation's closing guillemet stays with its last sentence.
+    expect(page.stanzas[10]).toEqual(['« Ce quartier était très peuplé, très animé avant.', 'Aujourd\'hui, c\'est vraiment très calme.', 'On appelle cette zone le Bloc 3. »']);
+    for (const line of page.stanzas.flat()) {
+      expect(line).toBe(line.trim());
+      expect(line).not.toMatch(/\s{2}|&#?\w+;|<|>/);
+    }
+  });
+
+  test('does not end a sentence at an initial', () => {
+    expect(sentencesOf('Selon M. Dupont, J.-L. Martin arrive. Il parle à 18 h. Oui ! « Bien. » Fin…')).toEqual(['Selon M. Dupont, J.-L. Martin arrive.', 'Il parle à 18 h.', 'Oui !', '« Bien. »', 'Fin…']);
+  });
+});
+
+describe('line times', () => {
+  // Whisper's words for some lines, a word every half second from `at`.
+  const said = (text: string, at: number): HeardWord[] => text.split(' ').map((word, index) => ({ text: word, at: at + index * 0.5 }));
+
+  test('start each line where its first word was heard, always later than the line before', () => {
+    const lines = ['Bonjour à toutes et à tous.', 'Le Journal en français facile.', 'Nous sommes le 7 octobre.'];
+    const starts = lineStarts(lines, [...said('Bonjour à toutes et à tous.', 9), ...said('Le Journal en français facile.', 13), ...said('Nous sommes le 7 octobre.', 20)]);
+    expect(starts).toEqual([8.7, 12.7, 19.7]);
+  });
+
+  test('give a line Whisper heard differently a time from its neighbours', () => {
+    const lines = ['Il y a trois ans, en Israël, le Hamas massacre une partie de la population.', 'Au moins 74 000 morts.', 'L\'armée israélienne occupe 60 % du territoire palestinien.'];
+    const heard = [...said('Il y a trois ans, en Israël, le Hamas massacre une partie de la population.', 30), ...said('Soixante-quatorze mille victimes.', 37), ...said('L\'armée israélienne occupe 60 % du territoire palestinien.', 40)];
+    const starts = lineStarts(lines, heard);
+    expect(starts[1]).toBeGreaterThan(starts[0]! + 5);
+    expect(starts[1]).toBeLessThan(starts[2]!);
+    expect(starts[2]).toBe(39.7);
+  });
+
+  test('stay increasing when lines share their words or are not heard at all', () => {
+    const lines = ['Le Journal en français facile.', 'RFI.', 'À Paris, 18 h 06.', 'Le Journal en français facile.'];
+    const starts = lineStarts(lines, said('Le Journal en français facile. Le Journal en français facile.', 2));
+    for (let index = 1; index < starts.length; index++) expect(starts[index]).toBeGreaterThan(starts[index - 1]!);
+  });
+
+  test('refuse a recording that is not the transcript', () => {
+    expect(() => lineStarts(['Nous sommes le 7 octobre.', 'Le gouvernement est sous pression.'], said('Hello and welcome to the news from London tonight.', 0))).toThrow(/heard too little/);
+  });
+
+  test('read Whisper’s words whole when an accented letter is split across tokens', () => {
+    // The bytes of "été" (c3 a9 74 c3 a9), as whisper.cpp writes them read as latin1, cut inside each é.
+    const tokens = [{ text: ' \u00c3', t_dtw: 412, offsets: { from: 4000 } }, { text: '\u00a9t\u00c3', t_dtw: 418, offsets: { from: 4100 } }, { text: '\u00a9', t_dtw: 420, offsets: { from: 4200 } }, { text: ' tu\u00c3\u00a9es', t_dtw: 430, offsets: { from: 4300 } }, { text: '.', t_dtw: 440, offsets: { from: 4400 } }];
+    expect(heardWords({ transcription: [{ tokens: [{ text: '[_BEG_]', t_dtw: -1, offsets: { from: 0 } }, ...tokens] }] })).toEqual([{ text: 'été', at: 4.12 }, { text: 'tuées.', at: 4.3 }]);
+  });
+});
+
+describe('the editions kept', () => {
+  function setup(dates: string[], fail: { page?: boolean; transcribe?: number } = {}) {
+    const root = mkdtempSync(join(tmpdir(), 'echo-news-'));
+    directories.push(root);
+    const dir = join(root, 'news'), audioDir = join(root, 'audio');
+    const list = dates.map((date) => `<a href="/fr/podcasts/journal-en-fran%C3%A7ais-facile/${date}-les-titres">${date}</a>`).join('\n');
+    let transcribeFailures = fail.transcribe ?? 0;
+    const lines = parseEditionPage(PAGE, '20261007').stanzas.flat();
+    const news = createNews({
+      dir, audioDir,
+      ask: async () => '{"lines": []}',
+      fetchText: async (url) => {
+        if (url === LIST_URL) return list;
+        if (fail.page) throw new Error('RFI answered 503.');
+        return PAGE;
+      },
+      download: async (_url, file) => writeFileSync(file, 'mp3'),
+      transcribe: async () => {
+        if (transcribeFailures-- > 0) throw new Error('Whisper could not listen to the recording (no model).');
+        return lines.flatMap((line, index) => line.split(' ').map((word, at) => ({ text: word, at: index * 10 + at * 0.4 })));
+      },
+    });
+    return { news, dir, audioDir };
+  }
+
+  test('are the latest 14, older ones going with their recordings', async () => {
+    const listed = Array.from({ length: 16 }, (_, index) => `202609${String(index + 1).padStart(2, '0')}`);
+    const { news, dir, audioDir } = setup(listed, { page: true });
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, '20260801.json'), JSON.stringify({ date: '20260801', page: '', title: 'Old', mp3: null, stanzas: null, starts: null, notes: null, failure: null }));
+    writeFileSync(join(audioDir, '20260801.mp3'), 'mp3');
+    await news.check();
+    const kept = listed.slice(-KEEP).reverse();
+    expect(news.list().editions.map((edition) => edition.date)).toEqual(kept);
+    expect(readdirSync(dir).sort()).toEqual(kept.map((date) => `${date}.json`).sort());
+    expect(existsSync(join(audioDir, '20260801.mp3'))).toBe(false);
+  });
+
+  test('show a failed step with its reason, and try it again at the next check', async () => {
+    const { news } = setup(['20261007'], { transcribe: 1 });
+    await news.check();
+    const failed = news.view('20261007');
+    expect(failed).toMatchObject({ status: 'failed', step: 'timing', error: 'Whisper could not listen to the recording (no model).', audio: 'api/news/20261007.mp3', starts: null, noted: false });
+    expect(failed.stanzas.flat()[0]).toEqual({ fr: 'Bonjour à toutes et à tous.', en: null, words: [] });
+    await news.check();
+    const ready = news.view('20261007');
+    expect(ready).toMatchObject({ status: 'ready', step: null, error: null, noted: true });
+    expect(ready.starts).toHaveLength(ready.stanzas.flat().length);
+  });
+});

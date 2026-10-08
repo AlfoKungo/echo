@@ -25,6 +25,7 @@ import { createAttempts } from './lib/recording-attempts';
 import { answers, answerTexts, hint, judge, QUIETEST_ANSWER, said, sayEnglish, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
 import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
+import { createNews } from './lib/news';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
 for (const level of ['log', 'error', 'warn'] as const) {
   const write = console[level].bind(console);
@@ -232,6 +233,11 @@ const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1
 // Rooms this Echo leaves out (the friends' pilot: story,radio,songs, which write and record for one learner). The page
 // carries the list, and the app hides those rooms.
 const roomsOff = (process.env.ECHO_ROOMS_OFF ?? '').split(',').map((room) => room.trim()).filter((room) => /^[a-z]+$/.test(room));
+// News: RFI's Journal en français facile, fetched, timed and noted on this Mac (lib/news.ts), at start and every 30
+// minutes; ECHO_NEWS=off stops the checks, and an Echo without the room (the friends') has none of it.
+const news = roomsOff.includes('news') ? null : createNews({ dir: process.env.ECHO_NEWS_DIR ?? join(dirname(dbPath), 'news'), audioDir: join(root, 'audio/news'), ask });
+if (news && process.env.ECHO_NEWS !== 'off') void news.check();
+const newsChecks = setInterval(() => { if (news && process.env.ECHO_NEWS !== 'off') void news.check(); }, 30 * 60_000);
 // The signed-in learner's name, in the friends' Echo (pilot/router.ts): the app shows it beside Sign out.
 const learnerName = process.env.ECHO_LEARNER?.trim() ?? '';
 const attribute = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -593,6 +599,16 @@ async function route(req: Request): Promise<Response> {
       if (!await file.exists()) return json({ error: 'This line has not been recorded yet.' }, 404);
       return audioFile(req, file);
     }
+    if (news && path.startsWith('/api/news')) {
+      if (path === '/api/news' && req.method === 'GET') return json(news.list());
+      const edition = path.match(/^\/api\/news\/(\d{8})(\.mp3)?$/);
+      if (edition?.[2] && (req.method === 'GET' || req.method === 'HEAD')) {
+        const recording = news.audio(edition[1]!);
+        if (!recording) return json({ error: 'This edition’s recording is not on this Mac yet.' }, 404);
+        return audioFile(req, Bun.file(recording));
+      }
+      if (edition && !edition[2] && req.method === 'GET') return json(news.view(edition[1]!));
+    }
     if (path.startsWith('/api/write') && !roomsOff.includes('write')) {
       if (path === '/api/write' && req.method === 'GET') return json(writeIt.state());
       if (path === '/api/write/check' && req.method === 'POST') { const data = await body(req); return json(await writeIt.check(data)); }
@@ -706,6 +722,7 @@ async function stop() {
   clearInterval(hookChecks);
   clearInterval(verbChecks);
   clearInterval(storyChecks);
+  clearInterval(newsChecks);
   clearInterval(radioChecks);
   clearInterval(whisperSweep);
   whisper.stop();

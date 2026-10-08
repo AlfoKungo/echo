@@ -176,7 +176,7 @@ const tapeScreen = (name = screen) => name in TAPE_SCREENS;
 const tapeKind = () => screen === 'walkman' ? walkmanChoice : TAPE_SCREENS[screen];
 // Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
 const WORDS_TABS = { cards: 'Cards', endless: 'Endless', walkman: 'Walkman', ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
-const LISTEN_TABS = { listen: 'Questions', sounds: 'Sounds', 'listen-tape': 'Tape' };
+const LISTEN_TABS = { listen: 'Questions', sounds: 'Sounds', 'listen-tape': 'Tape', ...(roomsOff.has('news') ? {} : { news: 'News' }) };
 // A device last on the old Say it tab opens on Endless, with Say on.
 let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved === 'say' ? 'endless' : saved in WORDS_TABS ? saved : 'cards'; })();
 let listenTab = (() => { const saved = readPreference('echo.listen-tab', 'listen'); return saved in LISTEN_TABS ? saved : 'listen'; })();
@@ -382,7 +382,7 @@ document.body.classList.toggle('genders', genderColours);
 const genderClass = (gender) => gender === 'masculine' ? ' g-m' : gender === 'feminine' ? ' g-f' : '';
 fetch('api/genders').then((response) => response.ok ? response.json() : {}).then((map) => { genders = map; render(); }).catch(() => {});
 function back(label, action) { return `<button class="back" data-action="${action}" ${busy ? 'disabled' : ''}><span aria-hidden="true">←</span> ${label}</button>`; }
-function place() { return screen === 'song' ? `song|${songId}` : screen === 'lyrics' ? `lyrics|${songId}` : screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen === 'sound' ? `sound|${soundId}` : screen === 'story' && storyNumber ? `story|${storyNumber}` : screen; }
+function place() { return screen === 'song' ? `song|${songId}` : screen === 'lyrics' ? `lyrics|${songId}` : screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen === 'sound' ? `sound|${soundId}` : screen === 'story' && storyNumber ? `story|${storyNumber}` : screen === 'news-edition' ? `news-edition|${newsDate}` : screen; }
 function record(next) {
   depth += 1; trail.length = depth; trail[depth] = next;
   history.pushState({ echo: next, depth }, '');
@@ -530,6 +530,8 @@ function render() {
   else if (screen === 'verbs-verb') renderVerbPage();
   else if (screen === 'story') renderStory();
   else if (screen === 'radio') renderRadio();
+  else if (screen === 'news') renderNews();
+  else if (screen === 'news-edition') renderNewsEdition();
   else renderHome();
 }
 // What each part of a tape word is called, by tape: its French, the pause to recall it, its meaning, the French again.
@@ -843,8 +845,154 @@ function renderRadio() {
     <div class="wm-progress" aria-hidden="true"><span style="width:${radioProgress()}%"></span></div>
     ${chapters ? `<div class="radio-chapters" role="group" aria-label="Jump to">${chapters}</div>` : ''}`);
 }
+// ── News ─────────────────────────────────────────────────────────────────────
+// RFI's Journal en français facile (lib/news.ts): the editions in the News tab of Listen, and one edition read like a
+// song's lyrics with its recording under it. The recording is one MP3 on its own audio element, so it plays on with
+// the phone locked; once its lines are timed, the line playing is marked and any line can be played from.
+const newsAudio = new Audio();
+let newsList = null;        // api/news
+let newsDate = '';          // the edition open, yyyymmdd
+let newsView = null;        // api/news/<date>
+let newsAt = -1;            // the line playing, or where it paused; -1 before it starts or once it ends
+const newsLines = new Set(); // "stanza.line" keys whose meaning is showing
+let newsPoll = 0;
+const NEWS_DAY = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+const newsDay = (date) => NEWS_DAY.format(Date.UTC(Number(date.slice(0, 4)), Number(date.slice(4, 6)) - 1, Number(date.slice(6))));
+// Every line of the open edition in reading order, with its place in the stanzas.
+const newsPlaces = () => (newsView?.stanzas || []).flatMap((stanza, s) => stanza.map((line, l) => ({ line, s, l })));
+const newsLoaded = () => !!newsView?.audio && newsAudio.dataset.url === newsView.audio;
+const newsPlaying = () => newsLoaded() && !newsAudio.paused;
+function newsStateLine(edition) {
+  if (edition.status === 'ready') return 'Ready';
+  if (edition.status === 'failed') return `Could not be prepared: ${edition.error}`;
+  if (edition.status === 'preparing') return edition.step === 'text' ? 'Fetching the transcript…' : edition.step === 'audio' ? 'Downloading the recording…' : edition.step === 'timing' ? 'Timing the lines…' : `Writing the notes…${edition.total ? ` ${edition.done} of ${edition.total} lines` : ''}`;
+  return edition.step === 'notes' ? 'Ready to hear; its notes are waiting their turn' : 'Waiting its turn';
+}
+async function loadNews(quiet = false) {
+  clearTimeout(newsPoll);
+  if (!quiet && !newsList) { loading = true; render(); }
+  try { newsList = await api('api/news'); }
+  catch (error) { if (!quiet) { notice = { message: error.message }; retryAction = { type: 'news' }; } }
+  loading = false;
+  if (screen !== 'news') return;
+  render();
+  // The list is looked at again while an edition is on its way, or before the first editions have been found.
+  const coming = newsList && (newsList.editions.some((edition) => edition.status === 'preparing' || edition.status === 'waiting') || (!newsList.editions.length && !newsList.error));
+  if (coming) newsPoll = setTimeout(() => { if (screen === 'news') loadNews(true); }, 15000);
+}
+function renderNews() {
+  const header = listenTop();
+  if (!newsList) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
+  const rows = newsList.editions.map((edition) => `<li><button class="song-row" data-action="news-open" data-date="${esc(edition.date)}"><span class="song-copy"><strong>${esc(newsDay(edition.date))}</strong>${edition.headlines.length ? `<span lang="fr">${edition.headlines.map(esc).join(' · ')}</span>` : ''}<small class="song-state ${edition.status}">${esc(newsStateLine(edition))}</small>${edition.status === 'preparing' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
+  const trouble = newsList.error ? `<p class="song-error">New editions could not be looked for: ${esc(newsList.error)} Echo tries again within half an hour.</p>` : '';
+  const empty = !rows && !trouble ? '<p class="song-hint" role="status">Looking for the latest editions on RFI…</p>' : '';
+  main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}<p class="subtitle">RFI’s <span lang="fr">Journal en français facile</span>: ten minutes of the world’s news in slow French, Monday to Friday, read by RFI’s presenters. Read it line by line while you listen.</p>${trouble}${empty}${rows ? `<ol class="song-results news-list">${rows}</ol>` : ''}</section>`;
+}
+function openNewsEdition(date) { if (move(`news-edition|${date}`, true)) loadNewsEdition(); }
+async function loadNewsEdition(quiet = false) {
+  clearTimeout(newsPoll);
+  const date = newsDate;
+  if (!quiet && newsView?.date !== date) { newsView = null; loading = true; render(); }
+  let changed = !quiet;
+  try {
+    const view = await api(`api/news/${encodeURIComponent(date)}`);
+    if (newsDate !== date) return;
+    if (newsView?.date !== date) { newsLines.clear(); newsAt = -1; if (newsAudio.dataset.url) { newsAudio.pause(); newsAudio.removeAttribute('src'); delete newsAudio.dataset.url; } }
+    const shape = (entry) => entry && `${entry.status}|${entry.step}|${entry.done}|${entry.noted}|${!!entry.starts}|${!!entry.audio}`;
+    changed ||= shape(view) !== shape(newsView);
+    newsView = view;
+  } catch (error) { if (!quiet) { notice = { message: error.message }; retryAction = { type: 'news-edition' }; } }
+  loading = false;
+  if (screen !== 'news-edition') return;
+  if (changed) render();
+  if (newsView && newsView.status !== 'ready' && newsView.status !== 'failed') newsPoll = setTimeout(() => { if (screen === 'news-edition' && newsDate === date) loadNewsEdition(true); }, 10000);
+}
+function newsLineHTML({ line, s, l }, index) {
+  const key = `${s}.${l}`;
+  const open = newsLines.has(key);
+  const start = line.en ? `<button class="lyric-start" data-action="news-line" data-line="${key}" aria-expanded="${open}" aria-label="What this line means">›</button>` : '<span class="lyric-start" aria-hidden="true"></span>';
+  const from = newsView.starts && newsView.audio ? `<button class="news-from" data-action="news-from" data-index="${index}" aria-label="Play from this line">${playIcon}</button>` : '';
+  const current = index === newsAt && newsLoaded();
+  return `<div class="lyric-line news-line${current ? ' playing' : ''}" data-line="${key}" data-index="${index}">${start}<div class="lyric-text"><p lang="fr">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div>${from}</div>`;
+}
+function newsPlayerHTML() {
+  const view = newsView;
+  if (!view.audio) return `<div class="news-player"><p class="caption">${view.status === 'failed' ? 'The recording is not here yet.' : 'The recording is on its way.'}</p></div>`;
+  const playing = newsPlaying();
+  const total = newsPlaces().length;
+  const hint = !view.starts ? 'The lines are being timed; it plays from the start meanwhile.' : newsAt >= 0 && newsLoaded() ? `${playing ? 'line' : 'stopped at line'} ${newsAt + 1} of ${total}` : '';
+  return `<div class="news-player"><div class="listen-block"><button class="primary reading-play" data-action="news-play" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}<span>${playing ? 'Pause' : 'Play'}</span></button><p class="listen-hint" id="news-progress" role="status">${esc(hint)}</p></div></div>`;
+}
+function renderNewsEdition() {
+  const header = `<div class="section-top">${back('News', 'news')}<div>${infoButton('listen')}</div></div>`;
+  const view = newsView;
+  if (!view) { main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics">${header}${loading ? '<div class="loading-state" role="status">Opening the news…</div>' : ''}</section>`; return; }
+  const status = view.status === 'failed' ? `<div class="song-progress"><p class="song-error">${esc(view.error)}</p><p class="caption">Echo tries again within half an hour.</p></div>`
+    : view.noted ? '<p class="song-hint">Tap › at the start of a line for what it means, or tap a word for its note. ▶ plays from that line.</p>'
+    : view.status === 'preparing' && view.step === 'notes' ? `<div class="song-progress" role="status"><p>Writing the notes… ${view.done} of ${view.total} lines</p><span class="song-bar"><span style="width:${view.total ? view.done / view.total * 100 : 0}%"></span></span><p class="caption">Claude translates every line and explains its words. The transcript is here meanwhile; the notes appear when they are all written.</p></div>`
+    : `<p class="song-hint" role="status">${esc(newsStateLine(view))}</p>`;
+  let index = 0;
+  const lines = view.stanzas.map((stanza, s) => `<div class="lyric-stanza">${stanza.map((line, l) => newsLineHTML({ line, s, l }, index++)).join('')}</div>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${view.headlines.length ? `<ul class="news-headlines" lang="fr">${view.headlines.map((headline) => `<li>${esc(headline)}</li>`).join('')}</ul>` : ''}${status}<div class="lyric-lines">${lines}</div>${newsPlayerHTML()}</section>`;
+}
+// Plays from the start of a line; without line times, on from where it is (the start, at first).
+async function playNews(index = Math.max(0, newsAt)) {
+  const view = newsView;
+  if (!view?.audio) return;
+  stopAudio();
+  mediaPlayer = 'news';
+  const at = view.starts ? view.starts[Math.min(index, view.starts.length - 1)] ?? 0 : newsLoaded() ? newsAudio.currentTime : 0;
+  if (!newsLoaded()) { newsAudio.src = `${view.audio}#t=${at}`; newsAudio.dataset.url = view.audio; }
+  else newsAudio.currentTime = at;
+  if (view.starts && index !== newsAt) { const before = newsAt; newsAt = index; markNewsLines(before, index); }
+  if (!view.starts && 'mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: view.headlines.join(' · ') || 'Journal en français facile', artist: 'RFI', album: `Echo · News, ${newsDay(view.date)}`, artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
+  newsAudio.playbackRate = speed; newsAudio.preservesPitch = true; newsAudio.webkitPreservesPitch = true;
+  try { await newsAudio.play(); } catch (error) { if (error.name !== 'AbortError') { notice = { message: 'The news could not start. Tap Play to try again.' }; render(); } }
+}
+function toggleNews() { if (newsPlaying()) newsAudio.pause(); else playNews(); }
+// Lock-screen skip moves a whole line: forward to the next, back to this line's start or the one before.
+function skipNews(step) {
+  const starts = newsView?.starts;
+  if (!starts || !newsLoaded()) return;
+  const index = Math.max(0, newsAt);
+  const target = step > 0 ? index + 1 : newsAudio.currentTime - starts[index] > 1.5 ? index : index - 1;
+  if (target < starts.length) newsAudio.currentTime = starts[Math.max(0, target)];
+}
+function followNews() {
+  const starts = newsView?.starts;
+  if (!starts || !newsLoaded()) return;
+  let index = -1;
+  for (let line = 0; line < starts.length && starts[line] <= newsAudio.currentTime + 0.01; line++) index = line;
+  if (index === newsAt) return;
+  const before = newsAt;
+  newsAt = index;
+  const line = newsPlaces()[index]?.line;
+  if (line && 'mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: line.fr, artist: line.en || 'RFI', album: `Echo · News, ${newsDay(newsView.date)}`, artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
+  if (screen === 'news-edition' && !document.hidden) markNewsLines(before, index);
+}
+// Redraws only the lines whose mark changed and the player, so reading is undisturbed. While the line before was in
+// sight, the new one is brought into sight too, so the page follows the voice.
+function markNewsLines(before, index) {
+  if (screen !== 'news-edition' || !newsView) return;
+  const places = newsPlaces();
+  const element = (at) => main.querySelector(`.news-line[data-index="${at}"]`);
+  const player = main.querySelector('.news-player');
+  const inSight = (node) => { const box = node?.getBoundingClientRect(); return !!box && box.top >= 0 && box.bottom <= window.innerHeight - (player?.offsetHeight ?? 0); };
+  const following = before < 0 || inSight(element(before));
+  for (const at of new Set([before, index])) { const node = element(at); if (node && places[at]) node.outerHTML = newsLineHTML(places[at], at); }
+  if (player) player.outerHTML = newsPlayerHTML();
+  const now = element(index);
+  if (following && newsPlaying() && now && !inSight(now)) now.scrollIntoView({ block: 'center', behavior: 'smooth' });
+}
+newsAudio.addEventListener('timeupdate', followNews);
+for (const event of ['play', 'pause']) newsAudio.addEventListener(event, () => markNewsLines(newsAt, newsAt));
+newsAudio.addEventListener('ended', () => { const last = newsAt; newsAt = -1; markNewsLines(last, -1); });
+newsAudio.addEventListener('error', () => {
+  if (screen !== 'news-edition' || !newsAudio.dataset.url) return;
+  delete newsAudio.dataset.url; notice = { message: 'The news stopped loading. Tap Play to try again.' }; render();
+});
 if ('mediaSession' in navigator) {
-  const player = () => mediaPlayer === 'radio' ? { play: playRadio, audio: radioAudio, skip: skipRadio } : mediaPlayer === 'story' ? { play: playStory, audio: storyAudio, skip: skipStory } : { play: playWalkman, audio: walkmanAudio, skip: skipWord };
+  const player = () => mediaPlayer === 'radio' ? { play: playRadio, audio: radioAudio, skip: skipRadio } : mediaPlayer === 'story' ? { play: playStory, audio: storyAudio, skip: skipStory } : mediaPlayer === 'news' ? { play: playNews, audio: newsAudio, skip: skipNews } : { play: playWalkman, audio: walkmanAudio, skip: skipWord };
   navigator.mediaSession.setActionHandler('play', () => player().play());
   navigator.mediaSession.setActionHandler('pause', () => player().audio.pause());
   navigator.mediaSession.setActionHandler('nexttrack', () => player().skip(1));
@@ -1493,18 +1641,19 @@ function glossedHTML(text, glosses) {
   let at = 0;
   for (const mark of marks) {
     const button = `<button class="gloss${genderClass(mark.gender)}" data-gloss="${esc(mark.fr)}">${frEsc(text.slice(mark.at, mark.end))}</button>`;
-    // A button is an inline block, so the line may break after it; keep a following " ?" with its word.
-    const tail = /^ [?!:;»]/.exec(text.slice(mark.end))?.[0] || '';
+    // A button is an inline block, so the line may break after it; keep a following " ?" or "," with its word.
+    const tail = /^(?: [?!:;»]|[,.…)]+(?: [?!:;»])?)/.exec(text.slice(mark.end))?.[0] || '';
     html += `${frEsc(text.slice(at, mark.at))}${tail ? `<span class="nowrap">${button}${frEsc(tail)}</span>` : button}`;
     at = mark.end + tail.length;
   }
   return html + frEsc(text.slice(at));
 }
-// The glosses of what is on screen: the tapped song line's, a grammar question's, else the Listen/Read item's.
+// The glosses of what is on screen: the tapped song or news line's, a grammar question's, else the Listen/Read item's.
 function glossFor(fr) {
-  const lyricLine = screen === 'lyrics' ? (() => { const [s, l] = glossLine.split('.').map(Number); return songLyrics?.stanzas?.[s]?.[l]; })() : null;
+  const lined = screen === 'lyrics' || screen === 'news-edition';
+  const lyricLine = lined ? (() => { const [s, l] = glossLine.split('.').map(Number); return (screen === 'lyrics' ? songLyrics : newsView)?.stanzas?.[s]?.[l]; })() : null;
   if (screen === 'story') { const found = storyView?.episode.gloss.find((entry) => entry.fr === fr); return found?.new ? { ...found, note: 'New in this episode.' } : found ?? null; }
-  const lists = screen === 'lyrics' ? [lyricLine?.words] : grammarOnScreen() ? [activeGrammar()?.session?.current?.exercise?.gloss] : [streamState?.result?.gloss, streamState?.current?.gloss];
+  const lists = lined ? [lyricLine?.words] : grammarOnScreen() ? [activeGrammar()?.session?.current?.exercise?.gloss] : [streamState?.result?.gloss, streamState?.current?.gloss];
   for (const list of lists) { const found = (list || []).find((entry) => entry.fr === fr); if (found) return found; }
   return null;
 }
@@ -3509,7 +3658,7 @@ function lookupGloss(fr) {
   glossWord = entry; addStatus = '';
   renderGlossSheet();
   if (screen === 'story' && storyView && !storyView.read) storyTaps.add(fr);
-  if (grammarOnScreen() || screen === 'lyrics' || screen === 'story') return;
+  if (grammarOnScreen() || screen === 'lyrics' || screen === 'news-edition' || screen === 'story') return;
   const view = streamState?.current;
   if (!view || streamState.result || view.mode !== 'read' || (streamState.lookups || []).includes(fr)) return;
   const id = streamId;
@@ -3714,6 +3863,10 @@ function show(next) {
   else if (name === 'verbs-verb' && arg !== verbPageId) { verbPageId = arg; verbPageView = null; }
   else if (name === 'story') storyNumber = Number(arg) || 0;
   else if ((name === 'song' || name === 'lyrics') && arg !== songId) { songId = arg; songView = null; songLyrics = null; }
+  else if (name === 'news-edition' && arg !== newsDate) { newsDate = arg; newsView = null; }
+  if (name !== 'news' && name !== 'news-edition') clearTimeout(newsPoll);
+  // Leaving an edition pauses it where it is; coming back plays on from there.
+  if (name !== 'news-edition' && !newsAudio.paused) newsAudio.pause();
   if (name !== 'lyrics') clearTimeout(lyricsPoll);
   if (name !== 'story') clearTimeout(storyPoll);
   if (name !== 'verbs') clearTimeout(verbsPoll);
@@ -3769,7 +3922,7 @@ function openListen(tab = listenTab, how = 'forward') {
   listenTab = tab; savePreference('echo.listen-tab', tab);
   if (how === 'switch') switchPlace(tab);
   else if (!move(tab, how === 'forward')) return;
-  if (tab === 'listen') enterStream(); else if (tab === 'sounds') loadSounds(); else loadTape();
+  if (tab === 'listen') enterStream(); else if (tab === 'sounds') loadSounds(); else if (tab === 'news') loadNews(); else loadTape();
 }
 // A tab of the same room replaces the current place in history rather than adding one.
 function switchPlace(next) {
@@ -4052,6 +4205,8 @@ function retry() {
   else if (action.type === 'verbs-verb') loadVerbPage();
   else if (action.type === 'story') loadStory();
   else if (action.type === 'radio') loadRadio();
+  else if (action.type === 'news') loadNews();
+  else if (action.type === 'news-edition') loadNewsEdition();
   else if (action.type === 'songs') loadSongs();
   else if (action.type === 'song') loadSong();
   else fetchState(action.message);
@@ -4175,6 +4330,11 @@ document.addEventListener('click', (event) => {
   else if (action === 'stats-tab') chooseStatsTab(button.dataset.tab);
   else if (action === 'points-day') { pointsDay = button.dataset.day; render(); }
   else if (action === 'sounds') openListen('sounds', 'back');
+  else if (action === 'news') openListen('news', 'back');
+  else if (action === 'news-open') openNewsEdition(button.dataset.date);
+  else if (action === 'news-play') toggleNews();
+  else if (action === 'news-from') playNews(Number(button.dataset.index));
+  else if (action === 'news-line') { const key = button.dataset.line; if (newsLines.has(key)) newsLines.delete(key); else newsLines.add(key); render(); }
   else if (action === 'sound-open') openSound(button.dataset.sound);
   else if (action === 'sound-again') startSoundRound();
   else if (action === 'sound-play') { const question = soundRound?.questions[soundRound.index]; if (question) playFrench(question.audio); }
@@ -4318,6 +4478,8 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'verbs-verb') loadVerbPage();
   else if (screen === 'story') loadStory();
   else if (screen === 'radio') loadRadio();
+  else if (screen === 'news') loadNews();
+  else if (screen === 'news-edition') loadNewsEdition();
 });
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }

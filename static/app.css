@@ -366,6 +366,17 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .lyric-start{width:30px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--violet);font-size:20px;line-height:1;border-radius:8px}
 .lyric-start[aria-expanded="true"]{background:var(--card)}
 .lyric-text p{margin:0;font-size:18px;line-height:1.55;padding:3px 0}.lyric-text .lyric-en{font-size:15px;color:var(--muted);padding:0 0 6px}
+/* News: an edition's lines are lyric lines with a play control at the end; the line playing is tinted, and the player
+   stays at the bottom of the screen while the transcript scrolls. */
+.news-headlines{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:15px;line-height:1.45}
+.news-line{grid-template-columns:30px 1fr 34px;border-radius:10px;transition:background .25s}
+.news-line.playing{background:var(--violet-soft)}
+.news-from{width:34px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--dim);border-radius:8px}
+.news-from svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.news-line.playing .news-from,.news-from:hover{color:var(--violet)}
+.news-player{position:sticky;bottom:0;z-index:5;padding:14px 0 calc(14px + env(safe-area-inset-bottom));background:linear-gradient(to bottom,transparent,var(--page) 38%)}
+.news-player .listen-block{margin:0}
+.news-player .caption{margin:0}
 .gloss-base{margin:4px 0 0;color:var(--muted);font-size:15px}.gloss-note{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--ink)}
 .genders .g-m{color:var(--masc)}.genders .g-f{color:var(--fem)}.genders .gloss.g-m{border-bottom-color:var(--masc)}.genders .gloss.g-f{border-bottom-color:var(--fem)}
 .gloss-gender{margin:4px 0 0;font-size:14px;color:var(--muted)}.gender-key{display:block;font-size:12px;color:var(--muted)}.gender-key .g-m{color:var(--masc)}.gender-key .g-f{color:var(--fem)}

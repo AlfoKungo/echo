@@ -178,7 +178,7 @@ export function createSongs(deps: SongDeps) {
     if (!row?.lyrics || !deps.ask) return;
     db.query("UPDATE songs SET notes_status = 'writing', notes_done = 0 WHERE id = ?").run(id);
     try {
-      const written = await writeNotes(deps.ask, { title: row.title, artist: row.artist, lyrics: row.lyrics }, (done, total) => db.query('UPDATE songs SET notes_done = ?, notes_total = ? WHERE id = ?').run(done, total, id));
+      const written = await writeNotes(deps.ask, { kind: 'song', title: row.title, artist: row.artist, lyrics: row.lyrics }, (done, total) => db.query('UPDATE songs SET notes_done = ?, notes_total = ? WHERE id = ?').run(done, total, id));
       db.query("UPDATE songs SET notes_status = 'ready', notes_json = ?, notes_error = NULL, notes_version = ? WHERE id = ?").run(JSON.stringify(written), NOTES_VERSION, id);
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Writing the notes failed.';
