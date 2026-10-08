@@ -19,6 +19,7 @@ import json
 import sys
 import tempfile
 import time
+import wave
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -27,6 +28,7 @@ spec = importlib.util.spec_from_file_location('render_clips', ROOT / 'scripts' /
 clips_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(clips_module)
 sys.path.insert(0, str(ROOT / 'scripts'))
+import carrier_cut  # noqa: E402
 from whisper_scorer import MODEL as SCORER_MODEL, Scorer  # noqa: E402
 
 MARGIN = 3.0
@@ -109,6 +111,10 @@ def main():
                     best = {'seed': seed, 'transcript': transcript, 'margin': margin, 'scores': scores, 'seconds': seconds, 'path': mp3}
                 if best and best['margin'] >= MARGIN + 3:
                     break
+            # One short syllable alone is where the voice and Whisper slip most (jeu, queue, nœud): said after a
+            # lead-in it comes out as itself, so it is cut out of "On dit : jeu." and must pass the same twin check.
+            if best is None:
+                best = carried_take(model, conds, side, texts, seeds, scratch, takes, scorer, ffmpeg, espeak, mx, np)
             if best is None:
                 failed += 1
                 (audio / f'{key}.mp3').unlink(missing_ok=True)
@@ -120,13 +126,56 @@ def main():
             best['path'].replace(final)
             manifest[key] = {'id': key, 'text': side['text'], 'twin': side['twin'], 'signature': signature(side), 'model': clips_module.MODEL,
                              'seconds': best['seconds'], 'transcript': best['transcript'], 'seed': best['seed'],
-                             'check': {'kind': 'forced-choice', 'scorer': SCORER_MODEL, 'margin': best['margin'], 'scores': best['scores']},
+                             'check': {'kind': 'forced-choice', 'scorer': SCORER_MODEL, 'margin': best['margin'], 'scores': best['scores'], **({'carrier': best['carrier']} if best.get('carrier') else {})},
                              'sha256': hashlib.sha256(final.read_bytes()).hexdigest(), 'generatedAt': datetime.now(timezone.utc).isoformat(),
                              'renderSeconds': round(time.monotonic() - started, 2)}
             clips_module.atomic_json(manifest_path, manifest)
             print(json.dumps({'done': key, 'margin': best['margin']}), flush=True)
     print(json.dumps({'recorded': len(wanted) - failed, 'failed': failed}), flush=True)
     return 1 if failed else 0
+
+
+def carried_take(model, conds, side, texts, seeds, scratch, takes, scorer, ffmpeg, espeak, mx, np):
+    """The side cut out of a lead-in sentence (carrier_cut.py): the whole sentence must be heard saying this side,
+    and the cut clip must score it above its twin by MARGIN. The best such take, or None."""
+    best = None
+    for carrier in carrier_cut.CARRIERS:
+        sentence = carrier + side['text'].strip().rstrip('.!?') + '.'
+        expected = clips_module.phonemes(sentence, espeak)
+        for number, seed in enumerate(seeds[:3]):
+            wav, cut_wav = scratch / 'carried.wav', scratch / 'cut.wav'
+            mp3, decoded = scratch / f'carried-{carrier_cut.normalize(carrier)}-{number}.mp3', scratch / 'decoded.wav'
+            try:
+                clips_module.render_wav(model, conds, sentence, seed, wav, mx, np)
+            except Exception as error:
+                takes.append({'seed': seed, 'carrier': carrier, 'error': str(error)})
+                continue
+            heard = carrier_cut.transcribe_tokens(wav)
+            if not clips_module.verdict(heard['text'].strip(), sentence, expected, espeak, 'grammar'):
+                takes.append({'seed': seed, 'carrier': carrier, 'transcript': heard['text'].strip(), 'error': 'Sentence not heard as this side'})
+                continue
+            with wave.open(str(wav)) as stream:
+                rate = stream.getframerate()
+                pcm = np.frombuffer(stream.readframes(stream.getnframes()), dtype='<i2').astype(np.float32) / 32767
+            try:
+                clip, _, _ = carrier_cut.cut_after_carrier(pcm, rate, heard['tokens'], carrier)
+            except carrier_cut.NoCut as error:
+                takes.append({'seed': seed, 'carrier': carrier, 'error': error.error})
+                continue
+            with wave.open(str(cut_wav), 'wb') as stream:
+                stream.setnchannels(1); stream.setsampwidth(2); stream.setframerate(rate)
+                stream.writeframes((np.clip(clip, -1, 1) * 32767).astype('<i2').tobytes())
+            clips_module.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(cut_wav), '-af', LEAD_IN,
+                              '-codec:a', clips_module.ENCODING['codec'], '-b:a', clips_module.ENCODING['bitrate'], str(mp3)])
+            clips_module.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-y', '-i', str(mp3), '-ac', '1', '-ar', '16000', str(decoded)])
+            scores = scorer(decoded, texts)
+            margin = round(scores[0] - scores[1], 3)
+            takes.append({'seed': seed, 'carrier': carrier, 'transcript': heard['text'].strip(), 'margin': margin})
+            if margin >= MARGIN and (best is None or margin > best['margin']):
+                best = {'seed': seed, 'carrier': carrier, 'transcript': heard['text'].strip(), 'margin': margin, 'scores': scores, 'seconds': round(len(clip) / rate, 3), 'path': mp3}
+            if best and best['margin'] >= MARGIN + 3:
+                return best
+    return best
 
 
 if __name__ == '__main__':
