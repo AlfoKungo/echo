@@ -15,7 +15,8 @@ export type Mode = 'listen' | 'read';
 export type ItemType = 'sentence' | 'dialogue' | 'text';
 export type Outcome = ExerciseResult['outcome'];
 // The vocabulary side of level fitting: how well the learner knows each word, from browse('fr-en', 'all').
-export type WordKnowledge = { status: 'new' | 'learning' | 'due' | 'scheduled'; misses: number };
+// score: the word's vocabulary score now (recalls raise it, misses lower it, it fades with time; see lib/store.ts).
+export type WordKnowledge = { status: 'new' | 'learning' | 'due' | 'scheduled'; misses: number; score: number };
 export type ComprehensionMutation = { stream: StreamId; key: string; version: number; requestId: string };
 export type LookupInput = ComprehensionMutation & { fr: string };
 export type AnswerInput = ComprehensionMutation & { choice?: number; text?: string };
@@ -31,7 +32,6 @@ export interface ComprehensionStore {
   answer(input: AnswerInput): StreamState;
   next(input: ComprehensionMutation): StreamState;
   misses(): ComprehensionMiss[];
-  lookupCounts(): { wordId: string; count: number }[];
   weakWords(): string[];
   // Words read or heard in items answered right at least once, without being tapped there: their gloss forms
   // (lowercase, as written) and the vocabulary ids those glosses link. What the learner meets and understands.
@@ -372,10 +372,6 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   `);
   const requestById = db.query<{ action: string; stream: string }, [string]>('SELECT action, stream FROM comprehension_requests WHERE request_id = ?');
   const recordRequest = db.query('INSERT INTO comprehension_requests (request_id, action, stream, created_at) VALUES (?, ?, ?, ?)');
-  const lookupTotals = db.query<{ word_id: string; count: number }, []>(`
-    SELECT word_id, COUNT(DISTINCT exercise_key || '|' || fr) AS count FROM comprehension_lookups
-    WHERE word_id IS NOT NULL GROUP BY word_id ORDER BY count DESC, word_id
-  `);
 
   function levels(): Map<Mode, number> {
     return new Map(readLevels.all().map((row) => [row.mode, row.value]));
@@ -398,11 +394,9 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   const recentOf = (row: StreamRow): string[] => JSON.parse(row.recent_json) as string[];
 
   // ── Selection ────────────────────────────────────────────────────────────────
+  // Weak now: a word scoring below 0, so fixing a word takes it off the list.
   function weakWordSet(known: Map<string, WordKnowledge>): Set<string> {
-    const weak = new Set<string>();
-    for (const [id, word] of known) if (word.misses >= 2) weak.add(id);
-    for (const row of lookupTotals.all()) if (row.count >= 2) weak.add(row.word_id);
-    return weak;
+    return new Set([...known].filter(([, word]) => word.score < 0).map(([id]) => id));
   }
 
   function pool(stream: StreamId, history: Map<string, HistoryRow>, known: Map<string, WordKnowledge>): Candidate[] {
@@ -836,9 +830,6 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       });
   }
 
-  function lookupCounts(): { wordId: string; count: number }[] {
-    return lookupTotals.all().map((row) => ({ wordId: row.word_id, count: row.count }));
-  }
   const answeredItems = db.query<{ item_id: string }, []>('SELECT DISTINCT item_id FROM comprehension_history WHERE corrects > 0');
   const lookedUp = db.query<{ exercise_key: string; fr: string }, []>('SELECT DISTINCT exercise_key, fr FROM comprehension_lookups');
   function metWords(): { forms: Set<string>; words: Set<string> } {
@@ -871,7 +862,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
 
   return {
     state: (stream) => state(parseStream(stream)),
-    lookup, answer, next, misses, lookupCounts, metWords,
+    lookup, answer, next, misses, metWords,
     weakWords: () => [...weakWordSet(knownStatus())],
     summary: () => {
       const value = levels();

@@ -53,9 +53,10 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
     ...(deps.now ? { now: deps.now } : {}),
     ...(deps.random ? { random: deps.random } : {}),
     clipExists,
-    knownStatus: () => new Map<string, WordKnowledge>(
-      deps.vocabulary.browse('fr-en', 'all').map((word) => [word.id, { status: word.status, misses: word.misses }]),
-    ),
+    knownStatus: () => {
+      const scores = new Map(deps.vocabulary.listening().map((word) => [word.id, word.score]));
+      return new Map<string, WordKnowledge>(deps.vocabulary.browse('fr-en', 'all').map((word) => [word.id, { status: word.status, misses: word.misses, score: scores.get(word.id) ?? 0 }]));
+    },
   });
 
   async function body(req: Request): Promise<Record<string, unknown>> {
@@ -80,8 +81,7 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
   }
 
   function mistakes(): { groups: MistakeGroup[] } {
-    const vocabulary = deps.vocabulary.browse('fr-en', 'all');
-    const lookups = new Map(store.lookupCounts().map((entry) => [entry.wordId, entry.count]));
+    const vocabulary = deps.vocabulary.listening();
     const comprehension = store.misses();
 
     const titles = new Map<string, string>();
@@ -99,10 +99,8 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
     }
     for (const miss of comprehension) for (const topic of miss.topics) note(topic, miss.example);
 
-    // Weak words: missed twice in vocabulary practice, or looked up in two different texts.
-    const weak = vocabulary
-      .filter((word) => word.misses >= 2 || (lookups.get(word.id) ?? 0) >= 2)
-      .sort((a, b) => (b.misses + (lookups.get(b.id) ?? 0)) - (a.misses + (lookups.get(a.id) ?? 0)));
+    // Weak words: those scoring below 0 now, weakest first. The group shrinks as they are fixed.
+    const weak = vocabulary.filter((word) => word.score < 0).sort((a, b) => a.score - b.score);
 
     const groups: MistakeGroup[] = [];
     // A comprehension miss carries several topic tags, so one slip alone says little: a topic shows once it recurs.

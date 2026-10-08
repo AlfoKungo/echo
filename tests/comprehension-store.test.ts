@@ -216,7 +216,7 @@ describe('level fitting', () => {
   test('a reader who knows every sentence word still meets passages', () => {
     // Sentences cover known words better than any passage; that must not starve Read of passages.
     const inPassages = new Set(passages.flatMap((item) => item.words));
-    const known = new Map<string, WordKnowledge>(sentences.flatMap((item) => item.words).filter((word) => !inPassages.has(word)).map((word) => [word, { status: 'due', misses: 0 }]));
+    const known = new Map<string, WordKnowledge>(sentences.flatMap((item) => item.words).filter((word) => !inPassages.has(word)).map((word) => [word, { status: 'due', misses: 0, score: 0 }]));
     const { store } = fixture({ known });
     const kinds = new Set<string>();
     let state = store.state('read');
@@ -431,7 +431,6 @@ describe('looking words up', () => {
 
     const settled = settle(store, 'read', looked, correctInput(looked.current!));
     expect(settled.result!.outcome).toBe('helped');
-    expect(store.lookupCounts().length + 1).toBeGreaterThan(0);
   });
 
   test('a word that is not in the text cannot be looked up', () => {
@@ -596,8 +595,9 @@ describe('focus streams', () => {
     expect(store.state(stream).current).toBeNull();
   });
 
-  test('a word stream only serves items using a word the learner keeps missing', () => {
-    const known = new Map<string, WordKnowledge>([['gare', { status: 'learning', misses: 3 }], ['pain', { status: 'due', misses: 0 }]]);
+  test('a word stream only serves items using a word scoring below 0', () => {
+    // Weak is a score below 0 now: pain, missed often but since fixed, is not.
+    const known = new Map<string, WordKnowledge>([['gare', { status: 'learning', misses: 1, score: -2 }], ['pain', { status: 'due', misses: 4, score: 3 }]]);
     const { store } = fixture({ known });
     expect(store.weakWords()).toEqual(['gare']);
     const state = store.state('focus:words');
