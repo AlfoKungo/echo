@@ -11,6 +11,9 @@ export type FormState = 'solid' | 'getting' | 'shaky' | 'new';
 export type VerbSet = 'mine' | 'common' | 'chosen' | 'shaky';
 export type RoundInput = { set: VerbSet; verbIds?: string[]; tenses: Tense[] };
 export type RoundItem = { verbId: string; inf: string; en: string; tense: Tense; tenseName: string; person: number };
+// One way to read a shown form: a verb and tense it belongs to, the persons sharing it there, their forms with subjects.
+export type FormReading = { verbId: string; inf: string; en: string; tense: Tense; tenseName: string; persons: number[]; forms: string[] };
+export type VerbCard = RoundItem & { answer: string; rule: string; paradigm: ParadigmRow[]; hook?: string; form?: string; readings?: FormReading[] };
 export type FormResult = { right: boolean; expected: string; why: string; rule: string; paradigm: ParadigmRow[]; hook?: string };
 export type EarItem = { id: string; audio: string; question: string; choices: string[] };
 
@@ -258,15 +261,47 @@ export function createVerbDrills(options: {
     return checked;
   }
 
-  // A Cards round: the same forms as Type it, each with its answer, so the card can turn over at once.
-  function cards(input: RoundInput) {
+  // A Cards round: the same forms as Type it, each with its answer, so the card can turn over at once. With
+  // way 'recognize' the card shows the bare form ("mens") and turns over to every reading of it: each verb and tense
+  // it belongs to, with all the persons that share it (je mens, tu mens). Two cards showing the same form are one.
+  function cards(input: RoundInput & { way?: string }): VerbCard[] {
     const verbs = byId();
-    return round(input).map((item) => {
+    const recognize = input?.way === 'recognize';
+    const readingsOf = recognize ? formReadings() : null;
+    const shownForms = new Set<string>();
+    return round(input).flatMap((item): VerbCard[] => {
       const verb = verbs.get(item.verbId)!;
       const form = conjugate(verb, item.tense)[item.person]!;
       const hook = hookFor(verb, item.tense, item.person);
-      return { ...item, answer: subject(item.person, form.shown) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), ...(hook ? { hook } : {}) };
+      const card: VerbCard = { ...item, answer: subject(item.person, form.shown) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), ...(hook ? { hook } : {}) };
+      if (!readingsOf) return [card];
+      if (shownForms.has(form.shown)) return [];
+      shownForms.add(form.shown);
+      // Phrases built on a verb (avoir peur, avoir raison) conjugate exactly like it, so readings with the same tense
+      // and forms are one, named by the shortest: the verb itself. The card's own reading comes first.
+      const same = (reading: FormReading) => `${reading.tense}|${reading.forms.join('|')}`;
+      const readings = [...readingsOf.get(form.shown)!].sort((left, right) => left.inf.length - right.inf.length);
+      const seen = new Set<string>();
+      const distinct = readings.filter((reading) => !seen.has(same(reading)) && !!seen.add(same(reading)));
+      const mine = same(readings.find((reading) => reading.verbId === verb.id && reading.tense === item.tense)!);
+      return [{ ...card, form: form.shown, readings: [...distinct.filter((reading) => same(reading) === mine), ...distinct.filter((reading) => same(reading) !== mine)] }];
     });
+  }
+  // Every form Echo drills, by how it is shown without its subject: the verbs and tenses it belongs to, each with
+  // the persons that share it there and those persons' forms with their subjects.
+  function formReadings() {
+    const readings = new Map<string, FormReading[]>();
+    for (const verb of options.verbs()) for (const tense of TENSES) {
+      const table = conjugate(verb, tense);
+      for (const person of persons(verb)) {
+        const shown = table[person]!.shown;
+        const list = readings.get(shown) ?? readings.set(shown, []).get(shown)!;
+        let reading = list.find((entry) => entry.verbId === verb.id && entry.tense === tense);
+        if (!reading) list.push(reading = { verbId: verb.id, inf: verb.inf, en: verb.en, tense, tenseName: TENSE_NAMES[tense], persons: [], forms: [] });
+        reading.persons.push(person); reading.forms.push(subject(person, shown) + shown);
+      }
+    }
+    return readings;
   }
   // The learner's own say on a card: counts for the form like a typed answer, once per request id.
   function mark(input: { requestId: string; verbId: string; tense: Tense; person: number; knew: boolean }) {

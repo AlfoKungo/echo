@@ -205,6 +205,15 @@ describe('verb drills', () => {
     expect(() => drills.mark({ requestId: 'k3', verbId: 'v-aller', tense: 'fut', person: 0, knew: 'yes' as never })).toThrow('Say whether you knew it.');
   });
 
+  test('a Form → verb card shows a form once, with the verb, tense and every person it can be', () => {
+    const drills = fixture();
+    const cards = drills.cards({ set: 'chosen', verbIds: ['v-partir'], tenses: ['pres'], way: 'recognize' });
+    expect(cards.map((card) => card.form).sort()).toEqual(['pars', 'part', 'partent', 'partez', 'partons']);
+    expect(cards.find((card) => card.form === 'pars')!.readings).toEqual([{ verbId: 'v-partir', inf: 'partir', en: 'to leave', tense: 'pres', tenseName: expect.any(String), persons: [0, 1], forms: ['je pars', 'tu pars'] }]);
+    const parle = drills.cards({ set: 'chosen', verbIds: ['v-parler'], tenses: ['pres'], way: 'recognize' }).find((card) => card.form === 'parle')!;
+    expect(parle.readings!.map((reading) => [reading.verbId, reading.persons])).toEqual([['v-parler', [0, 2]]]);
+  });
+
   test('the Walkman verb tape holds every form of the chosen tenses, shaky ones early, and records every tense and form', () => {
     const drills = fixture();
     drills.answer({ requestId: 'w1', verbId: 'v-aller', tense: 'pres', person: 3, given: 'xyz' });

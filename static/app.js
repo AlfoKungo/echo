@@ -2720,8 +2720,10 @@ let verbPageId = '', verbPageView = null;     // the verb page shown, and api/ve
 let verbFormsOverride = null;
 const vbSettings = () => verbFormsOverride ?? { set: verbSet, verbIds: verbChosen, tenses: verbTenses };
 const vbVerb = (id) => verbsInfo?.verbs.find((verb) => verb.id === id);
+// hit: the person (or persons) to light.
 function paradigmHTML(rows, hit = -1) {
-  return `<table class="vb-para">${rows.map((row) => `<tr class="${row.person === hit ? 'hit' : ''}"><td lang="fr">${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
+  const hits = [hit].flat();
+  return `<table class="vb-para">${rows.map((row) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}"><td lang="fr">${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
 }
 const vbAccentsHTML = () => `<div class="vb-accents" aria-label="Accented letters">${VB_ACCENTS.map((letter) => `<button type="button" data-action="vb-accent" data-letter="${letter}">${letter}</button>`).join('')}</div>`;
 
@@ -2825,6 +2827,7 @@ function verbAction(action, button) {
   else if (action === 'vb-all-tenses') { vbAllTenses = !vbAllTenses; renderVerbAllResults(); }
   else if (action === 'vb-cards') { verbFormsOverride = null; if (move('verbs-cards', true)) startVerbCards(); }
   else if (action === 'vb-card-no' || action === 'vb-card-yes') markVerbCard(action === 'vb-card-yes');
+  else if (action === 'vb-card-way') { const way = button.dataset.way === 'recognize' ? 'recognize' : 'produce'; if (way === verbCardsWay || loading) return; verbCardsWay = way; savePreference('echo.vb-cards-way', way); startVerbCards(); }
   else if (action === 'vb-forms') { verbFormsOverride = null; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-tense-page') { if (move(`verbs-tense|${button.dataset.tense}`, true)) loadVerbTense(); }
   else if (action === 'vb-verb') openVerbPage(button.dataset.verb);
@@ -2910,10 +2913,14 @@ function renderVerbPage() {
 // so far, so the stream goes on as long as you do.
 const VB_CARDS_AHEAD = 5;
 const VB_CARDS_RECENT = 8;
-const vbCardKey = (card) => `${card.verbId}|${card.tense}|${card.person}`;
+// Which side comes first: 'produce' shows the verb, tense and person and asks for the form; 'recognize' shows a form
+// ("mens") and asks which verb, tense and persons it is. A recognize card stands for its form, whichever person drew it.
+let verbCardsWay = readPreference('echo.vb-cards-way', 'produce') === 'recognize' ? 'recognize' : 'produce';
+const vbCardsBody = () => ({ ...vbSettings(), way: verbCardsWay });
+const vbCardKey = (card) => `${card.verbId}|${card.tense}|${card.form ?? card.person}`;
 async function startVerbCards() {
   loading = true; notice = null; retryAction = null; verbCards = null; render();
-  try { const { items } = await api('api/verbs/cards', { method: 'POST', body: JSON.stringify(vbSettings()) }); verbCards = { items, index: 0, revealed: false, fetching: false, done: false }; }
+  try { const { items } = await api('api/verbs/cards', { method: 'POST', body: JSON.stringify(vbCardsBody()) }); verbCards = { items, index: 0, revealed: false, fetching: false, done: false }; }
   catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-cards' }; }
   loading = false;
   if (screen === 'verbs-cards') render();
@@ -2921,12 +2928,12 @@ async function startVerbCards() {
 // Tops a stream (Cards or Type it) up from its endpoint; a form already waiting, or seen in the last few, is
 // left out so nothing comes straight back. Only the "choosing more" screen is redrawn; a form being looked at is
 // left alone.
-async function topUpVerbStream(stream, path, current, onScreen) {
+async function topUpVerbStream(stream, path, current, onScreen, body = vbSettings) {
   if (!stream || stream.fetching || stream.done || stream.items.length - stream.index > VB_CARDS_AHEAD) return;
   stream.fetching = true;
   const waitingOnScreen = stream.index >= stream.items.length;
   try {
-    const { items } = await api(path, { method: 'POST', body: JSON.stringify(vbSettings()) });
+    const { items } = await api(path, { method: 'POST', body: JSON.stringify(body()) });
     if (current() !== stream) return;
     const near = new Set(stream.items.slice(Math.max(0, stream.index - VB_CARDS_RECENT)).map(vbCardKey));
     const fresh = items.filter((card) => !near.has(vbCardKey(card)));
@@ -2939,9 +2946,10 @@ async function topUpVerbStream(stream, path, current, onScreen) {
   stream.fetching = false;
   if (screen === onScreen && current() === stream && waitingOnScreen) render();
 }
-const topUpVerbCards = () => topUpVerbStream(verbCards, 'api/verbs/cards', () => verbCards, 'verbs-cards');
+const topUpVerbCards = () => topUpVerbStream(verbCards, 'api/verbs/cards', () => verbCards, 'verbs-cards', vbCardsBody);
 function renderVerbCards() {
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Cards</span></div>`;
+  const way = `<div class="segmented vb-card-way" role="group" aria-label="Which side of the card comes first">${[['produce', 'Verb → form'], ['recognize', 'Form → verb']].map(([value, label]) => `<button data-action="vb-card-way" data-way="${value}" aria-pressed="${verbCardsWay === value}" ${loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
+  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Cards</span></div>${way}`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
   if (loading || !verbCards) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
   const { items, index, revealed } = verbCards;
@@ -2952,11 +2960,18 @@ function renderVerbCards() {
   }
   const card = items[index];
   const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
-  const face = revealed
-    ? `<h1 class="main-word vb-card-answer" lang="fr">${frEsc(card.answer)}</h1><p class="source-word" lang="fr">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>${card.hook ? `<p class="word-hook">${esc(card.hook)}</p>` : ''}`
-    : `<p class="vb-card-who" lang="fr">${esc(VB_PERSONS[card.person])}</p><h1 class="main-word" lang="fr">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`;
+  const recognize = !!card.readings;
+  const [own, ...also] = card.readings ?? [];
+  const face = recognize
+    ? revealed
+      ? `<h1 class="main-word" lang="fr">${frEsc(own.inf)}</h1><p class="source-word">${esc(own.tenseName)} · ${esc(own.en)}</p><p class="vb-card-forms" lang="fr">${own.forms.map(frEsc).join(' · ')}</p>${also.map((reading) => `<p class="vb-card-also">Also <span lang="fr">${frEsc(reading.inf)}</span>, ${esc(reading.tenseName)}: <span lang="fr">${reading.forms.map(frEsc).join(' · ')}</span></p>`).join('')}`
+      : `<h1 class="main-word" lang="fr">${frEsc(card.form)}</h1>`
+    : revealed
+      ? `<h1 class="main-word vb-card-answer" lang="fr">${frEsc(card.answer)}</h1><p class="source-word" lang="fr">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>${card.hook ? `<p class="word-hook">${esc(card.hook)}</p>` : ''}`
+      : `<p class="vb-card-who" lang="fr">${esc(VB_PERSONS[card.person])}</p><h1 class="main-word" lang="fr">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-card-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-card-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
-  const after = revealed ? `${paradigmHTML(card.paradigm, card.person)}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : `<p class="caption vb-card-hint">Say the form to yourself, then tap the card.</p>`;
+  const hint = recognize ? 'Which verb, tense and person is it? Say it to yourself, then tap the card.' : 'Say the form to yourself, then tap the card.';
+  const after = revealed ? `${paradigmHTML(card.paradigm, recognize ? own.persons : card.person)}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : `<p class="caption vb-card-hint">${hint}</p>`;
   shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
 }
 function revealVerbCard() {
