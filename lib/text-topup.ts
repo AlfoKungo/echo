@@ -71,7 +71,7 @@ export function buildSentence(raw: RawSentence, id: string, level: GrammarLevel,
   return {
     id, level, fr: frenchTypography(text(raw.fr)), en: text(raw.en).trim(),
     distractors: list(raw.distractors).map((value) => text(value).trim()),
-    gap: text(raw.gap).replace(/'/g, '’').trim(), topics: topicsOf(raw.topics, known), words: wordsOf(raw.words, gloss, known), gloss,
+    topics: topicsOf(raw.topics, known), words: wordsOf(raw.words, gloss, known), gloss,
   };
 }
 
@@ -113,7 +113,6 @@ Each sentence:
 - "fr": one sentence of at most ${SENTENCE_WORDS[level]} words, ending with . ! ? or …
 - "en": its English meaning.
 - "distractors": 2–3 English sentences that are wrong because of ONE detail a listener must catch (who, when, where, how many, negation, tense). Never a paraphrase of "en".
-- "gap": the exact text of one word of "fr" (or an elided unit such as l’ or j’ai) that occurs once in it; the learner types it after hearing the sentence. Prefer a meaningful word.
 - "topics", "words", "gloss" as below.
 
 ${RULES(level)}

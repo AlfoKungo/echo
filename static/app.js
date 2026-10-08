@@ -191,7 +191,6 @@ function chooseWalkmanTense(tense) {
 // One comprehension stream at a time: the Listen and Read screens, Practise and a Mistakes focus all show one.
 let streamId = '';
 let streamState = null;
-let streamDraft = '';
 let streamGeneration = 0;
 let heardKey = '';
 let audioBlocked = false;
@@ -1415,10 +1414,6 @@ function renderSummary() {
 const STREAM_INSTRUCTION = {
   'listen:meaning': 'Listen, then choose what it means.',
   'read:meaning': 'Read, then choose what it means.',
-  'listen:gap': 'Type the word missing from what you hear.',
-  'read:gap': 'Type the missing word.',
-  'listen:dictation': 'Type the sentence you hear.',
-  'read:dictation': 'Type the sentence.',
   'listen:question': 'Listen, then answer the question.',
   'read:question': 'Read, then answer the question.',
 };
@@ -1460,7 +1455,6 @@ function levelFor(mode) {
 }
 function applyStream(next) {
   streamState = next;
-  if (!next.result) streamDraft = '';
   let changed = false;
   for (const entry of next.level || []) if (entry?.mode && entry.label && levels[entry.mode] !== entry.label) { levels[entry.mode] = entry.label; changed = true; }
   if (changed) savePreference('echo.levels', JSON.stringify(levels));
@@ -1549,30 +1543,20 @@ function streamPromptHTML(view, settled) {
 }
 function streamAnswerHTML(view, result) {
   const settled = !!result;
-  if (view.choices?.length) {
-    return `<div class="choice-list" role="group" aria-label="Choose your answer">${view.choices.map((choice, index) => {
-      const right = settled && choice === result.expected;
-      const wrong = settled && !right && choice === result.given;
-      const mark = right ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">the answer</span></span>'
-        : wrong ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">what you chose</span></span>' : '';
-      return `<button class="choice${wrong ? ' wrong' : right ? ' right' : ''}" data-pick="${index}" ${settled || locked() ? 'disabled' : ''}><span>${esc(choice)}</span>${mark}</button>`;
-    }).join('')}</div>`;
-  }
-  if (settled) return '';
-  if (view.kind === 'gap') return `<label class="answer-label" for="stream-answer">The missing word</label><input id="stream-answer" class="answer-line" lang="fr" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="Type the word…" value="${esc(streamDraft)}" ${locked() ? 'disabled' : ''}>`;
-  return `<label class="answer-label" for="stream-answer">${view.mode === 'listen' ? 'What you heard' : 'The sentence'}</label><textarea id="stream-answer" class="dictation" rows="2" lang="fr" autocomplete="off" autocapitalize="sentences" spellcheck="false" placeholder="Type the sentence…" ${locked() ? 'disabled' : ''}>${esc(streamDraft)}</textarea>`;
+  return `<div class="choice-list" role="group" aria-label="Choose your answer">${view.choices.map((choice, index) => {
+    const right = settled && choice === result.expected;
+    const wrong = settled && !right && choice === result.given;
+    const mark = right ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">the answer</span></span>'
+      : wrong ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">what you chose</span></span>' : '';
+    return `<button class="choice${wrong ? ' wrong' : right ? ' right' : ''}" data-pick="${index}" ${settled || locked() ? 'disabled' : ''}><span>${esc(choice)}</span>${mark}</button>`;
+  }).join('')}</div>`;
 }
-function streamResultHTML(view, result) {
+function streamResultHTML(result) {
   const tone = result.outcome === 'incorrect' ? 'warn' : result.outcome === 'helped' ? 'neutral' : '';
   const title = ({ correct: 'That’s right.', helped: 'Right — after a look at the words.', incorrect: 'Not quite.' })[result.outcome] || '';
-  const chosen = !!view.choices?.length;
-  const diff = result.diff?.length ? `<p class="diff" lang="fr">${result.diff.map((part, index) => `${index && /^[?!:;»]/.test(part.text) ? '\u00a0' : index ? ' ' : ''}<span class="${part.ok ? 'kept' : 'missed'}">${frEsc(part.text)}</span>`).join('')}</p>` : '';
   // A right answer already shows itself; the expected one is worth its own line only when it differs.
-  const expected = diff || (result.outcome === 'incorrect' || result.spelling ? `<p class="model-answer" lang="${chosen ? 'en' : 'fr'}">${chosen ? esc(result.expected) : frEsc(result.expected)}</p>` : '');
-  const given = !chosen && result.outcome === 'incorrect' && result.given?.trim() ? `<span class="minor">You wrote: <span lang="fr">${frEsc(result.given)}</span></span>` : '';
-  const spelling = result.spelling ? '<span class="minor">Accepted — a small spelling or accent slip.</span>' : '';
-  const missed = result.diff?.some((part) => !part.ok) ? '<span class="minor">The words in pink are the ones you missed.</span>' : '';
-  return `<div class="feedback ${tone}" role="status"><strong>${title}</strong>${expected}${result.explanation ? `<p>${esc(result.explanation)}</p>` : ''}${given}${spelling}${missed}</div>`;
+  const expected = result.outcome === 'incorrect' ? `<p class="model-answer" lang="en">${esc(result.expected)}</p>` : '';
+  return `<div class="feedback ${tone}" role="status"><strong>${title}</strong>${expected}${result.explanation ? `<p>${esc(result.explanation)}</p>` : ''}</div>`;
 }
 function streamRevealHTML(result) {
   if (!result.lines?.length) return '';
@@ -1588,10 +1572,8 @@ function streamBodyHTML() {
   const context = reading
     ? `<header class="reading-heading">${label ? `<p class="reading-kicker">${esc(label)}</p>` : ''}${item.title ? `<h1>${esc(item.title)}</h1>` : ''}</header>`
     : label ? `<p class="stream-item">${esc(label)}${item.title ? ` · ${esc(item.title)}` : ''}</p>` : '';
-  const action = settled
-    ? `<button class="primary" data-action="stream-next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Next'}</button>`
-    : view.choices?.length ? '' : `<button class="primary" data-action="stream-check" ${locked() ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check'}</button>`;
-  const body = `${context}<p class="prompt-instruction">${esc(STREAM_INSTRUCTION[`${view.mode}:${view.kind}`] || '')}</p>${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(view, result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions${settled ? ' pinned' : ''}">${action}</div>` : ''}`;
+  const action = settled ? `<button class="primary" data-action="stream-next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Next'}</button>` : '';
+  const body = `${context}<p class="prompt-instruction">${esc(STREAM_INSTRUCTION[`${view.mode}:${view.kind}`] || '')}</p>${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions${settled ? ' pinned' : ''}">${action}</div>` : ''}`;
   return reading ? `<article class="reading-exercise">${body}</article>` : body;
 }
 function streamEmptyHTML(id) {
@@ -1643,7 +1625,7 @@ function renderMistakes() {
 }
 async function loadStream(id, message = '') {
   const token = ++streamGeneration;
-  streamId = id; streamState = null; streamDraft = ''; audioBlocked = false; loading = true;
+  streamId = id; streamState = null; audioBlocked = false; loading = true;
   notice = message ? { kind: 'info', message } : null; retryAction = null;
   render();
   try {
@@ -3483,15 +3465,9 @@ function streamAction(kind, extra = {}) {
     if (kind === 'answer' && streamState.result) announce(`${({ correct: 'That’s right.', helped: 'Right, with help.', incorrect: 'Not quite.' })[streamState.result.outcome] || ''} ${streamState.result.expected}`);
   }, () => loadStream(id, 'This exercise was refreshed. Answer the question shown now.'));
 }
-function streamCheck() {
-  const view = streamState?.current;
-  if (!view || streamState.result || locked() || view.choices?.length) return;
-  if (!streamDraft.trim()) { announce('Write what you heard first.'); document.querySelector('#stream-answer')?.focus(); return; }
-  streamAction('answer', { text: streamDraft });
-}
 function streamPick(index) {
   const view = streamState?.current;
-  if (!view || streamState.result || locked() || !view.choices?.length) return;
+  if (!view || streamState.result || locked()) return;
   streamAction('answer', { choice: Number(index) });
 }
 function streamNext() {
@@ -3614,7 +3590,7 @@ async function enterMixed() {
   const token = ++mixedGeneration;
   ++streamGeneration;
   const focus = screen === 'focus';
-  streamState = null; review = null; streamDraft = ''; audioBlocked = false;
+  streamState = null; review = null; audioBlocked = false;
   mixedSource = ''; mixedStep = -1; loading = true; notice = null; retryAction = null;
   render();
   if (focus && !mistakeGroup() && !await loadMistakes(true)) return;
@@ -4227,7 +4203,6 @@ document.addEventListener('click', (event) => {
   else if (action === 'say-start') startSay();
   else if (action === 'say-dontknow') sayGiveUp?.();
   else if (action === 'say-fix') sayCorrect();
-  else if (action === 'stream-check') streamCheck();
   else if (action === 'stream-next') streamNext();
   else if (event.target.closest('#flashcard') && !event.target.closest('button,a,input,select')) reveal();
 });
@@ -4248,7 +4223,6 @@ document.addEventListener('input', (event) => {
   if (event.target.id === 'vocab-search') { search = event.target.value; renderBrowseResults(); }
   if (event.target.id === 'vb-search') { vbAllQuery = event.target.value; renderVerbAllResults(); }
   if (event.target.id === 'answer') draft = event.target.value;
-  if (event.target.id === 'stream-answer') streamDraft = event.target.value;
   if (event.target.id === 'song-query') songQuery = event.target.value;
   if (event.target.id === 'vb-answer') verbDraft = event.target.value;
   if (event.target.id === 'write-answer') writeDraft = event.target.value;
@@ -4271,10 +4245,10 @@ document.addEventListener('keydown', (event) => {
   if (grammarScreen && (event.metaKey || event.ctrlKey) && event.key === 'Enter') { event.preventDefault(); if (activeGrammar()?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }
   // The verb-form field is one line, so Enter checks it (and continues once it is settled).
   if (grammarScreen && event.key === 'Enter' && !event.shiftKey && event.target.matches('input#answer')) { event.preventDefault(); if (activeGrammar()?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }
-  // Enter checks what you typed, and continues once the exercise has settled.
-  if (streamScreen() && streamState?.current && event.key === 'Enter' && !event.shiftKey && (event.target.matches('#stream-answer') || !event.target.closest('input,select,textarea,[contenteditable="true"],button,a'))) {
+  // Enter continues once the exercise has settled.
+  if (streamScreen() && streamState?.result && event.key === 'Enter' && !event.shiftKey && !event.target.closest('input,select,textarea,[contenteditable="true"],button,a')) {
     event.preventDefault();
-    if (streamState.result) streamNext(); else streamCheck();
+    streamNext();
     return;
   }
   // Verb cards: Space or Enter turns the card, the arrow keys mark it.

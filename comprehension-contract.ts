@@ -17,8 +17,6 @@ export type ComprehensionSentence = {
   // 2–3 English sentences that are wrong because of ONE detail a listener must catch
   // (who, when, where, how many, negation, tense). Never a paraphrase of `en`.
   distractors: string[];
-  // Exact text of one word (or elided unit such as l’ or j’ai) in `fr`, occurring once; the learner types it.
-  gap: string;
   topics: string[]; // grammar topic ids from content/grammar/units.json the sentence uses
   words: string[]; // vocabulary ids from content/core.json and content/world.json the sentence uses
   gloss: Gloss[]; // every content word and fixed expression in `fr`
@@ -54,9 +52,8 @@ export type ComprehensionLane = { sentences: ComprehensionSentence[]; passages: 
 // so a reload or a second device shows the same question.
 export type StreamId = 'listen' | 'read' | 'mix' | `focus:topic:${string}` | 'focus:words' | 'focus:missed';
 
-// meaning: choose the English meaning of a sentence. gap: type the missing word you heard.
-// dictation: type the whole sentence you heard. question: answer a question about a dialogue or text.
-export type ExerciseKind = 'meaning' | 'gap' | 'dictation' | 'question';
+// meaning: choose the English meaning of a sentence. question: answer a question about a dialogue or text.
+export type ExerciseKind = 'meaning' | 'question';
 
 export type ExerciseView = {
   key: string; // `${itemId}:${kind}` or `${passageId}:question:${n}`
@@ -65,19 +62,16 @@ export type ExerciseView = {
   level: GrammarLevel;
   item: { id: string; type: 'sentence' | 'dialogue' | 'text'; title?: string };
   audio: string[]; // clip URLs in play order (sentence: one; passage: one per line); read mode may still offer them after settling
-  // Shown before answering. read mode: the French (sentence or lines). listen mode: nothing except the gap
-  // prompt for gap exercises (the sentence with ____).
+  // Shown before answering. read mode: the French (sentence or lines). listen mode: no French, only a question's text.
   gloss: Gloss[]; // glosses of the French shown now (read mode); empty in listen mode before settling
   prompt: { lines?: PassageLine[]; text?: string; question?: string };
-  choices?: string[]; // meaning and question kinds
+  choices: string[]; // the answers to choose from, in the order shown
 };
 
 export type ExerciseResult = {
   outcome: 'correct' | 'helped' | 'incorrect'; // helped: correct after looking words up first
-  spelling?: boolean; // accepted with an accent or punctuation slip
-  expected: string; // the correct choice or the exact French
+  expected: string; // the correct choice
   given: string;
-  diff?: { text: string; ok: boolean }[]; // dictation: the expected sentence split into words, each marked found or missed
   explanation?: string;
   // Revealed once settled: the full French with its translation and tappable glosses.
   lines: PassageLine[];
@@ -96,7 +90,7 @@ export type StreamState = {
 // GET  api/comprehension/state?stream=<id>                       -> StreamState (creates the current exercise if needed)
 // POST api/comprehension/lookup {stream, key, fr, version, requestId} -> StreamState (records a looked-up gloss; a read
 //      exercise answered after a lookup settles as helped)
-// POST api/comprehension/answer {stream, key, version, requestId, choice?: number, text?: string} -> StreamState
+// POST api/comprehension/answer {stream, key, version, requestId, choice} -> StreamState
 // POST api/comprehension/next   {stream, key, version, requestId} -> StreamState (only after settling)
 // POST api/vocabulary/add {wordId, requestId}                       -> { status: 'added' | 'already-practising' | 'made-due' }
 // GET  api/mistakes -> { groups: MistakeGroup[] }

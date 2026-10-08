@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, test } from 'bun:test';
+import { Database } from 'bun:sqlite';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -10,14 +11,14 @@ import { StoreError } from '../lib/store';
 
 // ── A small bank: enough A1 sentences to keep a stream running, plus one A2, one B1, a dialogue and a text. ──
 function sentence(
-  id: string, level: GrammarLevel, fr: string, en: string, distractors: [string, string], gap: string,
+  id: string, level: GrammarLevel, fr: string, en: string, distractors: [string, string], glossed: string,
   extra: { topics?: string[]; words?: string[]; gloss?: ComprehensionSentence['gloss'] } = {},
 ): ComprehensionSentence {
   return {
-    id, level, fr, en, distractors, gap,
+    id, level, fr, en, distractors,
     topics: extra.topics ?? ['present'],
     words: extra.words ?? [],
-    gloss: extra.gloss ?? [{ fr: gap, en: `meaning of ${gap}` }],
+    gloss: extra.gloss ?? [{ fr: glossed, en: `meaning of ${glossed}` }],
   };
 }
 
@@ -46,10 +47,6 @@ const sentences: ComprehensionSentence[] = [
     ['I am hungry, so I am drinking water.', 'I am thirsty, so I am drinking juice.'], 'soif', { topics: ['focus-topic'] }),
   sentence('a01', 'A2', 'Hier, nous avons visité le musée du quartier.', 'Yesterday we visited the local museum.',
     ['Tomorrow we are visiting the local museum.', 'Yesterday we visited the local market.'], 'avons', { topics: ['passe-compose'] }),
-  sentence('s11', 'A1', 'Il y a vingt et un élèves dans la classe.', 'There are twenty-one pupils in the class.',
-    ['There are twenty-one teachers in the class.', 'There are twelve pupils in the class.'], 'vingt'),
-  sentence('s12', 'A1', 'Les élèves sont arrivés en retard.', 'The pupils arrived late.',
-    ['The pupils arrived early.', 'The teacher arrived late.'], 'arrivés'),
   sentence('b01', 'B1', 'Si tu venais plus tôt, on pourrait finir le travail ensemble.', 'If you came earlier, we could finish the work together.',
     ['If you came later, we could finish the work together.', 'If you came earlier, we could start the work together.'], 'pourrait', { topics: ['si-clauses'] }),
 ];
@@ -143,20 +140,16 @@ function rightAnswerOf(view: ExerciseView): string {
 }
 
 // The answer a learner who understood the French would give.
-function correctInput(view: ExerciseView): { choice?: number; text?: string } {
-  if (view.kind === 'meaning') return { choice: view.choices!.indexOf(sentenceById.get(view.item.id)!.en) };
-  if (view.kind === 'question') return { choice: view.choices!.indexOf(rightAnswerOf(view)) };
-  const item = sentenceById.get(view.item.id)!;
-  return { text: view.kind === 'gap' ? item.gap : item.fr };
+function correctInput(view: ExerciseView): { choice: number } {
+  if (view.kind === 'meaning') return { choice: view.choices.indexOf(sentenceById.get(view.item.id)!.en) };
+  return { choice: view.choices.indexOf(rightAnswerOf(view)) };
 }
 
-function wrongInput(view: ExerciseView): { choice?: number; text?: string } {
-  const right = correctInput(view);
-  if (right.choice !== undefined) return { choice: (right.choice + 1) % view.choices!.length };
-  return { text: 'quelque chose de faux' };
+function wrongInput(view: ExerciseView): { choice: number } {
+  return { choice: (correctInput(view).choice + 1) % view.choices.length };
 }
 
-function settle(store: ComprehensionStore, stream: StreamId, state: StreamState, input: { choice?: number; text?: string }): StreamState {
+function settle(store: ComprehensionStore, stream: StreamId, state: StreamState, input: { choice: number }): StreamState {
   return store.answer({ stream, key: state.current!.key, version: state.version, requestId: `answer-${++sequence}`, ...input });
 }
 
@@ -165,7 +158,7 @@ function advance(store: ComprehensionStore, stream: StreamId, state: StreamState
 }
 
 // Answers the current exercise the way `pick` says and moves on; returns the state showing the next exercise.
-function step(store: ComprehensionStore, stream: StreamId, pick: (view: ExerciseView) => { choice?: number; text?: string } = correctInput): StreamState {
+function step(store: ComprehensionStore, stream: StreamId, pick: (view: ExerciseView) => { choice: number } = correctInput): StreamState {
   const state = store.state(stream);
   return advance(store, stream, settle(store, stream, state, pick(state.current!)));
 }
@@ -181,7 +174,6 @@ function driveTo(store: ComprehensionStore, stream: StreamId, wanted: ExerciseVi
 }
 
 const levelOf = (state: StreamState, mode: 'listen' | 'read') => state.level.find((entry) => entry.mode === mode)!.value;
-const plain = (text: string) => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
 
 describe('level fitting', () => {
   test('rises on correct answers, falls on misses, and sits still at 80% correct', () => {
@@ -327,95 +319,42 @@ describe('audio readiness', () => {
   });
 });
 
-describe('typed answers', () => {
-  test('a gap answer missing its accent counts as correct with a spelling note', () => {
+describe('kinds served', () => {
+  test('Listen serves only meaning and question exercises', () => {
     const { store } = fixture();
-    const state = driveTo(store, 'listen', 'gap', (view) => plain(sentenceById.get(view.item.id)!.gap) !== sentenceById.get(view.item.id)!.gap);
-    const gap = sentenceById.get(state.current!.item.id)!.gap;
-    const slip = plain(gap);
-    expect(slip).not.toBe(gap);
-    const settled = settle(store, 'listen', state, { text: slip });
-    expect(settled.result!.outcome).toBe('correct');
-    expect(settled.result!.spelling).toBe(true);
-    expect(settled.result!.expected).toBe(gap);
+    const kinds = new Set<string>();
+    let state = store.state('listen');
+    for (let answer = 0; answer < 40 && state.current; answer++) { kinds.add(state.current.kind); state = step(store, 'listen'); }
+    expect([...kinds].sort()).toEqual(['meaning', 'question']);
   });
 
-  test('a dictation forgives accents, commas, case and a straight apostrophe', () => {
-    const { store } = fixture();
-    const state = driveTo(store, 'listen', 'dictation', (view) => sentenceById.get(view.item.id)!.fr.includes(','));
-    const fr = sentenceById.get(state.current!.item.id)!.fr;
-    const slip = plain(fr).replace(/,/g, '').replace(/’/g, "'").toLocaleUpperCase('fr');
-    expect(slip).not.toBe(fr);
-    const settled = settle(store, 'listen', state, { text: slip });
-    expect(settled.result!.outcome).toBe('correct');
-    expect(settled.result!.spelling).toBe(true);
-    expect(settled.result!.diff!.every((word) => word.ok)).toBe(true);
-    expect(settled.result!.diff!.map((word) => word.text).join(' ')).toBe(fr);
-  });
+  test('a stored exercise of another kind is replaced on the next read, and its history is ignored', () => {
+    const shop = fixture();
+    const waiting = shop.store.state('listen');
+    const settled = settle(shop.store, 'mix', shop.store.state('mix'), correctInput(shop.store.state('mix').current!));
+    shop.store.close();
+    stores.delete(shop.store);
 
-  test('a dictation that drops a word is incorrect and says which word was missed', () => {
-    const { store } = fixture();
-    const state = driveTo(store, 'listen', 'dictation');
-    const fr = sentenceById.get(state.current!.item.id)!.fr;
-    const words = fr.split(' ');
-    const index = words.findLastIndex((word) => /[\p{L}]/u.test(word));
-    const dropped = words[index]!;
-    const settled = settle(store, 'listen', state, { text: words.filter((_, at) => at !== index).join(' ') });
-    expect(settled.result!.outcome).toBe('incorrect');
-    expect(settled.result!.diff!.filter((word) => !word.ok).map((word) => word.text)).toEqual([dropped]);
-  });
+    // A gap exercise stored the way the store persists a current: waiting in Listen, settled in Practise.
+    const db = new Database(shop.dbPath);
+    const gap = { key: 's03:gap', kind: 'gap', mode: 'listen', itemId: 's03', questionIndex: null, choiceOrder: null, startedAt: '2026-03-01T08:00:00.000Z' };
+    const typed = { outcome: 'incorrect', expected: 'dimanche', given: 'lundi', lines: [], gloss: [] };
+    db.query('UPDATE comprehension_streams SET current_json = ? WHERE stream = ?').run(JSON.stringify(gap), 'listen');
+    db.query('UPDATE comprehension_streams SET current_json = ?, result_json = ? WHERE stream = ?').run(JSON.stringify(gap), JSON.stringify(typed), 'mix');
+    db.query(`INSERT INTO comprehension_history (exercise_key, mode, item_id, kind, outcome, misses, corrects, seen, due_at, due_stream, due_answers, last_at)
+      VALUES ('s03:gap', 'listen', 's03', 'gap', 'incorrect', 1, 0, 1, 0, 'listen', 0, '2026-03-01T08:00:00.000Z')`).run();
+    db.close();
 
-  test('an empty typed answer is refused rather than counted as a miss', () => {
-    const { store } = fixture();
-    const state = driveTo(store, 'listen', 'gap');
-    expect(() => settle(store, 'listen', state, { text: '   ' })).toThrow(StoreError);
-    expect(store.state('listen').current!.key).toBe(state.current!.key);
-    expect(store.state('listen').result).toBeNull();
-  });
-
-  test('a number typed in digits is correct with a spelling note', () => {
-    const { store } = fixture();
-    const state = driveTo(store, 'listen', 'gap', (view) => view.item.id === 's07'); // "Vous arrivez à huit heures."
-    const settled = settle(store, 'listen', state, { text: '8' });
-    expect(settled.result!.expected).toBe('huit');
-    expect(settled.result!.outcome).toBe('correct');
-    expect(settled.result!.spelling).toBe(true);
-  });
-
-  test('a dictation may write its numbers in digits, and every word still counts as caught', () => {
-    const { store } = fixture();
-    const state = driveTo(store, 'listen', 'dictation', (view) => view.item.id === 's11'); // "…vingt et un élèves…"
-    const settled = settle(store, 'listen', state, { text: 'Il y a 21 élèves dans la classe.' });
-    expect(settled.result!.outcome).toBe('correct');
-    expect(settled.result!.spelling).toBe(true);
-    expect(settled.result!.diff!.every((word) => word.ok)).toBe(true);
-    expect(settled.result!.diff!.map((word) => word.text).join(' ')).toBe('Il y a vingt et un élèves dans la classe.');
-  });
-
-  test('a silent agreement the ear cannot hear is correct with a spelling note', () => {
-    const { store } = fixture();
-    const state = driveTo(store, 'listen', 'gap', (view) => view.item.id === 's12'); // gap "arrivés"
-    const settled = settle(store, 'listen', state, { text: 'arrive' });
-    expect(settled.result!.outcome).toBe('correct');
-    expect(settled.result!.spelling).toBe(true);
-  });
-
-  test('a dictation that mishears an ending is still correct, word by word', () => {
-    const { store } = fixture();
-    const state = driveTo(store, 'listen', 'dictation', (view) => view.item.id === 's12');
-    const settled = settle(store, 'listen', state, { text: 'Les élève sont arriver en retard.' });
-    expect(settled.result!.outcome).toBe('correct');
-    expect(settled.result!.spelling).toBe(true);
-    expect(settled.result!.diff!.every((word) => word.ok)).toBe(true);
-  });
-
-  test('a different word is still wrong, however close its ending', () => {
-    const { store } = fixture();
-    const state = driveTo(store, 'listen', 'gap', (view) => view.item.id === 's11'); // gap "vingt"
-    const settled = settle(store, 'listen', state, { text: 'trente' });
-    expect(settled.result!.outcome).toBe('incorrect');
-    expect(settled.result!.spelling).toBeUndefined();
-    expect(settled.result!.expected).toBe('vingt');
+    const store = shop.reopen();
+    const listen = store.state('listen');
+    expect(['meaning', 'question']).toContain(listen.current!.kind);
+    expect(listen.version).toBeGreaterThan(waiting.version);
+    const mix = store.state('mix');
+    expect(['meaning', 'question']).toContain(mix.current!.kind);
+    expect(mix.result).toBeNull();
+    expect(mix.version).toBeGreaterThan(settled.version);
+    expect(store.misses()).toEqual([]);
+    expect(settle(store, 'listen', listen, correctInput(listen.current!)).result!.outcome).toBe('correct');
   });
 });
 
@@ -471,8 +410,8 @@ describe('multiple choice', () => {
       const view = state.current!;
       if (view.kind === 'question') {
         const question = questionOf(view);
-        seen.push({ authored: question.choices, shown: view.choices! });
-        if (view.choices![question.answer] !== rightAnswerOf(view)) { moved = state; break; }
+        seen.push({ authored: question.choices, shown: view.choices });
+        if (view.choices[question.answer] !== rightAnswerOf(view)) { moved = state; break; }
       }
       advance(store, 'read', settle(store, 'read', state, correctInput(view)));
     }
@@ -484,7 +423,7 @@ describe('multiple choice', () => {
     const settled = settle(store, 'read', moved!, { choice: questionOf(view).answer });
     expect(settled.result!.outcome).toBe('incorrect');
     expect(settled.result!.expected).toBe(rightAnswerOf(view));
-    expect(settled.result!.given).toBe(view.choices![questionOf(view).answer]);
+    expect(settled.result!.given).toBe(view.choices[questionOf(view).answer]);
   });
 
   test('a reloaded question keeps the order it was shown in', () => {

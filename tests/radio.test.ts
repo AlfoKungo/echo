@@ -37,7 +37,7 @@ function radio(options: { skip?: (clip: RadioClip) => boolean; recorded?: boolea
       { id: 'pain', fr: 'le pain', en: 'bread', status: 'learning', score: 0 },
       { id: 'maison', fr: 'la maison', en: 'house', status: 'scheduled', score: 0 },
     ],
-    sentences: () => [{ id: 's1', level: 'A1', fr: 'Le pain est bon.', en: 'The bread is good.', distractors: [], gap: 'pain', topics: [], words: ['pain'], gloss: [] }],
+    sentences: () => [{ id: 's1', level: 'A1', fr: 'Le pain est bon.', en: 'The bread is good.', distractors: [], topics: [], words: ['pain'], gloss: [] }],
     episode: () => ({ id: 'story-01', number: 1, titleEn: 'The Key', summary: 'Léa finds a key.', focus: { topic: 'present-er', title: 'Present tense' }, lines: [{ fr: 'Léa arrive.', en: 'Léa arrives.' }, { fr: 'Elle regarde.', en: 'She looks.' }] }),
     topics: () => [{ id: 'present-er', title: 'Present tense', level: 'A1', description: 'Regular -er verbs.', independent: 0 }],
     level: () => 'A2',

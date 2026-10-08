@@ -87,10 +87,6 @@ export function validateLane(lane: ComprehensionLane, where: string, known: Know
       if (new Set(all).size !== all.length) say(id, 'a distractor repeats the meaning or another distractor.');
       sentence.distractors.forEach((value) => plain(id, 'distractor', value));
     }
-    if (plain(id, 'gap', sentence.gap)) {
-      const hits = wholeMatches(sentence.fr, sentence.gap).length;
-      if (hits !== 1) say(id, `gap "${sentence.gap}" must occur exactly once as a whole word (found ${hits}).`);
-    }
     tags(id, sentence.topics, sentence.words);
     glosses(id, sentence.gloss, sentence.fr);
   }

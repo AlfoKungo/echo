@@ -14,7 +14,7 @@ afterEach(() => { for (const directory of directories.splice(0)) rmSync(director
 const sentence = {
   fr: 'Nous mangeons au restaurant ce soir.', en: 'We are eating at the restaurant this evening.',
   distractors: ['We are eating at the restaurant this morning.', 'They are eating at the restaurant this evening.'],
-  gap: 'soir', topics: ['present-er', 'not-a-topic'], words: [],
+  topics: ['present-er', 'not-a-topic'], words: [],
   gloss: [{ fr: 'mangeons', en: 'eat (manger)', word: 'verbs-059' }, { fr: 'restaurant', en: 'restaurant', word: 'travel-020' }, { fr: 'ce soir', en: 'this evening', word: 'health-time-060' }],
 };
 const passage = (kind: 'dialogue' | 'text') => ({

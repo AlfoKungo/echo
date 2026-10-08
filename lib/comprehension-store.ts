@@ -7,8 +7,7 @@ import type {
 } from '../comprehension-contract';
 import type { ComprehensionDayCounts, GrammarLevel } from '../contract';
 import type { Bank } from './comprehension-content';
-import { wholeMatches, wordCount } from './comprehension-content';
-import { normalize, stripAccents } from './grammar-content';
+import { wordCount } from './comprehension-content';
 import { recentStudyDays, StoreError, studyDay } from './store';
 
 export type Mode = 'listen' | 'read';
@@ -19,7 +18,7 @@ export type Outcome = ExerciseResult['outcome'];
 export type WordKnowledge = { status: 'new' | 'learning' | 'due' | 'scheduled'; misses: number; score: number };
 export type ComprehensionMutation = { stream: StreamId; key: string; version: number; requestId: string };
 export type LookupInput = ComprehensionMutation & { fr: string };
-export type AnswerInput = ComprehensionMutation & { choice?: number; text?: string };
+export type AnswerInput = ComprehensionMutation & { choice: number };
 // One outstanding comprehension mistake: the latest answer for this exercise was incorrect or helped.
 export type ComprehensionMiss = {
   key: string; mode: Mode; kind: ExerciseKind; itemId: string; type: ItemType;
@@ -71,7 +70,10 @@ const DAY = 86_400_000;
 const LEVEL_OF = (value: number): GrammarLevel => (value < 2 ? 'A1' : value < 3 ? 'A2' : 'B1');
 const MODES: Mode[] = ['listen', 'read'];
 const TOPIC_STREAM = /^focus:topic:[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const EDGE = /^[«»"“”'’,.;:!?…\-]+|[«»"“”'’,.;:!?…\-]+$/gu;
+// The kinds Echo serves. History of any other kind stays in the database unread, and a stream's stored exercise of
+// another kind is replaced by a fresh one when the stream is next read.
+const KINDS: readonly string[] = ['meaning', 'question'] satisfies ExerciseKind[];
+const SERVED = `kind IN (${KINDS.map((kind) => `'${kind}'`).join(', ')})`;
 
 export function parseStream(value: unknown): StreamId {
   if (typeof value === 'string' &&
@@ -80,80 +82,6 @@ export function parseStream(value: unknown): StreamId {
   }
   throw new StoreError('Choose Practise, Listen, Read or one of your mistake groups.', 400);
 }
-
-// Loose comparison: what a phone keyboard slips on — accents, ligatures and commas — is a spelling note, not a miss.
-const loose = (value: string) => stripAccents(value.replace(/\s*,\s*/g, ' ').replace(/\s+/g, ' ').trim());
-const bare = (token: string) => loose(normalize(token)).replace(EDGE, '');
-
-// A typed answer is a listening check, so a difference the ear cannot hear is a spelling note too: the digits of a
-// number heard as words, and one silent ending (plural, agreement, or a verb ending that sounds like its stem).
-const INAUDIBLE = /(e?nt|e?s|e?x|e?t|e?d|e?z|er|e)$/;
-const fold = (key: string) => key.replace(INAUDIBLE, '') || key;
-const NUMBER_WORDS = ['zero', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf', 'dix',
-  'onze', 'douze', 'treize', 'quatorze', 'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf'];
-
-// Every way to write 0–100 in French: both 70–99 systems, with hyphens, with spaces, and with "et un".
-function buildFrenchNumbers(): Map<string, number> {
-  const names = new Map<string, number>();
-  const add = (value: number, ...forms: string[]) => {
-    for (const form of forms) { names.set(form, value); names.set(form.replace(/-/g, ' '), value); }
-  };
-  NUMBER_WORDS.forEach((word, value) => add(value, word));
-  add(1, 'une');
-  for (const [tens, word] of [[20, 'vingt'], [30, 'trente'], [40, 'quarante'], [50, 'cinquante'], [60, 'soixante']] as const) {
-    add(tens, word);
-    add(tens + 1, `${word}-et-un`, `${word}-et-une`, `${word}-un`);
-    for (let unit = 2; unit <= 9; unit++) add(tens + unit, `${word}-${NUMBER_WORDS[unit]}`);
-  }
-  add(70, 'soixante-dix');
-  add(71, 'soixante-et-onze', 'soixante-onze');
-  for (let unit = 12; unit <= 19; unit++) add(60 + unit, `soixante-${NUMBER_WORDS[unit]}`);
-  add(80, 'quatre-vingts', 'quatre-vingt');
-  for (let unit = 1; unit <= 19; unit++) add(80 + unit, `quatre-vingt-${NUMBER_WORDS[unit]}`);
-  for (const [tens, word] of [[70, 'septante'], [80, 'huitante'], [80, 'octante'], [90, 'nonante']] as const) {
-    add(tens, word);
-    add(tens + 1, `${word}-et-un`, `${word}-un`);
-    for (let unit = 2; unit <= 9; unit++) add(tens + unit, `${word}-${NUMBER_WORDS[unit]}`);
-  }
-  return names;
-}
-
-const FRENCH_NUMBERS = buildFrenchNumbers();
-const NUMBER_SPAN = 4; // "quatre vingt dix sept"
-
-// The longest number starting at `at`: 0–100 from the table, or "<2–9> cent(s) <0–99>" built on top of it.
-function matchNumber(tokens: string[], at: number): { value: number; span: number } | null {
-  const table = (start: number) => {
-    for (let span = Math.min(NUMBER_SPAN, tokens.length - start); span >= 1; span--) {
-      const value = FRENCH_NUMBERS.get(tokens.slice(start, start + span).map(bare).join(' '));
-      if (value !== undefined) return { value, span };
-    }
-    return null;
-  };
-  const head = table(at);
-  const hundreds = head && head.value >= 2 && head.value <= 9 ? head : null;
-  const centAt = at + (hundreds?.span ?? 0);
-  const cent = bare(tokens[centAt] ?? '');
-  if (cent !== 'cent' && cent !== 'cents') return head;
-  const rest = table(centAt + 1);
-  const tail = rest && rest.value < 100 ? rest : null;
-  return { value: (hundreds?.value ?? 1) * 100 + (tail?.value ?? 0), span: centAt + 1 + (tail?.span ?? 0) - at };
-}
-
-// An answer as comparable units: a number written either way collapses to its digits, every other word stands alone.
-function units(text: string): { key: string; tokens: string[] }[] {
-  const tokens = text.split(/\s+/).filter(Boolean);
-  const found: { key: string; tokens: string[] }[] = [];
-  for (let at = 0; at < tokens.length;) {
-    const number = matchNumber(tokens, at);
-    if (number) { found.push({ key: String(number.value), tokens: tokens.slice(at, at + number.span) }); at += number.span; continue; }
-    found.push({ key: bare(tokens[at]!), tokens: [tokens[at]!] });
-    at += 1;
-  }
-  return found;
-}
-
-const spoken = (text: string) => units(text).map((unit) => fold(unit.key)).join(' ');
 
 type Item = {
   id: string;
@@ -263,8 +191,6 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     if (item.sentence) {
       candidates.push({ key: `${item.id}:meaning`, kind: 'meaning', mode: 'read', item, questionIndex: null, difficulty: base });
       candidates.push({ key: `${item.id}:meaning`, kind: 'meaning', mode: 'listen', item, questionIndex: null, difficulty: base + 0.1 });
-      candidates.push({ key: `${item.id}:gap`, kind: 'gap', mode: 'listen', item, questionIndex: null, difficulty: base + 0.3 });
-      candidates.push({ key: `${item.id}:dictation`, kind: 'dictation', mode: 'listen', item, questionIndex: null, difficulty: base + 0.6 });
     }
     if (item.passage) {
       const read = item.type === 'dialogue' ? 0.3 : 0.5;
@@ -355,8 +281,8 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   const saveStream = db.query('UPDATE comprehension_streams SET version = ?, answers = ?, current_json = ?, result_json = ?, lookups_json = ?, recent_json = ?, updated_at = ? WHERE stream = ?');
   const readLevels = db.query<{ mode: Mode; value: number }, []>('SELECT mode, value FROM comprehension_levels');
   const saveLevel = db.query('UPDATE comprehension_levels SET value = ? WHERE mode = ?');
-  const allHistory = db.query<HistoryRow, []>('SELECT * FROM comprehension_history');
-  const itemMetAt = db.query<{ at: string | null }, [string]>('SELECT MAX(last_at) AS at FROM comprehension_history WHERE item_id = ?');
+  const allHistory = db.query<HistoryRow, []>(`SELECT * FROM comprehension_history WHERE ${SERVED}`);
+  const itemMetAt = db.query<{ at: string | null }, [string]>(`SELECT MAX(last_at) AS at FROM comprehension_history WHERE item_id = ? AND ${SERVED}`);
   const historyFor = db.query<HistoryRow, [string, string]>('SELECT * FROM comprehension_history WHERE exercise_key = ? AND mode = ?');
   const saveHistory = db.query(`
     INSERT INTO comprehension_history (exercise_key, mode, item_id, kind, outcome, misses, corrects, seen, due_at, due_stream, due_answers, last_at)
@@ -388,7 +314,11 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     saveStream.run(row.version, row.answers, row.current_json, row.result_json, row.lookups_json, row.recent_json, at.toISOString(), row.stream);
   }
 
-  const currentOf = (row: StreamRow): Current | null => (row.current_json ? JSON.parse(row.current_json) as Current : null);
+  // A stored exercise of a kind Echo does not serve reads as none; ensureCurrent replaces it.
+  const currentOf = (row: StreamRow): Current | null => {
+    const current = row.current_json ? JSON.parse(row.current_json) as Current : null;
+    return current && KINDS.includes(current.kind) ? current : null;
+  };
   const resultOf = (row: StreamRow): ExerciseResult | null => (row.result_json ? JSON.parse(row.result_json) as ExerciseResult : null);
   const lookupsOf = (row: StreamRow): string[] => JSON.parse(row.lookups_json) as string[];
   const recentOf = (row: StreamRow): string[] => JSON.parse(row.recent_json) as string[];
@@ -525,15 +455,11 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   function makeCurrent(candidate: Candidate, at: Date): Current {
     // Both kinds of multiple choice are shuffled, so the right answer never sits in a giveaway position.
     const pool = candidate.kind === 'meaning' ? [candidate.item.sentence!.en, ...candidate.item.sentence!.distractors]
-      : candidate.kind === 'question' ? candidate.item.passage!.questions[candidate.questionIndex! - 1]!.choices
-      : null;
-    let choiceOrder: number[] | null = null;
-    if (pool) {
-      choiceOrder = pool.map((_, index) => index);
-      for (let index = choiceOrder.length - 1; index > 0; index--) {
-        const other = Math.floor(random() * (index + 1));
-        [choiceOrder[index], choiceOrder[other]] = [choiceOrder[other]!, choiceOrder[index]!];
-      }
+      : candidate.item.passage!.questions[candidate.questionIndex! - 1]!.choices;
+    const choiceOrder = pool.map((_, index) => index);
+    for (let index = choiceOrder.length - 1; index > 0; index--) {
+      const other = Math.floor(random() * (index + 1));
+      [choiceOrder[index], choiceOrder[other]] = [choiceOrder[other]!, choiceOrder[index]!];
     }
     return {
       key: candidate.key, kind: candidate.kind, mode: candidate.mode, itemId: candidate.item.id,
@@ -552,16 +478,9 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   const hidden = (lines: PassageLine[]): PassageLine[] =>
     lines.map((line) => (line.speaker === undefined ? { fr: line.fr, en: '' } : { speaker: line.speaker, fr: line.fr, en: '' }));
 
-  function gapPrompt(sentence: ComprehensionSentence): string {
-    const at = wholeMatches(sentence.fr, sentence.gap)[0];
-    if (at === undefined) return sentence.fr;
-    return `${sentence.fr.slice(0, at)}____${sentence.fr.slice(at + sentence.gap.length)}`;
-  }
-
   // The choices as this exercise shows them, and where its stored shuffle put the right one.
-  function shownChoices(item: Item, current: Current): { choices: string[]; answerIndex: number } | null {
+  function shownChoices(item: Item, current: Current): { choices: string[]; answerIndex: number } {
     const question = current.kind === 'question' ? item.passage!.questions[current.questionIndex! - 1]! : null;
-    if (!question && current.kind !== 'meaning') return null;
     const pool = question ? question.choices : [item.sentence!.en, ...item.sentence!.distractors];
     const order = current.choiceOrder ?? pool.map((_, index) => index);
     return { choices: order.map((index) => pool[index]!), answerIndex: order.indexOf(question ? question.answer : 0) };
@@ -576,8 +495,6 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     if (current.mode === 'read') {
       if (item.sentence) prompt.text = item.sentence.fr;
       else prompt.lines = hidden(item.lines);
-    } else if (current.kind === 'gap') {
-      prompt.text = gapPrompt(item.sentence!);
     }
     const shown = shownChoices(item, current);
     return {
@@ -586,7 +503,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       audio: clips.map((clip) => `audio/comprehension/${clip}.mp3?v=${SENTENCE_CLIP_VERSION}`),
       gloss: current.mode === 'read' ? item.gloss : [],
       prompt,
-      ...(shown ? { choices: shown.choices } : {}),
+      choices: shown.choices,
     };
   }
 
@@ -607,61 +524,18 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   }
 
   // ── Answer checking ──────────────────────────────────────────────────────────
-  function typedCheck(expected: string, given: string): { ok: boolean; spelling: boolean } {
-    const target = normalize(expected);
-    const answer = normalize(given);
-    if (!answer) return { ok: false, spelling: false };
-    if (target === answer) return { ok: true, spelling: false };
-    if (loose(target) === loose(answer)) return { ok: true, spelling: true };
-    // Same words to the ear: "21" for "vingt et un", "arrive" for "arrivés".
-    if (spoken(target) === spoken(answer)) return { ok: true, spelling: true };
-    return { ok: false, spelling: false };
-  }
-
-  function dictationDiff(expected: string, given: string): { text: string; ok: boolean }[] {
-    const pool = units(given).map((unit) => unit.key).filter(Boolean);
-    const diff: { text: string; ok: boolean }[] = [];
-    for (const unit of units(expected)) {
-      // A lone ? or ! is spacing, not a word to catch.
-      const at = unit.key ? pool.findIndex((key) => key === unit.key || fold(key) === fold(unit.key)) : -1;
-      if (at >= 0) pool.splice(at, 1);
-      for (const token of unit.tokens) diff.push({ text: token, ok: !unit.key || at >= 0 });
-    }
-    return diff;
-  }
-
   function grade(current: Current, input: AnswerInput, lookups: string[]): { result: ExerciseResult; outcome: Outcome } {
     const item = itemOf(current);
-    let expected = '';
-    let given = '';
-    let ok = false;
-    let spelling = false;
-    let diff: { text: string; ok: boolean }[] | undefined;
-    let explanation: string | undefined;
     const shown = shownChoices(item, current);
-    if (shown) {
-      if (!Number.isInteger(input.choice) || input.choice! < 0 || input.choice! >= shown.choices.length) {
-        throw new StoreError('Choose one of the answers before checking.', 400);
-      }
-      expected = shown.choices[shown.answerIndex]!;
-      given = shown.choices[input.choice!]!;
-      ok = input.choice === shown.answerIndex;
-      if (current.kind === 'question') explanation = item.passage!.questions[current.questionIndex! - 1]!.explanation;
-    } else {
-      if (typeof input.text !== 'string' || !input.text.trim()) throw new StoreError('Type what you heard before checking it.', 400);
-      expected = current.kind === 'gap' ? item.sentence!.gap : item.sentence!.fr;
-      given = input.text.trim();
-      const check = typedCheck(expected, given);
-      ok = check.ok;
-      spelling = check.spelling;
-      if (current.kind === 'dictation') diff = dictationDiff(expected, given);
+    if (!Number.isInteger(input.choice) || input.choice < 0 || input.choice >= shown.choices.length) {
+      throw new StoreError('Choose one of the answers before checking.', 400);
     }
+    const ok = input.choice === shown.answerIndex;
+    const explanation = current.kind === 'question' ? item.passage!.questions[current.questionIndex! - 1]!.explanation : undefined;
     const helped = ok && current.mode === 'read' && lookups.length > 0;
     const outcome: Outcome = !ok ? 'incorrect' : helped ? 'helped' : 'correct';
     const result: ExerciseResult = {
-      outcome, expected, given,
-      ...(spelling ? { spelling: true } : {}),
-      ...(diff ? { diff } : {}),
+      outcome, expected: shown.choices[shown.answerIndex]!, given: shown.choices[input.choice]!,
       ...(explanation ? { explanation } : {}),
       lines: item.lines,
       gloss: item.gloss,
@@ -722,8 +596,15 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   }
 
   function ensureCurrent(row: StreamRow, stream: StreamId, at: Date): boolean {
-    if (row.result_json) return false;
     const waiting = currentOf(row);
+    // A stored exercise of a kind Echo does not serve is dropped with its result, settled or not.
+    const unserved = row.current_json !== null && !waiting;
+    if (unserved) {
+      row.current_json = null;
+      row.result_json = null;
+      row.lookups_json = '[]';
+    }
+    if (row.result_json) return false;
     if (waiting) {
       // An exercise left waiting here whose item was answered in another stream since would now be a repeat.
       const met = itemMetAt.get(waiting.itemId)?.at;
@@ -732,7 +613,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       row.lookups_json = '[]';
     }
     const chosen = select(stream, row, at);
-    if (!chosen && !waiting) return false;
+    if (!chosen && !waiting && !unserved) return false;
     row.current_json = chosen ? JSON.stringify(chosen) : null;
     row.version += 1;
     return true;
@@ -782,8 +663,9 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       row.answers += 1;
       schedule(current, outcome, stream, row.answers, at);
       const level = adjust(current.mode, outcome);
+      // Every comprehension answer is a choice, so its spelling flag is 0.
       addAnswer.run(input.requestId, stream, current.key, current.mode, current.itemId, current.kind, outcome,
-        result.spelling ? 1 : 0, result.given, level.before, level.after, at.toISOString());
+        0, result.given, level.before, level.after, at.toISOString());
       const recent = [current.itemId, ...recentOf(row).filter((id) => id !== current.itemId)].slice(0, RECENT);
       row.recent_json = JSON.stringify(recent);
       row.result_json = JSON.stringify(result);
@@ -830,7 +712,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       });
   }
 
-  const answeredItems = db.query<{ item_id: string }, []>('SELECT DISTINCT item_id FROM comprehension_history WHERE corrects > 0');
+  const answeredItems = db.query<{ item_id: string }, []>(`SELECT DISTINCT item_id FROM comprehension_history WHERE corrects > 0 AND ${SERVED}`);
   const lookedUp = db.query<{ exercise_key: string; fr: string }, []>('SELECT DISTINCT exercise_key, fr FROM comprehension_lookups');
   function metWords(): { forms: Set<string>; words: Set<string> } {
     const tapped = new Set(lookedUp.all().map((row) => `${row.exercise_key.slice(0, row.exercise_key.lastIndexOf(':'))}|${row.fr}`));
@@ -869,7 +751,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       const recent = recentStudyDays(now(), 14);
       const comprehensionDays: ComprehensionDayCounts[] = recent.days.map((day) => ({ day, listen: { right: 0, total: 0 }, read: { right: 0, total: 0 } }));
       const byDay = new Map(comprehensionDays.map((entry) => [entry.day, entry]));
-      for (const row of db.query<{ mode: Mode; outcome: Outcome; at: string }, [string]>('SELECT mode, outcome, answered_at AS at FROM comprehension_answers WHERE answered_at >= ?').all(recent.since.toISOString())) {
+      for (const row of db.query<{ mode: Mode; outcome: Outcome; at: string }, [string]>(`SELECT mode, outcome, answered_at AS at FROM comprehension_answers WHERE answered_at >= ? AND ${SERVED}`).all(recent.since.toISOString())) {
         const count = byDay.get(studyDay(new Date(row.at)))?.[row.mode];
         if (count) { count.total += 1; if (row.outcome !== 'incorrect') count.right += 1; }
       }
@@ -885,7 +767,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
         const raw = value.get(mode) ?? MIN_LEVEL;
         return [LEVEL_OF(Math.max(MIN_LEVEL, raw - BAND_BELOW)), LEVEL_OF(Math.min(MAX_LEVEL, raw + BAND_ABOVE))];
       }));
-      const met = new Set(db.query<{ id: string }, []>('SELECT DISTINCT item_id AS id FROM comprehension_history').all().map((row) => row.id));
+      const met = new Set(db.query<{ id: string }, []>(`SELECT DISTINCT item_id AS id FROM comprehension_history WHERE ${SERVED}`).all().map((row) => row.id));
       return (['A1', 'A2', 'B1'] as GrammarLevel[]).filter((level) => reach.has(level)).map((level) => {
         const unmet = [...items.values()].filter((item) => item.level === level && !met.has(item.id));
         return { level, sentences: unmet.filter((item) => item.type === 'sentence').length, passages: unmet.filter((item) => item.type !== 'sentence').length };

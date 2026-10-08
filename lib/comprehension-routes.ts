@@ -154,16 +154,8 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
     }
     if (route === 'api/comprehension/answer' && req.method === 'POST') {
       const data = await body(req);
-      const hasChoice = data.choice !== undefined && data.choice !== null;
-      const hasText = data.text !== undefined && data.text !== null;
-      if (hasChoice && !Number.isInteger(data.choice)) throw new StoreError('Choose one of the answers before checking.', 400);
-      if (hasText && typeof data.text !== 'string') throw new StoreError('Type what you heard before checking it.', 400);
-      if (!hasChoice && !hasText) throw new StoreError('Choose an answer, or type what you heard, before checking.', 400);
-      return json(store.answer({
-        ...mutation(data),
-        ...(hasChoice ? { choice: data.choice as number } : {}),
-        ...(hasText ? { text: data.text as string } : {}),
-      }));
+      if (!Number.isInteger(data.choice)) throw new StoreError('Choose one of the answers before checking.', 400);
+      return json(store.answer({ ...mutation(data), choice: data.choice as number }));
     }
     if (route === 'api/comprehension/next' && req.method === 'POST') return json(store.next(mutation(await body(req))));
     if (route === 'api/vocabulary/add' && req.method === 'POST') {

@@ -289,15 +289,12 @@ main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 aut
 .gloss{display:inline;padding:0;font:inherit;color:inherit;border-bottom:1px dotted var(--dim);border-radius:0}
 .gloss:focus-visible{outline-offset:2px}
 .nowrap{white-space:nowrap}
-.dictation{min-height:88px}
 .stream-actions{display:flex;justify-content:flex-end;margin-top:22px}
 .stream-actions .primary{min-width:130px}
 /* Once answered, Next stays at the bottom of the screen above the feedback and passage, never a scroll away. */
 .stream-actions.pinned,.exercise-actions.pinned{position:sticky;bottom:0;z-index:5;padding:16px 0 calc(16px + env(safe-area-inset-bottom));background:linear-gradient(to bottom,transparent,var(--page) 38%)}
 .reveal{margin-top:26px;padding-top:20px;border-top:1px solid var(--frame)}
 .reveal .caption{margin-top:16px}
-.diff{font-size:20px;line-height:1.7;margin:8px 0;overflow-wrap:anywhere;color:var(--ink)}
-.diff .missed{color:var(--danger);text-decoration:underline dotted;text-underline-offset:4px}
 .stream-empty{display:flex;flex-direction:column;align-items:center;gap:20px;padding:60px 0;color:var(--muted);text-align:center}
 .feedback .audio-line,.audio-line{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding-left:0;color:var(--violet);text-decoration:none}
 .audio-line svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -326,7 +323,6 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .stream-actions{margin-top:18px}
 .stream-actions .primary{width:100%}
 .listen-block.big{margin:20px 0 24px}
-.diff{font-size:18px}
 }
 @media(max-width:360px){
 .tile{padding:12px}
