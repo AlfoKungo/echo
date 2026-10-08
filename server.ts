@@ -20,7 +20,7 @@ import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/v
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
-import { backup as snapshot } from './lib/backups';
+import { backup as snapshot, offsite, OFFSITE_DIR } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
 import { answers, answerTexts, hint, judge, QUIETEST_ANSWER, said, sayEnglish, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
 import { createSayClips } from './lib/say-clips';
@@ -693,6 +693,7 @@ async function route(req: Request): Promise<Response> {
 function backup() {
   if (process.env.ECHO_DB) return;
   snapshot(dbPath, join(root, 'backup'));
+  if (offsite(dbPath, join(OFFSITE_DIR, 'echo.db'))) console.log(`Echo: today's copy is in iCloud Drive (${OFFSITE_DIR})`);
 }
 try { backup(); } catch (error) { console.error('Echo backup failed', error); }
 const backups = setInterval(() => { try { backup(); } catch (error) { console.error('Echo backup failed', error); } }, 60 * 60 * 1000);

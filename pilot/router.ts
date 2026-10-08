@@ -18,7 +18,7 @@ import { existsSync, mkdirSync, openSync, readFileSync, symlinkSync } from 'node
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import type { Subprocess } from 'bun';
-import { backup } from '../lib/backups';
+import { backup, offsite, OFFSITE_DIR } from '../lib/backups';
 import { createAccounts, OPEN_MINUTES, SESSION_DAYS, type Accounts, type Learner } from './accounts';
 import { createGoogle, SignInError, type Exchange, type GoogleConfig } from './google';
 
@@ -36,6 +36,8 @@ export type PilotOptions = {
   // Where a learner's Echo answers; by default their own Echo process, started on demand.
   backend?: (learner: Learner) => Promise<string>;
   owner?: string;
+  // A folder off this Mac for each learner's daily copy (lib/backups.ts offsite); none when unset.
+  offsite?: string;
 };
 
 const esc = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -205,6 +207,7 @@ export function createPilot(options: PilotOptions) {
     for (const friend of accounts.friends()) {
       const db = join(options.data, friend.id, 'echo.db');
       try { backup(db, join(options.data, friend.id, 'backup')); } catch (error) { console.error(`pilot: backup of ${friend.id} failed`, error); }
+      if (options.offsite) try { offsite(db, join(options.offsite, `${friend.id}.db`)); } catch (error) { console.error(`pilot: daily copy of ${friend.id} failed`, error); }
     }
     accounts.dropExpired();
   }
@@ -222,7 +225,7 @@ if (import.meta.main) {
   // The Google OAuth client, kept on this Mac only: {"clientId": "...", "clientSecret": "..."}.
   const googleFile = join(data, 'google.json');
   const google = existsSync(googleFile) ? JSON.parse(readFileSync(googleFile, 'utf8')) as { clientId: string; clientSecret: string } : null;
-  const pilot = createPilot({ data, origin, ownerData: process.env.PILOT_OWNER_DATA ?? join(ROOT, 'data'), firstPort: 7900, google });
+  const pilot = createPilot({ data, origin, ownerData: process.env.PILOT_OWNER_DATA ?? join(ROOT, 'data'), firstPort: 7900, google, offsite: join(OFFSITE_DIR, 'friends') });
   const port = Number(process.env.PILOT_PORT ?? 7899), adminPort = Number(process.env.PILOT_ADMIN_PORT ?? 7898);
   const publicServer = Bun.serve({ hostname: '127.0.0.1', port, idleTimeout: 120, fetch: pilot.publicFetch });
   const adminServer = Bun.serve({ hostname: '127.0.0.1', port: adminPort, fetch: pilot.adminFetch });

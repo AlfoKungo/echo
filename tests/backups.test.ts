@@ -1,5 +1,32 @@
-import { expect, test } from 'bun:test';
-import { expired } from '../lib/backups';
+import { afterEach, expect, test } from 'bun:test';
+import { Database } from 'bun:sqlite';
+import { mkdtempSync, rmSync, statSync, utimesSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { expired, offsite } from '../lib/backups';
+
+const directories: string[] = [];
+afterEach(() => { for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true }); });
+
+test('the daily copy off the Mac is made once per study day, turning over at 04:00, and replaces the last one', () => {
+  const directory = mkdtempSync(join(tmpdir(), 'echo-offsite-'));
+  directories.push(directory);
+  const source = join(directory, 'echo.db'), copy = join(directory, 'cloud', 'echo.db');
+  const db = new Database(source);
+  db.exec("PRAGMA journal_mode = WAL; CREATE TABLE answers (n INTEGER); INSERT INTO answers VALUES (1)");
+  const at = (hour: number, day = 10) => new Date(2026, 9, day, hour, 30);
+  const rows = () => { const copied = new Database(copy, { readonly: true }); try { return copied.query('SELECT COUNT(*) AS n FROM answers').get(); } finally { copied.close(); } };
+  expect(offsite(source, copy, at(5))).toBe(true);
+  utimesSync(copy, at(5), at(5));
+  db.exec('INSERT INTO answers VALUES (2)');
+  // The same study day runs until 04:00 the next morning.
+  expect([offsite(source, copy, at(23)), offsite(source, copy, at(3, 11))]).toEqual([false, false]);
+  expect(rows()).toEqual({ n: 1 });
+  expect(offsite(source, copy, at(4, 11))).toBe(true);
+  expect(rows()).toEqual({ n: 2 });
+  expect(statSync(`${copy}.partial`, { throwIfNoEntry: false })).toBeUndefined();
+  db.close();
+});
 
 const HOUR = 3_600_000;
 const DAY = 24 * HOUR;
