@@ -518,6 +518,7 @@ function render() {
   else if (screen === 'songs') renderSongs();
   else if (screen === 'song') renderSong();
   else if (screen === 'lyrics') renderLyrics();
+  else if (screen === 'write') renderWrite();
   else if (screen === 'sounds') renderSounds();
   else if (screen === 'sound') renderSound();
   else if (screen === 'verbs') renderVerbs();
@@ -1185,8 +1186,82 @@ function renderGrammar() {
   }).join('');
   const switcher = `<div class="segmented gr-by" role="group" aria-label="Show topics">${[['unit', 'By unit'], ['level', 'By level']].map(([value, label]) => `<button data-action="grammar-by" data-value="${value}" aria-pressed="${grammarBy === value}">${label}</button>`).join('')}</div>`;
   const legend = '<div class="gr-legend"><span><i class="own"></i>on your own</span><span><i class="rev"></i>to revisit</span><span><i></i>not yet</span></div>';
-  const building = `<p class="study-label">Also</p><div class="gr-box">${grammarRowHTML('data-action="word-building"', '<span>-er</span><span>-eur</span>', 'Word building', '<small>Endings and prefixes that turn one word into another; also in Your words</small>')}</div>`;
+  const writeRow = roomsOff.has('write') ? '' : grammarRowHTML('data-action="write"', '<span>✎</span>', 'Write it', '<small>Write a short sentence in French with the grammar you are learning; Claude checks it</small>');
+  const building = `<p class="study-label">Also</p><div class="gr-box">${writeRow}${grammarRowHTML('data-action="word-building"', '<span>-er</span><span>-eur</span>', 'Word building', '<small>Endings and prefixes that turn one word into another; also in Your words</small>')}</div>`;
   main.innerHTML = `${noticeHTML()}<section class="topics grammar">${header}${resume}${nextCard}${switcher}${grammarBy === 'unit' ? units.map(unitCard).join('') : byLevel}${legend}${building}</section>`;
+}
+// ── Write it: an English sentence to write in French, from your words and a grammar topic you have started.
+// Claude writes the sentences ahead and checks each answer (lib/write-it.ts); the check takes a few seconds.
+let writeView = null;       // api/write: { current, result, waiting, writing, error }
+let writeDraft = '';
+let writeChecking = false;
+let writeRetry = false;     // the result is set aside to write the sentence again
+let writePoll = 0;
+function openWrite() { if (move('write', true)) loadWrite(); }
+async function loadWrite() {
+  clearTimeout(writePoll);
+  if (!writeView) { loading = true; render(); }
+  try { writeView = await api('api/write'); }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'write' }; }
+  loading = false;
+  if (screen !== 'write') return;
+  render();
+  if (!writeView?.current && writeView?.writing) writePoll = setTimeout(() => { if (screen === 'write') loadWrite(); }, 5000);
+  else main.querySelector('#write-answer')?.focus({ preventScroll: true });
+}
+const WRITE_VERDICTS = { right: 'That’s right.', nearly: 'Nearly.', wrong: 'Not quite.' };
+function renderWrite() {
+  const header = `<div class="section-top">${back('Grammar', 'grammar')}<span class="stream-label">Write it</span></div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb write">${header}${body}</section>`; };
+  if (loading || !writeView) { shell(loading ? '<div class="loading-state" role="status">Opening Write it…</div>' : ''); return; }
+  const { current, error } = writeView;
+  if (!current) {
+    shell(writeView.writing ? '<div class="loading-state" role="status">Claude is writing sentences for you. This takes about a minute.</div>'
+      : `<div class="notice" role="alert"><span>${esc(error || 'No sentences yet.')}</span><button class="quiet" data-action="write">Try again</button></div>`);
+    return;
+  }
+  const prompt = `<div class="vb-prompt"><p class="write-en" lang="en">${esc(current.en)}</p>${current.topicTitle ? `<span class="vb-tense">${esc(current.topicTitle)}</span>` : ''}</div>`;
+  const result = writeRetry ? null : writeView.result;
+  if (!result) {
+    shell(`${prompt}<form class="vb-answer-row" id="write-form"><input class="vb-input" id="write-answer" lang="fr" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The sentence in French" value="${esc(writeDraft)}" ${writeChecking ? 'disabled' : ''}><button class="primary" ${writeChecking ? 'disabled' : ''}>${writeChecking ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}
+      <div class="summary-actions"><button class="quiet" data-action="write-next" ${writeChecking ? 'disabled' : ''}>Skip this one</button></div>`);
+    return;
+  }
+  const right = result.verdict === 'right';
+  const lines = [
+    `<p>You wrote <span lang="fr">${esc(result.given)}</span></p>`,
+    right ? '' : `<p>Corrected: <span lang="fr" class="write-fix">${esc(result.corrected)}</span></p>`,
+    result.explanation ? `<p class="vb-why">${esc(result.explanation)}</p>` : '',
+    result.natural && result.natural !== result.corrected ? `<p class="vb-why">A French speaker would say: <span lang="fr">${esc(result.natural)}</span></p>` : '',
+  ].join('');
+  shell(`${prompt}<div class="feedback ${right ? '' : 'warn'}" role="status"><strong>${WRITE_VERDICTS[result.verdict]}</strong>${lines}</div>
+    <div class="stream-actions pinned"><button class="primary" data-action="write-next">Next sentence</button>${right ? '' : '<button class="secondary" data-action="write-again">Write it again</button>'}</div>`);
+  main.querySelector('[data-action="write-next"]')?.focus({ preventScroll: true });
+}
+async function checkWrite() {
+  const item = writeView?.current;
+  const given = (main.querySelector('#write-answer')?.value ?? writeDraft).trim();
+  if (!item || writeChecking || !given) return;
+  writeChecking = true; notice = null; render();
+  try { const result = await api('api/write/check', { method: 'POST', body: JSON.stringify({ requestId: requestId(), itemId: item.id, given }) }); if (writeView?.current?.id === item.id) { writeView.result = result; writeRetry = false; } }
+  catch (error) { notice = { message: error.message }; }
+  writeChecking = false;
+  if (screen === 'write') render();
+}
+async function nextWrite() {
+  const item = writeView?.current;
+  if (!item || writeChecking) return;
+  writeChecking = true; render();
+  try { writeView = await api('api/write/next', { method: 'POST', body: JSON.stringify({ itemId: item.id }) }); writeDraft = ''; writeRetry = false; }
+  catch (error) { notice = { message: error.message }; }
+  writeChecking = false;
+  if (screen === 'write') loadWriteAfterNext();
+}
+// The next sentence is on screen at once; with none left, the screen waits for the batch being written.
+function loadWriteAfterNext() {
+  render();
+  if (!writeView?.current && writeView?.writing) { clearTimeout(writePoll); writePoll = setTimeout(() => { if (screen === 'write') loadWrite(); }, 5000); }
+  else main.querySelector('#write-answer')?.focus({ preventScroll: true });
 }
 // The rule on a topic page: its summary, then each part folded under its title.
 function foldedGuideHTML(guide) {
@@ -4110,6 +4185,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'song-notes') rewriteSongNotes();
   else if (action === 'gender-colours') { genderColours = !genderColours; localStorage.setItem('echo.genders', genderColours ? 'on' : 'off'); document.body.classList.toggle('genders', genderColours); openOptions(); render(); }
   else if (action === 'songs-first') setSongsFirst(button.dataset.value === 'true');
+  else if (action === 'write') { writeView = screen === 'write' ? null : writeView; if (screen === 'write') loadWrite(); else openWrite(); }
+  else if (action === 'write-next') nextWrite();
+  else if (action === 'write-again') { writeRetry = true; writeDraft = writeView?.result?.given ?? ''; render(); main.querySelector('#write-answer')?.focus({ preventScroll: true }); }
   else if (action === 'stats-bin') chooseStatsBin(Number(button.dataset.bin));
   else if (action === 'stats-list') { statsOpen = !statsOpen; drawScores(); }
   else if (action === 'stats-day') { stopStatsPlay(); showStatsDay(statsAt + Number(button.dataset.step)); }
@@ -4173,6 +4251,7 @@ document.addEventListener('input', (event) => {
   if (event.target.id === 'stream-answer') streamDraft = event.target.value;
   if (event.target.id === 'song-query') songQuery = event.target.value;
   if (event.target.id === 'vb-answer') verbDraft = event.target.value;
+  if (event.target.id === 'write-answer') writeDraft = event.target.value;
   if (event.target.dataset?.vbCell !== undefined) verbTable.answers[Number(event.target.dataset.vbCell)] = event.target.value;
   if (event.target.id === 'st-slider') { stopStatsPlay(); showStatsDay(Number(event.target.value)); }
   if (event.target.id === 'vs-slider') { stopVerbPlay(); showVerbDay(Number(event.target.value)); }
@@ -4183,6 +4262,7 @@ document.addEventListener('submit', (event) => {
   else if (event.target.id === 'song-paste-form') { event.preventDefault(); readSong({ title: document.querySelector('#song-title').value, artist: document.querySelector('#song-artist').value, lyrics: document.querySelector('#song-lyrics').value }); }
   else if (event.target.matches('.custom-count')) { event.preventDefault(); submitCustomCount(event.target); }
   else if (event.target.id === 'vb-form') { event.preventDefault(); submitVerbForm(); }
+  else if (event.target.id === 'write-form') { event.preventDefault(); checkWrite(); }
   else if (event.target.id === 'friend-form') { event.preventDefault(); saveFriend(document.querySelector('#friend-email').value, document.querySelector('#friend-name').value); }
 });
 document.addEventListener('keydown', (event) => {
@@ -4252,6 +4332,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'songs') loadSongs();
   else if (screen === 'song') loadSong();
   else if (screen === 'lyrics') loadLyrics();
+  else if (screen === 'write') loadWrite();
   else if (screen === 'sounds') loadSounds();
   else if (screen === 'sound') startSoundRound();
   else if (screen === 'verbs' || screen === 'verbs-all') loadVerbs();

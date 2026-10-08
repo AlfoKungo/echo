@@ -9,6 +9,7 @@ import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, layTape, planSenten
 import { createSongs } from './lib/songs';
 import { createClaude, createClaudeReader } from './lib/claude';
 import { createWordAudio } from './lib/word-audio';
+import { createWriteIt } from './lib/write-it';
 import { createTextTopup } from './lib/text-topup';
 import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
@@ -167,6 +168,17 @@ const story = createStory({
 });
 void textsStarted.then(() => { if (process.env.ECHO_STORY !== 'off') return story.check(); });
 const storyChecks = setInterval(() => { if (process.env.ECHO_STORY !== 'off') void story.check(); }, 10 * 60_000);
+// Write it: English sentences to write in French from the words the learner has started and the grammar topics they
+// are working on, checked by Claude (lib/write-it.ts).
+const writeIt = createWriteIt({
+  dbPath, ask,
+  knowledge: () => ({
+    known: store.listening().filter((word) => word.status !== 'new').map((word) => ({ fr: word.fr, en: word.en })),
+    level: comprehension.summary().levels.find((entry) => entry.mode === 'read')?.value ?? 1,
+    topics: grammar.catalog().flatMap((unit) => unit.topics.map((topic) => ({ id: topic.id, title: topic.title, seen: topic.progress.seen, independent: topic.progress.independent }))),
+  }),
+  titles: () => new Map(grammar.catalog().flatMap((unit) => unit.topics.map((topic) => [topic.id, topic.title] as const))),
+});
 // The Radio: one episode a day from today's words, the latest recorded story episode and one grammar point.
 const radio = createRadio({
   root, dataDir: dirname(dbPath), ask,
@@ -581,6 +593,11 @@ async function route(req: Request): Promise<Response> {
       if (!await file.exists()) return json({ error: 'This line has not been recorded yet.' }, 404);
       return audioFile(req, file);
     }
+    if (path.startsWith('/api/write') && !roomsOff.includes('write')) {
+      if (path === '/api/write' && req.method === 'GET') return json(writeIt.state());
+      if (path === '/api/write/check' && req.method === 'POST') { const data = await body(req); return json(await writeIt.check(data)); }
+      if (path === '/api/write/next' && req.method === 'POST') { const data = await body(req); return json(writeIt.next(data)); }
+    }
     if (path === '/api/story' && req.method === 'GET') return json(story.status());
     const storyEpisode = path.match(/^\/api\/story\/(\d+)(\/finish)?$/);
     if (storyEpisode && !storyEpisode[2] && req.method === 'GET') return json(storyWithTapes(story.view(Number(storyEpisode[1]))));
@@ -694,6 +711,7 @@ async function stop() {
   await server.stop(true);
   comprehension.close();
   story.close();
+  writeIt.close();
   sounds.close();
   verbs.close();
   grammar.close();
