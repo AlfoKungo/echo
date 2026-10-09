@@ -40,6 +40,8 @@ export interface ComprehensionStore {
   summary(): { levels: { mode: Mode; label: GrammarLevel; value: number }[]; answered: number; comprehensionDays: ComprehensionDayCounts[] };
   // Unseen sentences and dialogues/texts at each level either mode is choosing from now (see BAND_BELOW/BAND_ABOVE).
   stock(): { level: GrammarLevel; sentences: number; passages: number }[];
+  // How many answers were given in a stream after this moment (an ISO time): what Grammar by ear waits on in Listen.
+  answeredSince(stream: StreamId, since: string): number;
   exportData(): unknown;
   close(): void;
 }
@@ -727,6 +729,8 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     return { forms, words };
   }
 
+  const answersSince = db.query<{ count: number }, [string, string]>('SELECT count(*) AS count FROM comprehension_answers WHERE stream = ? AND answered_at > ?');
+
   function exportData(): unknown {
     return db.transaction(() => ({
       levels: readLevels.all(),
@@ -773,6 +777,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
         return { level, sentences: unmet.filter((item) => item.type === 'sentence').length, passages: unmet.filter((item) => item.type !== 'sentence').length };
       });
     },
+    answeredSince: (stream, since) => answersSince.get(stream, since)!.count,
     exportData,
     close: () => db.close(),
   };

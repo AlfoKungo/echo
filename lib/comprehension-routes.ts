@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import type { MistakeGroup } from '../comprehension-contract';
+import type { MistakeGroup, StreamId } from '../comprehension-contract';
 import type { Bank } from './comprehension-content';
 import { createComprehensionStore, parseStream, type ComprehensionMutation, type ComprehensionStore, type WordKnowledge } from './comprehension-store';
 import type { GrammarStore } from './grammar-store';
@@ -15,6 +15,9 @@ export type ComprehensionDeps = {
   grammar: GrammarStore;
   // The verb forms at -2 or lower, lowest first (lib/verb-drills.ts): Mistakes shows them as one group.
   shakyForms?: () => { form: string }[];
+  // What the stream shows between its questions (in Listen, Grammar by ear: lib/grammar-ear.ts), merged into its
+  // state when it is read and after Next.
+  between?: (stream: StreamId) => Record<string, unknown>;
   now?: () => Date;
   random?: () => number;
 };
@@ -24,6 +27,7 @@ export type ComprehensionRoutes = {
   summary: ComprehensionStore['summary'];
   stock: ComprehensionStore['stock'];
   metWords: ComprehensionStore['metWords'];
+  answeredSince: ComprehensionStore['answeredSince'];
   exportData(): unknown;
   close(): void;
 };
@@ -145,7 +149,8 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
   async function handle(path: string, req: Request, url: URL): Promise<Response | null> {
     const route = path.replace(/^\/+/, '');
     if (route === 'api/comprehension/state' && req.method === 'GET') {
-      return json(store.state(parseStream(url.searchParams.get('stream'))));
+      const stream = parseStream(url.searchParams.get('stream'));
+      return json({ ...store.state(stream), ...deps.between?.(stream) });
     }
     if (route === 'api/comprehension/lookup' && req.method === 'POST') {
       const data = await body(req);
@@ -157,7 +162,10 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
       if (!Number.isInteger(data.choice)) throw new StoreError('Choose one of the answers before checking.', 400);
       return json(store.answer({ ...mutation(data), choice: data.choice as number }));
     }
-    if (route === 'api/comprehension/next' && req.method === 'POST') return json(store.next(mutation(await body(req))));
+    if (route === 'api/comprehension/next' && req.method === 'POST') {
+      const input = mutation(await body(req));
+      return json({ ...store.next(input), ...deps.between?.(input.stream) });
+    }
     if (route === 'api/vocabulary/add' && req.method === 'POST') {
       const data = await body(req);
       if (typeof data.wordId !== 'string' || !data.wordId.trim()) throw new StoreError('Choose a word to add to your vocabulary.', 400);
@@ -173,5 +181,5 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
     return null;
   }
 
-  return { handle, summary: store.summary, stock: store.stock, metWords: store.metWords, exportData: store.exportData, close: store.close };
+  return { handle, summary: store.summary, stock: store.stock, metWords: store.metWords, answeredSince: store.answeredSince, exportData: store.exportData, close: store.close };
 }
