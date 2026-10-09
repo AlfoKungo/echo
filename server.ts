@@ -71,6 +71,16 @@ async function runPython(args: string[], env: Record<string, string> = {}): Prom
   else console.error(`audio: ${args[0]} failed`, error.split('\n').filter((line) => line.trim() && !/Warning|warnings\.warn|pkuseg/.test(line)).join('\n').slice(-800));
   return { ok, error };
 }
+// render-radio.py owns audio/radio under a lock and turns a second run away. This Echo's runs of it (the Radio, the
+// sentence tape with Grammar by ear, Change it, In sentences) wait their turn here; a run can still be turned away by
+// another Echo on this Mac sharing the recordings (a friend's), and then it tried nothing.
+let radioRuns: Promise<unknown> = Promise.resolve();
+function recordRadio(planPath: string): Promise<{ ok: boolean; error: string }> {
+  const run = radioRuns.then(() => runPython(['scripts/render-radio.py', '--plan', planPath]));
+  radioRuns = run.catch(() => {});
+  return run;
+}
+const turnedAway = (run: { ok: boolean; error: string }) => !run.ok && run.error.includes('Another renderer owns audio/radio');
 const attempts = createAttempts(join(dirname(dbPath), 'recording-attempts.json'));
 const wordAudio = createWordAudio({
   root, extraWordsPath: join(dirname(dbPath), 'added-words.json'),
@@ -195,7 +205,7 @@ const radio = createRadio({
   episode: () => [...story.episodes()].reverse().find((episode) => episode.lines.every((_, index) => storyExists(`${episode.id}-${index + 1}`))) ?? null,
   topics: () => grammar.catalog().flatMap((unit) => unit.topics.map((topic) => ({ id: topic.id, title: topic.title, level: topic.level, description: topic.description, independent: topic.progress.independent }))),
   level: () => comprehension.summary().levels.find((entry) => entry.mode === 'read')?.label ?? 'A2',
-  record: (planPath) => runPython(['scripts/render-radio.py', '--plan', planPath]),
+  record: (planPath) => recordRadio(planPath),
   ready: () => process.env.ECHO_STORY !== 'off' ? story.check() : Promise.resolve(),
 });
 // The Walkman's sentence tape plays every recorded Listen/Read sentence converted to the Walkman format, with
@@ -223,7 +233,7 @@ function recordSentences(): Promise<void> {
     const planPath = join(dirname(dbPath), 'radio', 'sentences.plan.json');
     mkdirSync(dirname(planPath), { recursive: true });
     writeFileSync(planPath, JSON.stringify(plan, null, 1));
-    await runPython(['scripts/render-radio.py', '--plan', planPath]);
+    if (turnedAway(await recordRadio(planPath))) return;
     attempts.note(plan.map((clip) => clip.id), (id) => !radioClip(root, id));
   })().catch((error: Error) => console.error(`sentence tape: ${error.message}`)).finally(() => { sentencesRecording = null; });
   return sentencesRecording;
@@ -262,9 +272,7 @@ const changeIt = roomsOff.includes('changeit') ? null : createChangeIt({
     const planPath = join(dirname(dbPath), 'radio', 'change.plan.json');
     mkdirSync(dirname(planPath), { recursive: true });
     writeFileSync(planPath, JSON.stringify(texts.map(frenchClip), null, 1));
-    const run = await runPython(['scripts/render-radio.py', '--plan', planPath]);
-    // A run turned away because another holds the recorder (In sentences, the Radio) tried nothing.
-    return !(!run.ok && run.error.includes('Another renderer owns audio/radio'));
+    return !turnedAway(await recordRadio(planPath));
   },
 });
 void textsStarted.then(() => changeIt?.check());
@@ -286,14 +294,14 @@ const verbSentences = roomsOff.includes('sentencecards') ? null : createVerbSent
     const planPath = join(dirname(dbPath), 'radio', 'verb-sentences.plan.json');
     mkdirSync(dirname(planPath), { recursive: true });
     writeFileSync(planPath, JSON.stringify(clips, null, 1));
-    const run = await runPython(['scripts/render-radio.py', '--plan', planPath]);
-    // The recorder takes one run at a time (the Radio, the sentence tape); a run turned away tried nothing.
-    if (!run.ok && run.error.includes('Another renderer owns audio/radio')) return false;
+    if (turnedAway(await recordRadio(planPath))) return false;
     if (process.env.ECHO_WORD_AUDIO !== 'off') attempts.note(clips.map((clip) => clip.id), (id) => !radioClipExists(root, id));
     return true;
   },
   ...(Number(process.env.ECHO_SENTENCE_BATCH) > 2 ? { batch: Number(process.env.ECHO_SENTENCE_BATCH) } : {}),
 });
+// The first cards are written and recorded at start, so the drill is ready when it is first opened.
+void textsStarted.then(() => verbSentences?.prepare());
 // Grammar by ear: in Listen, a question about a heard sentence that only its grammar answers, written ahead by
 // Claude (Opus) from the learner's started words and verbs and said by the Radio's French voice (lib/grammar-ear.ts).
 // A batch is written at start and whenever few are left; an Echo without the room (the friends') has none of it.

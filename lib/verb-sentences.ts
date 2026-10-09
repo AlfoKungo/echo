@@ -282,5 +282,5 @@ export function createVerbSentences(deps: {
     return { ok: true };
   }
 
-  return { round, mark, settled: async () => { await writing; await recording; }, close: () => db.close() };
+  return { round, mark, prepare: refill, settled: async () => { await writing; await recording; }, close: () => db.close() };
 }
