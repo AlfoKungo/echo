@@ -1357,22 +1357,18 @@ async function loadWrite() {
   else main.querySelector('#write-answer')?.focus({ preventScroll: true });
 }
 const WRITE_VERDICTS = { right: 'That’s right.', nearly: 'Nearly.', wrong: 'Not quite.' };
-function renderWrite() {
-  const header = `<div class="section-top">${back('Grammar', 'grammar')}<span class="stream-label">Write it</span></div>`;
-  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb write">${header}${body}</section>`; };
-  if (loading || !writeView) { shell(loading ? '<div class="loading-state" role="status">Opening Write it…</div>' : ''); return; }
+// The sentence, the answer line and the verdict: Write it's own screen and Practise both show it.
+function writeBodyHTML() {
   const { current, error } = writeView;
   if (!current) {
-    shell(writeView.writing ? '<div class="loading-state" role="status">Claude is writing sentences for you. This takes about a minute.</div>'
-      : `<div class="notice" role="alert"><span>${esc(error || 'No sentences yet.')}</span><button class="quiet" data-action="write">Try again</button></div>`);
-    return;
+    return writeView.writing ? '<div class="loading-state" role="status">Claude is writing sentences for you. This takes about a minute.</div>'
+      : `<div class="notice" role="alert"><span>${esc(error || 'No sentences yet.')}</span><button class="quiet" data-action="write">Try again</button></div>`;
   }
   const prompt = `<div class="vb-prompt"><p class="write-en" lang="en">${esc(current.en)}</p>${current.topicTitle ? `<span class="vb-tense">${esc(current.topicTitle)}</span>` : ''}</div>`;
   const result = writeRetry ? null : writeView.result;
   if (!result) {
-    shell(`${prompt}<form class="vb-answer-row" id="write-form"><input class="vb-input" id="write-answer" lang="fr" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The sentence in French" value="${esc(writeDraft)}" ${writeChecking ? 'disabled' : ''}><button class="primary" ${writeChecking ? 'disabled' : ''}>${writeChecking ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}
-      <div class="summary-actions"><button class="quiet" data-action="write-next" ${writeChecking ? 'disabled' : ''}>Skip this one</button></div>`);
-    return;
+    return `${prompt}<form class="vb-answer-row" id="write-form"><input class="vb-input" id="write-answer" lang="fr" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The sentence in French" value="${esc(writeDraft)}" ${writeChecking ? 'disabled' : ''}><button class="primary" ${writeChecking ? 'disabled' : ''}>${writeChecking ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}
+      <div class="summary-actions"><button class="quiet" data-action="write-next" ${writeChecking ? 'disabled' : ''}>Skip this one</button></div>`;
   }
   const right = result.verdict === 'right';
   const lines = [
@@ -1381,10 +1377,18 @@ function renderWrite() {
     result.explanation ? `<p class="vb-why">${esc(result.explanation)}</p>` : '',
     result.natural && result.natural !== result.corrected ? `<p class="vb-why">A French speaker would say: <span lang="fr">${esc(result.natural)}</span></p>` : '',
   ].join('');
-  shell(`${prompt}<div class="feedback ${right ? '' : 'warn'}" role="status"><strong>${WRITE_VERDICTS[result.verdict]}</strong>${lines}</div>
-    <div class="stream-actions pinned"><button class="primary" data-action="write-next">Next sentence</button>${right ? '' : '<button class="secondary" data-action="write-again">Write it again</button>'}</div>`);
-  main.querySelector('[data-action="write-next"]')?.focus({ preventScroll: true });
+  return `${prompt}<div class="feedback ${right ? '' : 'warn'}" role="status"><strong>${WRITE_VERDICTS[result.verdict]}</strong>${lines}</div>
+    <div class="stream-actions pinned"><button class="primary" data-action="write-next">${mixed() ? 'Next' : 'Next sentence'}</button>${right ? '' : '<button class="secondary" data-action="write-again">Write it again</button>'}</div>`;
 }
+function renderWrite() {
+  const header = `<div class="section-top">${back('Grammar', 'grammar')}<span class="stream-label">Write it</span></div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb write">${header}${body}</section>`; };
+  if (loading || !writeView) { shell(loading ? '<div class="loading-state" role="status">Opening Write it…</div>' : ''); return; }
+  shell(writeBodyHTML());
+  main.querySelector('[data-action="write-next"].primary')?.focus({ preventScroll: true });
+}
+// Practise is showing a Write it sentence.
+const writingInMix = () => mixed() && mixedSource === 'write';
 async function checkWrite() {
   const item = writeView?.current;
   const given = (main.querySelector('#write-answer')?.value ?? writeDraft).trim();
@@ -1393,7 +1397,7 @@ async function checkWrite() {
   try { const result = await api('api/write/check', { method: 'POST', body: JSON.stringify({ requestId: requestId(), itemId: item.id, given }) }); if (writeView?.current?.id === item.id) { writeView.result = result; writeRetry = false; } }
   catch (error) { notice = { message: error.message }; }
   writeChecking = false;
-  if (screen === 'write') render();
+  if (screen === 'write' || writingInMix()) render();
 }
 async function nextWrite() {
   const item = writeView?.current;
@@ -1403,6 +1407,7 @@ async function nextWrite() {
   catch (error) { notice = { message: error.message }; }
   writeChecking = false;
   if (screen === 'write') loadWriteAfterNext();
+  else if (writingInMix()) { advanceMixed(); render(); }
 }
 // The next sentence is on screen at once; with none left, the screen waits for the batch being written.
 function loadWriteAfterNext() {
@@ -1570,9 +1575,10 @@ const LETTER = /[\p{L}\p{M}]/u;
 function mixed() { return screen === 'mix' || screen === 'focus'; }
 function streamScreen() { return screen === 'listen' || screen === 'read' || (mixed() && mixedSource === 'comprehension'); }
 function mistakeGroup() { return (mistakes || []).find((group) => group.id === focusId) || null; }
-// Practise alternates comprehension, vocabulary, comprehension, grammar; a mistake group practises what it is about.
+// Practise alternates comprehension, vocabulary, comprehension, grammar, and every other grammar turn is a Write it
+// sentence where that room is on; a mistake group practises what it is about.
 function mixedSources() {
-  if (screen === 'mix') return ['comprehension', 'vocabulary', 'comprehension', 'grammar'];
+  if (screen === 'mix') return ['comprehension', 'vocabulary', 'comprehension', 'grammar', ...(roomsOff.has('write') ? [] : ['comprehension', 'vocabulary', 'comprehension', 'write'])];
   const group = mistakeGroup();
   if (!group) return [];
   const sources = [];
@@ -1585,15 +1591,18 @@ function mixedScope() { return screen === 'mix' ? 'review' : mistakeGroup()?.gra
 function sourceReady(source) {
   if (source === 'comprehension') return !!streamState?.current;
   if (source === 'vocabulary') return !!snapshot?.current;
+  if (source === 'write') return !!writeView?.current;
   return !!review?.session?.current;
 }
-// A source with nothing to show is skipped, so the pattern never stalls on an empty one.
+// A source with nothing to show is skipped, so the pattern never stalls on an empty one. Write it may be writing its
+// next sentences; they are looked for again, quietly, each time its turn is skipped.
 function advanceMixed(first = false) {
   const sources = mixedSources();
   const from = first ? 0 : mixedStep + 1;
   for (let step = 0; step < sources.length; step++) {
     const at = (from + step) % sources.length;
     if (sourceReady(sources[at])) { mixedStep = at; mixedSource = sources[at]; return; }
+    if (sources[at] === 'write' && writeView?.writing) api('api/write').then((view) => { writeView = view; }).catch(() => {});
   }
   mixedSource = '';
 }
@@ -1746,21 +1755,24 @@ function renderMixed() {
   const focus = screen === 'focus';
   const group = focus ? mistakeGroup() : null;
   const source = mixedSource === 'comprehension' ? (streamState?.current?.mode === 'read' ? 'Read' : 'Listen')
-    : mixedSource === 'vocabulary' ? 'Words' : mixedSource === 'grammar' ? 'Grammar' : '';
+    : mixedSource === 'vocabulary' ? 'Words' : mixedSource === 'grammar' ? 'Grammar' : mixedSource === 'write' ? 'Write it' : '';
   const label = focus ? `${group ? group.title : 'Mistakes'}${source ? ` · ${source}` : ''}` : source;
   const header = `<div class="section-top">${back(focus ? 'Mistakes' : 'Home', focus ? 'mistakes' : 'home')}<div><span class="stream-label">${esc(label)}</span>${infoButton(focus ? 'mistakes' : 'practise')}</div></div>`;
   if (loading) { main.innerHTML = `${noticeHTML()}<section class="stream">${header}<div class="loading-state" role="status">Opening your practice…</div></section>`; return; }
   const vocabulary = mixedSource === 'vocabulary' && snapshot?.current;
+  const writing = mixedSource === 'write' && writeView?.current;
   let body;
   if (mixedSource === 'comprehension' && streamState?.current) body = streamBodyHTML();
   else if (vocabulary) body = cardHTML();
   else if (mixedSource === 'grammar' && review?.session?.current) body = `<p class="question-topic">${esc(review.session.current.exercise.topicTitle)}</p>${exerciseCoreHTML(review, false, 'Next')}`;
+  else if (writing) body = writeBodyHTML();
   else body = focus
     ? '<div class="stream-empty"><p>Nothing left to practise here for now.</p><button class="secondary" data-action="mistakes">Back to mistakes</button></div>'
     : '<div class="stream-empty"><p>Nothing to practise right now. New words arrive at 04:00, and recordings are still being prepared.</p><button class="secondary" data-action="home">Back to Home</button></div>';
-  main.innerHTML = `${noticeHTML()}<section class="${vocabulary ? 'practice' : 'stream'}">${header}${body}</section>`;
+  main.innerHTML = `${noticeHTML()}<section class="${vocabulary ? 'practice' : writing ? 'stream vb write' : 'stream'}">${header}${body}</section>`;
   if (vocabulary) playCardOnce();
   else if (mixedSource === 'comprehension') autoplay();
+  else if (writing) main.querySelector('[data-action="write-next"].primary')?.focus({ preventScroll: true });
 }
 function renderMistakes() {
   const header = `<div class="section-top">${back('Home', 'home')}${infoButton('mistakes')}</div><h1>Mistakes</h1><p class="subtitle">What keeps catching you out. Tap one to practise it.</p>`;
@@ -3761,6 +3773,8 @@ async function enterMixed() {
     })()));
   }
   if (sources.includes('grammar')) jobs.push(guard(loadReview(token)));
+  // Write it starts writing its sentences when asked for them; Practise doesn't wait on that.
+  if (sources.includes('write')) jobs.push(api('api/write').then((view) => { if (token === mixedGeneration) writeView = view; }).catch(() => {}));
   await Promise.all(jobs);
   if (token !== mixedGeneration) return;
   loading = false;
