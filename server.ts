@@ -18,6 +18,7 @@ import { createRadio, englishClip, frenchClip, layStory, radioClip, radioClipExi
 import { createVerbTables, TENSE_NAMES, TENSES, tenseGuide, verbGuide, type Tense } from './lib/verbs';
 import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/verb-drills';
 import { createRuleCards } from './lib/rule-cards';
+import { createVerbSentences } from './lib/verb-sentences';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
@@ -256,12 +257,38 @@ const changeIt = roomsOff.includes('changeit') ? null : createChangeIt({
     const planPath = join(dirname(dbPath), 'radio', 'change.plan.json');
     mkdirSync(dirname(planPath), { recursive: true });
     writeFileSync(planPath, JSON.stringify(texts.map(frenchClip), null, 1));
-    await runPython(['scripts/render-radio.py', '--plan', planPath]);
-    return true;
+    const run = await runPython(['scripts/render-radio.py', '--plan', planPath]);
+    // A run turned away because another holds the recorder (In sentences, the Radio) tried nothing.
+    return !(!run.ok && run.error.includes('Another renderer owns audio/radio'));
   },
 });
 void textsStarted.then(() => changeIt?.check());
 const changeChecks = setInterval(() => { void changeIt?.check(); }, 10 * 60_000);
+// In sentences: Verbs cards with the verb inside a sentence Claude writes ahead (lib/verb-sentences.ts), recorded by
+// the Radio's French voice; an Echo without the room (the friends') has none of it. ECHO_SENTENCE_BATCH sets how
+// many a batch asks for (12), so a test run can record only a few.
+const verbSentences = roomsOff.includes('sentencecards') ? null : createVerbSentences({
+  dbPath, ask, verbs: () => verbTables.verbs(),
+  knowledge: () => {
+    const started = store.listening().filter((word) => word.status !== 'new');
+    return { known: started.map((word) => ({ fr: word.fr, en: word.en })), started: started.map((word) => word.id), level: comprehension.summary().levels.find((entry) => entry.mode === 'read')?.value ?? 1 };
+  },
+  scores: () => verbs.formScores(),
+  markForm: (input) => verbs.mark({ ...input, way: 'sentence' }),
+  clipExists: (id) => radioClipExists(root, id),
+  givenUp: (id) => attempts.skipped([id]).length > 0,
+  record: async (clips) => {
+    const planPath = join(dirname(dbPath), 'radio', 'verb-sentences.plan.json');
+    mkdirSync(dirname(planPath), { recursive: true });
+    writeFileSync(planPath, JSON.stringify(clips, null, 1));
+    const run = await runPython(['scripts/render-radio.py', '--plan', planPath]);
+    // The recorder takes one run at a time (the Radio, the sentence tape); a run turned away tried nothing.
+    if (!run.ok && run.error.includes('Another renderer owns audio/radio')) return false;
+    if (process.env.ECHO_WORD_AUDIO !== 'off') attempts.note(clips.map((clip) => clip.id), (id) => !radioClipExists(root, id));
+    return true;
+  },
+  ...(Number(process.env.ECHO_SENTENCE_BATCH) > 2 ? { batch: Number(process.env.ECHO_SENTENCE_BATCH) } : {}),
+});
 // The signed-in learner's name, in the friends' Echo (pilot/router.ts): the app shows it beside Sign out.
 const learnerName = process.env.ECHO_LEARNER?.trim() ?? '';
 const attribute = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -697,6 +724,8 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/verbs/round' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.round(data as never) }); }
     if (path === '/api/verbs/cards' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.cards(data as never) }); }
     if (path === '/api/verbs/mark' && req.method === 'POST') { const data = await body(req); return json(verbs.mark(data as never)); }
+    if (verbSentences && path === '/api/verbs/sentences' && req.method === 'POST') { const data = await body(req); return json(verbSentences.round(data)); }
+    if (verbSentences && path === '/api/verbs/sentences/mark' && req.method === 'POST') { const data = await body(req); return json(verbSentences.mark(data)); }
     if (path === '/api/verbs/answer' && req.method === 'POST') { const data = await body(req); return json(verbs.answer(data as never)); }
     const verbScoresDay = path.match(/^\/api\/verbs\/scores\/(\d{4}-\d{2}-\d{2})$/);
     if (verbScoresDay && req.method === 'GET') return json({ forms: verbs.scoresOn(verbScoresDay[1]!) });
@@ -782,6 +811,7 @@ async function stop() {
   story.close();
   writeIt.close();
   changeIt?.close();
+  verbSentences?.close();
   sounds.close();
   verbs.close();
   ruleCards.close();
