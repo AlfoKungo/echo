@@ -526,6 +526,7 @@ function render() {
   else if (screen === 'verbs-table') renderVerbTable();
   else if (screen === 'verbs-ear') renderVerbEar();
   else if (screen === 'verbs-cards') renderVerbCards();
+  else if (screen === 'verbs-rules') renderRuleCards();
   else if (screen === 'verbs-tense') renderVerbTense();
   else if (screen === 'verbs-verb') renderVerbPage();
   else if (screen === 'story') renderStory();
@@ -2896,6 +2897,7 @@ const VB_DRILL_ICONS = {
   table: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.3h16M4 14.6h16M12 4v16"/></svg>',
   ear: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-4a8 8 0 0 1 16 0v4"/><rect x="3.5" y="14" width="4" height="6.5" rx="1.5"/><rect x="16.5" y="14" width="4" height="6.5" rx="1.5"/></svg>',
   tape: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><circle cx="15.5" cy="11" r="2"/><path d="M10.5 11h3M7 19l1.5-3h7L17 19"/></svg>',
+  rules: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="14" width="8" height="6" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/><rect x="8" y="5" width="8" height="6" rx="1"/></svg>',
 };
 let vbWorstAll = false;    // Catching you out shows every form, not just the top three
 // All your verbs: the search, the filter (practised, shaky, new, all) and whether every tense gets a column.
@@ -2965,7 +2967,7 @@ function renderVerbs() {
   const setup = `<button class="vb-setup" data-action="vb-options" aria-haspopup="dialog" ${busy ? 'disabled' : ''}><span class="what"><small>Practising</small><b>${esc(verbChoiceText())}</b></span><span class="change">Change</span></button>`;
   const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} recorded` : 'Tell the tense by ear';
   const tile = (action, icon, title, detail, disabled) => `<button class="tile tile-row${['vb-ear', 'tape'].includes(action) ? ' fam-green' : ''}" data-action="${action}" ${action === 'tape' ? 'data-tape="verbs-tape"' : ''} ${busy || disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${VB_DRILL_ICONS[icon]}</span><span class="tile-copy"><h2>${title}</h2><p>${esc(detail)}</p></span></button>`;
-  const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Turn it, say if you knew it', blocked)}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', 'All six persons', false)}${tile('vb-look', 'table', 'Look, then write', 'See a table, then fill it in', false)}${tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false)}</div>`;
+  const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Turn it, say if you knew it', blocked)}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', 'All six persons', false)}${tile('vb-look', 'table', 'Look, then write', 'See a table, then fill it in', false)}${tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false)}${tile('vb-rules', 'rules', 'How it’s built', 'Stems, endings, être or avoir', false)}</div>`;
   const worstShown = vbWorstAll ? verbsInfo.worst : verbsInfo.worst.slice(0, 3);
   const worst = verbsInfo.worst.length ? `<p class="study-label vb-sec">Catching you out${verbsInfo.worst.length > 3 ? `<button data-action="vb-worst-all">${vbWorstAll ? 'Fewer' : `All ${verbsInfo.worst.length}`}</button>` : ''}</p><ol class="vb-worst">${worstShown.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="fr">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
   // Each tense: its use, and a bar of your forms in it from solid to shaky, the rest still to try.
@@ -3033,6 +3035,8 @@ function verbAction(action, button) {
   else if (action === 'vb-all-tenses') { vbAllTenses = !vbAllTenses; renderVerbAllResults(); }
   else if (action === 'vb-cards') { verbFormsOverride = null; if (move('verbs-cards', true)) startVerbCards(); }
   else if (action === 'vb-card-no' || action === 'vb-card-yes') markVerbCard(action === 'vb-card-yes');
+  else if (action === 'vb-rules') { if (move('verbs-rules', true)) startRuleCards(); }
+  else if (action === 'vb-rule-no' || action === 'vb-rule-yes') markRuleCard(action === 'vb-rule-yes');
   else if (action === 'vb-card-way') { const way = button.dataset.way === 'recognize' ? 'recognize' : 'produce'; if (way === verbCardsWay || loading) return; verbCardsWay = way; savePreference('echo.vb-cards-way', way); startVerbCards(); }
   else if (action === 'vb-forms') { verbFormsOverride = null; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-tense-page') { if (move(`verbs-tense|${button.dataset.tense}`, true)) loadVerbTense(); }
@@ -3131,21 +3135,21 @@ async function startVerbCards() {
   loading = false;
   if (screen === 'verbs-cards') render();
 }
-// Tops a stream (Cards or Type it) up from its endpoint; a form already waiting, or seen in the last few, is
-// left out so nothing comes straight back. Only the "choosing more" screen is redrawn; a form being looked at is
-// left alone.
-async function topUpVerbStream(stream, path, current, onScreen, body = vbSettings) {
+// Tops a stream (Cards, Type it, How it's built) up from its endpoint; a card already waiting, or seen in the last
+// few, is left out so nothing comes straight back. Only the "choosing more" screen is redrawn; a card being looked
+// at is left alone. keyOf names what counts as the same card.
+async function topUpVerbStream(stream, path, current, onScreen, body = vbSettings, keyOf = vbCardKey) {
   if (!stream || stream.fetching || stream.done || stream.items.length - stream.index > VB_CARDS_AHEAD) return;
   stream.fetching = true;
   const waitingOnScreen = stream.index >= stream.items.length;
   try {
     const { items } = await api(path, { method: 'POST', body: JSON.stringify(body()) });
     if (current() !== stream) return;
-    const near = new Set(stream.items.slice(Math.max(0, stream.index - VB_CARDS_RECENT)).map(vbCardKey));
-    const fresh = items.filter((card) => !near.has(vbCardKey(card)));
-    const waiting = new Set(stream.items.slice(stream.index).map(vbCardKey));
+    const near = new Set(stream.items.slice(Math.max(0, stream.index - VB_CARDS_RECENT)).map(keyOf));
+    const fresh = items.filter((card) => !near.has(keyOf(card)));
+    const waiting = new Set(stream.items.slice(stream.index).map(keyOf));
     // With very few forms to choose from, anything not already waiting will do.
-    const added = fresh.length ? fresh : items.filter((card) => !waiting.has(vbCardKey(card)));
+    const added = fresh.length ? fresh : items.filter((card) => !waiting.has(keyOf(card)));
     if (!added.length && stream.index >= stream.items.length) stream.done = true;
     stream.items.push(...added);
   } catch (error) { notice = { message: error.message }; }
@@ -3196,6 +3200,63 @@ function markVerbCard(knew) {
     .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-cards') render(); })
     // The next cards are chosen once this mark counts, so a form just missed is weighed as shaky.
     .finally(() => topUpVerbCards());
+}
+
+// ── How it's built: cards on how a tense is formed for a verb (its imparfait or futur stem, être or avoir and the
+// participle) and on the rules themselves, turned and marked like Cards. A miss comes back once, a few cards later,
+// and more cards are drawn from the marks so far while a few are still waiting. Turning a card plays its example
+// forms where the verb tape or By ear has recorded them.
+let vbRules = null; // { items, index, revealed, fetching, done }
+async function startRuleCards() {
+  loading = true; notice = null; retryAction = null; vbRules = null; render();
+  try { const { items } = await api('api/verbs/rules', { method: 'POST', body: '{}' }); vbRules = { items, index: 0, revealed: false, fetching: false, done: false }; }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-rules' }; }
+  loading = false;
+  if (screen === 'verbs-rules') render();
+}
+const topUpRuleCards = () => topUpVerbStream(vbRules, 'api/verbs/rules', () => vbRules, 'verbs-rules', () => ({}), (card) => card.id);
+function renderRuleCards() {
+  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">How it’s built</span></div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
+  if (loading || !vbRules) { shell(loading ? '<div class="loading-state" role="status">Choosing cards…</div>' : ''); return; }
+  const { items, index, revealed } = vbRules;
+  if (index >= items.length) {
+    shell(vbRules.done ? '<p class="caption">No cards to show yet.</p>' : '<div class="loading-state" role="status">Choosing more cards…</div>');
+    topUpRuleCards();
+    return;
+  }
+  const card = items[index];
+  const rule = card.kind === 'rule';
+  const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
+  // A rule's answer breaks only between its words, never after the hyphen of an ending.
+  const answer = rule ? card.answer.split(' ').map((part) => `<span>${frEsc(part)}</span>`).join(' ') : frEsc(card.answer);
+  const face = revealed
+    ? `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : 'fr'}">${answer}</h1><p class="source-word">${rule ? esc(card.ask) : `<span lang="fr">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="fr">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
+    : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="fr">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang}">${frEsc(card.clue)}</p>`;
+  const zones = revealed ? `<button class="card-zone left" data-action="vb-rule-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-rule-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
+  const after = revealed ? `${card.paradigm.length ? paradigmHTML(card.paradigm) : ''}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : '<p class="caption vb-card-hint">How is it built? Say it to yourself, then tap the card.</p>';
+  shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
+}
+function revealRuleCard() {
+  const card = vbRules?.items[vbRules.index];
+  if (!card || vbRules.revealed) return;
+  vbRules.revealed = true; render();
+  const urls = card.examples.flatMap((example) => example.audio ? [example.audio] : []);
+  if (urls.length) playClips(urls);
+}
+function markRuleCard(knew) {
+  const stream = vbRules;
+  const card = stream?.items[stream.index];
+  if (!card || !stream.revealed) return;
+  stopAudio();
+  // A miss comes back four cards later, once.
+  if (!knew && !card.again) stream.items.splice(Math.min(stream.items.length, stream.index + 5), 0, { ...card, again: true });
+  stream.index += 1; stream.revealed = false; notice = null;
+  render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
+  api('api/verbs/rules/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), id: card.id, knew }) })
+    .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-rules') render(); })
+    // The next cards are drawn once this mark counts, so a card just missed is weighed as such.
+    .finally(() => topUpRuleCards());
 }
 
 // ── Type it: type one form at a time, as endless as Cards. A wrong answer comes back once, four forms later;
@@ -4201,6 +4262,7 @@ function retry() {
   else if (action.type === 'endless') fillEndless();
   else if (action.type === 'verbs-ear') startVerbEar();
   else if (action.type === 'verbs-cards') startVerbCards();
+  else if (action.type === 'verbs-rules') startRuleCards();
   else if (action.type === 'verbs-tense') loadVerbTense();
   else if (action.type === 'verbs-verb') loadVerbPage();
   else if (action.type === 'story') loadStory();
@@ -4230,6 +4292,7 @@ document.addEventListener('click', (event) => {
   if (action === 'add-word') { addWord(); return; }
   if (action === 'vb-accent') { insertAccent(button.dataset.letter); return; }
   if (!button && screen === 'verbs-cards' && event.target.closest('#vb-card')) { revealVerbCard(); return; }
+  if (!button && screen === 'verbs-rules' && event.target.closest('#vb-card')) { revealRuleCard(); return; }
   if (busy) return;
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }
   if (button?.dataset.direction) {
@@ -4417,6 +4480,11 @@ document.addEventListener('keydown', (event) => {
     else if (verbCards.revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) { event.preventDefault(); markVerbCard(event.key === 'ArrowRight'); }
     return;
   }
+  if (screen === 'verbs-rules' && vbRules && !event.ctrlKey && !event.altKey && !event.metaKey && !event.target.closest('input,select,textarea')) {
+    if (!vbRules.revealed && (event.key === ' ' || event.key === 'Enter') && !event.target.closest('button,a')) { event.preventDefault(); revealRuleCard(); }
+    else if (vbRules.revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) { event.preventDefault(); markRuleCard(event.key === 'ArrowRight'); }
+    return;
+  }
   if (event.ctrlKey || event.altKey || event.metaKey || !vocabularyCard() || event.target.closest('input,select,textarea,[contenteditable="true"]')) return;
   if (!revealed && (event.key === ' ' || event.key === 'Enter') && !event.target.closest('button,a')) { event.preventDefault(); reveal(); }
   else if (revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight') && (!event.target.closest('button,a') || event.target.closest('.card-zone'))) { event.preventDefault(); grade(event.key === 'ArrowRight'); }
@@ -4474,6 +4542,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'verbs-table') render();
   else if (screen === 'verbs-ear') startVerbEar();
   else if (screen === 'verbs-cards') startVerbCards();
+  else if (screen === 'verbs-rules') startRuleCards();
   else if (screen === 'verbs-tense') loadVerbTense();
   else if (screen === 'verbs-verb') loadVerbPage();
   else if (screen === 'story') loadStory();

@@ -508,6 +508,7 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-card-who{font-size:22px;color:var(--violet);margin-bottom:6px}.vb-card .vb-tense{margin-top:16px}.vb-card-answer{overflow-wrap:anywhere}
 .vb-card-forms{margin:12px 0 0;font-size:18px;color:var(--violet)}.vb-card-also{margin:10px 0 0;font-size:14px;color:var(--muted)}
 .vb-card-hint{text-align:center;margin-top:12px}.vb-cards .vb-para{margin-top:18px}
+.vb-rule-answer{font-size:28px;line-height:1.25;letter-spacing:-.4px}.vb-rule-answer span{white-space:nowrap}
 .write-en{margin:0;font-size:22px;line-height:1.4;font-weight:500;color:var(--ink)}.write .vb-prompt .vb-tense{margin-top:14px}
 .write .feedback p{margin:8px 0 0}.write-fix{color:var(--violet)}
 /* A row that opens something (Hardest forms): the whole row is the button, laid out like the others. */

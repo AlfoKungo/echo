@@ -1,0 +1,1076 @@
+{
+ "words": [
+  {
+   "id": "verbs-001",
+   "fr": "être",
+   "en": "to be"
+  },
+  {
+   "id": "verbs-002",
+   "fr": "avoir",
+   "en": "to have"
+  },
+  {
+   "id": "verbs-003",
+   "fr": "faire",
+   "en": "to do; to make"
+  },
+  {
+   "id": "verbs-004",
+   "fr": "aller",
+   "en": "to go"
+  },
+  {
+   "id": "verbs-005",
+   "fr": "venir",
+   "en": "to come"
+  },
+  {
+   "id": "verbs-006",
+   "fr": "dire",
+   "en": "to say; to tell"
+  },
+  {
+   "id": "verbs-007",
+   "fr": "parler",
+   "en": "to speak; to talk"
+  },
+  {
+   "id": "verbs-010",
+   "fr": "voir",
+   "en": "to see"
+  },
+  {
+   "id": "verbs-014",
+   "fr": "savoir",
+   "en": "to know (a fact); to know how to"
+  },
+  {
+   "id": "verbs-019",
+   "fr": "vouloir",
+   "en": "to want"
+  },
+  {
+   "id": "verbs-020",
+   "fr": "pouvoir",
+   "en": "to be able to; can"
+  },
+  {
+   "id": "verbs-021",
+   "fr": "devoir",
+   "en": "to have to; must; to owe"
+  },
+  {
+   "id": "verbs-022",
+   "fr": "falloir",
+   "en": "to be necessary"
+  },
+  {
+   "id": "verbs-023",
+   "fr": "prendre",
+   "en": "to take"
+  },
+  {
+   "id": "verbs-025",
+   "fr": "mettre",
+   "en": "to put; to put on"
+  },
+  {
+   "id": "verbs-030",
+   "fr": "rester",
+   "en": "to stay; to remain"
+  },
+  {
+   "id": "verbs-031",
+   "fr": "partir",
+   "en": "to leave; to depart"
+  },
+  {
+   "id": "verbs-032",
+   "fr": "arriver",
+   "en": "to arrive; to happen"
+  },
+  {
+   "id": "verbs-035",
+   "fr": "revenir",
+   "en": "to come back"
+  },
+  {
+   "id": "verbs-038",
+   "fr": "descendre",
+   "en": "to go down; to descend"
+  },
+  {
+   "id": "verbs-040",
+   "fr": "courir",
+   "en": "to run"
+  },
+  {
+   "id": "verbs-041",
+   "fr": "attendre",
+   "en": "to wait for"
+  },
+  {
+   "id": "verbs-047",
+   "fr": "commencer",
+   "en": "to begin; to start"
+  },
+  {
+   "id": "verbs-048",
+   "fr": "finir",
+   "en": "to finish"
+  },
+  {
+   "id": "verbs-055",
+   "fr": "acheter",
+   "en": "to buy"
+  },
+  {
+   "id": "verbs-057",
+   "fr": "payer",
+   "en": "to pay"
+  },
+  {
+   "id": "verbs-059",
+   "fr": "manger",
+   "en": "to eat"
+  },
+  {
+   "id": "verbs-060",
+   "fr": "boire",
+   "en": "to drink"
+  },
+  {
+   "id": "verbs-063",
+   "fr": "se réveiller",
+   "en": "to wake up"
+  },
+  {
+   "id": "verbs-064",
+   "fr": "se lever",
+   "en": "to get up; to stand up"
+  },
+  {
+   "id": "verbs-065",
+   "fr": "s'asseoir",
+   "en": "to sit down"
+  },
+  {
+   "id": "verbs-070",
+   "fr": "étudier",
+   "en": "to study"
+  },
+  {
+   "id": "verbs-084",
+   "fr": "envoyer",
+   "en": "to send"
+  },
+  {
+   "id": "verbs-085",
+   "fr": "appeler",
+   "en": "to call; to phone"
+  },
+  {
+   "id": "verbs-108",
+   "fr": "tenir",
+   "en": "to hold; to keep"
+  },
+  {
+   "id": "verbs-118",
+   "fr": "se rendre compte",
+   "en": "to realize"
+  },
+  {
+   "id": "verbs-198",
+   "fr": "tomber",
+   "en": "to fall"
+  },
+  {
+   "id": "feelings-004",
+   "fr": "avoir peur",
+   "en": "to be afraid"
+  },
+  {
+   "id": "song-vingt-ans-030",
+   "fr": "jeter",
+   "en": "to throw away"
+  },
+  {
+   "id": "song-vingt-ans-038",
+   "fr": "mourir",
+   "en": "to die"
+  }
+ ],
+ "tables": [
+  {
+   "id": "verbs-001",
+   "pres": [
+    "suis",
+    "es",
+    "est",
+    "sommes",
+    "êtes",
+    "sont"
+   ],
+   "imp": [
+    "étais",
+    "étais",
+    "était",
+    "étions",
+    "étiez",
+    "étaient"
+   ],
+   "fut": "ser",
+   "pp": "été",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-002",
+   "pres": [
+    "ai",
+    "as",
+    "a",
+    "avons",
+    "avez",
+    "ont"
+   ],
+   "imp": [
+    "avais",
+    "avais",
+    "avait",
+    "avions",
+    "aviez",
+    "avaient"
+   ],
+   "fut": "aur",
+   "pp": "eu",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-003",
+   "pres": [
+    "fais",
+    "fais",
+    "fait",
+    "faisons",
+    "faites",
+    "font"
+   ],
+   "imp": [
+    "faisais",
+    "faisais",
+    "faisait",
+    "faisions",
+    "faisiez",
+    "faisaient"
+   ],
+   "fut": "fer",
+   "pp": "fait",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-004",
+   "pres": [
+    "vais",
+    "vas",
+    "va",
+    "allons",
+    "allez",
+    "vont"
+   ],
+   "imp": [
+    "allais",
+    "allais",
+    "allait",
+    "allions",
+    "alliez",
+    "allaient"
+   ],
+   "fut": "ir",
+   "pp": "allé",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-005",
+   "pres": [
+    "viens",
+    "viens",
+    "vient",
+    "venons",
+    "venez",
+    "viennent"
+   ],
+   "imp": [
+    "venais",
+    "venais",
+    "venait",
+    "venions",
+    "veniez",
+    "venaient"
+   ],
+   "fut": "viendr",
+   "pp": "venu",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-006",
+   "pres": [
+    "dis",
+    "dis",
+    "dit",
+    "disons",
+    "dites",
+    "disent"
+   ],
+   "imp": [
+    "disais",
+    "disais",
+    "disait",
+    "disions",
+    "disiez",
+    "disaient"
+   ],
+   "fut": "dir",
+   "pp": "dit",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-007",
+   "pres": [
+    "parle",
+    "parles",
+    "parle",
+    "parlons",
+    "parlez",
+    "parlent"
+   ],
+   "imp": [
+    "parlais",
+    "parlais",
+    "parlait",
+    "parlions",
+    "parliez",
+    "parlaient"
+   ],
+   "fut": "parler",
+   "pp": "parlé",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-010",
+   "pres": [
+    "vois",
+    "vois",
+    "voit",
+    "voyons",
+    "voyez",
+    "voient"
+   ],
+   "imp": [
+    "voyais",
+    "voyais",
+    "voyait",
+    "voyions",
+    "voyiez",
+    "voyaient"
+   ],
+   "fut": "verr",
+   "pp": "vu",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-014",
+   "pres": [
+    "sais",
+    "sais",
+    "sait",
+    "savons",
+    "savez",
+    "savent"
+   ],
+   "imp": [
+    "savais",
+    "savais",
+    "savait",
+    "savions",
+    "saviez",
+    "savaient"
+   ],
+   "fut": "saur",
+   "pp": "su",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-019",
+   "pres": [
+    "veux",
+    "veux",
+    "veut",
+    "voulons",
+    "voulez",
+    "veulent"
+   ],
+   "imp": [
+    "voulais",
+    "voulais",
+    "voulait",
+    "voulions",
+    "vouliez",
+    "voulaient"
+   ],
+   "fut": "voudr",
+   "pp": "voulu",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-020",
+   "pres": [
+    "peux",
+    "peux",
+    "peut",
+    "pouvons",
+    "pouvez",
+    "peuvent"
+   ],
+   "imp": [
+    "pouvais",
+    "pouvais",
+    "pouvait",
+    "pouvions",
+    "pouviez",
+    "pouvaient"
+   ],
+   "fut": "pourr",
+   "pp": "pu",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-021",
+   "pres": [
+    "dois",
+    "dois",
+    "doit",
+    "devons",
+    "devez",
+    "doivent"
+   ],
+   "imp": [
+    "devais",
+    "devais",
+    "devait",
+    "devions",
+    "deviez",
+    "devaient"
+   ],
+   "fut": "devr",
+   "pp": "dû",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-022",
+   "pres": [
+    "faut"
+   ],
+   "imp": [
+    "fallait"
+   ],
+   "fut": "faudr",
+   "pp": "fallu",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-023",
+   "pres": [
+    "prends",
+    "prends",
+    "prend",
+    "prenons",
+    "prenez",
+    "prennent"
+   ],
+   "imp": [
+    "prenais",
+    "prenais",
+    "prenait",
+    "prenions",
+    "preniez",
+    "prenaient"
+   ],
+   "fut": "prendr",
+   "pp": "pris",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-025",
+   "pres": [
+    "mets",
+    "mets",
+    "met",
+    "mettons",
+    "mettez",
+    "mettent"
+   ],
+   "imp": [
+    "mettais",
+    "mettais",
+    "mettait",
+    "mettions",
+    "mettiez",
+    "mettaient"
+   ],
+   "fut": "mettr",
+   "pp": "mis",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-030",
+   "pres": [
+    "reste",
+    "restes",
+    "reste",
+    "restons",
+    "restez",
+    "restent"
+   ],
+   "imp": [
+    "restais",
+    "restais",
+    "restait",
+    "restions",
+    "restiez",
+    "restaient"
+   ],
+   "fut": "rester",
+   "pp": "resté",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-031",
+   "pres": [
+    "pars",
+    "pars",
+    "part",
+    "partons",
+    "partez",
+    "partent"
+   ],
+   "imp": [
+    "partais",
+    "partais",
+    "partait",
+    "partions",
+    "partiez",
+    "partaient"
+   ],
+   "fut": "partir",
+   "pp": "parti",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-032",
+   "pres": [
+    "arrive",
+    "arrives",
+    "arrive",
+    "arrivons",
+    "arrivez",
+    "arrivent"
+   ],
+   "imp": [
+    "arrivais",
+    "arrivais",
+    "arrivait",
+    "arrivions",
+    "arriviez",
+    "arrivaient"
+   ],
+   "fut": "arriver",
+   "pp": "arrivé",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-035",
+   "pres": [
+    "reviens",
+    "reviens",
+    "revient",
+    "revenons",
+    "revenez",
+    "reviennent"
+   ],
+   "imp": [
+    "revenais",
+    "revenais",
+    "revenait",
+    "revenions",
+    "reveniez",
+    "revenaient"
+   ],
+   "fut": "reviendr",
+   "pp": "revenu",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-038",
+   "pres": [
+    "descends",
+    "descends",
+    "descend",
+    "descendons",
+    "descendez",
+    "descendent"
+   ],
+   "imp": [
+    "descendais",
+    "descendais",
+    "descendait",
+    "descendions",
+    "descendiez",
+    "descendaient"
+   ],
+   "fut": "descendr",
+   "pp": "descendu",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-040",
+   "pres": [
+    "cours",
+    "cours",
+    "court",
+    "courons",
+    "courez",
+    "courent"
+   ],
+   "imp": [
+    "courais",
+    "courais",
+    "courait",
+    "courions",
+    "couriez",
+    "couraient"
+   ],
+   "fut": "courr",
+   "pp": "couru",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-041",
+   "pres": [
+    "attends",
+    "attends",
+    "attend",
+    "attendons",
+    "attendez",
+    "attendent"
+   ],
+   "imp": [
+    "attendais",
+    "attendais",
+    "attendait",
+    "attendions",
+    "attendiez",
+    "attendaient"
+   ],
+   "fut": "attendr",
+   "pp": "attendu",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-047",
+   "pres": [
+    "commence",
+    "commences",
+    "commence",
+    "commençons",
+    "commencez",
+    "commencent"
+   ],
+   "imp": [
+    "commençais",
+    "commençais",
+    "commençait",
+    "commencions",
+    "commenciez",
+    "commençaient"
+   ],
+   "fut": "commencer",
+   "pp": "commencé",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-048",
+   "pres": [
+    "finis",
+    "finis",
+    "finit",
+    "finissons",
+    "finissez",
+    "finissent"
+   ],
+   "imp": [
+    "finissais",
+    "finissais",
+    "finissait",
+    "finissions",
+    "finissiez",
+    "finissaient"
+   ],
+   "fut": "finir",
+   "pp": "fini",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-055",
+   "pres": [
+    "achète",
+    "achètes",
+    "achète",
+    "achetons",
+    "achetez",
+    "achètent"
+   ],
+   "imp": [
+    "achetais",
+    "achetais",
+    "achetait",
+    "achetions",
+    "achetiez",
+    "achetaient"
+   ],
+   "fut": "achèter",
+   "pp": "acheté",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-057",
+   "pres": [
+    "paie",
+    "paies",
+    "paie",
+    "payons",
+    "payez",
+    "paient"
+   ],
+   "imp": [
+    "payais",
+    "payais",
+    "payait",
+    "payions",
+    "payiez",
+    "payaient"
+   ],
+   "fut": "paier",
+   "pp": "payé",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-059",
+   "pres": [
+    "mange",
+    "manges",
+    "mange",
+    "mangeons",
+    "mangez",
+    "mangent"
+   ],
+   "imp": [
+    "mangeais",
+    "mangeais",
+    "mangeait",
+    "mangions",
+    "mangiez",
+    "mangeaient"
+   ],
+   "fut": "manger",
+   "pp": "mangé",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-060",
+   "pres": [
+    "bois",
+    "bois",
+    "boit",
+    "buvons",
+    "buvez",
+    "boivent"
+   ],
+   "imp": [
+    "buvais",
+    "buvais",
+    "buvait",
+    "buvions",
+    "buviez",
+    "buvaient"
+   ],
+   "fut": "boir",
+   "pp": "bu",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-063",
+   "pres": [
+    "réveille",
+    "réveilles",
+    "réveille",
+    "réveillons",
+    "réveillez",
+    "réveillent"
+   ],
+   "imp": [
+    "réveillais",
+    "réveillais",
+    "réveillait",
+    "réveillions",
+    "réveilliez",
+    "réveillaient"
+   ],
+   "fut": "réveiller",
+   "pp": "réveillé",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-064",
+   "pres": [
+    "lève",
+    "lèves",
+    "lève",
+    "levons",
+    "levez",
+    "lèvent"
+   ],
+   "imp": [
+    "levais",
+    "levais",
+    "levait",
+    "levions",
+    "leviez",
+    "levaient"
+   ],
+   "fut": "lèver",
+   "pp": "levé",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-065",
+   "pres": [
+    "assieds",
+    "assieds",
+    "assied",
+    "asseyons",
+    "asseyez",
+    "asseyent"
+   ],
+   "imp": [
+    "asseyais",
+    "asseyais",
+    "asseyait",
+    "asseyions",
+    "asseyiez",
+    "asseyaient"
+   ],
+   "fut": "assiér",
+   "pp": "assis",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-070",
+   "pres": [
+    "étudie",
+    "étudies",
+    "étudie",
+    "étudions",
+    "étudiez",
+    "étudient"
+   ],
+   "imp": [
+    "étudiais",
+    "étudiais",
+    "étudiait",
+    "étudiions",
+    "étudiiez",
+    "étudiaient"
+   ],
+   "fut": "étudier",
+   "pp": "étudié",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-084",
+   "pres": [
+    "envoie",
+    "envoies",
+    "envoie",
+    "envoyons",
+    "envoyez",
+    "envoient"
+   ],
+   "imp": [
+    "envoyais",
+    "envoyais",
+    "envoyait",
+    "envoyions",
+    "envoyiez",
+    "envoyaient"
+   ],
+   "fut": "enverr",
+   "pp": "envoyé",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-085",
+   "pres": [
+    "appelle",
+    "appelles",
+    "appelle",
+    "appelons",
+    "appelez",
+    "appellent"
+   ],
+   "imp": [
+    "appelais",
+    "appelais",
+    "appelait",
+    "appelions",
+    "appeliez",
+    "appelaient"
+   ],
+   "fut": "appeller",
+   "pp": "appelé",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-108",
+   "pres": [
+    "tiens",
+    "tiens",
+    "tient",
+    "tenons",
+    "tenez",
+    "tiennent"
+   ],
+   "imp": [
+    "tenais",
+    "tenais",
+    "tenait",
+    "tenions",
+    "teniez",
+    "tenaient"
+   ],
+   "fut": "tiendr",
+   "pp": "tenu",
+   "aux": "avoir"
+  },
+  {
+   "id": "verbs-118",
+   "pres": [
+    "rends",
+    "rends",
+    "rend",
+    "rendons",
+    "rendez",
+    "rendent"
+   ],
+   "imp": [
+    "rendais",
+    "rendais",
+    "rendait",
+    "rendions",
+    "rendiez",
+    "rendaient"
+   ],
+   "fut": "rendr",
+   "pp": "rendu",
+   "aux": "être"
+  },
+  {
+   "id": "verbs-198",
+   "pres": [
+    "tombe",
+    "tombes",
+    "tombe",
+    "tombons",
+    "tombez",
+    "tombent"
+   ],
+   "imp": [
+    "tombais",
+    "tombais",
+    "tombait",
+    "tombions",
+    "tombiez",
+    "tombaient"
+   ],
+   "fut": "tomber",
+   "pp": "tombé",
+   "aux": "être"
+  },
+  {
+   "id": "feelings-004",
+   "pres": [
+    "ai",
+    "as",
+    "a",
+    "avons",
+    "avez",
+    "ont"
+   ],
+   "imp": [
+    "avais",
+    "avais",
+    "avait",
+    "avions",
+    "aviez",
+    "avaient"
+   ],
+   "fut": "aur",
+   "pp": "eu",
+   "aux": "avoir"
+  },
+  {
+   "id": "song-vingt-ans-030",
+   "pres": [
+    "jette",
+    "jettes",
+    "jette",
+    "jetons",
+    "jetez",
+    "jettent"
+   ],
+   "imp": [
+    "jetais",
+    "jetais",
+    "jetait",
+    "jetions",
+    "jetiez",
+    "jetaient"
+   ],
+   "fut": "jetter",
+   "pp": "jeté",
+   "aux": "avoir"
+  },
+  {
+   "id": "song-vingt-ans-038",
+   "pres": [
+    "meurs",
+    "meurs",
+    "meurt",
+    "mourons",
+    "mourez",
+    "meurent"
+   ],
+   "imp": [
+    "mourais",
+    "mourais",
+    "mourait",
+    "mourions",
+    "mouriez",
+    "mouraient"
+   ],
+   "fut": "mourr",
+   "pp": "mort",
+   "aux": "être"
+  }
+ ]
+}
