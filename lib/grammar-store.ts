@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite';
 import { existsSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import type {
-  GrammarAnswerInput, GrammarExercise, GrammarFeedback, GrammarHelp, GrammarHelpInput, GrammarMiss, GrammarMode, GrammarMutation,
+  GrammarAnswerInput, GrammarCurrent, GrammarExercise, GrammarFeedback, GrammarHelp, GrammarHelpInput, GrammarMiss, GrammarMode, GrammarMutation,
   GrammarResult, GrammarScopeKind, GrammarSession, GrammarSnapshot, GrammarTestSummary, GrammarTopic,
   GrammarTopicContent, GrammarUnitContent, GrammarUnitView,
 } from '../contract';
@@ -273,29 +273,35 @@ export function createGrammarStore(course: Course, options: { dbPath?: string; a
     return topicById.get(topicId)?.title ?? topicId;
   }
 
+  function currentView(item: StoredExercise, mode: GrammarMode): GrammarCurrent {
+    const exercise = item.content;
+    return {
+      exercise: {
+        id: exercise.id, type: exercise.type, instruction: exercise.instruction, source: exercise.source, pattern: exercise.pattern,
+        ...(exercise.tokens ? { tokens: exercise.tokens } : {}), ...(exercise.options ? { options: exercise.options } : {}),
+        ...(exercise.gloss ? { gloss: exercise.gloss } : {}),
+        topicId: item.topicId, topicTitle: topicTitle(item.topicId),
+      },
+      answer: item.answer, tokenOrder: item.tokenOrder, attempts: item.attempts, assisted: item.assisted,
+      hint: item.hint, feedback: item.feedback, help: helpFor(item, mode), settled: item.settled, misses: item.misses,
+      audio: item.settled ? clipFor(exercise.id) : null,
+    };
+  }
+
   function sessionView(row: SessionRow): GrammarSession {
     const round = loadRound(row);
     const current = round.exercises[round.index];
+    const following = round.exercises[round.index + 1];
     const results: GrammarResult[] = round.exercises.filter((item) => item.settled).map((item) => ({
       exerciseId: item.content.id, topicId: item.topicId, topicTitle: topicTitle(item.topicId), type: item.content.type,
       source: item.content.source, answer: item.content.answers[0]!, given: item.answer, outcome: item.outcome!,
       ...(item.feedback?.spelling ? { spelling: true } : {}),
     }));
-    const exercise = current?.content;
     return {
       id: row.id, mode: round.mode, version: round.version, index: round.index, total: round.exercises.length,
       complete: !current,
-      current: current && exercise ? {
-        exercise: {
-          id: exercise.id, type: exercise.type, instruction: exercise.instruction, source: exercise.source, pattern: exercise.pattern,
-          ...(exercise.tokens ? { tokens: exercise.tokens } : {}), ...(exercise.options ? { options: exercise.options } : {}),
-          ...(exercise.gloss ? { gloss: exercise.gloss } : {}),
-          topicId: current.topicId, topicTitle: topicTitle(current.topicId),
-        },
-        answer: current.answer, tokenOrder: current.tokenOrder, attempts: current.attempts, assisted: current.assisted,
-        hint: current.hint, feedback: current.feedback, help: helpFor(current, round.mode), settled: current.settled, misses: current.misses,
-        audio: current.settled ? clipFor(exercise.id) : null,
-      } : null,
+      current: current ? currentView(current, round.mode) : null,
+      following: following ? currentView(following, round.mode) : null,
       results,
       ...(round.mode === 'test' ? { score: results.filter((result) => result.outcome === 'independent').length } : {}),
     };

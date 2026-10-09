@@ -693,3 +693,5 @@ html{touch-action:manipulation}
    each room keeps its own gap under that row. */
 .app-shell:has(#main>section:not(.home)) .topbar{display:none}
 :where(#main>section:not(.home))>.section-top{padding-top:14px}
+/* "Saving…" beside a room's title while answers are on their way to a slow Mac; empty, it takes no room. */
+.saving-status{font-size:12px;margin-right:10px}.saving-status:empty{display:none}

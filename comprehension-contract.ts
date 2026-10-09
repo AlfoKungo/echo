@@ -78,13 +78,25 @@ export type ExerciseResult = {
   gloss: Gloss[];
 };
 
+export type StreamLevel = { mode: 'listen' | 'read'; label: GrammarLevel; value: number };
+// What settles an exercise on the phone the moment it is answered: where the right choice sits among those shown,
+// and what the result reveals. The phone works out the outcome as the server does (right after a lookup in read mode
+// is helped); the saved answer's reply is what counts.
+export type ExerciseCheck = { answer: number; explanation?: string; lines: PassageLine[]; gloss: Gloss[] };
+// The exercise Next brings once the current one is answered with this outcome, picked ahead, with the levels that
+// outcome leaves; next() serves this pick, so Next can show it before the answer is saved. after: the same one step
+// further, by the outcome of that exercise, so two questions can go by before the Mac has saved either.
+export type ExerciseAhead = { level: StreamLevel[]; current: ExerciseView | null; check: ExerciseCheck | null; after?: Partial<Record<ExerciseResult['outcome'], ExerciseAhead>> };
+
 export type StreamState = {
   stream: StreamId;
-  level: { mode: 'listen' | 'read'; label: GrammarLevel; value: number }[]; // the adaptive level per mode, 1.0–3.99
+  level: StreamLevel[]; // the adaptive level per mode, 1.0–3.99
   current: ExerciseView | null; // null only when a focus stream has nothing left
   result: ExerciseResult | null; // set once the current exercise is settled, until next
   lookups: string[]; // gloss fr values looked up on the current exercise before settling
   version: number;
+  check: ExerciseCheck | null; // the current exercise's, until it is settled
+  after: Partial<Record<ExerciseResult['outcome'], ExerciseAhead>> | null; // by outcome: correct, incorrect, and helped in read mode
 };
 
 // GET  api/comprehension/state?stream=<id>                       -> StreamState (creates the current exercise if needed)

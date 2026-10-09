@@ -19,7 +19,8 @@ export type EarSentence = {
   kind: EarSentenceKind; fr: string; en: string; question: string; choices: string[]; answer: number; why: string;
   verbId: string; tense: Tense; person: number;
 };
-export type EarView = { id: string; kind: EarSentenceKind; question: string; choices: string[]; audio: string[]; again: boolean };
+// check settles the question on the phone the moment it is answered, as answer() does; the saved answer's reply counts.
+export type EarView = { id: string; kind: EarSentenceKind; question: string; choices: string[]; audio: string[]; again: boolean; check: { answer: number; why: string; fr: string; en: string } };
 export type EarResult = { id: string; right: boolean; answer: number; chosen: number; why: string; fr: string; en: string; again: boolean };
 
 const BATCH = 8;
@@ -332,7 +333,7 @@ export function createGrammarEar(deps: {
   }
 
   function view(item: Row, again: boolean): EarView {
-    return { id: String(item.id), kind: item.kind, question: item.question, choices: JSON.parse(item.choices_json) as string[], audio: [deps.audio(deps.clip(item.fr))], again };
+    return { id: String(item.id), kind: item.kind, question: item.question, choices: JSON.parse(item.choices_json) as string[], audio: [deps.audio(deps.clip(item.fr))], again, check: { answer: item.answer, why: item.why, fr: item.fr, en: item.en } };
   }
 
   // The question Listen shows next, once EVERY comprehension answers have been given there since the last one (or

@@ -23,7 +23,12 @@ export type Stats = { total: number; unseen: number; seenActive: number; unseenA
 // stats follows the selected category; overview covers all words in the selected direction.
 // extraToday is the extra allowance granted for this study day in this direction.
 // next is the card that follows current once it is answered (known or not); null when none, or when it would be current again.
-export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; extraToday: number; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; next: CardView | null; nextDue: string | null; undoId: string | null };
+// ahead: the cards after next, before the answers that decide them are saved, so quick answers never wait on the Mac:
+// ahead[how current is answered].card is the card after next, and its after[how next is answered] the one after that.
+// Each is a prediction; the reply to the saved answers is what counts.
+export type CardAhead = { card: CardView | null; after?: { known: CardView | null; missed: CardView | null } };
+export type CardsAhead = { known: CardAhead; missed: CardAhead };
+export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; extraToday: number; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; next: CardView | null; ahead: CardsAhead | null; nextDue: string | null; undoId: string | null };
 export type GradeInput = { direction: Direction; deck: string; wordId: string; version: number; known: boolean; requestId: string };
 export type ExtraWordsInput = { direction: Direction; deck: string; count: number; requestId: string };
 export type ReviewEarlyMode = 'soonest' | 'missed';
@@ -81,6 +86,7 @@ export type WordPattern = { title: string; explanation: string; tip?: string; ex
 
 // All routes are relative to the app root, so /echo/ works behind a path proxy.
 // GET api/state?direction=fr-en&deck=all -> Snapshot (does not admit new cards)
+// GET api/warm?screen=&direction=&deck= -> {ok: true}: the reads the phone's screen makes next, answered with nothing; it changes nothing
 // POST api/session {direction,deck} -> Snapshot (admits up to remaining daily allowance)
 // POST api/grade GradeInput -> Snapshot; a stale card version is HTTP 409, never double-graded
 // POST api/undo {direction,deck,undoId} -> Snapshot (undo only the latest matching grade)
@@ -234,6 +240,8 @@ export type GrammarSession = {
   total: number;
   complete: boolean;
   current: GrammarCurrent | null;
+  // The exercise Next brings, as it shows unanswered, so Practise can move on before Next is saved; null at the round's end.
+  following: GrammarCurrent | null;
   results: GrammarResult[];
   score?: number;
 };

@@ -126,7 +126,6 @@ function warmClip(url) {
   }).catch(() => clipCache.delete(url));
 }
 const clipSource = (url) => clipCache.get(url) || url;
-// The answer being saved while the next card already shows, and a grade given before it was saved.
 // Vocabulary runs the daily stacks or Endless: started words only, picked by score, each answer +1 or -1 to it.
 let vocabMode = readPreference('echo.vocab-mode', 'daily') === 'endless' ? 'endless' : 'daily';
 const endlessMode = () => vocabMode === 'endless' && screen === 'practice';
@@ -135,11 +134,15 @@ const endlessMode = () => vocabMode === 'endless' && screen === 'practice';
 let endless = null; // { direction, deck, cards, pool, recent, last, fetching, serial }
 const ENDLESS_AHEAD = 2;
 const ENDLESS_GAP = 10;
-let pendingGrade = null;
+// Answers given ahead of the Mac, in Words' cards and Practise: the latest snapshot it confirmed and the answers since,
+// saved one at a time in order (answers[0] is on its way). The card shown is that snapshot's prediction for them.
+let grades = null; // { confirmed, answers: [{ body }], where: 'practice' | 'mixed', sending, failed, settle }
+let pendingGrade = null; // settles once every answer given ahead is saved, or given up after a conflict
 // Set once the answer being saved has taken longer than SLOW_SAVE, so the screen says so instead of ignoring taps.
 let savingSlow = false;
 const SLOW_SAVE = 1200;
 const GRADE_LIMIT = 10000;
+// An answer given when no card after it could be predicted: it is given once the Mac's reply shows the next card.
 let queuedGrade = null;
 // The Walkman plays one long tape on its own audio element, so a locked phone keeps playing it.
 // tape.words times each word; the screen and the lock screen follow currentTime.
@@ -202,6 +205,16 @@ let streamState = null;
 // Grammar by ear (lib/grammar-ear.ts): Listen's state carries one under ear when it is due. It is shown before the
 // question waiting under current, and its answer is kept here until Next.
 let earResult = null;
+// Listen, Read and Practise's comprehension turns save behind the screen: answers, Next, looked-up words and Grammar by
+// ear answers go to the Mac one at a time, in order (queue[0] is on its way), each with the version the reply before it
+// gave. confirmed is the Mac's latest state; the screen runs ahead of it on what the Mac sends with each question.
+let streamSaves = null; // { id, confirmed, queue, sending, failed, slow, settle, done }
+let streamSlow = false;
+// A Grammar by ear question the Mac offered once the question after it was already under way: it shows at the next Next.
+let earLater = null;
+const earsAnswered = new Set();
+// A Practise grammar Next on its way: answers and help wait for it, as they need the version its reply carries.
+let reviewSaving = null;
 let streamGeneration = 0;
 let heardKey = '';
 let audioBlocked = false;
@@ -380,7 +393,7 @@ function enterScope(key) {
 function noticeHTML() {
   if (!notice) return '';
   if (offline && retryAction) {
-    const kept = retryAction.body?.known !== undefined || retryAction.body?.given !== undefined || retryAction.type === 'grade' ? ' Your answer is kept and saves as soon as it’s back.' : '';
+    const kept = retryAction.body?.known !== undefined || retryAction.body?.given !== undefined || retryAction.type === 'grade' || retryAction.type === 'stream-saves' ? ' Your answer is kept and saves as soon as it’s back.' : '';
     return `<div class="notice info" role="status"><span>Can’t reach your Mac. Trying again by itself.${kept}</span><button class="quiet" data-action="retry" ${busy ? 'disabled' : ''}>Retry now</button></div>`;
   }
   return `<div class="notice ${notice.kind === 'info' ? 'info' : ''}" role="${notice.kind === 'info' ? 'status' : 'alert'}"><span>${esc(notice.message)}</span>${retryAction ? `<button class="quiet" data-action="retry" ${busy ? 'disabled' : ''}>Retry</button>` : ''}</div>`;
@@ -399,7 +412,7 @@ function record(next) {
   history.pushState({ echo: next, depth }, '');
 }
 function workingCounts(label) {
-  if (savingSlow && pendingGrade) return `<span class="compact-line"><span class="compact-label" title="${esc(label)}">${esc(label)}</span><span class="compact-status" role="status">${queuedGrade !== null ? 'Saving your last answer — this one is kept…' : 'Saving your last answer…'}</span></span>`;
+  if (savingSlow && pendingGrade) return `<span class="compact-line"><span class="compact-label" title="${esc(label)}">${esc(label)}</span><span class="compact-status" role="status">${(grades?.answers.length ?? 0) > 1 || queuedGrade !== null ? 'Saving your last answers…' : 'Saving your last answer…'}</span></span>`;
   const unavailable = !snapshot || retryAction || snapshot.direction !== direction || snapshot.deck !== deck;
   const counts = loading ? '<span class="compact-status" role="status">Loading counts…</span>' : unavailable ? '<span class="compact-status">Counts unavailable</span>' : `<span class="compact-counts"><span class="unseen"><strong>${formatCount(snapshot.stats.unseenActive)}</strong> unseen</span><span class="separator" aria-hidden="true">·</span><span><strong>${formatCount(snapshot.stats.seenActive)}</strong> seen</span></span>`;
   return `<span class="compact-line"><span class="compact-label" title="${esc(label)}">${esc(label)}</span>${counts}</span>`;
@@ -508,6 +521,19 @@ function retryNow() {
 window.addEventListener('online', retryNow);
 window.addEventListener('pageshow', retryNow);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') retryNow(); });
+// Opening Echo or coming back to it: one read the Mac answers with nothing (api/warm), so a Mac that has swapped Echo
+// out brings it back before the first tap, and the recordings the screen plays next are fetched meanwhile. Once per
+// visit: hiding the page lets the next return send it again. It reads only, so it never saves or changes anything.
+let warmed = false;
+function warmUp() {
+  if (warmed || document.visibilityState !== 'visible') return;
+  warmed = true;
+  fetch(`api/warm?${new URLSearchParams({ screen, direction, deck })}`, { cache: 'no-store' }).catch(() => {});
+  if (screen === 'practice') { warmClip(snapshot?.current?.audioUrl); warmClip(snapshot?.next?.audioUrl); }
+  if (streamState?.current?.mode === 'listen') streamState.current.audio.forEach(warmClip);
+}
+window.addEventListener('pageshow', warmUp);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') warmed = false; else warmUp(); });
 function render() {
   syncAutoRetry();
   homeButton.disabled = busy;
@@ -1646,6 +1672,14 @@ function applyStream(next) {
   let changed = false;
   for (const entry of next.level || []) if (entry?.mode && entry.label && levels[entry.mode] !== entry.label) { levels[entry.mode] = entry.label; changed = true; }
   if (changed) savePreference('echo.levels', JSON.stringify(levels));
+  // The questions Next may bring are fetched ahead, so a Listen question shown before the Mac confirms it plays at once.
+  for (const held of Object.values(next.after || {})) if (held?.current?.mode === 'listen') held.current.audio.forEach(warmClip);
+}
+// "Saving…" beside a stream's or Practise's title while what was done there is still on its way to a slow Mac.
+const savingNow = () => streamSlow || (savingSlow && !!pendingGrade);
+const savingStatusHTML = () => `<span class="compact-status saving-status" role="status">${savingNow() ? 'Saving…' : ''}</span>`;
+function refreshSavingStatus() {
+  for (const element of document.querySelectorAll('.saving-status')) element.textContent = savingNow() ? 'Saving…' : '';
 }
 // Mirrors the server's whole-word rule, so a tappable word covers exactly the text its gloss was written for.
 function wholeMatches(text, needle) {
@@ -1778,7 +1812,7 @@ function streamBodyHTML() {
   const context = reading
     ? `<header class="reading-heading">${label ? `<p class="reading-kicker">${esc(label)}</p>` : ''}${item.title ? `<h1>${esc(item.title)}</h1>` : ''}</header>`
     : label ? `<p class="stream-item">${esc(label)}${item.title ? ` · ${esc(item.title)}` : ''}</p>` : '';
-  const action = settled ? `<button class="primary" data-action="stream-next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Next'}</button>` : '';
+  const action = settled ? `<button class="primary" data-action="stream-next" ${locked() || streamState.waiting ? 'disabled' : ''}>${busy || streamState.waiting ? 'Saving…' : 'Next'}</button>` : '';
   const body = `${context}<p class="prompt-instruction">${esc(STREAM_INSTRUCTION[`${view.mode}:${view.kind}`] || '')}</p>${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions${settled ? ' pinned' : ''}">${action}</div>` : ''}`;
   return reading ? `<article class="reading-exercise">${body}</article>` : body;
 }
@@ -1791,7 +1825,7 @@ function renderStream() {
   const mode = screen === 'read' ? 'read' : 'listen';
   const label = levelFor(mode);
   const level = label ? `<span class="level-tag">${esc(label)}</span>` : '';
-  const header = mode === 'listen' ? listenTop(level) : `<div class="section-top">${back('Home', 'home')}<div>${level}${infoButton('read')}</div></div>`;
+  const header = mode === 'listen' ? listenTop(`${savingStatusHTML()}${level}`) : `<div class="section-top">${back('Home', 'home')}<div>${savingStatusHTML()}${level}${infoButton('read')}</div></div>`;
   if (!streamState || loading) {
     main.innerHTML = `${noticeHTML()}<section class="stream">${header}<div class="loading-state" role="status">${loading ? `Opening ${mode === 'read' ? 'Read' : 'Listen'}…` : 'Your progress is safe on your Mac.'}</div></section>`;
     return;
@@ -1805,7 +1839,7 @@ function renderMixed() {
   const source = mixedSource === 'comprehension' ? (streamState?.current?.mode === 'read' ? 'Read' : 'Listen')
     : mixedSource === 'vocabulary' ? 'Words' : mixedSource === 'grammar' ? 'Grammar' : mixedSource === 'write' ? 'Write it' : '';
   const label = focus ? `${group ? group.title : 'Mistakes'}${source ? ` · ${source}` : ''}` : source;
-  const header = `<div class="section-top">${back(focus ? 'Mistakes' : 'Home', focus ? 'mistakes' : 'home')}<div><span class="stream-label">${esc(label)}</span>${infoButton(focus ? 'mistakes' : 'practise')}</div></div>`;
+  const header = `<div class="section-top">${back(focus ? 'Mistakes' : 'Home', focus ? 'mistakes' : 'home')}<div>${savingStatusHTML()}<span class="stream-label">${esc(label)}</span>${infoButton(focus ? 'mistakes' : 'practise')}</div></div>`;
   if (loading) { main.innerHTML = `${noticeHTML()}<section class="stream">${header}<div class="loading-state" role="status">Opening your practice…</div></section>`; return; }
   const vocabulary = mixedSource === 'vocabulary' && snapshot?.current;
   const writing = mixedSource === 'write' && writeView?.current;
@@ -1834,10 +1868,11 @@ function renderMistakes() {
 }
 async function loadStream(id, message = '') {
   const token = ++streamGeneration;
-  streamId = id; streamState = null; earResult = null; audioBlocked = false; loading = true;
+  streamId = id; streamState = null; earResult = null; earLater = null; audioBlocked = false; loading = true;
   notice = message ? { kind: 'info', message } : null; retryAction = null;
   render();
   try {
+    await streamSettled();
     const state = await api(`api/comprehension/state?stream=${encodeURIComponent(id)}`);
     if (token !== streamGeneration) return false;
     applyStream(state); loading = false; render(); return true;
@@ -3820,43 +3855,213 @@ async function runAction(run, onConflict) {
     render(); return false;
   }
 }
-function streamAction(kind, extra = {}) {
-  const view = streamState?.current;
-  if (!view || locked()) return;
-  const id = streamId;
-  const body = { stream: id, key: view.key, version: streamState.version, requestId: requestId(), ...extra };
-  runAction(async () => {
-    const state = await api(`api/comprehension/${kind}`, { method: 'POST', body: JSON.stringify(body) });
-    if (streamId !== id) return;
-    applyStream(state);
-    if (kind === 'next' && mixed()) advanceMixed();
-    if (kind === 'answer' && streamState.result) announce(`${({ correct: 'That’s right.', helped: 'Right, with help.', incorrect: 'Not quite.' })[streamState.result.outcome] || ''} ${streamState.result.expected}`);
-  }, () => loadStream(id, 'This exercise was refreshed. Answer the question shown now.'));
+// The state a step leaves, worked out here as the Mac works it out (StreamState.check and .after): an answer settles
+// the question, Next brings the pick made for that outcome (null when none was sent), a lookup counts as help.
+function settleLocally(state, choice) {
+  const { check, current } = state;
+  const outcome = choice !== check.answer ? 'incorrect' : current.mode === 'read' && state.lookups.length ? 'helped' : 'correct';
+  const result = { outcome, expected: current.choices[check.answer], given: current.choices[choice], ...(check.explanation ? { explanation: check.explanation } : {}), lines: check.lines, gloss: check.gloss };
+  return { ...state, result, check: null, level: state.after?.[outcome]?.level ?? state.level };
+}
+function nextLocally(state) {
+  const held = state.result && state.after?.[state.result.outcome];
+  return held?.current ? { stream: state.stream, level: held.level, current: held.current, result: null, lookups: [], version: state.version, check: held.check, after: held.after ?? null } : null;
+}
+// A step belongs to the question it was taken on: the same exercise, its choices in the same order.
+function sameQuestion(current, entry) {
+  return !!current && current.key === entry.key && (!entry.choices || current.choices.join('\n') === entry.choices.join('\n'));
+}
+// The screen's state: the Mac's latest with the steps still on their way done on top of it. A step taken on another
+// question than the one reached is left out; sendStreamSaves finds it when its turn comes (streamMoved).
+function streamAhead(confirmed, queue) {
+  let state = confirmed;
+  for (const entry of queue) {
+    if (entry.kind === 'ear' || !sameQuestion(state.current, entry)) continue;
+    if (entry.kind === 'answer' && state.check && !state.result) state = settleLocally(state, entry.extra.choice);
+    else if (entry.kind === 'lookup' && !state.lookups.includes(entry.extra.fr)) state = { ...state, lookups: [...state.lookups, entry.extra.fr] };
+    else if (entry.kind === 'next') state = nextLocally(state) ?? { ...state, waiting: true };
+  }
+  return state;
+}
+function startStreamSaves(id, confirmed) {
+  let settle;
+  const done = new Promise((resolve) => { settle = resolve; });
+  streamSaves = { id, confirmed, queue: [], sending: false, failed: false, slow: 0, settle, done };
+}
+// Every stream waits for the one queue: a stream opened while another's steps are on their way reads the Mac after them.
+function streamSettled() {
+  if (streamSaves?.failed) resumeStreamSaves();
+  return streamSaves?.done ?? Promise.resolve();
+}
+function saveBehind(entry) {
+  if (!streamSaves) startStreamSaves(streamId, streamState);
+  streamSaves.queue.push(entry);
+  keepSaves();
+  sendStreamSaves();
+}
+function sendStreamSaves() {
+  const saves = streamSaves;
+  if (!saves || saves.sending || saves.failed || !saves.queue.length) return;
+  const entry = saves.queue[0];
+  // Saves kept from an earlier visit start from the Mac's state as it is now.
+  if (!saves.confirmed) {
+    saves.sending = true;
+    api(`api/comprehension/state?stream=${encodeURIComponent(saves.id)}`)
+      .then((state) => { saves.sending = false; saves.confirmed = state; sendStreamSaves(); }, (error) => streamFailed(saves, null, error));
+    return;
+  }
+  if (!entry.body) {
+    // A step goes with the version of the Mac's state it follows, and only on the question that state shows.
+    if (!sameQuestion(saves.confirmed.current, entry)) { streamMoved(saves); return; }
+    entry.body = { stream: saves.id, key: entry.key, version: saves.confirmed.version, requestId: entry.requestId, ...entry.extra };
+    keepSaves();
+  }
+  saves.sending = true;
+  saves.slow = setTimeout(() => { if (streamSaves === saves) { streamSlow = true; refreshSavingStatus(); } }, SLOW_SAVE);
+  api(entry.kind === 'ear' ? 'api/ear/answer' : `api/comprehension/${entry.kind}`, { method: 'POST', body: JSON.stringify(entry.body) })
+    .then((reply) => streamSaved(saves, entry, reply), (error) => streamFailed(saves, entry, error));
+}
+function streamSaved(saves, entry, reply) {
+  clearTimeout(saves.slow); saves.sending = false;
+  if (streamSaves !== saves) return;
+  saves.queue.shift();
+  keepSaves();
+  const here = streamId === saves.id;
+  if (entry.kind === 'ear') {
+    // The Mac's verdict counts; it differs from the one shown only when its record of earlier answers does.
+    if (here && earShown()?.id === reply.id) {
+      const changed = earResult?.right !== reply.right || earResult?.again !== reply.again;
+      earResult = reply;
+      if (changed && streamScreen()) render();
+    }
+    if (saves.queue.length) sendStreamSaves(); else endStreamSaves(saves);
+    return;
+  }
+  saves.confirmed = reply;
+  const step = saves.queue.find((queued) => queued.kind !== 'ear' && !queued.body);
+  if (step && !sameQuestion(reply.current, step)) { streamMoved(saves); return; }
+  if (saves.queue.length) sendStreamSaves(); else endStreamSaves(saves);
+  if (!here) return;
+  const before = streamState;
+  const shown = { ...streamAhead(reply, saves.queue), ear: before?.ear ?? null };
+  if (entry.kind === 'next' && reply.ear && !earsAnswered.has(reply.ear.id) && reply.ear.id !== before?.ear?.id) {
+    // Grammar by ear goes before the question after it while that question has barely begun, else at the next Next.
+    if (before?.waiting || (Date.now() - entry.at < SLOW_SAVE && !before?.result && !before?.ear)) shown.ear = reply.ear;
+    else earLater = reply.ear;
+  }
+  const labels = (state) => (state?.level || []).map((level) => level.label).join();
+  const changed = !!before?.waiting || before?.current?.key !== shown.current?.key || before?.ear?.id !== shown.ear?.id
+    || before?.result?.outcome !== shown.result?.outcome || labels(before) !== labels(shown);
+  applyStream(shown);
+  if (before?.waiting && entry.mixed && mixed()) advanceMixed();
+  // A question the Mac picked differently replaces the one shown only while nothing was done on it (else streamMoved).
+  if (changed && streamScreen()) render(); else refreshSavingStatus();
+}
+function streamFailed(saves, entry, error) {
+  clearTimeout(saves.slow); saves.sending = false;
+  if (streamSaves !== saves) return;
+  streamSlow = false;
+  // The Mac turned the step down: the stream is read again from it, with its reason.
+  if (error.status >= 400 && error.status < 500) {
+    endStreamSaves(saves);
+    if (streamId === saves.id) loadStream(saves.id, error.status === 409 ? 'This exercise was refreshed. Answer the question shown now.' : error.message);
+    return;
+  }
+  saves.failed = true;
+  notice = { message: error.message }; retryAction = { type: 'stream-saves', body: entry?.body ?? { stream: saves.id } };
+  if (streamScreen() || mixed()) render();
+}
+// The Mac's question is not the one the next step was taken on (the pick made ahead no longer fitted when Next was
+// saved): those steps are not saved, and the Mac's question shows with a note. Grammar by ear answers still go.
+function streamMoved(saves) {
+  const ears = saves.queue.filter((queued) => queued.kind === 'ear');
+  endStreamSaves(saves);
+  if (ears.length) { startStreamSaves(saves.id, saves.confirmed); streamSaves.queue.push(...ears); sendStreamSaves(); }
+  if (streamId !== saves.id) return;
+  applyStream({ ...saves.confirmed, ear: null });
+  notice = { kind: 'info', message: 'Your Mac had a different question next, so your answer to the last one was not counted. Answer the one shown now.' };
+  if (streamScreen() || mixed()) render();
+}
+function endStreamSaves(saves) {
+  if (streamSaves !== saves) return;
+  clearTimeout(saves.slow);
+  streamSaves = null; streamSlow = false;
+  keepSaves();
+  saves.settle();
+  refreshSavingStatus();
+}
+// What is still on its way outlives the page: it is kept on this device and sent again, with the same request ids,
+// when Echo next opens, and the Mac counts a request it has already saved only once.
+const SAVES_KEY = 'echo.saves';
+function keepSaves() {
+  const kept = {
+    grades: grades?.answers.map((entry) => entry.body) ?? [],
+    stream: streamSaves?.queue.length ? { id: streamSaves.id, queue: streamSaves.queue.map(({ kind, key, choices, extra, requestId: id, body }) => ({ kind, key, choices, extra, requestId: id, body })) } : null,
+  };
+  try {
+    if (kept.grades.length || kept.stream) localStorage.setItem(SAVES_KEY, JSON.stringify(kept));
+    else localStorage.removeItem(SAVES_KEY);
+  } catch { /* private mode: they are kept for this visit */ }
+}
+function resumeKeptSaves() {
+  let kept = null;
+  try { kept = JSON.parse(localStorage.getItem(SAVES_KEY) || 'null'); } catch { /* nothing kept */ }
+  if (kept?.grades?.length) {
+    grades = { confirmed: null, answers: kept.grades.map((body) => ({ body })), where: 'practice', sending: false, failed: false, settle: null };
+    pendingGrade = new Promise((resolve) => { grades.settle = resolve; });
+    saveGrades();
+  }
+  if (kept?.stream?.queue?.length) {
+    startStreamSaves(kept.stream.id, null);
+    streamSaves.queue.push(...kept.stream.queue);
+    sendStreamSaves();
+  }
+}
+// Retry: the step that failed goes again with its request id, then those after it.
+function resumeStreamSaves() {
+  notice = null; retryAction = null;
+  if (streamSaves) streamSaves.failed = false;
+  render();
+  sendStreamSaves();
 }
 function streamPick(index) {
   if (earShown()) { earPick(Number(index)); return; }
   const view = streamState?.current;
-  if (!view || streamState.result || locked()) return;
-  streamAction('answer', { choice: Number(index) });
+  if (!view || streamState.result || !streamState.check || locked()) return;
+  const choice = Number(index);
+  stopAudio(); notice = null;
+  applyStream(settleLocally(streamState, choice));
+  saveBehind({ kind: 'answer', key: view.key, choices: view.choices, extra: { choice }, requestId: requestId() });
+  render();
+  announce(`${({ correct: 'That’s right.', helped: 'Right, with help.', incorrect: 'Not quite.' })[streamState.result.outcome] || ''} ${streamState.result.expected}`);
 }
 function earPick(choice) {
   const ear = earShown();
   if (!ear || earResult || locked()) return;
-  const body = { requestId: requestId(), id: ear.id, choice };
-  runAction(async () => {
-    const result = await api('api/ear/answer', { method: 'POST', body: JSON.stringify(body) });
-    if (earShown()?.id !== ear.id) return;
-    earResult = result;
-    announce(`${result.right ? 'That’s right.' : 'Not quite.'} ${ear.choices[result.answer]}`);
-  });
+  const right = choice === ear.check.answer;
+  // A question missed for the first time comes back once (lib/grammar-ear.ts); one shown again does not.
+  earResult = { id: ear.id, right, answer: ear.check.answer, chosen: choice, why: ear.check.why, fr: ear.check.fr, en: ear.check.en, again: !right && !ear.again };
+  earsAnswered.add(ear.id);
+  stopAudio();
+  saveBehind({ kind: 'ear', body: { requestId: requestId(), id: ear.id, choice } });
+  render();
+  announce(`${right ? 'That’s right.' : 'Not quite.'} ${ear.choices[ear.check.answer]}`);
 }
 function streamNext() {
   if (earShown()) {
     if (earResult && !locked()) { streamState = { ...streamState, ear: null }; earResult = null; render(); }
     return;
   }
-  if (!streamState?.result || locked()) return;
-  streamAction('next');
+  if (!streamState?.result || streamState.waiting || locked()) return;
+  const held = nextLocally(streamState);
+  saveBehind({ kind: 'next', key: streamState.current.key, extra: {}, requestId: requestId(), at: Date.now(), mixed: mixed() });
+  stopAudio();
+  if (!held) { streamState = { ...streamState, waiting: true }; render(); return; }
+  const ear = earLater && !earsAnswered.has(earLater.id) ? earLater : null;
+  earLater = null;
+  applyStream({ ...held, ear });
+  if (mixed()) advanceMixed();
+  render(); main.focus({ preventScroll: true });
 }
 function autoplay() {
   const view = shownView();
@@ -3896,11 +4101,9 @@ function lookupGloss(fr) {
   if (grammarOnScreen() || screen === 'lyrics' || screen === 'news-edition' || screen === 'story') return;
   const view = streamState?.current;
   if (!view || streamState.result || view.mode !== 'read' || (streamState.lookups || []).includes(fr)) return;
-  const id = streamId;
-  const token = streamGeneration;
-  api('api/comprehension/lookup', { method: 'POST', body: JSON.stringify({ stream: id, key: view.key, fr, version: streamState.version, requestId: requestId() }) })
-    .then((state) => { if (token === streamGeneration && streamId === id) applyStream(state); })
-    .catch((error) => { notice = { message: error.message }; render(); });
+  // The lookup is saved behind, before the answer that it makes a helped one.
+  applyStream({ ...streamState, lookups: [...(streamState.lookups || []), fr] });
+  saveBehind({ kind: 'lookup', key: view.key, extra: { fr }, requestId: requestId() });
 }
 function renderGlossSheet() {
   const entry = glossWord;
@@ -3935,6 +4138,8 @@ async function loadReview(token) {
   const key = mixedScope();
   if (!key) { review = null; return; }
   try {
+    // A Next still on its way lands first, so the round is read after it.
+    await reviewSaving;
     let snap = await api(`api/grammar/state?scope=${encodeURIComponent(key)}`);
     if (!snap.session || snap.session.complete) snap = await api('api/grammar/session', { method: 'POST', body: JSON.stringify({ scope: key, requestId: requestId() }) });
     if (token === mixedGeneration) applyReview(snap);
@@ -3945,8 +4150,16 @@ async function loadReview(token) {
 }
 function reviewMutation(type, body) {
   const key = mixedScope();
+  if (type === 'next' && review.session.following) { reviewNextAhead(body, key); return; }
   const paths = { answer: 'api/grammar/answer', help: 'api/grammar/help', next: 'api/grammar/next' };
   runAction(async () => {
+    // A Next still on its way carries the version this step needs; a step on a question the Mac has not reached is refused.
+    if (reviewSaving) {
+      await reviewSaving;
+      const session = review?.session;
+      if (session?.id !== body.sessionId || session.current?.exercise.id !== body.exerciseId) throw Object.assign(new Error('This question changed.'), { status: 409 });
+      body = { ...body, version: session.version };
+    }
     let snap = await api(paths[type], { method: 'POST', body: JSON.stringify(body) });
     if (snap.session?.complete) snap = await api('api/grammar/session', { method: 'POST', body: JSON.stringify({ scope: key, requestId: requestId() }) });
     applyReview(snap, type === 'help');
@@ -3954,21 +4167,36 @@ function reviewMutation(type, body) {
     if (type === 'next') { hintOpen = true; advanceMixed(); }
     const current = review.session?.current;
     if (current?.feedback) announce(current.feedback.message);
-  }, async () => {
-    const token = mixedGeneration;
-    try { await loadReview(token); notice = { kind: 'info', message: 'This question was refreshed. Answer the one shown now.' }; }
-    catch (error) { notice = { message: error.message }; }
-    render();
-  });
+  }, () => reviewRefreshed(mixedGeneration));
 }
-function mixedGrade(body) {
-  runAction(async () => {
-    let state = await api('api/grade', { method: 'POST', body: JSON.stringify(body) });
-    // The daily allowance may have run out; Practise then carries on with its other sources.
-    if (!state.current) { try { state = await api('api/session', { method: 'POST', body: JSON.stringify({ direction, deck }) }); } catch { /* nothing left today */ } }
-    applySnapshot(state);
-    advanceMixed();
-  });
+async function reviewRefreshed(token) {
+  try { await loadReview(token); notice = { kind: 'info', message: 'This question was refreshed. Answer the one shown now.' }; }
+  catch (error) { notice = { message: error.message }; }
+  render();
+}
+// Practise moves on at once when the round's next exercise is known (GrammarSession.following): Next is saved behind,
+// and the Mac's reply replaces the exercise held for the round's next turn only if it differs.
+function reviewNextAhead(body, key) {
+  const token = mixedGeneration;
+  const session = review.session;
+  applyReview({ ...review, session: { ...session, index: session.index + 1, current: session.following, following: null } });
+  hintOpen = true; stopAudio(); advanceMixed(); render(); main.focus({ preventScroll: true });
+  const run = async () => {
+    let snap = await api('api/grammar/next', { method: 'POST', body: JSON.stringify(body) });
+    if (snap.session?.complete) snap = await api('api/grammar/session', { method: 'POST', body: JSON.stringify({ scope: key, requestId: requestId() }) });
+    if (token !== mixedGeneration) return;
+    const shown = review?.session?.current?.exercise.id;
+    applyReview(snap, true);
+    if (mixedSource === 'grammar' && snap.session?.current?.exercise.id !== shown) render();
+  };
+  const saving = run().catch(async (error) => {
+    // Let go first: reading the round again waits on reviewSaving.
+    if (reviewSaving === saving) reviewSaving = null;
+    if (token !== mixedGeneration) return;
+    if (error.status === 409) { await reviewRefreshed(token); return; }
+    notice = { message: error.message }; retryAction = { type: 'redo', run }; render();
+  }).finally(() => { if (reviewSaving === saving) reviewSaving = null; });
+  reviewSaving = saving;
 }
 async function enterMixed() {
   const token = ++mixedGeneration;
@@ -3985,11 +4213,13 @@ async function enterMixed() {
   const problems = [];
   const guard = (promise) => promise.catch((error) => { problems.push(error.message); });
   const jobs = [];
+  // What is still on its way to the Mac lands first, so Practise opens on the Mac's state after it.
   if (sources.includes('comprehension') && streamId) {
-    jobs.push(guard(api(`api/comprehension/state?stream=${encodeURIComponent(streamId)}`).then((state) => { if (token === mixedGeneration) applyStream(state); })));
+    jobs.push(guard(streamSettled(streamId).then(() => api(`api/comprehension/state?stream=${encodeURIComponent(streamId)}`)).then((state) => { if (token === mixedGeneration) applyStream(state); })));
   }
   if (sources.includes('vocabulary')) {
     jobs.push(guard((async () => {
+      await gradesSettled();
       let state = await api(`api/state?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}`);
       if (!state.current) state = await api('api/session', { method: 'POST', body: JSON.stringify({ direction, deck }) });
       if (token === mixedGeneration) applySnapshot(state);
@@ -4132,10 +4362,17 @@ async function startPractice() {
 }
 // The cards on screen: a fresh daily session, or Endless choosing its first word.
 async function beginPractice() {
+  // Answers still on their way land first, so the cards start again from the Mac's state after them.
+  if (grades) { loading = true; render(); await gradesSettled(); }
   if (locked()) return;
   if (!await fetchState()) return;
   if (vocabMode === 'endless') { if (screen === 'practice') { endless = null; render(); } return; }
   if (screen === 'practice') runMutation({ type: 'start', body: { direction, deck } });
+}
+// Settles once the answers given ahead are saved; a chain a failure stopped is sent again first.
+function gradesSettled() {
+  if (grades?.failed) resumeGrades();
+  return pendingGrade ?? Promise.resolve();
 }
 // Words opens on a tab: the one asked for, or the one used last. Switching tabs takes the old tab's place in
 // history, so Back leaves the room; 'back' walks back to the tab already behind (from Your words).
@@ -4204,51 +4441,133 @@ function grade(known) {
   if (!revealed || locked() || loading || !vocabularyCard()) return;
   // "I said it right" is for the last answer only: answering another card withdraws it.
   if (say.fix && say.fix.state !== 'sending' && say.fix.wordId !== shownCard()?.id) say.fix = null;
-  // The previous answer is still being saved: this one follows as soon as it is.
   if (endlessMode()) { markEndless(known); return; }
-  if (pendingGrade) { queuedGrade = known; if (savingSlow) render(); return; }
+  // An answer already waits for the card after it; this tap has no card of its own until the Mac replies.
+  if (queuedGrade !== null) return;
   const card = snapshot.current;
   const body = { direction, deck, wordId: card.id, version: card.version, known, requestId: requestId() };
-  if (mixed()) mixedGrade(body);
-  else if (snapshot.next) answerAhead(body);
+  const following = grades ? predictedCard(grades.confirmed, [...grades.answers, { body }]) : snapshot.next;
+  // Practise moves on to its other sources even when no card is known to follow.
+  if (following || mixed()) answerAhead(body);
+  else if (grades) { queuedGrade = known; savingSlow = true; refreshPracticeChrome(); }
   else runMutation({ type: 'grade', body });
 }
-// Shows the predicted next card at once and saves the answer behind it. The server's reply replaces the
-// prediction only when it differs; if the answer could not be saved, the answered card comes back to retry.
+// The card a snapshot predicts after the given answers to its current card and those after it (Snapshot.ahead); null
+// past what it predicts.
+function predictedCard(confirmed, answers, at = answers.length) {
+  const how = (index) => (answers[index].body.known ? 'known' : 'missed');
+  if (at === 0) return confirmed.current;
+  if (at === 1) return confirmed.next;
+  if (at === 2) return confirmed.ahead?.[how(0)]?.card ?? null;
+  if (at === 3) return confirmed.ahead?.[how(0)]?.after?.[how(1)] ?? null;
+  return null;
+}
+function gradesView(chain) {
+  return { ...chain.confirmed, current: predictedCard(chain.confirmed, chain.answers), next: predictedCard(chain.confirmed, chain.answers, chain.answers.length + 1), undoId: null };
+}
+const onGradeScreen = (chain) => (chain.where === 'mixed' ? mixed() : screen === 'practice' && !endlessMode());
+// Shows the predicted next card at once and saves the answer behind it, after any still on their way. The Mac's
+// reply replaces the prediction only when it differs; if an answer could not be saved, its card comes back to retry.
 function answerAhead(body) {
-  const answered = snapshot;
-  const token = ++generation;
+  if (!grades) {
+    grades = { confirmed: snapshot, answers: [], where: mixed() ? 'mixed' : 'practice', sending: false, failed: false, settle: null };
+    pendingGrade = new Promise((resolve) => { grades.settle = resolve; });
+  }
+  grades.answers.push({ body });
+  keepSaves();
   stopAudio();
-  snapshot = { ...snapshot, current: snapshot.next, next: null, undoId: null };
+  snapshot = gradesView(grades);
   revealed = false; notice = null; retryAction = null;
+  if (grades.where === 'mixed') advanceMixed();
   render(); main.focus({ preventScroll: true });
-  announce(direction === 'en-fr' ? snapshot.current.en : snapshot.current.fr);
+  if (vocabularyCard()) announce(direction === 'en-fr' ? snapshot.current.en : snapshot.current.fr);
+  warmClip(snapshot.next?.audioUrl);
+  saveGrades();
+}
+function saveGrades() {
+  const chain = grades;
+  if (!chain || chain.sending || chain.failed || !chain.answers.length) return;
+  chain.sending = true;
+  const { body } = chain.answers[0];
   // An answer is saved in well under a second; one that takes longer says so, and one that takes over GRADE_LIMIT
   // is retried by itself with the same request id, so it cannot count twice.
-  const saving = setTimeout(() => { if (token === generation && screen === 'practice') { savingSlow = true; render(); } }, SLOW_SAVE);
-  pendingGrade = api('api/grade', { method: 'POST', body: JSON.stringify(body), limit: GRADE_LIMIT }).then((result) => {
-    if (token !== generation || screen !== 'practice') return;
-    const shown = snapshot.current;
-    if (result.current && shown && result.current.id === shown.id && result.current.version === shown.version) {
+  const slow = setTimeout(() => {
+    if (grades !== chain) return;
+    savingSlow = true;
+    if (screen === 'practice') refreshPracticeChrome(); else refreshSavingStatus();
+  }, SLOW_SAVE);
+  api('api/grade', { method: 'POST', body: JSON.stringify(body), limit: GRADE_LIMIT }).then(async (reply) => {
+    clearTimeout(slow); chain.sending = false;
+    if (grades !== chain) return;
+    chain.answers.shift();
+    keepSaves();
+    let result = reply;
+    // The daily allowance may have run out; Practise then carries on with its other sources.
+    if (chain.where === 'mixed' && !result.current && !chain.answers.length) {
+      try { result = await api('api/session', { method: 'POST', body: JSON.stringify({ direction: body.direction, deck: body.deck }) }); } catch { /* nothing left today */ }
+    }
+    chain.confirmed = result;
+    const following = chain.answers[0];
+    if (following && !(result.current?.id === following.body.wordId && result.current.version === following.body.version)) { gradesMoved(chain, result); return; }
+    if (chain.answers.length) saveGrades(); else endGrades(chain);
+    const view = chain.answers.length ? gradesView(chain) : result;
+    const shown = snapshot?.current;
+    if (!onGradeScreen(chain)) return;
+    if (view.current && shown && view.current.id === shown.id && view.current.version === shown.version) {
       // The card on screen was the right guess: only the counts and Undo change. Redrawing the card here would
       // replace it under a finger that may already be on it, and a tap whose target is replaced mid-tap can be lost.
-      snapshot = result; refreshPracticeChrome();
-    } else { applySnapshot(result); render(); }
+      snapshot = view;
+      if (chain.where === 'practice') refreshPracticeChrome(); else refreshSavingStatus();
+      if (queuedGrade !== null) { const known = queuedGrade; queuedGrade = null; grade(known); }
+      return;
+    }
+    if (chain.where === 'mixed' && mixedSource !== 'vocabulary') { snapshot = view; refreshSavingStatus(); return; }
+    if (queuedGrade !== null) { queuedGrade = null; notice = { kind: 'info', message: 'Your Mac had a different card next, so your last answer was not counted. Answer this one.' }; }
+    applySnapshot(view); render();
   }, async (error) => {
-    if (token !== generation) return;
+    clearTimeout(slow); chain.sending = false;
+    if (grades !== chain) return;
     queuedGrade = null;
-    if (error.status === 409) { await fetchState(`${error.message} Your progress was refreshed. Reveal the current card again before answering.`); return; }
-    snapshot = answered; revealed = true; stopAudio();
-    notice = { message: error.message }; retryAction = { type: 'grade', body }; render();
-  }).finally(() => {
-    clearTimeout(saving);
-    pendingGrade = null;
-    if (savingSlow) { savingSlow = false; if (screen === 'practice') render(); }
-    if (queuedGrade === null) return;
-    const known = queuedGrade;
-    queuedGrade = null;
-    grade(known);
+    if (error.status === 409) {
+      endGrades(chain);
+      if (onGradeScreen(chain) && chain.where === 'practice') { await fetchState(`${error.message} Your progress was refreshed. Reveal the current card again before answering.`); return; }
+      notice = { message: error.message };
+      api(`api/state?direction=${encodeURIComponent(body.direction)}&deck=${encodeURIComponent(body.deck)}`).then((state) => { if (!grades) snapshot = state; }).catch(() => {});
+    } else {
+      chain.failed = true; savingSlow = false;
+      if (onGradeScreen(chain) && chain.where === 'practice' && chain.confirmed) { snapshot = { ...chain.confirmed, undoId: null }; revealed = true; stopAudio(); }
+      notice = { message: error.message }; retryAction = { type: 'grades', body };
+    }
+    if (screen === 'practice' || mixed()) render();
   });
+}
+// The Mac's card is not the one the next answer was given on, so that answer and those after it were given on a wrong
+// guess: they are not saved, and the Mac's card shows with a note saying how many were not counted.
+function gradesMoved(chain, result) {
+  const lost = chain.answers.length + (queuedGrade !== null ? 1 : 0);
+  queuedGrade = null;
+  endGrades(chain);
+  if (!onGradeScreen(chain) || (chain.where === 'mixed' && mixedSource !== 'vocabulary')) { snapshot = result; return; }
+  applySnapshot(result);
+  notice = { kind: 'info', message: `Your Mac had a different card next, so your last ${lost === 1 ? 'answer was' : `${lost} answers were`} not counted. Carry on from this card.` };
+  render();
+}
+function endGrades(chain) {
+  if (grades !== chain) return;
+  grades = null; pendingGrade = null; savingSlow = false;
+  keepSaves();
+  chain.settle();
+}
+// Retry: the answer that failed goes again with its request id, then those given after it.
+function resumeGrades() {
+  const chain = grades;
+  notice = null; retryAction = null;
+  if (chain) {
+    chain.failed = false;
+    if (onGradeScreen(chain) && chain.where === 'practice' && chain.confirmed) { snapshot = gradesView(chain); revealed = false; }
+  }
+  render();
+  saveGrades();
 }
 // The counts line and Undo under the card, brought up to date without redrawing the card itself.
 function refreshPracticeChrome() {
@@ -4421,7 +4740,9 @@ async function saveGoal(event) {
 function retry() {
   if (busy || !retryAction) return;
   const action = retryAction;
-  if (action.run) runAction(action.run);
+  if (action.type === 'grades') resumeGrades();
+  else if (action.type === 'stream-saves') resumeStreamSaves();
+  else if (action.run) runAction(action.run);
   else if (action.body) runMutation(action);
   else if (action.type === 'grammar-state') { if (move(action.place)) loadGrammar(action.message, action.preserveDraft); }
   else if (action.type === 'stream') loadStream(action.stream, action.message);
@@ -4735,6 +5056,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'news') loadNews();
   else if (screen === 'news-edition') loadNewsEdition();
 });
+resumeKeptSaves();
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
 // The tape starts at once where the browser allows it; Safari wants a tap first, and then Play is right there.

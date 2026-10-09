@@ -3,7 +3,7 @@ import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
 import { pointsFromLowest } from './score-points';
-import type { AddWordInput, AddWordResult, BrowseWord, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BrowseWord, CardAhead, CardsAhead, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -617,6 +617,20 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     queue.recent = [wordId, ...(queue.recent ?? []).filter((id) => id !== wordId)].slice(0, SUCCESS_GAP_MAX);
   }
 
+  // What an answer does to its card and the queue: the card leaves its stack, then, still active, goes back among the
+  // known or missed words; two successes since the latest miss finish its cycle. place files it (at random when saved).
+  function answerCard(queue: PracticeQueue, selection: Selection, before: CardRow, known: boolean, at: Date, place = insertRandom): { after: CardRow; fsrsLog: string | null } {
+    passOver(queue, selection, before.word_id);
+    const after = { ...before, active: 1, version: before.version + 1 };
+    // A miss restarts the count: finishing needs two successes after the latest miss.
+    after.successes = known ? (before.active ? before.successes : 0) + 1 : 0;
+    after.cycle_misses = (before.active ? before.cycle_misses : 0) + Number(!known);
+    // The two-recall loop is a practice cycle, not two independent FSRS reviews.
+    const fsrsLog = after.successes === 2 ? finishCycle(after, at) : null;
+    if (after.active) place(queue[known ? 'successful' : 'failed'], before.word_id);
+    return { after, fsrsLog };
+  }
+
   // The words of the same deck missed most besides this one (at least twice each), when this one has been missed
   // TROUBLE_MISSES times: the answer side shows them together so the difference can be seen.
   function trouble(wordId: string, misses: Map<string, number>): CardTrouble | undefined {
@@ -681,7 +695,42 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       row.cycle_misses, row.completed_day, row.due_at, row.fsrs_json, row.version);
   }
 
-  function snapshot(direction: Direction, deck: string, at: Date): Snapshot {
+  // Snapshot.ahead: the two cards after next, for each way the answers still to be saved can go, worked out on copies
+  // of the queue with the same steps a saved answer takes. A copy files an answered word last rather than at random,
+  // which can matter only when the deck is too small for it to wait its turn; the saved answers' reply then wins.
+  function cardsAhead(queue: PracticeQueue, selection: Selection, row: CardRow, selected: CardRow[], misses: Map<string, number>, deck: string, at: Date): CardsAhead {
+    const last = (stack: string[], id: string) => { stack.push(id); };
+    type Pick = { selection: Selection; row: CardRow };
+    const pick = (copy: PracticeQueue, changed: Map<string, CardRow>, not: string): Pick | null => {
+      const chosen = selectCard(copy, deck);
+      const found = chosen && chosen.id !== not ? changed.get(chosen.id) ?? selected.find((candidate) => candidate.word_id === chosen.id) : null;
+      return chosen && found ? { selection: chosen, row: found } : null;
+    };
+    const branch = (known: boolean): CardAhead => {
+      const answered = structuredClone(queue);
+      const changed = new Map([[row.word_id, answerCard(answered, selection, row, known, at, last).after]]);
+      const second = pick(answered, changed, row.word_id);
+      if (!second) return { card: null };
+      const peek = structuredClone(answered);
+      passOver(peek, second.selection, second.row.word_id);
+      const third = pick(peek, changed, second.row.word_id);
+      if (!third) return { card: null };
+      const fourth = (secondKnown: boolean): CardView | null => {
+        const copy = structuredClone(answered);
+        const also = new Map(changed).set(second.row.word_id, answerCard(copy, second.selection, second.row, secondKnown, at, last).after);
+        const shown = pick(copy, also, second.row.word_id);
+        if (!shown) return null;
+        passOver(copy, shown.selection, shown.row.word_id);
+        const found = pick(copy, also, shown.row.word_id);
+        return found ? cardView(found.row, found.selection.stack, misses) : null;
+      };
+      return { card: cardView(third.row, third.selection.stack, misses), after: { known: fourth(true), missed: fourth(false) } };
+    };
+    return { known: branch(true), missed: branch(false) };
+  }
+
+  // lookAhead: whether to work out Snapshot.ahead, which a snapshot read only for its current card does not need.
+  function snapshot(direction: Direction, deck: string, at: Date, lookAhead = true): Snapshot {
     const day = studyDay(at);
     const time = at.getTime();
     const preferences = settings();
@@ -730,12 +779,16 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     // The card after this one. The answered word is always passed over, so knowing it or not does not change
     // what follows; the phone shows it at once and fetches its recording ahead.
     let next: CardView | null = null;
+    let ahead: CardsAhead | null = null;
     if (row) {
       const after = structuredClone(queue);
       passOver(after, selection!, row.word_id);
       const following = selectCard(after, deck);
       const nextRow = following && following.id !== row.word_id ? selected.find((candidate) => candidate.word_id === following.id) : null;
-      if (nextRow) next = cardView(nextRow, following!.stack, misses);
+      if (nextRow) {
+        next = cardView(nextRow, following!.stack, misses);
+        if (lookAhead) ahead = cardsAhead(queue, selection!, row, selected, misses, deck, at);
+      }
     }
     let nextDue: number | null = null;
     for (const candidate of selected) {
@@ -745,7 +798,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     return {
       day, direction, deck, settings: preferences, extraToday: extra, decks,
       stats, overview,
-      current, next,
+      current, next, ahead,
       nextDue: nextDue === null ? null : new Date(nextDue).toISOString(),
       undoId: latest && inDeck(latest.word_id, deck) ? latest.request_id : null,
     };
@@ -897,7 +950,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         // A retried request returns live state, even if its original grade has since been undone.
         return snapshot(input.direction, input.deck, at);
       }
-      const current = snapshot(input.direction, input.deck, at).current;
+      const current = snapshot(input.direction, input.deck, at, false).current;
       if (!current || current.id !== input.wordId || current.version !== input.version) {
         throw new StoreError('This card has changed on another screen. Your answer was not recorded; reload the current card.', 409);
       }
@@ -906,17 +959,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       reconcileQueue(queue, rowsForDirection.all(input.direction), at, false);
       const selection = selectCard(queue, input.deck)!;
       const queueBefore = JSON.stringify(queue);
-      passOver(queue, selection, input.wordId);
-      const after = { ...before, active: 1, version: before.version + 1 };
-      // A miss restarts the count: finishing needs two successes after the latest miss.
-      after.successes = input.known ? (before.active ? before.successes : 0) + 1 : 0;
-      after.cycle_misses = (before.active ? before.cycle_misses : 0) + Number(!input.known);
-      let fsrsLog: string | null = null;
-      if (after.successes === 2) {
-        // The two-recall loop is a practice cycle, not two independent FSRS reviews.
-        fsrsLog = finishCycle(after, at);
-      }
-      if (after.active) insertRandom(queue[input.known ? 'successful' : 'failed'], input.wordId);
+      const { after, fsrsLog } = answerCard(queue, selection, before, input.known, at);
       save(after);
       saveQueue.run(JSON.stringify(queue), input.direction);
       appendGrade.run(input.requestId, input.direction, input.deck, input.wordId, input.version,

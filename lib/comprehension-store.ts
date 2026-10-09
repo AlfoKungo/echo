@@ -2,8 +2,8 @@ import { Database } from 'bun:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import type {
-  ComprehensionPassage, ComprehensionSentence, ExerciseKind, ExerciseResult, ExerciseView,
-  Gloss, PassageLine, StreamId, StreamState,
+  ComprehensionPassage, ComprehensionSentence, ExerciseAhead, ExerciseCheck, ExerciseKind, ExerciseResult, ExerciseView,
+  Gloss, PassageLine, StreamId, StreamLevel, StreamState,
 } from '../comprehension-contract';
 import type { ComprehensionDayCounts, GrammarLevel } from '../contract';
 import type { Bank } from './comprehension-content';
@@ -128,6 +128,8 @@ type StreamRow = {
   lookups_json: string;
   recent_json: string;
   updated_at: string;
+  // The picks Next serves after each outcome of the current exercise, and the ones after those (see lookAhead).
+  ahead_json: string | null;
 };
 
 type HistoryRow = {
@@ -221,7 +223,8 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
         result_json TEXT,
         lookups_json TEXT NOT NULL,
         recent_json TEXT NOT NULL,
-        updated_at TEXT NOT NULL
+        updated_at TEXT NOT NULL,
+        ahead_json TEXT
       );
       CREATE TABLE IF NOT EXISTS comprehension_levels (
         mode TEXT PRIMARY KEY CHECK (mode IN ('listen', 'read')),
@@ -276,11 +279,14 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       CREATE INDEX IF NOT EXISTS comprehension_answers_key ON comprehension_answers(exercise_key, mode);
     `);
     for (const mode of MODES) db.query('INSERT OR IGNORE INTO comprehension_levels (mode, value) VALUES (?, ?)').run(mode, MIN_LEVEL);
+    if (!db.query<{ name: string }, []>("SELECT name FROM pragma_table_info('comprehension_streams')").all().some((column) => column.name === 'ahead_json')) {
+      db.exec('ALTER TABLE comprehension_streams ADD COLUMN ahead_json TEXT');
+    }
   }).immediate();
 
   const readStream = db.query<StreamRow, [string]>('SELECT * FROM comprehension_streams WHERE stream = ?');
-  const insertStream = db.query('INSERT INTO comprehension_streams (stream, version, answers, current_json, result_json, lookups_json, recent_json, updated_at) VALUES (?, 0, 0, NULL, NULL, ?, ?, ?)');
-  const saveStream = db.query('UPDATE comprehension_streams SET version = ?, answers = ?, current_json = ?, result_json = ?, lookups_json = ?, recent_json = ?, updated_at = ? WHERE stream = ?');
+  const insertStream = db.query('INSERT INTO comprehension_streams (stream, version, answers, current_json, result_json, lookups_json, recent_json, updated_at, ahead_json) VALUES (?, 0, 0, NULL, NULL, ?, ?, ?, NULL)');
+  const saveStream = db.query('UPDATE comprehension_streams SET version = ?, answers = ?, current_json = ?, result_json = ?, lookups_json = ?, recent_json = ?, updated_at = ?, ahead_json = ? WHERE stream = ?');
   const readLevels = db.query<{ mode: Mode; value: number }, []>('SELECT mode, value FROM comprehension_levels');
   const saveLevel = db.query('UPDATE comprehension_levels SET value = ? WHERE mode = ?');
   const allHistory = db.query<HistoryRow, []>(`SELECT * FROM comprehension_history WHERE ${SERVED}`);
@@ -313,7 +319,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   }
 
   function persist(row: StreamRow, at: Date): void {
-    saveStream.run(row.version, row.answers, row.current_json, row.result_json, row.lookups_json, row.recent_json, at.toISOString(), row.stream);
+    saveStream.run(row.version, row.answers, row.current_json, row.result_json, row.lookups_json, row.recent_json, at.toISOString(), row.ahead_json, row.stream);
   }
 
   // A stored exercise of a kind Echo does not serve reads as none; ensureCurrent replaces it.
@@ -324,6 +330,13 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   const resultOf = (row: StreamRow): ExerciseResult | null => (row.result_json ? JSON.parse(row.result_json) as ExerciseResult : null);
   const lookupsOf = (row: StreamRow): string[] => JSON.parse(row.lookups_json) as string[];
   const recentOf = (row: StreamRow): string[] => JSON.parse(row.recent_json) as string[];
+  // The items answered lately, newest first, once current is answered.
+  const recentAfter = (row: StreamRow, current: Current): string[] => [current.itemId, ...recentOf(row).filter((id) => id !== current.itemId)].slice(0, RECENT);
+  // A pick made ahead: the exercise Next brings after one outcome, when it was picked, the levels that outcome leaves,
+  // and (one step further) the picks after each outcome of it.
+  type Pick = { pick: Current | null; at: string; level: StreamLevel[]; ahead?: Partial<Record<Outcome, Pick>> };
+  const aheadOf = (row: StreamRow): Partial<Record<Outcome, Pick>> | null => (row.ahead_json ? JSON.parse(row.ahead_json) as Partial<Record<Outcome, Pick>> : null);
+  const outcomesOf = (current: Current): Outcome[] => (current.mode === 'read' ? ['correct', 'helped', 'incorrect'] : ['correct', 'incorrect']);
 
   // ── Selection ────────────────────────────────────────────────────────────────
   // Weak now: a word scoring below 0, so fixing a word takes it off the list.
@@ -429,11 +442,10 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     return untried.length ? longestAgo(untried) : oldest(fresh(list));
   }
 
-  function select(stream: StreamId, row: StreamRow, at: Date): Current | null {
+  function select(stream: StreamId, row: StreamRow, at: Date, known = knownStatus()): Current | null {
     const history = new Map(allHistory.all().map((entry) => [`${entry.exercise_key}|${entry.mode}`, entry]));
     const metAt = new Map<string, string>();
     for (const entry of history.values()) if ((metAt.get(entry.item_id) ?? '') < entry.last_at) metAt.set(entry.item_id, entry.last_at);
-    const known = knownStatus();
     const value = levels();
     const available = pool(stream, history, known);
     // A passage just answered keeps its reader: its remaining questions follow in the same mode while it is fresh.
@@ -509,20 +521,96 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     };
   }
 
-  function snapshot(row: StreamRow): StreamState {
+  function levelView(): StreamLevel[] {
     const value = levels();
+    return MODES.map((mode) => {
+      const raw = value.get(mode) ?? MIN_LEVEL;
+      return { mode, label: LEVEL_OF(raw), value: Math.round(raw * 100) / 100 };
+    });
+  }
+
+  function checkOf(current: Current): ExerciseCheck {
+    const item = itemOf(current);
+    const explanation = current.kind === 'question' ? item.passage!.questions[current.questionIndex! - 1]!.explanation : undefined;
+    return { answer: shownChoices(item, current).answerIndex, ...(explanation ? { explanation } : {}), lines: item.lines, gloss: item.gloss };
+  }
+
+  function snapshot(row: StreamRow): StreamState {
     const current = currentOf(row);
+    const result = resultOf(row);
+    const ahead = aheadOf(row);
     return {
       stream: row.stream as StreamId,
-      level: MODES.map((mode) => {
-        const raw = value.get(mode) ?? MIN_LEVEL;
-        return { mode, label: LEVEL_OF(raw), value: Math.round(raw * 100) / 100 };
-      }),
+      level: levelView(),
       current: current ? view(current) : null,
-      result: resultOf(row),
+      result,
       lookups: lookupsOf(row),
       version: row.version,
+      check: current && !result ? checkOf(current) : null,
+      after: ahead ? aheadView(ahead, true) : null,
     };
+  }
+
+  // A pick whose item has left the bank is not shown ahead; next() picks again for it.
+  function aheadView(ahead: Partial<Record<Outcome, Pick>>, deeper: boolean): Partial<Record<Outcome, ExerciseAhead>> {
+    return Object.fromEntries(Object.entries(ahead).map(([outcome, entry]) => {
+      const pick = entry.pick && items.has(entry.pick.itemId) ? entry.pick : null;
+      const shown: ExerciseAhead = { level: entry.level, current: pick ? view(pick) : null, check: pick ? checkOf(pick) : null };
+      return [outcome, deeper && pick && entry.ahead ? { ...shown, after: aheadView(entry.ahead, false) } : shown];
+    }));
+  }
+
+  // Runs fn inside a savepoint that is always rolled back: what an answer would change, without changing it.
+  const undone = Symbol('undone');
+  function dryRun<T>(fn: () => T): T {
+    let value: T | undefined;
+    try { db.transaction(() => { value = fn(); throw undone; })(); } catch (error) { if (error !== undone) throw error; }
+    return value as T;
+  }
+
+  // What answering current with this outcome writes, done inside a dry run; returns the stream row it leaves.
+  function answerIn(stream: StreamId, row: StreamRow, current: Current, outcome: Outcome, at: Date): StreamRow {
+    const answered = { ...row, answers: row.answers + 1, recent_json: JSON.stringify(recentAfter(row, current)) };
+    schedule(current, outcome, stream, answered.answers, at);
+    adjust(current.mode, outcome);
+    return answered;
+  }
+
+  // The exercise Next brings after each outcome the current one can have, and the one after that for each outcome of
+  // it, picked with the same steps answer() and next() take on rolled-back copies of the answers, so the phone can go
+  // two questions on before the Mac has saved them. held: the picks after current made one step earlier (when it was
+  // itself a pick ahead), kept so the phone's picks and the Mac's stay the same.
+  function lookAhead(stream: StreamId, row: StreamRow, current: Current, at: Date, held?: Partial<Record<Outcome, Pick>>): string {
+    const known = knownStatus();
+    const ahead: Partial<Record<Outcome, Pick>> = {};
+    for (const outcome of outcomesOf(current)) {
+      ahead[outcome] = dryRun(() => {
+        const answered = answerIn(stream, row, current, outcome, at);
+        const kept = held?.[outcome];
+        const pick = kept ? kept.pick : select(stream, answered, at, known);
+        const made: Pick = { pick, at: kept?.at ?? at.toISOString(), level: levelView() };
+        if (!pick) return made;
+        made.ahead = {};
+        for (const following of outcomesOf(pick)) {
+          made.ahead[following] = dryRun(() => ({ pick: select(stream, answerIn(stream, answered, pick, following, at), at, known), at: at.toISOString(), level: levelView() }));
+        }
+        return made;
+      });
+    }
+    return JSON.stringify(ahead);
+  }
+
+  // The pick made ahead for this outcome, unless it no longer fits: its item left the bank, its recording went, or an
+  // answer in another stream since it was picked changed what it was picked from. Answers in this stream since are
+  // the ones the pick was worked out after.
+  const elsewhereSince = db.query<{ count: number }, [string, string]>('SELECT count(*) AS count FROM comprehension_answers WHERE stream != ? AND answered_at > ?');
+  function heldPick(row: StreamRow, outcome: Outcome): Pick | null {
+    const entry = aheadOf(row)?.[outcome];
+    const pick = entry?.pick;
+    if (!entry || !pick) return null;
+    const item = items.get(pick.itemId);
+    if (!item || (pick.mode === 'listen' && !item.clips.every((clip) => clipExists(clip)))) return null;
+    return elsewhereSince.get(row.stream, entry.at)!.count ? null : entry;
   }
 
   // ── Answer checking ──────────────────────────────────────────────────────────
@@ -617,6 +705,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     const chosen = select(stream, row, at);
     if (!chosen && !waiting && !unserved) return false;
     row.current_json = chosen ? JSON.stringify(chosen) : null;
+    row.ahead_json = chosen ? lookAhead(stream, row, chosen, at) : null;
     row.version += 1;
     return true;
   }
@@ -625,7 +714,11 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
     return db.transaction(() => {
       const at = now();
       const row = loadStream(stream, at);
-      if (ensureCurrent(row, stream, at)) persist(row, at);
+      let changed = ensureCurrent(row, stream, at);
+      const current = currentOf(row);
+      // A current exercise from before look-ahead was kept gets its picks here, before it can be answered.
+      if (current && !row.result_json && !row.ahead_json) { row.ahead_json = lookAhead(stream, row, current, at); changed = true; }
+      if (changed) persist(row, at);
       return snapshot(row);
     }).immediate();
   }
@@ -668,8 +761,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       // Every comprehension answer is a choice, so its spelling flag is 0.
       addAnswer.run(input.requestId, stream, current.key, current.mode, current.itemId, current.kind, outcome,
         0, result.given, level.before, level.after, at.toISOString());
-      const recent = [current.itemId, ...recentOf(row).filter((id) => id !== current.itemId)].slice(0, RECENT);
-      row.recent_json = JSON.stringify(recent);
+      row.recent_json = JSON.stringify(recentAfter(row, current));
       row.result_json = JSON.stringify(result);
       row.version += 1;
       persist(row, at);
@@ -684,13 +776,18 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       const row = loadStream(stream, at);
       if (!claim(input.requestId, 'next', stream, at)) return snapshot(row);
       match(row, input);
-      if (!row.result_json) throw new StoreError('Answer this exercise before moving on.', 409);
+      const outcome = resultOf(row)?.outcome;
+      if (!outcome) throw new StoreError('Answer this exercise before moving on.', 409);
+      const held = heldPick(row, outcome);
       row.current_json = null;
       row.result_json = null;
       row.lookups_json = '[]';
       row.version += 1;
-      const chosen = select(stream, row, at);
+      // The pick made when the answered exercise was shown, for the outcome it got, so what the phone showed ahead
+      // is what comes; it starts now, for the check on items answered elsewhere meanwhile (ensureCurrent).
+      const chosen = held ? { ...held.pick!, startedAt: at.toISOString() } : select(stream, row, at);
       row.current_json = chosen ? JSON.stringify(chosen) : null;
+      row.ahead_json = chosen ? lookAhead(stream, row, chosen, at, held?.ahead) : null;
       persist(row, at);
       return snapshot(row);
     }).immediate();

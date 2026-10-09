@@ -3,7 +3,7 @@ import { Database } from 'bun:sqlite';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import type { ComprehensionPassage, ComprehensionSentence, ExerciseView, StreamId, StreamState } from '../comprehension-contract';
+import type { ComprehensionPassage, ComprehensionSentence, ExerciseAhead, ExerciseView, StreamId, StreamState } from '../comprehension-contract';
 import type { GrammarLevel } from '../contract';
 import type { Bank } from '../lib/comprehension-content';
 import { createComprehensionStore, type ComprehensionStore, type WordKnowledge } from '../lib/comprehension-store';
@@ -111,15 +111,16 @@ function seeded(seed = 11): () => number {
 
 type Fixture = { store: ComprehensionStore; dbPath: string; reopen: (seed?: number) => ComprehensionStore };
 
-function fixture(options: { clips?: Set<string>; known?: Map<string, WordKnowledge>; seed?: number; at?: Date } = {}): Fixture {
+function fixture(options: { clips?: Set<string>; known?: Map<string, WordKnowledge>; seed?: number; at?: Date; ticking?: boolean } = {}): Fixture {
   const directory = mkdtempSync(join(tmpdir(), 'echo-comprehension-'));
   directories.push(directory);
   const dbPath = join(directory, 'echo.db');
   const clips = options.clips ?? everyClip;
   const at = options.at ?? new Date('2026-03-01T09:00:00Z');
+  let ticks = 0;
   const open = (seed = options.seed ?? 11) => {
     const store = createComprehensionStore(bank, {
-      dbPath, now: () => at, random: seeded(seed),
+      dbPath, now: () => (options.ticking ? new Date(at.getTime() + ++ticks * 1000) : at), random: seeded(seed),
       clipExists: (clip) => clips.has(clip),
       knownStatus: () => options.known ?? new Map<string, WordKnowledge>(),
     });
@@ -228,6 +229,9 @@ describe('scheduling', () => {
       between.push(state.current!.key);
       state = step(store, 'read');
     }
+    // A passage under way finishes first, since its questions follow each other; the miss comes straight after.
+    const passage = between.at(-1)!.split(':')[0];
+    while (state.current!.key !== missed && state.current!.item.id === passage) state = step(store, 'read');
     expect(between).not.toContain(missed);
     expect(state.current!.key).toBe(missed);
   });
@@ -435,6 +439,50 @@ describe('multiple choice', () => {
     const after = shop.reopen(99).state('read');
     expect(after.current!.key).toBe(before.current!.key);
     expect(after.current!.choices).toEqual(before.current!.choices);
+  });
+});
+
+describe('answered ahead of the server', () => {
+  test('the check settles an answer as the server does, and Next brings the picks and levels shown one and two ahead', () => {
+    for (const stream of ['listen', 'read', 'mix'] as const) {
+      // A clock that moves, as a real one does between requests: an exercise starts after the answer before it.
+      const { store } = fixture({ ticking: true });
+      const outcomeAt = (step: number) => (step % 3 === 0 ? 'incorrect' : 'correct');
+      // Picked at step s for the outcome of step s + 1: the level after that answer, and the exercise of step s + 2.
+      let twoAhead: ExerciseAhead | undefined;
+      let comingNext: ExerciseAhead | undefined;
+      let checkedTwo = 0;
+      for (let step = 0; step < 30; step++) {
+        const state = store.state(stream);
+        if (!state.current) break;
+        if (comingNext) { checkedTwo++; expect<ExerciseView | null>(state.current).toEqual(comingNext.current); expect(state.check).toEqual(comingNext.check); }
+        const expected = twoAhead;
+        const input = outcomeAt(step) === 'incorrect' ? wrongInput(state.current) : correctInput(state.current);
+        expect(state.check!.answer).toBe(correctInput(state.current).choice);
+        const settled = settle(store, stream, state, input);
+        expect(settled.result!.outcome).toBe(outcomeAt(step));
+        expect(settled.result!.expected).toBe(state.current.choices[state.check!.answer]);
+        expect(settled.result!.explanation).toBe(state.check!.explanation);
+        const held = state.after![settled.result!.outcome]!;
+        expect(settled.level).toEqual(held.level);
+        if (expected) expect(settled.level).toEqual(expected.level);
+        comingNext = expected;
+        twoAhead = held.after?.[outcomeAt(step + 1)];
+        const next = advance(store, stream, settled);
+        expect(next.current).toEqual(held.current);
+        expect(next.check).toEqual(held.check);
+      }
+      expect(checkedTwo).toBeGreaterThan(20);
+    }
+  });
+
+  test('after a lookup, Next brings the pick shown for a helped answer', () => {
+    const { store } = fixture();
+    const state = store.state('read');
+    const looked = store.lookup({ stream: 'read', key: state.current!.key, fr: state.current!.gloss[0]!.fr, version: state.version, requestId: 'look-ahead-1' });
+    const settled = settle(store, 'read', looked, correctInput(looked.current!));
+    expect(settled.result!.outcome).toBe('helped');
+    expect(advance(store, 'read', settled).current).toEqual(looked.after!.helped!.current);
   });
 });
 

@@ -513,6 +513,14 @@ async function route(req: Request): Promise<Response> {
     const comprehended = await comprehension.handle(path, req, url);
     if (comprehended) return comprehended;
     if (path === '/api/state' && req.method === 'GET') return json(store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
+    // The phone's first request on opening Echo or coming back to it: the reads its screen makes next, answered with
+    // nothing, so a Mac that has swapped Echo out pages it back in before the learner's first tap. It only reads.
+    if (path === '/api/warm' && req.method === 'GET') {
+      store.state(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all'));
+      // What picking a Listen or Read question reads: every word's status and score.
+      if (['listen', 'read', 'mix', 'focus'].includes(url.searchParams.get('screen') ?? '')) { store.listening(); store.browse('fr-en', 'all'); comprehension.summary(); }
+      return json({ ok: true });
+    }
     if (path === '/api/families' && req.method === 'GET') return json({ families, patterns });
     if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
     // Word id → gender for every noun, so the client can colour a tappable word linked to one.

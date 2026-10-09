@@ -324,6 +324,27 @@ describe('three-stack selection', () => {
     expect(predicted).toBeGreaterThan(30);
   });
 
+  test('the cards predicted after next are the ones that come, however the answers go', () => {
+    const { store } = fixture(undefined, thirtyWords);
+    const pattern = [true, false, false, true, true, true, false, true, false, false, true];
+    const states = [store.start('fr-en', 'all')];
+    const known: boolean[] = [];
+    for (let step = 0; step < 60 && states.at(-1)!.current; step++) {
+      known.push(pattern[step % pattern.length]!);
+      states.push(store.grade(answer(states.at(-1)!, known.at(-1)!)));
+    }
+    const card = (view: Snapshot['current'] | undefined) => view ? { id: view.id, version: view.version } : null;
+    const how = (value: boolean) => (value ? 'known' : 'missed');
+    let checked = 0;
+    for (let index = 0; index + 3 < states.length; index++) {
+      const ahead = states[index]!.ahead?.[how(known[index]!)];
+      if (ahead?.card) { checked++; expect(card(states[index + 2]!.current)).toEqual(card(ahead.card)); }
+      const after = ahead?.after?.[how(known[index + 1]!)];
+      if (after) { checked++; expect(card(states[index + 3]!.current)).toEqual(card(after)); }
+    }
+    expect(checked).toBeGreaterThan(80);
+  });
+
   test('undo restores the ten-card boundary and reopening does not restart or reshuffle the queue', () => {
     const { store, open } = fixture(undefined, thirtyWords);
     let state = store.start('fr-en', 'all');
