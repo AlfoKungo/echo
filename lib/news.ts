@@ -1,6 +1,7 @@
 // News: RFI's Journal en français facile, ten minutes of the day's world news in slow French read by RFI's own
 // presenters, Monday to Friday, with RFI's transcript; read and heard like a song's lyrics. A check (at start and every
-// 30 minutes, server.ts) finds new editions on RFI's page and keeps the latest KEEP. Each edition is prepared in steps,
+// 30 minutes, server.ts) finds new editions on RFI's page, from the day News first looked (no earlier ones are fetched),
+// and keeps the latest KEEP. Each edition is prepared in steps,
 // each saved as it finishes, so a restart carries on where it stopped: the transcript (from the edition's page), the
 // recording (<audio>/news/<yyyymmdd>.mp3), the time each line starts (Whisper on this Mac, aligned to RFI's text, which
 // stays the words shown), then the notes (lib/song-lyrics.ts). A step that fails is kept on the edition, shown, and
@@ -242,6 +243,18 @@ export function createNews(deps: NewsDeps) {
     notes: (edition) => !!edition.notes,
   };
   const nextStep = (edition: Edition) => STEPS.find((step) => !done[step](edition)) ?? null;
+  // The day News first looked for editions, kept in <dir>/since: earlier editions are never fetched, and one dated
+  // before it stays only if it is already prepared.
+  const since = (() => {
+    const sinceFile = join(deps.dir, 'since');
+    const stored = existsSync(sinceFile) ? readFileSync(sinceFile, 'utf8').trim() : '';
+    if (/^\d{8}$/.test(stored)) return stored;
+    const day = now();
+    const today = `${day.getFullYear()}${String(day.getMonth() + 1).padStart(2, '0')}${String(day.getDate()).padStart(2, '0')}`;
+    writeFileSync(sinceFile, `${today}\n`);
+    return today;
+  })();
+  const wanted = (date: string) => date >= since || !nextStep(read(date));
   // The edition being prepared, and how far its notes are.
   let working: { date: string; step: NewsStep; done: number; total: number } | null = null;
   let listError: string | null = null;
@@ -280,14 +293,16 @@ export function createNews(deps: NewsDeps) {
     }
   }
 
-  // The latest KEEP editions of those listed and those kept; older ones go, recording and all.
+  // The latest KEEP editions of those listed from `since` on and those kept; older ones, and unprepared ones from
+  // before `since`, go, recording and all.
   function keepLatest(listed: { date: string; page: string; title: string }[]): void {
-    const kept = new Set([...dates(), ...listed.map((entry) => entry.date)].sort().reverse().slice(0, KEEP));
-    for (const entry of listed) {
+    const fresh = listed.filter((entry) => entry.date >= since);
+    const kept = new Set([...dates(), ...fresh.map((entry) => entry.date)].sort().reverse().slice(0, KEEP));
+    for (const entry of fresh) {
       if (kept.has(entry.date) && !existsSync(file(entry.date))) save({ ...entry, mp3: null, stanzas: null, starts: null, notes: null, failure: null });
     }
     for (const date of dates()) {
-      if (kept.has(date)) continue;
+      if (kept.has(date) && wanted(date)) continue;
       for (const path of [file(date), recording(date), `${recording(date)}.part`]) rmSync(path, { force: true });
     }
   }
@@ -303,7 +318,7 @@ export function createNews(deps: NewsDeps) {
         listError = null;
       }
       catch (error) { listError = error instanceof Error ? error.message : String(error); console.error(`news: the list of editions could not be read: ${listError}`); }
-      for (const date of dates()) if (nextStep(read(date))) await prepare(date);
+      for (const date of dates()) if (date >= since && nextStep(read(date))) await prepare(date);
     })().finally(() => { running = null; });
     return running;
   }
@@ -319,7 +334,7 @@ export function createNews(deps: NewsDeps) {
   }
 
   function list(): { editions: NewsSummary[]; error: string | null } {
-    return { editions: dates().map((date) => summary(read(date))), error: listError };
+    return { editions: dates().filter(wanted).map((date) => summary(read(date))), error: listError };
   }
 
   // An edition as read: its lines with their notes once written (plain until then), and the line times once known.

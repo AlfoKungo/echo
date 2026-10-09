@@ -88,6 +88,8 @@ describe('the editions kept', () => {
         return PAGE;
       },
       download: async (_url, file) => writeFileSync(file, 'mp3'),
+      // News first looked before every edition these tests list.
+      now: () => new Date('2026-08-01T12:00:00'),
       transcribe: async () => {
         if (transcribeFailures-- > 0) throw new Error('Whisper could not listen to the recording (no model).');
         return lines.flatMap((line, index) => line.split(' ').map((word, at) => ({ text: word, at: index * 10 + at * 0.4 })));
@@ -105,7 +107,7 @@ describe('the editions kept', () => {
     await news.check();
     const kept = listed.slice(-KEEP).reverse();
     expect(news.list().editions.map((edition) => edition.date)).toEqual(kept);
-    expect(readdirSync(dir).sort()).toEqual(kept.map((date) => `${date}.json`).sort());
+    expect(readdirSync(dir).sort()).toEqual([...kept.map((date) => `${date}.json`), 'since'].sort());
     expect(existsSync(join(audioDir, '20260801.mp3'))).toBe(false);
   });
 
@@ -119,5 +121,30 @@ describe('the editions kept', () => {
     const ready = news.view('20261007');
     expect(ready).toMatchObject({ status: 'ready', step: null, error: null, noted: true });
     expect(ready.starts).toHaveLength(ready.stanzas.flat().length);
+  });
+
+  test('start on the day News first looks: earlier editions are not fetched, and only prepared ones stay', async () => {
+    const root = mkdtempSync(join(tmpdir(), 'echo-news-'));
+    directories.push(root);
+    const dir = join(root, 'news'), audioDir = join(root, 'audio');
+    const listed = ['20261005', '20261007', '20261008', '20261009'];
+    const make = (today: string) => createNews({
+      dir, audioDir, ask: async () => '{"lines": []}', now: () => new Date(`${today}T12:00:00`),
+      fetchText: async (url) => url === LIST_URL ? listed.map((date) => `<a href="/fr/podcasts/journal-en-fran%C3%A7ais-facile/${date}-les-titres">${date}</a>`).join('\n') : PAGE,
+      download: async (_url, file) => writeFileSync(file, 'mp3'),
+      transcribe: async () => [],
+    });
+    mkdirSync(dir, { recursive: true });
+    mkdirSync(audioDir, { recursive: true });
+    const prepared = { date: '20261006', page: '', title: 'Prepared', mp3: 'x.mp3', stanzas: [['Bonjour.']], starts: [0], notes: [[{ fr: 'Bonjour.', en: 'Hello.', words: [] }]], failure: null };
+    writeFileSync(join(dir, '20261006.json'), JSON.stringify(prepared));
+    writeFileSync(join(audioDir, '20261006.mp3'), 'mp3');
+    writeFileSync(join(dir, '20261005.json'), JSON.stringify({ ...prepared, date: '20261005', starts: null, notes: null }));
+    expect(make('2026-10-08').list().editions.map((edition) => edition.date)).toEqual(['20261006']);
+    // A later start keeps the first day.
+    const later = make('2026-10-20');
+    await later.check();
+    expect(later.list().editions.map((edition) => edition.date)).toEqual(['20261009', '20261008', '20261006']);
+    expect(readdirSync(dir).sort()).toEqual(['20261006.json', '20261008.json', '20261009.json', 'since']);
   });
 });
