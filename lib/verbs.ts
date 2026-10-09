@@ -336,14 +336,18 @@ function soundsAlike(verb: Verb, tense: 'pres' | 'imp'): boolean {
   return tense === 'pres' ? one.endsWith('e') && more === `${one}nt` : more === one.replace(/ait$/, 'aient');
 }
 
-export function earQuestion(verb: Verb, tense: Tense, person: number, kind: EarKind): EarQuestion | null {
+// A "Which tense?" question offers only the tenses being practised (Verbs' Practising line), so it needs two of
+// them; with one, every answer would be that tense.
+export function earQuestion(verb: Verb, tense: Tense, person: number, kind: EarKind, tenses: readonly Tense[] = EAR_TENSES): EarQuestion | null {
   const forms = conjugate(verb, tense);
   if (!forms[person]) return null;
   const said = earSaid(verb, tense, person);
   const id = `${verb.id}~${tense}~${person}~${kind}`;
   if (kind === 'tense') {
+    const offered = EAR_TENSES.filter((entry) => tenses.includes(entry));
+    if (offered.length < 2 || !offered.includes(tense)) return null;
     const cue: Record<Tense, string> = { pres: 'the présent', imp: 'the imparfait: its ending sounds like “è” (-ais) or “yon” (-ions)', fut: 'the futur: listen for the r before the ending', pc: 'the passé composé: a helper and then the participle' };
-    return { id, verbId: verb.id, tense, person, kind, said, question: 'Which tense?', choices: EAR_TENSES.map((entry) => TENSE_NAMES[entry]), answer: EAR_TENSES.indexOf(tense), why: `${said}: ${cue[tense]}.` };
+    return { id, verbId: verb.id, tense, person, kind, said, question: 'Which tense?', choices: offered.map((entry) => TENSE_NAMES[entry]), answer: offered.indexOf(tense), why: `${said}: ${cue[tense]}.` };
   }
   if (tense !== 'pres' && tense !== 'imp') return null;
   const one = earSaid(verb, tense, 2), more = earSaid(verb, tense, 5);
@@ -355,14 +359,15 @@ export function earQuestion(verb: Verb, tense: Tense, person: number, kind: EarK
   return { id, verbId: verb.id, tense, person, kind, said, question: 'One person or more?', choices: NUMBER_CHOICES, answer, why };
 }
 
-// The questions By ear can ask about a verb: which tense, for je and nous (skipping nous where -ions would sound
-// like -ons after an i or y), and one person or more, for il and ils in the présent and the imparfait.
-export function earQuestions(verb: Verb): EarQuestion[] {
+// The questions By ear can ask about a verb in the tenses practised: which tense, for je and nous (skipping nous
+// where -ions would sound like -ons after an i or y), and one person or more, for il and ils in the présent and the
+// imparfait.
+export function earQuestions(verb: Verb, tenses: readonly Tense[] = EAR_TENSES): EarQuestion[] {
   const questions: (EarQuestion | null)[] = [];
   const speakers = verb.impersonal ? [2] : [0, 3];
   for (const tense of EAR_TENSES) for (const person of speakers) {
     if (person === 3 && tense === 'imp' && /[iy]$/.test(verb.pres[3]!.replace(/ons$/, ''))) continue;
-    questions.push(earQuestion(verb, tense, person, 'tense'));
+    questions.push(earQuestion(verb, tense, person, 'tense', tenses));
   }
   if (!verb.impersonal) for (const tense of ['pres', 'imp'] as const) for (const person of [2, 5]) questions.push(earQuestion(verb, tense, person, 'number'));
   return questions.filter((question): question is EarQuestion => !!question);

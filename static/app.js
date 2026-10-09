@@ -3552,7 +3552,9 @@ async function checkVerbTable() {
 // ── By ear ──
 async function startVerbEar() {
   loading = true; notice = null; retryAction = null; verbEar = null; render();
-  try { const { questions } = await api('api/verbs/ear', { method: 'POST', body: JSON.stringify(vbSettings()) }); verbEar = { questions, index: 0, chose: null, result: null, right: 0 }; }
+  // An answer is checked against the tenses the round was asked in; Mistakes' shaky forms are asked in all four.
+  const settings = vbSettings();
+  try { const { questions } = await api('api/verbs/ear', { method: 'POST', body: JSON.stringify(settings) }); verbEar = { questions, index: 0, chose: null, result: null, right: 0, tenses: settings.set === 'shaky' ? undefined : settings.tenses }; }
   catch (error) { notice = { message: error.message }; retryAction = { type: 'verbs-ear' }; }
   loading = false;
   if (screen !== 'verbs-ear') return;
@@ -3586,7 +3588,7 @@ async function chooseVerbEar(choice) {
   const question = verbEar?.questions[verbEar.index];
   if (!question || verbEar.chose !== null || busy) return;
   verbEar.chose = choice; busy = true; render();
-  try { verbEar.result = await api('api/verbs/ear-answer', { method: 'POST', body: JSON.stringify({ requestId: requestId(), id: question.id, choice }) }); if (verbEar.result.right) verbEar.right += 1; }
+  try { verbEar.result = await api('api/verbs/ear-answer', { method: 'POST', body: JSON.stringify({ requestId: requestId(), id: question.id, choice, tenses: verbEar.tenses }) }); if (verbEar.result.right) verbEar.right += 1; }
   catch (error) { verbEar.chose = null; notice = { message: error.message }; }
   busy = false;
   if (screen !== 'verbs-ear') return;

@@ -362,22 +362,24 @@ export function createVerbDrills(options: {
     return { cells, right: cells.filter((cell) => cell?.right).length, total: persons(verb).length, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
   }
 
-  // A By ear round from the phrases already recorded, the questions missed most first, at most half of them
-  // "one person or more".
+  // A By ear round from the phrases already recorded, in the tenses practised, the questions missed most first. "One
+  // person or more" takes at most half the round, unless "Which tense?" can't be asked (one tense chosen).
   function earRound(input: RoundInput): EarItem[] {
     const verbs = chosenVerbs(input), tenses = chosenTenses(input);
     const record = new Map(heard.all().map((row) => [row.question, row]));
-    const pool = verbs.flatMap((verb) => earQuestions(verb).filter((question) => tenses.includes(question.tense)).flatMap((question) => {
+    const pool = verbs.flatMap((verb) => earQuestions(verb, tenses).filter((question) => tenses.includes(question.tense)).flatMap((question) => {
       const audio = options.earAudio(question.said);
       const seen = record.get(question.id);
       return audio ? [{ question, audio, verbId: verb.id, weight: (seen?.misses ?? 0) * 2 - (seen?.answers ?? 0) * 0.5 + random() * 3 }] : [];
     }));
+    if (!pool.length && !tenses.some((tense) => tense === 'pres' || tense === 'imp') && tenses.length < 2) throw new StoreError('By ear needs two tenses to ask which one you hear, or the présent or imparfait to ask how many people. Add one on the Practising line.', 409);
     if (!pool.length) throw new StoreError('The phrases for By ear are still being recorded on your Mac. Try again later.', 409);
+    const numberCap = pool.some((entry) => entry.question.kind === 'tense') ? EAR_ROUND / 2 : EAR_ROUND;
     const picked: typeof pool = [];
     let numbers = 0;
     for (const entry of pool.sort((left, right) => right.weight - left.weight)) {
       if (picked.length >= EAR_ROUND) break;
-      if (entry.question.kind === 'number' && numbers >= EAR_ROUND / 2) continue;
+      if (entry.question.kind === 'number' && numbers >= numberCap) continue;
       if (picked.some((other) => other.question.said === entry.question.said)) continue;
       if (entry.question.kind === 'number') numbers++;
       picked.push(entry);
@@ -385,11 +387,13 @@ export function createVerbDrills(options: {
     return spread(picked.sort(() => random() - 0.5)).map(({ question, audio }) => ({ id: question.id, audio, question: question.question, choices: question.choices }));
   }
 
-  function earAnswer(input: { requestId: string; id: string; choice: number }) {
+  // An answer is checked against the question as the round asked it: its tenses are the round's.
+  function earAnswer(input: { requestId: string; id: string; choice: number; tenses?: unknown }) {
     const requestId = requestIdOf(input?.requestId);
     const [verbId, tense, person, kind] = typeof input?.id === 'string' ? input.id.split('~') : [];
     const found = findForm(verbId, tense, Number(person));
-    const question = kind === 'tense' || kind === 'number' ? earQuestion(found.verb, found.tense, found.person, kind as EarKind) : null;
+    const tenses = Array.isArray(input?.tenses) ? TENSES.filter((entry) => (input.tenses as unknown[]).includes(entry)) : [...TENSES];
+    const question = kind === 'tense' || kind === 'number' ? earQuestion(found.verb, found.tense, found.person, kind as EarKind, tenses) : null;
     if (!question) throw new StoreError('That question is not in Echo.', 404);
     if (!Number.isInteger(input.choice) || input.choice < 0 || input.choice >= question.choices.length) throw new StoreError('Choose one of the answers.');
     const right = input.choice === question.answer;

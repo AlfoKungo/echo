@@ -108,6 +108,16 @@ describe('conjugation and answers', () => {
     expect(tense.choices[tense.answer]).toBe('futur');
     expect(earQuestions(verb('falloir')).every((question) => question.kind === 'tense' && question.person === 2)).toBe(true);
   });
+
+  test('By ear asks which tense only among the tenses practised, and only when there are two', () => {
+    expect(earQuestions(verb('aller'), ['pres']).some((question) => question.kind === 'tense')).toBe(false);
+    const asked = earQuestions(verb('aller'), ['pres', 'pc']).filter((question) => question.kind === 'tense');
+    expect(new Set(asked.map((question) => question.tense))).toEqual(new Set(['pres', 'pc']));
+    for (const question of asked) {
+      expect(question.choices).toEqual(['présent', 'passé composé']);
+      expect(question.choices[question.answer]).toBe(question.tense === 'pres' ? 'présent' : 'passé composé');
+    }
+  });
 });
 
 describe('guides', () => {
