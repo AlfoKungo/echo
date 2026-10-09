@@ -766,7 +766,7 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/verbs/table' && req.method === 'POST') { const data = await body(req); return json(verbs.table(data as never)); }
     if (path === '/api/verbs/ear' && req.method === 'POST') { const data = await body(req); return json({ questions: verbs.earRound(data as never) }); }
     if (path === '/api/verbs/ear-answer' && req.method === 'POST') { const data = await body(req); return json(verbs.earAnswer(data as never)); }
-    if (path === '/api/verbs/rules' && req.method === 'POST') return json({ items: ruleCards.round() });
+    if (path === '/api/verbs/rules' && req.method === 'POST') { const data = await body(req); return json({ items: ruleCards.round(verbs.practising(data as never)) }); }
     if (path === '/api/verbs/rules/mark' && req.method === 'POST') { const data = await body(req); return json(ruleCards.mark(data as never)); }
     // By ear's recorded phrases.
     const earFile = path.match(/^\/audio\/radio\/(fr-[0-9a-f]{16})\.mp3$/);

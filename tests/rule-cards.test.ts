@@ -3,8 +3,8 @@ import { Database } from 'bun:sqlite';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createRuleCards, ruleCandidates, ruleDeck, type RuleCard } from '../lib/rule-cards';
-import { conjugate, verbOf, type VerbTable, type VerbWord } from '../lib/verbs';
+import { createRuleCards, presentStems, ruleCandidates, ruleDeck, type RuleCard } from '../lib/rule-cards';
+import { conjugate, TENSES, verbOf, type VerbTable, type VerbWord } from '../lib/verbs';
 import fixture from './fixtures/rule-verbs.json';
 
 // Tables as Claude wrote them in the learner's verbs.json, with their vocabulary words, in vocabulary order.
@@ -13,8 +13,21 @@ const verbs = words.map((word, index) => verbOf(tables[index]!, word));
 const idOf = (fr: string) => words.find((word) => word.fr === fr)!.id;
 const all = ruleCandidates(verbs, new Set());
 const cardFor = (cards: RuleCard[], kind: string, fr: string) => cards.find((card) => card.id === `${kind}:${idOf(fr)}`);
+const verbNamed = (fr: string) => verbs.find((verb) => verb.id === idOf(fr))!;
+const everything = { verbs, tenses: [...TENSES] };
 
 describe('how it’s built: the deck', () => {
+  test('the présent stems: one for a regular verb, two or three for the others, the forms for être, avoir, aller, faire', () => {
+    const stems = Object.fromEntries(['parler', 'finir', 'venir', 'prendre', 'manger', 'acheter', 'boire', 'pouvoir'].map((fr) => [fr, cardFor(all, 'pres', fr)!.answer]));
+    expect(stems).toEqual({
+      parler: 'parl-', finir: 'fini- · finiss-', venir: 'vien- · ven- · vienn-', prendre: 'prend- · pren- · prenn-',
+      manger: 'mang- · mange-', acheter: 'achèt- · achet-', boire: 'boi- · buv- · boiv-', pouvoir: 'peu- · pouv- · peuv-',
+    });
+    for (const fr of ['être', 'avoir', 'aller', 'faire']) expect(presentStems(verbNamed(fr))).toBeNull();
+    expect(cardFor(all, 'pres', 'être')).toMatchObject({ ask: 'Présent: je, nous, ils', answer: 'je suis · nous sommes · ils sont' });
+    expect(cardFor(all, 'pres', 'falloir')).toBeUndefined();
+  });
+
   test('the imparfait stem is the nous présent without -ons, except être’s ét-', () => {
     expect(cardFor(all, 'imp', 'être')).toMatchObject({ clue: 'nous sommes', answer: 'ét-', examples: ['j’étais', 'nous étions', 'ils étaient'] });
     expect(cardFor(all, 'imp', 'prendre')).toMatchObject({ clue: 'nous prenons', answer: 'pren-' });
@@ -35,8 +48,6 @@ describe('how it’s built: the deck', () => {
     });
     expect(cardFor(all, 'fut', 'envoyer')!.examples).toEqual(['j’enverrai', 'il enverra', 'ils enverront']);
     expect(cardFor(all, 'fut', 'falloir')!.examples).toEqual(['il faudra']);
-    // A regular stem outside the started and common verbs is left out.
-    expect(cardFor(all, 'fut', 'manger')).toBeUndefined();
     expect(cardFor(ruleCandidates(verbs, new Set([idOf('attendre')])), 'fut', 'attendre')!.answer).toBe('attendr-');
   });
 
@@ -56,7 +67,7 @@ describe('how it’s built: the deck', () => {
   test('every example is the verb’s own form, as conjugate gives it', () => {
     for (const card of ruleCandidates(verbs, new Set(words.map((word) => word.id))).filter((entry) => entry.kind !== 'rule')) {
       const verb = verbs.find((entry) => card.id.endsWith(`:${entry.id}`))!;
-      const tense = card.kind as 'imp' | 'fut' | 'pc';
+      const tense = card.tense;
       const said = conjugate(verb, tense).flatMap((form) => form ? form.accepted : []);
       for (const example of card.examples) expect(said.some((form) => example.endsWith(form))).toBe(true);
     }
@@ -70,7 +81,7 @@ describe('how it’s built: the deck', () => {
 
   test('the rule cards list the learner’s être verbs and irregular futur stems', () => {
     const rules = all.filter((card) => card.kind === 'rule');
-    expect(rules.length).toBe(7);
+    expect(rules.length).toBe(10);
     expect(rules.find((card) => card.id === 'rule:pc-etre')!.rule).toContain('aller, venir, rester, partir, arriver, revenir, descendre, tomber');
     expect(rules.find((card) => card.id === 'rule:fut-stem')!.rule).toContain('ser- (être), aur- (avoir), fer- (faire), ir- (aller)');
     expect(rules.find((card) => card.id === 'rule:pc-agree')!.examples).toEqual(['elle est allée', 'ils sont allés', 'elles sont allées']);
@@ -85,9 +96,19 @@ describe('how it’s built: the deck', () => {
     expect(cardFor(deck, 'imp', 'commencer')).toBeDefined();
     for (const fr of ['tomber', 'jeter']) expect(cardFor(deck, 'imp', fr)).toBeUndefined();
     // A started verb's card is in, and weighs more than the same kind of card for a verb not started.
-    expect(cardFor(ruleDeck(verbs, new Set()), 'imp', 'étudier')).toBeUndefined();
+    expect(cardFor(ruleDeck(verbs, new Set(), verbs.slice(0, 20)), 'imp', 'étudier')).toBeUndefined();
     const some = ruleDeck(verbs, new Set([idOf('étudier')]));
     expect(cardFor(some, 'imp', 'étudier')!.value).toBeGreaterThan(cardFor(some, 'imp', 'voir')!.value);
+  });
+
+  test('the deck holds only the verbs and tenses on the Practising line', () => {
+    const picked = ['venir', 'parler', 'avoir peur'].map(verbNamed);
+    const deck = ruleDeck(verbs, new Set(), picked, ['pres']);
+    expect(deck.filter((card) => card.kind !== 'rule').map((card) => card.id).sort()).toEqual([`pres:${idOf('avoir')}`, `pres:${idOf('parler')}`, `pres:${idOf('venir')}`].sort());
+    expect(deck.filter((card) => card.kind === 'rule').map((card) => card.id)).toEqual(['rule:pres-er', 'rule:pres-ir', 'rule:pres-stems']);
+    const past = ruleDeck(verbs, new Set(), picked, ['pc', 'imp']);
+    expect(new Set(past.map((card) => card.tense))).toEqual(new Set(['pc', 'imp']));
+    expect(past.filter((card) => card.kind !== 'rule').length).toBe(6);
   });
 });
 
@@ -109,7 +130,7 @@ describe('how it’s built: marks', () => {
 
   test('a round shows the heaviest cards first, with recordings where they exist', () => {
     const { cards } = open();
-    const round = cards.round();
+    const round = cards.round(everything);
     expect(round.length).toBe(12);
     // tomber is started: its être + tombé card outweighs every other.
     expect(round[0]).toMatchObject({ id: `pc:${idOf('tomber')}`, answer: 'être + tombé' });
@@ -126,16 +147,16 @@ describe('how it’s built: marks', () => {
     const db = new Database(join(first.directory, 'echo.db'), { readonly: true });
     expect(db.query('SELECT COUNT(*) AS marks FROM rule_card_marks').get()).toEqual({ marks: 1 });
     db.close();
-    expect(first.cards.round()[0]!.id).not.toBe(top);
+    expect(first.cards.round(everything)[0]!.id).not.toBe(top);
     const missed = `fut:${idOf('envoyer')}`;
-    expect(first.cards.round()[0]!.id).not.toBe(missed);
+    expect(first.cards.round(everything)[0]!.id).not.toBe(missed);
     first.cards.mark({ requestId: 'b', id: missed, knew: false });
-    expect(first.cards.round()[0]!.id).toBe(missed);
+    expect(first.cards.round(everything)[0]!.id).toBe(missed);
     first.cards.close();
     closers.splice(0);
     const again = open(first.directory);
-    expect(again.cards.round()[0]!.id).toBe(missed);
-    expect(again.cards.round()[1]!.id).not.toBe(top);
+    expect(again.cards.round(everything)[0]!.id).toBe(missed);
+    expect(again.cards.round(everything)[1]!.id).not.toBe(top);
   });
 
   test('a mark needs a card Echo has, a request id and a yes or no', () => {

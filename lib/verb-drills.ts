@@ -534,7 +534,9 @@ export function createVerbDrills(options: {
     const started = new Set(options.vocabulary().filter((word) => word.status !== 'new').map((word) => word.id));
     return [...new Set(verbs.filter((verb, index) => index < COMMON || started.has(verb.id)).flatMap((verb) => earQuestions(verb).map((question) => question.said)))];
   }
+  // The verbs and tenses the Practising line picks, for drills kept outside this module (How it's built).
+  const practising = (input: RoundInput) => ({ verbs: chosenVerbs(input), tenses: chosenTenses(input) });
 
-  return { round, cards, mark, formScores, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, close: () => db.close() };
+  return { round, cards, mark, formScores, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, practising, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills>;
