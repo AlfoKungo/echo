@@ -5,6 +5,7 @@ import { createGrammarStore } from './lib/grammar-store';
 import { loadCourse } from './lib/grammar-content';
 import { loadBank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
+import { createGrammarEar } from './lib/grammar-ear';
 import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, layTape, planSentences, planTape, SENTENCE_TIMING, tapeView, VERB_TIMING, type Tape, type TapeItem } from './lib/walkman';
 import { createSongs } from './lib/songs';
 import { createClaude, createClaudeReader } from './lib/claude';
@@ -22,6 +23,7 @@ import { createVerbSentences } from './lib/verb-sentences';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
+import type { StreamId } from './comprehension-contract';
 import { backup as snapshot, offsite, OFFSITE_DIR } from './lib/backups';
 import { createAttempts } from './lib/recording-attempts';
 import { answers, answerTexts, hint, judge, QUIETEST_ANSWER, said, sayEnglish, SCORE_EXTRA_WORDS, SCORE_GAP } from './lib/say-check';
@@ -94,7 +96,9 @@ const grammarAudio = new Set(course.topics.flatMap(topic => topic.exercises.map(
 // Lanes Echo writes itself (lib/text-topup.ts) live next to the database, out of the checked-in content.
 const generatedLanes = join(dirname(dbPath), 'comprehension');
 let bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
-let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky() });
+// Grammar by ear (made below, once the rooms are known) shows its questions between Listen's.
+const between = (stream: StreamId) => (stream === 'listen' && grammarEar ? { ear: grammarEar.offer() } : {});
+let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between });
 const texts = createTextTopup({
   root, dataDir: dirname(dbPath), ask, stock: () => comprehension.stock(), attempts,
   ...(process.env.ECHO_TEXT_THRESHOLD ? { threshold: Number(process.env.ECHO_TEXT_THRESHOLD) } : {}),
@@ -104,7 +108,7 @@ const texts = createTextTopup({
   reload: async () => {
     bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
     const previous = comprehension;
-    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky() });
+    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between });
     setTimeout(() => previous.close(), 60_000);
   },
 });
@@ -196,8 +200,8 @@ const radio = createRadio({
 });
 // The Walkman's sentence tape plays every recorded Listen/Read sentence converted to the Walkman format, with
 // its English said and checked, and the Story page's tape does the same with each recorded story line (those
-// first, as there are few). They are made in the background after each Radio check, one renderer at a time,
-// each tried a few times.
+// first, as there are few). Grammar by ear's sentences go before everything else, as Listen waits on them. They are
+// made in the background after each Radio check, one renderer at a time, each tried a few times.
 let sentencesRecording: Promise<void> | null = null;
 function recordSentences(): Promise<void> {
   if (process.env.ECHO_WORD_AUDIO === 'off') return Promise.resolve();
@@ -208,10 +212,11 @@ function recordSentences(): Promise<void> {
       return [clips.fr, clips.en];
     }));
     const tape = verbs.walkmanPhrases();
+    const earSentences = (grammarEar?.phrases() ?? []).map(frenchClip);
     const phrases = [...tape.french.map(frenchClip), ...tape.english.map(englishClip), ...verbs.earPhrases().map(frenchClip)];
     const sentences = bank.sentences.filter((sentence) => existsSync(join(root, `audio/comprehension/${sentence.id}.mp3`)))
       .flatMap((sentence) => { const clips = sentenceClips(sentence); return [clips.fr, clips.en]; });
-    const missing = [...new Map([...storyLines, ...phrases, ...sentences].map((clip) => [clip.id, clip])).values()].filter((clip) => !radioClipExists(root, clip.id));
+    const missing = [...new Map([...earSentences, ...storyLines, ...phrases, ...sentences].map((clip) => [clip.id, clip])).values()].filter((clip) => !radioClipExists(root, clip.id));
     const allowed = new Set(attempts.allowed(missing.map((clip) => clip.id)));
     const plan = missing.filter((clip) => allowed.has(clip.id));
     if (!plan.length) return;
@@ -289,6 +294,24 @@ const verbSentences = roomsOff.includes('sentencecards') ? null : createVerbSent
   },
   ...(Number(process.env.ECHO_SENTENCE_BATCH) > 2 ? { batch: Number(process.env.ECHO_SENTENCE_BATCH) } : {}),
 });
+// Grammar by ear: in Listen, a question about a heard sentence that only its grammar answers, written ahead by
+// Claude (Opus) from the learner's started words and verbs and said by the Radio's French voice (lib/grammar-ear.ts).
+// A batch is written at start and whenever few are left; an Echo without the room (the friends') has none of it.
+const grammarEar = roomsOff.includes('earsentences') ? null : createGrammarEar({
+  dbPath, ask,
+  knowledge: () => {
+    const started = store.listening().filter((word) => word.status !== 'new');
+    const startedIds = new Set(started.map((word) => word.id));
+    const all = verbTables.verbs();
+    return { known: started.map((word) => ({ fr: word.fr, en: word.en })), verbs: [...all.filter((verb) => startedIds.has(verb.id)), ...all.slice(0, 30).filter((verb) => !startedIds.has(verb.id))] };
+  },
+  clip: (fr) => frenchClip(fr).id, audio: (clip) => `audio/radio/${clip}.mp3`,
+  recorded: (clip) => radioClipExists(root, clip), stuck: (clip) => attempts.skipped([clip]).length > 0,
+  // A recording already running was planned before this batch, so this one waits for it and plans again.
+  record: async () => { await sentencesRecording; await recordSentences(); },
+  listenAnswersSince: (since) => comprehension.answeredSince('listen', since),
+});
+if (grammarEar) void textsStarted.then(() => grammarEar.check());
 // The signed-in learner's name, in the friends' Echo (pilot/router.ts): the app shows it beside Sign out.
 const learnerName = process.env.ECHO_LEARNER?.trim() ?? '';
 const attribute = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -684,6 +707,8 @@ async function route(req: Request): Promise<Response> {
       }
       if (edition && !edition[2] && req.method === 'GET') return json(news.view(edition[1]!));
     }
+    // A Grammar by ear answer (the question itself comes with Listen's state, under ear).
+    if (grammarEar && path === '/api/ear/answer' && req.method === 'POST') return json(grammarEar.answer(await body(req)));
     if (path.startsWith('/api/write') && !roomsOff.includes('write')) {
       if (path === '/api/write' && req.method === 'GET') return json(writeIt.state());
       if (path === '/api/write/check' && req.method === 'POST') { const data = await body(req); return json(await writeIt.check(data)); }
@@ -812,6 +837,7 @@ async function stop() {
   writeIt.close();
   changeIt?.close();
   verbSentences?.close();
+  grammarEar?.close();
   sounds.close();
   verbs.close();
   ruleCards.close();

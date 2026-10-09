@@ -199,6 +199,9 @@ function chooseWalkmanTense(tense) {
 // One comprehension stream at a time: the Listen and Read screens, Practise and a Mistakes focus all show one.
 let streamId = '';
 let streamState = null;
+// Grammar by ear (lib/grammar-ear.ts): Listen's state carries one under ear when it is due. It is shown before the
+// question waiting under current, and its answer is kept here until Next.
+let earResult = null;
 let streamGeneration = 0;
 let heardKey = '';
 let audioBlocked = false;
@@ -288,21 +291,21 @@ function playClip(url, token) {
 // The line under the speaker: the line playing now, where it stopped, or why nothing is playing.
 function clipKey() {
   if (screen === 'story' && storyView) return `story:${storyView.episode.id}`;
-  const view = streamState?.current; return view ? `${streamId}:${view.key}` : '';
+  const view = shownView(); return view ? `${streamId}:${view.key}` : '';
 }
 function clipHint() {
-  const view = streamState?.current;
+  const view = shownView();
   if (clipProgress) return `line ${clipProgress.index} of ${clipProgress.total}`;
   if (!view?.audio?.length) return '';
   if (clipSpot?.key === clipKey() && view.audio.length > 1) return `paused · line ${clipSpot.heard + 1} of ${view.audio.length}`;
-  if (audioBlocked && view.mode === 'listen' && !streamState.result) return 'Tap to listen';
+  if (audioBlocked && view.mode === 'listen' && !shownSettled()) return 'Tap to listen';
   return view.audio.length > 1 ? `${view.audio.length} lines` : '';
 }
 // The speaker and its hint change as lines play, so the block is redrawn in place.
 function showClipProgress() {
   if (screen === 'story' && storyView) { const block = document.querySelector('.story .story-player'); if (block) block.outerHTML = storyPlayHTML(); return; }
   const block = document.querySelector('.listen-block');
-  if (block && streamState?.current) block.outerHTML = streamAudioHTML(streamState.current, !!streamState.result);
+  if (block && shownView()) block.outerHTML = streamAudioHTML(shownView(), shownSettled());
 }
 // Plays lines from `from` up to (not including) `to`; stopping short of the end leaves the spot after the last
 // line played, so Continue goes on from there.
@@ -1638,6 +1641,7 @@ function levelFor(mode) {
   return entry?.label || levels[mode] || '';
 }
 function applyStream(next) {
+  if (next.ear?.id !== streamState?.ear?.id) earResult = null;
   streamState = next;
   let changed = false;
   for (const entry of next.level || []) if (entry?.mode && entry.label && levels[entry.mode] !== entry.label) { levels[entry.mode] = entry.label; changed = true; }
@@ -1747,7 +1751,24 @@ function streamRevealHTML(result) {
   if (!result.lines?.length) return '';
   return `<section class="reveal" aria-label="The French and its meaning">${linesHTML(result.lines, result.gloss, true)}<p class="caption">Tap any word for its meaning.</p></section>`;
 }
+// The Grammar by ear question on screen in Listen, if any.
+function earShown() { return streamId === 'listen' && streamState?.ear ? streamState.ear : null; }
+// What the speaker plays: the Grammar by ear sentence while one is shown, else the stream's question.
+function shownView() { const ear = earShown(); return ear ? { key: `ear-${ear.id}`, mode: 'listen', audio: ear.audio } : streamState?.current; }
+function shownSettled() { return earShown() ? !!earResult : !!streamState?.result; }
+// The same choices, feedback and Next as a Listen question; then the French with its English.
+function earBodyHTML(ear) {
+  const result = earResult;
+  const settled = !!result;
+  const answered = settled ? { expected: ear.choices[result.answer], given: ear.choices[result.chosen], outcome: result.right ? 'correct' : 'incorrect', explanation: result.why } : null;
+  const again = result?.again ? '<p class="caption">It comes back once, a few questions on.</p>' : '';
+  const reveal = settled ? `<section class="reveal" aria-label="The French and its meaning">${linesHTML([{ fr: result.fr, en: result.en }], [], true)}</section>` : '';
+  const action = settled ? `<div class="stream-actions pinned"><button class="primary" data-action="stream-next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Next'}</button></div>` : '';
+  return `<p class="stream-item">Grammar by ear${ear.again ? ' · again' : ''}</p><p class="prompt-instruction">Listen, then answer.</p>${streamAudioHTML(shownView(), settled)}<p class="stream-question">${esc(ear.question)}</p><div class="answer-area">${streamAnswerHTML(ear, answered)}</div>${settled ? `${streamResultHTML(answered)}${again}${reveal}` : ''}${action}`;
+}
 function streamBodyHTML() {
+  const ear = earShown();
+  if (ear) return earBodyHTML(ear);
   const view = streamState.current;
   const result = streamState.result;
   const settled = !!result;
@@ -1813,7 +1834,7 @@ function renderMistakes() {
 }
 async function loadStream(id, message = '') {
   const token = ++streamGeneration;
-  streamId = id; streamState = null; audioBlocked = false; loading = true;
+  streamId = id; streamState = null; earResult = null; audioBlocked = false; loading = true;
   notice = message ? { kind: 'info', message } : null; retryAction = null;
   render();
   try {
@@ -3809,17 +3830,33 @@ function streamAction(kind, extra = {}) {
   }, () => loadStream(id, 'This exercise was refreshed. Answer the question shown now.'));
 }
 function streamPick(index) {
+  if (earShown()) { earPick(Number(index)); return; }
   const view = streamState?.current;
   if (!view || streamState.result || locked()) return;
   streamAction('answer', { choice: Number(index) });
 }
+function earPick(choice) {
+  const ear = earShown();
+  if (!ear || earResult || locked()) return;
+  const body = { requestId: requestId(), id: ear.id, choice };
+  runAction(async () => {
+    const result = await api('api/ear/answer', { method: 'POST', body: JSON.stringify(body) });
+    if (earShown()?.id !== ear.id) return;
+    earResult = result;
+    announce(`${result.right ? 'That’s right.' : 'Not quite.'} ${ear.choices[result.answer]}`);
+  });
+}
 function streamNext() {
+  if (earShown()) {
+    if (earResult && !locked()) { streamState = { ...streamState, ear: null }; earResult = null; render(); }
+    return;
+  }
   if (!streamState?.result || locked()) return;
   streamAction('next');
 }
 function autoplay() {
-  const view = streamState?.current;
-  if (!view || !streamScreen() || streamState.result || view.mode !== 'listen' || !view.audio?.length) return;
+  const view = shownView();
+  if (!view || !streamScreen() || shownSettled() || view.mode !== 'listen' || !view.audio?.length) return;
   const key = `${streamId}:${view.key}`;
   if (key === heardKey) return;
   heardKey = key; playClips(view.audio);
@@ -3828,7 +3865,7 @@ function autoplay() {
 // (fromStart) plays every line again.
 // Plays only the line last heard, then waits paused after it.
 function replayLine() {
-  const view = streamState?.current;
+  const view = shownView();
   if (!view?.audio?.length) return;
   const key = `${streamId}:${view.key}`;
   const line = clipRun?.key === key ? clipRun.heard : clipSpot?.key === key ? clipSpot.heard : null;
@@ -3837,7 +3874,7 @@ function replayLine() {
   playClips(view.audio, line, line + 1);
 }
 function toggleClips(fromStart = false) {
-  const view = streamState?.current;
+  const view = shownView();
   if (!view?.audio?.length) return;
   const key = `${streamId}:${view.key}`;
   audioBlocked = false; heardKey = key;
@@ -4607,7 +4644,7 @@ document.addEventListener('keydown', (event) => {
   // The verb-form field is one line, so Enter checks it (and continues once it is settled).
   if (grammarScreen && event.key === 'Enter' && !event.shiftKey && event.target.matches('input#answer')) { event.preventDefault(); if (activeGrammar()?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }
   // Enter continues once the exercise has settled.
-  if (streamScreen() && streamState?.result && event.key === 'Enter' && !event.shiftKey && !event.target.closest('input,select,textarea,[contenteditable="true"],button,a')) {
+  if (streamScreen() && shownSettled() && event.key === 'Enter' && !event.shiftKey && !event.target.closest('input,select,textarea,[contenteditable="true"],button,a')) {
     event.preventDefault();
     streamNext();
     return;
