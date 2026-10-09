@@ -1,0 +1,3597 @@
+[
+ {
+  "id": "food-001",
+  "sv": "vatten",
+  "en": "water",
+  "category": "food",
+  "note": "Ett-word: vattnet. No plural."
+ },
+ {
+  "id": "food-002",
+  "sv": "mat",
+  "en": "food",
+  "category": "food",
+  "note": "En-word: maten. No plural."
+ },
+ {
+  "id": "food-003",
+  "sv": "bröd",
+  "en": "bread",
+  "category": "food",
+  "note": "Ett-word: brödet, bröd. Ett bröd is one loaf."
+ },
+ {
+  "id": "food-004",
+  "sv": "kaffe",
+  "en": "coffee",
+  "category": "food",
+  "note": "Ett-word: kaffet. En kaffe is one cup."
+ },
+ {
+  "id": "food-005",
+  "sv": "te",
+  "en": "tea",
+  "category": "food",
+  "note": "Ett-word: teet."
+ },
+ {
+  "id": "food-006",
+  "sv": "mjölk",
+  "en": "milk",
+  "category": "food",
+  "note": "En-word: mjölken. No plural."
+ },
+ {
+  "id": "food-007",
+  "sv": "socker",
+  "en": "sugar",
+  "category": "food",
+  "note": "Ett-word: sockret."
+ },
+ {
+  "id": "food-008",
+  "sv": "salt",
+  "en": "salt",
+  "category": "food",
+  "note": "Ett-word: saltet."
+ },
+ {
+  "id": "food-009",
+  "sv": "peppar",
+  "en": "pepper",
+  "category": "food",
+  "note": "En-word: pepparn."
+ },
+ {
+  "id": "food-010",
+  "sv": "smör",
+  "en": "butter",
+  "category": "food",
+  "note": "Ett-word: smöret."
+ },
+ {
+  "id": "food-011",
+  "sv": "ost",
+  "en": "cheese",
+  "category": "food",
+  "note": "En-word: osten, ostar."
+ },
+ {
+  "id": "food-012",
+  "sv": "ett ägg",
+  "en": "egg",
+  "category": "food",
+  "note": "ägget, ägg"
+ },
+ {
+  "id": "food-013",
+  "sv": "ris",
+  "en": "rice",
+  "category": "food",
+  "note": "Ett-word: riset."
+ },
+ {
+  "id": "food-014",
+  "sv": "pasta",
+  "en": "pasta",
+  "category": "food",
+  "note": "En-word: pastan."
+ },
+ {
+  "id": "food-015",
+  "sv": "kött",
+  "en": "meat",
+  "category": "food",
+  "note": "Ett-word: köttet."
+ },
+ {
+  "id": "food-016",
+  "sv": "kyckling",
+  "en": "chicken (meat)",
+  "category": "food",
+  "note": "En-word: kycklingen, kycklingar."
+ },
+ {
+  "id": "food-017",
+  "sv": "en korv",
+  "en": "sausage",
+  "category": "food",
+  "note": "korven, korvar"
+ },
+ {
+  "id": "food-018",
+  "sv": "skinka",
+  "en": "ham",
+  "category": "food",
+  "note": "En-word: skinkan."
+ },
+ {
+  "id": "food-019",
+  "sv": "soppa",
+  "en": "soup",
+  "category": "food",
+  "note": "En-word: soppan, soppor."
+ },
+ {
+  "id": "food-020",
+  "sv": "sallad",
+  "en": "salad; lettuce",
+  "category": "food",
+  "note": "En-word: salladen, sallader."
+ },
+ {
+  "id": "food-021",
+  "sv": "ett äpple",
+  "en": "apple",
+  "category": "food",
+  "note": "äpplet, äpplen"
+ },
+ {
+  "id": "food-022",
+  "sv": "en banan",
+  "en": "banana",
+  "category": "food",
+  "note": "bananen, bananer"
+ },
+ {
+  "id": "food-023",
+  "sv": "en apelsin",
+  "en": "orange (fruit)",
+  "category": "food",
+  "note": "apelsinen, apelsiner"
+ },
+ {
+  "id": "food-024",
+  "sv": "en citron",
+  "en": "lemon",
+  "category": "food",
+  "note": "citronen, citroner"
+ },
+ {
+  "id": "food-025",
+  "sv": "en jordgubbe",
+  "en": "strawberry",
+  "category": "food",
+  "note": "jordgubben, jordgubbar"
+ },
+ {
+  "id": "food-026",
+  "sv": "ett päron",
+  "en": "pear",
+  "category": "food",
+  "note": "päronet, päron"
+ },
+ {
+  "id": "food-027",
+  "sv": "en tomat",
+  "en": "tomato",
+  "category": "food",
+  "note": "tomaten, tomater"
+ },
+ {
+  "id": "food-028",
+  "sv": "en potatis",
+  "en": "potato",
+  "category": "food",
+  "note": "potatisen, potatisar"
+ },
+ {
+  "id": "food-029",
+  "sv": "en morot",
+  "en": "carrot",
+  "category": "food",
+  "note": "moroten, morötter"
+ },
+ {
+  "id": "food-030",
+  "sv": "en lök",
+  "en": "onion",
+  "category": "food",
+  "note": "löken, lökar"
+ },
+ {
+  "id": "food-031",
+  "sv": "vitlök",
+  "en": "garlic",
+  "category": "food",
+  "note": "En-word: vitlöken."
+ },
+ {
+  "id": "food-032",
+  "sv": "en gurka",
+  "en": "cucumber",
+  "category": "food",
+  "note": "gurkan, gurkor"
+ },
+ {
+  "id": "food-033",
+  "sv": "en frukt",
+  "en": "fruit",
+  "category": "food",
+  "note": "frukten, frukter"
+ },
+ {
+  "id": "food-034",
+  "sv": "en grönsak",
+  "en": "vegetable",
+  "category": "food",
+  "note": "grönsaken, grönsaker"
+ },
+ {
+  "id": "food-035",
+  "sv": "olja",
+  "en": "oil",
+  "category": "food",
+  "note": "En-word: oljan, oljor."
+ },
+ {
+  "id": "food-036",
+  "sv": "yoghurt",
+  "en": "yoghurt",
+  "category": "food",
+  "note": "En-word: yoghurten."
+ },
+ {
+  "id": "food-037",
+  "sv": "lax",
+  "en": "salmon",
+  "category": "food",
+  "note": "En-word: laxen, laxar."
+ },
+ {
+  "id": "food-038",
+  "sv": "choklad",
+  "en": "chocolate",
+  "category": "food",
+  "note": "En-word: chokladen."
+ },
+ {
+  "id": "food-039",
+  "sv": "en kaka",
+  "en": "cake; biscuit",
+  "category": "food",
+  "note": "kakan, kakor"
+ },
+ {
+  "id": "food-040",
+  "sv": "glass",
+  "en": "ice cream",
+  "category": "food",
+  "note": "En-word: glassen, glassar."
+ },
+ {
+  "id": "food-041",
+  "sv": "en smörgås",
+  "en": "sandwich",
+  "category": "food",
+  "note": "smörgåsen, smörgåsar"
+ },
+ {
+  "id": "food-042",
+  "sv": "vin",
+  "en": "wine",
+  "category": "food",
+  "note": "Ett-word: vinet, viner."
+ },
+ {
+  "id": "food-043",
+  "sv": "öl",
+  "en": "beer",
+  "category": "food",
+  "note": "Ett-word: ölet. En öl is one glass or can."
+ },
+ {
+  "id": "food-044",
+  "sv": "en måltid",
+  "en": "meal",
+  "category": "food",
+  "note": "måltiden, måltider"
+ },
+ {
+  "id": "food-045",
+  "sv": "frukost",
+  "en": "breakfast",
+  "category": "food",
+  "note": "En-word: frukosten, frukostar."
+ },
+ {
+  "id": "food-046",
+  "sv": "lunch",
+  "en": "lunch",
+  "category": "food",
+  "note": "En-word: lunchen, luncher."
+ },
+ {
+  "id": "food-047",
+  "sv": "middag",
+  "en": "dinner",
+  "category": "food",
+  "note": "En-word: middagen, middagar."
+ },
+ {
+  "id": "food-048",
+  "sv": "en gaffel",
+  "en": "fork",
+  "category": "food",
+  "note": "gaffeln, gafflar"
+ },
+ {
+  "id": "food-049",
+  "sv": "en kniv",
+  "en": "knife",
+  "category": "food",
+  "note": "kniven, knivar"
+ },
+ {
+  "id": "food-050",
+  "sv": "en sked",
+  "en": "spoon",
+  "category": "food",
+  "note": "skeden, skedar"
+ },
+ {
+  "id": "food-051",
+  "sv": "en tallrik",
+  "en": "plate",
+  "category": "food",
+  "note": "tallriken, tallrikar"
+ },
+ {
+  "id": "food-052",
+  "sv": "en kopp",
+  "en": "cup",
+  "category": "food",
+  "note": "koppen, koppar"
+ },
+ {
+  "id": "food-053",
+  "sv": "ett glas",
+  "en": "glass",
+  "category": "food",
+  "note": "glaset, glas"
+ },
+ {
+  "id": "food-054",
+  "sv": "en flaska",
+  "en": "bottle",
+  "category": "food",
+  "note": "flaskan, flaskor"
+ },
+ {
+  "id": "food-055",
+  "sv": "fika",
+  "en": "coffee break; to have coffee and a bite",
+  "category": "food",
+  "note": "En-word: fikan. Also a verb: fikar, fikade, fikat."
+ },
+ {
+  "id": "travel-001",
+  "sv": "en stad",
+  "en": "town; city",
+  "category": "travel",
+  "note": "staden, städer"
+ },
+ {
+  "id": "travel-002",
+  "sv": "en gata",
+  "en": "street",
+  "category": "travel",
+  "note": "gatan, gator"
+ },
+ {
+  "id": "travel-003",
+  "sv": "en väg",
+  "en": "road; way",
+  "category": "travel",
+  "note": "vägen, vägar"
+ },
+ {
+  "id": "travel-004",
+  "sv": "en bil",
+  "en": "car",
+  "category": "travel",
+  "note": "bilen, bilar"
+ },
+ {
+  "id": "travel-005",
+  "sv": "en buss",
+  "en": "bus",
+  "category": "travel",
+  "note": "bussen, bussar"
+ },
+ {
+  "id": "travel-006",
+  "sv": "ett tåg",
+  "en": "train",
+  "category": "travel",
+  "note": "tåget, tåg"
+ },
+ {
+  "id": "travel-007",
+  "sv": "en tunnelbana",
+  "en": "underground; metro",
+  "category": "travel",
+  "note": "tunnelbanan, tunnelbanor"
+ },
+ {
+  "id": "travel-008",
+  "sv": "en cykel",
+  "en": "bicycle; bike",
+  "category": "travel",
+  "note": "cykeln, cyklar"
+ },
+ {
+  "id": "travel-009",
+  "sv": "en taxi",
+  "en": "taxi",
+  "category": "travel",
+  "note": "taxin, taxibilar"
+ },
+ {
+  "id": "travel-010",
+  "sv": "ett flygplan",
+  "en": "aeroplane",
+  "category": "travel",
+  "note": "flygplanet, flygplan"
+ },
+ {
+  "id": "travel-011",
+  "sv": "en station",
+  "en": "station",
+  "category": "travel",
+  "note": "stationen, stationer"
+ },
+ {
+  "id": "travel-012",
+  "sv": "en flygplats",
+  "en": "airport",
+  "category": "travel",
+  "note": "flygplatsen, flygplatser"
+ },
+ {
+  "id": "travel-013",
+  "sv": "en hållplats",
+  "en": "stop (bus, tram)",
+  "category": "travel",
+  "note": "hållplatsen, hållplatser"
+ },
+ {
+  "id": "travel-014",
+  "sv": "en biljett",
+  "en": "ticket",
+  "category": "travel",
+  "note": "biljetten, biljetter"
+ },
+ {
+  "id": "travel-015",
+  "sv": "en resa",
+  "en": "journey; trip",
+  "category": "travel",
+  "note": "resan, resor"
+ },
+ {
+  "id": "travel-016",
+  "sv": "en semester",
+  "en": "holiday; vacation",
+  "category": "travel",
+  "note": "semestern, semestrar"
+ },
+ {
+  "id": "travel-017",
+  "sv": "ett hotell",
+  "en": "hotel",
+  "category": "travel",
+  "note": "hotellet, hotell"
+ },
+ {
+  "id": "travel-018",
+  "sv": "en restaurang",
+  "en": "restaurant",
+  "category": "travel",
+  "note": "restaurangen, restauranger"
+ },
+ {
+  "id": "travel-019",
+  "sv": "en affär",
+  "en": "shop; business",
+  "category": "travel",
+  "note": "affären, affärer"
+ },
+ {
+  "id": "travel-020",
+  "sv": "ett torg",
+  "en": "square; marketplace",
+  "category": "travel",
+  "note": "torget, torg"
+ },
+ {
+  "id": "travel-021",
+  "sv": "en mataffär",
+  "en": "grocery shop; supermarket",
+  "category": "travel",
+  "note": "mataffären, mataffärer"
+ },
+ {
+  "id": "travel-022",
+  "sv": "ett bageri",
+  "en": "bakery",
+  "category": "travel",
+  "note": "bageriet, bagerier"
+ },
+ {
+  "id": "travel-023",
+  "sv": "ett apotek",
+  "en": "chemist's; pharmacy",
+  "category": "travel",
+  "note": "apoteket, apotek"
+ },
+ {
+  "id": "travel-024",
+  "sv": "ett sjukhus",
+  "en": "hospital",
+  "category": "travel",
+  "note": "sjukhuset, sjukhus"
+ },
+ {
+  "id": "travel-025",
+  "sv": "en bank",
+  "en": "bank",
+  "category": "travel",
+  "note": "banken, banker"
+ },
+ {
+  "id": "travel-026",
+  "sv": "en adress",
+  "en": "address",
+  "category": "travel",
+  "note": "adressen, adresser"
+ },
+ {
+  "id": "travel-027",
+  "sv": "en karta",
+  "en": "map",
+  "category": "travel",
+  "note": "kartan, kartor"
+ },
+ {
+  "id": "travel-028",
+  "sv": "centrum",
+  "en": "town centre; city centre",
+  "category": "travel",
+  "note": "Ett-word; the same with the: centrum."
+ },
+ {
+  "id": "travel-029",
+  "sv": "en park",
+  "en": "park",
+  "category": "travel",
+  "note": "parken, parker"
+ },
+ {
+  "id": "travel-030",
+  "sv": "en bro",
+  "en": "bridge",
+  "category": "travel",
+  "note": "bron, broar"
+ },
+ {
+  "id": "travel-031",
+  "sv": "ett övergångsställe",
+  "en": "pedestrian crossing",
+  "category": "travel",
+  "note": "övergångsstället, övergångsställen"
+ },
+ {
+  "id": "travel-032",
+  "sv": "norr",
+  "en": "north",
+  "category": "travel",
+  "note": "No article: i norr, in the north."
+ },
+ {
+  "id": "travel-033",
+  "sv": "söder",
+  "en": "south",
+  "category": "travel",
+  "note": "No article: i söder, in the south."
+ },
+ {
+  "id": "travel-034",
+  "sv": "öster",
+  "en": "east",
+  "category": "travel",
+  "note": "No article: i öster, in the east."
+ },
+ {
+  "id": "travel-035",
+  "sv": "väster",
+  "en": "west",
+  "category": "travel",
+  "note": "No article: i väster, in the west."
+ },
+ {
+  "id": "travel-036",
+  "sv": "ett land",
+  "en": "country",
+  "category": "travel",
+  "note": "landet, länder. På landet means in the countryside."
+ },
+ {
+  "id": "travel-037",
+  "sv": "en by",
+  "en": "village",
+  "category": "travel",
+  "note": "byn, byar"
+ },
+ {
+  "id": "travel-038",
+  "sv": "en gräns",
+  "en": "border",
+  "category": "travel",
+  "note": "gränsen, gränser"
+ },
+ {
+  "id": "travel-039",
+  "sv": "en huvudstad",
+  "en": "capital (city)",
+  "category": "travel",
+  "note": "huvudstaden, huvudstäder"
+ },
+ {
+  "id": "travel-040",
+  "sv": "ett pass",
+  "en": "passport",
+  "category": "travel",
+  "note": "passet, pass"
+ },
+ {
+  "id": "travel-041",
+  "sv": "en resväska",
+  "en": "suitcase",
+  "category": "travel",
+  "note": "resväskan, resväskor"
+ },
+ {
+  "id": "travel-042",
+  "sv": "försenad",
+  "en": "delayed; late",
+  "category": "travel",
+  "note": "försenat, försenade"
+ },
+ {
+  "id": "travel-043",
+  "sv": "ett museum",
+  "en": "museum",
+  "category": "travel",
+  "note": "museet, museer"
+ },
+ {
+  "id": "travel-044",
+  "sv": "en kyrka",
+  "en": "church",
+  "category": "travel",
+  "note": "kyrkan, kyrkor"
+ },
+ {
+  "id": "travel-045",
+  "sv": "en parkering",
+  "en": "car park; parking",
+  "category": "travel",
+  "note": "parkeringen, parkeringar"
+ },
+ {
+  "id": "travel-046",
+  "sv": "bensin",
+  "en": "petrol",
+  "category": "travel",
+  "note": "En-word: bensinen."
+ },
+ {
+  "id": "travel-047",
+  "sv": "ett körkort",
+  "en": "driving licence",
+  "category": "travel",
+  "note": "körkortet, körkort"
+ },
+ {
+  "id": "travel-048",
+  "sv": "trafik",
+  "en": "traffic",
+  "category": "travel",
+  "note": "En-word: trafiken."
+ },
+ {
+  "id": "travel-049",
+  "sv": "en båt",
+  "en": "boat",
+  "category": "travel",
+  "note": "båten, båtar"
+ },
+ {
+  "id": "travel-050",
+  "sv": "en färja",
+  "en": "ferry",
+  "category": "travel",
+  "note": "färjan, färjor"
+ },
+ {
+  "id": "travel-051",
+  "sv": "en turist",
+  "en": "tourist",
+  "category": "travel",
+  "note": "turisten, turister"
+ },
+ {
+  "id": "travel-052",
+  "sv": "utomlands",
+  "en": "abroad",
+  "category": "travel"
+ },
+ {
+  "id": "nature-001",
+  "sv": "en sol",
+  "en": "sun",
+  "category": "nature",
+  "note": "solen, solar"
+ },
+ {
+  "id": "nature-002",
+  "sv": "regn",
+  "en": "rain",
+  "category": "nature",
+  "note": "Ett-word: regnet."
+ },
+ {
+  "id": "nature-003",
+  "sv": "en vind",
+  "en": "wind",
+  "category": "nature",
+  "note": "vinden, vindar"
+ },
+ {
+  "id": "nature-004",
+  "sv": "snö",
+  "en": "snow",
+  "category": "nature",
+  "note": "En-word: snön."
+ },
+ {
+  "id": "nature-005",
+  "sv": "en himmel",
+  "en": "sky; heaven",
+  "category": "nature",
+  "note": "himlen, himlar"
+ },
+ {
+  "id": "nature-006",
+  "sv": "ett moln",
+  "en": "cloud",
+  "category": "nature",
+  "note": "molnet, moln"
+ },
+ {
+  "id": "nature-007",
+  "sv": "ett hav",
+  "en": "sea",
+  "category": "nature",
+  "note": "havet, hav"
+ },
+ {
+  "id": "nature-008",
+  "sv": "ett berg",
+  "en": "mountain",
+  "category": "nature",
+  "note": "berget, berg"
+ },
+ {
+  "id": "nature-009",
+  "sv": "ett träd",
+  "en": "tree",
+  "category": "nature",
+  "note": "trädet, träd"
+ },
+ {
+  "id": "nature-010",
+  "sv": "en blomma",
+  "en": "flower",
+  "category": "nature",
+  "note": "blomman, blommor"
+ },
+ {
+  "id": "nature-011",
+  "sv": "en hund",
+  "en": "dog",
+  "category": "nature",
+  "note": "hunden, hundar"
+ },
+ {
+  "id": "nature-012",
+  "sv": "en katt",
+  "en": "cat",
+  "category": "nature",
+  "note": "katten, katter"
+ },
+ {
+  "id": "nature-013",
+  "sv": "en fågel",
+  "en": "bird",
+  "category": "nature",
+  "note": "fågeln, fåglar"
+ },
+ {
+  "id": "nature-014",
+  "sv": "en fisk",
+  "en": "fish",
+  "category": "nature",
+  "note": "fisken, fiskar"
+ },
+ {
+  "id": "nature-015",
+  "sv": "en häst",
+  "en": "horse",
+  "category": "nature",
+  "note": "hästen, hästar"
+ },
+ {
+  "id": "nature-016",
+  "sv": "en ko",
+  "en": "cow",
+  "category": "nature",
+  "note": "kon, kor"
+ },
+ {
+  "id": "nature-017",
+  "sv": "ett får",
+  "en": "sheep",
+  "category": "nature",
+  "note": "fåret, får"
+ },
+ {
+  "id": "nature-018",
+  "sv": "en gris",
+  "en": "pig",
+  "category": "nature",
+  "note": "grisen, grisar"
+ },
+ {
+  "id": "nature-019",
+  "sv": "en höna",
+  "en": "hen",
+  "category": "nature",
+  "note": "hönan, hönor"
+ },
+ {
+  "id": "nature-020",
+  "sv": "en anka",
+  "en": "duck",
+  "category": "nature",
+  "note": "ankan, ankor"
+ },
+ {
+  "id": "nature-021",
+  "sv": "en kanin",
+  "en": "rabbit",
+  "category": "nature",
+  "note": "kaninen, kaniner"
+ },
+ {
+  "id": "nature-022",
+  "sv": "en mus",
+  "en": "mouse",
+  "category": "nature",
+  "note": "musen, möss"
+ },
+ {
+  "id": "nature-023",
+  "sv": "en räv",
+  "en": "fox",
+  "category": "nature",
+  "note": "räven, rävar"
+ },
+ {
+  "id": "nature-024",
+  "sv": "en varg",
+  "en": "wolf",
+  "category": "nature",
+  "note": "vargen, vargar"
+ },
+ {
+  "id": "nature-025",
+  "sv": "en björn",
+  "en": "bear",
+  "category": "nature",
+  "note": "björnen, björnar"
+ },
+ {
+  "id": "nature-026",
+  "sv": "en älg",
+  "en": "elk; moose",
+  "category": "nature",
+  "note": "älgen, älgar"
+ },
+ {
+  "id": "nature-027",
+  "sv": "en ekorre",
+  "en": "squirrel",
+  "category": "nature",
+  "note": "ekorren, ekorrar"
+ },
+ {
+  "id": "nature-028",
+  "sv": "en elefant",
+  "en": "elephant",
+  "category": "nature",
+  "note": "elefanten, elefanter"
+ },
+ {
+  "id": "nature-029",
+  "sv": "en orm",
+  "en": "snake",
+  "category": "nature",
+  "note": "ormen, ormar"
+ },
+ {
+  "id": "nature-030",
+  "sv": "ett bi",
+  "en": "bee",
+  "category": "nature",
+  "note": "biet, bin"
+ },
+ {
+  "id": "nature-031",
+  "sv": "en fluga",
+  "en": "fly",
+  "category": "nature",
+  "note": "flugan, flugor"
+ },
+ {
+  "id": "nature-032",
+  "sv": "en mygga",
+  "en": "mosquito",
+  "category": "nature",
+  "note": "myggan, myggor"
+ },
+ {
+  "id": "nature-033",
+  "sv": "en spindel",
+  "en": "spider",
+  "category": "nature",
+  "note": "spindeln, spindlar"
+ },
+ {
+  "id": "nature-034",
+  "sv": "ett djur",
+  "en": "animal",
+  "category": "nature",
+  "note": "djuret, djur"
+ },
+ {
+  "id": "nature-035",
+  "sv": "en växt",
+  "en": "plant",
+  "category": "nature",
+  "note": "växten, växter"
+ },
+ {
+  "id": "nature-036",
+  "sv": "gräs",
+  "en": "grass",
+  "category": "nature",
+  "note": "Ett-word: gräset."
+ },
+ {
+  "id": "nature-037",
+  "sv": "ett löv",
+  "en": "leaf",
+  "category": "nature",
+  "note": "lövet, löv"
+ },
+ {
+  "id": "nature-038",
+  "sv": "en skog",
+  "en": "forest; woods",
+  "category": "nature",
+  "note": "skogen, skogar"
+ },
+ {
+  "id": "nature-039",
+  "sv": "en flod",
+  "en": "river",
+  "category": "nature",
+  "note": "floden, floder"
+ },
+ {
+  "id": "nature-040",
+  "sv": "en sjö",
+  "en": "lake",
+  "category": "nature",
+  "note": "sjön, sjöar"
+ },
+ {
+  "id": "nature-041",
+  "sv": "en strand",
+  "en": "beach",
+  "category": "nature",
+  "note": "stranden, stränder"
+ },
+ {
+  "id": "nature-042",
+  "sv": "en ö",
+  "en": "island",
+  "category": "nature",
+  "note": "ön, öar"
+ },
+ {
+  "id": "nature-043",
+  "sv": "en sten",
+  "en": "stone; rock",
+  "category": "nature",
+  "note": "stenen, stenar"
+ },
+ {
+  "id": "nature-044",
+  "sv": "jord",
+  "en": "earth; soil",
+  "category": "nature",
+  "note": "En-word: jorden. Jorden is also the Earth."
+ },
+ {
+  "id": "nature-045",
+  "sv": "en måne",
+  "en": "moon",
+  "category": "nature",
+  "note": "månen, månar"
+ },
+ {
+  "id": "nature-046",
+  "sv": "en stjärna",
+  "en": "star",
+  "category": "nature",
+  "note": "stjärnan, stjärnor"
+ },
+ {
+  "id": "nature-047",
+  "sv": "luft",
+  "en": "air",
+  "category": "nature",
+  "note": "En-word: luften."
+ },
+ {
+  "id": "nature-048",
+  "sv": "dimma",
+  "en": "fog; mist",
+  "category": "nature",
+  "note": "En-word: dimman."
+ },
+ {
+  "id": "nature-049",
+  "sv": "åska",
+  "en": "thunder; thunderstorm",
+  "category": "nature",
+  "note": "En-word: åskan."
+ },
+ {
+  "id": "nature-050",
+  "sv": "en storm",
+  "en": "storm",
+  "category": "nature",
+  "note": "stormen, stormar"
+ },
+ {
+  "id": "nature-051",
+  "sv": "väder",
+  "en": "weather",
+  "category": "nature",
+  "note": "Ett-word: vädret."
+ },
+ {
+  "id": "nature-052",
+  "sv": "natur",
+  "en": "nature",
+  "category": "nature",
+  "note": "En-word: naturen."
+ },
+ {
+  "id": "work-001",
+  "sv": "ett arbete",
+  "en": "work; job",
+  "category": "work",
+  "note": "arbetet, arbeten"
+ },
+ {
+  "id": "work-002",
+  "sv": "ett jobb",
+  "en": "job",
+  "category": "work",
+  "note": "jobbet, jobb"
+ },
+ {
+  "id": "work-003",
+  "sv": "ett yrke",
+  "en": "occupation; profession",
+  "category": "work",
+  "note": "yrket, yrken"
+ },
+ {
+  "id": "work-004",
+  "sv": "ett företag",
+  "en": "company",
+  "category": "work",
+  "note": "företaget, företag"
+ },
+ {
+  "id": "work-005",
+  "sv": "en lön",
+  "en": "salary; wages",
+  "category": "work",
+  "note": "lönen, löner"
+ },
+ {
+  "id": "work-006",
+  "sv": "ett möte",
+  "en": "meeting",
+  "category": "work",
+  "note": "mötet, möten"
+ },
+ {
+  "id": "work-007",
+  "sv": "ett projekt",
+  "en": "project",
+  "category": "work",
+  "note": "projektet, projekt"
+ },
+ {
+  "id": "work-008",
+  "sv": "en läkare",
+  "en": "doctor",
+  "category": "work",
+  "note": "läkaren, läkare"
+ },
+ {
+  "id": "work-009",
+  "sv": "en sjuksköterska",
+  "en": "nurse",
+  "category": "work",
+  "note": "sjuksköterskan, sjuksköterskor"
+ },
+ {
+  "id": "work-010",
+  "sv": "en tandläkare",
+  "en": "dentist",
+  "category": "work",
+  "note": "tandläkaren, tandläkare"
+ },
+ {
+  "id": "work-011",
+  "sv": "en polis",
+  "en": "police officer; the police",
+  "category": "work",
+  "note": "polisen, poliser"
+ },
+ {
+  "id": "work-012",
+  "sv": "en brandman",
+  "en": "firefighter",
+  "category": "work",
+  "note": "brandmannen, brandmän"
+ },
+ {
+  "id": "work-013",
+  "sv": "en kock",
+  "en": "cook; chef",
+  "category": "work",
+  "note": "kocken, kockar"
+ },
+ {
+  "id": "work-014",
+  "sv": "en servitör",
+  "en": "waiter",
+  "category": "work",
+  "note": "servitören, servitörer"
+ },
+ {
+  "id": "work-015",
+  "sv": "en journalist",
+  "en": "journalist",
+  "category": "work",
+  "note": "journalisten, journalister"
+ },
+ {
+  "id": "work-016",
+  "sv": "en konstnär",
+  "en": "artist",
+  "category": "work",
+  "note": "konstnären, konstnärer"
+ },
+ {
+  "id": "work-017",
+  "sv": "en bonde",
+  "en": "farmer",
+  "category": "work",
+  "note": "bonden, bönder"
+ },
+ {
+  "id": "work-018",
+  "sv": "en ingenjör",
+  "en": "engineer",
+  "category": "work",
+  "note": "ingenjören, ingenjörer"
+ },
+ {
+  "id": "work-019",
+  "sv": "en advokat",
+  "en": "lawyer",
+  "category": "work",
+  "note": "advokaten, advokater"
+ },
+ {
+  "id": "work-020",
+  "sv": "en chef",
+  "en": "boss; manager",
+  "category": "work",
+  "note": "chefen, chefer"
+ },
+ {
+  "id": "work-021",
+  "sv": "en kollega",
+  "en": "colleague",
+  "category": "work",
+  "note": "kollegan, kolleger"
+ },
+ {
+  "id": "work-022",
+  "sv": "ett kontor",
+  "en": "office",
+  "category": "work",
+  "note": "kontoret, kontor"
+ },
+ {
+  "id": "work-023",
+  "sv": "en ansökan",
+  "en": "application",
+  "category": "work",
+  "note": "ansökan, ansökningar"
+ },
+ {
+  "id": "work-024",
+  "sv": "en anställd",
+  "en": "employee",
+  "category": "work",
+  "note": "den anställda, anställda"
+ },
+ {
+  "id": "work-025",
+  "sv": "arbetslös",
+  "en": "unemployed",
+  "category": "work",
+  "note": "arbetslöst, arbetslösa"
+ },
+ {
+  "id": "work-026",
+  "sv": "en fabrik",
+  "en": "factory",
+  "category": "work",
+  "note": "fabriken, fabriker"
+ },
+ {
+  "id": "work-027",
+  "sv": "en erfarenhet",
+  "en": "experience",
+  "category": "work",
+  "note": "erfarenheten, erfarenheter"
+ },
+ {
+  "id": "work-028",
+  "sv": "en utbildning",
+  "en": "education; training",
+  "category": "work",
+  "note": "utbildningen, utbildningar"
+ },
+ {
+  "id": "work-029",
+  "sv": "ett ansvar",
+  "en": "responsibility",
+  "category": "work",
+  "note": "ansvaret. No plural."
+ },
+ {
+  "id": "work-030",
+  "sv": "en plan",
+  "en": "plan",
+  "category": "work",
+  "note": "planen, planer"
+ },
+ {
+  "id": "work-031",
+  "sv": "en idé",
+  "en": "idea",
+  "category": "work",
+  "note": "idén, idéer"
+ },
+ {
+  "id": "work-032",
+  "sv": "ett problem",
+  "en": "problem",
+  "category": "work",
+  "note": "problemet, problem"
+ },
+ {
+  "id": "work-033",
+  "sv": "en paus",
+  "en": "break; pause",
+  "category": "work",
+  "note": "pausen, pauser"
+ },
+ {
+  "id": "work-034",
+  "sv": "en frisör",
+  "en": "hairdresser",
+  "category": "work",
+  "note": "frisören, frisörer"
+ },
+ {
+  "id": "work-035",
+  "sv": "en snickare",
+  "en": "carpenter",
+  "category": "work",
+  "note": "snickaren, snickare"
+ },
+ {
+  "id": "work-036",
+  "sv": "en forskare",
+  "en": "researcher; scientist",
+  "category": "work",
+  "note": "forskaren, forskare"
+ },
+ {
+  "id": "work-037",
+  "sv": "en rapport",
+  "en": "report",
+  "category": "work",
+  "note": "rapporten, rapporter"
+ },
+ {
+  "id": "work-038",
+  "sv": "ett förslag",
+  "en": "suggestion; proposal",
+  "category": "work",
+  "note": "förslaget, förslag"
+ },
+ {
+  "id": "work-039",
+  "sv": "en arbetsgivare",
+  "en": "employer",
+  "category": "work",
+  "note": "arbetsgivaren, arbetsgivare"
+ },
+ {
+  "id": "work-040",
+  "sv": "en försäljare",
+  "en": "salesperson",
+  "category": "work",
+  "note": "försäljaren, försäljare"
+ },
+ {
+  "id": "work-041",
+  "sv": "en mekaniker",
+  "en": "mechanic",
+  "category": "work",
+  "note": "mekanikern, mekaniker"
+ },
+ {
+  "id": "work-042",
+  "sv": "ett beslut",
+  "en": "decision",
+  "category": "work",
+  "note": "beslutet, beslut"
+ },
+ {
+  "id": "work-043",
+  "sv": "en tjänst",
+  "en": "job (post); service; favour",
+  "category": "work",
+  "note": "tjänsten, tjänster"
+ },
+ {
+  "id": "work-044",
+  "sv": "en arbetsdag",
+  "en": "working day",
+  "category": "work",
+  "note": "arbetsdagen, arbetsdagar"
+ },
+ {
+  "id": "work-045",
+  "sv": "ett kontrakt",
+  "en": "contract",
+  "category": "work",
+  "note": "kontraktet, kontrakt"
+ },
+ {
+  "id": "work-046",
+  "sv": "en städare",
+  "en": "cleaner",
+  "category": "work",
+  "note": "städaren, städare"
+ },
+ {
+  "id": "work-047",
+  "sv": "anställa",
+  "en": "to hire; to employ",
+  "category": "work",
+  "note": "anställer, anställde, anställt"
+ },
+ {
+  "id": "work-048",
+  "sv": "söka",
+  "en": "to apply for; to look for",
+  "category": "work",
+  "note": "söker, sökte, sökt"
+ },
+ {
+  "id": "work-049",
+  "sv": "tjäna",
+  "en": "to earn",
+  "category": "work",
+  "note": "tjänar, tjänade, tjänat"
+ },
+ {
+  "id": "health-time-001",
+  "sv": "hälsa",
+  "en": "health",
+  "category": "health-time",
+  "note": "En-word: hälsan."
+ },
+ {
+  "id": "health-time-002",
+  "sv": "en kropp",
+  "en": "body",
+  "category": "health-time",
+  "note": "kroppen, kroppar"
+ },
+ {
+  "id": "health-time-003",
+  "sv": "ett huvud",
+  "en": "head",
+  "category": "health-time",
+  "note": "huvudet, huvuden"
+ },
+ {
+  "id": "health-time-004",
+  "sv": "en hand",
+  "en": "hand",
+  "category": "health-time",
+  "note": "handen, händer"
+ },
+ {
+  "id": "health-time-005",
+  "sv": "en fot",
+  "en": "foot",
+  "category": "health-time",
+  "note": "foten, fötter"
+ },
+ {
+  "id": "health-time-006",
+  "sv": "ett öga",
+  "en": "eye",
+  "category": "health-time",
+  "note": "ögat, ögon"
+ },
+ {
+  "id": "health-time-007",
+  "sv": "ett öra",
+  "en": "ear",
+  "category": "health-time",
+  "note": "örat, öron"
+ },
+ {
+  "id": "health-time-008",
+  "sv": "en näsa",
+  "en": "nose",
+  "category": "health-time",
+  "note": "näsan, näsor"
+ },
+ {
+  "id": "health-time-009",
+  "sv": "en mun",
+  "en": "mouth",
+  "category": "health-time",
+  "note": "munnen, munnar"
+ },
+ {
+  "id": "health-time-010",
+  "sv": "en tand",
+  "en": "tooth",
+  "category": "health-time",
+  "note": "tanden, tänder"
+ },
+ {
+  "id": "health-time-011",
+  "sv": "en arm",
+  "en": "arm",
+  "category": "health-time",
+  "note": "armen, armar"
+ },
+ {
+  "id": "health-time-012",
+  "sv": "ett ben",
+  "en": "leg; bone",
+  "category": "health-time",
+  "note": "benet, ben"
+ },
+ {
+  "id": "health-time-013",
+  "sv": "en rygg",
+  "en": "back",
+  "category": "health-time",
+  "note": "ryggen, ryggar"
+ },
+ {
+  "id": "health-time-014",
+  "sv": "en mage",
+  "en": "stomach; belly",
+  "category": "health-time",
+  "note": "magen, magar"
+ },
+ {
+  "id": "health-time-015",
+  "sv": "ett hjärta",
+  "en": "heart",
+  "category": "health-time",
+  "note": "hjärtat, hjärtan"
+ },
+ {
+  "id": "health-time-016",
+  "sv": "ett ansikte",
+  "en": "face",
+  "category": "health-time",
+  "note": "ansiktet, ansikten"
+ },
+ {
+  "id": "health-time-017",
+  "sv": "ett finger",
+  "en": "finger",
+  "category": "health-time",
+  "note": "fingret, fingrar"
+ },
+ {
+  "id": "health-time-018",
+  "sv": "en hals",
+  "en": "neck; throat",
+  "category": "health-time",
+  "note": "halsen, halsar"
+ },
+ {
+  "id": "health-time-019",
+  "sv": "hår",
+  "en": "hair",
+  "category": "health-time",
+  "note": "Ett-word: håret."
+ },
+ {
+  "id": "health-time-020",
+  "sv": "sjuk",
+  "en": "ill; sick",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-021",
+  "sv": "ha ont",
+  "en": "to be in pain; to hurt",
+  "category": "health-time",
+  "note": "har ont, hade ont, haft ont"
+ },
+ {
+  "id": "health-time-022",
+  "sv": "feber",
+  "en": "fever; temperature",
+  "category": "health-time",
+  "note": "En-word: febern."
+ },
+ {
+  "id": "health-time-023",
+  "sv": "förkyld",
+  "en": "having a cold",
+  "category": "health-time",
+  "note": "förkylt, förkylda"
+ },
+ {
+  "id": "health-time-024",
+  "sv": "en medicin",
+  "en": "medicine",
+  "category": "health-time",
+  "note": "medicinen, mediciner"
+ },
+ {
+  "id": "health-time-025",
+  "sv": "en vårdcentral",
+  "en": "health centre; GP surgery",
+  "category": "health-time",
+  "note": "vårdcentralen, vårdcentraler"
+ },
+ {
+  "id": "health-time-026",
+  "sv": "en tid",
+  "en": "time; appointment",
+  "category": "health-time",
+  "note": "tiden, tider"
+ },
+ {
+  "id": "health-time-027",
+  "sv": "en timme",
+  "en": "hour",
+  "category": "health-time",
+  "note": "timmen, timmar"
+ },
+ {
+  "id": "health-time-028",
+  "sv": "en minut",
+  "en": "minute",
+  "category": "health-time",
+  "note": "minuten, minuter"
+ },
+ {
+  "id": "health-time-029",
+  "sv": "en dag",
+  "en": "day",
+  "category": "health-time",
+  "note": "dagen, dagar"
+ },
+ {
+  "id": "health-time-030",
+  "sv": "en vecka",
+  "en": "week",
+  "category": "health-time",
+  "note": "veckan, veckor"
+ },
+ {
+  "id": "health-time-031",
+  "sv": "en månad",
+  "en": "month",
+  "category": "health-time",
+  "note": "månaden, månader"
+ },
+ {
+  "id": "health-time-032",
+  "sv": "ett år",
+  "en": "year",
+  "category": "health-time",
+  "note": "året, år"
+ },
+ {
+  "id": "health-time-033",
+  "sv": "en morgon",
+  "en": "morning",
+  "category": "health-time",
+  "note": "morgonen, morgnar"
+ },
+ {
+  "id": "health-time-034",
+  "sv": "en kväll",
+  "en": "evening",
+  "category": "health-time",
+  "note": "kvällen, kvällar"
+ },
+ {
+  "id": "health-time-035",
+  "sv": "en natt",
+  "en": "night",
+  "category": "health-time",
+  "note": "natten, nätter"
+ },
+ {
+  "id": "health-time-036",
+  "sv": "en gång",
+  "en": "time (occasion); once",
+  "category": "health-time",
+  "note": "gången, gånger. En gång = once; två gånger = twice."
+ },
+ {
+  "id": "health-time-037",
+  "sv": "en sommar",
+  "en": "summer",
+  "category": "health-time",
+  "note": "sommaren, somrar"
+ },
+ {
+  "id": "health-time-038",
+  "sv": "en höst",
+  "en": "autumn",
+  "category": "health-time",
+  "note": "hösten, höstar"
+ },
+ {
+  "id": "health-time-039",
+  "sv": "en vinter",
+  "en": "winter",
+  "category": "health-time",
+  "note": "vintern, vintrar"
+ },
+ {
+  "id": "health-time-040",
+  "sv": "måndag",
+  "en": "Monday",
+  "category": "health-time",
+  "note": "En-word: måndagen. Days are lowercase; på måndag means on Monday."
+ },
+ {
+  "id": "health-time-041",
+  "sv": "tisdag",
+  "en": "Tuesday",
+  "category": "health-time",
+  "note": "En-word: tisdagen."
+ },
+ {
+  "id": "health-time-042",
+  "sv": "onsdag",
+  "en": "Wednesday",
+  "category": "health-time",
+  "note": "En-word: onsdagen."
+ },
+ {
+  "id": "health-time-043",
+  "sv": "torsdag",
+  "en": "Thursday",
+  "category": "health-time",
+  "note": "En-word: torsdagen."
+ },
+ {
+  "id": "health-time-044",
+  "sv": "fredag",
+  "en": "Friday",
+  "category": "health-time",
+  "note": "En-word: fredagen."
+ },
+ {
+  "id": "health-time-045",
+  "sv": "lördag",
+  "en": "Saturday",
+  "category": "health-time",
+  "note": "En-word: lördagen."
+ },
+ {
+  "id": "health-time-046",
+  "sv": "söndag",
+  "en": "Sunday",
+  "category": "health-time",
+  "note": "En-word: söndagen."
+ },
+ {
+  "id": "health-time-047",
+  "sv": "ett",
+  "en": "one",
+  "category": "health-time",
+  "note": "En before an en-word: en bil, ett hus."
+ },
+ {
+  "id": "health-time-048",
+  "sv": "två",
+  "en": "two",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-049",
+  "sv": "tre",
+  "en": "three",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-050",
+  "sv": "fyra",
+  "en": "four",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-051",
+  "sv": "fem",
+  "en": "five",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-052",
+  "sv": "sex",
+  "en": "six",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-053",
+  "sv": "sju",
+  "en": "seven",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-054",
+  "sv": "åtta",
+  "en": "eight",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-055",
+  "sv": "nio",
+  "en": "nine",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-056",
+  "sv": "tio",
+  "en": "ten",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-057",
+  "sv": "tjugo",
+  "en": "twenty",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-058",
+  "sv": "hundra",
+  "en": "hundred",
+  "category": "health-time"
+ },
+ {
+  "id": "health-time-059",
+  "sv": "tusen",
+  "en": "thousand",
+  "category": "health-time"
+ },
+ {
+  "id": "shopping-001",
+  "sv": "pengar",
+  "en": "money",
+  "category": "shopping",
+  "note": "Plural only: pengarna."
+ },
+ {
+  "id": "shopping-002",
+  "sv": "ett pris",
+  "en": "price",
+  "category": "shopping",
+  "note": "priset, priser"
+ },
+ {
+  "id": "shopping-003",
+  "sv": "en kund",
+  "en": "customer",
+  "category": "shopping",
+  "note": "kunden, kunder"
+ },
+ {
+  "id": "shopping-004",
+  "sv": "en krona",
+  "en": "krona (Swedish currency)",
+  "category": "shopping",
+  "note": "kronan, kronor"
+ },
+ {
+  "id": "shopping-005",
+  "sv": "en kassa",
+  "en": "checkout; till",
+  "category": "shopping",
+  "note": "kassan, kassor"
+ },
+ {
+  "id": "shopping-006",
+  "sv": "ett bankkort",
+  "en": "bank card",
+  "category": "shopping",
+  "note": "bankkortet, bankkort"
+ },
+ {
+  "id": "shopping-007",
+  "sv": "kontanter",
+  "en": "cash",
+  "category": "shopping",
+  "note": "Plural only: kontanterna."
+ },
+ {
+  "id": "shopping-008",
+  "sv": "ett kvitto",
+  "en": "receipt",
+  "category": "shopping",
+  "note": "kvittot, kvitton"
+ },
+ {
+  "id": "shopping-009",
+  "sv": "en storlek",
+  "en": "size",
+  "category": "shopping",
+  "note": "storleken, storlekar"
+ },
+ {
+  "id": "shopping-010",
+  "sv": "rea",
+  "en": "sale",
+  "category": "shopping",
+  "note": "En-word: rean, reor."
+ },
+ {
+  "id": "shopping-011",
+  "sv": "en butik",
+  "en": "shop",
+  "category": "shopping",
+  "note": "butiken, butiker"
+ },
+ {
+  "id": "shopping-012",
+  "sv": "en påse",
+  "en": "bag (plastic or paper)",
+  "category": "shopping",
+  "note": "påsen, påsar"
+ },
+ {
+  "id": "shopping-013",
+  "sv": "en ficka",
+  "en": "pocket",
+  "category": "shopping",
+  "note": "fickan, fickor"
+ },
+ {
+  "id": "shopping-014",
+  "sv": "en färg",
+  "en": "colour",
+  "category": "shopping",
+  "note": "färgen, färger"
+ },
+ {
+  "id": "shopping-015",
+  "sv": "en lista",
+  "en": "list",
+  "category": "shopping",
+  "note": "listan, listor"
+ },
+ {
+  "id": "shopping-016",
+  "sv": "en korg",
+  "en": "basket",
+  "category": "shopping",
+  "note": "korgen, korgar"
+ },
+ {
+  "id": "shopping-017",
+  "sv": "en kundvagn",
+  "en": "shopping trolley",
+  "category": "shopping",
+  "note": "kundvagnen, kundvagnar"
+ },
+ {
+  "id": "shopping-018",
+  "sv": "en kö",
+  "en": "queue",
+  "category": "shopping",
+  "note": "kön, köer"
+ },
+ {
+  "id": "shopping-019",
+  "sv": "ett erbjudande",
+  "en": "offer",
+  "category": "shopping",
+  "note": "erbjudandet, erbjudanden"
+ },
+ {
+  "id": "shopping-020",
+  "sv": "en rabatt",
+  "en": "discount",
+  "category": "shopping",
+  "note": "rabatten, rabatter"
+ },
+ {
+  "id": "shopping-021",
+  "sv": "ett paket",
+  "en": "parcel; packet",
+  "category": "shopping",
+  "note": "paketet, paket"
+ },
+ {
+  "id": "shopping-022",
+  "sv": "ett märke",
+  "en": "brand; mark",
+  "category": "shopping",
+  "note": "märket, märken"
+ },
+ {
+  "id": "shopping-023",
+  "sv": "en kvalitet",
+  "en": "quality",
+  "category": "shopping",
+  "note": "kvaliteten, kvaliteter"
+ },
+ {
+  "id": "shopping-024",
+  "sv": "ett köp",
+  "en": "purchase",
+  "category": "shopping",
+  "note": "köpet, köp"
+ },
+ {
+  "id": "shopping-025",
+  "sv": "ett provrum",
+  "en": "fitting room",
+  "category": "shopping",
+  "note": "provrummet, provrum"
+ },
+ {
+  "id": "shopping-026",
+  "sv": "en klocka",
+  "en": "clock; watch",
+  "category": "shopping",
+  "note": "klockan, klockor. Klockan is also o'clock: klockan tre."
+ },
+ {
+  "id": "shopping-027",
+  "sv": "glasögon",
+  "en": "glasses",
+  "category": "shopping",
+  "note": "Plural only: glasögonen."
+ },
+ {
+  "id": "shopping-028",
+  "sv": "ett paraply",
+  "en": "umbrella",
+  "category": "shopping",
+  "note": "paraplyet, paraplyer"
+ },
+ {
+  "id": "shopping-029",
+  "sv": "en ryggsäck",
+  "en": "rucksack",
+  "category": "shopping",
+  "note": "ryggsäcken, ryggsäckar"
+ },
+ {
+  "id": "shopping-030",
+  "sv": "en väska",
+  "en": "bag; handbag",
+  "category": "shopping",
+  "note": "väskan, väskor"
+ },
+ {
+  "id": "shopping-031",
+  "sv": "en plånbok",
+  "en": "wallet",
+  "category": "shopping",
+  "note": "plånboken, plånböcker"
+ },
+ {
+  "id": "shopping-032",
+  "sv": "ett smycke",
+  "en": "piece of jewellery",
+  "category": "shopping",
+  "note": "smycket, smycken"
+ },
+ {
+  "id": "shopping-033",
+  "sv": "en ring",
+  "en": "ring",
+  "category": "shopping",
+  "note": "ringen, ringar"
+ },
+ {
+  "id": "shopping-034",
+  "sv": "ett halsband",
+  "en": "necklace",
+  "category": "shopping",
+  "note": "halsbandet, halsband"
+ },
+ {
+  "id": "shopping-035",
+  "sv": "en baddräkt",
+  "en": "swimsuit",
+  "category": "shopping",
+  "note": "baddräkten, baddräkter"
+ },
+ {
+  "id": "shopping-036",
+  "sv": "ett kilo",
+  "en": "kilo",
+  "category": "shopping",
+  "note": "kilot, kilo"
+ },
+ {
+  "id": "shopping-037",
+  "sv": "en liter",
+  "en": "litre",
+  "category": "shopping",
+  "note": "litern, liter"
+ },
+ {
+  "id": "shopping-038",
+  "sv": "en bit",
+  "en": "piece; bit",
+  "category": "shopping",
+  "note": "biten, bitar"
+ },
+ {
+  "id": "shopping-039",
+  "sv": "en produkt",
+  "en": "product",
+  "category": "shopping",
+  "note": "produkten, produkter"
+ },
+ {
+  "id": "shopping-040",
+  "sv": "öppettider",
+  "en": "opening hours",
+  "category": "shopping",
+  "note": "Plural only: öppettiderna."
+ },
+ {
+  "id": "shopping-041",
+  "sv": "en kiosk",
+  "en": "kiosk; newsagent",
+  "category": "shopping",
+  "note": "kiosken, kiosker"
+ },
+ {
+  "id": "shopping-042",
+  "sv": "slut",
+  "en": "sold out; over; finished",
+  "category": "shopping",
+  "note": "Same in every form."
+ },
+ {
+  "id": "shopping-043",
+  "sv": "handla",
+  "en": "to shop; to buy groceries",
+  "category": "shopping",
+  "note": "handlar, handlade, handlat"
+ },
+ {
+  "id": "shopping-044",
+  "sv": "prova",
+  "en": "to try on; to try",
+  "category": "shopping",
+  "note": "provar, provade, provat"
+ },
+ {
+  "id": "shopping-045",
+  "sv": "byta",
+  "en": "to exchange; to change",
+  "category": "shopping",
+  "note": "byter, bytte, bytt"
+ },
+ {
+  "id": "shopping-046",
+  "sv": "lämna tillbaka",
+  "en": "to return; to give back",
+  "category": "shopping",
+  "note": "lämnar tillbaka, lämnade tillbaka, lämnat tillbaka"
+ },
+ {
+  "id": "shopping-047",
+  "sv": "beställa",
+  "en": "to order",
+  "category": "shopping",
+  "note": "beställer, beställde, beställt"
+ },
+ {
+  "id": "shopping-048",
+  "sv": "spara",
+  "en": "to save",
+  "category": "shopping",
+  "note": "sparar, sparade, sparat"
+ },
+ {
+  "id": "shopping-049",
+  "sv": "swisha",
+  "en": "to pay by phone (with Swish)",
+  "category": "shopping",
+  "note": "swishar, swishade, swishat"
+ },
+ {
+  "id": "town-001",
+  "sv": "ett bibliotek",
+  "en": "library",
+  "category": "town",
+  "note": "biblioteket, bibliotek"
+ },
+ {
+  "id": "town-002",
+  "sv": "en blankett",
+  "en": "form (to fill in)",
+  "category": "town",
+  "note": "blanketten, blanketter"
+ },
+ {
+  "id": "town-003",
+  "sv": "en legitimation",
+  "en": "ID; proof of identity",
+  "category": "town",
+  "note": "legitimationen, legitimationer"
+ },
+ {
+  "id": "town-004",
+  "sv": "en byggnad",
+  "en": "building",
+  "category": "town",
+  "note": "byggnaden, byggnader"
+ },
+ {
+  "id": "town-005",
+  "sv": "ett brev",
+  "en": "letter",
+  "category": "town",
+  "note": "brevet, brev"
+ },
+ {
+  "id": "town-006",
+  "sv": "ett frimärke",
+  "en": "stamp",
+  "category": "town",
+  "note": "frimärket, frimärken"
+ },
+ {
+  "id": "town-007",
+  "sv": "ett kuvert",
+  "en": "envelope",
+  "category": "town",
+  "note": "kuvertet, kuvert"
+ },
+ {
+  "id": "town-008",
+  "sv": "en brevlåda",
+  "en": "letterbox; postbox",
+  "category": "town",
+  "note": "brevlådan, brevlådor"
+ },
+ {
+  "id": "town-009",
+  "sv": "post",
+  "en": "post; mail",
+  "category": "town",
+  "note": "En-word: posten."
+ },
+ {
+  "id": "town-010",
+  "sv": "ett konto",
+  "en": "account",
+  "category": "town",
+  "note": "kontot, konton"
+ },
+ {
+  "id": "town-011",
+  "sv": "ett personnummer",
+  "en": "personal identity number",
+  "category": "town",
+  "note": "personnumret, personnummer"
+ },
+ {
+  "id": "town-012",
+  "sv": "ett nummer",
+  "en": "number",
+  "category": "town",
+  "note": "numret, nummer"
+ },
+ {
+  "id": "town-013",
+  "sv": "en lekplats",
+  "en": "playground",
+  "category": "town",
+  "note": "lekplatsen, lekplatser"
+ },
+ {
+  "id": "town-014",
+  "sv": "ett väntrum",
+  "en": "waiting room",
+  "category": "town",
+  "note": "väntrummet, väntrum"
+ },
+ {
+  "id": "town-015",
+  "sv": "en kommun",
+  "en": "municipality; local council",
+  "category": "town",
+  "note": "kommunen, kommuner"
+ },
+ {
+  "id": "town-016",
+  "sv": "en invånare",
+  "en": "inhabitant",
+  "category": "town",
+  "note": "invånaren, invånare"
+ },
+ {
+  "id": "town-017",
+  "sv": "en medborgare",
+  "en": "citizen",
+  "category": "town",
+  "note": "medborgaren, medborgare"
+ },
+ {
+  "id": "town-018",
+  "sv": "en regel",
+  "en": "rule",
+  "category": "town",
+  "note": "regeln, regler"
+ },
+ {
+  "id": "town-019",
+  "sv": "böter",
+  "en": "fine (penalty)",
+  "category": "town",
+  "note": "Plural only: böterna."
+ },
+ {
+  "id": "town-020",
+  "sv": "förbjuden",
+  "en": "forbidden",
+  "category": "town",
+  "note": "förbjudet, förbjudna"
+ },
+ {
+  "id": "town-021",
+  "sv": "en skylt",
+  "en": "sign",
+  "category": "town",
+  "note": "skylten, skyltar"
+ },
+ {
+  "id": "town-022",
+  "sv": "en utgång",
+  "en": "exit",
+  "category": "town",
+  "note": "utgången, utgångar"
+ },
+ {
+  "id": "town-023",
+  "sv": "en ingång",
+  "en": "entrance",
+  "category": "town",
+  "note": "ingången, ingångar"
+ },
+ {
+  "id": "town-024",
+  "sv": "ett hörn",
+  "en": "corner",
+  "category": "town",
+  "note": "hörnet, hörn"
+ },
+ {
+  "id": "town-025",
+  "sv": "en förort",
+  "en": "suburb",
+  "category": "town",
+  "note": "förorten, förorter"
+ },
+ {
+  "id": "town-026",
+  "sv": "en staty",
+  "en": "statue",
+  "category": "town",
+  "note": "statyn, statyer"
+ },
+ {
+  "id": "town-027",
+  "sv": "en bänk",
+  "en": "bench",
+  "category": "town",
+  "note": "bänken, bänkar"
+ },
+ {
+  "id": "town-028",
+  "sv": "ett slott",
+  "en": "castle; palace",
+  "category": "town",
+  "note": "slottet, slott"
+ },
+ {
+  "id": "town-029",
+  "sv": "ett torn",
+  "en": "tower",
+  "category": "town",
+  "note": "tornet, torn"
+ },
+ {
+  "id": "town-030",
+  "sv": "en teater",
+  "en": "theatre",
+  "category": "town",
+  "note": "teatern, teatrar"
+ },
+ {
+  "id": "town-031",
+  "sv": "en bio",
+  "en": "cinema",
+  "category": "town",
+  "note": "bion, biografer"
+ },
+ {
+  "id": "town-032",
+  "sv": "en simhall",
+  "en": "swimming pool (indoor)",
+  "category": "town",
+  "note": "simhallen, simhallar"
+ },
+ {
+  "id": "town-033",
+  "sv": "en kyrkogård",
+  "en": "cemetery",
+  "category": "town",
+  "note": "kyrkogården, kyrkogårdar"
+ },
+ {
+  "id": "town-034",
+  "sv": "ett fängelse",
+  "en": "prison",
+  "category": "town",
+  "note": "fängelset, fängelser"
+ },
+ {
+  "id": "town-035",
+  "sv": "en tjuv",
+  "en": "thief",
+  "category": "town",
+  "note": "tjuven, tjuvar"
+ },
+ {
+  "id": "town-036",
+  "sv": "ett ljud",
+  "en": "sound; noise",
+  "category": "town",
+  "note": "ljudet, ljud"
+ },
+ {
+  "id": "town-037",
+  "sv": "skräp",
+  "en": "rubbish; litter; junk",
+  "category": "town",
+  "note": "Ett-word: skräpet."
+ },
+ {
+  "id": "town-038",
+  "sv": "en hyra",
+  "en": "rent",
+  "category": "town",
+  "note": "hyran, hyror"
+ },
+ {
+  "id": "town-039",
+  "sv": "en ägare",
+  "en": "owner",
+  "category": "town",
+  "note": "ägaren, ägare"
+ },
+ {
+  "id": "town-040",
+  "sv": "en skatt",
+  "en": "tax",
+  "category": "town",
+  "note": "skatten, skatter"
+ },
+ {
+  "id": "town-041",
+  "sv": "ett trafikljus",
+  "en": "traffic light",
+  "category": "town",
+  "note": "trafikljuset, trafikljus"
+ },
+ {
+  "id": "town-042",
+  "sv": "en plats",
+  "en": "place; seat; space",
+  "category": "town",
+  "note": "platsen, platser"
+ },
+ {
+  "id": "town-043",
+  "sv": "ett område",
+  "en": "area",
+  "category": "town",
+  "note": "området, områden"
+ },
+ {
+  "id": "town-044",
+  "sv": "en papperskorg",
+  "en": "litter bin; wastepaper basket",
+  "category": "town",
+  "note": "papperskorgen, papperskorgar"
+ },
+ {
+  "id": "town-045",
+  "sv": "en polisstation",
+  "en": "police station",
+  "category": "town",
+  "note": "polisstationen, polisstationer"
+ },
+ {
+  "id": "town-046",
+  "sv": "till fots",
+  "en": "on foot",
+  "category": "town"
+ },
+ {
+  "id": "town-047",
+  "sv": "rakt fram",
+  "en": "straight ahead",
+  "category": "town"
+ },
+ {
+  "id": "town-048",
+  "sv": "vänster",
+  "en": "left",
+  "category": "town",
+  "note": "Same in every form: till vänster, to the left."
+ },
+ {
+  "id": "town-049",
+  "sv": "höger",
+  "en": "right (direction)",
+  "category": "town",
+  "note": "Same in every form: till höger, to the right."
+ },
+ {
+  "id": "town-050",
+  "sv": "skriva under",
+  "en": "to sign",
+  "category": "town",
+  "note": "skriver under, skrev under, skrivit under"
+ },
+ {
+  "id": "media-001",
+  "sv": "en mobil",
+  "en": "mobile phone",
+  "category": "media",
+  "note": "mobilen, mobiler"
+ },
+ {
+  "id": "media-002",
+  "sv": "internet",
+  "en": "internet",
+  "category": "media",
+  "note": "Ett-word; the same with the: internet."
+ },
+ {
+  "id": "media-003",
+  "sv": "ett meddelande",
+  "en": "message; text",
+  "category": "media",
+  "note": "meddelandet, meddelanden"
+ },
+ {
+  "id": "media-004",
+  "sv": "ett mejl",
+  "en": "email",
+  "category": "media",
+  "note": "mejlet, mejl"
+ },
+ {
+  "id": "media-005",
+  "sv": "ladda ner",
+  "en": "to download",
+  "category": "media",
+  "note": "laddar ner, laddade ner, laddat ner"
+ },
+ {
+  "id": "media-006",
+  "sv": "klicka",
+  "en": "to click",
+  "category": "media",
+  "note": "klickar, klickade, klickat"
+ },
+ {
+  "id": "media-007",
+  "sv": "skriva ut",
+  "en": "to print",
+  "category": "media",
+  "note": "skriver ut, skrev ut, skrivit ut"
+ },
+ {
+  "id": "media-008",
+  "sv": "ett telefonnummer",
+  "en": "phone number",
+  "category": "media",
+  "note": "telefonnumret, telefonnummer"
+ },
+ {
+  "id": "media-009",
+  "sv": "ett samtal",
+  "en": "call; conversation",
+  "category": "media",
+  "note": "samtalet, samtal"
+ },
+ {
+  "id": "media-010",
+  "sv": "lägga på",
+  "en": "to hang up",
+  "category": "media",
+  "note": "lägger på, la på, lagt på"
+ },
+ {
+  "id": "media-011",
+  "sv": "sociala medier",
+  "en": "social media",
+  "category": "media",
+  "note": "Plural: de sociala medierna."
+ },
+ {
+  "id": "media-012",
+  "sv": "en sida",
+  "en": "page; side",
+  "category": "media",
+  "note": "sidan, sidor"
+ },
+ {
+  "id": "media-013",
+  "sv": "logga in",
+  "en": "to log in",
+  "category": "media",
+  "note": "loggar in, loggade in, loggat in"
+ },
+ {
+  "id": "media-014",
+  "sv": "en surfplatta",
+  "en": "tablet",
+  "category": "media",
+  "note": "surfplattan, surfplattor"
+ },
+ {
+  "id": "media-015",
+  "sv": "en dator",
+  "en": "computer",
+  "category": "media",
+  "note": "datorn, datorer"
+ },
+ {
+  "id": "media-016",
+  "sv": "en nyhet",
+  "en": "piece of news",
+  "category": "media",
+  "note": "nyheten, nyheter. Nyheterna also means the TV news."
+ },
+ {
+  "id": "media-017",
+  "sv": "en intervju",
+  "en": "interview",
+  "category": "media",
+  "note": "intervjun, intervjuer"
+ },
+ {
+  "id": "media-018",
+  "sv": "en dokumentär",
+  "en": "documentary",
+  "category": "media",
+  "note": "dokumentären, dokumentärer"
+ },
+ {
+  "id": "media-019",
+  "sv": "ett datorspel",
+  "en": "computer game",
+  "category": "media",
+  "note": "datorspelet, datorspel"
+ },
+ {
+  "id": "media-020",
+  "sv": "ett avsnitt",
+  "en": "episode",
+  "category": "media",
+  "note": "avsnittet, avsnitt"
+ },
+ {
+  "id": "media-021",
+  "sv": "på nätet",
+  "en": "online",
+  "category": "media"
+ },
+ {
+  "id": "media-022",
+  "sv": "en podd",
+  "en": "podcast",
+  "category": "media",
+  "note": "podden, poddar"
+ },
+ {
+  "id": "media-023",
+  "sv": "hörlurar",
+  "en": "headphones",
+  "category": "media",
+  "note": "Plural only: hörlurarna."
+ },
+ {
+  "id": "media-024",
+  "sv": "en högtalare",
+  "en": "loudspeaker",
+  "category": "media",
+  "note": "högtalaren, högtalare"
+ },
+ {
+  "id": "media-025",
+  "sv": "en app",
+  "en": "app",
+  "category": "media",
+  "note": "appen, appar"
+ },
+ {
+  "id": "media-026",
+  "sv": "en mejladress",
+  "en": "email address",
+  "category": "media",
+  "note": "mejladressen, mejladresser"
+ },
+ {
+  "id": "media-027",
+  "sv": "en kamera",
+  "en": "camera",
+  "category": "media",
+  "note": "kameran, kameror"
+ },
+ {
+  "id": "media-028",
+  "sv": "en telefon",
+  "en": "telephone",
+  "category": "media",
+  "note": "telefonen, telefoner"
+ },
+ {
+  "id": "media-029",
+  "sv": "en skärm",
+  "en": "screen",
+  "category": "media",
+  "note": "skärmen, skärmar"
+ },
+ {
+  "id": "media-030",
+  "sv": "ett tangentbord",
+  "en": "keyboard",
+  "category": "media",
+  "note": "tangentbordet, tangentbord"
+ },
+ {
+  "id": "media-031",
+  "sv": "ett program",
+  "en": "programme; program",
+  "category": "media",
+  "note": "programmet, program"
+ },
+ {
+  "id": "media-032",
+  "sv": "ett lösenord",
+  "en": "password",
+  "category": "media",
+  "note": "lösenordet, lösenord"
+ },
+ {
+  "id": "media-033",
+  "sv": "en hemsida",
+  "en": "website",
+  "category": "media",
+  "note": "hemsidan, hemsidor"
+ },
+ {
+  "id": "media-034",
+  "sv": "en länk",
+  "en": "link",
+  "category": "media",
+  "note": "länken, länkar"
+ },
+ {
+  "id": "media-035",
+  "sv": "ett batteri",
+  "en": "battery",
+  "category": "media",
+  "note": "batteriet, batterier"
+ },
+ {
+  "id": "media-036",
+  "sv": "en laddare",
+  "en": "charger",
+  "category": "media",
+  "note": "laddaren, laddare"
+ },
+ {
+  "id": "media-037",
+  "sv": "en tidning",
+  "en": "newspaper; magazine",
+  "category": "media",
+  "note": "tidningen, tidningar"
+ },
+ {
+  "id": "media-038",
+  "sv": "en artikel",
+  "en": "article",
+  "category": "media",
+  "note": "artikeln, artiklar"
+ },
+ {
+  "id": "media-039",
+  "sv": "en radio",
+  "en": "radio",
+  "category": "media",
+  "note": "radion, radioapparater"
+ },
+ {
+  "id": "media-040",
+  "sv": "en tv",
+  "en": "television; TV",
+  "category": "media",
+  "note": "tv:n, tv-apparater"
+ },
+ {
+  "id": "media-041",
+  "sv": "en film",
+  "en": "film",
+  "category": "media",
+  "note": "filmen, filmer"
+ },
+ {
+  "id": "media-042",
+  "sv": "en serie",
+  "en": "series; comic strip",
+  "category": "media",
+  "note": "serien, serier"
+ },
+ {
+  "id": "media-043",
+  "sv": "ett foto",
+  "en": "photo",
+  "category": "media",
+  "note": "fotot, foton"
+ },
+ {
+  "id": "media-044",
+  "sv": "en bild",
+  "en": "picture; image",
+  "category": "media",
+  "note": "bilden, bilder"
+ },
+ {
+  "id": "media-045",
+  "sv": "musik",
+  "en": "music",
+  "category": "media",
+  "note": "En-word: musiken."
+ },
+ {
+  "id": "media-046",
+  "sv": "en låt",
+  "en": "song; track",
+  "category": "media",
+  "note": "låten, låtar"
+ },
+ {
+  "id": "media-047",
+  "sv": "reklam",
+  "en": "advertising; adverts",
+  "category": "media",
+  "note": "En-word: reklamen."
+ },
+ {
+  "id": "media-048",
+  "sv": "filma",
+  "en": "to film",
+  "category": "media",
+  "note": "filmar, filmade, filmat"
+ },
+ {
+  "id": "media-049",
+  "sv": "lägga upp",
+  "en": "to post (online)",
+  "category": "media",
+  "note": "lägger upp, la upp, lagt upp"
+ },
+ {
+  "id": "media-050",
+  "sv": "radera",
+  "en": "to delete",
+  "category": "media",
+  "note": "raderar, raderade, raderat"
+ },
+ {
+  "id": "society-001",
+  "sv": "en regering",
+  "en": "government",
+  "category": "society",
+  "note": "regeringen, regeringar"
+ },
+ {
+  "id": "society-002",
+  "sv": "politik",
+  "en": "politics; policy",
+  "category": "society",
+  "note": "En-word: politiken."
+ },
+ {
+  "id": "society-003",
+  "sv": "ett val",
+  "en": "election; choice",
+  "category": "society",
+  "note": "valet, val"
+ },
+ {
+  "id": "society-004",
+  "sv": "en statsminister",
+  "en": "prime minister",
+  "category": "society",
+  "note": "statsministern, statsministrar"
+ },
+ {
+  "id": "society-005",
+  "sv": "en kung",
+  "en": "king",
+  "category": "society",
+  "note": "kungen, kungar"
+ },
+ {
+  "id": "society-006",
+  "sv": "ett samhälle",
+  "en": "society; community",
+  "category": "society",
+  "note": "samhället, samhällen"
+ },
+ {
+  "id": "society-007",
+  "sv": "rösta",
+  "en": "to vote",
+  "category": "society",
+  "note": "röstar, röstade, röstat"
+ },
+ {
+  "id": "society-008",
+  "sv": "en strejk",
+  "en": "strike",
+  "category": "society",
+  "note": "strejken, strejker"
+ },
+ {
+  "id": "society-009",
+  "sv": "en demonstration",
+  "en": "demonstration",
+  "category": "society",
+  "note": "demonstrationen, demonstrationer"
+ },
+ {
+  "id": "society-010",
+  "sv": "arbetslöshet",
+  "en": "unemployment",
+  "category": "society",
+  "note": "En-word: arbetslösheten."
+ },
+ {
+  "id": "society-011",
+  "sv": "ett krig",
+  "en": "war",
+  "category": "society",
+  "note": "kriget, krig"
+ },
+ {
+  "id": "society-012",
+  "sv": "fred",
+  "en": "peace",
+  "category": "society",
+  "note": "En-word: freden."
+ },
+ {
+  "id": "society-013",
+  "sv": "en värld",
+  "en": "world",
+  "category": "society",
+  "note": "världen, världar"
+ },
+ {
+  "id": "society-014",
+  "sv": "ekonomi",
+  "en": "economy",
+  "category": "society",
+  "note": "En-word: ekonomin."
+ },
+ {
+  "id": "society-015",
+  "sv": "en kris",
+  "en": "crisis",
+  "category": "society",
+  "note": "krisen, kriser"
+ },
+ {
+  "id": "society-016",
+  "sv": "en rättighet",
+  "en": "right",
+  "category": "society",
+  "note": "rättigheten, rättigheter"
+ },
+ {
+  "id": "society-017",
+  "sv": "frihet",
+  "en": "freedom",
+  "category": "society",
+  "note": "En-word: friheten, friheter."
+ },
+ {
+  "id": "society-018",
+  "sv": "jämställdhet",
+  "en": "equality between women and men",
+  "category": "society",
+  "note": "En-word: jämställdheten."
+ },
+ {
+  "id": "society-019",
+  "sv": "demokrati",
+  "en": "democracy",
+  "category": "society",
+  "note": "En-word: demokratin."
+ },
+ {
+  "id": "society-020",
+  "sv": "ett parti",
+  "en": "party (political)",
+  "category": "society",
+  "note": "partiet, partier"
+ },
+ {
+  "id": "society-021",
+  "sv": "ett klimat",
+  "en": "climate",
+  "category": "society",
+  "note": "klimatet, klimat"
+ },
+ {
+  "id": "society-022",
+  "sv": "miljö",
+  "en": "environment",
+  "category": "society",
+  "note": "En-word: miljön, miljöer."
+ },
+ {
+  "id": "society-023",
+  "sv": "energi",
+  "en": "energy",
+  "category": "society",
+  "note": "En-word: energin."
+ },
+ {
+  "id": "society-024",
+  "sv": "skydda",
+  "en": "to protect",
+  "category": "society",
+  "note": "skyddar, skyddade, skyddat"
+ },
+ {
+  "id": "society-025",
+  "sv": "fattigdom",
+  "en": "poverty",
+  "category": "society",
+  "note": "En-word: fattigdomen."
+ },
+ {
+  "id": "society-026",
+  "sv": "en flykting",
+  "en": "refugee",
+  "category": "society",
+  "note": "flyktingen, flyktingar"
+ },
+ {
+  "id": "society-027",
+  "sv": "en invandrare",
+  "en": "immigrant",
+  "category": "society",
+  "note": "invandraren, invandrare"
+ },
+ {
+  "id": "society-028",
+  "sv": "en befolkning",
+  "en": "population",
+  "category": "society",
+  "note": "befolkningen, befolkningar"
+ },
+ {
+  "id": "society-029",
+  "sv": "ett brott",
+  "en": "crime",
+  "category": "society",
+  "note": "brottet, brott"
+ },
+ {
+  "id": "society-030",
+  "sv": "ett offer",
+  "en": "victim",
+  "category": "society",
+  "note": "offret, offer"
+ },
+ {
+  "id": "society-031",
+  "sv": "våld",
+  "en": "violence",
+  "category": "society",
+  "note": "Ett-word: våldet."
+ },
+ {
+  "id": "society-032",
+  "sv": "säkerhet",
+  "en": "safety; security",
+  "category": "society",
+  "note": "En-word: säkerheten."
+ },
+ {
+  "id": "society-033",
+  "sv": "en soldat",
+  "en": "soldier",
+  "category": "society",
+  "note": "soldaten, soldater"
+ },
+ {
+  "id": "society-034",
+  "sv": "en pension",
+  "en": "pension",
+  "category": "society",
+  "note": "pensionen, pensioner"
+ },
+ {
+  "id": "society-035",
+  "sv": "en pensionär",
+  "en": "pensioner",
+  "category": "society",
+  "note": "pensionären, pensionärer"
+ },
+ {
+  "id": "society-036",
+  "sv": "en åsikt",
+  "en": "opinion",
+  "category": "society",
+  "note": "åsikten, åsikter"
+ },
+ {
+  "id": "society-037",
+  "sv": "en debatt",
+  "en": "debate",
+  "category": "society",
+  "note": "debatten, debatter"
+ },
+ {
+  "id": "society-038",
+  "sv": "en diskussion",
+  "en": "discussion",
+  "category": "society",
+  "note": "diskussionen, diskussioner"
+ },
+ {
+  "id": "society-039",
+  "sv": "kultur",
+  "en": "culture",
+  "category": "society",
+  "note": "En-word: kulturen, kulturer."
+ },
+ {
+  "id": "society-040",
+  "sv": "ett århundrade",
+  "en": "century",
+  "category": "society",
+  "note": "århundradet, århundraden"
+ },
+ {
+  "id": "society-041",
+  "sv": "en händelse",
+  "en": "event",
+  "category": "society",
+  "note": "händelsen, händelser"
+ },
+ {
+  "id": "society-042",
+  "sv": "folk",
+  "en": "people; a people (nation)",
+  "category": "society",
+  "note": "Ett-word: folket, folk. Mycket folk means a lot of people."
+ },
+ {
+  "id": "society-043",
+  "sv": "ett avtal",
+  "en": "agreement",
+  "category": "society",
+  "note": "avtalet, avtal"
+ },
+ {
+  "id": "society-044",
+  "sv": "en förändring",
+  "en": "change",
+  "category": "society",
+  "note": "förändringen, förändringar"
+ },
+ {
+  "id": "society-045",
+  "sv": "sjukvård",
+  "en": "health care",
+  "category": "society",
+  "note": "En-word: sjukvården."
+ },
+ {
+  "id": "society-046",
+  "sv": "återvinning",
+  "en": "recycling",
+  "category": "society",
+  "note": "En-word: återvinningen."
+ },
+ {
+  "id": "society-047",
+  "sv": "hemlös",
+  "en": "homeless",
+  "category": "society",
+  "note": "hemlöst, hemlösa"
+ },
+ {
+  "id": "society-048",
+  "sv": "en stat",
+  "en": "state",
+  "category": "society",
+  "note": "staten, stater"
+ },
+ {
+  "id": "society-049",
+  "sv": "diskriminering",
+  "en": "discrimination",
+  "category": "society",
+  "note": "En-word: diskrimineringen."
+ },
+ {
+  "id": "society-050",
+  "sv": "rasism",
+  "en": "racism",
+  "category": "society",
+  "note": "En-word: rasismen."
+ },
+ {
+  "id": "leisure-001",
+  "sv": "fritid",
+  "en": "free time; leisure",
+  "category": "leisure",
+  "note": "En-word: fritiden."
+ },
+ {
+  "id": "leisure-002",
+  "sv": "en sport",
+  "en": "sport",
+  "category": "leisure",
+  "note": "sporten, sporter"
+ },
+ {
+  "id": "leisure-003",
+  "sv": "en match",
+  "en": "match; game",
+  "category": "leisure",
+  "note": "matchen, matcher"
+ },
+ {
+  "id": "leisure-004",
+  "sv": "ett lag",
+  "en": "team",
+  "category": "leisure",
+  "note": "laget, lag"
+ },
+ {
+  "id": "leisure-005",
+  "sv": "en spelare",
+  "en": "player",
+  "category": "leisure",
+  "note": "spelaren, spelare"
+ },
+ {
+  "id": "leisure-006",
+  "sv": "ett spel",
+  "en": "game",
+  "category": "leisure",
+  "note": "spelet, spel"
+ },
+ {
+  "id": "leisure-007",
+  "sv": "fotboll",
+  "en": "football",
+  "category": "leisure",
+  "note": "En-word: fotbollen, fotbollar."
+ },
+ {
+  "id": "leisure-008",
+  "sv": "en boll",
+  "en": "ball",
+  "category": "leisure",
+  "note": "bollen, bollar"
+ },
+ {
+  "id": "leisure-009",
+  "sv": "ett mål",
+  "en": "goal; aim",
+  "category": "leisure",
+  "note": "målet, mål"
+ },
+ {
+  "id": "leisure-010",
+  "sv": "ett resultat",
+  "en": "result; score",
+  "category": "leisure",
+  "note": "resultatet, resultat"
+ },
+ {
+  "id": "leisure-011",
+  "sv": "träning",
+  "en": "training; exercise",
+  "category": "leisure",
+  "note": "En-word: träningen."
+ },
+ {
+  "id": "leisure-012",
+  "sv": "träna",
+  "en": "to train; to work out",
+  "category": "leisure",
+  "note": "tränar, tränade, tränat"
+ },
+ {
+  "id": "leisure-013",
+  "sv": "en konsert",
+  "en": "concert",
+  "category": "leisure",
+  "note": "konserten, konserter"
+ },
+ {
+  "id": "leisure-014",
+  "sv": "en pjäs",
+  "en": "play (theatre)",
+  "category": "leisure",
+  "note": "pjäsen, pjäser"
+ },
+ {
+  "id": "leisure-015",
+  "sv": "en utställning",
+  "en": "exhibition",
+  "category": "leisure",
+  "note": "utställningen, utställningar"
+ },
+ {
+  "id": "leisure-016",
+  "sv": "en promenad",
+  "en": "walk",
+  "category": "leisure",
+  "note": "promenaden, promenader"
+ },
+ {
+  "id": "leisure-017",
+  "sv": "en helg",
+  "en": "weekend",
+  "category": "leisure",
+  "note": "helgen, helger"
+ },
+ {
+  "id": "leisure-018",
+  "sv": "en inbjudan",
+  "en": "invitation",
+  "category": "leisure",
+  "note": "inbjudan, inbjudningar"
+ },
+ {
+  "id": "leisure-019",
+  "sv": "dansa",
+  "en": "to dance",
+  "category": "leisure",
+  "note": "dansar, dansade, dansat"
+ },
+ {
+  "id": "leisure-020",
+  "sv": "sjunga",
+  "en": "to sing",
+  "category": "leisure",
+  "note": "sjunger, sjöng, sjungit"
+ },
+ {
+  "id": "leisure-021",
+  "sv": "en sångare",
+  "en": "singer",
+  "category": "leisure",
+  "note": "sångaren, sångare"
+ },
+ {
+  "id": "leisure-022",
+  "sv": "ett band",
+  "en": "band",
+  "category": "leisure",
+  "note": "bandet, band"
+ },
+ {
+  "id": "leisure-023",
+  "sv": "en gitarr",
+  "en": "guitar",
+  "category": "leisure",
+  "note": "gitarren, gitarrer"
+ },
+ {
+  "id": "leisure-024",
+  "sv": "ett piano",
+  "en": "piano",
+  "category": "leisure",
+  "note": "pianot, pianon"
+ },
+ {
+  "id": "leisure-025",
+  "sv": "tennis",
+  "en": "tennis",
+  "category": "leisure",
+  "note": "En-word: tennisen."
+ },
+ {
+  "id": "leisure-026",
+  "sv": "ishockey",
+  "en": "ice hockey",
+  "category": "leisure",
+  "note": "En-word: ishockeyn."
+ },
+ {
+  "id": "leisure-027",
+  "sv": "simma",
+  "en": "to swim",
+  "category": "leisure",
+  "note": "simmar, simmade, simmat"
+ },
+ {
+  "id": "leisure-028",
+  "sv": "cykla",
+  "en": "to cycle",
+  "category": "leisure",
+  "note": "cyklar, cyklade, cyklat"
+ },
+ {
+  "id": "leisure-029",
+  "sv": "en vandring",
+  "en": "hike",
+  "category": "leisure",
+  "note": "vandringen, vandringar"
+ },
+ {
+  "id": "leisure-030",
+  "sv": "åka skidor",
+  "en": "to ski",
+  "category": "leisure",
+  "note": "åker skidor, åkte skidor, åkt skidor"
+ },
+ {
+  "id": "leisure-031",
+  "sv": "ett gym",
+  "en": "gym",
+  "category": "leisure",
+  "note": "gymmet, gym"
+ },
+ {
+  "id": "leisure-032",
+  "sv": "yoga",
+  "en": "yoga",
+  "category": "leisure",
+  "note": "En-word: yogan."
+ },
+ {
+  "id": "leisure-033",
+  "sv": "en skådespelare",
+  "en": "actor",
+  "category": "leisure",
+  "note": "skådespelaren, skådespelare"
+ },
+ {
+  "id": "leisure-034",
+  "sv": "rita",
+  "en": "to draw",
+  "category": "leisure",
+  "note": "ritar, ritade, ritat"
+ },
+ {
+  "id": "leisure-035",
+  "sv": "måla",
+  "en": "to paint",
+  "category": "leisure",
+  "note": "målar, målade, målat"
+ },
+ {
+  "id": "leisure-036",
+  "sv": "en tavla",
+  "en": "painting; picture",
+  "category": "leisure",
+  "note": "tavlan, tavlor"
+ },
+ {
+  "id": "leisure-037",
+  "sv": "konst",
+  "en": "art",
+  "category": "leisure",
+  "note": "En-word: konsten."
+ },
+ {
+  "id": "leisure-038",
+  "sv": "schack",
+  "en": "chess",
+  "category": "leisure",
+  "note": "Ett-word: schacket."
+ },
+ {
+  "id": "leisure-039",
+  "sv": "en leksak",
+  "en": "toy",
+  "category": "leisure",
+  "note": "leksaken, leksaker"
+ },
+ {
+  "id": "leisure-040",
+  "sv": "en festival",
+  "en": "festival",
+  "category": "leisure",
+  "note": "festivalen, festivaler"
+ },
+ {
+  "id": "leisure-041",
+  "sv": "ett kalas",
+  "en": "party (birthday)",
+  "category": "leisure",
+  "note": "kalaset, kalas"
+ },
+ {
+  "id": "leisure-042",
+  "sv": "en hobby",
+  "en": "hobby",
+  "category": "leisure",
+  "note": "hobbyn, hobbyer"
+ },
+ {
+  "id": "leisure-043",
+  "sv": "fiska",
+  "en": "to fish",
+  "category": "leisure",
+  "note": "fiskar, fiskade, fiskat"
+ },
+ {
+  "id": "leisure-044",
+  "sv": "en stuga",
+  "en": "cottage; cabin",
+  "category": "leisure",
+  "note": "stugan, stugor"
+ },
+ {
+  "id": "leisure-045",
+  "sv": "en tävling",
+  "en": "competition",
+  "category": "leisure",
+  "note": "tävlingen, tävlingar"
+ },
+ {
+  "id": "leisure-046",
+  "sv": "en publik",
+  "en": "audience",
+  "category": "leisure",
+  "note": "publiken, publiker"
+ },
+ {
+  "id": "leisure-047",
+  "sv": "en sång",
+  "en": "song; singing",
+  "category": "leisure",
+  "note": "sången, sånger"
+ },
+ {
+  "id": "leisure-048",
+  "sv": "umgås",
+  "en": "to spend time together; to hang out",
+  "category": "leisure",
+  "note": "umgås, umgicks, umgåtts"
+ },
+ {
+  "id": "leisure-049",
+  "sv": "bada",
+  "en": "to swim; to bathe",
+  "category": "leisure",
+  "note": "badar, badade, badat"
+ },
+ {
+  "id": "leisure-050",
+  "sv": "en bastu",
+  "en": "sauna",
+  "category": "leisure",
+  "note": "bastun, bastur"
+ }
+]

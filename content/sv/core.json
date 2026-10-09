@@ -1,0 +1,3614 @@
+[
+ {
+  "id": "essentials-001",
+  "sv": "hej",
+  "en": "hello; hi",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-002",
+  "sv": "tack",
+  "en": "thank you; thanks",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-003",
+  "sv": "snälla",
+  "en": "please",
+  "category": "essentials",
+  "note": "Used when asking for something; Swedish often says tack or asks politely instead."
+ },
+ {
+  "id": "essentials-004",
+  "sv": "ja",
+  "en": "yes",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-005",
+  "sv": "nej",
+  "en": "no",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-006",
+  "sv": "hej då",
+  "en": "goodbye; bye",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-007",
+  "sv": "god morgon",
+  "en": "good morning",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-008",
+  "sv": "god natt",
+  "en": "good night",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-009",
+  "sv": "förlåt",
+  "en": "sorry",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-010",
+  "sv": "ursäkta",
+  "en": "excuse me; pardon",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-011",
+  "sv": "varsågod",
+  "en": "here you are; you're welcome",
+  "category": "essentials",
+  "note": "Said when handing something over or inviting someone to go ahead."
+ },
+ {
+  "id": "essentials-012",
+  "sv": "ingen orsak",
+  "en": "you're welcome; no problem",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-013",
+  "sv": "välkommen",
+  "en": "welcome",
+  "category": "essentials",
+  "note": "välkommet, välkomna"
+ },
+ {
+  "id": "essentials-014",
+  "sv": "okej",
+  "en": "okay",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-015",
+  "sv": "vi ses",
+  "en": "see you",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-016",
+  "sv": "hur mår du",
+  "en": "how are you",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-017",
+  "sv": "tyvärr",
+  "en": "unfortunately",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-018",
+  "sv": "jag",
+  "en": "I",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-019",
+  "sv": "du",
+  "en": "you (one person)",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-020",
+  "sv": "han",
+  "en": "he",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-021",
+  "sv": "hon",
+  "en": "she",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-022",
+  "sv": "den",
+  "en": "it (en-word)",
+  "category": "essentials",
+  "note": "Refers back to an en-word."
+ },
+ {
+  "id": "essentials-023",
+  "sv": "det",
+  "en": "it (ett-word); that; there (as in there is)",
+  "category": "essentials",
+  "note": "Refers back to an ett-word; also the subject of det regnar, det finns."
+ },
+ {
+  "id": "essentials-024",
+  "sv": "vi",
+  "en": "we",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-025",
+  "sv": "ni",
+  "en": "you (several people)",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-026",
+  "sv": "de",
+  "en": "they",
+  "category": "essentials",
+  "note": "Said dom in everyday speech."
+ },
+ {
+  "id": "essentials-027",
+  "sv": "mig",
+  "en": "me",
+  "category": "essentials",
+  "note": "Said mej."
+ },
+ {
+  "id": "essentials-028",
+  "sv": "dig",
+  "en": "you (object)",
+  "category": "essentials",
+  "note": "Said dej."
+ },
+ {
+  "id": "essentials-029",
+  "sv": "honom",
+  "en": "him",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-030",
+  "sv": "henne",
+  "en": "her",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-031",
+  "sv": "oss",
+  "en": "us",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-032",
+  "sv": "dem",
+  "en": "them",
+  "category": "essentials",
+  "note": "Said dom in everyday speech."
+ },
+ {
+  "id": "essentials-033",
+  "sv": "vem",
+  "en": "who",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-034",
+  "sv": "vad",
+  "en": "what",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-035",
+  "sv": "var",
+  "en": "where",
+  "category": "essentials",
+  "note": "Where to is vart."
+ },
+ {
+  "id": "essentials-036",
+  "sv": "hur",
+  "en": "how",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-037",
+  "sv": "varför",
+  "en": "why",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-038",
+  "sv": "när",
+  "en": "when",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-039",
+  "sv": "hur mycket",
+  "en": "how much",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-040",
+  "sv": "hur många",
+  "en": "how many",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-041",
+  "sv": "vilken",
+  "en": "which",
+  "category": "essentials",
+  "note": "vilket, vilka"
+ },
+ {
+  "id": "essentials-042",
+  "sv": "någon",
+  "en": "someone; anyone; some",
+  "category": "essentials",
+  "note": "något, några"
+ },
+ {
+  "id": "essentials-043",
+  "sv": "ingen",
+  "en": "no one; no; none",
+  "category": "essentials",
+  "note": "inget, inga"
+ },
+ {
+  "id": "essentials-044",
+  "sv": "någonting",
+  "en": "something; anything",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-045",
+  "sv": "ingenting",
+  "en": "nothing",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-046",
+  "sv": "allt",
+  "en": "everything",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-047",
+  "sv": "alla",
+  "en": "everyone; all",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-048",
+  "sv": "många",
+  "en": "many",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-049",
+  "sv": "varje",
+  "en": "every; each",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-050",
+  "sv": "själv",
+  "en": "myself; yourself; himself; alone",
+  "category": "essentials",
+  "note": "självt, själva"
+ },
+ {
+  "id": "essentials-051",
+  "sv": "en sak",
+  "en": "thing",
+  "category": "essentials",
+  "note": "saken, saker"
+ },
+ {
+  "id": "essentials-052",
+  "sv": "min",
+  "en": "my; mine",
+  "category": "essentials",
+  "note": "mitt, mina"
+ },
+ {
+  "id": "essentials-053",
+  "sv": "din",
+  "en": "your; yours (one person)",
+  "category": "essentials",
+  "note": "ditt, dina"
+ },
+ {
+  "id": "essentials-054",
+  "sv": "hans",
+  "en": "his",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-055",
+  "sv": "hennes",
+  "en": "her; hers",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-056",
+  "sv": "vår",
+  "en": "our; ours",
+  "category": "essentials",
+  "note": "vårt, våra. Also a noun: en vår, spring."
+ },
+ {
+  "id": "essentials-057",
+  "sv": "er",
+  "en": "your; yours (several people)",
+  "category": "essentials",
+  "note": "ert, era"
+ },
+ {
+  "id": "essentials-058",
+  "sv": "deras",
+  "en": "their; theirs",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-059",
+  "sv": "sin",
+  "en": "his own; her own; their own",
+  "category": "essentials",
+  "note": "sitt, sina. Points back to the subject: Han tar sin väska."
+ },
+ {
+  "id": "essentials-060",
+  "sv": "den här",
+  "en": "this",
+  "category": "essentials",
+  "note": "det här, de här"
+ },
+ {
+  "id": "essentials-061",
+  "sv": "den där",
+  "en": "that",
+  "category": "essentials",
+  "note": "det där, de där"
+ },
+ {
+  "id": "essentials-062",
+  "sv": "i",
+  "en": "in",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-063",
+  "sv": "på",
+  "en": "on; at",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-064",
+  "sv": "till",
+  "en": "to",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-065",
+  "sv": "från",
+  "en": "from",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-066",
+  "sv": "med",
+  "en": "with",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-067",
+  "sv": "utan",
+  "en": "without",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-068",
+  "sv": "för",
+  "en": "for",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-069",
+  "sv": "av",
+  "en": "of; by; off",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-070",
+  "sv": "om",
+  "en": "about; if; in (time)",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-071",
+  "sv": "under",
+  "en": "under; during",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-072",
+  "sv": "över",
+  "en": "over; above; across",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-073",
+  "sv": "mellan",
+  "en": "between",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-074",
+  "sv": "bakom",
+  "en": "behind",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-075",
+  "sv": "framför",
+  "en": "in front of",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-076",
+  "sv": "hos",
+  "en": "at someone's place",
+  "category": "essentials",
+  "note": "Like French chez: hos mig = at my place."
+ },
+ {
+  "id": "essentials-077",
+  "sv": "mot",
+  "en": "towards; against",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-078",
+  "sv": "efter",
+  "en": "after",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-079",
+  "sv": "före",
+  "en": "before",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-080",
+  "sv": "och",
+  "en": "and",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-081",
+  "sv": "eller",
+  "en": "or",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-082",
+  "sv": "men",
+  "en": "but",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-083",
+  "sv": "så",
+  "en": "so; then",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-084",
+  "sv": "att",
+  "en": "that; to (infinitive marker)",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-085",
+  "sv": "eftersom",
+  "en": "because; since",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-086",
+  "sv": "för att",
+  "en": "because; in order to",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-087",
+  "sv": "också",
+  "en": "also; too",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-088",
+  "sv": "inte",
+  "en": "not",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-089",
+  "sv": "bara",
+  "en": "only; just",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-090",
+  "sv": "mycket",
+  "en": "very; much; a lot",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-091",
+  "sv": "lite",
+  "en": "a little; a bit",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-092",
+  "sv": "ganska",
+  "en": "quite; rather",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-093",
+  "sv": "väldigt",
+  "en": "very; really",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-094",
+  "sv": "nu",
+  "en": "now",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-095",
+  "sv": "här",
+  "en": "here",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-096",
+  "sv": "där",
+  "en": "there",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-097",
+  "sv": "idag",
+  "en": "today",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-098",
+  "sv": "imorgon",
+  "en": "tomorrow",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-099",
+  "sv": "igår",
+  "en": "yesterday",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-100",
+  "sv": "alltid",
+  "en": "always",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-101",
+  "sv": "aldrig",
+  "en": "never",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-102",
+  "sv": "ofta",
+  "en": "often",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-103",
+  "sv": "ibland",
+  "en": "sometimes",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-104",
+  "sv": "redan",
+  "en": "already",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-105",
+  "sv": "igen",
+  "en": "again",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-106",
+  "sv": "fortfarande",
+  "en": "still",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-107",
+  "sv": "sedan",
+  "en": "then; afterwards; since",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-108",
+  "sv": "då",
+  "en": "then; at that time",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-109",
+  "sv": "kanske",
+  "en": "maybe; perhaps",
+  "category": "essentials"
+ },
+ {
+  "id": "essentials-110",
+  "sv": "gärna",
+  "en": "gladly; I'd like to",
+  "category": "essentials",
+  "note": "Ja, gärna = yes, please."
+ },
+ {
+  "id": "verbs-001",
+  "sv": "vara",
+  "en": "to be",
+  "category": "verbs",
+  "note": "är, var, varit"
+ },
+ {
+  "id": "verbs-002",
+  "sv": "ha",
+  "en": "to have",
+  "category": "verbs",
+  "note": "har, hade, haft"
+ },
+ {
+  "id": "verbs-003",
+  "sv": "göra",
+  "en": "to do; to make",
+  "category": "verbs",
+  "note": "gör, gjorde, gjort"
+ },
+ {
+  "id": "verbs-004",
+  "sv": "gå",
+  "en": "to go; to walk",
+  "category": "verbs",
+  "note": "går, gick, gått"
+ },
+ {
+  "id": "verbs-005",
+  "sv": "komma",
+  "en": "to come",
+  "category": "verbs",
+  "note": "kommer, kom, kommit"
+ },
+ {
+  "id": "verbs-006",
+  "sv": "säga",
+  "en": "to say",
+  "category": "verbs",
+  "note": "säger, sa, sagt"
+ },
+ {
+  "id": "verbs-007",
+  "sv": "prata",
+  "en": "to talk; to speak",
+  "category": "verbs",
+  "note": "pratar, pratade, pratat"
+ },
+ {
+  "id": "verbs-008",
+  "sv": "fråga",
+  "en": "to ask",
+  "category": "verbs",
+  "note": "frågar, frågade, frågat"
+ },
+ {
+  "id": "verbs-009",
+  "sv": "svara",
+  "en": "to answer",
+  "category": "verbs",
+  "note": "svarar, svarade, svarat"
+ },
+ {
+  "id": "verbs-010",
+  "sv": "se",
+  "en": "to see",
+  "category": "verbs",
+  "note": "ser, såg, sett"
+ },
+ {
+  "id": "verbs-011",
+  "sv": "titta",
+  "en": "to look; to watch",
+  "category": "verbs",
+  "note": "tittar, tittade, tittat"
+ },
+ {
+  "id": "verbs-012",
+  "sv": "höra",
+  "en": "to hear",
+  "category": "verbs",
+  "note": "hör, hörde, hört"
+ },
+ {
+  "id": "verbs-013",
+  "sv": "lyssna",
+  "en": "to listen",
+  "category": "verbs",
+  "note": "lyssnar, lyssnade, lyssnat"
+ },
+ {
+  "id": "verbs-014",
+  "sv": "veta",
+  "en": "to know (a fact)",
+  "category": "verbs",
+  "note": "vet, visste, vetat"
+ },
+ {
+  "id": "verbs-015",
+  "sv": "känna",
+  "en": "to know (a person); to feel",
+  "category": "verbs",
+  "note": "känner, kände, känt"
+ },
+ {
+  "id": "verbs-016",
+  "sv": "förstå",
+  "en": "to understand",
+  "category": "verbs",
+  "note": "förstår, förstod, förstått"
+ },
+ {
+  "id": "verbs-017",
+  "sv": "tänka",
+  "en": "to think",
+  "category": "verbs",
+  "note": "tänker, tänkte, tänkt"
+ },
+ {
+  "id": "verbs-018",
+  "sv": "tro",
+  "en": "to believe; to think (suppose)",
+  "category": "verbs",
+  "note": "tror, trodde, trott"
+ },
+ {
+  "id": "verbs-019",
+  "sv": "tycka",
+  "en": "to think (have an opinion)",
+  "category": "verbs",
+  "note": "tycker, tyckte, tyckt"
+ },
+ {
+  "id": "verbs-020",
+  "sv": "vilja",
+  "en": "to want",
+  "category": "verbs",
+  "note": "vill, ville, velat"
+ },
+ {
+  "id": "verbs-021",
+  "sv": "kunna",
+  "en": "can; to be able to; to know how to",
+  "category": "verbs",
+  "note": "kan, kunde, kunnat"
+ },
+ {
+  "id": "verbs-022",
+  "sv": "måste",
+  "en": "must; to have to",
+  "category": "verbs",
+  "note": "måste, måste, måst"
+ },
+ {
+  "id": "verbs-023",
+  "sv": "ska",
+  "en": "will; shall; to be going to",
+  "category": "verbs",
+  "note": "ska, skulle, skolat"
+ },
+ {
+  "id": "verbs-024",
+  "sv": "behöva",
+  "en": "to need",
+  "category": "verbs",
+  "note": "behöver, behövde, behövt"
+ },
+ {
+  "id": "verbs-025",
+  "sv": "ta",
+  "en": "to take",
+  "category": "verbs",
+  "note": "tar, tog, tagit"
+ },
+ {
+  "id": "verbs-026",
+  "sv": "ge",
+  "en": "to give",
+  "category": "verbs",
+  "note": "ger, gav, gett"
+ },
+ {
+  "id": "verbs-027",
+  "sv": "lägga",
+  "en": "to put (lying down); to lay",
+  "category": "verbs",
+  "note": "lägger, la, lagt"
+ },
+ {
+  "id": "verbs-028",
+  "sv": "sätta",
+  "en": "to put; to set",
+  "category": "verbs",
+  "note": "sätter, satte, satt"
+ },
+ {
+  "id": "verbs-029",
+  "sv": "ställa",
+  "en": "to put (standing up); to place",
+  "category": "verbs",
+  "note": "ställer, ställde, ställt"
+ },
+ {
+  "id": "verbs-030",
+  "sv": "hitta",
+  "en": "to find",
+  "category": "verbs",
+  "note": "hittar, hittade, hittat"
+ },
+ {
+  "id": "verbs-031",
+  "sv": "leta",
+  "en": "to look for; to search",
+  "category": "verbs",
+  "note": "letar, letade, letat"
+ },
+ {
+  "id": "verbs-032",
+  "sv": "lämna",
+  "en": "to leave (something or a place)",
+  "category": "verbs",
+  "note": "lämnar, lämnade, lämnat"
+ },
+ {
+  "id": "verbs-033",
+  "sv": "stanna",
+  "en": "to stay; to stop",
+  "category": "verbs",
+  "note": "stannar, stannade, stannat"
+ },
+ {
+  "id": "verbs-034",
+  "sv": "åka",
+  "en": "to go (by vehicle); to ride",
+  "category": "verbs",
+  "note": "åker, åkte, åkt"
+ },
+ {
+  "id": "verbs-035",
+  "sv": "gå ut",
+  "en": "to go out",
+  "category": "verbs",
+  "note": "går ut, gick ut, gått ut"
+ },
+ {
+  "id": "verbs-036",
+  "sv": "springa",
+  "en": "to run",
+  "category": "verbs",
+  "note": "springer, sprang, sprungit"
+ },
+ {
+  "id": "verbs-037",
+  "sv": "vänta",
+  "en": "to wait",
+  "category": "verbs",
+  "note": "väntar, väntade, väntat"
+ },
+ {
+  "id": "verbs-038",
+  "sv": "bära",
+  "en": "to carry",
+  "category": "verbs",
+  "note": "bär, bar, burit"
+ },
+ {
+  "id": "verbs-039",
+  "sv": "ta med",
+  "en": "to bring; to take along",
+  "category": "verbs",
+  "note": "tar med, tog med, tagit med"
+ },
+ {
+  "id": "verbs-040",
+  "sv": "öppna",
+  "en": "to open",
+  "category": "verbs",
+  "note": "öppnar, öppnade, öppnat"
+ },
+ {
+  "id": "verbs-041",
+  "sv": "stänga",
+  "en": "to close; to shut",
+  "category": "verbs",
+  "note": "stänger, stängde, stängt"
+ },
+ {
+  "id": "verbs-042",
+  "sv": "börja",
+  "en": "to begin; to start",
+  "category": "verbs",
+  "note": "börjar, började, börjat"
+ },
+ {
+  "id": "verbs-043",
+  "sv": "sluta",
+  "en": "to stop; to quit; to end",
+  "category": "verbs",
+  "note": "slutar, slutade, slutat"
+ },
+ {
+  "id": "verbs-044",
+  "sv": "fortsätta",
+  "en": "to continue",
+  "category": "verbs",
+  "note": "fortsätter, fortsatte, fortsatt"
+ },
+ {
+  "id": "verbs-045",
+  "sv": "hjälpa",
+  "en": "to help",
+  "category": "verbs",
+  "note": "hjälper, hjälpte, hjälpt"
+ },
+ {
+  "id": "verbs-046",
+  "sv": "gilla",
+  "en": "to like",
+  "category": "verbs",
+  "note": "gillar, gillade, gillat"
+ },
+ {
+  "id": "verbs-047",
+  "sv": "tycka om",
+  "en": "to like; to be fond of",
+  "category": "verbs",
+  "note": "tycker om, tyckte om, tyckt om"
+ },
+ {
+  "id": "verbs-048",
+  "sv": "älska",
+  "en": "to love",
+  "category": "verbs",
+  "note": "älskar, älskade, älskat"
+ },
+ {
+  "id": "verbs-049",
+  "sv": "välja",
+  "en": "to choose",
+  "category": "verbs",
+  "note": "väljer, valde, valt"
+ },
+ {
+  "id": "verbs-050",
+  "sv": "köpa",
+  "en": "to buy",
+  "category": "verbs",
+  "note": "köper, köpte, köpt"
+ },
+ {
+  "id": "verbs-051",
+  "sv": "sälja",
+  "en": "to sell",
+  "category": "verbs",
+  "note": "säljer, sålde, sålt"
+ },
+ {
+  "id": "verbs-052",
+  "sv": "betala",
+  "en": "to pay",
+  "category": "verbs",
+  "note": "betalar, betalade, betalat"
+ },
+ {
+  "id": "verbs-053",
+  "sv": "kosta",
+  "en": "to cost",
+  "category": "verbs",
+  "note": "kostar, kostade, kostat"
+ },
+ {
+  "id": "verbs-054",
+  "sv": "äta",
+  "en": "to eat",
+  "category": "verbs",
+  "note": "äter, åt, ätit"
+ },
+ {
+  "id": "verbs-055",
+  "sv": "dricka",
+  "en": "to drink",
+  "category": "verbs",
+  "note": "dricker, drack, druckit"
+ },
+ {
+  "id": "verbs-056",
+  "sv": "laga mat",
+  "en": "to cook",
+  "category": "verbs",
+  "note": "lagar mat, lagade mat, lagat mat"
+ },
+ {
+  "id": "verbs-057",
+  "sv": "sova",
+  "en": "to sleep",
+  "category": "verbs",
+  "note": "sover, sov, sovit"
+ },
+ {
+  "id": "verbs-058",
+  "sv": "vakna",
+  "en": "to wake up",
+  "category": "verbs",
+  "note": "vaknar, vaknade, vaknat"
+ },
+ {
+  "id": "verbs-059",
+  "sv": "gå upp",
+  "en": "to get up; to go up",
+  "category": "verbs",
+  "note": "går upp, gick upp, gått upp"
+ },
+ {
+  "id": "verbs-060",
+  "sv": "sätta sig",
+  "en": "to sit down",
+  "category": "verbs",
+  "note": "sätter sig, satte sig, satt sig"
+ },
+ {
+  "id": "verbs-061",
+  "sv": "lägga sig",
+  "en": "to go to bed; to lie down",
+  "category": "verbs",
+  "note": "lägger sig, la sig, lagt sig"
+ },
+ {
+  "id": "verbs-062",
+  "sv": "sitta",
+  "en": "to sit; to be sitting",
+  "category": "verbs",
+  "note": "sitter, satt, suttit"
+ },
+ {
+  "id": "verbs-063",
+  "sv": "ligga",
+  "en": "to lie; to be (located)",
+  "category": "verbs",
+  "note": "ligger, låg, legat"
+ },
+ {
+  "id": "verbs-064",
+  "sv": "stå",
+  "en": "to stand",
+  "category": "verbs",
+  "note": "står, stod, stått"
+ },
+ {
+  "id": "verbs-065",
+  "sv": "bo",
+  "en": "to live (somewhere)",
+  "category": "verbs",
+  "note": "bor, bodde, bott"
+ },
+ {
+  "id": "verbs-066",
+  "sv": "leva",
+  "en": "to live; to be alive",
+  "category": "verbs",
+  "note": "lever, levde, levt"
+ },
+ {
+  "id": "verbs-067",
+  "sv": "jobba",
+  "en": "to work",
+  "category": "verbs",
+  "note": "jobbar, jobbade, jobbat"
+ },
+ {
+  "id": "verbs-068",
+  "sv": "studera",
+  "en": "to study",
+  "category": "verbs",
+  "note": "studerar, studerade, studerat"
+ },
+ {
+  "id": "verbs-069",
+  "sv": "lära sig",
+  "en": "to learn",
+  "category": "verbs",
+  "note": "lär sig, lärde sig, lärt sig"
+ },
+ {
+  "id": "verbs-070",
+  "sv": "läsa",
+  "en": "to read; to study (a subject)",
+  "category": "verbs",
+  "note": "läser, läste, läst"
+ },
+ {
+  "id": "verbs-071",
+  "sv": "skriva",
+  "en": "to write",
+  "category": "verbs",
+  "note": "skriver, skrev, skrivit"
+ },
+ {
+  "id": "verbs-072",
+  "sv": "räkna",
+  "en": "to count; to calculate",
+  "category": "verbs",
+  "note": "räknar, räknade, räknat"
+ },
+ {
+  "id": "verbs-073",
+  "sv": "förklara",
+  "en": "to explain",
+  "category": "verbs",
+  "note": "förklarar, förklarade, förklarat"
+ },
+ {
+  "id": "verbs-074",
+  "sv": "visa",
+  "en": "to show",
+  "category": "verbs",
+  "note": "visar, visade, visat"
+ },
+ {
+  "id": "verbs-075",
+  "sv": "använda",
+  "en": "to use",
+  "category": "verbs",
+  "note": "använder, använde, använt"
+ },
+ {
+  "id": "verbs-076",
+  "sv": "försöka",
+  "en": "to try",
+  "category": "verbs",
+  "note": "försöker, försökte, försökt"
+ },
+ {
+  "id": "verbs-077",
+  "sv": "ändra",
+  "en": "to change",
+  "category": "verbs",
+  "note": "ändrar, ändrade, ändrat"
+ },
+ {
+  "id": "verbs-078",
+  "sv": "förlora",
+  "en": "to lose (a game)",
+  "category": "verbs",
+  "note": "förlorar, förlorade, förlorat"
+ },
+ {
+  "id": "verbs-079",
+  "sv": "vinna",
+  "en": "to win",
+  "category": "verbs",
+  "note": "vinner, vann, vunnit"
+ },
+ {
+  "id": "verbs-080",
+  "sv": "få",
+  "en": "to get; to receive; to be allowed to",
+  "category": "verbs",
+  "note": "får, fick, fått"
+ },
+ {
+  "id": "verbs-081",
+  "sv": "skicka",
+  "en": "to send",
+  "category": "verbs",
+  "note": "skickar, skickade, skickat"
+ },
+ {
+  "id": "verbs-082",
+  "sv": "ringa",
+  "en": "to call; to phone",
+  "category": "verbs",
+  "note": "ringer, ringde, ringt"
+ },
+ {
+  "id": "verbs-083",
+  "sv": "träffa",
+  "en": "to meet",
+  "category": "verbs",
+  "note": "träffar, träffade, träffat"
+ },
+ {
+  "id": "verbs-084",
+  "sv": "spela",
+  "en": "to play (a game, an instrument)",
+  "category": "verbs",
+  "note": "spelar, spelade, spelat"
+ },
+ {
+  "id": "verbs-085",
+  "sv": "leka",
+  "en": "to play (as children do)",
+  "category": "verbs",
+  "note": "leker, lekte, lekt"
+ },
+ {
+  "id": "verbs-086",
+  "sv": "skratta",
+  "en": "to laugh",
+  "category": "verbs",
+  "note": "skrattar, skrattade, skrattat"
+ },
+ {
+  "id": "verbs-087",
+  "sv": "le",
+  "en": "to smile",
+  "category": "verbs",
+  "note": "ler, log, lett"
+ },
+ {
+  "id": "verbs-088",
+  "sv": "gråta",
+  "en": "to cry",
+  "category": "verbs",
+  "note": "gråter, grät, gråtit"
+ },
+ {
+  "id": "verbs-089",
+  "sv": "glömma",
+  "en": "to forget",
+  "category": "verbs",
+  "note": "glömmer, glömde, glömt"
+ },
+ {
+  "id": "verbs-090",
+  "sv": "komma ihåg",
+  "en": "to remember",
+  "category": "verbs",
+  "note": "kommer ihåg, kom ihåg, kommit ihåg"
+ },
+ {
+  "id": "verbs-091",
+  "sv": "bestämma",
+  "en": "to decide",
+  "category": "verbs",
+  "note": "bestämmer, bestämde, bestämt"
+ },
+ {
+  "id": "verbs-092",
+  "sv": "hoppas",
+  "en": "to hope",
+  "category": "verbs",
+  "note": "hoppas, hoppades, hoppats"
+ },
+ {
+  "id": "verbs-093",
+  "sv": "städa",
+  "en": "to clean; to tidy",
+  "category": "verbs",
+  "note": "städar, städade, städat"
+ },
+ {
+  "id": "verbs-094",
+  "sv": "tvätta",
+  "en": "to wash",
+  "category": "verbs",
+  "note": "tvättar, tvättade, tvättat"
+ },
+ {
+  "id": "verbs-095",
+  "sv": "laga",
+  "en": "to fix; to repair",
+  "category": "verbs",
+  "note": "lagar, lagade, lagat"
+ },
+ {
+  "id": "verbs-096",
+  "sv": "köra",
+  "en": "to drive",
+  "category": "verbs",
+  "note": "kör, körde, kört"
+ },
+ {
+  "id": "verbs-097",
+  "sv": "bli",
+  "en": "to become; to get",
+  "category": "verbs",
+  "note": "blir, blev, blivit"
+ },
+ {
+  "id": "verbs-098",
+  "sv": "heta",
+  "en": "to be called",
+  "category": "verbs",
+  "note": "heter, hette, hetat"
+ },
+ {
+  "id": "verbs-099",
+  "sv": "finnas",
+  "en": "to exist; there is; there are",
+  "category": "verbs",
+  "note": "finns, fanns, funnits"
+ },
+ {
+  "id": "verbs-100",
+  "sv": "dö",
+  "en": "to die",
+  "category": "verbs",
+  "note": "dör, dog, dött"
+ },
+ {
+  "id": "verbs-101",
+  "sv": "flytta",
+  "en": "to move (house)",
+  "category": "verbs",
+  "note": "flyttar, flyttade, flyttat"
+ },
+ {
+  "id": "verbs-102",
+  "sv": "duscha",
+  "en": "to shower",
+  "category": "verbs",
+  "note": "duschar, duschade, duschat"
+ },
+ {
+  "id": "verbs-103",
+  "sv": "klä på sig",
+  "en": "to get dressed",
+  "category": "verbs",
+  "note": "klär på sig, klädde på sig, klätt på sig"
+ },
+ {
+  "id": "verbs-104",
+  "sv": "berätta",
+  "en": "to tell",
+  "category": "verbs",
+  "note": "berättar, berättade, berättat"
+ },
+ {
+  "id": "verbs-105",
+  "sv": "låna",
+  "en": "to borrow (to lend is låna ut)",
+  "category": "verbs",
+  "note": "lånar, lånade, lånat"
+ },
+ {
+  "id": "verbs-106",
+  "sv": "kolla",
+  "en": "to check; to look",
+  "category": "verbs",
+  "note": "kollar, kollade, kollat"
+ },
+ {
+  "id": "verbs-107",
+  "sv": "orka",
+  "en": "to have the energy to; can be bothered to",
+  "category": "verbs",
+  "note": "orkar, orkade, orkat"
+ },
+ {
+  "id": "verbs-108",
+  "sv": "bruka",
+  "en": "to usually do",
+  "category": "verbs",
+  "note": "brukar, brukade, brukat"
+ },
+ {
+  "id": "verbs-109",
+  "sv": "hinna",
+  "en": "to have time to; to make it",
+  "category": "verbs",
+  "note": "hinner, hann, hunnit"
+ },
+ {
+  "id": "verbs-110",
+  "sv": "hämta",
+  "en": "to fetch; to pick up",
+  "category": "verbs",
+  "note": "hämtar, hämtade, hämtat"
+ },
+ {
+  "id": "qualities-001",
+  "sv": "stor",
+  "en": "big; large",
+  "category": "qualities",
+  "note": "Comparison: större, störst."
+ },
+ {
+  "id": "qualities-002",
+  "sv": "liten",
+  "en": "small; little",
+  "category": "qualities",
+  "note": "litet, små. Comparison: mindre, minst."
+ },
+ {
+  "id": "qualities-003",
+  "sv": "bra",
+  "en": "good; well",
+  "category": "qualities",
+  "note": "Same in every form. Comparison: bättre, bäst."
+ },
+ {
+  "id": "qualities-004",
+  "sv": "god",
+  "en": "good (to eat); kind",
+  "category": "qualities",
+  "note": "gott, goda. Comparison: bättre, bäst."
+ },
+ {
+  "id": "qualities-005",
+  "sv": "dålig",
+  "en": "bad",
+  "category": "qualities",
+  "note": "Comparison: sämre, sämst."
+ },
+ {
+  "id": "qualities-006",
+  "sv": "fin",
+  "en": "nice; fine; pretty",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-007",
+  "sv": "vacker",
+  "en": "beautiful",
+  "category": "qualities",
+  "note": "vackert, vackra"
+ },
+ {
+  "id": "qualities-008",
+  "sv": "snygg",
+  "en": "good-looking; nice",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-009",
+  "sv": "ful",
+  "en": "ugly",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-010",
+  "sv": "ny",
+  "en": "new",
+  "category": "qualities",
+  "note": "nytt, nya"
+ },
+ {
+  "id": "qualities-011",
+  "sv": "gammal",
+  "en": "old",
+  "category": "qualities",
+  "note": "gammalt, gamla. Comparison: äldre, äldst."
+ },
+ {
+  "id": "qualities-012",
+  "sv": "ung",
+  "en": "young",
+  "category": "qualities",
+  "note": "Comparison: yngre, yngst."
+ },
+ {
+  "id": "qualities-013",
+  "sv": "lång",
+  "en": "long; tall",
+  "category": "qualities",
+  "note": "Comparison: längre, längst."
+ },
+ {
+  "id": "qualities-014",
+  "sv": "kort",
+  "en": "short",
+  "category": "qualities",
+  "note": "kort, korta"
+ },
+ {
+  "id": "qualities-015",
+  "sv": "bred",
+  "en": "wide; broad",
+  "category": "qualities",
+  "note": "brett, breda"
+ },
+ {
+  "id": "qualities-016",
+  "sv": "smal",
+  "en": "narrow; thin",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-017",
+  "sv": "hög",
+  "en": "high; tall; loud",
+  "category": "qualities",
+  "note": "Comparison: högre, högst."
+ },
+ {
+  "id": "qualities-018",
+  "sv": "låg",
+  "en": "low",
+  "category": "qualities",
+  "note": "Comparison: lägre, lägst."
+ },
+ {
+  "id": "qualities-019",
+  "sv": "tjock",
+  "en": "thick; fat",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-020",
+  "sv": "tunn",
+  "en": "thin",
+  "category": "qualities",
+  "note": "tunt, tunna"
+ },
+ {
+  "id": "qualities-021",
+  "sv": "tung",
+  "en": "heavy",
+  "category": "qualities",
+  "note": "Comparison: tyngre, tyngst."
+ },
+ {
+  "id": "qualities-022",
+  "sv": "lätt",
+  "en": "easy; light (not heavy)",
+  "category": "qualities",
+  "note": "lätt, lätta"
+ },
+ {
+  "id": "qualities-023",
+  "sv": "stark",
+  "en": "strong",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-024",
+  "sv": "svag",
+  "en": "weak",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-025",
+  "sv": "varm",
+  "en": "warm; hot",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-026",
+  "sv": "kall",
+  "en": "cold",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-027",
+  "sv": "färsk",
+  "en": "fresh",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-028",
+  "sv": "ren",
+  "en": "clean",
+  "category": "qualities",
+  "note": "rent, rena"
+ },
+ {
+  "id": "qualities-029",
+  "sv": "smutsig",
+  "en": "dirty",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-030",
+  "sv": "torr",
+  "en": "dry",
+  "category": "qualities",
+  "note": "torrt, torra"
+ },
+ {
+  "id": "qualities-031",
+  "sv": "blöt",
+  "en": "wet",
+  "category": "qualities",
+  "note": "blött, blöta"
+ },
+ {
+  "id": "qualities-032",
+  "sv": "full",
+  "en": "full",
+  "category": "qualities",
+  "note": "fullt, fulla"
+ },
+ {
+  "id": "qualities-033",
+  "sv": "tom",
+  "en": "empty",
+  "category": "qualities",
+  "note": "tomt, tomma"
+ },
+ {
+  "id": "qualities-034",
+  "sv": "öppen",
+  "en": "open",
+  "category": "qualities",
+  "note": "öppet, öppna"
+ },
+ {
+  "id": "qualities-035",
+  "sv": "stängd",
+  "en": "closed",
+  "category": "qualities",
+  "note": "stängt, stängda"
+ },
+ {
+  "id": "qualities-036",
+  "sv": "svår",
+  "en": "difficult; hard",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-037",
+  "sv": "enkel",
+  "en": "simple; easy",
+  "category": "qualities",
+  "note": "enkelt, enkla"
+ },
+ {
+  "id": "qualities-038",
+  "sv": "viktig",
+  "en": "important",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-039",
+  "sv": "möjlig",
+  "en": "possible",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-040",
+  "sv": "omöjlig",
+  "en": "impossible",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-041",
+  "sv": "sann",
+  "en": "true",
+  "category": "qualities",
+  "note": "sant, sanna"
+ },
+ {
+  "id": "qualities-042",
+  "sv": "fel",
+  "en": "wrong",
+  "category": "qualities",
+  "note": "Same in every form. Also a noun: ett fel, a mistake."
+ },
+ {
+  "id": "qualities-043",
+  "sv": "rätt",
+  "en": "right; correct",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-044",
+  "sv": "ljus",
+  "en": "light; bright",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-045",
+  "sv": "mörk",
+  "en": "dark",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-046",
+  "sv": "tyst",
+  "en": "quiet; silent",
+  "category": "qualities",
+  "note": "tyst, tysta"
+ },
+ {
+  "id": "qualities-047",
+  "sv": "lugn",
+  "en": "calm",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-048",
+  "sv": "snabb",
+  "en": "fast; quick",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-049",
+  "sv": "långsam",
+  "en": "slow",
+  "category": "qualities",
+  "note": "långsamt, långsamma"
+ },
+ {
+  "id": "qualities-050",
+  "sv": "nära",
+  "en": "near; close",
+  "category": "qualities",
+  "note": "Same in every form. Comparison: närmare, närmast."
+ },
+ {
+  "id": "qualities-051",
+  "sv": "dyr",
+  "en": "expensive",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-052",
+  "sv": "billig",
+  "en": "cheap",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-053",
+  "sv": "gratis",
+  "en": "free (no charge)",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-054",
+  "sv": "rik",
+  "en": "rich",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-055",
+  "sv": "fattig",
+  "en": "poor",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-056",
+  "sv": "glad",
+  "en": "happy; glad",
+  "category": "qualities",
+  "note": "glatt, glada"
+ },
+ {
+  "id": "qualities-057",
+  "sv": "ledsen",
+  "en": "sad; sorry",
+  "category": "qualities",
+  "note": "ledset, ledsna"
+ },
+ {
+  "id": "qualities-058",
+  "sv": "nöjd",
+  "en": "satisfied; pleased",
+  "category": "qualities",
+  "note": "nöjt, nöjda"
+ },
+ {
+  "id": "qualities-059",
+  "sv": "rolig",
+  "en": "fun; funny",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-060",
+  "sv": "kul",
+  "en": "fun",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-061",
+  "sv": "allvarlig",
+  "en": "serious",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-062",
+  "sv": "snäll",
+  "en": "kind; nice",
+  "category": "qualities",
+  "note": "snällt, snälla"
+ },
+ {
+  "id": "qualities-063",
+  "sv": "elak",
+  "en": "mean; nasty",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-064",
+  "sv": "trevlig",
+  "en": "nice; pleasant",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-065",
+  "sv": "artig",
+  "en": "polite",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-066",
+  "sv": "ärlig",
+  "en": "honest",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-067",
+  "sv": "nyfiken",
+  "en": "curious",
+  "category": "qualities",
+  "note": "nyfiket, nyfikna"
+ },
+ {
+  "id": "qualities-068",
+  "sv": "modig",
+  "en": "brave",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-069",
+  "sv": "försiktig",
+  "en": "careful",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-070",
+  "sv": "smart",
+  "en": "smart; clever",
+  "category": "qualities",
+  "note": "smart, smarta"
+ },
+ {
+  "id": "qualities-071",
+  "sv": "dum",
+  "en": "stupid; silly",
+  "category": "qualities",
+  "note": "dumt, dumma"
+ },
+ {
+  "id": "qualities-072",
+  "sv": "intressant",
+  "en": "interesting",
+  "category": "qualities",
+  "note": "intressant, intressanta"
+ },
+ {
+  "id": "qualities-073",
+  "sv": "tråkig",
+  "en": "boring",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-074",
+  "sv": "konstig",
+  "en": "strange; weird",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-075",
+  "sv": "vanlig",
+  "en": "common; ordinary; usual",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-076",
+  "sv": "annorlunda",
+  "en": "different",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-077",
+  "sv": "samma",
+  "en": "same",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-078",
+  "sv": "ensam",
+  "en": "alone; lonely",
+  "category": "qualities",
+  "note": "ensamt, ensamma"
+ },
+ {
+  "id": "qualities-079",
+  "sv": "klar",
+  "en": "ready; finished; clear",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-080",
+  "sv": "ledig",
+  "en": "free; off (work); vacant",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-081",
+  "sv": "upptagen",
+  "en": "busy; taken",
+  "category": "qualities",
+  "note": "upptaget, upptagna"
+ },
+ {
+  "id": "qualities-082",
+  "sv": "farlig",
+  "en": "dangerous",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-083",
+  "sv": "säker",
+  "en": "safe; sure",
+  "category": "qualities",
+  "note": "säkert, säkra"
+ },
+ {
+  "id": "qualities-084",
+  "sv": "mjuk",
+  "en": "soft",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-085",
+  "sv": "hård",
+  "en": "hard",
+  "category": "qualities",
+  "note": "hårt, hårda"
+ },
+ {
+  "id": "qualities-086",
+  "sv": "rund",
+  "en": "round",
+  "category": "qualities",
+  "note": "runt, runda"
+ },
+ {
+  "id": "qualities-087",
+  "sv": "jobbig",
+  "en": "tiring; annoying; hard",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-088",
+  "sv": "hemsk",
+  "en": "awful; terrible",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-089",
+  "sv": "röd",
+  "en": "red",
+  "category": "qualities",
+  "note": "rött, röda"
+ },
+ {
+  "id": "qualities-090",
+  "sv": "blå",
+  "en": "blue",
+  "category": "qualities",
+  "note": "blått, blå"
+ },
+ {
+  "id": "qualities-091",
+  "sv": "grön",
+  "en": "green",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-092",
+  "sv": "gul",
+  "en": "yellow",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-093",
+  "sv": "svart",
+  "en": "black",
+  "category": "qualities",
+  "note": "svart, svarta"
+ },
+ {
+  "id": "qualities-094",
+  "sv": "vit",
+  "en": "white",
+  "category": "qualities",
+  "note": "vitt, vita"
+ },
+ {
+  "id": "qualities-095",
+  "sv": "grå",
+  "en": "grey",
+  "category": "qualities",
+  "note": "grått, grå"
+ },
+ {
+  "id": "qualities-096",
+  "sv": "brun",
+  "en": "brown",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-097",
+  "sv": "rosa",
+  "en": "pink",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-098",
+  "sv": "första",
+  "en": "first",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-099",
+  "sv": "sista",
+  "en": "last",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-100",
+  "sv": "nästa",
+  "en": "next",
+  "category": "qualities",
+  "note": "Same in every form."
+ },
+ {
+  "id": "qualities-101",
+  "sv": "verkligen",
+  "en": "really",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-102",
+  "sv": "nästan",
+  "en": "almost",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-103",
+  "sv": "tillsammans",
+  "en": "together",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-104",
+  "sv": "snart",
+  "en": "soon",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-105",
+  "sv": "sent",
+  "en": "late",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-106",
+  "sv": "tidigt",
+  "en": "early",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-107",
+  "sv": "ungefär",
+  "en": "about; around (roughly)",
+  "category": "qualities"
+ },
+ {
+  "id": "qualities-108",
+  "sv": "mer",
+  "en": "more",
+  "category": "qualities"
+ },
+ {
+  "id": "people-001",
+  "sv": "en människa",
+  "en": "human being; person",
+  "category": "people",
+  "note": "människan, människor"
+ },
+ {
+  "id": "people-002",
+  "sv": "en person",
+  "en": "person",
+  "category": "people",
+  "note": "personen, personer"
+ },
+ {
+  "id": "people-003",
+  "sv": "en man",
+  "en": "man; husband",
+  "category": "people",
+  "note": "mannen, män. Without an article, man also means one or you (people in general)."
+ },
+ {
+  "id": "people-004",
+  "sv": "en kvinna",
+  "en": "woman",
+  "category": "people",
+  "note": "kvinnan, kvinnor"
+ },
+ {
+  "id": "people-005",
+  "sv": "ett barn",
+  "en": "child",
+  "category": "people",
+  "note": "barnet, barn"
+ },
+ {
+  "id": "people-006",
+  "sv": "en bebis",
+  "en": "baby",
+  "category": "people",
+  "note": "bebisen, bebisar"
+ },
+ {
+  "id": "people-007",
+  "sv": "en pojke",
+  "en": "boy",
+  "category": "people",
+  "note": "pojken, pojkar"
+ },
+ {
+  "id": "people-008",
+  "sv": "en flicka",
+  "en": "girl",
+  "category": "people",
+  "note": "flickan, flickor"
+ },
+ {
+  "id": "people-009",
+  "sv": "en tjej",
+  "en": "girl (everyday word)",
+  "category": "people",
+  "note": "tjejen, tjejer"
+ },
+ {
+  "id": "people-010",
+  "sv": "en kille",
+  "en": "guy; boy",
+  "category": "people",
+  "note": "killen, killar"
+ },
+ {
+  "id": "people-011",
+  "sv": "en förälder",
+  "en": "parent",
+  "category": "people",
+  "note": "föräldern, föräldrar"
+ },
+ {
+  "id": "people-012",
+  "sv": "en mamma",
+  "en": "mum; mother",
+  "category": "people",
+  "note": "mamman, mammor"
+ },
+ {
+  "id": "people-013",
+  "sv": "en pappa",
+  "en": "dad; father",
+  "category": "people",
+  "note": "pappan, pappor"
+ },
+ {
+  "id": "people-014",
+  "sv": "en syster",
+  "en": "sister",
+  "category": "people",
+  "note": "systern, systrar"
+ },
+ {
+  "id": "people-015",
+  "sv": "en bror",
+  "en": "brother",
+  "category": "people",
+  "note": "brodern or brorn, bröder"
+ },
+ {
+  "id": "people-016",
+  "sv": "ett syskon",
+  "en": "sibling",
+  "category": "people",
+  "note": "syskonet, syskon"
+ },
+ {
+  "id": "people-017",
+  "sv": "en mormor",
+  "en": "grandmother (mother's mother)",
+  "category": "people",
+  "note": "mormodern, mormödrar. Father's mother is farmor."
+ },
+ {
+  "id": "people-018",
+  "sv": "en morfar",
+  "en": "grandfather (mother's father)",
+  "category": "people",
+  "note": "morfadern, morfäder. Father's father is farfar."
+ },
+ {
+  "id": "people-019",
+  "sv": "ett barnbarn",
+  "en": "grandchild",
+  "category": "people",
+  "note": "barnbarnet, barnbarn"
+ },
+ {
+  "id": "people-020",
+  "sv": "en moster",
+  "en": "aunt (mother's sister)",
+  "category": "people",
+  "note": "mostern, mostrar. Father's sister is faster."
+ },
+ {
+  "id": "people-021",
+  "sv": "en farbror",
+  "en": "uncle (father's brother)",
+  "category": "people",
+  "note": "farbrodern, farbröder. Mother's brother is morbror."
+ },
+ {
+  "id": "people-022",
+  "sv": "en kusin",
+  "en": "cousin",
+  "category": "people",
+  "note": "kusinen, kusiner"
+ },
+ {
+  "id": "people-023",
+  "sv": "en familj",
+  "en": "family",
+  "category": "people",
+  "note": "familjen, familjer"
+ },
+ {
+  "id": "people-024",
+  "sv": "en fru",
+  "en": "wife",
+  "category": "people",
+  "note": "frun, fruar"
+ },
+ {
+  "id": "people-025",
+  "sv": "ett par",
+  "en": "couple; pair",
+  "category": "people",
+  "note": "paret, par"
+ },
+ {
+  "id": "people-026",
+  "sv": "en sambo",
+  "en": "partner (living together)",
+  "category": "people",
+  "note": "sambon, sambor"
+ },
+ {
+  "id": "people-027",
+  "sv": "en pojkvän",
+  "en": "boyfriend",
+  "category": "people",
+  "note": "pojkvännen, pojkvänner"
+ },
+ {
+  "id": "people-028",
+  "sv": "en flickvän",
+  "en": "girlfriend",
+  "category": "people",
+  "note": "flickvännen, flickvänner"
+ },
+ {
+  "id": "people-029",
+  "sv": "en son",
+  "en": "son",
+  "category": "people",
+  "note": "sonen, söner"
+ },
+ {
+  "id": "people-030",
+  "sv": "en dotter",
+  "en": "daughter",
+  "category": "people",
+  "note": "dottern, döttrar"
+ },
+ {
+  "id": "people-031",
+  "sv": "en vän",
+  "en": "friend",
+  "category": "people",
+  "note": "vännen, vänner"
+ },
+ {
+  "id": "people-032",
+  "sv": "en kompis",
+  "en": "friend; mate",
+  "category": "people",
+  "note": "kompisen, kompisar"
+ },
+ {
+  "id": "people-033",
+  "sv": "en vuxen",
+  "en": "adult",
+  "category": "people",
+  "note": "den vuxna, vuxna"
+ },
+ {
+  "id": "people-034",
+  "sv": "en tonåring",
+  "en": "teenager",
+  "category": "people",
+  "note": "tonåringen, tonåringar"
+ },
+ {
+  "id": "people-035",
+  "sv": "en granne",
+  "en": "neighbour",
+  "category": "people",
+  "note": "grannen, grannar"
+ },
+ {
+  "id": "people-036",
+  "sv": "en främling",
+  "en": "stranger",
+  "category": "people",
+  "note": "främlingen, främlingar"
+ },
+ {
+  "id": "people-037",
+  "sv": "en grupp",
+  "en": "group",
+  "category": "people",
+  "note": "gruppen, grupper"
+ },
+ {
+  "id": "people-038",
+  "sv": "en gäst",
+  "en": "guest",
+  "category": "people",
+  "note": "gästen, gäster"
+ },
+ {
+  "id": "people-039",
+  "sv": "ett namn",
+  "en": "name",
+  "category": "people",
+  "note": "namnet, namn"
+ },
+ {
+  "id": "people-040",
+  "sv": "en födelsedag",
+  "en": "birthday",
+  "category": "people",
+  "note": "födelsedagen, födelsedagar"
+ },
+ {
+  "id": "people-041",
+  "sv": "en fest",
+  "en": "party",
+  "category": "people",
+  "note": "festen, fester"
+ },
+ {
+  "id": "people-042",
+  "sv": "en present",
+  "en": "present; gift",
+  "category": "people",
+  "note": "presenten, presenter"
+ },
+ {
+  "id": "people-043",
+  "sv": "ett bröllop",
+  "en": "wedding",
+  "category": "people",
+  "note": "bröllopet, bröllop"
+ },
+ {
+  "id": "people-044",
+  "sv": "kläder",
+  "en": "clothes",
+  "category": "people",
+  "note": "Plural only: kläderna."
+ },
+ {
+  "id": "people-045",
+  "sv": "en tröja",
+  "en": "jumper; top",
+  "category": "people",
+  "note": "tröjan, tröjor"
+ },
+ {
+  "id": "people-046",
+  "sv": "en skjorta",
+  "en": "shirt",
+  "category": "people",
+  "note": "skjortan, skjortor"
+ },
+ {
+  "id": "people-047",
+  "sv": "byxor",
+  "en": "trousers",
+  "category": "people",
+  "note": "Plural only: byxorna. One pair is ett par byxor."
+ },
+ {
+  "id": "people-048",
+  "sv": "en jacka",
+  "en": "jacket",
+  "category": "people",
+  "note": "jackan, jackor"
+ },
+ {
+  "id": "people-049",
+  "sv": "en klänning",
+  "en": "dress",
+  "category": "people",
+  "note": "klänningen, klänningar"
+ },
+ {
+  "id": "people-050",
+  "sv": "en kjol",
+  "en": "skirt",
+  "category": "people",
+  "note": "kjolen, kjolar"
+ },
+ {
+  "id": "people-051",
+  "sv": "en sko",
+  "en": "shoe",
+  "category": "people",
+  "note": "skon, skor"
+ },
+ {
+  "id": "people-052",
+  "sv": "en strumpa",
+  "en": "sock",
+  "category": "people",
+  "note": "strumpan, strumpor"
+ },
+ {
+  "id": "people-053",
+  "sv": "en mössa",
+  "en": "woolly hat",
+  "category": "people",
+  "note": "mössan, mössor"
+ },
+ {
+  "id": "home-001",
+  "sv": "ett hus",
+  "en": "house",
+  "category": "home",
+  "note": "huset, hus"
+ },
+ {
+  "id": "home-002",
+  "sv": "en lägenhet",
+  "en": "flat; apartment",
+  "category": "home",
+  "note": "lägenheten, lägenheter"
+ },
+ {
+  "id": "home-003",
+  "sv": "ett hem",
+  "en": "home",
+  "category": "home",
+  "note": "hemmet, hem. Gå hem means go home."
+ },
+ {
+  "id": "home-004",
+  "sv": "hemma",
+  "en": "at home",
+  "category": "home"
+ },
+ {
+  "id": "home-005",
+  "sv": "ett rum",
+  "en": "room",
+  "category": "home",
+  "note": "rummet, rum"
+ },
+ {
+  "id": "home-006",
+  "sv": "ett vardagsrum",
+  "en": "living room",
+  "category": "home",
+  "note": "vardagsrummet, vardagsrum"
+ },
+ {
+  "id": "home-007",
+  "sv": "ett sovrum",
+  "en": "bedroom",
+  "category": "home",
+  "note": "sovrummet, sovrum"
+ },
+ {
+  "id": "home-008",
+  "sv": "ett kök",
+  "en": "kitchen",
+  "category": "home",
+  "note": "köket, kök"
+ },
+ {
+  "id": "home-009",
+  "sv": "ett badrum",
+  "en": "bathroom",
+  "category": "home",
+  "note": "badrummet, badrum"
+ },
+ {
+  "id": "home-010",
+  "sv": "en toalett",
+  "en": "toilet",
+  "category": "home",
+  "note": "toaletten, toaletter"
+ },
+ {
+  "id": "home-011",
+  "sv": "en hall",
+  "en": "hall",
+  "category": "home",
+  "note": "hallen, hallar"
+ },
+ {
+  "id": "home-012",
+  "sv": "en trappa",
+  "en": "stairs; staircase",
+  "category": "home",
+  "note": "trappan, trappor"
+ },
+ {
+  "id": "home-013",
+  "sv": "en källare",
+  "en": "cellar; basement",
+  "category": "home",
+  "note": "källaren, källare"
+ },
+ {
+  "id": "home-014",
+  "sv": "ett garage",
+  "en": "garage",
+  "category": "home",
+  "note": "garaget, garage"
+ },
+ {
+  "id": "home-015",
+  "sv": "en balkong",
+  "en": "balcony",
+  "category": "home",
+  "note": "balkongen, balkonger"
+ },
+ {
+  "id": "home-016",
+  "sv": "ett tak",
+  "en": "roof; ceiling",
+  "category": "home",
+  "note": "taket, tak"
+ },
+ {
+  "id": "home-017",
+  "sv": "en vägg",
+  "en": "wall",
+  "category": "home",
+  "note": "väggen, väggar"
+ },
+ {
+  "id": "home-018",
+  "sv": "ett golv",
+  "en": "floor",
+  "category": "home",
+  "note": "golvet, golv"
+ },
+ {
+  "id": "home-019",
+  "sv": "en dörr",
+  "en": "door",
+  "category": "home",
+  "note": "dörren, dörrar"
+ },
+ {
+  "id": "home-020",
+  "sv": "ett fönster",
+  "en": "window",
+  "category": "home",
+  "note": "fönstret, fönster"
+ },
+ {
+  "id": "home-021",
+  "sv": "en gardin",
+  "en": "curtain",
+  "category": "home",
+  "note": "gardinen, gardiner"
+ },
+ {
+  "id": "home-022",
+  "sv": "en nyckel",
+  "en": "key",
+  "category": "home",
+  "note": "nyckeln, nycklar"
+ },
+ {
+  "id": "home-023",
+  "sv": "en lampa",
+  "en": "lamp",
+  "category": "home",
+  "note": "lampan, lampor"
+ },
+ {
+  "id": "home-024",
+  "sv": "en möbel",
+  "en": "piece of furniture",
+  "category": "home",
+  "note": "möbeln, möbler"
+ },
+ {
+  "id": "home-025",
+  "sv": "ett bord",
+  "en": "table",
+  "category": "home",
+  "note": "bordet, bord"
+ },
+ {
+  "id": "home-026",
+  "sv": "en stol",
+  "en": "chair",
+  "category": "home",
+  "note": "stolen, stolar"
+ },
+ {
+  "id": "home-027",
+  "sv": "en soffa",
+  "en": "sofa",
+  "category": "home",
+  "note": "soffan, soffor"
+ },
+ {
+  "id": "home-028",
+  "sv": "ett skrivbord",
+  "en": "desk",
+  "category": "home",
+  "note": "skrivbordet, skrivbord"
+ },
+ {
+  "id": "home-029",
+  "sv": "en säng",
+  "en": "bed",
+  "category": "home",
+  "note": "sängen, sängar"
+ },
+ {
+  "id": "home-030",
+  "sv": "en kudde",
+  "en": "pillow; cushion",
+  "category": "home",
+  "note": "kudden, kuddar"
+ },
+ {
+  "id": "home-031",
+  "sv": "ett täcke",
+  "en": "duvet",
+  "category": "home",
+  "note": "täcket, täcken"
+ },
+ {
+  "id": "home-032",
+  "sv": "en filt",
+  "en": "blanket",
+  "category": "home",
+  "note": "filten, filtar"
+ },
+ {
+  "id": "home-033",
+  "sv": "en garderob",
+  "en": "wardrobe",
+  "category": "home",
+  "note": "garderoben, garderober"
+ },
+ {
+  "id": "home-034",
+  "sv": "en hylla",
+  "en": "shelf",
+  "category": "home",
+  "note": "hyllan, hyllor"
+ },
+ {
+  "id": "home-035",
+  "sv": "en låda",
+  "en": "drawer; box",
+  "category": "home",
+  "note": "lådan, lådor"
+ },
+ {
+  "id": "home-036",
+  "sv": "en matta",
+  "en": "rug; carpet",
+  "category": "home",
+  "note": "mattan, mattor"
+ },
+ {
+  "id": "home-037",
+  "sv": "en spegel",
+  "en": "mirror",
+  "category": "home",
+  "note": "spegeln, speglar"
+ },
+ {
+  "id": "home-038",
+  "sv": "en handduk",
+  "en": "towel",
+  "category": "home",
+  "note": "handduken, handdukar"
+ },
+ {
+  "id": "home-039",
+  "sv": "en dusch",
+  "en": "shower",
+  "category": "home",
+  "note": "duschen, duschar"
+ },
+ {
+  "id": "home-040",
+  "sv": "en diskmaskin",
+  "en": "dishwasher",
+  "category": "home",
+  "note": "diskmaskinen, diskmaskiner"
+ },
+ {
+  "id": "home-041",
+  "sv": "en tvättmaskin",
+  "en": "washing machine",
+  "category": "home",
+  "note": "tvättmaskinen, tvättmaskiner"
+ },
+ {
+  "id": "home-042",
+  "sv": "ett kylskåp",
+  "en": "fridge",
+  "category": "home",
+  "note": "kylskåpet, kylskåp"
+ },
+ {
+  "id": "home-043",
+  "sv": "en ugn",
+  "en": "oven",
+  "category": "home",
+  "note": "ugnen, ugnar"
+ },
+ {
+  "id": "home-044",
+  "sv": "en spis",
+  "en": "cooker; stove",
+  "category": "home",
+  "note": "spisen, spisar"
+ },
+ {
+  "id": "home-045",
+  "sv": "en kastrull",
+  "en": "saucepan",
+  "category": "home",
+  "note": "kastrullen, kastruller"
+ },
+ {
+  "id": "home-046",
+  "sv": "en stekpanna",
+  "en": "frying pan",
+  "category": "home",
+  "note": "stekpannan, stekpannor"
+ },
+ {
+  "id": "home-047",
+  "sv": "en dammsugare",
+  "en": "vacuum cleaner",
+  "category": "home",
+  "note": "dammsugaren, dammsugare"
+ },
+ {
+  "id": "home-048",
+  "sv": "sopor",
+  "en": "rubbish; garbage",
+  "category": "home",
+  "note": "Plural only: soporna."
+ },
+ {
+  "id": "home-049",
+  "sv": "en trädgård",
+  "en": "garden",
+  "category": "home",
+  "note": "trädgården, trädgårdar"
+ },
+ {
+  "id": "home-050",
+  "sv": "en hiss",
+  "en": "lift; elevator",
+  "category": "home",
+  "note": "hissen, hissar"
+ },
+ {
+  "id": "home-051",
+  "sv": "tända",
+  "en": "to turn on (a light); to light",
+  "category": "home",
+  "note": "tänder, tände, tänt"
+ },
+ {
+  "id": "home-052",
+  "sv": "släcka",
+  "en": "to turn off (a light); to put out",
+  "category": "home",
+  "note": "släcker, släckte, släckt"
+ },
+ {
+  "id": "home-053",
+  "sv": "diska",
+  "en": "to do the dishes",
+  "category": "home",
+  "note": "diskar, diskade, diskat"
+ },
+ {
+  "id": "feelings-001",
+  "sv": "glädje",
+  "en": "joy",
+  "category": "feelings",
+  "note": "En-word: glädjen. No plural."
+ },
+ {
+  "id": "feelings-002",
+  "sv": "rädsla",
+  "en": "fear",
+  "category": "feelings",
+  "note": "En-word: rädslan, rädslor."
+ },
+ {
+  "id": "feelings-003",
+  "sv": "rädd",
+  "en": "afraid; scared",
+  "category": "feelings",
+  "note": "rätt, rädda"
+ },
+ {
+  "id": "feelings-004",
+  "sv": "arg",
+  "en": "angry",
+  "category": "feelings"
+ },
+ {
+  "id": "feelings-005",
+  "sv": "ilska",
+  "en": "anger",
+  "category": "feelings",
+  "note": "En-word: ilskan. No plural."
+ },
+ {
+  "id": "feelings-006",
+  "sv": "en känsla",
+  "en": "feeling",
+  "category": "feelings",
+  "note": "känslan, känslor"
+ },
+ {
+  "id": "feelings-007",
+  "sv": "sorg",
+  "en": "grief; sorrow",
+  "category": "feelings",
+  "note": "En-word: sorgen, sorger."
+ },
+ {
+  "id": "feelings-008",
+  "sv": "lycklig",
+  "en": "happy",
+  "category": "feelings"
+ },
+ {
+  "id": "feelings-009",
+  "sv": "trött",
+  "en": "tired",
+  "category": "feelings",
+  "note": "trött, trötta"
+ },
+ {
+  "id": "feelings-010",
+  "sv": "orolig",
+  "en": "worried",
+  "category": "feelings"
+ },
+ {
+  "id": "feelings-011",
+  "sv": "irriterad",
+  "en": "annoyed",
+  "category": "feelings",
+  "note": "irriterat, irriterade"
+ },
+ {
+  "id": "feelings-012",
+  "sv": "stolt",
+  "en": "proud",
+  "category": "feelings",
+  "note": "stolt, stolta"
+ },
+ {
+  "id": "feelings-013",
+  "sv": "besviken",
+  "en": "disappointed",
+  "category": "feelings",
+  "note": "besviket, besvikna"
+ },
+ {
+  "id": "feelings-014",
+  "sv": "avundsjuk",
+  "en": "envious; jealous (of what others have)",
+  "category": "feelings"
+ },
+ {
+  "id": "feelings-015",
+  "sv": "svartsjuk",
+  "en": "jealous (in love)",
+  "category": "feelings"
+ },
+ {
+  "id": "feelings-016",
+  "sv": "blyg",
+  "en": "shy",
+  "category": "feelings"
+ },
+ {
+  "id": "feelings-017",
+  "sv": "en dröm",
+  "en": "dream",
+  "category": "feelings",
+  "note": "drömmen, drömmar"
+ },
+ {
+  "id": "feelings-018",
+  "sv": "drömma",
+  "en": "to dream",
+  "category": "feelings",
+  "note": "drömmer, drömde, drömt"
+ },
+ {
+  "id": "feelings-019",
+  "sv": "ångra",
+  "en": "to regret",
+  "category": "feelings",
+  "note": "ångrar, ångrade, ångrat"
+ },
+ {
+  "id": "feelings-020",
+  "sv": "längta",
+  "en": "to long; to look forward",
+  "category": "feelings",
+  "note": "längtar, längtade, längtat"
+ },
+ {
+  "id": "feelings-021",
+  "sv": "ha tråkigt",
+  "en": "to be bored",
+  "category": "feelings",
+  "note": "har tråkigt, hade tråkigt, haft tråkigt"
+ },
+ {
+  "id": "feelings-022",
+  "sv": "lita på",
+  "en": "to trust",
+  "category": "feelings",
+  "note": "litar på, litade på, litat på"
+ },
+ {
+  "id": "feelings-023",
+  "sv": "skämmas",
+  "en": "to be ashamed",
+  "category": "feelings",
+  "note": "skäms, skämdes, skämts"
+ },
+ {
+  "id": "feelings-024",
+  "sv": "stress",
+  "en": "stress",
+  "category": "feelings",
+  "note": "En-word: stressen. No plural."
+ },
+ {
+  "id": "feelings-025",
+  "sv": "stressad",
+  "en": "stressed",
+  "category": "feelings",
+  "note": "stressat, stressade"
+ },
+ {
+  "id": "feelings-026",
+  "sv": "ett humör",
+  "en": "mood; temper",
+  "category": "feelings",
+  "note": "humöret. No plural."
+ },
+ {
+  "id": "feelings-027",
+  "sv": "en överraskning",
+  "en": "surprise",
+  "category": "feelings",
+  "note": "överraskningen, överraskningar"
+ },
+ {
+  "id": "feelings-028",
+  "sv": "förvånad",
+  "en": "surprised",
+  "category": "feelings",
+  "note": "förvånat, förvånade"
+ },
+ {
+  "id": "feelings-029",
+  "sv": "en tår",
+  "en": "tear (from crying)",
+  "category": "feelings",
+  "note": "tåren, tårar"
+ },
+ {
+  "id": "feelings-030",
+  "sv": "bli arg",
+  "en": "to get angry",
+  "category": "feelings",
+  "note": "blir arg, blev arg, blivit arg"
+ },
+ {
+  "id": "feelings-031",
+  "sv": "avslappnad",
+  "en": "relaxed",
+  "category": "feelings",
+  "note": "avslappnat, avslappnade"
+ },
+ {
+  "id": "feelings-032",
+  "sv": "slappna av",
+  "en": "to relax",
+  "category": "feelings",
+  "note": "slappnar av, slappnade av, slappnat av"
+ },
+ {
+  "id": "feelings-033",
+  "sv": "ett minne",
+  "en": "memory",
+  "category": "feelings",
+  "note": "minnet, minnen"
+ },
+ {
+  "id": "feelings-034",
+  "sv": "en tanke",
+  "en": "thought",
+  "category": "feelings",
+  "note": "tanken, tankar"
+ },
+ {
+  "id": "feelings-035",
+  "sv": "kärlek",
+  "en": "love",
+  "category": "feelings",
+  "note": "En-word: kärleken. No plural."
+ },
+ {
+  "id": "feelings-036",
+  "sv": "kär",
+  "en": "in love",
+  "category": "feelings",
+  "note": "kärt, kära"
+ },
+ {
+  "id": "feelings-037",
+  "sv": "hata",
+  "en": "to hate",
+  "category": "feelings",
+  "note": "hatar, hatade, hatat"
+ },
+ {
+  "id": "feelings-038",
+  "sv": "må",
+  "en": "to feel; to be (well or unwell)",
+  "category": "feelings",
+  "note": "mår, mådde, mått"
+ },
+ {
+  "id": "feelings-039",
+  "sv": "hungrig",
+  "en": "hungry",
+  "category": "feelings"
+ },
+ {
+  "id": "feelings-040",
+  "sv": "törstig",
+  "en": "thirsty",
+  "category": "feelings"
+ },
+ {
+  "id": "feelings-041",
+  "sv": "nervös",
+  "en": "nervous",
+  "category": "feelings",
+  "note": "nervöst, nervösa"
+ },
+ {
+  "id": "feelings-042",
+  "sv": "lat",
+  "en": "lazy",
+  "category": "feelings",
+  "note": "lat, lata"
+ },
+ {
+  "id": "feelings-043",
+  "sv": "tycka synd om",
+  "en": "to feel sorry for",
+  "category": "feelings",
+  "note": "tycker synd om, tyckte synd om, tyckt synd om"
+ },
+ {
+  "id": "feelings-044",
+  "sv": "oroa sig",
+  "en": "to worry",
+  "category": "feelings",
+  "note": "oroar sig, oroade sig, oroat sig"
+ },
+ {
+  "id": "feelings-045",
+  "sv": "oro",
+  "en": "worry; anxiety",
+  "category": "feelings",
+  "note": "En-word: oron. No plural."
+ },
+ {
+  "id": "feelings-046",
+  "sv": "sakna",
+  "en": "to miss (someone or something)",
+  "category": "feelings",
+  "note": "saknar, saknade, saknat"
+ },
+ {
+  "id": "feelings-047",
+  "sv": "ha rätt",
+  "en": "to be right",
+  "category": "feelings",
+  "note": "har rätt, hade rätt, haft rätt"
+ },
+ {
+  "id": "feelings-048",
+  "sv": "ha fel",
+  "en": "to be wrong",
+  "category": "feelings",
+  "note": "har fel, hade fel, haft fel"
+ },
+ {
+  "id": "feelings-049",
+  "sv": "skön",
+  "en": "comfortable; nice; lovely",
+  "category": "feelings",
+  "note": "skönt, sköna"
+ },
+ {
+  "id": "feelings-050",
+  "sv": "mysig",
+  "en": "cosy",
+  "category": "feelings"
+ },
+ {
+  "id": "school-001",
+  "sv": "en elev",
+  "en": "pupil; student (at school)",
+  "category": "school",
+  "note": "eleven, elever"
+ },
+ {
+  "id": "school-002",
+  "sv": "en lärare",
+  "en": "teacher",
+  "category": "school",
+  "note": "läraren, lärare"
+ },
+ {
+  "id": "school-003",
+  "sv": "ett ord",
+  "en": "word",
+  "category": "school",
+  "note": "ordet, ord"
+ },
+ {
+  "id": "school-004",
+  "sv": "en mening",
+  "en": "sentence; meaning",
+  "category": "school",
+  "note": "meningen, meningar"
+ },
+ {
+  "id": "school-005",
+  "sv": "ett svar",
+  "en": "answer",
+  "category": "school",
+  "note": "svaret, svar"
+ },
+ {
+  "id": "school-006",
+  "sv": "ett misstag",
+  "en": "mistake",
+  "category": "school",
+  "note": "misstaget, misstag"
+ },
+ {
+  "id": "school-007",
+  "sv": "ett uttal",
+  "en": "pronunciation",
+  "category": "school",
+  "note": "uttalet, uttal"
+ },
+ {
+  "id": "school-008",
+  "sv": "stava",
+  "en": "to spell",
+  "category": "school",
+  "note": "stavar, stavade, stavat"
+ },
+ {
+  "id": "school-009",
+  "sv": "plugga",
+  "en": "to study; to revise",
+  "category": "school",
+  "note": "pluggar, pluggade, pluggat"
+ },
+ {
+  "id": "school-010",
+  "sv": "ett språk",
+  "en": "language",
+  "category": "school",
+  "note": "språket, språk"
+ },
+ {
+  "id": "school-011",
+  "sv": "svenska",
+  "en": "Swedish (language)",
+  "category": "school",
+  "note": "En-word: svenskan."
+ },
+ {
+  "id": "school-012",
+  "sv": "engelska",
+  "en": "English (language)",
+  "category": "school",
+  "note": "En-word: engelskan."
+ },
+ {
+  "id": "school-013",
+  "sv": "franska",
+  "en": "French (language)",
+  "category": "school",
+  "note": "En-word: franskan."
+ },
+ {
+  "id": "school-014",
+  "sv": "betyda",
+  "en": "to mean",
+  "category": "school",
+  "note": "betyder, betydde, betytt"
+ },
+ {
+  "id": "school-015",
+  "sv": "rätta",
+  "en": "to correct; to mark",
+  "category": "school",
+  "note": "rättar, rättade, rättat"
+ },
+ {
+  "id": "school-016",
+  "sv": "undervisa",
+  "en": "to teach",
+  "category": "school",
+  "note": "undervisar, undervisade, undervisat"
+ },
+ {
+  "id": "school-017",
+  "sv": "ett klassrum",
+  "en": "classroom",
+  "category": "school",
+  "note": "klassrummet, klassrum"
+ },
+ {
+  "id": "school-018",
+  "sv": "en klass",
+  "en": "class; year group",
+  "category": "school",
+  "note": "klassen, klasser"
+ },
+ {
+  "id": "school-019",
+  "sv": "en lektion",
+  "en": "lesson",
+  "category": "school",
+  "note": "lektionen, lektioner"
+ },
+ {
+  "id": "school-020",
+  "sv": "en rast",
+  "en": "break (at school)",
+  "category": "school",
+  "note": "rasten, raster"
+ },
+ {
+  "id": "school-021",
+  "sv": "ett schema",
+  "en": "timetable; schedule",
+  "category": "school",
+  "note": "schemat, scheman"
+ },
+ {
+  "id": "school-022",
+  "sv": "ett ämne",
+  "en": "subject",
+  "category": "school",
+  "note": "ämnet, ämnen"
+ },
+ {
+  "id": "school-023",
+  "sv": "en läxa",
+  "en": "homework",
+  "category": "school",
+  "note": "läxan, läxor"
+ },
+ {
+  "id": "school-024",
+  "sv": "en övning",
+  "en": "exercise",
+  "category": "school",
+  "note": "övningen, övningar"
+ },
+ {
+  "id": "school-025",
+  "sv": "ett prov",
+  "en": "test (at school)",
+  "category": "school",
+  "note": "provet, prov"
+ },
+ {
+  "id": "school-026",
+  "sv": "en tenta",
+  "en": "exam (at university)",
+  "category": "school",
+  "note": "tentan, tentor"
+ },
+ {
+  "id": "school-027",
+  "sv": "ett betyg",
+  "en": "grade; mark",
+  "category": "school",
+  "note": "betyget, betyg"
+ },
+ {
+  "id": "school-028",
+  "sv": "en bok",
+  "en": "book",
+  "category": "school",
+  "note": "boken, böcker"
+ },
+ {
+  "id": "school-029",
+  "sv": "en penna",
+  "en": "pen; pencil",
+  "category": "school",
+  "note": "pennan, pennor"
+ },
+ {
+  "id": "school-030",
+  "sv": "ett papper",
+  "en": "paper; piece of paper",
+  "category": "school",
+  "note": "pappret, papper"
+ },
+ {
+  "id": "school-031",
+  "sv": "ett suddgummi",
+  "en": "eraser; rubber",
+  "category": "school",
+  "note": "suddgummit, suddgummin"
+ },
+ {
+  "id": "school-032",
+  "sv": "en ordbok",
+  "en": "dictionary",
+  "category": "school",
+  "note": "ordboken, ordböcker"
+ },
+ {
+  "id": "school-033",
+  "sv": "en skola",
+  "en": "school",
+  "category": "school",
+  "note": "skolan, skolor"
+ },
+ {
+  "id": "school-034",
+  "sv": "ett universitet",
+  "en": "university",
+  "category": "school",
+  "note": "universitetet, universitet"
+ },
+ {
+  "id": "school-035",
+  "sv": "ett gymnasium",
+  "en": "upper secondary school; sixth form",
+  "category": "school",
+  "note": "gymnasiet, gymnasier"
+ },
+ {
+  "id": "school-036",
+  "sv": "en student",
+  "en": "student",
+  "category": "school",
+  "note": "studenten, studenter"
+ },
+ {
+  "id": "school-037",
+  "sv": "en kurs",
+  "en": "course",
+  "category": "school",
+  "note": "kursen, kurser"
+ },
+ {
+  "id": "school-038",
+  "sv": "en uppgift",
+  "en": "task; assignment",
+  "category": "school",
+  "note": "uppgiften, uppgifter"
+ },
+ {
+  "id": "school-039",
+  "sv": "en text",
+  "en": "text",
+  "category": "school",
+  "note": "texten, texter"
+ },
+ {
+  "id": "school-040",
+  "sv": "ett exempel",
+  "en": "example",
+  "category": "school",
+  "note": "exemplet, exempel"
+ },
+ {
+  "id": "school-041",
+  "sv": "grammatik",
+  "en": "grammar",
+  "category": "school",
+  "note": "En-word: grammatiken."
+ },
+ {
+  "id": "school-042",
+  "sv": "ett verb",
+  "en": "verb",
+  "category": "school",
+  "note": "verbet, verb"
+ },
+ {
+  "id": "school-043",
+  "sv": "en historia",
+  "en": "history; story",
+  "category": "school",
+  "note": "historien, historier"
+ },
+ {
+  "id": "school-044",
+  "sv": "matte",
+  "en": "maths",
+  "category": "school",
+  "note": "En-word: matten. Short for matematik."
+ },
+ {
+  "id": "school-045",
+  "sv": "en nivå",
+  "en": "level",
+  "category": "school",
+  "note": "nivån, nivåer"
+ },
+ {
+  "id": "school-046",
+  "sv": "en nybörjare",
+  "en": "beginner",
+  "category": "school",
+  "note": "nybörjaren, nybörjare"
+ },
+ {
+  "id": "school-047",
+  "sv": "flytande",
+  "en": "fluent; fluently",
+  "category": "school",
+  "note": "Same in every form."
+ },
+ {
+  "id": "school-048",
+  "sv": "översätta",
+  "en": "to translate",
+  "category": "school",
+  "note": "översätter, översatte, översatt"
+ },
+ {
+  "id": "school-049",
+  "sv": "upprepa",
+  "en": "to repeat",
+  "category": "school",
+  "note": "upprepar, upprepade, upprepat"
+ },
+ {
+  "id": "school-050",
+  "sv": "gissa",
+  "en": "to guess",
+  "category": "school",
+  "note": "gissar, gissade, gissat"
+ },
+ {
+  "id": "school-051",
+  "sv": "kunskap",
+  "en": "knowledge",
+  "category": "school",
+  "note": "En-word: kunskapen, kunskaper."
+ },
+ {
+  "id": "school-052",
+  "sv": "en lösning",
+  "en": "solution",
+  "category": "school",
+  "note": "lösningen, lösningar"
+ },
+ {
+  "id": "school-053",
+  "sv": "klara",
+  "en": "to manage; to pass (a test)",
+  "category": "school",
+  "note": "klarar, klarade, klarat"
+ }
+]
