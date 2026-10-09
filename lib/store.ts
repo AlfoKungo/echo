@@ -3,6 +3,7 @@ import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
 import { pointsFromLowest } from './score-points';
+import { GENDER_RULES, type Gender, type GenderRules } from './language';
 import type { AddWordInput, AddWordResult, BrowseWord, CardAhead, CardsAhead, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
@@ -175,31 +176,36 @@ function nextStudyDay(now: Date): Date {
   return next;
 }
 
-// A noun's gender from how it is written: le / un masculine, la / une feminine, and for l’ and les the note, which
-// opens with "Masculine…" or "Feminine…". A noun that can be either ("Masculine or feminine…") has none.
-export function genderOf(word: { fr: string; note?: string }): 'masculine' | 'feminine' | undefined {
-  const fr = word.fr.toLowerCase();
-  if (/^(le|un)\s/.test(fr)) return 'masculine';
-  if (/^(la|une)\s/.test(fr)) return 'feminine';
-  if (!/^(l['’]|les\s|des\s)/.test(fr)) return undefined;
+// A noun's gender from how it is written, by its language's rules (lib/language.ts): the article before it (le chat,
+// o dia, ett hus) or, where the article does not say, the opening of its note.
+export function genderOf(word: { fr: string; note?: string }, rules: GenderRules): Gender | undefined {
+  const text = word.fr.toLowerCase();
+  if (rules.notNouns?.includes(text)) return undefined;
+  const article = /^(\S+)\s/.exec(text)?.[1];
+  if (article !== undefined && Object.hasOwn(rules.articles, article)) return rules.articles[article];
+  if (!rules.noteWhen?.test(text) || !rules.notes) return undefined;
   const note = (word.note ?? '').toLowerCase();
-  if (/^(masculine|feminine) or /.test(note) || /^can be masculine or feminine/.test(note)) return undefined;
-  return /^masculine/.test(note) ? 'masculine' : /^feminine/.test(note) ? 'feminine' : undefined;
+  const names = Object.keys(rules.notes);
+  if (names.some((name) => note.startsWith(`${name} or `) || note.startsWith(`can be ${name} or `))) return undefined;
+  const named = names.find((name) => note.startsWith(name));
+  return named === undefined ? undefined : rules.notes[named];
 }
 
-function withGender(word: Word): Word {
+function withGender(word: Word, rules: GenderRules): Word {
   const { gender: _old, ...rest } = word;
-  const gender = genderOf(rest);
+  const gender = genderOf(rest, rules);
   return gender ? { ...rest, gender } : rest;
 }
 
 // ready tells whether an added word can be practised yet (its recording exists); the built-in words always can.
-export function createStore(baseWords: Word[], options: { dbPath?: string; now?: () => Date; random?: () => number; ready?: (wordId: string) => boolean; families?: string[][] } = {}): Store {
+// gender: the deck language's rules for reading a noun's gender, French unless given.
+export function createStore(baseWords: Word[], options: { dbPath?: string; now?: () => Date; random?: () => number; ready?: (wordId: string) => boolean; families?: string[][]; gender?: GenderRules } = {}): Store {
   const now = options.now ?? (() => new Date());
   const random = options.random ?? Math.random;
   const ready = options.ready ?? (() => true);
+  const genderRules = options.gender ?? GENDER_RULES.fr;
   // words grows when songs are added; wordById, categories and decks follow it (rebuildDecks).
-  const words: Word[] = baseWords.map(withGender);
+  const words: Word[] = baseWords.map((word) => withGender(word, genderRules));
   const wordById = new Map(words.map((word) => [word.id, word]));
   if (wordById.size !== words.length) throw new StoreError('Vocabulary contains duplicate word IDs.');
   // word id -> every member of its word family (itself included); a word in no family is absent.
@@ -412,7 +418,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   if (extra.length) db.transaction(() => { for (const row of extra) db.query('DELETE FROM added_words WHERE id = ?').run(row.id); }).immediate();
   for (const row of addedRows) {
     if (!keep.has(row.id) || wordById.has(row.id)) continue;
-    const word: Word = withGender({ id: row.id, fr: row.fr, en: row.en, category: row.category, ...(row.note ? { note: row.note } : {}) });
+    const word: Word = withGender({ id: row.id, fr: row.fr, en: row.en, category: row.category, ...(row.note ? { note: row.note } : {}) }, genderRules);
     words.push(word); wordById.set(word.id, word); added.add(word.id); categoryTitles.set(row.category, row.category_title);
     if (!songCategories.includes(row.category)) songCategories.push(row.category);
   }
@@ -1048,7 +1054,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         do id = `${category}-${String(++next).padStart(3, '0')}`; while (wordById.has(id));
         const note = entry.note?.trim() || undefined;
         insertAdded.run(id, entry.fr.trim(), entry.en.trim(), note ?? null, category, title.trim(), at);
-        return withGender({ id, fr: entry.fr.trim(), en: entry.en.trim(), category, ...(note ? { note } : {}) });
+        return withGender({ id, fr: entry.fr.trim(), en: entry.en.trim(), category, ...(note ? { note } : {}) }, genderRules);
       });
       for (const word of made) { words.push(word); wordById.set(word.id, word); added.add(word.id); }
       categoryTitles.set(category, title.trim());

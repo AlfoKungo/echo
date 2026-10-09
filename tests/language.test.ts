@@ -1,6 +1,6 @@
 import { expect, test } from 'bun:test';
 import { join } from 'node:path';
-import { currentLanguage, languages, ROOMS } from '../lib/language';
+import { currentLanguage, languagePage, languages, ROOMS } from '../lib/language';
 import { createLanguageHost } from '../lib/languages';
 
 const root = '/echo';
@@ -32,6 +32,23 @@ test('Portuguese and Swedish keep their own content, recordings and recorder, an
 
 test('an unknown ECHO_LANG stops the server rather than teach French under another name', () => {
   expect(() => currentLanguage(root, { ECHO_LANG: 'de' })).toThrow('ECHO_LANG must be one of fr, pt, sv');
+});
+
+test('the page names the language: French’s is served as written; another’s How it works speaks of it and its noun colours', async () => {
+  const page = await Bun.file(join(import.meta.dir, '..', 'static', 'index.html')).text();
+  const { fr, pt, sv } = languages(root, {});
+  expect(languagePage(page, fr)).toBe(page);
+  expect([pt.tag, sv.tag, fr.tag]).toEqual(['pt-BR', 'sv', 'fr']);
+  const portuguese = languagePage(page, pt);
+  expect(portuguese).toContain('<title>Echo · Portuguese practice</title>');
+  expect(portuguese).toContain('(Portuguese → English), is how you practise the card. <strong>Read</strong> shows the Portuguese.');
+  expect(portuguese).toContain('<strong>Say the Portuguese when a card turns</strong>');
+  expect(portuguese).toContain('<p><strong>Colours.</strong> Nouns are coloured by gender — blue for masculine, pink for feminine — wherever Echo shows Portuguese (switch it off in Words options, •••).</p>');
+  expect(portuguese).toContain('<p data-room="families"><strong>Word families</strong>');
+  expect(portuguese).toContain('with <span data-room="families">Word families, Word building and </span>More for today at the top');
+  expect(portuguese).not.toContain('Colours and hooks');
+  expect(languagePage(page, sv)).toContain('Nouns are coloured by gender — green for en-words, orange for ett-words — wherever Echo shows Swedish');
+  expect(() => languagePage(page.replace('<strong>Read · Listen', '<strong>Read'), pt)).toThrow('no longer has the passage');
 });
 
 test('the French Echo passes on only its languages\' paths, and sends a bare /pt to /pt/', async () => {

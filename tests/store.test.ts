@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type CardInput } from 'ts-fsrs';
 import type { Direction, GradeInput, Snapshot, Word } from '../contract';
-import { createStore, genderOf, StoreError, type Store } from '../lib/store';
+import { createStore, StoreError, type Store } from '../lib/store';
 
 const words: Word[] = [
   { id: 'food-001', fr: 'le pain', en: 'bread', category: 'food' },
@@ -881,14 +881,7 @@ test('a word missed six times shows the words of its deck missed most with it; d
   expect(counts.food!.today + counts.food!.waiting).toBe(4);
 });
 
-test('a noun’s gender comes from its article, or from the note when the article is elided or plural', () => {
-  expect(genderOf({ fr: 'le nuage' })).toBe('masculine');
-  expect(genderOf({ fr: 'la pluie' })).toBe('feminine');
-  expect(genderOf({ fr: "l'eau", note: 'Feminine noun.' })).toBe('feminine');
-  expect(genderOf({ fr: 'les lunettes', note: 'Feminine plural.' })).toBe('feminine');
-  expect(genderOf({ fr: "l'enfant", note: 'Masculine or feminine according to the child.' })).toBeUndefined();
-  expect(genderOf({ fr: "l'hôtel" })).toBeUndefined();
-  expect(genderOf({ fr: 'manger' })).toBeUndefined();
+test('the store gives each noun its gender, by French rules when no others are given', () => {
   const { store } = fixture();
   expect(store.word('food-002')).toMatchObject({ fr: "l'eau" });
   expect(store.word('food-001')!.gender).toBe('masculine');

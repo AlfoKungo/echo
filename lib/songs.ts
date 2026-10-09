@@ -4,6 +4,7 @@
 // (lib/song-lyrics.ts).
 import { Database } from 'bun:sqlite';
 import type { Ask } from './claude';
+import { GENDER_RULES } from './language';
 import { genderOf, StoreError, type Store } from './store';
 import { candidateFrom, comparable, formCounts, groupMatches, littleWord, lyricForms, mergeCandidates, songCategory, type LrclibTrack, type LyricForm, type SongCandidate, type SongMatch, type SongSkip, type WordFacts } from './song-words';
 import { NOTES_VERSION, stanzasOf, writeNotes, type SongNotes } from './song-lyrics';
@@ -100,7 +101,8 @@ export function createSongs(deps: SongDeps) {
     return {
       id: row.id, title: row.title, artist: row.artist, category: row.category, status: row.status,
       done: row.done, total: row.total, error: row.error, skipped: words.skipped,
-      candidates: words.candidates.map((candidate) => { const gender = genderOf(candidate); return { ...candidate, little: candidate.forms.every((form) => littleWord(form) !== null), ...(gender ? { gender } : {}) }; }),
+      // Songs are French (lib/song-words.ts writes French articles), so their words take French's rules.
+      candidates: words.candidates.map((candidate) => { const gender = genderOf(candidate, GENDER_RULES.fr); return { ...candidate, little: candidate.forms.every((form) => littleWord(form) !== null), ...(gender ? { gender } : {}) }; }),
       // A word the song added that Echo later dropped as a duplicate is linked from its kept copy instead.
       added: (row.added_json ? JSON.parse(row.added_json) as string[] : []).filter((wordId) => !!deps.vocabulary.word(wordId)), linked: row.linked_json ? JSON.parse(row.linked_json) : [], createdAt: row.created_at, notes: notesStatus(row),
       understood: understood(row, words.candidates, status),

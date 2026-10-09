@@ -31,7 +31,7 @@ import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
 import { createNews } from './lib/news';
 import { createChangeIt, layChangeTape, type ChangeTapeItem } from './lib/change-it';
-import { currentLanguage, languages, languagesData, ROOMS, type Room } from './lib/language';
+import { currentLanguage, languagePage, languages, languagesData, ROOMS, type Room } from './lib/language';
 import { createLanguageHost } from './lib/languages';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
 for (const level of ['log', 'error', 'warn'] as const) {
@@ -73,7 +73,7 @@ mkdirSync(dirname(dbPath), { recursive: true });
 const families = language.code === 'fr' ? loadFamilies(root, words) : [];
 const patterns = language.code === 'fr' ? loadPatterns(root, families) : [];
 // A word added from a song joins practice once its recording exists.
-const store = createStore(words, { dbPath, ready: (id) => existsSync(join(language.audio, `${id}.mp3`)), families: families.map((family) => family.members.map((member) => member.id)) });
+const store = createStore(words, { dbPath, ready: (id) => existsSync(join(language.audio, `${id}.mp3`)), families: families.map((family) => family.members.map((member) => member.id)), gender: language.gender });
 // Song words and new texts are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
 const python = process.env.ECHO_PYTHON ?? JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')).python as string;
 // The scripts print one JSON line per clip no take passed for ({"failed": id, "attempts": [...]}); the log names
@@ -855,13 +855,14 @@ async function route(req: Request): Promise<Response> {
     const name = path === '/' ? 'index.html' : path.slice(1);
     if (Object.hasOwn(staticFiles, name) && (req.method === 'GET' || req.method === 'HEAD')) {
       const file = Bun.file(join(root, 'static', name));
-      // The page carries the rooms left out, the signed-in friend's name, and the language switch: this page's
-      // language, its English name and every language's own name (static/app.js).
-      const switchMarks = languageSwitch ? ` data-lang="${language.code}" data-english="${language.english}" data-languages="${attribute(Object.values(allLanguages).map((entry) => `${entry.code}:${entry.own}`).join(','))}"` : '';
-      if (name === 'index.html' && (roomsOff.length || learnerName || switchMarks) && await file.exists()) {
-        const marks = `${roomsOff.length ? ` data-rooms-off="${roomsOff.join(',')}"` : ''}${learnerName ? ` data-learner="${attribute(learnerName)}"` : ''}${switchMarks}`;
-        let page = (await file.text()).replace('<body>', `<body${marks}>`);
-        if (language.code !== 'fr') page = page.replace('French practice', `${language.english} practice`).replace('practise French', `practise ${language.english}`);
+      // The page carries the rooms left out, the signed-in friend's name, its language and the language switch: the
+      // language's code, BCP-47 tag where it differs from the code, and English name (with the switch, and always
+      // outside French, which the app assumes when the page names none), and every language's own name (static/app.js).
+      const languageMarks = languageSwitch || language.code !== 'fr' ? ` data-lang="${language.code}"${language.tag === language.code ? '' : ` data-lang-tag="${language.tag}"`} data-english="${language.english}"` : '';
+      const switchMarks = languageSwitch ? ` data-languages="${attribute(Object.values(allLanguages).map((entry) => `${entry.code}:${entry.own}`).join(','))}"` : '';
+      if (name === 'index.html' && (roomsOff.length || learnerName || languageMarks) && await file.exists()) {
+        const marks = `${roomsOff.length ? ` data-rooms-off="${roomsOff.join(',')}"` : ''}${learnerName ? ` data-learner="${attribute(learnerName)}"` : ''}${languageMarks}${switchMarks}`;
+        const page = languagePage((await file.text()).replace('<body>', `<body${marks}>`), language);
         return new Response(req.method === 'HEAD' ? null : page, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' } });
       }
       if (await file.exists()) return staticFile(req, file);

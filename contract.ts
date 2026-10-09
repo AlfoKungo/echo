@@ -1,6 +1,8 @@
+import type { Gender } from './lib/language';
+
 export type Direction = 'fr-en' | 'en-fr';
-// gender: a noun's, worked out by the store from its article or note (lib/store.ts genderOf).
-export type Word = { id: string; fr: string; en: string; category: string; note?: string; gender?: 'masculine' | 'feminine' };
+// gender: a noun's, worked out by the store from its article or note under its language's rules (lib/store.ts genderOf).
+export type Word = { id: string; fr: string; en: string; category: string; note?: string; gender?: Gender };
 export type Deck = { id: string; title: string; count: number };
 // songsFirst: words added from songs are introduced before all other new words; otherwise each song takes
 // its turn with the categories.

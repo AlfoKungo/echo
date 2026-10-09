@@ -383,6 +383,8 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .gloss-base{margin:4px 0 0;color:var(--muted);font-size:15px}.gloss-note{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--ink)}
 .genders .g-m{color:var(--masc)}.genders .g-f{color:var(--fem)}.genders .gloss.g-m{border-bottom-color:var(--masc)}.genders .gloss.g-f{border-bottom-color:var(--fem)}
 .gloss-gender{margin:4px 0 0;font-size:14px;color:var(--muted)}.gender-key{display:block;font-size:12px;color:var(--muted)}.gender-key .g-m{color:var(--masc)}.gender-key .g-f{color:var(--fem)}
+/* Swedish en- and ett-words are not masculine and feminine, so they take green and peach, not blue and pink. */
+.genders .g-c{color:var(--green)}.genders .g-n{color:var(--peach)}.gender-key .g-c{color:var(--green)}.gender-key .g-n{color:var(--peach)}
 .song-known{margin-top:18px}.song-known p{margin:0}.song-known .caption{margin-top:6px}.song-known-bar{display:flex;height:6px;border-radius:3px;background:var(--card);overflow:hidden;margin-top:8px}.song-known-bar .k{background:var(--violet)}.song-known-bar .l{background:var(--violet);opacity:.38}
 /* No background of its own: it sits above the card's tap zones, and a filled box would hide a pressed zone's tint. */
 .word-hook{color:var(--ink);font-size:15px;line-height:1.5;margin:0 0 10px!important;padding:10px 12px;border-radius:10px;text-align:left}
@@ -597,6 +599,7 @@ html{touch-action:manipulation}
 .study-surface.revealed .source-word{display:inline-block;min-width:min(240px,70%);margin-top:16px;padding-top:14px;border-top:1px solid var(--frame)}
 .gender-tag{display:inline-block;margin-top:14px;padding:1px 10px;border:1px solid var(--frame);border-radius:999px;font-size:12px;line-height:20px;color:var(--muted)}
 .genders .gender-tag.g-m{color:var(--masc);border-color:color-mix(in srgb,var(--masc) 40%,transparent)}.genders .gender-tag.g-f{color:var(--fem);border-color:color-mix(in srgb,var(--fem) 40%,transparent)}
+.genders .gender-tag.g-c{color:var(--green);border-color:color-mix(in srgb,var(--green) 40%,transparent)}.genders .gender-tag.g-n{color:var(--peach);border-color:color-mix(in srgb,var(--peach) 40%,transparent)}
 .study-surface.revealed .gender-tag{display:table;margin:12px auto 0}
 .card-hint{position:absolute;left:0;right:0;bottom:30px;text-align:center;font-size:13px;color:var(--dim);pointer-events:none}
 .card-zone{padding-bottom:22px;font-size:14px}

@@ -20,6 +20,8 @@ const formatCount = new Intl.NumberFormat('en').format;
 // language's Echo is its own app on this one origin, so everything it keeps on this device is under its own keys;
 // only the theme and the last language opened belong to the device. French keeps the keys it always had.
 const language = document.body.dataset.lang || 'fr';
+// The BCP-47 tag on the learnt language's text (lang="pt-BR"): the page's data-lang-tag where it differs from the code.
+const languageTag = document.body.dataset.langTag || language;
 const languageNames = Object.fromEntries((document.body.dataset.languages || '').split(',').filter(Boolean).map((entry) => entry.split(':')));
 const PER_DEVICE = ['echo.theme', 'echo.language'];
 const localKey = (key) => language === 'fr' || PER_DEVICE.includes(key) ? key : key.replace(/^echo\./, `echo.${language}.`);
@@ -250,7 +252,7 @@ function readLevels() {
 
 function announce(message) { document.querySelector('#announcer').textContent = message; }
 function locked() { return busy || !!retryAction?.body || !!retryAction?.run; }
-// The language being learnt, in English (the page's data-english; French in an Echo without the switch).
+// The language being learnt, in English (the page's data-english; French in a French Echo without the switch).
 const languageEnglish = document.body.dataset.english || 'French';
 function directionLabel() { return direction === 'fr-en' ? `${languageEnglish} → English` : `English → ${languageEnglish}`; }
 function categoryTitle(category) { return snapshot?.decks.find((entry) => entry.id === category)?.title || category.replace(/[-_]/g, ' ').replace(/^./, (letter) => letter.toUpperCase()); }
@@ -412,11 +414,16 @@ function noticeHTML() {
   return `<div class="notice ${notice.kind === 'info' ? 'info' : ''}" role="${notice.kind === 'info' ? 'status' : 'alert'}"><span>${esc(notice.message)}</span>${retryAction ? `<button class="quiet" data-action="retry" ${busy ? 'disabled' : ''}>Retry</button>` : ''}</div>`;
 }
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
-// Nouns are coloured by gender (lib/store.ts genderOf): a class on the French, shown when the setting is on.
+// Nouns are coloured by gender (lib/store.ts genderOf): a class on the learnt word, shown when the setting is on.
 let genders = {};               // word id -> gender, for tappable words linked to a noun (api/genders)
 let genderColours = localStorage.getItem(localKey('echo.genders')) !== 'off';
 document.body.classList.toggle('genders', genderColours);
-const genderClass = (gender) => gender === 'masculine' ? ' g-m' : gender === 'feminine' ? ' g-f' : '';
+// Each gender's colour class (app.css) and its name on a card. Swedish en and ett are not masculine and feminine, so
+// they have names and colours of their own.
+const GENDERS = { masculine: ['g-m', 'masculine'], feminine: ['g-f', 'feminine'], common: ['g-c', 'en-word'], neuter: ['g-n', 'ett-word'] };
+// The two genders this language's nouns come in, for the key in Words options.
+const LANGUAGE_GENDERS = language === 'sv' ? ['common', 'neuter'] : ['masculine', 'feminine'];
+const genderClass = (gender) => GENDERS[gender] ? ` ${GENDERS[gender][0]}` : '';
 fetch('api/genders').then((response) => response.ok ? response.json() : {}).then((map) => { genders = map; render(); }).catch(() => {});
 function back(label, action) { return `<button class="back" data-action="${action}" ${busy ? 'disabled' : ''}><span aria-hidden="true">←</span> ${label}</button>`; }
 function place() { return screen === 'song' ? `song|${songId}` : screen === 'lyrics' ? `lyrics|${songId}` : screen === 'topic' ? `topic|${topicId}` : screen === 'exercise' ? `exercise|${scope}` : screen === 'focus' ? `focus|${focusId}` : screen === 'sound' ? `sound|${soundId}` : screen === 'story' && storyNumber ? `story|${storyNumber}` : screen === 'news-edition' ? `news-edition|${newsDate}` : screen; }
@@ -469,7 +476,7 @@ if (document.body.dataset.learner) document.querySelector('#about-dialog .dialog
 // so under the switch; choosing it opens a page that says the same and offers the way back.
 const languageSwitch = Object.keys(languageNames).length ? document.querySelector('.theme-switch') : null;
 languageSwitch?.insertAdjacentHTML('afterend', `<div class="segmented language-switch" role="group" aria-label="Language">${Object.entries(languageNames).map(([code, name]) => `<button data-language-choice="${esc(code)}" lang="${esc(code)}" aria-pressed="${code === language}">${esc(name)}</button>`).join('')}</div><p class="language-state" role="status"></p><p class="language-note">Each language keeps its own progress, and this phone opens the one you used last.</p>`);
-if (language !== 'fr' && languageNames[language]) homeButton.insertAdjacentHTML('beforeend', `<span class="lang-tag" lang="${esc(language)}">${esc(languageNames[language])}</span>`);
+if (language !== 'fr' && languageNames[language]) homeButton.insertAdjacentHTML('beforeend', `<span class="lang-tag" lang="${esc(languageTag)}">${esc(languageNames[language])}</span>`);
 async function refreshLanguages() {
   const state = document.querySelector('.language-state');
   if (!state) return;
@@ -641,17 +648,17 @@ function renderWalkman() {
   // Change it shows the sentence, then the cue under it, and once the answer plays, the answer and its English.
   const face = word?.change
     ? phase === 'again'
-      ? `<p class="wm-fr wm-sentence" lang="fr">${changedAnswer(word.fr, word.change.form)}</p><p class="wm-en">${esc(word.en)}</p>`
-      : `<p class="wm-fr wm-sentence" lang="fr">${frEsc(word.change.base)}</p><p class="wm-en wm-cue">${phase === 'listen' ? '&nbsp;' : `→ <span lang="fr">${frEsc(word.change.cue)}</span>`}</p>`
+      ? `<p class="wm-fr wm-sentence" lang="${languageTag}">${changedAnswer(word.fr, word.change.form)}</p><p class="wm-en">${esc(word.en)}</p>`
+      : `<p class="wm-fr wm-sentence" lang="${languageTag}">${frEsc(word.change.base)}</p><p class="wm-en wm-cue">${phase === 'listen' ? '&nbsp;' : `→ <span lang="${languageTag}">${frEsc(word.change.cue)}</span>`}</p>`
     : word
-    ? `<p class="wm-fr${word.sentence || word.verb ? ' wm-sentence' : ''}" lang="fr">${frEsc(word.fr)}</p><p class="wm-en">${walkman.meaning ? esc(word.en) : '&nbsp;'}</p>`
+    ? `<p class="wm-fr${word.sentence || word.verb ? ' wm-sentence' : ''}" lang="${languageTag}">${frEsc(word.fr)}</p><p class="wm-en">${walkman.meaning ? esc(word.en) : '&nbsp;'}</p>`
     : `<p class="wm-hint">${tape.kind === 'change'
       ? 'You hear a sentence, then a change: a time, or another person. Say the new sentence in the pause, then hear it. The verbs and tenses on your Practising line; with one tense, only the person changes.'
       : tape.kind === 'verbs'
       ? 'You hear a verb, a tense and a person, then a pause to say the form, then the form twice. The 20 most common verbs, in the tenses you choose.'
       : tape.kind === 'sentences'
-      ? 'You hear a French sentence, then a pause to understand it, then the English, then the French again.'
-      : 'You hear a French word, then a pause to find its meaning, then the English, then the French again.'}</p>`;
+      ? `You hear a ${languageEnglish} sentence, then a pause to understand it, then the English, then the ${languageEnglish} again.`
+      : `You hear a ${languageEnglish} word, then a pause to find its meaning, then the English, then the ${languageEnglish} again.`}</p>`;
   // The phase row shows where the word playing has got to; the reels turn only while the tape plays.
   const phases = word ? `<div class="wm-phase" aria-hidden="true">${TAPE_PHASES[tape.kind].map((label, index) => `<span data-phase="${PHASE_KEYS[index]}"${PHASE_KEYS[index] === phase ? ' class="on"' : ''}>${label}</span>`).join('')}</div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}
@@ -673,7 +680,7 @@ function heardHTML() {
     // A sentence is heard for its meaning only: it has no score to mark and nothing to add.
     const marks = entry.sentence ? '' : [[true, checkIcon, 'I knew'], [false, crossIcon, 'I didn’t know']].map(([knew, icon, label]) =>
       `<button class="icon mark ${knew ? 'knew' : 'missed'}" data-action="walkman-mark" data-word="${esc(entry.id)}" data-knew="${knew}" aria-pressed="${entry.mark?.knew === knew}" aria-label="${label} ${esc(entry.fr)}"${heardMarking.has(entry.id) || (entry.verb && entry.mark) ? ' disabled' : ''}>${icon}</button>`).join('');
-    return `<li class="wm-heard-row${entry.sentence ? ' sentence' : ''}"><div class="wm-heard-text"><p class="wm-heard-fr" lang="fr">${frEsc(entry.fr)}</p><p class="wm-heard-en">${esc(entry.en)}</p>${add}</div>${marks}<button class="icon${heardSaying === entry.id ? ' playing' : ''}" data-action="walkman-say" data-word="${esc(entry.id)}" aria-label="Hear ${esc(entry.fr)} again">${speaker}</button></li>`;
+    return `<li class="wm-heard-row${entry.sentence ? ' sentence' : ''}"><div class="wm-heard-text"><p class="wm-heard-fr" lang="${languageTag}">${frEsc(entry.fr)}</p><p class="wm-heard-en">${esc(entry.en)}</p>${add}</div>${marks}<button class="icon${heardSaying === entry.id ? ' playing' : ''}" data-action="walkman-say" data-word="${esc(entry.id)}" aria-label="Hear ${esc(entry.fr)} again">${speaker}</button></li>`;
   }).join('');
   const list = heardOpen ? `<ol class="wm-heard-list">${rows || '<li class="wm-heard-empty">Words and sentences appear here as each one finishes, newest first.</li>'}</ol>` : '';
   return `<div class="wm-heard"><button class="wm-heard-toggle" data-action="walkman-heard" aria-expanded="${heardOpen}"><span>${heardOpen ? 'Hide what you heard' : 'What you heard'}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
@@ -930,7 +937,7 @@ function renderRadio() {
   const part = view.segments[radio.index];
   const playing = !radioAudio.paused;
   const face = part
-    ? `<p class="wm-hint">${esc(SECTION_TITLE[part.section])}${part.label !== SECTION_TITLE[part.section] ? ` · ${esc(part.label)}` : ''}</p>${part.fr ? `<p class="wm-fr" lang="fr">${frEsc(part.fr)}</p>` : ''}<p class="wm-en">${esc(part.en || '')}</p>`
+    ? `<p class="wm-hint">${esc(SECTION_TITLE[part.section])}${part.label !== SECTION_TITLE[part.section] ? ` · ${esc(part.label)}` : ''}</p>${part.fr ? `<p class="wm-fr" lang="${languageTag}">${frEsc(part.fr)}</p>` : ''}<p class="wm-en">${esc(part.en || '')}</p>`
     : `<p class="wm-hint">Today’s episode, ${Math.max(1, Math.round(view.seconds / 60))} minutes: your words in sentences, the story, and a little grammar.</p>`;
   const sections = view.segments.filter((segment, index, all) => segment.section !== 'intro' && segment.section !== 'outro' && all.findIndex((other) => other.section === segment.section) === index);
   const chapters = sections.map((segment) => `<button class="secondary chip" data-action="radio-seek" data-at="${segment.start}">${esc(SECTION_TITLE[segment.section])}</button>`).join('');
@@ -977,7 +984,7 @@ async function loadNews(quiet = false) {
 function renderNews() {
   const header = listenTop();
   if (!newsList) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
-  const rows = newsList.editions.map((edition) => `<li><button class="song-row" data-action="news-open" data-date="${esc(edition.date)}"><span class="song-copy"><strong>${esc(newsDay(edition.date))}</strong>${edition.headlines.length ? `<span lang="fr">${edition.headlines.map(esc).join(' · ')}</span>` : ''}<small class="song-state ${edition.status}">${esc(newsStateLine(edition))}</small>${edition.status === 'preparing' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
+  const rows = newsList.editions.map((edition) => `<li><button class="song-row" data-action="news-open" data-date="${esc(edition.date)}"><span class="song-copy"><strong>${esc(newsDay(edition.date))}</strong>${edition.headlines.length ? `<span lang="${languageTag}">${edition.headlines.map(esc).join(' · ')}</span>` : ''}<small class="song-state ${edition.status}">${esc(newsStateLine(edition))}</small>${edition.status === 'preparing' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
   const trouble = newsList.error ? `<p class="song-error">New editions could not be looked for: ${esc(newsList.error)} Echo tries again within half an hour.</p>` : '';
   const empty = !rows && !trouble ? '<p class="song-hint" role="status">Looking for the latest editions on RFI…</p>' : '';
   main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}<p class="subtitle">RFI’s <span lang="fr">Journal en français facile</span>: ten minutes of the world’s news in slow French, Monday to Friday, read by RFI’s presenters. Read it line by line while you listen.</p>${trouble}${empty}${rows ? `<ol class="song-results news-list">${rows}</ol>` : ''}</section>`;
@@ -1007,7 +1014,7 @@ function newsLineHTML({ line, s, l }, index) {
   const start = line.en ? `<button class="lyric-start" data-action="news-line" data-line="${key}" aria-expanded="${open}" aria-label="What this line means">›</button>` : '<span class="lyric-start" aria-hidden="true"></span>';
   const from = newsView.starts && newsView.audio ? `<button class="news-from" data-action="news-from" data-index="${index}" aria-label="Play from this line">${playIcon}</button>` : '';
   const current = index === newsAt && newsLoaded();
-  return `<div class="lyric-line news-line${current ? ' playing' : ''}" data-line="${key}" data-index="${index}">${start}<div class="lyric-text"><p lang="fr">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div>${from}</div>`;
+  return `<div class="lyric-line news-line${current ? ' playing' : ''}" data-line="${key}" data-index="${index}">${start}<div class="lyric-text"><p lang="${languageTag}">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div>${from}</div>`;
 }
 function newsPlayerHTML() {
   const view = newsView;
@@ -1027,7 +1034,7 @@ function renderNewsEdition() {
     : `<p class="song-hint" role="status">${esc(newsStateLine(view))}</p>`;
   let index = 0;
   const lines = view.stanzas.map((stanza, s) => `<div class="lyric-stanza">${stanza.map((line, l) => newsLineHTML({ line, s, l }, index++)).join('')}</div>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${view.headlines.length ? `<ul class="news-headlines" lang="fr">${view.headlines.map((headline) => `<li>${esc(headline)}</li>`).join('')}</ul>` : ''}${status}<div class="lyric-lines">${lines}</div>${newsPlayerHTML()}</section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${view.headlines.length ? `<ul class="news-headlines" lang="${languageTag}">${view.headlines.map((headline) => `<li>${esc(headline)}</li>`).join('')}</ul>` : ''}${status}<div class="lyric-lines">${lines}</div>${newsPlayerHTML()}</section>`;
 }
 // Plays from the start of a line; without line times, on from where it is (the start, at first).
 async function playNews(index = Math.max(0, newsAt)) {
@@ -1142,7 +1149,7 @@ function extraPractice(type, data) {
 }
 // A word missed often: how often, and the words of its deck missed most with it, side by side to tell apart.
 function troubleHTML(trouble) {
-  const list = trouble.alongside.length ? `<ul>${trouble.alongside.map((word) => `<li><span lang="fr" class="${genderClass(word.gender).trim()}">${frEsc(word.fr)}</span> <span class="en">${esc(word.en)}</span></li>`).join('')}</ul>` : '';
+  const list = trouble.alongside.length ? `<ul>${trouble.alongside.map((word) => `<li><span lang="${languageTag}" class="${genderClass(word.gender).trim()}">${frEsc(word.fr)}</span> <span class="en">${esc(word.en)}</span></li>`).join('')}</ul>` : '';
   const hook = trouble.hook ? `<p class="word-hook">${esc(trouble.hook)}</p>` : '';
   return `<div class="word-trouble">${hook}<p>Missed ${trouble.misses} times${trouble.alongside.length ? '. Often missed with it:' : '.'}</p>${list}</div>`;
 }
@@ -1156,11 +1163,11 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const saying = sayHere();
   const verdict = saying && revealed && say.phase === 'result' && say.key === cardKey(card) ? say.result : null;
   const right = verdict?.verdict === 'right';
-  // The noun's gender, in words, wherever the French is showing (the colour alone is optional).
-  const gender = card.gender && (revealed || !reverse) ? `<p class="gender-tag${genderClass(card.gender)}">${esc(card.gender)}</p>` : '';
+  // The noun's gender, in words, wherever the learnt word is showing (the colour alone is optional).
+  const gender = card.gender && (revealed || !reverse) ? `<p class="gender-tag${genderClass(card.gender)}">${esc(GENDERS[card.gender]?.[1] ?? card.gender)}</p>` : '';
   const face = hidden
-    ? `<button class="listen-play" data-action="replay" aria-label="Play the French word again">${speaker}</button>${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}`
-    : `${verdict ? sayVerdictHTML() : ''}<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? 'fr' : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : 'fr'}">${esc(prompt)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender}`;
+    ? `<button class="listen-play" data-action="replay" aria-label="Play the ${languageEnglish} word again">${speaker}</button>${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}`
+    : `${verdict ? sayVerdictHTML() : ''}<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? languageTag : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : languageTag}">${esc(prompt)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender}`;
   // How this card is practised, in French → English: Read, Listen, and Speak where it is offered.
   const ways = direction === 'fr-en' ? [['read', 'Read', eyeIcon], ['listen', 'Listen', headphones], ...(speakOffered() ? [['speak', 'Speak', micIcon]] : [])] : [];
   const wayChoice = ways.length ? `<div class="practice-way" role="group" aria-label="How you practise">${ways.map(([way, title, icon]) => `<button data-action="practice-way" data-way="${way}" aria-pressed="${wayNow() === way}">${icon}<span>${title}</span></button>`).join('')}</div>` : '';
@@ -1210,12 +1217,15 @@ function renderEndless() {
 }
 function renderBrowse() {
   const show = [['all', 'All words'], ['studied', 'Studied'], ['learning', 'Still learning'], ['missed', 'Missed at least once']].map(([value, label]) => `<option value="${value}" ${browseShow === value ? 'selected' : ''}>${label}</option>`).join('');
+  // Word families and Word building are French's (content/families.json); another language's page has the room off.
   const more = [
-    ['families', 'Word families', 'Words built from one another; add a relative of one you know', ''],
-    ['word-building', 'Word building', 'How French makes one word from another: -er, -eur, in-…', 'data-from="browse"'],
+    ...(roomsOff.has('families') ? [] : [
+      ['families', 'Word families', 'Words built from one another; add a relative of one you know', ''],
+      ['word-building', 'Word building', 'How French makes one word from another: -er, -eur, in-…', 'data-from="browse"'],
+    ]),
     ['more-today', 'More for today', 'Extra new words, or finished words reviewed early', ''],
   ].map(([action, title, text, data]) => `<button class="topic-row" data-action="${action}" ${data} ${busy || (action === 'more-today' && !snapshot) ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${title}</h3></span><p>${esc(text)}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Words', 'vocabulary')}<button class="icon" data-action="options" aria-label="Words options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">Everything in your deck, and ways to add to it.</p><div class="topic-list">${more}</div><h2 class="story-heading">All your words · ${esc(directionLabel())}</h2><div class="browse-tools"><label class="sr-only" for="vocab-search">Search French or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Words', 'vocabulary')}<button class="icon" data-action="options" aria-label="Words options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">Everything in your deck, and ways to add to it.</p><div class="topic-list">${more}</div><h2 class="story-heading">All your words · ${esc(directionLabel())}</h2><div class="browse-tools"><label class="sr-only" for="vocab-search">Search ${languageEnglish} or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
   renderBrowseResults();
 }
 function normalized(value) { return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase(); }
@@ -1235,10 +1245,10 @@ let browseMore = 0;
 function browseRowHTML(word) {
   const reverse = direction === 'en-fr';
   const hidden = hideTranslations && !revealedWords.has(word.id);
-  const text = !hidden ? `<h2 lang="fr" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2><p>${esc(word.en)}</p>`
+  const text = !hidden ? `<h2 lang="${languageTag}" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2><p>${esc(word.en)}</p>`
     : (() => {
-      const reveal = `<button class="reveal-word" data-reveal-word="${esc(word.id)}">${reverse ? 'Show French' : 'Show English'}</button>`;
-      return reverse ? `<h2 lang="en">${esc(word.en)}</h2>${reveal}` : `<h2 lang="fr" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2>${reveal}`;
+      const reveal = `<button class="reveal-word" data-reveal-word="${esc(word.id)}">${reverse ? `Show ${languageEnglish}` : 'Show English'}</button>`;
+      return reverse ? `<h2 lang="en">${esc(word.en)}</h2>${reveal}` : `<h2 lang="${languageTag}" class="${genderClass(word.gender).trim()}">${esc(word.fr)}</h2>${reveal}`;
     })();
   const history = [
     categoryTitle(word.category),
@@ -1301,9 +1311,9 @@ function renderFamilies() {
     const open = familyOpen === family.index;
     const head = family.members[0].word;
     const next = family.members.find((member) => member.state === 'new') ?? family.members.find((member) => member.state === 'learning');
-    const nextLabel = next ? ` · ${next.state === 'new' ? 'next' : 'learning'}: <span lang="fr" class="${genderClass(next.word.gender).trim()}">${frEsc(next.word.fr)}</span>` : '';
+    const nextLabel = next ? ` · ${next.state === 'new' ? 'next' : 'learning'}: <span lang="${languageTag}" class="${genderClass(next.word.gender).trim()}">${frEsc(next.word.fr)}</span>` : '';
     const members = open ? `<ol class="fam-members">${family.members.map((member) => `<li>${familyMemberHTML(member)}</li>`).join('')}</ol>` : '';
-    return `<article class="fam-row${open ? ' open' : ''}"><button class="fam-head" data-action="family" data-family="${family.index}" aria-expanded="${open}"><span class="fam-title"><span lang="fr" class="${genderClass(head.gender).trim()}">${frEsc(head.fr)}</span> family</span><span class="fam-meta">You know ${family.known} of ${family.members.length}${nextLabel}</span><span class="fam-bar" aria-hidden="true"><span style="width:${(family.known / family.members.length * 100).toFixed(0)}%"></span></span><span class="fam-dots" aria-hidden="true">${family.members.map((member) => dot(member.state)).join('')}</span></button>${members}</article>`;
+    return `<article class="fam-row${open ? ' open' : ''}"><button class="fam-head" data-action="family" data-family="${family.index}" aria-expanded="${open}"><span class="fam-title"><span lang="${languageTag}" class="${genderClass(head.gender).trim()}">${frEsc(head.fr)}</span> family</span><span class="fam-meta">You know ${family.known} of ${family.members.length}${nextLabel}</span><span class="fam-bar" aria-hidden="true"><span style="width:${(family.known / family.members.length * 100).toFixed(0)}%"></span></span><span class="fam-dots" aria-hidden="true">${family.members.map((member) => dot(member.state)).join('')}</span></button>${members}</article>`;
   }).join('');
   const legend = `<p class="fam-legend">${dot('known')}you know it ${dot('learning')}learning ${dot('new')}not started</p>`;
   const empty = '<p class="empty-list">None yet. Once you know a word that has relatives, its family shows here.</p>';
@@ -1316,7 +1326,7 @@ function familyMemberHTML(member) {
   const add = member.state === 'new' && direction === 'fr-en' && !member.added
     ? `<button class="wm-heard-add" data-action="family-add" data-word="${esc(member.id)}" ${familyAdding.has(member.id) ? 'disabled' : ''}>Add to my words</button>`
     : status ? `<span class="wm-heard-status" role="status">${esc(status)}</span>` : '';
-  return `<div class="fam-member"><span class="fam-dot ${member.state}" aria-hidden="true"></span><div class="fam-text"><p class="fam-fr ${genderClass(member.word.gender).trim()}" lang="fr">${frEsc(member.word.fr)}</p><p class="fam-en">${esc(member.word.en)}</p>${member.note ? `<p class="fam-note">${esc(member.note)}</p>` : ''}${add}</div><button class="icon" data-play-word="${esc(member.id)}" aria-label="Pronounce ${esc(member.word.fr)}">${speaker}</button></div>`;
+  return `<div class="fam-member"><span class="fam-dot ${member.state}" aria-hidden="true"></span><div class="fam-text"><p class="fam-fr ${genderClass(member.word.gender).trim()}" lang="${languageTag}">${frEsc(member.word.fr)}</p><p class="fam-en">${esc(member.word.en)}</p>${member.note ? `<p class="fam-note">${esc(member.note)}</p>` : ''}${add}</div><button class="icon" data-play-word="${esc(member.id)}" aria-label="Pronounce ${esc(member.word.fr)}">${speaker}</button></div>`;
 }
 function renderBuilding() {
   const [label, to] = { families: ['Word families', 'families'], browse: ['Your words', 'your-words'] }[buildingFrom] ?? ['Grammar', 'grammar'];
@@ -1326,7 +1336,7 @@ function renderBuilding() {
   const members = new Map((families || []).flatMap((family) => family.members).map((member) => [member.id, member]));
   const entry = (id) => { const word = byId.get(id); return word ? { ...members.get(id), id, word, state: familyState(word) } : null; };
   const rank = { known: 0, learning: 1, new: 2 };
-  const chip = (index, member) => `<button class="wb-chip" data-action="building-word" data-pattern="${index}" data-word="${esc(member.id)}" aria-pressed="${buildingWord === `${index}:${member.id}`}"><span class="fam-dot ${member.state}" aria-hidden="true"></span><span lang="fr" class="${genderClass(member.word.gender).trim()}">${frEsc(member.word.fr)}</span></button>`;
+  const chip = (index, member) => `<button class="wb-chip" data-action="building-word" data-pattern="${index}" data-word="${esc(member.id)}" aria-pressed="${buildingWord === `${index}:${member.id}`}"><span class="fam-dot ${member.state}" aria-hidden="true"></span><span lang="${languageTag}" class="${genderClass(member.word.gender).trim()}">${frEsc(member.word.fr)}</span></button>`;
   const cards = (patterns || []).map((pattern, index) => {
     // Pairs whose first word you know come first: they show the pattern on ground you stand on.
     const pairs = pattern.examples.map(([from, to]) => [entry(from), entry(to)]).filter(([from, to]) => from && to)
@@ -1431,7 +1441,7 @@ function renderGrammar() {
   }).join('');
   const switcher = `<div class="segmented gr-by" role="group" aria-label="Show topics">${[['unit', 'By unit'], ['level', 'By level']].map(([value, label]) => `<button data-action="grammar-by" data-value="${value}" aria-pressed="${grammarBy === value}">${label}</button>`).join('')}</div>`;
   const legend = '<div class="gr-legend"><span><i class="own"></i>on your own</span><span><i class="rev"></i>to revisit</span><span><i></i>not yet</span></div>';
-  const writeRow = roomsOff.has('write') ? '' : grammarRowHTML('data-action="write"', '<span>✎</span>', 'Write it', '<small>Write a short sentence in French with the grammar you are learning; Claude checks it</small>');
+  const writeRow = roomsOff.has('write') ? '' : grammarRowHTML('data-action="write"', '<span>✎</span>', 'Write it', `<small>Write a short sentence in ${languageEnglish} with the grammar you are learning; Claude checks it</small>`);
   const building = `<p class="study-label">Also</p><div class="gr-box">${writeRow}${grammarRowHTML('data-action="word-building"', '<span>-er</span><span>-eur</span>', 'Word building', '<small>Endings and prefixes that turn one word into another; also in Your words</small>')}</div>`;
   main.innerHTML = `${noticeHTML()}<section class="topics grammar">${header}${resume}${nextCard}${switcher}${grammarBy === 'unit' ? units.map(unitCard).join('') : byLevel}${legend}${building}</section>`;
 }
@@ -1465,15 +1475,15 @@ function writeBodyHTML() {
   const prompt = `<div class="vb-prompt"><p class="write-en" lang="en">${esc(current.en)}</p>${current.topicTitle ? `<span class="vb-tense">${esc(current.topicTitle)}</span>` : ''}</div>`;
   const result = writeRetry ? null : writeView.result;
   if (!result) {
-    return `${prompt}<form class="vb-answer-row" id="write-form"><input class="vb-input" id="write-answer" lang="fr" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The sentence in French" value="${esc(writeDraft)}" ${writeChecking ? 'disabled' : ''}><button class="primary" ${writeChecking ? 'disabled' : ''}>${writeChecking ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}
+    return `${prompt}<form class="vb-answer-row" id="write-form"><input class="vb-input" id="write-answer" lang="${languageTag}" autocomplete="off" autocapitalize="sentences" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The sentence in ${languageEnglish}" value="${esc(writeDraft)}" ${writeChecking ? 'disabled' : ''}><button class="primary" ${writeChecking ? 'disabled' : ''}>${writeChecking ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}
       <div class="summary-actions"><button class="quiet" data-action="write-next" ${writeChecking ? 'disabled' : ''}>Skip this one</button></div>`;
   }
   const right = result.verdict === 'right';
   const lines = [
-    `<p>You wrote <span lang="fr">${esc(result.given)}</span></p>`,
-    right ? '' : `<p>Corrected: <span lang="fr" class="write-fix">${esc(result.corrected)}</span></p>`,
+    `<p>You wrote <span lang="${languageTag}">${esc(result.given)}</span></p>`,
+    right ? '' : `<p>Corrected: <span lang="${languageTag}" class="write-fix">${esc(result.corrected)}</span></p>`,
     result.explanation ? `<p class="vb-why">${esc(result.explanation)}</p>` : '',
-    result.natural && result.natural !== result.corrected ? `<p class="vb-why">A French speaker would say: <span lang="fr">${esc(result.natural)}</span></p>` : '',
+    result.natural && result.natural !== result.corrected ? `<p class="vb-why">A ${languageEnglish} speaker would say: <span lang="${languageTag}">${esc(result.natural)}</span></p>` : '',
   ].join('');
   return `${prompt}<div class="feedback ${right ? '' : 'warn'}" role="status"><strong>${WRITE_VERDICTS[result.verdict]}</strong>${lines}</div>
     <div class="stream-actions pinned"><button class="primary" data-action="write-next">${mixed() ? 'Next' : 'Next sentence'}</button>${right ? '' : '<button class="secondary" data-action="write-again">Write it again</button>'}</div>`;
@@ -1524,7 +1534,7 @@ function guideTableHTML(table, row = null) {
 }
 function guideSectionHTML(section, focus = false) {
   const steps = section.steps ? `<p class="guide-label">How to choose</p><ol class="guide-steps">${section.steps.map((step) => `<li>${frEsc(step)}</li>`).join('')}</ol>` : '';
-  const examples = `<div class="guide-examples">${section.examples.map((example) => `<p><span lang="fr">${frEsc(example.fr)}</span><span class="en">${esc(example.en)}</span></p>`).join('')}</div>`;
+  const examples = `<div class="guide-examples">${section.examples.map((example) => `<p><span lang="${languageTag}">${frEsc(example.fr)}</span><span class="en">${esc(example.en)}</span></p>`).join('')}</div>`;
   const watch = section.watch ? `<p class="guide-label">Watch out</p><ul class="guide-watch">${section.watch.map((item) => `<li>${frEsc(item)}</li>`).join('')}</ul>` : '';
   return `<section class="guide-section${focus ? ' focus' : ''}" id="guide-${esc(section.id)}"><h3>${esc(section.title)}</h3>${section.text ? `<p>${frEsc(section.text)}</p>` : ''}${section.table ? guideTableHTML(section.table) : ''}${steps}${examples}${watch}</section>`;
 }
@@ -1540,7 +1550,7 @@ function renderTopic() {
   const tests = test.taken
     ? `<strong>Best ${test.best.score} / ${test.best.total}</strong> · last ${test.last.score} / ${test.last.total}, ${esc(dateLabel(test.last.finishedAt))} · taken ${test.taken} ${test.taken === 1 ? 'time' : 'times'}`
     : `<strong>No tests yet.</strong> ${topic.testLength} questions, no help, one try each; what you miss comes back first when you practise.`;
-  main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div><p class="topic-kicker" lang="fr" aria-hidden="true">${esc(topic.mark)}</p><div class="topic-heading"><h1>${esc(topic.title)}</h1><span class="level-tag">${esc(topic.level)}</span></div><p class="subtitle">${esc(topic.description)}</p><div class="topic-actions"><button class="primary" data-scope="${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${round ? `Continue your round · ${round.index + 1} of ${round.total}` : `Practise · ${topic.practiceLength} questions`}</button><button class="secondary" data-scope="test:${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveTest ? 'Continue your test' : `Take the test · ${topic.testLength} questions`}</button></div><div class="gr-topic-stats">${practised}</div><p class="gr-tests">${tests}</p><section class="rule-card" aria-labelledby="rule-heading"><h2 id="rule-heading">The rule</h2>${topic.guide ? foldedGuideHTML(topic.guide) : '<p>Opening the rule…</p>'}</section></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topic-page"><div class="section-top">${back('Grammar', 'grammar')}</div><p class="topic-kicker" lang="${languageTag}" aria-hidden="true">${esc(topic.mark)}</p><div class="topic-heading"><h1>${esc(topic.title)}</h1><span class="level-tag">${esc(topic.level)}</span></div><p class="subtitle">${esc(topic.description)}</p><div class="topic-actions"><button class="primary" data-scope="${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${round ? `Continue your round · ${round.index + 1} of ${round.total}` : `Practise · ${topic.practiceLength} questions`}</button><button class="secondary" data-scope="test:${esc(topic.id)}" ${locked() ? 'disabled' : ''}>${topic.hasActiveTest ? 'Continue your test' : `Take the test · ${topic.testLength} questions`}</button></div><div class="gr-topic-stats">${practised}</div><p class="gr-tests">${tests}</p><section class="rule-card" aria-labelledby="rule-heading"><h2 id="rule-heading">The rule</h2>${topic.guide ? foldedGuideHTML(topic.guide) : '<p>Opening the rule…</p>'}</section></section>`;
 }
 // Back from a round or its summary: Grammar for a unit test or the revisit round, else the topic, by name.
 function grammarBackHTML() {
@@ -1555,11 +1565,11 @@ function completed(type, source, text) {
 function promptHTML(exercise) {
   if (exercise.type === 'conjugate') {
     const [verb, subject, tense] = exercise.source.split(' · ');
-    return `<dl class="conjugate-parts"><div><dt>Verb</dt><dd lang="fr">${esc(verb)}</dd></div><div><dt>Subject</dt><dd lang="fr">${esc(subject)}</dd></div><div><dt>Tense</dt><dd lang="fr">${esc(tense)}</dd></div></dl>`;
+    return `<dl class="conjugate-parts"><div><dt>Verb</dt><dd lang="${languageTag}">${esc(verb)}</dd></div><div><dt>Subject</dt><dd lang="${languageTag}">${esc(subject)}</dd></div><div><dt>Tense</dt><dd lang="${languageTag}">${esc(tense)}</dd></div></dl>`;
   }
   // An English cue in the sentence ("(she does not lend them to us)") is glossed as itself; it is not made tappable.
   const gloss = (exercise.gloss || []).filter((entry) => !(entry.fr === entry.en && /\s/.test(entry.fr)));
-  return `<p class="prompt-sentence" lang="${exercise.type === 'translate' ? 'en' : 'fr'}">${exercise.type === 'translate' ? esc(exercise.source) : glossedHTML(exercise.source, gloss)}</p>`;
+  return `<p class="prompt-sentence" lang="${exercise.type === 'translate' ? 'en' : languageTag}">${exercise.type === 'translate' ? esc(exercise.source) : glossedHTML(exercise.source, gloss)}</p>`;
 }
 function answerHTML(current, disabled) {
   const exercise = current.exercise;
@@ -1570,13 +1580,13 @@ function answerHTML(current, disabled) {
       const missed = current.misses.includes(option);
       const right = option.toLocaleLowerCase() === answer;
       const mark = missed ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">not this one</span></span>' : right ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">the answer</span></span>' : '';
-      return `<button class="choice${missed ? ' wrong' : right ? ' right' : ''}" data-choice="${esc(option)}" ${disabled || missed ? 'disabled' : ''}><span lang="fr">${esc(option)}</span>${mark}</button>`;
+      return `<button class="choice${missed ? ' wrong' : right ? ' right' : ''}" data-choice="${esc(option)}" ${disabled || missed ? 'disabled' : ''}><span lang="${languageTag}">${esc(option)}</span>${mark}</button>`;
     }).join('')}</div>`;
   }
-  if (exercise.type === 'conjugate') return `<label class="answer-label" for="answer">Verb form</label><input id="answer" class="answer-line" lang="fr" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="Write the verb form…" value="${esc(draft)}" ${disabled ? 'readonly' : ''}>`;
-  const label = ({ complete: 'Missing word', translate: 'Your French' })[exercise.type] || 'Your answer';
-  const placeholder = ({ complete: 'Type the missing word…', translate: 'Write it in French…' })[exercise.type] || 'Write your sentence…';
-  return `<label class="answer-label" for="answer">${label}</label><textarea id="answer" lang="fr" autocomplete="off" autocapitalize="sentences" spellcheck="false" placeholder="${placeholder}" ${disabled ? 'readonly' : ''}>${esc(draft)}</textarea>`;
+  if (exercise.type === 'conjugate') return `<label class="answer-label" for="answer">Verb form</label><input id="answer" class="answer-line" lang="${languageTag}" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="Write the verb form…" value="${esc(draft)}" ${disabled ? 'readonly' : ''}>`;
+  const label = ({ complete: 'Missing word', translate: `Your ${languageEnglish}` })[exercise.type] || 'Your answer';
+  const placeholder = ({ complete: 'Type the missing word…', translate: `Write it in ${languageEnglish}…` })[exercise.type] || 'Write your sentence…';
+  return `<label class="answer-label" for="answer">${label}</label><textarea id="answer" lang="${languageTag}" autocomplete="off" autocapitalize="sentences" spellcheck="false" placeholder="${placeholder}" ${disabled ? 'readonly' : ''}>${esc(draft)}</textarea>`;
 }
 // After a miss: what you gave against the answer, why that answer is wrong (when it was anticipated), the steps that
 // solve this kind of question, and once settled the guide table with the answer's row marked.
@@ -1586,14 +1596,14 @@ function feedbackHTML(current, test) {
   const exercise = current.exercise;
   const tone = feedback.kind === 'incorrect' ? 'warn' : feedback.kind === 'alternative' || feedback.kind === 'shown' ? 'neutral' : '';
   const title = test && current.settled
-    ? ({ correct: 'That’s right.', incorrect: 'Not quite.', alternative: 'Valid French, different form.' })[feedback.kind]
-    : ({ correct: current.assisted || current.attempts > 1 ? 'You’ve got it.' : 'That’s right.', incorrect: 'Not quite yet.', alternative: 'Valid French, different form.', shown: 'One correct answer' })[feedback.kind];
+    ? ({ correct: 'That’s right.', incorrect: 'Not quite.', alternative: `Valid ${languageEnglish}, different form.` })[feedback.kind]
+    : ({ correct: current.assisted || current.attempts > 1 ? 'You’ve got it.' : 'That’s right.', incorrect: 'Not quite yet.', alternative: `Valid ${languageEnglish}, different form.`, shown: 'One correct answer' })[feedback.kind];
   const answer = feedback.answer ? completed(exercise.type, exercise.source, feedback.answer) : '';
   const showAnswer = answer && (feedback.kind === 'shown' || (test && feedback.kind !== 'correct'));
   const given = current.settled && feedback.kind !== 'correct' ? current.misses.at(-1) : '';
   const compare = showAnswer && given
-    ? `<div class="fb-compare"><p><span class="fb-label">${exercise.type === 'choose' ? 'You chose' : 'You wrote'}</span><span class="fb-yours" lang="fr">${frEsc(completed(exercise.type, exercise.source, given))}</span></p><p><span class="fb-label">The answer</span><span lang="fr">${frEsc(answer)}</span></p></div>`
-    : showAnswer ? `<p class="model-answer" lang="fr">${frEsc(answer)}</p>` : '';
+    ? `<div class="fb-compare"><p><span class="fb-label">${exercise.type === 'choose' ? 'You chose' : 'You wrote'}</span><span class="fb-yours" lang="${languageTag}">${frEsc(completed(exercise.type, exercise.source, given))}</span></p><p><span class="fb-label">The answer</span><span lang="${languageTag}">${frEsc(answer)}</span></p></div>`
+    : showAnswer ? `<p class="model-answer" lang="${languageTag}">${frEsc(answer)}</p>` : '';
   const why = feedback.why ? `<p class="fb-why">${frEsc(feedback.why)}</p>` : '';
   // A try-again message only repeats what an anticipated mistake's why already says.
   const message = feedback.why && !current.settled ? '' : `<p>${frEsc(feedback.message)}</p>`;
@@ -1601,8 +1611,8 @@ function feedbackHTML(current, test) {
   const help = current.help && !independent ? current.help : null;
   const steps = help ? `<div class="fb-steps"><p class="fb-label">${current.settled ? 'Next time' : 'How to work it out'}</p><ol>${help.steps.map((step) => `<li>${frEsc(step)}</li>`).join('')}</ol></div>` : '';
   const table = help?.row && help.section.table ? `<div class="fb-table"><p class="fb-label">From the rule · ${esc(help.section.title)}</p>${guideTableHTML(help.section.table, help.row)}</div>` : '';
-  const clip = current.settled && current.audio ? `<button class="quiet audio-line" data-action="grammar-audio" aria-label="Hear the correct French sentence">${speaker}<span>Hear it</span></button>` : '';
-  return `<div class="feedback ${tone}" role="status"><strong>${title}</strong>${feedback.note ? `<p>${esc(feedback.note)}</p>` : ''}${compare}${why}${message}${steps}${table}${feedback.spelling && answer ? `<span class="minor">A spelling detail to review: <span lang="fr">${esc(answer)}</span></span>` : ''}${feedback.kind === 'shown' ? '<span class="minor">This example stays in your revisit set.</span>' : ''}${clip}${!test && !current.settled ? `<button class="quiet" data-action="show-answer" ${locked() ? 'disabled' : ''}>Show one answer instead</button>` : ''}</div>`;
+  const clip = current.settled && current.audio ? `<button class="quiet audio-line" data-action="grammar-audio" aria-label="Hear the correct ${languageEnglish} sentence">${speaker}<span>Hear it</span></button>` : '';
+  return `<div class="feedback ${tone}" role="status"><strong>${title}</strong>${feedback.note ? `<p>${esc(feedback.note)}</p>` : ''}${compare}${why}${message}${steps}${table}${feedback.spelling && answer ? `<span class="minor">A spelling detail to review: <span lang="${languageTag}">${esc(answer)}</span></span>` : ''}${feedback.kind === 'shown' ? '<span class="minor">This example stays in your revisit set.</span>' : ''}${clip}${!test && !current.settled ? `<button class="quiet" data-action="show-answer" ${locked() ? 'disabled' : ''}>Show one answer instead</button>` : ''}</div>`;
 }
 // The question itself: instruction, prompt, answer, feedback, help and the one primary button.
 // The Grammar screens and the Practise stream both render it; only the frame around it differs.
@@ -1636,11 +1646,11 @@ function renderExercise() {
 function resultHTML(result, test, unitTest) {
   const missed = result.outcome !== 'independent';
   const context = result.type === 'translate' || result.type === 'conjugate' || (result.type === 'choose' && !/_{2,}/.test(result.source))
-    ? `<span class="result-context" lang="${result.type === 'translate' ? 'en' : 'fr'}">${esc(result.source)}</span>` : '';
+    ? `<span class="result-context" lang="${result.type === 'translate' ? 'en' : languageTag}">${esc(result.source)}</span>` : '';
   const given = test && (missed || result.spelling) && result.given.trim()
-    ? `<span class="result-given">${result.type === 'choose' ? 'You chose' : 'You wrote'}: <span lang="fr">${esc(completed(result.type, result.source, result.given))}</span>${result.spelling ? ' · a spelling detail to review' : ''}</span>` : '';
+    ? `<span class="result-given">${result.type === 'choose' ? 'You chose' : 'You wrote'}: <span lang="${languageTag}">${esc(completed(result.type, result.source, result.given))}</span>${result.spelling ? ' · a spelling detail to review' : ''}</span>` : '';
   const label = test ? (missed ? 'Missed' : 'Right') : ({ independent: 'On your own', helped: 'With help', revisit: 'To revisit' })[result.outcome];
-  return `<div class="result${test && missed ? ' missed' : ''}"><div class="result-text">${unitTest ? `<span class="result-topic">${esc(result.topicTitle)}</span>` : ''}<span lang="fr">${esc(completed(result.type, result.source, result.answer))}</span>${context}${given}</div><small>${label}</small></div>`;
+  return `<div class="result${test && missed ? ' missed' : ''}"><div class="result-text">${unitTest ? `<span class="result-topic">${esc(result.topicTitle)}</span>` : ''}<span lang="${languageTag}">${esc(completed(result.type, result.source, result.answer))}</span>${context}${given}</div><small>${label}</small></div>`;
 }
 function renderSummary() {
   const { session } = grammar;
@@ -1774,7 +1784,7 @@ function glossFor(fr) {
   return null;
 }
 function linesHTML(lines, glosses, withEnglish) {
-  return `<div class="fr-lines">${lines.map((line) => `<div class="fr-line">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p lang="fr">${glossedHTML(line.fr, glosses)}</p>${withEnglish && line.en ? `<p class="en">${esc(line.en)}</p>` : ''}</div>`).join('')}</div>`;
+  return `<div class="fr-lines">${lines.map((line) => `<div class="fr-line">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p lang="${languageTag}">${glossedHTML(line.fr, glosses)}</p>${withEnglish && line.en ? `<p class="en">${esc(line.en)}</p>` : ''}</div>`).join('')}</div>`;
 }
 function streamAudioHTML(view, settled) {
   if (!view.audio?.length) return '';
@@ -1784,7 +1794,7 @@ function streamAudioHTML(view, settled) {
   const playing = clipRun?.key === key;
   const spot = !playing && clipSpot?.key === key ? clipSpot : null;
   const icon = playing ? pauseIcon : spot ? playIcon : speaker;
-  const label = playing ? 'Pause' : spot && view.audio.length > 1 ? `Continue from line ${spot.index + 1}` : big ? 'Play the French' : 'Play the French again';
+  const label = playing ? 'Pause' : spot && view.audio.length > 1 ? `Continue from line ${spot.index + 1}` : big ? `Play the ${languageEnglish}` : `Play the ${languageEnglish} again`;
   const reading = view.mode === 'read';
   const button = `<button class="${big ? 'listen-play' : reading ? 'primary reading-play' : 'icon'}" data-action="play-clips" aria-label="${esc(label)}">${icon}${reading ? `<span>${playing ? 'Pause' : spot ? 'Continue' : 'Listen'}</span>` : ''}</button>`;
   // In a passage, the line just heard can be heard once more on its own, playing or paused.
@@ -1800,7 +1810,7 @@ function streamPromptHTML(view, settled) {
   if (!settled) {
     const glosses = view.mode === 'read' ? view.gloss || [] : [];
     if (Array.isArray(prompt.lines) && prompt.lines.length) html += linesHTML(prompt.lines, glosses, false);
-    else if (prompt.text) html += `<p class="fr-text" lang="fr">${glossedHTML(prompt.text, glosses)}</p>`;
+    else if (prompt.text) html += `<p class="fr-text" lang="${languageTag}">${glossedHTML(prompt.text, glosses)}</p>`;
     if (view.mode === 'read' && html) html = `<div class="reading-body">${html}</div>`;
   }
   if (prompt.question) html += `<p class="stream-question">${esc(prompt.question)}</p>`;
@@ -1825,7 +1835,7 @@ function streamResultHTML(result) {
 }
 function streamRevealHTML(result) {
   if (!result.lines?.length) return '';
-  return `<section class="reveal" aria-label="The French and its meaning">${linesHTML(result.lines, result.gloss, true)}<p class="caption">Tap any word for its meaning.</p></section>`;
+  return `<section class="reveal" aria-label="The ${languageEnglish} and its meaning">${linesHTML(result.lines, result.gloss, true)}<p class="caption">Tap any word for its meaning.</p></section>`;
 }
 // The Grammar by ear question on screen in Listen, if any.
 function earShown() { return streamId === 'listen' && streamState?.ear ? streamState.ear : null; }
@@ -1838,7 +1848,7 @@ function earBodyHTML(ear) {
   const settled = !!result;
   const answered = settled ? { expected: ear.choices[result.answer], given: ear.choices[result.chosen], outcome: result.right ? 'correct' : 'incorrect', explanation: result.why } : null;
   const again = result?.again ? '<p class="caption">It comes back once, a few questions on.</p>' : '';
-  const reveal = settled ? `<section class="reveal" aria-label="The French and its meaning">${linesHTML([{ fr: result.fr, en: result.en }], [], true)}</section>` : '';
+  const reveal = settled ? `<section class="reveal" aria-label="The ${languageEnglish} and its meaning">${linesHTML([{ fr: result.fr, en: result.en }], [], true)}</section>` : '';
   const action = settled ? `<div class="stream-actions pinned"><button class="primary" data-action="stream-next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Next'}</button></div>` : '';
   return `<p class="stream-item">Grammar by ear${ear.again ? ' · again' : ''}</p><p class="prompt-instruction">Listen, then answer.</p>${streamAudioHTML(shownView(), settled)}<p class="stream-question">${esc(ear.question)}</p><div class="answer-area">${streamAnswerHTML(ear, answered)}</div>${settled ? `${streamResultHTML(answered)}${again}${reveal}` : ''}${action}`;
 }
@@ -1903,7 +1913,7 @@ function renderMistakes() {
   if (!mistakes || loading) { main.innerHTML = `${noticeHTML()}<section class="topics">${header}${loading ? '<div class="loading-state" role="status">Looking at what you missed…</div>' : ''}</section>`; return; }
   if (!mistakes.length) { main.innerHTML = `${noticeHTML()}<section class="topics">${header}<p class="empty-list">No mistakes recorded yet.</p></section>`; return; }
   const rows = mistakes.map((group) => {
-    const examples = (group.examples || []).slice(0, 3).map((example) => `<p lang="fr">${frEsc(example)}</p>`).join('');
+    const examples = (group.examples || []).slice(0, 3).map((example) => `<p lang="${languageTag}">${frEsc(example)}</p>`).join('');
     return `<button class="topic-row" data-group="${esc(group.id)}" ${locked() ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${esc(group.title)}</h3></span>${examples}</span><span class="arrow" aria-hidden="true">→</span></button>`;
   }).join('');
   main.innerHTML = `${noticeHTML()}<section class="topics">${header}<div class="topic-list">${rows}</div></section>`;
@@ -2085,7 +2095,7 @@ function scoresAfterHTML() {
   const chosen = words ? words.filter((word) => statsBinOf(word.score) === statsBin) : null;
   const binLabel = statsBin === -8 ? '−8 or lower' : statsBin === 8 ? '8 or higher' : signed(statsBin);
   const count = chosen ? ` · ${chosen.length} ${chosen.length === 1 ? 'word' : 'words'}` : '';
-  const list = !statsOpen ? '' : !chosen ? '<p class="st-cap" role="status">Loading that day’s words…</p>' : chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr${genderClass(word.gender)}" lang="fr">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : '';
+  const list = !statsOpen ? '' : !chosen ? '<p class="st-cap" role="status">Loading that day’s words…</p>' : chosen.length ? `<ol>${chosen.map((word) => `<li><span class="fr${genderClass(word.gender)}" lang="${languageTag}">${frEsc(word.fr)}</span><span class="en">${esc(word.en)}</span></li>`).join('')}</ol>` : '';
   const binList = statsBin === null ? '' : `<div class="st-bin"><button class="st-bin-head" data-action="stats-list" aria-expanded="${statsOpen}"><span>Score ${binLabel}${count}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
   return `${delta}
       ${binList}`;
@@ -2128,7 +2138,7 @@ const vsDays = () => statistics?.verbs?.scores.days ?? [];
 const vsIndex = () => vScoreAt < 0 ? vsDays().length - 1 : vScoreAt;
 function vsRow(label, sub, cell, action = '') {
   const share = cell.total ? Math.round(cell.right / cell.total * 100) : null;
-  const inner = `<span class="vs-lbl" lang="fr">${esc(label)}<small>${esc(sub)}</small></span><span class="vs-track"><span style="width:${share ?? 0}%"></span></span><span class="vs-pct">${share === null ? '—' : `${share}%`}</span>`;
+  const inner = `<span class="vs-lbl" lang="${languageTag}">${esc(label)}<small>${esc(sub)}</small></span><span class="vs-track"><span style="width:${share ?? 0}%"></span></span><span class="vs-pct">${share === null ? '—' : `${share}%`}</span>`;
   const tone = share === null ? ' none' : share < 50 ? ' low' : '';
   return action ? `<button class="vs-row${tone}" ${action}>${inner}</button>` : `<div class="vs-row${tone}">${inner}</div>`;
 }
@@ -2161,7 +2171,7 @@ function verbScoresAfterHTML() {
   const chosen = Array.isArray(forms) ? forms.filter((form) => statsBinOf(form.score) === vScoreBin) : null;
   const binLabel = vScoreBin === -8 ? '−8 or lower' : vScoreBin === 8 ? '8 or higher' : signed(vScoreBin);
   const count = chosen ? ` · ${chosen.length} ${chosen.length === 1 ? 'form' : 'forms'}` : '';
-  const list = !vScoreOpen ? '' : !chosen ? '<p class="st-cap" role="status">Loading that day’s forms…</p>' : chosen.length ? `<ol>${chosen.map((form) => `<li><span class="fr" lang="fr">${frEsc(form.form)}</span><span class="en">${esc(form.inf)} · ${esc(form.tenseName)}</span></li>`).join('')}</ol>` : '';
+  const list = !vScoreOpen ? '' : !chosen ? '<p class="st-cap" role="status">Loading that day’s forms…</p>' : chosen.length ? `<ol>${chosen.map((form) => `<li><span class="fr" lang="${languageTag}">${frEsc(form.form)}</span><span class="en">${esc(form.inf)} · ${esc(form.tenseName)}</span></li>`).join('')}</ol>` : '';
   return `${delta}<div class="st-bin"><button class="st-bin-head" data-action="stats-vlist" aria-expanded="${vScoreOpen}"><span>Score ${binLabel}${count}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
 }
 async function loadVerbScoreDay(day) {
@@ -2200,7 +2210,7 @@ function verbTensePersonRows(entries) {
     const average = score.average === null ? null : Math.round(score.average * 10) / 10 || 0;
     const share = answered.total ? Math.round(answered.right / answered.total * 100) : null;
     const sub = score.forms ? `${score.forms} ${score.forms === 1 ? 'form' : 'forms'} · average ${average > 0 ? '+' : average < 0 ? '−' : ''}${Math.abs(average).toFixed(1)}${share === null ? '' : ` · ${share}% right lately`}` : 'not practised yet';
-    const inner = `<div class="name"><p lang="fr">${esc(label)}</p><small>${sub}</small></div><div class="st-mini"><span style="width:${share ?? 0}%"></span></div><span class="st-tag ${feel(average)}">${feel(average)}</span>`;
+    const inner = `<div class="name"><p lang="${languageTag}">${esc(label)}</p><small>${sub}</small></div><div class="st-mini"><span style="width:${share ?? 0}%"></span></div><span class="st-tag ${feel(average)}">${feel(average)}</span>`;
     return action ? `<li><button class="st-row-link" ${action}>${inner}</button></li>` : `<li>${inner}</li>`;
   }).join('');
 }
@@ -2217,14 +2227,14 @@ function verbStatsHTML() {
       <input type="range" class="st-slider" id="vs-slider" min="0" max="${vsDays().length - 1}" step="1" value="${vsIndex()}" aria-label="Choose a day">
       <div class="st-ticks" aria-hidden="true">${vsDays().map((day, index, all) => `<span>${index === all.length - 1 ? 'today' : (all.length - 1 - index) % 2 === 0 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>` : ''}
       <div id="vs-scores-after">${verbScoresAfterHTML()}</div></div>
-    <div class="st-block">${stHead('Hardest forms right now', 'The five forms with the lowest score. Tap one to fill in its whole table.')}<ol class="st-rows">${scores.hardest.map((form) => `<li><button class="st-row-link" data-action="vb-cell" data-verb="${esc(form.verbId)}" data-tense="${form.tense}"><div class="name"><p lang="fr" class="fr">${frEsc(form.form)}</p><small>${esc(form.inf)} · ${esc(form.tenseName)}</small></div><span class="st-tag shaky">missed ${form.misses}×</span></button></li>`).join('')}</ol></div>
+    <div class="st-block">${stHead('Hardest forms right now', 'The five forms with the lowest score. Tap one to fill in its whole table.')}<ol class="st-rows">${scores.hardest.map((form) => `<li><button class="st-row-link" data-action="vb-cell" data-verb="${esc(form.verbId)}" data-tense="${form.tense}"><div class="name"><p lang="${languageTag}" class="fr">${frEsc(form.form)}</p><small>${esc(form.inf)} · ${esc(form.tenseName)}</small></div><span class="st-tag shaky">missed ${form.misses}×</span></button></li>`).join('')}</ol></div>
     <div class="st-block">${stHead('By tense and person', 'Shaky, steady or solid is the average score of your forms; the bar and the percentage are the share you got right in the last two weeks. Tap a tense to read about it.')}
       <p class="vs-label">Tenses</p><ol class="st-rows">${tenses}</ol>
       <p class="vs-label">Persons</p><ol class="st-rows">${people}</ol></div>
     ${kinds ? `<div class="st-block">${stHead('By kind of verb', 'The share you got right in the last two weeks, by the groups on each tense page: regular -er verbs, -ir verbs like finir, and so on. Tap one to read about it.')}<div class="vs-rows">${kinds}</div></div>` : ''}`;
 }
 function renderStatistics() {
-  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your French words are doing. Nothing here is a target.</p>`;
+  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your ${languageEnglish} words are doing. Nothing here is a target.</p>`;
   if (!statistics || loading) { main.innerHTML = `${noticeHTML()}<section class="st">${header}${loading ? '<div class="loading-state" role="status">Adding it all up…</div>' : ''}</section>`; return; }
   const { words, counts } = statistics;
   const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
@@ -2232,7 +2242,7 @@ function renderStatistics() {
   const stack = parts.map(([key, , colour]) => `<span style="width:${counts[key] / total * 100}%;background:${colour}"></span>`).join('');
   const legend = parts.map(([key, label, colour]) => `<span><i style="background:${colour}"></i><b>${counts[key]}</b>${label}</span>`).join('');
   const hardest = words.filter((word) => word.score < 0).slice(0, 6);
-  const hard = hardest.length ? `<ol class="st-rows">${hardest.map((word) => `<li><div class="name"><p lang="fr" class="fr${genderClass(word.gender)}">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div><span class="st-tag shaky">missed ${word.misses}×</span></li>`).join('')}</ol>` : '<p class="st-cap">Nothing shaky right now.</p>';
+  const hard = hardest.length ? `<ol class="st-rows">${hardest.map((word) => `<li><div class="name"><p lang="${languageTag}" class="fr${genderClass(word.gender)}">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div><span class="st-tag shaky">missed ${word.misses}×</span></li>`).join('')}</ol>` : '<p class="st-cap">Nothing shaky right now.</p>';
   const feel = (average) => average === null ? '' : average < 0 ? 'shaky' : average < 2 ? 'steady' : 'solid';
   const categories = statistics.categories.map((category) => `<li><div class="name"><p>${esc(categoryTitle(category.id))}</p><small>${category.started} of ${category.total} started</small></div><div class="st-mini"><span style="width:${category.started / category.total * 100}%"></span></div>${category.average === null ? '<span class="st-tag"></span>' : `<span class="st-tag ${feel(category.average)}">${feel(category.average)}</span>`}</li>`).join('');
   const busiest = Math.max(1, ...statistics.days.map((day) => day.knew + day.missed));
@@ -2368,13 +2378,13 @@ function renderSong() {
     const fresh = song.candidates.filter((entry) => !entry.existing && !entry.little);
     const little = song.candidates.filter((entry) => entry.little);
     const known = song.candidates.filter((entry) => entry.existing && !entry.little);
-    const row = (entry) => `<li><button class="song-pick" role="checkbox" aria-checked="${picks.has(entry.fr)}" data-action="song-pick" data-fr="${esc(entry.fr)}"><span class="tick" aria-hidden="true"></span><span class="song-word"><strong lang="fr" class="${genderClass(entry.gender).trim()}">${frEsc(entry.fr)}</strong><span>${esc(entry.en)}</span>${entry.note ? `<small>${esc(entry.note)}</small>` : ''}</span><span class="song-forms" lang="fr">${entry.forms.map(esc).join(', ')}</span></button></li>`;
+    const row = (entry) => `<li><button class="song-pick" role="checkbox" aria-checked="${picks.has(entry.fr)}" data-action="song-pick" data-fr="${esc(entry.fr)}"><span class="tick" aria-hidden="true"></span><span class="song-word"><strong lang="${languageTag}" class="${genderClass(entry.gender).trim()}">${frEsc(entry.fr)}</strong><span>${esc(entry.en)}</span>${entry.note ? `<small>${esc(entry.note)}</small>` : ''}</span><span class="song-forms" lang="${languageTag}">${entry.forms.map(esc).join(', ')}</span></button></li>`;
     body = `<p class="song-hint">Untick any word you don’t want. On the right: how it appears in the song.</p>
       <div class="song-tools"><button class="quiet" data-action="song-pick-all">Tick all</button><button class="quiet" data-action="song-pick-none">Untick all</button></div>
       <ol class="song-picks">${fresh.map(row).join('')}</ol>
       ${known.length ? `<h2 class="song-list-title">Already in your words · ${known.length}</h2><p class="song-hint">They join this song’s deck too, keeping their place in their own category and your progress on them.</p><ol class="song-picks">${known.map(row).join('')}</ol>` : ''}
       ${little.length ? `<h2 class="song-list-title">Little words · ${little.length}</h2><p class="song-hint">Articles, pronouns and the like. Tick any you want as flashcards.</p><ol class="song-picks">${little.map(row).join('')}</ol>` : ''}
-      ${song.skipped.length ? `<details class="song-more"><summary>Left out · ${song.skipped.length}</summary><ol class="song-plain">${song.skipped.map((skip) => `<li><strong lang="fr">${esc(skip.form)}</strong> <span>${esc(skip.reason)}</span></li>`).join('')}</ol></details>` : ''}
+      ${song.skipped.length ? `<details class="song-more"><summary>Left out · ${song.skipped.length}</summary><ol class="song-plain">${song.skipped.map((skip) => `<li><strong lang="${languageTag}">${esc(skip.form)}</strong> <span>${esc(skip.reason)}</span></li>`).join('')}</ol></details>` : ''}
       <div class="song-add"><button class="primary" data-action="song-add" data-song="${esc(song.id)}" ${busy || !picks.size ? 'disabled' : ''}>Add ${picks.size} ${picks.size === 1 ? 'word' : 'words'}</button></div>`;
   } else {
     const audio = songList?.audio;
@@ -2447,7 +2457,7 @@ function renderLyrics() {
     const key = `${s}.${l}`;
     const open = openLines.has(key);
     const start = line.en ? `<button class="lyric-start" data-action="lyric-line" data-line="${key}" aria-expanded="${open}" aria-label="What this line means">›</button>` : '<span class="lyric-start" aria-hidden="true"></span>';
-    return `<div class="lyric-line" data-line="${key}">${start}<div class="lyric-text"><p lang="fr">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div></div>`;
+    return `<div class="lyric-line" data-line="${key}">${start}<div class="lyric-text"><p lang="${languageTag}">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div></div>`;
   }).join('')}</div>`).join('');
   main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics">${header}<h1>${esc(view.title)}</h1><p class="subtitle">${esc(view.artist || 'Pasted lyrics')}</p>${songPageRowHTML(songView?.id === view.id ? songView : null)}${status}<div class="lyric-lines">${lines}</div></section>`;
 }
@@ -2922,9 +2932,9 @@ function sayControlsHTML() {
   const dontKnow = `<button class="secondary" data-action="say-dontknow" ${listens ? '' : 'disabled'}>Don’t know</button>`;
   const fix = say.fix;
   if (!fix) return `<div class="say-controls">${dontKnow}</div>`;
-  if (fix.state === 'done') return `<div class="say-controls two">${dontKnow}<p class="say-done">Counted as right · <span lang="fr">${frEsc(fix.fr)}</span></p></div>`;
+  if (fix.state === 'done') return `<div class="say-controls two">${dontKnow}<p class="say-done">Counted as right · <span lang="${languageTag}">${frEsc(fix.fr)}</span></p></div>`;
   const onIt = say.phase === 'result' && shownCard()?.id === fix.wordId;
-  return `<div class="say-controls two">${dontKnow}<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right${onIt ? '' : `<small><span lang="fr">${frEsc(fix.fr)}</span> · “${sayQuoted(fix.heard)}”</small>`}</button></div>`;
+  return `<div class="say-controls two">${dontKnow}<button class="secondary" data-action="say-fix" ${fix.state === 'sending' ? 'disabled' : ''}>I said it right${onIt ? '' : `<small><span lang="${languageTag}">${frEsc(fix.fr)}</span> · “${sayQuoted(fix.heard)}”</small>`}</button></div>`;
 }
 // Sounds: pairs that differ by one sound (lib/sounds.ts). One side plays; the learner picks which one they heard,
 // then can hear both. A round is ten pairs, the ones missed most first.
@@ -2950,7 +2960,7 @@ function renderSounds() {
   if (loading || !soundList) { main.innerHTML = `${noticeHTML()}<section class="topics">${header}${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
   const record = (entry) => entry.ready === 0 ? 'Being recorded'
     : entry.recent.total ? `${entry.recent.right} of your last ${entry.recent.total} right` : 'Not tried yet';
-  const row = (entry) => `<button class="topic-row" data-action="sound-open" data-sound="${esc(entry.id)}" ${busy || !entry.ready ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${esc(entry.title)}</h3><span class="level-tag">${esc(entry.level)}</span></span><p lang="fr">${entry.labels.map(esc).join(' · ')}</p><small class="topic-progress">${esc(record(entry))}</small></span><span class="arrow" aria-hidden="true">→</span></button>`;
+  const row = (entry) => `<button class="topic-row" data-action="sound-open" data-sound="${esc(entry.id)}" ${busy || !entry.ready ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${esc(entry.title)}</h3><span class="level-tag">${esc(entry.level)}</span></span><p lang="${languageTag}">${entry.labels.map(esc).join(' · ')}</p><small class="topic-progress">${esc(record(entry))}</small></span><span class="arrow" aria-hidden="true">→</span></button>`;
   const ready = soundList.some((entry) => entry.ready);
   const mix = `<button class="topic-row" data-action="sound-open" data-sound="mix" ${busy || !ready ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>All sounds</h3></span><p>A mix, with the pairs you miss most first.</p></span><span class="arrow" aria-hidden="true">→</span></button>`;
   main.innerHTML = `${noticeHTML()}<section class="topics">${header}<p class="subtitle">Two phrases that differ by one sound. Listen, then choose the one you heard.</p><div class="topic-list">${mix}${soundList.map(row).join('')}</div></section>`;
@@ -2985,12 +2995,12 @@ function renderSound() {
     const wrong = settled && !right && choice.side === chose;
     const mark = right ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">what played</span></span>'
       : wrong ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">what you chose</span></span>' : '';
-    const pick = `<button class="choice${wrong ? ' wrong' : right ? ' right' : ''}" data-action="sound-choose" data-side="${choice.side}" ${settled ? 'disabled' : ''}><span><span lang="fr">${frEsc(choice.fr)}</span><small class="sound-en">${esc(choice.en)}</small></span>${mark}</button>`;
+    const pick = `<button class="choice${wrong ? ' wrong' : right ? ' right' : ''}" data-action="sound-choose" data-side="${choice.side}" ${settled ? 'disabled' : ''}><span><span lang="${languageTag}">${frEsc(choice.fr)}</span><small class="sound-en">${esc(choice.en)}</small></span>${mark}</button>`;
     const hear = settled ? `<button class="icon sound-hear" data-action="sound-hear" data-side="${choice.side}" aria-label="Hear ${esc(choice.fr)}">${speaker}</button>` : '';
     return `<div class="sound-choice">${pick}${hear}</div>`;
   }).join('');
   const heard = question.choices.find((choice) => choice.side === question.side);
-  const feedback = settled ? `<div class="feedback ${chose === question.side ? '' : 'warn'}" role="status"><strong>${chose === question.side ? 'That’s right.' : 'Not quite.'}</strong><p>It was <span lang="fr">${frEsc(heard.fr)}</span>. Tap a speaker to hear each one.</p></div>` : '';
+  const feedback = settled ? `<div class="feedback ${chose === question.side ? '' : 'warn'}" role="status"><strong>${chose === question.side ? 'That’s right.' : 'Not quite.'}</strong><p>It was <span lang="${languageTag}">${frEsc(heard.fr)}</span>. Tap a speaker to hear each one.</p></div>` : '';
   const tip = soundContrast(question.contrastId)?.listen;
   main.innerHTML = `${noticeHTML()}<section class="stream sounds">${header}
     <p class="stream-item">${index + 1} of ${questions.length}${soundId === 'mix' ? ` · ${esc(soundContrast(question.contrastId)?.title || '')}` : ''}</p>
@@ -3068,7 +3078,7 @@ const vbVerb = (id) => verbsInfo?.verbs.find((verb) => verb.id === id);
 // hit: the person (or persons) to light.
 function paradigmHTML(rows, hit = -1) {
   const hits = [hit].flat();
-  return `<table class="vb-para">${rows.map((row) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}"><td lang="fr">${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
+  return `<table class="vb-para">${rows.map((row) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}"><td lang="${languageTag}">${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
 }
 const vbAccentsHTML = () => `<div class="vb-accents" aria-label="Accented letters">${VB_ACCENTS.map((letter) => `<button type="button" data-action="vb-accent" data-letter="${letter}">${letter}</button>`).join('')}</div>`;
 
@@ -3107,7 +3117,7 @@ function renderVerbs() {
   const sentences = roomsOff.has('sentencecards') ? '' : tile('vb-sentences', 'sentence', 'In sentences', 'A verb inside a sentence', blocked);
   const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Turn it, say if you knew it', blocked)}${sentences}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', 'All six persons', false)}${tile('vb-look', 'table', 'Look, then write', 'See a table, then fill it in', false)}${tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false)}${tile('vb-rules', 'rules', 'How it’s built', 'Stems, endings, être or avoir', blocked)}</div>`;
   const worstShown = vbWorstAll ? verbsInfo.worst : verbsInfo.worst.slice(0, 3);
-  const worst = verbsInfo.worst.length ? `<p class="study-label vb-sec">Catching you out${verbsInfo.worst.length > 3 ? `<button data-action="vb-worst-all">${vbWorstAll ? 'Fewer' : `All ${verbsInfo.worst.length}`}</button>` : ''}</p><ol class="vb-worst">${worstShown.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="fr">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
+  const worst = verbsInfo.worst.length ? `<p class="study-label vb-sec">Catching you out${verbsInfo.worst.length > 3 ? `<button data-action="vb-worst-all">${vbWorstAll ? 'Fewer' : `All ${verbsInfo.worst.length}`}</button>` : ''}</p><ol class="vb-worst">${worstShown.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="${languageTag}">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
   // Each tense: its use, and a bar of your forms in it from solid to shaky, the rest still to try.
   const tenseRows = Object.entries(VB_TENSES).map(([tense, label]) => {
     const count = { solid: 0, getting: 0, shaky: 0, new: 0 };
@@ -3115,7 +3125,7 @@ function renderVerbs() {
     const total = count.solid + count.getting + count.shaky + count.new;
     const width = (n) => total ? `${(100 * n / total).toFixed(2)}%` : '0';
     const note = count.solid + count.getting + count.shaky ? `${count.solid} solid · ${count.getting} getting there · ${count.shaky} shaky · ${count.new} to try` : 'Not started · how it works, and your verbs in it';
-    return `<button class="vb-tense-row" data-action="vb-tense-page" data-tense="${tense}" ${busy ? 'disabled' : ''}><span class="top"><b lang="fr">${label}</b><span>${esc(VB_USES[tense])}</span><i aria-hidden="true">→</i></span><span class="vb-bar" aria-hidden="true"><i class="solid" style="width:${width(count.solid)}"></i><i class="getting" style="width:${width(count.getting)}"></i><i class="shaky" style="width:${width(count.shaky)}"></i></span><small>${note}</small></button>`;
+    return `<button class="vb-tense-row" data-action="vb-tense-page" data-tense="${tense}" ${busy ? 'disabled' : ''}><span class="top"><b lang="${languageTag}">${label}</b><span>${esc(VB_USES[tense])}</span><i aria-hidden="true">→</i></span><span class="vb-bar" aria-hidden="true"><i class="solid" style="width:${width(count.solid)}"></i><i class="getting" style="width:${width(count.getting)}"></i><i class="shaky" style="width:${width(count.shaky)}"></i></span><small>${note}</small></button>`;
   }).join('');
   const practised = verbsInfo.verbs.filter(vbPractised).length;
   const all = `<div class="topic-list vb-all-row"><button class="topic-row" data-action="vb-all" ${busy ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>All your verbs</h3></span><p>${practised} practised of ${verbsInfo.verbs.length} · look one up, see every form</p></span><span class="arrow" aria-hidden="true">→</span></button></div>`;
@@ -3126,7 +3136,7 @@ function openVerbOptions() {
   if (!verbsInfo) return;
   const setDetail = { mine: `${verbsInfo.mine} started, shakiest first`, common: 'être, avoir, aller, faire…', chosen: verbChosen.length ? `${verbChosen.length} chosen` : 'pick any' };
   const sets = Object.entries(VB_SETS).map(([set, label]) => `<button class="vb-pill" data-action="vb-set" data-set="${set}" aria-pressed="${verbSet === set}">${label}<small${set === 'chosen' ? ' class="vb-chosen-count"' : ''}>${esc(setDetail[set])}</small></button>`).join('');
-  const chooser = verbSet === 'chosen' ? `<div class="vb-chooser">${[...verbsInfo.verbs].sort((a, b) => Number(b.started) - Number(a.started) || a.inf.localeCompare(b.inf, 'fr')).map((verb) => `<button class="vb-chip" data-action="vb-choose" data-verb="${esc(verb.id)}" aria-pressed="${verbChosen.includes(verb.id)}" lang="fr">${frEsc(verb.inf)}</button>`).join('')}</div>` : '';
+  const chooser = verbSet === 'chosen' ? `<div class="vb-chooser">${[...verbsInfo.verbs].sort((a, b) => Number(b.started) - Number(a.started) || a.inf.localeCompare(b.inf, 'fr')).map((verb) => `<button class="vb-chip" data-action="vb-choose" data-verb="${esc(verb.id)}" aria-pressed="${verbChosen.includes(verb.id)}" lang="${languageTag}">${frEsc(verb.inf)}</button>`).join('')}</div>` : '';
   const tenses = Object.entries(VB_TENSES).map(([tense, label]) => `<button class="vb-pill" data-action="vb-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${label}</button>`).join('');
   openDialog('Verbs options', `<p class="settings-label vb-label vb-first">Which verbs</p><div class="vb-pills">${sets}</div>${chooser}<p class="settings-label vb-label">Tenses</p><div class="vb-pills">${tenses}</div><p class="caption vb-options-note">Cards, Type it, In sentences, By ear, How it’s built, the verb tape and Change it use these. Whole table picks its own verb.</p><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'verbs-options');
 }
@@ -3136,7 +3146,7 @@ const vbBack = () => trail[depth - 1] === 'verbs-all' ? back('All your verbs', '
 function renderVerbAll() {
   const header = `<div class="section-top">${back('Verbs', 'verbs')}</div>`;
   if (loading || !verbsInfo) { main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>All your verbs</h1>${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
-  main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>All your verbs</h1><label class="sr-only" for="vb-search">Find a verb</label><input id="vb-search" class="vb-search" type="search" placeholder="Find a verb, French or English…" value="${esc(vbAllQuery)}" autocomplete="off" autocapitalize="off" spellcheck="false"><div id="vb-all-results"></div></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics vb">${header}<h1>All your verbs</h1><label class="sr-only" for="vb-search">Find a verb</label><input id="vb-search" class="vb-search" type="search" placeholder="Find a verb, ${languageEnglish} or English…" value="${esc(vbAllQuery)}" autocomplete="off" autocapitalize="off" spellcheck="false"><div id="vb-all-results"></div></section>`;
   renderVerbAllResults();
 }
 // The list under the search box, redrawn on its own so typing keeps the keyboard up. A search looks through every
@@ -3157,7 +3167,7 @@ function renderVerbAllResults() {
   const toggle = columns.length < 4 || vbAllTenses ? `<button data-action="vb-all-tenses">${vbAllTenses ? 'Only tenses you practise' : 'Show all 4 tenses'}</button>` : '';
   const cells = (verb) => verb.states[columns[0]].every((state) => state === null) ? '<span class="vb-unwritten">table being written</span>'
     : columns.map((tense) => `<button class="vb-cell" data-action="vb-cell" data-verb="${esc(verb.id)}" data-tense="${tense}" aria-label="${esc(verb.inf)}, ${VB_TENSES[tense]}">${verb.states[tense].map((state) => `<i class="${state ?? 'none'}"></i>`).join('')}</button>`).join('');
-  const rows = list.map((verb) => `<li class="vb-vrow"><button class="vb-vname" data-action="vb-verb" data-verb="${esc(verb.id)}"><span lang="fr">${frEsc(verb.inf)}</span><small>${esc(verb.en)}</small></button><span class="vb-vcells">${cells(verb)}</span></li>`).join('');
+  const rows = list.map((verb) => `<li class="vb-vrow"><button class="vb-vname" data-action="vb-verb" data-verb="${esc(verb.id)}"><span lang="${languageTag}">${frEsc(verb.inf)}</span><small>${esc(verb.en)}</small></button><span class="vb-vcells">${cells(verb)}</span></li>`).join('');
   target.innerHTML = `<div class="vb-chips">${chips}</div><div class="vb-list-meta"><span>${list.length} ${list.length === 1 ? 'verb' : 'verbs'}</span>${toggle}</div>${list.length ? `<div class="vb-colhead" aria-hidden="true">${columns.map((tense) => `<span>${VB_TENSES[tense].replace('passé composé', 'passé c.')}</span>`).join('')}</div><ul class="vb-vrows">${rows}</ul><div class="vb-legend"><span><i class="solid"></i>solid</span><span><i class="getting"></i>getting there</span><span><i class="shaky"></i>shaky</span><span><i class="new"></i>not tried</span></div>` : `<p class="empty-list">${query ? 'No verb matches.' : 'None yet.'}</p>`}`;
 }
 function verbAction(action, button) {
@@ -3222,7 +3232,7 @@ function modelsHTML(models) {
   if (!models.length) return '';
   const people = models[0].paradigm.map((row) => row.person).filter((person) => models.every((model) => model.paradigm.some((row) => row.person === person)));
   const cell = (model, person) => { const row = model.paradigm.find((entry) => entry.person === person); return row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join(''); };
-  return `<div class="guide-table-wrap"><table class="guide-table vb-models"><thead><tr>${models.map((model) => `<th scope="col"><button class="vb-name" data-action="vb-verb" data-verb="${esc(model.id)}" lang="fr">${frEsc(model.inf)}</button></th>`).join('')}</tr></thead><tbody>${people.map((person) => `<tr>${models.map((model) => `<td lang="fr">${cell(model, person)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  return `<div class="guide-table-wrap"><table class="guide-table vb-models"><thead><tr>${models.map((model) => `<th scope="col"><button class="vb-name" data-action="vb-verb" data-verb="${esc(model.id)}" lang="${languageTag}">${frEsc(model.inf)}</button></th>`).join('')}</tr></thead><tbody>${people.map((person) => `<tr>${models.map((model) => `<td lang="${languageTag}">${cell(model, person)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 function renderVerbTense() {
   const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Tense</span></div>`;
@@ -3230,12 +3240,12 @@ function renderVerbTense() {
   if (loading || !view) { main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}${loading ? '<div class="loading-state" role="status">Opening the tense…</div>' : ''}</section>`; return; }
   const groups = view.groups.map((group) => {
     const list = group.many
-      ? `<details class="vb-many"><summary>${group.verbs.length} of your verbs</summary><div class="vb-chooser">${group.verbs.map((verb) => `<button class="vb-chip" data-action="vb-verb" data-verb="${esc(verb.id)}" lang="fr">${frEsc(verb.inf)}</button>`).join('')}</div></details>`
-      : `<ul class="vb-group-list">${group.verbs.map((verb) => `<li><button data-action="vb-verb" data-verb="${esc(verb.id)}"><span lang="fr" class="vb-inf">${frEsc(verb.inf)}</span><span lang="fr" class="vb-detail">${frEsc(verb.detail)}</span></button></li>`).join('')}</ul>`;
+      ? `<details class="vb-many"><summary>${group.verbs.length} of your verbs</summary><div class="vb-chooser">${group.verbs.map((verb) => `<button class="vb-chip" data-action="vb-verb" data-verb="${esc(verb.id)}" lang="${languageTag}">${frEsc(verb.inf)}</button>`).join('')}</div></details>`
+      : `<ul class="vb-group-list">${group.verbs.map((verb) => `<li><button data-action="vb-verb" data-verb="${esc(verb.id)}"><span lang="${languageTag}" class="vb-inf">${frEsc(verb.inf)}</span><span lang="${languageTag}" class="vb-detail">${frEsc(verb.detail)}</span></button></li>`).join('')}</ul>`;
     return `<section class="vb-group"><h3>${esc(group.title)} <span class="vb-count">${group.verbs.length}</span></h3><p class="vb-why">${frEsc(group.text)}</p>${list}</section>`;
   }).join('');
   const guides = view.guides.map((topic) => `<details class="vb-guide"><summary><span>${esc(topic.title)}</span><span class="level-tag">${esc(topic.level)}</span></summary>${guideHTML(topic.guide)}</details>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}<h1 lang="fr">${esc(view.name)}</h1><p class="subtitle">${esc(view.use)}</p>
+  main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}<h1 lang="${languageTag}">${esc(view.name)}</h1><p class="subtitle">${esc(view.use)}</p>
     <h2 class="story-heading">The pattern</h2>${modelsHTML(view.models)}<p class="caption">The lit part is what changes from person to person. Tap a verb to see all its tenses.</p>
     <h2 class="story-heading">Your verbs in the ${esc(view.name)}</h2>${groups}
     <h2 class="story-heading">The rules in full</h2><p class="caption">From Grammar. Tap one to open it.</p>${guides}
@@ -3253,8 +3263,8 @@ function renderVerbPage() {
   const header = `<div class="section-top">${vbBack()}<span class="stream-label">Verb</span></div>`;
   const view = verbPageView;
   if (loading || !view) { main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}${loading ? '<div class="loading-state" role="status">Opening the verb…</div>' : ''}</section>`; return; }
-  const tenses = view.tenses.map((entry) => `<section class="vb-tense-block"><div class="vb-tense-head"><h2 lang="fr">${esc(entry.name)}</h2><button class="quiet" data-action="vb-tense-page" data-tense="${entry.tense}">${esc(entry.group)} →</button></div>${paradigmHTML(entry.paradigm)}<p class="vb-why vb-rule">${frEsc(entry.rule)}</p><button class="quiet vb-table-link" data-action="vb-cell" data-verb="${esc(view.id)}" data-tense="${entry.tense}">Fill in this table</button></section>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}<h1 lang="fr">${frEsc(view.inf)}</h1><p class="subtitle">${esc(view.en)}</p>
+  const tenses = view.tenses.map((entry) => `<section class="vb-tense-block"><div class="vb-tense-head"><h2 lang="${languageTag}">${esc(entry.name)}</h2><button class="quiet" data-action="vb-tense-page" data-tense="${entry.tense}">${esc(entry.group)} →</button></div>${paradigmHTML(entry.paradigm)}<p class="vb-why vb-rule">${frEsc(entry.rule)}</p><button class="quiet vb-table-link" data-action="vb-cell" data-verb="${esc(view.id)}" data-tense="${entry.tense}">Fill in this table</button></section>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}<h1 lang="${languageTag}">${frEsc(view.inf)}</h1><p class="subtitle">${esc(view.en)}</p>
     <div class="summary-actions"><button class="primary" data-action="vb-practise-verb" data-verb="${esc(view.id)}">Practise ${esc(view.inf)}</button></div>${tenses}</section>`;
 }
 
@@ -3315,11 +3325,11 @@ function renderVerbCards() {
   const [own, ...also] = card.readings ?? [];
   const face = recognize
     ? revealed
-      ? `<h1 class="main-word" lang="fr">${frEsc(own.inf)}</h1><p class="source-word">${esc(own.tenseName)} · ${esc(own.en)}</p><p class="vb-card-forms" lang="fr">${own.forms.map(frEsc).join(' · ')}</p>${also.map((reading) => `<p class="vb-card-also">Also <span lang="fr">${frEsc(reading.inf)}</span>, ${esc(reading.tenseName)}: <span lang="fr">${reading.forms.map(frEsc).join(' · ')}</span></p>`).join('')}`
-      : `<h1 class="main-word" lang="fr">${frEsc(card.form)}</h1>`
+      ? `<h1 class="main-word" lang="${languageTag}">${frEsc(own.inf)}</h1><p class="source-word">${esc(own.tenseName)} · ${esc(own.en)}</p><p class="vb-card-forms" lang="${languageTag}">${own.forms.map(frEsc).join(' · ')}</p>${also.map((reading) => `<p class="vb-card-also">Also <span lang="${languageTag}">${frEsc(reading.inf)}</span>, ${esc(reading.tenseName)}: <span lang="${languageTag}">${reading.forms.map(frEsc).join(' · ')}</span></p>`).join('')}`
+      : `<h1 class="main-word" lang="${languageTag}">${frEsc(card.form)}</h1>`
     : revealed
-      ? `<h1 class="main-word vb-card-answer" lang="fr">${frEsc(card.answer)}</h1><p class="source-word" lang="fr">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>${card.hook ? `<p class="word-hook">${esc(card.hook)}</p>` : ''}`
-      : `<p class="vb-card-who" lang="fr">${esc(VB_PERSONS[card.person])}</p><h1 class="main-word" lang="fr">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`;
+      ? `<h1 class="main-word vb-card-answer" lang="${languageTag}">${frEsc(card.answer)}</h1><p class="source-word" lang="${languageTag}">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>${card.hook ? `<p class="word-hook">${esc(card.hook)}</p>` : ''}`
+      : `<p class="vb-card-who" lang="${languageTag}">${esc(VB_PERSONS[card.person])}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-card-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-card-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const hint = recognize ? 'Which verb, tense and person is it? Say it to yourself, then tap the card.' : 'Say the form to yourself, then tap the card.';
   const after = revealed ? `${paradigmHTML(card.paradigm, recognize ? own.persons : card.person)}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : `<p class="caption vb-card-hint">${hint}</p>`;
@@ -3374,8 +3384,8 @@ function renderRuleCards() {
   // A rule's answer breaks only between its words, never after the hyphen of an ending.
   const answer = rule ? card.answer.split(' ').map((part) => `<span>${frEsc(part)}</span>`).join(' ') : frEsc(card.answer);
   const face = revealed
-    ? `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : 'fr'}">${answer}</h1><p class="source-word">${rule ? esc(card.ask) : `<span lang="fr">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="fr">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
-    : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="fr">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang}">${frEsc(card.clue)}</p>`;
+    ? `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : 'fr'}">${answer}</h1><p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="${languageTag}">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
+    : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang}">${frEsc(card.clue)}</p>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-rule-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-rule-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const after = revealed ? `${card.paradigm.length ? paradigmHTML(card.paradigm) : ''}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : '<p class="caption vb-card-hint">How is it built? Say it to yourself, then tap the card.</p>';
   shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
@@ -3462,10 +3472,10 @@ function renderVerbSentences() {
   warmClip(card.audio); warmClip(items[index + 1]?.audio);
   const [before, after = ''] = card.fr.split('___');
   const gap = revealed ? `<span class="vb-sentence-form">${frEsc(card.answer)}</span>` : '<span class="vb-sentence-gap"><span class="sr-only">blank</span></span>';
-  const sentence = `<p class="vb-sentence" lang="fr">${frEsc(before)}${gap}${frEsc(after)}</p>`;
+  const sentence = `<p class="vb-sentence" lang="${languageTag}">${frEsc(before)}${gap}${frEsc(after)}</p>`;
   const face = revealed
-    ? `${sentence}<p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)} · <span lang="fr">${frEsc(card.inf)}</span></span>`
-    : `${sentence}<span class="vb-tense" lang="fr">${frEsc(card.inf)}</span>`;
+    ? `${sentence}<p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)} · <span lang="${languageTag}">${frEsc(card.inf)}</span></span>`
+    : `${sentence}<span class="vb-tense" lang="${languageTag}">${frEsc(card.inf)}</span>`;
   const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
   const zones = revealed ? `<button class="card-zone left" data-action="vb-sentence-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-sentence-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const below = revealed
@@ -3515,14 +3525,14 @@ function renderVerbForms() {
     return;
   }
   const item = items[index];
-  const prompt = `<div class="vb-prompt"><div class="vb-who" lang="fr">${esc(VB_PERSONS[item.person])}</div><div class="vb-verb" lang="fr">${frEsc(item.inf)}</div><div class="vb-meta">${esc(item.en)}</div><span class="vb-tense">${esc(item.tenseName)}</span></div>`;
+  const prompt = `<div class="vb-prompt"><div class="vb-who" lang="${languageTag}">${esc(VB_PERSONS[item.person])}</div><div class="vb-verb" lang="${languageTag}">${frEsc(item.inf)}</div><div class="vb-meta">${esc(item.en)}</div><span class="vb-tense">${esc(item.tenseName)}</span></div>`;
   const again = item.again ? '<p class="caption vb-again-note">Once more, from a few forms ago.</p>' : '';
   if (!result) {
-    shell(`${again}${prompt}<form class="vb-answer-row" id="vb-form"><input class="vb-input" id="vb-answer" lang="fr" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The form of ${esc(item.inf)} for ${esc(VB_PERSONS[item.person])}, ${esc(item.tenseName)}" value="${esc(verbDraft)}" ${busy ? 'disabled' : ''}><button class="primary" ${busy ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}`);
+    shell(`${again}${prompt}<form class="vb-answer-row" id="vb-form"><input class="vb-input" id="vb-answer" lang="${languageTag}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="The form of ${esc(item.inf)} for ${esc(VB_PERSONS[item.person])}, ${esc(item.tenseName)}" value="${esc(verbDraft)}" ${busy ? 'disabled' : ''}><button class="primary" ${busy ? 'disabled' : ''}>${busy ? 'Checking…' : 'Check'}</button></form>${vbAccentsHTML()}`);
     return;
   }
   const comesBack = !result.right && !item.again ? ' · this one comes back soon' : '';
-  shell(`${again}${prompt}<div class="feedback ${result.right ? '' : 'warn'}" role="status"><strong>${result.right ? 'That’s right.' : 'Not quite.'}</strong><p><span lang="fr">${frEsc(result.expected)}</span>${result.right ? '' : ` — you wrote <span lang="fr">${esc(verbForms.given)}</span>.`}</p>${result.why ? `<p class="vb-why">${esc(result.why)}</p>` : ''}${!result.right && result.hook ? `<p class="word-hook">${esc(result.hook)}</p>` : ''}${paradigmHTML(result.paradigm, item.person)}<p class="vb-why vb-rule">${esc(result.rule)}</p></div>
+  shell(`${again}${prompt}<div class="feedback ${result.right ? '' : 'warn'}" role="status"><strong>${result.right ? 'That’s right.' : 'Not quite.'}</strong><p><span lang="${languageTag}">${frEsc(result.expected)}</span>${result.right ? '' : ` — you wrote <span lang="${languageTag}">${esc(verbForms.given)}</span>.`}</p>${result.why ? `<p class="vb-why">${esc(result.why)}</p>` : ''}${!result.right && result.hook ? `<p class="word-hook">${esc(result.hook)}</p>` : ''}${paradigmHTML(result.paradigm, item.person)}<p class="vb-why vb-rule">${esc(result.rule)}</p></div>
     <div class="stream-actions pinned"><button class="primary" data-action="vb-next">Next${comesBack}</button></div>`);
   main.querySelector('[data-action="vb-next"]')?.focus({ preventScroll: true });
 }
@@ -3596,13 +3606,13 @@ function renderVerbTable() {
     if (state === null) return '';
     const cell = result?.cells[person];
     const mark = cell ? `<span class="vb-mark ${cell.right ? 'ok' : 'bad'}" aria-label="${cell.right ? 'right' : 'wrong'}">${cell.right ? '✓' : '✕'}</span>` : '<span class="vb-mark"></span>';
-    const fix = cell && !cell.right ? `<span class="vb-fix"><span lang="fr">${frEsc(cell.expected)}</span>${cell.why ? ` · ${esc(cell.why)}` : ''}</span>` : cell?.why ? `<span class="vb-fix vb-fix-ok">${esc(cell.why)}</span>` : '';
-    return `<div class="vb-trow"><label class="vb-pro" for="vb-cell-${person}" lang="fr">${esc(VB_PERSONS[person])}</label><input class="vb-input${cell ? (cell.right ? ' ok' : ' bad') : ''}" id="vb-cell-${person}" data-vb-cell="${person}" lang="fr" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" value="${esc(verbTable.answers[person])}">${mark}${fix}</div>`;
+    const fix = cell && !cell.right ? `<span class="vb-fix"><span lang="${languageTag}">${frEsc(cell.expected)}</span>${cell.why ? ` · ${esc(cell.why)}` : ''}</span>` : cell?.why ? `<span class="vb-fix vb-fix-ok">${esc(cell.why)}</span>` : '';
+    return `<div class="vb-trow"><label class="vb-pro" for="vb-cell-${person}" lang="${languageTag}">${esc(VB_PERSONS[person])}</label><input class="vb-input${cell ? (cell.right ? ' ok' : ' bad') : ''}" id="vb-cell-${person}" data-vb-cell="${person}" lang="${languageTag}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" value="${esc(verbTable.answers[person])}">${mark}${fix}</div>`;
   }).join('');
   const hooks = result ? result.cells.filter((cell) => cell && !cell.right && cell.hook).map((cell) => `<p class="word-hook">${esc(cell.hook)}</p>`).join('') : '';
   const summary = result ? `<div class="feedback ${result.right === result.total ? '' : 'warn'}" role="status"><strong>${result.right} of ${result.total}.</strong>${hooks}<p class="vb-why">${esc(result.rule)}</p>${paradigmHTML(result.paradigm)}</div>` : '';
   const prompt = vbTableVisit === 'choose' ? `<div class="vb-grid-head"><label class="sr-only" for="vb-table-verb">Verb</label><select id="vb-table-verb">${options}</select><label class="sr-only" for="vb-table-tense">Tense</label><select id="vb-table-tense">${tenses}</select></div>
-    <p class="caption">${esc(verb.en)}</p>` : `<div class="vb-prompt vb-table-prompt"><div class="vb-verb" lang="fr">${frEsc(verb.inf)}</div><div class="vb-meta">${esc(verb.en)}</div><span class="vb-tense">${esc(VB_TENSES[verbTable.tense])}</span></div>`;
+    <p class="caption">${esc(verb.en)}</p>` : `<div class="vb-prompt vb-table-prompt"><div class="vb-verb" lang="${languageTag}">${frEsc(verb.inf)}</div><div class="vb-meta">${esc(verb.en)}</div><span class="vb-tense">${esc(VB_TENSES[verbTable.tense])}</span></div>`;
   if (look && verbTable.look) {
     main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}${prompt}<div class="vb-look">${paradigmHTML(verbTable.look.paradigm)}<p class="vb-why vb-rule">${frEsc(verbTable.look.rule)}</p></div><div class="summary-actions"><button class="primary" data-action="vb-look-write">Next · write it</button></div></section>`;
     return;
@@ -3652,7 +3662,7 @@ function renderVerbEar() {
     const mark = right ? '<span class="choice-mark"><span aria-hidden="true">✓</span><span class="sr-only">the answer</span></span>' : wrong ? '<span class="choice-mark"><span aria-hidden="true">✕</span><span class="sr-only">what you chose</span></span>' : '';
     return `<button class="choice${wrong ? ' wrong' : right ? ' right' : ''}" data-action="vb-ear-choose" data-choice="${at}" ${chose !== null ? 'disabled' : ''}><span>${esc(choice)}</span>${mark}</button>`;
   }).join('');
-  const feedback = result ? `<div class="feedback ${result.right ? '' : 'warn'}" role="status"><strong>${result.right ? 'That’s right.' : 'Not quite.'}</strong><p><span lang="fr">${frEsc(result.said)}</span></p><p class="vb-why">${esc(result.why)}</p></div>` : '';
+  const feedback = result ? `<div class="feedback ${result.right ? '' : 'warn'}" role="status"><strong>${result.right ? 'That’s right.' : 'Not quite.'}</strong><p><span lang="${languageTag}">${frEsc(result.said)}</span></p><p class="vb-why">${esc(result.why)}</p></div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}
     <p class="stream-item">${index + 1} of ${questions.length}</p>
     <div class="listen-block big"><button class="listen-play" data-action="vb-ear-play" aria-label="Play it again">${speaker}</button></div>
@@ -3717,12 +3727,12 @@ function storyLineHTML(line, index, glosses) {
   const current = storyTapeActive() && index === storyAt;
   const english = open || (current && storyEnglish && !storyAudio.paused);
   const translation = `<button class="line-meaning" data-action="story-line" data-index="${index}" aria-expanded="${open}" aria-label="${open ? 'Hide' : 'Show'} translation for line ${index + 1}">›</button>`;
-  return `<div class="story-line${current ? ' playing' : ''}" data-line="${index}">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p class="reading-french" lang="fr">${glossedHTML(line.fr, glosses)} ${translation}</p>${english ? `<p class="reading-translation" lang="en">${esc(line.en)}</p>` : ''}</div>`;
+  return `<div class="story-line${current ? ' playing' : ''}" data-line="${index}">${line.speaker ? `<span class="speaker">${esc(line.speaker)}</span>` : ''}<p class="reading-french" lang="${languageTag}">${glossedHTML(line.fr, glosses)} ${translation}</p>${english ? `<p class="reading-translation" lang="en">${esc(line.en)}</p>` : ''}</div>`;
 }
 // The episode as one MP3, French only or each line then its English, so lines follow each other without a wait
 // and it plays on with the phone locked. Until its recordings are converted, the lines play one by one.
 const storyAudio = new Audio();
-const STORY_MODES = { fr: 'French', both: 'French, then English' };
+const STORY_MODES = { fr: languageEnglish, both: `${languageEnglish}, then English` };
 let storyMode = (() => { const saved = readPreference('echo.story-mode', 'fr'); return saved in STORY_MODES ? saved : 'fr'; })();
 let storyAt = -1;          // the tape's line playing or where it paused; -1 before it starts or once it ends
 let storyEnglish = false;  // whether that line's English is being said
@@ -3778,8 +3788,8 @@ function renderStory() {
   const end = read
     ? `<div class="song-progress story-done"><p><strong>${read.right} of ${read.total}</strong> right${read.taps.length ? `, ${read.taps.length} ${read.taps.length === 1 ? 'word' : 'words'} looked up` : ', no words looked up'}.</p><p class="caption">${esc(nextCopy)}</p>${later ? `<div class="summary-actions"><button class="primary" data-action="story-open" data-n="${later.number}">Episode ${later.number} →</button></div>` : storyView.last ? `<p class="caption" role="status">${storyStatus.error ? `The next episode could not be written: ${esc(storyStatus.error)}` : `Episode ${episode.number + 1} is being written. It takes a few minutes.`}</p>` : ''}</div>`
     : `<div class="summary-actions"><button class="primary" data-action="story-finish" ${!answered || busy ? 'disabled' : ''}>${busy ? 'Saving…' : answered ? 'Finish the episode' : 'Answer the questions to finish'}</button></div>`;
-  const earlier = storyStatus.episodes.filter((entry) => entry.number !== episode.number).reverse().map((entry) => `<button class="topic-row" data-action="story-open" data-n="${entry.number}"><span class="copy"><span class="topic-name"><h3 lang="fr">${esc(entry.title)}</h3></span><p>Episode ${entry.number} · ${esc(entry.titleEn)}${entry.finished ? '' : ' · not finished'}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
-  shell(`<article class="reading-article" aria-labelledby="story-title"><header class="reading-heading"><p class="reading-kicker">Episode ${episode.number}</p><h1 id="story-title" lang="fr">${frEsc(episode.title)}</h1><p class="reading-subtitle">${esc(episode.titleEn)}</p>${recap}</header>${play}
+  const earlier = storyStatus.episodes.filter((entry) => entry.number !== episode.number).reverse().map((entry) => `<button class="topic-row" data-action="story-open" data-n="${entry.number}"><span class="copy"><span class="topic-name"><h3 lang="${languageTag}">${esc(entry.title)}</h3></span><p>Episode ${entry.number} · ${esc(entry.titleEn)}${entry.finished ? '' : ' · not finished'}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
+  shell(`<article class="reading-article" aria-labelledby="story-title"><header class="reading-heading"><p class="reading-kicker">Episode ${episode.number}</p><h1 id="story-title" lang="${languageTag}">${frEsc(episode.title)}</h1><p class="reading-subtitle">${esc(episode.titleEn)}</p>${recap}</header>${play}
     <div class="reading-body">${lines}</div><aside class="reading-note">${note}</aside></article>
     <section class="reading-questions" aria-labelledby="story-questions"><h2 id="story-questions" class="story-heading">Questions</h2>${storyQuestionsHTML(episode, !!read)}${end}</section>
     ${earlier ? `<h2 class="story-heading">Other episodes</h2><div class="topic-list">${earlier}</div>` : ''}`);
@@ -4154,7 +4164,7 @@ function renderGlossSheet() {
     ? (addStatus ? `<p class="gloss-status" role="status">${esc(addStatus)}</p>` : `<button class="secondary gloss-add" data-action="add-word" ${busy ? 'disabled' : ''}>Add to my words</button>`)
     : '';
   const gender = genders[entry.word] ?? entry.gender;
-  const extra = `${gender ? `<p class="gloss-gender${genderClass(gender)}">${gender} noun</p>` : ''}${entry.base ? `<p class="gloss-base">from <span lang="fr">${frEsc(entry.base)}</span></p>` : ''}${entry.note ? `<p class="gloss-note">${esc(entry.note)}</p>` : ''}`;
+  const extra = `${gender ? `<p class="gloss-gender${genderClass(gender)}">${gender} noun</p>` : ''}${entry.base ? `<p class="gloss-base">from <span lang="${languageTag}">${frEsc(entry.base)}</span></p>` : ''}${entry.note ? `<p class="gloss-note">${esc(entry.note)}</p>` : ''}`;
   openDialog(entry.fr, `<p class="gloss-en">${esc(entry.en)}</p>${extra}${add}<button class="primary dialog-action" data-action="close-dialog">Close</button>`, 'gloss');
 }
 async function addWord() {
@@ -4754,7 +4764,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, or practise English → ${languageEnglish}</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, or practise English → ${languageEnglish}</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
 }
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
