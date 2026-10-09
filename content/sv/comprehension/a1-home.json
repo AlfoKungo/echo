@@ -1,0 +1,4127 @@
+{
+  "sentences": [
+    {
+      "id": "a1-home-s01",
+      "level": "A1",
+      "sv": "På morgonen vaknar jag klockan sju.",
+      "en": "In the morning, I wake up at seven.",
+      "distractors": [
+        "In the morning, I wake up at nine.",
+        "In the evening, I wake up at seven.",
+        "In the morning, I get up at seven."
+      ],
+      "topics": [
+        "word-order-v2",
+        "present-tense"
+      ],
+      "words": [
+        "health-time-033",
+        "verbs-058",
+        "shopping-026",
+        "health-time-053"
+      ],
+      "gloss": [
+        {
+          "sv": "På morgonen",
+          "en": "in the morning",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "vaknar",
+          "en": "wake up (vakna)",
+          "word": "verbs-058"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s02",
+      "level": "A1",
+      "sv": "Min väckarklocka ringer kvart över sex.",
+      "en": "My alarm clock goes off at a quarter past six.",
+      "distractors": [
+        "My alarm clock goes off at a quarter past seven.",
+        "My alarm clock goes off at half past six.",
+        "My phone rings at a quarter past six."
+      ],
+      "topics": [
+        "possessives",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-052",
+        "verbs-082",
+        "health-time-052"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "väckarklocka",
+          "en": "alarm clock (en väckarklocka)"
+        },
+        {
+          "sv": "ringer",
+          "en": "goes off; rings (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "kvart över",
+          "en": "a quarter past"
+        },
+        {
+          "sv": "sex",
+          "en": "six",
+          "word": "health-time-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s03",
+      "level": "A1",
+      "sv": "Går du upp tidigt på lördagar?",
+      "en": "Do you get up early on Saturdays?",
+      "distractors": [
+        "Do you get up early on Sundays?",
+        "Do you go to bed early on Saturdays?",
+        "Do you get up late on Saturdays?"
+      ],
+      "topics": [
+        "questions",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-059",
+        "qualities-106",
+        "health-time-045"
+      ],
+      "gloss": [
+        {
+          "sv": "Går",
+          "en": "get (gå upp)",
+          "word": "verbs-059"
+        },
+        {
+          "sv": "upp",
+          "en": "up"
+        },
+        {
+          "sv": "tidigt",
+          "en": "early",
+          "word": "qualities-106"
+        },
+        {
+          "sv": "på lördagar",
+          "en": "on Saturdays",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s04",
+      "level": "A1",
+      "sv": "Vi äter frukost i köket.",
+      "en": "We have breakfast in the kitchen.",
+      "distractors": [
+        "We have lunch in the kitchen.",
+        "We have breakfast in the living room.",
+        "They have breakfast in the kitchen."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-054",
+        "food-045",
+        "essentials-062",
+        "home-008"
+      ],
+      "gloss": [
+        {
+          "sv": "äter",
+          "en": "eat; have (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "frukost",
+          "en": "breakfast",
+          "word": "food-045"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "köket",
+          "en": "the kitchen (kök)",
+          "word": "home-008"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s05",
+      "level": "A1",
+      "sv": "Hon dricker kaffe före duschen.",
+      "en": "She drinks coffee before her shower.",
+      "distractors": [
+        "She drinks coffee after her shower.",
+        "She drinks tea before her shower.",
+        "He drinks coffee before his shower."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-055",
+        "food-004",
+        "essentials-079",
+        "home-039"
+      ],
+      "gloss": [
+        {
+          "sv": "dricker",
+          "en": "drinks (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "före",
+          "en": "before",
+          "word": "essentials-079"
+        },
+        {
+          "sv": "duschen",
+          "en": "the shower (dusch)",
+          "word": "home-039"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s06",
+      "level": "A1",
+      "sv": "Jag tar inte socker i kaffet.",
+      "en": "I don’t take sugar in my coffee.",
+      "distractors": [
+        "I don’t take milk in my coffee.",
+        "I take sugar in my coffee.",
+        "I don’t take sugar in my tea."
+      ],
+      "topics": [
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-025",
+        "food-007",
+        "essentials-062",
+        "food-004"
+      ],
+      "gloss": [
+        {
+          "sv": "tar",
+          "en": "take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "socker",
+          "en": "sugar",
+          "word": "food-007"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "kaffet",
+          "en": "the coffee (kaffe)",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s07",
+      "level": "A1",
+      "sv": "Pappa gör kaffe till hela familjen.",
+      "en": "Dad makes coffee for the whole family.",
+      "distractors": [
+        "Mum makes coffee for the whole family.",
+        "Dad makes tea for the whole family.",
+        "Dad makes coffee for the children."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "people-013",
+        "verbs-003",
+        "food-004",
+        "essentials-064",
+        "people-023"
+      ],
+      "gloss": [
+        {
+          "sv": "Pappa",
+          "en": "Dad",
+          "word": "people-013"
+        },
+        {
+          "sv": "gör",
+          "en": "makes (göra)",
+          "word": "verbs-003"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "till",
+          "en": "for",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "hela",
+          "en": "the whole"
+        },
+        {
+          "sv": "familjen",
+          "en": "the family (familj)",
+          "word": "people-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s08",
+      "level": "A1",
+      "sv": "Barnen går nerför trappan i pyjamas.",
+      "en": "The children go down the stairs in their pyjamas.",
+      "distractors": [
+        "The children go up the stairs in their pyjamas.",
+        "The children run down the stairs in their pyjamas.",
+        "The girls go down the stairs in their pyjamas."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "people-005",
+        "verbs-004",
+        "home-012",
+        "essentials-062"
+      ],
+      "gloss": [
+        {
+          "sv": "Barnen",
+          "en": "the children (barn)",
+          "word": "people-005"
+        },
+        {
+          "sv": "går",
+          "en": "go (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "nerför",
+          "en": "down"
+        },
+        {
+          "sv": "trappan",
+          "en": "the stairs (trappa)",
+          "word": "home-012"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "pyjamas",
+          "en": "pyjamas"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s09",
+      "level": "A1",
+      "sv": "Det finns färskt bröd på bordet.",
+      "en": "There is fresh bread on the table.",
+      "distractors": [
+        "There is old bread on the table.",
+        "There is fresh bread in the kitchen.",
+        "There is fresh cheese on the table."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-099",
+        "qualities-027",
+        "food-003",
+        "essentials-063",
+        "home-025"
+      ],
+      "gloss": [
+        {
+          "sv": "Det finns",
+          "en": "there is (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "färskt",
+          "en": "fresh (färsk)",
+          "word": "qualities-027"
+        },
+        {
+          "sv": "bröd",
+          "en": "bread",
+          "word": "food-003"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table (bord)",
+          "word": "home-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s10",
+      "level": "A1",
+      "sv": "Hur dags lägger du dig?",
+      "en": "What time do you go to bed?",
+      "distractors": [
+        "What time do you get up?",
+        "What time does she go to bed?",
+        "Where do you go to bed?"
+      ],
+      "topics": [
+        "questions",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-061"
+      ],
+      "gloss": [
+        {
+          "sv": "Hur dags",
+          "en": "what time"
+        },
+        {
+          "sv": "lägger",
+          "en": "go to bed (lägga sig)",
+          "word": "verbs-061"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s11",
+      "level": "A1",
+      "sv": "Mamma lagar middag klockan åtta.",
+      "en": "Mum makes dinner at eight.",
+      "distractors": [
+        "Dad makes dinner at eight.",
+        "Mum makes dinner at six.",
+        "Mum makes lunch at eight."
+      ],
+      "topics": [
+        "present-tense"
+      ],
+      "words": [
+        "people-012",
+        "verbs-056",
+        "food-047",
+        "shopping-026",
+        "health-time-054"
+      ],
+      "gloss": [
+        {
+          "sv": "Mamma",
+          "en": "Mum",
+          "word": "people-012"
+        },
+        {
+          "sv": "lagar",
+          "en": "makes; cooks (laga)",
+          "word": "verbs-056"
+        },
+        {
+          "sv": "middag",
+          "en": "dinner",
+          "word": "food-047"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s12",
+      "level": "A1",
+      "sv": "Vi äter ofta pasta på onsdagar.",
+      "en": "We often eat pasta on Wednesdays.",
+      "distractors": [
+        "We often eat rice on Wednesdays.",
+        "We often eat pasta on Thursdays.",
+        "We never eat pasta on Wednesdays."
+      ],
+      "topics": [
+        "present-tense",
+        "word-order-v2"
+      ],
+      "words": [
+        "verbs-054",
+        "essentials-102",
+        "food-014",
+        "health-time-042"
+      ],
+      "gloss": [
+        {
+          "sv": "äter",
+          "en": "eat (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "ofta",
+          "en": "often",
+          "word": "essentials-102"
+        },
+        {
+          "sv": "pasta",
+          "en": "pasta",
+          "word": "food-014"
+        },
+        {
+          "sv": "på onsdagar",
+          "en": "on Wednesdays",
+          "word": "health-time-042"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s13",
+      "level": "A1",
+      "sv": "Finns det mjölk i kylskåpet?",
+      "en": "Is there any milk in the fridge?",
+      "distractors": [
+        "Is there any butter in the fridge?",
+        "Is there any milk on the table?",
+        "Is there any juice in the fridge?"
+      ],
+      "topics": [
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-099",
+        "food-006",
+        "essentials-062",
+        "home-042"
+      ],
+      "gloss": [
+        {
+          "sv": "Finns det",
+          "en": "is there (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "mjölk",
+          "en": "milk",
+          "word": "food-006"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "kylskåpet",
+          "en": "the fridge (kylskåp)",
+          "word": "home-042"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s14",
+      "level": "A1",
+      "sv": "Jag dukar bordet för fyra personer.",
+      "en": "I set the table for four people.",
+      "distractors": [
+        "I set the table for five people.",
+        "We set the table for four people.",
+        "I clear the table for four people."
+      ],
+      "topics": [
+        "present-tense",
+        "plural"
+      ],
+      "words": [
+        "home-025",
+        "essentials-068",
+        "health-time-050",
+        "people-002"
+      ],
+      "gloss": [
+        {
+          "sv": "dukar",
+          "en": "set (duka)"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table (bord)",
+          "word": "home-025"
+        },
+        {
+          "sv": "för",
+          "en": "for",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        },
+        {
+          "sv": "personer",
+          "en": "people (person)",
+          "word": "people-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s15",
+      "level": "A1",
+      "sv": "Kycklingen behöver tjugo minuter i ugnen.",
+      "en": "The chicken needs twenty minutes in the oven.",
+      "distractors": [
+        "The chicken needs ten minutes in the oven.",
+        "The potatoes need twenty minutes in the oven.",
+        "The chicken needs twenty minutes in the fridge."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "food-016",
+        "verbs-024",
+        "health-time-057",
+        "health-time-028",
+        "essentials-062",
+        "home-043"
+      ],
+      "gloss": [
+        {
+          "sv": "Kycklingen",
+          "en": "the chicken (kyckling)",
+          "word": "food-016"
+        },
+        {
+          "sv": "behöver",
+          "en": "needs (behöva)",
+          "word": "verbs-024"
+        },
+        {
+          "sv": "tjugo",
+          "en": "twenty",
+          "word": "health-time-057"
+        },
+        {
+          "sv": "minuter",
+          "en": "minutes (minut)",
+          "word": "health-time-028"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "ugnen",
+          "en": "the oven (ugn)",
+          "word": "home-043"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s16",
+      "level": "A1",
+      "sv": "Vi tittar inte på tv när vi äter.",
+      "en": "We don’t watch TV when we eat.",
+      "distractors": [
+        "We watch TV when we eat.",
+        "We don’t watch TV when we cook.",
+        "We don’t listen to music when we eat."
+      ],
+      "topics": [
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-011",
+        "essentials-063",
+        "media-040",
+        "essentials-038",
+        "verbs-054"
+      ],
+      "gloss": [
+        {
+          "sv": "tittar",
+          "en": "watch (titta på)",
+          "word": "verbs-011"
+        },
+        {
+          "sv": "på",
+          "en": "at (titta på = watch)",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "tv",
+          "en": "TV",
+          "word": "media-040"
+        },
+        {
+          "sv": "när",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "äter",
+          "en": "eat (äta)",
+          "word": "verbs-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s17",
+      "level": "A1",
+      "sv": "Vem diskar ikväll?",
+      "en": "Who is doing the dishes tonight?",
+      "distractors": [
+        "Who is cooking tonight?",
+        "Who is doing the dishes tomorrow?",
+        "Who is doing the dishes this morning?"
+      ],
+      "topics": [
+        "questions",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-033",
+        "home-053",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "sv": "Vem",
+          "en": "who",
+          "word": "essentials-033"
+        },
+        {
+          "sv": "diskar",
+          "en": "does the dishes (diska)",
+          "word": "home-053"
+        },
+        {
+          "sv": "ikväll",
+          "en": "tonight; this evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s18",
+      "level": "A1",
+      "sv": "Min bror vill aldrig äta grönsaker.",
+      "en": "My brother never wants to eat vegetables.",
+      "distractors": [
+        "My sister never wants to eat vegetables.",
+        "My brother never wants to eat fruit.",
+        "My brother always wants to eat vegetables."
+      ],
+      "topics": [
+        "negation-placement",
+        "modal-verbs",
+        "possessives"
+      ],
+      "words": [
+        "essentials-052",
+        "people-015",
+        "verbs-020",
+        "essentials-101",
+        "verbs-054",
+        "food-034"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "bror",
+          "en": "brother",
+          "word": "people-015"
+        },
+        {
+          "sv": "vill",
+          "en": "wants (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "aldrig",
+          "en": "never",
+          "word": "essentials-101"
+        },
+        {
+          "sv": "äta",
+          "en": "eat",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "grönsaker",
+          "en": "vegetables (grönsak)",
+          "word": "food-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s19",
+      "level": "A1",
+      "sv": "Jag dammsuger i vardagsrummet.",
+      "en": "I vacuum the living room.",
+      "distractors": [
+        "I vacuum the bedroom.",
+        "We vacuum the living room.",
+        "I tidy the living room."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-062",
+        "home-006"
+      ],
+      "gloss": [
+        {
+          "sv": "dammsuger",
+          "en": "vacuum (dammsuga)"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "vardagsrummet",
+          "en": "the living room (vardagsrum)",
+          "word": "home-006"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s20",
+      "level": "A1",
+      "sv": "Städar du ditt rum före lunch?",
+      "en": "Do you tidy your room before lunch?",
+      "distractors": [
+        "Do you tidy your room after lunch?",
+        "Do you tidy your room before dinner?",
+        "Does he tidy his room before lunch?"
+      ],
+      "topics": [
+        "questions",
+        "possessives"
+      ],
+      "words": [
+        "verbs-093",
+        "essentials-053",
+        "home-005",
+        "essentials-079",
+        "food-046"
+      ],
+      "gloss": [
+        {
+          "sv": "Städar",
+          "en": "tidy (städa)",
+          "word": "verbs-093"
+        },
+        {
+          "sv": "ditt",
+          "en": "your (din)",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "rum",
+          "en": "room",
+          "word": "home-005"
+        },
+        {
+          "sv": "före",
+          "en": "before",
+          "word": "essentials-079"
+        },
+        {
+          "sv": "lunch",
+          "en": "lunch",
+          "word": "food-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s21",
+      "level": "A1",
+      "sv": "Hon tvättar lakanen varje söndag.",
+      "en": "She washes the sheets every Sunday.",
+      "distractors": [
+        "She washes the sheets every Saturday.",
+        "She washes the towels every Sunday.",
+        "He washes the sheets every Sunday."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-094",
+        "essentials-049",
+        "health-time-046"
+      ],
+      "gloss": [
+        {
+          "sv": "tvättar",
+          "en": "washes (tvätta)",
+          "word": "verbs-094"
+        },
+        {
+          "sv": "lakanen",
+          "en": "the sheets (ett lakan)"
+        },
+        {
+          "sv": "varje",
+          "en": "every",
+          "word": "essentials-049"
+        },
+        {
+          "sv": "söndag",
+          "en": "Sunday",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s22",
+      "level": "A1",
+      "sv": "Tvättmaskinen fungerar inte längre.",
+      "en": "The washing machine doesn’t work any more.",
+      "distractors": [
+        "The dishwasher doesn’t work any more.",
+        "The washing machine still works.",
+        "The fridge doesn’t work any more."
+      ],
+      "topics": [
+        "negation-placement",
+        "definite-form"
+      ],
+      "words": [
+        "home-041"
+      ],
+      "gloss": [
+        {
+          "sv": "Tvättmaskinen",
+          "en": "the washing machine (tvättmaskin)",
+          "word": "home-041"
+        },
+        {
+          "sv": "fungerar",
+          "en": "works (fungera)"
+        },
+        {
+          "sv": "längre",
+          "en": "any more (inte längre)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s23",
+      "level": "A1",
+      "sv": "Det är mycket damm under sängen.",
+      "en": "There is a lot of dust under the bed.",
+      "distractors": [
+        "There is a lot of dust under the sofa.",
+        "There is a little dust under the bed.",
+        "There are a lot of toys under the bed."
+      ],
+      "topics": [
+        "definite-form"
+      ],
+      "words": [
+        "verbs-001",
+        "essentials-090",
+        "essentials-071",
+        "home-029"
+      ],
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "mycket",
+          "en": "a lot of",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "damm",
+          "en": "dust"
+        },
+        {
+          "sv": "under",
+          "en": "under",
+          "word": "essentials-071"
+        },
+        {
+          "sv": "sängen",
+          "en": "the bed (säng)",
+          "word": "home-029"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s24",
+      "level": "A1",
+      "sv": "Vi går ut med soporna på kvällen.",
+      "en": "We take the rubbish out in the evening.",
+      "distractors": [
+        "We take the rubbish out in the morning.",
+        "They take the rubbish out in the evening.",
+        "We take the dog out in the evening."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-035",
+        "home-048",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "sv": "går ut med",
+          "en": "take out (gå ut med)",
+          "word": "verbs-035"
+        },
+        {
+          "sv": "soporna",
+          "en": "the rubbish (sopor)",
+          "word": "home-048"
+        },
+        {
+          "sv": "på kvällen",
+          "en": "in the evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s25",
+      "level": "A1",
+      "sv": "Lägg den rena handduken i lådan.",
+      "en": "Put the clean towel in the drawer.",
+      "distractors": [
+        "Put the dirty towel in the drawer.",
+        "Put the clean towel on the shelf.",
+        "Put the clean towels in the drawer."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-027",
+        "qualities-028",
+        "home-038",
+        "essentials-062",
+        "home-035"
+      ],
+      "gloss": [
+        {
+          "sv": "Lägg",
+          "en": "put (lägga)",
+          "word": "verbs-027"
+        },
+        {
+          "sv": "rena",
+          "en": "clean (ren)",
+          "word": "qualities-028"
+        },
+        {
+          "sv": "handduken",
+          "en": "the towel (handduk)",
+          "word": "home-038"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "lådan",
+          "en": "the drawer (låda)",
+          "word": "home-035"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s26",
+      "level": "A1",
+      "sv": "Pappa lagar garagedörren.",
+      "en": "Dad is fixing the garage door.",
+      "distractors": [
+        "Mum is fixing the garage door.",
+        "Dad is fixing the kitchen door.",
+        "Dad is painting the garage door."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "people-013",
+        "verbs-095"
+      ],
+      "gloss": [
+        {
+          "sv": "Pappa",
+          "en": "Dad",
+          "word": "people-013"
+        },
+        {
+          "sv": "lagar",
+          "en": "is fixing (laga)",
+          "word": "verbs-095"
+        },
+        {
+          "sv": "garagedörren",
+          "en": "the garage door (garagedörr)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s27",
+      "level": "A1",
+      "sv": "Jag torkar bordet med en trasa.",
+      "en": "I wipe the table with a cloth.",
+      "distractors": [
+        "I wipe the window with a cloth.",
+        "I wipe the table with a towel.",
+        "We wipe the table with a cloth."
+      ],
+      "topics": [
+        "present-tense",
+        "en-ett"
+      ],
+      "words": [
+        "home-025",
+        "essentials-066"
+      ],
+      "gloss": [
+        {
+          "sv": "torkar",
+          "en": "wipe (torka)"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table (bord)",
+          "word": "home-025"
+        },
+        {
+          "sv": "med",
+          "en": "with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "trasa",
+          "en": "cloth (en trasa)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s28",
+      "level": "A1",
+      "sv": "Städar ni huset på lördagar?",
+      "en": "Do you clean the house on Saturdays?",
+      "distractors": [
+        "Do you clean the house on Sundays?",
+        "Do you clean the flat on Saturdays?",
+        "Do they clean the house on Saturdays?"
+      ],
+      "topics": [
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-093",
+        "home-001",
+        "health-time-045"
+      ],
+      "gloss": [
+        {
+          "sv": "Städar",
+          "en": "clean (städa)",
+          "word": "verbs-093"
+        },
+        {
+          "sv": "huset",
+          "en": "the house (hus)",
+          "word": "home-001"
+        },
+        {
+          "sv": "på lördagar",
+          "en": "on Saturdays",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s29",
+      "level": "A1",
+      "sv": "Vår lägenhet har tre ljusa rum.",
+      "en": "Our flat has three bright rooms.",
+      "distractors": [
+        "Our flat has two bright rooms.",
+        "Our flat has three dark rooms.",
+        "Their flat has three bright rooms."
+      ],
+      "topics": [
+        "possessives",
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "essentials-056",
+        "home-002",
+        "verbs-002",
+        "health-time-049",
+        "qualities-044",
+        "home-005"
+      ],
+      "gloss": [
+        {
+          "sv": "Vår",
+          "en": "our",
+          "word": "essentials-056"
+        },
+        {
+          "sv": "lägenhet",
+          "en": "flat",
+          "word": "home-002"
+        },
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "ljusa",
+          "en": "bright (ljus)",
+          "word": "qualities-044"
+        },
+        {
+          "sv": "rum",
+          "en": "rooms (rum)",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s30",
+      "level": "A1",
+      "sv": "Barnens rum ligger på övervåningen.",
+      "en": "The children’s room is upstairs.",
+      "distractors": [
+        "The children’s room is downstairs.",
+        "The children’s room is in the basement.",
+        "My room is upstairs."
+      ],
+      "topics": [
+        "definite-form",
+        "possessives"
+      ],
+      "words": [
+        "people-005",
+        "home-005",
+        "verbs-063"
+      ],
+      "gloss": [
+        {
+          "sv": "Barnens",
+          "en": "the children’s (barn)",
+          "word": "people-005"
+        },
+        {
+          "sv": "rum",
+          "en": "room",
+          "word": "home-005"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "på övervåningen",
+          "en": "upstairs"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s31",
+      "level": "A1",
+      "sv": "Det står en stor soffa framför fönstret.",
+      "en": "There is a big sofa in front of the window.",
+      "distractors": [
+        "There is a small sofa in front of the window.",
+        "There is a big sofa next to the window.",
+        "There is a big table in front of the window."
+      ],
+      "topics": [
+        "en-ett",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-064",
+        "qualities-001",
+        "home-027",
+        "essentials-075",
+        "home-020"
+      ],
+      "gloss": [
+        {
+          "sv": "står",
+          "en": "stands; is (stå)",
+          "word": "verbs-064"
+        },
+        {
+          "sv": "stor",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "sv": "soffa",
+          "en": "sofa",
+          "word": "home-027"
+        },
+        {
+          "sv": "framför",
+          "en": "in front of",
+          "word": "essentials-075"
+        },
+        {
+          "sv": "fönstret",
+          "en": "the window (fönster)",
+          "word": "home-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s32",
+      "level": "A1",
+      "sv": "Mitt sovrum är mindre än vardagsrummet.",
+      "en": "My bedroom is smaller than the living room.",
+      "distractors": [
+        "My bedroom is bigger than the living room.",
+        "My bedroom is smaller than the kitchen.",
+        "My sister’s bedroom is smaller than the living room."
+      ],
+      "topics": [
+        "possessives",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-052",
+        "home-007",
+        "verbs-001",
+        "qualities-002",
+        "home-006"
+      ],
+      "gloss": [
+        {
+          "sv": "Mitt",
+          "en": "my (min)",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "sovrum",
+          "en": "bedroom",
+          "word": "home-007"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "mindre",
+          "en": "smaller (liten)",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "än",
+          "en": "than"
+        },
+        {
+          "sv": "vardagsrummet",
+          "en": "the living room (vardagsrum)",
+          "word": "home-006"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s33",
+      "level": "A1",
+      "sv": "Fönstren i sovrummet är stängda.",
+      "en": "The windows in the bedroom are closed.",
+      "distractors": [
+        "The windows in the bedroom are open.",
+        "The windows in the kitchen are closed.",
+        "The doors in the bedroom are closed."
+      ],
+      "topics": [
+        "plural",
+        "adjective-agreement",
+        "definite-form"
+      ],
+      "words": [
+        "home-020",
+        "essentials-062",
+        "home-007",
+        "verbs-001",
+        "qualities-035"
+      ],
+      "gloss": [
+        {
+          "sv": "Fönstren",
+          "en": "the windows (fönster)",
+          "word": "home-020"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "sovrummet",
+          "en": "the bedroom (sovrum)",
+          "word": "home-007"
+        },
+        {
+          "sv": "är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stängda",
+          "en": "closed (stängd)",
+          "word": "qualities-035"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s34",
+      "level": "A1",
+      "sv": "Var är nyckeln till källaren?",
+      "en": "Where is the key to the cellar?",
+      "distractors": [
+        "Where is the key to the garage?",
+        "Where is the door to the cellar?",
+        "Where are the keys to the cellar?"
+      ],
+      "topics": [
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-035",
+        "verbs-001",
+        "home-022",
+        "essentials-064",
+        "home-013"
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "nyckeln",
+          "en": "the key (nyckel)",
+          "word": "home-022"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "källaren",
+          "en": "the cellar (källare)",
+          "word": "home-013"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s35",
+      "level": "A1",
+      "sv": "Spegeln hänger över handfatet.",
+      "en": "The mirror hangs above the washbasin.",
+      "distractors": [
+        "The mirror hangs above the bath.",
+        "The picture hangs above the washbasin.",
+        "The mirror hangs above the bed."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "home-037",
+        "essentials-072"
+      ],
+      "gloss": [
+        {
+          "sv": "Spegeln",
+          "en": "the mirror (spegel)",
+          "word": "home-037"
+        },
+        {
+          "sv": "hänger",
+          "en": "hangs (hänga)"
+        },
+        {
+          "sv": "över",
+          "en": "above",
+          "word": "essentials-072"
+        },
+        {
+          "sv": "handfatet",
+          "en": "the washbasin (handfat)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s36",
+      "level": "A1",
+      "sv": "Vi har ingen balkong men en stor trädgård.",
+      "en": "We don’t have a balcony, but we have a big garden.",
+      "distractors": [
+        "We don’t have a balcony, but we have a small garden.",
+        "We have a balcony and a big garden.",
+        "We don’t have a garden, but we have a big balcony."
+      ],
+      "topics": [
+        "negation-placement",
+        "en-ett"
+      ],
+      "words": [
+        "verbs-002",
+        "essentials-043",
+        "home-015",
+        "qualities-001",
+        "home-049"
+      ],
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ingen",
+          "en": "no",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "balkong",
+          "en": "balcony",
+          "word": "home-015"
+        },
+        {
+          "sv": "stor",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "sv": "trädgård",
+          "en": "garden",
+          "word": "home-049"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s37",
+      "level": "A1",
+      "sv": "Ställ dina skor i hallen.",
+      "en": "Put your shoes in the hall.",
+      "distractors": [
+        "Put your shoes in the kitchen.",
+        "Put your coats in the hall.",
+        "Put your shoes in the cupboard."
+      ],
+      "topics": [
+        "possessives",
+        "plural",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-029",
+        "essentials-053",
+        "people-051",
+        "essentials-062",
+        "home-011"
+      ],
+      "gloss": [
+        {
+          "sv": "Ställ",
+          "en": "put (ställa)",
+          "word": "verbs-029"
+        },
+        {
+          "sv": "dina",
+          "en": "your (din)",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "skor",
+          "en": "shoes (sko)",
+          "word": "people-051"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "hallen",
+          "en": "the hall (hall)",
+          "word": "home-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s38",
+      "level": "A1",
+      "sv": "Den här lampan ger för lite ljus.",
+      "en": "This lamp gives too little light.",
+      "distractors": [
+        "This lamp gives too much light.",
+        "This lamp gives too little heat.",
+        "These lamps give too little light."
+      ],
+      "topics": [
+        "definite-form"
+      ],
+      "words": [
+        "essentials-060",
+        "home-023",
+        "verbs-026"
+      ],
+      "gloss": [
+        {
+          "sv": "Den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "lampan",
+          "en": "the lamp (lampa)",
+          "word": "home-023"
+        },
+        {
+          "sv": "ger",
+          "en": "gives (ge)",
+          "word": "verbs-026"
+        },
+        {
+          "sv": "för lite",
+          "en": "too little"
+        },
+        {
+          "sv": "ljus",
+          "en": "light (ett ljus)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s39",
+      "level": "A1",
+      "sv": "På kvällen tittar vi på en serie i vardagsrummet.",
+      "en": "In the evening, we watch a series in the living room.",
+      "distractors": [
+        "In the morning, we watch a series in the living room.",
+        "In the evening, we watch a film in the living room.",
+        "In the evening, we watch a series in the bedroom."
+      ],
+      "topics": [
+        "word-order-v2",
+        "present-tense"
+      ],
+      "words": [
+        "health-time-034",
+        "verbs-011",
+        "essentials-063",
+        "media-042",
+        "essentials-062",
+        "home-006"
+      ],
+      "gloss": [
+        {
+          "sv": "På kvällen",
+          "en": "in the evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "tittar",
+          "en": "watch (titta på)",
+          "word": "verbs-011"
+        },
+        {
+          "sv": "på",
+          "en": "at (titta på = watch)",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "serie",
+          "en": "series",
+          "word": "media-042"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "vardagsrummet",
+          "en": "the living room (vardagsrum)",
+          "word": "home-006"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s40",
+      "level": "A1",
+      "sv": "Ikväll ska jag läsa i sängen.",
+      "en": "Tonight I’m going to read in bed.",
+      "distractors": [
+        "Tomorrow I’m going to read in bed.",
+        "Tonight I’m going to read on the sofa.",
+        "Tonight I’m going to write in bed."
+      ],
+      "topics": [
+        "future",
+        "word-order-v2"
+      ],
+      "words": [
+        "health-time-034",
+        "verbs-023",
+        "verbs-070",
+        "home-029"
+      ],
+      "gloss": [
+        {
+          "sv": "Ikväll",
+          "en": "tonight",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "ska",
+          "en": "am going to (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "läsa",
+          "en": "read",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "i sängen",
+          "en": "in bed",
+          "word": "home-029"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s41",
+      "level": "A1",
+      "sv": "Barnen lägger sig klockan halv tio.",
+      "en": "The children go to bed at half past nine.",
+      "distractors": [
+        "The children go to bed at half past ten.",
+        "The children go to bed at nine.",
+        "The children get up at half past nine."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "people-005",
+        "verbs-061",
+        "shopping-026",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "sv": "Barnen",
+          "en": "the children (barn)",
+          "word": "people-005"
+        },
+        {
+          "sv": "lägger",
+          "en": "go to bed (lägga sig)",
+          "word": "verbs-061"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "halv",
+          "en": "half (halv tio = half past nine)"
+        },
+        {
+          "sv": "tio",
+          "en": "ten",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s42",
+      "level": "A1",
+      "sv": "Stänger du fönstret innan du sover?",
+      "en": "Do you close the window before you sleep?",
+      "distractors": [
+        "Do you open the window before you sleep?",
+        "Do you close the door before you sleep?",
+        "Do you close the window before you eat?"
+      ],
+      "topics": [
+        "questions",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-041",
+        "home-020",
+        "verbs-057"
+      ],
+      "gloss": [
+        {
+          "sv": "Stänger",
+          "en": "close (stänga)",
+          "word": "verbs-041"
+        },
+        {
+          "sv": "fönstret",
+          "en": "the window (fönster)",
+          "word": "home-020"
+        },
+        {
+          "sv": "innan",
+          "en": "before"
+        },
+        {
+          "sv": "sover",
+          "en": "sleep (sova)",
+          "word": "verbs-057"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s43",
+      "level": "A1",
+      "sv": "Min syster lyssnar på musik under täcket.",
+      "en": "My sister listens to music under the duvet.",
+      "distractors": [
+        "My brother listens to music under the duvet.",
+        "My sister listens to music on the sofa.",
+        "My sister reads under the duvet."
+      ],
+      "topics": [
+        "possessives",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-052",
+        "people-014",
+        "verbs-013",
+        "media-045",
+        "essentials-071",
+        "home-031"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "syster",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "sv": "lyssnar på",
+          "en": "listens to (lyssna på)",
+          "word": "verbs-013"
+        },
+        {
+          "sv": "musik",
+          "en": "music",
+          "word": "media-045"
+        },
+        {
+          "sv": "under",
+          "en": "under",
+          "word": "essentials-071"
+        },
+        {
+          "sv": "täcket",
+          "en": "the duvet (täcke)",
+          "word": "home-031"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s44",
+      "level": "A1",
+      "sv": "Jag gillar inte att sova med lampan tänd.",
+      "en": "I don’t like sleeping with the lamp on.",
+      "distractors": [
+        "I like sleeping with the lamp on.",
+        "I don’t like sleeping with the window open.",
+        "I don’t like reading with the lamp on."
+      ],
+      "topics": [
+        "negation-placement",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-046",
+        "verbs-057",
+        "essentials-066",
+        "home-023"
+      ],
+      "gloss": [
+        {
+          "sv": "gillar",
+          "en": "like (gilla)",
+          "word": "verbs-046"
+        },
+        {
+          "sv": "sova",
+          "en": "sleep",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "med",
+          "en": "with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "lampan",
+          "en": "the lamp (lampa)",
+          "word": "home-023"
+        },
+        {
+          "sv": "tänd",
+          "en": "on; lit"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s45",
+      "level": "A1",
+      "sv": "På söndagar stannar vi hemma.",
+      "en": "On Sundays, we stay at home.",
+      "distractors": [
+        "On Saturdays, we stay at home.",
+        "On Sundays, we stay in bed.",
+        "On Sundays, they stay at home."
+      ],
+      "topics": [
+        "word-order-v2",
+        "present-tense"
+      ],
+      "words": [
+        "health-time-046",
+        "verbs-033",
+        "home-004"
+      ],
+      "gloss": [
+        {
+          "sv": "På söndagar",
+          "en": "on Sundays",
+          "word": "health-time-046"
+        },
+        {
+          "sv": "stannar",
+          "en": "stay (stanna)",
+          "word": "verbs-033"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s46",
+      "level": "A1",
+      "sv": "På lördagar gör pappa pannkakor.",
+      "en": "On Saturdays, Dad makes pancakes.",
+      "distractors": [
+        "On Sundays, Dad makes pancakes.",
+        "On Saturdays, Mum makes pancakes.",
+        "On Saturdays, Dad makes waffles."
+      ],
+      "topics": [
+        "word-order-v2",
+        "plural"
+      ],
+      "words": [
+        "health-time-045",
+        "verbs-003",
+        "people-013"
+      ],
+      "gloss": [
+        {
+          "sv": "På lördagar",
+          "en": "on Saturdays",
+          "word": "health-time-045"
+        },
+        {
+          "sv": "gör",
+          "en": "makes (göra)",
+          "word": "verbs-003"
+        },
+        {
+          "sv": "pappa",
+          "en": "Dad",
+          "word": "people-013"
+        },
+        {
+          "sv": "pannkakor",
+          "en": "pancakes (pannkaka)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s47",
+      "level": "A1",
+      "sv": "Vill du ha en kopp te?",
+      "en": "Would you like a cup of tea?",
+      "distractors": [
+        "Would you like a cup of coffee?",
+        "Would you like two cups of tea?",
+        "Would she like a cup of tea?"
+      ],
+      "topics": [
+        "questions",
+        "modal-verbs"
+      ],
+      "words": [
+        "verbs-020",
+        "verbs-002",
+        "food-052",
+        "food-005"
+      ],
+      "gloss": [
+        {
+          "sv": "Vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "kopp",
+          "en": "cup",
+          "word": "food-052"
+        },
+        {
+          "sv": "te",
+          "en": "tea",
+          "word": "food-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s48",
+      "level": "A1",
+      "sv": "Vi vattnar blommorna på balkongen.",
+      "en": "We water the flowers on the balcony.",
+      "distractors": [
+        "We water the flowers in the garden.",
+        "We pick the flowers on the balcony.",
+        "They water the flowers on the balcony."
+      ],
+      "topics": [
+        "plural",
+        "definite-form"
+      ],
+      "words": [
+        "nature-010",
+        "essentials-063",
+        "home-015"
+      ],
+      "gloss": [
+        {
+          "sv": "vattnar",
+          "en": "water (vattna)"
+        },
+        {
+          "sv": "blommorna",
+          "en": "the flowers (blomma)",
+          "word": "nature-010"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "balkongen",
+          "en": "the balcony (balkong)",
+          "word": "home-015"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s49",
+      "level": "A1",
+      "sv": "Katten sover alltid i fåtöljen.",
+      "en": "The cat always sleeps in the armchair.",
+      "distractors": [
+        "The dog always sleeps in the armchair.",
+        "The cat always sleeps on the sofa.",
+        "The cat never sleeps in the armchair."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "nature-012",
+        "verbs-057",
+        "essentials-100",
+        "essentials-062"
+      ],
+      "gloss": [
+        {
+          "sv": "Katten",
+          "en": "the cat (katt)",
+          "word": "nature-012"
+        },
+        {
+          "sv": "sover",
+          "en": "sleeps (sova)",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "alltid",
+          "en": "always",
+          "word": "essentials-100"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "fåtöljen",
+          "en": "the armchair (fåtölj)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s50",
+      "level": "A1",
+      "sv": "Hur många stolar finns det i köket?",
+      "en": "How many chairs are there in the kitchen?",
+      "distractors": [
+        "How many tables are there in the kitchen?",
+        "How many chairs are there in the living room?",
+        "How many chairs are there in the garden?"
+      ],
+      "topics": [
+        "questions",
+        "plural"
+      ],
+      "words": [
+        "essentials-040",
+        "home-026",
+        "verbs-099",
+        "essentials-062",
+        "home-008"
+      ],
+      "gloss": [
+        {
+          "sv": "Hur många",
+          "en": "how many",
+          "word": "essentials-040"
+        },
+        {
+          "sv": "stolar",
+          "en": "chairs (stol)",
+          "word": "home-026"
+        },
+        {
+          "sv": "finns det",
+          "en": "are there (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "köket",
+          "en": "the kitchen (kök)",
+          "word": "home-008"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-home-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Breakfast in the kitchen",
+      "lines": [
+        {
+          "speaker": "Emma",
+          "sv": "God morgon! Är kaffet klart?",
+          "en": "Good morning! Is the coffee ready?"
+        },
+        {
+          "speaker": "Pappa",
+          "sv": "Ja, men det finns inget bröd kvar.",
+          "en": "Yes, but there is no bread left."
+        },
+        {
+          "speaker": "Emma",
+          "sv": "Det finns kakor i skåpet.",
+          "en": "There are biscuits in the cupboard."
+        },
+        {
+          "speaker": "Pappa",
+          "sv": "Bra. Jag dukar bordet.",
+          "en": "Good. I’ll set the table."
+        },
+        {
+          "speaker": "Emma",
+          "sv": "Och jag gör te.",
+          "en": "And I’ll make tea."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What has run out?",
+          "choices": [
+            "The coffee",
+            "The bread",
+            "The biscuits",
+            "The tea"
+          ],
+          "answer": 1,
+          "explanation": "Dad says “det finns inget bröd kvar” — there is no bread left."
+        },
+        {
+          "question": "Where are the biscuits?",
+          "choices": [
+            "In the cupboard",
+            "On the table",
+            "In the fridge",
+            "In a bag"
+          ],
+          "answer": 0,
+          "explanation": "Emma says “Det finns kakor i skåpet.”"
+        },
+        {
+          "question": "Who sets the table?",
+          "choices": [
+            "Emma",
+            "Nobody",
+            "Dad",
+            "Mum"
+          ],
+          "answer": 2,
+          "explanation": "Dad says “Jag dukar bordet.”"
+        },
+        {
+          "question": "What is Emma making?",
+          "choices": [
+            "Coffee",
+            "Breakfast",
+            "Sandwiches",
+            "Tea"
+          ],
+          "answer": 3,
+          "explanation": "“Och jag gör te.”"
+        }
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form",
+        "negation-placement"
+      ],
+      "words": [
+        "essentials-007",
+        "verbs-001",
+        "food-004",
+        "qualities-079",
+        "essentials-004",
+        "verbs-099",
+        "essentials-043",
+        "food-003",
+        "food-039",
+        "essentials-062",
+        "qualities-003",
+        "home-025",
+        "essentials-080",
+        "verbs-003",
+        "food-005"
+      ],
+      "gloss": [
+        {
+          "sv": "God morgon",
+          "en": "good morning",
+          "word": "essentials-007"
+        },
+        {
+          "sv": "Är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "kaffet",
+          "en": "the coffee (kaffe)",
+          "word": "food-004"
+        },
+        {
+          "sv": "klart",
+          "en": "ready (klar)",
+          "word": "qualities-079"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "finns",
+          "en": "is; are (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "inget",
+          "en": "no (ingen)",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "bröd",
+          "en": "bread",
+          "word": "food-003"
+        },
+        {
+          "sv": "kvar",
+          "en": "left"
+        },
+        {
+          "sv": "Det finns",
+          "en": "there are (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "kakor",
+          "en": "biscuits (kaka)",
+          "word": "food-039"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "skåpet",
+          "en": "the cupboard (skåp)"
+        },
+        {
+          "sv": "Bra",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "sv": "dukar",
+          "en": "set (duka)"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table (bord)",
+          "word": "home-025"
+        },
+        {
+          "sv": "Och",
+          "en": "and",
+          "word": "essentials-080"
+        },
+        {
+          "sv": "gör",
+          "en": "make (göra)",
+          "word": "verbs-003"
+        },
+        {
+          "sv": "te",
+          "en": "tea",
+          "word": "food-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Saturday chores",
+      "lines": [
+        {
+          "speaker": "Mamma",
+          "sv": "Leo, städar du ditt rum i förmiddag?",
+          "en": "Leo, are you tidying your room this morning?"
+        },
+        {
+          "speaker": "Leo",
+          "sv": "Ja, och sedan dammsuger jag.",
+          "en": "Yes, and then I’ll vacuum."
+        },
+        {
+          "speaker": "Mamma",
+          "sv": "Tack. Din syster diskar.",
+          "en": "Thanks. Your sister is doing the dishes."
+        },
+        {
+          "speaker": "Leo",
+          "sv": "Och pappa?",
+          "en": "And Dad?"
+        },
+        {
+          "speaker": "Mamma",
+          "sv": "Han lagar garagedörren.",
+          "en": "He’s fixing the garage door."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Leo do after tidying his room?",
+          "choices": [
+            "He does the dishes",
+            "He fixes the door",
+            "He vacuums",
+            "He cooks lunch"
+          ],
+          "answer": 2,
+          "explanation": "Leo says “och sedan dammsuger jag”."
+        },
+        {
+          "question": "Who is doing the dishes?",
+          "choices": [
+            "Leo",
+            "Mum",
+            "Dad",
+            "Leo’s sister"
+          ],
+          "answer": 3,
+          "explanation": "“Din syster diskar.”"
+        },
+        {
+          "question": "What is Dad doing?",
+          "choices": [
+            "Fixing the garage door",
+            "Cleaning the garage",
+            "Washing the car",
+            "Painting the door"
+          ],
+          "answer": 0,
+          "explanation": "“Han lagar garagedörren.”"
+        },
+        {
+          "question": "When is Leo tidying his room?",
+          "choices": [
+            "This evening",
+            "This morning",
+            "Tomorrow",
+            "On Sunday"
+          ],
+          "answer": 1,
+          "explanation": "Mum asks “städar du ditt rum i förmiddag?”"
+        }
+      ],
+      "topics": [
+        "questions",
+        "possessives",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-093",
+        "essentials-053",
+        "home-005",
+        "essentials-004",
+        "essentials-107",
+        "essentials-002",
+        "people-014",
+        "home-053",
+        "essentials-080",
+        "people-013",
+        "verbs-095"
+      ],
+      "gloss": [
+        {
+          "sv": "Leo",
+          "en": "Leo (a name)"
+        },
+        {
+          "sv": "städar",
+          "en": "are tidying (städa)",
+          "word": "verbs-093"
+        },
+        {
+          "sv": "ditt",
+          "en": "your (din)",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "rum",
+          "en": "room",
+          "word": "home-005"
+        },
+        {
+          "sv": "i förmiddag",
+          "en": "this morning"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "sedan",
+          "en": "then",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "dammsuger",
+          "en": "vacuum (dammsuga)"
+        },
+        {
+          "sv": "Tack",
+          "en": "thanks",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "Din",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "syster",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "sv": "diskar",
+          "en": "is doing the dishes (diska)",
+          "word": "home-053"
+        },
+        {
+          "sv": "Och",
+          "en": "and",
+          "word": "essentials-080"
+        },
+        {
+          "sv": "pappa",
+          "en": "Dad",
+          "word": "people-013"
+        },
+        {
+          "sv": "lagar",
+          "en": "is fixing (laga)",
+          "word": "verbs-095"
+        },
+        {
+          "sv": "garagedörren",
+          "en": "the garage door (garagedörr)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "The missing key",
+      "lines": [
+        {
+          "speaker": "Sara",
+          "sv": "Var är min nyckel?",
+          "en": "Where is my key?"
+        },
+        {
+          "speaker": "Marcus",
+          "sv": "Ligger den inte på bordet?",
+          "en": "Isn’t it on the table?"
+        },
+        {
+          "speaker": "Sara",
+          "sv": "Nej, och den är inte i min väska.",
+          "en": "No, and it isn’t in my bag."
+        },
+        {
+          "speaker": "Marcus",
+          "sv": "Titta i fickan på din jacka.",
+          "en": "Look in your jacket pocket."
+        },
+        {
+          "speaker": "Sara",
+          "sv": "Där är den! Tack.",
+          "en": "There it is! Thanks."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where does Marcus tell Sara to look?",
+          "choices": [
+            "On the table",
+            "In her jacket pocket",
+            "In her bag",
+            "Under the bed"
+          ],
+          "answer": 1,
+          "explanation": "“Titta i fickan på din jacka.”"
+        },
+        {
+          "question": "What does Sara say about her bag?",
+          "choices": [
+            "The key is in it",
+            "She has lost it",
+            "It is on the table",
+            "The key is not in it"
+          ],
+          "answer": 3,
+          "explanation": "Sara says “den är inte i min väska”."
+        },
+        {
+          "question": "How does the conversation end?",
+          "choices": [
+            "Sara finds her key",
+            "Sara is still looking",
+            "Marcus lends her his key",
+            "Marcus goes to look for it"
+          ],
+          "answer": 0,
+          "explanation": "Sara says “Där är den!”"
+        },
+        {
+          "question": "Where does Marcus think the key is at first?",
+          "choices": [
+            "In her pocket",
+            "In her bag",
+            "On the table",
+            "In the door"
+          ],
+          "answer": 2,
+          "explanation": "Marcus asks “Ligger den inte på bordet?”"
+        }
+      ],
+      "topics": [
+        "questions",
+        "negation-placement",
+        "possessives"
+      ],
+      "words": [
+        "essentials-035",
+        "verbs-001",
+        "essentials-052",
+        "home-022",
+        "verbs-063",
+        "essentials-063",
+        "home-025",
+        "essentials-005",
+        "essentials-062",
+        "shopping-030",
+        "verbs-011",
+        "shopping-013",
+        "essentials-053",
+        "people-048",
+        "essentials-096",
+        "essentials-002"
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "nyckel",
+          "en": "key",
+          "word": "home-022"
+        },
+        {
+          "sv": "Ligger",
+          "en": "is; lies (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table (bord)",
+          "word": "home-025"
+        },
+        {
+          "sv": "Nej",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "väska",
+          "en": "bag",
+          "word": "shopping-030"
+        },
+        {
+          "sv": "Titta",
+          "en": "look (titta)",
+          "word": "verbs-011"
+        },
+        {
+          "sv": "fickan",
+          "en": "the pocket (ficka)",
+          "word": "shopping-013"
+        },
+        {
+          "sv": "din",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "jacka",
+          "en": "jacket",
+          "word": "people-048"
+        },
+        {
+          "sv": "Där",
+          "en": "there",
+          "word": "essentials-096"
+        },
+        {
+          "sv": "Tack",
+          "en": "thanks",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "An early night",
+      "lines": [
+        {
+          "speaker": "Pappa",
+          "sv": "Vill du titta på en film ikväll?",
+          "en": "Do you want to watch a film tonight?"
+        },
+        {
+          "speaker": "Alva",
+          "sv": "Nej, jag är trött. Jag ska lägga mig.",
+          "en": "No, I’m tired. I’m going to bed."
+        },
+        {
+          "speaker": "Pappa",
+          "sv": "Klockan är bara nio!",
+          "en": "It’s only nine o’clock!"
+        },
+        {
+          "speaker": "Alva",
+          "sv": "Jag vet, men jag går upp tidigt imorgon.",
+          "en": "I know, but I’m getting up early tomorrow."
+        },
+        {
+          "speaker": "Pappa",
+          "sv": "God natt. Glöm inte att släcka lampan.",
+          "en": "Good night. Don’t forget to turn off the lamp."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is Alva going to bed?",
+          "choices": [
+            "She doesn’t like films",
+            "She is ill",
+            "She is getting up early tomorrow",
+            "She is cold"
+          ],
+          "answer": 2,
+          "explanation": "“jag går upp tidigt imorgon”."
+        },
+        {
+          "question": "What time is it?",
+          "choices": [
+            "Ten o’clock",
+            "Nine o’clock",
+            "Half past nine",
+            "Eight o’clock"
+          ],
+          "answer": 1,
+          "explanation": "“Klockan är bara nio!”"
+        },
+        {
+          "question": "What does Dad remind Alva to do?",
+          "choices": [
+            "Turn off the lamp",
+            "Close the window",
+            "Watch the film with him",
+            "Lock the door"
+          ],
+          "answer": 0,
+          "explanation": "“Glöm inte att släcka lampan.”"
+        },
+        {
+          "question": "What does Dad suggest at the start?",
+          "choices": [
+            "Going to bed",
+            "Making dinner",
+            "Reading a book",
+            "Watching a film"
+          ],
+          "answer": 3,
+          "explanation": "“Vill du titta på en film ikväll?”"
+        }
+      ],
+      "topics": [
+        "modal-verbs",
+        "future",
+        "negation-placement"
+      ],
+      "words": [
+        "verbs-020",
+        "verbs-011",
+        "media-041",
+        "health-time-034",
+        "essentials-005",
+        "verbs-001",
+        "feelings-009",
+        "verbs-023",
+        "verbs-061",
+        "shopping-026",
+        "essentials-089",
+        "health-time-055",
+        "verbs-014",
+        "verbs-059",
+        "qualities-106",
+        "essentials-098",
+        "essentials-008",
+        "verbs-089",
+        "home-052",
+        "home-023"
+      ],
+      "gloss": [
+        {
+          "sv": "Vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "titta på",
+          "en": "watch (titta på)",
+          "word": "verbs-011"
+        },
+        {
+          "sv": "film",
+          "en": "film",
+          "word": "media-041"
+        },
+        {
+          "sv": "ikväll",
+          "en": "tonight",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "Nej",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "sv": "är",
+          "en": "am; is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "trött",
+          "en": "tired",
+          "word": "feelings-009"
+        },
+        {
+          "sv": "ska",
+          "en": "am going to (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "lägga",
+          "en": "go to bed (lägga sig)",
+          "word": "verbs-061"
+        },
+        {
+          "sv": "Klockan är",
+          "en": "it is … o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "bara",
+          "en": "only",
+          "word": "essentials-089"
+        },
+        {
+          "sv": "nio",
+          "en": "nine",
+          "word": "health-time-055"
+        },
+        {
+          "sv": "vet",
+          "en": "know (veta)",
+          "word": "verbs-014"
+        },
+        {
+          "sv": "går upp",
+          "en": "am getting up (gå upp)",
+          "word": "verbs-059"
+        },
+        {
+          "sv": "tidigt",
+          "en": "early",
+          "word": "qualities-106"
+        },
+        {
+          "sv": "imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        },
+        {
+          "sv": "God natt",
+          "en": "good night",
+          "word": "essentials-008"
+        },
+        {
+          "sv": "Glöm",
+          "en": "forget (glömma)",
+          "word": "verbs-089"
+        },
+        {
+          "sv": "släcka",
+          "en": "turn off",
+          "word": "home-052"
+        },
+        {
+          "sv": "lampan",
+          "en": "the lamp (lampa)",
+          "word": "home-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A note on the fridge",
+      "lines": [
+        {
+          "sv": "Mamma är inte hemma ikväll. Hon kommer hem klockan åtta.",
+          "en": "Mum isn’t home tonight. She’ll be back at eight."
+        },
+        {
+          "sv": "Det finns soppa i kylskåpet.",
+          "en": "There is soup in the fridge."
+        },
+        {
+          "sv": "Brödet ligger på bordet och osten i skåpet.",
+          "en": "The bread is on the table and the cheese is in the cupboard."
+        },
+        {
+          "sv": "Ställ tallrikarna i diskmaskinen efter middagen.",
+          "en": "Put the plates in the dishwasher after dinner."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When does Mum get home?",
+          "choices": [
+            "At six",
+            "At nine",
+            "At seven",
+            "At eight"
+          ],
+          "answer": 3,
+          "explanation": "“Hon kommer hem klockan åtta.”"
+        },
+        {
+          "question": "Where is the cheese?",
+          "choices": [
+            "On the table",
+            "In the cupboard",
+            "In the fridge",
+            "In the dishwasher"
+          ],
+          "answer": 1,
+          "explanation": "“osten i skåpet” — only the bread is on the table."
+        },
+        {
+          "question": "What is there in the fridge?",
+          "choices": [
+            "Soup",
+            "Cheese",
+            "Bread",
+            "Chicken"
+          ],
+          "answer": 0,
+          "explanation": "“Det finns soppa i kylskåpet.”"
+        },
+        {
+          "question": "What should be done after dinner?",
+          "choices": [
+            "Wash the plates by hand",
+            "Put the soup in the fridge",
+            "Put the plates in the dishwasher",
+            "Buy some bread"
+          ],
+          "answer": 2,
+          "explanation": "“Ställ tallrikarna i diskmaskinen efter middagen.”"
+        }
+      ],
+      "topics": [
+        "definite-form",
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "people-012",
+        "verbs-001",
+        "home-004",
+        "health-time-034",
+        "verbs-005",
+        "shopping-026",
+        "health-time-054",
+        "verbs-099",
+        "food-019",
+        "essentials-062",
+        "home-042",
+        "food-003",
+        "verbs-063",
+        "essentials-063",
+        "home-025",
+        "food-011",
+        "verbs-029",
+        "food-051",
+        "home-040",
+        "essentials-078",
+        "food-047"
+      ],
+      "gloss": [
+        {
+          "sv": "Mamma",
+          "en": "Mum",
+          "word": "people-012"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        },
+        {
+          "sv": "ikväll",
+          "en": "tonight",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "kommer hem",
+          "en": "comes home (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        },
+        {
+          "sv": "Det finns",
+          "en": "there is (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "soppa",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "kylskåpet",
+          "en": "the fridge (kylskåp)",
+          "word": "home-042"
+        },
+        {
+          "sv": "Brödet",
+          "en": "the bread (bröd)",
+          "word": "food-003"
+        },
+        {
+          "sv": "ligger",
+          "en": "is; lies (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table (bord)",
+          "word": "home-025"
+        },
+        {
+          "sv": "osten",
+          "en": "the cheese (ost)",
+          "word": "food-011"
+        },
+        {
+          "sv": "skåpet",
+          "en": "the cupboard (skåp)"
+        },
+        {
+          "sv": "Ställ",
+          "en": "put (ställa)",
+          "word": "verbs-029"
+        },
+        {
+          "sv": "tallrikarna",
+          "en": "the plates (tallrik)",
+          "word": "food-051"
+        },
+        {
+          "sv": "diskmaskinen",
+          "en": "the dishwasher (diskmaskin)",
+          "word": "home-040"
+        },
+        {
+          "sv": "efter",
+          "en": "after",
+          "word": "essentials-078"
+        },
+        {
+          "sv": "middagen",
+          "en": "dinner; the dinner (middag)",
+          "word": "food-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "A Sunday at home",
+      "lines": [
+        {
+          "sv": "På söndagar ställer jag ingen väckarklocka.",
+          "en": "On Sundays, I don’t set an alarm."
+        },
+        {
+          "sv": "Jag ligger kvar i sängen till klockan tio.",
+          "en": "I stay in bed until ten o’clock."
+        },
+        {
+          "sv": "Sedan äter jag en god frukost i köket.",
+          "en": "Then I have a nice breakfast in the kitchen."
+        },
+        {
+          "sv": "På eftermiddagen städar jag och tvättar mina lakan.",
+          "en": "In the afternoon, I tidy up and wash my sheets."
+        },
+        {
+          "sv": "På kvällen tittar hela familjen på en film.",
+          "en": "In the evening, the whole family watches a film."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does the writer not do on Sundays?",
+          "choices": [
+            "Have breakfast",
+            "Set an alarm",
+            "Tidy up",
+            "Watch a film"
+          ],
+          "answer": 1,
+          "explanation": "“På söndagar ställer jag ingen väckarklocka.”"
+        },
+        {
+          "question": "Until what time does the writer stay in bed?",
+          "choices": [
+            "Nine",
+            "Eleven",
+            "Ten",
+            "Eight"
+          ],
+          "answer": 2,
+          "explanation": "“Jag ligger kvar i sängen till klockan tio.”"
+        },
+        {
+          "question": "What happens in the afternoon?",
+          "choices": [
+            "Watching a film",
+            "Cooking dinner",
+            "Breakfast in the kitchen",
+            "Tidying and washing the sheets"
+          ],
+          "answer": 3,
+          "explanation": "“På eftermiddagen städar jag och tvättar mina lakan.”"
+        },
+        {
+          "question": "Who watches a film in the evening?",
+          "choices": [
+            "The whole family",
+            "Only the writer",
+            "The children",
+            "The neighbours"
+          ],
+          "answer": 0,
+          "explanation": "“På kvällen tittar hela familjen på en film.”"
+        }
+      ],
+      "topics": [
+        "word-order-v2",
+        "possessives",
+        "present-tense"
+      ],
+      "words": [
+        "health-time-046",
+        "verbs-029",
+        "essentials-043",
+        "verbs-063",
+        "essentials-062",
+        "home-029",
+        "essentials-064",
+        "shopping-026",
+        "health-time-056",
+        "essentials-107",
+        "verbs-054",
+        "qualities-004",
+        "food-045",
+        "home-008",
+        "verbs-093",
+        "verbs-094",
+        "essentials-052",
+        "health-time-034",
+        "verbs-011",
+        "people-023",
+        "essentials-063",
+        "media-041"
+      ],
+      "gloss": [
+        {
+          "sv": "På söndagar",
+          "en": "on Sundays",
+          "word": "health-time-046"
+        },
+        {
+          "sv": "ställer",
+          "en": "set (ställa)",
+          "word": "verbs-029"
+        },
+        {
+          "sv": "ingen",
+          "en": "no",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "väckarklocka",
+          "en": "alarm clock (en väckarklocka)"
+        },
+        {
+          "sv": "ligger kvar",
+          "en": "stay (ligga kvar)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "sängen",
+          "en": "bed; the bed (säng)",
+          "word": "home-029"
+        },
+        {
+          "sv": "till",
+          "en": "until",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "tio",
+          "en": "ten",
+          "word": "health-time-056"
+        },
+        {
+          "sv": "Sedan",
+          "en": "then",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "äter",
+          "en": "have; eat (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "god",
+          "en": "nice; good",
+          "word": "qualities-004"
+        },
+        {
+          "sv": "frukost",
+          "en": "breakfast",
+          "word": "food-045"
+        },
+        {
+          "sv": "köket",
+          "en": "the kitchen (kök)",
+          "word": "home-008"
+        },
+        {
+          "sv": "På eftermiddagen",
+          "en": "in the afternoon"
+        },
+        {
+          "sv": "städar",
+          "en": "tidy up (städa)",
+          "word": "verbs-093"
+        },
+        {
+          "sv": "tvättar",
+          "en": "wash (tvätta)",
+          "word": "verbs-094"
+        },
+        {
+          "sv": "mina",
+          "en": "my (min)",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "lakan",
+          "en": "sheets (ett lakan)"
+        },
+        {
+          "sv": "På kvällen",
+          "en": "in the evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "tittar",
+          "en": "watches (titta på)",
+          "word": "verbs-011"
+        },
+        {
+          "sv": "hela",
+          "en": "the whole"
+        },
+        {
+          "sv": "familjen",
+          "en": "the family (familj)",
+          "word": "people-023"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "film",
+          "en": "film",
+          "word": "media-041"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "Notice in the building",
+      "lines": [
+        {
+          "sv": "Hej alla grannar!",
+          "en": "Hello, neighbours!"
+        },
+        {
+          "sv": "Hissen är trasig till fredag.",
+          "en": "The lift is broken until Friday."
+        },
+        {
+          "sv": "Värmen i huset fungerar inte heller.",
+          "en": "The heating in the building isn’t working either."
+        },
+        {
+          "sv": "En reparatör kommer på tisdag morgon.",
+          "en": "A repairman is coming on Tuesday morning."
+        },
+        {
+          "sv": "Stäng porten på kvällen, tack.",
+          "en": "Please close the front door in the evening."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Until when is the lift broken?",
+          "choices": [
+            "Tuesday",
+            "Friday",
+            "Monday",
+            "Saturday"
+          ],
+          "answer": 1,
+          "explanation": "“Hissen är trasig till fredag.”"
+        },
+        {
+          "question": "What else is not working?",
+          "choices": [
+            "The doorbell",
+            "The lights on the stairs",
+            "The heating",
+            "The washing machine"
+          ],
+          "answer": 2,
+          "explanation": "“Värmen i huset fungerar inte heller.”"
+        },
+        {
+          "question": "When is the repairman coming?",
+          "choices": [
+            "Friday morning",
+            "Tuesday evening",
+            "Monday morning",
+            "Tuesday morning"
+          ],
+          "answer": 3,
+          "explanation": "“En reparatör kommer på tisdag morgon.”"
+        },
+        {
+          "question": "What are the neighbours asked to do?",
+          "choices": [
+            "Close the front door in the evening",
+            "Take the rubbish out",
+            "Use the stairs",
+            "Water the plants"
+          ],
+          "answer": 0,
+          "explanation": "“Stäng porten på kvällen, tack.”"
+        }
+      ],
+      "topics": [
+        "definite-form",
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-047",
+        "people-035",
+        "home-050",
+        "verbs-001",
+        "essentials-064",
+        "health-time-044",
+        "essentials-062",
+        "home-001",
+        "verbs-005",
+        "health-time-041",
+        "health-time-033",
+        "verbs-041",
+        "health-time-034",
+        "essentials-002"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "alla",
+          "en": "all",
+          "word": "essentials-047"
+        },
+        {
+          "sv": "grannar",
+          "en": "neighbours (granne)",
+          "word": "people-035"
+        },
+        {
+          "sv": "Hissen",
+          "en": "the lift (hiss)",
+          "word": "home-050"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "trasig",
+          "en": "broken"
+        },
+        {
+          "sv": "till",
+          "en": "until",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "fredag",
+          "en": "Friday",
+          "word": "health-time-044"
+        },
+        {
+          "sv": "Värmen",
+          "en": "the heating (värme)"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "huset",
+          "en": "the building; the house (hus)",
+          "word": "home-001"
+        },
+        {
+          "sv": "fungerar",
+          "en": "works (fungera)"
+        },
+        {
+          "sv": "heller",
+          "en": "either (inte heller)"
+        },
+        {
+          "sv": "En",
+          "en": "a"
+        },
+        {
+          "sv": "reparatör",
+          "en": "repairman"
+        },
+        {
+          "sv": "kommer",
+          "en": "is coming (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "på tisdag",
+          "en": "on Tuesday",
+          "word": "health-time-041"
+        },
+        {
+          "sv": "morgon",
+          "en": "morning",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "Stäng",
+          "en": "close (stänga)",
+          "word": "verbs-041"
+        },
+        {
+          "sv": "porten",
+          "en": "the front door (port)"
+        },
+        {
+          "sv": "på kvällen",
+          "en": "in the evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thanks",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "Email about the new flat",
+      "lines": [
+        {
+          "sv": "Hej Klara!",
+          "en": "Hi Klara!"
+        },
+        {
+          "sv": "Vår nya lägenhet är liten men väldigt ljus.",
+          "en": "Our new flat is small but very bright."
+        },
+        {
+          "sv": "Det finns två sovrum, ett kök och en balkong.",
+          "en": "There are two bedrooms, a kitchen and a balcony."
+        },
+        {
+          "sv": "Badrummet ligger längst bort i hallen.",
+          "en": "The bathroom is at the end of the hall."
+        },
+        {
+          "sv": "Vi har ingen soffa än.",
+          "en": "We don’t have a sofa yet."
+        },
+        {
+          "sv": "Vill du komma på middag på lördag?",
+          "en": "Would you like to come for dinner on Saturday?"
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many bedrooms does the flat have?",
+          "choices": [
+            "Three",
+            "Two",
+            "One",
+            "Four"
+          ],
+          "answer": 1,
+          "explanation": "“Det finns två sovrum”."
+        },
+        {
+          "question": "What is missing in the flat?",
+          "choices": [
+            "A table",
+            "A bed",
+            "A sofa",
+            "A fridge"
+          ],
+          "answer": 2,
+          "explanation": "“Vi har ingen soffa än.”"
+        },
+        {
+          "question": "Where is the bathroom?",
+          "choices": [
+            "Next to the kitchen",
+            "By the balcony",
+            "Upstairs",
+            "At the end of the hall"
+          ],
+          "answer": 3,
+          "explanation": "“Badrummet ligger längst bort i hallen.”"
+        },
+        {
+          "question": "What is Klara invited to do?",
+          "choices": [
+            "Come for dinner on Saturday",
+            "Help with the move",
+            "Visit on Sunday",
+            "Buy a sofa"
+          ],
+          "answer": 0,
+          "explanation": "“Vill du komma på middag på lördag?”"
+        }
+      ],
+      "topics": [
+        "adjective-agreement",
+        "possessives",
+        "modal-verbs"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-056",
+        "qualities-010",
+        "home-002",
+        "verbs-001",
+        "qualities-002",
+        "essentials-093",
+        "qualities-044",
+        "verbs-099",
+        "health-time-048",
+        "home-007",
+        "home-008",
+        "home-015",
+        "home-009",
+        "verbs-063",
+        "essentials-062",
+        "home-011",
+        "verbs-002",
+        "essentials-043",
+        "home-027",
+        "verbs-020",
+        "verbs-005",
+        "food-047",
+        "health-time-045"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hi",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Klara",
+          "en": "Klara (a name)"
+        },
+        {
+          "sv": "Vår",
+          "en": "our",
+          "word": "essentials-056"
+        },
+        {
+          "sv": "nya",
+          "en": "new (ny)",
+          "word": "qualities-010"
+        },
+        {
+          "sv": "lägenhet",
+          "en": "flat",
+          "word": "home-002"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "liten",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "väldigt",
+          "en": "very",
+          "word": "essentials-093"
+        },
+        {
+          "sv": "ljus",
+          "en": "bright",
+          "word": "qualities-044"
+        },
+        {
+          "sv": "Det finns",
+          "en": "there are (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "sovrum",
+          "en": "bedrooms (sovrum)",
+          "word": "home-007"
+        },
+        {
+          "sv": "kök",
+          "en": "kitchen",
+          "word": "home-008"
+        },
+        {
+          "sv": "balkong",
+          "en": "balcony",
+          "word": "home-015"
+        },
+        {
+          "sv": "Badrummet",
+          "en": "the bathroom (badrum)",
+          "word": "home-009"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "längst bort",
+          "en": "at the far end"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "hallen",
+          "en": "the hall (hall)",
+          "word": "home-011"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ingen",
+          "en": "no",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "soffa",
+          "en": "sofa",
+          "word": "home-027"
+        },
+        {
+          "sv": "än",
+          "en": "yet"
+        },
+        {
+          "sv": "Vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "komma",
+          "en": "come",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "på middag",
+          "en": "for dinner",
+          "word": "food-047"
+        },
+        {
+          "sv": "på lördag",
+          "en": "on Saturday",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Note for the cat sitter",
+      "lines": [
+        {
+          "sv": "Hej Julia!",
+          "en": "Hi Julia!"
+        },
+        {
+          "sv": "Katten äter två gånger om dagen, morgon och kväll.",
+          "en": "The cat eats twice a day, morning and evening."
+        },
+        {
+          "sv": "Maten står i skåpet i köket.",
+          "en": "The food is in the kitchen cupboard."
+        },
+        {
+          "sv": "Glöm inte att vattna blommorna på balkongen.",
+          "en": "Don’t forget to water the flowers on the balcony."
+        },
+        {
+          "sv": "På kvällen stänger du fönstren.",
+          "en": "In the evening, close the windows."
+        },
+        {
+          "sv": "Nyckeln ligger under mattan.",
+          "en": "The key is under the rug."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How often does the cat eat?",
+          "choices": [
+            "Once a day",
+            "Three times a day",
+            "Twice a day",
+            "Four times a day"
+          ],
+          "answer": 2,
+          "explanation": "“Katten äter två gånger om dagen”."
+        },
+        {
+          "question": "Where is the cat’s food?",
+          "choices": [
+            "Under the sink",
+            "On the balcony",
+            "In the fridge",
+            "In the kitchen cupboard"
+          ],
+          "answer": 3,
+          "explanation": "“Maten står i skåpet i köket.”"
+        },
+        {
+          "question": "What must be done in the evening?",
+          "choices": [
+            "Water the flowers",
+            "Close the windows",
+            "Take out the rubbish",
+            "Open the door"
+          ],
+          "answer": 1,
+          "explanation": "“På kvällen stänger du fönstren.”"
+        },
+        {
+          "question": "Where is the key?",
+          "choices": [
+            "Under the rug",
+            "In the cupboard",
+            "On the balcony",
+            "In the letterbox"
+          ],
+          "answer": 0,
+          "explanation": "“Nyckeln ligger under mattan.”"
+        }
+      ],
+      "topics": [
+        "word-order-v2",
+        "definite-form",
+        "plural"
+      ],
+      "words": [
+        "essentials-001",
+        "nature-012",
+        "verbs-054",
+        "health-time-036",
+        "health-time-029",
+        "health-time-033",
+        "health-time-034",
+        "food-002",
+        "verbs-064",
+        "essentials-062",
+        "home-008",
+        "verbs-089",
+        "nature-010",
+        "essentials-063",
+        "home-015",
+        "verbs-041",
+        "home-020",
+        "home-022",
+        "verbs-063",
+        "essentials-071",
+        "home-036"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hi",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Julia",
+          "en": "Julia (a name)"
+        },
+        {
+          "sv": "Katten",
+          "en": "the cat (katt)",
+          "word": "nature-012"
+        },
+        {
+          "sv": "äter",
+          "en": "eats (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "två gånger",
+          "en": "twice",
+          "word": "health-time-036"
+        },
+        {
+          "sv": "om dagen",
+          "en": "a day",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "morgon",
+          "en": "morning",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "kväll",
+          "en": "evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "Maten",
+          "en": "the food (mat)",
+          "word": "food-002"
+        },
+        {
+          "sv": "står",
+          "en": "is; stands (stå)",
+          "word": "verbs-064"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "skåpet",
+          "en": "the cupboard (skåp)"
+        },
+        {
+          "sv": "köket",
+          "en": "the kitchen (kök)",
+          "word": "home-008"
+        },
+        {
+          "sv": "Glöm",
+          "en": "forget (glömma)",
+          "word": "verbs-089"
+        },
+        {
+          "sv": "vattna",
+          "en": "water"
+        },
+        {
+          "sv": "blommorna",
+          "en": "the flowers (blomma)",
+          "word": "nature-010"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "balkongen",
+          "en": "the balcony (balkong)",
+          "word": "home-015"
+        },
+        {
+          "sv": "På kvällen",
+          "en": "in the evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "stänger",
+          "en": "close (stänga)",
+          "word": "verbs-041"
+        },
+        {
+          "sv": "fönstren",
+          "en": "the windows (fönster)",
+          "word": "home-020"
+        },
+        {
+          "sv": "Nyckeln",
+          "en": "the key (nyckel)",
+          "word": "home-022"
+        },
+        {
+          "sv": "ligger",
+          "en": "is; lies (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "under",
+          "en": "under",
+          "word": "essentials-071"
+        },
+        {
+          "sv": "mattan",
+          "en": "the rug (matta)",
+          "word": "home-036"
+        }
+      ]
+    }
+  ]
+}

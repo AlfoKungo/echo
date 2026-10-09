@@ -171,6 +171,10 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       passage, example: shortest?.fr ?? passage.title,
     });
   }
+  // The level stops inside the highest level the bank holds, so a bank without B1 (Portuguese, Swedish) never shows
+  // B1 or drifts past what it can serve. French holds B1, so its ceiling is MAX_LEVEL.
+  const top = (['B1', 'A2', 'A1'] as GrammarLevel[]).find((level) => [...items.values()].some((item) => item.level === level)) ?? 'B1';
+  const ceiling = Math.min(MAX_LEVEL, BASE[top] + 0.99);
 
   // A long item is harder than its level alone suggests: more than 60% above the median length of its kind.
   const medians = new Map<string, number>();
@@ -660,7 +664,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
   function adjust(mode: Mode, outcome: Outcome): { before: number; after: number } {
     const before = levels().get(mode) ?? MIN_LEVEL;
     const step = outcome === 'correct' ? CORRECT_STEP : outcome === 'incorrect' ? -MISS_STEP : 0;
-    const after = Math.min(MAX_LEVEL, Math.max(MIN_LEVEL, before + step));
+    const after = Math.min(ceiling, Math.max(MIN_LEVEL, before + step));
     if (after !== before) saveLevel.run(after, mode);
     return { before, after };
   }
@@ -866,7 +870,7 @@ export function createComprehensionStore(bank: Bank, options: ComprehensionOptio
       const value = levels();
       const reach = new Set(MODES.flatMap((mode) => {
         const raw = value.get(mode) ?? MIN_LEVEL;
-        return [LEVEL_OF(Math.max(MIN_LEVEL, raw - BAND_BELOW)), LEVEL_OF(Math.min(MAX_LEVEL, raw + BAND_ABOVE))];
+        return [LEVEL_OF(Math.max(MIN_LEVEL, raw - BAND_BELOW)), LEVEL_OF(Math.min(ceiling, raw + BAND_ABOVE))];
       }));
       const met = new Set(db.query<{ id: string }, []>(`SELECT DISTINCT item_id AS id FROM comprehension_history WHERE ${SERVED}`).all().map((row) => row.id));
       return (['A1', 'A2', 'B1'] as GrammarLevel[]).filter((level) => reach.has(level)).map((level) => {

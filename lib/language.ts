@@ -9,9 +9,10 @@ export type LanguageCode = 'fr' | 'pt' | 'sv';
 
 // Every room the app can leave out; the server sends the ones that are off to the page (data-rooms-off) and the app
 // hides them. A language has only the rooms it has content for, so the app never shows French material under another.
+// sounds and sentencetape are Listen's Sounds and Tape tabs, which play French-only recordings.
 export const ROOMS = [
   'practise', 'words', 'walkman', 'grammar', 'verbs', 'listen', 'read', 'story', 'radio', 'songs', 'mistakes', 'statistics',
-  'friends', 'say', 'write', 'news', 'changeit', 'sentencecards', 'earsentences', 'families',
+  'friends', 'say', 'write', 'news', 'changeit', 'sentencecards', 'earsentences', 'families', 'sounds', 'sentencetape',
 ] as const;
 export type Room = (typeof ROOMS)[number];
 
@@ -87,14 +88,14 @@ export function languages(root: string, env: Record<string, string | undefined> 
       code: 'pt', english: 'Portuguese', own: 'Português', tag: 'pt-BR', gender: GENDER_RULES.pt,
       content: join(root, 'content/pt'), audio: join(root, 'audio/pt'), textKey: 'pt',
       tts: { script: 'scripts/render-audio.py', args: ['--lang', 'pt'] },
-      rooms: firstRooms, claude: false, port: ports.pt ?? 7795,
+      rooms: [...firstRooms, 'listen', 'read'], claude: false, port: ports.pt ?? 7795,
     },
     // Swedish: Higgs TTS 3 checked by KB-Whisper (render-audio-sv.py), which writes audio/sv by default.
     sv: {
       code: 'sv', english: 'Swedish', own: 'Svenska', tag: 'sv', gender: GENDER_RULES.sv,
       content: join(root, 'content/sv'), audio: join(root, 'audio/sv'), textKey: 'sv',
       tts: { script: 'scripts/render-audio-sv.py', args: [] },
-      rooms: firstRooms, claude: false, port: ports.sv ?? 7796,
+      rooms: [...firstRooms, 'listen', 'read'], claude: false, port: ports.sv ?? 7796,
     },
   };
 }
@@ -112,8 +113,8 @@ const GENDER_COLOURS: Record<Gender, string> = {
 
 // The page (static/index.html) for a language other than French: its title and the How it works passages every
 // language shares name the language; what its noun colours mean replaces French's colours and hooks (hooks come from
-// Claude, which only French asks); and what it says about Word families is marked as that room, so the app drops it
-// where the room is off.
+// Claude, which only French asks); and what it says about Word families, Sounds and the sentence tape is marked as
+// that room, so the app drops it where the room is off. Listen and Read hold A1 and A2 outside French.
 // French's page is served as written. A passage missing from the page throws, so the page cannot drift from this list
 // unnoticed (tests/language.test.ts).
 export function languagePage(page: string, language: Language): string {
@@ -127,6 +128,12 @@ export function languagePage(page: string, language: Language): string {
     ['with Word families, Word building and More for today', () => 'with <span data-room="families">Word families, Word building and </span>More for today'],
     [/<p><strong>Read · Listen<[^]*?<\/p>/, (found) => found.replaceAll('French', name)],
     [/<p><strong>Colours and hooks\.<\/strong>[^]*?<\/p>/, () => `<p><strong>Colours.</strong> Nouns are coloured by gender — ${colours} — wherever Echo shows ${name} (switch it off in Words options, •••).</p>`],
+    ['plays French and asks what you understood, trains your ear on twin sounds, and has a sentence tape', () => `plays ${name} and asks what you understood<span data-room="sounds">, trains your ear on twin sounds</span><span data-room="sentencetape">, and has a sentence tape</span>`],
+    ['<strong>Read</strong> shows French and asks the same', () => `<strong>Read</strong> shows ${name} and asks the same`],
+    [/<div data-info="listen read">[^]*?<\/div>/, (found) => found.replaceAll('French', name).replace('A1 towards B1', 'A1 and A2').replace('A1 · A2 · B1 label', 'A1 · A2 label')],
+    [/<p><strong>In Listen<\/strong>[^]*?<\/p>/, (found) => found.replaceAll('French', name)],
+    ['<p><strong>Sounds</strong>', () => '<p data-room="sounds"><strong>Sounds</strong>'],
+    ['<p><strong>Tape</strong> (in Listen', () => '<p data-room="sentencetape"><strong>Tape</strong> (in Listen'],
   ];
   for (const [passage, swap] of swaps) {
     const found = typeof passage === 'string' ? (page.includes(passage) ? passage : null) : passage.exec(page)?.[0] ?? null;

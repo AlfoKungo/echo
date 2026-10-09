@@ -1,0 +1,4551 @@
+{
+  "sentences": [
+    {
+      "id": "a1-city-s01",
+      "level": "A1",
+      "sv": "Sväng till vänster efter bron.",
+      "en": "Turn left after the bridge.",
+      "distractors": [
+        "Turn right after the bridge.",
+        "Turn left before the bridge.",
+        "Turn left after the park."
+      ],
+      "topics": [
+        "definite-form"
+      ],
+      "words": [
+        "town-048",
+        "essentials-078",
+        "travel-030"
+      ],
+      "gloss": [
+        {
+          "sv": "Sväng",
+          "en": "turn (svänga)"
+        },
+        {
+          "sv": "till vänster",
+          "en": "to the left",
+          "word": "town-048"
+        },
+        {
+          "sv": "efter",
+          "en": "after",
+          "word": "essentials-078"
+        },
+        {
+          "sv": "bron",
+          "en": "the bridge (bro)",
+          "word": "travel-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s02",
+      "level": "A1",
+      "sv": "Apoteket ligger mitt emot stationen.",
+      "en": "The pharmacy is opposite the station.",
+      "distractors": [
+        "The pharmacy is next to the station.",
+        "The bakery is opposite the station.",
+        "The pharmacy is opposite the church."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "travel-023",
+        "verbs-063",
+        "travel-011"
+      ],
+      "gloss": [
+        {
+          "sv": "Apoteket",
+          "en": "the pharmacy (apotek)",
+          "word": "travel-023"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "mitt emot",
+          "en": "opposite"
+        },
+        {
+          "sv": "stationen",
+          "en": "the station (station)",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s03",
+      "level": "A1",
+      "sv": "Museet ligger inte långt härifrån.",
+      "en": "The museum isn’t far from here.",
+      "distractors": [
+        "The museum is far from here.",
+        "The church isn’t far from here.",
+        "The museum isn’t far from the station."
+      ],
+      "topics": [
+        "negation-placement",
+        "definite-form"
+      ],
+      "words": [
+        "travel-043",
+        "verbs-063"
+      ],
+      "gloss": [
+        {
+          "sv": "Museet",
+          "en": "the museum (museum)",
+          "word": "travel-043"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "långt",
+          "en": "far"
+        },
+        {
+          "sv": "härifrån",
+          "en": "from here"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s04",
+      "level": "A1",
+      "sv": "Ursäkta, var är busshållplatsen?",
+      "en": "Excuse me, where is the bus stop?",
+      "distractors": [
+        "Excuse me, where is the underground station?",
+        "Excuse me, where is the taxi rank?",
+        "Excuse me, where is the car park?"
+      ],
+      "topics": [
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-010",
+        "essentials-035",
+        "verbs-001",
+        "travel-013",
+        "travel-005"
+      ],
+      "gloss": [
+        {
+          "sv": "Ursäkta",
+          "en": "excuse me",
+          "word": "essentials-010"
+        },
+        {
+          "sv": "var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "busshållplatsen",
+          "en": "the bus stop (busshållplats)",
+          "word": "travel-013"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s05",
+      "level": "A1",
+      "sv": "Du går över torget och sedan rakt fram.",
+      "en": "You cross the square and then go straight ahead.",
+      "distractors": [
+        "You cross the square and then turn right.",
+        "You cross the bridge and then go straight ahead.",
+        "You cross the square and then go back."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-004",
+        "travel-020",
+        "essentials-107",
+        "town-047"
+      ],
+      "gloss": [
+        {
+          "sv": "går över",
+          "en": "cross (gå över)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "torget",
+          "en": "the square (torg)",
+          "word": "travel-020"
+        },
+        {
+          "sv": "sedan",
+          "en": "then",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "rakt fram",
+          "en": "straight ahead",
+          "word": "town-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s06",
+      "level": "A1",
+      "sv": "Det finns en parkering bakom kyrkan.",
+      "en": "There’s a car park behind the church.",
+      "distractors": [
+        "There’s a car park in front of the church.",
+        "There’s a park behind the church.",
+        "There are two car parks behind the church."
+      ],
+      "topics": [
+        "en-ett",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-099",
+        "travel-045",
+        "essentials-074",
+        "travel-044"
+      ],
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there is (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "parkering",
+          "en": "car park",
+          "word": "travel-045"
+        },
+        {
+          "sv": "bakom",
+          "en": "behind",
+          "word": "essentials-074"
+        },
+        {
+          "sv": "kyrkan",
+          "en": "the church (kyrka)",
+          "word": "travel-044"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s07",
+      "level": "A1",
+      "sv": "Ta den andra gatan till höger.",
+      "en": "Take the second street on the right.",
+      "distractors": [
+        "Take the second street on the left.",
+        "Take the first street on the right.",
+        "Take the third street on the right."
+      ],
+      "topics": [
+        "definite-form",
+        "adjective-agreement"
+      ],
+      "words": [
+        "verbs-025",
+        "travel-002",
+        "town-049"
+      ],
+      "gloss": [
+        {
+          "sv": "Ta",
+          "en": "take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "andra",
+          "en": "second"
+        },
+        {
+          "sv": "gatan",
+          "en": "the street (gata)",
+          "word": "travel-002"
+        },
+        {
+          "sv": "till höger",
+          "en": "on the right",
+          "word": "town-049"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s08",
+      "level": "A1",
+      "sv": "Övergångsstället är framför bageriet.",
+      "en": "The pedestrian crossing is in front of the bakery.",
+      "distractors": [
+        "The pedestrian crossing is behind the bakery.",
+        "The pedestrian crossing is in front of the bank.",
+        "The bus stop is in front of the bakery."
+      ],
+      "topics": [
+        "definite-form"
+      ],
+      "words": [
+        "travel-031",
+        "verbs-001",
+        "essentials-075",
+        "travel-022"
+      ],
+      "gloss": [
+        {
+          "sv": "Övergångsstället",
+          "en": "the pedestrian crossing (övergångsställe)",
+          "word": "travel-031"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "framför",
+          "en": "in front of",
+          "word": "essentials-075"
+        },
+        {
+          "sv": "bageriet",
+          "en": "the bakery (bageri)",
+          "word": "travel-022"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s09",
+      "level": "A1",
+      "sv": "Du kan gå dit, det tar fem minuter.",
+      "en": "You can walk there, it takes five minutes.",
+      "distractors": [
+        "You can walk there, it takes fifteen minutes.",
+        "You can cycle there, it takes five minutes.",
+        "You can walk there, it takes five hours."
+      ],
+      "topics": [
+        "modal-verbs",
+        "plural"
+      ],
+      "words": [
+        "verbs-021",
+        "verbs-004",
+        "verbs-025",
+        "health-time-051",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "sv": "kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "gå",
+          "en": "walk (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "dit",
+          "en": "there"
+        },
+        {
+          "sv": "tar",
+          "en": "takes (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "fem",
+          "en": "five",
+          "word": "health-time-051"
+        },
+        {
+          "sv": "minuter",
+          "en": "minutes (minut)",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s10",
+      "level": "A1",
+      "sv": "Torget ligger mellan kyrkan och parken.",
+      "en": "The square is between the church and the park.",
+      "distractors": [
+        "The square is between the bank and the park.",
+        "The library is between the church and the park.",
+        "The square is between the church and the station."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "travel-020",
+        "verbs-063",
+        "essentials-073",
+        "travel-044",
+        "travel-029"
+      ],
+      "gloss": [
+        {
+          "sv": "Torget",
+          "en": "the square (torg)",
+          "word": "travel-020"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "mellan",
+          "en": "between",
+          "word": "essentials-073"
+        },
+        {
+          "sv": "kyrkan",
+          "en": "the church (kyrka)",
+          "word": "travel-044"
+        },
+        {
+          "sv": "parken",
+          "en": "the park (park)",
+          "word": "travel-029"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s11",
+      "level": "A1",
+      "sv": "Det här området är lugnt på söndagar.",
+      "en": "This area is quiet on Sundays.",
+      "distractors": [
+        "This area is noisy on Sundays.",
+        "This area is quiet on Saturdays.",
+        "This area is quiet in the evening."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "essentials-060",
+        "town-043",
+        "verbs-001",
+        "qualities-047",
+        "essentials-063",
+        "health-time-046"
+      ],
+      "gloss": [
+        {
+          "sv": "Det här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "området",
+          "en": "the area (område)",
+          "word": "town-043"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "lugnt",
+          "en": "quiet; calm (lugn)",
+          "word": "qualities-047"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "söndagar",
+          "en": "Sundays (söndag)",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s12",
+      "level": "A1",
+      "sv": "Vi letar efter turistbyrån.",
+      "en": "We’re looking for the tourist office.",
+      "distractors": [
+        "They’re looking for the tourist office.",
+        "We’re looking for the post office.",
+        "We’re looking for the town hall."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-031",
+        "travel-051"
+      ],
+      "gloss": [
+        {
+          "sv": "letar efter",
+          "en": "are looking for (leta efter)",
+          "word": "verbs-031"
+        },
+        {
+          "sv": "turistbyrån",
+          "en": "the tourist office (turistbyrå)"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s13",
+      "level": "A1",
+      "sv": "Buss nummer tolv går klockan åtta.",
+      "en": "Bus number twelve leaves at eight o’clock.",
+      "distractors": [
+        "Bus number two leaves at eight o’clock.",
+        "Bus number twelve leaves at nine o’clock.",
+        "Bus number twelve arrives at eight o’clock."
+      ],
+      "topics": [
+        "present-tense"
+      ],
+      "words": [
+        "travel-005",
+        "town-012",
+        "verbs-004",
+        "shopping-026",
+        "health-time-054"
+      ],
+      "gloss": [
+        {
+          "sv": "Buss",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "sv": "nummer",
+          "en": "number",
+          "word": "town-012"
+        },
+        {
+          "sv": "tolv",
+          "en": "twelve"
+        },
+        {
+          "sv": "går",
+          "en": "leaves (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s14",
+      "level": "A1",
+      "sv": "Tåget till Göteborg går från spår tre.",
+      "en": "The train to Gothenburg leaves from platform three.",
+      "distractors": [
+        "The train to Malmö leaves from platform three.",
+        "The train to Gothenburg leaves from platform two.",
+        "The train to Gothenburg arrives at platform three."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "travel-006",
+        "essentials-064",
+        "verbs-004",
+        "essentials-065",
+        "health-time-049"
+      ],
+      "gloss": [
+        {
+          "sv": "Tåget",
+          "en": "the train (tåg)",
+          "word": "travel-006"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "Göteborg",
+          "en": "Gothenburg"
+        },
+        {
+          "sv": "går",
+          "en": "leaves (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "spår",
+          "en": "platform; track"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s15",
+      "level": "A1",
+      "sv": "En tur och retur till Malmö, tack.",
+      "en": "A return ticket to Malmö, please.",
+      "distractors": [
+        "A single ticket to Malmö, please.",
+        "A return ticket to Uppsala, please.",
+        "Two return tickets to Malmö, please."
+      ],
+      "topics": [
+        "en-ett"
+      ],
+      "words": [
+        "essentials-064",
+        "essentials-002",
+        "travel-014"
+      ],
+      "gloss": [
+        {
+          "sv": "tur och retur",
+          "en": "return (ticket)"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "Malmö",
+          "en": "Malmö"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thanks",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s16",
+      "level": "A1",
+      "sv": "Nästa tunnelbana kommer om fyra minuter.",
+      "en": "The next underground train comes in four minutes.",
+      "distractors": [
+        "The next underground train comes in fourteen minutes.",
+        "The last underground train comes in four minutes.",
+        "The next bus comes in four minutes."
+      ],
+      "topics": [
+        "present-tense",
+        "plural"
+      ],
+      "words": [
+        "qualities-100",
+        "travel-007",
+        "verbs-005",
+        "essentials-070",
+        "health-time-050",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "sv": "Nästa",
+          "en": "next",
+          "word": "qualities-100"
+        },
+        {
+          "sv": "tunnelbana",
+          "en": "underground train",
+          "word": "travel-007"
+        },
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "om",
+          "en": "in",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        },
+        {
+          "sv": "minuter",
+          "en": "minutes (minut)",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s17",
+      "level": "A1",
+      "sv": "Min biljett kostar femtio kronor.",
+      "en": "My ticket costs fifty kronor.",
+      "distractors": [
+        "My ticket costs fifteen kronor.",
+        "Your ticket costs fifty kronor.",
+        "My ticket costs fifty euros."
+      ],
+      "topics": [
+        "possessives",
+        "plural"
+      ],
+      "words": [
+        "essentials-052",
+        "travel-014",
+        "verbs-053",
+        "shopping-004"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "biljett",
+          "en": "ticket",
+          "word": "travel-014"
+        },
+        {
+          "sv": "kostar",
+          "en": "costs (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "femtio",
+          "en": "fifty"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s18",
+      "level": "A1",
+      "sv": "Tågen är försenade idag.",
+      "en": "The trains are delayed today.",
+      "distractors": [
+        "The buses are delayed today.",
+        "The trains are on time today.",
+        "The trains are cancelled today."
+      ],
+      "topics": [
+        "plural",
+        "adjective-agreement"
+      ],
+      "words": [
+        "travel-006",
+        "verbs-001",
+        "travel-042",
+        "essentials-097"
+      ],
+      "gloss": [
+        {
+          "sv": "Tågen",
+          "en": "the trains (tåg)",
+          "word": "travel-006"
+        },
+        {
+          "sv": "är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "försenade",
+          "en": "delayed (försenad)",
+          "word": "travel-042"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s19",
+      "level": "A1",
+      "sv": "Du ska gå av vid nästa station.",
+      "en": "You should get off at the next station.",
+      "distractors": [
+        "You should get on at the next station.",
+        "You should get off at the last station.",
+        "You should get off at the next bus stop."
+      ],
+      "topics": [
+        "modal-verbs"
+      ],
+      "words": [
+        "verbs-023",
+        "verbs-004",
+        "qualities-100",
+        "travel-011"
+      ],
+      "gloss": [
+        {
+          "sv": "ska",
+          "en": "should (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "gå av",
+          "en": "get off (gå av)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "nästa",
+          "en": "next",
+          "word": "qualities-100"
+        },
+        {
+          "sv": "station",
+          "en": "station",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s20",
+      "level": "A1",
+      "sv": "Det finns inga taxibilar vid stationen.",
+      "en": "There are no taxis at the station.",
+      "distractors": [
+        "There are two taxis at the station.",
+        "There are no buses at the station.",
+        "There are no taxis at the airport."
+      ],
+      "topics": [
+        "negation-placement",
+        "plural"
+      ],
+      "words": [
+        "verbs-099",
+        "essentials-043",
+        "travel-009",
+        "travel-011"
+      ],
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there are (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "inga",
+          "en": "no (ingen)",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "taxibilar",
+          "en": "taxis (taxibil)",
+          "word": "travel-009"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "stationen",
+          "en": "the station (station)",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s21",
+      "level": "A1",
+      "sv": "Spårvagnen går var tionde minut.",
+      "en": "The tram runs every ten minutes.",
+      "distractors": [
+        "The tram runs every five minutes.",
+        "The bus runs every ten minutes.",
+        "The tram runs every twenty minutes."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-004",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "sv": "Spårvagnen",
+          "en": "the tram (spårvagn)"
+        },
+        {
+          "sv": "går",
+          "en": "runs (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "var tionde",
+          "en": "every tenth"
+        },
+        {
+          "sv": "minut",
+          "en": "minute",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s22",
+      "level": "A1",
+      "sv": "Idag cyklar jag till jobbet.",
+      "en": "Today I’m cycling to work.",
+      "distractors": [
+        "Today I’m walking to work.",
+        "Tomorrow I’m cycling to work.",
+        "Today I’m cycling to school."
+      ],
+      "topics": [
+        "word-order-v2",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-097",
+        "leisure-028",
+        "essentials-064",
+        "work-002"
+      ],
+      "gloss": [
+        {
+          "sv": "Idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "cyklar",
+          "en": "am cycling (cykla)",
+          "word": "leisure-028"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "jobbet",
+          "en": "work; the job (jobb)",
+          "word": "work-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s23",
+      "level": "A1",
+      "sv": "Går den här bussen till centrum?",
+      "en": "Does this bus go to the town centre?",
+      "distractors": [
+        "Does this bus go to the airport?",
+        "Does this train go to the town centre?",
+        "Does this bus come from the town centre?"
+      ],
+      "topics": [
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-004",
+        "essentials-060",
+        "travel-005",
+        "essentials-064",
+        "travel-028"
+      ],
+      "gloss": [
+        {
+          "sv": "Går",
+          "en": "does … go (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "bussen",
+          "en": "the bus (buss)",
+          "word": "travel-005"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "centrum",
+          "en": "town centre",
+          "word": "travel-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s24",
+      "level": "A1",
+      "sv": "Vi väntar på bussen vid torget.",
+      "en": "We’re waiting for the bus at the square.",
+      "distractors": [
+        "We’re waiting for the train at the square.",
+        "We’re waiting for the bus at the station.",
+        "They’re waiting for the bus at the square."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-037",
+        "travel-005",
+        "travel-020"
+      ],
+      "gloss": [
+        {
+          "sv": "väntar på",
+          "en": "are waiting for (vänta på)",
+          "word": "verbs-037"
+        },
+        {
+          "sv": "bussen",
+          "en": "the bus (buss)",
+          "word": "travel-005"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "torget",
+          "en": "the square (torg)",
+          "word": "travel-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s25",
+      "level": "A1",
+      "sv": "Föraren säljer inte biljetter.",
+      "en": "The driver doesn’t sell tickets.",
+      "distractors": [
+        "The driver sells tickets.",
+        "The driver doesn’t sell maps.",
+        "The driver doesn’t check tickets."
+      ],
+      "topics": [
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-051",
+        "travel-014"
+      ],
+      "gloss": [
+        {
+          "sv": "Föraren",
+          "en": "the driver (förare)"
+        },
+        {
+          "sv": "säljer",
+          "en": "sells (sälja)",
+          "word": "verbs-051"
+        },
+        {
+          "sv": "biljetter",
+          "en": "tickets (biljett)",
+          "word": "travel-014"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s26",
+      "level": "A1",
+      "sv": "Affären öppnar halv tio.",
+      "en": "The shop opens at half past nine.",
+      "distractors": [
+        "The shop opens at ten.",
+        "The shop closes at half past nine.",
+        "The bank opens at half past nine."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "travel-019",
+        "verbs-040",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "sv": "Affären",
+          "en": "the shop (affär)",
+          "word": "travel-019"
+        },
+        {
+          "sv": "öppnar",
+          "en": "opens (öppna)",
+          "word": "verbs-040"
+        },
+        {
+          "sv": "halv tio",
+          "en": "half past nine",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s27",
+      "level": "A1",
+      "sv": "Posten stänger klockan tolv på lördagar.",
+      "en": "The post office closes at twelve on Saturdays.",
+      "distractors": [
+        "The post office opens at twelve on Saturdays.",
+        "The post office closes at two on Saturdays.",
+        "The post office closes at twelve on Sundays."
+      ],
+      "topics": [
+        "present-tense",
+        "plural"
+      ],
+      "words": [
+        "town-009",
+        "verbs-041",
+        "shopping-026",
+        "essentials-063",
+        "health-time-045"
+      ],
+      "gloss": [
+        {
+          "sv": "Posten",
+          "en": "the post office (post)",
+          "word": "town-009"
+        },
+        {
+          "sv": "stänger",
+          "en": "closes (stänga)",
+          "word": "verbs-041"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "tolv",
+          "en": "twelve"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "lördagar",
+          "en": "Saturdays (lördag)",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s28",
+      "level": "A1",
+      "sv": "Klockan är redan kvart över sju.",
+      "en": "It’s already quarter past seven.",
+      "distractors": [
+        "It’s already quarter to seven.",
+        "It’s already quarter past eight.",
+        "It’s only quarter past seven."
+      ],
+      "topics": [
+        "present-tense"
+      ],
+      "words": [
+        "shopping-026",
+        "verbs-001",
+        "essentials-104",
+        "health-time-053"
+      ],
+      "gloss": [
+        {
+          "sv": "Klockan",
+          "en": "the time; the clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "redan",
+          "en": "already",
+          "word": "essentials-104"
+        },
+        {
+          "sv": "kvart över",
+          "en": "quarter past"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s29",
+      "level": "A1",
+      "sv": "Det första tåget går fem över fem.",
+      "en": "The first train leaves at five past five.",
+      "distractors": [
+        "The last train leaves at five past five.",
+        "The first train leaves at five to five.",
+        "The first train leaves at ten past five."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "definite-form"
+      ],
+      "words": [
+        "qualities-098",
+        "travel-006",
+        "verbs-004",
+        "health-time-051",
+        "essentials-072"
+      ],
+      "gloss": [
+        {
+          "sv": "första",
+          "en": "first",
+          "word": "qualities-098"
+        },
+        {
+          "sv": "tåget",
+          "en": "the train (tåg)",
+          "word": "travel-006"
+        },
+        {
+          "sv": "går",
+          "en": "leaves (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "fem",
+          "en": "five",
+          "word": "health-time-051"
+        },
+        {
+          "sv": "över",
+          "en": "past",
+          "word": "essentials-072"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s30",
+      "level": "A1",
+      "sv": "Museet är stängt på måndagar.",
+      "en": "The museum is closed on Mondays.",
+      "distractors": [
+        "The museum is open on Mondays.",
+        "The museum is closed on Tuesdays.",
+        "The library is closed on Mondays."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "travel-043",
+        "verbs-001",
+        "qualities-035",
+        "essentials-063",
+        "health-time-040"
+      ],
+      "gloss": [
+        {
+          "sv": "Museet",
+          "en": "the museum (museum)",
+          "word": "travel-043"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stängt",
+          "en": "closed (stängd)",
+          "word": "qualities-035"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "måndagar",
+          "en": "Mondays (måndag)",
+          "word": "health-time-040"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s31",
+      "level": "A1",
+      "sv": "Affärerna öppnar tidigt på fredagar.",
+      "en": "The shops open early on Fridays.",
+      "distractors": [
+        "The shops open late on Fridays.",
+        "The shops close early on Fridays.",
+        "The shops open early on Thursdays."
+      ],
+      "topics": [
+        "plural",
+        "definite-form"
+      ],
+      "words": [
+        "travel-019",
+        "verbs-040",
+        "qualities-106",
+        "essentials-063",
+        "health-time-044"
+      ],
+      "gloss": [
+        {
+          "sv": "Affärerna",
+          "en": "the shops (affär)",
+          "word": "travel-019"
+        },
+        {
+          "sv": "öppnar",
+          "en": "open (öppna)",
+          "word": "verbs-040"
+        },
+        {
+          "sv": "tidigt",
+          "en": "early",
+          "word": "qualities-106"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "fredagar",
+          "en": "Fridays (fredag)",
+          "word": "health-time-044"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s32",
+      "level": "A1",
+      "sv": "Min tid hos läkaren är klockan två.",
+      "en": "My appointment at the doctor’s is at two o’clock.",
+      "distractors": [
+        "My appointment at the doctor’s is at three o’clock.",
+        "Her appointment at the doctor’s is at two o’clock.",
+        "My appointment at the dentist’s is at two o’clock."
+      ],
+      "topics": [
+        "possessives",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-052",
+        "health-time-026",
+        "essentials-076",
+        "work-008",
+        "verbs-001",
+        "shopping-026",
+        "health-time-048"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "tid",
+          "en": "appointment",
+          "word": "health-time-026"
+        },
+        {
+          "sv": "hos",
+          "en": "at (someone’s place)",
+          "word": "essentials-076"
+        },
+        {
+          "sv": "läkaren",
+          "en": "the doctor (läkare)",
+          "word": "work-008"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s33",
+      "level": "A1",
+      "sv": "Kvällsbussen går inte på söndagar.",
+      "en": "The evening bus doesn’t run on Sundays.",
+      "distractors": [
+        "The evening bus runs on Sundays.",
+        "The morning bus doesn’t run on Sundays.",
+        "The evening bus doesn’t run on Saturdays."
+      ],
+      "topics": [
+        "negation-placement",
+        "plural"
+      ],
+      "words": [
+        "travel-005",
+        "verbs-004",
+        "essentials-063",
+        "health-time-046",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "sv": "Kvällsbussen",
+          "en": "the evening bus (kvällsbuss)",
+          "word": "travel-005"
+        },
+        {
+          "sv": "går",
+          "en": "runs (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "söndagar",
+          "en": "Sundays (söndag)",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s34",
+      "level": "A1",
+      "sv": "Bageriet på hörnet har väldigt goda bullar.",
+      "en": "The bakery on the corner has very good buns.",
+      "distractors": [
+        "The bakery on the corner has very good bread.",
+        "The café on the corner has very good buns.",
+        "The bakery by the station has very good buns."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "travel-022",
+        "essentials-063",
+        "town-024",
+        "verbs-002",
+        "essentials-093",
+        "qualities-004"
+      ],
+      "gloss": [
+        {
+          "sv": "Bageriet",
+          "en": "the bakery (bageri)",
+          "word": "travel-022"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "hörnet",
+          "en": "the corner (hörn)",
+          "word": "town-024"
+        },
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "väldigt",
+          "en": "very",
+          "word": "essentials-093"
+        },
+        {
+          "sv": "goda",
+          "en": "good (god)",
+          "word": "qualities-004"
+        },
+        {
+          "sv": "bullar",
+          "en": "buns (bulle)"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s35",
+      "level": "A1",
+      "sv": "Det finns en bank bredvid mataffären.",
+      "en": "There’s a bank next to the supermarket.",
+      "distractors": [
+        "There’s a bank opposite the supermarket.",
+        "There’s a bakery next to the supermarket.",
+        "There are two banks next to the supermarket."
+      ],
+      "topics": [
+        "en-ett",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-099",
+        "travel-025",
+        "travel-021"
+      ],
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there is (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "bank",
+          "en": "bank",
+          "word": "travel-025"
+        },
+        {
+          "sv": "bredvid",
+          "en": "next to"
+        },
+        {
+          "sv": "mataffären",
+          "en": "the supermarket (mataffär)",
+          "word": "travel-021"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s36",
+      "level": "A1",
+      "sv": "Jag letar efter en bankomat.",
+      "en": "I’m looking for a cash machine.",
+      "distractors": [
+        "I’m looking for a pharmacy.",
+        "She’s looking for a cash machine.",
+        "I’m looking for a bank."
+      ],
+      "topics": [
+        "en-ett",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-031"
+      ],
+      "gloss": [
+        {
+          "sv": "letar efter",
+          "en": "am looking for (leta efter)",
+          "word": "verbs-031"
+        },
+        {
+          "sv": "bankomat",
+          "en": "cash machine"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s37",
+      "level": "A1",
+      "sv": "Mataffären är öppen till klockan tio.",
+      "en": "The supermarket is open until ten o’clock.",
+      "distractors": [
+        "The supermarket is open until eight o’clock.",
+        "The supermarket is closed until ten o’clock.",
+        "The bakery is open until ten o’clock."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "definite-form"
+      ],
+      "words": [
+        "travel-021",
+        "verbs-001",
+        "qualities-034",
+        "essentials-064",
+        "shopping-026",
+        "health-time-056"
+      ],
+      "gloss": [
+        {
+          "sv": "Mataffären",
+          "en": "the supermarket (mataffär)",
+          "word": "travel-021"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "öppen",
+          "en": "open",
+          "word": "qualities-034"
+        },
+        {
+          "sv": "till",
+          "en": "until",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "tio",
+          "en": "ten",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s38",
+      "level": "A1",
+      "sv": "Den här gatan har många små affärer.",
+      "en": "This street has a lot of small shops.",
+      "distractors": [
+        "This street has a lot of big shops.",
+        "This square has a lot of small shops.",
+        "This street has a lot of small cafés."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "essentials-060",
+        "travel-002",
+        "verbs-002",
+        "essentials-048",
+        "qualities-002",
+        "travel-019"
+      ],
+      "gloss": [
+        {
+          "sv": "Den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "gatan",
+          "en": "street (gata)",
+          "word": "travel-002"
+        },
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "många",
+          "en": "many; a lot of",
+          "word": "essentials-048"
+        },
+        {
+          "sv": "små",
+          "en": "small (liten)",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "affärer",
+          "en": "shops (affär)",
+          "word": "travel-019"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s39",
+      "level": "A1",
+      "sv": "Du hittar färsk frukt på torget.",
+      "en": "You find fresh fruit at the market square.",
+      "distractors": [
+        "You find fresh fish at the market square.",
+        "You find fresh fruit at the supermarket.",
+        "You find cheap fruit at the market square."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-030",
+        "qualities-027",
+        "food-033",
+        "essentials-063",
+        "travel-020"
+      ],
+      "gloss": [
+        {
+          "sv": "hittar",
+          "en": "find (hitta)",
+          "word": "verbs-030"
+        },
+        {
+          "sv": "färsk",
+          "en": "fresh",
+          "word": "qualities-027"
+        },
+        {
+          "sv": "frukt",
+          "en": "fruit",
+          "word": "food-033"
+        },
+        {
+          "sv": "på",
+          "en": "at; on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "torget",
+          "en": "the market square (torg)",
+          "word": "travel-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s40",
+      "level": "A1",
+      "sv": "Apoteket på torget är stängt idag.",
+      "en": "The pharmacy on the square is closed today.",
+      "distractors": [
+        "The pharmacy on the square is open today.",
+        "The pharmacy on the square is closed tomorrow.",
+        "The bank on the square is closed today."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "definite-form"
+      ],
+      "words": [
+        "travel-023",
+        "essentials-063",
+        "travel-020",
+        "verbs-001",
+        "qualities-035",
+        "essentials-097"
+      ],
+      "gloss": [
+        {
+          "sv": "Apoteket",
+          "en": "the pharmacy (apotek)",
+          "word": "travel-023"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "torget",
+          "en": "the square (torg)",
+          "word": "travel-020"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stängt",
+          "en": "closed (stängd)",
+          "word": "qualities-035"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s41",
+      "level": "A1",
+      "sv": "Det lilla kaféet vid bron är mycket lugnt.",
+      "en": "The little café by the bridge is very quiet.",
+      "distractors": [
+        "The big café by the bridge is very quiet.",
+        "The little café by the station is very quiet.",
+        "The little café by the bridge is very noisy."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "definite-form"
+      ],
+      "words": [
+        "qualities-002",
+        "travel-030",
+        "verbs-001",
+        "essentials-090",
+        "qualities-047"
+      ],
+      "gloss": [
+        {
+          "sv": "lilla",
+          "en": "little (liten)",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "kaféet",
+          "en": "the café (kafé)"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "bron",
+          "en": "the bridge (bro)",
+          "word": "travel-030"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "mycket",
+          "en": "very",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "lugnt",
+          "en": "quiet; calm (lugn)",
+          "word": "qualities-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s42",
+      "level": "A1",
+      "sv": "Var köper man biljetter till tunnelbanan?",
+      "en": "Where do you buy tickets for the underground?",
+      "distractors": [
+        "When do you buy tickets for the underground?",
+        "Where do you buy tickets for the bus?",
+        "Where do you buy maps for the underground?"
+      ],
+      "topics": [
+        "questions",
+        "plural"
+      ],
+      "words": [
+        "essentials-035",
+        "verbs-050",
+        "travel-014",
+        "essentials-064",
+        "travel-007"
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "köper",
+          "en": "buy (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "biljetter",
+          "en": "tickets (biljett)",
+          "word": "travel-014"
+        },
+        {
+          "sv": "till",
+          "en": "for",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "tunnelbanan",
+          "en": "the underground (tunnelbana)",
+          "word": "travel-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s43",
+      "level": "A1",
+      "sv": "Parken stänger när det blir mörkt.",
+      "en": "The park closes when it gets dark.",
+      "distractors": [
+        "The park opens when it gets dark.",
+        "The museum closes when it gets dark.",
+        "The park closes when it gets cold."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "travel-029",
+        "verbs-041",
+        "essentials-038",
+        "verbs-097",
+        "qualities-045"
+      ],
+      "gloss": [
+        {
+          "sv": "Parken",
+          "en": "the park (park)",
+          "word": "travel-029"
+        },
+        {
+          "sv": "stänger",
+          "en": "closes (stänga)",
+          "word": "verbs-041"
+        },
+        {
+          "sv": "när",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "blir",
+          "en": "gets (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "mörkt",
+          "en": "dark (mörk)",
+          "word": "qualities-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s44",
+      "level": "A1",
+      "sv": "Det regnar mycket i centrum.",
+      "en": "It rains a lot in the town centre.",
+      "distractors": [
+        "It snows a lot in the town centre.",
+        "It rains a little in the town centre.",
+        "It rains a lot in the park."
+      ],
+      "topics": [
+        "present-tense"
+      ],
+      "words": [
+        "essentials-090",
+        "essentials-062",
+        "travel-028",
+        "nature-002"
+      ],
+      "gloss": [
+        {
+          "sv": "regnar",
+          "en": "rains (regna)"
+        },
+        {
+          "sv": "mycket",
+          "en": "a lot",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "centrum",
+          "en": "town centre",
+          "word": "travel-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s45",
+      "level": "A1",
+      "sv": "Idag är det kallt och det blåser.",
+      "en": "Today it’s cold and windy.",
+      "distractors": [
+        "Today it’s warm and windy.",
+        "Today it’s cold and sunny.",
+        "Tomorrow it’s cold and windy."
+      ],
+      "topics": [
+        "word-order-v2",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-097",
+        "verbs-001",
+        "qualities-026",
+        "nature-003"
+      ],
+      "gloss": [
+        {
+          "sv": "Idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "kallt",
+          "en": "cold (kall)",
+          "word": "qualities-026"
+        },
+        {
+          "sv": "blåser",
+          "en": "is windy (blåsa)"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s46",
+      "level": "A1",
+      "sv": "Himlen är grå, ta ditt paraply.",
+      "en": "The sky is grey, take your umbrella.",
+      "distractors": [
+        "The sky is blue, take your umbrella.",
+        "The sky is grey, take your jacket.",
+        "The sky is grey, take my umbrella."
+      ],
+      "topics": [
+        "possessives",
+        "definite-form"
+      ],
+      "words": [
+        "nature-005",
+        "verbs-001",
+        "qualities-095",
+        "verbs-025",
+        "essentials-053",
+        "shopping-028"
+      ],
+      "gloss": [
+        {
+          "sv": "Himlen",
+          "en": "the sky (himmel)",
+          "word": "nature-005"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "grå",
+          "en": "grey",
+          "word": "qualities-095"
+        },
+        {
+          "sv": "ta",
+          "en": "take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "ditt",
+          "en": "your (din)",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "paraply",
+          "en": "umbrella",
+          "word": "shopping-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s47",
+      "level": "A1",
+      "sv": "Det snöar inte i stan än.",
+      "en": "It isn’t snowing in town yet.",
+      "distractors": [
+        "It’s snowing in town now.",
+        "It isn’t raining in town yet.",
+        "It isn’t snowing in the park yet."
+      ],
+      "topics": [
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-062",
+        "travel-001",
+        "nature-004"
+      ],
+      "gloss": [
+        {
+          "sv": "snöar",
+          "en": "is snowing (snöa)"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "stan",
+          "en": "town; the town (stad)",
+          "word": "travel-001"
+        },
+        {
+          "sv": "än",
+          "en": "yet"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s48",
+      "level": "A1",
+      "sv": "I eftermiddag blir det varmt.",
+      "en": "This afternoon it’s going to be warm.",
+      "distractors": [
+        "This afternoon it’s going to be cold.",
+        "This evening it’s going to be warm.",
+        "This afternoon it’s going to be windy."
+      ],
+      "topics": [
+        "word-order-v2",
+        "adjective-agreement"
+      ],
+      "words": [
+        "verbs-097",
+        "qualities-025"
+      ],
+      "gloss": [
+        {
+          "sv": "I eftermiddag",
+          "en": "this afternoon"
+        },
+        {
+          "sv": "blir",
+          "en": "will be (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "varmt",
+          "en": "warm (varm)",
+          "word": "qualities-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s49",
+      "level": "A1",
+      "sv": "Det är dimma vid bron på morgonen.",
+      "en": "There’s fog by the bridge in the morning.",
+      "distractors": [
+        "There’s fog by the bridge in the evening.",
+        "There’s snow by the bridge in the morning.",
+        "There’s fog by the river in the morning."
+      ],
+      "topics": [
+        "definite-form"
+      ],
+      "words": [
+        "verbs-001",
+        "nature-048",
+        "travel-030",
+        "health-time-033"
+      ],
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "dimma",
+          "en": "fog",
+          "word": "nature-048"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "bron",
+          "en": "the bridge (bro)",
+          "word": "travel-030"
+        },
+        {
+          "sv": "på morgonen",
+          "en": "in the morning",
+          "word": "health-time-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s50",
+      "level": "A1",
+      "sv": "Radion säger att det kommer regn vid fem.",
+      "en": "The radio says it will rain around five.",
+      "distractors": [
+        "The radio says it will rain around nine.",
+        "The radio says it will snow around five.",
+        "The radio says it won’t rain around five."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "media-039",
+        "verbs-006",
+        "verbs-005",
+        "nature-002",
+        "health-time-051"
+      ],
+      "gloss": [
+        {
+          "sv": "Radion",
+          "en": "the radio (radio)",
+          "word": "media-039"
+        },
+        {
+          "sv": "säger",
+          "en": "says (säga)",
+          "word": "verbs-006"
+        },
+        {
+          "sv": "kommer",
+          "en": "will come (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "regn",
+          "en": "rain",
+          "word": "nature-002"
+        },
+        {
+          "sv": "vid",
+          "en": "around"
+        },
+        {
+          "sv": "fem",
+          "en": "five",
+          "word": "health-time-051"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-city-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Asking the way to the station",
+      "lines": [
+        {
+          "speaker": "Turisten",
+          "sv": "Ursäkta, jag letar efter centralstationen.",
+          "en": "Excuse me, I’m looking for the central station."
+        },
+        {
+          "speaker": "Kvinnan",
+          "sv": "Det är lätt. Gå rakt fram till trafikljuset.",
+          "en": "It’s easy. Go straight ahead as far as the traffic light."
+        },
+        {
+          "speaker": "Turisten",
+          "sv": "Och sedan?",
+          "en": "And then?"
+        },
+        {
+          "speaker": "Kvinnan",
+          "sv": "Sedan svänger du till höger. Stationen ligger bakom den stora parkeringen.",
+          "en": "Then you turn right. The station is behind the big car park."
+        },
+        {
+          "speaker": "Turisten",
+          "sv": "Är det långt härifrån?",
+          "en": "Is it far from here?"
+        },
+        {
+          "speaker": "Kvinnan",
+          "sv": "Nej, tio minuter till fots. Buss nummer sex går också dit.",
+          "en": "No, ten minutes on foot. Bus number six goes there too."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where does the tourist turn right?",
+          "choices": [
+            "Before the bridge",
+            "At the traffic light",
+            "At the car park",
+            "At the station"
+          ],
+          "answer": 1,
+          "explanation": "“Gå rakt fram till trafikljuset.”, then “Sedan svänger du till höger.”"
+        },
+        {
+          "question": "How long is the walk?",
+          "choices": [
+            "Six minutes",
+            "Twenty minutes",
+            "Ten minutes",
+            "Five minutes"
+          ],
+          "answer": 2,
+          "explanation": "“Nej, tio minuter till fots.” The six is the bus number, not the time."
+        },
+        {
+          "question": "What is the station behind?",
+          "choices": [
+            "The bakery",
+            "The traffic light",
+            "The bus stop",
+            "The big car park"
+          ],
+          "answer": 3,
+          "explanation": "“Stationen ligger bakom den stora parkeringen.”"
+        },
+        {
+          "question": "What else goes to the station?",
+          "choices": [
+            "Bus number six",
+            "Bus number ten",
+            "The underground",
+            "A taxi"
+          ],
+          "answer": 0,
+          "explanation": "“Buss nummer sex går också dit.”"
+        }
+      ],
+      "topics": [
+        "definite-form",
+        "questions",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-010",
+        "verbs-031",
+        "travel-011",
+        "verbs-001",
+        "qualities-022",
+        "verbs-004",
+        "town-047",
+        "essentials-064",
+        "town-041",
+        "essentials-080",
+        "essentials-107",
+        "town-049",
+        "verbs-063",
+        "essentials-074",
+        "qualities-001",
+        "travel-045",
+        "essentials-005",
+        "health-time-056",
+        "health-time-028",
+        "town-046",
+        "travel-005",
+        "town-012",
+        "health-time-052",
+        "essentials-087"
+      ],
+      "gloss": [
+        {
+          "sv": "Ursäkta",
+          "en": "excuse me",
+          "word": "essentials-010"
+        },
+        {
+          "sv": "letar efter",
+          "en": "am looking for (leta efter)",
+          "word": "verbs-031"
+        },
+        {
+          "sv": "centralstationen",
+          "en": "the central station (centralstation)",
+          "word": "travel-011"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "lätt",
+          "en": "easy",
+          "word": "qualities-022"
+        },
+        {
+          "sv": "Gå",
+          "en": "go (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "rakt fram",
+          "en": "straight ahead",
+          "word": "town-047"
+        },
+        {
+          "sv": "till",
+          "en": "to; as far as",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "trafikljuset",
+          "en": "the traffic light (trafikljus)",
+          "word": "town-041"
+        },
+        {
+          "sv": "Och",
+          "en": "and",
+          "word": "essentials-080"
+        },
+        {
+          "sv": "sedan",
+          "en": "then",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "Sedan",
+          "en": "then",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "svänger",
+          "en": "turn (svänga)"
+        },
+        {
+          "sv": "till höger",
+          "en": "to the right",
+          "word": "town-049"
+        },
+        {
+          "sv": "Stationen",
+          "en": "the station (station)",
+          "word": "travel-011"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "bakom",
+          "en": "behind",
+          "word": "essentials-074"
+        },
+        {
+          "sv": "stora",
+          "en": "big (stor)",
+          "word": "qualities-001"
+        },
+        {
+          "sv": "parkeringen",
+          "en": "the car park (parkering)",
+          "word": "travel-045"
+        },
+        {
+          "sv": "Är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "långt",
+          "en": "far"
+        },
+        {
+          "sv": "härifrån",
+          "en": "from here"
+        },
+        {
+          "sv": "Nej",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "sv": "tio",
+          "en": "ten",
+          "word": "health-time-056"
+        },
+        {
+          "sv": "minuter",
+          "en": "minutes (minut)",
+          "word": "health-time-028"
+        },
+        {
+          "sv": "till fots",
+          "en": "on foot",
+          "word": "town-046"
+        },
+        {
+          "sv": "Buss",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "sv": "nummer",
+          "en": "number",
+          "word": "town-012"
+        },
+        {
+          "sv": "sex",
+          "en": "six",
+          "word": "health-time-052"
+        },
+        {
+          "sv": "går",
+          "en": "goes (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "också",
+          "en": "also; too",
+          "word": "essentials-087"
+        },
+        {
+          "sv": "dit",
+          "en": "there"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Buying a train ticket",
+      "lines": [
+        {
+          "speaker": "Kassören",
+          "sv": "Hej! Vart ska du åka?",
+          "en": "Hello! Where are you going?"
+        },
+        {
+          "speaker": "Elin",
+          "sv": "Till Uppsala ikväll. En enkel biljett, tack.",
+          "en": "To Uppsala this evening. A single ticket, please."
+        },
+        {
+          "speaker": "Kassören",
+          "sv": "Det går ett tåg klockan sex och ett klockan åtta.",
+          "en": "There’s a train at six and one at eight."
+        },
+        {
+          "speaker": "Elin",
+          "sv": "Det första, då. När är det framme?",
+          "en": "The first one, then. When does it arrive?"
+        },
+        {
+          "speaker": "Kassören",
+          "sv": "Klockan sju. Det kostar hundratjugo kronor.",
+          "en": "At seven. It costs a hundred and twenty kronor."
+        },
+        {
+          "speaker": "Elin",
+          "sv": "Kan jag betala med kort?",
+          "en": "Can I pay by card?"
+        },
+        {
+          "speaker": "Kassören",
+          "sv": "Ja, självklart. Tåget går från spår fyra.",
+          "en": "Yes, of course. The train leaves from platform four."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where is Elin going?",
+          "choices": [
+            "To Stockholm",
+            "To Malmö",
+            "To Uppsala",
+            "To Gothenburg"
+          ],
+          "answer": 2,
+          "explanation": "“Till Uppsala ikväll.”"
+        },
+        {
+          "question": "What kind of ticket does she buy?",
+          "choices": [
+            "A return ticket",
+            "Two single tickets",
+            "A weekly pass",
+            "A single ticket"
+          ],
+          "answer": 3,
+          "explanation": "“En enkel biljett, tack.”"
+        },
+        {
+          "question": "What time does her train arrive?",
+          "choices": [
+            "At seven",
+            "At six",
+            "At eight",
+            "At four"
+          ],
+          "answer": 0,
+          "explanation": "She takes the first train, at six, and it arrives at seven: “Klockan sju.”"
+        },
+        {
+          "question": "How much does the ticket cost?",
+          "choices": [
+            "Two hundred kronor",
+            "A hundred and twenty kronor",
+            "Four hundred kronor",
+            "Twenty kronor"
+          ],
+          "answer": 1,
+          "explanation": "“Det kostar hundratjugo kronor.”"
+        }
+      ],
+      "topics": [
+        "questions",
+        "modal-verbs",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-035",
+        "verbs-023",
+        "verbs-034",
+        "essentials-064",
+        "health-time-034",
+        "travel-014",
+        "essentials-002",
+        "verbs-004",
+        "travel-006",
+        "shopping-026",
+        "health-time-052",
+        "health-time-054",
+        "qualities-098",
+        "essentials-108",
+        "essentials-038",
+        "verbs-001",
+        "health-time-053",
+        "verbs-053",
+        "shopping-004",
+        "verbs-021",
+        "verbs-052",
+        "essentials-066",
+        "shopping-006",
+        "essentials-004",
+        "essentials-065",
+        "health-time-050",
+        "health-time-057",
+        "health-time-058"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Vart",
+          "en": "where (to)",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "ska",
+          "en": "are going to (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "åka",
+          "en": "go; travel (åka)",
+          "word": "verbs-034"
+        },
+        {
+          "sv": "Till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "Uppsala",
+          "en": "Uppsala"
+        },
+        {
+          "sv": "ikväll",
+          "en": "this evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "enkel biljett",
+          "en": "single ticket",
+          "word": "travel-014"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thanks",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "går",
+          "en": "goes; leaves (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "tåg",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sex",
+          "en": "six",
+          "word": "health-time-052"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        },
+        {
+          "sv": "första",
+          "en": "first (one)",
+          "word": "qualities-098"
+        },
+        {
+          "sv": "då",
+          "en": "then",
+          "word": "essentials-108"
+        },
+        {
+          "sv": "När",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "framme",
+          "en": "there; arrived"
+        },
+        {
+          "sv": "Klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        },
+        {
+          "sv": "kostar",
+          "en": "costs (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "hundratjugo",
+          "en": "a hundred and twenty"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        },
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "betala",
+          "en": "pay",
+          "word": "verbs-052"
+        },
+        {
+          "sv": "med",
+          "en": "with; by",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "kort",
+          "en": "card",
+          "word": "shopping-006"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "självklart",
+          "en": "of course"
+        },
+        {
+          "sv": "Tåget",
+          "en": "the train (tåg)",
+          "word": "travel-006"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "spår",
+          "en": "platform; track"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "On the wrong bus",
+      "lines": [
+        {
+          "speaker": "Johan",
+          "sv": "Ursäkta, går den här bussen till sjukhuset?",
+          "en": "Excuse me, does this bus go to the hospital?"
+        },
+        {
+          "speaker": "Föraren",
+          "sv": "Nej, den här bussen går till flygplatsen.",
+          "en": "No, this bus goes to the airport."
+        },
+        {
+          "speaker": "Johan",
+          "sv": "Åh nej! Vad ska jag göra?",
+          "en": "Oh no! What should I do?"
+        },
+        {
+          "speaker": "Föraren",
+          "sv": "Gå av vid nästa hållplats och ta buss nummer fyra.",
+          "en": "Get off at the next stop and take bus number four."
+        },
+        {
+          "speaker": "Johan",
+          "sv": "Går den ofta?",
+          "en": "Does it run often?"
+        },
+        {
+          "speaker": "Föraren",
+          "sv": "Ja, var femte minut.",
+          "en": "Yes, every five minutes."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where does Johan want to go?",
+          "choices": [
+            "To the airport",
+            "To the station",
+            "To the town centre",
+            "To the hospital"
+          ],
+          "answer": 3,
+          "explanation": "“går den här bussen till sjukhuset?”"
+        },
+        {
+          "question": "Where is this bus going?",
+          "choices": [
+            "To the airport",
+            "To the hospital",
+            "To the next stop",
+            "To the station"
+          ],
+          "answer": 0,
+          "explanation": "“Nej, den här bussen går till flygplatsen.”"
+        },
+        {
+          "question": "Where should Johan get off?",
+          "choices": [
+            "At the airport",
+            "At the next stop",
+            "At the hospital",
+            "At the last stop"
+          ],
+          "answer": 1,
+          "explanation": "“Gå av vid nästa hållplats”"
+        },
+        {
+          "question": "How often does bus number four run?",
+          "choices": [
+            "Every fifteen minutes",
+            "Every ten minutes",
+            "Every five minutes",
+            "Once an hour"
+          ],
+          "answer": 2,
+          "explanation": "“Ja, var femte minut.”"
+        }
+      ],
+      "topics": [
+        "questions",
+        "definite-form",
+        "modal-verbs"
+      ],
+      "words": [
+        "essentials-010",
+        "verbs-004",
+        "essentials-060",
+        "travel-005",
+        "essentials-064",
+        "travel-024",
+        "essentials-005",
+        "travel-012",
+        "essentials-034",
+        "verbs-023",
+        "verbs-003",
+        "qualities-100",
+        "travel-013",
+        "verbs-025",
+        "town-012",
+        "health-time-050",
+        "essentials-102",
+        "essentials-004",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "sv": "Ursäkta",
+          "en": "excuse me",
+          "word": "essentials-010"
+        },
+        {
+          "sv": "går",
+          "en": "goes (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "bussen",
+          "en": "the bus (buss)",
+          "word": "travel-005"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "sjukhuset",
+          "en": "the hospital (sjukhus)",
+          "word": "travel-024"
+        },
+        {
+          "sv": "Nej",
+          "en": "no",
+          "word": "essentials-005"
+        },
+        {
+          "sv": "flygplatsen",
+          "en": "the airport (flygplats)",
+          "word": "travel-012"
+        },
+        {
+          "sv": "Åh nej",
+          "en": "oh no"
+        },
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "ska",
+          "en": "should (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "göra",
+          "en": "do",
+          "word": "verbs-003"
+        },
+        {
+          "sv": "Gå av",
+          "en": "get off (gå av)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "nästa",
+          "en": "next",
+          "word": "qualities-100"
+        },
+        {
+          "sv": "hållplats",
+          "en": "stop",
+          "word": "travel-013"
+        },
+        {
+          "sv": "ta",
+          "en": "take",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "buss",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "sv": "nummer",
+          "en": "number",
+          "word": "town-012"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        },
+        {
+          "sv": "Går",
+          "en": "does … run (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "ofta",
+          "en": "often",
+          "word": "essentials-102"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "var femte",
+          "en": "every fifth"
+        },
+        {
+          "sv": "minut",
+          "en": "minute",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the market stall",
+      "lines": [
+        {
+          "speaker": "Försäljaren",
+          "sv": "Hej! Vad vill du ha idag?",
+          "en": "Hello! What would you like today?"
+        },
+        {
+          "speaker": "Sara",
+          "sv": "Ett kilo tomater och två gurkor, tack.",
+          "en": "A kilo of tomatoes and two cucumbers, please."
+        },
+        {
+          "speaker": "Försäljaren",
+          "sv": "Varsågod. Något mer?",
+          "en": "Here you are. Anything else?"
+        },
+        {
+          "speaker": "Sara",
+          "sv": "Har du jordgubbar?",
+          "en": "Do you have strawberries?"
+        },
+        {
+          "speaker": "Försäljaren",
+          "sv": "Ja, de är väldigt goda idag. Fyrtio kronor för en låda.",
+          "en": "Yes, they’re very good today. Forty kronor for a box."
+        },
+        {
+          "speaker": "Sara",
+          "sv": "Då tar jag en låda. Hur mycket blir det?",
+          "en": "Then I’ll take a box. How much is that?"
+        },
+        {
+          "speaker": "Försäljaren",
+          "sv": "Det blir nittio kronor.",
+          "en": "That’s ninety kronor."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many cucumbers does Sara buy?",
+          "choices": [
+            "Two",
+            "One",
+            "Three",
+            "Four"
+          ],
+          "answer": 0,
+          "explanation": "“två gurkor”"
+        },
+        {
+          "question": "What does Sara ask about?",
+          "choices": [
+            "Apples",
+            "Strawberries",
+            "Potatoes",
+            "Onions"
+          ],
+          "answer": 1,
+          "explanation": "“Har du jordgubbar?”"
+        },
+        {
+          "question": "How much is one box of strawberries?",
+          "choices": [
+            "Ninety kronor",
+            "Fourteen kronor",
+            "Forty kronor",
+            "Four kronor"
+          ],
+          "answer": 2,
+          "explanation": "“Fyrtio kronor för en låda.”"
+        },
+        {
+          "question": "How much does Sara pay in total?",
+          "choices": [
+            "Forty kronor",
+            "Fifty kronor",
+            "Nineteen kronor",
+            "Ninety kronor"
+          ],
+          "answer": 3,
+          "explanation": "“Det blir nittio kronor.”"
+        }
+      ],
+      "topics": [
+        "plural",
+        "modal-verbs",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-034",
+        "verbs-020",
+        "verbs-002",
+        "essentials-097",
+        "health-time-047",
+        "shopping-036",
+        "food-027",
+        "health-time-048",
+        "food-032",
+        "essentials-002",
+        "essentials-011",
+        "qualities-108",
+        "food-025",
+        "essentials-004",
+        "verbs-001",
+        "essentials-093",
+        "qualities-004",
+        "shopping-004",
+        "essentials-068",
+        "home-035",
+        "essentials-108",
+        "verbs-025",
+        "essentials-039",
+        "verbs-097",
+        "essentials-042"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "Ett",
+          "en": "one; a",
+          "word": "health-time-047"
+        },
+        {
+          "sv": "kilo",
+          "en": "kilo",
+          "word": "shopping-036"
+        },
+        {
+          "sv": "tomater",
+          "en": "tomatoes (tomat)",
+          "word": "food-027"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "gurkor",
+          "en": "cucumbers (gurka)",
+          "word": "food-032"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thanks",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "Varsågod",
+          "en": "here you are",
+          "word": "essentials-011"
+        },
+        {
+          "sv": "Något mer",
+          "en": "anything else",
+          "word": "qualities-108"
+        },
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "jordgubbar",
+          "en": "strawberries (jordgubbe)",
+          "word": "food-025"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "väldigt",
+          "en": "very",
+          "word": "essentials-093"
+        },
+        {
+          "sv": "goda",
+          "en": "good (god)",
+          "word": "qualities-004"
+        },
+        {
+          "sv": "Fyrtio",
+          "en": "forty"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        },
+        {
+          "sv": "för",
+          "en": "for",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "låda",
+          "en": "box",
+          "word": "home-035"
+        },
+        {
+          "sv": "Då",
+          "en": "then",
+          "word": "essentials-108"
+        },
+        {
+          "sv": "tar",
+          "en": "take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "Hur mycket",
+          "en": "how much",
+          "word": "essentials-039"
+        },
+        {
+          "sv": "blir",
+          "en": "is; comes to (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "nittio",
+          "en": "ninety"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A message from a friend",
+      "lines": [
+        {
+          "sv": "Hej Lisa! Vi ses på kaféet vid torget klockan tre.",
+          "en": "Hi Lisa! See you at the café by the square at three."
+        },
+        {
+          "sv": "Ta tunnelbanan till Slussen.",
+          "en": "Take the underground to Slussen."
+        },
+        {
+          "sv": "Gå upp till gatan och sväng sedan till vänster.",
+          "en": "Go up to the street and then turn left."
+        },
+        {
+          "sv": "Kaféet ligger bredvid en liten bokhandel.",
+          "en": "The café is next to a small bookshop."
+        },
+        {
+          "sv": "Ring mig om du inte hittar det! Kram, Anna.",
+          "en": "Call me if you can’t find it! Love, Anna."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What time do they meet?",
+          "choices": [
+            "At two",
+            "At three",
+            "At four",
+            "At five"
+          ],
+          "answer": 1,
+          "explanation": "“Vi ses på kaféet vid torget klockan tre.”"
+        },
+        {
+          "question": "Which station should Lisa go to?",
+          "choices": [
+            "Odenplan",
+            "Fridhemsplan",
+            "Slussen",
+            "Gamla stan"
+          ],
+          "answer": 2,
+          "explanation": "“Ta tunnelbanan till Slussen.”"
+        },
+        {
+          "question": "Which way does Lisa turn at the street?",
+          "choices": [
+            "Right",
+            "Straight on",
+            "Back",
+            "Left"
+          ],
+          "answer": 3,
+          "explanation": "“sväng sedan till vänster”"
+        },
+        {
+          "question": "What is next to the café?",
+          "choices": [
+            "A small bookshop",
+            "A big bank",
+            "A bakery",
+            "A cinema"
+          ],
+          "answer": 0,
+          "explanation": "“Kaféet ligger bredvid en liten bokhandel.”"
+        }
+      ],
+      "topics": [
+        "definite-form",
+        "object-pronouns",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-015",
+        "essentials-063",
+        "travel-020",
+        "shopping-026",
+        "health-time-049",
+        "verbs-025",
+        "travel-007",
+        "essentials-064",
+        "verbs-059",
+        "travel-002",
+        "essentials-107",
+        "town-048",
+        "verbs-063",
+        "qualities-002",
+        "verbs-082",
+        "essentials-070",
+        "verbs-030"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hi",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Lisa",
+          "en": "Lisa"
+        },
+        {
+          "sv": "Vi ses",
+          "en": "see you",
+          "word": "essentials-015"
+        },
+        {
+          "sv": "på",
+          "en": "at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "kaféet",
+          "en": "the café (kafé)"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "torget",
+          "en": "the square (torg)",
+          "word": "travel-020"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "Ta",
+          "en": "take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "tunnelbanan",
+          "en": "the underground (tunnelbana)",
+          "word": "travel-007"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "Slussen",
+          "en": "Slussen (a station)"
+        },
+        {
+          "sv": "Gå upp",
+          "en": "go up (gå upp)",
+          "word": "verbs-059"
+        },
+        {
+          "sv": "gatan",
+          "en": "the street (gata)",
+          "word": "travel-002"
+        },
+        {
+          "sv": "sväng",
+          "en": "turn (svänga)"
+        },
+        {
+          "sv": "sedan",
+          "en": "then",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "till vänster",
+          "en": "to the left",
+          "word": "town-048"
+        },
+        {
+          "sv": "Kaféet",
+          "en": "the café (kafé)"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "bredvid",
+          "en": "next to"
+        },
+        {
+          "sv": "liten",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "bokhandel",
+          "en": "bookshop"
+        },
+        {
+          "sv": "Ring",
+          "en": "call (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "hittar",
+          "en": "find (hitta)",
+          "word": "verbs-030"
+        },
+        {
+          "sv": "Kram",
+          "en": "love; a hug"
+        },
+        {
+          "sv": "Anna",
+          "en": "Anna"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "Notice at the bus stop",
+      "lines": [
+        {
+          "sv": "Observera: från måndag kör linje åtta en ny väg.",
+          "en": "Please note: from Monday, line eight takes a new route."
+        },
+        {
+          "sv": "Bussen stannar inte vid torget.",
+          "en": "The bus doesn’t stop at the square."
+        },
+        {
+          "sv": "Den nya hållplatsen ligger framför biblioteket, nära parken.",
+          "en": "The new stop is in front of the library, near the park."
+        },
+        {
+          "sv": "Första bussen går klockan sex. Sista bussen går klockan elva på kvällen.",
+          "en": "The first bus leaves at six. The last bus leaves at eleven in the evening."
+        },
+        {
+          "sv": "Har du frågor? Fråga personalen på stationen.",
+          "en": "Do you have questions? Ask the staff at the station."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When does the change start?",
+          "choices": [
+            "On Friday",
+            "On Saturday",
+            "On Monday",
+            "On Tuesday"
+          ],
+          "answer": 2,
+          "explanation": "“från måndag kör linje åtta en ny väg”"
+        },
+        {
+          "question": "Where does the bus no longer stop?",
+          "choices": [
+            "At the library",
+            "At the park",
+            "At the station",
+            "At the square"
+          ],
+          "answer": 3,
+          "explanation": "“Bussen stannar inte vid torget.”"
+        },
+        {
+          "question": "Where is the new stop?",
+          "choices": [
+            "In front of the library",
+            "Behind the park",
+            "Next to the station",
+            "On the square"
+          ],
+          "answer": 0,
+          "explanation": "“Den nya hållplatsen ligger framför biblioteket”"
+        },
+        {
+          "question": "When does the last bus leave?",
+          "choices": [
+            "At six",
+            "At eleven in the evening",
+            "At eight",
+            "At midnight"
+          ],
+          "answer": 1,
+          "explanation": "“Sista bussen går klockan elva på kvällen.”"
+        }
+      ],
+      "topics": [
+        "negation-placement",
+        "definite-form",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-065",
+        "health-time-040",
+        "verbs-096",
+        "health-time-054",
+        "qualities-010",
+        "travel-003",
+        "travel-005",
+        "verbs-033",
+        "travel-020",
+        "travel-013",
+        "verbs-063",
+        "essentials-075",
+        "town-001",
+        "qualities-050",
+        "travel-029",
+        "qualities-098",
+        "verbs-004",
+        "shopping-026",
+        "health-time-052",
+        "qualities-099",
+        "health-time-034",
+        "verbs-002",
+        "verbs-008",
+        "essentials-063",
+        "travel-011"
+      ],
+      "gloss": [
+        {
+          "sv": "Observera",
+          "en": "please note"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "måndag",
+          "en": "Monday",
+          "word": "health-time-040"
+        },
+        {
+          "sv": "kör",
+          "en": "runs; drives (köra)",
+          "word": "verbs-096"
+        },
+        {
+          "sv": "linje",
+          "en": "line; route"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        },
+        {
+          "sv": "ny",
+          "en": "new",
+          "word": "qualities-010"
+        },
+        {
+          "sv": "väg",
+          "en": "route; way",
+          "word": "travel-003"
+        },
+        {
+          "sv": "Bussen",
+          "en": "the bus (buss)",
+          "word": "travel-005"
+        },
+        {
+          "sv": "stannar",
+          "en": "stops (stanna)",
+          "word": "verbs-033"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "torget",
+          "en": "the square (torg)",
+          "word": "travel-020"
+        },
+        {
+          "sv": "nya",
+          "en": "new (ny)",
+          "word": "qualities-010"
+        },
+        {
+          "sv": "hållplatsen",
+          "en": "the stop (hållplats)",
+          "word": "travel-013"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "framför",
+          "en": "in front of",
+          "word": "essentials-075"
+        },
+        {
+          "sv": "biblioteket",
+          "en": "the library (bibliotek)",
+          "word": "town-001"
+        },
+        {
+          "sv": "nära",
+          "en": "near",
+          "word": "qualities-050"
+        },
+        {
+          "sv": "parken",
+          "en": "the park (park)",
+          "word": "travel-029"
+        },
+        {
+          "sv": "Första",
+          "en": "first",
+          "word": "qualities-098"
+        },
+        {
+          "sv": "bussen",
+          "en": "the bus (buss)",
+          "word": "travel-005"
+        },
+        {
+          "sv": "går",
+          "en": "leaves (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sex",
+          "en": "six",
+          "word": "health-time-052"
+        },
+        {
+          "sv": "Sista",
+          "en": "last",
+          "word": "qualities-099"
+        },
+        {
+          "sv": "elva",
+          "en": "eleven"
+        },
+        {
+          "sv": "på kvällen",
+          "en": "in the evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "frågor",
+          "en": "questions (fråga)"
+        },
+        {
+          "sv": "Fråga",
+          "en": "ask (fråga)",
+          "word": "verbs-008"
+        },
+        {
+          "sv": "personalen",
+          "en": "the staff (personal)"
+        },
+        {
+          "sv": "på",
+          "en": "at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "stationen",
+          "en": "the station (station)",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "The weather in town today",
+      "lines": [
+        {
+          "sv": "God morgon! Här är vädret i Stockholm idag.",
+          "en": "Good morning! Here’s the weather in Stockholm today."
+        },
+        {
+          "sv": "På morgonen är det kallt och dimmigt vid vattnet.",
+          "en": "In the morning it’s cold and foggy by the water."
+        },
+        {
+          "sv": "Vid lunch kommer solen fram.",
+          "en": "Around lunchtime the sun comes out."
+        },
+        {
+          "sv": "På eftermiddagen blir det ganska varmt, ungefär femton grader.",
+          "en": "In the afternoon it gets quite warm, about fifteen degrees."
+        },
+        {
+          "sv": "På kvällen kommer regnet och det blåser mycket.",
+          "en": "In the evening the rain comes and it’s very windy."
+        },
+        {
+          "sv": "Ta med ett paraply om du går ut ikväll!",
+          "en": "Take an umbrella if you go out tonight!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is the morning like?",
+          "choices": [
+            "Warm and sunny",
+            "Rainy and windy",
+            "Warm and foggy",
+            "Cold and foggy"
+          ],
+          "answer": 3,
+          "explanation": "“På morgonen är det kallt och dimmigt vid vattnet.”"
+        },
+        {
+          "question": "When does the sun come out?",
+          "choices": [
+            "Around lunchtime",
+            "Early in the morning",
+            "In the evening",
+            "At night"
+          ],
+          "answer": 0,
+          "explanation": "“Vid lunch kommer solen fram.”"
+        },
+        {
+          "question": "How warm is it in the afternoon?",
+          "choices": [
+            "About five degrees",
+            "About fifteen degrees",
+            "About fifty degrees",
+            "About twenty-five degrees"
+          ],
+          "answer": 1,
+          "explanation": "“ungefär femton grader”"
+        },
+        {
+          "question": "What should you take if you go out tonight?",
+          "choices": [
+            "Sunglasses",
+            "A jumper",
+            "An umbrella",
+            "A map"
+          ],
+          "answer": 2,
+          "explanation": "“Ta med ett paraply”"
+        }
+      ],
+      "topics": [
+        "word-order-v2",
+        "adjective-agreement",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-007",
+        "essentials-095",
+        "verbs-001",
+        "nature-051",
+        "essentials-062",
+        "essentials-097",
+        "health-time-033",
+        "qualities-026",
+        "food-001",
+        "food-046",
+        "verbs-005",
+        "nature-001",
+        "verbs-097",
+        "essentials-092",
+        "qualities-025",
+        "qualities-107",
+        "health-time-034",
+        "nature-002",
+        "essentials-090",
+        "verbs-039",
+        "shopping-028",
+        "essentials-070",
+        "verbs-035"
+      ],
+      "gloss": [
+        {
+          "sv": "God morgon",
+          "en": "good morning",
+          "word": "essentials-007"
+        },
+        {
+          "sv": "Här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "vädret",
+          "en": "the weather (väder)",
+          "word": "nature-051"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "Stockholm",
+          "en": "Stockholm"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "På morgonen",
+          "en": "in the morning",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "kallt",
+          "en": "cold (kall)",
+          "word": "qualities-026"
+        },
+        {
+          "sv": "dimmigt",
+          "en": "foggy (dimmig)"
+        },
+        {
+          "sv": "vid",
+          "en": "at; by"
+        },
+        {
+          "sv": "vattnet",
+          "en": "the water (vatten)",
+          "word": "food-001"
+        },
+        {
+          "sv": "Vid",
+          "en": "around; at"
+        },
+        {
+          "sv": "lunch",
+          "en": "lunch",
+          "word": "food-046"
+        },
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "solen",
+          "en": "the sun (sol)",
+          "word": "nature-001"
+        },
+        {
+          "sv": "fram",
+          "en": "out"
+        },
+        {
+          "sv": "På eftermiddagen",
+          "en": "in the afternoon"
+        },
+        {
+          "sv": "blir",
+          "en": "gets (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "ganska",
+          "en": "quite",
+          "word": "essentials-092"
+        },
+        {
+          "sv": "varmt",
+          "en": "warm (varm)",
+          "word": "qualities-025"
+        },
+        {
+          "sv": "ungefär",
+          "en": "about",
+          "word": "qualities-107"
+        },
+        {
+          "sv": "femton",
+          "en": "fifteen"
+        },
+        {
+          "sv": "grader",
+          "en": "degrees (grad)"
+        },
+        {
+          "sv": "På kvällen",
+          "en": "in the evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "regnet",
+          "en": "the rain (regn)",
+          "word": "nature-002"
+        },
+        {
+          "sv": "blåser",
+          "en": "is windy (blåsa)"
+        },
+        {
+          "sv": "mycket",
+          "en": "a lot; very",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "Ta med",
+          "en": "take; bring (ta med)",
+          "word": "verbs-039"
+        },
+        {
+          "sv": "paraply",
+          "en": "umbrella",
+          "word": "shopping-028"
+        },
+        {
+          "sv": "om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "går ut",
+          "en": "go out (gå ut)",
+          "word": "verbs-035"
+        },
+        {
+          "sv": "ikväll",
+          "en": "tonight; this evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "A note on the bakery door",
+      "lines": [
+        {
+          "sv": "Kära kunder!",
+          "en": "Dear customers!"
+        },
+        {
+          "sv": "Bageriet är stängt från måndag till onsdag.",
+          "en": "The bakery is closed from Monday to Wednesday."
+        },
+        {
+          "sv": "Vi målar butiken.",
+          "en": "We’re painting the shop."
+        },
+        {
+          "sv": "På torsdag öppnar vi igen klockan sju.",
+          "en": "On Thursday we open again at seven."
+        },
+        {
+          "sv": "Då bjuder vi på kaffe och bullar!",
+          "en": "Then the coffee and buns are on us!"
+        },
+        {
+          "sv": "Välkomna!",
+          "en": "Welcome!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many days is the bakery closed?",
+          "choices": [
+            "Three",
+            "Two",
+            "Four",
+            "One"
+          ],
+          "answer": 0,
+          "explanation": "“Bageriet är stängt från måndag till onsdag.” Monday, Tuesday and Wednesday make three days."
+        },
+        {
+          "question": "Why is the bakery closed?",
+          "choices": [
+            "The baker is ill",
+            "They’re painting the shop",
+            "They’re on holiday",
+            "They’re moving"
+          ],
+          "answer": 1,
+          "explanation": "“Vi målar butiken.”"
+        },
+        {
+          "question": "When does the bakery open again?",
+          "choices": [
+            "On Wednesday at seven",
+            "On Thursday at eight",
+            "On Thursday at seven",
+            "On Friday at seven"
+          ],
+          "answer": 2,
+          "explanation": "“På torsdag öppnar vi igen klockan sju.”"
+        },
+        {
+          "question": "What is free on Thursday?",
+          "choices": [
+            "Bread",
+            "Cake",
+            "Tea",
+            "Coffee and buns"
+          ],
+          "answer": 3,
+          "explanation": "“Då bjuder vi på kaffe och bullar!”"
+        }
+      ],
+      "topics": [
+        "word-order-v2",
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "shopping-003",
+        "travel-022",
+        "verbs-001",
+        "qualities-035",
+        "essentials-065",
+        "health-time-040",
+        "essentials-064",
+        "health-time-042",
+        "leisure-035",
+        "shopping-011",
+        "essentials-063",
+        "health-time-043",
+        "verbs-040",
+        "essentials-105",
+        "shopping-026",
+        "health-time-053",
+        "essentials-108",
+        "food-004",
+        "essentials-013"
+      ],
+      "gloss": [
+        {
+          "sv": "Kära",
+          "en": "dear"
+        },
+        {
+          "sv": "kunder",
+          "en": "customers (kund)",
+          "word": "shopping-003"
+        },
+        {
+          "sv": "Bageriet",
+          "en": "the bakery (bageri)",
+          "word": "travel-022"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stängt",
+          "en": "closed (stängd)",
+          "word": "qualities-035"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "måndag",
+          "en": "Monday",
+          "word": "health-time-040"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "onsdag",
+          "en": "Wednesday",
+          "word": "health-time-042"
+        },
+        {
+          "sv": "målar",
+          "en": "are painting (måla)",
+          "word": "leisure-035"
+        },
+        {
+          "sv": "butiken",
+          "en": "the shop (butik)",
+          "word": "shopping-011"
+        },
+        {
+          "sv": "På",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "torsdag",
+          "en": "Thursday",
+          "word": "health-time-043"
+        },
+        {
+          "sv": "öppnar",
+          "en": "open (öppna)",
+          "word": "verbs-040"
+        },
+        {
+          "sv": "igen",
+          "en": "again",
+          "word": "essentials-105"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        },
+        {
+          "sv": "Då",
+          "en": "then",
+          "word": "essentials-108"
+        },
+        {
+          "sv": "bjuder",
+          "en": "treat (bjuda)"
+        },
+        {
+          "sv": "på",
+          "en": "on (bjuda på: to treat someone to)",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "bullar",
+          "en": "buns (bulle)"
+        },
+        {
+          "sv": "Välkomna",
+          "en": "welcome (välkommen)",
+          "word": "essentials-013"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Announcement at the station",
+      "lines": [
+        {
+          "sv": "Tåget till Göteborg är försenat.",
+          "en": "The train to Gothenburg is delayed."
+        },
+        {
+          "sv": "Det går klockan kvart över tio.",
+          "en": "It leaves at quarter past ten."
+        },
+        {
+          "sv": "Tåget går nu från spår sju, inte från spår två.",
+          "en": "The train now leaves from platform seven, not from platform two."
+        },
+        {
+          "sv": "Kaféet på stationen är öppet till klockan elva.",
+          "en": "The café in the station is open until eleven."
+        },
+        {
+          "sv": "Vi ber om ursäkt.",
+          "en": "We apologise."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where is the train going?",
+          "choices": [
+            "To Stockholm",
+            "To Gothenburg",
+            "To Malmö",
+            "To Uppsala"
+          ],
+          "answer": 1,
+          "explanation": "“Tåget till Göteborg är försenat.”"
+        },
+        {
+          "question": "When does the train leave?",
+          "choices": [
+            "At ten",
+            "At twenty past ten",
+            "At quarter past ten",
+            "At eleven"
+          ],
+          "answer": 2,
+          "explanation": "“Det går klockan kvart över tio.”"
+        },
+        {
+          "question": "Which platform does the train leave from now?",
+          "choices": [
+            "Platform two",
+            "Platform ten",
+            "Platform eleven",
+            "Platform seven"
+          ],
+          "answer": 3,
+          "explanation": "“Tåget går nu från spår sju, inte från spår två.”"
+        },
+        {
+          "question": "What is open until eleven?",
+          "choices": [
+            "The station café",
+            "The ticket office",
+            "The waiting room",
+            "The shop"
+          ],
+          "answer": 0,
+          "explanation": "“Kaféet på stationen är öppet till klockan elva.”"
+        }
+      ],
+      "topics": [
+        "definite-form",
+        "adjective-agreement",
+        "negation-placement"
+      ],
+      "words": [
+        "travel-006",
+        "essentials-064",
+        "verbs-001",
+        "travel-042",
+        "verbs-004",
+        "shopping-026",
+        "health-time-056",
+        "essentials-094",
+        "essentials-065",
+        "health-time-053",
+        "health-time-048",
+        "essentials-063",
+        "travel-011",
+        "qualities-034"
+      ],
+      "gloss": [
+        {
+          "sv": "Tåget",
+          "en": "the train (tåg)",
+          "word": "travel-006"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "Göteborg",
+          "en": "Gothenburg"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "försenat",
+          "en": "delayed (försenad)",
+          "word": "travel-042"
+        },
+        {
+          "sv": "går",
+          "en": "leaves (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "kvart över",
+          "en": "quarter past"
+        },
+        {
+          "sv": "tio",
+          "en": "ten",
+          "word": "health-time-056"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "spår",
+          "en": "platform; track"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "Kaféet",
+          "en": "the café (kafé)"
+        },
+        {
+          "sv": "på",
+          "en": "in; at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "stationen",
+          "en": "the station (station)",
+          "word": "travel-011"
+        },
+        {
+          "sv": "öppet",
+          "en": "open (öppen)",
+          "word": "qualities-034"
+        },
+        {
+          "sv": "elva",
+          "en": "eleven"
+        },
+        {
+          "sv": "ber om ursäkt",
+          "en": "apologise (be om ursäkt)"
+        }
+      ]
+    }
+  ]
+}

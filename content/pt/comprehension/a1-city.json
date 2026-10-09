@@ -1,0 +1,4599 @@
+{
+  "sentences": [
+    {
+      "id": "a1-city-s01",
+      "level": "A1",
+      "pt": "Você vira à esquerda depois da ponte.",
+      "en": "You turn left after the bridge.",
+      "distractors": [
+        "You turn right after the bridge.",
+        "You turn left before the bridge.",
+        "You turn left after the square."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-092",
+        "travel-034",
+        "travel-038"
+      ],
+      "gloss": [
+        {
+          "pt": "vira",
+          "en": "turn (virar)"
+        },
+        {
+          "pt": "esquerda",
+          "en": "left (direction)",
+          "word": "travel-034"
+        },
+        {
+          "pt": "depois",
+          "en": "after",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "ponte",
+          "en": "bridge",
+          "word": "travel-038"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s02",
+      "level": "A1",
+      "pt": "A farmácia fica em frente à estação.",
+      "en": "The pharmacy is opposite the station.",
+      "distractors": [
+        "The pharmacy is next to the station.",
+        "The bakery is opposite the station.",
+        "The pharmacy is opposite the church."
+      ],
+      "topics": [
+        "prepositions-contractions"
+      ],
+      "words": [
+        "shopping-017",
+        "travel-012",
+        "travel-035",
+        "verbs-033"
+      ],
+      "gloss": [
+        {
+          "pt": "farmácia",
+          "en": "pharmacy",
+          "word": "shopping-017"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "em frente",
+          "en": "opposite",
+          "word": "travel-035"
+        },
+        {
+          "pt": "estação",
+          "en": "station",
+          "word": "travel-012"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s03",
+      "level": "A1",
+      "pt": "O museu não fica longe daqui.",
+      "en": "The museum isn’t far from here.",
+      "distractors": [
+        "The museum is far from here.",
+        "The church isn’t far from here.",
+        "The museum isn’t far from the beach."
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-054",
+        "essentials-095",
+        "town-027",
+        "verbs-033"
+      ],
+      "gloss": [
+        {
+          "pt": "museu",
+          "en": "museum",
+          "word": "town-027"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "longe",
+          "en": "far",
+          "word": "essentials-095"
+        },
+        {
+          "pt": "daqui",
+          "en": "from here",
+          "word": "essentials-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s04",
+      "level": "A1",
+      "pt": "Com licença, onde fica o ponto de ônibus?",
+      "en": "Excuse me, where is the bus stop?",
+      "distractors": [
+        "Excuse me, where is the metro station?",
+        "Excuse me, where is the taxi rank?",
+        "Excuse me, where is the car park?"
+      ],
+      "topics": [
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-013",
+        "essentials-033",
+        "travel-015",
+        "verbs-033"
+      ],
+      "gloss": [
+        {
+          "pt": "Com licença",
+          "en": "excuse me",
+          "word": "essentials-013"
+        },
+        {
+          "pt": "onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "ponto de ônibus",
+          "en": "bus stop",
+          "word": "travel-015"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s05",
+      "level": "A1",
+      "pt": "Você atravessa a praça e segue em frente.",
+      "en": "You cross the square and carry straight on.",
+      "distractors": [
+        "You cross the square and turn right.",
+        "You cross the bridge and carry straight on.",
+        "You cross the square and go back."
+      ],
+      "topics": [
+        "present-regular",
+        "present-irregular"
+      ],
+      "words": [
+        "town-024",
+        "travel-035",
+        "verbs-104"
+      ],
+      "gloss": [
+        {
+          "pt": "atravessa",
+          "en": "cross (atravessar)"
+        },
+        {
+          "pt": "praça",
+          "en": "square",
+          "word": "town-024"
+        },
+        {
+          "pt": "segue",
+          "en": "carry on (seguir)",
+          "word": "verbs-104"
+        },
+        {
+          "pt": "em frente",
+          "en": "straight ahead",
+          "word": "travel-035"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s06",
+      "level": "A1",
+      "pt": "Tem um estacionamento atrás da prefeitura.",
+      "en": "There’s a car park behind the town hall.",
+      "distractors": [
+        "There’s a car park in front of the town hall.",
+        "There’s a park behind the town hall.",
+        "There are two car parks behind the town hall."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "town-022",
+        "town-031",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "estacionamento",
+          "en": "car park",
+          "word": "town-031"
+        },
+        {
+          "pt": "atrás",
+          "en": "behind"
+        },
+        {
+          "pt": "prefeitura",
+          "en": "town hall",
+          "word": "town-022"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s07",
+      "level": "A1",
+      "pt": "Você pega a segunda rua à direita.",
+      "en": "You take the second street on the right.",
+      "distractors": [
+        "You take the first street on the right.",
+        "You take the second street on the left.",
+        "You take the third street on the right."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "travel-002",
+        "travel-033",
+        "verbs-026"
+      ],
+      "gloss": [
+        {
+          "pt": "pega",
+          "en": "take (pegar)",
+          "word": "verbs-026"
+        },
+        {
+          "pt": "segunda",
+          "en": "second"
+        },
+        {
+          "pt": "rua",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "pt": "direita",
+          "en": "right (direction)",
+          "word": "travel-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s08",
+      "level": "A1",
+      "pt": "A faixa de pedestres fica na frente da padaria.",
+      "en": "The pedestrian crossing is in front of the bakery.",
+      "distractors": [
+        "The pedestrian crossing is behind the bakery.",
+        "The pedestrian crossing is in front of the pharmacy.",
+        "The bus stop is in front of the bakery."
+      ],
+      "topics": [
+        "prepositions-contractions"
+      ],
+      "words": [
+        "shopping-016",
+        "verbs-033"
+      ],
+      "gloss": [
+        {
+          "pt": "faixa de pedestres",
+          "en": "pedestrian crossing"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "frente",
+          "en": "front (na frente de: in front of)"
+        },
+        {
+          "pt": "padaria",
+          "en": "bakery",
+          "word": "shopping-016"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s09",
+      "level": "A1",
+      "pt": "Você pode ir a pé, são cinco minutos.",
+      "en": "You can walk there, it’s five minutes away.",
+      "distractors": [
+        "You can walk there, it’s ten minutes away.",
+        "You can cycle there, it’s five minutes away.",
+        "You can walk there, it’s fifteen minutes away."
+      ],
+      "topics": [
+        "present-irregular"
+      ],
+      "words": [
+        "health-time-005",
+        "health-time-027",
+        "health-time-050",
+        "verbs-001",
+        "verbs-005",
+        "verbs-023"
+      ],
+      "gloss": [
+        {
+          "pt": "pode",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "ir",
+          "en": "go (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "a pé",
+          "en": "on foot",
+          "word": "health-time-005"
+        },
+        {
+          "pt": "são",
+          "en": "it is; they are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s10",
+      "level": "A1",
+      "pt": "A feira fica entre a igreja e o parque.",
+      "en": "The street market is between the church and the park.",
+      "distractors": [
+        "The street market is between the school and the park.",
+        "The street market is between the church and the beach.",
+        "The supermarket is between the church and the park."
+      ],
+      "topics": [
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-091",
+        "shopping-018",
+        "town-025",
+        "town-026",
+        "verbs-033"
+      ],
+      "gloss": [
+        {
+          "pt": "feira",
+          "en": "street market",
+          "word": "shopping-018"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "entre",
+          "en": "between",
+          "word": "essentials-091"
+        },
+        {
+          "pt": "igreja",
+          "en": "church",
+          "word": "town-026"
+        },
+        {
+          "pt": "parque",
+          "en": "park",
+          "word": "town-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s11",
+      "level": "A1",
+      "pt": "Esse bairro é calmo aos domingos.",
+      "en": "This neighbourhood is quiet on Sundays.",
+      "distractors": [
+        "This neighbourhood is busy on Sundays.",
+        "This neighbourhood is quiet on Saturdays.",
+        "This street is quiet on Sundays."
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-048",
+        "health-time-046",
+        "qualities-047",
+        "town-005",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "Esse",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "bairro",
+          "en": "neighbourhood",
+          "word": "town-005"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "calmo",
+          "en": "quiet; calm",
+          "word": "qualities-047"
+        },
+        {
+          "pt": "domingos",
+          "en": "Sundays (o domingo)",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s12",
+      "level": "A1",
+      "pt": "Nós procuramos um hotel perto do centro.",
+      "en": "We’re looking for a hotel near the city centre.",
+      "distractors": [
+        "We’re looking for a restaurant near the city centre.",
+        "We’re looking for a hotel near the beach.",
+        "We’re looking for a hotel far from the city centre."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-094",
+        "town-028",
+        "travel-019",
+        "verbs-030"
+      ],
+      "gloss": [
+        {
+          "pt": "procuramos",
+          "en": "are looking for (procurar)",
+          "word": "verbs-030"
+        },
+        {
+          "pt": "hotel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "pt": "perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "centro",
+          "en": "city centre",
+          "word": "town-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s13",
+      "level": "A1",
+      "pt": "O ônibus número doze chega às oito horas.",
+      "en": "The number twelve bus arrives at eight o’clock.",
+      "distractors": [
+        "The number two bus arrives at eight o’clock.",
+        "The number twelve bus arrives at nine o’clock.",
+        "The number twelve bus leaves at eight o’clock."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-026",
+        "health-time-053",
+        "town-018",
+        "travel-005",
+        "verbs-035"
+      ],
+      "gloss": [
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "número",
+          "en": "number",
+          "word": "town-018"
+        },
+        {
+          "pt": "doze",
+          "en": "twelve"
+        },
+        {
+          "pt": "chega",
+          "en": "arrives (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s14",
+      "level": "A1",
+      "pt": "O trem para Campinas sai da plataforma três.",
+      "en": "The train to Campinas leaves from platform three.",
+      "distractors": [
+        "The train to Campinas leaves from platform six.",
+        "The train from Campinas leaves from platform three.",
+        "The bus to Campinas leaves from platform three."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-085",
+        "health-time-048",
+        "travel-006",
+        "verbs-034"
+      ],
+      "gloss": [
+        {
+          "pt": "trem",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "pt": "para",
+          "en": "to; for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "Campinas",
+          "en": "Campinas (a city near São Paulo)"
+        },
+        {
+          "pt": "sai",
+          "en": "leaves (sair)",
+          "word": "verbs-034"
+        },
+        {
+          "pt": "plataforma",
+          "en": "platform"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s15",
+      "level": "A1",
+      "pt": "Uma passagem para o Rio, por favor.",
+      "en": "A ticket to Rio, please.",
+      "distractors": [
+        "Two tickets to Rio, please.",
+        "A ticket to Recife, please.",
+        "A ticket from Rio, please."
+      ],
+      "topics": [
+        "articles-gender"
+      ],
+      "words": [
+        "essentials-010",
+        "essentials-085",
+        "travel-016"
+      ],
+      "gloss": [
+        {
+          "pt": "passagem",
+          "en": "ticket",
+          "word": "travel-016"
+        },
+        {
+          "pt": "para",
+          "en": "to; for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "Rio",
+          "en": "Rio (Rio de Janeiro)"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s16",
+      "level": "A1",
+      "pt": "O próximo metrô chega em quatro minutos.",
+      "en": "The next metro arrives in four minutes.",
+      "distractors": [
+        "The last metro arrives in four minutes.",
+        "The next metro arrives in five minutes.",
+        "The next bus arrives in four minutes."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "health-time-027",
+        "health-time-049",
+        "qualities-061",
+        "travel-007",
+        "verbs-035"
+      ],
+      "gloss": [
+        {
+          "pt": "próximo",
+          "en": "next",
+          "word": "qualities-061"
+        },
+        {
+          "pt": "metrô",
+          "en": "metro",
+          "word": "travel-007"
+        },
+        {
+          "pt": "chega",
+          "en": "arrives (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "quatro",
+          "en": "four",
+          "word": "health-time-049"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s17",
+      "level": "A1",
+      "pt": "Minha passagem custa cinco reais.",
+      "en": "My ticket costs five reais.",
+      "distractors": [
+        "My ticket costs four reais.",
+        "Your ticket costs five reais.",
+        "My ticket costs fifteen reais."
+      ],
+      "topics": [
+        "possessives",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-050",
+        "shopping-005",
+        "travel-016",
+        "verbs-071"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "passagem",
+          "en": "ticket",
+          "word": "travel-016"
+        },
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s18",
+      "level": "A1",
+      "pt": "Os trens estão atrasados hoje de manhã.",
+      "en": "The trains are late this morning.",
+      "distractors": [
+        "The buses are late this morning.",
+        "The trains are on time this morning.",
+        "The trains are late this evening."
+      ],
+      "topics": [
+        "ser-estar",
+        "plural"
+      ],
+      "words": [
+        "health-time-032",
+        "health-time-035",
+        "travel-006",
+        "travel-045",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "pt": "trens",
+          "en": "trains (o trem)",
+          "word": "travel-006"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "atrasados",
+          "en": "late (atrasado)",
+          "word": "travel-045"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s19",
+      "level": "A1",
+      "pt": "Você desce na próxima estação.",
+      "en": "You get off at the next station.",
+      "distractors": [
+        "You get on at the next station.",
+        "You get off at the last station.",
+        "You get off at the first station."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "qualities-061",
+        "travel-012",
+        "verbs-039"
+      ],
+      "gloss": [
+        {
+          "pt": "desce",
+          "en": "get off (descer)",
+          "word": "verbs-039"
+        },
+        {
+          "pt": "próxima",
+          "en": "next",
+          "word": "qualities-061"
+        },
+        {
+          "pt": "estação",
+          "en": "station",
+          "word": "travel-012"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s20",
+      "level": "A1",
+      "pt": "Não tem táxi na frente da rodoviária.",
+      "en": "There are no taxis in front of the bus station.",
+      "distractors": [
+        "There are lots of taxis in front of the bus station.",
+        "There are no taxis behind the bus station.",
+        "There are no buses in front of the bus station."
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "travel-009",
+        "travel-014",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "táxi",
+          "en": "taxi",
+          "word": "travel-009"
+        },
+        {
+          "pt": "frente",
+          "en": "front (na frente de: in front of)"
+        },
+        {
+          "pt": "rodoviária",
+          "en": "bus station",
+          "word": "travel-014"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s21",
+      "level": "A1",
+      "pt": "O ônibus passa a cada dez minutos.",
+      "en": "The bus comes every ten minutes.",
+      "distractors": [
+        "The bus comes every twenty minutes.",
+        "The train comes every ten minutes.",
+        "The metro comes every ten minutes."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "essentials-046",
+        "health-time-027",
+        "health-time-055",
+        "travel-005",
+        "verbs-032"
+      ],
+      "gloss": [
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "passa",
+          "en": "comes by (passar)",
+          "word": "verbs-032"
+        },
+        {
+          "pt": "a cada",
+          "en": "every",
+          "word": "essentials-046"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s22",
+      "level": "A1",
+      "pt": "Eu vou pegar o metrô amanhã.",
+      "en": "I’m going to take the metro tomorrow.",
+      "distractors": [
+        "I’m going to take the bus tomorrow.",
+        "I’m going to take the metro today.",
+        "We’re going to take the metro tomorrow."
+      ],
+      "topics": [
+        "ir-future"
+      ],
+      "words": [
+        "health-time-037",
+        "travel-007",
+        "verbs-005",
+        "verbs-026"
+      ],
+      "gloss": [
+        {
+          "pt": "vou",
+          "en": "am going (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "pegar",
+          "en": "take (pegar)",
+          "word": "verbs-026"
+        },
+        {
+          "pt": "metrô",
+          "en": "metro",
+          "word": "travel-007"
+        },
+        {
+          "pt": "amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s23",
+      "level": "A1",
+      "pt": "Esse ônibus vai para o centro?",
+      "en": "Does this bus go to the city centre?",
+      "distractors": [
+        "Does this bus go to the beach?",
+        "Does this train go to the city centre?",
+        "Does this bus go to the airport?"
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-048",
+        "essentials-085",
+        "town-028",
+        "travel-005",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Esse",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "vai",
+          "en": "goes (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "para",
+          "en": "to; for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "centro",
+          "en": "city centre",
+          "word": "town-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s24",
+      "level": "A1",
+      "pt": "A gente está esperando o ônibus há vinte minutos.",
+      "en": "We’ve been waiting for the bus for twenty minutes.",
+      "distractors": [
+        "We’ve been waiting for the bus for two minutes.",
+        "We’ve been waiting for the train for twenty minutes.",
+        "We’ve been waiting for the taxi for twenty minutes."
+      ],
+      "topics": [
+        "ser-estar",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-024",
+        "health-time-027",
+        "health-time-056",
+        "travel-005",
+        "verbs-002",
+        "verbs-042"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "está",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "esperando",
+          "en": "waiting for (esperar)",
+          "word": "verbs-042"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "há",
+          "en": "for (time); ago"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s25",
+      "level": "A1",
+      "pt": "O motorista não aceita dinheiro.",
+      "en": "The driver doesn’t accept cash.",
+      "distractors": [
+        "The driver accepts cash.",
+        "The driver doesn’t accept cards."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "shopping-001",
+        "work-022"
+      ],
+      "gloss": [
+        {
+          "pt": "motorista",
+          "en": "driver",
+          "word": "work-022"
+        },
+        {
+          "pt": "aceita",
+          "en": "accepts (aceitar)"
+        },
+        {
+          "pt": "dinheiro",
+          "en": "money; cash",
+          "word": "shopping-001"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s26",
+      "level": "A1",
+      "pt": "A loja abre às nove e meia.",
+      "en": "The shop opens at half past nine.",
+      "distractors": [
+        "The shop closes at half past nine.",
+        "The shop opens at half past ten.",
+        "The shop opens at nine o’clock."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-054",
+        "qualities-102",
+        "shopping-012",
+        "verbs-045"
+      ],
+      "gloss": [
+        {
+          "pt": "loja",
+          "en": "shop",
+          "word": "shopping-012"
+        },
+        {
+          "pt": "abre",
+          "en": "opens (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "nove",
+          "en": "nine",
+          "word": "health-time-054"
+        },
+        {
+          "pt": "meia",
+          "en": "half (past)",
+          "word": "qualities-102"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s27",
+      "level": "A1",
+      "pt": "O correio fecha ao meio-dia aos sábados.",
+      "en": "The post office closes at midday on Saturdays.",
+      "distractors": [
+        "The post office opens at midday on Saturdays.",
+        "The post office closes at midday on Sundays.",
+        "The bank closes at midday on Saturdays."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-045",
+        "qualities-102",
+        "town-010",
+        "verbs-046"
+      ],
+      "gloss": [
+        {
+          "pt": "correio",
+          "en": "post office",
+          "word": "town-010"
+        },
+        {
+          "pt": "fecha",
+          "en": "closes (fechar)",
+          "word": "verbs-046"
+        },
+        {
+          "pt": "meio-dia",
+          "en": "midday",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "sábados",
+          "en": "Saturdays (o sábado)",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s28",
+      "level": "A1",
+      "pt": "Já são sete e quinze.",
+      "en": "It’s already quarter past seven.",
+      "distractors": [
+        "It’s already quarter to seven.",
+        "It’s already quarter past eight.",
+        "It’s already half past seven."
+      ],
+      "topics": [
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-069",
+        "health-time-052",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "Já",
+          "en": "already",
+          "word": "essentials-069"
+        },
+        {
+          "pt": "são",
+          "en": "it is; they are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "sete",
+          "en": "seven",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "quinze",
+          "en": "fifteen"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s29",
+      "level": "A1",
+      "pt": "O primeiro trem sai às cinco e vinte.",
+      "en": "The first train leaves at twenty past five.",
+      "distractors": [
+        "The last train leaves at twenty past five.",
+        "The first train leaves at twenty past six.",
+        "The first bus leaves at twenty past five."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-050",
+        "health-time-056",
+        "qualities-059",
+        "travel-006",
+        "verbs-034"
+      ],
+      "gloss": [
+        {
+          "pt": "primeiro",
+          "en": "first",
+          "word": "qualities-059"
+        },
+        {
+          "pt": "trem",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "pt": "sai",
+          "en": "leaves (sair)",
+          "word": "verbs-034"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s30",
+      "level": "A1",
+      "pt": "O museu fica fechado às segundas.",
+      "en": "The museum is closed on Mondays.",
+      "distractors": [
+        "The museum is open on Mondays.",
+        "The museum is closed on Tuesdays.",
+        "The library is closed on Mondays."
+      ],
+      "topics": [
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-040",
+        "qualities-033",
+        "town-027",
+        "verbs-033"
+      ],
+      "gloss": [
+        {
+          "pt": "museu",
+          "en": "museum",
+          "word": "town-027"
+        },
+        {
+          "pt": "fica",
+          "en": "is; stays (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "fechado",
+          "en": "closed",
+          "word": "qualities-033"
+        },
+        {
+          "pt": "segundas",
+          "en": "Mondays (a segunda-feira)",
+          "word": "health-time-040"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s31",
+      "level": "A1",
+      "pt": "As lojas do shopping abrem às dez horas.",
+      "en": "The shops in the shopping centre open at ten o’clock.",
+      "distractors": [
+        "The shops in the shopping centre close at ten o’clock.",
+        "The shops in the shopping centre open at nine o’clock.",
+        "The shops in the market open at ten o’clock."
+      ],
+      "topics": [
+        "plural",
+        "present-regular"
+      ],
+      "words": [
+        "health-time-026",
+        "health-time-055",
+        "shopping-012",
+        "shopping-013",
+        "verbs-045"
+      ],
+      "gloss": [
+        {
+          "pt": "lojas",
+          "en": "shops (a loja)",
+          "word": "shopping-012"
+        },
+        {
+          "pt": "shopping",
+          "en": "shopping centre",
+          "word": "shopping-013"
+        },
+        {
+          "pt": "abrem",
+          "en": "open (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s32",
+      "level": "A1",
+      "pt": "Minha consulta é às duas e meia da tarde.",
+      "en": "My appointment is at half past two in the afternoon.",
+      "distractors": [
+        "My appointment is at half past three in the afternoon.",
+        "Your appointment is at half past two in the afternoon.",
+        "My appointment is at two o’clock in the afternoon."
+      ],
+      "topics": [
+        "possessives",
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-033",
+        "health-time-047",
+        "qualities-102",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "consulta",
+          "en": "appointment"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "duas",
+          "en": "two (dois)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "meia",
+          "en": "half (past)",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon",
+          "word": "health-time-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s33",
+      "level": "A1",
+      "pt": "O ônibus da noite não passa aos domingos.",
+      "en": "The night bus doesn’t run on Sundays.",
+      "distractors": [
+        "The night bus runs on Sundays.",
+        "The night bus doesn’t run on Saturdays.",
+        "The morning bus doesn’t run on Sundays."
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-034",
+        "health-time-046",
+        "travel-005",
+        "verbs-032"
+      ],
+      "gloss": [
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "passa",
+          "en": "runs; comes by (passar)",
+          "word": "verbs-032"
+        },
+        {
+          "pt": "domingos",
+          "en": "Sundays (o domingo)",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s34",
+      "level": "A1",
+      "pt": "A padaria da esquina vende um pão de queijo ótimo.",
+      "en": "The corner bakery sells great cheese bread.",
+      "distractors": [
+        "The corner pharmacy sells great cheese bread.",
+        "The corner bakery sells great cake.",
+        "The bakery on the square sells great cheese bread."
+      ],
+      "topics": [
+        "prepositions-contractions",
+        "present-regular"
+      ],
+      "words": [
+        "food-010",
+        "qualities-075",
+        "shopping-016",
+        "travel-036",
+        "verbs-069"
+      ],
+      "gloss": [
+        {
+          "pt": "padaria",
+          "en": "bakery",
+          "word": "shopping-016"
+        },
+        {
+          "pt": "esquina",
+          "en": "corner",
+          "word": "travel-036"
+        },
+        {
+          "pt": "vende",
+          "en": "sells (vender)",
+          "word": "verbs-069"
+        },
+        {
+          "pt": "pão de queijo",
+          "en": "cheese bread",
+          "word": "food-010"
+        },
+        {
+          "pt": "ótimo",
+          "en": "great",
+          "word": "qualities-075"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s35",
+      "level": "A1",
+      "pt": "Tem um banco ao lado do supermercado.",
+      "en": "There’s a bank next to the supermarket.",
+      "distractors": [
+        "There’s a bank opposite the supermarket.",
+        "There’s a bakery next to the supermarket.",
+        "There are two banks next to the supermarket."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "shopping-014",
+        "town-012",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "banco",
+          "en": "bank",
+          "word": "town-012"
+        },
+        {
+          "pt": "ao lado",
+          "en": "next to"
+        },
+        {
+          "pt": "supermercado",
+          "en": "supermarket",
+          "word": "shopping-014"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s36",
+      "level": "A1",
+      "pt": "Estou procurando um caixa eletrônico.",
+      "en": "I’m looking for a cash machine.",
+      "distractors": [
+        "We’re looking for a cash machine.",
+        "I’m looking for a bank.",
+        "I’m looking for a taxi."
+      ],
+      "topics": [
+        "ser-estar",
+        "present-regular"
+      ],
+      "words": [
+        "shopping-008",
+        "verbs-002",
+        "verbs-030"
+      ],
+      "gloss": [
+        {
+          "pt": "Estou",
+          "en": "am (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "procurando",
+          "en": "looking for (procurar)",
+          "word": "verbs-030"
+        },
+        {
+          "pt": "caixa eletrônico",
+          "en": "cash machine",
+          "word": "shopping-008"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s37",
+      "level": "A1",
+      "pt": "O supermercado fica aberto até as dez da noite.",
+      "en": "The supermarket is open until ten at night.",
+      "distractors": [
+        "The supermarket is open until nine at night.",
+        "The pharmacy is open until ten at night.",
+        "The supermarket is open until ten in the morning."
+      ],
+      "topics": [
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-089",
+        "health-time-034",
+        "health-time-055",
+        "qualities-032",
+        "shopping-014",
+        "verbs-033"
+      ],
+      "gloss": [
+        {
+          "pt": "supermercado",
+          "en": "supermarket",
+          "word": "shopping-014"
+        },
+        {
+          "pt": "fica",
+          "en": "is; stays (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "aberto",
+          "en": "open",
+          "word": "qualities-032"
+        },
+        {
+          "pt": "até",
+          "en": "until; as far as",
+          "word": "essentials-089"
+        },
+        {
+          "pt": "dez",
+          "en": "ten (o’clock)",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s38",
+      "level": "A1",
+      "pt": "Essa rua tem muitas lojas pequenas.",
+      "en": "This street has lots of small shops.",
+      "distractors": [
+        "This street has lots of big shops.",
+        "This avenue has lots of small shops.",
+        "This street has no small shops."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "plural",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-048",
+        "essentials-065",
+        "qualities-002",
+        "shopping-012",
+        "travel-002",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "Essa",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "rua",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "muitas",
+          "en": "many; lots of (muito)",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "lojas",
+          "en": "shops (a loja)",
+          "word": "shopping-012"
+        },
+        {
+          "pt": "pequenas",
+          "en": "small (pequeno)",
+          "word": "qualities-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s39",
+      "level": "A1",
+      "pt": "Você encontra fruta fresca na feira.",
+      "en": "You find fresh fruit at the street market.",
+      "distractors": [
+        "You find fresh fish at the street market.",
+        "You find fresh fruit at the supermarket.",
+        "You don’t find fresh fruit at the street market."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "food-019",
+        "qualities-025",
+        "shopping-018",
+        "verbs-029"
+      ],
+      "gloss": [
+        {
+          "pt": "encontra",
+          "en": "find (encontrar)",
+          "word": "verbs-029"
+        },
+        {
+          "pt": "fruta",
+          "en": "fruit",
+          "word": "food-019"
+        },
+        {
+          "pt": "fresca",
+          "en": "fresh (fresco)",
+          "word": "qualities-025"
+        },
+        {
+          "pt": "feira",
+          "en": "street market",
+          "word": "shopping-018"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s40",
+      "level": "A1",
+      "pt": "A farmácia da praça está fechada hoje.",
+      "en": "The pharmacy on the square is closed today.",
+      "distractors": [
+        "The pharmacy on the square is open today.",
+        "The pharmacy on the square is closed tomorrow.",
+        "The bakery on the square is closed today."
+      ],
+      "topics": [
+        "ser-estar",
+        "adjective-agreement"
+      ],
+      "words": [
+        "health-time-035",
+        "qualities-033",
+        "shopping-017",
+        "town-024",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "pt": "farmácia",
+          "en": "pharmacy",
+          "word": "shopping-017"
+        },
+        {
+          "pt": "praça",
+          "en": "square",
+          "word": "town-024"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "fechada",
+          "en": "closed (fechado)",
+          "word": "qualities-033"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s41",
+      "level": "A1",
+      "pt": "A lanchonete perto da ponte é muito barata.",
+      "en": "The snack bar near the bridge is very cheap.",
+      "distractors": [
+        "The snack bar near the bridge is very expensive.",
+        "The snack bar near the beach is very cheap.",
+        "The restaurant near the bridge is very cheap."
+      ],
+      "topics": [
+        "ser-estar",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-065",
+        "essentials-094",
+        "qualities-052",
+        "town-035",
+        "travel-038",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "lanchonete",
+          "en": "snack bar",
+          "word": "town-035"
+        },
+        {
+          "pt": "perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "ponte",
+          "en": "bridge",
+          "word": "travel-038"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "barata",
+          "en": "cheap (barato)",
+          "word": "qualities-052"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s42",
+      "level": "A1",
+      "pt": "Onde eu compro a passagem do metrô?",
+      "en": "Where do I buy the metro ticket?",
+      "distractors": [
+        "Where do I buy the bus ticket?",
+        "When do I buy the metro ticket?",
+        "Where do I buy the boat ticket?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-033",
+        "travel-007",
+        "travel-016",
+        "verbs-068"
+      ],
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "compro",
+          "en": "buy (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "passagem",
+          "en": "ticket",
+          "word": "travel-016"
+        },
+        {
+          "pt": "metrô",
+          "en": "metro",
+          "word": "travel-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s43",
+      "level": "A1",
+      "pt": "O parque fecha quando fica escuro.",
+      "en": "The park closes when it gets dark.",
+      "distractors": [
+        "The park opens when it gets dark.",
+        "The museum closes when it gets dark.",
+        "The park closes when it gets cold."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "essentials-034",
+        "qualities-045",
+        "town-025",
+        "verbs-033",
+        "verbs-046"
+      ],
+      "gloss": [
+        {
+          "pt": "parque",
+          "en": "park",
+          "word": "town-025"
+        },
+        {
+          "pt": "fecha",
+          "en": "closes (fechar)",
+          "word": "verbs-046"
+        },
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "fica",
+          "en": "gets; becomes (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "escuro",
+          "en": "dark",
+          "word": "qualities-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s44",
+      "level": "A1",
+      "pt": "Está chovendo muito no centro.",
+      "en": "It’s raining a lot in the city centre.",
+      "distractors": [
+        "It’s raining a little in the city centre.",
+        "It’s raining a lot at the beach.",
+        "It isn’t raining in the city centre."
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-065",
+        "town-028",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "pt": "Está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "chovendo",
+          "en": "raining (chover)"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "centro",
+          "en": "city centre",
+          "word": "town-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s45",
+      "level": "A1",
+      "pt": "Hoje faz frio e tem muito vento.",
+      "en": "Today it’s cold and very windy.",
+      "distractors": [
+        "Today it’s hot and very windy.",
+        "Tomorrow it’s cold and very windy.",
+        "Today it’s cold and not windy at all."
+      ],
+      "topics": [
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-065",
+        "health-time-035",
+        "nature-003",
+        "qualities-024",
+        "verbs-003",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "faz",
+          "en": "is (weather) (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "frio",
+          "en": "cold",
+          "word": "qualities-024"
+        },
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot of",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "vento",
+          "en": "wind",
+          "word": "nature-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s46",
+      "level": "A1",
+      "pt": "O céu está cinza, leve seu guarda-chuva.",
+      "en": "The sky is grey, take your umbrella.",
+      "distractors": [
+        "The sky is blue, take your umbrella.",
+        "The sky is grey, take your coat.",
+        "The sky is grey, leave your umbrella."
+      ],
+      "topics": [
+        "ser-estar",
+        "possessives"
+      ],
+      "words": [
+        "essentials-051",
+        "nature-005",
+        "qualities-098",
+        "verbs-002",
+        "verbs-043"
+      ],
+      "gloss": [
+        {
+          "pt": "céu",
+          "en": "sky",
+          "word": "nature-005"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cinza",
+          "en": "grey",
+          "word": "qualities-098"
+        },
+        {
+          "pt": "leve",
+          "en": "take (levar)",
+          "word": "verbs-043"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "guarda-chuva",
+          "en": "umbrella"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s47",
+      "level": "A1",
+      "pt": "Ainda está frio de manhã.",
+      "en": "It’s still cold in the morning.",
+      "distractors": [
+        "It’s still hot in the morning.",
+        "It’s still cold in the evening.",
+        "It’s no longer cold in the morning."
+      ],
+      "topics": [
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-070",
+        "health-time-032",
+        "qualities-024",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "pt": "Ainda",
+          "en": "still",
+          "word": "essentials-070"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "frio",
+          "en": "cold",
+          "word": "qualities-024"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s48",
+      "level": "A1",
+      "pt": "Hoje à tarde vai fazer calor.",
+      "en": "This afternoon it’s going to be hot.",
+      "distractors": [
+        "This morning it’s going to be hot.",
+        "This afternoon it’s going to be cold.",
+        "Tomorrow afternoon it’s going to be hot."
+      ],
+      "topics": [
+        "ir-future"
+      ],
+      "words": [
+        "health-time-033",
+        "health-time-035",
+        "nature-020",
+        "verbs-004",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon",
+          "word": "health-time-033"
+        },
+        {
+          "pt": "vai",
+          "en": "is going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "fazer",
+          "en": "be (weather) (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "calor",
+          "en": "heat; hot weather",
+          "word": "nature-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s49",
+      "level": "A1",
+      "pt": "Tem neblina na ponte hoje de manhã.",
+      "en": "There’s fog on the bridge this morning.",
+      "distractors": [
+        "There’s fog on the beach this morning.",
+        "There’s fog on the bridge this evening.",
+        "There’s wind on the bridge this morning."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-032",
+        "health-time-035",
+        "travel-038",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "neblina",
+          "en": "fog"
+        },
+        {
+          "pt": "ponte",
+          "en": "bridge",
+          "word": "travel-038"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-s50",
+      "level": "A1",
+      "pt": "A previsão diz que vai chover às cinco horas.",
+      "en": "The forecast says it will rain at five o’clock.",
+      "distractors": [
+        "The forecast says it will rain at four o’clock.",
+        "The forecast says it will be sunny at five o’clock.",
+        "The forecast says it won’t rain at five o’clock."
+      ],
+      "topics": [
+        "ir-future",
+        "present-irregular"
+      ],
+      "words": [
+        "health-time-026",
+        "health-time-050",
+        "verbs-005",
+        "verbs-007"
+      ],
+      "gloss": [
+        {
+          "pt": "previsão",
+          "en": "forecast"
+        },
+        {
+          "pt": "diz",
+          "en": "says (dizer)",
+          "word": "verbs-007"
+        },
+        {
+          "pt": "vai",
+          "en": "will; is going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "chover",
+          "en": "rain (chover)"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-city-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Asking the way to the metro station",
+      "lines": [
+        {
+          "speaker": "O turista",
+          "pt": "Com licença, senhora. Onde fica a estação de metrô?",
+          "en": "Excuse me, madam. Where is the metro station?"
+        },
+        {
+          "speaker": "A senhora",
+          "pt": "É fácil. Você segue em frente até o sinal.",
+          "en": "It’s easy. You carry straight on as far as the traffic light."
+        },
+        {
+          "speaker": "O turista",
+          "pt": "E depois do sinal?",
+          "en": "And after the traffic light?"
+        },
+        {
+          "speaker": "A senhora",
+          "pt": "Você vira à direita. A estação fica atrás do shopping.",
+          "en": "You turn right. The station is behind the shopping centre."
+        },
+        {
+          "speaker": "O turista",
+          "pt": "É longe daqui?",
+          "en": "Is it far from here?"
+        },
+        {
+          "speaker": "A senhora",
+          "pt": "Não, dez minutos a pé. O ônibus número seis também vai até lá.",
+          "en": "No, ten minutes on foot. The number six bus goes there too."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where does the tourist turn right?",
+          "choices": [
+            "Before the bridge",
+            "At the traffic light",
+            "At the shopping centre",
+            "At the station"
+          ],
+          "answer": 1,
+          "explanation": "“Você segue em frente até o sinal.”, then “Você vira à direita.”"
+        },
+        {
+          "question": "How long is the walk?",
+          "choices": [
+            "Six minutes",
+            "Twenty minutes",
+            "Ten minutes",
+            "Five minutes"
+          ],
+          "answer": 2,
+          "explanation": "“Não, dez minutos a pé.” — the six is the bus number, not the time."
+        },
+        {
+          "question": "What is the station behind?",
+          "choices": [
+            "The bakery",
+            "The traffic light",
+            "The bus stop",
+            "The shopping centre"
+          ],
+          "answer": 3,
+          "explanation": "“A estação fica atrás do shopping.”"
+        },
+        {
+          "question": "What else can he take to the station?",
+          "choices": [
+            "Bus number six",
+            "Bus number ten",
+            "A taxi",
+            "The train"
+          ],
+          "answer": 0,
+          "explanation": "“O ônibus número seis também vai até lá.”"
+        }
+      ],
+      "topics": [
+        "prepositions-contractions",
+        "present-regular",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-013",
+        "essentials-033",
+        "essentials-054",
+        "essentials-056",
+        "essentials-064",
+        "essentials-089",
+        "essentials-092",
+        "essentials-095",
+        "health-time-005",
+        "health-time-027",
+        "health-time-051",
+        "health-time-055",
+        "people-034",
+        "qualities-034",
+        "shopping-013",
+        "town-018",
+        "travel-005",
+        "travel-007",
+        "travel-012",
+        "travel-033",
+        "travel-035",
+        "travel-037",
+        "verbs-001",
+        "verbs-005",
+        "verbs-033",
+        "verbs-104"
+      ],
+      "gloss": [
+        {
+          "pt": "Com licença",
+          "en": "excuse me",
+          "word": "essentials-013"
+        },
+        {
+          "pt": "senhora",
+          "en": "madam",
+          "word": "people-034"
+        },
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "estação",
+          "en": "station",
+          "word": "travel-012"
+        },
+        {
+          "pt": "metrô",
+          "en": "metro",
+          "word": "travel-007"
+        },
+        {
+          "pt": "É",
+          "en": "it is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "fácil",
+          "en": "easy",
+          "word": "qualities-034"
+        },
+        {
+          "pt": "segue",
+          "en": "carry on (seguir)",
+          "word": "verbs-104"
+        },
+        {
+          "pt": "em frente",
+          "en": "straight ahead",
+          "word": "travel-035"
+        },
+        {
+          "pt": "até",
+          "en": "as far as; to",
+          "word": "essentials-089"
+        },
+        {
+          "pt": "sinal",
+          "en": "traffic light",
+          "word": "travel-037"
+        },
+        {
+          "pt": "depois",
+          "en": "after",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "vira",
+          "en": "turn (virar)"
+        },
+        {
+          "pt": "direita",
+          "en": "right (direction)",
+          "word": "travel-033"
+        },
+        {
+          "pt": "atrás",
+          "en": "behind"
+        },
+        {
+          "pt": "shopping",
+          "en": "shopping centre",
+          "word": "shopping-013"
+        },
+        {
+          "pt": "longe",
+          "en": "far",
+          "word": "essentials-095"
+        },
+        {
+          "pt": "daqui",
+          "en": "from here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        },
+        {
+          "pt": "a pé",
+          "en": "on foot",
+          "word": "health-time-005"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "número",
+          "en": "number",
+          "word": "town-018"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "também",
+          "en": "also; too",
+          "word": "essentials-064"
+        },
+        {
+          "pt": "vai",
+          "en": "goes (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "lá",
+          "en": "there",
+          "word": "essentials-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Buying a coach ticket",
+      "lines": [
+        {
+          "speaker": "O atendente",
+          "pt": "Bom dia. Para onde você vai?",
+          "en": "Good morning. Where are you going?"
+        },
+        {
+          "speaker": "Camila",
+          "pt": "Para Santos, hoje à tarde. Uma passagem só de ida, por favor.",
+          "en": "To Santos, this afternoon. A one-way ticket, please."
+        },
+        {
+          "speaker": "O atendente",
+          "pt": "Tem um ônibus às duas horas e outro às quatro horas.",
+          "en": "There’s a coach at two o’clock and another at four o’clock."
+        },
+        {
+          "speaker": "Camila",
+          "pt": "O primeiro, então. Que horas ele chega?",
+          "en": "The first one, then. What time does it arrive?"
+        },
+        {
+          "speaker": "O atendente",
+          "pt": "Às três e meia. São quarenta reais, por favor.",
+          "en": "At half past three. That’s forty reais, please."
+        },
+        {
+          "speaker": "Camila",
+          "pt": "Aqui está. E o ônibus sai de qual plataforma?",
+          "en": "Here you are. And which platform does the coach leave from?"
+        },
+        {
+          "speaker": "O atendente",
+          "pt": "Plataforma oito. Boa viagem!",
+          "en": "Platform eight. Have a good trip!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which coach does Camila choose?",
+          "choices": [
+            "The half past three coach",
+            "The four o’clock coach",
+            "The two o’clock coach",
+            "The eight o’clock coach"
+          ],
+          "answer": 2,
+          "explanation": "“O primeiro, então.”, and the first one is “às duas horas”."
+        },
+        {
+          "question": "What kind of ticket does she buy?",
+          "choices": [
+            "A return ticket",
+            "Two one-way tickets",
+            "A monthly pass",
+            "A one-way ticket"
+          ],
+          "answer": 3,
+          "explanation": "“Uma passagem só de ida, por favor.”"
+        },
+        {
+          "question": "How much does she pay?",
+          "choices": [
+            "Forty reais",
+            "Fourteen reais",
+            "Thirty reais",
+            "Four reais"
+          ],
+          "answer": 0,
+          "explanation": "“São quarenta reais, por favor.”"
+        },
+        {
+          "question": "Which platform does the coach leave from?",
+          "choices": [
+            "Platform four",
+            "Platform eight",
+            "Platform two",
+            "Platform three"
+          ],
+          "answer": 1,
+          "explanation": "“Plataforma oito.”"
+        }
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular",
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-010",
+        "essentials-033",
+        "essentials-039",
+        "essentials-047",
+        "essentials-054",
+        "essentials-063",
+        "essentials-085",
+        "health-time-026",
+        "health-time-033",
+        "health-time-035",
+        "health-time-047",
+        "health-time-048",
+        "health-time-049",
+        "health-time-053",
+        "qualities-059",
+        "qualities-102",
+        "shopping-005",
+        "travel-005",
+        "travel-016",
+        "travel-017",
+        "verbs-001",
+        "verbs-003",
+        "verbs-005",
+        "verbs-034",
+        "verbs-035"
+      ],
+      "gloss": [
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "Para",
+          "en": "to; for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "vai",
+          "en": "are going (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "Santos",
+          "en": "Santos (a city on the coast near São Paulo)"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon",
+          "word": "health-time-033"
+        },
+        {
+          "pt": "passagem",
+          "en": "ticket",
+          "word": "travel-016"
+        },
+        {
+          "pt": "só de ida",
+          "en": "one-way (ticket)"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "Tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus; coach",
+          "word": "travel-005"
+        },
+        {
+          "pt": "duas",
+          "en": "two (dois)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "outro",
+          "en": "another",
+          "word": "essentials-047"
+        },
+        {
+          "pt": "quatro",
+          "en": "four",
+          "word": "health-time-049"
+        },
+        {
+          "pt": "primeiro",
+          "en": "first",
+          "word": "qualities-059"
+        },
+        {
+          "pt": "então",
+          "en": "then; so",
+          "word": "essentials-063"
+        },
+        {
+          "pt": "chega",
+          "en": "arrives (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "meia",
+          "en": "half (past)",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "São",
+          "en": "it is; that is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "quarenta",
+          "en": "forty"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        },
+        {
+          "pt": "Aqui está",
+          "en": "here you are",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "sai",
+          "en": "leaves (sair)",
+          "word": "verbs-034"
+        },
+        {
+          "pt": "qual",
+          "en": "which",
+          "word": "essentials-039"
+        },
+        {
+          "pt": "plataforma",
+          "en": "platform"
+        },
+        {
+          "pt": "Plataforma",
+          "en": "platform"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "Boa viagem",
+          "en": "have a good trip",
+          "word": "travel-017"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "On the wrong bus",
+      "lines": [
+        {
+          "speaker": "O passageiro",
+          "pt": "Com licença, esse ônibus vai para o museu?",
+          "en": "Excuse me, does this bus go to the museum?"
+        },
+        {
+          "speaker": "A motorista",
+          "pt": "Não, ele vai para o hospital. Você desce no próximo ponto.",
+          "en": "No, it goes to the hospital. You get off at the next stop."
+        },
+        {
+          "speaker": "O passageiro",
+          "pt": "E depois, qual ônibus eu pego?",
+          "en": "And then, which bus do I take?"
+        },
+        {
+          "speaker": "A motorista",
+          "pt": "O vinte e três. O ponto fica do outro lado da rua, na frente da farmácia.",
+          "en": "The twenty-three. The stop is across the street, in front of the pharmacy."
+        },
+        {
+          "speaker": "O passageiro",
+          "pt": "Muito obrigado. De quanto em quanto tempo ele passa?",
+          "en": "Thank you very much. How often does it come?"
+        },
+        {
+          "speaker": "A motorista",
+          "pt": "A cada quinze minutos.",
+          "en": "Every fifteen minutes."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where does this bus go?",
+          "choices": [
+            "To the station",
+            "To the museum",
+            "To the pharmacy",
+            "To the hospital"
+          ],
+          "answer": 3,
+          "explanation": "“Não, ele vai para o hospital.”"
+        },
+        {
+          "question": "Where should the passenger get off?",
+          "choices": [
+            "At the next stop",
+            "At the hospital",
+            "At the museum",
+            "At the last stop"
+          ],
+          "answer": 0,
+          "explanation": "“Você desce no próximo ponto.”"
+        },
+        {
+          "question": "Which bus does he take next?",
+          "choices": [
+            "Number thirteen",
+            "Number twenty-three",
+            "Number fifteen",
+            "Number thirty-two"
+          ],
+          "answer": 1,
+          "explanation": "“O vinte e três.”"
+        },
+        {
+          "question": "Where is the other stop?",
+          "choices": [
+            "Behind the hospital",
+            "Next to the museum",
+            "Across the street, in front of the pharmacy",
+            "In front of the station"
+          ],
+          "answer": 2,
+          "explanation": "“O ponto fica do outro lado da rua, na frente da farmácia.”"
+        }
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-009",
+        "essentials-013",
+        "essentials-039",
+        "essentials-046",
+        "essentials-047",
+        "essentials-048",
+        "essentials-085",
+        "essentials-092",
+        "health-time-023",
+        "health-time-027",
+        "health-time-048",
+        "health-time-056",
+        "qualities-061",
+        "shopping-017",
+        "town-027",
+        "travel-002",
+        "travel-005",
+        "travel-015",
+        "verbs-005",
+        "verbs-026",
+        "verbs-032",
+        "verbs-033",
+        "verbs-039"
+      ],
+      "gloss": [
+        {
+          "pt": "Com licença",
+          "en": "excuse me",
+          "word": "essentials-013"
+        },
+        {
+          "pt": "esse",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "vai",
+          "en": "goes (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "para",
+          "en": "to; for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "museu",
+          "en": "museum",
+          "word": "town-027"
+        },
+        {
+          "pt": "hospital",
+          "en": "hospital",
+          "word": "health-time-023"
+        },
+        {
+          "pt": "desce",
+          "en": "get off (descer)",
+          "word": "verbs-039"
+        },
+        {
+          "pt": "próximo",
+          "en": "next",
+          "word": "qualities-061"
+        },
+        {
+          "pt": "ponto",
+          "en": "stop (bus stop)",
+          "word": "travel-015"
+        },
+        {
+          "pt": "depois",
+          "en": "then; afterwards",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "qual",
+          "en": "which",
+          "word": "essentials-039"
+        },
+        {
+          "pt": "pego",
+          "en": "take (pegar)",
+          "word": "verbs-026"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "outro",
+          "en": "other",
+          "word": "essentials-047"
+        },
+        {
+          "pt": "lado",
+          "en": "side"
+        },
+        {
+          "pt": "rua",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "pt": "frente",
+          "en": "front (na frente de: in front of)"
+        },
+        {
+          "pt": "farmácia",
+          "en": "pharmacy",
+          "word": "shopping-017"
+        },
+        {
+          "pt": "Muito obrigado",
+          "en": "thank you very much",
+          "word": "essentials-009"
+        },
+        {
+          "pt": "De quanto em quanto tempo",
+          "en": "how often"
+        },
+        {
+          "pt": "passa",
+          "en": "comes by (passar)",
+          "word": "verbs-032"
+        },
+        {
+          "pt": "A cada",
+          "en": "every",
+          "word": "essentials-046"
+        },
+        {
+          "pt": "quinze",
+          "en": "fifteen"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the street market",
+      "lines": [
+        {
+          "speaker": "Letícia",
+          "pt": "Bom dia! Você tem morangos hoje?",
+          "en": "Good morning! Do you have strawberries today?"
+        },
+        {
+          "speaker": "O feirante",
+          "pt": "Tenho, sim. Eles vêm do interior e estão bem frescos.",
+          "en": "Yes, I do. They come from the countryside and they’re really fresh."
+        },
+        {
+          "speaker": "Letícia",
+          "pt": "Quanto custa a caixa?",
+          "en": "How much is a box?"
+        },
+        {
+          "speaker": "O feirante",
+          "pt": "Cinco reais a caixa. Três caixas por doze reais.",
+          "en": "Five reais a box. Three boxes for twelve reais."
+        },
+        {
+          "speaker": "Letícia",
+          "pt": "Então eu levo três caixas. Que horas a feira fecha?",
+          "en": "Then I’ll take three boxes. What time does the market close?"
+        },
+        {
+          "speaker": "O feirante",
+          "pt": "Ao meio-dia. No domingo, a gente fica até as duas.",
+          "en": "At midday. On Sundays, we stay until two."
+        },
+        {
+          "speaker": "Letícia",
+          "pt": "Perfeito. Obrigada e até domingo!",
+          "en": "Perfect. Thank you, and see you on Sunday!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Letícia buy?",
+          "choices": [
+            "Strawberries",
+            "Bananas",
+            "Mangoes",
+            "Oranges"
+          ],
+          "answer": 0,
+          "explanation": "“Você tem morangos hoje?” and then “Então eu levo três caixas.”"
+        },
+        {
+          "question": "How much does she pay?",
+          "choices": [
+            "Five reais",
+            "Twelve reais",
+            "Fifteen reais",
+            "Three reais"
+          ],
+          "answer": 1,
+          "explanation": "“Três caixas por doze reais.”"
+        },
+        {
+          "question": "When does the market usually close?",
+          "choices": [
+            "At two o’clock",
+            "At ten o’clock",
+            "At midday",
+            "At one o’clock"
+          ],
+          "answer": 2,
+          "explanation": "“Ao meio-dia.” — it stays until two only on Sundays."
+        },
+        {
+          "question": "When will Letícia come back?",
+          "choices": [
+            "Tomorrow",
+            "On Saturday",
+            "Next week",
+            "On Sunday"
+          ],
+          "answer": 3,
+          "explanation": "“Obrigada e até domingo!”"
+        }
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions",
+        "plural"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-009",
+        "essentials-014",
+        "essentials-024",
+        "essentials-038",
+        "essentials-063",
+        "essentials-077",
+        "essentials-088",
+        "essentials-089",
+        "food-024",
+        "health-time-026",
+        "health-time-035",
+        "health-time-046",
+        "health-time-047",
+        "health-time-048",
+        "health-time-050",
+        "qualities-025",
+        "qualities-077",
+        "qualities-102",
+        "shopping-005",
+        "shopping-008",
+        "shopping-018",
+        "verbs-002",
+        "verbs-003",
+        "verbs-006",
+        "verbs-033",
+        "verbs-043",
+        "verbs-046",
+        "verbs-071"
+      ],
+      "gloss": [
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "morangos",
+          "en": "strawberries (o morango)",
+          "word": "food-024"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "Tenho",
+          "en": "I have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "vêm",
+          "en": "come (vir)",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "interior",
+          "en": "countryside; inland"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "bem",
+          "en": "really; very",
+          "word": "essentials-077"
+        },
+        {
+          "pt": "frescos",
+          "en": "fresh (fresco)",
+          "word": "qualities-025"
+        },
+        {
+          "pt": "Quanto",
+          "en": "how much",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "caixa",
+          "en": "box",
+          "word": "shopping-008"
+        },
+        {
+          "pt": "Cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        },
+        {
+          "pt": "Três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "caixas",
+          "en": "boxes (a caixa)",
+          "word": "shopping-008"
+        },
+        {
+          "pt": "por",
+          "en": "for",
+          "word": "essentials-088"
+        },
+        {
+          "pt": "doze",
+          "en": "twelve"
+        },
+        {
+          "pt": "Então",
+          "en": "then; so",
+          "word": "essentials-063"
+        },
+        {
+          "pt": "levo",
+          "en": "take (levar)",
+          "word": "verbs-043"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "feira",
+          "en": "street market",
+          "word": "shopping-018"
+        },
+        {
+          "pt": "fecha",
+          "en": "closes (fechar)",
+          "word": "verbs-046"
+        },
+        {
+          "pt": "meio-dia",
+          "en": "midday",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "a gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "fica",
+          "en": "stay (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "até",
+          "en": "until",
+          "word": "essentials-089"
+        },
+        {
+          "pt": "duas",
+          "en": "two (o’clock) (dois)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "Perfeito",
+          "en": "perfect",
+          "word": "qualities-077"
+        },
+        {
+          "pt": "Obrigada",
+          "en": "thank you (said by a woman)",
+          "word": "essentials-009"
+        },
+        {
+          "pt": "até domingo",
+          "en": "see you on Sunday",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A message from a friend",
+      "lines": [
+        {
+          "pt": "Oi! Eu já estou no centro.",
+          "en": "Hi! I’m already in the city centre."
+        },
+        {
+          "pt": "O metrô está fechado, então eu vou de ônibus.",
+          "en": "The metro is closed, so I’m going by bus."
+        },
+        {
+          "pt": "Vou chegar às quatro horas na frente do cinema.",
+          "en": "I’m going to arrive at four o’clock in front of the cinema."
+        },
+        {
+          "pt": "Está chovendo muito: traga seu guarda-chuva!",
+          "en": "It’s raining a lot: bring your umbrella!"
+        },
+        {
+          "pt": "Depois do filme, a gente pode tomar um café perto da praça.",
+          "en": "After the film, we can have a coffee near the square."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where is the friend now?",
+          "choices": [
+            "At home",
+            "In the city centre",
+            "At the cinema",
+            "At the metro station"
+          ],
+          "answer": 1,
+          "explanation": "“Eu já estou no centro.”"
+        },
+        {
+          "question": "How is the friend travelling?",
+          "choices": [
+            "By metro",
+            "On foot",
+            "By bus",
+            "By taxi"
+          ],
+          "answer": 2,
+          "explanation": "“então eu vou de ônibus.” — the metro is closed."
+        },
+        {
+          "question": "What should you bring?",
+          "choices": [
+            "A coat",
+            "A ticket",
+            "Some money",
+            "An umbrella"
+          ],
+          "answer": 3,
+          "explanation": "“traga seu guarda-chuva!”"
+        },
+        {
+          "question": "What do they plan after the film?",
+          "choices": [
+            "A coffee near the square",
+            "A meal at home",
+            "A walk in the park",
+            "Shopping at the shopping centre"
+          ],
+          "answer": 0,
+          "explanation": "“a gente pode tomar um café perto da praça.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "ir-future",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-002",
+        "essentials-024",
+        "essentials-051",
+        "essentials-063",
+        "essentials-065",
+        "essentials-069",
+        "essentials-092",
+        "essentials-094",
+        "food-003",
+        "health-time-026",
+        "health-time-049",
+        "leisure-014",
+        "media-031",
+        "qualities-033",
+        "town-024",
+        "town-028",
+        "travel-005",
+        "travel-007",
+        "verbs-002",
+        "verbs-005",
+        "verbs-023",
+        "verbs-035",
+        "verbs-044",
+        "verbs-061"
+      ],
+      "gloss": [
+        {
+          "pt": "Oi",
+          "en": "hi",
+          "word": "essentials-002"
+        },
+        {
+          "pt": "já",
+          "en": "already",
+          "word": "essentials-069"
+        },
+        {
+          "pt": "estou",
+          "en": "am (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "centro",
+          "en": "city centre",
+          "word": "town-028"
+        },
+        {
+          "pt": "metrô",
+          "en": "metro",
+          "word": "travel-007"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "fechado",
+          "en": "closed",
+          "word": "qualities-033"
+        },
+        {
+          "pt": "então",
+          "en": "so",
+          "word": "essentials-063"
+        },
+        {
+          "pt": "vou",
+          "en": "am going (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "Vou",
+          "en": "am going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "chegar",
+          "en": "arrive (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "quatro",
+          "en": "four",
+          "word": "health-time-049"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "frente",
+          "en": "front (na frente de: in front of)"
+        },
+        {
+          "pt": "cinema",
+          "en": "cinema",
+          "word": "leisure-014"
+        },
+        {
+          "pt": "Está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "chovendo",
+          "en": "raining (chover)"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "traga",
+          "en": "bring (trazer)",
+          "word": "verbs-044"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "guarda-chuva",
+          "en": "umbrella"
+        },
+        {
+          "pt": "Depois",
+          "en": "after",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "filme",
+          "en": "film",
+          "word": "media-031"
+        },
+        {
+          "pt": "a gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "pode",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "tomar",
+          "en": "have; drink (tomar)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "praça",
+          "en": "square",
+          "word": "town-024"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "Notice at the bus stop",
+      "lines": [
+        {
+          "pt": "Atenção: a partir de segunda-feira, a linha oito muda de trajeto.",
+          "en": "Attention: starting from Monday, line eight changes its route."
+        },
+        {
+          "pt": "O ônibus não passa mais pela praça do mercado.",
+          "en": "The bus no longer goes through the market square."
+        },
+        {
+          "pt": "O novo ponto fica na frente da prefeitura, perto do parque.",
+          "en": "The new stop is in front of the town hall, near the park."
+        },
+        {
+          "pt": "Primeiro ônibus: cinco e meia da manhã. Último ônibus: onze horas da noite.",
+          "en": "First bus: half past five in the morning. Last bus: eleven at night."
+        },
+        {
+          "pt": "Para mais informações, pergunte na bilheteria da rodoviária.",
+          "en": "For more information, ask at the bus station ticket office."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What changes on Monday?",
+          "choices": [
+            "The name of the stop",
+            "The first bus time",
+            "The route of line eight",
+            "The price of the tickets"
+          ],
+          "answer": 2,
+          "explanation": "“a partir de segunda-feira, a linha oito muda de trajeto.”"
+        },
+        {
+          "question": "Which place does the bus no longer go through?",
+          "choices": [
+            "The town hall",
+            "The park",
+            "The bus station",
+            "The market square"
+          ],
+          "answer": 3,
+          "explanation": "“O ônibus não passa mais pela praça do mercado.”"
+        },
+        {
+          "question": "Where is the new stop?",
+          "choices": [
+            "In front of the town hall",
+            "Behind the market",
+            "Next to the bus station",
+            "Inside the park"
+          ],
+          "answer": 0,
+          "explanation": "“O novo ponto fica na frente da prefeitura”"
+        },
+        {
+          "question": "When does the last bus run?",
+          "choices": [
+            "At midnight",
+            "At eleven at night",
+            "At half past five",
+            "At ten at night"
+          ],
+          "answer": 1,
+          "explanation": "“Último ônibus: onze horas da noite.”"
+        }
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-067",
+        "essentials-085",
+        "essentials-088",
+        "essentials-094",
+        "health-time-026",
+        "health-time-032",
+        "health-time-034",
+        "health-time-040",
+        "health-time-050",
+        "health-time-053",
+        "media-049",
+        "qualities-008",
+        "qualities-059",
+        "qualities-060",
+        "qualities-102",
+        "shopping-015",
+        "town-022",
+        "town-024",
+        "town-025",
+        "travel-005",
+        "travel-014",
+        "travel-015",
+        "verbs-009",
+        "verbs-032",
+        "verbs-033",
+        "verbs-052"
+      ],
+      "gloss": [
+        {
+          "pt": "Atenção",
+          "en": "attention"
+        },
+        {
+          "pt": "a partir de",
+          "en": "starting from"
+        },
+        {
+          "pt": "segunda-feira",
+          "en": "Monday",
+          "word": "health-time-040"
+        },
+        {
+          "pt": "linha",
+          "en": "line (bus route)"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "muda",
+          "en": "changes (mudar)",
+          "word": "verbs-052"
+        },
+        {
+          "pt": "trajeto",
+          "en": "route"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "passa",
+          "en": "goes; passes (passar)",
+          "word": "verbs-032"
+        },
+        {
+          "pt": "mais",
+          "en": "any more; more",
+          "word": "essentials-067"
+        },
+        {
+          "pt": "pela",
+          "en": "through the (por + a)",
+          "word": "essentials-088"
+        },
+        {
+          "pt": "praça",
+          "en": "square",
+          "word": "town-024"
+        },
+        {
+          "pt": "mercado",
+          "en": "market",
+          "word": "shopping-015"
+        },
+        {
+          "pt": "novo",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "pt": "ponto",
+          "en": "stop (bus stop)",
+          "word": "travel-015"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "frente",
+          "en": "front (na frente de: in front of)"
+        },
+        {
+          "pt": "prefeitura",
+          "en": "town hall",
+          "word": "town-022"
+        },
+        {
+          "pt": "perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "parque",
+          "en": "park",
+          "word": "town-025"
+        },
+        {
+          "pt": "Primeiro",
+          "en": "first",
+          "word": "qualities-059"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "meia",
+          "en": "half (past)",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "Último",
+          "en": "last",
+          "word": "qualities-060"
+        },
+        {
+          "pt": "onze",
+          "en": "eleven"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "Para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "informações",
+          "en": "information (a informação)",
+          "word": "media-049"
+        },
+        {
+          "pt": "pergunte",
+          "en": "ask (perguntar)",
+          "word": "verbs-009"
+        },
+        {
+          "pt": "bilheteria",
+          "en": "ticket office"
+        },
+        {
+          "pt": "rodoviária",
+          "en": "bus station",
+          "word": "travel-014"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "The weather in town today",
+      "lines": [
+        {
+          "pt": "Bom dia, aqui está a previsão do tempo para esta terça-feira.",
+          "en": "Good morning, here is the weather forecast for this Tuesday."
+        },
+        {
+          "pt": "De manhã, faz frio na cidade: só doze graus.",
+          "en": "In the morning, it’s cold in the city: only twelve degrees."
+        },
+        {
+          "pt": "O céu está cinza e tem neblina perto do rio.",
+          "en": "The sky is grey and there’s fog near the river."
+        },
+        {
+          "pt": "À tarde, o sol volta.",
+          "en": "In the afternoon, the sun comes back."
+        },
+        {
+          "pt": "À noite, a chuva chega por volta das oito horas.",
+          "en": "In the evening, the rain arrives around eight o’clock."
+        },
+        {
+          "pt": "Leve um guarda-chuva!",
+          "en": "Take an umbrella!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which day is the forecast for?",
+          "choices": [
+            "Monday",
+            "Thursday",
+            "Sunday",
+            "Tuesday"
+          ],
+          "answer": 3,
+          "explanation": "“para esta terça-feira”"
+        },
+        {
+          "question": "How cold is it in the morning?",
+          "choices": [
+            "Twelve degrees",
+            "Two degrees",
+            "Twenty degrees",
+            "Eight degrees"
+          ],
+          "answer": 0,
+          "explanation": "“só doze graus.”"
+        },
+        {
+          "question": "Where is the fog?",
+          "choices": [
+            "Near the beach",
+            "Near the river",
+            "In the city centre",
+            "On the bridge"
+          ],
+          "answer": 1,
+          "explanation": "“tem neblina perto do rio.”"
+        },
+        {
+          "question": "When does the rain arrive?",
+          "choices": [
+            "In the morning",
+            "At midday",
+            "Around eight in the evening",
+            "In the afternoon"
+          ],
+          "answer": 2,
+          "explanation": "“a chuva chega por volta das oito horas.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-048",
+        "essentials-054",
+        "essentials-076",
+        "essentials-085",
+        "essentials-094",
+        "health-time-025",
+        "health-time-026",
+        "health-time-032",
+        "health-time-033",
+        "health-time-034",
+        "health-time-041",
+        "health-time-053",
+        "nature-001",
+        "nature-002",
+        "nature-005",
+        "nature-010",
+        "qualities-024",
+        "qualities-098",
+        "travel-001",
+        "verbs-002",
+        "verbs-003",
+        "verbs-004",
+        "verbs-035",
+        "verbs-037",
+        "verbs-043"
+      ],
+      "gloss": [
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "aqui está",
+          "en": "here is",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "previsão do tempo",
+          "en": "weather forecast",
+          "word": "health-time-025"
+        },
+        {
+          "pt": "para",
+          "en": "to; for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "esta",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "terça-feira",
+          "en": "Tuesday",
+          "word": "health-time-041"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "faz",
+          "en": "is (weather) (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "frio",
+          "en": "cold",
+          "word": "qualities-024"
+        },
+        {
+          "pt": "cidade",
+          "en": "city",
+          "word": "travel-001"
+        },
+        {
+          "pt": "só",
+          "en": "only",
+          "word": "essentials-076"
+        },
+        {
+          "pt": "doze",
+          "en": "twelve"
+        },
+        {
+          "pt": "graus",
+          "en": "degrees (o grau)"
+        },
+        {
+          "pt": "céu",
+          "en": "sky",
+          "word": "nature-005"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cinza",
+          "en": "grey",
+          "word": "qualities-098"
+        },
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "neblina",
+          "en": "fog"
+        },
+        {
+          "pt": "perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "rio",
+          "en": "river",
+          "word": "nature-010"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon",
+          "word": "health-time-033"
+        },
+        {
+          "pt": "sol",
+          "en": "sun",
+          "word": "nature-001"
+        },
+        {
+          "pt": "volta",
+          "en": "comes back (voltar)",
+          "word": "verbs-037"
+        },
+        {
+          "pt": "noite",
+          "en": "evening; night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "chuva",
+          "en": "rain",
+          "word": "nature-002"
+        },
+        {
+          "pt": "chega",
+          "en": "arrives (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "por volta das",
+          "en": "around (a time)"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "Leve",
+          "en": "take (levar)",
+          "word": "verbs-043"
+        },
+        {
+          "pt": "guarda-chuva",
+          "en": "umbrella"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "A note on the bakery door",
+      "lines": [
+        {
+          "pt": "A padaria está fechada nesta quinta-feira à tarde.",
+          "en": "The bakery is closed this Thursday afternoon."
+        },
+        {
+          "pt": "Abrimos na sexta-feira às seis horas.",
+          "en": "We open on Friday at six o’clock."
+        },
+        {
+          "pt": "O pão francês e o pão de queijo estão quentes a partir das sete.",
+          "en": "The French rolls and the cheese bread are hot from seven o’clock."
+        },
+        {
+          "pt": "Para encomendas, ligue antes do meio-dia.",
+          "en": "For orders, call before midday."
+        },
+        {
+          "pt": "Obrigado e até logo!",
+          "en": "Thank you, and see you soon!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the bakery closed?",
+          "choices": [
+            "On Thursday afternoon",
+            "On Friday morning",
+            "On Thursday morning",
+            "All day on Friday"
+          ],
+          "answer": 0,
+          "explanation": "“A padaria está fechada nesta quinta-feira à tarde.”"
+        },
+        {
+          "question": "What time does it open on Friday?",
+          "choices": [
+            "At seven",
+            "At six",
+            "At midday",
+            "At eight"
+          ],
+          "answer": 1,
+          "explanation": "“Abrimos na sexta-feira às seis horas.”"
+        },
+        {
+          "question": "From what time is the bread hot?",
+          "choices": [
+            "From six",
+            "From midday",
+            "From seven",
+            "From eight"
+          ],
+          "answer": 2,
+          "explanation": "“estão quentes a partir das sete.”"
+        },
+        {
+          "question": "What should you do before midday?",
+          "choices": [
+            "Pay for your bread",
+            "Come to the shop",
+            "Arrive early",
+            "Phone to place an order"
+          ],
+          "answer": 3,
+          "explanation": "“Para encomendas, ligue antes do meio-dia.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-007",
+        "essentials-009",
+        "essentials-048",
+        "essentials-085",
+        "essentials-093",
+        "food-002",
+        "food-010",
+        "health-time-026",
+        "health-time-033",
+        "health-time-043",
+        "health-time-044",
+        "health-time-051",
+        "health-time-052",
+        "media-012",
+        "qualities-023",
+        "qualities-033",
+        "qualities-102",
+        "shopping-016",
+        "verbs-002",
+        "verbs-045"
+      ],
+      "gloss": [
+        {
+          "pt": "padaria",
+          "en": "bakery",
+          "word": "shopping-016"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "fechada",
+          "en": "closed (fechado)",
+          "word": "qualities-033"
+        },
+        {
+          "pt": "nesta",
+          "en": "this (em + esta)",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "quinta-feira",
+          "en": "Thursday",
+          "word": "health-time-043"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon",
+          "word": "health-time-033"
+        },
+        {
+          "pt": "Abrimos",
+          "en": "we open (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "sexta-feira",
+          "en": "Friday",
+          "word": "health-time-044"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "pão francês",
+          "en": "French roll (bread)",
+          "word": "food-002"
+        },
+        {
+          "pt": "pão de queijo",
+          "en": "cheese bread",
+          "word": "food-010"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "quentes",
+          "en": "hot (quente)",
+          "word": "qualities-023"
+        },
+        {
+          "pt": "a partir das",
+          "en": "from (a time)"
+        },
+        {
+          "pt": "sete",
+          "en": "seven (o’clock)",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "Para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "encomendas",
+          "en": "orders (a encomenda)"
+        },
+        {
+          "pt": "ligue",
+          "en": "call (ligar)",
+          "word": "media-012"
+        },
+        {
+          "pt": "antes",
+          "en": "before",
+          "word": "essentials-093"
+        },
+        {
+          "pt": "meio-dia",
+          "en": "midday",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "Obrigado",
+          "en": "thank you",
+          "word": "essentials-009"
+        },
+        {
+          "pt": "até logo",
+          "en": "see you soon",
+          "word": "essentials-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-city-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Announcement at the bus station",
+      "lines": [
+        {
+          "pt": "Senhoras e senhores, atenção, por favor.",
+          "en": "Ladies and gentlemen, your attention, please."
+        },
+        {
+          "pt": "O ônibus das dez horas para Curitiba está vinte minutos atrasado.",
+          "en": "The ten o’clock coach to Curitiba is twenty minutes late."
+        },
+        {
+          "pt": "Ele sai agora da plataforma sete.",
+          "en": "It now leaves from platform seven."
+        },
+        {
+          "pt": "Os passageiros para Florianópolis trocam de ônibus em Joinville.",
+          "en": "Passengers for Florianópolis change coaches in Joinville."
+        },
+        {
+          "pt": "A lanchonete da rodoviária está aberta, perto da bilheteria.",
+          "en": "The bus station snack bar is open, near the ticket office."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where is the ten o’clock coach going?",
+          "choices": [
+            "To Joinville",
+            "To Curitiba",
+            "To Florianópolis",
+            "To São Paulo"
+          ],
+          "answer": 1,
+          "explanation": "“O ônibus das dez horas para Curitiba”"
+        },
+        {
+          "question": "How late is it?",
+          "choices": [
+            "Ten minutes",
+            "Seven minutes",
+            "Twenty minutes",
+            "An hour"
+          ],
+          "answer": 2,
+          "explanation": "“está vinte minutos atrasado.”"
+        },
+        {
+          "question": "Where do passengers for Florianópolis change?",
+          "choices": [
+            "In Curitiba",
+            "At platform seven",
+            "In São Paulo",
+            "In Joinville"
+          ],
+          "answer": 3,
+          "explanation": "“trocam de ônibus em Joinville.”"
+        },
+        {
+          "question": "What is open near the ticket office?",
+          "choices": [
+            "The snack bar",
+            "The pharmacy",
+            "The bank",
+            "The newsagent’s"
+          ],
+          "answer": 0,
+          "explanation": "“A lanchonete da rodoviária está aberta”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-010",
+        "essentials-057",
+        "essentials-085",
+        "essentials-094",
+        "health-time-026",
+        "health-time-027",
+        "health-time-052",
+        "health-time-055",
+        "health-time-056",
+        "people-034",
+        "qualities-032",
+        "shopping-029",
+        "town-035",
+        "travel-005",
+        "travel-014",
+        "travel-045",
+        "verbs-002",
+        "verbs-034"
+      ],
+      "gloss": [
+        {
+          "pt": "Senhoras e senhores",
+          "en": "ladies and gentlemen",
+          "word": "people-034"
+        },
+        {
+          "pt": "atenção",
+          "en": "attention"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus; coach",
+          "word": "travel-005"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "para",
+          "en": "to; for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "Curitiba",
+          "en": "Curitiba (a city in the south of Brazil)"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        },
+        {
+          "pt": "atrasado",
+          "en": "late",
+          "word": "travel-045"
+        },
+        {
+          "pt": "sai",
+          "en": "leaves (sair)",
+          "word": "verbs-034"
+        },
+        {
+          "pt": "agora",
+          "en": "now",
+          "word": "essentials-057"
+        },
+        {
+          "pt": "plataforma",
+          "en": "platform"
+        },
+        {
+          "pt": "sete",
+          "en": "seven",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "passageiros",
+          "en": "passengers (o passageiro)"
+        },
+        {
+          "pt": "Florianópolis",
+          "en": "Florianópolis (a city in the south of Brazil)"
+        },
+        {
+          "pt": "trocam",
+          "en": "change (trocar)",
+          "word": "shopping-029"
+        },
+        {
+          "pt": "Joinville",
+          "en": "Joinville (a city in the south of Brazil)"
+        },
+        {
+          "pt": "lanchonete",
+          "en": "snack bar",
+          "word": "town-035"
+        },
+        {
+          "pt": "rodoviária",
+          "en": "bus station",
+          "word": "travel-014"
+        },
+        {
+          "pt": "aberta",
+          "en": "open (aberto)",
+          "word": "qualities-032"
+        },
+        {
+          "pt": "perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "bilheteria",
+          "en": "ticket office"
+        }
+      ]
+    }
+  ]
+}

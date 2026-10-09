@@ -1,0 +1,5220 @@
+{
+  "sentences": [
+    {
+      "id": "a2-health-s01",
+      "level": "A2",
+      "pt": "Ontem eu tive dor de cabeça o dia inteiro.",
+      "en": "Yesterday I had a headache all day.",
+      "distractors": [
+        "Yesterday I had a stomach ache all day.",
+        "Today I have a headache all day.",
+        "Yesterday I had a headache all morning."
+      ],
+      "topics": [
+        "preterite"
+      ],
+      "words": [
+        "health-time-036",
+        "verbs-003",
+        "health-time-018",
+        "health-time-028",
+        "qualities-101"
+      ],
+      "gloss": [
+        {
+          "pt": "Ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "tive",
+          "en": "had (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "dor de cabeça",
+          "en": "headache",
+          "word": "health-time-018"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "inteiro",
+          "en": "whole (o dia inteiro = all day)",
+          "word": "qualities-101"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s02",
+      "level": "A2",
+      "pt": "A médica me deu uma receita para três remédios.",
+      "en": "The doctor gave me a prescription for three medicines.",
+      "distractors": [
+        "The doctor gave me a prescription for two medicines.",
+        "The pharmacist gave me a prescription for three medicines.",
+        "The doctor showed me a prescription for three medicines."
+      ],
+      "topics": [
+        "preterite",
+        "object-pronouns"
+      ],
+      "words": [
+        "work-012",
+        "verbs-027",
+        "essentials-085",
+        "health-time-048",
+        "health-time-022"
+      ],
+      "gloss": [
+        {
+          "pt": "médica",
+          "en": "doctor (a woman)",
+          "word": "work-012"
+        },
+        {
+          "pt": "deu",
+          "en": "gave (dar)",
+          "word": "verbs-027"
+        },
+        {
+          "pt": "receita",
+          "en": "prescription"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "remédios",
+          "en": "medicines (o remédio)",
+          "word": "health-time-022"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s03",
+      "level": "A2",
+      "pt": "Marquei uma consulta com o dentista para a próxima terça.",
+      "en": "I booked an appointment with the dentist for next Tuesday.",
+      "distractors": [
+        "I booked an appointment with the doctor for next Tuesday.",
+        "I booked an appointment with the dentist for last Tuesday.",
+        "I booked an appointment with the dentist for next Thursday."
+      ],
+      "topics": [
+        "preterite"
+      ],
+      "words": [
+        "essentials-086",
+        "work-014",
+        "essentials-085",
+        "qualities-061",
+        "health-time-041"
+      ],
+      "gloss": [
+        {
+          "pt": "Marquei",
+          "en": "I booked; I made (an appointment) (marcar)"
+        },
+        {
+          "pt": "consulta",
+          "en": "appointment (with a doctor)"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "dentista",
+          "en": "dentist",
+          "word": "work-014"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "próxima",
+          "en": "next (próximo)",
+          "word": "qualities-061"
+        },
+        {
+          "pt": "terça",
+          "en": "Tuesday (short for terça-feira)",
+          "word": "health-time-041"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s04",
+      "level": "A2",
+      "pt": "Ela ficou na cama porque estava com febre.",
+      "en": "She stayed in bed because she had a fever.",
+      "distractors": [
+        "He stayed in bed because he had a fever.",
+        "She stayed at home because she had a fever.",
+        "She stayed in bed because she had a cough."
+      ],
+      "topics": [
+        "preterite",
+        "imperfect"
+      ],
+      "words": [
+        "verbs-033",
+        "home-023",
+        "essentials-037",
+        "verbs-002",
+        "essentials-086",
+        "health-time-020"
+      ],
+      "gloss": [
+        {
+          "pt": "ficou",
+          "en": "stayed (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "cama",
+          "en": "bed",
+          "word": "home-023"
+        },
+        {
+          "pt": "porque",
+          "en": "because",
+          "word": "essentials-037"
+        },
+        {
+          "pt": "estava",
+          "en": "was (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "febre",
+          "en": "fever",
+          "word": "health-time-020"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s05",
+      "level": "A2",
+      "pt": "Você precisa beber muita água quando está com febre.",
+      "en": "You need to drink a lot of water when you have a fever.",
+      "distractors": [
+        "You need to drink a lot of tea when you have a fever.",
+        "You can drink a lot of water when you have a fever.",
+        "You need to drink a lot of water when you have a cold."
+      ],
+      "topics": [
+        "present-regular",
+        "ser-estar"
+      ],
+      "words": [
+        "verbs-024",
+        "verbs-060",
+        "essentials-065",
+        "food-001",
+        "essentials-034",
+        "verbs-002",
+        "essentials-086",
+        "health-time-020"
+      ],
+      "gloss": [
+        {
+          "pt": "precisa",
+          "en": "need; needs (precisar)",
+          "word": "verbs-024"
+        },
+        {
+          "pt": "beber",
+          "en": "to drink",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "muita",
+          "en": "a lot of (muito)",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "água",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "está",
+          "en": "is; are (estar); estar com = to have (an illness)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "febre",
+          "en": "fever",
+          "word": "health-time-020"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s06",
+      "level": "A2",
+      "pt": "Hoje eu acordei às seis e meia da manhã.",
+      "en": "Today I woke up at half past six in the morning.",
+      "distractors": [
+        "Today I woke up at half past seven in the morning.",
+        "Today I woke up at six in the morning.",
+        "Today I went to bed at half past six in the morning."
+      ],
+      "topics": [
+        "preterite",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-035",
+        "verbs-063",
+        "health-time-051",
+        "qualities-102",
+        "health-time-032"
+      ],
+      "gloss": [
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "acordei",
+          "en": "woke up (acordar)",
+          "word": "verbs-063"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "meia",
+          "en": "half (seis e meia = half past six)",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s07",
+      "level": "A2",
+      "pt": "Meu irmão vai à academia três vezes por semana.",
+      "en": "My brother goes to the gym three times a week.",
+      "distractors": [
+        "My sister goes to the gym three times a week.",
+        "My brother goes to the gym twice a week.",
+        "My brother goes to the pool three times a week."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "people-013",
+        "verbs-005",
+        "leisure-034",
+        "health-time-048",
+        "essentials-074",
+        "essentials-088",
+        "health-time-029"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        },
+        {
+          "pt": "vai",
+          "en": "goes (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "academia",
+          "en": "gym",
+          "word": "leisure-034"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "vezes",
+          "en": "times (a vez)",
+          "word": "essentials-074"
+        },
+        {
+          "pt": "por",
+          "en": "a; per",
+          "word": "essentials-088"
+        },
+        {
+          "pt": "semana",
+          "en": "week",
+          "word": "health-time-029"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s08",
+      "level": "A2",
+      "pt": "A farmácia abre no domingo de manhã?",
+      "en": "Does the pharmacy open on Sunday morning?",
+      "distractors": [
+        "Does the pharmacy open on Saturday morning?",
+        "Does the pharmacy open on Sunday evening?",
+        "Does the bakery open on Sunday morning?"
+      ],
+      "topics": [
+        "present-regular",
+        "negation-questions"
+      ],
+      "words": [
+        "shopping-017",
+        "verbs-045",
+        "health-time-046",
+        "health-time-032"
+      ],
+      "gloss": [
+        {
+          "pt": "farmácia",
+          "en": "pharmacy",
+          "word": "shopping-017"
+        },
+        {
+          "pt": "abre",
+          "en": "opens (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s09",
+      "level": "A2",
+      "pt": "O farmacêutico me explicou como tomar esses comprimidos.",
+      "en": "The pharmacist explained to me how to take these tablets.",
+      "distractors": [
+        "The doctor explained to me how to take these tablets.",
+        "The pharmacist explained to me where to buy these tablets.",
+        "The pharmacist explained to me how to take this syrup."
+      ],
+      "topics": [
+        "preterite",
+        "object-pronouns"
+      ],
+      "words": [
+        "school-037",
+        "essentials-035",
+        "verbs-061",
+        "essentials-048"
+      ],
+      "gloss": [
+        {
+          "pt": "farmacêutico",
+          "en": "pharmacist"
+        },
+        {
+          "pt": "explicou",
+          "en": "explained (explicar)",
+          "word": "school-037"
+        },
+        {
+          "pt": "como",
+          "en": "how",
+          "word": "essentials-035"
+        },
+        {
+          "pt": "tomar",
+          "en": "to take (medicine)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "esses",
+          "en": "these (esse)",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "comprimidos",
+          "en": "tablets (o comprimido)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s10",
+      "level": "A2",
+      "pt": "A gente não dormiu nada por causa do barulho.",
+      "en": "We didn’t sleep at all because of the noise.",
+      "distractors": [
+        "We didn’t sleep at all because of the heat.",
+        "They didn’t sleep at all because of the noise.",
+        "We didn’t eat at all because of the noise."
+      ],
+      "topics": [
+        "preterite",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-062",
+        "essentials-043",
+        "town-037"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "dormiu",
+          "en": "slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "nada",
+          "en": "at all (não … nada = not at all)",
+          "word": "essentials-043"
+        },
+        {
+          "pt": "por causa",
+          "en": "because (por causa de = because of)"
+        },
+        {
+          "pt": "barulho",
+          "en": "noise",
+          "word": "town-037"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s11",
+      "level": "A2",
+      "pt": "Quando eu era criança, ficava doente todo inverno.",
+      "en": "When I was a child, I got ill every winter.",
+      "distractors": [
+        "When I was a child, I got ill every summer.",
+        "When I was a child, I was never ill in winter.",
+        "When my brother was a child, he got ill every winter."
+      ],
+      "topics": [
+        "imperfect"
+      ],
+      "words": [
+        "essentials-034",
+        "verbs-001",
+        "people-004",
+        "verbs-033",
+        "health-time-024",
+        "essentials-045",
+        "nature-023"
+      ],
+      "gloss": [
+        {
+          "pt": "Quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "era",
+          "en": "was (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "criança",
+          "en": "child",
+          "word": "people-004"
+        },
+        {
+          "pt": "ficava",
+          "en": "used to get; got (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "doente",
+          "en": "ill; sick",
+          "word": "health-time-024"
+        },
+        {
+          "pt": "todo",
+          "en": "every",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "inverno",
+          "en": "winter",
+          "word": "nature-023"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s12",
+      "level": "A2",
+      "pt": "Ela quebrou a perna durante um jogo de futebol.",
+      "en": "She broke her leg during a football match.",
+      "distractors": [
+        "She broke her arm during a football match.",
+        "He broke his leg during a football match.",
+        "She broke her leg during a tennis match."
+      ],
+      "topics": [
+        "preterite"
+      ],
+      "words": [
+        "verbs-103",
+        "health-time-012",
+        "leisure-003",
+        "leisure-006"
+      ],
+      "gloss": [
+        {
+          "pt": "quebrou",
+          "en": "broke (quebrar)",
+          "word": "verbs-103"
+        },
+        {
+          "pt": "perna",
+          "en": "leg",
+          "word": "health-time-012"
+        },
+        {
+          "pt": "durante",
+          "en": "during; for"
+        },
+        {
+          "pt": "jogo",
+          "en": "match; game",
+          "word": "leisure-003"
+        },
+        {
+          "pt": "futebol",
+          "en": "football",
+          "word": "leisure-006"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s13",
+      "level": "A2",
+      "pt": "Ele está com tosse e dor de garganta há dois dias.",
+      "en": "He has had a cough and a sore throat for two days.",
+      "distractors": [
+        "He has had a cough and a sore throat for three days.",
+        "He has had a cough and a headache for two days.",
+        "She has had a cough and a sore throat for two days."
+      ],
+      "topics": [
+        "ser-estar"
+      ],
+      "words": [
+        "verbs-002",
+        "essentials-086",
+        "health-time-018",
+        "health-time-047",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "pt": "está",
+          "en": "is; are (estar); estar com = to have (an illness)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "tosse",
+          "en": "cough"
+        },
+        {
+          "pt": "dor de garganta",
+          "en": "sore throat",
+          "word": "health-time-018"
+        },
+        {
+          "pt": "há",
+          "en": "for (time); ago (haver)"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "dias",
+          "en": "days (o dia)",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s14",
+      "level": "A2",
+      "pt": "O médico disse para ele descansar até segunda-feira.",
+      "en": "The doctor told him to rest until Monday.",
+      "distractors": [
+        "The doctor told him to rest until Tuesday.",
+        "The doctor told her to rest until Monday.",
+        "The doctor told him to work until Monday."
+      ],
+      "topics": [
+        "preterite"
+      ],
+      "words": [
+        "work-012",
+        "verbs-007",
+        "essentials-085",
+        "leisure-042",
+        "essentials-089",
+        "health-time-040"
+      ],
+      "gloss": [
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "disse",
+          "en": "told; said (dizer)",
+          "word": "verbs-007"
+        },
+        {
+          "pt": "para",
+          "en": "to (dizer para = to tell someone to)",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "descansar",
+          "en": "to rest",
+          "word": "leisure-042"
+        },
+        {
+          "pt": "até",
+          "en": "until",
+          "word": "essentials-089"
+        },
+        {
+          "pt": "segunda-feira",
+          "en": "Monday",
+          "word": "health-time-040"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s15",
+      "level": "A2",
+      "pt": "Você vai tomar esse xarope de manhã e à noite durante uma semana.",
+      "en": "You are going to take this syrup morning and evening for a week.",
+      "distractors": [
+        "You are going to take this syrup morning and evening for two weeks.",
+        "You are going to take this syrup at lunchtime and in the evening for a week.",
+        "You are going to take this tablet morning and evening for a week."
+      ],
+      "topics": [
+        "ir-future",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-005",
+        "verbs-061",
+        "essentials-048",
+        "health-time-032",
+        "health-time-034",
+        "health-time-029"
+      ],
+      "gloss": [
+        {
+          "pt": "vai",
+          "en": "are going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "tomar",
+          "en": "to take (medicine)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "esse",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "xarope",
+          "en": "syrup; cough syrup"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "durante",
+          "en": "for (a period)"
+        },
+        {
+          "pt": "semana",
+          "en": "week",
+          "word": "health-time-029"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s16",
+      "level": "A2",
+      "pt": "Eu nunca tive gripe, mas sempre pego resfriado.",
+      "en": "I have never had flu, but I always catch colds.",
+      "distractors": [
+        "I have often had flu, but I always catch colds.",
+        "I have never had flu, but I never catch colds.",
+        "I have never had flu, but my sister always catches colds."
+      ],
+      "topics": [
+        "preterite",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-072",
+        "verbs-003",
+        "health-time-021",
+        "essentials-071",
+        "verbs-026"
+      ],
+      "gloss": [
+        {
+          "pt": "nunca",
+          "en": "never",
+          "word": "essentials-072"
+        },
+        {
+          "pt": "tive",
+          "en": "had (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "gripe",
+          "en": "flu",
+          "word": "health-time-021"
+        },
+        {
+          "pt": "sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "pego",
+          "en": "catch (pegar)",
+          "word": "verbs-026"
+        },
+        {
+          "pt": "resfriado",
+          "en": "a cold"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s17",
+      "level": "A2",
+      "pt": "Você mediu a sua temperatura hoje de manhã?",
+      "en": "Did you take your temperature this morning?",
+      "distractors": [
+        "Did you take your temperature last night?",
+        "Did she take her temperature this morning?",
+        "Are you going to take your temperature this morning?"
+      ],
+      "topics": [
+        "preterite",
+        "possessives"
+      ],
+      "words": [
+        "essentials-051",
+        "health-time-035"
+      ],
+      "gloss": [
+        {
+          "pt": "mediu",
+          "en": "measured; took (your temperature) (medir)"
+        },
+        {
+          "pt": "sua",
+          "en": "your (seu)",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "temperatura",
+          "en": "temperature"
+        },
+        {
+          "pt": "hoje de manhã",
+          "en": "this morning",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s18",
+      "level": "A2",
+      "pt": "O pronto-socorro fica aberto vinte e quatro horas por dia.",
+      "en": "The emergency department is open twenty-four hours a day.",
+      "distractors": [
+        "The emergency department is open twelve hours a day.",
+        "The pharmacy is open twenty-four hours a day."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "verbs-033",
+        "qualities-032",
+        "health-time-056",
+        "health-time-049",
+        "health-time-026",
+        "essentials-088",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "pt": "pronto-socorro",
+          "en": "emergency department; A&E"
+        },
+        {
+          "pt": "fica",
+          "en": "is; stays (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "aberto",
+          "en": "open",
+          "word": "qualities-032"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "quatro",
+          "en": "four",
+          "word": "health-time-049"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "por",
+          "en": "per; a",
+          "word": "essentials-088"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s19",
+      "level": "A2",
+      "pt": "Minha irmã é enfermeira no hospital há cinco anos.",
+      "en": "My sister has been a nurse at the hospital for five years.",
+      "distractors": [
+        "My sister has been a nurse at the hospital for three years.",
+        "My sister has been a doctor at the hospital for five years.",
+        "My mother has been a nurse at the hospital for five years."
+      ],
+      "topics": [
+        "ser-estar",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "people-014",
+        "verbs-001",
+        "work-013",
+        "health-time-023",
+        "health-time-050",
+        "health-time-031"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "enfermeira",
+          "en": "nurse (a woman)",
+          "word": "work-013"
+        },
+        {
+          "pt": "hospital",
+          "en": "hospital",
+          "word": "health-time-023"
+        },
+        {
+          "pt": "há",
+          "en": "for (time); ago (haver)"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s20",
+      "level": "A2",
+      "pt": "Ele dormiu no sofá antes das dez horas.",
+      "en": "He fell asleep on the sofa before ten o’clock.",
+      "distractors": [
+        "He fell asleep on the sofa after ten o’clock.",
+        "She fell asleep on the sofa before ten o’clock.",
+        "He fell asleep in bed before ten o’clock."
+      ],
+      "topics": [
+        "preterite",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-062",
+        "home-022",
+        "essentials-093",
+        "health-time-055",
+        "health-time-026"
+      ],
+      "gloss": [
+        {
+          "pt": "dormiu",
+          "en": "fell asleep; slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "sofá",
+          "en": "sofa",
+          "word": "home-022"
+        },
+        {
+          "pt": "antes",
+          "en": "before",
+          "word": "essentials-093"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s21",
+      "level": "A2",
+      "pt": "A gente andou duas horas e agora eu estou com dor nos pés.",
+      "en": "We walked for two hours and now my feet hurt.",
+      "distractors": [
+        "We walked for three hours and now my feet hurt.",
+        "We walked for two hours and now my legs hurt.",
+        "We ran for two hours and now my feet hurt."
+      ],
+      "topics": [
+        "preterite",
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-040",
+        "health-time-047",
+        "health-time-026",
+        "essentials-057",
+        "verbs-002",
+        "essentials-086",
+        "health-time-018",
+        "health-time-005"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "andou",
+          "en": "walked (andar)",
+          "word": "verbs-040"
+        },
+        {
+          "pt": "duas",
+          "en": "two (dois)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "agora",
+          "en": "now",
+          "word": "essentials-057"
+        },
+        {
+          "pt": "estou",
+          "en": "am (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "dor",
+          "en": "pain; ache",
+          "word": "health-time-018"
+        },
+        {
+          "pt": "pés",
+          "en": "feet (o pé)",
+          "word": "health-time-005"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s22",
+      "level": "A2",
+      "pt": "A consulta é no dia quinze de março, às duas da tarde.",
+      "en": "The appointment is on the fifteenth of March, at two in the afternoon.",
+      "distractors": [
+        "The appointment is on the fifteenth of May, at two in the afternoon.",
+        "The appointment is on the fifteenth of March, at three in the afternoon.",
+        "The appointment is on the fifth of March, at two in the afternoon."
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-001",
+        "health-time-028",
+        "health-time-047",
+        "health-time-033"
+      ],
+      "gloss": [
+        {
+          "pt": "consulta",
+          "en": "appointment (with a doctor)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "quinze",
+          "en": "fifteen; the fifteenth"
+        },
+        {
+          "pt": "março",
+          "en": "March"
+        },
+        {
+          "pt": "duas",
+          "en": "two (dois)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon",
+          "word": "health-time-033"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s23",
+      "level": "A2",
+      "pt": "Você não deve comer muito açúcar se quer ter saúde.",
+      "en": "You shouldn’t eat much sugar if you want to be healthy.",
+      "distractors": [
+        "You shouldn’t eat much salt if you want to be healthy.",
+        "You should eat a lot of sugar if you want to be healthy.",
+        "You shouldn’t eat much sugar if you want to lose weight."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "verbs-025",
+        "verbs-059",
+        "essentials-065",
+        "food-006",
+        "verbs-022",
+        "verbs-003",
+        "health-time-001"
+      ],
+      "gloss": [
+        {
+          "pt": "deve",
+          "en": "should; must (dever)",
+          "word": "verbs-025"
+        },
+        {
+          "pt": "comer",
+          "en": "to eat",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot of; much",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "açúcar",
+          "en": "sugar",
+          "word": "food-006"
+        },
+        {
+          "pt": "quer",
+          "en": "want (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "ter",
+          "en": "to have",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "saúde",
+          "en": "health (ter saúde = to be healthy)",
+          "word": "health-time-001"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s24",
+      "level": "A2",
+      "pt": "Ela faz aula de ioga toda quinta à noite.",
+      "en": "She does a yoga class every Thursday evening.",
+      "distractors": [
+        "She does a yoga class every Tuesday evening.",
+        "She does a dance class every Thursday evening.",
+        "She does a yoga class every Thursday morning."
+      ],
+      "topics": [
+        "present-irregular"
+      ],
+      "words": [
+        "verbs-004",
+        "school-007",
+        "essentials-045",
+        "health-time-043",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "pt": "faz",
+          "en": "does (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "aula",
+          "en": "class; lesson",
+          "word": "school-007"
+        },
+        {
+          "pt": "ioga",
+          "en": "yoga"
+        },
+        {
+          "pt": "toda",
+          "en": "every (todo)",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "quinta",
+          "en": "Thursday (short for quinta-feira)",
+          "word": "health-time-043"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s25",
+      "level": "A2",
+      "pt": "Esperei o médico mais de uma hora na sala de espera.",
+      "en": "I waited for the doctor for more than an hour in the waiting room.",
+      "distractors": [
+        "I waited for the doctor for less than an hour in the waiting room.",
+        "I waited for the dentist for more than an hour in the waiting room.",
+        "I waited for the doctor for more than an hour in the car."
+      ],
+      "topics": [
+        "preterite"
+      ],
+      "words": [
+        "verbs-042",
+        "work-012",
+        "essentials-067",
+        "health-time-026",
+        "town-021"
+      ],
+      "gloss": [
+        {
+          "pt": "Esperei",
+          "en": "I waited for (esperar)",
+          "word": "verbs-042"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "mais de",
+          "en": "more than",
+          "word": "essentials-067"
+        },
+        {
+          "pt": "hora",
+          "en": "hour",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "sala de espera",
+          "en": "waiting room",
+          "word": "town-021"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s26",
+      "level": "A2",
+      "pt": "Meus pais vão dormir cedo porque acordam às cinco horas.",
+      "en": "My parents go to bed early because they wake up at five.",
+      "distractors": [
+        "My parents go to bed early because they wake up at six.",
+        "My grandparents go to bed early because they wake up at five.",
+        "My parents go to bed late because they wake up at five."
+      ],
+      "topics": [
+        "possessives",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-050",
+        "people-009",
+        "verbs-005",
+        "verbs-062",
+        "health-time-038",
+        "essentials-037",
+        "verbs-063",
+        "health-time-050",
+        "health-time-026"
+      ],
+      "gloss": [
+        {
+          "pt": "Meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pais",
+          "en": "parents (o pai)",
+          "word": "people-009"
+        },
+        {
+          "pt": "vão",
+          "en": "go (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "dormir",
+          "en": "to sleep (ir dormir = to go to bed)",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        },
+        {
+          "pt": "porque",
+          "en": "because",
+          "word": "essentials-037"
+        },
+        {
+          "pt": "acordam",
+          "en": "wake up (acordar)",
+          "word": "verbs-063"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s27",
+      "level": "A2",
+      "pt": "De manhã, eu corro meia hora no parque perto de casa.",
+      "en": "In the morning I run for half an hour in the park near home.",
+      "distractors": [
+        "In the evening I run for half an hour in the park near home.",
+        "In the morning I run for an hour in the park near home.",
+        "In the morning I walk for half an hour in the park near home."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "health-time-032",
+        "verbs-041",
+        "qualities-102",
+        "health-time-026",
+        "town-025",
+        "essentials-094"
+      ],
+      "gloss": [
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "corro",
+          "en": "run (correr)",
+          "word": "verbs-041"
+        },
+        {
+          "pt": "meia",
+          "en": "half (meio)",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "hora",
+          "en": "hour",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "parque",
+          "en": "park",
+          "word": "town-025"
+        },
+        {
+          "pt": "perto de casa",
+          "en": "near home",
+          "word": "essentials-094"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s28",
+      "level": "A2",
+      "pt": "Ontem à noite tomei um comprimido e a dor passou.",
+      "en": "Last night I took a tablet and the pain went away.",
+      "distractors": [
+        "Yesterday morning I took a tablet and the pain went away.",
+        "Last night I took two tablets and the pain went away.",
+        "Last night I took a tablet and the pain got worse."
+      ],
+      "topics": [
+        "preterite"
+      ],
+      "words": [
+        "health-time-036",
+        "verbs-061",
+        "health-time-018",
+        "verbs-032"
+      ],
+      "gloss": [
+        {
+          "pt": "Ontem à noite",
+          "en": "last night; yesterday evening",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "tomei",
+          "en": "took (tomar)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "comprimido",
+          "en": "tablet"
+        },
+        {
+          "pt": "dor",
+          "en": "pain; ache",
+          "word": "health-time-018"
+        },
+        {
+          "pt": "passou",
+          "en": "went away (passar)",
+          "word": "verbs-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s29",
+      "level": "A2",
+      "pt": "Você está se sentindo melhor do que ontem?",
+      "en": "Are you feeling better than yesterday?",
+      "distractors": [
+        "Are you feeling worse than yesterday?",
+        "Is she feeling better than yesterday?",
+        "Are you feeling better than this morning?"
+      ],
+      "topics": [
+        "comparison",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-101",
+        "qualities-057",
+        "health-time-036"
+      ],
+      "gloss": [
+        {
+          "pt": "está",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "sentindo",
+          "en": "feeling (sentir); se sentir = to feel",
+          "word": "verbs-101"
+        },
+        {
+          "pt": "melhor do",
+          "en": "better than (melhor do que)",
+          "word": "qualities-057"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s30",
+      "level": "A2",
+      "pt": "Não tem mais xarope na farmácia do bairro.",
+      "en": "There is no more syrup at the local pharmacy.",
+      "distractors": [
+        "There is still some syrup at the local pharmacy.",
+        "There are no more tablets at the local pharmacy.",
+        "There is no more syrup at the hospital pharmacy."
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-003",
+        "essentials-067",
+        "shopping-017",
+        "town-005"
+      ],
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "mais",
+          "en": "more (não tem mais = there is no more)",
+          "word": "essentials-067"
+        },
+        {
+          "pt": "xarope",
+          "en": "syrup; cough syrup"
+        },
+        {
+          "pt": "farmácia",
+          "en": "pharmacy",
+          "word": "shopping-017"
+        },
+        {
+          "pt": "bairro",
+          "en": "neighbourhood (farmácia do bairro = local pharmacy)",
+          "word": "town-005"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s31",
+      "level": "A2",
+      "pt": "Ela vai ligar para o médico amanhã de manhã.",
+      "en": "She is going to call the doctor tomorrow morning.",
+      "distractors": [
+        "She is going to call the doctor tomorrow afternoon.",
+        "I am going to call the doctor tomorrow morning.",
+        "She is going to call the dentist tomorrow morning."
+      ],
+      "topics": [
+        "ir-future"
+      ],
+      "words": [
+        "verbs-005",
+        "media-012",
+        "essentials-085",
+        "work-012",
+        "health-time-037"
+      ],
+      "gloss": [
+        {
+          "pt": "vai",
+          "en": "is going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "ligar",
+          "en": "to call; to phone",
+          "word": "media-012"
+        },
+        {
+          "pt": "para",
+          "en": "(ligar para = to call someone)",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "amanhã de manhã",
+          "en": "tomorrow morning",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s32",
+      "level": "A2",
+      "pt": "Ela passou uma semana no hospital depois da cirurgia.",
+      "en": "She spent a week in hospital after the operation.",
+      "distractors": [
+        "She spent two weeks in hospital after the operation.",
+        "She spent a week in hospital before the operation.",
+        "He spent a week in hospital after the operation."
+      ],
+      "topics": [
+        "preterite",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-032",
+        "health-time-029",
+        "health-time-023",
+        "essentials-092"
+      ],
+      "gloss": [
+        {
+          "pt": "passou",
+          "en": "spent (passar)",
+          "word": "verbs-032"
+        },
+        {
+          "pt": "semana",
+          "en": "week",
+          "word": "health-time-029"
+        },
+        {
+          "pt": "hospital",
+          "en": "hospital",
+          "word": "health-time-023"
+        },
+        {
+          "pt": "depois",
+          "en": "after",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "cirurgia",
+          "en": "operation; surgery"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s33",
+      "level": "A2",
+      "pt": "Meu avô anda devagar, mas sai de casa todos os dias.",
+      "en": "My grandfather walks slowly, but he goes out every day.",
+      "distractors": [
+        "My grandmother walks slowly, but she goes out every day.",
+        "My grandfather walks quickly, but he goes out every day.",
+        "My grandfather walks slowly, but he goes out every Sunday."
+      ],
+      "topics": [
+        "present-regular",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-050",
+        "people-015",
+        "verbs-040",
+        "qualities-050",
+        "verbs-034",
+        "home-001",
+        "essentials-045",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "avô",
+          "en": "grandfather",
+          "word": "people-015"
+        },
+        {
+          "pt": "anda",
+          "en": "walks (andar)",
+          "word": "verbs-040"
+        },
+        {
+          "pt": "devagar",
+          "en": "slowly",
+          "word": "qualities-050"
+        },
+        {
+          "pt": "sai",
+          "en": "goes out (sair)",
+          "word": "verbs-034"
+        },
+        {
+          "pt": "casa",
+          "en": "home; house",
+          "word": "home-001"
+        },
+        {
+          "pt": "todos",
+          "en": "all; every (todo)",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "dias",
+          "en": "days (o dia)",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s34",
+      "level": "A2",
+      "pt": "Eu escovo os dentes antes de dormir.",
+      "en": "I brush my teeth before I go to sleep.",
+      "distractors": [
+        "I brush my teeth after I wake up.",
+        "She brushes her teeth before she goes to sleep.",
+        "I brush my hair before I go to sleep."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "health-time-010",
+        "essentials-093",
+        "verbs-062"
+      ],
+      "gloss": [
+        {
+          "pt": "escovo",
+          "en": "brush (escovar)"
+        },
+        {
+          "pt": "dentes",
+          "en": "teeth (o dente)",
+          "word": "health-time-010"
+        },
+        {
+          "pt": "antes",
+          "en": "before",
+          "word": "essentials-093"
+        },
+        {
+          "pt": "dormir",
+          "en": "to sleep; to go to sleep",
+          "word": "verbs-062"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s35",
+      "level": "A2",
+      "pt": "Aos sábados, a gente anda de bicicleta na beira do rio.",
+      "en": "On Saturdays we go cycling along the river.",
+      "distractors": [
+        "On Sundays we go cycling along the river.",
+        "On Saturdays we go cycling along the beach.",
+        "On Saturdays we go running along the river."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-045",
+        "essentials-024",
+        "verbs-040",
+        "travel-008",
+        "nature-010"
+      ],
+      "gloss": [
+        {
+          "pt": "sábados",
+          "en": "Saturdays (o sábado)",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "a gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "anda",
+          "en": "rides (andar); andar de bicicleta = to cycle",
+          "word": "verbs-040"
+        },
+        {
+          "pt": "bicicleta",
+          "en": "bike; bicycle (andar de bicicleta = to cycle)",
+          "word": "travel-008"
+        },
+        {
+          "pt": "beira",
+          "en": "edge; bank (na beira do rio = along the river)"
+        },
+        {
+          "pt": "rio",
+          "en": "river",
+          "word": "nature-010"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s36",
+      "level": "A2",
+      "pt": "Meu filho está com tosse desde ontem à noite e estou preocupada.",
+      "en": "My son has had a cough since last night and I am worried.",
+      "distractors": [
+        "My daughter has had a cough since last night and I am worried.",
+        "My son has had a cough since yesterday morning and I am worried.",
+        "My son has had a fever since last night and I am worried."
+      ],
+      "topics": [
+        "ser-estar",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "people-011",
+        "verbs-002",
+        "essentials-086",
+        "health-time-036",
+        "feelings-012"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "filho",
+          "en": "son",
+          "word": "people-011"
+        },
+        {
+          "pt": "está",
+          "en": "is; are (estar); estar com = to have (an illness)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "tosse",
+          "en": "cough"
+        },
+        {
+          "pt": "desde",
+          "en": "since"
+        },
+        {
+          "pt": "ontem à noite",
+          "en": "last night; yesterday evening",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "estou",
+          "en": "am (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "preocupada",
+          "en": "worried (preocupado)",
+          "word": "feelings-012"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s37",
+      "level": "A2",
+      "pt": "A aula de natação começa às nove e dura uma hora.",
+      "en": "The swimming lesson starts at nine and lasts an hour.",
+      "distractors": [
+        "The swimming lesson starts at ten and lasts an hour.",
+        "The swimming lesson starts at nine and lasts two hours.",
+        "The dance lesson starts at nine and lasts an hour."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "school-007",
+        "verbs-047",
+        "health-time-054",
+        "health-time-026"
+      ],
+      "gloss": [
+        {
+          "pt": "aula",
+          "en": "class; lesson",
+          "word": "school-007"
+        },
+        {
+          "pt": "natação",
+          "en": "swimming"
+        },
+        {
+          "pt": "começa",
+          "en": "starts (começar)",
+          "word": "verbs-047"
+        },
+        {
+          "pt": "nove",
+          "en": "nine",
+          "word": "health-time-054"
+        },
+        {
+          "pt": "dura",
+          "en": "lasts (durar)"
+        },
+        {
+          "pt": "hora",
+          "en": "hour",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s38",
+      "level": "A2",
+      "pt": "Cancelamos a consulta porque o carro quebrou.",
+      "en": "We cancelled the appointment because the car broke down.",
+      "distractors": [
+        "We cancelled the appointment because the bus broke down.",
+        "We cancelled the meeting because the car broke down.",
+        "I cancelled the appointment because the car broke down."
+      ],
+      "topics": [
+        "preterite"
+      ],
+      "words": [
+        "essentials-037",
+        "travel-004",
+        "verbs-103"
+      ],
+      "gloss": [
+        {
+          "pt": "Cancelamos",
+          "en": "we cancelled (cancelar)"
+        },
+        {
+          "pt": "consulta",
+          "en": "appointment (with a doctor)"
+        },
+        {
+          "pt": "porque",
+          "en": "because",
+          "word": "essentials-037"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "pt": "quebrou",
+          "en": "broke (quebrar)",
+          "word": "verbs-103"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s39",
+      "level": "A2",
+      "pt": "Ela dorme mal quando toma café à noite.",
+      "en": "She sleeps badly when she drinks coffee in the evening.",
+      "distractors": [
+        "She sleeps badly when she drinks tea in the evening.",
+        "She sleeps well when she drinks coffee in the evening.",
+        "She sleeps badly when she drinks coffee in the afternoon."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "verbs-062",
+        "essentials-078",
+        "essentials-034",
+        "verbs-061",
+        "food-003",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "pt": "dorme",
+          "en": "sleeps (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "mal",
+          "en": "badly",
+          "word": "essentials-078"
+        },
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "toma",
+          "en": "drinks (tomar)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s40",
+      "level": "A2",
+      "pt": "Você precisa parar de fumar para proteger os pulmões.",
+      "en": "You need to stop smoking to protect your lungs.",
+      "distractors": [
+        "You need to stop smoking to protect your heart.",
+        "You need to stop drinking to protect your lungs.",
+        "We need to stop smoking to protect our lungs."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "verbs-024",
+        "verbs-051",
+        "essentials-085",
+        "society-030"
+      ],
+      "gloss": [
+        {
+          "pt": "precisa",
+          "en": "need; needs (precisar)",
+          "word": "verbs-024"
+        },
+        {
+          "pt": "parar",
+          "en": "to stop (parar de = to stop doing)",
+          "word": "verbs-051"
+        },
+        {
+          "pt": "fumar",
+          "en": "to smoke"
+        },
+        {
+          "pt": "para",
+          "en": "to; in order to",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "proteger",
+          "en": "to protect",
+          "word": "society-030"
+        },
+        {
+          "pt": "pulmões",
+          "en": "lungs (o pulmão)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s41",
+      "level": "A2",
+      "pt": "O dentista tirou um dente meu na semana passada.",
+      "en": "The dentist took out one of my teeth last week.",
+      "distractors": [
+        "The dentist took out two of my teeth last week.",
+        "The dentist took out one of my teeth last month.",
+        "The dentist looked at one of my teeth last week."
+      ],
+      "topics": [
+        "preterite",
+        "possessives"
+      ],
+      "words": [
+        "work-014",
+        "verbs-097",
+        "health-time-010",
+        "essentials-050",
+        "health-time-029"
+      ],
+      "gloss": [
+        {
+          "pt": "dentista",
+          "en": "dentist",
+          "word": "work-014"
+        },
+        {
+          "pt": "tirou",
+          "en": "took out (tirar)",
+          "word": "verbs-097"
+        },
+        {
+          "pt": "dente",
+          "en": "tooth",
+          "word": "health-time-010"
+        },
+        {
+          "pt": "meu",
+          "en": "of mine (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "semana",
+          "en": "week",
+          "word": "health-time-029"
+        },
+        {
+          "pt": "passada",
+          "en": "last (passado)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s42",
+      "level": "A2",
+      "pt": "Quantas vezes por dia eu tenho que tomar esse remédio?",
+      "en": "How many times a day do I have to take this medicine?",
+      "distractors": [
+        "How many times a week do I have to take this medicine?",
+        "How many tablets a day do I have to take?",
+        "How many times a day do I have to take this syrup?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-038",
+        "essentials-074",
+        "essentials-088",
+        "health-time-028",
+        "verbs-003",
+        "verbs-061",
+        "essentials-048",
+        "health-time-022"
+      ],
+      "gloss": [
+        {
+          "pt": "Quantas",
+          "en": "how many (quanto)",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "vezes",
+          "en": "times (a vez)",
+          "word": "essentials-074"
+        },
+        {
+          "pt": "por",
+          "en": "per; a",
+          "word": "essentials-088"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "tenho",
+          "en": "have (ter); tenho que = I have to",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "tomar",
+          "en": "to take (medicine)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "esse",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "remédio",
+          "en": "medicine",
+          "word": "health-time-022"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s43",
+      "level": "A2",
+      "pt": "Depois da cirurgia, ele não conseguia levantar o braço direito.",
+      "en": "After the operation he couldn’t lift his right arm.",
+      "distractors": [
+        "After the operation he couldn’t lift his left arm.",
+        "After the operation he couldn’t lift his right leg.",
+        "Before the operation he couldn’t lift his right arm."
+      ],
+      "topics": [
+        "imperfect",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-092",
+        "verbs-091",
+        "verbs-095",
+        "health-time-011"
+      ],
+      "gloss": [
+        {
+          "pt": "Depois",
+          "en": "after",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "cirurgia",
+          "en": "operation; surgery"
+        },
+        {
+          "pt": "conseguia",
+          "en": "could; was able to (conseguir)",
+          "word": "verbs-091"
+        },
+        {
+          "pt": "levantar",
+          "en": "to lift",
+          "word": "verbs-095"
+        },
+        {
+          "pt": "braço",
+          "en": "arm",
+          "word": "health-time-011"
+        },
+        {
+          "pt": "direito",
+          "en": "right (side)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s44",
+      "level": "A2",
+      "pt": "Hoje de manhã, a sala de espera estava cheia de pacientes cansados.",
+      "en": "This morning the waiting room was full of tired patients.",
+      "distractors": [
+        "This afternoon the waiting room was full of tired patients.",
+        "This morning the waiting room was full of tired children.",
+        "This morning the waiting room was full of angry patients."
+      ],
+      "topics": [
+        "imperfect",
+        "adjective-agreement"
+      ],
+      "words": [
+        "health-time-035",
+        "town-021",
+        "verbs-002",
+        "qualities-030",
+        "feelings-011"
+      ],
+      "gloss": [
+        {
+          "pt": "Hoje de manhã",
+          "en": "this morning",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "sala de espera",
+          "en": "waiting room",
+          "word": "town-021"
+        },
+        {
+          "pt": "estava",
+          "en": "was (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cheia",
+          "en": "full (cheio)",
+          "word": "qualities-030"
+        },
+        {
+          "pt": "pacientes",
+          "en": "patients (o paciente)"
+        },
+        {
+          "pt": "cansados",
+          "en": "tired (cansado)",
+          "word": "feelings-011"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s45",
+      "level": "A2",
+      "pt": "Na próxima semana, vou marcar uma consulta com o fisioterapeuta.",
+      "en": "Next week I am going to book an appointment with the physiotherapist.",
+      "distractors": [
+        "This week I am going to book an appointment with the physiotherapist.",
+        "Next week I am going to book an appointment with the dentist.",
+        "Next week I am going to cancel an appointment with the physiotherapist."
+      ],
+      "topics": [
+        "ir-future"
+      ],
+      "words": [
+        "qualities-061",
+        "health-time-029",
+        "verbs-005",
+        "essentials-086"
+      ],
+      "gloss": [
+        {
+          "pt": "próxima",
+          "en": "next (próximo)",
+          "word": "qualities-061"
+        },
+        {
+          "pt": "semana",
+          "en": "week",
+          "word": "health-time-029"
+        },
+        {
+          "pt": "vou",
+          "en": "am going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "marcar",
+          "en": "to book; to make (an appointment)"
+        },
+        {
+          "pt": "consulta",
+          "en": "appointment (with a doctor)"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "fisioterapeuta",
+          "en": "physiotherapist"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s46",
+      "level": "A2",
+      "pt": "Elas se inscreveram numa aula de dança às quartas.",
+      "en": "They signed up for a dance class on Wednesdays.",
+      "distractors": [
+        "They signed up for a dance class on Thursdays.",
+        "They signed up for a swimming class on Wednesdays.",
+        "He signed up for a dance class on Wednesdays."
+      ],
+      "topics": [
+        "preterite",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "school-007",
+        "leisure-023",
+        "health-time-042"
+      ],
+      "gloss": [
+        {
+          "pt": "inscreveram",
+          "en": "signed up (se inscrever)"
+        },
+        {
+          "pt": "numa",
+          "en": "in a; for a (em + uma)"
+        },
+        {
+          "pt": "aula",
+          "en": "class; lesson",
+          "word": "school-007"
+        },
+        {
+          "pt": "dança",
+          "en": "dance",
+          "word": "leisure-023"
+        },
+        {
+          "pt": "quartas",
+          "en": "Wednesdays (a quarta-feira)",
+          "word": "health-time-042"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s47",
+      "level": "A2",
+      "pt": "Meu médico novo é mais simpático do que o antigo, mas fala rápido.",
+      "en": "My new doctor is nicer than the old one, but he speaks fast.",
+      "distractors": [
+        "My new doctor is nicer than the old one, but he speaks slowly.",
+        "My new doctor is less nice than the old one, but he speaks fast.",
+        "My new dentist is nicer than the old one, but he speaks fast."
+      ],
+      "topics": [
+        "comparison",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "work-012",
+        "qualities-008",
+        "verbs-001",
+        "qualities-085",
+        "qualities-088",
+        "verbs-008",
+        "qualities-048"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "novo",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mais simpático do",
+          "en": "nicer than (mais … do que)",
+          "word": "qualities-085"
+        },
+        {
+          "pt": "antigo",
+          "en": "old one; former",
+          "word": "qualities-088"
+        },
+        {
+          "pt": "fala",
+          "en": "speaks (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "rápido",
+          "en": "fast",
+          "word": "qualities-048"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s48",
+      "level": "A2",
+      "pt": "Tem algum médico que fala inglês neste bairro?",
+      "en": "Is there a doctor who speaks English in this neighbourhood?",
+      "distractors": [
+        "Is there a doctor who speaks French in this neighbourhood?",
+        "Is there a nurse who speaks English in this neighbourhood?",
+        "Is there a doctor who speaks English in this hospital?"
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-003",
+        "work-012",
+        "verbs-008",
+        "school-030",
+        "town-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "is there (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "algum",
+          "en": "any; a"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "fala",
+          "en": "speaks (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "inglês",
+          "en": "English",
+          "word": "school-030"
+        },
+        {
+          "pt": "neste",
+          "en": "in this (em + este)"
+        },
+        {
+          "pt": "bairro",
+          "en": "neighbourhood",
+          "word": "town-005"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s49",
+      "level": "A2",
+      "pt": "Você não pode mexer o pulso durante três dias, tá bom?",
+      "en": "You can’t move your wrist for three days, okay?",
+      "distractors": [
+        "You can’t move your wrist for four days, okay?",
+        "You can’t move your ankle for three days, okay?",
+        "You can move your wrist for three days, okay?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "verbs-023",
+        "health-time-048",
+        "health-time-028",
+        "essentials-018"
+      ],
+      "gloss": [
+        {
+          "pt": "pode",
+          "en": "can (poder); não pode = must not",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "mexer",
+          "en": "to move"
+        },
+        {
+          "pt": "pulso",
+          "en": "wrist"
+        },
+        {
+          "pt": "durante",
+          "en": "during; for"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "dias",
+          "en": "days (o dia)",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "tá bom",
+          "en": "okay",
+          "word": "essentials-018"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s50",
+      "level": "A2",
+      "pt": "A que horas o consultório fecha na sexta?",
+      "en": "What time does the surgery close on Friday?",
+      "distractors": [
+        "What time does the surgery open on Friday?",
+        "What time does the surgery close on Saturday?",
+        "What time does the pharmacy close on Friday?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "health-time-026",
+        "verbs-046",
+        "health-time-044"
+      ],
+      "gloss": [
+        {
+          "pt": "A que horas",
+          "en": "at what time",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "consultório",
+          "en": "doctor’s surgery; practice"
+        },
+        {
+          "pt": "fecha",
+          "en": "closes (fechar)",
+          "word": "verbs-046"
+        },
+        {
+          "pt": "sexta",
+          "en": "Friday (short for sexta-feira)",
+          "word": "health-time-044"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a2-health-p01",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "At the doctor",
+      "lines": [
+        {
+          "speaker": "A médica",
+          "pt": "Boa tarde, Juliana. O que você está sentindo?",
+          "en": "Good afternoon, Juliana. How are you feeling?"
+        },
+        {
+          "speaker": "Juliana",
+          "pt": "Estou com dor de garganta há quatro dias e tusso muito à noite.",
+          "en": "I have had a sore throat for four days and I cough a lot at night."
+        },
+        {
+          "speaker": "A médica",
+          "pt": "Você teve febre?",
+          "en": "Have you had a fever?"
+        },
+        {
+          "speaker": "Juliana",
+          "pt": "Hoje de manhã, eu estava com trinta e oito graus.",
+          "en": "This morning my temperature was thirty-eight degrees."
+        },
+        {
+          "speaker": "A médica",
+          "pt": "Não é nada grave. Descanse e beba bastante água.",
+          "en": "It is nothing serious. Rest and drink plenty of water."
+        },
+        {
+          "speaker": "Juliana",
+          "pt": "Posso ir trabalhar amanhã?",
+          "en": "Can I go to work tomorrow?"
+        },
+        {
+          "speaker": "A médica",
+          "pt": "É melhor ficar em casa dois dias. Depois, você pode voltar ao trabalho.",
+          "en": "It is better to stay at home for two days. After that you can go back to work."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How long has Juliana had a sore throat?",
+          "choices": [
+            "Since this morning",
+            "For two days",
+            "For a week",
+            "For four days"
+          ],
+          "answer": 3,
+          "explanation": "She says: “Estou com dor de garganta há quatro dias”."
+        },
+        {
+          "question": "What was her temperature this morning?",
+          "choices": [
+            "Thirty-seven degrees",
+            "Thirty-eight degrees",
+            "Thirty-nine degrees",
+            "Forty degrees"
+          ],
+          "answer": 1,
+          "explanation": "“Hoje de manhã, eu estava com trinta e oito graus.”"
+        },
+        {
+          "question": "What does the doctor tell her to do?",
+          "choices": [
+            "Rest and drink plenty of water",
+            "Take some tablets",
+            "Go to hospital",
+            "Do some sport"
+          ],
+          "answer": 0,
+          "explanation": "“Descanse e beba bastante água.”"
+        },
+        {
+          "question": "When can she go back to work?",
+          "choices": [
+            "Tomorrow",
+            "This evening",
+            "After two days at home",
+            "Next month"
+          ],
+          "answer": 2,
+          "explanation": "“É melhor ficar em casa dois dias.” Only after that can she go back."
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "present-irregular",
+        "imperfect"
+      ],
+      "words": [
+        "essentials-004",
+        "essentials-032",
+        "verbs-002",
+        "verbs-101",
+        "essentials-086",
+        "health-time-018",
+        "health-time-049",
+        "health-time-028",
+        "essentials-065",
+        "health-time-034",
+        "verbs-003",
+        "health-time-020",
+        "health-time-035",
+        "health-time-053",
+        "verbs-001",
+        "essentials-043",
+        "leisure-042",
+        "verbs-060",
+        "food-001",
+        "verbs-023",
+        "verbs-005",
+        "verbs-054",
+        "health-time-037",
+        "qualities-057",
+        "verbs-033",
+        "home-001",
+        "health-time-047",
+        "essentials-092",
+        "verbs-037",
+        "work-001"
+      ],
+      "gloss": [
+        {
+          "pt": "Boa tarde",
+          "en": "good afternoon",
+          "word": "essentials-004"
+        },
+        {
+          "pt": "Juliana",
+          "en": "Juliana (a first name)"
+        },
+        {
+          "pt": "O que",
+          "en": "what",
+          "word": "essentials-032"
+        },
+        {
+          "pt": "está",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "sentindo",
+          "en": "feeling (sentir); se sentir = to feel",
+          "word": "verbs-101"
+        },
+        {
+          "pt": "Estou",
+          "en": "I am (estar); estou com dor = I have a pain",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "dor de garganta",
+          "en": "sore throat",
+          "word": "health-time-018"
+        },
+        {
+          "pt": "há",
+          "en": "for (time); ago (haver)"
+        },
+        {
+          "pt": "quatro",
+          "en": "four",
+          "word": "health-time-049"
+        },
+        {
+          "pt": "dias",
+          "en": "days (o dia)",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "tusso",
+          "en": "cough (tossir)"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "teve",
+          "en": "had (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "febre",
+          "en": "fever",
+          "word": "health-time-020"
+        },
+        {
+          "pt": "Hoje de manhã",
+          "en": "this morning",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "estava",
+          "en": "was (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "trinta",
+          "en": "thirty"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "graus",
+          "en": "degrees (o grau)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "nada",
+          "en": "nothing (não é nada grave = it is nothing serious)",
+          "word": "essentials-043"
+        },
+        {
+          "pt": "grave",
+          "en": "serious"
+        },
+        {
+          "pt": "Descanse",
+          "en": "rest (descansar)",
+          "word": "leisure-042"
+        },
+        {
+          "pt": "beba",
+          "en": "drink (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "bastante",
+          "en": "plenty of; a lot of"
+        },
+        {
+          "pt": "água",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "pt": "Posso",
+          "en": "can I (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "ir",
+          "en": "to go",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "trabalhar",
+          "en": "to work",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        },
+        {
+          "pt": "É",
+          "en": "it is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "melhor",
+          "en": "better",
+          "word": "qualities-057"
+        },
+        {
+          "pt": "ficar",
+          "en": "to stay",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "casa",
+          "en": "home; house",
+          "word": "home-001"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "Depois",
+          "en": "after that; afterwards",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "pode",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "voltar",
+          "en": "to go back",
+          "word": "verbs-037"
+        },
+        {
+          "pt": "trabalho",
+          "en": "work",
+          "word": "work-001"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p02",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "At the pharmacy",
+      "lines": [
+        {
+          "speaker": "O farmacêutico",
+          "pt": "Boa tarde. O senhor tem receita?",
+          "en": "Good afternoon. Do you have a prescription?"
+        },
+        {
+          "speaker": "Rodrigo",
+          "pt": "Tenho, sim. É para a minha filha, ela está com gripe.",
+          "en": "Yes, I do. It is for my daughter, she has flu."
+        },
+        {
+          "speaker": "O farmacêutico",
+          "pt": "Certo. Este xarope, três vezes por dia, depois das refeições.",
+          "en": "Right. This syrup, three times a day, after meals."
+        },
+        {
+          "speaker": "Rodrigo",
+          "pt": "Durante quantos dias?",
+          "en": "For how many days?"
+        },
+        {
+          "speaker": "O farmacêutico",
+          "pt": "Durante cinco dias. Com febre alta, é melhor ligar para o médico.",
+          "en": "For five days. If she has a high fever, it is better to call the doctor."
+        },
+        {
+          "speaker": "Rodrigo",
+          "pt": "Muito obrigado. Quanto é?",
+          "en": "Thank you very much. How much is it?"
+        },
+        {
+          "speaker": "O farmacêutico",
+          "pt": "São vinte e dois reais.",
+          "en": "That is twenty-two reais."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who is the medicine for?",
+          "choices": [
+            "For Rodrigo himself",
+            "For his wife",
+            "For his daughter",
+            "For his son"
+          ],
+          "answer": 2,
+          "explanation": "“É para a minha filha, ela está com gripe.”"
+        },
+        {
+          "question": "How should the syrup be taken?",
+          "choices": [
+            "Twice a day, after meals",
+            "Three times a day, after meals",
+            "Three times a day, before meals",
+            "Once a day, in the evening"
+          ],
+          "answer": 1,
+          "explanation": "“Este xarope, três vezes por dia, depois das refeições.”"
+        },
+        {
+          "question": "How long should the treatment last?",
+          "choices": [
+            "Three days",
+            "Two days",
+            "A week",
+            "Five days"
+          ],
+          "answer": 3,
+          "explanation": "“Durante cinco dias.”"
+        },
+        {
+          "question": "How much does Rodrigo pay?",
+          "choices": [
+            "Twenty-two reais",
+            "Twelve reais",
+            "Twenty reais",
+            "Thirty-two reais"
+          ],
+          "answer": 0,
+          "explanation": "“São vinte e dois reais.”"
+        }
+      ],
+      "topics": [
+        "present-irregular",
+        "possessives",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-004",
+        "people-034",
+        "verbs-003",
+        "essentials-014",
+        "verbs-001",
+        "essentials-085",
+        "essentials-050",
+        "people-012",
+        "verbs-002",
+        "essentials-086",
+        "health-time-021",
+        "qualities-055",
+        "health-time-048",
+        "essentials-074",
+        "essentials-088",
+        "health-time-028",
+        "essentials-092",
+        "essentials-038",
+        "health-time-050",
+        "health-time-020",
+        "qualities-011",
+        "qualities-057",
+        "media-012",
+        "work-012",
+        "essentials-009",
+        "health-time-056",
+        "health-time-047",
+        "shopping-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Boa tarde",
+          "en": "good afternoon",
+          "word": "essentials-004"
+        },
+        {
+          "pt": "senhor",
+          "en": "you (polite, to a man)",
+          "word": "people-034"
+        },
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "receita",
+          "en": "prescription"
+        },
+        {
+          "pt": "Tenho",
+          "en": "I have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "É",
+          "en": "it is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "filha",
+          "en": "daughter",
+          "word": "people-012"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar); está com gripe = has flu",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "gripe",
+          "en": "flu",
+          "word": "health-time-021"
+        },
+        {
+          "pt": "Certo",
+          "en": "right; okay",
+          "word": "qualities-055"
+        },
+        {
+          "pt": "Este",
+          "en": "this"
+        },
+        {
+          "pt": "xarope",
+          "en": "syrup; cough syrup"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "vezes",
+          "en": "times (a vez)",
+          "word": "essentials-074"
+        },
+        {
+          "pt": "por",
+          "en": "per; a",
+          "word": "essentials-088"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "depois",
+          "en": "after",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "refeições",
+          "en": "meals (a refeição)"
+        },
+        {
+          "pt": "Durante",
+          "en": "for (a period)"
+        },
+        {
+          "pt": "quantos",
+          "en": "how many (quanto)",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "dias",
+          "en": "days (o dia)",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "Com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "febre",
+          "en": "fever",
+          "word": "health-time-020"
+        },
+        {
+          "pt": "alta",
+          "en": "high (alto)",
+          "word": "qualities-011"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "melhor",
+          "en": "better",
+          "word": "qualities-057"
+        },
+        {
+          "pt": "ligar",
+          "en": "to call; to phone",
+          "word": "media-012"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "Muito obrigado",
+          "en": "thank you very much",
+          "word": "essentials-009"
+        },
+        {
+          "pt": "Quanto",
+          "en": "how much",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "São",
+          "en": "it is; that is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real, Brazilian money)",
+          "word": "shopping-005"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p03",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Booking an appointment",
+      "lines": [
+        {
+          "speaker": "A secretária",
+          "pt": "Consultório da doutora Lima, bom dia.",
+          "en": "Doctor Lima’s surgery, good morning."
+        },
+        {
+          "speaker": "Patrícia",
+          "pt": "Bom dia. Eu queria marcar uma consulta, por favor.",
+          "en": "Good morning. I would like to book an appointment, please."
+        },
+        {
+          "speaker": "A secretária",
+          "pt": "Pode ser na terça, dia dezessete, às onze horas?",
+          "en": "Is Tuesday the seventeenth at eleven o’clock all right?"
+        },
+        {
+          "speaker": "Patrícia",
+          "pt": "Eu trabalho na terça de manhã. Vocês têm algum horário à tarde?",
+          "en": "I work on Tuesday mornings. Do you have a time in the afternoon?"
+        },
+        {
+          "speaker": "A secretária",
+          "pt": "Então quinta, dia dezenove, às seis e meia da tarde.",
+          "en": "Then Thursday the nineteenth, at half past six in the evening."
+        },
+        {
+          "speaker": "Patrícia",
+          "pt": "Perfeito. A consulta é para o meu filho, ele tem oito anos.",
+          "en": "Perfect. The appointment is for my son, he is eight years old."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why can’t Patrícia take the first appointment?",
+          "choices": [
+            "She is on holiday",
+            "She works on Tuesday mornings",
+            "She has another appointment",
+            "She prefers a different doctor"
+          ],
+          "answer": 1,
+          "explanation": "“Eu trabalho na terça de manhã.”"
+        },
+        {
+          "question": "When is the appointment in the end?",
+          "choices": [
+            "Tuesday the seventeenth at eleven",
+            "Thursday the seventeenth at eleven",
+            "Tuesday the nineteenth at half past six",
+            "Thursday the nineteenth at half past six"
+          ],
+          "answer": 3,
+          "explanation": "“Então quinta, dia dezenove, às seis e meia da tarde.”"
+        },
+        {
+          "question": "Who is the appointment for?",
+          "choices": [
+            "For her son",
+            "For Patrícia",
+            "For her husband",
+            "For her daughter"
+          ],
+          "answer": 0,
+          "explanation": "“A consulta é para o meu filho”"
+        },
+        {
+          "question": "How old is the patient?",
+          "choices": [
+            "Six",
+            "Eleven",
+            "Eight",
+            "Seventeen"
+          ],
+          "answer": 2,
+          "explanation": "“ele tem oito anos”. The other numbers are the date and the time."
+        }
+      ],
+      "topics": [
+        "present-regular",
+        "present-irregular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-003",
+        "verbs-022",
+        "essentials-010",
+        "verbs-023",
+        "health-time-041",
+        "health-time-028",
+        "health-time-026",
+        "verbs-054",
+        "health-time-032",
+        "verbs-003",
+        "work-033",
+        "health-time-033",
+        "essentials-063",
+        "health-time-043",
+        "health-time-051",
+        "qualities-102",
+        "qualities-077",
+        "verbs-001",
+        "essentials-085",
+        "essentials-050",
+        "people-011",
+        "health-time-053",
+        "health-time-031"
+      ],
+      "gloss": [
+        {
+          "pt": "Consultório",
+          "en": "doctor’s surgery; practice"
+        },
+        {
+          "pt": "doutora",
+          "en": "doctor (a woman, used with a name)"
+        },
+        {
+          "pt": "Lima",
+          "en": "Lima (a family name)"
+        },
+        {
+          "pt": "bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "queria",
+          "en": "would like (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "marcar",
+          "en": "to book; to make (an appointment)"
+        },
+        {
+          "pt": "consulta",
+          "en": "appointment (with a doctor)"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "Pode ser",
+          "en": "can it be; is it all right (poder ser)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "terça",
+          "en": "Tuesday (short for terça-feira)",
+          "word": "health-time-041"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "dezessete",
+          "en": "seventeen; the seventeenth"
+        },
+        {
+          "pt": "onze",
+          "en": "eleven"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "trabalho",
+          "en": "work (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "têm",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "algum",
+          "en": "any; a"
+        },
+        {
+          "pt": "horário",
+          "en": "time slot; appointment time",
+          "word": "work-033"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon",
+          "word": "health-time-033"
+        },
+        {
+          "pt": "Então",
+          "en": "then; so",
+          "word": "essentials-063"
+        },
+        {
+          "pt": "quinta",
+          "en": "Thursday (short for quinta-feira)",
+          "word": "health-time-043"
+        },
+        {
+          "pt": "dezenove",
+          "en": "nineteen; the nineteenth"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "meia",
+          "en": "half (seis e meia = half past six)",
+          "word": "qualities-102"
+        },
+        {
+          "pt": "Perfeito",
+          "en": "perfect",
+          "word": "qualities-077"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "filho",
+          "en": "son",
+          "word": "people-011"
+        },
+        {
+          "pt": "tem",
+          "en": "is (ter); tem oito anos = is eight years old",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p04",
+      "level": "A2",
+      "kind": "text",
+      "title": "A message to a colleague",
+      "lines": [
+        {
+          "pt": "Oi, Bruno, hoje eu não vou ao escritório.",
+          "en": "Hi Bruno, I am not coming to the office today."
+        },
+        {
+          "pt": "Peguei a gripe do meu filho e estou com febre desde ontem.",
+          "en": "I caught my son’s flu and I have had a fever since yesterday."
+        },
+        {
+          "pt": "Vou ficar na cama e à noite vou marcar uma consulta.",
+          "en": "I am going to stay in bed and this evening I am going to book an appointment."
+        },
+        {
+          "pt": "Você pode cancelar a reunião das duas e avisar a Carla?",
+          "en": "Can you cancel the two o’clock meeting and let Carla know?"
+        },
+        {
+          "pt": "Espero voltar na segunda. Muito obrigado!",
+          "en": "I hope to come back on Monday. Thank you very much!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is the writer staying at home?",
+          "choices": [
+            "He caught the flu from his son",
+            "His son needs him at home",
+            "He has a doctor’s appointment",
+            "The office is closed"
+          ],
+          "answer": 0,
+          "explanation": "“Peguei a gripe do meu filho e estou com febre desde ontem.”"
+        },
+        {
+          "question": "What does he ask Bruno to do?",
+          "choices": [
+            "Call the doctor for him",
+            "Move the meeting to the evening",
+            "Cancel the two o’clock meeting and tell Carla",
+            "Pick up his son"
+          ],
+          "answer": 2,
+          "explanation": "“Você pode cancelar a reunião das duas e avisar a Carla?”"
+        },
+        {
+          "question": "When is he going to book the appointment?",
+          "choices": [
+            "Tomorrow morning",
+            "This evening",
+            "On Monday",
+            "At two o’clock"
+          ],
+          "answer": 1,
+          "explanation": "“à noite vou marcar uma consulta”"
+        },
+        {
+          "question": "When does he hope to come back to work?",
+          "choices": [
+            "Tomorrow",
+            "On Friday",
+            "On Wednesday",
+            "On Monday"
+          ],
+          "answer": 3,
+          "explanation": "“Espero voltar na segunda.”"
+        }
+      ],
+      "topics": [
+        "ir-future",
+        "preterite",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-002",
+        "health-time-035",
+        "verbs-005",
+        "work-004",
+        "verbs-026",
+        "health-time-021",
+        "essentials-050",
+        "people-011",
+        "verbs-002",
+        "essentials-086",
+        "health-time-020",
+        "health-time-036",
+        "verbs-033",
+        "home-023",
+        "health-time-034",
+        "verbs-023",
+        "work-007",
+        "health-time-047",
+        "verbs-042",
+        "verbs-037",
+        "health-time-040",
+        "essentials-009"
+      ],
+      "gloss": [
+        {
+          "pt": "Oi",
+          "en": "hi",
+          "word": "essentials-002"
+        },
+        {
+          "pt": "Bruno",
+          "en": "Bruno (a first name)"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "vou",
+          "en": "am going (ir); am going to",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "escritório",
+          "en": "office",
+          "word": "work-004"
+        },
+        {
+          "pt": "Peguei",
+          "en": "I caught (pegar)",
+          "word": "verbs-026"
+        },
+        {
+          "pt": "gripe",
+          "en": "flu",
+          "word": "health-time-021"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "filho",
+          "en": "son",
+          "word": "people-011"
+        },
+        {
+          "pt": "estou",
+          "en": "am (estar); estou com febre = I have a fever",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "febre",
+          "en": "fever",
+          "word": "health-time-020"
+        },
+        {
+          "pt": "desde",
+          "en": "since"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "Vou",
+          "en": "I am going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "ficar",
+          "en": "to stay",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "cama",
+          "en": "bed",
+          "word": "home-023"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "marcar",
+          "en": "to book; to make (an appointment)"
+        },
+        {
+          "pt": "consulta",
+          "en": "appointment (with a doctor)"
+        },
+        {
+          "pt": "pode",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "cancelar",
+          "en": "to cancel"
+        },
+        {
+          "pt": "reunião",
+          "en": "meeting",
+          "word": "work-007"
+        },
+        {
+          "pt": "duas",
+          "en": "two (a reunião das duas = the two o’clock meeting)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "avisar",
+          "en": "to tell; to let know"
+        },
+        {
+          "pt": "Carla",
+          "en": "Carla (a first name)"
+        },
+        {
+          "pt": "Espero",
+          "en": "I hope (esperar)",
+          "word": "verbs-042"
+        },
+        {
+          "pt": "voltar",
+          "en": "to come back",
+          "word": "verbs-037"
+        },
+        {
+          "pt": "segunda",
+          "en": "Monday (short for segunda-feira)",
+          "word": "health-time-040"
+        },
+        {
+          "pt": "Muito obrigado",
+          "en": "thank you very much",
+          "word": "essentials-009"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p05",
+      "level": "A2",
+      "kind": "text",
+      "title": "Sleep advice",
+      "lines": [
+        {
+          "pt": "O sono é tão importante quanto o esporte para a saúde.",
+          "en": "Sleep is as important as sport for your health."
+        },
+        {
+          "pt": "Um adulto precisa dormir entre sete e oito horas por noite.",
+          "en": "An adult needs to sleep between seven and eight hours a night."
+        },
+        {
+          "pt": "À noite, evite café e telas antes de deitar.",
+          "en": "In the evening, avoid coffee and screens before going to bed."
+        },
+        {
+          "pt": "Se você acorda muitas vezes durante a noite, fale com o seu médico.",
+          "en": "If you often wake up during the night, talk to your doctor."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does the text compare sleep with?",
+          "choices": [
+            "Food",
+            "Work",
+            "Sport",
+            "Water"
+          ],
+          "answer": 2,
+          "explanation": "“O sono é tão importante quanto o esporte para a saúde.”"
+        },
+        {
+          "question": "How long should an adult sleep?",
+          "choices": [
+            "Between seven and eight hours",
+            "Between six and seven hours",
+            "At least nine hours",
+            "About five hours"
+          ],
+          "answer": 0,
+          "explanation": "“Um adulto precisa dormir entre sete e oito horas por noite.”"
+        },
+        {
+          "question": "What should you avoid in the evening?",
+          "choices": [
+            "Coffee and screens",
+            "Sport and coffee",
+            "Reading and screens",
+            "Water and tea"
+          ],
+          "answer": 0,
+          "explanation": "“evite café e telas antes de deitar”"
+        },
+        {
+          "question": "What should you do if you often wake up at night?",
+          "choices": [
+            "Sleep longer in the morning",
+            "Drink a coffee",
+            "Do more sport",
+            "Talk to your doctor"
+          ],
+          "answer": 3,
+          "explanation": "“fale com o seu médico”"
+        }
+      ],
+      "topics": [
+        "comparison",
+        "present-regular"
+      ],
+      "words": [
+        "verbs-001",
+        "qualities-038",
+        "leisure-002",
+        "essentials-085",
+        "health-time-001",
+        "people-032",
+        "verbs-024",
+        "verbs-062",
+        "essentials-091",
+        "health-time-052",
+        "health-time-053",
+        "health-time-026",
+        "essentials-088",
+        "health-time-034",
+        "food-003",
+        "media-020",
+        "essentials-093",
+        "verbs-063",
+        "essentials-065",
+        "essentials-074",
+        "verbs-008",
+        "essentials-086",
+        "essentials-051",
+        "work-012"
+      ],
+      "gloss": [
+        {
+          "pt": "sono",
+          "en": "sleep"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "tão importante quanto",
+          "en": "as important as",
+          "word": "qualities-038"
+        },
+        {
+          "pt": "esporte",
+          "en": "sport",
+          "word": "leisure-002"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "saúde",
+          "en": "health (ter saúde = to be healthy)",
+          "word": "health-time-001"
+        },
+        {
+          "pt": "adulto",
+          "en": "adult",
+          "word": "people-032"
+        },
+        {
+          "pt": "precisa",
+          "en": "need; needs (precisar)",
+          "word": "verbs-024"
+        },
+        {
+          "pt": "dormir",
+          "en": "to sleep; to go to sleep",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "entre",
+          "en": "between",
+          "word": "essentials-091"
+        },
+        {
+          "pt": "sete",
+          "en": "seven",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "por",
+          "en": "a; per",
+          "word": "essentials-088"
+        },
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "À noite",
+          "en": "in the evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "evite",
+          "en": "avoid (evitar)"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "telas",
+          "en": "screens (a tela)",
+          "word": "media-020"
+        },
+        {
+          "pt": "antes",
+          "en": "before",
+          "word": "essentials-093"
+        },
+        {
+          "pt": "deitar",
+          "en": "going to bed; lying down"
+        },
+        {
+          "pt": "acorda",
+          "en": "wake up (acordar)",
+          "word": "verbs-063"
+        },
+        {
+          "pt": "muitas",
+          "en": "many (muito)",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "vezes",
+          "en": "times (a vez)",
+          "word": "essentials-074"
+        },
+        {
+          "pt": "durante",
+          "en": "during"
+        },
+        {
+          "pt": "fale",
+          "en": "talk (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p06",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Running together",
+      "lines": [
+        {
+          "speaker": "Larissa",
+          "pt": "Você quer correr comigo no sábado de manhã?",
+          "en": "Do you want to go running with me on Saturday morning?"
+        },
+        {
+          "speaker": "Felipe",
+          "pt": "Não posso, eu jogo futebol aos sábados.",
+          "en": "I can’t, I play football on Saturdays."
+        },
+        {
+          "speaker": "Larissa",
+          "pt": "E no domingo? A gente pode correr uma hora no parque.",
+          "en": "What about Sunday? We can run for an hour in the park."
+        },
+        {
+          "speaker": "Felipe",
+          "pt": "Tá bom, mas não muito cedo. Às nove horas, pode ser?",
+          "en": "Okay, but not too early. Is nine o’clock all right?"
+        },
+        {
+          "speaker": "Larissa",
+          "pt": "Perfeito. Da última vez, fiquei com dor nos joelhos durante dois dias.",
+          "en": "Perfect. Last time my knees hurt for two days."
+        },
+        {
+          "speaker": "Felipe",
+          "pt": "Você precisa caminhar cinco minutos antes de correr.",
+          "en": "You need to walk for five minutes before running."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why does Felipe say no to Saturday?",
+          "choices": [
+            "He works on Saturdays",
+            "He doesn’t like running",
+            "He plays football on Saturdays",
+            "He is ill"
+          ],
+          "answer": 2,
+          "explanation": "“Não posso, eu jogo futebol aos sábados.”"
+        },
+        {
+          "question": "When do they agree to run?",
+          "choices": [
+            "Saturday at nine",
+            "Sunday at nine",
+            "Sunday at seven",
+            "Saturday at seven"
+          ],
+          "answer": 1,
+          "explanation": "“E no domingo?” and then “Às nove horas, pode ser?”"
+        },
+        {
+          "question": "What happened to Larissa last time?",
+          "choices": [
+            "She hurt her ankle",
+            "She ran for two hours",
+            "She was ill for two days",
+            "Her knees hurt for two days"
+          ],
+          "answer": 3,
+          "explanation": "“Da última vez, fiquei com dor nos joelhos durante dois dias.”"
+        },
+        {
+          "question": "What does Felipe advise before running?",
+          "choices": [
+            "Walking for five minutes",
+            "Drinking a lot of water",
+            "Running more slowly",
+            "Resting for two days"
+          ],
+          "answer": 0,
+          "explanation": "“Você precisa caminhar cinco minutos antes de correr.”"
+        }
+      ],
+      "topics": [
+        "present-irregular",
+        "preterite",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-022",
+        "verbs-041",
+        "health-time-045",
+        "health-time-032",
+        "verbs-023",
+        "verbs-076",
+        "leisure-006",
+        "health-time-046",
+        "essentials-024",
+        "health-time-026",
+        "town-025",
+        "essentials-018",
+        "essentials-065",
+        "health-time-038",
+        "health-time-054",
+        "qualities-077",
+        "qualities-060",
+        "verbs-033",
+        "essentials-086",
+        "health-time-018",
+        "health-time-047",
+        "health-time-028",
+        "verbs-024",
+        "health-time-050",
+        "health-time-027",
+        "essentials-093"
+      ],
+      "gloss": [
+        {
+          "pt": "quer",
+          "en": "want (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "correr",
+          "en": "to run",
+          "word": "verbs-041"
+        },
+        {
+          "pt": "comigo",
+          "en": "with me"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "posso",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "jogo",
+          "en": "play (jogar)",
+          "word": "verbs-076"
+        },
+        {
+          "pt": "futebol",
+          "en": "football",
+          "word": "leisure-006"
+        },
+        {
+          "pt": "sábados",
+          "en": "Saturdays (o sábado)",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "pode",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "hora",
+          "en": "hour",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "parque",
+          "en": "park",
+          "word": "town-025"
+        },
+        {
+          "pt": "Tá bom",
+          "en": "okay",
+          "word": "essentials-018"
+        },
+        {
+          "pt": "muito",
+          "en": "too; very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        },
+        {
+          "pt": "nove",
+          "en": "nine",
+          "word": "health-time-054"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "pode ser",
+          "en": "is that all right?; that works (poder ser)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "Perfeito",
+          "en": "perfect",
+          "word": "qualities-077"
+        },
+        {
+          "pt": "Da última vez",
+          "en": "last time",
+          "word": "qualities-060"
+        },
+        {
+          "pt": "fiquei",
+          "en": "I was; I ended up (ficar); fiquei com dor = it hurt",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "dor",
+          "en": "pain; ache",
+          "word": "health-time-018"
+        },
+        {
+          "pt": "joelhos",
+          "en": "knees (o joelho)"
+        },
+        {
+          "pt": "durante",
+          "en": "for (a period)"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "dias",
+          "en": "days (o dia)",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "precisa",
+          "en": "need; needs (precisar)",
+          "word": "verbs-024"
+        },
+        {
+          "pt": "caminhar",
+          "en": "to walk"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        },
+        {
+          "pt": "antes",
+          "en": "before",
+          "word": "essentials-093"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p07",
+      "level": "A2",
+      "kind": "text",
+      "title": "A tiring week",
+      "lines": [
+        {
+          "pt": "Esta semana, eu dormi muito mal.",
+          "en": "This week I slept very badly."
+        },
+        {
+          "pt": "Na segunda e na terça, trabalhei até meia-noite num relatório.",
+          "en": "On Monday and Tuesday I worked until midnight on a report."
+        },
+        {
+          "pt": "Na quarta de manhã, eu estava tão cansada que esqueci a consulta com o dentista.",
+          "en": "On Wednesday morning I was so tired that I forgot my dentist appointment."
+        },
+        {
+          "pt": "À noite, fui para a cama às nove horas e dormi doze horas.",
+          "en": "In the evening I went to bed at nine o’clock and slept for twelve hours."
+        },
+        {
+          "pt": "Desde quinta, estou me sentindo muito melhor.",
+          "en": "Since Thursday I have been feeling much better."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What kept her up on Monday and Tuesday?",
+          "choices": [
+            "A sick child",
+            "A report for work",
+            "A dentist appointment",
+            "Noise from the neighbours"
+          ],
+          "answer": 1,
+          "explanation": "“Na segunda e na terça, trabalhei até meia-noite num relatório.”"
+        },
+        {
+          "question": "What did she forget on Wednesday morning?",
+          "choices": [
+            "Her keys",
+            "Her medicine",
+            "Her dentist appointment",
+            "A meeting"
+          ],
+          "answer": 2,
+          "explanation": "“esqueci a consulta com o dentista”"
+        },
+        {
+          "question": "How long did she sleep on Wednesday night?",
+          "choices": [
+            "Twelve hours",
+            "Nine hours",
+            "Ten hours",
+            "Until midnight"
+          ],
+          "answer": 0,
+          "explanation": "“dormi doze horas”. Nine o’clock is when she went to bed."
+        },
+        {
+          "question": "How has she felt since Thursday?",
+          "choices": [
+            "Still very tired",
+            "Worse than before",
+            "A bit ill",
+            "Much better"
+          ],
+          "answer": 3,
+          "explanation": "“Desde quinta, estou me sentindo muito melhor.”"
+        }
+      ],
+      "topics": [
+        "preterite",
+        "imperfect"
+      ],
+      "words": [
+        "health-time-029",
+        "verbs-062",
+        "essentials-065",
+        "essentials-078",
+        "health-time-040",
+        "health-time-041",
+        "verbs-054",
+        "essentials-089",
+        "health-time-042",
+        "health-time-032",
+        "verbs-002",
+        "feelings-011",
+        "verbs-085",
+        "essentials-086",
+        "work-014",
+        "health-time-034",
+        "verbs-005",
+        "essentials-085",
+        "home-023",
+        "health-time-054",
+        "health-time-026",
+        "health-time-043",
+        "verbs-101",
+        "qualities-057"
+      ],
+      "gloss": [
+        {
+          "pt": "Esta",
+          "en": "this"
+        },
+        {
+          "pt": "semana",
+          "en": "week",
+          "word": "health-time-029"
+        },
+        {
+          "pt": "dormi",
+          "en": "slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "muito",
+          "en": "very; much",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "mal",
+          "en": "badly",
+          "word": "essentials-078"
+        },
+        {
+          "pt": "segunda",
+          "en": "Monday (short for segunda-feira)",
+          "word": "health-time-040"
+        },
+        {
+          "pt": "terça",
+          "en": "Tuesday (short for terça-feira)",
+          "word": "health-time-041"
+        },
+        {
+          "pt": "trabalhei",
+          "en": "I worked (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "até",
+          "en": "until",
+          "word": "essentials-089"
+        },
+        {
+          "pt": "meia-noite",
+          "en": "midnight"
+        },
+        {
+          "pt": "num",
+          "en": "on a (em + um)"
+        },
+        {
+          "pt": "relatório",
+          "en": "report"
+        },
+        {
+          "pt": "quarta",
+          "en": "Wednesday (short for quarta-feira)",
+          "word": "health-time-042"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "estava",
+          "en": "was (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "tão",
+          "en": "so"
+        },
+        {
+          "pt": "cansada",
+          "en": "tired (cansado)",
+          "word": "feelings-011"
+        },
+        {
+          "pt": "esqueci",
+          "en": "I forgot (esquecer)",
+          "word": "verbs-085"
+        },
+        {
+          "pt": "consulta",
+          "en": "appointment (with a doctor)"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "dentista",
+          "en": "dentist",
+          "word": "work-014"
+        },
+        {
+          "pt": "À noite",
+          "en": "in the evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "fui",
+          "en": "I went (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "para",
+          "en": "to",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "cama",
+          "en": "bed",
+          "word": "home-023"
+        },
+        {
+          "pt": "nove",
+          "en": "nine",
+          "word": "health-time-054"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "doze",
+          "en": "twelve"
+        },
+        {
+          "pt": "Desde",
+          "en": "since"
+        },
+        {
+          "pt": "quinta",
+          "en": "Thursday (short for quinta-feira)",
+          "word": "health-time-043"
+        },
+        {
+          "pt": "estou",
+          "en": "I am (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "sentindo",
+          "en": "feeling (sentir); se sentir = to feel",
+          "word": "verbs-101"
+        },
+        {
+          "pt": "melhor",
+          "en": "better",
+          "word": "qualities-057"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p08",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "A fall from a bike",
+      "lines": [
+        {
+          "speaker": "A enfermeira",
+          "pt": "O que aconteceu?",
+          "en": "What happened?"
+        },
+        {
+          "speaker": "Gustavo",
+          "pt": "Eu caí da bicicleta hoje de manhã e o meu tornozelo está muito inchado.",
+          "en": "I fell off my bike this morning and my ankle is very swollen."
+        },
+        {
+          "speaker": "A enfermeira",
+          "pt": "Você consegue andar?",
+          "en": "Can you walk?"
+        },
+        {
+          "speaker": "Gustavo",
+          "pt": "Um pouco, mas dói muito quando coloco o pé no chão.",
+          "en": "A little, but it hurts a lot when I put my foot on the floor."
+        },
+        {
+          "speaker": "A enfermeira",
+          "pt": "Vamos fazer uma radiografia. Pode sentar aqui, o médico chega em dez minutos.",
+          "en": "We are going to do an X-ray. You can sit here, the doctor will be here in ten minutes."
+        },
+        {
+          "speaker": "Gustavo",
+          "pt": "Obrigado. Eu tenho um jogo de futebol no domingo.",
+          "en": "Thank you. I have a football match on Sunday."
+        },
+        {
+          "speaker": "A enfermeira",
+          "pt": "Esqueça o jogo, você precisa descansar.",
+          "en": "Forget the match, you need to rest."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How did Gustavo get hurt?",
+          "choices": [
+            "He fell down the stairs",
+            "He fell off his bike",
+            "He was hurt in a football match",
+            "He fell while running"
+          ],
+          "answer": 1,
+          "explanation": "“Eu caí da bicicleta hoje de manhã”"
+        },
+        {
+          "question": "What does he say about walking?",
+          "choices": [
+            "He can’t walk at all",
+            "He can walk without any pain",
+            "He can walk a little, but it hurts when he puts his foot down",
+            "He can only walk with help"
+          ],
+          "answer": 2,
+          "explanation": "“Um pouco, mas dói muito quando coloco o pé no chão.”"
+        },
+        {
+          "question": "What happens next?",
+          "choices": [
+            "He goes home with a bandage",
+            "The nurse calls an ambulance",
+            "He waits for the dentist",
+            "An X-ray, and the doctor arrives in ten minutes"
+          ],
+          "answer": 3,
+          "explanation": "“Vamos fazer uma radiografia.” and “o médico chega em dez minutos”"
+        },
+        {
+          "question": "What does the nurse say about Sunday’s match?",
+          "choices": [
+            "He can play if his ankle is better",
+            "He must forget it and rest",
+            "He can watch but not play",
+            "She doesn’t answer"
+          ],
+          "answer": 1,
+          "explanation": "“Esqueça o jogo, você precisa descansar.”"
+        }
+      ],
+      "topics": [
+        "preterite",
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-032",
+        "verbs-092",
+        "verbs-102",
+        "travel-008",
+        "health-time-035",
+        "essentials-050",
+        "verbs-002",
+        "essentials-065",
+        "verbs-091",
+        "verbs-040",
+        "essentials-066",
+        "essentials-034",
+        "verbs-028",
+        "health-time-005",
+        "home-015",
+        "verbs-005",
+        "verbs-004",
+        "verbs-023",
+        "verbs-094",
+        "essentials-054",
+        "work-012",
+        "verbs-035",
+        "health-time-055",
+        "health-time-027",
+        "essentials-009",
+        "verbs-003",
+        "leisure-003",
+        "leisure-006",
+        "health-time-046",
+        "verbs-085",
+        "verbs-024",
+        "leisure-042"
+      ],
+      "gloss": [
+        {
+          "pt": "O que",
+          "en": "what",
+          "word": "essentials-032"
+        },
+        {
+          "pt": "aconteceu",
+          "en": "happened (acontecer)",
+          "word": "verbs-092"
+        },
+        {
+          "pt": "caí",
+          "en": "fell (cair)",
+          "word": "verbs-102"
+        },
+        {
+          "pt": "bicicleta",
+          "en": "bike; bicycle",
+          "word": "travel-008"
+        },
+        {
+          "pt": "hoje de manhã",
+          "en": "this morning",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "tornozelo",
+          "en": "ankle"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "muito",
+          "en": "very; a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "inchado",
+          "en": "swollen"
+        },
+        {
+          "pt": "consegue",
+          "en": "can; are able to (conseguir)",
+          "word": "verbs-091"
+        },
+        {
+          "pt": "andar",
+          "en": "to walk",
+          "word": "verbs-040"
+        },
+        {
+          "pt": "Um pouco",
+          "en": "a little",
+          "word": "essentials-066"
+        },
+        {
+          "pt": "dói",
+          "en": "hurts (doer)"
+        },
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "coloco",
+          "en": "put (colocar)",
+          "word": "verbs-028"
+        },
+        {
+          "pt": "pé",
+          "en": "foot",
+          "word": "health-time-005"
+        },
+        {
+          "pt": "chão",
+          "en": "floor; ground",
+          "word": "home-015"
+        },
+        {
+          "pt": "Vamos",
+          "en": "we are going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "fazer",
+          "en": "to do",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "radiografia",
+          "en": "X-ray"
+        },
+        {
+          "pt": "Pode",
+          "en": "you can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "sentar",
+          "en": "to sit down",
+          "word": "verbs-094"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "chega",
+          "en": "arrives; will be here (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        },
+        {
+          "pt": "Obrigado",
+          "en": "thank you",
+          "word": "essentials-009"
+        },
+        {
+          "pt": "tenho",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "jogo",
+          "en": "match; game",
+          "word": "leisure-003"
+        },
+        {
+          "pt": "futebol",
+          "en": "football",
+          "word": "leisure-006"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "Esqueça",
+          "en": "forget (esquecer)",
+          "word": "verbs-085"
+        },
+        {
+          "pt": "precisa",
+          "en": "need; needs (precisar)",
+          "word": "verbs-024"
+        },
+        {
+          "pt": "descansar",
+          "en": "to rest",
+          "word": "leisure-042"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p09",
+      "level": "A2",
+      "kind": "text",
+      "title": "Pharmacy notice",
+      "lines": [
+        {
+          "pt": "A farmácia do centro vai ficar fechada do dia doze ao dia quinze de agosto.",
+          "en": "The town centre pharmacy will be closed from the twelfth to the fifteenth of August."
+        },
+        {
+          "pt": "Durante esses quatro dias, a farmácia da rodoviária vai ficar aberta.",
+          "en": "During those four days, the bus station pharmacy will stay open."
+        },
+        {
+          "pt": "Ela abre todos os dias das oito às vinte horas, menos no domingo.",
+          "en": "It opens every day from eight in the morning to eight in the evening, except on Sunday."
+        },
+        {
+          "pt": "Em caso de emergência à noite, ligue para o número cento e noventa e dois.",
+          "en": "In an emergency at night, call one hundred and ninety-two."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the town centre pharmacy closed?",
+          "choices": [
+            "From the twelfth to the fifteenth of August",
+            "Every Sunday in August",
+            "From the fifteenth to the twentieth of August",
+            "From the second to the fifth of August"
+          ],
+          "answer": 0,
+          "explanation": "“do dia doze ao dia quinze de agosto”"
+        },
+        {
+          "question": "Which pharmacy stays open during those days?",
+          "choices": [
+            "The one in the town centre",
+            "The one at the hospital",
+            "The one near the beach",
+            "The one at the bus station"
+          ],
+          "answer": 3,
+          "explanation": "“a farmácia da rodoviária vai ficar aberta”"
+        },
+        {
+          "question": "On which day is that pharmacy closed?",
+          "choices": [
+            "On Saturday",
+            "On Sunday",
+            "On Monday",
+            "It is never closed"
+          ],
+          "answer": 1,
+          "explanation": "“menos no domingo”"
+        },
+        {
+          "question": "What should you do in an emergency at night?",
+          "choices": [
+            "Go to the bus station pharmacy",
+            "Wait until eight in the morning",
+            "Call one hundred and ninety-two",
+            "Call the town centre pharmacy"
+          ],
+          "answer": 2,
+          "explanation": "“ligue para o número cento e noventa e dois”"
+        }
+      ],
+      "topics": [
+        "ir-future",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "shopping-017",
+        "town-028",
+        "verbs-005",
+        "verbs-033",
+        "qualities-033",
+        "health-time-028",
+        "essentials-048",
+        "health-time-049",
+        "travel-014",
+        "qualities-032",
+        "verbs-045",
+        "essentials-045",
+        "health-time-053",
+        "health-time-056",
+        "health-time-026",
+        "essentials-068",
+        "health-time-046",
+        "health-time-034",
+        "media-012",
+        "essentials-085",
+        "town-018",
+        "health-time-057",
+        "health-time-047"
+      ],
+      "gloss": [
+        {
+          "pt": "farmácia",
+          "en": "pharmacy",
+          "word": "shopping-017"
+        },
+        {
+          "pt": "centro",
+          "en": "town centre",
+          "word": "town-028"
+        },
+        {
+          "pt": "vai",
+          "en": "is going to; will (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "ficar",
+          "en": "to be; to stay",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "fechada",
+          "en": "closed (fechado)",
+          "word": "qualities-033"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "doze",
+          "en": "twelve; the twelfth"
+        },
+        {
+          "pt": "quinze",
+          "en": "fifteen; the fifteenth"
+        },
+        {
+          "pt": "agosto",
+          "en": "August"
+        },
+        {
+          "pt": "Durante",
+          "en": "during"
+        },
+        {
+          "pt": "esses",
+          "en": "those (esse)",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "quatro",
+          "en": "four",
+          "word": "health-time-049"
+        },
+        {
+          "pt": "dias",
+          "en": "days (o dia)",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "rodoviária",
+          "en": "bus station",
+          "word": "travel-014"
+        },
+        {
+          "pt": "aberta",
+          "en": "open (aberto)",
+          "word": "qualities-032"
+        },
+        {
+          "pt": "abre",
+          "en": "opens (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "todos",
+          "en": "all; every (todo)",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty (às vinte horas = at eight in the evening)",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "horas",
+          "en": "hours; o’clock (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "menos",
+          "en": "except",
+          "word": "essentials-068"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "Em caso de",
+          "en": "in case of"
+        },
+        {
+          "pt": "emergência",
+          "en": "emergency"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "ligue",
+          "en": "call (ligar)",
+          "word": "media-012"
+        },
+        {
+          "pt": "para",
+          "en": "(ligar para = to call)",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "número",
+          "en": "number",
+          "word": "town-018"
+        },
+        {
+          "pt": "cento",
+          "en": "one hundred (before another number)",
+          "word": "health-time-057"
+        },
+        {
+          "pt": "noventa",
+          "en": "ninety"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        }
+      ]
+    }
+  ]
+}

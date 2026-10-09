@@ -1,11 +1,14 @@
-// Names every French clip a set needs, so the renderer never has to read Echo's content itself.
+// Names every clip a set needs in the language ECHO_LANG picks (French when unset), so the renderer never has to read
+// Echo's content itself.
 // Usage: bun scripts/list-clips.ts comprehension|grammar|story  ->  [{ "id": "...", "text": "..." }] on stdout.
 import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadBank } from '../lib/comprehension-content';
 import { grammarSpeech, loadCourse } from '../lib/grammar-content';
+import { currentLanguage } from '../lib/language';
 
 const root = join(import.meta.dir, '..');
+const language = currentLanguage(root);
 const set = process.argv[2];
 if (set !== 'comprehension' && set !== 'grammar' && set !== 'story') {
   console.error('Usage: bun scripts/list-clips.ts comprehension|grammar|story');
@@ -15,8 +18,9 @@ if (set !== 'comprehension' && set !== 'grammar' && set !== 'story') {
 const clips: { id: string; text: string }[] = [];
 if (set === 'comprehension') {
   // Lanes Echo wrote itself (lib/text-topup.ts); the server names its folders, colon-separated, when it records them.
-  const generated = process.env.ECHO_COMPREHENSION_GENERATED?.split(':').filter(Boolean) ?? [join(root, 'data/comprehension')];
-  const bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, generated);
+  // Only French writes lanes, so another language has none unless they are named.
+  const generated = process.env.ECHO_COMPREHENSION_GENERATED?.split(':').filter(Boolean) ?? (language.code === 'fr' ? [join(root, 'data/comprehension')] : []);
+  const bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, generated, language);
   for (const sentence of bank.sentences) clips.push({ id: sentence.id, text: sentence.fr });
   // A passage is heard line by line, so each line is its own clip, numbered from one.
   for (const passage of bank.passages) {

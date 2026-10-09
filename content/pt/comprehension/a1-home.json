@@ -1,0 +1,4039 @@
+{
+  "sentences": [
+    {
+      "id": "a1-home-s01",
+      "level": "A1",
+      "pt": "De manhã, eu acordo às sete horas.",
+      "en": "In the morning, I wake up at seven.",
+      "distractors": [
+        "In the morning, I wake up at nine.",
+        "In the evening, I wake up at seven.",
+        "In the morning, I go to bed at seven."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-032",
+        "verbs-063",
+        "health-time-052",
+        "health-time-026"
+      ],
+      "gloss": [
+        {
+          "pt": "De manhã",
+          "en": "in the morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "acordo",
+          "en": "wake up (acordar)",
+          "word": "verbs-063"
+        },
+        {
+          "pt": "sete",
+          "en": "seven",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s02",
+      "level": "A1",
+      "pt": "Meu despertador toca às seis e meia.",
+      "en": "My alarm clock goes off at half past six.",
+      "distractors": [
+        "My alarm clock goes off at half past seven.",
+        "My alarm clock goes off at six o’clock.",
+        "My phone rings at half past six."
+      ],
+      "topics": [
+        "possessives",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-050",
+        "verbs-077",
+        "health-time-051"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "despertador",
+          "en": "alarm clock"
+        },
+        {
+          "pt": "toca",
+          "en": "goes off; rings (tocar)",
+          "word": "verbs-077"
+        },
+        {
+          "pt": "seis e meia",
+          "en": "half past six",
+          "word": "health-time-051"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s03",
+      "level": "A1",
+      "pt": "Você se levanta cedo aos sábados?",
+      "en": "Do you get up early on Saturdays?",
+      "distractors": [
+        "Do you get up early on Sundays?",
+        "Do you go to bed early on Saturdays?",
+        "Do you get up late on Saturdays?"
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-095",
+        "health-time-038",
+        "health-time-045"
+      ],
+      "gloss": [
+        {
+          "pt": "levanta",
+          "en": "get up (levantar)",
+          "word": "verbs-095"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        },
+        {
+          "pt": "sábados",
+          "en": "Saturdays (o sábado)",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s04",
+      "level": "A1",
+      "pt": "A gente toma café da manhã na cozinha.",
+      "en": "We have breakfast in the kitchen.",
+      "distractors": [
+        "We have lunch in the kitchen.",
+        "We have breakfast in the living room.",
+        "They have breakfast in the kitchen."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-061",
+        "food-041",
+        "home-005"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "toma",
+          "en": "has; drinks (tomar)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "café da manhã",
+          "en": "breakfast",
+          "word": "food-041"
+        },
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s05",
+      "level": "A1",
+      "pt": "Ela toma café antes do banho.",
+      "en": "She drinks coffee before her shower.",
+      "distractors": [
+        "She drinks coffee after her shower.",
+        "She drinks tea before her shower.",
+        "He drinks coffee before his shower."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-061",
+        "food-003",
+        "essentials-093",
+        "home-035"
+      ],
+      "gloss": [
+        {
+          "pt": "toma",
+          "en": "has; drinks (tomar)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "antes",
+          "en": "before",
+          "word": "essentials-093"
+        },
+        {
+          "pt": "banho",
+          "en": "shower; bath",
+          "word": "home-035"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s06",
+      "level": "A1",
+      "pt": "Eu não coloco açúcar no café.",
+      "en": "I don’t put sugar in my coffee.",
+      "distractors": [
+        "I don’t put milk in my coffee.",
+        "I put sugar in my coffee.",
+        "I don’t put sugar in my tea."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "verbs-028",
+        "food-006",
+        "food-003"
+      ],
+      "gloss": [
+        {
+          "pt": "coloco",
+          "en": "put (colocar)",
+          "word": "verbs-028"
+        },
+        {
+          "pt": "açúcar",
+          "en": "sugar",
+          "word": "food-006"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s07",
+      "level": "A1",
+      "pt": "Meu pai faz café para a família toda.",
+      "en": "My dad makes coffee for the whole family.",
+      "distractors": [
+        "My mum makes coffee for the whole family.",
+        "My dad makes tea for the whole family.",
+        "My dad makes coffee for the children."
+      ],
+      "topics": [
+        "present-irregular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "people-009",
+        "verbs-004",
+        "food-003",
+        "essentials-085",
+        "people-028",
+        "essentials-045"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pai",
+          "en": "dad; father",
+          "word": "people-009"
+        },
+        {
+          "pt": "faz",
+          "en": "makes (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "família",
+          "en": "family",
+          "word": "people-028"
+        },
+        {
+          "pt": "toda",
+          "en": "whole; all",
+          "word": "essentials-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s08",
+      "level": "A1",
+      "pt": "As crianças descem a escada de pijama.",
+      "en": "The children come down the stairs in their pyjamas.",
+      "distractors": [
+        "The children go up the stairs in their pyjamas.",
+        "The children come down the stairs in their coats.",
+        "The child comes down the stairs in his pyjamas."
+      ],
+      "topics": [
+        "plural",
+        "present-regular"
+      ],
+      "words": [
+        "people-004",
+        "verbs-039",
+        "home-008"
+      ],
+      "gloss": [
+        {
+          "pt": "crianças",
+          "en": "children (a criança)",
+          "word": "people-004"
+        },
+        {
+          "pt": "descem",
+          "en": "come down (descer)",
+          "word": "verbs-039"
+        },
+        {
+          "pt": "escada",
+          "en": "stairs",
+          "word": "home-008"
+        },
+        {
+          "pt": "de pijama",
+          "en": "in pyjamas"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s09",
+      "level": "A1",
+      "pt": "Tem pão fresco em cima da mesa.",
+      "en": "There is fresh bread on the table.",
+      "distractors": [
+        "There is fresh cheese on the table.",
+        "There is fresh bread under the table.",
+        "There is no fresh bread on the table."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-003",
+        "food-002",
+        "qualities-025",
+        "essentials-098",
+        "home-020"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "pt": "fresco",
+          "en": "fresh",
+          "word": "qualities-025"
+        },
+        {
+          "pt": "em cima",
+          "en": "on; on top (of)",
+          "word": "essentials-098"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s10",
+      "level": "A1",
+      "pt": "A que horas você vai dormir?",
+      "en": "What time do you go to bed?",
+      "distractors": [
+        "What time do you get up?",
+        "What time does she go to bed?",
+        "What time do you go to work?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "health-time-026",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "pt": "A que horas",
+          "en": "(at) what time",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "vai dormir",
+          "en": "go to bed (ir dormir)",
+          "word": "verbs-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s11",
+      "level": "A1",
+      "pt": "Minha mãe faz o jantar às oito horas.",
+      "en": "My mum makes dinner at eight.",
+      "distractors": [
+        "My mum makes dinner at nine.",
+        "My mum makes lunch at eight.",
+        "My dad makes dinner at eight."
+      ],
+      "topics": [
+        "possessives",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-050",
+        "people-010",
+        "verbs-004",
+        "food-043",
+        "health-time-053",
+        "health-time-026"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "mãe",
+          "en": "mum; mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "faz",
+          "en": "makes (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "jantar",
+          "en": "dinner",
+          "word": "food-043"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s12",
+      "level": "A1",
+      "pt": "A gente come arroz e feijão todo dia.",
+      "en": "We eat rice and beans every day.",
+      "distractors": [
+        "We eat rice and beans on Sundays.",
+        "We eat rice and chicken every day.",
+        "They eat rice and beans every day."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-059",
+        "food-012",
+        "food-013",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "come",
+          "en": "eat (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "arroz",
+          "en": "rice",
+          "word": "food-012"
+        },
+        {
+          "pt": "feijão",
+          "en": "beans",
+          "word": "food-013"
+        },
+        {
+          "pt": "todo dia",
+          "en": "every day",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s13",
+      "level": "A1",
+      "pt": "Tem leite na geladeira?",
+      "en": "Is there any milk in the fridge?",
+      "distractors": [
+        "Is there any juice in the fridge?",
+        "Is there any milk on the table?",
+        "Is there any milk in the cupboard?"
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-003",
+        "food-005",
+        "home-030"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "is there (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "leite",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "pt": "geladeira",
+          "en": "fridge",
+          "word": "home-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s14",
+      "level": "A1",
+      "pt": "Eu ponho a mesa para quatro pessoas.",
+      "en": "I set the table for four people.",
+      "distractors": [
+        "I set the table for five people.",
+        "We set the table for four people.",
+        "I set the table for three people."
+      ],
+      "topics": [
+        "present-irregular",
+        "plural"
+      ],
+      "words": [
+        "home-020",
+        "essentials-085",
+        "health-time-049",
+        "people-001"
+      ],
+      "gloss": [
+        {
+          "pt": "ponho a mesa",
+          "en": "set the table (pôr a mesa)",
+          "word": "home-020"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "quatro",
+          "en": "four",
+          "word": "health-time-049"
+        },
+        {
+          "pt": "pessoas",
+          "en": "people (a pessoa)",
+          "word": "people-001"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s15",
+      "level": "A1",
+      "pt": "O frango está no forno há vinte minutos.",
+      "en": "The chicken has been in the oven for twenty minutes.",
+      "distractors": [
+        "The chicken has been in the oven for ten minutes.",
+        "The fish has been in the oven for twenty minutes.",
+        "The chicken has been in the fridge for twenty minutes."
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "food-016",
+        "verbs-002",
+        "home-032",
+        "health-time-056",
+        "health-time-027"
+      ],
+      "gloss": [
+        {
+          "pt": "frango",
+          "en": "chicken",
+          "word": "food-016"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "forno",
+          "en": "oven",
+          "word": "home-032"
+        },
+        {
+          "pt": "há",
+          "en": "for (haver)"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "minutos",
+          "en": "minutes (o minuto)",
+          "word": "health-time-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s16",
+      "level": "A1",
+      "pt": "A gente não janta na frente da televisão.",
+      "en": "We don’t have dinner in front of the TV.",
+      "distractors": [
+        "We have dinner in front of the TV.",
+        "We don’t have lunch in front of the TV.",
+        "They don’t have dinner in front of the TV."
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-024",
+        "food-043",
+        "media-024"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "janta",
+          "en": "have dinner (jantar)",
+          "word": "food-043"
+        },
+        {
+          "pt": "na frente",
+          "en": "in front (of)"
+        },
+        {
+          "pt": "televisão",
+          "en": "television; TV",
+          "word": "media-024"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s17",
+      "level": "A1",
+      "pt": "Quem lava a louça hoje à noite?",
+      "en": "Who is washing the dishes tonight?",
+      "distractors": [
+        "Who is washing the dishes this morning?",
+        "Who is cooking tonight?",
+        "Who is washing the car tonight?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-031",
+        "verbs-080",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "pt": "Quem",
+          "en": "who",
+          "word": "essentials-031"
+        },
+        {
+          "pt": "lava",
+          "en": "is washing (lavar)",
+          "word": "verbs-080"
+        },
+        {
+          "pt": "louça",
+          "en": "the dishes"
+        },
+        {
+          "pt": "hoje à noite",
+          "en": "tonight; this evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s18",
+      "level": "A1",
+      "pt": "Meu irmão nunca quer comer legumes.",
+      "en": "My brother never wants to eat vegetables.",
+      "distractors": [
+        "My sister never wants to eat vegetables.",
+        "My brother always wants to eat vegetables.",
+        "My brother never wants to eat fruit."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "people-013",
+        "essentials-072",
+        "verbs-022",
+        "verbs-059",
+        "food-032"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        },
+        {
+          "pt": "nunca",
+          "en": "never",
+          "word": "essentials-072"
+        },
+        {
+          "pt": "quer",
+          "en": "wants (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "comer",
+          "en": "eat",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "legumes",
+          "en": "vegetables",
+          "word": "food-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s19",
+      "level": "A1",
+      "pt": "Eu passo o aspirador na sala.",
+      "en": "I vacuum the living room.",
+      "distractors": [
+        "I vacuum the bedroom.",
+        "I vacuum the kitchen.",
+        "You vacuum the living room."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-032",
+        "home-004"
+      ],
+      "gloss": [
+        {
+          "pt": "passo o aspirador",
+          "en": "vacuum (passar o aspirador)",
+          "word": "verbs-032"
+        },
+        {
+          "pt": "sala",
+          "en": "living room",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s20",
+      "level": "A1",
+      "pt": "Você arruma o seu quarto antes do almoço?",
+      "en": "Do you tidy your room before lunch?",
+      "distractors": [
+        "Do you tidy your room after lunch?",
+        "Do you tidy your room before dinner?",
+        "Does she tidy her room before lunch?"
+      ],
+      "topics": [
+        "possessives",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-051",
+        "home-003",
+        "essentials-093",
+        "food-042"
+      ],
+      "gloss": [
+        {
+          "pt": "arruma",
+          "en": "tidy (arrumar)"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "quarto",
+          "en": "bedroom; room",
+          "word": "home-003"
+        },
+        {
+          "pt": "antes",
+          "en": "before",
+          "word": "essentials-093"
+        },
+        {
+          "pt": "almoço",
+          "en": "lunch",
+          "word": "food-042"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s21",
+      "level": "A1",
+      "pt": "Ela lava os lençóis todo domingo.",
+      "en": "She washes the sheets every Sunday.",
+      "distractors": [
+        "She washes the sheets every Saturday.",
+        "She washes the towels every Sunday.",
+        "He washes the sheets every Sunday."
+      ],
+      "topics": [
+        "present-regular",
+        "plural"
+      ],
+      "words": [
+        "verbs-080",
+        "essentials-045",
+        "health-time-046"
+      ],
+      "gloss": [
+        {
+          "pt": "lava",
+          "en": "washes (lavar)",
+          "word": "verbs-080"
+        },
+        {
+          "pt": "lençóis",
+          "en": "sheets (o lençol)"
+        },
+        {
+          "pt": "todo",
+          "en": "every",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s22",
+      "level": "A1",
+      "pt": "A máquina de lavar não funciona mais.",
+      "en": "The washing machine doesn’t work any more.",
+      "distractors": [
+        "The washing machine works again.",
+        "The dishwasher doesn’t work any more.",
+        "The washing machine doesn’t work very well."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "home-050",
+        "essentials-067"
+      ],
+      "gloss": [
+        {
+          "pt": "máquina de lavar",
+          "en": "washing machine",
+          "word": "home-050"
+        },
+        {
+          "pt": "funciona",
+          "en": "works (funcionar)"
+        },
+        {
+          "pt": "mais",
+          "en": "any more; no longer",
+          "word": "essentials-067"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s23",
+      "level": "A1",
+      "pt": "Tem muita poeira embaixo da cama.",
+      "en": "There is a lot of dust under the bed.",
+      "distractors": [
+        "There is a lot of dust under the sofa.",
+        "There is a lot of dust on the bed.",
+        "There isn’t much dust under the bed."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-003",
+        "essentials-065",
+        "essentials-099",
+        "home-023"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "muita",
+          "en": "a lot of (muito)",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "poeira",
+          "en": "dust"
+        },
+        {
+          "pt": "embaixo",
+          "en": "under; underneath",
+          "word": "essentials-099"
+        },
+        {
+          "pt": "cama",
+          "en": "bed",
+          "word": "home-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s24",
+      "level": "A1",
+      "pt": "A gente leva o lixo para fora à noite.",
+      "en": "We take the rubbish out in the evening.",
+      "distractors": [
+        "We take the rubbish out in the morning.",
+        "They take the rubbish out in the evening.",
+        "We take the dog out in the evening."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-043",
+        "home-042",
+        "essentials-097",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "leva",
+          "en": "take (levar)",
+          "word": "verbs-043"
+        },
+        {
+          "pt": "lixo",
+          "en": "rubbish",
+          "word": "home-042"
+        },
+        {
+          "pt": "para fora",
+          "en": "out; outside",
+          "word": "essentials-097"
+        },
+        {
+          "pt": "à noite",
+          "en": "in the evening; at night",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s25",
+      "level": "A1",
+      "pt": "Eu coloco a toalha limpa na gaveta.",
+      "en": "I put the clean towel in the drawer.",
+      "distractors": [
+        "I put the dirty towel in the drawer.",
+        "I put the clean towel in the cupboard.",
+        "I put the clean towel on the bed."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-028",
+        "home-036",
+        "qualities-026",
+        "home-026"
+      ],
+      "gloss": [
+        {
+          "pt": "coloco",
+          "en": "put (colocar)",
+          "word": "verbs-028"
+        },
+        {
+          "pt": "toalha",
+          "en": "towel",
+          "word": "home-036"
+        },
+        {
+          "pt": "limpa",
+          "en": "clean",
+          "word": "qualities-026"
+        },
+        {
+          "pt": "gaveta",
+          "en": "drawer",
+          "word": "home-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s26",
+      "level": "A1",
+      "pt": "Meu pai conserta a porta da garagem.",
+      "en": "My dad is fixing the garage door.",
+      "distractors": [
+        "My dad is fixing the kitchen door.",
+        "My brother is fixing the garage door.",
+        "My dad is painting the garage door."
+      ],
+      "topics": [
+        "possessives",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "people-009",
+        "home-016",
+        "home-010"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pai",
+          "en": "dad; father",
+          "word": "people-009"
+        },
+        {
+          "pt": "conserta",
+          "en": "is fixing (consertar)"
+        },
+        {
+          "pt": "porta",
+          "en": "door",
+          "word": "home-016"
+        },
+        {
+          "pt": "garagem",
+          "en": "garage",
+          "word": "home-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s27",
+      "level": "A1",
+      "pt": "Eu limpo a pia com uma esponja.",
+      "en": "I clean the sink with a sponge.",
+      "distractors": [
+        "I clean the sink with a towel.",
+        "I clean the shower with a sponge.",
+        "We clean the sink with a sponge."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "verbs-081",
+        "home-033",
+        "essentials-086"
+      ],
+      "gloss": [
+        {
+          "pt": "limpo",
+          "en": "clean (limpar)",
+          "word": "verbs-081"
+        },
+        {
+          "pt": "pia",
+          "en": "sink",
+          "word": "home-033"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "esponja",
+          "en": "sponge"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s28",
+      "level": "A1",
+      "pt": "Vocês limpam a casa no sábado de manhã?",
+      "en": "Do you clean the house on Saturday morning?",
+      "distractors": [
+        "Do you clean the house on Sunday morning?",
+        "Do you clean the house on Saturday afternoon?",
+        "Do they clean the house on Saturday morning?"
+      ],
+      "topics": [
+        "present-regular",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-081",
+        "home-001",
+        "health-time-045",
+        "health-time-032"
+      ],
+      "gloss": [
+        {
+          "pt": "limpam",
+          "en": "clean (limpar)",
+          "word": "verbs-081"
+        },
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "de manhã",
+          "en": "in the morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s29",
+      "level": "A1",
+      "pt": "O nosso apartamento tem três quartos claros.",
+      "en": "Our flat has three bright bedrooms.",
+      "distractors": [
+        "Our flat has two bright bedrooms.",
+        "Our flat has three dark bedrooms.",
+        "Their flat has three bright bedrooms."
+      ],
+      "topics": [
+        "possessives",
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "essentials-052",
+        "home-002",
+        "verbs-003",
+        "health-time-048",
+        "home-003",
+        "qualities-044"
+      ],
+      "gloss": [
+        {
+          "pt": "nosso",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "pt": "apartamento",
+          "en": "flat; apartment",
+          "word": "home-002"
+        },
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "quartos",
+          "en": "bedrooms (o quarto)",
+          "word": "home-003"
+        },
+        {
+          "pt": "claros",
+          "en": "bright; light (claro)",
+          "word": "qualities-044"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s30",
+      "level": "A1",
+      "pt": "O quarto das crianças fica no primeiro andar.",
+      "en": "The children’s bedroom is on the first floor.",
+      "distractors": [
+        "The children’s bedroom is on the third floor.",
+        "The children’s bedroom is on the ground floor.",
+        "The bathroom is on the first floor."
+      ],
+      "topics": [
+        "prepositions-contractions",
+        "plural"
+      ],
+      "words": [
+        "home-003",
+        "people-004",
+        "verbs-033",
+        "qualities-059"
+      ],
+      "gloss": [
+        {
+          "pt": "quarto",
+          "en": "bedroom; room",
+          "word": "home-003"
+        },
+        {
+          "pt": "crianças",
+          "en": "children (a criança)",
+          "word": "people-004"
+        },
+        {
+          "pt": "fica",
+          "en": "is (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "primeiro",
+          "en": "first",
+          "word": "qualities-059"
+        },
+        {
+          "pt": "andar",
+          "en": "floor (of a building)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s31",
+      "level": "A1",
+      "pt": "Tem um sofá grande na frente da janela.",
+      "en": "There is a big sofa in front of the window.",
+      "distractors": [
+        "There is a small sofa in front of the window.",
+        "There is a big sofa in front of the door.",
+        "There is a big table in front of the window."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-003",
+        "home-022",
+        "qualities-001",
+        "home-017"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "sofá",
+          "en": "sofa",
+          "word": "home-022"
+        },
+        {
+          "pt": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "pt": "na frente",
+          "en": "in front (of)"
+        },
+        {
+          "pt": "janela",
+          "en": "window",
+          "word": "home-017"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s32",
+      "level": "A1",
+      "pt": "Meu quarto é menor do que a sala.",
+      "en": "My bedroom is smaller than the living room.",
+      "distractors": [
+        "My bedroom is bigger than the living room.",
+        "My bedroom is smaller than the kitchen.",
+        "My sister’s bedroom is smaller than the living room."
+      ],
+      "topics": [
+        "comparison",
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-050",
+        "home-003",
+        "verbs-001",
+        "home-004"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "quarto",
+          "en": "bedroom; room",
+          "word": "home-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "menor",
+          "en": "smaller"
+        },
+        {
+          "pt": "do que",
+          "en": "than"
+        },
+        {
+          "pt": "sala",
+          "en": "living room",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s33",
+      "level": "A1",
+      "pt": "As cortinas do quarto estão fechadas.",
+      "en": "The bedroom curtains are closed.",
+      "distractors": [
+        "The bedroom curtains are open.",
+        "The living room curtains are closed.",
+        "The bedroom windows are closed."
+      ],
+      "topics": [
+        "ser-estar",
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "home-018",
+        "home-003",
+        "verbs-002",
+        "qualities-033"
+      ],
+      "gloss": [
+        {
+          "pt": "cortinas",
+          "en": "curtains (a cortina)",
+          "word": "home-018"
+        },
+        {
+          "pt": "quarto",
+          "en": "bedroom; room",
+          "word": "home-003"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "fechadas",
+          "en": "closed (fechado)",
+          "word": "qualities-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s34",
+      "level": "A1",
+      "pt": "Onde está a chave da garagem?",
+      "en": "Where is the garage key?",
+      "distractors": [
+        "Where is the house key?",
+        "Where is the garage door?",
+        "Who has the garage key?"
+      ],
+      "topics": [
+        "negation-questions",
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-033",
+        "verbs-002",
+        "home-019",
+        "home-010"
+      ],
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "chave",
+          "en": "key",
+          "word": "home-019"
+        },
+        {
+          "pt": "garagem",
+          "en": "garage",
+          "word": "home-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s35",
+      "level": "A1",
+      "pt": "O espelho fica em cima da pia.",
+      "en": "The mirror is above the sink.",
+      "distractors": [
+        "The mirror is under the sink.",
+        "The mirror is above the bed.",
+        "The towel is above the sink."
+      ],
+      "topics": [
+        "prepositions-contractions"
+      ],
+      "words": [
+        "home-027",
+        "verbs-033",
+        "essentials-098",
+        "home-033"
+      ],
+      "gloss": [
+        {
+          "pt": "espelho",
+          "en": "mirror",
+          "word": "home-027"
+        },
+        {
+          "pt": "fica",
+          "en": "is (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "em cima",
+          "en": "above; over",
+          "word": "essentials-098"
+        },
+        {
+          "pt": "pia",
+          "en": "sink",
+          "word": "home-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s36",
+      "level": "A1",
+      "pt": "A gente não tem varanda, mas tem jardim.",
+      "en": "We don’t have a balcony, but we have a garden.",
+      "distractors": [
+        "We have a balcony, but we don’t have a garden.",
+        "We don’t have a garage, but we have a garden.",
+        "They don’t have a balcony, but they have a garden."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-003",
+        "home-011",
+        "home-009"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "varanda",
+          "en": "balcony",
+          "word": "home-011"
+        },
+        {
+          "pt": "jardim",
+          "en": "garden",
+          "word": "home-009"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s37",
+      "level": "A1",
+      "pt": "Eu deixo os chinelos no corredor.",
+      "en": "I leave my flip-flops in the hallway.",
+      "distractors": [
+        "I leave my shoes in the hallway.",
+        "I leave my flip-flops in the bedroom.",
+        "We leave our flip-flops in the hallway."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-031",
+        "home-007"
+      ],
+      "gloss": [
+        {
+          "pt": "deixo",
+          "en": "leave (deixar)",
+          "word": "verbs-031"
+        },
+        {
+          "pt": "chinelos",
+          "en": "flip-flops (o chinelo)"
+        },
+        {
+          "pt": "corredor",
+          "en": "hallway",
+          "word": "home-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s38",
+      "level": "A1",
+      "pt": "A luz da sala é muito fraca.",
+      "en": "The living room light is very dim.",
+      "distractors": [
+        "The kitchen light is very dim.",
+        "The living room light is very bright.",
+        "The bathroom light is very dim."
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "home-029",
+        "home-004",
+        "verbs-001",
+        "essentials-065",
+        "qualities-022"
+      ],
+      "gloss": [
+        {
+          "pt": "luz",
+          "en": "light",
+          "word": "home-029"
+        },
+        {
+          "pt": "sala",
+          "en": "living room",
+          "word": "home-004"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "fraca",
+          "en": "dim; weak (fraco)",
+          "word": "qualities-022"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s39",
+      "level": "A1",
+      "pt": "À noite, a gente assiste a uma série na sala.",
+      "en": "In the evening, we watch a series in the living room.",
+      "distractors": [
+        "In the evening, we watch a film in the living room.",
+        "In the evening, we watch a series in the bedroom.",
+        "In the morning, we watch a series in the living room."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-034",
+        "essentials-024",
+        "media-032",
+        "home-004"
+      ],
+      "gloss": [
+        {
+          "pt": "À noite",
+          "en": "in the evening; at night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "a gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "assiste",
+          "en": "watch (assistir a)"
+        },
+        {
+          "pt": "série",
+          "en": "series",
+          "word": "media-032"
+        },
+        {
+          "pt": "sala",
+          "en": "living room",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s40",
+      "level": "A1",
+      "pt": "Hoje à noite, eu vou ler na cama.",
+      "en": "Tonight, I’m going to read in bed.",
+      "distractors": [
+        "Tonight, I’m going to sleep in bed.",
+        "Tonight, I’m going to read on the sofa.",
+        "Tomorrow night, I’m going to read in bed."
+      ],
+      "topics": [
+        "ir-future"
+      ],
+      "words": [
+        "health-time-034",
+        "verbs-005",
+        "verbs-057",
+        "home-023"
+      ],
+      "gloss": [
+        {
+          "pt": "Hoje à noite",
+          "en": "tonight; this evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "vou",
+          "en": "am going (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "ler",
+          "en": "read",
+          "word": "verbs-057"
+        },
+        {
+          "pt": "cama",
+          "en": "bed",
+          "word": "home-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s41",
+      "level": "A1",
+      "pt": "As crianças vão para a cama às nove e meia.",
+      "en": "The children go to bed at half past nine.",
+      "distractors": [
+        "The children go to bed at half past eight.",
+        "The children go to bed at nine o’clock.",
+        "We go to bed at half past nine."
+      ],
+      "topics": [
+        "present-irregular",
+        "plural"
+      ],
+      "words": [
+        "people-004",
+        "verbs-005",
+        "health-time-054"
+      ],
+      "gloss": [
+        {
+          "pt": "crianças",
+          "en": "children (a criança)",
+          "word": "people-004"
+        },
+        {
+          "pt": "vão para a cama",
+          "en": "go to bed (ir para a cama)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "nove e meia",
+          "en": "half past nine",
+          "word": "health-time-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s42",
+      "level": "A1",
+      "pt": "Você fecha as janelas antes de dormir?",
+      "en": "Do you close the windows before going to sleep?",
+      "distractors": [
+        "Do you open the windows before going to sleep?",
+        "Do you close the doors before going to sleep?",
+        "Do you close the windows before going out?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "verbs-046",
+        "home-017",
+        "essentials-093",
+        "verbs-062"
+      ],
+      "gloss": [
+        {
+          "pt": "fecha",
+          "en": "close (fechar)",
+          "word": "verbs-046"
+        },
+        {
+          "pt": "janelas",
+          "en": "windows (a janela)",
+          "word": "home-017"
+        },
+        {
+          "pt": "antes de",
+          "en": "before",
+          "word": "essentials-093"
+        },
+        {
+          "pt": "dormir",
+          "en": "sleep",
+          "word": "verbs-062"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s43",
+      "level": "A1",
+      "pt": "Minha irmã ouve música na cama.",
+      "en": "My sister listens to music in bed.",
+      "distractors": [
+        "My brother listens to music in bed.",
+        "My sister listens to music on the sofa.",
+        "My sister watches videos in bed."
+      ],
+      "topics": [
+        "possessives",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-050",
+        "people-014",
+        "verbs-014",
+        "leisure-027",
+        "home-023"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "ouve",
+          "en": "listens to (ouvir)",
+          "word": "verbs-014"
+        },
+        {
+          "pt": "música",
+          "en": "music",
+          "word": "leisure-027"
+        },
+        {
+          "pt": "cama",
+          "en": "bed",
+          "word": "home-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s44",
+      "level": "A1",
+      "pt": "Eu não gosto de dormir com a luz acesa.",
+      "en": "I don’t like sleeping with the light on.",
+      "distractors": [
+        "I like sleeping with the light on.",
+        "I don’t like sleeping with the window open.",
+        "I don’t like reading with the light on."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "verbs-072",
+        "verbs-062",
+        "essentials-086",
+        "home-029"
+      ],
+      "gloss": [
+        {
+          "pt": "gosto",
+          "en": "like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "dormir",
+          "en": "sleep",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "luz",
+          "en": "light",
+          "word": "home-029"
+        },
+        {
+          "pt": "acesa",
+          "en": "on; switched on (aceso)"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s45",
+      "level": "A1",
+      "pt": "No domingo, a gente fica em casa.",
+      "en": "On Sundays, we stay at home.",
+      "distractors": [
+        "On Saturdays, we stay at home.",
+        "On Sundays, we go out.",
+        "On Sundays, they stay at home."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-046",
+        "essentials-024",
+        "verbs-033",
+        "home-001"
+      ],
+      "gloss": [
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "a gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "fica",
+          "en": "stay (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "em casa",
+          "en": "at home",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s46",
+      "level": "A1",
+      "pt": "No sábado, minha avó faz bolo de cenoura.",
+      "en": "On Saturdays, my grandma makes carrot cake.",
+      "distractors": [
+        "On Sundays, my grandma makes carrot cake.",
+        "On Saturdays, my grandad makes carrot cake.",
+        "On Saturdays, my grandma makes chocolate cake."
+      ],
+      "topics": [
+        "present-irregular",
+        "possessives"
+      ],
+      "words": [
+        "health-time-045",
+        "essentials-050",
+        "people-016",
+        "verbs-004",
+        "food-034"
+      ],
+      "gloss": [
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "minha",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "avó",
+          "en": "grandma",
+          "word": "people-016"
+        },
+        {
+          "pt": "faz",
+          "en": "makes (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "bolo de cenoura",
+          "en": "carrot cake",
+          "word": "food-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s47",
+      "level": "A1",
+      "pt": "Você quer um chocolate quente?",
+      "en": "Would you like a hot chocolate?",
+      "distractors": [
+        "Would you like a hot coffee?",
+        "Does he want a hot chocolate?",
+        "Would you like two hot chocolates?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "verbs-022",
+        "food-035"
+      ],
+      "gloss": [
+        {
+          "pt": "quer",
+          "en": "want (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "chocolate quente",
+          "en": "hot chocolate",
+          "word": "food-035"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s48",
+      "level": "A1",
+      "pt": "A gente rega as plantas da varanda.",
+      "en": "We water the plants on the balcony.",
+      "distractors": [
+        "We water the plants in the living room.",
+        "They water the plants on the balcony.",
+        "We water the flowers on the balcony."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-024",
+        "nature-016",
+        "home-011"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "rega",
+          "en": "water (regar)"
+        },
+        {
+          "pt": "plantas",
+          "en": "plants (a planta)",
+          "word": "nature-016"
+        },
+        {
+          "pt": "varanda",
+          "en": "balcony",
+          "word": "home-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s49",
+      "level": "A1",
+      "pt": "O gato sempre dorme no sofá.",
+      "en": "The cat always sleeps on the sofa.",
+      "distractors": [
+        "The dog always sleeps on the sofa.",
+        "The cat never sleeps on the sofa.",
+        "The cat always sleeps on the bed."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "nature-027",
+        "essentials-071",
+        "verbs-062",
+        "home-022"
+      ],
+      "gloss": [
+        {
+          "pt": "gato",
+          "en": "cat",
+          "word": "nature-027"
+        },
+        {
+          "pt": "sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "dorme",
+          "en": "sleeps (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "sofá",
+          "en": "sofa",
+          "word": "home-022"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-s50",
+      "level": "A1",
+      "pt": "Quantas cadeiras tem na cozinha?",
+      "en": "How many chairs are there in the kitchen?",
+      "distractors": [
+        "How many tables are there in the kitchen?",
+        "How many chairs are there in the living room?",
+        "How many chairs are there in the garden?"
+      ],
+      "topics": [
+        "negation-questions",
+        "plural"
+      ],
+      "words": [
+        "essentials-038",
+        "home-021",
+        "verbs-003",
+        "home-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Quantas",
+          "en": "how many (quanto)",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "cadeiras",
+          "en": "chairs (a cadeira)",
+          "word": "home-021"
+        },
+        {
+          "pt": "tem",
+          "en": "are there (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-home-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Breakfast in the kitchen",
+      "lines": [
+        {
+          "speaker": "Ana",
+          "pt": "Bom dia! O café está pronto?",
+          "en": "Good morning! Is the coffee ready?"
+        },
+        {
+          "speaker": "Pai",
+          "pt": "Está, mas não tem mais pão.",
+          "en": "It is, but there’s no bread left."
+        },
+        {
+          "speaker": "Ana",
+          "pt": "Tem biscoito no armário.",
+          "en": "There are some biscuits in the cupboard."
+        },
+        {
+          "speaker": "Pai",
+          "pt": "Ótimo. Eu ponho a mesa.",
+          "en": "Great. I’ll set the table."
+        },
+        {
+          "speaker": "Ana",
+          "pt": "E eu faço o suco de laranja.",
+          "en": "And I’ll make the orange juice."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What has run out?",
+          "choices": [
+            "The coffee",
+            "The bread",
+            "The biscuits",
+            "The orange juice"
+          ],
+          "answer": 1,
+          "explanation": "Dad says “não tem mais pão” — there’s no bread left."
+        },
+        {
+          "question": "Where are the biscuits?",
+          "choices": [
+            "In the cupboard",
+            "On the table",
+            "In the fridge",
+            "In the bag"
+          ],
+          "answer": 0,
+          "explanation": "Ana says “Tem biscoito no armário.”"
+        },
+        {
+          "question": "What does Dad do?",
+          "choices": [
+            "He makes the juice",
+            "He buys some bread",
+            "He sets the table",
+            "He makes the coffee"
+          ],
+          "answer": 2,
+          "explanation": "Dad says “Eu ponho a mesa.”"
+        },
+        {
+          "question": "What does Ana make?",
+          "choices": [
+            "Coffee",
+            "Tea",
+            "Toast",
+            "Orange juice"
+          ],
+          "answer": 3,
+          "explanation": "Ana says “E eu faço o suco de laranja.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-003",
+        "food-003",
+        "verbs-002",
+        "qualities-069",
+        "verbs-003",
+        "essentials-067",
+        "food-002",
+        "food-050",
+        "home-024",
+        "qualities-075",
+        "home-020",
+        "verbs-004",
+        "food-037"
+      ],
+      "gloss": [
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "pronto",
+          "en": "ready",
+          "word": "qualities-069"
+        },
+        {
+          "pt": "Está",
+          "en": "it is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "mais",
+          "en": "no more; left (não… mais)",
+          "word": "essentials-067"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "pt": "Tem",
+          "en": "there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "biscoito",
+          "en": "biscuits (o biscoito)",
+          "word": "food-050"
+        },
+        {
+          "pt": "armário",
+          "en": "cupboard",
+          "word": "home-024"
+        },
+        {
+          "pt": "Ótimo",
+          "en": "great",
+          "word": "qualities-075"
+        },
+        {
+          "pt": "ponho a mesa",
+          "en": "set the table (pôr a mesa)",
+          "word": "home-020"
+        },
+        {
+          "pt": "faço",
+          "en": "will make (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "suco de laranja",
+          "en": "orange juice",
+          "word": "food-037"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Saturday chores",
+      "lines": [
+        {
+          "speaker": "Mãe",
+          "pt": "Lucas, você arruma o seu quarto hoje de manhã?",
+          "en": "Lucas, are you tidying your room this morning?"
+        },
+        {
+          "speaker": "Lucas",
+          "pt": "Arrumo, e depois eu passo o aspirador.",
+          "en": "Yes, and then I’ll vacuum."
+        },
+        {
+          "speaker": "Mãe",
+          "pt": "Obrigada. A sua irmã lava a louça.",
+          "en": "Thanks. Your sister is washing the dishes."
+        },
+        {
+          "speaker": "Lucas",
+          "pt": "E o papai?",
+          "en": "And Dad?"
+        },
+        {
+          "speaker": "Mãe",
+          "pt": "Ele conserta a porta da garagem.",
+          "en": "He’s fixing the garage door."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is Lucas doing this morning?",
+          "choices": [
+            "He’s washing the dishes",
+            "He’s tidying his room",
+            "He’s fixing the door",
+            "He’s going out"
+          ],
+          "answer": 1,
+          "explanation": "Mum asks “você arruma o seu quarto hoje de manhã?” and Lucas says “Arrumo”."
+        },
+        {
+          "question": "Who washes the dishes?",
+          "choices": [
+            "Lucas",
+            "Mum",
+            "Dad",
+            "Lucas’s sister"
+          ],
+          "answer": 3,
+          "explanation": "Mum says “A sua irmã lava a louça.”"
+        },
+        {
+          "question": "What does Lucas do after that?",
+          "choices": [
+            "He vacuums",
+            "He cooks lunch",
+            "He washes the car",
+            "He sets the table"
+          ],
+          "answer": 0,
+          "explanation": "Lucas says “depois eu passo o aspirador”."
+        },
+        {
+          "question": "What is Dad fixing?",
+          "choices": [
+            "The kitchen door",
+            "The washing machine",
+            "The garage door",
+            "The window"
+          ],
+          "answer": 2,
+          "explanation": "Mum says “Ele conserta a porta da garagem.”"
+        }
+      ],
+      "topics": [
+        "present-regular",
+        "possessives",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-051",
+        "home-003",
+        "health-time-032",
+        "essentials-092",
+        "verbs-032",
+        "essentials-009",
+        "people-014",
+        "verbs-080",
+        "people-009",
+        "home-016",
+        "home-010"
+      ],
+      "gloss": [
+        {
+          "pt": "Lucas",
+          "en": "Lucas (a name)"
+        },
+        {
+          "pt": "arruma",
+          "en": "tidy (arrumar)"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "quarto",
+          "en": "bedroom; room",
+          "word": "home-003"
+        },
+        {
+          "pt": "hoje de manhã",
+          "en": "this morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "Arrumo",
+          "en": "yes, I am (arrumar, to tidy)"
+        },
+        {
+          "pt": "depois",
+          "en": "then; afterwards",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "passo o aspirador",
+          "en": "will vacuum (passar o aspirador)",
+          "word": "verbs-032"
+        },
+        {
+          "pt": "Obrigada",
+          "en": "thank you (said by a woman)",
+          "word": "essentials-009"
+        },
+        {
+          "pt": "sua",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "lava",
+          "en": "is washing (lavar)",
+          "word": "verbs-080"
+        },
+        {
+          "pt": "louça",
+          "en": "the dishes"
+        },
+        {
+          "pt": "papai",
+          "en": "Dad",
+          "word": "people-009"
+        },
+        {
+          "pt": "conserta",
+          "en": "is fixing (consertar)"
+        },
+        {
+          "pt": "porta",
+          "en": "door",
+          "word": "home-016"
+        },
+        {
+          "pt": "garagem",
+          "en": "garage",
+          "word": "home-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "The missing key",
+      "lines": [
+        {
+          "speaker": "Rafael",
+          "pt": "Onde está a minha chave?",
+          "en": "Where’s my key?"
+        },
+        {
+          "speaker": "Júlia",
+          "pt": "Não está em cima da mesa?",
+          "en": "Isn’t it on the table?"
+        },
+        {
+          "speaker": "Rafael",
+          "pt": "Não, e também não está na minha mochila.",
+          "en": "No, and it isn’t in my backpack either."
+        },
+        {
+          "speaker": "Júlia",
+          "pt": "Olha no bolso do seu casaco.",
+          "en": "Look in your coat pocket."
+        },
+        {
+          "speaker": "Rafael",
+          "pt": "Ah, está aqui! Obrigado.",
+          "en": "Oh, here it is! Thanks."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is Rafael looking for?",
+          "choices": [
+            "His phone",
+            "His backpack",
+            "His key",
+            "His coat"
+          ],
+          "answer": 2,
+          "explanation": "Rafael asks “Onde está a minha chave?”"
+        },
+        {
+          "question": "Where has Rafael already looked?",
+          "choices": [
+            "In his coat",
+            "In his backpack",
+            "In the kitchen",
+            "In the car"
+          ],
+          "answer": 1,
+          "explanation": "Rafael says “também não está na minha mochila”."
+        },
+        {
+          "question": "Where does Júlia tell him to look?",
+          "choices": [
+            "In his backpack",
+            "In the drawer",
+            "Under the table",
+            "In his coat pocket"
+          ],
+          "answer": 3,
+          "explanation": "Júlia says “Olha no bolso do seu casaco.”"
+        },
+        {
+          "question": "Where is the key in the end?",
+          "choices": [
+            "In his coat pocket",
+            "On the table",
+            "In his backpack",
+            "On the floor"
+          ],
+          "answer": 0,
+          "explanation": "Rafael looks where Júlia says, “no bolso do seu casaco”, and finds it: “Ah, está aqui!”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "possessives",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-033",
+        "verbs-002",
+        "essentials-050",
+        "home-019",
+        "essentials-098",
+        "home-020",
+        "essentials-064",
+        "school-018",
+        "verbs-013",
+        "shopping-020",
+        "essentials-051",
+        "people-048",
+        "essentials-054",
+        "essentials-009"
+      ],
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "minha",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "chave",
+          "en": "key",
+          "word": "home-019"
+        },
+        {
+          "pt": "em cima",
+          "en": "on; on top (of)",
+          "word": "essentials-098"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        },
+        {
+          "pt": "também",
+          "en": "too; either",
+          "word": "essentials-064"
+        },
+        {
+          "pt": "mochila",
+          "en": "backpack",
+          "word": "school-018"
+        },
+        {
+          "pt": "Olha",
+          "en": "look (olhar)",
+          "word": "verbs-013"
+        },
+        {
+          "pt": "bolso",
+          "en": "pocket",
+          "word": "shopping-020"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "casaco",
+          "en": "coat",
+          "word": "people-048"
+        },
+        {
+          "pt": "Ah",
+          "en": "oh"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "Obrigado",
+          "en": "thank you (said by a man)",
+          "word": "essentials-009"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "An early night",
+      "lines": [
+        {
+          "speaker": "Pedro",
+          "pt": "Você quer ver um filme hoje à noite?",
+          "en": "Do you want to watch a film tonight?"
+        },
+        {
+          "speaker": "Carla",
+          "pt": "Não, estou cansada. Vou dormir.",
+          "en": "No, I’m tired. I’m going to bed."
+        },
+        {
+          "speaker": "Pedro",
+          "pt": "Mas são só nove horas!",
+          "en": "But it’s only nine o’clock!"
+        },
+        {
+          "speaker": "Carla",
+          "pt": "Eu sei, mas amanhã eu acordo cedo.",
+          "en": "I know, but tomorrow I’m getting up early."
+        },
+        {
+          "speaker": "Pedro",
+          "pt": "Boa noite! Não esqueça de apagar a luz.",
+          "en": "Good night! Don’t forget to turn off the light."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Pedro suggest?",
+          "choices": [
+            "Going out",
+            "Watching a film",
+            "Reading",
+            "Cooking dinner"
+          ],
+          "answer": 1,
+          "explanation": "Pedro asks “Você quer ver um filme hoje à noite?”"
+        },
+        {
+          "question": "Why does Carla say no?",
+          "choices": [
+            "She’s tired",
+            "She’s ill",
+            "She’s working tonight",
+            "She doesn’t like films"
+          ],
+          "answer": 0,
+          "explanation": "Carla says “estou cansada”."
+        },
+        {
+          "question": "What time is it?",
+          "choices": [
+            "Eight o’clock",
+            "Ten o’clock",
+            "Nine o’clock",
+            "Eleven o’clock"
+          ],
+          "answer": 2,
+          "explanation": "Pedro says “são só nove horas”."
+        },
+        {
+          "question": "What must Carla remember to do?",
+          "choices": [
+            "Close the window",
+            "Set her alarm",
+            "Lock the door",
+            "Turn off the light"
+          ],
+          "answer": 3,
+          "explanation": "Pedro says “Não esqueça de apagar a luz.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "ir-future",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-022",
+        "verbs-012",
+        "media-031",
+        "health-time-034",
+        "verbs-002",
+        "feelings-011",
+        "verbs-005",
+        "verbs-062",
+        "verbs-001",
+        "essentials-076",
+        "health-time-054",
+        "health-time-026",
+        "verbs-016",
+        "health-time-037",
+        "verbs-063",
+        "health-time-038",
+        "essentials-005",
+        "verbs-085",
+        "home-029"
+      ],
+      "gloss": [
+        {
+          "pt": "quer",
+          "en": "want (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "ver",
+          "en": "watch; see",
+          "word": "verbs-012"
+        },
+        {
+          "pt": "filme",
+          "en": "film",
+          "word": "media-031"
+        },
+        {
+          "pt": "hoje à noite",
+          "en": "tonight; this evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "estou",
+          "en": "am (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cansada",
+          "en": "tired (cansado)",
+          "word": "feelings-011"
+        },
+        {
+          "pt": "Vou",
+          "en": "am going (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "dormir",
+          "en": "sleep",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "são",
+          "en": "it is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "só",
+          "en": "only",
+          "word": "essentials-076"
+        },
+        {
+          "pt": "nove",
+          "en": "nine",
+          "word": "health-time-054"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "sei",
+          "en": "know (saber)",
+          "word": "verbs-016"
+        },
+        {
+          "pt": "amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        },
+        {
+          "pt": "acordo",
+          "en": "am getting up; wake up (acordar)",
+          "word": "verbs-063"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        },
+        {
+          "pt": "Boa noite",
+          "en": "good night",
+          "word": "essentials-005"
+        },
+        {
+          "pt": "esqueça",
+          "en": "forget (esquecer)",
+          "word": "verbs-085"
+        },
+        {
+          "pt": "apagar",
+          "en": "turn off"
+        },
+        {
+          "pt": "luz",
+          "en": "light",
+          "word": "home-029"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A note on the fridge",
+      "lines": [
+        {
+          "pt": "Mamãe não está em casa hoje à noite. Ela volta às oito horas.",
+          "en": "Mum isn’t at home this evening. She’ll be back at eight."
+        },
+        {
+          "pt": "Tem sopa na geladeira.",
+          "en": "There is some soup in the fridge."
+        },
+        {
+          "pt": "O pão está em cima da mesa, e o queijo está no armário.",
+          "en": "The bread is on the table, and the cheese is in the cupboard."
+        },
+        {
+          "pt": "Depois do jantar, coloquem os pratos na pia.",
+          "en": "After dinner, put the plates in the sink."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When does Mum get back?",
+          "choices": [
+            "At six",
+            "At nine",
+            "At eight",
+            "At ten"
+          ],
+          "answer": 2,
+          "explanation": "The note says “Ela volta às oito horas.”"
+        },
+        {
+          "question": "Where is the cheese?",
+          "choices": [
+            "On the table",
+            "In the cupboard",
+            "In the fridge",
+            "In the sink"
+          ],
+          "answer": 1,
+          "explanation": "The note says “o queijo está no armário” — only the bread is on the table."
+        },
+        {
+          "question": "What is there in the fridge?",
+          "choices": [
+            "Soup",
+            "Cheese",
+            "Chicken",
+            "Bread"
+          ],
+          "answer": 0,
+          "explanation": "The note says “Tem sopa na geladeira.”"
+        },
+        {
+          "question": "What should they do after dinner?",
+          "choices": [
+            "Wash the plates",
+            "Put the soup back in the fridge",
+            "Set the table",
+            "Put the plates in the sink"
+          ],
+          "answer": 3,
+          "explanation": "The note says “coloquem os pratos na pia”."
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions",
+        "negation-questions"
+      ],
+      "words": [
+        "people-010",
+        "verbs-002",
+        "home-001",
+        "health-time-034",
+        "verbs-037",
+        "health-time-053",
+        "health-time-026",
+        "verbs-003",
+        "food-017",
+        "home-030",
+        "food-002",
+        "essentials-098",
+        "home-020",
+        "food-010",
+        "home-024",
+        "essentials-092",
+        "food-043",
+        "verbs-028",
+        "home-043",
+        "home-033"
+      ],
+      "gloss": [
+        {
+          "pt": "Mamãe",
+          "en": "Mum",
+          "word": "people-010"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "em casa",
+          "en": "at home",
+          "word": "home-001"
+        },
+        {
+          "pt": "hoje à noite",
+          "en": "tonight; this evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "volta",
+          "en": "gets back (voltar)",
+          "word": "verbs-037"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "Tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "sopa",
+          "en": "soup",
+          "word": "food-017"
+        },
+        {
+          "pt": "geladeira",
+          "en": "fridge",
+          "word": "home-030"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "pt": "em cima",
+          "en": "on; on top (of)",
+          "word": "essentials-098"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        },
+        {
+          "pt": "queijo",
+          "en": "cheese",
+          "word": "food-010"
+        },
+        {
+          "pt": "armário",
+          "en": "cupboard",
+          "word": "home-024"
+        },
+        {
+          "pt": "Depois",
+          "en": "after",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "jantar",
+          "en": "dinner",
+          "word": "food-043"
+        },
+        {
+          "pt": "coloquem",
+          "en": "put (colocar)",
+          "word": "verbs-028"
+        },
+        {
+          "pt": "pratos",
+          "en": "plates (o prato)",
+          "word": "home-043"
+        },
+        {
+          "pt": "pia",
+          "en": "sink",
+          "word": "home-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "A Sunday at home",
+      "lines": [
+        {
+          "pt": "No domingo, eu não uso despertador.",
+          "en": "On Sundays, I don’t use an alarm clock."
+        },
+        {
+          "pt": "Eu fico na cama até as dez horas.",
+          "en": "I stay in bed until ten o’clock."
+        },
+        {
+          "pt": "Depois, eu tomo um bom café da manhã na cozinha.",
+          "en": "Then I have a good breakfast in the kitchen."
+        },
+        {
+          "pt": "À tarde, eu arrumo a casa e lavo a roupa.",
+          "en": "In the afternoon, I tidy the house and do the washing."
+        },
+        {
+          "pt": "À noite, a família toda vê um filme na sala.",
+          "en": "In the evening, the whole family watches a film in the living room."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What doesn’t the writer use on Sundays?",
+          "choices": [
+            "An alarm clock",
+            "The kitchen",
+            "The washing machine",
+            "The television"
+          ],
+          "answer": 0,
+          "explanation": "The text says “No domingo, eu não uso despertador.”"
+        },
+        {
+          "question": "Until what time does the writer stay in bed?",
+          "choices": [
+            "Eight o’clock",
+            "Nine o’clock",
+            "Ten o’clock",
+            "Eleven o’clock"
+          ],
+          "answer": 2,
+          "explanation": "The text says “Eu fico na cama até as dez horas.”"
+        },
+        {
+          "question": "What does the writer do in the afternoon?",
+          "choices": [
+            "Cooks lunch",
+            "Tidies the house and does the washing",
+            "Goes for a walk",
+            "Watches a film"
+          ],
+          "answer": 1,
+          "explanation": "The text says “À tarde, eu arrumo a casa e lavo a roupa.”"
+        },
+        {
+          "question": "Who watches a film in the evening?",
+          "choices": [
+            "Only the writer",
+            "The writer’s friends",
+            "The neighbours",
+            "The whole family"
+          ],
+          "answer": 3,
+          "explanation": "The text says “a família toda vê um filme na sala”."
+        }
+      ],
+      "topics": [
+        "present-regular",
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "health-time-046",
+        "verbs-053",
+        "verbs-033",
+        "home-023",
+        "essentials-089",
+        "health-time-055",
+        "health-time-026",
+        "essentials-092",
+        "verbs-061",
+        "qualities-003",
+        "food-041",
+        "home-005",
+        "health-time-033",
+        "home-001",
+        "verbs-080",
+        "people-039",
+        "health-time-034",
+        "people-028",
+        "essentials-045",
+        "verbs-012",
+        "media-031",
+        "home-004"
+      ],
+      "gloss": [
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "uso",
+          "en": "use (usar)",
+          "word": "verbs-053"
+        },
+        {
+          "pt": "despertador",
+          "en": "alarm clock"
+        },
+        {
+          "pt": "fico",
+          "en": "stay (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "cama",
+          "en": "bed",
+          "word": "home-023"
+        },
+        {
+          "pt": "até",
+          "en": "until",
+          "word": "essentials-089"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "Depois",
+          "en": "then; afterwards",
+          "word": "essentials-092"
+        },
+        {
+          "pt": "tomo",
+          "en": "have (tomar)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "bom",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "pt": "café da manhã",
+          "en": "breakfast",
+          "word": "food-041"
+        },
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        },
+        {
+          "pt": "À tarde",
+          "en": "in the afternoon",
+          "word": "health-time-033"
+        },
+        {
+          "pt": "arrumo",
+          "en": "tidy (arrumar)"
+        },
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "pt": "lavo",
+          "en": "wash (lavar)",
+          "word": "verbs-080"
+        },
+        {
+          "pt": "roupa",
+          "en": "clothes; the washing",
+          "word": "people-039"
+        },
+        {
+          "pt": "À noite",
+          "en": "in the evening; at night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "família",
+          "en": "family",
+          "word": "people-028"
+        },
+        {
+          "pt": "toda",
+          "en": "whole; all",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "vê",
+          "en": "watches (ver)",
+          "word": "verbs-012"
+        },
+        {
+          "pt": "filme",
+          "en": "film",
+          "word": "media-031"
+        },
+        {
+          "pt": "sala",
+          "en": "living room",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "Notice in the building",
+      "lines": [
+        {
+          "pt": "Caros vizinhos,",
+          "en": "Dear neighbours,"
+        },
+        {
+          "pt": "O elevador não funciona até sexta-feira.",
+          "en": "The lift is out of order until Friday."
+        },
+        {
+          "pt": "O portão da garagem também está quebrado.",
+          "en": "The garage gate is broken too."
+        },
+        {
+          "pt": "Um técnico vem na terça-feira de manhã.",
+          "en": "A technician is coming on Tuesday morning."
+        },
+        {
+          "pt": "Por favor, fechem a porta do prédio à noite.",
+          "en": "Please close the building’s front door at night."
+        },
+        {
+          "pt": "Qualquer problema, falem com o porteiro.",
+          "en": "If there’s any problem, speak to the doorman."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Until when is the lift out of order?",
+          "choices": [
+            "Monday",
+            "Friday",
+            "Tuesday",
+            "Sunday"
+          ],
+          "answer": 1,
+          "explanation": "The notice says “O elevador não funciona até sexta-feira.”"
+        },
+        {
+          "question": "What else is broken?",
+          "choices": [
+            "The garage gate",
+            "The front door",
+            "The lights",
+            "The doorman’s phone"
+          ],
+          "answer": 0,
+          "explanation": "The notice says “O portão da garagem também está quebrado.”"
+        },
+        {
+          "question": "When is the technician coming?",
+          "choices": [
+            "On Friday morning",
+            "On Tuesday evening",
+            "On Tuesday morning",
+            "On Monday morning"
+          ],
+          "answer": 2,
+          "explanation": "The notice says “Um técnico vem na terça-feira de manhã.”"
+        },
+        {
+          "question": "Who should residents speak to about a problem?",
+          "choices": [
+            "The technician",
+            "The neighbours",
+            "The mayor",
+            "The doorman"
+          ],
+          "answer": 3,
+          "explanation": "The notice says “falem com o porteiro”."
+        }
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions",
+        "ser-estar"
+      ],
+      "words": [
+        "qualities-051",
+        "people-030",
+        "town-045",
+        "essentials-089",
+        "health-time-044",
+        "town-046",
+        "home-010",
+        "essentials-064",
+        "verbs-002",
+        "verbs-103",
+        "verbs-006",
+        "health-time-041",
+        "health-time-032",
+        "essentials-010",
+        "verbs-046",
+        "home-016",
+        "town-006",
+        "health-time-034",
+        "work-043",
+        "verbs-008",
+        "essentials-086",
+        "town-047"
+      ],
+      "gloss": [
+        {
+          "pt": "Caros",
+          "en": "dear (caro)",
+          "word": "qualities-051"
+        },
+        {
+          "pt": "vizinhos",
+          "en": "neighbours (o vizinho)",
+          "word": "people-030"
+        },
+        {
+          "pt": "elevador",
+          "en": "lift",
+          "word": "town-045"
+        },
+        {
+          "pt": "funciona",
+          "en": "works (funcionar)"
+        },
+        {
+          "pt": "até",
+          "en": "until",
+          "word": "essentials-089"
+        },
+        {
+          "pt": "sexta-feira",
+          "en": "Friday",
+          "word": "health-time-044"
+        },
+        {
+          "pt": "portão",
+          "en": "gate",
+          "word": "town-046"
+        },
+        {
+          "pt": "garagem",
+          "en": "garage",
+          "word": "home-010"
+        },
+        {
+          "pt": "também",
+          "en": "too; either",
+          "word": "essentials-064"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "quebrado",
+          "en": "broken (quebrar)",
+          "word": "verbs-103"
+        },
+        {
+          "pt": "técnico",
+          "en": "technician"
+        },
+        {
+          "pt": "vem",
+          "en": "is coming (vir)",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "terça-feira",
+          "en": "Tuesday",
+          "word": "health-time-041"
+        },
+        {
+          "pt": "de manhã",
+          "en": "in the morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "Por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "fechem",
+          "en": "close (fechar)",
+          "word": "verbs-046"
+        },
+        {
+          "pt": "porta",
+          "en": "door",
+          "word": "home-016"
+        },
+        {
+          "pt": "prédio",
+          "en": "building",
+          "word": "town-006"
+        },
+        {
+          "pt": "à noite",
+          "en": "in the evening; at night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "Qualquer",
+          "en": "any"
+        },
+        {
+          "pt": "problema",
+          "en": "problem",
+          "word": "work-043"
+        },
+        {
+          "pt": "falem",
+          "en": "speak (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "porteiro",
+          "en": "doorman",
+          "word": "town-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "Message about the new flat",
+      "lines": [
+        {
+          "pt": "Oi, Camila!",
+          "en": "Hi, Camila!"
+        },
+        {
+          "pt": "O nosso apartamento novo é pequeno, mas muito claro.",
+          "en": "Our new flat is small, but very bright."
+        },
+        {
+          "pt": "Tem dois quartos, uma cozinha e uma varanda.",
+          "en": "It has two bedrooms, a kitchen and a balcony."
+        },
+        {
+          "pt": "O banheiro fica no fim do corredor.",
+          "en": "The bathroom is at the end of the hallway."
+        },
+        {
+          "pt": "A gente ainda não tem sofá.",
+          "en": "We don’t have a sofa yet."
+        },
+        {
+          "pt": "Você vem jantar no sábado?",
+          "en": "Will you come for dinner on Saturday?"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is the new flat like?",
+          "choices": [
+            "Big and dark",
+            "Small but very bright",
+            "Big and bright",
+            "Small and dark"
+          ],
+          "answer": 1,
+          "explanation": "The message says “é pequeno, mas muito claro”."
+        },
+        {
+          "question": "How many bedrooms does it have?",
+          "choices": [
+            "One",
+            "Three",
+            "Four",
+            "Two"
+          ],
+          "answer": 3,
+          "explanation": "The message says “Tem dois quartos”."
+        },
+        {
+          "question": "What don’t they have yet?",
+          "choices": [
+            "A sofa",
+            "A balcony",
+            "A kitchen",
+            "A table"
+          ],
+          "answer": 0,
+          "explanation": "The message says “A gente ainda não tem sofá.”"
+        },
+        {
+          "question": "Where is the bathroom?",
+          "choices": [
+            "Next to the kitchen",
+            "On the balcony",
+            "At the end of the hallway",
+            "Opposite the bedroom"
+          ],
+          "answer": 2,
+          "explanation": "The message says “O banheiro fica no fim do corredor.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "adjective-agreement",
+        "possessives"
+      ],
+      "words": [
+        "essentials-002",
+        "essentials-052",
+        "home-002",
+        "qualities-008",
+        "verbs-001",
+        "qualities-002",
+        "essentials-065",
+        "qualities-044",
+        "verbs-003",
+        "health-time-047",
+        "home-003",
+        "home-005",
+        "home-011",
+        "home-006",
+        "verbs-033",
+        "home-007",
+        "essentials-024",
+        "essentials-070",
+        "home-022",
+        "verbs-006",
+        "food-043",
+        "health-time-045"
+      ],
+      "gloss": [
+        {
+          "pt": "Oi",
+          "en": "hi",
+          "word": "essentials-002"
+        },
+        {
+          "pt": "Camila",
+          "en": "Camila (a name)"
+        },
+        {
+          "pt": "nosso",
+          "en": "our",
+          "word": "essentials-052"
+        },
+        {
+          "pt": "apartamento",
+          "en": "flat; apartment",
+          "word": "home-002"
+        },
+        {
+          "pt": "novo",
+          "en": "new",
+          "word": "qualities-008"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "pequeno",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "claro",
+          "en": "bright; light",
+          "word": "qualities-044"
+        },
+        {
+          "pt": "Tem",
+          "en": "it has; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "quartos",
+          "en": "bedrooms (o quarto)",
+          "word": "home-003"
+        },
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        },
+        {
+          "pt": "varanda",
+          "en": "balcony",
+          "word": "home-011"
+        },
+        {
+          "pt": "banheiro",
+          "en": "bathroom",
+          "word": "home-006"
+        },
+        {
+          "pt": "fica",
+          "en": "is (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "no fim",
+          "en": "at the end"
+        },
+        {
+          "pt": "corredor",
+          "en": "hallway",
+          "word": "home-007"
+        },
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "ainda",
+          "en": "yet; still",
+          "word": "essentials-070"
+        },
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "sofá",
+          "en": "sofa",
+          "word": "home-022"
+        },
+        {
+          "pt": "vem",
+          "en": "will come; are coming (vir)",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "jantar",
+          "en": "have dinner",
+          "word": "food-043"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-home-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Note for the cat sitter",
+      "lines": [
+        {
+          "pt": "Oi, Juliana.",
+          "en": "Hi, Juliana."
+        },
+        {
+          "pt": "O gato come duas vezes por dia, de manhã e à noite.",
+          "en": "The cat eats twice a day, in the morning and in the evening."
+        },
+        {
+          "pt": "A ração fica no armário da cozinha.",
+          "en": "His food is in the kitchen cupboard."
+        },
+        {
+          "pt": "Não esqueça de regar as plantas da varanda.",
+          "en": "Don’t forget to water the plants on the balcony."
+        },
+        {
+          "pt": "À noite, feche bem as janelas.",
+          "en": "In the evening, close the windows properly."
+        },
+        {
+          "pt": "A chave fica embaixo do tapete.",
+          "en": "The key is under the doormat."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How often does the cat eat?",
+          "choices": [
+            "Twice a day",
+            "Once a day",
+            "Three times a day",
+            "Only in the evening"
+          ],
+          "answer": 0,
+          "explanation": "The note says “O gato come duas vezes por dia”."
+        },
+        {
+          "question": "Where is the cat’s food?",
+          "choices": [
+            "Under the doormat",
+            "On the balcony",
+            "In the kitchen cupboard",
+            "In the fridge"
+          ],
+          "answer": 2,
+          "explanation": "The note says “A ração fica no armário da cozinha.”"
+        },
+        {
+          "question": "What should Juliana do in the evening?",
+          "choices": [
+            "Water the plants",
+            "Close the windows",
+            "Feed the dog",
+            "Take out the rubbish"
+          ],
+          "answer": 1,
+          "explanation": "The note says “À noite, feche bem as janelas.”"
+        },
+        {
+          "question": "Where is the key?",
+          "choices": [
+            "In the kitchen cupboard",
+            "Under the doormat",
+            "With the doorman",
+            "On the table"
+          ],
+          "answer": 1,
+          "explanation": "The note says “A chave fica embaixo do tapete.”"
+        }
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-002",
+        "nature-027",
+        "verbs-059",
+        "essentials-074",
+        "health-time-028",
+        "health-time-032",
+        "health-time-034",
+        "verbs-033",
+        "home-024",
+        "home-005",
+        "verbs-085",
+        "nature-016",
+        "home-011",
+        "verbs-046",
+        "essentials-077",
+        "home-017",
+        "home-019",
+        "essentials-099"
+      ],
+      "gloss": [
+        {
+          "pt": "Oi",
+          "en": "hi",
+          "word": "essentials-002"
+        },
+        {
+          "pt": "Juliana",
+          "en": "Juliana (a name)"
+        },
+        {
+          "pt": "gato",
+          "en": "cat",
+          "word": "nature-027"
+        },
+        {
+          "pt": "come",
+          "en": "eats (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "duas vezes",
+          "en": "twice; two times",
+          "word": "essentials-074"
+        },
+        {
+          "pt": "por dia",
+          "en": "a day; per day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "de manhã",
+          "en": "in the morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "à noite",
+          "en": "in the evening; at night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "ração",
+          "en": "pet food; cat food"
+        },
+        {
+          "pt": "fica",
+          "en": "is (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "armário",
+          "en": "cupboard",
+          "word": "home-024"
+        },
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        },
+        {
+          "pt": "esqueça",
+          "en": "forget (esquecer)",
+          "word": "verbs-085"
+        },
+        {
+          "pt": "regar",
+          "en": "water"
+        },
+        {
+          "pt": "plantas",
+          "en": "plants (a planta)",
+          "word": "nature-016"
+        },
+        {
+          "pt": "varanda",
+          "en": "balcony",
+          "word": "home-011"
+        },
+        {
+          "pt": "À noite",
+          "en": "in the evening; at night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "feche",
+          "en": "close (fechar)",
+          "word": "verbs-046"
+        },
+        {
+          "pt": "bem",
+          "en": "properly; well",
+          "word": "essentials-077"
+        },
+        {
+          "pt": "janelas",
+          "en": "windows (a janela)",
+          "word": "home-017"
+        },
+        {
+          "pt": "chave",
+          "en": "key",
+          "word": "home-019"
+        },
+        {
+          "pt": "embaixo",
+          "en": "under; underneath",
+          "word": "essentials-099"
+        },
+        {
+          "pt": "tapete",
+          "en": "doormat; rug"
+        }
+      ]
+    }
+  ]
+}

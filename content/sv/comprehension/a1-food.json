@@ -1,0 +1,3952 @@
+{
+  "sentences": [
+    {
+      "id": "a1-food-s01",
+      "level": "A1",
+      "sv": "Jag tar en kaffe, tack.",
+      "en": "I’ll have a coffee, please.",
+      "distractors": [
+        "I’ll have a tea, please.",
+        "We’ll have a coffee, please.",
+        "I’ll have two coffees, please."
+      ],
+      "topics": [
+        "present-tense",
+        "en-ett"
+      ],
+      "words": [
+        "verbs-025",
+        "food-004",
+        "essentials-002"
+      ],
+      "gloss": [
+        {
+          "sv": "tar",
+          "en": "take; will have (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thank you",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s02",
+      "level": "A1",
+      "sv": "Brödet är fortfarande varmt.",
+      "en": "The bread is still warm.",
+      "distractors": [
+        "The bread is already warm.",
+        "The bread is still cold.",
+        "The cake is still warm."
+      ],
+      "topics": [
+        "definite-form",
+        "adjective-agreement"
+      ],
+      "words": [
+        "food-003",
+        "verbs-001",
+        "essentials-106",
+        "qualities-025"
+      ],
+      "gloss": [
+        {
+          "sv": "Brödet",
+          "en": "the bread (bröd)",
+          "word": "food-003"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "fortfarande",
+          "en": "still",
+          "word": "essentials-106"
+        },
+        {
+          "sv": "varmt",
+          "en": "warm (varm)",
+          "word": "qualities-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s03",
+      "level": "A1",
+      "sv": "Gillar du jordgubbar?",
+      "en": "Do you like strawberries?",
+      "distractors": [
+        "Do you like cherries?",
+        "Does he like strawberries?",
+        "Do you want strawberries?"
+      ],
+      "topics": [
+        "questions",
+        "plural"
+      ],
+      "words": [
+        "verbs-046",
+        "food-025"
+      ],
+      "gloss": [
+        {
+          "sv": "Gillar",
+          "en": "like (gilla)",
+          "word": "verbs-046"
+        },
+        {
+          "sv": "jordgubbar",
+          "en": "strawberries (jordgubbe)",
+          "word": "food-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s04",
+      "level": "A1",
+      "sv": "I kväll äter vi på restaurang.",
+      "en": "This evening we’re eating at a restaurant.",
+      "distractors": [
+        "This morning we’re eating at a restaurant.",
+        "This evening they’re eating at a restaurant.",
+        "This evening we’re eating at home."
+      ],
+      "topics": [
+        "word-order-v2",
+        "present-tense"
+      ],
+      "words": [
+        "health-time-034",
+        "verbs-054",
+        "essentials-063",
+        "travel-018"
+      ],
+      "gloss": [
+        {
+          "sv": "I kväll",
+          "en": "this evening; tonight",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "äter",
+          "en": "eat; are eating (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "på",
+          "en": "at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "restaurang",
+          "en": "restaurant",
+          "word": "travel-018"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s05",
+      "level": "A1",
+      "sv": "Hon gillar inte ost.",
+      "en": "She doesn’t like cheese.",
+      "distractors": [
+        "She likes cheese.",
+        "He doesn’t like cheese.",
+        "She doesn’t like fish."
+      ],
+      "topics": [
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-046",
+        "food-011"
+      ],
+      "gloss": [
+        {
+          "sv": "gillar",
+          "en": "likes (gilla)",
+          "word": "verbs-046"
+        },
+        {
+          "sv": "ost",
+          "en": "cheese",
+          "word": "food-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s06",
+      "level": "A1",
+      "sv": "Hur mycket kostar kakan?",
+      "en": "How much does the cake cost?",
+      "distractors": [
+        "How much does the bread cost?",
+        "How much does the coffee cost?",
+        "How much do the cakes cost?"
+      ],
+      "topics": [
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-039",
+        "verbs-053",
+        "food-039"
+      ],
+      "gloss": [
+        {
+          "sv": "Hur mycket",
+          "en": "how much",
+          "word": "essentials-039"
+        },
+        {
+          "sv": "kostar",
+          "en": "cost; does … cost (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "kakan",
+          "en": "the cake (kaka)",
+          "word": "food-039"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s07",
+      "level": "A1",
+      "sv": "Mataffären öppnar klockan åtta.",
+      "en": "The supermarket opens at eight o’clock.",
+      "distractors": [
+        "The supermarket closes at eight o’clock.",
+        "The supermarket opens at nine o’clock.",
+        "The bakery opens at eight o’clock."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "travel-021",
+        "verbs-040",
+        "shopping-026",
+        "health-time-054"
+      ],
+      "gloss": [
+        {
+          "sv": "Mataffären",
+          "en": "the supermarket (mataffär)",
+          "word": "travel-021"
+        },
+        {
+          "sv": "öppnar",
+          "en": "opens (öppna)",
+          "word": "verbs-040"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s08",
+      "level": "A1",
+      "sv": "Jag ska köpa tomater.",
+      "en": "I’m going to buy tomatoes.",
+      "distractors": [
+        "I’m going to buy potatoes.",
+        "She’s going to buy tomatoes.",
+        "I’m going to sell tomatoes."
+      ],
+      "topics": [
+        "future",
+        "plural"
+      ],
+      "words": [
+        "verbs-023",
+        "verbs-050",
+        "food-027"
+      ],
+      "gloss": [
+        {
+          "sv": "ska",
+          "en": "am going to (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "köpa",
+          "en": "to buy",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "tomater",
+          "en": "tomatoes (tomat)",
+          "word": "food-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s09",
+      "level": "A1",
+      "sv": "Det finns mjölk i kylskåpet.",
+      "en": "There’s milk in the fridge.",
+      "distractors": [
+        "There’s no milk in the fridge.",
+        "There’s milk on the table.",
+        "There’s butter in the fridge."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-099",
+        "food-006",
+        "essentials-062",
+        "home-042"
+      ],
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there is (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "mjölk",
+          "en": "milk",
+          "word": "food-006"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "kylskåpet",
+          "en": "the fridge (kylskåp)",
+          "word": "home-042"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s10",
+      "level": "A1",
+      "sv": "Har ni ett bord för två?",
+      "en": "Do you have a table for two?",
+      "distractors": [
+        "Do you have a table for four?",
+        "Do you have a room for two?",
+        "Do you have a table for three?"
+      ],
+      "topics": [
+        "questions",
+        "en-ett"
+      ],
+      "words": [
+        "verbs-002",
+        "home-025",
+        "essentials-068",
+        "health-time-048"
+      ],
+      "gloss": [
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "bord",
+          "en": "table",
+          "word": "home-025"
+        },
+        {
+          "sv": "för",
+          "en": "for",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s11",
+      "level": "A1",
+      "sv": "Kan vi få notan, tack?",
+      "en": "Can we have the bill, please?",
+      "distractors": [
+        "Can we have the menu, please?",
+        "Can I have the bill, please?",
+        "Can we have some water, please?"
+      ],
+      "topics": [
+        "modal-verbs",
+        "questions"
+      ],
+      "words": [
+        "verbs-021",
+        "verbs-080",
+        "essentials-002"
+      ],
+      "gloss": [
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "få",
+          "en": "have; get (få)",
+          "word": "verbs-080"
+        },
+        {
+          "sv": "notan",
+          "en": "the bill (nota)"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thank you",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s12",
+      "level": "A1",
+      "sv": "Min bror hatar lök.",
+      "en": "My brother hates onions.",
+      "distractors": [
+        "My brother loves onions.",
+        "My sister hates onions.",
+        "My brother hates garlic."
+      ],
+      "topics": [
+        "possessives",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-052",
+        "people-015",
+        "feelings-037",
+        "food-030"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "bror",
+          "en": "brother",
+          "word": "people-015"
+        },
+        {
+          "sv": "hatar",
+          "en": "hates (hata)",
+          "word": "feelings-037"
+        },
+        {
+          "sv": "lök",
+          "en": "onion; onions",
+          "word": "food-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s13",
+      "level": "A1",
+      "sv": "Den här restaurangen är för dyr.",
+      "en": "This restaurant is too expensive.",
+      "distractors": [
+        "This restaurant is too small.",
+        "This café is too expensive.",
+        "This restaurant isn’t expensive."
+      ],
+      "topics": [
+        "definite-form"
+      ],
+      "words": [
+        "essentials-060",
+        "travel-018",
+        "verbs-001",
+        "essentials-068",
+        "qualities-051"
+      ],
+      "gloss": [
+        {
+          "sv": "Den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "restaurangen",
+          "en": "the restaurant (restaurang)",
+          "word": "travel-018"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "för",
+          "en": "too",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "dyr",
+          "en": "expensive",
+          "word": "qualities-051"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s14",
+      "level": "A1",
+      "sv": "Jag tar en soppa och en sallad.",
+      "en": "I’ll have a soup and a salad.",
+      "distractors": [
+        "I’ll have a soup and a sandwich.",
+        "We’ll have a soup and a salad.",
+        "I’ll have two soups and a salad."
+      ],
+      "topics": [
+        "en-ett",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-025",
+        "food-019",
+        "food-020"
+      ],
+      "gloss": [
+        {
+          "sv": "tar",
+          "en": "take; will have (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "soppa",
+          "en": "soup",
+          "word": "food-019"
+        },
+        {
+          "sv": "sallad",
+          "en": "salad",
+          "word": "food-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s15",
+      "level": "A1",
+      "sv": "Har ni grönt te?",
+      "en": "Do you have green tea?",
+      "distractors": [
+        "Do you have black tea?",
+        "Do you have green apples?",
+        "Do you want green tea?"
+      ],
+      "topics": [
+        "questions",
+        "adjective-agreement"
+      ],
+      "words": [
+        "verbs-002",
+        "qualities-091",
+        "food-005"
+      ],
+      "gloss": [
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "grönt",
+          "en": "green (grön)",
+          "word": "qualities-091"
+        },
+        {
+          "sv": "te",
+          "en": "tea",
+          "word": "food-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s16",
+      "level": "A1",
+      "sv": "Kaffet är kallt.",
+      "en": "The coffee is cold.",
+      "distractors": [
+        "The coffee is hot.",
+        "The tea is cold.",
+        "The coffee isn’t cold."
+      ],
+      "topics": [
+        "definite-form",
+        "adjective-agreement"
+      ],
+      "words": [
+        "food-004",
+        "verbs-001",
+        "qualities-026"
+      ],
+      "gloss": [
+        {
+          "sv": "Kaffet",
+          "en": "the coffee (kaffe)",
+          "word": "food-004"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "kallt",
+          "en": "cold (kall)",
+          "word": "qualities-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s17",
+      "level": "A1",
+      "sv": "Vi dricker vatten, inte vin.",
+      "en": "We’re drinking water, not wine.",
+      "distractors": [
+        "We’re drinking wine, not water.",
+        "We’re drinking water, not beer.",
+        "They’re drinking water, not wine."
+      ],
+      "topics": [
+        "present-tense",
+        "negation-placement"
+      ],
+      "words": [
+        "verbs-055",
+        "food-001",
+        "food-042"
+      ],
+      "gloss": [
+        {
+          "sv": "dricker",
+          "en": "drink; are drinking (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "vatten",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "sv": "vin",
+          "en": "wine",
+          "word": "food-042"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s18",
+      "level": "A1",
+      "sv": "Servitören kommer med två glas.",
+      "en": "The waiter brings two glasses.",
+      "distractors": [
+        "The waiter brings three glasses.",
+        "The waiter brings two cups.",
+        "The cook brings two glasses."
+      ],
+      "topics": [
+        "definite-form",
+        "plural"
+      ],
+      "words": [
+        "work-014",
+        "verbs-005",
+        "health-time-048",
+        "food-053"
+      ],
+      "gloss": [
+        {
+          "sv": "Servitören",
+          "en": "the waiter (servitör)",
+          "word": "work-014"
+        },
+        {
+          "sv": "kommer med",
+          "en": "brings (komma med)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "glas",
+          "en": "glasses (glas)",
+          "word": "food-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s19",
+      "level": "A1",
+      "sv": "Min mamma bakar en chokladkaka.",
+      "en": "My mum is baking a chocolate cake.",
+      "distractors": [
+        "My dad is baking a chocolate cake.",
+        "My mum is buying a chocolate cake.",
+        "My mum is baking an apple cake."
+      ],
+      "topics": [
+        "possessives",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-052",
+        "people-012",
+        "food-039",
+        "food-038"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "mamma",
+          "en": "mum",
+          "word": "people-012"
+        },
+        {
+          "sv": "bakar",
+          "en": "is baking (baka)"
+        },
+        {
+          "sv": "chokladkaka",
+          "en": "chocolate cake (choklad + kaka)",
+          "word": "food-039"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s20",
+      "level": "A1",
+      "sv": "På morgonen är jag inte hungrig.",
+      "en": "In the morning I’m not hungry.",
+      "distractors": [
+        "In the evening I’m not hungry.",
+        "In the morning I’m very hungry.",
+        "In the morning she isn’t hungry."
+      ],
+      "topics": [
+        "word-order-v2",
+        "negation-placement"
+      ],
+      "words": [
+        "health-time-033",
+        "verbs-001",
+        "feelings-039"
+      ],
+      "gloss": [
+        {
+          "sv": "På morgonen",
+          "en": "in the morning (morgon)",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "är",
+          "en": "am (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "hungrig",
+          "en": "hungry",
+          "word": "feelings-039"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s21",
+      "level": "A1",
+      "sv": "Vill du ha socker i kaffet?",
+      "en": "Do you want sugar in your coffee?",
+      "distractors": [
+        "Do you want milk in your coffee?",
+        "Do you want sugar in your tea?",
+        "Does she want sugar in her coffee?"
+      ],
+      "topics": [
+        "modal-verbs",
+        "questions"
+      ],
+      "words": [
+        "verbs-020",
+        "verbs-002",
+        "food-007",
+        "essentials-062",
+        "food-004"
+      ],
+      "gloss": [
+        {
+          "sv": "Vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "socker",
+          "en": "sugar",
+          "word": "food-007"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "kaffet",
+          "en": "the coffee; your coffee (kaffe)",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s22",
+      "level": "A1",
+      "sv": "Lunchen börjar klockan tolv.",
+      "en": "Lunch starts at twelve o’clock.",
+      "distractors": [
+        "Lunch starts at eleven o’clock.",
+        "Dinner starts at twelve o’clock.",
+        "Lunch ends at twelve o’clock."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "food-046",
+        "verbs-042",
+        "shopping-026"
+      ],
+      "gloss": [
+        {
+          "sv": "Lunchen",
+          "en": "lunch; the lunch (lunch)",
+          "word": "food-046"
+        },
+        {
+          "sv": "börjar",
+          "en": "starts (börja)",
+          "word": "verbs-042"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "tolv",
+          "en": "twelve"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s23",
+      "level": "A1",
+      "sv": "Hon köper fisk på torget.",
+      "en": "She buys fish at the market.",
+      "distractors": [
+        "She buys meat at the market.",
+        "She sells fish at the market.",
+        "She buys fish at the supermarket."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-050",
+        "nature-014",
+        "essentials-063",
+        "travel-020"
+      ],
+      "gloss": [
+        {
+          "sv": "köper",
+          "en": "buys (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "fisk",
+          "en": "fish",
+          "word": "nature-014"
+        },
+        {
+          "sv": "på",
+          "en": "at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "torget",
+          "en": "the market; the square (torg)",
+          "word": "travel-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s24",
+      "level": "A1",
+      "sv": "Vi har inget smör.",
+      "en": "We don’t have any butter.",
+      "distractors": [
+        "We have some butter.",
+        "We don’t have any cheese.",
+        "They don’t have any butter."
+      ],
+      "topics": [
+        "negation-placement"
+      ],
+      "words": [
+        "verbs-002",
+        "essentials-043",
+        "food-010"
+      ],
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "inget",
+          "en": "no; not any (ingen)",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "smör",
+          "en": "butter",
+          "word": "food-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s25",
+      "level": "A1",
+      "sv": "Den här osten kommer från Skåne.",
+      "en": "This cheese comes from Skåne.",
+      "distractors": [
+        "This cheese comes from Norway.",
+        "This butter comes from Skåne.",
+        "This cheese doesn’t come from Skåne."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-060",
+        "food-011",
+        "verbs-005",
+        "essentials-065"
+      ],
+      "gloss": [
+        {
+          "sv": "Den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "osten",
+          "en": "the cheese (ost)",
+          "word": "food-011"
+        },
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "Skåne",
+          "en": "Skåne (a region in the south of Sweden)"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s26",
+      "level": "A1",
+      "sv": "Tre bullar kostar sextio kronor.",
+      "en": "Three buns cost sixty kronor.",
+      "distractors": [
+        "Two buns cost sixty kronor.",
+        "Three buns cost seventy kronor.",
+        "Three cakes cost sixty kronor."
+      ],
+      "topics": [
+        "plural",
+        "present-tense"
+      ],
+      "words": [
+        "health-time-049",
+        "verbs-053",
+        "shopping-004"
+      ],
+      "gloss": [
+        {
+          "sv": "Tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "bullar",
+          "en": "buns (bulle)"
+        },
+        {
+          "sv": "kostar",
+          "en": "cost (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "sextio",
+          "en": "sixty"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s27",
+      "level": "A1",
+      "sv": "Dagens lunch kostar hundra kronor.",
+      "en": "Today’s lunch costs a hundred kronor.",
+      "distractors": [
+        "Today’s lunch costs two hundred kronor.",
+        "Today’s dinner costs a hundred kronor.",
+        "Today’s lunch costs eighty kronor."
+      ],
+      "topics": [
+        "present-tense",
+        "plural"
+      ],
+      "words": [
+        "health-time-029",
+        "food-046",
+        "verbs-053",
+        "health-time-058",
+        "shopping-004"
+      ],
+      "gloss": [
+        {
+          "sv": "Dagens",
+          "en": "today’s (dag)",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "lunch",
+          "en": "lunch",
+          "word": "food-046"
+        },
+        {
+          "sv": "kostar",
+          "en": "costs (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "hundra",
+          "en": "a hundred",
+          "word": "health-time-058"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s28",
+      "level": "A1",
+      "sv": "Min pappa lagar middag.",
+      "en": "My dad is making dinner.",
+      "distractors": [
+        "My mum is making dinner.",
+        "My dad is making lunch.",
+        "My dad is eating dinner."
+      ],
+      "topics": [
+        "possessives",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-052",
+        "people-013",
+        "verbs-056",
+        "food-047"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "pappa",
+          "en": "dad",
+          "word": "people-013"
+        },
+        {
+          "sv": "lagar",
+          "en": "is making; is cooking (laga)",
+          "word": "verbs-056"
+        },
+        {
+          "sv": "middag",
+          "en": "dinner",
+          "word": "food-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s29",
+      "level": "A1",
+      "sv": "Jag älskar mörk choklad.",
+      "en": "I love dark chocolate.",
+      "distractors": [
+        "I love milk chocolate.",
+        "I hate dark chocolate.",
+        "We love dark chocolate."
+      ],
+      "topics": [
+        "present-tense",
+        "adjective-agreement"
+      ],
+      "words": [
+        "verbs-048",
+        "qualities-045",
+        "food-038"
+      ],
+      "gloss": [
+        {
+          "sv": "älskar",
+          "en": "love (älska)",
+          "word": "verbs-048"
+        },
+        {
+          "sv": "mörk",
+          "en": "dark",
+          "word": "qualities-045"
+        },
+        {
+          "sv": "choklad",
+          "en": "chocolate",
+          "word": "food-038"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s30",
+      "level": "A1",
+      "sv": "Kan vi få se menyn, tack?",
+      "en": "Can we see the menu, please?",
+      "distractors": [
+        "Can we see the wine list, please?",
+        "Can I see the menu, please?",
+        "Can we order now, please?"
+      ],
+      "topics": [
+        "modal-verbs",
+        "questions"
+      ],
+      "words": [
+        "verbs-021",
+        "verbs-010",
+        "essentials-002",
+        "verbs-080"
+      ],
+      "gloss": [
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "få se",
+          "en": "see; have a look at (få + se)",
+          "word": "verbs-010"
+        },
+        {
+          "sv": "menyn",
+          "en": "the menu (meny)"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thank you",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s31",
+      "level": "A1",
+      "sv": "Bageriet är öppet på söndagar.",
+      "en": "The bakery is open on Sundays.",
+      "distractors": [
+        "The bakery is closed on Sundays.",
+        "The bakery is open on Saturdays.",
+        "The supermarket is open on Sundays."
+      ],
+      "topics": [
+        "definite-form",
+        "adjective-agreement"
+      ],
+      "words": [
+        "travel-022",
+        "verbs-001",
+        "qualities-034",
+        "health-time-046"
+      ],
+      "gloss": [
+        {
+          "sv": "Bageriet",
+          "en": "the bakery (bageri)",
+          "word": "travel-022"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "öppet",
+          "en": "open (öppen)",
+          "word": "qualities-034"
+        },
+        {
+          "sv": "på söndagar",
+          "en": "on Sundays (söndag)",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s32",
+      "level": "A1",
+      "sv": "Hon lägger salt i soppan.",
+      "en": "She puts salt in the soup.",
+      "distractors": [
+        "She puts pepper in the soup.",
+        "She puts salt in the salad.",
+        "He puts salt in the soup."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-027",
+        "food-008",
+        "essentials-062",
+        "food-019"
+      ],
+      "gloss": [
+        {
+          "sv": "lägger",
+          "en": "puts (lägga)",
+          "word": "verbs-027"
+        },
+        {
+          "sv": "salt",
+          "en": "salt",
+          "word": "food-008"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "soppan",
+          "en": "the soup (soppa)",
+          "word": "food-019"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s33",
+      "level": "A1",
+      "sv": "Vi letar efter en bra restaurang.",
+      "en": "We’re looking for a good restaurant.",
+      "distractors": [
+        "We’re looking for a cheap restaurant.",
+        "They’re looking for a good restaurant.",
+        "We’re looking for a good bakery."
+      ],
+      "topics": [
+        "present-tense",
+        "en-ett"
+      ],
+      "words": [
+        "verbs-031",
+        "qualities-003",
+        "travel-018"
+      ],
+      "gloss": [
+        {
+          "sv": "letar efter",
+          "en": "are looking for (leta efter)",
+          "word": "verbs-031"
+        },
+        {
+          "sv": "bra",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "sv": "restaurang",
+          "en": "restaurant",
+          "word": "travel-018"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s34",
+      "level": "A1",
+      "sv": "Var köper du ditt bröd?",
+      "en": "Where do you buy your bread?",
+      "distractors": [
+        "When do you buy your bread?",
+        "Where do you buy your cheese?",
+        "Where does she buy her bread?"
+      ],
+      "topics": [
+        "questions",
+        "possessives"
+      ],
+      "words": [
+        "essentials-035",
+        "verbs-050",
+        "essentials-053",
+        "food-003"
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "köper",
+          "en": "buy (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "ditt",
+          "en": "your (din)",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "bröd",
+          "en": "bread",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s35",
+      "level": "A1",
+      "sv": "Kycklingen är i ugnen.",
+      "en": "The chicken is in the oven.",
+      "distractors": [
+        "The chicken is in the fridge.",
+        "The fish is in the oven.",
+        "The chicken isn’t in the oven."
+      ],
+      "topics": [
+        "definite-form"
+      ],
+      "words": [
+        "food-016",
+        "verbs-001",
+        "essentials-062",
+        "home-043"
+      ],
+      "gloss": [
+        {
+          "sv": "Kycklingen",
+          "en": "the chicken (kyckling)",
+          "word": "food-016"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "ugnen",
+          "en": "the oven (ugn)",
+          "word": "home-043"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s36",
+      "level": "A1",
+      "sv": "Jag betalar maten och du betalar vinet.",
+      "en": "I’ll pay for the food and you pay for the wine.",
+      "distractors": [
+        "You pay for the food and I’ll pay for the wine.",
+        "I’ll pay for the food and you pay for the coffee.",
+        "I’ll pay for the food and she pays for the wine."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-052",
+        "food-002",
+        "food-042"
+      ],
+      "gloss": [
+        {
+          "sv": "betalar",
+          "en": "pay; will pay for (betala)",
+          "word": "verbs-052"
+        },
+        {
+          "sv": "maten",
+          "en": "the food (mat)",
+          "word": "food-002"
+        },
+        {
+          "sv": "vinet",
+          "en": "the wine (vin)",
+          "word": "food-042"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s37",
+      "level": "A1",
+      "sv": "Grönsakerna från torget är färska.",
+      "en": "The vegetables from the market are fresh.",
+      "distractors": [
+        "The vegetables from the market are cheap.",
+        "The fruit from the market is fresh.",
+        "The vegetables from the shop are fresh."
+      ],
+      "topics": [
+        "definite-form",
+        "plural",
+        "adjective-agreement"
+      ],
+      "words": [
+        "food-034",
+        "essentials-065",
+        "travel-020",
+        "verbs-001",
+        "qualities-027"
+      ],
+      "gloss": [
+        {
+          "sv": "Grönsakerna",
+          "en": "the vegetables (grönsak)",
+          "word": "food-034"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "torget",
+          "en": "the market; the square (torg)",
+          "word": "travel-020"
+        },
+        {
+          "sv": "är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "färska",
+          "en": "fresh (färsk)",
+          "word": "qualities-027"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s38",
+      "level": "A1",
+      "sv": "Jag äter alltid en smörgås till frukost.",
+      "en": "I always have a sandwich for breakfast.",
+      "distractors": [
+        "I sometimes have a sandwich for breakfast.",
+        "I always have a sandwich for lunch.",
+        "I always have an egg for breakfast."
+      ],
+      "topics": [
+        "present-tense",
+        "en-ett"
+      ],
+      "words": [
+        "verbs-054",
+        "essentials-100",
+        "food-041",
+        "essentials-064",
+        "food-045"
+      ],
+      "gloss": [
+        {
+          "sv": "äter",
+          "en": "eat; have (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "alltid",
+          "en": "always",
+          "word": "essentials-100"
+        },
+        {
+          "sv": "smörgås",
+          "en": "sandwich",
+          "word": "food-041"
+        },
+        {
+          "sv": "till",
+          "en": "for (with a meal)",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "frukost",
+          "en": "breakfast",
+          "word": "food-045"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s39",
+      "level": "A1",
+      "sv": "De äter middag hos sina vänner.",
+      "en": "They’re having dinner at their friends’ place.",
+      "distractors": [
+        "They’re having dinner at their parents’ place.",
+        "They’re having lunch at their friends’ place.",
+        "We’re having dinner at our friends’ place."
+      ],
+      "topics": [
+        "possessives",
+        "plural"
+      ],
+      "words": [
+        "verbs-054",
+        "food-047",
+        "essentials-076",
+        "essentials-059",
+        "people-031"
+      ],
+      "gloss": [
+        {
+          "sv": "äter",
+          "en": "eat; are having (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "middag",
+          "en": "dinner",
+          "word": "food-047"
+        },
+        {
+          "sv": "hos",
+          "en": "at the home of",
+          "word": "essentials-076"
+        },
+        {
+          "sv": "sina",
+          "en": "their (own) (sin)",
+          "word": "essentials-059"
+        },
+        {
+          "sv": "vänner",
+          "en": "friends (vän)",
+          "word": "people-031"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s40",
+      "level": "A1",
+      "sv": "Den här äppelkakan är väldigt god.",
+      "en": "This apple cake is very good.",
+      "distractors": [
+        "This apple cake isn’t very good.",
+        "This chocolate cake is very good.",
+        "This apple cake is very dry."
+      ],
+      "topics": [
+        "definite-form",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-060",
+        "food-039",
+        "verbs-001",
+        "essentials-093",
+        "qualities-004",
+        "food-021"
+      ],
+      "gloss": [
+        {
+          "sv": "Den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "äppelkakan",
+          "en": "the apple cake (äppelkaka)",
+          "word": "food-039"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "väldigt",
+          "en": "very",
+          "word": "essentials-093"
+        },
+        {
+          "sv": "god",
+          "en": "good; tasty",
+          "word": "qualities-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s41",
+      "level": "A1",
+      "sv": "Han köper ett kilo morötter.",
+      "en": "He buys a kilo of carrots.",
+      "distractors": [
+        "He buys two kilos of carrots.",
+        "He buys a kilo of potatoes.",
+        "She buys a kilo of carrots."
+      ],
+      "topics": [
+        "en-ett",
+        "plural"
+      ],
+      "words": [
+        "verbs-050",
+        "shopping-036",
+        "food-029"
+      ],
+      "gloss": [
+        {
+          "sv": "köper",
+          "en": "buys (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "kilo",
+          "en": "kilo",
+          "word": "shopping-036"
+        },
+        {
+          "sv": "morötter",
+          "en": "carrots (morot)",
+          "word": "food-029"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s42",
+      "level": "A1",
+      "sv": "Ska vi fika klockan tre?",
+      "en": "Shall we have a coffee break at three o’clock?",
+      "distractors": [
+        "Shall we have a coffee break at two o’clock?",
+        "Shall we have lunch at three o’clock?",
+        "Shall we have a coffee break at four o’clock?"
+      ],
+      "topics": [
+        "modal-verbs",
+        "questions"
+      ],
+      "words": [
+        "verbs-023",
+        "food-055",
+        "shopping-026",
+        "health-time-049"
+      ],
+      "gloss": [
+        {
+          "sv": "Ska",
+          "en": "shall (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "fika",
+          "en": "have a coffee break (fika)",
+          "word": "food-055"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s43",
+      "level": "A1",
+      "sv": "Imorgon ska vi handla mat.",
+      "en": "Tomorrow we’re going to shop for food.",
+      "distractors": [
+        "Today we’re going to shop for food.",
+        "Tomorrow they’re going to shop for food.",
+        "Tomorrow we’re going to cook."
+      ],
+      "topics": [
+        "word-order-v2",
+        "future"
+      ],
+      "words": [
+        "essentials-098",
+        "verbs-023",
+        "shopping-043",
+        "food-002"
+      ],
+      "gloss": [
+        {
+          "sv": "Imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        },
+        {
+          "sv": "ska",
+          "en": "are going to (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "handla",
+          "en": "to shop for; to buy (food)",
+          "word": "shopping-043"
+        },
+        {
+          "sv": "mat",
+          "en": "food",
+          "word": "food-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s44",
+      "level": "A1",
+      "sv": "Frukosten är klockan sju.",
+      "en": "Breakfast is at seven o’clock.",
+      "distractors": [
+        "Breakfast is at six o’clock.",
+        "Dinner is at seven o’clock.",
+        "Breakfast is at eight o’clock."
+      ],
+      "topics": [
+        "definite-form"
+      ],
+      "words": [
+        "food-045",
+        "verbs-001",
+        "shopping-026",
+        "health-time-053"
+      ],
+      "gloss": [
+        {
+          "sv": "Frukosten",
+          "en": "breakfast; the breakfast (frukost)",
+          "word": "food-045"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s45",
+      "level": "A1",
+      "sv": "Hon dricker aldrig öl.",
+      "en": "She never drinks beer.",
+      "distractors": [
+        "She often drinks beer.",
+        "He never drinks beer.",
+        "She never drinks wine."
+      ],
+      "topics": [
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-055",
+        "essentials-101",
+        "food-043"
+      ],
+      "gloss": [
+        {
+          "sv": "dricker",
+          "en": "drinks (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "aldrig",
+          "en": "never",
+          "word": "essentials-101"
+        },
+        {
+          "sv": "öl",
+          "en": "beer",
+          "word": "food-043"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s46",
+      "level": "A1",
+      "sv": "Det finns ingen efterrätt idag.",
+      "en": "There’s no dessert today.",
+      "distractors": [
+        "There’s dessert today.",
+        "There’s no soup today.",
+        "There’s no dessert tomorrow."
+      ],
+      "topics": [
+        "negation-placement",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-099",
+        "essentials-043",
+        "essentials-097"
+      ],
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there is (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "ingen",
+          "en": "no; not any",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "efterrätt",
+          "en": "dessert"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s47",
+      "level": "A1",
+      "sv": "Vill du ha te eller kaffe?",
+      "en": "Would you like tea or coffee?",
+      "distractors": [
+        "Would you like tea or juice?",
+        "Would she like tea or coffee?",
+        "Would you like water or coffee?"
+      ],
+      "topics": [
+        "modal-verbs",
+        "questions"
+      ],
+      "words": [
+        "verbs-020",
+        "verbs-002",
+        "food-005",
+        "food-004"
+      ],
+      "gloss": [
+        {
+          "sv": "Vill",
+          "en": "want; would like (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "te",
+          "en": "tea",
+          "word": "food-005"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s48",
+      "level": "A1",
+      "sv": "Min syster jobbar på ett bageri.",
+      "en": "My sister works in a bakery.",
+      "distractors": [
+        "My brother works in a bakery.",
+        "My sister works in a supermarket.",
+        "My sister works in a restaurant."
+      ],
+      "topics": [
+        "possessives",
+        "en-ett"
+      ],
+      "words": [
+        "essentials-052",
+        "people-014",
+        "verbs-067",
+        "essentials-063",
+        "travel-022"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "syster",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "sv": "jobbar",
+          "en": "works (jobba)",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "på",
+          "en": "at; in",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "bageri",
+          "en": "bakery",
+          "word": "travel-022"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s49",
+      "level": "A1",
+      "sv": "Ett glas vin kostar nittio kronor.",
+      "en": "A glass of wine costs ninety kronor.",
+      "distractors": [
+        "A glass of wine costs eighty kronor.",
+        "A bottle of wine costs ninety kronor.",
+        "A glass of beer costs ninety kronor."
+      ],
+      "topics": [
+        "en-ett",
+        "plural"
+      ],
+      "words": [
+        "food-053",
+        "food-042",
+        "verbs-053",
+        "shopping-004"
+      ],
+      "gloss": [
+        {
+          "sv": "glas",
+          "en": "glass",
+          "word": "food-053"
+        },
+        {
+          "sv": "vin",
+          "en": "wine",
+          "word": "food-042"
+        },
+        {
+          "sv": "kostar",
+          "en": "costs (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "nittio",
+          "en": "ninety"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s50",
+      "level": "A1",
+      "sv": "Vad äter du till frukost?",
+      "en": "What do you eat for breakfast?",
+      "distractors": [
+        "What do you drink for breakfast?",
+        "What do you eat for lunch?",
+        "When do you eat breakfast?"
+      ],
+      "topics": [
+        "questions",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-034",
+        "verbs-054",
+        "essentials-064",
+        "food-045"
+      ],
+      "gloss": [
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "äter",
+          "en": "eat (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "till",
+          "en": "for (with a meal)",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "frukost",
+          "en": "breakfast",
+          "word": "food-045"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-food-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Ordering at the café",
+      "lines": [
+        {
+          "speaker": "Servitören",
+          "sv": "Hej! Vad vill du ha?",
+          "en": "Hi! What would you like?"
+        },
+        {
+          "speaker": "Elin",
+          "sv": "En kaffe och en kanelbulle, tack.",
+          "en": "A coffee and a cinnamon bun, please."
+        },
+        {
+          "speaker": "Servitören",
+          "sv": "Med mjölk i kaffet?",
+          "en": "With milk in your coffee?"
+        },
+        {
+          "speaker": "Elin",
+          "sv": "Ja, gärna. Och ett glas vatten.",
+          "en": "Yes, please. And a glass of water."
+        },
+        {
+          "speaker": "Servitören",
+          "sv": "Det blir sextio kronor.",
+          "en": "That comes to sixty kronor."
+        },
+        {
+          "speaker": "Elin",
+          "sv": "Kan jag swisha?",
+          "en": "Can I pay with Swish?"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Elin order to eat?",
+          "choices": [
+            "A cinnamon bun",
+            "A sandwich",
+            "A piece of cake",
+            "A croissant"
+          ],
+          "answer": 0,
+          "explanation": "She asks for a coffee and a bun: “En kaffe och en kanelbulle, tack.”"
+        },
+        {
+          "question": "How does Elin want her coffee?",
+          "choices": [
+            "Black",
+            "With sugar",
+            "With milk",
+            "With cream"
+          ],
+          "answer": 2,
+          "explanation": "The waiter asks “Med mjölk i kaffet?” and she answers “Ja, gärna.”"
+        },
+        {
+          "question": "What else does she ask for?",
+          "choices": [
+            "A cup of tea",
+            "A glass of water",
+            "A glass of juice",
+            "A bottle of water"
+          ],
+          "answer": 1,
+          "explanation": "“Och ett glas vatten.”"
+        },
+        {
+          "question": "How much does it cost?",
+          "choices": [
+            "Fifty kronor",
+            "Seventy kronor",
+            "Sixteen kronor",
+            "Sixty kronor"
+          ],
+          "answer": 3,
+          "explanation": "“Det blir sextio kronor.”"
+        }
+      ],
+      "topics": [
+        "present-tense",
+        "modal-verbs"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-034",
+        "verbs-020",
+        "verbs-002",
+        "food-004",
+        "essentials-002",
+        "essentials-066",
+        "food-006",
+        "essentials-062",
+        "essentials-004",
+        "essentials-110",
+        "food-053",
+        "food-001",
+        "verbs-097",
+        "shopping-004",
+        "verbs-021",
+        "shopping-049"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hi",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "vill",
+          "en": "want; would like (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "kanelbulle",
+          "en": "cinnamon bun"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thank you",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "Med",
+          "en": "with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "mjölk",
+          "en": "milk",
+          "word": "food-006"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "kaffet",
+          "en": "the coffee; your coffee (kaffe)",
+          "word": "food-004"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "gärna",
+          "en": "please; gladly (ja, gärna = yes, please)",
+          "word": "essentials-110"
+        },
+        {
+          "sv": "glas",
+          "en": "glass",
+          "word": "food-053"
+        },
+        {
+          "sv": "vatten",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "sv": "blir",
+          "en": "comes to; will be (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "sextio",
+          "en": "sixty"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        },
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "swisha",
+          "en": "pay by phone with Swish (swisha)",
+          "word": "shopping-049"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the bakery",
+      "lines": [
+        {
+          "speaker": "Johan",
+          "sv": "God morgon! Ett bröd och fyra bullar, tack.",
+          "en": "Good morning! A loaf of bread and four buns, please."
+        },
+        {
+          "speaker": "Bagaren",
+          "sv": "Vilket bröd vill du ha?",
+          "en": "Which bread would you like?"
+        },
+        {
+          "speaker": "Johan",
+          "sv": "Det mörka. Är det färskt?",
+          "en": "The dark one. Is it fresh?"
+        },
+        {
+          "speaker": "Bagaren",
+          "sv": "Ja, det är fortfarande varmt.",
+          "en": "Yes, it’s still warm."
+        },
+        {
+          "speaker": "Johan",
+          "sv": "Bra. Hur mycket kostar det?",
+          "en": "Good. How much is that?"
+        },
+        {
+          "speaker": "Bagaren",
+          "sv": "Det blir nittio kronor.",
+          "en": "That comes to ninety kronor."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many buns does Johan buy?",
+          "choices": [
+            "Two",
+            "Four",
+            "Three",
+            "Five"
+          ],
+          "answer": 1,
+          "explanation": "“Ett bröd och fyra bullar, tack.”"
+        },
+        {
+          "question": "Which bread does he choose?",
+          "choices": [
+            "The white one",
+            "The small one",
+            "The dark one",
+            "The cheap one"
+          ],
+          "answer": 2,
+          "explanation": "“Det mörka.”"
+        },
+        {
+          "question": "What does the baker say about the bread?",
+          "choices": [
+            "It’s still warm",
+            "It’s from yesterday",
+            "It’s sold out",
+            "It’s very cheap"
+          ],
+          "answer": 0,
+          "explanation": "“Ja, det är fortfarande varmt.”"
+        },
+        {
+          "question": "How much does Johan pay?",
+          "choices": [
+            "Nineteen kronor",
+            "Sixty kronor",
+            "A hundred kronor",
+            "Ninety kronor"
+          ],
+          "answer": 3,
+          "explanation": "“Det blir nittio kronor.”"
+        }
+      ],
+      "topics": [
+        "questions",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-007",
+        "food-003",
+        "health-time-050",
+        "essentials-002",
+        "essentials-041",
+        "verbs-020",
+        "verbs-002",
+        "qualities-045",
+        "verbs-001",
+        "qualities-027",
+        "essentials-004",
+        "essentials-106",
+        "qualities-025",
+        "qualities-003",
+        "essentials-039",
+        "verbs-053",
+        "verbs-097",
+        "shopping-004"
+      ],
+      "gloss": [
+        {
+          "sv": "God morgon",
+          "en": "good morning",
+          "word": "essentials-007"
+        },
+        {
+          "sv": "bröd",
+          "en": "bread; a loaf of bread",
+          "word": "food-003"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        },
+        {
+          "sv": "bullar",
+          "en": "buns (bulle)"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thank you",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "Vilket",
+          "en": "which (vilken)",
+          "word": "essentials-041"
+        },
+        {
+          "sv": "vill",
+          "en": "want; would like (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "mörka",
+          "en": "dark (mörk)",
+          "word": "qualities-045"
+        },
+        {
+          "sv": "Är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "färskt",
+          "en": "fresh (färsk)",
+          "word": "qualities-027"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "fortfarande",
+          "en": "still",
+          "word": "essentials-106"
+        },
+        {
+          "sv": "varmt",
+          "en": "warm (varm)",
+          "word": "qualities-025"
+        },
+        {
+          "sv": "Bra",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "sv": "Hur mycket",
+          "en": "how much",
+          "word": "essentials-039"
+        },
+        {
+          "sv": "kostar",
+          "en": "costs (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "blir",
+          "en": "comes to; will be (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "nittio",
+          "en": "ninety"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "A table for two",
+      "lines": [
+        {
+          "speaker": "Karin",
+          "sv": "God kväll! Har ni ett bord för två?",
+          "en": "Good evening! Do you have a table for two?"
+        },
+        {
+          "speaker": "Servitören",
+          "sv": "Ja. Vid fönstret eller ute?",
+          "en": "Yes. By the window or outside?"
+        },
+        {
+          "speaker": "Karin",
+          "sv": "Vid fönstret, tack. Det är kallt ute.",
+          "en": "By the window, please. It’s cold outside."
+        },
+        {
+          "speaker": "Servitören",
+          "sv": "Varsågod. Här är menyn.",
+          "en": "Here you are. Here’s the menu."
+        },
+        {
+          "speaker": "Karin",
+          "sv": "Vad är dagens rätt?",
+          "en": "What’s the dish of the day?"
+        },
+        {
+          "speaker": "Servitören",
+          "sv": "Lax med potatis. Den kostar hundratjugo kronor.",
+          "en": "Salmon with potatoes. It costs a hundred and twenty kronor."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many people is the table for?",
+          "choices": [
+            "Three",
+            "Four",
+            "Two",
+            "Six"
+          ],
+          "answer": 2,
+          "explanation": "“Har ni ett bord för två?”"
+        },
+        {
+          "question": "Where does Karin want to sit?",
+          "choices": [
+            "Outside",
+            "By the window",
+            "By the door",
+            "In the corner"
+          ],
+          "answer": 1,
+          "explanation": "“Vid fönstret, tack.”"
+        },
+        {
+          "question": "Why doesn’t she want to sit outside?",
+          "choices": [
+            "It’s raining",
+            "It’s too noisy",
+            "There are no tables",
+            "It’s cold"
+          ],
+          "answer": 3,
+          "explanation": "“Det är kallt ute.”"
+        },
+        {
+          "question": "What is the dish of the day?",
+          "choices": [
+            "Salmon with potatoes",
+            "Chicken with rice",
+            "Salmon with rice",
+            "Meat with potatoes"
+          ],
+          "answer": 0,
+          "explanation": "“Lax med potatis.”"
+        }
+      ],
+      "topics": [
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "health-time-034",
+        "verbs-002",
+        "home-025",
+        "essentials-068",
+        "health-time-048",
+        "essentials-004",
+        "home-020",
+        "essentials-002",
+        "verbs-001",
+        "qualities-026",
+        "essentials-011",
+        "essentials-095",
+        "essentials-034",
+        "food-037",
+        "essentials-066",
+        "food-028",
+        "verbs-053",
+        "shopping-004",
+        "health-time-029"
+      ],
+      "gloss": [
+        {
+          "sv": "God kväll",
+          "en": "good evening (kväll)",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "bord",
+          "en": "table",
+          "word": "home-025"
+        },
+        {
+          "sv": "för",
+          "en": "for",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "Vid",
+          "en": "by"
+        },
+        {
+          "sv": "fönstret",
+          "en": "the window (fönster)",
+          "word": "home-020"
+        },
+        {
+          "sv": "ute",
+          "en": "outside"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thank you",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "kallt",
+          "en": "cold (kall)",
+          "word": "qualities-026"
+        },
+        {
+          "sv": "Varsågod",
+          "en": "here you are",
+          "word": "essentials-011"
+        },
+        {
+          "sv": "Här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "menyn",
+          "en": "the menu (meny)"
+        },
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "dagens rätt",
+          "en": "dish of the day"
+        },
+        {
+          "sv": "Lax",
+          "en": "salmon",
+          "word": "food-037"
+        },
+        {
+          "sv": "med",
+          "en": "with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "potatis",
+          "en": "potatoes (potatis)",
+          "word": "food-028"
+        },
+        {
+          "sv": "kostar",
+          "en": "costs (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "hundratjugo",
+          "en": "a hundred and twenty"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the market stall",
+      "lines": [
+        {
+          "speaker": "Försäljaren",
+          "sv": "Hej! Vad vill du ha idag?",
+          "en": "Hi! What would you like today?"
+        },
+        {
+          "speaker": "Ali",
+          "sv": "Ett kilo tomater och en gurka, tack.",
+          "en": "A kilo of tomatoes and a cucumber, please."
+        },
+        {
+          "speaker": "Försäljaren",
+          "sv": "Något mer? Jordgubbarna är väldigt goda.",
+          "en": "Anything else? The strawberries are very good."
+        },
+        {
+          "speaker": "Ali",
+          "sv": "Nej tack, de är för dyra.",
+          "en": "No thanks, they’re too expensive."
+        },
+        {
+          "speaker": "Försäljaren",
+          "sv": "Okej. Det blir femtio kronor.",
+          "en": "Okay. That comes to fifty kronor."
+        },
+        {
+          "speaker": "Ali",
+          "sv": "Varsågod. Tack och hej!",
+          "en": "Here you are. Thanks, bye!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Ali buy?",
+          "choices": [
+            "A kilo of tomatoes and a cucumber",
+            "A kilo of tomatoes and a lettuce",
+            "Two kilos of tomatoes and a cucumber",
+            "A kilo of potatoes and a cucumber"
+          ],
+          "answer": 0,
+          "explanation": "“Ett kilo tomater och en gurka, tack.”"
+        },
+        {
+          "question": "What does the seller recommend?",
+          "choices": [
+            "The cucumbers",
+            "The apples",
+            "The tomatoes",
+            "The strawberries"
+          ],
+          "answer": 3,
+          "explanation": "“Jordgubbarna är väldigt goda.”"
+        },
+        {
+          "question": "Why doesn’t Ali buy strawberries?",
+          "choices": [
+            "They aren’t fresh",
+            "They’re too expensive",
+            "He doesn’t like them",
+            "They’re sold out"
+          ],
+          "answer": 1,
+          "explanation": "“Nej tack, de är för dyra.”"
+        },
+        {
+          "question": "How much does Ali pay?",
+          "choices": [
+            "Fifteen kronor",
+            "Five kronor",
+            "Fifty kronor",
+            "Fifty-five kronor"
+          ],
+          "answer": 2,
+          "explanation": "“Det blir femtio kronor.”"
+        }
+      ],
+      "topics": [
+        "definite-form",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-034",
+        "verbs-020",
+        "verbs-002",
+        "essentials-097",
+        "shopping-036",
+        "food-027",
+        "food-032",
+        "essentials-002",
+        "essentials-042",
+        "food-025",
+        "verbs-001",
+        "essentials-093",
+        "qualities-004",
+        "essentials-005",
+        "essentials-068",
+        "qualities-051",
+        "essentials-014",
+        "verbs-097",
+        "shopping-004",
+        "essentials-011"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hi",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "vill",
+          "en": "want; would like (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "to have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "kilo",
+          "en": "kilo",
+          "word": "shopping-036"
+        },
+        {
+          "sv": "tomater",
+          "en": "tomatoes (tomat)",
+          "word": "food-027"
+        },
+        {
+          "sv": "gurka",
+          "en": "cucumber",
+          "word": "food-032"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thank you",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "Något mer",
+          "en": "anything else",
+          "word": "essentials-042"
+        },
+        {
+          "sv": "Jordgubbarna",
+          "en": "the strawberries (jordgubbe)",
+          "word": "food-025"
+        },
+        {
+          "sv": "är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "väldigt",
+          "en": "very",
+          "word": "essentials-093"
+        },
+        {
+          "sv": "goda",
+          "en": "good; tasty (god)",
+          "word": "qualities-004"
+        },
+        {
+          "sv": "Nej tack",
+          "en": "no thanks",
+          "word": "essentials-005"
+        },
+        {
+          "sv": "för",
+          "en": "too",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "dyra",
+          "en": "expensive (dyr)",
+          "word": "qualities-051"
+        },
+        {
+          "sv": "Okej",
+          "en": "okay",
+          "word": "essentials-014"
+        },
+        {
+          "sv": "blir",
+          "en": "comes to; will be (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "femtio",
+          "en": "fifty"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        },
+        {
+          "sv": "Varsågod",
+          "en": "here you are",
+          "word": "essentials-011"
+        },
+        {
+          "sv": "Tack och hej",
+          "en": "thanks, bye"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A message about dinner",
+      "lines": [
+        {
+          "sv": "Hej Sara! I kväll äter vi hemma hos mig.",
+          "en": "Hi Sara! This evening we’re eating at my place."
+        },
+        {
+          "sv": "Jag lagar en grönsakssoppa och en äppelkaka.",
+          "en": "I’m making a vegetable soup and an apple cake."
+        },
+        {
+          "sv": "Kan du ta med bröd och en flaska vin?",
+          "en": "Can you bring some bread and a bottle of wine?"
+        },
+        {
+          "sv": "Middagen börjar klockan sju. Vi ses!",
+          "en": "Dinner starts at seven o’clock. See you!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where are they eating?",
+          "choices": [
+            "At Sara’s home",
+            "At a restaurant",
+            "At the writer’s home",
+            "At a café"
+          ],
+          "answer": 2,
+          "explanation": "“I kväll äter vi hemma hos mig.”"
+        },
+        {
+          "question": "What is the writer making?",
+          "choices": [
+            "A fish soup and an apple cake",
+            "A vegetable soup and an apple cake",
+            "A vegetable soup and a chocolate cake",
+            "A salad and an apple cake"
+          ],
+          "answer": 1,
+          "explanation": "“Jag lagar en grönsakssoppa och en äppelkaka.”"
+        },
+        {
+          "question": "What should Sara bring?",
+          "choices": [
+            "Bread and a bottle of wine",
+            "Bread and a dessert",
+            "Wine and a salad",
+            "Cheese and a bottle of wine"
+          ],
+          "answer": 0,
+          "explanation": "“Kan du ta med bröd och en flaska vin?”"
+        },
+        {
+          "question": "What time does dinner start?",
+          "choices": [
+            "Six o’clock",
+            "Eight o’clock",
+            "Nine o’clock",
+            "Seven o’clock"
+          ],
+          "answer": 3,
+          "explanation": "“Middagen börjar klockan sju.”"
+        }
+      ],
+      "topics": [
+        "word-order-v2",
+        "modal-verbs"
+      ],
+      "words": [
+        "essentials-001",
+        "health-time-034",
+        "verbs-054",
+        "home-004",
+        "verbs-056",
+        "food-019",
+        "food-039",
+        "verbs-021",
+        "verbs-039",
+        "food-003",
+        "food-054",
+        "food-042",
+        "food-047",
+        "verbs-042",
+        "shopping-026",
+        "health-time-053",
+        "essentials-015",
+        "essentials-076",
+        "food-034"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hi",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Sara",
+          "en": "Sara (a first name)"
+        },
+        {
+          "sv": "I kväll",
+          "en": "this evening; tonight",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "äter",
+          "en": "eat; are eating (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "hemma hos",
+          "en": "at the home of",
+          "word": "home-004"
+        },
+        {
+          "sv": "lagar",
+          "en": "am making; am cooking (laga)",
+          "word": "verbs-056"
+        },
+        {
+          "sv": "grönsakssoppa",
+          "en": "vegetable soup",
+          "word": "food-019"
+        },
+        {
+          "sv": "äppelkaka",
+          "en": "apple cake",
+          "word": "food-039"
+        },
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "ta med",
+          "en": "to bring",
+          "word": "verbs-039"
+        },
+        {
+          "sv": "bröd",
+          "en": "bread",
+          "word": "food-003"
+        },
+        {
+          "sv": "flaska",
+          "en": "bottle",
+          "word": "food-054"
+        },
+        {
+          "sv": "vin",
+          "en": "wine",
+          "word": "food-042"
+        },
+        {
+          "sv": "Middagen",
+          "en": "dinner; the dinner (middag)",
+          "word": "food-047"
+        },
+        {
+          "sv": "börjar",
+          "en": "starts (börja)",
+          "word": "verbs-042"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        },
+        {
+          "sv": "Vi ses",
+          "en": "see you",
+          "word": "essentials-015"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "The shopping list",
+      "lines": [
+        {
+          "sv": "Idag ska jag handla mat.",
+          "en": "Today I’m going to shop for food."
+        },
+        {
+          "sv": "Jag behöver mjölk, ägg, ost och smör.",
+          "en": "I need milk, eggs, cheese and butter."
+        },
+        {
+          "sv": "Jag köper också bananer och äpplen till barnen.",
+          "en": "I’m also buying bananas and apples for the children."
+        },
+        {
+          "sv": "Kaffet är slut, så jag tar två paket.",
+          "en": "The coffee has run out, so I’ll take two packets."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the writer going shopping?",
+          "choices": [
+            "Tomorrow",
+            "This evening",
+            "On Saturday",
+            "Today"
+          ],
+          "answer": 3,
+          "explanation": "“Idag ska jag handla mat.”"
+        },
+        {
+          "question": "Which of these does the writer need?",
+          "choices": [
+            "Butter",
+            "Bread",
+            "Yoghurt",
+            "Rice"
+          ],
+          "answer": 0,
+          "explanation": "“Jag behöver mjölk, ägg, ost och smör.”"
+        },
+        {
+          "question": "Who is the fruit for?",
+          "choices": [
+            "The writer",
+            "The neighbours",
+            "The children",
+            "The guests"
+          ],
+          "answer": 2,
+          "explanation": "“Jag köper också bananer och äpplen till barnen.”"
+        },
+        {
+          "question": "Why does the writer buy coffee?",
+          "choices": [
+            "It’s cheap",
+            "There’s none left",
+            "The children like it",
+            "It’s on offer"
+          ],
+          "answer": 1,
+          "explanation": "“Kaffet är slut, så jag tar två paket.”"
+        }
+      ],
+      "topics": [
+        "future",
+        "plural",
+        "word-order-v2"
+      ],
+      "words": [
+        "essentials-097",
+        "verbs-023",
+        "shopping-043",
+        "food-002",
+        "verbs-024",
+        "food-006",
+        "food-012",
+        "food-011",
+        "food-010",
+        "verbs-050",
+        "essentials-087",
+        "food-022",
+        "food-021",
+        "essentials-064",
+        "people-005",
+        "food-004",
+        "shopping-042",
+        "essentials-083",
+        "verbs-025",
+        "health-time-048",
+        "shopping-021",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "sv": "Idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "ska",
+          "en": "am going to (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "handla",
+          "en": "to shop for; to buy (food)",
+          "word": "shopping-043"
+        },
+        {
+          "sv": "mat",
+          "en": "food",
+          "word": "food-002"
+        },
+        {
+          "sv": "behöver",
+          "en": "need (behöva)",
+          "word": "verbs-024"
+        },
+        {
+          "sv": "mjölk",
+          "en": "milk",
+          "word": "food-006"
+        },
+        {
+          "sv": "ägg",
+          "en": "eggs (ägg)",
+          "word": "food-012"
+        },
+        {
+          "sv": "ost",
+          "en": "cheese",
+          "word": "food-011"
+        },
+        {
+          "sv": "smör",
+          "en": "butter",
+          "word": "food-010"
+        },
+        {
+          "sv": "köper",
+          "en": "am buying (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "också",
+          "en": "also; too",
+          "word": "essentials-087"
+        },
+        {
+          "sv": "bananer",
+          "en": "bananas (banan)",
+          "word": "food-022"
+        },
+        {
+          "sv": "äpplen",
+          "en": "apples (äpple)",
+          "word": "food-021"
+        },
+        {
+          "sv": "till",
+          "en": "for",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "barnen",
+          "en": "the children (barn)",
+          "word": "people-005"
+        },
+        {
+          "sv": "Kaffet",
+          "en": "the coffee (kaffe)",
+          "word": "food-004"
+        },
+        {
+          "sv": "är slut",
+          "en": "has run out; is finished (slut)",
+          "word": "shopping-042"
+        },
+        {
+          "sv": "så",
+          "en": "so",
+          "word": "essentials-083"
+        },
+        {
+          "sv": "tar",
+          "en": "take; will take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "paket",
+          "en": "packets (paket)",
+          "word": "shopping-021"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "The lunch menu",
+      "lines": [
+        {
+          "sv": "Välkommen till Café Linnea!",
+          "en": "Welcome to Café Linnea!"
+        },
+        {
+          "sv": "Dagens lunch är kyckling med ris och sallad.",
+          "en": "Today’s lunch is chicken with rice and salad."
+        },
+        {
+          "sv": "Den kostar hundratio kronor.",
+          "en": "It costs a hundred and ten kronor."
+        },
+        {
+          "sv": "Kaffe och kaka ingår.",
+          "en": "Coffee and cake are included."
+        },
+        {
+          "sv": "Vi har öppet från klockan elva till två.",
+          "en": "We’re open from eleven o’clock to two."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is today’s lunch?",
+          "choices": [
+            "Fish with rice and salad",
+            "Chicken with rice and salad",
+            "Chicken with potatoes and salad",
+            "Chicken with rice and soup"
+          ],
+          "answer": 1,
+          "explanation": "“Dagens lunch är kyckling med ris och sallad.”"
+        },
+        {
+          "question": "How much does lunch cost?",
+          "choices": [
+            "A hundred kronor",
+            "Ninety kronor",
+            "A hundred and twenty kronor",
+            "A hundred and ten kronor"
+          ],
+          "answer": 3,
+          "explanation": "“Den kostar hundratio kronor.”"
+        },
+        {
+          "question": "What is included in the price?",
+          "choices": [
+            "Coffee and cake",
+            "Water and bread",
+            "Tea and a biscuit",
+            "Coffee and fruit"
+          ],
+          "answer": 0,
+          "explanation": "“Kaffe och kaka ingår.”"
+        },
+        {
+          "question": "When is the café open?",
+          "choices": [
+            "From eleven to three",
+            "From ten to two",
+            "From eleven to two",
+            "From twelve to two"
+          ],
+          "answer": 2,
+          "explanation": "“Vi har öppet från klockan elva till två.”"
+        }
+      ],
+      "topics": [
+        "present-tense",
+        "en-ett"
+      ],
+      "words": [
+        "essentials-013",
+        "essentials-064",
+        "food-046",
+        "verbs-001",
+        "food-016",
+        "essentials-066",
+        "food-013",
+        "food-020",
+        "verbs-053",
+        "shopping-004",
+        "food-004",
+        "food-039",
+        "qualities-034",
+        "essentials-065",
+        "shopping-026",
+        "health-time-048",
+        "health-time-029",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "sv": "Välkommen",
+          "en": "welcome",
+          "word": "essentials-013"
+        },
+        {
+          "sv": "till",
+          "en": "to; until",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "Café Linnea",
+          "en": "Café Linnea (a café’s name)"
+        },
+        {
+          "sv": "Dagens lunch",
+          "en": "today’s lunch; lunch of the day",
+          "word": "food-046"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "kyckling",
+          "en": "chicken",
+          "word": "food-016"
+        },
+        {
+          "sv": "med",
+          "en": "with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "ris",
+          "en": "rice",
+          "word": "food-013"
+        },
+        {
+          "sv": "sallad",
+          "en": "salad",
+          "word": "food-020"
+        },
+        {
+          "sv": "kostar",
+          "en": "costs (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "hundratio",
+          "en": "a hundred and ten"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        },
+        {
+          "sv": "Kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "kaka",
+          "en": "cake",
+          "word": "food-039"
+        },
+        {
+          "sv": "ingår",
+          "en": "are included (ingå)"
+        },
+        {
+          "sv": "har öppet",
+          "en": "are open (ha öppet)",
+          "word": "qualities-034"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "elva",
+          "en": "eleven"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "My breakfast",
+      "lines": [
+        {
+          "sv": "Jag går upp klockan sex varje morgon.",
+          "en": "I get up at six o’clock every morning."
+        },
+        {
+          "sv": "Till frukost äter jag yoghurt med banan.",
+          "en": "For breakfast I have yoghurt with banana."
+        },
+        {
+          "sv": "Jag dricker ett glas apelsinjuice och två koppar te.",
+          "en": "I drink a glass of orange juice and two cups of tea."
+        },
+        {
+          "sv": "På helgen äter jag ägg och bröd med min familj.",
+          "en": "At the weekend I have eggs and bread with my family."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What time does the writer get up?",
+          "choices": [
+            "At six o’clock",
+            "At seven o’clock",
+            "At eight o’clock",
+            "At five o’clock"
+          ],
+          "answer": 0,
+          "explanation": "“Jag går upp klockan sex varje morgon.”"
+        },
+        {
+          "question": "What does the writer eat for breakfast during the week?",
+          "choices": [
+            "Eggs and bread",
+            "Bread with cheese",
+            "Yoghurt with banana",
+            "Yoghurt with strawberries"
+          ],
+          "answer": 2,
+          "explanation": "“Till frukost äter jag yoghurt med banan.”"
+        },
+        {
+          "question": "How many cups of tea does the writer drink?",
+          "choices": [
+            "One",
+            "Three",
+            "None",
+            "Two"
+          ],
+          "answer": 3,
+          "explanation": "“två koppar te”"
+        },
+        {
+          "question": "What happens at the weekend?",
+          "choices": [
+            "The writer eats at a café",
+            "The writer has eggs and bread with the family",
+            "The writer drinks coffee",
+            "The writer gets up later"
+          ],
+          "answer": 1,
+          "explanation": "“På helgen äter jag ägg och bröd med min familj.”"
+        }
+      ],
+      "topics": [
+        "word-order-v2",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-059",
+        "shopping-026",
+        "health-time-052",
+        "essentials-049",
+        "health-time-033",
+        "essentials-064",
+        "food-045",
+        "verbs-054",
+        "food-036",
+        "essentials-066",
+        "food-022",
+        "verbs-055",
+        "food-053",
+        "food-023",
+        "health-time-048",
+        "food-052",
+        "food-005",
+        "leisure-017",
+        "food-012",
+        "food-003",
+        "essentials-052",
+        "people-023"
+      ],
+      "gloss": [
+        {
+          "sv": "går upp",
+          "en": "get up (gå upp)",
+          "word": "verbs-059"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sex",
+          "en": "six",
+          "word": "health-time-052"
+        },
+        {
+          "sv": "varje",
+          "en": "every",
+          "word": "essentials-049"
+        },
+        {
+          "sv": "morgon",
+          "en": "morning",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "Till",
+          "en": "for (with a meal)",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "frukost",
+          "en": "breakfast",
+          "word": "food-045"
+        },
+        {
+          "sv": "äter",
+          "en": "eat; have (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "yoghurt",
+          "en": "yoghurt",
+          "word": "food-036"
+        },
+        {
+          "sv": "med",
+          "en": "with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "banan",
+          "en": "banana",
+          "word": "food-022"
+        },
+        {
+          "sv": "dricker",
+          "en": "drink (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "glas",
+          "en": "glass",
+          "word": "food-053"
+        },
+        {
+          "sv": "apelsinjuice",
+          "en": "orange juice",
+          "word": "food-023"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "koppar",
+          "en": "cups (kopp)",
+          "word": "food-052"
+        },
+        {
+          "sv": "te",
+          "en": "tea",
+          "word": "food-005"
+        },
+        {
+          "sv": "På helgen",
+          "en": "at the weekend (helg)",
+          "word": "leisure-017"
+        },
+        {
+          "sv": "ägg",
+          "en": "eggs (ägg)",
+          "word": "food-012"
+        },
+        {
+          "sv": "bröd",
+          "en": "bread",
+          "word": "food-003"
+        },
+        {
+          "sv": "min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "familj",
+          "en": "family",
+          "word": "people-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Café opening hours",
+      "lines": [
+        {
+          "sv": "Välkommen till Konditori Solen!",
+          "en": "Welcome to Konditori Solen!"
+        },
+        {
+          "sv": "Vi har öppet från klockan sju till sex på vardagar.",
+          "en": "We’re open from seven o’clock to six on weekdays."
+        },
+        {
+          "sv": "På lördagar öppnar vi klockan nio.",
+          "en": "On Saturdays we open at nine o’clock."
+        },
+        {
+          "sv": "På söndagar har vi stängt.",
+          "en": "On Sundays we’re closed."
+        },
+        {
+          "sv": "Prova våra färska kanelbullar!",
+          "en": "Try our fresh cinnamon buns!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What time does the café open on weekdays?",
+          "choices": [
+            "At six o’clock",
+            "At nine o’clock",
+            "At seven o’clock",
+            "At eight o’clock"
+          ],
+          "answer": 2,
+          "explanation": "“Vi har öppet från klockan sju till sex på vardagar.”"
+        },
+        {
+          "question": "What time does it open on Saturdays?",
+          "choices": [
+            "At seven o’clock",
+            "At nine o’clock",
+            "At ten o’clock",
+            "At six o’clock"
+          ],
+          "answer": 1,
+          "explanation": "“På lördagar öppnar vi klockan nio.”"
+        },
+        {
+          "question": "When is the café closed?",
+          "choices": [
+            "On Mondays",
+            "On Saturdays",
+            "Every evening after five",
+            "On Sundays"
+          ],
+          "answer": 3,
+          "explanation": "“På söndagar har vi stängt.”"
+        },
+        {
+          "question": "What does the sign tell you to try?",
+          "choices": [
+            "The fresh cinnamon buns",
+            "The apple cake",
+            "The coffee",
+            "The sandwiches"
+          ],
+          "answer": 0,
+          "explanation": "“Prova våra färska kanelbullar!”"
+        }
+      ],
+      "topics": [
+        "word-order-v2",
+        "possessives",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-013",
+        "essentials-064",
+        "qualities-034",
+        "essentials-065",
+        "shopping-026",
+        "health-time-053",
+        "health-time-052",
+        "health-time-045",
+        "verbs-040",
+        "health-time-055",
+        "health-time-046",
+        "verbs-002",
+        "qualities-035",
+        "shopping-044",
+        "essentials-056",
+        "qualities-027"
+      ],
+      "gloss": [
+        {
+          "sv": "Välkommen",
+          "en": "welcome",
+          "word": "essentials-013"
+        },
+        {
+          "sv": "till",
+          "en": "to; until",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "Konditori Solen",
+          "en": "Konditori Solen (a café’s name; a konditori is a café with its own cakes)"
+        },
+        {
+          "sv": "har öppet",
+          "en": "are open (ha öppet)",
+          "word": "qualities-034"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "klockan",
+          "en": "at … o’clock (klocka)",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        },
+        {
+          "sv": "sex",
+          "en": "six",
+          "word": "health-time-052"
+        },
+        {
+          "sv": "på vardagar",
+          "en": "on weekdays (vardag)"
+        },
+        {
+          "sv": "På lördagar",
+          "en": "on Saturdays (lördag)",
+          "word": "health-time-045"
+        },
+        {
+          "sv": "öppnar",
+          "en": "open (öppna)",
+          "word": "verbs-040"
+        },
+        {
+          "sv": "nio",
+          "en": "nine",
+          "word": "health-time-055"
+        },
+        {
+          "sv": "På söndagar",
+          "en": "on Sundays (söndag)",
+          "word": "health-time-046"
+        },
+        {
+          "sv": "har",
+          "en": "are; have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "stängt",
+          "en": "closed (stängd)",
+          "word": "qualities-035"
+        },
+        {
+          "sv": "Prova",
+          "en": "try (prova)",
+          "word": "shopping-044"
+        },
+        {
+          "sv": "våra",
+          "en": "our (vår)",
+          "word": "essentials-056"
+        },
+        {
+          "sv": "färska",
+          "en": "fresh (färsk)",
+          "word": "qualities-027"
+        },
+        {
+          "sv": "kanelbullar",
+          "en": "cinnamon buns (kanelbulle)"
+        }
+      ]
+    }
+  ]
+}

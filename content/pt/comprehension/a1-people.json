@@ -1,0 +1,4827 @@
+{
+  "sentences": [
+    {
+      "id": "a1-people-s01",
+      "level": "A1",
+      "pt": "Eu me chamo Camila e tenho vinte e três anos.",
+      "en": "My name is Camila and I am twenty-three.",
+      "distractors": [
+        "Her name is Camila and she is twenty-three.",
+        "My name is Camila and I am thirty-three.",
+        "My name is Camila and I am twenty-two."
+      ],
+      "topics": [
+        "present-regular",
+        "present-irregular"
+      ],
+      "words": [
+        "health-time-031",
+        "health-time-048",
+        "health-time-056",
+        "verbs-003",
+        "verbs-075"
+      ],
+      "gloss": [
+        {
+          "pt": "chamo",
+          "en": "am called (chamar); me chamo = my name is",
+          "word": "verbs-075"
+        },
+        {
+          "pt": "Camila",
+          "en": "Camila (a woman’s first name)"
+        },
+        {
+          "pt": "tenho",
+          "en": "have; am (with ages) (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s02",
+      "level": "A1",
+      "pt": "Essa é minha irmã Júlia, ela é enfermeira.",
+      "en": "This is my sister Júlia, she is a nurse.",
+      "distractors": [
+        "This is my cousin Júlia, she is a nurse.",
+        "This is my sister Júlia, she is a doctor.",
+        "This is my friend Júlia, she is a nurse."
+      ],
+      "topics": [
+        "ser-estar",
+        "possessives"
+      ],
+      "words": [
+        "essentials-048",
+        "essentials-050",
+        "people-014",
+        "verbs-001",
+        "work-013"
+      ],
+      "gloss": [
+        {
+          "pt": "Essa",
+          "en": "this (esse)",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "Júlia",
+          "en": "Júlia (a woman’s first name)"
+        },
+        {
+          "pt": "enfermeira",
+          "en": "nurse (woman) (o enfermeiro)",
+          "word": "work-013"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s03",
+      "level": "A1",
+      "pt": "Como se chama o seu irmão?",
+      "en": "What is your brother’s name?",
+      "distractors": [
+        "What is your sister’s name?",
+        "What is your uncle’s name?",
+        "What is your brother’s job?"
+      ],
+      "topics": [
+        "negation-questions",
+        "possessives"
+      ],
+      "words": [
+        "essentials-035",
+        "essentials-051",
+        "people-013",
+        "verbs-075"
+      ],
+      "gloss": [
+        {
+          "pt": "Como",
+          "en": "how; what",
+          "word": "essentials-035"
+        },
+        {
+          "pt": "chama",
+          "en": "is called (chamar)",
+          "word": "verbs-075"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s04",
+      "level": "A1",
+      "pt": "Meu pai trabalha num banco em Belo Horizonte.",
+      "en": "My father works in a bank in Belo Horizonte.",
+      "distractors": [
+        "My mother works in a bank in Belo Horizonte.",
+        "My father works in a bakery in Belo Horizonte.",
+        "My father works in a bank in Curitiba."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-084",
+        "people-009",
+        "town-012",
+        "verbs-054"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        },
+        {
+          "pt": "trabalha",
+          "en": "works (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "num",
+          "en": "in a (em + um)",
+          "word": "essentials-084"
+        },
+        {
+          "pt": "banco",
+          "en": "bank",
+          "word": "town-012"
+        },
+        {
+          "pt": "Belo Horizonte",
+          "en": "Belo Horizonte (a city in Brazil)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s05",
+      "level": "A1",
+      "pt": "Minha avó mora numa cidade pequena.",
+      "en": "My grandmother lives in a small town.",
+      "distractors": [
+        "My grandfather lives in a small town.",
+        "My grandmother works in a small town.",
+        "My grandmother lives in a big town."
+      ],
+      "topics": [
+        "present-regular",
+        "adjective-agreement",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-084",
+        "people-016",
+        "qualities-002",
+        "travel-001",
+        "verbs-065"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "avó",
+          "en": "grandmother",
+          "word": "people-016"
+        },
+        {
+          "pt": "mora",
+          "en": "lives (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "numa",
+          "en": "in a (em + uma)",
+          "word": "essentials-084"
+        },
+        {
+          "pt": "cidade",
+          "en": "town",
+          "word": "travel-001"
+        },
+        {
+          "pt": "pequena",
+          "en": "small (pequeno)",
+          "word": "qualities-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s06",
+      "level": "A1",
+      "pt": "Nós temos dois filhos: um menino e uma menina.",
+      "en": "We have two children: a boy and a girl.",
+      "distractors": [
+        "We have three children: a boy and a girl.",
+        "We have two children: two boys.",
+        "They have two children: a boy and a girl."
+      ],
+      "topics": [
+        "present-irregular",
+        "articles-gender"
+      ],
+      "words": [
+        "health-time-047",
+        "people-006",
+        "people-007",
+        "people-011",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "temos",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "filhos",
+          "en": "children (o filho)",
+          "word": "people-011"
+        },
+        {
+          "pt": "menino",
+          "en": "boy",
+          "word": "people-006"
+        },
+        {
+          "pt": "menina",
+          "en": "girl",
+          "word": "people-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s07",
+      "level": "A1",
+      "pt": "Os meus vizinhos são muito simpáticos.",
+      "en": "My neighbours are very friendly.",
+      "distractors": [
+        "My neighbours are very shy.",
+        "My neighbours are not very friendly.",
+        "My cousins are very friendly."
+      ],
+      "topics": [
+        "ser-estar",
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-065",
+        "people-030",
+        "qualities-085",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "vizinhos",
+          "en": "neighbours (o vizinho)",
+          "word": "people-030"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "simpáticos",
+          "en": "friendly (simpático)",
+          "word": "qualities-085"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s08",
+      "level": "A1",
+      "pt": "Você conhece a mulher que está falando com o Pedro?",
+      "en": "Do you know the woman who is talking to Pedro?",
+      "distractors": [
+        "Do you know the man who is talking to Pedro?",
+        "Do you know the woman who is waiting for Pedro?",
+        "Do you know the woman who is talking to Paulo?"
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-086",
+        "people-003",
+        "verbs-002",
+        "verbs-008",
+        "verbs-017"
+      ],
+      "gloss": [
+        {
+          "pt": "conhece",
+          "en": "know (conhecer)",
+          "word": "verbs-017"
+        },
+        {
+          "pt": "mulher",
+          "en": "woman",
+          "word": "people-003"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "falando",
+          "en": "talking (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a man’s first name)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s09",
+      "level": "A1",
+      "pt": "Ela tem o cabelo curto e os olhos verdes.",
+      "en": "She has short hair and green eyes.",
+      "distractors": [
+        "She has long hair and green eyes.",
+        "She has short hair and blue eyes.",
+        "He has short hair and green eyes."
+      ],
+      "topics": [
+        "present-irregular",
+        "adjective-agreement"
+      ],
+      "words": [
+        "health-time-006",
+        "health-time-017",
+        "qualities-014",
+        "qualities-096",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "cabelo",
+          "en": "hair",
+          "word": "health-time-017"
+        },
+        {
+          "pt": "curto",
+          "en": "short",
+          "word": "qualities-014"
+        },
+        {
+          "pt": "olhos",
+          "en": "eyes (o olho)",
+          "word": "health-time-006"
+        },
+        {
+          "pt": "verdes",
+          "en": "green (verde)",
+          "word": "qualities-096"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s10",
+      "level": "A1",
+      "pt": "Meu tio é médico no hospital de Recife.",
+      "en": "My uncle is a doctor at the hospital in Recife.",
+      "distractors": [
+        "My aunt is a doctor at the hospital in Recife.",
+        "My uncle is a nurse at the hospital in Recife.",
+        "My uncle is a doctor at the hospital in Salvador."
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-023",
+        "people-019",
+        "verbs-001",
+        "work-012"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "tio",
+          "en": "uncle",
+          "word": "people-019"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "hospital",
+          "en": "hospital",
+          "word": "health-time-023"
+        },
+        {
+          "pt": "Recife",
+          "en": "Recife (a city in Brazil)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s11",
+      "level": "A1",
+      "pt": "Eu ainda não conheço bem os meus novos vizinhos.",
+      "en": "I don’t know my new neighbours well yet.",
+      "distractors": [
+        "I already know my new neighbours well.",
+        "I don’t know my old neighbours well yet.",
+        "I don’t know my new colleagues well yet."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-070",
+        "essentials-077",
+        "people-030",
+        "qualities-008",
+        "verbs-017"
+      ],
+      "gloss": [
+        {
+          "pt": "ainda",
+          "en": "yet; still",
+          "word": "essentials-070"
+        },
+        {
+          "pt": "conheço",
+          "en": "know (conhecer)",
+          "word": "verbs-017"
+        },
+        {
+          "pt": "bem",
+          "en": "well",
+          "word": "essentials-077"
+        },
+        {
+          "pt": "meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "novos",
+          "en": "new (novo)",
+          "word": "qualities-008"
+        },
+        {
+          "pt": "vizinhos",
+          "en": "neighbours (o vizinho)",
+          "word": "people-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s12",
+      "level": "A1",
+      "pt": "Quantos anos tem o seu irmão mais novo?",
+      "en": "How old is your younger brother?",
+      "distractors": [
+        "How old is your older brother?",
+        "How old is your younger sister?",
+        "Where does your younger brother live?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-038",
+        "essentials-051",
+        "people-013",
+        "qualities-008",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "Quantos anos",
+          "en": "how old (lit. how many years)",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "tem",
+          "en": "is (ter, with ages)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        },
+        {
+          "pt": "mais novo",
+          "en": "younger (novo)",
+          "word": "qualities-008"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s13",
+      "level": "A1",
+      "pt": "Minha mãe é professora numa escola pública.",
+      "en": "My mother is a teacher at a state school.",
+      "distractors": [
+        "My father is a teacher at a state school.",
+        "My mother is a teacher at a private school.",
+        "My mother is a doctor at a state school."
+      ],
+      "topics": [
+        "ser-estar",
+        "articles-gender",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-084",
+        "people-010",
+        "school-001",
+        "school-003",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "professora",
+          "en": "teacher (woman) (o professor)",
+          "word": "school-003"
+        },
+        {
+          "pt": "numa",
+          "en": "in a (em + uma)",
+          "word": "essentials-084"
+        },
+        {
+          "pt": "escola",
+          "en": "school",
+          "word": "school-001"
+        },
+        {
+          "pt": "pública",
+          "en": "state; public (público)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s14",
+      "level": "A1",
+      "pt": "Meus pais moram perto da praia.",
+      "en": "My parents live near the beach.",
+      "distractors": [
+        "My parents live far from the beach.",
+        "My grandparents live near the beach.",
+        "My parents work near the beach."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions",
+        "plural"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-094",
+        "nature-008",
+        "people-009",
+        "verbs-065"
+      ],
+      "gloss": [
+        {
+          "pt": "Meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pais",
+          "en": "parents (o pai)",
+          "word": "people-009"
+        },
+        {
+          "pt": "moram",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "praia",
+          "en": "beach",
+          "word": "nature-008"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s15",
+      "level": "A1",
+      "pt": "Meu amigo Bruno é muito engraçado.",
+      "en": "My friend Bruno is very funny.",
+      "distractors": [
+        "My cousin Bruno is very funny.",
+        "My friend Bruno is very shy.",
+        "My friend Bruno is very serious."
+      ],
+      "topics": [
+        "ser-estar",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-065",
+        "people-029",
+        "qualities-080",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "amigo",
+          "en": "friend",
+          "word": "people-029"
+        },
+        {
+          "pt": "Bruno",
+          "en": "Bruno (a man’s first name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "engraçado",
+          "en": "funny",
+          "word": "qualities-080"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s16",
+      "level": "A1",
+      "pt": "A senhora é a nova vizinha do terceiro andar?",
+      "en": "Are you the new neighbour on the third floor?",
+      "distractors": [
+        "Are you the new neighbour on the second floor?",
+        "Are you the old neighbour on the third floor?",
+        "Are you the new teacher on the third floor?"
+      ],
+      "topics": [
+        "ser-estar",
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "people-030",
+        "people-034",
+        "qualities-008",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "senhora",
+          "en": "you (polite, to a woman)",
+          "word": "people-034"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "nova",
+          "en": "new (novo)",
+          "word": "qualities-008"
+        },
+        {
+          "pt": "vizinha",
+          "en": "neighbour (woman) (o vizinho)",
+          "word": "people-030"
+        },
+        {
+          "pt": "terceiro",
+          "en": "third"
+        },
+        {
+          "pt": "andar",
+          "en": "floor (o andar)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s17",
+      "level": "A1",
+      "pt": "Tem muita gente na festa.",
+      "en": "There are a lot of people at the party.",
+      "distractors": [
+        "There aren’t many people at the party.",
+        "There are a lot of people at the beach.",
+        "There are a lot of children at the party."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-065",
+        "leisure-019",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "there is; there are (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "muita",
+          "en": "a lot of (muito)",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "gente",
+          "en": "people"
+        },
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s18",
+      "level": "A1",
+      "pt": "Meu irmão mais velho vai se casar em junho.",
+      "en": "My older brother is getting married in June.",
+      "distractors": [
+        "My younger brother is getting married in June.",
+        "My older brother is getting married in July.",
+        "My older sister is getting married in June."
+      ],
+      "topics": [
+        "ir-future",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "people-013",
+        "qualities-009",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        },
+        {
+          "pt": "mais velho",
+          "en": "older (velho)",
+          "word": "qualities-009"
+        },
+        {
+          "pt": "vai",
+          "en": "is going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "casar",
+          "en": "to marry; se casar = to get married"
+        },
+        {
+          "pt": "junho",
+          "en": "June"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s19",
+      "level": "A1",
+      "pt": "Elas são irmãs, mas não são parecidas.",
+      "en": "They are sisters, but they don’t look alike.",
+      "distractors": [
+        "They are cousins, but they don’t look alike.",
+        "They are sisters, and they look alike.",
+        "They are friends, but they don’t look alike."
+      ],
+      "topics": [
+        "ser-estar",
+        "negation-questions",
+        "plural"
+      ],
+      "words": [
+        "people-014",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "irmãs",
+          "en": "sisters (a irmã)",
+          "word": "people-014"
+        },
+        {
+          "pt": "parecidas",
+          "en": "alike (parecido)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s20",
+      "level": "A1",
+      "pt": "Quem é a menina na foto?",
+      "en": "Who is the girl in the photo?",
+      "distractors": [
+        "Who is the boy in the photo?",
+        "Who is the woman in the photo?",
+        "Where is the girl in the photo?"
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-031",
+        "media-034",
+        "people-007",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "Quem",
+          "en": "who",
+          "word": "essentials-031"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "menina",
+          "en": "girl",
+          "word": "people-007"
+        },
+        {
+          "pt": "foto",
+          "en": "photo",
+          "word": "media-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s21",
+      "level": "A1",
+      "pt": "Meu vizinho passeia com o cachorro todas as manhãs.",
+      "en": "My neighbour walks the dog every morning.",
+      "distractors": [
+        "My neighbour walks the dog every evening.",
+        "My uncle walks the dog every morning.",
+        "My neighbour walks the dog every Sunday."
+      ],
+      "topics": [
+        "present-regular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-045",
+        "essentials-050",
+        "essentials-086",
+        "health-time-032",
+        "nature-026",
+        "people-030"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "vizinho",
+          "en": "neighbour",
+          "word": "people-030"
+        },
+        {
+          "pt": "passeia",
+          "en": "walks; takes for a walk (passear)"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "cachorro",
+          "en": "dog",
+          "word": "nature-026"
+        },
+        {
+          "pt": "todas",
+          "en": "every (todo)",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "manhãs",
+          "en": "mornings (a manhã)",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s22",
+      "level": "A1",
+      "pt": "Você tem irmãos?",
+      "en": "Do you have any brothers or sisters?",
+      "distractors": [
+        "Do you have any children?",
+        "Do you have any cousins?",
+        "Does she have any brothers or sisters?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular",
+        "plural"
+      ],
+      "words": [
+        "people-013",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "irmãos",
+          "en": "brothers and sisters (o irmão)",
+          "word": "people-013"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s23",
+      "level": "A1",
+      "pt": "Eles moram juntos num apartamento grande.",
+      "en": "They live together in a big flat.",
+      "distractors": [
+        "They live together in a small flat.",
+        "They live together in a big house.",
+        "They work together in a big flat."
+      ],
+      "topics": [
+        "present-regular",
+        "adjective-agreement",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-084",
+        "essentials-100",
+        "home-002",
+        "qualities-001",
+        "verbs-065"
+      ],
+      "gloss": [
+        {
+          "pt": "moram",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "juntos",
+          "en": "together (junto)",
+          "word": "essentials-100"
+        },
+        {
+          "pt": "num",
+          "en": "in a (em + um)",
+          "word": "essentials-084"
+        },
+        {
+          "pt": "apartamento",
+          "en": "flat",
+          "word": "home-002"
+        },
+        {
+          "pt": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s24",
+      "level": "A1",
+      "pt": "Minha tia Regina fala três línguas.",
+      "en": "My aunt Regina speaks three languages.",
+      "distractors": [
+        "My aunt Regina speaks two languages.",
+        "My cousin Regina speaks three languages.",
+        "My aunt Regina teaches three languages."
+      ],
+      "topics": [
+        "present-regular",
+        "possessives",
+        "plural"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-048",
+        "people-020",
+        "school-028",
+        "verbs-008"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "tia",
+          "en": "aunt",
+          "word": "people-020"
+        },
+        {
+          "pt": "Regina",
+          "en": "Regina (a woman’s first name)"
+        },
+        {
+          "pt": "fala",
+          "en": "speaks (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "línguas",
+          "en": "languages (a língua)",
+          "word": "school-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s25",
+      "level": "A1",
+      "pt": "Vou apresentar o meu marido aos meus colegas.",
+      "en": "I am going to introduce my husband to my colleagues.",
+      "distractors": [
+        "I am going to introduce my brother to my colleagues.",
+        "I am going to introduce my husband to my parents.",
+        "I introduced my husband to my colleagues."
+      ],
+      "topics": [
+        "ir-future",
+        "possessives",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "people-024",
+        "verbs-005",
+        "work-011"
+      ],
+      "gloss": [
+        {
+          "pt": "Vou",
+          "en": "am going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "apresentar",
+          "en": "to introduce"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "marido",
+          "en": "husband",
+          "word": "people-024"
+        },
+        {
+          "pt": "meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "colegas",
+          "en": "colleagues (o colega)",
+          "word": "work-011"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s26",
+      "level": "A1",
+      "pt": "Ela trabalha como garçonete num restaurante japonês.",
+      "en": "She works as a waitress in a Japanese restaurant.",
+      "distractors": [
+        "She works as a waitress in an Italian restaurant.",
+        "She works as a cook in a Japanese restaurant.",
+        "He works as a waiter in a Japanese restaurant."
+      ],
+      "topics": [
+        "present-regular",
+        "adjective-agreement",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-035",
+        "essentials-084",
+        "travel-020",
+        "verbs-054",
+        "work-020"
+      ],
+      "gloss": [
+        {
+          "pt": "trabalha",
+          "en": "works (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "como",
+          "en": "as",
+          "word": "essentials-035"
+        },
+        {
+          "pt": "garçonete",
+          "en": "waitress",
+          "word": "work-020"
+        },
+        {
+          "pt": "num",
+          "en": "in a (em + um)",
+          "word": "essentials-084"
+        },
+        {
+          "pt": "restaurante",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "pt": "japonês",
+          "en": "Japanese"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s27",
+      "level": "A1",
+      "pt": "A gente vai convidar os amigos no sábado à noite.",
+      "en": "We are going to invite our friends on Saturday evening.",
+      "distractors": [
+        "We are going to invite our friends on Friday evening.",
+        "We are going to invite our neighbours on Saturday evening.",
+        "We invited our friends on Saturday evening."
+      ],
+      "topics": [
+        "ir-future",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-024",
+        "health-time-034",
+        "health-time-045",
+        "leisure-021",
+        "people-029",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "vai",
+          "en": "are going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "convidar",
+          "en": "to invite",
+          "word": "leisure-021"
+        },
+        {
+          "pt": "amigos",
+          "en": "friends (o amigo)",
+          "word": "people-029"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "noite",
+          "en": "evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s28",
+      "level": "A1",
+      "pt": "Meu filho tem vergonha de pessoas que ele não conhece.",
+      "en": "My son is shy with people he doesn’t know.",
+      "distractors": [
+        "My daughter is shy with people she doesn’t know.",
+        "My son is friendly with people he doesn’t know.",
+        "My son is shy with people he knows."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-050",
+        "feelings-024",
+        "people-001",
+        "people-011",
+        "verbs-003",
+        "verbs-017"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "filho",
+          "en": "son",
+          "word": "people-011"
+        },
+        {
+          "pt": "tem vergonha",
+          "en": "is shy (ter vergonha)",
+          "word": "feelings-024"
+        },
+        {
+          "pt": "pessoas",
+          "en": "people (a pessoa)",
+          "word": "people-001"
+        },
+        {
+          "pt": "conhece",
+          "en": "knows (conhecer)",
+          "word": "verbs-017"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s29",
+      "level": "A1",
+      "pt": "O seu primo é muito parecido com o pai dele.",
+      "en": "Your cousin looks a lot like his father.",
+      "distractors": [
+        "Your cousin looks a lot like his mother.",
+        "Your uncle looks a lot like his father.",
+        "Your cousin doesn’t look like his father."
+      ],
+      "topics": [
+        "ser-estar",
+        "possessives"
+      ],
+      "words": [
+        "essentials-051",
+        "essentials-053",
+        "essentials-065",
+        "essentials-086",
+        "people-009",
+        "people-021",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "primo",
+          "en": "cousin",
+          "word": "people-021"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot; very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "parecido",
+          "en": "like; parecido com = looks like"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        },
+        {
+          "pt": "dele",
+          "en": "his",
+          "word": "essentials-053"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s30",
+      "level": "A1",
+      "pt": "Quem vai buscar as crianças na escola?",
+      "en": "Who is going to pick up the children from school?",
+      "distractors": [
+        "Who is going to take the children to school?",
+        "Who is going to pick up the children from the party?",
+        "Who picked up the children from school?"
+      ],
+      "topics": [
+        "negation-questions",
+        "ir-future"
+      ],
+      "words": [
+        "essentials-031",
+        "people-004",
+        "school-001",
+        "verbs-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Quem",
+          "en": "who",
+          "word": "essentials-031"
+        },
+        {
+          "pt": "vai",
+          "en": "is going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "buscar",
+          "en": "to pick up; to fetch"
+        },
+        {
+          "pt": "crianças",
+          "en": "children (a criança)",
+          "word": "people-004"
+        },
+        {
+          "pt": "escola",
+          "en": "school",
+          "word": "school-001"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s31",
+      "level": "A1",
+      "pt": "Meus avós estão muito velhos agora.",
+      "en": "My grandparents are very old now.",
+      "distractors": [
+        "My parents are very old now.",
+        "My grandparents are very tired now.",
+        "My grandparents are very ill now."
+      ],
+      "topics": [
+        "ser-estar",
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-057",
+        "essentials-065",
+        "people-015",
+        "qualities-009",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "pt": "Meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "avós",
+          "en": "grandparents (o avô)",
+          "word": "people-015"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "velhos",
+          "en": "old (velho)",
+          "word": "qualities-009"
+        },
+        {
+          "pt": "agora",
+          "en": "now",
+          "word": "essentials-057"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s32",
+      "level": "A1",
+      "pt": "O bebê da Fernanda se chama Davi.",
+      "en": "Fernanda’s baby is called Davi.",
+      "distractors": [
+        "Fernanda’s dog is called Davi.",
+        "Fernanda’s baby is called Daniel.",
+        "Fernanda’s husband is called Davi."
+      ],
+      "topics": [
+        "articles-gender",
+        "prepositions-contractions",
+        "present-regular"
+      ],
+      "words": [
+        "people-005",
+        "verbs-075"
+      ],
+      "gloss": [
+        {
+          "pt": "bebê",
+          "en": "baby",
+          "word": "people-005"
+        },
+        {
+          "pt": "Fernanda",
+          "en": "Fernanda (a woman’s first name)"
+        },
+        {
+          "pt": "chama",
+          "en": "is called (chamar)",
+          "word": "verbs-075"
+        },
+        {
+          "pt": "Davi",
+          "en": "Davi (a boy’s first name)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s33",
+      "level": "A1",
+      "pt": "Você vem à minha festa de aniversário na sexta?",
+      "en": "Are you coming to my birthday party on Friday?",
+      "distractors": [
+        "Are you coming to my birthday party on Saturday?",
+        "Is she coming to my birthday party on Friday?",
+        "Are you coming to my birthday dinner on Friday?"
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-044",
+        "leisure-019",
+        "people-038",
+        "verbs-006"
+      ],
+      "gloss": [
+        {
+          "pt": "vem",
+          "en": "are coming (vir)",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        },
+        {
+          "pt": "aniversário",
+          "en": "birthday; festa de aniversário = birthday party",
+          "word": "people-038"
+        },
+        {
+          "pt": "sexta",
+          "en": "Friday (a sexta-feira)",
+          "word": "health-time-044"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s34",
+      "level": "A1",
+      "pt": "Eu não entendo o que o seu amigo diz.",
+      "en": "I don’t understand what your friend is saying.",
+      "distractors": [
+        "I understand what your friend is saying.",
+        "I don’t understand what your brother is saying.",
+        "I don’t hear what your friend is saying."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-032",
+        "essentials-051",
+        "people-029",
+        "verbs-007",
+        "verbs-018"
+      ],
+      "gloss": [
+        {
+          "pt": "entendo",
+          "en": "understand (entender)",
+          "word": "verbs-018"
+        },
+        {
+          "pt": "o que",
+          "en": "what",
+          "word": "essentials-032"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "amigo",
+          "en": "friend",
+          "word": "people-029"
+        },
+        {
+          "pt": "diz",
+          "en": "is saying (dizer)",
+          "word": "verbs-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s35",
+      "level": "A1",
+      "pt": "Minha filha tem oito anos e adora ler.",
+      "en": "My daughter is eight and loves reading.",
+      "distractors": [
+        "My daughter is seven and loves reading.",
+        "My son is eight and loves reading.",
+        "My daughter is eight and loves drawing."
+      ],
+      "topics": [
+        "present-irregular",
+        "present-regular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-031",
+        "health-time-053",
+        "people-012",
+        "verbs-003",
+        "verbs-057"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "filha",
+          "en": "daughter",
+          "word": "people-012"
+        },
+        {
+          "pt": "tem",
+          "en": "is (ter, with ages)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "adora",
+          "en": "loves (adorar)"
+        },
+        {
+          "pt": "ler",
+          "en": "reading; to read",
+          "word": "verbs-057"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s36",
+      "level": "A1",
+      "pt": "Vocês conhecem os meus pais, não é?",
+      "en": "You know my parents, don’t you?",
+      "distractors": [
+        "You know my grandparents, don’t you?",
+        "You don’t know my parents, do you?",
+        "You know my cousins, don’t you?"
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "people-009",
+        "verbs-017"
+      ],
+      "gloss": [
+        {
+          "pt": "conhecem",
+          "en": "know (conhecer)",
+          "word": "verbs-017"
+        },
+        {
+          "pt": "meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pais",
+          "en": "parents (o pai)",
+          "word": "people-009"
+        },
+        {
+          "pt": "não é",
+          "en": "don’t you? (lit. isn’t it?)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s37",
+      "level": "A1",
+      "pt": "Vamos visitar minha irmã neste fim de semana.",
+      "en": "We are going to visit my sister this weekend.",
+      "distractors": [
+        "We are going to visit my brother this weekend.",
+        "We are going to visit my sister next weekend.",
+        "We visited my sister last weekend."
+      ],
+      "topics": [
+        "ir-future",
+        "possessives",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-084",
+        "health-time-039",
+        "people-014",
+        "verbs-005",
+        "verbs-105"
+      ],
+      "gloss": [
+        {
+          "pt": "Vamos",
+          "en": "are going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "visitar",
+          "en": "to visit",
+          "word": "verbs-105"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "neste",
+          "en": "this (em + este)",
+          "word": "essentials-084"
+        },
+        {
+          "pt": "fim de semana",
+          "en": "weekend",
+          "word": "health-time-039"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s38",
+      "level": "A1",
+      "pt": "Meu melhor amigo se chama Rafael e é engenheiro.",
+      "en": "My best friend is called Rafael and he is an engineer.",
+      "distractors": [
+        "My best friend is called Rafael and he is a lawyer.",
+        "My brother is called Rafael and he is an engineer.",
+        "My best friend is called Gabriel and he is an engineer."
+      ],
+      "topics": [
+        "ser-estar",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "people-029",
+        "qualities-057",
+        "verbs-001",
+        "verbs-075",
+        "work-015"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "melhor",
+          "en": "best",
+          "word": "qualities-057"
+        },
+        {
+          "pt": "amigo",
+          "en": "friend",
+          "word": "people-029"
+        },
+        {
+          "pt": "chama",
+          "en": "is called (chamar)",
+          "word": "verbs-075"
+        },
+        {
+          "pt": "Rafael",
+          "en": "Rafael (a man’s first name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "engenheiro",
+          "en": "engineer",
+          "word": "work-015"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s39",
+      "level": "A1",
+      "pt": "Não tem ninguém na sala.",
+      "en": "There is nobody in the living room.",
+      "distractors": [
+        "There is somebody in the living room.",
+        "There is nobody in the kitchen.",
+        "There is nobody in the bedroom."
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-041",
+        "home-004",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "ninguém",
+          "en": "nobody",
+          "word": "essentials-041"
+        },
+        {
+          "pt": "sala",
+          "en": "living room",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s40",
+      "level": "A1",
+      "pt": "A mulher dele é mais alta do que ele.",
+      "en": "His wife is taller than him.",
+      "distractors": [
+        "His wife is shorter than him.",
+        "His sister is taller than him.",
+        "Her husband is taller than her."
+      ],
+      "topics": [
+        "comparison",
+        "possessives",
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-053",
+        "people-003",
+        "qualities-011",
+        "verbs-001"
+      ],
+      "gloss": [
+        {
+          "pt": "mulher",
+          "en": "wife",
+          "word": "people-003"
+        },
+        {
+          "pt": "dele",
+          "en": "his",
+          "word": "essentials-053"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mais alta",
+          "en": "taller (alto)",
+          "word": "qualities-011"
+        },
+        {
+          "pt": "do que",
+          "en": "than"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s41",
+      "level": "A1",
+      "pt": "Meus primos chegam de Salvador amanhã de manhã.",
+      "en": "My cousins arrive from Salvador tomorrow morning.",
+      "distractors": [
+        "My cousins arrive from Salvador tomorrow evening.",
+        "My cousins arrive from Fortaleza tomorrow morning.",
+        "My cousins arrive from Salvador today."
+      ],
+      "topics": [
+        "present-regular",
+        "plural"
+      ],
+      "words": [
+        "essentials-050",
+        "health-time-032",
+        "health-time-037",
+        "people-021",
+        "verbs-035"
+      ],
+      "gloss": [
+        {
+          "pt": "Meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "primos",
+          "en": "cousins (o primo)",
+          "word": "people-021"
+        },
+        {
+          "pt": "chegam",
+          "en": "arrive (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "Salvador",
+          "en": "Salvador (a city in Brazil)"
+        },
+        {
+          "pt": "amanhã de manhã",
+          "en": "tomorrow morning",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s42",
+      "level": "A1",
+      "pt": "A sua avó mora com vocês?",
+      "en": "Does your grandmother live with you?",
+      "distractors": [
+        "Does your grandfather live with you?",
+        "Does your grandmother live near you?",
+        "Does your aunt live with you?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-051",
+        "essentials-086",
+        "people-016",
+        "verbs-065"
+      ],
+      "gloss": [
+        {
+          "pt": "sua",
+          "en": "your (seu)",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "avó",
+          "en": "grandmother",
+          "word": "people-016"
+        },
+        {
+          "pt": "mora",
+          "en": "live; lives (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s43",
+      "level": "A1",
+      "pt": "O filho dos vizinhos toca piano todas as noites.",
+      "en": "The neighbours’ son plays the piano every evening.",
+      "distractors": [
+        "The neighbours’ daughter plays the piano every evening.",
+        "The neighbours’ son plays the guitar every evening.",
+        "The neighbours’ son plays the piano every morning."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-045",
+        "health-time-034",
+        "leisure-031",
+        "people-011",
+        "people-030",
+        "verbs-077"
+      ],
+      "gloss": [
+        {
+          "pt": "filho",
+          "en": "son",
+          "word": "people-011"
+        },
+        {
+          "pt": "vizinhos",
+          "en": "neighbours (o vizinho)",
+          "word": "people-030"
+        },
+        {
+          "pt": "toca",
+          "en": "plays (tocar)",
+          "word": "verbs-077"
+        },
+        {
+          "pt": "piano",
+          "en": "piano",
+          "word": "leisure-031"
+        },
+        {
+          "pt": "todas",
+          "en": "every (todo)",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "noites",
+          "en": "evenings (a noite)",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s44",
+      "level": "A1",
+      "pt": "Ela não quer falar sobre o divórcio.",
+      "en": "She doesn’t want to talk about the divorce.",
+      "distractors": [
+        "She wants to talk about the divorce.",
+        "She doesn’t want to talk about the wedding.",
+        "He doesn’t want to talk about the divorce."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-090",
+        "verbs-008",
+        "verbs-022"
+      ],
+      "gloss": [
+        {
+          "pt": "quer",
+          "en": "wants (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "falar",
+          "en": "to talk (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "sobre",
+          "en": "about",
+          "word": "essentials-090"
+        },
+        {
+          "pt": "divórcio",
+          "en": "divorce"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s45",
+      "level": "A1",
+      "pt": "Onde a sua mãe trabalha agora?",
+      "en": "Where does your mother work now?",
+      "distractors": [
+        "Where does your father work now?",
+        "Where does your mother live now?",
+        "Where does your sister work now?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-033",
+        "essentials-051",
+        "essentials-057",
+        "people-010",
+        "verbs-054"
+      ],
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "sua",
+          "en": "your (seu)",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "trabalha",
+          "en": "work; works (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "agora",
+          "en": "now",
+          "word": "essentials-057"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s46",
+      "level": "A1",
+      "pt": "Minha sobrinha Alice tem só três meses.",
+      "en": "My niece Alice is only three months old.",
+      "distractors": [
+        "My niece Alice is only three years old.",
+        "My granddaughter Alice is only three months old.",
+        "My niece Alice is only two months old."
+      ],
+      "topics": [
+        "present-irregular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "essentials-076",
+        "health-time-030",
+        "health-time-048",
+        "people-023",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "sobrinha",
+          "en": "niece",
+          "word": "people-023"
+        },
+        {
+          "pt": "Alice",
+          "en": "Alice (a girl’s first name)"
+        },
+        {
+          "pt": "tem",
+          "en": "is (ter, with ages)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "só",
+          "en": "only",
+          "word": "essentials-076"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "meses",
+          "en": "months (o mês)",
+          "word": "health-time-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s47",
+      "level": "A1",
+      "pt": "Os convidados chegam por volta das oito horas.",
+      "en": "The guests arrive at about eight o’clock.",
+      "distractors": [
+        "The guests arrive at about nine o’clock.",
+        "The guests leave at about eight o’clock.",
+        "The children arrive at about eight o’clock."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions",
+        "plural"
+      ],
+      "words": [
+        "health-time-026",
+        "health-time-053",
+        "verbs-035"
+      ],
+      "gloss": [
+        {
+          "pt": "convidados",
+          "en": "guests (o convidado)"
+        },
+        {
+          "pt": "chegam",
+          "en": "arrive (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "por volta",
+          "en": "at about; around"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s48",
+      "level": "A1",
+      "pt": "Eu prefiro pessoas calmas e honestas.",
+      "en": "I prefer calm and honest people.",
+      "distractors": [
+        "I prefer funny and honest people.",
+        "I don’t like calm and honest people.",
+        "She prefers calm and honest people."
+      ],
+      "topics": [
+        "present-irregular",
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "people-001",
+        "qualities-047",
+        "verbs-098"
+      ],
+      "gloss": [
+        {
+          "pt": "prefiro",
+          "en": "prefer (preferir)",
+          "word": "verbs-098"
+        },
+        {
+          "pt": "pessoas",
+          "en": "people (a pessoa)",
+          "word": "people-001"
+        },
+        {
+          "pt": "calmas",
+          "en": "calm (calmo)",
+          "word": "qualities-047"
+        },
+        {
+          "pt": "honestas",
+          "en": "honest (honesto)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s49",
+      "level": "A1",
+      "pt": "Aquele senhor está procurando o neto na praça.",
+      "en": "That man is looking for his grandson in the square.",
+      "distractors": [
+        "That man is looking for his granddaughter in the square.",
+        "That man is looking for his grandson in the park.",
+        "That woman is looking for her grandson in the square."
+      ],
+      "topics": [
+        "ser-estar",
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-049",
+        "people-017",
+        "people-034",
+        "town-024",
+        "verbs-002",
+        "verbs-030"
+      ],
+      "gloss": [
+        {
+          "pt": "Aquele",
+          "en": "that",
+          "word": "essentials-049"
+        },
+        {
+          "pt": "senhor",
+          "en": "man; gentleman (o senhor)",
+          "word": "people-034"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "procurando",
+          "en": "looking for (procurar)",
+          "word": "verbs-030"
+        },
+        {
+          "pt": "neto",
+          "en": "grandson",
+          "word": "people-017"
+        },
+        {
+          "pt": "praça",
+          "en": "square",
+          "word": "town-024"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-s50",
+      "level": "A1",
+      "pt": "Todo mundo adora o meu sobrinho pequeno.",
+      "en": "Everybody loves my little nephew.",
+      "distractors": [
+        "Everybody loves my little niece.",
+        "Everybody loves my little brother.",
+        "Everybody knows my little nephew."
+      ],
+      "topics": [
+        "present-regular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-050",
+        "people-022",
+        "qualities-002",
+        "society-015"
+      ],
+      "gloss": [
+        {
+          "pt": "Todo mundo",
+          "en": "everybody",
+          "word": "society-015"
+        },
+        {
+          "pt": "adora",
+          "en": "loves (adorar)"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "sobrinho",
+          "en": "nephew",
+          "word": "people-022"
+        },
+        {
+          "pt": "pequeno",
+          "en": "little",
+          "word": "qualities-002"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-people-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Meeting the new neighbour",
+      "lines": [
+        {
+          "speaker": "Mariana",
+          "pt": "Bom dia! Eu sou a nova vizinha. Me chamo Mariana.",
+          "en": "Good morning! I am the new neighbour. My name is Mariana."
+        },
+        {
+          "speaker": "Carlos",
+          "pt": "Seja bem-vinda! Eu sou o Carlos. Moro no quarto andar.",
+          "en": "Welcome! I’m Carlos. I live on the fourth floor."
+        },
+        {
+          "speaker": "Mariana",
+          "pt": "O senhor mora aqui há muito tempo?",
+          "en": "Have you lived here for a long time?"
+        },
+        {
+          "speaker": "Carlos",
+          "pt": "Moro, sim. Há dez anos, com a minha esposa e os nossos dois filhos.",
+          "en": "Yes, I have. For ten years, with my wife and our two children."
+        },
+        {
+          "speaker": "Mariana",
+          "pt": "Nós somos três: meu marido, minha filha e eu.",
+          "en": "There are three of us: my husband, my daughter and me."
+        },
+        {
+          "speaker": "Carlos",
+          "pt": "Que bom! Meus filhos adoram brincar com outras crianças.",
+          "en": "How nice! My children love playing with other children."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which floor does Carlos live on?",
+          "choices": [
+            "The third floor.",
+            "The fourth floor.",
+            "The second floor.",
+            "The fifth floor."
+          ],
+          "answer": 1,
+          "explanation": "Carlos says “Moro no quarto andar.”"
+        },
+        {
+          "question": "How long has Carlos lived in the building?",
+          "choices": [
+            "Two years.",
+            "Six years.",
+            "Ten years.",
+            "Twenty years."
+          ],
+          "answer": 2,
+          "explanation": "He answers “Há dez anos”, ten years."
+        },
+        {
+          "question": "Who lives with Mariana?",
+          "choices": [
+            "Her husband and her daughter.",
+            "Her husband and two sons.",
+            "Her mother and her daughter.",
+            "Her sister."
+          ],
+          "answer": 0,
+          "explanation": "Mariana says “meu marido, minha filha e eu.”"
+        },
+        {
+          "question": "What do Carlos’s children love?",
+          "choices": [
+            "Playing football.",
+            "Reading.",
+            "Going to the beach.",
+            "Playing with other children."
+          ],
+          "answer": 3,
+          "explanation": "Carlos says “Meus filhos adoram brincar com outras crianças.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "present-regular",
+        "possessives"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-014",
+        "essentials-017",
+        "essentials-047",
+        "essentials-050",
+        "essentials-052",
+        "essentials-054",
+        "essentials-086",
+        "health-time-025",
+        "health-time-031",
+        "health-time-047",
+        "health-time-048",
+        "health-time-055",
+        "home-003",
+        "people-004",
+        "people-011",
+        "people-012",
+        "people-024",
+        "people-025",
+        "people-030",
+        "people-034",
+        "qualities-003",
+        "qualities-008",
+        "verbs-001",
+        "verbs-065",
+        "verbs-075",
+        "verbs-078"
+      ],
+      "gloss": [
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "sou",
+          "en": "am (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "nova",
+          "en": "new (novo)",
+          "word": "qualities-008"
+        },
+        {
+          "pt": "vizinha",
+          "en": "neighbour (woman) (o vizinho)",
+          "word": "people-030"
+        },
+        {
+          "pt": "chamo",
+          "en": "am called (chamar)",
+          "word": "verbs-075"
+        },
+        {
+          "pt": "Mariana",
+          "en": "Mariana (a woman’s first name)"
+        },
+        {
+          "pt": "Seja bem-vinda",
+          "en": "welcome (to a woman)",
+          "word": "essentials-017"
+        },
+        {
+          "pt": "Carlos",
+          "en": "Carlos (a man’s first name)"
+        },
+        {
+          "pt": "Moro",
+          "en": "live (morar); here: yes, I do",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "quarto",
+          "en": "fourth",
+          "word": "home-003"
+        },
+        {
+          "pt": "andar",
+          "en": "floor (o andar)"
+        },
+        {
+          "pt": "senhor",
+          "en": "you (polite, to a man)",
+          "word": "people-034"
+        },
+        {
+          "pt": "mora",
+          "en": "lives (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "há",
+          "en": "for (with a length of time) (haver)"
+        },
+        {
+          "pt": "muito tempo",
+          "en": "a long time",
+          "word": "health-time-025"
+        },
+        {
+          "pt": "sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "Há",
+          "en": "for (with a length of time) (haver)"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "esposa",
+          "en": "wife",
+          "word": "people-025"
+        },
+        {
+          "pt": "nossos",
+          "en": "our (nosso)",
+          "word": "essentials-052"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "filhos",
+          "en": "children (o filho)",
+          "word": "people-011"
+        },
+        {
+          "pt": "somos",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "marido",
+          "en": "husband",
+          "word": "people-024"
+        },
+        {
+          "pt": "filha",
+          "en": "daughter",
+          "word": "people-012"
+        },
+        {
+          "pt": "Que bom",
+          "en": "how nice; great",
+          "word": "qualities-003"
+        },
+        {
+          "pt": "Meus",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "adoram",
+          "en": "love (adorar)"
+        },
+        {
+          "pt": "brincar",
+          "en": "to play (brincar)",
+          "word": "verbs-078"
+        },
+        {
+          "pt": "outras",
+          "en": "other (outro)",
+          "word": "essentials-047"
+        },
+        {
+          "pt": "crianças",
+          "en": "children (a criança)",
+          "word": "people-004"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Who is who in the photo",
+      "lines": [
+        {
+          "speaker": "Beatriz",
+          "pt": "Olha essa foto: é a minha família.",
+          "en": "Look at this photo: it’s my family."
+        },
+        {
+          "speaker": "Lucas",
+          "pt": "Quem é o senhor ao seu lado?",
+          "en": "Who is the man next to you?"
+        },
+        {
+          "speaker": "Beatriz",
+          "pt": "É o meu avô. Ele tem oitenta anos.",
+          "en": "That’s my grandfather. He is eighty."
+        },
+        {
+          "speaker": "Lucas",
+          "pt": "E a menina na frente dele?",
+          "en": "And the girl in front of him?"
+        },
+        {
+          "speaker": "Beatriz",
+          "pt": "É a minha sobrinha. Ela tem seis anos.",
+          "en": "That’s my niece. She is six."
+        },
+        {
+          "speaker": "Lucas",
+          "pt": "A sua sobrinha é muito parecida com a sua irmã.",
+          "en": "Your niece looks a lot like your sister."
+        },
+        {
+          "speaker": "Beatriz",
+          "pt": "É verdade, e ela também é muito engraçada.",
+          "en": "That’s true, and she is very funny too."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who is the man next to Beatriz?",
+          "choices": [
+            "Her father.",
+            "Her uncle.",
+            "Her grandfather.",
+            "Her brother."
+          ],
+          "answer": 2,
+          "explanation": "Beatriz says “É o meu avô.”"
+        },
+        {
+          "question": "How old is the niece?",
+          "choices": [
+            "Four.",
+            "Eight.",
+            "Ten.",
+            "Six."
+          ],
+          "answer": 3,
+          "explanation": "Beatriz says “Ela tem seis anos.”"
+        },
+        {
+          "question": "Where is the girl in the photo?",
+          "choices": [
+            "Next to Beatriz.",
+            "In front of the grandfather.",
+            "Behind the grandfather.",
+            "Next to Beatriz’s sister."
+          ],
+          "answer": 1,
+          "explanation": "Lucas asks about “a menina na frente dele”, the girl in front of the grandfather."
+        },
+        {
+          "question": "Who does the niece look like?",
+          "choices": [
+            "Beatriz’s sister.",
+            "Beatriz.",
+            "The grandfather.",
+            "Beatriz’s mother."
+          ],
+          "answer": 0,
+          "explanation": "Lucas says “A sua sobrinha é muito parecida com a sua irmã.”"
+        }
+      ],
+      "topics": [
+        "present-irregular",
+        "possessives",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-031",
+        "essentials-048",
+        "essentials-050",
+        "essentials-051",
+        "essentials-053",
+        "essentials-064",
+        "essentials-065",
+        "essentials-086",
+        "health-time-031",
+        "health-time-051",
+        "media-034",
+        "people-007",
+        "people-014",
+        "people-015",
+        "people-023",
+        "people-028",
+        "people-034",
+        "qualities-080",
+        "verbs-001",
+        "verbs-003",
+        "verbs-013"
+      ],
+      "gloss": [
+        {
+          "pt": "Olha",
+          "en": "look (olhar)",
+          "word": "verbs-013"
+        },
+        {
+          "pt": "essa",
+          "en": "this (esse)",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "foto",
+          "en": "photo",
+          "word": "media-034"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "família",
+          "en": "family",
+          "word": "people-028"
+        },
+        {
+          "pt": "Quem",
+          "en": "who",
+          "word": "essentials-031"
+        },
+        {
+          "pt": "senhor",
+          "en": "man; gentleman (o senhor)",
+          "word": "people-034"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "lado",
+          "en": "side; ao seu lado = next to you"
+        },
+        {
+          "pt": "É",
+          "en": "it is; that’s (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "avô",
+          "en": "grandfather",
+          "word": "people-015"
+        },
+        {
+          "pt": "tem",
+          "en": "is (ter, with ages)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "oitenta",
+          "en": "eighty"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "menina",
+          "en": "girl",
+          "word": "people-007"
+        },
+        {
+          "pt": "frente",
+          "en": "front; na frente de = in front of"
+        },
+        {
+          "pt": "dele",
+          "en": "him; of him (de + ele)",
+          "word": "essentials-053"
+        },
+        {
+          "pt": "sobrinha",
+          "en": "niece",
+          "word": "people-023"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "sua",
+          "en": "your (seu)",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot; very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "parecida",
+          "en": "like (parecido); parecida com = looks like"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "É verdade",
+          "en": "that’s true"
+        },
+        {
+          "pt": "também",
+          "en": "also; too",
+          "word": "essentials-064"
+        },
+        {
+          "pt": "engraçada",
+          "en": "funny (engraçado)",
+          "word": "qualities-080"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Two mothers at the school gate",
+      "lines": [
+        {
+          "speaker": "Paula",
+          "pt": "Oi! Você é a mãe do Miguel, não é?",
+          "en": "Hi! You’re Miguel’s mother, aren’t you?"
+        },
+        {
+          "speaker": "Renata",
+          "pt": "Sou, sim. E você é a mãe da Sofia?",
+          "en": "Yes, I am. And are you Sofia’s mother?"
+        },
+        {
+          "speaker": "Paula",
+          "pt": "Isso. A Sofia fala muito do Miguel em casa.",
+          "en": "That’s right. Sofia talks a lot about Miguel at home."
+        },
+        {
+          "speaker": "Renata",
+          "pt": "Eles são da mesma turma. São bons amigos.",
+          "en": "They are in the same class. They are good friends."
+        },
+        {
+          "speaker": "Paula",
+          "pt": "Sábado é o aniversário da Sofia. O Miguel quer vir?",
+          "en": "On Saturday it’s Sofia’s birthday. Does Miguel want to come?"
+        },
+        {
+          "speaker": "Renata",
+          "pt": "Claro! Ele vai adorar. A que horas é a festa?",
+          "en": "Of course! He’ll love it. What time is the party?"
+        },
+        {
+          "speaker": "Paula",
+          "pt": "Às três da tarde, lá em casa.",
+          "en": "At three in the afternoon, at our place."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who is Renata?",
+          "choices": [
+            "Sofia’s mother.",
+            "Miguel’s teacher.",
+            "Paula’s sister.",
+            "Miguel’s mother."
+          ],
+          "answer": 3,
+          "explanation": "Paula asks “Você é a mãe do Miguel, não é?” and Renata answers “Sou, sim.”"
+        },
+        {
+          "question": "How do the children know each other?",
+          "choices": [
+            "They are in the same class.",
+            "They are cousins.",
+            "They are neighbours.",
+            "They play football together."
+          ],
+          "answer": 0,
+          "explanation": "Renata says “Eles são da mesma turma.”"
+        },
+        {
+          "question": "What happens on Saturday?",
+          "choices": [
+            "Miguel’s birthday party.",
+            "A school party.",
+            "Sofia’s birthday party.",
+            "A football match."
+          ],
+          "answer": 2,
+          "explanation": "Paula says “Sábado é o aniversário da Sofia.”"
+        },
+        {
+          "question": "What time is the party?",
+          "choices": [
+            "At two o’clock.",
+            "At three o’clock.",
+            "At four o’clock.",
+            "At six o’clock."
+          ],
+          "answer": 1,
+          "explanation": "Paula says “Às três da tarde, lá em casa.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-002",
+        "essentials-014",
+        "essentials-029",
+        "essentials-056",
+        "essentials-065",
+        "essentials-081",
+        "health-time-026",
+        "health-time-033",
+        "health-time-045",
+        "health-time-048",
+        "home-001",
+        "leisure-019",
+        "people-010",
+        "people-029",
+        "people-038",
+        "qualities-003",
+        "qualities-044",
+        "school-045",
+        "verbs-001",
+        "verbs-005",
+        "verbs-006",
+        "verbs-008",
+        "verbs-022"
+      ],
+      "gloss": [
+        {
+          "pt": "Oi",
+          "en": "hi",
+          "word": "essentials-002"
+        },
+        {
+          "pt": "é",
+          "en": "are; is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "Miguel",
+          "en": "Miguel (a boy’s first name)"
+        },
+        {
+          "pt": "não é",
+          "en": "aren’t you? (lit. isn’t it?)"
+        },
+        {
+          "pt": "Sou",
+          "en": "I am (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "Sofia",
+          "en": "Sofia (a girl’s first name)"
+        },
+        {
+          "pt": "Isso",
+          "en": "that’s right (isso)",
+          "word": "essentials-029"
+        },
+        {
+          "pt": "fala",
+          "en": "talks (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "casa",
+          "en": "home",
+          "word": "home-001"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mesma",
+          "en": "same (mesmo)",
+          "word": "essentials-081"
+        },
+        {
+          "pt": "turma",
+          "en": "class",
+          "word": "school-045"
+        },
+        {
+          "pt": "São",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "bons",
+          "en": "good (bom)",
+          "word": "qualities-003"
+        },
+        {
+          "pt": "amigos",
+          "en": "friends (o amigo)",
+          "word": "people-029"
+        },
+        {
+          "pt": "Sábado",
+          "en": "on Saturday (o sábado)",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "aniversário",
+          "en": "birthday",
+          "word": "people-038"
+        },
+        {
+          "pt": "quer",
+          "en": "wants (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "vir",
+          "en": "to come",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "Claro",
+          "en": "of course",
+          "word": "qualities-044"
+        },
+        {
+          "pt": "vai",
+          "en": "is going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "adorar",
+          "en": "to love (adorar); here: love it"
+        },
+        {
+          "pt": "horas",
+          "en": "time (a hora); a que horas = at what time",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon (a tarde)",
+          "word": "health-time-033"
+        },
+        {
+          "pt": "lá",
+          "en": "there; lá em casa = at my place",
+          "word": "essentials-056"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "A phone call about Sunday lunch",
+      "lines": [
+        {
+          "speaker": "Mãe",
+          "pt": "Alô, Thiago? Você vem almoçar aqui no domingo?",
+          "en": "Hello, Thiago? Are you coming for lunch here on Sunday?"
+        },
+        {
+          "speaker": "Thiago",
+          "pt": "Vou, sim, mãe. Posso levar a minha namorada?",
+          "en": "Yes, I am, Mum. Can I bring my girlfriend?"
+        },
+        {
+          "speaker": "Mãe",
+          "pt": "Claro! Como ela se chama?",
+          "en": "Of course! What’s her name?"
+        },
+        {
+          "speaker": "Thiago",
+          "pt": "Larissa. Ela é dentista e é muito simpática.",
+          "en": "Larissa. She is a dentist and she is very nice."
+        },
+        {
+          "speaker": "Mãe",
+          "pt": "Ótimo. O seu irmão também vem com a esposa e o bebê.",
+          "en": "Great. Your brother is coming too, with his wife and the baby."
+        },
+        {
+          "speaker": "Thiago",
+          "pt": "Que legal! A gente chega ao meio-dia.",
+          "en": "How lovely! We’ll arrive at midday."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Thiago ask his mother?",
+          "choices": [
+            "If he can bring his girlfriend.",
+            "If he can bring his brother.",
+            "If lunch is on Saturday.",
+            "If he can come in the evening."
+          ],
+          "answer": 0,
+          "explanation": "Thiago asks “Posso levar a minha namorada?”"
+        },
+        {
+          "question": "What is Larissa’s job?",
+          "choices": [
+            "She is a doctor.",
+            "She is a dentist.",
+            "She is a nurse.",
+            "She is a teacher."
+          ],
+          "answer": 1,
+          "explanation": "Thiago says “Ela é dentista”."
+        },
+        {
+          "question": "Who else is coming to lunch?",
+          "choices": [
+            "Thiago’s sister and her husband.",
+            "Thiago’s grandparents.",
+            "Larissa’s parents.",
+            "Thiago’s brother, his wife and the baby."
+          ],
+          "answer": 3,
+          "explanation": "His mother says “O seu irmão também vem com a esposa e o bebê.”"
+        },
+        {
+          "question": "When will Thiago and Larissa arrive?",
+          "choices": [
+            "At eleven o’clock.",
+            "At one o’clock.",
+            "At midday.",
+            "In the evening."
+          ],
+          "answer": 2,
+          "explanation": "Thiago says “A gente chega ao meio-dia.”"
+        }
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-014",
+        "essentials-024",
+        "essentials-035",
+        "essentials-050",
+        "essentials-051",
+        "essentials-054",
+        "essentials-064",
+        "essentials-065",
+        "essentials-086",
+        "health-time-046",
+        "people-005",
+        "people-010",
+        "people-013",
+        "people-025",
+        "people-027",
+        "qualities-044",
+        "qualities-074",
+        "qualities-075",
+        "qualities-085",
+        "qualities-102",
+        "verbs-001",
+        "verbs-005",
+        "verbs-006",
+        "verbs-023",
+        "verbs-035",
+        "verbs-043",
+        "verbs-075",
+        "work-014"
+      ],
+      "gloss": [
+        {
+          "pt": "Alô",
+          "en": "hello (on the phone)"
+        },
+        {
+          "pt": "Thiago",
+          "en": "Thiago (a man’s first name)"
+        },
+        {
+          "pt": "vem",
+          "en": "is coming; are coming (vir)",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "almoçar",
+          "en": "to have lunch"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "Vou",
+          "en": "I’m going; yes, I’ll come (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "mãe",
+          "en": "Mum (a mãe)",
+          "word": "people-010"
+        },
+        {
+          "pt": "Posso",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "levar",
+          "en": "to bring; to take",
+          "word": "verbs-043"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "namorada",
+          "en": "girlfriend",
+          "word": "people-027"
+        },
+        {
+          "pt": "Claro",
+          "en": "of course",
+          "word": "qualities-044"
+        },
+        {
+          "pt": "Como",
+          "en": "how; what",
+          "word": "essentials-035"
+        },
+        {
+          "pt": "chama",
+          "en": "is called (chamar)",
+          "word": "verbs-075"
+        },
+        {
+          "pt": "Larissa",
+          "en": "Larissa (a woman’s first name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "dentista",
+          "en": "dentist",
+          "word": "work-014"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "simpática",
+          "en": "nice; friendly (simpático)",
+          "word": "qualities-085"
+        },
+        {
+          "pt": "Ótimo",
+          "en": "great",
+          "word": "qualities-075"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        },
+        {
+          "pt": "também",
+          "en": "also; too",
+          "word": "essentials-064"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "esposa",
+          "en": "wife",
+          "word": "people-025"
+        },
+        {
+          "pt": "bebê",
+          "en": "baby",
+          "word": "people-005"
+        },
+        {
+          "pt": "Que legal",
+          "en": "how nice; great",
+          "word": "qualities-074"
+        },
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "chega",
+          "en": "arrive (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "meio-dia",
+          "en": "midday",
+          "word": "qualities-102"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A message about a cousin’s visit",
+      "lines": [
+        {
+          "pt": "Oi, Ana! Meu primo Gabriel chega no sábado à rodoviária.",
+          "en": "Hi, Ana! My cousin Gabriel arrives at the bus station on Saturday."
+        },
+        {
+          "pt": "Ele tem dezenove anos e estuda música em Curitiba.",
+          "en": "He is nineteen and he studies music in Curitiba."
+        },
+        {
+          "pt": "Ele vai ficar na minha casa uma semana.",
+          "en": "He is going to stay at my house for a week."
+        },
+        {
+          "pt": "Você quer conhecer o Gabriel no domingo à tarde?",
+          "en": "Do you want to meet Gabriel on Sunday afternoon?"
+        }
+      ],
+      "questions": [
+        {
+          "question": "When does Gabriel arrive?",
+          "choices": [
+            "On Friday.",
+            "On Sunday.",
+            "On Saturday.",
+            "On Monday."
+          ],
+          "answer": 2,
+          "explanation": "The message says “Meu primo Gabriel chega no sábado à rodoviária.”"
+        },
+        {
+          "question": "What does Gabriel study?",
+          "choices": [
+            "Music.",
+            "Medicine.",
+            "English.",
+            "Maths."
+          ],
+          "answer": 0,
+          "explanation": "The message says he “estuda música em Curitiba.”"
+        },
+        {
+          "question": "How long is he going to stay?",
+          "choices": [
+            "A weekend.",
+            "Three days.",
+            "A month.",
+            "A week."
+          ],
+          "answer": 3,
+          "explanation": "The message says “Ele vai ficar na minha casa uma semana.”"
+        },
+        {
+          "question": "When can Ana meet Gabriel?",
+          "choices": [
+            "On Saturday morning.",
+            "On Sunday afternoon.",
+            "On Sunday evening.",
+            "On Monday afternoon."
+          ],
+          "answer": 1,
+          "explanation": "The message asks about meeting him “no domingo à tarde”."
+        }
+      ],
+      "topics": [
+        "present-regular",
+        "ir-future",
+        "possessives"
+      ],
+      "words": [
+        "essentials-002",
+        "essentials-050",
+        "health-time-029",
+        "health-time-031",
+        "health-time-033",
+        "health-time-045",
+        "health-time-046",
+        "home-001",
+        "leisure-027",
+        "people-021",
+        "travel-014",
+        "verbs-003",
+        "verbs-005",
+        "verbs-017",
+        "verbs-022",
+        "verbs-033",
+        "verbs-035",
+        "verbs-055"
+      ],
+      "gloss": [
+        {
+          "pt": "Oi",
+          "en": "hi",
+          "word": "essentials-002"
+        },
+        {
+          "pt": "Ana",
+          "en": "Ana (a woman’s first name)"
+        },
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "primo",
+          "en": "cousin",
+          "word": "people-021"
+        },
+        {
+          "pt": "Gabriel",
+          "en": "Gabriel (a man’s first name)"
+        },
+        {
+          "pt": "chega",
+          "en": "arrives (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "rodoviária",
+          "en": "bus station",
+          "word": "travel-014"
+        },
+        {
+          "pt": "tem",
+          "en": "is (ter, with ages)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "dezenove",
+          "en": "nineteen"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "estuda",
+          "en": "studies (estudar)",
+          "word": "verbs-055"
+        },
+        {
+          "pt": "música",
+          "en": "music",
+          "word": "leisure-027"
+        },
+        {
+          "pt": "Curitiba",
+          "en": "Curitiba (a city in Brazil)"
+        },
+        {
+          "pt": "vai",
+          "en": "is going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "ficar",
+          "en": "to stay",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "casa",
+          "en": "house; home",
+          "word": "home-001"
+        },
+        {
+          "pt": "semana",
+          "en": "week",
+          "word": "health-time-029"
+        },
+        {
+          "pt": "quer",
+          "en": "want (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "conhecer",
+          "en": "to meet (conhecer)",
+          "word": "verbs-017"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon (a tarde)",
+          "word": "health-time-033"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "The family in flat twelve",
+      "lines": [
+        {
+          "pt": "A família Oliveira mora no apartamento doze.",
+          "en": "The Oliveira family lives in flat twelve."
+        },
+        {
+          "pt": "O pai, Marcos, é motorista de ônibus.",
+          "en": "The father, Marcos, is a bus driver."
+        },
+        {
+          "pt": "A mãe, Cláudia, é enfermeira no hospital do bairro.",
+          "en": "The mother, Cláudia, is a nurse at the neighbourhood hospital."
+        },
+        {
+          "pt": "Eles têm três filhos: duas meninas e um menino.",
+          "en": "They have three children: two girls and a boy."
+        },
+        {
+          "pt": "O menino é o mais novo e tem quatro anos.",
+          "en": "The boy is the youngest and he is four."
+        },
+        {
+          "pt": "A família também tem um cachorro preto, o Pipoca.",
+          "en": "The family also has a black dog, Pipoca."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is Marcos’s job?",
+          "choices": [
+            "He is a taxi driver.",
+            "He is a bus driver.",
+            "He is a nurse.",
+            "He is a teacher."
+          ],
+          "answer": 1,
+          "explanation": "The text says “O pai, Marcos, é motorista de ônibus.”"
+        },
+        {
+          "question": "Where does Cláudia work?",
+          "choices": [
+            "At a school.",
+            "At a bank.",
+            "At a bakery.",
+            "At the neighbourhood hospital."
+          ],
+          "answer": 3,
+          "explanation": "The text says she “é enfermeira no hospital do bairro.”"
+        },
+        {
+          "question": "How many children do the Oliveiras have?",
+          "choices": [
+            "Three.",
+            "Two.",
+            "Four.",
+            "Five."
+          ],
+          "answer": 0,
+          "explanation": "The text says “Eles têm três filhos”."
+        },
+        {
+          "question": "How old is the youngest child?",
+          "choices": [
+            "Two.",
+            "Six.",
+            "Four.",
+            "Ten."
+          ],
+          "answer": 2,
+          "explanation": "The text says “O menino é o mais novo e tem quatro anos.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "present-irregular",
+        "plural"
+      ],
+      "words": [
+        "essentials-064",
+        "health-time-023",
+        "health-time-031",
+        "health-time-047",
+        "health-time-048",
+        "health-time-049",
+        "home-002",
+        "nature-026",
+        "people-006",
+        "people-007",
+        "people-009",
+        "people-010",
+        "people-011",
+        "people-028",
+        "qualities-008",
+        "qualities-093",
+        "town-005",
+        "travel-005",
+        "verbs-001",
+        "verbs-003",
+        "verbs-065",
+        "work-013",
+        "work-022"
+      ],
+      "gloss": [
+        {
+          "pt": "família",
+          "en": "family",
+          "word": "people-028"
+        },
+        {
+          "pt": "Oliveira",
+          "en": "Oliveira (a family name)"
+        },
+        {
+          "pt": "mora",
+          "en": "lives (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "apartamento",
+          "en": "flat",
+          "word": "home-002"
+        },
+        {
+          "pt": "doze",
+          "en": "twelve"
+        },
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        },
+        {
+          "pt": "Marcos",
+          "en": "Marcos (a man’s first name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "motorista",
+          "en": "driver",
+          "word": "work-022"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "Cláudia",
+          "en": "Cláudia (a woman’s first name)"
+        },
+        {
+          "pt": "enfermeira",
+          "en": "nurse (woman) (o enfermeiro)",
+          "word": "work-013"
+        },
+        {
+          "pt": "hospital",
+          "en": "hospital",
+          "word": "health-time-023"
+        },
+        {
+          "pt": "bairro",
+          "en": "neighbourhood",
+          "word": "town-005"
+        },
+        {
+          "pt": "têm",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "filhos",
+          "en": "children (o filho)",
+          "word": "people-011"
+        },
+        {
+          "pt": "duas",
+          "en": "two (dois)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "meninas",
+          "en": "girls (a menina)",
+          "word": "people-007"
+        },
+        {
+          "pt": "menino",
+          "en": "boy",
+          "word": "people-006"
+        },
+        {
+          "pt": "mais novo",
+          "en": "the youngest (novo)",
+          "word": "qualities-008"
+        },
+        {
+          "pt": "tem",
+          "en": "has; is (with ages) (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "quatro",
+          "en": "four",
+          "word": "health-time-049"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "também",
+          "en": "also; too",
+          "word": "essentials-064"
+        },
+        {
+          "pt": "cachorro",
+          "en": "dog",
+          "word": "nature-026"
+        },
+        {
+          "pt": "preto",
+          "en": "black",
+          "word": "qualities-093"
+        },
+        {
+          "pt": "Pipoca",
+          "en": "Pipoca (a dog’s name; lit. popcorn)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "A note for the neighbour",
+      "lines": [
+        {
+          "pt": "Oi, dona Lúcia! Esta semana eu vou viajar com o meu marido.",
+          "en": "Hi, Mrs Lúcia! This week I am going to travel with my husband."
+        },
+        {
+          "pt": "A minha mãe vai ficar com as crianças.",
+          "en": "My mother is going to look after the children."
+        },
+        {
+          "pt": "Ela é baixa, tem cabelo branco e usa óculos.",
+          "en": "She is short, she has white hair and she wears glasses."
+        },
+        {
+          "pt": "Ela chega amanhã de manhã, de táxi.",
+          "en": "She arrives tomorrow morning, by taxi."
+        },
+        {
+          "pt": "Muito obrigada pela ajuda! Beijos, Juliana.",
+          "en": "Thank you very much for your help! Love, Juliana."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who is going away this week?",
+          "choices": [
+            "Juliana and her mother.",
+            "Dona Lúcia.",
+            "The children.",
+            "Juliana and her husband."
+          ],
+          "answer": 3,
+          "explanation": "Juliana writes “Esta semana eu vou viajar com o meu marido.”"
+        },
+        {
+          "question": "Who is going to look after the children?",
+          "choices": [
+            "Dona Lúcia.",
+            "Juliana’s sister.",
+            "Juliana’s mother.",
+            "Juliana’s husband."
+          ],
+          "answer": 2,
+          "explanation": "Juliana writes “A minha mãe vai ficar com as crianças.”"
+        },
+        {
+          "question": "What does Juliana’s mother look like?",
+          "choices": [
+            "Tall, with white hair.",
+            "Short, with white hair and glasses.",
+            "Short, with dark hair.",
+            "Tall, with glasses."
+          ],
+          "answer": 1,
+          "explanation": "Juliana writes “Ela é baixa, tem cabelo branco e usa óculos.”"
+        },
+        {
+          "question": "How is Juliana’s mother arriving?",
+          "choices": [
+            "By taxi.",
+            "By bus.",
+            "By plane.",
+            "By train."
+          ],
+          "answer": 0,
+          "explanation": "Juliana writes “Ela chega amanhã de manhã, de táxi.”"
+        }
+      ],
+      "topics": [
+        "ir-future",
+        "adjective-agreement",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-002",
+        "essentials-009",
+        "essentials-050",
+        "essentials-086",
+        "essentials-088",
+        "feelings-044",
+        "health-time-017",
+        "health-time-029",
+        "health-time-037",
+        "people-004",
+        "people-010",
+        "people-024",
+        "people-050",
+        "qualities-012",
+        "qualities-092",
+        "society-039",
+        "travel-009",
+        "travel-026",
+        "verbs-001",
+        "verbs-003",
+        "verbs-005",
+        "verbs-033",
+        "verbs-035",
+        "verbs-053"
+      ],
+      "gloss": [
+        {
+          "pt": "Oi",
+          "en": "hi",
+          "word": "essentials-002"
+        },
+        {
+          "pt": "dona",
+          "en": "Mrs (polite title before a first name)"
+        },
+        {
+          "pt": "Lúcia",
+          "en": "Lúcia (a woman’s first name)"
+        },
+        {
+          "pt": "Esta",
+          "en": "this (este)"
+        },
+        {
+          "pt": "semana",
+          "en": "week",
+          "word": "health-time-029"
+        },
+        {
+          "pt": "vou",
+          "en": "am going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "viajar",
+          "en": "to travel",
+          "word": "travel-026"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "marido",
+          "en": "husband",
+          "word": "people-024"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "vai",
+          "en": "is going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "ficar",
+          "en": "to stay; ficar com = to look after",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "crianças",
+          "en": "children (a criança)",
+          "word": "people-004"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "baixa",
+          "en": "short (baixo)",
+          "word": "qualities-012"
+        },
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "cabelo",
+          "en": "hair",
+          "word": "health-time-017"
+        },
+        {
+          "pt": "branco",
+          "en": "white",
+          "word": "qualities-092"
+        },
+        {
+          "pt": "usa",
+          "en": "wears (usar)",
+          "word": "verbs-053"
+        },
+        {
+          "pt": "óculos",
+          "en": "glasses",
+          "word": "people-050"
+        },
+        {
+          "pt": "chega",
+          "en": "arrives (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "amanhã de manhã",
+          "en": "tomorrow morning",
+          "word": "health-time-037"
+        },
+        {
+          "pt": "táxi",
+          "en": "taxi",
+          "word": "travel-009"
+        },
+        {
+          "pt": "Muito obrigada",
+          "en": "thank you very much (said by a woman)",
+          "word": "essentials-009"
+        },
+        {
+          "pt": "pela",
+          "en": "for the (por + a)",
+          "word": "essentials-088"
+        },
+        {
+          "pt": "ajuda",
+          "en": "help",
+          "word": "society-039"
+        },
+        {
+          "pt": "Beijos",
+          "en": "love; kisses (o beijo)",
+          "word": "feelings-044"
+        },
+        {
+          "pt": "Juliana",
+          "en": "Juliana (a woman’s first name)"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "Notice in the entrance hall",
+      "lines": [
+        {
+          "pt": "Atenção, moradores do prédio!",
+          "en": "Attention, residents of the building!"
+        },
+        {
+          "pt": "No sábado, tem festa junina no salão de festas.",
+          "en": "On Saturday, there is a June festival party in the party room."
+        },
+        {
+          "pt": "Todas as famílias estão convidadas, com crianças e avós.",
+          "en": "All the families are invited, with children and grandparents."
+        },
+        {
+          "pt": "Cada família traz uma comida ou uma bebida.",
+          "en": "Each family brings a dish or a drink."
+        },
+        {
+          "pt": "A festa começa às seis da tarde.",
+          "en": "The party starts at six in the evening."
+        },
+        {
+          "pt": "Para mais informações, fale com o porteiro.",
+          "en": "For more information, talk to the doorman."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where is the party?",
+          "choices": [
+            "In the building’s party room.",
+            "In the park.",
+            "At the school.",
+            "In the street."
+          ],
+          "answer": 0,
+          "explanation": "The notice says the party is “no salão de festas.”"
+        },
+        {
+          "question": "Who is invited?",
+          "choices": [
+            "Only the children.",
+            "Only the adults.",
+            "Only the grandparents.",
+            "All the families."
+          ],
+          "answer": 3,
+          "explanation": "The notice says “Todas as famílias estão convidadas”."
+        },
+        {
+          "question": "What does each family bring?",
+          "choices": [
+            "Some money.",
+            "A chair.",
+            "A dish or a drink.",
+            "A present."
+          ],
+          "answer": 2,
+          "explanation": "The notice says “Cada família traz uma comida ou uma bebida.”"
+        },
+        {
+          "question": "Who can give more information?",
+          "choices": [
+            "The mayor.",
+            "The doorman.",
+            "A neighbour.",
+            "A teacher."
+          ],
+          "answer": 1,
+          "explanation": "The notice says “Para mais informações, fale com o porteiro.”"
+        }
+      ],
+      "topics": [
+        "present-irregular",
+        "plural"
+      ],
+      "words": [
+        "essentials-045",
+        "essentials-046",
+        "essentials-067",
+        "essentials-085",
+        "essentials-086",
+        "food-044",
+        "health-time-033",
+        "health-time-045",
+        "health-time-051",
+        "leisure-019",
+        "leisure-021",
+        "media-049",
+        "people-004",
+        "people-015",
+        "people-028",
+        "town-006",
+        "town-047",
+        "verbs-002",
+        "verbs-003",
+        "verbs-008",
+        "verbs-044",
+        "verbs-047"
+      ],
+      "gloss": [
+        {
+          "pt": "Atenção",
+          "en": "attention"
+        },
+        {
+          "pt": "moradores",
+          "en": "residents (o morador)"
+        },
+        {
+          "pt": "prédio",
+          "en": "building",
+          "word": "town-006"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "festa junina",
+          "en": "June festival party",
+          "word": "leisure-019"
+        },
+        {
+          "pt": "salão de festas",
+          "en": "party room (in a building)"
+        },
+        {
+          "pt": "Todas",
+          "en": "all (todo)",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "famílias",
+          "en": "families (a família)",
+          "word": "people-028"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "convidadas",
+          "en": "invited (convidar)",
+          "word": "leisure-021"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "crianças",
+          "en": "children (a criança)",
+          "word": "people-004"
+        },
+        {
+          "pt": "avós",
+          "en": "grandparents (o avô)",
+          "word": "people-015"
+        },
+        {
+          "pt": "Cada",
+          "en": "each",
+          "word": "essentials-046"
+        },
+        {
+          "pt": "família",
+          "en": "family",
+          "word": "people-028"
+        },
+        {
+          "pt": "traz",
+          "en": "brings (trazer)",
+          "word": "verbs-044"
+        },
+        {
+          "pt": "comida",
+          "en": "food; dish",
+          "word": "food-044"
+        },
+        {
+          "pt": "bebida",
+          "en": "drink"
+        },
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        },
+        {
+          "pt": "começa",
+          "en": "starts (começar)",
+          "word": "verbs-047"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon; evening (a tarde)",
+          "word": "health-time-033"
+        },
+        {
+          "pt": "Para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "mais",
+          "en": "more",
+          "word": "essentials-067"
+        },
+        {
+          "pt": "informações",
+          "en": "information (a informação)",
+          "word": "media-049"
+        },
+        {
+          "pt": "fale",
+          "en": "talk; speak (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "porteiro",
+          "en": "doorman",
+          "word": "town-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-people-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "An email to a host family",
+      "lines": [
+        {
+          "pt": "Olá, família Santos!",
+          "en": "Hello, Santos family!"
+        },
+        {
+          "pt": "Meu nome é Emma, tenho dezoito anos e sou inglesa.",
+          "en": "My name is Emma, I am eighteen and I am English."
+        },
+        {
+          "pt": "Moro em Londres com a minha mãe e o meu irmão mais velho.",
+          "en": "I live in London with my mother and my older brother."
+        },
+        {
+          "pt": "Sou alta, tenho cabelo ruivo e sou um pouco tímida.",
+          "en": "I am tall, I have red hair and I am a little shy."
+        },
+        {
+          "pt": "Gosto muito de ler e de cozinhar.",
+          "en": "I really like reading and cooking."
+        },
+        {
+          "pt": "Até breve! Emma.",
+          "en": "See you soon! Emma."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How old is Emma?",
+          "choices": [
+            "Sixteen.",
+            "Twenty.",
+            "Eighteen.",
+            "Fifteen."
+          ],
+          "answer": 2,
+          "explanation": "Emma writes “tenho dezoito anos”."
+        },
+        {
+          "question": "Who does Emma live with?",
+          "choices": [
+            "Her parents.",
+            "Her mother and her older brother.",
+            "Her father and her sister.",
+            "Her grandmother."
+          ],
+          "answer": 1,
+          "explanation": "Emma writes “Moro em Londres com a minha mãe e o meu irmão mais velho.”"
+        },
+        {
+          "question": "How does Emma describe herself?",
+          "choices": [
+            "Tall and a little shy.",
+            "Short and a little shy.",
+            "Tall and very funny.",
+            "Short and very funny."
+          ],
+          "answer": 0,
+          "explanation": "Emma writes “Sou alta, tenho cabelo ruivo e sou um pouco tímida.”"
+        },
+        {
+          "question": "What does Emma like doing?",
+          "choices": [
+            "Dancing and singing.",
+            "Sport and music.",
+            "Travelling.",
+            "Reading and cooking."
+          ],
+          "answer": 3,
+          "explanation": "Emma writes “Gosto muito de ler e de cozinhar.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "adjective-agreement",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-050",
+        "essentials-065",
+        "essentials-066",
+        "essentials-086",
+        "essentials-089",
+        "feelings-019",
+        "health-time-017",
+        "health-time-031",
+        "people-010",
+        "people-013",
+        "people-028",
+        "people-036",
+        "qualities-009",
+        "qualities-011",
+        "verbs-001",
+        "verbs-003",
+        "verbs-057",
+        "verbs-065",
+        "verbs-072",
+        "verbs-079"
+      ],
+      "gloss": [
+        {
+          "pt": "Olá",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "pt": "família",
+          "en": "family",
+          "word": "people-028"
+        },
+        {
+          "pt": "Santos",
+          "en": "Santos (a family name)"
+        },
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "nome",
+          "en": "name",
+          "word": "people-036"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "Emma",
+          "en": "Emma (a woman’s first name)"
+        },
+        {
+          "pt": "tenho",
+          "en": "have; am (with ages) (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "dezoito",
+          "en": "eighteen"
+        },
+        {
+          "pt": "anos",
+          "en": "years (o ano)",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "sou",
+          "en": "am (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "inglesa",
+          "en": "English (inglês)"
+        },
+        {
+          "pt": "Moro",
+          "en": "I live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "Londres",
+          "en": "London"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        },
+        {
+          "pt": "mais velho",
+          "en": "older (velho)",
+          "word": "qualities-009"
+        },
+        {
+          "pt": "Sou",
+          "en": "I am (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "alta",
+          "en": "tall (alto)",
+          "word": "qualities-011"
+        },
+        {
+          "pt": "cabelo",
+          "en": "hair",
+          "word": "health-time-017"
+        },
+        {
+          "pt": "ruivo",
+          "en": "red (of hair)"
+        },
+        {
+          "pt": "um pouco",
+          "en": "a little",
+          "word": "essentials-066"
+        },
+        {
+          "pt": "tímida",
+          "en": "shy (tímido)",
+          "word": "feelings-019"
+        },
+        {
+          "pt": "Gosto",
+          "en": "I like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot; really",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "ler",
+          "en": "reading (ler)",
+          "word": "verbs-057"
+        },
+        {
+          "pt": "cozinhar",
+          "en": "cooking; to cook",
+          "word": "verbs-079"
+        },
+        {
+          "pt": "Até breve",
+          "en": "see you soon",
+          "word": "essentials-089"
+        }
+      ]
+    }
+  ]
+}

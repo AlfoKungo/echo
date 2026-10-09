@@ -131,10 +131,12 @@ const grammarAudio = new Set(course.topics.flatMap(topic => topic.exercises.map(
 // Lanes Echo writes itself (lib/text-topup.ts) live next to the database, out of the checked-in content.
 const generatedLanes = join(dirname(dbPath), 'comprehension');
 const comprehensionOn = has('listen') || has('read');
-let bank: Bank = comprehensionOn ? await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]) : { sentences: [], passages: [] };
+let bank: Bank = comprehensionOn ? await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes], language) : { sentences: [], passages: [] };
 // Grammar by ear (made below, once the rooms are known) shows its questions between Listen's.
 const between = (stream: StreamId) => (stream === 'listen' && grammarEar ? { ear: grammarEar.offer() } : {});
-let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between });
+// Each language's Listen plays its own recordings (audio/<code>/comprehension outside French).
+const comprehensionAudio = { audioDir: join(language.audio, 'comprehension'), languageName: language.english };
+let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between, ...comprehensionAudio });
 const texts = createTextTopup({
   root, dataDir: dirname(dbPath), ask, stock: () => comprehension.stock(), attempts,
   ...(process.env.ECHO_TEXT_THRESHOLD ? { threshold: Number(process.env.ECHO_TEXT_THRESHOLD) } : {}),
@@ -142,9 +144,9 @@ const texts = createTextTopup({
   // A new lane joins by rebuilding the comprehension store; every stream's state is in the database. The old
   // store closes a minute later so a request already inside it can finish.
   reload: async () => {
-    bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
+    bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes], language);
     const previous = comprehension;
-    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between });
+    comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between, ...comprehensionAudio });
     setTimeout(() => previous.close(), 60_000);
   },
 });

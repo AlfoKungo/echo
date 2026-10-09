@@ -1,0 +1,4105 @@
+{
+  "sentences": [
+    {
+      "id": "a1-food-s01",
+      "level": "A1",
+      "pt": "Eu quero um café com leite, por favor.",
+      "en": "I’d like a coffee with milk, please.",
+      "distractors": [
+        "I’d like a tea with milk, please.",
+        "I’d like a coffee without milk, please.",
+        "We’d like a coffee with milk, please."
+      ],
+      "topics": [
+        "articles-gender",
+        "present-irregular"
+      ],
+      "words": [
+        "verbs-022",
+        "food-003",
+        "essentials-086",
+        "food-005",
+        "essentials-010"
+      ],
+      "gloss": [
+        {
+          "pt": "quero",
+          "en": "want; would like (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "leite",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s02",
+      "level": "A1",
+      "pt": "O pão ainda está quente.",
+      "en": "The bread is still warm.",
+      "distractors": [
+        "The bread is already warm.",
+        "The bread is still cold.",
+        "The cake is still warm."
+      ],
+      "topics": [
+        "ser-estar"
+      ],
+      "words": [
+        "food-002",
+        "essentials-070",
+        "verbs-002",
+        "qualities-023"
+      ],
+      "gloss": [
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "pt": "ainda",
+          "en": "still",
+          "word": "essentials-070"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "quente",
+          "en": "warm; hot",
+          "word": "qualities-023"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s03",
+      "level": "A1",
+      "pt": "Você gosta de morangos?",
+      "en": "Do you like strawberries?",
+      "distractors": [
+        "Do you like grapes?",
+        "Does she like strawberries?",
+        "Do you sell strawberries?"
+      ],
+      "topics": [
+        "present-regular",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-072",
+        "food-024"
+      ],
+      "gloss": [
+        {
+          "pt": "gosta",
+          "en": "like (gostar); gostar de = to like",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "morangos",
+          "en": "strawberries (o morango)",
+          "word": "food-024"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s04",
+      "level": "A1",
+      "pt": "A gente vai jantar no restaurante hoje à noite.",
+      "en": "We’re having dinner at the restaurant tonight.",
+      "distractors": [
+        "We’re having dinner at the restaurant tomorrow night.",
+        "We’re having lunch at the restaurant tonight.",
+        "We’re having dinner at home tonight."
+      ],
+      "topics": [
+        "ir-future",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-005",
+        "food-043",
+        "travel-020",
+        "health-time-035",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "vai",
+          "en": "are going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "jantar",
+          "en": "have dinner",
+          "word": "food-043"
+        },
+        {
+          "pt": "restaurante",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "pt": "hoje",
+          "en": "today; hoje à noite = tonight",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s05",
+      "level": "A1",
+      "pt": "Ela não gosta de queijo.",
+      "en": "She doesn’t like cheese.",
+      "distractors": [
+        "She likes cheese.",
+        "He doesn’t like cheese.",
+        "She doesn’t like fish."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "verbs-072",
+        "food-010"
+      ],
+      "gloss": [
+        {
+          "pt": "gosta",
+          "en": "likes (gostar); gostar de = to like",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "queijo",
+          "en": "cheese",
+          "word": "food-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s06",
+      "level": "A1",
+      "pt": "Quanto custa esse bolo?",
+      "en": "How much is this cake?",
+      "distractors": [
+        "How much is this bread?",
+        "How much are these cakes?",
+        "How much is this chocolate?"
+      ],
+      "topics": [
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-038",
+        "verbs-071",
+        "essentials-048",
+        "food-034"
+      ],
+      "gloss": [
+        {
+          "pt": "Quanto",
+          "en": "how much",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "esse",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "bolo",
+          "en": "cake",
+          "word": "food-034"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s07",
+      "level": "A1",
+      "pt": "A feira abre às sete horas.",
+      "en": "The street market opens at seven o’clock.",
+      "distractors": [
+        "The street market closes at seven o’clock.",
+        "The street market opens at eight o’clock.",
+        "The supermarket opens at seven o’clock."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "shopping-018",
+        "verbs-045",
+        "health-time-052",
+        "health-time-026"
+      ],
+      "gloss": [
+        {
+          "pt": "feira",
+          "en": "street market",
+          "word": "shopping-018"
+        },
+        {
+          "pt": "abre",
+          "en": "opens (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "sete",
+          "en": "seven",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s08",
+      "level": "A1",
+      "pt": "Eu vou comprar tomates na feira.",
+      "en": "I’m going to buy tomatoes at the street market.",
+      "distractors": [
+        "I’m going to buy potatoes at the street market.",
+        "I’m going to sell tomatoes at the street market.",
+        "She’s going to buy tomatoes at the street market."
+      ],
+      "topics": [
+        "ir-future",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-005",
+        "verbs-068",
+        "food-027",
+        "shopping-018"
+      ],
+      "gloss": [
+        {
+          "pt": "vou",
+          "en": "am going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "comprar",
+          "en": "buy",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "tomates",
+          "en": "tomatoes (o tomate)",
+          "word": "food-027"
+        },
+        {
+          "pt": "feira",
+          "en": "street market",
+          "word": "shopping-018"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s09",
+      "level": "A1",
+      "pt": "Tem leite na geladeira.",
+      "en": "There is milk in the fridge.",
+      "distractors": [
+        "There is no milk in the fridge.",
+        "There is juice in the fridge.",
+        "There is milk on the table."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-003",
+        "food-005",
+        "home-030"
+      ],
+      "gloss": [
+        {
+          "pt": "Tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "leite",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "pt": "geladeira",
+          "en": "fridge",
+          "word": "home-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s10",
+      "level": "A1",
+      "pt": "Vocês têm uma mesa para dois?",
+      "en": "Do you have a table for two?",
+      "distractors": [
+        "Do you have a table for three?",
+        "Do you have a table for four?",
+        "Do you have a room for two?"
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-003",
+        "home-020",
+        "essentials-085",
+        "health-time-047"
+      ],
+      "gloss": [
+        {
+          "pt": "têm",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s11",
+      "level": "A1",
+      "pt": "A conta, por favor.",
+      "en": "The bill, please.",
+      "distractors": [
+        "The menu, please.",
+        "The salt, please.",
+        "The change, please."
+      ],
+      "topics": [
+        "articles-gender"
+      ],
+      "words": [
+        "shopping-040",
+        "essentials-010"
+      ],
+      "gloss": [
+        {
+          "pt": "conta",
+          "en": "bill",
+          "word": "shopping-040"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s12",
+      "level": "A1",
+      "pt": "Meu irmão odeia cebola.",
+      "en": "My brother hates onions.",
+      "distractors": [
+        "My sister hates onions.",
+        "My brother loves onions.",
+        "My brother hates garlic."
+      ],
+      "topics": [
+        "possessives",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-050",
+        "people-013",
+        "feelings-039",
+        "food-030"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        },
+        {
+          "pt": "odeia",
+          "en": "hates (odiar)",
+          "word": "feelings-039"
+        },
+        {
+          "pt": "cebola",
+          "en": "onion; onions",
+          "word": "food-030"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s13",
+      "level": "A1",
+      "pt": "Esse restaurante é muito caro.",
+      "en": "This restaurant is very expensive.",
+      "distractors": [
+        "This restaurant is very cheap.",
+        "This bakery is very expensive.",
+        "This restaurant isn’t expensive."
+      ],
+      "topics": [
+        "ser-estar"
+      ],
+      "words": [
+        "essentials-048",
+        "travel-020",
+        "verbs-001",
+        "essentials-065",
+        "qualities-051"
+      ],
+      "gloss": [
+        {
+          "pt": "Esse",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "restaurante",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "caro",
+          "en": "expensive",
+          "word": "qualities-051"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s14",
+      "level": "A1",
+      "pt": "Eu vou querer uma sopa e uma salada.",
+      "en": "I’ll have a soup and a salad.",
+      "distractors": [
+        "I’ll have a soup and a sandwich.",
+        "I’ll have two soups and a salad.",
+        "She’ll have a soup and a salad."
+      ],
+      "topics": [
+        "ir-future",
+        "articles-gender"
+      ],
+      "words": [
+        "verbs-005",
+        "verbs-022",
+        "food-017",
+        "food-018"
+      ],
+      "gloss": [
+        {
+          "pt": "vou",
+          "en": "will (ir); vou querer = I’ll have",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "querer",
+          "en": "want; have (when ordering)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "sopa",
+          "en": "soup",
+          "word": "food-017"
+        },
+        {
+          "pt": "salada",
+          "en": "salad",
+          "word": "food-018"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s15",
+      "level": "A1",
+      "pt": "Vocês têm suco de laranja?",
+      "en": "Do you have orange juice?",
+      "distractors": [
+        "Do you have mango juice?",
+        "Do you have orange ice cream?",
+        "Do you have orange cake?"
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-003",
+        "food-037",
+        "food-022"
+      ],
+      "gloss": [
+        {
+          "pt": "têm",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "suco",
+          "en": "juice",
+          "word": "food-037"
+        },
+        {
+          "pt": "laranja",
+          "en": "orange",
+          "word": "food-022"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s16",
+      "level": "A1",
+      "pt": "As batatas fritas estão frias.",
+      "en": "The chips are cold.",
+      "distractors": [
+        "The chips are hot.",
+        "The chips are ready.",
+        "The chicken is cold."
+      ],
+      "topics": [
+        "ser-estar",
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "food-028",
+        "verbs-002",
+        "qualities-024"
+      ],
+      "gloss": [
+        {
+          "pt": "batatas fritas",
+          "en": "chips; French fries (a batata frita)",
+          "word": "food-028"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "frias",
+          "en": "cold (frio)",
+          "word": "qualities-024"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s17",
+      "level": "A1",
+      "pt": "A gente bebe água, não refrigerante.",
+      "en": "We drink water, not fizzy drinks.",
+      "distractors": [
+        "We drink water, not beer.",
+        "We drink fizzy drinks, not water.",
+        "They drink water, not fizzy drinks."
+      ],
+      "topics": [
+        "present-regular",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-060",
+        "food-001",
+        "food-040"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "bebe",
+          "en": "drink (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "água",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "pt": "refrigerante",
+          "en": "fizzy drinks; soft drink",
+          "word": "food-040"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s18",
+      "level": "A1",
+      "pt": "O garçom traz dois copos.",
+      "en": "The waiter brings two glasses.",
+      "distractors": [
+        "The waiter brings two plates.",
+        "The waiter brings three glasses.",
+        "The cook brings two glasses."
+      ],
+      "topics": [
+        "present-irregular",
+        "plural"
+      ],
+      "words": [
+        "work-020",
+        "verbs-044",
+        "health-time-047",
+        "home-044"
+      ],
+      "gloss": [
+        {
+          "pt": "garçom",
+          "en": "waiter",
+          "word": "work-020"
+        },
+        {
+          "pt": "traz",
+          "en": "brings (trazer)",
+          "word": "verbs-044"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "copos",
+          "en": "glasses (o copo)",
+          "word": "home-044"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s19",
+      "level": "A1",
+      "pt": "Minha mãe faz um bolo de chocolate.",
+      "en": "My mother is making a chocolate cake.",
+      "distractors": [
+        "My mother is making a banana cake.",
+        "My sister is making a chocolate cake.",
+        "My mother is buying a chocolate cake."
+      ],
+      "topics": [
+        "possessives",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-050",
+        "people-010",
+        "verbs-004",
+        "food-034",
+        "food-035"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "faz",
+          "en": "is making (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "bolo",
+          "en": "cake",
+          "word": "food-034"
+        },
+        {
+          "pt": "chocolate",
+          "en": "chocolate",
+          "word": "food-035"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s20",
+      "level": "A1",
+      "pt": "Eu não estou com fome agora.",
+      "en": "I’m not hungry now.",
+      "distractors": [
+        "I’m hungry now.",
+        "I’m not thirsty now.",
+        "He’s not hungry now."
+      ],
+      "topics": [
+        "negation-questions",
+        "ser-estar"
+      ],
+      "words": [
+        "verbs-002",
+        "food-045",
+        "essentials-057"
+      ],
+      "gloss": [
+        {
+          "pt": "estou",
+          "en": "am (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "com fome",
+          "en": "hungry (estar com fome = to be hungry)",
+          "word": "food-045"
+        },
+        {
+          "pt": "agora",
+          "en": "now",
+          "word": "essentials-057"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s21",
+      "level": "A1",
+      "pt": "Você quer açúcar no café?",
+      "en": "Do you want sugar in your coffee?",
+      "distractors": [
+        "Do you want milk in your coffee?",
+        "Do you want sugar in your tea?",
+        "Does she want sugar in her coffee?"
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-022",
+        "food-006",
+        "food-003"
+      ],
+      "gloss": [
+        {
+          "pt": "quer",
+          "en": "want (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "açúcar",
+          "en": "sugar",
+          "word": "food-006"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s22",
+      "level": "A1",
+      "pt": "O almoço começa ao meio-dia.",
+      "en": "Lunch starts at noon.",
+      "distractors": [
+        "Lunch ends at noon.",
+        "Dinner starts at noon.",
+        "Lunch starts at one o’clock."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "food-042",
+        "verbs-047",
+        "qualities-102"
+      ],
+      "gloss": [
+        {
+          "pt": "almoço",
+          "en": "lunch",
+          "word": "food-042"
+        },
+        {
+          "pt": "começa",
+          "en": "starts (começar)",
+          "word": "verbs-047"
+        },
+        {
+          "pt": "meio-dia",
+          "en": "noon; midday",
+          "word": "qualities-102"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s23",
+      "level": "A1",
+      "pt": "Ela compra peixe na feira.",
+      "en": "She buys fish at the street market.",
+      "distractors": [
+        "She sells fish at the street market.",
+        "She buys meat at the street market.",
+        "She buys fish at the supermarket."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-068",
+        "nature-029",
+        "shopping-018"
+      ],
+      "gloss": [
+        {
+          "pt": "compra",
+          "en": "buys (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "peixe",
+          "en": "fish",
+          "word": "nature-029"
+        },
+        {
+          "pt": "feira",
+          "en": "street market",
+          "word": "shopping-018"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s24",
+      "level": "A1",
+      "pt": "A gente não tem manteiga.",
+      "en": "We don’t have any butter.",
+      "distractors": [
+        "We have some butter.",
+        "We don’t have any cheese.",
+        "They don’t have any butter."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-003",
+        "food-009"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "manteiga",
+          "en": "butter",
+          "word": "food-009"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s25",
+      "level": "A1",
+      "pt": "Esse queijo vem de Minas Gerais.",
+      "en": "This cheese comes from Minas Gerais.",
+      "distractors": [
+        "This cheese comes from São Paulo.",
+        "This coffee comes from Minas Gerais.",
+        "These cheeses come from Minas Gerais."
+      ],
+      "topics": [
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-048",
+        "food-010",
+        "verbs-006"
+      ],
+      "gloss": [
+        {
+          "pt": "Esse",
+          "en": "this",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "queijo",
+          "en": "cheese",
+          "word": "food-010"
+        },
+        {
+          "pt": "vem",
+          "en": "comes (vir)",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "Minas Gerais",
+          "en": "Minas Gerais (a Brazilian state)"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s26",
+      "level": "A1",
+      "pt": "Três pães de queijo custam seis reais.",
+      "en": "Three cheese rolls cost six reais.",
+      "distractors": [
+        "Three cheese rolls cost five reais.",
+        "Two cheese rolls cost six reais.",
+        "Three cheese rolls cost sixteen reais."
+      ],
+      "topics": [
+        "plural",
+        "present-regular"
+      ],
+      "words": [
+        "health-time-048",
+        "food-002",
+        "verbs-071",
+        "health-time-051",
+        "shopping-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "pães de queijo",
+          "en": "cheese rolls (o pão de queijo)",
+          "word": "food-002"
+        },
+        {
+          "pt": "custam",
+          "en": "cost (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s27",
+      "level": "A1",
+      "pt": "O prato do dia custa vinte reais.",
+      "en": "The dish of the day costs twenty reais.",
+      "distractors": [
+        "The dish of the day costs twelve reais.",
+        "The soup of the day costs twenty reais.",
+        "The dish of the day costs thirty reais."
+      ],
+      "topics": [
+        "prepositions-contractions",
+        "present-regular"
+      ],
+      "words": [
+        "home-043",
+        "health-time-028",
+        "verbs-071",
+        "health-time-056",
+        "shopping-005"
+      ],
+      "gloss": [
+        {
+          "pt": "prato",
+          "en": "dish",
+          "word": "home-043"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s28",
+      "level": "A1",
+      "pt": "Meu pai faz arroz e feijão todo dia.",
+      "en": "My father makes rice and beans every day.",
+      "distractors": [
+        "My mother makes rice and beans every day.",
+        "My father makes rice and beans every Sunday.",
+        "My father makes rice and chicken every day."
+      ],
+      "topics": [
+        "possessives",
+        "present-irregular"
+      ],
+      "words": [
+        "essentials-050",
+        "people-009",
+        "verbs-004",
+        "food-012",
+        "food-013",
+        "essentials-045",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        },
+        {
+          "pt": "faz",
+          "en": "makes (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "arroz",
+          "en": "rice",
+          "word": "food-012"
+        },
+        {
+          "pt": "feijão",
+          "en": "beans",
+          "word": "food-013"
+        },
+        {
+          "pt": "todo",
+          "en": "every (todo dia = every day)",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s29",
+      "level": "A1",
+      "pt": "Eu adoro chocolate amargo.",
+      "en": "I love dark chocolate.",
+      "distractors": [
+        "I love milk chocolate.",
+        "I hate dark chocolate.",
+        "She loves dark chocolate."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "food-035"
+      ],
+      "gloss": [
+        {
+          "pt": "adoro",
+          "en": "love (adorar)"
+        },
+        {
+          "pt": "chocolate",
+          "en": "chocolate",
+          "word": "food-035"
+        },
+        {
+          "pt": "amargo",
+          "en": "dark (of chocolate); bitter"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s30",
+      "level": "A1",
+      "pt": "Você pode trazer o cardápio, por favor?",
+      "en": "Can you bring the menu, please?",
+      "distractors": [
+        "Can you bring the bill, please?",
+        "Can you bring two menus, please?",
+        "Can you take the menu away, please?"
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-023",
+        "verbs-044",
+        "food-052",
+        "essentials-010"
+      ],
+      "gloss": [
+        {
+          "pt": "pode",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "trazer",
+          "en": "bring",
+          "word": "verbs-044"
+        },
+        {
+          "pt": "cardápio",
+          "en": "menu",
+          "word": "food-052"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s31",
+      "level": "A1",
+      "pt": "A padaria abre aos domingos.",
+      "en": "The bakery opens on Sundays.",
+      "distractors": [
+        "The bakery closes on Sundays.",
+        "The bakery opens on Saturdays.",
+        "The supermarket opens on Sundays."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "shopping-016",
+        "verbs-045",
+        "health-time-046"
+      ],
+      "gloss": [
+        {
+          "pt": "padaria",
+          "en": "bakery",
+          "word": "shopping-016"
+        },
+        {
+          "pt": "abre",
+          "en": "opens (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "domingos",
+          "en": "Sundays (o domingo)",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s32",
+      "level": "A1",
+      "pt": "Ela coloca sal na sopa.",
+      "en": "She puts salt in the soup.",
+      "distractors": [
+        "She puts sugar in the soup.",
+        "She puts salt in the salad.",
+        "He puts salt in the soup."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-028",
+        "food-007",
+        "food-017"
+      ],
+      "gloss": [
+        {
+          "pt": "coloca",
+          "en": "puts (colocar)",
+          "word": "verbs-028"
+        },
+        {
+          "pt": "sal",
+          "en": "salt",
+          "word": "food-007"
+        },
+        {
+          "pt": "sopa",
+          "en": "soup",
+          "word": "food-017"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s33",
+      "level": "A1",
+      "pt": "A gente procura um bom restaurante.",
+      "en": "We’re looking for a good restaurant.",
+      "distractors": [
+        "We’re looking for a cheap restaurant.",
+        "We’re looking for a good bakery.",
+        "They’re looking for a good restaurant."
+      ],
+      "topics": [
+        "present-regular",
+        "adjective-agreement"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-030",
+        "qualities-003",
+        "travel-020"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "procura",
+          "en": "are looking for (procurar)",
+          "word": "verbs-030"
+        },
+        {
+          "pt": "bom",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "pt": "restaurante",
+          "en": "restaurant",
+          "word": "travel-020"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s34",
+      "level": "A1",
+      "pt": "Onde você compra seu pão?",
+      "en": "Where do you buy your bread?",
+      "distractors": [
+        "When do you buy your bread?",
+        "Where do you buy your coffee?",
+        "Where does she buy her bread?"
+      ],
+      "topics": [
+        "negation-questions",
+        "possessives"
+      ],
+      "words": [
+        "essentials-033",
+        "verbs-068",
+        "essentials-051",
+        "food-002"
+      ],
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "compra",
+          "en": "buy (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s35",
+      "level": "A1",
+      "pt": "O frango está no forno.",
+      "en": "The chicken is in the oven.",
+      "distractors": [
+        "The chicken is in the fridge.",
+        "The fish is in the oven.",
+        "The chicken is on the table."
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "food-016",
+        "verbs-002",
+        "home-032"
+      ],
+      "gloss": [
+        {
+          "pt": "frango",
+          "en": "chicken",
+          "word": "food-016"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "forno",
+          "en": "oven",
+          "word": "home-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s36",
+      "level": "A1",
+      "pt": "Eu pago a conta e você paga as bebidas.",
+      "en": "I’ll pay the bill and you pay for the drinks.",
+      "distractors": [
+        "I’ll pay the bill and you pay for the dessert.",
+        "I’ll pay the bill and she pays for the drinks.",
+        "I’ll pay the bill and you pay for the taxi."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "verbs-070",
+        "shopping-040"
+      ],
+      "gloss": [
+        {
+          "pt": "pago",
+          "en": "pay (pagar)",
+          "word": "verbs-070"
+        },
+        {
+          "pt": "conta",
+          "en": "bill",
+          "word": "shopping-040"
+        },
+        {
+          "pt": "paga",
+          "en": "pay for (pagar)",
+          "word": "verbs-070"
+        },
+        {
+          "pt": "bebidas",
+          "en": "drinks (a bebida)"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s37",
+      "level": "A1",
+      "pt": "As frutas da feira estão frescas.",
+      "en": "The fruit from the street market is fresh.",
+      "distractors": [
+        "The fruit from the street market is cheap.",
+        "The vegetables from the street market are fresh.",
+        "The fruit from the supermarket is fresh."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "plural",
+        "ser-estar"
+      ],
+      "words": [
+        "food-019",
+        "shopping-018",
+        "verbs-002",
+        "qualities-025"
+      ],
+      "gloss": [
+        {
+          "pt": "frutas",
+          "en": "fruit (a fruta)",
+          "word": "food-019"
+        },
+        {
+          "pt": "feira",
+          "en": "street market",
+          "word": "shopping-018"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "frescas",
+          "en": "fresh (fresco)",
+          "word": "qualities-025"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s38",
+      "level": "A1",
+      "pt": "Eu sempre tomo café com pão de manhã.",
+      "en": "I always have coffee with bread in the morning.",
+      "distractors": [
+        "I never have coffee with bread in the morning.",
+        "I always have tea with bread in the morning.",
+        "I always have coffee with bread in the evening."
+      ],
+      "topics": [
+        "present-regular"
+      ],
+      "words": [
+        "essentials-071",
+        "verbs-061",
+        "food-003",
+        "essentials-086",
+        "food-002",
+        "health-time-032"
+      ],
+      "gloss": [
+        {
+          "pt": "sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "tomo",
+          "en": "have; drink (tomar)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "pt": "de manhã",
+          "en": "in the morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s39",
+      "level": "A1",
+      "pt": "Eles jantam na casa dos amigos.",
+      "en": "They’re having dinner at their friends’ house.",
+      "distractors": [
+        "They’re having lunch at their friends’ house.",
+        "They’re having dinner at their parents’ house.",
+        "She’s having dinner at her friends’ house."
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "food-043",
+        "home-001",
+        "people-029"
+      ],
+      "gloss": [
+        {
+          "pt": "jantam",
+          "en": "have dinner (jantar)",
+          "word": "food-043"
+        },
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "pt": "amigos",
+          "en": "friends (o amigo)",
+          "word": "people-029"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s40",
+      "level": "A1",
+      "pt": "Essa torta de maçã está uma delícia.",
+      "en": "This apple pie is delicious.",
+      "distractors": [
+        "This banana pie is delicious.",
+        "This apple cake is delicious.",
+        "This apple pie is too sweet."
+      ],
+      "topics": [
+        "ser-estar",
+        "articles-gender"
+      ],
+      "words": [
+        "essentials-048",
+        "food-020",
+        "verbs-002"
+      ],
+      "gloss": [
+        {
+          "pt": "Essa",
+          "en": "this (esse)",
+          "word": "essentials-048"
+        },
+        {
+          "pt": "torta",
+          "en": "pie; tart"
+        },
+        {
+          "pt": "maçã",
+          "en": "apple",
+          "word": "food-020"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "uma delícia",
+          "en": "delicious (a delícia = delight)"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s41",
+      "level": "A1",
+      "pt": "O vendedor me dá um quilo de cenoura.",
+      "en": "The seller gives me a kilo of carrots.",
+      "distractors": [
+        "The seller gives me two kilos of carrots.",
+        "The seller gives me a kilo of potatoes.",
+        "The seller gives her a kilo of carrots."
+      ],
+      "topics": [
+        "object-pronouns",
+        "present-irregular"
+      ],
+      "words": [
+        "work-021",
+        "verbs-027",
+        "shopping-037",
+        "food-029"
+      ],
+      "gloss": [
+        {
+          "pt": "vendedor",
+          "en": "seller; stallholder",
+          "word": "work-021"
+        },
+        {
+          "pt": "dá",
+          "en": "gives (dar)",
+          "word": "verbs-027"
+        },
+        {
+          "pt": "quilo",
+          "en": "kilo",
+          "word": "shopping-037"
+        },
+        {
+          "pt": "cenoura",
+          "en": "carrot; carrots",
+          "word": "food-029"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s42",
+      "level": "A1",
+      "pt": "Você bebe suco de manga?",
+      "en": "Do you drink mango juice?",
+      "distractors": [
+        "Do you drink orange juice?",
+        "Does he drink mango juice?",
+        "Do you sell mango juice?"
+      ],
+      "topics": [
+        "present-regular",
+        "negation-questions"
+      ],
+      "words": [
+        "verbs-060",
+        "food-037",
+        "food-026"
+      ],
+      "gloss": [
+        {
+          "pt": "bebe",
+          "en": "drink (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "suco",
+          "en": "juice",
+          "word": "food-037"
+        },
+        {
+          "pt": "manga",
+          "en": "mango",
+          "word": "food-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s43",
+      "level": "A1",
+      "pt": "A gente vai ao supermercado amanhã.",
+      "en": "We’re going to the supermarket tomorrow.",
+      "distractors": [
+        "We’re going to the supermarket today.",
+        "We’re going to the bakery tomorrow.",
+        "They’re going to the supermarket tomorrow."
+      ],
+      "topics": [
+        "present-irregular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-024",
+        "verbs-005",
+        "shopping-014",
+        "health-time-037"
+      ],
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "vai",
+          "en": "go (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "supermercado",
+          "en": "supermarket",
+          "word": "shopping-014"
+        },
+        {
+          "pt": "amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s44",
+      "level": "A1",
+      "pt": "O café da manhã é às sete horas.",
+      "en": "Breakfast is at seven o’clock.",
+      "distractors": [
+        "Breakfast is at six o’clock.",
+        "Lunch is at seven o’clock.",
+        "Breakfast is at eight o’clock."
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "food-041",
+        "verbs-001",
+        "health-time-052",
+        "health-time-026"
+      ],
+      "gloss": [
+        {
+          "pt": "café da manhã",
+          "en": "breakfast",
+          "word": "food-041"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "sete",
+          "en": "seven",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s45",
+      "level": "A1",
+      "pt": "Ela não bebe cerveja.",
+      "en": "She doesn’t drink beer.",
+      "distractors": [
+        "She drinks beer.",
+        "He doesn’t drink beer.",
+        "She doesn’t drink wine."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "verbs-060",
+        "food-038"
+      ],
+      "gloss": [
+        {
+          "pt": "bebe",
+          "en": "drinks (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "cerveja",
+          "en": "beer",
+          "word": "food-038"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s46",
+      "level": "A1",
+      "pt": "Hoje não tem sobremesa.",
+      "en": "There’s no dessert today.",
+      "distractors": [
+        "There’s dessert today.",
+        "There’s no soup today.",
+        "There’s no dessert tomorrow."
+      ],
+      "topics": [
+        "negation-questions",
+        "present-irregular"
+      ],
+      "words": [
+        "health-time-035",
+        "verbs-003"
+      ],
+      "gloss": [
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "sobremesa",
+          "en": "dessert"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s47",
+      "level": "A1",
+      "pt": "Você prefere chá ou café?",
+      "en": "Do you prefer tea or coffee?",
+      "distractors": [
+        "Do you prefer tea or juice?",
+        "Does she prefer tea or coffee?",
+        "Do you prefer milk or coffee?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "verbs-098",
+        "food-004",
+        "food-003"
+      ],
+      "gloss": [
+        {
+          "pt": "prefere",
+          "en": "prefer (preferir)",
+          "word": "verbs-098"
+        },
+        {
+          "pt": "chá",
+          "en": "tea",
+          "word": "food-004"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s48",
+      "level": "A1",
+      "pt": "Minha irmã trabalha numa padaria.",
+      "en": "My sister works in a bakery.",
+      "distractors": [
+        "My brother works in a bakery.",
+        "My sister works in a restaurant.",
+        "My sister works in a supermarket."
+      ],
+      "topics": [
+        "possessives",
+        "present-regular",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "essentials-050",
+        "people-014",
+        "verbs-054",
+        "essentials-084",
+        "shopping-016"
+      ],
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "trabalha",
+          "en": "works (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "numa",
+          "en": "in a (em + uma)",
+          "word": "essentials-084"
+        },
+        {
+          "pt": "padaria",
+          "en": "bakery",
+          "word": "shopping-016"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s49",
+      "level": "A1",
+      "pt": "Uma garrafa de vinho custa trinta reais.",
+      "en": "A bottle of wine costs thirty reais.",
+      "distractors": [
+        "A bottle of wine costs forty reais.",
+        "A glass of wine costs thirty reais.",
+        "A bottle of water costs thirty reais."
+      ],
+      "topics": [
+        "present-regular",
+        "articles-gender"
+      ],
+      "words": [
+        "food-049",
+        "food-039",
+        "verbs-071",
+        "shopping-005"
+      ],
+      "gloss": [
+        {
+          "pt": "garrafa",
+          "en": "bottle",
+          "word": "food-049"
+        },
+        {
+          "pt": "vinho",
+          "en": "wine",
+          "word": "food-039"
+        },
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "trinta",
+          "en": "thirty"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-s50",
+      "level": "A1",
+      "pt": "O que você come de manhã?",
+      "en": "What do you eat in the morning?",
+      "distractors": [
+        "What do you drink in the morning?",
+        "What do you eat in the evening?",
+        "What does she eat in the morning?"
+      ],
+      "topics": [
+        "negation-questions",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-032",
+        "verbs-059",
+        "health-time-032"
+      ],
+      "gloss": [
+        {
+          "pt": "O que",
+          "en": "what",
+          "word": "essentials-032"
+        },
+        {
+          "pt": "come",
+          "en": "eat (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "de manhã",
+          "en": "in the morning",
+          "word": "health-time-032"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a1-food-p01",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "Ordering at the snack bar",
+      "lines": [
+        {
+          "speaker": "Garçom",
+          "pt": "Bom dia! O que você vai querer?",
+          "en": "Good morning! What would you like?"
+        },
+        {
+          "speaker": "Juliana",
+          "pt": "Um café com leite e um pão de queijo, por favor.",
+          "en": "A coffee with milk and a cheese roll, please."
+        },
+        {
+          "speaker": "Garçom",
+          "pt": "Café grande ou pequeno?",
+          "en": "A large or a small coffee?"
+        },
+        {
+          "speaker": "Juliana",
+          "pt": "Pequeno, por favor. E um copo de água.",
+          "en": "Small, please. And a glass of water."
+        },
+        {
+          "speaker": "Garçom",
+          "pt": "Tudo bem. São nove reais.",
+          "en": "All right. That’s nine reais."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Juliana order to eat?",
+          "choices": [
+            "A cheese roll",
+            "A sandwich",
+            "A piece of cake",
+            "A biscuit"
+          ],
+          "answer": 0,
+          "explanation": "She says “Um café com leite e um pão de queijo, por favor.”"
+        },
+        {
+          "question": "How does she want her coffee?",
+          "choices": [
+            "Black",
+            "With milk",
+            "With sugar",
+            "Iced"
+          ],
+          "answer": 1,
+          "explanation": "She orders “Um café com leite”."
+        },
+        {
+          "question": "What size of coffee does she choose?",
+          "choices": [
+            "Large",
+            "Medium",
+            "Small",
+            "She doesn’t say"
+          ],
+          "answer": 2,
+          "explanation": "Asked “Café grande ou pequeno?”, she answers “Pequeno, por favor.”"
+        },
+        {
+          "question": "How much does the order come to?",
+          "choices": [
+            "Ten reais",
+            "Five reais",
+            "Nineteen reais",
+            "Nine reais"
+          ],
+          "answer": 3,
+          "explanation": "The waiter says “São nove reais.”"
+        }
+      ],
+      "topics": [
+        "articles-gender",
+        "ir-future",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-032",
+        "verbs-005",
+        "verbs-022",
+        "food-003",
+        "essentials-086",
+        "food-005",
+        "food-002",
+        "essentials-010",
+        "qualities-001",
+        "qualities-002",
+        "home-044",
+        "food-001",
+        "essentials-016",
+        "verbs-001",
+        "health-time-054",
+        "shopping-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "O que",
+          "en": "what",
+          "word": "essentials-032"
+        },
+        {
+          "pt": "vai",
+          "en": "will (ir); vai querer = would like",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "querer",
+          "en": "want; have (when ordering)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "leite",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "pt": "pão de queijo",
+          "en": "cheese roll (a Brazilian snack)",
+          "word": "food-002"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "Café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "grande",
+          "en": "large; big",
+          "word": "qualities-001"
+        },
+        {
+          "pt": "pequeno",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "pt": "Pequeno",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "pt": "copo",
+          "en": "glass",
+          "word": "home-044"
+        },
+        {
+          "pt": "água",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "pt": "Tudo bem",
+          "en": "all right",
+          "word": "essentials-016"
+        },
+        {
+          "pt": "São",
+          "en": "that’s; are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "nove",
+          "en": "nine",
+          "word": "health-time-054"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p02",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the bakery",
+      "lines": [
+        {
+          "speaker": "Atendente",
+          "pt": "Bom dia! Posso ajudar?",
+          "en": "Good morning! Can I help?"
+        },
+        {
+          "speaker": "Marcos",
+          "pt": "Eu quero seis pães franceses, por favor.",
+          "en": "I’d like six bread rolls, please."
+        },
+        {
+          "speaker": "Atendente",
+          "pt": "Desculpe, não tem mais pão francês hoje.",
+          "en": "Sorry, there are no more bread rolls today."
+        },
+        {
+          "speaker": "Marcos",
+          "pt": "Então eu levo um bolo de banana.",
+          "en": "In that case I’ll take a banana cake."
+        },
+        {
+          "speaker": "Atendente",
+          "pt": "Aqui está. São quinze reais.",
+          "en": "Here you are. That’s fifteen reais."
+        },
+        {
+          "speaker": "Marcos",
+          "pt": "Obrigado. Até amanhã!",
+          "en": "Thank you. See you tomorrow!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Marcos ask for first?",
+          "choices": [
+            "A banana cake",
+            "Six bread rolls",
+            "Six cheese rolls",
+            "Two loaves of bread"
+          ],
+          "answer": 1,
+          "explanation": "He says “Eu quero seis pães franceses, por favor.”"
+        },
+        {
+          "question": "What is the problem?",
+          "choices": [
+            "The bakery is closed",
+            "The cake is too expensive",
+            "There are no more bread rolls",
+            "There is no banana cake"
+          ],
+          "answer": 2,
+          "explanation": "The assistant says “não tem mais pão francês hoje.”"
+        },
+        {
+          "question": "What does he buy in the end?",
+          "choices": [
+            "A chocolate cake",
+            "Six bread rolls",
+            "A cheese roll",
+            "A banana cake"
+          ],
+          "answer": 3,
+          "explanation": "He says “Então eu levo um bolo de banana.”"
+        },
+        {
+          "question": "How much does he pay?",
+          "choices": [
+            "Fifteen reais",
+            "Fifty reais",
+            "Five reais",
+            "Sixteen reais"
+          ],
+          "answer": 0,
+          "explanation": "The assistant says “São quinze reais.”"
+        }
+      ],
+      "topics": [
+        "present-irregular",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-003",
+        "verbs-023",
+        "verbs-074",
+        "verbs-022",
+        "health-time-051",
+        "food-002",
+        "essentials-010",
+        "essentials-012",
+        "verbs-003",
+        "essentials-067",
+        "health-time-035",
+        "essentials-063",
+        "verbs-043",
+        "food-034",
+        "food-021",
+        "essentials-054",
+        "verbs-001",
+        "shopping-005",
+        "essentials-009",
+        "essentials-008"
+      ],
+      "gloss": [
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "Posso",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "ajudar",
+          "en": "help",
+          "word": "verbs-074"
+        },
+        {
+          "pt": "quero",
+          "en": "want; would like (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "pães franceses",
+          "en": "bread rolls (o pão francês)",
+          "word": "food-002"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "Desculpe",
+          "en": "sorry",
+          "word": "essentials-012"
+        },
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "mais",
+          "en": "more; não tem mais = there is no more",
+          "word": "essentials-067"
+        },
+        {
+          "pt": "pão francês",
+          "en": "bread roll",
+          "word": "food-002"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "Então",
+          "en": "in that case; so",
+          "word": "essentials-063"
+        },
+        {
+          "pt": "levo",
+          "en": "take (levar)",
+          "word": "verbs-043"
+        },
+        {
+          "pt": "bolo",
+          "en": "cake",
+          "word": "food-034"
+        },
+        {
+          "pt": "banana",
+          "en": "banana",
+          "word": "food-021"
+        },
+        {
+          "pt": "Aqui está",
+          "en": "here you are",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "São",
+          "en": "that’s; are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "quinze",
+          "en": "fifteen"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        },
+        {
+          "pt": "Obrigado",
+          "en": "thank you",
+          "word": "essentials-009"
+        },
+        {
+          "pt": "Até amanhã",
+          "en": "see you tomorrow",
+          "word": "essentials-008"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p03",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "A table for two",
+      "lines": [
+        {
+          "speaker": "Garçom",
+          "pt": "Boa noite! Mesa para quantas pessoas?",
+          "en": "Good evening! A table for how many people?"
+        },
+        {
+          "speaker": "Paulo",
+          "pt": "Para duas pessoas, por favor. Perto da janela?",
+          "en": "For two people, please. Near the window?"
+        },
+        {
+          "speaker": "Garçom",
+          "pt": "Desculpe, a mesa da janela está ocupada. Pode ser lá fora?",
+          "en": "Sorry, the window table is taken. Is outside all right?"
+        },
+        {
+          "speaker": "Paulo",
+          "pt": "Sim, tudo bem. Lá fora está fresco.",
+          "en": "Yes, that’s fine. It’s cool outside."
+        },
+        {
+          "speaker": "Garçom",
+          "pt": "Aqui está o cardápio. O prato do dia é peixe com arroz.",
+          "en": "Here is the menu. The dish of the day is fish with rice."
+        },
+        {
+          "speaker": "Paulo",
+          "pt": "Ótimo! Dois pratos do dia, então.",
+          "en": "Great! Two dishes of the day, then."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How many people is the table for?",
+          "choices": [
+            "One",
+            "Three",
+            "Two",
+            "Four"
+          ],
+          "answer": 2,
+          "explanation": "Paulo says “Para duas pessoas, por favor.”"
+        },
+        {
+          "question": "Where does Paulo first ask to sit?",
+          "choices": [
+            "Outside",
+            "At the bar",
+            "In the corner",
+            "Near the window"
+          ],
+          "answer": 3,
+          "explanation": "He asks “Perto da janela?”"
+        },
+        {
+          "question": "Why can’t they sit near the window?",
+          "choices": [
+            "The window table is taken",
+            "It is too cold there",
+            "The restaurant is closing",
+            "It is too noisy there"
+          ],
+          "answer": 0,
+          "explanation": "The waiter says “a mesa da janela está ocupada.”"
+        },
+        {
+          "question": "What is the dish of the day?",
+          "choices": [
+            "Chicken with rice",
+            "Fish with rice",
+            "Fish with chips",
+            "Meat with beans"
+          ],
+          "answer": 1,
+          "explanation": "The waiter says “O prato do dia é peixe com arroz.”"
+        }
+      ],
+      "topics": [
+        "ser-estar",
+        "prepositions-contractions",
+        "negation-questions"
+      ],
+      "words": [
+        "essentials-005",
+        "home-020",
+        "essentials-085",
+        "essentials-038",
+        "people-001",
+        "health-time-047",
+        "essentials-010",
+        "essentials-094",
+        "home-017",
+        "essentials-012",
+        "verbs-002",
+        "qualities-068",
+        "verbs-023",
+        "essentials-097",
+        "essentials-014",
+        "essentials-016",
+        "qualities-025",
+        "essentials-054",
+        "food-052",
+        "home-043",
+        "health-time-028",
+        "verbs-001",
+        "nature-029",
+        "essentials-086",
+        "food-012",
+        "qualities-075",
+        "essentials-063"
+      ],
+      "gloss": [
+        {
+          "pt": "Boa noite",
+          "en": "good evening",
+          "word": "essentials-005"
+        },
+        {
+          "pt": "Mesa",
+          "en": "table",
+          "word": "home-020"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "quantas",
+          "en": "how many (quanto)",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "pessoas",
+          "en": "people (a pessoa)",
+          "word": "people-001"
+        },
+        {
+          "pt": "Para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "duas",
+          "en": "two (dois)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "Perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "janela",
+          "en": "window",
+          "word": "home-017"
+        },
+        {
+          "pt": "Desculpe",
+          "en": "sorry",
+          "word": "essentials-012"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "ocupada",
+          "en": "taken (ocupado)",
+          "word": "qualities-068"
+        },
+        {
+          "pt": "Pode ser",
+          "en": "is it all right; can it be (poder + ser)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "lá fora",
+          "en": "outside",
+          "word": "essentials-097"
+        },
+        {
+          "pt": "Sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "tudo bem",
+          "en": "that’s fine; all right",
+          "word": "essentials-016"
+        },
+        {
+          "pt": "Lá fora",
+          "en": "outside",
+          "word": "essentials-097"
+        },
+        {
+          "pt": "fresco",
+          "en": "cool; fresh",
+          "word": "qualities-025"
+        },
+        {
+          "pt": "Aqui está",
+          "en": "here is",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "cardápio",
+          "en": "menu",
+          "word": "food-052"
+        },
+        {
+          "pt": "prato",
+          "en": "dish",
+          "word": "home-043"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "peixe",
+          "en": "fish",
+          "word": "nature-029"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "arroz",
+          "en": "rice",
+          "word": "food-012"
+        },
+        {
+          "pt": "Ótimo",
+          "en": "great",
+          "word": "qualities-075"
+        },
+        {
+          "pt": "Dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "pratos",
+          "en": "dishes (o prato)",
+          "word": "home-043"
+        },
+        {
+          "pt": "então",
+          "en": "then",
+          "word": "essentials-063"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p04",
+      "level": "A1",
+      "kind": "dialogue",
+      "title": "At the market stall",
+      "lines": [
+        {
+          "speaker": "Rosa",
+          "pt": "Bom dia! Quanto custa o quilo do tomate?",
+          "en": "Good morning! How much is a kilo of tomatoes?"
+        },
+        {
+          "speaker": "Feirante",
+          "pt": "Oito reais. Hoje o tomate está muito bonito.",
+          "en": "Eight reais. The tomatoes are very nice today."
+        },
+        {
+          "speaker": "Rosa",
+          "pt": "Então eu quero dois quilos. Tem manga?",
+          "en": "Then I’ll have two kilos. Do you have mangoes?"
+        },
+        {
+          "speaker": "Feirante",
+          "pt": "Tem, sim. As mangas estão bem doces.",
+          "en": "Yes, we do. The mangoes are really sweet."
+        },
+        {
+          "speaker": "Rosa",
+          "pt": "Me dá três mangas, por favor.",
+          "en": "Give me three mangoes, please."
+        },
+        {
+          "speaker": "Feirante",
+          "pt": "Tudo bem. São vinte e cinco reais.",
+          "en": "All right. That’s twenty-five reais."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does Rosa ask first?",
+          "choices": [
+            "The price of mangoes",
+            "Where the tomatoes are",
+            "If there are any mangoes",
+            "The price of a kilo of tomatoes"
+          ],
+          "answer": 3,
+          "explanation": "She asks “Quanto custa o quilo do tomate?”"
+        },
+        {
+          "question": "How many kilos of tomatoes does she buy?",
+          "choices": [
+            "Two",
+            "One",
+            "Three",
+            "Eight"
+          ],
+          "answer": 0,
+          "explanation": "She says “Então eu quero dois quilos.”"
+        },
+        {
+          "question": "What does the stallholder say about the mangoes?",
+          "choices": [
+            "They are expensive",
+            "They are really sweet",
+            "They are small",
+            "There are none left"
+          ],
+          "answer": 1,
+          "explanation": "He says “As mangas estão bem doces.”"
+        },
+        {
+          "question": "How much does she pay in total?",
+          "choices": [
+            "Eight reais",
+            "Twenty reais",
+            "Twenty-five reais",
+            "Fifteen reais"
+          ],
+          "answer": 2,
+          "explanation": "The stallholder says “São vinte e cinco reais.”"
+        }
+      ],
+      "topics": [
+        "negation-questions",
+        "adjective-agreement",
+        "plural"
+      ],
+      "words": [
+        "essentials-003",
+        "essentials-038",
+        "verbs-071",
+        "shopping-037",
+        "food-027",
+        "health-time-053",
+        "shopping-005",
+        "health-time-035",
+        "verbs-002",
+        "essentials-065",
+        "qualities-005",
+        "essentials-063",
+        "verbs-022",
+        "health-time-047",
+        "verbs-003",
+        "food-026",
+        "essentials-014",
+        "essentials-077",
+        "qualities-072",
+        "verbs-027",
+        "health-time-048",
+        "essentials-010",
+        "essentials-016",
+        "verbs-001",
+        "health-time-056",
+        "health-time-050"
+      ],
+      "gloss": [
+        {
+          "pt": "Bom dia",
+          "en": "good morning",
+          "word": "essentials-003"
+        },
+        {
+          "pt": "Quanto",
+          "en": "how much",
+          "word": "essentials-038"
+        },
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "quilo",
+          "en": "kilo",
+          "word": "shopping-037"
+        },
+        {
+          "pt": "tomate",
+          "en": "tomato; tomatoes",
+          "word": "food-027"
+        },
+        {
+          "pt": "Oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        },
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "bonito",
+          "en": "nice; good-looking",
+          "word": "qualities-005"
+        },
+        {
+          "pt": "Então",
+          "en": "then; so",
+          "word": "essentials-063"
+        },
+        {
+          "pt": "quero",
+          "en": "want; will have (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "quilos",
+          "en": "kilos (o quilo)",
+          "word": "shopping-037"
+        },
+        {
+          "pt": "Tem",
+          "en": "do you have (ter); Tem, sim = yes, we do",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "manga",
+          "en": "mango; mangoes",
+          "word": "food-026"
+        },
+        {
+          "pt": "sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "mangas",
+          "en": "mangoes (a manga)",
+          "word": "food-026"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "bem",
+          "en": "really; very",
+          "word": "essentials-077"
+        },
+        {
+          "pt": "doces",
+          "en": "sweet (doce)",
+          "word": "qualities-072"
+        },
+        {
+          "pt": "dá",
+          "en": "give (dar)",
+          "word": "verbs-027"
+        },
+        {
+          "pt": "três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "Tudo bem",
+          "en": "all right",
+          "word": "essentials-016"
+        },
+        {
+          "pt": "São",
+          "en": "that’s; are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "cinco",
+          "en": "five",
+          "word": "health-time-050"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p05",
+      "level": "A1",
+      "kind": "text",
+      "title": "A message about dinner",
+      "lines": [
+        {
+          "pt": "Oi, Bia! Hoje à noite a gente janta em casa.",
+          "en": "Hi Bia! Tonight we’re having dinner at home."
+        },
+        {
+          "pt": "Eu vou fazer uma sopa de legumes e um bolo de laranja.",
+          "en": "I’m going to make a vegetable soup and an orange cake."
+        },
+        {
+          "pt": "Você pode trazer pão e uma garrafa de suco?",
+          "en": "Can you bring some bread and a bottle of juice?"
+        },
+        {
+          "pt": "O jantar é às oito horas. Até logo!",
+          "en": "Dinner is at eight o’clock. See you later!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Where are they having dinner?",
+          "choices": [
+            "At the writer’s home",
+            "At Bia’s home",
+            "At a restaurant",
+            "At a snack bar"
+          ],
+          "answer": 0,
+          "explanation": "The message says “Hoje à noite a gente janta em casa.”"
+        },
+        {
+          "question": "What is the writer going to make?",
+          "choices": [
+            "A fish soup and a banana cake",
+            "A vegetable salad and an orange cake",
+            "A vegetable soup and an orange cake",
+            "A vegetable soup and a chocolate cake"
+          ],
+          "answer": 2,
+          "explanation": "The writer says “Eu vou fazer uma sopa de legumes e um bolo de laranja.”"
+        },
+        {
+          "question": "What should Bia bring?",
+          "choices": [
+            "Wine and cheese",
+            "Bread and a bottle of juice",
+            "A cake",
+            "Water and bread"
+          ],
+          "answer": 1,
+          "explanation": "The writer asks “Você pode trazer pão e uma garrafa de suco?”"
+        },
+        {
+          "question": "What time is dinner?",
+          "choices": [
+            "Seven o’clock",
+            "Nine o’clock",
+            "Six o’clock",
+            "Eight o’clock"
+          ],
+          "answer": 3,
+          "explanation": "The message says “O jantar é às oito horas.”"
+        }
+      ],
+      "topics": [
+        "ir-future",
+        "present-regular"
+      ],
+      "words": [
+        "essentials-002",
+        "health-time-035",
+        "health-time-034",
+        "essentials-024",
+        "food-043",
+        "home-001",
+        "verbs-005",
+        "verbs-004",
+        "food-017",
+        "food-032",
+        "food-034",
+        "food-022",
+        "verbs-023",
+        "verbs-044",
+        "food-002",
+        "food-049",
+        "food-037",
+        "verbs-001",
+        "health-time-053",
+        "health-time-026",
+        "essentials-007"
+      ],
+      "gloss": [
+        {
+          "pt": "Oi",
+          "en": "hi",
+          "word": "essentials-002"
+        },
+        {
+          "pt": "Bia",
+          "en": "Bia (a name)"
+        },
+        {
+          "pt": "Hoje",
+          "en": "today; hoje à noite = tonight",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "a gente",
+          "en": "we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "janta",
+          "en": "have dinner (jantar)",
+          "word": "food-043"
+        },
+        {
+          "pt": "casa",
+          "en": "home; em casa = at home",
+          "word": "home-001"
+        },
+        {
+          "pt": "vou",
+          "en": "am going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "fazer",
+          "en": "make",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "sopa",
+          "en": "soup",
+          "word": "food-017"
+        },
+        {
+          "pt": "legumes",
+          "en": "vegetables",
+          "word": "food-032"
+        },
+        {
+          "pt": "bolo",
+          "en": "cake",
+          "word": "food-034"
+        },
+        {
+          "pt": "laranja",
+          "en": "orange",
+          "word": "food-022"
+        },
+        {
+          "pt": "pode",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "trazer",
+          "en": "bring",
+          "word": "verbs-044"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "pt": "garrafa",
+          "en": "bottle",
+          "word": "food-049"
+        },
+        {
+          "pt": "suco",
+          "en": "juice",
+          "word": "food-037"
+        },
+        {
+          "pt": "jantar",
+          "en": "dinner",
+          "word": "food-043"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "Até logo",
+          "en": "see you later",
+          "word": "essentials-007"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p06",
+      "level": "A1",
+      "kind": "text",
+      "title": "The shopping list",
+      "lines": [
+        {
+          "pt": "Lista de compras para o fim de semana:",
+          "en": "Shopping list for the weekend:"
+        },
+        {
+          "pt": "Arroz, feijão, um quilo de carne e seis ovos.",
+          "en": "Rice, beans, a kilo of beef and six eggs."
+        },
+        {
+          "pt": "Não precisa comprar leite, tem muito na geladeira.",
+          "en": "No need to buy milk, there’s lots in the fridge."
+        },
+        {
+          "pt": "Compra também bananas e um pacote de café, por favor.",
+          "en": "Also buy bananas and a packet of coffee, please."
+        },
+        {
+          "pt": "O dinheiro está na mesa da cozinha.",
+          "en": "The money is on the kitchen table."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is the list for?",
+          "choices": [
+            "For a party",
+            "For the weekend",
+            "For Sunday lunch",
+            "For tonight’s dinner"
+          ],
+          "answer": 1,
+          "explanation": "It says “Lista de compras para o fim de semana:”"
+        },
+        {
+          "question": "How many eggs are on the list?",
+          "choices": [
+            "Two",
+            "Ten",
+            "Twelve",
+            "Six"
+          ],
+          "answer": 3,
+          "explanation": "The list says “um quilo de carne e seis ovos.”"
+        },
+        {
+          "question": "Why is there no need to buy milk?",
+          "choices": [
+            "There is lots in the fridge",
+            "It is too expensive",
+            "Nobody drinks milk",
+            "The shop has no milk"
+          ],
+          "answer": 0,
+          "explanation": "The note says “tem muito na geladeira.”"
+        },
+        {
+          "question": "Where is the money?",
+          "choices": [
+            "In the fridge",
+            "In a bag",
+            "On the kitchen table",
+            "On the bed"
+          ],
+          "answer": 2,
+          "explanation": "The note says “O dinheiro está na mesa da cozinha.”"
+        }
+      ],
+      "topics": [
+        "negation-questions",
+        "prepositions-contractions",
+        "plural"
+      ],
+      "words": [
+        "shopping-023",
+        "essentials-085",
+        "health-time-039",
+        "food-012",
+        "food-013",
+        "shopping-037",
+        "food-015",
+        "health-time-051",
+        "food-011",
+        "verbs-024",
+        "verbs-068",
+        "food-005",
+        "verbs-003",
+        "essentials-065",
+        "home-030",
+        "essentials-064",
+        "food-021",
+        "shopping-036",
+        "food-003",
+        "essentials-010",
+        "shopping-001",
+        "verbs-002",
+        "home-020",
+        "home-005"
+      ],
+      "gloss": [
+        {
+          "pt": "Lista de compras",
+          "en": "shopping list",
+          "word": "shopping-023"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "fim de semana",
+          "en": "weekend",
+          "word": "health-time-039"
+        },
+        {
+          "pt": "Arroz",
+          "en": "rice",
+          "word": "food-012"
+        },
+        {
+          "pt": "feijão",
+          "en": "beans",
+          "word": "food-013"
+        },
+        {
+          "pt": "quilo",
+          "en": "kilo",
+          "word": "shopping-037"
+        },
+        {
+          "pt": "carne",
+          "en": "beef; meat",
+          "word": "food-015"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "ovos",
+          "en": "eggs (o ovo)",
+          "word": "food-011"
+        },
+        {
+          "pt": "precisa",
+          "en": "need (precisar); não precisa = there’s no need",
+          "word": "verbs-024"
+        },
+        {
+          "pt": "comprar",
+          "en": "buy",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "leite",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot; lots",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "geladeira",
+          "en": "fridge",
+          "word": "home-030"
+        },
+        {
+          "pt": "Compra",
+          "en": "buy (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "também",
+          "en": "too; also",
+          "word": "essentials-064"
+        },
+        {
+          "pt": "bananas",
+          "en": "bananas (a banana)",
+          "word": "food-021"
+        },
+        {
+          "pt": "pacote",
+          "en": "packet",
+          "word": "shopping-036"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "por favor",
+          "en": "please",
+          "word": "essentials-010"
+        },
+        {
+          "pt": "dinheiro",
+          "en": "money",
+          "word": "shopping-001"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        },
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p07",
+      "level": "A1",
+      "kind": "text",
+      "title": "The dish of the day",
+      "lines": [
+        {
+          "pt": "Prato do dia de segunda-feira:",
+          "en": "Monday’s dish of the day:"
+        },
+        {
+          "pt": "Arroz, feijão, salada e frango com batata.",
+          "en": "Rice, beans, salad and chicken with potatoes."
+        },
+        {
+          "pt": "O prato custa vinte e dois reais.",
+          "en": "The dish costs twenty-two reais."
+        },
+        {
+          "pt": "Com suco de laranja ou refrigerante, custa vinte e oito reais.",
+          "en": "With orange juice or a fizzy drink, it costs twenty-eight reais."
+        },
+        {
+          "pt": "A sobremesa é sorvete de chocolate ou fruta.",
+          "en": "Dessert is chocolate ice cream or fruit."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which day is this menu for?",
+          "choices": [
+            "Sunday",
+            "Friday",
+            "Monday",
+            "Saturday"
+          ],
+          "answer": 2,
+          "explanation": "The sign says “Prato do dia de segunda-feira:”"
+        },
+        {
+          "question": "What meat comes with the dish?",
+          "choices": [
+            "Chicken",
+            "Beef",
+            "Fish",
+            "Pork"
+          ],
+          "answer": 0,
+          "explanation": "The dish has “frango com batata.”"
+        },
+        {
+          "question": "How much is the dish with a drink?",
+          "choices": [
+            "Twenty-two reais",
+            "Twenty reais",
+            "Eighteen reais",
+            "Twenty-eight reais"
+          ],
+          "answer": 3,
+          "explanation": "The sign says “Com suco de laranja ou refrigerante, custa vinte e oito reais.”"
+        },
+        {
+          "question": "What can you have for dessert?",
+          "choices": [
+            "Cake or fruit",
+            "Chocolate ice cream or fruit",
+            "Orange juice",
+            "Chocolate cake"
+          ],
+          "answer": 1,
+          "explanation": "The sign says “A sobremesa é sorvete de chocolate ou fruta.”"
+        }
+      ],
+      "topics": [
+        "articles-gender",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "home-043",
+        "health-time-028",
+        "health-time-040",
+        "food-012",
+        "food-013",
+        "food-018",
+        "food-016",
+        "essentials-086",
+        "food-028",
+        "verbs-071",
+        "health-time-056",
+        "health-time-047",
+        "shopping-005",
+        "food-037",
+        "food-022",
+        "food-040",
+        "health-time-053",
+        "verbs-001",
+        "food-036",
+        "food-035",
+        "food-019"
+      ],
+      "gloss": [
+        {
+          "pt": "Prato",
+          "en": "dish",
+          "word": "home-043"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "segunda-feira",
+          "en": "Monday",
+          "word": "health-time-040"
+        },
+        {
+          "pt": "Arroz",
+          "en": "rice",
+          "word": "food-012"
+        },
+        {
+          "pt": "feijão",
+          "en": "beans",
+          "word": "food-013"
+        },
+        {
+          "pt": "salada",
+          "en": "salad",
+          "word": "food-018"
+        },
+        {
+          "pt": "frango",
+          "en": "chicken",
+          "word": "food-016"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "batata",
+          "en": "potatoes; potato",
+          "word": "food-028"
+        },
+        {
+          "pt": "prato",
+          "en": "dish",
+          "word": "home-043"
+        },
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "vinte",
+          "en": "twenty",
+          "word": "health-time-056"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        },
+        {
+          "pt": "Com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "suco",
+          "en": "juice",
+          "word": "food-037"
+        },
+        {
+          "pt": "laranja",
+          "en": "orange",
+          "word": "food-022"
+        },
+        {
+          "pt": "refrigerante",
+          "en": "fizzy drink; soft drink",
+          "word": "food-040"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "sobremesa",
+          "en": "dessert"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "sorvete",
+          "en": "ice cream",
+          "word": "food-036"
+        },
+        {
+          "pt": "chocolate",
+          "en": "chocolate",
+          "word": "food-035"
+        },
+        {
+          "pt": "fruta",
+          "en": "fruit",
+          "word": "food-019"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p08",
+      "level": "A1",
+      "kind": "text",
+      "title": "My breakfast",
+      "lines": [
+        {
+          "pt": "Eu acordo às seis horas todo dia.",
+          "en": "I wake up at six o’clock every day."
+        },
+        {
+          "pt": "No café da manhã, eu como pão com manteiga e uma fruta.",
+          "en": "For breakfast, I eat bread and butter and a piece of fruit."
+        },
+        {
+          "pt": "Eu bebo um café preto, sem açúcar.",
+          "en": "I drink a black coffee, without sugar."
+        },
+        {
+          "pt": "No fim de semana, eu tomo café na padaria com a minha mãe.",
+          "en": "At the weekend, I have breakfast at the bakery with my mother."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What time does the writer wake up?",
+          "choices": [
+            "Seven o’clock",
+            "Eight o’clock",
+            "Five o’clock",
+            "Six o’clock"
+          ],
+          "answer": 3,
+          "explanation": "The writer says “Eu acordo às seis horas todo dia.”"
+        },
+        {
+          "question": "What does the writer eat for breakfast?",
+          "choices": [
+            "Cheese and ham",
+            "Bread and butter and a piece of fruit",
+            "Cake and fruit",
+            "Eggs and bread"
+          ],
+          "answer": 1,
+          "explanation": "The writer says “eu como pão com manteiga e uma fruta.”"
+        },
+        {
+          "question": "How does the writer take their coffee?",
+          "choices": [
+            "With milk",
+            "With sugar",
+            "Black, without sugar",
+            "Black, with sugar"
+          ],
+          "answer": 2,
+          "explanation": "The writer says “Eu bebo um café preto, sem açúcar.”"
+        },
+        {
+          "question": "Who does the writer have breakfast with at the weekend?",
+          "choices": [
+            "With their mother",
+            "With their sister",
+            "With friends",
+            "Alone"
+          ],
+          "answer": 0,
+          "explanation": "The writer has breakfast at the bakery “com a minha mãe.”"
+        }
+      ],
+      "topics": [
+        "present-regular",
+        "possessives",
+        "prepositions-contractions"
+      ],
+      "words": [
+        "verbs-063",
+        "health-time-051",
+        "health-time-026",
+        "essentials-045",
+        "health-time-028",
+        "food-041",
+        "verbs-059",
+        "food-002",
+        "essentials-086",
+        "food-009",
+        "food-019",
+        "verbs-060",
+        "food-003",
+        "qualities-093",
+        "essentials-087",
+        "food-006",
+        "health-time-039",
+        "verbs-061",
+        "shopping-016",
+        "essentials-050",
+        "people-010"
+      ],
+      "gloss": [
+        {
+          "pt": "acordo",
+          "en": "wake up (acordar)",
+          "word": "verbs-063"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "todo",
+          "en": "every (todo dia = every day)",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "café da manhã",
+          "en": "breakfast",
+          "word": "food-041"
+        },
+        {
+          "pt": "como",
+          "en": "eat (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "manteiga",
+          "en": "butter",
+          "word": "food-009"
+        },
+        {
+          "pt": "fruta",
+          "en": "piece of fruit; fruit",
+          "word": "food-019"
+        },
+        {
+          "pt": "bebo",
+          "en": "drink (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "café",
+          "en": "coffee; tomar café = to have breakfast",
+          "word": "food-003"
+        },
+        {
+          "pt": "preto",
+          "en": "black",
+          "word": "qualities-093"
+        },
+        {
+          "pt": "sem",
+          "en": "without",
+          "word": "essentials-087"
+        },
+        {
+          "pt": "açúcar",
+          "en": "sugar",
+          "word": "food-006"
+        },
+        {
+          "pt": "fim de semana",
+          "en": "weekend",
+          "word": "health-time-039"
+        },
+        {
+          "pt": "tomo",
+          "en": "have (tomar)",
+          "word": "verbs-061"
+        },
+        {
+          "pt": "padaria",
+          "en": "bakery",
+          "word": "shopping-016"
+        },
+        {
+          "pt": "minha",
+          "en": "my (meu)",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        }
+      ]
+    },
+    {
+      "id": "a1-food-p09",
+      "level": "A1",
+      "kind": "text",
+      "title": "Snack bar opening hours",
+      "lines": [
+        {
+          "pt": "A lanchonete abre de segunda a sábado.",
+          "en": "The snack bar is open from Monday to Saturday."
+        },
+        {
+          "pt": "Ela abre às sete horas e fecha às dez da noite.",
+          "en": "It opens at seven o’clock and closes at ten in the evening."
+        },
+        {
+          "pt": "No domingo, ela fica fechada.",
+          "en": "On Sunday, it stays closed."
+        },
+        {
+          "pt": "De manhã, o café com pão de queijo custa oito reais.",
+          "en": "In the morning, coffee with a cheese roll costs eight reais."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Which days is the snack bar open?",
+          "choices": [
+            "Monday to Saturday",
+            "Every day",
+            "Monday to Friday",
+            "Saturday and Sunday"
+          ],
+          "answer": 0,
+          "explanation": "The sign says “A lanchonete abre de segunda a sábado.”"
+        },
+        {
+          "question": "What time does it close?",
+          "choices": [
+            "Seven in the morning",
+            "Ten in the evening",
+            "Seven in the evening",
+            "Midnight"
+          ],
+          "answer": 1,
+          "explanation": "It says it “fecha às dez da noite.”"
+        },
+        {
+          "question": "What happens on Sunday?",
+          "choices": [
+            "It opens late",
+            "It closes early",
+            "It is closed",
+            "It opens at seven"
+          ],
+          "answer": 2,
+          "explanation": "The sign says “No domingo, ela fica fechada.”"
+        },
+        {
+          "question": "What costs eight reais in the morning?",
+          "choices": [
+            "A juice and a sandwich",
+            "A coffee on its own",
+            "Two cheese rolls",
+            "A coffee with a cheese roll"
+          ],
+          "answer": 3,
+          "explanation": "The sign says “o café com pão de queijo custa oito reais.”"
+        }
+      ],
+      "topics": [
+        "present-regular",
+        "prepositions-contractions",
+        "adjective-agreement"
+      ],
+      "words": [
+        "town-035",
+        "verbs-045",
+        "health-time-040",
+        "health-time-045",
+        "health-time-052",
+        "health-time-026",
+        "verbs-046",
+        "health-time-055",
+        "health-time-034",
+        "health-time-046",
+        "verbs-033",
+        "qualities-033",
+        "health-time-032",
+        "food-003",
+        "essentials-086",
+        "food-002",
+        "verbs-071",
+        "health-time-053",
+        "shopping-005"
+      ],
+      "gloss": [
+        {
+          "pt": "lanchonete",
+          "en": "snack bar",
+          "word": "town-035"
+        },
+        {
+          "pt": "abre",
+          "en": "opens (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "segunda",
+          "en": "Monday (a segunda-feira)",
+          "word": "health-time-040"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        },
+        {
+          "pt": "sete",
+          "en": "seven",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "horas",
+          "en": "o’clock; hours (a hora)",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "fecha",
+          "en": "closes (fechar)",
+          "word": "verbs-046"
+        },
+        {
+          "pt": "dez",
+          "en": "ten",
+          "word": "health-time-055"
+        },
+        {
+          "pt": "noite",
+          "en": "night; evening",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "pt": "fica",
+          "en": "stays (ficar)",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "fechada",
+          "en": "closed (fechado)",
+          "word": "qualities-033"
+        },
+        {
+          "pt": "De manhã",
+          "en": "in the morning",
+          "word": "health-time-032"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "pão de queijo",
+          "en": "cheese roll",
+          "word": "food-002"
+        },
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "reais",
+          "en": "reais (o real)",
+          "word": "shopping-005"
+        }
+      ]
+    }
+  ]
+}

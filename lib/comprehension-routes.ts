@@ -10,6 +10,10 @@ import { audioFile } from './http';
 export type ComprehensionDeps = {
   root: string;
   dbPath: string;
+  // Where the clips are (audio/comprehension under root unless given) and the learnt language's English name for
+  // messages (French unless given): each language's Echo keeps its own recordings.
+  audioDir?: string;
+  languageName?: string;
   bank: Bank;
   vocabulary: Store;
   grammar: GrammarStore;
@@ -37,7 +41,8 @@ const EXAMPLES = 3;
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
 
 export function createComprehensionRoutes(deps: ComprehensionDeps): ComprehensionRoutes {
-  const clipDir = join(deps.root, 'audio/comprehension');
+  const clipDir = deps.audioDir ?? join(deps.root, 'audio/comprehension');
+  const languageName = deps.languageName ?? 'French';
   const clipIds = new Set([
     ...deps.bank.sentences.map((sentence) => sentence.id),
     ...deps.bank.passages.flatMap((passage) => passage.lines.map((_, index) => `${passage.id}-${index + 1}`)),
@@ -142,7 +147,7 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
   async function audio(clip: string, req: Request): Promise<Response> {
     if (!clipIds.has(clip)) return json({ error: 'This recording is not part of a comprehension exercise.' }, 404);
     const file = Bun.file(join(clipDir, `${clip}.mp3`));
-    if (!await file.exists()) return json({ error: 'This French recording is not ready yet. Read this one instead, or try again shortly.' }, 404);
+    if (!await file.exists()) return json({ error: `This ${languageName} recording is not ready yet. Read this one instead, or try again shortly.` }, 404);
     return audioFile(req, file);
   }
 
@@ -154,7 +159,7 @@ export function createComprehensionRoutes(deps: ComprehensionDeps): Comprehensio
     }
     if (route === 'api/comprehension/lookup' && req.method === 'POST') {
       const data = await body(req);
-      if (typeof data.fr !== 'string' || !data.fr.trim()) throw new StoreError('Tap a word in the French to look it up.', 400);
+      if (typeof data.fr !== 'string' || !data.fr.trim()) throw new StoreError(`Tap a word in the ${languageName} to look it up.`, 400);
       return json(store.lookup({ ...mutation(data), fr: data.fr }));
     }
     if (route === 'api/comprehension/answer' && req.method === 'POST') {

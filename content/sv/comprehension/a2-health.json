@@ -1,0 +1,5399 @@
+{
+  "sentences": [
+    {
+      "id": "a2-health-s01",
+      "level": "A2",
+      "sv": "Igår hade jag ont i huvudet hela dagen.",
+      "en": "Yesterday I had a headache all day.",
+      "distractors": [
+        "Yesterday I had a stomach ache all day.",
+        "Yesterday I had a headache all evening.",
+        "Yesterday my sister had a headache all day."
+      ],
+      "topics": [
+        "past-tense",
+        "word-order-v2"
+      ],
+      "words": [
+        "essentials-099",
+        "verbs-002",
+        "health-time-021",
+        "essentials-062",
+        "health-time-003",
+        "health-time-029"
+      ],
+      "gloss": [
+        {
+          "sv": "Igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        },
+        {
+          "sv": "hade",
+          "en": "had (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ont",
+          "en": "pain (ha ont i = to have a pain in)",
+          "word": "health-time-021"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "huvudet",
+          "en": "the head (huvud)",
+          "word": "health-time-003"
+        },
+        {
+          "sv": "hela",
+          "en": "the whole; all"
+        },
+        {
+          "sv": "dagen",
+          "en": "the day (dag)",
+          "word": "health-time-029"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s02",
+      "level": "A2",
+      "sv": "Läkaren gav mig tabletter för två veckor.",
+      "en": "The doctor gave me tablets for two weeks.",
+      "distractors": [
+        "The nurse gave me tablets for two weeks.",
+        "The doctor gave me tablets for three weeks.",
+        "The doctor gave me drops for two weeks."
+      ],
+      "topics": [
+        "past-tense",
+        "object-pronouns"
+      ],
+      "words": [
+        "work-008",
+        "verbs-026",
+        "essentials-068",
+        "health-time-048",
+        "health-time-030"
+      ],
+      "gloss": [
+        {
+          "sv": "Läkaren",
+          "en": "the doctor (läkare)",
+          "word": "work-008"
+        },
+        {
+          "sv": "gav",
+          "en": "gave (ge)",
+          "word": "verbs-026"
+        },
+        {
+          "sv": "tabletter",
+          "en": "tablets (en tablett)"
+        },
+        {
+          "sv": "för",
+          "en": "for",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "veckor",
+          "en": "weeks (vecka)",
+          "word": "health-time-030"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s03",
+      "level": "A2",
+      "sv": "Jag har bokat en tid hos tandläkaren på tisdag.",
+      "en": "I have booked an appointment with the dentist for Tuesday.",
+      "distractors": [
+        "I have booked an appointment with the doctor for Tuesday.",
+        "I have booked an appointment with the dentist for Thursday.",
+        "I have cancelled an appointment with the dentist for Tuesday."
+      ],
+      "topics": [
+        "perfect-tense",
+        "definite-form"
+      ],
+      "words": [
+        "health-time-026",
+        "essentials-076",
+        "work-010",
+        "essentials-063",
+        "health-time-041"
+      ],
+      "gloss": [
+        {
+          "sv": "har bokat",
+          "en": "have booked (boka)"
+        },
+        {
+          "sv": "tid",
+          "en": "appointment",
+          "word": "health-time-026"
+        },
+        {
+          "sv": "hos",
+          "en": "with; at the place of",
+          "word": "essentials-076"
+        },
+        {
+          "sv": "tandläkaren",
+          "en": "the dentist (tandläkare)",
+          "word": "work-010"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "tisdag",
+          "en": "Tuesday",
+          "word": "health-time-041"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s04",
+      "level": "A2",
+      "sv": "Hon stannade i sängen eftersom hon hade feber.",
+      "en": "She stayed in bed because she had a fever.",
+      "distractors": [
+        "He stayed in bed because he had a fever.",
+        "She stayed at home because she had a fever.",
+        "She stayed in bed because she had a cold."
+      ],
+      "topics": [
+        "past-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-033",
+        "essentials-062",
+        "home-029",
+        "essentials-085",
+        "verbs-002",
+        "health-time-022"
+      ],
+      "gloss": [
+        {
+          "sv": "stannade",
+          "en": "stayed (stanna)",
+          "word": "verbs-033"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "sängen",
+          "en": "the bed (säng)",
+          "word": "home-029"
+        },
+        {
+          "sv": "eftersom",
+          "en": "because",
+          "word": "essentials-085"
+        },
+        {
+          "sv": "hade",
+          "en": "had (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "feber",
+          "en": "fever; a temperature",
+          "word": "health-time-022"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s05",
+      "level": "A2",
+      "sv": "Du måste dricka mycket vatten när du har feber.",
+      "en": "You have to drink a lot of water when you have a fever.",
+      "distractors": [
+        "You have to drink a lot of tea when you have a fever.",
+        "You can drink a lot of water when you have a fever.",
+        "You have to drink a lot of water when you have a cold."
+      ],
+      "topics": [
+        "modal-verbs",
+        "present-tense"
+      ],
+      "words": [
+        "verbs-022",
+        "verbs-055",
+        "essentials-090",
+        "food-001",
+        "essentials-038",
+        "verbs-002",
+        "health-time-022"
+      ],
+      "gloss": [
+        {
+          "sv": "måste",
+          "en": "must; have to",
+          "word": "verbs-022"
+        },
+        {
+          "sv": "dricka",
+          "en": "to drink",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "mycket",
+          "en": "a lot of",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "vatten",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "sv": "när",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "feber",
+          "en": "fever; a temperature",
+          "word": "health-time-022"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s06",
+      "level": "A2",
+      "sv": "Jag vaknade halv sju i morse.",
+      "en": "I woke up at half past six this morning.",
+      "distractors": [
+        "I woke up at half past seven this morning.",
+        "I woke up at half past six yesterday morning.",
+        "I got up at half past six this morning."
+      ],
+      "topics": [
+        "past-tense"
+      ],
+      "words": [
+        "verbs-058",
+        "health-time-053",
+        "health-time-033"
+      ],
+      "gloss": [
+        {
+          "sv": "vaknade",
+          "en": "woke up (vakna)",
+          "word": "verbs-058"
+        },
+        {
+          "sv": "halv sju",
+          "en": "half past six (halv = half an hour before the hour named)",
+          "word": "health-time-053"
+        },
+        {
+          "sv": "i morse",
+          "en": "this morning (earlier today)",
+          "word": "health-time-033"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s07",
+      "level": "A2",
+      "sv": "Min bror tränar på gymmet tre gånger i veckan.",
+      "en": "My brother works out at the gym three times a week.",
+      "distractors": [
+        "My sister works out at the gym three times a week.",
+        "My brother works out at the gym twice a week.",
+        "My brother works out at the pool three times a week."
+      ],
+      "topics": [
+        "possessives",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-052",
+        "people-015",
+        "leisure-012",
+        "essentials-063",
+        "leisure-031",
+        "health-time-049",
+        "health-time-036",
+        "health-time-030"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "bror",
+          "en": "brother",
+          "word": "people-015"
+        },
+        {
+          "sv": "tränar",
+          "en": "works out (träna)",
+          "word": "leisure-012"
+        },
+        {
+          "sv": "på",
+          "en": "at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "gymmet",
+          "en": "the gym (gym)",
+          "word": "leisure-031"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "gånger",
+          "en": "times (gång)",
+          "word": "health-time-036"
+        },
+        {
+          "sv": "i veckan",
+          "en": "a week; per week (vecka)",
+          "word": "health-time-030"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s08",
+      "level": "A2",
+      "sv": "Är apoteket öppet på söndagar?",
+      "en": "Is the pharmacy open on Sundays?",
+      "distractors": [
+        "Is the pharmacy open on Saturdays?",
+        "Is the health centre open on Sundays?",
+        "Is the pharmacy closed on Sundays?"
+      ],
+      "topics": [
+        "questions",
+        "adjective-agreement"
+      ],
+      "words": [
+        "verbs-001",
+        "travel-023",
+        "qualities-034",
+        "essentials-063",
+        "health-time-046"
+      ],
+      "gloss": [
+        {
+          "sv": "Är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "apoteket",
+          "en": "the pharmacy (apotek)",
+          "word": "travel-023"
+        },
+        {
+          "sv": "öppet",
+          "en": "open (öppen)",
+          "word": "qualities-034"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "söndagar",
+          "en": "Sundays (söndag)",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s09",
+      "level": "A2",
+      "sv": "Apotekaren förklarade hur jag skulle ta tabletterna.",
+      "en": "The pharmacist explained how I should take the tablets.",
+      "distractors": [
+        "The doctor explained how I should take the tablets.",
+        "The pharmacist explained when I should take the tablets.",
+        "The pharmacist explained how my son should take the tablets."
+      ],
+      "topics": [
+        "past-tense",
+        "modal-verbs"
+      ],
+      "words": [
+        "verbs-073",
+        "essentials-036",
+        "verbs-023",
+        "verbs-025"
+      ],
+      "gloss": [
+        {
+          "sv": "Apotekaren",
+          "en": "the pharmacist (apotekare)"
+        },
+        {
+          "sv": "förklarade",
+          "en": "explained (förklara)",
+          "word": "verbs-073"
+        },
+        {
+          "sv": "hur",
+          "en": "how",
+          "word": "essentials-036"
+        },
+        {
+          "sv": "skulle",
+          "en": "should (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "ta",
+          "en": "take",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "tabletterna",
+          "en": "the tablets (tablett)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s10",
+      "level": "A2",
+      "sv": "Vi kunde inte sova i natt på grund av ljudet från gatan.",
+      "en": "We couldn’t sleep last night because of the noise from the street.",
+      "distractors": [
+        "We couldn’t sleep last night because of the noise from the neighbours.",
+        "I couldn’t sleep last night because of the noise from the street.",
+        "We couldn’t sleep last night because of the heat in the room."
+      ],
+      "topics": [
+        "negation-placement",
+        "modal-verbs",
+        "past-tense"
+      ],
+      "words": [
+        "verbs-021",
+        "verbs-057",
+        "health-time-035",
+        "town-036",
+        "essentials-065",
+        "travel-002"
+      ],
+      "gloss": [
+        {
+          "sv": "kunde",
+          "en": "could (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "sova",
+          "en": "sleep",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "i natt",
+          "en": "last night",
+          "word": "health-time-035"
+        },
+        {
+          "sv": "på grund av",
+          "en": "because of"
+        },
+        {
+          "sv": "ljudet",
+          "en": "the noise (ljud)",
+          "word": "town-036"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "gatan",
+          "en": "the street (gata)",
+          "word": "travel-002"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s11",
+      "level": "A2",
+      "sv": "När jag var liten blev jag ofta sjuk på vintern.",
+      "en": "When I was little, I often got ill in the winter.",
+      "distractors": [
+        "When I was little, I often got ill in the summer.",
+        "When I was little, I never got ill in the winter.",
+        "When my brother was little, he often got ill in the winter."
+      ],
+      "topics": [
+        "past-tense",
+        "word-order-v2"
+      ],
+      "words": [
+        "essentials-038",
+        "verbs-001",
+        "qualities-002",
+        "verbs-097",
+        "essentials-102",
+        "health-time-020",
+        "essentials-063",
+        "health-time-039"
+      ],
+      "gloss": [
+        {
+          "sv": "När",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "var",
+          "en": "was (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "liten",
+          "en": "little; small",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "blev",
+          "en": "got; became (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "ofta",
+          "en": "often",
+          "word": "essentials-102"
+        },
+        {
+          "sv": "sjuk",
+          "en": "ill",
+          "word": "health-time-020"
+        },
+        {
+          "sv": "på",
+          "en": "in",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "vintern",
+          "en": "the winter (vinter)",
+          "word": "health-time-039"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s12",
+      "level": "A2",
+      "sv": "Hon bröt armen när hon spelade fotboll.",
+      "en": "She broke her arm when she was playing football.",
+      "distractors": [
+        "She broke her leg when she was playing football.",
+        "He broke his arm when he was playing football.",
+        "She broke her arm when she was playing tennis."
+      ],
+      "topics": [
+        "past-tense",
+        "definite-form"
+      ],
+      "words": [
+        "health-time-011",
+        "essentials-038",
+        "verbs-084",
+        "leisure-007"
+      ],
+      "gloss": [
+        {
+          "sv": "bröt",
+          "en": "broke (bryta)"
+        },
+        {
+          "sv": "armen",
+          "en": "the arm; her arm (arm)",
+          "word": "health-time-011"
+        },
+        {
+          "sv": "när",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "spelade",
+          "en": "was playing (spela)",
+          "word": "verbs-084"
+        },
+        {
+          "sv": "fotboll",
+          "en": "football",
+          "word": "leisure-007"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s13",
+      "level": "A2",
+      "sv": "Han har hostat i två dagar och har ont i halsen.",
+      "en": "He has been coughing for two days and has a sore throat.",
+      "distractors": [
+        "He has been coughing for three days and has a sore throat.",
+        "She has been coughing for two days and has a sore throat.",
+        "He has been coughing for two days and has a headache."
+      ],
+      "topics": [
+        "perfect-tense"
+      ],
+      "words": [
+        "verbs-002",
+        "essentials-062",
+        "health-time-048",
+        "health-time-029",
+        "health-time-021",
+        "health-time-018"
+      ],
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "hostat",
+          "en": "coughed (hosta)"
+        },
+        {
+          "sv": "i",
+          "en": "for (time); in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "dagar",
+          "en": "days (dag)",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "ont",
+          "en": "pain (ha ont i halsen = to have a sore throat)",
+          "word": "health-time-021"
+        },
+        {
+          "sv": "halsen",
+          "en": "the throat (hals)",
+          "word": "health-time-018"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s14",
+      "level": "A2",
+      "sv": "Läkaren sa till honom att vila till måndag.",
+      "en": "The doctor told him to rest until Monday.",
+      "distractors": [
+        "The nurse told him to rest until Monday.",
+        "The doctor told her to rest until Monday.",
+        "The doctor told him to rest until Friday."
+      ],
+      "topics": [
+        "object-pronouns",
+        "past-tense"
+      ],
+      "words": [
+        "work-008",
+        "verbs-006",
+        "essentials-029",
+        "essentials-064",
+        "health-time-040"
+      ],
+      "gloss": [
+        {
+          "sv": "Läkaren",
+          "en": "the doctor (läkare)",
+          "word": "work-008"
+        },
+        {
+          "sv": "sa till",
+          "en": "told (säga till)",
+          "word": "verbs-006"
+        },
+        {
+          "sv": "honom",
+          "en": "him",
+          "word": "essentials-029"
+        },
+        {
+          "sv": "vila",
+          "en": "rest"
+        },
+        {
+          "sv": "till",
+          "en": "until; to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "måndag",
+          "en": "Monday",
+          "word": "health-time-040"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s15",
+      "level": "A2",
+      "sv": "Du ska ta den här medicinen morgon och kväll i en vecka.",
+      "en": "You should take this medicine morning and evening for a week.",
+      "distractors": [
+        "You should take this medicine morning and evening for a month.",
+        "You should take this medicine only in the evening for a week.",
+        "You should take these tablets morning and evening for a week."
+      ],
+      "topics": [
+        "modal-verbs",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-023",
+        "verbs-025",
+        "essentials-060",
+        "health-time-024",
+        "health-time-033",
+        "health-time-034",
+        "essentials-062",
+        "health-time-030"
+      ],
+      "gloss": [
+        {
+          "sv": "ska",
+          "en": "should (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "ta",
+          "en": "take",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "medicinen",
+          "en": "the medicine (medicin)",
+          "word": "health-time-024"
+        },
+        {
+          "sv": "morgon",
+          "en": "morning",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "kväll",
+          "en": "evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "i",
+          "en": "for (time)",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "vecka",
+          "en": "week",
+          "word": "health-time-030"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s16",
+      "level": "A2",
+      "sv": "Jag har aldrig haft influensa, men jag blir ofta förkyld.",
+      "en": "I have never had flu, but I often catch a cold.",
+      "distractors": [
+        "I have never had flu, but I often get a headache.",
+        "I have never had flu, but I sometimes catch a cold.",
+        "My son has never had flu, but he often catches a cold."
+      ],
+      "topics": [
+        "perfect-tense",
+        "negation-placement"
+      ],
+      "words": [
+        "verbs-002",
+        "essentials-101",
+        "verbs-097",
+        "essentials-102",
+        "health-time-023"
+      ],
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "aldrig",
+          "en": "never",
+          "word": "essentials-101"
+        },
+        {
+          "sv": "haft",
+          "en": "had (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "influensa",
+          "en": "flu"
+        },
+        {
+          "sv": "blir",
+          "en": "get; become (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "ofta",
+          "en": "often",
+          "word": "essentials-102"
+        },
+        {
+          "sv": "förkyld",
+          "en": "having a cold (bli förkyld = catch a cold)",
+          "word": "health-time-023"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s17",
+      "level": "A2",
+      "sv": "Har du tagit din medicin i morse?",
+      "en": "Have you taken your medicine this morning?",
+      "distractors": [
+        "Have you taken your medicine this evening?",
+        "Have you bought your medicine this morning?",
+        "Has he taken his medicine this morning?"
+      ],
+      "topics": [
+        "perfect-tense",
+        "questions",
+        "possessives"
+      ],
+      "words": [
+        "verbs-002",
+        "verbs-025",
+        "essentials-053",
+        "health-time-024",
+        "health-time-033"
+      ],
+      "gloss": [
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "tagit",
+          "en": "taken (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "din",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "medicin",
+          "en": "medicine",
+          "word": "health-time-024"
+        },
+        {
+          "sv": "i morse",
+          "en": "this morning (earlier today)",
+          "word": "health-time-033"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s18",
+      "level": "A2",
+      "sv": "Akuten på sjukhuset är öppen dygnet runt.",
+      "en": "The emergency department at the hospital is open around the clock.",
+      "distractors": [
+        "The emergency department at the hospital is open only during the day.",
+        "The pharmacy at the hospital is open around the clock.",
+        "The emergency department at the health centre is open around the clock."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-063",
+        "travel-024",
+        "verbs-001",
+        "qualities-034"
+      ],
+      "gloss": [
+        {
+          "sv": "Akuten",
+          "en": "the emergency department; A&E (akut)"
+        },
+        {
+          "sv": "på",
+          "en": "at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "sjukhuset",
+          "en": "the hospital (sjukhus)",
+          "word": "travel-024"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "öppen",
+          "en": "open",
+          "word": "qualities-034"
+        },
+        {
+          "sv": "dygnet runt",
+          "en": "around the clock; twenty-four hours a day"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s19",
+      "level": "A2",
+      "sv": "Min syster har jobbat som sjuksköterska i fem år.",
+      "en": "My sister has worked as a nurse for five years.",
+      "distractors": [
+        "My sister has worked as a doctor for five years.",
+        "My sister has worked as a nurse for four years.",
+        "My brother has worked as a nurse for five years."
+      ],
+      "topics": [
+        "perfect-tense",
+        "possessives"
+      ],
+      "words": [
+        "essentials-052",
+        "people-014",
+        "verbs-002",
+        "verbs-067",
+        "work-009",
+        "essentials-062",
+        "health-time-051",
+        "health-time-032"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "syster",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "jobbat",
+          "en": "worked (jobba)",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "sjuksköterska",
+          "en": "nurse",
+          "word": "work-009"
+        },
+        {
+          "sv": "i",
+          "en": "for (time)",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "fem",
+          "en": "five",
+          "word": "health-time-051"
+        },
+        {
+          "sv": "år",
+          "en": "years (år)",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s20",
+      "level": "A2",
+      "sv": "Han somnade i soffan redan klockan nio.",
+      "en": "He fell asleep on the sofa as early as nine o’clock.",
+      "distractors": [
+        "He fell asleep in bed as early as nine o’clock.",
+        "He fell asleep on the sofa as early as ten o’clock.",
+        "She fell asleep on the sofa as early as nine o’clock."
+      ],
+      "topics": [
+        "past-tense",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-062",
+        "home-027",
+        "essentials-104",
+        "shopping-026",
+        "health-time-055"
+      ],
+      "gloss": [
+        {
+          "sv": "somnade",
+          "en": "fell asleep (somna)"
+        },
+        {
+          "sv": "i",
+          "en": "on (i soffan = on the sofa)",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "soffan",
+          "en": "the sofa (soffa)",
+          "word": "home-027"
+        },
+        {
+          "sv": "redan",
+          "en": "already; as early as",
+          "word": "essentials-104"
+        },
+        {
+          "sv": "klockan",
+          "en": "o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "nio",
+          "en": "nine",
+          "word": "health-time-055"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s21",
+      "level": "A2",
+      "sv": "Vi gick i två timmar och nu har jag ont i fötterna.",
+      "en": "We walked for two hours and now my feet hurt.",
+      "distractors": [
+        "We walked for three hours and now my feet hurt.",
+        "We walked for two hours and now my legs hurt.",
+        "We cycled for two hours and now my feet hurt."
+      ],
+      "topics": [
+        "past-tense",
+        "word-order-v2",
+        "plural"
+      ],
+      "words": [
+        "verbs-004",
+        "essentials-062",
+        "health-time-048",
+        "health-time-027",
+        "essentials-094",
+        "verbs-002",
+        "health-time-021",
+        "health-time-005"
+      ],
+      "gloss": [
+        {
+          "sv": "gick",
+          "en": "walked (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "i",
+          "en": "for (time); in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "timmar",
+          "en": "hours (timme)",
+          "word": "health-time-027"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ont",
+          "en": "pain (ha ont i = to hurt in)",
+          "word": "health-time-021"
+        },
+        {
+          "sv": "fötterna",
+          "en": "the feet (fot)",
+          "word": "health-time-005"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s22",
+      "level": "A2",
+      "sv": "Min tid hos läkaren är den femtonde mars klockan två.",
+      "en": "My appointment with the doctor is on the fifteenth of March at two o’clock.",
+      "distractors": [
+        "My appointment with the doctor is on the sixteenth of March at two o’clock.",
+        "My appointment with the doctor is on the fifteenth of March at three o’clock.",
+        "My appointment with the dentist is on the fifteenth of March at two o’clock."
+      ],
+      "topics": [
+        "possessives",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-052",
+        "health-time-026",
+        "essentials-076",
+        "work-008",
+        "verbs-001",
+        "shopping-026",
+        "health-time-048"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "tid",
+          "en": "appointment",
+          "word": "health-time-026"
+        },
+        {
+          "sv": "hos",
+          "en": "with; at the place of",
+          "word": "essentials-076"
+        },
+        {
+          "sv": "läkaren",
+          "en": "the doctor (läkare)",
+          "word": "work-008"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "femtonde",
+          "en": "fifteenth"
+        },
+        {
+          "sv": "mars",
+          "en": "March"
+        },
+        {
+          "sv": "klockan",
+          "en": "o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s23",
+      "level": "A2",
+      "sv": "Ät inte för mycket socker om du vill hålla dig frisk.",
+      "en": "Don’t eat too much sugar if you want to stay healthy.",
+      "distractors": [
+        "Don’t eat too much salt if you want to stay healthy.",
+        "Don’t eat too much sugar if you want to sleep well.",
+        "Don’t drink too much coffee if you want to stay healthy."
+      ],
+      "topics": [
+        "negation-placement",
+        "modal-verbs"
+      ],
+      "words": [
+        "verbs-054",
+        "essentials-090",
+        "food-007",
+        "essentials-070",
+        "verbs-020"
+      ],
+      "gloss": [
+        {
+          "sv": "Ät",
+          "en": "eat (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "för mycket",
+          "en": "too much",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "socker",
+          "en": "sugar",
+          "word": "food-007"
+        },
+        {
+          "sv": "om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "hålla dig frisk",
+          "en": "stay healthy (hålla sig frisk)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s24",
+      "level": "A2",
+      "sv": "Hon har yoga på torsdagar efter jobbet.",
+      "en": "She does yoga on Thursdays after work.",
+      "distractors": [
+        "She does yoga on Tuesdays after work.",
+        "She does yoga on Thursdays before work.",
+        "He does yoga on Thursdays after work."
+      ],
+      "topics": [
+        "present-tense",
+        "plural"
+      ],
+      "words": [
+        "verbs-002",
+        "leisure-032",
+        "essentials-063",
+        "health-time-043",
+        "essentials-078",
+        "work-002"
+      ],
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "has; does (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "yoga",
+          "en": "yoga",
+          "word": "leisure-032"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "torsdagar",
+          "en": "Thursdays (torsdag)",
+          "word": "health-time-043"
+        },
+        {
+          "sv": "efter",
+          "en": "after",
+          "word": "essentials-078"
+        },
+        {
+          "sv": "jobbet",
+          "en": "work; the job (jobb)",
+          "word": "work-002"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s25",
+      "level": "A2",
+      "sv": "Jag väntade på läkaren i mer än en timme i väntrummet.",
+      "en": "I waited for the doctor for more than an hour in the waiting room.",
+      "distractors": [
+        "I waited for the doctor for more than two hours in the waiting room.",
+        "I waited for the nurse for more than an hour in the waiting room.",
+        "I waited for the doctor for less than an hour in the waiting room."
+      ],
+      "topics": [
+        "past-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-037",
+        "work-008",
+        "essentials-062",
+        "qualities-108",
+        "health-time-027",
+        "town-014"
+      ],
+      "gloss": [
+        {
+          "sv": "väntade på",
+          "en": "waited for (vänta på)",
+          "word": "verbs-037"
+        },
+        {
+          "sv": "läkaren",
+          "en": "the doctor (läkare)",
+          "word": "work-008"
+        },
+        {
+          "sv": "i",
+          "en": "for (time); in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "mer än",
+          "en": "more than",
+          "word": "qualities-108"
+        },
+        {
+          "sv": "timme",
+          "en": "hour",
+          "word": "health-time-027"
+        },
+        {
+          "sv": "väntrummet",
+          "en": "the waiting room (väntrum)",
+          "word": "town-014"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s26",
+      "level": "A2",
+      "sv": "Mina föräldrar lägger sig tidigt eftersom de går upp klockan fem.",
+      "en": "My parents go to bed early because they get up at five o’clock.",
+      "distractors": [
+        "My grandparents go to bed early because they get up at five o’clock.",
+        "My parents go to bed early because they get up at six o’clock.",
+        "My parents go to bed late because they get up at five o’clock."
+      ],
+      "topics": [
+        "possessives",
+        "plural",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-052",
+        "people-011",
+        "verbs-061",
+        "qualities-106",
+        "essentials-085",
+        "verbs-059",
+        "shopping-026",
+        "health-time-051"
+      ],
+      "gloss": [
+        {
+          "sv": "Mina",
+          "en": "my (min)",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "föräldrar",
+          "en": "parents (förälder)",
+          "word": "people-011"
+        },
+        {
+          "sv": "lägger sig",
+          "en": "go to bed (lägga sig)",
+          "word": "verbs-061"
+        },
+        {
+          "sv": "tidigt",
+          "en": "early",
+          "word": "qualities-106"
+        },
+        {
+          "sv": "eftersom",
+          "en": "because",
+          "word": "essentials-085"
+        },
+        {
+          "sv": "går upp",
+          "en": "get up (gå upp)",
+          "word": "verbs-059"
+        },
+        {
+          "sv": "klockan",
+          "en": "o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "fem",
+          "en": "five",
+          "word": "health-time-051"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s27",
+      "level": "A2",
+      "sv": "På morgnarna springer jag i trettio minuter i parken.",
+      "en": "In the mornings I run for thirty minutes in the park.",
+      "distractors": [
+        "In the mornings I run for forty minutes in the park.",
+        "In the evenings I run for thirty minutes in the park.",
+        "In the mornings I walk for thirty minutes in the park."
+      ],
+      "topics": [
+        "word-order-v2",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-063",
+        "health-time-033",
+        "verbs-036",
+        "essentials-062",
+        "health-time-028",
+        "travel-029"
+      ],
+      "gloss": [
+        {
+          "sv": "På",
+          "en": "in",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "morgnarna",
+          "en": "the mornings (morgon)",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "springer",
+          "en": "run (springa)",
+          "word": "verbs-036"
+        },
+        {
+          "sv": "i",
+          "en": "for (time); in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "trettio",
+          "en": "thirty"
+        },
+        {
+          "sv": "minuter",
+          "en": "minutes (minut)",
+          "word": "health-time-028"
+        },
+        {
+          "sv": "parken",
+          "en": "the park (park)",
+          "word": "travel-029"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s28",
+      "level": "A2",
+      "sv": "Igår kväll tog jag en tablett och värken försvann.",
+      "en": "Last night I took a tablet and the pain went away.",
+      "distractors": [
+        "Last night I took two tablets and the pain went away.",
+        "Last night I took a tablet and the pain got worse.",
+        "This morning I took a tablet and the pain went away."
+      ],
+      "topics": [
+        "past-tense",
+        "word-order-v2"
+      ],
+      "words": [
+        "health-time-034",
+        "verbs-025"
+      ],
+      "gloss": [
+        {
+          "sv": "Igår kväll",
+          "en": "last night; yesterday evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "tog",
+          "en": "took (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "tablett",
+          "en": "tablet"
+        },
+        {
+          "sv": "värken",
+          "en": "the ache; the pain (värk)"
+        },
+        {
+          "sv": "försvann",
+          "en": "went away; disappeared (försvinna)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s29",
+      "level": "A2",
+      "sv": "Mår du bättre än igår?",
+      "en": "Do you feel better than yesterday?",
+      "distractors": [
+        "Do you feel worse than yesterday?",
+        "Does she feel better than yesterday?",
+        "Do you feel better than this morning?"
+      ],
+      "topics": [
+        "questions",
+        "present-tense"
+      ],
+      "words": [
+        "feelings-038",
+        "qualities-003",
+        "essentials-099"
+      ],
+      "gloss": [
+        {
+          "sv": "Mår",
+          "en": "feel (må)",
+          "word": "feelings-038"
+        },
+        {
+          "sv": "bättre",
+          "en": "better (bra)",
+          "word": "qualities-003"
+        },
+        {
+          "sv": "än",
+          "en": "than"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s30",
+      "level": "A2",
+      "sv": "Det finns ingen hostmedicin kvar på apoteket.",
+      "en": "There is no cough medicine left at the pharmacy.",
+      "distractors": [
+        "There is no cough medicine left at the health centre.",
+        "There is still a lot of cough medicine at the pharmacy.",
+        "There are no tablets left at the pharmacy."
+      ],
+      "topics": [
+        "negation-placement",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-099",
+        "essentials-043",
+        "health-time-024",
+        "essentials-063",
+        "travel-023"
+      ],
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "is; exists (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "ingen",
+          "en": "no",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "hostmedicin",
+          "en": "cough medicine (hosta + medicin)",
+          "word": "health-time-024"
+        },
+        {
+          "sv": "kvar",
+          "en": "left"
+        },
+        {
+          "sv": "på",
+          "en": "at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "apoteket",
+          "en": "the pharmacy (apotek)",
+          "word": "travel-023"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s31",
+      "level": "A2",
+      "sv": "Om du fortfarande har ont imorgon, ring läkaren.",
+      "en": "If you are still in pain tomorrow, call the doctor.",
+      "distractors": [
+        "If you are still in pain tonight, call the doctor.",
+        "If you are still in pain tomorrow, call the nurse.",
+        "If you are still in pain tomorrow, go to the pharmacy."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-070",
+        "essentials-106",
+        "verbs-002",
+        "health-time-021",
+        "essentials-098",
+        "verbs-082",
+        "work-008"
+      ],
+      "gloss": [
+        {
+          "sv": "Om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "fortfarande",
+          "en": "still",
+          "word": "essentials-106"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ont",
+          "en": "pain (ha ont = to be in pain)",
+          "word": "health-time-021"
+        },
+        {
+          "sv": "imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        },
+        {
+          "sv": "ring",
+          "en": "call (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "läkaren",
+          "en": "the doctor (läkare)",
+          "word": "work-008"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s32",
+      "level": "A2",
+      "sv": "Hon låg på sjukhuset en vecka efter operationen.",
+      "en": "She was in hospital for a week after the operation.",
+      "distractors": [
+        "She was in hospital for two weeks after the operation.",
+        "He was in hospital for a week after the operation.",
+        "She was in hospital for a week before the operation."
+      ],
+      "topics": [
+        "past-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-063",
+        "essentials-063",
+        "travel-024",
+        "health-time-030",
+        "essentials-078"
+      ],
+      "gloss": [
+        {
+          "sv": "låg",
+          "en": "lay; was (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "på",
+          "en": "in; at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "sjukhuset",
+          "en": "the hospital (sjukhus)",
+          "word": "travel-024"
+        },
+        {
+          "sv": "vecka",
+          "en": "week",
+          "word": "health-time-030"
+        },
+        {
+          "sv": "efter",
+          "en": "after",
+          "word": "essentials-078"
+        },
+        {
+          "sv": "operationen",
+          "en": "the operation (operation)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s33",
+      "level": "A2",
+      "sv": "Min morfar går långsamt, men han går ut varje dag.",
+      "en": "My grandfather walks slowly, but he goes out every day.",
+      "distractors": [
+        "My grandfather walks quickly, but he goes out every day.",
+        "My grandmother walks slowly, but she goes out every day.",
+        "My grandfather walks slowly, but he goes out every week."
+      ],
+      "topics": [
+        "possessives",
+        "present-tense"
+      ],
+      "words": [
+        "essentials-052",
+        "people-018",
+        "verbs-004",
+        "qualities-049",
+        "verbs-035",
+        "essentials-049",
+        "health-time-029"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "morfar",
+          "en": "grandfather (mother’s father)",
+          "word": "people-018"
+        },
+        {
+          "sv": "går",
+          "en": "walks (gå)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "långsamt",
+          "en": "slowly (långsam)",
+          "word": "qualities-049"
+        },
+        {
+          "sv": "går ut",
+          "en": "goes out (gå ut)",
+          "word": "verbs-035"
+        },
+        {
+          "sv": "varje",
+          "en": "every",
+          "word": "essentials-049"
+        },
+        {
+          "sv": "dag",
+          "en": "day",
+          "word": "health-time-029"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s34",
+      "level": "A2",
+      "sv": "Jag borstar tänderna innan jag lägger mig.",
+      "en": "I brush my teeth before I go to bed.",
+      "distractors": [
+        "I brush my teeth before I go to work.",
+        "I brush my teeth before I have breakfast.",
+        "My son brushes his teeth before he goes to bed."
+      ],
+      "topics": [
+        "definite-form",
+        "plural",
+        "present-tense"
+      ],
+      "words": [
+        "health-time-010",
+        "verbs-061"
+      ],
+      "gloss": [
+        {
+          "sv": "borstar",
+          "en": "brush (borsta)"
+        },
+        {
+          "sv": "tänderna",
+          "en": "the teeth; my teeth (tand)",
+          "word": "health-time-010"
+        },
+        {
+          "sv": "innan",
+          "en": "before"
+        },
+        {
+          "sv": "lägger mig",
+          "en": "go to bed (lägga sig)",
+          "word": "verbs-061"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s35",
+      "level": "A2",
+      "sv": "På lördagar cyklar vi runt sjön.",
+      "en": "On Saturdays we cycle around the lake.",
+      "distractors": [
+        "On Sundays we cycle around the lake.",
+        "On Saturdays we walk around the lake.",
+        "On Saturdays we cycle around the park."
+      ],
+      "topics": [
+        "word-order-v2",
+        "plural"
+      ],
+      "words": [
+        "essentials-063",
+        "health-time-045",
+        "leisure-028",
+        "nature-040"
+      ],
+      "gloss": [
+        {
+          "sv": "På",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "lördagar",
+          "en": "Saturdays (lördag)",
+          "word": "health-time-045"
+        },
+        {
+          "sv": "cyklar",
+          "en": "cycle (cykla)",
+          "word": "leisure-028"
+        },
+        {
+          "sv": "runt",
+          "en": "around"
+        },
+        {
+          "sv": "sjön",
+          "en": "the lake (sjö)",
+          "word": "nature-040"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s36",
+      "level": "A2",
+      "sv": "Min son har hostat sedan igår kväll och jag är orolig.",
+      "en": "My son has been coughing since last night and I am worried.",
+      "distractors": [
+        "My daughter has been coughing since last night and I am worried.",
+        "My son has been coughing since this morning and I am worried.",
+        "My son has been coughing since last night and I am tired."
+      ],
+      "topics": [
+        "perfect-tense",
+        "possessives"
+      ],
+      "words": [
+        "essentials-052",
+        "people-029",
+        "verbs-002",
+        "essentials-107",
+        "health-time-034",
+        "verbs-001",
+        "feelings-010"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "son",
+          "en": "son",
+          "word": "people-029"
+        },
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "hostat",
+          "en": "coughed (hosta)"
+        },
+        {
+          "sv": "sedan",
+          "en": "since",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "igår kväll",
+          "en": "last night; yesterday evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "är",
+          "en": "am (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "orolig",
+          "en": "worried",
+          "word": "feelings-010"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s37",
+      "level": "A2",
+      "sv": "Simkursen börjar klockan nio och håller på i en timme.",
+      "en": "The swimming course starts at nine and lasts an hour.",
+      "distractors": [
+        "The swimming course starts at ten and lasts an hour.",
+        "The swimming course starts at nine and lasts two hours.",
+        "The dance course starts at nine and lasts an hour."
+      ],
+      "topics": [
+        "definite-form",
+        "present-tense"
+      ],
+      "words": [
+        "school-037",
+        "verbs-042",
+        "shopping-026",
+        "health-time-055",
+        "essentials-062",
+        "health-time-027"
+      ],
+      "gloss": [
+        {
+          "sv": "Simkursen",
+          "en": "the swimming course (simkurs)",
+          "word": "school-037"
+        },
+        {
+          "sv": "börjar",
+          "en": "starts (börja)",
+          "word": "verbs-042"
+        },
+        {
+          "sv": "klockan",
+          "en": "at; o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "nio",
+          "en": "nine",
+          "word": "health-time-055"
+        },
+        {
+          "sv": "håller på",
+          "en": "lasts (hålla på)"
+        },
+        {
+          "sv": "i",
+          "en": "for (time)",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "timme",
+          "en": "hour",
+          "word": "health-time-027"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s38",
+      "level": "A2",
+      "sv": "Vi ställde in vår tid eftersom bilen gick sönder.",
+      "en": "We cancelled our appointment because the car broke down.",
+      "distractors": [
+        "We moved our appointment because the car broke down.",
+        "We cancelled our appointment because the bus broke down.",
+        "They cancelled their appointment because the car broke down."
+      ],
+      "topics": [
+        "past-tense",
+        "possessives"
+      ],
+      "words": [
+        "verbs-029",
+        "essentials-056",
+        "health-time-026",
+        "essentials-085",
+        "travel-004",
+        "verbs-004"
+      ],
+      "gloss": [
+        {
+          "sv": "ställde in",
+          "en": "cancelled (ställa in)",
+          "word": "verbs-029"
+        },
+        {
+          "sv": "vår",
+          "en": "our",
+          "word": "essentials-056"
+        },
+        {
+          "sv": "tid",
+          "en": "appointment",
+          "word": "health-time-026"
+        },
+        {
+          "sv": "eftersom",
+          "en": "because",
+          "word": "essentials-085"
+        },
+        {
+          "sv": "bilen",
+          "en": "the car (bil)",
+          "word": "travel-004"
+        },
+        {
+          "sv": "gick sönder",
+          "en": "broke down (gå sönder)",
+          "word": "verbs-004"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s39",
+      "level": "A2",
+      "sv": "Hon sover dåligt när hon dricker kaffe på kvällen.",
+      "en": "She sleeps badly when she drinks coffee in the evening.",
+      "distractors": [
+        "She sleeps well when she drinks coffee in the evening.",
+        "She sleeps badly when she drinks tea in the evening.",
+        "She sleeps badly when she drinks coffee in the afternoon."
+      ],
+      "topics": [
+        "present-tense",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-057",
+        "qualities-005",
+        "essentials-038",
+        "verbs-055",
+        "food-004",
+        "essentials-063",
+        "health-time-034"
+      ],
+      "gloss": [
+        {
+          "sv": "sover",
+          "en": "sleeps (sova)",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "dåligt",
+          "en": "badly (dålig)",
+          "word": "qualities-005"
+        },
+        {
+          "sv": "när",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "dricker",
+          "en": "drinks (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "på",
+          "en": "in",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "kvällen",
+          "en": "the evening (kväll)",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s40",
+      "level": "A2",
+      "sv": "Du måste sluta röka för att skydda dina lungor.",
+      "en": "You must stop smoking to protect your lungs.",
+      "distractors": [
+        "You must stop smoking to protect your heart.",
+        "You must stop drinking to protect your lungs.",
+        "We must stop smoking to protect our lungs."
+      ],
+      "topics": [
+        "modal-verbs",
+        "possessives"
+      ],
+      "words": [
+        "verbs-022",
+        "verbs-043",
+        "essentials-086",
+        "society-024",
+        "essentials-053"
+      ],
+      "gloss": [
+        {
+          "sv": "måste",
+          "en": "must",
+          "word": "verbs-022"
+        },
+        {
+          "sv": "sluta",
+          "en": "stop",
+          "word": "verbs-043"
+        },
+        {
+          "sv": "röka",
+          "en": "smoking; to smoke"
+        },
+        {
+          "sv": "för att",
+          "en": "in order to; to",
+          "word": "essentials-086"
+        },
+        {
+          "sv": "skydda",
+          "en": "protect",
+          "word": "society-024"
+        },
+        {
+          "sv": "dina",
+          "en": "your (din)",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "lungor",
+          "en": "lungs (lunga)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s41",
+      "level": "A2",
+      "sv": "Tandläkaren drog ut en tand förra veckan.",
+      "en": "The dentist pulled out a tooth last week.",
+      "distractors": [
+        "The doctor pulled out a tooth last week.",
+        "The dentist pulled out two teeth last week.",
+        "The dentist pulled out a tooth last month."
+      ],
+      "topics": [
+        "past-tense",
+        "definite-form"
+      ],
+      "words": [
+        "work-010",
+        "health-time-010",
+        "health-time-030"
+      ],
+      "gloss": [
+        {
+          "sv": "Tandläkaren",
+          "en": "the dentist (tandläkare)",
+          "word": "work-010"
+        },
+        {
+          "sv": "drog ut",
+          "en": "pulled out (dra ut)"
+        },
+        {
+          "sv": "tand",
+          "en": "tooth",
+          "word": "health-time-010"
+        },
+        {
+          "sv": "förra",
+          "en": "last"
+        },
+        {
+          "sv": "veckan",
+          "en": "the week (vecka)",
+          "word": "health-time-030"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s42",
+      "level": "A2",
+      "sv": "Hur många gånger om dagen ska jag ta den här medicinen?",
+      "en": "How many times a day should I take this medicine?",
+      "distractors": [
+        "How many times a week should I take this medicine?",
+        "How many times a day should he take this medicine?",
+        "How many times a day should I take these tablets?"
+      ],
+      "topics": [
+        "questions",
+        "modal-verbs"
+      ],
+      "words": [
+        "essentials-040",
+        "health-time-036",
+        "health-time-029",
+        "verbs-023",
+        "verbs-025",
+        "essentials-060",
+        "health-time-024"
+      ],
+      "gloss": [
+        {
+          "sv": "Hur många",
+          "en": "how many",
+          "word": "essentials-040"
+        },
+        {
+          "sv": "gånger",
+          "en": "times (gång)",
+          "word": "health-time-036"
+        },
+        {
+          "sv": "om dagen",
+          "en": "a day; per day",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "ska",
+          "en": "should (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "ta",
+          "en": "take",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "medicinen",
+          "en": "the medicine (medicin)",
+          "word": "health-time-024"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s43",
+      "level": "A2",
+      "sv": "Efter operationen kunde han inte lyfta högra armen.",
+      "en": "After the operation he couldn’t lift his right arm.",
+      "distractors": [
+        "After the operation he couldn’t lift his left arm.",
+        "After the operation he couldn’t lift his right leg.",
+        "Before the operation he couldn’t lift his right arm."
+      ],
+      "topics": [
+        "modal-verbs",
+        "negation-placement",
+        "word-order-v2"
+      ],
+      "words": [
+        "essentials-078",
+        "verbs-021",
+        "town-049",
+        "health-time-011"
+      ],
+      "gloss": [
+        {
+          "sv": "Efter",
+          "en": "after",
+          "word": "essentials-078"
+        },
+        {
+          "sv": "operationen",
+          "en": "the operation (operation)"
+        },
+        {
+          "sv": "kunde",
+          "en": "could (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "lyfta",
+          "en": "lift"
+        },
+        {
+          "sv": "högra",
+          "en": "right (höger)",
+          "word": "town-049"
+        },
+        {
+          "sv": "armen",
+          "en": "the arm; his arm (arm)",
+          "word": "health-time-011"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s44",
+      "level": "A2",
+      "sv": "I morse var väntrummet fullt av trötta patienter.",
+      "en": "This morning the waiting room was full of tired patients.",
+      "distractors": [
+        "This evening the waiting room was full of tired patients.",
+        "This morning the waiting room was full of tired children.",
+        "This morning the waiting room was almost empty."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "word-order-v2",
+        "past-tense"
+      ],
+      "words": [
+        "health-time-033",
+        "verbs-001",
+        "town-014",
+        "qualities-032",
+        "essentials-069",
+        "feelings-009"
+      ],
+      "gloss": [
+        {
+          "sv": "I morse",
+          "en": "this morning (earlier today)",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "var",
+          "en": "was (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "väntrummet",
+          "en": "the waiting room (väntrum)",
+          "word": "town-014"
+        },
+        {
+          "sv": "fullt",
+          "en": "full (full)",
+          "word": "qualities-032"
+        },
+        {
+          "sv": "av",
+          "en": "of",
+          "word": "essentials-069"
+        },
+        {
+          "sv": "trötta",
+          "en": "tired (trött)",
+          "word": "feelings-009"
+        },
+        {
+          "sv": "patienter",
+          "en": "patients (patient)"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s45",
+      "level": "A2",
+      "sv": "Nästa vecka ska jag boka en tid hos en sjukgymnast.",
+      "en": "Next week I will book an appointment with a physiotherapist.",
+      "distractors": [
+        "This week I will book an appointment with a physiotherapist.",
+        "Next week I will book an appointment with a dentist.",
+        "Next week I will cancel an appointment with a physiotherapist."
+      ],
+      "topics": [
+        "future",
+        "word-order-v2"
+      ],
+      "words": [
+        "qualities-100",
+        "health-time-030",
+        "verbs-023",
+        "health-time-026",
+        "essentials-076"
+      ],
+      "gloss": [
+        {
+          "sv": "Nästa",
+          "en": "next",
+          "word": "qualities-100"
+        },
+        {
+          "sv": "vecka",
+          "en": "week",
+          "word": "health-time-030"
+        },
+        {
+          "sv": "ska",
+          "en": "will (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "boka",
+          "en": "book"
+        },
+        {
+          "sv": "tid",
+          "en": "appointment",
+          "word": "health-time-026"
+        },
+        {
+          "sv": "hos",
+          "en": "with; at the place of",
+          "word": "essentials-076"
+        },
+        {
+          "sv": "sjukgymnast",
+          "en": "physiotherapist"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s46",
+      "level": "A2",
+      "sv": "De har anmält sig till en danskurs på onsdagar.",
+      "en": "They have signed up for a dance course on Wednesdays.",
+      "distractors": [
+        "They have signed up for a yoga course on Wednesdays.",
+        "They have signed up for a dance course on Tuesdays.",
+        "We have signed up for a dance course on Wednesdays."
+      ],
+      "topics": [
+        "perfect-tense",
+        "plural"
+      ],
+      "words": [
+        "verbs-002",
+        "essentials-064",
+        "school-037",
+        "essentials-063",
+        "health-time-042"
+      ],
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "anmält sig",
+          "en": "signed up (anmäla sig)"
+        },
+        {
+          "sv": "till",
+          "en": "for",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "danskurs",
+          "en": "dance course (dans + kurs)",
+          "word": "school-037"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "onsdagar",
+          "en": "Wednesdays (onsdag)",
+          "word": "health-time-042"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s47",
+      "level": "A2",
+      "sv": "Min nya läkare är snällare än den gamla, men han pratar snabbt.",
+      "en": "My new doctor is kinder than the old one, but he talks fast.",
+      "distractors": [
+        "My new doctor is kinder than the old one, but he talks slowly.",
+        "My new dentist is kinder than the old one, but he talks fast.",
+        "My new doctor is less kind than the old one, but he talks fast."
+      ],
+      "topics": [
+        "adjective-agreement",
+        "possessives"
+      ],
+      "words": [
+        "essentials-052",
+        "qualities-010",
+        "work-008",
+        "verbs-001",
+        "qualities-062",
+        "qualities-011",
+        "verbs-007",
+        "qualities-048"
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "nya",
+          "en": "new (ny)",
+          "word": "qualities-010"
+        },
+        {
+          "sv": "läkare",
+          "en": "doctor",
+          "word": "work-008"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "snällare",
+          "en": "kinder (snäll)",
+          "word": "qualities-062"
+        },
+        {
+          "sv": "än",
+          "en": "than"
+        },
+        {
+          "sv": "gamla",
+          "en": "old (gammal)",
+          "word": "qualities-011"
+        },
+        {
+          "sv": "pratar",
+          "en": "talks (prata)",
+          "word": "verbs-007"
+        },
+        {
+          "sv": "snabbt",
+          "en": "fast (snabb)",
+          "word": "qualities-048"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s48",
+      "level": "A2",
+      "sv": "Finns det en läkare som pratar engelska här i närheten?",
+      "en": "Is there a doctor who speaks English near here?",
+      "distractors": [
+        "Is there a nurse who speaks English near here?",
+        "Is there a doctor who speaks French near here?",
+        "Is there a doctor who speaks English in the town centre?"
+      ],
+      "topics": [
+        "questions"
+      ],
+      "words": [
+        "verbs-099",
+        "work-008",
+        "verbs-007",
+        "school-012",
+        "essentials-095"
+      ],
+      "gloss": [
+        {
+          "sv": "Finns",
+          "en": "is there (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "läkare",
+          "en": "doctor",
+          "word": "work-008"
+        },
+        {
+          "sv": "pratar",
+          "en": "speaks (prata)",
+          "word": "verbs-007"
+        },
+        {
+          "sv": "engelska",
+          "en": "English",
+          "word": "school-012"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "i närheten",
+          "en": "nearby; near"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s49",
+      "level": "A2",
+      "sv": "Rör inte handleden på tre dagar, okej?",
+      "en": "Don’t move your wrist for three days, okay?",
+      "distractors": [
+        "Don’t move your wrist for two days, okay?",
+        "Don’t move your arm for three days, okay?",
+        "Don’t move your ankle for three days, okay?"
+      ],
+      "topics": [
+        "negation-placement",
+        "definite-form"
+      ],
+      "words": [
+        "essentials-063",
+        "health-time-049",
+        "health-time-029",
+        "essentials-014"
+      ],
+      "gloss": [
+        {
+          "sv": "Rör",
+          "en": "move (röra)"
+        },
+        {
+          "sv": "handleden",
+          "en": "the wrist; your wrist (handled)"
+        },
+        {
+          "sv": "på",
+          "en": "for (time, after a negative)",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "dagar",
+          "en": "days (dag)",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "okej",
+          "en": "okay",
+          "word": "essentials-014"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-s50",
+      "level": "A2",
+      "sv": "Hur dags stänger vårdcentralen på fredagar?",
+      "en": "What time does the health centre close on Fridays?",
+      "distractors": [
+        "What time does the health centre open on Fridays?",
+        "What time does the pharmacy close on Fridays?",
+        "What time does the health centre close on Thursdays?"
+      ],
+      "topics": [
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-041",
+        "health-time-025",
+        "essentials-063",
+        "health-time-044"
+      ],
+      "gloss": [
+        {
+          "sv": "Hur dags",
+          "en": "what time; when"
+        },
+        {
+          "sv": "stänger",
+          "en": "closes (stänga)",
+          "word": "verbs-041"
+        },
+        {
+          "sv": "vårdcentralen",
+          "en": "the health centre (vårdcentral)",
+          "word": "health-time-025"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "fredagar",
+          "en": "Fridays (fredag)",
+          "word": "health-time-044"
+        }
+      ]
+    }
+  ],
+  "passages": [
+    {
+      "id": "a2-health-p01",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "At the doctor",
+      "lines": [
+        {
+          "speaker": "Läkaren",
+          "sv": "Hej Elin, vad kan jag hjälpa dig med?",
+          "en": "Hello Elin, what can I help you with?"
+        },
+        {
+          "speaker": "Elin",
+          "sv": "Jag har haft ont i halsen i fyra dagar, och jag hostar på nätterna.",
+          "en": "I have had a sore throat for four days, and I cough at night."
+        },
+        {
+          "speaker": "Läkaren",
+          "sv": "Har du feber?",
+          "en": "Do you have a fever?"
+        },
+        {
+          "speaker": "Elin",
+          "sv": "I morse hade jag trettioåtta grader.",
+          "en": "This morning I had a temperature of thirty-eight."
+        },
+        {
+          "speaker": "Läkaren",
+          "sv": "Det är inget allvarligt. Vila och drick mycket vatten.",
+          "en": "It is nothing serious. Rest and drink a lot of water."
+        },
+        {
+          "speaker": "Elin",
+          "sv": "Kan jag gå till jobbet imorgon?",
+          "en": "Can I go to work tomorrow?"
+        },
+        {
+          "speaker": "Läkaren",
+          "sv": "Stanna hemma i två dagar och kom tillbaka om det inte blir bättre.",
+          "en": "Stay at home for two days and come back if it does not get better."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How long has Elin had a sore throat?",
+          "choices": [
+            "Since this morning",
+            "For two days",
+            "For three days",
+            "For four days"
+          ],
+          "answer": 3,
+          "explanation": "She says: “Jag har haft ont i halsen i fyra dagar”."
+        },
+        {
+          "question": "What was Elin’s temperature this morning?",
+          "choices": [
+            "Thirty-seven degrees",
+            "Thirty-nine degrees",
+            "Thirty-eight degrees",
+            "Forty degrees"
+          ],
+          "answer": 2,
+          "explanation": "“I morse hade jag trettioåtta grader.”"
+        },
+        {
+          "question": "What does the doctor tell Elin to do?",
+          "choices": [
+            "Rest and drink a lot of water",
+            "Take tablets three times a day",
+            "Go to the hospital",
+            "Eat more fruit"
+          ],
+          "answer": 0,
+          "explanation": "“Vila och drick mycket vatten.”"
+        },
+        {
+          "question": "When can Elin go back to work?",
+          "choices": [
+            "Tomorrow",
+            "After two days at home",
+            "Next week",
+            "When she has no cough"
+          ],
+          "answer": 1,
+          "explanation": "“Stanna hemma i två dagar” — she must stay at home for two days first."
+        }
+      ],
+      "topics": [
+        "modal-verbs",
+        "perfect-tense",
+        "questions"
+      ],
+      "words": [
+        "essentials-001",
+        "essentials-034",
+        "verbs-021",
+        "verbs-045",
+        "essentials-066",
+        "verbs-002",
+        "health-time-021",
+        "essentials-062",
+        "health-time-018",
+        "health-time-050",
+        "health-time-029",
+        "health-time-035",
+        "health-time-022",
+        "health-time-033",
+        "verbs-001",
+        "essentials-043",
+        "qualities-061",
+        "verbs-055",
+        "essentials-090",
+        "food-001",
+        "verbs-004",
+        "essentials-064",
+        "work-002",
+        "essentials-098",
+        "verbs-033",
+        "home-004",
+        "health-time-048",
+        "verbs-005",
+        "essentials-070",
+        "verbs-097",
+        "qualities-003"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Elin",
+          "en": "Elin (a name)"
+        },
+        {
+          "sv": "vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "hjälpa",
+          "en": "help",
+          "word": "verbs-045"
+        },
+        {
+          "sv": "med",
+          "en": "with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "haft",
+          "en": "had (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ont",
+          "en": "pain (ha ont i halsen = to have a sore throat)",
+          "word": "health-time-021"
+        },
+        {
+          "sv": "i",
+          "en": "in; for (time)",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "halsen",
+          "en": "the throat (hals)",
+          "word": "health-time-018"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        },
+        {
+          "sv": "dagar",
+          "en": "days (dag)",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "hostar",
+          "en": "cough (hosta)"
+        },
+        {
+          "sv": "på nätterna",
+          "en": "at night (natt)",
+          "word": "health-time-035"
+        },
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "feber",
+          "en": "fever; a temperature",
+          "word": "health-time-022"
+        },
+        {
+          "sv": "I morse",
+          "en": "this morning (earlier today)",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "hade",
+          "en": "had (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "trettioåtta",
+          "en": "thirty-eight"
+        },
+        {
+          "sv": "grader",
+          "en": "degrees (grad)"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "inget",
+          "en": "nothing (ingen)",
+          "word": "essentials-043"
+        },
+        {
+          "sv": "allvarligt",
+          "en": "serious (allvarlig)",
+          "word": "qualities-061"
+        },
+        {
+          "sv": "Vila",
+          "en": "rest (vila)"
+        },
+        {
+          "sv": "drick",
+          "en": "drink (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "mycket",
+          "en": "a lot of",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "vatten",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "gå",
+          "en": "go",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "jobbet",
+          "en": "work; the job (jobb)",
+          "word": "work-002"
+        },
+        {
+          "sv": "imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        },
+        {
+          "sv": "Stanna",
+          "en": "stay (stanna)",
+          "word": "verbs-033"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "kom",
+          "en": "come (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "tillbaka",
+          "en": "back"
+        },
+        {
+          "sv": "om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "blir",
+          "en": "gets; becomes (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "bättre",
+          "en": "better (bra)",
+          "word": "qualities-003"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p02",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "At the pharmacy",
+      "lines": [
+        {
+          "speaker": "Apotekaren",
+          "sv": "Hej, har du ett recept?",
+          "en": "Hello, do you have a prescription?"
+        },
+        {
+          "speaker": "Johan",
+          "sv": "Ja, här. Det är till min dotter, hon har influensa.",
+          "en": "Yes, here. It is for my daughter, she has flu."
+        },
+        {
+          "speaker": "Apotekaren",
+          "sv": "Okej. Den här medicinen tar hon tre gånger om dagen, efter maten.",
+          "en": "Okay. She takes this medicine three times a day, after meals."
+        },
+        {
+          "speaker": "Johan",
+          "sv": "Hur länge ska hon ta den?",
+          "en": "How long should she take it?"
+        },
+        {
+          "speaker": "Apotekaren",
+          "sv": "I fem dagar. Om febern inte går ner, ring vårdcentralen.",
+          "en": "For five days. If the fever does not go down, call the health centre."
+        },
+        {
+          "speaker": "Johan",
+          "sv": "Tack. Vad kostar det?",
+          "en": "Thank you. How much is it?"
+        },
+        {
+          "speaker": "Apotekaren",
+          "sv": "Det blir åttiofem kronor.",
+          "en": "That comes to eighty-five kronor."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Who is the medicine for?",
+          "choices": [
+            "His daughter",
+            "Johan himself",
+            "His wife",
+            "His son"
+          ],
+          "answer": 0,
+          "explanation": "“Det är till min dotter, hon har influensa.”"
+        },
+        {
+          "question": "How should the medicine be taken?",
+          "choices": [
+            "Twice a day, after meals",
+            "Three times a day, before meals",
+            "Three times a day, after meals",
+            "Once a day, in the evening"
+          ],
+          "answer": 2,
+          "explanation": "“tre gånger om dagen, efter maten”"
+        },
+        {
+          "question": "How long should the treatment last?",
+          "choices": [
+            "Five days",
+            "Three days",
+            "Eight days",
+            "Two weeks"
+          ],
+          "answer": 0,
+          "explanation": "“I fem dagar.”"
+        },
+        {
+          "question": "What should Johan do if the fever does not go down?",
+          "choices": [
+            "Come back to the pharmacy",
+            "Give her more medicine",
+            "Call the health centre",
+            "Take her to the hospital"
+          ],
+          "answer": 2,
+          "explanation": "“Om febern inte går ner, ring vårdcentralen.”"
+        }
+      ],
+      "topics": [
+        "definite-form",
+        "modal-verbs",
+        "word-order-v2"
+      ],
+      "words": [
+        "essentials-001",
+        "verbs-002",
+        "essentials-004",
+        "essentials-095",
+        "verbs-001",
+        "essentials-064",
+        "essentials-052",
+        "people-030",
+        "essentials-014",
+        "essentials-060",
+        "health-time-024",
+        "verbs-025",
+        "health-time-049",
+        "health-time-036",
+        "health-time-029",
+        "essentials-078",
+        "food-002",
+        "verbs-023",
+        "essentials-062",
+        "health-time-051",
+        "essentials-070",
+        "health-time-022",
+        "verbs-004",
+        "verbs-082",
+        "health-time-025",
+        "essentials-002",
+        "essentials-034",
+        "verbs-053",
+        "verbs-097",
+        "shopping-004"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "recept",
+          "en": "prescription"
+        },
+        {
+          "sv": "Ja",
+          "en": "yes",
+          "word": "essentials-004"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "till",
+          "en": "for",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "dotter",
+          "en": "daughter",
+          "word": "people-030"
+        },
+        {
+          "sv": "influensa",
+          "en": "flu"
+        },
+        {
+          "sv": "Okej",
+          "en": "okay",
+          "word": "essentials-014"
+        },
+        {
+          "sv": "Den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "medicinen",
+          "en": "the medicine (medicin)",
+          "word": "health-time-024"
+        },
+        {
+          "sv": "tar",
+          "en": "takes (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "gånger",
+          "en": "times (gång)",
+          "word": "health-time-036"
+        },
+        {
+          "sv": "om dagen",
+          "en": "a day; per day",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "efter",
+          "en": "after",
+          "word": "essentials-078"
+        },
+        {
+          "sv": "maten",
+          "en": "the food; meals (mat)",
+          "word": "food-002"
+        },
+        {
+          "sv": "Hur länge",
+          "en": "how long"
+        },
+        {
+          "sv": "ska",
+          "en": "should (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "ta",
+          "en": "take",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "I",
+          "en": "for (time)",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "fem",
+          "en": "five",
+          "word": "health-time-051"
+        },
+        {
+          "sv": "dagar",
+          "en": "days (dag)",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "Om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "febern",
+          "en": "the fever (feber)",
+          "word": "health-time-022"
+        },
+        {
+          "sv": "går ner",
+          "en": "goes down (gå ner)",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "ring",
+          "en": "call (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "vårdcentralen",
+          "en": "the health centre (vårdcentral)",
+          "word": "health-time-025"
+        },
+        {
+          "sv": "Tack",
+          "en": "thank you",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "kostar",
+          "en": "costs (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "blir",
+          "en": "comes to (bli)",
+          "word": "verbs-097"
+        },
+        {
+          "sv": "åttiofem",
+          "en": "eighty-five"
+        },
+        {
+          "sv": "kronor",
+          "en": "kronor (krona)",
+          "word": "shopping-004"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p03",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Booking an appointment",
+      "lines": [
+        {
+          "speaker": "Receptionisten",
+          "sv": "Vårdcentralen, du pratar med Maria.",
+          "en": "Health centre, you are speaking to Maria."
+        },
+        {
+          "speaker": "Sara",
+          "sv": "Hej, jag skulle vilja boka en tid, tack.",
+          "en": "Hello, I would like to book an appointment, please."
+        },
+        {
+          "speaker": "Receptionisten",
+          "sv": "Kan du komma på tisdag den sjuttonde klockan elva?",
+          "en": "Can you come on Tuesday the seventeenth at eleven o’clock?"
+        },
+        {
+          "speaker": "Sara",
+          "sv": "Jag jobbar på tisdagar. Har du något på eftermiddagen?",
+          "en": "I work on Tuesdays. Do you have anything in the afternoon?"
+        },
+        {
+          "speaker": "Receptionisten",
+          "sv": "Torsdag den nittonde klockan halv fem, går det bra?",
+          "en": "Thursday the nineteenth at half past four, is that all right?"
+        },
+        {
+          "speaker": "Sara",
+          "sv": "Perfekt. Tiden är för min son, han är åtta år.",
+          "en": "Perfect. The appointment is for my son, he is eight years old."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why can Sara not come on Tuesday?",
+          "choices": [
+            "She is away on the seventeenth",
+            "She works on Tuesdays",
+            "She has another appointment at eleven",
+            "Her son is at school"
+          ],
+          "answer": 1,
+          "explanation": "“Jag jobbar på tisdagar.”"
+        },
+        {
+          "question": "When is the appointment in the end?",
+          "choices": [
+            "Tuesday the seventeenth at eleven",
+            "Thursday the seventeenth at half past four",
+            "Thursday the nineteenth at eleven",
+            "Thursday the nineteenth at half past four"
+          ],
+          "answer": 3,
+          "explanation": "“Torsdag den nittonde klockan halv fem”"
+        },
+        {
+          "question": "Who is the appointment for?",
+          "choices": [
+            "Sara herself",
+            "Her husband",
+            "Her son",
+            "Her daughter"
+          ],
+          "answer": 2,
+          "explanation": "“Tiden är för min son”"
+        },
+        {
+          "question": "How old is the patient?",
+          "choices": [
+            "Eight",
+            "Eleven",
+            "Seventeen",
+            "Nineteen"
+          ],
+          "answer": 0,
+          "explanation": "“han är åtta år” — the other numbers are a time and dates."
+        }
+      ],
+      "topics": [
+        "modal-verbs",
+        "questions",
+        "definite-form"
+      ],
+      "words": [
+        "health-time-025",
+        "verbs-007",
+        "essentials-066",
+        "essentials-001",
+        "verbs-020",
+        "health-time-026",
+        "essentials-002",
+        "verbs-021",
+        "verbs-005",
+        "essentials-063",
+        "health-time-041",
+        "shopping-026",
+        "verbs-067",
+        "verbs-002",
+        "essentials-042",
+        "health-time-043",
+        "health-time-051",
+        "verbs-001",
+        "essentials-068",
+        "essentials-052",
+        "people-029",
+        "health-time-054",
+        "health-time-032"
+      ],
+      "gloss": [
+        {
+          "sv": "Vårdcentralen",
+          "en": "the health centre (vårdcentral)",
+          "word": "health-time-025"
+        },
+        {
+          "sv": "pratar",
+          "en": "are speaking (prata)",
+          "word": "verbs-007"
+        },
+        {
+          "sv": "med",
+          "en": "with; to",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "Maria",
+          "en": "Maria (a name)"
+        },
+        {
+          "sv": "Hej",
+          "en": "hello",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "skulle vilja",
+          "en": "would like (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "boka",
+          "en": "book"
+        },
+        {
+          "sv": "tid",
+          "en": "appointment",
+          "word": "health-time-026"
+        },
+        {
+          "sv": "tack",
+          "en": "please; thank you",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "komma",
+          "en": "come",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "på",
+          "en": "on; in",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "tisdag",
+          "en": "Tuesday",
+          "word": "health-time-041"
+        },
+        {
+          "sv": "sjuttonde",
+          "en": "seventeenth"
+        },
+        {
+          "sv": "klockan",
+          "en": "at; o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "elva",
+          "en": "eleven"
+        },
+        {
+          "sv": "jobbar",
+          "en": "work (jobba)",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "tisdagar",
+          "en": "Tuesdays (tisdag)",
+          "word": "health-time-041"
+        },
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "något",
+          "en": "anything (någon)",
+          "word": "essentials-042"
+        },
+        {
+          "sv": "eftermiddagen",
+          "en": "the afternoon (eftermiddag)"
+        },
+        {
+          "sv": "Torsdag",
+          "en": "Thursday",
+          "word": "health-time-043"
+        },
+        {
+          "sv": "nittonde",
+          "en": "nineteenth"
+        },
+        {
+          "sv": "halv fem",
+          "en": "half past four (halv = half an hour before the hour named)",
+          "word": "health-time-051"
+        },
+        {
+          "sv": "går det bra",
+          "en": "is that all right; does that work"
+        },
+        {
+          "sv": "Perfekt",
+          "en": "perfect"
+        },
+        {
+          "sv": "Tiden",
+          "en": "the appointment (tid)",
+          "word": "health-time-026"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "för",
+          "en": "for",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "son",
+          "en": "son",
+          "word": "people-029"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        },
+        {
+          "sv": "år",
+          "en": "years (år)",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p04",
+      "level": "A2",
+      "kind": "text",
+      "title": "A message to a colleague",
+      "lines": [
+        {
+          "sv": "Hej Erik, jag kommer inte till kontoret idag.",
+          "en": "Hi Erik, I am not coming to the office today."
+        },
+        {
+          "sv": "Jag har fått influensa av min son och har haft feber sedan igår.",
+          "en": "I have caught flu from my son and have had a fever since yesterday."
+        },
+        {
+          "sv": "Jag ska stanna i sängen och ringa vårdcentralen i eftermiddag.",
+          "en": "I am going to stay in bed and call the health centre this afternoon."
+        },
+        {
+          "sv": "Kan du ställa in mötet klockan två och säga till Anna?",
+          "en": "Can you cancel the two o’clock meeting and tell Anna?"
+        },
+        {
+          "sv": "Jag kommer tillbaka på måndag om jag mår bättre. Tack så mycket!",
+          "en": "I will be back on Monday if I feel better. Thank you very much!"
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why is the writer staying at home?",
+          "choices": [
+            "He caught flu from his son",
+            "His son is ill and needs him",
+            "He has a doctor’s appointment",
+            "He hurt his back"
+          ],
+          "answer": 0,
+          "explanation": "“Jag har fått influensa av min son”"
+        },
+        {
+          "question": "What does he ask Erik to do?",
+          "choices": [
+            "Move the meeting to Monday",
+            "Call the health centre for him",
+            "Cancel the two o’clock meeting and tell Anna",
+            "Send him a report"
+          ],
+          "answer": 2,
+          "explanation": "“Kan du ställa in mötet klockan två och säga till Anna?”"
+        },
+        {
+          "question": "When will he call the health centre?",
+          "choices": [
+            "This afternoon",
+            "Tomorrow morning",
+            "On Monday",
+            "Tonight"
+          ],
+          "answer": 0,
+          "explanation": "“ringa vårdcentralen i eftermiddag”"
+        },
+        {
+          "question": "When does he plan to come back to work?",
+          "choices": [
+            "Tomorrow",
+            "On Monday, if he feels better",
+            "On Wednesday",
+            "He does not say"
+          ],
+          "answer": 1,
+          "explanation": "“Jag kommer tillbaka på måndag om jag mår bättre.”"
+        }
+      ],
+      "topics": [
+        "perfect-tense",
+        "future",
+        "modal-verbs"
+      ],
+      "words": [
+        "essentials-001",
+        "verbs-005",
+        "essentials-064",
+        "work-022",
+        "essentials-097",
+        "verbs-002",
+        "verbs-080",
+        "essentials-069",
+        "essentials-052",
+        "people-029",
+        "health-time-022",
+        "essentials-107",
+        "essentials-099",
+        "verbs-023",
+        "verbs-033",
+        "essentials-062",
+        "home-029",
+        "verbs-082",
+        "health-time-025",
+        "verbs-021",
+        "verbs-029",
+        "work-006",
+        "shopping-026",
+        "health-time-048",
+        "verbs-006",
+        "essentials-063",
+        "health-time-040",
+        "essentials-070",
+        "feelings-038",
+        "qualities-003",
+        "essentials-002"
+      ],
+      "gloss": [
+        {
+          "sv": "Hej",
+          "en": "hi",
+          "word": "essentials-001"
+        },
+        {
+          "sv": "Erik",
+          "en": "Erik (a name)"
+        },
+        {
+          "sv": "kommer",
+          "en": "am coming; will come (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "kontoret",
+          "en": "the office (kontor)",
+          "word": "work-022"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "fått",
+          "en": "got; caught (få)",
+          "word": "verbs-080"
+        },
+        {
+          "sv": "influensa",
+          "en": "flu"
+        },
+        {
+          "sv": "av",
+          "en": "from",
+          "word": "essentials-069"
+        },
+        {
+          "sv": "min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "son",
+          "en": "son",
+          "word": "people-029"
+        },
+        {
+          "sv": "haft",
+          "en": "had (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "feber",
+          "en": "fever; a temperature",
+          "word": "health-time-022"
+        },
+        {
+          "sv": "sedan",
+          "en": "since",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        },
+        {
+          "sv": "ska",
+          "en": "am going to; will (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "stanna",
+          "en": "stay",
+          "word": "verbs-033"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "sängen",
+          "en": "the bed (säng)",
+          "word": "home-029"
+        },
+        {
+          "sv": "ringa",
+          "en": "call",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "vårdcentralen",
+          "en": "the health centre (vårdcentral)",
+          "word": "health-time-025"
+        },
+        {
+          "sv": "i eftermiddag",
+          "en": "this afternoon"
+        },
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "ställa in",
+          "en": "cancel",
+          "word": "verbs-029"
+        },
+        {
+          "sv": "mötet",
+          "en": "the meeting (möte)",
+          "word": "work-006"
+        },
+        {
+          "sv": "klockan",
+          "en": "o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "säga till",
+          "en": "tell",
+          "word": "verbs-006"
+        },
+        {
+          "sv": "Anna",
+          "en": "Anna (a name)"
+        },
+        {
+          "sv": "tillbaka",
+          "en": "back"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "måndag",
+          "en": "Monday",
+          "word": "health-time-040"
+        },
+        {
+          "sv": "om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "mår",
+          "en": "feel (må)",
+          "word": "feelings-038"
+        },
+        {
+          "sv": "bättre",
+          "en": "better (bra)",
+          "word": "qualities-003"
+        },
+        {
+          "sv": "Tack så mycket",
+          "en": "thank you very much",
+          "word": "essentials-002"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p05",
+      "level": "A2",
+      "kind": "text",
+      "title": "Sleep advice",
+      "lines": [
+        {
+          "sv": "Att sova är lika viktigt för hälsan som att träna.",
+          "en": "Sleeping is as important for your health as exercising."
+        },
+        {
+          "sv": "En vuxen behöver sova mellan sju och åtta timmar per natt.",
+          "en": "An adult needs to sleep between seven and eight hours a night."
+        },
+        {
+          "sv": "På kvällen bör du undvika kaffe och skärmar innan du lägger dig.",
+          "en": "In the evening you should avoid coffee and screens before you go to bed."
+        },
+        {
+          "sv": "Om du ofta vaknar på natten, prata med din läkare.",
+          "en": "If you often wake up at night, talk to your doctor."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does the text compare sleep with?",
+          "choices": [
+            "Food",
+            "Work",
+            "Exercise",
+            "Fresh air"
+          ],
+          "answer": 2,
+          "explanation": "“Att sova är lika viktigt för hälsan som att träna.”"
+        },
+        {
+          "question": "How long should an adult sleep?",
+          "choices": [
+            "Between six and seven hours",
+            "Between seven and eight hours",
+            "At least nine hours",
+            "Between eight and nine hours"
+          ],
+          "answer": 1,
+          "explanation": "“mellan sju och åtta timmar per natt”"
+        },
+        {
+          "question": "What should you avoid in the evening?",
+          "choices": [
+            "Coffee and screens",
+            "Sport and coffee",
+            "Food and screens",
+            "Reading and coffee"
+          ],
+          "answer": 0,
+          "explanation": "“undvika kaffe och skärmar innan du lägger dig”"
+        },
+        {
+          "question": "What should you do if you often wake up at night?",
+          "choices": [
+            "Sleep longer in the morning",
+            "Drink a cup of tea",
+            "Go to bed earlier",
+            "Talk to your doctor"
+          ],
+          "answer": 3,
+          "explanation": "“prata med din läkare”"
+        }
+      ],
+      "topics": [
+        "modal-verbs",
+        "word-order-v2",
+        "definite-form"
+      ],
+      "words": [
+        "verbs-057",
+        "verbs-001",
+        "qualities-038",
+        "essentials-068",
+        "health-time-001",
+        "leisure-012",
+        "people-033",
+        "verbs-024",
+        "essentials-073",
+        "health-time-053",
+        "health-time-054",
+        "health-time-027",
+        "health-time-035",
+        "essentials-063",
+        "health-time-034",
+        "food-004",
+        "media-029",
+        "verbs-061",
+        "essentials-070",
+        "essentials-102",
+        "verbs-058",
+        "verbs-007",
+        "essentials-066",
+        "essentials-053",
+        "work-008"
+      ],
+      "gloss": [
+        {
+          "sv": "sova",
+          "en": "sleep; to sleep",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "lika",
+          "en": "as (lika … som = as … as)"
+        },
+        {
+          "sv": "viktigt",
+          "en": "important (viktig)",
+          "word": "qualities-038"
+        },
+        {
+          "sv": "för",
+          "en": "for",
+          "word": "essentials-068"
+        },
+        {
+          "sv": "hälsan",
+          "en": "health; your health (hälsa)",
+          "word": "health-time-001"
+        },
+        {
+          "sv": "träna",
+          "en": "exercise; work out",
+          "word": "leisure-012"
+        },
+        {
+          "sv": "vuxen",
+          "en": "adult",
+          "word": "people-033"
+        },
+        {
+          "sv": "behöver",
+          "en": "needs (behöva)",
+          "word": "verbs-024"
+        },
+        {
+          "sv": "mellan",
+          "en": "between",
+          "word": "essentials-073"
+        },
+        {
+          "sv": "sju",
+          "en": "seven",
+          "word": "health-time-053"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        },
+        {
+          "sv": "timmar",
+          "en": "hours (timme)",
+          "word": "health-time-027"
+        },
+        {
+          "sv": "per",
+          "en": "per; a"
+        },
+        {
+          "sv": "natt",
+          "en": "night",
+          "word": "health-time-035"
+        },
+        {
+          "sv": "På",
+          "en": "in",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "kvällen",
+          "en": "the evening (kväll)",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "bör",
+          "en": "should (böra)"
+        },
+        {
+          "sv": "undvika",
+          "en": "avoid"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "skärmar",
+          "en": "screens (skärm)",
+          "word": "media-029"
+        },
+        {
+          "sv": "innan",
+          "en": "before"
+        },
+        {
+          "sv": "lägger dig",
+          "en": "go to bed (lägga sig)",
+          "word": "verbs-061"
+        },
+        {
+          "sv": "Om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "ofta",
+          "en": "often",
+          "word": "essentials-102"
+        },
+        {
+          "sv": "vaknar",
+          "en": "wake up (vakna)",
+          "word": "verbs-058"
+        },
+        {
+          "sv": "på natten",
+          "en": "at night (natt)"
+        },
+        {
+          "sv": "prata",
+          "en": "talk",
+          "word": "verbs-007"
+        },
+        {
+          "sv": "med",
+          "en": "to; with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "din",
+          "en": "your",
+          "word": "essentials-053"
+        },
+        {
+          "sv": "läkare",
+          "en": "doctor",
+          "word": "work-008"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p06",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "Running together",
+      "lines": [
+        {
+          "speaker": "Lina",
+          "sv": "Vill du springa med mig på lördag morgon?",
+          "en": "Do you want to go running with me on Saturday morning?"
+        },
+        {
+          "speaker": "Omar",
+          "sv": "Jag kan inte, jag spelar fotboll på lördagar.",
+          "en": "I can’t, I play football on Saturdays."
+        },
+        {
+          "speaker": "Lina",
+          "sv": "På söndag då? Vi kan springa en timme i parken.",
+          "en": "On Sunday then? We can run for an hour in the park."
+        },
+        {
+          "speaker": "Omar",
+          "sv": "Okej, men inte för tidigt. Klockan nio, passar det?",
+          "en": "Okay, but not too early. Nine o’clock, does that suit you?"
+        },
+        {
+          "speaker": "Lina",
+          "sv": "Perfekt. Förra gången hade jag ont i knäna i två dagar.",
+          "en": "Perfect. Last time my knees hurt for two days."
+        },
+        {
+          "speaker": "Omar",
+          "sv": "Du borde gå i fem minuter innan du springer.",
+          "en": "You should walk for five minutes before you run."
+        }
+      ],
+      "questions": [
+        {
+          "question": "Why can Omar not run on Saturday?",
+          "choices": [
+            "He works on Saturday mornings",
+            "He plays football on Saturdays",
+            "He does not like running",
+            "His knees hurt"
+          ],
+          "answer": 1,
+          "explanation": "“Jag kan inte, jag spelar fotboll på lördagar.”"
+        },
+        {
+          "question": "When do they agree to run?",
+          "choices": [
+            "Saturday at nine",
+            "Sunday at seven",
+            "Sunday at nine",
+            "Sunday at ten"
+          ],
+          "answer": 2,
+          "explanation": "“På söndag då?” and then “Klockan nio, passar det?”"
+        },
+        {
+          "question": "What happened to Lina last time?",
+          "choices": [
+            "Her knees hurt for two days",
+            "She hurt her back",
+            "She ran for two hours",
+            "She fell in the park"
+          ],
+          "answer": 0,
+          "explanation": "“Förra gången hade jag ont i knäna i två dagar.”"
+        },
+        {
+          "question": "What does Omar advise before running?",
+          "choices": [
+            "Drinking a lot of water",
+            "Running more slowly",
+            "Eating a good breakfast",
+            "Walking for five minutes"
+          ],
+          "answer": 3,
+          "explanation": "“Du borde gå i fem minuter innan du springer.”"
+        }
+      ],
+      "topics": [
+        "modal-verbs",
+        "negation-placement",
+        "questions"
+      ],
+      "words": [
+        "verbs-020",
+        "verbs-036",
+        "essentials-066",
+        "essentials-063",
+        "health-time-045",
+        "health-time-033",
+        "verbs-021",
+        "verbs-084",
+        "leisure-007",
+        "health-time-046",
+        "essentials-108",
+        "health-time-027",
+        "essentials-062",
+        "travel-029",
+        "essentials-014",
+        "qualities-106",
+        "shopping-026",
+        "health-time-055",
+        "health-time-036",
+        "verbs-002",
+        "health-time-021",
+        "health-time-048",
+        "health-time-029",
+        "verbs-004",
+        "health-time-051",
+        "health-time-028"
+      ],
+      "gloss": [
+        {
+          "sv": "Vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "springa",
+          "en": "run; go running",
+          "word": "verbs-036"
+        },
+        {
+          "sv": "med",
+          "en": "with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "lördag",
+          "en": "Saturday",
+          "word": "health-time-045"
+        },
+        {
+          "sv": "morgon",
+          "en": "morning",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "spelar",
+          "en": "play (spela)",
+          "word": "verbs-084"
+        },
+        {
+          "sv": "fotboll",
+          "en": "football",
+          "word": "leisure-007"
+        },
+        {
+          "sv": "lördagar",
+          "en": "Saturdays (lördag)",
+          "word": "health-time-045"
+        },
+        {
+          "sv": "På",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "söndag",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "sv": "då",
+          "en": "then",
+          "word": "essentials-108"
+        },
+        {
+          "sv": "timme",
+          "en": "hour",
+          "word": "health-time-027"
+        },
+        {
+          "sv": "i",
+          "en": "in; for (time)",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "parken",
+          "en": "the park (park)",
+          "word": "travel-029"
+        },
+        {
+          "sv": "Okej",
+          "en": "okay",
+          "word": "essentials-014"
+        },
+        {
+          "sv": "för tidigt",
+          "en": "too early",
+          "word": "qualities-106"
+        },
+        {
+          "sv": "Klockan",
+          "en": "o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "nio",
+          "en": "nine",
+          "word": "health-time-055"
+        },
+        {
+          "sv": "passar det",
+          "en": "does that suit you (passa)"
+        },
+        {
+          "sv": "Perfekt",
+          "en": "perfect"
+        },
+        {
+          "sv": "Förra gången",
+          "en": "last time (gång)",
+          "word": "health-time-036"
+        },
+        {
+          "sv": "hade",
+          "en": "had (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ont",
+          "en": "pain (ha ont i = to hurt in)",
+          "word": "health-time-021"
+        },
+        {
+          "sv": "knäna",
+          "en": "the knees; my knees (knä)"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "dagar",
+          "en": "days (dag)",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "borde",
+          "en": "should (böra)"
+        },
+        {
+          "sv": "gå",
+          "en": "walk",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "fem",
+          "en": "five",
+          "word": "health-time-051"
+        },
+        {
+          "sv": "minuter",
+          "en": "minutes (minut)",
+          "word": "health-time-028"
+        },
+        {
+          "sv": "innan",
+          "en": "before"
+        },
+        {
+          "sv": "springer",
+          "en": "run (springa)",
+          "word": "verbs-036"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p07",
+      "level": "A2",
+      "kind": "text",
+      "title": "A tiring week",
+      "lines": [
+        {
+          "sv": "Den här veckan har jag sovit väldigt dåligt.",
+          "en": "This week I have slept very badly."
+        },
+        {
+          "sv": "I måndags och i tisdags jobbade jag till midnatt med en rapport.",
+          "en": "On Monday and Tuesday I worked until midnight on a report."
+        },
+        {
+          "sv": "I onsdags morse var jag så trött att jag glömde min tid hos tandläkaren.",
+          "en": "On Wednesday morning I was so tired that I forgot my dentist appointment."
+        },
+        {
+          "sv": "På kvällen lade jag mig klockan nio och sov i tolv timmar.",
+          "en": "In the evening I went to bed at nine o’clock and slept for twelve hours."
+        },
+        {
+          "sv": "Sedan i torsdags mår jag mycket bättre.",
+          "en": "Since Thursday I have felt much better."
+        }
+      ],
+      "questions": [
+        {
+          "question": "What kept the writer up late on Monday and Tuesday?",
+          "choices": [
+            "A sick child",
+            "Noise from the street",
+            "Work on a report",
+            "A dentist appointment"
+          ],
+          "answer": 2,
+          "explanation": "“I måndags och i tisdags jobbade jag till midnatt med en rapport.”"
+        },
+        {
+          "question": "What did the writer forget on Wednesday morning?",
+          "choices": [
+            "The keys",
+            "The medicine",
+            "A meeting at work",
+            "The dentist appointment"
+          ],
+          "answer": 3,
+          "explanation": "“jag glömde min tid hos tandläkaren”"
+        },
+        {
+          "question": "How long did the writer sleep on Wednesday night?",
+          "choices": [
+            "Nine hours",
+            "Twelve hours",
+            "Ten hours",
+            "Until midnight"
+          ],
+          "answer": 1,
+          "explanation": "“lade jag mig klockan nio och sov i tolv timmar” — nine is the time the writer went to bed."
+        },
+        {
+          "question": "How has the writer felt since Thursday?",
+          "choices": [
+            "Much better",
+            "Still very tired",
+            "Worse than before",
+            "A little ill"
+          ],
+          "answer": 0,
+          "explanation": "“Sedan i torsdags mår jag mycket bättre.”"
+        }
+      ],
+      "topics": [
+        "past-tense",
+        "perfect-tense",
+        "word-order-v2"
+      ],
+      "words": [
+        "essentials-060",
+        "health-time-030",
+        "verbs-002",
+        "verbs-057",
+        "essentials-093",
+        "qualities-005",
+        "health-time-040",
+        "health-time-041",
+        "verbs-067",
+        "essentials-064",
+        "essentials-066",
+        "work-037",
+        "health-time-042",
+        "verbs-001",
+        "essentials-083",
+        "feelings-009",
+        "verbs-089",
+        "essentials-052",
+        "health-time-026",
+        "essentials-076",
+        "work-010",
+        "essentials-063",
+        "health-time-034",
+        "verbs-061",
+        "shopping-026",
+        "health-time-055",
+        "essentials-062",
+        "health-time-027",
+        "health-time-043",
+        "feelings-038",
+        "essentials-090",
+        "qualities-003"
+      ],
+      "gloss": [
+        {
+          "sv": "Den här",
+          "en": "this",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "veckan",
+          "en": "the week (vecka)",
+          "word": "health-time-030"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "sovit",
+          "en": "slept (sova)",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "väldigt",
+          "en": "very",
+          "word": "essentials-093"
+        },
+        {
+          "sv": "dåligt",
+          "en": "badly (dålig)",
+          "word": "qualities-005"
+        },
+        {
+          "sv": "I måndags",
+          "en": "last Monday; on Monday (måndag)",
+          "word": "health-time-040"
+        },
+        {
+          "sv": "i tisdags",
+          "en": "last Tuesday; on Tuesday (tisdag)",
+          "word": "health-time-041"
+        },
+        {
+          "sv": "jobbade",
+          "en": "worked (jobba)",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "till",
+          "en": "until",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "midnatt",
+          "en": "midnight"
+        },
+        {
+          "sv": "med",
+          "en": "on; with",
+          "word": "essentials-066"
+        },
+        {
+          "sv": "rapport",
+          "en": "report",
+          "word": "work-037"
+        },
+        {
+          "sv": "I onsdags morse",
+          "en": "on Wednesday morning (onsdag)",
+          "word": "health-time-042"
+        },
+        {
+          "sv": "var",
+          "en": "was (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "så",
+          "en": "so",
+          "word": "essentials-083"
+        },
+        {
+          "sv": "trött",
+          "en": "tired",
+          "word": "feelings-009"
+        },
+        {
+          "sv": "glömde",
+          "en": "forgot (glömma)",
+          "word": "verbs-089"
+        },
+        {
+          "sv": "min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "tid",
+          "en": "appointment",
+          "word": "health-time-026"
+        },
+        {
+          "sv": "hos",
+          "en": "with; at the place of",
+          "word": "essentials-076"
+        },
+        {
+          "sv": "tandläkaren",
+          "en": "the dentist (tandläkare)",
+          "word": "work-010"
+        },
+        {
+          "sv": "På",
+          "en": "in",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "kvällen",
+          "en": "the evening (kväll)",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "lade jag mig",
+          "en": "I went to bed (lägga sig)",
+          "word": "verbs-061"
+        },
+        {
+          "sv": "klockan",
+          "en": "o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "nio",
+          "en": "nine",
+          "word": "health-time-055"
+        },
+        {
+          "sv": "sov",
+          "en": "slept (sova)",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "i",
+          "en": "for (time)",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "tolv",
+          "en": "twelve"
+        },
+        {
+          "sv": "timmar",
+          "en": "hours (timme)",
+          "word": "health-time-027"
+        },
+        {
+          "sv": "Sedan i torsdags",
+          "en": "since Thursday (torsdag)",
+          "word": "health-time-043"
+        },
+        {
+          "sv": "mår",
+          "en": "feel (må)",
+          "word": "feelings-038"
+        },
+        {
+          "sv": "mycket",
+          "en": "much",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "bättre",
+          "en": "better (bra)",
+          "word": "qualities-003"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p08",
+      "level": "A2",
+      "kind": "dialogue",
+      "title": "A fall from a bike",
+      "lines": [
+        {
+          "speaker": "Sjuksköterskan",
+          "sv": "Vad har hänt?",
+          "en": "What has happened?"
+        },
+        {
+          "speaker": "Oskar",
+          "sv": "Jag ramlade av cykeln i morse, och nu är fotleden väldigt svullen.",
+          "en": "I fell off my bike this morning, and now my ankle is very swollen."
+        },
+        {
+          "speaker": "Sjuksköterskan",
+          "sv": "Kan du gå?",
+          "en": "Can you walk?"
+        },
+        {
+          "speaker": "Oskar",
+          "sv": "Lite, men det gör väldigt ont när jag står på foten.",
+          "en": "A little, but it hurts a lot when I stand on my foot."
+        },
+        {
+          "speaker": "Sjuksköterskan",
+          "sv": "Vi ska ta en röntgen. Sätt dig här, läkaren kommer om tio minuter.",
+          "en": "We are going to take an X-ray. Sit down here, the doctor is coming in ten minutes."
+        },
+        {
+          "speaker": "Oskar",
+          "sv": "Tack. Jag har en fotbollsmatch på söndag.",
+          "en": "Thanks. I have a football match on Sunday."
+        },
+        {
+          "speaker": "Sjuksköterskan",
+          "sv": "Glöm matchen, du måste vila.",
+          "en": "Forget the match, you have to rest."
+        }
+      ],
+      "questions": [
+        {
+          "question": "How did Oskar hurt himself?",
+          "choices": [
+            "He fell down the stairs",
+            "He fell off his bike",
+            "He was hurt in a football match",
+            "He fell while running"
+          ],
+          "answer": 1,
+          "explanation": "“Jag ramlade av cykeln i morse”"
+        },
+        {
+          "question": "What does Oskar say about walking?",
+          "choices": [
+            "He cannot walk at all",
+            "He can walk without any pain",
+            "He can walk a little, but it hurts when he stands on his foot",
+            "He can only walk with help"
+          ],
+          "answer": 2,
+          "explanation": "“Lite, men det gör väldigt ont när jag står på foten.”"
+        },
+        {
+          "question": "What happens next?",
+          "choices": [
+            "He goes home with a bandage",
+            "The nurse calls an ambulance",
+            "He gets some tablets",
+            "An X-ray, and the doctor comes in ten minutes"
+          ],
+          "answer": 3,
+          "explanation": "“Vi ska ta en röntgen.” and “läkaren kommer om tio minuter”"
+        },
+        {
+          "question": "What does the nurse say about Sunday’s match?",
+          "choices": [
+            "He can play if the ankle is better",
+            "He can play only half the match",
+            "She does not answer",
+            "He must forget it and rest"
+          ],
+          "answer": 3,
+          "explanation": "“Glöm matchen, du måste vila.”"
+        }
+      ],
+      "topics": [
+        "perfect-tense",
+        "past-tense",
+        "future"
+      ],
+      "words": [
+        "essentials-034",
+        "verbs-002",
+        "travel-008",
+        "health-time-033",
+        "essentials-094",
+        "verbs-001",
+        "essentials-093",
+        "verbs-021",
+        "verbs-004",
+        "essentials-091",
+        "verbs-003",
+        "health-time-021",
+        "essentials-038",
+        "verbs-064",
+        "essentials-063",
+        "health-time-005",
+        "essentials-024",
+        "verbs-023",
+        "verbs-025",
+        "verbs-060",
+        "essentials-095",
+        "work-008",
+        "verbs-005",
+        "essentials-070",
+        "health-time-056",
+        "health-time-028",
+        "essentials-002",
+        "leisure-003",
+        "health-time-046",
+        "verbs-089",
+        "verbs-022"
+      ],
+      "gloss": [
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "har",
+          "en": "has; have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "hänt",
+          "en": "happened (hända)"
+        },
+        {
+          "sv": "ramlade av",
+          "en": "fell off (ramla av)"
+        },
+        {
+          "sv": "cykeln",
+          "en": "the bike; my bike (cykel)",
+          "word": "travel-008"
+        },
+        {
+          "sv": "i morse",
+          "en": "this morning (earlier today)",
+          "word": "health-time-033"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "fotleden",
+          "en": "the ankle; my ankle (fotled)"
+        },
+        {
+          "sv": "väldigt",
+          "en": "very; a lot",
+          "word": "essentials-093"
+        },
+        {
+          "sv": "svullen",
+          "en": "swollen"
+        },
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "gå",
+          "en": "walk",
+          "word": "verbs-004"
+        },
+        {
+          "sv": "Lite",
+          "en": "a little",
+          "word": "essentials-091"
+        },
+        {
+          "sv": "gör",
+          "en": "does (göra); det gör ont = it hurts",
+          "word": "verbs-003"
+        },
+        {
+          "sv": "ont",
+          "en": "pain",
+          "word": "health-time-021"
+        },
+        {
+          "sv": "när",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "står",
+          "en": "stand (stå)",
+          "word": "verbs-064"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "foten",
+          "en": "the foot; my foot (fot)",
+          "word": "health-time-005"
+        },
+        {
+          "sv": "Vi",
+          "en": "we",
+          "word": "essentials-024"
+        },
+        {
+          "sv": "ska",
+          "en": "are going to (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "ta",
+          "en": "take",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "röntgen",
+          "en": "X-ray"
+        },
+        {
+          "sv": "Sätt dig",
+          "en": "sit down (sätta sig)",
+          "word": "verbs-060"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "läkaren",
+          "en": "the doctor (läkare)",
+          "word": "work-008"
+        },
+        {
+          "sv": "kommer",
+          "en": "is coming (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "om",
+          "en": "in (time)",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "tio",
+          "en": "ten",
+          "word": "health-time-056"
+        },
+        {
+          "sv": "minuter",
+          "en": "minutes (minut)",
+          "word": "health-time-028"
+        },
+        {
+          "sv": "Tack",
+          "en": "thanks",
+          "word": "essentials-002"
+        },
+        {
+          "sv": "fotbollsmatch",
+          "en": "football match (fotboll + match)",
+          "word": "leisure-003"
+        },
+        {
+          "sv": "söndag",
+          "en": "Sunday",
+          "word": "health-time-046"
+        },
+        {
+          "sv": "Glöm",
+          "en": "forget (glömma)",
+          "word": "verbs-089"
+        },
+        {
+          "sv": "matchen",
+          "en": "the match (match)",
+          "word": "leisure-003"
+        },
+        {
+          "sv": "måste",
+          "en": "must; have to",
+          "word": "verbs-022"
+        },
+        {
+          "sv": "vila",
+          "en": "rest"
+        }
+      ]
+    },
+    {
+      "id": "a2-health-p09",
+      "level": "A2",
+      "kind": "text",
+      "title": "Pharmacy notice",
+      "lines": [
+        {
+          "sv": "Apoteket i centrum är stängt från den tolfte till den femtonde augusti.",
+          "en": "The pharmacy in the town centre is closed from the twelfth to the fifteenth of August."
+        },
+        {
+          "sv": "Under de här fyra dagarna har apoteket vid stationen öppet som vanligt.",
+          "en": "During these four days the pharmacy by the station is open as usual."
+        },
+        {
+          "sv": "Det är öppet varje dag mellan klockan åtta och tjugo, utom på söndagar.",
+          "en": "It is open every day between eight and eight in the evening, except on Sundays."
+        },
+        {
+          "sv": "Om det är akut på natten, ring ett ett två.",
+          "en": "If it is an emergency at night, call one one two."
+        }
+      ],
+      "questions": [
+        {
+          "question": "When is the town centre pharmacy closed?",
+          "choices": [
+            "From the twelfth to the fifteenth of August",
+            "From the fifteenth to the twentieth of August",
+            "Every Sunday in August",
+            "From the second to the fifth of August"
+          ],
+          "answer": 0,
+          "explanation": "“stängt från den tolfte till den femtonde augusti”"
+        },
+        {
+          "question": "Which pharmacy stays open during those days?",
+          "choices": [
+            "The one in the town centre",
+            "The one at the hospital",
+            "The one by the station",
+            "None of them"
+          ],
+          "answer": 2,
+          "explanation": "“apoteket vid stationen öppet som vanligt”"
+        },
+        {
+          "question": "On which day is that pharmacy closed?",
+          "choices": [
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "It is never closed"
+          ],
+          "answer": 1,
+          "explanation": "“Det är öppet varje dag mellan klockan åtta och tjugo, utom på söndagar.”"
+        },
+        {
+          "question": "What should you do in an emergency at night?",
+          "choices": [
+            "Go to the station pharmacy",
+            "Wait until eight in the morning",
+            "Call the health centre",
+            "Call one one two"
+          ],
+          "answer": 3,
+          "explanation": "“Om det är akut på natten, ring ett ett två.”"
+        }
+      ],
+      "topics": [
+        "definite-form",
+        "adjective-agreement",
+        "word-order-v2"
+      ],
+      "words": [
+        "travel-023",
+        "essentials-062",
+        "travel-028",
+        "verbs-001",
+        "qualities-035",
+        "essentials-065",
+        "essentials-064",
+        "essentials-071",
+        "essentials-060",
+        "health-time-050",
+        "health-time-029",
+        "verbs-002",
+        "travel-011",
+        "qualities-034",
+        "qualities-075",
+        "essentials-049",
+        "essentials-073",
+        "shopping-026",
+        "health-time-054",
+        "health-time-057",
+        "essentials-063",
+        "health-time-046",
+        "essentials-070",
+        "health-time-035",
+        "verbs-082",
+        "health-time-048"
+      ],
+      "gloss": [
+        {
+          "sv": "Apoteket",
+          "en": "the pharmacy (apotek)",
+          "word": "travel-023"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "centrum",
+          "en": "the town centre",
+          "word": "travel-028"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stängt",
+          "en": "closed (stängd)",
+          "word": "qualities-035"
+        },
+        {
+          "sv": "från",
+          "en": "from",
+          "word": "essentials-065"
+        },
+        {
+          "sv": "tolfte",
+          "en": "twelfth"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "femtonde",
+          "en": "fifteenth"
+        },
+        {
+          "sv": "augusti",
+          "en": "August"
+        },
+        {
+          "sv": "Under",
+          "en": "during",
+          "word": "essentials-071"
+        },
+        {
+          "sv": "de här",
+          "en": "these (den här)",
+          "word": "essentials-060"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        },
+        {
+          "sv": "dagarna",
+          "en": "the days (dag)",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "har",
+          "en": "has (ha); har öppet = is open",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "apoteket",
+          "en": "the pharmacy (apotek)",
+          "word": "travel-023"
+        },
+        {
+          "sv": "vid",
+          "en": "by; at"
+        },
+        {
+          "sv": "stationen",
+          "en": "the station (station)",
+          "word": "travel-011"
+        },
+        {
+          "sv": "öppet",
+          "en": "open (öppen)",
+          "word": "qualities-034"
+        },
+        {
+          "sv": "som vanligt",
+          "en": "as usual (vanlig)",
+          "word": "qualities-075"
+        },
+        {
+          "sv": "varje",
+          "en": "every",
+          "word": "essentials-049"
+        },
+        {
+          "sv": "dag",
+          "en": "day",
+          "word": "health-time-029"
+        },
+        {
+          "sv": "mellan",
+          "en": "between",
+          "word": "essentials-073"
+        },
+        {
+          "sv": "klockan",
+          "en": "o’clock",
+          "word": "shopping-026"
+        },
+        {
+          "sv": "åtta",
+          "en": "eight",
+          "word": "health-time-054"
+        },
+        {
+          "sv": "tjugo",
+          "en": "twenty (eight in the evening)",
+          "word": "health-time-057"
+        },
+        {
+          "sv": "utom",
+          "en": "except"
+        },
+        {
+          "sv": "på",
+          "en": "on; at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "söndagar",
+          "en": "Sundays (söndag)",
+          "word": "health-time-046"
+        },
+        {
+          "sv": "Om",
+          "en": "if",
+          "word": "essentials-070"
+        },
+        {
+          "sv": "akut",
+          "en": "urgent; an emergency"
+        },
+        {
+          "sv": "natten",
+          "en": "the night (natt)",
+          "word": "health-time-035"
+        },
+        {
+          "sv": "ring",
+          "en": "call (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "ett ett två",
+          "en": "one one two (the emergency number)",
+          "word": "health-time-048"
+        }
+      ]
+    }
+  ]
+}

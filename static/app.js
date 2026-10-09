@@ -200,7 +200,7 @@ function chooseVerbTape(kind) {
 }
 // Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
 const WORDS_TABS = { cards: 'Cards', endless: 'Endless', ...(roomsOff.has('walkman') ? {} : { walkman: 'Walkman' }), ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
-const LISTEN_TABS = { listen: 'Questions', sounds: 'Sounds', 'listen-tape': 'Tape', ...(roomsOff.has('news') ? {} : { news: 'News' }) };
+const LISTEN_TABS = { listen: 'Questions', ...(roomsOff.has('sounds') ? {} : { sounds: 'Sounds' }), ...(roomsOff.has('sentencetape') ? {} : { 'listen-tape': 'Tape' }), ...(roomsOff.has('news') ? {} : { news: 'News' }) };
 // A device last on the old Say it tab opens on Endless, with Say on.
 let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved === 'say' ? 'endless' : saved in WORDS_TABS ? saved : 'cards'; })();
 let listenTab = (() => { const saved = readPreference('echo.listen-tab', 'listen'); return saved in LISTEN_TABS ? saved : 'listen'; })();
@@ -517,12 +517,12 @@ function renderHome() {
     ${tile('grammar', grammarIcon, 'Grammar', 'Rules, then practise')}
     ${tile('verbs', verbsIcon, 'Verbs', 'Conjugation, on its own')}
     `)}${shelf('Listen &amp; read', 'tiles shelf', `
-    ${tile('listen', headphones, 'Listen', 'Questions, twin sounds, a tape', 'listen')}
+    ${tile('listen', headphones, 'Listen', roomsOff.has('sounds') && roomsOff.has('sentencetape') ? 'Hear it, show you got it' : 'Questions, twin sounds, a tape', 'listen')}
     ${tile('read', bookIcon, 'Read', 'Read it, show you got it', 'read')}
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
     `)}${shelf('Hands-free', 'study hands-free', `
-    ${row('tape', cassette, 'Words tape', 'data-tape="walkman"', 'walkman')}${row('tape', cassette, 'Verbs tape', 'data-tape="verbs-tape"', 'verbs')}${row('tape', cassette, 'Sentences tape', 'data-tape="listen-tape"', 'listen')}${row('radio', radioIcon, `Today’s Radio · ${radioHint()}`)}
+    ${row('tape', cassette, 'Words tape', 'data-tape="walkman"', 'walkman')}${row('tape', cassette, 'Verbs tape', 'data-tape="verbs-tape"', 'verbs')}${roomsOff.has('sentencetape') ? '' : row('tape', cassette, 'Sentences tape', 'data-tape="listen-tape"', 'listen')}${row('radio', radioIcon, `Today’s Radio · ${radioHint()}`)}
     `)}${shelf('Study', 'study home-study', `
     ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${row('friends', friendsIcon, ['Friends', homeInfo.doorOpen ? 'open to anyone' : '', homeInfo.waiting ? `${homeInfo.waiting} waiting` : ''].filter(Boolean).join(' · '))}
   `)}</section>`;
@@ -547,7 +547,8 @@ function wordsTop() {
 }
 // The top of every Listen tab: back, the level (for questions), ⓘ, then the tabs.
 function listenTop(right = '') {
-  return `<div class="section-top">${back('Home', 'home')}<div>${right}${infoButton('listen')}</div></div>${roomTabs('listen-tab', screen === 'sound' ? 'sounds' : screen, LISTEN_TABS)}`;
+  // A Listen with Questions alone (a language without Sounds or Tape) shows no tabs.
+  return `<div class="section-top">${back('Home', 'home')}<div>${right}${infoButton('listen')}</div></div>${Object.keys(LISTEN_TABS).length > 1 ? roomTabs('listen-tab', screen === 'sound' ? 'sounds' : screen, LISTEN_TABS) : ''}`;
 }
 // Keeps a retry scheduled while the Mac is out of reach and an action waits, sooner at first, then every 30 s.
 function syncAutoRetry() {
