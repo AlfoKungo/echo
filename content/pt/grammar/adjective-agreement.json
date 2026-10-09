@@ -1,0 +1,2387 @@
+{
+  "id": "adjective-agreement",
+  "unit": "nouns",
+  "level": "A1",
+  "title": "Making adjectives agree",
+  "description": "Give a Portuguese adjective the right gender and number, and put it in the right place.",
+  "mark": "novo · nova · novos · novas",
+  "guide": {
+    "summary": "A Portuguese adjective takes the gender and number of the noun it describes, wherever it stands. Learn which endings change, how they make plurals, and where the adjective goes.",
+    "sections": [
+      {
+        "id": "o-a",
+        "title": "Adjectives in -o: four forms",
+        "text": "Most adjectives end in -o in the dictionary. They switch -o to -a for a feminine noun and add -s for a plural, exactly like the article in front of the noun.",
+        "table": {
+          "columns": [
+            "",
+            "masculine",
+            "feminine"
+          ],
+          "rows": [
+            [
+              "singular",
+              "o carro novo",
+              "a casa nova"
+            ],
+            [
+              "plural",
+              "os carros novos",
+              "as casas novas"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun the adjective describes.",
+          "Check its article: o or um is masculine, a or uma feminine.",
+          "Count: one or several?",
+          "Take the ending: -o, -a, -os or -as."
+        ],
+        "examples": [
+          {
+            "pt": "Ela tem uma bolsa preta.",
+            "en": "She has a black bag."
+          },
+          {
+            "pt": "Comprei uns sapatos novos.",
+            "en": "I bought some new shoes."
+          }
+        ],
+        "watch": [
+          "The adjective follows the noun, not the person speaking: a man says uma casa nova too.",
+          "Nouns in -e can be either gender: o restaurante, a cidade. Check the article."
+        ]
+      },
+      {
+        "id": "same-form",
+        "title": "Adjectives in -e or a consonant: one form",
+        "text": "An adjective ending in -e, and most ending in a consonant, has one form for masculine and feminine. Only the plural changes.",
+        "table": {
+          "columns": [
+            "Ending",
+            "masculine",
+            "feminine"
+          ],
+          "rows": [
+            [
+              "-e",
+              "um carro grande",
+              "uma casa grande"
+            ],
+            [
+              "-l, -z, -r",
+              "um carro azul",
+              "uma bolsa azul"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the dictionary form of the adjective.",
+          "If it ends in -e or in -l, -z or -r, keep it for both genders.",
+          "Add only the plural when the noun is plural."
+        ],
+        "examples": [
+          {
+            "pt": "Ela é uma aluna inteligente.",
+            "en": "She is an intelligent student."
+          },
+          {
+            "pt": "A menina está feliz.",
+            "en": "The girl is happy."
+          }
+        ],
+        "watch": [
+          "Never make grande, verde or triste into -a forms: granda does not exist.",
+          "Adjectives in -or and nationalities in -ês break this rule; see the next section."
+        ]
+      },
+      {
+        "id": "or-es",
+        "title": "Adjectives in -or and nationalities in -ês add -a",
+        "text": "Two consonant endings do change for a feminine noun: -or and -ês. They add -a, and -ês loses its accent mark.",
+        "table": {
+          "columns": [
+            "Ending",
+            "masculine",
+            "feminine"
+          ],
+          "rows": [
+            [
+              "-or",
+              "trabalhador",
+              "trabalhadora"
+            ],
+            [
+              "-ês",
+              "português, inglês",
+              "portuguesa, inglesa"
+            ]
+          ]
+        },
+        "steps": [
+          "Check whether the adjective ends in -or or -ês.",
+          "For a feminine noun, add -a.",
+          "With -ês, drop the circumflex: inglesa."
+        ],
+        "examples": [
+          {
+            "pt": "Minha amiga é portuguesa.",
+            "en": "My friend is Portuguese."
+          },
+          {
+            "pt": "Ela é uma mulher trabalhadora.",
+            "en": "She is a hardworking woman."
+          }
+        ],
+        "watch": [
+          "Comparatives in -or do not change: melhor and maior stay the same for a woman.",
+          "The plurals are portugueses, ingleses and trabalhadores, without the accent."
+        ]
+      },
+      {
+        "id": "plural-l-z",
+        "title": "Plurals of -l and -z",
+        "text": "Most adjectives just add -s. Those ending in -l and -z change instead: -l becomes -is, and -z adds -es.",
+        "table": {
+          "columns": [
+            "Ending",
+            "singular",
+            "plural"
+          ],
+          "rows": [
+            [
+              "-al, -el, -ol, -ul",
+              "legal, azul",
+              "legais, azuis"
+            ],
+            [
+              "-il (unstressed)",
+              "fácil, difícil",
+              "fáceis, difíceis"
+            ],
+            [
+              "-z",
+              "feliz",
+              "felizes"
+            ],
+            [
+              "-r, -s",
+              "trabalhador, inglês",
+              "trabalhadores, ingleses"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the last letter of the adjective.",
+          "Ending in -l: replace the -l with -is (unstressed -il becomes -eis).",
+          "Ending in -z, -r or -s: add -es."
+        ],
+        "examples": [
+          {
+            "pt": "Ela tem olhos azuis.",
+            "en": "She has blue eyes."
+          },
+          {
+            "pt": "As crianças estão felizes.",
+            "en": "The children are happy."
+          }
+        ],
+        "watch": [
+          "Portuguese never ends a word in -ls or -zs.",
+          "Fácil and difícil take an accent in the plural too: fáceis, difíceis."
+        ]
+      },
+      {
+        "id": "position",
+        "title": "Where the adjective goes",
+        "text": "Most adjectives, and every colour and nationality, come after the noun. A few very common ones usually go before it, and grande means something different in each place.",
+        "table": {
+          "columns": [
+            "Adjective",
+            "Position",
+            "Example"
+          ],
+          "rows": [
+            [
+              "most adjectives",
+              "after the noun",
+              "um carro novo, uma casa amarela"
+            ],
+            [
+              "bom",
+              "usually before",
+              "um bom restaurante, uma boa ideia"
+            ],
+            [
+              "grande",
+              "before = great, after = big",
+              "um grande amigo, um amigo grande"
+            ]
+          ]
+        },
+        "steps": [
+          "By default, put the adjective after the noun.",
+          "Put bom or boa before the noun.",
+          "For grande, before means great and after means big."
+        ],
+        "examples": [
+          {
+            "pt": "Eles moram em uma casa amarela.",
+            "en": "They live in a yellow house."
+          },
+          {
+            "pt": "Ele é um grande amigo.",
+            "en": "He is a great friend."
+          }
+        ],
+        "watch": [
+          "The feminine of bom is boa, not bona.",
+          "A colour never goes before the noun: uma bolsa vermelha."
+        ]
+      },
+      {
+        "id": "mixed",
+        "title": "Men and women together",
+        "text": "When an adjective describes masculine and feminine nouns together, it takes the masculine plural. One man or boy in the group is enough.",
+        "table": {
+          "columns": [
+            "Group",
+            "Form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "all male",
+              "masculine plural",
+              "Os meninos estão cansados."
+            ],
+            [
+              "all female",
+              "feminine plural",
+              "As meninas estão cansadas."
+            ],
+            [
+              "mixed group",
+              "masculine plural",
+              "O João e a Maria estão cansados."
+            ]
+          ]
+        },
+        "steps": [
+          "List the nouns the adjective describes.",
+          "If all are feminine, use -as.",
+          "If even one is masculine, use the masculine plural."
+        ],
+        "examples": [
+          {
+            "pt": "Meu pai e minha mãe são simpáticos.",
+            "en": "My father and my mother are nice."
+          },
+          {
+            "pt": "A Ana e o Pedro são brasileiros.",
+            "en": "Ana and Pedro are Brazilian."
+          }
+        ],
+        "watch": [
+          "Do not match only the nearest noun: as meninas e o menino estão cansados."
+        ]
+      },
+      {
+        "id": "after-verb",
+        "title": "After ser and estar",
+        "text": "An adjective after ser or estar still agrees with the subject, even though the verb stands between them.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Example",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "ser",
+              "As casas são bonitas.",
+              "The houses are beautiful."
+            ],
+            [
+              "estar",
+              "A sopa está fria.",
+              "The soup is cold."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject before the verb.",
+          "Read its gender and number.",
+          "Give the adjective after the verb the same ending."
+        ],
+        "examples": [
+          {
+            "pt": "As casas são bonitas.",
+            "en": "The houses are beautiful."
+          },
+          {
+            "pt": "A janela está aberta.",
+            "en": "The window is open."
+          }
+        ],
+        "watch": [
+          "The verb must be plural too: as casas são, not as casas é.",
+          "English adjectives never change, so it is easy to forget the ending here."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "o-a": {
+      "section": "o-a",
+      "steps": [
+        "Check its article: o or um is masculine, a or uma feminine.",
+        "Count: one or several?",
+        "Take the ending: -o, -a, -os or -as."
+      ]
+    },
+    "same-form": {
+      "section": "same-form",
+      "steps": [
+        "Look at the dictionary form of the adjective.",
+        "If it ends in -e or in -l, -z or -r, keep it for both genders.",
+        "Add only the plural when the noun is plural."
+      ]
+    },
+    "or-es": {
+      "section": "or-es",
+      "steps": [
+        "Check whether the adjective ends in -or or -ês.",
+        "For a feminine noun, add -a.",
+        "With -ês, drop the circumflex: inglesa."
+      ]
+    },
+    "plural-l-z": {
+      "section": "plural-l-z",
+      "steps": [
+        "Check the last letter of the adjective.",
+        "Ending in -l: replace the -l with -is (unstressed -il becomes -eis).",
+        "Ending in -z, -r or -s: add -es."
+      ]
+    },
+    "position": {
+      "section": "position",
+      "steps": [
+        "By default, put the adjective after the noun.",
+        "Put bom or boa before the noun.",
+        "For grande, before means great and after means big."
+      ]
+    },
+    "mixed": {
+      "section": "mixed",
+      "steps": [
+        "List the nouns the adjective describes.",
+        "If all are feminine, use -as.",
+        "If even one is masculine, use the masculine plural."
+      ]
+    },
+    "after-verb": {
+      "section": "after-verb",
+      "steps": [
+        "Find the subject before the verb.",
+        "Read its gender and number.",
+        "Give the adjective after the verb the same ending."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "adjective-agreement-o-a-1",
+      "pattern": "o-a",
+      "type": "choose",
+      "instruction": "Choose the right form of preto (black).",
+      "source": "Ela tem uma bolsa ____.",
+      "options": [
+        "preto",
+        "preta",
+        "pretas"
+      ],
+      "answers": [
+        "preta"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "preto"
+          ],
+          "why": "This is the masculine form. Bolsa takes uma, so it is feminine, and the adjective must match it."
+        },
+        {
+          "answers": [
+            "pretas"
+          ],
+          "why": "This form is plural, but there is only one bag."
+        }
+      ],
+      "row": "singular",
+      "hint": "Is bolsa masculine or feminine? Look at the article.",
+      "feedback": "The adjective copies the gender and number of bolsa.",
+      "explanation": "Bolsa is feminine singular (uma bolsa), so preto changes -o to -a: uma bolsa preta.",
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "bolsa",
+          "en": "bag",
+          "word": "shopping-047"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-o-a-2",
+      "pattern": "o-a",
+      "type": "complete",
+      "instruction": "Write the right form of the adjective in brackets.",
+      "source": "Comprei uns sapatos ____ (novo).",
+      "answers": [
+        "novos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "novo"
+          ],
+          "why": "This is singular, but sapatos ends in -s: there is more than one shoe."
+        },
+        {
+          "answers": [
+            "novas"
+          ],
+          "why": "This is the feminine plural. Sapatos is masculine (o sapato)."
+        },
+        {
+          "answers": [
+            "nova"
+          ],
+          "why": "This form is feminine and singular; sapatos is neither."
+        }
+      ],
+      "row": "plural",
+      "hint": "Sapatos is masculine and plural.",
+      "feedback": "Both the gender and the number come from sapatos.",
+      "explanation": "Sapatos is masculine plural (os sapatos), so novo adds -s: uns sapatos novos.",
+      "gloss": [
+        {
+          "pt": "Comprei",
+          "en": "I bought (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "sapatos",
+          "en": "shoes",
+          "word": "people-045"
+        },
+        {
+          "pt": "novo",
+          "en": "new",
+          "word": "qualities-008"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-o-a-3",
+      "pattern": "o-a",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "A Maria tem uma bicicleta vermelho.",
+      "answers": [
+        "A Maria tem uma bicicleta vermelha.",
+        "Maria tem uma bicicleta vermelha."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "A Maria tem uma bicicleta vermelho."
+          ],
+          "why": "That is the sentence unchanged. The adjective still has the masculine ending next to a feminine noun."
+        },
+        {
+          "answers": [
+            "A Maria tem uma bicicleta vermelhas."
+          ],
+          "why": "The adjective went plural, but there is one bicycle."
+        },
+        {
+          "answers": [
+            "A Maria tem um bicicleta vermelho."
+          ],
+          "why": "Changing the article does not make bicicleta masculine; fix the adjective instead."
+        }
+      ],
+      "row": "singular",
+      "hint": "Check the gender of bicicleta.",
+      "feedback": "An adjective ending in -o has to change when the noun is feminine.",
+      "explanation": "Bicicleta is feminine (uma bicicleta), so vermelho becomes vermelha.",
+      "gloss": [
+        {
+          "pt": "Maria",
+          "en": "Maria (a name)"
+        },
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "bicicleta",
+          "en": "bicycle",
+          "word": "travel-008"
+        },
+        {
+          "pt": "vermelho",
+          "en": "red",
+          "word": "qualities-094"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-o-a-4",
+      "pattern": "o-a",
+      "type": "build",
+      "instruction": "Build the sentence: We have a small apartment. Leave one tile unused.",
+      "source": "We have a small apartment.",
+      "tokens": [
+        "temos",
+        "pequena",
+        "Nós",
+        "apartamento",
+        "um",
+        "pequeno."
+      ],
+      "answers": [
+        "Nós temos um apartamento pequeno."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós temos um apartamento pequena."
+          ],
+          "why": "That tile is the feminine form, and apartamento is masculine. The unused tile is the one whose gender does not match."
+        }
+      ],
+      "row": "singular",
+      "hint": "Apartamento is masculine.",
+      "feedback": "Only one form of small fits a masculine singular noun.",
+      "explanation": "Apartamento is masculine singular (o apartamento), so small is pequeno."
+    },
+    {
+      "id": "adjective-agreement-o-a-5",
+      "pattern": "o-a",
+      "type": "rewrite",
+      "instruction": "Replace livro with revista and change the other words to match. Write the whole sentence.",
+      "source": "Eu li um livro antigo.",
+      "answers": [
+        "Eu li uma revista antiga.",
+        "Li uma revista antiga."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu li uma revista antigo."
+          ],
+          "why": "The article changed but the adjective still matches livro. It must agree with revista too."
+        },
+        {
+          "answers": [
+            "Eu li um revista antiga."
+          ],
+          "why": "The adjective agrees, but the article is still masculine."
+        },
+        {
+          "answers": [
+            "Eu li um livro antigo."
+          ],
+          "why": "That is the original sentence: livro was never replaced."
+        }
+      ],
+      "row": "singular",
+      "hint": "Revista is feminine: uma revista.",
+      "feedback": "The article and the adjective both follow the new noun.",
+      "explanation": "Revista is feminine singular, so um becomes uma and antigo becomes antiga.",
+      "gloss": [
+        {
+          "pt": "li",
+          "en": "read (ler)",
+          "word": "verbs-057"
+        },
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        },
+        {
+          "pt": "antigo",
+          "en": "old",
+          "word": "qualities-088"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-o-a-6",
+      "pattern": "o-a",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I bought two red apples.",
+      "answers": [
+        "Comprei duas maçãs vermelhas.",
+        "Eu comprei duas maçãs vermelhas."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Comprei duas maçãs vermelhos.",
+            "Eu comprei duas maçãs vermelhos."
+          ],
+          "why": "The adjective is masculine plural, but maçã is feminine (a maçã)."
+        },
+        {
+          "answers": [
+            "Comprei duas maçãs vermelha.",
+            "Eu comprei duas maçãs vermelha."
+          ],
+          "why": "The adjective lost its plural -s; with two apples it needs one."
+        },
+        {
+          "answers": [
+            "Comprei duas vermelhas maçãs.",
+            "Eu comprei duas vermelhas maçãs."
+          ],
+          "why": "A colour goes after the noun in Portuguese, not before it."
+        }
+      ],
+      "row": "plural",
+      "hint": "Maçã is feminine, and there are two.",
+      "feedback": "Check the adjective: feminine and plural.",
+      "explanation": "Maçãs is feminine plural, so vermelho takes -as: duas maçãs vermelhas."
+    },
+    {
+      "id": "adjective-agreement-same-form-1",
+      "pattern": "same-form",
+      "type": "choose",
+      "instruction": "Choose the right form of big.",
+      "source": "Moramos numa cidade ____.",
+      "options": [
+        "granda",
+        "grande",
+        "grandes"
+      ],
+      "answers": [
+        "grande"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "granda"
+          ],
+          "why": "There is no such word. Only adjectives in -o switch to -a; one ending in -e keeps it."
+        },
+        {
+          "answers": [
+            "grandes"
+          ],
+          "why": "This is the plural form, and there is only one city."
+        }
+      ],
+      "row": "-e",
+      "hint": "Look at the ending of the adjective in its dictionary form.",
+      "feedback": "Adjectives ending in -e do not change for gender.",
+      "explanation": "Grande ends in -e, so it stays the same with a feminine noun: uma cidade grande.",
+      "gloss": [
+        {
+          "pt": "Moramos",
+          "en": "we live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "numa",
+          "en": "in a"
+        },
+        {
+          "pt": "cidade",
+          "en": "city",
+          "word": "travel-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-same-form-2",
+      "pattern": "same-form",
+      "type": "choose",
+      "instruction": "Choose the word for blue.",
+      "source": "Tenho uma mochila ____.",
+      "options": [
+        "azula",
+        "azul",
+        "azuis"
+      ],
+      "answers": [
+        "azul"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "azula"
+          ],
+          "why": "An adjective ending in -l does not add -a for a feminine noun; it keeps one form."
+        },
+        {
+          "answers": [
+            "azuis"
+          ],
+          "why": "This is the plural, and there is one backpack."
+        }
+      ],
+      "row": "-l, -z, -r",
+      "hint": "Azul ends in a consonant.",
+      "feedback": "Most adjectives ending in a consonant have one form for both genders.",
+      "explanation": "Azul ends in -l, so it does not change: uma mochila azul.",
+      "gloss": [
+        {
+          "pt": "Tenho",
+          "en": "I have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "mochila",
+          "en": "backpack",
+          "word": "school-018"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-same-form-3",
+      "pattern": "same-form",
+      "type": "complete",
+      "instruction": "Write the right form of the adjective in brackets.",
+      "source": "Ela é uma aluna muito ____ (inteligente).",
+      "answers": [
+        "inteligente"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "inteligenta"
+          ],
+          "why": "Adjectives in -e never take -a. The -e form already serves feminine nouns."
+        },
+        {
+          "answers": [
+            "inteligentes"
+          ],
+          "why": "This is plural, but she is one student."
+        }
+      ],
+      "row": "-e",
+      "hint": "Does an adjective in -e change for a woman?",
+      "feedback": "Watch out: there is nothing to change here.",
+      "explanation": "Inteligente ends in -e, so it is the same for aluno and aluna: uma aluna inteligente.",
+      "gloss": [
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "aluna",
+          "en": "student (female)",
+          "word": "school-002"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "inteligente",
+          "en": "intelligent",
+          "word": "qualities-083"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-same-form-4",
+      "pattern": "same-form",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "A menina está muito feliza.",
+      "answers": [
+        "A menina está muito feliz."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "A menina está muito feliza."
+          ],
+          "why": "That is the sentence unchanged. Feliz does not add -a for a girl."
+        },
+        {
+          "answers": [
+            "A menina está muito felizes."
+          ],
+          "why": "That is the plural form, but there is one girl."
+        }
+      ],
+      "row": "-l, -z, -r",
+      "hint": "Feliz ends in a consonant.",
+      "feedback": "Adjectives ending in -z have one form for both genders.",
+      "explanation": "Feliz does not change in the feminine: a menina está feliz, o menino está feliz.",
+      "gloss": [
+        {
+          "pt": "menina",
+          "en": "girl",
+          "word": "people-007"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "feliza",
+          "en": "happy (feliz)",
+          "word": "feelings-008"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-same-form-5",
+      "pattern": "same-form",
+      "type": "build",
+      "instruction": "Build the sentence: This is a sad song. Leave one tile unused.",
+      "source": "This is a sad song.",
+      "tokens": [
+        "música",
+        "Esta",
+        "trista",
+        "é",
+        "uma",
+        "triste."
+      ],
+      "answers": [
+        "Esta é uma música triste."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Esta é uma música trista."
+          ],
+          "why": "Trista is not a word. Adjectives in -e keep their -e with feminine nouns."
+        }
+      ],
+      "row": "-e",
+      "hint": "Triste ends in -e.",
+      "feedback": "Only one tile is a real form of sad.",
+      "explanation": "Triste ends in -e, so it stays triste with the feminine noun música."
+    },
+    {
+      "id": "adjective-agreement-same-form-6",
+      "pattern": "same-form",
+      "type": "rewrite",
+      "instruction": "Replace carro with bicicleta and change the other words to match. Write the whole sentence.",
+      "source": "Ele tem um carro verde.",
+      "answers": [
+        "Ele tem uma bicicleta verde."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ele tem uma bicicleta verda."
+          ],
+          "why": "Verde ends in -e, so it does not switch to -a. Only the article changes."
+        },
+        {
+          "answers": [
+            "Ele tem um bicicleta verde."
+          ],
+          "why": "The article is still masculine; bicicleta needs the feminine one."
+        },
+        {
+          "answers": [
+            "Ele tem um carro verde."
+          ],
+          "why": "That is the original sentence: carro was never replaced."
+        }
+      ],
+      "row": "-e",
+      "hint": "Bicicleta is feminine. Does verde change?",
+      "feedback": "Only the article changes here; verde ends in -e.",
+      "explanation": "Bicicleta takes uma, but verde ends in -e and has one form for both genders.",
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "pt": "verde",
+          "en": "green",
+          "word": "qualities-096"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-same-form-7",
+      "pattern": "same-form",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "It is a big house.",
+      "answers": [
+        "É uma casa grande."
+      ],
+      "alternatives": [
+        {
+          "answer": "É uma grande casa.",
+          "accepted": true,
+          "message": "Correct, but before the noun grande sounds grander, like a great house. After the noun is the everyday way to say big."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "É uma casa granda."
+          ],
+          "why": "Granda is not a word. Grande keeps its -e with feminine nouns."
+        },
+        {
+          "answers": [
+            "É um casa grande."
+          ],
+          "why": "Casa is feminine, so it takes uma, not um."
+        }
+      ],
+      "row": "-e",
+      "hint": "Casa is feminine. Does grande change?",
+      "feedback": "Grande has one form for both genders.",
+      "explanation": "Grande ends in -e, so it stays the same: uma casa grande."
+    },
+    {
+      "id": "adjective-agreement-or-es-1",
+      "pattern": "or-es",
+      "type": "choose",
+      "instruction": "Choose the right form of hardworking.",
+      "source": "Ela é uma mulher muito ____.",
+      "options": [
+        "trabalhador",
+        "trabalhadora",
+        "trabalhadoras"
+      ],
+      "answers": [
+        "trabalhadora"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "trabalhador"
+          ],
+          "why": "This is the masculine form. Unlike azul or feliz, adjectives in -or do add -a."
+        },
+        {
+          "answers": [
+            "trabalhadoras"
+          ],
+          "why": "This is plural, and there is one woman."
+        }
+      ],
+      "row": "-or",
+      "hint": "Adjectives in -or are an exception to the consonant rule.",
+      "feedback": "Adjectives ending in -or add -a for a feminine noun.",
+      "explanation": "Trabalhador ends in -or, so the feminine adds -a: uma mulher trabalhadora.",
+      "gloss": [
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mulher",
+          "en": "woman",
+          "word": "people-003"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-or-es-2",
+      "pattern": "or-es",
+      "type": "complete",
+      "instruction": "Write the right form of the adjective in brackets.",
+      "source": "Minha amiga é ____ (português).",
+      "answers": [
+        "portuguesa"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "português"
+          ],
+          "why": "This is the masculine form. Nationalities ending in -ês add -a for a woman."
+        },
+        {
+          "answers": [
+            "portuguesas"
+          ],
+          "why": "This is plural, but the sentence talks about one friend."
+        }
+      ],
+      "row": "-ês",
+      "hint": "Nationalities in -ês add -a, and the accent goes.",
+      "feedback": "The feminine adds -a and drops the circumflex.",
+      "explanation": "Português becomes portuguesa for a woman: the -a moves the stress, so the accent mark is no longer written.",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "amiga",
+          "en": "friend (female)",
+          "word": "people-029"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "português",
+          "en": "Portuguese"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-or-es-3",
+      "pattern": "or-es",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ela é inglês.",
+      "answers": [
+        "Ela é inglesa."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ela é inglês."
+          ],
+          "why": "That is the sentence unchanged. Nationalities in -ês do change for a woman."
+        },
+        {
+          "answers": [
+            "Ela é inglesas."
+          ],
+          "why": "That is plural, and there is one person."
+        }
+      ],
+      "row": "-ês",
+      "hint": "Inglês is a nationality ending in -ês.",
+      "feedback": "She needs the feminine form of the nationality.",
+      "explanation": "Inglês adds -a for a woman and loses its accent: inglesa.",
+      "gloss": [
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "inglês",
+          "en": "English"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-or-es-4",
+      "pattern": "or-es",
+      "type": "rewrite",
+      "instruction": "Replace vizinho with vizinha and change the other words to match. Write the whole sentence.",
+      "source": "Meu vizinho é inglês.",
+      "answers": [
+        "Minha vizinha é inglesa.",
+        "A minha vizinha é inglesa."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Minha vizinha é inglês.",
+            "A minha vizinha é inglês."
+          ],
+          "why": "The nationality still has the masculine form. Inglês adds -a for a woman."
+        },
+        {
+          "answers": [
+            "Meu vizinha é inglesa."
+          ],
+          "why": "The possessive is still masculine; vizinha needs the feminine one."
+        },
+        {
+          "answers": [
+            "Meu vizinho é inglês."
+          ],
+          "why": "That is the original sentence: vizinho was never replaced."
+        }
+      ],
+      "row": "-ês",
+      "hint": "Three words follow the new noun.",
+      "feedback": "The possessive and the nationality both turn feminine.",
+      "explanation": "Vizinha is feminine, so meu becomes minha and inglês becomes inglesa.",
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "vizinho",
+          "en": "neighbour",
+          "word": "people-030"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "inglês",
+          "en": "English"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-or-es-5",
+      "pattern": "or-es",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "My sister is very hardworking.",
+      "answers": [
+        "Minha irmã é muito trabalhadora.",
+        "A minha irmã é muito trabalhadora."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Minha irmã é muito trabalhador.",
+            "A minha irmã é muito trabalhador."
+          ],
+          "why": "The adjective is masculine. Adjectives in -or add -a when the noun is feminine."
+        },
+        {
+          "answers": [
+            "Minha irmã está muito trabalhadora.",
+            "A minha irmã está muito trabalhadora."
+          ],
+          "why": "Being hardworking is a trait, so Portuguese uses ser here, not estar."
+        }
+      ],
+      "row": "-or",
+      "hint": "Trabalhador ends in -or.",
+      "feedback": "Check the ending of hardworking: the subject is a woman.",
+      "explanation": "Adjectives in -or add -a for a feminine noun, so irmã takes trabalhadora."
+    },
+    {
+      "id": "adjective-agreement-or-es-6",
+      "pattern": "or-es",
+      "type": "build",
+      "instruction": "Build the sentence: Ana is Portuguese. Leave one tile unused.",
+      "source": "Ana is Portuguese.",
+      "tokens": [
+        "é",
+        "A",
+        "português.",
+        "Ana",
+        "portuguesa."
+      ],
+      "answers": [
+        "A Ana é portuguesa."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "A Ana é português."
+          ],
+          "why": "That tile is the masculine form. Nationalities in -ês add -a for a woman."
+        }
+      ],
+      "row": "-ês",
+      "hint": "Ana is a woman.",
+      "feedback": "Only one nationality tile matches a woman.",
+      "explanation": "Português adds -a for a woman and drops its accent: portuguesa."
+    },
+    {
+      "id": "adjective-agreement-plural-l-z-1",
+      "pattern": "plural-l-z",
+      "type": "choose",
+      "instruction": "Choose the plural of fácil (easy).",
+      "source": "Essas perguntas são ____.",
+      "options": [
+        "fácils",
+        "fáceis",
+        "fácil"
+      ],
+      "answers": [
+        "fáceis"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "fácils"
+          ],
+          "why": "Portuguese never writes -ls at the end of a word. The -l changes before the plural ending."
+        },
+        {
+          "answers": [
+            "fácil"
+          ],
+          "why": "This is singular, but perguntas is plural, and so is são."
+        }
+      ],
+      "row": "-il (unstressed)",
+      "hint": "Words ending in -l do not just add -s.",
+      "feedback": "In the plural, -l becomes -is.",
+      "explanation": "Fácil ends in unstressed -il, so the plural is fáceis.",
+      "gloss": [
+        {
+          "pt": "Essas",
+          "en": "these"
+        },
+        {
+          "pt": "perguntas",
+          "en": "questions",
+          "word": "school-024"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-l-z-2",
+      "pattern": "plural-l-z",
+      "type": "choose",
+      "instruction": "Choose the word for blue.",
+      "source": "Comprei duas canetas ____.",
+      "options": [
+        "azuls",
+        "azuis",
+        "azul"
+      ],
+      "answers": [
+        "azuis"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "azuls"
+          ],
+          "why": "A final -l does not just take -s. It becomes -is."
+        },
+        {
+          "answers": [
+            "azul"
+          ],
+          "why": "This is singular, and there are two pens."
+        }
+      ],
+      "row": "-al, -el, -ol, -ul",
+      "hint": "Two pens: plural. What happens to a final -l?",
+      "feedback": "Azul is one form for both genders, but it still makes a plural.",
+      "explanation": "Azul ends in -ul, so the plural replaces -l with -is: azuis.",
+      "gloss": [
+        {
+          "pt": "Comprei",
+          "en": "I bought (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "duas",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "canetas",
+          "en": "pens",
+          "word": "school-016"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-l-z-3",
+      "pattern": "plural-l-z",
+      "type": "complete",
+      "instruction": "Write the right form of the adjective in brackets.",
+      "source": "As crianças estão ____ (feliz).",
+      "answers": [
+        "felizes"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "feliz"
+          ],
+          "why": "This is singular, but crianças is plural."
+        },
+        {
+          "answers": [
+            "felizs"
+          ],
+          "why": "A final -z takes -es, not just -s."
+        },
+        {
+          "answers": [
+            "felizas"
+          ],
+          "why": "Feliz never adds -a, and its plural ending is -es."
+        }
+      ],
+      "row": "-z",
+      "hint": "Words ending in -z add -es in the plural.",
+      "feedback": "Crianças is plural, so the adjective must be too.",
+      "explanation": "Feliz ends in -z, so the plural adds -es: felizes.",
+      "gloss": [
+        {
+          "pt": "crianças",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "feliz",
+          "en": "happy",
+          "word": "feelings-008"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-l-z-4",
+      "pattern": "plural-l-z",
+      "type": "complete",
+      "instruction": "Write the right form of the adjective in brackets.",
+      "source": "Ela tem olhos ____ (azul).",
+      "answers": [
+        "azuis"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "azul"
+          ],
+          "why": "This is singular, but it describes olhos, which is plural."
+        },
+        {
+          "answers": [
+            "azuls"
+          ],
+          "why": "A final -l becomes -is in the plural; -ls is not possible."
+        },
+        {
+          "answers": [
+            "azulas"
+          ],
+          "why": "Azul has no feminine form, and anyway it agrees with olhos, a masculine noun."
+        }
+      ],
+      "row": "-al, -el, -ol, -ul",
+      "hint": "Olhos is plural. What does -l become?",
+      "feedback": "The adjective agrees with olhos, not with ela.",
+      "explanation": "Olhos is plural, and azul turns -l into -is: olhos azuis.",
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "olhos",
+          "en": "eyes",
+          "word": "health-time-006"
+        },
+        {
+          "pt": "azul",
+          "en": "blue",
+          "word": "qualities-095"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-l-z-5",
+      "pattern": "plural-l-z",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Os exercícios são difícils.",
+      "answers": [
+        "Os exercícios são difíceis."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Os exercícios são difícils."
+          ],
+          "why": "That is the sentence unchanged. Portuguese does not end a word in -ls."
+        },
+        {
+          "answers": [
+            "Os exercícios são difícil."
+          ],
+          "why": "The adjective must be plural like exercícios and são."
+        }
+      ],
+      "row": "-il (unstressed)",
+      "hint": "Look at the plural of difícil.",
+      "feedback": "A final unstressed -il becomes -eis.",
+      "explanation": "Difícil ends in unstressed -il, so its plural is difíceis.",
+      "gloss": [
+        {
+          "pt": "exercícios",
+          "en": "exercises"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "difícils",
+          "en": "difficult (difícil)",
+          "word": "qualities-035"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-l-z-6",
+      "pattern": "plural-l-z",
+      "type": "rewrite",
+      "instruction": "Make the sentence plural: os exercícios. Write the whole sentence.",
+      "source": "O exercício é fácil.",
+      "answers": [
+        "Os exercícios são fáceis."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Os exercícios são fácils."
+          ],
+          "why": "Fácil cannot simply add -s. Its -il becomes -eis."
+        },
+        {
+          "answers": [
+            "Os exercícios são fácil."
+          ],
+          "why": "The adjective stayed singular while everything else went plural."
+        },
+        {
+          "answers": [
+            "Os exercícios é fáceis."
+          ],
+          "why": "É is for one thing. Several exercises need são."
+        }
+      ],
+      "row": "-il (unstressed)",
+      "hint": "The article, noun, verb and adjective all change.",
+      "feedback": "Every word that can show the plural must show it.",
+      "explanation": "Plural exercícios takes são, and fácil becomes fáceis.",
+      "gloss": [
+        {
+          "pt": "exercício",
+          "en": "exercise"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "fácil",
+          "en": "easy",
+          "word": "qualities-034"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-l-z-7",
+      "pattern": "plural-l-z",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The people here are very nice.",
+      "answers": [
+        "As pessoas aqui são muito legais.",
+        "As pessoas daqui são muito legais."
+      ],
+      "alternatives": [
+        {
+          "answer": "As pessoas aqui são muito simpáticas.",
+          "accepted": true,
+          "message": "Also right: simpático is a common word for nice too."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "As pessoas aqui são muito legals."
+          ],
+          "why": "A final -l becomes -is in the plural, not -ls."
+        },
+        {
+          "answers": [
+            "As pessoas aqui são muito legal."
+          ],
+          "why": "The adjective must be plural like pessoas."
+        }
+      ],
+      "row": "-al, -el, -ol, -ul",
+      "hint": "Nice in Brazil: legal. Pessoas is plural.",
+      "feedback": "Check the plural of legal.",
+      "explanation": "Legal ends in -al, so its plural is legais."
+    },
+    {
+      "id": "adjective-agreement-position-1",
+      "pattern": "position",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Eles moram em ____.",
+      "options": [
+        "uma amarela casa",
+        "uma casa amarela"
+      ],
+      "answers": [
+        "uma casa amarela"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "uma amarela casa"
+          ],
+          "why": "This is English word order. In Portuguese a colour comes after the noun."
+        }
+      ],
+      "row": "most adjectives",
+      "hint": "Where do colours go?",
+      "feedback": "Most adjectives, and all colours, come after the noun.",
+      "explanation": "Colours always follow the noun: uma casa amarela.",
+      "gloss": [
+        {
+          "pt": "moram",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-position-2",
+      "pattern": "position",
+      "type": "choose",
+      "instruction": "Choose the phrase that means a great friend.",
+      "source": "Ele é ____.",
+      "options": [
+        "um amigo grande",
+        "um grande amigo"
+      ],
+      "answers": [
+        "um grande amigo"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "um amigo grande"
+          ],
+          "why": "After the noun, grande means big in size, so this is a big friend."
+        }
+      ],
+      "row": "grande",
+      "hint": "Grande changes meaning with its position.",
+      "feedback": "Before the noun, grande means great; after it, big.",
+      "explanation": "Um grande amigo is a great friend. Um amigo grande is a big friend, someone large in size.",
+      "gloss": [
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-position-3",
+      "pattern": "position",
+      "type": "complete",
+      "instruction": "Write the right form of bom (good).",
+      "source": "Que ____ ideia!",
+      "answers": [
+        "boa"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "bom"
+          ],
+          "why": "This is the masculine form, and ideia is feminine (a ideia)."
+        },
+        {
+          "answers": [
+            "bona"
+          ],
+          "why": "The feminine of bom is irregular: it is not formed by adding -a."
+        }
+      ],
+      "row": "bom",
+      "hint": "Bom goes before the noun and still agrees.",
+      "feedback": "Ideia is feminine.",
+      "explanation": "Bom usually comes before the noun, and its feminine is boa: que boa ideia!",
+      "gloss": [
+        {
+          "pt": "Que",
+          "en": "what (a)",
+          "word": "essentials-032"
+        },
+        {
+          "pt": "ideia",
+          "en": "idea",
+          "word": "work-042"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-position-4",
+      "pattern": "position",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Ela tem uma vermelha bolsa.",
+      "answers": [
+        "Ela tem uma bolsa vermelha."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ela tem uma vermelha bolsa."
+          ],
+          "why": "That is the sentence unchanged. The colour still stands in front of the noun."
+        },
+        {
+          "answers": [
+            "Ela tem uma bolsa vermelho."
+          ],
+          "why": "The order is fixed, but now the adjective is masculine; bolsa is feminine."
+        }
+      ],
+      "row": "most adjectives",
+      "hint": "Colours do not go before the noun.",
+      "feedback": "Move the adjective; its ending is already right.",
+      "explanation": "A colour comes after the noun in Portuguese: uma bolsa vermelha.",
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "vermelha",
+          "en": "red",
+          "word": "qualities-094"
+        },
+        {
+          "pt": "bolsa",
+          "en": "bag",
+          "word": "shopping-047"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-position-5",
+      "pattern": "position",
+      "type": "build",
+      "instruction": "Build the sentence: I have a black cat. Leave one tile unused.",
+      "source": "I have a black cat.",
+      "tokens": [
+        "preto.",
+        "Eu",
+        "um",
+        "gato",
+        "preta.",
+        "tenho"
+      ],
+      "answers": [
+        "Eu tenho um gato preto.",
+        "Tenho um gato preto."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu tenho um gato preta.",
+            "Tenho um gato preta."
+          ],
+          "why": "That tile is the feminine form, and gato is masculine. The colour goes after the noun and matches it."
+        }
+      ],
+      "row": "most adjectives",
+      "hint": "Where does a colour go?",
+      "feedback": "The noun comes first, then the colour.",
+      "explanation": "Colours follow the noun: um gato preto."
+    },
+    {
+      "id": "adjective-agreement-position-6",
+      "pattern": "position",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "It is a good restaurant.",
+      "answers": [
+        "É um bom restaurante."
+      ],
+      "alternatives": [
+        {
+          "answer": "É um restaurante bom.",
+          "accepted": true,
+          "message": "Correct too. After the noun, bom sounds a little more like a judgement; before it is the usual place."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "É um boa restaurante."
+          ],
+          "why": "Boa is feminine, and restaurante is masculine (o restaurante)."
+        },
+        {
+          "answers": [
+            "É um restaurante boa."
+          ],
+          "why": "Boa is feminine; restaurante is masculine."
+        }
+      ],
+      "row": "bom",
+      "hint": "Bom usually goes before the noun.",
+      "feedback": "Bom is one of the few adjectives that normally comes first.",
+      "explanation": "Bom normally comes before the noun: um bom restaurante."
+    },
+    {
+      "id": "adjective-agreement-position-7",
+      "pattern": "position",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "He is a great man.",
+      "answers": [
+        "Ele é um grande homem."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ele é um homem grande."
+          ],
+          "why": "After the noun, grande means big in size: a big man, not a great one."
+        },
+        {
+          "answers": [
+            "Ele é um grando homem."
+          ],
+          "why": "Grande ends in -e and never changes to -o."
+        }
+      ],
+      "row": "grande",
+      "hint": "Great, not big: think about where grande goes.",
+      "feedback": "The position of grande decides its meaning.",
+      "explanation": "Before the noun, grande means great: um grande homem."
+    },
+    {
+      "id": "adjective-agreement-mixed-1",
+      "pattern": "mixed",
+      "type": "choose",
+      "instruction": "Choose the word for tall.",
+      "source": "O João e a Maria são ____.",
+      "options": [
+        "altas",
+        "altos",
+        "alto"
+      ],
+      "answers": [
+        "altos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "altas"
+          ],
+          "why": "The feminine plural is only for a group that is all female."
+        },
+        {
+          "answers": [
+            "alto"
+          ],
+          "why": "This is singular, but it describes two people."
+        }
+      ],
+      "row": "mixed group",
+      "hint": "One man and one woman together: which plural?",
+      "feedback": "A mixed group takes the masculine plural.",
+      "explanation": "João and Maria together are a mixed group, so the adjective is masculine plural: altos.",
+      "gloss": [
+        {
+          "pt": "João",
+          "en": "João (a name)"
+        },
+        {
+          "pt": "Maria",
+          "en": "Maria (a name)"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-mixed-2",
+      "pattern": "mixed",
+      "type": "choose",
+      "instruction": "Choose the word for tired.",
+      "source": "As meninas e o menino estão ____.",
+      "options": [
+        "cansadas",
+        "cansados",
+        "cansado"
+      ],
+      "answers": [
+        "cansados"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "cansadas"
+          ],
+          "why": "This is only right if everyone is female, but the group includes o menino."
+        },
+        {
+          "answers": [
+            "cansado"
+          ],
+          "why": "This is singular, but several children are described."
+        }
+      ],
+      "row": "mixed group",
+      "hint": "There is one boy in the group.",
+      "feedback": "One masculine noun is enough to make the group masculine.",
+      "explanation": "A single boy among the girls makes the group mixed, so the adjective is masculine plural: cansados.",
+      "gloss": [
+        {
+          "pt": "meninas",
+          "en": "girls",
+          "word": "people-007"
+        },
+        {
+          "pt": "menino",
+          "en": "boy",
+          "word": "people-006"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-mixed-3",
+      "pattern": "mixed",
+      "type": "complete",
+      "instruction": "Write the right form of the adjective in brackets.",
+      "source": "Meu pai e minha mãe são muito ____ (simpático).",
+      "answers": [
+        "simpáticos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "simpáticas"
+          ],
+          "why": "This would describe women only. With pai in the group, use the masculine plural."
+        },
+        {
+          "answers": [
+            "simpático"
+          ],
+          "why": "This is singular, but two people are described."
+        }
+      ],
+      "row": "mixed group",
+      "hint": "Father and mother together: a mixed group.",
+      "feedback": "The masculine plural covers men and women together.",
+      "explanation": "Pai and mãe make a mixed group, so simpático takes the masculine plural: simpáticos.",
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        },
+        {
+          "pt": "minha",
+          "en": "my"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "simpático",
+          "en": "nice, friendly",
+          "word": "qualities-085"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-mixed-4",
+      "pattern": "mixed",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "A Ana e o Pedro estão cansadas.",
+      "answers": [
+        "A Ana e o Pedro estão cansados.",
+        "Ana e Pedro estão cansados."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "A Ana e o Pedro estão cansadas."
+          ],
+          "why": "That is the sentence unchanged. The feminine plural leaves Pedro out."
+        },
+        {
+          "answers": [
+            "A Ana e o Pedro estão cansado."
+          ],
+          "why": "That is singular, but two people are tired."
+        }
+      ],
+      "row": "mixed group",
+      "hint": "Who is in the group?",
+      "feedback": "A man and a woman together take the masculine plural.",
+      "explanation": "Ana and Pedro are a mixed group, so the adjective is cansados.",
+      "gloss": [
+        {
+          "pt": "Ana",
+          "en": "Ana (a name)"
+        },
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cansadas",
+          "en": "tired",
+          "word": "feelings-011"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-mixed-5",
+      "pattern": "mixed",
+      "type": "rewrite",
+      "instruction": "Add e o Pedro after Ana and change the other words to match. Write the whole sentence.",
+      "source": "A Ana é brasileira.",
+      "answers": [
+        "A Ana e o Pedro são brasileiros.",
+        "Ana e Pedro são brasileiros."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "A Ana e o Pedro são brasileiras."
+          ],
+          "why": "Brasileiras describes women only, but Pedro is in the group."
+        },
+        {
+          "answers": [
+            "A Ana e o Pedro é brasileiros."
+          ],
+          "why": "Two people need são, not é."
+        },
+        {
+          "answers": [
+            "A Ana e o Pedro são brasileira."
+          ],
+          "why": "The adjective must be plural as well as masculine."
+        }
+      ],
+      "row": "mixed group",
+      "hint": "Now there are two people, a woman and a man.",
+      "feedback": "The verb goes plural and the adjective goes masculine plural.",
+      "explanation": "Ana and Pedro are a mixed group: são, and the masculine plural brasileiros.",
+      "gloss": [
+        {
+          "pt": "Ana",
+          "en": "Ana (a name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "brasileira",
+          "en": "Brazilian"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-mixed-6",
+      "pattern": "mixed",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The boys and the girls are tired.",
+      "answers": [
+        "Os meninos e as meninas estão cansados."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Os meninos e as meninas estão cansadas."
+          ],
+          "why": "This makes the adjective agree only with the nearest noun, as meninas. A mixed group needs the masculine plural."
+        },
+        {
+          "answers": [
+            "Os meninos e as meninas são cansados."
+          ],
+          "why": "Tired is a state, so Portuguese uses estar here."
+        }
+      ],
+      "row": "mixed group",
+      "hint": "A mixed group of children.",
+      "feedback": "Boys and girls together take the masculine plural.",
+      "explanation": "With boys in the group, tired is masculine plural: cansados."
+    },
+    {
+      "id": "adjective-agreement-after-verb-1",
+      "pattern": "after-verb",
+      "type": "choose",
+      "instruction": "Choose the word for beautiful.",
+      "source": "As casas são ____.",
+      "options": [
+        "bonito",
+        "bonitas",
+        "bonitos"
+      ],
+      "answers": [
+        "bonitas"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "bonito"
+          ],
+          "why": "This is the masculine singular. After são the adjective still agrees with as casas."
+        },
+        {
+          "answers": [
+            "bonitos"
+          ],
+          "why": "This is masculine plural, but casas is feminine."
+        }
+      ],
+      "row": "ser",
+      "hint": "The adjective is far from the noun, but it still agrees.",
+      "feedback": "After ser, the adjective agrees with the subject.",
+      "explanation": "The subject as casas is feminine plural, so bonito becomes bonitas.",
+      "gloss": [
+        {
+          "pt": "casas",
+          "en": "houses",
+          "word": "home-001"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-verb-2",
+      "pattern": "after-verb",
+      "type": "complete",
+      "instruction": "Write the right form of the adjective in brackets.",
+      "source": "A sopa está ____ (frio).",
+      "answers": [
+        "fria"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "frio"
+          ],
+          "why": "This is masculine, and sopa is feminine."
+        },
+        {
+          "answers": [
+            "frias"
+          ],
+          "why": "This is plural, but there is one soup."
+        }
+      ],
+      "row": "estar",
+      "hint": "Sopa is feminine.",
+      "feedback": "After estar the adjective agrees with the subject.",
+      "explanation": "A sopa is feminine singular, so frio becomes fria.",
+      "gloss": [
+        {
+          "pt": "sopa",
+          "en": "soup",
+          "word": "food-017"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "frio",
+          "en": "cold",
+          "word": "qualities-024"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-verb-3",
+      "pattern": "after-verb",
+      "type": "complete",
+      "instruction": "Write the right form of the adjective in brackets.",
+      "source": "Os quartos são ____ (pequeno).",
+      "answers": [
+        "pequenos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "pequeno"
+          ],
+          "why": "This is singular, but quartos is plural."
+        },
+        {
+          "answers": [
+            "pequenas"
+          ],
+          "why": "This is feminine, and quarto is masculine."
+        }
+      ],
+      "row": "ser",
+      "hint": "Look back at the subject.",
+      "feedback": "The adjective matches os quartos.",
+      "explanation": "Os quartos is masculine plural, so pequeno adds -s.",
+      "gloss": [
+        {
+          "pt": "quartos",
+          "en": "bedrooms",
+          "word": "home-003"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "pequeno",
+          "en": "small",
+          "word": "qualities-002"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-verb-4",
+      "pattern": "after-verb",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "A janela está aberto.",
+      "answers": [
+        "A janela está aberta."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "A janela está aberto."
+          ],
+          "why": "That is the sentence unchanged. The adjective still has a masculine ending."
+        },
+        {
+          "answers": [
+            "O janela está aberto."
+          ],
+          "why": "Janela is feminine; changing the article only adds a second error."
+        }
+      ],
+      "row": "estar",
+      "hint": "Janela is feminine.",
+      "feedback": "The adjective after estar agrees with a janela.",
+      "explanation": "A janela is feminine singular, so aberto becomes aberta.",
+      "gloss": [
+        {
+          "pt": "janela",
+          "en": "window",
+          "word": "home-017"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "aberto",
+          "en": "open",
+          "word": "qualities-032"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-verb-5",
+      "pattern": "after-verb",
+      "type": "rewrite",
+      "instruction": "Replace quarto with sala and change the other words to match. Write the whole sentence.",
+      "source": "O quarto é escuro.",
+      "answers": [
+        "A sala é escura."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "A sala é escuro."
+          ],
+          "why": "The adjective after é still matches quarto. It must agree with sala."
+        },
+        {
+          "answers": [
+            "O sala é escura."
+          ],
+          "why": "Sala takes the feminine article."
+        },
+        {
+          "answers": [
+            "O quarto é escuro."
+          ],
+          "why": "That is the original sentence: quarto was never replaced."
+        }
+      ],
+      "row": "ser",
+      "hint": "Sala is feminine.",
+      "feedback": "The article and the adjective after é both follow the new noun.",
+      "explanation": "A sala is feminine, so o becomes a and escuro becomes escura.",
+      "gloss": [
+        {
+          "pt": "quarto",
+          "en": "bedroom",
+          "word": "home-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "escuro",
+          "en": "dark",
+          "word": "qualities-045"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-verb-6",
+      "pattern": "after-verb",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The houses are beautiful.",
+      "answers": [
+        "As casas são bonitas.",
+        "As casas são lindas."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "As casas são bonitos.",
+            "As casas são lindos."
+          ],
+          "why": "This ending is masculine, but casa is feminine."
+        },
+        {
+          "answers": [
+            "As casas são bonita.",
+            "As casas são linda."
+          ],
+          "why": "The adjective must be plural like casas."
+        }
+      ],
+      "row": "ser",
+      "hint": "Casas is feminine plural.",
+      "feedback": "Check the adjective after são.",
+      "explanation": "After ser the adjective agrees with as casas: bonitas."
+    },
+    {
+      "id": "adjective-agreement-after-verb-7",
+      "pattern": "after-verb",
+      "type": "build",
+      "instruction": "Build the sentence: The water is cold. Leave one tile unused.",
+      "source": "The water is cold.",
+      "tokens": [
+        "está",
+        "frio.",
+        "A",
+        "fria.",
+        "água"
+      ],
+      "answers": [
+        "A água está fria."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "A água está frio."
+          ],
+          "why": "That tile is the masculine form, and água is feminine."
+        }
+      ],
+      "row": "estar",
+      "hint": "Água is feminine.",
+      "feedback": "Only one form of cold matches the subject.",
+      "explanation": "A água is feminine singular, so cold is fria."
+    }
+  ]
+}

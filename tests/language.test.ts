@@ -22,7 +22,7 @@ test('Portuguese and Swedish keep their own content, recordings and recorder, an
   expect([sv.content, sv.audio, sv.textKey]).toEqual([join(root, 'content/sv'), join(root, 'audio/sv'), 'sv']);
   expect(sv.tts).toEqual({ script: 'scripts/render-audio-sv.py', args: [] });
   for (const language of [pt, sv]) {
-    expect(language.rooms).toEqual(['words', 'statistics', 'listen', 'read']);
+    expect(language.rooms).toEqual(['words', 'grammar', 'statistics', 'listen', 'read']);
     expect(language.claude).toBe(false);
   }
   expect([pt.port, sv.port]).toEqual([7795, 7796]);
@@ -47,6 +47,8 @@ test('the page names the language: French’s is served as written; another’s 
   expect(portuguese).toContain('<p data-room="families"><strong>Word families</strong>');
   expect(portuguese).toContain('with <span data-room="families">Word families, Word building and </span>More for today at the top');
   expect(portuguese).not.toContain('Colours and hooks');
+  expect(portuguese).toContain('<strong>Grammar.</strong> Its units take you through A1 and A2.');
+  expect(portuguese).toContain('reads the correct Portuguese aloud');
   expect(languagePage(page, sv)).toContain('Nouns are coloured by gender — green for en-words, orange for ett-words — wherever Echo shows Swedish');
   expect(portuguese).toContain('<strong>Listen</strong> plays Portuguese and asks what you understood<span data-room="sounds">, trains your ear on twin sounds</span><span data-room="sentencetape">, and has a sentence tape</span>');
   expect(portuguese).toContain('<strong>Read</strong> shows Portuguese and asks the same');

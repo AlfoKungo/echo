@@ -1,0 +1,2231 @@
+{
+  "id": "articles-gender",
+  "unit": "nouns",
+  "level": "A1",
+  "title": "The and a: o, a, um, uma",
+  "description": "Say the and a with the right gender, and know when Portuguese leaves the article out.",
+  "mark": "o · a · um · uma",
+  "guide": {
+    "summary": "Every Portuguese noun is masculine or feminine, and the words for the and a show which. Learn o and a, um and uma, the endings that usually tell the gender, the exceptions, and two places where Portuguese and English use articles differently.",
+    "sections": [
+      {
+        "id": "articles",
+        "title": "The and a: o, a, um, uma",
+        "text": "Portuguese has two words for the and two for a. Masculine nouns take o and um; feminine nouns take a and uma. Adjectives describing the noun follow the same gender.",
+        "table": {
+          "columns": [
+            "",
+            "the",
+            "a / an"
+          ],
+          "rows": [
+            [
+              "masculine",
+              "o",
+              "um"
+            ],
+            [
+              "feminine",
+              "a",
+              "uma"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun the article belongs to.",
+          "Decide masculine or feminine.",
+          "For the take o or a; for a take um or uma."
+        ],
+        "examples": [
+          {
+            "pt": "O menino abre a janela.",
+            "en": "The boy opens the window."
+          },
+          {
+            "pt": "Eu tenho um gato e uma cadeira nova.",
+            "en": "I have a cat and a new chair."
+          }
+        ],
+        "watch": [
+          "The word a is both the feminine the and the preposition to; context tells them apart.",
+          "Em plus o or a joins into no or na: no carro, na mesa."
+        ]
+      },
+      {
+        "id": "endings",
+        "title": "The ending usually tells you: -o or -a",
+        "text": "Most nouns ending in -o are masculine and most ending in -a are feminine. For people, the ending follows the person: o irmão, a irmã; o amigo, a amiga.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Gender",
+            "Examples"
+          ],
+          "rows": [
+            [
+              "-o",
+              "masculine",
+              "o carro, o livro, o quarto"
+            ],
+            [
+              "-a",
+              "feminine",
+              "a casa, a mesa, a bolsa"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the last letter of the noun.",
+          "If it is -o, start from masculine; if -a, from feminine.",
+          "Check the noun is not one of the exceptions."
+        ],
+        "examples": [
+          {
+            "pt": "O carro é caro.",
+            "en": "The car is expensive."
+          },
+          {
+            "pt": "A cozinha é pequena.",
+            "en": "The kitchen is small."
+          }
+        ],
+        "watch": [
+          "The adjective changes with the noun: o carro caro, a bolsa cara."
+        ]
+      },
+      {
+        "id": "suffixes",
+        "title": "Always feminine: -ção, -dade, -agem",
+        "text": "Three common endings are reliably feminine, even though -dade and -agem do not end in -a.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Examples"
+          ],
+          "rows": [
+            [
+              "-ção",
+              "a estação, a informação, a lição"
+            ],
+            [
+              "-dade",
+              "a cidade, a universidade, a idade"
+            ],
+            [
+              "-agem",
+              "a viagem, a garagem, a mensagem"
+            ]
+          ]
+        },
+        "steps": [
+          "Check whether the noun ends in -ção, -dade or -agem.",
+          "If it does, it is feminine: a or uma."
+        ],
+        "examples": [
+          {
+            "pt": "A cidade é muito bonita.",
+            "en": "The city is very beautiful."
+          },
+          {
+            "pt": "Vou fazer uma viagem.",
+            "en": "I am going to take a trip."
+          }
+        ],
+        "watch": [
+          "Viagem, garagem and mensagem are feminine, even though they do not end in -a. If you know French, beware: le voyage, le garage and le message are masculine there."
+        ]
+      },
+      {
+        "id": "exceptions",
+        "title": "Exceptions to learn by heart",
+        "text": "A few everyday nouns break the -o / -a rule. Many words in -ma from Greek are masculine, and foto is feminine because it is short for a fotografia.",
+        "table": {
+          "columns": [
+            "Noun",
+            "Gender",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "o dia",
+              "masculine",
+              "day"
+            ],
+            [
+              "o mapa",
+              "masculine",
+              "map"
+            ],
+            [
+              "o problema",
+              "masculine",
+              "problem"
+            ],
+            [
+              "o sistema",
+              "masculine",
+              "system"
+            ],
+            [
+              "a mão",
+              "feminine",
+              "hand"
+            ],
+            [
+              "a foto",
+              "feminine",
+              "photo"
+            ]
+          ]
+        },
+        "steps": [
+          "Before trusting the ending, check the noun against this list.",
+          "Learn each exception with its article, as one unit: o dia, a mão.",
+          "Make adjectives agree with the real gender: um dia bonito, uma foto bonita."
+        ],
+        "examples": [
+          {
+            "pt": "O problema é difícil.",
+            "en": "The problem is difficult."
+          },
+          {
+            "pt": "Ela tirou uma foto bonita.",
+            "en": "She took a nice photo."
+          }
+        ],
+        "watch": [
+          "Bom dia says it: bom is masculine because dia is.",
+          "Mão sounds like irmão but is feminine."
+        ]
+      },
+      {
+        "id": "e-nouns",
+        "title": "Nouns in -e: learn them with the article",
+        "text": "A noun ending in -e can be either gender, and nothing in the word tells you. Always learn it with o or a.",
+        "table": {
+          "columns": [
+            "Noun",
+            "Gender",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "o leite",
+              "masculine",
+              "milk"
+            ],
+            [
+              "o nome",
+              "masculine",
+              "name"
+            ],
+            [
+              "a noite",
+              "feminine",
+              "night"
+            ],
+            [
+              "a chave",
+              "feminine",
+              "key"
+            ],
+            [
+              "a carne",
+              "feminine",
+              "meat"
+            ]
+          ]
+        },
+        "steps": [
+          "If the noun ends in -e, do not guess from the ending.",
+          "Recall it with its article, as you learned it.",
+          "An adjective in -o or -a nearby can confirm the gender."
+        ],
+        "examples": [
+          {
+            "pt": "O leite está frio.",
+            "en": "The milk is cold."
+          },
+          {
+            "pt": "A noite está fria.",
+            "en": "The night is cold."
+          }
+        ],
+        "watch": [
+          "Adjectives in -e, like quente and grande, have one form for both genders and give no clue."
+        ]
+      },
+      {
+        "id": "professions",
+        "title": "No article for a job after ser",
+        "text": "English says she is a doctor; Portuguese says Ela é médica, with no article. The article comes back only when you add a description: Ela é uma médica muito boa.",
+        "steps": [
+          "Is the sentence saying what someone does for a living, with ser?",
+          "If so, put the job straight after é, with no um or uma.",
+          "Make the job match the person: médico, médica."
+        ],
+        "examples": [
+          {
+            "pt": "Ela é enfermeira.",
+            "en": "She is a nurse."
+          },
+          {
+            "pt": "Meu irmão é engenheiro.",
+            "en": "My brother is an engineer."
+          }
+        ],
+        "watch": [
+          "Ela é a médica means she is the doctor, a particular one.",
+          "The same goes for nationality and religion: Ele é brasileiro."
+        ]
+      },
+      {
+        "id": "names",
+        "title": "O João, a Ana: an article before names",
+        "text": "In much of Brazil people say o João and a Ana, especially for people they know; in other regions and in formal writing the name stands alone. Both are correct.",
+        "table": {
+          "columns": [
+            "Person",
+            "With article",
+            "Without"
+          ],
+          "rows": [
+            [
+              "a man",
+              "O João trabalha aqui.",
+              "João trabalha aqui."
+            ],
+            [
+              "a woman",
+              "A Ana mora aqui.",
+              "Ana mora aqui."
+            ]
+          ]
+        },
+        "steps": [
+          "Decide whether to use an article; either is fine.",
+          "If you use one, take o for a man and a for a woman."
+        ],
+        "examples": [
+          {
+            "pt": "A Maria é minha amiga.",
+            "en": "Maria is my friend."
+          },
+          {
+            "pt": "João mora em São Paulo.",
+            "en": "João lives in São Paulo."
+          }
+        ],
+        "watch": [
+          "Never um or uma before the name of someone you know.",
+          "With an article, em and de join it: Falei com a Ana, a casa da Ana."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "definite": {
+      "section": "articles",
+      "steps": [
+        "Find the noun the article belongs to.",
+        "Decide its gender.",
+        "Use o for masculine, a for feminine."
+      ]
+    },
+    "indefinite": {
+      "section": "articles",
+      "steps": [
+        "Find the noun after the gap.",
+        "Decide its gender.",
+        "Use um for masculine, uma for feminine."
+      ]
+    },
+    "ending": {
+      "section": "endings",
+      "steps": [
+        "Look at the last letter of the noun.",
+        "Take -o as masculine and -a as feminine.",
+        "Make the article and any adjective agree."
+      ]
+    },
+    "suffix": {
+      "section": "suffixes",
+      "steps": [
+        "Check for the endings -ção, -dade or -agem.",
+        "Treat the noun as feminine.",
+        "Use a or uma and a feminine adjective."
+      ]
+    },
+    "exceptions": {
+      "section": "exceptions",
+      "steps": [
+        "Check the noun against the exception list.",
+        "Use its real gender, not the one the ending suggests.",
+        "Make adjectives agree with that gender."
+      ]
+    },
+    "e-nouns": {
+      "section": "e-nouns",
+      "steps": [
+        "Notice the noun ends in -e.",
+        "Recall the article you learned with it.",
+        "Use a nearby adjective in -o or -a to confirm."
+      ]
+    },
+    "profession": {
+      "section": "professions",
+      "steps": [
+        "Check that ser introduces a job.",
+        "Leave out um or uma.",
+        "Match the job to the person."
+      ]
+    },
+    "names": {
+      "section": "names",
+      "steps": [
+        "Remember the article before a name is optional.",
+        "If you use one, match the person: o or a."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "articles-gender-definite-1",
+      "pattern": "definite",
+      "type": "choose",
+      "instruction": "Choose the word for the.",
+      "source": "____ casa é grande.",
+      "options": [
+        "O",
+        "A"
+      ],
+      "answers": [
+        "A"
+      ],
+      "hint": "Casa ends in -a.",
+      "feedback": "The article follows the gender of the noun, and casa is feminine.",
+      "explanation": "Casa is feminine (a casa), so the house is a casa.",
+      "mistakes": [
+        {
+          "answers": [
+            "O"
+          ],
+          "why": "O goes with masculine nouns. Casa ends in -a and is feminine, so the masculine article clashes with it."
+        }
+      ],
+      "row": "feminine",
+      "gloss": [
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-definite-2",
+      "pattern": "definite",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for the.",
+      "source": "____ livro está na mesa.",
+      "answers": [
+        "O"
+      ],
+      "hint": "Livro ends in -o.",
+      "feedback": "Look at the noun right after the gap, not at mesa.",
+      "explanation": "Livro is masculine (o livro), so the book is o livro. The na before mesa already holds the feminine a for the table.",
+      "mistakes": [
+        {
+          "answers": [
+            "A"
+          ],
+          "why": "A is the feminine article. Livro ends in -o and is masculine; mesa is a different noun with its own article."
+        },
+        {
+          "answers": [
+            "Um"
+          ],
+          "why": "Um means a, not the. The sentence talks about one particular book."
+        }
+      ],
+      "row": "masculine",
+      "gloss": [
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-definite-3",
+      "pattern": "definite",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The car is new.",
+      "answers": [
+        "O carro é novo."
+      ],
+      "hint": "Carro ends in -o.",
+      "feedback": "Check the article and the adjective: both follow carro.",
+      "explanation": "Carro is masculine, so the car is o carro, and new takes its masculine form too: novo.",
+      "mistakes": [
+        {
+          "answers": [
+            "A carro é novo."
+          ],
+          "why": "The feminine article cannot go with carro, a masculine noun ending in -o."
+        },
+        {
+          "answers": [
+            "O carro é nova."
+          ],
+          "why": "The adjective must agree with carro too, and carro is masculine."
+        },
+        {
+          "answers": [
+            "Um carro é novo."
+          ],
+          "why": "Um means a; the English says the car."
+        }
+      ],
+      "row": "masculine"
+    },
+    {
+      "id": "articles-gender-definite-4",
+      "pattern": "definite",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "O porta está aberta.",
+      "answers": [
+        "A porta está aberta."
+      ],
+      "hint": "Porta ends in -a.",
+      "feedback": "The adjective aberta is already right; only one word is wrong.",
+      "explanation": "Porta is feminine (a porta), so the door is a porta, which also matches aberta.",
+      "mistakes": [
+        {
+          "answers": [
+            "O porta está aberta."
+          ],
+          "why": "That is the sentence unchanged. The article in front of porta is masculine, but porta is feminine."
+        },
+        {
+          "answers": [
+            "O porta está aberto."
+          ],
+          "why": "Changing the adjective makes it agree with the wrong article. Porta is feminine, so the article has to change instead."
+        }
+      ],
+      "row": "feminine",
+      "gloss": [
+        {
+          "pt": "porta",
+          "en": "door",
+          "word": "home-016"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "aberta",
+          "en": "open",
+          "word": "qualities-032"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-definite-5",
+      "pattern": "definite",
+      "type": "build",
+      "instruction": "Build the sentence: The boy opens the window. Leave one tile unused.",
+      "source": "The boy opens the window.",
+      "tokens": [
+        "menino",
+        "abre",
+        "O",
+        "a",
+        "janela.",
+        "o"
+      ],
+      "answers": [
+        "O menino abre a janela."
+      ],
+      "hint": "Menino ends in -o, janela in -a.",
+      "feedback": "Each noun takes its own article.",
+      "explanation": "Menino is masculine (o menino) and janela is feminine (a janela).",
+      "mistakes": [
+        {
+          "answers": [
+            "O menino abre o janela."
+          ],
+          "why": "Janela is feminine, so the masculine article cannot sit before it. The unused tile is the one that does not match janela."
+        }
+      ],
+      "row": "feminine"
+    },
+    {
+      "id": "articles-gender-indefinite-1",
+      "pattern": "indefinite",
+      "type": "choose",
+      "instruction": "Choose the word for a.",
+      "source": "Eu tenho ____ gato.",
+      "options": [
+        "um",
+        "uma",
+        "o"
+      ],
+      "answers": [
+        "um"
+      ],
+      "hint": "Gato ends in -o.",
+      "feedback": "Um and uma follow the noun, just like o and a.",
+      "explanation": "Gato is masculine (o gato), so a cat is um gato.",
+      "mistakes": [
+        {
+          "answers": [
+            "uma"
+          ],
+          "why": "Uma is for feminine nouns. Gato ends in -o and is masculine."
+        },
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "O means the. The English idea is a cat, one of many."
+        }
+      ],
+      "row": "masculine",
+      "gloss": [
+        {
+          "pt": "tenho",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "gato",
+          "en": "cat",
+          "word": "nature-027"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-indefinite-2",
+      "pattern": "indefinite",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for a.",
+      "source": "Ela quer ____ cadeira nova.",
+      "answers": [
+        "uma"
+      ],
+      "hint": "Cadeira is feminine; nova agrees with it.",
+      "feedback": "The adjective nova already shows the gender.",
+      "explanation": "Cadeira is feminine (a cadeira), so a chair is uma cadeira.",
+      "mistakes": [
+        {
+          "answers": [
+            "um"
+          ],
+          "why": "Um is for masculine nouns, and cadeira ends in -a; nova is feminine too."
+        },
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "A means the, but the gap asks for a, any chair."
+        }
+      ],
+      "row": "feminine",
+      "gloss": [
+        {
+          "pt": "quer",
+          "en": "wants (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "cadeira",
+          "en": "chair",
+          "word": "home-021"
+        },
+        {
+          "pt": "nova",
+          "en": "new",
+          "word": "qualities-008"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-indefinite-3",
+      "pattern": "indefinite",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I want a coffee.",
+      "answers": [
+        "Quero um café.",
+        "Eu quero um café."
+      ],
+      "hint": "Café is masculine: o café.",
+      "feedback": "Check the word for a.",
+      "explanation": "Café is masculine, so a coffee is um café. Dropping eu is natural because quero already shows the person.",
+      "mistakes": [
+        {
+          "answers": [
+            "Quero uma café.",
+            "Eu quero uma café."
+          ],
+          "why": "Café ends in an accented vowel but it is masculine (o café), so the feminine article does not fit."
+        },
+        {
+          "answers": [
+            "Quero o café.",
+            "Eu quero o café."
+          ],
+          "why": "That says the coffee, a particular one; the English asks for a coffee."
+        }
+      ],
+      "row": "masculine"
+    },
+    {
+      "id": "articles-gender-indefinite-4",
+      "pattern": "indefinite",
+      "type": "rewrite",
+      "instruction": "Change the into a. Write the whole sentence.",
+      "source": "Eu vejo o cachorro.",
+      "answers": [
+        "Eu vejo um cachorro.",
+        "Vejo um cachorro."
+      ],
+      "hint": "O becomes the masculine word for a.",
+      "feedback": "The gender stays; only definite becomes indefinite.",
+      "explanation": "Cachorro is masculine, so o cachorro becomes um cachorro.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu vejo uma cachorro."
+          ],
+          "why": "The gender of cachorro did not change: it is still masculine, so the feminine word for a is wrong."
+        },
+        {
+          "answers": [
+            "Eu vejo o cachorro."
+          ],
+          "why": "That is the original sentence: the article was not changed."
+        }
+      ],
+      "row": "masculine",
+      "gloss": [
+        {
+          "pt": "vejo",
+          "en": "see (ver)",
+          "word": "verbs-012"
+        },
+        {
+          "pt": "cachorro",
+          "en": "dog",
+          "word": "nature-026"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-indefinite-5",
+      "pattern": "indefinite",
+      "type": "build",
+      "instruction": "Build the sentence: There is a table in the kitchen. Leave one tile unused.",
+      "source": "There is a table in the kitchen.",
+      "tokens": [
+        "mesa",
+        "Tem",
+        "um",
+        "na",
+        "uma",
+        "cozinha."
+      ],
+      "answers": [
+        "Tem uma mesa na cozinha."
+      ],
+      "alternatives": [
+        {
+          "answer": "Há uma mesa na cozinha.",
+          "message": "Also right. Há is the written, more formal way to say there is; in speech Brazilians say tem.",
+          "accepted": true
+        }
+      ],
+      "hint": "In Brazil there is is usually tem. Mesa ends in -a.",
+      "feedback": "Pick the word for a that matches mesa.",
+      "explanation": "Mesa is feminine (a mesa), so a table is uma mesa. Na is em plus a: in the kitchen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tem um mesa na cozinha."
+          ],
+          "why": "That tile is the masculine word for a, and mesa is feminine."
+        }
+      ],
+      "row": "feminine"
+    },
+    {
+      "id": "articles-gender-ending-1",
+      "pattern": "ending",
+      "type": "choose",
+      "instruction": "Choose the word for a.",
+      "source": "Comprei ____ bolsa ontem.",
+      "options": [
+        "um",
+        "uma"
+      ],
+      "answers": [
+        "uma"
+      ],
+      "hint": "Look at the last letter of bolsa.",
+      "feedback": "Most nouns ending in -a are feminine.",
+      "explanation": "Bolsa ends in -a and is feminine, so a bag is uma bolsa.",
+      "mistakes": [
+        {
+          "answers": [
+            "um"
+          ],
+          "why": "Um goes with masculine nouns, usually ending in -o. Bolsa ends in -a."
+        }
+      ],
+      "row": "-a",
+      "gloss": [
+        {
+          "pt": "Comprei",
+          "en": "I bought (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "bolsa",
+          "en": "bag",
+          "word": "shopping-047"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-ending-2",
+      "pattern": "ending",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for a.",
+      "source": "Eu moro em ____ quarto pequeno.",
+      "answers": [
+        "um"
+      ],
+      "hint": "Quarto ends in -o, and so does pequeno.",
+      "feedback": "The ending -o points to a masculine noun.",
+      "explanation": "Quarto ends in -o and is masculine, so a room is um quarto.",
+      "mistakes": [
+        {
+          "answers": [
+            "uma"
+          ],
+          "why": "Uma is for feminine nouns; quarto and pequeno both end in -o, the masculine ending."
+        },
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "O means the; after em it would also join into no. The sentence says a room."
+        }
+      ],
+      "row": "-o",
+      "gloss": [
+        {
+          "pt": "moro",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "quarto",
+          "en": "room",
+          "word": "home-003"
+        },
+        {
+          "pt": "pequeno",
+          "en": "small",
+          "word": "qualities-002"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-ending-3",
+      "pattern": "ending",
+      "type": "rewrite",
+      "instruction": "Replace carro with bolsa and make the sentence agree. Write the whole sentence.",
+      "source": "O carro é caro.",
+      "answers": [
+        "A bolsa é cara."
+      ],
+      "hint": "Bolsa ends in -a, so the article and the adjective change.",
+      "feedback": "When the noun changes gender, the article and the adjective follow it.",
+      "explanation": "Bolsa is feminine, so o becomes a and caro becomes cara.",
+      "mistakes": [
+        {
+          "answers": [
+            "O bolsa é caro.",
+            "O bolsa é cara."
+          ],
+          "why": "The article still matches carro. Bolsa ends in -a and is feminine."
+        },
+        {
+          "answers": [
+            "A bolsa é caro."
+          ],
+          "why": "The adjective was left masculine; it must agree with bolsa as well."
+        }
+      ],
+      "row": "-a",
+      "gloss": [
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "caro",
+          "en": "expensive",
+          "word": "qualities-051"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-ending-4",
+      "pattern": "ending",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ela tem uma irmão.",
+      "answers": [
+        "Ela tem um irmão."
+      ],
+      "hint": "Irmão is a man: brother.",
+      "feedback": "For people, the gender follows the person: irmão and irmã.",
+      "explanation": "Irmão (brother) is masculine, so a brother is um irmão. The feminine is uma irmã.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela tem uma irmão."
+          ],
+          "why": "That is the sentence unchanged. The feminine article does not fit a brother."
+        },
+        {
+          "answers": [
+            "Ela tem uma irmã."
+          ],
+          "why": "That changes the meaning to a sister. Keep the brother and fix the article."
+        }
+      ],
+      "row": "-o",
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-ending-5",
+      "pattern": "ending",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The kitchen is small.",
+      "answers": [
+        "A cozinha é pequena."
+      ],
+      "hint": "Cozinha ends in -a.",
+      "feedback": "Both the article and the adjective follow cozinha.",
+      "explanation": "Cozinha is feminine, so the kitchen is a cozinha and small is pequena.",
+      "mistakes": [
+        {
+          "answers": [
+            "O cozinha é pequena."
+          ],
+          "why": "Cozinha ends in -a and is feminine; the masculine article clashes with it."
+        },
+        {
+          "answers": [
+            "A cozinha é pequeno."
+          ],
+          "why": "Small must agree with cozinha, a feminine noun."
+        }
+      ],
+      "row": "-a"
+    },
+    {
+      "id": "articles-gender-suffix-1",
+      "pattern": "suffix",
+      "type": "choose",
+      "instruction": "Choose the word for the.",
+      "source": "____ estação fica longe.",
+      "options": [
+        "O",
+        "A"
+      ],
+      "answers": [
+        "A"
+      ],
+      "hint": "Look at the ending -ção.",
+      "feedback": "Nouns ending in -ção are feminine.",
+      "explanation": "Estação ends in -ção, and nouns in -ção are feminine, so the station is a estação.",
+      "mistakes": [
+        {
+          "answers": [
+            "O"
+          ],
+          "why": "Estação ends in -ção, an ending that is always feminine, so the masculine article does not fit."
+        }
+      ],
+      "row": "-ção",
+      "gloss": [
+        {
+          "pt": "estação",
+          "en": "station",
+          "word": "travel-012"
+        },
+        {
+          "pt": "fica",
+          "en": "is (located) (ficar)"
+        },
+        {
+          "pt": "longe",
+          "en": "far",
+          "word": "essentials-095"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-suffix-2",
+      "pattern": "suffix",
+      "type": "choose",
+      "instruction": "Choose the word for a.",
+      "source": "Vou fazer ____ viagem.",
+      "options": [
+        "um",
+        "uma"
+      ],
+      "answers": [
+        "uma"
+      ],
+      "hint": "Look at the ending -agem.",
+      "feedback": "Nouns ending in -agem are feminine, even though they do not end in -a (French voyage is masculine).",
+      "explanation": "Viagem ends in -agem, so it is feminine: uma viagem.",
+      "mistakes": [
+        {
+          "answers": [
+            "um"
+          ],
+          "why": "Viagem ends in -agem, a feminine ending, so the masculine word for a is wrong."
+        }
+      ],
+      "row": "-agem",
+      "gloss": [
+        {
+          "pt": "Vou",
+          "en": "I am going to (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "fazer",
+          "en": "make (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "viagem",
+          "en": "trip",
+          "word": "travel-017"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-suffix-3",
+      "pattern": "suffix",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for the.",
+      "source": "____ cidade é muito bonita.",
+      "answers": [
+        "A"
+      ],
+      "hint": "Look at the ending -dade.",
+      "feedback": "Bonita already shows the gender.",
+      "explanation": "Cidade ends in -dade, and nouns in -dade are feminine, so the city is a cidade.",
+      "mistakes": [
+        {
+          "answers": [
+            "O"
+          ],
+          "why": "Cidade ends in -e, but -dade is a feminine ending; bonita agrees with a feminine noun too."
+        }
+      ],
+      "row": "-dade",
+      "gloss": [
+        {
+          "pt": "cidade",
+          "en": "city",
+          "word": "travel-001"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "bonita",
+          "en": "beautiful",
+          "word": "qualities-005"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-suffix-4",
+      "pattern": "suffix",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "O garagem está vazio.",
+      "answers": [
+        "A garagem está vazia."
+      ],
+      "hint": "Garagem ends in -agem.",
+      "feedback": "Two words must change: the article and the adjective.",
+      "explanation": "Garagem is feminine, like every noun in -agem, so the garage is a garagem and empty becomes vazia.",
+      "mistakes": [
+        {
+          "answers": [
+            "O garagem está vazio."
+          ],
+          "why": "That is the sentence unchanged. Nouns ending in -agem are feminine."
+        },
+        {
+          "answers": [
+            "A garagem está vazio."
+          ],
+          "why": "The article is fixed, but the adjective still has the masculine ending."
+        }
+      ],
+      "row": "-agem",
+      "gloss": [
+        {
+          "pt": "garagem",
+          "en": "garage",
+          "word": "home-010"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "vazio",
+          "en": "empty",
+          "word": "qualities-031"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-suffix-5",
+      "pattern": "suffix",
+      "type": "rewrite",
+      "instruction": "Change a into the. Write the whole sentence.",
+      "source": "Eu recebi uma mensagem.",
+      "answers": [
+        "Eu recebi a mensagem.",
+        "Recebi a mensagem."
+      ],
+      "hint": "Uma becomes the feminine word for the.",
+      "feedback": "Mensagem stays feminine; only the kind of article changes.",
+      "explanation": "Mensagem ends in -agem and is feminine, so uma mensagem becomes a mensagem.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu recebi o mensagem."
+          ],
+          "why": "Mensagem ends in -agem and is feminine, so the masculine article is wrong."
+        },
+        {
+          "answers": [
+            "Eu recebi uma mensagem."
+          ],
+          "why": "That is the original sentence: the article was not changed."
+        }
+      ],
+      "row": "-agem",
+      "gloss": [
+        {
+          "pt": "recebi",
+          "en": "received (receber)"
+        },
+        {
+          "pt": "mensagem",
+          "en": "message",
+          "word": "media-003"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-suffix-6",
+      "pattern": "suffix",
+      "type": "build",
+      "instruction": "Build the sentence: The information is right. Leave one tile unused.",
+      "source": "The information is right.",
+      "tokens": [
+        "O",
+        "informação",
+        "A",
+        "está",
+        "certa."
+      ],
+      "answers": [
+        "A informação está certa."
+      ],
+      "alternatives": [
+        {
+          "answer": "A informação é certa.",
+          "message": "Understandable, but for a fact being correct Brazilians say está certa.",
+          "accepted": true
+        }
+      ],
+      "hint": "Informação ends in -ção.",
+      "feedback": "Pick the article that matches -ção.",
+      "explanation": "Nouns ending in -ção are feminine, so the information is a informação, and right is certa.",
+      "mistakes": [
+        {
+          "answers": [
+            "O informação está certa."
+          ],
+          "why": "That tile is the masculine article, and nouns ending in -ção are feminine."
+        }
+      ],
+      "row": "-ção"
+    },
+    {
+      "id": "articles-gender-exceptions-1",
+      "pattern": "exceptions",
+      "type": "choose",
+      "instruction": "Choose the word for the.",
+      "source": "____ problema é difícil.",
+      "options": [
+        "O",
+        "A"
+      ],
+      "answers": [
+        "O"
+      ],
+      "hint": "Problema ends in -a, but it is one of the exceptions.",
+      "feedback": "Many words ending in -ma come from Greek and are masculine.",
+      "explanation": "Problema is masculine despite its -a: o problema.",
+      "mistakes": [
+        {
+          "answers": [
+            "A"
+          ],
+          "why": "Problema ends in -a, but it is masculine, like sistema and tema. The feminine article does not fit."
+        }
+      ],
+      "row": "o problema",
+      "gloss": [
+        {
+          "pt": "problema",
+          "en": "problem",
+          "word": "work-043"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "difícil",
+          "en": "difficult",
+          "word": "qualities-035"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-exceptions-2",
+      "pattern": "exceptions",
+      "type": "choose",
+      "instruction": "Choose the word for a.",
+      "source": "Ela tirou ____ foto bonita.",
+      "options": [
+        "um",
+        "uma"
+      ],
+      "answers": [
+        "uma"
+      ],
+      "hint": "Foto ends in -o, but bonita gives the gender away.",
+      "feedback": "Foto is short for fotografia, which is feminine.",
+      "explanation": "Foto is feminine because it is short for a fotografia, so a photo is uma foto, with bonita agreeing.",
+      "mistakes": [
+        {
+          "answers": [
+            "um"
+          ],
+          "why": "Foto ends in -o but it is feminine, short for fotografia; bonita shows that too."
+        }
+      ],
+      "row": "a foto",
+      "gloss": [
+        {
+          "pt": "tirou",
+          "en": "took (tirar)",
+          "word": "verbs-097"
+        },
+        {
+          "pt": "foto",
+          "en": "photo",
+          "word": "media-034"
+        },
+        {
+          "pt": "bonita",
+          "en": "beautiful",
+          "word": "qualities-005"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-exceptions-3",
+      "pattern": "exceptions",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for the.",
+      "source": "____ mapa está no carro.",
+      "answers": [
+        "O"
+      ],
+      "hint": "Mapa is an exception.",
+      "feedback": "Mapa ends in -a but it is masculine.",
+      "explanation": "Mapa is masculine: o mapa. Learn it with its article.",
+      "mistakes": [
+        {
+          "answers": [
+            "A"
+          ],
+          "why": "Mapa ends in -a but it is masculine, so the feminine article is wrong."
+        }
+      ],
+      "row": "o mapa",
+      "gloss": [
+        {
+          "pt": "mapa",
+          "en": "map",
+          "word": "travel-021"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-exceptions-4",
+      "pattern": "exceptions",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for the.",
+      "source": "Ela levantou ____ mão.",
+      "answers": [
+        "a"
+      ],
+      "hint": "Mão ends in -o, but it is an exception.",
+      "feedback": "Mão is feminine.",
+      "explanation": "Mão is feminine despite its -o sound: a mão.",
+      "mistakes": [
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "Mão ends in -ão like irmão, but it is feminine. The masculine article does not fit."
+        },
+        {
+          "answers": [
+            "uma"
+          ],
+          "why": "Uma means a. You raise your hand, a specific one, so Portuguese uses the."
+        }
+      ],
+      "row": "a mão",
+      "gloss": [
+        {
+          "pt": "levantou",
+          "en": "raised (levantar)"
+        },
+        {
+          "pt": "mão",
+          "en": "hand",
+          "word": "health-time-004"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-exceptions-5",
+      "pattern": "exceptions",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "A sistema é novo.",
+      "answers": [
+        "O sistema é novo."
+      ],
+      "hint": "Sistema is masculine, like problema.",
+      "feedback": "The adjective novo is already right.",
+      "explanation": "Sistema ends in -ma and is masculine: o sistema. Novo agrees with it.",
+      "mistakes": [
+        {
+          "answers": [
+            "A sistema é novo."
+          ],
+          "why": "That is the sentence unchanged. Sistema is masculine despite the -a."
+        },
+        {
+          "answers": [
+            "A sistema é nova."
+          ],
+          "why": "This makes the adjective agree with the wrong gender. Sistema is masculine, so the article changes, not novo."
+        }
+      ],
+      "row": "o sistema",
+      "gloss": [
+        {
+          "pt": "sistema",
+          "en": "system"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "novo",
+          "en": "new",
+          "word": "qualities-008"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-exceptions-6",
+      "pattern": "exceptions",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "It is a nice day.",
+      "answers": [
+        "É um dia bonito.",
+        "É um lindo dia.",
+        "É um dia lindo.",
+        "Está um dia bonito.",
+        "Está um dia lindo."
+      ],
+      "hint": "Dia ends in -a, but it is masculine.",
+      "feedback": "Check the article and the adjective in front of dia.",
+      "explanation": "Dia is masculine: um dia, and the adjective takes the masculine form bonito or lindo.",
+      "mistakes": [
+        {
+          "answers": [
+            "É uma dia bonito.",
+            "É uma dia bonita."
+          ],
+          "why": "Dia ends in -a, but it is masculine (o dia), so the feminine word for a is wrong."
+        },
+        {
+          "answers": [
+            "É um dia bonita."
+          ],
+          "why": "The adjective must agree with dia, which is masculine."
+        }
+      ],
+      "row": "o dia"
+    },
+    {
+      "id": "articles-gender-exceptions-7",
+      "pattern": "exceptions",
+      "type": "build",
+      "instruction": "Build the sentence: I have a problem. Leave one tile unused.",
+      "source": "I have a problem.",
+      "tokens": [
+        "tenho",
+        "uma",
+        "Eu",
+        "um",
+        "problema."
+      ],
+      "answers": [
+        "Eu tenho um problema.",
+        "Tenho um problema."
+      ],
+      "hint": "Problema ends in -a, but it is masculine.",
+      "feedback": "Do not trust the -a here.",
+      "explanation": "Problema is masculine, so a problem is um problema.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu tenho uma problema.",
+            "Tenho uma problema."
+          ],
+          "why": "That tile is the feminine word for a, and problema is masculine despite its -a."
+        }
+      ],
+      "row": "o problema"
+    },
+    {
+      "id": "articles-gender-exceptions-8",
+      "pattern": "exceptions",
+      "type": "rewrite",
+      "instruction": "Replace mapa with foto and change the article to match. Write the whole sentence.",
+      "source": "O mapa está aqui.",
+      "answers": [
+        "A foto está aqui."
+      ],
+      "hint": "Both are exceptions: mapa is masculine, foto is feminine.",
+      "feedback": "The article follows the new noun.",
+      "explanation": "Foto is feminine, so o mapa becomes a foto.",
+      "mistakes": [
+        {
+          "answers": [
+            "O foto está aqui."
+          ],
+          "why": "The article still matches mapa. Foto ends in -o but is feminine."
+        },
+        {
+          "answers": [
+            "O mapa está aqui."
+          ],
+          "why": "That is the original sentence: mapa was not replaced."
+        }
+      ],
+      "row": "a foto",
+      "gloss": [
+        {
+          "pt": "mapa",
+          "en": "map",
+          "word": "travel-021"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-e-nouns-1",
+      "pattern": "e-nouns",
+      "type": "choose",
+      "instruction": "Choose the word for the.",
+      "source": "____ leite está quente.",
+      "options": [
+        "O",
+        "A"
+      ],
+      "answers": [
+        "O"
+      ],
+      "hint": "Leite ends in -e: you have to know it.",
+      "feedback": "The -e ending gives no clue; quente does not help either.",
+      "explanation": "Leite is masculine: o leite. Nouns in -e must be learned with their article.",
+      "mistakes": [
+        {
+          "answers": [
+            "A"
+          ],
+          "why": "Leite ends in -e, which can be either gender, and this one is masculine."
+        }
+      ],
+      "row": "o leite",
+      "gloss": [
+        {
+          "pt": "leite",
+          "en": "milk",
+          "word": "food-005"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "quente",
+          "en": "hot",
+          "word": "qualities-023"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-e-nouns-2",
+      "pattern": "e-nouns",
+      "type": "choose",
+      "instruction": "Choose the word for the.",
+      "source": "____ noite está fria.",
+      "options": [
+        "O",
+        "A"
+      ],
+      "answers": [
+        "A"
+      ],
+      "hint": "Fria shows the gender of noite.",
+      "feedback": "Noite ends in -e, but the adjective has a feminine ending.",
+      "explanation": "Noite is feminine: a noite, and fria agrees with it.",
+      "mistakes": [
+        {
+          "answers": [
+            "O"
+          ],
+          "why": "Noite ends in -e, but it is feminine; fria agrees with a feminine noun."
+        }
+      ],
+      "row": "a noite",
+      "gloss": [
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "fria",
+          "en": "cold",
+          "word": "qualities-024"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-e-nouns-3",
+      "pattern": "e-nouns",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for the.",
+      "source": "Onde está ____ chave?",
+      "answers": [
+        "a"
+      ],
+      "hint": "Chave is feminine.",
+      "feedback": "Chave ends in -e, so you need to remember it.",
+      "explanation": "Chave is feminine: a chave.",
+      "mistakes": [
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "Chave ends in -e, but it is feminine. Learn it as a chave."
+        },
+        {
+          "answers": [
+            "uma"
+          ],
+          "why": "Uma means a; the question asks for one particular key."
+        }
+      ],
+      "row": "a chave",
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "chave",
+          "en": "key",
+          "word": "home-019"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-e-nouns-4",
+      "pattern": "e-nouns",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for the.",
+      "source": "Qual é ____ nome dele?",
+      "answers": [
+        "o"
+      ],
+      "hint": "Nome is masculine.",
+      "feedback": "Nome ends in -e, so the article must be learned with it.",
+      "explanation": "Nome is masculine: o nome.",
+      "mistakes": [
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "Nome ends in -e, but it is masculine. Learn it as o nome."
+        }
+      ],
+      "row": "o nome",
+      "gloss": [
+        {
+          "pt": "Qual",
+          "en": "what; which"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "nome",
+          "en": "name",
+          "word": "people-036"
+        },
+        {
+          "pt": "dele",
+          "en": "his"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-e-nouns-5",
+      "pattern": "e-nouns",
+      "type": "rewrite",
+      "instruction": "Replace café with carne and change the article to match. Write the whole sentence.",
+      "source": "O café está quente.",
+      "answers": [
+        "A carne está quente."
+      ],
+      "hint": "Carne is feminine.",
+      "feedback": "Quente ends in -e and does not change; only the article does.",
+      "explanation": "Carne is feminine: a carne. Quente has one form for both genders.",
+      "mistakes": [
+        {
+          "answers": [
+            "O carne está quente."
+          ],
+          "why": "The article still matches café. Carne is feminine."
+        },
+        {
+          "answers": [
+            "A carne está quenta."
+          ],
+          "why": "Quente has the same form for both genders; there is no quenta."
+        }
+      ],
+      "row": "a carne",
+      "gloss": [
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "quente",
+          "en": "hot",
+          "word": "qualities-023"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-e-nouns-6",
+      "pattern": "e-nouns",
+      "type": "build",
+      "instruction": "Build the sentence: The milk is cold. Leave one tile unused.",
+      "source": "The milk is cold.",
+      "tokens": [
+        "leite",
+        "A",
+        "está",
+        "O",
+        "frio."
+      ],
+      "answers": [
+        "O leite está frio."
+      ],
+      "hint": "Leite is masculine.",
+      "feedback": "The article and frio must both match leite.",
+      "explanation": "Leite is masculine: o leite, and cold takes the masculine form frio.",
+      "mistakes": [
+        {
+          "answers": [
+            "A leite está frio."
+          ],
+          "why": "That tile is the feminine article, and leite is masculine."
+        }
+      ],
+      "row": "o leite"
+    },
+    {
+      "id": "articles-gender-profession-1",
+      "pattern": "profession",
+      "type": "choose",
+      "instruction": "Choose the natural way to finish: She is a doctor.",
+      "source": "Ela é ____.",
+      "options": [
+        "uma médica",
+        "médica",
+        "a médica"
+      ],
+      "answers": [
+        "médica"
+      ],
+      "hint": "After ser, a job usually stands alone.",
+      "feedback": "English says a doctor; Portuguese drops the article.",
+      "explanation": "With ser, a job or profession takes no article: Ela é médica.",
+      "mistakes": [
+        {
+          "answers": [
+            "uma médica"
+          ],
+          "why": "Portuguese leaves out the article before a bare job after ser. The article returns only when a description is added after the job."
+        },
+        {
+          "answers": [
+            "a médica"
+          ],
+          "why": "That means she is the doctor, a particular one, not what her job is."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-profession-2",
+      "pattern": "profession",
+      "type": "complete",
+      "instruction": "Write the missing word: he is a teacher.",
+      "source": "Meu pai ensina numa escola. Ele é ____.",
+      "answers": [
+        "professor"
+      ],
+      "hint": "Write just the job.",
+      "feedback": "After ser the job needs no article.",
+      "explanation": "With ser, a profession stands alone: Ele é professor.",
+      "mistakes": [
+        {
+          "answers": [
+            "um professor"
+          ],
+          "why": "English needs a here, but Portuguese drops the article before a bare profession after ser."
+        },
+        {
+          "answers": [
+            "professora"
+          ],
+          "why": "That is the female form; the teacher here is your father."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my"
+        },
+        {
+          "pt": "pai",
+          "en": "father"
+        },
+        {
+          "pt": "ensina",
+          "en": "teaches (ensinar)"
+        },
+        {
+          "pt": "numa",
+          "en": "in a"
+        },
+        {
+          "pt": "escola",
+          "en": "school"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-profession-3",
+      "pattern": "profession",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "My brother is an engineer.",
+      "answers": [
+        "Meu irmão é engenheiro.",
+        "O meu irmão é engenheiro."
+      ],
+      "hint": "No article before the job.",
+      "feedback": "Check what follows é.",
+      "explanation": "After ser, a profession takes no article: é engenheiro. The article before meu is optional in Brazil.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meu irmão é um engenheiro.",
+            "O meu irmão é um engenheiro."
+          ],
+          "why": "English uses an here, but Portuguese leaves the article out before a bare job after ser."
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-profession-4",
+      "pattern": "profession",
+      "type": "repair",
+      "instruction": "Fix the sentence so it sounds natural.",
+      "source": "Pedro é um dentista.",
+      "answers": [
+        "Pedro é dentista.",
+        "O Pedro é dentista."
+      ],
+      "hint": "Look at the word after é.",
+      "feedback": "It is a job after ser, with nothing added.",
+      "explanation": "A profession after ser takes no article in Portuguese: Pedro é dentista.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pedro é um dentista."
+          ],
+          "why": "That is the sentence unchanged. The English a was copied into Portuguese."
+        },
+        {
+          "answers": [
+            "Pedro é o dentista."
+          ],
+          "why": "That says he is the dentist, a particular one, not what he does for a living."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "dentista",
+          "en": "dentist",
+          "word": "work-014"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-profession-5",
+      "pattern": "profession",
+      "type": "rewrite",
+      "instruction": "Make the sentence about a woman. Write the whole sentence.",
+      "source": "Ele é médico.",
+      "answers": [
+        "Ela é médica."
+      ],
+      "hint": "Change the pronoun and the ending of the job.",
+      "feedback": "Still no article: only the gender changes.",
+      "explanation": "Médico becomes médica for a woman, and the job still stands without an article.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela é uma médica."
+          ],
+          "why": "Making it feminine does not add an article; a bare job after ser has none."
+        },
+        {
+          "answers": [
+            "Ela é médico."
+          ],
+          "why": "The job must take the feminine ending for a woman."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-profession-6",
+      "pattern": "profession",
+      "type": "build",
+      "instruction": "Build the sentence: She is a nurse. Leave one tile unused.",
+      "source": "She is a nurse.",
+      "tokens": [
+        "uma",
+        "Ela",
+        "é",
+        "enfermeira."
+      ],
+      "answers": [
+        "Ela é enfermeira."
+      ],
+      "hint": "One tile is the English a.",
+      "feedback": "After ser, a job has no article.",
+      "explanation": "With ser, a profession stands alone: Ela é enfermeira.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela é uma enfermeira."
+          ],
+          "why": "That uses the extra tile. Portuguese drops the article before a bare job after ser."
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-names-1",
+      "pattern": "names",
+      "type": "choose",
+      "instruction": "Choose the article that fits before the name.",
+      "source": "____ João trabalha num banco.",
+      "options": [
+        "O",
+        "A",
+        "Um"
+      ],
+      "answers": [
+        "O"
+      ],
+      "hint": "João is a man.",
+      "feedback": "Before a name the article is optional, but if you use one it must match the person.",
+      "explanation": "Many Brazilians say O João; plain João is right too. If you put an article, it follows the person: o for a man, a for a woman.",
+      "mistakes": [
+        {
+          "answers": [
+            "A"
+          ],
+          "why": "A is for a woman; João is a man."
+        },
+        {
+          "answers": [
+            "Um"
+          ],
+          "why": "Um means a; you do not say a João about someone you know."
+        }
+      ],
+      "row": "a man",
+      "gloss": [
+        {
+          "pt": "João",
+          "en": "João (a name)"
+        },
+        {
+          "pt": "trabalha",
+          "en": "works (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "num",
+          "en": "in a"
+        },
+        {
+          "pt": "banco",
+          "en": "bank",
+          "word": "town-012"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-names-2",
+      "pattern": "names",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Ana is at home today.",
+      "answers": [
+        "A Ana está em casa hoje.",
+        "Ana está em casa hoje.",
+        "Hoje a Ana está em casa.",
+        "Hoje Ana está em casa."
+      ],
+      "hint": "At home is em casa, with no article.",
+      "feedback": "Both A Ana and Ana are right in Brazil.",
+      "explanation": "The article before a first name is common in Brazil but optional, so A Ana and Ana are both correct. At home is em casa.",
+      "mistakes": [
+        {
+          "answers": [
+            "O Ana está em casa hoje."
+          ],
+          "why": "Ana is a woman, so a masculine article cannot go before her name."
+        },
+        {
+          "answers": [
+            "A Ana está na casa hoje."
+          ],
+          "why": "At home is em casa, without the article; na casa means in the house, a particular one."
+        }
+      ],
+      "row": "a woman"
+    },
+    {
+      "id": "articles-gender-names-3",
+      "pattern": "names",
+      "type": "rewrite",
+      "instruction": "Add the article many Brazilians put before a name. Write the whole sentence.",
+      "source": "Maria mora em São Paulo.",
+      "answers": [
+        "A Maria mora em São Paulo."
+      ],
+      "hint": "Maria is a woman.",
+      "feedback": "The article follows the person: a for a woman.",
+      "explanation": "Adding the article is the common spoken form in much of Brazil: A Maria mora em São Paulo.",
+      "mistakes": [
+        {
+          "answers": [
+            "O Maria mora em São Paulo."
+          ],
+          "why": "Maria is a woman, so the masculine article does not fit."
+        },
+        {
+          "answers": [
+            "Maria mora em São Paulo."
+          ],
+          "why": "That is the original sentence; the task asks you to add the article."
+        }
+      ],
+      "row": "a woman",
+      "gloss": [
+        {
+          "pt": "São Paulo",
+          "en": "São Paulo (a city)"
+        },
+        {
+          "pt": "Maria",
+          "en": "Maria (a name)"
+        },
+        {
+          "pt": "mora",
+          "en": "lives (morar)",
+          "word": "verbs-065"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-names-4",
+      "pattern": "names",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "A João é meu amigo.",
+      "answers": [
+        "O João é meu amigo.",
+        "João é meu amigo."
+      ],
+      "hint": "João is a man.",
+      "feedback": "Either fix the article or drop it.",
+      "explanation": "An article before a name follows the person: o João. Dropping it, João é meu amigo, is also right.",
+      "mistakes": [
+        {
+          "answers": [
+            "A João é meu amigo."
+          ],
+          "why": "That is the sentence unchanged. The feminine article cannot go before a man’s name."
+        }
+      ],
+      "row": "a man",
+      "gloss": [
+        {
+          "pt": "João",
+          "en": "João (a name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "meu",
+          "en": "my"
+        },
+        {
+          "pt": "amigo",
+          "en": "friend",
+          "word": "people-029"
+        }
+      ]
+    },
+    {
+      "id": "articles-gender-names-5",
+      "pattern": "names",
+      "type": "build",
+      "instruction": "Build the sentence: Maria is my friend. Leave one tile unused.",
+      "source": "Maria is my friend.",
+      "tokens": [
+        "amiga.",
+        "O",
+        "Maria",
+        "é",
+        "A",
+        "minha"
+      ],
+      "answers": [
+        "A Maria é minha amiga.",
+        "Maria é minha amiga."
+      ],
+      "hint": "Maria is a woman.",
+      "feedback": "You may use an article before the name or not, but it has to match.",
+      "explanation": "Before a woman’s name the article is a; it is optional in Brazil. Friend is amiga for a woman.",
+      "mistakes": [
+        {
+          "answers": [
+            "O Maria é minha amiga."
+          ],
+          "why": "That tile is the masculine article, and Maria is a woman."
+        }
+      ],
+      "row": "a woman"
+    }
+  ]
+}

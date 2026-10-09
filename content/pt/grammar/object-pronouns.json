@@ -1,0 +1,2066 @@
+{
+  "id": "object-pronouns",
+  "unit": "sentences",
+  "level": "A2",
+  "title": "Me, you, him, her",
+  "description": "Say me, you, him, her, us and them as objects, and put them where Brazilians do.",
+  "mark": "me · te · o · a",
+  "guide": {
+    "summary": "In Brazil the short object pronouns me, te and nos go before the verb. For him, her and them, writing uses o, a, os, as, while speech mostly puts ele or ela after the verb. Learn both, and the places the pronoun goes with two verbs and after não.",
+    "sections": [
+      {
+        "id": "before-verb",
+        "title": "Me, te, nos before the verb",
+        "text": "An object pronoun is the person or thing that receives the action: she called me, I see you. In Brazil the short forms go in front of the verb. This is normal in speech and in most writing.",
+        "table": {
+          "columns": [
+            "Object",
+            "Before the verb",
+            "Spoken, after the verb"
+          ],
+          "rows": [
+            [
+              "me",
+              "me",
+              "me (before)"
+            ],
+            [
+              "you (você)",
+              "te",
+              "você"
+            ],
+            [
+              "him / it (m.)",
+              "o",
+              "ele"
+            ],
+            [
+              "her / it (f.)",
+              "a",
+              "ela"
+            ],
+            [
+              "us",
+              "nos",
+              "a gente"
+            ],
+            [
+              "them (m.)",
+              "os",
+              "eles"
+            ],
+            [
+              "them (f.)",
+              "as",
+              "elas"
+            ]
+          ]
+        },
+        "steps": [
+          "Find who or what receives the action.",
+          "Take its object form from the table, not the subject form.",
+          "Put me, te or nos right before the verb."
+        ],
+        "examples": [
+          {
+            "pt": "Ela me ligou.",
+            "en": "She called me."
+          },
+          {
+            "pt": "O professor nos ajuda.",
+            "en": "The teacher helps us."
+          }
+        ],
+        "watch": [
+          "Eu and nós are subjects. After the verb, ajudou eu sounds wrong; say me ajudou.",
+          "Mim only follows a preposition: para mim."
+        ]
+      },
+      {
+        "id": "te-voce",
+        "title": "Te for você",
+        "text": "Most Brazilians say você for you, but as an object they use te, which grammar books link to tu. Eu te amo, eu te ligo: this mix is everyday Brazilian. You can also put você after the verb: Eu amo você.",
+        "steps": [
+          "Is the person you are talking to the object?",
+          "Say te before the verb, or você after it."
+        ],
+        "examples": [
+          {
+            "pt": "Eu te amo.",
+            "en": "I love you."
+          },
+          {
+            "pt": "Eu te espero na estação.",
+            "en": "I will wait for you at the station."
+          }
+        ],
+        "watch": [
+          "Tu and ti are not object forms before a verb."
+        ]
+      },
+      {
+        "id": "written-o-a",
+        "title": "O, a, os, as in writing",
+        "text": "In writing and careful speech, him, her, it and them are o, a, os, as, before the verb. They agree with the noun they replace: o livro becomes o, as chaves become as.",
+        "steps": [
+          "Find the noun the pronoun replaces.",
+          "Masculine or feminine? One or more?",
+          "Put o, a, os or as before the verb."
+        ],
+        "examples": [
+          {
+            "pt": "Eu o vi ontem.",
+            "en": "I saw him yesterday."
+          },
+          {
+            "pt": "Eu as deixei em casa.",
+            "en": "I left them at home."
+          }
+        ],
+        "watch": [
+          "Do not confuse these with the articles: here o and a stand alone, before a verb.",
+          "Lhe means to him or to her, not him or her."
+        ]
+      },
+      {
+        "id": "spoken-ele",
+        "title": "Ele and ela after the verb in speech",
+        "text": "In conversation most Brazilians do not use o and a. They put ele, ela, eles, elas after the verb: Eu vi ele ontem. It is normal speech, but avoid it in formal writing.",
+        "steps": [
+          "Keep the verb in its usual place.",
+          "Put ele, ela, eles or elas after it, matching the person."
+        ],
+        "examples": [
+          {
+            "pt": "Eu vi ele ontem.",
+            "en": "I saw him yesterday."
+          },
+          {
+            "pt": "A gente conhece eles bem.",
+            "en": "We know them well."
+          }
+        ],
+        "watch": [
+          "O or a never trail the verb as separate words: vi a is wrong.",
+          "Ligar takes para: liguei para ele."
+        ]
+      },
+      {
+        "id": "two-verbs",
+        "title": "With two verbs",
+        "text": "With ir, querer, poder and other verbs followed by an infinitive, Brazilians put the pronoun right before the infinitive.",
+        "steps": [
+          "Find the infinitive, the verb ending in -r.",
+          "Put the pronoun right before it."
+        ],
+        "examples": [
+          {
+            "pt": "Vou te ligar amanhã.",
+            "en": "I will call you tomorrow."
+          },
+          {
+            "pt": "Você pode me ajudar?",
+            "en": "Can you help me?"
+          }
+        ],
+        "watch": [
+          "Te vou ligar is heard, but sounds old-fashioned; Brazilians put the pronoun before the infinitive.",
+          "In writing with o and a you may see vou vê-lo; in speech say vou ver ele."
+        ]
+      },
+      {
+        "id": "after-nao",
+        "title": "After não",
+        "text": "Não comes first, then the pronoun, then the verb. Words like ninguém and nunca work the same way.",
+        "steps": [
+          "Write não.",
+          "Then the pronoun.",
+          "Then the verb."
+        ],
+        "examples": [
+          {
+            "pt": "Ela não me disse nada.",
+            "en": "She did not tell me anything."
+          },
+          {
+            "pt": "Ninguém nos convidou.",
+            "en": "Nobody invited us."
+          }
+        ],
+        "watch": [
+          "Never put the pronoun before não: me não lembro is wrong."
+        ]
+      },
+      {
+        "id": "indirect",
+        "title": "To me, to him: indirect objects",
+        "text": "For to me, to you and to us, the same short forms work: Ela me deu um presente. For to him, to her and to them, speech uses para ele, para ela, para eles after the verb; writing uses lhe and lhes before it.",
+        "table": {
+          "columns": [
+            "To whom",
+            "Short form",
+            "Everyday speech"
+          ],
+          "rows": [
+            [
+              "to me",
+              "me",
+              "me"
+            ],
+            [
+              "to you",
+              "te or lhe",
+              "para você"
+            ],
+            [
+              "to him / to her",
+              "lhe",
+              "para ele, para ela"
+            ],
+            [
+              "to us",
+              "nos",
+              "para a gente"
+            ],
+            [
+              "to them",
+              "lhes",
+              "para eles, para elas"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the person receiving something, with a to in English?",
+          "Use me, te or nos before the verb, or para plus the pronoun after the thing.",
+          "In formal writing, lhe or lhes before the verb."
+        ],
+        "examples": [
+          {
+            "pt": "Dei o livro para ela.",
+            "en": "I gave the book to her."
+          },
+          {
+            "pt": "Minha irmã me mandou uma mensagem.",
+            "en": "My sister sent me a message."
+          }
+        ],
+        "watch": [
+          "Lhe is formal; in speech it often means to you.",
+          "No article before a pronoun: para ela, not para a ela."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "before-verb": {
+      "section": "before-verb",
+      "steps": [
+        "Find who receives the action.",
+        "Use its object form.",
+        "Put it right before the verb."
+      ]
+    },
+    "te-voce": {
+      "section": "te-voce",
+      "steps": [
+        "The person you talk to is the object.",
+        "Put te before the verb."
+      ]
+    },
+    "written-o-a": {
+      "section": "written-o-a",
+      "steps": [
+        "Find the noun replaced.",
+        "Pick o, a, os or as by gender and number.",
+        "Put it before the verb."
+      ]
+    },
+    "spoken-ele": {
+      "section": "spoken-ele",
+      "steps": [
+        "Keep the verb where it is.",
+        "Put ele, ela, eles or elas after it."
+      ]
+    },
+    "two-verbs": {
+      "section": "two-verbs",
+      "steps": [
+        "Find the infinitive.",
+        "Put the pronoun right before it."
+      ]
+    },
+    "after-nao": {
+      "section": "after-nao",
+      "steps": [
+        "Não first.",
+        "Then the pronoun, then the verb."
+      ]
+    },
+    "indirect": {
+      "section": "indirect",
+      "steps": [
+        "Is there a to in English?",
+        "Use me, te, nos before the verb, or para plus the pronoun.",
+        "Formal writing: lhe before the verb."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "object-pronouns-before-verb-1",
+      "pattern": "before-verb",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Ela ____ ontem à noite.",
+      "options": [
+        "me ligou",
+        "ligou me",
+        "ligou eu"
+      ],
+      "answers": [
+        "me ligou"
+      ],
+      "hint": "In Brazil, where does a short pronoun like me usually sit?",
+      "feedback": "Brazilians put me, te and nos in front of the verb.",
+      "explanation": "Ela me ligou ontem à noite: the pronoun me sits right before the verb ligou. This is the normal order in Brazil.",
+      "mistakes": [
+        {
+          "answers": [
+            "ligou me"
+          ],
+          "why": "Me never trails the verb as a separate word. After the verb it would need a hyphen, and that order is the European Portuguese habit, not everyday Brazilian."
+        },
+        {
+          "answers": [
+            "ligou eu"
+          ],
+          "why": "Eu is a subject pronoun: it says who acts, not who receives the call. The person called needs an object form."
+        }
+      ],
+      "row": "me",
+      "gloss": [
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-before-verb-2",
+      "pattern": "before-verb",
+      "type": "choose",
+      "instruction": "Choose the word for us.",
+      "source": "O professor ____ ajuda muito.",
+      "options": [
+        "nos",
+        "nós",
+        "me"
+      ],
+      "answers": [
+        "nos"
+      ],
+      "hint": "Which short form means us and goes before the verb?",
+      "feedback": "The object form for nós is nos.",
+      "explanation": "O professor nos ajuda muito: nos is the object form of nós, and it stands before the verb ajuda.",
+      "mistakes": [
+        {
+          "answers": [
+            "nós"
+          ],
+          "why": "Nós with an accent is the subject, we. Here the teacher is the subject and we receive the help, so the short object form is needed."
+        },
+        {
+          "answers": [
+            "me"
+          ],
+          "why": "Me means me, one person. The sentence is about a whole group being helped."
+        }
+      ],
+      "row": "us",
+      "strictAccents": true,
+      "gloss": [
+        {
+          "pt": "professor",
+          "en": "teacher",
+          "word": "school-003"
+        },
+        {
+          "pt": "ajuda",
+          "en": "helps (ajudar)",
+          "word": "verbs-074"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot",
+          "word": "essentials-065"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-before-verb-3",
+      "pattern": "before-verb",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for me.",
+      "source": "Minha mãe ____ chama para jantar.",
+      "answers": [
+        "me"
+      ],
+      "hint": "The object form for eu is a two-letter word.",
+      "feedback": "Put the object form of eu before the verb.",
+      "explanation": "Minha mãe me chama para jantar: me is the object form of eu, placed before chama.",
+      "mistakes": [
+        {
+          "answers": [
+            "eu"
+          ],
+          "why": "Eu is the subject form. The mother is doing the calling; the speaker is the one called, so an object form is needed."
+        },
+        {
+          "answers": [
+            "mim"
+          ],
+          "why": "Mim is used only after a preposition, as in para mim. Straight before a verb the short form is used."
+        }
+      ],
+      "row": "me",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "chama",
+          "en": "calls (chamar)",
+          "word": "verbs-075"
+        },
+        {
+          "pt": "para",
+          "en": "for, to",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "jantar",
+          "en": "dinner",
+          "word": "food-043"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-before-verb-4",
+      "pattern": "before-verb",
+      "type": "build",
+      "instruction": "Build the sentence: My friends always wait for us. Leave one tile unused.",
+      "source": "My friends always wait for us.",
+      "tokens": [
+        "nós",
+        "Meus",
+        "nos",
+        "amigos",
+        "sempre",
+        "esperam."
+      ],
+      "answers": [
+        "Meus amigos sempre nos esperam."
+      ],
+      "hint": "Esperar already contains the for. The pronoun sits right before the verb.",
+      "feedback": "Nos goes immediately in front of esperam.",
+      "explanation": "Meus amigos sempre nos esperam: esperar means to wait for, so no extra word is needed, and nos stands before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meus amigos sempre nós esperam."
+          ],
+          "why": "That tile is the subject pronoun we. The friends are the subject; we are the ones waited for, so the object form is needed."
+        }
+      ],
+      "row": "us"
+    },
+    {
+      "id": "object-pronouns-before-verb-5",
+      "pattern": "before-verb",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "She called me yesterday.",
+      "answers": [
+        "Ela me ligou ontem.",
+        "Ontem ela me ligou."
+      ],
+      "hint": "Ligar means to call by phone. Where does me go?",
+      "feedback": "Put me right before ligou.",
+      "explanation": "Ela me ligou ontem: in Brazil the object pronoun goes before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela ligou me ontem."
+          ],
+          "why": "Me does not follow the verb as a separate word. In Brazil it goes in front of the verb."
+        },
+        {
+          "answers": [
+            "Ela ligou eu ontem."
+          ],
+          "why": "Eu is the subject form. The person called needs the object form, before the verb."
+        }
+      ],
+      "row": "me"
+    },
+    {
+      "id": "object-pronouns-before-verb-6",
+      "pattern": "before-verb",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The neighbour knows us.",
+      "answers": [
+        "O vizinho nos conhece."
+      ],
+      "hint": "Conhecer means to know a person. The object pronoun for us goes first.",
+      "feedback": "Nos goes before conhece.",
+      "explanation": "O vizinho nos conhece: nos, the object form of nós, sits in front of the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "O vizinho conhece nós."
+          ],
+          "why": "Nós is the subject form, and after the verb it sounds like a beginner mistake. Use the short object form before the verb."
+        },
+        {
+          "answers": [
+            "O vizinho nos sabe."
+          ],
+          "why": "Saber is to know a fact or how to do something. Knowing a person is conhecer."
+        }
+      ],
+      "row": "us",
+      "alternatives": [
+        {
+          "answer": "O vizinho conhece a gente.",
+          "accepted": true,
+          "message": "Right too: a gente is the everyday us in Brazil. Practise also nos before the verb."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-before-verb-7",
+      "pattern": "before-verb",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "O médico ajudou eu ontem.",
+      "answers": [
+        "O médico me ajudou ontem."
+      ],
+      "hint": "Eu cannot be the object of a verb.",
+      "feedback": "Swap the subject pronoun for the short object form and move it before the verb.",
+      "explanation": "O médico me ajudou ontem: the doctor helped me, so me, the object form, stands before ajudou.",
+      "mistakes": [
+        {
+          "answers": [
+            "O médico ajudou eu ontem."
+          ],
+          "why": "That is the sentence unchanged. Eu is the subject form and cannot receive the help."
+        },
+        {
+          "answers": [
+            "O médico ajudou me ontem."
+          ],
+          "why": "The form is right now, but in Brazil me goes before the verb, not after it."
+        }
+      ],
+      "row": "me",
+      "gloss": [
+        {
+          "pt": "médico",
+          "en": "doctor",
+          "word": "work-012"
+        },
+        {
+          "pt": "ajudou",
+          "en": "helped (ajudar)",
+          "word": "verbs-074"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-te-voce-1",
+      "pattern": "te-voce",
+      "type": "choose",
+      "instruction": "Choose the word for you (speaking to a friend you call você).",
+      "source": "Eu ____ amo muito.",
+      "options": [
+        "te",
+        "você",
+        "tu"
+      ],
+      "answers": [
+        "te"
+      ],
+      "hint": "In everyday Brazilian speech, which short form means you as an object?",
+      "feedback": "Te is the everyday object form for você.",
+      "explanation": "Eu te amo muito: Brazilians use te as the object form even when they say você as the subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "você"
+          ],
+          "why": "Você after the verb (Eu amo você) is possible, but before the verb as here only the short form fits."
+        },
+        {
+          "answers": [
+            "tu"
+          ],
+          "why": "Tu is a subject pronoun. The person loved is the object, so a short object form is needed."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "amo",
+          "en": "love (amar)",
+          "word": "verbs-073"
+        },
+        {
+          "pt": "muito",
+          "en": "very much",
+          "word": "essentials-065"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-te-voce-2",
+      "pattern": "te-voce",
+      "type": "complete",
+      "instruction": "Write the everyday Brazilian word for you.",
+      "source": "Eu ____ espero na estação.",
+      "answers": [
+        "te"
+      ],
+      "hint": "A short form, two letters, before the verb.",
+      "feedback": "With você as the person you are talking to, the everyday object form is te.",
+      "explanation": "Eu te espero na estação: te is the everyday object form for você, before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "tu"
+          ],
+          "why": "Tu is a subject pronoun, not an object form."
+        },
+        {
+          "answers": [
+            "ti"
+          ],
+          "why": "Ti is used only after a preposition, as in para ti, and is rare in most of Brazil."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "espero",
+          "en": "wait for (esperar)",
+          "word": "verbs-042"
+        },
+        {
+          "pt": "estação",
+          "en": "station",
+          "word": "travel-012"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-te-voce-3",
+      "pattern": "te-voce",
+      "type": "translate",
+      "instruction": "Translate into Portuguese, the everyday Brazilian way.",
+      "source": "I love you.",
+      "answers": [
+        "Eu te amo.",
+        "Te amo."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu amo você.",
+          "accepted": true,
+          "message": "Right too, and common in Brazil. This exercise practises the short form te before the verb."
+        }
+      ],
+      "hint": "Use the short form that Brazilians say to someone they call você.",
+      "feedback": "The famous line uses te before the verb.",
+      "explanation": "Eu te amo: te before amo. Te amo, without eu, is just as common.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu amo te."
+          ],
+          "why": "In Brazil te goes before the verb, not after it."
+        },
+        {
+          "answers": [
+            "Eu tu amo."
+          ],
+          "why": "Tu is a subject pronoun, not the form for the person loved."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-te-voce-4",
+      "pattern": "te-voce",
+      "type": "rewrite",
+      "instruction": "Rewrite with te before the verb instead of você after it.",
+      "source": "Eu vi você no café.",
+      "answers": [
+        "Eu te vi no café."
+      ],
+      "hint": "Take você out and put te in front of the verb.",
+      "feedback": "Te replaces você and moves in front of vi.",
+      "explanation": "Eu te vi no café: the object você becomes te and goes before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu vi te no café."
+          ],
+          "why": "Te is right, but it belongs before the verb."
+        },
+        {
+          "answers": [
+            "Eu te vi você no café."
+          ],
+          "why": "Te already means you. Keeping você as well says the person twice."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "vi",
+          "en": "saw (ver)",
+          "word": "verbs-012"
+        },
+        {
+          "pt": "café",
+          "en": "café",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-te-voce-5",
+      "pattern": "te-voce",
+      "type": "build",
+      "instruction": "Build the sentence: I will help you tomorrow. Leave one tile unused.",
+      "source": "I will help you tomorrow.",
+      "tokens": [
+        "ajudo",
+        "Eu",
+        "tu",
+        "te",
+        "amanhã."
+      ],
+      "answers": [
+        "Eu te ajudo amanhã."
+      ],
+      "hint": "Te goes right before the verb.",
+      "feedback": "The short form for you sits between eu and ajudo.",
+      "explanation": "Eu te ajudo amanhã: te, the everyday object form for você, before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu tu ajudo amanhã."
+          ],
+          "why": "That tile is the subject pronoun tu. The one helped needs the object form."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-te-voce-6",
+      "pattern": "te-voce",
+      "type": "choose",
+      "instruction": "Choose the natural everyday sentence.",
+      "source": "____ na festa.",
+      "options": [
+        "Eu te encontro",
+        "Eu encontro te",
+        "Te eu encontro"
+      ],
+      "answers": [
+        "Eu te encontro"
+      ],
+      "hint": "Which word is the object form for you?",
+      "feedback": "Te stands before the verb as the object you.",
+      "explanation": "Eu te encontro na festa: I will meet you at the party. Te is the everyday object form for você.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu encontro te"
+          ],
+          "why": "Te is the right form, but in Brazil it goes before the verb."
+        },
+        {
+          "answers": [
+            "Te eu encontro"
+          ],
+          "why": "The pronoun goes right before the verb, not before the subject."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-written-o-a-1",
+      "pattern": "written-o-a",
+      "type": "choose",
+      "instruction": "Choose the written form for her.",
+      "source": "Eu ____ conheço bem.",
+      "options": [
+        "a",
+        "o",
+        "lhe"
+      ],
+      "answers": [
+        "a"
+      ],
+      "hint": "Her as a direct object in writing is one letter.",
+      "feedback": "In writing, her as an object is a, before the verb.",
+      "explanation": "Eu a conheço bem: a is the written object form for her (or a feminine it), placed before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "O is him or a masculine it. The person here is a woman."
+        },
+        {
+          "answers": [
+            "lhe"
+          ],
+          "why": "Lhe means to him or to her. Conhecer takes a direct object, with no to."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "conheço",
+          "en": "know (conhecer)",
+          "word": "verbs-017"
+        },
+        {
+          "pt": "bem",
+          "en": "well",
+          "word": "essentials-077"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-written-o-a-2",
+      "pattern": "written-o-a",
+      "type": "complete",
+      "instruction": "Write the written-form pronoun for it (the book).",
+      "source": "Comprei o livro e ____ li no fim de semana.",
+      "answers": [
+        "o"
+      ],
+      "hint": "Livro is masculine and singular.",
+      "feedback": "It refers to o livro, so take the masculine singular form.",
+      "explanation": "Comprei o livro e o li no fim de semana: o replaces o livro and stands before li.",
+      "mistakes": [
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "A is the feminine form. Livro is masculine (o livro)."
+        },
+        {
+          "answers": [
+            "os"
+          ],
+          "why": "Os is plural. There is only one book."
+        },
+        {
+          "answers": [
+            "ele"
+          ],
+          "why": "Ele as an object is the spoken style. The exercise asks for the written short form."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Comprei",
+          "en": "I bought (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        },
+        {
+          "pt": "li",
+          "en": "read (ler)",
+          "word": "verbs-057"
+        },
+        {
+          "pt": "fim de semana",
+          "en": "weekend",
+          "word": "health-time-039"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-written-o-a-3",
+      "pattern": "written-o-a",
+      "type": "rewrite",
+      "instruction": "Replace as chaves with a pronoun, in the written form.",
+      "source": "Eu deixei as chaves em casa.",
+      "answers": [
+        "Eu as deixei em casa."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu deixei elas em casa.",
+          "accepted": false,
+          "message": "This is how people often say it, but the exercise asks for the written form: the short pronoun o, a, os or as before the verb."
+        }
+      ],
+      "hint": "Chaves is feminine plural. The pronoun goes before the verb.",
+      "feedback": "Use the feminine plural object form before deixei.",
+      "explanation": "Eu as deixei em casa: as replaces as chaves and moves before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu deixei as em casa."
+          ],
+          "why": "The pronoun is right, but it must go before the verb."
+        },
+        {
+          "answers": [
+            "Eu os deixei em casa."
+          ],
+          "why": "Os is masculine plural. Chave is feminine (a chave)."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "deixei",
+          "en": "left (deixar)",
+          "word": "verbs-031"
+        },
+        {
+          "pt": "chaves",
+          "en": "keys",
+          "word": "home-019"
+        },
+        {
+          "pt": "casa",
+          "en": "home",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-written-o-a-4",
+      "pattern": "written-o-a",
+      "type": "rewrite",
+      "instruction": "Replace o Pedro with a pronoun, in the written form.",
+      "source": "Eu vi o Pedro ontem.",
+      "answers": [
+        "Eu o vi ontem."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu vi ele ontem.",
+          "accepted": false,
+          "message": "This is how people often say it, but the exercise asks for the written form: the short pronoun o, a, os or as before the verb."
+        }
+      ],
+      "hint": "Pedro is one man. Which short form means him?",
+      "feedback": "O replaces o Pedro and goes before vi.",
+      "explanation": "Eu o vi ontem: o is the written object form for him, before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu vi o ontem."
+          ],
+          "why": "The form is right, but o must go before the verb."
+        },
+        {
+          "answers": [
+            "Eu lhe vi ontem."
+          ],
+          "why": "Lhe means to him. Ver takes a direct object: you see someone, not to someone."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "vi",
+          "en": "saw (ver)",
+          "word": "verbs-012"
+        },
+        {
+          "pt": "Pedro",
+          "en": "Pedro"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-written-o-a-5",
+      "pattern": "written-o-a",
+      "type": "translate",
+      "instruction": "Translate into Portuguese, using the written form.",
+      "source": "We invited them to the party.",
+      "answers": [
+        "Nós os convidamos para a festa."
+      ],
+      "alternatives": [
+        {
+          "answer": "Nós convidamos eles para a festa.",
+          "accepted": false,
+          "message": "This is how people often say it, but the exercise asks for the written form: the short pronoun o, a, os or as before the verb."
+        }
+      ],
+      "hint": "Them for a group of people is os. Before the verb.",
+      "feedback": "Os goes before convidamos.",
+      "explanation": "Nós os convidamos para a festa: os is them (a group of men, or a mixed group), before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós convidamos os para a festa."
+          ],
+          "why": "Os belongs before the verb, not after it."
+        },
+        {
+          "answers": [
+            "Nós lhes convidamos para a festa."
+          ],
+          "why": "Lhes means to them. Convidar takes a direct object."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-written-o-a-6",
+      "pattern": "written-o-a",
+      "type": "repair",
+      "instruction": "Fix the error in this written sentence.",
+      "source": "Eu comprei a bolsa e o usei hoje.",
+      "answers": [
+        "Eu comprei a bolsa e a usei hoje."
+      ],
+      "hint": "Which noun does the pronoun replace, and what is its gender?",
+      "feedback": "The pronoun stands for a bolsa, so it must be feminine.",
+      "explanation": "Eu comprei a bolsa e a usei hoje: bolsa is feminine, so it is a.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu comprei a bolsa e o usei hoje."
+          ],
+          "why": "That is the sentence unchanged. O is masculine, but bolsa is feminine (a bolsa)."
+        },
+        {
+          "answers": [
+            "Eu comprei a bolsa e as usei hoje."
+          ],
+          "why": "As is plural, and there is only one bag."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "comprei",
+          "en": "bought (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "bolsa",
+          "en": "bag",
+          "word": "shopping-047"
+        },
+        {
+          "pt": "usei",
+          "en": "used (usar)",
+          "word": "verbs-053"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-spoken-ele-1",
+      "pattern": "spoken-ele",
+      "type": "choose",
+      "instruction": "Choose how most Brazilians say it in conversation.",
+      "source": "Eu ____ ontem.",
+      "options": [
+        "vi ela",
+        "vi a",
+        "vi lhe"
+      ],
+      "answers": [
+        "vi ela"
+      ],
+      "hint": "In speech, ele and ela can follow the verb as objects.",
+      "feedback": "In everyday speech, ela after the verb means her.",
+      "explanation": "Eu vi ela ontem is how most Brazilians say I saw her yesterday. In writing it is Eu a vi ontem.",
+      "mistakes": [
+        {
+          "answers": [
+            "vi a"
+          ],
+          "why": "The written form a has to go before the verb, never after it as a separate word."
+        },
+        {
+          "answers": [
+            "vi lhe"
+          ],
+          "why": "Lhe means to her. You see someone directly, with no to."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-spoken-ele-2",
+      "pattern": "spoken-ele",
+      "type": "complete",
+      "instruction": "Write the spoken-style object for him.",
+      "source": "Eu encontrei ____ no mercado.",
+      "answers": [
+        "ele"
+      ],
+      "hint": "In speech, the same word as he is used after the verb.",
+      "feedback": "In conversation, ele after the verb means him.",
+      "explanation": "Eu encontrei ele no mercado is the everyday spoken form. In writing: Eu o encontrei no mercado.",
+      "mistakes": [
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "O is the written form, and it goes before the verb, not after it."
+        },
+        {
+          "answers": [
+            "lhe"
+          ],
+          "why": "Lhe means to him. Encontrar takes a direct object."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "encontrei",
+          "en": "met (encontrar)",
+          "word": "verbs-029"
+        },
+        {
+          "pt": "mercado",
+          "en": "market",
+          "word": "shopping-015"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-spoken-ele-3",
+      "pattern": "spoken-ele",
+      "type": "rewrite",
+      "instruction": "Rewrite in the spoken style, with the pronoun after the verb.",
+      "source": "Eu as convidei.",
+      "answers": [
+        "Eu convidei elas."
+      ],
+      "hint": "As is them for women. Which subject-style word means them, feminine?",
+      "feedback": "In speech, as before the verb becomes elas after it.",
+      "explanation": "Eu convidei elas: in speech the subject form elas follows the verb as the object.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu convidei eles."
+          ],
+          "why": "Eles is masculine or mixed. As refers to women only, so keep the feminine."
+        },
+        {
+          "answers": [
+            "Eu convidei as."
+          ],
+          "why": "As cannot stand after the verb on its own. In speech use the full pronoun."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "convidei",
+          "en": "invited (convidar)",
+          "word": "leisure-021"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-spoken-ele-4",
+      "pattern": "spoken-ele",
+      "type": "translate",
+      "instruction": "Translate into Portuguese, the way people say it.",
+      "source": "I saw her at the market.",
+      "answers": [
+        "Eu vi ela no mercado.",
+        "Vi ela no mercado."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu a vi no mercado.",
+          "accepted": true,
+          "message": "Right too: this is the written form, with a before the verb."
+        }
+      ],
+      "hint": "In speech, the same word as she follows the verb.",
+      "feedback": "Put ela after vi.",
+      "explanation": "Eu vi ela no mercado: in speech ela follows the verb as the object. In writing: Eu a vi no mercado.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu vi a no mercado."
+          ],
+          "why": "A on its own cannot trail the verb. Either put it before the verb or say the full pronoun after it."
+        },
+        {
+          "answers": [
+            "Eu vi lhe no mercado."
+          ],
+          "why": "Lhe means to her. Ver takes a direct object."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-spoken-ele-5",
+      "pattern": "spoken-ele",
+      "type": "build",
+      "instruction": "Build the spoken sentence: We know them well. Leave one tile unused.",
+      "source": "We know them well.",
+      "tokens": [
+        "conhece",
+        "A",
+        "eles",
+        "gente",
+        "lhes",
+        "bem."
+      ],
+      "answers": [
+        "A gente conhece eles bem."
+      ],
+      "alternatives": [
+        {
+          "answer": "A gente os conhece bem.",
+          "accepted": true,
+          "message": "Right too: this is the written form."
+        }
+      ],
+      "hint": "A gente means we and takes the verb form of ele.",
+      "feedback": "In speech, eles follows the verb as the object.",
+      "explanation": "A gente conhece eles bem: a gente is everyday we, and eles after the verb means them in speech.",
+      "mistakes": [
+        {
+          "answers": [
+            "A gente conhece lhes bem."
+          ],
+          "why": "That tile means to them. Conhecer takes a direct object."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-spoken-ele-6",
+      "pattern": "spoken-ele",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Eu vi a no ônibus.",
+      "answers": [
+        "Eu vi ela no ônibus.",
+        "Eu a vi no ônibus."
+      ],
+      "hint": "A short pronoun never trails the verb as a separate word.",
+      "feedback": "Either move a before the verb (writing) or say ela after it (speech).",
+      "explanation": "Eu a vi no ônibus is the written form; Eu vi ela no ônibus is the everyday spoken form. Both are right.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu vi a no ônibus."
+          ],
+          "why": "That is the sentence unchanged. A on its own after the verb is not Portuguese."
+        },
+        {
+          "answers": [
+            "Eu vi lhe no ônibus."
+          ],
+          "why": "Lhe means to her, and ver takes a direct object."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "vi",
+          "en": "saw (ver)",
+          "word": "verbs-012"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-two-verbs-1",
+      "pattern": "two-verbs",
+      "type": "choose",
+      "instruction": "Choose the natural Brazilian order.",
+      "source": "Eu ____ amanhã.",
+      "options": [
+        "vou te ligar",
+        "te vou ligar",
+        "vou ligar te"
+      ],
+      "answers": [
+        "vou te ligar"
+      ],
+      "hint": "With two verbs, Brazilians put the pronoun before the second one.",
+      "feedback": "The pronoun sits between vou and the infinitive.",
+      "explanation": "Eu vou te ligar amanhã: te comes right before the infinitive ligar.",
+      "mistakes": [
+        {
+          "answers": [
+            "te vou ligar"
+          ],
+          "why": "Some people say this, but it sounds old-fashioned. The natural Brazilian place is just before the infinitive."
+        },
+        {
+          "answers": [
+            "vou ligar te"
+          ],
+          "why": "Te never follows the infinitive as a separate word."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-two-verbs-2",
+      "pattern": "two-verbs",
+      "type": "complete",
+      "instruction": "Write the word for us.",
+      "source": "Eles vão ____ visitar no domingo.",
+      "answers": [
+        "nos"
+      ],
+      "hint": "The object form of nós, before the infinitive.",
+      "feedback": "Nos goes between vão and visitar.",
+      "explanation": "Eles vão nos visitar no domingo: nos sits before the infinitive visitar.",
+      "mistakes": [
+        {
+          "answers": [
+            "nós"
+          ],
+          "why": "Nós with an accent is the subject we. The visitors are eles, so the object form is needed."
+        },
+        {
+          "answers": [
+            "me"
+          ],
+          "why": "Me is one person. The sentence is about us."
+        }
+      ],
+      "strictAccents": true,
+      "gloss": [
+        {
+          "pt": "vão",
+          "en": "are going (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "visitar",
+          "en": "visit",
+          "word": "verbs-105"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-two-verbs-3",
+      "pattern": "two-verbs",
+      "type": "build",
+      "instruction": "Build the sentence: Can you help me? Leave one tile unused.",
+      "source": "Can you help me?",
+      "tokens": [
+        "pode",
+        "Você",
+        "eu",
+        "me",
+        "ajudar?"
+      ],
+      "answers": [
+        "Você pode me ajudar?"
+      ],
+      "hint": "Me goes right before the infinitive.",
+      "feedback": "Pode, then me, then ajudar.",
+      "explanation": "Você pode me ajudar: with poder plus an infinitive, the pronoun goes before the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Você pode eu ajudar?"
+          ],
+          "why": "That tile is the subject form eu. The person helped needs the object form me."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-two-verbs-4",
+      "pattern": "two-verbs",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I want to see you tonight.",
+      "answers": [
+        "Eu quero te ver hoje à noite.",
+        "Quero te ver hoje à noite."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu quero ver você hoje à noite.",
+          "accepted": true,
+          "message": "Right too, and common in Brazil. Practise also the short form: quero te ver."
+        }
+      ],
+      "hint": "Querer plus an infinitive. Te goes before ver.",
+      "feedback": "Te sits before the infinitive ver.",
+      "explanation": "Eu quero te ver hoje à noite: te before the infinitive is the normal Brazilian order.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu quero ver te hoje à noite."
+          ],
+          "why": "Te does not follow the infinitive as a separate word."
+        },
+        {
+          "answers": [
+            "Eu quero tu ver hoje à noite."
+          ],
+          "why": "Tu is a subject pronoun. The person seen needs the object form."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-two-verbs-5",
+      "pattern": "two-verbs",
+      "type": "rewrite",
+      "instruction": "Put the sentence into the future with ir: Ela vai...",
+      "source": "Ela me ajuda.",
+      "answers": [
+        "Ela vai me ajudar."
+      ],
+      "hint": "Vai plus the infinitive. Where does me go?",
+      "feedback": "Me moves between vai and the infinitive.",
+      "explanation": "Ela vai me ajudar: me goes before the infinitive ajudar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela me vai ajudar."
+          ],
+          "why": "Before the first verb is not the Brazilian order. Me belongs before the infinitive."
+        },
+        {
+          "answers": [
+            "Ela vai ajudar me."
+          ],
+          "why": "Me does not follow the infinitive as a separate word."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "ajuda",
+          "en": "helps (ajudar)",
+          "word": "verbs-074"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-two-verbs-6",
+      "pattern": "two-verbs",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Meu pai vai buscar nos na escola.",
+      "answers": [
+        "Meu pai vai nos buscar na escola."
+      ],
+      "hint": "Look at where nos sits.",
+      "feedback": "Move nos in front of the infinitive.",
+      "explanation": "Meu pai vai nos buscar na escola: the pronoun goes before the infinitive buscar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meu pai vai buscar nos na escola."
+          ],
+          "why": "That is the sentence unchanged. Nos does not follow the infinitive as a separate word."
+        },
+        {
+          "answers": [
+            "Meu pai vai buscar nós na escola."
+          ],
+          "why": "Nós is the subject form, even if people sometimes say this. Use nos before the infinitive."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        },
+        {
+          "pt": "vai",
+          "en": "is going (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "buscar",
+          "en": "pick up"
+        },
+        {
+          "pt": "escola",
+          "en": "school",
+          "word": "school-001"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-nao-1",
+      "pattern": "after-nao",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Ela ____ nada.",
+      "options": [
+        "não me disse",
+        "me não disse",
+        "não disse me"
+      ],
+      "answers": [
+        "não me disse"
+      ],
+      "hint": "Não comes first, then the pronoun, then the verb.",
+      "feedback": "After não, the pronoun stays before the verb.",
+      "explanation": "Ela não me disse nada: não, then me, then disse.",
+      "mistakes": [
+        {
+          "answers": [
+            "me não disse"
+          ],
+          "why": "Não comes before the pronoun, never after it."
+        },
+        {
+          "answers": [
+            "não disse me"
+          ],
+          "why": "Me stays before the verb after não."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "nada",
+          "en": "anything, nothing",
+          "word": "essentials-043"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-nao-2",
+      "pattern": "after-nao",
+      "type": "complete",
+      "instruction": "Write the everyday word for you.",
+      "source": "Desculpa, eu não ____ vi na festa.",
+      "answers": [
+        "te"
+      ],
+      "hint": "Não, then the short object form, then the verb.",
+      "feedback": "Te goes between não and vi.",
+      "explanation": "Eu não te vi na festa: after não the pronoun stays before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "tu"
+          ],
+          "why": "Tu is a subject pronoun."
+        },
+        {
+          "answers": [
+            "você"
+          ],
+          "why": "Você can follow the verb (não vi você), but between não and the verb only the short form fits."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Desculpa",
+          "en": "sorry",
+          "word": "essentials-012"
+        },
+        {
+          "pt": "vi",
+          "en": "saw (ver)",
+          "word": "verbs-012"
+        },
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-nao-3",
+      "pattern": "after-nao",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "He does not understand us.",
+      "answers": [
+        "Ele não nos entende."
+      ],
+      "alternatives": [
+        {
+          "answer": "Ele não entende a gente.",
+          "accepted": true,
+          "message": "Right too: a gente is the everyday we and us in Brazil."
+        }
+      ],
+      "hint": "Não, then nos, then the verb.",
+      "feedback": "Nos sits between não and entende.",
+      "explanation": "Ele não nos entende: after não, the pronoun stays before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ele nos não entende."
+          ],
+          "why": "Não must come before the pronoun."
+        },
+        {
+          "answers": [
+            "Ele não entende nos."
+          ],
+          "why": "Nos stays before the verb."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-nao-4",
+      "pattern": "after-nao",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Eu me não lembro.",
+      "answers": [
+        "Eu não me lembro."
+      ],
+      "hint": "Which comes first, não or the pronoun?",
+      "feedback": "Não always comes before the pronoun.",
+      "explanation": "Eu não me lembro: não, then me, then the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu me não lembro."
+          ],
+          "why": "That is the sentence unchanged. Não cannot come between the pronoun and the verb."
+        },
+        {
+          "answers": [
+            "Eu não lembro me."
+          ],
+          "why": "Me stays before the verb after não."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "lembro",
+          "en": "remember (lembrar)",
+          "word": "verbs-084"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-nao-5",
+      "pattern": "after-nao",
+      "type": "rewrite",
+      "instruction": "Make the sentence negative.",
+      "source": "Ela me ligou ontem.",
+      "answers": [
+        "Ela não me ligou ontem."
+      ],
+      "hint": "Put não in front of the pronoun.",
+      "feedback": "Não goes before me; me stays before the verb.",
+      "explanation": "Ela não me ligou ontem: não, then me, then ligou.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela me não ligou ontem."
+          ],
+          "why": "Não must come before the pronoun."
+        },
+        {
+          "answers": [
+            "Ela não ligou me ontem."
+          ],
+          "why": "Me does not move behind the verb in a negative sentence."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "ligou",
+          "en": "called (ligar)",
+          "word": "media-012"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-nao-6",
+      "pattern": "after-nao",
+      "type": "build",
+      "instruction": "Build the sentence: Nobody invited us. Leave one tile unused.",
+      "source": "Nobody invited us.",
+      "tokens": [
+        "nós",
+        "Ninguém",
+        "nos",
+        "convidou."
+      ],
+      "answers": [
+        "Ninguém nos convidou."
+      ],
+      "hint": "Ninguém works like não: the pronoun goes before the verb.",
+      "feedback": "Nos goes before convidou.",
+      "explanation": "Ninguém nos convidou: like não, ninguém pulls the pronoun in front of the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ninguém nós convidou."
+          ],
+          "why": "That tile is the subject form nós. We are the ones not invited, so the object form is needed."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-indirect-1",
+      "pattern": "indirect",
+      "type": "choose",
+      "instruction": "Choose the everyday way to say to her.",
+      "source": "Eu dei o livro ____.",
+      "options": [
+        "para ela",
+        "ela",
+        "a ela"
+      ],
+      "answers": [
+        "para ela"
+      ],
+      "hint": "In everyday speech, to her is para plus the pronoun.",
+      "feedback": "Para ela after the verb is the natural spoken form.",
+      "explanation": "Eu dei o livro para ela: to her is para ela. In writing you can also say Eu lhe dei o livro.",
+      "mistakes": [
+        {
+          "answers": [
+            "ela"
+          ],
+          "why": "Without para the sentence says nothing about who received the book."
+        },
+        {
+          "answers": [
+            "a ela"
+          ],
+          "why": "Possible in careful writing, but in everyday Brazilian speech the preposition is para."
+        }
+      ],
+      "row": "to him / to her",
+      "gloss": [
+        {
+          "pt": "dei",
+          "en": "gave (dar)",
+          "word": "verbs-027"
+        },
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-indirect-2",
+      "pattern": "indirect",
+      "type": "complete",
+      "instruction": "Write the short word for to me.",
+      "source": "Minha irmã ____ mandou uma mensagem.",
+      "answers": [
+        "me"
+      ],
+      "hint": "The same short form is used for me and to me.",
+      "feedback": "Me also means to me, and it goes before the verb.",
+      "explanation": "Minha irmã me mandou uma mensagem: me means to me here, before mandou.",
+      "mistakes": [
+        {
+          "answers": [
+            "mim"
+          ],
+          "why": "Mim is used only after a preposition: para mim. Before the verb use the short form."
+        },
+        {
+          "answers": [
+            "lhe"
+          ],
+          "why": "Lhe means to him, to her or to you, not to me."
+        }
+      ],
+      "row": "to me",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "mandou",
+          "en": "sent (mandar)",
+          "word": "verbs-089"
+        },
+        {
+          "pt": "mensagem",
+          "en": "message",
+          "word": "media-003"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-indirect-3",
+      "pattern": "indirect",
+      "type": "translate",
+      "instruction": "Translate into Portuguese, the everyday way.",
+      "source": "I gave the book to her.",
+      "answers": [
+        "Eu dei o livro para ela.",
+        "Dei o livro para ela."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu lhe dei o livro.",
+          "accepted": true,
+          "message": "Right too, in writing and formal speech. In conversation people say para ela."
+        },
+        {
+          "answer": "Eu dei o livro a ela.",
+          "accepted": true,
+          "message": "Right too, in careful style. Everyday speech uses para ela."
+        }
+      ],
+      "hint": "Dar plus para before the person.",
+      "feedback": "To her is para ela.",
+      "explanation": "Eu dei o livro para ela: para ela after the thing given.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu dei ela o livro."
+          ],
+          "why": "Portuguese needs a word for to before the person: para ela."
+        },
+        {
+          "answers": [
+            "Eu dei o livro para a ela."
+          ],
+          "why": "No article goes before a pronoun: para ela."
+        }
+      ],
+      "row": "to him / to her"
+    },
+    {
+      "id": "object-pronouns-indirect-4",
+      "pattern": "indirect",
+      "type": "rewrite",
+      "instruction": "Rewrite in formal written style, with lhe before the verb.",
+      "source": "Eu mostrei a foto para ele.",
+      "answers": [
+        "Eu lhe mostrei a foto."
+      ],
+      "hint": "Lhe replaces para ele and goes before the verb.",
+      "feedback": "Para ele becomes lhe, placed before mostrei.",
+      "explanation": "Eu lhe mostrei a foto: lhe means to him, before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu o mostrei a foto."
+          ],
+          "why": "O is the direct object him. Here he receives the photo, so the indirect form is needed."
+        },
+        {
+          "answers": [
+            "Eu mostrei lhe a foto."
+          ],
+          "why": "Lhe goes before the verb in Brazil."
+        }
+      ],
+      "row": "to him / to her",
+      "gloss": [
+        {
+          "pt": "mostrei",
+          "en": "showed (mostrar)",
+          "word": "verbs-082"
+        },
+        {
+          "pt": "foto",
+          "en": "photo",
+          "word": "media-034"
+        },
+        {
+          "pt": "para",
+          "en": "to",
+          "word": "essentials-085"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-indirect-5",
+      "pattern": "indirect",
+      "type": "choose",
+      "instruction": "Choose the right word for to you, in a formal letter.",
+      "source": "Eu ____ escrevo para pedir ajuda.",
+      "options": [
+        "lhe",
+        "o",
+        "ele"
+      ],
+      "answers": [
+        "lhe"
+      ],
+      "hint": "In formal writing, to you (você, o senhor) is the same short form as to him.",
+      "feedback": "Lhe means to him, to her, or formally to you.",
+      "explanation": "Eu lhe escrevo para pedir ajuda: lhe is the formal to you, before the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "O is a direct object, him or you. You write to someone, so the indirect form is needed."
+        },
+        {
+          "answers": [
+            "ele"
+          ],
+          "why": "Ele is he, not to you."
+        }
+      ],
+      "row": "to him / to her",
+      "gloss": [
+        {
+          "pt": "escrevo",
+          "en": "write (escrever)",
+          "word": "verbs-058"
+        },
+        {
+          "pt": "para",
+          "en": "in order to",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "pedir",
+          "en": "ask for",
+          "word": "verbs-010"
+        },
+        {
+          "pt": "ajuda",
+          "en": "help"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-indirect-6",
+      "pattern": "indirect",
+      "type": "complete",
+      "instruction": "Write the two words for to them (a group of friends).",
+      "source": "Eu contei a novidade ____.",
+      "answers": [
+        "para eles"
+      ],
+      "alternatives": [
+        {
+          "answer": "a eles",
+          "accepted": true,
+          "message": "Right too, in careful style. Everyday speech uses para eles."
+        }
+      ],
+      "hint": "Para plus the pronoun for a group.",
+      "feedback": "In speech, to them is para eles.",
+      "explanation": "Eu contei a novidade para eles: para eles means to them.",
+      "mistakes": [
+        {
+          "answers": [
+            "eles"
+          ],
+          "why": "Without para the sentence does not say who heard the news."
+        },
+        {
+          "answers": [
+            "para elas"
+          ],
+          "why": "Elas is for women only. A group of friends of mixed or unknown gender takes the masculine."
+        },
+        {
+          "answers": [
+            "lhes"
+          ],
+          "why": "Lhes is correct in formal writing, but it goes before the verb, not at the end."
+        }
+      ],
+      "row": "to them",
+      "gloss": [
+        {
+          "pt": "contei",
+          "en": "told (contar)",
+          "word": "verbs-083"
+        },
+        {
+          "pt": "novidade",
+          "en": "news"
+        }
+      ]
+    }
+  ]
+}

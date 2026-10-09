@@ -1,0 +1,2413 @@
+{
+  "id": "present-irregular",
+  "unit": "present",
+  "level": "A2",
+  "title": "Irregular verbs in the present",
+  "description": "The everyday irregular verbs: ter, ir, fazer, poder, querer and more, plus têm and vêm, ter que and poder or querer with an infinitive.",
+  "mark": "faço · têm",
+  "guide": {
+    "summary": "The verbs you use most often are the irregular ones. Most are strange only in the eu form, many have a short one-syllable ele form, and ter and vir show their plural only with an accent. This page also covers ter que for have to and poder or querer with an infinitive.",
+    "sections": [
+      {
+        "id": "eu-form",
+        "title": "The eu form",
+        "text": "Most of these verbs are strange mainly in the eu form. Some swap a consonant (faço, digo, trago), some add one (vejo, venho, saio), and some are simply short words to learn by heart (sei, dou, vou, posso).",
+        "table": {
+          "columns": [
+            "verb",
+            "eu",
+            "ele / ela / você",
+            "eles / elas / vocês"
+          ],
+          "rows": [
+            [
+              "ter",
+              "tenho",
+              "tem",
+              "têm"
+            ],
+            [
+              "ir",
+              "vou",
+              "vai",
+              "vão"
+            ],
+            [
+              "fazer",
+              "faço",
+              "faz",
+              "fazem"
+            ],
+            [
+              "poder",
+              "posso",
+              "pode",
+              "podem"
+            ],
+            [
+              "querer",
+              "quero",
+              "quer",
+              "querem"
+            ],
+            [
+              "dizer",
+              "digo",
+              "diz",
+              "dizem"
+            ],
+            [
+              "ver",
+              "vejo",
+              "vê",
+              "veem"
+            ],
+            [
+              "vir",
+              "venho",
+              "vem",
+              "vêm"
+            ],
+            [
+              "dar",
+              "dou",
+              "dá",
+              "dão"
+            ],
+            [
+              "saber",
+              "sei",
+              "sabe",
+              "sabem"
+            ],
+            [
+              "sair",
+              "saio",
+              "sai",
+              "saem"
+            ],
+            [
+              "trazer",
+              "trago",
+              "traz",
+              "trazem"
+            ]
+          ]
+        },
+        "steps": [
+          "Check whether the verb is on this list; if it is, do not build the eu form from the regular pattern.",
+          "Find its row and take the eu column.",
+          "Remember the families: z becomes ç or g (faço, digo, trago); ver and vir add a consonant (vejo, venho)."
+        ],
+        "examples": [
+          {
+            "pt": "Eu faço o jantar e ele traz o vinho.",
+            "en": "I make dinner and he brings the wine."
+          },
+          {
+            "pt": "Não sei a resposta.",
+            "en": "I do not know the answer."
+          },
+          {
+            "pt": "Eu venho amanhã.",
+            "en": "I am coming tomorrow."
+          }
+        ],
+        "watch": [
+          "Fazo, dizo and trazo do not exist.",
+          "Sei is the eu form of saber, but sabe and sabem keep the stem sab-."
+        ]
+      },
+      {
+        "id": "short-ele",
+        "title": "Short ele forms",
+        "text": "Many of these verbs have a one-syllable form for ele, ela and você, with no final vowel: tem, vai, faz, quer, diz, traz, vê, vem, dá, sai. The regular -e ending of -er verbs is simply missing.",
+        "steps": [
+          "Ele, ela, você or one named person: look for the short form.",
+          "Do not add -e to faz, quer, diz or traz.",
+          "Keep the accent on vê and dá."
+        ],
+        "examples": [
+          {
+            "pt": "Ela quer um café.",
+            "en": "She wants a coffee."
+          },
+          {
+            "pt": "Ele diz que não pode.",
+            "en": "He says he cannot."
+          },
+          {
+            "pt": "Você vê a praia?",
+            "en": "Can you see the beach?"
+          }
+        ],
+        "watch": [
+          "Quere, faze, dize and traze are not Portuguese words.",
+          "Pode and sabe are regular-looking: they keep their -e."
+        ]
+      },
+      {
+        "id": "accent-plural",
+        "title": "têm and vêm",
+        "text": "Ter and vir have the same sound in the singular and plural. Only a circumflex in writing shows the plural: ele tem, eles têm; ele vem, eles vêm. Ver is different: its plural doubles the e, with no accent since 2009.",
+        "table": {
+          "columns": [
+            "verb",
+            "ele / ela / você",
+            "eles / elas / vocês"
+          ],
+          "rows": [
+            [
+              "ter",
+              "tem",
+              "têm"
+            ],
+            [
+              "vir",
+              "vem",
+              "vêm"
+            ],
+            [
+              "ver",
+              "vê",
+              "veem"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the subject plural (eles, elas, vocês, two people)?",
+          "For ter and vir, add the hat: têm, vêm.",
+          "For ver, write two e and no accent: veem."
+        ],
+        "examples": [
+          {
+            "pt": "Eles têm dois filhos.",
+            "en": "They have two children."
+          },
+          {
+            "pt": "Os meus pais vêm amanhã.",
+            "en": "My parents are coming tomorrow."
+          },
+          {
+            "pt": "Elas veem o mar.",
+            "en": "They see the sea."
+          }
+        ],
+        "watch": [
+          "Teem and veem from vir do not exist.",
+          "The old spelling vêem is no longer used."
+        ]
+      },
+      {
+        "id": "ir-dar",
+        "title": "ir and dar",
+        "text": "Ir and dar are irregular in every form, and they rhyme: vou / dou, vai / dá, vão / dão. The nós forms are vamos and damos.",
+        "table": {
+          "columns": [
+            "subject",
+            "ir",
+            "dar"
+          ],
+          "rows": [
+            [
+              "eu",
+              "vou",
+              "dou"
+            ],
+            [
+              "ele / ela / você",
+              "vai",
+              "dá"
+            ],
+            [
+              "nós",
+              "vamos",
+              "damos"
+            ],
+            [
+              "eles / elas / vocês",
+              "vão",
+              "dão"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject's row.",
+          "Take ir for going, dar for giving.",
+          "Travel by vehicle: ir de ônibus, de carro."
+        ],
+        "examples": [
+          {
+            "pt": "Nós vamos à praia.",
+            "en": "We are going to the beach."
+          },
+          {
+            "pt": "Eu dou um presente para a minha mãe.",
+            "en": "I give my mother a gift."
+          },
+          {
+            "pt": "Eles vão de ônibus.",
+            "en": "They go by bus."
+          }
+        ],
+        "watch": [
+          "A gente vai means we go in casual Brazilian speech, but nós always takes vamos.",
+          "Imos and dam are not used."
+        ]
+      },
+      {
+        "id": "plural",
+        "title": "nós and the plural",
+        "text": "Outside the eu form, most of these verbs go back to the regular endings: nós fazemos, eles trazem, vocês sabem. Watch the few that stay odd: nós vimos from vir, nós saímos with an accent.",
+        "table": {
+          "columns": [
+            "verb",
+            "nós",
+            "eles / elas / vocês"
+          ],
+          "rows": [
+            [
+              "ter",
+              "temos",
+              "têm"
+            ],
+            [
+              "ir",
+              "vamos",
+              "vão"
+            ],
+            [
+              "fazer",
+              "fazemos",
+              "fazem"
+            ],
+            [
+              "poder",
+              "podemos",
+              "podem"
+            ],
+            [
+              "querer",
+              "queremos",
+              "querem"
+            ],
+            [
+              "dizer",
+              "dizemos",
+              "dizem"
+            ],
+            [
+              "ver",
+              "vemos",
+              "veem"
+            ],
+            [
+              "vir",
+              "vimos",
+              "vêm"
+            ],
+            [
+              "dar",
+              "damos",
+              "dão"
+            ],
+            [
+              "saber",
+              "sabemos",
+              "sabem"
+            ],
+            [
+              "sair",
+              "saímos",
+              "saem"
+            ],
+            [
+              "trazer",
+              "trazemos",
+              "trazem"
+            ]
+          ]
+        },
+        "steps": [
+          "Use the stem of the infinitive, not the stem of the eu form.",
+          "Add -emos or -em for -er verbs.",
+          "Learn vimos (vir), saímos (sair) and vamos, damos, vão, dão as they are."
+        ],
+        "examples": [
+          {
+            "pt": "Nós sabemos falar inglês.",
+            "en": "We can speak English."
+          },
+          {
+            "pt": "Eles trazem a comida.",
+            "en": "They bring the food."
+          },
+          {
+            "pt": "Nós vimos de carro.",
+            "en": "We are coming by car."
+          }
+        ],
+        "watch": [
+          "The ç of faço and the g of trago never spread: fazemos, trazem.",
+          "Vimos also means we saw, from ver; context tells you which."
+        ]
+      },
+      {
+        "id": "ter-que",
+        "title": "ter que + infinitive",
+        "text": "To say you have to do something, conjugate ter, then add que and the second verb in the infinitive. Ter de means the same and sounds a little more formal.",
+        "steps": [
+          "Conjugate ter for the subject: tenho, tem, temos, têm.",
+          "Add que (or de).",
+          "Leave the second verb in the infinitive."
+        ],
+        "examples": [
+          {
+            "pt": "Eu tenho que trabalhar amanhã.",
+            "en": "I have to work tomorrow."
+          },
+          {
+            "pt": "Nós temos que pagar.",
+            "en": "We have to pay."
+          }
+        ],
+        "watch": [
+          "Without que or de, ter does not mean have to.",
+          "Only ter changes: tenho que estudar, never tenho que estudo."
+        ]
+      },
+      {
+        "id": "modal",
+        "title": "poder and querer + infinitive",
+        "text": "Poder (can) and querer (want) are followed directly by an infinitive, with no word in between.",
+        "table": {
+          "columns": [
+            "subject",
+            "poder",
+            "querer"
+          ],
+          "rows": [
+            [
+              "eu",
+              "posso",
+              "quero"
+            ],
+            [
+              "ele / ela / você",
+              "pode",
+              "quer"
+            ],
+            [
+              "nós",
+              "podemos",
+              "queremos"
+            ],
+            [
+              "eles / elas / vocês",
+              "podem",
+              "querem"
+            ]
+          ]
+        },
+        "steps": [
+          "Conjugate poder or querer for the subject.",
+          "Put the second verb straight after it, in the infinitive."
+        ],
+        "examples": [
+          {
+            "pt": "Você pode me ajudar?",
+            "en": "Can you help me?"
+          },
+          {
+            "pt": "Ela quer sair hoje à noite.",
+            "en": "She wants to go out tonight."
+          }
+        ],
+        "watch": [
+          "No de after poder or querer.",
+          "For a learnt skill, saber is more natural: Eu sei nadar."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "eu-form": {
+      "section": "eu-form",
+      "steps": [
+        "Find the verb's row in the table.",
+        "Take the eu form as written; do not build it from the regular pattern."
+      ]
+    },
+    "short-ele": {
+      "section": "short-ele",
+      "steps": [
+        "Check the subject is one person: ele, ela, você.",
+        "Use the short form with no added -e."
+      ]
+    },
+    "accent-plural": {
+      "section": "accent-plural",
+      "steps": [
+        "Decide whether the subject is plural.",
+        "Ter and vir: add the hat. Ver: write veem."
+      ]
+    },
+    "ir-dar": {
+      "section": "ir-dar",
+      "steps": [
+        "Find the subject's row.",
+        "Take the form of ir or dar written there."
+      ]
+    },
+    "plural": {
+      "section": "plural",
+      "steps": [
+        "Start from the infinitive's stem, not the eu form.",
+        "Add the regular ending, or use vimos, saímos as they are."
+      ]
+    },
+    "ter-que": {
+      "section": "ter-que",
+      "steps": [
+        "Conjugate ter.",
+        "Add que, then the infinitive."
+      ]
+    },
+    "modal": {
+      "section": "modal",
+      "steps": [
+        "Conjugate poder or querer.",
+        "Add the second verb in the infinitive, with nothing in between."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "present-irregular-eu-form-1",
+      "pattern": "eu-form",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "fazer · eu · presente",
+      "answers": [
+        "faço",
+        "eu faço"
+      ],
+      "hint": "The eu form does not keep the z of the stem.",
+      "feedback": "Fazer changes its stem in the eu form only.",
+      "explanation": "Eu faço: faz- becomes faç- before -o, with a cedilla to keep the s sound.",
+      "mistakes": [
+        {
+          "answers": [
+            "fazo",
+            "eu fazo"
+          ],
+          "why": "That follows the regular pattern, but fazer is irregular in the eu form: the z changes to a different letter."
+        },
+        {
+          "answers": [
+            "faz",
+            "eu faz"
+          ],
+          "why": "Faz is the ele / ela / você form. Eu has its own ending in -o."
+        },
+        {
+          "answers": [
+            "fazemos",
+            "eu fazemos"
+          ],
+          "why": "Fazemos is the nós form, we. The subject here is only I."
+        }
+      ],
+      "row": "fazer"
+    },
+    {
+      "id": "present-irregular-eu-form-2",
+      "pattern": "eu-form",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "trazer · eu · presente",
+      "answers": [
+        "trago",
+        "eu trago"
+      ],
+      "hint": "Like dizer and fazer, trazer changes its consonant in the eu form.",
+      "feedback": "The eu form of trazer has a g.",
+      "explanation": "Eu trago: the z of traz- becomes g, just as dizer gives digo.",
+      "mistakes": [
+        {
+          "answers": [
+            "trazo",
+            "eu trazo"
+          ],
+          "why": "That is the regular pattern, which trazer does not follow in the eu form."
+        },
+        {
+          "answers": [
+            "traz",
+            "eu traz"
+          ],
+          "why": "Traz is the ele / ela / você form, the short one. Eu ends in -o."
+        },
+        {
+          "answers": [
+            "traço",
+            "eu traço"
+          ],
+          "why": "Traço belongs to another verb, traçar, to draw a line. Trazer takes a different consonant in the eu form."
+        }
+      ],
+      "row": "trazer"
+    },
+    {
+      "id": "present-irregular-eu-form-3",
+      "pattern": "eu-form",
+      "type": "complete",
+      "instruction": "Write dizer in the present.",
+      "source": "Eu sempre ____ (dizer) a verdade.",
+      "answers": [
+        "digo"
+      ],
+      "hint": "Dizer swaps its z for another consonant in the eu form.",
+      "feedback": "The eu form of dizer is irregular.",
+      "explanation": "Eu sempre digo a verdade: diz- becomes dig- before -o, like trago and faço.",
+      "mistakes": [
+        {
+          "answers": [
+            "dizo"
+          ],
+          "why": "That is the regular pattern. Dizer changes its consonant in the eu form."
+        },
+        {
+          "answers": [
+            "diz"
+          ],
+          "why": "Diz is the ele / ela / você form. After eu the verb ends in -o."
+        },
+        {
+          "answers": [
+            "dizer"
+          ],
+          "why": "Dizer is the infinitive. After a subject the verb has to be conjugated."
+        }
+      ],
+      "row": "dizer",
+      "gloss": [
+        {
+          "pt": "sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "dizer",
+          "en": "to say; to tell",
+          "word": "verbs-007"
+        },
+        {
+          "pt": "verdade",
+          "en": "truth"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-eu-form-4",
+      "pattern": "eu-form",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eu não ____ a resposta.",
+      "options": [
+        "sei",
+        "sabo",
+        "sabe",
+        "saibo"
+      ],
+      "answers": [
+        "sei"
+      ],
+      "hint": "Saber has a very short, irregular eu form.",
+      "feedback": "Eu sei: the eu form of saber looks nothing like the infinitive.",
+      "explanation": "Eu não sei a resposta: sei is the eu form of saber, I know.",
+      "mistakes": [
+        {
+          "answers": [
+            "sabo"
+          ],
+          "why": "That would be the regular pattern, but saber is irregular in the eu form."
+        },
+        {
+          "answers": [
+            "sabe"
+          ],
+          "why": "Sabe is the ele / ela / você form. The subject is eu."
+        },
+        {
+          "answers": [
+            "saibo"
+          ],
+          "why": "Saibo is not a Portuguese word. The eu form of saber is short and has no b at all."
+        }
+      ],
+      "row": "saber",
+      "gloss": [
+        {
+          "pt": "resposta",
+          "en": "answer",
+          "word": "school-025"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-eu-form-5",
+      "pattern": "eu-form",
+      "type": "rewrite",
+      "instruction": "Change ele to eu and adjust the verb.",
+      "source": "Ele vê o mar da janela.",
+      "answers": [
+        "Eu vejo o mar da janela.",
+        "Vejo o mar da janela."
+      ],
+      "hint": "Ver has an irregular eu form with a j.",
+      "feedback": "Ver becomes vejo with eu.",
+      "explanation": "Eu vejo o mar da janela: the eu form of ver adds -j-.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu vê o mar da janela."
+          ],
+          "why": "Vê is the ele form. Changing the subject means changing the verb too."
+        },
+        {
+          "answers": [
+            "Eu veo o mar da janela."
+          ],
+          "why": "That is not a form of ver. The eu form needs an extra consonant before -o."
+        },
+        {
+          "answers": [
+            "Eu vendo o mar da janela."
+          ],
+          "why": "Vendo is from vender, to sell. The eu form of ver is different."
+        }
+      ],
+      "row": "ver",
+      "gloss": [
+        {
+          "pt": "vê",
+          "en": "sees (ver)",
+          "word": "verbs-012"
+        },
+        {
+          "pt": "mar",
+          "en": "sea",
+          "word": "nature-007"
+        },
+        {
+          "pt": "janela",
+          "en": "window"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-eu-form-6",
+      "pattern": "eu-form",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I am bringing the bread.",
+      "answers": [
+        "Eu trago o pão.",
+        "Trago o pão."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu estou trazendo o pão.",
+          "message": "Right: estou trazendo says it is happening right now. Here, practise the simple present.",
+          "accepted": true
+        }
+      ],
+      "hint": "Read I am bringing as a plan: Portuguese can use the simple present for that. Trazer is irregular in the eu form.",
+      "feedback": "Use the eu form of trazer.",
+      "explanation": "Eu trago o pão: trago is the eu form of trazer. For a plan like this the simple present is enough; for something happening right now, say estou trazendo.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu trazo o pão."
+          ],
+          "why": "Trazer is irregular in the eu form; the regular -o ending on traz- is wrong."
+        },
+        {
+          "answers": [
+            "Eu traz o pão."
+          ],
+          "why": "Traz is the ele / ela / você form."
+        }
+      ],
+      "row": "trazer"
+    },
+    {
+      "id": "present-irregular-short-ele-1",
+      "pattern": "short-ele",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "querer · ela · presente",
+      "answers": [
+        "quer",
+        "ela quer"
+      ],
+      "hint": "The ele / ela form of querer is one syllable with no final vowel.",
+      "feedback": "Querer drops its final -e in the ele form.",
+      "explanation": "Ela quer: the ele / ela / você form is just quer.",
+      "mistakes": [
+        {
+          "answers": [
+            "quere",
+            "ela quere"
+          ],
+          "why": "That adds the regular -e, but querer keeps the short form with no vowel at the end."
+        },
+        {
+          "answers": [
+            "quero",
+            "ela quero"
+          ],
+          "why": "Quero is the eu form."
+        },
+        {
+          "answers": [
+            "querem",
+            "ela querem"
+          ],
+          "why": "Querem is the plural form, for eles, elas and vocês."
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-short-ele-2",
+      "pattern": "short-ele",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ela ____ um bolo para a festa.",
+      "options": [
+        "faz",
+        "faze",
+        "faço",
+        "fazem"
+      ],
+      "answers": [
+        "faz"
+      ],
+      "hint": "The ele / ela form of fazer is one short syllable.",
+      "feedback": "Fazer: ela faz.",
+      "explanation": "Ela faz um bolo para a festa: the ele form of fazer ends in z with no vowel.",
+      "mistakes": [
+        {
+          "answers": [
+            "faze"
+          ],
+          "why": "The regular -e ending does not appear here; this verb uses a short one-syllable form."
+        },
+        {
+          "answers": [
+            "faço"
+          ],
+          "why": "Faço is the eu form."
+        },
+        {
+          "answers": [
+            "fazem"
+          ],
+          "why": "Fazem is the plural form, for eles, elas and vocês."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "bolo",
+          "en": "cake",
+          "word": "food-034"
+        },
+        {
+          "pt": "para",
+          "en": "for"
+        },
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-short-ele-3",
+      "pattern": "short-ele",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "O João sempre ____ a verdade.",
+      "options": [
+        "diz",
+        "digo",
+        "dize",
+        "dizem"
+      ],
+      "answers": [
+        "diz"
+      ],
+      "hint": "One person, one short syllable.",
+      "feedback": "Dizer: ele diz.",
+      "explanation": "O João sempre diz a verdade: the ele form of dizer is diz.",
+      "mistakes": [
+        {
+          "answers": [
+            "digo"
+          ],
+          "why": "Digo is the eu form. The subject is João, one other person."
+        },
+        {
+          "answers": [
+            "dize"
+          ],
+          "why": "The regular -e ending is not used here; the form is shorter."
+        },
+        {
+          "answers": [
+            "dizem"
+          ],
+          "why": "Dizem is plural, for eles, elas and vocês."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "João",
+          "en": "João (a name)"
+        },
+        {
+          "pt": "sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "verdade",
+          "en": "truth"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-short-ele-4",
+      "pattern": "short-ele",
+      "type": "complete",
+      "instruction": "Write sair in the present.",
+      "source": "Ela ____ (sair) do trabalho cedo.",
+      "answers": [
+        "sai"
+      ],
+      "hint": "Sair loses its r and keeps the stem sa- plus i.",
+      "feedback": "Sair: ela sai.",
+      "explanation": "Ela sai do trabalho cedo: the ele / ela form of sair is sai.",
+      "mistakes": [
+        {
+          "answers": [
+            "saio"
+          ],
+          "why": "Saio is the eu form."
+        },
+        {
+          "answers": [
+            "saem"
+          ],
+          "why": "Saem is the plural form, for eles, elas and vocês."
+        },
+        {
+          "answers": [
+            "sae"
+          ],
+          "why": "That is not a form of sair. The ele form ends in -i."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "sair",
+          "en": "to go out; to leave",
+          "word": "verbs-034"
+        },
+        {
+          "pt": "trabalho",
+          "en": "work",
+          "word": "work-001"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-short-ele-5",
+      "pattern": "short-ele",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ele traze o vinho.",
+      "answers": [
+        "Ele traz o vinho.",
+        "Traz o vinho."
+      ],
+      "hint": "The ele form of trazer is shorter.",
+      "feedback": "Trazer: ele traz.",
+      "explanation": "Ele traz o vinho: the ele / ela / você form of trazer ends in z.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ele traze o vinho."
+          ],
+          "why": "That is the sentence unchanged. Trazer has a short ele form without a final vowel."
+        },
+        {
+          "answers": [
+            "Ele trago o vinho."
+          ],
+          "why": "Trago is the eu form."
+        },
+        {
+          "answers": [
+            "Ele trazem o vinho."
+          ],
+          "why": "Trazem is plural; ele is one person."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "traze",
+          "en": "bring (trazer)",
+          "word": "verbs-044"
+        },
+        {
+          "pt": "vinho",
+          "en": "wine",
+          "word": "food-039"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-short-ele-6",
+      "pattern": "short-ele",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "She sees the beach.",
+      "tokens": [
+        "vee",
+        "Ela",
+        "a",
+        "praia.",
+        "vê",
+        "vejo"
+      ],
+      "answers": [
+        "Ela vê a praia."
+      ],
+      "hint": "Ver has a one-syllable ele form with a hat accent.",
+      "feedback": "One verb tile is not a form of ver.",
+      "explanation": "Ela vê a praia: vê is the ele / ela / você form of ver.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela vee a praia."
+          ],
+          "why": "Vee is not a word. The ele form of ver is one letter v plus e with an accent."
+        },
+        {
+          "answers": [
+            "Ela vejo a praia."
+          ],
+          "why": "Vejo is the eu form."
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-short-ele-7",
+      "pattern": "short-ele",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "He wants a coffee.",
+      "answers": [
+        "Ele quer um café.",
+        "Ele quer café."
+      ],
+      "hint": "The ele form of querer is one syllable.",
+      "feedback": "Use the short ele form of querer.",
+      "explanation": "Ele quer um café: quer, with no final vowel.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ele quere um café."
+          ],
+          "why": "Querer does not take the regular -e in the ele form."
+        },
+        {
+          "answers": [
+            "Ele quero um café."
+          ],
+          "why": "Quero is the eu form."
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-accent-plural-1",
+      "pattern": "accent-plural",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eles ____ dois filhos.",
+      "options": [
+        "têm",
+        "tem",
+        "teem",
+        "tens"
+      ],
+      "answers": [
+        "têm"
+      ],
+      "hint": "Ele and eles sound the same here; only the accent shows plural.",
+      "feedback": "Eles têm, with a circumflex.",
+      "explanation": "Eles têm dois filhos: têm with a hat is plural; tem without it is singular.",
+      "mistakes": [
+        {
+          "answers": [
+            "tem"
+          ],
+          "why": "Tem without the hat is the singular form, for ele, ela and você. Eles needs the written plural mark."
+        },
+        {
+          "answers": [
+            "teem"
+          ],
+          "why": "Teem is not a word. The plural of tem keeps one e and adds an accent."
+        },
+        {
+          "answers": [
+            "tens"
+          ],
+          "why": "Tens is the tu form, rarely used in Brazil, and singular."
+        }
+      ],
+      "row": "ter",
+      "strictAccents": true,
+      "gloss": [
+        {
+          "pt": "dois",
+          "en": "two"
+        },
+        {
+          "pt": "filhos",
+          "en": "children",
+          "word": "people-011"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-accent-plural-2",
+      "pattern": "accent-plural",
+      "type": "complete",
+      "instruction": "Write vir in the present.",
+      "source": "Os meus pais ____ (vir) amanhã.",
+      "answers": [
+        "vêm"
+      ],
+      "hint": "Pais is plural. The plural of vem looks the same except for one mark.",
+      "feedback": "Eles vêm: the hat marks the plural.",
+      "explanation": "Os meus pais vêm amanhã: vêm, with a circumflex, is the plural of vem.",
+      "mistakes": [
+        {
+          "answers": [
+            "vem"
+          ],
+          "why": "Vem without the hat is singular, for one person. Pais is plural."
+        },
+        {
+          "answers": [
+            "veem"
+          ],
+          "why": "Veem belongs to ver, to see. Vir has a different plural."
+        },
+        {
+          "answers": [
+            "vimos"
+          ],
+          "why": "Vimos is the nós form of vir, we come."
+        }
+      ],
+      "row": "vir",
+      "strictAccents": true,
+      "gloss": [
+        {
+          "pt": "meus",
+          "en": "my"
+        },
+        {
+          "pt": "pais",
+          "en": "parents",
+          "word": "people-009"
+        },
+        {
+          "pt": "vir",
+          "en": "to come",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-accent-plural-3",
+      "pattern": "accent-plural",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Elas tem muito dinheiro.",
+      "answers": [
+        "Elas têm muito dinheiro.",
+        "Têm muito dinheiro."
+      ],
+      "hint": "The subject is plural. What mark does the verb need?",
+      "feedback": "The plural tem takes a circumflex.",
+      "explanation": "Elas têm muito dinheiro: elas needs têm, written with a hat.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elas tem muito dinheiro."
+          ],
+          "why": "That is the sentence unchanged. Tem without the mark is singular, and elas is plural."
+        },
+        {
+          "answers": [
+            "Elas teem muito dinheiro."
+          ],
+          "why": "Teem is not a word. The plural of ter adds an accent, not a letter."
+        },
+        {
+          "answers": [
+            "Elas tens muito dinheiro."
+          ],
+          "why": "Tens is the tu form, singular."
+        }
+      ],
+      "row": "ter",
+      "strictAccents": true,
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot of",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "dinheiro",
+          "en": "money",
+          "word": "shopping-001"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-accent-plural-4",
+      "pattern": "accent-plural",
+      "type": "rewrite",
+      "instruction": "Change ela to elas and adjust the verb.",
+      "source": "Ela tem um carro.",
+      "answers": [
+        "Elas têm um carro.",
+        "Elas têm carro."
+      ],
+      "hint": "In speech nothing changes. In writing the verb gets a mark.",
+      "feedback": "Tem becomes têm in the plural.",
+      "explanation": "Elas têm um carro: the plural of tem is têm, with a circumflex.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elas tem um carro."
+          ],
+          "why": "Tem without the hat stays singular. A plural subject needs the accented form."
+        },
+        {
+          "answers": [
+            "Elas temem um carro."
+          ],
+          "why": "Temem comes from temer, to fear."
+        },
+        {
+          "answers": [
+            "Elas teem um carro."
+          ],
+          "why": "Teem is not a word. Ter shows its plural with an accent."
+        }
+      ],
+      "row": "ter",
+      "strictAccents": true,
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-accent-plural-5",
+      "pattern": "accent-plural",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ver · eles · presente",
+      "answers": [
+        "veem",
+        "eles veem"
+      ],
+      "hint": "Ver doubles its e in the plural, and since 2009 it has no accent.",
+      "feedback": "The plural of vê is veem.",
+      "explanation": "Eles veem: two e, no accent in current spelling. Do not mix it up with vêm, from vir.",
+      "mistakes": [
+        {
+          "answers": [
+            "vêm",
+            "eles vêm"
+          ],
+          "why": "Vêm is the plural of vir, to come. Ver writes its plural with two e."
+        },
+        {
+          "answers": [
+            "vêem",
+            "eles vêem"
+          ],
+          "why": "That spelling was dropped in 2009. Today the plural of ver has no accent."
+        },
+        {
+          "answers": [
+            "vê",
+            "eles vê"
+          ],
+          "why": "Vê is the singular form, for one person."
+        },
+        {
+          "answers": [
+            "vemos",
+            "eles vemos"
+          ],
+          "why": "Vemos is the nós form."
+        }
+      ],
+      "row": "ver",
+      "strictAccents": true
+    },
+    {
+      "id": "present-irregular-accent-plural-6",
+      "pattern": "accent-plural",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "They come home early.",
+      "answers": [
+        "Eles vêm para casa cedo.",
+        "Elas vêm para casa cedo.",
+        "Vêm para casa cedo."
+      ],
+      "hint": "They is plural: the verb needs its written plural mark.",
+      "feedback": "The plural of vem is vêm.",
+      "explanation": "Eles vêm para casa cedo: vêm with a hat. Without it, vem is singular.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eles vem para casa cedo."
+          ],
+          "why": "Vem without the hat is singular, for one person. Eles is plural."
+        },
+        {
+          "answers": [
+            "Eles veem para casa cedo."
+          ],
+          "why": "Veem is the plural of ver, to see."
+        },
+        {
+          "answers": [
+            "Eles vêem para casa cedo."
+          ],
+          "why": "Vêem is the old spelling of veem, from ver, to see. Vir puts the accent on a single e."
+        }
+      ],
+      "row": "vir",
+      "strictAccents": true
+    },
+    {
+      "id": "present-irregular-ir-dar-1",
+      "pattern": "ir-dar",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ir · nós · presente",
+      "answers": [
+        "vamos",
+        "nós vamos"
+      ],
+      "hint": "Ir is completely irregular: its forms all start with v.",
+      "feedback": "Nós vamos.",
+      "explanation": "Nós vamos: ir has the forms vou, vai, vamos, vão.",
+      "mistakes": [
+        {
+          "answers": [
+            "imos",
+            "nós imos"
+          ],
+          "why": "Imos is very old Portuguese and not used today."
+        },
+        {
+          "answers": [
+            "vão",
+            "nós vão"
+          ],
+          "why": "Vão is the plural for eles, elas and vocês, not for we."
+        },
+        {
+          "answers": [
+            "vai",
+            "nós vai"
+          ],
+          "why": "Vai is singular. In casual speech a gente vai means we go, but nós needs its own form."
+        }
+      ],
+      "row": "nós"
+    },
+    {
+      "id": "present-irregular-ir-dar-2",
+      "pattern": "ir-dar",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "dar · eles · presente",
+      "answers": [
+        "dão",
+        "eles dão"
+      ],
+      "hint": "Dar rhymes with ir in the plural.",
+      "feedback": "Eles dão, like eles vão.",
+      "explanation": "Eles dão: the plural of dar ends in -ão, just like vão.",
+      "mistakes": [
+        {
+          "answers": [
+            "dam",
+            "eles dam"
+          ],
+          "why": "That is the regular -ar pattern, but dar is irregular here."
+        },
+        {
+          "answers": [
+            "dá",
+            "eles dá"
+          ],
+          "why": "Dá is singular, for ele, ela and você."
+        },
+        {
+          "answers": [
+            "damos",
+            "eles damos"
+          ],
+          "why": "Damos is the nós form."
+        }
+      ],
+      "row": "eles / elas / vocês"
+    },
+    {
+      "id": "present-irregular-ir-dar-3",
+      "pattern": "ir-dar",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Nós ____ à praia no domingo.",
+      "options": [
+        "vamos",
+        "vão",
+        "vai",
+        "imos"
+      ],
+      "answers": [
+        "vamos"
+      ],
+      "hint": "We: the form of ir that ends in -amos.",
+      "feedback": "Nós vamos.",
+      "explanation": "Nós vamos à praia no domingo: vamos is the nós form of ir.",
+      "mistakes": [
+        {
+          "answers": [
+            "vão"
+          ],
+          "why": "Vão is the plural for eles, elas and vocês."
+        },
+        {
+          "answers": [
+            "vai"
+          ],
+          "why": "Vai is singular. With a gente it is fine, but nós takes a different form."
+        },
+        {
+          "answers": [
+            "imos"
+          ],
+          "why": "Imos is not used in modern Portuguese."
+        }
+      ],
+      "row": "nós",
+      "gloss": [
+        {
+          "pt": "praia",
+          "en": "beach",
+          "word": "nature-008"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-ir-dar-4",
+      "pattern": "ir-dar",
+      "type": "complete",
+      "instruction": "Write ir in the present.",
+      "source": "Eles ____ (ir) ao cinema hoje.",
+      "answers": [
+        "vão"
+      ],
+      "hint": "Eles: the plural form, which ends in -ão.",
+      "feedback": "Eles vão.",
+      "explanation": "Eles vão ao cinema hoje: vão is the plural of ir.",
+      "mistakes": [
+        {
+          "answers": [
+            "vai"
+          ],
+          "why": "Vai is singular, for ele, ela and você."
+        },
+        {
+          "answers": [
+            "vamos"
+          ],
+          "why": "Vamos is the nós form."
+        },
+        {
+          "answers": [
+            "iram"
+          ],
+          "why": "Iram is not a word. Ir uses forms starting with v."
+        }
+      ],
+      "row": "eles / elas / vocês",
+      "gloss": [
+        {
+          "pt": "ir",
+          "en": "to go",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "cinema",
+          "en": "cinema",
+          "word": "leisure-014"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-ir-dar-5",
+      "pattern": "ir-dar",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I give a gift to my mother.",
+      "tokens": [
+        "Eu",
+        "dou",
+        "um",
+        "presente",
+        "para",
+        "a",
+        "minha",
+        "mãe.",
+        "dá",
+        "dar"
+      ],
+      "answers": [
+        "Eu dou um presente para a minha mãe.",
+        "Eu dou um presente para minha mãe.",
+        "Dou um presente para a minha mãe.",
+        "Dou um presente para minha mãe."
+      ],
+      "hint": "The eu form of dar ends in -ou, like vou.",
+      "feedback": "Dar: eu dou.",
+      "explanation": "Eu dou um presente para a minha mãe: dou is the eu form of dar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu dá um presente para a minha mãe."
+          ],
+          "why": "Dá is the ele / ela / você form. Eu ends in -ou."
+        },
+        {
+          "answers": [
+            "Eu dar um presente para a minha mãe."
+          ],
+          "why": "Dar is the infinitive; after eu the verb is conjugated."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-irregular-ir-dar-6",
+      "pattern": "ir-dar",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Are you going by bus?",
+      "answers": [
+        "Você vai de ônibus?",
+        "Vai de ônibus?",
+        "Vocês vão de ônibus?"
+      ],
+      "hint": "Você takes the same form as ele. Travel by a vehicle uses de.",
+      "feedback": "Você vai: the ele / você form of ir.",
+      "explanation": "Você vai de ônibus? Vai is the form for ele, ela and você. For several people, vocês vão.",
+      "mistakes": [
+        {
+          "answers": [
+            "Você vão de ônibus?"
+          ],
+          "why": "Vão is the plural form, for vocês. Você is one person."
+        },
+        {
+          "answers": [
+            "Você vai no ônibus?"
+          ],
+          "why": "No ônibus means on the bus, inside it. Going by a means of transport uses de."
+        },
+        {
+          "answers": [
+            "Você vou de ônibus?"
+          ],
+          "why": "Vou is the eu form."
+        }
+      ],
+      "row": "ele / ela / você"
+    },
+    {
+      "id": "present-irregular-plural-1",
+      "pattern": "plural",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "vir · nós · presente",
+      "answers": [
+        "vimos",
+        "nós vimos"
+      ],
+      "hint": "The nós form of vir is short and does not keep the e of vem.",
+      "feedback": "Vir: nós vimos.",
+      "explanation": "Nós vimos: vir drops the -r and adds -mos to vi-. It looks like the past of ver, but here it means we come.",
+      "mistakes": [
+        {
+          "answers": [
+            "vemos",
+            "nós vemos"
+          ],
+          "why": "Vemos is the nós form of ver, we see."
+        },
+        {
+          "answers": [
+            "virmos",
+            "nós virmos"
+          ],
+          "why": "Virmos is the future subjunctive, a later topic."
+        },
+        {
+          "answers": [
+            "vêm",
+            "nós vêm"
+          ],
+          "why": "Vêm is the plural for eles, elas and vocês."
+        }
+      ],
+      "row": "vir"
+    },
+    {
+      "id": "present-irregular-plural-2",
+      "pattern": "plural",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "saber · nós · presente",
+      "answers": [
+        "sabemos",
+        "nós sabemos"
+      ],
+      "hint": "Only the eu form of saber is strange; the nós form is regular.",
+      "feedback": "Saber: nós sabemos.",
+      "explanation": "Nós sabemos: sab- + -emos, the regular -er ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "seimos",
+            "nós seimos"
+          ],
+          "why": "The odd stem sei- belongs to eu only. The other forms keep sab-."
+        },
+        {
+          "answers": [
+            "sabem",
+            "nós sabem"
+          ],
+          "why": "Sabem is the plural for eles, elas and vocês."
+        },
+        {
+          "answers": [
+            "sabamos",
+            "nós sabamos"
+          ],
+          "why": "Saber is an -er verb, so nós takes -emos."
+        }
+      ],
+      "row": "saber"
+    },
+    {
+      "id": "present-irregular-plural-3",
+      "pattern": "plural",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Vocês ____ falar inglês?",
+      "options": [
+        "sabem",
+        "sabe",
+        "sabemos",
+        "seiem"
+      ],
+      "answers": [
+        "sabem"
+      ],
+      "hint": "Vocês takes the eles form, regular here.",
+      "feedback": "Saber: vocês sabem.",
+      "explanation": "Vocês sabem falar inglês? Saber means to know how; vocês takes sabem.",
+      "mistakes": [
+        {
+          "answers": [
+            "sabe"
+          ],
+          "why": "Sabe is singular, for one person."
+        },
+        {
+          "answers": [
+            "sabemos"
+          ],
+          "why": "Sabemos is the nós form, we."
+        },
+        {
+          "answers": [
+            "seiem"
+          ],
+          "why": "Seiem is not a word. The plural keeps the stem sab-."
+        }
+      ],
+      "row": "saber",
+      "gloss": [
+        {
+          "pt": "falar",
+          "en": "to speak"
+        },
+        {
+          "pt": "inglês",
+          "en": "English",
+          "word": "school-030"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-plural-4",
+      "pattern": "plural",
+      "type": "complete",
+      "instruction": "Write sair in the present.",
+      "source": "Nós ____ (sair) de casa às oito.",
+      "answers": [
+        "saímos"
+      ],
+      "hint": "Nós adds -imos, and the i takes an accent.",
+      "feedback": "Sair: nós saímos.",
+      "explanation": "Nós saímos de casa às oito: sa- + -ímos. The accent splits the a and the i into two sounds.",
+      "mistakes": [
+        {
+          "answers": [
+            "saemos"
+          ],
+          "why": "Sair is an -ir verb, so nós takes -imos, not the -er ending."
+        },
+        {
+          "answers": [
+            "saem"
+          ],
+          "why": "Saem is the plural for eles, elas and vocês."
+        },
+        {
+          "answers": [
+            "saio"
+          ],
+          "why": "Saio is the eu form."
+        }
+      ],
+      "row": "sair",
+      "gloss": [
+        {
+          "pt": "sair",
+          "en": "to go out; to leave",
+          "word": "verbs-034"
+        },
+        {
+          "pt": "casa",
+          "en": "home",
+          "word": "home-001"
+        },
+        {
+          "pt": "oito",
+          "en": "eight"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-plural-5",
+      "pattern": "plural",
+      "type": "rewrite",
+      "instruction": "Change eu to nós and adjust the verb.",
+      "source": "Eu faço o jantar.",
+      "answers": [
+        "Nós fazemos o jantar.",
+        "Fazemos o jantar."
+      ],
+      "hint": "The ç belongs to eu only. Nós is regular.",
+      "feedback": "Fazer: nós fazemos.",
+      "explanation": "Nós fazemos o jantar: faz- + -emos, the regular ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós façemos o jantar."
+          ],
+          "why": "The ç appears only in faço. The other forms keep the z."
+        },
+        {
+          "answers": [
+            "Nós fazimos o jantar."
+          ],
+          "why": "Fazer is an -er verb: nós takes -emos."
+        },
+        {
+          "answers": [
+            "Nós fazem o jantar."
+          ],
+          "why": "Fazem is the plural for eles, elas and vocês."
+        }
+      ],
+      "row": "fazer",
+      "gloss": [
+        {
+          "pt": "faço",
+          "en": "make (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "jantar",
+          "en": "dinner",
+          "word": "food-043"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-plural-6",
+      "pattern": "plural",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Eles trazam a comida.",
+      "answers": [
+        "Eles trazem a comida.",
+        "Trazem a comida."
+      ],
+      "hint": "Trazer is an -er verb.",
+      "feedback": "Trazer: eles trazem.",
+      "explanation": "Eles trazem a comida: traz- + -em, the -er plural ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eles trazam a comida."
+          ],
+          "why": "That is the sentence unchanged. -am is the -ar ending, and trazer is an -er verb."
+        },
+        {
+          "answers": [
+            "Eles tragem a comida."
+          ],
+          "why": "The g belongs only to trago, the eu form."
+        },
+        {
+          "answers": [
+            "Eles traz a comida."
+          ],
+          "why": "Traz is singular."
+        }
+      ],
+      "row": "trazer",
+      "gloss": [
+        {
+          "pt": "trazam",
+          "en": "bring (trazer)",
+          "word": "verbs-044"
+        },
+        {
+          "pt": "comida",
+          "en": "food",
+          "word": "food-044"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-plural-7",
+      "pattern": "plural",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "We see our friends on the weekend.",
+      "answers": [
+        "Nós vemos os nossos amigos no fim de semana.",
+        "Nós vemos nossos amigos no fim de semana.",
+        "Vemos os nossos amigos no fim de semana.",
+        "Vemos nossos amigos no fim de semana."
+      ],
+      "hint": "Ver is regular in the nós form.",
+      "feedback": "Ver: nós vemos.",
+      "explanation": "Nós vemos os nossos amigos no fim de semana: ve- + -mos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós vimos os nossos amigos no fim de semana."
+          ],
+          "why": "Vimos means we come (vir) or we saw (ver, in the past). The present of ver is different."
+        },
+        {
+          "answers": [
+            "Nós vejemos os nossos amigos no fim de semana."
+          ],
+          "why": "The j belongs to vejo only."
+        }
+      ],
+      "row": "ver"
+    },
+    {
+      "id": "present-irregular-ter-que-1",
+      "pattern": "ter-que",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eu ____ que trabalhar amanhã.",
+      "options": [
+        "tenho",
+        "tem",
+        "sou",
+        "estou"
+      ],
+      "answers": [
+        "tenho"
+      ],
+      "hint": "Have to is ter que plus the infinitive. Put ter in the eu form.",
+      "feedback": "Eu tenho que…",
+      "explanation": "Eu tenho que trabalhar amanhã: tenho, the eu form of ter, + que + infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "tem"
+          ],
+          "why": "Tem is the ele / ela / você form."
+        },
+        {
+          "answers": [
+            "sou"
+          ],
+          "why": "Sou is from ser. An obligation uses ter que."
+        },
+        {
+          "answers": [
+            "estou"
+          ],
+          "why": "Estou is from estar. An obligation uses ter que."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "trabalhar",
+          "en": "to work",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-ter-que-2",
+      "pattern": "ter-que",
+      "type": "complete",
+      "instruction": "Write the missing word.",
+      "source": "Você tem ____ estudar hoje.",
+      "answers": [
+        "que",
+        "de"
+      ],
+      "hint": "Ter needs a small word before the infinitive.",
+      "feedback": "Ter que plus the infinitive: have to.",
+      "explanation": "Você tem que estudar hoje. Ter de estudar means the same and is a bit more formal.",
+      "mistakes": [
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "Ter a is not used for have to."
+        },
+        {
+          "answers": [
+            "para"
+          ],
+          "why": "Ter para estudar is not the obligation structure."
+        },
+        {
+          "answers": [
+            "em"
+          ],
+          "why": "Ter em is not used before an infinitive."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "estudar",
+          "en": "to study",
+          "word": "verbs-055"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-ter-que-3",
+      "pattern": "ter-que",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We have to pay.",
+      "tokens": [
+        "Nós",
+        "temos",
+        "que",
+        "pagar.",
+        "somos",
+        "pagamos."
+      ],
+      "answers": [
+        "Nós temos que pagar."
+      ],
+      "hint": "Ter que plus the infinitive.",
+      "feedback": "Nós temos que pagar.",
+      "explanation": "Nós temos que pagar: temos, the nós form of ter, + que + infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós somos que pagar."
+          ],
+          "why": "Somos is from ser, to be. An obligation uses ter."
+        },
+        {
+          "answers": [
+            "Nós temos que pagamos."
+          ],
+          "why": "After que the second verb stays in the infinitive."
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-ter-que-4",
+      "pattern": "ter-que",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I have to work tomorrow.",
+      "answers": [
+        "Eu tenho que trabalhar amanhã.",
+        "Tenho que trabalhar amanhã.",
+        "Eu tenho de trabalhar amanhã.",
+        "Tenho de trabalhar amanhã."
+      ],
+      "hint": "Have to: ter que + infinitive.",
+      "feedback": "Ter que + infinitive.",
+      "explanation": "Eu tenho que trabalhar amanhã. Tenho de trabalhar is also correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu tenho trabalhar amanhã."
+          ],
+          "why": "Ter needs que or de before the infinitive to mean have to."
+        },
+        {
+          "answers": [
+            "Eu tenho que trabalho amanhã."
+          ],
+          "why": "After que the verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "Eu tem que trabalhar amanhã."
+          ],
+          "why": "Tem is the ele form."
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-ter-que-5",
+      "pattern": "ter-que",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ele tem que estuda à noite.",
+      "answers": [
+        "Ele tem que estudar à noite.",
+        "Tem que estudar à noite."
+      ],
+      "hint": "Look at the verb after que.",
+      "feedback": "After ter que, the verb is an infinitive.",
+      "explanation": "Ele tem que estudar à noite: only ter is conjugated; the next verb keeps its -r.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ele tem que estuda à noite."
+          ],
+          "why": "That is the sentence unchanged. After que the second verb does not take a person ending."
+        },
+        {
+          "answers": [
+            "Ele tem estudar à noite."
+          ],
+          "why": "Without que, ter cannot mean have to."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "estuda",
+          "en": "studies (estudar)",
+          "word": "verbs-055"
+        },
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-ter-que-6",
+      "pattern": "ter-que",
+      "type": "rewrite",
+      "instruction": "Turn it into an obligation with ter que.",
+      "source": "Eu durmo cedo.",
+      "answers": [
+        "Eu tenho que dormir cedo.",
+        "Tenho que dormir cedo.",
+        "Eu tenho de dormir cedo.",
+        "Tenho de dormir cedo."
+      ],
+      "hint": "Conjugate ter for eu, then que, then the infinitive.",
+      "feedback": "Ter que + infinitive.",
+      "explanation": "Eu tenho que dormir cedo: tenho que, then dormir in the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu tenho que durmo cedo."
+          ],
+          "why": "After que the verb goes back to the infinitive."
+        },
+        {
+          "answers": [
+            "Eu tem que dormir cedo."
+          ],
+          "why": "Tem is the ele form; eu needs its own form of ter."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "durmo",
+          "en": "sleep (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-modal-1",
+      "pattern": "modal",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Você ____ me ajudar?",
+      "options": [
+        "pode",
+        "posso",
+        "podem",
+        "poda"
+      ],
+      "answers": [
+        "pode"
+      ],
+      "hint": "Você takes the ele form. The next verb stays as it is.",
+      "feedback": "Você pode + infinitive.",
+      "explanation": "Você pode me ajudar? Pode is the você form of poder.",
+      "mistakes": [
+        {
+          "answers": [
+            "posso"
+          ],
+          "why": "Posso is the eu form: can I."
+        },
+        {
+          "answers": [
+            "podem"
+          ],
+          "why": "Podem is plural, for vocês."
+        },
+        {
+          "answers": [
+            "poda"
+          ],
+          "why": "Poda is not a form of poder in the present."
+        }
+      ],
+      "row": "ele / ela / você",
+      "gloss": [
+        {
+          "pt": "ajudar",
+          "en": "to help",
+          "word": "verbs-074"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-modal-2",
+      "pattern": "modal",
+      "type": "complete",
+      "instruction": "Write querer in the present.",
+      "source": "Eu ____ (querer) comer agora.",
+      "answers": [
+        "quero"
+      ],
+      "hint": "The eu form ends in -o and keeps the stem quer-.",
+      "feedback": "Eu quero + infinitive.",
+      "explanation": "Eu quero comer agora: quero, then the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "quer"
+          ],
+          "why": "Quer is the ele / ela / você form."
+        },
+        {
+          "answers": [
+            "quis"
+          ],
+          "why": "Quis is the past, I wanted."
+        },
+        {
+          "answers": [
+            "queria"
+          ],
+          "why": "Queria is the imperfect, I would like, a polite variant but not the present."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "querer",
+          "en": "to want",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "comer",
+          "en": "to eat",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "agora",
+          "en": "now"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-modal-3",
+      "pattern": "modal",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "Can I pay?",
+      "tokens": [
+        "Posso",
+        "Pode",
+        "pagar?",
+        "pago?",
+        "Eu"
+      ],
+      "answers": [
+        "Posso pagar?",
+        "Eu posso pagar?"
+      ],
+      "hint": "Can I: the eu form of poder, then the infinitive.",
+      "feedback": "Eu posso + infinitive.",
+      "explanation": "Posso pagar? Posso is the eu form of poder.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pode pagar?"
+          ],
+          "why": "Pode pagar? asks whether you can pay, not whether I can."
+        },
+        {
+          "answers": [
+            "Posso pago?"
+          ],
+          "why": "After poder the second verb stays in the infinitive."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-irregular-modal-4",
+      "pattern": "modal",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "She wants to go out tonight.",
+      "answers": [
+        "Ela quer sair hoje à noite.",
+        "Ela quer sair esta noite."
+      ],
+      "hint": "Querer + infinitive, with the short ele form.",
+      "feedback": "Ela quer + infinitive.",
+      "explanation": "Ela quer sair hoje à noite: quer, then sair in the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela quer sai hoje à noite."
+          ],
+          "why": "After querer the second verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "Ela quer de sair hoje à noite."
+          ],
+          "why": "Querer takes the infinitive directly, with no de."
+        },
+        {
+          "answers": [
+            "Ela quere sair hoje à noite."
+          ],
+          "why": "The ele form of querer has no final e."
+        }
+      ],
+      "row": "ele / ela / você"
+    },
+    {
+      "id": "present-irregular-modal-5",
+      "pattern": "modal",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Eu posso de nadar bem.",
+      "answers": [
+        "Eu posso nadar bem.",
+        "Posso nadar bem.",
+        "Eu sei nadar bem.",
+        "Sei nadar bem."
+      ],
+      "hint": "Look at the word between the two verbs.",
+      "feedback": "Poder takes the infinitive directly.",
+      "explanation": "Eu posso nadar bem: no word between poder and the infinitive. For a learnt skill, Eu sei nadar is even more natural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu posso de nadar bem."
+          ],
+          "why": "That is the sentence unchanged. Poder is followed directly by the infinitive."
+        },
+        {
+          "answers": [
+            "Eu posso nado bem."
+          ],
+          "why": "After poder the second verb stays in the infinitive."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "posso",
+          "en": "can (poder)",
+          "word": "verbs-023"
+        },
+        {
+          "pt": "nadar",
+          "en": "to swim",
+          "word": "leisure-032"
+        },
+        {
+          "pt": "bem",
+          "en": "well"
+        }
+      ]
+    },
+    {
+      "id": "present-irregular-modal-6",
+      "pattern": "modal",
+      "type": "rewrite",
+      "instruction": "Add querer: they want to do it.",
+      "source": "Eles dormem.",
+      "answers": [
+        "Eles querem dormir.",
+        "Querem dormir."
+      ],
+      "hint": "Conjugate querer for eles, then put dormir in the infinitive.",
+      "feedback": "Eles querem + infinitive.",
+      "explanation": "Eles querem dormir: querem, then dormir unchanged.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eles querem dormem."
+          ],
+          "why": "After querer the second verb goes back to the infinitive."
+        },
+        {
+          "answers": [
+            "Eles quer dormir."
+          ],
+          "why": "Quer is singular."
+        }
+      ],
+      "row": "eles / elas / vocês",
+      "gloss": [
+        {
+          "pt": "dormem",
+          "en": "sleep (dormir)",
+          "word": "verbs-062"
+        }
+      ]
+    }
+  ]
+}

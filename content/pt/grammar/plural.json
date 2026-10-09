@@ -1,0 +1,2417 @@
+{
+  "id": "plural",
+  "unit": "nouns",
+  "level": "A1",
+  "title": "One house, two houses",
+  "description": "Make Portuguese nouns plural, from -s and -es to -ns, -ões and -ais, and make the words around them agree.",
+  "mark": "casas · flores · pães",
+  "guide": {
+    "summary": "Most Portuguese plurals add -s, but the last letter of the noun decides the exact ending. Learn the six endings and the article and adjective that change with the noun.",
+    "sections": [
+      {
+        "id": "vowels",
+        "title": "Ending in a vowel: add -s",
+        "text": "A noun that ends in a vowel, stressed or not, nasal -ã included, simply adds -s. Nothing else changes, and an accent stays where it is.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Singular",
+            "Plural"
+          ],
+          "rows": [
+            [
+              "-a",
+              "a casa",
+              "as casas"
+            ],
+            [
+              "-e",
+              "a chave",
+              "as chaves"
+            ],
+            [
+              "-o",
+              "o livro",
+              "os livros"
+            ],
+            [
+              "stressed vowel",
+              "o café",
+              "os cafés"
+            ],
+            [
+              "-ã",
+              "a maçã",
+              "as maçãs"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the last letter of the noun.",
+          "If it is a vowel, add -s and keep any accent."
+        ],
+        "examples": [
+          {
+            "pt": "As casas são grandes.",
+            "en": "The houses are big."
+          },
+          {
+            "pt": "Os sofás são novos.",
+            "en": "The sofas are new."
+          }
+        ],
+        "watch": [
+          "The final vowel never changes: casa gives casas, never cases.",
+          "Portuguese marks the plural even after a number: três chaves."
+        ]
+      },
+      {
+        "id": "consonants",
+        "title": "Ending in -r, -z or -s: add -es",
+        "text": "After -r and -z, and after an -s at the end of a stressed syllable, Portuguese adds -es, a whole extra syllable. A noun whose -s ending is unstressed does not change.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Singular",
+            "Plural"
+          ],
+          "rows": [
+            [
+              "-r",
+              "a mulher",
+              "as mulheres"
+            ],
+            [
+              "-z",
+              "a luz",
+              "as luzes"
+            ],
+            [
+              "-s (stressed)",
+              "o mês",
+              "os meses"
+            ],
+            [
+              "-s (unstressed)",
+              "o lápis",
+              "os lápis"
+            ]
+          ]
+        },
+        "steps": [
+          "Does the noun end in -r or -z? Add -es.",
+          "Does it end in -s? Find the stress.",
+          "Stressed on the last syllable, like mês or país: add -es.",
+          "Stressed earlier, like lápis or ônibus: leave it unchanged."
+        ],
+        "examples": [
+          {
+            "pt": "As mulheres trabalham aqui.",
+            "en": "The women work here."
+          },
+          {
+            "pt": "Fico aqui por dois meses.",
+            "en": "I am staying here for two months."
+          }
+        ],
+        "watch": [
+          "An accent may vanish in the new syllable: mês gives meses, inglês gives ingleses.",
+          "Never a bare -s after -r or -z: not mulhers, not luzs."
+        ]
+      },
+      {
+        "id": "m-ending",
+        "title": "Ending in -m: change to -ns",
+        "text": "Portuguese never writes -ms at the end of a word. A final -m becomes -n before the -s.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Singular",
+            "Plural"
+          ],
+          "rows": [
+            [
+              "-em",
+              "o homem",
+              "os homens"
+            ],
+            [
+              "-im",
+              "o jardim",
+              "os jardins"
+            ],
+            [
+              "-om",
+              "o som",
+              "os sons"
+            ],
+            [
+              "-um",
+              "um",
+              "uns"
+            ]
+          ]
+        },
+        "steps": [
+          "Spot the final -m.",
+          "Replace it with -n and add -s."
+        ],
+        "examples": [
+          {
+            "pt": "Três homens esperam o ônibus.",
+            "en": "Three men are waiting for the bus."
+          },
+          {
+            "pt": "As viagens são longas.",
+            "en": "The trips are long."
+          }
+        ],
+        "watch": [
+          "No extra vowel: homens, not homenes.",
+          "Adjectives follow the same rule: jovem gives jovens, bom gives bons."
+        ]
+      },
+      {
+        "id": "ao-ending",
+        "title": "Ending in -ão: three plurals",
+        "text": "Most nouns in -ão take -ões. A short list takes -ães, and another short list just adds -s. The dictionary, and this deck, give the plural of every -ão word.",
+        "table": {
+          "columns": [
+            "Plural",
+            "Examples",
+            "How common"
+          ],
+          "rows": [
+            [
+              "-ões",
+              "avião, estação, limão, cartão",
+              "most words, and every word in -ção"
+            ],
+            [
+              "-ães",
+              "pão, cão, alemão",
+              "a short list"
+            ],
+            [
+              "-ãos",
+              "mão, irmão, cidadão",
+              "a short list"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the noun pão, cão or alemão? Use -ães.",
+          "Is it mão, irmão or cidadão? Just add -s.",
+          "Otherwise use -ões."
+        ],
+        "examples": [
+          {
+            "pt": "Eu compro dois pães.",
+            "en": "I buy two bread rolls."
+          },
+          {
+            "pt": "Lave as mãos.",
+            "en": "Wash your hands."
+          },
+          {
+            "pt": "As estações estão fechadas.",
+            "en": "The stations are closed."
+          }
+        ],
+        "watch": [
+          "Mães means mothers, from mãe; hands is mãos.",
+          "Every noun ending in -ção takes -ões: lição gives lições."
+        ]
+      },
+      {
+        "id": "al-ol-ul",
+        "title": "Ending in -al, -ol, -ul: the -l becomes -is",
+        "text": "A final -l cannot stand before -s. After a, o or u it turns into -is. The -ol plural takes an accent to keep its open o.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Singular",
+            "Plural"
+          ],
+          "rows": [
+            [
+              "-al",
+              "o animal",
+              "os animais"
+            ],
+            [
+              "-ol",
+              "o lençol",
+              "os lençóis"
+            ],
+            [
+              "-ul",
+              "azul",
+              "azuis"
+            ]
+          ]
+        },
+        "steps": [
+          "Spot the final -l and the vowel before it.",
+          "Drop the -l and add -is.",
+          "For -ol, write óis with an accent."
+        ],
+        "examples": [
+          {
+            "pt": "Ele lê dois jornais por dia.",
+            "en": "He reads two newspapers a day."
+          },
+          {
+            "pt": "Os carros azuis são novos.",
+            "en": "The blue cars are new."
+          }
+        ],
+        "watch": [
+          "Not the English -ls, not the Spanish -les: animais.",
+          "The Brazilian money follows the rule: um real, dez reais."
+        ]
+      },
+      {
+        "id": "el-il",
+        "title": "Ending in -el and -il",
+        "text": "A stressed -el becomes -éis. For -il, find the stress: a stressed -il becomes -is, and an -il stressed earlier becomes -eis.",
+        "table": {
+          "columns": [
+            "Ending",
+            "Singular",
+            "Plural"
+          ],
+          "rows": [
+            [
+              "-el",
+              "o hotel, o papel",
+              "os hotéis, os papéis"
+            ],
+            [
+              "-il (stressed)",
+              "gentil",
+              "gentis"
+            ],
+            [
+              "-il (unstressed)",
+              "fácil, útil, difícil",
+              "fáceis, úteis, difíceis"
+            ]
+          ]
+        },
+        "steps": [
+          "For -el, write -éis.",
+          "For -il, find the stressed syllable.",
+          "Stressed -il: -is. Stressed earlier, usually with an accent: -eis."
+        ],
+        "examples": [
+          {
+            "pt": "Os hotéis aqui são caros.",
+            "en": "The hotels here are expensive."
+          },
+          {
+            "pt": "Estes livros são úteis.",
+            "en": "These books are useful."
+          }
+        ],
+        "watch": [
+          "A written accent before -il, as in fácil or útil, shows the stress is early: use -eis.",
+          "Hotéis and papéis need the accent on the é."
+        ]
+      },
+      {
+        "id": "agreement",
+        "title": "The words around the noun agree",
+        "text": "In Portuguese the article, the adjectives and the verb all follow the noun into the plural. Each word takes its own plural rule.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Example"
+          ],
+          "rows": [
+            [
+              "o",
+              "os",
+              "os gatos brancos"
+            ],
+            [
+              "a",
+              "as",
+              "as lojas pequenas"
+            ],
+            [
+              "um",
+              "uns",
+              "uns livros novos"
+            ],
+            [
+              "uma",
+              "umas",
+              "umas casas bonitas"
+            ]
+          ]
+        },
+        "steps": [
+          "Make the noun plural with its own rule.",
+          "Change the article: o to os, a to as, um to uns, uma to umas.",
+          "Make every adjective plural, by its own ending.",
+          "Make the verb plural: é to são, está to estão."
+        ],
+        "examples": [
+          {
+            "pt": "As lojas pequenas estão fechadas.",
+            "en": "The small shops are closed."
+          },
+          {
+            "pt": "Tenho dois gatos pretos.",
+            "en": "I have two black cats."
+          }
+        ],
+        "watch": [
+          "A colour is an adjective and agrees too: carros azuis.",
+          "Uns and umas mean some: uns livros, some books."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "vowel": {
+      "section": "vowels",
+      "steps": [
+        "Check that the noun ends in a vowel.",
+        "Add -s and keep any accent.",
+        "Make the article and adjectives plural as well."
+      ]
+    },
+    "consonant": {
+      "section": "consonants",
+      "steps": [
+        "After -r or -z, add -es.",
+        "After a stressed -s, add -es and drop the accent if the stress no longer needs it.",
+        "After an unstressed -s, change nothing."
+      ]
+    },
+    "m": {
+      "section": "m-ending",
+      "steps": [
+        "Spot the final -m.",
+        "Change it to -n and add -s."
+      ]
+    },
+    "ao": {
+      "section": "ao-ending",
+      "steps": [
+        "Pão, cão, alemão: -ães.",
+        "Mão, irmão, cidadão: add -s.",
+        "Every other -ão word: -ões."
+      ]
+    },
+    "alolul": {
+      "section": "al-ol-ul",
+      "steps": [
+        "Spot the final -l after a, o or u.",
+        "Replace the -l with -is.",
+        "For -ol, write -óis."
+      ]
+    },
+    "elil": {
+      "section": "el-il",
+      "steps": [
+        "Stressed -el: -éis.",
+        "Stressed -il: -is.",
+        "Unstressed -il, with the stress earlier: -eis."
+      ]
+    },
+    "agreement": {
+      "section": "agreement",
+      "steps": [
+        "Make the noun plural.",
+        "Change the article to os, as, uns or umas.",
+        "Make adjectives and the verb plural."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "plural-vowel-1",
+      "pattern": "vowel",
+      "type": "choose",
+      "instruction": "Choose the plural of casa.",
+      "source": "Nós temos duas ____ perto do mar.",
+      "options": [
+        "casas",
+        "cases",
+        "casaes"
+      ],
+      "answers": [
+        "casas"
+      ],
+      "hint": "What letter does casa end in?",
+      "feedback": "A noun ending in a vowel keeps that vowel and adds one letter.",
+      "explanation": "Casa ends in the vowel -a, so the plural just adds -s: duas casas.",
+      "mistakes": [
+        {
+          "answers": [
+            "cases"
+          ],
+          "why": "Portuguese never swaps the final vowel to make a plural. The -a stays where it is and only a letter is added after it."
+        },
+        {
+          "answers": [
+            "casaes"
+          ],
+          "why": "The ending -es is for nouns ending in a consonant such as -r or -z. Casa already ends in a vowel."
+        }
+      ],
+      "row": "-a",
+      "gloss": [
+        {
+          "pt": "temos",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "duas",
+          "en": "two (feminine)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "perto",
+          "en": "near",
+          "word": "essentials-094"
+        },
+        {
+          "pt": "mar",
+          "en": "sea",
+          "word": "nature-007"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-2",
+      "pattern": "vowel",
+      "type": "complete",
+      "instruction": "Write the plural of the word in brackets.",
+      "source": "Os ____ (café) aqui são muito bons.",
+      "answers": [
+        "cafés"
+      ],
+      "hint": "Café ends in a stressed vowel. Does that change anything?",
+      "feedback": "A stressed final vowel behaves like any other vowel.",
+      "explanation": "Café ends in the vowel -é, so it simply adds -s and keeps its accent: os cafés.",
+      "mistakes": [
+        {
+          "answers": [
+            "cafées"
+          ],
+          "why": "The extra -e is only for nouns ending in a consonant. Café ends in a vowel, stressed or not, so one letter is enough."
+        },
+        {
+          "answers": [
+            "café"
+          ],
+          "why": "That is still the singular, but os and são tell you there are several."
+        }
+      ],
+      "row": "stressed vowel",
+      "gloss": [
+        {
+          "pt": "café",
+          "en": "café; coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "bons",
+          "en": "good",
+          "word": "qualities-003"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-3",
+      "pattern": "vowel",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I need three keys.",
+      "answers": [
+        "Preciso de três chaves.",
+        "Eu preciso de três chaves."
+      ],
+      "hint": "Chave ends in a vowel. Precisar takes de before a noun.",
+      "feedback": "Check the ending of the noun after três.",
+      "explanation": "Chave ends in -e, so its plural adds -s: três chaves. Precisar is followed by de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Preciso de três chave.",
+            "Eu preciso de três chave."
+          ],
+          "why": "The noun stayed singular after three. Unlike some languages, Portuguese marks the plural even after a number."
+        },
+        {
+          "answers": [
+            "Preciso três chaves.",
+            "Eu preciso três chaves."
+          ],
+          "why": "The plural is fine, but precisar needs de before a noun."
+        }
+      ],
+      "row": "-e"
+    },
+    {
+      "id": "plural-vowel-4",
+      "pattern": "vowel",
+      "type": "rewrite",
+      "instruction": "Make the sentence plural: several windows. Write the whole sentence.",
+      "source": "A janela está aberta.",
+      "answers": [
+        "As janelas estão abertas."
+      ],
+      "hint": "Four words change: the article, the noun, the verb and the adjective.",
+      "feedback": "Every word that refers to the window has to become plural.",
+      "explanation": "A becomes as, janela adds -s, está becomes estão and aberta adds -s: as janelas estão abertas.",
+      "mistakes": [
+        {
+          "answers": [
+            "As janelas está aberta."
+          ],
+          "why": "The article and the noun are plural, but the verb and the adjective still describe one window."
+        },
+        {
+          "answers": [
+            "A janelas estão abertas."
+          ],
+          "why": "The article stayed singular. In front of a plural feminine noun the article also takes -s."
+        },
+        {
+          "answers": [
+            "A janela está aberta."
+          ],
+          "why": "That is the original sentence, still about one window."
+        }
+      ],
+      "row": "-a",
+      "gloss": [
+        {
+          "pt": "janela",
+          "en": "window",
+          "word": "home-017"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "aberta",
+          "en": "open",
+          "word": "qualities-032"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-5",
+      "pattern": "vowel",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "As meninas comem duas maçã.",
+      "answers": [
+        "As meninas comem duas maçãs."
+      ],
+      "hint": "Look at the noun after duas.",
+      "feedback": "After a number above one, the noun is plural.",
+      "explanation": "Maçã ends in the vowel -ã, so it just adds -s: duas maçãs.",
+      "mistakes": [
+        {
+          "answers": [
+            "As meninas comem duas maçã."
+          ],
+          "why": "The noun is still singular after duas, two."
+        },
+        {
+          "answers": [
+            "As meninas comem duas maçães."
+          ],
+          "why": "The ending -ães belongs to some nouns in -ão. Maçã ends in a plain -ã, which is a vowel and just adds one letter."
+        }
+      ],
+      "row": "-ã",
+      "gloss": [
+        {
+          "pt": "meninas",
+          "en": "girls",
+          "word": "people-007"
+        },
+        {
+          "pt": "comem",
+          "en": "eat (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "duas",
+          "en": "two (feminine)",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "maçã",
+          "en": "apple",
+          "word": "food-020"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-6",
+      "pattern": "vowel",
+      "type": "build",
+      "instruction": "Build the sentence: The sofas are new. Leave one tile unused.",
+      "source": "The sofas are new.",
+      "tokens": [
+        "são",
+        "sofá",
+        "Os",
+        "novos.",
+        "sofás"
+      ],
+      "answers": [
+        "Os sofás são novos."
+      ],
+      "hint": "Os already shows the plural. Does the noun show it too?",
+      "feedback": "In Portuguese the article and the noun both carry the plural.",
+      "explanation": "Sofá ends in a stressed vowel, so its plural adds -s: os sofás são novos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os sofá são novos."
+          ],
+          "why": "That tile is the singular. After os the noun takes the plural ending as well."
+        }
+      ],
+      "row": "stressed vowel"
+    },
+    {
+      "id": "plural-consonant-1",
+      "pattern": "consonant",
+      "type": "choose",
+      "instruction": "Choose the plural of mulher.",
+      "source": "As ____ trabalham aqui.",
+      "options": [
+        "mulheres",
+        "mulhers",
+        "mulher"
+      ],
+      "answers": [
+        "mulheres"
+      ],
+      "hint": "Mulher ends in -r.",
+      "feedback": "A noun ending in -r adds a whole extra syllable.",
+      "explanation": "Mulher ends in the consonant -r, so its plural adds -es: as mulheres.",
+      "mistakes": [
+        {
+          "answers": [
+            "mulhers"
+          ],
+          "why": "An -s cannot sit straight after -r in Portuguese. A noun ending in -r needs a vowel before the -s."
+        },
+        {
+          "answers": [
+            "mulher"
+          ],
+          "why": "That is the singular, but as and trabalham show there are several women."
+        }
+      ],
+      "row": "-r",
+      "gloss": [
+        {
+          "pt": "trabalham",
+          "en": "work (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        }
+      ]
+    },
+    {
+      "id": "plural-consonant-2",
+      "pattern": "consonant",
+      "type": "complete",
+      "instruction": "Write the plural of the word in brackets.",
+      "source": "A sala tem muitas ____ (luz).",
+      "answers": [
+        "luzes"
+      ],
+      "hint": "Luz ends in -z.",
+      "feedback": "Nouns ending in -z follow the same rule as nouns ending in -r.",
+      "explanation": "Luz ends in the consonant -z, so the plural adds -es: muitas luzes.",
+      "mistakes": [
+        {
+          "answers": [
+            "luzs"
+          ],
+          "why": "A plain -s cannot follow -z. A noun ending in -z needs a vowel before the -s."
+        },
+        {
+          "answers": [
+            "luz"
+          ],
+          "why": "That is the singular, but muitas, many, asks for a plural."
+        }
+      ],
+      "row": "-z",
+      "gloss": [
+        {
+          "pt": "sala",
+          "en": "living room"
+        },
+        {
+          "pt": "tem",
+          "en": "has (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "muitas",
+          "en": "many",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "luz",
+          "en": "light",
+          "word": "home-029"
+        }
+      ]
+    },
+    {
+      "id": "plural-consonant-3",
+      "pattern": "consonant",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I am staying here for two months.",
+      "answers": [
+        "Fico aqui por dois meses.",
+        "Eu fico aqui por dois meses.",
+        "Vou ficar aqui por dois meses.",
+        "Eu vou ficar aqui por dois meses.",
+        "Fico aqui dois meses.",
+        "Eu fico aqui dois meses.",
+        "Vou ficar aqui dois meses.",
+        "Eu vou ficar aqui dois meses."
+      ],
+      "hint": "Mês ends in a stressed -s.",
+      "feedback": "Check the plural of mês, and notice what happens to the accent.",
+      "explanation": "Mês ends in a stressed -s, so it adds -es. The new syllable moves the word into a regular stress pattern, so the accent goes: dois meses.",
+      "mistakes": [
+        {
+          "answers": [
+            "Fico aqui por dois mês.",
+            "Eu fico aqui por dois mês."
+          ],
+          "why": "The noun stayed singular after two."
+        },
+        {
+          "answers": [
+            "Fico aqui por dois mess.",
+            "Eu fico aqui por dois mess."
+          ],
+          "why": "Adding a second s is not a Portuguese plural. A word ending in a stressed -s adds a vowel and then -s."
+        }
+      ],
+      "row": "-s (stressed)"
+    },
+    {
+      "id": "plural-consonant-4",
+      "pattern": "consonant",
+      "type": "rewrite",
+      "instruction": "Make the sentence plural: several teachers. Write the whole sentence.",
+      "source": "O professor é muito bom.",
+      "answers": [
+        "Os professores são muito bons."
+      ],
+      "hint": "Professor ends in -r, and bom ends in -m.",
+      "feedback": "The article, noun, verb and adjective all change.",
+      "explanation": "O becomes os, professor adds -es, é becomes são and bom becomes bons: os professores são muito bons.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os professors são muito bons."
+          ],
+          "why": "A noun ending in -r cannot take a bare -s. It needs a vowel before the -s."
+        },
+        {
+          "answers": [
+            "Os professores é muito bom."
+          ],
+          "why": "The subject is plural now, so the verb and the adjective must be plural too."
+        },
+        {
+          "answers": [
+            "Os professores são muito bom."
+          ],
+          "why": "The adjective still describes one person. Bom also takes a plural form."
+        }
+      ],
+      "row": "-r",
+      "gloss": [
+        {
+          "pt": "professor",
+          "en": "teacher",
+          "word": "school-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "bom",
+          "en": "good",
+          "word": "qualities-003"
+        }
+      ]
+    },
+    {
+      "id": "plural-consonant-5",
+      "pattern": "consonant",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Os lápises estão na mesa.",
+      "answers": [
+        "Os lápis estão na mesa."
+      ],
+      "hint": "Where is the stress in lápis?",
+      "feedback": "Some nouns ending in -s do not change at all in the plural.",
+      "explanation": "Lápis ends in -s but the stress falls before it, on lá. Such nouns keep the same form in the plural: os lápis.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os lápises estão na mesa."
+          ],
+          "why": "The extra -es is only for nouns stressed on the last syllable, like mês or país. Lápis is stressed on lá, so its form does not change."
+        }
+      ],
+      "row": "-s (unstressed)",
+      "gloss": [
+        {
+          "pt": "lápises",
+          "en": "pencils (lápis)",
+          "word": "school-015"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        }
+      ]
+    },
+    {
+      "id": "plural-consonant-6",
+      "pattern": "consonant",
+      "type": "build",
+      "instruction": "Build the sentence: The bars are full. Leave one tile unused.",
+      "source": "The bars are full.",
+      "tokens": [
+        "bars",
+        "estão",
+        "Os",
+        "cheios.",
+        "bares"
+      ],
+      "answers": [
+        "Os bares estão cheios."
+      ],
+      "hint": "Bar ends in -r.",
+      "feedback": "The English plural is not the Portuguese one here.",
+      "explanation": "Bar ends in the consonant -r, so its plural adds -es: os bares.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os bars estão cheios."
+          ],
+          "why": "That tile is the English plural. A Portuguese noun ending in -r adds a vowel before the -s."
+        }
+      ],
+      "row": "-r"
+    },
+    {
+      "id": "plural-m-1",
+      "pattern": "m",
+      "type": "choose",
+      "instruction": "Choose the plural of homem.",
+      "source": "Três ____ esperam o ônibus.",
+      "options": [
+        "homens",
+        "homems",
+        "homenes"
+      ],
+      "answers": [
+        "homens"
+      ],
+      "hint": "What happens to the final -m?",
+      "feedback": "A final -m turns into -n before the plural -s.",
+      "explanation": "Homem ends in -m, and -m becomes -ns in the plural: três homens.",
+      "mistakes": [
+        {
+          "answers": [
+            "homems"
+          ],
+          "why": "Portuguese never writes -ms at the end of a word. The -m changes to another letter before the -s."
+        },
+        {
+          "answers": [
+            "homenes"
+          ],
+          "why": "Nouns in -m do not add a vowel. The -m changes and only -s follows."
+        }
+      ],
+      "row": "-em",
+      "gloss": [
+        {
+          "pt": "Três",
+          "en": "three",
+          "word": "health-time-048"
+        },
+        {
+          "pt": "esperam",
+          "en": "wait for (esperar)"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
+    },
+    {
+      "id": "plural-m-2",
+      "pattern": "m",
+      "type": "complete",
+      "instruction": "Write the plural of the word in brackets.",
+      "source": "Os ____ (trem) chegam às oito.",
+      "answers": [
+        "trens"
+      ],
+      "hint": "Trem ends in -m.",
+      "feedback": "Change the final letter before adding -s.",
+      "explanation": "Trem ends in -m, so the plural is -ns: os trens.",
+      "mistakes": [
+        {
+          "answers": [
+            "trems"
+          ],
+          "why": "The spelling -ms does not exist at the end of a Portuguese word. The -m changes first."
+        },
+        {
+          "answers": [
+            "tremes"
+          ],
+          "why": "Nouns ending in -m do not add -es. Their -m changes and an -s follows."
+        },
+        {
+          "answers": [
+            "trem"
+          ],
+          "why": "That is the singular, but os and chegam show several trains."
+        }
+      ],
+      "row": "-em",
+      "gloss": [
+        {
+          "pt": "trem",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "pt": "chegam",
+          "en": "arrive (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "oito",
+          "en": "eight"
+        }
+      ]
+    },
+    {
+      "id": "plural-m-3",
+      "pattern": "m",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The clouds are white today.",
+      "answers": [
+        "As nuvens estão brancas hoje.",
+        "Hoje as nuvens estão brancas."
+      ],
+      "hint": "Nuvem ends in -m, and it is feminine.",
+      "feedback": "Check the noun ending and the adjective.",
+      "explanation": "Nuvem ends in -m, so its plural is nuvens. The adjective agrees: as nuvens estão brancas.",
+      "mistakes": [
+        {
+          "answers": [
+            "As nuvems estão brancas hoje.",
+            "Hoje as nuvems estão brancas."
+          ],
+          "why": "A Portuguese word never ends in -ms. The -m changes before the -s."
+        },
+        {
+          "answers": [
+            "As nuvens estão branca hoje.",
+            "Hoje as nuvens estão branca."
+          ],
+          "why": "The adjective stayed singular. It must be plural like the clouds."
+        }
+      ],
+      "row": "-em"
+    },
+    {
+      "id": "plural-m-4",
+      "pattern": "m",
+      "type": "rewrite",
+      "instruction": "Make the sentence plural: several trips. Write the whole sentence.",
+      "source": "A viagem é longa.",
+      "answers": [
+        "As viagens são longas."
+      ],
+      "hint": "Viagem ends in -m.",
+      "feedback": "Article, noun, verb and adjective all become plural.",
+      "explanation": "Viagem becomes viagens, a becomes as, é becomes são and longa becomes longas.",
+      "mistakes": [
+        {
+          "answers": [
+            "As viagems são longas."
+          ],
+          "why": "The -m cannot stay in front of the plural -s."
+        },
+        {
+          "answers": [
+            "As viagens é longa."
+          ],
+          "why": "The subject is plural, so the verb and the adjective must change too."
+        }
+      ],
+      "row": "-em",
+      "gloss": [
+        {
+          "pt": "viagem",
+          "en": "trip",
+          "word": "travel-017"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "longa",
+          "en": "long"
+        }
+      ]
+    },
+    {
+      "id": "plural-m-5",
+      "pattern": "m",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Eu gosto dos jardims da cidade.",
+      "answers": [
+        "Eu gosto dos jardins da cidade.",
+        "Gosto dos jardins da cidade."
+      ],
+      "hint": "Look at the plural of jardim.",
+      "feedback": "The -m of jardim cannot stand before -s.",
+      "explanation": "Jardim ends in -m, and -m becomes -ns in the plural: os jardins.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu gosto dos jardims da cidade.",
+            "Gosto dos jardims da cidade."
+          ],
+          "why": "The plural keeps the -m, but Portuguese words never end in -ms."
+        }
+      ],
+      "row": "-im",
+      "gloss": [
+        {
+          "pt": "gosto",
+          "en": "like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "jardims",
+          "en": "gardens (jardim)",
+          "word": "home-009"
+        },
+        {
+          "pt": "cidade",
+          "en": "city",
+          "word": "travel-001"
+        }
+      ]
+    },
+    {
+      "id": "plural-m-6",
+      "pattern": "m",
+      "type": "build",
+      "instruction": "Build the sentence: The young people are happy. Leave one tile unused.",
+      "source": "The young people are happy.",
+      "tokens": [
+        "estão",
+        "jovems",
+        "Os",
+        "felizes.",
+        "jovens"
+      ],
+      "answers": [
+        "Os jovens estão felizes."
+      ],
+      "hint": "Jovem ends in -m.",
+      "feedback": "One of the two noun tiles is not a Portuguese spelling.",
+      "explanation": "Jovem ends in -m, so its plural is os jovens. Feliz ends in -z and takes -es.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os jovems estão felizes."
+          ],
+          "why": "That tile keeps the -m before the -s, which Portuguese never does."
+        }
+      ],
+      "row": "-em"
+    },
+    {
+      "id": "plural-ao-1",
+      "pattern": "ao",
+      "type": "choose",
+      "instruction": "Choose the plural of avião.",
+      "source": "Os ____ saem cedo do aeroporto.",
+      "options": [
+        "aviões",
+        "aviães",
+        "aviãos"
+      ],
+      "answers": [
+        "aviões"
+      ],
+      "hint": "Most nouns in -ão take the most common plural.",
+      "feedback": "When in doubt, -ão becomes -ões.",
+      "explanation": "Avião follows the common pattern, -ão to -ões: os aviões.",
+      "mistakes": [
+        {
+          "answers": [
+            "aviães"
+          ],
+          "why": "The ending -ães belongs to a short list of words such as pão and cão. Avião is not on it."
+        },
+        {
+          "answers": [
+            "aviãos"
+          ],
+          "why": "The ending -ãos belongs to a few words such as mão and irmão. Avião is not one of them."
+        }
+      ],
+      "row": "-ões",
+      "gloss": [
+        {
+          "pt": "saem",
+          "en": "leave (sair)"
+        },
+        {
+          "pt": "cedo",
+          "en": "early"
+        },
+        {
+          "pt": "aeroporto",
+          "en": "airport"
+        }
+      ]
+    },
+    {
+      "id": "plural-ao-2",
+      "pattern": "ao",
+      "type": "choose",
+      "instruction": "Choose the plural of pão.",
+      "source": "Eu compro dois ____ na padaria.",
+      "options": [
+        "pães",
+        "pões",
+        "pãos"
+      ],
+      "answers": [
+        "pães"
+      ],
+      "hint": "Pão is one of the few words with a special plural.",
+      "feedback": "Pão belongs to the small -ães group.",
+      "explanation": "Pão is one of the few nouns whose plural is -ães, like cão and alemão: dois pães.",
+      "mistakes": [
+        {
+          "answers": [
+            "pões"
+          ],
+          "why": "This is the usual ending for -ão words, but pão is an exception and takes a different one."
+        },
+        {
+          "answers": [
+            "pãos"
+          ],
+          "why": "The ending -ãos is for words like mão and irmão. Pão belongs to a different small group."
+        }
+      ],
+      "row": "-ães",
+      "gloss": [
+        {
+          "pt": "compro",
+          "en": "buy (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "padaria",
+          "en": "bakery"
+        }
+      ]
+    },
+    {
+      "id": "plural-ao-3",
+      "pattern": "ao",
+      "type": "complete",
+      "instruction": "Write the plural of the word in brackets.",
+      "source": "Lave as ____ (mão) antes de comer.",
+      "answers": [
+        "mãos"
+      ],
+      "hint": "Mão belongs to the smallest group: it just adds -s.",
+      "feedback": "Mão keeps its -ão and adds one letter.",
+      "explanation": "Mão is one of the few -ão nouns that simply add -s, like irmão: as mãos.",
+      "mistakes": [
+        {
+          "answers": [
+            "mões"
+          ],
+          "why": "That is the common ending for -ão nouns, but mão is an exception."
+        },
+        {
+          "answers": [
+            "mães"
+          ],
+          "why": "That word exists, but it means mothers, the plural of mãe. Hands is a different word."
+        },
+        {
+          "answers": [
+            "mão"
+          ],
+          "why": "That is the singular, and you wash both hands."
+        }
+      ],
+      "row": "-ãos",
+      "gloss": [
+        {
+          "pt": "Lave",
+          "en": "wash (lavar)",
+          "word": "verbs-080"
+        },
+        {
+          "pt": "mão",
+          "en": "hand",
+          "word": "health-time-004"
+        },
+        {
+          "pt": "antes",
+          "en": "before"
+        },
+        {
+          "pt": "comer",
+          "en": "eat",
+          "word": "verbs-059"
+        }
+      ]
+    },
+    {
+      "id": "plural-ao-4",
+      "pattern": "ao",
+      "type": "complete",
+      "instruction": "Write the plural of the word in brackets.",
+      "source": "Tenho dois ____ (irmão) e uma irmã.",
+      "answers": [
+        "irmãos"
+      ],
+      "hint": "Irmão is in the same group as mão.",
+      "feedback": "Irmão just adds -s.",
+      "explanation": "Irmão is one of the -ão nouns that simply add -s: dois irmãos.",
+      "mistakes": [
+        {
+          "answers": [
+            "irmões"
+          ],
+          "why": "That is the common ending for -ão words, but irmão is an exception."
+        },
+        {
+          "answers": [
+            "irmães"
+          ],
+          "why": "The ending -ães is for words like pão and alemão. Irmão belongs to another group."
+        }
+      ],
+      "row": "-ãos",
+      "gloss": [
+        {
+          "pt": "Tenho",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister"
+        }
+      ]
+    },
+    {
+      "id": "plural-ao-5",
+      "pattern": "ao",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The stations are closed.",
+      "answers": [
+        "As estações estão fechadas."
+      ],
+      "hint": "Estação is feminine and takes the common -ão plural.",
+      "feedback": "Check the plural of estação and the adjective.",
+      "explanation": "Estação follows the common pattern: estações. The adjective agrees: fechadas.",
+      "mistakes": [
+        {
+          "answers": [
+            "As estaçãos estão fechadas."
+          ],
+          "why": "Only a few words such as mão take a bare -s. Estação takes the common ending."
+        },
+        {
+          "answers": [
+            "As estaçães estão fechadas."
+          ],
+          "why": "The ending -ães is for a short list like pão and cão. Estação is not on it."
+        },
+        {
+          "answers": [
+            "As estações estão fechada."
+          ],
+          "why": "The adjective stayed singular. It must agree with the plural noun."
+        }
+      ],
+      "row": "-ões"
+    },
+    {
+      "id": "plural-ao-6",
+      "pattern": "ao",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Os alemões gostam de café.",
+      "answers": [
+        "Os alemães gostam de café."
+      ],
+      "hint": "Alemão is in the same small group as pão.",
+      "feedback": "Alemão does not take the common -ão plural.",
+      "explanation": "Alemão is one of the few words whose plural ends in -ães, like pão and cão: os alemães.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os alemões gostam de café."
+          ],
+          "why": "That is the usual -ão plural, but alemão is an exception."
+        },
+        {
+          "answers": [
+            "Os alemãos gostam de café."
+          ],
+          "why": "The bare -s is for words like mão and irmão. Alemão belongs to the pão group."
+        }
+      ],
+      "row": "-ães",
+      "gloss": [
+        {
+          "pt": "alemões",
+          "en": "Germans (alemão)"
+        },
+        {
+          "pt": "gostam",
+          "en": "like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "plural-ao-7",
+      "pattern": "ao",
+      "type": "build",
+      "instruction": "Build the sentence: The limes are green. Leave one tile unused.",
+      "source": "The limes are green.",
+      "tokens": [
+        "limães",
+        "Os",
+        "verdes.",
+        "limões",
+        "estão"
+      ],
+      "answers": [
+        "Os limões estão verdes."
+      ],
+      "hint": "Limão follows the most common pattern.",
+      "feedback": "Only pão, cão, alemão and a few others take -ães.",
+      "explanation": "Limão takes the common plural -ões: os limões.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os limães estão verdes."
+          ],
+          "why": "The ending -ães is for a short list like pão and cão. Limão takes the common ending."
+        }
+      ],
+      "row": "-ões"
+    },
+    {
+      "id": "plural-alolul-1",
+      "pattern": "alolul",
+      "type": "choose",
+      "instruction": "Choose the plural of animal.",
+      "source": "Os ____ do zoológico estão dormindo.",
+      "options": [
+        "animais",
+        "animals",
+        "animales"
+      ],
+      "answers": [
+        "animais"
+      ],
+      "hint": "What happens to a final -l?",
+      "feedback": "A final -l turns into -i before the -s.",
+      "explanation": "Animal ends in -al, which becomes -ais in the plural: os animais.",
+      "mistakes": [
+        {
+          "answers": [
+            "animals"
+          ],
+          "why": "That is the English plural. In Portuguese the final -l changes before the -s."
+        },
+        {
+          "answers": [
+            "animales"
+          ],
+          "why": "That is the Spanish plural. In Portuguese the final -l changes instead of taking -es."
+        }
+      ],
+      "row": "-al",
+      "gloss": [
+        {
+          "pt": "zoológico",
+          "en": "zoo"
+        },
+        {
+          "pt": "estão dormindo",
+          "en": "are sleeping"
+        }
+      ]
+    },
+    {
+      "id": "plural-alolul-2",
+      "pattern": "alolul",
+      "type": "complete",
+      "instruction": "Write the plural of the word in brackets.",
+      "source": "Ele lê dois ____ (jornal) por dia.",
+      "answers": [
+        "jornais"
+      ],
+      "hint": "Jornal ends in -al.",
+      "feedback": "Change the -l, then add -s.",
+      "explanation": "Jornal ends in -al, so its plural is -ais: dois jornais.",
+      "mistakes": [
+        {
+          "answers": [
+            "jornals"
+          ],
+          "why": "The -l cannot stay in front of the plural -s. It changes to another letter."
+        },
+        {
+          "answers": [
+            "jornales"
+          ],
+          "why": "Nouns ending in -l do not add -es. The -l changes instead."
+        },
+        {
+          "answers": [
+            "jornal"
+          ],
+          "why": "That is the singular, but dois asks for a plural."
+        }
+      ],
+      "row": "-al",
+      "gloss": [
+        {
+          "pt": "lê",
+          "en": "reads (ler)",
+          "word": "verbs-057"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "jornal",
+          "en": "newspaper",
+          "word": "media-026"
+        },
+        {
+          "pt": "por dia",
+          "en": "per day"
+        }
+      ]
+    },
+    {
+      "id": "plural-alolul-3",
+      "pattern": "alolul",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The hospitals are big.",
+      "answers": [
+        "Os hospitais são grandes."
+      ],
+      "hint": "Hospital ends in -al.",
+      "feedback": "Check what happens to the final -l.",
+      "explanation": "Hospital ends in -al, so the plural is hospitais. Grande ends in a vowel and adds -s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os hospitals são grandes."
+          ],
+          "why": "The -l stays in front of the -s, as in English. In Portuguese it changes."
+        },
+        {
+          "answers": [
+            "Os hospitales são grandes."
+          ],
+          "why": "That is the Spanish pattern. A Portuguese noun in -l does not take -es."
+        },
+        {
+          "answers": [
+            "Os hospitais são grande."
+          ],
+          "why": "The adjective must be plural too."
+        }
+      ],
+      "row": "-al"
+    },
+    {
+      "id": "plural-alolul-4",
+      "pattern": "alolul",
+      "type": "rewrite",
+      "instruction": "Make the sentence plural: several cars. Write the whole sentence.",
+      "source": "O carro azul é novo.",
+      "answers": [
+        "Os carros azuis são novos."
+      ],
+      "hint": "Azul ends in -ul, and adjectives agree with the noun.",
+      "feedback": "Every word describing the car changes, azul included.",
+      "explanation": "Carro adds -s, azul changes -ul to -uis, é becomes são and novo adds -s: os carros azuis são novos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os carros azul são novos."
+          ],
+          "why": "The colour is an adjective and must be plural like the noun."
+        },
+        {
+          "answers": [
+            "Os carros azuls são novos."
+          ],
+          "why": "A final -l cannot stand before -s. It changes to another letter."
+        },
+        {
+          "answers": [
+            "Os carros azuis é novo."
+          ],
+          "why": "The verb and the last adjective still describe one car."
+        }
+      ],
+      "row": "-ul",
+      "gloss": [
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "pt": "azul",
+          "en": "blue",
+          "word": "qualities-095"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "novo",
+          "en": "new",
+          "word": "qualities-008"
+        }
+      ]
+    },
+    {
+      "id": "plural-alolul-5",
+      "pattern": "alolul",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Os lençols estão limpos.",
+      "answers": [
+        "Os lençóis estão limpos."
+      ],
+      "hint": "Lençol ends in -ol.",
+      "feedback": "A final -ol changes in the plural and gains an accent.",
+      "explanation": "Lençol ends in -ol, which becomes -óis in the plural, with an accent to keep the open o: os lençóis.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os lençols estão limpos."
+          ],
+          "why": "The -l cannot stay before the plural -s."
+        },
+        {
+          "answers": [
+            "Os lençoles estão limpos."
+          ],
+          "why": "Nouns in -l do not add -es; the -l changes instead."
+        }
+      ],
+      "row": "-ol",
+      "gloss": [
+        {
+          "pt": "lençols",
+          "en": "sheets (lençol)"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "limpos",
+          "en": "clean",
+          "word": "qualities-026"
+        }
+      ]
+    },
+    {
+      "id": "plural-alolul-6",
+      "pattern": "alolul",
+      "type": "build",
+      "instruction": "Build the sentence: It costs ten reais. Leave one tile unused.",
+      "source": "It costs ten reais.",
+      "tokens": [
+        "reals.",
+        "Custa",
+        "reais.",
+        "dez"
+      ],
+      "answers": [
+        "Custa dez reais."
+      ],
+      "hint": "Real, the Brazilian money, ends in -al.",
+      "feedback": "The currency follows the same -al rule as any noun.",
+      "explanation": "Real ends in -al, so its plural is reais: dez reais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Custa dez reals."
+          ],
+          "why": "The -l cannot stand before the plural -s; it changes."
+        }
+      ],
+      "row": "-al"
+    },
+    {
+      "id": "plural-elil-1",
+      "pattern": "elil",
+      "type": "choose",
+      "instruction": "Choose the plural of hotel.",
+      "source": "Os ____ aqui são caros.",
+      "options": [
+        "hotéis",
+        "hotels",
+        "hoteles"
+      ],
+      "answers": [
+        "hotéis"
+      ],
+      "hint": "What happens to a final -el?",
+      "feedback": "A stressed -el changes and gains an accent.",
+      "explanation": "Hotel ends in a stressed -el, which becomes -éis in the plural: os hotéis.",
+      "mistakes": [
+        {
+          "answers": [
+            "hotels"
+          ],
+          "why": "That is the English plural. In Portuguese the -l cannot stand before -s."
+        },
+        {
+          "answers": [
+            "hoteles"
+          ],
+          "why": "That is the Spanish plural. Portuguese changes the -l instead of adding -es."
+        }
+      ],
+      "row": "-el",
+      "gloss": [
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "caros",
+          "en": "expensive",
+          "word": "qualities-051"
+        }
+      ]
+    },
+    {
+      "id": "plural-elil-2",
+      "pattern": "elil",
+      "type": "complete",
+      "instruction": "Write the plural of the word in brackets.",
+      "source": "Preciso de dois ____ (papel) para a aula.",
+      "answers": [
+        "papéis"
+      ],
+      "hint": "Papel ends in a stressed -el.",
+      "feedback": "The -el changes and an accent appears.",
+      "explanation": "Papel ends in stressed -el, so the plural is -éis: dois papéis.",
+      "mistakes": [
+        {
+          "answers": [
+            "papels"
+          ],
+          "why": "The -l cannot stay before the plural -s."
+        },
+        {
+          "answers": [
+            "papeles"
+          ],
+          "why": "That is the Spanish form. In Portuguese the -l changes instead of taking -es."
+        },
+        {
+          "answers": [
+            "papel"
+          ],
+          "why": "That is the singular, but dois asks for a plural."
+        }
+      ],
+      "row": "-el",
+      "gloss": [
+        {
+          "pt": "Preciso",
+          "en": "need (precisar)",
+          "word": "verbs-024"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "papel",
+          "en": "sheet of paper",
+          "word": "school-019"
+        },
+        {
+          "pt": "para",
+          "en": "for",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "aula",
+          "en": "class"
+        }
+      ]
+    },
+    {
+      "id": "plural-elil-3",
+      "pattern": "elil",
+      "type": "choose",
+      "instruction": "Choose the plural of gentil, kind.",
+      "source": "Esses rapazes são muito ____.",
+      "options": [
+        "gentis",
+        "genteis",
+        "gentiles"
+      ],
+      "answers": [
+        "gentis"
+      ],
+      "hint": "In gentil the stress falls on the last syllable, -til.",
+      "feedback": "A stressed -il simply becomes -is.",
+      "explanation": "Gentil is stressed on -il, and a stressed -il becomes -is: muito gentis.",
+      "mistakes": [
+        {
+          "answers": [
+            "genteis"
+          ],
+          "why": "The ending -eis is for -il words stressed earlier, like fácil. Gentil is stressed at the end."
+        },
+        {
+          "answers": [
+            "gentiles"
+          ],
+          "why": "That is the Spanish pattern. A Portuguese -l changes instead of taking -es."
+        }
+      ],
+      "row": "-il (stressed)",
+      "gloss": [
+        {
+          "pt": "Esses",
+          "en": "these; those"
+        },
+        {
+          "pt": "rapazes",
+          "en": "young men",
+          "word": "people-008"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        }
+      ]
+    },
+    {
+      "id": "plural-elil-4",
+      "pattern": "elil",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "These books are useful.",
+      "answers": [
+        "Estes livros são úteis.",
+        "Esses livros são úteis."
+      ],
+      "hint": "Útil is stressed on ú, not on -il.",
+      "feedback": "An unstressed -il has its own plural.",
+      "explanation": "Útil is stressed on the first syllable, so its -il becomes -eis: úteis. Livro adds -s.",
+      "mistakes": [
+        {
+          "answers": [
+            "Estes livros são útis.",
+            "Esses livros são útis."
+          ],
+          "why": "The ending -is is only for -il stressed at the end, like gentil. Útil is stressed on ú."
+        },
+        {
+          "answers": [
+            "Estes livros são útils.",
+            "Esses livros são útils."
+          ],
+          "why": "The -l cannot stand before the plural -s."
+        },
+        {
+          "answers": [
+            "Estes livros são útil.",
+            "Esses livros são útil."
+          ],
+          "why": "The adjective must be plural like the books."
+        }
+      ],
+      "row": "-il (unstressed)"
+    },
+    {
+      "id": "plural-elil-5",
+      "pattern": "elil",
+      "type": "rewrite",
+      "instruction": "Make the sentence plural: several exercises. Write the whole sentence.",
+      "source": "O exercício é difícil.",
+      "answers": [
+        "Os exercícios são difíceis."
+      ],
+      "hint": "Difícil is stressed on fí, not on -il.",
+      "feedback": "The adjective follows the unstressed -il rule.",
+      "explanation": "Exercício adds -s. Difícil is stressed before -il, so -il becomes -eis: difíceis.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os exercícios são difícils."
+          ],
+          "why": "The -l cannot stay before the plural -s."
+        },
+        {
+          "answers": [
+            "Os exercícios são difícis."
+          ],
+          "why": "The ending -is is for -il stressed at the end. Difícil is stressed on fí."
+        },
+        {
+          "answers": [
+            "Os exercícios são difícil."
+          ],
+          "why": "The adjective still describes one exercise."
+        }
+      ],
+      "row": "-il (unstressed)",
+      "gloss": [
+        {
+          "pt": "exercício",
+          "en": "exercise"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "difícil",
+          "en": "difficult",
+          "word": "qualities-035"
+        }
+      ]
+    },
+    {
+      "id": "plural-elil-6",
+      "pattern": "elil",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Os anels são de ouro.",
+      "answers": [
+        "Os anéis são de ouro."
+      ],
+      "hint": "Anel ends in a stressed -el.",
+      "feedback": "A stressed -el changes and takes an accent.",
+      "explanation": "Anel ends in stressed -el, so the plural is -éis: os anéis.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os anels são de ouro."
+          ],
+          "why": "The -l cannot stand before the plural -s."
+        },
+        {
+          "answers": [
+            "Os aneles são de ouro."
+          ],
+          "why": "Nouns in -l do not add -es; the -l changes."
+        }
+      ],
+      "row": "-el",
+      "gloss": [
+        {
+          "pt": "anels",
+          "en": "rings (anel)"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "ouro",
+          "en": "gold"
+        }
+      ]
+    },
+    {
+      "id": "plural-elil-7",
+      "pattern": "elil",
+      "type": "build",
+      "instruction": "Build the sentence: The papers are on the table. Leave one tile unused.",
+      "source": "The papers are on the table.",
+      "tokens": [
+        "na",
+        "papels",
+        "Os",
+        "mesa.",
+        "estão",
+        "papéis"
+      ],
+      "answers": [
+        "Os papéis estão na mesa."
+      ],
+      "hint": "Papel ends in a stressed -el.",
+      "feedback": "One noun tile keeps the -l, which is not possible.",
+      "explanation": "Papel ends in stressed -el, so its plural is os papéis.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os papels estão na mesa."
+          ],
+          "why": "That tile keeps the -l before the -s, which Portuguese never does."
+        }
+      ],
+      "row": "-el"
+    },
+    {
+      "id": "plural-agreement-1",
+      "pattern": "agreement",
+      "type": "choose",
+      "instruction": "Choose the article.",
+      "source": "____ meninas estão na escola.",
+      "options": [
+        "As",
+        "Os",
+        "A"
+      ],
+      "answers": [
+        "As"
+      ],
+      "hint": "Meninas is feminine and plural.",
+      "feedback": "The article matches the noun in gender and number.",
+      "explanation": "Meninas is feminine plural, so the article is as: as meninas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os"
+          ],
+          "why": "That is the masculine plural. Meninas are girls, so the noun is feminine."
+        },
+        {
+          "answers": [
+            "A"
+          ],
+          "why": "That is the singular article, but meninas ends in -s and means several girls."
+        }
+      ],
+      "row": "a",
+      "gloss": [
+        {
+          "pt": "meninas",
+          "en": "girls",
+          "word": "people-007"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "escola",
+          "en": "school"
+        }
+      ]
+    },
+    {
+      "id": "plural-agreement-2",
+      "pattern": "agreement",
+      "type": "choose",
+      "instruction": "Choose the adjective.",
+      "source": "Os carros ____ são caros.",
+      "options": [
+        "novos",
+        "novo",
+        "novas"
+      ],
+      "answers": [
+        "novos"
+      ],
+      "hint": "Carros is masculine plural.",
+      "feedback": "The adjective takes the gender and number of the noun.",
+      "explanation": "Carros is masculine plural, so the adjective is masculine plural too: os carros novos.",
+      "mistakes": [
+        {
+          "answers": [
+            "novo"
+          ],
+          "why": "That is the singular form, but carros is plural."
+        },
+        {
+          "answers": [
+            "novas"
+          ],
+          "why": "That is the feminine plural. Carro is masculine, as the article os shows."
+        }
+      ],
+      "row": "o",
+      "gloss": [
+        {
+          "pt": "carros",
+          "en": "cars",
+          "word": "travel-004"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "caros",
+          "en": "expensive",
+          "word": "qualities-051"
+        }
+      ]
+    },
+    {
+      "id": "plural-agreement-3",
+      "pattern": "agreement",
+      "type": "complete",
+      "instruction": "Write the right form of the word in brackets.",
+      "source": "Compramos ____ (um) livros novos.",
+      "answers": [
+        "uns"
+      ],
+      "hint": "Um also has a plural, meaning some.",
+      "feedback": "The indefinite article follows the noun into the plural.",
+      "explanation": "Livros is masculine plural, so um becomes uns, some: uns livros novos. Um ends in -m, so it follows the -ns rule.",
+      "mistakes": [
+        {
+          "answers": [
+            "um"
+          ],
+          "why": "That is the singular article, but livros is plural."
+        },
+        {
+          "answers": [
+            "umas"
+          ],
+          "why": "That is the feminine plural. Livro is masculine."
+        }
+      ],
+      "row": "um",
+      "gloss": [
+        {
+          "pt": "Compramos",
+          "en": "buy (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "livros",
+          "en": "books",
+          "word": "school-013"
+        },
+        {
+          "pt": "novos",
+          "en": "new",
+          "word": "qualities-008"
+        }
+      ]
+    },
+    {
+      "id": "plural-agreement-4",
+      "pattern": "agreement",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The white cats sleep on the sofa.",
+      "answers": [
+        "Os gatos brancos dormem no sofá."
+      ],
+      "hint": "The article, the noun and the adjective all carry the plural.",
+      "feedback": "Check every word around gatos.",
+      "explanation": "Os gatos brancos: the article, noun and adjective all take the masculine plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os gatos branco dormem no sofá."
+          ],
+          "why": "The adjective stayed singular. It must be plural like the cats."
+        },
+        {
+          "answers": [
+            "O gatos brancos dormem no sofá."
+          ],
+          "why": "The article stayed singular in front of a plural noun."
+        },
+        {
+          "answers": [
+            "Os brancos gatos dormem no sofá."
+          ],
+          "why": "A colour comes after the noun in Portuguese."
+        }
+      ],
+      "row": "o"
+    },
+    {
+      "id": "plural-agreement-5",
+      "pattern": "agreement",
+      "type": "rewrite",
+      "instruction": "Make the sentence plural: several shops. Write the whole sentence.",
+      "source": "A loja pequena está fechada.",
+      "answers": [
+        "As lojas pequenas estão fechadas."
+      ],
+      "hint": "Five words change.",
+      "feedback": "Article, noun, both adjectives and the verb become plural.",
+      "explanation": "As lojas pequenas estão fechadas: every word linked to loja becomes feminine plural, and está becomes estão.",
+      "mistakes": [
+        {
+          "answers": [
+            "As lojas pequena estão fechadas."
+          ],
+          "why": "The first adjective still describes one shop."
+        },
+        {
+          "answers": [
+            "A lojas pequenas estão fechadas."
+          ],
+          "why": "The article stayed singular."
+        },
+        {
+          "answers": [
+            "As lojas pequenas está fechada."
+          ],
+          "why": "The verb and the last adjective still describe one shop."
+        }
+      ],
+      "row": "a",
+      "gloss": [
+        {
+          "pt": "loja",
+          "en": "shop",
+          "word": "shopping-012"
+        },
+        {
+          "pt": "pequena",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "fechada",
+          "en": "closed",
+          "word": "qualities-033"
+        }
+      ]
+    },
+    {
+      "id": "plural-agreement-6",
+      "pattern": "agreement",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Eu tenho dois gato preto.",
+      "answers": [
+        "Eu tenho dois gatos pretos.",
+        "Tenho dois gatos pretos."
+      ],
+      "hint": "After dois, which words must be plural?",
+      "feedback": "Both the noun and the adjective carry the plural.",
+      "explanation": "Dois asks for a plural noun, and the adjective agrees with it: dois gatos pretos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu tenho dois gato preto.",
+            "Tenho dois gato preto."
+          ],
+          "why": "Both the noun and the adjective are singular after two."
+        },
+        {
+          "answers": [
+            "Eu tenho dois gatos preto.",
+            "Tenho dois gatos preto."
+          ],
+          "why": "The noun is plural now, but the colour still describes one cat."
+        }
+      ],
+      "row": "o",
+      "gloss": [
+        {
+          "pt": "tenho",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "dois",
+          "en": "two",
+          "word": "health-time-047"
+        },
+        {
+          "pt": "gato",
+          "en": "cat",
+          "word": "nature-027"
+        },
+        {
+          "pt": "preto",
+          "en": "black",
+          "word": "qualities-093"
+        }
+      ]
+    },
+    {
+      "id": "plural-agreement-7",
+      "pattern": "agreement",
+      "type": "build",
+      "instruction": "Build the sentence: The old men read the newspapers. Leave one tile unused.",
+      "source": "The old men read the newspapers.",
+      "tokens": [
+        "jornais.",
+        "velho",
+        "Os",
+        "leem",
+        "homens",
+        "os",
+        "velhos"
+      ],
+      "answers": [
+        "Os homens velhos leem os jornais."
+      ],
+      "hint": "The adjective comes after the noun and agrees with it.",
+      "feedback": "Pick the adjective form that matches homens.",
+      "explanation": "Homens is masculine plural, so the adjective is velhos: os homens velhos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os homens velho leem os jornais."
+          ],
+          "why": "That adjective tile is singular, but it describes several men."
+        }
+      ],
+      "row": "o"
+    }
+  ]
+}

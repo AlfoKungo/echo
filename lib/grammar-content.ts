@@ -2,13 +2,14 @@ import { join } from 'node:path';
 import type { GrammarExercise, GrammarGuideSection, GrammarTopicContent, GrammarUnitContent } from '../contract';
 import { StoreError } from './store';
 import { unglossed, wholeMatches } from './comprehension-content';
+import type { LanguageCode } from './language';
 
 // Question types whose source is a French sentence the learner reads; its words carry glosses.
 export const GLOSSED_TYPES = new Set(['choose', 'complete', 'repair', 'rewrite']);
 
 // A gloss covers every content word of the source, as in Read, names words and phrases that stand whole in it, and
 // never names a word of the answer a choose or complete question asks for. `wordIds` checks vocabulary links.
-export function glossProblems(exercise: GrammarExercise, wordIds?: Set<string>): string[] {
+export function glossProblems(exercise: GrammarExercise, wordIds?: Set<string>, code: LanguageCode = 'fr'): string[] {
   const where = `${exercise.id}.gloss`;
   const gloss = exercise.gloss;
   if (!GLOSSED_TYPES.has(exercise.type)) return gloss === undefined ? [] : [`${where}: only ${[...GLOSSED_TYPES].join(', ')} questions carry a gloss.`];
@@ -28,12 +29,13 @@ export function glossProblems(exercise: GrammarExercise, wordIds?: Set<string>):
     const english = ` ${normalize(entry.en).replace(/[^\p{L}' ]+/gu, ' ')} `;
     for (const word of asked) if (english.includes(` ${word} `)) problems.push(`${where}: "${entry.fr}" is glossed "${entry.en}", which names "${word}" from the answer.`);
   }
-  const missing = unglossed(exercise.source, gloss.filter((entry) => typeof entry?.fr === 'string'));
+  const missing = unglossed(exercise.source, gloss.filter((entry) => typeof entry?.fr === 'string'), code);
   if (missing.length) problems.push(`${where} leaves ${missing.map((word) => `"${word}"`).join(', ')} without a meaning.`);
   return problems;
 }
 
-export type Course = { units: GrammarUnitContent[]; topics: GrammarTopicContent[] };
+// code names the language the course teaches (French when absent), which decides the words a gloss may leave out.
+export type Course = { units: GrammarUnitContent[]; topics: GrammarTopicContent[]; code?: LanguageCode };
 export type Classification = { kind: 'correct' | 'spelling' | 'alternative' | 'incorrect'; message?: string };
 
 const TYPES = new Set(['rewrite', 'build', 'complete', 'repair', 'choose', 'translate', 'conjugate']);
@@ -45,7 +47,9 @@ export function normalize(answer: string): string {
     .replace(/[\s.!?…]+$/u, '').trim();
 }
 
-// Ligatures are not accents, but a phone keyboard makes "soeur" for "sœur" the same kind of slip.
+// Ligatures are not accents, but a phone keyboard makes "soeur" for "sœur" the same kind of slip. Decomposing also
+// folds Portuguese ã, ç, é… and Swedish å, ä, ö to their bare letters, so a missing mark is a spelling slip in every
+// language; strictAccents keeps it wrong where the mark makes another word (pt e/é, sv har/här).
 export function stripAccents(normalized: string): string {
   return normalized.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/œ/g, 'oe').replace(/æ/g, 'ae').normalize('NFC');
 }
@@ -217,7 +221,7 @@ export function validateCourse(course: Course): void {
     if (!Array.isArray(topic.exercises) || !topic.exercises.length) fail(`topic ${topic.id} has no exercises.`);
     for (const exercise of topic.exercises) {
       validateExercise(exercise, topic.id, exerciseIds, text, fail);
-      if (exercise.gloss !== undefined) { const problem = glossProblems(exercise)[0]; if (problem) fail(problem); }
+      if (exercise.gloss !== undefined) { const problem = glossProblems(exercise, undefined, course.code)[0]; if (problem) fail(problem); }
     }
     const sections = validateGuide(topic, text, fail);
     for (const exercise of topic.exercises) {
@@ -318,17 +322,37 @@ function validateExercise(
   } else if (!exercise.mistakes.length || exercise.mistakes.length > 5) fail(`${label} needs 1 to 5 mistakes.`);
 }
 
-export async function loadCourse(dir: string): Promise<Course> {
+// A course outside French writes the learnt text of guide examples and glosses under its language's key (pt, sv), as
+// its deck does; loading copies it into Echo's internal fr field.
+export async function loadCourse(dir: string, code: LanguageCode = 'fr'): Promise<Course> {
   const units = await Bun.file(join(dir, 'units.json')).json() as GrammarUnitContent[];
   const topics: GrammarTopicContent[] = [];
   for (const unit of Array.isArray(units) ? units : []) {
     for (const id of Array.isArray(unit?.topics) ? unit.topics : []) {
       const file = Bun.file(join(dir, `${id}.json`));
       if (!await file.exists()) throw new StoreError(`Grammar content: units.json lists ${id}, but there is no ${id}.json.`);
-      topics.push(await file.json() as GrammarTopicContent);
+      const topic = await file.json() as GrammarTopicContent;
+      topics.push(code === 'fr' ? topic : fromLanguageKey(topic, code));
     }
   }
-  const course = { units, topics };
+  const course: Course = code === 'fr' ? { units, topics } : { units, topics, code };
   validateCourse(course);
   return course;
+}
+
+export function fromLanguageKey(topic: GrammarTopicContent, code: LanguageCode): GrammarTopicContent {
+  const mapped = <T extends object>(entry: T): T => {
+    if (!entry || typeof entry !== 'object' || !(code in entry)) return entry;
+    const { [code]: text, ...rest } = entry as Record<string, unknown>;
+    return { ...rest, fr: text } as T;
+  };
+  return {
+    ...topic,
+    guide: topic.guide && Array.isArray(topic.guide.sections)
+      ? { ...topic.guide, sections: topic.guide.sections.map((section) => (Array.isArray(section?.examples) ? { ...section, examples: section.examples.map(mapped) } : section)) }
+      : topic.guide,
+    exercises: Array.isArray(topic.exercises)
+      ? topic.exercises.map((exercise) => (Array.isArray(exercise?.gloss) ? { ...exercise, gloss: exercise.gloss.map(mapped) } : exercise))
+      : topic.exercises,
+  };
 }

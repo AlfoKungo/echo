@@ -1,0 +1,2394 @@
+{
+  "id": "modal-verbs",
+  "unit": "verbs",
+  "level": "A1",
+  "title": "Modal verbs",
+  "description": "Kan, vill, ska, måste, får and bör with a bare infinitive, their negatives and their past forms.",
+  "mark": "kan · vill · måste",
+  "guide": {
+    "summary": "Swedish modal verbs work like English can and must: they are followed by the plain infinitive, with no att. This page covers their forms, vill ha for wanting things, permission with får, the difference between måste and behöver inte, where inte goes, and the past.",
+    "sections": [
+      {
+        "id": "forms",
+        "title": "Six modal verbs",
+        "text": "Modal verbs say whether you can, want, will, must, may or ought to do something. In the present they have one short form for every person; only får and bör end in -r.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "presens",
+            "preteritum",
+            "meaning"
+          ],
+          "rows": [
+            [
+              "kunna",
+              "kan",
+              "kunde",
+              "can, be able to"
+            ],
+            [
+              "vilja",
+              "vill",
+              "ville",
+              "want to"
+            ],
+            [
+              "ska",
+              "ska",
+              "skulle",
+              "will, be going to, shall"
+            ],
+            [
+              "måste",
+              "måste",
+              "måste (or var tvungen att)",
+              "must, have to"
+            ],
+            [
+              "få",
+              "får",
+              "fick",
+              "may, be allowed to"
+            ],
+            [
+              "böra",
+              "bör",
+              "borde",
+              "ought to, should"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the modal you need from its meaning.",
+          "Use the same present form for every person: jag kan, vi kan.",
+          "Do not add -r or -ar, except to få, which is får."
+        ],
+        "examples": [
+          {
+            "sv": "Hon kan laga mat.",
+            "en": "She can cook."
+          },
+          {
+            "sv": "Du bör sova mer.",
+            "en": "You ought to sleep more."
+          }
+        ],
+        "watch": [
+          "Viller, kanar and måstar do not exist.",
+          "Får keeps its ring: far means father."
+        ]
+      },
+      {
+        "id": "bare-infinitive",
+        "title": "No att after a modal",
+        "text": "After a modal the next verb is the plain infinitive, with nothing in between. English can swim has no to either; Swedish extends that to all six verbs, even where English says want to.",
+        "steps": [
+          "Put the modal second, after the subject.",
+          "Follow it directly with the infinitive.",
+          "Leave out att, and keep the second verb free of tense endings."
+        ],
+        "examples": [
+          {
+            "sv": "Jag kan simma.",
+            "en": "I can swim."
+          },
+          {
+            "sv": "Vi ska äta middag nu.",
+            "en": "We are going to eat dinner now."
+          },
+          {
+            "sv": "Jag vill sova.",
+            "en": "I want to sleep."
+          }
+        ],
+        "watch": [
+          "Jag kan att simma is wrong.",
+          "Only the modal shows tense: jag vill läsa, never jag vill läser."
+        ]
+      },
+      {
+        "id": "vill-ha",
+        "title": "Vill ha: wanting a thing",
+        "text": "Vill always needs a verb after it. To want a thing, Swedish says want to have: vill ha.",
+        "steps": [
+          "Ask: is the wanted thing an object or an action?",
+          "For an object, say vill ha plus the thing.",
+          "For an action, say vill plus that verb."
+        ],
+        "examples": [
+          {
+            "sv": "Jag vill ha kaffe.",
+            "en": "I want coffee."
+          },
+          {
+            "sv": "Barnen vill gå hem nu.",
+            "en": "The children want to go home now."
+          }
+        ],
+        "watch": [
+          "Jag vill kaffe is wrong: a verb is missing.",
+          "Vill ha, not vill har."
+        ]
+      },
+      {
+        "id": "far",
+        "title": "Får: may, be allowed to",
+        "text": "Får asks or gives permission. Får inte is a ban: must not.",
+        "steps": [
+          "For permission, use får.",
+          "To ask, put får first: Får jag ...?",
+          "For a ban, say får inte."
+        ],
+        "examples": [
+          {
+            "sv": "Får jag sitta här?",
+            "en": "May I sit here?"
+          },
+          {
+            "sv": "Man får inte röka här.",
+            "en": "You must not smoke here."
+          }
+        ],
+        "watch": [
+          "English must not becomes får inte, not måste inte."
+        ]
+      },
+      {
+        "id": "maste-behover",
+        "title": "Måste and behöver inte",
+        "text": "Måste means must or have to. To say there is no need, use behöver inte. Måste inte is heard in speech, but it is ambiguous, and many read it as a ban.",
+        "table": {
+          "columns": [
+            "English",
+            "Swedish"
+          ],
+          "rows": [
+            [
+              "must, have to",
+              "måste"
+            ],
+            [
+              "don't have to",
+              "behöver inte"
+            ],
+            [
+              "must not",
+              "får inte"
+            ]
+          ]
+        },
+        "steps": [
+          "Obligation: måste.",
+          "No obligation: behöver inte.",
+          "Forbidden: får inte."
+        ],
+        "examples": [
+          {
+            "sv": "Jag måste ringa mamma nu.",
+            "en": "I must call mum now."
+          },
+          {
+            "sv": "Du behöver inte betala.",
+            "en": "You don't have to pay."
+          }
+        ],
+        "watch": [
+          "Avoid måste inte: it is unclear.",
+          "Måste never changes form."
+        ]
+      },
+      {
+        "id": "negation",
+        "title": "Inte after the modal",
+        "text": "In a main clause the modal is the second element, and inte follows it directly, before the infinitive.",
+        "steps": [
+          "Subject, then the modal.",
+          "Then inte.",
+          "Then the infinitive and the rest."
+        ],
+        "examples": [
+          {
+            "sv": "Jag kan inte komma.",
+            "en": "I can't come."
+          },
+          {
+            "sv": "Hon vill inte dansa.",
+            "en": "She doesn't want to dance."
+          }
+        ],
+        "watch": [
+          "Not jag inte kan, not jag kan komma inte."
+        ]
+      },
+      {
+        "id": "past",
+        "title": "The past: kunde, ville, skulle, fick",
+        "text": "Each modal has its own short past form. Only the modal changes; the infinitive stays. For had to, Swedish usually says var tvungen att, and here att is needed, because tvungen is an adjective, not a modal.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "presens",
+            "preteritum"
+          ],
+          "rows": [
+            [
+              "kunna",
+              "kan",
+              "kunde"
+            ],
+            [
+              "vilja",
+              "vill",
+              "ville"
+            ],
+            [
+              "ska",
+              "ska",
+              "skulle"
+            ],
+            [
+              "få",
+              "får",
+              "fick"
+            ],
+            [
+              "måste",
+              "måste",
+              "var tvungen att"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the modal in the table.",
+          "Take its preteritum form.",
+          "Keep the next verb in the infinitive."
+        ],
+        "examples": [
+          {
+            "sv": "Igår kunde jag inte sova.",
+            "en": "Yesterday I couldn't sleep."
+          },
+          {
+            "sv": "Han skulle komma, men han blev sjuk.",
+            "en": "He was going to come, but he got ill."
+          },
+          {
+            "sv": "Jag var tvungen att jobba igår.",
+            "en": "I had to work yesterday."
+          }
+        ],
+        "watch": [
+          "No -de on ska: skulle.",
+          "Var tvungen att keeps att; the real modals never do."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "forms": {
+      "section": "forms",
+      "steps": [
+        "Find the modal from its meaning.",
+        "Use one form for every person.",
+        "No -r, except får."
+      ]
+    },
+    "bare-infinitive": {
+      "section": "bare-infinitive",
+      "steps": [
+        "Modal second.",
+        "Infinitive straight after it.",
+        "No att."
+      ]
+    },
+    "vill-ha": {
+      "section": "vill-ha",
+      "steps": [
+        "Thing or action?",
+        "Thing: vill ha.",
+        "Action: vill plus verb."
+      ]
+    },
+    "far": {
+      "section": "far",
+      "steps": [
+        "Permission or ban?",
+        "Permission: får.",
+        "Ban: får inte."
+      ]
+    },
+    "maste-behover": {
+      "section": "maste-behover",
+      "steps": [
+        "Must: måste.",
+        "Don't have to: behöver inte.",
+        "Must not: får inte."
+      ]
+    },
+    "negation": {
+      "section": "negation",
+      "steps": [
+        "Subject, modal.",
+        "Then inte.",
+        "Then the infinitive."
+      ]
+    },
+    "past": {
+      "section": "past",
+      "steps": [
+        "Find the past form in the table.",
+        "Keep the next verb in the infinitive.",
+        "Had to: var tvungen att."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "modal-verbs-forms-1",
+      "pattern": "forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "kunna · jag · presens",
+      "answers": [
+        "kan",
+        "jag kan"
+      ],
+      "hint": "Modal verbs do not take the usual -r in the present.",
+      "feedback": "The present of kunna is kan for every person.",
+      "explanation": "Jag kan: one short form, no -r.",
+      "mistakes": [
+        {
+          "answers": [
+            "kanar",
+            "jag kanar"
+          ],
+          "why": "Kunna is irregular: its present is not built from the infinitive with -ar."
+        },
+        {
+          "answers": [
+            "kunnar",
+            "jag kunnar"
+          ],
+          "why": "Modal verbs drop the normal present -r; this form does not exist."
+        },
+        {
+          "answers": [
+            "kunna",
+            "jag kunna"
+          ],
+          "why": "Kunna is the infinitive. After jag you need the present form."
+        }
+      ],
+      "row": "kunna"
+    },
+    {
+      "id": "modal-verbs-forms-2",
+      "pattern": "forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "vilja · hon · presens",
+      "answers": [
+        "vill",
+        "hon vill"
+      ],
+      "hint": "Short form, same for all persons.",
+      "feedback": "The present of vilja is vill.",
+      "explanation": "Hon vill: vilja has the irregular present vill, with no -r.",
+      "mistakes": [
+        {
+          "answers": [
+            "viljar",
+            "hon viljar"
+          ],
+          "why": "Vilja does not follow the -ar pattern; its present is a short irregular form."
+        },
+        {
+          "answers": [
+            "viller",
+            "hon viller"
+          ],
+          "why": "There is no -er on this verb in the present: modal verbs end without -r."
+        },
+        {
+          "answers": [
+            "ville",
+            "hon ville"
+          ],
+          "why": "Ville is the past, wanted. The task asks for the present."
+        }
+      ],
+      "row": "vilja"
+    },
+    {
+      "id": "modal-verbs-forms-3",
+      "pattern": "forms",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "få · vi · presens",
+      "answers": [
+        "får",
+        "vi får"
+      ],
+      "hint": "Få is the one modal here that keeps the -r.",
+      "feedback": "Få gets -r like an ordinary verb: får.",
+      "explanation": "Vi får: same form for every person, with -r.",
+      "mistakes": [
+        {
+          "answers": [
+            "få",
+            "vi få"
+          ],
+          "why": "Få is the infinitive. The present needs its -r ending."
+        },
+        {
+          "answers": [
+            "far",
+            "vi far"
+          ],
+          "why": "Far without the ring means father, or travels. The ring over the a is part of this verb."
+        },
+        {
+          "answers": [
+            "fick",
+            "vi fick"
+          ],
+          "why": "Fick is the past, was allowed or got. The task asks for the present."
+        }
+      ],
+      "row": "få",
+      "strictAccents": true
+    },
+    {
+      "id": "modal-verbs-forms-4",
+      "pattern": "forms",
+      "type": "complete",
+      "instruction": "Write kunna in the present.",
+      "source": "Hon ____ (kunna) laga mat.",
+      "answers": [
+        "kan"
+      ],
+      "hint": "Present of kunna, one short form for every person.",
+      "feedback": "Kunna in the present is kan.",
+      "explanation": "Hon kan laga mat: kan, then the infinitive laga.",
+      "mistakes": [
+        {
+          "answers": [
+            "kanar"
+          ],
+          "why": "Kunna does not take -ar: its present is irregular and short."
+        },
+        {
+          "answers": [
+            "kunna"
+          ],
+          "why": "The infinitive cannot be the main verb after hon; it needs the present form."
+        },
+        {
+          "answers": [
+            "kunde"
+          ],
+          "why": "Kunde is the past, could. The sentence is about now."
+        }
+      ],
+      "row": "kunna",
+      "gloss": [
+        {
+          "sv": "kunna",
+          "en": "can, be able to",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "laga",
+          "en": "cook, make",
+          "word": "verbs-095"
+        },
+        {
+          "sv": "mat",
+          "en": "food",
+          "word": "food-002"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-forms-5",
+      "pattern": "forms",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Du ____ sova mer.",
+      "options": [
+        "bör",
+        "börar",
+        "böra",
+        "börer"
+      ],
+      "answers": [
+        "bör"
+      ],
+      "hint": "Böra means ought to. Which form is the present?",
+      "feedback": "Böra has the present bör, with no extra ending.",
+      "explanation": "Du bör sova mer: you ought to sleep more.",
+      "mistakes": [
+        {
+          "answers": [
+            "börar"
+          ],
+          "why": "Böra does not take -ar. Like most modals, its present is short."
+        },
+        {
+          "answers": [
+            "böra"
+          ],
+          "why": "Böra is the infinitive. After du you need the present form."
+        },
+        {
+          "answers": [
+            "börer"
+          ],
+          "why": "There is no -er on this verb; the present is short."
+        }
+      ],
+      "row": "böra",
+      "gloss": [
+        {
+          "sv": "sova",
+          "en": "sleep",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "mer",
+          "en": "more",
+          "word": "qualities-108"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-forms-6",
+      "pattern": "forms",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Erik viller komma på festen.",
+      "answers": [
+        "Erik vill komma på festen."
+      ],
+      "hint": "Look at the modal verb. Does it have an ending it should not have?",
+      "feedback": "Vilja is vill in the present, with no -er.",
+      "explanation": "Erik vill komma på festen: vill is the present for everyone.",
+      "mistakes": [
+        {
+          "answers": [
+            "Erik viller komma på festen."
+          ],
+          "why": "The verb is unchanged: viller is not a Swedish form."
+        },
+        {
+          "answers": [
+            "Erik ville komma på festen."
+          ],
+          "why": "Ville is the past, wanted. Keep the sentence in the present."
+        },
+        {
+          "answers": [
+            "Erik vill att komma på festen."
+          ],
+          "why": "The ending is fixed, but att has crept in. A modal is followed directly by the infinitive."
+        }
+      ],
+      "row": "vilja",
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik (a name)"
+        },
+        {
+          "sv": "viller",
+          "en": "wants (wrong form of vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "komma",
+          "en": "come",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "på",
+          "en": "to, at"
+        },
+        {
+          "sv": "festen",
+          "en": "the party",
+          "word": "people-041"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-bare-infinitive-1",
+      "pattern": "bare-infinitive",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Jag kan ____.",
+      "options": [
+        "simma",
+        "att simma",
+        "simmar",
+        "simmat"
+      ],
+      "answers": [
+        "simma"
+      ],
+      "hint": "After a modal, the next verb is the plain infinitive.",
+      "feedback": "No att and no present ending after kan.",
+      "explanation": "Jag kan simma: I can swim.",
+      "mistakes": [
+        {
+          "answers": [
+            "att simma"
+          ],
+          "why": "English can swim has no to, and neither does Swedish: kan is followed directly by the verb."
+        },
+        {
+          "answers": [
+            "simmar"
+          ],
+          "why": "Simmar is a present form. Only the modal carries the tense; the second verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "simmat"
+          ],
+          "why": "Simmat is the supine, used after har. After kan you need the dictionary form."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "kan",
+          "en": "can",
+          "word": "verbs-021"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-bare-infinitive-2",
+      "pattern": "bare-infinitive",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Hon vill ____ svenska.",
+      "options": [
+        "prata",
+        "att prata",
+        "pratar",
+        "pratade"
+      ],
+      "answers": [
+        "prata"
+      ],
+      "hint": "Wants to speak: Swedish leaves out the to.",
+      "feedback": "After vill comes the bare infinitive.",
+      "explanation": "Hon vill prata svenska: no att after vill.",
+      "mistakes": [
+        {
+          "answers": [
+            "att prata"
+          ],
+          "why": "English says wants to speak, but Swedish puts nothing between vill and the verb."
+        },
+        {
+          "answers": [
+            "pratar"
+          ],
+          "why": "Pratar is the present. The modal vill already carries the tense, so the second verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "pratade"
+          ],
+          "why": "Pratade is the past. The second verb never carries tense after a modal."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "vill",
+          "en": "wants",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "svenska",
+          "en": "Swedish",
+          "word": "school-011"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-bare-infinitive-3",
+      "pattern": "bare-infinitive",
+      "type": "complete",
+      "instruction": "Write the right form of äta.",
+      "source": "Vi ska ____ (äta) middag nu.",
+      "answers": [
+        "äta"
+      ],
+      "hint": "After ska, the verb stays as it is in the dictionary.",
+      "feedback": "Ska is followed by the bare infinitive.",
+      "explanation": "Vi ska äta middag nu: we are going to eat dinner now.",
+      "mistakes": [
+        {
+          "answers": [
+            "äter"
+          ],
+          "why": "Äter is the present form. After ska the verb is not conjugated."
+        },
+        {
+          "answers": [
+            "att äta"
+          ],
+          "why": "No att after ska: the modal is followed directly by the verb."
+        },
+        {
+          "answers": [
+            "åt"
+          ],
+          "why": "Åt is the past. The second verb never carries tense after a modal."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "ska",
+          "en": "are going to, will",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "äta",
+          "en": "eat",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "middag",
+          "en": "dinner",
+          "word": "food-047"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-bare-infinitive-4",
+      "pattern": "bare-infinitive",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Jag kan att simma.",
+      "answers": [
+        "Jag kan simma."
+      ],
+      "hint": "One small word is too many.",
+      "feedback": "Modal verbs are never followed by att.",
+      "explanation": "Jag kan simma: kan goes straight to the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag kan att simma."
+          ],
+          "why": "The sentence is unchanged. Att, the to of English, never stands after a modal."
+        },
+        {
+          "answers": [
+            "Jag kan simmar."
+          ],
+          "why": "Att is gone, but now the second verb has a present ending. Only the modal shows the tense."
+        },
+        {
+          "answers": [
+            "Jag kan att simmar."
+          ],
+          "why": "Two problems: the extra word and a present ending on the second verb."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "kan",
+          "en": "can",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "simma",
+          "en": "swim",
+          "word": "leisure-027"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-bare-infinitive-5",
+      "pattern": "bare-infinitive",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I want to sleep.",
+      "tokens": [
+        "vill",
+        "att",
+        "Jag",
+        "sova.",
+        "sover."
+      ],
+      "answers": [
+        "Jag vill sova."
+      ],
+      "hint": "English to has no tile to match.",
+      "feedback": "Leave out the att tile.",
+      "explanation": "Jag vill sova: vill followed directly by the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vill att sova."
+          ],
+          "why": "Att does not follow a modal. Vill takes the infinitive directly."
+        },
+        {
+          "answers": [
+            "Jag vill sover."
+          ],
+          "why": "Sover is the present form. After vill the verb stays in the infinitive."
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-bare-infinitive-6",
+      "pattern": "bare-infinitive",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "We are going to eat lunch.",
+      "answers": [
+        "Vi ska äta lunch."
+      ],
+      "hint": "Plans: ska plus the infinitive.",
+      "feedback": "Ska, then the dictionary form of äta.",
+      "explanation": "Vi ska äta lunch: ska carries the plan, äta stays in the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi ska att äta lunch."
+          ],
+          "why": "Going to is ska alone. No att comes between ska and the verb."
+        },
+        {
+          "answers": [
+            "Vi ska äter lunch."
+          ],
+          "why": "After ska the verb is the infinitive, not the present."
+        },
+        {
+          "answers": [
+            "Vi går att äta lunch."
+          ],
+          "why": "Swedish does not use gå for future plans; ska does that job."
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-bare-infinitive-7",
+      "pattern": "bare-infinitive",
+      "type": "rewrite",
+      "instruction": "Add vill (want) and write the whole sentence.",
+      "source": "Jag läser en bok.",
+      "answers": [
+        "Jag vill läsa en bok."
+      ],
+      "hint": "Put vill after jag and change läser.",
+      "feedback": "After vill, the verb goes back to the infinitive.",
+      "explanation": "Jag vill läsa en bok: vill takes the present, läsa stays in the dictionary form.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vill läser en bok."
+          ],
+          "why": "Vill now carries the present tense, so the other verb has to drop its -er."
+        },
+        {
+          "answers": [
+            "Jag vill att läsa en bok."
+          ],
+          "why": "No att after a modal."
+        },
+        {
+          "answers": [
+            "Jag läser vill en bok."
+          ],
+          "why": "The modal comes in second place, straight after the subject, with the infinitive after it."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "läser",
+          "en": "reads, am reading",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "bok",
+          "en": "book",
+          "word": "school-028"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-vill-ha-1",
+      "pattern": "vill-ha",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Jag vill ____ kaffe.",
+      "options": [
+        "ha",
+        "att ha",
+        "har",
+        "dricker"
+      ],
+      "answers": [
+        "ha"
+      ],
+      "hint": "Wanting a thing, not an action.",
+      "feedback": "To want a thing, say vill ha.",
+      "explanation": "Jag vill ha kaffe: literally I want to have coffee.",
+      "mistakes": [
+        {
+          "answers": [
+            "att ha"
+          ],
+          "why": "Ha is right, but att never follows a modal."
+        },
+        {
+          "answers": [
+            "har"
+          ],
+          "why": "Har is the present form. After vill the verb is the infinitive."
+        },
+        {
+          "answers": [
+            "dricker"
+          ],
+          "why": "Dricker is a present form. After vill you would need the infinitive, and wanting a thing is the usual phrase here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "vill",
+          "en": "want",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-vill-ha-2",
+      "pattern": "vill-ha",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Barnen vill ____ hem nu.",
+      "options": [
+        "gå",
+        "ha",
+        "går",
+        "att gå"
+      ],
+      "answers": [
+        "gå"
+      ],
+      "hint": "Here the children want to do something: go home.",
+      "feedback": "Vill ha is only for things. For an action, use that action’s verb.",
+      "explanation": "Barnen vill gå hem: vill plus the infinitive gå.",
+      "mistakes": [
+        {
+          "answers": [
+            "ha"
+          ],
+          "why": "Vill ha means want a thing. Home is not something you have here; it is where they want to go."
+        },
+        {
+          "answers": [
+            "går"
+          ],
+          "why": "Går is the present. After vill the verb stays in the infinitive."
+        },
+        {
+          "answers": [
+            "att gå"
+          ],
+          "why": "No att after a modal."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Barnen",
+          "en": "the children",
+          "word": "people-005"
+        },
+        {
+          "sv": "vill",
+          "en": "want",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "hem",
+          "en": "home"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-vill-ha-3",
+      "pattern": "vill-ha",
+      "type": "complete",
+      "instruction": "Write the missing verb.",
+      "source": "Vill du ____ te eller kaffe?",
+      "answers": [
+        "ha"
+      ],
+      "hint": "You are offering a thing to drink.",
+      "feedback": "With a thing, vill needs ha.",
+      "explanation": "Vill du ha te eller kaffe? Do you want tea or coffee?",
+      "mistakes": [
+        {
+          "answers": [
+            "har"
+          ],
+          "why": "Har is the present. After vill the verb is the infinitive."
+        },
+        {
+          "answers": [
+            "att ha"
+          ],
+          "why": "No att after a modal."
+        },
+        {
+          "answers": [
+            "hade"
+          ],
+          "why": "Hade is the past. After vill the verb stays in the infinitive."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Vill",
+          "en": "want",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "te",
+          "en": "tea",
+          "word": "food-005"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-vill-ha-4",
+      "pattern": "vill-ha",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I want coffee.",
+      "answers": [
+        "Jag vill ha kaffe.",
+        "Jag vill ha en kaffe."
+      ],
+      "hint": "Swedish adds a verb English leaves out.",
+      "feedback": "Want a thing: vill ha.",
+      "explanation": "Jag vill ha kaffe. En kaffe, one cup, is also fine.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vill kaffe."
+          ],
+          "why": "Vill on its own needs a verb after it. To want a thing, add the verb for having."
+        },
+        {
+          "answers": [
+            "Jag vill att ha kaffe."
+          ],
+          "why": "No att after vill."
+        },
+        {
+          "answers": [
+            "Jag vill har kaffe."
+          ],
+          "why": "After vill the verb stays in the infinitive."
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-vill-ha-5",
+      "pattern": "vill-ha",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Jag vill en glass.",
+      "answers": [
+        "Jag vill ha en glass."
+      ],
+      "hint": "Something is missing between vill and the thing.",
+      "feedback": "A thing wanted needs vill ha.",
+      "explanation": "Jag vill ha en glass: I want an ice cream.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vill en glass."
+          ],
+          "why": "The sentence is unchanged. Vill needs a verb after it."
+        },
+        {
+          "answers": [
+            "Jag vill att ha en glass."
+          ],
+          "why": "No att after a modal."
+        },
+        {
+          "answers": [
+            "Jag vill har en glass."
+          ],
+          "why": "The verb after vill must be in the infinitive."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "vill",
+          "en": "want",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "glass",
+          "en": "ice cream",
+          "word": "food-040"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-vill-ha-6",
+      "pattern": "vill-ha",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "She wants a dog.",
+      "tokens": [
+        "Hon",
+        "vill",
+        "ha",
+        "har",
+        "en",
+        "hund."
+      ],
+      "answers": [
+        "Hon vill ha en hund."
+      ],
+      "hint": "Wanting a thing takes two verbs in Swedish.",
+      "feedback": "Vill, then ha in the infinitive.",
+      "explanation": "Hon vill ha en hund.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon vill har en hund."
+          ],
+          "why": "Har is the present. After vill, ha stays in the infinitive."
+        },
+        {
+          "answers": [
+            "Hon vill en hund."
+          ],
+          "why": "A verb is missing: to want a thing, Swedish says want to have."
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-far-1",
+      "pattern": "far",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Man ____ inte röka här.",
+      "options": [
+        "får",
+        "behöver",
+        "vill",
+        "måste"
+      ],
+      "answers": [
+        "får"
+      ],
+      "hint": "This is a rule: it is forbidden.",
+      "feedback": "Not allowed is får inte.",
+      "explanation": "Man får inte röka här: smoking is not allowed here.",
+      "mistakes": [
+        {
+          "answers": [
+            "behöver"
+          ],
+          "why": "Behöver inte means there is no need to. A sign about smoking is a ban, not a choice."
+        },
+        {
+          "answers": [
+            "vill"
+          ],
+          "why": "Vill inte means does not want to. A rule is about what is allowed."
+        },
+        {
+          "answers": [
+            "måste"
+          ],
+          "why": "Måste inte is not how Swedes write a ban. It sounds like there is no obligation, which is the opposite of a rule."
+        }
+      ],
+      "strictAccents": true,
+      "gloss": [
+        {
+          "sv": "Man",
+          "en": "you, one"
+        },
+        {
+          "sv": "röka",
+          "en": "smoke"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-far-2",
+      "pattern": "far",
+      "type": "complete",
+      "instruction": "Write the verb that asks permission.",
+      "source": "____ jag sitta här?",
+      "answers": [
+        "Får"
+      ],
+      "hint": "You are asking permission.",
+      "feedback": "May I is får jag.",
+      "explanation": "Får jag sitta här? May I sit here?",
+      "mistakes": [
+        {
+          "answers": [
+            "Far"
+          ],
+          "why": "Without the ring, far means father. Permission needs the å."
+        },
+        {
+          "answers": [
+            "Måste"
+          ],
+          "why": "Måste jag means must I, which asks about an obligation, not permission."
+        },
+        {
+          "answers": [
+            "Ska"
+          ],
+          "why": "Ska jag means shall I, an offer or a plan, not asking permission."
+        }
+      ],
+      "strictAccents": true,
+      "gloss": [
+        {
+          "sv": "sitta",
+          "en": "sit",
+          "word": "verbs-062"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-far-3",
+      "pattern": "far",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "May I sit here?",
+      "answers": [
+        "Får jag sitta här?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Kan jag sitta här?",
+          "message": "Fine in everyday speech, but it asks if it is possible. For permission, Swedish prefers the få form.",
+          "accepted": true
+        }
+      ],
+      "hint": "Permission: the modal from få comes first in the question.",
+      "feedback": "Questions put the verb first: får jag.",
+      "explanation": "Får jag sitta här? Kan jag sitta här? is also heard, but får is the polite way to ask permission.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag får sitta här?"
+          ],
+          "why": "A yes/no question starts with the verb."
+        },
+        {
+          "answers": [
+            "Får jag att sitta här?"
+          ],
+          "why": "No att after a modal."
+        },
+        {
+          "answers": [
+            "Far jag sitta här?"
+          ],
+          "why": "Far without the ring is father. Permission needs the å."
+        }
+      ],
+      "strictAccents": true
+    },
+    {
+      "id": "modal-verbs-far-4",
+      "pattern": "far",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "You must not smoke here.",
+      "answers": [
+        "Du får inte röka här.",
+        "Ni får inte röka här.",
+        "Man får inte röka här."
+      ],
+      "hint": "Must not means not allowed.",
+      "feedback": "Use får inte for a ban.",
+      "explanation": "Du får inte röka här: must not is not allowed in Swedish.",
+      "mistakes": [
+        {
+          "answers": [
+            "Du måste inte röka här."
+          ],
+          "why": "Must not in English is a ban. Swedish says it with not allowed; måste inte is read as no need to."
+        },
+        {
+          "answers": [
+            "Du behöver inte röka här."
+          ],
+          "why": "Behöver inte means you do not need to, which is not a ban."
+        },
+        {
+          "answers": [
+            "Du får röka inte här."
+          ],
+          "why": "Inte goes straight after the modal, before the infinitive."
+        }
+      ],
+      "strictAccents": true
+    },
+    {
+      "id": "modal-verbs-far-5",
+      "pattern": "far",
+      "type": "rewrite",
+      "instruction": "Make it a ban: add inte.",
+      "source": "Du får parkera här.",
+      "answers": [
+        "Du får inte parkera här."
+      ],
+      "hint": "Inte goes straight after the modal.",
+      "feedback": "Add inte after får.",
+      "explanation": "Du får inte parkera här: you must not park here.",
+      "mistakes": [
+        {
+          "answers": [
+            "Du får parkera inte här."
+          ],
+          "why": "Inte comes after the modal, not after the infinitive."
+        },
+        {
+          "answers": [
+            "Du inte får parkera här."
+          ],
+          "why": "In a main clause the verb stays second; inte follows it."
+        },
+        {
+          "answers": [
+            "Du måste inte parkera här."
+          ],
+          "why": "The task is to forbid it. Keep får and add the negation."
+        }
+      ],
+      "strictAccents": true,
+      "gloss": [
+        {
+          "sv": "får",
+          "en": "may, are allowed to",
+          "word": "verbs-080"
+        },
+        {
+          "sv": "parkera",
+          "en": "park"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-far-6",
+      "pattern": "far",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We are allowed to swim here.",
+      "tokens": [
+        "Vi",
+        "får",
+        "måste",
+        "att",
+        "simma",
+        "här."
+      ],
+      "answers": [
+        "Vi får simma här."
+      ],
+      "hint": "Allowed to: one modal, no to.",
+      "feedback": "Får, then the infinitive.",
+      "explanation": "Vi får simma här.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi får att simma här."
+          ],
+          "why": "No att after a modal."
+        },
+        {
+          "answers": [
+            "Vi måste simma här."
+          ],
+          "why": "Måste is must. Being allowed is a different verb."
+        }
+      ],
+      "strictAccents": true
+    },
+    {
+      "id": "modal-verbs-maste-behover-1",
+      "pattern": "maste-behover",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Du ____ inte jobba idag. Det är söndag.",
+      "options": [
+        "behöver",
+        "får",
+        "måste",
+        "kan"
+      ],
+      "answers": [
+        "behöver"
+      ],
+      "hint": "It is Sunday: there is no need to work.",
+      "feedback": "Do not have to is behöver inte.",
+      "explanation": "Du behöver inte jobba idag: you do not have to work today.",
+      "mistakes": [
+        {
+          "answers": [
+            "får"
+          ],
+          "why": "Får inte means you are not allowed to. Nobody forbids working on Sunday; there is just no need."
+        },
+        {
+          "answers": [
+            "måste"
+          ],
+          "why": "Måste inte is heard in speech, but it is unclear (in Finland Swedish it can mean a ban). For no need, use the verb that means need."
+        },
+        {
+          "answers": [
+            "kan"
+          ],
+          "why": "Kan inte means you are not able to. The point is that there is no need."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "jobba",
+          "en": "work",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "Det",
+          "en": "it"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "söndag",
+          "en": "Sunday"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-maste-behover-2",
+      "pattern": "maste-behover",
+      "type": "complete",
+      "instruction": "Write the Swedish for must.",
+      "source": "Jag ____ ringa mamma nu.",
+      "answers": [
+        "måste"
+      ],
+      "hint": "It is a must: I have to call.",
+      "feedback": "Must is måste.",
+      "explanation": "Jag måste ringa mamma nu: I must call mum now.",
+      "mistakes": [
+        {
+          "answers": [
+            "måstar"
+          ],
+          "why": "This verb never changes its ending: one form for every person."
+        },
+        {
+          "answers": [
+            "måster"
+          ],
+          "why": "There is no -er on this verb; it has one fixed form."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "ringa",
+          "en": "call",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "mamma",
+          "en": "mum",
+          "word": "people-012"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-maste-behover-3",
+      "pattern": "maste-behover",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "You don't have to pay.",
+      "answers": [
+        "Du behöver inte betala.",
+        "Ni behöver inte betala."
+      ],
+      "hint": "Do not have to: no need.",
+      "feedback": "Behöver inte, then the infinitive.",
+      "explanation": "Du behöver inte betala: there is no need for you to pay.",
+      "mistakes": [
+        {
+          "answers": [
+            "Du får inte betala."
+          ],
+          "why": "Får inte is a ban: you are not allowed to pay."
+        },
+        {
+          "answers": [
+            "Du behöver betala inte."
+          ],
+          "why": "Inte goes straight after the first verb."
+        }
+      ],
+      "alternatives": [
+        {
+          "answer": "Du måste inte betala.",
+          "message": "Understood and common in Sweden, but behöver inte is the clearest way to say no need: Du behöver inte betala.",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-maste-behover-4",
+      "pattern": "maste-behover",
+      "type": "repair",
+      "instruction": "Fix the error. The speaker means there is no need to wait.",
+      "source": "Du måste inte vänta på mig.",
+      "answers": [
+        "Du behöver inte vänta på mig."
+      ],
+      "hint": "The speaker means: no need to wait.",
+      "feedback": "For do not have to, swap the modal.",
+      "explanation": "Du behöver inte vänta på mig: you do not have to wait for me.",
+      "mistakes": [
+        {
+          "answers": [
+            "Du måste inte vänta på mig."
+          ],
+          "why": "Unchanged. Måste inte is unclear; it can sound like a ban."
+        },
+        {
+          "answers": [
+            "Du får inte vänta på mig."
+          ],
+          "why": "Får inte forbids waiting, which is not what the speaker means."
+        },
+        {
+          "answers": [
+            "Du behöver inte att vänta på mig."
+          ],
+          "why": "The modal is right, but drop att."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "måste",
+          "en": "must",
+          "word": "verbs-022"
+        },
+        {
+          "sv": "vänta",
+          "en": "wait",
+          "word": "verbs-037"
+        },
+        {
+          "sv": "på",
+          "en": "for"
+        },
+        {
+          "sv": "mig",
+          "en": "me"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-maste-behover-5",
+      "pattern": "maste-behover",
+      "type": "rewrite",
+      "instruction": "Change it to mean I don't have to.",
+      "source": "Jag måste städa idag.",
+      "answers": [
+        "Jag behöver inte städa idag."
+      ],
+      "hint": "Say there is no need.",
+      "feedback": "Måste becomes behöver inte.",
+      "explanation": "Jag behöver inte städa idag: I do not have to clean today.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag får inte städa idag."
+          ],
+          "why": "Får inte means you are not allowed. The task is about no need."
+        },
+        {
+          "answers": [
+            "Jag behöver städa inte idag."
+          ],
+          "why": "Inte goes straight after the modal."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "måste",
+          "en": "must",
+          "word": "verbs-022"
+        },
+        {
+          "sv": "städa",
+          "en": "clean",
+          "word": "verbs-093"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        }
+      ],
+      "alternatives": [
+        {
+          "answer": "Jag måste inte städa idag.",
+          "message": "Common in speech, but behöver inte is clearer: Jag behöver inte städa idag.",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-maste-behover-6",
+      "pattern": "maste-behover",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I must work today.",
+      "tokens": [
+        "Jag",
+        "måste",
+        "att",
+        "jobba",
+        "jobbar",
+        "idag."
+      ],
+      "answers": [
+        "Jag måste jobba idag."
+      ],
+      "hint": "Must is måste, with the infinitive straight after.",
+      "feedback": "No att after måste.",
+      "explanation": "Jag måste jobba idag.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag måste att jobba idag."
+          ],
+          "why": "No att after a modal."
+        },
+        {
+          "answers": [
+            "Jag måste jobbar idag."
+          ],
+          "why": "After måste the verb is the infinitive."
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-negation-1",
+      "pattern": "negation",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Jag ____ i morgon.",
+      "options": [
+        "kan inte komma",
+        "inte kan komma",
+        "kan komma inte",
+        "kan inte att komma"
+      ],
+      "answers": [
+        "kan inte komma"
+      ],
+      "hint": "Inte sits right after the modal.",
+      "feedback": "Modal, inte, infinitive.",
+      "explanation": "Jag kan inte komma i morgon: I cannot come tomorrow.",
+      "mistakes": [
+        {
+          "answers": [
+            "inte kan komma"
+          ],
+          "why": "In a main clause the verb comes second, before inte."
+        },
+        {
+          "answers": [
+            "kan komma inte"
+          ],
+          "why": "Inte does not go after the infinitive; it follows the modal."
+        },
+        {
+          "answers": [
+            "kan inte att komma"
+          ],
+          "why": "The order is right, but att never follows a modal."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "i morgon",
+          "en": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-negation-2",
+      "pattern": "negation",
+      "type": "complete",
+      "instruction": "Write the Swedish for not.",
+      "source": "Hon vill ____ äta fisk.",
+      "answers": [
+        "inte"
+      ],
+      "hint": "The negation goes between the modal and the infinitive.",
+      "feedback": "Inte follows the modal.",
+      "explanation": "Hon vill inte äta fisk: she does not want to eat fish.",
+      "mistakes": [
+        {
+          "answers": [
+            "nej"
+          ],
+          "why": "Nej is the answer no. Inside a sentence, use the negation word."
+        },
+        {
+          "answers": [
+            "aldrig"
+          ],
+          "why": "Aldrig means never, which is stronger than the word asked for."
+        },
+        {
+          "answers": [
+            "inte att"
+          ],
+          "why": "The negation is right, but att never follows it before the infinitive here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "vill",
+          "en": "wants",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "äta",
+          "en": "eat",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "fisk",
+          "en": "fish"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-negation-3",
+      "pattern": "negation",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Jag inte kan komma.",
+      "answers": [
+        "Jag kan inte komma."
+      ],
+      "hint": "Check the order of kan and inte.",
+      "feedback": "The modal stays second; inte comes after it.",
+      "explanation": "Jag kan inte komma.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag inte kan komma."
+          ],
+          "why": "Unchanged. In a main clause inte follows the verb."
+        },
+        {
+          "answers": [
+            "Jag kan komma inte."
+          ],
+          "why": "Inte comes before the infinitive, not after it."
+        },
+        {
+          "answers": [
+            "Inte jag kan komma."
+          ],
+          "why": "Inte does not start the sentence before the subject here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "kan",
+          "en": "can",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "komma",
+          "en": "come",
+          "word": "verbs-005"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-negation-4",
+      "pattern": "negation",
+      "type": "rewrite",
+      "instruction": "Make it negative with inte.",
+      "source": "Han ska jobba i morgon.",
+      "answers": [
+        "Han ska inte jobba i morgon."
+      ],
+      "hint": "Put inte right after the modal.",
+      "feedback": "Ska, then inte, then the infinitive.",
+      "explanation": "Han ska inte jobba i morgon.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han ska jobba inte i morgon."
+          ],
+          "why": "Inte goes before the infinitive, straight after ska."
+        },
+        {
+          "answers": [
+            "Han inte ska jobba i morgon."
+          ],
+          "why": "The verb stays second in a main clause, inte after it."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "ska",
+          "en": "is going to",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "jobba",
+          "en": "work",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "i morgon",
+          "en": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-negation-5",
+      "pattern": "negation",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We can't swim.",
+      "tokens": [
+        "simma.",
+        "inte",
+        "Vi",
+        "kan",
+        "att"
+      ],
+      "answers": [
+        "Vi kan inte simma."
+      ],
+      "hint": "Modal, inte, infinitive.",
+      "feedback": "Inte follows kan.",
+      "explanation": "Vi kan inte simma.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi inte kan simma."
+          ],
+          "why": "The modal stays second; inte comes after it."
+        },
+        {
+          "answers": [
+            "Vi kan inte att simma."
+          ],
+          "why": "No att after a modal."
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-negation-6",
+      "pattern": "negation",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "She doesn't want to dance.",
+      "answers": [
+        "Hon vill inte dansa."
+      ],
+      "hint": "No do in Swedish: just put inte after the modal.",
+      "feedback": "Vill inte, then the infinitive.",
+      "explanation": "Hon vill inte dansa.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon inte vill dansa."
+          ],
+          "why": "Inte follows the verb in a main clause."
+        },
+        {
+          "answers": [
+            "Hon vill inte att dansa."
+          ],
+          "why": "No att after a modal."
+        },
+        {
+          "answers": [
+            "Hon vill dansa inte."
+          ],
+          "why": "Inte comes before the infinitive."
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-past-1",
+      "pattern": "past",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "kunna · jag · preteritum",
+      "answers": [
+        "kunde",
+        "jag kunde"
+      ],
+      "hint": "The past of kan ends in -de.",
+      "feedback": "Kunna: kan, kunde.",
+      "explanation": "Jag kunde: I could.",
+      "mistakes": [
+        {
+          "answers": [
+            "kunnade",
+            "jag kunnade"
+          ],
+          "why": "Kunna is irregular; the past is short."
+        },
+        {
+          "answers": [
+            "kan",
+            "jag kan"
+          ],
+          "why": "Kan is the present. The task asks for the past."
+        },
+        {
+          "answers": [
+            "kunnat",
+            "jag kunnat"
+          ],
+          "why": "Kunnat is the supine, used after har."
+        }
+      ],
+      "row": "kunna"
+    },
+    {
+      "id": "modal-verbs-past-2",
+      "pattern": "past",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "vilja · han · preteritum",
+      "answers": [
+        "ville",
+        "han ville"
+      ],
+      "hint": "Past of vill: one letter changes.",
+      "feedback": "Vilja: vill, ville.",
+      "explanation": "Han ville: he wanted.",
+      "mistakes": [
+        {
+          "answers": [
+            "viljade",
+            "han viljade"
+          ],
+          "why": "Vilja is irregular; the past is short."
+        },
+        {
+          "answers": [
+            "vill",
+            "han vill"
+          ],
+          "why": "Vill is the present."
+        },
+        {
+          "answers": [
+            "velat",
+            "han velat"
+          ],
+          "why": "Velat is the supine, used after har."
+        }
+      ],
+      "row": "vilja"
+    },
+    {
+      "id": "modal-verbs-past-3",
+      "pattern": "past",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "få · vi · preteritum",
+      "answers": [
+        "fick",
+        "vi fick"
+      ],
+      "hint": "The past of få looks nothing like the infinitive.",
+      "feedback": "Få: får, fick.",
+      "explanation": "Vi fick: we were allowed, we got.",
+      "mistakes": [
+        {
+          "answers": [
+            "fådde",
+            "vi fådde"
+          ],
+          "why": "Få is irregular; its past is a different word."
+        },
+        {
+          "answers": [
+            "får",
+            "vi får"
+          ],
+          "why": "Får is the present."
+        },
+        {
+          "answers": [
+            "fått",
+            "vi fått"
+          ],
+          "why": "Fått is the supine, used after har."
+        }
+      ],
+      "row": "få"
+    },
+    {
+      "id": "modal-verbs-past-4",
+      "pattern": "past",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ska · de · preteritum",
+      "answers": [
+        "skulle",
+        "de skulle"
+      ],
+      "hint": "The past of ska is a longer word.",
+      "feedback": "Ska: skulle.",
+      "explanation": "De skulle: they were going to, they should.",
+      "mistakes": [
+        {
+          "answers": [
+            "skade",
+            "de skade"
+          ],
+          "why": "Ska is irregular; there is no -de form."
+        },
+        {
+          "answers": [
+            "ska",
+            "de ska"
+          ],
+          "why": "Ska is the present."
+        },
+        {
+          "answers": [
+            "skolat",
+            "de skolat"
+          ],
+          "why": "That is the supine, almost never used."
+        }
+      ],
+      "row": "ska"
+    },
+    {
+      "id": "modal-verbs-past-5",
+      "pattern": "past",
+      "type": "complete",
+      "instruction": "Write kunna in the past.",
+      "source": "Igår ____ jag inte sova.",
+      "answers": [
+        "kunde"
+      ],
+      "hint": "Yesterday: past of kan.",
+      "feedback": "Kan in the past is kunde.",
+      "explanation": "Igår kunde jag inte sova: yesterday I could not sleep.",
+      "mistakes": [
+        {
+          "answers": [
+            "kan"
+          ],
+          "why": "Kan is the present, but igår puts this in the past."
+        },
+        {
+          "answers": [
+            "kunna"
+          ],
+          "why": "The infinitive cannot be the main verb here."
+        },
+        {
+          "answers": [
+            "kunnade"
+          ],
+          "why": "Kunna is irregular; this form does not exist."
+        }
+      ],
+      "row": "kunna",
+      "gloss": [
+        {
+          "sv": "Igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        },
+        {
+          "sv": "sova",
+          "en": "sleep",
+          "word": "verbs-057"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-past-6",
+      "pattern": "past",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Han ____ komma, men han blev sjuk.",
+      "options": [
+        "skulle",
+        "ska",
+        "skade",
+        "ville att"
+      ],
+      "answers": [
+        "skulle"
+      ],
+      "hint": "A plan in the past that did not happen.",
+      "feedback": "Past of ska: skulle.",
+      "explanation": "Han skulle komma, men han blev sjuk: he was going to come, but he got ill.",
+      "mistakes": [
+        {
+          "answers": [
+            "ska"
+          ],
+          "why": "Ska is the present. Blev shows this is in the past."
+        },
+        {
+          "answers": [
+            "skade"
+          ],
+          "why": "Ska has no -de past."
+        },
+        {
+          "answers": [
+            "ville att"
+          ],
+          "why": "Ville is a past, but att never follows a modal."
+        }
+      ],
+      "row": "ska",
+      "gloss": [
+        {
+          "sv": "komma",
+          "en": "come",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "men",
+          "en": "but"
+        },
+        {
+          "sv": "blev",
+          "en": "became, got"
+        },
+        {
+          "sv": "sjuk",
+          "en": "ill",
+          "word": "health-time-020"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-past-7",
+      "pattern": "past",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Förra veckan ____ jobba varje dag.",
+      "options": [
+        "var jag tvungen att",
+        "var jag tvungen",
+        "jag var tvungen att",
+        "måste jag att"
+      ],
+      "answers": [
+        "var jag tvungen att"
+      ],
+      "hint": "Had to in the past: be forced to, with att.",
+      "feedback": "Var tvungen att means had to.",
+      "explanation": "Förra veckan var jag tvungen att jobba varje dag. Here att is needed, because tvungen is not a modal verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "var jag tvungen"
+          ],
+          "why": "Tvungen is an adjective, not a modal, so the verb after it needs att."
+        },
+        {
+          "answers": [
+            "jag var tvungen att"
+          ],
+          "why": "After a time phrase at the start, the verb comes second, before the subject."
+        },
+        {
+          "answers": [
+            "måste jag att"
+          ],
+          "why": "Måste is a modal, and modals never take att."
+        }
+      ],
+      "row": "måste",
+      "gloss": [
+        {
+          "sv": "Förra",
+          "en": "last"
+        },
+        {
+          "sv": "veckan",
+          "en": "the week"
+        },
+        {
+          "sv": "jobba",
+          "en": "work",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "varje",
+          "en": "every"
+        },
+        {
+          "sv": "dag",
+          "en": "day"
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-past-8",
+      "pattern": "past",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I had to work yesterday.",
+      "answers": [
+        "Jag var tvungen att jobba igår.",
+        "Igår var jag tvungen att jobba.",
+        "Jag var tvungen att arbeta igår.",
+        "Jag måste jobba igår."
+      ],
+      "hint": "Had to: var tvungen att.",
+      "feedback": "Var tvungen att, then the infinitive.",
+      "explanation": "Jag var tvungen att jobba igår. Måste also works in the past, but var tvungen att is clearer.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag var tvungen jobba igår."
+          ],
+          "why": "Tvungen is not a modal, so att is needed."
+        },
+        {
+          "answers": [
+            "Jag hade att jobba igår."
+          ],
+          "why": "Swedish does not use ha for must."
+        }
+      ]
+    },
+    {
+      "id": "modal-verbs-past-9",
+      "pattern": "past",
+      "type": "rewrite",
+      "instruction": "Put it in the past.",
+      "source": "Jag vill äta.",
+      "answers": [
+        "Jag ville äta."
+      ],
+      "hint": "Only the modal changes; the infinitive stays.",
+      "feedback": "Vill becomes ville.",
+      "explanation": "Jag ville äta.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag ville åt."
+          ],
+          "why": "Only the modal carries the tense."
+        },
+        {
+          "answers": [
+            "Jag vill åt."
+          ],
+          "why": "The modal carries the tense; the infinitive stays."
+        }
+      ],
+      "row": "vilja",
+      "gloss": [
+        {
+          "sv": "vill",
+          "en": "want",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "äta",
+          "en": "eat",
+          "word": "verbs-054"
+        }
+      ]
+    }
+  ]
+}

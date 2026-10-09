@@ -1,0 +1,2019 @@
+{
+  "id": "questions",
+  "unit": "sentences",
+  "level": "A1",
+  "title": "Asking questions",
+  "description": "Ask yes/no questions and questions with vad, var, vart, när, hur, varför, vilken and hur många, and answer with ja, nej or jo.",
+  "mark": "Talar du? · Var bor du?",
+  "guide": {
+    "summary": "Swedish asks a question by moving the verb: first for a yes/no question, second after a question word. Learn the question words, the var and vart split, which agrees, and the special yes, jo.",
+    "sections": [
+      {
+        "id": "yes-no",
+        "title": "Yes/no questions: the verb goes first",
+        "text": "Swedish has no helper like English do. To ask a yes/no question, put the conjugated verb first and the subject straight after it.",
+        "table": {
+          "columns": [
+            "Statement",
+            "Question",
+            "English"
+          ],
+          "rows": [
+            [
+              "Du pratar svenska.",
+              "Pratar du svenska?",
+              "Do you speak Swedish?"
+            ],
+            [
+              "Du har en penna.",
+              "Har du en penna?",
+              "Do you have a pen?"
+            ],
+            [
+              "Han är hemma.",
+              "Är han hemma?",
+              "Is he at home?"
+            ],
+            [
+              "Ni kan simma.",
+              "Kan ni simma?",
+              "Can you swim?"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the conjugated verb: the one in the present or past form, or a modal like kan or vill.",
+          "Put it first.",
+          "Put the subject right after it; everything else stays where it was.",
+          "End with a question mark."
+        ],
+        "examples": [
+          {
+            "sv": "Talar du svenska?",
+            "en": "Do you speak Swedish?"
+          },
+          {
+            "sv": "Har du en penna?",
+            "en": "Do you have a pen?"
+          }
+        ],
+        "watch": [
+          "Never add gör for English do: Gör du pratar is wrong.",
+          "An infinitive stays at the end: Kan du simma?"
+        ]
+      },
+      {
+        "id": "word-order",
+        "title": "Question word, then the verb",
+        "text": "With a question word, the question word takes the first place and the verb the second, just as in every Swedish main clause. The subject comes after the verb.",
+        "table": {
+          "columns": [
+            "1. question word",
+            "2. verb",
+            "3. subject"
+          ],
+          "rows": [
+            [
+              "Var",
+              "bor",
+              "du?"
+            ],
+            [
+              "Vad",
+              "heter",
+              "du?"
+            ],
+            [
+              "När",
+              "kommer",
+              "bussen?"
+            ],
+            [
+              "Hur mycket kaffe",
+              "dricker",
+              "du?"
+            ]
+          ]
+        },
+        "steps": [
+          "Put the question word, with any noun that belongs to it, first.",
+          "Put the verb second.",
+          "Put the subject third, then the rest."
+        ],
+        "examples": [
+          {
+            "sv": "Var bor du?",
+            "en": "Where do you live?"
+          },
+          {
+            "sv": "Vad gör du idag?",
+            "en": "What are you doing today?"
+          }
+        ],
+        "watch": [
+          "Vad du heter is the order inside a longer sentence, not in a direct question.",
+          "A whole phrase such as hur många språk counts as the first place; the verb follows it."
+        ]
+      },
+      {
+        "id": "var-vart",
+        "title": "Var or vart: where, or where to?",
+        "text": "Swedish has two words for where. Var asks where something is or happens. Vart asks where to, with a movement towards a goal.",
+        "table": {
+          "columns": [
+            "Word",
+            "Asks",
+            "Typical verbs"
+          ],
+          "rows": [
+            [
+              "var",
+              "where (at)",
+              "bo, jobba, ligga, vara"
+            ],
+            [
+              "vart",
+              "where to",
+              "gå, åka, resa, ska"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the verb.",
+          "If it means moving towards somewhere, use vart.",
+          "Otherwise, for a position or place of action, use var."
+        ],
+        "examples": [
+          {
+            "sv": "Var bor du?",
+            "en": "Where do you live?"
+          },
+          {
+            "sv": "Vart ska du åka?",
+            "en": "Where are you going?"
+          }
+        ],
+        "watch": [
+          "English where to often drops the to; Swedish still needs vart.",
+          "Var is also the past of vara (was); the context shows which it is."
+        ]
+      },
+      {
+        "id": "question-words",
+        "title": "The question words",
+        "text": "Each question word asks for one kind of answer. Learn them in pairs with the answer they expect.",
+        "table": {
+          "columns": [
+            "Swedish",
+            "English",
+            "Asks for"
+          ],
+          "rows": [
+            [
+              "vad",
+              "what",
+              "a thing, a name"
+            ],
+            [
+              "vem",
+              "who",
+              "a person"
+            ],
+            [
+              "när",
+              "when",
+              "a time"
+            ],
+            [
+              "hur",
+              "how",
+              "a manner, a state"
+            ],
+            [
+              "varför",
+              "why",
+              "a reason"
+            ]
+          ]
+        },
+        "steps": [
+          "Think of the answer you want: thing, person, time, manner or reason.",
+          "Pick the matching word.",
+          "Then put the verb second."
+        ],
+        "examples": [
+          {
+            "sv": "Vad heter du?",
+            "en": "What is your name?"
+          },
+          {
+            "sv": "Varför är du trött?",
+            "en": "Why are you tired?"
+          }
+        ],
+        "watch": [
+          "A name is asked with vad: Vad heter du? not vem.",
+          "Hur mår du? asks how you feel; hur är du asks what you are like."
+        ]
+      },
+      {
+        "id": "vilken",
+        "title": "Vilken, vilket, vilka: which",
+        "text": "Which agrees with the noun after it, like an adjective: vilken for en-words, vilket for ett-words, vilka for every plural.",
+        "table": {
+          "columns": [
+            "Noun",
+            "which",
+            "Example"
+          ],
+          "rows": [
+            [
+              "en-word",
+              "vilken",
+              "vilken buss"
+            ],
+            [
+              "ett-word",
+              "vilket",
+              "vilket rum"
+            ],
+            [
+              "plural",
+              "vilka",
+              "vilka böcker"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun after which.",
+          "Plural? Use vilka.",
+          "Singular: en-word takes vilken, ett-word vilket."
+        ],
+        "examples": [
+          {
+            "sv": "Vilken färg gillar du?",
+            "en": "Which colour do you like?"
+          },
+          {
+            "sv": "Vilket äpple vill du ha?",
+            "en": "Which apple do you want?"
+          }
+        ],
+        "watch": [
+          "The gender of the noun decides, not the person asking.",
+          "Vilka covers plurals of both genders."
+        ]
+      },
+      {
+        "id": "how-much-many",
+        "title": "Hur mycket or hur många?",
+        "text": "Hur mycket asks how much, for amounts you cannot count and for prices. Hur många asks how many, for things you count one by one.",
+        "table": {
+          "columns": [
+            "Phrase",
+            "Use with",
+            "Example"
+          ],
+          "rows": [
+            [
+              "hur mycket",
+              "uncountable nouns, prices",
+              "hur mycket kaffe"
+            ],
+            [
+              "hur många",
+              "countable plurals",
+              "hur många barn"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask yourself: can I count it one, two, three?",
+          "If yes, use hur många with a plural noun.",
+          "If no, or it is a price, use hur mycket.",
+          "Then put the verb after the whole phrase."
+        ],
+        "examples": [
+          {
+            "sv": "Hur mycket kostar det?",
+            "en": "How much does it cost?"
+          },
+          {
+            "sv": "Hur många språk pratar du?",
+            "en": "How many languages do you speak?"
+          }
+        ],
+        "watch": [
+          "Hur mycket kostar asks the price; never use många there.",
+          "Mycket alone also means very or a lot."
+        ]
+      },
+      {
+        "id": "ja-nej-jo",
+        "title": "Answering: ja, nej or jo",
+        "text": "Ja and nej mean yes and no. Swedish has a third word, jo, for saying yes to a question with inte.",
+        "table": {
+          "columns": [
+            "Question",
+            "Yes",
+            "No"
+          ],
+          "rows": [
+            [
+              "Pratar du svenska?",
+              "Ja",
+              "Nej"
+            ],
+            [
+              "Pratar du inte svenska?",
+              "Jo",
+              "Nej"
+            ]
+          ]
+        },
+        "steps": [
+          "Check whether the question has inte.",
+          "No inte: answer ja or nej.",
+          "With inte: jo contradicts it (yes, I do), nej agrees (no, I don’t)."
+        ],
+        "examples": [
+          {
+            "sv": "Talar du inte svenska? Jo!",
+            "en": "Don’t you speak Swedish? Yes, I do!"
+          },
+          {
+            "sv": "Har du en bil? Ja, det har jag.",
+            "en": "Do you have a car? Yes, I do."
+          }
+        ],
+        "watch": [
+          "Ja after a question with inte sounds like agreement and confuses the listener.",
+          "Short answers repeat the verb with det: Ja, det gör jag."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "yes-no": {
+      "section": "yes-no",
+      "steps": [
+        "Find the conjugated verb.",
+        "Put it first, then the subject.",
+        "Leave the rest as it was and end with a question mark."
+      ]
+    },
+    "word-order": {
+      "section": "word-order",
+      "steps": [
+        "Put the question word or phrase first.",
+        "Put the verb second.",
+        "Put the subject after the verb."
+      ]
+    },
+    "var-vart": {
+      "section": "var-vart",
+      "steps": [
+        "Look at the verb.",
+        "Movement towards a goal: vart.",
+        "A position or place of action: var."
+      ]
+    },
+    "question-words": {
+      "section": "question-words",
+      "steps": [
+        "Decide what the answer would be: thing, person, time, manner or reason.",
+        "Take the matching question word.",
+        "Keep the verb second."
+      ]
+    },
+    "vilken": {
+      "section": "vilken",
+      "steps": [
+        "Find the noun after which.",
+        "Plural: vilka.",
+        "Singular: vilken for en-words, vilket for ett-words."
+      ]
+    },
+    "how-much-many": {
+      "section": "how-much-many",
+      "steps": [
+        "Can you count it one by one?",
+        "Countable plural: hur många.",
+        "Uncountable or a price: hur mycket."
+      ]
+    },
+    "ja-nej-jo": {
+      "section": "ja-nej-jo",
+      "steps": [
+        "Look for inte in the question.",
+        "No inte: ja or nej.",
+        "With inte: jo to contradict, nej to agree."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "questions-yes-no-1",
+      "pattern": "yes-no",
+      "type": "rewrite",
+      "instruction": "Turn the statement into a yes/no question. Write the whole sentence.",
+      "source": "Du pratar svenska.",
+      "answers": [
+        "Pratar du svenska?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Du pratar svenska?"
+          ],
+          "why": "That keeps statement order and only changes the punctuation. In writing, a Swedish question needs the verb first."
+        },
+        {
+          "answers": [
+            "Gör du pratar svenska?",
+            "Gör du prata svenska?"
+          ],
+          "why": "Swedish never builds questions with a helper like English do. The main verb itself moves to the front."
+        }
+      ],
+      "hint": "Move the verb to the very front.",
+      "feedback": "A yes/no question opens with the verb, and the subject comes straight after it.",
+      "explanation": "Swedish has no do-helper: you swap verb and subject. Du pratar becomes Pratar du, and the full stop becomes a question mark.",
+      "gloss": [
+        {
+          "sv": "pratar",
+          "en": "speak (prata)",
+          "word": "verbs-007"
+        },
+        {
+          "sv": "svenska",
+          "en": "Swedish",
+          "word": "school-011"
+        }
+      ]
+    },
+    {
+      "id": "questions-yes-no-2",
+      "pattern": "yes-no",
+      "type": "rewrite",
+      "instruction": "Turn the statement into a yes/no question. Write the whole sentence.",
+      "source": "Ni har en hund.",
+      "answers": [
+        "Har ni en hund?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ni har en hund?"
+          ],
+          "why": "The verb is still after the subject; a written question puts it in first place."
+        },
+        {
+          "answers": [
+            "Har en hund ni?"
+          ],
+          "why": "Only the verb moves. The subject follows it directly, and the object stays at the end."
+        }
+      ],
+      "hint": "Which word is the verb? Put it first.",
+      "feedback": "Verb first, then the subject ni, then the rest.",
+      "explanation": "Har is the verb, so the question opens with it: Har ni en hund?",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "hund",
+          "en": "dog",
+          "word": "nature-011"
+        }
+      ]
+    },
+    {
+      "id": "questions-yes-no-3",
+      "pattern": "yes-no",
+      "type": "choose",
+      "instruction": "Choose the word that starts the question.",
+      "source": "____ du i Göteborg?",
+      "options": [
+        "Bor",
+        "Du bor",
+        "Gör"
+      ],
+      "answers": [
+        "Bor"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Du bor"
+          ],
+          "why": "That gives du twice and statement order. The subject is already after the gap."
+        },
+        {
+          "answers": [
+            "Gör"
+          ],
+          "why": "Swedish has no do-helper for questions. Gör du i Göteborg means nothing useful here."
+        }
+      ],
+      "hint": "A yes/no question opens with the verb itself.",
+      "feedback": "Put the verb in the first slot; du already follows the gap.",
+      "explanation": "Bor du i Göteborg? asks Do you live in Gothenburg? The verb bor opens the question.",
+      "gloss": [
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Göteborg",
+          "en": "Gothenburg"
+        }
+      ]
+    },
+    {
+      "id": "questions-yes-no-4",
+      "pattern": "yes-no",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Du kan simma?",
+      "answers": [
+        "Kan du simma?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Du kan simma?"
+          ],
+          "why": "That is the sentence unchanged. Statement order with a question mark only works in speech, with a rising tone."
+        },
+        {
+          "answers": [
+            "Simma du kan?"
+          ],
+          "why": "The infinitive simma stays at the end. It is the conjugated verb, the one with -r or the modal, that moves."
+        }
+      ],
+      "hint": "Which word should come first in a written question?",
+      "feedback": "Swap the verb and the subject.",
+      "explanation": "In a yes/no question the finite verb kan goes first and du follows: Kan du simma?",
+      "gloss": [
+        {
+          "sv": "kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "simma",
+          "en": "swim"
+        }
+      ]
+    },
+    {
+      "id": "questions-yes-no-5",
+      "pattern": "yes-no",
+      "type": "build",
+      "instruction": "Build the question: Do you have a pen? Leave one tile unused.",
+      "source": "Do you have a pen?",
+      "tokens": [
+        "du",
+        "Gör",
+        "en",
+        "Har",
+        "penna?"
+      ],
+      "answers": [
+        "Har du en penna?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Gör du en penna?"
+          ],
+          "why": "Gör means do or make. Swedish asks with the main verb, so this says Do you make a pen."
+        },
+        {
+          "answers": [
+            "Du har en penna?"
+          ],
+          "why": "Statement order. Put the verb first to make a written question."
+        }
+      ],
+      "hint": "No helper verb in Swedish.",
+      "feedback": "Start with the verb har.",
+      "explanation": "Do you have becomes Har du: the verb itself opens the question, and English do has no Swedish twin."
+    },
+    {
+      "id": "questions-yes-no-6",
+      "pattern": "yes-no",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Is the train late?",
+      "answers": [
+        "Är tåget sent?",
+        "Är tåget försenat?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Tåget är sent?"
+          ],
+          "why": "Statement order. A yes/no question starts with the verb."
+        },
+        {
+          "answers": [
+            "Är tåget sen?"
+          ],
+          "why": "Tåget is an ett-word, so the adjective takes -t: the form without it does not agree."
+        },
+        {
+          "answers": [
+            "Är tåg sent?"
+          ],
+          "why": "Swedish says the train with the ending -et on tåg."
+        }
+      ],
+      "hint": "Start with the verb for is.",
+      "feedback": "Verb first, then the subject tåget.",
+      "explanation": "Är opens the question and the subject tåget follows. Late is sent, agreeing with the ett-word tåget (försenat is also fine)."
+    },
+    {
+      "id": "questions-word-order-1",
+      "pattern": "word-order",
+      "type": "complete",
+      "instruction": "Write the verb bo in the right form.",
+      "source": "Var ____ du? (bo)",
+      "answers": [
+        "bor"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "bo"
+          ],
+          "why": "Bo is the infinitive. The question needs the present form with -r."
+        },
+        {
+          "answers": [
+            "du bor"
+          ],
+          "why": "Du is already written after the gap. The verb comes before the subject in a question."
+        }
+      ],
+      "hint": "After the question word comes the verb.",
+      "feedback": "Question word, verb, subject: the verb is second.",
+      "explanation": "Var bor du? The question word takes the first place, the verb bor the second, and du comes after it.",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where (at)",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "bo",
+          "en": "live",
+          "word": "verbs-065"
+        }
+      ]
+    },
+    {
+      "id": "questions-word-order-2",
+      "pattern": "word-order",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Vad du heter?",
+      "answers": [
+        "Vad heter du?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vad du heter?"
+          ],
+          "why": "That is the sentence unchanged. The subject before the verb is the order inside a longer sentence, not in a direct question."
+        },
+        {
+          "answers": [
+            "Heter du vad?"
+          ],
+          "why": "The question word goes first in Swedish, not at the end."
+        }
+      ],
+      "hint": "The verb belongs in second place.",
+      "feedback": "Question word first, then the verb, then the subject.",
+      "explanation": "Vad heter du? means What is your name? The verb heter must come straight after vad.",
+      "gloss": [
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "heter",
+          "en": "are called (heta)",
+          "word": "verbs-098"
+        }
+      ]
+    },
+    {
+      "id": "questions-word-order-3",
+      "pattern": "word-order",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "När bussen kommer?",
+      "answers": [
+        "När kommer bussen?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "När bussen kommer?"
+          ],
+          "why": "That is the sentence unchanged: the subject has slipped in before the verb."
+        },
+        {
+          "answers": [
+            "Kommer bussen när?"
+          ],
+          "why": "The question word belongs at the front of the question."
+        }
+      ],
+      "hint": "Count the places: när is first, so what is second?",
+      "feedback": "The verb must stand right after the question word.",
+      "explanation": "Every Swedish main clause keeps its verb in second place. När fills the first place, so kommer goes next and bussen after it.",
+      "gloss": [
+        {
+          "sv": "När",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "bussen",
+          "en": "the bus",
+          "word": "travel-005"
+        },
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        }
+      ]
+    },
+    {
+      "id": "questions-word-order-4",
+      "pattern": "word-order",
+      "type": "build",
+      "instruction": "Build the question: How are you? Leave one tile unused.",
+      "source": "How are you?",
+      "tokens": [
+        "Hur",
+        "mår",
+        "är",
+        "du?"
+      ],
+      "answers": [
+        "Hur mår du?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Hur är du?"
+          ],
+          "why": "Hur är du asks what kind of person you are. For health and mood Swedish uses må."
+        }
+      ],
+      "hint": "Swedes ask how you feel with må.",
+      "feedback": "Question word, verb, subject.",
+      "explanation": "Hur mår du? is the everyday way to ask How are you? Hur first, the verb mår second, du last."
+    },
+    {
+      "id": "questions-word-order-5",
+      "pattern": "word-order",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "What are you doing today?",
+      "answers": [
+        "Vad gör du idag?",
+        "Vad gör du i dag?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vad du gör idag?",
+            "Vad du gör i dag?"
+          ],
+          "why": "The subject came before the verb. After a question word the verb comes first."
+        },
+        {
+          "answers": [
+            "Vad är du gör idag?",
+            "Vad är du gör i dag?"
+          ],
+          "why": "Swedish has no are doing form. The simple present covers it."
+        }
+      ],
+      "hint": "Question word, then verb, then subject.",
+      "feedback": "Vad first, gör second, du third.",
+      "explanation": "Vad gör du idag? The verb gör follows vad directly; Swedish uses the simple present for are doing."
+    },
+    {
+      "id": "questions-word-order-6",
+      "pattern": "word-order",
+      "type": "rewrite",
+      "instruction": "Ask about the time with när. Write the whole question.",
+      "source": "Filmen börjar klockan åtta.",
+      "answers": [
+        "När börjar filmen?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "När filmen börjar?"
+          ],
+          "why": "Subject before verb: a direct question keeps the verb in second place."
+        },
+        {
+          "answers": [
+            "När börjar filmen klockan åtta?"
+          ],
+          "why": "The question word replaces the time, so the time should go."
+        }
+      ],
+      "hint": "När replaces the time; then the verb, then the subject.",
+      "feedback": "Drop the time, start with när and keep the verb second.",
+      "explanation": "När börjar filmen? asks When does the film start? The verb börjar comes straight after när.",
+      "gloss": [
+        {
+          "sv": "Filmen",
+          "en": "the film",
+          "word": "media-041"
+        },
+        {
+          "sv": "börjar",
+          "en": "starts (börja)",
+          "word": "verbs-042"
+        },
+        {
+          "sv": "klockan åtta",
+          "en": "at eight o’clock"
+        }
+      ]
+    },
+    {
+      "id": "questions-var-vart-1",
+      "pattern": "var-vart",
+      "type": "choose",
+      "instruction": "Choose the word for where.",
+      "source": "____ ligger stationen?",
+      "options": [
+        "Var",
+        "Vart"
+      ],
+      "answers": [
+        "Var"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vart"
+          ],
+          "why": "Vart asks where to, with a movement towards a goal. A station lying somewhere is not moving."
+        }
+      ],
+      "hint": "Is anyone moving, or is the station just somewhere?",
+      "feedback": "Ligger describes a place, not a movement.",
+      "explanation": "Var asks about location: Where is the station? Ligger is a verb of being somewhere, so no movement is involved.",
+      "gloss": [
+        {
+          "sv": "ligger",
+          "en": "is located (ligga)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "stationen",
+          "en": "the station",
+          "word": "travel-011"
+        }
+      ]
+    },
+    {
+      "id": "questions-var-vart-2",
+      "pattern": "var-vart",
+      "type": "choose",
+      "instruction": "Choose the word for where.",
+      "source": "____ ska du åka i sommar?",
+      "options": [
+        "Var",
+        "Vart"
+      ],
+      "answers": [
+        "Vart"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Var"
+          ],
+          "why": "That asks where something is. With åka the question is about a destination, so the form for direction fits."
+        }
+      ],
+      "hint": "Åka means travel. Is there a destination?",
+      "feedback": "Movement to a place takes the form with -t.",
+      "explanation": "Vart asks where to: Where are you going this summer? Åka is a verb of movement.",
+      "gloss": [
+        {
+          "sv": "ska",
+          "en": "will",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "åka",
+          "en": "go, travel",
+          "word": "verbs-034"
+        },
+        {
+          "sv": "i sommar",
+          "en": "this summer"
+        }
+      ]
+    },
+    {
+      "id": "questions-var-vart-3",
+      "pattern": "var-vart",
+      "type": "complete",
+      "instruction": "Write where or where to in Swedish.",
+      "source": "____ går du?",
+      "answers": [
+        "Vart"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Var"
+          ],
+          "why": "That form asks about position. Går du is a movement towards somewhere."
+        },
+        {
+          "answers": [
+            "Vad"
+          ],
+          "why": "Vad means what. The question is about a place."
+        }
+      ],
+      "hint": "Gå here means going somewhere.",
+      "feedback": "Movement towards a goal needs the form with -t.",
+      "explanation": "Vart går du? means Where are you going? With a verb of motion Swedish asks with vart.",
+      "gloss": [
+        {
+          "sv": "går",
+          "en": "are going (gå)",
+          "word": "verbs-004"
+        }
+      ]
+    },
+    {
+      "id": "questions-var-vart-4",
+      "pattern": "var-vart",
+      "type": "complete",
+      "instruction": "Write where or where to in Swedish.",
+      "source": "____ jobbar din bror?",
+      "answers": [
+        "Var"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vart"
+          ],
+          "why": "That form asks where to. Working at a place involves no destination."
+        },
+        {
+          "answers": [
+            "Vem"
+          ],
+          "why": "Vem means who. The question is about a place."
+        }
+      ],
+      "hint": "Does the brother move towards a place, or work at one?",
+      "feedback": "Working happens at a place: no movement.",
+      "explanation": "Var jobbar din bror? asks Where does your brother work? Jobba is not a verb of motion.",
+      "gloss": [
+        {
+          "sv": "jobbar",
+          "en": "works (jobba)",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "din",
+          "en": "your"
+        },
+        {
+          "sv": "bror",
+          "en": "brother",
+          "word": "people-015"
+        }
+      ]
+    },
+    {
+      "id": "questions-var-vart-5",
+      "pattern": "var-vart",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Where are you going tomorrow?",
+      "answers": [
+        "Vart ska du i morgon?",
+        "Vart ska du imorgon?",
+        "Vart åker du i morgon?",
+        "Vart går du i morgon?",
+        "Vart ska du åka i morgon?",
+        "Vart ska du gå i morgon?",
+        "Vart åker du imorgon?",
+        "Vart går du imorgon?",
+        "Vart ska du åka imorgon?",
+        "Vart ska du gå imorgon?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Var ska du i morgon?",
+            "Var åker du i morgon?",
+            "Var går du i morgon?"
+          ],
+          "why": "That form asks about position. Going somewhere needs the word for direction."
+        },
+        {
+          "answers": [
+            "Vart du ska i morgon?"
+          ],
+          "why": "After the question word the verb comes second, before du."
+        }
+      ],
+      "hint": "Going means movement.",
+      "feedback": "Use the direction word and keep the verb second.",
+      "explanation": "Vart ska du i morgon? Movement to a destination takes vart; ska can stand alone in the sense of be going."
+    },
+    {
+      "id": "questions-var-vart-6",
+      "pattern": "var-vart",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Var åker ni på lördag?",
+      "answers": [
+        "Vart åker ni på lördag?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Var åker ni på lördag?"
+          ],
+          "why": "That is the sentence unchanged. That question word asks where something is, but åka has a destination."
+        },
+        {
+          "answers": [
+            "Vad åker ni på lördag?"
+          ],
+          "why": "Vad means what. The question is about a destination."
+        }
+      ],
+      "hint": "Åker is a verb of movement.",
+      "feedback": "Change the question word to the one that asks where to.",
+      "explanation": "Åka means travel to somewhere, so the question needs vart: Where are you going on Saturday?",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where (at)",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "åker",
+          "en": "are going (åka)",
+          "word": "verbs-034"
+        },
+        {
+          "sv": "på lördag",
+          "en": "on Saturday"
+        }
+      ]
+    },
+    {
+      "id": "questions-question-words-1",
+      "pattern": "question-words",
+      "type": "choose",
+      "instruction": "Choose the question word.",
+      "source": "____ heter din lärare?",
+      "options": [
+        "Vad",
+        "Vem",
+        "Hur"
+      ],
+      "answers": [
+        "Vad"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vem"
+          ],
+          "why": "Vem means who. With heter Swedish asks for the name with what, not who."
+        },
+        {
+          "answers": [
+            "Hur"
+          ],
+          "why": "Hur means how. How is your teacher called is not how Swedish asks for a name."
+        }
+      ],
+      "hint": "In Swedish you ask what someone is called.",
+      "feedback": "Think of What is your teacher called?",
+      "explanation": "Vad heter din lärare? Swedish asks for a name with vad, literally What is your teacher called?",
+      "gloss": [
+        {
+          "sv": "heter",
+          "en": "is called (heta)",
+          "word": "verbs-098"
+        },
+        {
+          "sv": "din",
+          "en": "your"
+        },
+        {
+          "sv": "lärare",
+          "en": "teacher",
+          "word": "school-002"
+        }
+      ]
+    },
+    {
+      "id": "questions-question-words-2",
+      "pattern": "question-words",
+      "type": "choose",
+      "instruction": "Choose the question word.",
+      "source": "____ är du trött? Jag sov dåligt.",
+      "options": [
+        "Varför",
+        "När",
+        "Var"
+      ],
+      "answers": [
+        "Varför"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "När"
+          ],
+          "why": "När asks when. The answer is a reason, not a time."
+        },
+        {
+          "answers": [
+            "Var"
+          ],
+          "why": "That asks where. The answer says nothing about a place."
+        }
+      ],
+      "hint": "The answer gives a reason.",
+      "feedback": "Match the question word to the answer: a reason.",
+      "explanation": "Varför means why. The answer I slept badly gives a reason.",
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "trött",
+          "en": "tired",
+          "word": "feelings-009"
+        },
+        {
+          "sv": "sov",
+          "en": "slept (sova)",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "dåligt",
+          "en": "badly"
+        }
+      ]
+    },
+    {
+      "id": "questions-question-words-3",
+      "pattern": "question-words",
+      "type": "complete",
+      "instruction": "Write the Swedish word for who.",
+      "source": "____ är det?",
+      "answers": [
+        "Vem"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vad"
+          ],
+          "why": "Vad means what. Who is it asks about a person."
+        },
+        {
+          "answers": [
+            "Vilken"
+          ],
+          "why": "That means which, and it chooses from a group. Here you simply ask about a person."
+        }
+      ],
+      "hint": "The question is about a person.",
+      "feedback": "Swedish who has one form.",
+      "explanation": "Vem är det? means Who is it? Vem asks about people.",
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "questions-question-words-4",
+      "pattern": "question-words",
+      "type": "complete",
+      "instruction": "Write the Swedish word for when.",
+      "source": "____ slutar du jobbet?",
+      "answers": [
+        "När"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Var"
+          ],
+          "why": "That asks about a place, not a time."
+        },
+        {
+          "answers": [
+            "Hur"
+          ],
+          "why": "Hur means how. The question asks for a time."
+        }
+      ],
+      "hint": "The answer would be a time.",
+      "feedback": "A time question.",
+      "explanation": "När slutar du jobbet? asks When do you finish work?",
+      "gloss": [
+        {
+          "sv": "slutar",
+          "en": "finish (sluta)",
+          "word": "verbs-043"
+        },
+        {
+          "sv": "jobbet",
+          "en": "work, the job",
+          "word": "work-002"
+        }
+      ]
+    },
+    {
+      "id": "questions-question-words-5",
+      "pattern": "question-words",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "How do you say this in Swedish?",
+      "answers": [
+        "Hur säger man det här på svenska?",
+        "Hur säger man detta på svenska?",
+        "Hur säger man det på svenska?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Hur man säger det här på svenska?"
+          ],
+          "why": "The verb must come before the subject after a question word."
+        },
+        {
+          "answers": [
+            "Vad säger man det här på svenska?"
+          ],
+          "why": "Vad means what. How do you say asks with the word for how."
+        }
+      ],
+      "hint": "How is hur, and the subject is man.",
+      "feedback": "Question word, verb, subject.",
+      "explanation": "Hur säger man det här på svenska? Swedish uses man (one) for a general you, and the verb säger comes second."
+    },
+    {
+      "id": "questions-question-words-6",
+      "pattern": "question-words",
+      "type": "build",
+      "instruction": "Build the question: Why are you laughing? Leave one tile unused.",
+      "source": "Why are you laughing?",
+      "tokens": [
+        "skrattar",
+        "Varför",
+        "Vart",
+        "du?"
+      ],
+      "answers": [
+        "Varför skrattar du?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vart skrattar du?"
+          ],
+          "why": "Vart asks where to. The question wants a reason."
+        }
+      ],
+      "hint": "Why is one word in Swedish.",
+      "feedback": "Question word, verb, subject.",
+      "explanation": "Varför skrattar du? Varför means why, and the verb skrattar comes straight after it."
+    },
+    {
+      "id": "questions-vilken-1",
+      "pattern": "vilken",
+      "type": "choose",
+      "instruction": "Choose the word for which.",
+      "source": "____ buss tar du?",
+      "options": [
+        "Vilken",
+        "Vilket",
+        "Vilka"
+      ],
+      "answers": [
+        "Vilken"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vilket"
+          ],
+          "why": "That is the form for ett-words. Buss takes en."
+        },
+        {
+          "answers": [
+            "Vilka"
+          ],
+          "why": "That is the plural form, but the question is about one bus."
+        }
+      ],
+      "hint": "Buss is an en-word, and there is one bus.",
+      "feedback": "Match which to the noun after it.",
+      "explanation": "Buss is an en-word in the singular (en buss), so which is vilken.",
+      "gloss": [
+        {
+          "sv": "buss",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "sv": "tar",
+          "en": "take"
+        }
+      ]
+    },
+    {
+      "id": "questions-vilken-2",
+      "pattern": "vilken",
+      "type": "choose",
+      "instruction": "Choose the word for which.",
+      "source": "____ rum är ditt?",
+      "options": [
+        "Vilken",
+        "Vilket",
+        "Vilka"
+      ],
+      "answers": [
+        "Vilket"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vilken"
+          ],
+          "why": "That form goes with en-words, and rum takes ett."
+        },
+        {
+          "answers": [
+            "Vilka"
+          ],
+          "why": "That form is for several things. The question asks about one room."
+        }
+      ],
+      "hint": "Rum is an ett-word.",
+      "feedback": "Ett-words take the form with -t.",
+      "explanation": "Rum is an ett-word (ett rum), so which room is vilket rum.",
+      "gloss": [
+        {
+          "sv": "rum",
+          "en": "room",
+          "word": "home-005"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "ditt",
+          "en": "yours"
+        }
+      ]
+    },
+    {
+      "id": "questions-vilken-3",
+      "pattern": "vilken",
+      "type": "complete",
+      "instruction": "Write the Swedish word for which.",
+      "source": "____ böcker läser du?",
+      "answers": [
+        "Vilka"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vilken"
+          ],
+          "why": "That is the singular en-form. Böcker is several books."
+        },
+        {
+          "answers": [
+            "Vilket"
+          ],
+          "why": "That is the singular ett-form, and böcker is plural."
+        }
+      ],
+      "hint": "How many books?",
+      "feedback": "Böcker is plural.",
+      "explanation": "Böcker is the plural of bok, and every plural takes vilka, whatever the gender.",
+      "gloss": [
+        {
+          "sv": "böcker",
+          "en": "books",
+          "word": "school-028"
+        },
+        {
+          "sv": "läser",
+          "en": "read (läsa)",
+          "word": "verbs-070"
+        }
+      ]
+    },
+    {
+      "id": "questions-vilken-4",
+      "pattern": "vilken",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Vilken äpple vill du ha?",
+      "answers": [
+        "Vilket äpple vill du ha?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vilken äpple vill du ha?"
+          ],
+          "why": "That is the sentence unchanged. The en-form does not match an ett-word."
+        },
+        {
+          "answers": [
+            "Vilka äpple vill du ha?"
+          ],
+          "why": "That is the plural form, but äpple here is one apple."
+        }
+      ],
+      "hint": "Is äpple an en-word or an ett-word?",
+      "feedback": "Make which agree with äpple.",
+      "explanation": "Äpple is an ett-word (ett äpple), so which apple is vilket äpple.",
+      "gloss": [
+        {
+          "sv": "Vilken",
+          "en": "which",
+          "word": "essentials-041"
+        },
+        {
+          "sv": "äpple",
+          "en": "apple",
+          "word": "food-021"
+        },
+        {
+          "sv": "vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "to have",
+          "word": "verbs-002"
+        }
+      ]
+    },
+    {
+      "id": "questions-vilken-5",
+      "pattern": "vilken",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Which colour do you like?",
+      "answers": [
+        "Vilken färg gillar du?",
+        "Vilken färg tycker du om?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vilket färg gillar du?"
+          ],
+          "why": "That form belongs to ett-words; färg takes en."
+        },
+        {
+          "answers": [
+            "Vilken färg du gillar?"
+          ],
+          "why": "After the question phrase the verb comes next, before du."
+        }
+      ],
+      "hint": "Färg is an en-word.",
+      "feedback": "Which agrees with färg; then verb, then subject.",
+      "explanation": "Vilken färg gillar du? Färg is an en-word, so which is vilken, and the verb gillar comes before du."
+    },
+    {
+      "id": "questions-vilken-6",
+      "pattern": "vilken",
+      "type": "rewrite",
+      "instruction": "Replace film with filmer and make which agree. Write the whole question.",
+      "source": "Vilken film vill du se?",
+      "answers": [
+        "Vilka filmer vill du se?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vilken filmer vill du se?"
+          ],
+          "why": "Which still matches the singular. A plural noun needs the plural form."
+        },
+        {
+          "answers": [
+            "Vilket filmer vill du se?"
+          ],
+          "why": "That is the singular ett-form; filmer is plural."
+        }
+      ],
+      "hint": "Several films.",
+      "feedback": "Plural nouns take one form of which.",
+      "explanation": "Filmer is plural, so vilken becomes vilka: Which films do you want to see?",
+      "gloss": [
+        {
+          "sv": "Vilken",
+          "en": "which",
+          "word": "essentials-041"
+        },
+        {
+          "sv": "film",
+          "en": "film",
+          "word": "media-041"
+        },
+        {
+          "sv": "vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "se",
+          "en": "see"
+        }
+      ]
+    },
+    {
+      "id": "questions-how-much-many-1",
+      "pattern": "how-much-many",
+      "type": "choose",
+      "instruction": "Choose the word.",
+      "source": "Hur ____ kostar biljetten?",
+      "options": [
+        "mycket",
+        "många"
+      ],
+      "answers": [
+        "mycket"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "många"
+          ],
+          "why": "That asks how many and needs things you could count one by one."
+        }
+      ],
+      "hint": "You are asking about an amount of money.",
+      "feedback": "Price questions ask how much.",
+      "explanation": "Hur mycket kostar biljetten? A price is an amount, so Swedish asks hur mycket.",
+      "gloss": [
+        {
+          "sv": "Hur",
+          "en": "how",
+          "word": "essentials-036"
+        },
+        {
+          "sv": "kostar",
+          "en": "cost (kosta)",
+          "word": "verbs-053"
+        },
+        {
+          "sv": "biljetten",
+          "en": "the ticket",
+          "word": "travel-014"
+        }
+      ]
+    },
+    {
+      "id": "questions-how-much-many-2",
+      "pattern": "how-much-many",
+      "type": "complete",
+      "instruction": "Write the word for many.",
+      "source": "Hur ____ barn har ni?",
+      "answers": [
+        "många"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "mycket"
+          ],
+          "why": "That word goes with amounts you cannot count, like water or time."
+        }
+      ],
+      "hint": "Children can be counted.",
+      "feedback": "Countable plurals take the word for many.",
+      "explanation": "Hur många barn har ni? Barn here is plural and countable, so how many is hur många.",
+      "gloss": [
+        {
+          "sv": "Hur",
+          "en": "how",
+          "word": "essentials-036"
+        },
+        {
+          "sv": "barn",
+          "en": "children",
+          "word": "people-005"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        }
+      ]
+    },
+    {
+      "id": "questions-how-much-many-3",
+      "pattern": "how-much-many",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "How much coffee do you drink?",
+      "answers": [
+        "Hur mycket kaffe dricker du?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Hur många kaffe dricker du?"
+          ],
+          "why": "That asks how many, which needs countable things."
+        },
+        {
+          "answers": [
+            "Hur mycket kaffe du dricker?"
+          ],
+          "why": "The verb comes straight after the question phrase."
+        }
+      ],
+      "hint": "Coffee cannot be counted.",
+      "feedback": "Hur mycket, then the noun, then verb and subject.",
+      "explanation": "Hur mycket kaffe dricker du? Kaffe is uncountable, so hur mycket; the verb dricker follows the whole question phrase."
+    },
+    {
+      "id": "questions-how-much-many-4",
+      "pattern": "how-much-many",
+      "type": "build",
+      "instruction": "Build the question: How many languages do you speak? Leave one tile unused.",
+      "source": "How many languages do you speak?",
+      "tokens": [
+        "Hur",
+        "mycket",
+        "många",
+        "språk",
+        "pratar",
+        "du?"
+      ],
+      "answers": [
+        "Hur många språk pratar du?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Hur mycket språk pratar du?"
+          ],
+          "why": "That word is for amounts you cannot count. Languages are counted one by one."
+        }
+      ],
+      "hint": "Languages can be counted.",
+      "feedback": "Hur många språk fills the first place; then the verb.",
+      "explanation": "Hur många språk pratar du? Languages are countable, and the whole phrase hur många språk stands before the verb."
+    },
+    {
+      "id": "questions-how-much-many-5",
+      "pattern": "how-much-many",
+      "type": "rewrite",
+      "instruction": "Replace kaffe with äpplen and change the question word to match. Write the whole question.",
+      "source": "Hur mycket kaffe vill du ha?",
+      "answers": [
+        "Hur många äpplen vill du ha?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Hur mycket äpplen vill du ha?"
+          ],
+          "why": "Apples are countable, so the word for an amount no longer fits."
+        },
+        {
+          "answers": [
+            "Hur mycket kaffe vill du ha?"
+          ],
+          "why": "That is the original question: kaffe was never replaced."
+        }
+      ],
+      "hint": "Apples can be counted.",
+      "feedback": "Countable plural, so the question word changes.",
+      "explanation": "Äpplen are counted, so hur mycket becomes hur många.",
+      "gloss": [
+        {
+          "sv": "Hur",
+          "en": "how",
+          "word": "essentials-036"
+        },
+        {
+          "sv": "mycket",
+          "en": "much",
+          "word": "essentials-090"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "ha",
+          "en": "to have",
+          "word": "verbs-002"
+        }
+      ]
+    },
+    {
+      "id": "questions-ja-nej-jo-1",
+      "pattern": "ja-nej-jo",
+      "type": "choose",
+      "instruction": "Choose the answer that means yes.",
+      "source": "Pratar du inte svenska? ____, lite.",
+      "options": [
+        "Ja",
+        "Jo",
+        "Nej"
+      ],
+      "answers": [
+        "Jo"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ja"
+          ],
+          "why": "After a question with inte, the plain yes is not used; Swedish has a special word that contradicts the negative."
+        },
+        {
+          "answers": [
+            "Nej"
+          ],
+          "why": "Nej means no. The answer lite (a little) says yes."
+        }
+      ],
+      "hint": "The question has inte in it.",
+      "feedback": "A yes to a negative question has its own word.",
+      "explanation": "Jo answers yes to a question with inte: Don’t you speak Swedish? Yes, a little.",
+      "gloss": [
+        {
+          "sv": "Pratar",
+          "en": "speak (prata)",
+          "word": "verbs-007"
+        },
+        {
+          "sv": "svenska",
+          "en": "Swedish",
+          "word": "school-011"
+        },
+        {
+          "sv": "lite",
+          "en": "a little"
+        }
+      ]
+    },
+    {
+      "id": "questions-ja-nej-jo-2",
+      "pattern": "ja-nej-jo",
+      "type": "choose",
+      "instruction": "Choose the answer that means yes.",
+      "source": "Har du en cykel? ____, en röd.",
+      "options": [
+        "Ja",
+        "Jo",
+        "Nej"
+      ],
+      "answers": [
+        "Ja"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jo"
+          ],
+          "why": "That word contradicts a negative question, and this question has no inte."
+        },
+        {
+          "answers": [
+            "Nej"
+          ],
+          "why": "That means no, but the answer goes on to describe the bike."
+        }
+      ],
+      "hint": "Is there inte in the question?",
+      "feedback": "A plain question takes the plain yes.",
+      "explanation": "Ja answers yes to a positive question: Do you have a bike? Yes, a red one.",
+      "gloss": [
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "cykel",
+          "en": "bike",
+          "word": "travel-008"
+        },
+        {
+          "sv": "röd",
+          "en": "red"
+        }
+      ]
+    },
+    {
+      "id": "questions-ja-nej-jo-3",
+      "pattern": "ja-nej-jo",
+      "type": "choose",
+      "instruction": "Choose the answer.",
+      "source": "Är du inte hungrig? ____, jag har redan ätit.",
+      "options": [
+        "Ja",
+        "Jo",
+        "Nej"
+      ],
+      "answers": [
+        "Nej"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jo"
+          ],
+          "why": "That would mean Yes, I am hungry, which clashes with having eaten."
+        },
+        {
+          "answers": [
+            "Ja"
+          ],
+          "why": "After a question with inte, ja is unclear and not used. The speaker means no."
+        }
+      ],
+      "hint": "I have already eaten: hungry or not?",
+      "feedback": "The speaker agrees that they are not hungry.",
+      "explanation": "Nej agrees with the negative: Aren’t you hungry? No, I’ve already eaten.",
+      "gloss": [
+        {
+          "sv": "Är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "hungrig",
+          "en": "hungry",
+          "word": "feelings-039"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "redan",
+          "en": "already"
+        },
+        {
+          "sv": "ätit",
+          "en": "eaten (äta)",
+          "word": "verbs-054"
+        }
+      ]
+    },
+    {
+      "id": "questions-ja-nej-jo-4",
+      "pattern": "ja-nej-jo",
+      "type": "complete",
+      "instruction": "Write the Swedish word for yes.",
+      "source": "Kommer du inte i kväll? ____, jag kommer.",
+      "answers": [
+        "Jo"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ja"
+          ],
+          "why": "That is the plain yes, used for questions without inte."
+        },
+        {
+          "answers": [
+            "Nej"
+          ],
+          "why": "That means no, but the answer says jag kommer."
+        }
+      ],
+      "hint": "The question has inte.",
+      "feedback": "Contradicting a negative question needs a special yes.",
+      "explanation": "Jo means yes after a question with inte: Aren’t you coming tonight? Yes, I am.",
+      "gloss": [
+        {
+          "sv": "Kommer",
+          "en": "coming (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "i kväll",
+          "en": "tonight"
+        },
+        {
+          "sv": "kommer",
+          "en": "come (komma)",
+          "word": "verbs-005"
+        }
+      ]
+    },
+    {
+      "id": "questions-ja-nej-jo-5",
+      "pattern": "ja-nej-jo",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Don’t you live here? Yes, I do.",
+      "answers": [
+        "Bor du inte här? Jo, det gör jag.",
+        "Bor du inte här? Jo, jag bor här."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Bor du inte här? Ja, det gör jag."
+          ],
+          "why": "After a question with inte the plain yes is not used for contradicting."
+        },
+        {
+          "answers": [
+            "Bor du här inte? Jo, det gör jag."
+          ],
+          "why": "Inte comes straight after the subject du, before the rest of the sentence."
+        },
+        {
+          "answers": [
+            "Gör du inte bo här? Jo, det gör jag."
+          ],
+          "why": "Swedish does not ask with a do-helper: bor itself starts the question."
+        }
+      ],
+      "hint": "Inte goes after du; the yes is special.",
+      "feedback": "Verb first, then du, then inte. Answer with the yes for negative questions.",
+      "explanation": "Bor du inte här? Jo, det gör jag. Jo contradicts the negative; det gör jag is the Swedish for I do.",
+      "alternatives": [
+        {
+          "answer": "Bor inte du här? Jo, det gör jag.",
+          "message": "Right, and very common in speech. Bor du inte här? is the neutral written order.",
+          "accepted": true
+        },
+        {
+          "answer": "Bor inte du här? Jo, jag bor här.",
+          "message": "Right, and very common in speech. Bor du inte här? is the neutral written order.",
+          "accepted": true
+        }
+      ]
+    }
+  ]
+}

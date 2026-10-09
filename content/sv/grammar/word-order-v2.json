@@ -1,0 +1,2166 @@
+{
+  "id": "word-order-v2",
+  "unit": "sentences",
+  "level": "A1",
+  "title": "The verb in second place",
+  "description": "Keep the Swedish verb in second place, and know when the subject moves behind it.",
+  "mark": "Idag åker jag",
+  "guide": {
+    "summary": "Swedish main clauses keep their verb in second place: whatever comes first, the verb follows it. Learn what fills first place, where the subject goes, and why subordinate clauses do not follow the rule.",
+    "sections": [
+      {
+        "id": "verb-second",
+        "title": "The verb is always second",
+        "text": "In a Swedish main clause, the verb that shows tense (äter, åt, vill, ska) is always the second element. An element can be one word or a phrase: jag, Anna, min mamma, på kvällen. Short adverbs such as ofta, alltid, aldrig and inte come after the verb, never between the subject and the verb as in English.",
+        "table": {
+          "columns": [
+            "First place",
+            "Verb (second)",
+            "The rest"
+          ],
+          "rows": [
+            [
+              "Jag",
+              "dricker",
+              "ofta kaffe."
+            ],
+            [
+              "Anna",
+              "åker",
+              "alltid buss."
+            ],
+            [
+              "Min mamma",
+              "ringer",
+              "varje dag."
+            ],
+            [
+              "Vi",
+              "äter",
+              "middag hemma."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject: who does it?",
+          "Put the tense-carrying verb straight after it.",
+          "Put ofta, alltid, aldrig or inte after the verb."
+        ],
+        "examples": [
+          {
+            "sv": "Jag dricker ofta kaffe.",
+            "en": "I often drink coffee."
+          },
+          {
+            "sv": "Erik äter aldrig frukost.",
+            "en": "Erik never eats breakfast."
+          }
+        ],
+        "watch": [
+          "English says I often drink; Swedish says jag dricker ofta, never jag ofta dricker.",
+          "Min mamma is one element: two words, but one place."
+        ]
+      },
+      {
+        "id": "fronted",
+        "title": "Something else first: the subject moves behind the verb",
+        "text": "You can start a main clause with a time, a place or even the object. That element takes first place, the verb keeps second place, and the subject moves to third, right after the verb. Swedes start sentences this way all the time.",
+        "table": {
+          "columns": [
+            "First place",
+            "Verb",
+            "Subject",
+            "The rest"
+          ],
+          "rows": [
+            [
+              "Idag",
+              "åker",
+              "jag",
+              "till Stockholm."
+            ],
+            [
+              "På kvällen",
+              "tittar",
+              "vi",
+              "på tv."
+            ],
+            [
+              "I affären",
+              "köper",
+              "jag",
+              "mjölk."
+            ],
+            [
+              "Den boken",
+              "läste",
+              "jag",
+              "igår."
+            ]
+          ]
+        },
+        "steps": [
+          "Put the time, place or object first.",
+          "Put the verb next.",
+          "Put the subject straight after the verb."
+        ],
+        "examples": [
+          {
+            "sv": "Idag åker jag till Stockholm.",
+            "en": "Today I am going to Stockholm."
+          },
+          {
+            "sv": "Den boken läste jag igår.",
+            "en": "I read that book yesterday."
+          }
+        ],
+        "watch": [
+          "Idag jag åker is the most common mistake for English speakers: only one element may come before the verb.",
+          "Words like sedan, nu and igår count as first place too: Sedan dricker jag kaffe."
+        ]
+      },
+      {
+        "id": "question-word",
+        "title": "Questions with a question word",
+        "text": "A question word (vad, var, när, hur, varför, vem) takes first place, so the verb comes second and the subject third. Swedish has no helper like English do or are: the main verb itself moves.",
+        "table": {
+          "columns": [
+            "Question word",
+            "Verb",
+            "Subject",
+            "The rest"
+          ],
+          "rows": [
+            [
+              "Var",
+              "bor",
+              "du?",
+              ""
+            ],
+            [
+              "Vad",
+              "äter",
+              "du",
+              "till frukost?"
+            ],
+            [
+              "När",
+              "kommer",
+              "bussen?",
+              ""
+            ],
+            [
+              "Varför",
+              "är",
+              "du",
+              "trött?"
+            ]
+          ]
+        },
+        "steps": [
+          "Put the question word first.",
+          "Put the verb next.",
+          "Then the subject and the rest."
+        ],
+        "examples": [
+          {
+            "sv": "Var bor du?",
+            "en": "Where do you live?"
+          },
+          {
+            "sv": "Hur mår du?",
+            "en": "How are you?"
+          }
+        ],
+        "watch": [
+          "Never add gör for English do: Vad äter du? not Vad gör du äter?",
+          "When the question word is itself the subject, nothing moves: Vem kommer?"
+        ]
+      },
+      {
+        "id": "yes-no",
+        "title": "Yes or no questions start with the verb",
+        "text": "Without a question word, the question opens with the verb and the subject follows. Again, there is no helper: do you drink is simply dricker du.",
+        "table": {
+          "columns": [
+            "Statement",
+            "Question"
+          ],
+          "rows": [
+            [
+              "Du dricker kaffe.",
+              "Dricker du kaffe?"
+            ],
+            [
+              "Du är hemma.",
+              "Är du hemma?"
+            ],
+            [
+              "Ni kommer imorgon.",
+              "Kommer ni imorgon?"
+            ]
+          ]
+        },
+        "steps": [
+          "Take the statement.",
+          "Swap the subject and the verb.",
+          "End with a question mark."
+        ],
+        "examples": [
+          {
+            "sv": "Bor du i Stockholm?",
+            "en": "Do you live in Stockholm?"
+          },
+          {
+            "sv": "Jobbar Anna idag?",
+            "en": "Is Anna working today?"
+          }
+        ],
+        "watch": [
+          "Gör du pratar svenska? is wrong: drop gör and start with pratar."
+        ]
+      },
+      {
+        "id": "two-verbs",
+        "title": "Two verbs: only the first one counts",
+        "text": "With vill, kan, ska or måste plus another verb, only the first verb takes second place. The subject stays between the two verbs when it moves, and the infinitive comes after it, without att.",
+        "table": {
+          "columns": [
+            "First place",
+            "First verb",
+            "Subject",
+            "Infinitive and rest"
+          ],
+          "rows": [
+            [
+              "Jag",
+              "vill",
+              "",
+              "äta nu."
+            ],
+            [
+              "Nu",
+              "vill",
+              "jag",
+              "äta."
+            ],
+            [
+              "Imorgon",
+              "måste",
+              "jag",
+              "jobba."
+            ],
+            [
+              "På lördag",
+              "ska",
+              "vi",
+              "spela fotboll."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the verb that shows tense: vill, kan, ska, måste.",
+          "Put it in second place.",
+          "If something else is first, put the subject right after that verb.",
+          "Put the infinitive after the subject."
+        ],
+        "examples": [
+          {
+            "sv": "Jag vill äta nu.",
+            "en": "I want to eat now."
+          },
+          {
+            "sv": "Nu vill jag äta.",
+            "en": "Now I want to eat."
+          }
+        ],
+        "watch": [
+          "Not Nu vill äta jag: the subject goes between the two verbs.",
+          "Vill, kan, ska and måste take the infinitive without att."
+        ]
+      },
+      {
+        "id": "clause-first",
+        "title": "A när- or om-clause first",
+        "text": "A whole subordinate clause can stand in first place: När jag kommer hem, Om det regnar. It counts as one element, so the main verb comes straight after it, then the subject. A comma after the clause is common but not required.",
+        "table": {
+          "columns": [
+            "Clause (first place)",
+            "Verb",
+            "Subject",
+            "The rest"
+          ],
+          "rows": [
+            [
+              "När jag kommer hem,",
+              "äter",
+              "jag",
+              "middag."
+            ],
+            [
+              "Om det regnar,",
+              "stannar",
+              "vi",
+              "hemma."
+            ],
+            [
+              "När jag är trött,",
+              "sover",
+              "jag",
+              ""
+            ]
+          ]
+        },
+        "steps": [
+          "Treat the whole clause as first place.",
+          "Put the main verb right after it.",
+          "Then the subject."
+        ],
+        "examples": [
+          {
+            "sv": "När jag kommer hem, äter jag.",
+            "en": "When I get home, I eat."
+          },
+          {
+            "sv": "Om du är hungrig, kan du äta nu.",
+            "en": "If you are hungry, you can eat now."
+          }
+        ],
+        "watch": [
+          "English keeps I eat after the clause; Swedish says äter jag.",
+          "Inside the clause itself the order stays subject, verb: när jag kommer."
+        ]
+      },
+      {
+        "id": "subordinate",
+        "title": "Inside a subordinate clause: subject before verb",
+        "text": "After att (that), eftersom (because), när (when) and om (if), the clause does not follow the verb-second rule. The subject simply comes before the verb, as in English.",
+        "table": {
+          "columns": [
+            "Main clause",
+            "Link word",
+            "Subject",
+            "Verb and rest"
+          ],
+          "rows": [
+            [
+              "Hon säger",
+              "att",
+              "hon",
+              "är trött."
+            ],
+            [
+              "Jag vet",
+              "att",
+              "du",
+              "bor i Malmö."
+            ],
+            [
+              "Jag äter nu",
+              "eftersom",
+              "jag",
+              "är hungrig."
+            ]
+          ]
+        },
+        "steps": [
+          "Spot the link word: att, eftersom, när, om.",
+          "After it, put the subject.",
+          "Then the verb."
+        ],
+        "examples": [
+          {
+            "sv": "Jag tror att Erik är hemma.",
+            "en": "I think that Erik is at home."
+          },
+          {
+            "sv": "Han säger att han kommer imorgon.",
+            "en": "He says that he is coming tomorrow."
+          }
+        ],
+        "watch": [
+          "Do not invert after att: att jag äter, never att äter jag."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "verb-second": {
+      "section": "verb-second",
+      "steps": [
+        "Find the subject and put it first.",
+        "Put the tense-carrying verb second.",
+        "Put ofta, alltid or aldrig after the verb."
+      ]
+    },
+    "fronted": {
+      "section": "fronted",
+      "steps": [
+        "See what stands first: a time, a place or an object.",
+        "Put the verb straight after it.",
+        "Put the subject after the verb."
+      ]
+    },
+    "question-word": {
+      "section": "question-word",
+      "steps": [
+        "Put the question word first.",
+        "Put the verb second, with no gör.",
+        "Put the subject after the verb."
+      ]
+    },
+    "yes-no": {
+      "section": "yes-no",
+      "steps": [
+        "Start with the verb.",
+        "Put the subject next.",
+        "Never add gör as a helper."
+      ]
+    },
+    "two-verbs": {
+      "section": "two-verbs",
+      "steps": [
+        "Find the first verb: vill, kan, ska, måste.",
+        "Put it second.",
+        "If the subject moves, place it between the two verbs."
+      ]
+    },
+    "clause-first": {
+      "section": "clause-first",
+      "steps": [
+        "Treat the whole när- or om-clause as first place.",
+        "Put the main verb right after it.",
+        "Then the subject."
+      ]
+    },
+    "subordinate": {
+      "section": "subordinate",
+      "steps": [
+        "Spot att, eftersom, när or om.",
+        "Put the subject right after it.",
+        "Then the verb."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "word-order-v2-verb-second-1",
+      "pattern": "verb-second",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Jag ____ kaffe på morgonen.",
+      "options": [
+        "ofta dricker",
+        "dricker ofta"
+      ],
+      "answers": [
+        "dricker ofta"
+      ],
+      "hint": "In a Swedish main clause, what must stand in second place?",
+      "feedback": "The subject Jag fills first place, so the verb takes second place at once.",
+      "explanation": "Jag dricker ofta kaffe: the verb comes straight after the subject, and ofta follows the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "ofta dricker"
+          ],
+          "why": "That is the English order, I often drink. In Swedish, a word like often cannot squeeze in between the subject and the verb: the verb must take second place."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "på morgonen",
+          "en": "in the morning"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-verb-second-2",
+      "pattern": "verb-second",
+      "type": "complete",
+      "instruction": "Write åker and alltid in the right order.",
+      "source": "Anna ____ buss till jobbet.",
+      "answers": [
+        "åker alltid"
+      ],
+      "hint": "Anna is first. What must come second?",
+      "feedback": "The verb comes right after the subject; alltid waits behind it.",
+      "explanation": "Anna åker alltid buss till jobbet: subject, verb, then the adverb alltid.",
+      "mistakes": [
+        {
+          "answers": [
+            "alltid åker"
+          ],
+          "why": "This copies English, Anna always takes. Alltid pushes the verb to third place, and a Swedish main clause keeps its verb second."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "till jobbet",
+          "en": "to work",
+          "word": "work-002"
+        },
+        {
+          "sv": "Anna",
+          "en": "Anna (a name)"
+        },
+        {
+          "sv": "buss",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-verb-second-3",
+      "pattern": "verb-second",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We often eat dinner at home.",
+      "tokens": [
+        "ofta",
+        "middag",
+        "Vi",
+        "hemma.",
+        "äter"
+      ],
+      "answers": [
+        "Vi äter ofta middag hemma."
+      ],
+      "hint": "Subject, then verb, then often.",
+      "feedback": "Often follows the verb in a Swedish main clause.",
+      "explanation": "Vi äter ofta middag hemma: vi is first, the verb äter second, and ofta comes after it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi ofta äter middag hemma."
+          ],
+          "why": "Often sits between the subject and the verb, as in English. That puts the verb third, which a Swedish main clause does not allow."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-verb-second-4",
+      "pattern": "verb-second",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I always drink tea in the evening.",
+      "answers": [
+        "Jag dricker alltid te på kvällen.",
+        "På kvällen dricker jag alltid te."
+      ],
+      "hint": "Where does always go in Swedish: before or after the verb?",
+      "feedback": "In a main clause the verb is second, so always comes after it.",
+      "explanation": "Jag dricker alltid te på kvällen: jag first, the verb second, alltid after the verb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag alltid dricker te på kvällen."
+          ],
+          "why": "Always stands before the verb, as in English. Then the verb is third; in a Swedish main clause it has to be second."
+        },
+        {
+          "answers": [
+            "På kvällen jag dricker alltid te."
+          ],
+          "why": "Starting with på kvällen is fine, but then the verb must follow it directly, before the subject."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-verb-second-5",
+      "pattern": "verb-second",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Erik aldrig äter frukost.",
+      "answers": [
+        "Erik äter aldrig frukost."
+      ],
+      "hint": "Count the places: where is the verb now?",
+      "feedback": "Aldrig has pushed the verb into third place.",
+      "explanation": "Erik äter aldrig frukost: the verb takes second place and aldrig follows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Erik aldrig äter frukost."
+          ],
+          "why": "That is the sentence unchanged. Aldrig stands between the subject and the verb, so the verb is third."
+        },
+        {
+          "answers": [
+            "Aldrig Erik äter frukost."
+          ],
+          "why": "Now aldrig is first and the subject second, so the verb is still third. Whatever stands first, the verb comes next."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik (a name)"
+        },
+        {
+          "sv": "aldrig",
+          "en": "never",
+          "word": "essentials-101"
+        },
+        {
+          "sv": "äter",
+          "en": "eats (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "frukost",
+          "en": "breakfast",
+          "word": "food-045"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-verb-second-6",
+      "pattern": "verb-second",
+      "type": "rewrite",
+      "instruction": "Add ofta (often) to the sentence. Write the whole sentence.",
+      "source": "Sara läser tidningen.",
+      "answers": [
+        "Sara läser ofta tidningen."
+      ],
+      "alternatives": [
+        {
+          "answer": "Ofta läser Sara tidningen.",
+          "message": "Correct: with ofta first, the verb comes next and Sara follows it. Starting with the subject is the more neutral choice.",
+          "accepted": true
+        },
+        {
+          "answer": "Sara läser tidningen ofta.",
+          "message": "Correct too. The most usual place for ofta is right after the verb: Sara läser ofta tidningen.",
+          "accepted": true
+        }
+      ],
+      "hint": "Ofta goes after the verb.",
+      "feedback": "Keep Sara first and the verb second; slot ofta in behind the verb.",
+      "explanation": "Sara läser ofta tidningen: the verb stays in second place and ofta follows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sara ofta läser tidningen."
+          ],
+          "why": "Ofta has slipped in before the verb, which pushes the verb to third place."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Sara",
+          "en": "Sara (a name)"
+        },
+        {
+          "sv": "läser",
+          "en": "reads (läsa)",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "tidningen",
+          "en": "the newspaper",
+          "word": "media-037"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-fronted-1",
+      "pattern": "fronted",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Idag ____ till Stockholm.",
+      "options": [
+        "jag åker",
+        "åker jag"
+      ],
+      "answers": [
+        "åker jag"
+      ],
+      "hint": "Idag already fills first place.",
+      "feedback": "When a time word comes first, the verb follows it and the subject comes after the verb.",
+      "explanation": "Idag åker jag till Stockholm: idag is first, so the verb åker is second and jag moves behind it.",
+      "mistakes": [
+        {
+          "answers": [
+            "jag åker"
+          ],
+          "why": "This is the English order, today I go. In Swedish idag takes first place, so the next word has to be the verb, not the subject."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "till",
+          "en": "to"
+        },
+        {
+          "sv": "Stockholm",
+          "en": "Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-fronted-2",
+      "pattern": "fronted",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "På kvällen ____ på tv.",
+      "options": [
+        "vi tittar",
+        "tittar vi",
+        "tittar"
+      ],
+      "answers": [
+        "tittar vi"
+      ],
+      "hint": "What is in first place here?",
+      "feedback": "På kvällen is first, so the verb takes second place.",
+      "explanation": "På kvällen tittar vi på tv: the time phrase is first, the verb second, the subject third.",
+      "mistakes": [
+        {
+          "answers": [
+            "vi tittar"
+          ],
+          "why": "The subject is in second place and the verb third. After a time phrase, the verb must come before the subject."
+        },
+        {
+          "answers": [
+            "tittar"
+          ],
+          "why": "The verb is in the right place, but the sentence has lost its subject. Swedish always needs one, here vi."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "På kvällen",
+          "en": "in the evening"
+        },
+        {
+          "sv": "på tv",
+          "en": "on TV",
+          "word": "media-040"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-fronted-3",
+      "pattern": "fronted",
+      "type": "complete",
+      "instruction": "Write ringer and jag in the right order.",
+      "source": "Imorgon ____ min mamma.",
+      "answers": [
+        "ringer jag"
+      ],
+      "hint": "Imorgon is in first place.",
+      "feedback": "A time word first sends the subject behind the verb.",
+      "explanation": "Imorgon ringer jag min mamma: imorgon first, the verb second, then jag.",
+      "mistakes": [
+        {
+          "answers": [
+            "jag ringer"
+          ],
+          "why": "With imorgon first, the subject cannot take second place too. The verb comes next, and the subject follows it."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        },
+        {
+          "sv": "min",
+          "en": "my"
+        },
+        {
+          "sv": "mamma",
+          "en": "mum",
+          "word": "people-012"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-fronted-4",
+      "pattern": "fronted",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "On Saturdays we play football.",
+      "tokens": [
+        "vi",
+        "På",
+        "fotboll.",
+        "lördagar",
+        "spelar"
+      ],
+      "answers": [
+        "På lördagar spelar vi fotboll."
+      ],
+      "hint": "Start with the time phrase, then count to two.",
+      "feedback": "The verb follows the time phrase, then the subject.",
+      "explanation": "På lördagar spelar vi fotboll: the whole phrase på lördagar counts as first place, so spelar is second.",
+      "mistakes": [
+        {
+          "answers": [
+            "På lördagar vi spelar fotboll."
+          ],
+          "why": "After på lördagar the subject came next, so the verb ended up third. The verb needs second place."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-fronted-5",
+      "pattern": "fronted",
+      "type": "translate",
+      "instruction": "Translate into Swedish. Start with tomorrow.",
+      "source": "Tomorrow we are eating at a restaurant.",
+      "answers": [
+        "Imorgon äter vi på restaurang.",
+        "I morgon äter vi på restaurang.",
+        "Imorgon äter vi på en restaurang.",
+        "I morgon äter vi på en restaurang.",
+        "Imorgon ska vi äta på restaurang.",
+        "I morgon ska vi äta på restaurang.",
+        "Imorgon ska vi äta på en restaurang.",
+        "I morgon ska vi äta på en restaurang."
+      ],
+      "hint": "Tomorrow first, then the verb.",
+      "feedback": "Imorgon fills first place, so the verb goes second and vi third.",
+      "explanation": "Imorgon äter vi på restaurang: time word, verb, subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "Imorgon vi äter på restaurang.",
+            "Imorgon vi äter på en restaurang."
+          ],
+          "why": "The subject came straight after imorgon, so the verb is third. With a time word first, the verb must come before the subject."
+        },
+        {
+          "answers": [
+            "Imorgon vi ska äta på restaurang."
+          ],
+          "why": "Ska can be used, but here too the order is off: after imorgon the verb comes next, then the subject."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-fronted-6",
+      "pattern": "fronted",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Sedan jag dricker kaffe.",
+      "answers": [
+        "Sedan dricker jag kaffe."
+      ],
+      "hint": "Sedan counts as first place.",
+      "feedback": "After sedan the verb comes next, not the subject.",
+      "explanation": "Sedan dricker jag kaffe: sedan first, verb second, subject third.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sedan jag dricker kaffe."
+          ],
+          "why": "That is the sentence unchanged. Sedan is first and jag second, so the verb is in third place."
+        },
+        {
+          "answers": [
+            "Jag sedan dricker kaffe."
+          ],
+          "why": "Now jag is first, but sedan still sits before the verb, which leaves the verb third."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Sedan",
+          "en": "then",
+          "word": "essentials-107"
+        },
+        {
+          "sv": "dricker",
+          "en": "drinks (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-fronted-7",
+      "pattern": "fronted",
+      "type": "rewrite",
+      "instruction": "Start the sentence with Igår. Write the whole sentence.",
+      "source": "Jag träffade Anna igår.",
+      "answers": [
+        "Igår träffade jag Anna.",
+        "I går träffade jag Anna."
+      ],
+      "hint": "When igår moves to the front, what must come next?",
+      "feedback": "Igår takes first place, so the verb stays second and jag moves behind it.",
+      "explanation": "Igår träffade jag Anna: the verb holds second place, and the subject moves to third.",
+      "mistakes": [
+        {
+          "answers": [
+            "Igår jag träffade Anna."
+          ],
+          "why": "Igår moved to the front, but the subject still comes before the verb, so the verb is third."
+        },
+        {
+          "answers": [
+            "Igår träffade Anna jag."
+          ],
+          "why": "The verb is second, but the subject and object have swapped places. The subject jag goes straight after the verb, and Anna, who was met, comes last."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "träffade",
+          "en": "met (träffa)",
+          "word": "verbs-083"
+        },
+        {
+          "sv": "Anna",
+          "en": "Anna (a name)"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-fronted-8",
+      "pattern": "fronted",
+      "type": "rewrite",
+      "instruction": "Start the sentence with Den boken (that book). Write the whole sentence.",
+      "source": "Jag läste den boken igår.",
+      "answers": [
+        "Den boken läste jag igår.",
+        "Den boken läste jag i går."
+      ],
+      "hint": "The object den boken now fills first place.",
+      "feedback": "Even an object at the front counts as first place, so the verb comes next.",
+      "explanation": "Den boken läste jag igår: object first, verb second, subject third. Starting with the object stresses it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Den boken jag läste igår."
+          ],
+          "why": "The object went to the front, but the subject followed it, so the verb landed in third place."
+        },
+        {
+          "answers": [
+            "Den boken igår läste jag."
+          ],
+          "why": "Two things stand before the verb. Only one element may come before the verb in a main clause; igår stays at the end."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "läste",
+          "en": "read, past (läsa)",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "boken",
+          "en": "the book",
+          "word": "school-028"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-question-word-1",
+      "pattern": "question-word",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Var ____?",
+      "options": [
+        "du bor",
+        "bor du"
+      ],
+      "answers": [
+        "bor du"
+      ],
+      "hint": "The question word takes first place.",
+      "feedback": "Var is first, so the verb comes second and the subject after it.",
+      "explanation": "Var bor du? The question word fills first place, then verb, then subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "du bor"
+          ],
+          "why": "With var first, the subject cannot take second place. The verb must come straight after the question word."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-question-word-2",
+      "pattern": "question-word",
+      "type": "complete",
+      "instruction": "Write äter and du in the right order.",
+      "source": "Vad ____ till frukost?",
+      "answers": [
+        "äter du"
+      ],
+      "hint": "Vad is in first place.",
+      "feedback": "After a question word, the verb comes next.",
+      "explanation": "Vad äter du till frukost? Question word, verb, subject: the same verb-second rule as in a statement.",
+      "mistakes": [
+        {
+          "answers": [
+            "du äter"
+          ],
+          "why": "The subject came before the verb, so the verb is third. After a question word, the verb goes second."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Vad",
+          "en": "what",
+          "word": "essentials-034"
+        },
+        {
+          "sv": "till",
+          "en": "to"
+        },
+        {
+          "sv": "frukost",
+          "en": "breakfast",
+          "word": "food-045"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-question-word-3",
+      "pattern": "question-word",
+      "type": "build",
+      "instruction": "Build the question.",
+      "source": "What are you eating today?",
+      "tokens": [
+        "du",
+        "Vad",
+        "gör",
+        "idag?",
+        "äter"
+      ],
+      "answers": [
+        "Vad äter du idag?"
+      ],
+      "hint": "Question word first, verb second.",
+      "feedback": "Swedish has no do or are helper: the main verb itself moves before the subject.",
+      "explanation": "Vad äter du idag? Vad first, äter second, du third.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vad du äter idag?"
+          ],
+          "why": "The subject stands before the verb, so the verb is third. After vad the verb comes next."
+        },
+        {
+          "answers": [
+            "Vad gör du äter idag?"
+          ],
+          "why": "Swedish never uses gör as a helper like English do. The verb äter itself moves to second place."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-question-word-4",
+      "pattern": "question-word",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Why are you tired?",
+      "answers": [
+        "Varför är du trött?"
+      ],
+      "hint": "Varför first, then the verb.",
+      "feedback": "The verb är goes right after varför.",
+      "explanation": "Varför är du trött? Question word, verb, subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "Varför du är trött?"
+          ],
+          "why": "The subject came before the verb. After a question word, the verb must take second place."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-question-word-5",
+      "pattern": "question-word",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Hur du mår?",
+      "answers": [
+        "Hur mår du?"
+      ],
+      "hint": "Where should the verb be?",
+      "feedback": "After hur, the verb comes before the subject.",
+      "explanation": "Hur mår du? Hur is first, the verb mår second, du third.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hur du mår?"
+          ],
+          "why": "That is the sentence unchanged. The subject sits in second place and pushes the verb to third."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Hur",
+          "en": "how",
+          "word": "essentials-036"
+        },
+        {
+          "sv": "mår",
+          "en": "feel, are doing (må)"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-question-word-6",
+      "pattern": "question-word",
+      "type": "rewrite",
+      "instruction": "Ask where Erik lives. Use var and write the whole question.",
+      "source": "Erik bor i Malmö.",
+      "answers": [
+        "Var bor Erik?"
+      ],
+      "hint": "Var replaces i Malmö and goes first.",
+      "feedback": "The question word takes first place; then the verb, then the subject.",
+      "explanation": "Var bor Erik? Var replaces the place and takes first position, so bor comes second and Erik third.",
+      "mistakes": [
+        {
+          "answers": [
+            "Var Erik bor?"
+          ],
+          "why": "The subject came straight after var, so the verb is third. After a question word, the verb goes second."
+        },
+        {
+          "answers": [
+            "Bor Erik i Malmö?"
+          ],
+          "why": "That is a yes or no question: is Erik living in Malmö? The task asks where he lives, so it needs the question word."
+        },
+        {
+          "answers": [
+            "Var bor Erik i Malmö?"
+          ],
+          "why": "The question word already stands for the place, so i Malmö has to go."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik (a name)"
+        },
+        {
+          "sv": "bor",
+          "en": "lives (bo)",
+          "word": "verbs-065"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Malmö",
+          "en": "Malmö (a city)"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-yes-no-1",
+      "pattern": "yes-no",
+      "type": "choose",
+      "instruction": "Choose the start of the question: Do you drink coffee?",
+      "source": "____ kaffe?",
+      "options": [
+        "Du dricker",
+        "Dricker du",
+        "Gör du dricka"
+      ],
+      "answers": [
+        "Dricker du"
+      ],
+      "hint": "A yes or no question has no question word. What goes first?",
+      "feedback": "Swedish yes or no questions open with the verb.",
+      "explanation": "Dricker du kaffe? The verb comes first and the subject follows. There is no helper like English do.",
+      "mistakes": [
+        {
+          "answers": [
+            "Du dricker"
+          ],
+          "why": "That is statement order. Written with a question mark it can sound like surprise, but a normal yes or no question starts with the verb."
+        },
+        {
+          "answers": [
+            "Gör du dricka"
+          ],
+          "why": "Swedish does not build questions with gör, the way English uses do. The main verb itself goes first."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-yes-no-2",
+      "pattern": "yes-no",
+      "type": "complete",
+      "instruction": "Write är and du in the right order to ask: Are you at home today?",
+      "source": "____ hemma idag?",
+      "answers": [
+        "Är du"
+      ],
+      "hint": "No question word: the verb starts the question.",
+      "feedback": "In a yes or no question the verb comes first.",
+      "explanation": "Är du hemma idag? The verb opens the question and the subject follows.",
+      "mistakes": [
+        {
+          "answers": [
+            "Du är"
+          ],
+          "why": "This is the order of a statement, you are at home today. To ask, the verb moves to the front."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        },
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-yes-no-3",
+      "pattern": "yes-no",
+      "type": "build",
+      "instruction": "Build the question.",
+      "source": "Do you live in Stockholm?",
+      "tokens": [
+        "i",
+        "Gör",
+        "du",
+        "Stockholm?",
+        "Bor"
+      ],
+      "answers": [
+        "Bor du i Stockholm?"
+      ],
+      "hint": "Which word do you not need?",
+      "feedback": "The verb itself starts the question; there is no do.",
+      "explanation": "Bor du i Stockholm? Verb first, then subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "Gör du bor i Stockholm?"
+          ],
+          "why": "Gör is not a question helper in Swedish. Leave it out and let the verb open the question."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-yes-no-4",
+      "pattern": "yes-no",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Does Anna work today?",
+      "answers": [
+        "Jobbar Anna idag?",
+        "Jobbar Anna i dag?",
+        "Arbetar Anna idag?",
+        "Arbetar Anna i dag?"
+      ],
+      "hint": "Start with the verb.",
+      "feedback": "Does has no Swedish equivalent: the verb goes first.",
+      "explanation": "Jobbar Anna idag? The verb opens the question and Anna follows.",
+      "mistakes": [
+        {
+          "answers": [
+            "Gör Anna jobbar idag?",
+            "Gör Anna jobba idag?"
+          ],
+          "why": "Swedish has no helper like does. The main verb itself moves to the front."
+        },
+        {
+          "answers": [
+            "Anna jobbar idag?"
+          ],
+          "why": "That is a statement with a question mark. A plain yes or no question starts with the verb."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-yes-no-5",
+      "pattern": "yes-no",
+      "type": "repair",
+      "instruction": "Fix the question.",
+      "source": "Gör du pratar svenska?",
+      "answers": [
+        "Pratar du svenska?",
+        "Talar du svenska?"
+      ],
+      "hint": "Which word is English thinking?",
+      "feedback": "Gör is not a question helper in Swedish.",
+      "explanation": "Pratar du svenska? Drop gör and let the verb open the question.",
+      "mistakes": [
+        {
+          "answers": [
+            "Gör du pratar svenska?"
+          ],
+          "why": "That is the sentence unchanged. Gör copies English do; Swedish does not use it to make questions."
+        },
+        {
+          "answers": [
+            "Du pratar svenska?"
+          ],
+          "why": "Gör is gone, but this is now statement order with a question mark. The verb should come first."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Gör",
+          "en": "do, does (göra)"
+        },
+        {
+          "sv": "pratar",
+          "en": "speak (prata)",
+          "word": "verbs-007"
+        },
+        {
+          "sv": "svenska",
+          "en": "Swedish",
+          "word": "school-011"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-yes-no-6",
+      "pattern": "yes-no",
+      "type": "rewrite",
+      "instruction": "Turn the statement into a yes or no question.",
+      "source": "Ni kommer imorgon.",
+      "answers": [
+        "Kommer ni imorgon?",
+        "Kommer ni i morgon?"
+      ],
+      "hint": "Swap the subject and the verb.",
+      "feedback": "In a yes or no question the verb comes first.",
+      "explanation": "Kommer ni imorgon? The verb moves to the front and ni follows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ni kommer imorgon?"
+          ],
+          "why": "Only the punctuation changed. To ask, the verb has to move to the front."
+        },
+        {
+          "answers": [
+            "Gör ni kommer imorgon?"
+          ],
+          "why": "Swedish does not add gör to ask a question; the verb itself moves to the front."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-two-verbs-1",
+      "pattern": "two-verbs",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Nu ____ äta.",
+      "options": [
+        "jag vill",
+        "vill jag"
+      ],
+      "answers": [
+        "vill jag"
+      ],
+      "hint": "Only the first verb, vill, counts for second place.",
+      "feedback": "Nu is first, so vill must be second, and the subject comes after it.",
+      "explanation": "Nu vill jag äta: vill holds second place; the infinitive äta stays further back.",
+      "mistakes": [
+        {
+          "answers": [
+            "jag vill"
+          ],
+          "why": "Nu already fills first place, so the subject cannot also stand before the verb. Vill must come straight after nu."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Nu",
+          "en": "now",
+          "word": "essentials-094"
+        },
+        {
+          "sv": "äta",
+          "en": "eat",
+          "word": "verbs-054"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-two-verbs-2",
+      "pattern": "two-verbs",
+      "type": "complete",
+      "instruction": "Write ska and jag in the right order.",
+      "source": "Imorgon ____ jobba hemma.",
+      "answers": [
+        "ska jag"
+      ],
+      "hint": "Which verb has to be second?",
+      "feedback": "Ska is the verb that changes form, so it takes second place.",
+      "explanation": "Imorgon ska jag jobba hemma: imorgon first, ska second, jag third, then jobba.",
+      "mistakes": [
+        {
+          "answers": [
+            "jag ska"
+          ],
+          "why": "The subject came before the verb after imorgon, so ska is third. The first verb must be in second place."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        },
+        {
+          "sv": "jobba",
+          "en": "work",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-two-verbs-3",
+      "pattern": "two-verbs",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I want to eat now.",
+      "tokens": [
+        "äta",
+        "att",
+        "Jag",
+        "nu.",
+        "vill"
+      ],
+      "answers": [
+        "Jag vill äta nu."
+      ],
+      "hint": "After vill, is there a word for to?",
+      "feedback": "Vill takes the second verb directly, with no att.",
+      "explanation": "Jag vill äta nu: jag first, vill second, then äta. Modal verbs like vill, kan, ska and måste take the infinitive without att.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vill att äta nu."
+          ],
+          "why": "Vill is followed by the plain infinitive, without att. Leave that tile unused."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-two-verbs-4",
+      "pattern": "two-verbs",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "Now I want to eat.",
+      "tokens": [
+        "jag",
+        "Nu",
+        "äta.",
+        "vill"
+      ],
+      "answers": [
+        "Nu vill jag äta."
+      ],
+      "hint": "Nu first; which verb comes second?",
+      "feedback": "The first verb takes second place; the infinitive goes at the end.",
+      "explanation": "Nu vill jag äta: nu first, vill second, jag third, äta last.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nu jag vill äta."
+          ],
+          "why": "The subject came straight after nu, which pushes vill to third place."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-two-verbs-5",
+      "pattern": "two-verbs",
+      "type": "rewrite",
+      "instruction": "Start the sentence with På lördag. Write the whole sentence.",
+      "source": "Vi ska spela fotboll på lördag.",
+      "answers": [
+        "På lördag ska vi spela fotboll."
+      ],
+      "hint": "The first verb, ska, keeps second place.",
+      "feedback": "På lördag goes first, ska second, vi third, spela after it.",
+      "explanation": "På lördag ska vi spela fotboll: only the first verb moves before the subject; spela stays behind.",
+      "mistakes": [
+        {
+          "answers": [
+            "På lördag vi ska spela fotboll."
+          ],
+          "why": "The subject came before ska, which puts the verb third."
+        },
+        {
+          "answers": [
+            "På lördag ska spela vi fotboll."
+          ],
+          "why": "Ska is rightly second, but the subject belongs between the two verbs, not after both."
+        },
+        {
+          "answers": [
+            "På lördag spela vi ska fotboll."
+          ],
+          "why": "The infinitive moved forward. It is the first verb, the one that shows tense, that takes second place."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "på lördag",
+          "en": "on Saturday"
+        },
+        {
+          "sv": "ska",
+          "en": "will, are going to (ska)",
+          "word": "verbs-023"
+        },
+        {
+          "sv": "spela",
+          "en": "play",
+          "word": "verbs-084"
+        },
+        {
+          "sv": "fotboll",
+          "en": "football",
+          "word": "leisure-007"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-two-verbs-6",
+      "pattern": "two-verbs",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "På kvällen vi kan titta på film.",
+      "answers": [
+        "På kvällen kan vi titta på film."
+      ],
+      "hint": "Which verb should be second?",
+      "feedback": "After the time phrase, kan comes next, then the subject.",
+      "explanation": "På kvällen kan vi titta på film: time phrase first, kan second, vi third.",
+      "mistakes": [
+        {
+          "answers": [
+            "På kvällen vi kan titta på film."
+          ],
+          "why": "That is the sentence unchanged. The subject sits before kan, so the verb is third."
+        },
+        {
+          "answers": [
+            "På kvällen titta vi kan på film."
+          ],
+          "why": "The wrong verb moved. Kan is the verb that carries the tense, and it is kan that takes second place."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "På kvällen",
+          "en": "in the evening"
+        },
+        {
+          "sv": "titta på",
+          "en": "watch",
+          "word": "verbs-011"
+        },
+        {
+          "sv": "kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "film",
+          "en": "film",
+          "word": "media-041"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-two-verbs-7",
+      "pattern": "two-verbs",
+      "type": "translate",
+      "instruction": "Translate into Swedish. Start with tomorrow.",
+      "source": "Tomorrow I have to work.",
+      "answers": [
+        "Imorgon måste jag jobba.",
+        "I morgon måste jag jobba.",
+        "Imorgon måste jag arbeta.",
+        "I morgon måste jag arbeta."
+      ],
+      "hint": "Tomorrow, then måste, then the subject.",
+      "feedback": "Måste is the first verb, so it takes second place.",
+      "explanation": "Imorgon måste jag jobba: time word, måste, jag, then the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Imorgon jag måste jobba.",
+            "Imorgon jag måste arbeta."
+          ],
+          "why": "The subject came before måste, which leaves the verb third."
+        },
+        {
+          "answers": [
+            "Imorgon måste jobba jag.",
+            "Imorgon måste arbeta jag."
+          ],
+          "why": "Måste is rightly second, but the subject must come straight after it, before the second verb."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-clause-first-1",
+      "pattern": "clause-first",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "När jag kommer hem, ____ middag.",
+      "options": [
+        "jag äter",
+        "äter jag"
+      ],
+      "answers": [
+        "äter jag"
+      ],
+      "hint": "The whole när-clause counts as first place.",
+      "feedback": "After a clause at the front, the main verb comes next.",
+      "explanation": "När jag kommer hem, äter jag middag: the när-clause is first place, so äter is second and jag third.",
+      "mistakes": [
+        {
+          "answers": [
+            "jag äter"
+          ],
+          "why": "The när-clause already fills first place, so the subject cannot come next. The verb must follow the clause directly."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "När",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "hem",
+          "en": "home (towards home)"
+        },
+        {
+          "sv": "middag",
+          "en": "dinner",
+          "word": "food-047"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-clause-first-2",
+      "pattern": "clause-first",
+      "type": "complete",
+      "instruction": "Write stannar and vi in the right order.",
+      "source": "Om det regnar, ____ hemma.",
+      "answers": [
+        "stannar vi"
+      ],
+      "hint": "Om det regnar is one block in first place.",
+      "feedback": "After the om-clause, the verb comes before the subject.",
+      "explanation": "Om det regnar, stannar vi hemma: the whole om-clause is first, the verb second.",
+      "mistakes": [
+        {
+          "answers": [
+            "vi stannar"
+          ],
+          "why": "The om-clause counts as first place, so the subject cannot stand in second. The verb comes straight after the clause."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Om",
+          "en": "if"
+        },
+        {
+          "sv": "regnar",
+          "en": "rains (regna)"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-clause-first-3",
+      "pattern": "clause-first",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "When I am tired, I sleep.",
+      "tokens": [
+        "jag.",
+        "När jag är trött,",
+        "sover.",
+        "sover",
+        "jag"
+      ],
+      "answers": [
+        "När jag är trött, sover jag."
+      ],
+      "hint": "The när-clause is one block. What comes after it?",
+      "feedback": "After the clause, the verb comes first, then the subject.",
+      "explanation": "När jag är trött, sover jag: the clause is first place, sover is second.",
+      "mistakes": [
+        {
+          "answers": [
+            "När jag är trött, jag sover."
+          ],
+          "why": "After the clause, the subject came first, so the main verb is in third place."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-clause-first-4",
+      "pattern": "clause-first",
+      "type": "rewrite",
+      "instruction": "Start the sentence with the när-clause. Write the whole sentence.",
+      "source": "Jag äter när jag kommer hem.",
+      "answers": [
+        "När jag kommer hem, äter jag."
+      ],
+      "hint": "Move the när-clause to the front. What follows it?",
+      "feedback": "The clause now fills first place, so the main verb comes right after it.",
+      "explanation": "När jag kommer hem, äter jag: the clause is first, äter second, jag third. Inside the clause, jag still comes before kommer.",
+      "mistakes": [
+        {
+          "answers": [
+            "När jag kommer hem, jag äter."
+          ],
+          "why": "The subject follows the clause, so the main verb is third. After a clause at the front, the verb comes next."
+        },
+        {
+          "answers": [
+            "När kommer jag hem, äter jag."
+          ],
+          "why": "The main clause is right, but the order inside the när-clause changed. A subordinate clause keeps subject before verb."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "äter",
+          "en": "eats (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "när",
+          "en": "when",
+          "word": "essentials-038"
+        },
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "hem",
+          "en": "home (towards home)"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-clause-first-5",
+      "pattern": "clause-first",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Om du är hungrig, du kan äta nu.",
+      "answers": [
+        "Om du är hungrig, kan du äta nu."
+      ],
+      "hint": "The om-clause is first place. What must follow it?",
+      "feedback": "Kan must come right after the clause.",
+      "explanation": "Om du är hungrig, kan du äta nu: om-clause first, kan second, du third.",
+      "mistakes": [
+        {
+          "answers": [
+            "Om du är hungrig, du kan äta nu."
+          ],
+          "why": "That is the sentence unchanged. The subject comes straight after the clause, so kan is third."
+        },
+        {
+          "answers": [
+            "Om är du hungrig, kan du äta nu."
+          ],
+          "why": "The main clause is fixed, but now the om-clause has the verb before its subject. Inside a subordinate clause, the subject comes first."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Om",
+          "en": "if"
+        },
+        {
+          "sv": "är",
+          "en": "is, am, are (vara)"
+        },
+        {
+          "sv": "hungrig",
+          "en": "hungry",
+          "word": "feelings-039"
+        },
+        {
+          "sv": "kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "äta",
+          "en": "eat",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-clause-first-6",
+      "pattern": "clause-first",
+      "type": "translate",
+      "instruction": "Translate into Swedish. Start with when.",
+      "source": "When it rains, we stay at home.",
+      "answers": [
+        "När det regnar, stannar vi hemma."
+      ],
+      "hint": "När-clause first, then the verb.",
+      "feedback": "After the när-clause, stannar comes before vi.",
+      "explanation": "När det regnar, stannar vi hemma: the clause fills first place, so the verb is second.",
+      "mistakes": [
+        {
+          "answers": [
+            "När det regnar, vi stannar hemma."
+          ],
+          "why": "After the när-clause the subject came first, putting the verb in third place."
+        },
+        {
+          "answers": [
+            "När regnar det, stannar vi hemma."
+          ],
+          "why": "Inside the när-clause, the subject det must come before the verb."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-subordinate-1",
+      "pattern": "subordinate",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Hon säger att ____ trött.",
+      "options": [
+        "är hon",
+        "hon är"
+      ],
+      "answers": [
+        "hon är"
+      ],
+      "hint": "Inside an att-clause, which comes first: subject or verb?",
+      "feedback": "A subordinate clause keeps the subject before the verb.",
+      "explanation": "Hon säger att hon är trött: after att, subject then verb, with no inversion.",
+      "mistakes": [
+        {
+          "answers": [
+            "är hon"
+          ],
+          "why": "Verb before subject belongs in questions and after a fronted word in a main clause. After att, the subject comes first."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "säger",
+          "en": "says (säga)",
+          "word": "verbs-006"
+        },
+        {
+          "sv": "trött",
+          "en": "tired",
+          "word": "feelings-009"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-subordinate-2",
+      "pattern": "subordinate",
+      "type": "complete",
+      "instruction": "Write bor and du in the right order.",
+      "source": "Jag vet att ____ i Malmö.",
+      "answers": [
+        "du bor"
+      ],
+      "hint": "Att starts a subordinate clause.",
+      "feedback": "Inside an att-clause, the subject goes before the verb.",
+      "explanation": "Jag vet att du bor i Malmö: subject du, then the verb bor.",
+      "mistakes": [
+        {
+          "answers": [
+            "bor du"
+          ],
+          "why": "That is question order. After att the clause keeps the subject first."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "vet",
+          "en": "know (veta)",
+          "word": "verbs-014"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Malmö",
+          "en": "Malmö (a city)"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-subordinate-3",
+      "pattern": "subordinate",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I think that Erik is at home.",
+      "tokens": [
+        "att",
+        "Jag",
+        "är",
+        "hemma.",
+        "Erik",
+        "tror"
+      ],
+      "answers": [
+        "Jag tror att Erik är hemma."
+      ],
+      "hint": "After att: subject, then verb.",
+      "feedback": "The att-clause keeps the subject before the verb.",
+      "explanation": "Jag tror att Erik är hemma: Erik comes before är inside the att-clause.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag tror att är Erik hemma."
+          ],
+          "why": "The verb came before the subject inside the att-clause. Only main clauses invert; after att, the subject comes first."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-subordinate-4",
+      "pattern": "subordinate",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I am eating now because I am hungry.",
+      "tokens": [
+        "nu",
+        "jag",
+        "eftersom",
+        "Jag",
+        "hungrig.",
+        "är",
+        "äter"
+      ],
+      "answers": [
+        "Jag äter nu eftersom jag är hungrig."
+      ],
+      "hint": "Eftersom starts a subordinate clause.",
+      "feedback": "After eftersom, the subject comes before the verb.",
+      "explanation": "Jag äter nu eftersom jag är hungrig: inside the eftersom-clause, jag comes before är.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag äter nu eftersom är jag hungrig."
+          ],
+          "why": "The verb came before the subject inside the eftersom-clause. A subordinate clause keeps the subject first."
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-subordinate-5",
+      "pattern": "subordinate",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Han säger att kommer han imorgon.",
+      "answers": [
+        "Han säger att han kommer imorgon.",
+        "Han säger att han kommer i morgon."
+      ],
+      "hint": "Look at the att-clause.",
+      "feedback": "After att, the subject comes first.",
+      "explanation": "Han säger att han kommer imorgon: inside the att-clause, han comes before kommer.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han säger att kommer han imorgon."
+          ],
+          "why": "That is the sentence unchanged. The att-clause has the verb before its subject, as if it were a question."
+        },
+        {
+          "answers": [
+            "Säger han att han kommer imorgon?"
+          ],
+          "why": "The att-clause is fixed, but the main clause has become a question. Only the order after att needed changing."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "säger",
+          "en": "says (säga)",
+          "word": "verbs-006"
+        },
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-subordinate-6",
+      "pattern": "subordinate",
+      "type": "rewrite",
+      "instruction": "Join the two sentences with att. Write one sentence.",
+      "source": "Jag vet. Bussen kommer snart.",
+      "answers": [
+        "Jag vet att bussen kommer snart."
+      ],
+      "hint": "Att introduces the second part.",
+      "feedback": "After att, keep the subject before the verb.",
+      "explanation": "Jag vet att bussen kommer snart: the att-clause keeps bussen before kommer.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vet att kommer bussen snart."
+          ],
+          "why": "The verb jumped before the subject inside the att-clause. Only main clauses do that."
+        },
+        {
+          "answers": [
+            "Jag vet bussen kommer snart."
+          ],
+          "why": "The order is right, but the task asks you to join the sentences with att."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "vet",
+          "en": "know (veta)",
+          "word": "verbs-014"
+        },
+        {
+          "sv": "Bussen",
+          "en": "the bus",
+          "word": "travel-005"
+        },
+        {
+          "sv": "kommer",
+          "en": "comes (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "snart",
+          "en": "soon"
+        }
+      ]
+    },
+    {
+      "id": "word-order-v2-subordinate-7",
+      "pattern": "subordinate",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I know that you speak Swedish.",
+      "answers": [
+        "Jag vet att du pratar svenska.",
+        "Jag vet att du talar svenska."
+      ],
+      "hint": "Inside the att-clause: subject, then verb.",
+      "feedback": "After att, du comes before the verb.",
+      "explanation": "Jag vet att du pratar svenska: the att-clause keeps the subject first.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vet att pratar du svenska.",
+            "Jag vet att talar du svenska."
+          ],
+          "why": "The verb came before du inside the att-clause. That is question order, not used after att."
+        }
+      ]
+    }
+  ]
+}

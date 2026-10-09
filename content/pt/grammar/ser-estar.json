@@ -1,0 +1,2173 @@
+{
+  "id": "ser-estar",
+  "unit": "present",
+  "level": "A1",
+  "title": "Ser and estar",
+  "description": "Choose between the two verbs for to be, tell the time, say where things are, and talk about what is going on now.",
+  "mark": "sou · estou",
+  "guide": {
+    "summary": "Portuguese has two verbs for to be. Ser says what something is: identity, nationality, job, character, the time and the date. Estar says how or where something is right now: moods, passing states, where people and things are, and actions in progress with -ndo.",
+    "sections": [
+      {
+        "id": "ser-who",
+        "title": "Ser: who and what someone is",
+        "text": "Use ser for what does not change from one moment to the next: who someone is, where they come from, their job and their character. Before a bare profession Portuguese uses no article: Ela é médica.",
+        "table": {
+          "columns": [
+            "subject",
+            "ser",
+            "example"
+          ],
+          "rows": [
+            [
+              "eu",
+              "sou",
+              "Eu sou brasileiro."
+            ],
+            [
+              "você / ele / ela",
+              "é",
+              "Ela é médica."
+            ],
+            [
+              "nós",
+              "somos",
+              "Nós somos amigos."
+            ],
+            [
+              "vocês / eles / elas",
+              "são",
+              "Eles são simpáticos."
+            ]
+          ]
+        },
+        "steps": [
+          "Ask: is this who or what the person is (name, nationality, job, character)? If so, use ser.",
+          "Find the subject and take its row.",
+          "Leave out um or uma before a bare profession."
+        ],
+        "examples": [
+          {
+            "pt": "Eu sou professora.",
+            "en": "I am a teacher."
+          },
+          {
+            "pt": "Vocês são muito engraçados.",
+            "en": "You are very funny."
+          }
+        ],
+        "watch": [
+          "É carries an accent; e without it means and.",
+          "A gente (we, informal) takes the ele form: a gente é."
+        ]
+      },
+      {
+        "id": "estar-how",
+        "title": "Estar: how someone is right now",
+        "text": "Use estar for states that come and go: moods, feeling tired or ill, being busy or hungry. Words like hoje and agora are a strong clue.",
+        "table": {
+          "columns": [
+            "subject",
+            "estar",
+            "example"
+          ],
+          "rows": [
+            [
+              "eu",
+              "estou",
+              "Eu estou cansado."
+            ],
+            [
+              "você / ele / ela",
+              "está",
+              "Ela está doente."
+            ],
+            [
+              "nós",
+              "estamos",
+              "Nós estamos com fome."
+            ],
+            [
+              "vocês / eles / elas",
+              "estão",
+              "Elas estão felizes."
+            ]
+          ]
+        },
+        "steps": [
+          "Ask: is this a state that can change by tomorrow? If so, use estar.",
+          "Find the subject and take its row.",
+          "Write the accents: está and estão."
+        ],
+        "examples": [
+          {
+            "pt": "Estou muito cansada hoje.",
+            "en": "I am very tired today."
+          },
+          {
+            "pt": "Você está ocupado agora?",
+            "en": "Are you busy now?"
+          }
+        ],
+        "watch": [
+          "Está needs its accent: esta without it means this.",
+          "Estoy is Spanish; the Portuguese form is spelled with -ou."
+        ]
+      },
+      {
+        "id": "time-dates",
+        "title": "Telling the time and the date",
+        "text": "The time, the day and the date take ser, with no subject. From two o'clock on the verb is plural, because horas is plural. Numbers are written as words here.",
+        "table": {
+          "columns": [
+            "what you say",
+            "Portuguese",
+            "English"
+          ],
+          "rows": [
+            [
+              "one o'clock",
+              "É uma hora.",
+              "It is one o'clock."
+            ],
+            [
+              "midday, midnight",
+              "É meio-dia. É meia-noite.",
+              "It is midday. It is midnight."
+            ],
+            [
+              "two o'clock and later",
+              "São três horas.",
+              "It is three o'clock."
+            ],
+            [
+              "the day or date",
+              "Hoje é sexta-feira. Hoje é dia dez.",
+              "Today is Friday. Today is the tenth."
+            ]
+          ]
+        },
+        "steps": [
+          "Use ser, never estar, for the time, the day and the date.",
+          "One o'clock, midday or midnight: singular é.",
+          "Two o'clock or later: plural são."
+        ],
+        "examples": [
+          {
+            "pt": "São dez horas.",
+            "en": "It is ten o'clock."
+          },
+          {
+            "pt": "É uma hora da tarde.",
+            "en": "It is one in the afternoon."
+          }
+        ],
+        "watch": [
+          "Portuguese has no word for the English it: just São duas horas.",
+          "Weather is different: Está frio means it is cold."
+        ]
+      },
+      {
+        "id": "location",
+        "title": "Saying where something is",
+        "text": "Where people and movable things are takes estar. For buildings and places Brazilians most often use ficar (O banco fica na praça), or ser; estar is also common: O banco está na praça.",
+        "table": {
+          "columns": [
+            "what is located",
+            "verb",
+            "example"
+          ],
+          "rows": [
+            [
+              "people",
+              "estar",
+              "A Ana está no trabalho."
+            ],
+            [
+              "movable things",
+              "estar",
+              "As chaves estão na mesa."
+            ],
+            [
+              "buildings and places",
+              "ficar or ser",
+              "O banco fica na praça."
+            ]
+          ]
+        },
+        "steps": [
+          "Can the thing move by itself or be picked up? Use estar.",
+          "Is it a building, a town or a fixed place? Use ficar (or ser).",
+          "Match the verb to a singular or plural subject."
+        ],
+        "examples": [
+          {
+            "pt": "Onde fica o hospital?",
+            "en": "Where is the hospital?"
+          },
+          {
+            "pt": "Meus pais estão em casa.",
+            "en": "My parents are at home."
+          }
+        ],
+        "watch": [
+          "Ser never locates people: As crianças estão na praia, not são.",
+          "Ficar with a person means to stay: Eu fico em casa is I stay at home."
+        ]
+      },
+      {
+        "id": "meaning-shift",
+        "title": "Same adjective, different meaning",
+        "text": "Many adjectives work with both verbs. Ser describes what someone or something is like in general; estar describes how it is or seems right now.",
+        "table": {
+          "columns": [
+            "adjective",
+            "with ser",
+            "with estar"
+          ],
+          "rows": [
+            [
+              "chato",
+              "Ele é chato: he is a boring person.",
+              "Ele está chato: he is being annoying."
+            ],
+            [
+              "bonito",
+              "Ela é bonita: she is pretty.",
+              "Ela está bonita: she looks nice today."
+            ],
+            [
+              "bom / boa",
+              "A sopa é boa: it is a good kind of soup.",
+              "A sopa está boa: this soup tastes good."
+            ],
+            [
+              "feliz",
+              "Ele é feliz: he is a happy person.",
+              "Ele está feliz: he is happy right now."
+            ]
+          ]
+        },
+        "steps": [
+          "Ask whether the sentence is about a lasting trait or the present moment.",
+          "Lasting trait: ser. Present moment or a change: estar.",
+          "Clues like sempre point to ser; hoje and agora point to estar."
+        ],
+        "examples": [
+          {
+            "pt": "Meu vizinho é chato.",
+            "en": "My neighbour is boring."
+          },
+          {
+            "pt": "Meu café está frio.",
+            "en": "My coffee is cold."
+          }
+        ],
+        "watch": [
+          "Estar with food or drink is about taste or temperature now: O café está quente."
+        ]
+      },
+      {
+        "id": "gerund",
+        "title": "Estar + gerúndio: what is going on now",
+        "text": "For an action in progress, Brazilians use estar plus the gerúndio, the -ndo form. Drop the final -r of the infinitive and add -ndo.",
+        "table": {
+          "columns": [
+            "verb family",
+            "infinitive",
+            "gerúndio"
+          ],
+          "rows": [
+            [
+              "-ar",
+              "estudar",
+              "estudando"
+            ],
+            [
+              "-er",
+              "comer",
+              "comendo"
+            ],
+            [
+              "-ir",
+              "dormir",
+              "dormindo"
+            ]
+          ]
+        },
+        "steps": [
+          "Put estar in the subject's form.",
+          "Take the infinitive and drop the final -r.",
+          "Add -ndo: the vowel before it stays a, e or i."
+        ],
+        "examples": [
+          {
+            "pt": "Estou estudando português.",
+            "en": "I am studying Portuguese."
+          },
+          {
+            "pt": "Eles estão dormindo.",
+            "en": "They are sleeping."
+          }
+        ],
+        "watch": [
+          "Ser never goes with -ndo.",
+          "The plain present, Eu leio, means I read in general; for now, say Estou lendo."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "identity": {
+      "section": "ser-who",
+      "steps": [
+        "Check that the sentence says who or what someone is: nationality, job or character.",
+        "Use ser in the subject's form.",
+        "No article before a bare profession."
+      ]
+    },
+    "state": {
+      "section": "estar-how",
+      "steps": [
+        "Check that the sentence describes a mood or state that can change.",
+        "Use estar in the subject's form, with its accent."
+      ]
+    },
+    "time": {
+      "section": "time-dates",
+      "steps": [
+        "The time, day and date take ser.",
+        "One o'clock, midday, midnight: é. Two o'clock and later: são."
+      ]
+    },
+    "location": {
+      "section": "location",
+      "steps": [
+        "People and movable things: estar.",
+        "Buildings and fixed places: ficar or ser.",
+        "Match singular or plural."
+      ]
+    },
+    "shift": {
+      "section": "meaning-shift",
+      "steps": [
+        "Decide whether the adjective is a lasting trait or how things are now.",
+        "Lasting: ser. Now or changed: estar.",
+        "Use clues such as sempre, hoje and agora."
+      ]
+    },
+    "gerund": {
+      "section": "gerund",
+      "steps": [
+        "Put estar in the subject's form.",
+        "Drop the -r of the infinitive and add -ndo."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "ser-estar-identity-1",
+      "pattern": "identity",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ser · eu · presente",
+      "answers": [
+        "sou",
+        "eu sou"
+      ],
+      "hint": "Ser is irregular. The eu form is short and ends in -ou.",
+      "feedback": "Use the eu form of ser, the verb for who you are.",
+      "explanation": "Eu sou: the eu form of ser, as in Eu sou professor.",
+      "mistakes": [
+        {
+          "answers": [
+            "estou",
+            "eu estou"
+          ],
+          "why": "That is the eu form of estar, the verb for how you are right now. The verb asked for is ser."
+        },
+        {
+          "answers": [
+            "é",
+            "eu é"
+          ],
+          "why": "É is the form for você, ele and ela. With eu the verb has its own form."
+        },
+        {
+          "answers": [
+            "somos",
+            "eu somos"
+          ],
+          "why": "Somos is the nós form, for a group that includes you. Eu is one person."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "ser-estar-identity-2",
+      "pattern": "identity",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ser · nós · presente",
+      "answers": [
+        "somos",
+        "nós somos"
+      ],
+      "hint": "The nós form of almost every verb ends in -mos.",
+      "feedback": "Use the nós form of ser.",
+      "explanation": "Nós somos: the nós form of ser ends in -mos, like nearly every nós form.",
+      "mistakes": [
+        {
+          "answers": [
+            "estamos",
+            "nós estamos"
+          ],
+          "why": "Estamos is the nós form of estar, the verb for states and places. The verb asked for is ser."
+        },
+        {
+          "answers": [
+            "são",
+            "nós são"
+          ],
+          "why": "São belongs to vocês, eles and elas. Nós needs its own form ending in -mos."
+        },
+        {
+          "answers": [
+            "é",
+            "nós é"
+          ],
+          "why": "É is the singular form for você, ele and ela. Nós is a group that includes the speaker."
+        }
+      ],
+      "row": "nós"
+    },
+    {
+      "id": "ser-estar-identity-3",
+      "pattern": "identity",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ser · eles · presente",
+      "answers": [
+        "são",
+        "eles são"
+      ],
+      "hint": "The plural form rhymes with não.",
+      "feedback": "Use the eles form of ser.",
+      "explanation": "Eles são: the form for vocês, eles and elas is the same, and it ends in a nasal -ão.",
+      "mistakes": [
+        {
+          "answers": [
+            "estão",
+            "eles estão"
+          ],
+          "why": "Estão is the eles form of estar, used for moods, states and where people are. The verb asked for is ser."
+        },
+        {
+          "answers": [
+            "é",
+            "eles é"
+          ],
+          "why": "É is singular: one person, você, ele or ela. Eles is several people."
+        },
+        {
+          "answers": [
+            "somos",
+            "eles somos"
+          ],
+          "why": "Somos is the nós form and includes the speaker. Eles is a group you are talking about."
+        }
+      ],
+      "row": "vocês / eles / elas"
+    },
+    {
+      "id": "ser-estar-identity-4",
+      "pattern": "identity",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "Eu ____ brasileiro.",
+      "options": [
+        "sou",
+        "estou"
+      ],
+      "answers": [
+        "sou"
+      ],
+      "hint": "Is nationality a passing state or part of who you are?",
+      "feedback": "Nationality describes who someone is.",
+      "explanation": "Nationality is identity, so Portuguese uses ser: Eu sou brasileiro.",
+      "mistakes": [
+        {
+          "answers": [
+            "estou"
+          ],
+          "why": "Estou comes from estar, the verb for moods and temporary states. Where you are from does not change from day to day."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "brasileiro",
+          "en": "Brazilian"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-identity-5",
+      "pattern": "identity",
+      "type": "complete",
+      "instruction": "Write ser or estar in the right form.",
+      "source": "Maria ____ médica.",
+      "answers": [
+        "é"
+      ],
+      "strictAccents": true,
+      "hint": "A profession says what someone is. Mind the accent.",
+      "feedback": "Jobs take ser, and the form for one person you talk about.",
+      "explanation": "Profession is identity, so ser: Maria é médica. Note that Portuguese drops the article here: no uma before médica.",
+      "mistakes": [
+        {
+          "answers": [
+            "está"
+          ],
+          "why": "Está comes from estar, for how someone is at the moment. A job is described as part of who a person is."
+        },
+        {
+          "answers": [
+            "e"
+          ],
+          "why": "Without the accent, e means and. The verb needs the acute accent."
+        },
+        {
+          "answers": [
+            "são"
+          ],
+          "why": "São is the plural form. Maria is one person."
+        }
+      ],
+      "row": "você / ele / ela",
+      "gloss": [
+        {
+          "pt": "Maria",
+          "en": "Maria (a name)"
+        },
+        {
+          "pt": "médica",
+          "en": "doctor (a woman)",
+          "word": "work-012"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-identity-6",
+      "pattern": "identity",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "We are teachers.",
+      "answers": [
+        "Nós somos professores.",
+        "Somos professores."
+      ],
+      "hint": "A profession takes ser. Portuguese leaves out the article before a job.",
+      "feedback": "Use the nós form of ser and the plural of professor.",
+      "explanation": "Nós somos professores: ser for a profession, no article before the job, and the pronoun nós may be dropped because somos already shows the subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós estamos professores."
+          ],
+          "why": "Estamos comes from estar, which describes a passing state. A profession is said with the verb of identity."
+        },
+        {
+          "answers": [
+            "Nós são professores."
+          ],
+          "why": "São is the form for vocês, eles and elas. Nós has its own form ending in -mos."
+        },
+        {
+          "answers": [
+            "Nós somos uns professores."
+          ],
+          "why": "Portuguese puts no article before a bare profession after ser."
+        }
+      ],
+      "row": "nós"
+    },
+    {
+      "id": "ser-estar-identity-7",
+      "pattern": "identity",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "My sister is very funny.",
+      "tokens": [
+        "Minha",
+        "irmã",
+        "é",
+        "está",
+        "muito",
+        "engraçada."
+      ],
+      "answers": [
+        "Minha irmã é muito engraçada."
+      ],
+      "hint": "Being funny is part of her character.",
+      "feedback": "Character traits take ser.",
+      "explanation": "Minha irmã é muito engraçada: personality is who she is, so ser.",
+      "mistakes": [
+        {
+          "answers": [
+            "Minha irmã está muito engraçada."
+          ],
+          "why": "Está would mean she is being funny right now, today. The English describes her personality."
+        }
+      ],
+      "row": "você / ele / ela"
+    },
+    {
+      "id": "ser-estar-identity-8",
+      "pattern": "identity",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Pedro está engenheiro.",
+      "answers": [
+        "Pedro é engenheiro."
+      ],
+      "hint": "What verb names a job?",
+      "feedback": "Professions take ser, not estar.",
+      "explanation": "Pedro é engenheiro: a profession is identity, so ser, with no article before the job.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pedro está engenheiro."
+          ],
+          "why": "That is the sentence unchanged. Estar is for states and moods; a job is said with the verb of identity."
+        },
+        {
+          "answers": [
+            "Pedro são engenheiro."
+          ],
+          "why": "São is plural. Pedro is one person."
+        },
+        {
+          "answers": [
+            "Pedro é um engenheiro."
+          ],
+          "why": "Portuguese leaves out the article before a bare profession."
+        }
+      ],
+      "row": "você / ele / ela",
+      "gloss": [
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "engenheiro",
+          "en": "engineer",
+          "word": "work-015"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-state-1",
+      "pattern": "state",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "estar · eu · presente",
+      "answers": [
+        "estou",
+        "eu estou"
+      ],
+      "hint": "The eu form of estar ends in -ou, like the eu form of ser.",
+      "feedback": "Use the eu form of estar.",
+      "explanation": "Eu estou: est- + -ou. The stress falls on the last syllable.",
+      "mistakes": [
+        {
+          "answers": [
+            "sou",
+            "eu sou"
+          ],
+          "why": "That is the eu form of ser, the verb for identity. The verb asked for is estar."
+        },
+        {
+          "answers": [
+            "está",
+            "eu está"
+          ],
+          "why": "Está is the form for você, ele and ela. Eu has its own form."
+        },
+        {
+          "answers": [
+            "estoy",
+            "eu estoy"
+          ],
+          "why": "Estoy is Spanish. The Portuguese ending is spelled with -ou."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "ser-estar-state-2",
+      "pattern": "state",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "estar · você · presente",
+      "answers": [
+        "está",
+        "você está"
+      ],
+      "strictAccents": true,
+      "hint": "Você takes the same form as ele and ela. Do not forget the accent.",
+      "feedback": "Use the third-person singular form of estar, with its accent.",
+      "explanation": "Você está: the accent on the a matters, because without it the word is a different one.",
+      "mistakes": [
+        {
+          "answers": [
+            "esta",
+            "você esta"
+          ],
+          "why": "Without the accent, esta means this (before a feminine noun). The verb needs the acute accent on the last a."
+        },
+        {
+          "answers": [
+            "é",
+            "você é"
+          ],
+          "why": "É is the você form of ser, the verb for identity. The verb asked for is estar."
+        },
+        {
+          "answers": [
+            "estou",
+            "você estou"
+          ],
+          "why": "Estou is the eu form. Você is the person you are speaking to."
+        }
+      ],
+      "row": "você / ele / ela"
+    },
+    {
+      "id": "ser-estar-state-3",
+      "pattern": "state",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "estar · vocês · presente",
+      "answers": [
+        "estão",
+        "vocês estão"
+      ],
+      "hint": "Vocês takes the same form as eles and elas.",
+      "feedback": "Use the plural form of estar ending in -ão.",
+      "explanation": "Vocês estão: the plural form ends in a nasal -ão, like são.",
+      "mistakes": [
+        {
+          "answers": [
+            "estamos",
+            "vocês estamos"
+          ],
+          "why": "Estamos is the nós form, which includes the speaker. Vocês is the group you are talking to."
+        },
+        {
+          "answers": [
+            "está",
+            "vocês está"
+          ],
+          "why": "Está is singular. Vocês is several people."
+        },
+        {
+          "answers": [
+            "são",
+            "vocês são"
+          ],
+          "why": "São is the plural form of ser, the verb for identity. The verb asked for is estar."
+        }
+      ],
+      "row": "vocês / eles / elas"
+    },
+    {
+      "id": "ser-estar-state-4",
+      "pattern": "state",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "Hoje eu ____ muito cansado.",
+      "options": [
+        "sou",
+        "estou"
+      ],
+      "answers": [
+        "estou"
+      ],
+      "hint": "Is being tired today a passing state?",
+      "feedback": "Tiredness is a state, and hoje says it is about today.",
+      "explanation": "Being tired is a temporary state, so estar: Hoje eu estou muito cansado.",
+      "mistakes": [
+        {
+          "answers": [
+            "sou"
+          ],
+          "why": "Sou comes from ser, for who you are. Tiredness passes; it is not part of your identity."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "cansado",
+          "en": "tired",
+          "word": "feelings-011"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-state-5",
+      "pattern": "state",
+      "type": "complete",
+      "instruction": "Write ser or estar in the right form.",
+      "source": "As crianças ____ com fome.",
+      "answers": [
+        "estão"
+      ],
+      "hint": "Hunger is a state that passes. The subject is plural.",
+      "feedback": "A passing state takes estar, and crianças is plural.",
+      "explanation": "Being hungry is a temporary state, and as crianças is plural, so estão.",
+      "mistakes": [
+        {
+          "answers": [
+            "são"
+          ],
+          "why": "São comes from ser, the verb for identity. Hunger is a state that changes during the day."
+        },
+        {
+          "answers": [
+            "está"
+          ],
+          "why": "Está is singular, but crianças is plural."
+        },
+        {
+          "answers": [
+            "estamos"
+          ],
+          "why": "Estamos is the nós form. The children are people you are talking about."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "gloss": [
+        {
+          "pt": "crianças",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "pt": "com fome",
+          "en": "hungry"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-state-6",
+      "pattern": "state",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Eu sou triste hoje.",
+      "answers": [
+        "Eu estou triste hoje.",
+        "Estou triste hoje."
+      ],
+      "hint": "Hoje tells you this is about today.",
+      "feedback": "A mood that belongs to today takes estar.",
+      "explanation": "Eu estou triste hoje: sadness today is a passing mood, so estar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu sou triste hoje."
+          ],
+          "why": "That is the sentence unchanged. Ser would make sadness part of who you are, which clashes with hoje."
+        },
+        {
+          "answers": [
+            "Eu está triste hoje."
+          ],
+          "why": "Está is the form for você, ele and ela. Eu has its own form."
+        },
+        {
+          "answers": [
+            "Eu esta triste hoje."
+          ],
+          "why": "Esta without an accent means this, and it is not the eu form either."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "sou",
+          "en": "am (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "triste",
+          "en": "sad",
+          "word": "feelings-009"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-state-7",
+      "pattern": "state",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Are you busy now?",
+      "answers": [
+        "Você está ocupado agora?",
+        "Você está ocupada agora?",
+        "Está ocupado agora?",
+        "Está ocupada agora?"
+      ],
+      "strictAccents": true,
+      "hint": "Being busy is a state of the moment.",
+      "feedback": "Use estar with você.",
+      "explanation": "Você está ocupado agora? Busy is a passing state, so estar. Use ocupada when asking a woman.",
+      "mistakes": [
+        {
+          "answers": [
+            "Você é ocupado agora?",
+            "Você é ocupada agora?"
+          ],
+          "why": "É comes from ser, which would describe a permanent trait. Busy now is a state of the moment."
+        },
+        {
+          "answers": [
+            "Você esta ocupado agora?",
+            "Você esta ocupada agora?"
+          ],
+          "why": "Without the accent, esta means this. The verb needs its accent."
+        },
+        {
+          "answers": [
+            "Você estou ocupado agora?",
+            "Você estou ocupada agora?"
+          ],
+          "why": "Estou is the eu form. Você takes the third-person form."
+        }
+      ],
+      "row": "você / ele / ela"
+    },
+    {
+      "id": "ser-estar-time-1",
+      "pattern": "time",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "____ três horas.",
+      "options": [
+        "É",
+        "São",
+        "Está"
+      ],
+      "answers": [
+        "São"
+      ],
+      "hint": "Count the hours: one or more than one?",
+      "feedback": "Times take ser, plural from two o'clock on.",
+      "explanation": "Times use ser, and from two o'clock on the verb is plural because horas is plural: São três horas.",
+      "mistakes": [
+        {
+          "answers": [
+            "É"
+          ],
+          "why": "É is only for one o'clock, midday and midnight. Three hours is plural."
+        },
+        {
+          "answers": [
+            "Está"
+          ],
+          "why": "Estar is not used to tell the time. Portuguese uses ser for the hour."
+        }
+      ],
+      "row": "two o'clock and later",
+      "gloss": [
+        {
+          "pt": "três",
+          "en": "three"
+        },
+        {
+          "pt": "horas",
+          "en": "hours (o'clock)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-time-2",
+      "pattern": "time",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "Hoje ____ sexta-feira.",
+      "options": [
+        "é",
+        "está"
+      ],
+      "answers": [
+        "é"
+      ],
+      "hint": "Days and dates take the same verb as times.",
+      "feedback": "Naming the day takes ser.",
+      "explanation": "Days of the week and dates take ser: Hoje é sexta-feira.",
+      "mistakes": [
+        {
+          "answers": [
+            "está"
+          ],
+          "why": "Estar is not used to name the day. Portuguese uses ser for days and dates."
+        }
+      ],
+      "row": "the day or date",
+      "gloss": [
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "sexta-feira",
+          "en": "Friday",
+          "word": "health-time-044"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-time-3",
+      "pattern": "time",
+      "type": "complete",
+      "instruction": "Write the right form of ser.",
+      "source": "____ uma hora da tarde.",
+      "answers": [
+        "É"
+      ],
+      "strictAccents": true,
+      "hint": "Only one hour. Mind the accent.",
+      "feedback": "One o'clock is singular.",
+      "explanation": "É uma hora da tarde: one o'clock takes the singular, because uma hora is one hour.",
+      "mistakes": [
+        {
+          "answers": [
+            "São"
+          ],
+          "why": "São is for two o'clock and later. Uma hora is singular."
+        },
+        {
+          "answers": [
+            "Está"
+          ],
+          "why": "Estar does not tell the time; the hour is given with ser."
+        },
+        {
+          "answers": [
+            "E"
+          ],
+          "why": "Without the accent, e means and. The verb needs the acute accent."
+        }
+      ],
+      "row": "one o'clock",
+      "gloss": [
+        {
+          "pt": "hora",
+          "en": "hour",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "tarde",
+          "en": "afternoon",
+          "word": "health-time-033"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-time-4",
+      "pattern": "time",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "It is ten o'clock.",
+      "answers": [
+        "São dez horas."
+      ],
+      "hint": "Ten hours is plural. There is no word for it.",
+      "feedback": "Use the plural of ser and write the number as a word.",
+      "explanation": "São dez horas: ser in the plural, because dez horas is more than one hour. Portuguese has no word for the English it.",
+      "mistakes": [
+        {
+          "answers": [
+            "É dez horas."
+          ],
+          "why": "É is singular, only for one o'clock, midday and midnight. Ten hours needs the plural verb."
+        },
+        {
+          "answers": [
+            "Está dez horas."
+          ],
+          "why": "Estar does not tell the time. The hour is given with ser."
+        },
+        {
+          "answers": [
+            "Ele é dez horas."
+          ],
+          "why": "Portuguese has no subject for the time. Ele means he."
+        }
+      ],
+      "row": "two o'clock and later"
+    },
+    {
+      "id": "ser-estar-time-5",
+      "pattern": "time",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Está quatro horas.",
+      "answers": [
+        "São quatro horas."
+      ],
+      "hint": "Which verb tells the time, and is four hours singular?",
+      "feedback": "Times take ser, and quatro horas is plural.",
+      "explanation": "São quatro horas: ser for the time, plural from two o'clock on.",
+      "mistakes": [
+        {
+          "answers": [
+            "Está quatro horas."
+          ],
+          "why": "That is the sentence unchanged. Estar does not tell the time."
+        },
+        {
+          "answers": [
+            "É quatro horas."
+          ],
+          "why": "É is singular, for one o'clock only. Four hours is plural."
+        },
+        {
+          "answers": [
+            "Estão quatro horas."
+          ],
+          "why": "Estão is still estar. The time is given with ser."
+        }
+      ],
+      "row": "two o'clock and later",
+      "gloss": [
+        {
+          "pt": "Está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "quatro",
+          "en": "four"
+        },
+        {
+          "pt": "horas",
+          "en": "hours (o'clock)",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-time-6",
+      "pattern": "time",
+      "type": "rewrite",
+      "instruction": "Change the time to two o'clock (duas horas).",
+      "source": "É uma hora.",
+      "answers": [
+        "São duas horas."
+      ],
+      "hint": "Two hours is plural, so both the verb and hora change.",
+      "feedback": "Make the verb and the noun plural.",
+      "explanation": "São duas horas: from two o'clock on, ser is plural and hora takes -s.",
+      "mistakes": [
+        {
+          "answers": [
+            "É duas horas."
+          ],
+          "why": "É is singular. Two hours is plural, so the verb changes too."
+        },
+        {
+          "answers": [
+            "São duas hora."
+          ],
+          "why": "Hora needs the plural -s after duas."
+        },
+        {
+          "answers": [
+            "Estão duas horas."
+          ],
+          "why": "Estar does not tell the time. Keep the verb of the original sentence, just in the plural."
+        }
+      ],
+      "row": "two o'clock and later",
+      "gloss": [
+        {
+          "pt": "É",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "hora",
+          "en": "hour; o'clock",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-location-1",
+      "pattern": "location",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "Onde ____ as chaves?",
+      "options": [
+        "estão",
+        "são"
+      ],
+      "answers": [
+        "estão"
+      ],
+      "hint": "Keys can be moved from place to place.",
+      "feedback": "Things that move take estar for where they are.",
+      "explanation": "Keys are movable, so their location takes estar, plural for as chaves: Onde estão as chaves?",
+      "mistakes": [
+        {
+          "answers": [
+            "são"
+          ],
+          "why": "São comes from ser. For things you can pick up and move, Brazilians use estar."
+        }
+      ],
+      "row": "movable things",
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "chaves",
+          "en": "keys",
+          "word": "home-019"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-location-2",
+      "pattern": "location",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "O banco ____ na praça.",
+      "options": [
+        "fica",
+        "ficam",
+        "são"
+      ],
+      "answers": [
+        "fica"
+      ],
+      "hint": "A bank is a building. It never moves.",
+      "feedback": "For fixed places, use ficar (or ser).",
+      "explanation": "Buildings and places stay put, so Brazilians locate them with ficar: O banco fica na praça.",
+      "mistakes": [
+        {
+          "answers": [
+            "ficam"
+          ],
+          "why": "Ficam is plural. O banco is one building."
+        },
+        {
+          "answers": [
+            "são"
+          ],
+          "why": "São is plural, and o banco is one building."
+        }
+      ],
+      "row": "buildings and places",
+      "gloss": [
+        {
+          "pt": "banco",
+          "en": "bank",
+          "word": "town-012"
+        },
+        {
+          "pt": "praça",
+          "en": "square",
+          "word": "town-024"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-location-3",
+      "pattern": "location",
+      "type": "complete",
+      "instruction": "Write ser, estar or ficar in the right form.",
+      "source": "Minha mãe ____ no trabalho agora.",
+      "answers": [
+        "está"
+      ],
+      "strictAccents": true,
+      "hint": "Where is a person right now?",
+      "feedback": "People are located with estar.",
+      "explanation": "A person moves around, so where she is now takes estar: Minha mãe está no trabalho agora.",
+      "mistakes": [
+        {
+          "answers": [
+            "fica"
+          ],
+          "why": "Ficar is for fixed places, like buildings. A person changes place during the day."
+        },
+        {
+          "answers": [
+            "é"
+          ],
+          "why": "É comes from ser, which does not locate people."
+        },
+        {
+          "answers": [
+            "esta"
+          ],
+          "why": "Without the accent, esta means this. The verb needs its accent."
+        }
+      ],
+      "row": "people",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "trabalho",
+          "en": "work",
+          "word": "work-001"
+        },
+        {
+          "pt": "agora",
+          "en": "now",
+          "word": "essentials-057"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-location-4",
+      "pattern": "location",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Where is the hospital?",
+      "answers": [
+        "Onde fica o hospital?",
+        "Onde é o hospital?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Onde está o hospital?",
+          "message": "Correct and common. Brazilians also say Onde fica o hospital? for buildings.",
+          "accepted": true
+        }
+      ],
+      "hint": "A hospital is a fixed building.",
+      "feedback": "For a building, use ficar or ser.",
+      "explanation": "Onde fica o hospital? Buildings are located with ficar; Onde é o hospital? is just as common.",
+      "mistakes": [
+        {
+          "answers": [
+            "Onde ficam o hospital?"
+          ],
+          "why": "Ficam is plural. O hospital is one building."
+        },
+        {
+          "answers": [
+            "Onde estão o hospital?"
+          ],
+          "why": "Estão is plural, and estar is for people and movable things."
+        }
+      ],
+      "row": "buildings and places"
+    },
+    {
+      "id": "ser-estar-location-5",
+      "pattern": "location",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "As crianças são na praia.",
+      "answers": [
+        "As crianças estão na praia."
+      ],
+      "hint": "Children move about. Which verb says where people are?",
+      "feedback": "People are located with estar.",
+      "explanation": "As crianças estão na praia: where people are takes estar, plural for as crianças.",
+      "mistakes": [
+        {
+          "answers": [
+            "As crianças são na praia."
+          ],
+          "why": "That is the sentence unchanged. Ser does not say where people are."
+        },
+        {
+          "answers": [
+            "As crianças está na praia."
+          ],
+          "why": "Está is singular, but crianças is plural."
+        },
+        {
+          "answers": [
+            "As crianças ficam na praia."
+          ],
+          "why": "Ficam would mean the children stay at the beach. The sentence just says where they are."
+        }
+      ],
+      "row": "people",
+      "gloss": [
+        {
+          "pt": "crianças",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "praia",
+          "en": "beach",
+          "word": "nature-008"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-location-6",
+      "pattern": "location",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "My parents are at home.",
+      "tokens": [
+        "Os",
+        "Meus",
+        "pais",
+        "estão",
+        "são",
+        "em",
+        "casa."
+      ],
+      "answers": [
+        "Meus pais estão em casa.",
+        "Os meus pais estão em casa."
+      ],
+      "hint": "Parents are people, so which verb places them?",
+      "feedback": "People are located with estar.",
+      "explanation": "Meus pais estão em casa: estar for where people are, plural for meus pais.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meus pais são em casa.",
+            "Os meus pais são em casa."
+          ],
+          "why": "São comes from ser, which does not say where people are."
+        }
+      ],
+      "row": "people"
+    },
+    {
+      "id": "ser-estar-location-7",
+      "pattern": "location",
+      "type": "rewrite",
+      "instruction": "Change o livro to os livros.",
+      "source": "O livro está na mesa.",
+      "answers": [
+        "Os livros estão na mesa."
+      ],
+      "hint": "The subject becomes plural, so the verb does too.",
+      "feedback": "Use the plural form of estar.",
+      "explanation": "Os livros estão na mesa: books are movable, so estar, and the plural subject takes the plural form.",
+      "mistakes": [
+        {
+          "answers": [
+            "Os livros está na mesa."
+          ],
+          "why": "Está is singular. Os livros is plural."
+        },
+        {
+          "answers": [
+            "Os livros são na mesa."
+          ],
+          "why": "São comes from ser. Books you can move are located with estar."
+        },
+        {
+          "answers": [
+            "Os livros estão na mesas."
+          ],
+          "why": "Only the books become plural. There is still one table."
+        }
+      ],
+      "row": "movable things",
+      "gloss": [
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-shift-1",
+      "pattern": "shift",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "A sopa ____ boa hoje.",
+      "options": [
+        "é",
+        "está"
+      ],
+      "answers": [
+        "está"
+      ],
+      "hint": "Is this about soup in general, or the soup you are eating today?",
+      "feedback": "Estar with food says how it tastes now.",
+      "explanation": "With estar, boa describes how this soup tastes now: A sopa está boa hoje.",
+      "mistakes": [
+        {
+          "answers": [
+            "é"
+          ],
+          "why": "É with boa would describe soup in general, as a kind of food. Hoje points at the soup in front of you."
+        }
+      ],
+      "row": "bom / boa",
+      "gloss": [
+        {
+          "pt": "sopa",
+          "en": "soup",
+          "word": "food-017"
+        },
+        {
+          "pt": "boa",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-shift-2",
+      "pattern": "shift",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "Meu vizinho ____ chato. Sempre fala muito alto.",
+      "options": [
+        "é",
+        "está"
+      ],
+      "answers": [
+        "é"
+      ],
+      "hint": "Sempre tells you this is how he always is.",
+      "feedback": "A lasting trait takes ser.",
+      "explanation": "Sempre shows a lasting trait, so ser: Meu vizinho é chato, he is an annoying person.",
+      "mistakes": [
+        {
+          "answers": [
+            "está"
+          ],
+          "why": "Está would mean he is being annoying right now. Sempre says it is how he always is."
+        }
+      ],
+      "row": "chato",
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "vizinho",
+          "en": "neighbour",
+          "word": "people-030"
+        },
+        {
+          "pt": "chato",
+          "en": "annoying",
+          "word": "qualities-079"
+        },
+        {
+          "pt": "Sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "fala",
+          "en": "talks (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "muito alto",
+          "en": "very loudly"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-shift-3",
+      "pattern": "shift",
+      "type": "complete",
+      "instruction": "Write ser or estar in the right form.",
+      "source": "Você ____ muito bonita hoje!",
+      "answers": [
+        "está"
+      ],
+      "strictAccents": true,
+      "hint": "Hoje makes it about how she looks today.",
+      "feedback": "A compliment about today takes estar.",
+      "explanation": "Você está muito bonita hoje: estar says how she looks today.",
+      "mistakes": [
+        {
+          "answers": [
+            "é"
+          ],
+          "why": "É would say she is a beautiful person in general. Hoje points at how she looks today."
+        },
+        {
+          "answers": [
+            "esta"
+          ],
+          "why": "Without the accent, esta means this. The verb needs its accent."
+        },
+        {
+          "answers": [
+            "estou"
+          ],
+          "why": "Estou is the eu form. Você takes the third-person form."
+        }
+      ],
+      "row": "bonito",
+      "gloss": [
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "bonita",
+          "en": "pretty",
+          "word": "qualities-005"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-shift-4",
+      "pattern": "shift",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "He is boring.",
+      "answers": [
+        "Ele é chato."
+      ],
+      "hint": "Is this how he is, or how he is acting today?",
+      "feedback": "A personality trait takes ser.",
+      "explanation": "Ele é chato: ser makes boring part of who he is.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ele está chato."
+          ],
+          "why": "Ele está chato means he is being annoying at the moment, not that he is a boring person."
+        },
+        {
+          "answers": [
+            "Ele é chata."
+          ],
+          "why": "Chata is the feminine form. Ele is a man."
+        }
+      ],
+      "row": "chato"
+    },
+    {
+      "id": "ser-estar-shift-5",
+      "pattern": "shift",
+      "type": "rewrite",
+      "instruction": "Say he is being annoying today, not that he is a boring person. Add hoje at the end.",
+      "source": "Ele é chato.",
+      "answers": [
+        "Ele está chato hoje."
+      ],
+      "strictAccents": true,
+      "hint": "A passing mood takes the other verb.",
+      "feedback": "Swap ser for estar.",
+      "explanation": "Ele está chato hoje: estar makes chato a passing mood, so it means annoying today.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ele é chato hoje."
+          ],
+          "why": "Ser still makes it his character. A passing mood needs the other verb."
+        },
+        {
+          "answers": [
+            "Ele estou chato hoje."
+          ],
+          "why": "Estou is the eu form. Ele takes the third-person form."
+        },
+        {
+          "answers": [
+            "Ele esta chato hoje."
+          ],
+          "why": "Without the accent, esta means this."
+        }
+      ],
+      "row": "chato",
+      "gloss": [
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "chato",
+          "en": "boring",
+          "word": "qualities-079"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-shift-6",
+      "pattern": "shift",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Meu café é frio agora.",
+      "answers": [
+        "Meu café está frio agora.",
+        "O meu café está frio agora."
+      ],
+      "strictAccents": true,
+      "hint": "Agora: this is how the coffee is now.",
+      "feedback": "How something is at the moment takes estar.",
+      "explanation": "Meu café está frio agora: the coffee has gone cold, a changed state, so estar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meu café é frio agora."
+          ],
+          "why": "That is the sentence unchanged. Ser would make cold what the coffee is by nature."
+        },
+        {
+          "answers": [
+            "Meu café estão frio agora."
+          ],
+          "why": "Estão is plural. Café is one thing."
+        },
+        {
+          "answers": [
+            "Meu café esta frio agora."
+          ],
+          "why": "Without the accent, esta means this."
+        }
+      ],
+      "row": "bom / boa",
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "frio",
+          "en": "cold",
+          "word": "qualities-024"
+        },
+        {
+          "pt": "agora",
+          "en": "now",
+          "word": "essentials-057"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-shift-7",
+      "pattern": "shift",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "Ana is tall and she is tired.",
+      "tokens": [
+        "Ana",
+        "é",
+        "está",
+        "alta",
+        "e",
+        "cansada."
+      ],
+      "answers": [
+        "Ana é alta e está cansada."
+      ],
+      "hint": "One adjective is how she is built, the other how she feels.",
+      "feedback": "Height takes ser, tiredness takes estar.",
+      "explanation": "Ana é alta e está cansada: height is a lasting trait, ser; tiredness is a passing state, estar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ana está alta e é cansada."
+          ],
+          "why": "The verbs are swapped. Height lasts; tiredness passes."
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-gerund-1",
+      "pattern": "gerund",
+      "type": "choose",
+      "instruction": "Choose the right verb.",
+      "source": "Agora eu ____ estudando.",
+      "options": [
+        "estou",
+        "sou"
+      ],
+      "answers": [
+        "estou"
+      ],
+      "hint": "Ongoing actions use estar plus the -ndo form.",
+      "feedback": "Estar + gerúndio means doing something right now.",
+      "explanation": "Eu estou estudando: estar + gerúndio for what is going on now.",
+      "mistakes": [
+        {
+          "answers": [
+            "sou"
+          ],
+          "why": "Ser never combines with the -ndo form. An action in progress is said with estar."
+        }
+      ],
+      "row": "-ar",
+      "gloss": [
+        {
+          "pt": "Agora",
+          "en": "now",
+          "word": "essentials-057"
+        },
+        {
+          "pt": "estudando",
+          "en": "studying (estudar)",
+          "word": "verbs-055"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-gerund-2",
+      "pattern": "gerund",
+      "type": "complete",
+      "instruction": "Write the gerúndio of the verb.",
+      "source": "As crianças estão ____ (comer) na cozinha.",
+      "answers": [
+        "comendo"
+      ],
+      "hint": "-er verbs swap -r for -ndo.",
+      "feedback": "Drop -r and add -ndo.",
+      "explanation": "Comer becomes comendo: come- + -ndo.",
+      "mistakes": [
+        {
+          "answers": [
+            "comer"
+          ],
+          "why": "That is the infinitive. After estar, an action in progress takes the -ndo form."
+        },
+        {
+          "answers": [
+            "comindo"
+          ],
+          "why": "The vowel stays e for an -er verb: only -ir verbs end in -indo."
+        },
+        {
+          "answers": [
+            "comem"
+          ],
+          "why": "Comem is the plain present. After estão the verb takes the -ndo form."
+        }
+      ],
+      "row": "-er",
+      "gloss": [
+        {
+          "pt": "crianças",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "pt": "comer",
+          "en": "to eat",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-gerund-3",
+      "pattern": "gerund",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I am reading a book.",
+      "answers": [
+        "Estou lendo um livro.",
+        "Eu estou lendo um livro."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu leio um livro.",
+          "message": "Eu leio means I read, in general or as a habit. For an action happening now, Brazilians use estar + -ndo."
+        },
+        {
+          "answer": "Leio um livro.",
+          "message": "Leio means I read, in general or as a habit. For an action happening now, Brazilians use estar + -ndo."
+        }
+      ],
+      "hint": "Am reading is an action in progress.",
+      "feedback": "Use estar + the -ndo form of ler.",
+      "explanation": "Estou lendo um livro: estar + gerúndio. Ler loses its -r and adds -ndo.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu sou lendo um livro."
+          ],
+          "why": "Ser never combines with the -ndo form. An action in progress takes estar."
+        },
+        {
+          "answers": [
+            "Eu estou ler um livro."
+          ],
+          "why": "After estar, an ongoing action takes the -ndo form, not the infinitive."
+        },
+        {
+          "answers": [
+            "Eu estou leindo um livro."
+          ],
+          "why": "Ler is an -er verb, so it keeps the e: le- + -ndo."
+        }
+      ],
+      "row": "-er"
+    },
+    {
+      "id": "ser-estar-gerund-4",
+      "pattern": "gerund",
+      "type": "rewrite",
+      "instruction": "Say it is happening right now: use estar + gerúndio.",
+      "source": "Ela cozinha o jantar.",
+      "answers": [
+        "Ela está cozinhando o jantar."
+      ],
+      "hint": "Estar in the ela form, then the -ndo form of cozinhar.",
+      "feedback": "-ar verbs swap -r for -ndo.",
+      "explanation": "Ela está cozinhando o jantar: está + cozinha- + -ndo.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela é cozinhando o jantar."
+          ],
+          "why": "Ser never combines with the -ndo form. An action in progress takes estar."
+        },
+        {
+          "answers": [
+            "Ela está cozinhar o jantar."
+          ],
+          "why": "After estar, the verb takes the -ndo form, not the infinitive."
+        },
+        {
+          "answers": [
+            "Ela está cozinha o jantar."
+          ],
+          "why": "Cozinha is the plain present form. After estar it must end in -ndo."
+        }
+      ],
+      "row": "-ar",
+      "gloss": [
+        {
+          "pt": "cozinha",
+          "en": "cooks (cozinhar)",
+          "word": "verbs-079"
+        },
+        {
+          "pt": "jantar",
+          "en": "dinner",
+          "word": "food-043"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-gerund-5",
+      "pattern": "gerund",
+      "type": "rewrite",
+      "instruction": "Say it is happening right now: use estar + gerúndio.",
+      "source": "As crianças dormem.",
+      "answers": [
+        "As crianças estão dormindo."
+      ],
+      "hint": "Plural estar, then the -ndo form of dormir.",
+      "feedback": "-ir verbs end in -indo.",
+      "explanation": "As crianças estão dormindo: estão + dormi- + -ndo.",
+      "mistakes": [
+        {
+          "answers": [
+            "As crianças está dormindo."
+          ],
+          "why": "Está is singular, but crianças is plural."
+        },
+        {
+          "answers": [
+            "As crianças estão dormendo."
+          ],
+          "why": "Dormir is an -ir verb, so it keeps the i before -ndo."
+        },
+        {
+          "answers": [
+            "As crianças são dormindo."
+          ],
+          "why": "Ser never combines with the -ndo form."
+        }
+      ],
+      "row": "-ir",
+      "gloss": [
+        {
+          "pt": "crianças",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "pt": "dormem",
+          "en": "sleep (dormir)",
+          "word": "verbs-062"
+        }
+      ]
+    },
+    {
+      "id": "ser-estar-gerund-6",
+      "pattern": "gerund",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We are waiting for the bus.",
+      "tokens": [
+        "Nós",
+        "estamos",
+        "somos",
+        "esperando",
+        "o",
+        "ônibus."
+      ],
+      "answers": [
+        "Nós estamos esperando o ônibus.",
+        "Estamos esperando o ônibus."
+      ],
+      "hint": "Esperar takes no word for for.",
+      "feedback": "Estar + gerúndio, nós form.",
+      "explanation": "Nós estamos esperando o ônibus: estamos + espera- + -ndo. Esperar takes the bus directly, with no preposition.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós somos esperando o ônibus.",
+            "Somos esperando o ônibus."
+          ],
+          "why": "Ser never combines with the -ndo form. An action in progress takes estar."
+        }
+      ],
+      "row": "-ar"
+    },
+    {
+      "id": "ser-estar-gerund-7",
+      "pattern": "gerund",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Pedro está ____ português.",
+      "options": [
+        "estudando",
+        "estudo",
+        "estudar"
+      ],
+      "answers": [
+        "estudando"
+      ],
+      "hint": "After estar comes the -ndo form.",
+      "feedback": "Estar + gerúndio for an ongoing action.",
+      "explanation": "Pedro está estudando português: está + estuda- + -ndo.",
+      "mistakes": [
+        {
+          "answers": [
+            "estudo"
+          ],
+          "why": "Estudo is the eu present form. After está the verb takes the -ndo form."
+        },
+        {
+          "answers": [
+            "estudar"
+          ],
+          "why": "That is the infinitive. In Brazil an action in progress is estar + -ndo."
+        }
+      ],
+      "row": "-ar",
+      "gloss": [
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "português",
+          "en": "Portuguese",
+          "word": "school-029"
+        }
+      ]
+    }
+  ]
+}

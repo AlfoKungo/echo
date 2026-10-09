@@ -34,7 +34,7 @@ if (set === 'comprehension') {
     episode.lines.forEach((line, index) => clips.push({ id: `${episode.id}-${index + 1}`, text: line.fr }));
   }
 } else {
-  const course = await loadCourse(join(root, 'content/grammar'));
+  const course = await loadCourse(join(language.content, 'grammar'), language.textKey);
   for (const topic of course.topics) {
     for (const exercise of topic.exercises) clips.push({ id: exercise.id, text: grammarSpeech(exercise) });
   }

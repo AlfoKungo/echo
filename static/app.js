@@ -1443,7 +1443,9 @@ function renderGrammar() {
   const switcher = `<div class="segmented gr-by" role="group" aria-label="Show topics">${[['unit', 'By unit'], ['level', 'By level']].map(([value, label]) => `<button data-action="grammar-by" data-value="${value}" aria-pressed="${grammarBy === value}">${label}</button>`).join('')}</div>`;
   const legend = '<div class="gr-legend"><span><i class="own"></i>on your own</span><span><i class="rev"></i>to revisit</span><span><i></i>not yet</span></div>';
   const writeRow = roomsOff.has('write') ? '' : grammarRowHTML('data-action="write"', '<span>✎</span>', 'Write it', `<small>Write a short sentence in ${languageEnglish} with the grammar you are learning; Claude checks it</small>`);
-  const building = `<p class="study-label">Also</p><div class="gr-box">${writeRow}${grammarRowHTML('data-action="word-building"', '<span>-er</span><span>-eur</span>', 'Word building', '<small>Endings and prefixes that turn one word into another; also in Your words</small>')}</div>`;
+  // Word building is French's (content/families.json), shown with the Word families room.
+  const buildingRow = roomsOff.has('families') ? '' : grammarRowHTML('data-action="word-building"', '<span>-er</span><span>-eur</span>', 'Word building', '<small>Endings and prefixes that turn one word into another; also in Your words</small>');
+  const building = writeRow || buildingRow ? `<p class="study-label">Also</p><div class="gr-box">${writeRow}${buildingRow}</div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="topics grammar">${header}${resume}${nextCard}${switcher}${grammarBy === 'unit' ? units.map(unitCard).join('') : byLevel}${legend}${building}</section>`;
 }
 // ── Write it: an English sentence to write in French, from your words and a grammar topic you have started.

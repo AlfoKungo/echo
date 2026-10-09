@@ -1,0 +1,2179 @@
+{
+  "id": "perfect-tense",
+  "unit": "verbs",
+  "level": "A2",
+  "title": "Har with the supine",
+  "description": "Say what you have done in Swedish: har plus the supine, and when to use it instead of the past.",
+  "mark": "har ätit",
+  "guide": {
+    "summary": "The Swedish perfect is har plus a special verb form called the supine: jag har ätit, I have eaten. Har never changes, the supine follows the verb group, inte and words like redan and aldrig go right after har, and a fixed past time such as igår takes the simple past instead.",
+    "sections": [
+      {
+        "id": "form",
+        "title": "Har plus the supine",
+        "text": "The perfect has two parts: har, the present of ha, and the supine of the main verb. Har is the same for every person, just like every Swedish present form. Swedish never uses är as a helper here, even for gå or komma.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Perfect of skriva",
+            "English"
+          ],
+          "rows": [
+            [
+              "jag",
+              "jag har skrivit",
+              "I have written"
+            ],
+            [
+              "du",
+              "du har skrivit",
+              "you have written"
+            ],
+            [
+              "han, hon",
+              "hon har skrivit",
+              "she has written"
+            ],
+            [
+              "vi",
+              "vi har skrivit",
+              "we have written"
+            ],
+            [
+              "ni",
+              "ni har skrivit",
+              "you have written (plural)"
+            ],
+            [
+              "de",
+              "de har skrivit",
+              "they have written"
+            ]
+          ]
+        },
+        "steps": [
+          "Write har, whatever the subject.",
+          "Find the verb's supine: the third form in the deck note (skriver, skrev, skrivit).",
+          "Put the supine after har, and the rest of the sentence after it."
+        ],
+        "examples": [
+          {
+            "sv": "Vi har köpt en ny bil.",
+            "en": "We have bought a new car."
+          },
+          {
+            "sv": "Hon har kommit hem.",
+            "en": "She has come home."
+          }
+        ],
+        "watch": [
+          "Never är: Hon har kommit, not Hon är kommit.",
+          "Har is the same for everyone: de har, not a plural form.",
+          "The supine is not the past: har skrev is wrong, har skrivit is right."
+        ]
+      },
+      {
+        "id": "weak-supine",
+        "title": "Supines of regular verbs: -at, -t, -tt",
+        "text": "Regular verbs build the supine from their past form. Take the past, drop -de, -te or -dde, and add the matching ending. The deck note always shows the supine as its third form.",
+        "table": {
+          "columns": [
+            "Group",
+            "Example",
+            "Past",
+            "Supine"
+          ],
+          "rows": [
+            [
+              "-ar verbs",
+              "prata (pratar)",
+              "pratade",
+              "pratat"
+            ],
+            [
+              "-er verbs",
+              "stänga (stänger)",
+              "stängde",
+              "stängt"
+            ],
+            [
+              "-er verbs after k, p, s, t",
+              "köpa (köper)",
+              "köpte",
+              "köpt"
+            ],
+            [
+              "short verbs",
+              "bo (bor)",
+              "bodde",
+              "bott"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the present: -ar, -er, or a short verb ending in a vowel plus -r.",
+          "An -ar verb ends in -at: pratat, jobbat, städat.",
+          "An -er verb ends in -t: stängt, köpt, ringt.",
+          "A short verb ends in -tt: bott, trott."
+        ],
+        "examples": [
+          {
+            "sv": "Jag har jobbat hela dagen.",
+            "en": "I have worked all day."
+          },
+          {
+            "sv": "Vi har bott här länge.",
+            "en": "We have lived here for a long time."
+          }
+        ],
+        "watch": [
+          "The supine ends in -t, never -d: har stängt, not har stängd. Stängd is the adjective, as in dörren är stängd.",
+          "Ringa, köra and höra are -er verbs: ringt, kört, hört, not ringat."
+        ]
+      },
+      {
+        "id": "strong-supine",
+        "title": "Strong and irregular supines",
+        "text": "Strong verbs change their vowel in the past and end in -it in the supine, often with yet another vowel. A handful of everyday verbs are irregular. Learn these with the verb: the deck note gives all three forms.",
+        "table": {
+          "columns": [
+            "Verb",
+            "Past",
+            "Supine"
+          ],
+          "rows": [
+            [
+              "äta",
+              "åt",
+              "ätit"
+            ],
+            [
+              "dricka",
+              "drack",
+              "druckit"
+            ],
+            [
+              "skriva",
+              "skrev",
+              "skrivit"
+            ],
+            [
+              "sova",
+              "sov",
+              "sovit"
+            ],
+            [
+              "komma",
+              "kom",
+              "kommit"
+            ],
+            [
+              "ta",
+              "tog",
+              "tagit"
+            ],
+            [
+              "vara",
+              "var",
+              "varit"
+            ],
+            [
+              "ha",
+              "hade",
+              "haft"
+            ],
+            [
+              "göra",
+              "gjorde",
+              "gjort"
+            ],
+            [
+              "gå",
+              "gick",
+              "gått"
+            ],
+            [
+              "se",
+              "såg",
+              "sett"
+            ],
+            [
+              "få",
+              "fick",
+              "fått"
+            ]
+          ]
+        },
+        "steps": [
+          "If the past changes the vowel (åt, drack, skrev), expect a supine in -it.",
+          "Check the vowel in the deck note: dricka gives druckit, not drickit.",
+          "Short irregular verbs end in -tt or -t: gått, sett, fått, gjort, haft."
+        ],
+        "examples": [
+          {
+            "sv": "Jag har varit sjuk.",
+            "en": "I have been ill."
+          },
+          {
+            "sv": "Har du sett filmen?",
+            "en": "Have you seen the film?"
+          }
+        ],
+        "watch": [
+          "Ha takes its own supine: jag har haft, I have had.",
+          "In speech you hear har vart; write har varit.",
+          "Gjort and gått have no -it, even though göra and gå are irregular."
+        ]
+      },
+      {
+        "id": "negation",
+        "title": "Inte goes after har",
+        "text": "In a main clause the first verb comes second, and inte follows that first verb. In the perfect the first verb is har, so inte sits between har and the supine.",
+        "table": {
+          "columns": [
+            "Sentence",
+            "Swedish",
+            "English"
+          ],
+          "rows": [
+            [
+              "statement",
+              "Jag har ätit.",
+              "I have eaten."
+            ],
+            [
+              "negative",
+              "Jag har inte ätit.",
+              "I have not eaten."
+            ],
+            [
+              "question",
+              "Har du inte ätit?",
+              "Have you not eaten?"
+            ]
+          ]
+        },
+        "steps": [
+          "Find har, the verb in second place.",
+          "Put inte straight after it.",
+          "Finish with the supine and the rest of the sentence."
+        ],
+        "examples": [
+          {
+            "sv": "Vi har inte städat lägenheten.",
+            "en": "We have not tidied the flat."
+          },
+          {
+            "sv": "De har inte kommit hem.",
+            "en": "They have not come home."
+          }
+        ],
+        "watch": [
+          "Jag inte har ätit is the order of a subordinate clause; in a main clause inte follows har.",
+          "Inte never goes at the end: Jag har ätit inte is wrong."
+        ]
+      },
+      {
+        "id": "adverbs",
+        "title": "Just, redan, aldrig, någonsin",
+        "text": "Small adverbs about time sit in the same slot as inte: right after har, before the supine. English puts them in the same place, so I have already eaten maps straight onto jag har redan ätit.",
+        "table": {
+          "columns": [
+            "Adverb",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "just",
+              "just (a moment ago)",
+              "Hon har just kommit."
+            ],
+            [
+              "redan",
+              "already",
+              "Vi har redan ätit."
+            ],
+            [
+              "aldrig",
+              "never",
+              "Jag har aldrig varit i Japan."
+            ],
+            [
+              "någonsin",
+              "ever (in questions)",
+              "Har du någonsin sett snö?"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the subject and har.",
+          "Put the adverb directly after har; in a question, after the subject: Har du någonsin.",
+          "Then the supine."
+        ],
+        "examples": [
+          {
+            "sv": "Jag har redan köpt biljetterna.",
+            "en": "I have already bought the tickets."
+          },
+          {
+            "sv": "Har du någonsin varit i Norge?",
+            "en": "Have you ever been to Norway?"
+          }
+        ],
+        "watch": [
+          "Not before har: Vi aldrig har sett snö is wrong.",
+          "Någonsin is for questions; in a statement say aldrig."
+        ]
+      },
+      {
+        "id": "usage",
+        "title": "Perfect or past?",
+        "text": "Use the perfect when no finished time is named: experiences in your life, and results that matter now. As soon as the sentence names a finished time, igår, förra veckan, klockan tolv, use the simple past, the preteritum. This matches English: I have seen it, but I saw it yesterday.",
+        "table": {
+          "columns": [
+            "Situation",
+            "Tense",
+            "Example"
+          ],
+          "rows": [
+            [
+              "experience, no time named",
+              "perfekt",
+              "Har du varit i Norge?"
+            ],
+            [
+              "result that matters now",
+              "perfekt",
+              "Jag har köpt en bil."
+            ],
+            [
+              "still going on",
+              "perfekt",
+              "Vi har bott här länge."
+            ],
+            [
+              "finished time named",
+              "preteritum",
+              "Igår köpte jag en bil."
+            ]
+          ]
+        },
+        "steps": [
+          "Look for a finished time: igår, förra året, i somras, klockan tolv.",
+          "If there is one, use the past: åt, köpte, var.",
+          "If there is none and you mean ever, so far or now, use har plus the supine."
+        ],
+        "examples": [
+          {
+            "sv": "Igår åt jag pizza.",
+            "en": "Yesterday I ate pizza."
+          },
+          {
+            "sv": "Jag har aldrig ätit pizza här.",
+            "en": "I have never eaten pizza here."
+          }
+        ],
+        "watch": [
+          "Jag har köpt en bil igår is wrong, just as I have bought a car yesterday is.",
+          "Igår first means the verb comes next: Igår köpte jag, not Igår jag köpte."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "har-supine": {
+      "section": "form",
+      "steps": [
+        "Write har for every subject.",
+        "Add the supine, the third form in the deck note.",
+        "Never use är or the past form after har."
+      ]
+    },
+    "weak-supine": {
+      "section": "weak-supine",
+      "steps": [
+        "Find the group from the present: -ar, -er or a short verb.",
+        "-ar gives -at, -er gives -t, a short verb gives -tt.",
+        "Keep the -t: the supine never ends in -d."
+      ]
+    },
+    "strong-supine": {
+      "section": "strong-supine",
+      "steps": [
+        "A vowel change in the past points to a supine in -it.",
+        "Check the supine vowel in the deck note.",
+        "Learn the irregular ones: varit, haft, gjort, gått, sett, fått."
+      ]
+    },
+    "negation": {
+      "section": "negation",
+      "steps": [
+        "Find har in second place.",
+        "Put inte right after har.",
+        "Then the supine."
+      ]
+    },
+    "adverb-place": {
+      "section": "adverbs",
+      "steps": [
+        "Put just, redan, aldrig or någonsin right after har.",
+        "In a question, put the adverb after the subject: Har du någonsin.",
+        "Use någonsin in questions and aldrig in statements."
+      ]
+    },
+    "perfect-or-past": {
+      "section": "usage",
+      "steps": [
+        "Look for a finished time such as igår or förra veckan.",
+        "A named finished time takes the past.",
+        "No time named, and you mean ever or a result now: use har plus the supine."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "perfect-tense-har-supine-1",
+      "pattern": "har-supine",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "skriva · jag · perfekt",
+      "answers": [
+        "har skrivit",
+        "jag har skrivit"
+      ],
+      "hint": "Har plus the third form of skriver, skrev, …",
+      "feedback": "The perfect is har plus the supine.",
+      "explanation": "Jag har skrivit: har, then the supine skrivit.",
+      "mistakes": [
+        {
+          "answers": [
+            "har skrev",
+            "jag har skrev"
+          ],
+          "why": "Skrev is the simple past. After har the verb takes its supine, the third form in the deck note."
+        },
+        {
+          "answers": [
+            "har skrivat",
+            "jag har skrivat"
+          ],
+          "why": "Skriva is a strong verb, so its supine does not take the -at of regular -ar verbs."
+        },
+        {
+          "answers": [
+            "skrev",
+            "jag skrev"
+          ],
+          "why": "That is the simple past, I wrote. The perfect needs har as well."
+        }
+      ],
+      "row": "jag"
+    },
+    {
+      "id": "perfect-tense-har-supine-2",
+      "pattern": "har-supine",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "prata · vi · perfekt",
+      "answers": [
+        "har pratat",
+        "vi har pratat"
+      ],
+      "hint": "Har does not change for vi. Prata is an -ar verb.",
+      "feedback": "Har plus the -at supine.",
+      "explanation": "Vi har pratat: har is the same for every subject, and an -ar verb ends in -at.",
+      "mistakes": [
+        {
+          "answers": [
+            "har pratade",
+            "vi har pratade"
+          ],
+          "why": "Pratade is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "är pratat",
+            "vi är pratat"
+          ],
+          "why": "Swedish builds the perfect with har only, never with är."
+        },
+        {
+          "answers": [
+            "pratade",
+            "vi pratade"
+          ],
+          "why": "That is the simple past, we talked. The perfect needs har in front of the supine."
+        }
+      ],
+      "row": "vi"
+    },
+    {
+      "id": "perfect-tense-har-supine-3",
+      "pattern": "har-supine",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Hon ____ läst boken.",
+      "options": [
+        "har",
+        "är",
+        "haft"
+      ],
+      "answers": [
+        "har"
+      ],
+      "hint": "Which word helps every Swedish perfect?",
+      "feedback": "The perfect always uses har.",
+      "explanation": "Hon har läst boken: har plus the supine läst.",
+      "mistakes": [
+        {
+          "answers": [
+            "är"
+          ],
+          "why": "Swedish never builds the perfect with är, unlike French or German with some verbs."
+        },
+        {
+          "answers": [
+            "haft"
+          ],
+          "why": "Haft is the supine of ha, had. The helper here has to be the present form."
+        }
+      ],
+      "row": "han, hon",
+      "gloss": [
+        {
+          "sv": "läst",
+          "en": "read (läsa)",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "boken",
+          "en": "the book",
+          "word": "school-028"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-har-supine-4",
+      "pattern": "har-supine",
+      "type": "complete",
+      "instruction": "Write the helper verb.",
+      "source": "Vi ____ köpt en ny bil.",
+      "answers": [
+        "har"
+      ],
+      "hint": "The helper is the present of ha, the same for every person.",
+      "feedback": "Har plus the supine köpt.",
+      "explanation": "Vi har köpt en ny bil: har does not change for vi.",
+      "mistakes": [
+        {
+          "answers": [
+            "är"
+          ],
+          "why": "Swedish never uses är as the helper of the perfect."
+        },
+        {
+          "answers": [
+            "haft"
+          ],
+          "why": "Haft is the supine of ha. The helper must be its present form."
+        },
+        {
+          "answers": [
+            "ha"
+          ],
+          "why": "Ha is the infinitive. After vi the verb needs its present form."
+        }
+      ],
+      "row": "vi",
+      "gloss": [
+        {
+          "sv": "köpt",
+          "en": "bought (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "ny",
+          "en": "new"
+        },
+        {
+          "sv": "bil",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-har-supine-5",
+      "pattern": "har-supine",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "They have eaten lunch.",
+      "tokens": [
+        "är",
+        "De",
+        "ätit",
+        "har",
+        "lunch."
+      ],
+      "answers": [
+        "De har ätit lunch."
+      ],
+      "hint": "Subject, har, supine, then the object.",
+      "feedback": "One tile is a helper Swedish never uses in the perfect.",
+      "explanation": "De har ätit lunch: har plus the supine ätit.",
+      "mistakes": [
+        {
+          "answers": [
+            "De är ätit lunch."
+          ],
+          "why": "Swedish builds every perfect with har; är cannot help another verb this way."
+        }
+      ],
+      "row": "de"
+    },
+    {
+      "id": "perfect-tense-har-supine-6",
+      "pattern": "har-supine",
+      "type": "rewrite",
+      "instruction": "Change jag to de.",
+      "source": "Jag har städat rummet.",
+      "answers": [
+        "De har städat rummet."
+      ],
+      "hint": "Only the subject changes.",
+      "feedback": "Har is the same for every person.",
+      "explanation": "De har städat rummet: Swedish verbs never change for person, so har stays.",
+      "mistakes": [
+        {
+          "answers": [
+            "De har städade rummet."
+          ],
+          "why": "Städade is the simple past. The supine after har stays as it was."
+        },
+        {
+          "answers": [
+            "De hade städat rummet."
+          ],
+          "why": "Hade makes it had tidied, a different tense. Only the subject was meant to change."
+        }
+      ],
+      "row": "de",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "städat",
+          "en": "tidied (städa)",
+          "word": "verbs-093"
+        },
+        {
+          "sv": "rummet",
+          "en": "the room",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-har-supine-7",
+      "pattern": "har-supine",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "She has called her mum.",
+      "answers": [
+        "Hon har ringt sin mamma.",
+        "Hon har ringt till sin mamma."
+      ],
+      "hint": "Har plus the supine of ringa, an -er verb. Her own mum is sin.",
+      "feedback": "Ringa gives ringt.",
+      "explanation": "Hon har ringt sin mamma: har, the supine ringt, and sin because the mum is her own. Ringt till sin mamma is also fine.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon har ringde sin mamma."
+          ],
+          "why": "Ringde is the simple past. After har the verb takes its supine."
+        },
+        {
+          "answers": [
+            "Hon har ringat sin mamma."
+          ],
+          "why": "Ringa is an -er verb (ringer), so its supine has no -a- before the -t."
+        },
+        {
+          "answers": [
+            "Hon har ringt hennes mamma."
+          ],
+          "why": "Hennes would mean another woman's mum. Her own mum after the subject hon is sin."
+        }
+      ],
+      "row": "han, hon"
+    },
+    {
+      "id": "perfect-tense-weak-supine-1",
+      "pattern": "weak-supine",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "bo · ni · perfekt",
+      "answers": [
+        "har bott",
+        "ni har bott"
+      ],
+      "hint": "Bo is a short verb: bor, bodde, …",
+      "feedback": "Short verbs end in -tt.",
+      "explanation": "Ni har bott: bo is a short verb, so the supine ends in double t.",
+      "mistakes": [
+        {
+          "answers": [
+            "har bodd",
+            "ni har bodd"
+          ],
+          "why": "The supine never ends in -d. Short verbs double the t instead."
+        },
+        {
+          "answers": [
+            "har bodde",
+            "ni har bodde"
+          ],
+          "why": "Bodde is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "har bot",
+            "ni har bot"
+          ],
+          "why": "Short verbs double the t in the supine; one t is not enough."
+        }
+      ],
+      "row": "short verbs"
+    },
+    {
+      "id": "perfect-tense-weak-supine-2",
+      "pattern": "weak-supine",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "stänga · hon · perfekt",
+      "answers": [
+        "har stängt",
+        "hon har stängt"
+      ],
+      "hint": "Stänga is an -er verb: stänger, stängde, …",
+      "feedback": "-er verbs end in -t.",
+      "explanation": "Hon har stängt: stängde loses -de and takes -t.",
+      "mistakes": [
+        {
+          "answers": [
+            "har stängd",
+            "hon har stängd"
+          ],
+          "why": "Stängd is the adjective, as in dörren är stängd. After har the form ends in -t."
+        },
+        {
+          "answers": [
+            "har stängat",
+            "hon har stängat"
+          ],
+          "why": "Stänga is an -er verb (stänger), not an -ar verb, so no -at."
+        },
+        {
+          "answers": [
+            "har stängde",
+            "hon har stängde"
+          ],
+          "why": "Stängde is the simple past. After har you need the supine."
+        }
+      ],
+      "row": "-er verbs"
+    },
+    {
+      "id": "perfect-tense-weak-supine-3",
+      "pattern": "weak-supine",
+      "type": "complete",
+      "instruction": "Write köpa in the supine.",
+      "source": "Jag har ____ (köpa) kaffe.",
+      "answers": [
+        "köpt"
+      ],
+      "hint": "Köper, köpte, …",
+      "feedback": "Köpte loses -te and takes -t.",
+      "explanation": "Jag har köpt kaffe: köpa is an -er verb, supine köpt.",
+      "mistakes": [
+        {
+          "answers": [
+            "köpte"
+          ],
+          "why": "Köpte is the simple past. After har the verb takes its supine."
+        },
+        {
+          "answers": [
+            "köpat"
+          ],
+          "why": "Köpa is an -er verb (köper), so it does not take the -at of -ar verbs."
+        },
+        {
+          "answers": [
+            "köpit"
+          ],
+          "why": "-it belongs to strong verbs that change their vowel. Köpa is regular."
+        }
+      ],
+      "row": "-er verbs after k, p, s, t",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "köpa",
+          "en": "to buy",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-weak-supine-4",
+      "pattern": "weak-supine",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Vi har ____ här länge.",
+      "options": [
+        "bott",
+        "bodde",
+        "bodd"
+      ],
+      "answers": [
+        "bott"
+      ],
+      "hint": "Bo is a short verb.",
+      "feedback": "Short verbs take -tt in the supine.",
+      "explanation": "Vi har bott här länge: we have lived here for a long time, and still do.",
+      "mistakes": [
+        {
+          "answers": [
+            "bodde"
+          ],
+          "why": "Bodde is the simple past. After har the verb takes its supine."
+        },
+        {
+          "answers": [
+            "bodd"
+          ],
+          "why": "The supine never ends in -d; a short verb doubles the t."
+        }
+      ],
+      "row": "short verbs",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "länge",
+          "en": "for a long time"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-weak-supine-5",
+      "pattern": "weak-supine",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Han har jobbad hela dagen.",
+      "answers": [
+        "Han har jobbat hela dagen."
+      ],
+      "hint": "The supine never ends in -d.",
+      "feedback": "Jobba is an -ar verb: jobbat.",
+      "explanation": "Han har jobbat hela dagen: -ar verbs take -at after har.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han har jobbad hela dagen."
+          ],
+          "why": "That is the sentence unchanged. A form ending in -d is an adjective, not the form that follows har."
+        },
+        {
+          "answers": [
+            "Han har jobbade hela dagen."
+          ],
+          "why": "Jobbade is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "Han jobbat hela dagen."
+          ],
+          "why": "The supine cannot stand alone in a main clause; keep har."
+        }
+      ],
+      "row": "-ar verbs",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "jobbad",
+          "en": "worked (jobba)",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "hela dagen",
+          "en": "all day"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-weak-supine-6",
+      "pattern": "weak-supine",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I have called Erik.",
+      "answers": [
+        "Jag har ringt Erik.",
+        "Jag har ringt till Erik."
+      ],
+      "hint": "Ringa is an -er verb: ringer, ringde, …",
+      "feedback": "Ringa gives ringt.",
+      "explanation": "Jag har ringt Erik: ringde loses -de and takes -t. Ringt till Erik is also fine.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har ringat Erik."
+          ],
+          "why": "Ringa is an -er verb (ringer), so it does not take the -at of -ar verbs."
+        },
+        {
+          "answers": [
+            "Jag har ringde Erik."
+          ],
+          "why": "Ringde is the simple past. After har the verb takes its supine."
+        },
+        {
+          "answers": [
+            "Jag ringde Erik."
+          ],
+          "why": "That is the simple past, I called. The English says I have called."
+        }
+      ],
+      "row": "-er verbs"
+    },
+    {
+      "id": "perfect-tense-weak-supine-7",
+      "pattern": "weak-supine",
+      "type": "rewrite",
+      "instruction": "Put the verb in the perfect.",
+      "source": "Vi pratar med Anna.",
+      "answers": [
+        "Vi har pratat med Anna."
+      ],
+      "hint": "Add har and change pratar to its supine.",
+      "feedback": "-ar verbs take -at.",
+      "explanation": "Vi har pratat med Anna: har, then pratat.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har pratar med Anna."
+          ],
+          "why": "Pratar is the present. After har the verb takes its supine."
+        },
+        {
+          "answers": [
+            "Vi har pratade med Anna."
+          ],
+          "why": "Pratade is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "Vi pratade med Anna."
+          ],
+          "why": "That is the simple past. The perfect needs har."
+        }
+      ],
+      "row": "-ar verbs",
+      "gloss": [
+        {
+          "sv": "pratar",
+          "en": "talk (prata)",
+          "word": "verbs-007"
+        },
+        {
+          "sv": "med",
+          "en": "with"
+        },
+        {
+          "sv": "Anna",
+          "en": "Anna (a name)"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-strong-supine-1",
+      "pattern": "strong-supine",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "dricka · du · perfekt",
+      "answers": [
+        "har druckit",
+        "du har druckit"
+      ],
+      "hint": "Dricker, drack, … The supine has a third vowel.",
+      "feedback": "Dricka is strong: druckit.",
+      "explanation": "Du har druckit: the vowel changes to u and the ending is -it.",
+      "mistakes": [
+        {
+          "answers": [
+            "har drack",
+            "du har drack"
+          ],
+          "why": "Drack is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "har drickit",
+            "du har drickit"
+          ],
+          "why": "The vowel changes in the supine as well: check the third form in the deck note."
+        },
+        {
+          "answers": [
+            "har druckat",
+            "du har druckat"
+          ],
+          "why": "Strong verbs end in -it in the supine; -at belongs to -ar verbs."
+        }
+      ],
+      "row": "dricka"
+    },
+    {
+      "id": "perfect-tense-strong-supine-2",
+      "pattern": "strong-supine",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "göra · vi · perfekt",
+      "answers": [
+        "har gjort",
+        "vi har gjort"
+      ],
+      "hint": "Gör, gjorde, … Irregular, and no -it.",
+      "feedback": "Göra gives gjort.",
+      "explanation": "Vi har gjort: göra is irregular, with gj- in the past and the supine.",
+      "mistakes": [
+        {
+          "answers": [
+            "har gjorde",
+            "vi har gjorde"
+          ],
+          "why": "Gjorde is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "har gjord",
+            "vi har gjord"
+          ],
+          "why": "Gjord is the adjective form, as in läxan är gjord. After har the form ends in -t."
+        },
+        {
+          "answers": [
+            "har gört",
+            "vi har gört"
+          ],
+          "why": "Göra keeps gj- in the supine, just as in the past."
+        }
+      ],
+      "row": "göra"
+    },
+    {
+      "id": "perfect-tense-strong-supine-3",
+      "pattern": "strong-supine",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "vara · de · perfekt",
+      "answers": [
+        "har varit",
+        "de har varit"
+      ],
+      "hint": "Är, var, …",
+      "feedback": "Vara gives varit.",
+      "explanation": "De har varit: the supine of vara ends in -it.",
+      "alternatives": [
+        {
+          "answer": "har vart",
+          "message": "Har vart is very common in speech, but write har varit."
+        },
+        {
+          "answer": "de har vart",
+          "message": "De har vart is very common in speech, but write de har varit."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "har var",
+            "de har var"
+          ],
+          "why": "Var is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "är varit",
+            "de är varit"
+          ],
+          "why": "Even vara takes har in the perfect, never är."
+        }
+      ],
+      "row": "vara"
+    },
+    {
+      "id": "perfect-tense-strong-supine-4",
+      "pattern": "strong-supine",
+      "type": "complete",
+      "instruction": "Write se in the supine.",
+      "source": "Har du ____ (se) filmen?",
+      "answers": [
+        "sett"
+      ],
+      "hint": "Ser, såg, … A short irregular verb.",
+      "feedback": "Se gives sett.",
+      "explanation": "Har du sett filmen? The supine of se ends in double t.",
+      "mistakes": [
+        {
+          "answers": [
+            "såg"
+          ],
+          "why": "Såg is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "set"
+          ],
+          "why": "The supine of se doubles the t."
+        },
+        {
+          "answers": [
+            "sedd"
+          ],
+          "why": "Sedd is the adjective form. After har the supine ends in -t."
+        }
+      ],
+      "row": "se",
+      "gloss": [
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "se",
+          "en": "to see",
+          "word": "verbs-010"
+        },
+        {
+          "sv": "filmen",
+          "en": "the film",
+          "word": "media-041"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-strong-supine-5",
+      "pattern": "strong-supine",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Lars har ____ ett långt mejl.",
+      "options": [
+        "skrivit",
+        "skrev",
+        "skrivat",
+        "skrivt"
+      ],
+      "answers": [
+        "skrivit"
+      ],
+      "hint": "Skriver, skrev, …",
+      "feedback": "Skriva is strong: -it.",
+      "explanation": "Lars har skrivit ett långt mejl: the strong supine skrivit.",
+      "mistakes": [
+        {
+          "answers": [
+            "skrev"
+          ],
+          "why": "Skrev is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "skrivat"
+          ],
+          "why": "-at belongs to -ar verbs. Skriva is strong and changes its vowel in the past."
+        },
+        {
+          "answers": [
+            "skrivt"
+          ],
+          "why": "-t alone belongs to regular -er verbs. Strong verbs end in -it."
+        }
+      ],
+      "row": "skriva",
+      "gloss": [
+        {
+          "sv": "Lars",
+          "en": "Lars (a name)"
+        },
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "långt",
+          "en": "long"
+        },
+        {
+          "sv": "mejl",
+          "en": "email",
+          "word": "media-004"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-strong-supine-6",
+      "pattern": "strong-supine",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Vi har ätat middag.",
+      "answers": [
+        "Vi har ätit middag."
+      ],
+      "hint": "Äta is strong: äter, åt, …",
+      "feedback": "Äta gives ätit.",
+      "explanation": "Vi har ätit middag: a strong verb takes -it in the supine.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har ätat middag."
+          ],
+          "why": "That is the sentence unchanged. -at belongs to -ar verbs, and äta is strong."
+        },
+        {
+          "answers": [
+            "Vi har åt middag."
+          ],
+          "why": "Åt is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "Vi har ätt middag."
+          ],
+          "why": "Äta is not a short verb; its supine ends in -it."
+        }
+      ],
+      "row": "äta",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ätat",
+          "en": "eaten (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "middag",
+          "en": "dinner",
+          "word": "food-047"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-strong-supine-7",
+      "pattern": "strong-supine",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I have been ill.",
+      "answers": [
+        "Jag har varit sjuk."
+      ],
+      "hint": "Har plus the supine of vara.",
+      "feedback": "Vara gives varit.",
+      "explanation": "Jag har varit sjuk: har, then varit.",
+      "alternatives": [
+        {
+          "answer": "Jag har vart sjuk.",
+          "message": "Har vart is common in speech, but write har varit."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har var sjuk."
+          ],
+          "why": "Var is the simple past. After har you need the supine."
+        },
+        {
+          "answers": [
+            "Jag är varit sjuk."
+          ],
+          "why": "Swedish builds the perfect with har, even for vara."
+        }
+      ],
+      "row": "vara"
+    },
+    {
+      "id": "perfect-tense-strong-supine-8",
+      "pattern": "strong-supine",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "He has taken the car.",
+      "tokens": [
+        "tog",
+        "Han",
+        "tagit",
+        "har",
+        "bilen."
+      ],
+      "answers": [
+        "Han har tagit bilen."
+      ],
+      "hint": "Tar, tog, … Which form goes after har?",
+      "feedback": "One verb tile is the simple past.",
+      "explanation": "Han har tagit bilen: ta is strong, supine tagit.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han har tog bilen."
+          ],
+          "why": "Tog is the simple past. After har you need the supine."
+        }
+      ],
+      "row": "ta"
+    },
+    {
+      "id": "perfect-tense-negation-1",
+      "pattern": "negation",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I have not eaten.",
+      "tokens": [
+        "inte",
+        "Jag",
+        "har",
+        "ätit."
+      ],
+      "answers": [
+        "Jag har inte ätit."
+      ],
+      "hint": "Inte follows the verb in second place.",
+      "feedback": "Inte goes between har and the supine.",
+      "explanation": "Jag har inte ätit: har is second, inte follows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag inte har ätit."
+          ],
+          "why": "That is subordinate-clause order. In a main clause inte follows the verb in second place."
+        }
+      ],
+      "row": "negative"
+    },
+    {
+      "id": "perfect-tense-negation-2",
+      "pattern": "negation",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Vi ____ sett filmen.",
+      "options": [
+        "har inte",
+        "inte har"
+      ],
+      "answers": [
+        "har inte"
+      ],
+      "hint": "Which verb is in second place?",
+      "feedback": "Inte follows har.",
+      "explanation": "Vi har inte sett filmen: har is second, inte comes right after it.",
+      "mistakes": [
+        {
+          "answers": [
+            "inte har"
+          ],
+          "why": "Inte before the verb is subordinate-clause order. In a main clause the verb comes second and inte follows it."
+        }
+      ],
+      "row": "negative",
+      "gloss": [
+        {
+          "sv": "sett",
+          "en": "seen (se)",
+          "word": "verbs-010"
+        },
+        {
+          "sv": "filmen",
+          "en": "the film",
+          "word": "media-041"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-negation-3",
+      "pattern": "negation",
+      "type": "rewrite",
+      "instruction": "Make the sentence negative.",
+      "source": "Hon har ringt.",
+      "answers": [
+        "Hon har inte ringt."
+      ],
+      "hint": "Find har and add inte after it.",
+      "feedback": "Inte sits between har and the supine.",
+      "explanation": "Hon har inte ringt: har, inte, then the supine.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon inte har ringt."
+          ],
+          "why": "Inte before the verb is subordinate-clause order, not a main clause."
+        },
+        {
+          "answers": [
+            "Hon har ringt inte."
+          ],
+          "why": "Inte does not go at the end; it follows the verb in second place."
+        }
+      ],
+      "row": "negative",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "ringt",
+          "en": "called (ringa)",
+          "word": "verbs-082"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-negation-4",
+      "pattern": "negation",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Jag inte har gjort läxan.",
+      "answers": [
+        "Jag har inte gjort läxan."
+      ],
+      "hint": "The verb comes second in a main clause.",
+      "feedback": "Move inte after har.",
+      "explanation": "Jag har inte gjort läxan: har second, inte after it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag inte har gjort läxan."
+          ],
+          "why": "That is the sentence unchanged. In a main clause inte follows the verb in second place."
+        },
+        {
+          "answers": [
+            "Jag har gjort inte läxan."
+          ],
+          "why": "Inte belongs before the supine, straight after har."
+        }
+      ],
+      "row": "negative",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "gjort",
+          "en": "done (göra)",
+          "word": "verbs-003"
+        },
+        {
+          "sv": "läxan",
+          "en": "the homework",
+          "word": "school-023"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-negation-5",
+      "pattern": "negation",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "We have not tidied the flat.",
+      "answers": [
+        "Vi har inte städat lägenheten."
+      ],
+      "hint": "Städa is an -ar verb. Inte follows har.",
+      "feedback": "Har, inte, then the supine.",
+      "explanation": "Vi har inte städat lägenheten: inte after har, and städat ends in -at.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi inte har städat lägenheten."
+          ],
+          "why": "In a main clause inte follows the verb in second place."
+        },
+        {
+          "answers": [
+            "Vi har inte städade lägenheten."
+          ],
+          "why": "Städade is the simple past. After har you need the supine."
+        }
+      ],
+      "row": "negative"
+    },
+    {
+      "id": "perfect-tense-negation-6",
+      "pattern": "negation",
+      "type": "complete",
+      "instruction": "Write the Swedish word for not.",
+      "source": "De har ____ kommit hem.",
+      "answers": [
+        "inte"
+      ],
+      "hint": "The word for not goes right after har.",
+      "feedback": "Inte sits between har and the supine.",
+      "explanation": "De har inte kommit hem: they have not come home.",
+      "mistakes": [
+        {
+          "answers": [
+            "ingen"
+          ],
+          "why": "Ingen means no or nobody before a noun. To deny a verb, Swedish uses another word."
+        },
+        {
+          "answers": [
+            "aldrig"
+          ],
+          "why": "Aldrig means never. The instruction asks for plain not."
+        }
+      ],
+      "row": "negative",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "kommit",
+          "en": "come (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "hem",
+          "en": "home"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-adverb-place-1",
+      "pattern": "adverb-place",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Filmen ____ börjat.",
+      "options": [
+        "har redan",
+        "redan har"
+      ],
+      "answers": [
+        "har redan"
+      ],
+      "hint": "Redan takes the same place as inte.",
+      "feedback": "Redan goes right after har.",
+      "explanation": "Filmen har redan börjat: the film has already started.",
+      "mistakes": [
+        {
+          "answers": [
+            "redan har"
+          ],
+          "why": "In a main clause the verb comes second, so nothing can stand between the subject and har."
+        }
+      ],
+      "row": "redan",
+      "gloss": [
+        {
+          "sv": "Filmen",
+          "en": "the film",
+          "word": "media-041"
+        },
+        {
+          "sv": "börjat",
+          "en": "started (börja)",
+          "word": "verbs-042"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-adverb-place-2",
+      "pattern": "adverb-place",
+      "type": "choose",
+      "instruction": "Choose the right word.",
+      "source": "Har du ____ varit i London?",
+      "options": [
+        "någonsin",
+        "igår",
+        "förra året"
+      ],
+      "answers": [
+        "någonsin"
+      ],
+      "hint": "The perfect does not go with a finished time.",
+      "feedback": "Någonsin, ever, fits the perfect.",
+      "explanation": "Har du någonsin varit i London? asks about any time in your life, so the perfect fits.",
+      "mistakes": [
+        {
+          "answers": [
+            "igår"
+          ],
+          "why": "Igår names a finished time, and a finished time takes the simple past, not har."
+        },
+        {
+          "answers": [
+            "förra året"
+          ],
+          "why": "Förra året is a finished time, which needs the simple past, not the perfect."
+        }
+      ],
+      "row": "någonsin",
+      "gloss": [
+        {
+          "sv": "Har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "varit",
+          "en": "been (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "London",
+          "en": "London"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-adverb-place-3",
+      "pattern": "adverb-place",
+      "type": "complete",
+      "instruction": "Write the Swedish word for never.",
+      "source": "Jag har ____ varit i Japan.",
+      "answers": [
+        "aldrig"
+      ],
+      "hint": "In a statement, never is one short word after har.",
+      "feedback": "Aldrig goes right after har.",
+      "explanation": "Jag har aldrig varit i Japan: aldrig in the slot of inte.",
+      "mistakes": [
+        {
+          "answers": [
+            "någonsin"
+          ],
+          "why": "Någonsin means ever and belongs in questions. The instruction asks for never."
+        },
+        {
+          "answers": [
+            "inte"
+          ],
+          "why": "Inte means not. The instruction asks for never."
+        }
+      ],
+      "row": "aldrig",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "varit",
+          "en": "been (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Japan",
+          "en": "Japan"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-adverb-place-4",
+      "pattern": "adverb-place",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "Have you ever been to Norway?",
+      "tokens": [
+        "Har",
+        "aldrig",
+        "du",
+        "någonsin",
+        "varit",
+        "i",
+        "Norge?"
+      ],
+      "answers": [
+        "Har du någonsin varit i Norge?"
+      ],
+      "hint": "Har first, then the subject, then ever.",
+      "feedback": "One tile means never.",
+      "explanation": "Har du någonsin varit i Norge? In a question the adverb follows the subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "Har du aldrig varit i Norge?"
+          ],
+          "why": "Aldrig means never: that asks have you never been. The English asks ever."
+        }
+      ],
+      "row": "någonsin"
+    },
+    {
+      "id": "perfect-tense-adverb-place-5",
+      "pattern": "adverb-place",
+      "type": "rewrite",
+      "instruction": "Add just (a moment ago).",
+      "source": "Hon har kommit hem.",
+      "answers": [
+        "Hon har just kommit hem."
+      ],
+      "hint": "Just takes the slot of inte.",
+      "feedback": "Just goes right after har.",
+      "explanation": "Hon har just kommit hem: she has just come home.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon just har kommit hem."
+          ],
+          "why": "Nothing can stand between the subject and the verb in second place."
+        },
+        {
+          "answers": [
+            "Hon har kommit hem just."
+          ],
+          "why": "Just belongs right after har, before the supine."
+        }
+      ],
+      "row": "just",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "kommit",
+          "en": "come (komma)",
+          "word": "verbs-005"
+        },
+        {
+          "sv": "hem",
+          "en": "home"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-adverb-place-6",
+      "pattern": "adverb-place",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Vi aldrig har sett snö.",
+      "answers": [
+        "Vi har aldrig sett snö."
+      ],
+      "hint": "The verb comes second.",
+      "feedback": "Aldrig follows har.",
+      "explanation": "Vi har aldrig sett snö: har second, aldrig after it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi aldrig har sett snö."
+          ],
+          "why": "That is the sentence unchanged. In a main clause nothing comes between the subject and har."
+        },
+        {
+          "answers": [
+            "Vi har sett aldrig snö."
+          ],
+          "why": "Aldrig belongs before the supine, straight after har."
+        }
+      ],
+      "row": "aldrig",
+      "gloss": [
+        {
+          "sv": "aldrig",
+          "en": "never",
+          "word": "essentials-101"
+        },
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "sett",
+          "en": "seen (se)",
+          "word": "verbs-010"
+        },
+        {
+          "sv": "snö",
+          "en": "snow"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-adverb-place-7",
+      "pattern": "adverb-place",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I have already bought the tickets.",
+      "answers": [
+        "Jag har redan köpt biljetterna."
+      ],
+      "hint": "Redan right after har. Köpa gives köpt.",
+      "feedback": "Har, redan, then the supine.",
+      "explanation": "Jag har redan köpt biljetterna: redan in the slot after har.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag redan har köpt biljetterna."
+          ],
+          "why": "In a main clause the verb comes second; the adverb follows it."
+        },
+        {
+          "answers": [
+            "Jag har köpt redan biljetterna."
+          ],
+          "why": "Redan goes before the supine, straight after har."
+        },
+        {
+          "answers": [
+            "Jag har redan köpte biljetterna."
+          ],
+          "why": "Köpte is the simple past. After har you need the supine."
+        }
+      ],
+      "row": "redan"
+    },
+    {
+      "id": "perfect-tense-perfect-or-past-1",
+      "pattern": "perfect-or-past",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Igår ____ jag pizza.",
+      "options": [
+        "åt",
+        "har ätit"
+      ],
+      "answers": [
+        "åt"
+      ],
+      "hint": "Igår names a finished time.",
+      "feedback": "A finished time takes the simple past.",
+      "explanation": "Igår åt jag pizza: yesterday is over, so preteritum.",
+      "mistakes": [
+        {
+          "answers": [
+            "har ätit"
+          ],
+          "why": "The perfect cannot go with a finished time such as igår, just as English cannot say I have eaten yesterday."
+        }
+      ],
+      "row": "finished time named",
+      "gloss": [
+        {
+          "sv": "Igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        },
+        {
+          "sv": "pizza",
+          "en": "pizza"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-perfect-or-past-2",
+      "pattern": "perfect-or-past",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Förra sommaren ____ vi i Italien.",
+      "options": [
+        "var",
+        "har varit"
+      ],
+      "answers": [
+        "var"
+      ],
+      "hint": "Is a finished time named?",
+      "feedback": "Last summer is over: simple past.",
+      "explanation": "Förra sommaren var vi i Italien: a named finished time takes preteritum.",
+      "mistakes": [
+        {
+          "answers": [
+            "har varit"
+          ],
+          "why": "Förra sommaren is a finished time, and the perfect never goes with one."
+        }
+      ],
+      "row": "finished time named",
+      "gloss": [
+        {
+          "sv": "Förra sommaren",
+          "en": "last summer"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Italien",
+          "en": "Italy"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-perfect-or-past-3",
+      "pattern": "perfect-or-past",
+      "type": "complete",
+      "instruction": "Write äta in the right tense.",
+      "source": "Jag ____ (äta) lunch klockan tolv.",
+      "answers": [
+        "åt"
+      ],
+      "hint": "Klockan tolv is a fixed point in the past.",
+      "feedback": "A fixed time takes the simple past.",
+      "explanation": "Jag åt lunch klockan tolv: a named time, so preteritum.",
+      "mistakes": [
+        {
+          "answers": [
+            "har ätit"
+          ],
+          "why": "Klockan tolv pins the meal to a finished time, and the perfect does not go with one."
+        },
+        {
+          "answers": [
+            "äter"
+          ],
+          "why": "Äter is the present. The meal is over."
+        }
+      ],
+      "row": "finished time named",
+      "gloss": [
+        {
+          "sv": "äta",
+          "en": "to eat",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "lunch",
+          "en": "lunch",
+          "word": "food-046"
+        },
+        {
+          "sv": "klockan tolv",
+          "en": "at twelve o'clock"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-perfect-or-past-4",
+      "pattern": "perfect-or-past",
+      "type": "complete",
+      "instruction": "Write vara in the right tense.",
+      "source": "Jag ____ (vara) i Norge många gånger.",
+      "answers": [
+        "har varit"
+      ],
+      "hint": "No time is named: this is life experience.",
+      "feedback": "Experience with no time named takes the perfect.",
+      "explanation": "Jag har varit i Norge många gånger: many times so far in my life.",
+      "alternatives": [
+        {
+          "answer": "har vart",
+          "message": "Har vart is common in speech, but write har varit."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "var"
+          ],
+          "why": "The simple past needs a finished time. Here the speaker counts visits up to now."
+        },
+        {
+          "answers": [
+            "har var"
+          ],
+          "why": "Var is the simple past. After har you need the supine."
+        }
+      ],
+      "row": "experience, no time named",
+      "gloss": [
+        {
+          "sv": "vara",
+          "en": "to be",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Norge",
+          "en": "Norway"
+        },
+        {
+          "sv": "många",
+          "en": "many",
+          "word": "essentials-048"
+        },
+        {
+          "sv": "gånger",
+          "en": "times",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "perfect-tense-perfect-or-past-5",
+      "pattern": "perfect-or-past",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I bought a car yesterday.",
+      "answers": [
+        "Jag köpte en bil igår.",
+        "Igår köpte jag en bil.",
+        "Jag köpte en bil i går.",
+        "I går köpte jag en bil."
+      ],
+      "hint": "Yesterday is a finished time.",
+      "feedback": "Simple past with igår.",
+      "explanation": "Jag köpte en bil igår: a named finished time takes preteritum. Igår can also start the sentence: Igår köpte jag en bil.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har köpt en bil igår."
+          ],
+          "why": "The perfect does not go with a finished time such as igår."
+        },
+        {
+          "answers": [
+            "Igår jag köpte en bil."
+          ],
+          "why": "When igår starts the sentence, the verb must still come second, before the subject."
+        }
+      ],
+      "row": "finished time named"
+    },
+    {
+      "id": "perfect-tense-perfect-or-past-6",
+      "pattern": "perfect-or-past",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Have you seen the film?",
+      "answers": [
+        "Har du sett filmen?"
+      ],
+      "hint": "No time named: har plus the supine of se.",
+      "feedback": "A question about experience takes the perfect.",
+      "explanation": "Har du sett filmen? No time is named, so the perfect.",
+      "mistakes": [
+        {
+          "answers": [
+            "Såg du filmen?"
+          ],
+          "why": "That asks about one particular showing, did you see it then. The English asks whether you have seen it at all."
+        },
+        {
+          "answers": [
+            "Har du såg filmen?"
+          ],
+          "why": "Såg is the simple past. After har you need the supine."
+        }
+      ],
+      "row": "experience, no time named"
+    },
+    {
+      "id": "perfect-tense-perfect-or-past-7",
+      "pattern": "perfect-or-past",
+      "type": "repair",
+      "instruction": "Fix the tense.",
+      "source": "Jag har träffat Anna igår.",
+      "answers": [
+        "Jag träffade Anna igår.",
+        "Igår träffade jag Anna.",
+        "Jag träffade Anna i går.",
+        "I går träffade jag Anna."
+      ],
+      "hint": "Igår names a finished time.",
+      "feedback": "Use the simple past with igår.",
+      "explanation": "Jag träffade Anna igår: a finished time takes preteritum.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har träffat Anna igår."
+          ],
+          "why": "That is the sentence unchanged. The perfect cannot go with igår."
+        },
+        {
+          "answers": [
+            "Jag har träffade Anna igår."
+          ],
+          "why": "Har with a past form is never right, and igår needs the simple past alone."
+        }
+      ],
+      "row": "finished time named",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "träffat",
+          "en": "met (träffa)",
+          "word": "verbs-083"
+        },
+        {
+          "sv": "Anna",
+          "en": "Anna (a name)"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    }
+  ]
+}

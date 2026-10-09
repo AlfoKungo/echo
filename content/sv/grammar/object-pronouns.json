@@ -1,0 +1,2074 @@
+{
+  "id": "object-pronouns",
+  "unit": "sentences",
+  "level": "A1",
+  "title": "Him, her, it and them",
+  "description": "Say me, him, her, it and them with the right Swedish form, and put it in the right place.",
+  "mark": "honom · henne · dem",
+  "guide": {
+    "summary": "Swedish pronouns change form when they are the object: after the verb, after a preposition, or pointing back to the subject. Learn the nine object forms, sig, and where the pronoun stands, and you can say him, her, it and them.",
+    "sections": [
+      {
+        "id": "person-forms",
+        "title": "Me, you, him, her, us",
+        "text": "A pronoun that does the action is the subject: jag, du, han, hon. A pronoun the action is done to is the object, and most of them change. Three are written one way and said another: mig, dig and dem sound like mej, dej and dom. You will see the spoken spellings in chat, but write mig, dig and dem.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Object",
+            "Said",
+            "English"
+          ],
+          "rows": [
+            [
+              "jag",
+              "mig",
+              "mej",
+              "me"
+            ],
+            [
+              "du",
+              "dig",
+              "dej",
+              "you (one person)"
+            ],
+            [
+              "han",
+              "honom",
+              "honom",
+              "him"
+            ],
+            [
+              "hon",
+              "henne",
+              "henne",
+              "her"
+            ],
+            [
+              "den",
+              "den",
+              "den",
+              "it (en-word)"
+            ],
+            [
+              "det",
+              "det",
+              "det",
+              "it (ett-word)"
+            ],
+            [
+              "vi",
+              "oss",
+              "oss",
+              "us"
+            ],
+            [
+              "ni",
+              "er",
+              "er",
+              "you (several people)"
+            ],
+            [
+              "de",
+              "dem",
+              "dom",
+              "them"
+            ]
+          ]
+        },
+        "steps": [
+          "Ask who does the action: that is the subject, in the subject form.",
+          "Is the pronoun the one the action is done to? Take the object column.",
+          "Write mig, dig and dem, even though you say mej, dej and dom."
+        ],
+        "examples": [
+          {
+            "sv": "Jag älskar henne.",
+            "en": "I love her."
+          },
+          {
+            "sv": "Ser du mig?",
+            "en": "Can you see me?"
+          },
+          {
+            "sv": "Hon ringer oss.",
+            "en": "She calls us."
+          }
+        ],
+        "watch": [
+          "Hennes, hans, min and din are possessives, before a thing owned: hennes bil. Alone after a verb you need the object form.",
+          "Ni and er are both plural you: ni does the action, er receives it."
+        ]
+      },
+      {
+        "id": "it-den-det",
+        "title": "It: den or det",
+        "text": "When it replaces a thing, it takes the gender of the noun it replaces. An en-word becomes den, an ett-word becomes det. They look the same as subject and object.",
+        "steps": [
+          "Find the noun that it stands for.",
+          "Is it en or ett? En gives den, ett gives det.",
+          "A definite form tells you: -en or -n means en, -et or -t means ett."
+        ],
+        "examples": [
+          {
+            "sv": "Var är nyckeln? Jag hittar den inte.",
+            "en": "Where is the key? I cannot find it."
+          },
+          {
+            "sv": "Huset är gammalt. Vi säljer det.",
+            "en": "The house is old. We are selling it."
+          }
+        ],
+        "watch": [
+          "A thing is never honom or henne, even when English might say she for a car.",
+          "Several things are dem, whatever their gender."
+        ]
+      },
+      {
+        "id": "they-de-dem",
+        "title": "They and them: de or dem",
+        "text": "De is they as the subject; dem is them as the object, for people and things alike. Spoken, both sound like dom, so only the writing shows which one you mean.",
+        "steps": [
+          "Is the word doing the action, usually before the verb? Write de.",
+          "Is it after the verb or after a preposition? Write dem.",
+          "Test with English: they means de, them means dem."
+        ],
+        "examples": [
+          {
+            "sv": "De bor i Göteborg.",
+            "en": "They live in Gothenburg."
+          },
+          {
+            "sv": "Jag ringer dem nu.",
+            "en": "I am calling them now."
+          },
+          {
+            "sv": "De ser oss och vi ser dem.",
+            "en": "They see us and we see them."
+          }
+        ],
+        "watch": [
+          "Because both are said dom, even Swedes mix up de and dem in writing. Swap in they and them to check.",
+          "Deras is their, before a thing owned: deras hus."
+        ]
+      },
+      {
+        "id": "after-preposition",
+        "title": "After a preposition",
+        "text": "After a preposition such as med, till, om, hos, på or för, a pronoun always takes the object form, just as in English with me and with them.",
+        "steps": [
+          "Look at the word just before the pronoun.",
+          "If it is a preposition, take the object form."
+        ],
+        "examples": [
+          {
+            "sv": "Kommer du med oss?",
+            "en": "Are you coming with us?"
+          },
+          {
+            "sv": "Presenten är till dig.",
+            "en": "The present is for you."
+          },
+          {
+            "sv": "Erik bor hos henne.",
+            "en": "Erik lives at her place."
+          }
+        ],
+        "watch": [
+          "Vänta på, prata om and tänka på all end in a preposition, so the pronoun after them is an object: vänta på mig."
+        ]
+      },
+      {
+        "id": "reflexive-sig",
+        "title": "Myself, himself: sig",
+        "text": "When the object is the same person as the subject, Swedish uses a reflexive word. For han, hon, den, det and de it is sig, said sej. For the other persons it is the ordinary object form. Some verbs always take it: sätta sig (sit down), lära sig (learn), skynda sig (hurry).",
+        "table": {
+          "columns": [
+            "Subject",
+            "Reflexive",
+            "Example"
+          ],
+          "rows": [
+            [
+              "jag",
+              "mig",
+              "jag tvättar mig"
+            ],
+            [
+              "du",
+              "dig",
+              "du tvättar dig"
+            ],
+            [
+              "han, hon",
+              "sig",
+              "hon tvättar sig"
+            ],
+            [
+              "vi",
+              "oss",
+              "vi tvättar oss"
+            ],
+            [
+              "ni",
+              "er",
+              "ni tvättar er"
+            ],
+            [
+              "de",
+              "sig",
+              "de tvättar sig"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the object the same person as the subject?",
+          "For han, hon or de, write sig.",
+          "For jag, du, vi or ni, use the object form: mig, dig, oss, er."
+        ],
+        "examples": [
+          {
+            "sv": "Han tvättar sig.",
+            "en": "He washes (himself)."
+          },
+          {
+            "sv": "Jag lär mig svenska.",
+            "en": "I am learning Swedish."
+          },
+          {
+            "sv": "Vi sätter oss här.",
+            "en": "We sit down here."
+          }
+        ],
+        "watch": [
+          "Han tvättar honom means he washes another man, not himself.",
+          "Sig never goes with vi or ni: vi sätter oss, ni skyndar er."
+        ]
+      },
+      {
+        "id": "placement",
+        "title": "Where the pronoun goes",
+        "text": "The object pronoun comes after the verb, as in English. When there are two verbs, such as vill, kan or ska with an infinitive, it comes after the infinitive, the verb it belongs to.",
+        "steps": [
+          "Find the verb whose object the pronoun is.",
+          "In a one-verb sentence, put the pronoun right after the verb.",
+          "With vill, kan or ska, put it after the infinitive."
+        ],
+        "examples": [
+          {
+            "sv": "Jag ser honom.",
+            "en": "I see him."
+          },
+          {
+            "sv": "Jag vill träffa henne.",
+            "en": "I want to meet her."
+          },
+          {
+            "sv": "Vi ska ringa dem imorgon.",
+            "en": "We are going to call them tomorrow."
+          }
+        ],
+        "watch": [
+          "Unlike French, the pronoun never jumps in front of the verb: Jag vill träffa henne, not Jag vill henne träffa.",
+          "A time word such as imorgon goes after the pronoun."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "person-forms": {
+      "section": "person-forms",
+      "steps": [
+        "Find who does the action: that is the subject.",
+        "If the pronoun receives the action, take its object form from the table.",
+        "Write mig, dig, dem, not the spoken spellings."
+      ]
+    },
+    "den-det": {
+      "section": "it-den-det",
+      "steps": [
+        "Find the noun that it replaces.",
+        "En-word gives den, ett-word gives det."
+      ]
+    },
+    "de-dem": {
+      "section": "they-de-dem",
+      "steps": [
+        "Before the verb doing the action: de.",
+        "After the verb or a preposition: dem.",
+        "Check with they and them in English."
+      ]
+    },
+    "after-preposition": {
+      "section": "after-preposition",
+      "steps": [
+        "Look at the word before the pronoun.",
+        "After a preposition, always take the object form."
+      ]
+    },
+    "reflexive": {
+      "section": "reflexive-sig",
+      "steps": [
+        "Check whether the object is the subject itself.",
+        "Han, hon, de take sig.",
+        "Jag, du, vi, ni take mig, dig, oss, er."
+      ]
+    },
+    "placement": {
+      "section": "placement",
+      "steps": [
+        "Find the verb the pronoun belongs to.",
+        "Put the pronoun right after it: after the infinitive when there are two verbs."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "object-pronouns-person-forms-1",
+      "pattern": "person-forms",
+      "type": "choose",
+      "instruction": "Choose the word for her.",
+      "source": "Jag älskar ____.",
+      "options": [
+        "henne",
+        "hon",
+        "hennes"
+      ],
+      "answers": [
+        "henne"
+      ],
+      "hint": "Is she doing something here, or is something done to her?",
+      "feedback": "She is the one being loved, so she is the object.",
+      "explanation": "Hon is the subject form. After the verb, as the object, her is henne: Jag älskar henne.",
+      "mistakes": [
+        {
+          "answers": [
+            "hon"
+          ],
+          "why": "Hon is the subject form, for she when she does the action. Here the speaker does the loving, so she needs the object form."
+        },
+        {
+          "answers": [
+            "hennes"
+          ],
+          "why": "Hennes means her as in hers, before a thing she owns (hennes bil). Nothing owned follows the gap."
+        }
+      ],
+      "row": "hon",
+      "gloss": [
+        {
+          "sv": "älskar",
+          "en": "love (älska)",
+          "word": "verbs-048"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-person-forms-2",
+      "pattern": "person-forms",
+      "type": "choose",
+      "instruction": "Choose the word for me.",
+      "source": "Ser du ____?",
+      "options": [
+        "mig",
+        "jag",
+        "min"
+      ],
+      "answers": [
+        "mig"
+      ],
+      "hint": "Who is doing the seeing? Who is seen?",
+      "feedback": "Du sees, the speaker is seen: the speaker is the object.",
+      "explanation": "Jag is only for the subject. As the object, me is mig, said mej: Ser du mig?",
+      "mistakes": [
+        {
+          "answers": [
+            "jag"
+          ],
+          "why": "Jag is I, the subject form. The subject of this question is du, so the speaker needs the object form."
+        },
+        {
+          "answers": [
+            "min"
+          ],
+          "why": "Min means my and stands before a thing owned (min bok). No noun follows here."
+        }
+      ],
+      "row": "jag",
+      "gloss": [
+        {
+          "sv": "Ser",
+          "en": "see (se)",
+          "word": "verbs-010"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-person-forms-3",
+      "pattern": "person-forms",
+      "type": "complete",
+      "instruction": "Write the Swedish word for us.",
+      "source": "Kan du hjälpa ____?",
+      "answers": [
+        "oss"
+      ],
+      "hint": "Vi is the subject form. What is its object form?",
+      "feedback": "We are the ones helped, so we take the object form.",
+      "explanation": "The object form of vi is oss: Kan du hjälpa oss?",
+      "mistakes": [
+        {
+          "answers": [
+            "vi"
+          ],
+          "why": "Vi is the subject form, for we when we do something. Here du helps and we receive the help."
+        },
+        {
+          "answers": [
+            "er"
+          ],
+          "why": "Er is the object form of ni, you to several people. The sentence asks about us."
+        },
+        {
+          "answers": [
+            "vår"
+          ],
+          "why": "Vår means our, before a thing owned. Here the word stands alone after the verb."
+        }
+      ],
+      "row": "vi",
+      "gloss": [
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "hjälpa",
+          "en": "help",
+          "word": "verbs-045"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-person-forms-4",
+      "pattern": "person-forms",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I know him.",
+      "answers": [
+        "Jag känner honom."
+      ],
+      "hint": "Know a person is känna. Him comes after the verb.",
+      "feedback": "Use känna for knowing a person, then the object form of han.",
+      "explanation": "Han becomes honom when it is the object: Jag känner honom.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag känner han."
+          ],
+          "why": "Han is the subject form. After the verb, as the person known, he needs the object form."
+        },
+        {
+          "answers": [
+            "Jag vet honom."
+          ],
+          "why": "Veta is to know a fact. For knowing a person Swedish uses känna."
+        }
+      ],
+      "row": "han"
+    },
+    {
+      "id": "object-pronouns-person-forms-5",
+      "pattern": "person-forms",
+      "type": "rewrite",
+      "instruction": "Replace Erik with a pronoun. Write the whole sentence.",
+      "source": "Anna ringer Erik.",
+      "answers": [
+        "Anna ringer honom."
+      ],
+      "hint": "Erik is a man and he is the one being called.",
+      "feedback": "Erik is the object, so you need the object form for he.",
+      "explanation": "A man as object is honom: Anna ringer honom.",
+      "mistakes": [
+        {
+          "answers": [
+            "Anna ringer han."
+          ],
+          "why": "Han is the subject form. Erik receives the call, so he needs the object form."
+        },
+        {
+          "answers": [
+            "Anna ringer henne."
+          ],
+          "why": "Henne is her. Erik is a man."
+        },
+        {
+          "answers": [
+            "Anna ringer Erik."
+          ],
+          "why": "That is the original sentence: Erik was not replaced."
+        }
+      ],
+      "row": "han",
+      "gloss": [
+        {
+          "sv": "Anna",
+          "en": "Anna (a name)"
+        },
+        {
+          "sv": "ringer",
+          "en": "calls (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "Erik",
+          "en": "Erik (a name)"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-person-forms-6",
+      "pattern": "person-forms",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Mamma ringer vi varje kväll.",
+      "answers": [
+        "Mamma ringer oss varje kväll."
+      ],
+      "hint": "Who is calling, and who is being called?",
+      "feedback": "Mamma is the subject; the word after the verb is the object.",
+      "explanation": "Vi is only for the subject. Being called, we is oss: Mamma ringer oss varje kväll.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mamma ringer vi varje kväll."
+          ],
+          "why": "That is the sentence unchanged. Vi is the subject form, and here we are the ones being called."
+        },
+        {
+          "answers": [
+            "Mamma ringer er varje kväll."
+          ],
+          "why": "Er is you to several people. The sentence is about us, so only the form should change."
+        }
+      ],
+      "row": "vi",
+      "gloss": [
+        {
+          "sv": "Mamma",
+          "en": "Mum",
+          "word": "people-012"
+        },
+        {
+          "sv": "ringer",
+          "en": "calls (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "varje",
+          "en": "every",
+          "word": "essentials-049"
+        },
+        {
+          "sv": "kväll",
+          "en": "evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-person-forms-7",
+      "pattern": "person-forms",
+      "type": "build",
+      "instruction": "Build the sentence: I see you (to several people). Leave one tile unused.",
+      "source": "I see you (to several people).",
+      "tokens": [
+        "ser",
+        "ni.",
+        "Jag",
+        "er."
+      ],
+      "answers": [
+        "Jag ser er."
+      ],
+      "hint": "Ni is the subject form of plural you.",
+      "feedback": "The people you see are the object.",
+      "explanation": "Plural you as object is er: Jag ser er.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag ser ni."
+          ],
+          "why": "Ni is the subject form, for you when you do something. The people here are seen, so they need the object form."
+        }
+      ],
+      "row": "ni"
+    },
+    {
+      "id": "object-pronouns-den-det-1",
+      "pattern": "den-det",
+      "type": "choose",
+      "instruction": "Choose the word for it.",
+      "source": "Var är min nyckel? Jag hittar ____ inte.",
+      "options": [
+        "den",
+        "det",
+        "honom"
+      ],
+      "answers": [
+        "den"
+      ],
+      "hint": "Is nyckel an en-word or an ett-word?",
+      "feedback": "It points back to en nyckel.",
+      "explanation": "Nyckel is an en-word (en nyckel), so it is den: Jag hittar den inte.",
+      "mistakes": [
+        {
+          "answers": [
+            "det"
+          ],
+          "why": "Det replaces an ett-word. Nyckel is an en-word, en nyckel."
+        },
+        {
+          "answers": [
+            "honom"
+          ],
+          "why": "Honom is him, for a man or a boy. A key is a thing."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "min",
+          "en": "my"
+        },
+        {
+          "sv": "nyckel",
+          "en": "key",
+          "word": "home-022"
+        },
+        {
+          "sv": "hittar",
+          "en": "find (hitta)",
+          "word": "verbs-030"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-den-det-2",
+      "pattern": "den-det",
+      "type": "choose",
+      "instruction": "Choose the word for it.",
+      "source": "Jag köpte ett äpple och åt ____.",
+      "options": [
+        "det",
+        "den",
+        "dem"
+      ],
+      "answers": [
+        "det"
+      ],
+      "hint": "Look at the little word before äpple.",
+      "feedback": "It points back to ett äpple.",
+      "explanation": "Äpple is an ett-word (ett äpple), so it is det: Jag köpte ett äpple och åt det.",
+      "mistakes": [
+        {
+          "answers": [
+            "den"
+          ],
+          "why": "Den replaces an en-word. Äpple is an ett-word, ett äpple."
+        },
+        {
+          "answers": [
+            "dem"
+          ],
+          "why": "Dem is them, for several things. There is one apple."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "köpte",
+          "en": "bought (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "äpple",
+          "en": "apple",
+          "word": "food-021"
+        },
+        {
+          "sv": "åt",
+          "en": "ate (äta)",
+          "word": "verbs-054"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-den-det-3",
+      "pattern": "den-det",
+      "type": "complete",
+      "instruction": "Write the Swedish word for it.",
+      "source": "Boken är bra. Jag läser ____ nu.",
+      "answers": [
+        "den"
+      ],
+      "hint": "Boken is the definite form of bok. Is it en bok or ett bok?",
+      "feedback": "Find the gender of bok and pick the matching word for it.",
+      "explanation": "Bok is an en-word (en bok, boken), so it is den: Jag läser den nu.",
+      "mistakes": [
+        {
+          "answers": [
+            "det"
+          ],
+          "why": "Det replaces an ett-word. Bok is an en-word: the -en ending of boken shows it."
+        },
+        {
+          "answers": [
+            "henne"
+          ],
+          "why": "Henne is her, for a woman or a girl. A book is replaced by a word for things."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Boken",
+          "en": "the book",
+          "word": "school-028"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "bra",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "sv": "läser",
+          "en": "am reading (läsa)",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-den-det-4",
+      "pattern": "den-det",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The house is old. We are selling it.",
+      "answers": [
+        "Huset är gammalt. Vi säljer det."
+      ],
+      "hint": "Hus is an ett-word.",
+      "feedback": "It replaces huset, so match its gender.",
+      "explanation": "Hus is an ett-word (ett hus, huset), so it is det: Vi säljer det.",
+      "mistakes": [
+        {
+          "answers": [
+            "Huset är gammalt. Vi säljer den."
+          ],
+          "why": "Den replaces an en-word, but hus is an ett-word."
+        },
+        {
+          "answers": [
+            "Huset är gammal. Vi säljer det."
+          ],
+          "why": "The pronoun is right, but the adjective must agree with an ett-word and take -t."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-den-det-5",
+      "pattern": "den-det",
+      "type": "rewrite",
+      "instruction": "Replace paraplyet with a pronoun. Write the whole sentence.",
+      "source": "Jag tar paraplyet.",
+      "answers": [
+        "Jag tar det."
+      ],
+      "hint": "Paraplyet ends in -et. What does that tell you?",
+      "feedback": "The definite ending shows the gender.",
+      "explanation": "Paraply is an ett-word (ett paraply, paraplyet), so it is det: Jag tar det.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag tar den."
+          ],
+          "why": "Den replaces an en-word. The -et ending of paraplyet shows that paraply is an ett-word."
+        },
+        {
+          "answers": [
+            "Jag tar paraplyet."
+          ],
+          "why": "That is the original sentence: paraplyet was not replaced."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "tar",
+          "en": "take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "paraplyet",
+          "en": "the umbrella",
+          "word": "shopping-028"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-den-det-6",
+      "pattern": "den-det",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Var är din jacka? Jag ser det inte.",
+      "answers": [
+        "Var är din jacka? Jag ser den inte."
+      ],
+      "hint": "Is it en jacka or ett jacka?",
+      "feedback": "The word for it must match jacka.",
+      "explanation": "Jacka is an en-word (en jacka), so it is den: Jag ser den inte.",
+      "mistakes": [
+        {
+          "answers": [
+            "Var är din jacka? Jag ser det inte."
+          ],
+          "why": "That is the sentence unchanged. Det replaces an ett-word, and jacka is an en-word."
+        },
+        {
+          "answers": [
+            "Var är din jacka? Jag ser henne inte."
+          ],
+          "why": "Henne is for a woman. A jacket is a thing, so use the word for things."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "din",
+          "en": "your"
+        },
+        {
+          "sv": "jacka",
+          "en": "jacket",
+          "word": "people-048"
+        },
+        {
+          "sv": "ser",
+          "en": "see (se)",
+          "word": "verbs-010"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-den-det-7",
+      "pattern": "den-det",
+      "type": "build",
+      "instruction": "Build the sentence: Where is the ticket? I have it. Leave one tile unused.",
+      "source": "Where is the ticket? I have it.",
+      "tokens": [
+        "Jag",
+        "Var",
+        "det.",
+        "är",
+        "den.",
+        "har",
+        "biljetten?"
+      ],
+      "answers": [
+        "Var är biljetten? Jag har den."
+      ],
+      "hint": "Biljetten ends in -en.",
+      "feedback": "Match the word for it to biljett.",
+      "explanation": "Biljett is an en-word (en biljett, biljetten), so it is den: Jag har den.",
+      "mistakes": [
+        {
+          "answers": [
+            "Var är biljetten? Jag har det."
+          ],
+          "why": "Det is for an ett-word, but the -en ending of biljetten shows that biljett is an en-word."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-de-dem-1",
+      "pattern": "de-dem",
+      "type": "choose",
+      "instruction": "Choose the word for them.",
+      "source": "Barnen är hemma. Jag ringer ____ nu.",
+      "options": [
+        "dem",
+        "de",
+        "deras"
+      ],
+      "answers": [
+        "dem"
+      ],
+      "hint": "The children are the ones called. Subject or object?",
+      "feedback": "After the verb, as the object, they take the object form.",
+      "explanation": "De is the subject form. As the object, them is dem, said dom: Jag ringer dem nu.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "De is the subject form, for they when they do something. Here the speaker calls and the children are called."
+        },
+        {
+          "answers": [
+            "deras"
+          ],
+          "why": "Deras means their, before a thing owned. Nothing follows here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Barnen",
+          "en": "the children",
+          "word": "people-005"
+        },
+        {
+          "sv": "är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        },
+        {
+          "sv": "ringer",
+          "en": "call (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "nu",
+          "en": "now",
+          "word": "essentials-094"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-de-dem-2",
+      "pattern": "de-dem",
+      "type": "choose",
+      "instruction": "Choose the word for they.",
+      "source": "Mina vänner? ____ bor i Göteborg.",
+      "options": [
+        "De",
+        "Dem",
+        "Deras"
+      ],
+      "answers": [
+        "De"
+      ],
+      "hint": "Are the friends doing something here, or is something done to them?",
+      "feedback": "The friends do the living: they are the subject.",
+      "explanation": "As the subject before the verb, they is de: De bor i Göteborg. Spoken, both de and dem sound like dom, so only writing shows the difference.",
+      "mistakes": [
+        {
+          "answers": [
+            "Dem"
+          ],
+          "why": "Dem is the object form, for them after a verb or a preposition. Here they are the subject before bor."
+        },
+        {
+          "answers": [
+            "Deras"
+          ],
+          "why": "Deras means their, before a thing owned. Here the word is the subject of bor."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Mina",
+          "en": "my"
+        },
+        {
+          "sv": "vänner",
+          "en": "friends",
+          "word": "people-031"
+        },
+        {
+          "sv": "bor",
+          "en": "live (bo)",
+          "word": "verbs-065"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Göteborg",
+          "en": "Gothenburg"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-de-dem-3",
+      "pattern": "de-dem",
+      "type": "complete",
+      "instruction": "Write the Swedish word for them.",
+      "source": "Var är skorna? Jag hittar ____ inte.",
+      "answers": [
+        "dem"
+      ],
+      "hint": "Several things, after the verb.",
+      "feedback": "Plural things and plural people share the same object form.",
+      "explanation": "For several things as object, them is dem: Jag hittar dem inte.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "De is the subject form. The shoes are the thing found, so they need the object form."
+        },
+        {
+          "answers": [
+            "den"
+          ],
+          "why": "Den is it, for one en-word. Skorna are several shoes."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "skorna",
+          "en": "the shoes"
+        },
+        {
+          "sv": "hittar",
+          "en": "find (hitta)",
+          "word": "verbs-030"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-de-dem-4",
+      "pattern": "de-dem",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "They see us and we see them.",
+      "answers": [
+        "De ser oss och vi ser dem."
+      ],
+      "hint": "They is the subject in the first half and the object in the second.",
+      "feedback": "Use the subject form first and the object form after the verb.",
+      "explanation": "They as subject is de; them as object is dem: De ser oss och vi ser dem.",
+      "mistakes": [
+        {
+          "answers": [
+            "Dem ser oss och vi ser dem."
+          ],
+          "why": "Dem is the object form, but the first they does the seeing and is the subject."
+        },
+        {
+          "answers": [
+            "De ser oss och vi ser de."
+          ],
+          "why": "The second they is seen, so it needs the object form, not the subject form."
+        },
+        {
+          "answers": [
+            "De ser vi och vi ser dem."
+          ],
+          "why": "Vi is the subject form. Us, the people seen, needs the object form."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-de-dem-5",
+      "pattern": "de-dem",
+      "type": "rewrite",
+      "instruction": "Replace barnen with a pronoun. Write the whole sentence.",
+      "source": "Pappa hämtar barnen.",
+      "answers": [
+        "Pappa hämtar dem."
+      ],
+      "hint": "Barnen are several people, and they are picked up.",
+      "feedback": "Several people as object take the object form of de.",
+      "explanation": "The children are the object, so they become dem: Pappa hämtar dem.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pappa hämtar de."
+          ],
+          "why": "De is the subject form. The children are picked up, so they need the object form."
+        },
+        {
+          "answers": [
+            "Pappa hämtar det."
+          ],
+          "why": "Det is it, for one ett-word. Barnen are several children."
+        },
+        {
+          "answers": [
+            "Pappa hämtar barnen."
+          ],
+          "why": "That is the original sentence: barnen was not replaced."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Pappa",
+          "en": "Dad",
+          "word": "people-013"
+        },
+        {
+          "sv": "hämtar",
+          "en": "picks up (hämta)",
+          "word": "verbs-110"
+        },
+        {
+          "sv": "barnen",
+          "en": "the children",
+          "word": "people-005"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-de-dem-6",
+      "pattern": "de-dem",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Jag träffar de imorgon.",
+      "answers": [
+        "Jag träffar dem imorgon.",
+        "Jag träffar dem i morgon."
+      ],
+      "hint": "The people come after the verb and are met.",
+      "feedback": "Spoken, de and dem sound the same, so writing is where the slip shows.",
+      "explanation": "After the verb, as the object, they is dem: Jag träffar dem imorgon.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag träffar de imorgon."
+          ],
+          "why": "That is the sentence unchanged. De is the subject form, and here they are the ones met."
+        },
+        {
+          "answers": [
+            "Jag träffar dom imorgon."
+          ],
+          "why": "Dom is how the word is said, and you may see it in chat, but standard written Swedish keeps the written object form."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "träffar",
+          "en": "am meeting (träffa)",
+          "word": "verbs-083"
+        },
+        {
+          "sv": "imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-de-dem-7",
+      "pattern": "de-dem",
+      "type": "build",
+      "instruction": "Build the sentence: We call them every day. Leave one tile unused.",
+      "source": "We call them every day.",
+      "tokens": [
+        "ringer",
+        "de",
+        "Vi",
+        "varje",
+        "dem",
+        "dag."
+      ],
+      "answers": [
+        "Vi ringer dem varje dag."
+      ],
+      "hint": "They are the ones called.",
+      "feedback": "Pick the object form of de.",
+      "explanation": "Them after the verb is dem: Vi ringer dem varje dag.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi ringer de varje dag."
+          ],
+          "why": "De is the subject form. The people here are called, so the tile you leave is the subject form."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-preposition-1",
+      "pattern": "after-preposition",
+      "type": "choose",
+      "instruction": "Choose the word for you (to one person).",
+      "source": "Den här presenten är till ____.",
+      "options": [
+        "dig",
+        "du",
+        "din"
+      ],
+      "answers": [
+        "dig"
+      ],
+      "hint": "What kind of word comes right before the gap?",
+      "feedback": "After a preposition such as till, use the object form.",
+      "explanation": "Till is a preposition, so you takes the object form, dig, said dej: till dig.",
+      "mistakes": [
+        {
+          "answers": [
+            "du"
+          ],
+          "why": "Du is the subject form. After a preposition like till Swedish uses the object form."
+        },
+        {
+          "answers": [
+            "din"
+          ],
+          "why": "Din means your, before a thing owned. Nothing follows here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Den här",
+          "en": "this"
+        },
+        {
+          "sv": "presenten",
+          "en": "present",
+          "word": "people-042"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "till",
+          "en": "for",
+          "word": "essentials-064"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-preposition-2",
+      "pattern": "after-preposition",
+      "type": "choose",
+      "instruction": "Choose the word for them.",
+      "source": "Jag åker till Malmö med ____.",
+      "options": [
+        "dem",
+        "de",
+        "deras"
+      ],
+      "answers": [
+        "dem"
+      ],
+      "hint": "Look at the word right before the gap.",
+      "feedback": "Med is a preposition, and a pronoun after it takes the object form.",
+      "explanation": "After med, they becomes dem: Jag åker till Malmö med dem.",
+      "mistakes": [
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "De is the subject form. After a preposition like med, Swedish needs the object form."
+        },
+        {
+          "answers": [
+            "deras"
+          ],
+          "why": "Deras means their, before a thing owned. Nothing follows here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "åker",
+          "en": "am going (åka)",
+          "word": "verbs-034"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "Malmö",
+          "en": "Malmö"
+        },
+        {
+          "sv": "med",
+          "en": "with",
+          "word": "essentials-066"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-preposition-3",
+      "pattern": "after-preposition",
+      "type": "complete",
+      "instruction": "Write the Swedish word for him.",
+      "source": "Vi pratar ofta om ____.",
+      "answers": [
+        "honom"
+      ],
+      "hint": "Om is a preposition.",
+      "feedback": "A pronoun after a preposition takes the object form.",
+      "explanation": "After om, he becomes honom: Vi pratar ofta om honom.",
+      "mistakes": [
+        {
+          "answers": [
+            "han"
+          ],
+          "why": "Han is the subject form. After a preposition such as om, Swedish uses the object form."
+        },
+        {
+          "answers": [
+            "hans"
+          ],
+          "why": "Hans means his, before a thing owned. Nothing follows here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "pratar",
+          "en": "talk (prata)"
+        },
+        {
+          "sv": "ofta",
+          "en": "often",
+          "word": "essentials-102"
+        },
+        {
+          "sv": "om",
+          "en": "about",
+          "word": "essentials-070"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-preposition-4",
+      "pattern": "after-preposition",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Are you coming with us?",
+      "answers": [
+        "Kommer du med oss?",
+        "Följer du med oss?",
+        "Kommer ni med oss?",
+        "Följer ni med oss?"
+      ],
+      "hint": "With is med. Us comes after it.",
+      "feedback": "A pronoun after med takes the object form.",
+      "explanation": "After med, we becomes oss: Kommer du med oss?",
+      "mistakes": [
+        {
+          "answers": [
+            "Kommer du med vi?",
+            "Följer du med vi?"
+          ],
+          "why": "Vi is the subject form. After a preposition like med, use the object form."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-preposition-5",
+      "pattern": "after-preposition",
+      "type": "rewrite",
+      "instruction": "Replace Anna with a pronoun. Write the whole sentence.",
+      "source": "Erik bor hos Anna.",
+      "answers": [
+        "Erik bor hos henne."
+      ],
+      "hint": "Anna is a woman, and she comes after the preposition hos.",
+      "feedback": "After a preposition, use the object form.",
+      "explanation": "After hos, she becomes henne: Erik bor hos henne.",
+      "mistakes": [
+        {
+          "answers": [
+            "Erik bor hos hon."
+          ],
+          "why": "Hon is the subject form. After a preposition like hos, Swedish uses the object form."
+        },
+        {
+          "answers": [
+            "Erik bor hos honom."
+          ],
+          "why": "Honom is him. Anna is a woman."
+        },
+        {
+          "answers": [
+            "Erik bor hos Anna."
+          ],
+          "why": "That is the original sentence: Anna was not replaced."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik (a name)"
+        },
+        {
+          "sv": "bor",
+          "en": "lives (bo)",
+          "word": "verbs-065"
+        },
+        {
+          "sv": "hos",
+          "en": "at the home of",
+          "word": "essentials-076"
+        },
+        {
+          "sv": "Anna",
+          "en": "Anna (a name)"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-preposition-6",
+      "pattern": "after-preposition",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Kan du vänta på jag?",
+      "answers": [
+        "Kan du vänta på mig?"
+      ],
+      "hint": "What comes right before the last word?",
+      "feedback": "På is a preposition, so the pronoun after it takes the object form.",
+      "explanation": "After på, I becomes mig, said mej: Kan du vänta på mig?",
+      "mistakes": [
+        {
+          "answers": [
+            "Kan du vänta på jag?"
+          ],
+          "why": "That is the sentence unchanged. Jag is the subject form, and after a preposition the object form is needed."
+        },
+        {
+          "answers": [
+            "Kan du vänta på mej?"
+          ],
+          "why": "Mej is how the word is said, and you see it in chat, but standard written Swedish uses the written form."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "vänta på",
+          "en": "wait for",
+          "word": "verbs-037"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-after-preposition-7",
+      "pattern": "after-preposition",
+      "type": "build",
+      "instruction": "Build the sentence: The letter is for her. Leave one tile unused.",
+      "source": "The letter is for her.",
+      "tokens": [
+        "till",
+        "Brevet",
+        "hon.",
+        "är",
+        "henne."
+      ],
+      "answers": [
+        "Brevet är till henne."
+      ],
+      "hint": "For her after till.",
+      "feedback": "A pronoun after a preposition takes the object form.",
+      "explanation": "After till, she becomes henne: Brevet är till henne.",
+      "mistakes": [
+        {
+          "answers": [
+            "Brevet är till hon."
+          ],
+          "why": "Hon is the subject form. After a preposition like till, the tile to use is the object form."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-reflexive-1",
+      "pattern": "reflexive",
+      "type": "choose",
+      "instruction": "Choose the word that fits: he washes himself.",
+      "source": "Han tvättar ____ varje morgon.",
+      "options": [
+        "sig",
+        "honom",
+        "hans"
+      ],
+      "answers": [
+        "sig"
+      ],
+      "hint": "He washes himself, not another man.",
+      "feedback": "When the object is the same person as han, hon or de, Swedish uses one special word.",
+      "explanation": "The same person as the subject han takes the reflexive sig: Han tvättar sig varje morgon.",
+      "mistakes": [
+        {
+          "answers": [
+            "honom"
+          ],
+          "why": "With honom he washes another man, for example a child or a patient. To mean himself, Swedish uses the reflexive word."
+        },
+        {
+          "answers": [
+            "hans"
+          ],
+          "why": "Hans means his, before a thing owned. Nothing follows here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "tvättar",
+          "en": "washes (tvätta)",
+          "word": "verbs-094"
+        },
+        {
+          "sv": "varje",
+          "en": "every",
+          "word": "essentials-049"
+        },
+        {
+          "sv": "morgon",
+          "en": "morning",
+          "word": "health-time-033"
+        }
+      ],
+      "row": "han, hon"
+    },
+    {
+      "id": "object-pronouns-reflexive-2",
+      "pattern": "reflexive",
+      "type": "choose",
+      "instruction": "Choose the word that fits: we sit down.",
+      "source": "Vi sätter ____ här.",
+      "options": [
+        "oss",
+        "sig",
+        "vi"
+      ],
+      "answers": [
+        "oss"
+      ],
+      "hint": "Sätta sig is to sit down. Which word goes with vi?",
+      "feedback": "Sig is only for han, hon, den, det and de.",
+      "explanation": "With vi, the reflexive is the ordinary object form oss: Vi sätter oss här.",
+      "mistakes": [
+        {
+          "answers": [
+            "sig"
+          ],
+          "why": "Sig only goes with han, hon and de. For vi, the reflexive is the same as the ordinary object form."
+        },
+        {
+          "answers": [
+            "vi"
+          ],
+          "why": "Vi is the subject form. The reflexive word is an object."
+        }
+      ],
+      "row": "vi",
+      "gloss": [
+        {
+          "sv": "sätter",
+          "en": "sit down (sätta sig)",
+          "word": "verbs-060"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-reflexive-3",
+      "pattern": "reflexive",
+      "type": "complete",
+      "instruction": "Write the reflexive word.",
+      "source": "Jag lär ____ svenska.",
+      "answers": [
+        "mig"
+      ],
+      "hint": "Lära sig is to learn. Which object form goes with jag?",
+      "feedback": "Sig is for han, hon and de; jag has its own form.",
+      "explanation": "With jag, the reflexive is mig, said mej: Jag lär mig svenska.",
+      "mistakes": [
+        {
+          "answers": [
+            "sig"
+          ],
+          "why": "Sig goes with han, hon and de. For jag, the reflexive is the ordinary object form."
+        },
+        {
+          "answers": [
+            "jag"
+          ],
+          "why": "Jag is the subject form. The reflexive is an object."
+        },
+        {
+          "answers": [
+            "mej"
+          ],
+          "why": "Mej is how the word is said. Standard written Swedish uses the written form."
+        }
+      ],
+      "row": "jag",
+      "gloss": [
+        {
+          "sv": "lär",
+          "en": "learn (lära sig)",
+          "word": "verbs-069"
+        },
+        {
+          "sv": "svenska",
+          "en": "Swedish"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-reflexive-4",
+      "pattern": "reflexive",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "They sit down.",
+      "answers": [
+        "De sätter sig.",
+        "De sätter sig ner.",
+        "De sätter sig ned."
+      ],
+      "hint": "To sit down is sätta sig.",
+      "feedback": "For de, the reflexive word is sig.",
+      "explanation": "The same people as de take sig: De sätter sig.",
+      "mistakes": [
+        {
+          "answers": [
+            "De sätter dem."
+          ],
+          "why": "With dem they seat some other people. To mean themselves, Swedish uses the reflexive word."
+        },
+        {
+          "answers": [
+            "Dem sätter sig."
+          ],
+          "why": "The reflexive is right, but they are the subject, so they need the subject form."
+        }
+      ],
+      "row": "de"
+    },
+    {
+      "id": "object-pronouns-reflexive-5",
+      "pattern": "reflexive",
+      "type": "rewrite",
+      "instruction": "Change jag to hon. Write the whole sentence.",
+      "source": "Jag tvättar mig.",
+      "answers": [
+        "Hon tvättar sig."
+      ],
+      "hint": "With hon, which reflexive word is used?",
+      "feedback": "Both the subject and the reflexive word must change.",
+      "explanation": "With hon, the reflexive is sig: Hon tvättar sig.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon tvättar mig."
+          ],
+          "why": "Now she washes the speaker. The reflexive must change with the subject."
+        },
+        {
+          "answers": [
+            "Hon tvättar henne."
+          ],
+          "why": "With henne she washes another woman. To mean herself, use the reflexive word."
+        },
+        {
+          "answers": [
+            "Jag tvättar mig."
+          ],
+          "why": "That is the original sentence: jag was not changed."
+        }
+      ],
+      "row": "han, hon",
+      "gloss": [
+        {
+          "sv": "tvättar",
+          "en": "wash (tvätta)",
+          "word": "verbs-094"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-reflexive-6",
+      "pattern": "reflexive",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ni måste skynda sig.",
+      "answers": [
+        "Ni måste skynda er."
+      ],
+      "hint": "Who must hurry? Which reflexive goes with that person?",
+      "feedback": "Sig is only for han, hon and de.",
+      "explanation": "With ni, the reflexive is er: Ni måste skynda er.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ni måste skynda sig."
+          ],
+          "why": "That is the sentence unchanged. Sig goes with han, hon and de, not with ni."
+        },
+        {
+          "answers": [
+            "Ni måste skynda ni."
+          ],
+          "why": "Ni is the subject form. The reflexive is an object."
+        }
+      ],
+      "row": "ni",
+      "gloss": [
+        {
+          "sv": "måste",
+          "en": "must"
+        },
+        {
+          "sv": "skynda",
+          "en": "hurry"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-reflexive-7",
+      "pattern": "reflexive",
+      "type": "build",
+      "instruction": "Build the sentence: She is learning Swedish. Leave one tile unused.",
+      "source": "She is learning Swedish.",
+      "tokens": [
+        "lär",
+        "Hon",
+        "henne",
+        "sig",
+        "svenska."
+      ],
+      "answers": [
+        "Hon lär sig svenska."
+      ],
+      "hint": "To learn is lära sig.",
+      "feedback": "The learner and the reflexive word are the same person.",
+      "explanation": "With hon, the reflexive is sig: Hon lär sig svenska.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon lär henne svenska."
+          ],
+          "why": "With henne the sentence means she teaches another woman Swedish. The tile to leave is the ordinary object form."
+        }
+      ],
+      "row": "han, hon"
+    },
+    {
+      "id": "object-pronouns-placement-1",
+      "pattern": "placement",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Jag vill ____.",
+      "options": [
+        "träffa henne",
+        "henne träffa"
+      ],
+      "answers": [
+        "träffa henne"
+      ],
+      "hint": "There are two verbs. Where does the object go?",
+      "feedback": "The pronoun follows the verb it belongs to.",
+      "explanation": "In a two-verb sentence, the pronoun comes after the infinitive: Jag vill träffa henne.",
+      "mistakes": [
+        {
+          "answers": [
+            "henne träffa"
+          ],
+          "why": "The pronoun cannot come before the infinitive. Swedish keeps the object after the verb it belongs to."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "vill",
+          "en": "want (vilja)",
+          "word": "verbs-020"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-placement-2",
+      "pattern": "placement",
+      "type": "choose",
+      "instruction": "Choose the right order.",
+      "source": "Vi ____ imorgon.",
+      "options": [
+        "ringer dig",
+        "dig ringer"
+      ],
+      "answers": [
+        "ringer dig"
+      ],
+      "hint": "Where does the object go in Swedish?",
+      "feedback": "The object pronoun comes after the verb, as in English.",
+      "explanation": "The pronoun follows the verb: Vi ringer dig imorgon.",
+      "mistakes": [
+        {
+          "answers": [
+            "dig ringer"
+          ],
+          "why": "The object never goes before the verb here. Swedish puts the verb second and the object after it."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "imorgon",
+          "en": "tomorrow",
+          "word": "essentials-098"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-placement-3",
+      "pattern": "placement",
+      "type": "complete",
+      "instruction": "Write the Swedish word for it.",
+      "source": "Klänningen är fin. Hon vill köpa ____.",
+      "answers": [
+        "den"
+      ],
+      "hint": "Klänning is an en-word. The pronoun goes after köpa.",
+      "feedback": "In a two-verb sentence, the pronoun sits at the end after the infinitive.",
+      "explanation": "Klänning is an en-word, so it is den, placed after the infinitive: Hon vill köpa den.",
+      "mistakes": [
+        {
+          "answers": [
+            "det"
+          ],
+          "why": "Det replaces an ett-word. Klänning is an en-word, en klänning."
+        },
+        {
+          "answers": [
+            "henne"
+          ],
+          "why": "Henne is for a woman. A dress is a thing, so use the word for things."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Klänningen",
+          "en": "the dress",
+          "word": "people-049"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "fin",
+          "en": "nice",
+          "word": "qualities-006"
+        },
+        {
+          "sv": "vill",
+          "en": "wants (vilja)",
+          "word": "verbs-020"
+        },
+        {
+          "sv": "köpa",
+          "en": "buy",
+          "word": "verbs-050"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-placement-4",
+      "pattern": "placement",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I want to meet her.",
+      "answers": [
+        "Jag vill träffa henne."
+      ],
+      "hint": "Vill takes a plain infinitive, with no att.",
+      "feedback": "The object pronoun goes after the infinitive.",
+      "explanation": "Vill + infinitive + object: Jag vill träffa henne.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vill henne träffa."
+          ],
+          "why": "The pronoun cannot come before the infinitive. It follows the verb it belongs to."
+        },
+        {
+          "answers": [
+            "Jag vill träffa hon."
+          ],
+          "why": "Hon is the subject form. As the person met, she needs the object form."
+        },
+        {
+          "answers": [
+            "Jag vill att träffa henne."
+          ],
+          "why": "After vill the infinitive comes straight, with no att."
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-placement-5",
+      "pattern": "placement",
+      "type": "rewrite",
+      "instruction": "Add vill (want) to the sentence. Write the whole sentence.",
+      "source": "Jag ser honom.",
+      "answers": [
+        "Jag vill se honom."
+      ],
+      "hint": "Vill takes the verb in the infinitive. Where does the pronoun go then?",
+      "feedback": "The pronoun moves to after the infinitive.",
+      "explanation": "Vill comes second, then the infinitive se, then the pronoun: Jag vill se honom.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vill honom se."
+          ],
+          "why": "The pronoun cannot come before the infinitive. It follows se."
+        },
+        {
+          "answers": [
+            "Jag vill ser honom."
+          ],
+          "why": "After vill the second verb takes the infinitive, se, not the present form."
+        },
+        {
+          "answers": [
+            "Jag ser honom."
+          ],
+          "why": "That is the original sentence: vill was not added."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "ser",
+          "en": "see (se)",
+          "word": "verbs-010"
+        },
+        {
+          "sv": "honom",
+          "en": "him"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-placement-6",
+      "pattern": "placement",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Kan du mig hjälpa?",
+      "answers": [
+        "Kan du hjälpa mig?"
+      ],
+      "hint": "Where does the object go when there are two verbs?",
+      "feedback": "The pronoun follows the infinitive.",
+      "explanation": "Kan + du + infinitive + object: Kan du hjälpa mig?",
+      "mistakes": [
+        {
+          "answers": [
+            "Kan du mig hjälpa?"
+          ],
+          "why": "That is the sentence unchanged. The pronoun stands before the infinitive, and it must follow it."
+        },
+        {
+          "answers": [
+            "Kan mig du hjälpa?"
+          ],
+          "why": "The object cannot come before the subject here. Put the pronoun after the infinitive."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "hjälpa",
+          "en": "help",
+          "word": "verbs-045"
+        }
+      ]
+    },
+    {
+      "id": "object-pronouns-placement-7",
+      "pattern": "placement",
+      "type": "build",
+      "instruction": "Build the sentence: We are going to call them tomorrow. Leave one tile unused.",
+      "source": "We are going to call them tomorrow.",
+      "tokens": [
+        "ska",
+        "dem",
+        "Vi",
+        "ringa",
+        "de",
+        "imorgon."
+      ],
+      "answers": [
+        "Vi ska ringa dem imorgon."
+      ],
+      "hint": "Ska + infinitive, then the pronoun.",
+      "feedback": "The pronoun comes after the infinitive and before the time word.",
+      "explanation": "Ska, then the infinitive ringa, then the object dem, then imorgon: Vi ska ringa dem imorgon.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi ska ringa de imorgon."
+          ],
+          "why": "De is the subject form. The people are called, so the tile to leave is the subject form."
+        },
+        {
+          "answers": [
+            "Vi ska dem ringa imorgon."
+          ],
+          "why": "The pronoun cannot come before the infinitive. It follows ringa."
+        }
+      ]
+    }
+  ]
+}

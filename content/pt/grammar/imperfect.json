@@ -1,0 +1,2525 @@
+{
+  "id": "imperfect",
+  "unit": "past-future",
+  "level": "A2",
+  "title": "The imperfect (pretérito imperfeito)",
+  "description": "Say what used to happen, describe the past, give age and time, and set the background for an event.",
+  "mark": "-ava · -ia",
+  "guide": {
+    "summary": "Portuguese has two main past tenses. The pretérito perfeito tells what happened; the imperfect, on this page, paints what things were like: habits, descriptions, age, time and actions in progress. It has the easiest endings in the language and only four irregular verbs.",
+    "sections": [
+      {
+        "id": "endings-ar",
+        "title": "-ar verbs: -ava",
+        "text": "Remove -ar and add -ava. Eu and você/ele/ela share one form. The nós form carries an accent on the stressed á.",
+        "table": {
+          "columns": [
+            "subject",
+            "ending",
+            "falar"
+          ],
+          "rows": [
+            [
+              "eu",
+              "-ava",
+              "eu falava"
+            ],
+            [
+              "você / ele / ela",
+              "-ava",
+              "ela falava"
+            ],
+            [
+              "nós",
+              "-ávamos",
+              "nós falávamos"
+            ],
+            [
+              "vocês / eles / elas",
+              "-avam",
+              "eles falavam"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the infinitive ends in -ar.",
+          "Remove -ar to get the stem.",
+          "Add -ava, -ávamos or -avam for the subject."
+        ],
+        "examples": [
+          {
+            "pt": "Eu morava perto da praia.",
+            "en": "I used to live near the beach."
+          },
+          {
+            "pt": "Nós estudávamos juntos.",
+            "en": "We used to study together."
+          }
+        ],
+        "watch": [
+          "Eu falava and ele falava look the same: keep the pronoun when it is not clear.",
+          "Estar is regular here: estava, estávamos, estavam.",
+          "Do not confuse falávamos (used to speak) with falamos (speak, spoke)."
+        ]
+      },
+      {
+        "id": "endings-er-ir",
+        "title": "-er and -ir verbs: -ia",
+        "text": "-er and -ir verbs share one set of endings. Remove -er or -ir and add -ia.",
+        "table": {
+          "columns": [
+            "subject",
+            "ending",
+            "comer / dormir"
+          ],
+          "rows": [
+            [
+              "eu",
+              "-ia",
+              "eu comia"
+            ],
+            [
+              "você / ele / ela",
+              "-ia",
+              "ele dormia"
+            ],
+            [
+              "nós",
+              "-íamos",
+              "nós comíamos"
+            ],
+            [
+              "vocês / eles / elas",
+              "-iam",
+              "elas dormiam"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the infinitive ends in -er or -ir.",
+          "Remove the last two letters.",
+          "Add -ia, -íamos or -iam."
+        ],
+        "examples": [
+          {
+            "pt": "Ela bebia muito café.",
+            "en": "She used to drink a lot of coffee."
+          },
+          {
+            "pt": "Eles dormiam cedo.",
+            "en": "They used to go to bed early."
+          }
+        ],
+        "watch": [
+          "Never mix the sets: comava and falia do not exist.",
+          "Ir looks the same: ia, íamos, iam.",
+          "Fazer is regular here: fazia."
+        ]
+      },
+      {
+        "id": "irregulars",
+        "title": "The four irregular verbs",
+        "text": "Only four verbs break the pattern. Ter, vir and pôr all end in -nha.",
+        "table": {
+          "columns": [
+            "verb",
+            "eu / ele",
+            "nós",
+            "eles"
+          ],
+          "rows": [
+            [
+              "ser",
+              "era",
+              "éramos",
+              "eram"
+            ],
+            [
+              "ter",
+              "tinha",
+              "tínhamos",
+              "tinham"
+            ],
+            [
+              "vir",
+              "vinha",
+              "vínhamos",
+              "vinham"
+            ],
+            [
+              "pôr",
+              "punha",
+              "púnhamos",
+              "punham"
+            ]
+          ]
+        },
+        "steps": [
+          "Check if the verb is ser, ter, vir or pôr.",
+          "If it is, take the form from the table.",
+          "Every other verb is regular in the imperfect."
+        ],
+        "examples": [
+          {
+            "pt": "Nós éramos amigos.",
+            "en": "We were friends."
+          },
+          {
+            "pt": "Ela tinha um gato.",
+            "en": "She had a cat."
+          },
+          {
+            "pt": "Ele vinha de ônibus.",
+            "en": "He used to come by bus."
+          }
+        ],
+        "watch": [
+          "Tia is not ter: it means aunt.",
+          "Vinha is vir, via is ver.",
+          "In everyday Brazilian Portuguese colocar often replaces pôr: eu colocava."
+        ]
+      },
+      {
+        "id": "habits",
+        "title": "Habits: used to",
+        "text": "What happened again and again in the past goes in the imperfect. English often says used to or would. Words like sempre, todo dia, aos sábados and quando eu era criança point to it.",
+        "steps": [
+          "Ask: did this happen once, or regularly?",
+          "Regularly: use the imperfect.",
+          "Once: use the pretérito perfeito."
+        ],
+        "examples": [
+          {
+            "pt": "Quando eu era criança, eu brincava na rua.",
+            "en": "When I was a child, I used to play in the street."
+          },
+          {
+            "pt": "A gente ia à praia todo verão.",
+            "en": "We used to go to the beach every summer."
+          }
+        ],
+        "watch": [
+          "A gente means we but takes the ele form: a gente ia.",
+          "One event with a date, ontem or uma vez takes the pretérito perfeito."
+        ]
+      },
+      {
+        "id": "description",
+        "title": "Describing the past",
+        "text": "How people, places, weather and feelings were is a description: the imperfect. Fazer for weather is always singular.",
+        "steps": [
+          "Ask: am I describing, or telling what happened?",
+          "Describing: imperfect (era, estava, fazia, tinha).",
+          "Ser for lasting traits, estar for passing states."
+        ],
+        "examples": [
+          {
+            "pt": "Fazia frio.",
+            "en": "It was cold."
+          },
+          {
+            "pt": "A casa era pequena.",
+            "en": "The house was small."
+          },
+          {
+            "pt": "Ela estava cansada.",
+            "en": "She was tired."
+          }
+        ],
+        "watch": [
+          "Fazia calor or estava quente; in Brazil estava calor is also very common.",
+          "Foi and esteve close a period; for a scene use era and estava."
+        ]
+      },
+      {
+        "id": "age-time",
+        "title": "Age and clock time",
+        "text": "Age uses ter: you have years. Time uses ser and agrees with the hours.",
+        "table": {
+          "columns": [
+            "what",
+            "past form",
+            "example"
+          ],
+          "rows": [
+            [
+              "age",
+              "tinha",
+              "Eu tinha dez anos."
+            ],
+            [
+              "one o’clock",
+              "era",
+              "Era uma hora."
+            ],
+            [
+              "other hours",
+              "eram",
+              "Eram oito horas."
+            ]
+          ]
+        },
+        "steps": [
+          "Age: ter in the imperfect + number + anos.",
+          "Time: era uma hora, meio-dia, meia-noite.",
+          "Two o’clock and later: eram."
+        ],
+        "examples": [
+          {
+            "pt": "Eu tinha dez anos.",
+            "en": "I was ten years old."
+          },
+          {
+            "pt": "Eram oito horas.",
+            "en": "It was eight o’clock."
+          }
+        ],
+        "watch": [
+          "Never eu era dez anos.",
+          "Time and age in the past are always imperfect."
+        ]
+      },
+      {
+        "id": "progressive",
+        "title": "Estava + gerúndio: was doing",
+        "text": "For an action in progress, Brazilians use estar in the imperfect plus the -ndo form. Remove -r from the infinitive and add -ndo.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "gerúndio",
+            "example"
+          ],
+          "rows": [
+            [
+              "estudar",
+              "estudando",
+              "Eu estava estudando."
+            ],
+            [
+              "ler",
+              "lendo",
+              "Ele estava lendo."
+            ],
+            [
+              "dormir",
+              "dormindo",
+              "Elas estavam dormindo."
+            ]
+          ]
+        },
+        "steps": [
+          "Put estar in the imperfect for the subject.",
+          "Take the infinitive, drop -r, add -ndo.",
+          "Only estar changes with the subject."
+        ],
+        "examples": [
+          {
+            "pt": "O que você estava fazendo?",
+            "en": "What were you doing?"
+          },
+          {
+            "pt": "Nós estávamos vendo televisão.",
+            "en": "We were watching television."
+          }
+        ],
+        "watch": [
+          "Never ser here: era estudando is wrong.",
+          "The simple imperfect can mean the same: eu estudava."
+        ]
+      },
+      {
+        "id": "background-event",
+        "title": "Background and event",
+        "text": "In a story the imperfect is the scene that was going on; the pretérito perfeito is the event that happened in it. Quando often joins the two.",
+        "table": {
+          "columns": [
+            "role",
+            "tense",
+            "example"
+          ],
+          "rows": [
+            [
+              "background",
+              "imperfeito",
+              "Eu lia…"
+            ],
+            [
+              "event",
+              "pretérito perfeito",
+              "…quando ele chegou."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the action that was already going on: imperfect.",
+          "Find the action that cut in, once: pretérito perfeito.",
+          "De repente and uma vez mark the event."
+        ],
+        "examples": [
+          {
+            "pt": "Eu lia quando ele chegou.",
+            "en": "I was reading when he arrived."
+          },
+          {
+            "pt": "Chovia quando eu saí de casa.",
+            "en": "It was raining when I left home."
+          }
+        ],
+        "watch": [
+          "Both in the imperfect means two backgrounds or two habits.",
+          "The tense changes the meaning, not just the style."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "ar": {
+      "section": "endings-ar",
+      "steps": [
+        "Check the verb ends in -ar.",
+        "Remove -ar and add -ava, -ávamos or -avam.",
+        "Nós carries the accent: -ávamos."
+      ]
+    },
+    "er-ir": {
+      "section": "endings-er-ir",
+      "steps": [
+        "Check the verb ends in -er or -ir.",
+        "Remove it and add -ia, -íamos or -iam.",
+        "Never -ava with these verbs."
+      ]
+    },
+    "irregular": {
+      "section": "irregulars",
+      "steps": [
+        "Is it ser, ter, vir or pôr?",
+        "Ser: era. Ter, vir, pôr: tinha, vinha, punha.",
+        "Add -mos or -m like the regular verbs, with the accent for nós."
+      ]
+    },
+    "habits": {
+      "section": "habits",
+      "steps": [
+        "Look for sempre, todo dia, aos sábados, used to.",
+        "Repeated: imperfect.",
+        "A gente takes the ele form."
+      ]
+    },
+    "description": {
+      "section": "description",
+      "steps": [
+        "Is it what something was like?",
+        "Describe with era, estava, fazia, tinha.",
+        "Weather with fazer stays singular."
+      ]
+    },
+    "age-time": {
+      "section": "age-time",
+      "steps": [
+        "Age: tinha + number + anos.",
+        "Time: era uma hora, eram for other hours."
+      ]
+    },
+    "progressive": {
+      "section": "progressive",
+      "steps": [
+        "Estar in the imperfect for the subject.",
+        "Infinitive minus -r plus -ndo."
+      ]
+    },
+    "background-event": {
+      "section": "background-event",
+      "steps": [
+        "Ongoing scene: imperfect.",
+        "What happened once in it: pretérito perfeito.",
+        "De repente marks the event."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "imperfect-ar-1",
+      "pattern": "ar",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "falar · nós · imperfeito",
+      "answers": [
+        "falávamos",
+        "nós falávamos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "falamos",
+            "nós falamos"
+          ],
+          "why": "Falamos is the present (and the pretérito perfeito). It does not say what used to happen."
+        },
+        {
+          "answers": [
+            "falavam",
+            "nós falavam"
+          ],
+          "why": "Falavam is the eles/vocês form. Nós has its own ending, with an accent on the stressed á."
+        },
+        {
+          "answers": [
+            "falava",
+            "nós falava"
+          ],
+          "why": "Falava is the eu and ele/ela form, one single person. Nós needs the plural ending."
+        }
+      ],
+      "row": "nós",
+      "hint": "Stem fal- plus the nós ending of -ar verbs.",
+      "feedback": "Nós in the imperfect of -ar verbs ends in -ávamos.",
+      "explanation": "Nós falávamos: fal- + -ávamos. The accent marks the stress: fa-LÁ-va-mos."
+    },
+    {
+      "id": "imperfect-ar-2",
+      "pattern": "ar",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "morar · eles · imperfeito",
+      "answers": [
+        "moravam",
+        "eles moravam"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "moraram",
+            "eles moraram"
+          ],
+          "why": "Moraram is the pretérito perfeito: a finished event. The imperfect describes how things were, with -av- in the middle."
+        },
+        {
+          "answers": [
+            "morava",
+            "eles morava"
+          ],
+          "why": "Morava is the singular form. Eles is several people and adds -m."
+        },
+        {
+          "answers": [
+            "moram",
+            "eles moram"
+          ],
+          "why": "Moram is the present: they live there now."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "hint": "Stem mor- plus the eles ending.",
+      "feedback": "Eles in the imperfect of -ar verbs ends in -avam.",
+      "explanation": "Eles moravam: mor- + -avam."
+    },
+    {
+      "id": "imperfect-ar-3",
+      "pattern": "ar",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "trabalhar · eu · imperfeito",
+      "answers": [
+        "trabalhava",
+        "eu trabalhava"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "trabalhei",
+            "eu trabalhei"
+          ],
+          "why": "Trabalhei is the pretérito perfeito: one finished event. The imperfect form keeps -ava."
+        },
+        {
+          "answers": [
+            "trabalho",
+            "eu trabalho"
+          ],
+          "why": "Trabalho is the present: I work now."
+        },
+        {
+          "answers": [
+            "trabalhávamos",
+            "eu trabalhávamos"
+          ],
+          "why": "Trabalhávamos is the nós form. Eu takes the short singular ending."
+        }
+      ],
+      "row": "eu",
+      "hint": "Eu and ele share the same form in the imperfect.",
+      "feedback": "Eu in the imperfect of -ar verbs ends in -ava.",
+      "explanation": "Eu trabalhava: trabalh- + -ava. Ele trabalhava looks exactly the same."
+    },
+    {
+      "id": "imperfect-ar-4",
+      "pattern": "ar",
+      "type": "complete",
+      "instruction": "Write cantar in the imperfect.",
+      "source": "Minha mãe ____ (cantar) muito bem.",
+      "answers": [
+        "cantava"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "cantou"
+          ],
+          "why": "Cantou is the pretérito perfeito: one performance that is over. The sentence describes how she always sang."
+        },
+        {
+          "answers": [
+            "cantavam"
+          ],
+          "why": "Cantavam is the plural form. Minha mãe is one person."
+        },
+        {
+          "answers": [
+            "canta"
+          ],
+          "why": "Canta is the present: she sings now."
+        }
+      ],
+      "row": "você / ele / ela",
+      "hint": "One person, -ar verb: stem plus the singular imperfect ending.",
+      "feedback": "Ela form of an -ar verb in the imperfect: -ava.",
+      "explanation": "Minha mãe cantava muito bem: cant- + -ava. It describes how things used to be.",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "mãe",
+          "en": "mother",
+          "word": "people-010"
+        },
+        {
+          "pt": "cantar",
+          "en": "sing",
+          "word": "leisure-024"
+        },
+        {
+          "pt": "muito",
+          "en": "very, a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "bem",
+          "en": "well"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-ar-5",
+      "pattern": "ar",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Nós ____ no parque todo domingo.",
+      "options": [
+        "andávamos",
+        "andavam",
+        "andava",
+        "andíamos"
+      ],
+      "answers": [
+        "andávamos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "andavam"
+          ],
+          "why": "Andavam is the eles/vocês form. The subject here includes the speaker."
+        },
+        {
+          "answers": [
+            "andava"
+          ],
+          "why": "Andava is the eu and ele/ela form, one single person."
+        },
+        {
+          "answers": [
+            "andíamos"
+          ],
+          "why": "-íamos is the ending of -er and -ir verbs. Andar is an -ar verb and keeps -av-."
+        }
+      ],
+      "row": "nós",
+      "hint": "Andar is an -ar verb. Which ending goes with nós?",
+      "feedback": "Nós + -ar verb in the imperfect: -ávamos.",
+      "explanation": "Nós andávamos: and- + -ávamos. Todo domingo marks a habit, so the imperfect fits.",
+      "gloss": [
+        {
+          "pt": "parque",
+          "en": "park",
+          "word": "town-025"
+        },
+        {
+          "pt": "todo",
+          "en": "every",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-ar-6",
+      "pattern": "ar",
+      "type": "rewrite",
+      "instruction": "Change eu to nós and adjust the verb.",
+      "source": "Eu estudava à noite.",
+      "answers": [
+        "Nós estudávamos à noite.",
+        "Estudávamos à noite."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós estudava à noite."
+          ],
+          "why": "Estudava is the singular form. The new subject is plural and needs its own ending."
+        },
+        {
+          "answers": [
+            "Nós estudavam à noite."
+          ],
+          "why": "Estudavam is the eles/vocês form, for other people, not for a group that includes the speaker."
+        },
+        {
+          "answers": [
+            "Nós estudamos à noite."
+          ],
+          "why": "Estudamos is the present or the pretérito perfeito. Keep the sentence in the imperfect."
+        }
+      ],
+      "row": "nós",
+      "hint": "Swap -ava for the nós ending.",
+      "feedback": "The nós form of -ar verbs in the imperfect ends in -ávamos.",
+      "explanation": "Nós estudávamos à noite: estud- + -ávamos. The pronoun can be dropped, since the ending already says nós.",
+      "gloss": [
+        {
+          "pt": "estudava",
+          "en": "studied, used to study (estudar)",
+          "word": "verbs-055"
+        },
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-er-ir-1",
+      "pattern": "er-ir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "comer · eu · imperfeito",
+      "answers": [
+        "comia",
+        "eu comia"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "comi",
+            "eu comi"
+          ],
+          "why": "Comi is the pretérito perfeito: one meal that is over. The imperfect has -ia."
+        },
+        {
+          "answers": [
+            "comava",
+            "eu comava"
+          ],
+          "why": "-ava belongs to -ar verbs. Comer is an -er verb."
+        },
+        {
+          "answers": [
+            "como",
+            "eu como"
+          ],
+          "why": "Como is the present: I eat."
+        }
+      ],
+      "row": "eu",
+      "hint": "-er verbs: stem plus -ia.",
+      "feedback": "Eu in the imperfect of -er verbs ends in -ia.",
+      "explanation": "Eu comia: com- + -ia."
+    },
+    {
+      "id": "imperfect-er-ir-2",
+      "pattern": "er-ir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "dormir · nós · imperfeito",
+      "answers": [
+        "dormíamos",
+        "nós dormíamos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "dormimos",
+            "nós dormimos"
+          ],
+          "why": "Dormimos is the present or the pretérito perfeito. The imperfect adds -íamos."
+        },
+        {
+          "answers": [
+            "dormiam",
+            "nós dormiam"
+          ],
+          "why": "Dormiam is the eles/vocês form. The subject includes the speaker."
+        },
+        {
+          "answers": [
+            "dormávamos",
+            "nós dormávamos"
+          ],
+          "why": "-ávamos is for -ar verbs. Dormir is an -ir verb."
+        }
+      ],
+      "row": "nós",
+      "hint": "-ir verbs take the same endings as -er verbs.",
+      "feedback": "Nós in the imperfect of -er and -ir verbs ends in -íamos.",
+      "explanation": "Nós dormíamos: dorm- + -íamos, with the accent on the í."
+    },
+    {
+      "id": "imperfect-er-ir-3",
+      "pattern": "er-ir",
+      "type": "complete",
+      "instruction": "Write beber in the imperfect.",
+      "source": "Você ____ (beber) café de manhã?",
+      "answers": [
+        "bebia"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "bebeu"
+          ],
+          "why": "Bebeu is the pretérito perfeito: one cup on one morning. The question asks about a habit."
+        },
+        {
+          "answers": [
+            "bebava"
+          ],
+          "why": "-ava belongs to -ar verbs. Beber ends in -er."
+        },
+        {
+          "answers": [
+            "bebiam"
+          ],
+          "why": "Bebiam is the plural form. Você takes the singular verb."
+        }
+      ],
+      "row": "você / ele / ela",
+      "hint": "Você takes the ele form. Beber is an -er verb.",
+      "feedback": "Você + -er verb in the imperfect: -ia.",
+      "explanation": "Você bebia café de manhã? beb- + -ia: did you use to drink coffee in the morning?",
+      "gloss": [
+        {
+          "pt": "beber",
+          "en": "drink",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-er-ir-4",
+      "pattern": "er-ir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Antigamente eles ____ muitas cartas.",
+      "options": [
+        "escreviam",
+        "escrevia",
+        "escrevíamos",
+        "escrevavam"
+      ],
+      "answers": [
+        "escreviam"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "escrevia"
+          ],
+          "why": "Escrevia is the singular form. Eles is several people."
+        },
+        {
+          "answers": [
+            "escrevíamos"
+          ],
+          "why": "Escrevíamos is the nós form, a group with the speaker in it."
+        },
+        {
+          "answers": [
+            "escrevavam"
+          ],
+          "why": "-avam is for -ar verbs. Escrever ends in -er."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "hint": "Plural subject, -er verb.",
+      "feedback": "Eles + -er verb in the imperfect: -iam.",
+      "explanation": "Antigamente eles escreviam muitas cartas: escrev- + -iam. Antigamente sets up an old habit.",
+      "gloss": [
+        {
+          "pt": "Antigamente",
+          "en": "in the old days"
+        },
+        {
+          "pt": "muitas",
+          "en": "many",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "cartas",
+          "en": "letters",
+          "word": "town-007"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-er-ir-5",
+      "pattern": "er-ir",
+      "type": "repair",
+      "instruction": "Fix the verb. Keep nós.",
+      "source": "Nós comávamos em casa.",
+      "answers": [
+        "Nós comíamos em casa.",
+        "Comíamos em casa."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós comávamos em casa."
+          ],
+          "why": "That is the sentence unchanged. -ávamos is the ending of -ar verbs, and comer is an -er verb."
+        },
+        {
+          "answers": [
+            "Nós comiam em casa."
+          ],
+          "why": "Comiam is the eles form. The subject includes the speaker."
+        },
+        {
+          "answers": [
+            "Nós comemos em casa."
+          ],
+          "why": "Comemos is the present or the pretérito perfeito. The sentence should stay in the imperfect."
+        }
+      ],
+      "row": "nós",
+      "hint": "Look at the infinitive: comer.",
+      "feedback": "-er verbs take -íamos for nós.",
+      "explanation": "Nós comíamos em casa: com- + -íamos.",
+      "gloss": [
+        {
+          "pt": "comávamos",
+          "en": "ate (comer, misspelt form)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "casa",
+          "en": "home",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-er-ir-6",
+      "pattern": "er-ir",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "They used to go to bed early.",
+      "tokens": [
+        "Eles",
+        "dormavam",
+        "dormiam",
+        "cedo."
+      ],
+      "answers": [
+        "Eles dormiam cedo."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eles dormavam cedo."
+          ],
+          "why": "Dormavam takes the -ar ending, but dormir is an -ir verb."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "hint": "Used to = imperfect. Dormir is an -ir verb.",
+      "feedback": "Eles + -ir verb in the imperfect: -iam.",
+      "explanation": "Eles dormiam cedo: dorm- + -iam. English used to is the imperfect."
+    },
+    {
+      "id": "imperfect-irregular-1",
+      "pattern": "irregular",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ser · nós · imperfeito",
+      "answers": [
+        "éramos",
+        "nós éramos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "somos",
+            "nós somos"
+          ],
+          "why": "Somos is the present: we are."
+        },
+        {
+          "answers": [
+            "fomos",
+            "nós fomos"
+          ],
+          "why": "Fomos is the pretérito perfeito of ser and ir: a finished event. For a description of the past use the imperfect of ser."
+        },
+        {
+          "answers": [
+            "eram",
+            "nós eram"
+          ],
+          "why": "Eram is the eles form. The subject includes the speaker."
+        }
+      ],
+      "row": "ser",
+      "hint": "Ser is irregular: era, éramos, eram.",
+      "feedback": "Ser in the imperfect: eu era, nós éramos, eles eram.",
+      "explanation": "Nós éramos: the stem is er-, with the accent on the first é."
+    },
+    {
+      "id": "imperfect-irregular-2",
+      "pattern": "irregular",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "pôr · ela · imperfeito",
+      "answers": [
+        "punha",
+        "ela punha"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "pôs",
+            "ela pôs"
+          ],
+          "why": "Pôs is the pretérito perfeito: she put it once. The imperfect of pôr is built on pu-."
+        },
+        {
+          "answers": [
+            "ponhava",
+            "ela ponhava"
+          ],
+          "why": "Pôr does not take -ava. It works like ter and vir, with -nha."
+        },
+        {
+          "answers": [
+            "põe",
+            "ela põe"
+          ],
+          "why": "Põe is the present."
+        }
+      ],
+      "row": "pôr",
+      "hint": "Pôr rhymes with ter and vir in the imperfect: tinha, vinha…",
+      "feedback": "Pôr in the imperfect: punha, púnhamos, punham.",
+      "explanation": "Ela punha. Pôr, ter and vir all end in -nha in the imperfect."
+    },
+    {
+      "id": "imperfect-irregular-3",
+      "pattern": "irregular",
+      "type": "complete",
+      "instruction": "Write ter in the imperfect.",
+      "source": "Meu avô ____ (ter) um cachorro grande.",
+      "answers": [
+        "tinha"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "teve"
+          ],
+          "why": "Teve is the pretérito perfeito. Owning a dog for years is a description, not a single event."
+        },
+        {
+          "answers": [
+            "tia"
+          ],
+          "why": "Ter is irregular. Adding -ia to t- gives a different word, aunt."
+        },
+        {
+          "answers": [
+            "tinham"
+          ],
+          "why": "Tinham is the plural form. Meu avô is one person."
+        }
+      ],
+      "row": "ter",
+      "hint": "Ter is irregular in the imperfect: it ends in -nha.",
+      "feedback": "Ter in the imperfect: tinha, tínhamos, tinham.",
+      "explanation": "Meu avô tinha um cachorro grande: my grandfather had a big dog, for a long time.",
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my"
+        },
+        {
+          "pt": "avô",
+          "en": "grandfather",
+          "word": "people-015"
+        },
+        {
+          "pt": "ter",
+          "en": "have",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "cachorro",
+          "en": "dog",
+          "word": "nature-026"
+        },
+        {
+          "pt": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-irregular-4",
+      "pattern": "irregular",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eles ____ muito jovens.",
+      "options": [
+        "eram",
+        "éramos",
+        "era",
+        "seram"
+      ],
+      "answers": [
+        "eram"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "éramos"
+          ],
+          "why": "Éramos is the nós form, a group that includes the speaker."
+        },
+        {
+          "answers": [
+            "era"
+          ],
+          "why": "Era is singular. Eles is several people."
+        },
+        {
+          "answers": [
+            "seram"
+          ],
+          "why": "Ser is irregular: its imperfect is not built on se-."
+        }
+      ],
+      "row": "ser",
+      "hint": "Ser has its own imperfect, starting with er-.",
+      "feedback": "Ser in the imperfect: era, éramos, eram.",
+      "explanation": "Eles eram muito jovens: they were very young, a description of the past.",
+      "gloss": [
+        {
+          "pt": "muito",
+          "en": "very, a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "jovens",
+          "en": "young",
+          "word": "qualities-010"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-irregular-5",
+      "pattern": "irregular",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "My father used to come home at six.",
+      "answers": [
+        "Meu pai vinha para casa às seis.",
+        "O meu pai vinha para casa às seis.",
+        "Meu pai vinha para casa às seis horas.",
+        "O meu pai vinha para casa às seis horas."
+      ],
+      "alternatives": [
+        {
+          "answer": "Meu pai vinha pra casa às seis.",
+          "accepted": true,
+          "message": "Pra is the everyday spoken form of para. Written Portuguese keeps para."
+        },
+        {
+          "answer": "Meu pai chegava em casa às seis.",
+          "accepted": true,
+          "message": "Right, and very natural. This exercise practises vir: vinha para casa."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Meu pai veio para casa às seis."
+          ],
+          "why": "Veio is the pretérito perfeito: one evening. Used to asks for the habit form."
+        },
+        {
+          "answers": [
+            "Meu pai vinia para casa às seis."
+          ],
+          "why": "Vir is irregular: its imperfect ends in -nha, like ter."
+        },
+        {
+          "answers": [
+            "Meu pai via para casa às seis."
+          ],
+          "why": "Via is the imperfect of ver, to see."
+        }
+      ],
+      "row": "vir",
+      "hint": "Used to come: the imperfect of vir.",
+      "feedback": "Vir in the imperfect: vinha, vínhamos, vinham.",
+      "explanation": "Meu pai vinha para casa às seis. Vinha is vir in the imperfect; às seis means at six."
+    },
+    {
+      "id": "imperfect-irregular-6",
+      "pattern": "irregular",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Eu ponhava açúcar no café.",
+      "answers": [
+        "Eu punha açúcar no café.",
+        "Punha açúcar no café."
+      ],
+      "alternatives": [
+        {
+          "answer": "Eu colocava açúcar no café.",
+          "accepted": true,
+          "message": "Right, and very Brazilian: colocar is the everyday verb for put. Here you practise pôr."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu ponhava açúcar no café."
+          ],
+          "why": "That is the sentence unchanged. Pôr is irregular and does not take -ava."
+        },
+        {
+          "answers": [
+            "Eu pus açúcar no café."
+          ],
+          "why": "Pus is the pretérito perfeito: once. The sentence describes a habit."
+        },
+        {
+          "answers": [
+            "Eu ponho açúcar no café."
+          ],
+          "why": "Ponho is the present. The sentence is about the past."
+        }
+      ],
+      "row": "pôr",
+      "hint": "Pôr follows ter and vir: tinha, vinha…",
+      "feedback": "Pôr in the imperfect: eu punha.",
+      "explanation": "Eu punha açúcar no café: I used to put sugar in my coffee.",
+      "gloss": [
+        {
+          "pt": "ponhava",
+          "en": "put (pôr, wrong form)"
+        },
+        {
+          "pt": "açúcar",
+          "en": "sugar",
+          "word": "food-006"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-habits-1",
+      "pattern": "habits",
+      "type": "choose",
+      "instruction": "Choose the form for a past habit.",
+      "source": "Quando eu era criança, eu ____ na rua todo dia.",
+      "options": [
+        "brincava",
+        "brinquei",
+        "brinco",
+        "brincavam"
+      ],
+      "answers": [
+        "brincava"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "brinquei"
+          ],
+          "why": "Brinquei is the pretérito perfeito: one time. Todo dia says it happened again and again."
+        },
+        {
+          "answers": [
+            "brinco"
+          ],
+          "why": "Brinco is the present, but the sentence is about childhood."
+        },
+        {
+          "answers": [
+            "brincavam"
+          ],
+          "why": "Brincavam is the plural form. The subject is eu."
+        }
+      ],
+      "hint": "Todo dia + childhood = a habit.",
+      "feedback": "Repeated past actions go in the imperfect.",
+      "explanation": "Quando eu era criança, eu brincava na rua todo dia: I used to play in the street every day.",
+      "gloss": [
+        {
+          "pt": "Quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "era",
+          "en": "was (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "criança",
+          "en": "child",
+          "word": "people-004"
+        },
+        {
+          "pt": "rua",
+          "en": "street",
+          "word": "travel-002"
+        },
+        {
+          "pt": "todo",
+          "en": "every",
+          "word": "essentials-045"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-habits-2",
+      "pattern": "habits",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "We used to go to the beach every summer.",
+      "answers": [
+        "Nós íamos à praia todo verão.",
+        "Íamos à praia todo verão.",
+        "Nós íamos para a praia todo verão.",
+        "Íamos para a praia todo verão.",
+        "A gente ia à praia todo verão.",
+        "A gente ia para a praia todo verão.",
+        "Nós íamos à praia todos os verões.",
+        "Íamos à praia todos os verões."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós fomos à praia todo verão."
+          ],
+          "why": "Fomos is the pretérito perfeito of ir: one trip. Used to needs the habit form."
+        },
+        {
+          "answers": [
+            "Nós vamos à praia todo verão."
+          ],
+          "why": "Vamos is the present: we go now."
+        },
+        {
+          "answers": [
+            "Nós íamos à praia todo o verão."
+          ],
+          "why": "Todo o verão means the whole summer long. Every summer is todo verão."
+        }
+      ],
+      "hint": "Ir in the imperfect follows the -ir pattern: ia, íamos, iam.",
+      "feedback": "Habit in the past: imperfect of ir.",
+      "explanation": "Nós íamos à praia todo verão. With a gente the verb is singular: a gente ia."
+    },
+    {
+      "id": "imperfect-habits-3",
+      "pattern": "habits",
+      "type": "rewrite",
+      "instruction": "Turn it into a past habit: put the verb in the imperfect.",
+      "source": "Eu jogo futebol aos sábados.",
+      "answers": [
+        "Eu jogava futebol aos sábados.",
+        "Jogava futebol aos sábados."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu joguei futebol aos sábados."
+          ],
+          "why": "Joguei is the pretérito perfeito: one game. A weekly habit takes the imperfect."
+        },
+        {
+          "answers": [
+            "Eu jogavam futebol aos sábados."
+          ],
+          "why": "Jogavam is the plural form. The subject is still eu."
+        },
+        {
+          "answers": [
+            "Eu jogia futebol aos sábados."
+          ],
+          "why": "-ia belongs to -er and -ir verbs. Jogar is an -ar verb."
+        }
+      ],
+      "hint": "Jogar is an -ar verb: stem plus -ava.",
+      "feedback": "Aos sábados is a habit: the imperfect.",
+      "explanation": "Eu jogava futebol aos sábados: I used to play football on Saturdays.",
+      "gloss": [
+        {
+          "pt": "jogo",
+          "en": "play (jogar)",
+          "word": "verbs-076"
+        },
+        {
+          "pt": "futebol",
+          "en": "football, soccer",
+          "word": "leisure-006"
+        },
+        {
+          "pt": "sábados",
+          "en": "Saturdays",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-habits-4",
+      "pattern": "habits",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "My grandmother used to cook every Sunday.",
+      "tokens": [
+        "Minha",
+        "avó",
+        "cozinhou",
+        "cozinhava",
+        "todo",
+        "domingo."
+      ],
+      "answers": [
+        "Minha avó cozinhava todo domingo."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Minha avó cozinhou todo domingo."
+          ],
+          "why": "Cozinhou is the pretérito perfeito, for one meal. Used to points to the habit form."
+        }
+      ],
+      "hint": "Used to = imperfect.",
+      "feedback": "A repeated action in the past takes the imperfect.",
+      "explanation": "Minha avó cozinhava todo domingo: cozinh- + -ava."
+    },
+    {
+      "id": "imperfect-habits-5",
+      "pattern": "habits",
+      "type": "complete",
+      "instruction": "Write almoçar in the imperfect.",
+      "source": "A gente sempre ____ (almoçar) juntos.",
+      "answers": [
+        "almoçava"
+      ],
+      "alternatives": [
+        {
+          "answer": "almoçávamos",
+          "accepted": false,
+          "message": "A gente means we, but it takes the ele/ela form of the verb, not the nós form."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "almoçou"
+          ],
+          "why": "Almoçou is the pretérito perfeito: one lunch. Sempre makes it a habit."
+        },
+        {
+          "answers": [
+            "almoçavam"
+          ],
+          "why": "Almoçavam is the eles form. A gente is grammatically one subject."
+        }
+      ],
+      "hint": "A gente takes the same verb form as ele.",
+      "feedback": "A gente + imperfect: -ava, like ele.",
+      "explanation": "A gente sempre almoçava juntos: we always had lunch together.",
+      "gloss": [
+        {
+          "pt": "gente",
+          "en": "a gente: we (informal)",
+          "word": "essentials-024"
+        },
+        {
+          "pt": "sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "almoçar",
+          "en": "have lunch"
+        },
+        {
+          "pt": "juntos",
+          "en": "together"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-description-1",
+      "pattern": "description",
+      "type": "choose",
+      "instruction": "Choose the form that sets the scene.",
+      "source": "Quando eu saí de casa, ____ muito frio.",
+      "options": [
+        "fazia",
+        "faziam",
+        "faz",
+        "fez"
+      ],
+      "answers": [
+        "fazia"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "faziam"
+          ],
+          "why": "Weather with fazer is always singular: there is no real subject."
+        },
+        {
+          "answers": [
+            "faz"
+          ],
+          "why": "Faz is the present, but the leaving already happened."
+        },
+        {
+          "answers": [
+            "fez"
+          ],
+          "why": "Fez sums the cold up as a finished event. Weather around a moment in the past is the background, so it takes the imperfect."
+        }
+      ],
+      "hint": "The weather is the background to the moment you left.",
+      "feedback": "Weather in a past scene: imperfect.",
+      "explanation": "Quando eu saí de casa, fazia muito frio: it was very cold when I left home.",
+      "gloss": [
+        {
+          "pt": "Quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "saí",
+          "en": "left (sair)",
+          "word": "verbs-034"
+        },
+        {
+          "pt": "casa",
+          "en": "home",
+          "word": "home-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very, a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "frio",
+          "en": "cold",
+          "word": "qualities-024"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-description-2",
+      "pattern": "description",
+      "type": "complete",
+      "instruction": "Write ser in the imperfect.",
+      "source": "A casa ____ (ser) pequena, mas bonita.",
+      "answers": [
+        "era"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "foi"
+          ],
+          "why": "Foi is the pretérito perfeito, for events. The size and look of a house is a description."
+        },
+        {
+          "answers": [
+            "é"
+          ],
+          "why": "É is the present: the house is small now."
+        },
+        {
+          "answers": [
+            "eram"
+          ],
+          "why": "Eram is plural. A casa is one thing."
+        }
+      ],
+      "hint": "Describing a place in the past: imperfect of ser.",
+      "feedback": "Descriptions in the past take era.",
+      "explanation": "A casa era pequena, mas bonita: the house was small but pretty.",
+      "gloss": [
+        {
+          "pt": "casa",
+          "en": "home",
+          "word": "home-001"
+        },
+        {
+          "pt": "ser",
+          "en": "be (permanent)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "pequena",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "pt": "bonita",
+          "en": "pretty",
+          "word": "qualities-005"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-description-3",
+      "pattern": "description",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "It was very hot.",
+      "answers": [
+        "Fazia muito calor.",
+        "Estava muito quente.",
+        "Estava muito calor."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Era muito quente."
+          ],
+          "why": "Ser describes what something is like in general. For the weather that day use fazer or estar."
+        },
+        {
+          "answers": [
+            "Fez muito calor."
+          ],
+          "why": "Fez is the pretérito perfeito. It only works when you sum up a period, like ontem fez calor. As a description use the imperfect."
+        },
+        {
+          "answers": [
+            "Fazia muito quente."
+          ],
+          "why": "Fazer goes with the noun: calor. Quente is the adjective and goes with estar."
+        }
+      ],
+      "hint": "Weather: fazer + calor, or estar + quente.",
+      "feedback": "Weather as a description takes the imperfect.",
+      "explanation": "Fazia muito calor or Estava muito quente: both describe the weather back then."
+    },
+    {
+      "id": "imperfect-description-4",
+      "pattern": "description",
+      "type": "repair",
+      "instruction": "Fix the verb that describes him.",
+      "source": "Ele foi alto e tinha cabelo escuro.",
+      "answers": [
+        "Ele era alto e tinha cabelo escuro.",
+        "Era alto e tinha cabelo escuro."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ele foi alto e tinha cabelo escuro."
+          ],
+          "why": "That is the sentence unchanged. Being tall is a description, not an event that happened."
+        },
+        {
+          "answers": [
+            "Ele estava alto e tinha cabelo escuro."
+          ],
+          "why": "Estar is for states that change. Height is a lasting trait, so it takes ser."
+        }
+      ],
+      "hint": "Height is a description: which past of ser?",
+      "feedback": "Descriptions of people in the past: era.",
+      "explanation": "Ele era alto e tinha cabelo escuro: both verbs are in the imperfect because they describe him.",
+      "gloss": [
+        {
+          "pt": "foi",
+          "en": "was (ser, one-off form)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "alto",
+          "en": "tall",
+          "word": "qualities-011"
+        },
+        {
+          "pt": "tinha",
+          "en": "had (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "cabelo",
+          "en": "hair",
+          "word": "health-time-017"
+        },
+        {
+          "pt": "escuro",
+          "en": "dark",
+          "word": "qualities-045"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-description-5",
+      "pattern": "description",
+      "type": "rewrite",
+      "instruction": "Put the sentence in the past.",
+      "source": "Ela está cansada e triste.",
+      "answers": [
+        "Ela estava cansada e triste.",
+        "Estava cansada e triste."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ela esteve cansada e triste."
+          ],
+          "why": "Esteve is the pretérito perfeito: a closed period. A state at that moment is a description, so it takes the imperfect."
+        },
+        {
+          "answers": [
+            "Ela era cansada e triste."
+          ],
+          "why": "Being tired is a passing state, so it stays with estar."
+        },
+        {
+          "answers": [
+            "Ela estavam cansada e triste."
+          ],
+          "why": "Estavam is the plural form. Ela is one person."
+        }
+      ],
+      "hint": "Feelings at a moment in the past: estar in the imperfect.",
+      "feedback": "Estar in the imperfect: estava.",
+      "explanation": "Ela estava cansada e triste: she was tired and sad. Estar is regular: est- + -ava.",
+      "gloss": [
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cansada",
+          "en": "tired",
+          "word": "feelings-011"
+        },
+        {
+          "pt": "triste",
+          "en": "sad",
+          "word": "feelings-009"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-age-time-1",
+      "pattern": "age-time",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "____ oito horas quando o trem chegou.",
+      "options": [
+        "Eram",
+        "Era",
+        "Foram",
+        "Éramos"
+      ],
+      "answers": [
+        "Eram"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Era"
+          ],
+          "why": "Era is only for one o’clock, noon and midnight: era uma hora. Oito horas is plural."
+        },
+        {
+          "answers": [
+            "Foram"
+          ],
+          "why": "Foram is the pretérito perfeito. Clock time in the past is always the imperfect."
+        },
+        {
+          "answers": [
+            "Éramos"
+          ],
+          "why": "Éramos means we were. The time has no personal subject."
+        }
+      ],
+      "hint": "Time takes ser, and it agrees with the hours.",
+      "feedback": "Clock time in the past: eram + plural hours.",
+      "explanation": "Eram oito horas quando o trem chegou: it was eight o’clock when the train arrived.",
+      "gloss": [
+        {
+          "pt": "oito",
+          "en": "eight",
+          "word": "health-time-053"
+        },
+        {
+          "pt": "horas",
+          "en": "hours, o’clock",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "trem",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "pt": "chegou",
+          "en": "arrived (chegar)",
+          "word": "verbs-035"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-age-time-2",
+      "pattern": "age-time",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I was ten years old.",
+      "answers": [
+        "Eu tinha dez anos.",
+        "Tinha dez anos.",
+        "Eu tinha dez anos de idade."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu era dez anos."
+          ],
+          "why": "Age in Portuguese is something you have, not something you are."
+        },
+        {
+          "answers": [
+            "Eu tive dez anos."
+          ],
+          "why": "Tive is the pretérito perfeito. Age in the past is a description."
+        },
+        {
+          "answers": [
+            "Eu estava dez anos."
+          ],
+          "why": "Estar is for passing states. Age is something you have in Portuguese."
+        }
+      ],
+      "hint": "In Portuguese you have years.",
+      "feedback": "Age in the past: ter in the imperfect.",
+      "explanation": "Eu tinha dez anos: literally I had ten years."
+    },
+    {
+      "id": "imperfect-age-time-3",
+      "pattern": "age-time",
+      "type": "complete",
+      "instruction": "Write ter in the imperfect.",
+      "source": "Quando ela ____ (ter) seis anos, morava no campo.",
+      "answers": [
+        "tinha"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "teve"
+          ],
+          "why": "Teve is the pretérito perfeito. Age is a description of that time."
+        },
+        {
+          "answers": [
+            "era"
+          ],
+          "why": "Age takes ter in Portuguese, not ser."
+        },
+        {
+          "answers": [
+            "tinham"
+          ],
+          "why": "Tinham is plural. Ela is one person."
+        }
+      ],
+      "row": "age",
+      "hint": "Age is had, not been.",
+      "feedback": "Age in the past: tinha.",
+      "explanation": "Quando ela tinha seis anos, morava no campo: when she was six she lived in the country.",
+      "gloss": [
+        {
+          "pt": "Quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "ter",
+          "en": "have",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "seis",
+          "en": "six",
+          "word": "health-time-051"
+        },
+        {
+          "pt": "anos",
+          "en": "years",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "morava",
+          "en": "lived (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "campo",
+          "en": "countryside",
+          "word": "nature-048"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-age-time-4",
+      "pattern": "age-time",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Era sete horas da manhã.",
+      "answers": [
+        "Eram sete horas da manhã."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Era sete horas da manhã."
+          ],
+          "why": "That is the sentence unchanged. With more than one hour the verb is plural."
+        },
+        {
+          "answers": [
+            "Foram sete horas da manhã."
+          ],
+          "why": "Foram is the pretérito perfeito. Telling the time in the past uses the imperfect."
+        }
+      ],
+      "hint": "Sete horas is plural.",
+      "feedback": "The verb agrees with the hours: eram.",
+      "explanation": "Eram sete horas da manhã: it was seven in the morning.",
+      "gloss": [
+        {
+          "pt": "Era",
+          "en": "was (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "sete",
+          "en": "seven",
+          "word": "health-time-052"
+        },
+        {
+          "pt": "horas",
+          "en": "hours, o’clock",
+          "word": "health-time-026"
+        },
+        {
+          "pt": "manhã",
+          "en": "morning",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-age-time-5",
+      "pattern": "age-time",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "It was one o’clock.",
+      "tokens": [
+        "Eram",
+        "Era",
+        "uma",
+        "hora."
+      ],
+      "answers": [
+        "Era uma hora."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eram uma hora."
+          ],
+          "why": "Uma hora is one hour, so the verb stays singular."
+        }
+      ],
+      "hint": "One o’clock is singular.",
+      "feedback": "One o’clock takes the singular era.",
+      "explanation": "Era uma hora: singular because uma hora is one hour. From two o’clock on: eram."
+    },
+    {
+      "id": "imperfect-progressive-1",
+      "pattern": "progressive",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eu ____ estudando quando você ligou.",
+      "options": [
+        "estava",
+        "estou",
+        "estavam",
+        "era"
+      ],
+      "answers": [
+        "estava"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "estou"
+          ],
+          "why": "Estou is the present, but the call is in the past."
+        },
+        {
+          "answers": [
+            "estavam"
+          ],
+          "why": "Estavam is the plural form. The subject is eu."
+        },
+        {
+          "answers": [
+            "era"
+          ],
+          "why": "An action in progress is built with estar, never with ser."
+        }
+      ],
+      "hint": "In progress at that moment: estar in the imperfect + gerúndio.",
+      "feedback": "Estava + -ndo: was doing.",
+      "explanation": "Eu estava estudando quando você ligou: I was studying when you called.",
+      "gloss": [
+        {
+          "pt": "estudando",
+          "en": "studying (estudar)",
+          "word": "verbs-055"
+        },
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "ligou",
+          "en": "called, phoned (ligar)",
+          "word": "media-012"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-progressive-2",
+      "pattern": "progressive",
+      "type": "complete",
+      "instruction": "Write dormir as a gerúndio.",
+      "source": "As crianças estavam ____ (dormir) no quarto.",
+      "answers": [
+        "dormindo"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "dormiam"
+          ],
+          "why": "Dormiam is a full imperfect form. After estavam you need the -ndo form."
+        },
+        {
+          "answers": [
+            "dormido"
+          ],
+          "why": "Dormido is the participle, used with ter. After estar use -ndo."
+        },
+        {
+          "answers": [
+            "dormendo"
+          ],
+          "why": "The gerúndio keeps the vowel of the infinitive: dormir gives -indo."
+        }
+      ],
+      "hint": "Take off -r and add -ndo.",
+      "feedback": "Estar + gerúndio: dormir → dormindo.",
+      "explanation": "As crianças estavam dormindo no quarto: the children were sleeping in the bedroom.",
+      "gloss": [
+        {
+          "pt": "crianças",
+          "en": "children",
+          "word": "people-004"
+        },
+        {
+          "pt": "estavam",
+          "en": "were (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "dormir",
+          "en": "sleep",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "quarto",
+          "en": "bedroom",
+          "word": "home-003"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-progressive-3",
+      "pattern": "progressive",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "What were you doing?",
+      "answers": [
+        "O que você estava fazendo?",
+        "Que você estava fazendo?",
+        "O que vocês estavam fazendo?",
+        "Você estava fazendo o quê?"
+      ],
+      "alternatives": [
+        {
+          "answer": "O que você fazia?",
+          "accepted": true,
+          "message": "Correct too: the simple imperfect can also mean was doing. Estava fazendo is the most common in Brazil."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "O que você fez?"
+          ],
+          "why": "Fez asks what you did, a finished action. Were you doing asks what was in progress."
+        },
+        {
+          "answers": [
+            "O que você estava fazer?"
+          ],
+          "why": "After estava the verb takes the -ndo form, not the infinitive."
+        },
+        {
+          "answers": [
+            "O que você era fazendo?"
+          ],
+          "why": "An action in progress is built with estar, not ser."
+        }
+      ],
+      "hint": "Was doing: estava + fazendo.",
+      "feedback": "Action in progress: estar in the imperfect + gerúndio.",
+      "explanation": "O que você estava fazendo? Estava + fazendo, the -ndo form of fazer."
+    },
+    {
+      "id": "imperfect-progressive-4",
+      "pattern": "progressive",
+      "type": "rewrite",
+      "instruction": "Put it in the past: it was happening then.",
+      "source": "Ele está lendo um livro.",
+      "answers": [
+        "Ele estava lendo um livro.",
+        "Estava lendo um livro."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ele esteve lendo um livro."
+          ],
+          "why": "Esteve is the pretérito perfeito. For an action in progress at a moment use the imperfect of estar."
+        },
+        {
+          "answers": [
+            "Ele estava ler um livro."
+          ],
+          "why": "Keep the -ndo form after estar. Only the estar part changes."
+        },
+        {
+          "answers": [
+            "Ele estavam lendo um livro."
+          ],
+          "why": "Estavam is plural. Ele is one person."
+        }
+      ],
+      "hint": "Only está changes. Lendo stays.",
+      "feedback": "Está lendo → estava lendo.",
+      "explanation": "Ele estava lendo um livro: he was reading a book.",
+      "gloss": [
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "lendo",
+          "en": "reading (ler)",
+          "word": "verbs-057"
+        },
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-progressive-5",
+      "pattern": "progressive",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We were watching television.",
+      "tokens": [
+        "Nós",
+        "estamos",
+        "estávamos",
+        "vendo",
+        "televisão."
+      ],
+      "answers": [
+        "Nós estávamos vendo televisão."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós estamos vendo televisão."
+          ],
+          "why": "Estamos is the present: we are watching now."
+        }
+      ],
+      "hint": "Were + -ing: estar in the imperfect + gerúndio.",
+      "feedback": "Nós estávamos + -ndo.",
+      "explanation": "Nós estávamos vendo televisão: estar is regular, est- + -ávamos."
+    },
+    {
+      "id": "imperfect-background-event-1",
+      "pattern": "background-event",
+      "type": "choose",
+      "instruction": "Choose the form for the background.",
+      "source": "Eu ____ quando ele chegou.",
+      "options": [
+        "lia",
+        "li",
+        "leio",
+        "liam"
+      ],
+      "answers": [
+        "lia"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "li"
+          ],
+          "why": "Li is the pretérito perfeito: a finished reading. The reading was going on when he came in."
+        },
+        {
+          "answers": [
+            "leio"
+          ],
+          "why": "Leio is the present, but the arrival is in the past."
+        },
+        {
+          "answers": [
+            "liam"
+          ],
+          "why": "Liam is plural. The subject is eu."
+        }
+      ],
+      "hint": "Which action was already going on?",
+      "feedback": "Background in progress: imperfect. The event: pretérito perfeito.",
+      "explanation": "Eu lia quando ele chegou: I was reading when he arrived. Chegou is the event that cut in.",
+      "gloss": [
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "chegou",
+          "en": "arrived (chegar)",
+          "word": "verbs-035"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-background-event-2",
+      "pattern": "background-event",
+      "type": "choose",
+      "instruction": "Choose the form for the event.",
+      "source": "Nós jantávamos quando, de repente, o telefone ____.",
+      "options": [
+        "tocou",
+        "tocava",
+        "toca",
+        "tocaram"
+      ],
+      "answers": [
+        "tocou"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "tocava"
+          ],
+          "why": "Tocava would make the ringing background, as if it rang every time. De repente marks one sudden event."
+        },
+        {
+          "answers": [
+            "toca"
+          ],
+          "why": "Toca is the present, but the dinner is in the past."
+        },
+        {
+          "answers": [
+            "tocaram"
+          ],
+          "why": "Tocaram is plural. O telefone is one thing."
+        }
+      ],
+      "hint": "De repente: one sudden event.",
+      "feedback": "The event that interrupts takes the pretérito perfeito.",
+      "explanation": "Nós jantávamos quando, de repente, o telefone tocou: we were having dinner when the phone suddenly rang.",
+      "gloss": [
+        {
+          "pt": "jantávamos",
+          "en": "were having dinner (jantar)"
+        },
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "repente",
+          "en": "de repente: suddenly"
+        },
+        {
+          "pt": "telefone",
+          "en": "phone"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-background-event-3",
+      "pattern": "background-event",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "It was raining when I left home.",
+      "answers": [
+        "Estava chovendo quando eu saí de casa.",
+        "Estava chovendo quando saí de casa.",
+        "Chovia quando eu saí de casa.",
+        "Chovia quando saí de casa."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Choveu quando eu saí de casa."
+          ],
+          "why": "Choveu is a finished event. The rain was the background, going on when you left."
+        },
+        {
+          "answers": [
+            "Estava chovendo quando eu saía de casa."
+          ],
+          "why": "Saía makes your leaving a background too. Leaving is the event: one moment."
+        },
+        {
+          "answers": [
+            "Era chovendo quando eu saí de casa."
+          ],
+          "why": "Ongoing actions use estar, not ser."
+        }
+      ],
+      "hint": "Background: the rain. Event: leaving.",
+      "feedback": "Imperfect for the rain, pretérito perfeito for leaving.",
+      "explanation": "Estava chovendo quando eu saí de casa. Chovia quando saí de casa says the same."
+    },
+    {
+      "id": "imperfect-background-event-4",
+      "pattern": "background-event",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I was sleeping when you called.",
+      "answers": [
+        "Eu estava dormindo quando você ligou.",
+        "Estava dormindo quando você ligou.",
+        "Eu dormia quando você ligou.",
+        "Dormia quando você ligou."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu dormi quando você ligou."
+          ],
+          "why": "Dormi means I fell asleep or slept, a finished event. The sleeping was in progress."
+        },
+        {
+          "answers": [
+            "Eu estava dormindo quando você ligava."
+          ],
+          "why": "Ligava makes the call a background or a habit. One call is an event."
+        }
+      ],
+      "hint": "Was sleeping: background. Called: event.",
+      "feedback": "Imperfect (or estava + -ndo) for the background, pretérito perfeito for the event.",
+      "explanation": "Eu estava dormindo quando você ligou: dormindo is in progress, ligou cuts in."
+    },
+    {
+      "id": "imperfect-background-event-5",
+      "pattern": "background-event",
+      "type": "repair",
+      "instruction": "Fix the verb for the event.",
+      "source": "Eu lia um livro quando a porta abria.",
+      "answers": [
+        "Eu lia um livro quando a porta abriu.",
+        "Lia um livro quando a porta abriu.",
+        "Eu lia um livro quando a porta se abriu."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu lia um livro quando a porta abria."
+          ],
+          "why": "That is the sentence unchanged. The door opening is one event that cut into the reading."
+        },
+        {
+          "answers": [
+            "Eu li um livro quando a porta abriu."
+          ],
+          "why": "Li makes the reading finished too. The reading was the background."
+        }
+      ],
+      "hint": "Which action happened once, suddenly?",
+      "feedback": "The event takes the pretérito perfeito: abriu.",
+      "explanation": "Eu lia um livro quando a porta abriu: lia is the background, abriu the event.",
+      "gloss": [
+        {
+          "pt": "lia",
+          "en": "was reading (ler)",
+          "word": "verbs-057"
+        },
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        },
+        {
+          "pt": "quando",
+          "en": "when",
+          "word": "essentials-034"
+        },
+        {
+          "pt": "porta",
+          "en": "door",
+          "word": "home-016"
+        },
+        {
+          "pt": "abria",
+          "en": "opened (abrir, background form)",
+          "word": "verbs-045"
+        }
+      ]
+    },
+    {
+      "id": "imperfect-background-event-6",
+      "pattern": "background-event",
+      "type": "rewrite",
+      "instruction": "Join the two sentences with quando.",
+      "source": "Eu trabalhava. Você ligou.",
+      "answers": [
+        "Eu trabalhava quando você ligou.",
+        "Trabalhava quando você ligou."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu trabalhei quando você ligou."
+          ],
+          "why": "Trabalhei makes the work a finished event. Keep the imperfect for the background."
+        },
+        {
+          "answers": [
+            "Eu trabalhava quando você ligava."
+          ],
+          "why": "Ligava turns the call into a habit. Keep the event in the pretérito perfeito."
+        }
+      ],
+      "hint": "Keep both verbs as they are.",
+      "feedback": "Background + quando + event.",
+      "explanation": "Eu trabalhava quando você ligou: I was working when you called.",
+      "gloss": [
+        {
+          "pt": "trabalhava",
+          "en": "was working (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "ligou",
+          "en": "called, phoned (ligar)",
+          "word": "media-012"
+        }
+      ]
+    }
+  ]
+}

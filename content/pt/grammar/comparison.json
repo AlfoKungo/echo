@@ -1,0 +1,2829 @@
+{
+  "id": "comparison",
+  "unit": "sentences",
+  "level": "A2",
+  "title": "More, less, as … as, the most",
+  "description": "Compare people and things: mais and menos do que, tão quanto, melhor and maior, and the most.",
+  "mark": "mais · tão · melhor",
+  "guide": {
+    "summary": "Portuguese compares with small words around the adjective: mais … do que, menos … do que, tão … quanto. Four common adjectives have their own one-word forms, a superlative is just the article plus the comparative, and -íssimo turns very + adjective into one word. The adjective always agrees with what it describes.",
+    "sections": [
+      {
+        "id": "mais-que",
+        "title": "More … than: mais … do que",
+        "text": "Portuguese has no -er ending. Put mais before the adjective and do que before the second thing. Plain que is just as correct and very common in speech.",
+        "table": {
+          "columns": [
+            "Meaning",
+            "Pattern",
+            "Example"
+          ],
+          "rows": [
+            [
+              "more … than",
+              "mais + adjective + do que",
+              "mais caro do que"
+            ],
+            [
+              "than + pronoun",
+              "do que eu, do que você",
+              "mais alta do que eu"
+            ]
+          ]
+        },
+        "steps": [
+          "Put mais right before the adjective.",
+          "Make the adjective agree with the first thing.",
+          "Add do que or que before the second thing."
+        ],
+        "examples": [
+          {
+            "pt": "O trem é mais rápido do que o ônibus.",
+            "en": "The train is faster than the bus."
+          },
+          {
+            "pt": "Minha irmã é mais alta que eu.",
+            "en": "My sister is taller than me."
+          }
+        ],
+        "watch": [
+          "Than is never de: mais caro de o hotel is wrong.",
+          "Muito means very and cannot be followed by do que.",
+          "After than use eu, not mim: mais alta do que eu."
+        ]
+      },
+      {
+        "id": "menos-que",
+        "title": "Less … than: menos … do que",
+        "text": "Menos works exactly like mais. Brazilians use it less than English does: they often prefer mais with the opposite adjective, but both are correct.",
+        "table": {
+          "columns": [
+            "Meaning",
+            "Pattern",
+            "Example"
+          ],
+          "rows": [
+            [
+              "less … than",
+              "menos + adjective + do que",
+              "menos doce do que"
+            ],
+            [
+              "same idea with mais",
+              "mais + opposite adjective",
+              "mais barato do que"
+            ]
+          ]
+        },
+        "steps": [
+          "Put menos before the adjective.",
+          "Finish with do que or que, never como."
+        ],
+        "examples": [
+          {
+            "pt": "O chá é menos doce do que o suco.",
+            "en": "The tea is less sweet than the juice."
+          }
+        ],
+        "watch": [
+          "Pouco means little and does not compare.",
+          "Como never follows menos."
+        ]
+      },
+      {
+        "id": "tao-quanto",
+        "title": "As … as: tão … quanto",
+        "text": "To say two things are equal, put tão before the adjective and quanto or como before the second thing. Tão never changes form. Não before the verb makes not as … as.",
+        "table": {
+          "columns": [
+            "Meaning",
+            "Pattern",
+            "Example"
+          ],
+          "rows": [
+            [
+              "as … as",
+              "tão + adjective + quanto / como",
+              "tão alta quanto"
+            ],
+            [
+              "not as … as",
+              "não + verb + tão … quanto",
+              "não está tão quente quanto"
+            ]
+          ]
+        },
+        "steps": [
+          "Check an adjective follows: then use tão.",
+          "Finish with quanto or como.",
+          "Never use do que after tão."
+        ],
+        "examples": [
+          {
+            "pt": "Ana é tão alta quanto a irmã.",
+            "en": "Ana is as tall as her sister."
+          },
+          {
+            "pt": "A sopa não está tão quente quanto o café.",
+            "en": "The soup is not as hot as the coffee."
+          }
+        ],
+        "watch": [
+          "Tão do que is a common mix-up: do que belongs to mais and menos.",
+          "Tanto is for nouns, tão for adjectives."
+        ]
+      },
+      {
+        "id": "tanto-quanto",
+        "title": "As much, as many: tanto … quanto",
+        "text": "Before a noun, as much or as many is tanto, and it agrees with the noun: tanto, tanta, tantos, tantas. After a verb, tanto quanto never changes.",
+        "table": {
+          "columns": [
+            "Before",
+            "Form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "tanto",
+              "masculine singular noun",
+              "tanto dinheiro"
+            ],
+            [
+              "tanta",
+              "feminine singular noun",
+              "tanta água"
+            ],
+            [
+              "tantos",
+              "masculine plural noun",
+              "tantos livros"
+            ],
+            [
+              "tantas",
+              "feminine plural noun",
+              "tantas aulas"
+            ],
+            [
+              "verb + tanto",
+              "after a verb, no noun",
+              "trabalha tanto quanto eu"
+            ]
+          ]
+        },
+        "steps": [
+          "Is a noun coming? If not, use tanto quanto unchanged.",
+          "If yes, find its gender and number.",
+          "Pick tanto, tanta, tantos or tantas and finish with quanto."
+        ],
+        "examples": [
+          {
+            "pt": "Eu tenho tantos livros quanto você.",
+            "en": "I have as many books as you."
+          },
+          {
+            "pt": "Ele trabalha tanto quanto eu.",
+            "en": "He works as much as me."
+          }
+        ],
+        "watch": [
+          "Never tão before a noun: tão comida is wrong.",
+          "Água is feminine: tanta água."
+        ]
+      },
+      {
+        "id": "irregular",
+        "title": "Better, worse, bigger, smaller",
+        "text": "Four adjectives have their own one-word comparatives. They do not change for gender but add -es in the plural.",
+        "table": {
+          "columns": [
+            "Adjective",
+            "Comparative",
+            "Never"
+          ],
+          "rows": [
+            [
+              "bom",
+              "melhor",
+              "mais bom"
+            ],
+            [
+              "mau / ruim",
+              "pior",
+              "mais mau"
+            ],
+            [
+              "grande",
+              "maior",
+              "mais grande"
+            ],
+            [
+              "pequeno",
+              "menor",
+              "mais pequeno (Portugal)"
+            ]
+          ]
+        },
+        "steps": [
+          "Spot bom, mau, ruim, grande or pequeno.",
+          "Replace mais + adjective with the single word.",
+          "Add -es if the subject is plural."
+        ],
+        "examples": [
+          {
+            "pt": "Este restaurante é melhor do que aquele.",
+            "en": "This restaurant is better than that one."
+          },
+          {
+            "pt": "Nossa casa é maior do que a sua.",
+            "en": "Our house is bigger than yours."
+          }
+        ],
+        "watch": [
+          "Mais ruim is heard in casual speech, but pior is the form to use.",
+          "Mais pequeno is used in Portugal; Brazilians say menor.",
+          "For age, say mais velho (older) and mais novo (younger), not maior or menor."
+        ]
+      },
+      {
+        "id": "superlative",
+        "title": "The most: o mais … de",
+        "text": "Put the article before the comparative: o mais caro, a mais bonita, o melhor. In or of after it is de + article: do, da, dos, das.",
+        "table": {
+          "columns": [
+            "Meaning",
+            "Pattern",
+            "Example"
+          ],
+          "rows": [
+            [
+              "the most … in",
+              "o / a + noun + mais + adjective + de",
+              "o restaurante mais caro da cidade"
+            ],
+            [
+              "the best",
+              "o / a melhor + noun",
+              "o melhor filme do ano"
+            ],
+            [
+              "the biggest",
+              "o / a maior + noun",
+              "o maior quarto da casa"
+            ]
+          ]
+        },
+        "steps": [
+          "Choose o or a to match the noun.",
+          "Add mais + adjective, or use melhor, pior, maior, menor.",
+          "Join de to the article of the place or group: da cidade, do ano."
+        ],
+        "examples": [
+          {
+            "pt": "É o melhor restaurante da cidade.",
+            "en": "It is the best restaurant in the city."
+          },
+          {
+            "pt": "Ana é a aluna mais inteligente da turma.",
+            "en": "Ana is the cleverest pupil in the class."
+          }
+        ],
+        "watch": [
+          "English in becomes de: da cidade, not na cidade.",
+          "Without the article, melhor only means better."
+        ]
+      },
+      {
+        "id": "issimo",
+        "title": "Very: -íssimo and ótimo",
+        "text": "Muito + adjective means very. The ending -íssimo says the same in one word, a little stronger: drop the final vowel and add -íssimo, -íssima. Very good is usually ótimo.",
+        "table": {
+          "columns": [
+            "Adjective",
+            "Very (muito)",
+            "One word"
+          ],
+          "rows": [
+            [
+              "bom",
+              "muito bom",
+              "ótimo"
+            ],
+            [
+              "linda",
+              "muito linda",
+              "lindíssima"
+            ],
+            [
+              "caro",
+              "muito caro",
+              "caríssimo"
+            ]
+          ]
+        },
+        "steps": [
+          "Drop the last vowel of the adjective.",
+          "Add -íssimo or -íssima to match the noun.",
+          "Never put muito in front of the new word."
+        ],
+        "examples": [
+          {
+            "pt": "Esta praia é lindíssima.",
+            "en": "This beach is really beautiful."
+          },
+          {
+            "pt": "O jantar estava ótimo.",
+            "en": "The dinner was very good."
+          }
+        ],
+        "watch": [
+          "Muito ótimo is wrong: ótimo already means very good.",
+          "The accent always falls on the í."
+        ]
+      },
+      {
+        "id": "agreement",
+        "title": "The adjective still agrees",
+        "text": "Comparison words never change (mais, menos, tão), but the adjective agrees with the thing it describes, the subject, not the thing after do que. Melhor, pior, maior, menor take -es in the plural.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "masculine singular",
+              "alto",
+              "O pai é mais alto."
+            ],
+            [
+              "feminine singular",
+              "pequena",
+              "A cozinha é menos pequena."
+            ],
+            [
+              "feminine plural",
+              "altas",
+              "Minhas irmãs são mais altas."
+            ],
+            [
+              "irregular plural",
+              "maiores",
+              "Estas cidades são maiores."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject, the thing described.",
+          "Give the adjective its gender and number.",
+          "Make the verb agree too: é or são."
+        ],
+        "examples": [
+          {
+            "pt": "As casas são tão caras quanto o apartamento.",
+            "en": "The houses are as expensive as the flat."
+          }
+        ],
+        "watch": [
+          "What follows do que does not decide the form.",
+          "Tão and mais never take an ending."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "mais-que": {
+      "section": "mais-que",
+      "steps": [
+        "Put mais before the adjective.",
+        "Make the adjective agree with the first thing.",
+        "Finish with do que or que."
+      ]
+    },
+    "menos-que": {
+      "section": "menos-que",
+      "steps": [
+        "Put menos before the adjective.",
+        "Finish with do que or que, never como."
+      ]
+    },
+    "tao-quanto": {
+      "section": "tao-quanto",
+      "steps": [
+        "Check an adjective follows the gap.",
+        "Use tão before it.",
+        "Finish with quanto or como."
+      ]
+    },
+    "tanto-quanto": {
+      "section": "tanto-quanto",
+      "steps": [
+        "Is there a noun after the gap? If not, use tanto unchanged.",
+        "Find the noun’s gender and number.",
+        "Pick tanto, tanta, tantos or tantas."
+      ]
+    },
+    "irregular": {
+      "section": "irregular",
+      "steps": [
+        "Spot bom, mau, ruim, grande or pequeno.",
+        "Use melhor, pior, maior or menor instead of mais + adjective.",
+        "Add -es for a plural subject."
+      ]
+    },
+    "superlative": {
+      "section": "superlative",
+      "steps": [
+        "Put o or a before the noun.",
+        "Add mais + adjective, or the one-word form.",
+        "Use de + article for in or of."
+      ]
+    },
+    "issimo": {
+      "section": "issimo",
+      "steps": [
+        "Drop the final vowel.",
+        "Add -íssimo or -íssima to match the noun.",
+        "Leave out muito."
+      ]
+    },
+    "agreement": {
+      "section": "agreement",
+      "steps": [
+        "Find the thing described.",
+        "Give the adjective its gender and number.",
+        "Make the verb agree too."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "comparison-mais-que-1",
+      "pattern": "mais-que",
+      "type": "choose",
+      "instruction": "Choose the word for more.",
+      "source": "O hotel é ____ caro do que o apartamento.",
+      "options": [
+        "mais",
+        "muito",
+        "tão"
+      ],
+      "answers": [
+        "mais"
+      ],
+      "hint": "Which word pairs with do que?",
+      "feedback": "Do que needs a word that says more or less in front of the adjective.",
+      "explanation": "More expensive than is mais caro do que: mais goes before the adjective, do que before the second thing.",
+      "mistakes": [
+        {
+          "answers": [
+            "muito"
+          ],
+          "why": "Muito means very. It describes one thing on its own and cannot be followed by do que."
+        },
+        {
+          "answers": [
+            "tão"
+          ],
+          "why": "Tão means as or so. It pairs with quanto or como to say two things are equal, never with do que."
+        }
+      ],
+      "row": "more … than",
+      "gloss": [
+        {
+          "pt": "hotel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "caro",
+          "en": "expensive",
+          "word": "qualities-051"
+        },
+        {
+          "pt": "apartamento",
+          "en": "flat, apartment",
+          "word": "home-002"
+        }
+      ]
+    },
+    {
+      "id": "comparison-mais-que-2",
+      "pattern": "mais-que",
+      "type": "complete",
+      "instruction": "Write the missing words for than.",
+      "source": "Minha irmã é mais alta ____ eu.",
+      "answers": [
+        "do que",
+        "que"
+      ],
+      "hint": "After mais + adjective, how do you say than?",
+      "feedback": "Than after mais is do que, or just que in everyday speech.",
+      "explanation": "Mais alta do que eu means taller than me. Both do que and que are correct; do que is the most common in Brazil.",
+      "mistakes": [
+        {
+          "answers": [
+            "de",
+            "de que"
+          ],
+          "why": "De alone means of or from. In a comparison with mais, than is never de."
+        },
+        {
+          "answers": [
+            "como",
+            "quanto"
+          ],
+          "why": "Como and quanto say as, for things that are equal. With mais you need the word for than."
+        },
+        {
+          "answers": [
+            "do que mim",
+            "que mim"
+          ],
+          "why": "After than, Portuguese keeps the subject form of the pronoun, so mim does not belong here."
+        }
+      ],
+      "row": "more … than",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "alta",
+          "en": "tall",
+          "word": "qualities-011"
+        }
+      ]
+    },
+    {
+      "id": "comparison-mais-que-3",
+      "pattern": "mais-que",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The train is faster than the bus.",
+      "answers": [
+        "O trem é mais rápido do que o ônibus.",
+        "O trem é mais rápido que o ônibus."
+      ],
+      "hint": "Faster is more fast in Portuguese.",
+      "feedback": "Put mais before rápido and do que before the bus.",
+      "explanation": "Portuguese has no -er ending: faster is mais rápido, and than is do que or que.",
+      "mistakes": [
+        {
+          "answers": [
+            "O trem é rápido do que o ônibus."
+          ],
+          "why": "Without mais nothing says which one is faster; do que needs a comparison word in front of the adjective."
+        },
+        {
+          "answers": [
+            "O trem é mais rápido de o ônibus.",
+            "O trem é mais rápido do ônibus."
+          ],
+          "why": "Than is not de here: after mais, the second thing comes after que, usually do que."
+        },
+        {
+          "answers": [
+            "O trem é muito rápido do que o ônibus."
+          ],
+          "why": "Muito means very, which is not a comparison."
+        }
+      ],
+      "row": "more … than"
+    },
+    {
+      "id": "comparison-mais-que-4",
+      "pattern": "mais-que",
+      "type": "build",
+      "instruction": "Build the sentence: This book is more interesting than the film. Leave one tile unused.",
+      "source": "This book is more interesting than the film.",
+      "tokens": [
+        "livro",
+        "Este",
+        "muito",
+        "é",
+        "mais",
+        "interessante",
+        "do",
+        "que",
+        "o",
+        "filme."
+      ],
+      "answers": [
+        "Este livro é mais interessante do que o filme."
+      ],
+      "hint": "Comparison word, adjective, then than.",
+      "feedback": "More interesting is mais interessante, followed by do que.",
+      "explanation": "Este livro é mais interessante do que o filme: mais before the adjective, do que before the thing compared.",
+      "mistakes": [
+        {
+          "answers": [
+            "Este livro é muito interessante do que o filme."
+          ],
+          "why": "Muito means very and cannot introduce a comparison with do que."
+        },
+        {
+          "answers": [
+            "Este livro é mais muito interessante do que o filme."
+          ],
+          "why": "Mais and muito do not stack: the extra tile is the one that means very."
+        }
+      ],
+      "row": "more … than"
+    },
+    {
+      "id": "comparison-mais-que-5",
+      "pattern": "mais-que",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "O café é caro mais do que o chá.",
+      "answers": [
+        "O café é mais caro do que o chá.",
+        "O café é mais caro que o chá."
+      ],
+      "hint": "Where does mais go?",
+      "feedback": "Mais stands right before the adjective it compares.",
+      "explanation": "The order is mais + adjective + do que: mais caro do que o chá.",
+      "mistakes": [
+        {
+          "answers": [
+            "O café é caro mais do que o chá."
+          ],
+          "why": "That is the sentence unchanged. Mais cannot come after the adjective."
+        },
+        {
+          "answers": [
+            "O café é caro do que o chá."
+          ],
+          "why": "Removing mais leaves nothing to say which drink costs more."
+        }
+      ],
+      "row": "more … than",
+      "gloss": [
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "caro",
+          "en": "expensive",
+          "word": "qualities-051"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "chá",
+          "en": "tea",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "comparison-mais-que-6",
+      "pattern": "mais-que",
+      "type": "rewrite",
+      "instruction": "Rewrite as a comparison: the hotel is more expensive than the house.",
+      "source": "O hotel é caro.",
+      "answers": [
+        "O hotel é mais caro do que a casa.",
+        "O hotel é mais caro que a casa."
+      ],
+      "hint": "Add mais before the adjective and do que before a casa.",
+      "feedback": "Two words make the comparison: mais and do que.",
+      "explanation": "O hotel é mais caro do que a casa. The adjective stays masculine because it still describes o hotel.",
+      "mistakes": [
+        {
+          "answers": [
+            "O hotel é mais cara do que a casa."
+          ],
+          "why": "The adjective describes the hotel, which is masculine, not the house."
+        },
+        {
+          "answers": [
+            "O hotel é caro do que a casa."
+          ],
+          "why": "Without mais there is no comparison for do que to finish."
+        },
+        {
+          "answers": [
+            "O hotel é mais caro de a casa.",
+            "O hotel é mais caro da casa."
+          ],
+          "why": "Da casa means of the house. Than after mais is que or do que."
+        }
+      ],
+      "row": "more … than",
+      "gloss": [
+        {
+          "pt": "hotel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "caro",
+          "en": "expensive",
+          "word": "qualities-051"
+        }
+      ]
+    },
+    {
+      "id": "comparison-menos-que-1",
+      "pattern": "menos-que",
+      "type": "choose",
+      "instruction": "Choose the word for less.",
+      "source": "O chá é ____ doce do que o suco.",
+      "options": [
+        "menos",
+        "pouco",
+        "mais"
+      ],
+      "answers": [
+        "menos"
+      ],
+      "hint": "Less, not little and not more.",
+      "feedback": "The comparison word for less is menos.",
+      "explanation": "Menos doce do que means less sweet than; it is built exactly like mais … do que.",
+      "mistakes": [
+        {
+          "answers": [
+            "pouco"
+          ],
+          "why": "Pouco means little or not very. It does not compare and cannot be followed by do que."
+        },
+        {
+          "answers": [
+            "mais"
+          ],
+          "why": "Mais means more: the tea would be sweeter, the opposite of what you are asked."
+        }
+      ],
+      "row": "less … than",
+      "gloss": [
+        {
+          "pt": "chá",
+          "en": "tea",
+          "word": "food-004"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "doce",
+          "en": "sweet",
+          "word": "qualities-072"
+        },
+        {
+          "pt": "suco",
+          "en": "juice",
+          "word": "food-037"
+        }
+      ]
+    },
+    {
+      "id": "comparison-menos-que-2",
+      "pattern": "menos-que",
+      "type": "complete",
+      "instruction": "Write the word for less.",
+      "source": "Este filme é ____ interessante do que o livro.",
+      "answers": [
+        "menos"
+      ],
+      "hint": "The opposite of mais.",
+      "feedback": "Less + adjective is menos + adjective.",
+      "explanation": "Menos interessante do que o livro: less interesting than the book.",
+      "mistakes": [
+        {
+          "answers": [
+            "mais"
+          ],
+          "why": "Mais means more, the opposite comparison."
+        },
+        {
+          "answers": [
+            "pouco",
+            "pouco mais"
+          ],
+          "why": "Pouco means little; with do que you need the comparison word for less."
+        }
+      ],
+      "row": "less … than",
+      "gloss": [
+        {
+          "pt": "Este",
+          "en": "this"
+        },
+        {
+          "pt": "filme",
+          "en": "film",
+          "word": "media-031"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "interessante",
+          "en": "interesting",
+          "word": "qualities-078"
+        },
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        }
+      ]
+    },
+    {
+      "id": "comparison-menos-que-3",
+      "pattern": "menos-que",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The market is less expensive than the shop.",
+      "answers": [
+        "O mercado é menos caro do que a loja.",
+        "O mercado é menos caro que a loja."
+      ],
+      "hint": "Less expensive: menos + adjective.",
+      "feedback": "Use menos before caro and do que before a loja.",
+      "explanation": "O mercado é menos caro do que a loja. Caro stays masculine because it describes o mercado.",
+      "mistakes": [
+        {
+          "answers": [
+            "O mercado é menos cara do que a loja."
+          ],
+          "why": "The adjective agrees with the market, the thing described, which is masculine."
+        },
+        {
+          "answers": [
+            "O mercado é menos caro como a loja."
+          ],
+          "why": "Como belongs with tão, for equal things. After menos you need do que or que."
+        },
+        {
+          "answers": [
+            "O mercado é mais caro do que a loja."
+          ],
+          "why": "Mais means more: that says the market costs more, the opposite of less expensive."
+        }
+      ],
+      "alternatives": [
+        {
+          "answer": "O mercado é mais barato do que a loja.",
+          "message": "Right in meaning: cheaper says the same thing. Here practise less expensive, menos caro.",
+          "accepted": true
+        }
+      ],
+      "row": "less … than"
+    },
+    {
+      "id": "comparison-menos-que-4",
+      "pattern": "menos-que",
+      "type": "rewrite",
+      "instruction": "Keep the meaning but start with O ônibus and use menos.",
+      "source": "O trem é mais rápido do que o ônibus.",
+      "answers": [
+        "O ônibus é menos rápido do que o trem.",
+        "O ônibus é menos rápido que o trem."
+      ],
+      "hint": "Swap the two vehicles and turn mais into menos.",
+      "feedback": "If the train is faster, the bus is less fast.",
+      "explanation": "O ônibus é menos rápido do que o trem says the same thing from the other side.",
+      "mistakes": [
+        {
+          "answers": [
+            "O ônibus é mais rápido do que o trem."
+          ],
+          "why": "Swapping the vehicles but keeping mais changes the meaning: now the bus wins."
+        },
+        {
+          "answers": [
+            "O ônibus é menos rápido do que o ônibus."
+          ],
+          "why": "The bus is compared with itself; the second thing must be the train."
+        }
+      ],
+      "row": "less … than",
+      "gloss": [
+        {
+          "pt": "trem",
+          "en": "train",
+          "word": "travel-006"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "rápido",
+          "en": "fast",
+          "word": "qualities-048"
+        },
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
+    },
+    {
+      "id": "comparison-menos-que-5",
+      "pattern": "menos-que",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "A sala é menos quente como a cozinha.",
+      "answers": [
+        "A sala é menos quente do que a cozinha.",
+        "A sala é menos quente que a cozinha."
+      ],
+      "hint": "Which word for than goes with menos?",
+      "feedback": "Menos pairs with do que, like mais.",
+      "explanation": "Como only follows tão, for equal things. Less hot than is menos quente do que.",
+      "mistakes": [
+        {
+          "answers": [
+            "A sala é menos quente como a cozinha."
+          ],
+          "why": "That is the sentence unchanged: como cannot follow menos."
+        },
+        {
+          "answers": [
+            "A sala é tão quente como a cozinha."
+          ],
+          "why": "That is grammatical but says the rooms are equally hot; the sentence wants less."
+        }
+      ],
+      "row": "less … than",
+      "gloss": [
+        {
+          "pt": "sala",
+          "en": "living room",
+          "word": "home-004"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "menos",
+          "en": "less"
+        },
+        {
+          "pt": "quente",
+          "en": "hot",
+          "word": "qualities-023"
+        },
+        {
+          "pt": "como",
+          "en": "as, like"
+        },
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tao-quanto-1",
+      "pattern": "tao-quanto",
+      "type": "choose",
+      "instruction": "Choose the word for as.",
+      "source": "Ana é ____ alta quanto a irmã.",
+      "options": [
+        "tão",
+        "tanto",
+        "mais"
+      ],
+      "answers": [
+        "tão"
+      ],
+      "hint": "An adjective follows the gap.",
+      "feedback": "Before an adjective, as … as is tão … quanto.",
+      "explanation": "Tão alta quanto a irmã: as tall as her sister. Tão never changes form.",
+      "mistakes": [
+        {
+          "answers": [
+            "tanto"
+          ],
+          "why": "Tanto goes with nouns, as much or as many. Alta is an adjective."
+        },
+        {
+          "answers": [
+            "mais"
+          ],
+          "why": "Mais pairs with do que, not with quanto."
+        }
+      ],
+      "row": "as … as",
+      "gloss": [
+        {
+          "pt": "Ana",
+          "en": "Ana (name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "alta",
+          "en": "tall",
+          "word": "qualities-011"
+        },
+        {
+          "pt": "quanto",
+          "en": "as"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tao-quanto-2",
+      "pattern": "tao-quanto",
+      "type": "choose",
+      "instruction": "Choose the word that finishes as … as.",
+      "source": "O meu quarto é tão grande ____ o seu.",
+      "options": [
+        "quanto",
+        "do que",
+        "de"
+      ],
+      "answers": [
+        "quanto"
+      ],
+      "hint": "Tão has its own partner word.",
+      "feedback": "Tão pairs with quanto or como.",
+      "explanation": "Tão grande quanto o seu: as big as yours. Como would be right too.",
+      "mistakes": [
+        {
+          "answers": [
+            "do que"
+          ],
+          "why": "Do que finishes mais or menos, not tão."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "De means of or from and never closes a comparison."
+        }
+      ],
+      "row": "as … as",
+      "gloss": [
+        {
+          "pt": "meu",
+          "en": "my"
+        },
+        {
+          "pt": "quarto",
+          "en": "bedroom",
+          "word": "home-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "tão",
+          "en": "as, so"
+        },
+        {
+          "pt": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "pt": "seu",
+          "en": "yours"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tao-quanto-3",
+      "pattern": "tao-quanto",
+      "type": "complete",
+      "instruction": "Write the word that finishes as … as.",
+      "source": "O chá está tão quente ____ o café.",
+      "answers": [
+        "quanto",
+        "como"
+      ],
+      "hint": "What follows tão + adjective?",
+      "feedback": "Tão … quanto or tão … como.",
+      "explanation": "O chá está tão quente quanto o café: the tea is as hot as the coffee.",
+      "mistakes": [
+        {
+          "answers": [
+            "do que",
+            "que"
+          ],
+          "why": "That closes a mais or menos comparison. With tão the things are equal."
+        },
+        {
+          "answers": [
+            "tanto"
+          ],
+          "why": "Tanto is the as much word for nouns; it does not close the comparison."
+        }
+      ],
+      "row": "as … as",
+      "gloss": [
+        {
+          "pt": "chá",
+          "en": "tea",
+          "word": "food-004"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "tão",
+          "en": "as, so"
+        },
+        {
+          "pt": "quente",
+          "en": "hot",
+          "word": "qualities-023"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tao-quanto-4",
+      "pattern": "tao-quanto",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Pedro is as tall as his father.",
+      "answers": [
+        "Pedro é tão alto quanto o pai.",
+        "Pedro é tão alto como o pai.",
+        "Pedro é tão alto quanto o pai dele.",
+        "Pedro é tão alto como o pai dele.",
+        "Pedro é tão alto quanto o seu pai.",
+        "Pedro é tão alto como o seu pai."
+      ],
+      "hint": "As + adjective + as.",
+      "feedback": "Use tão before alto and quanto or como before the father.",
+      "explanation": "Pedro é tão alto quanto o pai. Brazilians often say o pai alone when it is clear whose father.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pedro é tanto alto quanto o pai."
+          ],
+          "why": "Tanto is for nouns; before an adjective the word for as is different."
+        },
+        {
+          "answers": [
+            "Pedro é tão alto do que o pai.",
+            "Pedro é tão alto que o pai."
+          ],
+          "why": "Do que belongs with mais and menos. Equal things take quanto or como."
+        },
+        {
+          "answers": [
+            "Pedro é como alto como o pai."
+          ],
+          "why": "The first as is not como; como only comes second."
+        }
+      ],
+      "row": "as … as"
+    },
+    {
+      "id": "comparison-tao-quanto-5",
+      "pattern": "tao-quanto",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Minha casa é tão bonita do que a sua.",
+      "answers": [
+        "Minha casa é tão bonita quanto a sua.",
+        "Minha casa é tão bonita como a sua.",
+        "A minha casa é tão bonita quanto a sua.",
+        "A minha casa é tão bonita como a sua."
+      ],
+      "hint": "Look at the word after bonita.",
+      "feedback": "Tão needs its own partner, not do que.",
+      "explanation": "Tão bonita quanto a sua (or como a sua): as pretty as yours.",
+      "mistakes": [
+        {
+          "answers": [
+            "Minha casa é tão bonita do que a sua."
+          ],
+          "why": "That is the sentence unchanged: do que cannot finish tão."
+        },
+        {
+          "answers": [
+            "Minha casa é mais bonita do que a sua."
+          ],
+          "why": "Grammatical, but it changes the meaning from equal to prettier. Fix the partner word instead."
+        }
+      ],
+      "row": "as … as",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "casa",
+          "en": "house, home",
+          "word": "home-001"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "tão",
+          "en": "as, so"
+        },
+        {
+          "pt": "bonita",
+          "en": "pretty",
+          "word": "qualities-005"
+        },
+        {
+          "pt": "sua",
+          "en": "yours"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tao-quanto-6",
+      "pattern": "tao-quanto",
+      "type": "build",
+      "instruction": "Build the sentence: The soup is not as hot as the coffee. Leave one tile unused.",
+      "source": "The soup is not as hot as the coffee.",
+      "tokens": [
+        "não",
+        "A",
+        "sopa",
+        "tanto",
+        "está",
+        "tão",
+        "quente",
+        "quanto",
+        "o",
+        "café."
+      ],
+      "answers": [
+        "A sopa não está tão quente quanto o café."
+      ],
+      "hint": "Não goes before the verb; then as + adjective + as.",
+      "feedback": "Before an adjective, as … as is tão … quanto.",
+      "explanation": "A sopa não está tão quente quanto o café: não before está, tão before quente.",
+      "mistakes": [
+        {
+          "answers": [
+            "A sopa não está tanto quente quanto o café."
+          ],
+          "why": "The unused tile should be the noun word: quente is an adjective."
+        }
+      ],
+      "row": "as … as"
+    },
+    {
+      "id": "comparison-tanto-quanto-1",
+      "pattern": "tanto-quanto",
+      "type": "choose",
+      "instruction": "Choose the word for as many.",
+      "source": "Eu tenho ____ livros quanto você.",
+      "options": [
+        "tantos",
+        "tanto",
+        "tantas",
+        "tão"
+      ],
+      "answers": [
+        "tantos"
+      ],
+      "hint": "Livros is masculine plural.",
+      "feedback": "Tanto agrees with the noun that follows it.",
+      "explanation": "Livros is masculine plural, so as many books is tantos livros.",
+      "mistakes": [
+        {
+          "answers": [
+            "tanto"
+          ],
+          "why": "That is the masculine singular form, for one mass like tempo. Livros is plural."
+        },
+        {
+          "answers": [
+            "tantas"
+          ],
+          "why": "That is the feminine plural; livros is masculine."
+        },
+        {
+          "answers": [
+            "tão"
+          ],
+          "why": "Tão goes before adjectives. Before a noun, use the form of tanto."
+        }
+      ],
+      "row": "tantos",
+      "gloss": [
+        {
+          "pt": "tenho",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "livros",
+          "en": "books",
+          "word": "school-013"
+        },
+        {
+          "pt": "quanto",
+          "en": "as"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tanto-quanto-2",
+      "pattern": "tanto-quanto",
+      "type": "choose",
+      "instruction": "Choose the word for as much.",
+      "source": "Ela bebe ____ água quanto eu.",
+      "options": [
+        "tanta",
+        "tanto",
+        "tão"
+      ],
+      "answers": [
+        "tanta"
+      ],
+      "hint": "Água is feminine.",
+      "feedback": "Tanto takes the gender of the noun after it.",
+      "explanation": "Água is feminine singular (a água), so as much water is tanta água.",
+      "mistakes": [
+        {
+          "answers": [
+            "tanto"
+          ],
+          "why": "The masculine form does not match água, which is feminine."
+        },
+        {
+          "answers": [
+            "tão"
+          ],
+          "why": "Tão is for adjectives; água is a noun."
+        }
+      ],
+      "row": "tanta",
+      "gloss": [
+        {
+          "pt": "bebe",
+          "en": "drinks (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "água",
+          "en": "water",
+          "word": "food-001"
+        },
+        {
+          "pt": "quanto",
+          "en": "as"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tanto-quanto-3",
+      "pattern": "tanto-quanto",
+      "type": "choose",
+      "instruction": "Choose the word for as much.",
+      "source": "Ele trabalha ____ quanto eu.",
+      "options": [
+        "tanto",
+        "tão",
+        "tanta"
+      ],
+      "answers": [
+        "tanto"
+      ],
+      "hint": "No noun follows: you compare a verb.",
+      "feedback": "After a verb, as much as is tanto quanto and never changes.",
+      "explanation": "Trabalha tanto quanto eu: works as much as me. With a verb there is no noun to agree with, so tanto stays as it is.",
+      "mistakes": [
+        {
+          "answers": [
+            "tão"
+          ],
+          "why": "Tão needs an adjective or adverb after it; here nothing follows but quanto."
+        },
+        {
+          "answers": [
+            "tanta"
+          ],
+          "why": "There is no feminine noun to agree with: after a verb the form never changes."
+        }
+      ],
+      "row": "verb + tanto",
+      "gloss": [
+        {
+          "pt": "trabalha",
+          "en": "works (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "quanto",
+          "en": "as"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tanto-quanto-4",
+      "pattern": "tanto-quanto",
+      "type": "complete",
+      "instruction": "Write the word for as many.",
+      "source": "Nós temos ____ aulas quanto vocês.",
+      "answers": [
+        "tantas"
+      ],
+      "hint": "Aulas is feminine plural.",
+      "feedback": "Match tanto to aulas in gender and number.",
+      "explanation": "Aulas is feminine plural (as aulas), so as many classes is tantas aulas.",
+      "mistakes": [
+        {
+          "answers": [
+            "tantos"
+          ],
+          "why": "That is the masculine plural; aulas is feminine."
+        },
+        {
+          "answers": [
+            "tanto",
+            "tanta"
+          ],
+          "why": "Aulas is plural, so the form needs the plural -s."
+        },
+        {
+          "answers": [
+            "tão"
+          ],
+          "why": "Tão goes with adjectives; aulas is a noun."
+        }
+      ],
+      "row": "tantas",
+      "gloss": [
+        {
+          "pt": "temos",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "aulas",
+          "en": "classes",
+          "word": "school-007"
+        },
+        {
+          "pt": "quanto",
+          "en": "as"
+        }
+      ]
+    },
+    {
+      "id": "comparison-tanto-quanto-5",
+      "pattern": "tanto-quanto",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I do not have as much money as you.",
+      "answers": [
+        "Eu não tenho tanto dinheiro quanto você.",
+        "Não tenho tanto dinheiro quanto você.",
+        "Eu não tenho tanto dinheiro como você.",
+        "Não tenho tanto dinheiro como você."
+      ],
+      "hint": "Dinheiro is masculine singular.",
+      "feedback": "As much + noun is tanto + noun, agreeing with dinheiro.",
+      "explanation": "Dinheiro is masculine singular, so as much money is tanto dinheiro; quanto você finishes it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu não tenho tão dinheiro quanto você.",
+            "Não tenho tão dinheiro quanto você."
+          ],
+          "why": "Tão only goes before adjectives; dinheiro is a noun."
+        },
+        {
+          "answers": [
+            "Eu não tenho tanta dinheiro quanto você.",
+            "Não tenho tanta dinheiro quanto você."
+          ],
+          "why": "The feminine form does not match dinheiro, which is masculine."
+        },
+        {
+          "answers": [
+            "Eu não tenho tanto dinheiro do que você.",
+            "Não tenho tanto dinheiro do que você."
+          ],
+          "why": "Do que finishes mais and menos. After tanto use quanto or como."
+        }
+      ],
+      "row": "tanto"
+    },
+    {
+      "id": "comparison-tanto-quanto-6",
+      "pattern": "tanto-quanto",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ele come tão comida quanto o irmão.",
+      "answers": [
+        "Ele come tanta comida quanto o irmão.",
+        "Ele come tanta comida como o irmão."
+      ],
+      "hint": "Comida is a noun, and feminine.",
+      "feedback": "Before a noun, as much is a form of tanto, agreeing with it.",
+      "explanation": "Comida is feminine singular, so as much food is tanta comida.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ele come tão comida quanto o irmão."
+          ],
+          "why": "That is the sentence unchanged: tão cannot stand before a noun."
+        },
+        {
+          "answers": [
+            "Ele come tanto comida quanto o irmão."
+          ],
+          "why": "Right word, wrong form: it must agree with comida, which is feminine."
+        }
+      ],
+      "row": "tanta",
+      "gloss": [
+        {
+          "pt": "come",
+          "en": "eats (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "tão",
+          "en": "as, so"
+        },
+        {
+          "pt": "comida",
+          "en": "food",
+          "word": "food-044"
+        },
+        {
+          "pt": "quanto",
+          "en": "as"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        }
+      ]
+    },
+    {
+      "id": "comparison-irregular-1",
+      "pattern": "irregular",
+      "type": "choose",
+      "instruction": "Choose the word for better.",
+      "source": "Este restaurante é ____ do que aquele.",
+      "options": [
+        "melhor",
+        "mais bom",
+        "bom"
+      ],
+      "answers": [
+        "melhor"
+      ],
+      "hint": "Bom has its own comparative.",
+      "feedback": "Better is one word in Portuguese.",
+      "explanation": "Bom becomes melhor: este restaurante é melhor do que aquele.",
+      "mistakes": [
+        {
+          "answers": [
+            "mais bom"
+          ],
+          "why": "Bom never takes mais; it has its own single-word form, just like good does in English."
+        },
+        {
+          "answers": [
+            "bom"
+          ],
+          "why": "Bom alone does not compare, so do que has nothing to finish."
+        }
+      ],
+      "row": "bom",
+      "gloss": [
+        {
+          "pt": "Este",
+          "en": "this"
+        },
+        {
+          "pt": "restaurante",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "aquele",
+          "en": "that one",
+          "word": "essentials-049"
+        }
+      ]
+    },
+    {
+      "id": "comparison-irregular-2",
+      "pattern": "irregular",
+      "type": "choose",
+      "instruction": "Choose the word for worse.",
+      "source": "Hoje o tempo está ____ do que ontem.",
+      "options": [
+        "pior",
+        "melhor",
+        "mais mau"
+      ],
+      "answers": [
+        "pior"
+      ],
+      "hint": "The opposite of better.",
+      "feedback": "Worse is one word, like better.",
+      "explanation": "Mau and ruim compare as pior: o tempo está pior do que ontem.",
+      "mistakes": [
+        {
+          "answers": [
+            "melhor"
+          ],
+          "why": "Melhor means better, the opposite of what you are asked."
+        },
+        {
+          "answers": [
+            "mais mau"
+          ],
+          "why": "Mau does not take mais to compare; it has its own single-word form."
+        }
+      ],
+      "row": "mau / ruim",
+      "gloss": [
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "tempo",
+          "en": "weather",
+          "word": "health-time-025"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "comparison-irregular-3",
+      "pattern": "irregular",
+      "type": "complete",
+      "instruction": "Write the one word for smaller.",
+      "source": "Minha casa é ____ do que o seu apartamento.",
+      "answers": [
+        "menor"
+      ],
+      "hint": "Pequeno has its own comparative.",
+      "feedback": "Smaller is one word in Brazil.",
+      "explanation": "Pequeno becomes menor: minha casa é menor do que o seu apartamento.",
+      "mistakes": [
+        {
+          "answers": [
+            "mais pequena",
+            "mais pequeno"
+          ],
+          "why": "You may hear this in Portugal, but in Brazil smaller is a single word."
+        },
+        {
+          "answers": [
+            "maior"
+          ],
+          "why": "Maior means bigger, the opposite."
+        },
+        {
+          "answers": [
+            "menos"
+          ],
+          "why": "Menos means less and needs an adjective after it."
+        }
+      ],
+      "row": "pequeno",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "casa",
+          "en": "house, home",
+          "word": "home-001"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "seu",
+          "en": "yours"
+        },
+        {
+          "pt": "apartamento",
+          "en": "flat, apartment",
+          "word": "home-002"
+        }
+      ]
+    },
+    {
+      "id": "comparison-irregular-4",
+      "pattern": "irregular",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Our house is bigger than yours.",
+      "answers": [
+        "Nossa casa é maior do que a sua.",
+        "Nossa casa é maior que a sua.",
+        "A nossa casa é maior do que a sua.",
+        "A nossa casa é maior que a sua."
+      ],
+      "hint": "Bigger is one word.",
+      "feedback": "Grande compares as maior, never mais grande.",
+      "explanation": "Grande becomes maior: nossa casa é maior do que a sua.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nossa casa é mais grande do que a sua.",
+            "A nossa casa é mais grande do que a sua."
+          ],
+          "why": "Grande has its own comparative; mais grande sounds wrong to Brazilians."
+        },
+        {
+          "answers": [
+            "Nossa casa é maior do que o seu.",
+            "A nossa casa é maior do que o seu."
+          ],
+          "why": "Yours stands for a house, which is feminine, so the possessive must be feminine too."
+        }
+      ],
+      "row": "grande"
+    },
+    {
+      "id": "comparison-irregular-5",
+      "pattern": "irregular",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "O meu quarto é mais grande do que o seu.",
+      "answers": [
+        "O meu quarto é maior do que o seu.",
+        "O meu quarto é maior que o seu.",
+        "Meu quarto é maior do que o seu.",
+        "Meu quarto é maior que o seu."
+      ],
+      "hint": "Mais + grande has a single-word form.",
+      "feedback": "Replace the two words with one.",
+      "explanation": "Grande compares as maior, so mais grande becomes maior.",
+      "mistakes": [
+        {
+          "answers": [
+            "O meu quarto é mais grande do que o seu."
+          ],
+          "why": "That is the sentence unchanged: grande does not take mais."
+        },
+        {
+          "answers": [
+            "O meu quarto é mais maior do que o seu."
+          ],
+          "why": "The single word already means bigger; mais in front doubles it."
+        }
+      ],
+      "row": "grande",
+      "gloss": [
+        {
+          "pt": "meu",
+          "en": "my"
+        },
+        {
+          "pt": "quarto",
+          "en": "bedroom",
+          "word": "home-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "pt": "seu",
+          "en": "yours"
+        }
+      ]
+    },
+    {
+      "id": "comparison-irregular-6",
+      "pattern": "irregular",
+      "type": "build",
+      "instruction": "Build the sentence: The coffee here is worse than at home. Leave two tiles unused.",
+      "source": "The coffee here is worse than at home.",
+      "tokens": [
+        "O",
+        "café",
+        "aqui",
+        "mais",
+        "é",
+        "pior",
+        "ruim",
+        "do",
+        "que",
+        "em",
+        "casa."
+      ],
+      "answers": [
+        "O café aqui é pior do que em casa."
+      ],
+      "hint": "Worse is one word.",
+      "feedback": "Ruim and mau compare as one word.",
+      "explanation": "O café aqui é pior do que em casa. In relaxed speech some Brazilians say mais ruim, but the standard form is the single word.",
+      "mistakes": [
+        {
+          "answers": [
+            "O café aqui é mais ruim do que em casa."
+          ],
+          "why": "Heard in casual speech, but written and careful Portuguese use the single word for worse."
+        }
+      ],
+      "row": "mau / ruim"
+    },
+    {
+      "id": "comparison-irregular-7",
+      "pattern": "irregular",
+      "type": "rewrite",
+      "instruction": "Keep the meaning but start with A casa.",
+      "source": "O hotel é maior do que a casa.",
+      "answers": [
+        "A casa é menor do que o hotel.",
+        "A casa é menor que o hotel."
+      ],
+      "hint": "If the hotel is bigger, the house is smaller.",
+      "feedback": "Swap the two things and use the opposite word.",
+      "explanation": "A casa é menor do que o hotel: maior and menor are the irregular forms of grande and pequeno.",
+      "mistakes": [
+        {
+          "answers": [
+            "A casa é mais pequena do que o hotel."
+          ],
+          "why": "Pequeno has a single-word comparative in Brazil."
+        },
+        {
+          "answers": [
+            "A casa é maior do que o hotel."
+          ],
+          "why": "Swapping the subject but keeping bigger reverses the meaning."
+        }
+      ],
+      "row": "pequeno",
+      "gloss": [
+        {
+          "pt": "hotel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "casa",
+          "en": "house, home",
+          "word": "home-001"
+        },
+        {
+          "pt": "maior",
+          "en": "bigger",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "comparison-superlative-1",
+      "pattern": "superlative",
+      "type": "choose",
+      "instruction": "Choose the word for in the.",
+      "source": "Este é o restaurante mais caro ____ cidade.",
+      "options": [
+        "da",
+        "na",
+        "que"
+      ],
+      "answers": [
+        "da"
+      ],
+      "hint": "Portuguese says the most expensive of the city.",
+      "feedback": "After a superlative, in is de + article.",
+      "explanation": "Cidade is feminine, so de + a = da: o restaurante mais caro da cidade.",
+      "mistakes": [
+        {
+          "answers": [
+            "na"
+          ],
+          "why": "Na is the everyday word for in the, but after the most … Portuguese uses of the."
+        },
+        {
+          "answers": [
+            "que"
+          ],
+          "why": "Que finishes a comparison between two things, not a superlative."
+        }
+      ],
+      "row": "the most … in",
+      "gloss": [
+        {
+          "pt": "Este",
+          "en": "this"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "restaurante",
+          "en": "restaurant",
+          "word": "travel-020"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "caro",
+          "en": "expensive",
+          "word": "qualities-051"
+        },
+        {
+          "pt": "cidade",
+          "en": "city, town",
+          "word": "travel-001"
+        }
+      ]
+    },
+    {
+      "id": "comparison-superlative-2",
+      "pattern": "superlative",
+      "type": "choose",
+      "instruction": "Choose the right word before aluna.",
+      "source": "Ana é ____ aluna mais inteligente da turma.",
+      "options": [
+        "a",
+        "uma",
+        "o"
+      ],
+      "answers": [
+        "a"
+      ],
+      "hint": "The cleverest: which kind of the?",
+      "feedback": "A superlative needs the definite article, agreeing with the noun.",
+      "explanation": "Aluna is feminine, so the cleverest pupil is a aluna mais inteligente.",
+      "mistakes": [
+        {
+          "answers": [
+            "uma"
+          ],
+          "why": "Uma means a, one of many. A superlative picks out the single top one."
+        },
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "That is the masculine article, and aluna is feminine."
+        }
+      ],
+      "row": "the most … in",
+      "gloss": [
+        {
+          "pt": "Ana",
+          "en": "Ana (name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "aluna",
+          "en": "pupil, student",
+          "word": "school-002"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "inteligente",
+          "en": "clever",
+          "word": "qualities-083"
+        },
+        {
+          "pt": "turma",
+          "en": "class",
+          "word": "school-045"
+        }
+      ]
+    },
+    {
+      "id": "comparison-superlative-3",
+      "pattern": "superlative",
+      "type": "complete",
+      "instruction": "Write the word for of the.",
+      "source": "Hoje é o dia mais quente ____ ano.",
+      "answers": [
+        "do"
+      ],
+      "hint": "De + o.",
+      "feedback": "Ano is masculine, so de joins o.",
+      "explanation": "O dia mais quente do ano: the hottest day of the year.",
+      "mistakes": [
+        {
+          "answers": [
+            "da"
+          ],
+          "why": "That is de + a, for a feminine noun; ano is masculine."
+        },
+        {
+          "answers": [
+            "no"
+          ],
+          "why": "No means in the; after a superlative Portuguese uses of the."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "De alone leaves out the article that ano needs here."
+        }
+      ],
+      "row": "the most … in",
+      "gloss": [
+        {
+          "pt": "Hoje",
+          "en": "today",
+          "word": "health-time-035"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "dia",
+          "en": "day",
+          "word": "health-time-028"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "quente",
+          "en": "hot",
+          "word": "qualities-023"
+        },
+        {
+          "pt": "ano",
+          "en": "year",
+          "word": "health-time-031"
+        }
+      ]
+    },
+    {
+      "id": "comparison-superlative-4",
+      "pattern": "superlative",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "It is the best restaurant in the city.",
+      "answers": [
+        "É o melhor restaurante da cidade.",
+        "Este é o melhor restaurante da cidade.",
+        "Esse é o melhor restaurante da cidade."
+      ],
+      "hint": "The best = o + better.",
+      "feedback": "The best is o melhor, and in the city is da cidade.",
+      "explanation": "O melhor restaurante da cidade: the irregular form with the article makes the superlative.",
+      "mistakes": [
+        {
+          "answers": [
+            "É o restaurante mais bom da cidade.",
+            "É o mais bom restaurante da cidade."
+          ],
+          "why": "Bom never takes mais, even in the superlative."
+        },
+        {
+          "answers": [
+            "É o melhor restaurante na cidade."
+          ],
+          "why": "After a superlative, in the becomes of the in Portuguese."
+        },
+        {
+          "answers": [
+            "É melhor restaurante da cidade."
+          ],
+          "why": "Without the article it means better, not the best."
+        }
+      ],
+      "row": "the best"
+    },
+    {
+      "id": "comparison-superlative-5",
+      "pattern": "superlative",
+      "type": "build",
+      "instruction": "Build the sentence: This is the biggest bedroom in the house. Leave two tiles unused.",
+      "source": "This is the biggest bedroom in the house.",
+      "tokens": [
+        "Este",
+        "é",
+        "o",
+        "mais",
+        "maior",
+        "quarto",
+        "grande",
+        "da",
+        "casa."
+      ],
+      "answers": [
+        "Este é o maior quarto da casa.",
+        "Este é o quarto maior da casa."
+      ],
+      "hint": "The biggest = o + bigger.",
+      "feedback": "Grande uses its irregular form in the superlative too.",
+      "explanation": "O maior quarto da casa: the article turns maior into the biggest.",
+      "mistakes": [
+        {
+          "answers": [
+            "Este é o mais grande quarto da casa.",
+            "Este é o quarto mais grande da casa."
+          ],
+          "why": "Grande never takes mais; leave both of those tiles unused."
+        }
+      ],
+      "row": "the biggest"
+    },
+    {
+      "id": "comparison-superlative-6",
+      "pattern": "superlative",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Este é o filme mais bom do ano.",
+      "answers": [
+        "Este é o melhor filme do ano."
+      ],
+      "hint": "Mais bom is never right.",
+      "feedback": "The best is a single word with the article.",
+      "explanation": "O melhor filme do ano: melhor usually stands before the noun.",
+      "mistakes": [
+        {
+          "answers": [
+            "Este é o filme mais bom do ano."
+          ],
+          "why": "That is the sentence unchanged: bom does not take mais."
+        },
+        {
+          "answers": [
+            "Este é o filme bom do ano."
+          ],
+          "why": "Without a comparison word it only says good, not the best."
+        }
+      ],
+      "row": "the best",
+      "gloss": [
+        {
+          "pt": "Este",
+          "en": "this"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "filme",
+          "en": "film",
+          "word": "media-031"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "ano",
+          "en": "year",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "bom",
+          "en": "good",
+          "word": "qualities-003"
+        }
+      ]
+    },
+    {
+      "id": "comparison-issimo-1",
+      "pattern": "issimo",
+      "type": "choose",
+      "instruction": "Choose the word for very good.",
+      "source": "A comida está ____.",
+      "options": [
+        "ótima",
+        "muito ótima",
+        "ótimo"
+      ],
+      "answers": [
+        "ótima"
+      ],
+      "hint": "One word already means very good; then check the gender.",
+      "feedback": "Ótimo already means very good, and it agrees with comida.",
+      "explanation": "Comida is feminine, so very good is ótima. Muito bom would also be right.",
+      "mistakes": [
+        {
+          "answers": [
+            "muito ótima"
+          ],
+          "why": "This word already means very good, so muito in front doubles it."
+        },
+        {
+          "answers": [
+            "ótimo"
+          ],
+          "why": "That is the masculine form; comida is feminine."
+        }
+      ],
+      "row": "bom",
+      "gloss": [
+        {
+          "pt": "comida",
+          "en": "food",
+          "word": "food-044"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        }
+      ]
+    },
+    {
+      "id": "comparison-issimo-2",
+      "pattern": "issimo",
+      "type": "complete",
+      "instruction": "Write the one word for very beautiful.",
+      "source": "Esta praia é ____ (linda).",
+      "answers": [
+        "lindíssima"
+      ],
+      "hint": "Drop the final vowel and add -íssima.",
+      "feedback": "Linda + -íssima: very beautiful in one word.",
+      "explanation": "Linda loses its -a and takes -íssima: esta praia é lindíssima.",
+      "mistakes": [
+        {
+          "answers": [
+            "lindíssimo"
+          ],
+          "why": "The ending must agree with praia, which is feminine."
+        },
+        {
+          "answers": [
+            "muito lindíssima"
+          ],
+          "why": "The -íssima ending already means very; muito doubles it."
+        },
+        {
+          "answers": [
+            "lindaíssima"
+          ],
+          "why": "The final vowel drops before the ending is added."
+        }
+      ],
+      "row": "linda",
+      "gloss": [
+        {
+          "pt": "Esta",
+          "en": "this"
+        },
+        {
+          "pt": "praia",
+          "en": "beach",
+          "word": "nature-008"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "linda",
+          "en": "beautiful",
+          "word": "qualities-006"
+        }
+      ]
+    },
+    {
+      "id": "comparison-issimo-3",
+      "pattern": "issimo",
+      "type": "rewrite",
+      "instruction": "Replace muito + adjective with one word in -íssimo.",
+      "source": "O hotel é muito caro.",
+      "answers": [
+        "O hotel é caríssimo."
+      ],
+      "hint": "Car- + -íssimo.",
+      "feedback": "Drop the final -o and add -íssimo.",
+      "explanation": "Caro becomes caríssimo: very expensive in one word.",
+      "mistakes": [
+        {
+          "answers": [
+            "O hotel é muito caríssimo."
+          ],
+          "why": "The ending already means very; muito must go."
+        },
+        {
+          "answers": [
+            "O hotel é caroíssimo."
+          ],
+          "why": "The final vowel drops before the ending is added."
+        },
+        {
+          "answers": [
+            "O hotel é caríssima."
+          ],
+          "why": "Hotel is masculine, so the ending stays masculine."
+        }
+      ],
+      "row": "caro",
+      "gloss": [
+        {
+          "pt": "hotel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "caro",
+          "en": "expensive",
+          "word": "qualities-051"
+        },
+        {
+          "pt": "muito",
+          "en": "very"
+        }
+      ]
+    },
+    {
+      "id": "comparison-issimo-4",
+      "pattern": "issimo",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "The dinner was very good.",
+      "answers": [
+        "O jantar estava muito bom.",
+        "O jantar estava ótimo.",
+        "O jantar foi muito bom.",
+        "O jantar foi ótimo."
+      ],
+      "hint": "Muito bom or one word.",
+      "feedback": "Very good is muito bom or ótimo, never muito ótimo.",
+      "explanation": "O jantar estava ótimo or muito bom. Brazilians rarely say boníssimo; ótimo is the everyday one-word form.",
+      "mistakes": [
+        {
+          "answers": [
+            "O jantar estava muito ótimo.",
+            "O jantar foi muito ótimo."
+          ],
+          "why": "Ótimo already means very good; muito doubles it."
+        },
+        {
+          "answers": [
+            "O jantar estava melhor.",
+            "O jantar foi melhor."
+          ],
+          "why": "Melhor means better, a comparison with something else."
+        }
+      ],
+      "row": "bom"
+    },
+    {
+      "id": "comparison-issimo-5",
+      "pattern": "issimo",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "O café está muito ótimo.",
+      "answers": [
+        "O café está ótimo.",
+        "O café está muito bom."
+      ],
+      "hint": "One word is too many.",
+      "feedback": "Ótimo already means very good.",
+      "explanation": "Say o café está ótimo, or o café está muito bom.",
+      "mistakes": [
+        {
+          "answers": [
+            "O café está muito ótimo."
+          ],
+          "why": "That is the sentence unchanged: muito plus a word that already means very good."
+        },
+        {
+          "answers": [
+            "O café está muito ótima.",
+            "O café está ótima."
+          ],
+          "why": "Café is masculine, so the adjective stays masculine."
+        }
+      ],
+      "row": "bom",
+      "gloss": [
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "muito",
+          "en": "very"
+        },
+        {
+          "pt": "ótimo",
+          "en": "excellent",
+          "word": "qualities-075"
+        }
+      ]
+    },
+    {
+      "id": "comparison-agreement-1",
+      "pattern": "agreement",
+      "type": "choose",
+      "instruction": "Choose the right form of tall.",
+      "source": "Minhas irmãs são mais ____ do que eu.",
+      "options": [
+        "altas",
+        "alto",
+        "alta",
+        "altos"
+      ],
+      "answers": [
+        "altas"
+      ],
+      "hint": "Who is tall? Minhas irmãs.",
+      "feedback": "The adjective agrees with the subject, not with eu.",
+      "explanation": "Irmãs is feminine plural, so tall is altas, whatever follows do que.",
+      "mistakes": [
+        {
+          "answers": [
+            "alto"
+          ],
+          "why": "The masculine singular matches neither the gender nor the number of irmãs."
+        },
+        {
+          "answers": [
+            "alta"
+          ],
+          "why": "Feminine is right, but irmãs is plural."
+        },
+        {
+          "answers": [
+            "altos"
+          ],
+          "why": "Plural is right, but irmãs is feminine."
+        }
+      ],
+      "row": "feminine plural",
+      "gloss": [
+        {
+          "pt": "Minhas",
+          "en": "my"
+        },
+        {
+          "pt": "irmãs",
+          "en": "sisters",
+          "word": "people-014"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        }
+      ]
+    },
+    {
+      "id": "comparison-agreement-2",
+      "pattern": "agreement",
+      "type": "complete",
+      "instruction": "Write pequeno in the right form.",
+      "source": "A cozinha é menos ____ do que a sala.",
+      "answers": [
+        "pequena"
+      ],
+      "hint": "Cozinha is feminine.",
+      "feedback": "With menos the adjective keeps its own form and agrees with the subject.",
+      "explanation": "A cozinha is feminine singular, so small is pequena.",
+      "mistakes": [
+        {
+          "answers": [
+            "pequeno"
+          ],
+          "why": "The masculine form does not match cozinha."
+        },
+        {
+          "answers": [
+            "menor"
+          ],
+          "why": "That replaces mais pequeno, and menos is already in the sentence."
+        }
+      ],
+      "row": "feminine singular",
+      "gloss": [
+        {
+          "pt": "cozinha",
+          "en": "kitchen",
+          "word": "home-005"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "menos",
+          "en": "less"
+        },
+        {
+          "pt": "sala",
+          "en": "living room",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "comparison-agreement-3",
+      "pattern": "agreement",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "As praias aqui são mais bonito do que lá.",
+      "answers": [
+        "As praias aqui são mais bonitas do que lá.",
+        "As praias aqui são mais bonitas que lá."
+      ],
+      "hint": "What is pretty?",
+      "feedback": "The adjective agrees with praias.",
+      "explanation": "Praias is feminine plural, so pretty is bonitas.",
+      "mistakes": [
+        {
+          "answers": [
+            "As praias aqui são mais bonito do que lá."
+          ],
+          "why": "That is the sentence unchanged: the adjective does not agree with praias."
+        },
+        {
+          "answers": [
+            "As praias aqui são mais bonita do que lá."
+          ],
+          "why": "Feminine now, but praias is plural."
+        }
+      ],
+      "row": "feminine plural",
+      "gloss": [
+        {
+          "pt": "praias",
+          "en": "beaches",
+          "word": "nature-008"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "mais",
+          "en": "more"
+        },
+        {
+          "pt": "bonito",
+          "en": "pretty",
+          "word": "qualities-005"
+        },
+        {
+          "pt": "lá",
+          "en": "there",
+          "word": "essentials-056"
+        }
+      ]
+    },
+    {
+      "id": "comparison-agreement-4",
+      "pattern": "agreement",
+      "type": "rewrite",
+      "instruction": "Replace O hotel with As casas and make everything agree.",
+      "source": "O hotel é tão caro quanto o apartamento.",
+      "answers": [
+        "As casas são tão caras quanto o apartamento.",
+        "As casas são tão caras como o apartamento."
+      ],
+      "hint": "Verb and adjective follow the new subject; tão never changes.",
+      "feedback": "Change ser and the adjective; leave tão and quanto as they are.",
+      "explanation": "As casas são tão caras quanto o apartamento: são for plural, caras for feminine plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "As casas são tão caro quanto o apartamento."
+          ],
+          "why": "The adjective still matches o hotel, not the new subject."
+        },
+        {
+          "answers": [
+            "As casas é tão caras quanto o apartamento."
+          ],
+          "why": "The verb must be plural for several houses."
+        },
+        {
+          "answers": [
+            "As casas são tantas caras quanto o apartamento."
+          ],
+          "why": "The word before the adjective never agrees; only the noun form does."
+        }
+      ],
+      "row": "feminine plural",
+      "gloss": [
+        {
+          "pt": "hotel",
+          "en": "hotel",
+          "word": "travel-019"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "tão",
+          "en": "as, so"
+        },
+        {
+          "pt": "caro",
+          "en": "expensive",
+          "word": "qualities-051"
+        },
+        {
+          "pt": "quanto",
+          "en": "as"
+        },
+        {
+          "pt": "apartamento",
+          "en": "flat, apartment",
+          "word": "home-002"
+        }
+      ]
+    },
+    {
+      "id": "comparison-agreement-5",
+      "pattern": "agreement",
+      "type": "choose",
+      "instruction": "Choose the word for bigger.",
+      "source": "Estas cidades são ____ do que a minha.",
+      "options": [
+        "maiores",
+        "maior",
+        "mais grandes"
+      ],
+      "answers": [
+        "maiores"
+      ],
+      "hint": "Cidades is plural.",
+      "feedback": "Maior has a plural in -es.",
+      "explanation": "Maior, melhor, pior and menor do not change for gender but add -es in the plural: maiores.",
+      "mistakes": [
+        {
+          "answers": [
+            "maior"
+          ],
+          "why": "Cidades is plural, and the comparative must be plural too."
+        },
+        {
+          "answers": [
+            "mais grandes"
+          ],
+          "why": "Grande never takes mais, plural or not."
+        }
+      ],
+      "row": "irregular plural",
+      "gloss": [
+        {
+          "pt": "Estas",
+          "en": "these"
+        },
+        {
+          "pt": "cidades",
+          "en": "cities",
+          "word": "travel-001"
+        },
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "minha",
+          "en": "mine"
+        }
+      ]
+    }
+  ]
+}

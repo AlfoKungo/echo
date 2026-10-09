@@ -125,7 +125,7 @@ const songs = createSongs({
 if (has('songs')) void songs.resume();
 wordAudio.resume();
 // A room the language does not have loads none of French's content for it.
-const course: Course = has('grammar') ? await loadCourse(join(language.content, 'grammar')) : { units: [], topics: [] };
+const course: Course = has('grammar') ? await loadCourse(join(language.content, 'grammar'), language.textKey) : { units: [], topics: [] };
 const grammar = createGrammarStore(course, { dbPath, audioDir: join(language.audio, 'grammar') });
 const grammarAudio = new Set(course.topics.flatMap(topic => topic.exercises.map(exercise => exercise.id)));
 // Lanes Echo writes itself (lib/text-topup.ts) live next to the database, out of the checked-in content.

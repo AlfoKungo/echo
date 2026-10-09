@@ -1,0 +1,2480 @@
+{
+  "id": "plural",
+  "unit": "nouns",
+  "level": "A1",
+  "title": "Plurals",
+  "description": "Make Swedish nouns plural with -or, -ar, -er, -n or no ending, and say the cars or the houses.",
+  "mark": "bilar · hus · män",
+  "guide": {
+    "summary": "Swedish has five ways to make a plural: -or, -ar, -er, -n and no ending at all, plus a few nouns that change their vowel. You do not have to guess: every noun in your deck carries a note with its definite and plural forms. Learn to read the note, then add -na or -en for the plural with the.",
+    "sections": [
+      {
+        "id": "notes",
+        "title": "Five groups, and the note gives the answer",
+        "text": "Every noun in your deck has a note such as bilen, bilar: the first word is the noun with the (the definite form), the second is the plural. The ending of the singular is a good clue to the group, but the note always settles it.",
+        "table": {
+          "columns": [
+            "Group",
+            "Singular",
+            "Note",
+            "Plural"
+          ],
+          "rows": [
+            [
+              "-or",
+              "en flicka",
+              "flickan, flickor",
+              "flickor"
+            ],
+            [
+              "-ar",
+              "en bil",
+              "bilen, bilar",
+              "bilar"
+            ],
+            [
+              "-er",
+              "en telefon",
+              "telefonen, telefoner",
+              "telefoner"
+            ],
+            [
+              "-n",
+              "ett äpple",
+              "äpplet, äpplen",
+              "äpplen"
+            ],
+            [
+              "no ending",
+              "ett hus",
+              "huset, hus",
+              "hus"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun in the deck and read its note.",
+          "The second form in the note is the plural: use it after a number or många.",
+          "No note to hand? Use the clues in the next sections: -a words take -or, ett-words in a vowel take -n, ett-words in a consonant take nothing."
+        ],
+        "examples": [
+          {
+            "sv": "Jag har två bilar.",
+            "en": "I have two cars."
+          },
+          {
+            "sv": "Det finns många hus här.",
+            "en": "There are many houses here."
+          }
+        ],
+        "watch": [
+          "A note like Plural only: pengarna means the word is only ever plural (pengar, money).",
+          "No plural in a note means you cannot count the word: mjölk, kärlek."
+        ]
+      },
+      {
+        "id": "or",
+        "title": "-or: en-words ending in -a",
+        "text": "An en-word that ends in -a drops the a and adds -or. This is the most reliable group.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "en flicka",
+              "flickor",
+              "girls"
+            ],
+            [
+              "en kvinna",
+              "kvinnor",
+              "women"
+            ],
+            [
+              "en väska",
+              "väskor",
+              "bags"
+            ],
+            [
+              "en blomma",
+              "blommor",
+              "flowers"
+            ],
+            [
+              "en lampa",
+              "lampor",
+              "lamps"
+            ]
+          ]
+        },
+        "steps": [
+          "Is it an en-word ending in -a?",
+          "Take off the -a.",
+          "Add -or."
+        ],
+        "examples": [
+          {
+            "sv": "Två flickor leker i parken.",
+            "en": "Two girls are playing in the park."
+          },
+          {
+            "sv": "Jag köper tre blommor.",
+            "en": "I am buying three flowers."
+          }
+        ],
+        "watch": [
+          "Ett-words in -a do not belong here: ett öga gives ögon, ett hjärta gives hjärtan.",
+          "A few en-words in -a are exceptions: en kollega gives kolleger."
+        ]
+      },
+      {
+        "id": "ar",
+        "title": "-ar: many short en-words and en-words in -e",
+        "text": "Many one-syllable en-words take -ar. En-words ending in an unstressed -e drop the e first, and words in -el or -er lose the e before the l or r.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "en bil",
+              "bilar",
+              "cars"
+            ],
+            [
+              "en hund",
+              "hundar",
+              "dogs"
+            ],
+            [
+              "en stol",
+              "stolar",
+              "chairs"
+            ],
+            [
+              "en pojke",
+              "pojkar",
+              "boys"
+            ],
+            [
+              "en nyckel",
+              "nycklar",
+              "keys"
+            ],
+            [
+              "en cykel",
+              "cyklar",
+              "bikes"
+            ]
+          ]
+        },
+        "steps": [
+          "Short en-word, or an en-word in unstressed -e, -el or -er? Expect -ar.",
+          "Drop a final -e (pojke, pojkar), or the e of -el and -er (nyckel, nycklar).",
+          "Add -ar, and check the note when unsure."
+        ],
+        "examples": [
+          {
+            "sv": "Där står två bilar.",
+            "en": "Two cars are standing there."
+          },
+          {
+            "sv": "Jag har två nycklar.",
+            "en": "I have two keys."
+          }
+        ],
+        "watch": [
+          "Short does not always mean -ar: en katt gives katter. The note decides.",
+          "En syster gives systrar: the e drops as in nyckel."
+        ]
+      },
+      {
+        "id": "er",
+        "title": "-er: words stressed on the last syllable",
+        "text": "En-words stressed on their last syllable, often borrowed from other languages, take -er. Every word in -tion is in this group, and so are some short words.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "en telefon",
+              "telefoner",
+              "phones"
+            ],
+            [
+              "en banan",
+              "bananer",
+              "bananas"
+            ],
+            [
+              "en station",
+              "stationer",
+              "stations"
+            ],
+            [
+              "en kusin",
+              "kusiner",
+              "cousins"
+            ],
+            [
+              "en katt",
+              "katter",
+              "cats"
+            ],
+            [
+              "en lektion",
+              "lektioner",
+              "lessons"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the stress on the last syllable (te-le-FON, ba-NAN)? Expect -er.",
+          "Words in -tion always take -er.",
+          "Add -er to the whole word."
+        ],
+        "examples": [
+          {
+            "sv": "Hon har två telefoner.",
+            "en": "She has two phones."
+          },
+          {
+            "sv": "Vi har tre lektioner idag.",
+            "en": "We have three lessons today."
+          }
+        ],
+        "watch": [
+          "A word ending in a stressed vowel also adds -er: en idé, idéer.",
+          "Some -er words change their vowel too: en stad gives städer."
+        ]
+      },
+      {
+        "id": "n",
+        "title": "-n: ett-words ending in a vowel",
+        "text": "An ett-word that ends in a vowel simply adds -n. Nothing is dropped.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "ett äpple",
+              "äpplen",
+              "apples"
+            ],
+            [
+              "ett möte",
+              "möten",
+              "meetings"
+            ],
+            [
+              "ett ämne",
+              "ämnen",
+              "subjects"
+            ],
+            [
+              "ett ansikte",
+              "ansikten",
+              "faces"
+            ]
+          ]
+        },
+        "steps": [
+          "Is it an ett-word?",
+          "Does it end in a vowel?",
+          "Add -n."
+        ],
+        "examples": [
+          {
+            "sv": "Jag äter två äpplen.",
+            "en": "I am eating two apples."
+          },
+          {
+            "sv": "Jag har två möten imorgon.",
+            "en": "I have two meetings tomorrow."
+          }
+        ],
+        "watch": [
+          "Ett öga and ett öra are irregular: ögon, öron.",
+          "Möter is a verb (meets); the plural of möte is möten."
+        ]
+      },
+      {
+        "id": "zero",
+        "title": "No ending: ett-words in a consonant, and words in -are",
+        "text": "An ett-word that ends in a consonant looks the same in the plural. So do en-words for people that end in -are. The number or a word like många shows that it is plural.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "ett hus",
+              "hus",
+              "houses"
+            ],
+            [
+              "ett barn",
+              "barn",
+              "children"
+            ],
+            [
+              "ett ord",
+              "ord",
+              "words"
+            ],
+            [
+              "ett rum",
+              "rum",
+              "rooms"
+            ],
+            [
+              "en lärare",
+              "lärare",
+              "teachers"
+            ],
+            [
+              "en läkare",
+              "läkare",
+              "doctors"
+            ]
+          ]
+        },
+        "steps": [
+          "Ett-word ending in a consonant, or an en-word in -are?",
+          "Change nothing: the plural is the same word.",
+          "Let the number, många or the verb context show the plural."
+        ],
+        "examples": [
+          {
+            "sv": "Familjen har tre barn.",
+            "en": "The family has three children."
+          },
+          {
+            "sv": "Två lärare dricker kaffe.",
+            "en": "Two teachers are drinking coffee."
+          }
+        ],
+        "watch": [
+          "Do not add -en after a number: tre hus, not tre husen. Husen means the houses."
+        ]
+      },
+      {
+        "id": "vowel",
+        "title": "Vowel change: man, män",
+        "text": "A small group of common nouns changes its vowel in the plural, and most of them also add -er. Learn these as pairs; the note always shows them.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Change"
+          ],
+          "rows": [
+            [
+              "en man",
+              "män",
+              "a → ä, no ending"
+            ],
+            [
+              "en bok",
+              "böcker",
+              "o → ö, ck, -er"
+            ],
+            [
+              "en hand",
+              "händer",
+              "a → ä, -er"
+            ],
+            [
+              "en fot",
+              "fötter",
+              "o → ö, tt, -er"
+            ],
+            [
+              "en son",
+              "söner",
+              "o → ö, -er"
+            ],
+            [
+              "en stad",
+              "städer",
+              "a → ä, -er"
+            ],
+            [
+              "ett barn",
+              "barn",
+              "no change at all"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the note: does the plural have a different vowel?",
+          "Change a to ä or o to ö.",
+          "Add -er if the note shows it, doubling k or t where it does."
+        ],
+        "examples": [
+          {
+            "sv": "Där står två män.",
+            "en": "Two men are standing there."
+          },
+          {
+            "sv": "Jag läser två böcker i veckan.",
+            "en": "I read two books a week."
+          }
+        ],
+        "watch": [
+          "Man and män differ only by the dots, so the dots are the whole plural.",
+          "Barn looks like it should change, but its plural is just barn."
+        ]
+      },
+      {
+        "id": "definite",
+        "title": "The plural with the: -na and -en",
+        "text": "To say the cars, the houses and so on, start from the plural and add an ending. A plural in -r adds -na. A plural in -n adds -a. A plural with no ending adds -en. Nouns in -are drop the final e and add -na.",
+        "table": {
+          "columns": [
+            "Plural",
+            "With the",
+            "Rule"
+          ],
+          "rows": [
+            [
+              "flickor",
+              "flickorna",
+              "-r: add -na"
+            ],
+            [
+              "bilar",
+              "bilarna",
+              "-r: add -na"
+            ],
+            [
+              "böcker",
+              "böckerna",
+              "-r: add -na"
+            ],
+            [
+              "äpplen",
+              "äpplena",
+              "-n: add -a"
+            ],
+            [
+              "hus",
+              "husen",
+              "no ending: add -en"
+            ],
+            [
+              "barn",
+              "barnen",
+              "no ending: add -en"
+            ],
+            [
+              "män",
+              "männen",
+              "add -en, double the n"
+            ],
+            [
+              "lärare",
+              "lärarna",
+              "drop -e, add -na"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the plural first, from the note.",
+          "Ends in -r? Add -na. Ends in -n? Add -a.",
+          "No ending? Add -en (män doubles the n). Ends in -are? Drop the e and add -na."
+        ],
+        "examples": [
+          {
+            "sv": "Var är bilarna?",
+            "en": "Where are the cars?"
+          },
+          {
+            "sv": "Nu sover barnen.",
+            "en": "The children are sleeping now."
+          }
+        ],
+        "watch": [
+          "Barnen is the written form; in speech many people say barna.",
+          "Do not use the form with the after a number: två bilar, not två bilarna."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "or": {
+      "section": "or",
+      "steps": [
+        "Check that the noun is an en-word ending in -a.",
+        "Drop the -a and add -or."
+      ]
+    },
+    "ar": {
+      "section": "ar",
+      "steps": [
+        "Short en-word or en-word in -e, -el, -er? Expect -ar, or read the note.",
+        "Drop a final -e, or the e of -el and -er.",
+        "Add -ar."
+      ]
+    },
+    "er": {
+      "section": "er",
+      "steps": [
+        "Stress on the last syllable, or a word in -tion? Expect -er.",
+        "Check the note for short words like katt.",
+        "Add -er."
+      ]
+    },
+    "n": {
+      "section": "n",
+      "steps": [
+        "Check that the noun is an ett-word ending in a vowel.",
+        "Add -n and nothing else."
+      ]
+    },
+    "zero": {
+      "section": "zero",
+      "steps": [
+        "Ett-word in a consonant, or a word in -are?",
+        "Leave the noun as it is."
+      ]
+    },
+    "vowel": {
+      "section": "vowel",
+      "steps": [
+        "Read the note: does the vowel change?",
+        "Change a to ä or o to ö.",
+        "Add -er if the note has it, doubling k or t where it does."
+      ]
+    },
+    "definite": {
+      "section": "definite",
+      "steps": [
+        "Find the plural first.",
+        "Plural in -r: add -na. In -n: add -a.",
+        "No ending: add -en. In -are: drop the e and add -na."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "plural-or-1",
+      "pattern": "or",
+      "type": "choose",
+      "instruction": "Choose the plural of väska (bag).",
+      "source": "Jag har två ____.",
+      "options": [
+        "väskor",
+        "väskar",
+        "väskan"
+      ],
+      "answers": [
+        "väskor"
+      ],
+      "hint": "Väska is an en-word that ends in -a.",
+      "feedback": "En-words that end in -a lose the a and take -or.",
+      "explanation": "En väska ends in -a, so the a goes and -or comes in: två väskor.",
+      "mistakes": [
+        {
+          "answers": [
+            "väskar"
+          ],
+          "why": "-ar is the ending for words like bil and pojke. A word in -a swaps its a for -or instead."
+        },
+        {
+          "answers": [
+            "väskan"
+          ],
+          "why": "Väskan is the bag, one bag with the definite ending. Två needs a plural."
+        }
+      ],
+      "row": "en väska",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "plural-or-2",
+      "pattern": "or",
+      "type": "complete",
+      "instruction": "Write the plural of blomma (flower).",
+      "source": "Det finns tre ____ (blomma) på bordet.",
+      "answers": [
+        "blommor"
+      ],
+      "hint": "Drop the final -a first.",
+      "feedback": "Blomma follows flicka: en-word in -a, plural in -or.",
+      "explanation": "En blomma ends in -a, so the plural drops the a and adds -or: tre blommor.",
+      "mistakes": [
+        {
+          "answers": [
+            "blommar"
+          ],
+          "why": "-ar does not follow a dropped -a. En-words in -a take the o-ending."
+        },
+        {
+          "answers": [
+            "blommaor"
+          ],
+          "why": "The a must go before the ending is added; keeping it gives two vowels in a row."
+        },
+        {
+          "answers": [
+            "blomma"
+          ],
+          "why": "After tre the noun must be plural, and blomma is the singular."
+        }
+      ],
+      "row": "en blomma",
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there is; there are (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "blomma",
+          "en": "flower",
+          "word": "nature-010"
+        },
+        {
+          "sv": "på",
+          "en": "on; at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table",
+          "word": "home-025"
+        }
+      ]
+    },
+    {
+      "id": "plural-or-3",
+      "pattern": "or",
+      "type": "rewrite",
+      "instruction": "Replace en with tre (three) and make lampa plural. Write the whole sentence.",
+      "source": "Jag köper en lampa.",
+      "answers": [
+        "Jag köper tre lampor."
+      ],
+      "hint": "Lampa ends in -a.",
+      "feedback": "Only the number and the noun change; köper stays the same.",
+      "explanation": "En lampa is an en-word in -a, so the plural is lampor: Jag köper tre lampor.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag köper tre lampar."
+          ],
+          "why": "Lampa ends in -a, and those words take the o-ending, not -ar."
+        },
+        {
+          "answers": [
+            "Jag köper tre lampa."
+          ],
+          "why": "The noun is still singular. Three lamps need a plural ending."
+        },
+        {
+          "answers": [
+            "Jag köper tre lamporna."
+          ],
+          "why": "That ending means the lamps. After a number you want the plain plural."
+        }
+      ],
+      "row": "en lampa",
+      "gloss": [
+        {
+          "sv": "köper",
+          "en": "buy (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "lampa",
+          "en": "lamp",
+          "word": "home-023"
+        }
+      ]
+    },
+    {
+      "id": "plural-or-4",
+      "pattern": "or",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Two women are waiting at the station.",
+      "answers": [
+        "Två kvinnor väntar på stationen."
+      ],
+      "hint": "Kvinna ends in -a.",
+      "feedback": "Check the ending of kvinna in the plural.",
+      "explanation": "En kvinna ends in -a, so two women is två kvinnor. The verb väntar never changes for plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Två kvinnar väntar på stationen."
+          ],
+          "why": "Kvinna is an en-word in -a, which takes the o-ending, not -ar."
+        },
+        {
+          "answers": [
+            "Två kvinna väntar på stationen."
+          ],
+          "why": "Kvinna is singular; two women need the plural form."
+        },
+        {
+          "answers": [
+            "Två kvinnor väntar i stationen."
+          ],
+          "why": "You wait at a station with på, not i."
+        }
+      ],
+      "row": "en kvinna"
+    },
+    {
+      "id": "plural-or-5",
+      "pattern": "or",
+      "type": "build",
+      "instruction": "Build the sentence: We need four girls. Leave one tile unused.",
+      "source": "We need four girls.",
+      "tokens": [
+        "behöver",
+        "flickar.",
+        "Vi",
+        "fyra",
+        "flickor."
+      ],
+      "answers": [
+        "Vi behöver fyra flickor."
+      ],
+      "hint": "Flicka ends in -a.",
+      "feedback": "Pick the tile with the ending that belongs to en-words in -a.",
+      "explanation": "En flicka gives flickor: the a goes and -or comes in. Vi behöver fyra flickor.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi behöver fyra flickar."
+          ],
+          "why": "That tile has the -ar ending. Flicka ends in -a, so its plural takes the other ending."
+        }
+      ],
+      "row": "en flicka"
+    },
+    {
+      "id": "plural-or-6",
+      "pattern": "or",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Hon har många skjortar.",
+      "answers": [
+        "Hon har många skjortor."
+      ],
+      "hint": "What does skjorta end in?",
+      "feedback": "The plural ending is wrong.",
+      "explanation": "En skjorta ends in -a, so the plural is skjortor, like flicka and flickor.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon har många skjortar."
+          ],
+          "why": "This is the sentence unchanged: skjorta ends in -a and does not take -ar."
+        },
+        {
+          "answers": [
+            "Hon har många skjorta."
+          ],
+          "why": "Många needs a plural noun, and skjorta is the singular."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "många",
+          "en": "many",
+          "word": "essentials-048"
+        },
+        {
+          "sv": "skjortar",
+          "en": "shirts",
+          "word": "people-046"
+        }
+      ]
+    },
+    {
+      "id": "plural-ar-1",
+      "pattern": "ar",
+      "type": "choose",
+      "instruction": "Choose the plural of bil (car).",
+      "source": "Där står två ____.",
+      "options": [
+        "bilar",
+        "biler",
+        "bilor"
+      ],
+      "answers": [
+        "bilar"
+      ],
+      "hint": "Bil is a short en-word.",
+      "feedback": "Many short en-words take -ar.",
+      "explanation": "En bil is a one-syllable en-word, and the deck note bilen, bilar gives the plural: två bilar.",
+      "mistakes": [
+        {
+          "answers": [
+            "biler"
+          ],
+          "why": "-er belongs to words like telefon and banan. Bil takes the a-ending, as its note shows."
+        },
+        {
+          "answers": [
+            "bilor"
+          ],
+          "why": "-or is for en-words that end in -a, and bil does not end in -a."
+        }
+      ],
+      "row": "en bil",
+      "gloss": [
+        {
+          "sv": "Där",
+          "en": "there",
+          "word": "essentials-096"
+        },
+        {
+          "sv": "står",
+          "en": "stand (stå)",
+          "word": "verbs-064"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "plural-ar-2",
+      "pattern": "ar",
+      "type": "complete",
+      "instruction": "Write the plural of pojke (boy).",
+      "source": "Tre ____ (pojke) leker på gatan.",
+      "answers": [
+        "pojkar"
+      ],
+      "hint": "Pojke ends in an unstressed -e. What happens to it?",
+      "feedback": "Drop the -e, then add the ending.",
+      "explanation": "En-words in unstressed -e drop it and take -ar: en pojke, två pojkar.",
+      "mistakes": [
+        {
+          "answers": [
+            "pojkear"
+          ],
+          "why": "The final -e has to go before the ending; keeping it gives pojke plus ar."
+        },
+        {
+          "answers": [
+            "pojker"
+          ],
+          "why": "-er is the wrong ending for pojke; words in unstressed -e belong with the a-ending."
+        },
+        {
+          "answers": [
+            "pojke"
+          ],
+          "why": "Tre needs a plural noun."
+        }
+      ],
+      "row": "en pojke",
+      "gloss": [
+        {
+          "sv": "Tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "pojke",
+          "en": "boy",
+          "word": "people-007"
+        },
+        {
+          "sv": "leker",
+          "en": "play (leka)",
+          "word": "verbs-085"
+        },
+        {
+          "sv": "på",
+          "en": "on; at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "gatan",
+          "en": "the street",
+          "word": "travel-002"
+        }
+      ]
+    },
+    {
+      "id": "plural-ar-3",
+      "pattern": "ar",
+      "type": "choose",
+      "instruction": "Choose the plural of nyckel (key).",
+      "source": "Jag har två ____ i väskan.",
+      "options": [
+        "nycklar",
+        "nyckelar",
+        "nyckler"
+      ],
+      "answers": [
+        "nycklar"
+      ],
+      "hint": "Nyckel ends in -el. Something drops out.",
+      "feedback": "Words in -el lose the e before the ending.",
+      "explanation": "En nyckel takes -ar, and the e before the l falls out: nycklar, just as cykel gives cyklar.",
+      "mistakes": [
+        {
+          "answers": [
+            "nyckelar"
+          ],
+          "why": "The e in -el stays only in the singular; with the ending it drops out."
+        },
+        {
+          "answers": [
+            "nyckler"
+          ],
+          "why": "The e does drop, but nyckel takes the a-ending, not -er."
+        }
+      ],
+      "row": "en nyckel",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "väskan",
+          "en": "the bag",
+          "word": "shopping-030"
+        }
+      ]
+    },
+    {
+      "id": "plural-ar-4",
+      "pattern": "ar",
+      "type": "rewrite",
+      "instruction": "Replace en with två (two) and make hund plural. Write the whole sentence.",
+      "source": "Vi har en hund.",
+      "answers": [
+        "Vi har två hundar."
+      ],
+      "hint": "Hund is a one-syllable en-word, like bil.",
+      "feedback": "Swap the article for the number and give hund its plural ending.",
+      "explanation": "En hund takes -ar (hunden, hundar), so the sentence becomes Vi har två hundar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har två hunder."
+          ],
+          "why": "Hund takes the a-ending, not -er."
+        },
+        {
+          "answers": [
+            "Vi har två hund."
+          ],
+          "why": "After två the noun must be plural."
+        },
+        {
+          "answers": [
+            "Vi har en hundar."
+          ],
+          "why": "En means one, so it cannot stand before a plural; replace it with två."
+        }
+      ],
+      "row": "en hund",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "hund",
+          "en": "dog",
+          "word": "nature-011"
+        }
+      ]
+    },
+    {
+      "id": "plural-ar-5",
+      "pattern": "ar",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "There are five chairs in the kitchen.",
+      "answers": [
+        "Det finns fem stolar i köket.",
+        "I köket finns det fem stolar."
+      ],
+      "hint": "There are is det finns. Stol is like bil.",
+      "feedback": "Check the plural of stol.",
+      "explanation": "En stol takes -ar: stolen, stolar. Det finns fem stolar i köket.",
+      "mistakes": [
+        {
+          "answers": [
+            "Det finns fem stoler i köket."
+          ],
+          "why": "Stol takes the a-ending, not -er."
+        },
+        {
+          "answers": [
+            "Det finns fem stol i köket."
+          ],
+          "why": "Five chairs need the plural form."
+        },
+        {
+          "answers": [
+            "Det finns fem stolarna i köket."
+          ],
+          "why": "Stolarna means the chairs. After a number use the plain plural."
+        }
+      ],
+      "row": "en stol"
+    },
+    {
+      "id": "plural-ar-6",
+      "pattern": "ar",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Jag har två cykelar.",
+      "answers": [
+        "Jag har två cyklar."
+      ],
+      "hint": "Cykel ends in -el.",
+      "feedback": "The plural ending is right, but one letter should drop out.",
+      "explanation": "In words ending in -el the e falls out before -ar: en cykel, två cyklar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har två cykelar."
+          ],
+          "why": "This is the sentence unchanged: the e of -el cannot stay before the ending."
+        },
+        {
+          "answers": [
+            "Jag har två cykler."
+          ],
+          "why": "The e drops, but the ending stays -ar."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "cykelar",
+          "en": "bikes",
+          "word": "travel-008"
+        }
+      ]
+    },
+    {
+      "id": "plural-er-1",
+      "pattern": "er",
+      "type": "choose",
+      "instruction": "Choose the plural of telefon (phone).",
+      "source": "Hon har två ____.",
+      "options": [
+        "telefoner",
+        "telefonar",
+        "telefonor"
+      ],
+      "answers": [
+        "telefoner"
+      ],
+      "hint": "Telefon is stressed on its last syllable.",
+      "feedback": "Words stressed at the end, often borrowed, take -er.",
+      "explanation": "Telefon is stressed on -fon, and such words usually take -er: telefonen, telefoner.",
+      "mistakes": [
+        {
+          "answers": [
+            "telefonar"
+          ],
+          "why": "Telefon takes the e-ending; -ar is for words like bil and pojke."
+        },
+        {
+          "answers": [
+            "telefonor"
+          ],
+          "why": "-or is for en-words ending in -a, and telefon ends in n."
+        }
+      ],
+      "row": "en telefon",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "plural-er-2",
+      "pattern": "er",
+      "type": "complete",
+      "instruction": "Write the plural of banan (banana).",
+      "source": "Vi köper fyra ____ (banan).",
+      "answers": [
+        "bananer"
+      ],
+      "hint": "Banan is stressed on its last syllable, like telefon.",
+      "feedback": "Same group as telefon and station.",
+      "explanation": "En banan is stressed on -nan and takes -er: bananen, bananer.",
+      "mistakes": [
+        {
+          "answers": [
+            "bananar"
+          ],
+          "why": "Banan is stressed at the end and takes the e-ending, not -ar."
+        },
+        {
+          "answers": [
+            "banan"
+          ],
+          "why": "Fyra needs a plural noun."
+        }
+      ],
+      "row": "en banan",
+      "gloss": [
+        {
+          "sv": "köper",
+          "en": "buy (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        },
+        {
+          "sv": "banan",
+          "en": "banana",
+          "word": "food-022"
+        }
+      ]
+    },
+    {
+      "id": "plural-er-3",
+      "pattern": "er",
+      "type": "complete",
+      "instruction": "Write the plural of station.",
+      "source": "Det finns många ____ (station) i Stockholm.",
+      "answers": [
+        "stationer"
+      ],
+      "hint": "Words ending in -tion all go the same way.",
+      "feedback": "Every word in -tion takes the same ending.",
+      "explanation": "Words in -tion are stressed at the end and always take -er: stationen, stationer.",
+      "mistakes": [
+        {
+          "answers": [
+            "stationar"
+          ],
+          "why": "No word in -tion takes -ar; they all take -er."
+        },
+        {
+          "answers": [
+            "stationor"
+          ],
+          "why": "-or is for en-words ending in -a."
+        }
+      ],
+      "row": "en station",
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there is; there are (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "många",
+          "en": "many",
+          "word": "essentials-048"
+        },
+        {
+          "sv": "station",
+          "en": "station",
+          "word": "travel-011"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "Stockholm",
+          "en": "Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "plural-er-4",
+      "pattern": "er",
+      "type": "rewrite",
+      "instruction": "Replace en with tre (three) and make katt plural. Write the whole sentence.",
+      "source": "Jag har en katt.",
+      "answers": [
+        "Jag har tre katter."
+      ],
+      "hint": "Katt is short, but check its note: katten, katter.",
+      "feedback": "Short words are not always -ar words; the note decides.",
+      "explanation": "En katt takes -er (katten, katter), so the sentence becomes Jag har tre katter.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har tre kattar."
+          ],
+          "why": "Katt looks like hund, but its plural takes the e-ending. Check the note."
+        },
+        {
+          "answers": [
+            "Jag har tre katt."
+          ],
+          "why": "After tre the noun must be plural."
+        }
+      ],
+      "row": "en katt",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "katt",
+          "en": "cat",
+          "word": "nature-012"
+        }
+      ]
+    },
+    {
+      "id": "plural-er-5",
+      "pattern": "er",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "We have three lessons today.",
+      "answers": [
+        "Vi har tre lektioner idag.",
+        "Vi har tre lektioner i dag.",
+        "Idag har vi tre lektioner.",
+        "I dag har vi tre lektioner."
+      ],
+      "hint": "Lektion ends in -tion.",
+      "feedback": "Words in -tion all take the same ending.",
+      "explanation": "En lektion ends in -tion, so the plural is lektioner: Vi har tre lektioner idag.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har tre lektionar idag."
+          ],
+          "why": "Words in -tion take the e-ending, not -ar."
+        },
+        {
+          "answers": [
+            "Vi har tre lektion idag."
+          ],
+          "why": "Three lessons need the plural form."
+        }
+      ],
+      "row": "en lektion"
+    },
+    {
+      "id": "plural-er-6",
+      "pattern": "er",
+      "type": "build",
+      "instruction": "Build the sentence: She has two cousins. Leave one tile unused.",
+      "source": "She has two cousins.",
+      "tokens": [
+        "två",
+        "Hon",
+        "kusinar.",
+        "har",
+        "kusiner."
+      ],
+      "answers": [
+        "Hon har två kusiner."
+      ],
+      "hint": "Kusin is stressed on its last syllable.",
+      "feedback": "Pick the ending used by telefon and banan.",
+      "explanation": "En kusin is stressed on -sin and takes -er: kusinen, kusiner.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon har två kusinar."
+          ],
+          "why": "That tile has the a-ending, but kusin takes the e-ending."
+        }
+      ]
+    },
+    {
+      "id": "plural-n-1",
+      "pattern": "n",
+      "type": "choose",
+      "instruction": "Choose the plural of äpple (apple).",
+      "source": "Jag äter två ____.",
+      "options": [
+        "äpplen",
+        "äppler",
+        "äpplar"
+      ],
+      "answers": [
+        "äpplen"
+      ],
+      "hint": "Äpple is an ett-word ending in a vowel.",
+      "feedback": "Ett-words in a vowel just add -n.",
+      "explanation": "Ett äpple ends in the vowel -e, so the plural only adds -n: äpplen.",
+      "mistakes": [
+        {
+          "answers": [
+            "äppler"
+          ],
+          "why": "Ett-words that end in a vowel add only -n, not -r."
+        },
+        {
+          "answers": [
+            "äpplar"
+          ],
+          "why": "Ett-words never take -ar; the vowel at the end just gets -n."
+        }
+      ],
+      "row": "ett äpple",
+      "gloss": [
+        {
+          "sv": "äter",
+          "en": "eat (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "plural-n-2",
+      "pattern": "n",
+      "type": "complete",
+      "instruction": "Write the plural of ämne (subject).",
+      "source": "Vi läser fyra ____ (ämne) i skolan.",
+      "answers": [
+        "ämnen"
+      ],
+      "hint": "Ämne is an ett-word ending in -e.",
+      "feedback": "Same group as äpple.",
+      "explanation": "Ett ämne ends in a vowel, so the plural adds -n: fyra ämnen.",
+      "mistakes": [
+        {
+          "answers": [
+            "ämnar"
+          ],
+          "why": "Ett-words in a vowel do not drop the vowel and take -ar; they just add -n."
+        },
+        {
+          "answers": [
+            "ämner"
+          ],
+          "why": "The ending is -n alone, without an r."
+        },
+        {
+          "answers": [
+            "ämne"
+          ],
+          "why": "Fyra needs a plural noun."
+        }
+      ],
+      "row": "ett ämne",
+      "gloss": [
+        {
+          "sv": "läser",
+          "en": "study; read (läsa)",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "fyra",
+          "en": "four",
+          "word": "health-time-050"
+        },
+        {
+          "sv": "ämne",
+          "en": "subject",
+          "word": "school-022"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "skolan",
+          "en": "school",
+          "word": "school-033"
+        }
+      ]
+    },
+    {
+      "id": "plural-n-3",
+      "pattern": "n",
+      "type": "rewrite",
+      "instruction": "Replace ett with fem (five) and make äpple plural. Write the whole sentence.",
+      "source": "Det finns ett äpple på bordet.",
+      "answers": [
+        "Det finns fem äpplen på bordet."
+      ],
+      "hint": "Add one letter to äpple.",
+      "feedback": "Det finns stays the same for one or many.",
+      "explanation": "Ett äpple becomes fem äpplen: an ett-word in a vowel adds -n. Det finns works for both singular and plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Det finns fem äppler på bordet."
+          ],
+          "why": "The ending is -n alone, without an r."
+        },
+        {
+          "answers": [
+            "Det finns fem äpple på bordet."
+          ],
+          "why": "After fem the noun must be plural."
+        },
+        {
+          "answers": [
+            "Det finns fem äpplena på bordet."
+          ],
+          "why": "Äpplena means the apples. After a number use the plain plural."
+        }
+      ],
+      "row": "ett äpple",
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there is; there are (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "äpple",
+          "en": "apple",
+          "word": "food-021"
+        },
+        {
+          "sv": "på",
+          "en": "on; at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table",
+          "word": "home-025"
+        }
+      ]
+    },
+    {
+      "id": "plural-n-4",
+      "pattern": "n",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I have two meetings tomorrow.",
+      "answers": [
+        "Jag har två möten imorgon.",
+        "Jag har två möten i morgon.",
+        "Imorgon har jag två möten.",
+        "I morgon har jag två möten."
+      ],
+      "hint": "Möte is an ett-word ending in -e.",
+      "feedback": "Check the plural of möte.",
+      "explanation": "Ett möte ends in a vowel, so the plural adds -n: två möten.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har två möter imorgon."
+          ],
+          "why": "Ett-words in a vowel add -n, not -r."
+        },
+        {
+          "answers": [
+            "Jag har två mötar imorgon."
+          ],
+          "why": "Ett-words do not take -ar."
+        },
+        {
+          "answers": [
+            "Jag har två möte imorgon."
+          ],
+          "why": "Two meetings need the plural form."
+        }
+      ],
+      "row": "ett möte"
+    },
+    {
+      "id": "plural-n-5",
+      "pattern": "n",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Jag köper fem äppler.",
+      "answers": [
+        "Jag köper fem äpplen."
+      ],
+      "hint": "Äpple is an ett-word.",
+      "feedback": "The plural ending is wrong.",
+      "explanation": "Ett äpple ends in a vowel, and ett-words like that add -n: fem äpplen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag köper fem äppler."
+          ],
+          "why": "This is the sentence unchanged: -r is not the ending for an ett-word in a vowel."
+        },
+        {
+          "answers": [
+            "Jag köper fem äpple."
+          ],
+          "why": "Fem needs a plural noun."
+        }
+      ],
+      "row": "ett äpple",
+      "gloss": [
+        {
+          "sv": "köper",
+          "en": "buy (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "fem",
+          "en": "five",
+          "word": "health-time-051"
+        },
+        {
+          "sv": "äppler",
+          "en": "apples",
+          "word": "food-021"
+        }
+      ]
+    },
+    {
+      "id": "plural-n-6",
+      "pattern": "n",
+      "type": "choose",
+      "instruction": "Choose the plural of möte (meeting).",
+      "source": "Jag har många ____ i veckan.",
+      "options": [
+        "möten",
+        "möter",
+        "mötar"
+      ],
+      "answers": [
+        "möten"
+      ],
+      "hint": "Möte is an ett-word ending in a vowel.",
+      "feedback": "Treat it like äpple.",
+      "explanation": "Ett möte ends in -e, so the plural adds -n: möten.",
+      "mistakes": [
+        {
+          "answers": [
+            "möter"
+          ],
+          "why": "Möter is a verb form (meets), not the plural of the noun."
+        },
+        {
+          "answers": [
+            "mötar"
+          ],
+          "why": "Ett-words do not take -ar."
+        }
+      ],
+      "row": "ett möte",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "många",
+          "en": "many",
+          "word": "essentials-048"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "veckan",
+          "en": "a week",
+          "word": "health-time-030"
+        }
+      ]
+    },
+    {
+      "id": "plural-zero-1",
+      "pattern": "zero",
+      "type": "choose",
+      "instruction": "Choose the plural of barn (child).",
+      "source": "Familjen har tre ____.",
+      "options": [
+        "barn",
+        "barnar",
+        "barner"
+      ],
+      "answers": [
+        "barn"
+      ],
+      "hint": "Barn is an ett-word ending in a consonant.",
+      "feedback": "Ett-words that end in a consonant do not change.",
+      "explanation": "Ett barn ends in a consonant, so the plural looks the same: tre barn. The note barnet, barn shows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "barnar"
+          ],
+          "why": "Ett-words never take -ar."
+        },
+        {
+          "answers": [
+            "barner"
+          ],
+          "why": "Ett-words in a consonant take no ending at all."
+        }
+      ],
+      "row": "ett barn",
+      "gloss": [
+        {
+          "sv": "Familjen",
+          "en": "the family",
+          "word": "people-023"
+        },
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "tre",
+          "en": "three",
+          "word": "health-time-049"
+        }
+      ]
+    },
+    {
+      "id": "plural-zero-2",
+      "pattern": "zero",
+      "type": "complete",
+      "instruction": "Write the plural of hus (house).",
+      "source": "Det finns många ____ (hus) på gatan.",
+      "answers": [
+        "hus"
+      ],
+      "hint": "Hus is an ett-word ending in a consonant.",
+      "feedback": "Sometimes the plural is the same word.",
+      "explanation": "Ett hus ends in a consonant, so the plural has no ending: många hus.",
+      "mistakes": [
+        {
+          "answers": [
+            "husar"
+          ],
+          "why": "Ett-words in a consonant take no ending."
+        },
+        {
+          "answers": [
+            "huser"
+          ],
+          "why": "Ett-words in a consonant take no ending, not -er."
+        },
+        {
+          "answers": [
+            "husen"
+          ],
+          "why": "Husen means the houses. Många needs the plain plural."
+        }
+      ],
+      "row": "ett hus",
+      "gloss": [
+        {
+          "sv": "finns",
+          "en": "there is; there are (finnas)",
+          "word": "verbs-099"
+        },
+        {
+          "sv": "många",
+          "en": "many",
+          "word": "essentials-048"
+        },
+        {
+          "sv": "hus",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "sv": "på",
+          "en": "on; at",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "gatan",
+          "en": "the street",
+          "word": "travel-002"
+        }
+      ]
+    },
+    {
+      "id": "plural-zero-3",
+      "pattern": "zero",
+      "type": "complete",
+      "instruction": "Write the plural of lärare (teacher).",
+      "source": "Två ____ (lärare) dricker kaffe.",
+      "answers": [
+        "lärare"
+      ],
+      "hint": "Words for people in -are do not change.",
+      "feedback": "Lärare, läkare and städare stay the same.",
+      "explanation": "En-words for people ending in -are have no plural ending: en lärare, två lärare.",
+      "mistakes": [
+        {
+          "answers": [
+            "lärarer"
+          ],
+          "why": "Nouns in -are add nothing in the plural."
+        },
+        {
+          "answers": [
+            "lärarar"
+          ],
+          "why": "Nouns in -are add nothing in the plural."
+        },
+        {
+          "answers": [
+            "lärarna"
+          ],
+          "why": "Lärarna means the teachers. After två use the plain plural."
+        }
+      ],
+      "row": "en lärare",
+      "gloss": [
+        {
+          "sv": "Två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "lärare",
+          "en": "teacher",
+          "word": "school-002"
+        },
+        {
+          "sv": "dricker",
+          "en": "drink (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "plural-zero-4",
+      "pattern": "zero",
+      "type": "rewrite",
+      "instruction": "Replace ett with tre (three) and make ord plural. Write the whole sentence.",
+      "source": "Jag skriver ett ord.",
+      "answers": [
+        "Jag skriver tre ord."
+      ],
+      "hint": "Ord is an ett-word ending in a consonant.",
+      "feedback": "Only the number changes; ord looks the same.",
+      "explanation": "Ett ord has no plural ending, so three words is tre ord.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag skriver tre orden."
+          ],
+          "why": "Orden means the words. After a number use the plain plural."
+        },
+        {
+          "answers": [
+            "Jag skriver tre ordar."
+          ],
+          "why": "Ett-words in a consonant take no ending."
+        },
+        {
+          "answers": [
+            "Jag skriver ett ord."
+          ],
+          "why": "This is the original sentence: ett must become tre."
+        }
+      ],
+      "row": "ett ord",
+      "gloss": [
+        {
+          "sv": "skriver",
+          "en": "write (skriva)",
+          "word": "verbs-071"
+        },
+        {
+          "sv": "ord",
+          "en": "word",
+          "word": "school-003"
+        }
+      ]
+    },
+    {
+      "id": "plural-zero-5",
+      "pattern": "zero",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The house has four rooms.",
+      "answers": [
+        "Huset har fyra rum."
+      ],
+      "hint": "Rum is an ett-word ending in a consonant.",
+      "feedback": "The house is huset; rooms is the same as room.",
+      "explanation": "Ett rum ends in a consonant, so the plural is rum: Huset har fyra rum.",
+      "mistakes": [
+        {
+          "answers": [
+            "Huset har fyra rummar."
+          ],
+          "why": "Ett-words in a consonant take no ending."
+        },
+        {
+          "answers": [
+            "Huset har fyra rummen."
+          ],
+          "why": "Rummen means the rooms. After fyra use the plain plural."
+        },
+        {
+          "answers": [
+            "Hus har fyra rum."
+          ],
+          "why": "The house needs the definite form, huset."
+        }
+      ],
+      "row": "ett rum"
+    },
+    {
+      "id": "plural-zero-6",
+      "pattern": "zero",
+      "type": "build",
+      "instruction": "Build the sentence: There are two doctors here. Leave one tile unused.",
+      "source": "There are two doctors here.",
+      "tokens": [
+        "finns",
+        "Det",
+        "två",
+        "läkarer",
+        "läkare",
+        "här."
+      ],
+      "answers": [
+        "Det finns två läkare här."
+      ],
+      "hint": "Läkare ends in -are, like lärare.",
+      "feedback": "Words for people in -are take no ending.",
+      "explanation": "En läkare has no plural ending, so two doctors is två läkare.",
+      "mistakes": [
+        {
+          "answers": [
+            "Det finns två läkarer här."
+          ],
+          "why": "That tile adds -er, but nouns in -are add nothing in the plural."
+        }
+      ],
+      "row": "en läkare"
+    },
+    {
+      "id": "plural-vowel-1",
+      "pattern": "vowel",
+      "type": "choose",
+      "instruction": "Choose the plural of man (man).",
+      "source": "Där står två ____.",
+      "options": [
+        "män",
+        "man",
+        "mannar"
+      ],
+      "answers": [
+        "män"
+      ],
+      "hint": "The plural changes the vowel, not the ending.",
+      "feedback": "The dots over the a are the plural here.",
+      "explanation": "En man has the plural män: the a turns into ä and nothing is added. The note mannen, män shows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "man"
+          ],
+          "why": "Man without dots is the singular. The plural is shown only by the changed vowel."
+        },
+        {
+          "answers": [
+            "mannar"
+          ],
+          "why": "Man takes no ending; its plural is made by changing the vowel."
+        }
+      ],
+      "row": "en man",
+      "strictAccents": true,
+      "gloss": [
+        {
+          "sv": "Där",
+          "en": "there",
+          "word": "essentials-096"
+        },
+        {
+          "sv": "står",
+          "en": "stand (stå)",
+          "word": "verbs-064"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-2",
+      "pattern": "vowel",
+      "type": "complete",
+      "instruction": "Write the plural of man (man).",
+      "source": "Tre ____ (man) väntar på bussen.",
+      "answers": [
+        "män"
+      ],
+      "hint": "Only the vowel changes.",
+      "feedback": "Without the dots it is still the singular.",
+      "explanation": "The plural of en man is män: a becomes ä. Writing the a without dots gives the singular back.",
+      "mistakes": [
+        {
+          "answers": [
+            "man"
+          ],
+          "why": "That is the singular. The dots over the vowel are the whole plural."
+        },
+        {
+          "answers": [
+            "mannar"
+          ],
+          "why": "Man takes no ending; its plural only changes the vowel."
+        }
+      ],
+      "row": "en man",
+      "strictAccents": true,
+      "gloss": [
+        {
+          "sv": "man",
+          "en": "man"
+        },
+        {
+          "sv": "Tre",
+          "en": "three",
+          "word": "health-time-049"
+        },
+        {
+          "sv": "väntar",
+          "en": "are waiting (vänta)",
+          "word": "verbs-037"
+        },
+        {
+          "sv": "på",
+          "en": "for"
+        },
+        {
+          "sv": "bussen",
+          "en": "the bus",
+          "word": "travel-005"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-3",
+      "pattern": "vowel",
+      "type": "choose",
+      "instruction": "Choose the plural of bok (book).",
+      "source": "Jag läser två ____ i veckan.",
+      "options": [
+        "böcker",
+        "bokar",
+        "böker"
+      ],
+      "answers": [
+        "böcker"
+      ],
+      "hint": "O changes to ö, and the k doubles.",
+      "feedback": "Bok changes its vowel and adds -er.",
+      "explanation": "En bok gives böcker: o becomes ö, k becomes ck, and -er is added. The note boken, böcker shows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "bokar"
+          ],
+          "why": "Bok does not take -ar; its vowel changes and it takes -er."
+        },
+        {
+          "answers": [
+            "böker"
+          ],
+          "why": "The vowel and ending are right, but the k doubles to ck before -er."
+        }
+      ],
+      "row": "en bok",
+      "gloss": [
+        {
+          "sv": "läser",
+          "en": "study; read (läsa)",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "två",
+          "en": "two",
+          "word": "health-time-048"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "veckan",
+          "en": "a week",
+          "word": "health-time-030"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-4",
+      "pattern": "vowel",
+      "type": "complete",
+      "instruction": "Write the plural of fot (foot).",
+      "source": "Mina ____ (fot) är kalla.",
+      "answers": [
+        "fötter"
+      ],
+      "hint": "O becomes ö, the t doubles, and -er comes at the end.",
+      "feedback": "Fot changes like bok.",
+      "explanation": "En fot gives fötter: o becomes ö, t becomes tt, and -er is added.",
+      "mistakes": [
+        {
+          "answers": [
+            "fotar"
+          ],
+          "why": "Fot does not take -ar; it changes its vowel and takes -er."
+        },
+        {
+          "answers": [
+            "föter"
+          ],
+          "why": "The vowel and ending are right, but the t doubles before -er."
+        },
+        {
+          "answers": [
+            "foter"
+          ],
+          "why": "The ending is right, but the o must also turn into ö."
+        }
+      ],
+      "row": "en fot",
+      "gloss": [
+        {
+          "sv": "Mina",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "fot",
+          "en": "foot",
+          "word": "health-time-005"
+        },
+        {
+          "sv": "är",
+          "en": "is; are (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "kalla",
+          "en": "cold",
+          "word": "qualities-026"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-5",
+      "pattern": "vowel",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Han har stora handar.",
+      "answers": [
+        "Han har stora händer."
+      ],
+      "hint": "Hand changes its vowel in the plural.",
+      "feedback": "Both the vowel and the ending are wrong.",
+      "explanation": "En hand gives händer: a becomes ä and -er is added, like tand and tänder.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han har stora handar."
+          ],
+          "why": "This is the sentence unchanged: hand does not take -ar."
+        },
+        {
+          "answers": [
+            "Han har stora hander."
+          ],
+          "why": "The ending is right, but the a must turn into ä."
+        }
+      ],
+      "row": "en hand",
+      "strictAccents": true,
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have; has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "stora",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "sv": "handar",
+          "en": "hands",
+          "word": "health-time-004"
+        }
+      ]
+    },
+    {
+      "id": "plural-vowel-6",
+      "pattern": "vowel",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I have two sons and a daughter.",
+      "answers": [
+        "Jag har två söner och en dotter."
+      ],
+      "hint": "Son changes o to ö in the plural.",
+      "feedback": "Look at the plural of son.",
+      "explanation": "En son gives söner: o becomes ö and -er is added. The note sonen, söner shows it.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har två sonar och en dotter."
+          ],
+          "why": "Son does not take -ar; it changes its vowel and takes -er."
+        },
+        {
+          "answers": [
+            "Jag har två soner och en dotter."
+          ],
+          "why": "The ending is right, but the o must turn into ö."
+        }
+      ],
+      "row": "en son",
+      "strictAccents": true
+    },
+    {
+      "id": "plural-definite-1",
+      "pattern": "definite",
+      "type": "choose",
+      "instruction": "Choose the cars (definite plural).",
+      "source": "Var är ____?",
+      "options": [
+        "bilarna",
+        "bilar",
+        "bilen"
+      ],
+      "answers": [
+        "bilarna"
+      ],
+      "hint": "Start from the plural bilar.",
+      "feedback": "Take the plural and add the ending for the.",
+      "explanation": "The plural is bilar; plurals in -r add -na for the: bilarna.",
+      "mistakes": [
+        {
+          "answers": [
+            "bilar"
+          ],
+          "why": "Bilar means cars, any cars. The question asks about the cars."
+        },
+        {
+          "answers": [
+            "bilen"
+          ],
+          "why": "Bilen is the car, just one."
+        }
+      ],
+      "row": "bilar",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is; are (vara)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "plural-definite-2",
+      "pattern": "definite",
+      "type": "complete",
+      "instruction": "Write barn as the children (definite plural).",
+      "source": "Nu sover ____ (barn).",
+      "answers": [
+        "barnen"
+      ],
+      "hint": "Barn has no plural ending. What does it add for the?",
+      "feedback": "Plurals without an ending add -en.",
+      "explanation": "The plural is barn, which has no ending, so the children is barnen.",
+      "mistakes": [
+        {
+          "answers": [
+            "barnet"
+          ],
+          "why": "Barnet is the child, just one."
+        },
+        {
+          "answers": [
+            "barna"
+          ],
+          "why": "Barna is heard in speech, but the written form adds -en."
+        },
+        {
+          "answers": [
+            "barnarna"
+          ],
+          "why": "Barn has no -ar plural, so there is no -arna form."
+        }
+      ],
+      "row": "barn",
+      "gloss": [
+        {
+          "sv": "Nu",
+          "en": "now",
+          "word": "essentials-094"
+        },
+        {
+          "sv": "sover",
+          "en": "sleep; are sleeping (sova)",
+          "word": "verbs-057"
+        },
+        {
+          "sv": "barn",
+          "en": "child",
+          "word": "people-005"
+        }
+      ]
+    },
+    {
+      "id": "plural-definite-3",
+      "pattern": "definite",
+      "type": "rewrite",
+      "instruction": "Make huset plural (the houses). Write the whole sentence.",
+      "source": "Jag städar huset.",
+      "answers": [
+        "Jag städar husen."
+      ],
+      "hint": "The plural of hus is hus. What does it add for the?",
+      "feedback": "Plurals with no ending add -en.",
+      "explanation": "Hus has no plural ending, so the houses is husen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag städar husena."
+          ],
+          "why": "Plurals in -r add -na, but hus has no ending and adds -en only."
+        },
+        {
+          "answers": [
+            "Jag städar hus."
+          ],
+          "why": "Hus is houses, but not the houses."
+        },
+        {
+          "answers": [
+            "Jag städar huset."
+          ],
+          "why": "This is the original sentence, with one house."
+        }
+      ],
+      "row": "hus",
+      "gloss": [
+        {
+          "sv": "städar",
+          "en": "clean (städa)",
+          "word": "verbs-093"
+        },
+        {
+          "sv": "huset",
+          "en": "the house",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "plural-definite-4",
+      "pattern": "definite",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The men are waiting outside.",
+      "answers": [
+        "Männen väntar utanför.",
+        "Männen väntar ute."
+      ],
+      "hint": "Start from the plural män and add -en.",
+      "feedback": "The n doubles before -en.",
+      "explanation": "The plural is män, and it adds -en for the, doubling the n: männen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mannen väntar utanför."
+          ],
+          "why": "Mannen without dots is the man, just one."
+        },
+        {
+          "answers": [
+            "Männerna väntar utanför."
+          ],
+          "why": "Män has no -er ending, so -na cannot be added."
+        }
+      ],
+      "row": "män",
+      "strictAccents": true
+    },
+    {
+      "id": "plural-definite-5",
+      "pattern": "definite",
+      "type": "build",
+      "instruction": "Build the sentence: The books are on the table. Leave one tile unused.",
+      "source": "The books are on the table.",
+      "tokens": [
+        "ligger",
+        "Bokarna",
+        "på",
+        "Böckerna",
+        "bordet."
+      ],
+      "answers": [
+        "Böckerna ligger på bordet."
+      ],
+      "hint": "Start from the plural böcker.",
+      "feedback": "Plurals in -r add -na for the.",
+      "explanation": "The plural is böcker, and plurals in -r add -na: böckerna. Books lie on a table, so Swedish uses ligger.",
+      "mistakes": [
+        {
+          "answers": [
+            "Bokarna ligger på bordet."
+          ],
+          "why": "That tile builds on a plural bokar, but the plural of bok is böcker."
+        }
+      ],
+      "row": "böcker"
+    },
+    {
+      "id": "plural-definite-6",
+      "pattern": "definite",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Lärarerna dricker kaffe.",
+      "answers": [
+        "Lärarna dricker kaffe."
+      ],
+      "hint": "The plural of lärare is lärare. What happens to the last -e before -na?",
+      "feedback": "Nouns in -are drop the final -e and add -na.",
+      "explanation": "Lärare has no plural ending; for the teachers the final e drops and -na is added: lärarna.",
+      "mistakes": [
+        {
+          "answers": [
+            "Lärarerna dricker kaffe."
+          ],
+          "why": "This is the sentence unchanged: lärare has no -er plural, so there is no -erna."
+        },
+        {
+          "answers": [
+            "Lärarena dricker kaffe."
+          ],
+          "why": "The final e of lärare drops before the ending; it does not stay in front of -na."
+        }
+      ],
+      "row": "lärare",
+      "gloss": [
+        {
+          "sv": "Lärarerna",
+          "en": "the teachers",
+          "word": "school-002"
+        },
+        {
+          "sv": "dricker",
+          "en": "drink (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    }
+  ]
+}

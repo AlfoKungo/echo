@@ -1,0 +1,2364 @@
+{
+  "id": "present-regular",
+  "unit": "present",
+  "level": "A1",
+  "title": "Regular verbs: -ar, -er, -ir",
+  "description": "Conjugate everyday -ar, -er and -ir verbs in the present and use gostar de.",
+  "mark": "-o · -a · -amos",
+  "guide": {
+    "summary": "Brazilian Portuguese verbs fall into three families by their infinitive: -ar, -er and -ir. Each family cuts off its ending and adds a short set of new ones, and because você, ele, ela and a gente share one form, and vocês, eles and elas share another, you only need four forms per verb. This page has the three families, the shared forms, the nós endings, what the present is used for, and gostar de.",
+    "sections": [
+      {
+        "id": "ar",
+        "title": "-ar verbs: falar",
+        "text": "Most verbs end in -ar. Remove -ar to get the stem (fal-) and add -o, -a, -amos or -am. The a of the infinitive comes back in every form except eu.",
+        "table": {
+          "columns": [
+            "subject",
+            "ending",
+            "falar"
+          ],
+          "rows": [
+            [
+              "eu",
+              "-o",
+              "eu falo"
+            ],
+            [
+              "você / ele / ela / a gente",
+              "-a",
+              "ele fala"
+            ],
+            [
+              "nós",
+              "-amos",
+              "nós falamos"
+            ],
+            [
+              "vocês / eles / elas",
+              "-am",
+              "eles falam"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject: who is doing it?",
+          "Remove -ar to get the stem.",
+          "Add the ending on that subject’s row: -o, -a, -amos or -am."
+        ],
+        "examples": [
+          {
+            "pt": "Eu falo português.",
+            "en": "I speak Portuguese."
+          },
+          {
+            "pt": "Ela trabalha no escritório.",
+            "en": "She works at the office."
+          },
+          {
+            "pt": "Eles moram perto da praia.",
+            "en": "They live near the beach."
+          }
+        ],
+        "watch": [
+          "The eu form ends in -o in all three families, never in -a.",
+          "A noun subject counts as ele or eles: a Maria fala, meus pais falam."
+        ]
+      },
+      {
+        "id": "er",
+        "title": "-er verbs: comer",
+        "text": "For -er verbs remove -er and add -o, -e, -emos or -em. The pattern is the -ar one with e in place of a.",
+        "table": {
+          "columns": [
+            "subject",
+            "ending",
+            "comer"
+          ],
+          "rows": [
+            [
+              "eu",
+              "-o",
+              "eu como"
+            ],
+            [
+              "você / ele / ela / a gente",
+              "-e",
+              "ele come"
+            ],
+            [
+              "nós",
+              "-emos",
+              "nós comemos"
+            ],
+            [
+              "vocês / eles / elas",
+              "-em",
+              "eles comem"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the infinitive ends in -er.",
+          "Remove -er to get the stem.",
+          "Add -o, -e, -emos or -em: e replaces the a of the -ar endings."
+        ],
+        "examples": [
+          {
+            "pt": "Eu como pão no café da manhã.",
+            "en": "I eat bread for breakfast."
+          },
+          {
+            "pt": "Você bebe café?",
+            "en": "Do you drink coffee?"
+          },
+          {
+            "pt": "Elas vendem frutas no mercado.",
+            "en": "They sell fruit at the market."
+          }
+        ],
+        "watch": [
+          "Do not borrow the -ar vowel: ele come, not ele coma.",
+          "Ler, ter, fazer and a few others end in -er but are irregular; they have their own topic."
+        ]
+      },
+      {
+        "id": "ir",
+        "title": "-ir verbs: abrir, partir",
+        "text": "-ir verbs share the -er endings in three forms: -o, -e and -em. Only nós is different: it keeps the i of the infinitive, -imos.",
+        "table": {
+          "columns": [
+            "subject",
+            "ending",
+            "abrir",
+            "partir"
+          ],
+          "rows": [
+            [
+              "eu",
+              "-o",
+              "eu abro",
+              "eu parto"
+            ],
+            [
+              "você / ele / ela / a gente",
+              "-e",
+              "ele abre",
+              "ele parte"
+            ],
+            [
+              "nós",
+              "-imos",
+              "nós abrimos",
+              "nós partimos"
+            ],
+            [
+              "vocês / eles / elas",
+              "-em",
+              "eles abrem",
+              "eles partem"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the infinitive ends in -ir.",
+          "Remove -ir and add -o, -e or -em, exactly as for -er verbs.",
+          "For nós write -imos, never -emos."
+        ],
+        "examples": [
+          {
+            "pt": "Eu abro a janela de manhã.",
+            "en": "I open the window in the morning."
+          },
+          {
+            "pt": "A loja abre às nove.",
+            "en": "The shop opens at nine."
+          },
+          {
+            "pt": "O ônibus parte às oito.",
+            "en": "The bus leaves at eight."
+          }
+        ],
+        "watch": [
+          "Ele abre, not ele abri: the i appears only in the infinitive and in nós.",
+          "Partir means to leave or set off; in everyday speech Brazilians often say sair instead."
+        ]
+      },
+      {
+        "id": "persons",
+        "title": "Who shares a form",
+        "text": "Brazilians say você for you, and você takes the same form as ele and ela. A gente, the everyday way to say we, also takes that form. In the plural, vocês, eles and elas share one form. Tu exists in some regions, such as the South and parts of the North and Northeast, often with the você form of the verb (tu fala); you will hear it, but this course uses você.",
+        "table": {
+          "columns": [
+            "subjects",
+            "-ar",
+            "-er",
+            "-ir"
+          ],
+          "rows": [
+            [
+              "você, ele, ela, a gente",
+              "fala",
+              "come",
+              "abre"
+            ],
+            [
+              "vocês, eles, elas",
+              "falam",
+              "comem",
+              "abrem"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the subject one person, you or a gente? Use the singular form ending in a vowel.",
+          "Is it several people, including vocês? Add -m to that form.",
+          "A noun counts too: a Maria takes the singular form, meus pais the plural."
+        ],
+        "examples": [
+          {
+            "pt": "A gente come em casa no domingo.",
+            "en": "We eat at home on Sunday."
+          },
+          {
+            "pt": "Vocês falam português?",
+            "en": "Do you all speak Portuguese?"
+          },
+          {
+            "pt": "Meus pais moram no Rio.",
+            "en": "My parents live in Rio."
+          }
+        ],
+        "watch": [
+          "A gente means we but takes the ele form: a gente fala, not a gente falamos.",
+          "Você is grammatically like ele, even though it means you."
+        ]
+      },
+      {
+        "id": "nos",
+        "title": "The nós forms: -amos, -emos, -imos",
+        "text": "The nós ending is the infinitive vowel plus -mos. So the infinitive tells you which one to use.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "nós ending",
+            "example"
+          ],
+          "rows": [
+            [
+              "falar",
+              "-amos",
+              "nós falamos"
+            ],
+            [
+              "comer",
+              "-emos",
+              "nós comemos"
+            ],
+            [
+              "abrir",
+              "-imos",
+              "nós abrimos"
+            ],
+            [
+              "estudar",
+              "-amos",
+              "nós estudamos"
+            ],
+            [
+              "aprender",
+              "-emos",
+              "nós aprendemos"
+            ],
+            [
+              "partir",
+              "-imos",
+              "nós partimos"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the vowel before the final r of the infinitive.",
+          "Keep that vowel and add -mos.",
+          "The subject nós is often dropped: the -mos already says who."
+        ],
+        "examples": [
+          {
+            "pt": "Nós estudamos à noite.",
+            "en": "We study in the evening."
+          },
+          {
+            "pt": "Aprendemos português na escola.",
+            "en": "We learn Portuguese at school."
+          },
+          {
+            "pt": "Nós partimos amanhã.",
+            "en": "We leave tomorrow."
+          }
+        ],
+        "watch": [
+          "Partir and abrir take -imos, not -emos.",
+          "In speech a gente is more common than nós, but you need to recognise and write both."
+        ]
+      },
+      {
+        "id": "uses",
+        "title": "What the present is for",
+        "text": "The simple present covers habits and facts, and also plans that are already fixed, usually with a time word such as amanhã or no sábado. English often uses I am working or I work in these places; Portuguese just uses the simple present.",
+        "table": {
+          "columns": [
+            "use",
+            "example",
+            "meaning"
+          ],
+          "rows": [
+            [
+              "habit",
+              "Eu nado todo sábado.",
+              "I swim every Saturday."
+            ],
+            [
+              "fact",
+              "Ela mora em Recife.",
+              "She lives in Recife."
+            ],
+            [
+              "near plan",
+              "Amanhã eu trabalho cedo.",
+              "I am working early tomorrow."
+            ]
+          ]
+        },
+        "steps": [
+          "Is it a habit, a general fact or a fixed plan? Use the simple present.",
+          "For a plan, add the time word: amanhã, no sábado, hoje à noite.",
+          "Keep estar plus an -ndo form for what is happening right now."
+        ],
+        "examples": [
+          {
+            "pt": "Ela corre na praia todo dia.",
+            "en": "She runs on the beach every day."
+          },
+          {
+            "pt": "Eu viajo no sábado.",
+            "en": "I am travelling on Saturday."
+          }
+        ],
+        "watch": [
+          "For I am working tomorrow, Portuguese does not need the -ndo form: eu trabalho amanhã or eu vou trabalhar amanhã.",
+          "Ir plus an infinitive also talks about the future; the simple present sounds more settled."
+        ]
+      },
+      {
+        "id": "gostar",
+        "title": "Gostar de",
+        "text": "Gostar is a regular -ar verb, but it always needs de before what you like, whether that is a noun or another verb in the infinitive.",
+        "table": {
+          "columns": [
+            "after gostar",
+            "example",
+            "meaning"
+          ],
+          "rows": [
+            [
+              "a noun",
+              "Eu gosto de café.",
+              "I like coffee."
+            ],
+            [
+              "an infinitive",
+              "Ela gosta de cozinhar.",
+              "She likes to cook."
+            ],
+            [
+              "a noun with o or a",
+              "Gosto do livro.",
+              "I like the book."
+            ]
+          ]
+        },
+        "steps": [
+          "Conjugate gostar like falar: gosto, gosta, gostamos, gostam.",
+          "Put de straight after it.",
+          "If the thing has o or a in front, de joins it: do, da, dos, das."
+        ],
+        "examples": [
+          {
+            "pt": "Eu gosto de chocolate.",
+            "en": "I like chocolate."
+          },
+          {
+            "pt": "Nós gostamos de dançar.",
+            "en": "We like to dance."
+          }
+        ],
+        "watch": [
+          "English like has no preposition; gostar never works without de.",
+          "The verb after de stays in the infinitive: ela gosta de cozinhar, not ela gosta de cozinha."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "ar": {
+      "section": "ar",
+      "steps": [
+        "Find the subject.",
+        "Remove -ar from the infinitive.",
+        "Add -o, -a, -amos or -am for that subject."
+      ]
+    },
+    "er": {
+      "section": "er",
+      "steps": [
+        "Check the infinitive ends in -er.",
+        "Remove -er.",
+        "Add -o, -e, -emos or -em for that subject."
+      ]
+    },
+    "ir": {
+      "section": "ir",
+      "steps": [
+        "Check the infinitive ends in -ir.",
+        "Use -o, -e or -em as for -er verbs.",
+        "Only nós is different: -imos."
+      ]
+    },
+    "persons": {
+      "section": "persons",
+      "steps": [
+        "One person, você or a gente: the singular form ending in a vowel.",
+        "Several people, vocês included: add -m."
+      ]
+    },
+    "nos": {
+      "section": "nos",
+      "steps": [
+        "Find the vowel before the final r of the infinitive.",
+        "Keep it and add -mos."
+      ]
+    },
+    "uses": {
+      "section": "uses",
+      "steps": [
+        "Habit, fact or fixed plan: simple present.",
+        "For a plan, keep the time word that says when."
+      ]
+    },
+    "gostar": {
+      "section": "gostar",
+      "steps": [
+        "Conjugate gostar like falar.",
+        "Put de after it, before the noun or infinitive.",
+        "de plus o or a becomes do or da."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "present-regular-ar-1",
+      "pattern": "ar",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "falar · eu · presente",
+      "answers": [
+        "falo",
+        "eu falo"
+      ],
+      "hint": "Remove -ar. Which ending goes with eu?",
+      "feedback": "The eu ending is -o.",
+      "explanation": "Eu falo: fal- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "fala",
+            "eu fala"
+          ],
+          "why": "Fala is the form for você, ele and ela. Eu has its own ending in every family."
+        },
+        {
+          "answers": [
+            "falamos",
+            "eu falamos"
+          ],
+          "why": "Falamos is the nós form, a group that includes the speaker, not one person."
+        },
+        {
+          "answers": [
+            "falam",
+            "eu falam"
+          ],
+          "why": "Falam is for vocês, eles and elas, several people."
+        },
+        {
+          "answers": [
+            "falar",
+            "eu falar"
+          ],
+          "why": "Falar is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-regular-ar-2",
+      "pattern": "ar",
+      "type": "complete",
+      "instruction": "Write morar in the present.",
+      "source": "Eu ____ (morar) perto da praia.",
+      "answers": [
+        "moro"
+      ],
+      "hint": "Eu takes the same ending in all three families.",
+      "feedback": "The eu form of -ar verbs ends in -o.",
+      "explanation": "Eu moro: mor- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "mora"
+          ],
+          "why": "Mora is the form for você, ele and ela. The subject here is the speaker."
+        },
+        {
+          "answers": [
+            "moramos"
+          ],
+          "why": "Moramos is the nós form; the subject here is one person."
+        },
+        {
+          "answers": [
+            "morar"
+          ],
+          "why": "Morar is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "morar",
+          "en": "live (somewhere)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "perto",
+          "en": "near"
+        },
+        {
+          "pt": "praia",
+          "en": "beach",
+          "word": "nature-008"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-ar-3",
+      "pattern": "ar",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eu ____ no escritório.",
+      "options": [
+        "trabalho",
+        "trabalha",
+        "trabalham",
+        "trabalhar"
+      ],
+      "answers": [
+        "trabalho"
+      ],
+      "hint": "Look for the eu ending.",
+      "feedback": "Eu forms end in -o.",
+      "explanation": "Eu trabalho: trabalh- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "trabalha"
+          ],
+          "why": "Trabalha is the form for você, ele and ela, someone other than the speaker."
+        },
+        {
+          "answers": [
+            "trabalham"
+          ],
+          "why": "Trabalham is the plural form, for vocês, eles and elas."
+        },
+        {
+          "answers": [
+            "trabalhar"
+          ],
+          "why": "Trabalhar is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "escritório",
+          "en": "office",
+          "word": "work-004"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-ar-4",
+      "pattern": "ar",
+      "type": "repair",
+      "instruction": "Fix the verb. Keep eu.",
+      "source": "Eu estuda português à noite.",
+      "answers": [
+        "Eu estudo português à noite.",
+        "Estudo português à noite."
+      ],
+      "hint": "Which ending goes with eu?",
+      "feedback": "Eu needs its own ending.",
+      "explanation": "Eu estudo: estud- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu estuda português à noite."
+          ],
+          "why": "That is the sentence unchanged. Estuda is the form for você, ele and ela, not for the speaker."
+        },
+        {
+          "answers": [
+            "Eu estudam português à noite."
+          ],
+          "why": "Estudam is the plural form, for vocês, eles and elas."
+        },
+        {
+          "answers": [
+            "Eu estudar português à noite."
+          ],
+          "why": "Estudar is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "estuda",
+          "en": "study (estudar)",
+          "word": "verbs-055"
+        },
+        {
+          "pt": "português",
+          "en": "Portuguese",
+          "word": "school-029"
+        },
+        {
+          "pt": "noite",
+          "en": "night",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-ar-5",
+      "pattern": "ar",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I work in an office.",
+      "answers": [
+        "Eu trabalho em um escritório.",
+        "Trabalho em um escritório.",
+        "Eu trabalho num escritório.",
+        "Trabalho num escritório."
+      ],
+      "hint": "Trabalhar is an -ar verb. What does eu take?",
+      "feedback": "Use the eu form of trabalhar.",
+      "explanation": "Eu trabalho em um escritório: trabalh- + -o. Num is the everyday contraction of em um.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu trabalha em um escritório.",
+            "Eu trabalha num escritório."
+          ],
+          "why": "Trabalha is the form for você, ele and ela. The speaker needs the eu ending."
+        },
+        {
+          "answers": [
+            "Eu trabalho um escritório."
+          ],
+          "why": "Working somewhere needs em in front of the place."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-regular-ar-6",
+      "pattern": "ar",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I cook dinner every day.",
+      "tokens": [
+        "Eu",
+        "cozinho",
+        "cozinha",
+        "o",
+        "jantar",
+        "todo",
+        "dia."
+      ],
+      "answers": [
+        "Eu cozinho o jantar todo dia."
+      ],
+      "hint": "Pick the verb tile with the eu ending.",
+      "feedback": "One verb tile has the ele ending.",
+      "explanation": "Eu cozinho: cozinh- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu cozinha o jantar todo dia."
+          ],
+          "why": "Cozinha is the form for você, ele and ela; it is also the noun kitchen. The speaker needs the eu ending."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-regular-er-1",
+      "pattern": "er",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "comer · eu · presente",
+      "answers": [
+        "como",
+        "eu como"
+      ],
+      "hint": "Remove -er. Which ending goes with eu?",
+      "feedback": "The eu ending is -o in every family.",
+      "explanation": "Eu como: com- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "come",
+            "eu come"
+          ],
+          "why": "Come is the form for você, ele and ela. Eu has its own ending."
+        },
+        {
+          "answers": [
+            "comemos",
+            "eu comemos"
+          ],
+          "why": "Comemos is the nós form, for a group."
+        },
+        {
+          "answers": [
+            "comer",
+            "eu comer"
+          ],
+          "why": "Comer is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-regular-er-2",
+      "pattern": "er",
+      "type": "complete",
+      "instruction": "Write escrever in the present.",
+      "source": "Você ____ (escrever) muitas cartas?",
+      "answers": [
+        "escreve"
+      ],
+      "hint": "Você takes the ele form.",
+      "feedback": "Você, ele and ela share the form ending in -e.",
+      "explanation": "Você escreve: escrev- + -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "escreva"
+          ],
+          "why": "An a ending belongs to -ar verbs. Escrever is an -er verb, so its vowel is e."
+        },
+        {
+          "answers": [
+            "escrevo"
+          ],
+          "why": "Escrevo is the eu form. Você is the person spoken to."
+        },
+        {
+          "answers": [
+            "escrevem"
+          ],
+          "why": "Escrevem is plural, for vocês, eles and elas. Você is one person."
+        }
+      ],
+      "row": "você / ele / ela / a gente",
+      "gloss": [
+        {
+          "pt": "escrever",
+          "en": "write",
+          "word": "verbs-058"
+        },
+        {
+          "pt": "muitas",
+          "en": "many",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "cartas",
+          "en": "letters",
+          "word": "town-007"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-er-3",
+      "pattern": "er",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eu ____ pão no café da manhã.",
+      "options": [
+        "como",
+        "come",
+        "comem",
+        "comer"
+      ],
+      "answers": [
+        "como"
+      ],
+      "hint": "Look for the eu ending.",
+      "feedback": "Eu forms end in -o.",
+      "explanation": "Eu como: com- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "come"
+          ],
+          "why": "Come is the form for você, ele and ela, not for the speaker."
+        },
+        {
+          "answers": [
+            "comem"
+          ],
+          "why": "Comem is plural, for vocês, eles and elas."
+        },
+        {
+          "answers": [
+            "comer"
+          ],
+          "why": "Comer is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        },
+        {
+          "pt": "café da manhã",
+          "en": "breakfast",
+          "word": "food-041"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-er-4",
+      "pattern": "er",
+      "type": "repair",
+      "instruction": "Fix the verb. Keep eu.",
+      "source": "Eu bebe muito café.",
+      "answers": [
+        "Eu bebo muito café.",
+        "Bebo muito café."
+      ],
+      "hint": "Eu has its own ending.",
+      "feedback": "Eu needs the -o ending.",
+      "explanation": "Eu bebo: beb- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu bebe muito café."
+          ],
+          "why": "That is the sentence unchanged. Bebe is the form for você, ele and ela."
+        },
+        {
+          "answers": [
+            "Eu beba muito café."
+          ],
+          "why": "An a ending belongs to -ar verbs; beber is an -er verb."
+        },
+        {
+          "answers": [
+            "Eu bebem muito café."
+          ],
+          "why": "Bebem is plural, for vocês, eles and elas."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "bebe",
+          "en": "drink (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot of",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-er-5",
+      "pattern": "er",
+      "type": "rewrite",
+      "instruction": "Change ela to eu and adjust the verb.",
+      "source": "Ela vende frutas no mercado.",
+      "answers": [
+        "Eu vendo frutas no mercado.",
+        "Vendo frutas no mercado."
+      ],
+      "hint": "Swap the ela ending for the eu ending.",
+      "feedback": "The eu form ends in -o.",
+      "explanation": "Eu vendo: vend- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu vende frutas no mercado."
+          ],
+          "why": "Vende is still the ela form; the subject changed to the speaker."
+        },
+        {
+          "answers": [
+            "Eu venda frutas no mercado."
+          ],
+          "why": "An a ending belongs to -ar verbs; vender is an -er verb."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "vende",
+          "en": "sell (vender)",
+          "word": "verbs-069"
+        },
+        {
+          "pt": "frutas",
+          "en": "fruit",
+          "word": "food-019"
+        },
+        {
+          "pt": "mercado",
+          "en": "market",
+          "word": "shopping-015"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-er-6",
+      "pattern": "er",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I learn Portuguese at school.",
+      "answers": [
+        "Eu aprendo português na escola.",
+        "Aprendo português na escola."
+      ],
+      "hint": "Aprender is an -er verb. What does eu take?",
+      "feedback": "Use the eu form of aprender.",
+      "explanation": "Eu aprendo: aprend- + -o. Na is em plus a.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu aprende português na escola."
+          ],
+          "why": "Aprende is the form for você, ele and ela, not for the speaker."
+        },
+        {
+          "answers": [
+            "Eu aprendemos português na escola."
+          ],
+          "why": "Aprendemos is the nós form, for a group including the speaker. The subject here is one person."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-regular-ir-1",
+      "pattern": "ir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "abrir · eu · presente",
+      "answers": [
+        "abro",
+        "eu abro"
+      ],
+      "hint": "Remove -ir. Eu has the same ending in every family.",
+      "feedback": "The eu ending is -o.",
+      "explanation": "Eu abro: abr- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "abre",
+            "eu abre"
+          ],
+          "why": "Abre is the form for você, ele and ela."
+        },
+        {
+          "answers": [
+            "abri",
+            "eu abri"
+          ],
+          "why": "Abri is a past form, I opened. The present eu form ends in -o."
+        },
+        {
+          "answers": [
+            "abrir",
+            "eu abrir"
+          ],
+          "why": "Abrir is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-regular-ir-2",
+      "pattern": "ir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "partir · eles · presente",
+      "answers": [
+        "partem",
+        "eles partem"
+      ],
+      "hint": "-ir verbs borrow the -er plural ending.",
+      "feedback": "Eles takes -em for -er and -ir verbs.",
+      "explanation": "Eles partem: part- + -em.",
+      "mistakes": [
+        {
+          "answers": [
+            "partim",
+            "eles partim"
+          ],
+          "why": "There is no -im ending: the plural of -ir verbs is the same as for -er verbs."
+        },
+        {
+          "answers": [
+            "parte",
+            "eles parte"
+          ],
+          "why": "Parte is singular, for você, ele and ela. Eles needs the final m."
+        },
+        {
+          "answers": [
+            "partimos",
+            "eles partimos"
+          ],
+          "why": "Partimos is the nós form, for a group that includes the speaker."
+        }
+      ],
+      "row": "vocês / eles / elas"
+    },
+    {
+      "id": "present-regular-ir-3",
+      "pattern": "ir",
+      "type": "complete",
+      "instruction": "Write abrir in the present.",
+      "source": "A loja ____ (abrir) às nove.",
+      "answers": [
+        "abre"
+      ],
+      "hint": "A loja is one thing, like ela.",
+      "feedback": "The ela form of -ir verbs ends in -e.",
+      "explanation": "A loja abre: abr- + -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "abri"
+          ],
+          "why": "Abri is the past, I opened. The ela form in the present ends in -e."
+        },
+        {
+          "answers": [
+            "abrem"
+          ],
+          "why": "Abrem is plural; a loja is one shop."
+        },
+        {
+          "answers": [
+            "abra"
+          ],
+          "why": "An a ending belongs to -ar verbs; abrir is an -ir verb."
+        }
+      ],
+      "row": "você / ele / ela / a gente",
+      "gloss": [
+        {
+          "pt": "loja",
+          "en": "shop",
+          "word": "shopping-012"
+        },
+        {
+          "pt": "abrir",
+          "en": "open",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "nove",
+          "en": "nine"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-ir-4",
+      "pattern": "ir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "O ônibus ____ às oito.",
+      "options": [
+        "parte",
+        "partem",
+        "parto",
+        "partimos"
+      ],
+      "answers": [
+        "parte"
+      ],
+      "hint": "O ônibus is one thing, like ele.",
+      "feedback": "The ele form of -ir verbs ends in -e.",
+      "explanation": "O ônibus parte: part- + -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "partem"
+          ],
+          "why": "Partem is plural, for eles and elas; the subject is one bus."
+        },
+        {
+          "answers": [
+            "parto"
+          ],
+          "why": "Parto is the eu form, the speaker."
+        },
+        {
+          "answers": [
+            "partimos"
+          ],
+          "why": "Partimos is the nós form, a group including the speaker."
+        }
+      ],
+      "row": "você / ele / ela / a gente",
+      "gloss": [
+        {
+          "pt": "ônibus",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "pt": "oito",
+          "en": "eight"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-ir-5",
+      "pattern": "ir",
+      "type": "repair",
+      "instruction": "Fix the verb. Keep eu.",
+      "source": "Eu abre a janela.",
+      "answers": [
+        "Eu abro a janela.",
+        "Abro a janela."
+      ],
+      "hint": "Which ending goes with eu?",
+      "feedback": "Eu needs the -o ending.",
+      "explanation": "Eu abro: abr- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu abre a janela."
+          ],
+          "why": "That is the sentence unchanged. Abre is the form for você, ele and ela."
+        },
+        {
+          "answers": [
+            "Eu abri a janela."
+          ],
+          "why": "Abri is the past, I opened. The sentence is in the present."
+        }
+      ],
+      "row": "eu",
+      "gloss": [
+        {
+          "pt": "abre",
+          "en": "open (abrir)",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "janela",
+          "en": "window",
+          "word": "home-017"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-ir-6",
+      "pattern": "ir",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "He opens the door.",
+      "answers": [
+        "Ele abre a porta."
+      ],
+      "hint": "Ele with an -ir verb takes -e.",
+      "feedback": "Use the ele form of abrir.",
+      "explanation": "Ele abre a porta: abr- + -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ele abri a porta."
+          ],
+          "why": "Abri is the past eu form. The ele form in the present ends in -e."
+        },
+        {
+          "answers": [
+            "Ele abra a porta."
+          ],
+          "why": "An a ending belongs to -ar verbs; abrir is an -ir verb."
+        }
+      ],
+      "row": "você / ele / ela / a gente"
+    },
+    {
+      "id": "present-regular-ir-7",
+      "pattern": "ir",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I open the window in the morning.",
+      "tokens": [
+        "Eu",
+        "abro",
+        "abre",
+        "a",
+        "janela",
+        "de",
+        "manhã."
+      ],
+      "answers": [
+        "Eu abro a janela de manhã."
+      ],
+      "hint": "Pick the verb tile with the eu ending.",
+      "feedback": "One verb tile has the ele ending.",
+      "explanation": "Eu abro: abr- + -o. De manhã means in the morning.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu abre a janela de manhã."
+          ],
+          "why": "Abre is the form for você, ele and ela, not for the speaker."
+        }
+      ],
+      "row": "eu"
+    },
+    {
+      "id": "present-regular-persons-1",
+      "pattern": "persons",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "A gente ____ em casa no domingo.",
+      "options": [
+        "come",
+        "comemos",
+        "comem",
+        "como"
+      ],
+      "answers": [
+        "come"
+      ],
+      "hint": "A gente means we but takes the ele form.",
+      "feedback": "A gente shares its form with ele and ela.",
+      "explanation": "A gente come: com- + -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "comemos"
+          ],
+          "why": "You will hear a gente comemos in casual speech, but the standard form after a gente is the ele form."
+        },
+        {
+          "answers": [
+            "comem"
+          ],
+          "why": "Comem is the eles form; a gente is grammatically singular."
+        },
+        {
+          "answers": [
+            "como"
+          ],
+          "why": "Como is the eu form."
+        }
+      ],
+      "row": "você, ele, ela, a gente",
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (everyday)"
+        },
+        {
+          "pt": "casa",
+          "en": "home",
+          "word": "home-001"
+        },
+        {
+          "pt": "domingo",
+          "en": "Sunday",
+          "word": "health-time-046"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-persons-2",
+      "pattern": "persons",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Vocês ____ português?",
+      "options": [
+        "falam",
+        "falamos",
+        "fala",
+        "falais"
+      ],
+      "answers": [
+        "falam"
+      ],
+      "hint": "Vocês shares its form with eles and elas.",
+      "feedback": "Vocês takes the plural -am ending.",
+      "explanation": "Vocês falam: fal- + -am.",
+      "mistakes": [
+        {
+          "answers": [
+            "falamos"
+          ],
+          "why": "Falamos is the nós form; vocês are the people spoken to, not the speaker’s group."
+        },
+        {
+          "answers": [
+            "fala"
+          ],
+          "why": "Fala is singular, for você. Vocês is several people."
+        },
+        {
+          "answers": [
+            "falais"
+          ],
+          "why": "Falais goes with vós, a form you only meet in old texts and prayers."
+        }
+      ],
+      "row": "vocês, eles, elas",
+      "gloss": [
+        {
+          "pt": "português",
+          "en": "Portuguese",
+          "word": "school-029"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-persons-3",
+      "pattern": "persons",
+      "type": "complete",
+      "instruction": "Write morar in the present.",
+      "source": "Meus pais ____ (morar) no Rio.",
+      "answers": [
+        "moram"
+      ],
+      "hint": "Meus pais is several people, like eles.",
+      "feedback": "A plural noun takes the eles form.",
+      "explanation": "Meus pais moram: mor- + -am.",
+      "mistakes": [
+        {
+          "answers": [
+            "mora"
+          ],
+          "why": "Mora is singular. My parents are two people, so the verb needs the plural ending."
+        },
+        {
+          "answers": [
+            "moramos"
+          ],
+          "why": "Moramos is the nós form; the subject does not include the speaker."
+        },
+        {
+          "answers": [
+            "morem"
+          ],
+          "why": "-em is the plural for -er and -ir verbs; morar is an -ar verb."
+        }
+      ],
+      "row": "vocês, eles, elas",
+      "gloss": [
+        {
+          "pt": "Meus",
+          "en": "my"
+        },
+        {
+          "pt": "pais",
+          "en": "parents",
+          "word": "people-009"
+        },
+        {
+          "pt": "morar",
+          "en": "live (somewhere)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "Rio",
+          "en": "Rio de Janeiro"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-persons-4",
+      "pattern": "persons",
+      "type": "rewrite",
+      "instruction": "Change ela to elas and adjust the verb.",
+      "source": "Ela trabalha aqui.",
+      "answers": [
+        "Elas trabalham aqui."
+      ],
+      "hint": "Make the verb plural too.",
+      "feedback": "Elas takes the plural ending.",
+      "explanation": "Elas trabalham: trabalh- + -am.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elas trabalha aqui."
+          ],
+          "why": "Trabalha is still singular; the subject is now several people."
+        },
+        {
+          "answers": [
+            "Elas trabalhamos aqui."
+          ],
+          "why": "Trabalhamos is the nós form, for a group including the speaker."
+        }
+      ],
+      "row": "vocês, eles, elas",
+      "gloss": [
+        {
+          "pt": "trabalha",
+          "en": "work (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-persons-5",
+      "pattern": "persons",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "You (plural) live near the beach.",
+      "answers": [
+        "Vocês moram perto da praia."
+      ],
+      "hint": "Plural you is vocês, which takes the eles form.",
+      "feedback": "Vocês shares its form with eles and elas.",
+      "explanation": "Vocês moram: mor- + -am. Da is de plus a.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vocês mora perto da praia."
+          ],
+          "why": "Mora is singular, for você. Vocês is several people."
+        },
+        {
+          "answers": [
+            "Vocês moramos perto da praia."
+          ],
+          "why": "Moramos is the nós form, the speaker’s group."
+        }
+      ],
+      "row": "vocês, eles, elas"
+    },
+    {
+      "id": "present-regular-persons-6",
+      "pattern": "persons",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "decidir · a gente · presente",
+      "answers": [
+        "decide",
+        "a gente decide"
+      ],
+      "hint": "A gente means we but takes the ele form.",
+      "feedback": "A gente shares the form of ele and ela.",
+      "explanation": "A gente decide: decid- + -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "decidimos",
+            "a gente decidimos"
+          ],
+          "why": "Decidimos goes with nós. After a gente the standard form is the singular one."
+        },
+        {
+          "answers": [
+            "decidem",
+            "a gente decidem"
+          ],
+          "why": "Decidem is plural; a gente is grammatically singular."
+        },
+        {
+          "answers": [
+            "decidi",
+            "a gente decidi"
+          ],
+          "why": "Decidi is the past eu form, I decided."
+        }
+      ],
+      "row": "você, ele, ela, a gente"
+    },
+    {
+      "id": "present-regular-persons-7",
+      "pattern": "persons",
+      "type": "repair",
+      "instruction": "Fix the verb. Keep a gente.",
+      "source": "A gente comemos muito.",
+      "answers": [
+        "A gente come muito."
+      ],
+      "hint": "A gente takes the ele form.",
+      "feedback": "A gente is grammatically singular.",
+      "explanation": "A gente come: com- + -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "A gente comemos muito."
+          ],
+          "why": "That is the sentence unchanged. It is common in casual speech, but written Portuguese uses the singular form after a gente."
+        },
+        {
+          "answers": [
+            "A gente comem muito."
+          ],
+          "why": "Comem is plural; a gente takes the ele form."
+        },
+        {
+          "answers": [
+            "Nós comemos muito."
+          ],
+          "why": "That changes the subject instead of the verb, and the instruction is to keep a gente."
+        }
+      ],
+      "row": "você, ele, ela, a gente",
+      "gloss": [
+        {
+          "pt": "A gente",
+          "en": "we (everyday)"
+        },
+        {
+          "pt": "comemos",
+          "en": "eat (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot",
+          "word": "essentials-065"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-nos-1",
+      "pattern": "nos",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "aprender · nós · presente",
+      "answers": [
+        "aprendemos",
+        "nós aprendemos"
+      ],
+      "hint": "Keep the vowel of the infinitive and add -mos.",
+      "feedback": "Aprender has e, so nós takes -emos.",
+      "explanation": "Nós aprendemos: aprend- + -emos.",
+      "mistakes": [
+        {
+          "answers": [
+            "aprendamos",
+            "nós aprendamos"
+          ],
+          "why": "-amos is for -ar verbs; aprender has an e before its final r."
+        },
+        {
+          "answers": [
+            "aprendimos",
+            "nós aprendimos"
+          ],
+          "why": "-imos is for -ir verbs; aprender is an -er verb."
+        },
+        {
+          "answers": [
+            "aprendem",
+            "nós aprendem"
+          ],
+          "why": "Aprendem is for vocês, eles and elas."
+        }
+      ],
+      "row": "aprender"
+    },
+    {
+      "id": "present-regular-nos-2",
+      "pattern": "nos",
+      "type": "complete",
+      "instruction": "Write dividir in the present.",
+      "source": "Nós sempre ____ (dividir) a conta.",
+      "answers": [
+        "dividimos"
+      ],
+      "hint": "Look at the vowel before the final r.",
+      "feedback": "Dividir is an -ir verb, so nós takes -imos.",
+      "explanation": "Nós dividimos: divid- + -imos.",
+      "mistakes": [
+        {
+          "answers": [
+            "dividemos"
+          ],
+          "why": "-emos belongs to -er verbs; dividir keeps its i."
+        },
+        {
+          "answers": [
+            "dividem"
+          ],
+          "why": "Dividem is for vocês, eles and elas."
+        },
+        {
+          "answers": [
+            "divide"
+          ],
+          "why": "Divide is singular, for você, ele and ela."
+        }
+      ],
+      "row": "abrir",
+      "gloss": [
+        {
+          "pt": "sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "dividir",
+          "en": "split"
+        },
+        {
+          "pt": "conta",
+          "en": "bill"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-nos-3",
+      "pattern": "nos",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Nós ____ às sete.",
+      "options": [
+        "jantamos",
+        "jantam",
+        "janta",
+        "jantemos"
+      ],
+      "answers": [
+        "jantamos"
+      ],
+      "hint": "Jantar is an -ar verb. Find the nós ending.",
+      "feedback": "Nós forms of -ar verbs end in -amos.",
+      "explanation": "Nós jantamos: jant- + -amos.",
+      "mistakes": [
+        {
+          "answers": [
+            "jantam"
+          ],
+          "why": "Jantam is for vocês, eles and elas, not for the speaker’s group."
+        },
+        {
+          "answers": [
+            "janta"
+          ],
+          "why": "Janta is singular, for você, ele, ela and a gente."
+        },
+        {
+          "answers": [
+            "jantemos"
+          ],
+          "why": "-emos is the -er ending; jantar is an -ar verb."
+        }
+      ],
+      "row": "falar",
+      "gloss": [
+        {
+          "pt": "sete",
+          "en": "seven"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-nos-4",
+      "pattern": "nos",
+      "type": "rewrite",
+      "instruction": "Change eu to nós and adjust the verb.",
+      "source": "Eu bebo chá.",
+      "answers": [
+        "Nós bebemos chá.",
+        "Bebemos chá."
+      ],
+      "hint": "Beber has e before the final r.",
+      "feedback": "Nós takes the infinitive vowel plus -mos.",
+      "explanation": "Nós bebemos: beb- + -emos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós bebamos chá."
+          ],
+          "why": "-amos is for -ar verbs; beber is an -er verb."
+        },
+        {
+          "answers": [
+            "Nós bebo chá."
+          ],
+          "why": "Bebo is still the eu form."
+        },
+        {
+          "answers": [
+            "Nós bebem chá."
+          ],
+          "why": "Bebem is for vocês, eles and elas."
+        }
+      ],
+      "row": "comer",
+      "gloss": [
+        {
+          "pt": "bebo",
+          "en": "drink (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "chá",
+          "en": "tea",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-nos-5",
+      "pattern": "nos",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "We live in a big city.",
+      "answers": [
+        "Nós moramos em uma cidade grande.",
+        "Moramos em uma cidade grande.",
+        "Nós moramos numa cidade grande.",
+        "Moramos numa cidade grande."
+      ],
+      "hint": "Morar is an -ar verb. What is its nós ending?",
+      "feedback": "Use the nós form of morar.",
+      "explanation": "Nós moramos: mor- + -amos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós moram em uma cidade grande.",
+            "Nós moram numa cidade grande."
+          ],
+          "why": "Moram is for vocês, eles and elas."
+        },
+        {
+          "answers": [
+            "Nós moremos em uma cidade grande.",
+            "Nós moremos numa cidade grande."
+          ],
+          "why": "-emos is the -er ending; morar is an -ar verb."
+        }
+      ],
+      "row": "estudar"
+    },
+    {
+      "id": "present-regular-nos-6",
+      "pattern": "nos",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We study at night.",
+      "tokens": [
+        "Nós",
+        "estudamos",
+        "estudam",
+        "à",
+        "noite."
+      ],
+      "answers": [
+        "Nós estudamos à noite."
+      ],
+      "hint": "Pick the verb tile with the nós ending.",
+      "feedback": "One verb tile has the eles ending.",
+      "explanation": "Nós estudamos: estud- + -amos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós estudam à noite."
+          ],
+          "why": "Estudam is for vocês, eles and elas, not for the speaker’s group."
+        }
+      ],
+      "row": "estudar"
+    },
+    {
+      "id": "present-regular-nos-7",
+      "pattern": "nos",
+      "type": "repair",
+      "instruction": "Fix the verb. Keep nós.",
+      "source": "Nós partemos amanhã.",
+      "answers": [
+        "Nós partimos amanhã.",
+        "Partimos amanhã."
+      ],
+      "hint": "Partir is an -ir verb.",
+      "feedback": "Nós keeps the i of -ir verbs.",
+      "explanation": "Nós partimos: part- + -imos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós partemos amanhã."
+          ],
+          "why": "That is the sentence unchanged. -emos belongs to -er verbs; partir keeps its own vowel."
+        },
+        {
+          "answers": [
+            "Nós partem amanhã."
+          ],
+          "why": "Partem is for eles and elas."
+        }
+      ],
+      "row": "partir",
+      "gloss": [
+        {
+          "pt": "partemos",
+          "en": "leave (partir)"
+        },
+        {
+          "pt": "amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-uses-1",
+      "pattern": "uses",
+      "type": "choose",
+      "instruction": "Choose the right form for a fixed plan.",
+      "source": "Amanhã eu ____ cedo.",
+      "options": [
+        "trabalho",
+        "trabalhar",
+        "trabalha",
+        "trabalham"
+      ],
+      "answers": [
+        "trabalho"
+      ],
+      "hint": "A plan with a time word uses the simple present.",
+      "feedback": "The simple present with amanhã describes a plan.",
+      "explanation": "Amanhã eu trabalho cedo: the time word does the job of the future.",
+      "mistakes": [
+        {
+          "answers": [
+            "trabalhar"
+          ],
+          "why": "Trabalhar is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        },
+        {
+          "answers": [
+            "trabalha"
+          ],
+          "why": "Trabalha is the form for você, ele and ela, not for the speaker."
+        },
+        {
+          "answers": [
+            "trabalham"
+          ],
+          "why": "Trabalham is plural, for vocês, eles and elas."
+        }
+      ],
+      "row": "near plan",
+      "gloss": [
+        {
+          "pt": "Amanhã",
+          "en": "tomorrow",
+          "word": "health-time-037"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-uses-2",
+      "pattern": "uses",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I am working tomorrow.",
+      "answers": [
+        "Eu trabalho amanhã.",
+        "Trabalho amanhã.",
+        "Amanhã eu trabalho.",
+        "Amanhã trabalho."
+      ],
+      "hint": "For a fixed plan, use the simple present with a time word.",
+      "feedback": "The simple present covers fixed plans.",
+      "explanation": "Eu trabalho amanhã: no -ing form is needed for a plan.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu trabalha amanhã."
+          ],
+          "why": "Trabalha is the form for você, ele and ela."
+        }
+      ],
+      "row": "near plan",
+      "alternatives": [
+        {
+          "answer": "Vou trabalhar amanhã.",
+          "message": "Correct and very common. This exercise practises the simple present for a fixed plan: Eu trabalho amanhã.",
+          "accepted": true
+        },
+        {
+          "answer": "Eu vou trabalhar amanhã.",
+          "message": "Correct and very common. This exercise practises the simple present for a fixed plan: Eu trabalho amanhã.",
+          "accepted": true
+        },
+        {
+          "answer": "Amanhã eu vou trabalhar.",
+          "message": "Correct and very common. This exercise practises the simple present for a fixed plan: Eu trabalho amanhã.",
+          "accepted": true
+        },
+        {
+          "answer": "Eu estou trabalhando amanhã.",
+          "message": "Heard in everyday Brazilian speech for a plan. The simple present, Eu trabalho amanhã, is the form this exercise practises.",
+          "accepted": true
+        },
+        {
+          "answer": "Amanhã eu estou trabalhando.",
+          "message": "Heard in everyday Brazilian speech for a plan. The simple present, Eu trabalho amanhã, is the form this exercise practises.",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "present-regular-uses-3",
+      "pattern": "uses",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I swim every Saturday.",
+      "answers": [
+        "Eu nado todo sábado.",
+        "Nado todo sábado.",
+        "Eu nado todos os sábados.",
+        "Nado todos os sábados.",
+        "Eu nado aos sábados.",
+        "Nado aos sábados."
+      ],
+      "hint": "A habit takes the simple present.",
+      "feedback": "Habits use the simple present.",
+      "explanation": "Eu nado: nad- + -o.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu nada todo sábado.",
+            "Eu nada todos os sábados."
+          ],
+          "why": "Nada is the ele form, and also the word nothing. The speaker needs the eu ending."
+        },
+        {
+          "answers": [
+            "Eu estou nadando todo sábado."
+          ],
+          "why": "Estar plus an -ndo form describes what is happening right now, not a habit."
+        }
+      ],
+      "row": "habit"
+    },
+    {
+      "id": "present-regular-uses-4",
+      "pattern": "uses",
+      "type": "complete",
+      "instruction": "Write correr in the present.",
+      "source": "Ela ____ (correr) na praia todo dia.",
+      "answers": [
+        "corre"
+      ],
+      "hint": "A habit uses the simple present. Ela takes the -e ending.",
+      "feedback": "Habits use the simple present.",
+      "explanation": "Ela corre: corr- + -e.",
+      "mistakes": [
+        {
+          "answers": [
+            "corra"
+          ],
+          "why": "An a ending belongs to -ar verbs; correr is an -er verb."
+        },
+        {
+          "answers": [
+            "correm"
+          ],
+          "why": "Correm is plural; ela is one person."
+        },
+        {
+          "answers": [
+            "corro"
+          ],
+          "why": "Corro is the eu form."
+        }
+      ],
+      "row": "habit",
+      "gloss": [
+        {
+          "pt": "correr",
+          "en": "run",
+          "word": "verbs-041"
+        },
+        {
+          "pt": "praia",
+          "en": "beach",
+          "word": "nature-008"
+        },
+        {
+          "pt": "todo dia",
+          "en": "every day",
+          "word": "essentials-045"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-uses-5",
+      "pattern": "uses",
+      "type": "rewrite",
+      "instruction": "Say the same plan with the simple present.",
+      "source": "Eu vou viajar no sábado.",
+      "answers": [
+        "Eu viajo no sábado.",
+        "Viajo no sábado.",
+        "No sábado eu viajo."
+      ],
+      "hint": "Replace vou plus the infinitive with one verb in the eu form.",
+      "feedback": "A fixed plan can use the simple present.",
+      "explanation": "Eu viajo no sábado: viaj- + -o, and the time word marks the future.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu viaja no sábado."
+          ],
+          "why": "Viaja is the form for você, ele and ela."
+        },
+        {
+          "answers": [
+            "Eu viajar no sábado."
+          ],
+          "why": "Viajar is the infinitive, the dictionary form. Once there is a subject, the verb needs an ending."
+        }
+      ],
+      "row": "near plan",
+      "gloss": [
+        {
+          "pt": "vou",
+          "en": "go (ir)"
+        },
+        {
+          "pt": "viajar",
+          "en": "travel"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-gostar-1",
+      "pattern": "gostar",
+      "type": "choose",
+      "instruction": "Choose the missing word.",
+      "source": "Eu gosto ____ nadar.",
+      "options": [
+        "de",
+        "a",
+        "em",
+        "o"
+      ],
+      "answers": [
+        "de"
+      ],
+      "hint": "Gostar always needs the same small word after it.",
+      "feedback": "Gostar is followed by de.",
+      "explanation": "Eu gosto de nadar: gostar de plus the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "Gostar is never followed by a; it needs a different preposition before what you like."
+        },
+        {
+          "answers": [
+            "em"
+          ],
+          "why": "Em means in or on; gostar is not followed by it."
+        },
+        {
+          "answers": [
+            "o"
+          ],
+          "why": "O is an article; an infinitive here needs a preposition, not an article."
+        }
+      ],
+      "row": "an infinitive",
+      "gloss": [
+        {
+          "pt": "gosto",
+          "en": "like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "nadar",
+          "en": "swim",
+          "word": "leisure-032"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-gostar-2",
+      "pattern": "gostar",
+      "type": "complete",
+      "instruction": "Write the missing word.",
+      "source": "Você gosta ____ música?",
+      "answers": [
+        "de",
+        "da"
+      ],
+      "hint": "What comes after gostar?",
+      "feedback": "Gostar needs de before what you like.",
+      "explanation": "Você gosta de música: gostar de plus a noun. Da música, with the article, is also correct.",
+      "mistakes": [
+        {
+          "answers": [
+            "a"
+          ],
+          "why": "Gostar never takes a alone; it needs de."
+        },
+        {
+          "answers": [
+            "em"
+          ],
+          "why": "Em means in or on; gostar is followed by another preposition."
+        }
+      ],
+      "row": "a noun",
+      "gloss": [
+        {
+          "pt": "gosta",
+          "en": "like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "música",
+          "en": "music",
+          "word": "leisure-027"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-gostar-3",
+      "pattern": "gostar",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I like coffee.",
+      "answers": [
+        "Eu gosto de café.",
+        "Gosto de café."
+      ],
+      "hint": "Gostar needs a small word before the thing you like.",
+      "feedback": "Use gostar de.",
+      "explanation": "Eu gosto de café: gost- + -o, then de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu gosto café."
+          ],
+          "why": "English like takes no preposition, but gostar always needs de."
+        },
+        {
+          "answers": [
+            "Eu gosta de café."
+          ],
+          "why": "Gosta is the form for você, ele and ela."
+        }
+      ],
+      "row": "a noun"
+    },
+    {
+      "id": "present-regular-gostar-4",
+      "pattern": "gostar",
+      "type": "repair",
+      "instruction": "Add what is missing.",
+      "source": "Ela gosta cozinhar.",
+      "answers": [
+        "Ela gosta de cozinhar."
+      ],
+      "hint": "Gostar needs a word before the infinitive.",
+      "feedback": "Gostar is followed by de.",
+      "explanation": "Ela gosta de cozinhar: de comes before the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ela gosta cozinhar."
+          ],
+          "why": "That is the sentence unchanged. Gostar cannot be followed directly by another verb."
+        },
+        {
+          "answers": [
+            "Ela gosta de cozinha."
+          ],
+          "why": "Cozinha here would be the noun kitchen or the ele form; after de the verb stays in the infinitive."
+        }
+      ],
+      "row": "an infinitive",
+      "gloss": [
+        {
+          "pt": "gosta",
+          "en": "like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "cozinhar",
+          "en": "cook",
+          "word": "verbs-079"
+        }
+      ]
+    },
+    {
+      "id": "present-regular-gostar-5",
+      "pattern": "gostar",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We like to dance.",
+      "tokens": [
+        "Nós",
+        "gostamos",
+        "gosta",
+        "de",
+        "dançar."
+      ],
+      "answers": [
+        "Nós gostamos de dançar."
+      ],
+      "hint": "Pick the nós form, then de.",
+      "feedback": "One verb tile has the ele ending.",
+      "explanation": "Nós gostamos de dançar: gost- + -amos, then de plus the infinitive.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós gosta de dançar."
+          ],
+          "why": "Gosta is singular, for você, ele, ela and a gente; nós needs -amos."
+        },
+        {
+          "answers": [
+            "Nós gostamos dançar."
+          ],
+          "why": "Gostar always needs de before the infinitive."
+        }
+      ],
+      "row": "an infinitive"
+    },
+    {
+      "id": "present-regular-gostar-6",
+      "pattern": "gostar",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "gostar · ela · presente",
+      "answers": [
+        "gosta",
+        "ela gosta"
+      ],
+      "hint": "Gostar is a regular -ar verb.",
+      "feedback": "Ela takes the -a ending.",
+      "explanation": "Ela gosta: gost- + -a.",
+      "mistakes": [
+        {
+          "answers": [
+            "gosto",
+            "ela gosto"
+          ],
+          "why": "Gosto is the eu form."
+        },
+        {
+          "answers": [
+            "gostam",
+            "ela gostam"
+          ],
+          "why": "Gostam is plural, for eles and elas."
+        },
+        {
+          "answers": [
+            "goste",
+            "ela goste"
+          ],
+          "why": "An e ending would belong to -er verbs here; gostar is an -ar verb."
+        }
+      ]
+    },
+    {
+      "id": "present-regular-gostar-7",
+      "pattern": "gostar",
+      "type": "rewrite",
+      "instruction": "Change eu to elas and adjust the verb.",
+      "source": "Eu gosto de chá.",
+      "answers": [
+        "Elas gostam de chá."
+      ],
+      "hint": "Make gostar plural and keep de.",
+      "feedback": "Elas takes -am.",
+      "explanation": "Elas gostam de chá: gost- + -am.",
+      "mistakes": [
+        {
+          "answers": [
+            "Elas gosta de chá."
+          ],
+          "why": "Gosta is singular; elas is several people."
+        },
+        {
+          "answers": [
+            "Elas gostam chá."
+          ],
+          "why": "The de must stay: gostar always needs it."
+        }
+      ],
+      "row": "a noun",
+      "gloss": [
+        {
+          "pt": "gosto",
+          "en": "like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "chá",
+          "en": "tea",
+          "word": "food-004"
+        }
+      ]
+    }
+  ]
+}

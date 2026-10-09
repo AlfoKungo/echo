@@ -74,8 +74,8 @@ export const LANGUAGE_CODES: readonly LanguageCode[] = ['fr', 'pt', 'sv'];
 export function languages(root: string, env: Record<string, string | undefined> = process.env): Record<LanguageCode, Language> {
   // ECHO_LANGUAGE_PORTS (pt:7885,sv:7886) moves the language processes, so a test Echo never meets the real ones.
   const ports = Object.fromEntries((env.ECHO_LANGUAGE_PORTS ?? '').split(',').map((entry) => entry.split(':')).filter(([, port]) => Number(port) > 0).map(([code, port]) => [code, Number(port)]));
-  // Words and Statistics only until each language's content is written; Statistics reads only its own database.
-  const firstRooms: readonly Room[] = ['words', 'statistics'];
+  // The rooms each language has content for; Statistics reads only its own database.
+  const firstRooms: readonly Room[] = ['words', 'grammar', 'statistics'];
   return {
     fr: {
       code: 'fr', english: 'French', own: 'Français', tag: 'fr', gender: GENDER_RULES.fr,
@@ -114,7 +114,7 @@ const GENDER_COLOURS: Record<Gender, string> = {
 // The page (static/index.html) for a language other than French: its title and the How it works passages every
 // language shares name the language; what its noun colours mean replaces French's colours and hooks (hooks come from
 // Claude, which only French asks); and what it says about Word families, Sounds and the sentence tape is marked as
-// that room, so the app drops it where the room is off. Listen and Read hold A1 and A2 outside French.
+// that room, so the app drops it where the room is off. Listen, Read and Grammar hold A1 and A2 outside French.
 // French's page is served as written. A passage missing from the page throws, so the page cannot drift from this list
 // unnoticed (tests/language.test.ts).
 export function languagePage(page: string, language: Language): string {
@@ -134,6 +134,8 @@ export function languagePage(page: string, language: Language): string {
     [/<p><strong>In Listen<\/strong>[^]*?<\/p>/, (found) => found.replaceAll('French', name)],
     ['<p><strong>Sounds</strong>', () => '<p data-room="sounds"><strong>Sounds</strong>'],
     ['<p><strong>Tape</strong> (in Listen', () => '<p data-room="sentencetape"><strong>Tape</strong> (in Listen'],
+    ['<strong>Grammar.</strong> Seven units take you from A1 towards B1.', () => '<strong>Grammar.</strong> Its units take you through A1 and A2.'],
+    ['reads the correct French aloud', () => `reads the correct ${name} aloud`],
   ];
   for (const [passage, swap] of swaps) {
     const found = typeof passage === 'string' ? (page.includes(passage) ? passage : null) : passage.exec(page)?.[0] ?? null;

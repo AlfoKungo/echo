@@ -1,0 +1,1905 @@
+{
+  "id": "negation-placement",
+  "unit": "sentences",
+  "level": "A2",
+  "title": "Where inte goes",
+  "description": "Put inte, aldrig, ofta and their friends in the right place in main clauses and subordinate clauses.",
+  "mark": "talar inte · att inte",
+  "guide": {
+    "summary": "Swedish has no do-support: you never say I do not speak. Instead inte slides into a fixed slot. In a main clause it comes right after the verb that carries the tense; in a subordinate clause it comes before that verb. Learn the two slots and inte, aldrig, ofta and the rest fall into place.",
+    "sections": [
+      {
+        "id": "main-clause",
+        "title": "Main clause: verb, then inte",
+        "text": "In an ordinary statement the verb that carries the tense (the finite verb) stands in second place, and inte follows it at once. English needs do or does; Swedish simply adds inte after the verb.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Finite verb",
+            "inte + rest"
+          ],
+          "rows": [
+            [
+              "Jag",
+              "talar",
+              "inte tyska."
+            ],
+            [
+              "Hon",
+              "dricker",
+              "inte kaffe."
+            ],
+            [
+              "Vi",
+              "bor",
+              "inte här."
+            ],
+            [
+              "Det",
+              "är",
+              "inte dyrt."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the finite verb: the one in the present or the past (talar, är, jobbade).",
+          "Put inte straight after it.",
+          "Do not add any word for do or does."
+        ],
+        "examples": [
+          {
+            "sv": "Jag talar inte tyska.",
+            "en": "I do not speak German."
+          },
+          {
+            "sv": "Erik jobbade inte igår.",
+            "en": "Erik did not work yesterday."
+          }
+        ],
+        "watch": [
+          "Jag inte talar is the English order and is wrong in a main clause.",
+          "There is no Swedish do: Jag gör inte tala is not Swedish."
+        ]
+      },
+      {
+        "id": "inversion",
+        "title": "When the sentence starts with something else",
+        "text": "If a time word or another phrase opens the sentence, the verb still takes second place and the subject moves after it. Inte then comes after the subject, not straight after the verb.",
+        "table": {
+          "columns": [
+            "First place",
+            "Verb",
+            "Subject",
+            "inte + rest"
+          ],
+          "rows": [
+            [
+              "Idag",
+              "kommer",
+              "han",
+              "inte."
+            ],
+            [
+              "Igår",
+              "jobbade",
+              "jag",
+              "inte."
+            ],
+            [
+              "Nu",
+              "regnar",
+              "det",
+              "inte."
+            ],
+            [
+              "På lördagar",
+              "är",
+              "vi",
+              "inte hemma."
+            ]
+          ]
+        },
+        "steps": [
+          "Look at what fills first place: is it the subject or something else?",
+          "If it is something else, the order is verb, subject.",
+          "Put inte after the subject."
+        ],
+        "examples": [
+          {
+            "sv": "Idag kommer han inte.",
+            "en": "He is not coming today."
+          },
+          {
+            "sv": "Ikväll är jag inte hemma.",
+            "en": "I am not at home tonight."
+          }
+        ],
+        "watch": [
+          "Idag kommer inte han is possible only when han is stressed; the normal order is kommer han inte.",
+          "Never Idag han kommer inte: the verb must stay second."
+        ]
+      },
+      {
+        "id": "two-verbs",
+        "title": "Two verbs: inte after the first",
+        "text": "With kan, vill, ska, måste or har plus another verb, only the first verb is finite. Inte goes after it, and the second verb (infinitive or supine) comes after inte.",
+        "table": {
+          "columns": [
+            "Type",
+            "Finite verb + inte",
+            "Second verb"
+          ],
+          "rows": [
+            [
+              "modal verb",
+              "kan inte",
+              "komma"
+            ],
+            [
+              "want",
+              "vill inte",
+              "sova"
+            ],
+            [
+              "future",
+              "ska inte",
+              "åka"
+            ],
+            [
+              "perfect",
+              "har inte",
+              "ätit"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the first verb: kan, vill, ska, måste or har.",
+          "Put inte right after it.",
+          "Let the infinitive or supine follow inte."
+        ],
+        "examples": [
+          {
+            "sv": "Jag kan inte komma.",
+            "en": "I cannot come."
+          },
+          {
+            "sv": "Jag har inte ätit.",
+            "en": "I have not eaten."
+          }
+        ],
+        "watch": [
+          "Jag kan komma inte is wrong: inte never goes after the second verb.",
+          "With har the order is har inte sett, not har sett inte."
+        ]
+      },
+      {
+        "id": "subordinate",
+        "title": "Subordinate clause: inte before the verb",
+        "text": "After att, eftersom, om, när, som and other subordinators, inte moves in front of the finite verb. This is the one place where Swedish looks like English: that he does not come is att han inte kommer.",
+        "table": {
+          "columns": [
+            "Subordinator",
+            "Subject",
+            "inte + finite verb"
+          ],
+          "rows": [
+            [
+              "att",
+              "han",
+              "inte kommer"
+            ],
+            [
+              "eftersom",
+              "jag",
+              "inte har tid"
+            ],
+            [
+              "om",
+              "du",
+              "inte är hungrig"
+            ],
+            [
+              "som",
+              "jag",
+              "inte har sett"
+            ]
+          ]
+        },
+        "steps": [
+          "Check whether the clause starts with att, eftersom, om, när, som or a similar word.",
+          "If it does, put inte before the finite verb.",
+          "With two verbs, inte still goes before the first one."
+        ],
+        "examples": [
+          {
+            "sv": "Han säger att han inte kommer.",
+            "en": "He says that he is not coming."
+          },
+          {
+            "sv": "Det är en film som jag inte har sett.",
+            "en": "It is a film that I have not seen."
+          }
+        ],
+        "watch": [
+          "Eftersom jag har inte tid is heard in speech, but the written norm is eftersom jag inte har tid.",
+          "Men and och do not start a subordinate clause: Jag är trött men jag kan inte sova."
+        ]
+      },
+      {
+        "id": "adverbs",
+        "title": "Aldrig, alltid, ofta, också: the same slot",
+        "text": "Short sentence adverbs such as aldrig, alltid, ofta and också take exactly the place of inte: after the finite verb in a main clause, before it in a subordinate clause.",
+        "table": {
+          "columns": [
+            "Adverb",
+            "Main clause",
+            "Subordinate clause"
+          ],
+          "rows": [
+            [
+              "aldrig",
+              "Jag dricker aldrig kaffe.",
+              "att jag aldrig dricker kaffe"
+            ],
+            [
+              "alltid",
+              "Hon är alltid trött.",
+              "eftersom hon alltid är trött"
+            ],
+            [
+              "ofta",
+              "Vi äter ofta fisk.",
+              "när vi ofta äter fisk"
+            ],
+            [
+              "också",
+              "Han talar också tyska.",
+              "att han också talar tyska"
+            ]
+          ]
+        },
+        "steps": [
+          "Treat the adverb as if it were inte.",
+          "Main clause: after the finite verb (after the subject if the verb comes first).",
+          "Subordinate clause: before the finite verb."
+        ],
+        "examples": [
+          {
+            "sv": "Jag dricker aldrig kaffe.",
+            "en": "I never drink coffee."
+          },
+          {
+            "sv": "Han säger att han ofta jobbar hemma.",
+            "en": "He says that he often works at home."
+          }
+        ],
+        "watch": [
+          "English puts never before the verb (I never drink); Swedish main clauses put it after: jag dricker aldrig.",
+          "Också can mean also or too; it still sits after the verb: Jag talar också svenska."
+        ]
+      },
+      {
+        "id": "object-pronoun",
+        "title": "Him, her, them: the pronoun before inte",
+        "text": "A short unstressed object pronoun such as honom, henne, dem, mig or dig slips in before inte. A noun object stays after inte. This applies when there is only one verb.",
+        "table": {
+          "columns": [
+            "Object",
+            "Order",
+            "Example"
+          ],
+          "rows": [
+            [
+              "pronoun",
+              "verb + pronoun + inte",
+              "Jag ser honom inte."
+            ],
+            [
+              "noun",
+              "verb + inte + noun",
+              "Jag ser inte filmen."
+            ],
+            [
+              "pronoun with two verbs",
+              "first verb + inte + verb + pronoun",
+              "Jag har inte sett honom."
+            ]
+          ]
+        },
+        "steps": [
+          "Is the object a short pronoun or a noun?",
+          "Pronoun and one verb: put the pronoun before inte.",
+          "Noun, or two verbs: inte comes first, the object last."
+        ],
+        "examples": [
+          {
+            "sv": "Jag känner henne inte.",
+            "en": "I do not know her."
+          },
+          {
+            "sv": "Jag ser inte filmen.",
+            "en": "I am not watching the film."
+          }
+        ],
+        "watch": [
+          "Jag ser inte honom is possible when honom is stressed (not him, but someone else); the everyday order is ser honom inte.",
+          "With two verbs the pronoun cannot jump: Jag har inte sett honom, not Jag har honom inte sett."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "main-clause": {
+      "section": "main-clause",
+      "steps": [
+        "Find the finite verb.",
+        "Put inte straight after it.",
+        "Add no word for do."
+      ]
+    },
+    "inversion": {
+      "section": "inversion",
+      "steps": [
+        "See what fills first place.",
+        "If it is not the subject, write verb then subject.",
+        "Put inte after the subject."
+      ]
+    },
+    "two-verbs": {
+      "section": "two-verbs",
+      "steps": [
+        "Find the first verb: kan, vill, ska, måste or har.",
+        "Put inte right after it.",
+        "Let the second verb follow inte."
+      ]
+    },
+    "subordinate": {
+      "section": "subordinate",
+      "steps": [
+        "Spot att, eftersom, om, när or som.",
+        "Put inte before the finite verb of that clause.",
+        "With two verbs, inte goes before the first."
+      ]
+    },
+    "adverbs": {
+      "section": "adverbs",
+      "steps": [
+        "Treat aldrig, alltid, ofta or också like inte.",
+        "Main clause: after the finite verb, or after the subject if it follows the verb.",
+        "Subordinate clause: before the finite verb."
+      ]
+    },
+    "object-pronoun": {
+      "section": "object-pronoun",
+      "steps": [
+        "Decide: short pronoun or noun?",
+        "One verb and a pronoun: pronoun, then inte.",
+        "A noun, or two verbs: inte first, object after."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "negation-placement-main-clause-1",
+      "pattern": "main-clause",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Jag ____ tyska.",
+      "options": [
+        "talar inte",
+        "inte talar",
+        "talar tyska inte"
+      ],
+      "answers": [
+        "talar inte"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "inte talar"
+          ],
+          "why": "That is the English order (I do not speak). In a Swedish main clause the verb comes first and the negation follows it."
+        },
+        {
+          "answers": [
+            "talar tyska inte"
+          ],
+          "why": "Inte cannot drift to the end after the object; it belongs right next to the verb."
+        }
+      ],
+      "row": "Jag",
+      "hint": "Which word carries the tense here?",
+      "feedback": "In a main clause inte follows the finite verb.",
+      "explanation": "Talar is the finite verb of a main clause, so inte comes straight after it: Jag talar inte tyska.",
+      "gloss": [
+        {
+          "sv": "tyska",
+          "en": "German (language)"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-main-clause-2",
+      "pattern": "main-clause",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Vi ____ här.",
+      "options": [
+        "inte bor",
+        "bor inte"
+      ],
+      "answers": [
+        "bor inte"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "inte bor"
+          ],
+          "why": "Inte before the verb is the order of a subordinate clause. This is a plain statement, a main clause."
+        }
+      ],
+      "row": "Vi",
+      "hint": "Find the verb in the present tense.",
+      "feedback": "The negation follows the verb in a main clause.",
+      "explanation": "Bor is the finite verb and the clause is a main clause, so we get bor inte: Vi bor inte här.",
+      "gloss": [
+        {
+          "sv": "här",
+          "en": "here"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-main-clause-3",
+      "pattern": "main-clause",
+      "type": "complete",
+      "instruction": "Fill in the gap with the two words given, in the right order.",
+      "source": "Hon ____ kaffe. (dricker, inte)",
+      "answers": [
+        "dricker inte"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "inte dricker"
+          ],
+          "why": "This follows English, where not comes before the main verb. In a Swedish main clause the verb stands second and the negation after it."
+        }
+      ],
+      "hint": "Verb first, then the negation.",
+      "feedback": "Main clause: finite verb, then inte.",
+      "explanation": "Dricker carries the tense in a main clause, so inte comes right after it: Hon dricker inte kaffe.",
+      "gloss": [
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "dricker",
+          "en": "drink, drinks (dricka)",
+          "word": "verbs-055"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-main-clause-4",
+      "pattern": "main-clause",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I do not eat meat.",
+      "answers": [
+        "Jag äter inte kött."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag inte äter kött."
+          ],
+          "why": "Inte has gone before the verb, as not does in English. In a main clause the verb must come first."
+        },
+        {
+          "answers": [
+            "Jag gör inte äta kött.",
+            "Jag gör inte äter kött."
+          ],
+          "why": "Swedish does not use gör as a helper verb the way English uses do."
+        }
+      ],
+      "hint": "There is no word for do in Swedish.",
+      "feedback": "Drop do and put inte after the verb.",
+      "explanation": "Swedish has no do-support: the main verb äter takes the tense and inte follows it: Jag äter inte kött."
+    },
+    {
+      "id": "negation-placement-main-clause-5",
+      "pattern": "main-clause",
+      "type": "rewrite",
+      "instruction": "Make the sentence negative with inte. Write the whole sentence.",
+      "source": "Erik jobbar på lördagar.",
+      "answers": [
+        "Erik jobbar inte på lördagar."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Erik inte jobbar på lördagar."
+          ],
+          "why": "Inte stands before the verb, which is subordinate-clause order. A plain statement needs the verb first."
+        },
+        {
+          "answers": [
+            "Erik jobbar på lördagar inte."
+          ],
+          "why": "Inte has been pushed to the end; it belongs right after the verb."
+        }
+      ],
+      "hint": "Where is the finite verb?",
+      "feedback": "Put inte straight after jobbar.",
+      "explanation": "Jobbar is the finite verb of a main clause, so inte follows it: Erik jobbar inte på lördagar.",
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik (a name)"
+        },
+        {
+          "sv": "jobbar",
+          "en": "work, works (jobba)",
+          "word": "verbs-067"
+        },
+        {
+          "sv": "på",
+          "en": "to, on"
+        },
+        {
+          "sv": "lördagar",
+          "en": "Saturdays"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-main-clause-6",
+      "pattern": "main-clause",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Jag inte förstår frågan.",
+      "answers": [
+        "Jag förstår inte frågan."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag inte förstår frågan."
+          ],
+          "why": "That is the sentence unchanged. The negation still stands in front of the verb, as in English."
+        },
+        {
+          "answers": [
+            "Inte jag förstår frågan."
+          ],
+          "why": "Inte now opens the sentence, which changes the meaning to not me. Only the verb and the negation need to swap."
+        }
+      ],
+      "hint": "Which word should come straight after jag?",
+      "feedback": "In a main clause the verb holds second place.",
+      "explanation": "Förstår must stand in second place, and inte follows it: Jag förstår inte frågan.",
+      "gloss": [
+        {
+          "sv": "förstår",
+          "en": "understand, understands (förstå)",
+          "word": "verbs-016"
+        },
+        {
+          "sv": "frågan",
+          "en": "the question"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-main-clause-7",
+      "pattern": "main-clause",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "Anna does not like fish.",
+      "tokens": [
+        "inte",
+        "Anna",
+        "fisk.",
+        "gillar"
+      ],
+      "answers": [
+        "Anna gillar inte fisk."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Anna inte gillar fisk."
+          ],
+          "why": "Inte has been put before the verb. In a main clause the verb comes first."
+        }
+      ],
+      "hint": "Swedish has no word for does here.",
+      "feedback": "Verb, then inte.",
+      "explanation": "Gillar carries the tense, so inte follows it directly: Anna gillar inte fisk."
+    },
+    {
+      "id": "negation-placement-inversion-1",
+      "pattern": "inversion",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Idag ____ .",
+      "options": [
+        "han kommer inte",
+        "kommer han inte",
+        "kommer inte han"
+      ],
+      "answers": [
+        "kommer han inte"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "han kommer inte"
+          ],
+          "why": "The verb has lost second place: after Idag the verb must come before the subject."
+        },
+        {
+          "answers": [
+            "kommer inte han"
+          ],
+          "why": "This order puts heavy stress on han (not him, someone else). The everyday order puts inte after the subject."
+        }
+      ],
+      "row": "Idag",
+      "hint": "What opens the sentence, and where must the verb be?",
+      "feedback": "After a time word in first place, the verb comes second, then the subject, then inte.",
+      "explanation": "Idag fills first place, so the verb kommer comes next, then the subject han, and inte follows the subject: Idag kommer han inte.",
+      "gloss": [
+        {
+          "sv": "Idag",
+          "en": "today",
+          "word": "essentials-097"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-inversion-2",
+      "pattern": "inversion",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Igår ____ inte.",
+      "options": [
+        "jag jobbade",
+        "jobbade jag"
+      ],
+      "answers": [
+        "jobbade jag"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "jag jobbade"
+          ],
+          "why": "With Igår in first place, the subject cannot come before the verb: the verb must be second."
+        }
+      ],
+      "row": "Igår",
+      "hint": "Which word must stand second?",
+      "feedback": "A time word in first place pushes the subject behind the verb.",
+      "explanation": "Igår takes first place, so the verb jobbade is second and jag follows it, with inte after the subject: Igår jobbade jag inte.",
+      "gloss": [
+        {
+          "sv": "Igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-inversion-3",
+      "pattern": "inversion",
+      "type": "complete",
+      "instruction": "Fill in the missing word.",
+      "source": "Nu regnar ____ inte.",
+      "answers": [
+        "det"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "inte det"
+          ],
+          "why": "The gap is just before inte, so inte is already placed; only the subject is missing."
+        }
+      ],
+      "hint": "What is the subject of regnar?",
+      "feedback": "After the inverted verb, the subject comes before inte.",
+      "explanation": "Nu fills first place and regnar is second; the subject det follows the verb, and inte comes after it: Nu regnar det inte.",
+      "gloss": [
+        {
+          "sv": "Nu",
+          "en": "now"
+        },
+        {
+          "sv": "regnar",
+          "en": "rains (regna)"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-inversion-4",
+      "pattern": "inversion",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I am not at home tonight.",
+      "answers": [
+        "Ikväll är jag inte hemma.",
+        "Jag är inte hemma ikväll."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ikväll jag är inte hemma."
+          ],
+          "why": "After Ikväll the verb must stand second, before the subject."
+        },
+        {
+          "answers": [
+            "Ikväll är inte jag hemma."
+          ],
+          "why": "Inte before the subject stresses jag (not me). Normally inte follows the subject."
+        }
+      ],
+      "hint": "You can start with Jag or with Ikväll; each has its own order.",
+      "feedback": "After ikväll, the verb comes before the subject and inte after it.",
+      "explanation": "Ikväll är jag inte hemma: verb second, subject, then inte. Starting with the subject gives Jag är inte hemma ikväll."
+    },
+    {
+      "id": "negation-placement-inversion-5",
+      "pattern": "inversion",
+      "type": "rewrite",
+      "instruction": "Make the sentence negative with inte. Write the whole sentence.",
+      "source": "På lördagar är vi hemma.",
+      "answers": [
+        "På lördagar är vi inte hemma."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "På lördagar är inte vi hemma."
+          ],
+          "why": "Inte is placed before the subject, which would mean it is not us who are at home. Put it after vi."
+        },
+        {
+          "answers": [
+            "På lördagar vi är inte hemma."
+          ],
+          "why": "The verb has been moved behind the subject; after På lördagar it must stay second."
+        }
+      ],
+      "hint": "The verb already comes before the subject.",
+      "feedback": "Inte goes after the subject vi.",
+      "explanation": "The sentence starts with På lördagar, so it reads verb, subject; inte follows the subject: På lördagar är vi inte hemma.",
+      "gloss": [
+        {
+          "sv": "På",
+          "en": "on"
+        },
+        {
+          "sv": "lördagar",
+          "en": "Saturdays"
+        },
+        {
+          "sv": "är",
+          "en": "is, are (vara)"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-inversion-6",
+      "pattern": "inversion",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Idag Sara kommer inte.",
+      "answers": [
+        "Idag kommer Sara inte."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Idag Sara kommer inte."
+          ],
+          "why": "That is the sentence unchanged: the subject still stands before the verb after Idag."
+        },
+        {
+          "answers": [
+            "Idag Sara inte kommer."
+          ],
+          "why": "Now both the verb and the negation are out of place. After Idag the verb must be second."
+        }
+      ],
+      "hint": "Which word must be second?",
+      "feedback": "The verb keeps second place even when the sentence starts with Idag.",
+      "explanation": "Idag takes first place, so kommer is second and Sara follows; inte comes after the subject: Idag kommer Sara inte.",
+      "gloss": [
+        {
+          "sv": "Idag",
+          "en": "today",
+          "word": "essentials-097"
+        },
+        {
+          "sv": "Sara",
+          "en": "Sara (a name)"
+        },
+        {
+          "sv": "kommer",
+          "en": "come, comes (komma)",
+          "word": "verbs-005"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-inversion-7",
+      "pattern": "inversion",
+      "type": "build",
+      "instruction": "Build the sentence. Start with Igår.",
+      "source": "Yesterday I did not sleep well.",
+      "tokens": [
+        "jag",
+        "Igår",
+        "inte",
+        "sov",
+        "bra."
+      ],
+      "answers": [
+        "Igår sov jag inte bra."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Igår jag sov inte bra."
+          ],
+          "why": "The subject sits before the verb after Igår; the verb must be second."
+        },
+        {
+          "answers": [
+            "Igår sov inte jag bra."
+          ],
+          "why": "Inte before the subject puts stress on jag; the normal order is subject, then inte."
+        }
+      ],
+      "hint": "Start with Igår.",
+      "feedback": "Verb second, subject, then inte.",
+      "explanation": "Igår opens the sentence, so the verb sov comes before jag, and inte follows the subject: Igår sov jag inte bra."
+    },
+    {
+      "id": "negation-placement-two-verbs-1",
+      "pattern": "two-verbs",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Jag ____ komma.",
+      "options": [
+        "kan inte",
+        "inte kan"
+      ],
+      "answers": [
+        "kan inte"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "inte kan"
+          ],
+          "why": "Inte before the verb is the order of a subordinate clause; this is a main clause."
+        }
+      ],
+      "row": "modal verb",
+      "hint": "Which verb carries the tense?",
+      "feedback": "With two verbs, inte follows the first.",
+      "explanation": "Kan is the finite verb, so inte comes right after it and the infinitive komma follows: Jag kan inte komma.",
+      "gloss": [
+        {
+          "sv": "komma",
+          "en": "come",
+          "word": "verbs-005"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-two-verbs-2",
+      "pattern": "two-verbs",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Jag ____ frukost.",
+      "options": [
+        "har ätit inte",
+        "har inte ätit",
+        "inte har ätit"
+      ],
+      "answers": [
+        "har inte ätit"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "har ätit inte"
+          ],
+          "why": "Inte has been placed after the second verb. It must follow the first verb."
+        },
+        {
+          "answers": [
+            "inte har ätit"
+          ],
+          "why": "Inte before har is subordinate-clause order. In a main clause it follows the finite verb."
+        }
+      ],
+      "row": "perfect",
+      "hint": "Which verb is the finite one, har or ätit?",
+      "feedback": "Inte goes after har, before the supine.",
+      "explanation": "Har is the finite verb, so inte follows it and the supine ätit comes after: Jag har inte ätit frukost.",
+      "gloss": [
+        {
+          "sv": "frukost",
+          "en": "breakfast",
+          "word": "food-045"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-two-verbs-3",
+      "pattern": "two-verbs",
+      "type": "complete",
+      "instruction": "Fill in the gap with the two words given, in the right order.",
+      "source": "Han ____ simma. (vill, inte)",
+      "answers": [
+        "vill inte"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "inte vill"
+          ],
+          "why": "Inte comes after the finite verb in a main clause, not before it."
+        }
+      ],
+      "hint": "Vill is the first verb.",
+      "feedback": "Finite verb, inte, then the infinitive.",
+      "explanation": "Vill carries the tense, so inte follows it and simma comes after: Han vill inte simma.",
+      "gloss": [
+        {
+          "sv": "simma",
+          "en": "swim",
+          "word": "leisure-027"
+        },
+        {
+          "sv": "vill",
+          "en": "want, wants (vilja)",
+          "word": "verbs-020"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-two-verbs-4",
+      "pattern": "two-verbs",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "We are not going home.",
+      "answers": [
+        "Vi ska inte åka hem.",
+        "Vi åker inte hem.",
+        "Vi går inte hem.",
+        "Vi ska inte gå hem."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vi ska åka inte hem."
+          ],
+          "why": "Inte has slipped behind the second verb; it belongs right after ska."
+        },
+        {
+          "answers": [
+            "Vi inte ska åka hem."
+          ],
+          "why": "Inte stands before the finite verb, which is subordinate-clause order."
+        }
+      ],
+      "hint": "Use ska for the plan, then the infinitive.",
+      "feedback": "Inte goes after ska, before åka.",
+      "explanation": "Ska is the finite verb, so inte follows it and the infinitive åka comes after: Vi ska inte åka hem. Vi åker inte hem is also right."
+    },
+    {
+      "id": "negation-placement-two-verbs-5",
+      "pattern": "two-verbs",
+      "type": "rewrite",
+      "instruction": "Make the sentence negative with inte. Write the whole sentence.",
+      "source": "Jag har sett filmen.",
+      "answers": [
+        "Jag har inte sett filmen."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har sett inte filmen."
+          ],
+          "why": "Inte has been placed after the supine; it must come right after har."
+        },
+        {
+          "answers": [
+            "Jag har sett filmen inte."
+          ],
+          "why": "Inte has drifted to the end of the sentence; it belongs after the first verb."
+        }
+      ],
+      "hint": "Inte goes after the first verb.",
+      "feedback": "Har, then inte, then the supine.",
+      "explanation": "Har is the finite verb; inte comes straight after it and sett follows: Jag har inte sett filmen.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have, has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "sett",
+          "en": "seen (se)",
+          "word": "verbs-010"
+        },
+        {
+          "sv": "filmen",
+          "en": "the film",
+          "word": "media-041"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-two-verbs-6",
+      "pattern": "two-verbs",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Hon kan köra inte bil.",
+      "answers": [
+        "Hon kan inte köra bil."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Hon kan köra inte bil."
+          ],
+          "why": "That is the sentence unchanged: inte still follows the infinitive köra instead of kan."
+        },
+        {
+          "answers": [
+            "Hon kan köra bil inte."
+          ],
+          "why": "Inte now ends the sentence; it must come after kan."
+        }
+      ],
+      "hint": "Which verb should inte follow?",
+      "feedback": "Inte follows the first verb, not the second.",
+      "explanation": "Kan is the finite verb, so inte goes straight after it: Hon kan inte köra bil.",
+      "gloss": [
+        {
+          "sv": "kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "köra",
+          "en": "drive",
+          "word": "verbs-096"
+        },
+        {
+          "sv": "bil",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-two-verbs-7",
+      "pattern": "two-verbs",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I have not read the book.",
+      "tokens": [
+        "läst",
+        "Jag",
+        "inte",
+        "boken.",
+        "har"
+      ],
+      "answers": [
+        "Jag har inte läst boken."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har läst inte boken."
+          ],
+          "why": "Inte has been placed after the second verb; it belongs after har."
+        }
+      ],
+      "hint": "Two verbs: har and läst.",
+      "feedback": "Inte goes after har.",
+      "explanation": "Har is the finite verb and takes inte right after it; the supine läst follows: Jag har inte läst boken."
+    },
+    {
+      "id": "negation-placement-subordinate-1",
+      "pattern": "subordinate",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Han säger att han ____ .",
+      "options": [
+        "kommer inte",
+        "inte kommer"
+      ],
+      "answers": [
+        "inte kommer"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "kommer inte"
+          ],
+          "why": "That is main-clause order. After att the negation comes before the verb."
+        }
+      ],
+      "row": "att",
+      "hint": "Is the gap in a main clause or after att?",
+      "feedback": "After att, inte comes before the finite verb.",
+      "explanation": "The clause starts with att, so it is subordinate, and inte stands before the finite verb: att han inte kommer.",
+      "gloss": [
+        {
+          "sv": "säger",
+          "en": "says (säga)",
+          "word": "verbs-006"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-subordinate-2",
+      "pattern": "subordinate",
+      "type": "choose",
+      "instruction": "Choose the written standard order.",
+      "source": "Jag stannar hemma eftersom jag ____ tid.",
+      "options": [
+        "har inte",
+        "inte har"
+      ],
+      "answers": [
+        "inte har"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "har inte"
+          ],
+          "why": "This is the main-clause order. It is common in speech after eftersom, but the written norm puts inte first."
+        }
+      ],
+      "row": "eftersom",
+      "hint": "Eftersom starts a subordinate clause.",
+      "feedback": "In a subordinate clause inte comes before the verb.",
+      "explanation": "Eftersom introduces a subordinate clause, so inte precedes the finite verb har: eftersom jag inte har tid.",
+      "gloss": [
+        {
+          "sv": "stannar",
+          "en": "stay, stays (stanna)",
+          "word": "verbs-033"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        },
+        {
+          "sv": "eftersom",
+          "en": "because, since"
+        },
+        {
+          "sv": "tid",
+          "en": "time",
+          "word": "health-time-026"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-subordinate-3",
+      "pattern": "subordinate",
+      "type": "complete",
+      "instruction": "Fill in the gap with the two words given, in the right order.",
+      "source": "Det är en film som jag ____ sett. (har, inte)",
+      "answers": [
+        "inte har"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "har inte"
+          ],
+          "why": "That is main-clause order. After som, inte comes before the finite verb."
+        }
+      ],
+      "row": "som",
+      "hint": "Som starts a subordinate clause.",
+      "feedback": "Inte goes before the finite verb har.",
+      "explanation": "Som introduces a subordinate clause, so inte stands before the finite verb har, and the supine follows: som jag inte har sett.",
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "is, are (vara)"
+        },
+        {
+          "sv": "film",
+          "en": "film",
+          "word": "media-041"
+        },
+        {
+          "sv": "sett",
+          "en": "seen (se)",
+          "word": "verbs-010"
+        },
+        {
+          "sv": "har",
+          "en": "have, has (ha)",
+          "word": "verbs-002"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-subordinate-4",
+      "pattern": "subordinate",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I think that she is not coming.",
+      "answers": [
+        "Jag tror att hon inte kommer."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag tror att hon kommer inte."
+          ],
+          "why": "The att clause has main-clause order. After att the negation comes before the verb. You hear this in speech, but it is not the standard."
+        },
+        {
+          "answers": [
+            "Jag tror inte att hon kommer."
+          ],
+          "why": "That means I do not think she is coming: the negation has moved into the main clause."
+        }
+      ],
+      "hint": "Two clauses: the second starts with att.",
+      "feedback": "Inte comes before kommer in the att clause.",
+      "explanation": "Att starts a subordinate clause, so inte goes before the finite verb: att hon inte kommer."
+    },
+    {
+      "id": "negation-placement-subordinate-5",
+      "pattern": "subordinate",
+      "type": "rewrite",
+      "instruction": "Make the att clause negative with inte. Write the whole sentence.",
+      "source": "Jag vet att han är hemma.",
+      "answers": [
+        "Jag vet att han inte är hemma."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vet att han är inte hemma."
+          ],
+          "why": "That uses main-clause order inside the att clause. Put inte before the verb."
+        },
+        {
+          "answers": [
+            "Jag vet inte att han är hemma."
+          ],
+          "why": "That negates the main clause (I do not know). The task is to negate what he is."
+        }
+      ],
+      "hint": "Negate the att clause, not jag vet.",
+      "feedback": "Inte goes before är.",
+      "explanation": "The att clause is subordinate, so inte comes before its finite verb: att han inte är hemma.",
+      "gloss": [
+        {
+          "sv": "vet",
+          "en": "know, knows (veta)",
+          "word": "verbs-014"
+        },
+        {
+          "sv": "är",
+          "en": "is, are (vara)"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-subordinate-6",
+      "pattern": "subordinate",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Om du är inte hungrig kan du vänta.",
+      "answers": [
+        "Om du inte är hungrig kan du vänta.",
+        "Om du inte är hungrig, kan du vänta."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Om du är inte hungrig kan du vänta."
+          ],
+          "why": "That is the sentence unchanged: the om clause still has main-clause order."
+        },
+        {
+          "answers": [
+            "Om du är hungrig kan du inte vänta."
+          ],
+          "why": "That changes the meaning: now you cannot wait if you are hungry."
+        }
+      ],
+      "hint": "Om starts a subordinate clause.",
+      "feedback": "After om, inte comes before the verb.",
+      "explanation": "Om introduces a subordinate clause, so inte stands before the finite verb är: Om du inte är hungrig kan du vänta.",
+      "gloss": [
+        {
+          "sv": "Om",
+          "en": "if"
+        },
+        {
+          "sv": "är",
+          "en": "is, are (vara)"
+        },
+        {
+          "sv": "hungrig",
+          "en": "hungry",
+          "word": "feelings-039"
+        },
+        {
+          "sv": "kan",
+          "en": "can (kunna)",
+          "word": "verbs-021"
+        },
+        {
+          "sv": "vänta",
+          "en": "wait",
+          "word": "verbs-037"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-subordinate-7",
+      "pattern": "subordinate",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "He is tired because he does not sleep.",
+      "tokens": [
+        "trött",
+        "Han",
+        "sover.",
+        "eftersom",
+        "är",
+        "han",
+        "inte"
+      ],
+      "answers": [
+        "Han är trött eftersom han inte sover."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Han är trött eftersom inte han sover."
+          ],
+          "why": "Inte has jumped in front of the subject. In a subordinate clause it sits between the subject and the finite verb."
+        }
+      ],
+      "hint": "Eftersom starts a subordinate clause.",
+      "feedback": "In the eftersom clause, inte comes before sover.",
+      "explanation": "Eftersom introduces a subordinate clause, so inte goes before the finite verb: eftersom han inte sover."
+    },
+    {
+      "id": "negation-placement-adverbs-1",
+      "pattern": "adverbs",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Jag ____ kaffe.",
+      "options": [
+        "aldrig dricker",
+        "dricker aldrig"
+      ],
+      "answers": [
+        "dricker aldrig"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "aldrig dricker"
+          ],
+          "why": "This is the English order (I never drink). In a Swedish main clause the adverb follows the verb."
+        }
+      ],
+      "row": "aldrig",
+      "hint": "Aldrig sits where inte would.",
+      "feedback": "Main clause: the adverb follows the verb.",
+      "explanation": "Aldrig takes the place of inte, right after the finite verb: Jag dricker aldrig kaffe.",
+      "gloss": [
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-adverbs-2",
+      "pattern": "adverbs",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Han säger att han ____ hemma.",
+      "options": [
+        "jobbar ofta",
+        "ofta jobbar"
+      ],
+      "answers": [
+        "ofta jobbar"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "jobbar ofta"
+          ],
+          "why": "That is main-clause order. In the att clause ofta goes before the verb, just as inte would."
+        }
+      ],
+      "row": "ofta",
+      "hint": "Is this a main clause or an att clause?",
+      "feedback": "In a subordinate clause the adverb comes before the verb.",
+      "explanation": "The att clause is subordinate, so ofta, like inte, goes before the finite verb: att han ofta jobbar hemma.",
+      "gloss": [
+        {
+          "sv": "säger",
+          "en": "says (säga)",
+          "word": "verbs-006"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-adverbs-3",
+      "pattern": "adverbs",
+      "type": "complete",
+      "instruction": "Fill in the gap with the two words given, in the right order.",
+      "source": "Hon ____ trött. (är, alltid)",
+      "answers": [
+        "är alltid"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "alltid är"
+          ],
+          "why": "Alltid before the verb follows English (she always is). In a Swedish main clause the verb comes first."
+        }
+      ],
+      "hint": "Treat alltid like inte.",
+      "feedback": "Verb first, then alltid.",
+      "explanation": "In a main clause alltid takes the slot of inte, after the finite verb: Hon är alltid trött.",
+      "gloss": [
+        {
+          "sv": "trött",
+          "en": "tired",
+          "word": "feelings-009"
+        },
+        {
+          "sv": "är",
+          "en": "is, are (vara)"
+        },
+        {
+          "sv": "alltid",
+          "en": "always",
+          "word": "essentials-100"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-adverbs-4",
+      "pattern": "adverbs",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I also speak Swedish.",
+      "answers": [
+        "Jag talar också svenska."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag också talar svenska."
+          ],
+          "why": "Också stands before the verb, as also does in English. In a Swedish main clause it follows the verb."
+        }
+      ],
+      "hint": "Also is också, in the inte slot.",
+      "feedback": "Också comes after talar.",
+      "explanation": "Också behaves like inte: in a main clause it follows the finite verb: Jag talar också svenska."
+    },
+    {
+      "id": "negation-placement-adverbs-5",
+      "pattern": "adverbs",
+      "type": "rewrite",
+      "instruction": "Add ofta to the sentence. Write the whole sentence.",
+      "source": "Vi äter fisk.",
+      "answers": [
+        "Vi äter ofta fisk."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vi ofta äter fisk."
+          ],
+          "why": "Ofta stands before the verb, which is the order of a subordinate clause."
+        }
+      ],
+      "hint": "Ofta goes where inte would.",
+      "feedback": "Put ofta after äter.",
+      "explanation": "In a main clause ofta follows the finite verb, exactly like inte: Vi äter ofta fisk.",
+      "gloss": [
+        {
+          "sv": "äter",
+          "en": "eat, eats (äta)",
+          "word": "verbs-054"
+        },
+        {
+          "sv": "fisk",
+          "en": "fish",
+          "word": "nature-014"
+        }
+      ],
+      "alternatives": [
+        {
+          "answer": "Vi äter fisk ofta.",
+          "message": "Correct too. The usual place for ofta is the inte slot, right after the verb: Vi äter ofta fisk.",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-adverbs-6",
+      "pattern": "adverbs",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Lars aldrig lyssnar på musik.",
+      "answers": [
+        "Lars lyssnar aldrig på musik."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Lars aldrig lyssnar på musik."
+          ],
+          "why": "That is the sentence unchanged: aldrig still stands before the verb, as in English."
+        }
+      ],
+      "hint": "Where would inte go?",
+      "feedback": "Aldrig follows the finite verb in a main clause.",
+      "explanation": "Lyssnar is the finite verb of a main clause, so aldrig follows it: Lars lyssnar aldrig på musik.",
+      "gloss": [
+        {
+          "sv": "Lars",
+          "en": "Lars (a name)"
+        },
+        {
+          "sv": "aldrig",
+          "en": "never",
+          "word": "essentials-101"
+        },
+        {
+          "sv": "lyssnar",
+          "en": "listen, listens (lyssna)",
+          "word": "verbs-013"
+        },
+        {
+          "sv": "på",
+          "en": "to, on"
+        },
+        {
+          "sv": "musik",
+          "en": "music",
+          "word": "media-045"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-adverbs-7",
+      "pattern": "adverbs",
+      "type": "build",
+      "instruction": "Build the sentence. Start with Idag.",
+      "source": "These days she is never at home.",
+      "tokens": [
+        "hon",
+        "hemma.",
+        "Idag",
+        "aldrig",
+        "är"
+      ],
+      "answers": [
+        "Idag är hon aldrig hemma."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Idag är aldrig hon hemma."
+          ],
+          "why": "Aldrig before the subject puts stress on hon. Normally it follows the subject."
+        },
+        {
+          "answers": [
+            "Idag hon är aldrig hemma."
+          ],
+          "why": "After Idag the verb must come before the subject."
+        }
+      ],
+      "hint": "Start with Idag: verb, subject, then the adverb.",
+      "feedback": "After inversion, aldrig follows the subject.",
+      "explanation": "Idag fills first place, so är comes second, then hon, and aldrig sits where inte would, after the subject: Idag är hon aldrig hemma."
+    },
+    {
+      "id": "negation-placement-object-pronoun-1",
+      "pattern": "object-pronoun",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Jag ____ idag.",
+      "options": [
+        "ser inte han",
+        "ser honom inte",
+        "inte ser honom"
+      ],
+      "answers": [
+        "ser honom inte"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "ser inte han"
+          ],
+          "why": "Han is the subject form. After ser you need the object form."
+        },
+        {
+          "answers": [
+            "inte ser honom"
+          ],
+          "why": "Inte before the verb is subordinate-clause order."
+        }
+      ],
+      "row": "pronoun",
+      "hint": "Honom is a short unstressed pronoun.",
+      "feedback": "An object pronoun slips in before inte.",
+      "explanation": "With one verb, the unstressed pronoun honom goes before inte: Jag ser honom inte idag.",
+      "gloss": [
+        {
+          "sv": "idag",
+          "en": "today",
+          "word": "essentials-097"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-object-pronoun-2",
+      "pattern": "object-pronoun",
+      "type": "choose",
+      "instruction": "Choose the right word order.",
+      "source": "Jag ____ filmen.",
+      "options": [
+        "ser inte",
+        "inte ser"
+      ],
+      "answers": [
+        "ser inte"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "inte ser"
+          ],
+          "why": "Inte before the verb is the subordinate-clause order. This is a main clause."
+        }
+      ],
+      "row": "noun",
+      "hint": "Filmen is a noun, not a pronoun.",
+      "feedback": "A noun object stays after inte.",
+      "explanation": "Filmen is a noun, so it does not move: verb, inte, object: Jag ser inte filmen.",
+      "gloss": [
+        {
+          "sv": "filmen",
+          "en": "the film",
+          "word": "media-041"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-object-pronoun-3",
+      "pattern": "object-pronoun",
+      "type": "complete",
+      "instruction": "Fill in the word for her.",
+      "source": "Jag känner ____ inte.",
+      "answers": [
+        "henne"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "hon"
+          ],
+          "why": "Hon is the subject form (she). After känner you need the object form."
+        }
+      ],
+      "hint": "Which word means her here?",
+      "feedback": "The pronoun object comes before inte.",
+      "explanation": "Henne is a short object pronoun, so it slips in before inte: Jag känner henne inte.",
+      "gloss": [
+        {
+          "sv": "känner",
+          "en": "know, knows (a person) (känna)",
+          "word": "verbs-015"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-object-pronoun-4",
+      "pattern": "object-pronoun",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I do not know him.",
+      "answers": [
+        "Jag känner honom inte.",
+        "Jag känner inte honom."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag vet honom inte.",
+            "Jag vet inte honom."
+          ],
+          "why": "Veta means to know a fact. For knowing a person Swedish uses känna."
+        },
+        {
+          "answers": [
+            "Jag inte känner honom."
+          ],
+          "why": "Inte has gone before the verb; in a main clause it follows the verb and the pronoun."
+        }
+      ],
+      "hint": "Know a person is känna.",
+      "feedback": "Put the pronoun honom before inte.",
+      "explanation": "With one verb, the unstressed pronoun goes before inte: Jag känner honom inte. Jag känner inte honom is also heard, mostly with stress on honom."
+    },
+    {
+      "id": "negation-placement-object-pronoun-5",
+      "pattern": "object-pronoun",
+      "type": "rewrite",
+      "instruction": "Make the sentence negative with inte. Write the whole sentence.",
+      "source": "Jag hjälper dem.",
+      "answers": [
+        "Jag hjälper dem inte."
+      ],
+      "alternatives": [
+        {
+          "answer": "Jag hjälper inte dem.",
+          "message": "Correct when dem is stressed (not them, but others). The everyday order is pronoun, then inte.",
+          "accepted": true
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag inte hjälper dem."
+          ],
+          "why": "Inte stands before the verb, which is subordinate-clause order."
+        }
+      ],
+      "hint": "Dem is an unstressed pronoun.",
+      "feedback": "The pronoun stays before inte.",
+      "explanation": "Dem is a short object pronoun, so inte comes after it: Jag hjälper dem inte.",
+      "gloss": [
+        {
+          "sv": "hjälper",
+          "en": "help, helps (hjälpa)",
+          "word": "verbs-045"
+        },
+        {
+          "sv": "dem",
+          "en": "them"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-object-pronoun-6",
+      "pattern": "object-pronoun",
+      "type": "repair",
+      "instruction": "Fix the word order.",
+      "source": "Jag har honom inte sett.",
+      "answers": [
+        "Jag har inte sett honom."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har honom inte sett."
+          ],
+          "why": "That is the sentence unchanged: the pronoun has jumped forward although there are two verbs."
+        },
+        {
+          "answers": [
+            "Jag har sett honom inte."
+          ],
+          "why": "Inte must follow the first verb, har, not stand at the end."
+        }
+      ],
+      "hint": "There are two verbs here.",
+      "feedback": "With two verbs, the pronoun cannot jump before inte.",
+      "explanation": "The pronoun moves before inte only when there is one verb. With har sett the order is har inte sett honom.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have, has (ha)",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "honom",
+          "en": "him"
+        },
+        {
+          "sv": "sett",
+          "en": "seen (se)",
+          "word": "verbs-010"
+        }
+      ]
+    },
+    {
+      "id": "negation-placement-object-pronoun-7",
+      "pattern": "object-pronoun",
+      "type": "build",
+      "instruction": "Build the sentence. Leave one tile unused.",
+      "source": "I do not hear her.",
+      "tokens": [
+        "hör",
+        "Jag",
+        "henne",
+        "hon",
+        "inte."
+      ],
+      "answers": [
+        "Jag hör henne inte."
+      ],
+      "alternatives": [
+        {
+          "answer": "Jag hör inte henne.",
+          "message": "Possible when henne is stressed (not her, but someone else). The everyday order is pronoun, then inte.",
+          "accepted": true
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag hör hon inte."
+          ],
+          "why": "Hon is the subject form; after hör you need the object form."
+        }
+      ],
+      "hint": "One verb and a short pronoun.",
+      "feedback": "The pronoun goes before inte.",
+      "explanation": "With one verb, the unstressed pronoun henne comes before inte: Jag hör henne inte."
+    }
+  ]
+}

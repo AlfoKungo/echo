@@ -1,0 +1,2332 @@
+{
+  "id": "definite-form",
+  "unit": "nouns",
+  "level": "A1",
+  "title": "The car, the house: the definite form",
+  "description": "Say the in Swedish with an ending on the noun, in the singular and plural, with adjectives and after my.",
+  "mark": "bilen · huset · bilarna",
+  "guide": {
+    "summary": "Swedish puts the at the end of the noun: bil, bilen; hus, huset. Learn the endings, the plural, the double marking with adjectives and when the ending is left out, and you can point at anything.",
+    "sections": [
+      {
+        "id": "en-words",
+        "title": "The: an ending on en-words",
+        "text": "Swedish has no separate word for the. Instead the noun gets an ending. En-words add -en, or just -n when the noun already ends in a vowel.",
+        "table": {
+          "columns": [
+            "Noun ends in",
+            "Indefinite",
+            "Definite"
+          ],
+          "rows": [
+            [
+              "a consonant",
+              "en bil",
+              "bilen"
+            ],
+            [
+              "a vowel",
+              "en flicka",
+              "flickan"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the noun is an en-word.",
+          "Drop the word en.",
+          "Ends in a consonant? Add -en. Ends in a vowel? Add only -n."
+        ],
+        "examples": [
+          {
+            "sv": "Pojken tar bussen.",
+            "en": "The boy takes the bus."
+          },
+          {
+            "sv": "Flickan läser en bok.",
+            "en": "The girl reads a book."
+          }
+        ],
+        "watch": [
+          "Never keep en and the ending together: en bilen is wrong.",
+          "Den is not the word for the in front of a lone noun: den bil is wrong."
+        ]
+      },
+      {
+        "id": "ett-words",
+        "title": "The: an ending on ett-words",
+        "text": "Ett-words do the same with a t: -et, or just -t after a vowel.",
+        "table": {
+          "columns": [
+            "Noun ends in",
+            "Indefinite",
+            "Definite"
+          ],
+          "rows": [
+            [
+              "a consonant (ett)",
+              "ett hus",
+              "huset"
+            ],
+            [
+              "a vowel (ett)",
+              "ett äpple",
+              "äpplet"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the noun is an ett-word.",
+          "Drop the word ett.",
+          "Ends in a consonant? Add -et. Ends in a vowel? Add only -t."
+        ],
+        "examples": [
+          {
+            "sv": "Huset är stort.",
+            "en": "The house is big."
+          },
+          {
+            "sv": "Barnet sover i sovrummet.",
+            "en": "The child is sleeping in the bedroom."
+          }
+        ],
+        "watch": [
+          "A short vowel before a final m doubles the m: rum, rummet; hem, hemmet.",
+          "Do not confuse huset (the house) with husen (the houses)."
+        ]
+      },
+      {
+        "id": "short-e",
+        "title": "Nouns ending in -el and -er",
+        "text": "Many nouns that end in an unstressed -el or -er do not add a second e. En-words just add -n; ett-words drop the e and add -et.",
+        "table": {
+          "columns": [
+            "Indefinite",
+            "Definite",
+            "Rule"
+          ],
+          "rows": [
+            [
+              "en fågel",
+              "fågeln",
+              "add -n"
+            ],
+            [
+              "en cykel",
+              "cykeln",
+              "add -n"
+            ],
+            [
+              "en nyckel",
+              "nyckeln",
+              "add -n"
+            ],
+            [
+              "en spegel",
+              "spegeln",
+              "add -n"
+            ],
+            [
+              "en syster",
+              "systern",
+              "add -n"
+            ],
+            [
+              "ett fönster",
+              "fönstret",
+              "drop e, add -et"
+            ]
+          ]
+        },
+        "steps": [
+          "Does the noun end in unstressed -el or -er?",
+          "For an en-word, add only -n.",
+          "For an ett-word, drop that e and add -et."
+        ],
+        "examples": [
+          {
+            "sv": "Fågeln sjunger.",
+            "en": "The bird is singing."
+          },
+          {
+            "sv": "Jag öppnar fönstret.",
+            "en": "I open the window."
+          }
+        ],
+        "watch": [
+          "Fågelen and systeren are not written.",
+          "The e stays in the singular definite: cykeln, not cyklen. It drops only in the plural: cyklar."
+        ]
+      },
+      {
+        "id": "plural",
+        "title": "The definite plural",
+        "text": "Make the plural first, then add the definite plural ending. Plurals in -ar, -or, -er or a vowel add -na. Ett-words with no plural ending add -en. Plurals ending in -n add -a.",
+        "table": {
+          "columns": [
+            "Singular",
+            "Plural",
+            "Definite plural"
+          ],
+          "rows": [
+            [
+              "en bil",
+              "bilar",
+              "bilarna"
+            ],
+            [
+              "en flicka",
+              "flickor",
+              "flickorna"
+            ],
+            [
+              "en sko",
+              "skor",
+              "skorna"
+            ],
+            [
+              "en nyckel",
+              "nycklar",
+              "nycklarna"
+            ],
+            [
+              "ett hus",
+              "hus",
+              "husen"
+            ],
+            [
+              "ett barn",
+              "barn",
+              "barnen"
+            ],
+            [
+              "ett äpple",
+              "äpplen",
+              "äpplena"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the plural of the noun.",
+          "Plural ends in -r or a vowel? Add -na.",
+          "Plural is the same as the singular? Add -en.",
+          "Plural ends in -n? Add -a."
+        ],
+        "examples": [
+          {
+            "sv": "Bilarna står på gatan.",
+            "en": "The cars are parked in the street."
+          },
+          {
+            "sv": "Barnen äter äpplena.",
+            "en": "The children are eating the apples."
+          }
+        ],
+        "watch": [
+          "Husena and barnena are wrong: plurals with no ending take -en.",
+          "Do not build from the singular: the girls is flickorna, not flickarna."
+        ]
+      },
+      {
+        "id": "double",
+        "title": "The with an adjective",
+        "text": "When an adjective comes before a definite noun, Swedish marks the twice: a front word den, det or de, the adjective in -a, and the noun with its ending.",
+        "table": {
+          "columns": [
+            "Noun",
+            "Front word",
+            "Example"
+          ],
+          "rows": [
+            [
+              "en-word",
+              "den",
+              "den stora bilen"
+            ],
+            [
+              "ett-word",
+              "det",
+              "det nya huset"
+            ],
+            [
+              "plural",
+              "de",
+              "de nya böckerna"
+            ]
+          ]
+        },
+        "steps": [
+          "Pick the front word: den for en-words, det for ett-words, de for plurals.",
+          "Give the adjective the ending -a.",
+          "Keep the definite ending on the noun."
+        ],
+        "examples": [
+          {
+            "sv": "Den gamla hunden sover.",
+            "en": "The old dog is sleeping."
+          },
+          {
+            "sv": "Jag gillar det nya huset.",
+            "en": "I like the new house."
+          }
+        ],
+        "watch": [
+          "Den stora bil is wrong: the noun keeps its ending.",
+          "Without an adjective there is no front word: bilen, not den bilen, for the car.",
+          "In everyday speech the front word is often dropped: nya bilen, stora huset. In writing keep it."
+        ]
+      },
+      {
+        "id": "possessive",
+        "title": "After my, your and a genitive",
+        "text": "A possessive like min, din, mitt or a genitive like Annas already says which thing, so the noun stays bare, with no ending.",
+        "table": {
+          "columns": [
+            "Before the noun",
+            "Example",
+            "Not"
+          ],
+          "rows": [
+            [
+              "min",
+              "min bil",
+              "min bilen"
+            ],
+            [
+              "genitive -s",
+              "Annas hus",
+              "Annas huset"
+            ]
+          ]
+        },
+        "steps": [
+          "Is there a possessive or a genitive with -s before the noun?",
+          "If yes, use the bare noun with no ending.",
+          "If no and you mean the, add the ending."
+        ],
+        "examples": [
+          {
+            "sv": "Min bil är ny.",
+            "en": "My car is new."
+          },
+          {
+            "sv": "Min systers katt är svart.",
+            "en": "My sister's cat is black."
+          }
+        ],
+        "watch": [
+          "Min bilen is the most common slip: drop the ending.",
+          "Mitt goes with ett-words: mitt hus."
+        ]
+      },
+      {
+        "id": "general",
+        "title": "When to use the definite form",
+        "text": "Use the definite form where English says the about a known thing. For things in general, Swedish like English uses the bare plural or the bare noun.",
+        "table": {
+          "columns": [
+            "Meaning",
+            "Swedish",
+            "English"
+          ],
+          "rows": [
+            [
+              "known things",
+              "Katten sover.",
+              "The cat is sleeping."
+            ],
+            [
+              "all of a kind",
+              "Jag gillar hundar.",
+              "I like dogs."
+            ]
+          ]
+        },
+        "steps": [
+          "Does English say the about a particular thing? Use the ending.",
+          "Is it a general statement with no the? Leave the noun bare."
+        ],
+        "examples": [
+          {
+            "sv": "Katter gillar fisk.",
+            "en": "Cats like fish."
+          },
+          {
+            "sv": "Hundarna i trädgården är stora.",
+            "en": "The dogs in the garden are big."
+          }
+        ],
+        "watch": [
+          "Food and drink as a habit stay bare: Jag dricker kaffe.",
+          "Some abstract nouns take the ending where English has none: Livet är kort means Life is short."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "en-ending": {
+      "section": "en-words",
+      "steps": [
+        "Check that the noun is an en-word.",
+        "Ends in a consonant? Add -en.",
+        "Ends in a vowel? Add only -n."
+      ]
+    },
+    "ett-ending": {
+      "section": "ett-words",
+      "steps": [
+        "Check that the noun is an ett-word.",
+        "Ends in a consonant? Add -et.",
+        "Ends in a vowel? Add only -t."
+      ]
+    },
+    "drop-e": {
+      "section": "short-e",
+      "steps": [
+        "Look for an unstressed -el, -er or -en at the end.",
+        "En-word: add only -n.",
+        "Ett-word: drop the e and add -et."
+      ]
+    },
+    "definite-plural": {
+      "section": "plural",
+      "steps": [
+        "Make the plural.",
+        "Plural in -r or a vowel: add -na.",
+        "Plural same as singular: add -en; plural in -n: add -a."
+      ]
+    },
+    "double-definite": {
+      "section": "double",
+      "steps": [
+        "Choose den, det or de by the noun.",
+        "Put the adjective in -a.",
+        "Keep the ending on the noun."
+      ]
+    },
+    "possessive": {
+      "section": "possessive",
+      "steps": [
+        "Look for min, din, mitt or a name with -s before the noun.",
+        "If there is one, leave the noun bare."
+      ]
+    },
+    "general": {
+      "section": "general",
+      "steps": [
+        "Ask whether English uses the for a particular thing.",
+        "Particular: add the ending. General: leave the noun bare."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "definite-form-en-ending-1",
+      "pattern": "en-ending",
+      "type": "choose",
+      "instruction": "Choose the word for the car.",
+      "source": "Var är ____?",
+      "options": [
+        "bilen",
+        "bilet",
+        "bil"
+      ],
+      "answers": [
+        "bilen"
+      ],
+      "hint": "Bil is an en-word. Where does the word for the go?",
+      "feedback": "In Swedish, the is an ending glued to the noun.",
+      "explanation": "Bil is an en-word ending in a consonant, so the car is bilen: bil + -en.",
+      "mistakes": [
+        {
+          "answers": [
+            "bilet"
+          ],
+          "why": "The ending -et belongs to ett-words. Bil is an en-word (en bil), so it takes the en ending."
+        },
+        {
+          "answers": [
+            "bil"
+          ],
+          "why": "That is the bare noun, a car or car in general. The question asks for one particular car, so the noun needs its definite ending."
+        }
+      ],
+      "row": "a consonant",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-en-ending-2",
+      "pattern": "en-ending",
+      "type": "choose",
+      "instruction": "Choose the word for the girl.",
+      "source": "____ läser en bok.",
+      "options": [
+        "Flickan",
+        "Flickaen",
+        "Flicka"
+      ],
+      "answers": [
+        "Flickan"
+      ],
+      "hint": "Flicka already ends in a vowel.",
+      "feedback": "After a vowel the en ending shrinks to one letter.",
+      "explanation": "Flicka ends in -a, so only -n is added: flickan.",
+      "mistakes": [
+        {
+          "answers": [
+            "Flickaen"
+          ],
+          "why": "Swedish does not stack a vowel on a vowel here: after a final -a the ending loses its e."
+        },
+        {
+          "answers": [
+            "Flicka"
+          ],
+          "why": "Without an ending this is just girl, with no the. The sentence is about one known girl."
+        }
+      ],
+      "row": "a vowel",
+      "gloss": [
+        {
+          "sv": "läser",
+          "en": "reads (läsa)",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "bok",
+          "en": "book",
+          "word": "school-028"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-en-ending-3",
+      "pattern": "en-ending",
+      "type": "complete",
+      "instruction": "Write the definite form: the door.",
+      "source": "Jag öppnar ____ (dörr).",
+      "answers": [
+        "dörren"
+      ],
+      "hint": "Dörr is an en-word ending in a consonant.",
+      "feedback": "Glue the en ending onto dörr.",
+      "explanation": "Dörr is an en-word (en dörr) ending in r, so the door is dörren.",
+      "mistakes": [
+        {
+          "answers": [
+            "dörr"
+          ],
+          "why": "That is the noun without its ending, so it means door, not the door."
+        },
+        {
+          "answers": [
+            "dörret"
+          ],
+          "why": "The -et ending is for ett-words, and dörr is an en-word."
+        },
+        {
+          "answers": [
+            "den dörr"
+          ],
+          "why": "Swedish has no separate word for the in front of a plain noun; the meaning lives in an ending."
+        }
+      ],
+      "row": "a consonant",
+      "gloss": [
+        {
+          "sv": "öppnar",
+          "en": "open (öppna)",
+          "word": "verbs-040"
+        },
+        {
+          "sv": "dörr",
+          "en": "door",
+          "word": "home-019"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-en-ending-4",
+      "pattern": "en-ending",
+      "type": "complete",
+      "instruction": "Write the definite form: the lamp.",
+      "source": "____ (lampa) är ny.",
+      "answers": [
+        "Lampan"
+      ],
+      "hint": "Lampa ends in a vowel.",
+      "feedback": "After a final vowel, add only one letter.",
+      "explanation": "Lampa is an en-word ending in -a, so it takes just -n: lampan.",
+      "mistakes": [
+        {
+          "answers": [
+            "Lampaen"
+          ],
+          "why": "After a vowel the ending drops its e; Swedish does not write -aen."
+        },
+        {
+          "answers": [
+            "Lampa"
+          ],
+          "why": "That is lamp with no the. The sentence talks about one known lamp."
+        },
+        {
+          "answers": [
+            "Lampen"
+          ],
+          "why": "The -a of lampa stays; the ending is added after it, not in its place."
+        }
+      ],
+      "row": "a vowel",
+      "gloss": [
+        {
+          "sv": "lampa",
+          "en": "lamp",
+          "word": "home-023"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "ny",
+          "en": "new",
+          "word": "qualities-010"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-en-ending-5",
+      "pattern": "en-ending",
+      "type": "rewrite",
+      "instruction": "Make buss definite: the bus. Write the whole sentence.",
+      "source": "Där är en buss.",
+      "answers": [
+        "Där är bussen."
+      ],
+      "hint": "Drop en and add the ending.",
+      "feedback": "The indefinite article goes and the ending comes in.",
+      "explanation": "The bus is bussen: en disappears and -en is glued to buss.",
+      "mistakes": [
+        {
+          "answers": [
+            "Där är en bussen."
+          ],
+          "why": "A noun is either indefinite (en buss) or definite (with the ending), never both at once."
+        },
+        {
+          "answers": [
+            "Där är buss."
+          ],
+          "why": "Removing en is not enough; the noun still needs its ending to mean the bus."
+        }
+      ],
+      "row": "a consonant",
+      "gloss": [
+        {
+          "sv": "Där",
+          "en": "there",
+          "word": "essentials-096"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "buss",
+          "en": "bus",
+          "word": "travel-005"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-en-ending-6",
+      "pattern": "en-ending",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The boy takes the bus.",
+      "answers": [
+        "Pojken tar bussen."
+      ],
+      "hint": "Pojke ends in a vowel; buss does not.",
+      "feedback": "Both nouns are definite, so both get an ending.",
+      "explanation": "Pojke ends in -e, so it adds -n: pojken. Buss adds -en: bussen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pojkeen tar bussen."
+          ],
+          "why": "After a final vowel the ending is only -n."
+        },
+        {
+          "answers": [
+            "Pojke tar buss."
+          ],
+          "why": "Without endings the nouns lose the; Swedish shows the only through the ending."
+        },
+        {
+          "answers": [
+            "Den pojke tar den buss."
+          ],
+          "why": "Den is not the Swedish the in front of a lone noun. Use the ending instead."
+        }
+      ],
+      "row": "a vowel"
+    },
+    {
+      "id": "definite-form-ett-ending-1",
+      "pattern": "ett-ending",
+      "type": "choose",
+      "instruction": "Choose the word for the house.",
+      "source": "____ är stort.",
+      "options": [
+        "Huset",
+        "Husen",
+        "Hus"
+      ],
+      "answers": [
+        "Huset"
+      ],
+      "hint": "Hus is an ett-word. Is the subject one house or several?",
+      "feedback": "Ett-words take a t ending.",
+      "explanation": "Hus is an ett-word (ett hus) ending in a consonant, so the house is huset.",
+      "mistakes": [
+        {
+          "answers": [
+            "Husen"
+          ],
+          "why": "Husen means the houses, plural. Stort describes one house."
+        },
+        {
+          "answers": [
+            "Hus"
+          ],
+          "why": "That is house with no the, and the sentence speaks about a known house."
+        }
+      ],
+      "row": "a consonant (ett)",
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stort",
+          "en": "big (stor)",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-ett-ending-2",
+      "pattern": "ett-ending",
+      "type": "choose",
+      "instruction": "Choose the word for the apple.",
+      "source": "Jag äter ____.",
+      "options": [
+        "äpplet",
+        "äpplen",
+        "äppleet"
+      ],
+      "answers": [
+        "äpplet"
+      ],
+      "hint": "Äpple ends in a vowel.",
+      "feedback": "After a vowel the ett ending is just -t.",
+      "explanation": "Äpple is an ett-word ending in -e, so only -t is added: äpplet.",
+      "mistakes": [
+        {
+          "answers": [
+            "äpplen"
+          ],
+          "why": "Äpplen is the plural, apples. You are eating one particular apple."
+        },
+        {
+          "answers": [
+            "äppleet"
+          ],
+          "why": "After a final vowel the ending loses its e, so Swedish never writes -eet here."
+        }
+      ],
+      "row": "a vowel (ett)",
+      "gloss": [
+        {
+          "sv": "äter",
+          "en": "eat (äta)",
+          "word": "verbs-054"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-ett-ending-3",
+      "pattern": "ett-ending",
+      "type": "complete",
+      "instruction": "Write the definite form: the table.",
+      "source": "____ (bord) är rent.",
+      "answers": [
+        "Bordet"
+      ],
+      "hint": "Bord is an ett-word.",
+      "feedback": "Ett-words ending in a consonant take -et.",
+      "explanation": "Bord is ett bord, so the table is bordet.",
+      "mistakes": [
+        {
+          "answers": [
+            "Borden"
+          ],
+          "why": "Borden means the tables. Rent is the form for one ett-word, and the sentence names one table."
+        },
+        {
+          "answers": [
+            "Bord"
+          ],
+          "why": "Without its ending the noun means table, not the table."
+        },
+        {
+          "answers": [
+            "Bordeen"
+          ],
+          "why": "Bord ends in a consonant, so its ending is the ett ending, not -een."
+        }
+      ],
+      "row": "a consonant (ett)",
+      "gloss": [
+        {
+          "sv": "bord",
+          "en": "table",
+          "word": "home-025"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "rent",
+          "en": "clean (ren)",
+          "word": "qualities-028"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-ett-ending-4",
+      "pattern": "ett-ending",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Jag tar äppleet.",
+      "answers": [
+        "Jag tar äpplet."
+      ],
+      "hint": "Look at the ending after the final vowel of äpple.",
+      "feedback": "After a vowel the ett ending is a single letter.",
+      "explanation": "Äpple already ends in -e, so the apple is äpplet, with -t only.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag tar äppleet."
+          ],
+          "why": "That is the sentence unchanged: after the final -e the ending should not repeat the e."
+        },
+        {
+          "answers": [
+            "Jag tar äpplen."
+          ],
+          "why": "Äpplen means apples. The sentence takes one apple, so only the ending needs fixing."
+        }
+      ],
+      "row": "a vowel (ett)",
+      "gloss": [
+        {
+          "sv": "tar",
+          "en": "take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "äppleet",
+          "en": "apple (wrongly spelt)",
+          "word": "food-021"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-ett-ending-5",
+      "pattern": "ett-ending",
+      "type": "build",
+      "instruction": "Build the sentence: The train is at the station. Leave one tile unused.",
+      "source": "The train is at the station.",
+      "tokens": [
+        "Tågen",
+        "är",
+        "Tåget",
+        "på",
+        "stationen."
+      ],
+      "answers": [
+        "Tåget är på stationen."
+      ],
+      "hint": "Tåg is an ett-word.",
+      "feedback": "One tile is a plural form.",
+      "explanation": "Tåg is ett tåg, so the train is tåget; station is an en-word, so the station is stationen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Tågen är på stationen."
+          ],
+          "why": "Tågen means the trains. The English talks about one train."
+        }
+      ],
+      "row": "a consonant (ett)"
+    },
+    {
+      "id": "definite-form-ett-ending-6",
+      "pattern": "ett-ending",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The child is sleeping in the bedroom.",
+      "answers": [
+        "Barnet sover i sovrummet."
+      ],
+      "hint": "Barn and sovrum are both ett-words. Rum doubles its m.",
+      "feedback": "Both nouns take the ett ending.",
+      "explanation": "Ett barn becomes barnet. Ett sovrum becomes sovrummet: a short vowel before m doubles the m.",
+      "mistakes": [
+        {
+          "answers": [
+            "Barnet sover i sovrumet."
+          ],
+          "why": "Rum has a short vowel, so the m doubles before the ending: rummet."
+        },
+        {
+          "answers": [
+            "Barnen sover i sovrummet."
+          ],
+          "why": "Barnen means the children. The English has one child."
+        },
+        {
+          "answers": [
+            "Barnet sover i sovrummen."
+          ],
+          "why": "Sovrummen is plural; the child sleeps in one bedroom."
+        }
+      ],
+      "row": "a consonant (ett)"
+    },
+    {
+      "id": "definite-form-drop-e-1",
+      "pattern": "drop-e",
+      "type": "choose",
+      "instruction": "Choose the word for the bird.",
+      "source": "____ sjunger.",
+      "options": [
+        "Fågeln",
+        "Fågelen",
+        "Fåglen"
+      ],
+      "answers": [
+        "Fågeln"
+      ],
+      "hint": "Fågel ends in -el.",
+      "feedback": "Nouns in -el just add -n.",
+      "explanation": "Fågel ends in -el, so the e does not repeat: fågeln.",
+      "mistakes": [
+        {
+          "answers": [
+            "Fågelen"
+          ],
+          "why": "Nouns ending in unstressed -el take only -n; -elen is not written."
+        },
+        {
+          "answers": [
+            "Fåglen"
+          ],
+          "why": "The e of -el stays in the singular. It drops only in the plural, fåglar."
+        }
+      ],
+      "row": "en fågel",
+      "gloss": [
+        {
+          "sv": "sjunger",
+          "en": "sings (sjunga)"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-drop-e-2",
+      "pattern": "drop-e",
+      "type": "choose",
+      "instruction": "Choose the word for the bike.",
+      "source": "____ står i hallen.",
+      "options": [
+        "Cykeln",
+        "Cykelen",
+        "Cyklen"
+      ],
+      "answers": [
+        "Cykeln"
+      ],
+      "hint": "Cykel ends in -el, like fågel.",
+      "feedback": "The ending for these nouns is a single -n.",
+      "explanation": "Cykel ends in -el, so the bike is cykeln.",
+      "mistakes": [
+        {
+          "answers": [
+            "Cykelen"
+          ],
+          "why": "After -el the ending is only -n, never -en."
+        },
+        {
+          "answers": [
+            "Cyklen"
+          ],
+          "why": "The singular keeps the e: cykel, cykeln. Cyklar is the plural."
+        }
+      ],
+      "row": "en cykel",
+      "gloss": [
+        {
+          "sv": "står",
+          "en": "stands (stå)",
+          "word": "verbs-064"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "hallen",
+          "en": "the hall",
+          "word": "home-011"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-drop-e-3",
+      "pattern": "drop-e",
+      "type": "complete",
+      "instruction": "Write the definite form: the key.",
+      "source": "Var är ____ (nyckel)?",
+      "answers": [
+        "nyckeln"
+      ],
+      "hint": "Nyckel ends in -el.",
+      "feedback": "Just add -n.",
+      "explanation": "Nyckel ends in -el, so the key is nyckeln.",
+      "mistakes": [
+        {
+          "answers": [
+            "nyckelen"
+          ],
+          "why": "Nouns in -el take only -n; the extra e is wrong."
+        },
+        {
+          "answers": [
+            "nyckel"
+          ],
+          "why": "That is key with no the. You are asking about one known key."
+        }
+      ],
+      "row": "en nyckel",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "nyckel",
+          "en": "key",
+          "word": "home-022"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-drop-e-4",
+      "pattern": "drop-e",
+      "type": "complete",
+      "instruction": "Write the definite form: the window.",
+      "source": "Jag öppnar ____ (fönster).",
+      "answers": [
+        "fönstret"
+      ],
+      "hint": "Fönster is an ett-word in -er.",
+      "feedback": "The e before r drops when the ending comes.",
+      "explanation": "Fönster is ett fönster. The e of -er drops and -et is added: fönstret.",
+      "mistakes": [
+        {
+          "answers": [
+            "fönsteret"
+          ],
+          "why": "Ett-words in -er lose that e before the ending, so -eret is not written."
+        },
+        {
+          "answers": [
+            "fönstren"
+          ],
+          "why": "Fönstren means the windows, plural. You are opening one window."
+        },
+        {
+          "answers": [
+            "fönstern"
+          ],
+          "why": "Fönster is an ett-word, so it takes the ett ending, not -n."
+        }
+      ],
+      "row": "ett fönster",
+      "gloss": [
+        {
+          "sv": "öppnar",
+          "en": "open (öppna)",
+          "word": "verbs-040"
+        },
+        {
+          "sv": "fönster",
+          "en": "window",
+          "word": "home-020"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-drop-e-5",
+      "pattern": "drop-e",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Systeren bor i Göteborg.",
+      "answers": [
+        "Systern bor i Göteborg."
+      ],
+      "hint": "Syster ends in -er and is an en-word.",
+      "feedback": "En-words in -er just add -n.",
+      "explanation": "Syster is en syster. It ends in -er, so the sister is systern.",
+      "mistakes": [
+        {
+          "answers": [
+            "Systeren bor i Göteborg."
+          ],
+          "why": "That is the sentence unchanged: -er nouns do not take -en."
+        },
+        {
+          "answers": [
+            "Syster bor i Göteborg."
+          ],
+          "why": "Without the ending the noun means sister, not the sister."
+        }
+      ],
+      "row": "en syster",
+      "gloss": [
+        {
+          "sv": "Systeren",
+          "en": "sister (wrongly spelt)",
+          "word": "people-014"
+        },
+        {
+          "sv": "bor",
+          "en": "lives (bo)",
+          "word": "verbs-065"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "Göteborg",
+          "en": "Gothenburg"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-drop-e-6",
+      "pattern": "drop-e",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The mirror is in the bathroom.",
+      "answers": [
+        "Spegeln är i badrummet."
+      ],
+      "hint": "Spegel ends in -el; badrum doubles its m.",
+      "feedback": "Two definite nouns, two endings.",
+      "explanation": "Spegel ends in -el, so it adds -n: spegeln. Ett badrum becomes badrummet.",
+      "mistakes": [
+        {
+          "answers": [
+            "Spegelen är i badrummet."
+          ],
+          "why": "After -el the ending is only -n."
+        },
+        {
+          "answers": [
+            "Spegeln är i badrumet."
+          ],
+          "why": "Rum doubles its m before the ending."
+        },
+        {
+          "answers": [
+            "Spegeln är i badrummen."
+          ],
+          "why": "Badrummen means the bathrooms, plural."
+        }
+      ],
+      "row": "en spegel"
+    },
+    {
+      "id": "definite-form-definite-plural-1",
+      "pattern": "definite-plural",
+      "type": "choose",
+      "instruction": "Choose the word for the cars.",
+      "source": "____ står på gatan.",
+      "options": [
+        "Bilarna",
+        "Bilar",
+        "Bilen"
+      ],
+      "answers": [
+        "Bilarna"
+      ],
+      "hint": "Start from the plural bilar.",
+      "feedback": "The definite plural adds -na to the plural.",
+      "explanation": "The plural of bil is bilar, and the cars is bilar + na: bilarna.",
+      "mistakes": [
+        {
+          "answers": [
+            "Bilar"
+          ],
+          "why": "Bilar means cars, any cars. The sentence points at known cars, so it needs -na."
+        },
+        {
+          "answers": [
+            "Bilen"
+          ],
+          "why": "Bilen is the car, one car. The question asks for several."
+        }
+      ],
+      "row": "en bil",
+      "gloss": [
+        {
+          "sv": "står",
+          "en": "stand (stå)",
+          "word": "verbs-064"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "gatan",
+          "en": "the street",
+          "word": "travel-002"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-definite-plural-2",
+      "pattern": "definite-plural",
+      "type": "choose",
+      "instruction": "Choose the word for the apples.",
+      "source": "Jag tvättar ____.",
+      "options": [
+        "äpplena",
+        "äpplen",
+        "äpplet"
+      ],
+      "answers": [
+        "äpplena"
+      ],
+      "hint": "The plural äpplen already ends in -n.",
+      "feedback": "Ett-words with a plural in -n add -a.",
+      "explanation": "Äpple has the plural äpplen, so the apples is äpplena.",
+      "mistakes": [
+        {
+          "answers": [
+            "äpplen"
+          ],
+          "why": "Äpplen means apples in general, without the."
+        },
+        {
+          "answers": [
+            "äpplet"
+          ],
+          "why": "Äpplet is the apple, only one."
+        }
+      ],
+      "row": "ett äpple",
+      "gloss": [
+        {
+          "sv": "tvättar",
+          "en": "wash (tvätta)",
+          "word": "verbs-094"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-definite-plural-3",
+      "pattern": "definite-plural",
+      "type": "complete",
+      "instruction": "Write the definite plural: the houses.",
+      "source": "____ (hus) är gamla.",
+      "answers": [
+        "Husen"
+      ],
+      "hint": "Hus has the same form in the plural.",
+      "feedback": "Ett-words ending in a consonant take -en in the definite plural.",
+      "explanation": "The plural of hus is hus, and the houses is husen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Husena"
+          ],
+          "why": "-na goes only after a plural that ends in a vowel or -n like äpplen. Hus takes -en."
+        },
+        {
+          "answers": [
+            "Husarna"
+          ],
+          "why": "Hus does not have an -ar plural; it stays hus, so the houses is formed from that."
+        },
+        {
+          "answers": [
+            "Huset"
+          ],
+          "why": "Huset is the house, one house, and gamla is plural."
+        }
+      ],
+      "row": "ett hus",
+      "gloss": [
+        {
+          "sv": "hus",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "gamla",
+          "en": "old (gammal)",
+          "word": "qualities-011"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-definite-plural-4",
+      "pattern": "definite-plural",
+      "type": "complete",
+      "instruction": "Write the definite plural: the shoes.",
+      "source": "Var är ____ (skor)?",
+      "answers": [
+        "skorna"
+      ],
+      "hint": "Skor is the plural. Add the definite plural ending.",
+      "feedback": "Plurals ending in -r take -na.",
+      "explanation": "Skor ends in -r, so the shoes is skorna.",
+      "mistakes": [
+        {
+          "answers": [
+            "skor"
+          ],
+          "why": "That is shoes with no the. You mean particular shoes."
+        },
+        {
+          "answers": [
+            "skon"
+          ],
+          "why": "Skon is the shoe, just one."
+        },
+        {
+          "answers": [
+            "skoren"
+          ],
+          "why": "Plurals in -r take -na, not -en."
+        }
+      ],
+      "row": "en sko",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "skor",
+          "en": "shoes",
+          "word": "people-051"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-definite-plural-5",
+      "pattern": "definite-plural",
+      "type": "rewrite",
+      "instruction": "Make flickan plural: the girls. Write the whole sentence.",
+      "source": "Flickan leker i parken.",
+      "answers": [
+        "Flickorna leker i parken."
+      ],
+      "hint": "The plural of flicka is flickor.",
+      "feedback": "Plural first, then -na.",
+      "explanation": "Flicka has the plural flickor, so the girls is flickorna. The verb does not change.",
+      "mistakes": [
+        {
+          "answers": [
+            "Flickarna leker i parken."
+          ],
+          "why": "Flicka makes its plural with -or, so the -ar form does not exist."
+        },
+        {
+          "answers": [
+            "Flickor leker i parken."
+          ],
+          "why": "Flickor means girls, without the."
+        },
+        {
+          "answers": [
+            "Flickan leker i parken."
+          ],
+          "why": "That is the original sentence, still one girl."
+        }
+      ],
+      "row": "en flicka",
+      "gloss": [
+        {
+          "sv": "Flickan",
+          "en": "the girl",
+          "word": "people-008"
+        },
+        {
+          "sv": "leker",
+          "en": "plays (leka)"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "parken",
+          "en": "the park",
+          "word": "travel-029"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-definite-plural-6",
+      "pattern": "definite-plural",
+      "type": "build",
+      "instruction": "Build the sentence: The children are eating the apples. Leave one tile unused.",
+      "source": "The children are eating the apples.",
+      "tokens": [
+        "Barnena",
+        "äter",
+        "Barnen",
+        "äpplena."
+      ],
+      "answers": [
+        "Barnen äter äpplena."
+      ],
+      "hint": "Barn is the same in the plural.",
+      "feedback": "Barn takes -en, äpplen takes -a.",
+      "explanation": "The children is barnen, and the apples is äpplena.",
+      "mistakes": [
+        {
+          "answers": [
+            "Barnena äter äpplena."
+          ],
+          "why": "Barn ends in a consonant, so its definite plural is -en, not -ena."
+        }
+      ],
+      "row": "ett barn"
+    },
+    {
+      "id": "definite-form-definite-plural-7",
+      "pattern": "definite-plural",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The keys are on the table.",
+      "answers": [
+        "Nycklarna ligger på bordet.",
+        "Nycklarna är på bordet."
+      ],
+      "hint": "Nyckel has the plural nycklar.",
+      "feedback": "Plural first, then -na.",
+      "explanation": "Nyckel has the plural nycklar, so the keys is nycklarna. Swedish often says ligger, lie, for things on a table.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nycklar ligger på bordet."
+          ],
+          "why": "Nycklar means keys in general, with no the."
+        },
+        {
+          "answers": [
+            "Nyckelarna ligger på bordet."
+          ],
+          "why": "In the plural nyckel drops its e: nycklar."
+        },
+        {
+          "answers": [
+            "Nycklarna ligger på bord."
+          ],
+          "why": "The table is a known table too, so bord needs its ending."
+        }
+      ],
+      "row": "en nyckel"
+    },
+    {
+      "id": "definite-form-double-definite-1",
+      "pattern": "double-definite",
+      "type": "choose",
+      "instruction": "Choose the word that starts the phrase the big car.",
+      "source": "____ stora bilen är röd.",
+      "options": [
+        "Den",
+        "Det",
+        "De"
+      ],
+      "answers": [
+        "Den"
+      ],
+      "hint": "Bil is an en-word.",
+      "feedback": "With an adjective the needs an extra word in front.",
+      "explanation": "Bil is an en-word, so the big car is den stora bilen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Det"
+          ],
+          "why": "Det goes with ett-words. Bil is an en-word."
+        },
+        {
+          "answers": [
+            "De"
+          ],
+          "why": "De is for plurals, and bilen is one car."
+        }
+      ],
+      "row": "en-word",
+      "gloss": [
+        {
+          "sv": "stora",
+          "en": "big (stor)",
+          "word": "qualities-001"
+        },
+        {
+          "sv": "bilen",
+          "en": "the car",
+          "word": "travel-004"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "röd",
+          "en": "red",
+          "word": "qualities-089"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-double-definite-2",
+      "pattern": "double-definite",
+      "type": "choose",
+      "instruction": "Choose the missing word.",
+      "source": "Jag gillar ____ nya huset.",
+      "options": [
+        "det",
+        "den",
+        "de"
+      ],
+      "answers": [
+        "det"
+      ],
+      "hint": "Hus is an ett-word.",
+      "feedback": "Pick the front word that matches the noun.",
+      "explanation": "Hus is an ett-word, so the new house is det nya huset.",
+      "mistakes": [
+        {
+          "answers": [
+            "den"
+          ],
+          "why": "Den goes with en-words. Hus is an ett-word."
+        },
+        {
+          "answers": [
+            "de"
+          ],
+          "why": "De is for plurals, and huset is one house."
+        }
+      ],
+      "row": "ett-word",
+      "gloss": [
+        {
+          "sv": "gillar",
+          "en": "like (gilla)",
+          "word": "verbs-046"
+        },
+        {
+          "sv": "nya",
+          "en": "new (ny)",
+          "word": "qualities-010"
+        },
+        {
+          "sv": "huset",
+          "en": "the house",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-double-definite-3",
+      "pattern": "double-definite",
+      "type": "complete",
+      "instruction": "Write the adjective röd in the right form.",
+      "source": "Jag tar den ____ tröjan.",
+      "answers": [
+        "röda"
+      ],
+      "hint": "After den the adjective takes one ending for all genders.",
+      "feedback": "Adjectives between den and the noun end in -a.",
+      "explanation": "After den, det or de the adjective ends in -a: den röda tröjan.",
+      "mistakes": [
+        {
+          "answers": [
+            "röd"
+          ],
+          "why": "After den the adjective takes its -a ending."
+        },
+        {
+          "answers": [
+            "rött"
+          ],
+          "why": "Rött is for an ett-word without the. Here den and the noun ending call for -a."
+        }
+      ],
+      "row": "en-word",
+      "gloss": [
+        {
+          "sv": "tar",
+          "en": "take (ta)",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "tröjan",
+          "en": "the jumper",
+          "word": "people-045"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-double-definite-4",
+      "pattern": "double-definite",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Den stora bil står där.",
+      "answers": [
+        "Den stora bilen står där."
+      ],
+      "hint": "Look at the noun at the end.",
+      "feedback": "With den and an adjective, the noun still needs its own ending.",
+      "explanation": "Swedish marks the twice: den in front and -en on the noun. The big car is den stora bilen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Den stora bil står där."
+          ],
+          "why": "That is the sentence unchanged: the noun is missing its ending."
+        },
+        {
+          "answers": [
+            "Den stor bilen står där."
+          ],
+          "why": "The adjective must end in -a after den, and that was not the error here."
+        }
+      ],
+      "row": "en-word",
+      "gloss": [
+        {
+          "sv": "stora",
+          "en": "big (stor)",
+          "word": "qualities-001"
+        },
+        {
+          "sv": "bil",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "sv": "står",
+          "en": "stands (stå)",
+          "word": "verbs-064"
+        },
+        {
+          "sv": "där",
+          "en": "there",
+          "word": "essentials-096"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-double-definite-5",
+      "pattern": "double-definite",
+      "type": "build",
+      "instruction": "Build the sentence: The old dog is sleeping. Leave one tile unused.",
+      "source": "The old dog is sleeping.",
+      "tokens": [
+        "Den",
+        "Det",
+        "gamla",
+        "hunden",
+        "sover."
+      ],
+      "answers": [
+        "Den gamla hunden sover."
+      ],
+      "hint": "Hund is an en-word.",
+      "feedback": "Pick the front word that matches hund.",
+      "explanation": "En hund is an en-word, so the old dog is den gamla hunden.",
+      "mistakes": [
+        {
+          "answers": [
+            "Det gamla hunden sover."
+          ],
+          "why": "Det belongs to ett-words; hund is an en-word."
+        }
+      ],
+      "row": "en-word"
+    },
+    {
+      "id": "definite-form-double-definite-6",
+      "pattern": "double-definite",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The new books are on the shelf.",
+      "answers": [
+        "De nya böckerna står på hyllan.",
+        "De nya böckerna ligger på hyllan.",
+        "De nya böckerna är på hyllan."
+      ],
+      "hint": "The plural of bok is böcker.",
+      "feedback": "Plural with an adjective: de, adjective -a, noun -na.",
+      "explanation": "The new books is de nya böckerna: de for plural, nya, and böcker + na.",
+      "mistakes": [
+        {
+          "answers": [
+            "Den nya böckerna står på hyllan."
+          ],
+          "why": "Den is for one en-word; for plurals the front word is de."
+        },
+        {
+          "answers": [
+            "De nya böcker står på hyllan."
+          ],
+          "why": "The noun needs its definite ending too: Swedish marks the twice."
+        }
+      ],
+      "row": "plural",
+      "alternatives": [
+        {
+          "answer": "Nya böckerna står på hyllan.",
+          "message": "Common in everyday speech. In writing Swedish uses the front word: de nya böckerna.",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "definite-form-double-definite-7",
+      "pattern": "double-definite",
+      "type": "rewrite",
+      "instruction": "Add the adjective gammal: the old house. Write the whole sentence.",
+      "source": "Jag gillar huset.",
+      "answers": [
+        "Jag gillar det gamla huset."
+      ],
+      "hint": "Hus is an ett-word; gammal becomes gamla.",
+      "feedback": "An adjective brings a front word with it.",
+      "explanation": "Adding an adjective to huset gives det gamla huset: det, the -a form, and the ending on the noun.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag gillar gamla huset."
+          ],
+          "why": "Common in speech, but the written form, which this exercise asks for, puts det in front: det gamla huset."
+        },
+        {
+          "answers": [
+            "Jag gillar det gamla hus."
+          ],
+          "why": "The noun keeps its ending: Swedish marks the twice."
+        },
+        {
+          "answers": [
+            "Jag gillar den gamla huset."
+          ],
+          "why": "Den is for en-words; hus is an ett-word."
+        }
+      ],
+      "row": "ett-word",
+      "gloss": [
+        {
+          "sv": "gillar",
+          "en": "like (gilla)",
+          "word": "verbs-046"
+        },
+        {
+          "sv": "huset",
+          "en": "the house",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-possessive-1",
+      "pattern": "possessive",
+      "type": "choose",
+      "instruction": "Choose the noun.",
+      "source": "Det är min ____.",
+      "options": [
+        "bil",
+        "bilen"
+      ],
+      "answers": [
+        "bil"
+      ],
+      "hint": "Min already tells you which car.",
+      "feedback": "After my, the noun has no ending.",
+      "explanation": "After a possessive like min the noun stays in its bare form: min bil.",
+      "mistakes": [
+        {
+          "answers": [
+            "bilen"
+          ],
+          "why": "With min in front the noun takes no definite ending; min bilen is not Swedish."
+        }
+      ],
+      "row": "min",
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "min",
+          "en": "my"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-possessive-2",
+      "pattern": "possessive",
+      "type": "choose",
+      "instruction": "Choose the noun.",
+      "source": "Annas ____ är stort.",
+      "options": [
+        "hus",
+        "huset"
+      ],
+      "answers": [
+        "hus"
+      ],
+      "hint": "Annas already says whose house.",
+      "feedback": "After a name with -s, the noun has no ending.",
+      "explanation": "Annas hus: after a genitive the noun stays bare, just like after min.",
+      "mistakes": [
+        {
+          "answers": [
+            "huset"
+          ],
+          "why": "After a genitive like Annas the noun takes no definite ending."
+        }
+      ],
+      "row": "genitive -s",
+      "gloss": [
+        {
+          "sv": "Annas",
+          "en": "Anna's"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stort",
+          "en": "big (stor)",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-possessive-3",
+      "pattern": "possessive",
+      "type": "complete",
+      "instruction": "Write the word for key.",
+      "source": "Var är din ____ (nyckel)?",
+      "answers": [
+        "nyckel"
+      ],
+      "hint": "Din comes first.",
+      "feedback": "After din the noun stays bare.",
+      "explanation": "Din already makes the noun definite, so your key is din nyckel.",
+      "mistakes": [
+        {
+          "answers": [
+            "nyckeln"
+          ],
+          "why": "After a possessive the noun takes no ending: din nyckeln is wrong."
+        }
+      ],
+      "row": "min",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "din",
+          "en": "your"
+        },
+        {
+          "sv": "nyckel",
+          "en": "key",
+          "word": "home-022"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-possessive-4",
+      "pattern": "possessive",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Min bilen är ny.",
+      "answers": [
+        "Min bil är ny."
+      ],
+      "hint": "Look at the noun after min.",
+      "feedback": "A possessive and a definite ending never go together.",
+      "explanation": "After min the noun stays bare: min bil.",
+      "mistakes": [
+        {
+          "answers": [
+            "Min bilen är ny."
+          ],
+          "why": "That is the sentence unchanged: the noun after min still has its ending."
+        },
+        {
+          "answers": [
+            "Mitt bil är ny."
+          ],
+          "why": "Mitt is for ett-words. Bil is an en-word, so min was already right."
+        }
+      ],
+      "row": "min",
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my"
+        },
+        {
+          "sv": "bilen",
+          "en": "the car",
+          "word": "travel-004"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "ny",
+          "en": "new",
+          "word": "qualities-010"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-possessive-5",
+      "pattern": "possessive",
+      "type": "build",
+      "instruction": "Build the sentence: My sister's cat is black. Leave one tile unused.",
+      "source": "My sister's cat is black.",
+      "tokens": [
+        "Min",
+        "systers",
+        "katten",
+        "katt",
+        "är",
+        "svart."
+      ],
+      "answers": [
+        "Min systers katt är svart."
+      ],
+      "hint": "Systers already says whose cat.",
+      "feedback": "After a genitive the noun stays bare.",
+      "explanation": "Systers is a genitive, so cat stays bare: min systers katt.",
+      "mistakes": [
+        {
+          "answers": [
+            "Min systers katten är svart."
+          ],
+          "why": "After the genitive systers the noun takes no definite ending."
+        }
+      ],
+      "row": "genitive -s"
+    },
+    {
+      "id": "definite-form-possessive-6",
+      "pattern": "possessive",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Your car is in the garage.",
+      "answers": [
+        "Din bil är i garaget.",
+        "Din bil står i garaget.",
+        "Er bil är i garaget.",
+        "Er bil står i garaget."
+      ],
+      "hint": "Your car: the noun stays bare. The garage: it takes an ending.",
+      "feedback": "Only the noun with a possessive stays bare.",
+      "explanation": "Din bil has no ending because of din. Garage has no possessive, so the garage is garaget.",
+      "mistakes": [
+        {
+          "answers": [
+            "Din bilen är i garaget."
+          ],
+          "why": "After din the noun takes no ending."
+        },
+        {
+          "answers": [
+            "Din bil är i garage."
+          ],
+          "why": "Garage has no possessive, so it still needs its ending to mean the garage."
+        }
+      ],
+      "row": "min"
+    },
+    {
+      "id": "definite-form-possessive-7",
+      "pattern": "possessive",
+      "type": "rewrite",
+      "instruction": "Replace the definite form with min: my house. Write the whole sentence.",
+      "source": "Huset är stort.",
+      "answers": [
+        "Mitt hus är stort."
+      ],
+      "hint": "Hus is an ett-word, so my is mitt.",
+      "feedback": "When the possessive comes, the ending goes.",
+      "explanation": "Mitt is the ett form of my, and after it the noun loses its ending: mitt hus.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mitt huset är stort."
+          ],
+          "why": "After a possessive the noun drops its definite ending."
+        },
+        {
+          "answers": [
+            "Min hus är stort."
+          ],
+          "why": "Min is for en-words; hus needs mitt."
+        }
+      ],
+      "row": "min",
+      "gloss": [
+        {
+          "sv": "Huset",
+          "en": "the house",
+          "word": "home-001"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stort",
+          "en": "big (stor)",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-general-1",
+      "pattern": "general",
+      "type": "choose",
+      "instruction": "Choose the word for dogs in general.",
+      "source": "Jag gillar ____.",
+      "options": [
+        "hundar",
+        "hundarna"
+      ],
+      "answers": [
+        "hundar"
+      ],
+      "hint": "Are you talking about all dogs or particular ones?",
+      "feedback": "General statements use the bare plural, as in English.",
+      "explanation": "Dogs in general is the bare plural hundar, as English says I like dogs.",
+      "mistakes": [
+        {
+          "answers": [
+            "hundarna"
+          ],
+          "why": "Hundarna means the dogs, particular ones you both know. The sentence is about dogs in general."
+        }
+      ],
+      "row": "all of a kind",
+      "gloss": [
+        {
+          "sv": "gillar",
+          "en": "like (gilla)",
+          "word": "verbs-046"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-general-2",
+      "pattern": "general",
+      "type": "choose",
+      "instruction": "Choose the word for the dogs.",
+      "source": "____ i trädgården är stora.",
+      "options": [
+        "Hundarna",
+        "Hundar"
+      ],
+      "answers": [
+        "Hundarna"
+      ],
+      "hint": "Which dogs? The ones in the garden.",
+      "feedback": "Particular dogs take the definite ending.",
+      "explanation": "These are particular dogs, the ones in the garden, so Swedish says hundarna.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hundar"
+          ],
+          "why": "Hundar means dogs in general; these dogs are pointed out by i trädgården."
+        }
+      ],
+      "row": "known things",
+      "gloss": [
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "trädgården",
+          "en": "the garden",
+          "word": "home-049"
+        },
+        {
+          "sv": "är",
+          "en": "is (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stora",
+          "en": "big (stor)",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-general-3",
+      "pattern": "general",
+      "type": "complete",
+      "instruction": "Write the word for coffee.",
+      "source": "Jag dricker ____ (kaffe) varje morgon.",
+      "answers": [
+        "kaffe"
+      ],
+      "hint": "Coffee in general, not a particular cup.",
+      "feedback": "Drinks and food in general stay bare.",
+      "explanation": "You drink coffee as a habit, so the noun stays bare: kaffe.",
+      "mistakes": [
+        {
+          "answers": [
+            "kaffet"
+          ],
+          "why": "Kaffet means the coffee, a particular coffee. English and Swedish both say coffee here."
+        }
+      ],
+      "row": "all of a kind",
+      "gloss": [
+        {
+          "sv": "dricker",
+          "en": "drink (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "kaffe",
+          "en": "coffee",
+          "word": "food-004"
+        },
+        {
+          "sv": "varje",
+          "en": "every"
+        },
+        {
+          "sv": "morgon",
+          "en": "morning"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-general-4",
+      "pattern": "general",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Cats like fish.",
+      "answers": [
+        "Katter gillar fisk."
+      ],
+      "hint": "Both nouns are general, as in English.",
+      "feedback": "No the in English, no ending in Swedish.",
+      "explanation": "This is a general statement, so both nouns stay bare: katter, fisk.",
+      "mistakes": [
+        {
+          "answers": [
+            "Katterna gillar fisken."
+          ],
+          "why": "Those endings mean the cats and the fish, particular ones. The English speaks about cats in general."
+        },
+        {
+          "answers": [
+            "Katterna gillar fisk."
+          ],
+          "why": "Katterna means particular cats; the sentence is about all cats."
+        }
+      ],
+      "row": "all of a kind"
+    },
+    {
+      "id": "definite-form-general-5",
+      "pattern": "general",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The cat is sleeping on the bed.",
+      "answers": [
+        "Katten sover på sängen."
+      ],
+      "hint": "A particular cat and a particular bed.",
+      "feedback": "English the becomes an ending.",
+      "explanation": "Both are known things, so both take the ending: katten, sängen.",
+      "mistakes": [
+        {
+          "answers": [
+            "Katt sover på säng."
+          ],
+          "why": "Without endings the nouns lose the meaning the."
+        },
+        {
+          "answers": [
+            "Katten sover på säng."
+          ],
+          "why": "The bed is a particular bed too, so säng needs its ending."
+        }
+      ],
+      "row": "known things"
+    },
+    {
+      "id": "definite-form-general-6",
+      "pattern": "general",
+      "type": "rewrite",
+      "instruction": "Make it about the apples you both know: the apples. Write the whole sentence.",
+      "source": "Jag köper äpplen.",
+      "answers": [
+        "Jag köper äpplena."
+      ],
+      "hint": "Äpplen ends in -n.",
+      "feedback": "Known things take the ending.",
+      "explanation": "For particular apples, the plural äpplen takes -a: äpplena.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag köper äpplen."
+          ],
+          "why": "That is the original sentence: apples in general."
+        },
+        {
+          "answers": [
+            "Jag köper äpplet."
+          ],
+          "why": "Äpplet is one apple; the sentence is plural."
+        }
+      ],
+      "row": "known things",
+      "gloss": [
+        {
+          "sv": "köper",
+          "en": "buy (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "äpplen",
+          "en": "apples",
+          "word": "food-021"
+        }
+      ]
+    },
+    {
+      "id": "definite-form-general-7",
+      "pattern": "general",
+      "type": "build",
+      "instruction": "Build the sentence: Children love animals. Leave one tile unused.",
+      "source": "Children love animals.",
+      "tokens": [
+        "Barnen",
+        "Barn",
+        "älskar",
+        "djur."
+      ],
+      "answers": [
+        "Barn älskar djur."
+      ],
+      "hint": "A general truth, no the in English.",
+      "feedback": "Leave the definite form unused.",
+      "explanation": "Children and animals in general are bare: barn, djur.",
+      "mistakes": [
+        {
+          "answers": [
+            "Barnen älskar djur."
+          ],
+          "why": "Barnen means the children, particular ones. The English is about all children."
+        }
+      ],
+      "row": "all of a kind"
+    }
+  ]
+}

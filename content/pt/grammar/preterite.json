@@ -1,0 +1,2336 @@
+{
+  "id": "preterite",
+  "unit": "past-future",
+  "level": "A2",
+  "title": "The pretérito perfeito",
+  "description": "Say what you did: regular endings, spelling changes in the eu form and the common irregular verbs.",
+  "mark": "falei · comeu",
+  "guide": {
+    "summary": "The pretérito perfeito is the everyday past tense for finished actions: I spoke, she ate, we went. This page has the endings for the three families, the spelling changes in the eu form, and the irregular verbs you will use most, plus the time words that go with them.",
+    "sections": [
+      {
+        "id": "ar-endings",
+        "title": "Regular -ar verbs",
+        "text": "Remove -ar from the infinitive and add the past ending for your subject. Você, ele and ela share one form, and so do vocês, eles and elas.",
+        "table": {
+          "columns": [
+            "subject",
+            "ending",
+            "falar"
+          ],
+          "rows": [
+            [
+              "eu",
+              "-ei",
+              "eu falei"
+            ],
+            [
+              "você / ele / ela",
+              "-ou",
+              "ela falou"
+            ],
+            [
+              "nós",
+              "-amos",
+              "nós falamos"
+            ],
+            [
+              "vocês / eles / elas",
+              "-aram",
+              "eles falaram"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject: who did it?",
+          "Remove -ar from the infinitive to get the stem.",
+          "Add the ending on that subject’s row."
+        ],
+        "examples": [
+          {
+            "pt": "Ontem eu falei com a minha mãe.",
+            "en": "Yesterday I spoke with my mother."
+          },
+          {
+            "pt": "Ela comprou um carro.",
+            "en": "She bought a car."
+          },
+          {
+            "pt": "Eles trabalharam no sábado.",
+            "en": "They worked on Saturday."
+          }
+        ],
+        "watch": [
+          "Eu ends in -ei and ele in -ou: do not swap them.",
+          "The pretérito perfeito is for finished actions. What you used to do goes in the imperfeito."
+        ]
+      },
+      {
+        "id": "er-ir",
+        "title": "Regular -er and -ir verbs",
+        "text": "The -er and -ir families share the eu and nós pattern: a vowel plus -i or -mos. The vowel of the family, e or i, shows in every form.",
+        "table": {
+          "columns": [
+            "subject",
+            "comer",
+            "abrir"
+          ],
+          "rows": [
+            [
+              "eu",
+              "comi",
+              "abri"
+            ],
+            [
+              "você / ele / ela",
+              "comeu",
+              "abriu"
+            ],
+            [
+              "nós",
+              "comemos",
+              "abrimos"
+            ],
+            [
+              "vocês / eles / elas",
+              "comeram",
+              "abriram"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the infinitive: -er or -ir?",
+          "Remove the ending to get the stem.",
+          "Use e for -er verbs and i for -ir verbs, then the ending for the subject."
+        ],
+        "examples": [
+          {
+            "pt": "Eu comi peixe.",
+            "en": "I ate fish."
+          },
+          {
+            "pt": "Você abriu a porta?",
+            "en": "Did you open the door?"
+          },
+          {
+            "pt": "Elas beberam café.",
+            "en": "They drank coffee."
+          }
+        ],
+        "watch": [
+          "Never give an -er verb the -ou of -ar verbs: bebeu, not bebou.",
+          "Like -ar verbs, the nós form of -er and -ir verbs looks the same as the present: comemos, abrimos."
+        ]
+      },
+      {
+        "id": "nos-amos",
+        "title": "Nós falamos: present or past?",
+        "text": "For -ar verbs the nós past is spelled exactly like the nós present. Time words tell you which one is meant, and they are worth learning with the tense.",
+        "table": {
+          "columns": [
+            "word",
+            "meaning",
+            "example"
+          ],
+          "rows": [
+            [
+              "ontem",
+              "yesterday",
+              "Ontem nós jantamos fora."
+            ],
+            [
+              "semana passada",
+              "last week",
+              "Na semana passada nós viajamos."
+            ],
+            [
+              "já",
+              "already, ever",
+              "Nós já pagamos."
+            ],
+            [
+              "hoje",
+              "today, present or past",
+              "Hoje nós almoçamos cedo."
+            ]
+          ]
+        },
+        "steps": [
+          "Write nós with -amos, as in the present.",
+          "Look at the time words around the verb: ontem, passado, passada and já point to the past.",
+          "Do not change the spelling of the verb to show the past."
+        ],
+        "examples": [
+          {
+            "pt": "Ontem nós falamos com o professor.",
+            "en": "Yesterday we spoke with the teacher."
+          },
+          {
+            "pt": "Nós já compramos o pão.",
+            "en": "We already bought the bread."
+          }
+        ],
+        "watch": [
+          "Falemos and compremos are subjunctive forms, not past ones.",
+          "In Portugal the past is written falámos, but in Brazil there is no accent.",
+          "A gente takes the ele form: a gente falou."
+        ]
+      },
+      {
+        "id": "spelling-eu",
+        "title": "Spelling changes in the eu form",
+        "text": "The eu ending -ei starts with e, which would change the sound of c, g and ç. The spelling changes so the verb keeps the sound of its infinitive. Only the eu form is affected.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "eu",
+            "ele"
+          ],
+          "rows": [
+            [
+              "ficar",
+              "eu fiquei",
+              "ele ficou"
+            ],
+            [
+              "tocar",
+              "eu toquei",
+              "ele tocou"
+            ],
+            [
+              "chegar",
+              "eu cheguei",
+              "ele chegou"
+            ],
+            [
+              "pagar",
+              "eu paguei",
+              "ele pagou"
+            ],
+            [
+              "jogar",
+              "eu joguei",
+              "ele jogou"
+            ],
+            [
+              "começar",
+              "eu comecei",
+              "ele começou"
+            ],
+            [
+              "almoçar",
+              "eu almocei",
+              "ele almoçou"
+            ]
+          ]
+        },
+        "steps": [
+          "Check the infinitive: does it end in -car, -gar or -çar?",
+          "-car: write -quei. -gar: write -guei.",
+          "-çar: drop the cedilla and write -cei.",
+          "Every other person keeps the normal spelling."
+        ],
+        "examples": [
+          {
+            "pt": "Eu cheguei tarde.",
+            "en": "I arrived late."
+          },
+          {
+            "pt": "Eu fiquei em casa.",
+            "en": "I stayed at home."
+          },
+          {
+            "pt": "Eu comecei a aula.",
+            "en": "I started the class."
+          }
+        ],
+        "watch": [
+          "Portuguese never writes çe or çi: the cedilla is only for a, o and u.",
+          "Nós is not affected: nós pagamos, nós jogamos."
+        ]
+      },
+      {
+        "id": "ser-ir",
+        "title": "Ser and ir: one past for two verbs",
+        "text": "Ser, to be, and ir, to go, have exactly the same past forms. The rest of the sentence tells you which is meant: a place with a or para means went.",
+        "table": {
+          "columns": [
+            "subject",
+            "ser and ir",
+            "example"
+          ],
+          "rows": [
+            [
+              "eu",
+              "fui",
+              "Eu fui ao mercado."
+            ],
+            [
+              "você / ele / ela",
+              "foi",
+              "A festa foi ótima."
+            ],
+            [
+              "nós",
+              "fomos",
+              "Nós fomos à praia."
+            ],
+            [
+              "vocês / eles / elas",
+              "foram",
+              "Eles foram ao cinema."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject.",
+          "Take the form on its row: fui, foi, fomos or foram.",
+          "Read on: a place after the verb means went, a description means was."
+        ],
+        "examples": [
+          {
+            "pt": "Eu fui ao Brasil.",
+            "en": "I went to Brazil."
+          },
+          {
+            "pt": "O filme foi muito bom.",
+            "en": "The film was very good."
+          },
+          {
+            "pt": "Nós fomos de ônibus.",
+            "en": "We went by bus."
+          }
+        ],
+        "watch": [
+          "Fui is eu and foi is ele: one letter apart.",
+          "Vamos and vai are present forms of ir, not past ones."
+        ]
+      },
+      {
+        "id": "irregular",
+        "title": "Ter, estar, fazer, poder, querer, dizer",
+        "text": "These common verbs change their stem in the past. The eu form ends in -e or has no ending, and the ele form often differs from it only by one vowel.",
+        "table": {
+          "columns": [
+            "verb",
+            "eu",
+            "você / ele / ela",
+            "eles / elas"
+          ],
+          "rows": [
+            [
+              "ter",
+              "tive",
+              "teve",
+              "tiveram"
+            ],
+            [
+              "estar",
+              "estive",
+              "esteve",
+              "estiveram"
+            ],
+            [
+              "fazer",
+              "fiz",
+              "fez",
+              "fizeram"
+            ],
+            [
+              "poder",
+              "pude",
+              "pôde",
+              "puderam"
+            ],
+            [
+              "querer",
+              "quis",
+              "quis",
+              "quiseram"
+            ],
+            [
+              "dizer",
+              "disse",
+              "disse",
+              "disseram"
+            ]
+          ]
+        },
+        "steps": [
+          "Recognise the verb: it is one of the six on this list.",
+          "Pick the form on the row for your subject.",
+          "For poder with ele or ela, write the circumflex: pôde."
+        ],
+        "examples": [
+          {
+            "pt": "Eu tive um dia longo.",
+            "en": "I had a long day."
+          },
+          {
+            "pt": "O que você fez ontem?",
+            "en": "What did you do yesterday?"
+          },
+          {
+            "pt": "Ele não pôde vir.",
+            "en": "He could not come."
+          }
+        ],
+        "watch": [
+          "Pode without the circumflex is the present; pôde is the past.",
+          "Quis and disse are spelled with s, never z or c.",
+          "Never add regular endings: fazeu, dizeu and podeu do not exist."
+        ]
+      },
+      {
+        "id": "ver-dar",
+        "title": "Ver and dar",
+        "text": "Ver has very short past forms. Dar ends in -ar, but in the past it takes endings like an -er verb.",
+        "table": {
+          "columns": [
+            "verb",
+            "eu",
+            "você / ele / ela",
+            "eles / elas"
+          ],
+          "rows": [
+            [
+              "ver",
+              "vi",
+              "viu",
+              "viram"
+            ],
+            [
+              "dar",
+              "dei",
+              "deu",
+              "deram"
+            ]
+          ]
+        },
+        "steps": [
+          "Ver: vi, viu, vimos, viram.",
+          "Dar: dei, deu, demos, deram.",
+          "Do not use the regular -ar endings for dar."
+        ],
+        "examples": [
+          {
+            "pt": "Eu vi a Maria ontem.",
+            "en": "I saw Maria yesterday."
+          },
+          {
+            "pt": "Ele me deu um livro.",
+            "en": "He gave me a book."
+          }
+        ],
+        "watch": [
+          "Dar has no -ou and no -aram: deu and deram.",
+          "Vejo and vê are present forms of ver."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "ar-endings": {
+      "section": "ar-endings",
+      "steps": [
+        "Find the subject, then remove -ar from the infinitive.",
+        "Add the past ending on that subject’s row: -ei, -ou, -amos or -aram.",
+        "Check you have not written a present ending such as -o or -a."
+      ]
+    },
+    "er-ir": {
+      "section": "er-ir",
+      "steps": [
+        "Check whether the verb ends in -er or -ir.",
+        "Keep the vowel of the family: -i, -eu, -emos, -eram or -i, -iu, -imos, -iram.",
+        "Never use the -ou of -ar verbs."
+      ]
+    },
+    "nos-amos": {
+      "section": "nos-amos",
+      "steps": [
+        "Write nós with -amos, exactly as in the present.",
+        "Let the time word, such as ontem or semana passada, show the past."
+      ]
+    },
+    "spelling-eu": {
+      "section": "spelling-eu",
+      "steps": [
+        "Check the infinitive ending: -car, -gar or -çar.",
+        "In the eu form write -quei, -guei or -cei.",
+        "Keep the normal spelling for every other person."
+      ]
+    },
+    "ser-ir": {
+      "section": "ser-ir",
+      "steps": [
+        "Remember that ser and ir share one past.",
+        "Pick fui, foi, fomos or foram for the subject."
+      ]
+    },
+    "irregular": {
+      "section": "irregular",
+      "steps": [
+        "Recognise the irregular verb.",
+        "Take the form for the subject from the table.",
+        "Watch the circumflex in pôde and the s in quis and disse."
+      ]
+    },
+    "ver-dar": {
+      "section": "ver-dar",
+      "steps": [
+        "Ver: vi, viu, vimos, viram.",
+        "Dar: dei, deu, demos, deram, never the regular -ar endings."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "preterite-ar-endings-1",
+      "pattern": "ar-endings",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "falar · eu · pretérito perfeito",
+      "answers": [
+        "falei",
+        "eu falei"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "falou",
+            "eu falou"
+          ],
+          "why": "Falou is the form for você, ele and ela. Eu has its own ending in the past."
+        },
+        {
+          "answers": [
+            "falo",
+            "eu falo"
+          ],
+          "why": "Falo is the present: I speak. The question asks for a finished action in the past."
+        },
+        {
+          "answers": [
+            "falamos",
+            "eu falamos"
+          ],
+          "why": "Falamos is the nós form, we. The subject here is one person, the speaker."
+        }
+      ],
+      "row": "eu",
+      "hint": "Start from the stem fal-. Which ending goes with eu in the past?",
+      "feedback": "Eu forms of -ar verbs end in -ei.",
+      "explanation": "Eu falei: fal- + -ei."
+    },
+    {
+      "id": "preterite-ar-endings-2",
+      "pattern": "ar-endings",
+      "type": "complete",
+      "instruction": "Write trabalhar in the pretérito perfeito.",
+      "source": "Ontem ela ____ (trabalhar) até tarde.",
+      "answers": [
+        "trabalhou"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "trabalhei"
+          ],
+          "why": "Trabalhei is the eu form. The subject of this sentence is she."
+        },
+        {
+          "answers": [
+            "trabalha"
+          ],
+          "why": "Trabalha is the present. Ontem places the action in the past, so the verb must be a past form."
+        },
+        {
+          "answers": [
+            "trabalharam"
+          ],
+          "why": "Trabalharam is the plural form, for eles, elas and vocês. Ela is one person."
+        }
+      ],
+      "row": "você / ele / ela",
+      "hint": "Ela takes the same ending as você and ele.",
+      "feedback": "Você, ele and ela forms of -ar verbs end in -ou.",
+      "explanation": "Ela trabalhou: trabalh- + -ou.",
+      "gloss": [
+        {
+          "pt": "Ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "trabalhar",
+          "en": "to work",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "até tarde",
+          "en": "until late"
+        }
+      ]
+    },
+    {
+      "id": "preterite-ar-endings-3",
+      "pattern": "ar-endings",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eles ____ o carro no sábado.",
+      "options": [
+        "compraram",
+        "comprou",
+        "compramos",
+        "comprei"
+      ],
+      "answers": [
+        "compraram"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "comprou"
+          ],
+          "why": "Comprou is the form for one person: você, ele or ela. Eles is several people."
+        },
+        {
+          "answers": [
+            "compramos"
+          ],
+          "why": "Compramos is the nós form, a group that includes the speaker. Eles are people being talked about."
+        },
+        {
+          "answers": [
+            "comprei"
+          ],
+          "why": "Comprei is the eu form, the speaker alone."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "hint": "Look for the plural past ending.",
+      "feedback": "Eles forms of -ar verbs end in -aram.",
+      "explanation": "Eles compraram: compr- + -aram. They bought the car on Saturday.",
+      "gloss": [
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "preterite-ar-endings-4",
+      "pattern": "ar-endings",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I studied Portuguese yesterday.",
+      "tokens": [
+        "Eu",
+        "estudei",
+        "estudou",
+        "português",
+        "ontem."
+      ],
+      "answers": [
+        "Eu estudei português ontem."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu estudou português ontem."
+          ],
+          "why": "Estudou is the form for você, ele and ela. With eu the verb takes its own ending."
+        }
+      ],
+      "row": "eu",
+      "hint": "The eu ending of -ar verbs in the past is -ei.",
+      "feedback": "One verb tile has the ele ending.",
+      "explanation": "Eu estudei: estud- + -ei."
+    },
+    {
+      "id": "preterite-ar-endings-5",
+      "pattern": "ar-endings",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "You (plural) worked a lot last week.",
+      "answers": [
+        "Vocês trabalharam muito na semana passada.",
+        "Vocês trabalharam muito semana passada."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vocês trabalhou muito na semana passada."
+          ],
+          "why": "Trabalhou is the singular form, for one person. Vocês is plural."
+        },
+        {
+          "answers": [
+            "Vocês trabalham muito na semana passada."
+          ],
+          "why": "Trabalham is the present. Last week asks for a past form."
+        },
+        {
+          "answers": [
+            "Vocês trabalharão muito na semana passada."
+          ],
+          "why": "Trabalharão is the future, which cannot go with last week."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "hint": "Vocês takes the same past ending as eles.",
+      "feedback": "Use the plural past form of trabalhar.",
+      "explanation": "Vocês trabalharam: trabalh- + -aram. Semana passada works with or without na in front."
+    },
+    {
+      "id": "preterite-ar-endings-6",
+      "pattern": "ar-endings",
+      "type": "rewrite",
+      "instruction": "Put the sentence in the pretérito perfeito.",
+      "source": "Eu compro pão.",
+      "answers": [
+        "Eu comprei pão.",
+        "Comprei pão."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu compro pão."
+          ],
+          "why": "That is the sentence unchanged, still in the present."
+        },
+        {
+          "answers": [
+            "Eu comprou pão."
+          ],
+          "why": "Comprou is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "Eu comprava pão."
+          ],
+          "why": "Comprava is the imperfeito, for what you used to do. Here the action is a single finished one."
+        }
+      ],
+      "row": "eu",
+      "hint": "Swap the present ending -o for the past eu ending.",
+      "feedback": "The eu past of -ar verbs ends in -ei.",
+      "explanation": "Eu comprei pão: compr- + -ei. I bought bread.",
+      "gloss": [
+        {
+          "pt": "compro",
+          "en": "buy (comprar)",
+          "word": "verbs-068"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        }
+      ]
+    },
+    {
+      "id": "preterite-er-ir-1",
+      "pattern": "er-ir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "comer · eles · pretérito perfeito",
+      "answers": [
+        "comeram",
+        "eles comeram"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "comeu",
+            "eles comeu"
+          ],
+          "why": "Comeu is the form for one person: você, ele or ela."
+        },
+        {
+          "answers": [
+            "comem",
+            "eles comem"
+          ],
+          "why": "Comem is the present: they eat. The question asks for the past."
+        },
+        {
+          "answers": [
+            "comaram",
+            "eles comaram"
+          ],
+          "why": "The ending -aram belongs to -ar verbs. Comer is an -er verb and keeps its e."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "hint": "Stem com-, then the plural past ending for -er verbs.",
+      "feedback": "Eles forms of -er verbs end in -eram.",
+      "explanation": "Eles comeram: com- + -eram."
+    },
+    {
+      "id": "preterite-er-ir-2",
+      "pattern": "er-ir",
+      "type": "complete",
+      "instruction": "Write abrir in the pretérito perfeito.",
+      "source": "Você ____ (abrir) a janela?",
+      "answers": [
+        "abriu"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "abri"
+          ],
+          "why": "Abri is the eu form. The question is about you."
+        },
+        {
+          "answers": [
+            "abre"
+          ],
+          "why": "Abre is the present. Asking whether it was done needs the past."
+        },
+        {
+          "answers": [
+            "abrirou"
+          ],
+          "why": "Abrir is an -ir verb: its ending is -iu, not the -ou of -ar verbs, and it goes on the stem abr-."
+        }
+      ],
+      "row": "você / ele / ela",
+      "hint": "Você takes the same ending as ele.",
+      "feedback": "Você forms of -ir verbs end in -iu.",
+      "explanation": "Você abriu: abr- + -iu. Did you open the window?",
+      "gloss": [
+        {
+          "pt": "abrir",
+          "en": "to open",
+          "word": "verbs-045"
+        },
+        {
+          "pt": "janela",
+          "en": "window",
+          "word": "home-017"
+        }
+      ]
+    },
+    {
+      "id": "preterite-er-ir-3",
+      "pattern": "er-ir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eu ____ a carta ontem.",
+      "options": [
+        "escrevi",
+        "escreveu",
+        "escrevei",
+        "escrevo"
+      ],
+      "answers": [
+        "escrevi"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "escreveu"
+          ],
+          "why": "Escreveu is the form for você, ele and ela, not for the speaker."
+        },
+        {
+          "answers": [
+            "escrevei"
+          ],
+          "why": "The ending -ei belongs to -ar verbs. Escrever is an -er verb, so eu takes a different ending."
+        },
+        {
+          "answers": [
+            "escrevo"
+          ],
+          "why": "Escrevo is the present. Ontem needs a past form."
+        }
+      ],
+      "row": "eu",
+      "hint": "Escrever is an -er verb. What is its eu ending in the past?",
+      "feedback": "The eu past of -er verbs ends in -i.",
+      "explanation": "Eu escrevi: escrev- + -i. I wrote the letter yesterday.",
+      "gloss": [
+        {
+          "pt": "carta",
+          "en": "letter",
+          "word": "town-007"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "preterite-er-ir-4",
+      "pattern": "er-ir",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "She drank the coffee.",
+      "answers": [
+        "Ela bebeu o café.",
+        "Ela bebeu café."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ela bebou o café."
+          ],
+          "why": "The ending -ou belongs to -ar verbs. Beber is an -er verb."
+        },
+        {
+          "answers": [
+            "Ela bebi o café."
+          ],
+          "why": "Bebi is the eu form. The subject is she."
+        },
+        {
+          "answers": [
+            "Ela bebe o café."
+          ],
+          "why": "Bebe is the present: she drinks. The English is in the past."
+        }
+      ],
+      "row": "você / ele / ela",
+      "hint": "Beber is an -er verb. Ela takes -eu.",
+      "feedback": "Ela forms of -er verbs end in -eu.",
+      "explanation": "Ela bebeu: beb- + -eu."
+    },
+    {
+      "id": "preterite-er-ir-5",
+      "pattern": "er-ir",
+      "type": "repair",
+      "instruction": "Fix the verb. Keep eles.",
+      "source": "Eles dormiu bem.",
+      "answers": [
+        "Eles dormiram bem."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eles dormiu bem."
+          ],
+          "why": "That is the sentence unchanged. Dormiu is the form for one person."
+        },
+        {
+          "answers": [
+            "Eles dormeram bem."
+          ],
+          "why": "The ending -eram belongs to -er verbs. Dormir is an -ir verb."
+        },
+        {
+          "answers": [
+            "Eles dormem bem."
+          ],
+          "why": "Dormem is the present. The sentence was in the past and should stay there."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "hint": "Dormiu is singular. Eles is plural.",
+      "feedback": "Eles needs the plural past ending.",
+      "explanation": "Eles dormiram: dorm- + -iram. They slept well.",
+      "gloss": [
+        {
+          "pt": "dormiu",
+          "en": "slept (dormir)",
+          "word": "verbs-062"
+        },
+        {
+          "pt": "bem",
+          "en": "well",
+          "word": "essentials-077"
+        }
+      ]
+    },
+    {
+      "id": "preterite-er-ir-6",
+      "pattern": "er-ir",
+      "type": "rewrite",
+      "instruction": "Put the sentence in the pretérito perfeito.",
+      "source": "Ela vende o carro.",
+      "answers": [
+        "Ela vendeu o carro."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ela vende o carro."
+          ],
+          "why": "That is the sentence unchanged, still in the present."
+        },
+        {
+          "answers": [
+            "Ela vendou o carro."
+          ],
+          "why": "The ending -ou is for -ar verbs. Vender keeps the e of its family."
+        },
+        {
+          "answers": [
+            "Ela vendiu o carro."
+          ],
+          "why": "The ending -iu is for -ir verbs. Vender is an -er verb."
+        }
+      ],
+      "row": "você / ele / ela",
+      "hint": "Vender is an -er verb. Which past ending goes with ela?",
+      "feedback": "Ela forms of -er verbs end in -eu.",
+      "explanation": "Ela vendeu: vend- + -eu. She sold the car.",
+      "gloss": [
+        {
+          "pt": "vende",
+          "en": "sells (vender)",
+          "word": "verbs-069"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "preterite-nos-amos-1",
+      "pattern": "nos-amos",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ontem nós ____ com o professor.",
+      "options": [
+        "falamos",
+        "falemos",
+        "falaram",
+        "falou"
+      ],
+      "answers": [
+        "falamos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "falemos"
+          ],
+          "why": "Falemos is the subjunctive, used in phrases like let us speak. It is not a past form."
+        },
+        {
+          "answers": [
+            "falaram"
+          ],
+          "why": "Falaram is the form for eles, elas and vocês. Nós includes the speaker."
+        },
+        {
+          "answers": [
+            "falou"
+          ],
+          "why": "Falou is the form for one person: você, ele or ela."
+        }
+      ],
+      "row": "ontem",
+      "hint": "For -ar verbs the nós past looks exactly like the nós present.",
+      "feedback": "Nós falamos is both present and past. Ontem tells you it is past.",
+      "explanation": "Nós falamos: fal- + -amos. Yesterday we spoke with the teacher.",
+      "gloss": [
+        {
+          "pt": "Ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "com",
+          "en": "with"
+        },
+        {
+          "pt": "professor",
+          "en": "teacher",
+          "word": "school-003"
+        }
+      ]
+    },
+    {
+      "id": "preterite-nos-amos-2",
+      "pattern": "nos-amos",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Nós ____ futebol no domingo passado.",
+      "options": [
+        "jogamos",
+        "jogaram",
+        "joguei",
+        "jogou"
+      ],
+      "answers": [
+        "jogamos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "jogaram"
+          ],
+          "why": "Jogaram is the form for eles, elas and vocês, people other than the speaker."
+        },
+        {
+          "answers": [
+            "joguei"
+          ],
+          "why": "Joguei is the eu form. The gu spelling only appears there."
+        },
+        {
+          "answers": [
+            "jogou"
+          ],
+          "why": "Jogou is the form for one person: você, ele or ela."
+        }
+      ],
+      "hint": "Nós ends in -amos, in the past as in the present.",
+      "feedback": "The nós past of -ar verbs ends in -amos. Domingo passado makes it past.",
+      "explanation": "Nós jogamos: jog- + -amos. We played football last Sunday.",
+      "gloss": [
+        {
+          "pt": "futebol",
+          "en": "football",
+          "word": "leisure-006"
+        },
+        {
+          "pt": "domingo passado",
+          "en": "last Sunday"
+        }
+      ]
+    },
+    {
+      "id": "preterite-nos-amos-3",
+      "pattern": "nos-amos",
+      "type": "complete",
+      "instruction": "Write viajar in the pretérito perfeito.",
+      "source": "Na semana passada nós ____ (viajar) para a praia.",
+      "answers": [
+        "viajamos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "viajaram"
+          ],
+          "why": "Viajaram is the form for eles, elas and vocês. Nós includes the speaker."
+        },
+        {
+          "answers": [
+            "viajou"
+          ],
+          "why": "Viajou is the form for one person: você, ele or ela."
+        },
+        {
+          "answers": [
+            "viajemos"
+          ],
+          "why": "Viajemos is the subjunctive, not a past form."
+        }
+      ],
+      "row": "semana passada",
+      "hint": "Nós takes the same ending as in the present.",
+      "feedback": "The nós past of -ar verbs ends in -amos.",
+      "explanation": "Nós viajamos: viaj- + -amos. Last week we went to the beach.",
+      "gloss": [
+        {
+          "pt": "semana passada",
+          "en": "last week"
+        },
+        {
+          "pt": "viajar",
+          "en": "to travel",
+          "word": "travel-026"
+        },
+        {
+          "pt": "para",
+          "en": "to",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "praia",
+          "en": "beach",
+          "word": "nature-008"
+        }
+      ]
+    },
+    {
+      "id": "preterite-nos-amos-4",
+      "pattern": "nos-amos",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "We bought a gift yesterday.",
+      "answers": [
+        "Nós compramos um presente ontem.",
+        "Compramos um presente ontem.",
+        "Ontem nós compramos um presente.",
+        "Ontem compramos um presente."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós compraram um presente ontem."
+          ],
+          "why": "Compraram is the form for eles and vocês, not for nós."
+        },
+        {
+          "answers": [
+            "Nós comprou um presente ontem."
+          ],
+          "why": "Comprou is the form for one person: você, ele or ela."
+        },
+        {
+          "answers": [
+            "Nós compremos um presente ontem."
+          ],
+          "why": "Compremos is the subjunctive, not a past form."
+        }
+      ],
+      "row": "ontem",
+      "hint": "The nós past looks like the present. Ontem does the work.",
+      "feedback": "Use compramos, the nós past of comprar.",
+      "explanation": "Nós compramos: compr- + -amos. Ontem can go first or last."
+    },
+    {
+      "id": "preterite-nos-amos-5",
+      "pattern": "nos-amos",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We already paid the bill.",
+      "tokens": [
+        "Nós",
+        "já",
+        "pagamos",
+        "pagaram",
+        "a",
+        "conta."
+      ],
+      "answers": [
+        "Nós já pagamos a conta."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós já pagaram a conta."
+          ],
+          "why": "Pagaram is the form for eles, elas and vocês. Nós needs its own ending."
+        }
+      ],
+      "row": "já",
+      "hint": "Já means already and goes before the verb.",
+      "feedback": "One verb tile is the eles form.",
+      "explanation": "Nós já pagamos: pag- + -amos. Only the eu form of pagar adds a u."
+    },
+    {
+      "id": "preterite-nos-amos-6",
+      "pattern": "nos-amos",
+      "type": "repair",
+      "instruction": "Fix the verb. Keep nós.",
+      "source": "Nós estudaram muito ontem.",
+      "answers": [
+        "Nós estudamos muito ontem.",
+        "Estudamos muito ontem."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós estudaram muito ontem."
+          ],
+          "why": "That is the sentence unchanged. Estudaram is the form for eles, elas and vocês."
+        },
+        {
+          "answers": [
+            "Nós estudou muito ontem."
+          ],
+          "why": "Estudou is the form for one person: você, ele or ela."
+        },
+        {
+          "answers": [
+            "Nós estudemos muito ontem."
+          ],
+          "why": "Estudemos is the subjunctive, not a past form."
+        }
+      ],
+      "row": "ontem",
+      "hint": "Estudaram belongs to eles.",
+      "feedback": "Nós takes -amos in the past too.",
+      "explanation": "Nós estudamos: estud- + -amos. Ontem shows it is past.",
+      "gloss": [
+        {
+          "pt": "estudaram",
+          "en": "studied (estudar)",
+          "word": "verbs-055"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "preterite-spelling-eu-1",
+      "pattern": "spelling-eu",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "chegar · eu · pretérito perfeito",
+      "answers": [
+        "cheguei",
+        "eu cheguei"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "chegei",
+            "eu chegei"
+          ],
+          "why": "Without the u, ge would be read like the s in measure. The verb has to keep the hard sound of chegar."
+        },
+        {
+          "answers": [
+            "chegou",
+            "eu chegou"
+          ],
+          "why": "Chegou is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "chego",
+            "eu chego"
+          ],
+          "why": "Chego is the present: I arrive."
+        }
+      ],
+      "row": "chegar",
+      "hint": "Before -ei, g would sound like the s in measure. How do you keep it hard?",
+      "feedback": "Verbs in -gar write -guei in the eu form.",
+      "explanation": "Eu cheguei: g becomes gu before e to keep the hard g of chegar."
+    },
+    {
+      "id": "preterite-spelling-eu-2",
+      "pattern": "spelling-eu",
+      "type": "complete",
+      "instruction": "Write ficar in the pretérito perfeito.",
+      "source": "Eu ____ (ficar) em casa no sábado.",
+      "answers": [
+        "fiquei"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "ficei"
+          ],
+          "why": "Ce is read like se, so ficei would not sound like ficar. The k sound needs another spelling before e."
+        },
+        {
+          "answers": [
+            "ficou"
+          ],
+          "why": "Ficou is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "fico"
+          ],
+          "why": "Fico is the present: I stay."
+        }
+      ],
+      "row": "ficar",
+      "hint": "Before -ei, a c would sound like s. Which spelling keeps the k sound?",
+      "feedback": "Verbs in -car write -quei in the eu form.",
+      "explanation": "Eu fiquei: c becomes qu before e. I stayed at home on Saturday.",
+      "gloss": [
+        {
+          "pt": "ficar",
+          "en": "to stay",
+          "word": "verbs-033"
+        },
+        {
+          "pt": "casa",
+          "en": "home",
+          "word": "home-001"
+        },
+        {
+          "pt": "sábado",
+          "en": "Saturday",
+          "word": "health-time-045"
+        }
+      ]
+    },
+    {
+      "id": "preterite-spelling-eu-3",
+      "pattern": "spelling-eu",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Eu ____ a aula cedo.",
+      "options": [
+        "comecei",
+        "começei",
+        "começou",
+        "começo"
+      ],
+      "answers": [
+        "comecei"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "começei"
+          ],
+          "why": "The cedilla is only needed before a, o and u. Before e a plain c already has the s sound, so Portuguese never writes çe."
+        },
+        {
+          "answers": [
+            "começou"
+          ],
+          "why": "Começou is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "começo"
+          ],
+          "why": "Começo is the present: I start."
+        }
+      ],
+      "row": "começar",
+      "strictAccents": true,
+      "hint": "Before e, a plain c already sounds like s.",
+      "feedback": "Verbs in -çar drop the cedilla in the eu form: -cei.",
+      "explanation": "Eu comecei: ç becomes c before e. I started the class early.",
+      "gloss": [
+        {
+          "pt": "aula",
+          "en": "class",
+          "word": "school-007"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        }
+      ]
+    },
+    {
+      "id": "preterite-spelling-eu-4",
+      "pattern": "spelling-eu",
+      "type": "repair",
+      "instruction": "Fix the spelling of the verb.",
+      "source": "Eu pagei a conta.",
+      "answers": [
+        "Eu paguei a conta.",
+        "Paguei a conta."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu pagei a conta."
+          ],
+          "why": "That is the sentence unchanged. Ge does not sound like the g of pagar."
+        },
+        {
+          "answers": [
+            "Eu pagou a conta."
+          ],
+          "why": "Pagou is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "Eu pajei a conta."
+          ],
+          "why": "Writing j changes the sound completely. Pagar keeps a hard g in every form."
+        }
+      ],
+      "row": "pagar",
+      "hint": "Ge sounds like the s in measure. Pagar has a hard g.",
+      "feedback": "Verbs in -gar write -guei in the eu form.",
+      "explanation": "Eu paguei: the u keeps the g hard. I paid the bill.",
+      "gloss": [
+        {
+          "pt": "pagei",
+          "en": "paid (pagar)",
+          "word": "verbs-070"
+        },
+        {
+          "pt": "conta",
+          "en": "bill",
+          "word": "shopping-040"
+        }
+      ]
+    },
+    {
+      "id": "preterite-spelling-eu-5",
+      "pattern": "spelling-eu",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I played football on Saturday.",
+      "answers": [
+        "Eu joguei futebol no sábado.",
+        "Joguei futebol no sábado."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu jogei futebol no sábado."
+          ],
+          "why": "Without the u, ge would be read like the s in measure. Jogar keeps its hard g."
+        },
+        {
+          "answers": [
+            "Eu jogou futebol no sábado."
+          ],
+          "why": "Jogou is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "Eu jogo futebol no sábado."
+          ],
+          "why": "Jogo is the present: I play. The English is in the past."
+        }
+      ],
+      "row": "jogar",
+      "hint": "Jogar ends in -gar. Watch the eu spelling.",
+      "feedback": "Eu joguei: g becomes gu before e.",
+      "explanation": "Eu joguei futebol: the u keeps the hard g of jogar."
+    },
+    {
+      "id": "preterite-spelling-eu-6",
+      "pattern": "spelling-eu",
+      "type": "rewrite",
+      "instruction": "Change ele to eu and adjust the verb.",
+      "source": "Ele almoçou cedo.",
+      "answers": [
+        "Eu almocei cedo.",
+        "Almocei cedo."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu almoçei cedo."
+          ],
+          "why": "The cedilla is only needed before a, o and u. Before e a plain c already sounds like s."
+        },
+        {
+          "answers": [
+            "Eu almoçou cedo."
+          ],
+          "why": "Almoçou is the form for ele, the subject you were asked to replace."
+        }
+      ],
+      "row": "almoçar",
+      "strictAccents": true,
+      "hint": "The eu ending starts with e. What happens to the cedilla?",
+      "feedback": "Almoçar writes almocei: no cedilla before e.",
+      "explanation": "Eu almocei: ç becomes c before e. I had lunch early.",
+      "gloss": [
+        {
+          "pt": "almoçou",
+          "en": "had lunch (almoçar)"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        }
+      ]
+    },
+    {
+      "id": "preterite-ser-ir-1",
+      "pattern": "ser-ir",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ir · nós · pretérito perfeito",
+      "answers": [
+        "fomos",
+        "nós fomos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "vamos",
+            "nós vamos"
+          ],
+          "why": "Vamos is the present: we go, or let us go."
+        },
+        {
+          "answers": [
+            "foram",
+            "nós foram"
+          ],
+          "why": "Foram is the form for eles, elas and vocês."
+        },
+        {
+          "answers": [
+            "iramos",
+            "nós iramos"
+          ],
+          "why": "Ir is irregular and does not take the regular -ir endings."
+        }
+      ],
+      "row": "nós",
+      "hint": "Ir shares its past with ser.",
+      "feedback": "The nós past of ir and ser is fomos.",
+      "explanation": "Nós fomos: the same word means we went and we were."
+    },
+    {
+      "id": "preterite-ser-ir-2",
+      "pattern": "ser-ir",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ontem eles ____ ao cinema.",
+      "options": [
+        "foram",
+        "foi",
+        "fomos",
+        "iram"
+      ],
+      "answers": [
+        "foram"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "foi"
+          ],
+          "why": "Foi is the form for one person: você, ele or ela."
+        },
+        {
+          "answers": [
+            "fomos"
+          ],
+          "why": "Fomos is the nós form, a group that includes the speaker."
+        },
+        {
+          "answers": [
+            "iram"
+          ],
+          "why": "Ir is irregular. Its past is built on fo-, not on the infinitive."
+        }
+      ],
+      "row": "vocês / eles / elas",
+      "hint": "Ao cinema tells you this is ir, to go. Look for the eles form.",
+      "feedback": "The eles past of ir is foram.",
+      "explanation": "Eles foram ao cinema: they went to the cinema yesterday.",
+      "gloss": [
+        {
+          "pt": "Ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "cinema",
+          "en": "cinema",
+          "word": "leisure-014"
+        }
+      ]
+    },
+    {
+      "id": "preterite-ser-ir-3",
+      "pattern": "ser-ir",
+      "type": "complete",
+      "instruction": "Write ser in the pretérito perfeito.",
+      "source": "A festa ____ (ser) ótima.",
+      "answers": [
+        "foi"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "fui"
+          ],
+          "why": "Fui is the eu form. The subject is the party."
+        },
+        {
+          "answers": [
+            "foram"
+          ],
+          "why": "Foram is the plural form. A festa is one thing."
+        },
+        {
+          "answers": [
+            "é"
+          ],
+          "why": "É is the present: the party is great. The sentence talks about a party that is over."
+        },
+        {
+          "answers": [
+            "era"
+          ],
+          "why": "Era is the imperfeito, for describing how things used to be or were going on. The party is over and the task asks for the pretérito perfeito."
+        }
+      ],
+      "row": "você / ele / ela",
+      "hint": "A festa counts as ela. Ser and ir share this form.",
+      "feedback": "The ela past of ser is foi.",
+      "explanation": "A festa foi ótima: the party was great. It is over, so it takes the pretérito perfeito.",
+      "gloss": [
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        },
+        {
+          "pt": "ser",
+          "en": "to be",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "ótima",
+          "en": "great",
+          "word": "qualities-075"
+        }
+      ]
+    },
+    {
+      "id": "preterite-ser-ir-4",
+      "pattern": "ser-ir",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I went to the market.",
+      "tokens": [
+        "Eu",
+        "fui",
+        "foi",
+        "ao",
+        "mercado."
+      ],
+      "answers": [
+        "Eu fui ao mercado."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu foi ao mercado."
+          ],
+          "why": "Foi is the form for você, ele and ela, not for eu."
+        }
+      ],
+      "row": "eu",
+      "hint": "Ir is irregular. The eu form is short.",
+      "feedback": "One verb tile is the ele form.",
+      "explanation": "Eu fui ao mercado: fui is the eu past of ir and ser."
+    },
+    {
+      "id": "preterite-ser-ir-5",
+      "pattern": "ser-ir",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Where did you go last weekend?",
+      "answers": [
+        "Aonde você foi no fim de semana passado?",
+        "Onde você foi no fim de semana passado?",
+        "Você foi aonde no fim de semana passado?",
+        "Para onde você foi no fim de semana passado?",
+        "Você foi para onde no fim de semana passado?",
+        "Para onde você foi no último fim de semana?",
+        "Você foi para onde no último fim de semana?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Aonde você fui no fim de semana passado?"
+          ],
+          "why": "Fui is the eu form. The question asks about you."
+        },
+        {
+          "answers": [
+            "Aonde você vai no fim de semana passado?"
+          ],
+          "why": "Vai is the present. Last weekend asks for the past."
+        }
+      ],
+      "row": "você / ele / ela",
+      "hint": "Você takes the same past form as ele.",
+      "feedback": "The você past of ir is foi.",
+      "explanation": "Aonde você foi: foi is the past of ir for você. Onde is also common in speech."
+    },
+    {
+      "id": "preterite-ser-ir-6",
+      "pattern": "ser-ir",
+      "type": "rewrite",
+      "instruction": "Put the sentence in the pretérito perfeito.",
+      "source": "Nós vamos à praia.",
+      "answers": [
+        "Nós fomos à praia.",
+        "Fomos à praia."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós vamos à praia."
+          ],
+          "why": "That is the sentence unchanged, still in the present."
+        },
+        {
+          "answers": [
+            "Nós foram à praia."
+          ],
+          "why": "Foram is the form for eles, elas and vocês."
+        },
+        {
+          "answers": [
+            "Nós íamos à praia."
+          ],
+          "why": "Íamos is the imperfeito, for what you used to do. Here it is one finished trip."
+        }
+      ],
+      "row": "nós",
+      "hint": "Vamos is the present of ir.",
+      "feedback": "The nós past of ir is fomos.",
+      "explanation": "Nós fomos à praia: we went to the beach.",
+      "gloss": [
+        {
+          "pt": "vamos",
+          "en": "go (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "praia",
+          "en": "beach",
+          "word": "nature-008"
+        }
+      ]
+    },
+    {
+      "id": "preterite-irregular-1",
+      "pattern": "irregular",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "fazer · eu · pretérito perfeito",
+      "answers": [
+        "fiz",
+        "eu fiz"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "fazi",
+            "eu fazi"
+          ],
+          "why": "Fazer is irregular: it does not take the regular -er endings."
+        },
+        {
+          "answers": [
+            "fez",
+            "eu fez"
+          ],
+          "why": "Fez is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "faço",
+            "eu faço"
+          ],
+          "why": "Faço is the present: I do."
+        }
+      ],
+      "row": "fazer",
+      "hint": "Fazer changes its stem in the past. The eu form has three letters.",
+      "feedback": "The eu past of fazer is fiz.",
+      "explanation": "Eu fiz: an irregular form to learn by heart."
+    },
+    {
+      "id": "preterite-irregular-2",
+      "pattern": "irregular",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "poder · ela · pretérito perfeito",
+      "answers": [
+        "pôde",
+        "ela pôde"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "pode",
+            "ela pode"
+          ],
+          "why": "Without the circumflex this is the present: she can. The mark is the only thing that makes it past."
+        },
+        {
+          "answers": [
+            "pude",
+            "ela pude"
+          ],
+          "why": "Pude is the eu form. Ela takes a different vowel."
+        },
+        {
+          "answers": [
+            "podeu",
+            "ela podeu"
+          ],
+          "why": "Poder is irregular: it does not take the regular -er endings."
+        }
+      ],
+      "row": "poder",
+      "strictAccents": true,
+      "hint": "The past form looks like the present but carries a mark.",
+      "feedback": "The ela past of poder is pôde, with a circumflex.",
+      "explanation": "Ela pôde: the circumflex is what separates she could from the present she can."
+    },
+    {
+      "id": "preterite-irregular-3",
+      "pattern": "irregular",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Ontem eu ____ muito trabalho.",
+      "options": [
+        "tive",
+        "teve",
+        "tenho",
+        "teri"
+      ],
+      "answers": [
+        "tive"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "teve"
+          ],
+          "why": "Teve is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "tenho"
+          ],
+          "why": "Tenho is the present. Ontem needs a past form."
+        },
+        {
+          "answers": [
+            "teri"
+          ],
+          "why": "Ter is irregular: it does not take the regular -er endings."
+        }
+      ],
+      "row": "ter",
+      "hint": "Ter is irregular. The eu form ends in -e.",
+      "feedback": "The eu past of ter is tive.",
+      "explanation": "Eu tive muito trabalho: I had a lot of work yesterday.",
+      "gloss": [
+        {
+          "pt": "Ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot of",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "trabalho",
+          "en": "work",
+          "word": "work-001"
+        }
+      ]
+    },
+    {
+      "id": "preterite-irregular-4",
+      "pattern": "irregular",
+      "type": "complete",
+      "instruction": "Write querer in the pretérito perfeito.",
+      "source": "Ela não ____ (querer) sair.",
+      "answers": [
+        "quis"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "quer"
+          ],
+          "why": "Quer is the present: she does not want."
+        },
+        {
+          "answers": [
+            "quiz"
+          ],
+          "why": "The sound is right, but this form is spelled with s at the end."
+        },
+        {
+          "answers": [
+            "quereu"
+          ],
+          "why": "Querer is irregular: it does not take the regular -er endings."
+        }
+      ],
+      "row": "querer",
+      "hint": "Querer has a short irregular past, the same for eu and ela.",
+      "feedback": "The ela past of querer is quis.",
+      "explanation": "Ela não quis sair: she did not want to go out, or she refused to go out.",
+      "gloss": [
+        {
+          "pt": "querer",
+          "en": "to want",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "sair",
+          "en": "to go out",
+          "word": "verbs-034"
+        }
+      ]
+    },
+    {
+      "id": "preterite-irregular-5",
+      "pattern": "irregular",
+      "type": "repair",
+      "instruction": "Fix the verb.",
+      "source": "Ele dizeu a verdade.",
+      "answers": [
+        "Ele disse a verdade."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ele dizeu a verdade."
+          ],
+          "why": "That is the sentence unchanged. Dizer does not take the regular -er endings."
+        },
+        {
+          "answers": [
+            "Ele dice a verdade."
+          ],
+          "why": "Dice is not a Portuguese form. The s sound in the past of dizer is written with ss."
+        },
+        {
+          "answers": [
+            "Ele diz a verdade."
+          ],
+          "why": "Diz is the present: he tells the truth. The sentence was in the past."
+        }
+      ],
+      "row": "dizer",
+      "hint": "Dizer is irregular. Its past has a double s.",
+      "feedback": "The ele past of dizer is disse.",
+      "explanation": "Ele disse a verdade: he told the truth.",
+      "gloss": [
+        {
+          "pt": "dizeu",
+          "en": "said (dizer)",
+          "word": "verbs-007"
+        },
+        {
+          "pt": "verdade",
+          "en": "truth"
+        }
+      ]
+    },
+    {
+      "id": "preterite-irregular-6",
+      "pattern": "irregular",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "What did you do yesterday?",
+      "answers": [
+        "O que você fez ontem?",
+        "Que você fez ontem?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "O que você fazeu ontem?"
+          ],
+          "why": "Fazer is irregular: it does not take the regular -er endings."
+        },
+        {
+          "answers": [
+            "O que você fiz ontem?"
+          ],
+          "why": "Fiz is the eu form. The question asks about you."
+        },
+        {
+          "answers": [
+            "O que você faz ontem?"
+          ],
+          "why": "Faz is the present. Ontem needs a past form."
+        }
+      ],
+      "row": "fazer",
+      "hint": "Você takes the ele form. Fazer is irregular.",
+      "feedback": "The você past of fazer is fez.",
+      "explanation": "O que você fez ontem: fez is the past of fazer for você."
+    },
+    {
+      "id": "preterite-irregular-7",
+      "pattern": "irregular",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I was at Maria’s house yesterday.",
+      "tokens": [
+        "Eu",
+        "estive",
+        "esteve",
+        "na",
+        "casa",
+        "da",
+        "Maria",
+        "ontem."
+      ],
+      "answers": [
+        "Eu estive na casa da Maria ontem."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu esteve na casa da Maria ontem."
+          ],
+          "why": "Esteve is the form for você, ele and ela, not for eu."
+        }
+      ],
+      "row": "estar",
+      "hint": "Estar is irregular. The eu form ends in -e.",
+      "feedback": "One verb tile is the ele form.",
+      "explanation": "Eu estive: the eu past of estar, for a visit that is over."
+    },
+    {
+      "id": "preterite-ver-dar-1",
+      "pattern": "ver-dar",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ver · eu · pretérito perfeito",
+      "answers": [
+        "vi",
+        "eu vi"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "vejo",
+            "eu vejo"
+          ],
+          "why": "Vejo is the present: I see."
+        },
+        {
+          "answers": [
+            "viu",
+            "eu viu"
+          ],
+          "why": "Viu is the form for você, ele and ela, not for eu."
+        },
+        {
+          "answers": [
+            "vei",
+            "eu vei"
+          ],
+          "why": "The ending -ei belongs to -ar verbs. Ver works like an -er verb here."
+        }
+      ],
+      "row": "ver",
+      "hint": "Ver has a very short past. The eu form has two letters.",
+      "feedback": "The eu past of ver is vi.",
+      "explanation": "Eu vi: I saw."
+    },
+    {
+      "id": "preterite-ver-dar-2",
+      "pattern": "ver-dar",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Você ____ o filme ontem?",
+      "options": [
+        "viu",
+        "vi",
+        "viram",
+        "veu"
+      ],
+      "answers": [
+        "viu"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "vi"
+          ],
+          "why": "Vi is the eu form. The question asks about you."
+        },
+        {
+          "answers": [
+            "viram"
+          ],
+          "why": "Viram is the form for eles, elas and vocês. Você is one person."
+        },
+        {
+          "answers": [
+            "veu"
+          ],
+          "why": "Ver is irregular here: its past takes an i, not the -eu of regular -er verbs."
+        }
+      ],
+      "row": "ver",
+      "hint": "Você takes the same past form as ele.",
+      "feedback": "The você past of ver is viu.",
+      "explanation": "Você viu o filme ontem: did you see the film yesterday?",
+      "gloss": [
+        {
+          "pt": "filme",
+          "en": "film",
+          "word": "media-031"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "preterite-ver-dar-3",
+      "pattern": "ver-dar",
+      "type": "complete",
+      "instruction": "Write dar in the pretérito perfeito.",
+      "source": "Meu pai me ____ (dar) um presente.",
+      "answers": [
+        "deu"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "dou"
+          ],
+          "why": "Dou is the present, and only for eu."
+        },
+        {
+          "answers": [
+            "dei"
+          ],
+          "why": "Dei is the eu form. The subject is my father."
+        },
+        {
+          "answers": [
+            "dau"
+          ],
+          "why": "Dar is irregular: its past does not take the regular -ou of -ar verbs."
+        }
+      ],
+      "row": "dar",
+      "hint": "Dar ends in -ar but takes -er style endings in the past.",
+      "feedback": "The ele past of dar is deu.",
+      "explanation": "Meu pai me deu um presente: my father gave me a gift.",
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my",
+          "word": "essentials-050"
+        },
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        },
+        {
+          "pt": "dar",
+          "en": "to give",
+          "word": "verbs-027"
+        },
+        {
+          "pt": "presente",
+          "en": "gift",
+          "word": "shopping-039"
+        }
+      ]
+    },
+    {
+      "id": "preterite-ver-dar-4",
+      "pattern": "ver-dar",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "We saw Maria at the party.",
+      "answers": [
+        "Nós vimos a Maria na festa.",
+        "Vimos a Maria na festa.",
+        "Nós vimos Maria na festa.",
+        "Vimos Maria na festa."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós viu a Maria na festa."
+          ],
+          "why": "Viu is the form for one person: você, ele or ela."
+        },
+        {
+          "answers": [
+            "Nós vemos a Maria na festa."
+          ],
+          "why": "Vemos is the present: we see."
+        },
+        {
+          "answers": [
+            "Nós viram a Maria na festa."
+          ],
+          "why": "Viram is the form for eles, elas and vocês."
+        }
+      ],
+      "row": "ver",
+      "hint": "The nós past of ver ends in -imos.",
+      "feedback": "The nós past of ver is vimos.",
+      "explanation": "Nós vimos: we saw. In Brazil a before a first name is optional."
+    },
+    {
+      "id": "preterite-ver-dar-5",
+      "pattern": "ver-dar",
+      "type": "rewrite",
+      "instruction": "Change eu to eles and adjust the verb.",
+      "source": "Eu dei o dinheiro para a Ana.",
+      "answers": [
+        "Eles deram o dinheiro para a Ana.",
+        "Eles deram o dinheiro para Ana."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eles deu o dinheiro para a Ana."
+          ],
+          "why": "Deu is the form for one person: você, ele or ela."
+        },
+        {
+          "answers": [
+            "Eles daram o dinheiro para a Ana."
+          ],
+          "why": "Dar is irregular in the past: it does not take the -aram of regular -ar verbs."
+        },
+        {
+          "answers": [
+            "Eu dei o dinheiro para a Ana."
+          ],
+          "why": "That is the sentence unchanged. The subject should now be they."
+        }
+      ],
+      "row": "dar",
+      "hint": "Dar takes -er style endings in the past.",
+      "feedback": "The eles past of dar is deram.",
+      "explanation": "Eles deram: they gave.",
+      "gloss": [
+        {
+          "pt": "dei",
+          "en": "gave (dar)",
+          "word": "verbs-027"
+        },
+        {
+          "pt": "dinheiro",
+          "en": "money",
+          "word": "shopping-001"
+        },
+        {
+          "pt": "para",
+          "en": "to",
+          "word": "essentials-085"
+        },
+        {
+          "pt": "Ana",
+          "en": "Ana (a name)"
+        }
+      ]
+    }
+  ]
+}

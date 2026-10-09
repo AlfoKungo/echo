@@ -1,0 +1,2077 @@
+{
+  "id": "negation-questions",
+  "unit": "sentences",
+  "level": "A1",
+  "title": "Saying no and asking questions",
+  "description": "Put não in the right place, ask yes/no questions, answer naturally and use the question words.",
+  "mark": "não · por que · porque",
+  "guide": {
+    "summary": "Saying no in Portuguese takes one word, não, in front of the verb. Asking a yes/no question takes no extra words at all, only a rising voice. Learn where não goes, how negatives pair up, how Brazilians answer yes and no, and the question words, and you can hold a simple conversation.",
+    "sections": [
+      {
+        "id": "nao",
+        "title": "Não goes before the verb",
+        "text": "Portuguese has no do, does or did. To make a sentence negative, put não directly in front of the verb. If an object pronoun like me, te or o stands before the verb, não goes in front of the pronoun.",
+        "table": {
+          "columns": [
+            "Order",
+            "Example",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "não + verb",
+              "Eu não falo francês.",
+              "I don’t speak French."
+            ],
+            [
+              "não + pronoun + verb",
+              "Ela não me ligou.",
+              "She didn’t call me."
+            ],
+            [
+              "subject left out",
+              "Não entendo.",
+              "I don’t understand."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the verb.",
+          "Is there an object pronoun right before it? Then não goes before the pronoun.",
+          "Otherwise put não straight in front of the verb."
+        ],
+        "examples": [
+          {
+            "pt": "Nós não moramos aqui.",
+            "en": "We don’t live here."
+          },
+          {
+            "pt": "Ele não me conhece.",
+            "en": "He doesn’t know me."
+          }
+        ],
+        "watch": [
+          "Never put não after the verb on its own: Eu entendo não is wrong.",
+          "In speech you will hear a second não at the end for emphasis: Não sei não. The first não before the verb is still there."
+        ]
+      },
+      {
+        "id": "double",
+        "title": "Não … nada, não … ninguém, não … nunca",
+        "text": "Portuguese keeps both negatives where English says not … anything. If nada, ninguém or nunca comes after the verb, não must stand before the verb. If the negative word comes first, it stands alone.",
+        "table": {
+          "columns": [
+            "Word",
+            "Meaning",
+            "After the verb",
+            "Before the verb"
+          ],
+          "rows": [
+            [
+              "nada",
+              "nothing, anything",
+              "Não comi nada.",
+              "Nada mudou."
+            ],
+            [
+              "ninguém",
+              "nobody, anybody",
+              "Não vi ninguém.",
+              "Ninguém ligou."
+            ],
+            [
+              "nunca",
+              "never, ever",
+              "Não bebo cerveja nunca.",
+              "Nunca bebo cerveja."
+            ]
+          ]
+        },
+        "steps": [
+          "Decide: thing (nada), person (ninguém) or time (nunca)?",
+          "If the word comes after the verb, put não before the verb as well.",
+          "If the word comes before the verb, use no não."
+        ],
+        "examples": [
+          {
+            "pt": "Eu não conheço ninguém aqui.",
+            "en": "I don’t know anybody here."
+          },
+          {
+            "pt": "Ela nunca chega cedo.",
+            "en": "She never arrives early."
+          }
+        ],
+        "watch": [
+          "The two negatives do not cancel out: não … nada means not … anything.",
+          "Never put não and nunca together before the verb: não nunca is wrong."
+        ]
+      },
+      {
+        "id": "yes-no",
+        "title": "Yes/no questions: same order, rising voice",
+        "text": "A Brazilian yes/no question keeps the order of the statement. There is no do and no swapping of subject and verb; the voice rises at the end and the written sentence ends with a question mark.",
+        "table": {
+          "columns": [
+            "",
+            "Statement",
+            "Question"
+          ],
+          "rows": [
+            [
+              "yes/no question",
+              "Você fala inglês.",
+              "Você fala inglês?"
+            ],
+            [
+              "with an object",
+              "Você gosta de café.",
+              "Você gosta de café?"
+            ]
+          ]
+        },
+        "steps": [
+          "Write the sentence as a statement.",
+          "Leave every word where it is.",
+          "End it with a question mark and let your voice rise."
+        ],
+        "examples": [
+          {
+            "pt": "Você mora aqui?",
+            "en": "Do you live here?"
+          },
+          {
+            "pt": "Eles trabalham no domingo?",
+            "en": "Do they work on Sunday?"
+          }
+        ],
+        "watch": [
+          "Fala você inglês? sounds old-fashioned or foreign in Brazil.",
+          "Fazer is never a helper verb in questions."
+        ]
+      },
+      {
+        "id": "short-answers",
+        "title": "Answering yes and no",
+        "text": "Brazilians rarely answer with just sim. The natural yes repeats the verb from the question, changed to the person who answers. A no repeats the verb after não, often with a first não in front.",
+        "table": {
+          "columns": [
+            "Question",
+            "Yes",
+            "No"
+          ],
+          "rows": [
+            [
+              "Fala?",
+              "Falo.",
+              "Não, não falo."
+            ],
+            [
+              "Gosta?",
+              "Gosto.",
+              "Não, não gosto."
+            ],
+            [
+              "Mora?",
+              "Moro. / Moramos.",
+              "Não, não moro."
+            ],
+            [
+              "Está?",
+              "Estou.",
+              "Não, não estou."
+            ],
+            [
+              "Tem?",
+              "Tenho.",
+              "Não, não tenho."
+            ],
+            [
+              "Conhece?",
+              "Conheço.",
+              "Não, não conheço."
+            ]
+          ]
+        },
+        "steps": [
+          "Take the verb from the question.",
+          "Change it to the person answering: eu, or nós if the question was to vocês.",
+          "For no, put não before it, and add a first não if you like."
+        ],
+        "examples": [
+          {
+            "pt": "Você fala inglês? Falo.",
+            "en": "Do you speak English? Yes, I do."
+          },
+          {
+            "pt": "Você tem carro? Não, não tenho.",
+            "en": "Do you have a car? No, I don’t."
+          }
+        ],
+        "watch": [
+          "Keep the same verb: a question with estar is answered with estar, not ser.",
+          "Sim or não alone is understood but can sound curt."
+        ]
+      },
+      {
+        "id": "question-words",
+        "title": "Question words",
+        "text": "A question word comes first, and the rest usually keeps the statement order. In speech o que often moves to the end, where it is written o quê: Você quer o quê?",
+        "table": {
+          "columns": [
+            "Word",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "o que",
+              "what",
+              "O que você quer?"
+            ],
+            [
+              "quem",
+              "who",
+              "Quem ligou?"
+            ],
+            [
+              "onde",
+              "where",
+              "Onde você mora?"
+            ],
+            [
+              "quando",
+              "when",
+              "Quando o trem chega?"
+            ],
+            [
+              "como",
+              "how",
+              "Como você está?"
+            ],
+            [
+              "quanto",
+              "how much",
+              "Quanto custa o pão?"
+            ],
+            [
+              "quantos, quantas",
+              "how many",
+              "Quantos anos você tem?"
+            ],
+            [
+              "qual, quais",
+              "which, what",
+              "Qual é o seu nome?"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide what you are asking about: thing, person, place, time, way, amount or a choice.",
+          "Take the word from the table; make quantos or quais agree with a following noun.",
+          "Put it first and keep the statement order after it."
+        ],
+        "examples": [
+          {
+            "pt": "Quantos irmãos você tem?",
+            "en": "How many brothers and sisters do you have?"
+          },
+          {
+            "pt": "Quais são as suas chaves?",
+            "en": "Which ones are your keys?"
+          }
+        ],
+        "watch": [
+          "What is your name is Qual é o seu nome, not O que é o seu nome.",
+          "Quanto alone asks how much; before a plural noun use quantos or quantas.",
+          "At the end of a sentence o que takes an accent: o quê."
+        ]
+      },
+      {
+        "id": "por-que",
+        "title": "Por que or porque?",
+        "text": "Why is two words, por que. Because is one word, porque. They sound the same, so it is the spelling, not an accent, that tells them apart. At the very end of a question why is written por quê.",
+        "table": {
+          "columns": [
+            "Form",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "por que",
+              "why",
+              "Por que você está cansado?"
+            ],
+            [
+              "porque",
+              "because",
+              "Estou cansado porque trabalhei muito."
+            ]
+          ]
+        },
+        "steps": [
+          "Is the sentence asking for a reason or giving one?",
+          "Asking: write por que, apart.",
+          "Giving: write porque, joined."
+        ],
+        "examples": [
+          {
+            "pt": "Por que você não veio ontem?",
+            "en": "Why didn’t you come yesterday?"
+          },
+          {
+            "pt": "Porque é tarde.",
+            "en": "Because it is late."
+          }
+        ],
+        "watch": [
+          "A one-word answer starting with because is still porque: Porque é tarde.",
+          "You will also see por quê at the end: Você não veio por quê?"
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "nao": {
+      "section": "nao",
+      "steps": [
+        "Find the verb.",
+        "Check for an object pronoun right in front of it.",
+        "Put não before the pronoun, or straight before the verb."
+      ]
+    },
+    "double": {
+      "section": "double",
+      "steps": [
+        "Pick nada for things, ninguém for people, nunca for time.",
+        "If that word comes after the verb, keep não before the verb.",
+        "If it comes before the verb, drop não."
+      ]
+    },
+    "yes-no": {
+      "section": "yes-no",
+      "steps": [
+        "Write the statement.",
+        "Keep the word order and add no helper verb.",
+        "End with a question mark."
+      ]
+    },
+    "short": {
+      "section": "short-answers",
+      "steps": [
+        "Take the verb from the question.",
+        "Change it to the person answering.",
+        "For no, put não before it."
+      ]
+    },
+    "qwords": {
+      "section": "question-words",
+      "steps": [
+        "Decide what the question asks about.",
+        "Choose the word, and make quantos or quais agree with a following noun.",
+        "Put it first and keep statement order."
+      ]
+    },
+    "porque": {
+      "section": "por-que",
+      "steps": [
+        "Ask: is the sentence asking for a reason or giving one?",
+        "Asking: por que, two words.",
+        "Giving: porque, one word."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "negation-questions-nao-1",
+      "pattern": "nao",
+      "type": "choose",
+      "instruction": "Choose the words that make it mean: She didn’t call me yesterday.",
+      "source": "Ela ____ ligou ontem.",
+      "options": [
+        "não me",
+        "me não"
+      ],
+      "answers": [
+        "não me"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "me não"
+          ],
+          "why": "The pronoun cannot stand in front of não. Não opens the whole group before the verb."
+        }
+      ],
+      "row": "não + pronoun + verb",
+      "hint": "Two small words go in front of the verb. Which comes first?",
+      "feedback": "Não opens the group in front of the verb; the object pronoun sits between não and the verb.",
+      "explanation": "Não always comes first, then the pronoun me, then the verb: Ela não me ligou ontem.",
+      "gloss": [
+        {
+          "pt": "ligou",
+          "en": "called (ligar)",
+          "word": "media-012"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-nao-2",
+      "pattern": "nao",
+      "type": "complete",
+      "instruction": "Write the word that makes the sentence negative.",
+      "source": "Eu ____ falo francês.",
+      "answers": [
+        "não"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "nada"
+          ],
+          "why": "Nada means nothing. It does not turn a verb negative by itself in front of it."
+        },
+        {
+          "answers": [
+            "nunca"
+          ],
+          "why": "Nunca means never, which says more than the sentence asks for: it is simply I don’t speak French."
+        }
+      ],
+      "row": "não + verb",
+      "hint": "Portuguese has one word for not, don’t and doesn’t.",
+      "feedback": "The negative word goes straight in front of the verb; Portuguese has no helper verb like do.",
+      "explanation": "Eu não falo francês: não before falo, and nothing else changes.",
+      "gloss": [
+        {
+          "pt": "falo",
+          "en": "speak (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "francês",
+          "en": "French",
+          "word": "school-031"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-nao-3",
+      "pattern": "nao",
+      "type": "build",
+      "instruction": "Build the sentence: I don’t eat meat.",
+      "source": "I don’t eat meat.",
+      "tokens": [
+        "como",
+        "Eu",
+        "carne.",
+        "não"
+      ],
+      "answers": [
+        "Eu não como carne."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu como não carne."
+          ],
+          "why": "Não has slipped behind the verb. In Portuguese it always stands in front of it."
+        }
+      ],
+      "row": "não + verb",
+      "hint": "Where does not go: before or after the verb?",
+      "feedback": "Não stands directly in front of the verb, never after it.",
+      "explanation": "Eu não como carne: subject, não, verb, object. There is no word for do."
+    },
+    {
+      "id": "negation-questions-nao-4",
+      "pattern": "nao",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Eu entendo não.",
+      "answers": [
+        "Eu não entendo.",
+        "Não entendo."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu entendo não."
+          ],
+          "why": "That is the sentence unchanged: não still comes after the verb. In speech a final não is sometimes added for emphasis, but only after a first não before the verb."
+        }
+      ],
+      "row": "não + verb",
+      "hint": "Look at where não stands.",
+      "feedback": "Não must come before the verb, not after it.",
+      "explanation": "The verb entendo needs não in front of it: Eu não entendo.",
+      "gloss": [
+        {
+          "pt": "entendo",
+          "en": "understand (entender)",
+          "word": "verbs-018"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-nao-5",
+      "pattern": "nao",
+      "type": "rewrite",
+      "instruction": "Make the sentence negative. Write the whole sentence.",
+      "source": "Ele me conhece.",
+      "answers": [
+        "Ele não me conhece."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ele me não conhece."
+          ],
+          "why": "Não cannot go between the pronoun and the verb. It opens the group."
+        },
+        {
+          "answers": [
+            "Ele não conhece me."
+          ],
+          "why": "The pronoun has moved behind the verb. In Brazil me stays in front of the verb, after não."
+        }
+      ],
+      "row": "não + pronoun + verb",
+      "hint": "Two words now stand before conhece. Which one comes first?",
+      "feedback": "Não goes in front of the pronoun, so the order is não, me, verb.",
+      "explanation": "With an object pronoun before the verb, não comes first of all: Ele não me conhece.",
+      "gloss": [
+        {
+          "pt": "conhece",
+          "en": "knows (conhecer)",
+          "word": "verbs-017"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-nao-6",
+      "pattern": "nao",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "We don’t live here.",
+      "answers": [
+        "Nós não moramos aqui.",
+        "Não moramos aqui."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Nós moramos não aqui.",
+            "Nós moramos aqui não."
+          ],
+          "why": "Não comes after the verb here. It must stand in front of moramos."
+        },
+        {
+          "answers": [
+            "Nós não mora aqui."
+          ],
+          "why": "Mora is the form for ele or você. With nós the verb ends in -amos."
+        }
+      ],
+      "row": "não + verb",
+      "hint": "Put the negative word right before moramos.",
+      "feedback": "Check where não stands: directly in front of the verb.",
+      "explanation": "Nós não moramos aqui. The subject nós can be left out, since moramos already says we."
+    },
+    {
+      "id": "negation-questions-nao-7",
+      "pattern": "nao",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ela me não ligou.",
+      "answers": [
+        "Ela não me ligou."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ela me não ligou."
+          ],
+          "why": "That is the sentence unchanged: the pronoun still sits in front of não."
+        },
+        {
+          "answers": [
+            "Ela não ligou me."
+          ],
+          "why": "The pronoun has moved behind the verb. Brazilian Portuguese keeps it between não and the verb."
+        }
+      ],
+      "row": "não + pronoun + verb",
+      "hint": "Which of the two small words should come first?",
+      "feedback": "Não always comes before the object pronoun.",
+      "explanation": "The order is não, pronoun, verb: Ela não me ligou.",
+      "gloss": [
+        {
+          "pt": "ligou",
+          "en": "called (ligar)",
+          "word": "media-012"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-double-1",
+      "pattern": "double",
+      "type": "choose",
+      "instruction": "Choose the word that makes it mean: I didn’t see anything.",
+      "source": "Eu não vi ____.",
+      "options": [
+        "nada",
+        "ninguém",
+        "alguma coisa"
+      ],
+      "answers": [
+        "nada"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "ninguém"
+          ],
+          "why": "Ninguém is about people: Eu não vi ninguém means I didn’t see anyone."
+        },
+        {
+          "answers": [
+            "alguma coisa"
+          ],
+          "why": "Alguma coisa means something and is not used after não in this sense. A negative sentence takes the negative word."
+        }
+      ],
+      "row": "nada",
+      "hint": "You want the word for thing, not person.",
+      "feedback": "After não, anything is nada: Portuguese keeps both negative words.",
+      "explanation": "Não … nada means not … anything. The two negatives do not cancel out; together they make one no.",
+      "gloss": [
+        {
+          "pt": "vi",
+          "en": "saw (ver)",
+          "word": "verbs-012"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-double-2",
+      "pattern": "double",
+      "type": "complete",
+      "instruction": "Write the word that makes it mean: There is nobody at the door.",
+      "source": "Não tem ____ na porta.",
+      "answers": [
+        "ninguém"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "nada"
+          ],
+          "why": "Nada is about things, so the sentence would say there is nothing at the door."
+        },
+        {
+          "answers": [
+            "alguém"
+          ],
+          "why": "Alguém means somebody. After não, Portuguese needs the negative word."
+        }
+      ],
+      "row": "ninguém",
+      "hint": "You want the word for person, and the sentence already has não.",
+      "feedback": "After não, anybody is ninguém, and the não stays.",
+      "explanation": "Não tem ninguém na porta: não before the verb, ninguém after it. In Brazilian speech tem often means there is.",
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "there is (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "porta",
+          "en": "door",
+          "word": "home-016"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-double-3",
+      "pattern": "double",
+      "type": "choose",
+      "instruction": "Choose the words that make it mean: He never drinks coffee.",
+      "source": "Ele ____ bebe café.",
+      "options": [
+        "nunca",
+        "não nunca",
+        "nada"
+      ],
+      "answers": [
+        "nunca"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "não nunca"
+          ],
+          "why": "Two negatives side by side before the verb are wrong. The word for never needs no partner when it comes first."
+        },
+        {
+          "answers": [
+            "nada"
+          ],
+          "why": "Nada means nothing, not never."
+        }
+      ],
+      "row": "nunca",
+      "hint": "When never comes first, does it need a second negative?",
+      "feedback": "Nunca in front of the verb is negative enough by itself.",
+      "explanation": "Ele nunca bebe café. Nunca before the verb takes no não; não … nunca is only for nunca after the verb.",
+      "gloss": [
+        {
+          "pt": "bebe",
+          "en": "drinks (beber)",
+          "word": "verbs-060"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-double-4",
+      "pattern": "double",
+      "type": "repair",
+      "instruction": "Fix the error. The sentence should mean: I didn’t eat anything.",
+      "source": "Eu comi nada.",
+      "answers": [
+        "Eu não comi nada.",
+        "Não comi nada."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu comi nada."
+          ],
+          "why": "That is the sentence unchanged. With nada after the verb, the verb itself also needs a negative in front of it."
+        },
+        {
+          "answers": [
+            "Eu comi não nada."
+          ],
+          "why": "The negative word went after the verb. It belongs in front of comi."
+        }
+      ],
+      "row": "nada",
+      "hint": "Nada after the verb needs a partner in front of the verb.",
+      "feedback": "When nada comes after the verb, não must still stand before the verb.",
+      "explanation": "Portuguese keeps both negatives: Eu não comi nada.",
+      "gloss": [
+        {
+          "pt": "comi",
+          "en": "ate (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "nada",
+          "en": "nothing",
+          "word": "essentials-043"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-double-5",
+      "pattern": "double",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Nobody called.",
+      "answers": [
+        "Ninguém ligou."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Não ninguém ligou.",
+            "Ninguém não ligou."
+          ],
+          "why": "A negative word already stands before the verb, so a second one there is wrong."
+        }
+      ],
+      "row": "ninguém",
+      "hint": "The negative word is the subject and stands first.",
+      "feedback": "When ninguém comes before the verb, it needs no second negative.",
+      "explanation": "Ninguém ligou. A negative word in front of the verb is enough on its own."
+    },
+    {
+      "id": "negation-questions-double-6",
+      "pattern": "double",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "I never drink beer.",
+      "answers": [
+        "Eu nunca bebo cerveja.",
+        "Nunca bebo cerveja.",
+        "Eu não bebo cerveja nunca.",
+        "Não bebo cerveja nunca."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu não nunca bebo cerveja."
+          ],
+          "why": "Não and nunca cannot both stand before the verb. Use one of them there."
+        },
+        {
+          "answers": [
+            "Eu bebo cerveja nunca."
+          ],
+          "why": "Nunca at the end needs não in front of the verb."
+        }
+      ],
+      "row": "nunca",
+      "hint": "Put never in front of the verb, or put não in front and never at the end.",
+      "feedback": "Nunca can stand before the verb alone, or at the end with não before the verb.",
+      "explanation": "Eu nunca bebo cerveja is the usual order. Eu não bebo cerveja nunca is also right and a little more emphatic."
+    },
+    {
+      "id": "negation-questions-double-7",
+      "pattern": "double",
+      "type": "rewrite",
+      "instruction": "Replace sempre with nunca. Write the whole sentence.",
+      "source": "Ela sempre chega cedo.",
+      "answers": [
+        "Ela nunca chega cedo.",
+        "Ela não chega cedo nunca."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Ela não nunca chega cedo."
+          ],
+          "why": "Não and nunca side by side before the verb is wrong. Nunca there needs no partner."
+        },
+        {
+          "answers": [
+            "Ela sempre chega cedo."
+          ],
+          "why": "That is the original sentence: sempre was never replaced."
+        }
+      ],
+      "row": "nunca",
+      "hint": "Nunca can take the place of sempre directly.",
+      "feedback": "Nunca before the verb works alone, exactly where sempre stood.",
+      "explanation": "Ela nunca chega cedo. No não is needed, since nunca already stands in front of the verb.",
+      "gloss": [
+        {
+          "pt": "sempre",
+          "en": "always",
+          "word": "essentials-071"
+        },
+        {
+          "pt": "chega",
+          "en": "arrives (chegar)",
+          "word": "verbs-035"
+        },
+        {
+          "pt": "cedo",
+          "en": "early",
+          "word": "health-time-038"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-double-8",
+      "pattern": "double",
+      "type": "build",
+      "instruction": "Build the sentence: I don’t know anybody here. Leave one tile unused.",
+      "source": "I don’t know anybody here.",
+      "tokens": [
+        "conheço",
+        "ninguém",
+        "Eu",
+        "aqui.",
+        "não",
+        "nada"
+      ],
+      "answers": [
+        "Eu não conheço ninguém aqui."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Eu não conheço nada aqui."
+          ],
+          "why": "That tile is about things: the sentence would say you know nothing here, not nobody."
+        },
+        {
+          "answers": [
+            "Eu conheço ninguém aqui."
+          ],
+          "why": "With ninguém after the verb, não must still stand in front of the verb."
+        }
+      ],
+      "row": "ninguém",
+      "hint": "Anybody is a person, and the sentence keeps its não.",
+      "feedback": "Não before the verb, ninguém after it: both negatives stay.",
+      "explanation": "Eu não conheço ninguém aqui. Ninguém is for people; nada would be for things."
+    },
+    {
+      "id": "negation-questions-yes-no-1",
+      "pattern": "yes-no",
+      "type": "choose",
+      "instruction": "Choose the words that make it mean: Do you speak English?",
+      "source": "____ inglês?",
+      "options": [
+        "Você fala",
+        "Fala você",
+        "Faz você fala"
+      ],
+      "answers": [
+        "Você fala"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Fala você"
+          ],
+          "why": "Putting the verb first sounds old-fashioned or odd in Brazil. Keep the statement order."
+        },
+        {
+          "answers": [
+            "Faz você fala"
+          ],
+          "why": "Portuguese has no helper verb like do for questions. Fazer means to do or make and adds nothing here."
+        }
+      ],
+      "row": "yes/no question",
+      "hint": "A Brazilian yes/no question uses the order of a statement.",
+      "feedback": "Only the rising voice and the question mark make it a question.",
+      "explanation": "Você fala inglês? has exactly the order of Você fala inglês. There is no do and no inversion.",
+      "gloss": [
+        {
+          "pt": "inglês",
+          "en": "English",
+          "word": "school-030"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-yes-no-2",
+      "pattern": "yes-no",
+      "type": "rewrite",
+      "instruction": "Turn the statement into a yes/no question. Write the whole sentence.",
+      "source": "Você mora aqui.",
+      "answers": [
+        "Você mora aqui?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Mora você aqui?"
+          ],
+          "why": "Moving the verb in front of você is not how Brazilians ask. Leave the order alone."
+        }
+      ],
+      "row": "yes/no question",
+      "hint": "Does the word order need to change?",
+      "feedback": "Keep the words where they are and change only the punctuation, and the voice when you say it.",
+      "explanation": "Você mora aqui? A yes/no question has the same order as the statement; the voice rises at the end.",
+      "gloss": [
+        {
+          "pt": "mora",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-yes-no-3",
+      "pattern": "yes-no",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Do you like coffee?",
+      "answers": [
+        "Você gosta de café?",
+        "Gosta de café?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Gosta você de café?"
+          ],
+          "why": "The verb has jumped in front of você. Brazilian questions keep the statement order."
+        },
+        {
+          "answers": [
+            "Você gosta café?"
+          ],
+          "why": "Gostar needs de before the thing liked."
+        }
+      ],
+      "row": "yes/no question",
+      "hint": "There is no word for do. Remember that gostar takes de.",
+      "feedback": "Start with você and keep the statement order.",
+      "explanation": "Você gosta de café? is the statement Você gosta de café with a rising voice. Gostar always needs de before what you like."
+    },
+    {
+      "id": "negation-questions-yes-no-4",
+      "pattern": "yes-no",
+      "type": "build",
+      "instruction": "Build the question: Do they work on Sunday? Leave one tile unused.",
+      "source": "Do they work on Sunday?",
+      "tokens": [
+        "domingo?",
+        "Do",
+        "trabalham",
+        "Eles",
+        "no"
+      ],
+      "answers": [
+        "Eles trabalham no domingo?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Do eles trabalham no domingo?"
+          ],
+          "why": "Do is English. Portuguese questions have no helper word at the front."
+        }
+      ],
+      "row": "yes/no question",
+      "hint": "Is there anything in Portuguese for do?",
+      "feedback": "The question is the statement with a question mark; English do has no equivalent.",
+      "explanation": "Eles trabalham no domingo? Same order as the statement, rising voice at the end."
+    },
+    {
+      "id": "negation-questions-yes-no-5",
+      "pattern": "yes-no",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Fala você português?",
+      "answers": [
+        "Você fala português?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Fala você português?"
+          ],
+          "why": "That is the sentence unchanged: the verb still comes before você."
+        }
+      ],
+      "row": "yes/no question",
+      "hint": "Check the order of você and the verb.",
+      "feedback": "Brazilian Portuguese asks yes/no questions in statement order.",
+      "explanation": "Você fala português? Put the subject first, as in the statement.",
+      "gloss": [
+        {
+          "pt": "Fala",
+          "en": "speak (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "português",
+          "en": "Portuguese",
+          "word": "school-029"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-yes-no-6",
+      "pattern": "yes-no",
+      "type": "complete",
+      "instruction": "Complete the question with the right form of querer.",
+      "source": "Você ____ (querer) um café?",
+      "answers": [
+        "quer"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "quero"
+          ],
+          "why": "Quero is the eu form. The subject here is você."
+        },
+        {
+          "answers": [
+            "quer você"
+          ],
+          "why": "Adding você after the verb turns the order around, which Brazilian questions do not do."
+        }
+      ],
+      "row": "yes/no question",
+      "hint": "Which form goes with você? The order stays as in a statement.",
+      "feedback": "The verb takes the você form and stays after the subject.",
+      "explanation": "Você quer um café? is the statement Você quer um café with a rising voice.",
+      "gloss": [
+        {
+          "pt": "querer",
+          "en": "to want",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "café",
+          "en": "coffee",
+          "word": "food-003"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-short-1",
+      "pattern": "short",
+      "type": "choose",
+      "instruction": "Choose the natural short answer.",
+      "source": "Você fala inglês? Sim, ____.",
+      "options": [
+        "falo",
+        "fala",
+        "sim"
+      ],
+      "answers": [
+        "falo"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "fala"
+          ],
+          "why": "Fala is the você form from the question. You are answering about yourself, so use the eu form."
+        },
+        {
+          "answers": [
+            "sim"
+          ],
+          "why": "Sim, sim is possible in excited speech, but the natural short answer repeats the verb."
+        }
+      ],
+      "row": "Fala?",
+      "hint": "Answer with the verb from the question, in your own person.",
+      "feedback": "Brazilians answer yes by repeating the verb in the eu form.",
+      "explanation": "Fala? Falo. The verb from the question changes to the eu form for the answer.",
+      "gloss": [
+        {
+          "pt": "fala",
+          "en": "speak (falar)",
+          "word": "verbs-008"
+        },
+        {
+          "pt": "Sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "inglês",
+          "en": "English",
+          "word": "school-030"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-short-2",
+      "pattern": "short",
+      "type": "complete",
+      "instruction": "Complete the short answer.",
+      "source": "Você gosta de peixe? Não, não ____.",
+      "answers": [
+        "gosto"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "gosta"
+          ],
+          "why": "Gosta is the você form from the question. The answer is about yourself."
+        },
+        {
+          "answers": [
+            "gosto de"
+          ],
+          "why": "A short answer drops de and the thing liked; the verb alone answers."
+        }
+      ],
+      "row": "Gosta?",
+      "hint": "Repeat the verb, in the eu form, after não.",
+      "feedback": "A negative short answer is não plus the verb; the first não is often added for clarity.",
+      "explanation": "Não, não gosto. The verb gostar answers for you, in the eu form, without de or the object.",
+      "gloss": [
+        {
+          "pt": "gosta",
+          "en": "like (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "peixe",
+          "en": "fish",
+          "word": "nature-029"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-short-3",
+      "pattern": "short",
+      "type": "choose",
+      "instruction": "Choose the natural short answer.",
+      "source": "Vocês moram aqui? Sim, ____.",
+      "options": [
+        "moramos",
+        "moram",
+        "mora"
+      ],
+      "answers": [
+        "moramos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "moram"
+          ],
+          "why": "Moram is the vocês form from the question. You answer for a group that includes you."
+        },
+        {
+          "answers": [
+            "mora"
+          ],
+          "why": "Mora is for ele, ela or você. The answer speaks for several people, including you."
+        }
+      ],
+      "row": "Mora?",
+      "hint": "Vocês asks about you all, so the answer speaks for we.",
+      "feedback": "The question about vocês is answered with the nós form.",
+      "explanation": "Vocês moram aqui? Moramos. Asked about you plural, you answer for nós.",
+      "gloss": [
+        {
+          "pt": "moram",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "Sim",
+          "en": "yes",
+          "word": "essentials-014"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-short-4",
+      "pattern": "short",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Are you tired? Yes, I am.",
+      "answers": [
+        "Você está cansado? Estou.",
+        "Você está cansado? Sim, estou.",
+        "Você está cansada? Estou.",
+        "Você está cansada? Sim, estou."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Você está cansado? Sim, eu sou.",
+            "Você está cansado? Sou."
+          ],
+          "why": "The question uses estar, so the answer must too. Sou belongs to ser."
+        },
+        {
+          "answers": [
+            "Você está cansado? Sim, está."
+          ],
+          "why": "Está is the você form. The answer is about yourself."
+        }
+      ],
+      "row": "Está?",
+      "hint": "Yes, I am becomes the verb from the question in the eu form.",
+      "feedback": "The answer repeats estar, the verb of the question.",
+      "explanation": "Você está cansado? Estou. The short answer repeats estar: está becomes estou."
+    },
+    {
+      "id": "negation-questions-short-5",
+      "pattern": "short",
+      "type": "repair",
+      "instruction": "Fix the error in the answer.",
+      "source": "Você conhece o Rio? Não, não conhece.",
+      "answers": [
+        "Você conhece o Rio? Não, não conheço.",
+        "Você conhece o Rio? Não conheço."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Você conhece o Rio? Não, não conhece."
+          ],
+          "why": "That is the sentence unchanged: the answer still uses the você form."
+        }
+      ],
+      "row": "Conhece?",
+      "hint": "Who is answering? Check the verb form.",
+      "feedback": "The answer talks about the speaker, so the verb is in the eu form.",
+      "explanation": "Conhece? Conheço. The short answer repeats the verb from the question but switches to the speaker.",
+      "gloss": [
+        {
+          "pt": "conhece",
+          "en": "know (conhecer)",
+          "word": "verbs-017"
+        },
+        {
+          "pt": "Rio",
+          "en": "Rio (Rio de Janeiro)"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-short-6",
+      "pattern": "short",
+      "type": "rewrite",
+      "instruction": "Write a short answer that says no, repeating the verb.",
+      "source": "Você tem carro?",
+      "answers": [
+        "Não, não tenho.",
+        "Não tenho."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Não, não tem."
+          ],
+          "why": "Tem is the você form. The answer is about yourself."
+        },
+        {
+          "answers": [
+            "Não, não tenho carro."
+          ],
+          "why": "This is a full answer, not a short one. Drop the object."
+        }
+      ],
+      "row": "Tem?",
+      "hint": "Answer about yourself with ter in the eu form.",
+      "feedback": "A natural no repeats the verb after não.",
+      "explanation": "Tem? Não, não tenho. Não on its own would be understood but sounds curt in Brazil.",
+      "gloss": [
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-qwords-1",
+      "pattern": "qwords",
+      "type": "choose",
+      "instruction": "Choose the word that makes it mean: Where do you live?",
+      "source": "____ você mora?",
+      "options": [
+        "Onde",
+        "Quando",
+        "Quem"
+      ],
+      "answers": [
+        "Onde"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Quando"
+          ],
+          "why": "Quando asks about time, not place."
+        },
+        {
+          "answers": [
+            "Quem"
+          ],
+          "why": "Quem asks about a person."
+        }
+      ],
+      "row": "onde",
+      "hint": "The answer would be a place.",
+      "feedback": "A question about a place opens with onde.",
+      "explanation": "Onde você mora? The question word comes first, then the statement order.",
+      "gloss": [
+        {
+          "pt": "mora",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-qwords-2",
+      "pattern": "qwords",
+      "type": "choose",
+      "instruction": "Choose the word that makes it mean: How much is the bread?",
+      "source": "____ custa o pão?",
+      "options": [
+        "Quanto",
+        "Quantos",
+        "Qual"
+      ],
+      "answers": [
+        "Quanto"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Quantos"
+          ],
+          "why": "Quantos counts several masculine things and stands before a plural noun. A price is just how much."
+        },
+        {
+          "answers": [
+            "Qual"
+          ],
+          "why": "Qual asks which one. It cannot ask for a price."
+        }
+      ],
+      "row": "quanto",
+      "hint": "This asks about a price, not a number of things.",
+      "feedback": "For a price, Portuguese uses quanto with custar.",
+      "explanation": "Quanto custa o pão? Quanto on its own asks how much.",
+      "gloss": [
+        {
+          "pt": "custa",
+          "en": "costs (custar)",
+          "word": "verbs-071"
+        },
+        {
+          "pt": "pão",
+          "en": "bread",
+          "word": "food-002"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-qwords-3",
+      "pattern": "qwords",
+      "type": "complete",
+      "instruction": "Write the word that makes it mean: How old are you?",
+      "source": "____ anos você tem?",
+      "answers": [
+        "Quantos"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Quanto"
+          ],
+          "why": "Quanto is for an amount with no noun after it. Anos is plural and needs the plural form."
+        },
+        {
+          "answers": [
+            "Quantas"
+          ],
+          "why": "Quantas goes with feminine nouns. Ano is masculine."
+        }
+      ],
+      "row": "quantos, quantas",
+      "hint": "Anos is a plural masculine noun.",
+      "feedback": "How many before a noun agrees with it: masculine plural takes quantos.",
+      "explanation": "Quantos anos você tem? Portuguese asks how many years you have.",
+      "gloss": [
+        {
+          "pt": "anos",
+          "en": "years (ano)",
+          "word": "health-time-031"
+        },
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-qwords-4",
+      "pattern": "qwords",
+      "type": "complete",
+      "instruction": "Write the word that makes it mean: What is your name?",
+      "source": "____ é o seu nome?",
+      "answers": [
+        "Qual"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "O que"
+          ],
+          "why": "O que é asks for a definition, what a thing is. A name is asked with the word for which."
+        },
+        {
+          "answers": [
+            "Quem"
+          ],
+          "why": "Quem asks who. You are asking for a name, not a person."
+        }
+      ],
+      "row": "qual, quais",
+      "hint": "Before ser, what is usually which in Portuguese.",
+      "feedback": "To ask for a name, a number or an address, Portuguese uses qual with ser.",
+      "explanation": "Qual é o seu nome? With é, what is normally qual, because you pick one answer out of many.",
+      "gloss": [
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "seu",
+          "en": "your",
+          "word": "essentials-051"
+        },
+        {
+          "pt": "nome",
+          "en": "name",
+          "word": "people-036"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-qwords-5",
+      "pattern": "qwords",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "When does the train arrive?",
+      "answers": [
+        "Quando o trem chega?",
+        "Quando chega o trem?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Quando faz o trem chega?"
+          ],
+          "why": "Portuguese has no helper verb like does."
+        },
+        {
+          "answers": [
+            "Onde o trem chega?"
+          ],
+          "why": "Onde asks where. The question is about time."
+        }
+      ],
+      "row": "quando",
+      "hint": "Start with the word for when. There is no word for does.",
+      "feedback": "The question word comes first; after it the verb and subject can come in either order.",
+      "explanation": "Quando o trem chega? After a question word, Quando chega o trem? is just as natural."
+    },
+    {
+      "id": "negation-questions-qwords-6",
+      "pattern": "qwords",
+      "type": "build",
+      "instruction": "Build the question: How are you? Leave one tile unused.",
+      "source": "How are you?",
+      "tokens": [
+        "está?",
+        "Como",
+        "Qual",
+        "você"
+      ],
+      "answers": [
+        "Como você está?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Qual você está?"
+          ],
+          "why": "Qual asks which one, not how."
+        }
+      ],
+      "row": "como",
+      "hint": "How is como.",
+      "feedback": "Como asks how, and estar describes how you are right now.",
+      "explanation": "Como você está? The question word comes first, then the statement order."
+    },
+    {
+      "id": "negation-questions-qwords-7",
+      "pattern": "qwords",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Quantas irmãos você tem?",
+      "answers": [
+        "Quantos irmãos você tem?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Quantas irmãos você tem?"
+          ],
+          "why": "That is the sentence unchanged. The feminine form does not match irmãos."
+        },
+        {
+          "answers": [
+            "Quantas irmãs você tem?"
+          ],
+          "why": "That changes the meaning to sisters. Fix the question word, not the noun."
+        }
+      ],
+      "row": "quantos, quantas",
+      "hint": "Is irmãos masculine or feminine?",
+      "feedback": "Quantos and quantas agree with the noun that follows.",
+      "explanation": "Irmãos is masculine plural, so how many is quantos.",
+      "gloss": [
+        {
+          "pt": "Quantas",
+          "en": "how many"
+        },
+        {
+          "pt": "irmãos",
+          "en": "brothers, siblings (irmão)",
+          "word": "people-013"
+        },
+        {
+          "pt": "tem",
+          "en": "have (ter)",
+          "word": "verbs-003"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-qwords-8",
+      "pattern": "qwords",
+      "type": "choose",
+      "instruction": "Choose the words that make it mean: What do you want to eat?",
+      "source": "____ você quer comer?",
+      "options": [
+        "O que",
+        "Qual",
+        "Quem"
+      ],
+      "answers": [
+        "O que"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Qual"
+          ],
+          "why": "Qual asks which one, from a set. Here you are asking openly what."
+        },
+        {
+          "answers": [
+            "Quem"
+          ],
+          "why": "Quem asks who, about a person."
+        }
+      ],
+      "row": "o que",
+      "hint": "Before a verb, what is a two-word phrase.",
+      "feedback": "O que asks what before a verb.",
+      "explanation": "O que você quer comer? O que is the everyday word for what in front of a verb.",
+      "gloss": [
+        {
+          "pt": "quer",
+          "en": "want (querer)",
+          "word": "verbs-022"
+        },
+        {
+          "pt": "comer",
+          "en": "eat",
+          "word": "verbs-059"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-qwords-9",
+      "pattern": "qwords",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "What do you want?",
+      "answers": [
+        "O que você quer?"
+      ],
+      "alternatives": [
+        {
+          "answer": "Você quer o quê?",
+          "accepted": true,
+          "message": "Right, and very common in speech. At the end of the sentence the word takes an accent: o quê."
+        },
+        {
+          "answer": "Você quer o que?",
+          "accepted": true,
+          "message": "Right in speech. At the end of the sentence it is written with an accent: o quê."
+        },
+        {
+          "answer": "Que você quer?",
+          "accepted": true,
+          "message": "Correct, but O que você quer? is the usual everyday form."
+        }
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Qual você quer?"
+          ],
+          "why": "Qual asks which one, as if choosing from a set."
+        }
+      ],
+      "row": "o que",
+      "hint": "Start with the two-word what.",
+      "feedback": "O que goes first, then the statement order.",
+      "explanation": "O que você quer? In speech Brazilians also leave what at the end: Você quer o quê?"
+    },
+    {
+      "id": "negation-questions-qwords-10",
+      "pattern": "qwords",
+      "type": "rewrite",
+      "instruction": "Move o quê to the front of the question. Write the whole sentence.",
+      "source": "Você está fazendo o quê?",
+      "answers": [
+        "O que você está fazendo?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "O que está você fazendo?"
+          ],
+          "why": "Do not swap the subject and verb; the statement order stays."
+        },
+        {
+          "answers": [
+            "Você está fazendo o quê?"
+          ],
+          "why": "That is the original sentence: the question word is still at the end."
+        }
+      ],
+      "row": "o que",
+      "hint": "At the front the word loses its accent.",
+      "feedback": "At the front, o que opens the question and the rest keeps statement order.",
+      "explanation": "O que você está fazendo? At the end of a sentence you write o quê; at the front, o que.",
+      "gloss": [
+        {
+          "pt": "está",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "fazendo",
+          "en": "doing (fazer)",
+          "word": "verbs-004"
+        },
+        {
+          "pt": "quê",
+          "en": "what"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-qwords-11",
+      "pattern": "qwords",
+      "type": "complete",
+      "instruction": "Write the word that makes it mean: Which are your keys?",
+      "source": "____ são as suas chaves?",
+      "answers": [
+        "Quais"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Qual"
+          ],
+          "why": "Qual is for one thing. Chaves is plural."
+        },
+        {
+          "answers": [
+            "O que"
+          ],
+          "why": "O que asks what a thing is; here you pick out which ones."
+        }
+      ],
+      "row": "qual, quais",
+      "hint": "The noun is plural.",
+      "feedback": "Qual has a plural form for plural nouns.",
+      "explanation": "Quais são as suas chaves? Chaves is plural, so qual becomes quais.",
+      "gloss": [
+        {
+          "pt": "são",
+          "en": "are (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "suas",
+          "en": "your"
+        },
+        {
+          "pt": "chaves",
+          "en": "keys (chave)",
+          "word": "home-019"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-porque-1",
+      "pattern": "porque",
+      "type": "choose",
+      "instruction": "Choose the word that makes it mean: Why are you tired?",
+      "source": "____ você está cansado?",
+      "options": [
+        "Por que",
+        "Porque"
+      ],
+      "answers": [
+        "Por que"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Porque"
+          ],
+          "why": "Porque, one word, means because. It gives a reason; it does not ask for one."
+        }
+      ],
+      "row": "por que",
+      "hint": "Is this asking or explaining?",
+      "feedback": "Why in a question is two words: por que.",
+      "explanation": "Por que você está cansado? Why is por que, written apart. Porque, one word, is because.",
+      "gloss": [
+        {
+          "pt": "está",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cansado",
+          "en": "tired",
+          "word": "feelings-011"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-porque-2",
+      "pattern": "porque",
+      "type": "choose",
+      "instruction": "Choose the word that makes it mean: I am tired because I worked a lot.",
+      "source": "Estou cansado ____ trabalhei muito.",
+      "options": [
+        "porque",
+        "por que"
+      ],
+      "answers": [
+        "porque"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "por que"
+          ],
+          "why": "Por que, two words, asks why. Here the sentence explains instead of asking."
+        }
+      ],
+      "row": "porque",
+      "hint": "This gives a reason.",
+      "feedback": "Because is one word: porque.",
+      "explanation": "Estou cansado porque trabalhei muito. Porque joins the reason to the sentence.",
+      "gloss": [
+        {
+          "pt": "Estou",
+          "en": "am (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "cansado",
+          "en": "tired",
+          "word": "feelings-011"
+        },
+        {
+          "pt": "trabalhei",
+          "en": "worked (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "muito",
+          "en": "a lot",
+          "word": "essentials-065"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-porque-3",
+      "pattern": "porque",
+      "type": "complete",
+      "instruction": "Write the words that make it mean: Why didn’t you come yesterday?",
+      "source": "____ você não veio ontem?",
+      "answers": [
+        "Por que"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Porque"
+          ],
+          "why": "Porque, one word, means because. A question asking for a reason needs the two-word form."
+        }
+      ],
+      "row": "por que",
+      "hint": "A question asking for a reason opens with two words.",
+      "feedback": "Why at the start of a question is por que, written apart.",
+      "explanation": "Por que você não veio ontem? Two words, no accent at the start of a question.",
+      "gloss": [
+        {
+          "pt": "veio",
+          "en": "came (vir)",
+          "word": "verbs-006"
+        },
+        {
+          "pt": "ontem",
+          "en": "yesterday",
+          "word": "health-time-036"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-porque-4",
+      "pattern": "porque",
+      "type": "complete",
+      "instruction": "Write the word that makes it mean: I didn’t go to the party because I was sick.",
+      "source": "Não fui à festa ____ estava doente.",
+      "answers": [
+        "porque"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "por que"
+          ],
+          "why": "Por que, two words, asks why. The sentence is explaining, not asking."
+        }
+      ],
+      "row": "porque",
+      "hint": "This gives the reason.",
+      "feedback": "Because is porque, written as one word.",
+      "explanation": "Não fui à festa porque estava doente. Porque joins the reason to what happened.",
+      "gloss": [
+        {
+          "pt": "fui",
+          "en": "went (ir)",
+          "word": "verbs-005"
+        },
+        {
+          "pt": "festa",
+          "en": "party",
+          "word": "leisure-019"
+        },
+        {
+          "pt": "estava",
+          "en": "was (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "doente",
+          "en": "sick",
+          "word": "health-time-024"
+        }
+      ]
+    },
+    {
+      "id": "negation-questions-porque-5",
+      "pattern": "porque",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Why are you learning Portuguese?",
+      "answers": [
+        "Por que você está aprendendo português?",
+        "Por que você aprende português?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Porque você está aprendendo português?"
+          ],
+          "why": "Porque, one word, means because. A question needs the two-word form."
+        }
+      ],
+      "row": "por que",
+      "hint": "Why at the start of a question is two words.",
+      "feedback": "Write por que apart: it asks for a reason.",
+      "explanation": "Por que você está aprendendo português? The rest keeps the statement order."
+    },
+    {
+      "id": "negation-questions-porque-6",
+      "pattern": "porque",
+      "type": "build",
+      "instruction": "Build the answer: Because it is late. Leave two tiles unused.",
+      "source": "Because it is late.",
+      "tokens": [
+        "é",
+        "Por",
+        "Porque",
+        "tarde.",
+        "que"
+      ],
+      "answers": [
+        "Porque é tarde."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Por que é tarde."
+          ],
+          "why": "Por que, two words, asks why. The answer gives a reason, so it needs the joined form."
+        }
+      ],
+      "row": "porque",
+      "hint": "An answer that gives a reason uses the one-word form.",
+      "feedback": "Because is porque, one word, so the two separate tiles stay unused.",
+      "explanation": "Porque é tarde. Porque gives the reason; por que would ask why."
+    },
+    {
+      "id": "negation-questions-porque-7",
+      "pattern": "porque",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Porque você não come carne?",
+      "answers": [
+        "Por que você não come carne?"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Porque você não come carne?"
+          ],
+          "why": "That is the sentence unchanged: the one-word form still means because."
+        }
+      ],
+      "row": "por que",
+      "hint": "Is this sentence asking or explaining?",
+      "feedback": "A question asking for a reason needs why, not because.",
+      "explanation": "Por que você não come carne? Why is two words; porque means because.",
+      "gloss": [
+        {
+          "pt": "Porque",
+          "en": "because",
+          "word": "essentials-037"
+        },
+        {
+          "pt": "come",
+          "en": "eat (comer)",
+          "word": "verbs-059"
+        },
+        {
+          "pt": "carne",
+          "en": "meat",
+          "word": "food-015"
+        }
+      ]
+    }
+  ]
+}

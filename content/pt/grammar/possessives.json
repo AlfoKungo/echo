@@ -1,0 +1,2287 @@
+{
+  "id": "possessives",
+  "unit": "nouns",
+  "level": "A1",
+  "title": "My, your, his, her",
+  "description": "Say whose something is in Brazilian Portuguese: meu, seu, nosso before the noun, and dele, dela after it.",
+  "mark": "meu · minha · dele",
+  "guide": {
+    "summary": "A Portuguese possessive before the noun agrees with the thing owned, never with the owner: meu carro, minha casa. For his, her and their, Brazilians put dele, dela, deles or delas after the noun, and those follow the owner.",
+    "sections": [
+      {
+        "id": "agreement",
+        "title": "My, your, our: agree with the thing owned",
+        "text": "Meu, seu and nosso change like adjectives, with the noun that follows them. A man and a woman both say minha casa, because casa is feminine.",
+        "table": {
+          "columns": [
+            "Owner",
+            "one thing (o / a)",
+            "several things (os / as)"
+          ],
+          "rows": [
+            [
+              "my",
+              "meu · minha",
+              "meus · minhas"
+            ],
+            [
+              "your (você)",
+              "seu · sua",
+              "seus · suas"
+            ],
+            [
+              "our",
+              "nosso · nossa",
+              "nossos · nossas"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun after the gap: that is the thing owned.",
+          "Check its article: o or a tells you the gender.",
+          "Is it plural? Add -s to the possessive.",
+          "Pick the owner’s row: eu, você or nós."
+        ],
+        "examples": [
+          {
+            "pt": "Minha casa é pequena.",
+            "en": "My house is small."
+          },
+          {
+            "pt": "Meu irmão mora aqui.",
+            "en": "My brother lives here."
+          }
+        ],
+        "watch": [
+          "The owner’s gender never shows: Pedro says minha irmã, Ana says meu irmão.",
+          "Meu and minha look unrelated, so learn them as a pair."
+        ]
+      },
+      {
+        "id": "plural-forms",
+        "title": "Several things owned",
+        "text": "When the noun is plural, the possessive takes -s too, and so do the verb and any adjective.",
+        "table": {
+          "columns": [
+            "Owner",
+            "+ masculine plural",
+            "+ feminine plural"
+          ],
+          "rows": [
+            [
+              "my",
+              "meus",
+              "minhas"
+            ],
+            [
+              "your (você)",
+              "seus",
+              "suas"
+            ],
+            [
+              "our",
+              "nossos",
+              "nossas"
+            ]
+          ]
+        },
+        "steps": [
+          "Count the things owned, not the owners.",
+          "Several things: add -s to the possessive.",
+          "Keep the gender of the noun: meus for os, minhas for as."
+        ],
+        "examples": [
+          {
+            "pt": "Minhas chaves estão na bolsa.",
+            "en": "My keys are in the bag."
+          },
+          {
+            "pt": "Os meus óculos estão na mesa.",
+            "en": "My glasses are on the table."
+          }
+        ],
+        "watch": [
+          "Óculos is always plural: meus óculos, even for one pair.",
+          "Filhos and amigos are masculine plural even when the group is mixed."
+        ]
+      },
+      {
+        "id": "nosso",
+        "title": "Our: nosso, nossa, nossos, nossas",
+        "text": "Nosso has all four endings, -o, -a, -os, -as, like an ordinary adjective. Many owners do not make it plural: only the things owned do.",
+        "steps": [
+          "Look at the noun after the gap.",
+          "Pick -o or -a by its gender.",
+          "Add -s if there are several things."
+        ],
+        "examples": [
+          {
+            "pt": "Nossa cidade é bonita.",
+            "en": "Our city is pretty."
+          },
+          {
+            "pt": "Nós moramos com nosso pai.",
+            "en": "We live with our father."
+          }
+        ],
+        "watch": [
+          "Nós moramos com nosso pai: several owners, one father, so nosso stays singular."
+        ]
+      },
+      {
+        "id": "seu-sua",
+        "title": "Your: seu and sua for você",
+        "text": "In Brazil, você is the everyday word for you, and its possessive is seu, sua, seus, suas. They agree with the thing owned.",
+        "steps": [
+          "Check that you are talking to você.",
+          "Match seu or sua to the noun’s gender.",
+          "Add -s for several things."
+        ],
+        "examples": [
+          {
+            "pt": "Qual é o seu nome?",
+            "en": "What is your name?"
+          },
+          {
+            "pt": "Suas chaves estão aqui.",
+            "en": "Your keys are here."
+          }
+        ],
+        "watch": [
+          "Teu and tua, the forms for tu, are heard in some regions, such as the South. They are correct, but this course practises seu and sua.",
+          "For vocês, Brazilians usually say de vocês after the noun: a casa de vocês."
+        ]
+      },
+      {
+        "id": "dele-dela",
+        "title": "His and her: dele and dela after the noun",
+        "text": "In Brazil sua casa would sound like your house, so his and her are said with de + ele and de + ela after the noun: o carro dele, a casa dela. These forms follow the owner, and the noun keeps its article.",
+        "table": {
+          "columns": [
+            "Owner",
+            "form",
+            "example"
+          ],
+          "rows": [
+            [
+              "his (ele)",
+              "dele",
+              "o carro dele"
+            ],
+            [
+              "her (ela)",
+              "dela",
+              "a casa dela"
+            ],
+            [
+              "their (eles)",
+              "deles",
+              "os filhos deles"
+            ],
+            [
+              "their (elas)",
+              "delas",
+              "o chefe delas"
+            ]
+          ]
+        },
+        "steps": [
+          "Put the article and the noun first: o carro.",
+          "Ask who owns it: one man, one woman, or several people.",
+          "Add dele, dela, deles or delas after the noun."
+        ],
+        "examples": [
+          {
+            "pt": "O irmão dele mora em Lisboa.",
+            "en": "His brother lives in Lisbon."
+          },
+          {
+            "pt": "A casa dela é grande.",
+            "en": "Her house is big."
+          }
+        ],
+        "watch": [
+          "Dele follows the owner, not the noun: the husband of a woman is o marido dela.",
+          "Never put dele before the noun: a irmã dele, not dele irmã."
+        ]
+      },
+      {
+        "id": "deles-delas",
+        "title": "Their: deles and delas",
+        "text": "For several owners use deles, or delas when every owner is a woman. A mixed group, even one man and many women, takes deles.",
+        "steps": [
+          "Count the owners: more than one means deles or delas.",
+          "All women? Delas. Otherwise deles.",
+          "The noun owned does not change this choice."
+        ],
+        "examples": [
+          {
+            "pt": "Os pais deles moram longe.",
+            "en": "Their parents live far away."
+          },
+          {
+            "pt": "Ana e Maria visitam os pais delas.",
+            "en": "Ana and Maria visit their parents."
+          }
+        ],
+        "watch": [
+          "O chefe delas: the boss is a man, but the owners are women, so delas."
+        ]
+      },
+      {
+        "id": "article",
+        "title": "O meu or meu? Both are fine",
+        "text": "Before meu, seu or nosso, Brazilians may use the article or leave it out: meu carro and o meu carro mean the same. After a preposition the article usually stays and contracts: na minha casa.",
+        "steps": [
+          "Before meu, seu, nosso: the article is optional.",
+          "With dele, dela, deles, delas: keep the article before the noun."
+        ],
+        "examples": [
+          {
+            "pt": "O meu carro é novo.",
+            "en": "My car is new."
+          },
+          {
+            "pt": "Meu carro é novo.",
+            "en": "My car is new."
+          }
+        ],
+        "watch": [
+          "Dele works differently: a casa dele needs its article."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "my": {
+      "section": "agreement",
+      "steps": [
+        "Find the noun owned and check its article.",
+        "Masculine takes meu, feminine takes minha.",
+        "Ignore the speaker’s gender."
+      ]
+    },
+    "plural": {
+      "section": "plural-forms",
+      "steps": [
+        "Count the things owned.",
+        "Several: meus for masculine, minhas for feminine.",
+        "Make the verb and adjective plural too."
+      ]
+    },
+    "our": {
+      "section": "nosso",
+      "steps": [
+        "Look at the noun owned.",
+        "Pick nosso or nossa by its gender.",
+        "Add -s only if the things owned are several."
+      ]
+    },
+    "your": {
+      "section": "seu-sua",
+      "steps": [
+        "Talking to você? Use seu or sua.",
+        "Match the gender of the noun owned.",
+        "Add -s for several things."
+      ]
+    },
+    "his-her": {
+      "section": "dele-dela",
+      "steps": [
+        "Put the article and noun first.",
+        "One man owns it: dele. One woman: dela.",
+        "Do not use seu for his or her."
+      ]
+    },
+    "their": {
+      "section": "deles-delas",
+      "steps": [
+        "Several owners: deles or delas.",
+        "Only women: delas. Men or mixed: deles.",
+        "The noun owned does not decide it."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "possessives-my-1",
+      "pattern": "my",
+      "type": "choose",
+      "instruction": "Choose the word for my.",
+      "source": "Esta é ____ casa.",
+      "options": [
+        "meu",
+        "minha",
+        "meus"
+      ],
+      "answers": [
+        "minha"
+      ],
+      "hint": "Is casa masculine or feminine, one or several?",
+      "feedback": "Look at the noun casa, not at the speaker.",
+      "explanation": "Casa is feminine singular (a casa), so my is minha.",
+      "mistakes": [
+        {
+          "answers": [
+            "meu"
+          ],
+          "why": "Meu stands before a masculine singular noun. Casa is feminine (a casa), so the masculine form does not fit."
+        },
+        {
+          "answers": [
+            "meus"
+          ],
+          "why": "Meus is masculine plural, for several things. There is one house here, and it is feminine."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "Esta",
+          "en": "this"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-my-2",
+      "pattern": "my",
+      "type": "choose",
+      "instruction": "Pedro is speaking. Choose the word for my.",
+      "source": "Eu sou o Pedro, e esta é ____ irmã.",
+      "options": [
+        "meu",
+        "minha"
+      ],
+      "answers": [
+        "minha"
+      ],
+      "hint": "The speaker is a man. Does that matter?",
+      "feedback": "The possessive follows the thing owned, here irmã, never the owner.",
+      "explanation": "Irmã is feminine singular, so my sister is minha irmã, even when a man says it.",
+      "mistakes": [
+        {
+          "answers": [
+            "meu"
+          ],
+          "why": "Pedro is a man, but the possessive does not look at the owner. It agrees with irmã, which is feminine (a irmã)."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "sou",
+          "en": "am (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "esta",
+          "en": "this"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        }
+      ]
+    },
+    {
+      "id": "possessives-my-3",
+      "pattern": "my",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for my.",
+      "source": "Eu lavo ____ carro hoje.",
+      "answers": [
+        "meu",
+        "o meu"
+      ],
+      "hint": "Think about the gender of carro.",
+      "feedback": "The possessive takes the gender and number of carro.",
+      "explanation": "Carro is masculine singular (o carro), so my car is meu carro, or o meu carro.",
+      "mistakes": [
+        {
+          "answers": [
+            "minha"
+          ],
+          "why": "Minha goes with a feminine noun, and carro is masculine (o carro)."
+        },
+        {
+          "answers": [
+            "meus"
+          ],
+          "why": "Meus is for several things, but you wash one car here."
+        },
+        {
+          "answers": [
+            "seu"
+          ],
+          "why": "Seu means your. The subject is eu, so the car belongs to the speaker."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "lavo",
+          "en": "wash (lavar)",
+          "word": "verbs-080"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "possessives-my-4",
+      "pattern": "my",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Minha quarto é pequeno.",
+      "answers": [
+        "Meu quarto é pequeno.",
+        "O meu quarto é pequeno."
+      ],
+      "hint": "Check the gender of quarto.",
+      "feedback": "Quarto ends in -o and takes o: it is masculine.",
+      "explanation": "Quarto is masculine singular (o quarto), so my room is meu quarto.",
+      "mistakes": [
+        {
+          "answers": [
+            "Minha quarto é pequeno."
+          ],
+          "why": "This is the sentence unchanged: the feminine possessive still stands before a masculine noun."
+        },
+        {
+          "answers": [
+            "Minha quarta é pequena."
+          ],
+          "why": "The noun is not the error. Quarto stays as it is, and the possessive must change to match it."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "quarto",
+          "en": "bedroom",
+          "word": "home-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "pequeno",
+          "en": "small",
+          "word": "qualities-002"
+        }
+      ]
+    },
+    {
+      "id": "possessives-my-5",
+      "pattern": "my",
+      "type": "rewrite",
+      "instruction": "Replace livro with caneta and change the possessive to match. Write the whole sentence.",
+      "source": "Meu livro está na mesa.",
+      "answers": [
+        "Minha caneta está na mesa.",
+        "A minha caneta está na mesa."
+      ],
+      "hint": "Caneta is feminine: a caneta.",
+      "feedback": "The possessive follows the new noun, not the old one.",
+      "explanation": "Caneta is feminine singular, so meu becomes minha: minha caneta.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meu caneta está na mesa."
+          ],
+          "why": "The possessive still matches livro. Caneta is feminine, so a masculine form leaves the two words disagreeing."
+        },
+        {
+          "answers": [
+            "Meu livro está na mesa."
+          ],
+          "why": "That is the original sentence: livro was never replaced."
+        },
+        {
+          "answers": [
+            "Minhas canetas estão na mesa."
+          ],
+          "why": "Nothing asked for a plural: one pen replaces one book, so only the gender changes."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my"
+        },
+        {
+          "pt": "livro",
+          "en": "book",
+          "word": "school-013"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "mesa",
+          "en": "table",
+          "word": "home-020"
+        }
+      ]
+    },
+    {
+      "id": "possessives-my-6",
+      "pattern": "my",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "My sister lives here.",
+      "answers": [
+        "Minha irmã mora aqui.",
+        "A minha irmã mora aqui."
+      ],
+      "hint": "Sister is feminine in Portuguese: a irmã.",
+      "feedback": "Check the possessive against irmã.",
+      "explanation": "Irmã is feminine singular, so my sister is minha irmã. The article a in front is optional in Brazil.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meu irmã mora aqui."
+          ],
+          "why": "The masculine form cannot stand before a feminine noun like irmã."
+        },
+        {
+          "answers": [
+            "Minha irmão mora aqui."
+          ],
+          "why": "Irmão means brother. Sister is irmã, without the o."
+        },
+        {
+          "answers": [
+            "Minha irmã moro aqui."
+          ],
+          "why": "Moro goes with eu. Your sister is the subject, so the verb takes the ela form."
+        }
+      ],
+      "row": "my"
+    },
+    {
+      "id": "possessives-my-7",
+      "pattern": "my",
+      "type": "build",
+      "instruction": "Build the sentence: My father is tall. Leave one tile unused.",
+      "source": "My father is tall.",
+      "tokens": [
+        "pai",
+        "Minha",
+        "é",
+        "Meu",
+        "alto."
+      ],
+      "answers": [
+        "Meu pai é alto."
+      ],
+      "hint": "Pai is masculine.",
+      "feedback": "Only one word for my fits a masculine singular noun.",
+      "explanation": "Pai is masculine singular, so my father is meu pai.",
+      "mistakes": [
+        {
+          "answers": [
+            "Minha pai é alto."
+          ],
+          "why": "That tile is the feminine form, and pai is masculine (o pai). Leave unused the tile whose gender does not match the noun."
+        }
+      ],
+      "row": "my"
+    },
+    {
+      "id": "possessives-plural-1",
+      "pattern": "plural",
+      "type": "choose",
+      "instruction": "Choose the word for my.",
+      "source": "Onde estão ____ chaves?",
+      "options": [
+        "meu",
+        "minha",
+        "meus",
+        "minhas"
+      ],
+      "answers": [
+        "minhas"
+      ],
+      "hint": "How many keys, and what gender is chave?",
+      "feedback": "The possessive matches chaves in gender and number.",
+      "explanation": "Chaves is feminine plural (as chaves), so my keys is minhas chaves.",
+      "mistakes": [
+        {
+          "answers": [
+            "meu"
+          ],
+          "why": "Meu is masculine singular. Chaves is plural and feminine, so it is wrong twice."
+        },
+        {
+          "answers": [
+            "minha"
+          ],
+          "why": "Minha has the right gender but is singular, and estão shows there are several keys."
+        },
+        {
+          "answers": [
+            "meus"
+          ],
+          "why": "Meus is plural but masculine. Chave is feminine (a chave)."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "chaves",
+          "en": "keys",
+          "word": "home-019"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-2",
+      "pattern": "plural",
+      "type": "choose",
+      "instruction": "Choose the word for my.",
+      "source": "Os ____ sapatos estão sujos.",
+      "options": [
+        "meu",
+        "meus",
+        "minhas"
+      ],
+      "answers": [
+        "meus"
+      ],
+      "hint": "The article os already tells you gender and number.",
+      "feedback": "Article, possessive and noun all agree.",
+      "explanation": "Sapatos is masculine plural (os sapatos), so my shoes is os meus sapatos.",
+      "mistakes": [
+        {
+          "answers": [
+            "meu"
+          ],
+          "why": "Meu is singular, but os and sapatos are plural."
+        },
+        {
+          "answers": [
+            "minhas"
+          ],
+          "why": "Minhas is feminine, and sapato is masculine (o sapato)."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "sapatos",
+          "en": "shoes",
+          "word": "people-045"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "sujos",
+          "en": "dirty",
+          "word": "qualities-027"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-3",
+      "pattern": "plural",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for my.",
+      "source": "Eu ajudo ____ amigos.",
+      "answers": [
+        "meus",
+        "os meus"
+      ],
+      "hint": "Amigos ends in -os.",
+      "feedback": "Several male or mixed friends take the masculine plural.",
+      "explanation": "Amigos is masculine plural, so my friends is meus amigos, or os meus amigos.",
+      "mistakes": [
+        {
+          "answers": [
+            "meu"
+          ],
+          "why": "Meu is singular, and amigos is plural."
+        },
+        {
+          "answers": [
+            "minhas"
+          ],
+          "why": "Minhas is feminine plural. Amigos is masculine, so the gender is wrong."
+        },
+        {
+          "answers": [
+            "nossos"
+          ],
+          "why": "Nossos means our. The subject is eu, so the friends belong to the speaker alone."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "ajudo",
+          "en": "help (ajudar)",
+          "word": "verbs-074"
+        },
+        {
+          "pt": "amigos",
+          "en": "friends",
+          "word": "people-029"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-4",
+      "pattern": "plural",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Minha chaves estão na bolsa.",
+      "answers": [
+        "Minhas chaves estão na bolsa.",
+        "As minhas chaves estão na bolsa."
+      ],
+      "hint": "Count the keys.",
+      "feedback": "A plural noun needs a plural possessive.",
+      "explanation": "Chaves is feminine plural, so minha must take an -s: minhas chaves.",
+      "mistakes": [
+        {
+          "answers": [
+            "Minha chaves estão na bolsa."
+          ],
+          "why": "This is the sentence unchanged: a singular possessive stands before a plural noun."
+        },
+        {
+          "answers": [
+            "Minha chave está na bolsa."
+          ],
+          "why": "That changes the meaning to one key. Keep the plural noun and fix the possessive instead."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "Minha",
+          "en": "my"
+        },
+        {
+          "pt": "chaves",
+          "en": "keys",
+          "word": "home-019"
+        },
+        {
+          "pt": "estão",
+          "en": "are (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "bolsa",
+          "en": "bag",
+          "word": "shopping-047"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-5",
+      "pattern": "plural",
+      "type": "rewrite",
+      "instruction": "Make sapato plural and change the rest of the sentence to match.",
+      "source": "Meu sapato está sujo.",
+      "answers": [
+        "Meus sapatos estão sujos.",
+        "Os meus sapatos estão sujos."
+      ],
+      "hint": "Four words change: possessive, noun, verb and adjective.",
+      "feedback": "In Portuguese the plural shows on almost every word.",
+      "explanation": "Several shoes: meus sapatos, the verb estão and the adjective sujos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meu sapatos estão sujos."
+          ],
+          "why": "The possessive stayed singular in front of a plural noun."
+        },
+        {
+          "answers": [
+            "Meus sapatos está sujo."
+          ],
+          "why": "The verb and the adjective still describe one shoe."
+        },
+        {
+          "answers": [
+            "Minhas sapatos estão sujos."
+          ],
+          "why": "Sapato is masculine, so the feminine plural does not fit."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "pt": "Meu",
+          "en": "my"
+        },
+        {
+          "pt": "sapato",
+          "en": "shoe",
+          "word": "people-045"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "sujo",
+          "en": "dirty",
+          "word": "qualities-027"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-6",
+      "pattern": "plural",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "My glasses are on the table.",
+      "answers": [
+        "Meus óculos estão na mesa.",
+        "Os meus óculos estão na mesa."
+      ],
+      "hint": "Óculos is always plural, like glasses in English.",
+      "feedback": "Óculos is masculine plural.",
+      "explanation": "Os óculos is masculine plural, so my glasses is meus óculos, with the plural verb estão.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meu óculos estão na mesa."
+          ],
+          "why": "Óculos is plural even for one pair, so the possessive must be plural too."
+        },
+        {
+          "answers": [
+            "Meus óculos está na mesa."
+          ],
+          "why": "Óculos is plural, so the verb must be plural as well."
+        },
+        {
+          "answers": [
+            "Minhas óculos estão na mesa."
+          ],
+          "why": "Óculos is masculine (os óculos), so the feminine plural does not fit."
+        }
+      ],
+      "row": "my"
+    },
+    {
+      "id": "possessives-plural-7",
+      "pattern": "plural",
+      "type": "build",
+      "instruction": "Build the sentence: My friends live far away. Leave one tile unused.",
+      "source": "My friends live far away.",
+      "tokens": [
+        "amigos",
+        "Meu",
+        "longe.",
+        "Meus",
+        "moram"
+      ],
+      "answers": [
+        "Meus amigos moram longe."
+      ],
+      "hint": "Amigos is plural.",
+      "feedback": "The possessive must be plural like amigos.",
+      "explanation": "Amigos is masculine plural, so my friends is meus amigos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Meu amigos moram longe."
+          ],
+          "why": "That tile is singular, but amigos is plural. Leave unused the tile without the plural -s."
+        }
+      ],
+      "row": "my"
+    },
+    {
+      "id": "possessives-our-1",
+      "pattern": "our",
+      "type": "choose",
+      "instruction": "Choose the word for our.",
+      "source": "Esta é ____ cidade.",
+      "options": [
+        "nosso",
+        "nossa",
+        "nossos"
+      ],
+      "answers": [
+        "nossa"
+      ],
+      "hint": "Cidade ends in -e. Check its article: a cidade.",
+      "feedback": "Nosso changes like an adjective: -o, -a, -os, -as.",
+      "explanation": "Cidade is feminine singular (a cidade), so our city is nossa cidade.",
+      "mistakes": [
+        {
+          "answers": [
+            "nosso"
+          ],
+          "why": "Nosso goes with a masculine singular noun, and cidade is feminine."
+        },
+        {
+          "answers": [
+            "nossos"
+          ],
+          "why": "Nossos is masculine plural. There is one city, and it is feminine."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Esta",
+          "en": "this"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "cidade",
+          "en": "city",
+          "word": "travel-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-our-2",
+      "pattern": "our",
+      "type": "choose",
+      "instruction": "Choose the word for our.",
+      "source": "Nós amamos ____ filhos.",
+      "options": [
+        "nosso",
+        "nossos",
+        "nossas"
+      ],
+      "answers": [
+        "nossos"
+      ],
+      "hint": "Filhos is plural, and here it means children.",
+      "feedback": "A plural noun takes a plural possessive.",
+      "explanation": "Filhos is masculine plural, so our children is nossos filhos.",
+      "mistakes": [
+        {
+          "answers": [
+            "nosso"
+          ],
+          "why": "Nosso is singular, but filhos is plural."
+        },
+        {
+          "answers": [
+            "nossas"
+          ],
+          "why": "Nossas is feminine plural. Filhos is masculine, even when the children are boys and girls."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "amamos",
+          "en": "love (amar)",
+          "word": "verbs-073"
+        },
+        {
+          "pt": "filhos",
+          "en": "children",
+          "word": "people-011"
+        }
+      ]
+    },
+    {
+      "id": "possessives-our-3",
+      "pattern": "our",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for our.",
+      "source": "Nós limpamos ____ casa hoje.",
+      "answers": [
+        "nossa",
+        "a nossa"
+      ],
+      "hint": "Casa is feminine.",
+      "feedback": "Match the possessive to casa.",
+      "explanation": "Casa is feminine singular, so our house is nossa casa, or a nossa casa.",
+      "mistakes": [
+        {
+          "answers": [
+            "nosso"
+          ],
+          "why": "Nosso is masculine, and casa is feminine (a casa)."
+        },
+        {
+          "answers": [
+            "nossas"
+          ],
+          "why": "Nossas is plural, but there is one house."
+        },
+        {
+          "answers": [
+            "minha"
+          ],
+          "why": "Minha means my. The subject is nós, so the house belongs to all of us."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "limpamos",
+          "en": "clean (limpar)",
+          "word": "verbs-081"
+        },
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "pt": "hoje",
+          "en": "today",
+          "word": "health-time-035"
+        }
+      ]
+    },
+    {
+      "id": "possessives-our-4",
+      "pattern": "our",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Nosso empresa é pequena.",
+      "answers": [
+        "Nossa empresa é pequena.",
+        "A nossa empresa é pequena."
+      ],
+      "hint": "Look at the adjective pequena: it gives the gender away.",
+      "feedback": "Empresa is feminine: a empresa.",
+      "explanation": "Empresa is feminine singular, so our company is nossa empresa.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nosso empresa é pequena."
+          ],
+          "why": "This is the sentence unchanged: a masculine possessive stands before a feminine noun."
+        },
+        {
+          "answers": [
+            "Nosso empresa é pequeno."
+          ],
+          "why": "Changing the adjective makes it worse: empresa is feminine, so the adjective was right and the possessive is the problem."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Nosso",
+          "en": "our"
+        },
+        {
+          "pt": "empresa",
+          "en": "company",
+          "word": "work-003"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "pequena",
+          "en": "small",
+          "word": "qualities-002"
+        }
+      ]
+    },
+    {
+      "id": "possessives-our-5",
+      "pattern": "our",
+      "type": "rewrite",
+      "instruction": "Change eu to nós, and make the verb and the possessive match.",
+      "source": "Eu moro com meu pai.",
+      "answers": [
+        "Nós moramos com nosso pai.",
+        "Nós moramos com o nosso pai.",
+        "Moramos com nosso pai.",
+        "Moramos com o nosso pai."
+      ],
+      "hint": "Nós takes the -amos form, and my becomes our.",
+      "feedback": "Change the owner, but the possessive still follows pai.",
+      "explanation": "Nós moramos, and pai is still one man, so the possessive is nosso: nosso pai.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nós moramos com nossos pai."
+          ],
+          "why": "The owners are now several, but the thing owned is still one father. The possessive follows pai, not nós."
+        },
+        {
+          "answers": [
+            "Nós moramos com meu pai."
+          ],
+          "why": "The possessive still says my. With nós, the father is ours."
+        },
+        {
+          "answers": [
+            "Nós moro com nosso pai."
+          ],
+          "why": "Moro goes with eu. With nós the verb ends in -amos."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "moro",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "meu",
+          "en": "my"
+        },
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        }
+      ]
+    },
+    {
+      "id": "possessives-our-6",
+      "pattern": "our",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Our neighbours are very nice.",
+      "answers": [
+        "Nossos vizinhos são muito simpáticos.",
+        "Os nossos vizinhos são muito simpáticos.",
+        "Nossos vizinhos são muito legais.",
+        "Os nossos vizinhos são muito legais."
+      ],
+      "hint": "Vizinhos is masculine plural.",
+      "feedback": "Possessive, noun, verb and adjective are all plural.",
+      "explanation": "Several neighbours: nossos vizinhos são muito simpáticos.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nosso vizinhos são muito simpáticos."
+          ],
+          "why": "The possessive stayed singular before a plural noun."
+        },
+        {
+          "answers": [
+            "Nossas vizinhos são muito simpáticos."
+          ],
+          "why": "Vizinho is masculine, so the feminine plural does not fit."
+        },
+        {
+          "answers": [
+            "Nossos vizinhos é muito simpático."
+          ],
+          "why": "Several neighbours need the plural verb and adjective."
+        }
+      ]
+    },
+    {
+      "id": "possessives-our-7",
+      "pattern": "our",
+      "type": "build",
+      "instruction": "Build the sentence: Our house has a big garden. Leave one tile unused.",
+      "source": "Our house has a big garden.",
+      "tokens": [
+        "casa",
+        "Nosso",
+        "tem",
+        "um",
+        "Nossa",
+        "jardim",
+        "grande."
+      ],
+      "answers": [
+        "Nossa casa tem um jardim grande."
+      ],
+      "hint": "The thing owned is casa.",
+      "feedback": "The possessive goes with casa, not with jardim.",
+      "explanation": "Casa is feminine singular, so our house is nossa casa.",
+      "mistakes": [
+        {
+          "answers": [
+            "Nosso casa tem um jardim grande."
+          ],
+          "why": "That tile is masculine, and casa is feminine. Leave unused the form that does not match casa."
+        }
+      ]
+    },
+    {
+      "id": "possessives-your-1",
+      "pattern": "your",
+      "type": "choose",
+      "instruction": "Choose the word for your (você).",
+      "source": "Onde está ____ carro?",
+      "options": [
+        "seu",
+        "sua",
+        "seus"
+      ],
+      "answers": [
+        "seu"
+      ],
+      "hint": "Carro is masculine singular.",
+      "feedback": "Seu and sua follow the thing owned, like meu and minha.",
+      "explanation": "Carro is masculine singular, so your car is seu carro.",
+      "mistakes": [
+        {
+          "answers": [
+            "sua"
+          ],
+          "why": "Sua goes with a feminine noun, and carro is masculine (o carro)."
+        },
+        {
+          "answers": [
+            "seus"
+          ],
+          "why": "Seus is plural, and está shows there is one car."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Onde",
+          "en": "where",
+          "word": "essentials-033"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "possessives-your-2",
+      "pattern": "your",
+      "type": "choose",
+      "instruction": "Choose the word for your (você).",
+      "source": "A ____ ideia é muito boa.",
+      "options": [
+        "seu",
+        "sua",
+        "suas"
+      ],
+      "answers": [
+        "sua"
+      ],
+      "hint": "Ideia ends in -a and takes a.",
+      "feedback": "The article a already shows the gender.",
+      "explanation": "Ideia is feminine singular (a ideia), so your idea is a sua ideia.",
+      "mistakes": [
+        {
+          "answers": [
+            "seu"
+          ],
+          "why": "Seu is masculine, and ideia is feminine."
+        },
+        {
+          "answers": [
+            "suas"
+          ],
+          "why": "Suas is plural, but there is one idea."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "ideia",
+          "en": "idea",
+          "word": "work-042"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "boa",
+          "en": "good"
+        }
+      ]
+    },
+    {
+      "id": "possessives-your-3",
+      "pattern": "your",
+      "type": "complete",
+      "instruction": "Write the Portuguese word for your (você).",
+      "source": "Qual é ____ nome?",
+      "answers": [
+        "seu",
+        "o seu"
+      ],
+      "hint": "Nome ends in -e. Its article is o.",
+      "feedback": "This is the everyday way to ask someone their name.",
+      "explanation": "Nome is masculine singular (o nome), so your name is seu nome.",
+      "mistakes": [
+        {
+          "answers": [
+            "sua"
+          ],
+          "why": "Nome is masculine, so the feminine form does not fit, even when you ask a woman."
+        },
+        {
+          "answers": [
+            "meu"
+          ],
+          "why": "Meu means my. The question asks the other person."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Qual",
+          "en": "what, which"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "nome",
+          "en": "name",
+          "word": "people-036"
+        }
+      ],
+      "alternatives": [
+        {
+          "answer": "teu",
+          "message": "Correct: teu is used in some regions of Brazil, such as the South. This course practises the você form, seu.",
+          "accepted": true
+        },
+        {
+          "answer": "o teu",
+          "message": "Correct: teu is used in some regions of Brazil, such as the South. This course practises the você form, seu.",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "possessives-your-4",
+      "pattern": "your",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Sua celular está aqui.",
+      "answers": [
+        "Seu celular está aqui.",
+        "O seu celular está aqui."
+      ],
+      "hint": "Celular takes o.",
+      "feedback": "Celular is masculine: o celular.",
+      "explanation": "Celular is masculine singular, so your phone is seu celular.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sua celular está aqui."
+          ],
+          "why": "This is the sentence unchanged: a feminine possessive stands before a masculine noun."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Sua",
+          "en": "your"
+        },
+        {
+          "pt": "celular",
+          "en": "cell phone",
+          "word": "media-001"
+        },
+        {
+          "pt": "está",
+          "en": "is (estar)",
+          "word": "verbs-002"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        }
+      ]
+    },
+    {
+      "id": "possessives-your-5",
+      "pattern": "your",
+      "type": "rewrite",
+      "instruction": "Replace carro with bicicleta and change the rest of the sentence to match.",
+      "source": "Seu carro é muito bonito.",
+      "answers": [
+        "Sua bicicleta é muito bonita.",
+        "A sua bicicleta é muito bonita."
+      ],
+      "hint": "Bicicleta is feminine, and the adjective changes too.",
+      "feedback": "Both the possessive and the adjective follow the new noun.",
+      "explanation": "Bicicleta is feminine singular: sua bicicleta, and bonito becomes bonita.",
+      "mistakes": [
+        {
+          "answers": [
+            "Seu bicicleta é muito bonita."
+          ],
+          "why": "The possessive still matches carro. Bicicleta is feminine."
+        },
+        {
+          "answers": [
+            "Sua bicicleta é muito bonito."
+          ],
+          "why": "The possessive changed, but the adjective still describes a masculine noun."
+        },
+        {
+          "answers": [
+            "Seu carro é muito bonito."
+          ],
+          "why": "That is the original sentence: carro was never replaced."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Seu",
+          "en": "your"
+        },
+        {
+          "pt": "carro",
+          "en": "car",
+          "word": "travel-004"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "bonito",
+          "en": "pretty",
+          "word": "qualities-005"
+        }
+      ]
+    },
+    {
+      "id": "possessives-your-6",
+      "pattern": "your",
+      "type": "translate",
+      "instruction": "Translate into Portuguese. Use você.",
+      "source": "Your bag is on the bed.",
+      "answers": [
+        "Sua bolsa está na cama.",
+        "A sua bolsa está na cama."
+      ],
+      "alternatives": [
+        {
+          "answer": "Tua bolsa está na cama.",
+          "message": "Correct: teu and tua are used in some regions of Brazil, such as the South. This course practises the você forms.",
+          "accepted": true
+        },
+        {
+          "answer": "A tua bolsa está na cama.",
+          "message": "Correct: teu and tua are used in some regions of Brazil, such as the South. This course practises the você forms.",
+          "accepted": true
+        }
+      ],
+      "hint": "Bolsa is feminine.",
+      "feedback": "Seu or sua: check bolsa.",
+      "explanation": "Bolsa is feminine singular, so your bag is sua bolsa.",
+      "mistakes": [
+        {
+          "answers": [
+            "Seu bolsa está na cama."
+          ],
+          "why": "Seu is masculine, and bolsa is feminine (a bolsa)."
+        },
+        {
+          "answers": [
+            "Sua bolsa é na cama."
+          ],
+          "why": "Where something is right now takes estar, not ser."
+        }
+      ]
+    },
+    {
+      "id": "possessives-your-7",
+      "pattern": "your",
+      "type": "build",
+      "instruction": "Build the sentence: Your keys are here. Leave one tile unused.",
+      "source": "Your keys are here.",
+      "tokens": [
+        "chaves",
+        "Sua",
+        "aqui.",
+        "estão",
+        "Suas"
+      ],
+      "answers": [
+        "Suas chaves estão aqui."
+      ],
+      "hint": "Chaves is feminine plural.",
+      "feedback": "The possessive matches chaves.",
+      "explanation": "Chaves is feminine plural, so your keys is suas chaves.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sua chaves estão aqui."
+          ],
+          "why": "That tile is singular, and chaves is plural. Leave unused the form without -s."
+        }
+      ]
+    },
+    {
+      "id": "possessives-his-her-1",
+      "pattern": "his-her",
+      "type": "choose",
+      "instruction": "Choose the word for his.",
+      "source": "Pedro mora com o irmão ____.",
+      "options": [
+        "dele",
+        "dela",
+        "deles"
+      ],
+      "answers": [
+        "dele"
+      ],
+      "hint": "Dele, dela, deles, delas follow the owner.",
+      "feedback": "After the noun, the word changes with the owner, not the thing.",
+      "explanation": "The owner is Pedro, one man, so his brother is o irmão dele.",
+      "mistakes": [
+        {
+          "answers": [
+            "dela"
+          ],
+          "why": "Dela means her: the owner would be a woman. Pedro is a man."
+        },
+        {
+          "answers": [
+            "deles"
+          ],
+          "why": "Deles means their: several owners. Here there is one owner."
+        }
+      ],
+      "row": "his (ele)",
+      "gloss": [
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "mora",
+          "en": "lives (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "com",
+          "en": "with",
+          "word": "essentials-086"
+        },
+        {
+          "pt": "irmão",
+          "en": "brother",
+          "word": "people-013"
+        }
+      ]
+    },
+    {
+      "id": "possessives-his-her-2",
+      "pattern": "his-her",
+      "type": "choose",
+      "instruction": "Choose the word for her.",
+      "source": "Ana gosta da casa ____.",
+      "options": [
+        "dele",
+        "dela"
+      ],
+      "answers": [
+        "dela"
+      ],
+      "hint": "Who is the owner?",
+      "feedback": "Dela agrees with the owner, Ana.",
+      "explanation": "Ana is a woman, so her house is a casa dela.",
+      "mistakes": [
+        {
+          "answers": [
+            "dele"
+          ],
+          "why": "Dele means his. Ana is a woman, and with these forms the owner decides."
+        }
+      ],
+      "row": "her (ela)",
+      "gloss": [
+        {
+          "pt": "Ana",
+          "en": "Ana (a name)"
+        },
+        {
+          "pt": "gosta",
+          "en": "likes (gostar)",
+          "word": "verbs-072"
+        },
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-his-her-3",
+      "pattern": "his-her",
+      "type": "complete",
+      "instruction": "Write the word for his or her.",
+      "source": "O pai ____ (de João) é professor.",
+      "answers": [
+        "dele"
+      ],
+      "hint": "João is a man.",
+      "feedback": "With this form, look at the owner, not at the thing owned.",
+      "explanation": "The owner is João, one man, so it is o pai dele.",
+      "mistakes": [
+        {
+          "answers": [
+            "dela"
+          ],
+          "why": "Dela points to a woman owner, and João is a man."
+        },
+        {
+          "answers": [
+            "seu"
+          ],
+          "why": "Seu would come before the noun, and in Brazil it usually means your. After the noun, use the form with de."
+        }
+      ],
+      "row": "his (ele)",
+      "gloss": [
+        {
+          "pt": "pai",
+          "en": "father",
+          "word": "people-009"
+        },
+        {
+          "pt": "João",
+          "en": "João (a name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "professor",
+          "en": "teacher",
+          "word": "school-003"
+        }
+      ]
+    },
+    {
+      "id": "possessives-his-her-4",
+      "pattern": "his-her",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Dele irmã mora em Lisboa.",
+      "answers": [
+        "A irmã dele mora em Lisboa."
+      ],
+      "hint": "Where does dele stand, and what comes before the noun?",
+      "feedback": "Dele goes after the noun, and the noun keeps its article.",
+      "explanation": "His sister is a irmã dele: article, noun, then dele.",
+      "mistakes": [
+        {
+          "answers": [
+            "Dele irmã mora em Lisboa."
+          ],
+          "why": "This is the sentence unchanged: dele cannot stand before the noun like meu."
+        },
+        {
+          "answers": [
+            "Irmã dele mora em Lisboa."
+          ],
+          "why": "At the start of a sentence the noun needs its article with dele."
+        },
+        {
+          "answers": [
+            "A dele irmã mora em Lisboa."
+          ],
+          "why": "Dele always comes after the noun, never between the article and the noun."
+        }
+      ],
+      "row": "his (ele)",
+      "gloss": [
+        {
+          "pt": "Dele",
+          "en": "his (of him)"
+        },
+        {
+          "pt": "irmã",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "pt": "mora",
+          "en": "lives (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "Lisboa",
+          "en": "Lisbon"
+        }
+      ]
+    },
+    {
+      "id": "possessives-his-her-5",
+      "pattern": "his-her",
+      "type": "rewrite",
+      "instruction": "Replace de Pedro with a pronoun. Write the whole sentence.",
+      "source": "A casa de Pedro é grande.",
+      "answers": [
+        "A casa dele é grande."
+      ],
+      "hint": "Pedro is one man.",
+      "feedback": "De Pedro becomes one word: de plus ele.",
+      "explanation": "De + ele contracts to dele, so a casa de Pedro becomes a casa dele.",
+      "mistakes": [
+        {
+          "answers": [
+            "A casa dela é grande."
+          ],
+          "why": "Dela stands for a woman, and Pedro is a man."
+        },
+        {
+          "answers": [
+            "A sua casa é grande."
+          ],
+          "why": "In Brazil sua casa sounds like your house. Dele makes clear it is his."
+        },
+        {
+          "answers": [
+            "A casa de ele é grande."
+          ],
+          "why": "De and ele always join into one word."
+        }
+      ],
+      "row": "his (ele)",
+      "gloss": [
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-his-her-6",
+      "pattern": "his-her",
+      "type": "translate",
+      "instruction": "Translate into Portuguese.",
+      "source": "Her husband works in a company.",
+      "answers": [
+        "O marido dela trabalha numa empresa.",
+        "O marido dela trabalha em uma empresa."
+      ],
+      "alternatives": [
+        {
+          "answer": "O seu marido trabalha numa empresa.",
+          "message": "Grammatical, but in Brazil seu marido sounds like your husband. Use the form after the noun to say her.",
+          "accepted": false
+        },
+        {
+          "answer": "Seu marido trabalha numa empresa.",
+          "message": "Grammatical, but in Brazil seu marido sounds like your husband. Use the form after the noun to say her.",
+          "accepted": false
+        }
+      ],
+      "hint": "Her points to a woman owner.",
+      "feedback": "Use the form after the noun, which is clear in Brazil.",
+      "explanation": "The owner is a woman, so her husband is o marido dela.",
+      "mistakes": [
+        {
+          "answers": [
+            "O marido dele trabalha numa empresa."
+          ],
+          "why": "Dele means his. The owner is a woman, so the form must show that."
+        },
+        {
+          "answers": [
+            "Dela marido trabalha numa empresa."
+          ],
+          "why": "Dela comes after the noun, and the noun keeps its article."
+        }
+      ],
+      "row": "her (ela)"
+    },
+    {
+      "id": "possessives-his-her-7",
+      "pattern": "his-her",
+      "type": "build",
+      "instruction": "Build the sentence: His dog is very small. Leave one tile unused.",
+      "source": "His dog is very small.",
+      "tokens": [
+        "cachorro",
+        "dela",
+        "O",
+        "é",
+        "dele",
+        "muito",
+        "pequeno."
+      ],
+      "answers": [
+        "O cachorro dele é muito pequeno."
+      ],
+      "hint": "His: one man owns it.",
+      "feedback": "Dele follows the noun and matches the owner.",
+      "explanation": "The owner is a man, so his dog is o cachorro dele.",
+      "mistakes": [
+        {
+          "answers": [
+            "O cachorro dela é muito pequeno."
+          ],
+          "why": "That tile means her. Leave unused the form that points to a woman owner."
+        }
+      ],
+      "row": "his (ele)"
+    },
+    {
+      "id": "possessives-their-1",
+      "pattern": "their",
+      "type": "choose",
+      "instruction": "Choose the word for their.",
+      "source": "Pedro e João moram aqui. A casa ____ é grande.",
+      "options": [
+        "dele",
+        "deles",
+        "delas"
+      ],
+      "answers": [
+        "deles"
+      ],
+      "hint": "How many owners, and are they men or women?",
+      "feedback": "Deles and delas count and gender the owners.",
+      "explanation": "Pedro and João are two men, so their house is a casa deles.",
+      "mistakes": [
+        {
+          "answers": [
+            "dele"
+          ],
+          "why": "Dele is for one male owner. Here there are two."
+        },
+        {
+          "answers": [
+            "delas"
+          ],
+          "why": "Delas is for a group of women only. Pedro and João are men."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "João",
+          "en": "João (a name)"
+        },
+        {
+          "pt": "moram",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "aqui",
+          "en": "here",
+          "word": "essentials-054"
+        },
+        {
+          "pt": "casa",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "grande",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-their-2",
+      "pattern": "their",
+      "type": "choose",
+      "instruction": "Choose the word for their.",
+      "source": "Ana e Maria trabalham muito. O chefe ____ é simpático.",
+      "options": [
+        "deles",
+        "delas",
+        "dela"
+      ],
+      "answers": [
+        "delas"
+      ],
+      "hint": "Look at the owners, not at chefe.",
+      "feedback": "The owners are two women.",
+      "explanation": "Ana and Maria are women, so their boss is o chefe delas. Chefe being a man does not change it.",
+      "mistakes": [
+        {
+          "answers": [
+            "deles"
+          ],
+          "why": "Deles is for men or a mixed group. Ana and Maria are both women."
+        },
+        {
+          "answers": [
+            "dela"
+          ],
+          "why": "Dela is for one woman owner. Here there are two."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Ana",
+          "en": "Ana (a name)"
+        },
+        {
+          "pt": "Maria",
+          "en": "Maria (a name)"
+        },
+        {
+          "pt": "trabalham",
+          "en": "work (trabalhar)",
+          "word": "verbs-054"
+        },
+        {
+          "pt": "muito",
+          "en": "very",
+          "word": "essentials-065"
+        },
+        {
+          "pt": "chefe",
+          "en": "boss",
+          "word": "work-010"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "simpático",
+          "en": "nice, friendly"
+        }
+      ]
+    },
+    {
+      "id": "possessives-their-3",
+      "pattern": "their",
+      "type": "complete",
+      "instruction": "Write the word for their.",
+      "source": "Os pais ____ (de Ana e Pedro) moram longe.",
+      "answers": [
+        "deles"
+      ],
+      "hint": "One woman and one man: what form does a mixed group take?",
+      "feedback": "A mixed group takes the masculine form.",
+      "explanation": "Ana and Pedro are a mixed group, so their parents is os pais deles.",
+      "mistakes": [
+        {
+          "answers": [
+            "delas"
+          ],
+          "why": "Delas is only for a group of women. One man in the group changes the form to the masculine."
+        },
+        {
+          "answers": [
+            "dela"
+          ],
+          "why": "Dela is for one woman owner, but there are two owners."
+        },
+        {
+          "answers": [
+            "dele"
+          ],
+          "why": "Dele is for one man. There are two owners here."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "pais",
+          "en": "parents",
+          "word": "people-009"
+        },
+        {
+          "pt": "Ana",
+          "en": "Ana (a name)"
+        },
+        {
+          "pt": "Pedro",
+          "en": "Pedro (a name)"
+        },
+        {
+          "pt": "moram",
+          "en": "live (morar)",
+          "word": "verbs-065"
+        },
+        {
+          "pt": "longe",
+          "en": "far",
+          "word": "essentials-095"
+        }
+      ]
+    },
+    {
+      "id": "possessives-their-4",
+      "pattern": "their",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Ana e Maria visitam os pais deles.",
+      "answers": [
+        "Ana e Maria visitam os pais delas."
+      ],
+      "hint": "Who are the owners?",
+      "feedback": "The form after the noun follows the owners, not os pais.",
+      "explanation": "Ana and Maria are both women, so their parents is os pais delas.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ana e Maria visitam os pais deles."
+          ],
+          "why": "This is the sentence unchanged: the masculine form follows pais, but it should follow the owners."
+        },
+        {
+          "answers": [
+            "Ana e Maria visitam os pais dela."
+          ],
+          "why": "Dela is for one owner. There are two women here."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "Ana",
+          "en": "Ana (a name)"
+        },
+        {
+          "pt": "Maria",
+          "en": "Maria (a name)"
+        },
+        {
+          "pt": "visitam",
+          "en": "visit (visitar)",
+          "word": "verbs-105"
+        },
+        {
+          "pt": "pais",
+          "en": "parents",
+          "word": "people-009"
+        },
+        {
+          "pt": "deles",
+          "en": "their (of them)"
+        }
+      ]
+    },
+    {
+      "id": "possessives-their-5",
+      "pattern": "their",
+      "type": "rewrite",
+      "instruction": "Replace de Ana e Maria with a pronoun. Write the whole sentence.",
+      "source": "O apartamento de Ana e Maria é novo.",
+      "answers": [
+        "O apartamento delas é novo."
+      ],
+      "hint": "Two women own it.",
+      "feedback": "De + elas joins into one word.",
+      "explanation": "Ana and Maria are women, so de Ana e Maria becomes delas.",
+      "mistakes": [
+        {
+          "answers": [
+            "O apartamento deles é novo."
+          ],
+          "why": "Deles is for men or a mixed group. The owners are two women."
+        },
+        {
+          "answers": [
+            "O apartamento dela é novo."
+          ],
+          "why": "Dela is for one woman. There are two owners."
+        },
+        {
+          "answers": [
+            "O apartamento de elas é novo."
+          ],
+          "why": "De and elas always join into one word."
+        }
+      ],
+      "gloss": [
+        {
+          "pt": "apartamento",
+          "en": "apartment",
+          "word": "home-002"
+        },
+        {
+          "pt": "Ana",
+          "en": "Ana (a name)"
+        },
+        {
+          "pt": "Maria",
+          "en": "Maria (a name)"
+        },
+        {
+          "pt": "é",
+          "en": "is (ser)",
+          "word": "verbs-001"
+        },
+        {
+          "pt": "novo",
+          "en": "new",
+          "word": "qualities-008"
+        }
+      ]
+    },
+    {
+      "id": "possessives-their-6",
+      "pattern": "their",
+      "type": "translate",
+      "instruction": "Translate into Portuguese. Their means Pedro and his wife.",
+      "source": "Their house is far.",
+      "answers": [
+        "A casa deles fica longe.",
+        "A casa deles é longe."
+      ],
+      "alternatives": [
+        {
+          "answer": "A sua casa fica longe.",
+          "message": "Grammatical, but in Brazil sua casa sounds like your house. Use the form after the noun to say their.",
+          "accepted": false
+        }
+      ],
+      "hint": "A man and a woman together take the masculine plural.",
+      "feedback": "Use the form after the noun.",
+      "explanation": "A mixed couple takes deles, so their house is a casa deles.",
+      "mistakes": [
+        {
+          "answers": [
+            "A casa delas fica longe."
+          ],
+          "why": "Delas is for women only, and Pedro is in the group."
+        },
+        {
+          "answers": [
+            "A casa dele fica longe."
+          ],
+          "why": "Dele is for one man. The house belongs to two people."
+        }
+      ]
+    },
+    {
+      "id": "possessives-their-7",
+      "pattern": "their",
+      "type": "build",
+      "instruction": "Build the sentence: I know their daughter. Their means a couple. Leave one tile unused.",
+      "source": "I know their daughter.",
+      "tokens": [
+        "conheço",
+        "a",
+        "delas.",
+        "Eu",
+        "filha",
+        "deles."
+      ],
+      "answers": [
+        "Eu conheço a filha deles."
+      ],
+      "hint": "A couple is a mixed group.",
+      "feedback": "The form follows the owners.",
+      "explanation": "A man and a woman take the masculine plural, so their daughter is a filha deles.",
+      "mistakes": [
+        {
+          "answers": [
+            "Eu conheço a filha delas."
+          ],
+          "why": "That tile is for a group of women. Leave unused the form that excludes the man."
+        }
+      ]
+    }
+  ]
+}

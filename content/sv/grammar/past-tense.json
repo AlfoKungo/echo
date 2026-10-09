@@ -1,0 +1,2645 @@
+{
+  "id": "past-tense",
+  "unit": "verbs",
+  "level": "A2",
+  "title": "The past tense",
+  "description": "Say what you did: the four verb groups in preteritum, strong verbs, and time words like igår.",
+  "mark": "-ade · -de · -te",
+  "guide": {
+    "summary": "Preteritum tells what happened at a finished time: igår, förra veckan. The form is the same for every person; the ending depends on the verb group, which the present tense gives away. This page has the four regular endings, the strong verbs that change their vowel, four common irregulars, and word order with time words.",
+    "sections": [
+      {
+        "id": "groups",
+        "title": "Four groups and the strong verbs",
+        "text": "The Swedish past, preteritum, has one form for every person: jag, du, hon, vi and de all say pratade. What changes is the ending, and the present tense tells you which group a verb belongs to. Every verb note in the deck lists present, past and supine, so you can always check.",
+        "table": {
+          "columns": [
+            "group",
+            "present",
+            "past"
+          ],
+          "rows": [
+            [
+              "group 1",
+              "pratar",
+              "pratade"
+            ],
+            [
+              "group 2a",
+              "stänger",
+              "stängde"
+            ],
+            [
+              "group 2b",
+              "köper",
+              "köpte"
+            ],
+            [
+              "group 3",
+              "bor",
+              "bodde"
+            ],
+            [
+              "strong",
+              "skriver",
+              "skrev"
+            ]
+          ]
+        },
+        "steps": [
+          "Look at the present: -ar points to group 1.",
+          "Present in -er or -r with a stem ending in a consonant: group 2, -de or -te.",
+          "A short verb ending in a vowel: group 3, -dde.",
+          "Strong verbs change the vowel and have to be learnt."
+        ],
+        "examples": [
+          {
+            "sv": "Jag pratade med Anna.",
+            "en": "I talked to Anna."
+          },
+          {
+            "sv": "Vi köpte bröd.",
+            "en": "We bought bread."
+          }
+        ],
+        "watch": [
+          "Never change the verb for the person: hon pratade, de pratade.",
+          "The supine (pratat, köpt) is not the past on its own; it needs har or hade."
+        ]
+      },
+      {
+        "id": "group1",
+        "title": "Group 1: -ade",
+        "text": "Verbs whose present ends in -ar keep the a of the infinitive and add -de. This is the biggest group and every new verb usually joins it.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "present",
+            "past"
+          ],
+          "rows": [
+            [
+              "prata",
+              "pratar",
+              "pratade"
+            ],
+            [
+              "jobba",
+              "jobbar",
+              "jobbade"
+            ],
+            [
+              "titta",
+              "tittar",
+              "tittade"
+            ],
+            [
+              "öppna",
+              "öppnar",
+              "öppnade"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the present ends in -ar.",
+          "Take the infinitive with its a.",
+          "Add -de."
+        ],
+        "examples": [
+          {
+            "sv": "Vi städade hela dagen.",
+            "en": "We cleaned all day."
+          },
+          {
+            "sv": "Han öppnade fönstret.",
+            "en": "He opened the window."
+          }
+        ],
+        "watch": [
+          "The a stays: städade, not städde.",
+          "One d only: lyssnade, not lyssnadde."
+        ]
+      },
+      {
+        "id": "group2a",
+        "title": "Group 2a: -de after a voiced sound",
+        "text": "Verbs with -er in the present drop the -a of the infinitive to get the stem. If the stem ends in a voiced sound such as g, r, l, m, n or v, add -de.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "stem",
+            "past"
+          ],
+          "rows": [
+            [
+              "stänga",
+              "stäng-",
+              "stängde"
+            ],
+            [
+              "ringa",
+              "ring-",
+              "ringde"
+            ],
+            [
+              "höra",
+              "hör-",
+              "hörde"
+            ],
+            [
+              "köra",
+              "kör-",
+              "körde"
+            ],
+            [
+              "glömma",
+              "glöm-",
+              "glömde"
+            ]
+          ]
+        },
+        "steps": [
+          "Check that the present ends in -er or just -r.",
+          "Drop the -a to find the stem.",
+          "The stem ends in a voiced sound: add -de."
+        ],
+        "examples": [
+          {
+            "sv": "Hon stängde dörren.",
+            "en": "She closed the door."
+          },
+          {
+            "sv": "Jag ringde mamma.",
+            "en": "I called Mum."
+          }
+        ],
+        "watch": [
+          "A double m or n before the -a becomes single: glömde, kände.",
+          "Not -ade: ringer is group 2, so never ringade."
+        ]
+      },
+      {
+        "id": "group2b",
+        "title": "Group 2b: -te after k, p, s, t",
+        "text": "When the stem of a group 2 verb ends in a voiceless sound, k, p, s or t, the d hardens to t. Say köpde aloud and you feel why.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "stem",
+            "past"
+          ],
+          "rows": [
+            [
+              "köpa",
+              "köp-",
+              "köpte"
+            ],
+            [
+              "läsa",
+              "läs-",
+              "läste"
+            ],
+            [
+              "åka",
+              "åk-",
+              "åkte"
+            ],
+            [
+              "tänka",
+              "tänk-",
+              "tänkte"
+            ],
+            [
+              "hjälpa",
+              "hjälp-",
+              "hjälpte"
+            ]
+          ]
+        },
+        "steps": [
+          "Drop the -a to find the stem.",
+          "The last letter is k, p, s or t: add -te.",
+          "Otherwise use -de."
+        ],
+        "examples": [
+          {
+            "sv": "Vi åkte buss till jobbet.",
+            "en": "We went to work by bus."
+          },
+          {
+            "sv": "Hon läste en bok.",
+            "en": "She read a book."
+          }
+        ],
+        "watch": [
+          "Only group 2: titta ends in t, but tittar is group 1, so tittade.",
+          "Tänkte and tyckte are -te because of the k."
+        ]
+      },
+      {
+        "id": "group3",
+        "title": "Group 3: short verbs, -dde",
+        "text": "Short verbs of one syllable that end in a vowel add -dde: the double d keeps the vowel long. Not every short verb belongs here: gå, se and ta are strong.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "present",
+            "past"
+          ],
+          "rows": [
+            [
+              "bo",
+              "bor",
+              "bodde"
+            ],
+            [
+              "tro",
+              "tror",
+              "trodde"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the verb one syllable ending in a vowel?",
+          "Check the deck note: does the past end in -dde?",
+          "If so, add -dde."
+        ],
+        "examples": [
+          {
+            "sv": "Vi bodde i Göteborg.",
+            "en": "We lived in Gothenburg."
+          },
+          {
+            "sv": "Jag trodde att du var hemma.",
+            "en": "I thought you were at home."
+          }
+        ],
+        "watch": [
+          "Two d: bodde, never bode.",
+          "Gå, se and ta look the same but are strong: gick, såg, tog."
+        ]
+      },
+      {
+        "id": "strong",
+        "title": "Strong verbs: a new vowel",
+        "text": "Strong verbs change their vowel in the past and add no ending. Many of the most common verbs are strong, so learn them as a set: the deck note gives the past.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "present",
+            "past"
+          ],
+          "rows": [
+            [
+              "skriva",
+              "skriver",
+              "skrev"
+            ],
+            [
+              "dricka",
+              "dricker",
+              "drack"
+            ],
+            [
+              "gå",
+              "går",
+              "gick"
+            ],
+            [
+              "komma",
+              "kommer",
+              "kom"
+            ],
+            [
+              "se",
+              "ser",
+              "såg"
+            ],
+            [
+              "ta",
+              "tar",
+              "tog"
+            ],
+            [
+              "äta",
+              "äter",
+              "åt"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the verb in the table or marked with a new vowel in its note?",
+          "Use the past from the note.",
+          "Add nothing to it."
+        ],
+        "examples": [
+          {
+            "sv": "Jag skrev ett brev.",
+            "en": "I wrote a letter."
+          },
+          {
+            "sv": "Vi gick hem.",
+            "en": "We walked home."
+          },
+          {
+            "sv": "De tog bussen.",
+            "en": "They took the bus."
+          }
+        ],
+        "watch": [
+          "No -de on a strong verb: skrev, not skrivde.",
+          "Do not confuse the past with the supine: drack, but har druckit."
+        ]
+      },
+      {
+        "id": "irregular",
+        "title": "Vara, ha, göra, säga",
+        "text": "Four very common verbs have pasts of their own. Säga has two forms: sa is what most people say and write, sade is the full form.",
+        "table": {
+          "columns": [
+            "infinitive",
+            "present",
+            "past"
+          ],
+          "rows": [
+            [
+              "vara",
+              "är",
+              "var"
+            ],
+            [
+              "ha",
+              "har",
+              "hade"
+            ],
+            [
+              "göra",
+              "gör",
+              "gjorde"
+            ],
+            [
+              "säga",
+              "säger",
+              "sa or sade"
+            ]
+          ]
+        },
+        "steps": [
+          "Recognise one of the four verbs.",
+          "Use its past from the table."
+        ],
+        "examples": [
+          {
+            "sv": "Jag var trött igår.",
+            "en": "I was tired yesterday."
+          },
+          {
+            "sv": "Vi hade en fin semester.",
+            "en": "We had a lovely holiday."
+          },
+          {
+            "sv": "Hon sa hej.",
+            "en": "She said hello."
+          }
+        ],
+        "watch": [
+          "Hade has one d.",
+          "Gjorde is spelled with gj and sounds like jorde."
+        ]
+      },
+      {
+        "id": "time",
+        "title": "Time words: igår, förra veckan",
+        "text": "The past goes with words that point back in time: igår, igår kväll, förra veckan, i helgen. When one of them starts the sentence, the verb still comes second, so the subject moves after it.",
+        "steps": [
+          "Choose the past verb form.",
+          "If a time word starts the sentence, put the verb right after it.",
+          "Put the subject after the verb."
+        ],
+        "examples": [
+          {
+            "sv": "Igår åt vi middag hemma.",
+            "en": "Yesterday we had dinner at home."
+          },
+          {
+            "sv": "Förra veckan åkte jag till Stockholm.",
+            "en": "Last week I went to Stockholm."
+          }
+        ],
+        "watch": [
+          "Igår jag åt is wrong: the verb comes second.",
+          "Igår can also be written i går."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "ade": {
+      "section": "group1",
+      "steps": [
+        "Check that the present ends in -ar.",
+        "Keep the a of the infinitive and add -de."
+      ]
+    },
+    "de": {
+      "section": "group2a",
+      "steps": [
+        "Drop the -a of the infinitive to get the stem.",
+        "Check the last sound: voiced means -de."
+      ]
+    },
+    "te": {
+      "section": "group2b",
+      "steps": [
+        "Drop the -a of the infinitive to get the stem.",
+        "If it ends in k, p, s or t, add -te."
+      ]
+    },
+    "dde": {
+      "section": "group3",
+      "steps": [
+        "Check the verb is one short syllable ending in a vowel.",
+        "Add -dde."
+      ]
+    },
+    "strong": {
+      "section": "strong",
+      "steps": [
+        "Recognise a strong verb from the table or the deck note.",
+        "Use its past with the new vowel and no ending."
+      ]
+    },
+    "irregular": {
+      "section": "irregular",
+      "steps": [
+        "Recognise vara, ha, göra or säga.",
+        "Use the form in the table: var, hade, gjorde, sa."
+      ]
+    },
+    "time": {
+      "section": "time",
+      "steps": [
+        "Use a past verb with igår or förra veckan.",
+        "If the time word comes first, put the verb second and the subject after it."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "past-tense-ade-1",
+      "pattern": "ade",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "prata · jag · preteritum",
+      "answers": [
+        "pratade",
+        "jag pratade"
+      ],
+      "hint": "Pratar ends in -ar in the present. What does that tell you about the past?",
+      "feedback": "Verbs with -ar in the present add -ade.",
+      "explanation": "Jag pratade: prata + -de, so the past ends in -ade.",
+      "mistakes": [
+        {
+          "answers": [
+            "pratar",
+            "jag pratar"
+          ],
+          "why": "Pratar is the present: I talk, I am talking. The past needs a new ending."
+        },
+        {
+          "answers": [
+            "pratat",
+            "jag pratat"
+          ],
+          "why": "Pratat is the supine, used after har or hade: jag har pratat. On its own it is not a past tense."
+        },
+        {
+          "answers": [
+            "pratte",
+            "jag pratte"
+          ],
+          "why": "The -te ending belongs to verbs whose stem ends in k, p, s or t without an -ar present. Pratar keeps its a."
+        }
+      ],
+      "row": "prata"
+    },
+    {
+      "id": "past-tense-ade-2",
+      "pattern": "ade",
+      "type": "complete",
+      "instruction": "Write städa in the past.",
+      "source": "Vi ____ (städa) hela lägenheten igår.",
+      "answers": [
+        "städade"
+      ],
+      "hint": "Present: städar. Group 1 keeps the a.",
+      "feedback": "Group 1 verbs add -de to the whole infinitive: -ade.",
+      "explanation": "Vi städade: städa + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "städar"
+          ],
+          "why": "Städar is the present. Igår puts the action in the past."
+        },
+        {
+          "answers": [
+            "städat"
+          ],
+          "why": "Städat is the supine, which needs har or hade in front of it."
+        },
+        {
+          "answers": [
+            "städde"
+          ],
+          "why": "The a of städa is part of the stem and stays: group 1 never drops it."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "städa",
+          "en": "clean"
+        },
+        {
+          "sv": "hela",
+          "en": "the whole"
+        },
+        {
+          "sv": "lägenheten",
+          "en": "the flat",
+          "word": "home-002"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-ade-3",
+      "pattern": "ade",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Anna ____ på musik hela kvällen.",
+      "options": [
+        "lyssnade",
+        "lyssnar",
+        "lyssnat",
+        "lyssnadde"
+      ],
+      "answers": [
+        "lyssnade"
+      ],
+      "hint": "Lyssnar is the present. Which form is the past?",
+      "feedback": "Lyssna is group 1: the past ends in -ade.",
+      "explanation": "Anna lyssnade: lyssna + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "lyssnar"
+          ],
+          "why": "Lyssnar is the present: she listens. The sentence tells what she did one evening."
+        },
+        {
+          "answers": [
+            "lyssnat"
+          ],
+          "why": "Lyssnat is the supine. It only works after har or hade."
+        },
+        {
+          "answers": [
+            "lyssnadde"
+          ],
+          "why": "Only short verbs like bo and tro double the d. Lyssna just adds one d after its a."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Anna",
+          "en": "Anna"
+        },
+        {
+          "sv": "på",
+          "en": "on; to"
+        },
+        {
+          "sv": "musik",
+          "en": "music",
+          "word": "media-045"
+        },
+        {
+          "sv": "hela",
+          "en": "the whole"
+        },
+        {
+          "sv": "kvällen",
+          "en": "the evening",
+          "word": "health-time-034"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-ade-4",
+      "pattern": "ade",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "I worked at home yesterday.",
+      "answers": [
+        "Jag jobbade hemma igår.",
+        "Igår jobbade jag hemma.",
+        "Jag jobbade hemma i går.",
+        "I går jobbade jag hemma."
+      ],
+      "hint": "Worked: jobba is group 1. At home is one word.",
+      "feedback": "Jobba keeps its a and adds -de.",
+      "explanation": "Jag jobbade hemma igår: jobba + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag jobbar hemma igår."
+          ],
+          "why": "Jobbar is the present. With igår the verb has to be in the past too."
+        },
+        {
+          "answers": [
+            "Igår jag jobbade hemma."
+          ],
+          "why": "When igår comes first, the verb must come second, before jag."
+        },
+        {
+          "answers": [
+            "Jag jobbat hemma igår."
+          ],
+          "why": "Jobbat is the supine and needs har in front of it."
+        }
+      ],
+      "row": "jobba"
+    },
+    {
+      "id": "past-tense-ade-5",
+      "pattern": "ade",
+      "type": "rewrite",
+      "instruction": "Put the sentence in the past.",
+      "source": "Han öppnar fönstret.",
+      "answers": [
+        "Han öppnade fönstret."
+      ],
+      "hint": "Öppnar ends in -ar: change -ar to -ade.",
+      "feedback": "Group 1: -ar in the present, -ade in the past.",
+      "explanation": "Han öppnade fönstret: öppna + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han öppnar fönstret."
+          ],
+          "why": "That is the sentence unchanged, still in the present."
+        },
+        {
+          "answers": [
+            "Han öppnat fönstret."
+          ],
+          "why": "Öppnat is the supine. Without har it is not a sentence."
+        },
+        {
+          "answers": [
+            "Han öppnde fönstret."
+          ],
+          "why": "The a of öppna stays before the past ending."
+        }
+      ],
+      "row": "öppna",
+      "gloss": [
+        {
+          "sv": "öppnar",
+          "en": "opens (öppna)",
+          "word": "verbs-040"
+        },
+        {
+          "sv": "fönstret",
+          "en": "the window",
+          "word": "home-020"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-ade-6",
+      "pattern": "ade",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "We watched a film.",
+      "tokens": [
+        "Vi",
+        "tittar",
+        "tittade",
+        "på",
+        "en",
+        "film."
+      ],
+      "answers": [
+        "Vi tittade på en film."
+      ],
+      "hint": "Watch is titta på. Pick the past tile.",
+      "feedback": "Titta is group 1: -ade.",
+      "explanation": "Vi tittade på en film: titta + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi tittar på en film."
+          ],
+          "why": "Tittar is the present: we are watching. The English is in the past."
+        },
+        {
+          "answers": [
+            "Vi tittade en film."
+          ],
+          "why": "Titta needs på before what you watch."
+        }
+      ],
+      "row": "titta"
+    },
+    {
+      "id": "past-tense-de-1",
+      "pattern": "de",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "stänga · hon · preteritum",
+      "answers": [
+        "stängde",
+        "hon stängde"
+      ],
+      "hint": "The stem is stäng-. Is its last sound voiced or voiceless?",
+      "feedback": "Stäng- ends in a voiced sound, so it takes -de.",
+      "explanation": "Hon stängde: stäng- + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "stängte",
+            "hon stängte"
+          ],
+          "why": "The -te ending is for stems ending in k, p, s or t. Stäng- ends in a voiced g."
+        },
+        {
+          "answers": [
+            "stängt",
+            "hon stängt"
+          ],
+          "why": "Stängt is the supine, used after har: hon har stängt."
+        },
+        {
+          "answers": [
+            "stänger",
+            "hon stänger"
+          ],
+          "why": "Stänger is the present."
+        },
+        {
+          "answers": [
+            "stängade",
+            "hon stängade"
+          ],
+          "why": "Stänga has stänger in the present, not stängar, so it is not group 1."
+        }
+      ],
+      "row": "stänga"
+    },
+    {
+      "id": "past-tense-de-2",
+      "pattern": "de",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "ringa · vi · preteritum",
+      "answers": [
+        "ringde",
+        "vi ringde"
+      ],
+      "hint": "Present: ringer. Drop the -a, look at the last sound of ring-.",
+      "feedback": "Ring- ends in a voiced sound: -de.",
+      "explanation": "Vi ringde: ring- + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "ringte",
+            "vi ringte"
+          ],
+          "why": "G is voiced, so the ending is not -te."
+        },
+        {
+          "answers": [
+            "ringade",
+            "vi ringade"
+          ],
+          "why": "The present is ringer, not ringar, so this is not group 1."
+        },
+        {
+          "answers": [
+            "ringt",
+            "vi ringt"
+          ],
+          "why": "Ringt is the supine: vi har ringt."
+        }
+      ],
+      "row": "ringa"
+    },
+    {
+      "id": "past-tense-de-3",
+      "pattern": "de",
+      "type": "complete",
+      "instruction": "Write höra in the past.",
+      "source": "Jag ____ (höra) en fin sång igår.",
+      "answers": [
+        "hörde"
+      ],
+      "hint": "Present: hör. The stem ends in r.",
+      "feedback": "R is voiced: add -de to the stem.",
+      "explanation": "Jag hörde: hör- + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "hörte"
+          ],
+          "why": "R is a voiced sound, so the ending is not -te."
+        },
+        {
+          "answers": [
+            "hört"
+          ],
+          "why": "Hört is the supine: jag har hört."
+        },
+        {
+          "answers": [
+            "hör"
+          ],
+          "why": "Hör is the present."
+        },
+        {
+          "answers": [
+            "hörade"
+          ],
+          "why": "Höra has hör in the present, not hörar, so it does not take -ade."
+        }
+      ],
+      "row": "höra",
+      "gloss": [
+        {
+          "sv": "höra",
+          "en": "hear"
+        },
+        {
+          "sv": "fin",
+          "en": "nice; lovely"
+        },
+        {
+          "sv": "sång",
+          "en": "song",
+          "word": "leisure-047"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-de-4",
+      "pattern": "de",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Pappa ____ bilen till jobbet.",
+      "options": [
+        "körde",
+        "körte",
+        "kördde",
+        "körade"
+      ],
+      "answers": [
+        "körde"
+      ],
+      "hint": "Present: kör. What kind of sound is r?",
+      "feedback": "Kör- ends in voiced r: -de.",
+      "explanation": "Pappa körde: kör- + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "körte"
+          ],
+          "why": "The -te ending follows k, p, s or t. R is voiced."
+        },
+        {
+          "answers": [
+            "kördde"
+          ],
+          "why": "A double d is only for stems ending in a vowel, like bo and tro."
+        },
+        {
+          "answers": [
+            "körade"
+          ],
+          "why": "Köra has kör in the present, not körar, so it is not group 1."
+        }
+      ],
+      "row": "köra",
+      "gloss": [
+        {
+          "sv": "Pappa",
+          "en": "Dad",
+          "word": "people-013"
+        },
+        {
+          "sv": "bilen",
+          "en": "the car",
+          "word": "travel-004"
+        },
+        {
+          "sv": "till",
+          "en": "to"
+        },
+        {
+          "sv": "jobbet",
+          "en": "work; the job",
+          "word": "work-002"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-de-5",
+      "pattern": "de",
+      "type": "repair",
+      "instruction": "Correct the mistake.",
+      "source": "Jag glömte min telefon hemma.",
+      "answers": [
+        "Jag glömde min telefon hemma."
+      ],
+      "hint": "Look at the last sound of the stem glöm-.",
+      "feedback": "M is voiced, so the ending is -de.",
+      "explanation": "Jag glömde: glöm- + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag glömte min telefon hemma."
+          ],
+          "why": "That is the sentence unchanged: m is voiced, so -te is wrong here."
+        },
+        {
+          "answers": [
+            "Jag glömt min telefon hemma."
+          ],
+          "why": "Glömt is the supine and needs har."
+        },
+        {
+          "answers": [
+            "Jag glömmde min telefon hemma."
+          ],
+          "why": "A double m only comes before a vowel, as in glömmer. Before d it is single."
+        }
+      ],
+      "row": "glömma",
+      "gloss": [
+        {
+          "sv": "glömte",
+          "en": "forgot (glömma)",
+          "word": "verbs-089"
+        },
+        {
+          "sv": "min",
+          "en": "my"
+        },
+        {
+          "sv": "telefon",
+          "en": "phone",
+          "word": "media-028"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-de-6",
+      "pattern": "de",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "She closed the door.",
+      "answers": [
+        "Hon stängde dörren."
+      ],
+      "hint": "Close is stänga. The door is dörren.",
+      "feedback": "Stäng- ends in a voiced sound: -de.",
+      "explanation": "Hon stängde dörren: stäng- + -de.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon stängte dörren."
+          ],
+          "why": "G is voiced, so the ending is not -te."
+        },
+        {
+          "answers": [
+            "Hon stänger dörren."
+          ],
+          "why": "Stänger is the present: she closes."
+        },
+        {
+          "answers": [
+            "Hon stängde dörr."
+          ],
+          "why": "The door is a specific door, so Swedish uses the definite form with -en."
+        }
+      ],
+      "row": "stänga"
+    },
+    {
+      "id": "past-tense-te-1",
+      "pattern": "te",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "köpa · du · preteritum",
+      "answers": [
+        "köpte",
+        "du köpte"
+      ],
+      "hint": "Present: köper. The stem köp- ends in p.",
+      "feedback": "After k, p, s or t the ending is -te.",
+      "explanation": "Du köpte: köp- + -te.",
+      "mistakes": [
+        {
+          "answers": [
+            "köpde",
+            "du köpde"
+          ],
+          "why": "P is voiceless, so -de is not used: it would be hard to say."
+        },
+        {
+          "answers": [
+            "köpade",
+            "du köpade"
+          ],
+          "why": "Köpa has köper in the present, not köpar, so it is not group 1."
+        },
+        {
+          "answers": [
+            "köpt",
+            "du köpt"
+          ],
+          "why": "Köpt is the supine: du har köpt."
+        }
+      ],
+      "row": "köpa"
+    },
+    {
+      "id": "past-tense-te-2",
+      "pattern": "te",
+      "type": "complete",
+      "instruction": "Write åka in the past.",
+      "source": "Vi ____ (åka) buss till skolan.",
+      "answers": [
+        "åkte"
+      ],
+      "hint": "Present: åker. The stem åk- ends in k.",
+      "feedback": "K is voiceless: -te.",
+      "explanation": "Vi åkte: åk- + -te.",
+      "mistakes": [
+        {
+          "answers": [
+            "åkde"
+          ],
+          "why": "After k the ending changes to -te."
+        },
+        {
+          "answers": [
+            "åkade"
+          ],
+          "why": "Åka has åker in the present, not åkar, so it is not group 1."
+        },
+        {
+          "answers": [
+            "åkt"
+          ],
+          "why": "Åkt is the supine: vi har åkt."
+        },
+        {
+          "answers": [
+            "åker"
+          ],
+          "why": "Åker is the present."
+        }
+      ],
+      "row": "åka",
+      "gloss": [
+        {
+          "sv": "åka",
+          "en": "go; travel"
+        },
+        {
+          "sv": "buss",
+          "en": "bus",
+          "word": "travel-005"
+        },
+        {
+          "sv": "till",
+          "en": "to"
+        },
+        {
+          "sv": "skolan",
+          "en": "school; the school",
+          "word": "school-033"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-te-3",
+      "pattern": "te",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Sara ____ mig med maten.",
+      "options": [
+        "hjälpte",
+        "hjälpde",
+        "hjälpade",
+        "hjälpt"
+      ],
+      "answers": [
+        "hjälpte"
+      ],
+      "hint": "Present: hjälper. What is the last letter of the stem?",
+      "feedback": "Hjälp- ends in p: -te.",
+      "explanation": "Sara hjälpte: hjälp- + -te.",
+      "mistakes": [
+        {
+          "answers": [
+            "hjälpde"
+          ],
+          "why": "P is voiceless, so the ending is not -de."
+        },
+        {
+          "answers": [
+            "hjälpade"
+          ],
+          "why": "Hjälpa has hjälper in the present, not hjälpar."
+        },
+        {
+          "answers": [
+            "hjälpt"
+          ],
+          "why": "Hjälpt is the supine and needs har."
+        }
+      ],
+      "row": "hjälpa",
+      "gloss": [
+        {
+          "sv": "Sara",
+          "en": "Sara"
+        },
+        {
+          "sv": "med",
+          "en": "with"
+        },
+        {
+          "sv": "maten",
+          "en": "the food",
+          "word": "food-002"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-te-4",
+      "pattern": "te",
+      "type": "repair",
+      "instruction": "Correct the mistake.",
+      "source": "Jag tänkde på dig hela dagen.",
+      "answers": [
+        "Jag tänkte på dig hela dagen."
+      ],
+      "hint": "Tänk- ends in k. Which ending follows k?",
+      "feedback": "After k the ending is -te.",
+      "explanation": "Jag tänkte: tänk- + -te.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag tänkde på dig hela dagen."
+          ],
+          "why": "That is the sentence unchanged: after k the d hardens."
+        },
+        {
+          "answers": [
+            "Jag tänkade på dig hela dagen."
+          ],
+          "why": "Tänka has tänker in the present, so it does not take -ade."
+        },
+        {
+          "answers": [
+            "Jag tänkt på dig hela dagen."
+          ],
+          "why": "Tänkt is the supine and needs har."
+        }
+      ],
+      "row": "tänka",
+      "gloss": [
+        {
+          "sv": "tänkde",
+          "en": "thought (tänka)",
+          "word": "verbs-017"
+        },
+        {
+          "sv": "på",
+          "en": "on; to"
+        },
+        {
+          "sv": "hela",
+          "en": "the whole"
+        },
+        {
+          "sv": "dagen",
+          "en": "the day",
+          "word": "health-time-029"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-te-5",
+      "pattern": "te",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "He bought bread and milk.",
+      "tokens": [
+        "Han",
+        "köpde",
+        "köpte",
+        "bröd",
+        "och",
+        "mjölk."
+      ],
+      "answers": [
+        "Han köpte bröd och mjölk."
+      ],
+      "hint": "Köp- ends in p.",
+      "feedback": "After p the ending is -te.",
+      "explanation": "Han köpte: köp- + -te.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han köpde bröd och mjölk."
+          ],
+          "why": "After p the ending is not -de."
+        }
+      ],
+      "row": "köpa"
+    },
+    {
+      "id": "past-tense-te-6",
+      "pattern": "te",
+      "type": "rewrite",
+      "instruction": "Put the sentence in the past.",
+      "source": "Vi läser tidningen på morgonen.",
+      "answers": [
+        "Vi läste tidningen på morgonen."
+      ],
+      "hint": "Läser is group 2. The stem läs- ends in s.",
+      "feedback": "After s the ending is -te.",
+      "explanation": "Vi läste: läs- + -te.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi läser tidningen på morgonen."
+          ],
+          "why": "That is the sentence unchanged, still in the present."
+        },
+        {
+          "answers": [
+            "Vi läsde tidningen på morgonen."
+          ],
+          "why": "After s the ending is not -de."
+        },
+        {
+          "answers": [
+            "Vi läst tidningen på morgonen."
+          ],
+          "why": "Läst is the supine and needs har."
+        }
+      ],
+      "row": "läsa",
+      "gloss": [
+        {
+          "sv": "läser",
+          "en": "read (läsa)",
+          "word": "verbs-070"
+        },
+        {
+          "sv": "tidningen",
+          "en": "the newspaper",
+          "word": "media-037"
+        },
+        {
+          "sv": "på",
+          "en": "on; to"
+        },
+        {
+          "sv": "morgonen",
+          "en": "the morning",
+          "word": "health-time-033"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-dde-1",
+      "pattern": "dde",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "bo · de · preteritum",
+      "answers": [
+        "bodde",
+        "de bodde"
+      ],
+      "hint": "Bo is a short verb that ends in a vowel.",
+      "feedback": "Short verbs ending in a long vowel add -dde.",
+      "explanation": "De bodde: bo + -dde.",
+      "mistakes": [
+        {
+          "answers": [
+            "bode",
+            "de bode"
+          ],
+          "why": "A short verb like bo needs a double d after its vowel."
+        },
+        {
+          "answers": [
+            "boade",
+            "de boade"
+          ],
+          "why": "Bo is not group 1: its present is bor, not boar."
+        },
+        {
+          "answers": [
+            "bott",
+            "de bott"
+          ],
+          "why": "Bott is the supine: de har bott."
+        },
+        {
+          "answers": [
+            "bor",
+            "de bor"
+          ],
+          "why": "Bor is the present."
+        }
+      ],
+      "row": "bo"
+    },
+    {
+      "id": "past-tense-dde-2",
+      "pattern": "dde",
+      "type": "complete",
+      "instruction": "Write tro in the past.",
+      "source": "Jag ____ (tro) att du var hemma.",
+      "answers": [
+        "trodde"
+      ],
+      "hint": "Tro is one syllable and ends in a vowel.",
+      "feedback": "Group 3: add -dde.",
+      "explanation": "Jag trodde: tro + -dde.",
+      "mistakes": [
+        {
+          "answers": [
+            "trode"
+          ],
+          "why": "The d is doubled after the short verb tro."
+        },
+        {
+          "answers": [
+            "troade"
+          ],
+          "why": "Tro has tror in the present, so it does not take -ade."
+        },
+        {
+          "answers": [
+            "trott"
+          ],
+          "why": "Trott is the supine: jag har trott."
+        },
+        {
+          "answers": [
+            "tror"
+          ],
+          "why": "Tror is the present. The rest of the sentence is in the past."
+        }
+      ],
+      "row": "tro",
+      "gloss": [
+        {
+          "sv": "tro",
+          "en": "believe; think"
+        },
+        {
+          "sv": "var",
+          "en": "was (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-dde-3",
+      "pattern": "dde",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Vi ____ i Göteborg i tre år.",
+      "options": [
+        "bodde",
+        "bode",
+        "boade",
+        "bor"
+      ],
+      "answers": [
+        "bodde"
+      ],
+      "hint": "Bo ends in a vowel. How many d?",
+      "feedback": "Short vowel verbs take -dde.",
+      "explanation": "Vi bodde: bo + -dde.",
+      "mistakes": [
+        {
+          "answers": [
+            "bode"
+          ],
+          "why": "One d is not enough after bo."
+        },
+        {
+          "answers": [
+            "boade"
+          ],
+          "why": "Bo is not group 1: its present is bor."
+        },
+        {
+          "answers": [
+            "bor"
+          ],
+          "why": "Bor is the present: we live there now."
+        }
+      ],
+      "row": "bo",
+      "gloss": [
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Göteborg",
+          "en": "Gothenburg"
+        },
+        {
+          "sv": "tre",
+          "en": "three"
+        },
+        {
+          "sv": "år",
+          "en": "years",
+          "word": "health-time-032"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-dde-4",
+      "pattern": "dde",
+      "type": "rewrite",
+      "instruction": "Put the sentence in the past.",
+      "source": "De bor i ett litet hus.",
+      "answers": [
+        "De bodde i ett litet hus."
+      ],
+      "hint": "Bor comes from bo, a short verb.",
+      "feedback": "Group 3: -dde.",
+      "explanation": "De bodde: bo + -dde.",
+      "mistakes": [
+        {
+          "answers": [
+            "De bor i ett litet hus."
+          ],
+          "why": "That is the sentence unchanged."
+        },
+        {
+          "answers": [
+            "De bode i ett litet hus."
+          ],
+          "why": "After bo the d is doubled."
+        },
+        {
+          "answers": [
+            "De bott i ett litet hus."
+          ],
+          "why": "Bott is the supine and needs har."
+        }
+      ],
+      "row": "bo",
+      "gloss": [
+        {
+          "sv": "bor",
+          "en": "live (bo)",
+          "word": "verbs-065"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "litet",
+          "en": "small"
+        },
+        {
+          "sv": "hus",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-dde-5",
+      "pattern": "dde",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "She lived in Stockholm.",
+      "answers": [
+        "Hon bodde i Stockholm."
+      ],
+      "hint": "Live (in a place) is bo.",
+      "feedback": "Bo is group 3: -dde.",
+      "explanation": "Hon bodde i Stockholm: bo + -dde.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hon bode i Stockholm."
+          ],
+          "why": "After bo the d is doubled."
+        },
+        {
+          "answers": [
+            "Hon bor i Stockholm."
+          ],
+          "why": "Bor is the present: she lives there now."
+        },
+        {
+          "answers": [
+            "Hon levde i Stockholm."
+          ],
+          "why": "Leva means to be alive. Living in a place is bo."
+        }
+      ],
+      "row": "bo"
+    },
+    {
+      "id": "past-tense-dde-6",
+      "pattern": "dde",
+      "type": "repair",
+      "instruction": "Correct the mistake.",
+      "source": "Han trode inte på mig.",
+      "answers": [
+        "Han trodde inte på mig."
+      ],
+      "hint": "Tro is a short verb ending in a vowel.",
+      "feedback": "Group 3 doubles the d.",
+      "explanation": "Han trodde: tro + -dde.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han trode inte på mig."
+          ],
+          "why": "That is the sentence unchanged: one d is not enough after tro."
+        },
+        {
+          "answers": [
+            "Han tror inte på mig."
+          ],
+          "why": "Tror is the present. Correct the past, do not change the tense."
+        }
+      ],
+      "row": "tro",
+      "gloss": [
+        {
+          "sv": "trode",
+          "en": "believed (tro)",
+          "word": "verbs-018"
+        },
+        {
+          "sv": "på",
+          "en": "on; to"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-strong-1",
+      "pattern": "strong",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "skriva · jag · preteritum",
+      "answers": [
+        "skrev",
+        "jag skrev"
+      ],
+      "hint": "Skriva is strong: the vowel changes and nothing is added.",
+      "feedback": "Look up the past in the verb note: skriver, skrev, skrivit.",
+      "explanation": "Jag skrev: i becomes e, no ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "skrivde",
+            "jag skrivde"
+          ],
+          "why": "Skriva is a strong verb: it changes its vowel instead of adding -de."
+        },
+        {
+          "answers": [
+            "skrivit",
+            "jag skrivit"
+          ],
+          "why": "Skrivit is the supine: jag har skrivit."
+        },
+        {
+          "answers": [
+            "skriver",
+            "jag skriver"
+          ],
+          "why": "Skriver is the present."
+        }
+      ],
+      "row": "skriva"
+    },
+    {
+      "id": "past-tense-strong-2",
+      "pattern": "strong",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "komma · hon · preteritum",
+      "answers": [
+        "kom",
+        "hon kom"
+      ],
+      "hint": "Komma is strong and gets shorter in the past.",
+      "feedback": "Kommer, kom, kommit.",
+      "explanation": "Hon kom: the -mer ending goes and the past is one short word.",
+      "mistakes": [
+        {
+          "answers": [
+            "kommde",
+            "hon kommde"
+          ],
+          "why": "Komma is strong: no -de is added."
+        },
+        {
+          "answers": [
+            "kommit",
+            "hon kommit"
+          ],
+          "why": "Kommit is the supine: hon har kommit."
+        },
+        {
+          "answers": [
+            "kommer",
+            "hon kommer"
+          ],
+          "why": "Kommer is the present."
+        }
+      ],
+      "row": "komma"
+    },
+    {
+      "id": "past-tense-strong-3",
+      "pattern": "strong",
+      "type": "complete",
+      "instruction": "Write gå in the past.",
+      "source": "Vi ____ (gå) till parken efter lunch.",
+      "answers": [
+        "gick"
+      ],
+      "hint": "Gå looks like bo, but it is strong.",
+      "feedback": "Går, gick, gått.",
+      "explanation": "Vi gick: a completely new form.",
+      "mistakes": [
+        {
+          "answers": [
+            "gådde"
+          ],
+          "why": "Gå looks like a short group 3 verb, but it is strong and changes its form."
+        },
+        {
+          "answers": [
+            "gått"
+          ],
+          "why": "Gått is the supine: vi har gått."
+        },
+        {
+          "answers": [
+            "går"
+          ],
+          "why": "Går is the present."
+        }
+      ],
+      "row": "gå",
+      "gloss": [
+        {
+          "sv": "gå",
+          "en": "go; walk"
+        },
+        {
+          "sv": "till",
+          "en": "to"
+        },
+        {
+          "sv": "parken",
+          "en": "the park",
+          "word": "travel-029"
+        },
+        {
+          "sv": "efter",
+          "en": "after"
+        },
+        {
+          "sv": "lunch",
+          "en": "lunch",
+          "word": "food-046"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-strong-4",
+      "pattern": "strong",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Erik ____ hem sent igår.",
+      "options": [
+        "kom",
+        "kommde",
+        "kommit",
+        "kommer"
+      ],
+      "answers": [
+        "kom"
+      ],
+      "hint": "Komma is strong: no ending is added.",
+      "feedback": "Kommer, kom, kommit.",
+      "explanation": "Erik kom hem: strong past, no ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "kommde"
+          ],
+          "why": "Strong verbs never take -de."
+        },
+        {
+          "answers": [
+            "kommit"
+          ],
+          "why": "Kommit is the supine and needs har."
+        },
+        {
+          "answers": [
+            "kommer"
+          ],
+          "why": "Kommer is the present, but igår points to the past."
+        }
+      ],
+      "row": "komma",
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik"
+        },
+        {
+          "sv": "hem",
+          "en": "home"
+        },
+        {
+          "sv": "sent",
+          "en": "late",
+          "word": "qualities-105"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-strong-5",
+      "pattern": "strong",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Jag ____ en bra film i helgen.",
+      "options": [
+        "såg",
+        "sedde",
+        "sett",
+        "ser"
+      ],
+      "answers": [
+        "såg"
+      ],
+      "hint": "Se is strong: the vowel changes to å.",
+      "feedback": "Ser, såg, sett.",
+      "explanation": "Jag såg: se changes to såg.",
+      "mistakes": [
+        {
+          "answers": [
+            "sedde"
+          ],
+          "why": "Se looks like bo, but it is strong: no -dde."
+        },
+        {
+          "answers": [
+            "sett"
+          ],
+          "why": "Sett is the supine: jag har sett."
+        },
+        {
+          "answers": [
+            "ser"
+          ],
+          "why": "Ser is the present."
+        }
+      ],
+      "row": "se",
+      "gloss": [
+        {
+          "sv": "bra",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "sv": "film",
+          "en": "film",
+          "word": "media-041"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "helgen",
+          "en": "the weekend",
+          "word": "leisure-017"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-strong-6",
+      "pattern": "strong",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "They took the bus.",
+      "answers": [
+        "De tog bussen."
+      ],
+      "hint": "Take is ta, a strong verb.",
+      "feedback": "Tar, tog, tagit.",
+      "explanation": "De tog bussen: ta becomes tog.",
+      "mistakes": [
+        {
+          "answers": [
+            "De tadde bussen."
+          ],
+          "why": "Ta is strong, not a short group 3 verb."
+        },
+        {
+          "answers": [
+            "De tagit bussen."
+          ],
+          "why": "Tagit is the supine and needs har."
+        },
+        {
+          "answers": [
+            "De tar bussen."
+          ],
+          "why": "Tar is the present."
+        }
+      ],
+      "row": "ta"
+    },
+    {
+      "id": "past-tense-strong-7",
+      "pattern": "strong",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "I wrote a letter to Mum.",
+      "tokens": [
+        "Jag",
+        "skrivde",
+        "skrev",
+        "ett",
+        "brev",
+        "till",
+        "mamma."
+      ],
+      "answers": [
+        "Jag skrev ett brev till mamma."
+      ],
+      "hint": "Skriva is strong.",
+      "feedback": "Skriver, skrev, skrivit.",
+      "explanation": "Jag skrev: i becomes e.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag skrivde ett brev till mamma."
+          ],
+          "why": "Skriva is strong and does not take -de."
+        }
+      ],
+      "row": "skriva"
+    },
+    {
+      "id": "past-tense-strong-8",
+      "pattern": "strong",
+      "type": "repair",
+      "instruction": "Correct the mistake.",
+      "source": "Barnen drickte mjölk.",
+      "answers": [
+        "Barnen drack mjölk."
+      ],
+      "hint": "Dricka is strong: i becomes a.",
+      "feedback": "Dricker, drack, druckit.",
+      "explanation": "Barnen drack: the vowel changes, no ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "Barnen drickte mjölk."
+          ],
+          "why": "That is the sentence unchanged: dricka is strong."
+        },
+        {
+          "answers": [
+            "Barnen druckit mjölk."
+          ],
+          "why": "Druckit is the supine and needs har."
+        }
+      ],
+      "row": "dricka",
+      "gloss": [
+        {
+          "sv": "Barnen",
+          "en": "the children",
+          "word": "people-005"
+        },
+        {
+          "sv": "drickte",
+          "en": "drank (dricka)",
+          "word": "verbs-055"
+        },
+        {
+          "sv": "mjölk",
+          "en": "milk",
+          "word": "food-006"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-irregular-1",
+      "pattern": "irregular",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "vara · vi · preteritum",
+      "answers": [
+        "var",
+        "vi var"
+      ],
+      "hint": "Vara is the most irregular verb: är in the present.",
+      "feedback": "Är, var, varit.",
+      "explanation": "Vi var: one short form for every person.",
+      "mistakes": [
+        {
+          "answers": [
+            "är",
+            "vi är"
+          ],
+          "why": "Är is the present: we are."
+        },
+        {
+          "answers": [
+            "varit",
+            "vi varit"
+          ],
+          "why": "Varit is the supine: vi har varit."
+        },
+        {
+          "answers": [
+            "varade",
+            "vi varade"
+          ],
+          "why": "Varade comes from vara meaning to last, as in the film lasted. Be has its own short past."
+        }
+      ],
+      "row": "vara"
+    },
+    {
+      "id": "past-tense-irregular-2",
+      "pattern": "irregular",
+      "type": "conjugate",
+      "instruction": "Write the verb form.",
+      "source": "göra · du · preteritum",
+      "answers": [
+        "gjorde",
+        "du gjorde"
+      ],
+      "hint": "The past of göra changes its spelling at the start.",
+      "feedback": "Gör, gjorde, gjort.",
+      "explanation": "Du gjorde: written with gj, said like jorde.",
+      "mistakes": [
+        {
+          "answers": [
+            "görde",
+            "du görde"
+          ],
+          "why": "Göra changes to gj in the past: the ö becomes o."
+        },
+        {
+          "answers": [
+            "gjort",
+            "du gjort"
+          ],
+          "why": "Gjort is the supine: du har gjort."
+        },
+        {
+          "answers": [
+            "gör",
+            "du gör"
+          ],
+          "why": "Gör is the present."
+        }
+      ],
+      "row": "göra"
+    },
+    {
+      "id": "past-tense-irregular-3",
+      "pattern": "irregular",
+      "type": "complete",
+      "instruction": "Write ha in the past.",
+      "source": "Vi ____ (ha) en fin semester i Spanien.",
+      "answers": [
+        "hade"
+      ],
+      "hint": "Ha keeps its a and adds -de.",
+      "feedback": "Har, hade, haft.",
+      "explanation": "Vi hade: ha + -de, one d.",
+      "mistakes": [
+        {
+          "answers": [
+            "hadde"
+          ],
+          "why": "Ha takes a single d, unlike bo and tro."
+        },
+        {
+          "answers": [
+            "haft"
+          ],
+          "why": "Haft is the supine: vi har haft."
+        },
+        {
+          "answers": [
+            "har"
+          ],
+          "why": "Har is the present."
+        }
+      ],
+      "row": "ha",
+      "gloss": [
+        {
+          "sv": "ha",
+          "en": "have"
+        },
+        {
+          "sv": "fin",
+          "en": "nice; lovely"
+        },
+        {
+          "sv": "semester",
+          "en": "holiday",
+          "word": "travel-016"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "Spanien",
+          "en": "Spain"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-irregular-4",
+      "pattern": "irregular",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Hon ____ att hon var trött.",
+      "options": [
+        "sa",
+        "sägde",
+        "sagt",
+        "säger"
+      ],
+      "answers": [
+        "sa"
+      ],
+      "hint": "Säga has a short past in speech and writing.",
+      "feedback": "Säger, sa or sade, sagt.",
+      "explanation": "Hon sa: the everyday past of säga. Sade is the longer written form.",
+      "mistakes": [
+        {
+          "answers": [
+            "sägde"
+          ],
+          "why": "Säga is irregular: the vowel changes and the g disappears."
+        },
+        {
+          "answers": [
+            "sagt"
+          ],
+          "why": "Sagt is the supine: hon har sagt."
+        },
+        {
+          "answers": [
+            "säger"
+          ],
+          "why": "Säger is the present, but the rest of the sentence is past."
+        }
+      ],
+      "row": "säga",
+      "gloss": [
+        {
+          "sv": "var",
+          "en": "was (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "trött",
+          "en": "tired",
+          "word": "feelings-009"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-irregular-5",
+      "pattern": "irregular",
+      "type": "rewrite",
+      "instruction": "Put the sentence in the past.",
+      "source": "Jag är trött.",
+      "answers": [
+        "Jag var trött."
+      ],
+      "hint": "Är is the present of vara.",
+      "feedback": "Är, var, varit.",
+      "explanation": "Jag var trött: vara in the past.",
+      "mistakes": [
+        {
+          "answers": [
+            "Jag är trött."
+          ],
+          "why": "That is the sentence unchanged."
+        },
+        {
+          "answers": [
+            "Jag varit trött."
+          ],
+          "why": "Varit is the supine and needs har."
+        },
+        {
+          "answers": [
+            "Jag varade trött."
+          ],
+          "why": "Vara meaning be has a short irregular past."
+        }
+      ],
+      "row": "vara",
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "am (vara)",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "trött",
+          "en": "tired",
+          "word": "feelings-009"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-irregular-6",
+      "pattern": "irregular",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "He said hello.",
+      "answers": [
+        "Han sa hej.",
+        "Han sade hej."
+      ],
+      "hint": "Say is säga, an irregular verb.",
+      "feedback": "Säger, sa or sade, sagt.",
+      "explanation": "Han sa hej. Sade is the same word, written in full.",
+      "mistakes": [
+        {
+          "answers": [
+            "Han sägde hej."
+          ],
+          "why": "Säga does not add -de to its stem."
+        },
+        {
+          "answers": [
+            "Han säger hej."
+          ],
+          "why": "Säger is the present."
+        },
+        {
+          "answers": [
+            "Han sagt hej."
+          ],
+          "why": "Sagt is the supine and needs har."
+        }
+      ],
+      "row": "säga"
+    },
+    {
+      "id": "past-tense-irregular-7",
+      "pattern": "irregular",
+      "type": "repair",
+      "instruction": "Correct the mistake.",
+      "source": "Vad görde du igår?",
+      "answers": [
+        "Vad gjorde du igår?",
+        "Vad gjorde du i går?"
+      ],
+      "hint": "The past of göra is spelled with gj.",
+      "feedback": "Gör, gjorde, gjort.",
+      "explanation": "Vad gjorde du igår: the ö becomes o after gj.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vad görde du igår?"
+          ],
+          "why": "That is the sentence unchanged."
+        },
+        {
+          "answers": [
+            "Vad gjort du igår?"
+          ],
+          "why": "Gjort is the supine and needs har."
+        }
+      ],
+      "row": "göra",
+      "gloss": [
+        {
+          "sv": "Vad",
+          "en": "what"
+        },
+        {
+          "sv": "görde",
+          "en": "did (göra)",
+          "word": "verbs-003"
+        },
+        {
+          "sv": "igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-time-1",
+      "pattern": "time",
+      "type": "complete",
+      "instruction": "Write åka in the past.",
+      "source": "Förra veckan ____ (åka) vi till Stockholm.",
+      "answers": [
+        "åkte"
+      ],
+      "hint": "Förra veckan means last week: past tense, and the verb stays second.",
+      "feedback": "Time word first, then verb, then subject.",
+      "explanation": "Förra veckan åkte vi: åk- + -te.",
+      "mistakes": [
+        {
+          "answers": [
+            "åker"
+          ],
+          "why": "Åker is the present. Förra veckan is in the past."
+        },
+        {
+          "answers": [
+            "vi åkte"
+          ],
+          "why": "Vi is already after the blank: the gap is only for the verb."
+        },
+        {
+          "answers": [
+            "åkde"
+          ],
+          "why": "After k the ending is -te."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Förra",
+          "en": "last"
+        },
+        {
+          "sv": "veckan",
+          "en": "the week",
+          "word": "health-time-030"
+        },
+        {
+          "sv": "åka",
+          "en": "go; travel"
+        },
+        {
+          "sv": "till",
+          "en": "to"
+        },
+        {
+          "sv": "Stockholm",
+          "en": "Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-time-2",
+      "pattern": "time",
+      "type": "choose",
+      "instruction": "Choose the time word that fits.",
+      "source": "____ köpte jag en ny telefon.",
+      "options": [
+        "Igår",
+        "Imorgon",
+        "Nu"
+      ],
+      "answers": [
+        "Igår"
+      ],
+      "hint": "Köpte is past. Which word points to the past?",
+      "feedback": "The past tense goes with time words like igår and förra veckan.",
+      "explanation": "Igår köpte jag en ny telefon: past verb, past time word.",
+      "mistakes": [
+        {
+          "answers": [
+            "Imorgon"
+          ],
+          "why": "Imorgon means tomorrow. It cannot go with köpte, which is past."
+        },
+        {
+          "answers": [
+            "Nu"
+          ],
+          "why": "Nu means now. It does not fit a verb in the past."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "köpte",
+          "en": "bought (köpa)",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "ny",
+          "en": "new"
+        },
+        {
+          "sv": "telefon",
+          "en": "phone",
+          "word": "media-028"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-time-3",
+      "pattern": "time",
+      "type": "rewrite",
+      "instruction": "Start with Igår and put the verb in the past.",
+      "source": "Jag ringer mamma.",
+      "answers": [
+        "Igår ringde jag mamma.",
+        "I går ringde jag mamma."
+      ],
+      "hint": "Two changes: the past of ringa, and the verb second.",
+      "feedback": "After a time word the verb comes before the subject.",
+      "explanation": "Igår ringde jag mamma: ring- + -de, verb in second place.",
+      "mistakes": [
+        {
+          "answers": [
+            "Igår jag ringde mamma."
+          ],
+          "why": "The verb must be the second element: after igår comes the verb, then jag."
+        },
+        {
+          "answers": [
+            "Igår ringer jag mamma."
+          ],
+          "why": "Ringer is the present. Igår needs the past."
+        },
+        {
+          "answers": [
+            "Igår ringte jag mamma."
+          ],
+          "why": "G is voiced, so the ending is not -te."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "ringer",
+          "en": "call; ring (ringa)",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "mamma",
+          "en": "Mum",
+          "word": "people-012"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-time-4",
+      "pattern": "time",
+      "type": "build",
+      "instruction": "Build the sentence.",
+      "source": "Last week we cleaned the house.",
+      "tokens": [
+        "Förra",
+        "veckan",
+        "städade",
+        "städar",
+        "vi",
+        "huset."
+      ],
+      "answers": [
+        "Förra veckan städade vi huset."
+      ],
+      "hint": "Start with the time words, then the verb.",
+      "feedback": "The verb comes second, right after förra veckan.",
+      "explanation": "Förra veckan städade vi huset: städa + -de, verb second.",
+      "mistakes": [
+        {
+          "answers": [
+            "Förra veckan vi städade huset."
+          ],
+          "why": "After förra veckan the verb comes before vi."
+        },
+        {
+          "answers": [
+            "Förra veckan städar vi huset."
+          ],
+          "why": "Städar is the present. Last week needs the past."
+        }
+      ]
+    },
+    {
+      "id": "past-tense-time-5",
+      "pattern": "time",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Yesterday I drank coffee.",
+      "answers": [
+        "Igår drack jag kaffe.",
+        "I går drack jag kaffe.",
+        "Jag drack kaffe igår.",
+        "Jag drack kaffe i går."
+      ],
+      "hint": "Drink is dricka, a strong verb. If igår comes first, the verb comes next.",
+      "feedback": "Dricker, drack, druckit. Verb second.",
+      "explanation": "Igår drack jag kaffe: strong past, verb in second place.",
+      "mistakes": [
+        {
+          "answers": [
+            "Igår jag drack kaffe."
+          ],
+          "why": "After igår the verb must come before jag."
+        },
+        {
+          "answers": [
+            "Igår drickte jag kaffe."
+          ],
+          "why": "Dricka is strong: it changes its vowel instead of taking -te."
+        },
+        {
+          "answers": [
+            "Igår dricker jag kaffe."
+          ],
+          "why": "Dricker is the present."
+        }
+      ]
+    },
+    {
+      "id": "past-tense-time-6",
+      "pattern": "time",
+      "type": "repair",
+      "instruction": "Correct the mistake.",
+      "source": "Igår jag såg Lars i parken.",
+      "answers": [
+        "Igår såg jag Lars i parken.",
+        "I går såg jag Lars i parken."
+      ],
+      "hint": "Find the verb. Is it in second place?",
+      "feedback": "After a time word, the verb comes before the subject.",
+      "explanation": "Igår såg jag Lars: verb second.",
+      "mistakes": [
+        {
+          "answers": [
+            "Igår jag såg Lars i parken."
+          ],
+          "why": "That is the sentence unchanged: the verb is in third place."
+        },
+        {
+          "answers": [
+            "Igår ser jag Lars i parken."
+          ],
+          "why": "The verb is already in the past. Move it, do not change the tense."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        },
+        {
+          "sv": "såg",
+          "en": "saw (se)",
+          "word": "verbs-010"
+        },
+        {
+          "sv": "Lars",
+          "en": "Lars"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "parken",
+          "en": "the park",
+          "word": "travel-029"
+        }
+      ]
+    },
+    {
+      "id": "past-tense-time-7",
+      "pattern": "time",
+      "type": "choose",
+      "instruction": "Choose the right form.",
+      "source": "Igår kväll ____ vi middag hemma.",
+      "options": [
+        "åt",
+        "äter",
+        "ätit",
+        "ätte"
+      ],
+      "answers": [
+        "åt"
+      ],
+      "hint": "Igår kväll means last night. Äta is strong.",
+      "feedback": "Äter, åt, ätit.",
+      "explanation": "Igår kväll åt vi middag: äta in the past.",
+      "mistakes": [
+        {
+          "answers": [
+            "äter"
+          ],
+          "why": "Äter is the present: we eat. Igår kväll is in the past."
+        },
+        {
+          "answers": [
+            "ätit"
+          ],
+          "why": "Ätit is the supine and needs har."
+        },
+        {
+          "answers": [
+            "ätte"
+          ],
+          "why": "Äta is strong: no -te ending."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Igår",
+          "en": "yesterday",
+          "word": "essentials-099"
+        },
+        {
+          "sv": "kväll",
+          "en": "evening",
+          "word": "health-time-034"
+        },
+        {
+          "sv": "middag",
+          "en": "dinner",
+          "word": "food-047"
+        },
+        {
+          "sv": "hemma",
+          "en": "at home",
+          "word": "home-004"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2444 @@
+{
+  "id": "possessives",
+  "unit": "nouns",
+  "level": "A2",
+  "title": "My, your, his and sin",
+  "description": "Make my, your and our agree, use hans, hennes and deras, choose sin for the subject’s own, and say Annas bil.",
+  "mark": "min · mitt · mina",
+  "guide": {
+    "summary": "Swedish my, your and our agree with the thing owned, just like adjectives: en-word, ett-word or plural. His, her and their never change, sin points back to the subject, and the noun after any possessive stays in its basic form.",
+    "sections": [
+      {
+        "id": "en-ett-plural",
+        "title": "My, your, our: en, ett or plural",
+        "text": "The word for my, your (du), our and your (ni) changes with the noun after it, not with the owner. An en-word takes the basic form, an ett-word adds -t, and a plural adds -a.",
+        "table": {
+          "columns": [
+            "Owner",
+            "+ en-word",
+            "+ ett-word",
+            "+ plural"
+          ],
+          "rows": [
+            [
+              "my",
+              "min",
+              "mitt",
+              "mina"
+            ],
+            [
+              "your (du)",
+              "din",
+              "ditt",
+              "dina"
+            ],
+            [
+              "our",
+              "vår",
+              "vårt",
+              "våra"
+            ],
+            [
+              "your (ni)",
+              "er",
+              "ert",
+              "era"
+            ],
+            [
+              "own (sin)",
+              "sin",
+              "sitt",
+              "sina"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun after the possessive: that is the thing owned.",
+          "Is it plural? Take the -a form.",
+          "If it is singular, recall en or ett: ett takes the -t form.",
+          "Pick the owner’s row."
+        ],
+        "examples": [
+          {
+            "sv": "Min bil och mitt hus.",
+            "en": "My car and my house."
+          },
+          {
+            "sv": "Våra barn är snälla.",
+            "en": "Our children are kind."
+          }
+        ],
+        "watch": [
+          "Barn, hus and rum look the same in the plural: vårt barn is one child, våra barn several.",
+          "An adjective after the noun agrees too: mitt hus är stort."
+        ]
+      },
+      {
+        "id": "ett-words",
+        "title": "Ett-words take -t",
+        "text": "Before an ett-word the possessive ends in -t, the same -t an adjective takes: mitt, ditt, vårt, ert, sitt.",
+        "table": {
+          "columns": [
+            "Noun",
+            "my",
+            "our"
+          ],
+          "rows": [
+            [
+              "ett hus",
+              "mitt hus",
+              "vårt hus"
+            ],
+            [
+              "ett rum",
+              "mitt rum",
+              "vårt rum"
+            ],
+            [
+              "ett jobb",
+              "mitt jobb",
+              "vårt jobb"
+            ],
+            [
+              "ett pass",
+              "mitt pass",
+              "vårt pass"
+            ]
+          ]
+        },
+        "steps": [
+          "Recall the noun with its article: en or ett.",
+          "If it is ett, add -t to the possessive."
+        ],
+        "examples": [
+          {
+            "sv": "Mitt jobb är bra.",
+            "en": "My job is good."
+          },
+          {
+            "sv": "Ditt pass ligger här.",
+            "en": "Your passport is here."
+          }
+        ],
+        "watch": [
+          "The ending of the noun does not tell you en or ett; learn each noun with its article."
+        ]
+      },
+      {
+        "id": "plural",
+        "title": "Several things owned",
+        "text": "With a plural noun one form serves en-words and ett-words alike: mina, dina, våra, era, sina.",
+        "steps": [
+          "Count the things owned.",
+          "If there are several, take the -a form and forget en and ett.",
+          "When you make a sentence plural, change the noun and any adjective too."
+        ],
+        "examples": [
+          {
+            "sv": "Var är mina skor?",
+            "en": "Where are my shoes?"
+          },
+          {
+            "sv": "Dina vänner är snälla.",
+            "en": "Your friends are kind."
+          }
+        ],
+        "watch": [
+          "Er (your, ni) also has a plural: era."
+        ]
+      },
+      {
+        "id": "fixed",
+        "title": "His, her, its, their: one form only",
+        "text": "Hans, hennes, dess and deras say who the owner is and never change for the thing owned.",
+        "table": {
+          "columns": [
+            "Word",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "hans",
+              "his",
+              "hans bil, hans hus, hans böcker"
+            ],
+            [
+              "hennes",
+              "her",
+              "hennes bil, hennes hus"
+            ],
+            [
+              "dess",
+              "its (a thing)",
+              "dess trädgård"
+            ],
+            [
+              "deras",
+              "their",
+              "deras barn"
+            ]
+          ]
+        },
+        "steps": [
+          "Decide who the owner is: a man, a woman, a thing, or several.",
+          "Take that word and add no ending."
+        ],
+        "examples": [
+          {
+            "sv": "Hennes barn bor i Lund.",
+            "en": "Her children live in Lund."
+          },
+          {
+            "sv": "Deras hund är stor.",
+            "en": "Their dog is big."
+          }
+        ],
+        "watch": [
+          "Dess is rather formal; everyday Swedish often uses the definite noun instead.",
+          "Unlike min, hans never takes -t or -a."
+        ]
+      },
+      {
+        "id": "sin",
+        "title": "Sin or hans? The owner as subject",
+        "text": "When the owner is the subject of the same clause, Swedish uses sin, sitt, sina for his, her, its and their. Hans, hennes and deras then mean someone else’s. Sin can never be part of the subject itself.",
+        "table": {
+          "columns": [
+            "Sentence",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "sin",
+              "Erik tar sin bok: his own book"
+            ],
+            [
+              "sin or hans",
+              "Erik tar hans bok: another man’s book"
+            ],
+            [
+              "subject",
+              "Hans bok ligger här: never sin in the subject"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject of the clause.",
+          "Is the owner that subject? Use sin, sitt or sina, agreeing with the thing owned.",
+          "Is the owner someone else, or is the possessive in the subject? Use hans, hennes or deras."
+        ],
+        "examples": [
+          {
+            "sv": "Anna tvättar sin bil.",
+            "en": "Anna is washing her own car."
+          },
+          {
+            "sv": "Lars tar hans bok.",
+            "en": "Lars takes his book (another man’s)."
+          }
+        ],
+        "watch": [
+          "Sin is only for he, she, it and they: I say min bok, never sin bok.",
+          "Sin bror bor här is always wrong: the brother is the subject."
+        ]
+      },
+      {
+        "id": "genitive",
+        "title": "Annas bil: the genitive -s",
+        "text": "To say whose, add -s to the owner, with no apostrophe. The owner can be a name or a definite noun: flickans katt. The thing owned takes no article and no ending.",
+        "table": {
+          "columns": [
+            "Owner",
+            "Meaning",
+            "Note"
+          ],
+          "rows": [
+            [
+              "Annas bil",
+              "Anna’s car",
+              "name + s"
+            ],
+            [
+              "Eriks cykel",
+              "Erik’s bike",
+              "no apostrophe"
+            ],
+            [
+              "flickans katt",
+              "the girl’s cat",
+              "definite owner + s"
+            ]
+          ]
+        },
+        "steps": [
+          "Add -s straight to the owner.",
+          "Put the thing owned after it in its basic form."
+        ],
+        "examples": [
+          {
+            "sv": "Annas bil är röd.",
+            "en": "Anna’s car is red."
+          },
+          {
+            "sv": "Lärarens väska är svart.",
+            "en": "The teacher’s bag is black."
+          }
+        ],
+        "watch": [
+          "Never bilen av Anna: Swedish uses the -s."
+        ]
+      },
+      {
+        "id": "basic-noun",
+        "title": "Min bil, never min bilen",
+        "text": "A possessive or a genitive already says which thing you mean, so the noun after it stays in its basic form, without the definite ending.",
+        "table": {
+          "columns": [
+            "Without possessive",
+            "With possessive"
+          ],
+          "rows": [
+            [
+              "bilen",
+              "min bil"
+            ],
+            [
+              "boken",
+              "hennes bok"
+            ],
+            [
+              "böckerna",
+              "deras böcker"
+            ],
+            [
+              "telefonen",
+              "din telefon"
+            ],
+            [
+              "väskan",
+              "din väska"
+            ]
+          ]
+        },
+        "steps": [
+          "Check whether a possessive or genitive stands before the noun.",
+          "If it does, drop the definite ending."
+        ],
+        "examples": [
+          {
+            "sv": "Vi tvättar vår bil.",
+            "en": "We are washing our car."
+          },
+          {
+            "sv": "Var är din väska?",
+            "en": "Where is your bag?"
+          }
+        ],
+        "watch": [
+          "English the and my never come together either: the definite ending is the Swedish the."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "en-word": {
+      "section": "en-ett-plural",
+      "steps": [
+        "Check the noun is singular.",
+        "Recall en or ett: en-words take the basic form.",
+        "Pick the owner’s row: min, din, vår or er."
+      ]
+    },
+    "ett-word": {
+      "section": "ett-words",
+      "steps": [
+        "Recall the noun with its article.",
+        "For ett, add -t: mitt, ditt, vårt, ert.",
+        "Give an adjective after it the -t too."
+      ]
+    },
+    "plural": {
+      "section": "plural",
+      "steps": [
+        "Count the things owned.",
+        "For several, take the -a form: mina, dina, våra, era."
+      ]
+    },
+    "fixed": {
+      "section": "fixed",
+      "steps": [
+        "Name the owner: man, woman, thing or several.",
+        "Use hans, hennes, dess or deras with no ending.",
+        "If the possessive is in the subject, sin is impossible."
+      ]
+    },
+    "sin": {
+      "section": "sin",
+      "steps": [
+        "Find the subject of the clause.",
+        "Owner is the subject: sin, sitt or sina.",
+        "Owner is someone else: hans, hennes or deras."
+      ]
+    },
+    "genitive": {
+      "section": "genitive",
+      "steps": [
+        "Add -s to the owner, no apostrophe.",
+        "Keep the thing owned in its basic form."
+      ]
+    },
+    "indefinite": {
+      "section": "basic-noun",
+      "steps": [
+        "Look for a possessive or genitive before the noun.",
+        "Use the noun without its definite ending."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "possessives-en-word-1",
+      "pattern": "en-word",
+      "type": "choose",
+      "instruction": "Choose the word for my.",
+      "source": "Det är ____ bil.",
+      "options": [
+        "min",
+        "mitt",
+        "mina"
+      ],
+      "answers": [
+        "min"
+      ],
+      "hint": "Is bil an en-word or an ett-word, one car or several?",
+      "feedback": "Look at the noun bil, not at the speaker.",
+      "explanation": "Bil is an en-word (en bil) and there is one car, so my car is min bil.",
+      "mistakes": [
+        {
+          "answers": [
+            "mitt"
+          ],
+          "why": "That form goes before an ett-word. Bil takes en, so the forms do not match."
+        },
+        {
+          "answers": [
+            "mina"
+          ],
+          "why": "That is the plural form, for several things owned. There is only one car here."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "bil",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "possessives-en-word-2",
+      "pattern": "en-word",
+      "type": "complete",
+      "instruction": "Write the Swedish word for your, talking to one person (du).",
+      "source": "Var är ____ nyckel?",
+      "answers": [
+        "din"
+      ],
+      "hint": "Nyckel is an en-word: en nyckel.",
+      "feedback": "The word for your follows nyckel, one key, en-word.",
+      "explanation": "Nyckel is a singular en-word and the owner is du, so your key is din nyckel.",
+      "mistakes": [
+        {
+          "answers": [
+            "ditt"
+          ],
+          "why": "That form belongs before ett-words. Nyckel is an en-word, en nyckel."
+        },
+        {
+          "answers": [
+            "dina"
+          ],
+          "why": "That is plural, for several keys. The question asks about one key."
+        },
+        {
+          "answers": [
+            "er"
+          ],
+          "why": "That is your for several people (ni). Here you speak to one person."
+        }
+      ],
+      "row": "your (du)",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "nyckel",
+          "en": "key",
+          "word": "home-022"
+        }
+      ]
+    },
+    {
+      "id": "possessives-en-word-3",
+      "pattern": "en-word",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Our dog is old.",
+      "answers": [
+        "Vår hund är gammal."
+      ],
+      "hint": "Hund is an en-word.",
+      "feedback": "Check the word for our against the gender of hund.",
+      "explanation": "Hund is a singular en-word, so our dog is vår hund, and the adjective stays in its basic form: gammal.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vårt hund är gammal."
+          ],
+          "why": "That form of our is for ett-words, and hund is an en-word, en hund."
+        },
+        {
+          "answers": [
+            "Vår hunden är gammal."
+          ],
+          "why": "After a possessive the noun stays in its basic form; the -en ending is not added."
+        },
+        {
+          "answers": [
+            "Vår hund är gammalt."
+          ],
+          "why": "The adjective took the ett-form, but hund is an en-word."
+        }
+      ],
+      "row": "our"
+    },
+    {
+      "id": "possessives-en-word-4",
+      "pattern": "en-word",
+      "type": "build",
+      "instruction": "Build the sentence: Your cat is kind (talking to several people). Leave one tile unused.",
+      "source": "Your cat is kind. (talking to several people)",
+      "tokens": [
+        "Ert",
+        "katt",
+        "Er",
+        "är",
+        "snäll."
+      ],
+      "answers": [
+        "Er katt är snäll."
+      ],
+      "hint": "Katt is an en-word, and several people own it.",
+      "feedback": "Only one form of your (ni) fits an en-word.",
+      "explanation": "Katt is a singular en-word and the owners are ni, so your cat is er katt.",
+      "mistakes": [
+        {
+          "answers": [
+            "Ert katt är snäll."
+          ],
+          "why": "That tile is the ett-form of your. Katt takes en, so the tile to leave out is the one with -t."
+        }
+      ],
+      "row": "your (ni)"
+    },
+    {
+      "id": "possessives-en-word-5",
+      "pattern": "en-word",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Mitt syster bor i Stockholm.",
+      "answers": [
+        "Min syster bor i Stockholm."
+      ],
+      "hint": "Is syster en or ett?",
+      "feedback": "The possessive must match the gender of syster.",
+      "explanation": "Syster is an en-word (en syster), so my sister is min syster.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mitt syster bor i Stockholm."
+          ],
+          "why": "That is the sentence unchanged. The -t form belongs before ett-words, and syster is an en-word."
+        },
+        {
+          "answers": [
+            "Mina syster bor i Stockholm."
+          ],
+          "why": "That is the plural form, but there is one sister."
+        },
+        {
+          "answers": [
+            "Min systern bor i Stockholm."
+          ],
+          "why": "The possessive is right now, but the noun took the definite ending. After a possessive the noun stays in its basic form."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "sv": "Mitt",
+          "en": "my"
+        },
+        {
+          "sv": "syster",
+          "en": "sister",
+          "word": "people-014"
+        },
+        {
+          "sv": "bor",
+          "en": "lives",
+          "word": "verbs-065"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "Stockholm",
+          "en": "Stockholm"
+        }
+      ]
+    },
+    {
+      "id": "possessives-en-word-6",
+      "pattern": "en-word",
+      "type": "rewrite",
+      "instruction": "Replace hus with lägenhet (an en-word) and make the other words match. Write the whole sentence.",
+      "source": "Mitt hus är stort.",
+      "answers": [
+        "Min lägenhet är stor."
+      ],
+      "hint": "Lägenhet is an en-word: en lägenhet.",
+      "feedback": "Both the possessive and the adjective follow the new noun.",
+      "explanation": "Lägenhet is an en-word, so mitt becomes min and stort loses its -t: min lägenhet är stor.",
+      "mistakes": [
+        {
+          "answers": [
+            "Mitt lägenhet är stort."
+          ],
+          "why": "The possessive and the adjective still match hus, an ett-word. The new noun takes en."
+        },
+        {
+          "answers": [
+            "Min lägenhet är stort."
+          ],
+          "why": "The possessive is right, but the adjective still has the ett-ending -t."
+        },
+        {
+          "answers": [
+            "Mitt hus är stort."
+          ],
+          "why": "That is the original sentence: hus was never replaced."
+        }
+      ],
+      "row": "my",
+      "gloss": [
+        {
+          "sv": "Mitt",
+          "en": "my"
+        },
+        {
+          "sv": "hus",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stort",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-ett-word-1",
+      "pattern": "ett-word",
+      "type": "choose",
+      "instruction": "Choose the word for my. You show someone your one room.",
+      "source": "Här är ____ rum.",
+      "options": [
+        "min",
+        "mitt",
+        "mina"
+      ],
+      "answers": [
+        "mitt"
+      ],
+      "hint": "Rum is an ett-word: ett rum.",
+      "feedback": "The possessive matches rum, and rum takes ett.",
+      "explanation": "Rum is a singular ett-word, so my room is mitt rum: the ett-form ends in -t.",
+      "mistakes": [
+        {
+          "answers": [
+            "min"
+          ],
+          "why": "That form goes before en-words. Rum is an ett-word, ett rum."
+        },
+        {
+          "answers": [
+            "mina"
+          ],
+          "why": "Mina is plural, for several rooms. You have one room here."
+        }
+      ],
+      "row": "ett rum",
+      "gloss": [
+        {
+          "sv": "Här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "rum",
+          "en": "room, rooms",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "possessives-ett-word-2",
+      "pattern": "ett-word",
+      "type": "choose",
+      "instruction": "Choose the word for your, talking to one person (du).",
+      "source": "Är det här ____ pass?",
+      "options": [
+        "din",
+        "ditt",
+        "dina"
+      ],
+      "answers": [
+        "ditt"
+      ],
+      "hint": "Pass is an ett-word: ett pass.",
+      "feedback": "Look at pass: en or ett?",
+      "explanation": "Pass is a singular ett-word, so your passport is ditt pass.",
+      "mistakes": [
+        {
+          "answers": [
+            "din"
+          ],
+          "why": "That form is for en-words. Pass takes ett, so it needs the -t form."
+        },
+        {
+          "answers": [
+            "dina"
+          ],
+          "why": "That is the plural form, for several passports."
+        }
+      ],
+      "row": "ett pass",
+      "gloss": [
+        {
+          "sv": "Är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "pass",
+          "en": "passport",
+          "word": "travel-040"
+        }
+      ]
+    },
+    {
+      "id": "possessives-ett-word-3",
+      "pattern": "ett-word",
+      "type": "complete",
+      "instruction": "Write the Swedish word for our. They own one house.",
+      "source": "____ hus ligger i Malmö.",
+      "answers": [
+        "Vårt"
+      ],
+      "hint": "Hus is an ett-word: ett hus.",
+      "feedback": "Our follows the gender of hus.",
+      "explanation": "Hus is a singular ett-word, so our house is vårt hus.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vår"
+          ],
+          "why": "That form is for en-words. Hus is an ett-word, ett hus, so it needs the -t."
+        },
+        {
+          "answers": [
+            "Våra"
+          ],
+          "why": "Våra is plural, for several houses. They own one."
+        }
+      ],
+      "row": "ett hus",
+      "gloss": [
+        {
+          "sv": "hus",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (lying, located)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "Malmö",
+          "en": "Malmö"
+        }
+      ]
+    },
+    {
+      "id": "possessives-ett-word-4",
+      "pattern": "ett-word",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Your kitchen is big. (talking to several people)",
+      "answers": [
+        "Ert kök är stort."
+      ],
+      "hint": "Kök is an ett-word, and the owners are ni.",
+      "feedback": "Check both the possessive and the adjective: kök takes ett.",
+      "explanation": "Kök is an ett-word, so your (ni) kitchen is ert kök, and the adjective takes -t as well: stort.",
+      "mistakes": [
+        {
+          "answers": [
+            "Er kök är stort."
+          ],
+          "why": "That form of your is for en-words; kök is an ett-word."
+        },
+        {
+          "answers": [
+            "Ert kök är stor."
+          ],
+          "why": "The possessive is right, but the adjective must also take the ett-ending."
+        },
+        {
+          "answers": [
+            "Ditt kök är stort."
+          ],
+          "why": "That is your for one person. The note says you speak to several people."
+        }
+      ]
+    },
+    {
+      "id": "possessives-ett-word-5",
+      "pattern": "ett-word",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Min jobb är bra.",
+      "answers": [
+        "Mitt jobb är bra."
+      ],
+      "hint": "Jobb is an ett-word.",
+      "feedback": "The possessive is the word to fix.",
+      "explanation": "Jobb is an ett-word (ett jobb), so my job is mitt jobb.",
+      "mistakes": [
+        {
+          "answers": [
+            "Min jobb är bra."
+          ],
+          "why": "That is the sentence unchanged. Jobb takes ett, so the en-form of my does not fit it."
+        },
+        {
+          "answers": [
+            "Mitt jobbet är bra."
+          ],
+          "why": "The possessive is fixed, but the noun took the definite ending. After a possessive the noun stays in its basic form."
+        }
+      ],
+      "row": "ett jobb",
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my"
+        },
+        {
+          "sv": "jobb",
+          "en": "job",
+          "word": "work-002"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "bra",
+          "en": "good",
+          "word": "qualities-003"
+        }
+      ]
+    },
+    {
+      "id": "possessives-ett-word-6",
+      "pattern": "ett-word",
+      "type": "build",
+      "instruction": "Build the sentence: My child is ill. Leave one tile unused.",
+      "source": "My child is ill.",
+      "tokens": [
+        "Min",
+        "barn",
+        "Mitt",
+        "är",
+        "sjukt."
+      ],
+      "answers": [
+        "Mitt barn är sjukt."
+      ],
+      "hint": "Barn is an ett-word.",
+      "feedback": "The ett-word barn needs the -t form of my and of the adjective.",
+      "explanation": "Barn is an ett-word, so my child is mitt barn, and the adjective takes -t: sjukt.",
+      "mistakes": [
+        {
+          "answers": [
+            "Min barn är sjukt."
+          ],
+          "why": "That tile is the en-form of my. Barn takes ett, so it is the tile to leave out."
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-1",
+      "pattern": "plural",
+      "type": "choose",
+      "instruction": "Choose the word for my.",
+      "source": "Var är ____ skor?",
+      "options": [
+        "min",
+        "mitt",
+        "mina"
+      ],
+      "answers": [
+        "mina"
+      ],
+      "hint": "Skor is plural.",
+      "feedback": "Count the things owned.",
+      "explanation": "Skor (shoes) is plural, so my shoes is mina skor. In the plural, en and ett no longer matter.",
+      "mistakes": [
+        {
+          "answers": [
+            "min"
+          ],
+          "why": "That form is for one thing owned, an en-word. Skor means several shoes."
+        },
+        {
+          "answers": [
+            "mitt"
+          ],
+          "why": "That form is for one ett-word. Skor is plural."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "skor",
+          "en": "shoes",
+          "word": "people-051"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-2",
+      "pattern": "plural",
+      "type": "complete",
+      "instruction": "Write the Swedish word for our. The parents have three children.",
+      "source": "Vi älskar ____ barn.",
+      "answers": [
+        "våra"
+      ],
+      "hint": "Barn is the same in the singular and the plural; here there are three.",
+      "feedback": "Several children are owned, so take the plural.",
+      "explanation": "Barn here means several children, so our children is våra barn. The noun does not change, but the possessive does.",
+      "mistakes": [
+        {
+          "answers": [
+            "vårt"
+          ],
+          "why": "That is the form for one ett-word: one child. The family has three."
+        },
+        {
+          "answers": [
+            "vår"
+          ],
+          "why": "That form is for one en-word, and barn is neither one thing nor an en-word here."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "älskar",
+          "en": "love",
+          "word": "verbs-048"
+        },
+        {
+          "sv": "barn",
+          "en": "child, children",
+          "word": "people-005"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-3",
+      "pattern": "plural",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Where are your books? (talking to one person)",
+      "answers": [
+        "Var är dina böcker?"
+      ],
+      "hint": "Books is plural; the plural of bok is böcker.",
+      "feedback": "Check the possessive: the noun is plural.",
+      "explanation": "Böcker is plural, so your books is dina böcker for one owner (du).",
+      "mistakes": [
+        {
+          "answers": [
+            "Var är din böcker?"
+          ],
+          "why": "The possessive stayed singular in front of a plural noun."
+        },
+        {
+          "answers": [
+            "Var är dina böckerna?"
+          ],
+          "why": "After a possessive the noun stays in its basic form, without the definite ending."
+        },
+        {
+          "answers": [
+            "Var är era böcker?"
+          ],
+          "why": "That is your for several people. The note says you speak to one person."
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-4",
+      "pattern": "plural",
+      "type": "rewrite",
+      "instruction": "Make the noun plural (nycklar) and change the possessive to match. Write the whole sentence.",
+      "source": "Min nyckel ligger här.",
+      "answers": [
+        "Mina nycklar ligger här."
+      ],
+      "hint": "The plural of nyckel is nycklar.",
+      "feedback": "Several keys need the plural possessive.",
+      "explanation": "With several keys, min becomes mina: mina nycklar. The verb ligger does not change for number.",
+      "mistakes": [
+        {
+          "answers": [
+            "Min nycklar ligger här."
+          ],
+          "why": "The noun is plural, but the possessive is still the singular form."
+        },
+        {
+          "answers": [
+            "Mina nyckel ligger här."
+          ],
+          "why": "The possessive is plural, but the noun was not made plural."
+        },
+        {
+          "answers": [
+            "Mina nycklarna ligger här."
+          ],
+          "why": "After a possessive the noun stays in its basic form, without the definite ending."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my"
+        },
+        {
+          "sv": "nyckel",
+          "en": "key",
+          "word": "home-022"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (lying, located)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-5",
+      "pattern": "plural",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Din vänner är snälla.",
+      "answers": [
+        "Dina vänner är snälla."
+      ],
+      "hint": "Vänner means several friends.",
+      "feedback": "The possessive must be plural too.",
+      "explanation": "Vänner is plural, so your friends is dina vänner.",
+      "mistakes": [
+        {
+          "answers": [
+            "Din vänner är snälla."
+          ],
+          "why": "That is the sentence unchanged. The singular possessive stands before a plural noun."
+        },
+        {
+          "answers": [
+            "Din vän är snälla."
+          ],
+          "why": "Making the noun singular changes the meaning, and the adjective snälla would still be plural."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Din",
+          "en": "your"
+        },
+        {
+          "sv": "vänner",
+          "en": "friends",
+          "word": "people-031"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "snälla",
+          "en": "kind",
+          "word": "qualities-062"
+        }
+      ]
+    },
+    {
+      "id": "possessives-plural-6",
+      "pattern": "plural",
+      "type": "build",
+      "instruction": "Build the sentence: Our neighbours are kind. Leave one tile unused.",
+      "source": "Our neighbours are kind.",
+      "tokens": [
+        "Vår",
+        "grannar",
+        "Våra",
+        "är",
+        "snälla."
+      ],
+      "answers": [
+        "Våra grannar är snälla."
+      ],
+      "hint": "Grannar is plural.",
+      "feedback": "Plural nouns take the -a form of the possessive.",
+      "explanation": "Grannar is plural, so our neighbours is våra grannar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vår grannar är snälla."
+          ],
+          "why": "That tile is the singular form. Grannar is plural, so it is the tile to leave out."
+        }
+      ]
+    },
+    {
+      "id": "possessives-fixed-1",
+      "pattern": "fixed",
+      "type": "choose",
+      "instruction": "Choose the word for her.",
+      "source": "Anna har en cykel. Det är ____ cykel.",
+      "options": [
+        "hennes",
+        "hans",
+        "sin"
+      ],
+      "answers": [
+        "hennes"
+      ],
+      "hint": "The owner is Anna, and she is not the subject of the second sentence.",
+      "feedback": "Whose bike is it, and what is the subject?",
+      "explanation": "The owner is Anna, a woman, so her bike is hennes cykel. Hennes never changes for the thing owned.",
+      "mistakes": [
+        {
+          "answers": [
+            "hans"
+          ],
+          "why": "That word means his, but the owner is Anna."
+        },
+        {
+          "answers": [
+            "sin"
+          ],
+          "why": "That word only points back to the subject of the same clause. The subject here is det, not Anna."
+        }
+      ],
+      "row": "hennes",
+      "gloss": [
+        {
+          "sv": "Anna",
+          "en": "Anna"
+        },
+        {
+          "sv": "har",
+          "en": "has",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "cykel",
+          "en": "bike",
+          "word": "travel-008"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-fixed-2",
+      "pattern": "fixed",
+      "type": "choose",
+      "instruction": "Choose the word for their.",
+      "source": "Lars och Sara har en hund. ____ hund är stor.",
+      "options": [
+        "Deras",
+        "Sin",
+        "Hans"
+      ],
+      "answers": [
+        "Deras"
+      ],
+      "hint": "The word stands in the subject of its sentence.",
+      "feedback": "Two owners, and the possessive is part of the subject.",
+      "explanation": "Their dog is deras hund. It never changes, and a reflexive form cannot stand inside the subject.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sin"
+          ],
+          "why": "That word cannot be part of the subject; it refers back to a subject, so it must come after one."
+        },
+        {
+          "answers": [
+            "Hans"
+          ],
+          "why": "That word means his, one man. The dog belongs to both Lars and Sara."
+        }
+      ],
+      "row": "deras",
+      "gloss": [
+        {
+          "sv": "Lars",
+          "en": "Lars"
+        },
+        {
+          "sv": "Sara",
+          "en": "Sara"
+        },
+        {
+          "sv": "har",
+          "en": "has",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "hund",
+          "en": "dog",
+          "word": "nature-011"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stor",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-fixed-3",
+      "pattern": "fixed",
+      "type": "complete",
+      "instruction": "Write the Swedish word for his.",
+      "source": "Erik har ett hus. ____ hus är gammalt.",
+      "answers": [
+        "Hans"
+      ],
+      "hint": "The possessive is part of the subject of the second sentence.",
+      "feedback": "His never changes, whatever it owns.",
+      "explanation": "His house is hans hus. Hans stays the same before en-words, ett-words and plurals.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sitt"
+          ],
+          "why": "That form refers back to a subject, so it can never be part of the subject itself."
+        },
+        {
+          "answers": [
+            "Hennes"
+          ],
+          "why": "That word means her, but Erik is a man."
+        },
+        {
+          "answers": [
+            "Hanst"
+          ],
+          "why": "His never takes an ett-ending: it stays the same before every noun."
+        }
+      ],
+      "row": "hans",
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik"
+        },
+        {
+          "sv": "har",
+          "en": "has",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "hus",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "gammalt",
+          "en": "old",
+          "word": "qualities-011"
+        }
+      ]
+    },
+    {
+      "id": "possessives-fixed-4",
+      "pattern": "fixed",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Her children live in Lund.",
+      "answers": [
+        "Hennes barn bor i Lund."
+      ],
+      "hint": "Her is one word that never changes.",
+      "feedback": "Check the possessive and the noun after it.",
+      "explanation": "Her children is hennes barn: hennes does not change for plural, and barn is the same in the plural.",
+      "mistakes": [
+        {
+          "answers": [
+            "Hennes barnen bor i Lund."
+          ],
+          "why": "After a possessive the noun stays in its basic form, without the definite ending."
+        },
+        {
+          "answers": [
+            "Sina barn bor i Lund."
+          ],
+          "why": "That form cannot be part of the subject. It only refers back to a subject already said."
+        },
+        {
+          "answers": [
+            "Hans barn bor i Lund."
+          ],
+          "why": "That word means his, not her."
+        }
+      ],
+      "row": "hennes"
+    },
+    {
+      "id": "possessives-fixed-5",
+      "pattern": "fixed",
+      "type": "rewrite",
+      "instruction": "The house belongs to a woman, not a man. Change the possessive and write the whole sentence.",
+      "source": "Hans hus är stort.",
+      "answers": [
+        "Hennes hus är stort."
+      ],
+      "hint": "Only the owner changes, not the house.",
+      "feedback": "Her is one fixed word.",
+      "explanation": "Her house is hennes hus. The adjective stays stort, because hus is still an ett-word.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sitt hus är stort."
+          ],
+          "why": "That form cannot be part of the subject. It refers back to a subject, so it needs one before it."
+        },
+        {
+          "answers": [
+            "Hennes huset är stort."
+          ],
+          "why": "After a possessive the noun stays in its basic form."
+        },
+        {
+          "answers": [
+            "Hennes hus är stor."
+          ],
+          "why": "The adjective lost its -t, but hus is still an ett-word."
+        }
+      ],
+      "row": "hennes",
+      "gloss": [
+        {
+          "sv": "Hans",
+          "en": "his"
+        },
+        {
+          "sv": "hus",
+          "en": "house",
+          "word": "home-001"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stort",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-fixed-6",
+      "pattern": "fixed",
+      "type": "build",
+      "instruction": "Build the sentence: The house is old, but its garden is beautiful. Leave one tile unused.",
+      "source": "The house is old, but its garden is beautiful.",
+      "tokens": [
+        "Huset",
+        "är",
+        "gammalt,",
+        "men",
+        "sin",
+        "dess",
+        "trädgård",
+        "är",
+        "vacker."
+      ],
+      "answers": [
+        "Huset är gammalt, men dess trädgård är vacker."
+      ],
+      "hint": "Its, for a thing, is a fixed word.",
+      "feedback": "The garden belongs to the house, a thing, and the word is part of a subject.",
+      "explanation": "Its is dess: it is used for things and never changes. It is a little formal; everyday Swedish often just says trädgården.",
+      "mistakes": [
+        {
+          "answers": [
+            "Huset är gammalt, men sin trädgård är vacker."
+          ],
+          "why": "That tile cannot be part of the subject of a clause, and trädgård is the subject here."
+        }
+      ],
+      "row": "dess"
+    },
+    {
+      "id": "possessives-sin-1",
+      "pattern": "sin",
+      "type": "choose",
+      "instruction": "Choose the word for his. Erik takes his own book.",
+      "source": "Erik tar ____ bok och går.",
+      "options": [
+        "sin",
+        "hans",
+        "sitt"
+      ],
+      "answers": [
+        "sin"
+      ],
+      "hint": "The owner is the subject of the same clause.",
+      "feedback": "Who owns the book, and who is the subject?",
+      "explanation": "Erik is the subject and owns the book himself, so Swedish says sin bok. Bok is an en-word, so the form is sin.",
+      "mistakes": [
+        {
+          "answers": [
+            "hans"
+          ],
+          "why": "That word would mean another man’s book. Erik takes his own, and he is the subject."
+        },
+        {
+          "answers": [
+            "sitt"
+          ],
+          "why": "That form is for ett-words. Bok is an en-word, en bok."
+        }
+      ],
+      "row": "sin",
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik"
+        },
+        {
+          "sv": "tar",
+          "en": "takes",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "bok",
+          "en": "book",
+          "word": "school-028"
+        },
+        {
+          "sv": "går",
+          "en": "goes, leaves",
+          "word": "verbs-004"
+        }
+      ]
+    },
+    {
+      "id": "possessives-sin-2",
+      "pattern": "sin",
+      "type": "choose",
+      "instruction": "Choose the word for his. Lars takes Erik’s book.",
+      "source": "Erik är sjuk. Lars tar ____ bok till skolan.",
+      "options": [
+        "sin",
+        "hans",
+        "hennes"
+      ],
+      "answers": [
+        "hans"
+      ],
+      "hint": "The subject is Lars, but the book is Erik’s.",
+      "feedback": "Is the owner the subject of this clause?",
+      "explanation": "The book belongs to Erik, not to Lars, the subject. So his is hans bok, not sin.",
+      "mistakes": [
+        {
+          "answers": [
+            "sin"
+          ],
+          "why": "That word would mean Lars’s own book. The book belongs to Erik, who is not the subject here."
+        },
+        {
+          "answers": [
+            "hennes"
+          ],
+          "why": "That word means her, but the owner Erik is a man."
+        }
+      ],
+      "row": "sin or hans",
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "sjuk",
+          "en": "ill",
+          "word": "health-time-020"
+        },
+        {
+          "sv": "Lars",
+          "en": "Lars"
+        },
+        {
+          "sv": "tar",
+          "en": "takes",
+          "word": "verbs-025"
+        },
+        {
+          "sv": "bok",
+          "en": "book",
+          "word": "school-028"
+        },
+        {
+          "sv": "till",
+          "en": "to",
+          "word": "essentials-064"
+        },
+        {
+          "sv": "skolan",
+          "en": "the school",
+          "word": "school-033"
+        }
+      ]
+    },
+    {
+      "id": "possessives-sin-3",
+      "pattern": "sin",
+      "type": "complete",
+      "instruction": "Write the Swedish word for her. Sara calls her own mum.",
+      "source": "Sara ringer ____ mamma varje dag.",
+      "answers": [
+        "sin"
+      ],
+      "hint": "Sara is the subject and owns the mum.",
+      "feedback": "Owner and subject are the same person, in the same clause.",
+      "explanation": "Sara calls her own mother, so the reflexive form is used: sin mamma. Mamma is an en-word.",
+      "mistakes": [
+        {
+          "answers": [
+            "hennes"
+          ],
+          "why": "That would be another woman’s mum. Sara, the subject, calls her own."
+        },
+        {
+          "answers": [
+            "sitt"
+          ],
+          "why": "That form is for ett-words, and mamma is an en-word."
+        }
+      ],
+      "row": "sin",
+      "gloss": [
+        {
+          "sv": "Sara",
+          "en": "Sara"
+        },
+        {
+          "sv": "ringer",
+          "en": "calls",
+          "word": "verbs-082"
+        },
+        {
+          "sv": "mamma",
+          "en": "mum",
+          "word": "people-012"
+        },
+        {
+          "sv": "varje",
+          "en": "every",
+          "word": "essentials-049"
+        },
+        {
+          "sv": "dag",
+          "en": "day",
+          "word": "health-time-029"
+        }
+      ]
+    },
+    {
+      "id": "possessives-sin-4",
+      "pattern": "sin",
+      "type": "complete",
+      "instruction": "Write the Swedish word for their. The children tidy their own rooms.",
+      "source": "Barnen städar ____ rum.",
+      "answers": [
+        "sina"
+      ],
+      "hint": "Several rooms, owned by the subject.",
+      "feedback": "Owner is the subject, and the rooms are plural.",
+      "explanation": "The children own the rooms and are the subject, so their is reflexive, and the rooms are plural: sina rum.",
+      "mistakes": [
+        {
+          "answers": [
+            "deras"
+          ],
+          "why": "That would mean other people’s rooms. The children, the subject, tidy their own."
+        },
+        {
+          "answers": [
+            "sitt"
+          ],
+          "why": "That form is for one ett-word. Here each child has a room, so there are several."
+        }
+      ],
+      "row": "sin",
+      "gloss": [
+        {
+          "sv": "Barnen",
+          "en": "the children",
+          "word": "people-005"
+        },
+        {
+          "sv": "städar",
+          "en": "tidy",
+          "word": "verbs-093"
+        },
+        {
+          "sv": "rum",
+          "en": "room, rooms",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "possessives-sin-5",
+      "pattern": "sin",
+      "type": "repair",
+      "instruction": "Fix the error. The brother is Erik’s.",
+      "source": "Erik har en bror. Sin bror bor i Göteborg.",
+      "answers": [
+        "Erik har en bror. Hans bror bor i Göteborg."
+      ],
+      "hint": "Look at where the possessive stands.",
+      "feedback": "A reflexive possessive needs a subject before it in its own clause.",
+      "explanation": "Sin bror is the subject of the second sentence, and a reflexive form can never be part of the subject. His brother there is hans bror.",
+      "mistakes": [
+        {
+          "answers": [
+            "Erik har en bror. Sin bror bor i Göteborg."
+          ],
+          "why": "That is the text unchanged. The reflexive form stands inside the subject, where it is never allowed."
+        },
+        {
+          "answers": [
+            "Erik har en bror. Hennes bror bor i Göteborg."
+          ],
+          "why": "That word means her, but the brother belongs to Erik."
+        },
+        {
+          "answers": [
+            "Erik har en bror. Hans brodern bor i Göteborg."
+          ],
+          "why": "The possessive is fixed, but the noun took the definite ending."
+        }
+      ],
+      "row": "sin or hans",
+      "gloss": [
+        {
+          "sv": "Erik",
+          "en": "Erik"
+        },
+        {
+          "sv": "har",
+          "en": "has",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "bror",
+          "en": "brother",
+          "word": "people-015"
+        },
+        {
+          "sv": "Sin",
+          "en": "his, her (own)"
+        },
+        {
+          "sv": "bor",
+          "en": "lives",
+          "word": "verbs-065"
+        },
+        {
+          "sv": "i",
+          "en": "in",
+          "word": "essentials-062"
+        },
+        {
+          "sv": "Göteborg",
+          "en": "Gothenburg"
+        }
+      ]
+    },
+    {
+      "id": "possessives-sin-6",
+      "pattern": "sin",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Anna is washing her own car.",
+      "answers": [
+        "Anna tvättar sin bil."
+      ],
+      "hint": "Anna is the subject and owns the car.",
+      "feedback": "Her own, with the owner as subject, takes the reflexive form.",
+      "explanation": "The owner Anna is the subject of the clause, so her is sin. Bil is an en-word: sin bil.",
+      "mistakes": [
+        {
+          "answers": [
+            "Anna tvättar hennes bil."
+          ],
+          "why": "That would mean another woman’s car. Anna washes her own."
+        },
+        {
+          "answers": [
+            "Anna tvättar sitt bil."
+          ],
+          "why": "That form is for ett-words, and bil is an en-word."
+        },
+        {
+          "answers": [
+            "Anna tvättar sin bilen."
+          ],
+          "why": "After a possessive the noun stays in its basic form."
+        }
+      ],
+      "row": "sin"
+    },
+    {
+      "id": "possessives-sin-7",
+      "pattern": "sin",
+      "type": "rewrite",
+      "instruction": "Replace bil with hus and change the possessive to match. Write the whole sentence.",
+      "source": "Lars säljer sin bil.",
+      "answers": [
+        "Lars säljer sitt hus."
+      ],
+      "hint": "Hus is an ett-word.",
+      "feedback": "Sin also agrees with the thing owned.",
+      "explanation": "Sin has the same endings as min: sin before en-words, sitt before ett-words. Hus takes ett, so sitt hus.",
+      "mistakes": [
+        {
+          "answers": [
+            "Lars säljer sin hus."
+          ],
+          "why": "The possessive still matches bil. Hus is an ett-word."
+        },
+        {
+          "answers": [
+            "Lars säljer hans hus."
+          ],
+          "why": "That changes the meaning to another man’s house. Lars still sells his own."
+        },
+        {
+          "answers": [
+            "Lars säljer sin bil."
+          ],
+          "why": "That is the original sentence: bil was never replaced."
+        }
+      ],
+      "row": "sin",
+      "gloss": [
+        {
+          "sv": "Lars",
+          "en": "Lars"
+        },
+        {
+          "sv": "säljer",
+          "en": "sells",
+          "word": "verbs-051"
+        },
+        {
+          "sv": "sin",
+          "en": "his, her (own)"
+        },
+        {
+          "sv": "bil",
+          "en": "car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "possessives-sin-8",
+      "pattern": "sin",
+      "type": "build",
+      "instruction": "Build the sentence: Sara is looking for her (own) keys. Leave one tile unused.",
+      "source": "Sara is looking for her own keys.",
+      "tokens": [
+        "Sara",
+        "hennes",
+        "letar",
+        "efter",
+        "sina",
+        "nycklar."
+      ],
+      "answers": [
+        "Sara letar efter sina nycklar."
+      ],
+      "hint": "Sara is the subject and owns the keys.",
+      "feedback": "The keys are plural and belong to the subject.",
+      "explanation": "Sara owns the keys and is the subject, so her is reflexive, and nycklar is plural: sina nycklar.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sara letar efter hennes nycklar."
+          ],
+          "why": "That tile would mean another woman’s keys. Sara looks for her own."
+        }
+      ],
+      "row": "sin"
+    },
+    {
+      "id": "possessives-genitive-1",
+      "pattern": "genitive",
+      "type": "choose",
+      "instruction": "Choose the words for the girl’s cat.",
+      "source": "Det här är ____.",
+      "options": [
+        "flickans katt",
+        "flickans katten",
+        "flickan katt"
+      ],
+      "answers": [
+        "flickans katt"
+      ],
+      "hint": "The owner takes -s; the thing owned does not take an ending.",
+      "feedback": "Look at both nouns: owner and thing owned.",
+      "explanation": "The girl is flickan, so the girl’s is flickans. The cat after it stays in its basic form: flickans katt.",
+      "mistakes": [
+        {
+          "answers": [
+            "flickans katten"
+          ],
+          "why": "The thing owned after a genitive stays in its basic form; only the owner has the definite ending."
+        },
+        {
+          "answers": [
+            "flickan katt"
+          ],
+          "why": "The owner has no -s, so nothing says the cat is hers."
+        }
+      ],
+      "row": "flickans katt",
+      "gloss": [
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-genitive-2",
+      "pattern": "genitive",
+      "type": "complete",
+      "instruction": "Write Erik’s.",
+      "source": "____ cykel är ny.",
+      "answers": [
+        "Eriks"
+      ],
+      "hint": "Add one letter to the name.",
+      "feedback": "Swedish has no apostrophe before the genitive -s.",
+      "explanation": "The genitive just adds -s to the owner: Eriks cykel.",
+      "mistakes": [
+        {
+          "answers": [
+            "Erik"
+          ],
+          "why": "Without the -s, nothing marks Erik as the owner."
+        },
+        {
+          "answers": [
+            "Eriks cykeln"
+          ],
+          "why": "Only the possessive word goes in the gap, and the noun after a genitive stays in its basic form anyway."
+        }
+      ],
+      "row": "Eriks cykel",
+      "gloss": [
+        {
+          "sv": "cykel",
+          "en": "bike",
+          "word": "travel-008"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "ny",
+          "en": "new",
+          "word": "qualities-010"
+        }
+      ]
+    },
+    {
+      "id": "possessives-genitive-3",
+      "pattern": "genitive",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "Anna’s car is red.",
+      "answers": [
+        "Annas bil är röd."
+      ],
+      "hint": "Add -s to Anna, no apostrophe.",
+      "feedback": "Check the genitive and the noun after it.",
+      "explanation": "Anna’s car is Annas bil: -s on the owner, no apostrophe, and bil without an ending.",
+      "mistakes": [
+        {
+          "answers": [
+            "Annas bilen är röd."
+          ],
+          "why": "After a genitive the noun stays in its basic form."
+        },
+        {
+          "answers": [
+            "Anna bil är röd."
+          ],
+          "why": "The owner needs -s to show the car is hers."
+        },
+        {
+          "answers": [
+            "Bilen av Anna är röd."
+          ],
+          "why": "Swedish does not build the genitive with av; it adds -s to the owner."
+        }
+      ],
+      "row": "Annas bil"
+    },
+    {
+      "id": "possessives-genitive-4",
+      "pattern": "genitive",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Pojkens boken ligger här.",
+      "answers": [
+        "Pojkens bok ligger här."
+      ],
+      "hint": "Look at the noun after the genitive.",
+      "feedback": "The genitive already makes the noun definite.",
+      "explanation": "After a genitive the noun stays in its basic form: pojkens bok, the boy’s book.",
+      "mistakes": [
+        {
+          "answers": [
+            "Pojkens boken ligger här."
+          ],
+          "why": "That is the sentence unchanged. The thing owned keeps a definite ending it must not have."
+        },
+        {
+          "answers": [
+            "Pojken bok ligger här."
+          ],
+          "why": "Now the owner lost its -s, so nothing says whose book it is."
+        }
+      ],
+      "row": "flickans katt",
+      "gloss": [
+        {
+          "sv": "Pojkens",
+          "en": "the boy’s",
+          "word": "people-007"
+        },
+        {
+          "sv": "boken",
+          "en": "the book",
+          "word": "school-028"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (lying, located)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "här",
+          "en": "here",
+          "word": "essentials-095"
+        }
+      ]
+    },
+    {
+      "id": "possessives-genitive-5",
+      "pattern": "genitive",
+      "type": "rewrite",
+      "instruction": "Replace hans with Erik and write the whole sentence.",
+      "source": "Hans hund är stor.",
+      "answers": [
+        "Eriks hund är stor."
+      ],
+      "hint": "Use the genitive -s.",
+      "feedback": "The name takes the place of the possessive.",
+      "explanation": "His dog becomes Erik’s dog: Eriks hund. The noun stays in its basic form, as after hans.",
+      "mistakes": [
+        {
+          "answers": [
+            "Erik hund är stor."
+          ],
+          "why": "The name needs -s to show it owns the dog."
+        },
+        {
+          "answers": [
+            "Eriks hunden är stor."
+          ],
+          "why": "After a genitive the noun stays in its basic form."
+        },
+        {
+          "answers": [
+            "Hans hund är stor."
+          ],
+          "why": "That is the original sentence: hans was never replaced."
+        }
+      ],
+      "row": "Eriks cykel",
+      "gloss": [
+        {
+          "sv": "Hans",
+          "en": "his"
+        },
+        {
+          "sv": "hund",
+          "en": "dog",
+          "word": "nature-011"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "stor",
+          "en": "big",
+          "word": "qualities-001"
+        }
+      ]
+    },
+    {
+      "id": "possessives-genitive-6",
+      "pattern": "genitive",
+      "type": "build",
+      "instruction": "Build the sentence: The teacher’s bag is black. Leave one tile unused.",
+      "source": "The teacher’s bag is black.",
+      "tokens": [
+        "Läraren",
+        "väska",
+        "Lärarens",
+        "är",
+        "svart."
+      ],
+      "answers": [
+        "Lärarens väska är svart."
+      ],
+      "hint": "The teacher is läraren; add -s.",
+      "feedback": "The owner takes -s on its definite form.",
+      "explanation": "The teacher is läraren, so the teacher’s is lärarens. The bag after it stays basic: lärarens väska.",
+      "mistakes": [
+        {
+          "answers": [
+            "Läraren väska är svart."
+          ],
+          "why": "That tile has no -s, so it does not say whose bag it is. It is the one to leave out."
+        }
+      ],
+      "row": "flickans katt"
+    },
+    {
+      "id": "possessives-indefinite-1",
+      "pattern": "indefinite",
+      "type": "choose",
+      "instruction": "Choose the right form of the noun.",
+      "source": "Min ____ är ny.",
+      "options": [
+        "telefon",
+        "telefonen"
+      ],
+      "answers": [
+        "telefon"
+      ],
+      "hint": "What does a noun look like after min?",
+      "feedback": "The possessive already says which phone.",
+      "explanation": "After a possessive the noun stays in its basic form: min telefon, my phone.",
+      "mistakes": [
+        {
+          "answers": [
+            "telefonen"
+          ],
+          "why": "That is the definite form, the phone. After a possessive Swedish does not add it."
+        }
+      ],
+      "row": "telefonen",
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "ny",
+          "en": "new",
+          "word": "qualities-010"
+        }
+      ]
+    },
+    {
+      "id": "possessives-indefinite-2",
+      "pattern": "indefinite",
+      "type": "complete",
+      "instruction": "Write the right form of väska (bag).",
+      "source": "Var är din ____?",
+      "answers": [
+        "väska"
+      ],
+      "hint": "What comes after din?",
+      "feedback": "No ending after a possessive.",
+      "explanation": "After din the noun stays in its basic form: din väska.",
+      "mistakes": [
+        {
+          "answers": [
+            "väskan"
+          ],
+          "why": "That is the definite form. After a possessive the noun takes no ending."
+        },
+        {
+          "answers": [
+            "väskor"
+          ],
+          "why": "That is the plural, and din is for one thing."
+        }
+      ],
+      "row": "väskan",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where",
+          "word": "essentials-035"
+        },
+        {
+          "sv": "är",
+          "en": "is",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "din",
+          "en": "your"
+        }
+      ]
+    },
+    {
+      "id": "possessives-indefinite-3",
+      "pattern": "indefinite",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Vi tvättar vår bilen.",
+      "answers": [
+        "Vi tvättar vår bil."
+      ],
+      "hint": "Look at the ending of the noun.",
+      "feedback": "The possessive is right; the noun is not.",
+      "explanation": "After vår the noun stays in its basic form: vår bil.",
+      "mistakes": [
+        {
+          "answers": [
+            "Vi tvättar vår bilen."
+          ],
+          "why": "That is the sentence unchanged. The noun carries a definite ending after a possessive."
+        },
+        {
+          "answers": [
+            "Vi tvättar bilen."
+          ],
+          "why": "That drops the word our, so the meaning changes. Keep the possessive and fix the noun."
+        }
+      ],
+      "row": "bilen",
+      "gloss": [
+        {
+          "sv": "tvättar",
+          "en": "wash",
+          "word": "verbs-094"
+        },
+        {
+          "sv": "vår",
+          "en": "our"
+        },
+        {
+          "sv": "bilen",
+          "en": "the car",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "possessives-indefinite-4",
+      "pattern": "indefinite",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "My mother’s flat is small.",
+      "answers": [
+        "Min mammas lägenhet är liten.",
+        "Min mors lägenhet är liten."
+      ],
+      "hint": "Mother takes -s, and neither noun takes an ending.",
+      "feedback": "Check both nouns for endings.",
+      "explanation": "My mother is min mamma, my mother’s is min mammas, and the flat stays basic: lägenhet.",
+      "mistakes": [
+        {
+          "answers": [
+            "Min mammas lägenheten är liten."
+          ],
+          "why": "After a genitive the noun stays in its basic form."
+        },
+        {
+          "answers": [
+            "Min mamman lägenhet är liten."
+          ],
+          "why": "The owner needs -s, and after min it takes no definite ending."
+        },
+        {
+          "answers": [
+            "Mitt mammas lägenhet är liten."
+          ],
+          "why": "The possessive belongs to mamma, an en-word."
+        }
+      ]
+    },
+    {
+      "id": "possessives-indefinite-5",
+      "pattern": "indefinite",
+      "type": "rewrite",
+      "instruction": "Replace the definite noun with min bok (my book). Write the whole sentence.",
+      "source": "Boken ligger på bordet.",
+      "answers": [
+        "Min bok ligger på bordet."
+      ],
+      "hint": "The definite ending goes when min comes in.",
+      "feedback": "Min and the definite ending never stand together.",
+      "explanation": "The possessive takes the place of the definite ending: boken becomes min bok.",
+      "mistakes": [
+        {
+          "answers": [
+            "Min boken ligger på bordet."
+          ],
+          "why": "After a possessive the noun stays in its basic form."
+        },
+        {
+          "answers": [
+            "Mitt bok ligger på bordet."
+          ],
+          "why": "Bok is an en-word, so my is the form without -t."
+        }
+      ],
+      "row": "boken",
+      "gloss": [
+        {
+          "sv": "Boken",
+          "en": "the book",
+          "word": "school-028"
+        },
+        {
+          "sv": "ligger",
+          "en": "is (lying, located)",
+          "word": "verbs-063"
+        },
+        {
+          "sv": "på",
+          "en": "on",
+          "word": "essentials-063"
+        },
+        {
+          "sv": "bordet",
+          "en": "the table",
+          "word": "home-025"
+        }
+      ]
+    },
+    {
+      "id": "possessives-indefinite-6",
+      "pattern": "indefinite",
+      "type": "build",
+      "instruction": "Build the sentence: Their books are on the table. Leave one tile unused.",
+      "source": "Their books are on the table.",
+      "tokens": [
+        "Deras",
+        "böckerna",
+        "böcker",
+        "ligger",
+        "på",
+        "bordet."
+      ],
+      "answers": [
+        "Deras böcker ligger på bordet."
+      ],
+      "hint": "Which form of the noun follows deras?",
+      "feedback": "Deras already says whose books.",
+      "explanation": "After deras the noun stays in its basic form: deras böcker. Only the table, with no possessive, is definite.",
+      "mistakes": [
+        {
+          "answers": [
+            "Deras böckerna ligger på bordet."
+          ],
+          "why": "That tile is the definite form. After a possessive the noun stays basic."
+        }
+      ],
+      "row": "böckerna"
+    },
+    {
+      "id": "possessives-indefinite-7",
+      "pattern": "indefinite",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Sara letar efter sin mobilen.",
+      "answers": [
+        "Sara letar efter sin mobil."
+      ],
+      "hint": "Look at the noun after sin.",
+      "feedback": "Sin works like min: no ending on the noun.",
+      "explanation": "After sin the noun stays in its basic form: sin mobil.",
+      "mistakes": [
+        {
+          "answers": [
+            "Sara letar efter sin mobilen."
+          ],
+          "why": "That is the sentence unchanged. The noun carries a definite ending after a possessive."
+        },
+        {
+          "answers": [
+            "Sara letar efter hennes mobil."
+          ],
+          "why": "Changing the possessive changes whose phone it is; Sara looks for her own."
+        }
+      ],
+      "gloss": [
+        {
+          "sv": "Sara",
+          "en": "Sara"
+        },
+        {
+          "sv": "letar efter",
+          "en": "is looking for",
+          "word": "verbs-031"
+        },
+        {
+          "sv": "sin",
+          "en": "his, her (own)"
+        },
+        {
+          "sv": "mobilen",
+          "en": "the mobile phone",
+          "word": "media-001"
+        }
+      ]
+    }
+  ]
+}

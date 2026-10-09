@@ -1,0 +1,2225 @@
+{
+  "id": "adjective-agreement",
+  "unit": "nouns",
+  "level": "A2",
+  "title": "Making adjectives agree",
+  "description": "Give an adjective the right ending for en-words, ett-words, plurals and the definite form.",
+  "mark": "stor · stort · stora",
+  "guide": {
+    "summary": "A Swedish adjective changes its ending to match the noun: nothing for an en-word, -t for an ett-word, -a for plurals and for the definite form. Learn these three endings and the handful of special words, and you can describe anything.",
+    "sections": [
+      {
+        "id": "ett-form",
+        "title": "En-words and ett-words",
+        "text": "With an en-word the adjective is in its dictionary form. With an ett-word it adds -t. This is the same whether the adjective comes before the noun or later in the sentence.",
+        "table": {
+          "columns": [
+            "Adjective",
+            "with en",
+            "with ett"
+          ],
+          "rows": [
+            [
+              "stor",
+              "en stor bil",
+              "ett stort hus"
+            ],
+            [
+              "fin",
+              "en fin stol",
+              "ett fint rum"
+            ],
+            [
+              "varm",
+              "en varm jacka",
+              "ett varmt täcke"
+            ],
+            [
+              "dyr",
+              "en dyr bil",
+              "ett dyrt hotell"
+            ]
+          ]
+        },
+        "steps": [
+          "Find the noun the adjective describes.",
+          "Is it en or ett? Check the article or the dictionary.",
+          "En: use the bare adjective. Ett: add -t."
+        ],
+        "examples": [
+          {
+            "sv": "en stor bil",
+            "en": "a big car"
+          },
+          {
+            "sv": "ett stort hus",
+            "en": "a big house"
+          }
+        ],
+        "watch": [
+          "The ending follows the noun, not the meaning: ett barn is a person but still takes -t."
+        ]
+      },
+      {
+        "id": "plural",
+        "title": "Plurals take -a",
+        "text": "In the plural the adjective adds -a for every noun, en or ett. Gender no longer matters.",
+        "table": {
+          "columns": [
+            "Form",
+            "Example",
+            "English"
+          ],
+          "rows": [
+            [
+              "singular en",
+              "en dyr bil",
+              "an expensive car"
+            ],
+            [
+              "singular ett",
+              "ett dyrt hus",
+              "an expensive house"
+            ],
+            [
+              "plural",
+              "dyra bilar, dyra hus",
+              "expensive cars, houses"
+            ]
+          ]
+        },
+        "steps": [
+          "Is the noun plural? Look for två, många or a plural ending.",
+          "If it is, add -a to the adjective and stop."
+        ],
+        "examples": [
+          {
+            "sv": "stora bilar",
+            "en": "big cars"
+          },
+          {
+            "sv": "två varma tröjor",
+            "en": "two warm jumpers"
+          }
+        ],
+        "watch": [
+          "Some nouns look the same in the plural (ett hus, två hus). Let the number words decide."
+        ]
+      },
+      {
+        "id": "after-ar",
+        "title": "After är",
+        "text": "An adjective after är, blir or verkar still agrees with the subject. The subject decides: en-word bare, ett-word -t, plural -a. The definite ending of the subject does not make the adjective definite.",
+        "table": {
+          "columns": [
+            "Subject",
+            "Sentence",
+            "English"
+          ],
+          "rows": [
+            [
+              "bilen är",
+              "Bilen är stor.",
+              "The car is big."
+            ],
+            [
+              "huset är",
+              "Huset är stort.",
+              "The house is big."
+            ],
+            [
+              "bilarna är",
+              "Bilarna är stora.",
+              "The cars are big."
+            ]
+          ]
+        },
+        "steps": [
+          "Find the subject before är.",
+          "Ask: en-word, ett-word or plural?",
+          "Give the adjective the ending for that answer."
+        ],
+        "examples": [
+          {
+            "sv": "Rummet är rent.",
+            "en": "The room is clean."
+          },
+          {
+            "sv": "Barnen är trötta.",
+            "en": "The children are tired."
+          }
+        ],
+        "watch": [
+          "Huset is definite, but after är the adjective is stort, not stora.",
+          "Barnen means the children, so it is plural."
+        ]
+      },
+      {
+        "id": "definite",
+        "title": "The definite form and possessives",
+        "text": "Before a definite noun the adjective always takes -a, and the phrase starts with den (en-words), det (ett-words) or de (plural). After a possessive such as min, din or vår the adjective also takes -a, but the noun stays bare.",
+        "table": {
+          "columns": [
+            "Before",
+            "Example",
+            "English"
+          ],
+          "rows": [
+            [
+              "den",
+              "den stora bilen",
+              "the big car"
+            ],
+            [
+              "det",
+              "det stora huset",
+              "the big house"
+            ],
+            [
+              "de",
+              "de stora husen",
+              "the big houses"
+            ],
+            [
+              "min",
+              "min nya bil",
+              "my new car"
+            ]
+          ]
+        },
+        "steps": [
+          "Does the phrase mean the, or start with a possessive?",
+          "If so, the adjective takes -a, whatever the gender.",
+          "With the: add den, det or de in front and the ending on the noun. With a possessive: no ending on the noun."
+        ],
+        "examples": [
+          {
+            "sv": "det vita huset",
+            "en": "the white house"
+          },
+          {
+            "sv": "min nya cykel",
+            "en": "my new bike"
+          }
+        ],
+        "watch": [
+          "Never -t before a definite noun: det stora huset.",
+          "After a possessive the noun has no -en or -et: min nya bil."
+        ]
+      },
+      {
+        "id": "spelling",
+        "title": "Spelling changes",
+        "text": "A few adjectives change their spelling when they take an ending. Adjectives that end in a long vowel, or in a long vowel plus -d or -t, write a double t. Adjectives in -el, -er or -en drop a letter before -a.",
+        "table": {
+          "columns": [
+            "Adjective",
+            "ett form",
+            "-a form"
+          ],
+          "rows": [
+            [
+              "ny",
+              "nytt",
+              "nya"
+            ],
+            [
+              "röd",
+              "rött",
+              "röda"
+            ],
+            [
+              "vit",
+              "vitt",
+              "vita"
+            ],
+            [
+              "-ig",
+              "smutsigt",
+              "smutsiga"
+            ],
+            [
+              "gammal",
+              "gammalt",
+              "gamla"
+            ],
+            [
+              "vacker",
+              "vackert",
+              "vackra"
+            ]
+          ]
+        },
+        "steps": [
+          "Does it end in a long vowel, or a long vowel plus -d or -t (ny, röd, vit)? Write -tt for the ett form.",
+          "Does it end in -ig? Just add -t.",
+          "Does it end in -al, -el or -er? Drop the vowel before -a."
+        ],
+        "examples": [
+          {
+            "sv": "ett nytt kylskåp",
+            "en": "a new fridge"
+          },
+          {
+            "sv": "mina gamla föräldrar",
+            "en": "my old parents"
+          }
+        ],
+        "watch": [
+          "Röd becomes rött, never rödt.",
+          "Gammal in the plural is gamla, with one m."
+        ]
+      },
+      {
+        "id": "liten",
+        "title": "Liten, litet, lilla, små",
+        "text": "Small is irregular. It has four forms, and the plural is a different word.",
+        "table": {
+          "columns": [
+            "Form",
+            "Example",
+            "English"
+          ],
+          "rows": [
+            [
+              "liten",
+              "en liten katt",
+              "a small cat"
+            ],
+            [
+              "litet",
+              "ett litet barn",
+              "a small child"
+            ],
+            [
+              "lilla",
+              "den lilla katten, min lilla bror",
+              "the small cat, my little brother"
+            ],
+            [
+              "små",
+              "små hundar, de små hundarna",
+              "small dogs, the small dogs"
+            ]
+          ]
+        },
+        "steps": [
+          "Plural, with or without the? Use små.",
+          "Singular after den, det or a possessive? Use lilla.",
+          "Otherwise: liten with en, litet with ett."
+        ],
+        "examples": [
+          {
+            "sv": "ett litet bord",
+            "en": "a small table"
+          },
+          {
+            "sv": "Barnen är små.",
+            "en": "The children are small."
+          }
+        ],
+        "watch": [
+          "Små is also the definite plural: de små husen."
+        ]
+      },
+      {
+        "id": "no-change",
+        "title": "Adjectives that never change",
+        "text": "Some adjectives keep one form everywhere. The common ones are bra, extra and gratis, and most adjectives ending in -a.",
+        "table": {
+          "columns": [
+            "Adjective",
+            "Example",
+            "English"
+          ],
+          "rows": [
+            [
+              "bra",
+              "ett bra hotell",
+              "a good hotel"
+            ],
+            [
+              "extra",
+              "ett extra täcke",
+              "an extra duvet"
+            ],
+            [
+              "gratis",
+              "Biljetterna är gratis.",
+              "The tickets are free."
+            ]
+          ]
+        },
+        "steps": [
+          "Check if the adjective is bra, extra, gratis or ends in -a.",
+          "If so, write it the same with en, ett, plural and definite nouns."
+        ],
+        "examples": [
+          {
+            "sv": "bra grannar",
+            "en": "good neighbours"
+          },
+          {
+            "sv": "Museet är gratis.",
+            "en": "The museum is free."
+          }
+        ],
+        "watch": [
+          "Never add -t to bra: ett bra hotell, not ett bratt hotell."
+        ]
+      }
+    ]
+  },
+  "patterns": {
+    "ett-form": {
+      "section": "ett-form",
+      "steps": [
+        "Find the noun.",
+        "Decide en or ett.",
+        "Ett-word: add -t; en-word: bare form."
+      ]
+    },
+    "plural": {
+      "section": "plural",
+      "steps": [
+        "Check that the noun is plural.",
+        "Add -a to the adjective, whatever the gender."
+      ]
+    },
+    "after-ar": {
+      "section": "after-ar",
+      "steps": [
+        "Find the subject before är.",
+        "En-word: bare. Ett-word: -t. Plural: -a.",
+        "Ignore the definite ending on the subject."
+      ]
+    },
+    "definite": {
+      "section": "definite",
+      "steps": [
+        "Look for the or a possessive.",
+        "Give the adjective -a.",
+        "Add den, det or de for the; keep the noun bare after a possessive."
+      ]
+    },
+    "spelling": {
+      "section": "spelling",
+      "steps": [
+        "Work out the ending first.",
+        "Long vowel, or long vowel plus -d or -t: write -tt.",
+        "-al, -el, -er: drop the vowel before -a."
+      ]
+    },
+    "liten": {
+      "section": "liten",
+      "steps": [
+        "Plural: små.",
+        "Definite or after a possessive: lilla.",
+        "Else liten with en, litet with ett."
+      ]
+    },
+    "no-change": {
+      "section": "no-change",
+      "steps": [
+        "Is it bra, extra, gratis or ending in -a or -s?",
+        "Then write it unchanged."
+      ]
+    }
+  },
+  "exercises": [
+    {
+      "id": "adjective-agreement-ett-form-1",
+      "pattern": "ett-form",
+      "type": "choose",
+      "instruction": "Choose the right form of stor.",
+      "source": "Vi har ett ____ hus.",
+      "options": [
+        "stor",
+        "stort",
+        "stora"
+      ],
+      "answers": [
+        "stort"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "stor"
+          ],
+          "why": "The bare form goes with en-words, as in en stor bil. Hus takes ett, so the adjective needs its ett ending."
+        },
+        {
+          "answers": [
+            "stora"
+          ],
+          "why": "The -a form is for plurals and for the definite form. Here there is one house and the article is ett."
+        }
+      ],
+      "row": "stor",
+      "hint": "Is hus an en-word or an ett-word?",
+      "feedback": "Look at the little word before the gap: ett.",
+      "explanation": "Hus is an ett-word (ett hus), so the adjective adds -t: ett stort hus.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "hus",
+          "en": "house",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-ett-form-2",
+      "pattern": "ett-form",
+      "type": "complete",
+      "instruction": "Write the adjective in the right form.",
+      "source": "Det är ett ____ (fin) rum.",
+      "answers": [
+        "fint"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "fin"
+          ],
+          "why": "That is the en-word form. Ett rum needs the adjective to add its ett ending too."
+        },
+        {
+          "answers": [
+            "fina"
+          ],
+          "why": "The -a ending is for plurals and definite nouns; ett rum is one room, indefinite."
+        }
+      ],
+      "row": "fin",
+      "hint": "Rum takes ett.",
+      "feedback": "After ett, a regular adjective adds -t.",
+      "explanation": "Rum is an ett-word (ett rum), so fin becomes fint: ett fint rum.",
+      "gloss": [
+        {
+          "sv": "Det är",
+          "en": "it is"
+        },
+        {
+          "sv": "fin",
+          "en": "nice",
+          "word": "qualities-006"
+        },
+        {
+          "sv": "rum",
+          "en": "room",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-ett-form-3",
+      "pattern": "ett-form",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "We have a big kitchen.",
+      "answers": [
+        "Vi har ett stort kök."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har ett stor kök."
+          ],
+          "why": "The adjective was left in its en form. With ett the adjective takes -t as well."
+        },
+        {
+          "answers": [
+            "Vi har en stor kök."
+          ],
+          "why": "Kök is an ett-word, so both the article and the adjective change."
+        },
+        {
+          "answers": [
+            "Vi har en stort kök."
+          ],
+          "why": "The adjective is right but the article is not: kök takes ett."
+        }
+      ],
+      "row": "stor",
+      "hint": "Kitchen is ett kök.",
+      "feedback": "Both the article and the adjective must show that kök is an ett-word.",
+      "explanation": "Kök is an ett-word, so a big kitchen is ett stort kök."
+    },
+    {
+      "id": "adjective-agreement-ett-form-4",
+      "pattern": "ett-form",
+      "type": "rewrite",
+      "instruction": "Replace jacka with täcke and change the adjective to match. Write the whole sentence.",
+      "source": "Jag har en varm jacka.",
+      "answers": [
+        "Jag har ett varmt täcke."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har ett varm täcke."
+          ],
+          "why": "The article changed but the adjective still has its en form. After ett it needs -t."
+        },
+        {
+          "answers": [
+            "Jag har en varm täcke."
+          ],
+          "why": "Täcke is an ett-word; only the noun was swapped."
+        },
+        {
+          "answers": [
+            "Jag har en varm jacka."
+          ],
+          "why": "That is the original sentence: jacka was never replaced."
+        }
+      ],
+      "row": "varm",
+      "hint": "Täcke is an ett-word.",
+      "feedback": "Change the article and the adjective together.",
+      "explanation": "Täcke takes ett, so en varm becomes ett varmt: ett varmt täcke.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "varm",
+          "en": "warm",
+          "word": "qualities-025"
+        },
+        {
+          "sv": "jacka",
+          "en": "jacket",
+          "word": "people-048"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-ett-form-5",
+      "pattern": "ett-form",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Det är ett dyr hotell.",
+      "answers": [
+        "Det är ett dyrt hotell."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Det är ett dyr hotell."
+          ],
+          "why": "That is the sentence unchanged. With ett the adjective must add -t."
+        },
+        {
+          "answers": [
+            "Det är en dyr hotell."
+          ],
+          "why": "Hotell really is an ett-word, so changing the article makes a new error instead of fixing the old one."
+        }
+      ],
+      "row": "dyr",
+      "hint": "Hotell takes ett.",
+      "feedback": "The article is right; the adjective is not.",
+      "explanation": "Hotell is an ett-word, so dyr adds -t: ett dyrt hotell.",
+      "gloss": [
+        {
+          "sv": "Det är",
+          "en": "it is"
+        },
+        {
+          "sv": "dyr",
+          "en": "expensive",
+          "word": "qualities-051"
+        },
+        {
+          "sv": "hotell",
+          "en": "hotel",
+          "word": "travel-017"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-ett-form-6",
+      "pattern": "ett-form",
+      "type": "build",
+      "instruction": "Build the sentence: We live in a big house. Leave one tile unused.",
+      "source": "We live in a big house.",
+      "tokens": [
+        "bor",
+        "stor",
+        "Vi",
+        "ett",
+        "i",
+        "stort",
+        "hus."
+      ],
+      "answers": [
+        "Vi bor i ett stort hus."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vi bor i ett stor hus."
+          ],
+          "why": "That tile is the en form. The tile to leave out is the one without the ett ending."
+        }
+      ],
+      "row": "stor",
+      "hint": "House is ett hus.",
+      "feedback": "Only one form of big fits after ett.",
+      "explanation": "Hus takes ett, so big is stort: ett stort hus."
+    },
+    {
+      "id": "adjective-agreement-plural-1",
+      "pattern": "plural",
+      "type": "choose",
+      "instruction": "Choose the right form of varm.",
+      "source": "Jag köper två ____ tröjor.",
+      "options": [
+        "varm",
+        "varmt",
+        "varma"
+      ],
+      "answers": [
+        "varma"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "varm"
+          ],
+          "why": "That is the singular en form, as in en varm tröja. There are two jumpers here."
+        },
+        {
+          "answers": [
+            "varmt"
+          ],
+          "why": "The -t form is for one ett-word. Tröjor is plural, and plurals ignore en and ett."
+        }
+      ],
+      "row": "plural",
+      "hint": "How many jumpers?",
+      "feedback": "Tröjor is plural.",
+      "explanation": "In the plural every adjective takes -a, whatever the gender: två varma tröjor.",
+      "gloss": [
+        {
+          "sv": "köper",
+          "en": "buy",
+          "word": "verbs-050"
+        },
+        {
+          "sv": "två",
+          "en": "two"
+        },
+        {
+          "sv": "tröjor",
+          "en": "jumpers",
+          "word": "people-045"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-2",
+      "pattern": "plural",
+      "type": "complete",
+      "instruction": "Write the adjective in the right form.",
+      "source": "Vi har ____ (fin) grannar.",
+      "answers": [
+        "fina"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "fin"
+          ],
+          "why": "The bare form is for one en-word. Grannar is plural."
+        },
+        {
+          "answers": [
+            "fint"
+          ],
+          "why": "The -t form is for one ett-word, not for a plural."
+        }
+      ],
+      "row": "plural",
+      "hint": "Grannar is plural.",
+      "feedback": "Plural nouns take the plural adjective.",
+      "explanation": "Grannar is the plural of granne, so fin takes -a: fina grannar.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "fin",
+          "en": "nice",
+          "word": "qualities-006"
+        },
+        {
+          "sv": "grannar",
+          "en": "neighbours",
+          "word": "people-035"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-3",
+      "pattern": "plural",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The shop sells cheap shoes.",
+      "answers": [
+        "Affären säljer billiga skor.",
+        "Butiken säljer billiga skor."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Affären säljer billig skor.",
+            "Butiken säljer billig skor."
+          ],
+          "why": "The adjective stayed singular in front of a plural noun."
+        },
+        {
+          "answers": [
+            "Affären säljer billigt skor.",
+            "Butiken säljer billigt skor."
+          ],
+          "why": "The -t ending marks one ett-word, and skor is plural."
+        }
+      ],
+      "row": "plural",
+      "hint": "Shoes is plural: skor.",
+      "feedback": "The adjective in front of a plural noun ends in -a.",
+      "explanation": "Skor is plural, so billig takes -a: billiga skor."
+    },
+    {
+      "id": "adjective-agreement-plural-4",
+      "pattern": "plural",
+      "type": "rewrite",
+      "instruction": "Make it two cats: två katter. Change the adjective too. Write the whole sentence.",
+      "source": "Hon har en svart katt.",
+      "answers": [
+        "Hon har två svarta katter."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Hon har två svart katter."
+          ],
+          "why": "The noun went plural but the adjective did not."
+        },
+        {
+          "answers": [
+            "Hon har två svarta katt."
+          ],
+          "why": "The adjective is right, but katt must become plural as well."
+        }
+      ],
+      "row": "plural",
+      "hint": "The plural adjective ends in -a.",
+      "feedback": "Change the article, the noun and the adjective.",
+      "explanation": "In the plural svart takes -a: två svarta katter.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "has",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "svart",
+          "en": "black",
+          "word": "qualities-093"
+        },
+        {
+          "sv": "katt",
+          "en": "cat",
+          "word": "nature-012"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-5",
+      "pattern": "plural",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Vi har två dyr bilar.",
+      "answers": [
+        "Vi har två dyra bilar."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har två dyr bilar."
+          ],
+          "why": "That is the sentence unchanged. A plural noun needs the plural adjective."
+        },
+        {
+          "answers": [
+            "Vi har två dyrt bilar."
+          ],
+          "why": "The -t ending is only for one ett-word."
+        }
+      ],
+      "row": "plural",
+      "hint": "Bilar is plural.",
+      "feedback": "Look at the adjective in front of the plural noun.",
+      "explanation": "Bilar is plural, so dyr takes -a: två dyra bilar.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "två",
+          "en": "two"
+        },
+        {
+          "sv": "dyr",
+          "en": "expensive",
+          "word": "qualities-051"
+        },
+        {
+          "sv": "bilar",
+          "en": "cars",
+          "word": "travel-004"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-plural-6",
+      "pattern": "plural",
+      "type": "build",
+      "instruction": "Build the sentence: I have warm socks. Leave one tile unused.",
+      "source": "I have warm socks.",
+      "tokens": [
+        "varmt",
+        "Jag",
+        "strumpor.",
+        "har",
+        "varma"
+      ],
+      "answers": [
+        "Jag har varma strumpor."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har varmt strumpor."
+          ],
+          "why": "That tile is the ett form for one thing. The noun here is plural."
+        }
+      ],
+      "row": "plural",
+      "hint": "Socks is plural.",
+      "feedback": "Only the plural form of warm fits.",
+      "explanation": "Strumpor is plural, so varm takes -a: varma strumpor."
+    },
+    {
+      "id": "adjective-agreement-after-ar-1",
+      "pattern": "after-ar",
+      "type": "choose",
+      "instruction": "Choose the right form of stor.",
+      "source": "Huset är ____.",
+      "options": [
+        "stor",
+        "stort",
+        "stora"
+      ],
+      "answers": [
+        "stort"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "stor"
+          ],
+          "why": "That is the en form, as in bilen är stor. Hus is an ett-word."
+        },
+        {
+          "answers": [
+            "stora"
+          ],
+          "why": "After är the -a form is only for plurals. One house is not plural, even though huset is definite."
+        }
+      ],
+      "row": "huset är",
+      "hint": "What kind of noun is huset: en or ett?",
+      "feedback": "After är the adjective still agrees with the noun.",
+      "explanation": "Huset is the definite form of ett hus, so after är the adjective takes -t: huset är stort.",
+      "gloss": [
+        {
+          "sv": "Huset",
+          "en": "the house",
+          "word": "home-001"
+        },
+        {
+          "sv": "är",
+          "en": "is / are",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-ar-2",
+      "pattern": "after-ar",
+      "type": "complete",
+      "instruction": "Write the adjective in the right form.",
+      "source": "Biljetterna är ____ (dyr).",
+      "answers": [
+        "dyra"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "dyr"
+          ],
+          "why": "That is the form for one en-word. There are several tickets."
+        },
+        {
+          "answers": [
+            "dyrt"
+          ],
+          "why": "The -t form is for one ett-word, and biljetter are en-words in the plural."
+        }
+      ],
+      "row": "bilarna är",
+      "hint": "Biljetterna is plural.",
+      "feedback": "The adjective after är agrees with a plural subject.",
+      "explanation": "Biljetterna is plural, so after är dyr takes -a: biljetterna är dyra.",
+      "gloss": [
+        {
+          "sv": "Biljetterna",
+          "en": "the tickets",
+          "word": "travel-014"
+        },
+        {
+          "sv": "är",
+          "en": "is / are",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "dyr",
+          "en": "expensive",
+          "word": "qualities-051"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-ar-3",
+      "pattern": "after-ar",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The room is clean.",
+      "answers": [
+        "Rummet är rent."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Rummet är ren."
+          ],
+          "why": "Agreement does not stop after är: an ett-word still needs -t."
+        },
+        {
+          "answers": [
+            "Rummet är rennt."
+          ],
+          "why": "Ren has one n and simply adds -t."
+        }
+      ],
+      "row": "huset är",
+      "hint": "Room is ett rum.",
+      "feedback": "The adjective after är agrees with rummet.",
+      "explanation": "Rum is an ett-word, so after är ren takes -t: rummet är rent."
+    },
+    {
+      "id": "adjective-agreement-after-ar-4",
+      "pattern": "after-ar",
+      "type": "rewrite",
+      "instruction": "Replace Stolen with Bordet and change the adjective to match. Write the whole sentence.",
+      "source": "Stolen är tung.",
+      "answers": [
+        "Bordet är tungt."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Bordet är tung."
+          ],
+          "why": "The adjective still matches stolen, an en-word."
+        },
+        {
+          "answers": [
+            "Bordet är tunga."
+          ],
+          "why": "The -a form after är is for plurals; there is one table."
+        }
+      ],
+      "row": "huset är",
+      "hint": "Bord is an ett-word.",
+      "feedback": "The adjective after är follows the new noun.",
+      "explanation": "Bord takes ett, so tung becomes tungt: bordet är tungt.",
+      "gloss": [
+        {
+          "sv": "Stolen",
+          "en": "the chair",
+          "word": "home-026"
+        },
+        {
+          "sv": "är",
+          "en": "is / are",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "tung",
+          "en": "heavy",
+          "word": "qualities-021"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-ar-5",
+      "pattern": "after-ar",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Barnen är trött.",
+      "answers": [
+        "Barnen är trötta."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Barnen är trött."
+          ],
+          "why": "That is the sentence unchanged. A plural subject needs the plural adjective after är."
+        },
+        {
+          "answers": [
+            "Barnet är trött."
+          ],
+          "why": "That changes the meaning to one child. The sentence talks about several children, so keep barnen and fix the adjective."
+        }
+      ],
+      "row": "bilarna är",
+      "hint": "Barnen means the children.",
+      "feedback": "Barn looks the same in the plural, but barnen is plural.",
+      "explanation": "Barnen is plural (the children), so trött takes -a: barnen är trötta.",
+      "gloss": [
+        {
+          "sv": "Barnen",
+          "en": "the children",
+          "word": "people-005"
+        },
+        {
+          "sv": "är",
+          "en": "is / are",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "trött",
+          "en": "tired",
+          "word": "feelings-009"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-after-ar-6",
+      "pattern": "after-ar",
+      "type": "build",
+      "instruction": "Build the sentence: The apples are good. Leave one tile unused.",
+      "source": "The apples are good.",
+      "tokens": [
+        "gott.",
+        "är",
+        "Äpplena",
+        "goda."
+      ],
+      "answers": [
+        "Äpplena är goda."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Äpplena är gott."
+          ],
+          "why": "That tile is the ett form for one thing. The apples are several."
+        }
+      ],
+      "row": "bilarna är",
+      "hint": "Apples is plural.",
+      "feedback": "After är the adjective matches a plural subject.",
+      "explanation": "Äpplena is plural, so god takes -a: äpplena är goda."
+    },
+    {
+      "id": "adjective-agreement-definite-1",
+      "pattern": "definite",
+      "type": "choose",
+      "instruction": "Choose the right form of vit.",
+      "source": "Vi bor i det ____ huset.",
+      "options": [
+        "vit",
+        "vitt",
+        "vita"
+      ],
+      "answers": [
+        "vita"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "vitt"
+          ],
+          "why": "That is the form for ett hus without the. With det and huset the adjective takes the definite ending."
+        },
+        {
+          "answers": [
+            "vit"
+          ],
+          "why": "The bare form belongs to an indefinite en-word, and huset is a definite ett-word."
+        }
+      ],
+      "row": "det",
+      "hint": "Huset is definite: the house.",
+      "feedback": "After den, det or de the adjective always ends in -a.",
+      "explanation": "In the definite form the adjective takes -a, even with an ett-word: det vita huset.",
+      "gloss": [
+        {
+          "sv": "bor",
+          "en": "live",
+          "word": "verbs-065"
+        },
+        {
+          "sv": "i",
+          "en": "in"
+        },
+        {
+          "sv": "huset",
+          "en": "the house",
+          "word": "home-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-definite-2",
+      "pattern": "definite",
+      "type": "complete",
+      "instruction": "Write the adjective in the right form.",
+      "source": "Var är den ____ (svart) väskan?",
+      "answers": [
+        "svarta"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "svart"
+          ],
+          "why": "That is the indefinite form, as in en svart väska. With den and väskan the adjective changes."
+        },
+        {
+          "answers": [
+            "svartt",
+            "svarte"
+          ],
+          "why": "Neither is a Swedish form. After den the ending is the same for every noun."
+        }
+      ],
+      "row": "den",
+      "hint": "Väskan is definite.",
+      "feedback": "Den + adjective + noun with -n: the adjective ends in -a.",
+      "explanation": "Väskan is definite, so svart takes -a: den svarta väskan.",
+      "gloss": [
+        {
+          "sv": "Var",
+          "en": "where"
+        },
+        {
+          "sv": "är",
+          "en": "is / are",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "svart",
+          "en": "black",
+          "word": "qualities-093"
+        },
+        {
+          "sv": "väskan",
+          "en": "the bag",
+          "word": "shopping-030"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-definite-3",
+      "pattern": "definite",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The big house is expensive.",
+      "answers": [
+        "Det stora huset är dyrt."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Det stort huset är dyrt."
+          ],
+          "why": "Before a definite noun the adjective always takes -a, even with ett-words."
+        },
+        {
+          "answers": [
+            "Det stora huset är dyr."
+          ],
+          "why": "After är the adjective agrees with hus, an ett-word, so it needs -t."
+        }
+      ],
+      "row": "det",
+      "hint": "The big house: det + adjective + huset.",
+      "feedback": "Inside the phrase the adjective is definite; after är it agrees with hus.",
+      "explanation": "Det stora huset uses the -a form; after är, dyr agrees with an ett-word: dyrt.",
+      "alternatives": [
+        {
+          "answer": "Stora huset är dyrt.",
+          "message": "Common in speech. In writing Swedish keeps det in front: Det stora huset är dyrt.",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-definite-4",
+      "pattern": "definite",
+      "type": "rewrite",
+      "instruction": "Replace en with min and change the adjective. Write the whole sentence.",
+      "source": "Det här är en ny cykel.",
+      "answers": [
+        "Det här är min nya cykel."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Det här är min ny cykel."
+          ],
+          "why": "The adjective kept its indefinite form. After a possessive it takes the definite ending."
+        },
+        {
+          "answers": [
+            "Det här är mitt nya cykel."
+          ],
+          "why": "Cykel is an en-word, so the possessive is min, not mitt."
+        },
+        {
+          "answers": [
+            "Det här är min nya cykeln."
+          ],
+          "why": "After a possessive the noun stays in its bare form, without -n."
+        }
+      ],
+      "row": "min",
+      "hint": "After a possessive the adjective takes -a.",
+      "feedback": "Min works like the: the adjective goes definite.",
+      "explanation": "After min, din, vår and the other possessives the adjective takes -a: min nya cykel.",
+      "gloss": [
+        {
+          "sv": "Det här är",
+          "en": "this is"
+        },
+        {
+          "sv": "ny",
+          "en": "new",
+          "word": "qualities-010"
+        },
+        {
+          "sv": "cykel",
+          "en": "bike",
+          "word": "travel-008"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-definite-5",
+      "pattern": "definite",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "De stor husen ligger vid havet.",
+      "answers": [
+        "De stora husen ligger vid havet."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "De stor husen ligger vid havet."
+          ],
+          "why": "That is the sentence unchanged. After de the adjective needs the definite ending."
+        },
+        {
+          "answers": [
+            "De stort husen ligger vid havet."
+          ],
+          "why": "The -t form is never used before a definite noun."
+        }
+      ],
+      "row": "de",
+      "hint": "Husen is definite plural.",
+      "feedback": "Check the adjective between de and husen.",
+      "explanation": "In the definite form the adjective always takes -a: de stora husen.",
+      "gloss": [
+        {
+          "sv": "De",
+          "en": "the"
+        },
+        {
+          "sv": "stor",
+          "en": "big",
+          "word": "qualities-001"
+        },
+        {
+          "sv": "husen",
+          "en": "the houses",
+          "word": "home-001"
+        },
+        {
+          "sv": "ligger",
+          "en": "are (lie)"
+        },
+        {
+          "sv": "vid",
+          "en": "by"
+        },
+        {
+          "sv": "havet",
+          "en": "the sea",
+          "word": "nature-007"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-definite-6",
+      "pattern": "definite",
+      "type": "build",
+      "instruction": "Build the sentence: Your new jacket is nice. Leave one tile unused.",
+      "source": "Your new jacket is nice.",
+      "tokens": [
+        "jacka",
+        "Din",
+        "ny",
+        "fin.",
+        "nya",
+        "är"
+      ],
+      "answers": [
+        "Din nya jacka är fin."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Din ny jacka är fin."
+          ],
+          "why": "That tile is the indefinite form. After a possessive the adjective takes -a."
+        }
+      ],
+      "row": "min",
+      "hint": "After din the adjective goes definite.",
+      "feedback": "Inside the phrase the adjective follows the possessive; after är it is indefinite again.",
+      "explanation": "After the possessive din, ny takes -a: din nya jacka. After är, fin agrees with an en-word and stays bare."
+    },
+    {
+      "id": "adjective-agreement-definite-7",
+      "pattern": "definite",
+      "type": "choose",
+      "instruction": "Choose the right form of fin.",
+      "source": "Det är mitt ____ rum.",
+      "options": [
+        "fin",
+        "fint",
+        "fina"
+      ],
+      "answers": [
+        "fina"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "fint"
+          ],
+          "why": "The -t form is for ett rum without a possessive. After mitt the adjective goes definite."
+        },
+        {
+          "answers": [
+            "fin"
+          ],
+          "why": "The bare form fits an indefinite en-word, and rum is neither."
+        }
+      ],
+      "row": "min",
+      "hint": "What comes before the gap?",
+      "feedback": "A possessive makes the adjective definite.",
+      "explanation": "After mitt the adjective takes -a, even though rum is an ett-word: mitt fina rum.",
+      "gloss": [
+        {
+          "sv": "Det är",
+          "en": "it is"
+        },
+        {
+          "sv": "mitt",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "rum",
+          "en": "room",
+          "word": "home-005"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-spelling-1",
+      "pattern": "spelling",
+      "type": "choose",
+      "instruction": "Choose the right form of ny.",
+      "source": "Vi har ett ____ kylskåp.",
+      "options": [
+        "ny",
+        "nyt",
+        "nytt"
+      ],
+      "answers": [
+        "nytt"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "nyt"
+          ],
+          "why": "After a stressed vowel Swedish writes a double t here, so a single t is a misspelling."
+        },
+        {
+          "answers": [
+            "ny"
+          ],
+          "why": "That is the en form. Kylskåp takes ett."
+        }
+      ],
+      "row": "ny",
+      "hint": "Kylskåp takes ett.",
+      "feedback": "Ny ends in a vowel.",
+      "explanation": "An adjective that ends in a long vowel doubles the t: ny becomes nytt.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "kylskåp",
+          "en": "fridge",
+          "word": "home-042"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-spelling-2",
+      "pattern": "spelling",
+      "type": "complete",
+      "instruction": "Write the adjective in the right form.",
+      "source": "Hon har ett ____ (röd) paraply.",
+      "answers": [
+        "rött"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "rödt"
+          ],
+          "why": "The d is not kept before t. It merges into a double t."
+        },
+        {
+          "answers": [
+            "röt"
+          ],
+          "why": "The t is written double after the vowel ö here."
+        },
+        {
+          "answers": [
+            "röd"
+          ],
+          "why": "That is the en form, and paraply takes ett."
+        }
+      ],
+      "row": "röd",
+      "hint": "Paraply takes ett.",
+      "feedback": "Röd does not just add -t.",
+      "explanation": "Röd ends in -d after a long vowel: the d becomes t and the t is doubled, so ett rött paraply.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "has",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "röd",
+          "en": "red",
+          "word": "qualities-089"
+        },
+        {
+          "sv": "paraply",
+          "en": "umbrella",
+          "word": "shopping-028"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-spelling-3",
+      "pattern": "spelling",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The old houses are beautiful.",
+      "answers": [
+        "De gamla husen är vackra."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "De gammala husen är vackra."
+          ],
+          "why": "Gammal drops its second a and one m before the ending."
+        },
+        {
+          "answers": [
+            "De gamla husen är vackera."
+          ],
+          "why": "Vacker drops the e before the ending -a."
+        },
+        {
+          "answers": [
+            "De gamla husen är vackert."
+          ],
+          "why": "After är the adjective agrees with a plural subject, not with one ett-word."
+        }
+      ],
+      "row": "gammal",
+      "hint": "Gammal loses a letter before -a.",
+      "feedback": "Gammal and vacker both shrink before the ending -a.",
+      "explanation": "Gammal becomes gamla: one m and no second a. Vacker becomes vackra the same way."
+    },
+    {
+      "id": "adjective-agreement-spelling-4",
+      "pattern": "spelling",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Vi har ett smutsig golv.",
+      "answers": [
+        "Vi har ett smutsigt golv."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har ett smutsig golv."
+          ],
+          "why": "That is the sentence unchanged. Adjectives in -ig still take -t after ett."
+        },
+        {
+          "answers": [
+            "Vi har ett smutsigtt golv."
+          ],
+          "why": "Only one t is added after -ig."
+        }
+      ],
+      "row": "-ig",
+      "hint": "Golv takes ett.",
+      "feedback": "An adjective in -ig simply adds -t.",
+      "explanation": "Golv is an ett-word, so smutsig adds -t: ett smutsigt golv.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "smutsig",
+          "en": "dirty",
+          "word": "qualities-029"
+        },
+        {
+          "sv": "golv",
+          "en": "floor",
+          "word": "home-018"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-spelling-5",
+      "pattern": "spelling",
+      "type": "complete",
+      "instruction": "Write the adjective in the right form.",
+      "source": "Mina föräldrar är ____ (gammal).",
+      "answers": [
+        "gamla"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "gammala"
+          ],
+          "why": "Gammal drops a letter before -a. The plural is shorter than this."
+        },
+        {
+          "answers": [
+            "gammal"
+          ],
+          "why": "That is the singular en form, and föräldrar are two people."
+        }
+      ],
+      "row": "gammal",
+      "hint": "Föräldrar is plural.",
+      "feedback": "The plural ending changes the spelling of the stem.",
+      "explanation": "In the plural gammal takes -a and shrinks: gamla.",
+      "gloss": [
+        {
+          "sv": "Mina",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "föräldrar",
+          "en": "parents",
+          "word": "people-011"
+        },
+        {
+          "sv": "är",
+          "en": "is / are",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "gammal",
+          "en": "old",
+          "word": "qualities-011"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-spelling-6",
+      "pattern": "spelling",
+      "type": "choose",
+      "instruction": "Choose the right form of vit.",
+      "source": "Hon har ett ____ halsband.",
+      "options": [
+        "vit",
+        "vitt",
+        "vita"
+      ],
+      "answers": [
+        "vitt"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "vit"
+          ],
+          "why": "That is the en form. With ett the t must be doubled."
+        },
+        {
+          "answers": [
+            "vita"
+          ],
+          "why": "The -a ending is for plurals and definite nouns."
+        }
+      ],
+      "row": "vit",
+      "hint": "Halsband takes ett.",
+      "feedback": "Vit ends in t already.",
+      "explanation": "Vit already ends in t, and the ett form doubles it: ett vitt halsband.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "has",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "halsband",
+          "en": "necklace",
+          "word": "shopping-034"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-liten-1",
+      "pattern": "liten",
+      "type": "choose",
+      "instruction": "Choose the right form of liten.",
+      "source": "De har ett ____ barn.",
+      "options": [
+        "liten",
+        "litet",
+        "små"
+      ],
+      "answers": [
+        "litet"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "liten"
+          ],
+          "why": "That is the en form, and barn is an ett-word."
+        },
+        {
+          "answers": [
+            "små"
+          ],
+          "why": "Små is the plural. There is one child here."
+        }
+      ],
+      "row": "litet",
+      "hint": "Barn takes ett.",
+      "feedback": "Liten has its own ett form.",
+      "explanation": "Liten is irregular: with ett it is litet: ett litet barn.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "barn",
+          "en": "child",
+          "word": "people-005"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-liten-2",
+      "pattern": "liten",
+      "type": "complete",
+      "instruction": "Write the adjective in the right form.",
+      "source": "Den ____ (liten) katten sover.",
+      "answers": [
+        "lilla"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "litena",
+            "litna"
+          ],
+          "why": "Liten does not take a regular -a ending. Its definite singular is its own word."
+        },
+        {
+          "answers": [
+            "små"
+          ],
+          "why": "Små is the plural; there is one cat."
+        },
+        {
+          "answers": [
+            "liten"
+          ],
+          "why": "That is the indefinite form. With den and katten it changes."
+        }
+      ],
+      "row": "lilla",
+      "hint": "Katten is definite.",
+      "feedback": "The definite singular of liten is a different word.",
+      "explanation": "In the definite singular liten becomes lilla: den lilla katten.",
+      "gloss": [
+        {
+          "sv": "liten",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "katten",
+          "en": "the cat",
+          "word": "nature-012"
+        },
+        {
+          "sv": "sover",
+          "en": "is sleeping"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-liten-3",
+      "pattern": "liten",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "The children are small.",
+      "answers": [
+        "Barnen är små."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Barnen är liten."
+          ],
+          "why": "That is the singular. Barnen is plural."
+        },
+        {
+          "answers": [
+            "Barnen är lilla."
+          ],
+          "why": "Lilla is the definite singular, used before a noun; after är with a plural use the plural."
+        },
+        {
+          "answers": [
+            "Barnen är litna."
+          ],
+          "why": "Liten has no regular plural form."
+        }
+      ],
+      "row": "små",
+      "hint": "Small in the plural is a new word.",
+      "feedback": "After är the adjective agrees with a plural subject.",
+      "explanation": "The plural of liten is små: barnen är små."
+    },
+    {
+      "id": "adjective-agreement-liten-4",
+      "pattern": "liten",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Jag har två liten hundar.",
+      "answers": [
+        "Jag har två små hundar."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag har två liten hundar."
+          ],
+          "why": "That is the sentence unchanged. Liten is singular only."
+        },
+        {
+          "answers": [
+            "Jag har två litna hundar."
+          ],
+          "why": "Liten does not form a regular plural."
+        }
+      ],
+      "row": "små",
+      "hint": "Hundar is plural.",
+      "feedback": "Liten has a different word for the plural.",
+      "explanation": "The plural of liten is små: två små hundar.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "två",
+          "en": "two"
+        },
+        {
+          "sv": "liten",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "hundar",
+          "en": "dogs",
+          "word": "nature-011"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-liten-5",
+      "pattern": "liten",
+      "type": "rewrite",
+      "instruction": "Make it two tables: två bord. Change the adjective too. Write the whole sentence.",
+      "source": "Vi har ett litet bord.",
+      "answers": [
+        "Vi har två små bord."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har två litet bord."
+          ],
+          "why": "The adjective is still singular."
+        },
+        {
+          "answers": [
+            "Vi har två små borden."
+          ],
+          "why": "Borden means the tables. After två the noun is indefinite."
+        }
+      ],
+      "row": "små",
+      "hint": "Bord stays bord in the plural.",
+      "feedback": "Only the article and the adjective change.",
+      "explanation": "The plural of liten is små, and bord has the same plural: två små bord.",
+      "gloss": [
+        {
+          "sv": "har",
+          "en": "have",
+          "word": "verbs-002"
+        },
+        {
+          "sv": "litet",
+          "en": "small",
+          "word": "qualities-002"
+        },
+        {
+          "sv": "bord",
+          "en": "table",
+          "word": "home-025"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-liten-6",
+      "pattern": "liten",
+      "type": "choose",
+      "instruction": "Choose the right form of liten.",
+      "source": "Min ____ bror heter Erik.",
+      "options": [
+        "liten",
+        "litet",
+        "lilla",
+        "små"
+      ],
+      "answers": [
+        "lilla"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "liten"
+          ],
+          "why": "That is the indefinite form. After min the adjective goes definite."
+        },
+        {
+          "answers": [
+            "litet"
+          ],
+          "why": "That is for an ett-word, and bror is an en-word."
+        },
+        {
+          "answers": [
+            "små"
+          ],
+          "why": "Små is the plural, and there is one brother."
+        }
+      ],
+      "row": "lilla",
+      "hint": "A possessive comes before the gap.",
+      "feedback": "After min the adjective takes its definite form.",
+      "explanation": "After a possessive liten becomes lilla: min lilla bror.",
+      "gloss": [
+        {
+          "sv": "Min",
+          "en": "my",
+          "word": "essentials-052"
+        },
+        {
+          "sv": "bror",
+          "en": "brother",
+          "word": "people-015"
+        },
+        {
+          "sv": "heter",
+          "en": "is called"
+        },
+        {
+          "sv": "Erik",
+          "en": "Erik"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-no-change-1",
+      "pattern": "no-change",
+      "type": "choose",
+      "instruction": "Choose the right form of gratis.",
+      "source": "Biljetterna är ____.",
+      "options": [
+        "gratis",
+        "gratisa",
+        "gratist"
+      ],
+      "answers": [
+        "gratis"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "gratisa"
+          ],
+          "why": "Adjectives ending in -s like this one take no ending, not even in the plural."
+        },
+        {
+          "answers": [
+            "gratist"
+          ],
+          "why": "This adjective takes no -t either; it has one form only."
+        }
+      ],
+      "row": "gratis",
+      "hint": "Some adjectives never change.",
+      "feedback": "Gratis is the same in every form.",
+      "explanation": "Gratis never takes an ending: biljetterna är gratis.",
+      "gloss": [
+        {
+          "sv": "Biljetterna",
+          "en": "the tickets",
+          "word": "travel-014"
+        },
+        {
+          "sv": "är",
+          "en": "is / are",
+          "word": "verbs-001"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-no-change-2",
+      "pattern": "no-change",
+      "type": "complete",
+      "instruction": "Write the adjective in the right form.",
+      "source": "Det är ett ____ (bra) hotell.",
+      "answers": [
+        "bra"
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "brat",
+            "bratt"
+          ],
+          "why": "This adjective takes no -t, even after ett: there is no brat or bratt."
+        },
+        {
+          "answers": [
+            "braa"
+          ],
+          "why": "This adjective takes no ending at all."
+        }
+      ],
+      "row": "bra",
+      "hint": "Does bra change?",
+      "feedback": "Bra stays the same everywhere.",
+      "explanation": "Bra never changes: en bra bil, ett bra hotell, bra hotell.",
+      "gloss": [
+        {
+          "sv": "Det är",
+          "en": "it is"
+        },
+        {
+          "sv": "bra",
+          "en": "good",
+          "word": "qualities-003"
+        },
+        {
+          "sv": "hotell",
+          "en": "hotel",
+          "word": "travel-017"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-no-change-3",
+      "pattern": "no-change",
+      "type": "translate",
+      "instruction": "Translate into Swedish.",
+      "source": "We have good neighbours.",
+      "answers": [
+        "Vi har bra grannar."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Vi har braa grannar."
+          ],
+          "why": "This adjective takes no plural ending."
+        }
+      ],
+      "row": "bra",
+      "hint": "Use bra for good.",
+      "feedback": "Bra does not take the plural -a.",
+      "explanation": "Bra is the same in every form: bra grannar.",
+      "alternatives": [
+        {
+          "answer": "Vi har goda grannar.",
+          "message": "Right too: goda grannar is a common phrase. Bra grannar is the everyday way, and bra never changes.",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-no-change-4",
+      "pattern": "no-change",
+      "type": "repair",
+      "instruction": "Fix the error.",
+      "source": "Museet är gratist.",
+      "answers": [
+        "Museet är gratis."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Museet är gratist."
+          ],
+          "why": "That is the sentence unchanged. This adjective never takes an ending."
+        }
+      ],
+      "row": "gratis",
+      "hint": "Some adjectives never change.",
+      "feedback": "Gratis takes no -t.",
+      "explanation": "Gratis is the same with en-words, ett-words and plurals: museet är gratis.",
+      "gloss": [
+        {
+          "sv": "Museet",
+          "en": "the museum",
+          "word": "travel-043"
+        },
+        {
+          "sv": "är",
+          "en": "is / are",
+          "word": "verbs-001"
+        },
+        {
+          "sv": "gratist",
+          "en": "free"
+        }
+      ]
+    },
+    {
+      "id": "adjective-agreement-no-change-5",
+      "pattern": "no-change",
+      "type": "build",
+      "instruction": "Build the sentence: I need an extra duvet. Leave one tile unused.",
+      "source": "I need an extra duvet.",
+      "tokens": [
+        "Jag",
+        "extrat",
+        "behöver",
+        "täcke.",
+        "ett",
+        "extra"
+      ],
+      "answers": [
+        "Jag behöver ett extra täcke."
+      ],
+      "mistakes": [
+        {
+          "answers": [
+            "Jag behöver ett extrat täcke."
+          ],
+          "why": "That tile adds -t, but extra takes no ending."
+        }
+      ],
+      "row": "extra",
+      "hint": "Extra never changes.",
+      "feedback": "Extra stays the same after ett.",
+      "explanation": "Extra ends in -a and never changes: ett extra täcke."
+    }
+  ]
+}
