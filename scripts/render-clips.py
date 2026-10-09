@@ -37,7 +37,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SETS = ('comprehension', 'grammar', 'story')
+# verbs: the Verbs room's spoken phrases outside French (list-clips.ts verbs, on the Verbs branch).
+SETS = ('comprehension', 'grammar', 'story', 'verbs')
 MODEL = 'mlx-community/chatterbox-multilingual-v3'
 REFERENCE = ROOT / 'voices' / 'french-reference.wav'
 VOICE_PROVENANCE = ROOT / 'voices' / 'provenance.json'
