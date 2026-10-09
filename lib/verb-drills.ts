@@ -5,16 +5,17 @@
 import { Database } from 'bun:sqlite';
 import { pointsFromLowest } from './score-points';
 import { recentStudyDays, SCORE_HALF_LIFE_DAYS, StoreError, studyDay } from './store';
-import { accentSlip, conjugate, diagnose, earQuestion, earQuestions, GROUP_TITLES, groupOf, isRight, paradigm, persons, rule, subject, TENSES, TENSE_NAMES, type EarKind, type ParadigmRow, type Tense, type Verb } from './verbs';
+import type { EarKind, ParadigmRow, Tense, Verb } from './verbs';
+import { FRENCH, type DrillVerb, type VerbGrammar } from './verb-grammar';
 
 export type FormState = 'solid' | 'getting' | 'shaky' | 'new';
 // shaky: every form at SHAKY_AT or below, in any verb and tense (Mistakes practises these).
 export type VerbSet = 'mine' | 'common' | 'chosen' | 'shaky';
-export type RoundInput = { set: VerbSet; verbIds?: string[]; tenses: Tense[] };
-export type RoundItem = { verbId: string; inf: string; en: string; tense: Tense; tenseName: string; person: number };
+export type RoundInput<T extends string = Tense> = { set: VerbSet; verbIds?: string[]; tenses: T[] };
+export type RoundItem<T extends string = Tense> = { verbId: string; inf: string; en: string; tense: T; tenseName: string; person: number };
 // One way to read a shown form: a verb and tense it belongs to, the persons sharing it there, their forms with subjects.
-export type FormReading = { verbId: string; inf: string; en: string; tense: Tense; tenseName: string; persons: number[]; forms: string[] };
-export type VerbCard = RoundItem & { answer: string; rule: string; paradigm: ParadigmRow[]; hook?: string; form?: string; readings?: FormReading[] };
+export type FormReading<T extends string = Tense> = { verbId: string; inf: string; en: string; tense: T; tenseName: string; persons: number[]; forms: string[] };
+export type VerbCard<T extends string = Tense> = RoundItem<T> & { answer: string; rule: string; paradigm: ParadigmRow[]; hook?: string; form?: string; readings?: FormReading<T>[] };
 export type FormResult = { right: boolean; expected: string; why: string; rule: string; paradigm: ParadigmRow[]; hook?: string };
 export type EarItem = { id: string; audio: string; question: string; choices: string[] };
 
@@ -55,9 +56,11 @@ function nextDay(day: string): string {
   return `${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, '0')}-${String(next.getDate()).padStart(2, '0')}`;
 }
 
-export function createVerbDrills(options: {
+// grammar: the language's verbs (lib/verb-grammar.ts); French's unless given.
+export function createVerbDrills<V extends DrillVerb = Verb, T extends string = Tense>(options: {
   dbPath: string;
-  verbs: () => Verb[];
+  verbs: () => V[];
+  grammar?: VerbGrammar<V, T>;
   // Each vocabulary word's status and score, for "your verbs".
   vocabulary: () => { id: string; status: string; score: number }[];
   // The recording of a phrase said By ear, or null until it has been made.
@@ -66,6 +69,8 @@ export function createVerbDrills(options: {
 }) {
   const now = options.now ?? (() => new Date());
   const random = options.random ?? Math.random;
+  const grammar = options.grammar ?? (FRENCH as unknown as VerbGrammar<V, T>);
+  const { tenses: TENSES, tenseNames: TENSE_NAMES, groupTitles: GROUP_TITLES, persons, conjugate, subject, isRight, accentSlip, diagnose, paradigm, rule, groupOf, earQuestion, earQuestions } = grammar;
   const db = new Database(options.dbPath, { create: true, strict: true });
   db.exec('PRAGMA journal_mode = WAL; PRAGMA busy_timeout = 5000;');
   db.exec(`
@@ -91,9 +96,9 @@ export function createVerbDrills(options: {
   const insert = db.query('INSERT OR IGNORE INTO verb_answers (request_id, verb_id, tense, person, mode, question, given, right, answered_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
   const insertTable = db.query('INSERT OR IGNORE INTO verb_tables (request_id, verb_id, tense, perfect, answered_at) VALUES (?, ?, ?, ?, ?)');
   const everyTable = db.query<{ verb_id: string; perfect: number; answered_at: string }, []>('SELECT verb_id, perfect, answered_at FROM verb_tables ORDER BY sequence');
-  const written = db.query<{ verb_id: string; tense: Tense; person: number; right: number }, []>("SELECT verb_id, tense, person, right FROM verb_answers WHERE mode != 'ear' ORDER BY sequence DESC");
-  const everyScored = db.query<{ verb_id: string; tense: Tense; person: number; mode: string; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, mode, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
-  const everyWritten = db.query<{ verb_id: string; tense: Tense; person: number; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
+  const written = db.query<{ verb_id: string; tense: T; person: number; right: number }, []>("SELECT verb_id, tense, person, right FROM verb_answers WHERE mode != 'ear' ORDER BY sequence DESC");
+  const everyScored = db.query<{ verb_id: string; tense: T; person: number; mode: string; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, mode, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
+  const everyWritten = db.query<{ verb_id: string; tense: T; person: number; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
   const hookRows = db.query<{ verb_id: string; tense: string; person: number; form: string; hook: string }, []>('SELECT verb_id, tense, person, form, hook FROM verb_hooks');
   const hookRow = db.query<{ form: string; hook: string }, [string, string, number]>('SELECT form, hook FROM verb_hooks WHERE verb_id = ? AND tense = ? AND person = ?');
   const saveHook = db.query('INSERT INTO verb_hooks (verb_id, tense, person, form, hook, written_at) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (verb_id, tense, person) DO UPDATE SET form = excluded.form, hook = excluded.hook, written_at = excluded.written_at');
@@ -129,8 +134,8 @@ export function createVerbDrills(options: {
   }
   // The end of a study day: 04:00 the next morning, or now for today.
   const endOf = (day: string) => { if (day === studyDay(now())) return now().getTime(); const [year, month, date] = day.split('-').map(Number); return new Date(year!, month! - 1, date! + 1, 4).getTime(); };
-  const formText = (verb: Verb, tense: Tense, person: number) => { const form = conjugate(verb, tense)[person]!; return subject(person, form.shown) + form.shown; };
-  function chosenVerbs(input: RoundInput): Verb[] {
+  const formText = (verb: V, tense: T, person: number) => { const form = conjugate(verb, tense)[person]!; return subject(person, form.shown) + form.shown; };
+  function chosenVerbs(input: RoundInput<T>): V[] {
     const verbs = options.verbs();
     if (input?.set === 'mine') {
       const started = new Map(options.vocabulary().filter((word) => word.status !== 'new').map((word) => [word.id, word.score]));
@@ -148,10 +153,10 @@ export function createVerbDrills(options: {
     }
     throw new StoreError('Choose which verbs to practise: yours, the most common, or your own pick.');
   }
-  function chosenTenses(input: RoundInput): Tense[] {
+  function chosenTenses(input: RoundInput<T>): T[] {
     if (input?.set === 'shaky') return [...TENSES];
     const tenses = Array.isArray(input?.tenses) ? TENSES.filter((tense) => input.tenses.includes(tense)) : [];
-    if (!tenses.length) throw new StoreError('Choose at least one tense.');
+    if (!tenses.length) throw new StoreError(`Choose at least one ${grammar.unit}.`);
     return tenses;
   }
   // Neighbours differ in verb wherever the rest allows it.
@@ -166,7 +171,7 @@ export function createVerbDrills(options: {
   }
 
   // A form's memory hook, when one was written for the form as the table has it now.
-  function hookFor(verb: Verb, tense: Tense, person: number): string | undefined {
+  function hookFor(verb: V, tense: T, person: number): string | undefined {
     const row = hookRow.get(verb.id, tense, person);
     return row && row.form === formText(verb, tense, person) ? row.hook : undefined;
   }
@@ -175,7 +180,7 @@ export function createVerbDrills(options: {
     const verbs = byId();
     const { scores, misses } = scoresAt(now().getTime(), everyScored.all().filter((row) => verbs.has(row.verb_id)));
     return [...scores].filter(([, score]) => score <= SHAKY_AT).sort((left, right) => left[1] - right[1]).map(([id, score]) => {
-      const [verbId, tense, person] = id.split('|') as [string, Tense, string];
+      const [verbId, tense, person] = id.split('|') as [string, T, string];
       const verb = verbs.get(verbId)!;
       return { verbId, verb, tense, person: Number(person), form: formText(verb, tense, Number(person)), score, misses: misses.get(id) ?? 0 };
     });
@@ -194,30 +199,30 @@ export function createVerbDrills(options: {
     const at = now().toISOString();
     db.transaction(() => {
       for (const { id, hook } of hooks) {
-        const [verbId, tense, person] = id.split('|') as [string, Tense, string];
+        const [verbId, tense, person] = id.split('|') as [string, T, string];
         const verb = verbs.get(verbId);
-        if (verb && TENSES.includes(tense) && persons(verb).includes(Number(person))) saveHook.run(verbId, tense, Number(person), formText(verb, tense, Number(person)), hook, at);
+        if (verb && TENSES.includes(tense) && persons(verb, tense).includes(Number(person))) saveHook.run(verbId, tense, Number(person), formText(verb, tense, Number(person)), hook, at);
       }
     })();
   }
 
   // A Type it round: the forms most worth practising (shaky first, then untried), spread so a round of many
   // verbs covers several (at most three forms per verb, two per verb and tense); for your verbs, low vocabulary scores weigh a little.
-  function round(input: RoundInput): RoundItem[] {
+  function round(input: RoundInput<T>): RoundItem<T>[] {
     const verbs = chosenVerbs(input), tenses = chosenTenses(input);
     const { scores } = scoresAt(now().getTime());
     const score = new Map(options.vocabulary().map((word) => [word.id, word.score]));
     // Weighted order without replacement: each key is random^(1/weight), highest first. Among your own verbs, a
     // verb whose word is shaky in Vocabulary leans a little earlier.
     const shakyOnly = input.set === 'shaky';
-    const pool = verbs.flatMap((verb) => tenses.flatMap((tense) => persons(verb).filter((person) => !shakyOnly || (scores.get(key(verb.id, tense, person)) ?? 0) <= SHAKY_AT).map((person) => {
+    const pool = verbs.flatMap((verb) => tenses.flatMap((tense) => persons(verb, tense).filter((person) => !shakyOnly || (scores.get(key(verb.id, tense, person)) ?? 0) <= SHAKY_AT).map((person) => {
       const lean = input.set === 'mine' ? 2 ** (-Math.max(-4, Math.min(4, score.get(verb.id) ?? 0)) / 4) : 1;
       return { verb, tense, person, weight: random() ** (1 / (pull(scores.get(key(verb.id, tense, person))) * lean)) };
     })));
     // With few verbs chosen, each may fill more of the round: one verb alone can give all its forms.
     const verbCap = Math.max(PER_VERB, Math.ceil(ROUND / verbs.length)), tenseCap = Math.max(PER_TENSE, Math.ceil(verbCap / tenses.length));
     const perVerb = new Map<string, number>(), perTense = new Map<string, number>();
-    const picked: RoundItem[] = [];
+    const picked: RoundItem<T>[] = [];
     for (const entry of pool.sort((left, right) => right.weight - left.weight)) {
       if (picked.length >= ROUND) break;
       const tenseKey = `${entry.verb.id}|${entry.tense}`;
@@ -229,18 +234,18 @@ export function createVerbDrills(options: {
     return spread(picked.sort(() => random() - 0.5));
   }
 
-  function findTense(verbId: unknown, tense: unknown): { verb: Verb; tense: Tense } {
+  function findTense(verbId: unknown, tense: unknown): { verb: V; tense: T } {
     const verb = typeof verbId === 'string' ? byId().get(verbId) : undefined;
     if (!verb) throw new StoreError('That verb is not in Echo.', 404);
-    if (!TENSES.includes(tense as Tense)) throw new StoreError('Choose a tense Echo drills.');
-    return { verb, tense: tense as Tense };
+    if (!TENSES.includes(tense as T)) throw new StoreError(`Choose a ${grammar.unit} Echo drills.`);
+    return { verb, tense: tense as T };
   }
-  function findForm(verbId: unknown, tense: unknown, person: unknown): { verb: Verb; tense: Tense; person: number } {
+  function findForm(verbId: unknown, tense: unknown, person: unknown): { verb: V; tense: T; person: number } {
     const { verb } = findTense(verbId, tense);
-    if (!Number.isInteger(person) || !persons(verb).includes(person as number)) throw new StoreError(`${verb.inf} has no such person.`);
-    return { verb, tense: tense as Tense, person: person as number };
+    if (!Number.isInteger(person) || !persons(verb, tense as T).includes(person as number)) throw new StoreError(`${verb.inf} has no such person.`);
+    return { verb, tense: tense as T, person: person as number };
   }
-  function result(verb: Verb, tense: Tense, person: number, given: string): FormResult {
+  function result(verb: V, tense: T, person: number, given: string): FormResult {
     const form = conjugate(verb, tense)[person]!;
     const right = isRight(form, given);
     const expected = subject(person, form.shown) + form.shown;
@@ -254,7 +259,7 @@ export function createVerbDrills(options: {
   };
 
   // One typed form, checked and kept once per request id.
-  function answer(input: { requestId: string; verbId: string; tense: Tense; person: number; given: string }): FormResult {
+  function answer(input: { requestId: string; verbId: string; tense: T; person: number; given: string }): FormResult {
     const requestId = requestIdOf(input?.requestId);
     const { verb, tense, person } = findForm(input.verbId, input.tense, input.person);
     if (typeof input.given !== 'string' || !input.given.trim()) throw new StoreError('Type the form first.');
@@ -266,22 +271,31 @@ export function createVerbDrills(options: {
   // A Cards round: the same forms as Type it, each with its answer, so the card can turn over at once. With
   // way 'recognize' the card shows the bare form ("mens") and turns over to every reading of it: each verb and tense
   // it belongs to, with all the persons that share it (je mens, tu mens). Two cards showing the same form are one.
-  function cards(input: RoundInput & { way?: string }): VerbCard[] {
+  // A grammar with whole cards (Swedish key forms) asks every form of the verb at once, one card per verb.
+  function cards(input: RoundInput<T> & { way?: string }): VerbCard<T>[] {
     const verbs = byId();
     const recognize = input?.way === 'recognize';
+    const whole = !!grammar.wholeCards && !recognize;
     const readingsOf = recognize ? formReadings() : null;
     const shownForms = new Set<string>();
-    return round(input).flatMap((item): VerbCard[] => {
+    const items = round(input);
+    const drawn = whole ? items.filter((item, index) => items.findIndex((other) => other.verbId === item.verbId && other.tense === item.tense) === index) : items;
+    return drawn.flatMap((item): VerbCard<T>[] => {
       const verb = verbs.get(item.verbId)!;
+      if (whole) {
+        const person = persons(verb, item.tense)[0]!;
+        const answer = conjugate(verb, item.tense).flatMap((form, at) => form ? [subject(at, form.shown) + form.shown] : []).join(', ');
+        return [{ ...item, person, answer, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense) }];
+      }
       const form = conjugate(verb, item.tense)[item.person]!;
       const hook = hookFor(verb, item.tense, item.person);
-      const card: VerbCard = { ...item, answer: subject(item.person, form.shown) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), ...(hook ? { hook } : {}) };
+      const card: VerbCard<T> = { ...item, answer: subject(item.person, form.shown) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), ...(hook ? { hook } : {}) };
       if (!readingsOf) return [card];
       if (shownForms.has(form.shown)) return [];
       shownForms.add(form.shown);
       // Phrases built on a verb (avoir peur, avoir raison) conjugate exactly like it, so readings with the same tense
       // and forms are one, named by the shortest: the verb itself. The card's own reading comes first.
-      const same = (reading: FormReading) => `${reading.tense}|${reading.forms.join('|')}`;
+      const same = (reading: FormReading<T>) => `${reading.tense}|${reading.forms.join('|')}`;
       const readings = [...readingsOf.get(form.shown)!].sort((left, right) => left.inf.length - right.inf.length);
       const seen = new Set<string>();
       const distinct = readings.filter((reading) => !seen.has(same(reading)) && !!seen.add(same(reading)));
@@ -292,10 +306,10 @@ export function createVerbDrills(options: {
   // Every form Echo drills, by how it is shown without its subject: the verbs and tenses it belongs to, each with
   // the persons that share it there and those persons' forms with their subjects.
   function formReadings() {
-    const readings = new Map<string, FormReading[]>();
+    const readings = new Map<string, FormReading<T>[]>();
     for (const verb of options.verbs()) for (const tense of TENSES) {
       const table = conjugate(verb, tense);
-      for (const person of persons(verb)) {
+      for (const person of persons(verb, tense)) {
         const shown = table[person]!.shown;
         const list = readings.get(shown) ?? readings.set(shown, []).get(shown)!;
         let reading = list.find((entry) => entry.verbId === verb.id && entry.tense === tense);
@@ -306,12 +320,15 @@ export function createVerbDrills(options: {
     return readings;
   }
   // The learner's own say on a card: counts for the form, once per request id; way 'recognize' is a Form → verb card,
-  // way 'sentence' a card of In sentences (lib/verb-sentences.ts).
-  function mark(input: { requestId: string; verbId: string; tense: Tense; person: number; knew: boolean; way?: string }) {
+  // way 'sentence' a card of In sentences (lib/verb-sentences.ts). A whole card (Swedish key forms) counts for every
+  // form of its tense.
+  function mark(input: { requestId: string; verbId: string; tense: T; person: number; knew: boolean; way?: string }) {
     const requestId = requestIdOf(input?.requestId);
     const { verb, tense, person } = findForm(input?.verbId, input?.tense, input?.person);
     if (typeof input.knew !== 'boolean') throw new StoreError('Say whether you knew it.');
-    insert.run(requestId, verb.id, tense, person, input.way === 'recognize' || input.way === 'sentence' ? input.way : 'card', null, '', input.knew ? 1 : 0, now().toISOString());
+    const way = input.way === 'recognize' || input.way === 'sentence' ? input.way : 'card';
+    if (grammar.wholeCards && way === 'card') for (const each of persons(verb, tense)) insert.run(`${requestId}:${each}`, verb.id, tense, each, way, null, '', input.knew ? 1 : 0, now().toISOString());
+    else insert.run(requestId, verb.id, tense, person, way, null, '', input.knew ? 1 : 0, now().toISOString());
     return { ok: true };
   }
   // Every practised form's score now, by "verbId|tense|person".
@@ -321,14 +338,17 @@ export function createVerbDrills(options: {
   // The next whole table to fill in: one verb in one tense from the chosen verbs and tenses, drawn with odds of its
   // forms' average odds (see pull), so a table with low-scoring forms comes far more often than a solid one. exclude
   // lists the tables just done ("verbId|tense", newest first); it is halved until something is left.
-  function nextTable(input: RoundInput & { exclude?: string[] }): { verbId: string; tense: Tense } {
+  function nextTable(input: RoundInput<T> & { exclude?: string[] }): { verbId: string; tense: T } {
     const verbs = chosenVerbs(input), tenses = chosenTenses(input);
     const { scores } = scoresAt(now().getTime());
-    const pool = verbs.flatMap((verb) => tenses.map((tense) => {
-      const people = persons(verb);
+    // A verb has no table in a tense with no persons (a Swedish verb outside the group).
+    const pool = verbs.flatMap((verb) => tenses.flatMap((tense) => {
+      const people = persons(verb, tense);
+      if (!people.length) return [];
       const weight = people.reduce((total, person) => total + pull(scores.get(key(verb.id, tense, person))), 0) / people.length;
-      return { verbId: verb.id, tense, weight };
+      return [{ verbId: verb.id, tense, weight }];
     }));
+    if (!pool.length) throw new StoreError(`No tables for these verbs in that ${grammar.unit}.`);
     const exclude = Array.isArray(input.exclude) ? input.exclude.filter((entry): entry is string => typeof entry === 'string').slice(0, 20) : [];
     let candidates = pool;
     for (let keep = exclude.length; keep >= 0; keep = keep > 1 ? Math.floor(keep / 2) : keep - 1) {
@@ -344,13 +364,13 @@ export function createVerbDrills(options: {
 
   // looked: the table was just shown (Look, then write), so it gets one grade, kept apart from its forms' scores.
   // again: Check again on a table already checked, which counts for nothing.
-  function table(input: { requestId: string; verbId: string; tense: Tense; answers: string[]; looked?: boolean; again?: boolean }) {
+  function table(input: { requestId: string; verbId: string; tense: T; answers: string[]; looked?: boolean; again?: boolean }) {
     const requestId = requestIdOf(input?.requestId);
     const { verb, tense } = findTense(input?.verbId, input?.tense);
     if (!Array.isArray(input.answers) || input.answers.length !== 6) throw new StoreError('Send an answer for each of the six persons.');
     const at = now().toISOString();
     const checks = [0, 1, 2, 3, 4, 5].map((person) => {
-      if (!persons(verb).includes(person)) return null;
+      if (!persons(verb, tense).includes(person)) return null;
       const given = typeof input.answers[person] === 'string' ? input.answers[person]! : '';
       return { person, given, checked: result(verb, tense, person, given) };
     });
@@ -359,12 +379,12 @@ export function createVerbDrills(options: {
       else for (const entry of checks) if (entry) insert.run(`${requestId}:${entry.person}`, verb.id, tense, entry.person, 'table', null, entry.given.slice(0, 80), entry.checked.right ? 1 : 0, at);
     }
     const cells = checks.map((entry) => entry && { right: entry.checked.right, expected: entry.checked.expected, why: entry.checked.why, ...(entry.checked.hook ? { hook: entry.checked.hook } : {}) });
-    return { cells, right: cells.filter((cell) => cell?.right).length, total: persons(verb).length, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
+    return { cells, right: cells.filter((cell) => cell?.right).length, total: persons(verb, tense).length, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
   }
 
   // A By ear round from the phrases already recorded, in the tenses practised, the questions missed most first. "One
   // person or more" takes at most half the round, unless "Which tense?" can't be asked (one tense chosen).
-  function earRound(input: RoundInput): EarItem[] {
+  function earRound(input: RoundInput<T>): EarItem[] {
     const verbs = chosenVerbs(input), tenses = chosenTenses(input);
     const record = new Map(heard.all().map((row) => [row.question, row]));
     const pool = verbs.flatMap((verb) => earQuestions(verb, tenses).filter((question) => tenses.includes(question.tense)).flatMap((question) => {
@@ -372,7 +392,7 @@ export function createVerbDrills(options: {
       const seen = record.get(question.id);
       return audio ? [{ question, audio, verbId: verb.id, weight: (seen?.misses ?? 0) * 2 - (seen?.answers ?? 0) * 0.5 + random() * 3 }] : [];
     }));
-    if (!pool.length && !tenses.some((tense) => tense === 'pres' || tense === 'imp') && tenses.length < 2) throw new StoreError('By ear needs two tenses to ask which one you hear, or the présent or imparfait to ask how many people. Add one on the Practising line.', 409);
+    if (!pool.length && !grammar.earAskable(tenses)) throw new StoreError(grammar.earNeeds, 409);
     if (!pool.length) throw new StoreError('The phrases for By ear are still being recorded on your Mac. Try again later.', 409);
     const numberCap = pool.some((entry) => entry.question.kind === 'tense') ? EAR_ROUND / 2 : EAR_ROUND;
     const picked: typeof pool = [];
@@ -407,11 +427,11 @@ export function createVerbDrills(options: {
     const forms = history();
     const words = new Map(options.vocabulary().map((word) => [word.id, word]));
     const rows = verbs.map((verb) => {
-      const states = Object.fromEntries(TENSES.map((tense) => [tense, [0, 1, 2, 3, 4, 5].map((person) => persons(verb).includes(person) ? stateOf(forms.get(key(verb.id, tense, person))) : null)])) as Record<Tense, (FormState | null)[]>;
+      const states = Object.fromEntries(TENSES.map((tense) => [tense, [0, 1, 2, 3, 4, 5].map((person) => persons(verb, tense).includes(person) ? stateOf(forms.get(key(verb.id, tense, person))) : null)])) as Record<T, (FormState | null)[]>;
       const word = words.get(verb.id);
       return { id: verb.id, inf: verb.inf, en: verb.en, started: !!word && word.status !== 'new', score: word?.score ?? 0, states };
     });
-    const worst = verbs.flatMap((verb) => TENSES.flatMap((tense) => persons(verb).flatMap((person) => {
+    const worst = verbs.flatMap((verb) => TENSES.flatMap((tense) => persons(verb, tense).flatMap((person) => {
       const answers = forms.get(key(verb.id, tense, person)) ?? [];
       const misses = answers.filter((right) => !right).length;
       if (!misses || (answers[0] && misses < 2)) return [];
@@ -430,7 +450,7 @@ export function createVerbDrills(options: {
   // each score from -8 to +8 at its end (the ends hold everything beyond), and how many were solid or shaky; the
   // points gained and lost on each of the last 14 days; the average score by tense and by person; and the five
   // lowest-scoring forms.
-  function scoreStatistics(verbs: Map<string, Verb>, today: string) {
+  function scoreStatistics(verbs: Map<string, V>, today: string) {
     const rows = everyScored.all().filter((row) => verbs.has(row.verb_id));
     const days: { day: string; bins: number[]; solid: number; shaky: number; practised: number; sum: number }[] = [];
     if (rows.length) {
@@ -465,13 +485,13 @@ export function createVerbDrills(options: {
       return { average: list.length ? Math.round(list.reduce((sum, score) => sum + score, 0) / list.length * 100) / 100 : null, forms: list.length };
     };
     const hardest = [...scores].sort((left, right) => left[1] - right[1]).slice(0, 5).map(([id, score]) => {
-      const [verbId, tense, person] = id.split('|') as [string, Tense, string];
+      const [verbId, tense, person] = id.split('|') as [string, T, string];
       const verb = verbs.get(verbId)!;
       return { verbId, tense, person: Number(person), form: formText(verb, tense, Number(person)), inf: verb.inf, tenseName: TENSE_NAMES[tense], score: Math.round(score * 10) / 10, misses: misses.get(id) ?? 0 };
     });
     return {
       days, points: daily,
-      tenses: Object.fromEntries(TENSES.map((tense) => [tense, average((other) => other === tense)])) as Record<Tense, { average: number | null; forms: number }>,
+      tenses: Object.fromEntries(TENSES.map((tense) => [tense, average((other) => other === tense)])) as Record<T, { average: number | null; forms: number }>,
       people: [0, 1, 2, 3, 4, 5].map((person) => average((_, other) => other === person)),
       hardest,
     };
@@ -482,7 +502,7 @@ export function createVerbDrills(options: {
     const verbs = byId();
     const { scores } = scoresAt(endOf(day), everyScored.all().filter((row) => verbs.has(row.verb_id)));
     return [...scores].sort((left, right) => left[1] - right[1]).map(([id, score]) => {
-      const [verbId, tense, person] = id.split('|') as [string, Tense, string];
+      const [verbId, tense, person] = id.split('|') as [string, T, string];
       const verb = verbs.get(verbId)!;
       return { verbId, tense, form: formText(verb, tense, Number(person)), inf: verb.inf, tenseName: TENSE_NAMES[tense], score: Math.round(score * 10) / 10 };
     });
@@ -490,13 +510,13 @@ export function createVerbDrills(options: {
 
   function statistics() {
     const verbs = byId();
-    const total = [...verbs.values()].reduce((sum, verb) => sum + persons(verb).length * TENSES.length, 0);
+    const total = [...verbs.values()].reduce((sum, verb) => sum + TENSES.reduce((count, tense) => count + persons(verb, tense).length, 0), 0);
     const today = studyDay(now());
     const since = recentStudyDays(now(), 14).since.getTime();
     const answers = new Map<string, number[]>();
-    const tenses = Object.fromEntries(TENSES.map((tense) => [tense, { right: 0, total: 0 }])) as Record<Tense, { right: number; total: number }>;
+    const tenses = Object.fromEntries(TENSES.map((tense) => [tense, { right: 0, total: 0 }])) as Record<T, { right: number; total: number }>;
     const people = [0, 1, 2, 3, 4, 5].map(() => ({ right: 0, total: 0 }));
-    const kinds = new Map<string, { tense: Tense; group: string; right: number; total: number }>();
+    const kinds = new Map<string, { tense: T; group: string; right: number; total: number }>();
     for (const row of everyWritten.all()) {
       if (!verbs.has(row.verb_id)) continue;
       const at = new Date(row.answered_at);
@@ -515,11 +535,11 @@ export function createVerbDrills(options: {
 
   // The Walkman's verb tape, for the most common verbs: every form of the chosen tenses, the lower its score the
   // likelier to come early, with what is said for each. Neighbours differ in verb wherever the rest allows it.
-  function walkmanForms(tenses: Tense[]) {
+  function walkmanForms(tenses: T[]) {
     const chosen = TENSES.filter((tense) => tenses.includes(tense));
     if (!chosen.length) throw new StoreError('Choose at least one tense.');
     const { scores } = scoresAt(now().getTime());
-    const pool = options.verbs().slice(0, COMMON).flatMap((verb) => chosen.flatMap((tense) => persons(verb).map((person) => {
+    const pool = options.verbs().slice(0, COMMON).flatMap((verb) => chosen.flatMap((tense) => persons(verb, tense).map((person) => {
       const form = conjugate(verb, tense)[person]!;
       // Weighted order without replacement: each key is random^(1/weight), highest first.
       return { verbId: verb.id, verb, tense, person, said: subject(person, form.accepted[0]!) + form.accepted[0], shown: subject(person, form.shown) + form.shown, key: random() ** (1 / pull(scores.get(key(verb.id, tense, person)))) };
@@ -528,7 +548,7 @@ export function createVerbDrills(options: {
   }
   // What the verb tape records: the four tense names, the six persons and every form of the most common verbs.
   function walkmanPhrases(): { french: string[]; english: string[] } {
-    const french = options.verbs().slice(0, COMMON).flatMap((verb) => TENSES.flatMap((tense) => persons(verb).map((person) => { const form = conjugate(verb, tense)[person]!.accepted[0]!; return subject(person, form) + form; })));
+    const french = options.verbs().slice(0, COMMON).flatMap((verb) => TENSES.flatMap((tense) => persons(verb, tense).map((person) => { const form = conjugate(verb, tense)[person]!.accepted[0]!; return subject(person, form) + form; })));
     return { french: [...TENSES.map((tense) => TENSE_NAMES[tense]), ...new Set(french)], english: [...WALKMAN_PERSONS_SAID] };
   }
 
@@ -539,8 +559,8 @@ export function createVerbDrills(options: {
     return [...new Set(verbs.filter((verb, index) => index < COMMON || started.has(verb.id)).flatMap((verb) => earQuestions(verb).map((question) => question.said)))];
   }
   // The verbs and tenses the Practising line picks, for drills kept outside this module (How it's built).
-  const practising = (input: RoundInput) => ({ verbs: chosenVerbs(input), tenses: chosenTenses(input) });
+  const practising = (input: RoundInput<T>) => ({ verbs: chosenVerbs(input), tenses: chosenTenses(input) });
 
   return { round, cards, mark, formScores, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, practising, close: () => db.close() };
 }
-export type VerbDrills = ReturnType<typeof createVerbDrills>;
+export type VerbDrills = ReturnType<typeof createVerbDrills<Verb, Tense>>;

@@ -16,9 +16,12 @@ import { createWordHooks } from './lib/word-hooks';
 import { createSounds, loadSounds, sideClip, type SoundAnswer } from './lib/sounds';
 import { createStory, type StoryFinish } from './lib/story';
 import { createRadio, englishClip, frenchClip, layStory, radioClip, radioClipExists, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
-import { createVerbTables, TENSE_NAMES, TENSES, tenseGuide, verbGuide, type Tense } from './lib/verbs';
+import { createVerbTables, TENSE_NAMES, TENSES, type Tense, type Verb } from './lib/verbs';
 import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/verb-drills';
 import { createRuleCards } from './lib/rule-cards';
+import { FRENCH, verbClip, type VerbGrammar } from './lib/verb-grammar';
+import { loadPtVerbs, PORTUGUESE } from './lib/verbs-pt';
+import { SWEDISH, svVerbs } from './lib/verbs-sv';
 import { createVerbSentences } from './lib/verb-sentences';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
@@ -157,18 +160,33 @@ const textChecks = setInterval(() => { if (claudeJob('ECHO_TEXT_TOPUP') && compr
 const verbTables = createVerbTables({ file: join(dirname(dbPath), 'verbs.json'), words: () => store.words(), ask });
 const verbChecks = setInterval(() => { if (claudeJob('ECHO_VERBS') && has('verbs')) void verbTables.check(); }, 10 * 60_000);
 if (claudeJob('ECHO_VERBS') && has('verbs')) void verbTables.check();
-// A French phrase's recording (the verb tape's and By ear's), when it has been made.
-const phraseAudio = (said: string) => { const id = frenchClip(said).id; return existsSync(join(root, 'audio/radio', `${id}.mp3`)) ? `audio/radio/${id}.mp3` : null; };
-// The grammar topics that teach each tense, shown on its page in the Verbs room.
-const TENSE_TOPICS: Record<Tense, string[]> = {
+// Portuguese verbs come from content/pt/verbs.json and Swedish ones from the deck's own notes (lib/verbs-pt.ts,
+// lib/verbs-sv.ts), so they are all ready at start and nothing is written. Each language's verbs and tenses only go
+// back to its own grammar, so the drills hold them as French's types.
+const verbList = (language.code === 'pt' && has('verbs') ? (() => { const list = loadPtVerbs(join(language.content, 'verbs.json'), store.words()); return () => list; })()
+  : language.code === 'sv' ? (() => { const list = svVerbs(store.words()); return () => list; })()
+  : () => verbTables.verbs()) as () => Verb[];
+const verbGrammar = (language.code === 'pt' ? PORTUGUESE : language.code === 'sv' ? SWEDISH : FRENCH) as unknown as VerbGrammar;
+const verbStatus = () => language.code === 'fr' ? verbTables.status() : { total: verbList().length, ready: verbList().length, writing: false, error: null };
+// A phrase's recording (the verb tape's and By ear's, and How it's built's examples), when it has been made: French's
+// by the Radio's voice, another language's by its own voice into <audio>/verbs (scripts/list-clips.ts verbs).
+const phraseAudio = language.code === 'fr'
+  ? (said: string) => { const id = frenchClip(said).id; return existsSync(join(root, 'audio/radio', `${id}.mp3`)) ? `audio/radio/${id}.mp3` : null; }
+  : (said: string) => { const id = verbClip(said).id; return existsSync(join(language.audio, 'verbs', `${id}.mp3`)) ? `audio/verbs/${id}.mp3` : null; };
+// The grammar topics that teach each tense (in Swedish, each group's forms), shown on its page in the Verbs room; each
+// language's course has its own.
+const SWEDISH_TOPICS = ['present-tense', 'past-tense', 'perfect-tense'];
+const TENSE_TOPICS: Record<string, string[]> = language.code === 'pt' ? {
+  pres: ['present-regular', 'present-irregular'], perf: ['preterite'], imp: ['imperfect'], fut: ['ir-future'],
+} : language.code === 'sv' ? { one: SWEDISH_TOPICS, two: SWEDISH_TOPICS, three: SWEDISH_TOPICS, four: SWEDISH_TOPICS } : {
   pres: ['etre-avoir', 'present-er', 'present-ir-re', 'irregular-present', 'reflexive'],
   pc: ['passe-compose-avoir', 'passe-compose-etre', 'pc-vs-imparfait'],
   imp: ['imparfait', 'pc-vs-imparfait'],
   fut: ['futur-simple', 'futur-proche'],
 };
-const verbs = createVerbDrills({ dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(), earAudio: phraseAudio });
+const verbs = createVerbDrills({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), earAudio: phraseAudio });
 // How it's built: cards on how each tense is formed, drawn from the same verb tables, marked apart from the forms.
-const ruleCards = createRuleCards({ dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(), audio: phraseAudio });
+const ruleCards = createRuleCards({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), audio: phraseAudio });
 // Memory hooks for stubborn words and verb forms: at start and every ten minutes (ECHO_WORD_HOOKS=off switches them off).
 const hooks = createWordHooks({ ask, store, verbs });
 const hookChecks = setInterval(() => { if (claudeJob('ECHO_WORD_HOOKS')) void hooks.check(); }, 10 * 60_000);
@@ -794,19 +812,19 @@ async function route(req: Request): Promise<Response> {
       if (!await file.exists()) return json({ error: 'This sound has not been recorded yet.' }, 404);
       return audioFile(req, file);
     }
-    if (path === '/api/verbs' && req.method === 'GET') return json({ ...verbs.summary(), tables: verbTables.status() });
+    if (path === '/api/verbs' && req.method === 'GET') return json({ ...verbs.summary(), tables: verbStatus() });
     // A tense explained: the grammar guides on it, then the learner's verbs sorted by what is regular about them.
     const tensePage = path.match(/^\/api\/verbs\/tense\/([a-z]+)$/);
     if (tensePage && req.method === 'GET') {
       const tense = tensePage[1] as Tense;
-      if (!TENSES.includes(tense)) return json({ error: 'Echo does not drill that tense.' }, 404);
-      const guides = TENSE_TOPICS[tense].flatMap((id) => { const topic = course.topics.find((entry) => entry.id === id); return topic ? [{ id: topic.id, title: topic.title, level: topic.level, guide: topic.guide }] : []; });
-      return json({ ...tenseGuide(verbTables.verbs(), tense), guides });
+      if (!verbGrammar.tenses.includes(tense)) return json({ error: `Echo does not drill that ${verbGrammar.unit}.` }, 404);
+      const guides = TENSE_TOPICS[tense]!.flatMap((id) => { const topic = course.topics.find((entry) => entry.id === id); return topic ? [{ id: topic.id, title: topic.title, level: topic.level, guide: topic.guide }] : []; });
+      return json({ ...verbGrammar.tenseGuide(verbList(), tense), guides });
     }
     const verbPage = path.match(/^\/api\/verbs\/verb\/([a-z0-9-]+)$/);
     if (verbPage && req.method === 'GET') {
-      const verb = verbTables.verbs().find((entry) => entry.id === verbPage[1]);
-      return verb ? json(verbGuide(verb)) : json({ error: 'That verb is not in Echo.' }, 404);
+      const verb = verbList().find((entry) => entry.id === verbPage[1]);
+      return verb ? json(verbGrammar.verbGuide(verb)) : json({ error: 'That verb is not in Echo.' }, 404);
     }
     if (path === '/api/verbs/round' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.round(data as never) }); }
     if (path === '/api/verbs/cards' && req.method === 'POST') { const data = await body(req); return json({ items: verbs.cards(data as never) }); }
@@ -822,6 +840,13 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/verbs/ear-answer' && req.method === 'POST') { const data = await body(req); return json(verbs.earAnswer(data as never)); }
     if (path === '/api/verbs/rules' && req.method === 'POST') { const data = await body(req); return json({ items: ruleCards.round(verbs.practising(data as never)) }); }
     if (path === '/api/verbs/rules/mark' && req.method === 'POST') { const data = await body(req); return json(ruleCards.mark(data as never)); }
+    // A language other than French keeps By ear's and How it's built's phrases in <audio>/verbs.
+    const verbFile = language.code === 'fr' ? null : path.match(/^\/audio\/verbs\/(vb-[0-9a-f]{16})\.mp3$/);
+    if (verbFile && (req.method === 'GET' || req.method === 'HEAD')) {
+      const file = Bun.file(join(language.audio, 'verbs', `${verbFile[1]}.mp3`));
+      if (!await file.exists()) return json({ error: 'This phrase has not been recorded yet.' }, 404);
+      return audioFile(req, file);
+    }
     // By ear's recorded phrases.
     const earFile = path.match(/^\/audio\/radio\/(fr-[0-9a-f]{16})\.mp3$/);
     if (earFile && (req.method === 'GET' || req.method === 'HEAD')) {

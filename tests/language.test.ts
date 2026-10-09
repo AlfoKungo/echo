@@ -22,7 +22,7 @@ test('Portuguese and Swedish keep their own content, recordings and recorder, an
   expect([sv.content, sv.audio, sv.textKey]).toEqual([join(root, 'content/sv'), join(root, 'audio/sv'), 'sv']);
   expect(sv.tts).toEqual({ script: 'scripts/render-audio-sv.py', args: [] });
   for (const language of [pt, sv]) {
-    expect(language.rooms).toEqual(['words', 'grammar', 'statistics', 'listen', 'read']);
+    expect(language.rooms).toEqual(['words', 'grammar', 'statistics', 'listen', 'read', 'verbs']);
     expect(language.claude).toBe(false);
   }
   expect([pt.port, sv.port]).toEqual([7795, 7796]);
@@ -56,6 +56,10 @@ test('the page names the language: French’s is served as written; another’s 
   expect(portuguese).toContain('The Portuguese stays hidden until you answer.');
   expect(portuguese).toContain('<p data-room="sounds"><strong>Sounds</strong>');
   expect(portuguese).toContain('<p data-room="sentencetape"><strong>Tape</strong> (in Listen');
+  // Verbs' How it works speaks of the language's own verbs, never French's tenses.
+  expect(portuguese).toContain('as Brazil speaks: eu, você / ele / ela, nós and vocês / eles / elas');
+  expect(portuguese).not.toContain('passé composé, imparfait, futur');
+  expect(languagePage(page, sv)).toContain('drills Swedish verbs by their key forms');
   expect(() => languagePage(page.replace('<strong>Read · Listen', '<strong>Read'), pt)).toThrow('no longer has the passage');
 });
 

@@ -20,7 +20,8 @@ export type Verb = VerbTable & { inf: string; en: string; base: string; reflexiv
 export type VerbWord = { id: string; fr: string; en: string };
 // One person's form: how it is shown, and every answer accepted for it (participle agreements), without the subject.
 export type Form = { shown: string; accepted: string[] };
-export type ParadigmRow = { person: number; label: string; parts: { text: string; lit?: true }[] };
+// note: what the row is, where the forms alone don't say it (Swedish present, past, supine); French rows have none.
+export type ParadigmRow = { person: number; label: string; parts: { text: string; lit?: true }[]; note?: string };
 
 const REFLEXIVE = /^(se |s’|s')/;
 const IMP_END = ['ais', 'ais', 'ait', 'ions', 'iez', 'aient'];

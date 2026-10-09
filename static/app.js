@@ -2223,18 +2223,18 @@ function verbStatsHTML() {
   const { scores } = verbs;
   const kinds = verbs.kinds.map((kind) => vsRow(kind.title, `${VB_TENSES[kind.tense]} · ${kind.total} answers`, kind, `data-action="vb-tense-page" data-tense="${kind.tense}"`)).join('');
   const tenses = verbTensePersonRows(Object.entries(VB_TENSES).map(([tense, name]) => ({ label: name, score: scores.tenses[tense], answered: verbs.tenses[tense], action: `data-action="vb-tense-page" data-tense="${tense}"` })));
-  const people = verbTensePersonRows(VB_PERSONS.map((person, index) => ({ label: person, score: scores.people[index], answered: verbs.people[index] })));
-  return `<div class="st-block">${stHead('Verb form scores', `Each bar counts your practised forms (one verb, one tense, one person) with that score. A typed answer right adds 2 and wrong takes 3 off; a Cards or tape mark adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Look, then write grades whole tables, not forms, so it doesn’t move these. Type it, Cards, Next table, Look, then write and the verb tape bring the left side most. Solid is +3 or more, shaky −2 or less; practised counts the forms tried, of ${statistics.verbs.forms.total.toLocaleString('en')} in your verbs’ four tenses. Total is every form’s score added up. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.`)}
+  const people = verbTensePersonRows(VB_PERSONS.flatMap((person, index) => person ? [{ label: person, score: scores.people[index], answered: verbs.people[index] }] : []));
+  return `<div class="st-block">${stHead('Verb form scores', `Each bar counts your practised forms (${VB.stats.form}) with that score. A typed answer right adds 2 and wrong takes 3 off; ${VB.stats.mark} adds 1 or takes 2 off; scores drift back towards the middle over a few weeks. Look, then write grades whole tables, not forms, so it doesn’t move these. ${VB.stats.drills} bring the left side most. Solid is +3 or more, shaky −2 or less; practised counts the forms tried, of ${statistics.verbs.forms.total.toLocaleString('en')} in your verbs’ ${VB.stats.all}. Total is every form’s score added up. Choose a day, or press ▶, to see the chart as it was; the dashed outline is today. Tap a bar to see its forms.`)}
       <div id="vs-scores">${verbScoresHTML()}</div>
       ${vsDays().length > 1 ? `<div class="st-when" id="vs-when">${verbScoresWhenHTML()}</div>
       <input type="range" class="st-slider" id="vs-slider" min="0" max="${vsDays().length - 1}" step="1" value="${vsIndex()}" aria-label="Choose a day">
       <div class="st-ticks" aria-hidden="true">${vsDays().map((day, index, all) => `<span>${index === all.length - 1 ? 'today' : (all.length - 1 - index) % 2 === 0 ? Number(day.day.slice(8)) : ''}</span>`).join('')}</div>` : ''}
       <div id="vs-scores-after">${verbScoresAfterHTML()}</div></div>
     <div class="st-block">${stHead('Hardest forms right now', 'The five forms with the lowest score. Tap one to fill in its whole table.')}<ol class="st-rows">${scores.hardest.map((form) => `<li><button class="st-row-link" data-action="vb-cell" data-verb="${esc(form.verbId)}" data-tense="${form.tense}"><div class="name"><p lang="${languageTag}" class="fr">${frEsc(form.form)}</p><small>${esc(form.inf)} · ${esc(form.tenseName)}</small></div><span class="st-tag shaky">missed ${form.misses}×</span></button></li>`).join('')}</ol></div>
-    <div class="st-block">${stHead('By tense and person', 'Shaky, steady or solid is the average score of your forms; the bar and the percentage are the share you got right in the last two weeks. Tap a tense to read about it.')}
-      <p class="vs-label">Tenses</p><ol class="st-rows">${tenses}</ol>
-      <p class="vs-label">Persons</p><ol class="st-rows">${people}</ol></div>
-    ${kinds ? `<div class="st-block">${stHead('By kind of verb', 'The share you got right in the last two weeks, by the groups on each tense page: regular -er verbs, -ir verbs like finir, and so on. Tap one to read about it.')}<div class="vs-rows">${kinds}</div></div>` : ''}`;
+    <div class="st-block">${stHead(VB.stats.head, `Shaky, steady or solid is the average score of your forms; the bar and the percentage are the share you got right in the last two weeks. Tap a ${VB.unit} to read about it.`)}
+      <p class="vs-label">${VB.units}</p><ol class="st-rows">${tenses}</ol>
+      <p class="vs-label">${VB.stats.persons}</p><ol class="st-rows">${people}</ol></div>
+    ${kinds ? `<div class="st-block">${stHead('By kind of verb', VB.stats.kinds)}<div class="vs-rows">${kinds}</div></div>` : ''}`;
 }
 function renderStatistics() {
   const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your ${languageEnglish} words are doing. Nothing here is a target.</p>`;
@@ -3034,11 +3034,53 @@ function nextSound() {
 // Verbs: conjugation drills on the verbs in the vocabulary (lib/verbs.ts, lib/verb-drills.ts). Verbs options picks
 // which verbs and tenses; Type it asks one form at a time, Whole table all six persons, By ear which tense or how
 // many; each tense row sums your forms in it, and All your verbs colours every form by how it is doing.
-const VB_TENSES = { pres: 'présent', pc: 'passé composé', imp: 'imparfait', fut: 'futur' };
-const VB_PERSONS = ['je', 'tu', 'il / elle', 'nous', 'vous', 'ils / elles'];
+// Each language's words for the room (lib/verb-grammar.ts): French conjugates six persons in four tenses, Portuguese
+// four persons (Brazil drops tu and vós, so their slots stay empty), Swedish three key forms per verb, drilled by
+// conjugation group where the others drill tenses. keyForms: a Swedish card asks all three forms of one verb.
+const VB_LANGUAGES = {
+  fr: {
+    tenses: { pres: 'présent', pc: 'passé composé', imp: 'imparfait', fut: 'futur' },
+    columns: { pres: 'présent', pc: 'passé c.', imp: 'imparfait', fut: 'futur' },
+    persons: ['je', 'tu', 'il / elle', 'nous', 'vous', 'ils / elles'],
+    uses: { pres: 'now, always, and what is about to happen', pc: 'what happened: a finished action', imp: 'how things were, what used to happen', fut: 'what will happen' },
+    accents: ['é', 'è', 'ê', 'à', 'â', 'ç', 'î', 'ô', 'ù', 'û'],
+    start: ['pres'], common: 'être, avoir, aller, faire…', table: 'All six persons', rules: 'Stems, endings, être or avoir', ear: true, tape: true,
+    ways: [['produce', 'Verb → form'], ['recognize', 'Form → verb']],
+    unit: 'tense', units: 'Tenses', the: 'the ', lit: 'The lit part is what changes from person to person.',
+    note: 'Cards, Type it, In sentences, By ear, How it’s built, the verb tape and Change it use these. Whole table picks its own verb.',
+    stats: { head: 'By tense and person', persons: 'Persons', all: 'four tenses', kinds: 'The share you got right in the last two weeks, by the groups on each tense page: regular -er verbs, -ir verbs like finir, and so on. Tap one to read about it.', form: 'one verb, one tense, one person', mark: 'a Cards or tape mark', drills: 'Type it, Cards, Next table, Look, then write and the verb tape' },
+  },
+  pt: {
+    tenses: { pres: 'presente', perf: 'pretérito perfeito', imp: 'pretérito imperfeito', fut: 'futuro com ir' },
+    columns: { pres: 'presente', perf: 'perfeito', imp: 'imperfeito', fut: 'futuro' },
+    persons: ['eu', null, 'você / ele / ela', 'nós', null, 'vocês / eles / elas'],
+    uses: { pres: 'now, always, and what you usually do', perf: 'what happened: a finished action', imp: 'how things were, what used to happen', fut: 'what is going to happen: vou falar' },
+    accents: ['á', 'â', 'ã', 'à', 'é', 'ê', 'í', 'ó', 'ô', 'õ', 'ú', 'ç'],
+    start: ['pres'], common: 'ser, estar, ter, fazer…', table: 'All four persons', rules: 'Endings, eu changes, the irregular ones', ear: true, tape: false,
+    ways: [['produce', 'Verb → form'], ['recognize', 'Form → verb']],
+    unit: 'tense', units: 'Tenses', the: 'the ', lit: 'The lit part is what changes from person to person.',
+    note: 'Cards, Type it, By ear and How it’s built use these. Whole table picks its own verb.',
+    stats: { head: 'By tense and person', persons: 'Persons', all: 'four tenses', kinds: 'The share you got right in the last two weeks, by the groups on each tense page. Tap one to read about it.', form: 'one verb, one tense, one person', mark: 'a Cards mark', drills: 'Type it, Cards, Next table and Look, then write' },
+  },
+  sv: {
+    tenses: { one: 'Group 1 · -ar', two: 'Group 2 · -er', three: 'Group 3 · short', four: 'Group 4 · strong & irregular' },
+    columns: { one: '1', two: '2', three: '3', four: '4' },
+    persons: ['present', 'past', 'supine'],
+    uses: { one: 'pratar, pratade, pratat: the biggest group', two: '-er, then -de or -te: ringde, köpte', three: 'short verbs: bor, bodde, bott', four: 'strong and irregular: learnt by heart' },
+    accents: ['å', 'ä', 'ö'],
+    start: ['one', 'two', 'three', 'four'], common: 'vara, ha, göra, gå…', table: 'All three forms', rules: 'Groups, endings, vowel changes', ear: false, tape: false, keyForms: true,
+    ways: [['produce', 'Verb → forms'], ['meaning', 'English → forms']],
+    unit: 'group', units: 'Groups', the: '', lit: 'The lit part is what changes from form to form.', every: 'all four groups',
+    note: 'Cards, Type it and How it’s built use these. Whole table picks its own verb.',
+    stats: { head: 'By group and form', persons: 'Forms', all: 'three key forms', kinds: 'The share you got right in the last two weeks, by the kinds of verb on each group page. Tap one to read about it.', form: 'one verb, one key form', mark: 'a Cards mark', drills: 'Type it, Cards, Next table and Look, then write' },
+  },
+};
+const VB = VB_LANGUAGES[language] ?? VB_LANGUAGES.fr;
+const VB_TENSES = VB.tenses;
+const VB_PERSONS = VB.persons;
 const VB_SETS = { mine: 'Your verbs', common: 'Most common 20', chosen: 'Choose…' };
-const VB_USES = { pres: 'now, always, and what is about to happen', pc: 'what happened: a finished action', imp: 'how things were, what used to happen', fut: 'what will happen' };
-const VB_ACCENTS = ['é', 'è', 'ê', 'à', 'â', 'ç', 'î', 'ô', 'ù', 'û'];
+const VB_USES = VB.uses;
+const VB_ACCENTS = VB.accents;
 const verbsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h7M4 12h5M4 17h7"/><path d="M14 6l3 12 3-12"/></svg>';
 const VB_DRILL_ICONS = {
   cards: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="12" height="15" rx="2"/><path d="M8 3h10a2 2 0 0 1 2 2v13"/></svg>',
@@ -3056,7 +3098,7 @@ let verbsInfo = null;    // api/verbs
 let verbsPoll = 0;
 let verbSet = (() => { const saved = readPreference('echo.verbs-set', 'mine'); return saved in VB_SETS ? saved : 'mine'; })();
 let verbChosen = (() => { try { const list = JSON.parse(readPreference('echo.verbs-chosen', '[]')); return Array.isArray(list) ? list : []; } catch { return []; } })();
-let verbTenses = (() => { try { const list = JSON.parse(readPreference('echo.verbs-tenses', '["pres"]')).filter((tense) => tense in VB_TENSES); return list.length ? list : ['pres']; } catch { return ['pres']; } })();
+let verbTenses = (() => { try { const list = JSON.parse(readPreference('echo.verbs-tenses', JSON.stringify(VB.start))).filter((tense) => tense in VB_TENSES); return list.length ? list : VB.start; } catch { return VB.start; } })();
 let verbForms = null;      // { items, index, result, given, fetching, done }
 let verbCards = null;      // { items, index, size, revealed, marks: [], first: [] }
 let verbDraft = '';
@@ -3078,10 +3120,10 @@ let verbPageId = '', verbPageView = null;     // the verb page shown, and api/ve
 let verbFormsOverride = null;
 const vbSettings = () => verbFormsOverride ?? { set: verbSet, verbIds: verbChosen, tenses: verbTenses };
 const vbVerb = (id) => verbsInfo?.verbs.find((verb) => verb.id === id);
-// hit: the person (or persons) to light.
+// hit: the person (or persons) to light. A row's note names what the forms alone don't (Swedish present, past, supine).
 function paradigmHTML(rows, hit = -1) {
   const hits = [hit].flat();
-  return `<table class="vb-para">${rows.map((row) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}"><td lang="${languageTag}">${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
+  return `<table class="vb-para">${rows.map((row) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}"><td lang="${languageTag}">${row.note ? `<small class="vb-key">${esc(row.note)}</small>` : ''}${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
 }
 const vbAccentsHTML = () => `<div class="vb-accents" aria-label="Accented letters">${VB_ACCENTS.map((letter) => `<button type="button" data-action="vb-accent" data-letter="${letter}">${letter}</button>`).join('')}</div>`;
 
@@ -3104,7 +3146,9 @@ const vbShaky = (verb) => Object.values(verb.states).flat().filter((state) => st
 // What the drills will use, in one line: the verbs, then the tenses.
 function verbChoiceText() {
   const verbs = verbSet === 'chosen' ? (verbChosen.length ? `${verbChosen.length} chosen ${verbChosen.length === 1 ? 'verb' : 'verbs'}` : 'No verbs chosen yet') : VB_SETS[verbSet];
-  return `${verbs} · ${verbTenses.map((tense) => VB_TENSES[tense]).join(', ')}`;
+  // Swedish names all four groups at once; its group names are long, and four of them fill the line.
+  const units = VB.every && verbTenses.length === Object.keys(VB_TENSES).length ? VB.every : verbTenses.map((tense) => VB_TENSES[tense]).join(', ');
+  return `${verbs} · ${units}`;
 }
 function renderVerbs() {
   const header = `<div class="section-top">${back('Home', 'home')}<div>${infoButton('verbs')}<button class="icon" data-action="vb-options" aria-label="Verbs options" aria-haspopup="dialog" ${busy || !verbsInfo ? 'disabled' : ''}>•••</button></div></div>`;
@@ -3118,7 +3162,7 @@ function renderVerbs() {
   const ear = verbsInfo.ear.ready < verbsInfo.ear.total ? `${verbsInfo.ear.ready} of ${verbsInfo.ear.total} recorded` : 'Tell the tense by ear';
   const tile = (action, icon, title, detail, disabled) => `<button class="tile tile-row${['vb-ear', 'tape'].includes(action) ? ' fam-green' : ''}" data-action="${action}" ${action === 'tape' ? 'data-tape="verbs-tape"' : ''} ${busy || disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${VB_DRILL_ICONS[icon]}</span><span class="tile-copy"><h2>${title}</h2><p>${esc(detail)}</p></span></button>`;
   const sentences = roomsOff.has('sentencecards') ? '' : tile('vb-sentences', 'sentence', 'In sentences', 'A verb inside a sentence', blocked);
-  const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Turn it, say if you knew it', blocked)}${sentences}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', 'All six persons', false)}${tile('vb-look', 'table', 'Look, then write', 'See a table, then fill it in', false)}${tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready)}${tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false)}${tile('vb-rules', 'rules', 'How it’s built', 'Stems, endings, être or avoir', blocked)}</div>`;
+  const drills = `<div class="vb-drills">${tile('vb-cards', 'cards', 'Cards', 'Turn it, say if you knew it', blocked)}${sentences}${tile('vb-forms', 'forms', 'Type it', 'One form at a time', blocked)}${tile('vb-table', 'table', 'Whole table', VB.table, false)}${tile('vb-look', 'table', 'Look, then write', 'See a table, then fill it in', false)}${VB.ear ? tile('vb-ear', 'ear', 'By ear', ear, blocked || !verbsInfo.ear.ready) : ''}${VB.tape ? tile('tape', 'tape', 'Tape', 'Hands-free, phone locked', false) : ''}${tile('vb-rules', 'rules', 'How it’s built', VB.rules, blocked)}</div>`;
   const worstShown = vbWorstAll ? verbsInfo.worst : verbsInfo.worst.slice(0, 3);
   const worst = verbsInfo.worst.length ? `<p class="study-label vb-sec">Catching you out${verbsInfo.worst.length > 3 ? `<button data-action="vb-worst-all">${vbWorstAll ? 'Fewer' : `All ${verbsInfo.worst.length}`}</button>` : ''}</p><ol class="vb-worst">${worstShown.map((entry) => `<li><button data-action="vb-cell" data-verb="${esc(entry.verbId)}" data-tense="${entry.tense}"><span lang="${languageTag}">${frEsc(entry.form)}</span><small>${esc(entry.tenseName)}</small><span class="vb-misses">missed ${entry.misses}×</span></button></li>`).join('')}</ol>` : '';
   // Each tense: its use, and a bar of your forms in it from solid to shaky, the rest still to try.
@@ -3132,16 +3176,16 @@ function renderVerbs() {
   }).join('');
   const practised = verbsInfo.verbs.filter(vbPractised).length;
   const all = `<div class="topic-list vb-all-row"><button class="topic-row" data-action="vb-all" ${busy ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>All your verbs</h3></span><p>${practised} practised of ${verbsInfo.verbs.length} · look one up, see every form</p></span><span class="arrow" aria-hidden="true">→</span></button></div>`;
-  shell(`${writing}${setup}${drills}${worst}<p class="study-label vb-sec">Tenses</p><div class="vb-tenses">${tenseRows}</div>${all}`);
+  shell(`${writing}${setup}${drills}${worst}<p class="study-label vb-sec">${VB.units}</p><div class="vb-tenses">${tenseRows}</div>${all}`);
 }
 // Verbs options: which verbs and tenses Cards, Type it, In sentences, By ear, How it's built, the verb tape and Change it use.
 function openVerbOptions() {
   if (!verbsInfo) return;
-  const setDetail = { mine: `${verbsInfo.mine} started, shakiest first`, common: 'être, avoir, aller, faire…', chosen: verbChosen.length ? `${verbChosen.length} chosen` : 'pick any' };
+  const setDetail = { mine: `${verbsInfo.mine} started, shakiest first`, common: VB.common, chosen: verbChosen.length ? `${verbChosen.length} chosen` : 'pick any' };
   const sets = Object.entries(VB_SETS).map(([set, label]) => `<button class="vb-pill" data-action="vb-set" data-set="${set}" aria-pressed="${verbSet === set}">${label}<small${set === 'chosen' ? ' class="vb-chosen-count"' : ''}>${esc(setDetail[set])}</small></button>`).join('');
-  const chooser = verbSet === 'chosen' ? `<div class="vb-chooser">${[...verbsInfo.verbs].sort((a, b) => Number(b.started) - Number(a.started) || a.inf.localeCompare(b.inf, 'fr')).map((verb) => `<button class="vb-chip" data-action="vb-choose" data-verb="${esc(verb.id)}" aria-pressed="${verbChosen.includes(verb.id)}" lang="${languageTag}">${frEsc(verb.inf)}</button>`).join('')}</div>` : '';
+  const chooser = verbSet === 'chosen' ? `<div class="vb-chooser">${[...verbsInfo.verbs].sort((a, b) => Number(b.started) - Number(a.started) || a.inf.localeCompare(b.inf, languageTag)).map((verb) => `<button class="vb-chip" data-action="vb-choose" data-verb="${esc(verb.id)}" aria-pressed="${verbChosen.includes(verb.id)}" lang="${languageTag}">${frEsc(verb.inf)}</button>`).join('')}</div>` : '';
   const tenses = Object.entries(VB_TENSES).map(([tense, label]) => `<button class="vb-pill" data-action="vb-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${label}</button>`).join('');
-  openDialog('Verbs options', `<p class="settings-label vb-label vb-first">Which verbs</p><div class="vb-pills">${sets}</div>${chooser}<p class="settings-label vb-label">Tenses</p><div class="vb-pills">${tenses}</div><p class="caption vb-options-note">Cards, Type it, In sentences, By ear, How it’s built, the verb tape and Change it use these. Whole table picks its own verb.</p><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'verbs-options');
+  openDialog('Verbs options', `<p class="settings-label vb-label vb-first">Which verbs</p><div class="vb-pills">${sets}</div>${chooser}<p class="settings-label vb-label">${VB.units}</p><div class="vb-pills">${tenses}</div><p class="caption vb-options-note">${VB.note}</p><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'verbs-options');
 }
 function openVerbAll() { vbAllQuery = ''; if (move('verbs-all', true)) { if (verbsInfo) render(); else loadVerbs(); } }
 // A verb's page or a table opened from All your verbs goes back there; from anywhere else, back to Verbs.
@@ -3161,17 +3205,21 @@ function renderVerbAllResults() {
   const verbs = verbsInfo.verbs;
   const filters = { practised: ['Practised', vbPractised], shaky: ['Shaky', (verb) => vbShaky(verb) > 0], new: ['Not practised', (verb) => !vbPractised(verb)], all: ['All', () => true] };
   const list = query
-    ? verbs.filter((verb) => normalized(verb.inf).includes(query) || normalized(verb.en).includes(query)).sort((a, b) => a.inf.localeCompare(b.inf, 'fr'))
-    : verbs.filter(filters[vbAllFilter][1]).sort((a, b) => vbShaky(b) - vbShaky(a) || Number(vbPractised(b)) - Number(vbPractised(a)) || a.inf.localeCompare(b.inf, 'fr'));
-  // Columns: the tenses with a form practised (the chosen tenses before any), or all four.
+    ? verbs.filter((verb) => normalized(verb.inf).includes(query) || normalized(verb.en).includes(query)).sort((a, b) => a.inf.localeCompare(b.inf, languageTag))
+    : verbs.filter(filters[vbAllFilter][1]).sort((a, b) => vbShaky(b) - vbShaky(a) || Number(vbPractised(b)) - Number(vbPractised(a)) || a.inf.localeCompare(b.inf, languageTag));
+  // Columns: the tenses with a form practised (the chosen tenses before any), or all four. Swedish has one: each
+  // verb's three forms, in its own group.
   const practisedTenses = Object.keys(VB_TENSES).filter((tense) => verbs.some((verb) => verb.states[tense].some((state) => state && state !== 'new')));
   const columns = vbAllTenses ? Object.keys(VB_TENSES) : practisedTenses.length ? practisedTenses : verbTenses;
   const chips = Object.entries(filters).map(([id, [label, test]]) => `<button data-action="vb-all-filter" data-filter="${id}" aria-pressed="${!query && vbAllFilter === id}">${label} · ${verbs.filter(test).length}</button>`).join('');
-  const toggle = columns.length < 4 || vbAllTenses ? `<button data-action="vb-all-tenses">${vbAllTenses ? 'Only tenses you practise' : 'Show all 4 tenses'}</button>` : '';
-  const cells = (verb) => verb.states[columns[0]].every((state) => state === null) ? '<span class="vb-unwritten">table being written</span>'
-    : columns.map((tense) => `<button class="vb-cell" data-action="vb-cell" data-verb="${esc(verb.id)}" data-tense="${tense}" aria-label="${esc(verb.inf)}, ${VB_TENSES[tense]}">${verb.states[tense].map((state) => `<i class="${state ?? 'none'}"></i>`).join('')}</button>`).join('');
+  const toggle = !VB.keyForms && (columns.length < 4 || vbAllTenses) ? `<button data-action="vb-all-tenses">${vbAllTenses ? 'Only tenses you practise' : 'Show all 4 tenses'}</button>` : '';
+  const cell = (verb, tense) => `<button class="vb-cell" data-action="vb-cell" data-verb="${esc(verb.id)}" data-tense="${tense}" aria-label="${esc(verb.inf)}, ${VB_TENSES[tense]}">${verb.states[tense].filter((state, person) => VB_PERSONS[person]).map((state) => `<i class="${state ?? 'none'}"></i>`).join('')}</button>`;
+  const cells = (verb) => VB.keyForms ? cell(verb, Object.keys(VB_TENSES).find((tense) => verb.states[tense].some((state) => state !== null)))
+    : verb.states[columns[0]].every((state) => state === null) ? '<span class="vb-unwritten">table being written</span>'
+    : columns.map((tense) => cell(verb, tense)).join('');
   const rows = list.map((verb) => `<li class="vb-vrow"><button class="vb-vname" data-action="vb-verb" data-verb="${esc(verb.id)}"><span lang="${languageTag}">${frEsc(verb.inf)}</span><small>${esc(verb.en)}</small></button><span class="vb-vcells">${cells(verb)}</span></li>`).join('');
-  target.innerHTML = `<div class="vb-chips">${chips}</div><div class="vb-list-meta"><span>${list.length} ${list.length === 1 ? 'verb' : 'verbs'}</span>${toggle}</div>${list.length ? `<div class="vb-colhead" aria-hidden="true">${columns.map((tense) => `<span>${VB_TENSES[tense].replace('passé composé', 'passé c.')}</span>`).join('')}</div><ul class="vb-vrows">${rows}</ul><div class="vb-legend"><span><i class="solid"></i>solid</span><span><i class="getting"></i>getting there</span><span><i class="shaky"></i>shaky</span><span><i class="new"></i>not tried</span></div>` : `<p class="empty-list">${query ? 'No verb matches.' : 'None yet.'}</p>`}`;
+  const heads = VB.keyForms ? '<span>present · past · supine</span>' : columns.map((tense) => `<span>${VB.columns[tense]}</span>`).join('');
+  target.innerHTML = `<div class="vb-chips">${chips}</div><div class="vb-list-meta"><span>${list.length} ${list.length === 1 ? 'verb' : 'verbs'}</span>${toggle}</div>${list.length ? `<div class="vb-colhead" aria-hidden="true">${heads}</div><ul class="vb-vrows">${rows}</ul><div class="vb-legend"><span><i class="solid"></i>solid</span><span><i class="getting"></i>getting there</span><span><i class="shaky"></i>shaky</span><span><i class="new"></i>not tried</span></div>` : `<p class="empty-list">${query ? 'No verb matches.' : 'None yet.'}</p>`}`;
 }
 function verbAction(action, button) {
   if (action === 'vb-options') openVerbOptions();
@@ -3191,7 +3239,7 @@ function verbAction(action, button) {
   else if (action === 'vb-sentences') { if (move('verbs-sentences', true)) startVerbSentences(); }
   else if (action === 'vb-sentence-no' || action === 'vb-sentence-yes') markVerbSentence(action === 'vb-sentence-yes');
   else if (action === 'vb-sentence-play') { const card = verbSentences?.items[verbSentences.index]; if (card) playFrench(card.audio); }
-  else if (action === 'vb-card-way') { const way = button.dataset.way === 'recognize' ? 'recognize' : 'produce'; if (way === verbCardsWay || loading) return; verbCardsWay = way; savePreference('echo.vb-cards-way', way); startVerbCards(); }
+  else if (action === 'vb-card-way') { const way = VB.ways.some(([value]) => value === button.dataset.way) ? button.dataset.way : 'produce'; if (way === verbCardsWay || loading) return; verbCardsWay = way; savePreference('echo.vb-cards-way', way); startVerbCards(); }
   else if (action === 'vb-forms') { verbFormsOverride = null; if (move('verbs-forms', true)) startVerbForms(); }
   else if (action === 'vb-tense-page') { if (move(`verbs-tense|${button.dataset.tense}`, true)) loadVerbTense(); }
   else if (action === 'vb-verb') openVerbPage(button.dataset.verb);
@@ -3238,7 +3286,7 @@ function modelsHTML(models) {
   return `<div class="guide-table-wrap"><table class="guide-table vb-models"><thead><tr>${models.map((model) => `<th scope="col"><button class="vb-name" data-action="vb-verb" data-verb="${esc(model.id)}" lang="${languageTag}">${frEsc(model.inf)}</button></th>`).join('')}</tr></thead><tbody>${people.map((person) => `<tr>${models.map((model) => `<td lang="${languageTag}">${cell(model, person)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 function renderVerbTense() {
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Tense</span></div>`;
+  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">${VB.unit === 'group' ? 'Group' : 'Tense'}</span></div>`;
   const view = verbTenseView;
   if (loading || !view) { main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}${loading ? '<div class="loading-state" role="status">Opening the tense…</div>' : ''}</section>`; return; }
   const groups = view.groups.map((group) => {
@@ -3249,10 +3297,10 @@ function renderVerbTense() {
   }).join('');
   const guides = view.guides.map((topic) => `<details class="vb-guide"><summary><span>${esc(topic.title)}</span><span class="level-tag">${esc(topic.level)}</span></summary>${guideHTML(topic.guide)}</details>`).join('');
   main.innerHTML = `${noticeHTML()}<section class="topic-page vb">${header}<h1 lang="${languageTag}">${esc(view.name)}</h1><p class="subtitle">${esc(view.use)}</p>
-    <h2 class="story-heading">The pattern</h2>${modelsHTML(view.models)}<p class="caption">The lit part is what changes from person to person. Tap a verb to see all its tenses.</p>
-    <h2 class="story-heading">Your verbs in the ${esc(view.name)}</h2>${groups}
-    <h2 class="story-heading">The rules in full</h2><p class="caption">From Grammar. Tap one to open it.</p>${guides}
-    <div class="summary-actions"><button class="primary" data-action="vb-practise-tense" data-tense="${view.tense}">Practise the ${esc(view.name)}</button></div></section>`;
+    <h2 class="story-heading">The pattern</h2>${modelsHTML(view.models)}<p class="caption">${VB.lit} Tap a verb to see all its ${VB.unit === 'group' ? 'forms' : 'tenses'}.</p>
+    <h2 class="story-heading">Your verbs in ${VB.the}${esc(view.name)}</h2>${groups}
+    ${view.guides.length ? `<h2 class="story-heading">The rules in full</h2><p class="caption">From Grammar. Tap one to open it.</p>${guides}` : ''}
+    <div class="summary-actions"><button class="primary" data-action="vb-practise-tense" data-tense="${view.tense}">Practise ${VB.the}${esc(view.name)}</button></div></section>`;
 }
 function openVerbPage(id) { if (move(`verbs-verb|${id}`, true)) loadVerbPage(); }
 async function loadVerbPage() {
@@ -3279,7 +3327,7 @@ const VB_CARDS_AHEAD = 5;
 const VB_CARDS_RECENT = 8;
 // Which side comes first: 'produce' shows the verb, tense and person and asks for the form; 'recognize' shows a form
 // ("mens") and asks which verb, tense and persons it is. A recognize card stands for its form, whichever person drew it.
-let verbCardsWay = readPreference('echo.vb-cards-way', 'produce') === 'recognize' ? 'recognize' : 'produce';
+let verbCardsWay = (() => { const saved = readPreference('echo.vb-cards-way', 'produce'); return VB.ways.some(([value]) => value === saved) ? saved : 'produce'; })();
 const vbCardsBody = () => ({ ...vbSettings(), way: verbCardsWay });
 const vbCardKey = (card) => `${card.verbId}|${card.tense}|${card.form ?? card.person}`;
 async function startVerbCards() {
@@ -3312,13 +3360,13 @@ async function topUpVerbStream(stream, path, current, onScreen, body = vbSetting
 }
 const topUpVerbCards = () => topUpVerbStream(verbCards, 'api/verbs/cards', () => verbCards, 'verbs-cards', vbCardsBody);
 function renderVerbCards() {
-  const way = `<div class="segmented vb-card-way" role="group" aria-label="Which side of the card comes first">${[['produce', 'Verb → form'], ['recognize', 'Form → verb']].map(([value, label]) => `<button data-action="vb-card-way" data-way="${value}" aria-pressed="${verbCardsWay === value}" ${loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
+  const way = `<div class="segmented vb-card-way" role="group" aria-label="Which side of the card comes first">${VB.ways.map(([value, label]) => `<button data-action="vb-card-way" data-way="${value}" aria-pressed="${verbCardsWay === value}" ${loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
   const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Cards</span></div>${way}`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
   if (loading || !verbCards) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
   const { items, index, revealed } = verbCards;
   if (index >= items.length) {
-    shell(verbCards.done ? '<p class="caption">No forms to show for these verbs and tenses.</p>' : '<div class="loading-state" role="status">Choosing more forms…</div>');
+    shell(verbCards.done ? `<p class="caption">No forms to show for these verbs and ${VB.units.toLowerCase()}.</p>` : '<div class="loading-state" role="status">Choosing more forms…</div>');
     topUpVerbCards();
     return;
   }
@@ -3326,7 +3374,11 @@ function renderVerbCards() {
   const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
   const recognize = !!card.readings;
   const [own, ...also] = card.readings ?? [];
-  const face = recognize
+  // A Swedish card asks all three key forms of its verb, from the verb or (English → forms) from its meaning alone.
+  const keyFace = revealed
+    ? `<h1 class="main-word vb-card-answer" lang="${languageTag}">${frEsc(card.answer)}</h1><p class="source-word"><span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`
+    : verbCardsWay === 'meaning' ? `<h1 class="main-word vb-card-meaning">${esc(card.en)}</h1>` : `<h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p>`;
+  const face = VB.keyForms ? keyFace : recognize
     ? revealed
       ? `<h1 class="main-word" lang="${languageTag}">${frEsc(own.inf)}</h1><p class="source-word">${esc(own.tenseName)} · ${esc(own.en)}</p><p class="vb-card-forms" lang="${languageTag}">${own.forms.map(frEsc).join(' · ')}</p>${also.map((reading) => `<p class="vb-card-also">Also <span lang="${languageTag}">${frEsc(reading.inf)}</span>, ${esc(reading.tenseName)}: <span lang="${languageTag}">${reading.forms.map(frEsc).join(' · ')}</span></p>`).join('')}`
       : `<h1 class="main-word" lang="${languageTag}">${frEsc(card.form)}</h1>`
@@ -3334,8 +3386,9 @@ function renderVerbCards() {
       ? `<h1 class="main-word vb-card-answer" lang="${languageTag}">${frEsc(card.answer)}</h1><p class="source-word" lang="${languageTag}">${frEsc(card.inf)} · ${esc(card.tenseName)}</p>${card.hook ? `<p class="word-hook">${esc(card.hook)}</p>` : ''}`
       : `<p class="vb-card-who" lang="${languageTag}">${esc(VB_PERSONS[card.person])}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word">${esc(card.en)}</p><span class="vb-tense">${esc(card.tenseName)}</span>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-card-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-card-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
-  const hint = recognize ? 'Which verb, tense and person is it? Say it to yourself, then tap the card.' : 'Say the form to yourself, then tap the card.';
-  const after = revealed ? `${paradigmHTML(card.paradigm, recognize ? own.persons : card.person)}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : `<p class="caption vb-card-hint">${hint}</p>`;
+  const hint = VB.keyForms ? (verbCardsWay === 'meaning' ? 'Which verb is it? Say its present, past and supine to yourself, then tap the card.' : 'Say the present, past and supine to yourself, then tap the card.')
+    : recognize ? 'Which verb, tense and person is it? Say it to yourself, then tap the card.' : 'Say the form to yourself, then tap the card.';
+  const after = revealed ? `${paradigmHTML(card.paradigm, VB.keyForms ? -1 : recognize ? own.persons : card.person)}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : `<p class="caption vb-card-hint">${hint}</p>`;
   shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
 }
 function revealVerbCard() {
@@ -3377,7 +3430,7 @@ function renderRuleCards() {
   if (loading || !vbRules) { shell(loading ? '<div class="loading-state" role="status">Choosing cards…</div>' : ''); return; }
   const { items, index, revealed } = vbRules;
   if (index >= items.length) {
-    shell(vbRules.done ? '<p class="caption">No cards for these verbs and tenses. Change them on the Practising line in Verbs.</p>' : '<div class="loading-state" role="status">Choosing more cards…</div>');
+    shell(vbRules.done ? `<p class="caption">No cards for these verbs and ${VB.units.toLowerCase()}. Change them on the Practising line in Verbs.</p>` : '<div class="loading-state" role="status">Choosing more cards…</div>');
     topUpRuleCards();
     return;
   }
@@ -3387,8 +3440,8 @@ function renderRuleCards() {
   // A rule's answer breaks only between its words, never after the hyphen of an ending.
   const answer = rule ? card.answer.split(' ').map((part) => `<span>${frEsc(part)}</span>`).join(' ') : frEsc(card.answer);
   const face = revealed
-    ? `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : 'fr'}">${answer}</h1><p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="${languageTag}">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
-    : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang}">${frEsc(card.clue)}</p>`;
+    ? `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : languageTag}">${answer}</h1><p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="${languageTag}">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
+    : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang === 'fr' ? languageTag : card.clueLang}">${frEsc(card.clue)}</p>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-rule-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-rule-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const after = revealed ? `${card.paradigm.length ? paradigmHTML(card.paradigm) : ''}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : '<p class="caption vb-card-hint">How is it built? Say it to yourself, then tap the card.</p>';
   shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
@@ -3523,7 +3576,7 @@ function renderVerbForms() {
   if (loading || !verbForms) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
   const { items, index, result } = verbForms;
   if (index >= items.length) {
-    shell(verbForms.done ? `<p class="caption">${fromMistakes ? 'Nothing shaky left: every form you have practised is above −2.' : 'No forms to ask for these verbs and tenses.'}</p>` : '<div class="loading-state" role="status">Choosing more forms…</div>');
+    shell(verbForms.done ? `<p class="caption">${fromMistakes ? 'Nothing shaky left: every form you have practised is above −2.' : `No forms to ask for these verbs and ${VB.units.toLowerCase()}.`}</p>` : '<div class="loading-state" role="status">Choosing more forms…</div>');
     topUpVerbForms();
     return;
   }
@@ -3602,8 +3655,10 @@ function renderVerbTable() {
   const verb = vbVerb(verbTable.verbId) ?? verbsInfo.verbs[0];
   if (!verb) { main.innerHTML = `${noticeHTML()}<section class="stream vb">${header}<p class="caption">No verb tables yet.</p></section>`; return; }
   verbTable.verbId = verb.id;
-  const options = [...verbsInfo.verbs].sort((a, b) => Number(b.started) - Number(a.started) || a.inf.localeCompare(b.inf, 'fr')).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === verb.id ? 'selected' : ''}>${esc(entry.inf)}</option>`).join('');
-  const tenses = Object.entries(VB_TENSES).map(([tense, label]) => `<option value="${tense}" ${tense === verbTable.tense ? 'selected' : ''}>${label}</option>`).join('');
+  const options = [...verbsInfo.verbs].sort((a, b) => Number(b.started) - Number(a.started) || a.inf.localeCompare(b.inf, languageTag)).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === verb.id ? 'selected' : ''}>${esc(entry.inf)}</option>`).join('');
+  // A Swedish verb has a table only in its own group, so a table asked for in another moves to it.
+  if (verb.states[verbTable.tense].every((state) => state === null)) verbTable.tense = Object.keys(VB_TENSES).find((tense) => verb.states[tense].some((state) => state !== null)) ?? verbTable.tense;
+  const tenses = Object.entries(VB_TENSES).filter(([tense]) => verb.states[tense].some((state) => state !== null)).map(([tense, label]) => `<option value="${tense}" ${tense === verbTable.tense ? 'selected' : ''}>${label}</option>`).join('');
   const result = verbTable.result;
   const rows = verb.states[verbTable.tense].map((state, person) => {
     if (state === null) return '';

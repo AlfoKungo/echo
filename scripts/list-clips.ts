@@ -1,22 +1,27 @@
 // Names every clip a set needs in the language ECHO_LANG picks (French when unset), so the renderer never has to read
 // Echo's content itself.
-// Usage: bun scripts/list-clips.ts comprehension|grammar|story  ->  [{ "id": "...", "text": "..." }] on stdout.
+// Usage: bun scripts/list-clips.ts comprehension|grammar|story|verbs  ->  [{ "id": "...", "text": "..." }] on stdout.
+// verbs is the Verbs room's phrases in Portuguese or Swedish (lib/verb-phrases.ts).
 import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadBank } from '../lib/comprehension-content';
 import { grammarSpeech, loadCourse } from '../lib/grammar-content';
 import { currentLanguage } from '../lib/language';
+import { verbClip } from '../lib/verb-grammar';
+import { verbPhrases } from '../lib/verb-phrases';
 
 const root = join(import.meta.dir, '..');
 const language = currentLanguage(root);
 const set = process.argv[2];
-if (set !== 'comprehension' && set !== 'grammar' && set !== 'story') {
-  console.error('Usage: bun scripts/list-clips.ts comprehension|grammar|story');
+if (set !== 'comprehension' && set !== 'grammar' && set !== 'story' && set !== 'verbs') {
+  console.error('Usage: bun scripts/list-clips.ts comprehension|grammar|story|verbs');
   process.exit(2);
 }
 
 const clips: { id: string; text: string }[] = [];
-if (set === 'comprehension') {
+if (set === 'verbs') {
+  for (const text of await verbPhrases(currentLanguage(root))) clips.push(verbClip(text));
+} else if (set === 'comprehension') {
   // Lanes Echo wrote itself (lib/text-topup.ts); the server names its folders, colon-separated, when it records them.
   // Only French writes lanes, so another language has none unless they are named.
   const generated = process.env.ECHO_COMPREHENSION_GENERATED?.split(':').filter(Boolean) ?? (language.code === 'fr' ? [join(root, 'data/comprehension')] : []);

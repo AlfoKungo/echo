@@ -514,6 +514,12 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-card-forms{margin:12px 0 0;font-size:18px;color:var(--violet)}.vb-card-also{margin:10px 0 0;font-size:14px;color:var(--muted)}
 .vb-card-hint{text-align:center;margin-top:12px}.vb-cards .vb-para{margin-top:18px}
 .vb-rule-answer{font-size:28px;line-height:1.25;letter-spacing:-.4px}.vb-rule-answer span{white-space:nowrap}
+/* Swedish key forms: each table row named (present, past, supine), the English-first card face, one column of three
+   forms in All your verbs; Portuguese has four persons, so its form dots sit two by two. */
+.vb-para .vb-key{display:inline-block;width:6.4em;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;color:var(--muted)}
+.vb-card-meaning{font-size:30px;line-height:1.25;overflow-wrap:anywhere}
+body[data-lang="sv"] .vb-colhead span{width:auto}
+body[data-lang="pt"] .vb-cell{grid-template-columns:repeat(2,1fr)}
 .write-en{margin:0;font-size:22px;line-height:1.4;font-weight:500;color:var(--ink)}.write .vb-prompt .vb-tense{margin-top:14px}
 .write .feedback p{margin:8px 0 0}.write-fix{color:var(--violet)}
 /* In sentences: the sentence is the card's face, its blank a violet rule until the card turns and the form fills it. */

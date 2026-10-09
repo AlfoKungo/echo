@@ -7,17 +7,19 @@
 import { Database } from 'bun:sqlite';
 import { SCORE_HALF_LIFE_DAYS, StoreError } from './store';
 import { conjugate, groupOf, paradigm, rule, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
+import type { DrillVerb, VerbGrammar } from './verb-grammar';
 
 export type RuleKind = Tense | 'rule';
 // ask: what the card asks; inf and clue: what the front shows under it; answer: the back's big line. examples are
 // forms said as the verb tape records them (subject + form), so their recordings can be found. value: how much the
 // card is worth drawing, higher for the exceptions (être's ét-, an irregular stem, a verb taking être) and
 // STARTED_LEAN times higher for a verb the learner has started.
-export type RuleCard = {
-  id: string; kind: RuleKind; tense: Tense; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string;
+// clueLang 'fr' marks a clue in the language learnt, whichever it is.
+export type RuleCard<T extends string = Tense> = {
+  id: string; kind: T | 'rule'; tense: T; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string;
   tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number;
 };
-export type RuleCardView = Omit<RuleCard, 'examples' | 'value'> & { examples: { text: string; audio: string | null }[] };
+export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value'> & { examples: { text: string; audio: string | null }[] };
 
 const COMMON = 20;
 // The deck holds at most this many cards of each kind, the most valuable first, so a regular -er verb's card only
@@ -163,15 +165,18 @@ export function ruleDeck(verbs: Verb[], started: Set<string>, picked: Verb[] = v
   ];
 }
 
-export function createRuleCards(options: {
+// grammar: where another language's cards come from (lib/verb-grammar.ts); French's are the ones above.
+export function createRuleCards<V extends DrillVerb = Verb, T extends string = Tense>(options: {
   dbPath: string;
-  verbs: () => Verb[];
+  verbs: () => V[];
   // Each vocabulary word's status, for which verbs are started.
   vocabulary: () => { id: string; status: string }[];
   // The recording of a phrase (the verb tape's, By ear's), or null when there is none.
   audio: (said: string) => string | null;
+  grammar?: Pick<VerbGrammar<V, T>, 'ruleDeck' | 'ruleCandidates'>;
   now?: () => Date; random?: () => number;
 }) {
+  const deck = options.grammar ?? ({ ruleDeck, ruleCandidates } as unknown as Pick<VerbGrammar<V, T>, 'ruleDeck' | 'ruleCandidates'>);
   const now = options.now ?? (() => new Date());
   const random = options.random ?? Math.random;
   const db = new Database(options.dbPath, { create: true, strict: true });
@@ -192,7 +197,7 @@ export function createRuleCards(options: {
     for (const row of every.all()) byCard.set(row.card_id, (byCard.get(row.card_id) ?? 0) + (row.knew ? 1 : -2) * 0.5 ** ((end - Date.parse(row.marked_at)) / DAY_MS / SCORE_HALF_LIFE_DAYS));
     return byCard;
   }
-  const view = (card: RuleCard): RuleCardView => {
+  const view = (card: RuleCard<T>): RuleCardView<T> => {
     const { examples, value: _value, ...rest } = card;
     return { ...rest, examples: examples.map((text) => ({ text, audio: options.audio(text) })) };
   };
@@ -200,13 +205,13 @@ export function createRuleCards(options: {
   // The next cards from the verbs and tenses picked (Verbs' Practising line): drawn without replacement by weight
   // (random^(1/weight), highest first), so low-scoring and unmarked cards come first, the exceptions and the
   // learner's own verbs a little sooner; neighbours differ in verb.
-  function round(scope: { verbs: Verb[]; tenses: Tense[] }): RuleCardView[] {
+  function round(scope: { verbs: V[]; tenses: T[] }): RuleCardView<T>[] {
     const score = scores();
     const started = new Set(options.vocabulary().filter((word) => word.status !== 'new').map((word) => word.id));
-    const drawn = ruleDeck(options.verbs(), started, scope.verbs, scope.tenses)
+    const drawn = deck.ruleDeck(options.verbs(), started, scope.verbs, scope.tenses)
       .map((card) => ({ card, key: random() ** (1 / (pull(score.get(card.id)) * card.value)) }))
       .sort((left, right) => right.key - left.key).slice(0, ROUND).map((entry) => entry.card);
-    const ordered: RuleCard[] = [];
+    const ordered: RuleCard<T>[] = [];
     while (drawn.length) {
       const index = drawn.findIndex((card) => card.inf !== ordered.at(-1)?.inf);
       ordered.push(...drawn.splice(index < 0 ? 0 : index, 1));
@@ -219,7 +224,7 @@ export function createRuleCards(options: {
     if (typeof input?.requestId !== 'string' || !input.requestId) throw new StoreError('This mark is missing its request ID.');
     if (typeof input.knew !== 'boolean') throw new StoreError('Say whether you knew it.');
     const started = new Set(options.vocabulary().filter((word) => word.status !== 'new').map((word) => word.id));
-    if (typeof input.id !== 'string' || !ruleCandidates(options.verbs(), started).some((card) => card.id === input.id)) throw new StoreError('That card is not in Echo.', 404);
+    if (typeof input.id !== 'string' || !deck.ruleCandidates(options.verbs(), started).some((card) => card.id === input.id)) throw new StoreError('That card is not in Echo.', 404);
     insert.run(input.requestId, input.id, input.knew ? 1 : 0, now().toISOString());
     return { ok: true };
   }

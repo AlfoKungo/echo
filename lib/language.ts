@@ -88,14 +88,14 @@ export function languages(root: string, env: Record<string, string | undefined> 
       code: 'pt', english: 'Portuguese', own: 'Português', tag: 'pt-BR', gender: GENDER_RULES.pt,
       content: join(root, 'content/pt'), audio: join(root, 'audio/pt'), textKey: 'pt',
       tts: { script: 'scripts/render-audio.py', args: ['--lang', 'pt'] },
-      rooms: [...firstRooms, 'listen', 'read'], claude: false, port: ports.pt ?? 7795,
+      rooms: [...firstRooms, 'listen', 'read', 'verbs'], claude: false, port: ports.pt ?? 7795,
     },
     // Swedish: Higgs TTS 3 checked by KB-Whisper (render-audio-sv.py), which writes audio/sv by default.
     sv: {
       code: 'sv', english: 'Swedish', own: 'Svenska', tag: 'sv', gender: GENDER_RULES.sv,
       content: join(root, 'content/sv'), audio: join(root, 'audio/sv'), textKey: 'sv',
       tts: { script: 'scripts/render-audio-sv.py', args: [] },
-      rooms: [...firstRooms, 'listen', 'read'], claude: false, port: ports.sv ?? 7796,
+      rooms: [...firstRooms, 'listen', 'read', 'verbs'], claude: false, port: ports.sv ?? 7796,
     },
   };
 }
@@ -111,6 +111,17 @@ const GENDER_COLOURS: Record<Gender, string> = {
   masculine: 'blue for masculine', feminine: 'pink for feminine', common: 'green for en-words', neuter: 'orange for ett-words',
 };
 
+// How it works for the Verbs room outside French: Portuguese conjugates four persons, Swedish drills key forms.
+const VERBS_INFO: Record<Exclude<LanguageCode, 'fr'>, string> = {
+  pt: `<div data-info="verbs">
+      <p><strong>Verbs</strong> drills conjugation on its own, with the verbs in your vocabulary, as Brazil speaks: eu, você / ele / ela, nós and vocês / eles / elas (tu and vós are left out). The <strong>Practising</strong> line at the top says which verbs and tenses the drills use — presente, pretérito perfeito, pretérito imperfeito and the future with ir (vou falar); tap it, or •••, to change them. <strong>Cards</strong> shows a verb, a tense and a person: say the form to yourself, tap to turn the card, then tap left if you didn’t know it and right if you did. <strong>Form → verb</strong> turns the cards the other way. <strong>Type it</strong> asks one form at a time and says which mistake a wrong answer was; accents are not required, but Echo says when they were off. <strong>Whole table</strong> and <strong>Look, then write</strong> ask all four persons at once.</p>
+      <p><strong>By ear</strong> plays a form and asks which tense it is, so it needs two tenses on the Practising line; it plays only forms already recorded on your Mac. <strong>How it’s built</strong> drills how each tense is made: the -ar, -er and -ir endings, the verbs that change only in eu (durmo, peço), the irregular perfeitos (fiz, tive), the four irregular imperfeitos and the future with ir. Each tense’s page lists your verbs by what is regular about them.</p>
+      </div>`,
+  sv: `<div data-info="verbs">
+      <p><strong>Verbs</strong> drills Swedish verbs by their key forms. A Swedish verb is the same for every person, so what you learn is its present, past and supine (springer, sprang, sprungit; the supine goes after har). Verbs fall into four groups: 1 (-ar, -ade, -at), 2 (-er, -de or -te, -t), 3 (short verbs: -r, -dde, -tt) and 4 (strong and irregular). The <strong>Practising</strong> line at the top says which verbs and groups the drills use; tap it, or •••, to change them.</p>
+      <p><strong>Cards</strong> shows a verb, or with <strong>English → forms</strong> only its meaning: say the three forms to yourself, tap to turn the card, then tap left if you didn’t know them and right if you did. <strong>Type it</strong> asks one form at a time and says which mistake a wrong answer was; å, ä and ö are letters of their own, so they count. <strong>Whole table</strong> and <strong>Look, then write</strong> ask all three forms. <strong>How it’s built</strong> asks which group a verb is in, a strong verb’s vowel change (skriva, skrev, skrivit: i → e → i) and each group’s endings. Each group’s page lists your verbs in it.</p>
+      </div>`,
+};
 // The page (static/index.html) for a language other than French: its title and the How it works passages every
 // language shares name the language; what its noun colours mean replaces French's colours and hooks (hooks come from
 // Claude, which only French asks); and what it says about Word families, Sounds and the sentence tape is marked as
@@ -136,6 +147,7 @@ export function languagePage(page: string, language: Language): string {
     ['<p><strong>Tape</strong> (in Listen', () => '<p data-room="sentencetape"><strong>Tape</strong> (in Listen'],
     ['<strong>Grammar.</strong> Seven units take you from A1 towards B1.', () => '<strong>Grammar.</strong> Its units take you through A1 and A2.'],
     ['reads the correct French aloud', () => `reads the correct ${name} aloud`],
+    [/<div data-info="verbs">[^]*?<\/div>/, () => VERBS_INFO[language.code as Exclude<LanguageCode, 'fr'>]],
   ];
   for (const [passage, swap] of swaps) {
     const found = typeof passage === 'string' ? (page.includes(passage) ? passage : null) : passage.exec(page)?.[0] ?? null;
