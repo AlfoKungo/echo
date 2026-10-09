@@ -9,5 +9,38 @@
   "generationCommand": "scripts/render-audio.py",
   "processing": "Speak each entry inside a French carrier phrase, compare the local Whisper transcript with the target text or its French phonemes, then extract the vocabulary item. New renders use DTW anchors and a quiet transition; each cached recording records its own alignment method.",
   "validatorDependencies": "whisper-cli with the local large-v3-turbo model and DTW token alignment, espeak-ng and ffmpeg.",
-  "pronunciationCaveat": "Synthetic speech can mispronounce or add words; audio checks are not native-speaker certification."
+  "pronunciationCaveat": "Synthetic speech can mispronounce or add words; audio checks are not native-speaker certification.",
+  "swedish": {
+    "model": "bosonai/higgs-tts-3-4b",
+    "revision": "239f63fb7b02b1aa085f98d9efae5e35cc5523e8",
+    "modelLicence": "Boson Higgs TTS 3 Research and Non-Commercial License: personal, non-commercial use only.",
+    "build": {
+      "path": "~/.local/share/higgs-tts/higgs-tts-3-4b-mlx-8bit",
+      "description": "8-bit MLX conversion (affine, group size 64) of the official checkpoint, made with mlx-audio 0.5.1. The official config.json says model_type higgs_multimodal_qwen3, which mlx-audio does not recognise, so the conversion reads a copy of the snapshot whose config.json says higgs_audio_v3. The converter drops the audio codec, so codec.safetensors is the codec tensors from the same checkpoint in float16 (byte-identical to the codec.safetensors of whitelabel/mlx-q6-higgs-tts-3-4b), and model.safetensors.index.json is removed so mlx-audio finds that file.",
+      "convert": "python -m mlx_audio.convert --hf-path <patched snapshot copy> --mlx-path ~/.local/share/higgs-tts/higgs-tts-3-4b-mlx-8bit -q --q-bits 8 --q-group-size 64 --model-domain tts",
+      "sha256": {
+        "model.safetensors": "f93306732a742059df341285cdb6b7e65e8cef4a600556ae080e21f6d2908ba0",
+        "codec.safetensors": "77015cc4bfce0ed90b497d85f7d43c42e3f269b83bb3e0921fc92d6c1529b74a"
+      },
+      "selection": "On the 20 hardest words of the precision check, three seeds, both candidate references, it was misheard 2 times in 120 against 7 for the 6-bit community quant whitelabel/mlx-q6-higgs-tts-3-4b. It costs about 6 GB of memory and 1.2 s a word."
+    },
+    "language": "sv",
+    "reference": "swedish-reference.wav",
+    "referenceSource": "LibriVox recording of Valda berättelser by Selma Lagerlöf, chapter 2, read in Swedish by Anna Sofia Andersson: 0:58.15 to 1:10.05 of valdaberattelser_02_lagerlof_128kb.mp3 (https://archive.org/details/valda_berattelser_2304_librivox), mono 24 kHz. A native woman's careful read-aloud voice; median pitch 205 Hz.",
+    "referenceLicence": "Public domain (LibriVox).",
+    "referenceAttribution": "Read by Anna Sofia Andersson for LibriVox.",
+    "referenceText": "Den spelmannen som fanns i Svartsjö ville han nämligen inte kalla. Han hette Jan Öster och nämndemannen visste nog att han hade ett ganska stort rykte.",
+    "selection": "Chosen over Karin Nilsson (K-podd, Riksantikvarieämbetet, CC BY 2.5 SE) in a 166-clip precision check: 4 failures against 11, a calmer pace (3.6 against 5.2 syllables a second in sentences) and no cloned room tone.",
+    "settings": {
+      "temperature": 0.7,
+      "top_k": 50,
+      "text": "<Word>. <|prosody:pause|>",
+      "maxNewFrames": "25 x (2.5 + 0.12 x characters) + 8",
+      "seeds": "42,17,101"
+    },
+    "generationCommand": "scripts/render-audio-sv.py",
+    "processing": "Say the word alone, capitalised, with a full stop and a pause tag, then cut the clip 250 ms after the measured end of speech. KB-Whisper must hear the cut clip as the word (or a spelling espeak-ng pronounces the same), and nothing in it may rise above the take's own floor after the word, with its last 150 ms quiet. A failing word is re-rendered with the next seed; after three it is written anyway, flagged in the manifest and listed in failures.json.",
+    "validatorDependencies": "whisper-cli with KBLab/kb-whisper-large ggml-model.bin at revision d5d5984b4d8f7c4847a8ea203f1976285fb28300 from the Hugging Face cache, espeak-ng (sv) and ffmpeg.",
+    "pronunciationCaveat": "Synthetic speech can mispronounce; vowel length (tak against tack) is the slip Whisper catches least reliably, since it leans toward the commoner word for a word said alone."
+  }
 }
