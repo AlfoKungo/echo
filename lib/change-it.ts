@@ -1,12 +1,14 @@
 // Change it: a spoken transformation drill on the Verbs tape. Each drill is a French sentence, a cue (a time phrase
 // that asks for another tense, or another subject) and the sentence changed as the cue asks, with its English and the
-// verb form that changed. Echo picks what each drill trains (a verb, a tense and a person, in a fixed mix of the four
-// tenses, leaning on the learner's started verbs and shaky forms); Claude (Opus) writes the sentences ahead, a batch
-// at a time; every verb form in them is checked against conjugate() before a drill is kept. A drill joins the tape
-// once its three clips (sentence, cue, answer) are recorded.
+// verb form that changed. Echo picks what each drill trains (a verb, a tense and a person, from the verbs and tenses
+// on Verbs' Practising line, the tenses in a fixed mix, leaning on shaky forms); Claude (Opus) writes the sentences
+// ahead, a batch at a time; every verb form in them is checked against conjugate() before a drill is kept. A drill
+// joins the tape once its three clips (sentence, cue, answer) are recorded, and plays while both its tenses and its
+// verb are on the line.
 import { Database } from 'bun:sqlite';
 import type { Ask } from './claude';
-import { conjugate, normal, persons, PERSON_LABELS, TENSE_NAMES, type Tense, type Verb } from './verbs';
+import { inLine, lineOf, mixCounts, rememberedLine, TENSE_MIX, type Practising, type PractisingLine } from './practising';
+import { conjugate, normal, persons, PERSON_LABELS, TENSE_NAMES, TENSES, type Tense, type Verb } from './verbs';
 import { FRAME_BYTES, FRAME_SECONDS, TAPE_SECONDS, type Tape } from './walkman';
 import type { WalkmanWord } from '../contract';
 
@@ -16,8 +18,6 @@ export type ChangeSlot = { verbId: string; kind: ChangeKind; tense: Tense; perso
 export type ChangeDrill = { id: number; base: string; cue: string; answer: string; en: string; form: string; verbId: string; tense: Tense; person: number; kind: ChangeKind; heard: number };
 export type ShakyForm = { verbId: string; tense: Tense; person: number; score: number };
 
-// The answers' tenses, whatever the Verbs tense setting: passé composé most, then présent, imparfait, futur.
-export const TENSE_MIX: [Tense, number][] = [['pc', 0.35], ['pres', 0.30], ['imp', 0.20], ['fut', 0.15]];
 // The time phrases that ask for each tense; a time cue is always one of these.
 export const TIME_CUES: Record<Tense, string[]> = {
   pc: ['Hier', 'Hier soir', 'La semaine dernière', 'Samedi dernier'],
@@ -26,8 +26,9 @@ export const TIME_CUES: Record<Tense, string[]> = {
   fut: ['Demain', 'Demain matin', 'La semaine prochaine', 'L’année prochaine'],
 };
 const PERSON_CUES = [['je'], ['tu'], ['il', 'elle'], ['nous'], ['vous'], ['ils', 'elles']];
-// The share of drills a person change takes, by answer tense; the rest are time cues.
-const PERSON_SHARE: Record<Tense, number> = { pres: 0.6, pc: 0.4, imp: 0, fut: 0 };
+// The share of drills a person change takes, by answer tense, when the line has two tenses or more; the rest are
+// time cues. With one tense every drill is a person change.
+const PERSON_SHARE: Record<Tense, number> = { pres: 0.6, pc: 0.4, imp: 0.3, fut: 0.3 };
 // The share of drills drawn for a shaky form of the slot's tense, when there is one.
 const SHAKY_SHARE = 0.5;
 const BATCH = 8;
@@ -37,41 +38,42 @@ const REFILL_AT = 4;
 const RECORD_PER_CHECK = 8;
 const TRIES = 5;
 
-// How many of a batch go to each tense: the mix's shares, rounded by largest remainder so a batch always adds up.
-export function mixCounts(count: number): Record<Tense, number> {
-  const rows = TENSE_MIX.map(([tense, share]) => ({ tense, exact: share * count, n: Math.floor(share * count) }));
-  let left = count - rows.reduce((sum, row) => sum + row.n, 0);
-  for (const row of [...rows].sort((a, b) => (b.exact - b.n) - (a.exact - a.n))) { if (left-- <= 0) break; row.n++; }
-  return Object.fromEntries(rows.map((row) => [row.tense, row.n])) as Record<Tense, number>;
-}
-
-// A batch of slots: tenses by the mix, each verb once where the pool allows, a shaky form of the slot's tense about
-// half the time there is one, and verbs not in recent drills before those that were.
-export function planSlots(count: number, pool: Verb[], shaky: ShakyForm[], recent: Set<string>, random: () => number = Math.random): ChangeSlot[] {
-  if (!pool.length) return [];
-  const counts = mixCounts(count);
-  const tenses = TENSE_MIX.flatMap(([tense]) => Array<Tense>(counts[tense]).fill(tense));
+// A batch of slots: the line's tenses by the mix, each verb once where the line allows (then a verb again, on a tense
+// and person not yet in the batch), a shaky form of the slot's tense about half the time there is one, and verbs not
+// in recent drills before those that were. A time cue moves a sentence from another of the line's tenses (the
+// présent, or the passé composé into the présent, when the line has them), so a line of one tense gets only person
+// changes.
+export function planSlots(count: number, pool: Verb[], shaky: ShakyForm[], recent: Set<string>, random: () => number = Math.random, chosen: readonly Tense[] = TENSES): ChangeSlot[] {
+  if (!pool.length || !chosen.length) return [];
+  const counts = mixCounts(count, chosen);
+  const tenses = (Object.keys(TENSE_MIX) as Tense[]).flatMap((tense) => Array<Tense>(counts[tense]).fill(tense));
   for (let index = tenses.length - 1; index > 0; index--) { const other = Math.floor(random() * (index + 1)); [tenses[index], tenses[other]] = [tenses[other]!, tenses[index]!]; }
   const byId = new Map(pool.map((verb) => [verb.id, verb]));
   const used = new Set<string>();
+  const taken = new Set<string>();
   const pick = <T>(list: T[]) => list[Math.floor(random() * list.length)]!;
   return tenses.flatMap((tense): ChangeSlot[] => {
-    const kind: ChangeKind = random() < PERSON_SHARE[tense] ? 'person' : 'time';
-    const fits = (verb: Verb) => kind === 'time' || !verb.impersonal;
-    const weak = shaky.filter((form) => form.tense === tense && !used.has(form.verbId) && byId.has(form.verbId) && fits(byId.get(form.verbId)!));
+    const kind: ChangeKind = chosen.length < 2 || random() < PERSON_SHARE[tense] ? 'person' : 'time';
+    const free = (verb: Verb) => (kind === 'time' || !verb.impersonal ? persons(verb).filter((person) => !taken.has(`${verb.id}|${tense}|${person}`)) : []);
+    const weak = shaky.filter((form) => form.tense === tense && !used.has(form.verbId) && byId.has(form.verbId) && free(byId.get(form.verbId)!).includes(form.person));
     let verb: Verb, person: number;
     if (weak.length && random() < SHAKY_SHARE) {
       const form = [...weak].sort((a, b) => a.score - b.score)[0]!;
       verb = byId.get(form.verbId)!; person = form.person;
     } else {
-      const open = pool.filter((entry) => fits(entry) && !used.has(entry.id));
+      const open = pool.filter((entry) => free(entry).length && !used.has(entry.id));
       const fresh = open.filter((entry) => !recent.has(entry.id));
-      const list = fresh.length ? fresh : open.length ? open : pool.filter(fits);
+      const list = fresh.length ? fresh : open.length ? open : pool.filter((entry) => free(entry).length);
       if (!list.length) return [];
-      verb = pick(list); person = pick(persons(verb));
+      verb = pick(list); person = pick(free(verb));
     }
     used.add(verb.id);
-    if (kind === 'time') return [{ verbId: verb.id, kind, tense, person, baseTense: tense === 'pres' ? 'pc' : 'pres', basePerson: person }];
+    taken.add(`${verb.id}|${tense}|${person}`);
+    if (kind === 'time') {
+      const usual: Tense = tense === 'pres' ? 'pc' : 'pres';
+      const others = chosen.filter((other) => other !== tense);
+      return [{ verbId: verb.id, kind, tense, person, baseTense: others.includes(usual) ? usual : pick(others), basePerson: person }];
+    }
     const basePerson = pick(persons(verb).filter((other) => other !== person));
     return [{ verbId: verb.id, kind, tense, person, baseTense: tense, basePerson, cue: pick(PERSON_CUES[person]!) }];
   });
@@ -136,7 +138,7 @@ export function formIn(sentence: string, form: string, verb: Verb, tense: Tense,
 
 const json = (reply: string): unknown => { try { return JSON.parse(reply.slice(reply.indexOf('{'), reply.lastIndexOf('}') + 1)); } catch { return null; } };
 const text = (value: unknown) => (typeof value === 'string' ? value.trim().replace(/'/g, '’') : '');
-type Written = Omit<ChangeDrill, 'id' | 'heard'>;
+type Written = Omit<ChangeDrill, 'id' | 'heard'> & { baseTense: Tense };
 // One drill as Claude wrote it, kept only when both verb forms are right for their slot, the cue is the one asked
 // for, and the answer differs from the base; null otherwise.
 export function checkDrill(slot: ChangeSlot, verb: Verb, entry: unknown): Written | null {
@@ -157,7 +159,7 @@ export function checkDrill(slot: ChangeSlot, verb: Verb, entry: unknown): Writte
     if (subject !== slot.cue && !(slot.cue === 'je' && subject === 'j’')) return null;
     cue = slot.cue;
   }
-  return { base, cue, answer, en, form, verbId: verb.id, tense: slot.tense, person: slot.person, kind: slot.kind };
+  return { base, cue, answer, en, form, verbId: verb.id, tense: slot.tense, baseTense: slot.baseTense, person: slot.person, kind: slot.kind };
 }
 
 export function parseDrills(reply: string, slots: ChangeSlot[], verbs: Map<string, Verb>): Written[] {
@@ -222,8 +224,9 @@ export function layChangeTape(id: string, items: Iterable<ChangeTapeItem>, silen
 export function createChangeIt(deps: {
   dbPath: string; ask: Ask;
   verbs: () => Verb[];
-  // The verbs the learner has started (vocabulary words past new), and every started word for Claude to write with.
-  started: () => Set<string>;
+  // The verbs and tenses a Practising line picks (verbs.practising); throws a StoreError for a line with none.
+  practising: (line: PractisingLine) => Practising;
+  // Every started word, for Claude to write with.
   known: () => { fr: string; en: string }[];
   shaky: () => ShakyForm[];
   clipReady: (text: string) => boolean;
@@ -236,45 +239,73 @@ export function createChangeIt(deps: {
   const db = new Database(deps.dbPath, { create: true, strict: true });
   db.exec(`PRAGMA journal_mode = WAL; PRAGMA busy_timeout = 5000;
     -- A Change it drill. heard counts the times it played to the end; tries the checks its clips failed to record;
-    -- a dropped drill (its clips never made) is never played.
+    -- a dropped drill (its clips never made) is never played. base_tense is the base sentence's tense.
     CREATE TABLE IF NOT EXISTS change_drills (
       id INTEGER PRIMARY KEY, base TEXT NOT NULL, cue TEXT NOT NULL, answer TEXT NOT NULL UNIQUE, en TEXT NOT NULL,
       form TEXT NOT NULL, verb_id TEXT NOT NULL, tense TEXT NOT NULL, person INTEGER NOT NULL, kind TEXT NOT NULL,
-      created_at TEXT NOT NULL, heard INTEGER NOT NULL DEFAULT 0, heard_at TEXT, tries INTEGER NOT NULL DEFAULT 0, dropped_at TEXT
+      created_at TEXT NOT NULL, heard INTEGER NOT NULL DEFAULT 0, heard_at TEXT, tries INTEGER NOT NULL DEFAULT 0, dropped_at TEXT,
+      base_tense TEXT
     );
     CREATE TABLE IF NOT EXISTS change_heard (request_id TEXT PRIMARY KEY, drill_id INTEGER NOT NULL, heard_at TEXT NOT NULL);`);
-  type Row = { id: number; base: string; cue: string; answer: string; en: string; form: string; verb_id: string; tense: Tense; person: number; kind: ChangeKind; heard: number; heard_at: string | null; tries: number };
-  const live = db.query<Row, []>('SELECT id, base, cue, answer, en, form, verb_id, tense, person, kind, heard, heard_at, tries FROM change_drills WHERE dropped_at IS NULL ORDER BY id');
+  // Drills written before base_tense was kept were planned with a person change in the answer's tense and a time cue
+  // from the présent (from the passé composé into the présent), so that is their base tense.
+  if (!db.query<{ name: string }, []>('PRAGMA table_info(change_drills)').all().some((column) => column.name === 'base_tense')) {
+    db.exec(`ALTER TABLE change_drills ADD COLUMN base_tense TEXT;
+      UPDATE change_drills SET base_tense = CASE WHEN kind = 'person' THEN tense WHEN tense = 'pres' THEN 'pc' ELSE 'pres' END;`);
+  }
+  type Row = { id: number; base: string; cue: string; answer: string; en: string; form: string; verb_id: string; tense: Tense; base_tense: Tense; person: number; kind: ChangeKind; heard: number; heard_at: string | null; tries: number };
+  const live = db.query<Row, []>('SELECT id, base, cue, answer, en, form, verb_id, tense, base_tense, person, kind, heard, heard_at, tries FROM change_drills WHERE dropped_at IS NULL ORDER BY id');
   const recentVerbs = db.query<{ verb_id: string }, []>('SELECT verb_id FROM change_drills ORDER BY id DESC LIMIT 24');
-  const add = db.query('INSERT OR IGNORE INTO change_drills (base, cue, answer, en, form, verb_id, tense, person, kind, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+  const add = db.query('INSERT OR IGNORE INTO change_drills (base, cue, answer, en, form, verb_id, tense, base_tense, person, kind, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
   const failed = db.query('UPDATE change_drills SET tries = tries + 1, dropped_at = CASE WHEN tries + 1 >= ? THEN ? END WHERE id = ?');
   const noteHeard = db.query('INSERT OR IGNORE INTO change_heard (request_id, drill_id, heard_at) VALUES (?, ?, ?)');
   const countHeard = db.query('UPDATE change_drills SET heard = heard + 1, heard_at = ? WHERE id = ?');
+  // The line of the last tape, so the batches written at start and every check are for it.
+  const line = rememberedLine(db, 'change_line');
 
   let writing: Promise<void> | null = null;
   let checking: Promise<void> | null = null;
+  // A check asked for while one runs: the running one goes round once more, to record what was written meanwhile.
+  let again = false;
   let error: string | null = null;
   const recorded = (row: Row) => [row.base, row.cue, row.answer].every(deps.clipReady);
+  // Whether a drill is on the line: its verb, its answer's tense and its base sentence's tense.
+  function onLine(scope: Practising): (row: Row) => boolean {
+    const fits = inLine(scope);
+    return (row) => fits(row.verb_id, row.tense) && fits(row.verb_id, row.base_tense);
+  }
+  // The remembered line as verbs and tenses now; null when it has none (say, no verb started), which a tape request
+  // reports itself.
+  function remembered(): Practising | null {
+    try { return deps.practising(line.get()); } catch { return null; }
+  }
 
-  // A batch from Claude when few drills wait unheard; one batch at a time, and a failure is shown until the next try.
+  // A batch from Claude when few drills on the remembered line wait unheard, none answers in one of its tenses, or a
+  // line of two tenses or more has no time cue waiting (so a line just widened gets drills that use it); one batch at
+  // a time, and a failure is shown until the next try.
   function refill(): Promise<void> {
-    if (writing || live.all().filter((row) => !row.heard).length >= REFILL_AT) return writing ?? Promise.resolve();
+    if (writing) return writing;
+    const scope = remembered();
+    if (!scope) return Promise.resolve();
+    const on = onLine(scope);
+    const unheard = live.all().filter((row) => !row.heard && on(row));
+    const enough = unheard.length >= REFILL_AT && scope.tenses.every((tense) => unheard.some((row) => row.tense === tense))
+      && (scope.tenses.length < 2 || unheard.some((row) => row.kind === 'time'));
+    if (enough) return Promise.resolve();
     writing = (async () => {
       try {
-        const verbs = deps.verbs();
-        const started = deps.started();
-        const mine = verbs.filter((verb) => started.has(verb.id));
-        const pool = mine.length >= 4 ? mine : verbs.slice(0, 20);
-        const byId = new Map(verbs.map((verb) => [verb.id, verb]));
+        const pool = scope.verbs;
+        const byId = new Map(deps.verbs().map((verb) => [verb.id, verb]));
         const known = deps.known();
-        if (!pool.length || !known.length) throw new Error('Change it needs a few words and verbs started first.');
-        const slots = planSlots(BATCH, pool, deps.shaky().filter((form) => pool.some((verb) => verb.id === form.verbId)), new Set(recentVerbs.all().map((row) => row.verb_id)), random);
+        if (!known.length) throw new Error('Change it needs a few words started first.');
+        const slots = planSlots(BATCH, pool, deps.shaky().filter((form) => pool.some((verb) => verb.id === form.verbId)), new Set(recentVerbs.all().map((row) => row.verb_id)), random, scope.tenses);
+        if (!slots.length) throw new Error('Change it has no sentence to ask for with these verbs and tenses. Choose more on the Practising line in Verbs.');
         const reply = await deps.ask(drillsPrompt(slots, byId, known), { timeout: 5 * 60_000, purpose: 'writing Change it sentences' });
         const drills = parseDrills(reply, slots, byId);
         console.log(`change it: ${drills.length} of ${slots.length} drills kept`);
         if (!drills.length) throw new Error('Claude’s Change it sentences could not be used. Echo will ask again.');
         const at = now().toISOString();
-        for (const drill of drills) add.run(drill.base, drill.cue, drill.answer, drill.en, drill.form, drill.verbId, drill.tense, drill.person, drill.kind, at);
+        for (const drill of drills) add.run(drill.base, drill.cue, drill.answer, drill.en, drill.form, drill.verbId, drill.tense, drill.baseTense, drill.person, drill.kind, at);
         error = null;
       } catch (failure) {
         error = failure instanceof Error ? failure.message : 'The Change it sentences could not be written.';
@@ -284,9 +315,13 @@ export function createChangeIt(deps: {
     return writing;
   }
 
-  // Records the drills still missing a clip, oldest first, one drill at a time so each finished one can play.
+  // Records the drills still missing a clip, those on the remembered line first, then oldest first, one drill at a
+  // time so each finished one can play.
   async function recordPending(): Promise<void> {
-    for (const row of live.all().filter((entry) => !recorded(entry)).slice(0, RECORD_PER_CHECK)) {
+    const scope = remembered();
+    const on = scope ? onLine(scope) : () => true;
+    const pending = live.all().filter((entry) => !recorded(entry)).sort((a, b) => Number(on(b)) - Number(on(a)));
+    for (const row of pending.slice(0, RECORD_PER_CHECK)) {
       const missing = [...new Set([row.base, row.cue, row.answer])].filter((clip) => !deps.clipReady(clip));
       if (!await deps.record(missing)) return;
       if (!recorded(row)) failed.run(TRIES, now().toISOString(), row.id);
@@ -294,18 +329,32 @@ export function createChangeIt(deps: {
   }
 
   function check(): Promise<void> {
-    checking ??= (async () => { await refill(); await recordPending(); })().finally(() => { checking = null; });
+    // A batch for a newly chosen line starts at once, even while an earlier check is still recording.
+    void refill();
+    if (checking) { again = true; return checking; }
+    checking = (async () => { do { again = false; await refill(); await recordPending(); } while (again); })().finally(() => { checking = null; });
     return checking;
   }
 
-  // The recorded drills in the order a tape plays them: unheard first, then by how shaky the changed form is, then
-  // the longest unheard. A drill whose form no longer matches its verb's table (a corrected table) is left out.
+  // The line a tape request sent, remembered once it has verbs and tenses; a line with none throws its StoreError.
+  // A request without one (an older client) keeps the remembered line.
+  function choose(value: unknown): void {
+    const sent = lineOf(value);
+    if (!sent) return;
+    deps.practising(sent);
+    line.set(sent);
+  }
+
+  // The recorded drills on the remembered line, in the order a tape plays them: unheard first, then by how shaky the
+  // changed form is, then the longest unheard. A drill whose form no longer matches its verb's table (a corrected
+  // table) is left out. Throws the line's StoreError when it has no verbs or tenses.
   function playlist(): ChangeDrill[] {
+    const on = onLine(deps.practising(line.get()));
     const verbs = new Map(deps.verbs().map((verb) => [verb.id, verb]));
     const scores = new Map(deps.shaky().map((form) => [`${form.verbId}|${form.tense}|${form.person}`, form.score]));
     const score = (row: Row) => scores.get(`${row.verb_id}|${row.tense}|${row.person}`) ?? 0;
     return live.all()
-      .filter((row) => { const verb = verbs.get(row.verb_id); return verb && recorded(row) && formIn(row.answer, row.form, verb, row.tense, row.person); })
+      .filter((row) => { const verb = verbs.get(row.verb_id); return verb && on(row) && recorded(row) && formIn(row.answer, row.form, verb, row.tense, row.person); })
       .sort((a, b) => (a.heard ? 1 : 0) - (b.heard ? 1 : 0) || score(a) - score(b) || (a.heard_at ?? '').localeCompare(b.heard_at ?? '') || a.id - b.id)
       .map((row) => ({ id: row.id, base: row.base, cue: row.cue, answer: row.answer, en: row.en, form: row.form, verbId: row.verb_id, tense: row.tense, person: row.person, kind: row.kind, heard: row.heard }));
   }
@@ -319,12 +368,14 @@ export function createChangeIt(deps: {
     if (noteHeard.run(requestId, id, at).changes) countHeard.run(at, id);
   }
 
-  // Why a tape has no drills yet, for the learner.
+  // Why a tape has no drills on the line yet, for the learner.
   function waitingMessage(): string {
     if (writing) return 'Claude is writing your Change it sentences. Please try again in a minute.';
-    if (live.all().some((row) => !recorded(row))) return 'Your Change it sentences are being recorded on your Mac. Please try again in a few minutes.';
+    const scope = remembered();
+    const on = scope ? onLine(scope) : () => true;
+    if (live.all().some((row) => on(row) && !recorded(row))) return 'Your Change it sentences are being recorded on your Mac. Please try again in a few minutes.';
     return error ?? 'Change it has no sentences yet. Please try again in a few minutes.';
   }
 
-  return { check, playlist, heard, waitingMessage, settled: () => checking ?? Promise.resolve(), close: () => db.close() };
+  return { check, choose, playlist, heard, waitingMessage, settled: () => checking ?? Promise.resolve(), close: () => db.close() };
 }

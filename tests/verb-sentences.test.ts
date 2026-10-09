@@ -3,8 +3,9 @@ import { Database } from 'bun:sqlite';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { mixCounts } from '../lib/practising';
 import { createVerbDrills } from '../lib/verb-drills';
-import { checkSentence, createVerbSentences, parseSentences, planSlots, tenseCounts, type Slot } from '../lib/verb-sentences';
+import { checkSentence, createVerbSentences, parseSentences, planSlots, type Slot } from '../lib/verb-sentences';
 import { verbOf, type Verb, type VerbTable } from '../lib/verbs';
 
 const table = (id: string, fr: string, en: string, rest: Omit<VerbTable, 'id'>): Verb => verbOf({ id, ...rest }, { id, fr, en });
@@ -22,9 +23,24 @@ const sentence = (fr: string, answer: string) => ({ fr, answer, en: 'An English 
 
 describe('the batch plan', () => {
   test('each tense gets its share of a batch, a passé composé third and a futur sixth or so', () => {
-    expect(tenseCounts(12)).toEqual({ pres: 4, pc: 4, imp: 2, fut: 2 });
-    expect(Object.values(tenseCounts(7)).reduce((sum, n) => sum + n, 0)).toBe(7);
-    expect(tenseCounts(20)).toEqual({ pres: 6, pc: 7, imp: 4, fut: 3 });
+    expect(mixCounts(12)).toEqual({ pres: 4, pc: 4, imp: 2, fut: 2 });
+    expect(Object.values(mixCounts(7)).reduce((sum, n) => sum + n, 0)).toBe(7);
+    expect(mixCounts(20)).toEqual({ pres: 6, pc: 7, imp: 4, fut: 3 });
+  });
+
+  test('with fewer tenses chosen, the mix keeps to them, their shares scaled up to fill the batch', () => {
+    expect(mixCounts(12, ['pres', 'pc'])).toEqual({ pres: 6, pc: 6, imp: 0, fut: 0 });
+    expect(mixCounts(10, ['imp', 'fut'])).toEqual({ pres: 0, pc: 0, imp: 6, fut: 4 });
+    expect(mixCounts(8, ['pres'])).toEqual({ pres: 8, pc: 0, imp: 0, fut: 0 });
+  });
+
+  test('one tense and fewer verbs than the batch: every slot in that tense, verbs again on other persons', () => {
+    for (let seed = 1; seed < 30; seed++) {
+      const slots = planSlots([aller, parler], new Map(), 12, seeded(seed), ['pres']);
+      expect(slots).toHaveLength(12);
+      expect(slots.every((slot) => slot.tense === 'pres')).toBe(true);
+      expect(new Set(slots.map((slot) => `${slot.verbId}|${slot.person}`)).size).toBe(12);
+    }
   });
 
   test('a batch takes a different verb for every slot, follows the mix, and asks an il-only verb only for il', () => {
@@ -99,23 +115,27 @@ describe('the stream of sentence cards', () => {
   afterEach(() => { if (dir) rmSync(dir, { recursive: true, force: true }); dir = ''; });
 
   // Claude, as a stub: one right sentence for every slot in the prompt, built from the slot's subject and form.
-  const writer = (calls: { count: number }) => async (prompt: string) => {
+  const writer = (calls: { count: number; prompts?: string[] }) => async (prompt: string) => {
     calls.count++;
+    calls.prompts?.push(prompt);
     const sentences = [...prompt.matchAll(/^(\d+)\. .*?, subject (.+?): the blank is "([^"]+)"/gm)].map(([, slot, who, form]) => {
       const pronoun = who!.split(/,| or /)[0]!;
       return { slot: Number(slot), ...sentence(`Ce matin, ${pronoun === 'j’' ? 'j’___' : `${pronoun} ___`} ici.`, form!) };
     });
     return JSON.stringify({ sentences });
   };
-  function fixture(recorded: Set<string>, calls = { count: 0 }, busy = { runs: 0 }) {
-    dir = mkdtempSync(join(tmpdir(), 'echo-sentences-'));
-    const dbPath = join(dir, 'echo.db');
+  // Every verb started unless `started` says otherwise; `dbPath` reopens an earlier fixture's database, as a restart.
+  function fixture(recorded: Set<string>, calls: { count: number; prompts?: string[] } = { count: 0 }, busy = { runs: 0 }, options: { started?: string[]; dbPath?: string } = {}) {
+    if (!options.dbPath) dir = mkdtempSync(join(tmpdir(), 'echo-sentences-'));
+    const dbPath = options.dbPath ?? join(dir, 'echo.db');
     const clock = { value: new Date(2026, 9, 9, 10) };
-    const drills = createVerbDrills({ dbPath, verbs: () => many, vocabulary: () => [], earAudio: () => null, now: () => clock.value });
+    const started = options.started ?? many.map((verb) => verb.id);
+    const drills = createVerbDrills({ dbPath, verbs: () => many, vocabulary: () => started.map((id) => ({ id, status: 'learning', score: 0 })), earAudio: () => null, now: () => clock.value });
     const recordings: string[][] = [];
     const sentences = createVerbSentences({
       dbPath, ask: writer(calls), verbs: () => many, batch: 12, random: seeded(7), now: () => clock.value,
-      knowledge: () => ({ known: [{ fr: 'ici', en: 'here' }], started: many.map((verb) => verb.id), level: 2 }),
+      practising: (line) => drills.practising(line as never),
+      knowledge: () => ({ known: [{ fr: 'ici', en: 'here' }], level: 2 }),
       scores: () => drills.formScores(),
       markForm: (input) => drills.mark({ ...input, way: 'sentence' }),
       clipExists: (id) => recorded.has(id), givenUp: () => false,
@@ -193,5 +213,52 @@ describe('the stream of sentence cards', () => {
     recorded.delete(ids[0]!);
     const round = sentences.round({});
     expect(round.items.map((item) => item.audio)).not.toContain(`audio/radio/${ids[0]}.mp3`);
+  });
+
+  test('a round shows only sentences on the line sent; another line gets its own batch, and the first comes back', async () => {
+    const recorded = new Set<string>();
+    const { sentences, calls } = fixture(recorded);
+    const verbIds = ['v-aller', 'v-parler', 'v-etre'];
+    const presLine = { set: 'chosen', verbIds, tenses: ['pres'] };
+    const pcLine = { set: 'chosen', verbIds, tenses: ['pc'] };
+    sentences.round({ practising: presLine });
+    await sentences.settled();
+    const pres = sentences.round({ practising: presLine }).items;
+    expect(pres).toHaveLength(8);
+    for (const item of pres) { expect(item.tense).toBe('pres'); expect(verbIds).toContain(item.verbId); }
+    expect(sentences.round({ practising: pcLine })).toMatchObject({ items: [], writing: true });
+    await sentences.settled();
+    expect(calls.count).toBe(2);
+    const pc = sentences.round({ practising: pcLine }).items;
+    expect(pc).toHaveLength(8);
+    for (const item of pc) { expect(item.tense).toBe('pc'); expect(verbIds).toContain(item.verbId); }
+    const back = sentences.round({ practising: presLine });
+    expect(back.items).toHaveLength(8);
+    for (const item of back.items) expect(item.tense).toBe('pres');
+    expect(back.writing).toBe(false);
+  });
+
+  test('the line last sent drives the batch written at start, after a restart too', async () => {
+    const recorded = new Set<string>();
+    const first = fixture(recorded);
+    const line = { set: 'chosen', verbIds: ['v-parler'], tenses: ['fut'] };
+    first.sentences.round({ practising: line });
+    await first.sentences.settled();
+    first.sentences.close();
+    const calls = { count: 0, prompts: [] as string[] };
+    const again = fixture(recorded, calls, { runs: 0 }, { dbPath: first.dbPath });
+    again.sentences.prepare();
+    await again.sentences.settled();
+    expect(calls.count).toBe(1);
+    const slots = calls.prompts[0]!.split('\n').filter((row) => /^\d+\. /.test(row));
+    expect(slots.length).toBeGreaterThan(0);
+    for (const slot of slots) expect(slot).toStartWith(`${slot.split('.')[0]}. parler (to speak), futur,`);
+    for (const item of again.sentences.round({}).items) expect(item).toMatchObject({ verbId: 'v-parler', tense: 'fut' });
+  });
+
+  test('“Your verbs” with no verb started says so, before any line has been sent too', () => {
+    const { sentences } = fixture(new Set(), { count: 0 }, { runs: 0 }, { started: [] });
+    expect(() => sentences.round({ practising: { set: 'mine', verbIds: [], tenses: ['pres'] } })).toThrow('None of your started words is a verb');
+    expect(() => sentences.round({})).toThrow('None of your started words is a verb');
   });
 });

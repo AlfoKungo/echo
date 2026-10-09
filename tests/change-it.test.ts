@@ -2,8 +2,9 @@ import { afterEach, describe, expect, test } from 'bun:test';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { checkDrill, createChangeIt, layChangeTape, mixCounts, planSlots, sayPause, type ChangeDrill, type ChangeSlot } from '../lib/change-it';
-import { verbOf, type VerbTable, type VerbWord } from '../lib/verbs';
+import { checkDrill, createChangeIt, layChangeTape, planSlots, sayPause, type ChangeDrill, type ChangeSlot } from '../lib/change-it';
+import { mixCounts, type PractisingLine } from '../lib/practising';
+import { conjugate, PERSON_LABELS, TENSE_NAMES, TENSES, verbOf, type Tense, type VerbTable, type VerbWord } from '../lib/verbs';
 import { FRAME_BYTES, FRAME_SECONDS } from '../lib/walkman';
 
 const table = (id: string, pres: string[], imp: string[], fut: string, pp: string, aux: 'avoir' | 'être'): VerbTable => ({ id, pres, imp, fut, pp, aux });
@@ -30,7 +31,6 @@ describe('the tense mix', () => {
       expect(new Set(slots.map((slot) => slot.verbId)).size).toBe(slots.length);
       for (const slot of slots) {
         if (slot.kind === 'person') {
-          expect(['pres', 'pc']).toContain(slot.tense);
           expect(slot.baseTense).toBe(slot.tense);
           expect(slot.basePerson).not.toBe(slot.person);
           expect(slot.verbId).not.toBe('v-falloir');
@@ -41,6 +41,27 @@ describe('the tense mix', () => {
         }
       }
     }
+  });
+  test('with one tense chosen, every drill changes only the person, in that tense', () => {
+    for (const tense of TENSES) for (let seed = 1; seed < 20; seed++) {
+      const slots = planSlots(8, verbs, [], new Set(), sequence(seed), [tense]);
+      expect(slots.length).toBeGreaterThan(0);
+      for (const slot of slots) expect(slot).toMatchObject({ kind: 'person', tense, baseTense: tense });
+    }
+  });
+  test('time cues move a sentence between the chosen tenses only, and a verb comes back on another person', () => {
+    let times = 0;
+    for (let seed = 1; seed < 40; seed++) {
+      const slots = planSlots(8, [manger, partir], [], new Set(), sequence(seed), ['imp', 'fut']);
+      expect(slots).toHaveLength(8);
+      expect(new Set(slots.map((slot) => `${slot.verbId}|${slot.tense}|${slot.person}`)).size).toBe(8);
+      for (const slot of slots) {
+        expect(['imp', 'fut']).toContain(slot.tense);
+        expect(['imp', 'fut']).toContain(slot.baseTense);
+        if (slot.kind === 'time') { times++; expect(slot.baseTense).not.toBe(slot.tense); }
+      }
+    }
+    expect(times).toBeGreaterThan(0);
   });
   test('a shaky form of the slot’s tense is drawn when the coin says so', () => {
     const slots = planSlots(1, verbs, [{ verbId: 'v-prendre', tense: 'pc', person: 5, score: -4 }], new Set(), () => 0);
@@ -118,7 +139,7 @@ describe('the drill store', () => {
     const recorded: string[][] = [];
     let asked = '';
     const changeIt = createChangeIt({
-      dbPath: join(dir, 'echo.db'), verbs: () => [manger], started: () => new Set(['v-manger']), known: () => [{ fr: 'pomme', en: 'apple' }], shaky: () => [],
+      dbPath: join(dir, 'echo.db'), verbs: () => [manger], practising: () => ({ verbs: [manger], tenses: [...TENSES] }), known: () => [{ fr: 'pomme', en: 'apple' }], shaky: () => [],
       clipReady: (text) => made.has(text),
       record: async (texts) => { recorded.push(texts); for (const text of texts) made.add(text); return true; },
       // With random() at 0.99 the plan keeps the mix's order and draws ils: line 1 is manger, ils, présent → passé composé.
@@ -138,5 +159,70 @@ describe('the drill store', () => {
     changeIt.heard({ requestId: 'r1', id: only!.id });
     expect(changeIt.playlist()[0]!.heard).toBe(1);
     changeIt.close();
+  });
+
+  // The Practising line as verbs.practising reads a chosen set, over this file's verbs.
+  const practising = (line: PractisingLine) => {
+    const picked = verbs.filter((verb) => line.verbIds.includes(verb.id));
+    if (!picked.length) throw new Error('Choose at least one verb.');
+    return { verbs: picked, tenses: TENSES.filter((tense) => line.tenses.includes(tense)) };
+  };
+  // Claude, as a stub: a right drill for every line of the prompt, built from conjugate().
+  const SUBJECTS = ['je', 'tu', 'il', 'nous', 'vous', 'ils'];
+  const named = (name: string) => TENSES.find((tense) => TENSE_NAMES[tense] === name)!;
+  const writer = (asked: string[]) => async (prompt: string) => {
+    asked.push(prompt);
+    const drills = [...prompt.matchAll(/^(\d+)\. (\S+) \(.*?\) — base: (.+?), (.+?); answer: (.+?), (.+?); cue(?: "(.+?)"|: one of "(.+?)")/gm)].map(([, line, inf, baseTense, basePerson, tense, person, subjectCue, timeCue]) => {
+      const verb = verbs.find((entry) => entry.inf === inf)!;
+      const from = PERSON_LABELS.indexOf(basePerson!), to = PERSON_LABELS.indexOf(person!);
+      const baseForm = conjugate(verb, named(baseTense!))[from]!.accepted[0]!, form = conjugate(verb, named(tense!))[to]!.accepted[0]!;
+      const answer = timeCue ? `${timeCue}, ${SUBJECTS[to]} ${form} vite.` : `${subjectCue} ${form} vite.`;
+      return { line: Number(line), base: `${SUBJECTS[from]} ${baseForm} vite.`, baseForm, cue: timeCue ?? subjectCue, answer, form, en: 'English.' };
+    });
+    return JSON.stringify({ drills });
+  };
+  const store = (dbPath: string, asked: string[], random = sequence(5)) => createChangeIt({
+    dbPath, verbs: () => verbs, practising, known: () => [{ fr: 'vite', en: 'quickly' }], shaky: () => [],
+    clipReady: () => true, record: async () => true, ask: writer(asked), random,
+  });
+  const line = (tenses: Tense[]): PractisingLine => ({ set: 'chosen', verbIds: ['v-manger', 'v-partir'], tenses });
+
+  test('the tape plays only drills on the line, both tenses on it; a line widened to a tense gets a batch', async () => {
+    dir = mkdtempSync(join(tmpdir(), 'echo-change-'));
+    const asked: string[] = [];
+    const changeIt = store(join(dir, 'echo.db'), asked);
+    changeIt.choose(line(['pres']));
+    await changeIt.check();
+    const present = changeIt.playlist();
+    expect(present.length).toBeGreaterThan(3);
+    for (const drill of present) expect(drill).toMatchObject({ kind: 'person', tense: 'pres' });
+    changeIt.choose(line(['pres', 'pc']));
+    await changeIt.check();
+    expect(asked).toHaveLength(2);
+    const both = changeIt.playlist();
+    expect(both.some((drill) => drill.kind === 'time')).toBe(true);
+    expect(both.some((drill) => drill.tense === 'pc')).toBe(true);
+    for (const drill of both) expect(['pres', 'pc']).toContain(drill.tense);
+    // On a passé composé line, a time cue from the présent stays out, as does every présent answer.
+    changeIt.choose(line(['pc']));
+    for (const drill of changeIt.playlist()) expect(drill).toMatchObject({ kind: 'person', tense: 'pc' });
+    expect(() => changeIt.choose({ set: 'chosen', verbIds: [], tenses: ['pres'] })).toThrow('Choose at least one verb.');
+    for (const drill of changeIt.playlist()) expect(drill.tense).toBe('pc');
+    changeIt.close();
+  });
+
+  test('a check between tapes writes for the line last chosen, after a restart too', async () => {
+    dir = mkdtempSync(join(tmpdir(), 'echo-change-'));
+    const first = store(join(dir, 'echo.db'), []);
+    first.choose({ set: 'chosen', verbIds: ['v-partir'], tenses: ['fut'] });
+    first.close();
+    const asked: string[] = [];
+    const again = store(join(dir, 'echo.db'), asked);
+    await again.check();
+    const lines = asked[0]!.split('\n').filter((row) => /^\d+\. /.test(row));
+    expect(lines.length).toBeGreaterThan(0);
+    for (const row of lines) expect(row).toMatch(/^\d+\. partir \(to leave\) — base: futur, .+; answer: futur, .+; cue "/);
+    for (const drill of again.playlist()) expect(drill).toMatchObject({ verbId: 'v-partir', kind: 'person', tense: 'fut' });
+    again.close();
   });
 });

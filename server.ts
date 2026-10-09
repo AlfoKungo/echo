@@ -256,12 +256,12 @@ const roomsOff = (process.env.ECHO_ROOMS_OFF ?? '').split(',').map((room) => roo
 const news = roomsOff.includes('news') ? null : createNews({ dir: process.env.ECHO_NEWS_DIR ?? join(dirname(dbPath), 'news'), audioDir: join(root, 'audio/news'), ask });
 if (news && process.env.ECHO_NEWS !== 'off') void news.check();
 const newsChecks = setInterval(() => { if (news && process.env.ECHO_NEWS !== 'off') void news.check(); }, 30 * 60_000);
-// Change it (Verbs → Tape): drills Claude writes ahead from the learner's started verbs and words (lib/change-it.ts),
-// recorded with the Radio's French voice after the sentence tape's clips, at start and every ten minutes. An Echo
-// without the room (the friends') has none of it.
+// Change it (Verbs → Tape): drills Claude writes ahead for the verbs and tenses on Verbs' Practising line, from the
+// learner's started words (lib/change-it.ts), recorded with the Radio's French voice after the sentence tape's clips,
+// at start and every ten minutes. An Echo without the room (the friends') has none of it.
 const changeIt = roomsOff.includes('changeit') ? null : createChangeIt({
   dbPath, ask, verbs: () => verbTables.verbs(),
-  started: () => new Set(store.listening().filter((word) => word.status !== 'new').map((word) => word.id)),
+  practising: (line) => verbs.practising(line as never),
   known: () => store.listening().filter((word) => word.status !== 'new').map((word) => ({ fr: word.fr, en: word.en })),
   shaky: () => verbs.shaky(),
   clipReady: (text) => radioClipExists(root, frenchClip(text).id),
@@ -277,15 +277,16 @@ const changeIt = roomsOff.includes('changeit') ? null : createChangeIt({
 });
 void textsStarted.then(() => changeIt?.check());
 const changeChecks = setInterval(() => { void changeIt?.check(); }, 10 * 60_000);
-// In sentences: Verbs cards with the verb inside a sentence Claude writes ahead (lib/verb-sentences.ts), recorded by
-// the Radio's French voice; an Echo without the room (the friends') has none of it. ECHO_SENTENCE_BATCH sets how
-// many a batch asks for (12), so a test run can record only a few.
+// In sentences: Verbs cards with the verb inside a sentence Claude writes ahead for the verbs and tenses on the
+// Practising line (lib/verb-sentences.ts), recorded by the Radio's French voice; an Echo without the room (the
+// friends') has none of it. ECHO_SENTENCE_BATCH sets how many a batch asks for (12), so a test run can record only a few.
 const verbSentences = roomsOff.includes('sentencecards') ? null : createVerbSentences({
   dbPath, ask, verbs: () => verbTables.verbs(),
-  knowledge: () => {
-    const started = store.listening().filter((word) => word.status !== 'new');
-    return { known: started.map((word) => ({ fr: word.fr, en: word.en })), started: started.map((word) => word.id), level: comprehension.summary().levels.find((entry) => entry.mode === 'read')?.value ?? 1 };
-  },
+  practising: (line) => verbs.practising(line as never),
+  knowledge: () => ({
+    known: store.listening().filter((word) => word.status !== 'new').map((word) => ({ fr: word.fr, en: word.en })),
+    level: comprehension.summary().levels.find((entry) => entry.mode === 'read')?.value ?? 1,
+  }),
   scores: () => verbs.formScores(),
   markForm: (input) => verbs.mark({ ...input, way: 'sentence' }),
   clipExists: (id) => radioClipExists(root, id),
@@ -345,11 +346,11 @@ const walkmanClips = createClips(join(root, 'audio'));
 const walkmanManifest = join(root, 'audio/walkman/manifest.json');
 let walkmanStamp = 0;
 const tapes = new Map<string, Tape>();
-function newTape(choice: WalkmanChoice, tenses: Tense[] = ['pres']): Tape {
+function newTape(choice: WalkmanChoice, tenses: Tense[] = ['pres'], practising?: unknown): Tape {
   const stamp = existsSync(walkmanManifest) ? statSync(walkmanManifest).mtimeMs : 0;
   if (stamp !== walkmanStamp) { walkmanClips.forget(); walkmanStamp = stamp; }
   const listening = store.listening();
-  const tape = choice === 'verbs' ? verbTape(tenses) : choice === 'change' ? changeTape() : choice === 'sentences' ? sentenceTape(listening) : (() => {
+  const tape = choice === 'verbs' ? verbTape(tenses) : choice === 'change' ? changeTape(practising) : choice === 'sentences' ? sentenceTape(listening) : (() => {
     const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
     return buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), new Map(store.words().map((word) => [word.id, word])), walkmanClips, fresh);
   })();
@@ -389,12 +390,14 @@ function verbTape(tenses: Tense[]): Tape {
   }
   return layTape(crypto.randomUUID(), 'verbs', items(), silence, VERB_TIMING);
 }
-// The Change it tape: its drills in playlist order, then twice more in fresh orders, never one drill twice in a row.
-// Asking for one also checks whether more drills are wanted or waiting to be recorded.
-function changeTape(): Tape {
+// The Change it tape: its drills on the Practising line sent (remembered for the checks between tapes) in playlist
+// order, then twice more in fresh orders, never one drill twice in a row. Asking for one also checks whether more
+// drills are wanted or waiting to be recorded.
+function changeTape(practising: unknown): Tape {
   const silence = walkmanClips.silence();
   if (!silence) throw new Error('The Walkman silence frame is missing.');
   if (!changeIt) throw new StoreError('Change it is not part of this Echo.', 404);
+  changeIt.choose(practising);
   void changeIt.check();
   const drills = changeIt.playlist();
   function* items(): Generator<ChangeTapeItem> {
@@ -611,7 +614,7 @@ async function route(req: Request): Promise<Response> {
       const data = await body(req);
       if (data.words !== undefined && !['scored', 'groups', 'sentences', 'verbs', ...(changeIt ? ['change'] : [])].includes(data.words as string)) throw new StoreError('Choose what the Walkman plays: words by score, words by groups, sentences, or verbs.', 400);
       const tenses = Array.isArray(data.tenses) ? TENSES.filter((tense) => (data.tenses as unknown[]).includes(tense)) : ['pres' as Tense];
-      return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored', tenses)));
+      return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored', tenses, data.practising)));
     }
     // A Change it drill played to the end: drills not yet heard come first on the next tape.
     if (path === '/api/change/heard' && req.method === 'POST' && changeIt) { changeIt.heard(await body(req)); return json({ ok: true }); }

@@ -1,11 +1,13 @@
 // In sentences: Verbs cards where the verb sits inside a French sentence with one blank, its infinitive beside it,
 // and a time word or context that settles the tense. Claude writes the sentences ahead, a batch at a time, for
-// forms Echo chooses (a fixed mix of the four tenses, persons spread, the learner's started verbs, shaky forms
-// likelier); each sentence is kept only when its blank holds exactly the form conjugate() gives for its verb, tense
-// and person, after that person's subject pronoun. Every sentence is recorded, and waits out of practice until
-// its recording exists. A mark counts for the form in the Verbs record (mode 'sentence', scored like Cards).
+// forms Echo chooses (the verbs and tenses on Verbs' Practising line, the tenses in a fixed mix, persons spread,
+// shaky forms likelier); each sentence is kept only when its blank holds exactly the form conjugate() gives for its
+// verb, tense and person, after that person's subject pronoun. Every sentence is recorded, and waits out of practice
+// until its recording exists. A round shows only sentences on the line it was sent; the rest wait for their line to
+// come back. A mark counts for the form in the Verbs record (mode 'sentence', scored like Cards).
 import { Database } from 'bun:sqlite';
 import type { Ask } from './claude';
+import { inLine, lineOf, mixCounts, rememberedLine, type Practising, type PractisingLine } from './practising';
 import { frenchClip, type RadioClip } from './radio';
 import { StoreError } from './store';
 import { pull } from './verb-drills';
@@ -14,20 +16,15 @@ import { conjugate, normal, persons, subject, TENSE_NAMES, TENSES, type Tense, t
 export type Slot = { verbId: string; tense: Tense; person: number };
 export type SentenceItem = Slot & { fr: string; answer: string; en: string; why: string };
 export type SentenceCard = Slot & { id: string; inf: string; tenseName: string; fr: string; answer: string; en: string; why: string; audio: string };
-export type SentenceKnowledge = { known: { fr: string; en: string }[]; started: string[]; level: number };
+export type SentenceKnowledge = { known: { fr: string; en: string }[]; level: number };
 export type SentenceRound = { items: SentenceCard[]; writing: boolean; recording: number; error: string | null };
 
-// The tenses a batch is written in, whatever Verbs options say: mostly the passé composé and the présent.
-export const TENSE_MIX: Record<Tense, number> = { pc: 0.35, pres: 0.3, imp: 0.2, fut: 0.15 };
 // How likely each person is in a slot: je, il/elle/on and ils most, vous next, nous and tu least.
 export const PERSON_WEIGHTS = [3, 1, 3, 1, 2, 2];
 const BATCH = 12;
 // A new batch is written once fewer sentences than this are left unseen (recorded or still being recorded).
 const REFILL_AT = 10;
 const ROUND = 8;
-// With fewer started verbs than this, the most common verbs join them.
-const MIN_VERBS = 8;
-const COMMON = 20;
 // A recording that failed is tried again after this long, up to the recorder's own limit (lib/recording-attempts.ts).
 const RECORD_RETRY_MS = 10 * 60_000;
 // The Radio, the sentence tape and this share one recorder; while another holds it, this tries again after this long.
@@ -40,30 +37,25 @@ const SUBJECT_PERSON: Record<string, number> = { je: 0, 'j’': 0, tu: 1, il: 2,
 const SUBJECT_BEFORE = /(?:^|[^\p{L}])(je|j’|tu|il|elle|on|nous|vous|ils|elles)(\s*)$/iu;
 const SUBJECT_WORDS = ['je', 'tu', 'il, elle or on', 'nous', 'vous', 'ils or elles'];
 
-// How many slots of a batch each tense gets: TENSE_MIX by largest remainder, so a batch of 12 is 4 pc, 4 présent,
-// 2 imparfait, 2 futur.
-export function tenseCounts(count: number): Record<Tense, number> {
-  const exact = TENSES.map((tense) => ({ tense, share: TENSE_MIX[tense] * count }));
-  const counts = Object.fromEntries(exact.map(({ tense, share }) => [tense, Math.floor(share)])) as Record<Tense, number>;
-  let left = count - Object.values(counts).reduce((sum, n) => sum + n, 0);
-  for (const { tense } of [...exact].sort((a, b) => (b.share % 1) - (a.share % 1))) { if (left-- <= 0) break; counts[tense] += 1; }
-  return counts;
-}
-
-// The forms a batch is written for: each tense its share, each slot a different verb while there are verbs to go
-// round, the verb and person drawn with odds PERSON_WEIGHTS × the form's pull (a shaky form likelier, a solid one
-// less), in a shuffled order.
-export function planSlots(verbs: Verb[], scores: Map<string, number>, count = BATCH, random: () => number = Math.random): Slot[] {
-  const counts = tenseCounts(count);
+// The forms a batch is written for: each chosen tense its share of the mix, each slot a different verb while there
+// are verbs to go round (then a verb again, on a tense and person not yet in the batch), the verb and person drawn
+// with odds PERSON_WEIGHTS × the form's pull (a shaky form likelier, a solid one less), in a shuffled order.
+export function planSlots(verbs: Verb[], scores: Map<string, number>, count = BATCH, random: () => number = Math.random, tenses: readonly Tense[] = TENSES): Slot[] {
+  const counts = mixCounts(count, tenses);
   const used = new Set<string>();
+  const taken = new Set<string>();
   const slots: Slot[] = [];
   for (const tense of TENSES) for (let n = 0; n < counts[tense]; n++) {
     if (verbs.every((verb) => used.has(verb.id))) used.clear();
-    const options = verbs.filter((verb) => !used.has(verb.id)).flatMap((verb) => persons(verb).map((person) => ({ verb, person, weight: PERSON_WEIGHTS[person]! * pull(scores.get(`${verb.id}|${tense}|${person}`)) })));
-    if (!options.length) return slots;
+    const open = (pool: Verb[]) => pool.flatMap((verb) => persons(verb).filter((person) => !taken.has(`${verb.id}|${tense}|${person}`))
+      .map((person) => ({ verb, person, weight: PERSON_WEIGHTS[person]! * pull(scores.get(`${verb.id}|${tense}|${person}`)) })));
+    const fresh = open(verbs.filter((verb) => !used.has(verb.id)));
+    const options = fresh.length ? fresh : open(verbs);
+    if (!options.length) break;
     let left = random() * options.reduce((sum, option) => sum + option.weight, 0);
     const chosen = options.find((option) => (left -= option.weight) < 0) ?? options.at(-1)!;
     used.add(chosen.verb.id);
+    taken.add(`${chosen.verb.id}|${tense}|${chosen.person}`);
     slots.push({ verbId: chosen.verb.id, tense, person: chosen.person });
   }
   return slots.map((slot) => ({ slot, key: random() })).sort((a, b) => a.key - b.key).map(({ slot }) => slot);
@@ -156,6 +148,8 @@ const filled = (row: { fr: string; answer: string }) => row.fr.replace(BLANK, ro
 export function createVerbSentences(deps: {
   dbPath: string; ask: Ask;
   verbs: () => Verb[];
+  // The verbs and tenses a Practising line picks (verbs.practising); throws a StoreError for a line with none.
+  practising: (line: PractisingLine) => Practising;
   knowledge: () => SentenceKnowledge;
   // Each practised form's score, by "verbId|tense|person" (lib/verb-drills.ts formScores).
   scores: () => Map<string, number>;
@@ -188,11 +182,14 @@ export function createVerbSentences(deps: {
   const rowById = db.query<Row, [number]>('SELECT *, 0 AS seen FROM verb_sentences WHERE id = ?');
   const addRow = db.query('INSERT INTO verb_sentences (verb_id, tense, person, fr, answer, en, why, clip, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
   const saveMark = db.query('INSERT OR IGNORE INTO verb_sentence_marks (request_id, sentence_id, knew, marked_at) VALUES (?, ?, ?, ?)');
+  // The line of the last round, so the batches written at start and between rounds are for it.
+  const line = rememberedLine(db, 'verb_sentence_line');
 
   let writing: Promise<void> | null = null;
   let recording: Promise<void> | null = null;
   let error: string | null = null;
-  let failedAt = -Infinity;
+  // The line whose batch failed last, and when: that line waits WRITE_RETRY_MS; another line is asked for at once.
+  let failed = { key: '', at: -Infinity };
   const triedAt = new Map<string, number>();
   const byId = () => new Map(deps.verbs().map((verb) => [verb.id, verb]));
   // The sentences still right for their verb's table as it is now (a corrected table can unmake one).
@@ -219,23 +216,22 @@ export function createVerbSentences(deps: {
       .finally(() => { recording = null; });
   }
 
-  // Asks for a batch when fewer than refillAt are left unseen (counting those still to be recorded, not those
-  // whose recording was given up); one batch at a time, and a failure is shown, and not retried for
-  // WRITE_RETRY_MS, so a Claude that is down is not asked on every card.
-  function refill(): void {
+  // Asks for a batch for `scope` when fewer than refillAt of its sentences are left unseen, or one of its tenses has
+  // none left (counting those still to be recorded, not those whose recording was given up), so a line just widened
+  // to another tense gets sentences in it; one batch at a time, and a failure is shown, and not retried for that line
+  // for WRITE_RETRY_MS, so a Claude that is down is not asked on every card.
+  function refill(scope: Practising): void {
     if (writing) return;
-    const unseen = current().filter(({ row }) => !row.seen && !deps.givenUp(row.clip)).length;
-    if (unseen >= refillAt || now().getTime() - failedAt < WRITE_RETRY_MS) { recordMissing(); return; }
+    const fits = inLine(scope);
+    const unseen = current().filter(({ row }) => fits(row.verb_id, row.tense) && !row.seen && !deps.givenUp(row.clip)).map(({ row }) => row.tense);
+    const key = JSON.stringify([scope.verbs.map((verb) => verb.id), scope.tenses]);
+    const enough = unseen.length >= refillAt && scope.tenses.every((tense) => unseen.includes(tense));
+    if (enough || (failed.key === key && now().getTime() - failed.at < WRITE_RETRY_MS)) { recordMissing(); return; }
     // The promise is cleared in .finally, which always runs after this assignment, even when the batch fails at once.
     writing = (async () => {
       try {
         const knowledge = deps.knowledge();
-        const verbs = deps.verbs();
-        const started = new Set(knowledge.started);
-        const mine = verbs.filter((verb) => started.has(verb.id));
-        const pool = mine.length >= MIN_VERBS ? mine : [...new Set([...mine, ...verbs.slice(0, COMMON)])];
-        if (!pool.length) throw new StoreError('In sentences needs your verb tables first; they are still being written.');
-        const slots = planSlots(pool, deps.scores(), batch, random);
+        const slots = planSlots(scope.verbs, deps.scores(), batch, random, scope.tenses);
         const found = byId();
         const reply = await deps.ask(sentencesPrompt(slots, found, knowledge), { timeout: 5 * 60_000, purpose: 'writing verb sentences' });
         const { items, problems } = parseSentences(reply, slots, found);
@@ -246,18 +242,32 @@ export function createVerbSentences(deps: {
         error = null;
       } catch (failure) {
         error = failure instanceof Error ? failure.message : 'The sentences could not be written.';
-        failedAt = now().getTime();
+        failed = { key, at: now().getTime() };
       }
     })().finally(() => { writing = null; recordMissing(); });
   }
 
-  // The next cards: recorded sentences not in `exclude` (those waiting on the phone and just seen), the least seen
-  // first so none comes back before the rest have been seen, and among equals a shaky form likelier first.
-  function round(input: { exclude?: unknown }): SentenceRound {
-    refill();
+  // The batch at start, for the line last sent (the client's own line before any); a line that has no verbs or
+  // tenses now is shown when the drill is opened.
+  function prepare(): void {
+    let scope: Practising;
+    try { scope = deps.practising(line.get()); } catch (failure) { error = failure instanceof Error ? failure.message : String(failure); return; }
+    refill(scope);
+  }
+
+  // The next cards, only sentences on the line sent (or, from a client that sends none, the line last sent; a line
+  // sent is remembered once it resolves): recorded sentences not in `exclude` (those waiting on the phone and just
+  // seen), the least seen first so none comes back before the rest have been seen, and among equals a shaky form
+  // likelier first.
+  function round(input: { exclude?: unknown; practising?: unknown }): SentenceRound {
+    const sent = lineOf(input?.practising);
+    const scope = deps.practising(sent ?? line.get());
+    if (sent) line.set(sent);
+    refill(scope);
     const exclude = new Set(Array.isArray(input?.exclude) ? input.exclude.filter((id): id is string => typeof id === 'string').slice(0, 40) : []);
     const scores = deps.scores();
-    const rows = current();
+    const fits = inLine(scope);
+    const rows = current().filter(({ row }) => fits(row.verb_id, row.tense));
     const ready = rows.filter(({ row }) => deps.clipExists(row.clip));
     const items = ready.filter(({ row }) => !exclude.has(String(row.id)))
       .map((entry) => ({ ...entry, key: random() ** (1 / pull(scores.get(`${entry.row.verb_id}|${entry.row.tense}|${entry.row.person}`))) }))
@@ -282,5 +292,5 @@ export function createVerbSentences(deps: {
     return { ok: true };
   }
 
-  return { round, mark, prepare: refill, settled: async () => { await writing; await recording; }, close: () => db.close() };
+  return { round, mark, prepare, settled: async () => { await writing; await recording; }, close: () => db.close() };
 }
