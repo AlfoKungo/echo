@@ -157,7 +157,7 @@ export function planSentences<T extends { level: GrammarLevel; words: string[] }
     .map((entry) => entry.sentence);
 }
 
-export type Tape = { id: string; kind: 'words' | 'sentences' | 'verbs'; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
+export type Tape = { id: string; kind: 'words' | 'sentences' | 'verbs' | 'change'; bytes: Uint8Array<ArrayBuffer>; words: WalkmanWord[]; seconds: number };
 // One thing on a tape with its two recordings; sentence marks a whole sentence rather than a word. again is what
 // plays the third time (the French, unless given: a verb tape repeats the form, not the prompt).
 export type TapeItem = Omit<WalkmanWord, 'start' | 'recallAt' | 'meaningAt' | 'againAt' | 'end'> & { french: Uint8Array; english: Uint8Array; again?: Uint8Array };

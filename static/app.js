@@ -172,8 +172,16 @@ function chooseWalkman(choice) {
 // The three tapes, each in its own room: the Walkman tab in Words, Tape in Listen (sentences) and Tape in Verbs.
 const TAPE_SCREENS = { walkman: 'words', 'listen-tape': 'sentences', 'verbs-tape': 'verbs' };
 const tapeScreen = (name = screen) => name in TAPE_SCREENS;
-// What the tape on screen plays: the Walkman's choice of words, or its room's sentences or verbs.
-const tapeKind = () => screen === 'walkman' ? walkmanChoice : TAPE_SCREENS[screen];
+// What the tape on screen plays: the Walkman's choice of words, or its room's sentences, or Verbs' choice of tape.
+const tapeKind = () => screen === 'walkman' ? walkmanChoice : screen === 'verbs-tape' ? verbTapeKind : TAPE_SCREENS[screen];
+// Tape in Verbs plays the form tape or Change it, remembered on this device; without the room, only the form tape.
+const VERB_TAPES = { verbs: 'Forms', ...(roomsOff.has('changeit') ? {} : { change: 'Change it' }) };
+let verbTapeKind = (() => { const saved = readPreference('echo.verb-tape', 'verbs'); return saved in VERB_TAPES ? saved : 'verbs'; })();
+function chooseVerbTape(kind) {
+  if (!(kind in VERB_TAPES) || kind === verbTapeKind || walkman.loading) return;
+  verbTapeKind = kind; savePreference('echo.verb-tape', kind);
+  loadTape(!walkmanAudio.paused);
+}
 // Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
 const WORDS_TABS = { cards: 'Cards', endless: 'Endless', walkman: 'Walkman', ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
 const LISTEN_TABS = { listen: 'Questions', sounds: 'Sounds', 'listen-tape': 'Tape', ...(roomsOff.has('news') ? {} : { news: 'News' }) };
@@ -536,7 +544,7 @@ function render() {
   else renderHome();
 }
 // What each part of a tape word is called, by tape: its French, the pause to recall it, its meaning, the French again.
-const TAPE_PHASES = { words: ['Listen', 'Recall', 'Meaning', 'Again'], sentences: ['Listen', 'Understand', 'Meaning', 'Again'], verbs: ['Prompt', 'Say it', 'Form', 'Again'] };
+const TAPE_PHASES = { words: ['Listen', 'Recall', 'Meaning', 'Again'], sentences: ['Listen', 'Understand', 'Meaning', 'Again'], verbs: ['Prompt', 'Say it', 'Form', 'Again'], change: ['Sentence', 'Change', 'Say it', 'Answer'] };
 const PHASE_KEYS = ['listen', 'recall', 'meaning', 'again'];
 // The part of the word playing that the tape has reached; '' between words.
 function walkmanPhase() {
@@ -546,32 +554,45 @@ function walkmanPhase() {
   return time >= word.againAt ? 'again' : time >= word.meaningAt ? 'meaning' : time >= word.recallAt ? 'recall' : 'listen';
 }
 const reelIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/><path d="M12 3v4.6M12 16.4V21M4.2 7.5l4 2.3M15.8 14.2l4 2.3M4.2 16.5l4-2.3M15.8 9.8l4-2.3"/></svg>';
+// A Change it answer with its changed verb form lit.
+function changedAnswer(answer, form) {
+  const at = answer.toLowerCase().indexOf(form.toLowerCase());
+  return at < 0 ? frEsc(answer) : `${frEsc(answer.slice(0, at))}<span class="wm-form">${frEsc(answer.slice(at, at + form.length))}</span>${frEsc(answer.slice(at + form.length))}`;
+}
 // The tape player: the Walkman tab in Words, or Tape in Listen or in Verbs.
 function renderWalkman() {
   const room = TAPE_SCREENS[screen];
-  const header = room === 'words' ? wordsTop() : room === 'sentences' ? listenTop() : `<div class="section-top">${back('Verbs', 'verbs')}<div><span class="stream-label">Tape</span>${infoButton('verbs')}</div></div>`;
+  const verbTapeSwitch = room === 'verbs' && Object.keys(VERB_TAPES).length > 1 ? `<div class="segmented wm-way" role="group" aria-label="What the verb tape plays">${Object.entries(VERB_TAPES).map(([kind, label]) => `<button data-action="walkman-verb-tape" data-kind="${kind}" aria-pressed="${verbTapeKind === kind}" ${walkman.loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>` : '';
+  const header = room === 'words' ? wordsTop() : room === 'sentences' ? listenTop() : `<div class="section-top">${back('Verbs', 'verbs')}<div><span class="stream-label">${verbTapeKind === 'change' ? 'Change it' : 'Tape'}</span>${infoButton('verbs')}</div></div>${verbTapeSwitch}`;
   const tape = walkman.tape;
   if (walkman.loading || (!tape && !notice)) { main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}<div class="loading-state" role="status">Winding the tape…</div></section>`; return; }
   if (!tape) { main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}</section>`; return; }
   const word = tape.words[walkman.index];
   const playing = !walkmanAudio.paused;
-  const face = word
+  const phase = word ? walkmanPhase() : '';
+  // Change it shows the sentence, then the cue under it, and once the answer plays, the answer and its English.
+  const face = word?.change
+    ? phase === 'again'
+      ? `<p class="wm-fr wm-sentence" lang="fr">${changedAnswer(word.fr, word.change.form)}</p><p class="wm-en">${esc(word.en)}</p>`
+      : `<p class="wm-fr wm-sentence" lang="fr">${frEsc(word.change.base)}</p><p class="wm-en wm-cue">${phase === 'listen' ? '&nbsp;' : `→ <span lang="fr">${frEsc(word.change.cue)}</span>`}</p>`
+    : word
     ? `<p class="wm-fr${word.sentence || word.verb ? ' wm-sentence' : ''}" lang="fr">${frEsc(word.fr)}</p><p class="wm-en">${walkman.meaning ? esc(word.en) : '&nbsp;'}</p>`
-    : `<p class="wm-hint">${tape.kind === 'verbs'
+    : `<p class="wm-hint">${tape.kind === 'change'
+      ? 'You hear a sentence, then a change: a time, or another person. Say the new sentence in the pause, then hear it. Your verbs, in all four tenses, passé composé most.'
+      : tape.kind === 'verbs'
       ? 'You hear a verb, a tense and a person, then a pause to say the form, then the form twice. The 20 most common verbs, in the tenses you choose.'
       : tape.kind === 'sentences'
       ? 'You hear a French sentence, then a pause to understand it, then the English, then the French again.'
       : 'You hear a French word, then a pause to find its meaning, then the English, then the French again.'}</p>`;
   // The phase row shows where the word playing has got to; the reels turn only while the tape plays.
-  const phase = word ? walkmanPhase() : '';
   const phases = word ? `<div class="wm-phase" aria-hidden="true">${TAPE_PHASES[tape.kind].map((label, index) => `<span data-phase="${PHASE_KEYS[index]}"${PHASE_KEYS[index] === phase ? ' class="on"' : ''}>${label}</span>`).join('')}</div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}
     <div class="wm-face" aria-live="polite">${face}</div>${phases}
     <div class="wm-deck${playing ? ' playing' : ''}" aria-hidden="true"><span class="wm-reel">${reelIcon}</span><div class="wm-progress"><span style="width:${walkmanProgress()}%"></span></div><span class="wm-reel">${reelIcon}</span></div>
     <div class="wm-controls"><button class="listen-play wm-play" data-action="walkman-toggle" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button></div>
     ${heardHTML()}
-    <p class="caption wm-note">Keeps playing with your phone locked. Listening doesn’t change your vocabulary progress.</p>
-    ${room === 'verbs' ? `<p class="wm-choice wm-tenses">Tenses ${Object.entries(VB_TENSES).map(([tense, label]) => `<button data-action="walkman-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${esc(label)}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
+    <p class="caption wm-note">Keeps playing with your phone locked. ${tape.kind === 'change' ? '✓ or ✗ on a sentence counts for its verb form, like a Verbs card.' : 'Listening doesn’t change your vocabulary progress.'}</p>
+    ${room === 'verbs' && tape.kind === 'verbs' ? `<p class="wm-choice wm-tenses">Tenses ${Object.entries(VB_TENSES).map(([tense, label]) => `<button data-action="walkman-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${esc(label)}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
     ${room === 'words' ? `<p class="wm-choice">Plays ${Object.entries(WALKMAN_CHOICES).map(([choice, label]) => `<button data-action="walkman-choice" data-words="${choice}" aria-pressed="${walkmanChoice === choice}">${label}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
   </section>`;
 }
@@ -599,8 +620,9 @@ function logHeard(position) {
   walkmanHeard = [{ id: word.id, fr: word.fr, en: word.en, fresh: word.fresh, ...(word.sentence ? { sentence: true } : {}), ...(word.verb ? { verb: word.verb } : {}), ...added }, ...walkmanHeard.filter((entry) => entry.id !== word.id)].slice(0, HEARD_LIMIT);
   saveHeard();
   // Hearing a word to the end raises its score a little; a lost report only costs that little. A sentence
-  // leaves the vocabulary alone.
-  if (!word.sentence && !word.verb) api('api/walkman/heard', { method: 'POST', body: JSON.stringify({ wordId: word.id, requestId: requestId() }), keepalive: true }).catch(() => {});
+  // leaves the vocabulary alone; a Change it drill heard waits behind those not heard yet.
+  if (word.change) api('api/change/heard', { method: 'POST', body: JSON.stringify({ id: word.change.id, requestId: requestId() }), keepalive: true }).catch(() => {});
+  else if (!word.sentence && !word.verb) api('api/walkman/heard', { method: 'POST', body: JSON.stringify({ wordId: word.id, requestId: requestId() }), keepalive: true }).catch(() => {});
   return true;
 }
 // A form heard on the verb tape is marked like a Verbs card: saved as an answer, so it can't be taken back.
@@ -725,7 +747,8 @@ function followTape() {
   if (!walkman.tape) return;
   const time = walkmanAudio.currentTime;
   const index = walkmanWordAt(time);
-  const meaning = index >= 0 && time >= walkman.tape.words[index].meaningAt;
+  // On Change it the meaning is the answer, which comes after the pause to say it.
+  const meaning = index >= 0 && time >= (walkman.tape.kind === 'change' ? walkman.tape.words[index].againAt : walkman.tape.words[index].meaningAt);
   let logged = false;
   if (walkman.index >= 0 && index !== walkman.index && walkman.meaning) logged = logHeard(walkman.index);
   if (index >= 0 && time >= walkman.tape.words[index].end) logged = logHeard(index) || logged;
@@ -733,7 +756,7 @@ function followTape() {
     walkman.index = index; walkman.meaning = meaning;
     const word = walkman.tape.words[index];
     if (word && 'mediaSession' in navigator) {
-      navigator.mediaSession.metadata = new MediaMetadata({ title: word.fr, artist: meaning ? word.en : '…', album: 'Echo · Walkman', artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
+      navigator.mediaSession.metadata = new MediaMetadata({ title: word.change ? word.change.base : word.fr, artist: meaning ? (word.change ? word.fr : word.en) : '…', album: 'Echo · Walkman', artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
     }
     if (tapeScreen() && !document.hidden) render();
     return;
@@ -742,6 +765,8 @@ function followTape() {
   const bar = document.querySelector('.wm-progress span');
   if (bar) bar.style.width = `${walkmanProgress()}%`;
   const phase = walkmanPhase();
+  // Change it's face follows each phase: the cue appears, then the answer replaces the sentence.
+  if (walkman.tape.kind === 'change' && phase !== walkman.phase) { walkman.phase = phase; if (tapeScreen() && !document.hidden) { render(); return; } }
   for (const step of document.querySelectorAll('.wm-phase span')) step.classList.toggle('on', step.dataset.phase === phase);
 }
 // Lock-screen skip moves a whole word: forward to the next, back to this word's start or the one before.
@@ -4437,6 +4462,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'walkman-mark') markHeard(button.dataset.word, button.dataset.knew === 'true');
   else if (action === 'walkman-choice') chooseWalkman(button.dataset.words);
   else if (action === 'walkman-tense') chooseWalkmanTense(button.dataset.tense);
+  else if (action === 'walkman-verb-tape') chooseVerbTape(button.dataset.kind);
   else if (action === 'say-start') startSay();
   else if (action === 'say-dontknow') sayGiveUp?.();
   else if (action === 'say-fix') sayCorrect();

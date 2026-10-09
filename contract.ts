@@ -57,8 +57,8 @@ export type EndlessInput = { direction: Direction; deck: string; exclude?: strin
 export type EndlessPick = { card: CardView | null; pool: number };
 export type EndlessMarkInput = { requestId: string; direction: Direction; wordId: string; known: boolean };
 // words: 'scored' draws familiar words by score; 'groups' goes through learning, due and known words in turn;
-// 'sentences' plays Listen/Read sentences instead of words.
-export type WalkmanChoice = 'scored' | 'groups' | 'sentences' | 'verbs';
+// 'sentences' plays Listen/Read sentences instead of words; 'verbs' the verb forms tape, 'change' the Change it tape.
+export type WalkmanChoice = 'scored' | 'groups' | 'sentences' | 'verbs' | 'change';
 // Adding a word the learner tapped in a French text, always in the fr-en direction.
 // added: it was never started, so today admits it as an extra word, leaving the daily allowance untouched.
 // already-practising: it is in the working deck already (a cycle in progress, or finished and due again).
@@ -69,9 +69,11 @@ export type AddWordResult = { status: 'added' | 'already-practising' | 'made-due
 // from recallAt, the English at meaningAt, the French again at againAt, ending at end. fresh: not yet started in
 // Vocabulary when the tape was made. sentence: a whole Listen/Read sentence (id is the sentence's), which hearing
 // leaves the vocabulary untouched. On a verb tape, fr is the prompt (verb · tense · person), en the form, and verb
-// names the form for marks and replays.
-export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; verb?: { verbId: string; tense: string; person: number; audio: string }; start: number; recallAt: number; meaningAt: number; againAt: number; end: number };
-export type WalkmanTape = { id: string; kind: 'words' | 'sentences' | 'verbs'; url: string; seconds: number; words: WalkmanWord[] };
+// names the form for marks and replays. On a Change it tape, fr is the answer and en its English; change holds the
+// sentence, the cue and the changed form, and the times mark the sentence (start), the cue (recallAt), the pause to
+// say it (meaningAt) and the answer (againAt).
+export type WalkmanWord = { id: string; fr: string; en: string; fresh: boolean; sentence?: true; verb?: { verbId: string; tense: string; person: number; audio: string }; change?: { id: number; base: string; cue: string; form: string }; start: number; recallAt: number; meaningAt: number; againAt: number; end: number };
+export type WalkmanTape = { id: string; kind: 'words' | 'sentences' | 'verbs' | 'change'; url: string; seconds: number; words: WalkmanWord[] };
 // A word family: deck words built from one root, simplest first; each later member's note says how it is built.
 export type WordFamily = { members: { id: string; note?: string }[] };
 // A way French builds one word from another, with [from, to] example pairs taken from the word families.
@@ -92,6 +94,7 @@ export type WordPattern = { title: string; explanation: string; tip?: string; ex
 // GET audio/:id.mp3 -> French Chatterbox recording, or actionable JSON error
 // POST api/walkman {words?:WalkmanChoice} -> WalkmanTape: a new tape of the words (or sentences) worth hearing now ('scored' by default)
 // POST api/walkman/heard HeardInput -> {ok:true}: a word heard to the end, which raises its score a little
+// POST api/change/heard {requestId, id} -> {ok:true}: a Change it drill heard to the end, once per request id
 // POST api/endless/next EndlessInput -> EndlessPick: the next word of an Endless stream, likelier the lower its score
 // POST api/endless/mark EndlessMarkInput -> {ok:true}: knew it +1 to the score, didn't -1; a retried request counts once
 // POST api/endless/undo {requestId} -> {ok:true}: takes an Endless mark back
