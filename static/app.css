@@ -537,6 +537,13 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .signed-in{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px;padding:10px 12px;border:1px solid var(--frame);border-radius:12px}
 /* ── Visual polish: room families, the card, the tape deck, Verbs, reading. Later rules here refine the ones above. ── */
 .theme-switch{max-width:240px;margin:-8px 0 22px}
+/* The language switch sits under the theme, a little wider for three names; a language starting or down is dimmed
+   and named under it. */
+.language-switch{max-width:360px;margin:-12px 0 8px}
+.language-switch button[data-state=starting],.language-switch button[data-state=down]{opacity:.6}
+.language-state{margin:0 4px 6px;color:var(--peach);font-size:13px}.language-state:empty{display:none}
+.language-note{margin:0 4px 22px;color:var(--dim);font-size:13px}
+.brand .lang-tag{padding:0 7px;border:1px solid var(--frame);border-radius:6px;font-size:12px;font-weight:600;line-height:20px;letter-spacing:.2px;color:var(--muted)}
 /* Rooms: one icon box per room, tinted by its family; colour helps recognition, the label still names the room. */
 .tile,.study-row{--fam:var(--violet);--fam-soft:var(--violet-soft)}
 .fam-green{--fam:var(--green);--fam-soft:var(--green-soft)}.fam-peach{--fam:var(--peach);--fam-soft:var(--peach-soft)}.fam-plain{--fam:var(--muted);--fam-soft:var(--card-hover)}

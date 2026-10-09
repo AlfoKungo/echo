@@ -1,7 +1,8 @@
 import { afterEach, expect, test } from 'bun:test';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { languages } from '../lib/language';
 import { createWordAudio } from '../lib/word-audio';
 import { createAttempts } from '../lib/recording-attempts';
 
@@ -19,7 +20,7 @@ test('a word recorded in French but not yet in English is recorded again on resu
   let finish = () => {};
   const done = new Promise<void>((resolve) => { finish = resolve; });
   const audio = createWordAudio({
-    root, extraWordsPath: join(root, 'added.json'),
+    language: languages(root).fr, walkman: true, extraWordsPath: join(root, 'added.json'),
     addedWords: () => [{ id: 'song-a-001', fr: 'le ciel', en: 'sky', category: 'song-a' }, { id: 'song-a-002', fr: 'la mer', en: 'sea', category: 'song-a' }],
     run: async (args) => {
       runs.push(args);
@@ -43,7 +44,7 @@ test('a word no take passes for is retried on each start until it has failed thr
     let finish = () => {};
     const done = new Promise<void>((resolve) => { finish = resolve; });
     const audio = createWordAudio({
-      root, extraWordsPath: join(root, 'added.json'),
+      language: languages(root).fr, walkman: true, extraWordsPath: join(root, 'added.json'),
       addedWords: () => [{ id: 'song-a-003', fr: 'le vent', en: 'wind', category: 'song-a' }],
       run: async (args) => { if (args[0] === 'scripts/render-audio.py') runs += 1; if (args[0] === 'scripts/build-walkman-clips.py') setTimeout(finish, 0); return { ok: false, error: '' }; },
       attempts: createAttempts(join(root, 'attempts.json')),
@@ -57,4 +58,26 @@ test('a word no take passes for is retried on each start until it has failed thr
   writeFileSync(join(root, 'attempts.json'), '{}');
   await start();
   expect(runs).toBe(4);
+});
+
+test('another language records with its own recorder into its own folder, its text under its code, and no Walkman copies', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'echo-word-audio-'));
+  directories.push(root);
+  const swedish = languages(root).sv;
+  mkdirSync(swedish.audio, { recursive: true });
+  const runs: string[][] = [];
+  let finish = () => {};
+  const done = new Promise<void>((resolve) => { finish = resolve; });
+  const audio = createWordAudio({
+    language: swedish, walkman: false, extraWordsPath: join(root, 'added.json'),
+    addedWords: () => [{ id: 'song-a-004', fr: 'havet', en: 'the sea', category: 'song-a' }],
+    run: async (args) => { runs.push(args); writeFileSync(join(swedish.audio, 'song-a-004.mp3'), 'x'); finish(); return { ok: true, error: '' }; },
+    attempts: createAttempts(join(root, 'attempts.json')),
+  });
+  audio.enqueue(['song-a-004']);
+  await done;
+  expect(runs).toEqual([['scripts/render-audio-sv.py', '--extra-words', join(root, 'added.json'), '--ids', 'song-a-004']]);
+  expect(JSON.parse(readFileSync(join(root, 'added.json'), 'utf8'))[0].sv).toBe('havet');
+  expect(audio.ready('song-a-004')).toBe(true);
+  expect(existsSync(join(root, 'audio', 'song-a-004.mp3'))).toBe(false);
 });

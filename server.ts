@@ -2,8 +2,8 @@ import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'no
 import { dirname, join } from 'node:path';
 import { createStore, StoreError } from './lib/store';
 import { createGrammarStore } from './lib/grammar-store';
-import { loadCourse } from './lib/grammar-content';
-import { loadBank } from './lib/comprehension-content';
+import { loadCourse, type Course } from './lib/grammar-content';
+import { loadBank, type Bank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
 import { createGrammarEar } from './lib/grammar-ear';
 import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, layTape, planSentences, planTape, SENTENCE_TIMING, tapeView, VERB_TIMING, type Tape, type TapeItem } from './lib/walkman';
@@ -31,6 +31,8 @@ import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
 import { createNews } from './lib/news';
 import { createChangeIt, layChangeTape, type ChangeTapeItem } from './lib/change-it';
+import { currentLanguage, languages, languagesData, ROOMS, type Room } from './lib/language';
+import { createLanguageHost } from './lib/languages';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
 for (const level of ['log', 'error', 'warn'] as const) {
   const write = console[level].bind(console);
@@ -38,8 +40,24 @@ for (const level of ['log', 'error', 'warn'] as const) {
 }
 
 const root = import.meta.dir;
-const core = await Bun.file(join(root, 'content/core.json')).json() as Word[];
-const world = await Bun.file(join(root, 'content/world.json')).json() as Word[];
+const language = currentLanguage(root);
+// Rooms this Echo leaves out: those its language has no content for yet, and ECHO_ROOMS_OFF (the friends' pilot:
+// story,radio,songs,…, which write and record for one learner). The page carries the list, and the app hides those rooms.
+const roomsOff = [...new Set([
+  ...ROOMS.filter((room) => !language.rooms.includes(room)),
+  ...(process.env.ECHO_ROOMS_OFF ?? '').split(',').map((room) => room.trim()).filter((room) => /^[a-z]+$/.test(room)),
+])];
+const has = (room: Room) => !roomsOff.includes(room);
+// A deck file in its language's content folder. French always has its deck; another language's Words starts empty
+// until its deck is written, and its files carry the learnt text under the language's code (lib/language.ts).
+async function deckFile(name: string): Promise<Word[]> {
+  const file = Bun.file(join(language.content, `${name}.json`));
+  if (language.code !== 'fr' && !await file.exists()) return [];
+  const entries = await file.json() as (Word & Record<string, unknown>)[];
+  return language.textKey === 'fr' ? entries : entries.map((word) => ({ ...word, fr: String(word[language.textKey] ?? '') }));
+}
+const core = await deckFile('core');
+const world = await deckFile('world');
 const groups = Map.groupBy([...core, ...world], (word) => word.category);
 // Interleave topics so a mixed deck begins with useful words from every topic.
 const words: Word[] = [];
@@ -47,12 +65,15 @@ for (let i = 0; i < Math.max(...[...groups.values()].map(group => group.length))
   for (const group of groups.values()) if (group[i]) words.push(group[i]);
 }
 if (new Set(words.map(word => word.id)).size !== words.length) throw new Error('Duplicate vocabulary IDs');
-const dbPath = process.env.ECHO_DB ?? join(root, 'data/echo.db');
-// Word families bring a new word's relatives in sooner, once one of them is started.
-const families = loadFamilies(root, words);
-const patterns = loadPatterns(root, families);
-// A word added from a song joins practice once its French recording exists.
-const store = createStore(words, { dbPath, ready: (id) => existsSync(join(root, 'audio', `${id}.mp3`)), families: families.map((family) => family.members.map((member) => member.id)) });
+// Another language's database never defaults to French's: it lives in that language's own data folder.
+const dbPath = process.env.ECHO_DB ?? (language.code === 'fr' ? join(root, 'data/echo.db') : join(languagesData(), language.code, 'echo.db'));
+mkdirSync(dirname(dbPath), { recursive: true });
+// Word families bring a new word's relatives in sooner, once one of them is started. They are written for the French
+// deck (content/families.json, content/word-building.json), so another language has none yet.
+const families = language.code === 'fr' ? loadFamilies(root, words) : [];
+const patterns = language.code === 'fr' ? loadPatterns(root, families) : [];
+// A word added from a song joins practice once its recording exists.
+const store = createStore(words, { dbPath, ready: (id) => existsSync(join(language.audio, `${id}.mp3`)), families: families.map((family) => family.members.map((member) => member.id)) });
 // Song words and new texts are recorded with the deck's own scripts, in its TTS environment (see voices/provenance.json).
 const python = process.env.ECHO_PYTHON ?? JSON.parse(readFileSync(join(root, 'voices/provenance.json'), 'utf8')).python as string;
 // The scripts print one JSON line per clip no take passed for ({"failed": id, "attempts": [...]}); the log names
@@ -83,11 +104,14 @@ function recordRadio(planPath: string): Promise<{ ok: boolean; error: string }> 
 const turnedAway = (run: { ok: boolean; error: string }) => !run.ok && run.error.includes('Another renderer owns audio/radio');
 const attempts = createAttempts(join(dirname(dbPath), 'recording-attempts.json'));
 const wordAudio = createWordAudio({
-  root, extraWordsPath: join(dirname(dbPath), 'added-words.json'),
+  language, walkman: has('walkman'), extraWordsPath: join(dirname(dbPath), 'added-words.json'),
   addedWords: () => store.addedIds().map((id) => store.word(id)!),
   run: (args) => runPython(args), attempts,
 });
-const ask = createClaude({ command: process.env.ECHO_CLAUDE ?? join(process.env.HOME ?? '', '.local/bin/claude'), model: process.env.ECHO_CLAUDE_MODEL });
+// Claude writes French: a language without Claude features asks it nothing, whatever ECHO_CLAUDE says, and its
+// background jobs that write with Claude never run. Each job also has its own ECHO_<JOB>=off switch.
+const ask = createClaude({ command: language.claude ? process.env.ECHO_CLAUDE ?? join(process.env.HOME ?? '', '.local/bin/claude') : '/usr/bin/false', model: process.env.ECHO_CLAUDE_MODEL });
+const claudeJob = (flag: string) => language.claude && process.env[flag] !== 'off';
 const songs = createSongs({
   dbPath, vocabulary: store,
   read: createClaudeReader(ask), ask,
@@ -98,14 +122,16 @@ const songs = createSongs({
   },
   onAdded: (ids) => wordAudio.enqueue(ids),
 });
-void songs.resume();
+if (has('songs')) void songs.resume();
 wordAudio.resume();
-const course = await loadCourse(join(root, 'content/grammar'));
-const grammar = createGrammarStore(course, { dbPath, audioDir: join(root, 'audio/grammar') });
+// A room the language does not have loads none of French's content for it.
+const course: Course = has('grammar') ? await loadCourse(join(language.content, 'grammar')) : { units: [], topics: [] };
+const grammar = createGrammarStore(course, { dbPath, audioDir: join(language.audio, 'grammar') });
 const grammarAudio = new Set(course.topics.flatMap(topic => topic.exercises.map(exercise => exercise.id)));
 // Lanes Echo writes itself (lib/text-topup.ts) live next to the database, out of the checked-in content.
 const generatedLanes = join(dirname(dbPath), 'comprehension');
-let bank = await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]);
+const comprehensionOn = has('listen') || has('read');
+let bank: Bank = comprehensionOn ? await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [generatedLanes]) : { sentences: [], passages: [] };
 // Grammar by ear (made below, once the rooms are known) shows its questions between Listen's.
 const between = (stream: StreamId) => (stream === 'listen' && grammarEar ? { ear: grammarEar.offer() } : {});
 let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between });
@@ -122,13 +148,13 @@ const texts = createTextTopup({
     setTimeout(() => previous.close(), 60_000);
   },
 });
-const textsStarted = process.env.ECHO_TEXT_TOPUP !== 'off' ? texts.resume() : Promise.resolve();
-const textChecks = setInterval(() => { if (process.env.ECHO_TEXT_TOPUP !== 'off') void texts.check(); }, 10 * 60_000);
+const textsStarted = claudeJob('ECHO_TEXT_TOPUP') && comprehensionOn ? texts.resume() : Promise.resolve();
+const textChecks = setInterval(() => { if (claudeJob('ECHO_TEXT_TOPUP') && comprehensionOn) void texts.check(); }, 10 * 60_000);
 // The Verbs room: a conjugation table for every vocabulary verb, written by Claude in the background (at start and
 // every ten minutes; ECHO_VERBS=off switches it off), and the record of every form practised.
 const verbTables = createVerbTables({ file: join(dirname(dbPath), 'verbs.json'), words: () => store.words(), ask });
-const verbChecks = setInterval(() => { if (process.env.ECHO_VERBS !== 'off') void verbTables.check(); }, 10 * 60_000);
-if (process.env.ECHO_VERBS !== 'off') void verbTables.check();
+const verbChecks = setInterval(() => { if (claudeJob('ECHO_VERBS') && has('verbs')) void verbTables.check(); }, 10 * 60_000);
+if (claudeJob('ECHO_VERBS') && has('verbs')) void verbTables.check();
 // A French phrase's recording (the verb tape's and By ear's), when it has been made.
 const phraseAudio = (said: string) => { const id = frenchClip(said).id; return existsSync(join(root, 'audio/radio', `${id}.mp3`)) ? `audio/radio/${id}.mp3` : null; };
 // The grammar topics that teach each tense, shown on its page in the Verbs room.
@@ -143,12 +169,12 @@ const verbs = createVerbDrills({ dbPath, verbs: () => verbTables.verbs(), vocabu
 const ruleCards = createRuleCards({ dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(), audio: phraseAudio });
 // Memory hooks for stubborn words and verb forms: at start and every ten minutes (ECHO_WORD_HOOKS=off switches them off).
 const hooks = createWordHooks({ ask, store, verbs });
-const hookChecks = setInterval(() => { if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check(); }, 10 * 60_000);
-if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check();
+const hookChecks = setInterval(() => { if (claudeJob('ECHO_WORD_HOOKS')) void hooks.check(); }, 10 * 60_000);
+if (claudeJob('ECHO_WORD_HOOKS')) void hooks.check();
 // The Sounds drill: both sides of every pair, recorded after the texts (one voice model at a time).
-const soundsContent = await loadSounds(join(root, 'content/sounds.json'));
+const soundsContent = await loadSounds(join(language.content, 'sounds.json'));
 const soundClips = new Set(soundsContent.contrasts.flatMap((contrast) => contrast.items.flatMap((item) => [sideClip(item.id, 'a'), sideClip(item.id, 'b')])));
-const soundExists = (id: string) => existsSync(join(root, 'audio/sounds', `${id}.mp3`));
+const soundExists = (id: string) => existsSync(join(language.audio, 'sounds', `${id}.mp3`));
 const sounds = createSounds(soundsContent, { dbPath, clipExists: soundExists });
 void textsStarted.then(async () => {
   if (process.env.ECHO_WORD_AUDIO === 'off') return;
@@ -184,8 +210,8 @@ const story = createStory({
     if (process.env.ECHO_WORD_AUDIO !== 'off') attempts.note(tried, (id) => !storyExists(id));
   },
 });
-void textsStarted.then(() => { if (process.env.ECHO_STORY !== 'off') return story.check(); });
-const storyChecks = setInterval(() => { if (process.env.ECHO_STORY !== 'off') void story.check(); }, 10 * 60_000);
+void textsStarted.then(() => { if (claudeJob('ECHO_STORY') && has('story')) return story.check(); });
+const storyChecks = setInterval(() => { if (claudeJob('ECHO_STORY') && has('story')) void story.check(); }, 10 * 60_000);
 // Write it: English sentences to write in French from the words the learner has started and the grammar topics they
 // are working on, checked by Claude (lib/write-it.ts).
 const writeIt = createWriteIt({
@@ -214,7 +240,8 @@ const radio = createRadio({
 // made in the background after each Radio check, one renderer at a time, each tried a few times.
 let sentencesRecording: Promise<void> | null = null;
 function recordSentences(): Promise<void> {
-  if (process.env.ECHO_WORD_AUDIO === 'off') return Promise.resolve();
+  // render-radio.py speaks French: another language's Echo records none of these clips.
+  if (process.env.ECHO_WORD_AUDIO === 'off' || language.code !== 'fr') return Promise.resolve();
   sentencesRecording ??= (async () => {
     const storyLines = story.episodes().flatMap((episode) => episode.lines.flatMap((line, index) => {
       if (!storyExists(`${episode.id}-${index + 1}`)) return [];
@@ -238,7 +265,7 @@ function recordSentences(): Promise<void> {
   })().catch((error: Error) => console.error(`sentence tape: ${error.message}`)).finally(() => { sentencesRecording = null; });
   return sentencesRecording;
 }
-const radioThenSentences = async () => { if (process.env.ECHO_RADIO !== 'off') await radio.check(); await recordSentences(); };
+const radioThenSentences = async () => { if (claudeJob('ECHO_RADIO') && has('radio')) await radio.check(); await recordSentences(); };
 void textsStarted.then(radioThenSentences);
 // The recorder loads voice models of several GB; while the learner is using Echo it waits for a quiet spell, so
 // the Mac never has to make room for them in the middle of a practice.
@@ -248,9 +275,16 @@ const radioChecks = setInterval(() => { if (Date.now() - lastRequestAt >= QUIET_
 const port = Number(process.env.ECHO_PORT ?? 7792);
 const prefix = '/echo';
 const publicOrigin = process.env.ECHO_ORIGIN ?? 'https://gals-macbook-pro.tailb1ce54.ts.net';
-// Rooms this Echo leaves out (the friends' pilot: story,radio,songs, which write and record for one learner). The page
-// carries the list, and the app hides those rooms.
-const roomsOff = (process.env.ECHO_ROOMS_OFF ?? '').split(',').map((room) => room.trim()).filter((room) => /^[a-z]+$/.test(room));
+// The language switch: the owner's French Echo hosts the other languages under /echo/<code>/ and every language's page
+// carries the switch; a language process hosts nothing. A friend's Echo (ECHO_LEARNER set, ECHO_ROOMS_OFF: languages)
+// has neither: the language processes read and write the owner's own data folder. The learner check holds even under a
+// pilot router started before the switch existed.
+const languageSwitch = !roomsOff.includes('languages') && process.env.ECHO_LEARNER === undefined;
+const allLanguages = languages(root);
+const languageHost = languageSwitch && language.code === 'fr' ? createLanguageHost({
+  french: language, others: [allLanguages.pt, allLanguages.sv], data: languagesData(), origin: publicOrigin,
+}) : null;
+languageHost?.start();
 // News: RFI's Journal en français facile, fetched, timed and noted on this Mac (lib/news.ts), at start and every 30
 // minutes; ECHO_NEWS=off stops the checks, and an Echo without the room (the friends') has none of it.
 const news = roomsOff.includes('news') ? null : createNews({ dir: process.env.ECHO_NEWS_DIR ?? join(dirname(dbPath), 'news'), audioDir: join(root, 'audio/news'), ask });
@@ -342,8 +376,8 @@ const whisperSweep = setInterval(() => whisper.sweep(), 60_000);
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
 // Walkman tapes live in memory, the latest few only; clips are re-read whenever they are rebuilt.
-const walkmanClips = createClips(join(root, 'audio'));
-const walkmanManifest = join(root, 'audio/walkman/manifest.json');
+const walkmanClips = createClips(language.audio);
+const walkmanManifest = join(language.audio, 'walkman/manifest.json');
 let walkmanStamp = 0;
 const tapes = new Map<string, Tape>();
 function newTape(choice: WalkmanChoice, tenses: Tense[] = ['pres'], practising?: unknown): Tape {
@@ -496,7 +530,8 @@ async function route(req: Request): Promise<Response> {
   let path = url.pathname;
   if (path === prefix) return Response.redirect(`${prefix}/`, 308);
   if (path.startsWith(`${prefix}/`)) path = path.slice(prefix.length);
-  if (path.startsWith('/api/')) lastRequestAt = Date.now();
+  // Practice in any language keeps the recorder waiting (/echo/pt/api/… too).
+  if (path.includes('/api/')) lastRequestAt = Date.now();
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     const origin = req.headers.get('origin');
     if ((origin && !allowedOrigins.has(origin)) || req.headers.get('sec-fetch-site') === 'cross-site') {
@@ -504,6 +539,12 @@ async function route(req: Request): Promise<Response> {
     }
   }
   try {
+    if (languageHost) {
+      const passed = await languageHost.handle(req, path);
+      if (passed) return passed;
+      // Which languages are running, for the switch (a language's page asks the French Echo, at ../api/languages).
+      if (path === '/api/languages' && req.method === 'GET') return json({ languages: languageHost.status() });
+    }
     if (path === '/healthz' && req.method === 'GET') return json({ ok: true, app: 'Echo', words: words.length });
     // The learning rooms are gone; their bookmarks open the app home. The proxy may strip /echo, so the
     // redirect is relative: it lands on the home page under whatever prefix the browser used.
@@ -540,7 +581,7 @@ async function route(req: Request): Promise<Response> {
     }
     const statisticsDay = path.match(/^\/api\/statistics\/day\/(\d{4}-\d{2}-\d{2})$/);
     if (statisticsDay && req.method === 'GET') return json(store.statisticsDay(statisticsDay[1]!));
-    if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 3, grammar: grammar.exportData(), comprehension: comprehension.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-progress-${new Date().toISOString().slice(0, 10)}.json"` } });
+    if (path === '/api/export' && req.method === 'GET') return new Response(JSON.stringify(Object.assign({}, store.exportData(), { version: 3, grammar: grammar.exportData(), comprehension: comprehension.exportData() }), null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Content-Disposition': `attachment; filename="echo-${language.code === 'fr' ? '' : `${language.code}-`}progress-${new Date().toISOString().slice(0, 10)}.json"` } });
     if (path === '/api/grammar' && req.method === 'GET') return json({ units: grammar.catalog() });
     if (path === '/api/grammar/state' && req.method === 'GET') return json(grammar.state(url.searchParams.get('scope') ?? ''));
     if (path === '/api/grammar/session' && req.method === 'POST') {
@@ -618,7 +659,7 @@ async function route(req: Request): Promise<Response> {
       if (typeof data.undoId !== 'string') throw new StoreError('There is no answer to undo.', 400);
       return json(store.undo(direction(data.direction), deck(data.deck), data.undoId));
     }
-    if (path === '/api/walkman' && req.method === 'POST') {
+    if (path === '/api/walkman' && req.method === 'POST' && has('walkman')) {
       const data = await body(req);
       if (data.words !== undefined && !['scored', 'groups', 'sentences', 'verbs', ...(changeIt ? ['change'] : [])].includes(data.words as string)) throw new StoreError('Choose what the Walkman plays: words by score, words by groups, sentences, or verbs.', 400);
       const tenses = Array.isArray(data.tenses) ? TENSES.filter((tense) => (data.tenses as unknown[]).includes(tense)) : ['pres' as Tense];
@@ -747,7 +788,7 @@ async function route(req: Request): Promise<Response> {
     const soundClip = path.match(/^\/audio\/sounds\/([a-z0-9-]+)\.mp3$/);
     if (soundClip && (req.method === 'GET' || req.method === 'HEAD')) {
       if (!soundClips.has(soundClip[1]!)) return json({ error: 'This sound is not part of a drill.' }, 404);
-      const file = Bun.file(join(root, 'audio/sounds', `${soundClip[1]}.mp3`));
+      const file = Bun.file(join(language.audio, 'sounds', `${soundClip[1]}.mp3`));
       if (!await file.exists()) return json({ error: 'This sound has not been recorded yet.' }, 404);
       return audioFile(req, file);
     }
@@ -793,7 +834,7 @@ async function route(req: Request): Promise<Response> {
     const englishAnswer = path.match(/^\/audio\/en\/([a-z0-9-]+)\.mp3$/);
     if (englishAnswer && (req.method === 'GET' || req.method === 'HEAD')) {
       if (!store.word(englishAnswer[1]!)) return json({ error: 'This word is not in the vocabulary deck.' }, 404);
-      const file = Bun.file(join(root, 'audio/en', `${englishAnswer[1]}.mp3`));
+      const file = Bun.file(join(language.audio, 'en', `${englishAnswer[1]}.mp3`));
       if (!await file.exists()) return json({ error: 'This English recording has not been made yet.' }, 404);
       return audioFile(req, file);
     }
@@ -802,21 +843,25 @@ async function route(req: Request): Promise<Response> {
       const word = path.match(/^\/audio\/([a-z0-9-]+)\.mp3$/);
       if (spoken && !grammarAudio.has(spoken[1])) return json({ error: 'This sentence is not part of a grammar exercise.' }, 404);
       if (!spoken && (!word || !store.word(word[1]))) return json({ error: 'This word is not in the vocabulary deck.' }, 404);
-      const file = Bun.file(spoken ? join(root, 'audio/grammar', `${spoken[1]}.mp3`) : join(root, 'audio', `${word![1]}.mp3`));
+      const file = Bun.file(spoken ? join(language.audio, 'grammar', `${spoken[1]}.mp3`) : join(language.audio, `${word![1]}.mp3`));
       if (!await file.exists()) {
         // Grammar sentences are rendered clip by clip: a missing one is simply not offered yet.
         return spoken
           ? json({ error: 'This spoken sentence has not been recorded yet.' }, 404)
-          : json({ error: 'This French recording is not ready. Please try again shortly.' }, 503);
+          : json({ error: `This ${language.english} recording is not ready. Please try again shortly.` }, 503);
       }
       return audioFile(req, file);
     }
     const name = path === '/' ? 'index.html' : path.slice(1);
     if (Object.hasOwn(staticFiles, name) && (req.method === 'GET' || req.method === 'HEAD')) {
       const file = Bun.file(join(root, 'static', name));
-      if (name === 'index.html' && (roomsOff.length || learnerName) && await file.exists()) {
-        const marks = `${roomsOff.length ? ` data-rooms-off="${roomsOff.join(',')}"` : ''}${learnerName ? ` data-learner="${attribute(learnerName)}"` : ''}`;
-        const page = (await file.text()).replace('<body>', `<body${marks}>`);
+      // The page carries the rooms left out, the signed-in friend's name, and the language switch: this page's
+      // language, its English name and every language's own name (static/app.js).
+      const switchMarks = languageSwitch ? ` data-lang="${language.code}" data-english="${language.english}" data-languages="${attribute(Object.values(allLanguages).map((entry) => `${entry.code}:${entry.own}`).join(','))}"` : '';
+      if (name === 'index.html' && (roomsOff.length || learnerName || switchMarks) && await file.exists()) {
+        const marks = `${roomsOff.length ? ` data-rooms-off="${roomsOff.join(',')}"` : ''}${learnerName ? ` data-learner="${attribute(learnerName)}"` : ''}${switchMarks}`;
+        let page = (await file.text()).replace('<body>', `<body${marks}>`);
+        if (language.code !== 'fr') page = page.replace('French practice', `${language.english} practice`).replace('practise French', `practise ${language.english}`);
         return new Response(req.method === 'HEAD' ? null : page, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' } });
       }
       if (await file.exists()) return staticFile(req, file);
@@ -830,9 +875,12 @@ async function route(req: Request): Promise<Response> {
 }
 
 function backup() {
-  if (process.env.ECHO_DB) return;
+  // The French Echo snapshots every language's database too (lib/languages.ts); a language process never writes to
+  // French's backup/ or its daily copy.
+  if (process.env.ECHO_DB || language.code !== 'fr') return;
   snapshot(dbPath, join(root, 'backup'));
   if (offsite(dbPath, join(OFFSITE_DIR, 'echo.db'))) console.log(`Echo: today's copy is in iCloud Drive (${OFFSITE_DIR})`);
+  languageHost?.backups();
 }
 try { backup(); } catch (error) { console.error('Echo backup failed', error); }
 const backups = setInterval(() => { try { backup(); } catch (error) { console.error('Echo backup failed', error); } }, 60 * 60 * 1000);
@@ -850,6 +898,7 @@ async function stop() {
   clearInterval(radioChecks);
   clearInterval(whisperSweep);
   whisper.stop();
+  languageHost?.stop();
   await server.stop(true);
   comprehension.close();
   story.close();
@@ -866,4 +915,4 @@ async function stop() {
 }
 process.on('SIGTERM', stop);
 process.on('SIGINT', stop);
-console.log(`Echo ready at http://127.0.0.1:${port}/echo/ (${words.length} words, ${bank.sentences.length} sentences)`);
+console.log(`Echo${language.code === 'fr' ? '' : ` (${language.english})`} ready at http://127.0.0.1:${port}/echo/ (${words.length} words, ${bank.sentences.length} sentences)`);

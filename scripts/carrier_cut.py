@@ -37,9 +37,10 @@ def normalize(text):
     return ''.join(character for character in text if character.isalnum())
 
 
-def transcribe_tokens(path, keep=False):
-    """Whisper's text and its tokens with DTW timings (t_dtw, in centiseconds) for a 16-bit WAV file."""
-    subprocess.run(['/opt/homebrew/bin/whisper-cli', '-m', str(WHISPER_MODEL), '-l', 'fr', '--dtw', 'large.v3.turbo', '--no-flash-attn', '-ojf', '-np', str(path)],
+def transcribe_tokens(path, keep=False, language='fr'):
+    """Whisper's text and its tokens with DTW timings (t_dtw, in centiseconds) for a 16-bit WAV file, heard as
+    `language` (French unless render-audio.py records another)."""
+    subprocess.run(['/opt/homebrew/bin/whisper-cli', '-m', str(WHISPER_MODEL), '-l', language, '--dtw', 'large.v3.turbo', '--no-flash-attn', '-ojf', '-np', str(path)],
                    stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, check=True)
     result_path = Path(str(path) + '.json')
     # whisper.cpp can split one accented letter across two tokens, leaving bytes that are not UTF-8 on their own; such

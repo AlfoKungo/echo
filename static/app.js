@@ -16,8 +16,19 @@ const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&':
 // French sets a space before ? ! : ; and inside « »; a no-break space keeps the mark on its word's line.
 const frEsc = (value) => esc(String(value ?? '').replace(/ ([?!:;»])/g, '\u00a0$1').replace(/« /g, '«\u00a0'));
 const formatCount = new Intl.NumberFormat('en').format;
-const readPreference = (key, fallback) => { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } };
-const savePreference = (key, value) => { try { localStorage.setItem(key, value); } catch { /* Progress is server-owned; local preferences are optional. */ } };
+// The language switch (lib/language.ts): this page's language and every language's own name, from the page. Each
+// language's Echo is its own app on this one origin, so everything it keeps on this device is under its own keys;
+// only the theme and the last language opened belong to the device. French keeps the keys it always had.
+const language = document.body.dataset.lang || 'fr';
+const languageNames = Object.fromEntries((document.body.dataset.languages || '').split(',').filter(Boolean).map((entry) => entry.split(':')));
+const PER_DEVICE = ['echo.theme', 'echo.language'];
+const localKey = (key) => language === 'fr' || PER_DEVICE.includes(key) ? key : key.replace(/^echo\./, `echo.${language}.`);
+// French is at the root of Echo, every other language one folder down (/echo/pt/).
+const echoRoot = language === 'fr' ? './' : '../';
+const readPreference = (key, fallback) => { try { return localStorage.getItem(localKey(key)) || fallback; } catch { return fallback; } };
+const savePreference = (key, value) => { try { localStorage.setItem(localKey(key), value); } catch { /* Progress is server-owned; local preferences are optional. */ } };
+// A French start on its way to another language (index.html) leaves the last language as it is.
+if (Object.keys(languageNames).length && !document.documentElement.dataset.leaving) savePreference('echo.language', language);
 // Theme: Dusk (the default) or Paper, remembered on this device; index.html applies it before the first paint.
 const THEME_COLOURS = { dusk: '#0e0d16', paper: '#f6f2eb' };
 function applyTheme(theme) {
@@ -154,7 +165,7 @@ let walkmanGeneration = 0;
 // Words you heard, newest first, one entry per word, kept on this device across tapes. added records the
 // answer to "Add to my words" so the row keeps saying it, and mark is the learner's own "knew it or not"
 // ({id, knew}) for that listen. The list opens only when asked, each visit.
-const HEARD_KEY = 'echo.walkman-heard';
+const HEARD_KEY = localKey('echo.walkman-heard');
 const HEARD_LIMIT = 50;
 let walkmanHeard = (() => {
   try { const list = JSON.parse(localStorage.getItem(HEARD_KEY) || '[]'); return Array.isArray(list) ? list.slice(0, HEARD_LIMIT) : []; } catch { return []; }
@@ -186,7 +197,7 @@ function chooseVerbTape(kind) {
   loadTape(!walkmanAudio.paused);
 }
 // Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
-const WORDS_TABS = { cards: 'Cards', endless: 'Endless', walkman: 'Walkman', ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
+const WORDS_TABS = { cards: 'Cards', endless: 'Endless', ...(roomsOff.has('walkman') ? {} : { walkman: 'Walkman' }), ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
 const LISTEN_TABS = { listen: 'Questions', sounds: 'Sounds', 'listen-tape': 'Tape', ...(roomsOff.has('news') ? {} : { news: 'News' }) };
 // A device last on the old Say it tab opens on Endless, with Say on.
 let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved === 'say' ? 'endless' : saved in WORDS_TABS ? saved : 'cards'; })();
@@ -239,7 +250,9 @@ function readLevels() {
 
 function announce(message) { document.querySelector('#announcer').textContent = message; }
 function locked() { return busy || !!retryAction?.body || !!retryAction?.run; }
-function directionLabel() { return direction === 'fr-en' ? 'French → English' : 'English → French'; }
+// The language being learnt, in English (the page's data-english; French in an Echo without the switch).
+const languageEnglish = document.body.dataset.english || 'French';
+function directionLabel() { return direction === 'fr-en' ? `${languageEnglish} → English` : `English → ${languageEnglish}`; }
 function categoryTitle(category) { return snapshot?.decks.find((entry) => entry.id === category)?.title || category.replace(/[-_]/g, ' ').replace(/^./, (letter) => letter.toUpperCase()); }
 function totalWords() { return snapshot?.decks.find((entry) => entry.id === 'all')?.count ?? 0; }
 function dateLabel(value) { const date = new Date(value); return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }).format(date); }
@@ -401,7 +414,7 @@ function noticeHTML() {
 function optionsHTML(selected) { return (snapshot?.decks || []).map((entry) => `<option value="${esc(entry.id)}" ${entry.id === selected ? 'selected' : ''}>${esc(entry.title)} · ${entry.count}</option>`).join(''); }
 // Nouns are coloured by gender (lib/store.ts genderOf): a class on the French, shown when the setting is on.
 let genders = {};               // word id -> gender, for tappable words linked to a noun (api/genders)
-let genderColours = localStorage.getItem('echo.genders') !== 'off';
+let genderColours = localStorage.getItem(localKey('echo.genders')) !== 'off';
 document.body.classList.toggle('genders', genderColours);
 const genderClass = (gender) => gender === 'masculine' ? ' g-m' : gender === 'feminine' ? ' g-f' : '';
 fetch('api/genders').then((response) => response.ok ? response.json() : {}).then((map) => { genders = map; render(); }).catch(() => {});
@@ -451,6 +464,28 @@ if (roomsOff.size) {
 }
 // In the friends' Echo: who is signed in, with a way out, at the top of How it works.
 if (document.body.dataset.learner) document.querySelector('#about-dialog .dialog-copy, .dialog-copy')?.insertAdjacentHTML('afterbegin', `<form class="signed-in" method="post" action="/auth/signout"><span>Signed in as <b>${esc(document.body.dataset.learner)}</b></span><button class="quiet">Sign out</button></form>`);
+// The language switch, under the theme in How it works. Each language is its own Echo with its own progress, and this
+// phone opens the one chosen last (index.html sends a French start on to it). A language still starting or down says
+// so under the switch; choosing it opens a page that says the same and offers the way back.
+const languageSwitch = Object.keys(languageNames).length ? document.querySelector('.theme-switch') : null;
+languageSwitch?.insertAdjacentHTML('afterend', `<div class="segmented language-switch" role="group" aria-label="Language">${Object.entries(languageNames).map(([code, name]) => `<button data-language-choice="${esc(code)}" lang="${esc(code)}" aria-pressed="${code === language}">${esc(name)}</button>`).join('')}</div><p class="language-state" role="status"></p><p class="language-note">Each language keeps its own progress, and this phone opens the one you used last.</p>`);
+if (language !== 'fr' && languageNames[language]) homeButton.insertAdjacentHTML('beforeend', `<span class="lang-tag" lang="${esc(language)}">${esc(languageNames[language])}</span>`);
+async function refreshLanguages() {
+  const state = document.querySelector('.language-state');
+  if (!state) return;
+  try {
+    const response = await fetch(`${echoRoot}api/languages`, { cache: 'no-store', headers: { Accept: 'application/json' } });
+    const { languages } = await response.json();
+    for (const entry of languages) document.querySelector(`[data-language-choice="${entry.code}"]`)?.setAttribute('data-state', entry.state);
+    state.textContent = languages.filter((entry) => entry.state === 'starting' || entry.state === 'down')
+      .map((entry) => `${entry.own} ${entry.state === 'starting' ? 'is starting…' : 'is unavailable right now.'}`).join(' ');
+  } catch { state.textContent = ''; }
+}
+function openLanguage(code) {
+  if (code === language || !(code in languageNames)) return;
+  savePreference('echo.language', code);
+  location.href = code === 'fr' ? echoRoot : `${echoRoot}${code}/`;
+}
 // Home: Practise on top, then the rooms in two shelves, the three tapes and Radio together for listening on the
 // move, and Study.
 function renderHome() {
@@ -464,23 +499,26 @@ function renderHome() {
     const horizontal = !['practise', 'story', 'radio'].includes(action);
     return `<button class="tile${horizontal ? ' tile-row' : ''}${wide}${family(action)}${filled(action)}" data-action="${action}" ${disabled ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="tile-copy"><span class="tile-heading"><h2>${esc(title)}</h2>${label ? `<span class="level-tag">${esc(label)}</span>` : ''}</span><p>${esc(hint)}</p></span>${action === 'words' ? '<span class="go" aria-hidden="true">→</span>' : ''}</button>`;
   };
-  const row = (action, symbol, title, data = '') => `<button class="study-row${family(action)}" data-action="${action}" ${data} ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="${action === 'tape' || action === 'radio' ? 'shelf-play' : 'chev'}" aria-hidden="true">${action === 'tape' || action === 'radio' ? playIcon : chevronIcon}</span></button>`;
+  // room: the room a row belongs to, when it is not the action itself (a tape's room).
+  const row = (action, symbol, title, data = '', room = action) => roomsOff.has(room) ? '' : `<button class="study-row${family(action)}" data-action="${action}" ${data} ${busy ? 'disabled' : ''}><span class="ic" aria-hidden="true">${symbol}</span><span class="name">${esc(title)}</span><span class="${action === 'tape' || action === 'radio' ? 'shelf-play' : 'chev'}" aria-hidden="true">${action === 'tape' || action === 'radio' ? playIcon : chevronIcon}</span></button>`;
+  // A shelf whose rooms are all left out (another language's, before its content) goes with its label.
+  const shelf = (label, kind, items) => items.trim() ? `${label ? `<p class="study-label">${label}</p>` : ''}<div class="${kind}">${items}</div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="home"><h1>Choose your practice.</h1>
-    <div class="tiles">${tile('practise', mixIcon, 'Practise', 'A little of everything: words, listening and grammar, mixed for you', '', busy, ' wide hero')}</div>
-    <p class="study-label">Words &amp; grammar</p><div class="tiles shelf">
+    ${shelf('', 'tiles', tile('practise', mixIcon, 'Practise', 'A little of everything: words, listening and grammar, mixed for you', '', busy, ' wide hero'))}
+    ${shelf(roomsOff.has('grammar') && roomsOff.has('verbs') ? 'Words' : 'Words &amp; grammar', 'tiles shelf', `
     ${tile('words', wordsIcon, 'Words', vocabularyHint(), '', locked(), ' wide')}
     ${tile('grammar', grammarIcon, 'Grammar', 'Rules, then practise')}
     ${tile('verbs', verbsIcon, 'Verbs', 'Conjugation, on its own')}
-    </div><p class="study-label">Listen &amp; read</p><div class="tiles shelf">
+    `)}${shelf('Listen &amp; read', 'tiles shelf', `
     ${tile('listen', headphones, 'Listen', 'Questions, twin sounds, a tape', 'listen')}
     ${tile('read', bookIcon, 'Read', 'Read it, show you got it', 'read')}
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
-    </div><p class="study-label">Hands-free</p><div class="study hands-free">
-    ${row('tape', cassette, 'Words tape', 'data-tape="walkman"')}${row('tape', cassette, 'Verbs tape', 'data-tape="verbs-tape"')}${row('tape', cassette, 'Sentences tape', 'data-tape="listen-tape"')}${roomsOff.has('radio') ? '' : row('radio', radioIcon, `Today’s Radio · ${radioHint()}`)}
-    </div><p class="study-label">Study</p><div class="study home-study">
-    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${roomsOff.has('friends') ? '' : row('friends', friendsIcon, ['Friends', homeInfo.doorOpen ? 'open to anyone' : '', homeInfo.waiting ? `${homeInfo.waiting} waiting` : ''].filter(Boolean).join(' · '))}
-  </div></section>`;
+    `)}${shelf('Hands-free', 'study hands-free', `
+    ${row('tape', cassette, 'Words tape', 'data-tape="walkman"', 'walkman')}${row('tape', cassette, 'Verbs tape', 'data-tape="verbs-tape"', 'verbs')}${row('tape', cassette, 'Sentences tape', 'data-tape="listen-tape"', 'listen')}${row('radio', radioIcon, `Today’s Radio · ${radioHint()}`)}
+    `)}${shelf('Study', 'study home-study', `
+    ${row('mistakes', mistakesIcon, 'Mistakes')}${row('statistics', statsIcon, 'Statistics')}${row('friends', friendsIcon, ['Friends', homeInfo.doorOpen ? 'open to anyone' : '', homeInfo.waiting ? `${homeInfo.waiting} waiting` : ''].filter(Boolean).join(' · '))}
+  `)}</section>`;
 }
 // The tabs along the top of a room; each button carries the action that opens its tab.
 function roomTabs(action, current, tabs) {
@@ -498,7 +536,7 @@ const wordsTabNow = () => screen === 'walkman' || screen === 'songs' ? screen : 
 // The top of every Words tab: back, the direction (for cards), Your words, ⓘ, options, then the tabs.
 function wordsTop() {
   const tab = wordsTabNow(), cards = tab === 'cards' || tab === 'endless';
-  return `<div class="section-top">${back('Home', 'home')}<div>${cards ? `<span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? 'FR → EN' : 'EN → FR'}</span>` : ''}<button class="icon" data-action="browse" aria-label="Your words" ${busy ? 'disabled' : ''}>${searchIcon}</button>${infoButton('words')}<button class="icon" data-action="options" aria-label="Words options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>${roomTabs('words-tab', tab, WORDS_TABS)}`;
+  return `<div class="section-top">${back('Home', 'home')}<div>${cards ? `<span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? `${language.toUpperCase()} → EN` : `EN → ${language.toUpperCase()}`}</span>` : ''}<button class="icon" data-action="browse" aria-label="Your words" ${busy ? 'disabled' : ''}>${searchIcon}</button>${infoButton('words')}<button class="icon" data-action="options" aria-label="Words options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>${roomTabs('words-tab', tab, WORDS_TABS)}`;
 }
 // The top of every Listen tab: back, the level (for questions), ⓘ, then the tabs.
 function listenTop(right = '') {
@@ -1140,10 +1178,13 @@ function playCardOnce() {
   if (key === heardCard) return;
   heardCard = key; playFrench(card.audioUrl);
 }
+// A language whose deck is not written yet has nothing to practise, and offers nothing else.
+const EMPTY_DECK = `<div class="completion"><h1>No words yet.</h1><p>The ${esc(languageEnglish)} deck is still being written.</p></div>`;
 function renderPractice() {
   if (vocabMode === 'endless') { renderEndless(); return; }
   const header = wordsTop();
   if (!snapshot || loading) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="loading-state" role="status">${loading ? 'Opening your vocabulary…' : 'Your progress is safe on your Mac.'}</div></section>`; return; }
+  if (!totalWords()) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}${EMPTY_DECK}</section>`; return; }
   if (!snapshot.current) {
     main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p><div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="studied" ${busy ? 'disabled' : ''}>Your studied words</button><button class="secondary" data-action="families" ${busy ? 'disabled' : ''}>Word families</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div>${extraPracticeHTML()}</div></section>`; return;
   }
@@ -1155,6 +1196,7 @@ function renderPractice() {
 function renderEndless() {
   const header = wordsTop();
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="practice">${header}${body}</section>`; };
+  if (snapshot && !totalWords()) { shell(EMPTY_DECK); return; }
   if (!endless || endless.direction !== direction || endless.deck !== deck) { shell('<div class="loading-state" role="status">Choosing a word…</div>'); startEndless(); return; }
   const counts = `<span class="compact-line"><span class="compact-label" title="${esc(categoryTitle(deck))}">${esc(categoryTitle(deck))}</span><span class="compact-counts"><span class="unseen"><strong>Endless</strong></span><span class="separator" aria-hidden="true">·</span><span><strong>${formatCount(endless.pool)}</strong> ${endless.pool === 1 ? 'word' : 'words'}</span></span></span>`;
   const card = endless.cards[0];
@@ -2470,7 +2512,7 @@ async function setSongsFirst(value) {
 function openStatistics() { if (move('statistics', true)) loadStatistics(); }
 // Statistics opens at once on the last figures (from this visit, or saved on this phone earlier in the study day) and
 // redraws when the fresh ones arrive, keeping the day and bar chosen; only a first open of the day waits.
-const STATS_SAVED = 'echo.statistics';
+const STATS_SAVED = localKey('echo.statistics');
 const clientStudyDay = () => { const day = new Date(); if (day.getHours() < 4) day.setDate(day.getDate() - 1); return `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`; };
 function savedStatistics() {
   try { const saved = JSON.parse(localStorage.getItem(STATS_SAVED) || 'null'); return saved?.history?.at(-1)?.day === clientStudyDay() ? saved : null; } catch { return null; }
@@ -3992,7 +4034,7 @@ function endStreamSaves(saves) {
 }
 // What is still on its way outlives the page: it is kept on this device and sent again, with the same request ids,
 // when Echo next opens, and the Mac counts a request it has already saved only once.
-const SAVES_KEY = 'echo.saves';
+const SAVES_KEY = localKey('echo.saves');
 function keepSaves() {
   const kept = {
     grades: grades?.answers.map((entry) => entry.body) ?? [],
@@ -4712,7 +4754,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>French → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → French</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the French when a card turns<small class="dialog-note">When you Read, or practise English → French</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, or practise English → ${languageEnglish}</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key"><span class="g-m">masculine</span> · <span class="g-f">feminine</span></small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
 }
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
@@ -4776,6 +4818,7 @@ document.addEventListener('click', (event) => {
   const button = event.target.closest('button'); if (button?.disabled) return;
   const action = button?.dataset.action;
   if (button?.dataset.themeChoice) { const theme = button.dataset.themeChoice === 'paper' ? 'paper' : 'dusk'; savePreference('echo.theme', theme); applyTheme(theme); return; }
+  if (button?.dataset.languageChoice) { openLanguage(button.dataset.languageChoice); return; }
   if (action === 'st-info') { toggleStatsTip(button); return; }
   if (!event.target.closest('.st-tip')) closeStatsTips();
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }
@@ -4837,7 +4880,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
   else if (action === 'extra-words' || action === 'review-early') extraPractice(action, button.dataset);
   else if (action === 'options') openOptions();
-  else if (action === 'about') { dialog.close(); stopAudio(); aboutDialog.showModal(); }
+  else if (action === 'about') { dialog.close(); stopAudio(); aboutDialog.showModal(); refreshLanguages(); }
   else if (action === 'again') grade(false);
   else if (action === 'known') grade(true);
   else if (action === 'undo') undo();
@@ -4876,7 +4919,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'song-page') openSongPage();
   else if (action === 'lyric-line') { const key = button.dataset.line; if (openLines.has(key)) openLines.delete(key); else openLines.add(key); render(); }
   else if (action === 'song-notes') rewriteSongNotes();
-  else if (action === 'gender-colours') { genderColours = !genderColours; localStorage.setItem('echo.genders', genderColours ? 'on' : 'off'); document.body.classList.toggle('genders', genderColours); openOptions(); render(); }
+  else if (action === 'gender-colours') { genderColours = !genderColours; localStorage.setItem(localKey('echo.genders'), genderColours ? 'on' : 'off'); document.body.classList.toggle('genders', genderColours); openOptions(); render(); }
   else if (action === 'songs-first') setSongsFirst(button.dataset.value === 'true');
   else if (action === 'write') { writeView = screen === 'write' ? null : writeView; if (screen === 'write') loadWrite(); else openWrite(); }
   else if (action === 'write-next') nextWrite();
@@ -4995,7 +5038,7 @@ document.addEventListener('keydown', (event) => {
   else if (revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight') && (!event.target.closest('button,a') || event.target.closest('.card-zone'))) { event.preventDefault(); grade(event.key === 'ArrowRight'); }
 });
 homeButton.addEventListener('click', () => move('home'));
-document.querySelector('#about-button').addEventListener('click', () => { stopAudio(); aboutDialog.showModal(); });
+document.querySelector('#about-button').addEventListener('click', () => { stopAudio(); aboutDialog.showModal(); refreshLanguages(); });
 document.querySelector('#close-about').addEventListener('click', () => aboutDialog.close());
 for (const modal of [dialog, aboutDialog]) {
   modal.addEventListener('cancel', (event) => { if (busy) event.preventDefault(); });
@@ -5058,8 +5101,8 @@ window.addEventListener('popstate', (event) => {
 });
 resumeKeptSaves();
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
-else if (requestedScreen === 'grammar') { if (move('grammar', true)) loadGrammar(); }
+else if (requestedScreen === 'grammar' && !roomsOff.has('grammar')) { if (move('grammar', true)) loadGrammar(); }
 // The tape starts at once where the browser allows it; Safari wants a tap first, and then Play is right there.
-else if (requestedScreen === 'walkman') openWords('walkman', 'forward', true);
+else if (requestedScreen === 'walkman' && !roomsOff.has('walkman')) openWords('walkman', 'forward', true);
 else if (requestedScreen === 'say' && !roomsOff.has('say')) { practiceWay = 'speak'; savePreference('echo.way', 'speak'); openWords('endless'); }
 else fetchState();

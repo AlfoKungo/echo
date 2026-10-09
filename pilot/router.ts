@@ -14,23 +14,22 @@
 // Claude nothing (ECHO_CLAUDE is a command that always fails) and leaves out the rooms that write and record for one
 // person. It starts on the learner's first request and stops after IDLE without one. Every learner's database is
 // snapshotted hourly under the owner's backup rules (lib/backups.ts).
-import { existsSync, mkdirSync, openSync, readFileSync, symlinkSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, symlinkSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
-import type { Subprocess } from 'bun';
 import { backup, offsite, OFFSITE_DIR } from '../lib/backups';
+import { createEchoProcesses, forward } from '../lib/echo-processes';
 import { createAccounts, OPEN_MINUTES, SESSION_DAYS, type Accounts, type Learner } from './accounts';
 import { createGoogle, SignInError, type Exchange, type GoogleConfig } from './google';
 
-const ROOT = join(import.meta.dir, '..');
 const COOKIE = 'echo_session';
 const IDLE = 30 * 60_000;
-const READY_WITHIN = 30_000;
 // Rooms that write or record for one person, or (say) run speech recognition, which one Mac cannot do per friend;
 // write asks Claude on every answer, news fetches, transcribes and has Claude note every edition, changeit has
 // Claude write its drills, sentencecards has Claude write the sentences of Verbs' In sentences, and earsentences
-// (Grammar by ear in Listen) has Claude write its questions.
-const ROOMS_OFF = 'story,radio,songs,friends,say,write,news,changeit,sentencecards,earsentences';
+// (Grammar by ear in Listen) has Claude write its questions. languages (the switch to Portuguese and Swedish) is the
+// owner's alone.
+const ROOMS_OFF = 'story,radio,songs,friends,say,write,news,changeit,sentencecards,earsentences,languages';
 
 export type PilotOptions = {
   data: string; origin: string; ownerData: string; firstPort: number;
@@ -59,7 +58,7 @@ export function createPilot(options: PilotOptions) {
   const owner = options.owner ?? 'Gal';
 
   // ── Learners' Echo processes ──
-  const running = new Map<string, { process: Subprocess; ready: Promise<void>; lastSeen: number }>();
+  const processes = createEchoProcesses();
   function prepare(learner: Learner): string {
     const dir = join(options.data, learner.id);
     mkdirSync(dir, { recursive: true });
@@ -69,55 +68,17 @@ export function createPilot(options: PilotOptions) {
     }
     return dir;
   }
-  function start(learner: Learner) {
+  const backend = options.backend ?? ((learner: Learner) => processes.backend(learner.id, () => {
     const dir = prepare(learner);
-    const log = openSync(join(dir, 'server.log'), 'a');
-    const child = Bun.spawn([process.execPath, join(ROOT, 'server.ts')], {
-      cwd: ROOT, stdout: log, stderr: log,
+    return {
+      port: learner.port, dir,
       env: {
-        PATH: process.env.PATH ?? '/usr/bin:/bin', HOME: homedir(), LANG: 'en_US.UTF-8',
-        ECHO_DB: join(dir, 'echo.db'), ECHO_PORT: String(learner.port), ECHO_ORIGIN: options.origin,
+        ECHO_DB: join(dir, 'echo.db'), ECHO_ORIGIN: options.origin,
         ECHO_WORD_AUDIO: 'off', ECHO_TEXT_TOPUP: 'off', ECHO_WORD_HOOKS: 'off', ECHO_STORY: 'off', ECHO_RADIO: 'off', ECHO_VERBS: 'off',
         ECHO_CLAUDE: '/usr/bin/false', ECHO_ROOMS_OFF: ROOMS_OFF, ECHO_LEARNER: learner.name,
       },
-      onExit: () => { if (running.get(learner.id)?.process === child) running.delete(learner.id); },
-    });
-    const ready = (async () => {
-      const until = Date.now() + READY_WITHIN;
-      while (Date.now() < until) {
-        if (child.exitCode !== null) throw new Error(`Echo for ${learner.id} stopped while starting (see ${join(dir, 'server.log')})`);
-        try { if ((await fetch(`http://127.0.0.1:${learner.port}/echo/`, { signal: AbortSignal.timeout(1000) })).ok) return; } catch { /* not listening yet */ }
-        await Bun.sleep(150);
-      }
-      child.kill();
-      throw new Error(`Echo for ${learner.id} did not start within ${READY_WITHIN / 1000} s`);
-    })();
-    const entry = { process: child, ready, lastSeen: Date.now() };
-    running.set(learner.id, entry);
-    ready.catch(() => { if (running.get(learner.id) === entry) running.delete(learner.id); });
-    return entry;
-  }
-  const processBackend = async (learner: Learner) => {
-    const entry = running.get(learner.id) ?? start(learner);
-    entry.lastSeen = Date.now();
-    await entry.ready;
-    return `http://127.0.0.1:${learner.port}`;
-  };
-  const backend = options.backend ?? processBackend;
-  const stopLearner = (id: string) => { running.get(id)?.process.kill(); running.delete(id); };
-
-  async function forward(req: Request, learner: Learner): Promise<Response> {
-    const base = await backend(learner);
-    const url = new URL(req.url);
-    const headers = new Headers(req.headers);
-    // The learner's Echo checks Host against its own address, and never sees the session cookie.
-    headers.delete('host'); headers.delete('cookie');
-    const response = await fetch(`${base}${url.pathname}${url.search}`, {
-      method: req.method, headers, body: req.method === 'GET' || req.method === 'HEAD' ? undefined : req.body,
-      redirect: 'manual', decompress: false,
-    } as RequestInit);
-    return new Response(response.body, { status: response.status, statusText: response.statusText, headers: response.headers });
-  }
+    };
+  }));
 
   // ── Sessions ──
   const tokenOf = (req: Request) => req.headers.get('cookie')?.split(';').map((part) => part.trim()).find((part) => part.startsWith(`${COOKIE}=`))?.slice(COOKIE.length + 1);
@@ -169,7 +130,8 @@ export function createPilot(options: PilotOptions) {
       const wantsPage = req.method === 'GET' && (req.headers.get('accept') ?? '').includes('text/html');
       return wantsPage ? redirect('/signin', clearedCookie) : Response.json({ error: 'You are signed out. Reload Echo to sign in again.' }, { status: 401, headers: { 'Set-Cookie': clearedCookie } });
     }
-    try { return await forward(req, learner); }
+    // The learner's Echo never sees the session cookie (lib/echo-processes.ts forward).
+    try { return await forward(req, await backend(learner), path); }
     catch (error) {
       console.error(`pilot: ${(error as Error).message}`);
       return Response.json({ error: 'Echo is starting up or could not start. Please try again in a moment.' }, { status: 503 });
@@ -185,7 +147,7 @@ export function createPilot(options: PilotOptions) {
       if (path === '/friends/remove' && req.method === 'POST') {
         const { id } = await req.json() as { id?: unknown };
         if (typeof id !== 'string' || !accounts.remove(id)) return Response.json({ error: 'That friend is not on the list.' }, { status: 404 });
-        stopLearner(id);
+        processes.stop(id);
         return Response.json({ ok: true });
       }
       if (path === '/friends/dismiss' && req.method === 'POST') {
@@ -214,8 +176,8 @@ export function createPilot(options: PilotOptions) {
     accounts.dropExpired();
   }
   // Stops a learner's Echo after IDLE without a request; the next request starts it again.
-  function sweep() { for (const [id, entry] of running) if (Date.now() - entry.lastSeen > IDLE) stopLearner(id); }
-  function stop() { for (const id of [...running.keys()]) stopLearner(id); accounts.close(); }
+  function sweep() { processes.sweep(IDLE); }
+  function stop() { processes.stopAll(); accounts.close(); }
 
   return { publicFetch, adminFetch, backups, sweep, stop, accounts };
 }
@@ -227,7 +189,7 @@ if (import.meta.main) {
   // The Google OAuth client, kept on this Mac only: {"clientId": "...", "clientSecret": "..."}.
   const googleFile = join(data, 'google.json');
   const google = existsSync(googleFile) ? JSON.parse(readFileSync(googleFile, 'utf8')) as { clientId: string; clientSecret: string } : null;
-  const pilot = createPilot({ data, origin, ownerData: process.env.PILOT_OWNER_DATA ?? join(ROOT, 'data'), firstPort: 7900, google, offsite: join(OFFSITE_DIR, 'friends') });
+  const pilot = createPilot({ data, origin, ownerData: process.env.PILOT_OWNER_DATA ?? join(import.meta.dir, '..', 'data'), firstPort: 7900, google, offsite: join(OFFSITE_DIR, 'friends') });
   const port = Number(process.env.PILOT_PORT ?? 7899), adminPort = Number(process.env.PILOT_ADMIN_PORT ?? 7898);
   const publicServer = Bun.serve({ hostname: '127.0.0.1', port, idleTimeout: 120, fetch: pilot.publicFetch });
   const adminServer = Bun.serve({ hostname: '127.0.0.1', port: adminPort, fetch: pilot.adminFetch });

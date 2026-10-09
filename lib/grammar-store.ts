@@ -89,7 +89,8 @@ function testSummary(rows: TestRow[]): GrammarTestSummary {
 }
 
 export function createGrammarStore(course: Course, options: { dbPath?: string; audioDir?: string; now?: () => Date; random?: () => number } = {}): GrammarStore {
-  validateCourse(course);
+  // A language without Grammar yet has no course at all (server.ts); any course with content is checked whole.
+  if (course.units.length || course.topics.length) validateCourse(course);
   const { units, topics } = course;
   const topicById = new Map(topics.map((topic) => [topic.id, topic]));
   const unitById = new Map(units.map((unit) => [unit.id, unit]));

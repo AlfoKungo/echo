@@ -351,7 +351,8 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       CREATE INDEX IF NOT EXISTS grades_direction_sequence ON grades(direction, sequence DESC);
       CREATE INDEX IF NOT EXISTS grades_direction_time ON grades(direction, graded_at);
     `);
-    db.query('INSERT OR IGNORE INTO settings (singleton, new_per_day) VALUES (1, ?)').run(Math.min(30, words.length));
+    // A deck not written yet (a new language's) starts at the usual 30 a day, so its words come in once it arrives.
+    db.query('INSERT OR IGNORE INTO settings (singleton, new_per_day) VALUES (1, ?)').run(words.length ? Math.min(30, words.length) : 30);
     const hasColumn = (table: string, name: string) => db.query<{ name: string }, []>(`PRAGMA table_info(${table})`).all().some((column) => column.name === name);
     if (!hasColumn('grades', 'queue_before_json')) db.exec('ALTER TABLE grades ADD COLUMN queue_before_json TEXT');
     if (!hasColumn('settings', 'songs_first')) db.exec('ALTER TABLE settings ADD COLUMN songs_first INTEGER NOT NULL DEFAULT 1');
