@@ -17,6 +17,7 @@ import { createStory, type StoryFinish } from './lib/story';
 import { createRadio, englishClip, frenchClip, layStory, radioClip, radioClipExists, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
 import { createVerbTables, TENSE_NAMES, TENSES, tenseGuide, verbGuide, type Tense } from './lib/verbs';
 import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/verb-drills';
+import { createRuleCards } from './lib/rule-cards';
 import { loadFamilies, loadPatterns } from './lib/families';
 import { audioFile, compressed, ranged, staticFile } from './lib/http';
 import type { Direction, EndlessInput, EndlessMarkInput, GradeInput, GrammarMutation, ReviewEarlyInput, WalkmanChoice, Word } from './contract';
@@ -112,7 +113,8 @@ const textChecks = setInterval(() => { if (process.env.ECHO_TEXT_TOPUP !== 'off'
 const verbTables = createVerbTables({ file: join(dirname(dbPath), 'verbs.json'), words: () => store.words(), ask });
 const verbChecks = setInterval(() => { if (process.env.ECHO_VERBS !== 'off') void verbTables.check(); }, 10 * 60_000);
 if (process.env.ECHO_VERBS !== 'off') void verbTables.check();
-const earClip = (said: string) => frenchClip(said).id;
+// A French phrase's recording (the verb tape's and By ear's), when it has been made.
+const phraseAudio = (said: string) => { const id = frenchClip(said).id; return existsSync(join(root, 'audio/radio', `${id}.mp3`)) ? `audio/radio/${id}.mp3` : null; };
 // The grammar topics that teach each tense, shown on its page in the Verbs room.
 const TENSE_TOPICS: Record<Tense, string[]> = {
   pres: ['etre-avoir', 'present-er', 'present-ir-re', 'irregular-present', 'reflexive'],
@@ -120,10 +122,9 @@ const TENSE_TOPICS: Record<Tense, string[]> = {
   imp: ['imparfait', 'pc-vs-imparfait'],
   fut: ['futur-simple', 'futur-proche'],
 };
-const verbs = createVerbDrills({
-  dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(),
-  earAudio: (said) => existsSync(join(root, 'audio/radio', `${earClip(said)}.mp3`)) ? `audio/radio/${earClip(said)}.mp3` : null,
-});
+const verbs = createVerbDrills({ dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(), earAudio: phraseAudio });
+// How it's built: cards on how each tense is formed, drawn from the same verb tables, marked apart from the forms.
+const ruleCards = createRuleCards({ dbPath, verbs: () => verbTables.verbs(), vocabulary: () => store.listening(), audio: phraseAudio });
 // Memory hooks for stubborn words and verb forms: at start and every ten minutes (ECHO_WORD_HOOKS=off switches them off).
 const hooks = createWordHooks({ ask, store, verbs });
 const hookChecks = setInterval(() => { if (process.env.ECHO_WORD_HOOKS !== 'off') void hooks.check(); }, 10 * 60_000);
@@ -656,6 +657,8 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/verbs/table' && req.method === 'POST') { const data = await body(req); return json(verbs.table(data as never)); }
     if (path === '/api/verbs/ear' && req.method === 'POST') { const data = await body(req); return json({ questions: verbs.earRound(data as never) }); }
     if (path === '/api/verbs/ear-answer' && req.method === 'POST') { const data = await body(req); return json(verbs.earAnswer(data as never)); }
+    if (path === '/api/verbs/rules' && req.method === 'POST') return json({ items: ruleCards.round() });
+    if (path === '/api/verbs/rules/mark' && req.method === 'POST') { const data = await body(req); return json(ruleCards.mark(data as never)); }
     // By ear's recorded phrases.
     const earFile = path.match(/^\/audio\/radio\/(fr-[0-9a-f]{16})\.mp3$/);
     if (earFile && (req.method === 'GET' || req.method === 'HEAD')) {
@@ -732,6 +735,7 @@ async function stop() {
   writeIt.close();
   sounds.close();
   verbs.close();
+  ruleCards.close();
   grammar.close();
   store.close();
   process.exit(0);
