@@ -26,6 +26,7 @@ import { answers, answerTexts, hint, judge, QUIETEST_ANSWER, said, sayEnglish, S
 import { createSayClips } from './lib/say-clips';
 import { createWhisper, type Recording } from './lib/whisper';
 import { createNews } from './lib/news';
+import { createChangeIt, layChangeTape, type ChangeTapeItem } from './lib/change-it';
 // Every log line starts with the local time, so a restart or failure in data/server.log can be placed.
 for (const level of ['log', 'error', 'warn'] as const) {
   const write = console[level].bind(console);
@@ -238,6 +239,28 @@ const roomsOff = (process.env.ECHO_ROOMS_OFF ?? '').split(',').map((room) => roo
 const news = roomsOff.includes('news') ? null : createNews({ dir: process.env.ECHO_NEWS_DIR ?? join(dirname(dbPath), 'news'), audioDir: join(root, 'audio/news'), ask });
 if (news && process.env.ECHO_NEWS !== 'off') void news.check();
 const newsChecks = setInterval(() => { if (news && process.env.ECHO_NEWS !== 'off') void news.check(); }, 30 * 60_000);
+// Change it (Verbs → Tape): drills Claude writes ahead from the learner's started verbs and words (lib/change-it.ts),
+// recorded with the Radio's French voice after the sentence tape's clips, at start and every ten minutes. An Echo
+// without the room (the friends') has none of it.
+const changeIt = roomsOff.includes('changeit') ? null : createChangeIt({
+  dbPath, ask, verbs: () => verbTables.verbs(),
+  started: () => new Set(store.listening().filter((word) => word.status !== 'new').map((word) => word.id)),
+  known: () => store.listening().filter((word) => word.status !== 'new').map((word) => ({ fr: word.fr, en: word.en })),
+  shaky: () => verbs.shaky(),
+  clipReady: (text) => radioClipExists(root, frenchClip(text).id),
+  record: async (texts) => {
+    if (process.env.ECHO_WORD_AUDIO === 'off') return false;
+    // One renderer owns audio/radio at a time: the sentence tape's run goes first.
+    await sentencesRecording;
+    const planPath = join(dirname(dbPath), 'radio', 'change.plan.json');
+    mkdirSync(dirname(planPath), { recursive: true });
+    writeFileSync(planPath, JSON.stringify(texts.map(frenchClip), null, 1));
+    await runPython(['scripts/render-radio.py', '--plan', planPath]);
+    return true;
+  },
+});
+void textsStarted.then(() => changeIt?.check());
+const changeChecks = setInterval(() => { void changeIt?.check(); }, 10 * 60_000);
 // The signed-in learner's name, in the friends' Echo (pilot/router.ts): the app shows it beside Sign out.
 const learnerName = process.env.ECHO_LEARNER?.trim() ?? '';
 const attribute = (text: string) => text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -267,11 +290,11 @@ function newTape(choice: WalkmanChoice, tenses: Tense[] = ['pres']): Tape {
   const stamp = existsSync(walkmanManifest) ? statSync(walkmanManifest).mtimeMs : 0;
   if (stamp !== walkmanStamp) { walkmanClips.forget(); walkmanStamp = stamp; }
   const listening = store.listening();
-  const tape = choice === 'verbs' ? verbTape(tenses) : choice === 'sentences' ? sentenceTape(listening) : (() => {
+  const tape = choice === 'verbs' ? verbTape(tenses) : choice === 'change' ? changeTape() : choice === 'sentences' ? sentenceTape(listening) : (() => {
     const fresh = new Set(listening.filter((word) => word.status === 'new').map((word) => word.id));
     return buildTape(crypto.randomUUID(), planTape(listening, 600, Math.random, choice), new Map(store.words().map((word) => [word.id, word])), walkmanClips, fresh);
   })();
-  if (!tape.words.length) throw new StoreError(choice === 'verbs' ? 'The verb recordings are still being made on your Mac. Please try again later.' : choice === 'sentences' ? 'The sentence recordings are still being made. Please try again later.' : 'The Walkman recordings are not ready yet. Please try again later.', 503);
+  if (!tape.words.length) throw new StoreError(choice === 'verbs' ? 'The verb recordings are still being made on your Mac. Please try again later.' : choice === 'change' ? changeIt!.waitingMessage() : choice === 'sentences' ? 'The sentence recordings are still being made. Please try again later.' : 'The Walkman recordings are not ready yet. Please try again later.', 503);
   tapes.set(tape.id, tape);
   for (const id of [...tapes.keys()].slice(0, -3)) tapes.delete(id);
   return tape;
@@ -306,6 +329,28 @@ function verbTape(tenses: Tense[]): Tape {
     }
   }
   return layTape(crypto.randomUUID(), 'verbs', items(), silence, VERB_TIMING);
+}
+// The Change it tape: its drills in playlist order, then twice more in fresh orders, never one drill twice in a row.
+// Asking for one also checks whether more drills are wanted or waiting to be recorded.
+function changeTape(): Tape {
+  const silence = walkmanClips.silence();
+  if (!silence) throw new Error('The Walkman silence frame is missing.');
+  if (!changeIt) throw new StoreError('Change it is not part of this Echo.', 404);
+  void changeIt.check();
+  const drills = changeIt.playlist();
+  function* items(): Generator<ChangeTapeItem> {
+    let last: (typeof drills)[number] | undefined;
+    for (let round = 0; round < 3; round++) {
+      const order = [...drills];
+      if (round) for (let index = order.length - 1; index > 0; index--) { const other = Math.floor(Math.random() * (index + 1)); [order[index], order[other]] = [order[other]!, order[index]!]; }
+      if (order.length > 1 && order[0] === last) [order[0], order[order.length - 1]] = [order[order.length - 1]!, order[0]!];
+      for (const drill of order) {
+        const [base, cue, answer] = [drill.base, drill.cue, drill.answer].map((text) => radioClip(root, frenchClip(text).id));
+        if (base && cue && answer) { last = drill; yield { drill, base, cue, answer, audio: `audio/radio/${frenchClip(drill.answer).id}.mp3` }; }
+      }
+    }
+  }
+  return layChangeTape(crypto.randomUUID(), items(), silence);
 }
 // Sentences up to the Read level, those holding the words most worth hearing likelier to come first.
 function sentenceTape(listening: ReturnType<typeof store.listening>): Tape {
@@ -505,10 +550,12 @@ async function route(req: Request): Promise<Response> {
     }
     if (path === '/api/walkman' && req.method === 'POST') {
       const data = await body(req);
-      if (data.words !== undefined && !['scored', 'groups', 'sentences', 'verbs'].includes(data.words as string)) throw new StoreError('Choose what the Walkman plays: words by score, words by groups, sentences, or verbs.', 400);
+      if (data.words !== undefined && !['scored', 'groups', 'sentences', 'verbs', ...(changeIt ? ['change'] : [])].includes(data.words as string)) throw new StoreError('Choose what the Walkman plays: words by score, words by groups, sentences, or verbs.', 400);
       const tenses = Array.isArray(data.tenses) ? TENSES.filter((tense) => (data.tenses as unknown[]).includes(tense)) : ['pres' as Tense];
       return json(tapeView(newTape((data.words as WalkmanChoice | undefined) ?? 'scored', tenses)));
     }
+    // A Change it drill played to the end: drills not yet heard come first on the next tape.
+    if (path === '/api/change/heard' && req.method === 'POST' && changeIt) { changeIt.heard(await body(req)); return json({ ok: true }); }
     if (path === '/api/walkman/heard' && req.method === 'POST') {
       const data = await body(req);
       store.recordHeard({ wordId: String(data.wordId ?? ''), requestId: String(data.requestId ?? '') });
@@ -723,6 +770,7 @@ async function stop() {
   clearInterval(verbChecks);
   clearInterval(storyChecks);
   clearInterval(newsChecks);
+  clearInterval(changeChecks);
   clearInterval(radioChecks);
   clearInterval(whisperSweep);
   whisper.stop();
@@ -730,6 +778,7 @@ async function stop() {
   comprehension.close();
   story.close();
   writeIt.close();
+  changeIt?.close();
   sounds.close();
   verbs.close();
   grammar.close();

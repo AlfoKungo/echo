@@ -88,6 +88,9 @@ main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 aut
 .wm-fr.wm-sentence{font-size:clamp(24px,5.4vw,32px);letter-spacing:-.4px;line-height:1.3}
 .wm-en{font-size:19px;line-height:1.45;color:var(--muted);min-height:28px}
 .wm-hint{max-width:420px;color:var(--muted);font-size:16px;line-height:1.6}
+.wm-en.wm-cue{color:var(--violet);font-size:22px}
+.wm-form{color:var(--violet);font-weight:600}
+.wm-way{margin:0 0 4px}
 .wm-controls{display:flex;justify-content:center}
 .wm-play svg{stroke-width:2}
 .wm-play svg path{fill:currentColor}
