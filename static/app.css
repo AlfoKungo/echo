@@ -510,6 +510,11 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-card-hint{text-align:center;margin-top:12px}.vb-cards .vb-para{margin-top:18px}
 .write-en{margin:0;font-size:22px;line-height:1.4;font-weight:500;color:var(--ink)}.write .vb-prompt .vb-tense{margin-top:14px}
 .write .feedback p{margin:8px 0 0}.write-fix{color:var(--violet)}
+/* In sentences: the sentence is the card's face, its blank a violet rule until the card turns and the form fills it. */
+.vb-sentence{margin:0;font-size:clamp(22px,5.6vw,27px);font-weight:500;line-height:1.45;letter-spacing:-.3px;overflow-wrap:anywhere}
+.vb-sentence-gap{display:inline-block;width:3.2em;height:1em;vertical-align:-.12em;border-bottom:2px solid var(--violet)}
+.vb-sentence-form{color:var(--violet);font-weight:600}
+.vb-sentence-why{display:flex;align-items:flex-start;gap:8px}.vb-sentence-why .vb-why{flex:1}.vb-sentence-why .icon{flex:none;margin-top:4px}
 /* A row that opens something (Hardest forms): the whole row is the button, laid out like the others. */
 .st-rows li:has(> .st-row-link){padding:0}.st-row-link{display:flex;align-items:center;gap:12px;width:100%;padding:11px 2px;text-align:left}
 .vs-label{font-size:13px;color:var(--muted);margin:18px 0 8px}

@@ -1,5 +1,6 @@
 // The Verbs room's record and rounds: every answer to a form (a verb in one tense for one person), from Type it,
-// Whole table, Cards (the learner says whether they knew it) or By ear, kept once per request. A form's state comes from its latest answers (By ear is kept apart:
+// Whole table, Cards (the learner says whether they knew it), In sentences (the same, for a form inside a sentence)
+// or By ear, kept once per request. A form's state comes from its latest answers (By ear is kept apart:
 // it tests hearing, not writing), and a round leans on the forms that are shaky or not tried yet.
 import { Database } from 'bun:sqlite';
 import { pointsFromLowest } from './score-points';
@@ -24,17 +25,17 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 // A form's score: +2 for a typed answer right and -3 wrong (Type it, each cell of a whole table); +1 or -2 for a
-// Cards or Walkman mark, the learner's own say; +1 or -1 for a Form → verb mark, since knowing a form when you see
-// it is the easier half. By ear asks about a tense or a number, not one form, and counts for none. Every point
+// Cards, In sentences or Walkman mark, the learner's own say; +1 or -1 for a Form → verb mark, since knowing a form
+// when you see it is the easier half. By ear asks about a tense or a number, not one form, and counts for none. Every point
 // halves over SCORE_HALF_LIFE_DAYS, as a word's does. A table written in Look, then write is graded as a whole,
 // apart from its forms: TABLE_PERFECT points when every form was right, TABLE_MISSED when any was not.
-const points = (mode: string, right: number) => mode === 'card' ? (right ? 1 : -2) : mode === 'recognize' ? (right ? 1 : -1) : (right ? 2 : -3);
+export const points = (mode: string, right: number) => mode === 'card' || mode === 'sentence' ? (right ? 1 : -2) : mode === 'recognize' ? (right ? 1 : -1) : (right ? 2 : -3);
 const TABLE_PERFECT = 2, TABLE_MISSED = -1;
 // Every drill picks a form with odds 2^(-score/PULL), the score held within ±LIMIT, as the Walkman picks words: an
 // untried form at 0, one missed once about three times as likely, one known twice in a row about a fifth as likely.
 const PULL = 1.7;
 const LIMIT = 8;
-const pull = (score: number | undefined) => 2 ** (-Math.max(-LIMIT, Math.min(LIMIT, score ?? 0)) / PULL);
+export const pull = (score: number | undefined) => 2 ** (-Math.max(-LIMIT, Math.min(LIMIT, score ?? 0)) / PULL);
 // On the score chart: at or above SOLID_AT is solid, at or below SHAKY_AT shaky; the chart keeps SCORE_DAYS days.
 const SOLID_AT = 3;
 const SHAKY_AT = -2;
@@ -304,14 +305,17 @@ export function createVerbDrills(options: {
     }
     return readings;
   }
-  // The learner's own say on a card: counts for the form, once per request id; way 'recognize' is a Form → verb card.
+  // The learner's own say on a card: counts for the form, once per request id; way 'recognize' is a Form → verb card,
+  // way 'sentence' a card of In sentences (lib/verb-sentences.ts).
   function mark(input: { requestId: string; verbId: string; tense: Tense; person: number; knew: boolean; way?: string }) {
     const requestId = requestIdOf(input?.requestId);
     const { verb, tense, person } = findForm(input?.verbId, input?.tense, input?.person);
     if (typeof input.knew !== 'boolean') throw new StoreError('Say whether you knew it.');
-    insert.run(requestId, verb.id, tense, person, input.way === 'recognize' ? 'recognize' : 'card', null, '', input.knew ? 1 : 0, now().toISOString());
+    insert.run(requestId, verb.id, tense, person, input.way === 'recognize' || input.way === 'sentence' ? input.way : 'card', null, '', input.knew ? 1 : 0, now().toISOString());
     return { ok: true };
   }
+  // Every practised form's score now, by "verbId|tense|person".
+  const formScores = () => scoresAt(now().getTime()).scores;
 
   // A whole table at once: every person checked, a blank one counted as not known.
   // The next whole table to fill in: one verb in one tense from the chosen verbs and tenses, drawn with odds of its
@@ -531,6 +535,6 @@ export function createVerbDrills(options: {
     return [...new Set(verbs.filter((verb, index) => index < COMMON || started.has(verb.id)).flatMap((verb) => earQuestions(verb).map((question) => question.said)))];
   }
 
-  return { round, cards, mark, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, close: () => db.close() };
+  return { round, cards, mark, formScores, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills>;

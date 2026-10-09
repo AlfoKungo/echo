@@ -27,8 +27,9 @@ const COOKIE = 'echo_session';
 const IDLE = 30 * 60_000;
 const READY_WITHIN = 30_000;
 // Rooms that write or record for one person, or (say) run speech recognition, which one Mac cannot do per friend;
-// write asks Claude on every answer, and news fetches, transcribes and has Claude note every edition.
-const ROOMS_OFF = 'story,radio,songs,friends,say,write,news';
+// write asks Claude on every answer, news fetches, transcribes and has Claude note every edition, and sentencecards
+// has Claude write the sentences of Verbs' In sentences.
+const ROOMS_OFF = 'story,radio,songs,friends,say,write,news,sentencecards';
 
 export type PilotOptions = {
   data: string; origin: string; ownerData: string; firstPort: number;
