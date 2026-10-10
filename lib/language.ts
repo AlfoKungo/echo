@@ -74,7 +74,8 @@ export const LANGUAGE_CODES: readonly LanguageCode[] = ['fr', 'pt', 'sv'];
 export function languages(root: string, env: Record<string, string | undefined> = process.env): Record<LanguageCode, Language> {
   // ECHO_LANGUAGE_PORTS (pt:7885,sv:7886) moves the language processes, so a test Echo never meets the real ones.
   const ports = Object.fromEntries((env.ECHO_LANGUAGE_PORTS ?? '').split(',').map((entry) => entry.split(':')).filter(([, port]) => Number(port) > 0).map(([code, port]) => [code, Number(port)]));
-  // The rooms each language has content for; Statistics reads only its own database.
+  // The rooms each language has content for; Statistics reads only its own database. Practise mixes the cards,
+  // Listen, Read and Grammar it finds; its Write it turns are French's own (the write room), so they never come up.
   const firstRooms: readonly Room[] = ['words', 'grammar', 'statistics'];
   return {
     fr: {
@@ -88,14 +89,14 @@ export function languages(root: string, env: Record<string, string | undefined> 
       code: 'pt', english: 'Portuguese', own: 'Português', tag: 'pt-BR', gender: GENDER_RULES.pt,
       content: join(root, 'content/pt'), audio: join(root, 'audio/pt'), textKey: 'pt',
       tts: { script: 'scripts/render-audio.py', args: ['--lang', 'pt'] },
-      rooms: [...firstRooms, 'listen', 'read', 'verbs'], claude: false, port: ports.pt ?? 7795,
+      rooms: ['practise', ...firstRooms, 'listen', 'read', 'verbs'], claude: false, port: ports.pt ?? 7795,
     },
     // Swedish: Higgs TTS 3 checked by KB-Whisper (render-audio-sv.py), which writes audio/sv by default.
     sv: {
       code: 'sv', english: 'Swedish', own: 'Svenska', tag: 'sv', gender: GENDER_RULES.sv,
       content: join(root, 'content/sv'), audio: join(root, 'audio/sv'), textKey: 'sv',
       tts: { script: 'scripts/render-audio-sv.py', args: [] },
-      rooms: [...firstRooms, 'listen', 'read', 'verbs'], claude: false, port: ports.sv ?? 7796,
+      rooms: ['practise', ...firstRooms, 'listen', 'read', 'verbs'], claude: false, port: ports.sv ?? 7796,
     },
   };
 }

@@ -22,7 +22,7 @@ test('Portuguese and Swedish keep their own content, recordings and recorder, an
   expect([sv.content, sv.audio, sv.textKey]).toEqual([join(root, 'content/sv'), join(root, 'audio/sv'), 'sv']);
   expect(sv.tts).toEqual({ script: 'scripts/render-audio-sv.py', args: [] });
   for (const language of [pt, sv]) {
-    expect(language.rooms).toEqual(['words', 'grammar', 'statistics', 'listen', 'read', 'verbs']);
+    expect(language.rooms).toEqual(['practise', 'words', 'grammar', 'statistics', 'listen', 'read', 'verbs']);
     expect(language.claude).toBe(false);
   }
   expect([pt.port, sv.port]).toEqual([7795, 7796]);
@@ -56,6 +56,10 @@ test('the page names the language: French’s is served as written; another’s 
   expect(portuguese).toContain('The Portuguese stays hidden until you answer.');
   expect(portuguese).toContain('<p data-room="sounds"><strong>Sounds</strong>');
   expect(portuguese).toContain('<p data-room="sentencetape"><strong>Tape</strong> (in Listen');
+  // Practise's How it works names Write it, and French, only inside the write room's span, which the app drops.
+  const practise = /<div data-info="practise">[^]*?<\/div>/.exec(portuguese)![0].replace(/<span data-room="write">[^<]*<\/span>/, '');
+  expect(practise).toContain('a comprehension question, a vocabulary card, another comprehension question, a grammar question');
+  expect(practise).not.toMatch(/Write it|French/);
   // Verbs' How it works speaks of the language's own verbs, never French's tenses.
   expect(portuguese).toContain('as Brazil speaks: eu, você / ele / ela, nós and vocês / eles / elas');
   expect(portuguese).not.toContain('passé composé, imparfait, futur');
