@@ -109,3 +109,29 @@ test('a live clip no take passes for is re-recorded on each start until it has f
   }
   expect(tries).toEqual([['a1-never-s01'], ['a1-never-s01'], ['a1-never-s01']]);
 });
+
+test('Sentence cards: a sentence off the target tenses goes back to Claude, and what is still broken is left out', async () => {
+  const card = (fr: string, gloss: { fr: string; en: string; word?: string }[]) => ({ fr, level: 'A1', en: 'We are eating at the restaurant.', topics: ['present-er'], words: [], gloss });
+  const eat = [{ fr: 'restaurant', en: 'restaurant', word: 'travel-020' }];
+  const asked: string[] = [];
+  const ask = async (prompt: string) => {
+    asked.push(prompt);
+    if (prompt.startsWith('You write French sentences')) return JSON.stringify({ sentences: [
+      card('Nous mangeons au restaurant.', [...eat, { fr: 'mangeons', en: 'eat (manger)', word: 'verbs-059' }]),
+      card('Nous mangerions au restaurant.', [...eat, { fr: 'mangerions', en: 'would eat (manger)', word: 'verbs-059' }]),
+      card('Nous avons mangé au restaurant.', [...eat, { fr: 'avons mangé', en: 'ate (manger)', word: 'verbs-059' }]),
+    ] });
+    // The repair round fixes the conditional one and leaves the passé composé one as it was.
+    const broken = JSON.parse(prompt.split('\n').find((line) => line.startsWith('[{"ref"'))!) as { ref: string; item: { fr: string } }[];
+    return JSON.stringify({ items: broken.map(({ ref, item }) => ({ ref, item: item.fr.includes('mangerions') ? card('Nous mangeons souvent au restaurant.', [...eat, { fr: 'mangeons', en: 'eat (manger)', word: 'verbs-059' }, { fr: 'souvent', en: 'often' }]) : item })) });
+  };
+  const { writeCards } = await import('../lib/text-topup');
+  const lane = await writeCards(root, ask, { tenses: ['pres'], words: [{ id: 'verbs-059', fr: 'manger' }, { id: 'travel-020', fr: 'le restaurant' }] }, 'sc-test', 'food', new Set(), 3);
+  expect(lane.sentences.map((sentence) => [sentence.id, sentence.fr, sentence.tenses])).toEqual([
+    ['sc-test-s01', 'Nous mangeons au restaurant.', ['pres']],
+    ['sc-test-s02', 'Nous mangeons souvent au restaurant.', ['pres']],
+  ]);
+  expect(asked).toHaveLength(3);
+  expect(asked[1]).toContain('outside the four');
+  expect(asked[1]).toContain('the passé composé');
+});

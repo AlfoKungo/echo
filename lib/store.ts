@@ -147,7 +147,7 @@ function emptyQueue(day: string): PracticeQueue {
   return { day, warmup: 0, turn: 0, credit: 0, unseen: [], failed: [], successful: [] };
 }
 
-function studyDayStart(now: Date): Date {
+export function studyDayStart(now: Date): Date {
   const start = new Date(now);
   if (start.getHours() < 4) start.setDate(start.getDate() - 1);
   start.setHours(4, 0, 0, 0);

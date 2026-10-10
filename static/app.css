@@ -711,3 +711,10 @@ html{touch-action:manipulation}
 :where(#main>section:not(.home))>.section-top{padding-top:14px}
 /* "Saving…" beside a room's title while answers are on their way to a slow Mac; empty, it takes no room. */
 .saving-status{font-size:12px;margin-right:10px}.saving-status:empty{display:none}
+/* Sentence cards: Hear, Read or Both above the card; the sentence's words and the speaker take taps through the card. */
+.sc-way{max-width:none;margin:0 0 14px}
+.sc .study-surface{min-height:300px;height:auto;max-height:none;padding:40px 22px 58px}
+.sc-card .gloss,.sc-card .sc-play{pointer-events:auto}
+.sc-card .sc-play.icon{margin-top:14px}
+.sc-en{margin-top:16px}
+.sc-marks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}

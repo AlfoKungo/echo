@@ -71,6 +71,7 @@ const mistakesIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12
 const statsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M10 20V5M15 20v-7M20 20V8M3 20.5h18"/></svg>';
 const soundsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></svg>';
 const friendsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2c2.4.1 4 1.7 4.5 4.3"/></svg>';
+const cardsIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="15" height="13" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v10M6.5 11h8M6.5 14.5h5"/></svg>';
 const chevronIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>';
 // Echo always opens on Home; each screen change after that is a history entry, so Back returns to it.
 // A place names a screen and what it shows: 'grammar', 'topic|negation', 'exercise|test:negation'.
@@ -408,7 +409,7 @@ function enterScope(key) {
 function noticeHTML() {
   if (!notice) return '';
   if (offline && retryAction) {
-    const kept = retryAction.body?.known !== undefined || retryAction.body?.given !== undefined || retryAction.type === 'grade' || retryAction.type === 'stream-saves' ? ' Your answer is kept and saves as soon as it’s back.' : '';
+    const kept = retryAction.body?.known !== undefined || retryAction.body?.given !== undefined || retryAction.type === 'grade' || retryAction.type === 'stream-saves' || retryAction.type === 'sentence-saves' ? ' Your answer is kept and saves as soon as it’s back.' : '';
     return `<div class="notice info" role="status"><span>Can’t reach your Mac. Trying again by itself.${kept}</span><button class="quiet" data-action="retry" ${busy ? 'disabled' : ''}>Retry now</button></div>`;
   }
   return `<div class="notice ${notice.kind === 'info' ? 'info' : ''}" role="${notice.kind === 'info' ? 'status' : 'alert'}"><span>${esc(notice.message)}</span>${retryAction ? `<button class="quiet" data-action="retry" ${busy ? 'disabled' : ''}>Retry</button>` : ''}</div>`;
@@ -498,7 +499,7 @@ function openLanguage(code) {
 function renderHome() {
   loadHomeInfo();
   // Each room is tinted by its family: lavender for words, grammar and the tapes, green for listening, peach for Story. Story and Radio tiles are filled with their colour.
-  const family = (action) => ['listen', 'read', 'radio'].includes(action) ? ' fam-green' : action === 'story' ? ' fam-peach' : ['mistakes', 'statistics', 'friends'].includes(action) ? ' fam-plain' : '';
+  const family = (action) => ['listen', 'read', 'sentences', 'radio'].includes(action) ? ' fam-green' : action === 'story' ? ' fam-peach' : ['mistakes', 'statistics', 'friends'].includes(action) ? ' fam-plain' : '';
   const filled = (action) => ['story', 'radio'].includes(action) ? ' fam-fill' : '';
   const tile = (action, symbol, title, hint, mode, disabled = busy, wide = '') => {
     if (roomsOff.has(action)) return '';
@@ -519,6 +520,7 @@ function renderHome() {
     `)}${shelf('Listen &amp; read', 'tiles shelf', `
     ${tile('listen', headphones, 'Listen', roomsOff.has('sounds') && roomsOff.has('sentencetape') ? 'Hear it, show you got it' : 'Questions, twin sounds, a tape', 'listen')}
     ${tile('read', bookIcon, 'Read', 'Read it, show you got it', 'read')}
+    ${tile('sentences', cardsIcon, 'Sentences', 'Hear or read one, then see if you got it', '', busy, ' wide')}
     ${tile('story', storyIcon, 'Story', storyHint())}
     ${tile('radio', radioIcon, 'Radio', radioHint())}
     `)}${shelf('Hands-free', 'study hands-free', `
@@ -533,7 +535,7 @@ function roomTabs(action, current, tabs) {
 }
 // ⓘ: what the room does, from its part of How it works (index.html, data-info).
 function infoButton(room) { return `<button class="icon" data-action="info" data-info-room="${room}" aria-label="How this works" aria-haspopup="dialog">${infoIcon}</button>`; }
-const INFO_TITLES = { words: 'Words', listen: 'Listen', read: 'Read', verbs: 'Verbs', grammar: 'Grammar', practise: 'Practise', mistakes: 'Mistakes', story: 'Story', radio: 'Radio' };
+const INFO_TITLES = { words: 'Words', listen: 'Listen', read: 'Read', sentences: 'Sentences', verbs: 'Verbs', grammar: 'Grammar', practise: 'Practise', mistakes: 'Mistakes', story: 'Story', radio: 'Radio' };
 function openInfo(room) {
   const parts = [...aboutDialog.querySelectorAll('[data-info]')].filter((part) => part.dataset.info.split(' ').includes(room)).map((part) => part.innerHTML).join('');
   if (!parts) return;
@@ -611,6 +613,7 @@ function render() {
   else if (screen === 'verbs-cards') renderVerbCards();
   else if (screen === 'verbs-rules') renderRuleCards();
   else if (screen === 'verbs-sentences') renderVerbSentences();
+  else if (screen === 'sentences') renderSentences();
   else if (screen === 'verbs-tense') renderVerbTense();
   else if (screen === 'verbs-verb') renderVerbPage();
   else if (screen === 'story') renderStory();
@@ -1731,7 +1734,7 @@ function applyStream(next) {
   for (const held of Object.values(next.after || {})) if (held?.current?.mode === 'listen') held.current.audio.forEach(warmClip);
 }
 // "Saving…" beside a stream's or Practise's title while what was done there is still on its way to a slow Mac.
-const savingNow = () => streamSlow || (savingSlow && !!pendingGrade);
+const savingNow = () => streamSlow || scSlow || (savingSlow && !!pendingGrade);
 const savingStatusHTML = () => `<span class="compact-status saving-status" role="status">${savingNow() ? 'Saving…' : ''}</span>`;
 function refreshSavingStatus() {
   for (const element of document.querySelectorAll('.saving-status')) element.textContent = savingNow() ? 'Saving…' : '';
@@ -1782,6 +1785,7 @@ function glossFor(fr) {
   const lined = screen === 'lyrics' || screen === 'news-edition';
   const lyricLine = lined ? (() => { const [s, l] = glossLine.split('.').map(Number); return (screen === 'lyrics' ? songLyrics : newsView)?.stanzas?.[s]?.[l]; })() : null;
   if (screen === 'story') { const found = storyView?.episode.gloss.find((entry) => entry.fr === fr); return found?.new ? { ...found, note: 'New in this episode.' } : found ?? null; }
+  if (screen === 'sentences') return scCard()?.gloss.find((entry) => entry.fr === fr) ?? null;
   const lists = lined ? [lyricLine?.words] : grammarOnScreen() ? [activeGrammar()?.session?.current?.exercise?.gloss] : [streamState?.result?.gloss, streamState?.current?.gloss];
   for (const list of lists) { const found = (list || []).find((entry) => entry.fr === fr); if (found) return found; }
   return null;
@@ -3558,6 +3562,192 @@ function markVerbSentence(knew) {
     .finally(() => topUpVerbSentences());
 }
 
+// ── Sentence cards (French): hear a sentence, read it, or both; think what it means; turn the card for its English
+// (and the French, if it was heard only), with every word tappable and the recording to hear again; then Got it or
+// Not yet. The marks only decide when a sentence comes back (lib/sentence-cards.ts). The Mac sends the next few cards
+// that fit Verbs' Practising line and the room's topics; a tap moves on at once, and each mark is saved behind, one at
+// a time, in order, with its request id (kept on this device until the Mac has it), so a slow Mac never holds a card
+// up and no mark counts twice.
+const SC_MODES = { hear: ['Hear', headphones], read: ['Read', eyeIcon], both: ['Both', mixIcon] };
+let scMode = (() => { const saved = readPreference('echo.sentences-mode', 'hear'); return saved in SC_MODES ? saved : 'hear'; })();
+let scCards = null; // { items, index, revealed, fetching, asked, empty, next }
+let scTopics = null; // [{ id, title, on }] from api/sentences/options
+// More cards are asked for while this few wait; a Not yet comes back once, this many cards later.
+const SC_AHEAD = 3;
+const SC_AGAIN_AFTER = 4;
+const SC_RECENT = 12;
+const SC_SAVES_KEY = localKey('echo.sentences-saves');
+let scSaves = (() => { try { const list = JSON.parse(localStorage.getItem(SC_SAVES_KEY) || '[]'); return { queue: Array.isArray(list) ? list : [], sending: false, failed: false }; } catch { return { queue: [], sending: false, failed: false }; } })();
+let scSlow = false;
+const SC_EMPTY = {
+  tenses: 'No sentences in these tenses yet — more are being written.',
+  topics: 'Every sentence in these tenses uses a topic you switched off.',
+  words: 'These sentences use words you haven’t met yet — more are being written.',
+  recordings: 'None of these sentences is recorded yet — try Read.',
+};
+const scCard = () => scCards?.items[scCards.index] ?? null;
+function openSentences() { if (move('sentences', true)) startSentences(); }
+// The cards the phone holds or has just shown, and those whose mark is still on its way, are never sent again.
+function scExclude() {
+  if (!scCards) return scSaves.queue.map((entry) => entry.id);
+  return [...new Set([...scCards.items.slice(Math.max(0, scCards.index - SC_RECENT)).map((card) => card.id), ...scSaves.queue.map((entry) => entry.id)])];
+}
+const scRound = (exclude) => api('api/sentences/round', { method: 'POST', body: JSON.stringify({ practising: vbPractising(), mode: scMode, exclude }) });
+async function startSentences() {
+  loading = true; notice = null; retryAction = null; scCards = null; render();
+  try { const round = await scRound(scExclude()); scCards = { items: round.items, index: 0, revealed: false, fetching: false, asked: 0, empty: round.empty, next: round.next }; }
+  catch (error) { notice = { message: error.message }; retryAction = { type: 'sentences' }; }
+  loading = false;
+  if (screen !== 'sentences') return;
+  render(); scWarm(); scAutoplay();
+}
+// More cards while a few still wait; with fresh=true (a new line, topic or way) the cards waiting are chosen again,
+// and the one on screen too unless it is turned. Only the latest request's reply is used, so a reply to an older one
+// never adds stale cards.
+async function topUpSentences(fresh = false) {
+  const stream = scCards;
+  if (!stream || (stream.fetching && !fresh) || (!fresh && stream.items.length - stream.index > SC_AHEAD)) return;
+  if (fresh) stream.items = stream.items.slice(0, stream.index + (stream.revealed ? 1 : 0));
+  const asked = ++stream.asked;
+  stream.fetching = true;
+  const waitingOnScreen = stream.index >= stream.items.length;
+  if (waitingOnScreen && screen === 'sentences') render();
+  try {
+    const round = await scRound(scExclude());
+    if (scCards !== stream || asked !== stream.asked) return;
+    const held = new Set(stream.items.slice(stream.index).map((card) => card.id));
+    stream.items.push(...round.items.filter((card) => !held.has(card.id)));
+    stream.empty = round.empty; stream.next = round.next;
+  } catch (error) { if (asked === stream.asked) notice = { message: error.message }; }
+  if (asked !== stream.asked) return;
+  stream.fetching = false;
+  scWarm();
+  if (screen === 'sentences' && scCards === stream && (waitingOnScreen || fresh)) { render(); if (waitingOnScreen) scAutoplay(); }
+}
+// The recordings of the cards coming next are fetched ahead, so each plays the moment it shows.
+function scWarm() {
+  if (!scCards || scMode === 'read') return;
+  for (const card of scCards.items.slice(scCards.index, scCards.index + SC_AHEAD + 1)) warmClip(card.audio);
+}
+function scAutoplay() {
+  const card = scCard();
+  if (screen === 'sentences' && card?.audio && !scCards.revealed && scMode !== 'read' && !dialog.open) playFrench(card.audio);
+}
+function sentencesTop() {
+  return `<div class="section-top">${back('Home', 'home')}<div>${savingStatusHTML()}<span class="stream-label">Sentences</span>${infoButton('sentences')}<button class="icon" data-action="sc-options" aria-label="Sentences options" aria-haspopup="dialog">•••</button></div></div>`;
+}
+function renderSentences() {
+  const way = `<div class="practice-way sc-way" role="group" aria-label="How the sentence comes">${Object.entries(SC_MODES).map(([mode, [title, icon]]) => `<button data-action="sc-mode" data-mode="${mode}" aria-pressed="${scMode === mode}">${icon}<span>${title}</span></button>`).join('')}</div>`;
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream sc">${sentencesTop()}${way}${body}</section>`; };
+  if (loading || !scCards) { shell(loading ? '<div class="loading-state" role="status">Choosing sentences…</div>' : ''); return; }
+  const card = scCard();
+  if (!card) {
+    if (scCards.fetching) { shell('<div class="loading-state" role="status">Choosing more sentences…</div>'); return; }
+    const reason = SC_EMPTY[scCards.empty] || (scCards.next ? `All done for now — the next one is due ${dayLabel(scCards.next)}.` : 'All done for now.');
+    shell(`<div class="stream-empty"><p>${esc(reason)}</p><button class="secondary" data-action="sc-options">Settings</button></div>`);
+    return;
+  }
+  const { revealed } = scCards;
+  const showFrench = revealed || scMode !== 'hear';
+  const french = `<p class="vb-sentence sc-fr" lang="${languageTag}">${glossedHTML(card.fr, card.gloss)}</p>`;
+  const play = card.audio && (revealed || scMode !== 'read') ? `<button class="${!revealed && scMode === 'hear' ? 'listen-play' : 'icon'} sc-play" data-action="sc-play" aria-label="Play the sentence${revealed ? ' again' : ''}">${speaker}</button>` : '';
+  const face = `${showFrench ? french : ''}${revealed ? `<p class="source-word sc-en">${esc(card.en)}</p>` : ''}${play}`;
+  const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
+  const hint = revealed ? '' : `<span class="card-hint" aria-hidden="true">What does it mean? Tap to see</span>`;
+  const marks = revealed ? `<div class="sc-marks"><button class="secondary" data-action="sc-not">Not yet</button><button class="primary" data-action="sc-got">Got it</button></div>` : '';
+  shell(`${again}<div class="study-surface sc-card${revealed ? ' revealed' : ''}" id="sc-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The sentence and its meaning' : 'Turn the card'}"><div class="word-content">${face}</div>${hint}</div>${marks}`);
+}
+function revealSentence() {
+  if (!scCard() || scCards.revealed) return;
+  scCards.revealed = true; render();
+  main.querySelector('[data-action="sc-got"]')?.focus({ preventScroll: true });
+}
+function markSentence(knew) {
+  const stream = scCards;
+  const card = scCard();
+  if (!card || !stream.revealed) return;
+  stopAudio();
+  if (!knew && !card.again) stream.items.splice(Math.min(stream.items.length, stream.index + 1 + SC_AGAIN_AFTER), 0, { ...card, again: true });
+  stream.index += 1; stream.revealed = false; notice = null;
+  scSaves.queue.push({ requestId: requestId(), id: card.id, knew, again: !!card.again });
+  keepSentenceSaves();
+  render(); main.querySelector('#sc-card')?.focus({ preventScroll: true });
+  scAutoplay();
+  sendSentenceSaves();
+  topUpSentences();
+}
+function keepSentenceSaves() {
+  try { if (scSaves.queue.length) localStorage.setItem(SC_SAVES_KEY, JSON.stringify(scSaves.queue)); else localStorage.removeItem(SC_SAVES_KEY); } catch { /* private mode: kept for this visit */ }
+}
+// One mark at a time, in order: the first waits for its reply before the next goes, and a failed one goes again with
+// its own request id, so the Mac counts it once whatever happened to the reply.
+function sendSentenceSaves() {
+  const saves = scSaves;
+  if (saves.sending || saves.failed || !saves.queue.length) return;
+  saves.sending = true;
+  const entry = saves.queue[0];
+  const slow = setTimeout(() => { scSlow = true; refreshSavingStatus(); }, SLOW_SAVE);
+  api('api/sentences/mark', { method: 'POST', body: JSON.stringify(entry), limit: GRADE_LIMIT }).then(() => {
+    clearTimeout(slow); saves.sending = false;
+    if (saves.queue[0] === entry) saves.queue.shift();
+    keepSentenceSaves();
+    if (!saves.queue.length) { scSlow = false; refreshSavingStatus(); }
+    sendSentenceSaves();
+  }, (error) => {
+    clearTimeout(slow); saves.sending = false;
+    // The Mac answered and turned this mark down (a sentence no longer in Echo): it can never count, so it goes.
+    if (error.status && error.status < 500) { saves.queue.shift(); keepSentenceSaves(); notice = { message: `A mark was not saved: ${error.message}` }; sendSentenceSaves(); }
+    else { saves.failed = true; scSlow = false; notice = { message: error.message }; retryAction = { type: 'sentence-saves' }; }
+    if (screen === 'sentences') render(); else refreshSavingStatus();
+  });
+}
+function resumeSentenceSaves() {
+  if (retryAction?.type === 'sentence-saves') { notice = null; retryAction = null; }
+  scSaves.failed = false;
+  if (screen === 'sentences') render();
+  sendSentenceSaves();
+}
+function chooseSentenceMode(mode) {
+  if (!(mode in SC_MODES) || mode === scMode) return;
+  scMode = mode; savePreference('echo.sentences-mode', mode);
+  stopAudio(); render();
+  // Hear offers only recorded sentences, so the cards are chosen again for the new way.
+  topUpSentences(true);
+}
+// Options: the Practising line's tenses (the same line as in Verbs: a change here is a change there) and the grammar
+// topics, each on unless switched off.
+async function openSentenceOptions() {
+  const draw = () => {
+    const tenses = Object.entries(VB_TENSES).map(([tense, label]) => `<button class="vb-pill" data-action="sc-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${label}</button>`).join('');
+    const topics = scTopics ? scTopics.map((topic) => `<button class="vb-pill" data-action="sc-topic" data-topic="${esc(topic.id)}" aria-pressed="${topic.on}">${esc(topic.title)}</button>`).join('') : '<p class="caption">Loading topics…</p>';
+    openDialog('Sentences options', `<p class="settings-label vb-label vb-first">Tenses · your Practising line in Verbs</p><div class="vb-pills">${tenses}</div><p class="settings-label vb-label">Grammar topics</p><div class="vb-pills sc-topics">${topics}</div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'sc-options');
+  };
+  draw();
+  if (scTopics) return;
+  try { scTopics = (await api('api/sentences/options')).topics; } catch (error) { notice = { message: error.message }; }
+  if (dialog.open && dialog.dataset.kind === 'sc-options') draw();
+}
+function chooseSentenceTense(tense) {
+  const next = verbTenses.includes(tense) ? verbTenses.filter((entry) => entry !== tense) : [...verbTenses, tense];
+  if (!next.length) return;
+  verbTenses = Object.keys(VB_TENSES).filter((entry) => next.includes(entry)); savePreference('echo.verbs-tenses', JSON.stringify(verbTenses));
+  openSentenceOptions();
+  scChanged();
+}
+async function chooseSentenceTopic(id, button) {
+  const topic = scTopics?.find((entry) => entry.id === id);
+  if (!topic) return;
+  topic.on = !topic.on; button.setAttribute('aria-pressed', String(topic.on));
+  try { scTopics = (await api('api/sentences/topic', { method: 'POST', body: JSON.stringify({ topic: id, on: topic.on }) })).topics; }
+  catch (error) { topic.on = !topic.on; button.setAttribute('aria-pressed', String(topic.on)); notice = { message: error.message }; }
+  scChanged();
+}
+// A changed line or topic: the cards waiting are chosen again, or the room starts again from an empty one.
+function scChanged() {
+  if (screen !== 'sentences') return;
+  if (scCards && scCard()) topUpSentences(true); else startSentences();
+}
+
 // ── Type it: type one form at a time, as endless as Cards. A wrong answer comes back once, four forms later;
 // more forms are chosen from the answers so far while a few are still waiting.
 const topUpVerbForms = () => topUpVerbStream(verbForms, 'api/verbs/round', () => verbForms, 'verbs-forms');
@@ -4210,7 +4400,7 @@ function lookupGloss(fr) {
   glossWord = entry; addStatus = '';
   renderGlossSheet();
   if (screen === 'story' && storyView && !storyView.read) storyTaps.add(fr);
-  if (grammarOnScreen() || screen === 'lyrics' || screen === 'news-edition' || screen === 'story') return;
+  if (grammarOnScreen() || screen === 'lyrics' || screen === 'news-edition' || screen === 'story' || screen === 'sentences') return;
   const view = streamState?.current;
   if (!view || streamState.result || view.mode !== 'read' || (streamState.lookups || []).includes(fr)) return;
   // The lookup is saved behind, before the answer that it makes a helped one.
@@ -4854,6 +5044,8 @@ function retry() {
   const action = retryAction;
   if (action.type === 'grades') resumeGrades();
   else if (action.type === 'stream-saves') resumeStreamSaves();
+  else if (action.type === 'sentence-saves') resumeSentenceSaves();
+  else if (action.type === 'sentences') startSentences();
   else if (action.run) runAction(action.run);
   else if (action.body) runMutation(action);
   else if (action.type === 'grammar-state') { if (move(action.place)) loadGrammar(action.message, action.preserveDraft); }
@@ -4905,6 +5097,13 @@ document.addEventListener('click', (event) => {
   if (!button && screen === 'verbs-cards' && event.target.closest('#vb-card')) { revealVerbCard(); return; }
   if (!button && screen === 'verbs-rules' && event.target.closest('#vb-card')) { revealRuleCard(); return; }
   if (!button && screen === 'verbs-sentences' && event.target.closest('#vb-sentence')) { revealVerbSentence(); return; }
+  if (!button && screen === 'sentences' && event.target.closest('#sc-card')) { revealSentence(); return; }
+  if (action === 'sc-play') { const card = scCard(); if (card?.audio) playFrench(card.audio); return; }
+  if (action === 'sc-got' || action === 'sc-not') { markSentence(action === 'sc-got'); return; }
+  if (action === 'sc-mode') { chooseSentenceMode(button.dataset.mode); return; }
+  if (action === 'sc-options') { openSentenceOptions(); return; }
+  if (action === 'sc-tense') { chooseSentenceTense(button.dataset.tense); return; }
+  if (action === 'sc-topic') { chooseSentenceTopic(button.dataset.topic, button); return; }
   if (busy) return;
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }
   if (button?.dataset.direction) {
@@ -4964,6 +5163,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'hint') { if (activeGrammar()?.session?.current?.hint) { hintOpen = !hintOpen; render(); } else grammarMutation('help', { kind: 'hint' }); }
   else if (action === 'listen') openListen();
   else if (action === 'read') openStream('read');
+  else if (action === 'sentences') openSentences();
   else if (action === 'practise') openMix();
   else if (action === 'mistakes') openMistakes();
   else if (action === 'friends') openFriends();
@@ -5103,6 +5303,11 @@ document.addEventListener('keydown', (event) => {
     else if (verbSentences.revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) { event.preventDefault(); markVerbSentence(event.key === 'ArrowRight'); }
     return;
   }
+  if (screen === 'sentences' && scCard() && !event.ctrlKey && !event.altKey && !event.metaKey && !event.target.closest('input,select,textarea')) {
+    if (!scCards.revealed && (event.key === ' ' || event.key === 'Enter') && !event.target.closest('button,a')) { event.preventDefault(); revealSentence(); }
+    else if (scCards.revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) { event.preventDefault(); markSentence(event.key === 'ArrowRight'); }
+    return;
+  }
   if (event.ctrlKey || event.altKey || event.metaKey || !vocabularyCard() || event.target.closest('input,select,textarea,[contenteditable="true"]')) return;
   if (!revealed && (event.key === ' ' || event.key === 'Enter') && !event.target.closest('button,a')) { event.preventDefault(); reveal(); }
   else if (revealed && (event.key === 'ArrowLeft' || event.key === 'ArrowRight') && (!event.target.closest('button,a') || event.target.closest('.card-zone'))) { event.preventDefault(); grade(event.key === 'ArrowRight'); }
@@ -5162,6 +5367,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'verbs-cards') startVerbCards();
   else if (screen === 'verbs-rules') startRuleCards();
   else if (screen === 'verbs-sentences') startVerbSentences();
+  else if (screen === 'sentences') startSentences();
   else if (screen === 'verbs-tense') loadVerbTense();
   else if (screen === 'verbs-verb') loadVerbPage();
   else if (screen === 'story') loadStory();
@@ -5170,6 +5376,7 @@ window.addEventListener('popstate', (event) => {
   else if (screen === 'news-edition') loadNewsEdition();
 });
 resumeKeptSaves();
+sendSentenceSaves();
 if (requestedScreen === 'practice') { if (move('practice', true)) fetchState(); }
 else if (requestedScreen === 'grammar' && !roomsOff.has('grammar')) { if (move('grammar', true)) loadGrammar(); }
 // The tape starts at once where the browser allows it; Safari wants a tap first, and then Play is right there.

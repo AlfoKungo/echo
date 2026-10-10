@@ -26,10 +26,10 @@ const COOKIE = 'echo_session';
 const IDLE = 30 * 60_000;
 // Rooms that write or record for one person, or (say) run speech recognition, which one Mac cannot do per friend;
 // write asks Claude on every answer, news fetches, transcribes and has Claude note every edition, changeit has
-// Claude write its drills, sentencecards has Claude write the sentences of Verbs' In sentences, and earsentences
-// (Grammar by ear in Listen) has Claude write its questions. languages (the switch to Portuguese and Swedish) is the
-// owner's alone.
-const ROOMS_OFF = 'story,radio,songs,friends,say,write,news,changeit,sentencecards,earsentences,languages';
+// Claude write its drills, sentencecards has Claude write the sentences of Verbs' In sentences, earsentences
+// (Grammar by ear in Listen) has Claude write its questions, and sentences (Sentence cards) has Claude write sentences
+// for one learner's tenses and words. languages (the switch to Portuguese and Swedish) is the owner's alone.
+const ROOMS_OFF = 'story,radio,songs,friends,say,write,news,changeit,sentencecards,earsentences,sentences,languages';
 
 export type PilotOptions = {
   data: string; origin: string; ownerData: string; firstPort: number;

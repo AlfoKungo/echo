@@ -1,10 +1,12 @@
 // Names every clip a set needs in the language ECHO_LANG picks (French when unset), so the renderer never has to read
 // Echo's content itself.
-// Usage: bun scripts/list-clips.ts comprehension|grammar|story|verbs  ->  [{ "id": "...", "text": "..." }] on stdout.
-// verbs is the Verbs room's phrases in Portuguese or Swedish (lib/verb-phrases.ts).
+// Usage: bun scripts/list-clips.ts comprehension|grammar|story|verbs|sentences  ->  [{ "id": "...", "text": "..." }] on stdout.
+// verbs is the Verbs room's phrases in Portuguese or Swedish (lib/verb-phrases.ts). sentences is the sentences Echo
+// wrote for Sentence cards (lib/text-topup.ts), recorded in their own set (audio/sentences) so that recording them
+// never touches the comprehension clips.
 import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { loadBank } from '../lib/comprehension-content';
+import { loadBank, loadCards } from '../lib/comprehension-content';
 import { grammarSpeech, loadCourse } from '../lib/grammar-content';
 import { currentLanguage } from '../lib/language';
 import { verbClip } from '../lib/verb-grammar';
@@ -13,8 +15,8 @@ import { verbPhrases } from '../lib/verb-phrases';
 const root = join(import.meta.dir, '..');
 const language = currentLanguage(root);
 const set = process.argv[2];
-if (set !== 'comprehension' && set !== 'grammar' && set !== 'story' && set !== 'verbs') {
-  console.error('Usage: bun scripts/list-clips.ts comprehension|grammar|story|verbs');
+if (set !== 'comprehension' && set !== 'grammar' && set !== 'story' && set !== 'verbs' && set !== 'sentences') {
+  console.error('Usage: bun scripts/list-clips.ts comprehension|grammar|story|verbs|sentences');
   process.exit(2);
 }
 
@@ -31,6 +33,11 @@ if (set === 'verbs') {
   for (const passage of bank.passages) {
     passage.lines.forEach((line, index) => clips.push({ id: `${passage.id}-${index + 1}`, text: line.fr }));
   }
+} else if (set === 'sentences') {
+  // The folders of written cards, colon-separated (the server names its live and pending ones); French's data/ by default.
+  const dirs = process.env.ECHO_SENTENCE_CARDS_DIRS?.split(':').filter(Boolean) ?? [join(root, 'data/sentence-cards')];
+  const taken = new Set((await loadBank(root, process.env.ECHO_COMPREHENSION_DIR, [], language)).sentences.map((sentence) => sentence.id));
+  for (const sentence of await loadCards(root, dirs, taken)) clips.push({ id: sentence.id, text: sentence.fr });
 } else if (set === 'story') {
   // Story episodes Echo wrote (lib/story.ts), one clip per line, numbered from one; the server names the folder.
   const dir = process.env.ECHO_STORY_DIR ?? join(root, 'data/story');

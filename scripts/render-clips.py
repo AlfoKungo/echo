@@ -1,8 +1,9 @@
 """Explicit offline build of whole clips for one set, in French or (--lang) Brazilian Portuguese or Swedish; never a
 page-load service.
 
-A set is `comprehension` (graded sentences and passage lines) or `grammar` (the spoken
-correct sentence of every exercise). `bun scripts/list-clips.ts <set>`, run with ECHO_LANG set to the
+A set is `comprehension` (graded sentences and passage lines), `grammar` (the spoken
+correct sentence of every exercise) or `sentences` (the sentences Echo wrote for Sentence cards, in their own set and
+folder, audio/sentences, so recording them never re-records a comprehension clip). `bun scripts/list-clips.ts <set>`, run with ECHO_LANG set to the
 language, names the clips, so this script never reads Echo's content itself.
 
 French and Portuguese speak in the Chatterbox voice (Portuguese with lang_code pt, as render-audio.py --lang pt), each
@@ -38,7 +39,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 # verbs: the Verbs room's spoken phrases outside French (list-clips.ts verbs, on the Verbs branch).
-SETS = ('comprehension', 'grammar', 'story', 'verbs')
+SETS = ('comprehension', 'grammar', 'story', 'verbs', 'sentences')
 MODEL = 'mlx-community/chatterbox-multilingual-v3'
 REFERENCE = ROOT / 'voices' / 'french-reference.wav'
 VOICE_PROVENANCE = ROOT / 'voices' / 'provenance.json'
@@ -58,7 +59,7 @@ CLIP_ID = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*')
 # makes it re-render; the record notes it (leadIn) and the check runs on the padded mp3.
 LEAD_IN = 'silenceremove=start_periods=1:start_threshold=-60dB,adelay=250:all=1,asetnsamples=n=1152:p=1'
 LEAD_IN_MS = 250
-LEAD_IN_SETS = ('comprehension',)
+LEAD_IN_SETS = ('comprehension', 'sentences')
 # What the Chatterbox languages change: the language Chatterbox is told, Whisper's language and espeak-ng's voice.
 # French keeps its settings exactly, so its clip signatures never change. Swedish is not here: it has its own voice
 # (build_swedish). main() picks the entry for --lang.
@@ -351,6 +352,14 @@ def build(args, audio):
         if (args.force or not path.is_file() or cached.get('signature') != signature(clip)
                 or cached.get('sha256') != hashlib.sha256(path.read_bytes()).hexdigest()):
             pending.append(clip)
+    if args.dry_run:
+        # Reads only: names every clip a real run would record (no signature, a changed text or setting, or a
+        # changed file), and writes nothing.
+        for clip in pending:
+            print(json.dumps({'wouldRender': clip['id'], 'text': clip['text']}, ensure_ascii=False), flush=True)
+        print(json.dumps({'set': args.set, 'dryRun': True, 'requested': len(clips), 'cached': len(clips) - len(pending),
+                          'pending': len(pending)}), flush=True)
+        return 0
     if not pending:
         print(json.dumps({'set': args.set, 'cached': len(clips), 'pending': 0}), flush=True)
         return 0
@@ -470,6 +479,14 @@ def build_swedish(args, audio):
         if (args.force or not path.is_file() or cached.get('signature') != signature(clip)
                 or cached.get('sha256') != hashlib.sha256(path.read_bytes()).hexdigest()):
             pending.append(clip)
+    if args.dry_run:
+        # Reads only: names every clip a real run would record (no signature, a changed text or setting, or a
+        # changed file), and writes nothing.
+        for clip in pending:
+            print(json.dumps({'wouldRender': clip['id'], 'text': clip['text']}, ensure_ascii=False), flush=True)
+        print(json.dumps({'set': args.set, 'dryRun': True, 'requested': len(clips), 'cached': len(clips) - len(pending),
+                          'pending': len(pending)}), flush=True)
+        return 0
     if not pending:
         print(json.dumps({'set': args.set, 'cached': len(clips), 'pending': 0}), flush=True)
         return 0
@@ -588,9 +605,18 @@ def main():
     parser.add_argument('--seeds', default='42,17,101', help='Deterministic retry seeds, tried in order')
     parser.add_argument('--pad', action='store_true', help='Only give the recorded clips that lack it the 250 ms lead-in')
     parser.add_argument('--audio-dir', type=Path, help="Where the set's clips, manifest and failures live (audio/<set>, or audio/<code>/<set>, unless given); point elsewhere to trial a change")
+    parser.add_argument('--dry-run', action='store_true', help='Only list the clips a run would record; write nothing and load no model')
     args = parser.parse_args()
     LANGUAGE = LANGUAGES.get(args.lang, LANGUAGES['fr'])
     audio = args.audio_dir or (ROOT / 'audio' / args.set if args.lang == 'fr' else ROOT / 'audio' / args.lang / args.set)
+    if args.dry_run:
+        if args.lang == 'sv':
+            raise SystemExit('--dry-run covers the Chatterbox languages (fr, pt)')
+        try:
+            return build(args, audio)
+        except Exception as error:
+            print(f'{args.set} dry run failed: {error}', file=sys.stderr)
+            return 1
     audio.mkdir(parents=True, exist_ok=True)
     shown = audio.relative_to(ROOT) if audio.is_relative_to(ROOT) else audio
 

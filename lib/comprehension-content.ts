@@ -1,7 +1,8 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import type { ComprehensionLane, ComprehensionPassage, ComprehensionSentence, Gloss, PassageLine } from '../comprehension-contract';
+import type { CardLane, CardSentence, ComprehensionLane, ComprehensionPassage, ComprehensionSentence, Gloss, PassageLine } from '../comprehension-contract';
 import { languages, type Language, type LanguageCode } from './language';
+import { TENSE_TAGS } from './tenses';
 import { StoreError } from './store';
 
 export type Bank = { sentences: ComprehensionSentence[]; passages: ComprehensionPassage[] };
@@ -32,7 +33,8 @@ export function wholeMatches(text: string, needle: string): number[] {
 
 // Validates one lane file; `where` names it in messages. Pure, so the author check and the server share it.
 // `code` picks the typography the learnt text is checked against; every field is read as Echo's internal `fr`.
-export function validateLane(lane: ComprehensionLane, where: string, known: Known, ids: Set<string>, code: LanguageCode = 'fr'): string[] {
+// A Sentence cards lane (`cards`) has no passages, and its sentences carry tenses instead of distractors.
+export function validateLane(lane: ComprehensionLane | CardLane, where: string, known: Known, ids: Set<string>, code: LanguageCode = 'fr', cards = false): string[] {
   const errors: string[] = [];
   const say = (id: string, message: string) => errors.push(`${where} ${id}: ${message}`);
   const plain = (id: string, label: string, value: unknown, allowEmpty = false) => {
@@ -81,8 +83,8 @@ export function validateLane(lane: ComprehensionLane, where: string, known: Know
       if (entry.word !== undefined && !known.words.has(entry.word)) say(id, `gloss "${entry.fr}" links unknown vocabulary id ${entry.word}.`);
     }
   };
-  if (!lane || !Array.isArray(lane.sentences) || !Array.isArray(lane.passages)) return [`${where}: must be { "sentences": [...], "passages": [...] }.`];
-  for (const sentence of lane.sentences) {
+  if (!lane || !Array.isArray(lane.sentences) || (!cards && !Array.isArray((lane as ComprehensionLane).passages))) return [`${where}: must be { "sentences": [...]${cards ? '' : ', "passages": [...]'} }.`];
+  for (const sentence of lane.sentences as ComprehensionSentence[]) {
     if (!identity(sentence?.id)) continue;
     const id = sentence.id;
     if (!LEVELS.has(sentence.level)) say(id, 'level must be A1, A2 or B1.');
@@ -91,7 +93,10 @@ export function validateLane(lane: ComprehensionLane, where: string, known: Know
     if (typeof sentence.fr !== 'string') continue;
     const limit = SENTENCE_WORDS[sentence.level as keyof typeof SENTENCE_WORDS];
     if (limit && wordCount(sentence.fr) > limit) say(id, `has ${wordCount(sentence.fr)} words; ${sentence.level} sentences take at most ${limit}.`);
-    if (!Array.isArray(sentence.distractors) || sentence.distractors.length < 2 || sentence.distractors.length > 3) say(id, 'needs 2–3 distractors.');
+    if (cards) {
+      const tenses = (sentence as unknown as CardSentence).tenses;
+      if (!Array.isArray(tenses) || tenses.some((tense) => !TENSE_TAGS.includes(tense)) || new Set(tenses).size !== tenses.length) say(id, `tenses must list each of ${TENSE_TAGS.join(', ')} it uses once.`);
+    } else if (!Array.isArray(sentence.distractors) || sentence.distractors.length < 2 || sentence.distractors.length > 3) say(id, 'needs 2–3 distractors.');
     else {
       const all = [sentence.en, ...sentence.distractors].map((value) => String(value).toLowerCase().replace(/[.!?]+$/, '').trim());
       if (new Set(all).size !== all.length) say(id, 'a distractor repeats the meaning or another distractor.');
@@ -100,7 +105,7 @@ export function validateLane(lane: ComprehensionLane, where: string, known: Know
     tags(id, sentence.topics, sentence.words);
     glosses(id, sentence.gloss, sentence.fr);
   }
-  for (const passage of lane.passages) {
+  for (const passage of cards ? [] : (lane as ComprehensionLane).passages) {
     if (!identity(passage?.id)) continue;
     const id = passage.id;
     if (!LEVELS.has(passage.level)) say(id, 'level must be A1, A2 or B1.');
@@ -161,12 +166,13 @@ export function unglossed(text: string, gloss: { fr: string }[], code: LanguageC
 
 // The lane rules on top of the format: the file name gives the level and the id prefix, every item tags a word,
 // and every content word is glossed. Item counts are an authoring rule, checked by scripts/check-comprehension.ts.
-export function laneProblems(lane: ComprehensionLane, name: string, known: Known, ids: Set<string>, code: LanguageCode = 'fr'): string[] {
-  const errors = validateLane(lane, `${name}.json`, known, ids, code);
-  const level = /^(a1|a2|b1)-/.exec(name)?.[1]?.toUpperCase();
-  if (!level) errors.push(`lane file name must start with a1-, a2- or b1-.`);
-  const sentences = Array.isArray(lane?.sentences) ? lane.sentences : [];
-  const passages = Array.isArray(lane?.passages) ? lane.passages : [];
+// A Sentence cards lane mixes levels, so its name gives only the id prefix.
+export function laneProblems(lane: ComprehensionLane | CardLane, name: string, known: Known, ids: Set<string>, code: LanguageCode = 'fr', cards = false): string[] {
+  const errors = validateLane(lane, `${name}.json`, known, ids, code, cards);
+  const level = cards ? undefined : /^(a1|a2|b1)-/.exec(name)?.[1]?.toUpperCase();
+  if (!cards && !level) errors.push(`lane file name must start with a1-, a2- or b1-.`);
+  const sentences: (ComprehensionSentence | CardSentence)[] = Array.isArray(lane?.sentences) ? lane.sentences : [];
+  const passages = !cards && Array.isArray((lane as ComprehensionLane)?.passages) ? (lane as ComprehensionLane).passages : [];
   for (const item of [...sentences, ...passages]) {
     if (typeof item?.id === 'string' && !item.id.startsWith(`${name}-`)) errors.push(`${item.id}: ids must start with "${name}-".`);
     if (level && item?.level !== level) errors.push(`${item?.id}: this lane is ${level}.`);
@@ -246,4 +252,22 @@ export async function loadBank(root: string, dir?: string, generated: string[] =
   }
   if (!bank.sentences.length) throw new StoreError('Comprehension content is empty.');
   return bank;
+}
+
+// The sentences Echo wrote for Sentence cards (lib/text-topup.ts), from each folder in `dirs`. They passed these checks
+// when they were written, so a file that no longer does is left out with a logged reason instead of stopping Echo.
+// `ids` holds the ids already taken (the bank's), so no card shares one with a Listen or Read sentence.
+export async function loadCards(root: string, dirs: string[], ids: Set<string>): Promise<CardSentence[]> {
+  const known = await loadKnown(root);
+  const sentences: CardSentence[] = [];
+  for (const dir of dirs) for (const file of laneFiles(dir)) {
+    let lane: CardLane;
+    try { lane = await Bun.file(join(dir, file)).json() as CardLane; } catch { console.error(`sentences: ${join(dir, file)} is not valid JSON; left out`); continue; }
+    const trial = new Set(ids);
+    const problems = laneProblems(lane, file.slice(0, -5), known, trial, 'fr', true);
+    if (problems.length) { console.error(`sentences: ${join(dir, file)} left out: ${problems.slice(0, 3).join('; ')}`); continue; }
+    for (const id of trial) ids.add(id);
+    sentences.push(...lane.sentences);
+  }
+  return sentences;
 }

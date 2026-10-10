@@ -3,8 +3,11 @@ import { dirname, join } from 'node:path';
 import { createStore, StoreError } from './lib/store';
 import { createGrammarStore } from './lib/grammar-store';
 import { loadCourse, type Course } from './lib/grammar-content';
-import { loadBank, type Bank } from './lib/comprehension-content';
+import { loadBank, loadCards, type Bank } from './lib/comprehension-content';
 import { createComprehensionRoutes } from './lib/comprehension-routes';
+import { SENTENCE_CLIP_VERSION } from './lib/comprehension-store';
+import { createSentenceCards, type PoolSentence } from './lib/sentence-cards';
+import { loadTenseDetector } from './lib/tenses';
 import { createGrammarEar } from './lib/grammar-ear';
 import { buildTape, createClips, FRAME_BYTES, FRAME_SECONDS, layTape, planSentences, planTape, SENTENCE_TIMING, tapeView, VERB_TIMING, type Tape, type TapeItem } from './lib/walkman';
 import { createSongs } from './lib/songs';
@@ -140,6 +143,27 @@ const between = (stream: StreamId) => (stream === 'listen' && grammarEar ? { ear
 // Each language's Listen plays its own recordings (audio/<code>/comprehension outside French).
 const comprehensionAudio = { audioDir: join(language.audio, 'comprehension'), languageName: language.english };
 let comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between, ...comprehensionAudio });
+// Sentence cards (French): the bank's sentences and the ones written for the room (<data>/sentence-cards, recorded
+// into audio/sentences), each with the tenses lib/tenses.ts finds in it, worked out once whenever the pool is built.
+const sentenceCardsOn = has('sentences');
+const cardLanes = join(dirname(dbPath), 'sentence-cards');
+const cardAudio = join(language.audio, 'sentences');
+const tenseDetector = sentenceCardsOn ? await loadTenseDetector(root) : null;
+let cardPool: PoolSentence[] = [];
+async function buildCardPool() {
+  if (!tenseDetector) return;
+  const bankSentences: PoolSentence[] = bank.sentences.map(({ distractors: _distractors, ...sentence }) => ({
+    ...sentence, tenses: tenseDetector.detect(sentence.fr, sentence.gloss),
+    audio: `audio/comprehension/${sentence.id}.mp3?v=${SENTENCE_CLIP_VERSION}`, clip: join(comprehensionAudio.audioDir, `${sentence.id}.mp3`),
+  }));
+  const written = await loadCards(root, [cardLanes], new Set(bank.sentences.map((sentence) => sentence.id)));
+  cardPool = [...bankSentences, ...written.map((sentence) => ({ ...sentence, audio: `audio/sentences/${sentence.id}.mp3?v=1`, clip: join(cardAudio, `${sentence.id}.mp3`) }))];
+}
+await buildCardPool();
+const sentenceCards = sentenceCardsOn ? createSentenceCards({
+  dbPath, pool: () => cardPool, vocabulary: () => store.listening(), recorded: (clip) => existsSync(clip),
+  topics: () => course.topics.map((topic) => ({ id: topic.id, title: topic.title })),
+}) : null;
 const texts = createTextTopup({
   root, dataDir: dirname(dbPath), ask, stock: () => comprehension.stock(), attempts,
   ...(process.env.ECHO_TEXT_THRESHOLD ? { threshold: Number(process.env.ECHO_TEXT_THRESHOLD) } : {}),
@@ -151,7 +175,17 @@ const texts = createTextTopup({
     const previous = comprehension;
     comprehension = createComprehensionRoutes({ root, dbPath, bank, vocabulary: store, grammar, shakyForms: () => verbs.shaky(), between, ...comprehensionAudio });
     setTimeout(() => previous.close(), 60_000);
+    await buildCardPool();
   },
+  ...(sentenceCards ? {
+    cards: {
+      stock: () => sentenceCards.stock(),
+      words: () => store.listening().filter((word) => word.status !== 'new').map((word) => ({ id: word.id, fr: word.fr })),
+      existing: () => cardPool.map((sentence) => sentence.fr),
+      record: (ids: string[], dirs: string[]) => runPython(['scripts/render-clips.py', '--set', 'sentences', '--ids', ids.join(',')], { ECHO_SENTENCE_CARDS_DIRS: dirs.join(':') }),
+      reload: buildCardPool,
+    },
+  } : {}),
 });
 const textsStarted = claudeJob('ECHO_TEXT_TOPUP') && comprehensionOn ? texts.resume() : Promise.resolve();
 const textChecks = setInterval(() => { if (claudeJob('ECHO_TEXT_TOPUP') && comprehensionOn) void texts.check(); }, 10 * 60_000);
@@ -854,6 +888,19 @@ async function route(req: Request): Promise<Response> {
       if (!await file.exists()) return json({ error: 'This phrase has not been recorded yet.' }, 404);
       return audioFile(req, file);
     }
+    if (sentenceCards && path.startsWith('/api/sentences/')) {
+      if (path === '/api/sentences/round' && req.method === 'POST') return json(sentenceCards.round(await body(req)));
+      if (path === '/api/sentences/mark' && req.method === 'POST') return json(sentenceCards.mark(await body(req)));
+      if (path === '/api/sentences/options' && req.method === 'GET') return json(sentenceCards.options());
+      if (path === '/api/sentences/topic' && req.method === 'POST') return json(sentenceCards.setTopic(await body(req)));
+    }
+    const cardClip = sentenceCards ? path.match(/^\/audio\/sentences\/([a-z0-9-]+)\.mp3$/) : null;
+    if (cardClip && (req.method === 'GET' || req.method === 'HEAD')) {
+      if (!cardPool.some((sentence) => sentence.clip === join(cardAudio, `${cardClip[1]}.mp3`))) return json({ error: 'This recording is not part of Sentence cards.' }, 404);
+      const file = Bun.file(join(cardAudio, `${cardClip[1]}.mp3`));
+      if (!await file.exists()) return json({ error: 'This sentence has not been recorded yet. Read it instead.' }, 404);
+      return audioFile(req, file);
+    }
     if (path === '/api/sounds' && req.method === 'GET') return json({ contrasts: sounds.summary() });
     if (path === '/api/sounds/round' && req.method === 'POST') { const data = await body(req); return json({ questions: sounds.round(String(data.id ?? '')) }); }
     if (path === '/api/sounds/answer' && req.method === 'POST') { const data = await body(req); return json(sounds.answer(data as unknown as SoundAnswer)); }
@@ -933,6 +980,7 @@ async function stop() {
   writeIt.close();
   changeIt?.close();
   verbSentences?.close();
+  sentenceCards?.close();
   grammarEar?.close();
   sounds.close();
   verbs.close();

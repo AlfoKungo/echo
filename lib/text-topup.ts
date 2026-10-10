@@ -4,13 +4,19 @@
 // and checks it with the same rules as the written lanes, sending any broken item back to be fixed. The lane is
 // recorded with scripts/render-clips.py, then joins practice. Lanes wait in <data>/comprehension-pending until
 // recorded and live in <data>/comprehension after that.
+// It also keeps Sentence cards from running dry (writeCards, checkCards): sentences written for the Practising line's
+// tenses and the words the learner has met, checked by the same lane rules and by lib/tenses.ts, recorded into
+// audio/sentences, waiting in <data>/sentence-cards-pending and living in <data>/sentence-cards.
 import { existsSync, mkdirSync, readdirSync, renameSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { GrammarLevel } from '../contract';
-import type { ComprehensionLane, ComprehensionPassage, ComprehensionSentence, Gloss } from '../comprehension-contract';
+import type { CardLane, CardSentence, ComprehensionLane, ComprehensionPassage, ComprehensionSentence, Gloss } from '../comprehension-contract';
 import { laneProblems, loadKnown, PASSAGE_WORDS, SENTENCE_WORDS, type Known } from './comprehension-content';
 import type { Ask } from './claude';
+import { mixCounts } from './practising';
 import type { Attempts } from './recording-attempts';
+import { loadTenseDetector, type TenseDetector } from './tenses';
+import type { Tense } from './verbs';
 
 export const LOW = 10;
 const SENTENCES = 50;
@@ -97,14 +103,16 @@ export function buildPassage(raw: RawPassage, id: string, level: GrammarLevel, k
   };
 }
 
-const RULES = (level: GrammarLevel) => `Rules for every item:
-- Natural, correct, standard written French that a French teacher would sign off, about everyday life on the theme. Vary people, places and situations.
-- ${level} level: ${level === 'A1' ? 'mostly the present tense, futur proche, simple questions and negation; very common words' : level === 'A2' ? 'the passé composé and imparfait, futur proche and futur simple, object pronouns, comparisons; common words' : 'opinions and reasons, the conditional, si-clauses, the subjunctive after common triggers, relative pronouns, connectors'}. Use words from the vocabulary list where you can; other common words are fine.
-- French uses the typographic apostrophe ’ and a space before ? ! : ;
+// What every item Claude writes follows, whatever it is for.
+const ITEM_RULES = `- French uses the typographic apostrophe ’ and a space before ? ! : ;
 - "topics": grammar topic ids from the list that the item really uses.
 - "words": vocabulary ids from the list for words the item uses.
 - "gloss": one entry for EVERY word in the French except these little words: le la les l’ un une des de du d’ à au aux et ou mais je j’ tu il elle on nous vous ils elles ne n’ pas que qu’ ce c’ se s’ me m’ te t’ y en. A fixed expression (s’il vous plaît, ce soir, il y a) may be one entry. "fr" is the exact text as it appears (same case and apostrophe), a whole word or phrase; "en" is its meaning here (for a verb, add the infinitive: "eat; are eating (manger)"); "word" is its vocabulary id when it is that word from the list. Never list the same "fr" twice.
 - English is natural English. Plain text only, no markup.`;
+const RULES = (level: GrammarLevel) => `Rules for every item:
+- Natural, correct, standard written French that a French teacher would sign off, about everyday life on the theme. Vary people, places and situations.
+- ${level} level: ${level === 'A1' ? 'mostly the present tense, futur proche, simple questions and negation; very common words' : level === 'A2' ? 'the passé composé and imparfait, futur proche and futur simple, object pronouns, comparisons; common words' : 'opinions and reasons, the conditional, si-clauses, the subjunctive after common triggers, relative pronouns, connectors'}. Use words from the vocabulary list where you can; other common words are fine.
+${ITEM_RULES}`;
 
 function sentencesPrompt(level: GrammarLevel, theme: string, context: string, example: RawSentence[]): string {
   return `You write graded French for Echo, an app for an English speaker learning French. Write ${SENTENCES} new ${level} sentences on the theme "${theme}".
@@ -154,9 +162,162 @@ ${JSON.stringify(broken)}
 Reply with only JSON: {"items": [{"ref": "...", "item": {...}}]} with one fixed item for every ref.`;
 }
 
+// ── Sentence cards: sentences written for the learner's Practising tenses and the words they know ──
+// The tenses and words a batch is written for: Verbs' Practising line and every deck word the learner has met.
+export type CardTarget = { tenses: Tense[]; words: VocabularyWord[] };
+export const CARD_BATCH = 50;
+// A batch left with fewer than this share of its sentences after the repair rounds is not kept.
+const MIN_CARDS = 0.6;
+// A new batch is written when fewer offerable sentences than this are left unseen.
+export const CARD_LOW = 40;
+// The levels a batch spreads over: mostly A1 and A2, some B1.
+const CARD_LEVELS: [GrammarLevel, number][] = [['A1', 0.4], ['A2', 0.45], ['B1', 0.15]];
+// Everyday themes a batch is steered towards, one per batch in turn, so the sentences do not all sound alike.
+export const CARD_THEMES = ['home and family', 'food and cooking', 'shopping', 'the town and getting around', 'work and colleagues',
+  'school and learning', 'friends and free time', 'sport and health', 'the weather and seasons', 'travel and holidays', 'neighbours',
+  'the morning and the evening', 'money and bills', 'phones and messages', 'animals and nature', 'clothes', 'feelings', 'weekends',
+  'cafés and restaurants', 'appointments and plans', 'the house and repairs', 'cinema, music and books', 'children', 'birthdays and parties',
+  'the doctor and the pharmacy', 'trains, buses and cars', 'small problems and how they were solved', 'the garden and the market'];
+const TENSE_WORDS: { [tense in Tense]: string } = { pres: 'the présent (futur proche and venir de + infinitive count as présent)', pc: 'the passé composé', imp: 'the imparfait', fut: 'the futur simple' };
+export const normalFrench = (value: string) => value.toLowerCase().replace(/['’]/g, '’').replace(/[^\p{L}\p{M}’ ]/gu, ' ').replace(/\s+/g, ' ').trim();
+
+function cardsPrompt(count: number, target: CardTarget, theme: string, context: string, example: RawCard[]): string {
+  const tenses = mixCounts(count, target.tenses);
+  const levels = CARD_LEVELS.map(([level, share]) => `${Math.round(count * share)} ${level}`).join(', ');
+  const quota = target.tenses.map((tense) => `${tenses[tense]} with ${TENSE_WORDS[tense]}`).join('; ');
+  return `You write French sentences for Echo, an app for an English speaker learning French (about A2, working towards B1). Write ${count} new sentences, each one complete and clear on its own (no "he", "it" or "that" pointing outside the sentence), about everyday life; lean towards the theme "${theme}" and vary people, places and situations.
+
+Each sentence:
+- "fr": one sentence, ending with . ! ? or …; at most 10 words for A1, 14 for A2, 20 for B1.
+- "level": "A1", "A2" or "B1": about ${levels}.
+- "en": its English meaning.
+- "topics", "words", "gloss" as below.
+
+Tenses: write every verb in ${target.tenses.map((tense) => TENSE_WORDS[tense]).join(' or ')} only. Spread them: ${quota}. Never use any other tense or mood: no conditional (je voudrais, ce serait, j’aimerais), no subjunctive (il faut que je parte), no plus-que-parfait, no futur antérieur, no passé simple${target.tenses.includes('pc') ? '' : ', no passé composé'}${target.tenses.includes('imp') ? '' : ', no imparfait'}${target.tenses.includes('fut') ? '' : ', no futur simple'}${target.tenses.includes('pres') ? '' : ', no présent (not even aller + infinitive or an imperative)'}. Infinitives after another verb are fine.
+
+Words: build each sentence from the learner's words below plus little grammar words (articles, pronouns, prepositions, numbers, et, mais, parce que, quand…). At most ONE word from the other deck words per sentence, and only when it helps. Tag every deck word the sentence uses in "words" and in its gloss "word".
+
+Rules for every sentence:
+- Natural, correct, standard written French that a French teacher would sign off.
+${ITEM_RULES}
+
+${context}
+
+The format, with two sentences:
+${JSON.stringify({ sentences: example })}
+
+Reply with only JSON: {"sentences": [...]} with exactly ${count} sentences.`;
+}
+
+function cardsRepairPrompt(target: CardTarget, broken: { ref: string; item: unknown; problems: string[] }[]): string {
+  return `You wrote these French sentences for Echo, a French-learning app, and a checker found problems in them. Fix each one so the problems are gone, keeping the format. Its verbs may be in ${target.tenses.map((tense) => TENSE_WORDS[tense]).join(' or ')} only: no conditional, no subjunctive, no other tense.
+
+Rules for every sentence:
+- Natural, correct, standard written French that a French teacher would sign off; complete and clear on its own.
+${ITEM_RULES}
+
+${JSON.stringify(broken)}
+
+Reply with only JSON: {"items": [{"ref": "...", "item": {...}}]} with one fixed item for every ref.`;
+}
+
+// What Claude writes for a card: a lane sentence with its own level and without distractors or tenses (Echo finds
+// those itself).
+type RawCard = Omit<CardSentence, 'id' | 'tenses'>;
+export function buildCard(raw: RawCard, id: string, known: Known, detector: TenseDetector): CardSentence {
+  const gloss = glossOf(raw.gloss, known);
+  const fr = frenchTypography(text(raw.fr));
+  const level = (['A1', 'A2', 'B1'] as const).find((entry) => entry === raw.level) ?? ('' as GrammarLevel);
+  return { id, level, fr, en: text(raw.en).trim(), topics: topicsOf(raw.topics, known), words: wordsOf(raw.words, gloss, known), gloss, tenses: detector.detect(fr, gloss) };
+}
+
+// What keeps a written card out, besides the lane rules: a tense off the target, more than one deck word the learner
+// has not met, or a sentence Echo already has.
+export function cardProblems(card: CardSentence, target: CardTarget, seen: Set<string>): string[] {
+  const problems: string[] = [];
+  const outside = card.tenses.filter((tense) => tense === 'other' || !target.tenses.includes(tense));
+  if (outside.length) problems.push(`${card.id}: its verbs are in ${card.tenses.map((tense) => tense === 'other' ? 'a tense or mood outside the four (conditional, subjunctive, plus-que-parfait…)' : TENSE_WORDS[tense]).join(' and ')}; write them in ${target.tenses.map((tense) => TENSE_WORDS[tense]).join(' or ')} only.`);
+  const known = new Set(target.words.map((word) => word.id));
+  const unmet = card.words.filter((id) => !known.has(id));
+  if (unmet.length > 1) problems.push(`${card.id}: uses ${unmet.length} deck words outside the learner's words (${unmet.join(', ')}); use at most one.`);
+  if (seen.has(normalFrench(card.fr))) problems.push(`${card.id}: Echo already has this sentence; write a different one.`);
+  return problems;
+}
+
+// The tense detector, made once per checkout.
+const detectors = new Map<string, Promise<TenseDetector>>();
+function detectorFor(root: string): Promise<TenseDetector> {
+  if (!detectors.has(root)) detectors.set(root, loadTenseDetector(root));
+  return detectors.get(root)!;
+}
+
+// Writes one batch of `count` Sentence cards for `target`: Claude writes, the lane rules, the tense detector and the word
+// rule check each sentence, broken ones go back to Claude up to REPAIRS times, and the rest are left out. seen: every
+// French sentence Echo has (normalFrench), so none is written twice.
+export async function writeCards(root: string, ask: Ask, target: CardTarget, name: string, theme: string, seen: Set<string>, count = CARD_BATCH): Promise<CardLane> {
+  const known = await loadKnown(root);
+  const tenses = await detectorFor(root);
+  const deck = [...await Bun.file(join(root, 'content/core.json')).json(), ...await Bun.file(join(root, 'content/world.json')).json()] as VocabularyWord[];
+  const met = new Set(target.words.map((word) => word.id));
+  const units = await Bun.file(join(root, 'content/grammar/units.json')).json() as { title: string; topics: string[] }[];
+  const context = `Grammar topics (id list per unit): ${units.map((unit) => `${unit.title}: ${unit.topics.join(', ')}`).join(' | ')}
+
+The learner's words ("id french"):
+${target.words.map((word) => `${word.id} ${word.fr}`).join('\n')}
+
+Other deck words ("id french"), at most one per sentence:
+${deck.filter((word) => !met.has(word.id)).map((word) => `${word.id} ${word.fr}`).join('\n')}`;
+  const authored = join(root, 'content/comprehension');
+  const sample = await Bun.file(join(authored, `${laneFiles(authored).sort()[0]!}.json`)).json() as ComprehensionLane;
+  const example: RawCard[] = sample.sentences.slice(0, 2).map(({ id: _id, distractors: _distractors, ...rest }) => rest);
+  const reply = json(await ask(cardsPrompt(count, target, theme, context, example), { timeout: TIMEOUT, purpose: 'writing sentences for Sentence cards' })) as { sentences?: unknown };
+  const raw = new Map<string, unknown>();
+  list(reply.sentences).filter((item) => !!item && typeof item === 'object' && !Array.isArray(item)).slice(0, count).forEach((item, index) => raw.set(`${name}-s${pad(index + 1)}`, item));
+  const build = () => [...raw].map(([id, item]) => buildCard(item as RawCard, id, known, tenses));
+  const problemsById = (built: CardSentence[]) => {
+    const byId = new Map<string, string[]>();
+    const add = (problem: string) => {
+      const id = new RegExp(`${name}-s\\d{2}`).exec(problem)?.[0];
+      if (!id) throw new Error(`the new sentences broke a rule: ${problem}`);
+      byId.set(id, [...byId.get(id) ?? [], problem]);
+    };
+    laneProblems({ sentences: built }, name, known, new Set(), 'fr', true).forEach(add);
+    const batch = new Set(seen);
+    for (const card of built) { cardProblems(card, target, batch).forEach(add); batch.add(normalFrench(card.fr)); }
+    return byId;
+  };
+  let built = build();
+  for (let round = 0; round < REPAIRS; round++) {
+    const broken = problemsById(built);
+    if (!broken.size) break;
+    const refs = [...broken.keys()];
+    const fixed = json(await ask(cardsRepairPrompt(target, refs.map((ref) => ({ ref, item: raw.get(ref), problems: broken.get(ref)! }))), { timeout: TIMEOUT, purpose: 'fixing sentences for Sentence cards' })) as { items?: unknown };
+    for (const entry of list(fixed.items)) {
+      const fix = entry as { ref?: unknown; item?: unknown };
+      if (typeof fix.ref === 'string' && refs.includes(fix.ref) && fix.item && typeof fix.item === 'object') raw.set(fix.ref, fix.item);
+    }
+    built = build();
+  }
+  for (const id of problemsById(built).keys()) raw.delete(id);
+  built = build();
+  if (built.length < Math.ceil(count * MIN_CARDS)) throw new Error(`only ${built.length} sentences for Sentence cards passed the checks`);
+  return { sentences: built };
+}
+
+// Sentence cards' side of the top-up (lib/sentence-cards.ts): how many offerable sentences are left unseen on the
+// line last sent, the learner's met words, every French sentence Echo already has, and how a batch is recorded and
+// joins the room.
+export type CardsTopup = {
+  stock: () => { unseen: number; tenses: Tense[] };
+  words: () => VocabularyWord[];
+  existing: () => string[];
+  record: Record;
+  reload: () => Promise<void>;
+};
+
 export function createTextTopup(options: {
   root: string; dataDir: string; ask: Ask; record: Record; stock: () => Stock; reload: () => Promise<void>; attempts: Attempts;
-  threshold?: number; now?: () => number; random?: () => number;
+  cards?: CardsTopup; threshold?: number; now?: () => number; random?: () => number;
 }) {
   const { root, ask } = options;
   const live = join(options.dataDir, 'comprehension');
@@ -168,6 +329,9 @@ export function createTextTopup(options: {
   const status: TopupStatus = { level: null, step: null, lastError: null, made: [] };
   let busy = false;
   let failedAt = -Infinity;
+  let cardsFailedAt = -Infinity;
+  const cardsLive = join(options.dataDir, 'sentence-cards');
+  const cardsPending = join(options.dataDir, 'sentence-cards-pending');
 
   async function lane(dir: string, name: string): Promise<ComprehensionLane> { return Bun.file(join(dir, `${name}.json`)).json(); }
   const clipIdsOf = (value: ComprehensionLane) => [...value.sentences.map((sentence) => sentence.id), ...value.passages.flatMap((passage) => passage.lines.map((_, index) => `${passage.id}-${index + 1}`))];
@@ -273,9 +437,7 @@ ${vocabulary.map((word) => `${word.id} ${word.fr}`).join('\n')}`;
     console.log(`texts: ${name} joined practice (${value.sentences.length} sentences, ${value.passages.length} passages)`);
   }
 
-  async function check(): Promise<void> {
-    if (busy) return;
-    busy = true;
+  async function checkLanes(): Promise<void> {
     try {
       const waiting = laneFiles(pending);
       if (waiting.length) { for (const name of waiting) await publish(name); return; }
@@ -298,8 +460,60 @@ ${vocabulary.map((word) => `${word.id} ${word.fr}`).join('\n')}`;
       status.lastError = (error as Error).message;
       console.error(`texts: could not add a lane: ${status.lastError}`);
     } finally {
-      busy = false; status.level = null; status.step = null;
+      status.level = null; status.step = null;
     }
+  }
+
+  // Records a waiting batch of cards into audio/sentences, then moves it into the room. Another recording holding the
+  // voice makes it wait for the next check; a clip no take passes for leaves its sentence to Read alone.
+  async function publishCards(cards: CardsTopup, name: string): Promise<void> {
+    const value = await Bun.file(join(cardsPending, `${name}.json`)).json() as CardLane;
+    status.step = 'recording';
+    const recorded = await cards.record(value.sentences.map((sentence) => sentence.id), [cardsLive, cardsPending]);
+    if (!recorded.ok && /Another renderer owns/.test(recorded.error)) return;
+    mkdirSync(cardsLive, { recursive: true });
+    renameSync(join(cardsPending, `${name}.json`), join(cardsLive, `${name}.json`));
+    await cards.reload();
+    status.made.push(name);
+    console.log(`sentences: ${name} joined Sentence cards (${value.sentences.length} sentences)`);
+  }
+
+  // Keeps Sentence cards from running dry: a batch for the line last sent and the words met so far, once fewer than
+  // CARD_LOW sentences on it are left unseen.
+  async function checkCards(cards: CardsTopup): Promise<void> {
+    try {
+      const waiting = laneFiles(cardsPending);
+      if (waiting.length) { for (const name of waiting) await publishCards(cards, name); return; }
+      if (now() - cardsFailedAt < RETRY_AFTER) return;
+      const stock = cards.stock();
+      if (stock.unseen >= CARD_LOW || !stock.tenses.length) return;
+      status.step = 'writing';
+      console.log(`sentences: ${stock.unseen} unseen in ${stock.tenses.join(', ')}; writing ${CARD_BATCH} more`);
+      const made = laneFiles(cardsLive).length + laneFiles(cardsPending).length;
+      const day = new Date(now()).toISOString().slice(0, 10).replace(/-/g, '');
+      let name = `sc-${day}`;
+      for (let n = 2; existsSync(join(cardsLive, `${name}.json`)) || existsSync(join(cardsPending, `${name}.json`)); n++) name = `sc-${day}-${n}`;
+      const value = await writeCards(root, ask, { tenses: stock.tenses, words: cards.words() }, name, CARD_THEMES[made % CARD_THEMES.length]!, new Set(cards.existing().map(normalFrench)));
+      mkdirSync(cardsPending, { recursive: true });
+      writeFileSync(join(cardsPending, `${name}.json`), JSON.stringify(value, null, 1));
+      await publishCards(cards, name);
+      status.lastError = null;
+    } catch (error) {
+      cardsFailedAt = now();
+      status.lastError = (error as Error).message;
+      console.error(`sentences: could not add a batch: ${status.lastError}`);
+    } finally {
+      status.step = null;
+    }
+  }
+
+  async function check(): Promise<void> {
+    if (busy) return;
+    busy = true;
+    try {
+      await checkLanes();
+      if (options.cards) await checkCards(options.cards);
+    } finally { busy = false; }
   }
 
   // After a restart: re-record any clip of a live lane still missing (a failed take is tried again on each start

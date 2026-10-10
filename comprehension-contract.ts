@@ -43,6 +43,11 @@ export type ComprehensionPassage = {
 
 export type ComprehensionLane = { sentences: ComprehensionSentence[]; passages: ComprehensionPassage[] };
 
+// <data>/sentence-cards/<lane>.json holds sentences Echo wrote for Sentence cards (lib/text-topup.ts writeCards): a
+// bank sentence without distractors (they serve no multiple choice), with the tenses lib/tenses.ts found in it.
+export type CardSentence = Omit<ComprehensionSentence, 'distractors'> & { tenses: ('pres' | 'pc' | 'imp' | 'fut' | 'other')[] };
+export type CardLane = { sentences: CardSentence[] };
+
 // Audio: a sentence plays audio/comprehension/<sentence id>.mp3; passage line n (1-based) plays
 // audio/comprehension/<passage id>-<n>.mp3. A missing clip is reported by the audio route, never guessed.
 
