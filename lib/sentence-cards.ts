@@ -158,11 +158,14 @@ export function createSentenceCards(deps: {
     const off = topicsOff();
     return { topics: deps.topics().filter((topic) => used.has(topic.id)).map((topic) => ({ ...topic, on: !off.has(topic.id) })) };
   }
+  // topic '*': every topic the options list, switched together.
   function setTopic(input: { topic?: unknown; on?: unknown }) {
-    if (typeof input?.topic !== 'string' || !deps.topics().some((topic) => topic.id === input.topic)) throw new StoreError('Choose a grammar topic.');
+    const all = input?.topic === '*';
+    if (!all && (typeof input?.topic !== 'string' || !deps.topics().some((topic) => topic.id === input.topic))) throw new StoreError('Choose a grammar topic.');
     if (typeof input.on !== 'boolean') throw new StoreError('Say whether the topic is on.');
-    if (input.on) db.query('DELETE FROM sentence_card_topics_off WHERE topic = ?').run(input.topic);
-    else db.query('INSERT OR IGNORE INTO sentence_card_topics_off (topic) VALUES (?)').run(input.topic);
+    const ids = all ? options().topics.map((topic) => topic.id) : [input.topic as string];
+    const set = db.query(input.on ? 'DELETE FROM sentence_card_topics_off WHERE topic = ?' : 'INSERT OR IGNORE INTO sentence_card_topics_off (topic) VALUES (?)');
+    db.transaction(() => { for (const id of ids) set.run(id); })();
     return options();
   }
 

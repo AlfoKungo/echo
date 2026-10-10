@@ -121,6 +121,16 @@ describe('the room', () => {
     cards.setTopic({ topic: 'negation', on: false });
     expect(cards.round({ practising: line(['pres']), mode: 'read' }).items.map((card) => card.id)).toEqual(['b']);
   });
+
+  test('every topic switches off and back on together', () => {
+    const now = { value: at(10) };
+    const cards = room([sentence('a', { topics: ['negation'] }), sentence('b', { topics: ['present-er'] })], now);
+    expect(cards.setTopic({ topic: '*', on: false }).topics.map((topic) => topic.on)).toEqual([false, false]);
+    expect(cards.round({ practising: line(['pres']), mode: 'read' }).items).toEqual([]);
+    cards.setTopic({ topic: 'negation', on: true });
+    expect(cards.setTopic({ topic: '*', on: true }).topics.map((topic) => topic.on)).toEqual([true, true]);
+    expect(cards.round({ practising: line(['pres']), mode: 'read' }).items.map((card) => card.id).sort()).toEqual(['a', 'b']);
+  });
 });
 
 describe('written cards', () => {

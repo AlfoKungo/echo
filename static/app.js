@@ -3653,14 +3653,15 @@ function renderSentences() {
   const play = card.audio && (revealed || scMode !== 'read') ? `<button class="${!revealed && scMode === 'hear' ? 'listen-play' : 'icon'} sc-play" data-action="sc-play" aria-label="Play the sentence${revealed ? ' again' : ''}">${speaker}</button>` : '';
   const face = `${showFrench ? french : ''}${revealed ? `<p class="source-word sc-en">${esc(card.en)}</p>` : ''}${play}`;
   const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
-  const hint = revealed ? '' : `<span class="card-hint" aria-hidden="true">What does it mean? Tap to see</span>`;
-  const marks = revealed ? `<div class="sc-marks"><button class="secondary" data-action="sc-not">Not yet</button><button class="primary" data-action="sc-got">Got it</button></div>` : '';
-  shell(`${again}<div class="study-surface sc-card${revealed ? ' revealed' : ''}" id="sc-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The sentence and its meaning' : 'Turn the card'}"><div class="word-content">${face}</div>${hint}</div>${marks}`);
+  const foot = revealed
+    ? `<button class="card-zone left" data-action="sc-not" aria-label="Not yet"><span class="zone-label" aria-hidden="true">← Not yet</span></button><button class="card-zone right" data-action="sc-got" aria-label="Got it"><span class="zone-label" aria-hidden="true">Got it →</span></button>`
+    : '<span class="card-hint" aria-hidden="true">What does it mean? Tap to see</span>';
+  shell(`${again}<div class="study-surface sc-card${revealed ? ' revealed' : ''}" id="sc-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The sentence and its meaning. Left: not yet. Right: got it.' : 'Turn the card'}"><div class="word-content">${face}</div>${foot}</div>`);
 }
 function revealSentence() {
   if (!scCard() || scCards.revealed) return;
   scCards.revealed = true; render();
-  main.querySelector('[data-action="sc-got"]')?.focus({ preventScroll: true });
+  main.querySelector('#sc-card')?.focus({ preventScroll: true });
 }
 function markSentence(knew) {
   const stream = scCards;
@@ -3720,7 +3721,8 @@ async function openSentenceOptions() {
   const draw = () => {
     const tenses = Object.entries(VB_TENSES).map(([tense, label]) => `<button class="vb-pill" data-action="sc-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${label}</button>`).join('');
     const topics = scTopics ? scTopics.map((topic) => `<button class="vb-pill" data-action="sc-topic" data-topic="${esc(topic.id)}" aria-pressed="${topic.on}">${esc(topic.title)}</button>`).join('') : '<p class="caption">Loading topics…</p>';
-    openDialog('Sentences options', `<p class="settings-label vb-label vb-first">Tenses · your Practising line in Verbs</p><div class="vb-pills">${tenses}</div><p class="settings-label vb-label">Grammar topics</p><div class="vb-pills sc-topics">${topics}</div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'sc-options');
+    const all = scTopics?.length ? `<button class="vb-pill sc-all" data-action="sc-topics-all" aria-pressed="${scTopics.every((topic) => topic.on)}">All</button>` : '';
+    openDialog('Sentences options', `<p class="settings-label vb-label vb-first">Tenses · your Practising line in Verbs</p><div class="vb-pills">${tenses}</div><div class="sc-topics-head"><p class="settings-label">Grammar topics</p>${all}</div><div class="vb-pills sc-topics">${topics}</div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'sc-options');
   };
   draw();
   if (scTopics) return;
@@ -3734,12 +3736,29 @@ function chooseSentenceTense(tense) {
   openSentenceOptions();
   scChanged();
 }
-async function chooseSentenceTopic(id, button) {
+// The All pill is pressed while every topic is on; tapping it switches them all on, or all off when they already are.
+function showSentenceTopics() {
+  for (const topic of scTopics ?? []) dialog.querySelector(`[data-action="sc-topic"][data-topic="${CSS.escape(topic.id)}"]`)?.setAttribute('aria-pressed', String(topic.on));
+  dialog.querySelector('[data-action="sc-topics-all"]')?.setAttribute('aria-pressed', String(!!scTopics?.every((topic) => topic.on)));
+}
+async function chooseSentenceTopic(id) {
   const topic = scTopics?.find((entry) => entry.id === id);
   if (!topic) return;
-  topic.on = !topic.on; button.setAttribute('aria-pressed', String(topic.on));
+  topic.on = !topic.on; showSentenceTopics();
   try { scTopics = (await api('api/sentences/topic', { method: 'POST', body: JSON.stringify({ topic: id, on: topic.on }) })).topics; }
-  catch (error) { topic.on = !topic.on; button.setAttribute('aria-pressed', String(topic.on)); notice = { message: error.message }; }
+  catch (error) { topic.on = !topic.on; notice = { message: error.message }; }
+  showSentenceTopics();
+  scChanged();
+}
+async function chooseAllSentenceTopics() {
+  if (!scTopics?.length) return;
+  const before = scTopics.map((topic) => topic.on);
+  const on = !scTopics.every((topic) => topic.on);
+  for (const topic of scTopics) topic.on = on;
+  showSentenceTopics();
+  try { scTopics = (await api('api/sentences/topic', { method: 'POST', body: JSON.stringify({ topic: '*', on }) })).topics; }
+  catch (error) { scTopics.forEach((topic, index) => { topic.on = before[index]; }); notice = { message: error.message }; }
+  showSentenceTopics();
   scChanged();
 }
 // A changed line or topic: the cards waiting are chosen again, or the room starts again from an empty one.
@@ -5103,7 +5122,8 @@ document.addEventListener('click', (event) => {
   if (action === 'sc-mode') { chooseSentenceMode(button.dataset.mode); return; }
   if (action === 'sc-options') { openSentenceOptions(); return; }
   if (action === 'sc-tense') { chooseSentenceTense(button.dataset.tense); return; }
-  if (action === 'sc-topic') { chooseSentenceTopic(button.dataset.topic, button); return; }
+  if (action === 'sc-topic') { chooseSentenceTopic(button.dataset.topic); return; }
+  if (action === 'sc-topics-all') { chooseAllSentenceTopics(); return; }
   if (busy) return;
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }
   if (button?.dataset.direction) {
