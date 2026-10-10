@@ -4063,9 +4063,11 @@ function streamSaved(saves, entry, reply) {
   const changed = !!before?.waiting || before?.current?.key !== shown.current?.key || before?.ear?.id !== shown.ear?.id
     || before?.result?.outcome !== shown.result?.outcome || labels(before) !== labels(shown);
   applyStream(shown);
-  if (before?.waiting && entry.mixed && mixed()) advanceMixed();
+  const waited = before?.waiting && entry.mixed && mixed();
+  if (waited) advanceMixed();
   // A question the Mac picked differently replaces the one shown only while nothing was done on it (else streamMoved).
-  if (changed && streamScreen()) render(); else refreshSavingStatus();
+  // Practise that waited on this reply may have moved to a card or grammar, which no stream render would draw.
+  if ((changed && streamScreen()) || (waited && mixedSource !== 'comprehension')) render(); else refreshSavingStatus();
 }
 function streamFailed(saves, entry, error) {
   clearTimeout(saves.slow); saves.sending = false;
