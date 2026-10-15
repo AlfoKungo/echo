@@ -2383,15 +2383,79 @@ const boardBoundLabel = (bound) => bound === BOARD_LOW ? `${signed(bound)} or lo
 const boardRangeLabel = () => boardRangeFull() ? 'All scores' : `Scores ${boardBoundLabel(boardRange.min)} to ${boardBoundLabel(boardRange.max)}`;
 // Board options, a level below Words options: what Board itself shows.
 function openBoardOptions() {
-  const bounds = (end) => `<select id="board-${end}">${STATS_BINS.map((bound) => `<option value="${bound}" ${boardRange[end] === bound ? 'selected' : ''}>${boardBoundLabel(bound)}</option>`).join('')}</select>`;
-  openDialog('Board options', `<p class="caption">Board shows the words whose score, as in Statistics, is in this range. The full range shows every word; a narrower one leaves out words you have never practised.</p><div class="dialog-row"><label for="board-min">Lowest score</label>${bounds('min')}</div><div class="dialog-row"><label for="board-max">Highest score</label>${bounds('max')}</div><div class="options-links"><button class="quiet" data-action="options">‹ Words options</button></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'board-options');
+  const thumb = (end) => `<span class="range-thumb" data-end="${end}" role="slider" tabindex="0" aria-label="${end === 'min' ? 'Lowest score' : 'Highest score'}" aria-valuemin="${BOARD_LOW}" aria-valuemax="${BOARD_HIGH}"></span>`;
+  const ends = [BOARD_LOW, 0, BOARD_HIGH].map((bound) => `<span style="left:calc(${RANGE_INSET}px + (100% - ${2 * RANGE_INSET}px) * ${(bound - BOARD_LOW) / (BOARD_HIGH - BOARD_LOW)})">${signed(bound)}</span>`).join('');
+  openDialog('Board options', `<div class="range-pick"><p class="range-value"></p><div class="range-track"><span class="range-fill"></span>${thumb('min')}${thumb('max')}</div><div class="range-ends">${ends}</div></div><div class="options-links"><button class="quiet" data-action="options">‹ Words options</button></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'board-options');
+  drawBoardRange();
 }
-function chooseBoardRange(end, value) {
-  const bound = Number(value);
-  if (!Number.isInteger(bound) || bound < BOARD_LOW || bound > BOARD_HIGH) return;
-  boardRange = end === 'min' ? { min: bound, max: Math.max(bound, boardRange.max) } : { min: Math.min(bound, boardRange.min), max: bound };
+// One track, two thumbs that never cross. A press moves the nearer thumb to it; where the thumbs meet, the first move
+// decides — left takes the lowest, right the highest — so neither end can get stuck under the other. The range is kept
+// when the finger lifts (or a key moves a thumb), not on every step of a drag.
+const RANGE_INSET = 14; // half a thumb: a thumb's centre runs from 14px to the width less 14px
+let rangeDrag = null;   // { pointerId, end: 'min' | 'max' | null, from, moved }
+function rangeBoundAt(track, clientX) {
+  const box = track.getBoundingClientRect();
+  const share = Math.max(0, Math.min(1, (clientX - box.left - RANGE_INSET) / (box.width - 2 * RANGE_INSET)));
+  return Math.round(BOARD_LOW + share * (BOARD_HIGH - BOARD_LOW));
+}
+function slideBoardRange(end, bound) {
+  const before = `${boardRange.min},${boardRange.max}`;
+  boardRange = end === 'min' ? { min: Math.min(bound, boardRange.max), max: boardRange.max } : { min: boardRange.min, max: Math.max(bound, boardRange.min) };
+  drawBoardRange();
+  return before !== `${boardRange.min},${boardRange.max}`;
+}
+function drawBoardRange() {
+  const pick = dialog.querySelector('.range-pick');
+  if (!pick) return;
+  const at = (bound) => `calc(${RANGE_INSET}px + (100% - ${2 * RANGE_INSET}px) * ${(bound - BOARD_LOW) / (BOARD_HIGH - BOARD_LOW)})`;
+  for (const thumb of pick.querySelectorAll('.range-thumb')) {
+    const bound = boardRange[thumb.dataset.end];
+    thumb.style.left = at(bound);
+    thumb.setAttribute('aria-valuenow', bound);
+    thumb.setAttribute('aria-valuetext', boardBoundLabel(bound));
+  }
+  pick.querySelector('.range-fill').style.left = at(boardRange.min);
+  pick.querySelector('.range-fill').style.width = `calc((100% - ${2 * RANGE_INSET}px) * ${(boardRange.max - boardRange.min) / (BOARD_HIGH - BOARD_LOW)})`;
+  pick.querySelector('.range-value').textContent = boardRangeLabel();
+}
+function pressBoardRange(event) {
+  const track = event.target.closest?.('.range-track');
+  if (!track || rangeDrag) return;
+  event.preventDefault();
+  const bound = rangeBoundAt(track, event.clientX);
+  const near = (end) => Math.abs(bound - boardRange[end]);
+  const end = boardRange.min === boardRange.max && bound === boardRange.min ? null
+    : near('min') < near('max') || (near('min') === near('max') && bound < boardRange.min) ? 'min' : 'max';
+  rangeDrag = { pointerId: event.pointerId, end, from: bound, moved: end ? slideBoardRange(end, bound) : false };
+  track.setPointerCapture(event.pointerId);
+  (end ? track.querySelector(`[data-end="${end}"]`) : track.querySelector('.range-thumb'))?.focus({ preventScroll: true });
+}
+function dragBoardRange(event) {
+  if (!rangeDrag || event.pointerId !== rangeDrag.pointerId) return;
+  const bound = rangeBoundAt(event.target.closest('.range-track') ?? dialog.querySelector('.range-track'), event.clientX);
+  if (!rangeDrag.end) {
+    if (bound === rangeDrag.from) return;
+    rangeDrag.end = bound < rangeDrag.from ? 'min' : 'max';
+  }
+  if (slideBoardRange(rangeDrag.end, bound)) rangeDrag.moved = true;
+}
+function releaseBoardRange(event) {
+  if (!rangeDrag || event.pointerId !== rangeDrag.pointerId) return;
+  const moved = rangeDrag.moved;
+  rangeDrag = null;
+  if (moved) chooseBoardRange();
+}
+function keyBoardRange(event) {
+  const thumb = event.target.closest?.('.range-thumb');
+  const step = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1 }[event.key];
+  if (!thumb || !step) return;
+  event.preventDefault();
+  const end = thumb.dataset.end;
+  if (slideBoardRange(end, Math.max(BOARD_LOW, Math.min(BOARD_HIGH, boardRange[end] + step)))) chooseBoardRange();
+}
+// The range is kept on this device and the board behind the dialog follows it.
+function chooseBoardRange() {
   savePreference('echo.board-range', `${boardRange.min},${boardRange.max}`);
-  openBoardOptions();
   if (screen === 'board') loadBoard();
 }
 let board = null;
@@ -5374,6 +5438,11 @@ document.addEventListener('click', (event) => {
 // Accent buttons type into the Verbs field last used, without taking the focus from it.
 document.addEventListener('focusin', (event) => { if (event.target.classList?.contains('vb-input')) vbLastInput = event.target.id; });
 document.addEventListener('pointerdown', (event) => { if (event.target.closest?.('.vb-accents button')) event.preventDefault(); });
+dialog.addEventListener('pointerdown', pressBoardRange);
+dialog.addEventListener('pointermove', dragBoardRange);
+dialog.addEventListener('pointerup', releaseBoardRange);
+dialog.addEventListener('pointercancel', releaseBoardRange);
+dialog.addEventListener('keydown', keyBoardRange);
 document.addEventListener('change', (event) => {
   if (event.target.id === 'deck-select' && !locked()) { deck = event.target.value; browseCategory = deck; savePreference('echo.deck', deck); dialog.close(); wordsOptionChanged(); }
   else if (event.target.id === 'browse-category') { browseCategory = event.target.value; renderBrowseResults(); }
@@ -5383,7 +5452,6 @@ document.addEventListener('change', (event) => {
     render(); main.querySelector('.vb-input')?.focus({ preventScroll: true });
   }
   else if (event.target.id === 'audio-speed') { speed = event.target.value === '0.8' ? 0.8 : 1; savePreference('echo.speed', String(speed)); audio.playbackRate = speed; }
-  else if (event.target.id === 'board-min' || event.target.id === 'board-max') chooseBoardRange(event.target.id === 'board-min' ? 'min' : 'max', event.target.value);
 });
 document.addEventListener('input', (event) => {
   if (event.target.id === 'vocab-search') { search = event.target.value; renderBrowseResults(); }
