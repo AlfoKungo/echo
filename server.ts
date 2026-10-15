@@ -620,7 +620,7 @@ async function route(req: Request): Promise<Response> {
     if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
     if (path === '/api/board' && req.method === 'GET') {
       const bound = (name: string, fallback: number) => { const raw = url.searchParams.get(name); return raw === null ? fallback : Number(raw); };
-      return json(store.board(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all'), { min: bound('min', BOARD_SCORE_LOW), max: bound('max', BOARD_SCORE_HIGH) }, url.searchParams.get('every') === '1'));
+      return json(store.board(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all'), { min: bound('min', BOARD_SCORE_LOW), max: bound('max', BOARD_SCORE_HIGH) }, url.searchParams.get('cards') === '1'));
     }
     // Word id → gender for every noun, so the client can colour a tappable word linked to one.
     if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));

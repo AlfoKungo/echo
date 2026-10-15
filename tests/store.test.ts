@@ -776,25 +776,29 @@ describe('adding a word tapped in a French text', () => {
 });
 
 describe('the word board', () => {
-  test('lists every word of a category, and on All words the words in Cards now, missed first, changing nothing', () => {
+  test('lists every word of a category, or only those in Cards now, missed first, changing nothing', () => {
     const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
     directories.push(directory);
     const store = createStore(words, { dbPath: join(directory, 'echo.db'), now: () => new Date(2026, 8, 21, 10), random: () => 0.999999, ready: (id) => id !== 'food-004' });
     stores.push(store);
     store.setSettings(2);
-    expect(store.board('fr-en', 'all')).toEqual({ words: [], total: 0 });
+    const full = { min: -8, max: 8 };
+    expect(store.board('fr-en', 'all', full, true)).toEqual({ words: [], total: 0 });
+    expect(store.board('fr-en', 'all').total).toBe(words.length);
     expect(store.board('fr-en', 'food').words.map((word) => word.id).sort()).toEqual(['food-001', 'food-002', 'food-003', 'food-004']);
     const state = store.start('fr-en', 'food');
     const missed = state.current!.id;
     store.grade(answer(state, false));
     const before = progress(store);
-    const board = store.board('fr-en', 'all');
+    const board = store.board('fr-en', 'all', full, true);
     expect(progress(store)).toEqual(before);
     expect(board.total).toBe(2);
     expect(board.words[0]).toMatchObject({ id: missed, score: -3 });
     expect(board.words.every((word) => word.category === 'food' && word.audioUrl?.includes(`audio/${word.id}.mp3`))).toBe(true);
+    expect(store.board('fr-en', 'food', full, true).total).toBe(2);
+    expect(store.board('fr-en', 'travel', full, true).total).toBe(0);
     expect(store.board('fr-en', 'food').words.find((word) => word.id === 'food-004')!.audioUrl).toBeNull();
-    expect(store.board('en-fr', 'all').total).toBe(0);
+    expect(store.board('en-fr', 'all', full, true).total).toBe(0);
   });
   test('a score range keeps the scored words in it, rounding to the bar, and the full range keeps every word', () => {
     const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
@@ -811,7 +815,6 @@ describe('the word board', () => {
     expect(ids(-2, 8)).toEqual([]);
     expect(ids(-8, 8)).toHaveLength(4);
     expect(store.board('fr-en', 'all', { min: -8, max: -1 })).toMatchObject({ total: 1, words: [{ id: missed }] });
-    expect(store.board('fr-en', 'all', { min: -8, max: 8 }, true).total).toBe(words.length);
     expect(store.board('fr-en', 'all', { min: -8, max: -1 }, true)).toMatchObject({ total: 1, words: [{ id: missed }] });
     expect(() => store.board('fr-en', 'food', { min: 1, max: 0 })).toThrow(StoreError);
     expect(() => store.board('fr-en', 'food', { min: -9, max: 0 })).toThrow(StoreError);

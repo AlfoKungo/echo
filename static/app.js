@@ -2386,20 +2386,21 @@ let boardRange = (() => {
 const boardRangeFull = () => boardRange.min === BOARD_LOW && boardRange.max === BOARD_HIGH;
 const boardBoundLabel = (bound) => bound === BOARD_LOW ? `${signed(bound)} or lower` : bound === BOARD_HIGH ? `${bound} or higher` : signed(bound);
 const boardRangeLabel = () => boardRangeFull() ? 'All scores' : `Scores ${boardBoundLabel(boardRange.min)} to ${boardBoundLabel(boardRange.max)}`;
-// All words on Board: the words in Cards (off, the default) or every word. Remembered on this device.
-let boardEvery = readPreference('echo.board-every', 'off') === 'on';
+// Board shows the words of the chosen category that are in Cards right now (on, the default) or all of its words.
+// Remembered on this device.
+let boardCards = readPreference('echo.board-cards', 'on') === 'on';
 // Board options, a level below Words options: what Board itself shows.
 function openBoardOptions() {
   const thumb = (end) => `<span class="range-thumb" data-end="${end}" role="slider" tabindex="0" aria-label="${end === 'min' ? 'Lowest score' : 'Highest score'}" aria-valuemin="${BOARD_LOW}" aria-valuemax="${BOARD_HIGH}"></span>`;
   const ends = [BOARD_LOW, 0, BOARD_HIGH].map((bound) => `<span style="left:calc(${RANGE_INSET}px + (100% - ${2 * RANGE_INSET}px) * ${(bound - BOARD_LOW) / (BOARD_HIGH - BOARD_LOW)})">${signed(bound)}</span>`).join('');
-  openDialog('Board options', `<div class="range-pick"><p class="range-value"></p><div class="range-track"><span class="range-fill"></span>${thumb('min')}${thumb('max')}</div><div class="range-ends">${ends}</div></div><div class="dialog-row"><span>All words: every word<small class="dialog-note">Off: only the words in Cards</small></span><button class="secondary" data-action="board-every" aria-pressed="${boardEvery}">${boardEvery ? 'On' : 'Off'}</button></div><div class="options-links"><button class="quiet" data-action="options">‹ Words options</button></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'board-options');
+  openDialog('Board options', `<div class="range-pick"><p class="range-value"></p><div class="range-track"><span class="range-fill"></span>${thumb('min')}${thumb('max')}</div><div class="range-ends">${ends}</div></div><div class="dialog-row"><span>Only words in Cards<small class="dialog-note">Off: every word</small></span><button class="secondary" data-action="board-cards" aria-pressed="${boardCards}">${boardCards ? 'On' : 'Off'}</button></div><div class="options-links"><button class="quiet" data-action="options">‹ Words options</button></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'board-options');
   drawBoardRange();
 }
-function toggleBoardEvery() {
-  boardEvery = !boardEvery;
-  savePreference('echo.board-every', boardEvery ? 'on' : 'off');
+function toggleBoardCards() {
+  boardCards = !boardCards;
+  savePreference('echo.board-cards', boardCards ? 'on' : 'off');
   openBoardOptions();
-  if (screen === 'board' && deck === 'all') loadBoard();
+  if (screen === 'board') loadBoard();
 }
 // One track, two thumbs that never cross. A press moves the nearer thumb to it; where the thumbs meet, the first move
 // decides — left takes the lowest, right the highest — so neither end can get stuck under the other. The range is kept
@@ -2545,16 +2546,16 @@ async function loadBoard() {
   const load = ++boardLoads;
   for (const source of boardClips.values()) URL.revokeObjectURL(source);
   boardClips.clear(); boardBytes.clear(); boardDecoded.clear();
-  const every = deck === 'all' && boardEvery;
-  const wanted = `${direction}|${deck}|${boardRange.min}|${boardRange.max}|${every}`;
-  const asked = () => `${direction}|${deck}|${boardRange.min}|${boardRange.max}|${deck === 'all' && boardEvery}`;
+  const cards = boardCards;
+  const wanted = `${direction}|${deck}|${boardRange.min}|${boardRange.max}|${cards}`;
+  const asked = () => `${direction}|${deck}|${boardRange.min}|${boardRange.max}|${boardCards}`;
   board = null; loading = true; notice = null; retryAction = null; render();
   if (!snapshot) await fetchState();
   try {
-    const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}&min=${boardRange.min}&max=${boardRange.max}${every ? '&every=1' : ''}`);
+    const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}&min=${boardRange.min}&max=${boardRange.max}${cards ? '&cards=1' : ''}`);
     const order = shuffled(words);
     if (wanted === asked() && load === boardLoads) {
-      board = { deck, words: order, total, full: boardRangeFull(), cards: deck === 'all' && !every };
+      board = { deck, words: order, total, full: boardRangeFull(), cards };
       if (audioMode) warmBoardClips(order, load);
     }
   } catch (error) { notice = { message: error.message }; retryAction = { type: 'board' }; }
@@ -2570,7 +2571,7 @@ function renderBoard() {
     ? `<span class="board-face board-${side}${genderClass(word.gender)}" lang="${languageTag}">${frEsc(word.fr)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`
     : `<span class="board-face board-${side}" lang="en">${esc(word.en)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`;
   const tiles = board.words.map((word) => `<button class="board-tile${word.score < 0 ? ' weak' : ''}${boardTurned.has(word.id) ? ' turned' : ''}" data-action="board-turn" data-id="${esc(word.id)}" aria-label="${esc(frenchFirst ? word.fr : word.en)}">${face(word, frenchFirst, 'front')}${face(word, !frenchFirst, 'back')}</button>`).join('');
-  const empty = !board.full ? 'No words with a score in this range.' : board.cards ? 'Nothing in Cards right now.' : 'No words in this category yet.';
+  const empty = !board.full ? 'No words with a score in this range.' : board.cards ? (board.deck === 'all' ? 'Nothing in Cards right now.' : 'None of these words are in Cards right now.') : 'No words in this category yet.';
   const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : `<p class="caption">${empty}</p>`;
   const count = !board.cards ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
     : board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
@@ -5273,7 +5274,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, practise English → ${languageEnglish}, or tap a tile on Board</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><button class="dialog-row dialog-link" data-action="board-options"><span>Board<small class="dialog-note">${esc(boardRangeLabel())}${boardEvery ? ' · All words: every word' : ''}</small></span><span aria-hidden="true">›</span></button><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, practise English → ${languageEnglish}, or tap a tile on Board</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><button class="dialog-row dialog-link" data-action="board-options"><span>Board<small class="dialog-note">${esc(boardRangeLabel())} · ${boardCards ? 'words in Cards' : 'every word'}</small></span><span aria-hidden="true">›</span></button><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
 }
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
@@ -5370,7 +5371,7 @@ document.addEventListener('click', (event) => {
   if (action === 'sc-topic') { chooseSentenceTopic(button.dataset.topic); return; }
   if (action === 'board-turn') { turnBoardTile(button); return; }
   if (action === 'board-shuffle') { shuffleBoard(); return; }
-  if (action === 'board-every') { toggleBoardEvery(); return; }
+  if (action === 'board-cards') { toggleBoardCards(); return; }
   if (action === 'sc-topics-all') { chooseAllSentenceTopics(); return; }
   if (busy) return;
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }
