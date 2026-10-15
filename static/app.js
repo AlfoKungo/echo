@@ -2366,16 +2366,10 @@ function songListHTML() {
   return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
 }
 // ── Board (a tab in Words): every word of the chosen category, or for All words up to 100 of the words in Cards right
-// now, as tiles in a new random order each visit. A tap shows the other side for BOARD_TURN_MS and, as boardSound
-// allows, says the French; a second tap turns a tile back sooner. French is coloured by gender, and a word whose score
-// is below 0 is outlined. It changes no score or schedule.
+// now, as tiles in a new random order each visit. A tap shows the other side for BOARD_TURN_MS and, when Say the French
+// when a card turns (audioMode) is on, says the French; a second tap turns a tile back sooner. French is coloured by
+// gender, and a word whose score is below 0 is outlined. It changes no score or schedule.
 const BOARD_TURN_MS = 2500;
-// Words options › Board says the word: 'categories' (a category board speaks, the All words board is silent),
-// 'always' or 'never'. Remembered on this device.
-const BOARD_SOUNDS = { categories: 'In categories', always: 'Always', never: 'Never' };
-let boardSound = readPreference('echo.board-sound', 'categories');
-if (!Object.hasOwn(BOARD_SOUNDS, boardSound)) boardSound = 'categories';
-const boardSpeaks = (boardDeck) => boardSound === 'always' || (boardSound === 'categories' && boardDeck !== 'all');
 let board = null;
 const boardTurned = new Map();
 let boardLoads = 0;
@@ -2410,7 +2404,7 @@ async function loadBoard() {
     const order = words.map((word) => [Math.random(), word]).sort((a, b) => a[0] - b[0]).map(([, word]) => word);
     if (wanted === `${direction}|${deck}` && load === boardLoads) {
       board = { deck, words: order, total };
-      if (boardSpeaks(deck)) warmBoardClips(order, load);
+      if (audioMode) warmBoardClips(order, load);
     }
   } catch (error) { notice = { message: error.message }; retryAction = { type: 'board' }; }
   loading = false;
@@ -2442,7 +2436,7 @@ function turnBoardTile(button) {
     boardTurned.delete(id);
     main.querySelector(`.board-tile[data-id="${CSS.escape(id)}"]`)?.classList.remove('turned');
   }, BOARD_TURN_MS));
-  if (word.audioUrl && boardSpeaks(board.deck)) playFrench(word.audioUrl);
+  if (word.audioUrl && audioMode) playFrench(word.audioUrl);
 }
 // How much of the song's words you know, and how much you are learning, as one bar.
 function understoodHTML(understood) {
@@ -5117,8 +5111,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  const boardSoundRow = `<div class="dialog-row"><label for="board-sound">Board says the word<small class="dialog-note">In categories: the All words board stays silent</small></label><select id="board-sound">${Object.entries(BOARD_SOUNDS).map(([value, label]) => `<option value="${value}" ${boardSound === value ? 'selected' : ''}>${label}</option>`).join('')}</select></div>`;
-  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, or practise English → ${languageEnglish}</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div>${boardSoundRow}<div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, practise English → ${languageEnglish}, or tap a tile on Board</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
 }
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
@@ -5189,7 +5182,11 @@ document.addEventListener('click', (event) => {
   if (action === 'st-info') { toggleStatsTip(button); return; }
   if (!event.target.closest('.st-tip')) closeStatsTips();
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }
-  if (action === 'turn-sound') { audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off'); if (!audioMode) stopAudio(); openOptions(); return; }
+  if (action === 'turn-sound') {
+    audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off');
+    if (!audioMode) stopAudio(); else if (board && !boardClips.size) warmBoardClips(board.words, boardLoads);
+    openOptions(); return;
+  }
   if (action === 'practice-way') { choosePracticeWay(button.dataset.way); return; }
   if (action === 'replay') { const card = shownCard(); if (card) playFrench(card.audioUrl); return; }
   if (action === 'play-clips') { toggleClips(); return; }
@@ -5361,10 +5358,6 @@ document.addEventListener('change', (event) => {
     render(); main.querySelector('.vb-input')?.focus({ preventScroll: true });
   }
   else if (event.target.id === 'audio-speed') { speed = event.target.value === '0.8' ? 0.8 : 1; savePreference('echo.speed', String(speed)); audio.playbackRate = speed; }
-  else if (event.target.id === 'board-sound' && Object.hasOwn(BOARD_SOUNDS, event.target.value)) {
-    boardSound = event.target.value; savePreference('echo.board-sound', boardSound);
-    if (board && boardSpeaks(board.deck) && !boardClips.size) warmBoardClips(board.words, boardLoads);
-  }
 });
 document.addEventListener('input', (event) => {
   if (event.target.id === 'vocab-search') { search = event.target.value; renderBrowseResults(); }
