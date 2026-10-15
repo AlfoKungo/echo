@@ -1165,17 +1165,21 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   const readAccepted = db.query<{ heard: string }, [string]>('SELECT heard FROM say_accepted WHERE word_id = ?');
   const saveHeard = db.query('INSERT OR IGNORE INTO walkman_heard (request_id, word_id, heard_at) VALUES (?, ?, ?)');
 
-  // The words in Cards right now, as its stacks hold them: missed first, then known, then the ones waiting their first
-  // turn today. Read only: the queue is reconciled on a copy and never saved.
+  // A category gives every word in it. All words gives the words in Cards right now, as its stacks hold them: missed
+  // first, then known, then the ones waiting their first turn today, cut at BOARD_LIMIT. Read only: the queue is
+  // reconciled on a copy and never saved.
   function board(direction: Direction, deck: string): Board {
     validateSelection(direction, deck);
     return db.transaction(() => {
       const at = now();
-      const queue = loadQueue(direction, at);
-      reconcileQueue(queue, rowsForDirection.all(direction), at, false);
-      const ids = [...queue.failed, ...queue.successful, ...queue.unseen].filter((id) => inDeck(id, deck));
+      let ids: string[];
+      if (deck === 'all') {
+        const queue = loadQueue(direction, at);
+        reconcileQueue(queue, rowsForDirection.all(direction), at, false);
+        ids = [...queue.failed, ...queue.successful, ...queue.unseen];
+      } else ids = words.filter((word) => inDeck(word.id, deck)).map((word) => word.id);
       const scores = scoresAt(at.getTime());
-      const shown = ids.slice(0, BOARD_LIMIT).map((id): BoardWord => ({
+      const shown = (deck === 'all' ? ids.slice(0, BOARD_LIMIT) : ids).map((id): BoardWord => ({
         ...wordById.get(id)!,
         score: Math.round((scores.get(id) ?? 0) * 1000) / 1000,
         audioUrl: ready(id) ? `audio/${encodeURIComponent(id)}.mp3?v=${WORD_CLIP_VERSION}` : null,

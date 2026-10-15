@@ -139,7 +139,10 @@ function warmClip(url) {
     }
   }).catch(() => clipCache.delete(url));
 }
-const clipSource = (url) => clipCache.get(url) || url;
+// Board recordings, fetched in the background once the tiles are laid out (see warmBoardClips); kept apart from
+// clipCache so a full board never pushes out the clips Cards fetched ahead.
+const boardClips = new Map();
+const clipSource = (url) => clipCache.get(url) || boardClips.get(url) || url;
 // Vocabulary runs the daily stacks or Endless: started words only, picked by score, each answer +1 or -1 to it.
 let vocabMode = readPreference('echo.vocab-mode', 'daily') === 'endless' ? 'endless' : 'daily';
 const endlessMode = () => vocabMode === 'endless' && screen === 'practice';
@@ -2362,24 +2365,48 @@ function songListHTML() {
   const list = (songList?.songs || []).map((song) => `<li><button class="song-row" data-action="song-open" data-song="${esc(song.id)}"><span class="song-copy"><strong>${esc(song.title)}</strong><span>${esc(song.artist || 'Pasted lyrics')}</span><small class="song-state ${song.status}">${esc(songStatusLine(song))}</small>${song.status === 'reading' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
   return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
 }
-// ── Board (a tab in Words): up to 100 of the words in Cards right now, for the chosen direction and category, as tiles
-// in a new random order each visit. A tap shows the other side for BOARD_TURN_MS and says the French; a second tap
-// turns it back sooner. French is coloured by gender, and a word whose score is below 0 is outlined. It changes no
-// score or schedule.
+// ── Board (a tab in Words): every word of the chosen category, or for All words up to 100 of the words in Cards right
+// now, as tiles in a new random order each visit. A tap shows the other side for BOARD_TURN_MS and says the French; a
+// second tap turns it back sooner. French is coloured by gender, and a word whose score is below 0 is outlined. It
+// changes no score or schedule.
 const BOARD_TURN_MS = 2500;
 let board = null;
 const boardTurned = new Map();
 const boardSeen = new Set();
+let boardLoads = 0;
+// Fetches every tile's recording, top of the board first, a few at a time so the Mac is not flooded; a tap then plays
+// from memory. A newer load stops the older one and frees its clips.
+async function warmBoardClips(words, load) {
+  const urls = words.map((word) => word.audioUrl).filter(Boolean);
+  const worker = async () => {
+    while (urls.length && load === boardLoads) {
+      const url = urls.shift();
+      try {
+        const response = await fetch(url);
+        if (!response.ok) continue;
+        const blob = await response.blob();
+        if (load === boardLoads) boardClips.set(url, URL.createObjectURL(blob));
+      } catch {}
+    }
+  };
+  await Promise.all([worker(), worker(), worker()]);
+}
 async function loadBoard() {
   for (const timer of boardTurned.values()) clearTimeout(timer);
   boardTurned.clear(); boardSeen.clear();
+  const load = ++boardLoads;
+  for (const source of boardClips.values()) URL.revokeObjectURL(source);
+  boardClips.clear();
   const wanted = `${direction}|${deck}`;
   board = null; loading = true; notice = null; retryAction = null; render();
   if (!snapshot) await fetchState();
   try {
     const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}`);
     const order = words.map((word) => [Math.random(), word]).sort((a, b) => a[0] - b[0]).map(([, word]) => word);
-    if (wanted === `${direction}|${deck}`) board = { deck, words: order, total };
+    if (wanted === `${direction}|${deck}` && load === boardLoads) {
+      board = { deck, words: order, total };
+      warmBoardClips(order, load);
+    }
   } catch (error) { notice = { message: error.message }; retryAction = { type: 'board' }; }
   loading = false;
   if (screen === 'board') render();
@@ -2389,13 +2416,15 @@ function renderBoard() {
   if (loading || !board) { shell(loading ? '<div class="loading-state" role="status">Laying out the words…</div>' : ''); return; }
   const frenchFirst = direction === 'fr-en';
   const title = snapshot?.decks?.find((entry) => entry.id === board.deck)?.title ?? 'All words';
-  const hint = frenchFirst ? 'Tap a word for its meaning.' : `Tap a meaning for its ${languageEnglish}.`;
+  const hint = `${frenchFirst ? 'Tap a word for its meaning.' : `Tap a meaning for its ${languageEnglish}.`}${board.deck === 'all' ? ' Choose a category in Words options (•••) to see every word in it.' : ''}`;
   const face = (word, french, side) => french
     ? `<span class="board-face board-${side}${genderClass(word.gender)}" lang="${languageTag}">${frEsc(word.fr)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`
     : `<span class="board-face board-${side}" lang="en">${esc(word.en)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`;
   const tiles = board.words.map((word) => `<button class="board-tile${word.score < 0 ? ' weak' : ''}${boardTurned.has(word.id) ? ' turned' : ''}${boardSeen.has(word.id) ? ' seen' : ''}" data-action="board-turn" data-id="${esc(word.id)}" aria-label="${esc(frenchFirst ? word.fr : word.en)}">${face(word, frenchFirst, 'front')}${face(word, !frenchFirst, 'back')}</button>`).join('');
-  const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : '<p class="caption">Nothing in Cards right now.</p>';
-  const count = board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
+  const empty = board.deck === 'all' ? 'Nothing in Cards right now.' : 'No words in this category yet.';
+  const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : `<p class="caption">${empty}</p>`;
+  const count = board.deck !== 'all' ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
+    : board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
   shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span></div><p class="caption board-hint">${esc(hint)}</p>${body}`);
 }
 function turnBoardTile(button) {
