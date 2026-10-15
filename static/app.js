@@ -200,7 +200,7 @@ function chooseVerbTape(kind) {
   loadTape(!walkmanAudio.paused);
 }
 // Words and Listen are rooms of tabs; each opens on the tab last used, remembered on this device.
-const WORDS_TABS = { cards: 'Cards', endless: 'Endless', ...(roomsOff.has('walkman') ? {} : { walkman: 'Walkman' }), ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
+const WORDS_TABS = { cards: 'Cards', endless: 'Endless', board: 'Board', ...(roomsOff.has('walkman') ? {} : { walkman: 'Walkman' }), ...(roomsOff.has('songs') ? {} : { songs: 'Songs' }) };
 const LISTEN_TABS = { listen: 'Questions', ...(roomsOff.has('sounds') ? {} : { sounds: 'Sounds' }), ...(roomsOff.has('sentencetape') ? {} : { 'listen-tape': 'Tape' }), ...(roomsOff.has('news') ? {} : { news: 'News' }) };
 // A device last on the old Say it tab opens on Endless, with Say on.
 let wordsTab = (() => { const saved = readPreference('echo.words-tab', vocabMode === 'endless' ? 'endless' : 'cards'); return saved === 'say' ? 'endless' : saved in WORDS_TABS ? saved : 'cards'; })();
@@ -541,10 +541,10 @@ function openInfo(room) {
   if (!parts) return;
   openDialog(INFO_TITLES[room] ?? 'How it works', `<div class="dialog-copy">${parts}</div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'info');
 }
-const wordsTabNow = () => screen === 'walkman' || screen === 'songs' ? screen : vocabMode === 'endless' ? 'endless' : 'cards';
-// The top of every Words tab: back, the direction (for cards), Your words, ⓘ, options, then the tabs.
+const wordsTabNow = () => screen === 'walkman' || screen === 'songs' || screen === 'board' ? screen : vocabMode === 'endless' ? 'endless' : 'cards';
+// The top of every Words tab: back, the direction (for cards and the board), Your words, ⓘ, options, then the tabs.
 function wordsTop() {
-  const tab = wordsTabNow(), cards = tab === 'cards' || tab === 'endless';
+  const tab = wordsTabNow(), cards = tab === 'cards' || tab === 'endless' || tab === 'board';
   return `<div class="section-top">${back('Home', 'home')}<div>${cards ? `<span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? `${language.toUpperCase()} → EN` : `EN → ${language.toUpperCase()}`}</span>` : ''}<button class="icon" data-action="browse" aria-label="Your words" ${busy ? 'disabled' : ''}>${searchIcon}</button>${infoButton('words')}<button class="icon" data-action="options" aria-label="Words options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>${roomTabs('words-tab', tab, WORDS_TABS)}`;
 }
 // The top of every Listen tab: back, the level (for questions), ⓘ, then the tabs.
@@ -600,6 +600,7 @@ function render() {
   else if (tapeScreen()) renderWalkman();
   else if (screen === 'statistics') renderStatistics();
   else if (screen === 'songs') renderSongs();
+  else if (screen === 'board') renderBoard();
   else if (screen === 'song') renderSong();
   else if (screen === 'lyrics') renderLyrics();
   else if (screen === 'write') renderWrite();
@@ -2360,6 +2361,52 @@ function renderSongs() {
 function songListHTML() {
   const list = (songList?.songs || []).map((song) => `<li><button class="song-row" data-action="song-open" data-song="${esc(song.id)}"><span class="song-copy"><strong>${esc(song.title)}</strong><span>${esc(song.artist || 'Pasted lyrics')}</span><small class="song-state ${song.status}">${esc(songStatusLine(song))}</small>${song.status === 'reading' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
   return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
+}
+// ── Board (a tab in Words): every word of the chosen category as a tile, in a new random order each visit. A tap
+// shows the other side for BOARD_TURN_MS and says the French; a second tap turns it back sooner. French is coloured
+// by gender, and a word whose score is below 0 is outlined. It changes no score or schedule.
+const BOARD_TURN_MS = 2500;
+let board = null;
+const boardTurned = new Map();
+const boardSeen = new Set();
+async function loadBoard() {
+  for (const timer of boardTurned.values()) clearTimeout(timer);
+  boardTurned.clear(); boardSeen.clear();
+  const wanted = deck;
+  board = null; loading = true; notice = null; retryAction = null; render();
+  if (!snapshot) await fetchState();
+  try {
+    const { words } = await api(`api/board?deck=${encodeURIComponent(wanted)}`);
+    const order = words.map((word) => [Math.random(), word]).sort((a, b) => a[0] - b[0]).map(([, word]) => word);
+    if (wanted === deck) board = { deck: wanted, words: order };
+  } catch (error) { notice = { message: error.message }; retryAction = { type: 'board' }; }
+  loading = false;
+  if (screen === 'board') render();
+}
+function renderBoard() {
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="board-room">${wordsTop()}${body}</section>`; };
+  if (loading || !board) { shell(loading ? '<div class="loading-state" role="status">Laying out the words…</div>' : ''); return; }
+  const frenchFirst = direction === 'fr-en';
+  const title = snapshot?.decks?.find((entry) => entry.id === board.deck)?.title ?? 'All words';
+  const hint = `${frenchFirst ? 'Tap a word for its meaning.' : `Tap a meaning for its ${languageEnglish}.`}${board.deck === 'all' ? ' Choose a category in Words options (•••).' : ''}`;
+  const face = (word, french, side) => french
+    ? `<span class="board-face board-${side}${genderClass(word.gender)}" lang="${languageTag}">${frEsc(word.fr)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`
+    : `<span class="board-face board-${side}" lang="en">${esc(word.en)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`;
+  const tiles = board.words.map((word) => `<button class="board-tile${word.score < 0 ? ' weak' : ''}${boardTurned.has(word.id) ? ' turned' : ''}${boardSeen.has(word.id) ? ' seen' : ''}" data-action="board-turn" data-id="${esc(word.id)}" aria-label="${esc(frenchFirst ? word.fr : word.en)}">${face(word, frenchFirst, 'front')}${face(word, !frenchFirst, 'back')}</button>`).join('');
+  const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : '<p class="caption">No words in this category yet.</p>';
+  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${board.words.length} ${board.words.length === 1 ? 'word' : 'words'}</span></div><p class="caption board-hint">${esc(hint)}</p>${body}`);
+}
+function turnBoardTile(button) {
+  const id = button.dataset.id;
+  const word = board?.words.find((entry) => entry.id === id);
+  if (!word) return;
+  if (boardTurned.has(id)) { clearTimeout(boardTurned.get(id)); boardTurned.delete(id); button.classList.remove('turned'); return; }
+  button.classList.add('turned', 'seen'); boardSeen.add(id);
+  boardTurned.set(id, setTimeout(() => {
+    boardTurned.delete(id);
+    main.querySelector(`.board-tile[data-id="${CSS.escape(id)}"]`)?.classList.remove('turned');
+  }, BOARD_TURN_MS));
+  if (word.audioUrl) playFrench(word.audioUrl);
 }
 // How much of the song's words you know, and how much you are learning, as one bar.
 function understoodHTML(understood) {
@@ -4705,10 +4752,10 @@ function openWords(tab = wordsTab, how = 'forward', autoplay = false) {
     const mode = tab === 'endless' ? 'endless' : 'daily';
     if (mode !== vocabMode) { vocabMode = mode; savePreference('echo.vocab-mode', mode); endless = null; revealed = false; }
   }
-  const next = tab === 'walkman' || tab === 'songs' ? tab : 'practice';
+  const next = tab === 'walkman' || tab === 'songs' || tab === 'board' ? tab : 'practice';
   if (how === 'switch') switchPlace(next);
   else if (!move(next, how === 'forward')) return;
-  if (next === 'practice') beginPractice(); else if (next === 'walkman') loadTape(autoplay); else loadSongs();
+  if (next === 'practice') beginPractice(); else if (next === 'walkman') loadTape(autoplay); else if (next === 'board') loadBoard(); else loadSongs();
 }
 // Listen opens on a tab the same way: Questions, Sounds or the sentence tape.
 function openListen(tab = listenTab, how = 'forward') {
@@ -4728,6 +4775,7 @@ function switchPlace(next) {
 function wordsOptionChanged() {
   if (screen === 'practice') beginPractice();
   else if (screen === 'browse') enterBrowse();
+  else if (screen === 'board') loadBoard();
   else render();
 }
 // A tape from Home's Hands-free shelf or the Verbs page; the words tape is the Walkman tab of Words.
@@ -5091,6 +5139,7 @@ function retry() {
   else if (action.type === 'news') loadNews();
   else if (action.type === 'news-edition') loadNewsEdition();
   else if (action.type === 'songs') loadSongs();
+  else if (action.type === 'board') loadBoard();
   else if (action.type === 'song') loadSong();
   else fetchState(action.message);
 }
@@ -5123,6 +5172,7 @@ document.addEventListener('click', (event) => {
   if (action === 'sc-options') { openSentenceOptions(); return; }
   if (action === 'sc-tense') { chooseSentenceTense(button.dataset.tense); return; }
   if (action === 'sc-topic') { chooseSentenceTopic(button.dataset.topic); return; }
+  if (action === 'board-turn') { turnBoardTile(button); return; }
   if (action === 'sc-topics-all') { chooseAllSentenceTopics(); return; }
   if (busy) return;
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }
@@ -5375,6 +5425,7 @@ window.addEventListener('popstate', (event) => {
   else if (tapeScreen()) loadTape();
   else if (screen === 'statistics') loadStatistics();
   else if (screen === 'songs') loadSongs();
+  else if (screen === 'board') loadBoard();
   else if (screen === 'song') loadSong();
   else if (screen === 'lyrics') loadLyrics();
   else if (screen === 'write') loadWrite();

@@ -775,6 +775,23 @@ describe('adding a word tapped in a French text', () => {
   });
 });
 
+describe('the word board', () => {
+  test('lists every word of the category, started or not, with its score, and no recording for a word without one', () => {
+    const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
+    directories.push(directory);
+    const store = createStore(words, { dbPath: join(directory, 'echo.db'), now: () => new Date(2026, 8, 21, 10), random: () => 0.999999, ready: (id) => id !== 'food-004' });
+    stores.push(store);
+    store.setSettings(1);
+    store.grade(answer(store.start('fr-en', 'food'), false));
+    const board = store.board('food');
+    expect(board.map((word) => word.id).sort()).toEqual(['food-001', 'food-002', 'food-003', 'food-004']);
+    expect(board.find((word) => word.id === 'food-001')!.score).toBe(-3);
+    expect(board.find((word) => word.id === 'food-002')!.score).toBe(0);
+    expect(board.find((word) => word.id === 'food-004')!.audioUrl).toBeNull();
+    expect(board.find((word) => word.id === 'food-002')!.audioUrl).toContain('audio/food-002.mp3');
+  });
+});
+
 describe('Walkman scores', () => {
   test('a recall raises a score, a miss lowers it more, a listen raises it a little, and every point halves in 21 days', () => {
     const { store, clock } = fixture(undefined, thirtyWords);

@@ -4,7 +4,7 @@ import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
 import { pointsFromLowest } from './score-points';
 import { GENDER_RULES, type Gender, type GenderRules } from './language';
-import type { AddWordInput, AddWordResult, BrowseWord, CardAhead, CardsAhead, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, BoardWord, BrowseWord, CardAhead, CardsAhead, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -34,6 +34,7 @@ export interface Store {
   reviewEarly(input: ReviewEarlyInput): Snapshot;
   addWord(input: AddWordInput): AddWordResult;
   browse(direction: Direction, deck: string): BrowseWord[];
+  board(deck: string): BoardWord[];
   // Per deck in one direction: words started today and words not started yet (the shared daily allowance decides
   // how many of those come in).
   deckCounts(direction: Direction): Record<string, { today: number; waiting: number }>;
@@ -1162,6 +1163,16 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   const readAccepted = db.query<{ heard: string }, [string]>('SELECT heard FROM say_accepted WHERE word_id = ?');
   const saveHeard = db.query('INSERT OR IGNORE INTO walkman_heard (request_id, word_id, heard_at) VALUES (?, ?, ?)');
 
+  function board(deck: string): BoardWord[] {
+    validateSelection('fr-en', deck);
+    const scores = scoresAt(now().getTime());
+    return words.filter((word) => inDeck(word.id, deck)).map((word) => ({
+      ...word,
+      score: Math.round((scores.get(word.id) ?? 0) * 1000) / 1000,
+      audioUrl: ready(word.id) ? `audio/${encodeURIComponent(word.id)}.mp3?v=${WORD_CLIP_VERSION}` : null,
+    }));
+  }
+
   function listening(): ListeningWord[] {
     const rank = { learning: 3, due: 2, scheduled: 1, new: 0 } as const;
     const scores = scoresAt(now().getTime());
@@ -1408,5 +1419,5 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     })();
   }
 
-  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, deckCounts, listening, recordHeard, recordVerdict, acceptSaid, sayAccepted, endlessNext, endlessMark, endlessUndo, statistics, statisticsDay, hookless, setHooks, exportData, close: () => db.close() };
+  return { state, start, grade, undo, settings, setSettings, setSongsFirst, addWords, linkWords, word: (id) => wordById.get(id), words: () => words, addedIds: () => [...added], addExtraWords, reviewEarly, addWord, browse, board, deckCounts, listening, recordHeard, recordVerdict, acceptSaid, sayAccepted, endlessNext, endlessMark, endlessUndo, statistics, statisticsDay, hookless, setHooks, exportData, close: () => db.close() };
 }

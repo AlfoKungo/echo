@@ -722,3 +722,17 @@ html{touch-action:manipulation}
 .sc-topics-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 10px}
 .sc-topics-head .settings-label{margin:0}
 .vb-pill.sc-all{padding:2px 12px;font-size:13px;border-radius:999px}
+/* Board: three tiles across; a turned tile fades to its other side while a line drains over the 2.5 s it shows. */
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.board-head h2{margin:0;font-size:22px}.board-head span{font-size:13px;color:var(--muted)}
+.board-hint{margin:2px 0 14px}
+.board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.board-tile{position:relative;min-height:58px;border-radius:14px;-webkit-tap-highlight-color:transparent}
+.board-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;border:1px solid var(--frame);border-radius:inherit;background:var(--card);font-size:14px;line-height:1.2;overflow:hidden;overflow-wrap:anywhere;transition:opacity .22s ease}
+.board-back{opacity:0;background:var(--violet-soft);border-color:color-mix(in srgb,var(--violet) 55%,transparent);font-size:13px}
+.board-tile.turned .board-front{opacity:0}.board-tile.turned .board-back{opacity:1}
+.board-tile.weak .board-front{border-color:color-mix(in srgb,var(--danger) 60%,transparent);background:color-mix(in srgb,var(--danger) 7%,var(--card))}
+.board-tile.seen .board-front::after{content:"";position:absolute;top:6px;right:7px;width:5px;height:5px;border-radius:50%;background:var(--dim);opacity:.6}
+.board-bar{position:absolute;left:10px;right:10px;bottom:5px;height:2px;border-radius:2px;background:var(--violet);opacity:.75;transform-origin:left;transform:scaleX(0)}
+.board-tile.turned .board-bar{animation:board-drain 2.5s linear forwards}
+@keyframes board-drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@media(hover:hover){.board-tile:hover .board-front{border-color:var(--violet)}}
