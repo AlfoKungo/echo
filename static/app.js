@@ -123,6 +123,9 @@ const audio = new Audio();
 audio.preload = 'none';
 let audioGeneration = 0;
 let audioTimer;
+// Board's Web Audio clip (playBoardClip); here, beside the <audio> state, because stopAudio stops it too.
+let boardSource = null;
+let boardPlays = 0;
 // Recordings fetched ahead of need, held as in-memory object URLs: playing one starts at once, with no
 // round trip to the Mac. The oldest are dropped past a small cap.
 const clipCache = new Map();
@@ -268,6 +271,7 @@ function stopAudio() {
   const stopped = clipRun;
   if (stopped) clipSpot = { ...stopped };
   clipRun = null; audioGeneration++; clipProgress = null; audio.pause(); audio.removeAttribute('src'); audio.load(); clearTimeout(audioTimer); document.querySelector('#audio-status').hidden = true;
+  stopBoardClip();
   if (!storyAudio.paused) storyAudio.pause();
   if (stopped) showClipProgress();
 }
@@ -2382,12 +2386,20 @@ let boardRange = (() => {
 const boardRangeFull = () => boardRange.min === BOARD_LOW && boardRange.max === BOARD_HIGH;
 const boardBoundLabel = (bound) => bound === BOARD_LOW ? `${signed(bound)} or lower` : bound === BOARD_HIGH ? `${bound} or higher` : signed(bound);
 const boardRangeLabel = () => boardRangeFull() ? 'All scores' : `Scores ${boardBoundLabel(boardRange.min)} to ${boardBoundLabel(boardRange.max)}`;
+// All words on Board: the words in Cards (off, the default) or every word. Remembered on this device.
+let boardEvery = readPreference('echo.board-every', 'off') === 'on';
 // Board options, a level below Words options: what Board itself shows.
 function openBoardOptions() {
   const thumb = (end) => `<span class="range-thumb" data-end="${end}" role="slider" tabindex="0" aria-label="${end === 'min' ? 'Lowest score' : 'Highest score'}" aria-valuemin="${BOARD_LOW}" aria-valuemax="${BOARD_HIGH}"></span>`;
   const ends = [BOARD_LOW, 0, BOARD_HIGH].map((bound) => `<span style="left:calc(${RANGE_INSET}px + (100% - ${2 * RANGE_INSET}px) * ${(bound - BOARD_LOW) / (BOARD_HIGH - BOARD_LOW)})">${signed(bound)}</span>`).join('');
-  openDialog('Board options', `<div class="range-pick"><p class="range-value"></p><div class="range-track"><span class="range-fill"></span>${thumb('min')}${thumb('max')}</div><div class="range-ends">${ends}</div></div><div class="options-links"><button class="quiet" data-action="options">‹ Words options</button></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'board-options');
+  openDialog('Board options', `<div class="range-pick"><p class="range-value"></p><div class="range-track"><span class="range-fill"></span>${thumb('min')}${thumb('max')}</div><div class="range-ends">${ends}</div></div><div class="dialog-row"><span>All words: every word<small class="dialog-note">Off: only the words in Cards</small></span><button class="secondary" data-action="board-every" aria-pressed="${boardEvery}">${boardEvery ? 'On' : 'Off'}</button></div><div class="options-links"><button class="quiet" data-action="options">‹ Words options</button></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'board-options');
   drawBoardRange();
+}
+function toggleBoardEvery() {
+  boardEvery = !boardEvery;
+  savePreference('echo.board-every', boardEvery ? 'on' : 'off');
+  openBoardOptions();
+  if (screen === 'board' && deck === 'all') loadBoard();
 }
 // One track, two thumbs that never cross. A press moves the nearer thumb to it; where the thumbs meet, the first move
 // decides — left takes the lowest, right the highest — so neither end can get stuck under the other. The range is kept
@@ -2462,38 +2474,87 @@ function chooseBoardRange() {
 let board = null;
 const boardTurned = new Map();
 let boardLoads = 0;
-// Fetches every tile's recording, top of the board first, a few at a time so the Mac is not flooded; a tap then plays
-// from memory. A newer load stops the older one and frees its clips.
+// Fetches the recordings of the first BOARD_WARM tiles, top of the board first, a few at a time so the Mac is not
+// flooded; a tap then plays from memory. A newer load stops the older one and frees its clips. The bytes are kept for
+// Web Audio (playBoardClip), the object URL for the <audio> fallback.
+const BOARD_WARM = 200;
+const boardBytes = new Map();
 async function warmBoardClips(words, load) {
-  const urls = words.map((word) => word.audioUrl).filter(Boolean);
+  // Made here, suspended, so the first tap only has to resume it (that resume needs the tap).
+  if (boardWebAudio) boardContext ??= new (window.AudioContext || window.webkitAudioContext)();
+  const urls = words.slice(0, BOARD_WARM).map((word) => word.audioUrl).filter(Boolean);
   const worker = async () => {
     while (urls.length && load === boardLoads) {
       const url = urls.shift();
       try {
         const response = await fetch(url);
         if (!response.ok) continue;
-        const blob = await response.blob();
-        if (load === boardLoads) boardClips.set(url, URL.createObjectURL(blob));
+        const bytes = await response.arrayBuffer();
+        if (load !== boardLoads) continue;
+        boardBytes.set(url, bytes);
+        boardClips.set(url, URL.createObjectURL(new Blob([bytes], { type: 'audio/mpeg' })));
       } catch {}
     }
   };
   await Promise.all([worker(), worker(), worker()]);
+}
+// A Board tap plays through Web Audio: no media element to load, and the start skips most of the 0.25 s of silence
+// every word recording opens with, keeping BOARD_KEPT_LEAD_S so a speaker or earphones waking up don't clip the first
+// sound. iPhone mutes Web Audio on the silent switch unless the page's audio session is "playback" (navigator.
+// audioSession, iOS 17); where that is missing, or the pronunciation is slowed (Web Audio would lower the pitch), the tap
+// plays through the <audio> element as before. Decoded clips are kept for the last BOARD_DECODED taps.
+const BOARD_LEAD_S = 0.25;
+const BOARD_KEPT_LEAD_S = 0.06;
+const BOARD_DECODED = 30;
+const appleTouch = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const boardWebAudio = !!(window.AudioContext || window.webkitAudioContext) && (!appleTouch || 'audioSession' in navigator);
+let boardContext = null;
+const boardDecoded = new Map();
+async function playBoardClip(url) {
+  const bytes = boardBytes.get(url);
+  if (!boardWebAudio || !bytes || speed !== 1) { playFrench(url); return; }
+  stopAudio();
+  const play = ++boardPlays;
+  if ('audioSession' in navigator && navigator.audioSession.type !== 'playback') navigator.audioSession.type = 'playback';
+  boardContext ??= new (window.AudioContext || window.webkitAudioContext)();
+  const resumed = boardContext.resume(); // inside the tap, as iPhone requires
+  try {
+    let buffer = boardDecoded.get(url);
+    if (!buffer) {
+      buffer = await boardContext.decodeAudioData(bytes.slice(0));
+      boardDecoded.set(url, buffer);
+      if (boardDecoded.size > BOARD_DECODED) boardDecoded.delete(boardDecoded.keys().next().value);
+    }
+    await resumed;
+    if (play !== boardPlays) return;
+    const source = boardContext.createBufferSource();
+    source.buffer = buffer;
+    source.connect(boardContext.destination);
+    source.start(0, Math.min(BOARD_LEAD_S - BOARD_KEPT_LEAD_S, buffer.duration));
+    boardSource = source;
+  } catch { if (play === boardPlays) playFrench(url); }
+}
+function stopBoardClip() {
+  boardPlays++;
+  try { boardSource?.stop(); } catch {}
+  boardSource = null;
 }
 async function loadBoard() {
   for (const timer of boardTurned.values()) clearTimeout(timer);
   boardTurned.clear();
   const load = ++boardLoads;
   for (const source of boardClips.values()) URL.revokeObjectURL(source);
-  boardClips.clear();
-  const wanted = `${direction}|${deck}|${boardRange.min}|${boardRange.max}`;
-  const asked = () => `${direction}|${deck}|${boardRange.min}|${boardRange.max}`;
+  boardClips.clear(); boardBytes.clear(); boardDecoded.clear();
+  const every = deck === 'all' && boardEvery;
+  const wanted = `${direction}|${deck}|${boardRange.min}|${boardRange.max}|${every}`;
+  const asked = () => `${direction}|${deck}|${boardRange.min}|${boardRange.max}|${deck === 'all' && boardEvery}`;
   board = null; loading = true; notice = null; retryAction = null; render();
   if (!snapshot) await fetchState();
   try {
-    const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}&min=${boardRange.min}&max=${boardRange.max}`);
+    const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}&min=${boardRange.min}&max=${boardRange.max}${every ? '&every=1' : ''}`);
     const order = shuffled(words);
     if (wanted === asked() && load === boardLoads) {
-      board = { deck, words: order, total, full: boardRangeFull() };
+      board = { deck, words: order, total, full: boardRangeFull(), cards: deck === 'all' && !every };
       if (audioMode) warmBoardClips(order, load);
     }
   } catch (error) { notice = { message: error.message }; retryAction = { type: 'board' }; }
@@ -2509,9 +2570,9 @@ function renderBoard() {
     ? `<span class="board-face board-${side}${genderClass(word.gender)}" lang="${languageTag}">${frEsc(word.fr)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`
     : `<span class="board-face board-${side}" lang="en">${esc(word.en)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`;
   const tiles = board.words.map((word) => `<button class="board-tile${word.score < 0 ? ' weak' : ''}${boardTurned.has(word.id) ? ' turned' : ''}" data-action="board-turn" data-id="${esc(word.id)}" aria-label="${esc(frenchFirst ? word.fr : word.en)}">${face(word, frenchFirst, 'front')}${face(word, !frenchFirst, 'back')}</button>`).join('');
-  const empty = !board.full ? 'No words with a score in this range.' : board.deck === 'all' ? 'Nothing in Cards right now.' : 'No words in this category yet.';
+  const empty = !board.full ? 'No words with a score in this range.' : board.cards ? 'Nothing in Cards right now.' : 'No words in this category yet.';
   const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : `<p class="caption">${empty}</p>`;
-  const count = board.deck !== 'all' ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
+  const count = !board.cards ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
     : board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
   shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span>${board.words.length > 1 ? `<button class="icon board-shuffle" data-action="board-shuffle" aria-label="Shuffle the tiles">${shuffleIcon}</button>` : ''}</div>${body}`);
 }
@@ -2535,7 +2596,7 @@ function turnBoardTile(button) {
     boardTurned.delete(id);
     main.querySelector(`.board-tile[data-id="${CSS.escape(id)}"]`)?.classList.remove('turned');
   }, BOARD_TURN_MS));
-  if (word.audioUrl && audioMode) playFrench(word.audioUrl);
+  if (word.audioUrl && audioMode) playBoardClip(word.audioUrl);
 }
 // How much of the song's words you know, and how much you are learning, as one bar.
 function understoodHTML(understood) {
@@ -2814,6 +2875,8 @@ function sayCloseMic() {
 }
 async function startSay() {
   if (say.running) return;
+  // Board may have set the audio session to playback-only; the microphone needs it back to the browser's choice.
+  if ('audioSession' in navigator && navigator.audioSession.type === 'playback') navigator.audioSession.type = 'auto';
   sayAudio.src = SILENT_WAV; sayAudio.play().catch(() => {});
   sayContext ??= new (window.AudioContext || window.webkitAudioContext)();
   sayContext.resume().catch(() => {});
@@ -5210,7 +5273,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, practise English → ${languageEnglish}, or tap a tile on Board</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><button class="dialog-row dialog-link" data-action="board-options"><span>Board<small class="dialog-note">${esc(boardRangeLabel())}</small></span><span aria-hidden="true">›</span></button><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, practise English → ${languageEnglish}, or tap a tile on Board</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><button class="dialog-row dialog-link" data-action="board-options"><span>Board<small class="dialog-note">${esc(boardRangeLabel())}${boardEvery ? ' · All words: every word' : ''}</small></span><span aria-hidden="true">›</span></button><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
 }
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
@@ -5307,6 +5370,7 @@ document.addEventListener('click', (event) => {
   if (action === 'sc-topic') { chooseSentenceTopic(button.dataset.topic); return; }
   if (action === 'board-turn') { turnBoardTile(button); return; }
   if (action === 'board-shuffle') { shuffleBoard(); return; }
+  if (action === 'board-every') { toggleBoardEvery(); return; }
   if (action === 'sc-topics-all') { chooseAllSentenceTopics(); return; }
   if (busy) return;
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }

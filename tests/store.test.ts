@@ -811,6 +811,8 @@ describe('the word board', () => {
     expect(ids(-2, 8)).toEqual([]);
     expect(ids(-8, 8)).toHaveLength(4);
     expect(store.board('fr-en', 'all', { min: -8, max: -1 })).toMatchObject({ total: 1, words: [{ id: missed }] });
+    expect(store.board('fr-en', 'all', { min: -8, max: 8 }, true).total).toBe(words.length);
+    expect(store.board('fr-en', 'all', { min: -8, max: -1 }, true)).toMatchObject({ total: 1, words: [{ id: missed }] });
     expect(() => store.board('fr-en', 'food', { min: 1, max: 0 })).toThrow(StoreError);
     expect(() => store.board('fr-en', 'food', { min: -9, max: 0 })).toThrow(StoreError);
   });
