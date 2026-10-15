@@ -731,7 +731,6 @@ html{touch-action:manipulation}
 .board-back{opacity:0;background:var(--violet-soft);border-color:color-mix(in srgb,var(--violet) 55%,transparent);font-size:13px}
 .board-tile.turned .board-front{opacity:0}.board-tile.turned .board-back{opacity:1}
 .board-tile.weak .board-front{border-color:color-mix(in srgb,var(--danger) 60%,transparent);background:color-mix(in srgb,var(--danger) 7%,var(--card))}
-.board-tile.seen .board-front::after{content:"";position:absolute;top:6px;right:7px;width:5px;height:5px;border-radius:50%;background:var(--dim);opacity:.6}
 .board-bar{position:absolute;left:10px;right:10px;bottom:5px;height:2px;border-radius:2px;background:var(--violet);opacity:.75;transform-origin:left;transform:scaleX(0)}
 .board-tile.turned .board-bar{animation:board-drain 2.5s linear forwards}
 @keyframes board-drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
