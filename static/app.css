@@ -722,9 +722,8 @@ html{touch-action:manipulation}
 .sc-topics-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 10px}
 .sc-topics-head .settings-label{margin:0}
 .vb-pill.sc-all{padding:2px 12px;font-size:13px;border-radius:999px}
-/* Board: three tiles across; a turned tile fades to its other side while a line drains over the 2.5 s it shows. */
-.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.board-head h2{margin:0;font-size:22px}.board-head span{font-size:13px;color:var(--muted)}
-.board-hint{margin:2px 0 14px}
+/* Board: three tiles across; a turned tile fades to its other side while a line drains over the 2 s it shows. */
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}.board-head h2{margin:0;font-size:22px}.board-head span{font-size:13px;color:var(--muted)}
 .dialog-link{width:100%;text-align:left;font-size:15px}.dialog-link>[aria-hidden]{font-size:22px;color:var(--muted)}
 .board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .board-tile{position:relative;min-height:58px;border-radius:14px;-webkit-tap-highlight-color:transparent}

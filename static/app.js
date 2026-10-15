@@ -2440,7 +2440,6 @@ function renderBoard() {
   if (loading || !board) { shell(loading ? '<div class="loading-state" role="status">Laying out the words…</div>' : ''); return; }
   const frenchFirst = direction === 'fr-en';
   const title = snapshot?.decks?.find((entry) => entry.id === board.deck)?.title ?? 'All words';
-  const hint = `${frenchFirst ? 'Tap a word for its meaning.' : `Tap a meaning for its ${languageEnglish}.`}${board.full ? '' : ` ${boardRangeLabel()}.`} Choose ${board.deck === 'all' ? 'a category or scores' : 'scores'} in Words options (•••).`;
   const face = (word, french, side) => french
     ? `<span class="board-face board-${side}${genderClass(word.gender)}" lang="${languageTag}">${frEsc(word.fr)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`
     : `<span class="board-face board-${side}" lang="en">${esc(word.en)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`;
@@ -2449,7 +2448,7 @@ function renderBoard() {
   const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : `<p class="caption">${empty}</p>`;
   const count = board.deck !== 'all' ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
     : board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
-  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span></div><p class="caption board-hint">${esc(hint)}</p>${body}`);
+  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span></div>${body}`);
 }
 function turnBoardTile(button) {
   const id = button.dataset.id;
