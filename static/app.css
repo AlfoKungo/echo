@@ -725,7 +725,7 @@ html{touch-action:manipulation}
 /* Board: three tiles across; a turned tile fades to its other side while a line drains over the 2.5 s it shows. */
 .board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.board-head h2{margin:0;font-size:22px}.board-head span{font-size:13px;color:var(--muted)}
 .board-hint{margin:2px 0 14px}
-.board-range{display:flex;align-items:center;gap:8px;margin:10px 0 4px;font-size:14px;color:var(--muted)}.board-range select{padding:6px 8px;font-size:15px}
+.dialog-link{width:100%;text-align:left;font-size:15px}.dialog-link>[aria-hidden]{font-size:22px;color:var(--muted)}
 .board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .board-tile{position:relative;min-height:58px;border-radius:14px;-webkit-tap-highlight-color:transparent}
 .board-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;border:1px solid var(--frame);border-radius:inherit;background:var(--card);font-size:14px;line-height:1.2;overflow:hidden;overflow-wrap:anywhere;transition:opacity .22s ease}

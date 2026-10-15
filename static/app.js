@@ -2366,7 +2366,7 @@ function songListHTML() {
   return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
 }
 // ── Board (a tab in Words): every word of the chosen category, or for All words up to 100 of the words in Cards right
-// now, as tiles in a new random order each visit, kept to the score range chosen above them. A tap shows the other side
+// now, as tiles in a new random order each visit, kept to the score range in Board options. A tap shows the other side
 // for BOARD_TURN_MS and, when Say the French when a card turns (audioMode) is on, says the French; a second tap turns a
 // tile back sooner. French is coloured by gender, and a word whose score is below 0 is outlined. It changes no score or
 // schedule.
@@ -2379,14 +2379,21 @@ let boardRange = (() => {
   return Number.isInteger(min) && Number.isInteger(max) && BOARD_LOW <= min && min <= max && max <= BOARD_HIGH ? { min, max } : { min: BOARD_LOW, max: BOARD_HIGH };
 })();
 const boardRangeFull = () => boardRange.min === BOARD_LOW && boardRange.max === BOARD_HIGH;
+const boardBoundLabel = (bound) => bound === BOARD_LOW ? `${signed(bound)} or lower` : bound === BOARD_HIGH ? `${bound} or higher` : signed(bound);
+const boardRangeLabel = () => boardRangeFull() ? 'All scores' : `Scores ${boardBoundLabel(boardRange.min)} to ${boardBoundLabel(boardRange.max)}`;
+// Board options, a level below Words options: what Board itself shows.
+function openBoardOptions() {
+  const bounds = (end) => `<select id="board-${end}">${STATS_BINS.map((bound) => `<option value="${bound}" ${boardRange[end] === bound ? 'selected' : ''}>${boardBoundLabel(bound)}</option>`).join('')}</select>`;
+  openDialog('Board options', `<p class="caption">Board shows the words whose score, as in Statistics, is in this range. The full range shows every word; a narrower one leaves out words you have never practised.</p><div class="dialog-row"><label for="board-min">Lowest score</label>${bounds('min')}</div><div class="dialog-row"><label for="board-max">Highest score</label>${bounds('max')}</div><div class="options-links"><button class="quiet" data-action="options">‹ Words options</button></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'board-options');
+}
 function chooseBoardRange(end, value) {
   const bound = Number(value);
   if (!Number.isInteger(bound) || bound < BOARD_LOW || bound > BOARD_HIGH) return;
   boardRange = end === 'min' ? { min: bound, max: Math.max(bound, boardRange.max) } : { min: Math.min(bound, boardRange.min), max: bound };
   savePreference('echo.board-range', `${boardRange.min},${boardRange.max}`);
-  loadBoard();
+  openBoardOptions();
+  if (screen === 'board') loadBoard();
 }
-const boardBoundLabel = (bound) => bound === BOARD_LOW ? `${signed(bound)} or lower` : bound === BOARD_HIGH ? `${bound} or higher` : signed(bound);
 let board = null;
 const boardTurned = new Map();
 let boardLoads = 0;
@@ -2430,12 +2437,10 @@ async function loadBoard() {
 }
 function renderBoard() {
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="board-room">${wordsTop()}${body}</section>`; };
-  const bounds = (end) => `<select id="board-${end}" aria-label="${end === 'min' ? 'Lowest score' : 'Highest score'}">${STATS_BINS.map((bound) => `<option value="${bound}" ${boardRange[end] === bound ? 'selected' : ''}>${boardBoundLabel(bound)}</option>`).join('')}</select>`;
-  const range = `<div class="board-range"><span>Scores</span>${bounds('min')}<span>to</span>${bounds('max')}</div>`;
-  if (loading || !board) { shell(`${range}${loading ? '<div class="loading-state" role="status">Laying out the words…</div>' : ''}`); return; }
+  if (loading || !board) { shell(loading ? '<div class="loading-state" role="status">Laying out the words…</div>' : ''); return; }
   const frenchFirst = direction === 'fr-en';
   const title = snapshot?.decks?.find((entry) => entry.id === board.deck)?.title ?? 'All words';
-  const hint = `${frenchFirst ? 'Tap a word for its meaning.' : `Tap a meaning for its ${languageEnglish}.`}${board.deck === 'all' ? ' Choose a category in Words options (•••) to see every word in it.' : ''}`;
+  const hint = `${frenchFirst ? 'Tap a word for its meaning.' : `Tap a meaning for its ${languageEnglish}.`}${board.full ? '' : ` ${boardRangeLabel()}.`} Choose ${board.deck === 'all' ? 'a category or scores' : 'scores'} in Words options (•••).`;
   const face = (word, french, side) => french
     ? `<span class="board-face board-${side}${genderClass(word.gender)}" lang="${languageTag}">${frEsc(word.fr)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`
     : `<span class="board-face board-${side}" lang="en">${esc(word.en)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`;
@@ -2444,7 +2449,7 @@ function renderBoard() {
   const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : `<p class="caption">${empty}</p>`;
   const count = board.deck !== 'all' ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
     : board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
-  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span></div>${range}<p class="caption board-hint">${esc(hint)}</p>${body}`);
+  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span></div><p class="caption board-hint">${esc(hint)}</p>${body}`);
 }
 function turnBoardTile(button) {
   const id = button.dataset.id;
@@ -5131,7 +5136,7 @@ function showRule() {
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, practise English → ${languageEnglish}, or tap a tile on Board</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, practise English → ${languageEnglish}, or tap a tile on Board</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><button class="dialog-row dialog-link" data-action="board-options"><span>Board<small class="dialog-note">${esc(boardRangeLabel())}</small></span><span aria-hidden="true">›</span></button><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
 }
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
@@ -5273,6 +5278,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
   else if (action === 'extra-words' || action === 'review-early') extraPractice(action, button.dataset);
   else if (action === 'options') openOptions();
+  else if (action === 'board-options') openBoardOptions();
   else if (action === 'about') { dialog.close(); stopAudio(); aboutDialog.showModal(); refreshLanguages(); }
   else if (action === 'again') grade(false);
   else if (action === 'known') grade(true);
