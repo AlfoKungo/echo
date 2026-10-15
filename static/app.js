@@ -61,6 +61,7 @@ const eyeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12S6 
 const bookIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v14M12 6C9.5 4.2 6 4 3 4.7v13.6c3-.7 6.5-.5 9 1.3 2.5-1.8 6-2 9-1.3V4.7C18 4 14.5 4.2 12 6Z"/></svg>';
 const mixIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="3.2"/><circle cx="17" cy="17" r="3.2"/><path d="M13.5 6.5h6.2m0 0-2.2-2.2m2.2 2.2-2.2 2.2M10.5 17.5H4.3m0 0 2.2-2.2m-2.2 2.2 2.2 2.2"/></svg>';
 const cassette = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><circle cx="15.5" cy="11" r="2"/><path d="M10.5 11h3M7 19l1.5-3h7L17 19"/></svg>';
+const shuffleIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h3.2c2.2 0 3.4 1 4.6 3l1.4 2.4c1.2 2 2.4 3 4.6 3h3.2m0 0-2.4-2.4m2.4 2.4-2.4 2.4M3.5 17h3.2c1.6 0 2.6-.5 3.5-1.6m3.6-6.8c.9-1.1 1.9-1.6 3.5-1.6h3.2m0 0-2.4-2.4m2.4 2.4-2.4 2.4"/></svg>';
 const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z"/></svg>';
 const pauseIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>';
 const storyIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18.5V5a1.5 1.5 0 0 1 1.5-1.5h12v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h11.5v-4"/><path d="M10 3.5v6l2-1.4 2 1.4v-6"/></svg>';
@@ -2490,7 +2491,7 @@ async function loadBoard() {
   if (!snapshot) await fetchState();
   try {
     const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}&min=${boardRange.min}&max=${boardRange.max}`);
-    const order = words.map((word) => [Math.random(), word]).sort((a, b) => a[0] - b[0]).map(([, word]) => word);
+    const order = shuffled(words);
     if (wanted === asked() && load === boardLoads) {
       board = { deck, words: order, total, full: boardRangeFull() };
       if (audioMode) warmBoardClips(order, load);
@@ -2512,7 +2513,17 @@ function renderBoard() {
   const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : `<p class="caption">${empty}</p>`;
   const count = board.deck !== 'all' ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
     : board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
-  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span></div>${body}`);
+  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span>${board.words.length > 1 ? `<button class="icon board-shuffle" data-action="board-shuffle" aria-label="Shuffle the tiles">${shuffleIcon}</button>` : ''}</div>${body}`);
+}
+const shuffled = (list) => list.map((item) => [Math.random(), item]).sort((a, b) => a[0] - b[0]).map(([, item]) => item);
+// Lays the same tiles out in a new order, all face up again.
+function shuffleBoard() {
+  if (!board) return;
+  for (const timer of boardTurned.values()) clearTimeout(timer);
+  boardTurned.clear();
+  board.words = shuffled(board.words);
+  render();
+  announce('Shuffled.');
 }
 function turnBoardTile(button) {
   const id = button.dataset.id;
@@ -5295,6 +5306,7 @@ document.addEventListener('click', (event) => {
   if (action === 'sc-tense') { chooseSentenceTense(button.dataset.tense); return; }
   if (action === 'sc-topic') { chooseSentenceTopic(button.dataset.topic); return; }
   if (action === 'board-turn') { turnBoardTile(button); return; }
+  if (action === 'board-shuffle') { shuffleBoard(); return; }
   if (action === 'sc-topics-all') { chooseAllSentenceTopics(); return; }
   if (busy) return;
   if (action === 'verbs' || action?.startsWith('vb-')) { if (action === 'verbs' && screen === 'home') openVerbs(); else verbAction(action, button); return; }
