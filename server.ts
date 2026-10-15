@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { createStore, StoreError } from './lib/store';
+import { BOARD_SCORE_HIGH, BOARD_SCORE_LOW, createStore, StoreError } from './lib/store';
 import { createGrammarStore } from './lib/grammar-store';
 import { loadCourse, type Course } from './lib/grammar-content';
 import { loadBank, loadCards, type Bank } from './lib/comprehension-content';
@@ -618,7 +618,10 @@ async function route(req: Request): Promise<Response> {
     }
     if (path === '/api/families' && req.method === 'GET') return json({ families, patterns });
     if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
-    if (path === '/api/board' && req.method === 'GET') return json(store.board(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
+    if (path === '/api/board' && req.method === 'GET') {
+      const bound = (name: string, fallback: number) => { const raw = url.searchParams.get(name); return raw === null ? fallback : Number(raw); };
+      return json(store.board(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all'), { min: bound('min', BOARD_SCORE_LOW), max: bound('max', BOARD_SCORE_HIGH) }));
+    }
     // Word id → gender for every noun, so the client can colour a tappable word linked to one.
     if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));
     // The Friends page: who may use the friends' Echo, who tried, and the door for new people. Passed to its admin

@@ -34,7 +34,7 @@ export interface Store {
   reviewEarly(input: ReviewEarlyInput): Snapshot;
   addWord(input: AddWordInput): AddWordResult;
   browse(direction: Direction, deck: string): BrowseWord[];
-  board(direction: Direction, deck: string): Board;
+  board(direction: Direction, deck: string, range?: ScoreRange): Board;
   // Per deck in one direction: words started today and words not started yet (the shared daily allowance decides
   // how many of those come in).
   deckCounts(direction: Direction): Record<string, { today: number; waiting: number }>;
@@ -125,6 +125,12 @@ export const SCORE_HALF_LIFE_DAYS = 21;
 export const SCORE_ONE_RECALL = 4;
 // The most words the Board lays out at once.
 export const BOARD_LIMIT = 100;
+// Board's score range runs over Statistics' bars: a score rounds to a whole number, and anything below BOARD_SCORE_LOW
+// or above BOARD_SCORE_HIGH counts as that end. The full range shows every word; a narrower one shows only words with
+// a score, so words never practised stay out of it.
+export const BOARD_SCORE_LOW = -8;
+export const BOARD_SCORE_HIGH = 8;
+export type ScoreRange = { min: number; max: number };
 // recent holds the last words answered, newest first; selection passes over them while anything else is left.
 // credit carries the unseen share from turn to turn (see unseenShare); turn cycles seenMix.
 type PracticeQueue = { day: string; warmup: number; turn: number; credit?: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
@@ -1166,10 +1172,12 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   const saveHeard = db.query('INSERT OR IGNORE INTO walkman_heard (request_id, word_id, heard_at) VALUES (?, ?, ?)');
 
   // A category gives every word in it. All words gives the words in Cards right now, as its stacks hold them: missed
-  // first, then known, then the ones waiting their first turn today, cut at BOARD_LIMIT. Read only: the queue is
-  // reconciled on a copy and never saved.
-  function board(direction: Direction, deck: string): Board {
+  // first, then known, then the ones waiting their first turn today, cut at BOARD_LIMIT. A narrower score range keeps
+  // the scored words in it, before the cut. Read only: the queue is reconciled on a copy and never saved.
+  function board(direction: Direction, deck: string, range: ScoreRange = { min: BOARD_SCORE_LOW, max: BOARD_SCORE_HIGH }): Board {
     validateSelection(direction, deck);
+    const whole = (value: number) => Number.isInteger(value) && value >= BOARD_SCORE_LOW && value <= BOARD_SCORE_HIGH;
+    if (!whole(range.min) || !whole(range.max) || range.min > range.max) throw new StoreError(`Choose a score range from ${BOARD_SCORE_LOW} to ${BOARD_SCORE_HIGH}, lowest first.`, 400);
     return db.transaction(() => {
       const at = now();
       let ids: string[];
@@ -1179,6 +1187,11 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         ids = [...queue.failed, ...queue.successful, ...queue.unseen];
       } else ids = words.filter((word) => inDeck(word.id, deck)).map((word) => word.id);
       const scores = scoresAt(at.getTime());
+      if (range.min > BOARD_SCORE_LOW || range.max < BOARD_SCORE_HIGH) ids = ids.filter((id) => {
+        if (!scores.has(id)) return false;
+        const bar = Math.max(BOARD_SCORE_LOW, Math.min(BOARD_SCORE_HIGH, Math.round(scores.get(id)!)));
+        return bar >= range.min && bar <= range.max;
+      });
       const shown = (deck === 'all' ? ids.slice(0, BOARD_LIMIT) : ids).map((id): BoardWord => ({
         ...wordById.get(id)!,
         score: Math.round((scores.get(id) ?? 0) * 1000) / 1000,

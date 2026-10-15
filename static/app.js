@@ -2366,10 +2366,27 @@ function songListHTML() {
   return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
 }
 // ── Board (a tab in Words): every word of the chosen category, or for All words up to 100 of the words in Cards right
-// now, as tiles in a new random order each visit. A tap shows the other side for BOARD_TURN_MS and, when Say the French
-// when a card turns (audioMode) is on, says the French; a second tap turns a tile back sooner. French is coloured by
-// gender, and a word whose score is below 0 is outlined. It changes no score or schedule.
+// now, as tiles in a new random order each visit, kept to the score range chosen above them. A tap shows the other side
+// for BOARD_TURN_MS and, when Say the French when a card turns (audioMode) is on, says the French; a second tap turns a
+// tile back sooner. French is coloured by gender, and a word whose score is below 0 is outlined. It changes no score or
+// schedule.
 const BOARD_TURN_MS = 2000;
+// The score range, over Statistics' bars (STATS_BINS): the ends stand for "or lower" and "or higher", so the full range
+// shows every word and a narrower one only words with a score in it (lib/store.ts). Remembered on this device.
+const BOARD_LOW = STATS_BINS[0], BOARD_HIGH = STATS_BINS.at(-1);
+let boardRange = (() => {
+  const [min, max] = readPreference('echo.board-range', '').split(',').map(Number);
+  return Number.isInteger(min) && Number.isInteger(max) && BOARD_LOW <= min && min <= max && max <= BOARD_HIGH ? { min, max } : { min: BOARD_LOW, max: BOARD_HIGH };
+})();
+const boardRangeFull = () => boardRange.min === BOARD_LOW && boardRange.max === BOARD_HIGH;
+function chooseBoardRange(end, value) {
+  const bound = Number(value);
+  if (!Number.isInteger(bound) || bound < BOARD_LOW || bound > BOARD_HIGH) return;
+  boardRange = end === 'min' ? { min: bound, max: Math.max(bound, boardRange.max) } : { min: Math.min(bound, boardRange.min), max: bound };
+  savePreference('echo.board-range', `${boardRange.min},${boardRange.max}`);
+  loadBoard();
+}
+const boardBoundLabel = (bound) => bound === BOARD_LOW ? `${signed(bound)} or lower` : bound === BOARD_HIGH ? `${bound} or higher` : signed(bound);
 let board = null;
 const boardTurned = new Map();
 let boardLoads = 0;
@@ -2396,14 +2413,15 @@ async function loadBoard() {
   const load = ++boardLoads;
   for (const source of boardClips.values()) URL.revokeObjectURL(source);
   boardClips.clear();
-  const wanted = `${direction}|${deck}`;
+  const wanted = `${direction}|${deck}|${boardRange.min}|${boardRange.max}`;
+  const asked = () => `${direction}|${deck}|${boardRange.min}|${boardRange.max}`;
   board = null; loading = true; notice = null; retryAction = null; render();
   if (!snapshot) await fetchState();
   try {
-    const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}`);
+    const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}&min=${boardRange.min}&max=${boardRange.max}`);
     const order = words.map((word) => [Math.random(), word]).sort((a, b) => a[0] - b[0]).map(([, word]) => word);
-    if (wanted === `${direction}|${deck}` && load === boardLoads) {
-      board = { deck, words: order, total };
+    if (wanted === asked() && load === boardLoads) {
+      board = { deck, words: order, total, full: boardRangeFull() };
       if (audioMode) warmBoardClips(order, load);
     }
   } catch (error) { notice = { message: error.message }; retryAction = { type: 'board' }; }
@@ -2412,7 +2430,9 @@ async function loadBoard() {
 }
 function renderBoard() {
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="board-room">${wordsTop()}${body}</section>`; };
-  if (loading || !board) { shell(loading ? '<div class="loading-state" role="status">Laying out the words…</div>' : ''); return; }
+  const bounds = (end) => `<select id="board-${end}" aria-label="${end === 'min' ? 'Lowest score' : 'Highest score'}">${STATS_BINS.map((bound) => `<option value="${bound}" ${boardRange[end] === bound ? 'selected' : ''}>${boardBoundLabel(bound)}</option>`).join('')}</select>`;
+  const range = `<div class="board-range"><span>Scores</span>${bounds('min')}<span>to</span>${bounds('max')}</div>`;
+  if (loading || !board) { shell(`${range}${loading ? '<div class="loading-state" role="status">Laying out the words…</div>' : ''}`); return; }
   const frenchFirst = direction === 'fr-en';
   const title = snapshot?.decks?.find((entry) => entry.id === board.deck)?.title ?? 'All words';
   const hint = `${frenchFirst ? 'Tap a word for its meaning.' : `Tap a meaning for its ${languageEnglish}.`}${board.deck === 'all' ? ' Choose a category in Words options (•••) to see every word in it.' : ''}`;
@@ -2420,11 +2440,11 @@ function renderBoard() {
     ? `<span class="board-face board-${side}${genderClass(word.gender)}" lang="${languageTag}">${frEsc(word.fr)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`
     : `<span class="board-face board-${side}" lang="en">${esc(word.en)}${side === 'back' ? '<i class="board-bar"></i>' : ''}</span>`;
   const tiles = board.words.map((word) => `<button class="board-tile${word.score < 0 ? ' weak' : ''}${boardTurned.has(word.id) ? ' turned' : ''}" data-action="board-turn" data-id="${esc(word.id)}" aria-label="${esc(frenchFirst ? word.fr : word.en)}">${face(word, frenchFirst, 'front')}${face(word, !frenchFirst, 'back')}</button>`).join('');
-  const empty = board.deck === 'all' ? 'Nothing in Cards right now.' : 'No words in this category yet.';
+  const empty = !board.full ? 'No words with a score in this range.' : board.deck === 'all' ? 'Nothing in Cards right now.' : 'No words in this category yet.';
   const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : `<p class="caption">${empty}</p>`;
   const count = board.deck !== 'all' ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
     : board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
-  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span></div><p class="caption board-hint">${esc(hint)}</p>${body}`);
+  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span></div>${range}<p class="caption board-hint">${esc(hint)}</p>${body}`);
 }
 function turnBoardTile(button) {
   const id = button.dataset.id;
@@ -5358,6 +5378,7 @@ document.addEventListener('change', (event) => {
     render(); main.querySelector('.vb-input')?.focus({ preventScroll: true });
   }
   else if (event.target.id === 'audio-speed') { speed = event.target.value === '0.8' ? 0.8 : 1; savePreference('echo.speed', String(speed)); audio.playbackRate = speed; }
+  else if (event.target.id === 'board-min' || event.target.id === 'board-max') chooseBoardRange(event.target.id === 'board-min' ? 'min' : 'max', event.target.value);
 });
 document.addEventListener('input', (event) => {
   if (event.target.id === 'vocab-search') { search = event.target.value; renderBrowseResults(); }
