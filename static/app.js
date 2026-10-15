@@ -2369,7 +2369,7 @@ function songListHTML() {
 // now, as tiles in a new random order each visit. A tap shows the other side for BOARD_TURN_MS and, when Say the French
 // when a card turns (audioMode) is on, says the French; a second tap turns a tile back sooner. French is coloured by
 // gender, and a word whose score is below 0 is outlined. It changes no score or schedule.
-const BOARD_TURN_MS = 2500;
+const BOARD_TURN_MS = 2000;
 let board = null;
 const boardTurned = new Map();
 let boardLoads = 0;
