@@ -435,6 +435,64 @@ describe('FSRS and transactional protection', () => {
     expect(progress(reopened).cards[0]!.fsrs.reps).toBe(2);
   });
 
+  test('a word finished without a miss and known straight away when due finishes on that one success', () => {
+    const { store, clock } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'food');
+    state = store.grade(answer(state, true));
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    store.setSettings(0);
+    clock.value = new Date(state.nextDue!);
+    state = store.state('fr-en', 'food');
+    expect(state.current).toMatchObject({ stage: 'review' });
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    expect(progress(store).grades.filter((grade) => grade.fsrsLog).map((grade) => grade.fsrsLog!.rating)).toEqual([Rating.Good, Rating.Good]);
+    // Undo puts the due card back as it was, so knowing it again finishes it again.
+    state = store.undo('fr-en', 'food', state.undoId!);
+    expect(state.current).toMatchObject({ stage: 'review' });
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+  });
+
+  test('a due word missed at first, or last finished after a miss, still needs two successes', () => {
+    const { store, clock } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'food');
+    state = store.grade(answer(state, true));
+    state = store.grade(answer(state, true));
+    store.setSettings(0);
+    clock.value = new Date(state.nextDue!);
+    state = store.grade(answer(store.state('fr-en', 'food'), false));
+    state = store.grade(answer(state, true));
+    expect(state.current).toMatchObject({ successes: 1 });
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    // That cycle had a miss, so the next one asks for two again.
+    clock.value = new Date(state.nextDue!);
+    state = store.grade(answer(store.state('fr-en', 'food'), true));
+    expect(state.current).toMatchObject({ successes: 1 });
+  });
+
+  test('a database from before the rule learns each word’s last cycle from its history', () => {
+    const { store, open, clock, dbPath } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'food');
+    state = store.grade(answer(state, true));
+    state = store.grade(answer(state, true));
+    store.setSettings(0);
+    const due = state.nextDue!;
+    close(store);
+    const db = new Database(dbPath);
+    db.exec('ALTER TABLE cards DROP COLUMN last_clean');
+    db.close();
+    clock.value = new Date(due);
+    const reopened = open();
+    state = reopened.grade(answer(reopened.state('fr-en', 'food'), true));
+    expect(state.current).toBeNull();
+  });
+
   test('duplicate requests are idempotent across connections and reject stale or non-current cards', () => {
     const { store, open } = fixture();
     store.setSettings(2);
@@ -624,7 +682,7 @@ describe('extra practice', () => {
     expect(state.current).toMatchObject({ id: 'food-001', stage: 'review' });
     expect(state.stats).toMatchObject({ due: 1, scheduled: 1 });
     expect(store.reviewEarly(request).stats).toMatchObject({ due: 1, scheduled: 1 });
-    state = store.grade(answer(state, true));
+    // Its last cycle had no miss, so knowing it once finishes it.
     state = store.grade(answer(state, true));
     expect(state.current).toBeNull();
     const scheduler = fsrs({ enable_short_term: false, enable_fuzz: false });

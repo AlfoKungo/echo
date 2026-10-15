@@ -72,7 +72,15 @@ type CardRow = {
   due_at: number;
   fsrs_json: string;
   version: number;
+  // Whether the latest finished cycle had no miss: such a word, known on its first recall, finishes on that one success.
+  last_clean: number;
 };
+
+// A card's last_clean from its history: whether the latest kept grade that finished a cycle was rated Good, which
+// finishCycle gives only a cycle without a miss. Correlated on cards.direction and cards.word_id.
+const LAST_CLEAN_SQL = `COALESCE((SELECT json_extract(grades.fsrs_log, '$.rating') = ${Rating.Good} FROM grades
+  WHERE grades.direction = cards.direction AND grades.word_id = cards.word_id AND grades.fsrs_log IS NOT NULL
+  AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence) ORDER BY grades.sequence DESC LIMIT 1), 0)`;
 
 type GradeRow = {
   sequence: number;
@@ -363,6 +371,10 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (!hasColumn('grades', 'queue_before_json')) db.exec('ALTER TABLE grades ADD COLUMN queue_before_json TEXT');
     if (!hasColumn('settings', 'songs_first')) db.exec('ALTER TABLE settings ADD COLUMN songs_first INTEGER NOT NULL DEFAULT 1');
     if (!hasColumn('vocabulary_requests', 'result')) db.exec('ALTER TABLE vocabulary_requests ADD COLUMN result TEXT');
+    if (!hasColumn('cards', 'last_clean')) {
+      db.exec('ALTER TABLE cards ADD COLUMN last_clean INTEGER NOT NULL DEFAULT 0 CHECK (last_clean IN (0, 1))');
+      db.exec(`UPDATE cards SET last_clean = ${LAST_CLEAN_SQL}`);
+    }
     const at = now();
     const day = studyDay(at);
     const putQueue = db.query('INSERT OR REPLACE INTO practice_queues (direction, state_json) VALUES (?, ?)');
@@ -474,13 +486,13 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   `);
   const saveCard = db.query(`
     INSERT INTO cards (direction, word_id, introduced_day, active, successes, cycle_misses,
-      completed_day, due_at, fsrs_json, version)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      completed_day, due_at, fsrs_json, version, last_clean)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT (direction, word_id) DO UPDATE SET
       introduced_day = excluded.introduced_day, active = excluded.active,
       successes = excluded.successes, cycle_misses = excluded.cycle_misses,
       completed_day = excluded.completed_day, due_at = excluded.due_at,
-      fsrs_json = excluded.fsrs_json, version = excluded.version
+      fsrs_json = excluded.fsrs_json, version = excluded.version, last_clean = excluded.last_clean
   `);
   const appendGrade = db.query(`
     INSERT INTO grades (request_id, direction, deck, word_id, version, known,
@@ -530,6 +542,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     row.fsrs_json = JSON.stringify(card);
     row.due_at = card.due.getTime();
     row.active = 0;
+    row.last_clean = Number(row.cycle_misses === 0);
     row.successes = 0;
     row.cycle_misses = 0;
     row.completed_day = studyDay(at);
@@ -625,15 +638,17 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   }
 
   // What an answer does to its card and the queue: the card leaves its stack, then, still active, goes back among the
-  // known or missed words; two successes since the latest miss finish its cycle. place files it (at random when saved).
+  // known or missed words; two successes since the latest miss finish its cycle, or one when the word comes due after a
+  // cycle without a miss and is known straight away. place files it (at random when saved).
   function answerCard(queue: PracticeQueue, selection: Selection, before: CardRow, known: boolean, at: Date, place = insertRandom): { after: CardRow; fsrsLog: string | null } {
     passOver(queue, selection, before.word_id);
     const after = { ...before, active: 1, version: before.version + 1 };
     // A miss restarts the count: finishing needs two successes after the latest miss.
     after.successes = known ? (before.active ? before.successes : 0) + 1 : 0;
     after.cycle_misses = (before.active ? before.cycle_misses : 0) + Number(!known);
+    const cleanAgain = known && before.active === 0 && before.last_clean === 1;
     // The two-recall loop is a practice cycle, not two independent FSRS reviews.
-    const fsrsLog = after.successes === 2 ? finishCycle(after, at) : null;
+    const fsrsLog = after.successes === 2 || cleanAgain ? finishCycle(after, at) : null;
     if (after.active) place(queue[known ? 'successful' : 'failed'], before.word_id);
     return { after, fsrsLog };
   }
@@ -699,7 +714,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
 
   function save(row: CardRow): void {
     saveCard.run(row.direction, row.word_id, row.introduced_day, row.active, row.successes,
-      row.cycle_misses, row.completed_day, row.due_at, row.fsrs_json, row.version);
+      row.cycle_misses, row.completed_day, row.due_at, row.fsrs_json, row.version, row.last_clean);
   }
 
   // Snapshot.ahead: the two cards after next, for each way the answers still to be saved can go, worked out on copies
@@ -826,7 +841,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     for (const word of pickNew(eligible, seen, allowance)) {
       save({
         direction, word_id: word.id, introduced_day: day,
-        active: 1, successes: 0, cycle_misses: 0, completed_day: null,
+        active: 1, successes: 0, cycle_misses: 0, completed_day: null, last_clean: 0,
         due_at: at.getTime(), fsrs_json: JSON.stringify(createEmptyCard(at)),
         version: 1,
       });
@@ -921,7 +936,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
         addExtra.run(direction, studyDay(at), 1);
         save({
           direction, word_id: input.wordId, introduced_day: studyDay(at),
-          active: 1, successes: 0, cycle_misses: 0, completed_day: null,
+          active: 1, successes: 0, cycle_misses: 0, completed_day: null, last_clean: 0,
           due_at: at.getTime(), fsrs_json: JSON.stringify(createEmptyCard(at)), version: 1,
         });
         status = 'added';
@@ -1010,9 +1025,13 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       if (restored.active && queue.failed.includes(restored.word_id)) restored.successes = 0;
       // Restoring memory must never restore an old concurrency token.
       restored.version = current.version + 1;
+      // A grade saved before last_clean existed does not carry it; it is read back from the history once this undo counts.
+      const unknownClean = restored.last_clean === undefined;
+      if (unknownClean) restored.last_clean = 0;
       save(restored);
       db.query('INSERT INTO undos (grade_sequence, undone_at, before_version, after_version) VALUES (?, ?, ?, ?)')
         .run(latest.sequence, at.toISOString(), current.version, restored.version);
+      if (unknownClean) db.query(`UPDATE cards SET last_clean = ${LAST_CLEAN_SQL} WHERE direction = ? AND word_id = ?`).run(direction, latest.word_id);
       reconcileQueue(queue, rowsForDirection.all(direction), at, true);
       saveQueue.run(JSON.stringify(queue), direction);
       return snapshot(direction, deck, at);
