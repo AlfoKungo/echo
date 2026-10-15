@@ -2366,9 +2366,9 @@ function songListHTML() {
   return list ? `<h2 class="song-list-title">Your songs</h2><ol class="song-results">${list}</ol>` : '';
 }
 // ── Board (a tab in Words): every word of the chosen category, or for All words up to 100 of the words in Cards right
-// now, as tiles in a new random order each visit. A tap shows the other side for BOARD_TURN_MS and says the French; a
-// second tap turns it back sooner. French is coloured by gender, and a word whose score is below 0 is outlined. It
-// changes no score or schedule.
+// now, as tiles in a new random order each visit. A tap shows the other side for BOARD_TURN_MS; on a category it also
+// says the French, while the All words board stays silent. A second tap turns a tile back sooner. French is coloured by
+// gender, and a word whose score is below 0 is outlined. It changes no score or schedule.
 const BOARD_TURN_MS = 2500;
 let board = null;
 const boardTurned = new Map();
@@ -2405,7 +2405,7 @@ async function loadBoard() {
     const order = words.map((word) => [Math.random(), word]).sort((a, b) => a[0] - b[0]).map(([, word]) => word);
     if (wanted === `${direction}|${deck}` && load === boardLoads) {
       board = { deck, words: order, total };
-      warmBoardClips(order, load);
+      if (deck !== 'all') warmBoardClips(order, load);
     }
   } catch (error) { notice = { message: error.message }; retryAction = { type: 'board' }; }
   loading = false;
@@ -2437,7 +2437,7 @@ function turnBoardTile(button) {
     boardTurned.delete(id);
     main.querySelector(`.board-tile[data-id="${CSS.escape(id)}"]`)?.classList.remove('turned');
   }, BOARD_TURN_MS));
-  if (word.audioUrl) playFrench(word.audioUrl);
+  if (word.audioUrl && board.deck !== 'all') playFrench(word.audioUrl);
 }
 // How much of the song's words you know, and how much you are learning, as one bar.
 function understoodHTML(understood) {
