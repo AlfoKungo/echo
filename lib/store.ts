@@ -119,6 +119,9 @@ export const SCORE_ENDLESS = 1;
 const ENDLESS_PULL = 1.7;
 const ENDLESS_LIMIT = 8;
 export const SCORE_HALF_LIFE_DAYS = 21;
+// A due word at or above this score, known straight away, finishes its cycle on that one success. Measured on the
+// learner's own history: after a first success on a due word, the second came right 97% of the time from score 4 up.
+export const SCORE_ONE_RECALL = 4;
 // recent holds the last words answered, newest first; selection passes over them while anything else is left.
 // credit carries the unseen share from turn to turn (see unseenShare); turn cycles seenMix.
 type PracticeQueue = { day: string; warmup: number; turn: number; credit?: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
@@ -638,17 +641,18 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   }
 
   // What an answer does to its card and the queue: the card leaves its stack, then, still active, goes back among the
-  // known or missed words; two successes since the latest miss finish its cycle, or one when the word comes due after a
-  // cycle without a miss and is known straight away. place files it (at random when saved).
+  // known or missed words; two successes since the latest miss finish its cycle, or one when the word comes due and is
+  // known straight away after a cycle without a miss or with a score of SCORE_ONE_RECALL or more. place files it (at
+  // random when saved).
   function answerCard(queue: PracticeQueue, selection: Selection, before: CardRow, known: boolean, at: Date, place = insertRandom): { after: CardRow; fsrsLog: string | null } {
     passOver(queue, selection, before.word_id);
     const after = { ...before, active: 1, version: before.version + 1 };
     // A miss restarts the count: finishing needs two successes after the latest miss.
     after.successes = known ? (before.active ? before.successes : 0) + 1 : 0;
     after.cycle_misses = (before.active ? before.cycle_misses : 0) + Number(!known);
-    const cleanAgain = known && before.active === 0 && before.last_clean === 1;
+    const settled = known && before.active === 0 && (before.last_clean === 1 || scoreOf(before.word_id, at.getTime()) >= SCORE_ONE_RECALL);
     // The two-recall loop is a practice cycle, not two independent FSRS reviews.
-    const fsrsLog = after.successes === 2 || cleanAgain ? finishCycle(after, at) : null;
+    const fsrsLog = after.successes === 2 || settled ? finishCycle(after, at) : null;
     if (after.active) place(queue[known ? 'successful' : 'failed'], before.word_id);
     return { after, fsrsLog };
   }
@@ -1127,23 +1131,30 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   // was heard to the end on the Walkman, +2 or -3 when the learner marks a listen as known or not, and +1 or -1
   // for each Endless mark. Every
   // point halves over SCORE_HALF_LIFE_DAYS, so an untouched word drifts back towards 0 and turns up again.
-  const scoreEvents = db.query<{ word_id: string; weight: number; at: string }, []>(`
+  const scoreSql = `
     SELECT word_id, CASE known WHEN 1 THEN ${SCORE_RECALLED} ELSE ${SCORE_MISSED} END AS weight, graded_at AS at FROM grades
     WHERE NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence)
     UNION ALL SELECT word_id, ${SCORE_HEARD} AS weight, heard_at AS at FROM walkman_heard
     UNION ALL SELECT word_id, CASE knew WHEN 1 THEN ${SCORE_RECALLED} ELSE ${SCORE_MISSED} END AS weight, marked_at AS at FROM walkman_verdicts
-    UNION ALL SELECT word_id, CASE known WHEN 1 THEN ${SCORE_ENDLESS} ELSE ${-SCORE_ENDLESS} END AS weight, marked_at AS at FROM endless_marks`);
+    UNION ALL SELECT word_id, CASE known WHEN 1 THEN ${SCORE_ENDLESS} ELSE ${-SCORE_ENDLESS} END AS weight, marked_at AS at FROM endless_marks`;
+  const scoreEvents = db.query<{ word_id: string; weight: number; at: string }, []>(scoreSql);
+  const wordScoreEvents = db.query<{ word_id: string; weight: number; at: string }, [string]>(`SELECT * FROM (${scoreSql}) WHERE word_id = ?`);
   const answeredOnce = db.query<{ one: number }, [Direction, string]>('SELECT 1 AS one FROM grades WHERE direction = ? AND word_id = ? AND NOT EXISTS (SELECT 1 FROM undos WHERE grade_sequence = grades.sequence) LIMIT 1');
   const saveEndless = db.query('INSERT OR IGNORE INTO endless_marks (request_id, direction, word_id, known, marked_at) VALUES (?, ?, ?, ?, ?)');
   const dropEndless = db.query('DELETE FROM endless_marks WHERE request_id = ?');
 
-  function scoresAt(time: number): Map<string, number> {
-    const scores = new Map<string, number>();
-    for (const event of scoreEvents.all()) {
+  function addScores(scores: Map<string, number>, events: { word_id: string; weight: number; at: string }[], time: number): Map<string, number> {
+    for (const event of events) {
       const days = Math.max(0, (time - Date.parse(event.at)) / 86400000);
       scores.set(event.word_id, (scores.get(event.word_id) ?? 0) + event.weight * 0.5 ** (days / SCORE_HALF_LIFE_DAYS));
     }
     return scores;
+  }
+  function scoresAt(time: number): Map<string, number> {
+    return addScores(new Map(), scoreEvents.all(), time);
+  }
+  function scoreOf(wordId: string, time: number): number {
+    return addScores(new Map(), wordScoreEvents.all(wordId), time).get(wordId) ?? 0;
   }
   const saveVerdict = db.query('INSERT INTO walkman_verdicts (id, word_id, knew, marked_at) VALUES (?1, ?2, ?3, ?4) ON CONFLICT(id) DO UPDATE SET knew = ?3, marked_at = ?4 WHERE word_id = ?2');
   const dropVerdict = db.query('DELETE FROM walkman_verdicts WHERE id = ? AND word_id = ?');

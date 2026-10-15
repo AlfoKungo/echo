@@ -456,23 +456,41 @@ describe('FSRS and transactional protection', () => {
     expect(state.current).toBeNull();
   });
 
-  test('a due word missed at first, or last finished after a miss, still needs two successes', () => {
+  test('a due word missed at first, or last finished after a miss on a low score, still needs two successes', () => {
     const { store, clock } = fixture();
     store.setSettings(1);
     let state = store.start('fr-en', 'food');
+    state = store.grade(answer(state, false));
     state = store.grade(answer(state, true));
     state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
     store.setSettings(0);
+    // The cycle had a miss and the score is about 1, so knowing it once is not enough.
+    clock.value = new Date(state.nextDue!);
+    state = store.grade(answer(store.state('fr-en', 'food'), true));
+    expect(state.current).toMatchObject({ successes: 1 });
+    state = store.grade(answer(state, true));
+    expect(state.current).toBeNull();
+    // A miss on its return always asks for two after it.
     clock.value = new Date(state.nextDue!);
     state = store.grade(answer(store.state('fr-en', 'food'), false));
     state = store.grade(answer(state, true));
     expect(state.current).toMatchObject({ successes: 1 });
+  });
+
+  test('a due word with a score of 4 or more, known straight away, finishes even after a cycle with a miss', () => {
+    const { store, clock } = fixture();
+    store.setSettings(1);
+    let state = store.start('fr-en', 'food');
+    state = store.grade(answer(state, false));
     state = store.grade(answer(state, true));
-    expect(state.current).toBeNull();
-    // That cycle had a miss, so the next one asks for two again.
+    state = store.grade(answer(state, true));
+    store.setSettings(0);
+    store.recordVerdict({ id: 'knew-1', wordId: 'food-001', knew: true });
+    store.recordVerdict({ id: 'knew-2', wordId: 'food-001', knew: true });
     clock.value = new Date(state.nextDue!);
     state = store.grade(answer(store.state('fr-en', 'food'), true));
-    expect(state.current).toMatchObject({ successes: 1 });
+    expect(state.current).toBeNull();
   });
 
   test('a database from before the rule learns each word’s last cycle from its history', () => {
