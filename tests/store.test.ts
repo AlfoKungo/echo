@@ -776,19 +776,23 @@ describe('adding a word tapped in a French text', () => {
 });
 
 describe('the word board', () => {
-  test('lists every word of the category, started or not, with its score, and no recording for a word without one', () => {
+  test('lists the words in Cards now, missed first, with their scores, and changes nothing', () => {
     const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
     directories.push(directory);
     const store = createStore(words, { dbPath: join(directory, 'echo.db'), now: () => new Date(2026, 8, 21, 10), random: () => 0.999999, ready: (id) => id !== 'food-004' });
     stores.push(store);
-    store.setSettings(1);
-    store.grade(answer(store.start('fr-en', 'food'), false));
-    const board = store.board('food');
-    expect(board.map((word) => word.id).sort()).toEqual(['food-001', 'food-002', 'food-003', 'food-004']);
-    expect(board.find((word) => word.id === 'food-001')!.score).toBe(-3);
-    expect(board.find((word) => word.id === 'food-002')!.score).toBe(0);
-    expect(board.find((word) => word.id === 'food-004')!.audioUrl).toBeNull();
-    expect(board.find((word) => word.id === 'food-002')!.audioUrl).toContain('audio/food-002.mp3');
+    store.setSettings(2);
+    expect(store.board('fr-en', 'food')).toEqual({ words: [], total: 0 });
+    const state = store.start('fr-en', 'food');
+    const missed = state.current!.id;
+    store.grade(answer(state, false));
+    const before = progress(store);
+    const board = store.board('fr-en', 'food');
+    expect(progress(store)).toEqual(before);
+    expect(board.total).toBe(2);
+    expect(board.words[0]).toMatchObject({ id: missed, score: -3 });
+    expect(board.words.every((word) => word.category === 'food' && word.audioUrl?.includes(`audio/${word.id}.mp3`))).toBe(true);
+    expect(store.board('en-fr', 'food').total).toBe(0);
   });
 });
 

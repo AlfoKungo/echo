@@ -618,7 +618,7 @@ async function route(req: Request): Promise<Response> {
     }
     if (path === '/api/families' && req.method === 'GET') return json({ families, patterns });
     if (path === '/api/words' && req.method === 'GET') return json({ words: store.browse(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')) });
-    if (path === '/api/board' && req.method === 'GET') return json({ words: store.board(deck(url.searchParams.get('deck') ?? 'all')) });
+    if (path === '/api/board' && req.method === 'GET') return json(store.board(direction(url.searchParams.get('direction') ?? 'fr-en'), deck(url.searchParams.get('deck') ?? 'all')));
     // Word id → gender for every noun, so the client can colour a tappable word linked to one.
     if (path === '/api/genders' && req.method === 'GET') return json(Object.fromEntries(store.words().flatMap((word) => word.gender ? [[word.id, word.gender]] : [])));
     // The Friends page: who may use the friends' Echo, who tried, and the door for new people. Passed to its admin

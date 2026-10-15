@@ -4,7 +4,7 @@ import { dirname } from 'node:path';
 import { createEmptyCard, fsrs, Rating, type Card, type CardInput } from 'ts-fsrs';
 import { pointsFromLowest } from './score-points';
 import { GENDER_RULES, type Gender, type GenderRules } from './language';
-import type { AddWordInput, AddWordResult, BoardWord, BrowseWord, CardAhead, CardsAhead, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
+import type { AddWordInput, AddWordResult, Board, BoardWord, BrowseWord, CardAhead, CardsAhead, CardTrouble, CardView, Deck, Direction, EndlessInput, EndlessMarkInput, EndlessPick, ExtraWordsInput, GradeInput, HeardInput, AddWordsInput, LinkWordsInput, ListeningWord, ReviewEarlyInput, Settings, Snapshot, ScoreDayWords, ScoreHistoryDay, Stats, StatsDay, VerdictInput, VocabularyStatistics, VocabularyStack, Word } from '../contract';
 
 export class StoreError extends Error {
   constructor(message: string, public readonly status: number = 400) {
@@ -34,7 +34,7 @@ export interface Store {
   reviewEarly(input: ReviewEarlyInput): Snapshot;
   addWord(input: AddWordInput): AddWordResult;
   browse(direction: Direction, deck: string): BrowseWord[];
-  board(deck: string): BoardWord[];
+  board(direction: Direction, deck: string): Board;
   // Per deck in one direction: words started today and words not started yet (the shared daily allowance decides
   // how many of those come in).
   deckCounts(direction: Direction): Record<string, { today: number; waiting: number }>;
@@ -123,6 +123,8 @@ export const SCORE_HALF_LIFE_DAYS = 21;
 // A due word at or above this score, known straight away, finishes its cycle on that one success. Measured on the
 // learner's own history: after a first success on a due word, the second came right 97% of the time from score 4 up.
 export const SCORE_ONE_RECALL = 4;
+// The most words the Board lays out at once.
+export const BOARD_LIMIT = 100;
 // recent holds the last words answered, newest first; selection passes over them while anything else is left.
 // credit carries the unseen share from turn to turn (see unseenShare); turn cycles seenMix.
 type PracticeQueue = { day: string; warmup: number; turn: number; credit?: number; unseen: string[]; failed: string[]; successful: string[]; recent?: string[] };
@@ -1163,14 +1165,23 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   const readAccepted = db.query<{ heard: string }, [string]>('SELECT heard FROM say_accepted WHERE word_id = ?');
   const saveHeard = db.query('INSERT OR IGNORE INTO walkman_heard (request_id, word_id, heard_at) VALUES (?, ?, ?)');
 
-  function board(deck: string): BoardWord[] {
-    validateSelection('fr-en', deck);
-    const scores = scoresAt(now().getTime());
-    return words.filter((word) => inDeck(word.id, deck)).map((word) => ({
-      ...word,
-      score: Math.round((scores.get(word.id) ?? 0) * 1000) / 1000,
-      audioUrl: ready(word.id) ? `audio/${encodeURIComponent(word.id)}.mp3?v=${WORD_CLIP_VERSION}` : null,
-    }));
+  // The words in Cards right now, as its stacks hold them: missed first, then known, then the ones waiting their first
+  // turn today. Read only: the queue is reconciled on a copy and never saved.
+  function board(direction: Direction, deck: string): Board {
+    validateSelection(direction, deck);
+    return db.transaction(() => {
+      const at = now();
+      const queue = loadQueue(direction, at);
+      reconcileQueue(queue, rowsForDirection.all(direction), at, false);
+      const ids = [...queue.failed, ...queue.successful, ...queue.unseen].filter((id) => inDeck(id, deck));
+      const scores = scoresAt(at.getTime());
+      const shown = ids.slice(0, BOARD_LIMIT).map((id): BoardWord => ({
+        ...wordById.get(id)!,
+        score: Math.round((scores.get(id) ?? 0) * 1000) / 1000,
+        audioUrl: ready(id) ? `audio/${encodeURIComponent(id)}.mp3?v=${WORD_CLIP_VERSION}` : null,
+      }));
+      return { words: shown, total: ids.length };
+    })();
   }
 
   function listening(): ListeningWord[] {

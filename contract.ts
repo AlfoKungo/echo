@@ -39,8 +39,10 @@ export type ReviewEarlyInput = { direction: Direction; deck: string; mode: Revie
 export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'scheduled'; due: string | null; lastStudied: string | null; misses: number };
 // score: recalls and Walkman listens raise it, misses lower it, and it fades with time (see lib/store.ts).
 export type ListeningWord = BrowseWord & { score: number };
-// Word board: every word of one deck with its score; audioUrl is null while the word has no recording.
+// Word board: up to BOARD_LIMIT of the words in Cards right now (missed, then known, then waiting), with each score;
+// total counts them all. audioUrl is null while the word has no recording.
 export type BoardWord = Word & { score: number; audioUrl: string | null };
+export type Board = { words: BoardWord[]; total: number };
 export type HeardInput = { wordId: string; requestId: string };
 // Statistics. words lists every started word, weakest score first. counts covers all words. A category's average
 // is the mean score of its started words (null before any). days holds the last 14 study days, oldest first,
