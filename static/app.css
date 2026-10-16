@@ -369,17 +369,36 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .lyric-start{width:30px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--violet);font-size:20px;line-height:1;border-radius:8px}
 .lyric-start[aria-expanded="true"]{background:var(--card)}
 .lyric-text p{margin:0;font-size:18px;line-height:1.55;padding:3px 0}.lyric-text .lyric-en{font-size:15px;color:var(--muted);padding:0 0 6px}
-/* News: an edition's lines are lyric lines with a play control at the end; the line playing is tinted, and the player
-   stays at the bottom of the screen while the transcript scrolls. */
+/* News: an edition's lines are lyric lines with a play control at the end; the line playing is tinted, a story's
+   heading stands over its first line, and the player bar stays at the bottom of the screen while the transcript
+   scrolls. The text is plain: only a tapped word takes its underline and gender colour. */
 .news-headlines{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:15px;line-height:1.45}
+.news-jump{font:inherit;color:var(--violet);text-align:left;padding:0;background:none;border:0}
+.news-story{margin:26px 0 6px 34px;font-size:12px;font-weight:650;letter-spacing:.4px;text-transform:uppercase;color:var(--violet);scroll-margin-top:24px}
 .news-line{grid-template-columns:30px 1fr 34px;border-radius:10px;transition:background .25s}
 .news-line.playing{background:var(--violet-soft)}
 .news-from{width:34px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--dim);border-radius:8px}
 .news-from svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
 .news-line.playing .news-from,.news-from:hover{color:var(--violet)}
-.news-player{position:sticky;bottom:0;z-index:5;padding:14px 0 calc(14px + env(safe-area-inset-bottom));background:linear-gradient(to bottom,transparent,var(--page) 38%)}
-.news-player .listen-block{margin:0}
+.news .lyric-text .gloss,.genders .news .lyric-text .gloss{color:inherit;border-bottom-color:transparent}
+.news .lyric-text .gloss.on{color:var(--violet);border-bottom:2px solid var(--violet)}
+.genders .news .lyric-text .gloss.on.g-m{color:var(--masc);border-bottom-color:var(--masc)}.genders .news .lyric-text .gloss.on.g-f{color:var(--fem);border-bottom-color:var(--fem)}
+.news-note{margin:4px 0 10px;padding:10px 13px;border:1px solid var(--frame);border-radius:12px;background:var(--card);font-size:15px;line-height:1.45}
+.news-note p{margin:0;padding:0;font-size:15px}.news-note .news-note-more{color:var(--muted);font-size:14px;margin-top:3px}
+.news-note .gloss-status{margin-top:6px}.news-note-add{margin-top:6px;padding:4px 0;color:var(--violet);font-size:14px}
+.news-player{position:sticky;bottom:0;z-index:5;padding:10px 0 calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to bottom,transparent,var(--page) 30%)}
 .news-player .caption{margin:0}
+.news-bar{border:1px solid var(--frame);border-radius:18px;background:var(--card);padding:10px 12px 10px;box-shadow:0 8px 30px var(--shadow)}
+.news-progress{display:block;height:3px;border-radius:2px;background:var(--frame);overflow:hidden;margin-bottom:6px}.news-progress span{display:block;height:100%;background:var(--violet)}
+.news-controls{display:flex;align-items:center;justify-content:space-between}
+.news-control,.news-speed{width:48px;height:44px;display:grid;place-items:center;color:var(--ink);border-radius:12px}
+.news-control:disabled{color:var(--dim)}
+.news-control svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.news-speed{font-size:14px;color:var(--muted)}
+.news-toggle{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--violet);color:var(--on-accent)}
+.news-toggle svg{width:24px;height:24px;fill:currentColor;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.news-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);margin-top:4px;min-height:16px}
+.song-state.new{color:var(--violet)}.song-state.part{color:var(--peach)}.song-state.finished{color:var(--dim)}
 .gloss-base{margin:4px 0 0;color:var(--muted);font-size:15px}.gloss-note{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--ink)}
 .genders .g-m{color:var(--masc)}.genders .g-f{color:var(--fem)}.genders .gloss.g-m{border-bottom-color:var(--masc)}.genders .gloss.g-f{border-bottom-color:var(--fem)}
 .gloss-gender{margin:4px 0 0;font-size:14px;color:var(--muted)}.gender-key{display:block;font-size:12px;color:var(--muted)}.gender-key .g-m{color:var(--masc)}.gender-key .g-f{color:var(--fem)}

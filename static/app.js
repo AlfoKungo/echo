@@ -961,15 +961,17 @@ function renderRadio() {
 }
 // ── News ─────────────────────────────────────────────────────────────────────
 // RFI's Journal en français facile (lib/news.ts): the editions in the News tab of Listen, and one edition read like a
-// song's lyrics with its recording under it. The recording is one MP3 on its own audio element, so it plays on with
-// the phone locked; once its lines are timed, the line playing is marked and any line can be played from.
+// song's lyrics, its stories under their headings, with a player bar at the bottom. The recording is one MP3 on its own
+// audio element, so it plays on with the phone locked; once its lines are timed, the line playing is marked, any line
+// can be played from, and the line reached is saved so the edition opens there again.
 const newsAudio = new Audio();
 let newsList = null;        // api/news
 let newsDate = '';          // the edition open, yyyymmdd
 let newsView = null;        // api/news/<date>
-let newsAt = -1;            // the line playing, or where it paused; -1 before it starts or once it ends
+let newsAt = -1;            // the line playing, or where it paused or was left; -1 before it starts or once it ends
 const newsLines = new Set(); // "stanza.line" keys whose meaning is showing
 let newsPoll = 0;
+let resumeNews = false;     // the edition just opened at the line it was left on, still to be scrolled to
 const NEWS_DAY = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
 const newsDay = (date) => NEWS_DAY.format(Date.UTC(Number(date.slice(0, 4)), Number(date.slice(4, 6)) - 1, Number(date.slice(6))));
 // Every line of the open edition in reading order, with its place in the stanzas.
@@ -977,10 +979,16 @@ const newsPlaces = () => (newsView?.stanzas || []).flatMap((stanza, s) => stanza
 const newsLoaded = () => !!newsView?.audio && newsAudio.dataset.url === newsView.audio;
 const newsPlaying = () => newsLoaded() && !newsAudio.paused;
 function newsStateLine(edition) {
-  if (edition.status === 'ready') return 'Ready';
   if (edition.status === 'failed') return `Could not be prepared: ${edition.error}`;
   if (edition.status === 'preparing') return edition.step === 'text' ? 'Fetching the transcript…' : edition.step === 'audio' ? 'Downloading the recording…' : edition.step === 'timing' ? 'Timing the lines…' : `Writing the notes…${edition.total ? ` ${edition.done} of ${edition.total} lines` : ''}`;
   return edition.step === 'notes' ? 'Ready to hear; its notes are waiting their turn' : 'Waiting its turn';
+}
+// A ready edition says how far it was played: not yet, the line reached, or to its end.
+function newsPlayed(edition) {
+  const progress = edition.progress;
+  if (!progress) return { kind: 'new', text: 'New' };
+  if (progress.finished) return { kind: 'finished', text: 'Finished' };
+  return { kind: 'part', text: `Line ${progress.line + 1} of ${edition.lines}` };
 }
 async function loadNews(quiet = false) {
   clearTimeout(newsPoll);
@@ -997,10 +1005,13 @@ async function loadNews(quiet = false) {
 function renderNews() {
   const header = listenTop();
   if (!newsList) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
-  const rows = newsList.editions.map((edition) => `<li><button class="song-row" data-action="news-open" data-date="${esc(edition.date)}"><span class="song-copy"><strong>${esc(newsDay(edition.date))}</strong>${edition.headlines.length ? `<span lang="${languageTag}">${edition.headlines.map(esc).join(' · ')}</span>` : ''}<small class="song-state ${edition.status}">${esc(newsStateLine(edition))}</small>${edition.status === 'preparing' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('');
+  const rows = newsList.editions.map((edition) => {
+    const state = edition.status === 'ready' ? newsPlayed(edition) : { kind: edition.status, text: newsStateLine(edition) };
+    return `<li><button class="song-row" data-action="news-open" data-date="${esc(edition.date)}"><span class="song-copy"><strong>${esc(newsDay(edition.date))}</strong>${edition.headlines.length ? `<span lang="${languageTag}">${edition.headlines.map(esc).join(' · ')}</span>` : ''}<small class="song-state ${state.kind}">${esc(state.text)}</small>${edition.status === 'preparing' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`;
+  }).join('');
   const trouble = newsList.error ? `<p class="song-error">New editions could not be looked for: ${esc(newsList.error)} Echo tries again within half an hour.</p>` : '';
   const empty = !rows && !trouble ? '<p class="song-hint" role="status">Looking for the latest editions on RFI…</p>' : '';
-  main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}<p class="subtitle">RFI’s <span lang="fr">Journal en français facile</span>: ten minutes of the world’s news in slow French, Monday to Friday, read by RFI’s presenters. Read it line by line while you listen.</p>${trouble}${empty}${rows ? `<ol class="song-results news-list">${rows}</ol>` : ''}</section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${trouble}${empty}${rows ? `<ol class="song-results news-list">${rows}</ol>` : ''}</section>`;
 }
 function openNewsEdition(date) { if (move(`news-edition|${date}`, true)) loadNewsEdition(); }
 async function loadNewsEdition(quiet = false) {
@@ -1011,14 +1022,18 @@ async function loadNewsEdition(quiet = false) {
   try {
     const view = await api(`api/news/${encodeURIComponent(date)}`);
     if (newsDate !== date) return;
-    if (newsView?.date !== date) { newsLines.clear(); newsAt = -1; if (newsAudio.dataset.url) { newsAudio.pause(); newsAudio.removeAttribute('src'); delete newsAudio.dataset.url; } }
-    const shape = (entry) => entry && `${entry.status}|${entry.step}|${entry.done}|${entry.noted}|${!!entry.starts}|${!!entry.audio}`;
+    const opened = newsView?.date !== date;
+    if (opened) { newsLines.clear(); newsAt = -1; newsGloss = null; if (newsAudio.dataset.url) { newsAudio.pause(); newsAudio.removeAttribute('src'); delete newsAudio.dataset.url; } }
+    const shape = (entry) => entry && `${entry.status}|${entry.step}|${entry.done}|${entry.noted}|${!!entry.starts}|${!!entry.audio}|${entry.stories.length}`;
     changed ||= shape(view) !== shape(newsView);
     newsView = view;
+    // An edition left part-way opens at the line it was left on, ready to play from there.
+    if (opened && view.starts && view.progress && !view.progress.finished) { newsAt = view.progress.line; resumeNews = true; }
   } catch (error) { if (!quiet) { notice = { message: error.message }; retryAction = { type: 'news-edition' }; } }
   loading = false;
   if (screen !== 'news-edition') return;
   if (changed) render();
+  if (resumeNews) { resumeNews = false; main.querySelector(`.news-line[data-index="${newsAt}"]`)?.scrollIntoView({ block: 'center' }); }
   if (newsView && newsView.status !== 'ready' && newsView.status !== 'failed') newsPoll = setTimeout(() => { if (screen === 'news-edition' && newsDate === date) loadNewsEdition(true); }, 10000);
 }
 function newsLineHTML({ line, s, l }, index) {
@@ -1026,28 +1041,104 @@ function newsLineHTML({ line, s, l }, index) {
   const open = newsLines.has(key);
   const start = line.en ? `<button class="lyric-start" data-action="news-line" data-line="${key}" aria-expanded="${open}" aria-label="What this line means">›</button>` : '<span class="lyric-start" aria-hidden="true"></span>';
   const from = newsView.starts && newsView.audio ? `<button class="news-from" data-action="news-from" data-index="${index}" aria-label="Play from this line">${playIcon}</button>` : '';
-  const current = index === newsAt && newsLoaded();
-  return `<div class="lyric-line news-line${current ? ' playing' : ''}" data-line="${key}" data-index="${index}">${start}<div class="lyric-text"><p lang="${languageTag}">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}</div>${from}</div>`;
+  const current = index === newsAt;
+  const note = newsGloss?.index === index ? newsNoteHTML() : '';
+  return `<div class="lyric-line news-line${current ? ' playing' : ''}" data-line="${key}" data-index="${index}">${start}<div class="lyric-text"><p lang="${languageTag}">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}${note}</div>${from}</div>`;
 }
+// The text stays plain; a tapped word takes its colour and its note opens under its line, without covering the page.
+// Tapping anywhere else, or Escape, closes it.
+let newsGloss = null; // { index, fr, nth }: the word's line, the word, and which of its kind in that line
+function newsNoteHTML() {
+  const entry = glossWord;
+  if (!entry) return '';
+  const gender = genders[entry.word] ?? entry.gender;
+  const add = entry.word ? (addStatus ? `<p class="gloss-status" role="status">${esc(addStatus)}</p>` : `<button class="quiet news-note-add" data-action="add-word" ${busy ? 'disabled' : ''}>Add to my words</button>`) : '';
+  return `<div class="news-note"><p><strong lang="${languageTag}" class="${genderClass(gender).trim()}">${frEsc(entry.fr)}</strong> · ${esc(entry.en)}</p>${gender ? `<p class="news-note-more">${gender} noun</p>` : ''}${entry.base ? `<p class="news-note-more">from <span lang="${languageTag}">${frEsc(entry.base)}</span></p>` : ''}${entry.note ? `<p class="news-note-more">${esc(entry.note)}</p>` : ''}${add}</div>`;
+}
+function redrawNewsLine(index) {
+  const node = main.querySelector(`.news-line[data-index="${index}"]`);
+  const place = newsPlaces()[index];
+  if (node && place) node.outerHTML = newsLineHTML(place, index);
+  placeNewsGloss();
+}
+function showNewsGloss(fr, button) {
+  const line = button.closest('.news-line');
+  const index = Number(line.dataset.index);
+  const nth = [...line.querySelectorAll('[data-gloss]')].filter((word) => word.dataset.gloss === fr).indexOf(button);
+  const before = newsGloss;
+  if (before?.index === index && before.fr === fr && before.nth === nth) { closeNewsGloss(); return; }
+  newsGloss = { index, fr, nth };
+  if (before && before.index !== index) redrawNewsLine(before.index);
+  redrawNewsLine(index);
+}
+function closeNewsGloss() {
+  const before = newsGloss;
+  newsGloss = null;
+  if (before && screen === 'news-edition') redrawNewsLine(before.index);
+}
+function placeNewsGloss() {
+  if (!newsGloss) return;
+  const words = [...main.querySelectorAll(`.news-line[data-index="${newsGloss.index}"] [data-gloss]`)].filter((word) => word.dataset.gloss === newsGloss.fr);
+  words[Math.max(0, newsGloss.nth)]?.classList.add('on');
+}
+// The bar's line moves: back to this line's start (or the one before, right at its start), on to the next, and this
+// line again; they start the recording when it is stopped.
+function moveNews(step) {
+  const starts = newsView?.starts;
+  if (!starts) return;
+  const index = Math.max(0, newsAt);
+  const into = newsLoaded() ? newsAudio.currentTime - starts[index] : 0;
+  const target = step > 0 ? index + 1 : step < 0 ? (into > 1.5 ? index : index - 1) : index;
+  if (target >= starts.length) return;
+  playNews(Math.max(0, target));
+}
+function toggleNewsSpeed() {
+  speed = speed === 1 ? 0.8 : 1;
+  savePreference('echo.speed', String(speed));
+  newsAudio.playbackRate = speed;
+  const player = main.querySelector('.news-player');
+  if (player) player.outerHTML = newsPlayerHTML();
+}
+const newsBackIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 5 9 12l10 7Z"/></svg>';
+const newsNextIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 5l10 7-10 7Z"/></svg>';
+const newsAgainIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg>';
+const clockOf = (seconds) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+// How far into the recording: the audio's own time once it is loaded, the line's start before that.
+function newsShare() {
+  const starts = newsView?.starts;
+  if (newsLoaded() && newsAudio.duration > 0) return newsAudio.currentTime / newsAudio.duration;
+  return starts && newsAt >= 0 ? starts[newsAt] / (starts.at(-1) || 1) : 0;
+}
+const newsClock = () => newsLoaded() && newsAudio.duration > 0 ? `${clockOf(newsAudio.currentTime)} / ${clockOf(newsAudio.duration)}` : '';
+// The player bar: speed, back a line, play or pause, next line, this line again; the line moves need the line times.
 function newsPlayerHTML() {
   const view = newsView;
   if (!view.audio) return `<div class="news-player"><p class="caption">${view.status === 'failed' ? 'The recording is not here yet.' : 'The recording is on its way.'}</p></div>`;
   const playing = newsPlaying();
-  const total = newsPlaces().length;
-  const hint = !view.starts ? 'The lines are being timed; it plays from the start meanwhile.' : newsAt >= 0 && newsLoaded() ? `${playing ? 'line' : 'stopped at line'} ${newsAt + 1} of ${total}` : '';
-  return `<div class="news-player"><div class="listen-block"><button class="primary reading-play" data-action="news-play" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}<span>${playing ? 'Pause' : 'Play'}</span></button><p class="listen-hint" id="news-progress" role="status">${esc(hint)}</p></div></div>`;
+  const timed = !!view.starts;
+  const hint = !timed ? 'The lines are being timed; it plays from the start meanwhile.' : newsAt >= 0 ? `Line ${newsAt + 1} of ${newsPlaces().length}` : '';
+  const move = (action, label, icon) => `<button class="news-control" data-action="${action}" aria-label="${label}" ${timed ? '' : 'disabled'}>${icon}</button>`;
+  return `<div class="news-player"><div class="news-bar"><span class="news-progress" aria-hidden="true"><span style="width:${(newsShare() * 100).toFixed(2)}%"></span></span><div class="news-controls"><button class="news-speed" data-action="news-speed" aria-label="Speed: ${speed === 1 ? 'normal' : 'slower'}">${speed === 1 ? '1×' : '0.8×'}</button>${move('news-back', 'Back a line', newsBackIcon)}<button class="news-toggle" data-action="news-play" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button>${move('news-next', 'Next line', newsNextIcon)}${move('news-again', 'This line again', newsAgainIcon)}</div><div class="news-meta"><span id="news-progress" role="status">${esc(hint)}</span><span id="news-time">${newsClock()}</span></div></div></div>`;
 }
 function renderNewsEdition() {
   const header = `<div class="section-top">${back('News', 'news')}<div>${infoButton('listen')}</div></div>`;
   const view = newsView;
   if (!view) { main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics">${header}${loading ? '<div class="loading-state" role="status">Opening the news…</div>' : ''}</section>`; return; }
   const status = view.status === 'failed' ? `<div class="song-progress"><p class="song-error">${esc(view.error)}</p><p class="caption">Echo tries again within half an hour.</p></div>`
-    : view.noted ? '<p class="song-hint">Tap › at the start of a line for what it means, or tap a word for its note. ▶ plays from that line.</p>'
+    : view.noted ? ''
     : view.status === 'preparing' && view.step === 'notes' ? `<div class="song-progress" role="status"><p>Writing the notes… ${view.done} of ${view.total} lines</p><span class="song-bar"><span style="width:${view.total ? view.done / view.total * 100 : 0}%"></span></span><p class="caption">Claude translates every line and explains its words. The transcript is here meanwhile; the notes appear when they are all written.</p></div>`
     : `<p class="song-hint" role="status">${esc(newsStateLine(view))}</p>`;
+  // Each story's heading stands over the line it starts on; a headline RFI gave it leads there.
+  const stories = new Map(view.stories.map((story) => [story.line, story]));
+  const announced = new Map(view.stories.filter((story) => story.headline !== undefined).map((story) => [story.headline, story.line]));
   let index = 0;
-  const lines = view.stanzas.map((stanza, s) => `<div class="lyric-stanza">${stanza.map((line, l) => newsLineHTML({ line, s, l }, index++)).join('')}</div>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${view.headlines.length ? `<ul class="news-headlines" lang="${languageTag}">${view.headlines.map((headline) => `<li>${esc(headline)}</li>`).join('')}</ul>` : ''}${status}<div class="lyric-lines">${lines}</div>${newsPlayerHTML()}</section>`;
+  const lines = view.stanzas.map((stanza, s) => `<div class="lyric-stanza">${stanza.map((line, l) => {
+    const story = stories.get(index);
+    return `${story ? `<p class="news-story" id="news-story-${index}" lang="${languageTag}">${esc(story.title)}</p>` : ''}${newsLineHTML({ line, s, l }, index++)}`;
+  }).join('')}</div>`).join('');
+  const headline = (text, at) => announced.has(at) ? `<li><button class="news-jump" data-action="news-story" data-line="${announced.get(at)}">${esc(text)}</button></li>` : `<li>${esc(text)}</li>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${view.headlines.length ? `<ul class="news-headlines" lang="${languageTag}">${view.headlines.map(headline).join('')}</ul>` : ''}${status}<div class="lyric-lines">${lines}</div>${newsPlayerHTML()}</section>`;
+  placeNewsGloss();
 }
 // Plays from the start of a line; without line times, on from where it is (the start, at first).
 async function playNews(index = Math.max(0, newsAt)) {
@@ -1058,7 +1149,7 @@ async function playNews(index = Math.max(0, newsAt)) {
   const at = view.starts ? view.starts[Math.min(index, view.starts.length - 1)] ?? 0 : newsLoaded() ? newsAudio.currentTime : 0;
   if (!newsLoaded()) { newsAudio.src = `${view.audio}#t=${at}`; newsAudio.dataset.url = view.audio; }
   else newsAudio.currentTime = at;
-  if (view.starts && index !== newsAt) { const before = newsAt; newsAt = index; markNewsLines(before, index); }
+  if (view.starts && index !== newsAt) { const before = newsAt; newsAt = index; markNewsLines(before, index); saveNewsProgress(index); }
   if (!view.starts && 'mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: view.headlines.join(' · ') || 'Journal en français facile', artist: 'RFI', album: `Echo · News, ${newsDay(view.date)}`, artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
   newsAudio.playbackRate = speed; newsAudio.preservesPitch = true; newsAudio.webkitPreservesPitch = true;
   try { await newsAudio.play(); } catch (error) { if (error.name !== 'AbortError') { notice = { message: 'The news could not start. Tap Play to try again.' }; render(); } }
@@ -1080,9 +1171,23 @@ function followNews() {
   if (index === newsAt) return;
   const before = newsAt;
   newsAt = index;
+  if (index >= 0) saveNewsProgress(index);
   const line = newsPlaces()[index]?.line;
   if (line && 'mediaSession' in navigator) navigator.mediaSession.metadata = new MediaMetadata({ title: line.fr, artist: line.en || 'RFI', album: `Echo · News, ${newsDay(newsView.date)}`, artwork: [{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }] });
   if (screen === 'news-edition' && !document.hidden) markNewsLines(before, index);
+}
+// The line reached, saved on the Mac so the edition opens there again, here or on another device. A line reached while
+// the one before is still saving is saved after it; a save that fails loses only that resume point.
+let newsSaving = false;
+let newsUnsaved = null;
+async function saveNewsProgress(line, finished = false) {
+  const entry = { date: newsView.date, line, finished };
+  if (newsSaving) { newsUnsaved = entry; return; }
+  newsSaving = true;
+  for (let next = entry; next; next = newsUnsaved, newsUnsaved = null) {
+    try { await api(`api/news/${next.date}/progress`, { method: 'POST', body: JSON.stringify({ line: next.line, finished: next.finished }) }); } catch { /* only the resume point is lost */ }
+  }
+  newsSaving = false;
 }
 // Redraws only the lines whose mark changed and the player, so reading is undisturbed. While the line before was in
 // sight, the new one is brought into sight too, so the page follows the voice.
@@ -1095,12 +1200,22 @@ function markNewsLines(before, index) {
   const following = before < 0 || inSight(element(before));
   for (const at of new Set([before, index])) { const node = element(at); if (node && places[at]) node.outerHTML = newsLineHTML(places[at], at); }
   if (player) player.outerHTML = newsPlayerHTML();
+  placeNewsGloss();
   const now = element(index);
   if (following && newsPlaying() && now && !inSight(now)) now.scrollIntoView({ block: 'center', behavior: 'smooth' });
 }
-newsAudio.addEventListener('timeupdate', followNews);
+// The progress line and the clock follow the recording between line changes.
+function tickNews() {
+  if (screen !== 'news-edition' || !newsLoaded()) return;
+  const bar = main.querySelector('.news-progress span');
+  if (bar) bar.style.width = `${(newsShare() * 100).toFixed(2)}%`;
+  const clock = main.querySelector('#news-time');
+  if (clock) clock.textContent = newsClock();
+}
+newsAudio.addEventListener('timeupdate', () => { followNews(); tickNews(); });
+newsAudio.addEventListener('loadedmetadata', tickNews);
 for (const event of ['play', 'pause']) newsAudio.addEventListener(event, () => markNewsLines(newsAt, newsAt));
-newsAudio.addEventListener('ended', () => { const last = newsAt; newsAt = -1; markNewsLines(last, -1); });
+newsAudio.addEventListener('ended', () => { const last = newsAt; newsAt = -1; if (last >= 0) saveNewsProgress(last, true); markNewsLines(last, -1); });
 newsAudio.addEventListener('error', () => {
   if (screen !== 'news-edition' || !newsAudio.dataset.url) return;
   delete newsAudio.dataset.url; notice = { message: 'The news stopped loading. Tap Play to try again.' }; render();
@@ -2712,7 +2827,7 @@ function renderLyrics() {
   const view = songLyrics;
   const header = `<div class="section-top">${back('Songs', 'songs')}</div>`;
   if (!view) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Opening the lyrics…</div>' : ''}</section>`; return; }
-  const status = view.notes === 'ready' ? '<p class="song-hint">Tap › at the start of a line for what it means, or tap a word for its note.</p>'
+  const status = view.notes === 'ready' ? ''
     : view.notes === 'writing' ? `<div class="song-progress" role="status"><p>Writing the notes… ${view.done} of ${view.total} lines</p><span class="song-bar"><span style="width:${view.total ? view.done / view.total * 100 : 0}%"></span></span><p class="caption">Claude translates every line and explains its words. The lyrics are here meanwhile; the notes appear when they are all written.</p></div>`
     : view.notes === 'waiting' ? '<p class="song-hint" role="status">The notes are waiting their turn behind another song.</p>'
     : view.notes === 'failed' ? `<div class="song-progress"><p class="song-error">${esc(view.error || 'The notes could not be written.')}</p><div class="summary-actions"><button class="primary" data-action="song-notes" ${busy ? 'disabled' : ''}>Try again</button></div></div>`
@@ -4673,10 +4788,11 @@ function toggleClips(fromStart = false) {
 }
 // Tapping a French word shows its meaning; before answering in Read that counts as help. In grammar it is free:
 // the question tests the grammar, not the words around it.
-function lookupGloss(fr) {
+function lookupGloss(fr, button = null) {
   const entry = glossFor(fr);
   if (!entry) return;
   glossWord = entry; addStatus = '';
+  if (screen === 'news-edition' && button) { showNewsGloss(fr, button); return; }
   renderGlossSheet();
   if (screen === 'story' && storyView && !storyView.read) storyTaps.add(fr);
   if (grammarOnScreen() || screen === 'lyrics' || screen === 'news-edition' || screen === 'story' || screen === 'sentences') return;
@@ -4689,6 +4805,7 @@ function lookupGloss(fr) {
 function renderGlossSheet() {
   const entry = glossWord;
   if (!entry) return;
+  if (screen === 'news-edition' && newsGloss) { redrawNewsLine(newsGloss.index); return; }
   const add = entry.word
     ? (addStatus ? `<p class="gloss-status" role="status">${esc(addStatus)}</p>` : `<button class="secondary gloss-add" data-action="add-word" ${busy ? 'disabled' : ''}>Add to my words</button>`)
     : '';
@@ -5376,7 +5493,8 @@ document.addEventListener('click', (event) => {
   if (action === 'clips-restart') { toggleClips(true); return; }
   if (action === 'clips-line') { replayLine(); return; }
   if (action === 'grammar-audio') { const clip = activeGrammar()?.session?.current?.audio; if (clip) playFrench(clip); return; }
-  if (button?.dataset.gloss !== undefined) { glossLine = button.closest('[data-line]')?.dataset.line ?? ''; lookupGloss(button.dataset.gloss); return; }
+  if (button?.dataset.gloss !== undefined) { glossLine = button.closest('[data-line]')?.dataset.line ?? ''; lookupGloss(button.dataset.gloss, button); return; }
+  if (newsGloss && !event.target.closest('.news-note')) closeNewsGloss();
   if (action === 'add-word') { addWord(); return; }
   if (action === 'vb-accent') { insertAccent(button.dataset.letter); return; }
   if (!button && screen === 'verbs-cards' && event.target.closest('#vb-card')) { revealVerbCard(); return; }
@@ -5499,6 +5617,11 @@ document.addEventListener('click', (event) => {
   else if (action === 'news') openListen('news', 'back');
   else if (action === 'news-open') openNewsEdition(button.dataset.date);
   else if (action === 'news-play') toggleNews();
+  else if (action === 'news-back') moveNews(-1);
+  else if (action === 'news-next') moveNews(1);
+  else if (action === 'news-again') moveNews(0);
+  else if (action === 'news-speed') toggleNewsSpeed();
+  else if (action === 'news-story') document.getElementById(`news-story-${button.dataset.line}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   else if (action === 'news-from') playNews(Number(button.dataset.index));
   else if (action === 'news-line') { const key = button.dataset.line; if (newsLines.has(key)) newsLines.delete(key); else newsLines.add(key); render(); }
   else if (action === 'sound-open') openSound(button.dataset.sound);
@@ -5572,6 +5695,7 @@ document.addEventListener('submit', (event) => {
   else if (event.target.id === 'friend-form') { event.preventDefault(); saveFriend(document.querySelector('#friend-email').value, document.querySelector('#friend-name').value); }
 });
 document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && newsGloss && !dialog.open) { closeNewsGloss(); return; }
   if (event.defaultPrevented || event.repeat || aboutDialog.open || dialog.open || busy || loading || locked()) return;
   const grammarScreen = grammarOnScreen();
   if (grammarScreen && (event.metaKey || event.ctrlKey) && event.key === 'Enter') { event.preventDefault(); if (activeGrammar()?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }

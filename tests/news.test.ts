@@ -2,7 +2,7 @@ import { afterEach, describe, expect, test } from 'bun:test';
 import { existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createNews, heardWords, KEEP, lineStarts, LIST_URL, parseEditionPage, sentencesOf, type HeardWord } from '../lib/news';
+import { createNews, heardWords, KEEP, lineStarts, LIST_URL, parseEditionPage, parseStories, sentencesOf, type HeardWord } from '../lib/news';
 
 // A real edition's page (7 October 2026), trimmed to a few paragraphs of its transcript and two of its players.
 const PAGE = await Bun.file(join(import.meta.dir, 'fixtures/rfi-journal-20261007.html')).text();
@@ -72,7 +72,7 @@ describe('line times', () => {
 });
 
 describe('the editions kept', () => {
-  function setup(dates: string[], fail: { page?: boolean; transcribe?: number } = {}) {
+  function setup(dates: string[], fail: { page?: boolean; transcribe?: number } = {}, stories: () => Promise<string> = async () => '{"stories": [{"line": 2, "title": "Ukraine"}]}') {
     const root = mkdtempSync(join(tmpdir(), 'echo-news-'));
     directories.push(root);
     const dir = join(root, 'news'), audioDir = join(root, 'audio');
@@ -81,7 +81,7 @@ describe('the editions kept', () => {
     const lines = parseEditionPage(PAGE, '20261007').stanzas.flat();
     const news = createNews({
       dir, audioDir,
-      ask: async () => '{"lines": []}',
+      ask: async (prompt) => prompt.includes('Mark the line where each news story starts') ? stories() : '{"lines": []}',
       fetchText: async (url) => {
         if (url === LIST_URL) return list;
         if (fail.page) throw new Error('RFI answered 503.');
@@ -95,7 +95,7 @@ describe('the editions kept', () => {
         return lines.flatMap((line, index) => line.split(' ').map((word, at) => ({ text: word, at: index * 10 + at * 0.4 })));
       },
     });
-    return { news, dir, audioDir };
+    return { news, dir, audioDir, lines };
   }
 
   test('are the latest 14, older ones going with their recordings', async () => {
@@ -146,5 +146,73 @@ describe('the editions kept', () => {
     await later.check();
     expect(later.list().editions.map((edition) => edition.date)).toEqual(['20261009', '20261008', '20261006']);
     expect(readdirSync(dir).sort()).toEqual(['20261006.json', '20261008.json', '20261009.json', 'since']);
+  });
+
+  test('a reply with no story leaves the edition without headings, not asked again', async () => {
+    let asked = 0;
+    const { news } = setup(['20261007'], {}, async () => { asked++; return 'Sorry.'; });
+    await news.check();
+    await news.check();
+    expect(news.view('20261007')).toMatchObject({ status: 'ready', stories: [] });
+    expect(asked).toBe(1);
+  });
+
+  test('show how far each was played: the line reached, or finished', async () => {
+    const { news, lines } = setup(['20261007']);
+    await news.check();
+    expect(news.list().editions[0]).toMatchObject({ lines: lines.length, progress: null });
+    news.setProgress('20261007', { line: 2 });
+    expect(news.list().editions[0]!.progress).toEqual({ line: 2, finished: false });
+    news.setProgress('20261007', { line: lines.length - 1, finished: true });
+    expect(news.view('20261007').progress).toEqual({ line: lines.length - 1, finished: true });
+    expect(() => news.setProgress('20261007', { line: lines.length })).toThrow('Say which line');
+    expect(() => news.setProgress('20261007', { line: 1, finished: 'yes' })).toThrow('Say whether');
+    expect(() => news.setProgress('20260101', { line: 0 })).toThrow('not in Echo');
+  });
+
+  test('forget how far an edition no longer kept was played', async () => {
+    const listed = Array.from({ length: 16 }, (_, index) => `202609${String(index + 1).padStart(2, '0')}`);
+    const { news, dir } = setup(listed, { page: true });
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, 'progress.json'), JSON.stringify({ '20260901': { line: 3, finished: false }, '20260916': { line: 1, finished: true } }));
+    await news.check();
+    expect(JSON.parse(await Bun.file(join(dir, 'progress.json')).text())).toEqual({ '20260916': { line: 1, finished: true } });
+  });
+});
+
+describe('the stories in an edition', () => {
+  test('keep only lines of the edition, in order, with short titles; a headline leads to one story at most', () => {
+    const reply = `Here they are: {"stories": [
+      {"line": 3, "title": "Ukraine", "headline": 1}, {"line": 2, "title": "Earlier"}, {"line": 5, "title": "  Ebola en RDC ", "headline": 1},
+      {"line": 11, "title": "Beyond the end"}, {"line": 7, "title": "${'x'.repeat(61)}"}, {"line": 8, "title": "Yémen", "headline": 3}]}`;
+    expect(parseStories(reply, 10, 2)).toEqual([{ line: 2, title: 'Ukraine', headline: 0 }, { line: 4, title: 'Ebola en RDC' }, { line: 7, title: 'Yémen' }]);
+    expect(parseStories('no JSON here', 10, 2)).toEqual([]);
+  });
+
+  test('are marked after the notes and never hold an edition back: it is ready while Claude is out of reach', async () => {
+    const root = mkdtempSync(join(tmpdir(), 'echo-news-'));
+    directories.push(root);
+    let reachable = false;
+    let asked = 0;
+    const lines = parseEditionPage(PAGE, '20261007').stanzas.flat();
+    const news = createNews({
+      dir: join(root, 'news'), audioDir: join(root, 'audio'), now: () => new Date('2026-08-01T12:00:00'),
+      ask: async (prompt) => {
+        if (!prompt.includes('Mark the line where each news story starts')) return '{"lines": []}';
+        asked++;
+        if (!reachable) throw new Error('Claude could not be reached.');
+        return '{"stories": [{"line": 2, "title": "Ukraine"}]}';
+      },
+      fetchText: async (url) => url === LIST_URL ? '<a href="/fr/podcasts/journal-en-fran%C3%A7ais-facile/20261007-les-titres">x</a>' : PAGE,
+      download: async (_url, file) => writeFileSync(file, 'mp3'),
+      transcribe: async () => lines.flatMap((line, index) => line.split(' ').map((word, at) => ({ text: word, at: index * 10 + at * 0.4 }))),
+    });
+    await news.check();
+    expect(news.view('20261007')).toMatchObject({ status: 'ready', error: null, stories: [] });
+    reachable = true;
+    await news.check();
+    expect(news.view('20261007').stories).toEqual([{ line: 1, title: 'Ukraine' }]);
+    await news.check();
+    expect(asked).toBe(2);
   });
 });

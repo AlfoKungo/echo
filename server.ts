@@ -825,6 +825,8 @@ async function route(req: Request): Promise<Response> {
         return audioFile(req, Bun.file(recording));
       }
       if (edition && !edition[2] && req.method === 'GET') return json(news.view(edition[1]!));
+      const played = path.match(/^\/api\/news\/(\d{8})\/progress$/);
+      if (played && req.method === 'POST') return json(news.setProgress(played[1]!, await body(req)));
     }
     // A Grammar by ear answer (the question itself comes with Listen's state, under ear).
     if (grammarEar && path === '/api/ear/answer' && req.method === 'POST') return json(grammarEar.answer(await body(req)));

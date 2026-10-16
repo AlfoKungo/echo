@@ -4,8 +4,10 @@
 // and keeps the latest KEEP. Each edition is prepared in steps,
 // each saved as it finishes, so a restart carries on where it stopped: the transcript (from the edition's page), the
 // recording (<audio>/news/<yyyymmdd>.mp3), the time each line starts (Whisper on this Mac, aligned to RFI's text, which
-// stays the words shown), then the notes (lib/song-lyrics.ts). A step that fails is kept on the edition, shown, and
-// tried again at the next check. Editions live in <data>/news as <yyyymmdd>.json.
+// stays the words shown), the notes (lib/song-lyrics.ts), then where each story starts (Claude). An edition is ready
+// once its notes are written: the stories only add headings, so their step never holds it back. A step that fails is
+// kept on the edition, shown (the stories' quietly), and tried again at the next check. Editions live in <data>/news as
+// <yyyymmdd>.json, and how far each was played in <data>/news/progress.json.
 import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { homedir, tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -27,8 +29,12 @@ const MIN_MATCHED = 0.3;
 // A recording smaller than this is an error page, not ten minutes of news.
 const MIN_RECORDING = 200_000;
 
-export type NewsStep = 'text' | 'audio' | 'timing' | 'notes';
-const STEPS: NewsStep[] = ['text', 'audio', 'timing', 'notes'];
+export type NewsStep = 'text' | 'audio' | 'timing' | 'notes' | 'stories';
+const STEPS: NewsStep[] = ['text', 'audio', 'timing', 'notes', 'stories'];
+// The steps an edition needs before it can be read and heard.
+const READY_STEPS: NewsStep[] = ['text', 'audio', 'timing', 'notes'];
+const STORIES_TIMEOUT = 5 * 60_000;
+const STORY_TITLE_MAX = 60;
 export type HeardWord = { text: string; at: number };
 type Edition = {
   date: string; page: string; title: string;
@@ -38,11 +44,21 @@ type Edition = {
   // Seconds into the recording where each line starts, the lines taken in reading order; strictly increasing.
   starts: number[] | null;
   notes: SongNotes | null;
+  // Where each story starts; absent in an edition saved before stories were marked.
+  stories?: NewsStory[] | null;
   failure: { step: NewsStep; message: string; at: string } | null;
 };
+// A story in an edition: the line it starts on (in reading order, from 0), a short French title, and which of RFI's
+// headlines (from 0) announces it, when one does.
+export type NewsStory = { line: number; title: string; headline?: number };
+// How far an edition was played: the line reached, and whether the recording played to its end.
+export type NewsProgress = { line: number; finished: boolean };
 export type NewsStatus = 'ready' | 'preparing' | 'waiting' | 'failed';
-export type NewsSummary = { date: string; title: string; headlines: string[]; status: NewsStatus; step: NewsStep | null; error: string | null; done: number; total: number };
-export type NewsView = NewsSummary & { audio: string | null; starts: number[] | null; noted: boolean; stanzas: SongNotes };
+export type NewsSummary = {
+  date: string; title: string; headlines: string[]; status: NewsStatus; step: NewsStep | null; error: string | null; done: number; total: number;
+  lines: number; progress: NewsProgress | null;
+};
+export type NewsView = NewsSummary & { audio: string | null; starts: number[] | null; noted: boolean; stanzas: SongNotes; stories: NewsStory[] };
 export type NewsDeps = {
   dir: string; audioDir: string; ask: Ask;
   fetchText?: (url: string) => Promise<string>;
@@ -223,6 +239,45 @@ async function downloadFile(url: string, file: string): Promise<void> {
 
 const DAY = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const dayOf = (date: string) => DAY.format(new Date(`${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6)}T12:00:00Z`));
+// RFI's title holds the edition's headlines, separated by " / ".
+const headlinesOf = (title: string) => title.split(' / ').map((headline) => headline.trim()).filter(Boolean);
+
+function storiesPrompt(date: string, headlines: string[], lines: string[]): string {
+  return `This is RFI's "Journal en français facile" of ${dayOf(date)}: the transcript, one sentence per numbered line.
+
+${lines.map((line, index) => `${index + 1}. ${line}`).join('\n')}
+
+RFI's headlines for this edition:
+${headlines.map((headline, index) => `${index + 1}. ${headline}`).join('\n') || '(none)'}
+
+Mark the line where each news story starts. The opening (the greeting, the presenter, the list of titles) and the closing are not stories; a short item between two stories is one. Give each story a short title in French, taken only from what the transcript says, the way a newspaper labels a section: the place or the subject, and a few words when they help ("Ebola en RDC", "Ukraine · Zelensky cherche de l'aide"). At most six words. When one of RFI's headlines announces the story, give that headline's number.
+
+Reply with only JSON: {"stories": [{"line": 17, "title": "...", "headline": 2}]}, in the order of the lines, leaving "headline" out for a story no headline announces.`;
+}
+
+// The stories Claude marked, kept only where they make sense: a line of the edition, after the story before, with a
+// short title; a headline is given to one story at most.
+export function parseStories(reply: string, lines: number, headlines: number): NewsStory[] {
+  let value: unknown;
+  try { value = JSON.parse(reply.slice(reply.indexOf('{'), reply.lastIndexOf('}') + 1)); } catch { value = null; }
+  const listed = value && typeof value === 'object' && Array.isArray((value as { stories?: unknown }).stories) ? (value as { stories: unknown[] }).stories : [];
+  const stories: NewsStory[] = [];
+  const announced = new Set<number>();
+  for (const entry of listed) {
+    if (!entry || typeof entry !== 'object') continue;
+    const { line, title, headline } = entry as { line?: unknown; title?: unknown; headline?: unknown };
+    if (typeof line !== 'number' || !Number.isInteger(line) || line < 1 || line > lines) continue;
+    if (typeof title !== 'string' || !title.trim() || title.trim().length > STORY_TITLE_MAX) continue;
+    if (stories.length && line - 1 <= stories.at(-1)!.line) continue;
+    const story: NewsStory = { line: line - 1, title: title.trim() };
+    if (typeof headline === 'number' && Number.isInteger(headline) && headline >= 1 && headline <= headlines && !announced.has(headline)) {
+      announced.add(headline);
+      story.headline = headline - 1;
+    }
+    stories.push(story);
+  }
+  return stories;
+}
 
 export function createNews(deps: NewsDeps) {
   const fetchText = deps.fetchText ?? fetchPage;
@@ -241,8 +296,13 @@ export function createNews(deps: NewsDeps) {
     audio: (edition) => existsSync(recording(edition.date)),
     timing: (edition) => !!edition.starts,
     notes: (edition) => !!edition.notes,
+    stories: (edition) => !!edition.stories,
   };
   const nextStep = (edition: Edition) => STEPS.find((step) => !done[step](edition)) ?? null;
+  const readyStep = (edition: Edition) => READY_STEPS.find((step) => !done[step](edition)) ?? null;
+  const progressFile = join(deps.dir, 'progress.json');
+  const readProgress = (): Record<string, NewsProgress> => existsSync(progressFile) ? JSON.parse(readFileSync(progressFile, 'utf8')) : {};
+  const writeProgress = (all: Record<string, NewsProgress>) => { writeFileSync(`${progressFile}.tmp`, JSON.stringify(all)); renameSync(`${progressFile}.tmp`, progressFile); };
   // The day News first looked for editions, kept in <dir>/since: earlier editions are never fetched, and one dated
   // before it stays only if it is already prepared.
   const since = (() => {
@@ -254,7 +314,7 @@ export function createNews(deps: NewsDeps) {
     writeFileSync(sinceFile, `${today}\n`);
     return today;
   })();
-  const wanted = (date: string) => date >= since || !nextStep(read(date));
+  const wanted = (date: string) => date >= since || !readyStep(read(date));
   // The edition being prepared, and how far its notes are.
   let working: { date: string; step: NewsStep; done: number; total: number } | null = null;
   let listError: string | null = null;
@@ -268,6 +328,16 @@ export function createNews(deps: NewsDeps) {
     }
     if (step === 'audio') { await download(edition.mp3!, recording(edition.date)); return edition; }
     if (step === 'timing') return { ...edition, starts: lineStarts(edition.stanzas!.flat(), await transcribe(recording(edition.date))) };
+    // A reply with no usable story leaves the edition without headings rather than asking again at every check; only
+    // Claude being out of reach (ask throws) is tried again.
+    if (step === 'stories') {
+      const lines = edition.stanzas!.flat();
+      const headlines = headlinesOf(edition.title);
+      const reply = await deps.ask(storiesPrompt(edition.date, headlines, lines), { timeout: STORIES_TIMEOUT, purpose: 'marking the stories in the news' });
+      const stories = parseStories(reply, lines.length, headlines.length);
+      if (!stories.length) console.error(`news: ${edition.date}: no story could be read from Claude’s reply`);
+      return { ...edition, stories };
+    }
     const notes = await writeNotes(deps.ask, { kind: 'news', title: `Journal en français facile, ${dayOf(edition.date)}`, artist: 'RFI', lyrics: edition.stanzas!.map((stanza) => stanza.join('\n')).join('\n\n') }, (written, total) => {
       if (working) { working.done = written; working.total = total; }
     });
@@ -294,7 +364,7 @@ export function createNews(deps: NewsDeps) {
   }
 
   // The latest KEEP editions of those listed from `since` on and those kept; older ones, and unprepared ones from
-  // before `since`, go, recording and all.
+  // before `since`, go, recording, progress and all.
   function keepLatest(listed: { date: string; page: string; title: string }[]): void {
     const fresh = listed.filter((entry) => entry.date >= since);
     const kept = new Set([...dates(), ...fresh.map((entry) => entry.date)].sort().reverse().slice(0, KEEP));
@@ -305,6 +375,9 @@ export function createNews(deps: NewsDeps) {
       if (kept.has(date) && wanted(date)) continue;
       for (const path of [file(date), recording(date), `${recording(date)}.part`]) rmSync(path, { force: true });
     }
+    const progress = readProgress();
+    const left = new Set(dates());
+    if (Object.keys(progress).some((date) => !left.has(date))) writeProgress(Object.fromEntries(Object.entries(progress).filter(([date]) => left.has(date))));
   }
 
   let running: Promise<void> | null = null;
@@ -318,35 +391,56 @@ export function createNews(deps: NewsDeps) {
         listError = null;
       }
       catch (error) { listError = error instanceof Error ? error.message : String(error); console.error(`news: the list of editions could not be read: ${listError}`); }
-      for (const date of dates()) if (date >= since && nextStep(read(date))) await prepare(date);
+      for (const date of dates()) if (wanted(date) && nextStep(read(date))) await prepare(date);
     })().finally(() => { running = null; });
     return running;
   }
 
-  function summary(edition: Edition): NewsSummary {
-    const here = working?.date === edition.date ? working : null;
-    const step = here?.step ?? nextStep(edition);
-    const status: NewsStatus = here ? 'preparing' : edition.failure ? 'failed' : step ? 'waiting' : 'ready';
+  // A failure or work on the stories leaves the edition ready: they only add headings.
+  function summary(edition: Edition, progress = readProgress()): NewsSummary {
+    const here = working?.date === edition.date && working.step !== 'stories' ? working : null;
+    const failure = edition.failure?.step === 'stories' ? null : edition.failure;
+    const step = here?.step ?? readyStep(edition);
+    const status: NewsStatus = here ? 'preparing' : failure ? 'failed' : step ? 'waiting' : 'ready';
     return {
-      date: edition.date, title: edition.title, headlines: edition.title.split(' / ').map((headline) => headline.trim()).filter(Boolean),
-      status, step, error: edition.failure?.message ?? null, done: here?.done ?? 0, total: here?.total ?? 0,
+      date: edition.date, title: edition.title, headlines: headlinesOf(edition.title),
+      status, step, error: failure?.message ?? null, done: here?.done ?? 0, total: here?.total ?? 0,
+      lines: (edition.stanzas ?? []).flat().length, progress: progress[edition.date] ?? null,
     };
   }
 
   function list(): { editions: NewsSummary[]; error: string | null } {
-    return { editions: dates().filter(wanted).map((date) => summary(read(date))), error: listError };
+    const progress = readProgress();
+    return { editions: dates().filter(wanted).map((date) => summary(read(date), progress)), error: listError };
   }
 
-  // An edition as read: its lines with their notes once written (plain until then), and the line times once known.
-  function view(date: string): NewsView {
+  const find = (date: string): Edition => {
     if (!/^\d{8}$/.test(date) || !existsSync(file(date))) throw new StoreError('That edition of the news is not in Echo.', 404);
-    const edition = read(date);
+    return read(date);
+  };
+
+  // An edition as read: its lines with their notes once written (plain until then), the line times once known, and
+  // where its stories start once marked.
+  function view(date: string): NewsView {
+    const edition = find(date);
     const stanzas: SongNotes = edition.notes ?? (edition.stanzas ?? []).map((stanza) => stanza.map((fr) => ({ fr, en: null, words: [] })));
-    return { ...summary(edition), audio: done.audio(edition) ? `api/news/${date}.mp3` : null, starts: edition.starts, noted: !!edition.notes, stanzas };
+    return { ...summary(edition), audio: done.audio(edition) ? `api/news/${date}.mp3` : null, starts: edition.starts, noted: !!edition.notes, stanzas, stories: edition.stories ?? [] };
+  }
+
+  // The line an edition was played to, kept so it opens there again. Playing it to its end marks it finished; a line
+  // played after that marks it unfinished again.
+  function setProgress(date: string, input: unknown): NewsProgress {
+    const edition = find(date);
+    const { line, finished } = (input ?? {}) as { line?: unknown; finished?: unknown };
+    if (typeof line !== 'number' || !Number.isInteger(line) || line < 0 || line >= (edition.stanzas ?? []).flat().length) throw new StoreError('Say which line of the edition was reached.');
+    if (finished !== undefined && typeof finished !== 'boolean') throw new StoreError('Say whether the edition was played to its end.');
+    const progress: NewsProgress = { line, finished: finished === true };
+    writeProgress({ ...readProgress(), [date]: progress });
+    return progress;
   }
 
   // The recording's file, for an edition still kept.
   const audio = (date: string): string | null => /^\d{8}$/.test(date) && existsSync(file(date)) && existsSync(recording(date)) ? recording(date) : null;
 
-  return { check, list, view, audio };
+  return { check, list, view, audio, setProgress };
 }
