@@ -1558,14 +1558,14 @@ function renderEndless() {
   for (const ahead of endless.cards) warmClip(ahead.audioUrl);
 }
 function renderBrowse() {
-  const show = [['all', 'All words'], ['studied', 'Studied'], ['learning', 'Still learning'], ['missed', 'Missed at least once']].map(([value, label]) => `<option value="${value}" ${browseShow === value ? 'selected' : ''}>${label}</option>`).join('');
+  const show = [['all', 'All'], ['studied', 'Studied'], ['learning', 'Learning'], ['missed', 'Missed']].map(([value, label]) => `<button data-action="browse-show" data-show="${value}" aria-pressed="${browseShow === value}">${label}</button>`).join('');
   // Word families and Word building are French's (content/families.json); another language's page has the room off.
   // They and More for today are one line of links under the title, so the search comes first.
   const more = [
     ...(roomsOff.has('families') ? [] : [['families', 'Word families', ''], ['word-building', 'Word building', 'data-from="browse"']]),
     ['more-today', 'More for today', ''],
   ].map(([action, title, data]) => `<button data-action="${action}" ${data} ${busy || (action === 'more-today' && !snapshot) ? 'disabled' : ''}>${title}</button>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Words', 'vocabulary')}<button class="icon" data-action="options" aria-label="Words options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><nav class="browse-links" aria-label="More with your words">${more}</nav><div class="browse-tools"><label class="sr-only" for="vocab-search">Search ${languageEnglish} or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Words', 'vocabulary')}<button class="icon" data-action="options" aria-label="Words options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><nav class="browse-links" aria-label="More with your words">${more}</nav><div class="browse-tools"><label class="browse-search">${searchIcon}<span class="sr-only">Search ${languageEnglish} or English vocabulary</span><input type="search" id="vocab-search" placeholder="Find a word" value="${esc(search)}" autocomplete="off"></label><button class="icon browse-hide" data-action="toggle-hide" aria-pressed="${hideTranslations}" aria-label="Hide translations">${eyeIcon}</button></div><label class="browse-category"><span class="sr-only">Category</span><select id="browse-category">${optionsHTML(browseCategory)}</select><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></label><div class="segmented browse-show" role="group" aria-label="Show">${show}</div><div id="browse-results"></div></section>`;
   renderBrowseResults();
 }
 function normalized(value) { return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase(); }
@@ -2016,12 +2016,6 @@ function renderSummary() {
 // ── Listen, Read, Practise and Mistakes ─────────────────────────────────────
 // A stream is one endless run of comprehension exercises. The server keeps the current question,
 // so a reload — or the same stream reached from another screen — shows the same one.
-const STREAM_INSTRUCTION = {
-  'listen:meaning': 'Listen, then choose what it means.',
-  'read:meaning': 'Read, then choose what it means.',
-  'listen:question': 'Listen, then answer the question.',
-  'read:question': 'Read, then answer the question.',
-};
 const ITEM_LABEL = { dialogue: 'Dialogue', text: 'Text' };
 const LETTER = /[\p{L}\p{M}]/u;
 function mixed() { return screen === 'mix' || screen === 'focus'; }
@@ -2194,7 +2188,7 @@ function earBodyHTML(ear) {
   const again = result?.again ? '<p class="caption">It comes back once, a few questions on.</p>' : '';
   const reveal = settled ? `<section class="reveal" aria-label="The ${languageEnglish} and its meaning">${linesHTML([{ fr: result.fr, en: result.en }], [], true)}</section>` : '';
   const action = settled ? `<div class="stream-actions pinned"><button class="primary" data-action="stream-next" ${locked() ? 'disabled' : ''}>${busy ? 'Saving…' : 'Next'}</button></div>` : '';
-  return `<p class="stream-item">Grammar by ear${ear.again ? ' · again' : ''}</p><p class="prompt-instruction">Listen, then answer.</p>${streamAudioHTML(shownView(), settled)}<p class="stream-question">${esc(ear.question)}</p><div class="answer-area">${streamAnswerHTML(ear, answered)}</div>${settled ? `${streamResultHTML(answered)}${again}${reveal}` : ''}${action}`;
+  return `<p class="stream-item">Grammar by ear${ear.again ? ' · again' : ''}</p>${streamAudioHTML(shownView(), settled)}<p class="stream-question">${esc(ear.question)}</p><div class="answer-area">${streamAnswerHTML(ear, answered)}</div>${settled ? `${streamResultHTML(answered)}${again}${reveal}` : ''}${action}`;
 }
 function streamBodyHTML() {
   const ear = earShown();
@@ -2209,7 +2203,7 @@ function streamBodyHTML() {
     ? `<header class="reading-heading">${label ? `<p class="reading-kicker">${esc(label)}</p>` : ''}${item.title ? `<h1>${esc(item.title)}</h1>` : ''}</header>`
     : label ? `<p class="stream-item">${esc(label)}${item.title ? ` · ${esc(item.title)}` : ''}</p>` : '';
   const action = settled ? `<button class="primary" data-action="stream-next" ${locked() || streamState.waiting ? 'disabled' : ''}>${busy || streamState.waiting ? 'Saving…' : 'Next'}</button>` : '';
-  const body = `${context}<p class="prompt-instruction">${esc(STREAM_INSTRUCTION[`${view.mode}:${view.kind}`] || '')}</p>${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions${settled ? ' pinned' : ''}">${action}</div>` : ''}`;
+  const body = `${context}${streamAudioHTML(view, settled)}${streamPromptHTML(view, settled)}<div class="answer-area">${streamAnswerHTML(view, result)}</div>${settled ? `${streamResultHTML(result)}${streamRevealHTML(result)}` : ''}${action ? `<div class="stream-actions${settled ? ' pinned' : ''}">${action}</div>` : ''}`;
   return reading ? `<article class="reading-exercise">${body}</article>` : body;
 }
 function streamEmptyHTML(id) {
@@ -2722,7 +2716,7 @@ let boardCards = readPreference('echo.board-cards', 'on') === 'on';
 function openBoardOptions() {
   const thumb = (end) => `<span class="range-thumb" data-end="${end}" role="slider" tabindex="0" aria-label="${end === 'min' ? 'Lowest score' : 'Highest score'}" aria-valuemin="${BOARD_LOW}" aria-valuemax="${BOARD_HIGH}"></span>`;
   const ends = [BOARD_LOW, 0, BOARD_HIGH].map((bound) => `<span style="left:calc(${RANGE_INSET}px + (100% - ${2 * RANGE_INSET}px) * ${(bound - BOARD_LOW) / (BOARD_HIGH - BOARD_LOW)})">${signed(bound)}</span>`).join('');
-  openDialog('Board options', `<div class="range-pick"><p class="range-value"></p><div class="range-track"><span class="range-fill"></span>${thumb('min')}${thumb('max')}</div><div class="range-ends">${ends}</div></div><div class="dialog-row"><span>Only words in Cards<small class="dialog-note">Off: every word</small></span><button class="secondary" data-action="board-cards" aria-pressed="${boardCards}">${boardCards ? 'On' : 'Off'}</button></div><div class="options-links"><button class="quiet" data-action="options">‹ Words options</button></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'board-options');
+  openDialog('Board options', `<div class="sheet-group range-pick"><p class="range-value"></p><div class="range-track"><span class="range-fill"></span>${thumb('min')}${thumb('max')}</div><div class="range-ends">${ends}</div></div><div class="sheet-group"><div class="sheet-row"><span>Only words in Cards</span>${switchHTML('board-cards', boardCards, 'Only words in Cards')}</div></div><div class="sheet-links"><button class="quiet accent" data-action="options">‹ Words options</button></div>`, 'board-options');
   drawBoardRange();
 }
 function toggleBoardCards() {
@@ -5612,9 +5606,14 @@ function pickOption(option) {
   draft = option;
   grammarMutation('answer', { answer: option });
 }
+// Words options and Board options are sheets: grouped rows that rise from the bottom on a phone, with Done at the top.
+const SHEETS = new Set(['options', 'board-options']);
 function openDialog(title, body, kind) {
   stopAudio(); dialog.dataset.kind = kind;
-  dialog.innerHTML = `<div class="dialog-head"><h2 id="dialog-title">${esc(title)}</h2><button class="icon" data-action="close-dialog" aria-label="Close">×</button></div>${body}`;
+  const sheet = SHEETS.has(kind);
+  dialog.classList.toggle('sheet', sheet);
+  const close = sheet ? '<button class="quiet accent sheet-done" data-action="close-dialog">Done</button>' : '<button class="icon" data-action="close-dialog" aria-label="Close">×</button>';
+  dialog.innerHTML = `<div class="dialog-head"><h2 id="dialog-title">${esc(title)}</h2>${close}</div>${body}`;
   if (!dialog.open) dialog.showModal();
 }
 // The rule opens at the section that teaches the question on screen.
@@ -5626,33 +5625,46 @@ function showRule() {
   dialog.querySelector('.guide-section.focus')?.scrollIntoView({ block: 'start' });
 }
 // Words options: what the cards follow. Daily and Endless are tabs; extra words, early reviews and songs are in Your words.
+const switchHTML = (action, on, label) => `<button class="switch" role="switch" data-action="${action}" aria-checked="${on}" aria-label="${esc(label)}"></button>`;
 function openOptions() {
   if (!snapshot) return;
   const disabled = locked() ? 'disabled' : '';
-  openDialog('Words options', `<p class="settings-label">Direction</p><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div><div class="dialog-row"><label for="deck-select">Category</label><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select></div><div class="dialog-row"><label for="audio-speed">Pronunciation speed</label><select id="audio-speed"><option value="1" ${speed === 1 ? 'selected' : ''}>Normal</option><option value="0.8" ${speed === 0.8 ? 'selected' : ''}>Slower</option></select></div><div class="dialog-row"><span>Say the ${languageEnglish} when a card turns<small class="dialog-note">When you Read, practise English → ${languageEnglish}, or tap a tile on Board</small></span><button class="secondary" data-action="turn-sound" aria-pressed="${audioMode}">${audioMode ? 'On' : 'Off'}</button></div><div class="dialog-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span><button class="secondary" data-action="gender-colours" aria-pressed="${genderColours}">${genderColours ? 'On' : 'Off'}</button></div><button class="dialog-row dialog-link" data-action="board-options"><span>Board<small class="dialog-note">${esc(boardRangeLabel())} · ${boardCards ? 'words in Cards' : 'every word'}</small></span><span aria-hidden="true">›</span></button><form id="goal-form" novalidate><div class="goal-row"><label for="daily-goal">New words / day<br><small>in each direction</small></label><input id="daily-goal" name="newPerDay" type="number" inputmode="numeric" min="0" max="${totalWords()}" step="1" value="${snapshot.settings.newPerDay}" aria-describedby="goal-help goal-feedback" ${disabled}><button class="secondary" type="submit" ${disabled}>Save</button></div><p id="goal-help" class="caption">Shared across categories. Resets at 04:00 on your Mac. Set 0 to pause new words; due reviews are not capped.</p><div id="goal-feedback" class="caption" role="status"></div></form><div class="options-links"><button class="quiet" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress ↓</a></div><button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'options');
+  const say = `Say the ${languageEnglish} when a card turns`;
+  const chevron = '<span class="sheet-chev" aria-hidden="true">›</span>';
+  openDialog('Words options', `<div class="sheet-group"><div class="segmented" role="group" aria-label="Practice direction"><button data-direction="fr-en" aria-pressed="${direction === 'fr-en'}" ${disabled}>${languageEnglish} → English</button><button data-direction="en-fr" aria-pressed="${direction === 'en-fr'}" ${disabled}>English → ${languageEnglish}</button></div>
+    <label class="sheet-row" for="deck-select"><span>Category</span><span class="sheet-value"><select id="deck-select" ${disabled}>${optionsHTML(deck)}</select>${chevron}</span></label>
+    <div class="sheet-row"><span>Speed</span><div class="segmented" role="group" aria-label="Pronunciation speed">${[[1, 'Normal'], [0.8, 'Slower']].map(([value, label]) => `<button data-action="speed" data-speed="${value}" aria-pressed="${speed === value}">${label}</button>`).join('')}</div></div></div>
+    <div class="sheet-group"><div class="sheet-row"><span>${esc(say)}</span>${switchHTML('turn-sound', audioMode, say)}</div>
+    <div class="sheet-row"><span>Colour nouns by gender<small class="gender-key">${LANGUAGE_GENDERS.map((gender) => `<span class="${GENDERS[gender][0]}">${GENDERS[gender][1]}</span>`).join(' · ')}</small></span>${switchHTML('gender-colours', genderColours, 'Colour nouns by gender')}</div></div>
+    <div class="sheet-group"><div class="sheet-row"><span>New words a day<small>in each direction</small></span><div class="stepper" role="group" aria-label="New words a day"><button data-action="goal-step" data-step="-${GOAL_STEP}" aria-label="${GOAL_STEP} fewer" ${disabled}>−</button><output id="daily-goal" aria-live="polite">${snapshot.settings.newPerDay}</output><button data-action="goal-step" data-step="${GOAL_STEP}" aria-label="${GOAL_STEP} more" ${disabled}>+</button></div></div>
+    <button class="sheet-row" data-action="board-options"><span>Board</span><span class="sheet-value">${esc(boardRangeLabel())} · ${boardCards ? 'in Cards' : 'every word'}${chevron}</span></button></div>
+    <p id="goal-feedback" class="caption sheet-note" role="status"></p><div class="sheet-links"><button class="quiet accent" data-action="about">How it works</button><a href="api/export" download="echo-progress.json">Download my progress</a></div>`, 'options');
+}
+// The daily allowance moves in steps of GOAL_STEP and saves itself once the taps stop, so a run of taps is one save.
+const GOAL_STEP = 5;
+const GOAL_SAVE_MS = 700;
+let goalTimer = 0;
+function stepGoal(step) {
+  const output = dialog.querySelector('#daily-goal');
+  if (!output || !snapshot || locked()) return;
+  const value = Math.max(0, Math.min(totalWords(), Math.round((Number(output.textContent) + step) / GOAL_STEP) * GOAL_STEP));
+  output.textContent = value;
+  clearTimeout(goalTimer);
+  goalTimer = setTimeout(() => saveGoal(value), GOAL_SAVE_MS);
+}
+async function saveGoal(value) {
+  const say = (text) => { const feedback = dialog.querySelector('#goal-feedback'); if (feedback) feedback.textContent = text; };
+  if (!snapshot || value === snapshot.settings.newPerDay) return;
+  try {
+    snapshot.settings = await api('api/settings', { method: 'PUT', body: JSON.stringify({ newPerDay: value }) });
+    say(value === 0 ? 'New words are paused.' : '');
+    await fetchState();
+  } catch (error) { say(error.message); }
 }
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
   if (!snapshot) return;
   openDialog('More for today', `${extraPracticeHTML()}<button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'more-today');
-}
-async function saveGoal(event) {
-  event.preventDefault(); if (locked() || !snapshot) return;
-  const input = document.querySelector('#daily-goal'); const feedback = document.querySelector('#goal-feedback');
-  const raw = input.value.trim(); const value = Number(raw);
-  if (raw === '' || !Number.isInteger(value) || value < 0 || value > totalWords()) {
-    input.setAttribute('aria-invalid', 'true'); feedback.textContent = `Choose a whole number from 0 to ${totalWords()}. Use 0 to pause new words.`; input.focus(); return;
-  }
-  input.removeAttribute('aria-invalid'); busy = true; render();
-  const controls = [...dialog.querySelectorAll('button,input,select')]; controls.forEach((control) => { control.disabled = true; });
-  feedback.textContent = 'Saving…';
-  try {
-    const settings = await api('api/settings', { method: 'PUT', body: JSON.stringify({ newPerDay: value }) });
-    snapshot.settings = settings; busy = false;
-    await fetchState();
-    feedback.textContent = `Saved: ${value} new words per day in each direction. Words already introduced today still count.`;
-  } catch (error) { feedback.textContent = `${error.message} Press Save to retry.`; }
-  finally { busy = false; controls.forEach((control) => { control.disabled = false; }); render(); }
 }
 function retry() {
   if (busy || !retryAction) return;
@@ -5700,6 +5712,9 @@ document.addEventListener('click', (event) => {
   if (action === 'st-info') { toggleStatsTip(button); return; }
   if (!event.target.closest('.st-tip')) closeStatsTips();
   if (action === 'close-dialog') { if (!busy) dialog.close(); return; }
+  if (action === 'goal-step') { stepGoal(Number(button.dataset.step)); return; }
+  if (action === 'speed') { speed = button.dataset.speed === '0.8' ? 0.8 : 1; savePreference('echo.speed', String(speed)); audio.playbackRate = speed; openOptions(); return; }
+  if (action === 'browse-show') { browseShow = button.dataset.show; for (const choice of main.querySelectorAll('[data-action="browse-show"]')) choice.setAttribute('aria-pressed', String(choice === button)); renderBrowseResults(); return; }
   if (action === 'turn-sound') {
     audioMode = !audioMode; savePreference('echo.audio-mode', audioMode ? 'on' : 'off');
     if (!audioMode) stopAudio(); else if (board && !boardClips.size) warmBoardClips(board.words, boardLoads);
@@ -5893,12 +5908,10 @@ dialog.addEventListener('keydown', keyBoardRange);
 document.addEventListener('change', (event) => {
   if (event.target.id === 'deck-select' && !locked()) { deck = event.target.value; browseCategory = deck; savePreference('echo.deck', deck); dialog.close(); wordsOptionChanged(); }
   else if (event.target.id === 'browse-category') { browseCategory = event.target.value; renderBrowseResults(); }
-  else if (event.target.id === 'browse-show') { browseShow = event.target.value; renderBrowseResults(); }
   else if (event.target.id === 'vb-table-verb' || event.target.id === 'vb-table-tense') {
     verbTable = { ...verbTable, [event.target.id === 'vb-table-verb' ? 'verbId' : 'tense']: event.target.value, answers: ['', '', '', '', '', ''], result: null };
     render(); main.querySelector('.vb-input')?.focus({ preventScroll: true });
   }
-  else if (event.target.id === 'audio-speed') { speed = event.target.value === '0.8' ? 0.8 : 1; savePreference('echo.speed', String(speed)); audio.playbackRate = speed; }
 });
 document.addEventListener('input', (event) => {
   if (event.target.id === 'vocab-search') { search = event.target.value; renderBrowseResults(); }
@@ -5913,8 +5926,7 @@ document.addEventListener('input', (event) => {
   if (event.target.id === 'pause-custom') setPauseCustom(event.target.value);
 });
 document.addEventListener('submit', (event) => {
-  if (event.target.id === 'goal-form') saveGoal(event);
-  else if (event.target.id === 'song-search-form') { event.preventDefault(); searchSongs(document.querySelector('#song-query').value); }
+  if (event.target.id === 'song-search-form') { event.preventDefault(); searchSongs(document.querySelector('#song-query').value); }
   else if (event.target.id === 'song-paste-form') { event.preventDefault(); readSong({ title: document.querySelector('#song-title').value, artist: document.querySelector('#song-artist').value, lyrics: document.querySelector('#song-lyrics').value }); }
   else if (event.target.matches('.custom-count')) { event.preventDefault(); submitCustomCount(event.target); }
   else if (event.target.id === 'vb-form') { event.preventDefault(); submitVerbForm(); }
