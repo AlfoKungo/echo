@@ -729,6 +729,24 @@ describe('extra practice', () => {
     expect(list.get('travel-001')!.lastStudied).not.toBeNull();
     expect(list.get('food-002')).toMatchObject({ misses: 0, lastStudied: null, status: 'new' });
   });
+
+  test('at the pause, a finished word scoring below zero is listed, and a hardest review brings it back', () => {
+    const { store, clock } = fixture();
+    store.setSettings(2);
+    let state = store.start('fr-en', 'all');
+    const misses = new Map([['food-001', 3]]);
+    while (state.current) {
+      const left = misses.get(state.current.id) ?? 0;
+      if (left) misses.set(state.current.id, left - 1);
+      state = store.grade(answer(state, !left));
+    }
+    expect(state.hardest).toEqual([{ id: 'food-001', fr: 'le pain', en: state.hardest[0]!.en, gender: 'masculine', misses: 3 }]);
+    clock.value = new Date(2026, 8, 22, 5);
+    state = store.reviewEarly({ direction: 'fr-en', deck: 'all', mode: 'hardest', count: 5, requestId: 'early-hardest' });
+    expect(state.current?.id).toBe('food-001');
+    expect(state.hardest).toEqual([]);
+    expect(state.stats).toMatchObject({ due: 1, scheduled: 1 });
+  });
 });
 
 describe('adding a word tapped in a French text', () => {

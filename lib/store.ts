@@ -830,13 +830,28 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       if (candidate.active === 0 && candidate.due_at > time && (nextDue === null || candidate.due_at < nextDue)) nextDue = candidate.due_at;
     }
     const latest = latestGrade.get(direction);
+    const hardest = current ? [] : hardestFinished(selected, time, HARDEST_SHOWN).map((candidate) => {
+      const word = wordById.get(candidate.word_id)!;
+      return { id: word.id, fr: word.fr, en: word.en, ...(word.gender ? { gender: word.gender } : {}), misses: misses.get(word.id) ?? 0 };
+    });
     return {
       day, direction, deck, settings: preferences, extraToday: extra, decks,
       stats, overview,
       current, next, ahead,
       nextDue: nextDue === null ? null : new Date(nextDue).toISOString(),
       undoId: latest && inDeck(latest.word_id, deck) ? latest.request_id : null,
+      hardest,
     };
+  }
+  // The finished words a learner finds hardest: scores below zero, lowest first (the same score Endless and the
+  // Walkman pick by).
+  const HARDEST_SHOWN = 5;
+  function hardestFinished(selected: CardRow[], time: number, count: number): CardRow[] {
+    const scores = scoresAt(time);
+    return selected
+      .filter((row) => row.active === 0 && row.due_at > time && (scores.get(row.word_id) ?? 0) < 0)
+      .sort((a, b) => scores.get(a.word_id)! - scores.get(b.word_id)!)
+      .slice(0, count);
   }
 
   function state(direction: Direction, deck: string): Snapshot {
@@ -905,7 +920,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
   // Makes finished words due now. Their FSRS memory is untouched, so finishing one scores an early review.
   function reviewEarly(input: ReviewEarlyInput): Snapshot {
     validateSelection(input.direction, input.deck);
-    if (input.mode !== 'soonest' && input.mode !== 'missed') throw new StoreError('Choose the words due soonest or the words you missed most.');
+    if (input.mode !== 'soonest' && input.mode !== 'missed' && input.mode !== 'hardest') throw new StoreError('Choose the words due soonest, the words you missed most, or the hardest.');
     validateBatch(input.count, input.requestId, 'words to review');
     return db.transaction(() => {
       const at = now();
@@ -913,12 +928,14 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
       if (claimRequest(input.requestId, 'review-early', input.direction, at)) {
         const misses = new Map(historyForDirection.all(input.direction).map((entry) => [entry.word_id, entry.misses]));
         const missed = (row: CardRow) => misses.get(row.word_id) ?? 0;
-        const candidates = rowsForDirection.all(input.direction)
-          .filter((row) => inDeck(row.word_id, input.deck) && row.active === 0 && row.due_at > time && (input.mode === 'soonest' || missed(row) > 0))
+        const finished = rowsForDirection.all(input.direction).filter((row) => inDeck(row.word_id, input.deck) && row.active === 0 && row.due_at > time);
+        const candidates = input.mode === 'hardest' ? hardestFinished(finished, time, input.count) : finished
+          .filter((row) => input.mode === 'soonest' || missed(row) > 0)
           .sort((a, b) => (input.mode === 'missed' ? missed(b) - missed(a) : 0) || a.due_at - b.due_at)
           .slice(0, input.count);
         if (!candidates.length) {
-          throw new StoreError(input.mode === 'missed' ? 'None of your finished words here have been missed. Try the words due soonest.' : 'No finished words here are waiting for a later review.');
+          throw new StoreError(input.mode === 'missed' ? 'None of your finished words here have been missed. Try the words due soonest.'
+            : input.mode === 'hardest' ? 'None of your finished words here is hard right now.' : 'No finished words here are waiting for a later review.');
         }
         for (const row of candidates) save({ ...row, due_at: time, version: row.version + 1 });
         const queue = loadQueue(input.direction, at);

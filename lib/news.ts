@@ -64,6 +64,8 @@ export type NewsStatus = 'ready' | 'preparing' | 'waiting' | 'failed';
 export type NewsSummary = {
   date: string; title: string; headlines: string[]; status: NewsStatus; step: NewsStep | null; error: string | null; done: number; total: number;
   lines: number; progress: NewsProgress | null;
+  // The headings of its stories, in order, once marked (the list shows them in place of RFI's headlines).
+  storyTitles: string[];
 };
 export type NewsView = NewsSummary & { audio: string | null; starts: number[] | null; noted: boolean; stanzas: SongNotes; stories: NewsStory[] };
 export type NewsDeps = {
@@ -456,6 +458,7 @@ export function createNews(deps: NewsDeps) {
       date: edition.date, title: edition.title, headlines: headlinesOf(edition.title),
       status, step, error: failure?.message ?? null, done: here?.done ?? 0, total: here?.total ?? 0,
       lines: (edition.stanzas ?? []).flat().length, progress: progress[edition.date] ?? null,
+      storyTitles: (edition.stories ?? []).map((story) => story.title),
     };
   }
 

@@ -30,10 +30,13 @@ export type Stats = { total: number; unseen: number; seenActive: number; unseenA
 // Each is a prediction; the reply to the saved answers is what counts.
 export type CardAhead = { card: CardView | null; after?: { known: CardView | null; missed: CardView | null } };
 export type CardsAhead = { known: CardAhead; missed: CardAhead };
-export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; extraToday: number; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; next: CardView | null; ahead: CardsAhead | null; nextDue: string | null; undoId: string | null };
+// hardest: with no card left today, the finished words of the deck with the lowest scores below zero (at most five),
+// the ones a 'hardest' early review brings back; empty while there is a card to practise.
+export type HardWord = { id: string; fr: string; en: string; gender?: Word['gender']; misses: number };
+export type Snapshot = { day: string; direction: Direction; deck: string; settings: Settings; extraToday: number; decks: Deck[]; stats: Stats; overview: Stats; current: CardView | null; next: CardView | null; ahead: CardsAhead | null; nextDue: string | null; undoId: string | null; hardest: HardWord[] };
 export type GradeInput = { direction: Direction; deck: string; wordId: string; version: number; known: boolean; requestId: string };
 export type ExtraWordsInput = { direction: Direction; deck: string; count: number; requestId: string };
-export type ReviewEarlyMode = 'soonest' | 'missed';
+export type ReviewEarlyMode = 'soonest' | 'missed' | 'hardest';
 export type ReviewEarlyInput = { direction: Direction; deck: string; mode: ReviewEarlyMode; count: number; requestId: string };
 // lastStudied is the latest answer's time; misses counts every miss ever recorded (undone answers excluded).
 export type BrowseWord = Word & { status: 'new' | 'learning' | 'due' | 'scheduled'; due: string | null; lastStudied: string | null; misses: number };

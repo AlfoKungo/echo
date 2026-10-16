@@ -180,12 +180,11 @@ const HEARD_LIMIT = 50;
 let walkmanHeard = (() => {
   try { const list = JSON.parse(localStorage.getItem(HEARD_KEY) || '[]'); return Array.isArray(list) ? list.slice(0, HEARD_LIMIT) : []; } catch { return []; }
 })();
-let heardOpen = false;
 let heardSaying = '';
 const heardMarking = new Set();
 function saveHeard() { try { localStorage.setItem(HEARD_KEY, JSON.stringify(walkmanHeard)); } catch { /* private mode: history lasts this visit */ } }
 // What the Walkman tab in Words plays, remembered on this device: words by score (the default) or by groups.
-const WALKMAN_CHOICES = { scored: 'words by score', groups: 'words by groups' };
+const WALKMAN_CHOICES = { scored: 'By score', groups: 'By groups' };
 let walkmanChoice = (() => { const saved = readPreference('echo.walkman-words', 'scored'); return saved in WALKMAN_CHOICES ? saved : 'scored'; })();
 function chooseWalkman(choice) {
   if (choice === walkmanChoice || walkman.loading) return;
@@ -551,9 +550,10 @@ function openInfo(room) {
 }
 const wordsTabNow = () => screen === 'walkman' || screen === 'songs' || screen === 'board' ? screen : vocabMode === 'endless' ? 'endless' : 'cards';
 // The top of every Words tab: back, the direction (for cards and the board), Your words, ⓘ, options, then the tabs.
+// It is one block with its own spacing, so the tabs sit in the same place on all five tabs.
 function wordsTop() {
   const tab = wordsTabNow(), cards = tab === 'cards' || tab === 'endless' || tab === 'board';
-  return `<div class="section-top">${back('Home', 'home')}<div>${cards ? `<span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? `${language.toUpperCase()} → EN` : `EN → ${language.toUpperCase()}`}</span>` : ''}<button class="icon" data-action="browse" aria-label="Your words" ${busy ? 'disabled' : ''}>${searchIcon}</button>${infoButton('words')}<button class="icon" data-action="options" aria-label="Words options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>${roomTabs('words-tab', tab, WORDS_TABS)}`;
+  return `<div class="words-top"><div class="section-top">${back('Home', 'home')}<div>${cards ? `<span class="review-direction" aria-label="${esc(directionLabel())}">${direction === 'fr-en' ? `${language.toUpperCase()} → EN` : `EN → ${language.toUpperCase()}`}</span>` : ''}<button class="icon" data-action="browse" aria-label="Your words" ${busy ? 'disabled' : ''}>${searchIcon}</button>${infoButton('words')}<button class="icon" data-action="options" aria-label="Words options" aria-haspopup="dialog" ${busy || !snapshot ? 'disabled' : ''}>•••</button></div></div>${roomTabs('words-tab', tab, WORDS_TABS)}</div>`;
 }
 // The top of every Listen tab: back, the level (for questions), ⓘ, then the tabs.
 function listenTop(right = '') {
@@ -651,7 +651,9 @@ function changedAnswer(answer, form) {
 function renderWalkman() {
   const room = TAPE_SCREENS[screen];
   const verbTapeSwitch = room === 'verbs' && Object.keys(VERB_TAPES).length > 1 ? `<div class="segmented wm-way" role="group" aria-label="What the verb tape plays">${Object.entries(VERB_TAPES).map(([kind, label]) => `<button data-action="walkman-verb-tape" data-kind="${kind}" aria-pressed="${verbTapeKind === kind}" ${walkman.loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>` : '';
-  const header = room === 'words' ? wordsTop() : room === 'sentences' ? listenTop() : `<div class="section-top">${back('Verbs', 'verbs')}<div><span class="stream-label">${verbTapeKind === 'change' ? 'Change it' : 'Tape'}</span>${infoButton('verbs')}</div></div>${verbTapeSwitch}`;
+  // In Words, the way the tape picks its words sits under the tabs, where the other tabs show their counts.
+  const wordsChoice = room === 'words' ? `<div class="segmented wm-way" role="group" aria-label="How the Walkman picks words">${Object.entries(WALKMAN_CHOICES).map(([choice, label]) => `<button data-action="walkman-choice" data-words="${choice}" aria-pressed="${walkmanChoice === choice}">${label}</button>`).join('')}</div>` : '';
+  const header = room === 'words' ? `${wordsTop()}${wordsChoice}` : room === 'sentences' ? listenTop() : `<div class="section-top">${back('Verbs', 'verbs')}<div><span class="stream-label">${verbTapeKind === 'change' ? 'Change it' : 'Tape'}</span>${infoButton('verbs')}</div></div>${verbTapeSwitch}`;
   const tape = walkman.tape;
   if (walkman.loading || (!tape && !notice)) { main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}<div class="loading-state" role="status">Winding the tape…</div></section>`; return; }
   if (!tape) { main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}</section>`; return; }
@@ -659,19 +661,14 @@ function renderWalkman() {
   const playing = !walkmanAudio.paused;
   const phase = word ? walkmanPhase() : '';
   // Change it shows the sentence, then the cue under it, and once the answer plays, the answer and its English.
+  // Before the first word the face is empty: How it works says what the tape does.
   const face = word?.change
     ? phase === 'again'
       ? `<p class="wm-fr wm-sentence" lang="${languageTag}">${changedAnswer(word.fr, word.change.form)}</p><p class="wm-en">${esc(word.en)}</p>`
       : `<p class="wm-fr wm-sentence" lang="${languageTag}">${frEsc(word.change.base)}</p><p class="wm-en wm-cue">${phase === 'listen' ? '&nbsp;' : `→ <span lang="${languageTag}">${frEsc(word.change.cue)}</span>`}</p>`
     : word
     ? `<p class="wm-fr${word.sentence || word.verb ? ' wm-sentence' : ''}" lang="${languageTag}">${frEsc(word.fr)}</p><p class="wm-en">${walkman.meaning ? esc(word.en) : '&nbsp;'}</p>`
-    : `<p class="wm-hint">${tape.kind === 'change'
-      ? 'You hear a sentence, then a change: a time, or another person. Say the new sentence in the pause, then hear it. The verbs and tenses on your Practising line; with one tense, only the person changes.'
-      : tape.kind === 'verbs'
-      ? 'You hear a verb, a tense and a person, then a pause to say the form, then the form twice. The 20 most common verbs, in the tenses you choose.'
-      : tape.kind === 'sentences'
-      ? `You hear a ${languageEnglish} sentence, then a pause to understand it, then the English, then the ${languageEnglish} again.`
-      : `You hear a ${languageEnglish} word, then a pause to find its meaning, then the English, then the ${languageEnglish} again.`}</p>`;
+    : '';
   // The phase row shows where the word playing has got to; the reels turn only while the tape plays.
   const phases = word ? `<div class="wm-phase" aria-hidden="true">${TAPE_PHASES[tape.kind].map((label, index) => `<span data-phase="${PHASE_KEYS[index]}"${PHASE_KEYS[index] === phase ? ' class="on"' : ''}>${label}</span>`).join('')}</div>` : '';
   main.innerHTML = `${noticeHTML()}<section class="stream walkman">${header}
@@ -679,9 +676,7 @@ function renderWalkman() {
     <div class="wm-deck${playing ? ' playing' : ''}" aria-hidden="true"><span class="wm-reel">${reelIcon}</span><div class="wm-progress"><span style="width:${walkmanProgress()}%"></span></div><span class="wm-reel">${reelIcon}</span></div>
     <div class="wm-controls"><button class="listen-play wm-play" data-action="walkman-toggle" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button></div>
     ${heardHTML()}
-    <p class="caption wm-note">Keeps playing with your phone locked. ${tape.kind === 'change' ? '✓ or ✗ on a sentence counts for its verb form, like a Verbs card.' : 'Listening doesn’t change your vocabulary progress.'}</p>
     ${room === 'verbs' && tape.kind === 'verbs' ? `<p class="wm-choice wm-tenses">Tenses ${Object.entries(VB_TENSES).map(([tense, label]) => `<button data-action="walkman-tense" data-tense="${tense}" aria-pressed="${verbTenses.includes(tense)}">${esc(label)}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
-    ${room === 'words' ? `<p class="wm-choice">Plays ${Object.entries(WALKMAN_CHOICES).map(([choice, label]) => `<button data-action="walkman-choice" data-words="${choice}" aria-pressed="${walkmanChoice === choice}">${label}</button>`).join('<span aria-hidden="true">·</span>')}</p>` : ''}
   </section>`;
 }
 const HEARD_STATUS = { saving: 'Adding…', added: 'Added to your words', 'already-practising': 'Already in your practice', 'made-due': 'Due again now' };
@@ -695,8 +690,8 @@ function heardHTML() {
       `<button class="icon mark ${knew ? 'knew' : 'missed'}" data-action="walkman-mark" data-word="${esc(entry.id)}" data-knew="${knew}" aria-pressed="${entry.mark?.knew === knew}" aria-label="${label} ${esc(entry.fr)}"${heardMarking.has(entry.id) || (entry.verb && entry.mark) ? ' disabled' : ''}>${icon}</button>`).join('');
     return `<li class="wm-heard-row${entry.sentence ? ' sentence' : ''}"><div class="wm-heard-text"><p class="wm-heard-fr" lang="${languageTag}">${frEsc(entry.fr)}</p><p class="wm-heard-en">${esc(entry.en)}</p>${add}</div>${marks}<button class="icon${heardSaying === entry.id ? ' playing' : ''}" data-action="walkman-say" data-word="${esc(entry.id)}" aria-label="Hear ${esc(entry.fr)} again">${speaker}</button></li>`;
   }).join('');
-  const list = heardOpen ? `<ol class="wm-heard-list">${rows || '<li class="wm-heard-empty">Words and sentences appear here as each one finishes, newest first.</li>'}</ol>` : '';
-  return `<div class="wm-heard"><button class="wm-heard-toggle" data-action="walkman-heard" aria-expanded="${heardOpen}"><span>${heardOpen ? 'Hide what you heard' : 'What you heard'}</span><span class="chev" aria-hidden="true">⌄</span></button>${list}</div>`;
+  // What was heard stays in view under the player, once there is something in it.
+  return rows ? `<div class="wm-heard"><h2 class="wm-heard-label">Heard</h2><ol class="wm-heard-list">${rows}</ol></div>` : '';
 }
 // A word joins the history once it has finished, or once the tape moves on after its meaning was heard.
 function logHeard(position) {
@@ -849,7 +844,7 @@ function followTape() {
     if (tapeScreen() && !document.hidden) render();
     return;
   }
-  if (logged && heardOpen && tapeScreen() && !document.hidden) { render(); return; }
+  if (logged && tapeScreen() && !document.hidden) { render(); return; }
   const bar = document.querySelector('.wm-progress span');
   if (bar) bar.style.width = `${walkmanProgress()}%`;
   const phase = walkmanPhase();
@@ -1005,9 +1000,19 @@ async function loadNews(quiet = false) {
 function renderNews() {
   const header = listenTop();
   if (!newsList) { main.innerHTML = `${noticeHTML()}<section class="topics songs">${header}${loading ? '<div class="loading-state" role="status">Loading…</div>' : ''}</section>`; return; }
+  // A row: the day (a dot when it is new), its first stories by heading (RFI's headlines until they are marked), and a
+  // line for how far it was played.
+  const NEWS_TOPICS = 4;
   const rows = newsList.editions.map((edition) => {
     const state = edition.status === 'ready' ? newsPlayed(edition) : { kind: edition.status, text: newsStateLine(edition) };
-    return `<li><button class="song-row" data-action="news-open" data-date="${esc(edition.date)}"><span class="song-copy"><strong>${esc(newsDay(edition.date))}</strong>${edition.headlines.length ? `<span lang="${languageTag}">${edition.headlines.map(esc).join(' · ')}</span>` : ''}<small class="song-state ${state.kind}">${esc(state.text)}</small>${edition.status === 'preparing' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`;
+    const titles = edition.storyTitles.length ? edition.storyTitles : edition.headlines;
+    const more = titles.length - NEWS_TOPICS;
+    const topics = titles.length ? `<span class="news-topics" lang="${languageTag}">${titles.slice(0, NEWS_TOPICS).map((title) => `<span>${esc(title)}</span>`).join('')}${more > 1 ? `<span class="news-more" lang="en">+ ${more} more</span>` : more === 1 ? `<span>${esc(titles[NEWS_TOPICS])}</span>` : ''}</span>` : '';
+    const dot = state.kind === 'new' ? '<span class="news-new" role="img" aria-label="New"></span>' : '';
+    const where = state.kind === 'new' ? ''
+      : state.kind === 'part' ? `<span class="news-played" role="img" aria-label="${esc(state.text)}"><span style="width:${((edition.progress.line + 1) / edition.lines * 100).toFixed(1)}%"></span></span>`
+      : `<small class="song-state ${state.kind}">${esc(state.text)}</small>`;
+    return `<li><button class="song-row" data-action="news-open" data-date="${esc(edition.date)}"><span class="song-copy"><strong>${esc(newsDay(edition.date))}${dot}</strong>${topics}${where}${edition.status === 'preparing' ? '<span class="song-bar busy"><span></span></span>' : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`;
   }).join('');
   const trouble = newsList.error ? `<p class="song-error">New editions could not be looked for: ${esc(newsList.error)} Echo tries again within half an hour.</p>` : '';
   const empty = !rows && !trouble ? '<p class="song-hint" role="status">Looking for the latest editions on RFI…</p>' : '';
@@ -1234,16 +1239,14 @@ function renderNewsEdition() {
     : view.noted ? ''
     : view.status === 'preparing' && view.step === 'notes' ? `<div class="song-progress" role="status"><p>Writing the notes… ${view.done} of ${view.total} lines</p><span class="song-bar"><span style="width:${view.total ? view.done / view.total * 100 : 0}%"></span></span><p class="caption">Claude translates every line and explains its words. The transcript is here meanwhile; the notes appear when they are all written.</p></div>`
     : `<p class="song-hint" role="status">${esc(newsStateLine(view))}</p>`;
-  // Each story's heading stands over the line it starts on; a headline RFI gave it leads there.
+  // Each story's heading stands over the line it starts on; the row of stories in the bar leads there.
   const stories = new Map(view.stories.map((story) => [story.line, story]));
-  const announced = new Map(view.stories.filter((story) => story.headline !== undefined).map((story) => [story.headline, story.line]));
   let index = 0;
   const lines = view.stanzas.map((stanza, s) => `<div class="lyric-stanza">${stanza.map((line, l) => {
     const story = stories.get(index);
     return `${story ? `<p class="news-story" id="news-story-${index}" lang="${languageTag}">${esc(story.title)}</p>` : ''}${newsLineHTML({ line, s, l }, index++)}`;
   }).join('')}</div>`).join('');
-  const headline = (text, at) => announced.has(at) ? `<li><button class="news-jump" data-action="news-story" data-line="${announced.get(at)}">${esc(text)}</button></li>` : `<li>${esc(text)}</li>`;
-  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${view.headlines.length ? `<ul class="news-headlines" lang="${languageTag}">${view.headlines.map(headline).join('')}</ul>` : ''}${status}<div class="lyric-lines">${lines}</div>${newsWordsHTML()}${newsPlayerHTML()}</section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${status}<div class="lyric-lines">${lines}</div>${newsWordsHTML()}${newsPlayerHTML()}</section>`;
   placeNewsGloss();
   centreNewsChip();
   updateNewsReturn();
@@ -1422,9 +1425,12 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const right = verdict?.verdict === 'right';
   // The noun's gender, in words, wherever the learnt word is showing (the colour alone is optional).
   const gender = card.gender && (revealed || !reverse) ? `<p class="gender-tag${genderClass(card.gender)}">${esc(GENDERS[card.gender]?.[1] ?? card.gender)}</p>` : '';
+  // The word asked stays where it is when the card turns, the same size; the answer and the rest come in under it.
+  const shown = `<div class="card-over">${verdict ? sayVerdictHTML() : ''}</div><h1 class="main-word${reverse ? '' : genderClass(card.gender)}" lang="${reverse ? 'en' : languageTag}">${esc(prompt)}</h1>`;
+  const under = revealed ? `<p class="card-answer${reverse ? genderClass(card.gender) : ''}" lang="${reverse ? languageTag : 'en'}">${esc(answer)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender;
   const face = hidden
     ? `<button class="listen-play" data-action="replay" aria-label="Play the ${languageEnglish} word again">${speaker}</button>${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}`
-    : `${verdict ? sayVerdictHTML() : ''}<h1 class="main-word${(revealed ? reverse : !reverse) ? genderClass(card.gender) : ''}" lang="${(revealed ? reverse : !reverse) ? languageTag : 'en'}">${esc(revealed ? answer : prompt)}</h1>${revealed ? `<p class="source-word${revealed && !reverse ? genderClass(card.gender) : ''}" lang="${reverse ? 'en' : languageTag}">${esc(prompt)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender}`;
+    : `${shown}<div class="card-under">${under}</div>`;
   // How this card is practised, in French → English: Read, Listen, and Speak where it is offered.
   const ways = direction === 'fr-en' ? [['read', 'Read', eyeIcon], ['listen', 'Listen', headphones], ...(speakOffered() ? [['speak', 'Speak', micIcon]] : [])] : [];
   const wayChoice = ways.length ? `<div class="practice-way" role="group" aria-label="How you practise">${ways.map(([way, title, icon]) => `<button data-action="practice-way" data-way="${way}" aria-pressed="${wayNow() === way}">${icon}<span>${title}</span></button>`).join('')}</div>` : '';
@@ -1433,7 +1439,17 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const label = revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : saying && !say.running ? 'Start speaking' : hidden ? 'Reveal the meaning' : 'Reveal the translation';
   // A turned card can say its French again, in every way of practising, without turning back.
   const again = revealed && card.audioUrl ? `<button class="card-replay" data-action="replay" aria-label="Hear the ${languageEnglish} again">${speaker}</button>` : '';
-  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}">${again}<div class="word-content">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools">${wayChoice}<button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
+  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}">${again}<div class="word-content${hidden ? '' : ' pinned'}">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools">${wayChoice}<button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
+}
+// A face pinned at the card's centre (app.css .pinned) keeps the word there while what comes under it fits; a longer
+// one (a word missed often, with its hook and its look-alikes) lifts the word only as far as it needs, and one taller
+// than the card lays out as a single block that grows it.
+function fitCardFace() {
+  const face = main.querySelector('#flashcard .word-content.pinned');
+  const over = () => face.scrollHeight > face.clientHeight + 1;
+  if (!face || !over()) return;
+  face.classList.add('tall');
+  if (over()) face.classList.remove('pinned', 'tall');
 }
 // Each new card (or new version after a grade or undo) plays once on its own; re-renders don't replay it.
 function playCardOnce() {
@@ -1452,9 +1468,13 @@ function renderPractice() {
   if (!snapshot || loading) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="loading-state" role="status">${loading ? 'Opening your vocabulary…' : 'Your progress is safe on your Mac.'}</div></section>`; return; }
   if (!totalWords()) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}${EMPTY_DECK}</section>`; return; }
   if (!snapshot.current) {
-    main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p><div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="studied" ${busy ? 'disabled' : ''}>Your studied words</button><button class="secondary" data-action="families" ${busy ? 'disabled' : ''}>Word families</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div>${extraPracticeHTML()}</div></section>`; return;
+    // The words found hardest, under the pause, with one button that brings them back now (a 'hardest' early review).
+    const hard = snapshot.hardest ?? [];
+    const hardest = hard.length ? `<div class="pause-hard"><h2>Hardest right now</h2><ol class="st-rows">${hard.map((word) => `<li><div class="name"><p lang="${languageTag}" class="fr${genderClass(word.gender)}">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div>${word.misses ? `<span class="st-tag shaky">missed ${word.misses}×</span>` : ''}</li>`).join('')}</ol><button class="${snapshot.stats.newAvailable > 0 ? 'secondary' : 'primary'}" data-action="review-hardest" data-count="${hard.length}" ${locked() ? 'disabled' : ''}>Review ${hard.length === 1 ? 'it' : `these ${hard.length}`}</button></div>` : '';
+    main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p>${hardest}<div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="studied" ${busy ? 'disabled' : ''}>Your studied words</button><button class="secondary" data-action="families" ${busy ? 'disabled' : ''}>Word families</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div>${extraPracticeHTML()}</div></section>`; return;
   }
   main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}${cardHTML()}</section>`;
+  fitCardFace();
   playCardOnce();
   warmClip(snapshot.current.audioUrl);
   warmClip(snapshot.next?.audioUrl);
@@ -1471,20 +1491,19 @@ function renderEndless() {
     return;
   }
   shell(`${counts}${cardHTML(card, !!endless.last)}`);
+  fitCardFace();
   playCardOnce();
   for (const ahead of endless.cards) warmClip(ahead.audioUrl);
 }
 function renderBrowse() {
   const show = [['all', 'All words'], ['studied', 'Studied'], ['learning', 'Still learning'], ['missed', 'Missed at least once']].map(([value, label]) => `<option value="${value}" ${browseShow === value ? 'selected' : ''}>${label}</option>`).join('');
   // Word families and Word building are French's (content/families.json); another language's page has the room off.
+  // They and More for today are one line of links under the title, so the search comes first.
   const more = [
-    ...(roomsOff.has('families') ? [] : [
-      ['families', 'Word families', 'Words built from one another; add a relative of one you know', ''],
-      ['word-building', 'Word building', 'How French makes one word from another: -er, -eur, in-…', 'data-from="browse"'],
-    ]),
-    ['more-today', 'More for today', 'Extra new words, or finished words reviewed early', ''],
-  ].map(([action, title, text, data]) => `<button class="topic-row" data-action="${action}" ${data} ${busy || (action === 'more-today' && !snapshot) ? 'disabled' : ''}><span class="copy"><span class="topic-name"><h3>${title}</h3></span><p>${esc(text)}</p></span><span class="arrow" aria-hidden="true">→</span></button>`).join('');
-  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Words', 'vocabulary')}<button class="icon" data-action="options" aria-label="Words options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><p class="subtitle">Everything in your deck, and ways to add to it.</p><div class="topic-list">${more}</div><h2 class="story-heading">All your words · ${esc(directionLabel())}</h2><div class="browse-tools"><label class="sr-only" for="vocab-search">Search ${languageEnglish} or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
+    ...(roomsOff.has('families') ? [] : [['families', 'Word families', ''], ['word-building', 'Word building', 'data-from="browse"']]),
+    ['more-today', 'More for today', ''],
+  ].map(([action, title, data]) => `<button data-action="${action}" ${data} ${busy || (action === 'more-today' && !snapshot) ? 'disabled' : ''}>${title}</button>`).join('');
+  main.innerHTML = `${noticeHTML()}<section class="topics browse"><div class="section-top">${back('Words', 'vocabulary')}<button class="icon" data-action="options" aria-label="Words options" ${!snapshot || busy ? 'disabled' : ''}>•••</button></div><h1>Your words</h1><nav class="browse-links" aria-label="More with your words">${more}</nav><div class="browse-tools"><label class="sr-only" for="vocab-search">Search ${languageEnglish} or English vocabulary</label><input type="search" id="vocab-search" placeholder="Find a word…" value="${esc(search)}" autocomplete="off"><label class="sr-only" for="browse-category">Category</label><select id="browse-category">${optionsHTML(browseCategory)}</select></div><div class="browse-filters"><label class="sr-only" for="browse-show">Show</label><select id="browse-show">${show}</select><button class="secondary chip" data-action="toggle-hide" aria-pressed="${hideTranslations}">${hideTranslations ? 'Show translations' : 'Hide translations'}</button></div><div id="browse-results"></div></section>`;
   renderBrowseResults();
 }
 function normalized(value) { return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase(); }
@@ -1513,10 +1532,12 @@ function browseRowHTML(word) {
     categoryTitle(word.category),
     word.lastStudied ? `Studied ${dayLabel(word.lastStudied)}` : '',
     word.misses ? `Missed ${word.misses}×` : '',
-    word.status === 'scheduled' && word.due ? `Review ${dateLabel(word.due)}` : '',
+    word.status === 'scheduled' && word.due ? `Review ${dayLabel(word.due)}` : '',
     word.note || '',
   ].filter(Boolean).map(esc).join(' · ');
-  return `<article class="word-row" data-row-word="${esc(word.id)}"><div>${text}<small>${history}</small></div><div class="word-controls"><small>${esc(({ new: 'New', learning: 'Learning', due: 'Due', scheduled: 'Scheduled' })[word.status])}</small><button class="icon" data-play-word="${esc(word.id)}" aria-label="Pronounce ${esc(word.fr)}">${speaker}</button></div></article>`;
+  // A scheduled word is the usual case, so only the other states are named.
+  const status = ({ new: 'New', learning: 'Learning', due: 'Due' })[word.status];
+  return `<article class="word-row" data-row-word="${esc(word.id)}"><div>${text}<small>${history}</small></div><div class="word-controls">${status ? `<small>${status}</small>` : ''}<button class="icon" data-play-word="${esc(word.id)}" aria-label="Pronounce ${esc(word.fr)}">${speaker}</button></div></article>`;
 }
 function showMoreBrowse() {
   const list = document.querySelector('#browse-list');
@@ -2165,7 +2186,7 @@ function renderMixed() {
     ? '<div class="stream-empty"><p>Nothing left to practise here for now.</p><button class="secondary" data-action="mistakes">Back to mistakes</button></div>'
     : '<div class="stream-empty"><p>Nothing to practise right now. New words arrive at 04:00, and recordings are still being prepared.</p><button class="secondary" data-action="home">Back to Home</button></div>';
   main.innerHTML = `${noticeHTML()}<section class="${vocabulary ? 'practice' : writing ? 'stream vb write' : 'stream'}">${header}${body}</section>`;
-  if (vocabulary) playCardOnce();
+  if (vocabulary) { fitCardFace(); playCardOnce(); }
   else if (mixedSource === 'comprehension') autoplay();
   else if (writing) main.querySelector('[data-action="write-next"].primary')?.focus({ preventScroll: true });
 }
@@ -2495,7 +2516,7 @@ function verbStatsHTML() {
     ${kinds ? `<div class="st-block">${stHead('By kind of verb', VB.stats.kinds)}<div class="vs-rows">${kinds}</div></div>` : ''}`;
 }
 function renderStatistics() {
-  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1><p class="subtitle">How your ${languageEnglish} words are doing. Nothing here is a target.</p>`;
+  const header = `<div class="section-top">${back('Home', 'home')}</div><h1>Your progress</h1>`;
   if (!statistics || loading) { main.innerHTML = `${noticeHTML()}<section class="st">${header}${loading ? '<div class="loading-state" role="status">Adding it all up…</div>' : ''}</section>`; return; }
   const { words, counts } = statistics;
   const total = Object.values(counts).reduce((sum, count) => sum + count, 0);
@@ -2505,7 +2526,8 @@ function renderStatistics() {
   const hardest = words.filter((word) => word.score < 0).slice(0, 6);
   const hard = hardest.length ? `<ol class="st-rows">${hardest.map((word) => `<li><div class="name"><p lang="${languageTag}" class="fr${genderClass(word.gender)}">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div><span class="st-tag shaky">missed ${word.misses}×</span></li>`).join('')}</ol>` : '<p class="st-cap">Nothing shaky right now.</p>';
   const feel = (average) => average === null ? '' : average < 0 ? 'shaky' : average < 2 ? 'steady' : 'solid';
-  const categories = statistics.categories.map((category) => `<li><div class="name"><p>${esc(categoryTitle(category.id))}</p><small>${category.started} of ${category.total} started</small></div><div class="st-mini"><span style="width:${category.started / category.total * 100}%"></span></div>${category.average === null ? '<span class="st-tag"></span>' : `<span class="st-tag ${feel(category.average)}">${feel(category.average)}</span>`}</li>`).join('');
+  // Solid is the usual case, so only a shaky or steady category is named; the bar takes the room of the name.
+  const categories = statistics.categories.map((category) => { const tag = feel(category.average); return `<li><div class="name"><p>${esc(categoryTitle(category.id))}</p><small>${category.started} of ${category.total} started</small></div><div class="st-mini${tag === 'shaky' || tag === 'steady' ? '' : ' wide'}"><span style="width:${category.started / category.total * 100}%"></span></div>${tag === 'shaky' || tag === 'steady' ? `<span class="st-tag ${tag}">${tag}</span>` : ''}</li>`; }).join('');
   const busiest = Math.max(1, ...statistics.days.map((day) => day.knew + day.missed));
   const days = statistics.days.map((day) => day.knew + day.missed
     ? `<div title="${esc(dayLabel(`${day.day}T12:00`))}: ${day.knew} knew, ${day.missed} missed"><span class="k" style="height:${day.knew / busiest * 100}%"></span><span class="m" style="height:${day.missed / busiest * 100}%"></span></div>`
@@ -2557,7 +2579,7 @@ function renderStatistics() {
       <div id="st-scores-after">${scoresAfterHTML()}</div></div>
     <div class="st-block"><h2>Your ${total.toLocaleString('en')} words</h2><div class="st-stack">${stack}</div><div class="st-legend">${legend}</div></div>
     <div class="st-block"><h2>Hardest right now</h2>${hard}</div>
-    <div class="st-block">${stHead('By category', 'Shaky, steady or solid is the average score of the words you’ve started there.')}<ol class="st-rows">${categories}</ol></div>
+    <div class="st-block">${stHead('By category', 'The bar is how many of a category’s words you’ve started. Steady or shaky names a category whose started words have a low average score; the rest are solid.')}<ol class="st-rows">${categories}</ol></div>
     ${answersBlock}`;
   const otherPart = `<div class="st-block"><h2>Everything else</h2><div class="st-facts">${facts.map(([value, label]) => `<div class="st-fact"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join('')}</div></div>`;
   const tabs = `<div class="segmented st-tabs" role="group" aria-label="Show">${Object.entries(STATS_TABS).map(([tab, label]) => `<button data-action="stats-tab" data-tab="${tab}" aria-pressed="${statsTab === tab}">${label}</button>`).join('')}</div>`;
@@ -2600,7 +2622,7 @@ function songStatusLine(song) {
 function renderSongs() {
   const disabled = locked() || !snapshot ? 'disabled' : '';
   const order = snapshot ? `<div class="song-order"><p class="settings-label">New words from songs come</p><div class="segmented" role="group" aria-label="When song words are introduced"><button data-action="songs-first" data-value="true" aria-pressed="${snapshot.settings.songsFirst !== false}" ${disabled}>Before other new words</button><button data-action="songs-first" data-value="false" aria-pressed="${snapshot.settings.songsFirst === false}" ${disabled}>Mixed in</button></div></div>` : '';
-  const header = `${wordsTop()}<p class="subtitle">Find a French song; Claude reads it and turns its words into flashcards in their dictionary form. Only the words are kept.</p>${order}`;
+  const header = `${wordsTop()}${order}`;
   const search = `<form id="song-search-form" class="song-search" role="search"><label class="sr-only" for="song-query">Song title and artist</label><input id="song-query" type="search" placeholder="Title, and the artist if you know it" value="${esc(songQuery)}" autocomplete="off" ${songSearching ? 'disabled' : ''}><button class="primary" type="submit" ${songSearching ? 'disabled' : ''}>${songSearching ? 'Searching…' : 'Search'}</button></form>`;
   const matches = songMatches === null ? '' : songMatches.length
     ? `<p class="song-hint">Pick the one you mean. Covers that sing the same words are grouped together.</p><ol class="song-results">${songMatches.map((match) => `<li><button class="song-row" data-action="song-read" data-lrclib="${match.id}" ${busy ? 'disabled' : ''}><span class="song-copy"><strong>${esc(match.title)}</strong><span>${esc(match.artist)}${match.album && match.album !== match.title ? ` · ${esc(match.album)}` : ''}${match.seconds ? ` · ${songTime(match.seconds)}` : ''}</span>${match.versions > 1 ? `<small>${match.versions} versions${match.artists.length > 1 ? ` · also ${esc(match.artists.filter((name) => name !== match.artist).slice(0, 3).join(', '))}` : ''}</small>` : ''}</span><span class="arrow" aria-hidden="true">→</span></button></li>`).join('')}</ol>`
@@ -2818,9 +2840,11 @@ function renderBoard() {
   const tiles = board.words.map((word) => `<button class="board-tile${word.score < 0 ? ' weak' : ''}${boardTurned.has(word.id) ? ' turned' : ''}" data-action="board-turn" data-id="${esc(word.id)}" aria-label="${esc(frenchFirst ? word.fr : word.en)}">${face(word, frenchFirst, 'front')}${face(word, !frenchFirst, 'back')}</button>`).join('');
   const empty = !board.full ? 'No words with a score in this range.' : board.cards ? (board.deck === 'all' ? 'Nothing in Cards right now.' : 'None of these words are in Cards right now.') : 'No words in this category yet.';
   const body = board.words.length ? `<div class="board-grid">${tiles}</div>` : `<p class="caption">${empty}</p>`;
-  const count = !board.cards ? `${board.total} ${board.total === 1 ? 'word' : 'words'}`
-    : board.total > board.words.length ? `${board.words.length} of ${board.total} in Cards` : `${board.total} in Cards`;
-  shell(`<div class="board-head"><h2>${esc(title)}</h2><span>${count}</span>${board.words.length > 1 ? `<button class="icon board-shuffle" data-action="board-shuffle" aria-label="Shuffle the tiles">${shuffleIcon}</button>` : ''}</div>${body}`);
+  const n = (value) => `<strong>${formatCount(value)}</strong>`;
+  const count = !board.cards ? `${n(board.total)} ${board.total === 1 ? 'word' : 'words'}`
+    : board.total > board.words.length ? `${n(board.words.length)} of ${formatCount(board.total)} in Cards` : `${n(board.total)} in Cards`;
+  const shuffle = board.words.length > 1 ? `<button class="icon board-shuffle" data-action="board-shuffle" aria-label="Shuffle the tiles">${shuffleIcon}</button>` : '';
+  shell(`<span class="compact-line"><span class="compact-label" title="${esc(title)}">${esc(title)}</span><span class="compact-counts"><span>${count}</span>${shuffle}</span></span>${body}`);
 }
 const shuffled = (list) => list.map((item) => [Math.random(), item]).sort((a, b) => a[0] - b[0]).map(([, item]) => item);
 // Lays the same tiles out in a new order, all face up again.
@@ -5157,7 +5181,7 @@ function show(next) {
     walkman = { tape: null, index: -1, meaning: false, loading: false, started: false, logged: new Set() };
     if ('mediaSession' in navigator) navigator.mediaSession.metadata = null;
   }
-  if (!tapeScreen(name)) { heardOpen = false; heardSaying = ''; heardResume = false; }
+  if (!tapeScreen(name)) { heardSaying = ''; heardResume = false; }
   // Leaving the cards lets go of the microphone; moving between Cards and Endless keeps it.
   if (name !== 'practice') stopSay();
   if (name === 'home') homeInfo.at = 0;
@@ -5668,6 +5692,7 @@ document.addEventListener('click', (event) => {
   else if (action === 'building-word') { const key = `${button.dataset.pattern}:${button.dataset.word}`; buildingWord = buildingWord === key ? '' : key; renderBuilding(); }
   else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
   else if (action === 'extra-words' || action === 'review-early') confirmExtra(action, button.dataset);
+  else if (action === 'review-hardest') extraPractice('review-early', { mode: 'hardest', count: button.dataset.count });
   else if (action === 'extra-confirm' || action === 'extra-cancel') answerExtra(action === 'extra-confirm');
   else if (action === 'options') openOptions();
   else if (action === 'board-options') openBoardOptions();
@@ -5759,7 +5784,6 @@ document.addEventListener('click', (event) => {
   else if (action === 'radio-toggle') toggleRadio();
   else if (action === 'radio-seek') { radioAudio.currentTime = Number(button.dataset.at); if (radioAudio.paused) playRadio(); }
   else if (action === 'walkman-toggle') toggleWalkman();
-  else if (action === 'walkman-heard') { heardOpen = !heardOpen; render(); }
   else if (action === 'walkman-say') hearAgain(button.dataset.word);
   else if (action === 'walkman-add') addHeard(button.dataset.word);
   else if (action === 'walkman-mark') markHeard(button.dataset.word, button.dataset.knew === 'true');
