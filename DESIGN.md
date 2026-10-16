@@ -35,6 +35,9 @@ when a request contradicts one, say so and ask.
 8. **Every room is one tap from Home.** Home was meant to fit one phone screen. Today it is about two
    screens tall at 390×844; either drop that aim or move Hands-free and Study off Home.
 9. **Taps land at once.** 44px minimum targets, no double-tap zoom, a pressed state on anything tappable.
+10. **Three themes, one set of shapes.** Dusk is the default. Paper is warm and light. Vice is Dusk in neon:
+    hot pink for what you tap, cyan beside it, feminine words in amber so pink is only ever a control.
+    Every change is checked in all three.
 
 ## References
 
