@@ -1150,7 +1150,26 @@ function submitCustomCount(form) {
   if (!input.value.trim() || !Number.isInteger(value) || value < 1) {
     input.setAttribute('aria-invalid', 'true'); input.focus(); announce('Enter a whole number of 1 or more.'); return;
   }
-  extraPractice(form.dataset.kind, { count: value, mode: form.dataset.mode });
+  confirmExtra(form.dataset.kind, { count: value, mode: form.dataset.mode });
+}
+// Extra words and early reviews change today's cards, so each asks first. Cancel goes back to More for today when the
+// ask came from there.
+let extraAsk = null;
+function confirmExtra(type, data) {
+  if (locked() || !snapshot) return;
+  const count = Number(data.count);
+  const words = count === 1 ? 'word' : 'words';
+  extraAsk = { type, count, mode: data.mode, from: dialog.open ? dialog.dataset.kind : null };
+  const question = type === 'extra-words' ? `Add ${count} new ${words} for today?` : `Review ${count} ${data.mode === 'missed' ? 'most-missed' : 'due-soonest'} ${words} now?`;
+  openDialog(question, `<div class="summary-actions"><button class="primary" data-action="extra-confirm">${type === 'extra-words' ? 'Add' : 'Review'} ${count}</button><button class="secondary" data-action="extra-cancel">Cancel</button></div>`, 'extra-confirm');
+}
+function answerExtra(confirmed) {
+  const ask = extraAsk;
+  extraAsk = null;
+  if (!ask) return;
+  if (confirmed) extraPractice(ask.type, ask);
+  else if (ask.from === 'more-today') openMoreToday();
+  else dialog.close();
 }
 // Extra words and early reviews are daily cards, so they open on the Cards tab of Words.
 function extraPractice(type, data) {
@@ -5416,7 +5435,8 @@ document.addEventListener('click', (event) => {
   else if (action === 'word-building') { buildingFrom = ['families', 'browse'].includes(button.dataset.from) ? button.dataset.from : 'grammar'; if (move('building', true)) enterBuilding(); }
   else if (action === 'building-word') { const key = `${button.dataset.pattern}:${button.dataset.word}`; buildingWord = buildingWord === key ? '' : key; renderBuilding(); }
   else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
-  else if (action === 'extra-words' || action === 'review-early') extraPractice(action, button.dataset);
+  else if (action === 'extra-words' || action === 'review-early') confirmExtra(action, button.dataset);
+  else if (action === 'extra-confirm' || action === 'extra-cancel') answerExtra(action === 'extra-confirm');
   else if (action === 'options') openOptions();
   else if (action === 'board-options') openBoardOptions();
   else if (action === 'about') { dialog.close(); stopAudio(); aboutDialog.showModal(); refreshLanguages(); }
