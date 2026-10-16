@@ -31,14 +31,15 @@ const readPreference = (key, fallback) => { try { return localStorage.getItem(lo
 const savePreference = (key, value) => { try { localStorage.setItem(localKey(key), value); } catch { /* Progress is server-owned; local preferences are optional. */ } };
 // A French start on its way to another language (index.html) leaves the last language as it is.
 if (Object.keys(languageNames).length && !document.documentElement.dataset.leaving) savePreference('echo.language', language);
-// Theme: Dusk (the default) or Paper, remembered on this device; index.html applies it before the first paint.
-const THEME_COLOURS = { dusk: '#0b0b10', paper: '#f6f2eb' };
+// Theme: Dusk (the default), Paper or Vice, remembered on this device; index.html applies it before the first paint.
+const THEME_COLOURS = { dusk: '#0b0b10', paper: '#f6f2eb', vice: '#07060c' };
+const themeOf = (value) => value in THEME_COLOURS ? value : 'dusk';
 function applyTheme(theme) {
-  if (theme === 'paper') document.documentElement.dataset.theme = 'paper'; else delete document.documentElement.dataset.theme;
+  if (theme === 'dusk') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = theme;
   document.querySelector('meta[name=theme-color]')?.setAttribute('content', THEME_COLOURS[theme]);
   for (const choice of document.querySelectorAll('[data-theme-choice]')) choice.setAttribute('aria-pressed', String(choice.dataset.themeChoice === theme));
 }
-applyTheme(readPreference('echo.theme', 'dusk') === 'paper' ? 'paper' : 'dusk');
+applyTheme(themeOf(readPreference('echo.theme', 'dusk')));
 let direction = readPreference('echo.direction', 'fr-en') === 'en-fr' ? 'en-fr' : 'fr-en';
 let deck = readPreference('echo.deck', 'all');
 let speed = readPreference('echo.speed', '1') === '0.8' ? 0.8 : 1;
@@ -5617,7 +5618,7 @@ function retry() {
 document.addEventListener('click', (event) => {
   const button = event.target.closest('button'); if (button?.disabled) return;
   const action = button?.dataset.action;
-  if (button?.dataset.themeChoice) { const theme = button.dataset.themeChoice === 'paper' ? 'paper' : 'dusk'; savePreference('echo.theme', theme); applyTheme(theme); return; }
+  if (button?.dataset.themeChoice) { const theme = themeOf(button.dataset.themeChoice); savePreference('echo.theme', theme); applyTheme(theme); return; }
   if (button?.dataset.languageChoice) { openLanguage(button.dataset.languageChoice); return; }
   if (action === 'st-info') { toggleStatsTip(button); return; }
   if (!event.target.closest('.st-tip')) closeStatsTips();
