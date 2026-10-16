@@ -341,6 +341,12 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     if (typeof input.knew !== 'boolean') throw new StoreError('Say whether you knew it.');
     for (const each of persons(verb, tense)) insert.run(`built:${requestId}:${each}`, verb.id, tense, each, 'built', null, '', input.knew ? 1 : 0, now().toISOString());
   }
+  // A How it's built mark taken back: every form it counted for goes (their ids run built:<request>:<person>).
+  const removeBuilt = db.query('DELETE FROM verb_answers WHERE request_id >= ? AND request_id < ?');
+  function unmarkBuilt(requestId: string) {
+    const id = requestIdOf(requestId);
+    removeBuilt.run(`built:${id}:`, `built:${id};`);
+  }
   // Every practised form's score now, by "verbId|tense|person".
   const formScores = () => scoresAt(now().getTime()).scores;
 
@@ -571,6 +577,6 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
   // The verbs and tenses the Practising line picks, for drills kept outside this module (How it's built).
   const practising = (input: RoundInput<T>) => ({ verbs: chosenVerbs(input), tenses: chosenTenses(input) });
 
-  return { round, cards, mark, markBuilt, formScores, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, practising, close: () => db.close() };
+  return { round, cards, mark, markBuilt, unmarkBuilt, formScores, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, practising, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills<Verb, Tense>>;

@@ -168,6 +168,13 @@ export function paradigm(verb: Verb, tense: Tense): ParadigmRow[] {
 }
 
 const regularEr = (verb: Verb) => verb.base.endsWith('er') && verb.base !== 'aller' && verb.pres.join() === ['e', 'es', 'e', 'ons', 'ez', 'ent'].map((ending) => verb.base.slice(0, -2) + ending).join();
+// A -ger or -cer verb regular but for its nous form, which keeps the g or c soft before -ons: mangeons, commençons.
+// That is spelling, not a stem change: the stem sounds the same in every person.
+const softEr = (verb: Verb) => {
+  const stem = verb.base.slice(0, -2);
+  const nous = verb.base.endsWith('ger') ? `${stem}eons` : verb.base.endsWith('cer') ? `${stem.slice(0, -1)}çons` : null;
+  return !!nous && verb.pres.join() === ['e', 'es', 'e', nous, 'ez', 'ent'].map((ending, person) => person === 3 ? nous : stem + ending).join();
+};
 // The one rule behind a tense for this verb, in a sentence or two.
 export function rule(verb: Verb, tense: Tense): string {
   const reflexive = verb.reflexive ? ' As a reflexive verb it keeps its pronoun before the verb: me, te, se, nous, vous, se.' : '';
@@ -175,6 +182,7 @@ export function rule(verb: Verb, tense: Tense): string {
     if (verb.impersonal) return `${verb.inf} is only used with il: il ${verb.pres[0]}.`;
     let text: string;
     if (regularEr(verb)) text = '-er verbs: -e, -es, -e, -ons, -ez, -ent. Only nous and vous sound different; the other four sound alike.';
+    else if (softEr(verb)) text = `A regular -er verb, but nous keeps the ${verb.base.endsWith('ger') ? 'g' : 'c'} soft before -ons: nous ${verb.pres[3]}. Only the spelling changes; it sounds regular.`;
     else if (verb.base.endsWith('er') && verb.base !== 'aller') text = `-er endings (-e, -es, -e, -ons, -ez, -ent), but the stem changes: je ${verb.pres[0]}, nous ${verb.pres[3]}.`;
     else if (verb.base.endsWith('ir') && verb.pres[3] === `${verb.base.slice(0, -2)}issons`) text = `Verbs like finir add -iss- in the plural: nous ${verb.pres[3]}, ils ${verb.pres[5]} — you can hear it.`;
     else if (partirType(verb)) text = `Like partir: the stem loses its last consonant in je, tu and il (je ${verb.pres[0]}, il ${verb.pres[2]}) and keeps it in the plural (nous ${verb.pres[3]}).`;
@@ -426,7 +434,7 @@ const usualFuture = (verb: Verb) => verb.base.endsWith('re') ? verb.base.slice(0
 export function groupOf(verb: Verb, tense: Tense): string {
   if (tense === 'pres') {
     if (verb.impersonal) return 'only-il';
-    if (verb.base.endsWith('er') && verb.base !== 'aller') return regularEr(verb) ? 'er' : 'er-change';
+    if (verb.base.endsWith('er') && verb.base !== 'aller') return regularEr(verb) ? 'er' : softEr(verb) ? 'er-soft' : 'er-change';
     return finirType(verb) ? 'finir' : partirType(verb) ? 'partir' : ouvrirType(verb) ? 'ouvrir' : verb.base.endsWith('prendre') ? 'prendre' : verb.base.endsWith('venir') ? 'venir' : regularRe(verb) ? 're' : 'irregular';
   }
   if (tense === 'pc') {
@@ -450,7 +458,8 @@ export function groupOf(verb: Verb, tense: Tense): string {
 const GROUPS: Record<Tense, { id: string; title: string; text: string; many?: true; detail: (verb: Verb) => string }[]> = {
   pres: [
     { id: 'irregular', title: 'Irregular', text: 'These follow no pattern in the présent, so each is worth learning as a whole table. Many are the most common verbs.', detail: (verb) => [0, 2, 3, 5].map((person) => said(verb, 'pres', person)).join(', ') },
-    { id: 'er-change', title: '-er verbs whose stem changes', text: 'Regular -er endings, but the stem changes where the ending is silent (je, tu, il, ils): an è, a doubled l or t, i for y — or a soft g or c kept before -ons.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
+    { id: 'er-change', title: '-er verbs whose stem changes', text: 'Regular -er endings, but the stem changes where the ending is silent (je, tu, il, ils): an è, a doubled l or t, or i for y.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
+    { id: 'er-soft', title: '-ger and -cer verbs', text: 'Regular -er verbs whose nous form keeps the g or c soft before -ons: nous mangeons, nous commençons. Only the spelling changes.', many: true, detail: (verb) => said(verb, 'pres', 3) },
     { id: 'finir', title: 'Like finir', text: '-is, -is, -it, -issons, -issez, -issent: the -iss- in the plural is heard.', detail: (verb) => said(verb, 'pres', 5) },
     { id: 'partir', title: 'Like partir', text: '-ir verbs that drop the last consonant of the stem in je, tu and il (je pars, il part) and keep it in the plural (nous partons, ils partent).', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
     { id: 'ouvrir', title: 'Like ouvrir', text: '-ir verbs that take -er endings in the présent: j’ouvre, tu ouvres, il ouvre, nous ouvrons.', detail: (verb) => said(verb, 'pres', 0) },

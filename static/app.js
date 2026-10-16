@@ -3841,6 +3841,7 @@ function verbAction(action, button) {
   else if (action === 'vb-card-no' || action === 'vb-card-yes') markVerbCard(action === 'vb-card-yes');
   else if (action === 'vb-rules') { if (move('verbs-rules', true)) startRuleCards(); }
   else if (action === 'vb-rule-no' || action === 'vb-rule-yes') markRuleCard(action === 'vb-rule-yes');
+  else if (action === 'vb-rule-undo') undoRuleCard();
   else if (action === 'vb-sentences') { if (move('verbs-sentences', true)) startVerbSentences(); }
   else if (action === 'vb-sentence-no' || action === 'vb-sentence-yes') markVerbSentence(action === 'vb-sentence-yes');
   else if (action === 'vb-sentence-play') { const card = verbSentences?.items[verbSentences.index]; if (card) playFrench(card.audio); }
@@ -4034,8 +4035,9 @@ function renderRuleCards() {
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
   if (loading || !vbRules) { shell(loading ? '<div class="loading-state" role="status">Choosing cards…</div>' : ''); return; }
   const { items, index, revealed } = vbRules;
+  const tools = `<div class="study-tools vb-rule-tools"><button class="quiet" data-action="vb-rule-undo" ${vbRules.last ? '' : 'disabled'}>Undo</button></div>`;
   if (index >= items.length) {
-    shell(vbRules.done ? `<p class="caption">No cards for these verbs and ${VB.units.toLowerCase()}. Change them on the Practising line in Verbs.</p>` : '<div class="loading-state" role="status">Choosing more cards…</div>');
+    shell(`${vbRules.done ? `<p class="caption">No cards for these verbs and ${VB.units.toLowerCase()}. Change them on the Practising line in Verbs.</p>` : '<div class="loading-state" role="status">Choosing more cards…</div>'}${vbRules.last ? tools : ''}`);
     topUpRuleCards();
     return;
   }
@@ -4044,21 +4046,17 @@ function renderRuleCards() {
   const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
   // A rule's answer breaks only between its words, never after the hyphen of an ending.
   const answer = rule ? card.answer.split(' ').map((part) => `<span>${frEsc(part)}</span>`).join(' ') : frEsc(card.answer);
+  // A présent with more than one stem lists each with the persons it serves; what sets the verb apart from a regular
+  // one sits under the answer.
+  const heading = card.stems?.length > 1
+    ? `<h1 class="main-word vb-card-answer vb-stems">${card.stems.map((group) => `<span class="vb-stem-row"><span lang="${languageTag}">${frEsc(group.stem)}</span><small>${esc(group.persons)}</small></span>`).join('')}</h1>`
+    : `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : languageTag}">${answer}</h1>`;
   const face = revealed
-    ? `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : languageTag}">${answer}</h1>${ruleEndingsHTML(card.endings)}<p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="${languageTag}">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
+    ? `${heading}${card.differs ? `<p class="vb-card-differs">${esc(card.differs)}</p>` : ''}<p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="${languageTag}">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
     : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang === 'fr' ? languageTag : card.clueLang}">${frEsc(card.clue)}</p>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-rule-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-rule-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const after = revealed ? `${card.paradigm.length ? paradigmHTML(card.paradigm) : ''}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : '<p class="caption vb-card-hint">How is it built? Say it to yourself, then tap the card.</p>';
-  shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
-}
-// A card's endings: its label (-er endings, or -er endings on an -ir verb) on a line of its own, then the endings, each
-// kept whole so a line never breaks inside "-ons".
-function ruleEndingsHTML(endings) {
-  if (!endings) return '';
-  const cut = endings.indexOf(': ');
-  const label = cut < 0 ? '' : `<strong>${esc(endings.slice(0, cut))}</strong>`;
-  const list = (cut < 0 ? endings : endings.slice(cut + 2)).split(', ').map((part) => `<span>${frEsc(part)}</span>`).join(', ');
-  return `<p class="vb-card-endings">${label}${list}</p>`;
+  shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${tools}${after}`);
 }
 function revealRuleCard() {
   const card = vbRules?.items[vbRules.index];
@@ -4073,13 +4071,31 @@ function markRuleCard(knew) {
   if (!card || !stream.revealed) return;
   stopAudio();
   // A miss comes back four cards later, once.
-  if (!knew && !card.again) stream.items.splice(Math.min(stream.items.length, stream.index + 5), 0, { ...card, again: true });
+  const repeat = !knew && !card.again ? Math.min(stream.items.length, stream.index + 5) : -1;
+  if (repeat >= 0) stream.items.splice(repeat, 0, { ...card, again: true });
+  const id = requestId();
+  const saved = api('api/verbs/rules/mark', { method: 'POST', body: JSON.stringify({ requestId: id, id: card.id, knew }) })
+    .then(() => true, (error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-rules') render(); return false; });
+  stream.last = { index: stream.index, requestId: id, repeat, saved };
   stream.index += 1; stream.revealed = false; notice = null;
   render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
-  api('api/verbs/rules/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), id: card.id, knew }) })
-    .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-rules') render(); })
-    // The next cards are drawn once this mark counts, so a card just missed is weighed as such.
-    .finally(() => topUpRuleCards());
+  // The next cards are drawn once this mark counts, so a card just missed is weighed as such.
+  saved.finally(() => topUpRuleCards());
+}
+// Undo takes back the last mark, one step: its card comes back turned, a miss's repeat is taken out, and once the
+// mark has reached the Mac it is removed there, with what it counted for the verb's forms.
+function undoRuleCard() {
+  const stream = vbRules;
+  const last = stream?.last;
+  if (!last || locked()) return;
+  stream.last = null;
+  stopAudio();
+  const card = stream.items[last.index];
+  if (last.repeat >= 0 && stream.items[last.repeat]?.again && stream.items[last.repeat].id === card?.id) stream.items.splice(last.repeat, 1);
+  stream.index = last.index; stream.revealed = true; notice = null;
+  render();
+  last.saved.then((saved) => saved && api('api/verbs/rules/unmark', { method: 'POST', body: JSON.stringify({ requestId: last.requestId }) }))
+    .catch((error) => { notice = { message: `The mark was not taken back: ${error.message}` }; if (screen === 'verbs-rules') render(); });
 }
 // ── In sentences: a Verbs card with the verb inside a French sentence, its infinitive beside the blank, and a word
 // or context that settles the tense. Claude writes the sentences ahead and the Mac records them (lib/verb-sentences.ts),

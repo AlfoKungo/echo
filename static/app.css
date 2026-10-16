@@ -554,7 +554,7 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-tense-head h2{font-size:20px}.vb-table-link{padding-left:0;margin-top:4px}
 .vb-cards .study-surface{min-height:340px;height:calc(100svh - 330px);max-height:520px}
 .vb-card-who{font-size:22px;color:var(--violet);margin-bottom:6px}.vb-card .vb-tense{margin-top:16px}.vb-card-answer{overflow-wrap:anywhere}
-.vb-card-forms{margin:12px 0 0;font-size:18px;color:var(--violet)}.vb-card-endings{display:inline-block;max-width:100%;margin:14px 0 4px;padding:8px 14px;border-radius:12px;background:var(--violet-soft);color:var(--ink);font-size:17px;font-weight:500;line-height:1.4}.vb-card-endings strong{display:block;margin-bottom:2px;color:var(--peach);font-size:15px;font-weight:650}.vb-card-endings span{white-space:nowrap}.vb-card-also{margin:10px 0 0;font-size:14px;color:var(--muted)}
+.vb-card-forms{margin:12px 0 0;font-size:18px;color:var(--violet)}.vb-card-differs{display:inline-block;max-width:100%;margin:14px 0 4px;padding:7px 14px;border-radius:12px;background:var(--violet-soft);color:var(--peach);font-size:16px;font-weight:650;line-height:1.35}.vb-card-also{margin:10px 0 0;font-size:14px;color:var(--muted)}
 .vb-card-hint{text-align:center;margin-top:12px}.vb-cards .vb-para{margin-top:18px}
 .vb-rule-answer{font-size:28px;line-height:1.25;letter-spacing:-.4px}.vb-rule-answer span{white-space:nowrap}
 /* Swedish key forms: each table row named (present, past, supine), the English-first card face, one column of three
@@ -927,3 +927,8 @@ dialog.sheet .dialog-head{margin:0 4px 18px}
 .choice.right::before{background:var(--violet);color:var(--on-accent)}
 .choice.wrong::before{background:color-mix(in srgb,var(--danger) 16%,transparent);color:var(--danger)}
 :root[data-theme=daylight] :is(.sheet-group,.browse-search,.browse-hide,.browse-category select,.choice){box-shadow:0 1px 2px #16162810,0 6px 20px -12px #1616283a}
+/* How it's built: Undo under the card, at its right as in Cards; a présent with several stems lists each with its persons. */
+.vb-rule-tools{justify-content:flex-end;margin:8px 0 4px}
+.vb-stems{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:clamp(30px,9vw,40px)}
+.vb-stem-row{display:flex;align-items:baseline;gap:12px}
+.vb-stem-row small{font-family:system-ui,-apple-system,sans-serif;font-size:14px;font-weight:500;letter-spacing:0;color:var(--muted)}

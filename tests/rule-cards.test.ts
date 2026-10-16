@@ -17,27 +17,35 @@ const verbNamed = (fr: string) => verbs.find((verb) => verb.id === idOf(fr))!;
 const everything = { verbs, tenses: [...TENSES] };
 
 describe('how it’s built: the deck', () => {
-  test('the présent endings sit on the stems person by person, and an -ir verb taking -er endings says so', () => {
-    const endings = Object.fromEntries(['parler', 'finir', 'prendre', 'dire', 'pouvoir'].map((fr) => [fr, cardFor(all, 'pres', fr)!.endings]));
-    expect(endings).toEqual({
-      parler: '-er endings: -e, -es, -e, -ons, -ez, -ent', finir: '-s, -s, -t, -ons, -ez, -ent', prendre: '-s, -s, —, -ons, -ez, -ent',
-      dire: '-s, -s, -t, -ons, vous dites, -ent', pouvoir: '-x, -x, -t, -ons, -ez, -ent',
+  test('a card says what sets its verb apart from a regular one, and nothing for a verb regular in its family', () => {
+    const said = Object.fromEntries(['parler', 'finir', 'manger', 'acheter', 'prendre', 'revenir', 'partir', 'pouvoir'].map((fr) => [fr, cardFor(all, 'pres', fr)!.differs]));
+    expect(said).toEqual({
+      parler: undefined, finir: undefined, manger: 'Regular, but nous mangeons', acheter: '-er, but the stem changes',
+      prendre: undefined, revenir: 'Like venir', partir: undefined, pouvoir: 'Irregular',
     });
     const ouvrir = verbOf({ id: 'x-ouvrir', pres: ['ouvre', 'ouvres', 'ouvre', 'ouvrons', 'ouvrez', 'ouvrent'], imp: ['ouvrais', 'ouvrais', 'ouvrait', 'ouvrions', 'ouvriez', 'ouvraient'], fut: 'ouvrir', pp: 'ouvert', aux: 'avoir' }, { id: 'x-ouvrir', fr: 'ouvrir', en: 'to open' } as VerbWord);
     const card = ruleCandidates([ouvrir], new Set()).find((entry) => entry.kind === 'pres')!;
-    expect(card.endings).toBe('-er endings on an -ir verb: -e, -es, -e, -ons, -ez, -ent');
+    expect(card.differs).toBe('Behaves like an -er verb');
     // The surprise weighs like a three-stem verb, well above a regular -er one.
     expect(card.value).toBeGreaterThan(cardFor(all, 'pres', 'parler')!.value);
-    expect(cardFor(all, 'pres', 'être')!.endings).toBeUndefined();
-    expect(cardFor(all, 'pc', 'partir')!.endings).toBe('suis, es, est, sommes, êtes, sont + parti(e)(s)');
-    expect(cardFor(all, 'pc', 'prendre')!.endings).toBe('ai, as, a, avons, avez, ont + pris');
+    expect([cardFor(all, 'pc', 'partir')!.differs, cardFor(all, 'pc', 'prendre')!.differs, cardFor(all, 'pc', 'parler')!.differs]).toEqual(['Takes être, so it agrees', 'Irregular participle', undefined]);
+    expect([cardFor(all, 'fut', 'venir')!.differs, cardFor(all, 'fut', 'prendre')!.differs]).toEqual(['Irregular stem', undefined]);
+  });
+
+  test('each stem is listed with the persons it serves, and the table lights the ending on it', () => {
+    expect(cardFor(all, 'pres', 'revenir')!.stems).toEqual([{ stem: 'revien-', persons: 'je, tu, il' }, { stem: 'reven-', persons: 'nous, vous' }, { stem: 'revienn-', persons: 'ils' }]);
+    expect(cardFor(all, 'pres', 'acheter')!.stems).toEqual([{ stem: 'achèt-', persons: 'je, tu, il, ils' }, { stem: 'achet-', persons: 'nous, vous' }]);
+    const lit = (fr: string) => cardFor(all, 'pres', fr)!.paradigm.map((row) => row.parts.find((part) => part.lit)?.text ?? '');
+    expect(lit('revenir')).toEqual(['s', 's', 't', 'ons', 'ez', 'ent']);
+    expect(lit('dire')).toEqual(['s', 's', 't', 'ons', 'dites', 'ent']);
+    expect(lit('manger')).toEqual(['e', 'es', 'e', 'eons', 'ez', 'ent']);
   });
 
   test('the présent stems: one for a regular verb, two or three for the others, the forms for être, avoir, aller, faire', () => {
     const stems = Object.fromEntries(['parler', 'finir', 'venir', 'prendre', 'manger', 'acheter', 'boire', 'pouvoir'].map((fr) => [fr, cardFor(all, 'pres', fr)!.answer]));
     expect(stems).toEqual({
       parler: 'parl-', finir: 'fini- · finiss-', venir: 'vien- · ven- · vienn-', prendre: 'prend- · pren- · prenn-',
-      manger: 'mang- · mange-', acheter: 'achèt- · achet-', boire: 'boi- · buv- · boiv-', pouvoir: 'peu- · pouv- · peuv-',
+      manger: 'mang-', acheter: 'achèt- · achet-', boire: 'boi- · buv- · boiv-', pouvoir: 'peu- · pouv- · peuv-',
     });
     for (const fr of ['être', 'avoir', 'aller', 'faire']) expect(presentStems(verbNamed(fr))).toBeNull();
     expect(cardFor(all, 'pres', 'être')).toMatchObject({ ask: 'Présent: je, nous, ils', answer: 'je suis · nous sommes · ils sont' });

@@ -10,8 +10,9 @@ import type { DrillVerb, VerbGrammar } from './verb-grammar';
 
 export type RuleKind = Tense | 'rule';
 // ask: what the card asks; inf and clue: what the front shows under it; answer: the back's big line (the stems, the
-// helper and participle). endings: what goes on the answer to make every person, so the back holds the whole recipe
-// for the tense and the learner can check each form they built in their head against it. examples are
+// helper and participle). differs: what sets the verb apart from a regular one in this tense, or the family it follows
+// instead of its infinitive's (ouvrir behaves like an -er verb); a verb fully regular in the tense has none, since
+// the table under the card shows its endings. examples are
 // forms said as the verb tape records them (subject + form), so their recordings can be found. value: how much the
 // card is worth drawing, higher for the exceptions (être's ét-, an irregular stem, a verb taking être) and
 // STARTED_LEAN times higher for a verb the learner has started.
@@ -19,8 +20,11 @@ export type RuleKind = Tense | 'rule';
 // stems, its futur stem, its passé composé); a card about a rule itself has none. regular marks a card that only
 // repeats its tense's pattern (one -er présent stem, an -er imparfait, a futur on the whole infinitive, avoir with a
 // regular participle).
+// stems: on a présent card, each stem with the persons it serves (fini- for je, tu, il; finiss- for nous, vous, ils),
+// so the answer says which stem goes where.
 export type RuleCard<T extends string = Tense> = {
-  id: string; kind: T | 'rule'; tense: T; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string; endings?: string;
+  id: string; kind: T | 'rule'; tense: T; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string; differs?: string;
+  stems?: { stem: string; persons: string }[];
   tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number; verbId?: string; regular?: boolean;
 };
 export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value' | 'regular'> & { examples: { text: string; audio: string | null }[] };
@@ -56,41 +60,84 @@ export function presentStems(verb: Verb): string[] | null {
   const stems = stemsByPerson(verb);
   return stems ? [...new Set(stems)] : null;
 }
-const ER_ENDINGS = ['e', 'es', 'e', 'ons', 'ez', 'ent'];
 const PRONOUNS = ['je', 'tu', 'il', 'nous', 'vous', 'ils'];
-// The présent's endings, person by person: je, tu and il on the first stem, nous and vous on the second, ils on the
-// third. A form not built on its stem (vous dites) stands as it is. The -er set is named, and named as a surprise on
-// a verb that isn't -er (ouvrir: j’ouvre, tu ouvres, il ouvre), since the infinitive points the wrong way there.
-export function presentEndings(verb: Verb): string | undefined {
-  const stems = stemsByPerson(verb);
-  if (!stems) return undefined;
-  const parts = verb.pres.map((form, person) => {
-    const stem = stems[person < 3 ? 0 : person < 5 ? 1 : 2]!;
-    return form.startsWith(stem) ? form.slice(stem.length) : null;
-  });
-  const list = parts.map((part, person) => part === null ? `${PRONOUNS[person]} ${verb.pres[person]}` : part ? `-${part}` : '—').join(', ');
-  if (parts.join() !== ER_ENDINGS.join()) return list;
-  return verb.base.endsWith('er') ? `-er endings: ${list}` : `-er endings on an -${verb.base.slice(-2)} verb: ${list}`;
+// What sets a verb apart from a regular one, by tense and by its group in that tense (lib/verbs.ts groupOf). A
+// regular group has no entry. A family named after a verb (Like partir) is not said on that verb's own card.
+const DIFFERS: Record<Tense, Record<string, { label: string; model?: string }>> = {
+  pres: {
+    'er-change': { label: '-er, but the stem changes' },
+    ouvrir: { label: 'Behaves like an -er verb' },
+    partir: { label: 'Like partir', model: 'partir' },
+    venir: { label: 'Like venir', model: 'venir' },
+    prendre: { label: 'Like prendre', model: 'prendre' },
+    irregular: { label: 'Irregular' },
+  },
+  imp: {
+    etre: { label: 'The only irregular imparfait' },
+    soft: { label: 'Keeps the soft g or ç before a' },
+    'double-i': { label: 'Two i’s in nous and vous' },
+  },
+  fut: {
+    stem: { label: 'Irregular stem' },
+    'er-change': { label: 'The stem changes, as in je' },
+  },
+  pc: {
+    etre: { label: 'Takes être, so it agrees' },
+    reflexive: { label: 'Reflexive, so it takes être' },
+    participle: { label: 'Irregular participle' },
+  },
+};
+export function differs(verb: Verb, tense: Tense): string | undefined {
+  if (tense === 'pc' && bothHelpers(verb)) return 'Takes être or avoir';
+  if (tense === 'pres' && groupOf(verb, tense) === 'er-soft') return `Regular, but nous ${verb.pres[3]}`;
+  const entry = DIFFERS[tense][groupOf(verb, tense)];
+  return entry && entry.model !== verb.base ? entry.label : undefined;
 }
-const erEndingsElsewhere = (verb: Verb) => !verb.base.endsWith('er') && !!presentEndings(verb)?.startsWith('-er endings');
+const stemOf = (stems: [string, string, string], person: number) => stems[person < 3 ? 0 : person < 5 ? 1 : 2]!;
+// Each stem with the persons it serves, in the order they first appear (achèt- for je, tu, il, ils; achet- for nous, vous).
+function stemGroups(stems: [string, string, string]): { stem: string; persons: string }[] {
+  const groups = new Map<string, string[]>();
+  PRONOUNS.forEach((pronoun, person) => { const stem = stemOf(stems, person); groups.set(stem, [...groups.get(stem) ?? [], pronoun]); });
+  return [...groups].map(([stem, persons]) => ({ stem: `${stem}-`, persons: persons.join(', ') }));
+}
+// The table with each form split at its own person's stem, so what is lit is exactly the ending the card names
+// (je me souvien|s, nous nous souven|ons), not whatever the six forms happen not to share. A form not built on its
+// stem (vous dites) is lit whole.
+function presentParadigm(verb: Verb, stems: [string, string, string] | null): ParadigmRow[] {
+  const rows = paradigm(verb, 'pres');
+  if (!stems) return rows;
+  return rows.map((row) => {
+    const full = row.parts.map((part) => part.text).join('');
+    const form = verb.pres[row.person]!;
+    if (!full.endsWith(form)) return row;
+    const lead = full.slice(0, full.length - form.length);
+    const stem = stemOf(stems, row.person);
+    if (!form.startsWith(stem)) return { ...row, parts: [{ text: lead }, { text: form, lit: true as const }] };
+    const ending = form.slice(stem.length);
+    return { ...row, parts: [{ text: lead + stem }, ...(ending ? [{ text: ending, lit: true as const }] : [])] };
+  });
+}
+// A -ger or -cer verb (manger, commencer) has one stem, the infinitive's: nous mangeons only keeps the g soft, so it
+// counts as a regular -er card and its table lights the -eons.
 function presCard(verb: Verb, lean: number): RuleCard {
-  const stems = presentStems(verb);
+  const soft = groupOf(verb, 'pres') === 'er-soft';
+  const stem = verb.base.slice(0, -2);
+  const byPerson: [string, string, string] | null = soft ? [stem, stem, stem] : stemsByPerson(verb);
+  const stems = soft ? [stem] : presentStems(verb);
   const examples = forms(verb, 'pres', [0, 3, 5]);
   return {
-    id: `pres:${verb.id}`, verbId: verb.id, kind: 'pres', tense: 'pres', ask: stems ? 'Présent: stems and endings' : 'Présent: je, nous, ils', inf: verb.inf, clue: verb.en, clueLang: 'en',
-    answer: stems ? stems.map((stem) => `${stem}-`).join(' · ') : examples.join(' · '), endings: presentEndings(verb),
-    tenseName: TENSE_NAMES.pres, examples, paradigm: paradigm(verb, 'pres'), rule: rule(verb, 'pres'),
-    value: lean * (!stems ? 3 : erEndingsElsewhere(verb) ? 2.5 : stems.length === 3 ? 2.5 : stems.length === 2 ? (verb.base.endsWith('er') ? 1.2 : 2) : verb.base.endsWith('er') ? 0.5 : 1),
+    id: `pres:${verb.id}`, verbId: verb.id, kind: 'pres', tense: 'pres', ask: stems ? 'Présent stems' : 'Présent: je, nous, ils', inf: verb.inf, clue: verb.en, clueLang: 'en',
+    answer: stems ? stems.map((stem) => `${stem}-`).join(' · ') : examples.join(' · '), differs: differs(verb, 'pres'), stems: byPerson ? stemGroups(byPerson) : undefined,
+    tenseName: TENSE_NAMES.pres, examples, paradigm: presentParadigm(verb, byPerson), rule: rule(verb, 'pres'),
+    value: lean * (!stems ? 3 : groupOf(verb, 'pres') === 'ouvrir' ? 2.5 : stems.length === 3 ? 2.5 : stems.length === 2 ? (verb.base.endsWith('er') ? 1.2 : 2) : verb.base.endsWith('er') ? 0.5 : 1),
     regular: stems?.length === 1 && verb.base.endsWith('er'),
   };
 }
-const IMP_ENDINGS = '-ais, -ais, -ait, -ions, -iez, -aient';
-const FUT_ENDINGS = '-ai, -as, -a, -ons, -ez, -ont';
 function impCard(verb: Verb, lean: number): RuleCard {
   const group = groupOf(verb, 'imp');
   const stem = verb.base === 'être' ? 'ét' : verb.imp[0]!.replace(/ais$/, '');
   return {
-    id: `imp:${verb.id}`, verbId: verb.id, kind: 'imp', tense: 'imp', ask: 'Imparfait stem', inf: verb.inf, clue: said(verb, 'pres', 3), clueLang: 'fr', answer: `${stem}-`, endings: IMP_ENDINGS,
+    id: `imp:${verb.id}`, verbId: verb.id, kind: 'imp', tense: 'imp', ask: 'Imparfait stem', inf: verb.inf, clue: said(verb, 'pres', 3), clueLang: 'fr', answer: `${stem}-`, differs: differs(verb, 'imp'),
     tenseName: TENSE_NAMES.imp, examples: forms(verb, 'imp', [0, 3, 5]), paradigm: paradigm(verb, 'imp'), rule: rule(verb, 'imp'),
     value: lean * (group === 'etre' ? 3 : group === 'from-nous' ? 2 : group === 'soft' || group === 'double-i' ? 1.5 : verb.base.endsWith('er') ? 0.6 : 1.2),
     regular: !['etre', 'from-nous', 'soft', 'double-i'].includes(group) && verb.base.endsWith('er'),
@@ -99,19 +146,11 @@ function impCard(verb: Verb, lean: number): RuleCard {
 function futCard(verb: Verb, lean: number): RuleCard {
   const group = groupOf(verb, 'fut');
   return {
-    id: `fut:${verb.id}`, verbId: verb.id, kind: 'fut', tense: 'fut', ask: 'Futur stem', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${verb.fut}-`, endings: verb.impersonal ? undefined : FUT_ENDINGS,
+    id: `fut:${verb.id}`, verbId: verb.id, kind: 'fut', tense: 'fut', ask: 'Futur stem', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${verb.fut}-`, differs: differs(verb, 'fut'),
     tenseName: TENSE_NAMES.fut, examples: forms(verb, 'fut', [0, 2, 5]), paradigm: paradigm(verb, 'fut'), rule: rule(verb, 'fut'),
     value: lean * (group === 'stem' ? 3 : group === 'er-change' ? 2 : verb.base.endsWith('re') ? 1.2 : 0.6),
     regular: group !== 'stem' && group !== 'er-change' && !verb.base.endsWith('re'),
   };
-}
-// The passé composé's recipe: the helper person by person, then the participle, which agrees after être.
-function pcEndings(verb: Verb): string | undefined {
-  if (verb.impersonal) return undefined;
-  const agreed = verb.pp.endsWith('s') ? `${verb.pp}(e)` : `${verb.pp}(e)(s)`;
-  if (bothHelpers(verb)) return `être + ${agreed}, or avoir + ${verb.pp}`;
-  const leads = conjugate(verb, 'pc').flatMap((form) => form ? [form.shown.slice(0, form.shown.lastIndexOf(' '))] : []);
-  return `${leads.join(', ')} + ${verb.reflexive || verb.aux === 'être' ? agreed : verb.pp}`;
 }
 // A verb taking either helper (sortir: je suis sorti · j’ai sorti la poubelle) shows a table for each; its examples
 // stay its own helper's forms, the ones the verb tape records, and the rule gives a sentence with each helper.
@@ -121,7 +160,7 @@ function pcCard(verb: Verb, lean: number): RuleCard {
   const both = bothHelpers(verb);
   return {
     id: `pc:${verb.id}`, verbId: verb.id, kind: 'pc', tense: 'pc', ask: 'Passé composé', inf: verb.inf, clue: verb.en, clueLang: 'en',
-    answer: both ? `être · avoir + ${verb.pp}` : `${helper} + ${verb.pp}`, endings: pcEndings(verb),
+    answer: both ? `être · avoir + ${verb.pp}` : `${helper} + ${verb.pp}`, differs: differs(verb, 'pc'),
     tenseName: TENSE_NAMES.pc, examples: forms(verb, 'pc', [0, 2, 5]),
     paradigm: both ? [...paradigm({ ...verb, aux: 'être' }, 'pc'), ...paradigm({ ...verb, aux: 'avoir' }, 'pc')] : paradigm(verb, 'pc'),
     rule: rule(verb, 'pc'), value: lean * (group === 'etre' ? 3 : group === 'participle' ? 2.5 : group === 'reflexive' ? 2 : 0.6),
@@ -169,6 +208,8 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
   grammar?: Pick<VerbGrammar<V, T>, 'ruleDeck' | 'ruleCandidates'>;
   // A mark on a card about one verb, passed on so it counts for that verb's forms in the tense (lib/verb-drills.ts).
   onVerbMark?: (input: { requestId: string; verbId: string; tense: T; knew: boolean }) => void;
+  // A mark taken back: what onVerbMark counted for that request goes too.
+  onVerbUnmark?: (requestId: string) => void;
   now?: () => Date; random?: () => number;
 }) {
   const deck = options.grammar ?? ({ ruleDeck, ruleCandidates } as unknown as Pick<VerbGrammar<V, T>, 'ruleDeck' | 'ruleCandidates'>);
@@ -184,6 +225,7 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
     );
   `);
   const insert = db.query('INSERT OR IGNORE INTO rule_card_marks (request_id, card_id, knew, marked_at) VALUES (?, ?, ?, ?)');
+  const remove = db.query('DELETE FROM rule_card_marks WHERE request_id = ?');
   const every = db.query<{ card_id: string; knew: number; marked_at: string }, []>('SELECT card_id, knew, marked_at FROM rule_card_marks ORDER BY sequence');
 
   function scores(): Map<string, number> {
@@ -227,5 +269,13 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
     return { ok: true };
   }
 
-  return { round, mark, close: () => db.close() };
+  // Undo: the mark made under this request id is taken back, with what it counted for the verb's forms.
+  function unmark(input: { requestId: string }) {
+    if (typeof input?.requestId !== 'string' || !input.requestId) throw new StoreError('This undo is missing its request ID.');
+    const removed = remove.run(input.requestId).changes > 0;
+    if (removed) options.onVerbUnmark?.(input.requestId);
+    return { ok: true, removed };
+  }
+
+  return { round, mark, unmark, close: () => db.close() };
 }
