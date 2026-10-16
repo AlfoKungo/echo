@@ -3384,9 +3384,10 @@ let verbFormsOverride = null;
 const vbSettings = () => verbFormsOverride ?? { set: verbSet, verbIds: verbChosen, tenses: verbTenses };
 const vbVerb = (id) => verbsInfo?.verbs.find((verb) => verb.id === id);
 // hit: the person (or persons) to light. A row's note names what the forms alone don't (Swedish present, past, supine).
+// Persons starting over begin a second table (a verb taking être or avoir), set apart with a gap.
 function paradigmHTML(rows, hit = -1) {
   const hits = [hit].flat();
-  return `<table class="vb-para">${rows.map((row) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}"><td lang="${languageTag}">${row.note ? `<small class="vb-key">${esc(row.note)}</small>` : ''}${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
+  return `<table class="vb-para">${rows.map((row, index) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}${index && row.person <= rows[index - 1].person ? ' vb-next' : ''}"><td lang="${languageTag}">${row.note ? `<small class="vb-key">${esc(row.note)}</small>` : ''}${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
 }
 const vbAccentsHTML = () => `<div class="vb-accents" aria-label="Accented letters">${VB_ACCENTS.map((letter) => `<button type="button" data-action="vb-accent" data-letter="${letter}">${letter}</button>`).join('')}</div>`;
 
@@ -3673,7 +3674,7 @@ function markVerbCard(knew) {
 }
 
 // ── How it's built: cards on how a tense is formed for a verb (its imparfait or futur stem, être or avoir and the
-// participle) and on the rules themselves, turned and marked like Cards. A miss comes back once, a few cards later,
+// participle) and, in Portuguese and Swedish, on the rules themselves, turned and marked like Cards. A miss comes back once, a few cards later,
 // and more cards are drawn from the marks so far while a few are still waiting. Turning a card plays its example
 // forms where the verb tape or By ear has recorded them.
 let vbRules = null; // { items, index, revealed, fetching, done }

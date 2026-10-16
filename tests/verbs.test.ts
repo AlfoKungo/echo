@@ -55,6 +55,22 @@ describe('verb tables', () => {
   });
 });
 
+describe('verbs taking either helper', () => {
+  const sortir = verbOf({ id: 'v-sortir', pres: ['sors', 'sors', 'sort', 'sortons', 'sortez', 'sortent'], imp: ['sortais', 'sortais', 'sortait', 'sortions', 'sortiez', 'sortaient'], fut: 'sortir', pp: 'sorti', aux: 'être' }, { id: 'v-sortir', fr: 'sortir', en: 'to go out' });
+
+  test('either helper is right; the table’s own is the one shown', () => {
+    expect(conjugate(sortir, 'pc')[0]).toEqual({ shown: 'suis sorti(e)', accepted: ['suis sorti', 'suis sortie', 'ai sorti'] });
+    expect(isRight(conjugate(sortir, 'pc')[5]!, 'ils ont sorti')).toBe(true);
+    expect(isRight(conjugate(sortir, 'pc')[5]!, 'ils sont sorties')).toBe(true);
+    expect(diagnose(sortir, 'pc', 0, 'ai sortie')).not.toContain('goes with');
+  });
+
+  test('any other être verb keeps its one helper', () => {
+    expect(isRight(conjugate(verb('partir'), 'pc')[0]!, 'j’ai parti')).toBe(false);
+    expect(diagnose(verb('partir'), 'pc', 0, 'ai parti')).toBe('partir goes with être in the passé composé, not avoir.');
+  });
+});
+
 describe('conjugation and answers', () => {
   test('reflexive pronouns elide before a vowel, être participles agree, and the subject is optional', () => {
     expect(conjugate(verb('habituer'), 'pres')[0]!.shown).toBe('m’habitue');

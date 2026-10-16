@@ -487,7 +487,7 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-why{color:var(--muted);font-size:14px;margin-top:6px}.vb-rule{margin-top:12px}
 .vb-para{width:100%;border-collapse:collapse;margin-top:12px;font-size:16px}
 .vb-para td{padding:6px 4px;border-top:1px solid var(--frame)}.vb-para td:first-child{color:var(--muted);width:34%}
-.vb-para tr.hit td{color:var(--violet)}.vb .end{color:var(--violet);font-weight:600}.vb-para tr.hit .end{text-decoration:underline;text-underline-offset:3px}
+.vb-para tr.vb-next td{padding-top:22px}.vb-para tr.hit td{color:var(--violet)}.vb .end{color:var(--violet);font-weight:600}.vb-para tr.hit .end{text-decoration:underline;text-underline-offset:3px}
 .vb-grid-head{display:flex;gap:8px;flex-wrap:wrap}.vb-grid-head select{flex:1;min-width:130px}
 .vb-rows{margin-top:14px;display:flex;flex-direction:column;gap:8px}
 .vb-trow{display:grid;grid-template-columns:82px 1fr 24px;gap:10px;align-items:center}

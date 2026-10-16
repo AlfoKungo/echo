@@ -1,12 +1,11 @@
 // How it's built: cards on how a tense is formed for a verb, not on one form: the présent's stems, the imparfait
-// stem, the futur stem, the passé composé helper and participle, and a few cards on the rules themselves. Every answer
-// is read off the verb tables (lib/verbs.ts), so a card can never teach a form the tables don't have. A round draws
-// only from the verbs and tenses on Verbs' Practising line. The learner marks each card, as in Cards: +1 knew it, −2
-// didn't, halving over SCORE_HALF_LIFE_DAYS. The marks are kept per card, apart from the forms' answers: knowing that
-// venir takes être is not knowing "nous sommes venus".
+// stem, the futur stem, the passé composé helper and participle. Every answer is read off the verb tables
+// (lib/verbs.ts), so a card can never teach a form the tables don't have. A round draws only from the verbs and tenses
+// on Verbs' Practising line. The learner marks each card, as in Cards: +1 knew it, −2 didn't, halving over
+// SCORE_HALF_LIFE_DAYS; the mark also counts for the verb's forms in that tense (onVerbMark).
 import { Database } from 'bun:sqlite';
 import { SCORE_HALF_LIFE_DAYS, StoreError } from './store';
-import { conjugate, groupOf, paradigm, rule, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
+import { bothHelpers, conjugate, groupOf, paradigm, rule, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
 import type { DrillVerb, VerbGrammar } from './verb-grammar';
 
 export type RuleKind = Tense | 'rule';
@@ -22,7 +21,6 @@ export type RuleCard<T extends string = Tense> = {
 };
 export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value'> & { examples: { text: string; audio: string | null }[] };
 
-const COMMON = 20;
 // The deck holds at most this many cards of each kind, the most valuable first, so a regular -er verb's card only
 // fills a place nothing irregular wants.
 const CAPS: Record<Tense, number> = { pres: 40, imp: 30, fut: 35, pc: 45 };
@@ -42,7 +40,6 @@ function said(verb: Verb, tense: Tense, person: number): string {
   return subject(asked, form) + form;
 }
 const forms = (verb: Verb, tense: Tense, people: number[]) => [...new Set(people.map((person) => said(verb, tense, person)))];
-const list = (items: string[], most = 8) => items.slice(0, most).join(', ') + (items.length > most ? ` and ${items.length - most} more` : '');
 
 // The présent's stems: the je form without -e, -s or -x, the nous form without -ons, the ils form without -ent. A
 // regular verb has one (parl-), others two or three (fini- finiss-, vien- ven- vienn-). A verb whose forms don't take
@@ -78,74 +75,29 @@ function futCard(verb: Verb, lean: number): RuleCard {
     value: lean * (group === 'stem' ? 3 : group === 'er-change' ? 2 : verb.base.endsWith('re') ? 1.2 : 0.6),
   };
 }
+// A verb taking either helper (sortir: je suis sorti · j’ai sorti la poubelle) shows both: an example and a table each.
 function pcCard(verb: Verb, lean: number): RuleCard {
   const group = groupOf(verb, 'pc');
   const helper = verb.reflexive ? 'être' : verb.aux;
+  const both = bothHelpers(verb);
   return {
-    id: `pc:${verb.id}`, verbId: verb.id, kind: 'pc', tense: 'pc', ask: 'Passé composé', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${helper} + ${verb.pp}`,
-    tenseName: TENSE_NAMES.pc, examples: forms(verb, 'pc', [0, 2, 5]), paradigm: paradigm(verb, 'pc'), rule: rule(verb, 'pc'),
-    value: lean * (group === 'etre' ? 3 : group === 'participle' ? 2.5 : group === 'reflexive' ? 2 : 0.6),
+    id: `pc:${verb.id}`, verbId: verb.id, kind: 'pc', tense: 'pc', ask: 'Passé composé', inf: verb.inf, clue: verb.en, clueLang: 'en',
+    answer: both ? `être · avoir + ${verb.pp}` : `${helper} + ${verb.pp}`,
+    tenseName: TENSE_NAMES.pc, examples: both ? [both.etre, both.avoir] : forms(verb, 'pc', [0, 2, 5]),
+    paradigm: both ? [...paradigm({ ...verb, aux: 'être' }, 'pc'), ...paradigm({ ...verb, aux: 'avoir' }, 'pc')] : paradigm(verb, 'pc'),
+    rule: rule(verb, 'pc'), value: lean * (group === 'etre' ? 3 : group === 'participle' ? 2.5 : group === 'reflexive' ? 2 : 0.6),
   };
 }
 
-// The rules themselves, each shown through a model verb when the tables have it; the lists in them are the
-// learner's own verbs.
-function ruleCards(verbs: Verb[], common: Verb[]): RuleCard[] {
-  const find = (inf: string) => verbs.find((verb) => verb.inf === inf);
-  const card = (id: string, tense: Tense, ask: string, clue: string, answer: string, model: Verb | undefined, examples: string[], text: string): RuleCard => ({
-    id: `rule:${id}`, kind: 'rule', tense, ask, inf: TENSE_NAMES[tense], clue, clueLang: 'en', answer, tenseName: TENSE_NAMES[tense],
-    examples, paradigm: model ? paradigm(model, tense) : [], rule: text, value: 3,
-  });
-  const parler = find('parler'), finir = find('finir'), prendre = find('prendre'), faire = find('faire'), aller = find('aller'), attendre = find('attendre'), venir = find('venir');
-  const etreVerbs = verbs.filter((verb) => !verb.reflexive && verb.aux === 'être').map((verb) => verb.inf);
-  const reflexive = verbs.find((verb) => verb.reflexive && !verb.impersonal);
-  const stems = verbs.filter((verb) => groupOf(verb, 'fut') === 'stem').map((verb) => `${verb.fut}- (${verb.inf})`);
-  const participles = common.filter((verb) => groupOf(verb, 'pc') === 'participle').map((verb) => `${verb.pp} (${verb.inf})`);
-  const arrow = (verb: Verb | undefined, from: (verb: Verb) => string, to: (verb: Verb) => string) => verb ? [`${from(verb)} → ${to(verb)}`] : [];
-  return [
-    card('pres-er', 'pres', 'Présent of -er verbs', 'The six endings?', '-e -es -e -ons -ez -ent', parler,
-      parler ? forms(parler, 'pres', [0, 3, 5]) : [],
-      'Every -er verb but aller takes them. je, tu, il and ils sound the same; only nous (-ons) and vous (-ez) are heard differently.'),
-    card('pres-finir', 'pres', 'Présent of finir', 'Its two stems?', 'fini- (je, tu, il) · finiss- (nous, vous, ils)', finir,
-      finir ? forms(finir, 'pres', [0, 3, 5]) : [],
-      'Most -ir verbs (finir, choisir, réussir) grow -ss- in the plural: je finis, nous finissons, ils finissent. The endings are the ordinary -s -s -t -ons -ez -ent. A few -ir verbs keep one stem without -ss-: je pars, nous partons; je dors, nous dormons.'),
-    card('pres-stems', 'pres', 'Présent stems', 'Which persons keep the infinitive’s stem?', 'nous and vous', venir,
-      venir ? forms(venir, 'pres', [0, 3, 5]) : [],
-      `In a verb with two or three stems, nous and vous are built on the infinitive${venir ? ` (venir → nous venons)` : ''}; je, tu, il and often ils change it${venir ? ` (je viens, ils viennent)` : ''}.`),
-    card('imp-stem', 'imp', 'The imparfait stem', 'Where does it come from?', 'nous présent − ons', finir,
-      finir ? [said(finir, 'pres', 3), said(finir, 'imp', 0), said(finir, 'imp', 5)] : [],
-      `Take the nous form of the présent and drop -ons: ${[...arrow(finir, (verb) => said(verb, 'pres', 3), (verb) => `${verb.imp[0]!.replace(/ais$/, '')}-`), ...arrow(faire, (verb) => said(verb, 'pres', 3), (verb) => `${verb.imp[0]!.replace(/ais$/, '')}-`)].join(', ')}. It works for verbs irregular in the présent too. The one exception is être: ét- (j’étais).`),
-    card('imp-endings', 'imp', 'Imparfait endings', 'The six endings?', '-ais -ais -ait -ions -iez -aient', parler,
-      parler ? forms(parler, 'imp', [0, 3, 5]) : [],
-      'Every verb takes them, être too. je, tu, il and ils sound the same; only nous (-ions) and vous (-iez) are heard differently.'),
-    card('fut-stem', 'fut', 'The futur stem', 'For a regular verb?', 'the infinitive (-re: drop the e)', prendre,
-      prendre ? forms(prendre, 'fut', [0, 2, 5]) : [],
-      `${[parler, finir, prendre].flatMap((verb) => arrow(verb, (entry) => entry.inf, (entry) => `${entry.fut}-`)).join(', ')}. Every futur stem ends in r, the irregular ones too${stems.length ? `: ${list(stems)}` : ''}.`),
-    card('fut-endings', 'fut', 'Futur endings', 'Which verb are they borrowed from?', 'avoir: -ai -as -a -ons -ez -ont', parler,
-      parler ? forms(parler, 'fut', [0, 1, 5]) : [],
-      'The futur endings are the présent of avoir (ai, as, a, ont), with nous and vous cut to -ons and -ez. Every verb takes them, on its futur stem.'),
-    card('pc-etre', 'pc', 'être or avoir?', 'Which verbs take être?', 'coming, going, becoming — and reflexives', aller,
-      [...(aller ? forms(aller, 'pc', [0, 5]) : []), ...(reflexive ? [said(reflexive, 'pc', 0)] : [])],
-      `${etreVerbs.length ? `Among your verbs: ${list(etreVerbs, 12)}. ` : ''}Every reflexive verb takes être too${reflexive ? ` (${said(reflexive, 'pc', 0)})` : ''}. All the others take avoir.`),
-    card('pc-agree', 'pc', 'With être', 'What does the participle do?', 'it agrees with the subject', aller,
-      aller ? [`elle ${conjugate(aller, 'pc')[2]!.accepted.at(-1)}`, said(aller, 'pc', 5), `elles ${conjugate(aller, 'pc')[5]!.accepted.at(-1)}`] : [],
-      `With être the participle agrees like an adjective: -e for a woman, -s for more than one. With avoir it stays as it is${prendre ? `: elle ${conjugate(prendre, 'pc')[2]!.accepted[0]}, ils ${conjugate(prendre, 'pc')[5]!.accepted[0]}` : ''}.`),
-    card('pc-participles', 'pc', 'Participles', 'How do the regular ones end?', '-er → -é · -ir → -i · -re → -u', parler,
-      [parler, finir, attendre].flatMap((verb) => verb ? [said(verb, 'pc', 0)] : []),
-      `${[parler, finir, attendre].flatMap((verb) => arrow(verb, (entry) => entry.inf, (entry) => entry.pp)).join(', ')}.${participles.length ? ` The common ones to know by heart: ${list(participles, 10)}.` : ''}`),
-  ];
-}
-
-// Every card the verbs give: the rule cards (their lists from all the learner's verbs), and for each picked verb its
-// présent stems, imparfait stem, futur stem and passé composé. Phrases built on a verb (avoir peur, se rendre compte)
-// get no cards of their own: their table is their verb's, so a picked phrase stands for the verb with that table.
+// Every card the verbs give: for each picked verb its présent stems, imparfait stem, futur stem and passé composé.
+// Phrases built on a verb (avoir peur, se rendre compte) get no cards of their own: their table is their verb's, so a
+// picked phrase stands for the verb with that table.
 export function ruleCandidates(verbs: Verb[], started: Set<string>, picked: Verb[] = verbs): RuleCard[] {
   const seen = new Set<string>();
   const usable = verbs.filter((verb) => !verb.base.includes(' ') && !seen.has(verb.inf) && !!seen.add(verb.inf));
-  const common = new Set(verbs.slice(0, COMMON).map((verb) => verb.id));
   const table = (verb: Verb) => `${verb.pres.join(',')}|${verb.fut}|${verb.pp}`;
   const wanted = new Set(picked.flatMap((verb) => [verb.inf, table(verb)]));
-  const cards: RuleCard[] = ruleCards(usable, usable.filter((verb) => common.has(verb.id)));
+  const cards: RuleCard[] = [];
   for (const verb of usable) {
     if (!wanted.has(verb.inf) && !wanted.has(table(verb))) continue;
     const lean = started.has(verb.id) ? STARTED_LEAN : 1;
@@ -156,14 +108,11 @@ export function ruleCandidates(verbs: Verb[], started: Set<string>, picked: Verb
   return cards;
 }
 
-// The deck for the picked verbs and tenses: the rule cards of those tenses, then the most valuable cards of each
-// tense up to its cap (a stable sort, so among equals the more common verb stays).
+// The deck for the picked verbs and tenses: the most valuable cards of each tense up to its cap (a stable sort, so
+// among equals the more common verb stays).
 export function ruleDeck(verbs: Verb[], started: Set<string>, picked: Verb[] = verbs, tenses: readonly Tense[] = TENSES): RuleCard[] {
   const cards = ruleCandidates(verbs, started, picked).filter((card) => tenses.includes(card.tense));
-  return [
-    ...cards.filter((card) => card.kind === 'rule'),
-    ...tenses.flatMap((tense) => cards.filter((card) => card.kind === tense).sort((left, right) => right.value - left.value).slice(0, CAPS[tense])),
-  ];
+  return tenses.flatMap((tense) => cards.filter((card) => card.kind === tense).sort((left, right) => right.value - left.value).slice(0, CAPS[tense]));
 }
 
 // grammar: where another language's cards come from (lib/verb-grammar.ts); French's are the ones above.

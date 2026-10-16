@@ -52,7 +52,7 @@ describe('how it’s built: the deck', () => {
   });
 
   test('the passé composé card is the helper and the participle: être verbs, reflexives, irregular participles', () => {
-    for (const [fr, answer] of [['aller', 'être + allé'], ['venir', 'être + venu'], ['partir', 'être + parti'], ['rester', 'être + resté'], ['descendre', 'être + descendu'], ['tomber', 'être + tombé'], ['mourir', 'être + mort'],
+    for (const [fr, answer] of [['aller', 'être + allé'], ['venir', 'être + venu'], ['partir', 'être + parti'], ['rester', 'être + resté'], ['descendre', 'être · avoir + descendu'], ['tomber', 'être + tombé'], ['mourir', 'être + mort'],
       ['être', 'avoir + été'], ['avoir', 'avoir + eu'], ['prendre', 'avoir + pris'], ['mettre', 'avoir + mis'], ['boire', 'avoir + bu'], ['devoir', 'avoir + dû'], ['falloir', 'avoir + fallu']] as const) {
       expect(cardFor(ruleCandidates(verbs, new Set(words.map((word) => word.id))), 'pc', fr)?.answer).toBe(answer);
     }
@@ -64,12 +64,12 @@ describe('how it’s built: the deck', () => {
     expect(card).toMatchObject({ answer: 'être + levé', examples: ['je me suis levé', 'il s’est levé', 'ils se sont levés'] });
   });
 
-  test('every example is the verb’s own form, as conjugate gives it', () => {
-    for (const card of ruleCandidates(verbs, new Set(words.map((word) => word.id))).filter((entry) => entry.kind !== 'rule')) {
+  test('every example holds the verb’s own form, as conjugate gives it', () => {
+    for (const card of ruleCandidates(verbs, new Set(words.map((word) => word.id)))) {
       const verb = verbs.find((entry) => card.id.endsWith(`:${entry.id}`))!;
       const tense = card.tense;
       const said = conjugate(verb, tense).flatMap((form) => form ? form.accepted : []);
-      for (const example of card.examples) expect(said.some((form) => example.endsWith(form))).toBe(true);
+      for (const example of card.examples) expect(said.some((form) => example.includes(form))).toBe(true);
     }
   });
 
@@ -79,12 +79,15 @@ describe('how it’s built: the deck', () => {
     expect(ids.filter((id) => id.endsWith(idOf('avoir peur')) || id.endsWith(idOf('se rendre compte')))).toEqual([]);
   });
 
-  test('the rule cards list the learner’s être verbs and irregular futur stems', () => {
-    const rules = all.filter((card) => card.kind === 'rule');
-    expect(rules.length).toBe(10);
-    expect(rules.find((card) => card.id === 'rule:pc-etre')!.rule).toContain('aller, venir, rester, partir, arriver, revenir, descendre, tomber');
-    expect(rules.find((card) => card.id === 'rule:fut-stem')!.rule).toContain('ser- (être), aur- (avoir), fer- (faire), ir- (aller)');
-    expect(rules.find((card) => card.id === 'rule:pc-agree')!.examples).toEqual(['elle est allée', 'ils sont allés', 'elles sont allées']);
+  test('a verb taking either helper shows both: an example and a table each', () => {
+    const card = cardFor(all, 'pc', 'descendre')!;
+    expect(card.examples).toEqual(['je suis descendu du bus', 'j’ai descendu l’escalier']);
+    expect(card.paradigm.map((row) => row.parts.map((part) => part.text).join(''))).toEqual([
+      'je suis descendu(e)', 'tu es descendu(e)', 'il est descendu(e)', 'nous sommes descendu(e)s', 'vous êtes descendu(e)(s)', 'ils sont descendu(e)s',
+      'j’ai descendu', 'tu as descendu', 'il a descendu', 'nous avons descendu', 'vous avez descendu', 'ils ont descendu',
+    ]);
+    expect(card.rule).toBe('descendre takes être on its own (je suis descendu du bus) and avoir when it has an object (j’ai descendu l’escalier). With être the participle agrees: elle est descendue, ils sont descendus.');
+    expect(all.some((entry) => entry.kind === 'rule')).toBe(false);
   });
 
   test('the deck is capped per kind, the exceptions and the started verbs first', () => {
@@ -104,11 +107,10 @@ describe('how it’s built: the deck', () => {
   test('the deck holds only the verbs and tenses on the Practising line', () => {
     const picked = ['venir', 'parler', 'avoir peur'].map(verbNamed);
     const deck = ruleDeck(verbs, new Set(), picked, ['pres']);
-    expect(deck.filter((card) => card.kind !== 'rule').map((card) => card.id).sort()).toEqual([`pres:${idOf('avoir')}`, `pres:${idOf('parler')}`, `pres:${idOf('venir')}`].sort());
-    expect(deck.filter((card) => card.kind === 'rule').map((card) => card.id)).toEqual(['rule:pres-er', 'rule:pres-finir', 'rule:pres-stems']);
+    expect(deck.map((card) => card.id).sort()).toEqual([`pres:${idOf('avoir')}`, `pres:${idOf('parler')}`, `pres:${idOf('venir')}`].sort());
     const past = ruleDeck(verbs, new Set(), picked, ['pc', 'imp']);
     expect(new Set(past.map((card) => card.tense))).toEqual(new Set(['pc', 'imp']));
-    expect(past.filter((card) => card.kind !== 'rule').length).toBe(6);
+    expect(past.length).toBe(6);
   });
 });
 
@@ -168,11 +170,10 @@ describe('how it’s built: marks', () => {
     expect(cards.mark({ requestId: 'z', id: `imp:${idOf('parler')}`, knew: true })).toEqual({ ok: true });
   });
 
-  test('a card about one verb passes its mark on to that verb’s tense; a card about a rule does not', () => {
+  test('a mark passes on to its verb’s tense', () => {
     const passed: unknown[] = [];
     const { cards } = open(undefined, (input) => passed.push(input));
     cards.mark({ requestId: 'v', id: `fut:${idOf('envoyer')}`, knew: false });
-    cards.mark({ requestId: 'r', id: 'rule:pres-finir', knew: true });
     expect(passed).toEqual([{ requestId: 'v', verbId: idOf('envoyer'), tense: 'fut', knew: false }]);
   });
 });

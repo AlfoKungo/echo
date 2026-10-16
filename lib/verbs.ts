@@ -36,6 +36,17 @@ export function verbOf(table: VerbTable, word: VerbWord): Verb {
   return { ...table, inf, en: word.en, base: inf.replace(REFLEXIVE, ''), reflexive: REFLEXIVE.test(inf), impersonal: table.pres.length === 1 };
 }
 export const persons = (verb: Verb) => verb.impersonal ? [2] : [0, 1, 2, 3, 4, 5];
+// Verbs that take être on their own and avoir with a direct object (je suis sorti · j’ai sorti la poubelle), with one
+// example of each. Either helper counts as right; the table's own aux stays the form shown. A reflexive form (se
+// passer) always takes être.
+const BOTH_HELPERS: Record<string, { etre: string; avoir: string }> = {
+  passer: { etre: 'je suis passé chez toi', avoir: 'j’ai passé un bon week-end' },
+  monter: { etre: 'je suis monté au premier étage', avoir: 'j’ai monté les valises' },
+  descendre: { etre: 'je suis descendu du bus', avoir: 'j’ai descendu l’escalier' },
+  sortir: { etre: 'je suis sorti hier soir', avoir: 'j’ai sorti la poubelle' },
+  retourner: { etre: 'je suis retourné en France', avoir: 'j’ai retourné la crêpe' },
+};
+export const bothHelpers = (verb: Verb) => verb.reflexive ? null : BOTH_HELPERS[verb.base] ?? null;
 
 // The imparfait as the rule builds it: the nous présent without -ons (être: ét-), and the -ge / -ç that keep a soft
 // g or c before a and o dropped before i (mangeais, mangions; commençais, commencions).
@@ -59,7 +70,8 @@ function simpleForm(verb: Verb, tense: Exclude<Tense, 'pc'>, person: number): st
   return verb.fut + FUT_END[person]!;
 }
 
-// The six forms of a tense (null where the verb has no such person).
+// The six forms of a tense (null where the verb has no such person). A verb taking either helper accepts both
+// passés composés, its own helper's first.
 export function conjugate(verb: Verb, tense: Tense): (Form | null)[] {
   return [0, 1, 2, 3, 4, 5].map((person) => {
     if (verb.impersonal && person !== 2) return null;
@@ -69,15 +81,20 @@ export function conjugate(verb: Verb, tense: Tense): (Form | null)[] {
       return { shown: form, accepted: [form] };
     }
     const helper = verb.reflexive ? 'être' : verb.aux;
-    const aux = AUX[helper][person]!;
-    const lead = `${verb.reflexive ? pronoun(person, aux) : ''}${aux} `;
-    if (helper === 'avoir') return { shown: lead + verb.pp, accepted: [lead + verb.pp] };
-    // With être the participle agrees with the subject; a participle ending in -s (mis) takes no second -s.
-    const plural = (ending: string) => verb.pp.endsWith('s') ? ending.replace(/^s/, '') : ending;
-    const endings = person === 4 ? ['', 'e', plural('s'), plural('es')] : person > 2 ? [plural('s'), plural('es')] : ['', 'e'];
-    const shown = person === 4 ? `${verb.pp}(e)(s)` : person > 2 ? (verb.pp.endsWith('s') ? `${verb.pp}(es)` : `${verb.pp}(e)s`) : `${verb.pp}(e)`;
-    return { shown: lead + shown, accepted: [...new Set(endings.map((ending) => lead + verb.pp + ending))] };
+    const own = compound(verb, helper, person);
+    if (!bothHelpers(verb)) return own;
+    return { shown: own.shown, accepted: [...own.accepted, ...compound(verb, helper === 'être' ? 'avoir' : 'être', person).accepted] };
   });
+}
+function compound(verb: Verb, helper: 'avoir' | 'être', person: number): Form {
+  const aux = AUX[helper][person]!;
+  const lead = `${verb.reflexive ? pronoun(person, aux) : ''}${aux} `;
+  if (helper === 'avoir') return { shown: lead + verb.pp, accepted: [lead + verb.pp] };
+  // With être the participle agrees with the subject; a participle ending in -s (mis) takes no second -s.
+  const plural = (ending: string) => verb.pp.endsWith('s') ? ending.replace(/^s/, '') : ending;
+  const endings = person === 4 ? ['', 'e', plural('s'), plural('es')] : person > 2 ? [plural('s'), plural('es')] : ['', 'e'];
+  const shown = person === 4 ? `${verb.pp}(e)(s)` : person > 2 ? (verb.pp.endsWith('s') ? `${verb.pp}(es)` : `${verb.pp}(e)s`) : `${verb.pp}(e)`;
+  return { shown: lead + shown, accepted: [...new Set(endings.map((ending) => lead + verb.pp + ending))] };
 }
 
 export const normal = (value: string) => value.normalize('NFC').toLowerCase().replace(/[’'`]/g, '’').replace(/’\s+/g, '’').replace(/\s+/g, ' ').trim().replace(/[.!?]+$/, '');
@@ -114,7 +131,7 @@ export function diagnose(verb: Verb, tense: Tense, person: number, given: string
   if (tense === 'pc') {
     const helper = verb.reflexive ? 'être' : verb.aux;
     const other = helper === 'être' ? 'avoir' : 'être';
-    if (typed.some((reading) => reading.startsWith(`${AUX[other][person]} `))) return `${verb.inf} goes with ${helper} in the passé composé, not ${other}.`;
+    if (!bothHelpers(verb) && typed.some((reading) => reading.startsWith(`${AUX[other][person]} `))) return `${verb.inf} goes with ${helper} in the passé composé, not ${other}.`;
     if (helper === 'être') {
       const lead = target.accepted[0]!.slice(0, target.accepted[0]!.lastIndexOf(' ') + 1);
       const agreed = typed.find((reading) => reading.startsWith(lead) && reading.slice(lead.length).replace(/e?s?$/, '') === verb.pp.replace(/s$/, '').replace(/e?s?$/, ''));
@@ -178,7 +195,9 @@ export function rule(verb: Verb, tense: Tense): string {
     return `The futur adds -ai, -as, -a, -ons, -ez, -ont to a stem ending in r: ${verb.fut}-.${verb.fut === usual ? '' : ' This stem is irregular, so it is worth learning.'}${reflexive}`;
   }
   const forms = conjugate(verb, 'pc');
+  const both = bothHelpers(verb);
   if (verb.reflexive) return `Reflexive verbs take être in the passé composé, and the participle agrees: il ${forms[2]!.accepted[0]}, elle ${forms[2]!.accepted.at(-1)}.`;
+  if (both) return `${verb.inf} takes être on its own (${both.etre}) and avoir when it has an object (${both.avoir}). With être the participle agrees: elle est ${verb.pp}e, ils sont ${verb.pp}s.`;
   if (verb.aux === 'être') return `${verb.inf} takes être in the passé composé, so the participle agrees: elle ${forms[2]!.accepted.at(-1)}, ils ${forms[5]!.accepted[0]}.`;
   return `${verb.inf} takes avoir: the helper changes (j’ai, tu as, il a…), the participle ${verb.pp} stays the same.`;
 }
