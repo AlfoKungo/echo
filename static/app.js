@@ -1536,8 +1536,13 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   // The noun's gender, in words, wherever the learnt word is showing (the colour alone is optional).
   const gender = card.gender && (revealed || !reverse) ? `<p class="gender-tag${genderClass(card.gender)}">${esc(GENDERS[card.gender]?.[1] ?? card.gender)}</p>` : '';
   // The word asked stays where it is when the card turns, the same size; the answer and the rest come in under it.
-  const shown = `<div class="card-over">${verdict ? sayVerdictHTML() : ''}</div><h1 class="main-word${reverse ? '' : genderClass(card.gender)}" lang="${reverse ? 'en' : languageTag}">${esc(prompt)}</h1>`;
-  const under = revealed ? `<p class="card-answer${reverse ? genderClass(card.gender) : ''}" lang="${reverse ? languageTag : 'en'}">${esc(answer)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender;
+  // In Listen the word was heard, not shown, so the meaning is what the card answers: it takes the headline, and the
+  // French it was comes in under it.
+  const heard = listening() && revealed && !reverse;
+  const big = heard ? { text: answer, lang: 'en', gendered: false } : { text: prompt, lang: reverse ? 'en' : languageTag, gendered: !reverse };
+  const small = heard ? { text: prompt, lang: languageTag, gendered: true } : { text: answer, lang: reverse ? languageTag : 'en', gendered: reverse };
+  const shown = `<div class="card-over">${verdict ? sayVerdictHTML() : ''}</div><h1 class="main-word${big.gendered ? genderClass(card.gender) : ''}" lang="${big.lang}">${esc(big.text)}</h1>`;
+  const under = revealed ? `<p class="card-answer${small.gendered ? genderClass(card.gender) : ''}" lang="${small.lang}">${esc(small.text)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender;
   const face = hidden
     ? `<button class="listen-play" data-action="replay" aria-label="Play the ${languageEnglish} word again">${speaker}</button>${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}`
     : `${shown}<div class="card-under">${under}</div>`;
