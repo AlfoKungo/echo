@@ -27,10 +27,11 @@ const PER_VERB = 3;
 const PER_TENSE = 2;
 // A form's score: +2 for a typed answer right and -3 wrong (Type it, each cell of a whole table); +1 or -2 for a
 // Cards, In sentences or Walkman mark, the learner's own say; +4 or -4 for every form a How it's built card about one
-// verb covers (mode 'built'), the learner's choice; +1 or -1 for a Form → verb mark, since knowing a form when you see
-// it is the easier half. By ear asks about a tense or a number, not one form, and counts for none. Every point halves
-// over SCORE_HALF_LIFE_DAYS, as a word's does. A table written in Look, then write is graded as a whole, apart from its
-// forms: TABLE_PERFECT points when every form was right, TABLE_MISSED when any was not.
+// verb covers (mode 'built'), the learner's choice — a mark on the tense, not an answer for each form, so it moves the
+// scores only and stays out of a form's answers, misses and accuracy; +1 or -1 for a Form → verb mark, since knowing
+// a form when you see it is the easier half. By ear asks about a tense or a number, not one form, and counts for none.
+// Every point halves over SCORE_HALF_LIFE_DAYS, as a word's does. A table written in Look, then write is graded as a
+// whole, apart from its forms: TABLE_PERFECT points when every form was right, TABLE_MISSED when any was not.
 export const points = (mode: string, right: number) => mode === 'built' ? (right ? 4 : -4) : mode === 'card' || mode === 'sentence' ? (right ? 1 : -2) : mode === 'recognize' ? (right ? 1 : -1) : (right ? 2 : -3);
 const TABLE_PERFECT = 2, TABLE_MISSED = -1;
 // Every drill picks a form with odds 2^(-score/PULL), the score held within ±LIMIT, as the Walkman picks words: an
@@ -97,9 +98,9 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
   const insert = db.query('INSERT OR IGNORE INTO verb_answers (request_id, verb_id, tense, person, mode, question, given, right, answered_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
   const insertTable = db.query('INSERT OR IGNORE INTO verb_tables (request_id, verb_id, tense, perfect, answered_at) VALUES (?, ?, ?, ?, ?)');
   const everyTable = db.query<{ verb_id: string; perfect: number; answered_at: string }, []>('SELECT verb_id, perfect, answered_at FROM verb_tables ORDER BY sequence');
-  const written = db.query<{ verb_id: string; tense: T; person: number; right: number }, []>("SELECT verb_id, tense, person, right FROM verb_answers WHERE mode != 'ear' ORDER BY sequence DESC");
+  const written = db.query<{ verb_id: string; tense: T; person: number; right: number }, []>("SELECT verb_id, tense, person, right FROM verb_answers WHERE mode NOT IN ('ear', 'built') ORDER BY sequence DESC");
   const everyScored = db.query<{ verb_id: string; tense: T; person: number; mode: string; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, mode, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
-  const everyWritten = db.query<{ verb_id: string; tense: T; person: number; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
+  const everyWritten = db.query<{ verb_id: string; tense: T; person: number; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, right, answered_at FROM verb_answers WHERE mode NOT IN ('ear', 'built') ORDER BY sequence");
   const hookRows = db.query<{ verb_id: string; tense: string; person: number; form: string; hook: string }, []>('SELECT verb_id, tense, person, form, hook FROM verb_hooks');
   const hookRow = db.query<{ form: string; hook: string }, [string, string, number]>('SELECT form, hook FROM verb_hooks WHERE verb_id = ? AND tense = ? AND person = ?');
   const saveHook = db.query('INSERT INTO verb_hooks (verb_id, tense, person, form, hook, written_at) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (verb_id, tense, person) DO UPDATE SET form = excluded.form, hook = excluded.hook, written_at = excluded.written_at');
@@ -129,7 +130,7 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
       if (at > end) continue;
       const id = key(row.verb_id, row.tense, row.person);
       scores.set(id, (scores.get(id) ?? 0) + points(row.mode, row.right) * 0.5 ** ((end - at) / DAY_MS / SCORE_HALF_LIFE_DAYS));
-      if (!row.right) misses.set(id, (misses.get(id) ?? 0) + 1);
+      if (!row.right && row.mode !== 'built') misses.set(id, (misses.get(id) ?? 0) + 1);
     }
     return { scores, misses };
   }

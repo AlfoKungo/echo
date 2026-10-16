@@ -261,6 +261,17 @@ describe('verb drills', () => {
     expect(() => drills.markBuilt({ requestId: 'b3', verbId: 'v-finir', tense: 'fut', knew: 'yes' as never })).toThrow('Say whether you knew it.');
   });
 
+  test('How it’s built marks move only the scores: no answers, misses, accuracy or hooks for the forms', () => {
+    const drills = fixture();
+    clock.value = new Date(2026, 8, 21, 10);
+    for (const id of ['h1', 'h2', 'h3']) drills.markBuilt({ requestId: id, verbId: 'v-parler', tense: 'pres', knew: false });
+    expect(drills.scoresOn('2026-09-21').filter((form) => form.verbId === 'v-parler').map((form) => form.score)).toEqual([-12, -12, -12, -12, -12, -12]);
+    expect(state(drills, 'v-parler', 'pres', 0)).toBe('new');
+    expect(drills.summary().worst).toEqual([]);
+    expect(drills.statistics().tenses.pres).toEqual({ right: 0, total: 0 });
+    expect(drills.hookless()).toEqual([]);
+  });
+
   test('the Walkman verb tape holds every form of the chosen tenses, shaky ones early, and records every tense and form', () => {
     const drills = fixture();
     drills.answer({ requestId: 'w1', verbId: 'v-aller', tense: 'pres', person: 3, given: 'xyz' });

@@ -75,7 +75,8 @@ function futCard(verb: Verb, lean: number): RuleCard {
     value: lean * (group === 'stem' ? 3 : group === 'er-change' ? 2 : verb.base.endsWith('re') ? 1.2 : 0.6),
   };
 }
-// A verb taking either helper (sortir: je suis sorti · j’ai sorti la poubelle) shows both: an example and a table each.
+// A verb taking either helper (sortir: je suis sorti · j’ai sorti la poubelle) shows a table for each; its examples
+// stay its own helper's forms, the ones the verb tape records, and the rule gives a sentence with each helper.
 function pcCard(verb: Verb, lean: number): RuleCard {
   const group = groupOf(verb, 'pc');
   const helper = verb.reflexive ? 'être' : verb.aux;
@@ -83,7 +84,7 @@ function pcCard(verb: Verb, lean: number): RuleCard {
   return {
     id: `pc:${verb.id}`, verbId: verb.id, kind: 'pc', tense: 'pc', ask: 'Passé composé', inf: verb.inf, clue: verb.en, clueLang: 'en',
     answer: both ? `être · avoir + ${verb.pp}` : `${helper} + ${verb.pp}`,
-    tenseName: TENSE_NAMES.pc, examples: both ? [both.etre, both.avoir] : forms(verb, 'pc', [0, 2, 5]),
+    tenseName: TENSE_NAMES.pc, examples: forms(verb, 'pc', [0, 2, 5]),
     paradigm: both ? [...paradigm({ ...verb, aux: 'être' }, 'pc'), ...paradigm({ ...verb, aux: 'avoir' }, 'pc')] : paradigm(verb, 'pc'),
     rule: rule(verb, 'pc'), value: lean * (group === 'etre' ? 3 : group === 'participle' ? 2.5 : group === 'reflexive' ? 2 : 0.6),
   };

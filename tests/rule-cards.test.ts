@@ -79,9 +79,10 @@ describe('how it’s built: the deck', () => {
     expect(ids.filter((id) => id.endsWith(idOf('avoir peur')) || id.endsWith(idOf('se rendre compte')))).toEqual([]);
   });
 
-  test('a verb taking either helper shows both: an example and a table each', () => {
+  test('a verb taking either helper shows a table for each, its own helper’s recorded forms, and both in the rule', () => {
     const card = cardFor(all, 'pc', 'descendre')!;
-    expect(card.examples).toEqual(['je suis descendu du bus', 'j’ai descendu l’escalier']);
+    // The examples are the forms the verb tape records, so they can be heard; the two sentences live in the rule.
+    expect(card.examples).toEqual(['je suis descendu', 'il est descendu', 'ils sont descendus']);
     expect(card.paradigm.map((row) => row.parts.map((part) => part.text).join(''))).toEqual([
       'je suis descendu(e)', 'tu es descendu(e)', 'il est descendu(e)', 'nous sommes descendu(e)s', 'vous êtes descendu(e)(s)', 'ils sont descendu(e)s',
       'j’ai descendu', 'tu as descendu', 'il a descendu', 'nous avons descendu', 'vous avez descendu', 'ils ont descendu',

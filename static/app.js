@@ -1190,13 +1190,13 @@ function placeNewsGloss() {
   words[Math.max(0, newsGloss.nth)]?.classList.add('on');
 }
 // The bar's line moves: back to this line's start (or the one before, right at its start), on to the next, and this
-// line again; they start the recording when it is stopped.
+// line again; they start the recording when it is stopped. Before the first line or after the last, on is line 1.
 function moveNews(step) {
   const starts = newsView?.starts;
   if (!starts) return;
   const index = Math.max(0, newsAt);
   const into = newsLoaded() ? newsAudio.currentTime - starts[index] : 0;
-  const target = step > 0 ? index + 1 : step < 0 ? (into > 1.5 ? index : index - 1) : index;
+  const target = step > 0 ? (newsAt < 0 ? 0 : index + 1) : step < 0 ? (into > 1.5 ? index : index - 1) : index;
   if (target >= starts.length) return;
   playNews(Math.max(0, target));
 }
@@ -2818,14 +2818,19 @@ async function loadBoard() {
   const asked = () => `${direction}|${deck}|${boardRange.min}|${boardRange.max}|${boardCards}`;
   board = null; loading = true; notice = null; retryAction = null; render();
   if (!snapshot) await fetchState();
+  // A load overtaken by a newer one leaves everything to it: its board, its error and its loading state.
   try {
     const { words, total } = await api(`api/board?direction=${encodeURIComponent(direction)}&deck=${encodeURIComponent(deck)}&min=${boardRange.min}&max=${boardRange.max}${cards ? '&cards=1' : ''}`);
+    if (load !== boardLoads) return;
     const order = shuffled(words);
-    if (wanted === asked() && load === boardLoads) {
+    if (wanted === asked()) {
       board = { deck, words: order, total, full: boardRangeFull(), cards };
       if (audioMode) warmBoardClips(order, load);
     }
-  } catch (error) { notice = { message: error.message }; retryAction = { type: 'board' }; }
+  } catch (error) {
+    if (load !== boardLoads) return;
+    notice = { message: error.message }; retryAction = { type: 'board' };
+  }
   loading = false;
   if (screen === 'board') render();
 }
