@@ -233,15 +233,15 @@ describe('verb drills', () => {
     expect(drills.scoresOn('2026-09-21').map((form) => [form.form, form.score])).toEqual([['vous partez', -2], ['je pars', -1], ['nous partons', 1]]);
   });
 
-  test('a How it’s built mark counts for every form of the tense, +1 or −2 each, once per request', () => {
+  test('a How it’s built mark counts for every form of the tense, +4 or −4 each, once per request', () => {
     const drills = fixture();
     clock.value = new Date(2026, 8, 21, 10);
     drills.markBuilt({ requestId: 'b1', verbId: 'v-finir', tense: 'fut', knew: false });
     drills.markBuilt({ requestId: 'b1', verbId: 'v-finir', tense: 'fut', knew: true });
     drills.markBuilt({ requestId: 'b2', verbId: 'v-parler', tense: 'pres', knew: true });
     const scores = drills.scoresOn('2026-09-21');
-    expect(scores.filter((form) => form.verbId === 'v-finir').map((form) => form.score)).toEqual([-2, -2, -2, -2, -2, -2]);
-    expect(scores.filter((form) => form.verbId === 'v-parler').map((form) => form.score)).toEqual([1, 1, 1, 1, 1, 1]);
+    expect(scores.filter((form) => form.verbId === 'v-finir').map((form) => form.score)).toEqual([-4, -4, -4, -4, -4, -4]);
+    expect(scores.filter((form) => form.verbId === 'v-parler').map((form) => form.score)).toEqual([4, 4, 4, 4, 4, 4]);
     expect(() => drills.markBuilt({ requestId: 'b3', verbId: 'v-finir', tense: 'fut', knew: 'yes' as never })).toThrow('Say whether you knew it.');
   });
 

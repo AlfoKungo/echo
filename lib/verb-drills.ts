@@ -26,12 +26,12 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 // A form's score: +2 for a typed answer right and -3 wrong (Type it, each cell of a whole table); +1 or -2 for a
-// Cards, In sentences or Walkman mark, the learner's own say, and for every form a How it's built card about one verb
-// covers (mode 'built'); +1 or -1 for a Form → verb mark, since knowing a form when you see it is the easier half. By
-// ear asks about a tense or a number, not one form, and counts for none. Every point halves over SCORE_HALF_LIFE_DAYS,
-// as a word's does. A table written in Look, then write is graded as a whole, apart from its forms: TABLE_PERFECT
-// points when every form was right, TABLE_MISSED when any was not.
-export const points = (mode: string, right: number) => mode === 'card' || mode === 'sentence' || mode === 'built' ? (right ? 1 : -2) : mode === 'recognize' ? (right ? 1 : -1) : (right ? 2 : -3);
+// Cards, In sentences or Walkman mark, the learner's own say; +4 or -4 for every form a How it's built card about one
+// verb covers (mode 'built'), the learner's choice; +1 or -1 for a Form → verb mark, since knowing a form when you see
+// it is the easier half. By ear asks about a tense or a number, not one form, and counts for none. Every point halves
+// over SCORE_HALF_LIFE_DAYS, as a word's does. A table written in Look, then write is graded as a whole, apart from its
+// forms: TABLE_PERFECT points when every form was right, TABLE_MISSED when any was not.
+export const points = (mode: string, right: number) => mode === 'built' ? (right ? 4 : -4) : mode === 'card' || mode === 'sentence' ? (right ? 1 : -2) : mode === 'recognize' ? (right ? 1 : -1) : (right ? 2 : -3);
 const TABLE_PERFECT = 2, TABLE_MISSED = -1;
 // Every drill picks a form with odds 2^(-score/PULL), the score held within ±LIMIT, as the Walkman picks words: an
 // untried form at 0, one missed once about three times as likely, one known twice in a row about a fifth as likely.
