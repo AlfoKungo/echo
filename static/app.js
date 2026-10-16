@@ -32,7 +32,7 @@ const savePreference = (key, value) => { try { localStorage.setItem(localKey(key
 // A French start on its way to another language (index.html) leaves the last language as it is.
 if (Object.keys(languageNames).length && !document.documentElement.dataset.leaving) savePreference('echo.language', language);
 // Theme: Dusk (the default) or Paper, remembered on this device; index.html applies it before the first paint.
-const THEME_COLOURS = { dusk: '#0e0d16', paper: '#f6f2eb' };
+const THEME_COLOURS = { dusk: '#0b0b10', paper: '#f6f2eb' };
 function applyTheme(theme) {
   if (theme === 'paper') document.documentElement.dataset.theme = 'paper'; else delete document.documentElement.dataset.theme;
   document.querySelector('meta[name=theme-color]')?.setAttribute('content', THEME_COLOURS[theme]);
