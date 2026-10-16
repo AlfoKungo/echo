@@ -1543,8 +1543,10 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const small = heard ? { text: prompt, lang: languageTag, gendered: true } : { text: answer, lang: reverse ? languageTag : 'en', gendered: reverse };
   const shown = `<div class="card-over">${verdict ? sayVerdictHTML() : ''}</div><h1 class="main-word${big.gendered ? genderClass(card.gender) : ''}" lang="${big.lang}">${esc(big.text)}</h1>`;
   const under = revealed ? `<p class="card-answer${small.gendered ? genderClass(card.gender) : ''}" lang="${small.lang}">${esc(small.text)}</p>${gender}${card.note ? `<p class="word-note">${esc(card.note)}</p>` : ''}${card.trouble ? troubleHTML(card.trouble) : ''}` : gender;
+  // Before Listen turns, the play button sits where the word will: the card's centre, the caption under it, so the
+  // meaning comes in at the place the eye already is.
   const face = hidden
-    ? `<button class="listen-play" data-action="replay" aria-label="Play the ${languageEnglish} word again">${speaker}</button>${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}`
+    ? `<div class="card-over"></div><button class="listen-play" data-action="replay" aria-label="Play the ${languageEnglish} word again">${speaker}</button><div class="card-under">${saying ? '' : '<p class="source-word">Listen, then tap to see the word</p>'}</div>`
     : `${shown}<div class="card-under">${under}</div>`;
   // How this card is practised, in French → English: Read, Listen, and Speak where it is offered.
   const ways = direction === 'fr-en' ? [['read', 'Read', eyeIcon], ['listen', 'Listen', headphones], ...(speakOffered() ? [['speak', 'Speak', micIcon]] : [])] : [];
@@ -1554,7 +1556,7 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const label = revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : saying && !say.running ? 'Start speaking' : hidden ? 'Reveal the meaning' : 'Reveal the translation';
   // A turned card can say its French again, in every way of practising, without turning back.
   const again = revealed && card.audioUrl ? `<button class="card-replay" data-action="replay" aria-label="Hear the ${languageEnglish} again">${speaker}</button>` : '';
-  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}">${again}<div class="word-content${hidden ? '' : ' pinned'}">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools">${wayChoice}<button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
+  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}">${again}<div class="word-content pinned">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools">${wayChoice}<button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
 // A face pinned at the card's centre (app.css .pinned) keeps the word there while what comes under it fits; a longer
 // one (a word missed often, with its hook and its look-alikes) lifts the word only as far as it needs, and one taller

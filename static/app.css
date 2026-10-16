@@ -638,6 +638,7 @@ html{touch-action:manipulation}
 .word-content.pinned.tall{grid-template-rows:minmax(0,1fr) auto auto}
 .card-over{align-self:end}.card-over .say-verdict{margin-bottom:14px}
 .card-under{align-self:start}
+.word-content.pinned>.listen-play{justify-self:center}
 .card-answer{display:inline-block;min-width:min(240px,70%);margin:16px 0 0;padding-top:14px;border-top:1px solid var(--frame);font-size:26px;line-height:1.3;color:var(--ink);letter-spacing:-.3px;overflow-wrap:anywhere}
 .pause-hard{margin-top:26px;text-align:left}.pause-hard h2{margin:0 0 4px;font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
 .pause-hard>button{width:100%;margin-top:14px}
