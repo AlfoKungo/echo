@@ -14,16 +14,18 @@ export type RuleKind = Tense | 'rule';
 // card is worth drawing, higher for the exceptions (être's ét-, an irregular stem, a verb taking être) and
 // STARTED_LEAN times higher for a verb the learner has started.
 // clueLang 'fr' marks a clue in the language learnt, whichever it is. verbId names the verb a card is about (a verb's
-// stems, its futur stem, its passé composé); a card about a rule itself has none.
+// stems, its futur stem, its passé composé); a card about a rule itself has none. regular marks a card that only
+// repeats its tense's pattern (one -er présent stem, an -er imparfait, a futur on the whole infinitive, avoir with a
+// regular participle).
 export type RuleCard<T extends string = Tense> = {
   id: string; kind: T | 'rule'; tense: T; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string;
-  tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number; verbId?: string;
+  tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number; verbId?: string; regular?: boolean;
 };
-export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value'> & { examples: { text: string; audio: string | null }[] };
+export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value' | 'regular'> & { examples: { text: string; audio: string | null }[] };
 
-// The deck holds at most this many cards of each kind, the most valuable first, so a regular -er verb's card only
-// fills a place nothing irregular wants.
-const CAPS: Record<Tense, number> = { pres: 40, imp: 30, fut: 35, pc: 45 };
+// Every card with something of its own to learn is in the deck. The regular ones all teach the same pattern, so each
+// tense keeps only its REGULAR_KEPT most valuable (started and common verbs first) as reminders of it.
+const REGULAR_KEPT = 10;
 const STARTED_LEAN = 1.5;
 const ROUND = 12;
 // A card is drawn with odds 2^(-score/PULL) × its value, the score held within ±LIMIT, as Cards draws forms: an
@@ -56,6 +58,7 @@ function presCard(verb: Verb, lean: number): RuleCard {
     answer: stems ? stems.map((stem) => `${stem}-`).join(' · ') : examples.join(' · '),
     tenseName: TENSE_NAMES.pres, examples, paradigm: paradigm(verb, 'pres'), rule: rule(verb, 'pres'),
     value: lean * (!stems ? 3 : stems.length === 3 ? 2.5 : stems.length === 2 ? (verb.base.endsWith('er') ? 1.2 : 2) : verb.base.endsWith('er') ? 0.5 : 1),
+    regular: stems?.length === 1 && verb.base.endsWith('er'),
   };
 }
 function impCard(verb: Verb, lean: number): RuleCard {
@@ -65,6 +68,7 @@ function impCard(verb: Verb, lean: number): RuleCard {
     id: `imp:${verb.id}`, verbId: verb.id, kind: 'imp', tense: 'imp', ask: 'Imparfait stem', inf: verb.inf, clue: said(verb, 'pres', 3), clueLang: 'fr', answer: `${stem}-`,
     tenseName: TENSE_NAMES.imp, examples: forms(verb, 'imp', [0, 3, 5]), paradigm: paradigm(verb, 'imp'), rule: rule(verb, 'imp'),
     value: lean * (group === 'etre' ? 3 : group === 'from-nous' ? 2 : group === 'soft' || group === 'double-i' ? 1.5 : verb.base.endsWith('er') ? 0.6 : 1.2),
+    regular: !['etre', 'from-nous', 'soft', 'double-i'].includes(group) && verb.base.endsWith('er'),
   };
 }
 function futCard(verb: Verb, lean: number): RuleCard {
@@ -73,6 +77,7 @@ function futCard(verb: Verb, lean: number): RuleCard {
     id: `fut:${verb.id}`, verbId: verb.id, kind: 'fut', tense: 'fut', ask: 'Futur stem', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${verb.fut}-`,
     tenseName: TENSE_NAMES.fut, examples: forms(verb, 'fut', [0, 2, 5]), paradigm: paradigm(verb, 'fut'), rule: rule(verb, 'fut'),
     value: lean * (group === 'stem' ? 3 : group === 'er-change' ? 2 : verb.base.endsWith('re') ? 1.2 : 0.6),
+    regular: group !== 'stem' && group !== 'er-change' && !verb.base.endsWith('re'),
   };
 }
 // A verb taking either helper (sortir: je suis sorti · j’ai sorti la poubelle) shows a table for each; its examples
@@ -87,6 +92,7 @@ function pcCard(verb: Verb, lean: number): RuleCard {
     tenseName: TENSE_NAMES.pc, examples: forms(verb, 'pc', [0, 2, 5]),
     paradigm: both ? [...paradigm({ ...verb, aux: 'être' }, 'pc'), ...paradigm({ ...verb, aux: 'avoir' }, 'pc')] : paradigm(verb, 'pc'),
     rule: rule(verb, 'pc'), value: lean * (group === 'etre' ? 3 : group === 'participle' ? 2.5 : group === 'reflexive' ? 2 : 0.6),
+    regular: !['etre', 'participle', 'reflexive'].includes(group),
   };
 }
 
@@ -109,11 +115,14 @@ export function ruleCandidates(verbs: Verb[], started: Set<string>, picked: Verb
   return cards;
 }
 
-// The deck for the picked verbs and tenses: the most valuable cards of each tense up to its cap (a stable sort, so
-// among equals the more common verb stays).
+// The deck for the picked verbs and tenses: every card with something of its own, then the REGULAR_KEPT most valuable
+// regular cards of each tense (a stable sort, so among equals the more common verb stays).
 export function ruleDeck(verbs: Verb[], started: Set<string>, picked: Verb[] = verbs, tenses: readonly Tense[] = TENSES): RuleCard[] {
   const cards = ruleCandidates(verbs, started, picked).filter((card) => tenses.includes(card.tense));
-  return tenses.flatMap((tense) => cards.filter((card) => card.kind === tense).sort((left, right) => right.value - left.value).slice(0, CAPS[tense]));
+  return tenses.flatMap((tense) => {
+    const own = cards.filter((card) => card.kind === tense).sort((left, right) => right.value - left.value);
+    return [...own.filter((card) => !card.regular), ...own.filter((card) => card.regular).slice(0, REGULAR_KEPT)];
+  });
 }
 
 // grammar: where another language's cards come from (lib/verb-grammar.ts); French's are the ones above.
@@ -151,7 +160,7 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
     return byCard;
   }
   const view = (card: RuleCard<T>): RuleCardView<T> => {
-    const { examples, value: _value, ...rest } = card;
+    const { examples, value: _value, regular: _regular, ...rest } = card;
     return { ...rest, examples: examples.map((text) => ({ text, audio: options.audio(text) })) };
   };
 

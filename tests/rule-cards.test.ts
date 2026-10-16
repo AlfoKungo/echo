@@ -91,16 +91,18 @@ describe('how it’s built: the deck', () => {
     expect(all.some((entry) => entry.kind === 'rule')).toBe(false);
   });
 
-  test('the deck is capped per kind, the exceptions and the started verbs first', () => {
-    const everyone = new Set(words.map((word) => word.id));
-    const deck = ruleDeck(verbs, everyone);
-    expect(deck.filter((card) => card.kind === 'imp').length).toBe(30);
-    expect(cardFor(deck, 'imp', 'être')).toBeDefined();
-    // The regular -er imparfait stems are the first to go, the least common of them first.
-    expect(cardFor(deck, 'imp', 'commencer')).toBeDefined();
-    for (const fr of ['tomber', 'jeter']) expect(cardFor(deck, 'imp', fr)).toBeUndefined();
-    // A started verb's card is in, and weighs more than the same kind of card for a verb not started.
-    expect(cardFor(ruleDeck(verbs, new Set(), verbs.slice(0, 20)), 'imp', 'étudier')).toBeUndefined();
+  test('every card with something of its own is in the deck; each tense keeps its ten most valuable regular cards', () => {
+    const deck = ruleDeck(verbs, new Set());
+    expect(deck.filter((card) => !card.regular).map((card) => card.id).sort()).toEqual(all.filter((card) => !card.regular).map((card) => card.id).sort());
+    for (const tense of TENSES) expect(deck.filter((card) => card.tense === tense && card.regular).length).toBe(Math.min(10, all.filter((card) => card.tense === tense && card.regular).length));
+    expect(cardFor(deck, 'imp', 'être')!.regular).toBe(false);
+    expect(cardFor(deck, 'imp', 'commencer')!.regular).toBe(false);
+    expect(cardFor(deck, 'pres', 'parler')!.regular).toBe(true);
+    // The least common regular card (passé composé has eleven here) is left out until its verb is started, which
+    // outranks the regular cards not started.
+    const last = all.filter((card) => card.tense === 'pc' && card.regular).at(-1)!;
+    expect(deck.some((card) => card.id === last.id)).toBe(false);
+    expect(ruleDeck(verbs, new Set([last.verbId!])).some((card) => card.id === last.id)).toBe(true);
     const some = ruleDeck(verbs, new Set([idOf('étudier')]));
     expect(cardFor(some, 'imp', 'étudier')!.value).toBeGreaterThan(cardFor(some, 'imp', 'voir')!.value);
   });
