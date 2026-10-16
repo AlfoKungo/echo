@@ -1341,33 +1341,91 @@ if ('mediaSession' in navigator) {
   navigator.mediaSession.setActionHandler('nexttrack', () => player().skip(1));
   navigator.mediaSession.setActionHandler('previoustrack', () => player().skip(-1));
 }
+// The line under the pause: when the next review and the next new words come, then anything that holds words back.
 function availabilityCopy() {
-  const parts = [];
-  const elsewhere = snapshot.overview.remaining + snapshot.overview.newAvailable;
-  if (deck !== 'all' && snapshot.stats.newAvailable === 0 && elsewhere > 0) parts.push(`${formatCount(elsewhere)} ${elsewhere === 1 ? 'word is' : 'words are'} waiting in other categories. Choose All words in Words options to continue.`);
-  if (snapshot.nextDue) parts.push(`Next review: ${dateLabel(snapshot.nextDue)}.`);
-  const recording = snapshot.stats.recording || 0;
-  if (recording > 0 && snapshot.stats.newAvailable === 0) parts.push(`${formatCount(recording)} ${recording === 1 ? 'word is' : 'words are'} still being recorded on your Mac. Each one joins your practice as soon as it is ready.`);
-  if (snapshot.stats.unseen - recording > 0 && snapshot.stats.newAvailable === 0) parts.push(snapshot.settings.newPerDay === 0 ? 'New words are paused with your daily allowance at 0.' : 'New words return with your next daily allowance at 04:00 on your Mac, or add extra words below.');
-  return parts.join(' ') || 'You’re up to date in this vocabulary selection.';
-}
-let extraScope = 0;
-// titled: the end of the cards shows it under its own heading; More for today (in Your words) is the dialog's title.
-function extraPracticeHTML(titled = true) {
   const stats = snapshot.stats;
-  // Unique per render: the dialog can open over the end screen, which renders this too.
-  const scope = ++extraScope;
+  const recording = stats.recording || 0;
+  const when = [];
+  if (snapshot.nextDue) when.push(`Next review ${whenLabel(snapshot.nextDue)}`);
+  if (stats.unseen - recording > 0 && stats.newAvailable === 0 && snapshot.settings.newPerDay > 0) when.push(when.length ? 'new words at 04:00' : 'New words at 04:00');
+  const notes = [];
+  const elsewhere = snapshot.overview.remaining + snapshot.overview.newAvailable;
+  if (deck !== 'all' && stats.newAvailable === 0 && elsewhere > 0) notes.push(`${formatCount(elsewhere)} ${elsewhere === 1 ? 'word is' : 'words are'} waiting in other categories. Choose All words in Words options to continue.`);
+  if (recording > 0 && stats.newAvailable === 0) notes.push(`${formatCount(recording)} ${recording === 1 ? 'word is' : 'words are'} still being recorded on your Mac.`);
+  if (stats.unseen - recording > 0 && stats.newAvailable === 0 && snapshot.settings.newPerDay === 0) notes.push('New words are paused with your daily allowance at 0.');
+  const line = [when.join(' · '), ...notes].filter(Boolean).join(when.length ? '. ' : ' ');
+  return line || 'You’re up to date in this vocabulary selection.';
+}
+// Today's time alone; another day's with its date.
+function whenLabel(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toDateString() === new Date().toDateString() ? new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit' }).format(date) : dateLabel(value);
+}
+// The end of the cards offers one choice: what comes next (new words, the reviews due soonest, the words missed most),
+// how many, and one button that names exactly what it does. The button's label is the confirmation, so it asks nothing more.
+let pauseKind = null;
+let pauseCount = 15;
+const PAUSE_COUNTS = [15, 20, 30];
+function pauseKinds() {
+  const stats = snapshot.stats;
+  const several = (n, one, many) => n === 1 ? one : many.replace('#', n);
+  return {
+    new: { label: 'New words', available: stats.unseen, detail: stats.unseen ? `${formatCount(stats.unseen)} not started${snapshot.extraToday ? ` · ${formatCount(snapshot.extraToday)} extra already today` : ''}` : 'Every word here is already started', go: (n) => several(n, 'Add 1 new word', 'Add # new words') },
+    soonest: { label: 'Due soonest', available: stats.scheduled, detail: stats.scheduled ? `${formatCount(stats.scheduled)} waiting for a later review` : 'No finished words are waiting', go: (n) => several(n, 'Review the one due soonest', 'Review the # due soonest') },
+    missed: { label: 'Most missed', available: stats.scheduledMissed, detail: stats.scheduledMissed ? `${formatCount(stats.scheduledMissed)} missed at least once` : 'No missed words are waiting', go: (n) => several(n, 'Review the one missed most', 'Review the # missed most') },
+  };
+}
+function chosenPauseKind(kinds) {
+  if (kinds[pauseKind]?.available > 0) return pauseKind;
+  return Object.keys(kinds).find((kind) => kinds[kind].available > 0) ?? null;
+}
+function pauseChooserHTML(primary) {
+  const kinds = pauseKinds();
+  const kind = chosenPauseKind(kinds);
+  if (!kind) return '';
+  const off = locked() ? 'disabled' : '';
+  const custom = !PAUSE_COUNTS.includes(pauseCount);
+  const asked = Math.min(pauseCount, kinds[kind].available);
+  return `<div class="pause-chooser">
+    <div class="segmented" role="group" aria-label="What comes next">${Object.entries(kinds).map(([key, item]) => `<button data-action="pause-kind" data-kind="${key}" aria-pressed="${key === kind}" ${item.available > 0 ? off : 'disabled'}>${item.label}</button>`).join('')}</div>
+    <p class="pause-detail">${esc(kinds[kind].detail)}</p>
+    <div class="pause-counts" role="group" aria-label="How many">${PAUSE_COUNTS.map((count) => `<button class="secondary" data-action="pause-count" data-count="${count}" aria-pressed="${count === pauseCount}" ${off}>${count}</button>`).join('')}<input id="pause-custom" class="${custom ? 'on' : ''}" type="number" inputmode="numeric" min="1" step="1" placeholder="···" aria-label="Another number" value="${custom ? pauseCount : ''}" ${off}></div>
+    <button class="${primary ? 'primary' : 'secondary'}" id="pause-go" data-action="pause-go" ${off}>${esc(kinds[kind].go(asked))}</button>
+  </div>`;
+}
+// Typing a number updates the chips and the button in place, so the field keeps its focus.
+function setPauseCustom(value) {
+  const count = Number(value.trim());
+  pauseCount = value.trim() && Number.isInteger(count) && count >= 1 ? count : 15;
+  const input = document.querySelector('#pause-custom');
+  input?.classList.toggle('on', !PAUSE_COUNTS.includes(pauseCount) || Boolean(value.trim()));
+  for (const chip of document.querySelectorAll('[data-action="pause-count"]')) chip.setAttribute('aria-pressed', String(!value.trim() && Number(chip.dataset.count) === pauseCount));
+  const kinds = pauseKinds();
+  const kind = chosenPauseKind(kinds);
+  const go = document.querySelector('#pause-go');
+  if (go && kind) go.textContent = kinds[kind].go(Math.min(pauseCount, kinds[kind].available));
+}
+function pauseGo() {
+  const kind = chosenPauseKind(pauseKinds());
+  if (!kind) return;
+  if (kind === 'new') extraPractice('extra-words', { count: pauseCount });
+  else extraPractice('review-early', { mode: kind, count: pauseCount });
+}
+// More for today (in Your words): every kind of extra practice with its own counts; the dialog's title names it.
+function extraPracticeHTML() {
+  const stats = snapshot.stats;
   const off = (enabled) => (enabled && !locked() ? '' : 'disabled');
   const chip = (attrs, text, label, enabled) => `<button class="secondary chip" ${attrs} aria-label="${esc(label)}" ${off(enabled)}>${text}</button>`;
   const custom = (kind, mode, label, verb, enabled) => {
-    const id = `custom-${kind}-${mode || 'new'}-${scope}`;
+    const id = `custom-${kind}-${mode || 'new'}`;
     return `<form class="custom-count" data-kind="${kind}" ${mode ? `data-mode="${mode}"` : ''} novalidate><label class="sr-only" for="${id}">${esc(label)}</label><input id="${id}" type="number" inputmode="numeric" min="1" step="1" placeholder="Custom" ${off(enabled)}><button class="secondary chip" type="submit" ${off(enabled)}>${verb}</button></form>`;
   };
   const row = (title, detail, controls) => `<div class="extra-row"><div><p>${title}</p><small>${esc(detail)}</small></div><div class="extra-controls">${controls}</div></div>`;
   const newDetail = !stats.unseen ? 'Every word here is already started' : snapshot.extraToday ? `${formatCount(snapshot.extraToday)} extra added today · resets at 04:00` : 'Today only · resets at 04:00';
   const review = (mode, available, noun) => `<div class="chips">${[15, 20, 30].map((count) => chip(`data-action="review-early" data-mode="${mode}" data-count="${count}"`, count, `Review ${count} ${noun}`, available > 0)).join('')}</div>${custom('review-early', mode, `How many ${noun} to review`, 'Review', available > 0)}`;
   const extra = `<div class="chips">${[15, 20, 30].map((count) => chip(`data-action="extra-words" data-count="${count}"`, `+${count}`, `Add ${count} new words today`, stats.unseen > 0)).join('')}</div>${custom('extra-words', '', 'How many new words to add today', 'Add', stats.unseen > 0)}`;
-  return `<section class="extra-practice" ${titled ? `aria-labelledby="extra-title-${scope}"` : ''}>${titled ? `<h2 id="extra-title-${scope}">Extra practice</h2>` : ''}
+  return `<section class="extra-practice">
     ${row('New words today', newDetail, extra)}
     ${row('Review due soonest', stats.scheduled ? `${formatCount(stats.scheduled)} waiting for a later review` : 'No finished words are waiting', review('soonest', stats.scheduled, 'words due soonest'))}
     ${row('Review most missed', stats.scheduledMissed ? `${formatCount(stats.scheduledMissed)} missed at least once` : 'No missed words are waiting', review('missed', stats.scheduledMissed, 'most-missed words'))}
@@ -1469,10 +1527,13 @@ function renderPractice() {
   if (!snapshot || loading) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}<div class="loading-state" role="status">${loading ? 'Opening your vocabulary…' : 'Your progress is safe on your Mac.'}</div></section>`; return; }
   if (!totalWords()) { main.innerHTML = `${noticeHTML()}<section class="practice">${header}${EMPTY_DECK}</section>`; return; }
   if (!snapshot.current) {
-    // The words found hardest, under the pause, with one button that brings them back now (a 'hardest' early review).
+    // The chooser comes first; the words found hardest sit under it, with one button that brings them back now (a
+    // 'hardest' early review); the way out is one line of links at the end.
     const hard = snapshot.hardest ?? [];
-    const hardest = hard.length ? `<div class="pause-hard"><h2>Hardest right now</h2><ol class="st-rows">${hard.map((word) => `<li><div class="name"><p lang="${languageTag}" class="fr${genderClass(word.gender)}">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div>${word.misses ? `<span class="st-tag shaky">missed ${word.misses}×</span>` : ''}</li>`).join('')}</ol><button class="${snapshot.stats.newAvailable > 0 ? 'secondary' : 'primary'}" data-action="review-hardest" data-count="${hard.length}" ${locked() ? 'disabled' : ''}>Review ${hard.length === 1 ? 'it' : `these ${hard.length}`}</button></div>` : '';
-    main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="completion"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p>${hardest}<div class="summary-actions">${snapshot.stats.newAvailable > 0 ? `<button class="primary" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}<button class="secondary" data-action="studied" ${busy ? 'disabled' : ''}>Your studied words</button><button class="secondary" data-action="families" ${busy ? 'disabled' : ''}>Word families</button><button class="secondary" data-action="grammar" ${busy ? 'disabled' : ''}>Explore grammar</button>${snapshot.undoId ? `<button class="quiet" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}</div>${extraPracticeHTML()}</div></section>`; return;
+    const more = snapshot.stats.newAvailable > 0;
+    const hardest = hard.length ? `<div class="pause-hard"><h2>Hardest right now</h2><ol class="st-rows">${hard.map((word) => `<li><div class="name"><p lang="${languageTag}" class="fr${genderClass(word.gender)}">${frEsc(word.fr)}</p><small>${esc(word.en)}</small></div>${word.misses ? `<span class="st-tag shaky">missed ${word.misses}×</span>` : ''}</li>`).join('')}</ol><button class="secondary" data-action="review-hardest" data-count="${hard.length}" ${locked() ? 'disabled' : ''}>Review ${hard.length === 1 ? 'it' : `these ${hard.length}`}</button></div>` : '';
+    const links = `<p class="pause-links"><button class="quiet accent" data-action="studied" ${busy ? 'disabled' : ''}>Your studied words</button><button class="quiet accent" data-action="families" ${busy ? 'disabled' : ''}>Word families</button><button class="quiet accent" data-action="grammar" ${busy ? 'disabled' : ''}>Grammar</button></p>${snapshot.undoId ? `<button class="quiet pause-undo" data-action="undo" ${locked() ? 'disabled' : ''}>Undo last answer</button>` : ''}`;
+    main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}<div class="completion pause"><h1>A good place to pause.</h1><p>${esc(availabilityCopy())}</p>${more ? `<button class="primary pause-continue" data-action="start" ${locked() ? 'disabled' : ''}>Continue practice</button>` : ''}${pauseChooserHTML(!more)}${hardest}${links}</div></section>`; return;
   }
   main.innerHTML = `${noticeHTML()}<section class="practice">${header}${workingCounts(categoryTitle(deck))}${cardHTML()}</section>`;
   fitCardFace();
@@ -5557,7 +5618,7 @@ function openOptions() {
 // More for today (in Your words): extra new words for today, and finished words reviewed early.
 function openMoreToday() {
   if (!snapshot) return;
-  openDialog('More for today', `${extraPracticeHTML(false)}<button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'more-today');
+  openDialog('More for today', `${extraPracticeHTML()}<button class="primary dialog-action" data-action="close-dialog">Done</button>`, 'more-today');
 }
 async function saveGoal(event) {
   event.preventDefault(); if (locked() || !snapshot) return;
@@ -5698,6 +5759,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'building-word') { const key = `${button.dataset.pattern}:${button.dataset.word}`; buildingWord = buildingWord === key ? '' : key; renderBuilding(); }
   else if (action === 'toggle-hide') { hideTranslations = !hideTranslations; revealedWords.clear(); renderBrowse(); document.querySelector('[data-action="toggle-hide"]')?.focus(); }
   else if (action === 'extra-words' || action === 'review-early') confirmExtra(action, button.dataset);
+  else if (action === 'pause-kind') { pauseKind = button.dataset.kind; renderPractice(); document.querySelector(`[data-action="pause-kind"][data-kind="${pauseKind}"]`)?.focus(); }
+  else if (action === 'pause-count') { pauseCount = Number(button.dataset.count); renderPractice(); document.querySelector(`[data-action="pause-count"][data-count="${pauseCount}"]`)?.focus(); }
+  else if (action === 'pause-go') pauseGo();
   else if (action === 'review-hardest') extraPractice('review-early', { mode: 'hardest', count: button.dataset.count });
   else if (action === 'extra-confirm' || action === 'extra-cancel') answerExtra(action === 'extra-confirm');
   else if (action === 'options') openOptions();
@@ -5830,6 +5894,7 @@ document.addEventListener('input', (event) => {
   if (event.target.dataset?.vbCell !== undefined) verbTable.answers[Number(event.target.dataset.vbCell)] = event.target.value;
   if (event.target.id === 'st-slider') { stopStatsPlay(); showStatsDay(Number(event.target.value)); }
   if (event.target.id === 'vs-slider') { stopVerbPlay(); showVerbDay(Number(event.target.value)); }
+  if (event.target.id === 'pause-custom') setPauseCustom(event.target.value);
 });
 document.addEventListener('submit', (event) => {
   if (event.target.id === 'goal-form') saveGoal(event);
