@@ -634,7 +634,9 @@ html{touch-action:manipulation}
 .study-surface.revealed .gender-tag{display:table;margin:12px auto 0}
 /* A word card's face is three rows: what goes over the word, the word, and what comes under it. The middle row stays
    in the centre of the card, so turning the card adds the answer without moving the word asked. */
-.word-content.pinned{align-self:stretch;contain:size;display:grid;grid-template-rows:minmax(0,1fr) auto minmax(0,1fr)}
+/* The word sits a little above the card's middle, two parts of the free space over it to three under, where the eye
+   rests; the play button of Listen takes the same place. */
+.word-content.pinned{align-self:stretch;contain:size;display:grid;grid-template-rows:minmax(0,2fr) auto minmax(0,3fr)}
 .word-content.pinned.tall{grid-template-rows:minmax(0,1fr) auto auto}
 .card-over{align-self:end}.card-over .say-verdict{margin-bottom:14px}
 .card-under{align-self:start}
