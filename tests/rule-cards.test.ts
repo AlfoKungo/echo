@@ -17,6 +17,22 @@ const verbNamed = (fr: string) => verbs.find((verb) => verb.id === idOf(fr))!;
 const everything = { verbs, tenses: [...TENSES] };
 
 describe('how it’s built: the deck', () => {
+  test('the présent endings sit on the stems person by person, and an -ir verb taking -er endings says so', () => {
+    const endings = Object.fromEntries(['parler', 'finir', 'prendre', 'dire', 'pouvoir'].map((fr) => [fr, cardFor(all, 'pres', fr)!.endings]));
+    expect(endings).toEqual({
+      parler: '-er endings: -e, -es, -e, -ons, -ez, -ent', finir: '-s, -s, -t, -ons, -ez, -ent', prendre: '-s, -s, —, -ons, -ez, -ent',
+      dire: '-s, -s, -t, -ons, vous dites, -ent', pouvoir: '-x, -x, -t, -ons, -ez, -ent',
+    });
+    const ouvrir = verbOf({ id: 'x-ouvrir', pres: ['ouvre', 'ouvres', 'ouvre', 'ouvrons', 'ouvrez', 'ouvrent'], imp: ['ouvrais', 'ouvrais', 'ouvrait', 'ouvrions', 'ouvriez', 'ouvraient'], fut: 'ouvrir', pp: 'ouvert', aux: 'avoir' }, { id: 'x-ouvrir', fr: 'ouvrir', en: 'to open' } as VerbWord);
+    const card = ruleCandidates([ouvrir], new Set()).find((entry) => entry.kind === 'pres')!;
+    expect(card.endings).toBe('-er endings on an -ir verb: -e, -es, -e, -ons, -ez, -ent');
+    // The surprise weighs like a three-stem verb, well above a regular -er one.
+    expect(card.value).toBeGreaterThan(cardFor(all, 'pres', 'parler')!.value);
+    expect(cardFor(all, 'pres', 'être')!.endings).toBeUndefined();
+    expect(cardFor(all, 'pc', 'partir')!.endings).toBe('suis, es, est, sommes, êtes, sont + parti(e)(s)');
+    expect(cardFor(all, 'pc', 'prendre')!.endings).toBe('ai, as, a, avons, avez, ont + pris');
+  });
+
   test('the présent stems: one for a regular verb, two or three for the others, the forms for être, avoir, aller, faire', () => {
     const stems = Object.fromEntries(['parler', 'finir', 'venir', 'prendre', 'manger', 'acheter', 'boire', 'pouvoir'].map((fr) => [fr, cardFor(all, 'pres', fr)!.answer]));
     expect(stems).toEqual({

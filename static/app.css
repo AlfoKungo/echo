@@ -554,7 +554,7 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-tense-head h2{font-size:20px}.vb-table-link{padding-left:0;margin-top:4px}
 .vb-cards .study-surface{min-height:340px;height:calc(100svh - 330px);max-height:520px}
 .vb-card-who{font-size:22px;color:var(--violet);margin-bottom:6px}.vb-card .vb-tense{margin-top:16px}.vb-card-answer{overflow-wrap:anywhere}
-.vb-card-forms{margin:12px 0 0;font-size:18px;color:var(--violet)}.vb-card-also{margin:10px 0 0;font-size:14px;color:var(--muted)}
+.vb-card-forms{margin:12px 0 0;font-size:18px;color:var(--violet)}.vb-card-endings{display:inline-block;max-width:100%;margin:14px 0 4px;padding:8px 14px;border-radius:12px;background:var(--violet-soft);color:var(--ink);font-size:17px;font-weight:500;line-height:1.4}.vb-card-endings strong{display:block;margin-bottom:2px;color:var(--peach);font-size:15px;font-weight:650}.vb-card-endings span{white-space:nowrap}.vb-card-also{margin:10px 0 0;font-size:14px;color:var(--muted)}
 .vb-card-hint{text-align:center;margin-top:12px}.vb-cards .vb-para{margin-top:18px}
 .vb-rule-answer{font-size:28px;line-height:1.25;letter-spacing:-.4px}.vb-rule-answer span{white-space:nowrap}
 /* Swedish key forms: each table row named (present, past, supine), the English-first card face, one column of three

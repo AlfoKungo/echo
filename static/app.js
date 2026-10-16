@@ -4045,11 +4045,20 @@ function renderRuleCards() {
   // A rule's answer breaks only between its words, never after the hyphen of an ending.
   const answer = rule ? card.answer.split(' ').map((part) => `<span>${frEsc(part)}</span>`).join(' ') : frEsc(card.answer);
   const face = revealed
-    ? `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : languageTag}">${answer}</h1><p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="${languageTag}">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
+    ? `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : languageTag}">${answer}</h1>${ruleEndingsHTML(card.endings)}<p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="${languageTag}">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
     : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang === 'fr' ? languageTag : card.clueLang}">${frEsc(card.clue)}</p>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-rule-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-rule-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const after = revealed ? `${card.paradigm.length ? paradigmHTML(card.paradigm) : ''}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : '<p class="caption vb-card-hint">How is it built? Say it to yourself, then tap the card.</p>';
   shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${after}`);
+}
+// A card's endings: its label (-er endings, or -er endings on an -ir verb) on a line of its own, then the endings, each
+// kept whole so a line never breaks inside "-ons".
+function ruleEndingsHTML(endings) {
+  if (!endings) return '';
+  const cut = endings.indexOf(': ');
+  const label = cut < 0 ? '' : `<strong>${esc(endings.slice(0, cut))}</strong>`;
+  const list = (cut < 0 ? endings : endings.slice(cut + 2)).split(', ').map((part) => `<span>${frEsc(part)}</span>`).join(', ');
+  return `<p class="vb-card-endings">${label}${list}</p>`;
 }
 function revealRuleCard() {
   const card = vbRules?.items[vbRules.index];
