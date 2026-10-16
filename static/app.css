@@ -805,15 +805,18 @@ html{touch-action:manipulation}
 .range-thumb:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
 .range-ends{position:relative;height:18px;margin-top:2px;font-size:12px;color:var(--muted)}.range-ends span{position:absolute;transform:translateX(-50%)}
 .board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.board-tile{position:relative;min-height:58px;border-radius:14px;-webkit-tap-highlight-color:transparent}
-.board-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;border:1px solid var(--frame);border-radius:inherit;background:var(--card);font-size:14px;line-height:1.2;overflow:hidden;overflow-wrap:anywhere;transition:opacity .22s ease}
-.board-back{opacity:0;background:var(--violet-soft);border-color:color-mix(in srgb,var(--violet) 55%,transparent);font-size:13px}
+.board-tile{position:relative;min-height:68px;border-radius:18px;-webkit-tap-highlight-color:transparent}
+.board-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;border:0;border-radius:inherit;background:var(--card);font-size:17px;font-weight:500;letter-spacing:-.015em;line-height:1.18;overflow:hidden;transition:opacity .22s ease}
+/* Board reads at a glance in the iPhone's own sans, the one place French leaves the serif. A phrase breaks between
+   words; a word too wide for its tile is shrunk by fitBoardFaces (app.js). */
+.board-grid .board-face[lang]{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.board-back{opacity:0;background:var(--violet-soft);font-size:15px}
 .board-tile.turned .board-front{opacity:0}.board-tile.turned .board-back{opacity:1}
-.board-tile.weak .board-front{border-color:color-mix(in srgb,var(--danger) 60%,transparent);background:color-mix(in srgb,var(--danger) 7%,var(--card))}
+.board-tile.weak::after{content:"";position:absolute;z-index:1;top:9px;right:9px;width:6px;height:6px;border-radius:50%;background:var(--peach);pointer-events:none}
 .board-bar{position:absolute;left:10px;right:10px;bottom:5px;height:2px;border-radius:2px;background:var(--violet);opacity:.75;transform-origin:left;transform:scaleX(0)}
 .board-tile.turned .board-bar{animation:board-drain 2s linear forwards}
 @keyframes board-drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
-@media(hover:hover){.board-tile:hover .board-front{border-color:var(--violet)}}
+@media(hover:hover){.board-tile:hover .board-front{background:var(--card-hover)}}
 /* Your words: Word families, Word building and More for today as one line of links over the search. */
 .browse-links{display:flex;flex-wrap:wrap;gap:4px 18px;margin:6px 0 0}
 .browse-links button{padding:6px 0;min-height:36px;color:var(--violet);font-size:15px}.browse-links button:disabled{color:var(--dim)}
@@ -827,11 +830,10 @@ h1{font-weight:650;letter-spacing:-.03em}
 .lyric-text p{font-size:19px;line-height:1.6}
 .word-row h2{font-size:21px}
 .study-surface{border-radius:28px}.tile,.song-row{border-radius:20px}
-.board-tile .board-front,.board-tile .board-back{border-radius:16px}
 .news-bar{border-radius:24px}
 /* No outlines: surfaces stand out by shade (a shadow too in Daylight), dividers are faint, and an edge is kept only where it says
    something (a text field, a word scoring below 0, a choice made, Say's verdict). */
-:root :is(.study-surface:not(.say-right):not(.say-wrong),.tile,.song-row,.news-bar,.segmented,.wm-deck,.vb-tenses,.vb-setup,.vb-worst,.topic-row,.gr-box,.fam-row,.wb-card,.secondary:not([aria-pressed=true]),.st-tag,.zone-label:not(.picked),.practice-way,.news-chips button,.news-english,.news-note,.study-row,.board-tile:not(.weak) .board-front,.board-back,.card-replay){border-color:transparent}
+:root :is(.study-surface:not(.say-right):not(.say-wrong),.tile,.song-row,.news-bar,.segmented,.wm-deck,.vb-tenses,.vb-setup,.vb-worst,.topic-row,.gr-box,.fam-row,.wb-card,.secondary:not([aria-pressed=true]),.st-tag,.zone-label:not(.picked),.practice-way,.news-chips button,.news-english,.news-note,.study-row,.card-replay){border-color:transparent}
 :root :is(.word-row,.st-rows li,.wm-heard-row){border-color:color-mix(in srgb,var(--frame) 45%,transparent)}
 :root .zone-label{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 :root :is(.tile,.song-row,.practice-way,.segmented,.wm-deck,.board-front){background:var(--card)}

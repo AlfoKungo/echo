@@ -2922,6 +2922,20 @@ function renderBoard() {
     : board.total > board.words.length ? `${n(board.words.length)} of ${formatCount(board.total)} in Cards` : `${n(board.total)} in Cards`;
   const shuffle = board.words.length > 1 ? `<button class="icon board-shuffle" data-action="board-shuffle" aria-label="Shuffle the tiles">${shuffleIcon}</button>` : '';
   shell(`<span class="compact-line"><span class="compact-label" title="${esc(title)}">${esc(title)}</span><span class="compact-counts"><span>${count}</span>${shuffle}</span></span>${body}`);
+  fitBoardFaces();
+}
+// A face whose word is wider than its tile, or runs past two lines, is shrunk to fit, no smaller than BOARD_MIN_PX.
+// Every face is measured in one read, the shrinking is written in one pass, and only the few still too big are
+// stepped down after it, so a board of two thousand tiles lays out a handful of times rather than once per tile.
+const BOARD_MIN_PX = 12;
+function fitBoardFaces() {
+  const over = (face) => face.clientWidth > 0 && (face.scrollWidth > face.clientWidth + 1 || face.scrollHeight > face.clientHeight + 1);
+  const faces = [...main.querySelectorAll('.board-face')].filter(over).map((face) => [face, face.clientWidth / face.scrollWidth, parseFloat(getComputedStyle(face).fontSize)]);
+  for (const [face, ratio, size] of faces) face.style.fontSize = `${Math.max(BOARD_MIN_PX, Math.floor(size * Math.min(1, ratio) * 2) / 2)}px`;
+  for (const [face] of faces) {
+    let size = parseFloat(face.style.fontSize);
+    while (size > BOARD_MIN_PX && over(face)) { size -= 0.5; face.style.fontSize = `${size}px`; }
+  }
 }
 const shuffled = (list) => list.map((item) => [Math.random(), item]).sort((a, b) => a[0] - b[0]).map(([, item]) => item);
 // Lays the same tiles out in a new order, all face up again.
