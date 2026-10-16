@@ -148,13 +148,14 @@ describe('the editions kept', () => {
     expect(readdirSync(dir).sort()).toEqual(['20261006.json', '20261008.json', '20261009.json', 'since']);
   });
 
-  test('a reply with no story leaves the edition without headings, not asked again', async () => {
+  test('a reply with no story is asked for again at the next checks, three replies in all, then the edition has no headings', async () => {
     let asked = 0;
     const { news } = setup(['20261007'], {}, async () => { asked++; return 'Sorry.'; });
-    await news.check();
-    await news.check();
-    expect(news.view('20261007')).toMatchObject({ status: 'ready', stories: [] });
-    expect(asked).toBe(1);
+    for (let check = 0; check < 4; check++) {
+      await news.check();
+      expect(news.view('20261007')).toMatchObject({ status: 'ready', error: null, stories: [] });
+    }
+    expect(asked).toBe(3);
   });
 
   test('show how far each was played: the line reached, or finished', async () => {

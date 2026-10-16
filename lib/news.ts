@@ -35,6 +35,9 @@ const STEPS: NewsStep[] = ['text', 'audio', 'timing', 'notes', 'stories'];
 const READY_STEPS: NewsStep[] = ['text', 'audio', 'timing', 'notes'];
 const STORIES_TIMEOUT = 5 * 60_000;
 const STORY_TITLE_MAX = 60;
+// Replies with no usable story asked for before an edition is left without headings.
+const STORY_TRIES = 3;
+class NoStories extends Error {}
 export type HeardWord = { text: string; at: number };
 type Edition = {
   date: string; page: string; title: string;
@@ -44,8 +47,10 @@ type Edition = {
   // Seconds into the recording where each line starts, the lines taken in reading order; strictly increasing.
   starts: number[] | null;
   notes: SongNotes | null;
-  // Where each story starts; absent in an edition saved before stories were marked.
+  // Where each story starts; absent in an edition saved before stories were marked. Empty only once STORY_TRIES
+  // replies (storyTries) had no usable story.
   stories?: NewsStory[] | null;
+  storyTries?: number;
   failure: { step: NewsStep; message: string; at: string } | null;
 };
 // A story in an edition: the line it starts on (in reading order, from 0), a short French title, and which of RFI's
@@ -296,7 +301,7 @@ export function createNews(deps: NewsDeps) {
     audio: (edition) => existsSync(recording(edition.date)),
     timing: (edition) => !!edition.starts,
     notes: (edition) => !!edition.notes,
-    stories: (edition) => !!edition.stories,
+    stories: (edition) => !!edition.stories && (edition.stories.length > 0 || (edition.storyTries ?? 0) >= STORY_TRIES),
   };
   const nextStep = (edition: Edition) => STEPS.find((step) => !done[step](edition)) ?? null;
   const readyStep = (edition: Edition) => READY_STEPS.find((step) => !done[step](edition)) ?? null;
@@ -328,14 +333,14 @@ export function createNews(deps: NewsDeps) {
     }
     if (step === 'audio') { await download(edition.mp3!, recording(edition.date)); return edition; }
     if (step === 'timing') return { ...edition, starts: lineStarts(edition.stanzas!.flat(), await transcribe(recording(edition.date))) };
-    // A reply with no usable story leaves the edition without headings rather than asking again at every check; only
-    // Claude being out of reach (ask throws) is tried again.
+    // A reply with no usable story is asked for again at the next check, up to STORY_TRIES replies; then the edition
+    // stays without headings.
     if (step === 'stories') {
       const lines = edition.stanzas!.flat();
       const headlines = headlinesOf(edition.title);
       const reply = await deps.ask(storiesPrompt(edition.date, headlines, lines), { timeout: STORIES_TIMEOUT, purpose: 'marking the stories in the news' });
       const stories = parseStories(reply, lines.length, headlines.length);
-      if (!stories.length) console.error(`news: ${edition.date}: no story could be read from Claude’s reply`);
+      if (!stories.length) throw new NoStories(`No story could be read from Claude’s reply: ${reply.slice(0, 200)}`);
       return { ...edition, stories };
     }
     const notes = await writeNotes(deps.ask, { kind: 'news', title: `Journal en français facile, ${dayOf(edition.date)}`, artist: 'RFI', lyrics: edition.stanzas!.map((stanza) => stanza.join('\n')).join('\n\n') }, (written, total) => {
@@ -355,7 +360,9 @@ export function createNews(deps: NewsDeps) {
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error);
         console.error(`news: ${date} ${step} failed: ${message}`);
-        save({ ...edition, failure: { step, message, at: now().toISOString() } });
+        const tries = error instanceof NoStories ? { storyTries: (edition.storyTries ?? 0) + 1 } : {};
+        const given = (tries.storyTries ?? 0) >= STORY_TRIES;
+        save({ ...edition, ...tries, ...(given ? { stories: [], failure: null } : { failure: { step, message, at: now().toISOString() } }) });
         break;
       } finally {
         working = null;
