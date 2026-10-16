@@ -105,7 +105,7 @@ describe('how it’s built: the deck', () => {
     const picked = ['venir', 'parler', 'avoir peur'].map(verbNamed);
     const deck = ruleDeck(verbs, new Set(), picked, ['pres']);
     expect(deck.filter((card) => card.kind !== 'rule').map((card) => card.id).sort()).toEqual([`pres:${idOf('avoir')}`, `pres:${idOf('parler')}`, `pres:${idOf('venir')}`].sort());
-    expect(deck.filter((card) => card.kind === 'rule').map((card) => card.id)).toEqual(['rule:pres-er', 'rule:pres-ir', 'rule:pres-stems']);
+    expect(deck.filter((card) => card.kind === 'rule').map((card) => card.id)).toEqual(['rule:pres-er', 'rule:pres-finir', 'rule:pres-stems']);
     const past = ruleDeck(verbs, new Set(), picked, ['pc', 'imp']);
     expect(new Set(past.map((card) => card.tense))).toEqual(new Set(['pc', 'imp']));
     expect(past.filter((card) => card.kind !== 'rule').length).toBe(6);
