@@ -26,11 +26,12 @@ const WORST = 6;
 const PER_VERB = 3;
 const PER_TENSE = 2;
 // A form's score: +2 for a typed answer right and -3 wrong (Type it, each cell of a whole table); +1 or -2 for a
-// Cards, In sentences or Walkman mark, the learner's own say; +1 or -1 for a Form → verb mark, since knowing a form
-// when you see it is the easier half. By ear asks about a tense or a number, not one form, and counts for none. Every point
-// halves over SCORE_HALF_LIFE_DAYS, as a word's does. A table written in Look, then write is graded as a whole,
-// apart from its forms: TABLE_PERFECT points when every form was right, TABLE_MISSED when any was not.
-export const points = (mode: string, right: number) => mode === 'card' || mode === 'sentence' ? (right ? 1 : -2) : mode === 'recognize' ? (right ? 1 : -1) : (right ? 2 : -3);
+// Cards, In sentences or Walkman mark, the learner's own say, and for every form a How it's built card about one verb
+// covers (mode 'built'); +1 or -1 for a Form → verb mark, since knowing a form when you see it is the easier half. By
+// ear asks about a tense or a number, not one form, and counts for none. Every point halves over SCORE_HALF_LIFE_DAYS,
+// as a word's does. A table written in Look, then write is graded as a whole, apart from its forms: TABLE_PERFECT
+// points when every form was right, TABLE_MISSED when any was not.
+export const points = (mode: string, right: number) => mode === 'card' || mode === 'sentence' || mode === 'built' ? (right ? 1 : -2) : mode === 'recognize' ? (right ? 1 : -1) : (right ? 2 : -3);
 const TABLE_PERFECT = 2, TABLE_MISSED = -1;
 // Every drill picks a form with odds 2^(-score/PULL), the score held within ±LIMIT, as the Walkman picks words: an
 // untried form at 0, one missed once about three times as likely, one known twice in a row about a fifth as likely.
@@ -331,6 +332,14 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     else insert.run(requestId, verb.id, tense, person, way, null, '', input.knew ? 1 : 0, now().toISOString());
     return { ok: true };
   }
+  // A mark on a How it's built card about one verb (lib/rule-cards.ts): the card shows how the whole tense is made,
+  // so it counts for every form of the tense, once per request id.
+  function markBuilt(input: { requestId: string; verbId: string; tense: T; knew: boolean }) {
+    const requestId = requestIdOf(input?.requestId);
+    const { verb, tense } = findTense(input?.verbId, input?.tense);
+    if (typeof input.knew !== 'boolean') throw new StoreError('Say whether you knew it.');
+    for (const each of persons(verb, tense)) insert.run(`built:${requestId}:${each}`, verb.id, tense, each, 'built', null, '', input.knew ? 1 : 0, now().toISOString());
+  }
   // Every practised form's score now, by "verbId|tense|person".
   const formScores = () => scoresAt(now().getTime()).scores;
 
@@ -561,6 +570,6 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
   // The verbs and tenses the Practising line picks, for drills kept outside this module (How it's built).
   const practising = (input: RoundInput<T>) => ({ verbs: chosenVerbs(input), tenses: chosenTenses(input) });
 
-  return { round, cards, mark, formScores, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, practising, close: () => db.close() };
+  return { round, cards, mark, markBuilt, formScores, nextTable, statistics, scoresOn, walkmanForms, walkmanPhrases, answer, table, earRound, earAnswer, summary, earPhrases, shaky, hookless, setHooks, practising, close: () => db.close() };
 }
 export type VerbDrills = ReturnType<typeof createVerbDrills<Verb, Tense>>;

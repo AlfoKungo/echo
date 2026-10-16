@@ -219,8 +219,9 @@ const TENSE_TOPICS: Record<string, string[]> = language.code === 'pt' ? {
   fut: ['futur-simple', 'futur-proche'],
 };
 const verbs = createVerbDrills({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), earAudio: phraseAudio });
-// How it's built: cards on how each tense is formed, drawn from the same verb tables, marked apart from the forms.
-const ruleCards = createRuleCards({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), audio: phraseAudio });
+// How it's built: cards on how each tense is formed, drawn from the same verb tables. A card about one verb counts for
+// that verb's forms in its tense too; a card about a rule counts only for itself.
+const ruleCards = createRuleCards({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), audio: phraseAudio, onVerbMark: verbs.markBuilt });
 // Memory hooks for stubborn words and verb forms: at start and every ten minutes (ECHO_WORD_HOOKS=off switches them off).
 const hooks = createWordHooks({ ask, store, verbs });
 const hookChecks = setInterval(() => { if (claudeJob('ECHO_WORD_HOOKS')) void hooks.check(); }, 10 * 60_000);

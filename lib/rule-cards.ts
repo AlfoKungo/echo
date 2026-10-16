@@ -14,10 +14,11 @@ export type RuleKind = Tense | 'rule';
 // forms said as the verb tape records them (subject + form), so their recordings can be found. value: how much the
 // card is worth drawing, higher for the exceptions (être's ét-, an irregular stem, a verb taking être) and
 // STARTED_LEAN times higher for a verb the learner has started.
-// clueLang 'fr' marks a clue in the language learnt, whichever it is.
+// clueLang 'fr' marks a clue in the language learnt, whichever it is. verbId names the verb a card is about (a verb's
+// stems, its futur stem, its passé composé); a card about a rule itself has none.
 export type RuleCard<T extends string = Tense> = {
   id: string; kind: T | 'rule'; tense: T; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string;
-  tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number;
+  tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number; verbId?: string;
 };
 export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value'> & { examples: { text: string; audio: string | null }[] };
 
@@ -54,7 +55,7 @@ function presCard(verb: Verb, lean: number): RuleCard {
   const stems = presentStems(verb);
   const examples = forms(verb, 'pres', [0, 3, 5]);
   return {
-    id: `pres:${verb.id}`, kind: 'pres', tense: 'pres', ask: stems ? 'Présent stems' : 'Présent: je, nous, ils', inf: verb.inf, clue: verb.en, clueLang: 'en',
+    id: `pres:${verb.id}`, verbId: verb.id, kind: 'pres', tense: 'pres', ask: stems ? 'Présent stems' : 'Présent: je, nous, ils', inf: verb.inf, clue: verb.en, clueLang: 'en',
     answer: stems ? stems.map((stem) => `${stem}-`).join(' · ') : examples.join(' · '),
     tenseName: TENSE_NAMES.pres, examples, paradigm: paradigm(verb, 'pres'), rule: rule(verb, 'pres'),
     value: lean * (!stems ? 3 : stems.length === 3 ? 2.5 : stems.length === 2 ? (verb.base.endsWith('er') ? 1.2 : 2) : verb.base.endsWith('er') ? 0.5 : 1),
@@ -64,7 +65,7 @@ function impCard(verb: Verb, lean: number): RuleCard {
   const group = groupOf(verb, 'imp');
   const stem = verb.base === 'être' ? 'ét' : verb.imp[0]!.replace(/ais$/, '');
   return {
-    id: `imp:${verb.id}`, kind: 'imp', tense: 'imp', ask: 'Imparfait stem', inf: verb.inf, clue: said(verb, 'pres', 3), clueLang: 'fr', answer: `${stem}-`,
+    id: `imp:${verb.id}`, verbId: verb.id, kind: 'imp', tense: 'imp', ask: 'Imparfait stem', inf: verb.inf, clue: said(verb, 'pres', 3), clueLang: 'fr', answer: `${stem}-`,
     tenseName: TENSE_NAMES.imp, examples: forms(verb, 'imp', [0, 3, 5]), paradigm: paradigm(verb, 'imp'), rule: rule(verb, 'imp'),
     value: lean * (group === 'etre' ? 3 : group === 'from-nous' ? 2 : group === 'soft' || group === 'double-i' ? 1.5 : verb.base.endsWith('er') ? 0.6 : 1.2),
   };
@@ -72,7 +73,7 @@ function impCard(verb: Verb, lean: number): RuleCard {
 function futCard(verb: Verb, lean: number): RuleCard {
   const group = groupOf(verb, 'fut');
   return {
-    id: `fut:${verb.id}`, kind: 'fut', tense: 'fut', ask: 'Futur stem', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${verb.fut}-`,
+    id: `fut:${verb.id}`, verbId: verb.id, kind: 'fut', tense: 'fut', ask: 'Futur stem', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${verb.fut}-`,
     tenseName: TENSE_NAMES.fut, examples: forms(verb, 'fut', [0, 2, 5]), paradigm: paradigm(verb, 'fut'), rule: rule(verb, 'fut'),
     value: lean * (group === 'stem' ? 3 : group === 'er-change' ? 2 : verb.base.endsWith('re') ? 1.2 : 0.6),
   };
@@ -81,7 +82,7 @@ function pcCard(verb: Verb, lean: number): RuleCard {
   const group = groupOf(verb, 'pc');
   const helper = verb.reflexive ? 'être' : verb.aux;
   return {
-    id: `pc:${verb.id}`, kind: 'pc', tense: 'pc', ask: 'Passé composé', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${helper} + ${verb.pp}`,
+    id: `pc:${verb.id}`, verbId: verb.id, kind: 'pc', tense: 'pc', ask: 'Passé composé', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${helper} + ${verb.pp}`,
     tenseName: TENSE_NAMES.pc, examples: forms(verb, 'pc', [0, 2, 5]), paradigm: paradigm(verb, 'pc'), rule: rule(verb, 'pc'),
     value: lean * (group === 'etre' ? 3 : group === 'participle' ? 2.5 : group === 'reflexive' ? 2 : 0.6),
   };
@@ -174,6 +175,8 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
   // The recording of a phrase (the verb tape's, By ear's), or null when there is none.
   audio: (said: string) => string | null;
   grammar?: Pick<VerbGrammar<V, T>, 'ruleDeck' | 'ruleCandidates'>;
+  // A mark on a card about one verb, passed on so it counts for that verb's forms in the tense (lib/verb-drills.ts).
+  onVerbMark?: (input: { requestId: string; verbId: string; tense: T; knew: boolean }) => void;
   now?: () => Date; random?: () => number;
 }) {
   const deck = options.grammar ?? ({ ruleDeck, ruleCandidates } as unknown as Pick<VerbGrammar<V, T>, 'ruleDeck' | 'ruleCandidates'>);
@@ -219,13 +222,16 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
     return ordered.map(view);
   }
 
-  // The learner's own say on a card, once per request id. Any card the verbs give counts, in the deck now or not.
+  // The learner's own say on a card, once per request id. Any card the verbs give counts, in the deck now or not; a
+  // card about one verb counts for its forms too (onVerbMark).
   function mark(input: { requestId: string; id: string; knew: boolean }) {
     if (typeof input?.requestId !== 'string' || !input.requestId) throw new StoreError('This mark is missing its request ID.');
     if (typeof input.knew !== 'boolean') throw new StoreError('Say whether you knew it.');
     const started = new Set(options.vocabulary().filter((word) => word.status !== 'new').map((word) => word.id));
-    if (typeof input.id !== 'string' || !deck.ruleCandidates(options.verbs(), started).some((card) => card.id === input.id)) throw new StoreError('That card is not in Echo.', 404);
+    const card = typeof input.id === 'string' ? deck.ruleCandidates(options.verbs(), started).find((entry) => entry.id === input.id) : undefined;
+    if (!card) throw new StoreError('That card is not in Echo.', 404);
     insert.run(input.requestId, input.id, input.knew ? 1 : 0, now().toISOString());
+    if (card.verbId) options.onVerbMark?.({ requestId: input.requestId, verbId: card.verbId, tense: card.tense, knew: input.knew });
     return { ok: true };
   }
 

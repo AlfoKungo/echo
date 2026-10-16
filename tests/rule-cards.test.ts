@@ -117,12 +117,12 @@ describe('how it’s built: marks', () => {
   const closers: (() => void)[] = [];
   afterEach(() => { for (const close of closers.splice(0)) close(); for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true }); });
   const clock = { value: new Date(2026, 9, 9, 10) };
-  function open(directory = mkdtempSync(join(tmpdir(), 'echo-rules-'))) {
+  function open(directory = mkdtempSync(join(tmpdir(), 'echo-rules-')), onVerbMark?: (input: { requestId: string; verbId: string; tense: string; knew: boolean }) => void) {
     directories.push(directory);
     // A constant draw orders the cards purely by weight, so a change in weight shows in the order.
     const cards = createRuleCards({
       dbPath: join(directory, 'echo.db'), verbs: () => verbs, vocabulary: () => [{ id: idOf('tomber'), status: 'learning' }],
-      audio: (said) => said === 'je suis tombé' ? 'audio/radio/fr-0000000000000000.mp3' : null, random: () => 0.5, now: () => new Date(clock.value),
+      audio: (said) => said === 'je suis tombé' ? 'audio/radio/fr-0000000000000000.mp3' : null, random: () => 0.5, now: () => new Date(clock.value), onVerbMark,
     });
     closers.push(cards.close);
     return { cards, directory };
@@ -166,5 +166,13 @@ describe('how it’s built: marks', () => {
     expect(() => cards.mark({ requestId: 'y', id: `pc:${idOf('aller')}`, knew: 'yes' as never })).toThrow('Say whether you knew it.');
     // A card dropped from the deck by the cap still counts: it is one the verbs give.
     expect(cards.mark({ requestId: 'z', id: `imp:${idOf('parler')}`, knew: true })).toEqual({ ok: true });
+  });
+
+  test('a card about one verb passes its mark on to that verb’s tense; a card about a rule does not', () => {
+    const passed: unknown[] = [];
+    const { cards } = open(undefined, (input) => passed.push(input));
+    cards.mark({ requestId: 'v', id: `fut:${idOf('envoyer')}`, knew: false });
+    cards.mark({ requestId: 'r', id: 'rule:pres-finir', knew: true });
+    expect(passed).toEqual([{ requestId: 'v', verbId: idOf('envoyer'), tense: 'fut', knew: false }]);
   });
 });
