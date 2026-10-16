@@ -1,15 +1,19 @@
 // Verbs: the conjugation tables behind the Verbs room. Claude (Opus) writes each vocabulary verb's présent,
 // imparfait, futur stem, participle and helper (createVerbTables, in the background, a batch at a time); verbProblems
 // checks every table against the rules French is regular about before it is kept. Everything else is built here:
-// the four tenses, reflexive pronouns, participle agreement, what counts as a right answer, which mistake a wrong
+// the eight tenses (the conditionnel, plus-que-parfait, subjonctif and impératif from those five parts and a few
+// irregular forms), reflexive pronouns, participle agreement, what counts as a right answer, which mistake a wrong
 // one was, and the questions of the By ear drill.
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import type { Ask } from './claude';
 
-export const TENSES = ['pres', 'pc', 'imp', 'fut'] as const;
+export const TENSES = ['pres', 'pc', 'imp', 'fut', 'cond', 'pqp', 'subj', 'impe'] as const;
 export type Tense = typeof TENSES[number];
-export const TENSE_NAMES: Record<Tense, string> = { pres: 'présent', pc: 'passé composé', imp: 'imparfait', fut: 'futur' };
+export const TENSE_NAMES: Record<Tense, string> = { pres: 'présent', pc: 'passé composé', imp: 'imparfait', fut: 'futur', cond: 'conditionnel', pqp: 'plus-que-parfait', subj: 'subjonctif', impe: 'impératif' };
+// The tenses built on a helper and the participle, and the helper's tense in each.
+const COMPOUND = new Set<Tense>(['pc', 'pqp']);
+export const isCompound = (tense: Tense) => COMPOUND.has(tense);
 export const PERSON_LABELS = ['je', 'tu', 'il / elle', 'nous', 'vous', 'ils / elles'];
 const SUBJECTS = ['je', 'tu', 'il', 'nous', 'vous', 'ils'];
 
@@ -27,6 +31,28 @@ const REFLEXIVE = /^(se |s’|s')/;
 const IMP_END = ['ais', 'ais', 'ait', 'ions', 'iez', 'aient'];
 const FUT_END = ['ai', 'as', 'a', 'ons', 'ez', 'ont'];
 const AUX: Record<'avoir' | 'être', string[]> = { avoir: ['ai', 'as', 'a', 'avons', 'avez', 'ont'], 'être': ['suis', 'es', 'est', 'sommes', 'êtes', 'sont'] };
+const AUX_IMP: Record<'avoir' | 'être', string[]> = { avoir: ['avais', 'avais', 'avait', 'avions', 'aviez', 'avaient'], 'être': ['étais', 'étais', 'était', 'étions', 'étiez', 'étaient'] };
+const SUBJ_END = ['e', 'es', 'e', null, null, 'ent'];
+// The subjonctifs not built from ils and the imparfait, by the verb (faire also inside refaire, défaire, satisfaire).
+const SUBJ_IRREGULAR: Record<string, string[]> = {
+  'être': ['sois', 'sois', 'soit', 'soyons', 'soyez', 'soient'], avoir: ['aie', 'aies', 'ait', 'ayons', 'ayez', 'aient'],
+  aller: ['aille', 'ailles', 'aille', 'allions', 'alliez', 'aillent'], faire: ['fasse', 'fasses', 'fasse', 'fassions', 'fassiez', 'fassent'],
+  pouvoir: ['puisse', 'puisses', 'puisse', 'puissions', 'puissiez', 'puissent'], savoir: ['sache', 'saches', 'sache', 'sachions', 'sachiez', 'sachent'],
+  vouloir: ['veuille', 'veuilles', 'veuille', 'voulions', 'vouliez', 'veuillent'], valoir: ['vaille', 'vailles', 'vaille', 'valions', 'valiez', 'vaillent'],
+  falloir: ['', '', 'faille', '', '', ''], pleuvoir: ['', '', 'pleuve', '', '', ''],
+};
+// The impératifs not taken from the présent: tu, nous, vous.
+const IMPE_IRREGULAR: Record<string, string[]> = {
+  'être': ['sois', 'soyons', 'soyez'], avoir: ['aie', 'ayons', 'ayez'], savoir: ['sache', 'sachons', 'sachez'], vouloir: ['veuille', 'veuillons', 'veuillez'],
+};
+const IMPE_PERSONS = [1, 3, 4];
+// Verbs with no impératif in use: nobody is told to be able to, to have to, or to be worth.
+const NO_IMPERATIVE = new Set(['pouvoir', 'devoir', 'valoir']);
+// The pronoun of a reflexive impératif, after the verb: lève-toi, levons-nous, levez-vous.
+const IMPE_PRONOUN = ['', 'toi', '', 'nous', 'vous', ''];
+// The verb a table conjugates: the first word of a phrase, past a pronoun before it (avoir peur, en avoir marre → avoir).
+const headOf = (verb: Verb) => verb.base.replace(/^(en|y) /, '').split(' ')[0]!;
+const irregularSubj = (verb: Verb) => { const head = headOf(verb); return SUBJ_IRREGULAR[head] ?? (head.endsWith('faire') ? SUBJ_IRREGULAR.faire!.map((form) => head.slice(0, -5) + form) : null); };
 const LETTERS = /^[a-zàâäçéèêëîïôöùûüÿœæ]+$/;
 export const startsVowel = (word: string) => /^[aàâäeéèêëiîïoôöuùûüyœæh]/.test(word);
 export const isVerbWord = (word: { en: string }) => /^to /.test(word.en);
@@ -35,7 +61,14 @@ export function verbOf(table: VerbTable, word: VerbWord): Verb {
   const inf = word.fr.replace(/'/g, '’');
   return { ...table, inf, en: word.en, base: inf.replace(REFLEXIVE, ''), reflexive: REFLEXIVE.test(inf), impersonal: table.pres.length === 1 };
 }
-export const persons = (verb: Verb) => verb.impersonal ? [2] : [0, 1, 2, 3, 4, 5];
+// The persons a verb has in a tense: il alone for a verb used only with il, and tu, nous and vous in the impératif
+// (none for a verb used only with il, for one nobody is told to do, or for a phrase, whose words would have to move
+// around the verb); in the subjonctif, those it can be built for.
+export const persons = (verb: Verb, tense?: Tense): number[] => {
+  if (tense === 'impe') return verb.impersonal || verb.base.includes(' ') || NO_IMPERATIVE.has(headOf(verb)) ? [] : IMPE_PERSONS;
+  const all = verb.impersonal ? [2] : [0, 1, 2, 3, 4, 5];
+  return tense === 'subj' ? all.filter((person) => subjunctive(verb, person)) : all;
+};
 // Verbs that take être on their own and avoir with a direct object (je suis sorti · j’ai sorti la poubelle), with one
 // example of each. Either helper counts as right; the table's own aux stays the form shown. A reflexive form (se
 // passer) always takes être.
@@ -59,35 +92,66 @@ function pronoun(person: number, next: string): string {
   const full = ['me', 'te', 'se', 'nous', 'vous', 'se'][person]!;
   return person !== 3 && person !== 4 && startsVowel(next) ? `${full[0]}’` : `${full} `;
 }
-// The subject as said before a form: j’ before a vowel.
-export function subject(person: number, form: string): string {
-  return person === 0 && startsVowel(form) ? 'j’' : `${SUBJECTS[person]} `;
+// The subject as said before a form: j’ before a vowel; que in front in the subjonctif (qu’il), none in the impératif.
+export function subject(person: number, form: string, tense?: Tense): string {
+  if (tense === 'impe') return '';
+  const plain = person === 0 && startsVowel(form) ? 'j’' : `${SUBJECTS[person]} `;
+  return tense !== 'subj' ? plain : person === 2 || person === 5 ? `qu’${plain}` : `que ${plain}`;
 }
 
-function simpleForm(verb: Verb, tense: Exclude<Tense, 'pc'>, person: number): string {
+// The subjonctif présent: the ils présent without -ent and -e, -es, -e, -ent; nous and vous are the imparfait's. A verb
+// used only with il takes its own, or its présent where that already ends in -e (qu’il neige).
+function subjunctive(verb: Verb, person: number): string | null {
+  const irregular = irregularSubj(verb);
+  if (irregular) return irregular[person] || null;
+  if (verb.impersonal) return person === 2 && verb.pres[0]!.endsWith('e') ? verb.pres[0]! : null;
+  const ending = SUBJ_END[person];
+  if (ending === null) return verb.imp[person]!;
+  const stem = verb.pres[5]!.match(/^(.+)ent$/)?.[1];
+  return stem ? stem + ending : null;
+}
+// The impératif: the tu, nous and vous of the présent; tu drops its -s where it ends in -es (parle, ouvre) and in va.
+function imperative(verb: Verb, person: number): string | null {
+  const at = IMPE_PERSONS.indexOf(person);
+  if (at < 0 || verb.impersonal) return null;
+  const irregular = IMPE_IRREGULAR[headOf(verb)];
+  if (irregular) return irregular[at]!;
+  const form = verb.pres[person]!;
+  return person === 1 && (form.endsWith('es') || form === 'vas') ? form.slice(0, -1) : form;
+}
+
+function simpleForm(verb: Verb, tense: Tense, person: number): string | null {
   if (tense === 'pres') return verb.impersonal ? verb.pres[0]! : verb.pres[person]!;
   if (tense === 'imp') return verb.impersonal ? verb.imp[0]! : verb.imp[person]!;
+  if (tense === 'cond') return verb.fut + IMP_END[person]!;
+  if (tense === 'subj') return subjunctive(verb, person);
+  if (tense === 'impe') return imperative(verb, person);
   return verb.fut + FUT_END[person]!;
 }
 
 // The six forms of a tense (null where the verb has no such person). A verb taking either helper accepts both
-// passés composés, its own helper's first.
+// compound forms, its own helper's first. A reflexive impératif puts its pronoun after, with a hyphen (lève-toi), and
+// accepts a space for it.
 export function conjugate(verb: Verb, tense: Tense): (Form | null)[] {
+  const people = new Set(persons(verb, tense));
   return [0, 1, 2, 3, 4, 5].map((person) => {
-    if (verb.impersonal && person !== 2) return null;
-    if (tense !== 'pc') {
+    if (!people.has(person)) return null;
+    if (!isCompound(tense)) {
       const simple = simpleForm(verb, tense, person);
+      if (!simple) return null;
+      if (tense === 'impe' && verb.reflexive) return { shown: `${simple}-${IMPE_PRONOUN[person]}`, accepted: [`${simple}-${IMPE_PRONOUN[person]}`, `${simple} ${IMPE_PRONOUN[person]}`] };
       const form = (verb.reflexive ? pronoun(person, simple) : '') + simple;
       return { shown: form, accepted: [form] };
     }
     const helper = verb.reflexive ? 'être' : verb.aux;
-    const own = compound(verb, helper, person);
+    const table = tense === 'pqp' ? AUX_IMP : AUX;
+    const own = compound(verb, helper, person, table);
     if (!bothHelpers(verb)) return own;
-    return { shown: own.shown, accepted: [...own.accepted, ...compound(verb, helper === 'être' ? 'avoir' : 'être', person).accepted] };
+    return { shown: own.shown, accepted: [...own.accepted, ...compound(verb, helper === 'être' ? 'avoir' : 'être', person, table).accepted] };
   });
 }
-function compound(verb: Verb, helper: 'avoir' | 'être', person: number): Form {
-  const aux = AUX[helper][person]!;
+function compound(verb: Verb, helper: 'avoir' | 'être', person: number, table: typeof AUX): Form {
+  const aux = table[helper][person]!;
   const lead = `${verb.reflexive ? pronoun(person, aux) : ''}${aux} `;
   if (helper === 'avoir') return { shown: lead + verb.pp, accepted: [lead + verb.pp] };
   // With être the participle agrees with the subject; a participle ending in -s (mis) takes no second -s.
@@ -99,7 +163,7 @@ function compound(verb: Verb, helper: 'avoir' | 'être', person: number): Form {
 
 export const normal = (value: string) => value.normalize('NFC').toLowerCase().replace(/[’'`]/g, '’').replace(/’\s+/g, '’').replace(/\s+/g, ' ').trim().replace(/[.!?]+$/, '');
 const strip = (value: string) => value.normalize('NFD').replace(/\p{M}/gu, '');
-const SUBJECT = /^(j’|je |tu |il |elle |on |nous |vous |ils |elles )/;
+const SUBJECT = /^(que |qu’)?(j’|je |tu |il |elle |on |nous |vous |ils |elles )/;
 // What was typed, as given and without a subject pronoun in front: "nous nous levons" and "nous levons" both count.
 function readings(given: string): string[] {
   const typed = normal(given);
@@ -117,7 +181,7 @@ export function diagnose(verb: Verb, tense: Tense, person: number, given: string
   const matches = (form: Form | null) => !!form && typed.some((reading) => sameLetters(form, reading));
   const all = conjugate(verb, tense);
   const target = all[person]!;
-  for (const other of persons(verb)) if (other !== person && matches(all[other]!)) return `That’s the ${PERSON_LABELS[other]} form.`;
+  for (const other of persons(verb, tense)) if (other !== person && matches(all[other]!)) return `That’s the ${PERSON_LABELS[other]} form.`;
   for (const other of TENSES) if (other !== tense && matches(conjugate(verb, other)[person]!)) return `That’s the ${TENSE_NAMES[other]}.`;
   for (const right of target.accepted) {
     for (const reading of typed) {
@@ -128,10 +192,11 @@ export function diagnose(verb: Verb, tense: Tense, person: number, given: string
       if (verb.reflexive && right.replace(/^(me |te |se |nous |vous |m’|t’|s’)/, '') === reading) return `${verb.inf} is reflexive: its pronoun comes before the verb (${subject(person, right)}${right}).`;
     }
   }
-  if (tense === 'pc') {
+  if (isCompound(tense)) {
     const helper = verb.reflexive ? 'être' : verb.aux;
     const other = helper === 'être' ? 'avoir' : 'être';
-    if (!bothHelpers(verb) && typed.some((reading) => reading.startsWith(`${AUX[other][person]} `))) return `${verb.inf} goes with ${helper} in the passé composé, not ${other}.`;
+    const table = tense === 'pqp' ? AUX_IMP : AUX;
+    if (!bothHelpers(verb) && typed.some((reading) => reading.startsWith(`${table[other][person]} `))) return `${verb.inf} goes with ${helper} in the ${TENSE_NAMES[tense]}, not ${other}.`;
     if (helper === 'être') {
       const lead = target.accepted[0]!.slice(0, target.accepted[0]!.lastIndexOf(' ') + 1);
       const agreed = typed.find((reading) => reading.startsWith(lead) && reading.slice(lead.length).replace(/e?s?$/, '') === verb.pp.replace(/s$/, '').replace(/e?s?$/, ''));
@@ -142,28 +207,31 @@ export function diagnose(verb: Verb, tense: Tense, person: number, given: string
   return '';
 }
 
-// The whole tense, each form split so its ending can be lit: the part every person shares, then the ending. In the
-// passé composé the helper is what changes, so it is the part lit.
+// The whole tense, each form split so its ending can be lit: the part every person shares, then the ending. In a
+// compound tense the helper is what changes, so it is the part lit.
 export function paradigm(verb: Verb, tense: Tense): ParadigmRow[] {
   const all = conjugate(verb, tense);
-  const people = persons(verb);
-  if (tense === 'pc') {
+  const people = persons(verb, tense).filter((person) => all[person]);
+  if (isCompound(tense)) {
     return people.map((person) => {
       const form = all[person]!.shown;
       const space = form.lastIndexOf(' ');
       const helper = form.slice(0, space);
-      const lead = verb.reflexive ? helper.slice(0, helper.search(/(suis|es|est|sommes|êtes|sont)$/)) : '';
-      return { person, label: PERSON_LABELS[person]!, parts: [{ text: subject(person, form) + lead }, { text: helper.slice(lead.length), lit: true }, { text: form.slice(space) }] };
+      const lead = helper.slice(0, helper.lastIndexOf(' ') + 1 || (helper.lastIndexOf('’') + 1));
+      return { person, label: PERSON_LABELS[person]!, parts: [{ text: subject(person, form, tense) + lead }, { text: helper.slice(lead.length), lit: true }, { text: form.slice(space) }] };
     });
   }
-  const simple = people.map((person) => simpleForm(verb, tense, person));
+  const simple = people.map((person) => simpleForm(verb, tense, person)!);
   let shared = 0;
   while (simple.length > 1 && simple.every((form) => form[shared] !== undefined && form[shared] === simple[0]![shared])) shared++;
   return people.map((person, index) => {
     const form = all[person]!.shown;
-    const lead = form.slice(0, form.length - simple[index]!.length);
     const word = simple[index]!;
-    return { person, label: PERSON_LABELS[person]!, parts: [{ text: subject(person, form) + lead + word.slice(0, shared) }, ...(word.slice(shared) ? [{ text: word.slice(shared), lit: true as const }] : [])] };
+    // A reflexive pronoun goes before the verb (me lève), or after it in the impératif (lève-toi).
+    const at = form.lastIndexOf(word);
+    const lead = form.slice(0, at), tail = form.slice(at + word.length);
+    const rest = word.slice(shared);
+    return { person, label: PERSON_LABELS[person]!, parts: [{ text: subject(person, form, tense) + lead + word.slice(0, shared) }, ...(rest ? [{ text: rest, lit: true as const }] : []), ...(tail ? [{ text: tail }] : [])] };
   });
 }
 
@@ -212,15 +280,45 @@ export function rule(verb: Verb, tense: Tense): string {
     return `The imparfait takes the nous form of the présent (nous ${verb.pres[3]}), drops -ons and adds -ais, -ais, -ait, -ions, -iez, -aient.${reflexive}`;
   }
   if (tense === 'fut') {
-    const usual = verb.base.endsWith('re') ? verb.base.slice(0, -1) : verb.base;
-    return `The futur adds -ai, -as, -a, -ons, -ez, -ont to a stem ending in r: ${verb.fut}-.${verb.fut === usual ? '' : ' This stem is irregular, so it is worth learning.'}${reflexive}`;
+    return `The futur adds -ai, -as, -a, -ons, -ez, -ont to a stem ending in r: ${verb.fut}-.${verb.fut === usualFuture(verb) ? '' : ' This stem is irregular, so it is worth learning.'}${reflexive}`;
   }
-  const forms = conjugate(verb, 'pc');
+  if (tense === 'cond') {
+    const forms = conjugate(verb, 'cond');
+    const shown = verb.impersonal ? `il ${forms[2]!.shown}` : `${said(verb, 'cond', 0)}, ${said(verb, 'cond', 3)}`;
+    return `The conditionnel is the futur’s stem (${verb.fut}-) with the imparfait’s endings: -ais, -ais, -ait, -ions, -iez, -aient. So ${shown}.${verb.fut === usualFuture(verb) ? '' : ' The stem is the irregular one of the futur.'}${reflexive}`;
+  }
+  if (tense === 'subj') return subjRule(verb) + reflexive;
+  if (tense === 'impe') return impeRule(verb);
+  const forms = conjugate(verb, tense);
   const both = bothHelpers(verb);
-  if (verb.reflexive) return `Reflexive verbs take être in the passé composé, and the participle agrees: il ${forms[2]!.accepted[0]}, elle ${forms[2]!.accepted.at(-1)}.`;
-  if (both) return `${verb.inf} takes être on its own (${both.etre}) and avoir when it has an object (${both.avoir}). With être the participle agrees: elle est ${verb.pp}e, ils sont ${verb.pp}s.`;
-  if (verb.aux === 'être') return `${verb.inf} takes être in the passé composé, so the participle agrees: elle ${forms[2]!.accepted.at(-1)}, ils ${forms[5]!.accepted[0]}.`;
-  return `${verb.inf} takes avoir: the helper changes (j’ai, tu as, il a…), the participle ${verb.pp} stays the same.`;
+  const name = TENSE_NAMES[tense];
+  // The helper in the tense's own form: j’ai, tu as, il a in the passé composé; j’avais, tu avais, il avait in the plus-que-parfait.
+  const helpers = tense === 'pqp' ? 'j’avais, tu avais, il avait' : 'j’ai, tu as, il a';
+  const opening = tense === 'pqp' ? `The plus-que-parfait is the passé composé with its helper in the imparfait (${said(verb, 'pqp', 0)}). ` : '';
+  if (verb.reflexive) return `${opening}Reflexive verbs take être in the ${name}, and the participle agrees: il ${forms[2]!.accepted[0]}, elle ${forms[2]!.accepted.at(-1)}.`;
+  if (both) return `${opening}${verb.inf} takes être on its own (${both.etre}) and avoir when it has an object (${both.avoir}). With être the participle agrees: elle ${tense === 'pqp' ? 'était' : 'est'} ${verb.pp}e, ils ${tense === 'pqp' ? 'étaient' : 'sont'} ${verb.pp}s.`;
+  if (verb.aux === 'être') return `${opening}${verb.inf} takes être in the ${name}, so the participle agrees: elle ${forms[2]!.accepted.at(-1)}, ils ${forms[5]!.accepted[0]}.`;
+  if (verb.impersonal) return `${opening}With avoir: il ${forms[2]!.shown}.`;
+  return `${opening}${verb.inf} takes avoir: the helper changes (${helpers}…), the participle ${verb.pp} stays the same.`;
+}
+
+// The subjonctif's rule for a verb: its own forms, or the ils présent and the imparfait's nous and vous it is built from.
+function subjRule(verb: Verb): string {
+  if (verb.impersonal) return `Used only with il: ${said(verb, 'subj', 2)}.`;
+  if (irregularSubj(verb)) return `${headOf(verb)} has a subjonctif of its own, to learn by heart: ${said(verb, 'subj', 0)}, ${said(verb, 'subj', 3)}, ${said(verb, 'subj', 5)}.`;
+  const built = `The subjonctif takes the ils présent (ils ${verb.pres[5]}), drops -ent and adds -e, -es, -e, -ent; nous and vous are the imparfait’s (${said(verb, 'subj', 3)}).`;
+  return groupOf(verb, 'subj') === 'two-stems' ? `${built} So it has two stems: ${said(verb, 'subj', 0)}, ${said(verb, 'subj', 3)}.` : built;
+}
+// The impératif's rule for a verb: which présent forms it is, what tu drops, where a reflexive pronoun goes.
+function impeRule(verb: Verb): string {
+  if (!persons(verb, 'impe').length) return `${verb.inf} has no impératif.`;
+  const forms = conjugate(verb, 'impe');
+  const list = IMPE_PERSONS.map((person) => forms[person]!.shown).join(', ');
+  if (IMPE_IRREGULAR[headOf(verb)]) return `${headOf(verb)} has an impératif of its own, close to its subjonctif: ${list}.${verb.reflexive ? ' The pronoun comes after the verb, with a hyphen.' : ''}`;
+  const dropped = imperative(verb, 1) !== verb.pres[1];
+  const tu = dropped ? ` tu drops its -s (tu ${verb.pres[1]} → ${imperative(verb, 1)}), as every -er verb does.` : '';
+  const after = verb.reflexive ? ' The pronoun comes after the verb, with a hyphen, and te becomes toi.' : '';
+  return `The impératif is the tu, nous and vous of the présent, without the subject: ${list}.${tu}${after}`;
 }
 
 // Every problem in a table, so a wrong one is never kept. The rules check what French is regular about: all six
@@ -363,12 +461,13 @@ export type VerbTables = ReturnType<typeof createVerbTables>;
 // ── By ear ──
 export type EarKind = 'tense' | 'number';
 export type EarQuestion = { id: string; verbId: string; tense: Tense; person: number; kind: EarKind; said: string; question: string; choices: string[]; answer: number; why: string };
-const EAR_TENSES: Tense[] = ['pres', 'imp', 'fut', 'pc'];
+// The tenses By ear tells apart: the subjonctif and impératif give themselves away (que, no subject), so they are not asked.
+const EAR_TENSES: Tense[] = ['pres', 'imp', 'fut', 'pc', 'cond', 'pqp'];
 const NUMBER_CHOICES = ['one', 'more than one', 'can’t tell by ear'];
 
 function earSaid(verb: Verb, tense: Tense, person: number): string {
   const form = conjugate(verb, tense)[person]!.accepted[0]!;
-  return subject(person, form) + form;
+  return subject(person, form, tense) + form;
 }
 // il and ils sound alike when the ils form only adds a silent -nt and nothing links to the vowel after ils.
 function soundsAlike(verb: Verb, tense: 'pres' | 'imp'): boolean {
@@ -387,7 +486,11 @@ export function earQuestion(verb: Verb, tense: Tense, person: number, kind: EarK
   if (kind === 'tense') {
     const offered = EAR_TENSES.filter((entry) => tenses.includes(entry));
     if (offered.length < 2 || !offered.includes(tense)) return null;
-    const cue: Record<Tense, string> = { pres: 'the présent', imp: 'the imparfait: its ending sounds like “è” (-ais) or “yon” (-ions)', fut: 'the futur: listen for the r before the ending', pc: 'the passé composé: a helper and then the participle' };
+    const cue: Partial<Record<Tense, string>> = {
+      pres: 'the présent', imp: 'the imparfait: its ending sounds like “è” (-ais) or “yon” (-ions)', fut: 'the futur: listen for the r before the ending',
+      pc: 'the passé composé: a helper and then the participle', cond: 'the conditionnel: the futur’s r, then the imparfait’s ending (“è”, “yon”)',
+      pqp: 'the plus-que-parfait: the helper in the imparfait (avais, étais), then the participle',
+    };
     return { id, verbId: verb.id, tense, person, kind, said, question: 'Which tense?', choices: offered.map((entry) => TENSE_NAMES[entry]), answer: offered.indexOf(tense), why: `${said}: ${cue[tense]}.` };
   }
   if (tense !== 'pres' && tense !== 'imp') return null;
@@ -408,6 +511,8 @@ export function earQuestions(verb: Verb, tenses: readonly Tense[] = EAR_TENSES):
   const speakers = verb.impersonal ? [2] : [0, 3];
   for (const tense of EAR_TENSES) for (const person of speakers) {
     if (person === 3 && tense === 'imp' && /[iy]$/.test(verb.pres[3]!.replace(/ons$/, ''))) continue;
+    // nous parlerions against nous parlerons is heard; je parlerais against je parlerai hardly is, so je is not asked.
+    if (person === 0 && tense === 'cond') continue;
     questions.push(earQuestion(verb, tense, person, 'tense', tenses));
   }
   if (!verb.impersonal) for (const tense of ['pres', 'imp'] as const) for (const person of [2, 5]) questions.push(earQuestion(verb, tense, person, 'number'));
@@ -423,10 +528,14 @@ export const TENSE_USES: Record<Tense, string> = {
   pc: 'A finished action in the past, what happened: the helper (avoir or être) in the présent, then the past participle.',
   imp: 'The past as background: how things were, what used to happen, what was going on when something else happened.',
   fut: 'What will happen: the endings join a stem that ends in r.',
+  cond: 'What would happen: wishes, polite requests (je voudrais), and what follows from an if (si j’avais le temps, je viendrais). The futur’s stem with the imparfait’s endings.',
+  pqp: 'The past before the past: what had already happened when something else did (j’étais déjà parti quand il est arrivé). The helper in the imparfait, then the participle.',
+  subj: 'After que, when the first verb wants, needs, fears or doubts something: il faut que je parte, je veux que tu viennes. Most verbs build it from the ils présent.',
+  impe: 'Telling someone to do something: viens, allons-y, levez-vous. Only tu, nous and vous, without a subject.',
 };
 
 // A form with its subject; a verb used only with il is shown with il whatever the person asked for.
-const said = (verb: Verb, tense: Tense, asked: number) => { const person = verb.impersonal ? 2 : asked; const form = conjugate(verb, tense)[person]!.shown; return subject(person, form) + form; };
+const said = (verb: Verb, tense: Tense, asked: number) => { const person = verb.impersonal ? 2 : asked; const form = conjugate(verb, tense)[person]!.shown; return subject(person, form, tense) + form; };
 const finirType = (verb: Verb) => !verb.impersonal && verb.base.endsWith('ir') && verb.pres[3] === `${verb.base.slice(0, -2)}issons`;
 const regularRe = (verb: Verb) => {
   const stem = verb.base.slice(0, -2);
@@ -502,6 +611,18 @@ export function groupOf(verb: Verb, tense: Tense): string {
     if (/[iy]$/.test(stem)) return 'double-i';
     return IRREGULAR_PRESENT.has(groupOf(verb, 'pres')) ? 'from-nous' : 'regular';
   }
+  if (tense === 'pqp') return groupOf(verb, 'pc');
+  if (tense === 'subj') {
+    if (verb.impersonal) return 'only-il';
+    if (irregularSubj(verb)) return 'irregular';
+    return verb.pres[5]!.replace(/ent$/, '') === verb.imp[3]!.replace(/ions$/, '') ? 'regular' : 'two-stems';
+  }
+  if (tense === 'impe') {
+    if (!persons(verb, 'impe').length) return 'none';
+    if (IMPE_IRREGULAR[headOf(verb)]) return 'irregular';
+    if (verb.reflexive) return 'reflexive';
+    return imperative(verb, 1) !== verb.pres[1] ? 'drop-s' : 'regular';
+  }
   if (verb.fut === usualFuture(verb)) return 'regular';
   return verb.base.endsWith('er') && verb.base !== 'aller' && verb.base !== 'envoyer' ? 'er-change' : 'stem';
 }
@@ -543,9 +664,35 @@ const GROUPS: Record<Tense, { id: string; title: string; text: string; many?: tr
     { id: 'er-change', title: '-er verbs with their présent stem change', text: 'The same change as in je (j’achète → j’achèterai, j’appelle → j’appellerai).', detail: (verb) => said(verb, 'fut', 0) },
     { id: 'regular', title: 'The infinitive as the stem', text: 'The infinitive, without the final e of -re verbs: parler-, finir-, prendr-.', many: true, detail: () => '' },
   ],
+  cond: [
+    { id: 'stem', title: 'Irregular stems', text: 'The futur’s own stem, with the imparfait’s endings: je serais, j’aurais, j’irais, je ferais.', detail: (verb) => said(verb, 'cond', 0) },
+    { id: 'er-change', title: '-er verbs with their présent stem change', text: 'The same change as in the futur: j’achèterais, j’appellerais.', detail: (verb) => said(verb, 'cond', 0) },
+    { id: 'regular', title: 'The infinitive as the stem', text: 'The infinitive (without the final e of -re verbs) and -ais, -ais, -ait, -ions, -iez, -aient: je parlerais, je prendrais.', many: true, detail: () => '' },
+  ],
+  pqp: [
+    { id: 'etre', title: 'Take être', text: 'The same verbs as in the passé composé, with j’étais, tu étais… The participle agrees: elle était partie.', detail: (verb) => said(verb, 'pqp', 0) },
+    { id: 'reflexive', title: 'Reflexive verbs', text: 'être, with the pronoun before the helper: je m’étais levé(e).', detail: (verb) => said(verb, 'pqp', 0) },
+    { id: 'participle', title: 'Irregular participles', text: 'avoir in the imparfait, and the participle to learn by heart: j’avais pris, j’avais vu.', detail: (verb) => said(verb, 'pqp', 0) },
+    { id: 'regular', title: 'avoir and a regular participle', text: 'j’avais, tu avais, il avait… and the participle: j’avais parlé, j’avais fini, j’avais attendu.', many: true, detail: () => '' },
+  ],
+  subj: [
+    { id: 'irregular', title: 'A subjonctif of their own', text: 'être, avoir, aller, faire, pouvoir, savoir, vouloir: forms to learn by heart (que je sois, que j’aie, que j’aille, que je fasse).', detail: (verb) => `${said(verb, 'subj', 0)}, ${said(verb, 'subj', 3)}` },
+    { id: 'two-stems', title: 'Two stems', text: 'The ils présent gives je, tu, il and ils; the imparfait gives nous and vous, and here they differ: que je prenne, que nous prenions.', detail: (verb) => `${said(verb, 'subj', 0)}, ${said(verb, 'subj', 3)}` },
+    { id: 'only-il', title: 'Only with il', text: 'Used only as il.', detail: (verb) => said(verb, 'subj', 2) },
+    { id: 'regular', title: 'From the ils présent', text: 'ils parlent → que je parle, que tu parles, qu’il parle, qu’ils parlent; nous and vous as in the imparfait (que nous parlions). For -er verbs only nous and vous differ from the présent.', many: true, detail: () => '' },
+  ],
+  impe: [
+    { id: 'irregular', title: 'An impératif of their own', text: 'être, avoir, savoir and vouloir: sois, aie, sache, veuille.', detail: (verb) => conjugate(verb, 'impe').filter(Boolean).map((form) => form!.shown).join(', ') },
+    { id: 'reflexive', title: 'Reflexive verbs', text: 'The pronoun comes after the verb, with a hyphen, and te becomes toi: lève-toi, levons-nous, levez-vous.', detail: (verb) => conjugate(verb, 'impe')[1]!.shown },
+    { id: 'drop-s', title: 'tu drops its -s', text: '-er verbs (and ouvrir, offrir, aller) lose the -s of tu: tu parles → parle, tu vas → va.', detail: (verb) => conjugate(verb, 'impe')[1]!.shown },
+    { id: 'regular', title: 'The présent without the subject', text: 'tu, nous and vous as in the présent: finis, finissons, finissez; prends, prenons, prenez.', many: true, detail: () => '' },
+  ],
 };
 export const GROUP_TITLES = Object.fromEntries(TENSES.map((tense) => [tense, Object.fromEntries(GROUPS[tense].map((group) => [group.id, group.title]))])) as Record<Tense, Record<string, string>>;
-const MODELS: Record<Tense, string[]> = { pres: ['parler', 'finir', 'attendre'], pc: ['parler', 'aller', 'se lever'], imp: ['parler', 'finir', 'être'], fut: ['parler', 'prendre', 'être'] };
+const MODELS: Record<Tense, string[]> = {
+  pres: ['parler', 'finir', 'attendre'], pc: ['parler', 'aller', 'se lever'], imp: ['parler', 'finir', 'être'], fut: ['parler', 'prendre', 'être'],
+  cond: ['parler', 'prendre', 'être'], pqp: ['parler', 'aller', 'se lever'], subj: ['parler', 'prendre', 'être'], impe: ['parler', 'finir', 'se lever'],
+};
 
 // A tense explained through the learner's verbs: three model tables, then every verb in the group that says what
 // is regular or not about it in this tense.
@@ -562,9 +709,9 @@ export function tenseGuide(verbs: Verb[], tense: Tense): { tense: Tense; name: s
 export function verbGuide(verb: Verb) {
   return {
     id: verb.id, inf: verb.inf, en: verb.en,
-    tenses: TENSES.map((tense) => {
-      const group = GROUPS[tense].find((entry) => entry.id === groupOf(verb, tense))!;
-      return { tense, name: TENSE_NAMES[tense], group: group.title, rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
+    tenses: TENSES.filter((tense) => persons(verb, tense).length).map((tense) => {
+      const group = GROUPS[tense].find((entry) => entry.id === groupOf(verb, tense));
+      return { tense, name: TENSE_NAMES[tense], group: group?.title ?? '', rule: rule(verb, tense), paradigm: paradigm(verb, tense) };
     }),
   };
 }

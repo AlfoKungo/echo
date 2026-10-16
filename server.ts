@@ -217,6 +217,10 @@ const TENSE_TOPICS: Record<string, string[]> = language.code === 'pt' ? {
   pc: ['passe-compose-avoir', 'passe-compose-etre', 'pc-vs-imparfait'],
   imp: ['imparfait', 'pc-vs-imparfait'],
   fut: ['futur-simple', 'futur-proche'],
+  cond: ['conditional', 'si-clauses'],
+  pqp: [],
+  subj: ['subjunctive'],
+  impe: ['imperative'],
 };
 const verbs = createVerbDrills({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), earAudio: phraseAudio });
 // How it's built: cards on how each tense is formed, drawn from the same verb tables. A card about one verb counts for

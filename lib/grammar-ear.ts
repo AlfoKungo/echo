@@ -29,12 +29,12 @@ const EVERY = 2; // comprehension answers in Listen between two Grammar by ear q
 const RETURN_AFTER = 3; // Grammar by ear answers before a missed question comes back, once
 const RETRY_AFTER = 10 * 60_000; // after a failed or empty batch
 
-// The shared mix of tenses for the grammar trainers (not the Verbs tense setting), and of kinds of question here:
-// most ask when, since the tenses are what the learner is moving on to.
-export const TENSE_MIX: Record<Tense, number> = { pc: 0.35, pres: 0.30, imp: 0.20, fut: 0.15 };
+// The mix of tenses for these questions (not the Verbs tense setting): the four a listener tells apart by when things
+// happen; and of kinds of question: most ask when, since the tenses are what the learner is moving on to.
+export const TENSE_MIX: Partial<Record<Tense, number>> = { pc: 0.35, pres: 0.30, imp: 0.20, fut: 0.15 };
 export const KIND_MIX: Record<EarSentenceKind, number> = { when: 0.5, howmany: 0.25, who: 0.25 };
 
-function weighted<T extends string>(mix: Record<T, number>, random: () => number): T {
+function weighted<T extends string>(mix: Partial<Record<T, number>>, random: () => number): T {
   const entries = Object.entries(mix) as [T, number][];
   let left = random() * entries.reduce((sum, [, weight]) => sum + weight, 0);
   for (const [key, weight] of entries) { left -= weight; if (left < 0) return key; }

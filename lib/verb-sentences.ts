@@ -47,7 +47,7 @@ export function planSlots(verbs: Verb[], scores: Map<string, number>, count = BA
   const slots: Slot[] = [];
   for (const tense of TENSES) for (let n = 0; n < counts[tense]; n++) {
     if (verbs.every((verb) => used.has(verb.id))) used.clear();
-    const open = (pool: Verb[]) => pool.flatMap((verb) => persons(verb).filter((person) => !taken.has(`${verb.id}|${tense}|${person}`))
+    const open = (pool: Verb[]) => pool.flatMap((verb) => persons(verb, tense).filter((person) => !taken.has(`${verb.id}|${tense}|${person}`))
       .map((person) => ({ verb, person, weight: PERSON_WEIGHTS[person]! * pull(scores.get(`${verb.id}|${tense}|${person}`)) })));
     const fresh = open(verbs.filter((verb) => !used.has(verb.id)));
     const options = fresh.length ? fresh : open(verbs);
@@ -61,9 +61,10 @@ export function planSlots(verbs: Verb[], scores: Map<string, number>, count = BA
   return slots.map((slot) => ({ slot, key: random() })).sort((a, b) => a.key - b.key).map(({ slot }) => slot);
 }
 
-// The subject written before the blank for a slot: j’ when the form starts with a vowel.
+// The subject written before the blank for a slot: j’ when the form starts with a vowel; none in the impératif.
 const subjectFor = (verb: Verb, slot: Slot) => {
   const form = conjugate(verb, slot.tense)[slot.person]!;
+  if (slot.tense === 'impe') return `none (an order to ${SUBJECT_WORDS[slot.person]})`;
   return slot.person === 0 ? subject(0, form.accepted[0]!).trim() : verb.impersonal ? 'il' : SUBJECT_WORDS[slot.person]!;
 };
 
@@ -81,8 +82,8 @@ Write one sentence for each numbered slot below. A slot gives the verb, the tens
 Each sentence:
 - is 5 to 12 words of everyday French, natural and true to life;
 - has exactly one blank, written ${BLANK}, standing for exactly the slot's form (with its reflexive pronoun when it has one) and nothing else; where two forms are given (an être verb in the passé composé), choose the one that agrees with the subject in your sentence, and say who the subject is when the agreement depends on it;
-- has the slot's subject pronoun written immediately before the blank (j’${BLANK} for j’, otherwise the pronoun, a space, then ${BLANK}), with nothing between them: no ne, no object pronoun, no noun as subject, and the verb not negated;
-- makes the tense unmistakable from a time word or the context, so no other tense would fit: for the passé composé a finished event at a point in the past (hier, hier soir, la semaine dernière, ce matin, l’année dernière); for the imparfait a past habit or background (quand j’étais petit, avant, tous les étés, à l’époque); for the futur something still to come (demain, la semaine prochaine, dans deux ans, l’été prochain); for the présent what is true now or usually (maintenant, d’habitude, tous les jours, en ce moment);
+- has the slot's subject pronoun written immediately before the blank (j’${BLANK} for j’, otherwise the pronoun, a space, then ${BLANK}), with nothing between them: no ne, no object pronoun, no noun as subject, and the verb not negated; in the subjonctif the que comes before the pronoun (il faut que tu ${BLANK}); in the impératif there is no subject at all, the blank starts the order (${BLANK} la porte, s’il te plaît);
+- makes the tense unmistakable from a time word or the context, so no other tense would fit: for the passé composé a finished event at a point in the past (hier, hier soir, la semaine dernière, ce matin, l’année dernière); for the imparfait a past habit or background (quand j’étais petit, avant, tous les étés, à l’époque); for the futur something still to come (demain, la semaine prochaine, dans deux ans, l’été prochain); for the présent what is true now or usually (maintenant, d’habitude, tous les jours, en ce moment); for the conditionnel what would happen (si j’avais le temps, à ta place, je voudrais, ce serait bien si…); for the plus-que-parfait what had already happened before another past event (quand tu es arrivé, … déjà; avant son appel); for the subjonctif a que after wanting, needing, fearing or doubting (il faut que, je veux que, avant que, pour que, bien que); for the impératif an order or request (s’il te plaît, s’il vous plaît, allez, vite);
 - uses words from the learner's vocabulary below where it can (any form of them), plus little words (articles, pronouns, prepositions, common determiners), time words and first names.
 
 For each also write:
@@ -115,6 +116,8 @@ export function checkSentence(raw: unknown, slot: Slot, verb: Verb): SentenceIte
   const form = conjugate(verb, slot.tense)[slot.person];
   const answer = form?.accepted.find((accepted) => accepted === normal(given));
   if (!form || !answer) return `the blank holds "${given}", not ${form?.accepted.join(' / ') ?? 'a form of this person'}`;
+  // An order has no subject: nothing may stand for one right before the blank.
+  if (slot.tense === 'impe') return fr.slice(0, at).match(SUBJECT_BEFORE) ? 'an impératif takes no subject' : { ...slot, fr, answer, en, why };
   const found = fr.slice(0, at).match(SUBJECT_BEFORE);
   const pronoun = found?.[1]!.toLowerCase();
   if (!found || pronoun === undefined) return 'no subject pronoun right before the blank';

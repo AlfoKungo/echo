@@ -18,17 +18,23 @@ export type ChangeSlot = { verbId: string; kind: ChangeKind; tense: Tense; perso
 export type ChangeDrill = { id: number; base: string; cue: string; answer: string; en: string; form: string; verbId: string; tense: Tense; person: number; kind: ChangeKind; heard: number };
 export type ShakyForm = { verbId: string; tense: Tense; person: number; score: number };
 
-// The time phrases that ask for each tense; a time cue is always one of these.
-export const TIME_CUES: Record<Tense, string[]> = {
+// The phrases that ask for each tense; a time cue is always one of these. A subjonctif cue ends in que and runs straight
+// into the sentence (Il faut que je parte); the others take a comma. The impératif has no subject to change and no
+// phrase that asks for it, so Change it leaves it out.
+export const TIME_CUES: Record<Exclude<Tense, 'impe'>, string[]> = {
   pc: ['Hier', 'Hier soir', 'La semaine dernière', 'Samedi dernier'],
   pres: ['Maintenant', 'D’habitude', 'Aujourd’hui', 'Tous les jours'],
   imp: ['Quand j’étais petit', 'Avant', 'Autrefois', 'Quand j’étais jeune'],
   fut: ['Demain', 'Demain matin', 'La semaine prochaine', 'L’année prochaine'],
+  cond: ['Si j’avais le temps', 'Avec plus d’argent', 'Dans un monde idéal', 'À ta place'],
+  pqp: ['Quand tu es arrivé', 'Avant ton appel', 'Ce jour-là, à midi', 'Quand je suis rentré'],
+  subj: ['Il faut que', 'Je veux que', 'Il est important que', 'J’aimerais que'],
 };
+const CHANGES: readonly Tense[] = ['pres', 'pc', 'imp', 'fut', 'cond', 'pqp', 'subj'];
 const PERSON_CUES = [['je'], ['tu'], ['il', 'elle'], ['nous'], ['vous'], ['ils', 'elles']];
 // The share of drills a person change takes, by answer tense, when the line has two tenses or more; the rest are
 // time cues. With one tense every drill is a person change.
-const PERSON_SHARE: Record<Tense, number> = { pres: 0.6, pc: 0.4, imp: 0.3, fut: 0.3 };
+const PERSON_SHARE: Record<Exclude<Tense, 'impe'>, number> = { pres: 0.6, pc: 0.4, imp: 0.3, fut: 0.3, cond: 0.3, pqp: 0.3, subj: 0.3 };
 // The share of drills drawn for a shaky form of the slot's tense, when there is one.
 const SHAKY_SHARE = 0.5;
 const BATCH = 8;
@@ -43,10 +49,11 @@ const TRIES = 5;
 // in recent drills before those that were. A time cue moves a sentence from another of the line's tenses (the
 // présent, or the passé composé into the présent, when the line has them), so a line of one tense gets only person
 // changes.
-export function planSlots(count: number, pool: Verb[], shaky: ShakyForm[], recent: Set<string>, random: () => number = Math.random, chosen: readonly Tense[] = TENSES): ChangeSlot[] {
+export function planSlots(count: number, pool: Verb[], shaky: ShakyForm[], recent: Set<string>, random: () => number = Math.random, line: readonly Tense[] = TENSES): ChangeSlot[] {
+  const chosen = line.filter((tense) => CHANGES.includes(tense));
   if (!pool.length || !chosen.length) return [];
   const counts = mixCounts(count, chosen);
-  const tenses = (Object.keys(TENSE_MIX) as Tense[]).flatMap((tense) => Array<Tense>(counts[tense]).fill(tense));
+  const tenses = (Object.keys(TENSE_MIX) as Tense[]).flatMap((tense) => Array<Tense>(counts[tense]).fill(tense)) as Exclude<Tense, 'impe'>[];
   for (let index = tenses.length - 1; index > 0; index--) { const other = Math.floor(random() * (index + 1)); [tenses[index], tenses[other]] = [tenses[other]!, tenses[index]!]; }
   const byId = new Map(pool.map((verb) => [verb.id, verb]));
   const used = new Set<string>();
@@ -54,7 +61,7 @@ export function planSlots(count: number, pool: Verb[], shaky: ShakyForm[], recen
   const pick = <T>(list: T[]) => list[Math.floor(random() * list.length)]!;
   return tenses.flatMap((tense): ChangeSlot[] => {
     const kind: ChangeKind = chosen.length < 2 || random() < PERSON_SHARE[tense] ? 'person' : 'time';
-    const free = (verb: Verb) => (kind === 'time' || !verb.impersonal ? persons(verb).filter((person) => !taken.has(`${verb.id}|${tense}|${person}`)) : []);
+    const free = (verb: Verb) => (kind === 'time' || !verb.impersonal ? persons(verb, tense).filter((person) => !taken.has(`${verb.id}|${tense}|${person}`)) : []);
     const weak = shaky.filter((form) => form.tense === tense && !used.has(form.verbId) && byId.has(form.verbId) && free(byId.get(form.verbId)!).includes(form.person));
     let verb: Verb, person: number;
     if (weak.length && random() < SHAKY_SHARE) {
@@ -70,11 +77,12 @@ export function planSlots(count: number, pool: Verb[], shaky: ShakyForm[], recen
     used.add(verb.id);
     taken.add(`${verb.id}|${tense}|${person}`);
     if (kind === 'time') {
-      const usual: Tense = tense === 'pres' ? 'pc' : 'pres';
+      // What a sentence usually moves from: the présent (the passé composé into the présent, or into the plus-que-parfait).
+      const usual: Tense = tense === 'pres' || tense === 'pqp' ? 'pc' : 'pres';
       const others = chosen.filter((other) => other !== tense);
       return [{ verbId: verb.id, kind, tense, person, baseTense: others.includes(usual) ? usual : pick(others), basePerson: person }];
     }
-    const basePerson = pick(persons(verb).filter((other) => other !== person));
+    const basePerson = pick(persons(verb, tense).filter((other) => other !== person));
     return [{ verbId: verb.id, kind, tense, person, baseTense: tense, basePerson, cue: pick(PERSON_CUES[person]!) }];
   });
 }
@@ -82,15 +90,15 @@ export function planSlots(count: number, pool: Verb[], shaky: ShakyForm[], recen
 export function drillsPrompt(slots: ChangeSlot[], verbs: Map<string, Verb>, known: { fr: string; en: string }[]): string {
   const lines = slots.map((slot, index) => {
     const verb = verbs.get(slot.verbId)!;
-    const cue = slot.kind === 'person' ? `cue "${slot.cue}" (the new subject)` : `cue: one of ${TIME_CUES[slot.tense].map((cue) => `"${cue}"`).join(', ')}`;
+    const cue = slot.kind === 'person' ? `cue "${slot.cue}" (the new subject)` : `cue: one of ${(TIME_CUES[slot.tense as keyof typeof TIME_CUES] ?? []).map((cue) => `"${cue}"`).join(', ')}`;
     return `${index + 1}. ${verb.inf} (${verb.en}) — base: ${TENSE_NAMES[slot.baseTense]}, ${PERSON_LABELS[slot.basePerson]}; answer: ${TENSE_NAMES[slot.tense]}, ${PERSON_LABELS[slot.person]}; ${cue}`;
   }).join('\n');
-  return `You write spoken drills for Echo, an app for one English speaker learning French (A2, aiming B1). The learner hears a short French sentence, then a cue, and says the sentence changed as the cue asks: a time phrase puts it in another tense, a subject pronoun gives it another subject. Then they hear the answer.
+  return `You write spoken drills for Echo, an app for one English speaker learning French (A2, aiming B1). The learner hears a short French sentence, then a cue, and says the sentence changed as the cue asks: a time phrase puts it in another tense (a phrase ending in que, such as Il faut que, puts it in the subjonctif; Si j’avais le temps in the conditionnel; Quand tu es arrivé in the plus-que-parfait), a subject pronoun gives it another subject. Then they hear the answer.
 
 Write one drill for each line below, with exactly the verb, tenses and persons given.
 - base: 3 to 9 words of everyday French, the verb in the base tense and person, with a subject (a pronoun, or a name or noun for il / elle and ils / elles). No time phrase in it.
-- answer: for a time cue, the cue, a comma, then the base sentence with only the verb changed to the answer tense (and what grammar then needs, nothing else); for a subject cue, the base sentence with the cue as its subject and the verb, and anything that agrees with the subject (possessives, reflexive pronouns, participles), changed.
-- Keep the verb in one piece: no negation in the passé composé, and no object pronoun (le, la, lui, y, en…) before the verb. A reflexive verb keeps its own pronoun (je me lève, nous nous levons).
+- answer: for a time cue, the cue, a comma, then the base sentence with only the verb changed to the answer tense (and what grammar then needs, nothing else); a cue ending in que takes no comma and runs into the sentence (Il faut que je parte); for a subject cue, the base sentence with the cue as its subject and the verb, and anything that agrees with the subject (possessives, reflexive pronouns, participles), changed.
+- Keep the verb in one piece: no negation in the passé composé or plus-que-parfait, and no object pronoun (le, la, lui, y, en…) before the verb. A reflexive verb keeps its own pronoun (je me lève, nous nous levons).
 - form and baseForm: the verb's words exactly as they are written in the answer and in the base, without the subject: "mange", "ai mangé", "me lève", "est allée".
 - en: natural English for the answer.
 - Use words from the learner's vocabulary below (any form), plus little words (articles, pronouns, prepositions, common determiners) and first names.
@@ -151,7 +159,7 @@ export function checkDrill(slot: ChangeSlot, verb: Verb, entry: unknown): Writte
   const subject = formIn(answer, form, verb, slot.tense, slot.person);
   if (!subject) return null;
   if (slot.kind === 'time') {
-    const canonical = TIME_CUES[slot.tense].find((option) => normal(option) === normal(cue));
+    const canonical = (TIME_CUES[slot.tense as keyof typeof TIME_CUES] ?? []).find((option) => normal(option) === normal(cue));
     if (!canonical || !normal(answer).startsWith(normal(canonical))) return null;
     cue = canonical;
   } else {

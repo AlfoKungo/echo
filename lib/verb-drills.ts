@@ -136,7 +136,7 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
   }
   // The end of a study day: 04:00 the next morning, or now for today.
   const endOf = (day: string) => { if (day === studyDay(now())) return now().getTime(); const [year, month, date] = day.split('-').map(Number); return new Date(year!, month! - 1, date! + 1, 4).getTime(); };
-  const formText = (verb: V, tense: T, person: number) => { const form = conjugate(verb, tense)[person]!; return subject(person, form.shown) + form.shown; };
+  const formText = (verb: V, tense: T, person: number) => { const form = conjugate(verb, tense)[person]!; return subject(person, form.shown, tense) + form.shown; };
   function chosenVerbs(input: RoundInput<T>): V[] {
     const verbs = options.verbs();
     if (input?.set === 'mine') {
@@ -250,7 +250,7 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
   function result(verb: V, tense: T, person: number, given: string): FormResult {
     const form = conjugate(verb, tense)[person]!;
     const right = isRight(form, given);
-    const expected = subject(person, form.shown) + form.shown;
+    const expected = subject(person, form.shown, tense) + form.shown;
     const why = right ? (accentSlip(form, given) ? `Right — with the accents: ${expected}.` : '') : !given.trim() ? '' : diagnose(verb, tense, person, given);
     const hook = hookFor(verb, tense, person);
     return { right, expected, why, rule: rule(verb, tense), paradigm: paradigm(verb, tense), ...(hook ? { hook } : {}) };
@@ -278,7 +278,7 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     const verbs = byId();
     const recognize = input?.way === 'recognize';
     const whole = !!grammar.wholeCards && !recognize;
-    const readingsOf = recognize ? formReadings() : null;
+    const readingsOf = recognize ? formReadings(chosenTenses(input)) : null;
     const shownForms = new Set<string>();
     const items = round(input);
     const drawn = whole ? items.filter((item, index) => items.findIndex((other) => other.verbId === item.verbId && other.tense === item.tense) === index) : items;
@@ -286,12 +286,12 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
       const verb = verbs.get(item.verbId)!;
       if (whole) {
         const person = persons(verb, item.tense)[0]!;
-        const answer = conjugate(verb, item.tense).flatMap((form, at) => form ? [subject(at, form.shown) + form.shown] : []).join(', ');
+        const answer = conjugate(verb, item.tense).flatMap((form, at) => form ? [subject(at, form.shown, item.tense) + form.shown] : []).join(', ');
         return [{ ...item, person, answer, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense) }];
       }
       const form = conjugate(verb, item.tense)[item.person]!;
       const hook = hookFor(verb, item.tense, item.person);
-      const card: VerbCard<T> = { ...item, answer: subject(item.person, form.shown) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), ...(hook ? { hook } : {}) };
+      const card: VerbCard<T> = { ...item, answer: subject(item.person, form.shown, item.tense) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), ...(hook ? { hook } : {}) };
       if (!readingsOf) return [card];
       if (shownForms.has(form.shown)) return [];
       shownForms.add(form.shown);
@@ -305,18 +305,19 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
       return [{ ...card, form: form.shown, readings: [...distinct.filter((reading) => same(reading) === mine), ...distinct.filter((reading) => same(reading) !== mine)] }];
     });
   }
-  // Every form Echo drills, by how it is shown without its subject: the verbs and tenses it belongs to, each with
-  // the persons that share it there and those persons' forms with their subjects.
-  function formReadings() {
+  // Every form Echo drills in these tenses, by how it is shown without its subject: the verbs and tenses it belongs
+  // to, each with the persons that share it there and those persons' forms with their subjects. Only the tenses being
+  // practised: parle is also a subjonctif and an impératif, said only when those are on the line.
+  function formReadings(tenses: readonly T[]) {
     const readings = new Map<string, FormReading<T>[]>();
-    for (const verb of options.verbs()) for (const tense of TENSES) {
+    for (const verb of options.verbs()) for (const tense of TENSES.filter((entry) => tenses.includes(entry))) {
       const table = conjugate(verb, tense);
       for (const person of persons(verb, tense)) {
         const shown = table[person]!.shown;
         const list = readings.get(shown) ?? readings.set(shown, []).get(shown)!;
         let reading = list.find((entry) => entry.verbId === verb.id && entry.tense === tense);
         if (!reading) list.push(reading = { verbId: verb.id, inf: verb.inf, en: verb.en, tense, tenseName: TENSE_NAMES[tense], persons: [], forms: [] });
-        reading.persons.push(person); reading.forms.push(subject(person, shown) + shown);
+        reading.persons.push(person); reading.forms.push(subject(person, shown, tense) + shown);
       }
     }
     return readings;
@@ -452,7 +453,7 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
       const misses = answers.filter((right) => !right).length;
       if (!misses || (answers[0] && misses < 2)) return [];
       const form = conjugate(verb, tense)[person]!;
-      return [{ verbId: verb.id, tense, tenseName: TENSE_NAMES[tense], person, form: subject(person, form.shown) + form.shown, misses, shaky: !answers[0] }];
+      return [{ verbId: verb.id, tense, tenseName: TENSE_NAMES[tense], person, form: subject(person, form.shown, tense) + form.shown, misses, shaky: !answers[0] }];
     }))).sort((left, right) => Number(right.shaky) - Number(left.shaky) || right.misses - left.misses).slice(0, WORST);
     const ear = earPhrases();
     return { verbs: rows, worst, mine: rows.filter((row) => row.started).length, common: Math.min(COMMON, verbs.length), ear: { ready: ear.filter((said) => options.earAudio(said)).length, total: ear.length } };
@@ -558,13 +559,13 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     const pool = options.verbs().slice(0, COMMON).flatMap((verb) => chosen.flatMap((tense) => persons(verb, tense).map((person) => {
       const form = conjugate(verb, tense)[person]!;
       // Weighted order without replacement: each key is random^(1/weight), highest first.
-      return { verbId: verb.id, verb, tense, person, said: subject(person, form.accepted[0]!) + form.accepted[0], shown: subject(person, form.shown) + form.shown, key: random() ** (1 / pull(scores.get(key(verb.id, tense, person)))) };
+      return { verbId: verb.id, verb, tense, person, said: subject(person, form.accepted[0]!, tense) + form.accepted[0], shown: subject(person, form.shown, tense) + form.shown, key: random() ** (1 / pull(scores.get(key(verb.id, tense, person)))) };
     })));
     return spread(pool.sort((a, b) => b.key - a.key));
   }
   // What the verb tape records: the four tense names, the six persons and every form of the most common verbs.
   function walkmanPhrases(): { french: string[]; english: string[] } {
-    const french = options.verbs().slice(0, COMMON).flatMap((verb) => TENSES.flatMap((tense) => persons(verb, tense).map((person) => { const form = conjugate(verb, tense)[person]!.accepted[0]!; return subject(person, form) + form; })));
+    const french = options.verbs().slice(0, COMMON).flatMap((verb) => TENSES.flatMap((tense) => persons(verb, tense).map((person) => { const form = conjugate(verb, tense)[person]!.accepted[0]!; return subject(person, form, tense) + form; })));
     return { french: [...TENSES.map((tense) => TENSE_NAMES[tense]), ...new Set(french)], english: [...WALKMAN_PERSONS_SAID] };
   }
 

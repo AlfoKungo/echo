@@ -2,23 +2,24 @@ import { describe, expect, test } from 'bun:test';
 import { join } from 'node:path';
 import fixture from './fixtures/rule-verbs.json';
 import sample from './fixtures/tense-sample.json';
-import { loadTenseDetector, paradigm } from '../lib/tenses';
-import { conjugate, subject, TENSES, verbOf, type VerbTable } from '../lib/verbs';
+import { DETECTED_TENSES, loadTenseDetector, paradigm } from '../lib/tenses';
+import { conjugate, subject, verbOf, type Tense, type VerbTable } from '../lib/verbs';
 
 const detector = await loadTenseDetector(join(import.meta.dir, '..'));
 const tags = (text: string) => detector.detect(text).join('+');
 
 describe('tense detector', () => {
-  test('every form of the fixture verbs, said after its subject, reads as its own tense', () => {
+  test('every form of the fixture verbs, said after its subject, reads as its own tense; a conditionnel or plus-que-parfait as other', () => {
     const words = new Map(fixture.words.map((word) => [word.id, word]));
     const wrong: string[] = [];
     for (const table of fixture.tables as VerbTable[]) {
       const verb = verbOf(table, words.get(table.id)!);
-      for (const tense of TENSES) conjugate(verb, tense).forEach((form, person) => {
+      for (const tense of [...DETECTED_TENSES, 'cond', 'pqp'] as Tense[]) conjugate(verb, tense).forEach((form, person) => {
         if (!form) return;
         const said = `${verb.impersonal ? 'il ' : subject(person, form.accepted[0]!)}${form.accepted[0]}.`;
         const found = detector.detect(said, [{ fr: form.accepted[0]!, en: `it (${verb.inf})` }]);
-        if (found.join() !== tense) wrong.push(`${said} → ${found.join('+')} (${tense})`);
+        const expected = (DETECTED_TENSES as readonly Tense[]).includes(tense) ? tense : 'other';
+        if (found.join() !== expected) wrong.push(`${said} → ${found.join('+')} (${tense})`);
       });
     }
     expect(wrong).toEqual([]);

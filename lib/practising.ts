@@ -9,8 +9,9 @@ export type PractisingLine = { set: string; verbIds: string[]; tenses: string[] 
 export type Practising = { verbs: Verb[]; tenses: Tense[] };
 // The client's own line until the learner changes it, so a drill never sent one writes for what the client shows.
 export const DEFAULT_LINE: PractisingLine = { set: 'mine', verbIds: [], tenses: ['pres'] };
-// The share of a batch each tense takes when all four are chosen: passé composé most, then présent, imparfait, futur.
-export const TENSE_MIX: Record<Tense, number> = { pc: 0.35, pres: 0.3, imp: 0.2, fut: 0.15 };
+// The share of a batch each tense takes, relative to the others chosen: passé composé most, then présent, imparfait,
+// futur, and the tenses built on them (conditionnel, subjonctif, plus-que-parfait, impératif) a little less.
+export const TENSE_MIX: Record<Tense, number> = { pc: 0.35, pres: 0.3, imp: 0.2, fut: 0.15, cond: 0.15, subj: 0.15, pqp: 0.1, impe: 0.1 };
 const MIX_ORDER = Object.keys(TENSE_MIX) as Tense[];
 
 // How many of a batch go to each chosen tense: TENSE_MIX restricted to `tenses` and renormalized, rounded by largest

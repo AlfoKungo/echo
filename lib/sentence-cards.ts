@@ -15,8 +15,7 @@ import type { CardSentence, Gloss } from '../comprehension-contract';
 import type { GrammarLevel, ListeningWord } from '../contract';
 import { lineOf, rememberedLine, type PractisingLine } from './practising';
 import { StoreError, studyDayStart } from './store';
-import type { TenseTag } from './tenses';
-import { TENSES, type Tense } from './verbs';
+import { DETECTED_TENSES, type DetectedTense, type TenseTag } from './tenses';
 import { planSentences } from './walkman';
 
 export const GOT_IT_DAYS = [3, 8, 20, 45, 90];
@@ -32,7 +31,7 @@ export const CARD_MODES: readonly CardMode[] = ['hear', 'read', 'both'];
 export type PoolSentence = Omit<CardSentence, 'tenses'> & { tenses: TenseTag[]; audio: string; clip: string };
 export type CardView = { id: string; level: GrammarLevel; fr: string; en: string; gloss: Gloss[]; audio: string | null; due: boolean };
 export type CardState = { step: number; dueAt: number };
-export type Eligibility = { tenses: readonly Tense[]; topicsOff: ReadonlySet<string>; met: ReadonlySet<string>; hear: boolean; recorded: (clip: string) => boolean };
+export type Eligibility = { tenses: readonly DetectedTense[]; topicsOff: ReadonlySet<string>; met: ReadonlySet<string>; hear: boolean; recorded: (clip: string) => boolean };
 // Why nothing is offered, in the order the filters run; null when something is.
 export type EmptyReason = 'tenses' | 'topics' | 'words' | 'recordings' | 'later' | null;
 
@@ -57,7 +56,7 @@ export function eligible<T extends Pick<PoolSentence, 'tenses' | 'topics' | 'wor
 }
 
 // Which tenses a request asked for: the Practising line it sent, else the one last sent.
-const tensesOf = (line: PractisingLine) => TENSES.filter((tense) => line.tenses.includes(tense));
+const tensesOf = (line: PractisingLine) => DETECTED_TENSES.filter((tense) => line.tenses.includes(tense));
 
 export function createSentenceCards(deps: {
   dbPath: string;
@@ -108,7 +107,7 @@ export function createSentenceCards(deps: {
   });
   const modeOf = (value: unknown): CardMode => CARD_MODES.includes(value as CardMode) ? value as CardMode : 'both';
 
-  function rules(tenses: readonly Tense[], hear: boolean): Eligibility {
+  function rules(tenses: readonly DetectedTense[], hear: boolean): Eligibility {
     const met = new Set(deps.vocabulary().filter((word) => word.status !== 'new').map((word) => word.id));
     return { tenses, topicsOff: topicsOff(), met, hear, recorded };
   }
@@ -171,7 +170,7 @@ export function createSentenceCards(deps: {
 
   // How many sentences the top-up's target leaves unseen and offerable, read aloud (Hear needs a recording, so a
   // sentence still being recorded does not count): it writes more once these run low.
-  function stock(): { unseen: number; tenses: Tense[] } {
+  function stock(): { unseen: number; tenses: DetectedTense[] } {
     const tenses = tensesOf(line.get());
     const marked = new Set(states.all().map((row) => row.sentence_id));
     return { unseen: eligible(deps.pool(), rules(tenses, false)).items.filter((sentence) => !marked.has(sentence.id)).length, tenses };

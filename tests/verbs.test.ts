@@ -3,7 +3,8 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createVerbDrills } from '../lib/verb-drills';
-import { accentSlip, conjugate, diagnose, persons, earQuestions, groupOf, isRight, paradigm, tenseGuide, verbGuide, verbOf, verbProblems, type VerbTable, type VerbWord } from '../lib/verbs';
+import { accentSlip, conjugate, diagnose, persons, earQuestions, groupOf, isRight, paradigm, subject, tenseGuide, verbGuide, verbOf, verbProblems, type Tense, type VerbTable, type VerbWord } from '../lib/verbs';
+import ruleFixture from './fixtures/rule-verbs.json';
 
 const words: Record<string, VerbWord> = {
   parler: { id: 'v-parler', fr: 'parler', en: 'to speak' },
@@ -153,7 +154,7 @@ describe('guides', () => {
     expect(guide.groups.flatMap((group) => group.verbs).length).toBe(all.length);
     expect(guide.groups.find((group) => group.id === 'stem')!.verbs.find((entry) => entry.inf === 'aller')!.detail).toBe('j’irai');
     const page = verbGuide(verb('aller'));
-    expect(page.tenses.map((entry) => entry.group)).toEqual(['Irregular', 'Take être', 'Irregular in the présent, regular here', 'Irregular stems']);
+    expect(page.tenses.map((entry) => entry.group)).toEqual(['Irregular', 'Take être', 'Irregular in the présent, regular here', 'Irregular stems', 'Irregular stems', 'Take être', 'A subjonctif of their own', 'tu drops its -s']);
   });
 });
 
@@ -330,7 +331,7 @@ describe('verb drills', () => {
 
   test('the next whole table comes from the chosen verbs and tenses, a shaky one far more often, never one just done', () => {
     const drills = fixture();
-    const settings = { set: 'chosen' as const, verbIds: ['v-parler', 'v-aller'], tenses: ['pres', 'fut'] as ('pres' | 'pc' | 'imp' | 'fut')[] };
+    const settings = { set: 'chosen' as const, verbIds: ['v-parler', 'v-aller'], tenses: ['pres', 'fut'] as Tense[] };
     const parle = ['je parle', 'tu parles', 'il parle', 'nous parlons', 'vous parlez', 'ils parlent'];
     for (let person = 0; person < 6; person++) {
       drills.answer({ requestId: `s${person}`, verbId: 'v-aller', tense: 'fut', person, given: 'xyz' });
@@ -387,5 +388,72 @@ describe('verb drills', () => {
     expect(result.said.startsWith('nous')).toBe(true);
     expect(result.right).toBe(result.answer === 0);
     expect(() => fixture(() => false).earRound({ set: 'common', tenses: ['pres'] })).toThrow('still being recorded');
+  });
+});
+
+describe('the tenses built from the tables', () => {
+  // Tables as Claude wrote them in the learner's verbs.json.
+  const real = (fr: string) => {
+    const index = ruleFixture.words.findIndex((word) => word.fr === fr);
+    return verbOf((ruleFixture.tables as VerbTable[])[index]!, ruleFixture.words[index]!);
+  };
+  const said = (fr: string, tense: Tense) => { const one = real(fr); return persons(one, tense).map((person) => { const form = conjugate(one, tense)[person]!.shown; return subject(person, form, tense) + form; }); };
+
+  test('the conditionnel is the futur stem with the imparfait endings, irregular stems and il-only verbs included', () => {
+    expect(said('être', 'cond')).toEqual(['je serais', 'tu serais', 'il serait', 'nous serions', 'vous seriez', 'ils seraient']);
+    expect(said('acheter', 'cond')[0]).toBe('j’achèterais');
+    expect(said('falloir', 'cond')).toEqual(['il faudrait']);
+  });
+
+  test('the plus-que-parfait puts the helper in the imparfait and agrees as the passé composé does', () => {
+    expect(said('aller', 'pqp')).toEqual(['j’étais allé(e)', 'tu étais allé(e)', 'il était allé(e)', 'nous étions allé(e)s', 'vous étiez allé(e)(s)', 'ils étaient allé(e)s']);
+    expect(said('se lever', 'pqp')[0]).toBe('je m’étais levé(e)');
+    const descendre = conjugate(real('descendre'), 'pqp')[0]!;
+    expect(['étais descendue', 'avais descendu'].every((given) => isRight(descendre, given))).toBe(true);
+    expect(diagnose(real('parler'), 'pqp', 0, 'ai parlé')).toBe('That’s the passé composé.');
+    expect(diagnose(real('aller'), 'pqp', 0, 'avais allé')).toBe('aller goes with être in the plus-que-parfait, not avoir.');
+  });
+
+  test('the subjonctif takes ils for je, tu, il and ils and the imparfait for nous and vous, with que before the subject', () => {
+    expect(said('prendre', 'subj')).toEqual(['que je prenne', 'que tu prennes', 'qu’il prenne', 'que nous prenions', 'que vous preniez', 'qu’ils prennent']);
+    expect(said('boire', 'subj')).toEqual(['que je boive', 'que tu boives', 'qu’il boive', 'que nous buvions', 'que vous buviez', 'qu’ils boivent']);
+    expect(said('s\'asseoir', 'subj')[0]).toBe('que je m’asseye');
+    expect(['prendre', 'parler', 'faire', 'falloir'].map((fr) => groupOf(real(fr), 'subj'))).toEqual(['two-stems', 'regular', 'irregular', 'only-il']);
+  });
+
+  test('the irregular subjonctifs are their own forms, and a phrase takes its verb’s', () => {
+    expect(said('avoir', 'subj')).toEqual(['que j’aie', 'que tu aies', 'qu’il ait', 'que nous ayons', 'que vous ayez', 'qu’ils aient']);
+    expect(said('vouloir', 'subj')).toEqual(['que je veuille', 'que tu veuilles', 'qu’il veuille', 'que nous voulions', 'que vous vouliez', 'qu’ils veuillent']);
+    expect(said('falloir', 'subj')).toEqual(['qu’il faille']);
+    expect(said('avoir peur', 'subj')[0]).toBe('que j’aie');
+  });
+
+  test('a typed subjonctif counts with or without que and its subject', () => {
+    const form = conjugate(real('prendre'), 'subj')[2]!;
+    expect(['prenne', 'qu’il prenne', 'qu\'il prenne', 'que elle prenne'].every((given) => isRight(form, given))).toBe(true);
+    expect(isRight(form, 'prend')).toBe(false);
+  });
+
+  test('the impératif is tu, nous and vous of the présent with no subject; -er verbs and aller drop the -s of tu', () => {
+    expect(said('parler', 'impe')).toEqual(['parle', 'parlons', 'parlez']);
+    expect(said('aller', 'impe')).toEqual(['va', 'allons', 'allez']);
+    expect(said('finir', 'impe')).toEqual(['finis', 'finissons', 'finissez']);
+    expect(said('dire', 'impe')).toEqual(['dis', 'disons', 'dites']);
+    expect(said('être', 'impe')).toEqual(['sois', 'soyons', 'soyez']);
+    expect(said('savoir', 'impe')).toEqual(['sache', 'sachons', 'sachez']);
+    expect(conjugate(real('parler'), 'impe').map((form) => form?.shown ?? null)).toEqual([null, 'parle', null, 'parlons', 'parlez', null]);
+  });
+
+  test('a reflexive impératif puts its pronoun after, and some verbs have none', () => {
+    expect(said('se lever', 'impe')).toEqual(['lève-toi', 'levons-nous', 'levez-vous']);
+    expect(isRight(conjugate(real('se lever'), 'impe')[1]!, 'leve toi')).toBe(true);
+    expect(['pouvoir', 'devoir', 'falloir', 'avoir peur'].map((fr) => persons(real(fr), 'impe'))).toEqual([[], [], [], []]);
+    expect(diagnose(real('parler'), 'impe', 1, 'parles')).toBe('That’s the présent.');
+  });
+
+  test('By ear tells the conditionnel and plus-que-parfait apart by nous, never the subjonctif or impératif', () => {
+    const asked = earQuestions(real('parler'), ['fut', 'cond', 'pqp', 'subj', 'impe']).filter((question) => question.kind === 'tense');
+    expect(asked.map((question) => question.said).sort()).toEqual(['j’avais parlé', 'je parlerai', 'nous avions parlé', 'nous parlerions', 'nous parlerons'].sort());
+    expect(asked.find((question) => question.said === 'nous parlerions')!.choices).toEqual(['futur', 'conditionnel', 'plus-que-parfait']);
   });
 });

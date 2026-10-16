@@ -26,7 +26,8 @@ export interface VerbGrammar<V extends DrillVerb = french.Verb, T extends string
   earNeeds: string;
   persons(verb: V, tense: T): number[];
   conjugate(verb: V, tense: T): (Form | null)[];
-  subject(person: number, form: string): string;
+  // The subject said before a form; French's depends on the tense (que je, none in the impératif).
+  subject(person: number, form: string, tense?: T): string;
   isRight(form: Form, given: string): boolean;
   accentSlip(form: Form, given: string): boolean;
   diagnose(verb: V, tense: T, person: number, given: string): string;

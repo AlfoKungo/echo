@@ -15,8 +15,7 @@ import { laneProblems, loadKnown, PASSAGE_WORDS, SENTENCE_WORDS, type Known } fr
 import type { Ask } from './claude';
 import { mixCounts } from './practising';
 import type { Attempts } from './recording-attempts';
-import { loadTenseDetector, type TenseDetector } from './tenses';
-import type { Tense } from './verbs';
+import { loadTenseDetector, type DetectedTense, type TenseDetector } from './tenses';
 
 export const LOW = 10;
 const SENTENCES = 50;
@@ -164,7 +163,7 @@ Reply with only JSON: {"items": [{"ref": "...", "item": {...}}]} with one fixed 
 
 // ── Sentence cards: sentences written for the learner's Practising tenses and the words they know ──
 // The tenses and words a batch is written for: Verbs' Practising line and every deck word the learner has met.
-export type CardTarget = { tenses: Tense[]; words: VocabularyWord[] };
+export type CardTarget = { tenses: DetectedTense[]; words: VocabularyWord[] };
 export const CARD_BATCH = 50;
 // A batch left with fewer than this share of its sentences after the repair rounds is not kept.
 const MIN_CARDS = 0.6;
@@ -178,7 +177,7 @@ export const CARD_THEMES = ['home and family', 'food and cooking', 'shopping', '
   'the morning and the evening', 'money and bills', 'phones and messages', 'animals and nature', 'clothes', 'feelings', 'weekends',
   'cafés and restaurants', 'appointments and plans', 'the house and repairs', 'cinema, music and books', 'children', 'birthdays and parties',
   'the doctor and the pharmacy', 'trains, buses and cars', 'small problems and how they were solved', 'the garden and the market'];
-const TENSE_WORDS: { [tense in Tense]: string } = { pres: 'the présent (futur proche and venir de + infinitive count as présent)', pc: 'the passé composé', imp: 'the imparfait', fut: 'the futur simple' };
+const TENSE_WORDS: { [tense in DetectedTense]: string } = { pres: 'the présent (futur proche and venir de + infinitive count as présent)', pc: 'the passé composé', imp: 'the imparfait', fut: 'the futur simple' };
 export const normalFrench = (value: string) => value.toLowerCase().replace(/['’]/g, '’').replace(/[^\p{L}\p{M}’ ]/gu, ' ').replace(/\s+/g, ' ').trim();
 
 function cardsPrompt(count: number, target: CardTarget, theme: string, context: string, example: RawCard[]): string {
@@ -308,7 +307,7 @@ ${deck.filter((word) => !met.has(word.id)).map((word) => `${word.id} ${word.fr}`
 // line last sent, the learner's met words, every French sentence Echo already has, and how a batch is recorded and
 // joins the room.
 export type CardsTopup = {
-  stock: () => { unseen: number; tenses: Tense[] };
+  stock: () => { unseen: number; tenses: DetectedTense[] };
   words: () => VocabularyWord[];
   existing: () => string[];
   record: Record;

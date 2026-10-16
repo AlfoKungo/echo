@@ -17,16 +17,19 @@ const prendre = verbOf(table('v-prendre', ['prends', 'prends', 'prend', 'prenons
 const falloir = verbOf(table('v-falloir', ['faut'], ['fallait'], 'faudr', 'fallu', 'avoir'), word('v-falloir', 'falloir', 'to be necessary'));
 const verbs = [manger, aller, partir, lever, prendre, falloir];
 // A fixed sequence standing in for Math.random, so a plan can be checked exactly.
+// The four tenses the mix was first set for; the others are none of these batches.
+const FOUR: Tense[] = ['pres', 'pc', 'imp', 'fut'];
+const NONE = { cond: 0, pqp: 0, subj: 0, impe: 0 };
 const sequence = (seed = 1) => () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
 
 describe('the tense mix', () => {
   test('a batch splits by the shares, passé composé most', () => {
-    expect(mixCounts(8)).toEqual({ pc: 3, pres: 2, imp: 2, fut: 1 });
-    expect(mixCounts(20)).toEqual({ pc: 7, pres: 6, imp: 4, fut: 3 });
+    expect(mixCounts(8, FOUR)).toEqual({ pc: 3, pres: 2, imp: 2, fut: 1, ...NONE });
+    expect(mixCounts(20, FOUR)).toEqual({ pc: 7, pres: 6, imp: 4, fut: 3, ...NONE });
   });
   test('slots follow the mix, each verb once, and person changes keep within their tense', () => {
     for (let seed = 1; seed < 40; seed++) {
-      const slots = planSlots(5, verbs, [], new Set(), sequence(seed));
+      const slots = planSlots(5, verbs, [], new Set(), sequence(seed), FOUR);
       expect(slots.map((slot) => slot.tense as string).sort()).toEqual(['fut', 'imp', 'pc', 'pc', 'pres'].sort());
       expect(new Set(slots.map((slot) => slot.verbId)).size).toBe(slots.length);
       for (const slot of slots) {
@@ -43,7 +46,7 @@ describe('the tense mix', () => {
     }
   });
   test('with one tense chosen, every drill changes only the person, in that tense', () => {
-    for (const tense of TENSES) for (let seed = 1; seed < 20; seed++) {
+    for (const tense of TENSES.filter((entry) => entry !== 'impe')) for (let seed = 1; seed < 20; seed++) {
       const slots = planSlots(8, verbs, [], new Set(), sequence(seed), [tense]);
       expect(slots.length).toBeGreaterThan(0);
       for (const slot of slots) expect(slot).toMatchObject({ kind: 'person', tense, baseTense: tense });
@@ -64,7 +67,7 @@ describe('the tense mix', () => {
     expect(times).toBeGreaterThan(0);
   });
   test('a shaky form of the slot’s tense is drawn when the coin says so', () => {
-    const slots = planSlots(1, verbs, [{ verbId: 'v-prendre', tense: 'pc', person: 5, score: -4 }], new Set(), () => 0);
+    const slots = planSlots(1, verbs, [{ verbId: 'v-prendre', tense: 'pc', person: 5, score: -4 }], new Set(), () => 0, FOUR);
     expect(slots[0]).toMatchObject({ verbId: 'v-prendre', tense: 'pc', person: 5 });
   });
 });

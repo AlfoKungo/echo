@@ -41,6 +41,17 @@ describe('how it’s built: the deck', () => {
     });
   });
 
+  test('the four built tenses ask for what they are built from and say what sets a verb apart', () => {
+    expect(cardFor(all, 'cond', 'être')).toMatchObject({ answer: 'ser- + -ais', differs: 'Irregular stem, as in the futur' });
+    expect(cardFor(all, 'pqp', 'aller')).toMatchObject({ answer: 'étais + allé', differs: 'Takes être, so it agrees', clue: 'je suis allé' });
+    const prendre = cardFor(all, 'subj', 'prendre')!;
+    expect(prendre).toMatchObject({ clue: 'ils prennent', differs: 'Two stems', stems: [{ stem: 'prenn-', persons: 'je, tu, il, ils' }, { stem: 'pren-', persons: 'nous, vous' }] });
+    expect(prendre.paradigm.map((row) => row.parts.map((part) => part.lit ? `[${part.text}]` : part.text).join(''))).toEqual(['que je prenn[e]', 'que tu prenn[es]', 'qu’il prenn[e]', 'que nous pren[ions]', 'que vous pren[iez]', 'qu’ils prenn[ent]']);
+    expect(cardFor(all, 'subj', 'faire')).toMatchObject({ differs: 'A subjonctif of its own', answer: 'que je fasse · que nous fassions · qu’ils fassent' });
+    expect([cardFor(all, 'impe', 'aller')!.differs, cardFor(all, 'impe', 'parler')!.differs, cardFor(all, 'impe', 'se lever')!.differs]).toEqual(['tu drops the -s, like an -er verb', undefined, 'The pronoun goes after']);
+    expect([cardFor(all, 'impe', 'pouvoir'), cardFor(all, 'impe', 'falloir')]).toEqual([undefined, undefined]);
+  });
+
   test('each stem is listed with the persons it serves, and the table lights the ending on it', () => {
     expect(cardFor(all, 'pres', 'revenir')!.stems).toEqual([{ stem: 'revien-', persons: 'je, tu, il' }, { stem: 'reven-', persons: 'nous, vous' }, { stem: 'revienn-', persons: 'ils' }]);
     expect(cardFor(all, 'pres', 'acheter')!.stems).toEqual([{ stem: 'achèt-', persons: 'je, tu, il, ils' }, { stem: 'achet-', persons: 'nous, vous' }]);

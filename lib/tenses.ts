@@ -16,10 +16,14 @@
 // the server, in the scripts and in the tests. A word that is also a noun (la porte, il porte) counts as a verb only
 // where a subject or a gloss says so. The rules are checked against every verb table Echo has (tests/tenses.test.ts).
 import type { Gloss } from '../comprehension-contract';
-import { TENSES, type Tense } from './verbs';
+import type { Tense } from './verbs';
 
-export type TenseTag = Tense | 'other';
-export const TENSE_TAGS: readonly TenseTag[] = [...TENSES, 'other'];
+// The tenses a sentence is told apart by; the conditionnel, subjonctif, plus-que-parfait and every other tense or mood
+// are 'other', so sentence lanes keep to these four whatever else the Verbs room drills.
+export const DETECTED_TENSES = ['pres', 'pc', 'imp', 'fut'] as const satisfies readonly Tense[];
+export type DetectedTense = typeof DETECTED_TENSES[number];
+export type TenseTag = DetectedTense | 'other';
+export const TENSE_TAGS: readonly TenseTag[] = [...DETECTED_TENSES, 'other'];
 type Mood = 'pres' | 'imp' | 'fut' | 'cond' | 'subj' | 'ps';
 type Aux = 'avoir' | 'être';
 // impBeforeI: the imparfait stem before -ions and -iez where it differs (commencions beside commençais).

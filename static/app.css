@@ -518,6 +518,7 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-vrow{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--frame)}
 .vb-vname{min-width:0;font-size:16px;text-align:left}.vb-vname small{display:block;color:var(--dim);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vb-vcells{display:flex;gap:4px}.vb-vcells .vb-cell{width:58px;padding:5px}.vb-vcells .vb-cell i{height:7px}
+.vb-wide .vb-vrow{grid-template-columns:1fr;gap:8px}.vb-wide .vb-vcells{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.vb-wide .vb-vcells .vb-cell{width:100%}.vb-wcell small{display:block;margin-top:3px;text-align:center;font-size:9.5px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.3px}
 .vb-unwritten{color:var(--dim);font-size:12px}
 .vb-prompt{border:1px solid var(--frame);background:var(--card);border-radius:16px;padding:24px 20px;text-align:center}
 .vb-who{font-size:32px;font-weight:550;letter-spacing:-.8px;color:var(--ink)}

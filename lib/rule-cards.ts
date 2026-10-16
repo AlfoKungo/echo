@@ -1,11 +1,12 @@
 // How it's built: cards on how a tense is formed for a verb, not on one form: the présent's stems, the imparfait
-// stem, the futur stem, the passé composé helper and participle. Every answer is read off the verb tables
+// stem, the futur stem, the passé composé helper and participle, the conditionnel stem, the plus-que-parfait helper,
+// the subjonctif stems and the impératif's three forms. Every answer is read off the verb tables
 // (lib/verbs.ts), so a card can never teach a form the tables don't have. A round draws only from the verbs and tenses
 // on Verbs' Practising line. The learner marks each card, as in Cards: +1 knew it, −2 didn't, halving over
 // SCORE_HALF_LIFE_DAYS; the mark also counts for the verb's forms in that tense (onVerbMark).
 import { Database } from 'bun:sqlite';
 import { SCORE_HALF_LIFE_DAYS, StoreError } from './store';
-import { bothHelpers, conjugate, groupOf, paradigm, presentShape, presentStems, rule, stemOf, stemsByPerson, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
+import { bothHelpers, conjugate, groupOf, paradigm, persons, presentShape, presentStems, rule, stemOf, stemsByPerson, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
 import type { DrillVerb, VerbGrammar } from './verb-grammar';
 
 export type RuleKind = Tense | 'rule';
@@ -45,7 +46,7 @@ const DAY_MS = 86_400_000;
 function said(verb: Verb, tense: Tense, person: number): string {
   const asked = verb.impersonal ? 2 : person;
   const form = conjugate(verb, tense)[asked]!.accepted[0]!;
-  return subject(asked, form) + form;
+  return subject(asked, form, tense) + form;
 }
 const forms = (verb: Verb, tense: Tense, people: number[]) => [...new Set(people.map((person) => said(verb, tense, person)))];
 
@@ -75,6 +76,23 @@ const DIFFERS: Record<Tense, Record<string, { label: string; model?: string }>> 
     reflexive: { label: 'Reflexive, so it takes être' },
     participle: { label: 'Irregular participle' },
   },
+  cond: {
+    stem: { label: 'Irregular stem, as in the futur' },
+    'er-change': { label: 'The stem changes, as in je' },
+  },
+  pqp: {
+    etre: { label: 'Takes être, so it agrees' },
+    reflexive: { label: 'Reflexive, so it takes être' },
+    participle: { label: 'Irregular participle' },
+  },
+  subj: {
+    irregular: { label: 'A subjonctif of its own' },
+    'two-stems': { label: 'Two stems' },
+  },
+  impe: {
+    irregular: { label: 'An impératif of its own' },
+    reflexive: { label: 'The pronoun goes after' },
+  },
 };
 // A verb outside the named families says what sets it apart: il's -t, no -iss-, its -oir endings, a changing stem, and
 // any form off its own pattern (vous dites, il connaît).
@@ -90,7 +108,9 @@ function patternDiffers(verb: Verb): string {
   return [parts.join(', '), ...shape.odd].join(' · ');
 }
 export function differs(verb: Verb, tense: Tense): string | undefined {
-  if (tense === 'pc' && bothHelpers(verb)) return 'Takes être or avoir';
+  if ((tense === 'pc' || tense === 'pqp') && bothHelpers(verb)) return 'Takes être or avoir';
+  // Dropping the -s of tu is the -er rule; outside -er (ouvrir, aller) it is worth saying.
+  if (tense === 'impe' && groupOf(verb, tense) === 'drop-s' && !(verb.base.endsWith('er') && verb.base !== 'aller')) return 'tu drops the -s, like an -er verb';
   if (tense === 'pres' && groupOf(verb, tense) === 'er-soft') return `Regular, but nous ${verb.pres[3]}`;
   if (tense === 'pres' && PATTERNS.has(groupOf(verb, tense))) return patternDiffers(verb);
   const entry = DIFFERS[tense][groupOf(verb, tense)];
@@ -170,7 +190,76 @@ function pcCard(verb: Verb, lean: number): RuleCard {
   };
 }
 
-// Every card the verbs give: for each picked verb its présent stems, imparfait stem, futur stem and passé composé.
+// The conditionnel's stem is the futur's; the card asks for it with the endings it takes.
+function condCard(verb: Verb, lean: number): RuleCard {
+  const group = groupOf(verb, 'cond');
+  return {
+    id: `cond:${verb.id}`, verbId: verb.id, kind: 'cond', tense: 'cond', ask: 'Conditionnel stem', inf: verb.inf, clue: verb.en, clueLang: 'en', answer: `${verb.fut}- + -ais`, differs: differs(verb, 'cond'),
+    tenseName: TENSE_NAMES.cond, examples: forms(verb, 'cond', [0, 2, 3]), paradigm: paradigm(verb, 'cond'), rule: rule(verb, 'cond'),
+    value: lean * (group === 'stem' ? 2.5 : group === 'er-change' ? 1.5 : verb.base.endsWith('re') ? 1 : 0.5),
+    regular: group !== 'stem' && group !== 'er-change' && !verb.base.endsWith('re'),
+  };
+}
+// The plus-que-parfait: the passé composé with its helper in the imparfait. A verb taking either helper shows both.
+function pqpCard(verb: Verb, lean: number): RuleCard {
+  const group = groupOf(verb, 'pqp');
+  const helper = verb.reflexive || verb.aux === 'être' ? 'étais' : 'avais';
+  const both = bothHelpers(verb);
+  return {
+    id: `pqp:${verb.id}`, verbId: verb.id, kind: 'pqp', tense: 'pqp', ask: 'Plus-que-parfait', inf: verb.inf, clue: said(verb, 'pc', 0), clueLang: 'fr',
+    answer: both ? `étais · avais + ${verb.pp}` : `${helper} + ${verb.pp}`, differs: differs(verb, 'pqp'),
+    tenseName: TENSE_NAMES.pqp, examples: forms(verb, 'pqp', [0, 2, 5]),
+    paradigm: both ? [...paradigm({ ...verb, aux: 'être' }, 'pqp'), ...paradigm({ ...verb, aux: 'avoir' }, 'pqp')] : paradigm(verb, 'pqp'),
+    rule: rule(verb, 'pqp'), value: lean * (group === 'etre' ? 2 : group === 'participle' ? 2 : group === 'reflexive' ? 1.5 : 0.5),
+    regular: !['etre', 'participle', 'reflexive'].includes(group),
+  };
+}
+// The subjonctif's stems: the ils présent's for je, tu, il and ils, the imparfait's for nous and vous; a verb with a
+// subjonctif of its own shows its forms instead. The table lights each person's ending on its own stem.
+function subjCard(verb: Verb, lean: number): RuleCard {
+  const group = groupOf(verb, 'subj');
+  const all = conjugate(verb, 'subj');
+  const one = verb.pres[5]?.replace(/ent$/, ''), two = verb.imp[3]?.replace(/ions$/, '');
+  const byPerson: [string, string, string] | null = group === 'regular' || group === 'two-stems' ? [one!, two!, one!] : null;
+  const examples = forms(verb, 'subj', verb.impersonal ? [2] : [0, 3, 5]);
+  const rows = paradigm(verb, 'subj');
+  return {
+    id: `subj:${verb.id}`, verbId: verb.id, kind: 'subj', tense: 'subj', ask: byPerson ? 'Subjonctif stems' : 'Subjonctif: que je, que nous, qu’ils', inf: verb.inf,
+    clue: verb.impersonal ? verb.en : said(verb, 'pres', 5), clueLang: verb.impersonal ? 'en' : 'fr',
+    answer: byPerson ? [...new Set([one, two])].map((stem) => `${stem}-`).join(' · ') : examples.join(' · '), differs: differs(verb, 'subj'),
+    stems: byPerson && one !== two ? stemGroups(byPerson) : undefined,
+    tenseName: TENSE_NAMES.subj, examples,
+    paradigm: byPerson ? rows.map((row) => stemRow(row, all[row.person]!.shown, stemOf(byPerson, row.person))) : rows,
+    rule: rule(verb, 'subj'), value: lean * (group === 'irregular' ? 3 : group === 'two-stems' ? 2 : verb.base.endsWith('er') ? 0.5 : 1),
+    regular: group === 'regular' && verb.base.endsWith('er'),
+  };
+}
+// The impératif's three forms: tu, nous, vous, without a subject.
+function impeCard(verb: Verb, lean: number): RuleCard {
+  const group = groupOf(verb, 'impe');
+  const examples = forms(verb, 'impe', [1, 3, 4]);
+  const er = verb.base.endsWith('er') && verb.base !== 'aller';
+  return {
+    id: `impe:${verb.id}`, verbId: verb.id, kind: 'impe', tense: 'impe', ask: 'Impératif: tu, nous, vous', inf: verb.inf, clue: verb.en, clueLang: 'en',
+    answer: examples.join(' · '), differs: differs(verb, 'impe'),
+    tenseName: TENSE_NAMES.impe, examples, paradigm: paradigm(verb, 'impe'), rule: rule(verb, 'impe'),
+    value: lean * (group === 'irregular' ? 3 : group === 'drop-s' && !er ? 2 : group === 'reflexive' ? 1.5 : er ? 0.5 : 1),
+    regular: (group === 'drop-s' && er) || group === 'regular',
+  };
+}
+// A row split at its person's stem, so what is lit is the ending on it (que je prenn|e, que nous pren|ions).
+function stemRow(row: ParadigmRow, form: string, stem: string): ParadigmRow {
+  const full = row.parts.map((part) => part.text).join('');
+  if (!full.endsWith(form)) return row;
+  const lead = full.slice(0, full.length - form.length);
+  const at = form.lastIndexOf(stem);
+  if (at < 0) return { ...row, parts: [{ text: lead }, { text: form, lit: true as const }] };
+  const ending = form.slice(at + stem.length);
+  return { ...row, parts: [{ text: lead + form.slice(0, at + stem.length) }, ...(ending ? [{ text: ending, lit: true as const }] : [])] };
+}
+
+// Every card the verbs give: for each picked verb a card per tense it has (présent stems, imparfait stem, futur stem,
+// passé composé, conditionnel stem, plus-que-parfait, subjonctif stems, impératif).
 // Phrases built on a verb (avoir peur, se rendre compte) get no cards of their own: their table is their verb's, so a
 // picked phrase stands for the verb with that table.
 export function ruleCandidates(verbs: Verb[], started: Set<string>, picked: Verb[] = verbs): RuleCard[] {
@@ -182,9 +271,12 @@ export function ruleCandidates(verbs: Verb[], started: Set<string>, picked: Verb
   for (const verb of usable) {
     if (!wanted.has(verb.inf) && !wanted.has(table(verb))) continue;
     const lean = started.has(verb.id) ? STARTED_LEAN : 1;
-    // An impersonal verb (falloir) has only il: no stems to compare and no nous form to build the imparfait on.
+    // An impersonal verb (falloir) has only il: no stems to compare and no nous form to build the imparfait on, and
+    // no impératif.
     if (!verb.impersonal) cards.push(presCard(verb, lean), impCard(verb, lean));
-    cards.push(futCard(verb, lean), pcCard(verb, lean));
+    cards.push(futCard(verb, lean), pcCard(verb, lean), condCard(verb, lean), pqpCard(verb, lean));
+    if (persons(verb, 'subj').length) cards.push(subjCard(verb, lean));
+    if (persons(verb, 'impe').length) cards.push(impeCard(verb, lean));
   }
   return cards;
 }

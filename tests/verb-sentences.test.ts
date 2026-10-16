@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { mixCounts } from '../lib/practising';
 import { createVerbDrills } from '../lib/verb-drills';
 import { checkSentence, createVerbSentences, parseSentences, planSlots, type Slot } from '../lib/verb-sentences';
-import { verbOf, type Verb, type VerbTable } from '../lib/verbs';
+import { verbOf, type Tense, type Verb, type VerbTable } from '../lib/verbs';
 
 const table = (id: string, fr: string, en: string, rest: Omit<VerbTable, 'id'>): Verb => verbOf({ id, ...rest }, { id, fr, en });
 const aller = table('v-aller', 'aller', 'to go', { pres: ['vais', 'vas', 'va', 'allons', 'allez', 'vont'], imp: ['allais', 'allais', 'allait', 'allions', 'alliez', 'allaient'], fut: 'ir', pp: 'allé', aux: 'être' });
@@ -18,20 +18,22 @@ const regular = (name: string) => table(`v-${name}`, `${name}er`, `to ${name}`, 
 // Twelve more verbs than a batch needs, so every slot can take a different one.
 const many = [aller, etre, habituer, falloir, parler, ...['aim', 'chant', 'dans', 'jou', 'mang', 'port', 'regard', 'trouv', 'pens'].map(regular)];
 const byId = new Map(many.map((verb) => [verb.id, verb]));
+const FOUR: Tense[] = ['pres', 'pc', 'imp', 'fut'];
+const NONE = { cond: 0, pqp: 0, subj: 0, impe: 0 };
 const seeded = (seed: number) => () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
 const sentence = (fr: string, answer: string) => ({ fr, answer, en: 'An English sentence.', why: 'A cue: so this tense.' });
 
 describe('the batch plan', () => {
   test('each tense gets its share of a batch, a passé composé third and a futur sixth or so', () => {
-    expect(mixCounts(12)).toEqual({ pres: 4, pc: 4, imp: 2, fut: 2 });
+    expect(mixCounts(12, FOUR)).toEqual({ pres: 4, pc: 4, imp: 2, fut: 2, ...NONE });
     expect(Object.values(mixCounts(7)).reduce((sum, n) => sum + n, 0)).toBe(7);
-    expect(mixCounts(20)).toEqual({ pres: 6, pc: 7, imp: 4, fut: 3 });
+    expect(mixCounts(20, FOUR)).toEqual({ pres: 6, pc: 7, imp: 4, fut: 3, ...NONE });
   });
 
   test('with fewer tenses chosen, the mix keeps to them, their shares scaled up to fill the batch', () => {
-    expect(mixCounts(12, ['pres', 'pc'])).toEqual({ pres: 6, pc: 6, imp: 0, fut: 0 });
-    expect(mixCounts(10, ['imp', 'fut'])).toEqual({ pres: 0, pc: 0, imp: 6, fut: 4 });
-    expect(mixCounts(8, ['pres'])).toEqual({ pres: 8, pc: 0, imp: 0, fut: 0 });
+    expect(mixCounts(12, ['pres', 'pc'])).toEqual({ pres: 6, pc: 6, imp: 0, fut: 0, ...NONE });
+    expect(mixCounts(10, ['imp', 'fut'])).toEqual({ pres: 0, pc: 0, imp: 6, fut: 4, ...NONE });
+    expect(mixCounts(8, ['pres'])).toEqual({ pres: 8, pc: 0, imp: 0, fut: 0, ...NONE });
   });
 
   test('one tense and fewer verbs than the batch: every slot in that tense, verbs again on other persons', () => {
@@ -45,7 +47,7 @@ describe('the batch plan', () => {
 
   test('a batch takes a different verb for every slot, follows the mix, and asks an il-only verb only for il', () => {
     for (let seed = 1; seed < 30; seed++) {
-      const slots = planSlots(many, new Map(), 12, seeded(seed));
+      const slots = planSlots(many, new Map(), 12, seeded(seed), FOUR);
       expect(slots).toHaveLength(12);
       expect(new Set(slots.map((slot) => slot.verbId)).size).toBe(12);
       expect(slots.filter((slot) => slot.tense === 'pc')).toHaveLength(4);
@@ -58,11 +60,11 @@ describe('the batch plan', () => {
     const scores = new Map([['v-parler|pc|0', -6], ['v-parler|pc|2', 6]]);
     let shaky = 0, solid = 0, je = 0, tu = 0;
     for (let seed = 1; seed < 400; seed++) {
-      for (const slot of planSlots([parler], scores, 4, seeded(seed)).filter((entry) => entry.tense === 'pc')) {
+      for (const slot of planSlots([parler], scores, 4, seeded(seed), FOUR).filter((entry) => entry.tense === 'pc')) {
         if (slot.person === 0) shaky++;
         if (slot.person === 2) solid++;
       }
-      for (const slot of planSlots([aller], new Map(), 4, seeded(seed))) { if (slot.person === 0) je++; if (slot.person === 1) tu++; }
+      for (const slot of planSlots([aller], new Map(), 4, seeded(seed), FOUR)) { if (slot.person === 0) je++; if (slot.person === 1) tu++; }
     }
     expect(shaky).toBeGreaterThan(solid * 10);
     expect(je).toBeGreaterThan(tu * 2);
@@ -77,6 +79,12 @@ describe('checking a sentence against the table', () => {
     expect(checkSentence(sentence('Le mois dernier, je ___ vite.', 'm’suis habitué'), pc(habituer, 0), habituer)).toBeString();
     expect(checkSentence(sentence('Le mois dernier, je ___ vite.', 'me suis habitué'), pc(habituer, 0), habituer)).toMatchObject({ answer: 'me suis habitué' });
     expect(checkSentence(sentence('Hier, il ___ partir tôt.', 'a fallu'), pc(falloir, 2), falloir)).toMatchObject({ answer: 'a fallu' });
+  });
+
+  test('a subjonctif has que before its subject, and an impératif has no subject at all', () => {
+    expect(checkSentence(sentence('Il faut que tu ___ plus fort.', 'parles'), { verbId: parler.id, tense: 'subj', person: 1 }, parler)).toMatchObject({ answer: 'parles' });
+    expect(checkSentence(sentence('___ plus fort, s’il te plaît.', 'parle'), { verbId: parler.id, tense: 'impe', person: 1 }, parler)).toMatchObject({ answer: 'parle' });
+    expect(checkSentence(sentence('Tu ___ plus fort, s’il te plaît.', 'parle'), { verbId: parler.id, tense: 'impe', person: 1 }, parler)).toBe('an impératif takes no subject');
   });
 
   test.each([
