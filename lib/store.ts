@@ -126,8 +126,8 @@ export const SCORE_ONE_RECALL = 4;
 // The most words the Board lays out at once.
 export const BOARD_LIMIT = 100;
 // Board's score range runs over Statistics' bars: a score rounds to a whole number, and anything below BOARD_SCORE_LOW
-// or above BOARD_SCORE_HIGH counts as that end. The full range shows every word; a narrower one shows only words with
-// a score, so words never practised stay out of it.
+// or above BOARD_SCORE_HIGH counts as that end. The full range shows every word. A narrower one shows the words you have
+// started whose score is in it — one not yet answered counts as 0 — and leaves out the words never started.
 export const BOARD_SCORE_LOW = -8;
 export const BOARD_SCORE_HIGH = 8;
 export type ScoreRange = { min: number; max: number };
@@ -1181,16 +1181,18 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     if (!whole(range.min) || !whole(range.max) || range.min > range.max) throw new StoreError(`Choose a score range from ${BOARD_SCORE_LOW} to ${BOARD_SCORE_HIGH}, lowest first.`, 400);
     return db.transaction(() => {
       const at = now();
+      const rows = rowsForDirection.all(direction);
       let ids: string[];
       if (inCards) {
         const queue = loadQueue(direction, at);
-        reconcileQueue(queue, rowsForDirection.all(direction), at, false);
+        reconcileQueue(queue, rows, at, false);
         ids = [...queue.failed, ...queue.successful, ...queue.unseen].filter((id) => inDeck(id, deck));
       } else ids = words.filter((word) => inDeck(word.id, deck)).map((word) => word.id);
       const scores = scoresAt(at.getTime());
+      const started = new Set(rows.map((row) => row.word_id));
       if (range.min > BOARD_SCORE_LOW || range.max < BOARD_SCORE_HIGH) ids = ids.filter((id) => {
-        if (!scores.has(id)) return false;
-        const bar = Math.max(BOARD_SCORE_LOW, Math.min(BOARD_SCORE_HIGH, Math.round(scores.get(id)!)));
+        if (!scores.has(id) && !started.has(id)) return false;
+        const bar = Math.max(BOARD_SCORE_LOW, Math.min(BOARD_SCORE_HIGH, Math.round(scores.get(id) ?? 0)));
         return bar >= range.min && bar <= range.max;
       });
       const shown = (inCards ? ids.slice(0, BOARD_LIMIT) : ids).map((id): BoardWord => ({

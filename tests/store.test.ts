@@ -800,7 +800,7 @@ describe('the word board', () => {
     expect(store.board('fr-en', 'food').words.find((word) => word.id === 'food-004')!.audioUrl).toBeNull();
     expect(store.board('en-fr', 'all', full, true).total).toBe(0);
   });
-  test('a score range keeps the scored words in it, rounding to the bar, and the full range keeps every word', () => {
+  test('a score range keeps the started words in it, an unanswered one at 0, and the full range keeps every word', () => {
     const directory = mkdtempSync(join(tmpdir(), 'echo-store-'));
     directories.push(directory);
     const store = createStore(words, { dbPath: join(directory, 'echo.db'), now: () => new Date(2026, 8, 21, 10), random: () => 0.999999 });
@@ -809,10 +809,12 @@ describe('the word board', () => {
     const state = store.start('fr-en', 'food');
     const missed = state.current!.id;
     store.grade(answer(state, false));
-    const ids = (min: number, max: number, deck = 'food') => store.board('fr-en', deck, { min, max }).words.map((word) => word.id);
-    expect(ids(-8, 0)).toEqual([missed]);
+    const fresh = store.board('fr-en', 'food', { min: -8, max: 8 }, true).words.map((word) => word.id).find((id) => id !== missed)!;
+    const ids = (min: number, max: number, deck = 'food') => store.board('fr-en', deck, { min, max }).words.map((word) => word.id).sort();
+    expect(ids(-8, 0)).toEqual([missed, fresh].sort());
     expect(ids(-3, -3)).toEqual([missed]);
-    expect(ids(-2, 8)).toEqual([]);
+    expect(ids(-2, 8)).toEqual([fresh]);
+    expect(ids(1, 8)).toEqual([]);
     expect(ids(-8, 8)).toHaveLength(4);
     expect(store.board('fr-en', 'all', { min: -8, max: -1 })).toMatchObject({ total: 1, words: [{ id: missed }] });
     expect(store.board('fr-en', 'all', { min: -8, max: -1 }, true)).toMatchObject({ total: 1, words: [{ id: missed }] });
