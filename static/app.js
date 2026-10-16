@@ -2840,26 +2840,42 @@ const appleTouch = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.pl
 const boardWebAudio = !!(window.AudioContext || window.webkitAudioContext) && (!appleTouch || 'audioSession' in navigator);
 let boardContext = null;
 const boardDecoded = new Map();
+// iPhone interrupts a page's audio context when Echo goes to the background, and on return the context can stay
+// "interrupted" with a resume() that never settles, so every Board tap after it is silent. The context is dropped
+// when the page is hidden, and a tap whose resume has not settled in BOARD_RESUME_MS drops it and plays through
+// the <audio> element instead; the next tap makes a fresh context inside its own gesture.
+const BOARD_RESUME_MS = 600;
+function retireBoardContext() {
+  stopBoardClip();
+  boardContext?.close().catch(() => {});
+  boardContext = null;
+  boardDecoded.clear();
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') retireBoardContext(); });
 async function playBoardClip(url) {
   const bytes = boardBytes.get(url);
   if (!boardWebAudio || !bytes || speed !== 1) { playFrench(url); return; }
   stopAudio();
+  if (boardContext && (boardContext.state === 'closed' || boardContext.state === 'interrupted')) retireBoardContext();
   const play = ++boardPlays;
   if ('audioSession' in navigator && navigator.audioSession.type !== 'playback') navigator.audioSession.type = 'playback';
   boardContext ??= new (window.AudioContext || window.webkitAudioContext)();
-  const resumed = boardContext.resume(); // inside the tap, as iPhone requires
+  const context = boardContext;
+  // Inside the tap, as iPhone requires; false once BOARD_RESUME_MS pass without it settling.
+  const resumed = Promise.race([context.resume().then(() => true), new Promise((done) => setTimeout(() => done(false), BOARD_RESUME_MS))]);
   try {
     let buffer = boardDecoded.get(url);
     if (!buffer) {
-      buffer = await boardContext.decodeAudioData(bytes.slice(0));
+      buffer = await context.decodeAudioData(bytes.slice(0));
       boardDecoded.set(url, buffer);
       if (boardDecoded.size > BOARD_DECODED) boardDecoded.delete(boardDecoded.keys().next().value);
     }
-    await resumed;
+    const running = await resumed && context.state === 'running';
     if (play !== boardPlays) return;
-    const source = boardContext.createBufferSource();
+    if (!running) { if (context === boardContext) retireBoardContext(); playFrench(url); return; }
+    const source = context.createBufferSource();
     source.buffer = buffer;
-    source.connect(boardContext.destination);
+    source.connect(context.destination);
     source.start(0, Math.min(BOARD_LEAD_S - BOARD_KEPT_LEAD_S, buffer.duration));
     boardSource = source;
   } catch { if (play === boardPlays) playFrench(url); }
