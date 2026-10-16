@@ -36,7 +36,7 @@ describe('how it’s built: the deck', () => {
     const said = Object.fromEntries(['mettre', 'boire', 'dire', 'courir', 'devoir', 'pouvoir', 'voir', "s'asseoir", 'faire', 'être'].map((fr) => [fr, cardFor(all, 'pres', fr)?.differs]));
     expect(said).toEqual({
       mettre: '-re, but the stem changes', boire: '-re, but il takes -t, the stem changes', dire: '-re, but il takes -t, the stem changes · vous dites',
-      courir: 'No -iss-', devoir: '-s, -s, -t, the stem changes', pouvoir: '-x, -x, -t, the stem changes', voir: '-s, -s, -t, the stem changes',
+      courir: 'No -iss-', devoir: 'The stem changes', pouvoir: '-x, -x, -t, the stem changes', voir: 'The stem changes',
       "s'asseoir": '-s, -s, no -t, the stem changes', faire: 'Irregular', être: 'Irregular',
     });
   });

@@ -6,7 +6,7 @@
 // SCORE_HALF_LIFE_DAYS; the mark also counts for the verb's forms in that tense (onVerbMark).
 import { Database } from 'bun:sqlite';
 import { SCORE_HALF_LIFE_DAYS, StoreError } from './store';
-import { bothHelpers, conjugate, groupOf, paradigm, persons, presentShape, presentStems, rule, stemOf, stemsByPerson, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
+import { bothHelpers, conjugate, groupOf, paradigm, persons, presentShape, usualEndings, presentStems, rule, stemOf, stemsByPerson, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
 import type { DrillVerb, VerbGrammar } from './verb-grammar';
 
 export type RuleKind = Tense | 'rule';
@@ -97,15 +97,17 @@ const DIFFERS: Record<Tense, Record<string, { label: string; model?: string }>> 
 // A verb outside the named families says what sets it apart: il's -t, no -iss-, its -oir endings, a changing stem, and
 // any form off its own pattern (vous dites, il connaît).
 const PATTERNS = new Set(['re-change', 're-t', 'ir-s', 'oir']);
-function patternDiffers(verb: Verb): string {
+function patternDiffers(verb: Verb): string | undefined {
   const shape = presentShape(verb)!;
   const changes = new Set(shape.stems).size > 1;
   const group = groupOf(verb, 'pres');
   const parts = group === 're-change' ? ['-re, but the stem changes']
     : group === 're-t' ? ['-re, but il takes -t', ...(changes ? ['the stem changes'] : [])]
     : group === 'ir-s' ? ['No -iss-', ...(changes ? ['the stem changes'] : [])]
-    : [verb.pres[0]!.endsWith('x') ? '-x, -x, -t' : shape.endings[2] === '' ? '-s, -s, no -t' : '-s, -s, -t', ...(changes ? ['the stem changes'] : [])];
-  return [parts.join(', '), ...shape.odd].join(' · ');
+    // An -oir verb with the usual endings (devoir, voir) differs only by its stem.
+    : usualEndings(shape) ? (changes ? ['The stem changes'] : [])
+    : [verb.pres[0]!.endsWith('x') ? '-x, -x, -t' : '-s, -s, no -t', ...(changes ? ['the stem changes'] : [])];
+  return [parts.join(', '), ...shape.odd].filter(Boolean).join(' · ') || undefined;
 }
 export function differs(verb: Verb, tense: Tense): string | undefined {
   if ((tense === 'pc' || tense === 'pqp') && bothHelpers(verb)) return 'Takes être or avoir';

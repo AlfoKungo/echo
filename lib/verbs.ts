@@ -244,16 +244,20 @@ const softEr = (verb: Verb) => {
   const nous = verb.base.endsWith('ger') ? `${stem}eons` : verb.base.endsWith('cer') ? `${stem.slice(0, -1)}çons` : null;
   return !!nous && verb.pres.join() === ['e', 'es', 'e', nous, 'ez', 'ent'].map((ending, person) => person === 3 ? nous : stem + ending).join();
 };
+// The endings most verbs outside -er take in the présent: -s, -s, -t, -ons, -ez, -ent.
+export const usualEndings = (shape: { endings: (string | null)[] }) => ['s', 's', 't', 'ons', 'ez', 'ent'].every((ending, person) => shape.endings[person] === null || shape.endings[person] === ending);
 // The présent rule for a verb outside the named families: its pattern, its stems, and any form off them.
 function patternRule(verb: Verb): string {
   const shape = presentShape(verb);
-  const changes = shape && new Set(shape.stems).size > 1 ? ` The stem changes: je ${verb.pres[0]}, nous ${verb.pres[3]}, ils ${verb.pres[5]}.` : '';
+  const changes = shape && new Set(shape.stems).size > 1 ? ` The stem changes: ${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}, ${said(verb, 'pres', 5)}.` : '';
   const odd = shape?.odd.length ? ` Off the pattern: ${shape.odd.join(', ')}.` : '';
+  // An -oir verb with the usual endings of a verb outside -er differs only by its stem, so the rule says just that.
+  if (patternOf(verb) === 'oir' && shape && usualEndings(shape)) return `The usual endings: -s, -s, -t, -ons, -ez, -ent.${changes ? ` Only the stem changes: ${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}, ${said(verb, 'pres', 5)}.` : ''}${odd}`;
   const text = {
-    're-change': `The regular -re endings: -s, -s, (nothing), -ons, -ez, -ent, so il ${verb.pres[2]} has no -t.`,
-    're-t': `Unlike a regular -re verb, il takes -t: il ${verb.pres[2]}. The endings are -s, -s, -t, -ons, -ez, -ent.`,
-    'ir-s': `-s, -s, -t, -ons, -ez, -ent, with no -iss- in the plural: nous ${verb.pres[3]}.`,
-    oir: `-oir verbs have no regular pattern: ${verb.pres[0]!.endsWith('x') ? '-x, -x, -t' : '-s, -s, -t'}, -ons, -ez, -ent.`,
+    're-change': `The regular -re endings: -s, -s, (nothing), -ons, -ez, -ent, so ${said(verb, 'pres', 2)} has no -t.`,
+    're-t': `Unlike a regular -re verb, il takes -t: ${said(verb, 'pres', 2)}. The endings are -s, -s, -t, -ons, -ez, -ent.`,
+    'ir-s': `-s, -s, -t, -ons, -ez, -ent, with no -iss- in the plural: ${said(verb, 'pres', 3)}.`,
+    oir: verb.pres[0]!.endsWith('x') ? `je and tu end in -x, not -s: ${said(verb, 'pres', 0)}, ${said(verb, 'pres', 1)}; then -t, -ons, -ez, -ent.` : `-s, -s, and no -t in il (${said(verb, 'pres', 2)}); then -ons, -ez, -ent.`,
   }[patternOf(verb)];
   return text ? text + changes + odd : `${verb.base} is irregular in the présent: worth learning as a whole table.`;
 }
@@ -634,7 +638,7 @@ const GROUPS: Record<Tense, { id: string; title: string; text: string; many?: tr
     { id: 're-change', title: '-re verbs whose stem changes', text: 'The regular -re endings (-s, -s, nothing, -ons, -ez, -ent) on a stem that changes in the plural: je mets, nous mettons; je bats, nous battons.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
     { id: 're-t', title: '-re verbs with -t in il', text: '-s, -s, -t, -ons, -ez, -ent, where a regular -re verb has no -t: il croit, il écrit, il lit. Many change their stem in the plural too: nous écrivons, ils boivent.', detail: (verb) => `${said(verb, 'pres', 2)}, ${said(verb, 'pres', 3)}` },
     { id: 'ir-s', title: '-ir verbs without -iss-', text: '-s, -s, -t, -ons, -ez, -ent with no -iss- in the plural: je cours, nous courons; je meurs, nous mourons.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
-    { id: 'oir', title: '-oir verbs', text: '-s, -s, -t (-x, -x, -t for pouvoir and vouloir) on a stem that usually changes: je dois, nous devons, ils doivent.', detail: (verb) => [0, 3, 5].map((person) => said(verb, 'pres', person)).join(', ') },
+    { id: 'oir', title: '-oir verbs', text: 'The usual endings, -s, -s, -t, -ons, -ez, -ent (-x, -x, -t for pouvoir and vouloir), on a stem that usually changes: je dois, nous devons, ils doivent.', detail: (verb) => [0, 3, 5].map((person) => said(verb, 'pres', person)).join(', ') },
     { id: 'er-change', title: '-er verbs whose stem changes', text: 'Regular -er endings, but the stem changes where the ending is silent (je, tu, il, ils): an è, a doubled l or t, or i for y.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
     { id: 'er-soft', title: '-ger and -cer verbs', text: 'Regular -er verbs whose nous form keeps the g or c soft before -ons: nous mangeons, nous commençons. Only the spelling changes.', many: true, detail: (verb) => said(verb, 'pres', 3) },
     { id: 'finir', title: 'Like finir', text: '-is, -is, -it, -issons, -issez, -issent: the -iss- in the plural is heard.', detail: (verb) => said(verb, 'pres', 5) },
