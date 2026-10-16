@@ -395,6 +395,55 @@ function requestId() {
   const bytes = new Uint8Array(16); crypto.getRandomValues(bytes);
   return Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0')).join('');
 }
+// Verb marks (Cards, In sentences, How it's built) wait here until the Mac has them, in order. One that could not reach
+// it (no reply, or none in time) is sent again by itself, sooner at first and then every minute, with the request id
+// it was first sent with, so it can never count twice; the queue outlives a reload. Only a mark the Mac turns down
+// says so on screen. sendMark settles true once the Mac has the mark, false if it turned it down or Undo dropped it.
+const MARK_RETRY_SECONDS = [2, 4, 8, 15, 30, 60];
+let markQueue = (() => { try { const list = JSON.parse(readPreference('echo.pending-marks', '[]')); return Array.isArray(list) ? list : []; } catch { return []; } })();
+let markSending = false, markTries = 0, markTimer = 0;
+const markWaiters = new Map();
+const saveMarkQueue = () => savePreference('echo.pending-marks', JSON.stringify(markQueue));
+function sendMark(path, body) {
+  markQueue.push({ path, body }); saveMarkQueue();
+  const settled = new Promise((resolve) => markWaiters.set(body.requestId, resolve));
+  flushMarks();
+  return settled;
+}
+function settleMark(entry, saved) {
+  markQueue = markQueue.filter((other) => other !== entry); saveMarkQueue();
+  markWaiters.get(entry.body.requestId)?.(saved); markWaiters.delete(entry.body.requestId);
+}
+async function flushMarks() {
+  if (markSending || !markQueue.length) return;
+  clearTimeout(markTimer); markTimer = 0;
+  markSending = true;
+  while (markQueue.length) {
+    const entry = markQueue[0];
+    try { await api(entry.path, { method: 'POST', body: JSON.stringify(entry.body) }); markTries = 0; settleMark(entry, true); }
+    catch (error) {
+      if (!error.status) {
+        markSending = false;
+        markTimer = setTimeout(flushMarks, MARK_RETRY_SECONDS[Math.min(markTries++, MARK_RETRY_SECONDS.length - 1)] * 1000);
+        return;
+      }
+      settleMark(entry, false);
+      notice = { message: `This mark was not saved: ${error.message}` }; render();
+    }
+  }
+  markSending = false;
+}
+// A mark still waiting to be sent is dropped (Undo before it reached the Mac): true when it was.
+function dropMark(id) {
+  const entry = markQueue.find((other) => other.body.requestId === id);
+  if (!entry || (markSending && markQueue[0] === entry)) return false;
+  settleMark(entry, false);
+  return true;
+}
+const sendMarksNow = () => { markTries = 0; flushMarks(); };
+window.addEventListener('online', sendMarksNow);
+window.addEventListener('pageshow', sendMarksNow);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') sendMarksNow(); });
 function applySnapshot(next) {
   snapshot = next; direction = next.direction; deck = next.deck;
   savePreference('echo.direction', direction); savePreference('echo.deck', deck);
@@ -4091,8 +4140,7 @@ function markVerbCard(knew) {
   if (!knew && !card.again) stream.items.splice(Math.min(stream.items.length, stream.index + 5), 0, { ...card, again: true });
   stream.index += 1; stream.revealed = false; notice = null;
   stopAudio(); render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
-  api('api/verbs/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: card.verbId, tense: card.tense, person: card.person, knew, ...(card.readings ? { way: 'recognize' } : {}) }) })
-    .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-cards') render(); })
+  sendMark('api/verbs/mark', { requestId: requestId(), verbId: card.verbId, tense: card.tense, person: card.person, knew, ...(card.readings ? { way: 'recognize' } : {}) })
     // The next cards are chosen once this mark counts, so a form just missed is weighed as shaky.
     .finally(() => topUpVerbCards());
 }
@@ -4164,16 +4212,16 @@ function markRuleCard(knew) {
   stream.due = Math.max(0, (stream.due ?? 0) + counted.due); stream.fresh = Math.max(0, (stream.fresh ?? 0) + counted.fresh);
   card.standing = knew ? 'ahead' : 'due';
   const id = requestId();
-  const saved = api('api/verbs/rules/mark', { method: 'POST', body: JSON.stringify({ requestId: id, id: card.id, knew }) })
-    .then(() => true, (error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-rules') render(); return false; });
+  const saved = sendMark('api/verbs/rules/mark', { requestId: id, id: card.id, knew });
   stream.last = { index: stream.index, requestId: id, repeat, saved, counted };
   stream.index += 1; stream.revealed = false; notice = null;
   render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
   // The next cards are drawn once this mark counts, so a card just missed is weighed as such.
   saved.finally(() => topUpRuleCards());
 }
-// Undo takes back the last mark, one step: its card comes back turned, a miss's repeat is taken out, and once the
-// mark has reached the Mac it is removed there, with what it counted for the verb's forms.
+// Undo takes back the last mark, one step: its card comes back turned, a miss's repeat is taken out, and the mark is
+// dropped while it still waits to be sent, or removed on the Mac once it got there, with what it counted for the
+// verb's forms (the removal waits in the same queue, so it never overtakes the mark).
 function undoRuleCard() {
   const stream = vbRules;
   const last = stream?.last;
@@ -4186,8 +4234,7 @@ function undoRuleCard() {
   stream.due = Math.max(0, (stream.due ?? 0) - last.counted.due); stream.fresh = Math.max(0, (stream.fresh ?? 0) - last.counted.fresh);
   if (card) card.standing = last.counted.fresh ? 'new' : last.counted.due < 0 ? 'due' : card.standing;
   render();
-  last.saved.then((saved) => saved && api('api/verbs/rules/unmark', { method: 'POST', body: JSON.stringify({ requestId: last.requestId }) }))
-    .catch((error) => { notice = { message: `The mark was not taken back: ${error.message}` }; if (screen === 'verbs-rules') render(); });
+  if (!dropMark(last.requestId)) last.saved.then((saved) => saved && sendMark('api/verbs/rules/unmark', { requestId: last.requestId }));
 }
 // ── In sentences: a Verbs card with the verb inside a French sentence, its infinitive beside the blank, and a word
 // or context that settles the tense. Claude writes the sentences ahead and the Mac records them (lib/verb-sentences.ts),
@@ -4274,8 +4321,7 @@ function markVerbSentence(knew) {
   if (!knew && !card.again) stream.items.splice(Math.min(stream.items.length, stream.index + 5), 0, { ...card, again: true });
   stream.index += 1; stream.revealed = false; notice = null;
   stopAudio(); render(); main.querySelector('#vb-sentence')?.focus({ preventScroll: true });
-  api('api/verbs/sentences/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), id: card.id, knew }) })
-    .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-sentences') render(); })
+  sendMark('api/verbs/sentences/mark', { requestId: requestId(), id: card.id, knew })
     // The next cards are chosen once this mark counts, so a form just missed is weighed as shaky.
     .finally(() => topUpVerbSentences());
 }
