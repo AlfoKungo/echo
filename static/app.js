@@ -4194,7 +4194,7 @@ function renderRuleCards() {
     ? `<h1 class="main-word vb-card-answer vb-stems">${card.stems.map((group) => `<span class="vb-stem-row"><span lang="${languageTag}">${stemHTML(group)}</span><small>${esc(group.persons)}</small></span>`).join('')}</h1>`
     : `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : languageTag}">${answer}</h1>`;
   const face = revealed
-    ? `${card.differs ? `<p class="vb-card-differs">${esc(card.differs)}</p>` : ''}${heading}<p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>`
+    ? `${card.label ?? card.differs ? `<p class="vb-card-differs">${esc(card.label ?? card.differs)}</p>` : ''}${heading}<p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>`
     : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang === 'fr' ? languageTag : card.clueLang}">${frEsc(card.clue)}</p>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-rule-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-rule-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
   const after = revealed ? `${card.paradigm.length ? paradigmHTML(card.paradigm, -1, true) : ''}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : '<p class="caption vb-card-hint">How is it built? Say it to yourself, then tap the card.</p>';

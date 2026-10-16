@@ -53,6 +53,13 @@ describe('how it’s built: the deck', () => {
     expect([cardFor(all, 'impe', 'pouvoir'), cardFor(all, 'impe', 'falloir')]).toEqual([undefined, undefined]);
   });
 
+  test('every card says its pattern: what sets the verb apart, or the regular one it follows', () => {
+    const label = (kind: string, fr: string) => cardFor(all, kind, fr)!.label;
+    expect([label('pres', 'parler'), label('pres', 'finir'), label('pres', 'attendre'), label('pres', 'partir'), label('pres', 'acheter')])
+      .toEqual(['Regular -er verb', 'Regular -ir verb, like finir', 'Regular -re verb', 'The partir pattern', '-er, but the stem changes']);
+    expect([label('fut', 'parler'), label('pc', 'parler'), label('subj', 'parler'), label('impe', 'parler')]).toEqual(['Regular stem', 'avoir, regular participle', 'Regular, from ils', 'Regular -er: tu drops the -s']);
+  });
+
   test('each stem is listed with the persons it serves, and the table lights the ending on it', () => {
     // Each stem with the letters where the stems differ in [ ].
     const marked = (fr: string) => cardFor(all, 'pres', fr)!.stems!.map(({ stem, persons, change }) => `${change ? `${stem.slice(0, change[0])}[${stem.slice(...change)}]${stem.slice(change[1])}` : stem} ${persons}`);

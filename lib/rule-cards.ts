@@ -7,7 +7,7 @@
 // for the verb's forms in that tense and moves it in the schedule (onVerbMark).
 import { Database } from 'bun:sqlite';
 import { StoreError } from './store';
-import { bothHelpers, conjugate, groupOf, paradigm, persons, presentShape, usualEndings, presentStems, rule, stemOf, stemsByPerson, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
+import { bothHelpers, conjugate, GROUP_TITLES, groupOf, paradigm, persons, presentShape, usualEndings, presentStems, rule, stemOf, stemsByPerson, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
 import type { DrillVerb, VerbGrammar } from './verb-grammar';
 
 export type RuleKind = Tense | 'rule';
@@ -22,10 +22,12 @@ export type RuleKind = Tense | 'rule';
 // stems, its futur stem, its passé composé); a card about a rule itself has none. regular marks a card that only
 // repeats its tense's pattern (one -er présent stem, an -er imparfait, a futur on the whole infinitive, avoir with a
 // regular participle).
+// label: the line over the answer, always there: what sets the verb apart (differs), or the regular pattern it
+// follows (Regular -er verb).
 // stems: on a présent or subjonctif card, each stem with the persons it serves (fini- for je, tu, il; finiss- for nous,
 // vous, ils), so the answer says which stem goes where; change: where in it the stems differ, [from, to).
 export type RuleCard<T extends string = Tense> = {
-  id: string; kind: T | 'rule'; tense: T; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string; differs?: string;
+  id: string; kind: T | 'rule'; tense: T; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string; differs?: string; label?: string;
   stems?: { stem: string; persons: string; change?: [number, number] }[];
   tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number; verbId?: string; regular?: boolean;
 };
@@ -104,6 +106,21 @@ function patternDiffers(verb: Verb): string | undefined {
     : usualEndings(shape) ? (changes ? ['The stem changes'] : [])
     : [verb.pres[0]!.endsWith('x') ? '-x, -x, -t' : '-s, -s, no -t', ...(changes ? ['the stem changes'] : [])];
   return [parts.join(', '), ...shape.odd].filter(Boolean).join(' · ') || undefined;
+}
+// The pattern a verb regular in this tense follows, said on its card where differs says nothing; a family's model verb
+// (partir on its own card) is named as the pattern itself.
+const REGULAR: Partial<Record<Tense, Record<string, string>>> = {
+  pres: { er: 'Regular -er verb', finir: 'Regular -ir verb, like finir', re: 'Regular -re verb' },
+  imp: { regular: 'Regular imparfait', 'from-nous': 'Regular here, from nous' },
+  fut: { regular: 'Regular stem' }, cond: { regular: 'Regular stem' },
+  pc: { regular: 'avoir, regular participle' }, pqp: { regular: 'avoir, regular participle' },
+  subj: { regular: 'Regular, from ils' },
+  impe: { regular: 'Regular: the présent', 'drop-s': 'Regular -er: tu drops the -s' },
+};
+export function regularLabel(verb: Verb, tense: Tense): string {
+  const group = groupOf(verb, tense);
+  const title = REGULAR[tense]?.[group] ?? GROUP_TITLES[tense][group] ?? '';
+  return title === `Like ${verb.base}` ? `The ${verb.base} pattern` : title;
 }
 export function differs(verb: Verb, tense: Tense): string | undefined {
   if ((tense === 'pc' || tense === 'pqp') && bothHelpers(verb)) return 'Takes être or avoir';
@@ -297,6 +314,11 @@ export function ruleCandidates(verbs: Verb[], started: Set<string>, picked: Verb
     cards.push(futCard(verb, lean), pcCard(verb, lean), condCard(verb, lean), pqpCard(verb, lean));
     if (persons(verb, 'subj').length) cards.push(subjCard(verb, lean));
     if (persons(verb, 'impe').length) cards.push(impeCard(verb, lean));
+  }
+  const byId = new Map(usable.map((verb) => [verb.id, verb]));
+  for (const card of cards) {
+    const verb = card.verbId ? byId.get(card.verbId) : undefined;
+    if (verb) card.label = card.differs ?? regularLabel(verb, card.tense);
   }
   return cards;
 }
