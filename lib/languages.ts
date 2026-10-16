@@ -39,11 +39,11 @@ export function createLanguageHost(options: { french: Language; others: Language
     const message = starting ? `${language.own} is starting…` : `${language.own} is unavailable right now.`;
     const wantsPage = (req.method === 'GET' || req.method === 'HEAD') && (req.headers.get('accept') ?? '').includes('text/html');
     if (!wantsPage) return Response.json({ error: starting ? `${language.own} is starting. Try again in a moment.` : message }, { status: 503, headers: { 'Cache-Control': 'no-store', 'Retry-After': '2' } });
-    // The app's own colours (Dusk, or Paper when this phone chose it), and the way back to French, which this phone
+    // The app's own colours (Dusk, or Daylight or Vice when this phone chose it), and the way back to French, which this phone
     // then opens on (static/app.js, echo.language).
     const page = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Echo · ${language.english}</title>
-<script>try { const theme = localStorage.getItem('echo.theme'); if (theme === 'paper' || theme === 'vice') document.documentElement.dataset.theme = theme; } catch {}</script>${starting ? '<meta http-equiv="refresh" content="2">' : ''}
-<style>:root{color-scheme:dark;--page:#0b0b10;--ink:#f4f2f8;--violet:#bdb5ff}:root[data-theme=vice]{--page:#07060c;--ink:#fff;--violet:#ff2e97}:root[data-theme=paper]{color-scheme:light;--page:#f6f2eb;--ink:#302936;--violet:#725197}
+<script>try { const theme = localStorage.getItem('echo.theme'); if (theme === 'daylight' || theme === 'vice') document.documentElement.dataset.theme = theme; } catch {}</script>${starting ? '<meta http-equiv="refresh" content="2">' : ''}
+<style>:root{color-scheme:dark;--page:#0b0b10;--ink:#f4f2f8;--violet:#bdb5ff}:root[data-theme=vice]{--page:#07060c;--ink:#fff;--violet:#ff2e97}:root[data-theme=daylight]{color-scheme:light;--page:#f6f6f4;--ink:#16161a;--violet:#5b4fd6}
 body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--page);color:var(--ink);font:17px/1.5 system-ui,-apple-system,sans-serif}main{padding:32px 24px;text-align:center}
 h1{font-size:24px;font-weight:600;margin:0 0 20px}a,button{font:inherit;color:var(--violet);background:none;border:0;padding:8px 12px;cursor:pointer;text-decoration:none}</style></head>
 <body><main><h1 role="status">${message}</h1>${starting ? '' : '<button onclick="location.reload()">Try again</button>'}<a href="../" onclick="try { localStorage.setItem('echo.language', 'fr') } catch {}">Back to ${options.french.own}</a></main></body></html>`;

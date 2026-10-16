@@ -31,8 +31,8 @@ const readPreference = (key, fallback) => { try { return localStorage.getItem(lo
 const savePreference = (key, value) => { try { localStorage.setItem(localKey(key), value); } catch { /* Progress is server-owned; local preferences are optional. */ } };
 // A French start on its way to another language (index.html) leaves the last language as it is.
 if (Object.keys(languageNames).length && !document.documentElement.dataset.leaving) savePreference('echo.language', language);
-// Theme: Dusk (the default), Paper or Vice, remembered on this device; index.html applies it before the first paint.
-const THEME_COLOURS = { dusk: '#0b0b10', paper: '#f6f2eb', vice: '#07060c' };
+// Theme: Dusk (the default), Daylight or Vice, remembered on this device; index.html applies it before the first paint.
+const THEME_COLOURS = { dusk: '#0b0b10', daylight: '#f6f6f4', vice: '#07060c' };
 const themeOf = (value) => value in THEME_COLOURS ? value : 'dusk';
 function applyTheme(theme) {
   if (theme === 'dusk') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = theme;
