@@ -178,6 +178,37 @@ describe('verb drills', () => {
     closers.push(drills.close);
     return drills;
   }
+  test('a verb-tense is spaced like a word: a day, then three, seven…, a miss due at once, a right answer early changes nothing', () => {
+    const drills = fixture();
+    const start = clock.value;
+    const day = 86_400_000;
+    const standing = () => drills.standings().get('v-parler|pres')!;
+    const at = (days: number) => { clock.value = new Date(start.getTime() + days * day); };
+    drills.markBuilt({ requestId: 'b1', verbId: 'v-parler', tense: 'pres', knew: true });
+    expect([standing().step, standing().due - start.getTime()]).toEqual([1, day]);
+    drills.mark({ requestId: 'c1', verbId: 'v-parler', tense: 'pres', person: 0, knew: true });
+    expect(standing().step).toBe(1);
+    at(1); drills.answer({ requestId: 't1', verbId: 'v-parler', tense: 'pres', person: 3, given: 'parlons' });
+    expect([standing().step, standing().level]).toEqual([2, 1]);
+    at(4); drills.table({ requestId: 'w1', verbId: 'v-parler', tense: 'pres', answers: ['parle', 'parles', 'parle', 'parlons', 'parlez', 'parlent'] });
+    expect([standing().step, standing().level, standing().due - clock.value.getTime()]).toEqual([3, 2, 7 * day]);
+    drills.mark({ requestId: 'c2', verbId: 'v-parler', tense: 'pres', person: 5, knew: false });
+    expect([standing().step, standing().due]).toEqual([0, clock.value.getTime()]);
+    const levels = drills.summary().verbs.find((row) => row.id === 'v-parler')!.levels;
+    expect([levels.pres, levels.fut]).toEqual([{ level: 1, weak: false, due: clock.value.getTime() }, { level: 0, weak: false, due: null }]);
+    clock.value = start;
+  });
+
+  test('a round takes the forms of due verb-tenses first, then new ones', () => {
+    const drills = fixture();
+    drills.mark({ requestId: 'm', verbId: 'v-aller', tense: 'fut', person: 0, knew: false });
+    const round = drills.round({ set: 'common', tenses: ['pres', 'fut'] });
+    // At most two forms of one verb-tense go in a round; the due one always has its two.
+    expect(round.filter((item) => item.verbId === 'v-aller' && item.tense === 'fut').length).toBe(2);
+    // With nothing else due and nothing waiting, new ones fill the round: practice never runs dry.
+    expect(round.length).toBe(20);
+  });
+
   const state = (drills: ReturnType<typeof fixture>, verbId: string, tense: 'pres', person: number) => drills.summary().verbs.find((row) => row.id === verbId)!.states[tense][person];
 
   test('an answer with an accent missing counts as right, in Type it and a whole table, and shows the accents', () => {

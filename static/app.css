@@ -484,12 +484,6 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-chooser{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;max-height:220px;overflow-y:auto;padding:2px}
 .vb-chip{border:1px solid var(--frame);border-radius:8px;padding:6px 10px;font-size:14px;color:var(--muted)}
 .vb-chip[aria-pressed=true]{border-color:var(--violet);color:var(--violet)}
-.vb-cell{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;width:100%;padding:6px;border:1px solid var(--frame);border-radius:9px;background:var(--card)}
-.vb-cell i,.vb-legend i{height:9px;border-radius:2px;background:var(--frame)}
-.vb-cell i.none{background:none}
-.vb-cell i.solid,.vb-legend i.solid{background:var(--violet)}.vb-cell i.getting,.vb-legend i.getting{background:var(--getting)}.vb-cell i.shaky,.vb-legend i.shaky{background:var(--danger)}
-.vb-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin-top:10px}
-.vb-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .vb-worst{list-style:none;margin:0;padding:0;border:1px solid var(--frame);border-radius:16px;background:var(--card);overflow:hidden}
 .vb-worst li+li button{border-top:1px solid var(--frame)}
 .vb-worst button{display:flex;align-items:baseline;gap:8px;width:100%;padding:12px 16px;font-size:16px;text-align:left}
@@ -507,19 +501,8 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .vb-tense-row small{display:block;margin-top:6px;color:var(--muted);font-size:12px}
 .vb-bar{display:flex;height:6px;margin-top:9px;border-radius:3px;overflow:hidden;background:var(--frame)}.vb-bar i{display:block;height:100%}
 .vb-bar .solid{background:var(--violet)}.vb-bar .getting{background:var(--getting)}.vb-bar .shaky{background:var(--danger)}
-.vb-all-row{margin-top:12px}
 .vb-first{margin-top:4px}.vb-options-note{margin-top:14px}
 .vb-search{width:100%;font-size:17px}
-.vb-chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
-.vb-chips button{border:1px solid var(--frame);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--muted)}.vb-chips button[aria-pressed=true]{border-color:var(--violet);color:var(--violet)}
-.vb-list-meta{display:flex;justify-content:space-between;align-items:center;margin:12px 2px 0;color:var(--muted);font-size:13px}.vb-list-meta button{color:var(--violet);font-size:13px}
-.vb-colhead{display:flex;justify-content:flex-end;gap:4px;margin-top:10px}.vb-colhead span{width:58px;text-align:center;font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.3px}
-.vb-vrows{list-style:none;margin:0;padding:0}
-.vb-vrow{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--frame)}
-.vb-vname{min-width:0;font-size:16px;text-align:left}.vb-vname small{display:block;color:var(--dim);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.vb-vcells{display:flex;gap:4px}.vb-vcells .vb-cell{width:58px;padding:5px}.vb-vcells .vb-cell i{height:7px}
-.vb-wide .vb-vrow{grid-template-columns:1fr;gap:8px}.vb-wide .vb-vcells{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.vb-wide .vb-vcells .vb-cell{width:100%}.vb-wcell small{display:block;margin-top:3px;text-align:center;font-size:9.5px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.3px}
-.vb-unwritten{color:var(--dim);font-size:12px}
 .vb-prompt{border:1px solid var(--frame);background:var(--card);border-radius:16px;padding:24px 20px;text-align:center}
 .vb-who{font-size:32px;font-weight:550;letter-spacing:-.8px;color:var(--ink)}
 .vb-verb{font-size:20px;color:var(--violet);margin-top:6px}.vb-meta{font-size:13px;color:var(--muted);margin-top:6px}
@@ -562,8 +545,6 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
    forms in All your verbs; Portuguese has four persons, so its form dots sit two by two. */
 .vb-para .vb-key{display:inline-block;width:6.4em;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;color:var(--muted)}
 .vb-card-meaning{font-size:30px;line-height:1.25;overflow-wrap:anywhere}
-body[data-lang="sv"] .vb-colhead span{width:auto}
-body[data-lang="pt"] .vb-cell{grid-template-columns:repeat(2,1fr)}
 .write-en{margin:0;font-size:22px;line-height:1.4;font-weight:500;color:var(--ink)}.write .vb-prompt .vb-tense{margin-top:14px}
 .write .feedback p{margin:8px 0 0}.write-fix{color:var(--violet)}
 /* In sentences: the sentence is the card's face, its blank a violet rule until the card turns and the form fills it. */
@@ -705,15 +686,13 @@ html{touch-action:manipulation}
 .vb-worst .vb-misses{grid-column:2;grid-row:1/3}
 .vb-tenses{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;border:0;border-radius:0;background:none;overflow:visible}
 .vb-tense-row{min-width:0;padding:16px;border:1px solid var(--frame);border-radius:13px;background:var(--card)}
-.vb-all-row .topic-row{padding:14px 16px}
 .vb h1{margin-bottom:20px}
-.vb-pill[aria-pressed=true],.vb-chip[aria-pressed=true],.vb-chips button[aria-pressed=true]{background:var(--violet-soft)}
-.vb-cell{border-radius:8px}
+.vb-pill[aria-pressed=true],.vb-chip[aria-pressed=true]{background:var(--violet-soft)}
 .vb-bar,.gr-bar{background:color-mix(in srgb,var(--frame) 75%,transparent)}
 /* Progress reads green for solid, lavender for getting there, peach for shaky or to revisit. Red stays for a wrong answer. */
-.vb-bar .solid,.vb-cell i.solid,.vb-legend i.solid,.gr-bar .own,.gr-legend i.own{background:var(--green)}
-.vb-bar .getting,.vb-cell i.getting,.vb-legend i.getting{background:var(--violet)}
-.vb-bar .shaky,.vb-cell i.shaky,.vb-legend i.shaky,.gr-bar .rev,.gr-legend i.rev,.vs-row.low .vs-track span{background:var(--peach)}
+.vb-bar .solid,.gr-bar .own,.gr-legend i.own{background:var(--green)}
+.vb-bar .getting{background:var(--violet)}
+.vb-bar .shaky,.gr-bar .rev,.gr-legend i.rev,.vs-row.low .vs-track span{background:var(--peach)}
 .gr-revisit{color:var(--peach)}
 .vb-misses{flex:none;padding:2px 9px;border:1px solid var(--frame);border-radius:999px;color:var(--peach);font-size:12px;white-space:nowrap}
 .st-tag.shaky{color:var(--peach);border-color:color-mix(in srgb,var(--peach) 33%,transparent)}.st-tag.solid{color:var(--green);border-color:color-mix(in srgb,var(--green) 33%,transparent)}
@@ -954,3 +933,31 @@ dialog.sheet .dialog-head{margin:0 4px 18px}
 .vb-built .vb-para tr.vb-next td{padding-top:9px;border-top:1px solid var(--frame)}
 .vb-built .vb-para .end{font-weight:600}
 .vb-built .vb-why.vb-rule{margin-top:14px;color:var(--muted);font-size:14.5px;line-height:1.5}
+
+/* Verbs: a level ring (Learning, Known, Solid as a third, two thirds, all of it), with an amber dot when a form is shaky. */
+.vb-ring{--f:0;--s:30px;width:var(--s);height:var(--s);flex:none;position:relative;border-radius:50%;background:conic-gradient(var(--green) calc(var(--f)*1turn),var(--frame) 0)}
+.vb-ring::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--page)}
+.vb-ring.weak::before{content:"";position:absolute;z-index:1;top:-1px;right:-1px;width:9px;height:9px;border-radius:50%;background:var(--peach);box-shadow:0 0 0 2px var(--page)}
+/* The Practise tab's line: what is practised (tap to change it), and what is due and new. */
+.vb-status{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 2px 12px;font-size:14px;color:var(--muted)}
+.vb-status button{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);text-align:left}
+.vb-status span{flex:none}.vb-status b{color:var(--violet);font-weight:650}
+/* The Verbs tab: the groups, then each verb with its ring, level, when it comes back, and a bar per tense. */
+.vb-lv-chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 6px}
+.vb-lv-chips button{padding:5px 12px;border:1px solid var(--frame);border-radius:999px;font-size:13.5px;color:var(--muted)}
+.vb-lv-chips button[aria-pressed=true]{border-color:var(--violet);color:var(--violet);background:var(--violet-soft)}
+.vb-lv-chips b{margin-left:5px;font-weight:600}
+.vb-lv-list{list-style:none;margin:0;padding:0}
+.vb-lv-list li+li{border-top:1px solid var(--frame)}
+.vb-lv-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;width:100%;padding:12px 2px;text-align:left}
+.vb-lv-name{min-width:0}.vb-lv-name>span{display:block;font-family:var(--serif);font-size:19px;line-height:1.2;color:var(--ink)}
+.vb-lv-name small{display:block;margin-top:2px;font-size:12.5px;color:var(--dim)}.vb-lv-name .due{color:var(--peach)}
+.vb-lv-tenses{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px 5px;max-width:156px}
+.vb-lv-t{display:flex;flex-direction:column;align-items:center;gap:4px;width:34px}
+.vb-lv-t i{display:flex;gap:2px;width:100%}.vb-lv-t i b{flex:1;height:5px;border-radius:2px;background:var(--frame)}
+.vb-lv-t i b.f{background:var(--green)}.vb-lv-t.weak i b.f{background:var(--peach)}
+.vb-lv-t small{max-width:100%;overflow:hidden;white-space:nowrap;font-size:9px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;color:var(--dim)}
+/* A verb's page: its ring beside its name; each tense's level over its table. */
+.vb-lv-head{display:flex;align-items:center;gap:16px;margin:4px 0 6px}.vb-lv-head h1{margin:0}.vb-lv-head .subtitle{margin:2px 0 0}
+.vb-lv-tense{display:flex;align-items:center;gap:8px;margin:0 0 6px;font-size:13px;color:var(--muted)}
+.vb-lv-tense .vb-ring::after{inset:2.5px}

@@ -99,7 +99,7 @@ describe('drills in another language', () => {
     let seed = 11;
     const options = { dbPath: join(directory, 'echo.db'), verbs: () => verbs, grammar, vocabulary: () => [], earAudio: () => null, random: () => ((seed = (seed * 16807) % 2147483647) / 2147483647), now: () => new Date(2026, 9, 10, 10) };
     const drills = createVerbDrills<V, T>(options);
-    const rules = createRuleCards<V, T>({ dbPath: options.dbPath, verbs: options.verbs, grammar, vocabulary: () => [], audio: () => null, random: options.random, now: options.now });
+    const rules = createRuleCards<V, T>({ dbPath: options.dbPath, verbs: options.verbs, grammar, vocabulary: () => [], audio: () => null, random: options.random, now: options.now, schedule: () => { const standings = drills.standings(); return { standings, newLeft: drills.newLeft(standings) }; } });
     closers.push(drills.close, rules.close);
     return { drills, rules };
   }
@@ -114,7 +114,7 @@ describe('drills in another language', () => {
     const table = drills.table({ requestId: 'c', verbId: pt('falar').id, tense: 'imp', answers: ['falava', '', 'fala', 'falávamos', '', 'falavam'] });
     expect([table.right, table.total, table.cells[1]]).toEqual([3, 4, null]);
     expect(drills.summary().verbs.find((row) => row.id === pt('fazer').id)!.states.perf).toEqual(['shaky', null, 'new', 'new', null, 'new']);
-    const cards = rules.round({ verbs: ptVerbs.slice(0, 20), tenses: ['imp'] });
+    const cards = rules.round({ verbs: ptVerbs.slice(0, 20), tenses: ['imp'] }).items;
     expect(cards.length).toBeGreaterThan(0);
     expect(cards.every((card) => card.tense === 'imp')).toBe(true);
   });
@@ -128,7 +128,7 @@ describe('drills in another language', () => {
     expect(drills.nextTable({ set: 'chosen', verbIds: [sv('springa').id], tenses: ['four'] })).toEqual({ verbId: sv('springa').id, tense: 'four' });
     expect(() => drills.nextTable({ set: 'chosen', verbIds: [sv('springa').id], tenses: ['one'] })).toThrow('No tables for these verbs in that group.');
     expect(() => drills.round({ set: 'common', tenses: [] })).toThrow('Choose at least one group.');
-    expect(rules.round({ verbs: svList, tenses: ['four'] }).every((card) => card.tense === 'four')).toBe(true);
+    expect(rules.round({ verbs: svList, tenses: ['four'] }).items.every((card) => card.tense === 'four')).toBe(true);
     expect(SWEDISH.ruleDeck(svList, new Set(), svList, ['four']).filter((card) => card.ask === 'The vowel change').map((card) => card.answer)).toContain('i → a → u');
   });
 });

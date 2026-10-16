@@ -4,6 +4,7 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createRuleCards, ruleCandidates, ruleDeck, type RuleCard } from '../lib/rule-cards';
+import { createVerbDrills, NEW_PER_DAY } from '../lib/verb-drills';
 import { conjugate, presentStems, TENSES, verbOf, type VerbTable, type VerbWord } from '../lib/verbs';
 import fixture from './fixtures/rule-verbs.json';
 
@@ -172,46 +173,65 @@ describe('how it’s built: marks', () => {
   const closers: (() => void)[] = [];
   afterEach(() => { for (const close of closers.splice(0)) close(); for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true }); });
   const clock = { value: new Date(2026, 9, 9, 10) };
+  // The cards with the verb drills behind them, as the server wires them: a mark counts for the forms and the
+  // schedule, and a round is drawn by the schedule.
   function open(directory = mkdtempSync(join(tmpdir(), 'echo-rules-')), onVerbMark?: (input: { requestId: string; verbId: string; tense: string; knew: boolean }) => void) {
     directories.push(directory);
-    // A constant draw orders the cards purely by weight, so a change in weight shows in the order.
+    const dbPath = join(directory, 'echo.db');
+    const drills = createVerbDrills({ dbPath, verbs: () => verbs, vocabulary: () => [], earAudio: () => null, now: () => new Date(clock.value) });
+    // A constant draw orders new cards purely by value, so the order can be checked.
     const cards = createRuleCards({
-      dbPath: join(directory, 'echo.db'), verbs: () => verbs, vocabulary: () => [{ id: idOf('tomber'), status: 'learning' }],
-      audio: (said) => said === 'je suis tombé' ? 'audio/radio/fr-0000000000000000.mp3' : null, random: () => 0.5, now: () => new Date(clock.value), onVerbMark,
+      dbPath, verbs: () => verbs, vocabulary: () => [{ id: idOf('tomber'), status: 'learning' }],
+      audio: (said) => said === 'je suis tombé' ? 'audio/radio/fr-0000000000000000.mp3' : null, random: () => 0.5, now: () => new Date(clock.value),
+      onVerbMark: onVerbMark ?? drills.markBuilt, onVerbUnmark: drills.unmarkBuilt,
+      schedule: () => { const standings = drills.standings(); return { standings, newLeft: drills.newLeft(standings) }; },
     });
-    closers.push(cards.close);
-    return { cards, directory };
+    closers.push(cards.close, drills.close);
+    return { cards, drills, directory };
   }
 
-  test('a round shows the heaviest cards first, with recordings where they exist', () => {
+  test('a first round is new cards, the started verbs and exceptions first, with recordings where they exist', () => {
     const { cards } = open();
     const round = cards.round(everything);
-    expect(round.length).toBe(12);
+    expect([round.items.length, round.due, round.fresh]).toEqual([12, 0, NEW_PER_DAY]);
     // tomber is started: its être + tombé card outweighs every other.
-    expect(round[0]).toMatchObject({ id: `pc:${idOf('tomber')}`, answer: 'être + tombé' });
-    expect(round[0]!.examples[0]).toEqual({ text: 'je suis tombé', audio: 'audio/radio/fr-0000000000000000.mp3' });
-    expect(round[0]!.examples[1]!.audio).toBeNull();
-    expect(round[0]).not.toHaveProperty('value');
+    expect(round.items[0]).toMatchObject({ id: `pc:${idOf('tomber')}`, answer: 'être + tombé' });
+    expect(round.items[0]!.examples[0]).toEqual({ text: 'je suis tombé', audio: 'audio/radio/fr-0000000000000000.mp3' });
+    expect(round.items[0]!.examples[1]!.audio).toBeNull();
+    expect(round.items[0]).not.toHaveProperty('value');
   });
 
-  test('a known card sinks, a missed one rises, and the marks persist; a request counts once', () => {
+  test('a card known goes away for a day, one missed is due at once and first, and the marks persist; a request counts once', () => {
     const first = open();
-    const top = `pc:${idOf('tomber')}`;
-    first.cards.mark({ requestId: 'a', id: top, knew: true });
-    first.cards.mark({ requestId: 'a', id: top, knew: true });
+    const known = `pc:${idOf('tomber')}`, missed = `fut:${idOf('envoyer')}`;
+    first.cards.mark({ requestId: 'a', id: known, knew: true });
+    first.cards.mark({ requestId: 'a', id: known, knew: true });
     const db = new Database(join(first.directory, 'echo.db'), { readonly: true });
     expect(db.query('SELECT COUNT(*) AS marks FROM rule_card_marks').get()).toEqual({ marks: 1 });
     db.close();
-    expect(first.cards.round(everything)[0]!.id).not.toBe(top);
-    const missed = `fut:${idOf('envoyer')}`;
-    expect(first.cards.round(everything)[0]!.id).not.toBe(missed);
     first.cards.mark({ requestId: 'b', id: missed, knew: false });
-    expect(first.cards.round(everything)[0]!.id).toBe(missed);
-    first.cards.close();
+    const round = first.cards.round(everything);
+    expect([round.items[0]!.id, round.due, round.fresh]).toEqual([missed, 1, NEW_PER_DAY - 2]);
+    // The known card is practised ahead, after the due one and today's new ones.
+    const standing = (kind: string) => round.items.filter((card) => card.standing === kind).map((card) => card.id);
+    expect([standing('due'), standing('ahead')]).toEqual([[missed], [known]]);
+    first.cards.close(); first.drills.close();
     closers.splice(0);
     const again = open(first.directory);
-    expect(again.cards.round(everything)[0]!.id).toBe(missed);
-    expect(again.cards.round(everything)[1]!.id).not.toBe(top);
+    expect(again.cards.round(everything).items[0]!.id).toBe(missed);
+    // A day on, the known card is due again too, after the one due longest.
+    clock.value = new Date(clock.value.getTime() + 86_400_000);
+    expect(again.cards.round(everything).items.slice(0, 2).map((card) => card.id)).toEqual([missed, known]);
+    clock.value = new Date(2026, 9, 9, 10);
+  });
+
+  test('Undo takes a mark back from the schedule too', () => {
+    const { cards } = open();
+    const id = `fut:${idOf('envoyer')}`;
+    cards.mark({ requestId: 'u', id, knew: false });
+    expect(cards.round(everything).due).toBe(1);
+    cards.unmark({ requestId: 'u' });
+    expect(cards.round(everything).due).toBe(0);
   });
 
   test('a mark needs a card Echo has, a request id and a yes or no', () => {

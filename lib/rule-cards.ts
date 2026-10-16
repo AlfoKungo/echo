@@ -2,10 +2,11 @@
 // stem, the futur stem, the passé composé helper and participle, the conditionnel stem, the plus-que-parfait helper,
 // the subjonctif stems and the impératif's three forms. Every answer is read off the verb tables
 // (lib/verbs.ts), so a card can never teach a form the tables don't have. A round draws only from the verbs and tenses
-// on Verbs' Practising line. The learner marks each card, as in Cards: +1 knew it, −2 didn't, halving over
-// SCORE_HALF_LIFE_DAYS; the mark also counts for the verb's forms in that tense (onVerbMark).
+// on Verbs' Practising line, by the verb-tense schedule the other drills share (lib/verb-drills.ts): what is due
+// first, then new ones while today has room, then the rest. The learner marks each card, as in Cards; the mark counts
+// for the verb's forms in that tense and moves it in the schedule (onVerbMark).
 import { Database } from 'bun:sqlite';
-import { SCORE_HALF_LIFE_DAYS, StoreError } from './store';
+import { StoreError } from './store';
 import { bothHelpers, conjugate, groupOf, paradigm, persons, presentShape, usualEndings, presentStems, rule, stemOf, stemsByPerson, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
 import type { DrillVerb, VerbGrammar } from './verb-grammar';
 
@@ -28,19 +29,14 @@ export type RuleCard<T extends string = Tense> = {
   stems?: { stem: string; persons: string; change?: [number, number] }[];
   tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number; verbId?: string; regular?: boolean;
 };
-export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value' | 'regular'> & { examples: { text: string; audio: string | null }[] };
+// standing: where the card's verb-tense stood when drawn: due now, new, or not yet due (practised ahead).
+export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value' | 'regular'> & { examples: { text: string; audio: string | null }[]; standing: 'due' | 'new' | 'ahead' };
 
 // Every card with something of its own to learn is in the deck. The regular ones all teach the same pattern, so each
 // tense keeps only its REGULAR_KEPT most valuable (started and common verbs first) as reminders of it.
 const REGULAR_KEPT = 10;
 const STARTED_LEAN = 1.5;
 const ROUND = 12;
-// A card is drawn with odds 2^(-score/PULL) × its value, the score held within ±LIMIT, as Cards draws forms: an
-// unmarked card at 0, one missed once about twice as likely, one known twice in a row about half as likely.
-const PULL = 1.7;
-const LIMIT = 8;
-const pull = (score: number | undefined) => 2 ** (-Math.max(-LIMIT, Math.min(LIMIT, score ?? 0)) / PULL);
-const DAY_MS = 86_400_000;
 
 // A form as the verb tape and By ear say it: the subject, then the first accepted form (the participle unagreed).
 function said(verb: Verb, tense: Tense, person: number): string {
@@ -328,6 +324,8 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
   onVerbMark?: (input: { requestId: string; verbId: string; tense: T; knew: boolean }) => void;
   // A mark taken back: what onVerbMark counted for that request goes too.
   onVerbUnmark?: (requestId: string) => void;
+  // Where each verb-tense stands in the schedule ("verbId|tense": when it is due), and how many may still be new today.
+  schedule: () => { standings: Map<string, { due: number }>; newLeft: number };
   now?: () => Date; random?: () => number;
 }) {
   const deck = options.grammar ?? ({ ruleDeck, ruleCandidates } as unknown as Pick<VerbGrammar<V, T>, 'ruleDeck' | 'ruleCandidates'>);
@@ -344,34 +342,35 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
   `);
   const insert = db.query('INSERT OR IGNORE INTO rule_card_marks (request_id, card_id, knew, marked_at) VALUES (?, ?, ?, ?)');
   const remove = db.query('DELETE FROM rule_card_marks WHERE request_id = ?');
-  const every = db.query<{ card_id: string; knew: number; marked_at: string }, []>('SELECT card_id, knew, marked_at FROM rule_card_marks ORDER BY sequence');
-
-  function scores(): Map<string, number> {
-    const end = now().getTime();
-    const byCard = new Map<string, number>();
-    for (const row of every.all()) byCard.set(row.card_id, (byCard.get(row.card_id) ?? 0) + (row.knew ? 1 : -2) * 0.5 ** ((end - Date.parse(row.marked_at)) / DAY_MS / SCORE_HALF_LIFE_DAYS));
-    return byCard;
-  }
-  const view = (card: RuleCard<T>): RuleCardView<T> => {
+  const view = (card: RuleCard<T>, standing: RuleCardView<T>['standing']): RuleCardView<T> => {
     const { examples, value: _value, regular: _regular, ...rest } = card;
-    return { ...rest, examples: examples.map((text) => ({ text, audio: options.audio(text) })) };
+    return { ...rest, examples: examples.map((text) => ({ text, audio: options.audio(text) })), standing };
   };
 
-  // The next cards from the verbs and tenses picked (Verbs' Practising line): drawn without replacement by weight
-  // (random^(1/weight), highest first), so low-scoring and unmarked cards come first, the exceptions and the
-  // learner's own verbs a little sooner; neighbours differ in verb.
-  function round(scope: { verbs: V[]; tenses: T[] }): RuleCardView<T>[] {
-    const score = scores();
+  // The next cards from the verbs and tenses picked (Verbs' Practising line), by the schedule: those due, longest
+  // overdue first; then new ones, up to what today has left, the exceptions and the learner's own verbs likelier
+  // (random^(1/value), highest first); then the rest, soonest due first. Every verb-tense already on the schedule keeps
+  // its card, so a regular one comes back when due; only new cards are kept to the deck (ruleDeck's cap on regular
+  // ones). Neighbours differ in verb. due and fresh: how many cards are due now, and how many new ones today allows.
+  function round(scope: { verbs: V[]; tenses: T[] }): { items: RuleCardView<T>[]; due: number; fresh: number } {
+    const { standings, newLeft } = options.schedule();
+    const at = now().getTime();
     const started = new Set(options.vocabulary().filter((word) => word.status !== 'new').map((word) => word.id));
-    const drawn = deck.ruleDeck(options.verbs(), started, scope.verbs, scope.tenses)
-      .map((card) => ({ card, key: random() ** (1 / (pull(score.get(card.id)) * card.value)) }))
-      .sort((left, right) => right.key - left.key).slice(0, ROUND).map((entry) => entry.card);
+    const kept = new Set(deck.ruleDeck(options.verbs(), started, scope.verbs, scope.tenses).map((card) => card.id));
+    const cards = deck.ruleCandidates(options.verbs(), started, scope.verbs).filter((card) => scope.tenses.includes(card.tense));
+    const standingOf = (card: RuleCard<T>) => card.verbId ? standings.get(`${card.verbId}|${card.tense}`) : undefined;
+    const due = cards.filter((card) => (standingOf(card)?.due ?? Infinity) <= at).sort((left, right) => standingOf(left)!.due - standingOf(right)!.due);
+    const fresh = cards.filter((card) => !standingOf(card) && kept.has(card.id)).map((card) => ({ card, key: random() ** (1 / card.value) })).sort((left, right) => right.key - left.key).map((entry) => entry.card);
+    const ahead = cards.filter((card) => (standingOf(card)?.due ?? -Infinity) > at).sort((left, right) => standingOf(left)!.due - standingOf(right)!.due);
+    const allowed = fresh.slice(0, newLeft);
+    const drawn = [...due, ...allowed, ...ahead, ...fresh.slice(newLeft)].slice(0, ROUND);
     const ordered: RuleCard<T>[] = [];
     while (drawn.length) {
       const index = drawn.findIndex((card) => card.inf !== ordered.at(-1)?.inf);
       ordered.push(...drawn.splice(index < 0 ? 0 : index, 1));
     }
-    return ordered.map(view);
+    const dueIds = new Set(due.map((card) => card.id)), freshIds = new Set(fresh.map((card) => card.id));
+    return { items: ordered.map((card) => view(card, dueIds.has(card.id) ? 'due' : freshIds.has(card.id) ? 'new' : 'ahead')), due: due.length, fresh: allowed.length };
   }
 
   // The learner's own say on a card, once per request id. Any card the verbs give counts, in the deck now or not; a
