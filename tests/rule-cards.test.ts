@@ -3,8 +3,8 @@ import { Database } from 'bun:sqlite';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { createRuleCards, presentStems, ruleCandidates, ruleDeck, type RuleCard } from '../lib/rule-cards';
-import { conjugate, TENSES, verbOf, type VerbTable, type VerbWord } from '../lib/verbs';
+import { createRuleCards, ruleCandidates, ruleDeck, type RuleCard } from '../lib/rule-cards';
+import { conjugate, presentStems, TENSES, verbOf, type VerbTable, type VerbWord } from '../lib/verbs';
 import fixture from './fixtures/rule-verbs.json';
 
 // Tables as Claude wrote them in the learner's verbs.json, with their vocabulary words, in vocabulary order.
@@ -21,7 +21,7 @@ describe('how it’s built: the deck', () => {
     const said = Object.fromEntries(['parler', 'finir', 'manger', 'acheter', 'prendre', 'revenir', 'partir', 'pouvoir'].map((fr) => [fr, cardFor(all, 'pres', fr)!.differs]));
     expect(said).toEqual({
       parler: undefined, finir: undefined, manger: 'Regular, but nous mangeons', acheter: '-er, but the stem changes',
-      prendre: undefined, revenir: 'Like venir', partir: undefined, pouvoir: 'Irregular',
+      prendre: undefined, revenir: 'Like venir', partir: undefined, pouvoir: '-x, -x, -t, the stem changes',
     });
     const ouvrir = verbOf({ id: 'x-ouvrir', pres: ['ouvre', 'ouvres', 'ouvre', 'ouvrons', 'ouvrez', 'ouvrent'], imp: ['ouvrais', 'ouvrais', 'ouvrait', 'ouvrions', 'ouvriez', 'ouvraient'], fut: 'ouvrir', pp: 'ouvert', aux: 'avoir' }, { id: 'x-ouvrir', fr: 'ouvrir', en: 'to open' } as VerbWord);
     const card = ruleCandidates([ouvrir], new Set()).find((entry) => entry.kind === 'pres')!;
@@ -30,6 +30,15 @@ describe('how it’s built: the deck', () => {
     expect(card.value).toBeGreaterThan(cardFor(all, 'pres', 'parler')!.value);
     expect([cardFor(all, 'pc', 'partir')!.differs, cardFor(all, 'pc', 'prendre')!.differs, cardFor(all, 'pc', 'parler')!.differs]).toEqual(['Takes être, so it agrees', 'Irregular participle', undefined]);
     expect([cardFor(all, 'fut', 'venir')!.differs, cardFor(all, 'fut', 'prendre')!.differs]).toEqual(['Irregular stem', undefined]);
+  });
+
+  test('a verb outside the named families says what sets it apart, and only être, avoir, aller and faire are irregular', () => {
+    const said = Object.fromEntries(['mettre', 'boire', 'dire', 'courir', 'devoir', 'pouvoir', 'voir', "s'asseoir", 'faire', 'être'].map((fr) => [fr, cardFor(all, 'pres', fr)?.differs]));
+    expect(said).toEqual({
+      mettre: '-re, but the stem changes', boire: '-re, but il takes -t, the stem changes', dire: '-re, but il takes -t, the stem changes · vous dites',
+      courir: 'No -iss-', devoir: '-s, -s, -t, the stem changes', pouvoir: '-x, -x, -t, the stem changes', voir: '-s, -s, -t, the stem changes',
+      "s'asseoir": '-s, -s, no -t, the stem changes', faire: 'Irregular', être: 'Irregular',
+    });
   });
 
   test('each stem is listed with the persons it serves, and the table lights the ending on it', () => {

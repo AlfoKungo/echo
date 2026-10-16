@@ -175,6 +175,19 @@ const softEr = (verb: Verb) => {
   const nous = verb.base.endsWith('ger') ? `${stem}eons` : verb.base.endsWith('cer') ? `${stem.slice(0, -1)}çons` : null;
   return !!nous && verb.pres.join() === ['e', 'es', 'e', nous, 'ez', 'ent'].map((ending, person) => person === 3 ? nous : stem + ending).join();
 };
+// The présent rule for a verb outside the named families: its pattern, its stems, and any form off them.
+function patternRule(verb: Verb): string {
+  const shape = presentShape(verb);
+  const changes = shape && new Set(shape.stems).size > 1 ? ` The stem changes: je ${verb.pres[0]}, nous ${verb.pres[3]}, ils ${verb.pres[5]}.` : '';
+  const odd = shape?.odd.length ? ` Off the pattern: ${shape.odd.join(', ')}.` : '';
+  const text = {
+    're-change': `The regular -re endings: -s, -s, (nothing), -ons, -ez, -ent, so il ${verb.pres[2]} has no -t.`,
+    're-t': `Unlike a regular -re verb, il takes -t: il ${verb.pres[2]}. The endings are -s, -s, -t, -ons, -ez, -ent.`,
+    'ir-s': `-s, -s, -t, -ons, -ez, -ent, with no -iss- in the plural: nous ${verb.pres[3]}.`,
+    oir: `-oir verbs have no regular pattern: ${verb.pres[0]!.endsWith('x') ? '-x, -x, -t' : '-s, -s, -t'}, -ons, -ez, -ent.`,
+  }[patternOf(verb)];
+  return text ? text + changes + odd : `${verb.base} is irregular in the présent: worth learning as a whole table.`;
+}
 // The one rule behind a tense for this verb, in a sentence or two.
 export function rule(verb: Verb, tense: Tense): string {
   const reflexive = verb.reflexive ? ' As a reflexive verb it keeps its pronoun before the verb: me, te, se, nous, vous, se.' : '';
@@ -187,10 +200,10 @@ export function rule(verb: Verb, tense: Tense): string {
     else if (verb.base.endsWith('ir') && verb.pres[3] === `${verb.base.slice(0, -2)}issons`) text = `Verbs like finir add -iss- in the plural: nous ${verb.pres[3]}, ils ${verb.pres[5]} — you can hear it.`;
     else if (partirType(verb)) text = `Like partir: the stem loses its last consonant in je, tu and il (je ${verb.pres[0]}, il ${verb.pres[2]}) and keeps it in the plural (nous ${verb.pres[3]}).`;
     else if (ouvrirType(verb)) text = `Like ouvrir: -er endings on an -ir verb (je ${verb.pres[0]}, nous ${verb.pres[3]}).`;
-    else if (verb.base.endsWith('venir')) text = `Like venir: je ${verb.pres[0]}, nous ${verb.pres[3]}, ils ${verb.pres[5]}.`;
+    else if (venirType(verb)) text = `Like venir: je ${verb.pres[0]}, nous ${verb.pres[3]}, ils ${verb.pres[5]}.`;
     else if (verb.base.endsWith('prendre')) text = `Like prendre: the d goes in the plural and ils doubles the n (nous ${verb.pres[3]}, ils ${verb.pres[5]}).`;
-    else if (verb.base.endsWith('re') && verb.pres[0]!.endsWith('s') && verb.pres[2] === verb.pres[0]!.slice(0, -1)) text = `-re verbs: -s, -s, (nothing), -ons, -ez, -ent, so il ${verb.pres[2]} has no -t.`;
-    else text = `${verb.base} is irregular in the présent: worth learning as a whole table.`;
+    else if (regularRe(verb)) text = `-re verbs: -s, -s, (nothing), -ons, -ez, -ent, so il ${verb.pres[2]} has no -t.`;
+    else text = patternRule(verb);
     return text + reflexive;
   }
   if (tense === 'imp') {
@@ -419,6 +432,42 @@ const regularRe = (verb: Verb) => {
   const stem = verb.base.slice(0, -2);
   return !verb.impersonal && verb.base.endsWith('re') && verb.pres.join() === ['s', 's', '', 'ons', 'ez', 'ent'].map((ending) => stem + ending).join();
 };
+// The présent's stems: the je form without -e, -s or -x, the nous form without -ons, the ils form without -ent; je, tu
+// and il take the first, nous and vous the second, ils the third. A verb whose forms don't take those endings (être,
+// avoir, aller, faire) has none.
+export function stemsByPerson(verb: Verb): [string, string, string] | null {
+  const one = verb.pres[0]?.match(/^(.+?)(e|s|x)$/)?.[1], two = verb.pres[3]?.match(/^(.+)ons$/)?.[1], three = verb.pres[5]?.match(/^(.+)ent$/)?.[1];
+  return one && two && three ? [one, two, three] : null;
+}
+export const stemOf = (stems: [string, string, string], person: number) => stems[person < 3 ? 0 : person < 5 ? 1 : 2]!;
+export function presentStems(verb: Verb): string[] | null {
+  const stems = stemsByPerson(verb);
+  return stems ? [...new Set(stems)] : null;
+}
+// The présent as stems and endings: each person's ending on its own stem, null where a form is not built on it
+// (vous dites, il connaît), and the forms not built on their stem.
+export function presentShape(verb: Verb): { stems: [string, string, string]; endings: (string | null)[]; odd: string[] } | null {
+  const stems = stemsByPerson(verb);
+  if (!stems || verb.impersonal) return null;
+  const endings = verb.pres.map((form, person) => form.startsWith(stemOf(stems, person)) ? form.slice(stemOf(stems, person).length) : null);
+  const odd = endings.flatMap((ending, person) => ending === null ? [`${SUBJECTS[person]} ${verb.pres[person]}`] : []);
+  return { stems, endings, odd };
+}
+// Verbs outside the named families, by what sets them apart (the ending of il decides where a form is odd):
+// re-change keeps the -re endings on a changing stem (je mets, nous mettons), re-t takes -t in il (il croit), ir-s
+// is an -ir verb with -s, -s, -t and no -iss- (je cours), oir an -oir verb (je dois, je peux). être, avoir, aller and
+// faire, with no stems to speak of, stay irregular.
+function patternOf(verb: Verb): string {
+  const shape = presentShape(verb);
+  if (!shape) return 'irregular';
+  const il = shape.endings[2] ?? (/t$/.test(verb.pres[2]!) ? 't' : null);
+  if (verb.base.endsWith('oir')) return 'oir';
+  if (verb.base.endsWith('re')) return il === '' ? 're-change' : il === 't' ? 're-t' : 'irregular';
+  if (verb.base.endsWith('ir')) return il === 't' ? 'ir-s' : 'irregular';
+  return 'irregular';
+}
+// venir and tenir and the verbs built on them share one pattern: je viens, nous venons, ils viennent; je tiens, nous tenons.
+const venirType = (verb: Verb) => /(venir|tenir)$/.test(verb.base);
 const erEndings = (stem: string) => ['e', 'es', 'e', 'ons', 'ez', 'ent'].map((ending) => stem + ending).join();
 // -ir verbs that drop the stem's last consonant in the singular (je pars, nous partons), and -ir verbs with -er endings (j'ouvre).
 const partirType = (verb: Verb) => {
@@ -430,12 +479,14 @@ const usualParticiple = (verb: Verb) => verb.base.endsWith('er') && verb.base !=
   : finirType(verb) ? `${verb.base.slice(0, -2)}i` : regularRe(verb) ? `${verb.base.slice(0, -2)}u` : null;
 const usualFuture = (verb: Verb) => verb.base.endsWith('re') ? verb.base.slice(0, -1) : verb.base;
 
+// The présent groups whose nous form is not the infinitive's stem, so their imparfait has to be read off nous.
+const IRREGULAR_PRESENT = new Set(['irregular', 'prendre', 'venir', 're-change', 're-t', 'ir-s', 'oir']);
 // Which kind of verb this is in a tense: the group that says what is regular or not about it here.
 export function groupOf(verb: Verb, tense: Tense): string {
   if (tense === 'pres') {
     if (verb.impersonal) return 'only-il';
     if (verb.base.endsWith('er') && verb.base !== 'aller') return regularEr(verb) ? 'er' : softEr(verb) ? 'er-soft' : 'er-change';
-    return finirType(verb) ? 'finir' : partirType(verb) ? 'partir' : ouvrirType(verb) ? 'ouvrir' : verb.base.endsWith('prendre') ? 'prendre' : verb.base.endsWith('venir') ? 'venir' : regularRe(verb) ? 're' : 'irregular';
+    return finirType(verb) ? 'finir' : partirType(verb) ? 'partir' : ouvrirType(verb) ? 'ouvrir' : verb.base.endsWith('prendre') ? 'prendre' : venirType(verb) ? 'venir' : regularRe(verb) ? 're' : patternOf(verb);
   }
   if (tense === 'pc') {
     if (verb.reflexive) return 'reflexive';
@@ -449,7 +500,7 @@ export function groupOf(verb: Verb, tense: Tense): string {
     const stem = verb.imp[0]!.replace(/ais$/, '');
     if (/(ge|ç)$/.test(stem)) return 'soft';
     if (/[iy]$/.test(stem)) return 'double-i';
-    return ['irregular', 'prendre', 'venir'].includes(groupOf(verb, 'pres')) ? 'from-nous' : 'regular';
+    return IRREGULAR_PRESENT.has(groupOf(verb, 'pres')) ? 'from-nous' : 'regular';
   }
   if (verb.fut === usualFuture(verb)) return 'regular';
   return verb.base.endsWith('er') && verb.base !== 'aller' && verb.base !== 'envoyer' ? 'er-change' : 'stem';
@@ -458,13 +509,17 @@ export function groupOf(verb: Verb, tense: Tense): string {
 const GROUPS: Record<Tense, { id: string; title: string; text: string; many?: true; detail: (verb: Verb) => string }[]> = {
   pres: [
     { id: 'irregular', title: 'Irregular', text: 'These follow no pattern in the présent, so each is worth learning as a whole table. Many are the most common verbs.', detail: (verb) => [0, 2, 3, 5].map((person) => said(verb, 'pres', person)).join(', ') },
+    { id: 're-change', title: '-re verbs whose stem changes', text: 'The regular -re endings (-s, -s, nothing, -ons, -ez, -ent) on a stem that changes in the plural: je mets, nous mettons; je bats, nous battons.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
+    { id: 're-t', title: '-re verbs with -t in il', text: '-s, -s, -t, -ons, -ez, -ent, where a regular -re verb has no -t: il croit, il écrit, il lit. Many change their stem in the plural too: nous écrivons, ils boivent.', detail: (verb) => `${said(verb, 'pres', 2)}, ${said(verb, 'pres', 3)}` },
+    { id: 'ir-s', title: '-ir verbs without -iss-', text: '-s, -s, -t, -ons, -ez, -ent with no -iss- in the plural: je cours, nous courons; je meurs, nous mourons.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
+    { id: 'oir', title: '-oir verbs', text: '-s, -s, -t (-x, -x, -t for pouvoir and vouloir) on a stem that usually changes: je dois, nous devons, ils doivent.', detail: (verb) => [0, 3, 5].map((person) => said(verb, 'pres', person)).join(', ') },
     { id: 'er-change', title: '-er verbs whose stem changes', text: 'Regular -er endings, but the stem changes where the ending is silent (je, tu, il, ils): an è, a doubled l or t, or i for y.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
     { id: 'er-soft', title: '-ger and -cer verbs', text: 'Regular -er verbs whose nous form keeps the g or c soft before -ons: nous mangeons, nous commençons. Only the spelling changes.', many: true, detail: (verb) => said(verb, 'pres', 3) },
     { id: 'finir', title: 'Like finir', text: '-is, -is, -it, -issons, -issez, -issent: the -iss- in the plural is heard.', detail: (verb) => said(verb, 'pres', 5) },
     { id: 'partir', title: 'Like partir', text: '-ir verbs that drop the last consonant of the stem in je, tu and il (je pars, il part) and keep it in the plural (nous partons, ils partent).', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 3)}` },
     { id: 'ouvrir', title: 'Like ouvrir', text: '-ir verbs that take -er endings in the présent: j’ouvre, tu ouvres, il ouvre, nous ouvrons.', detail: (verb) => said(verb, 'pres', 0) },
     { id: 'prendre', title: 'Like prendre', text: 'prendre and the verbs built on it lose the d in the plural and double the n in ils: nous prenons, ils prennent.', detail: (verb) => `${said(verb, 'pres', 3)}, ${said(verb, 'pres', 5)}` },
-    { id: 'venir', title: 'Like venir', text: 'venir and the verbs built on it (revenir, se souvenir, devenir): je viens, nous venons, ils viennent.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 5)}` },
+    { id: 'venir', title: 'Like venir', text: 'venir, tenir and the verbs built on them (revenir, se souvenir, devenir, obtenir, appartenir): je viens, nous venons, ils viennent; je tiens, nous tenons, ils tiennent.', detail: (verb) => `${said(verb, 'pres', 0)}, ${said(verb, 'pres', 5)}` },
     { id: 're', title: 'Regular -re', text: '-s, -s, nothing, -ons, -ez, -ent: il attend has no -t.', detail: (verb) => said(verb, 'pres', 2) },
     { id: 'only-il', title: 'Only with il', text: 'Used only as il, with no other person.', detail: (verb) => said(verb, 'pres', 2) },
     { id: 'er', title: 'Regular -er', text: '-e, -es, -e, -ons, -ez, -ent on the stem (the infinitive without -er). Only nous and vous sound different.', many: true, detail: () => '' },

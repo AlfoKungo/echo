@@ -5,7 +5,7 @@
 // SCORE_HALF_LIFE_DAYS; the mark also counts for the verb's forms in that tense (onVerbMark).
 import { Database } from 'bun:sqlite';
 import { SCORE_HALF_LIFE_DAYS, StoreError } from './store';
-import { bothHelpers, conjugate, groupOf, paradigm, rule, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
+import { bothHelpers, conjugate, groupOf, paradigm, presentShape, presentStems, rule, stemOf, stemsByPerson, subject, TENSE_NAMES, TENSES, type ParadigmRow, type Tense, type Verb } from './verbs';
 import type { DrillVerb, VerbGrammar } from './verb-grammar';
 
 export type RuleKind = Tense | 'rule';
@@ -49,17 +49,6 @@ function said(verb: Verb, tense: Tense, person: number): string {
 }
 const forms = (verb: Verb, tense: Tense, people: number[]) => [...new Set(people.map((person) => said(verb, tense, person)))];
 
-// The présent's stems: the je form without -e, -s or -x, the nous form without -ons, the ils form without -ent. A
-// regular verb has one (parl-), others two or three (fini- finiss-, vien- ven- vienn-). A verb whose forms don't take
-// those endings (être, avoir, aller, faire) is null: its three forms are learnt as they are.
-function stemsByPerson(verb: Verb): [string, string, string] | null {
-  const one = verb.pres[0]?.match(/^(.+?)(e|s|x)$/)?.[1], two = verb.pres[3]?.match(/^(.+)ons$/)?.[1], three = verb.pres[5]?.match(/^(.+)ent$/)?.[1];
-  return one && two && three ? [one, two, three] : null;
-}
-export function presentStems(verb: Verb): string[] | null {
-  const stems = stemsByPerson(verb);
-  return stems ? [...new Set(stems)] : null;
-}
 const PRONOUNS = ['je', 'tu', 'il', 'nous', 'vous', 'ils'];
 // What sets a verb apart from a regular one, by tense and by its group in that tense (lib/verbs.ts groupOf). A
 // regular group has no entry. A family named after a verb (Like partir) is not said on that verb's own card.
@@ -87,13 +76,26 @@ const DIFFERS: Record<Tense, Record<string, { label: string; model?: string }>> 
     participle: { label: 'Irregular participle' },
   },
 };
+// A verb outside the named families says what sets it apart: il's -t, no -iss-, its -oir endings, a changing stem, and
+// any form off its own pattern (vous dites, il connaît).
+const PATTERNS = new Set(['re-change', 're-t', 'ir-s', 'oir']);
+function patternDiffers(verb: Verb): string {
+  const shape = presentShape(verb)!;
+  const changes = new Set(shape.stems).size > 1;
+  const group = groupOf(verb, 'pres');
+  const parts = group === 're-change' ? ['-re, but the stem changes']
+    : group === 're-t' ? ['-re, but il takes -t', ...(changes ? ['the stem changes'] : [])]
+    : group === 'ir-s' ? ['No -iss-', ...(changes ? ['the stem changes'] : [])]
+    : [verb.pres[0]!.endsWith('x') ? '-x, -x, -t' : shape.endings[2] === '' ? '-s, -s, no -t' : '-s, -s, -t', ...(changes ? ['the stem changes'] : [])];
+  return [parts.join(', '), ...shape.odd].join(' · ');
+}
 export function differs(verb: Verb, tense: Tense): string | undefined {
   if (tense === 'pc' && bothHelpers(verb)) return 'Takes être or avoir';
   if (tense === 'pres' && groupOf(verb, tense) === 'er-soft') return `Regular, but nous ${verb.pres[3]}`;
+  if (tense === 'pres' && PATTERNS.has(groupOf(verb, tense))) return patternDiffers(verb);
   const entry = DIFFERS[tense][groupOf(verb, tense)];
   return entry && entry.model !== verb.base ? entry.label : undefined;
 }
-const stemOf = (stems: [string, string, string], person: number) => stems[person < 3 ? 0 : person < 5 ? 1 : 2]!;
 // Each stem with the persons it serves, in the order they first appear (achèt- for je, tu, il, ils; achet- for nous, vous).
 function stemGroups(stems: [string, string, string]): { stem: string; persons: string }[] {
   const groups = new Map<string, string[]>();
