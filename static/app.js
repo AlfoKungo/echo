@@ -993,7 +993,7 @@ function newsPlayed(edition) {
 async function loadNews(quiet = false) {
   clearTimeout(newsPoll);
   if (!quiet && !newsList) { loading = true; render(); }
-  try { newsList = await api('api/news'); }
+  try { newsList = await api('api/news'); pruneNewsTaps(newsList.editions.map((edition) => edition.date)); }
   catch (error) { if (!quiet) { notice = { message: error.message }; retryAction = { type: 'news' }; } }
   loading = false;
   if (screen !== 'news') return;
@@ -1023,7 +1023,7 @@ async function loadNewsEdition(quiet = false) {
     const view = await api(`api/news/${encodeURIComponent(date)}`);
     if (newsDate !== date) return;
     const opened = newsView?.date !== date;
-    if (opened) { newsLines.clear(); newsAt = -1; newsGloss = null; if (newsAudio.dataset.url) { newsAudio.pause(); newsAudio.removeAttribute('src'); delete newsAudio.dataset.url; } }
+    if (opened) { newsLines.clear(); newsAt = -1; newsGloss = null; newsTouched = -1; if (newsAudio.dataset.url) { newsAudio.pause(); newsAudio.removeAttribute('src'); delete newsAudio.dataset.url; } }
     const shape = (entry) => entry && `${entry.status}|${entry.step}|${entry.done}|${entry.noted}|${!!entry.starts}|${!!entry.audio}|${entry.stories.length}`;
     changed ||= shape(view) !== shape(newsView);
     newsView = view;
@@ -1036,14 +1036,114 @@ async function loadNewsEdition(quiet = false) {
   if (resumeNews) { resumeNews = false; main.querySelector(`.news-line[data-index="${newsAt}"]`)?.scrollIntoView({ block: 'center' }); }
   if (newsView && newsView.status !== 'ready' && newsView.status !== 'failed') newsPoll = setTimeout(() => { if (screen === 'news-edition' && newsDate === date) loadNewsEdition(true); }, 10000);
 }
+// The margins stay quiet: › and ▶ show on the line playing, on a line touched, and wherever the meaning is open.
+let newsTouched = -1;
+let newsEnglish = readPreference('echo.news-english', 'off') === 'on';
 function newsLineHTML({ line, s, l }, index) {
   const key = `${s}.${l}`;
-  const open = newsLines.has(key);
+  const open = !!line.en && (newsEnglish || newsLines.has(key));
   const start = line.en ? `<button class="lyric-start" data-action="news-line" data-line="${key}" aria-expanded="${open}" aria-label="What this line means">›</button>` : '<span class="lyric-start" aria-hidden="true"></span>';
   const from = newsView.starts && newsView.audio ? `<button class="news-from" data-action="news-from" data-index="${index}" aria-label="Play from this line">${playIcon}</button>` : '';
   const current = index === newsAt;
   const note = newsGloss?.index === index ? newsNoteHTML() : '';
-  return `<div class="lyric-line news-line${current ? ' playing' : ''}" data-line="${key}" data-index="${index}">${start}<div class="lyric-text"><p lang="${languageTag}">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}${note}</div>${from}</div>`;
+  return `<div class="lyric-line news-line${current ? ' playing' : ''}${index === newsTouched ? ' shown' : ''}" data-line="${key}" data-index="${index}">${start}<div class="lyric-text"><p lang="${languageTag}">${glossedHTML(line.fr, line.words)}</p>${open ? `<p class="lyric-en">${esc(line.en)}</p>` : ''}${note}</div>${from}</div>`;
+}
+function touchNewsLine(index) {
+  if (index === newsTouched) return;
+  const before = newsTouched;
+  newsTouched = index;
+  if (before >= 0) redrawNewsLine(before);
+  redrawNewsLine(index);
+}
+// The words tapped in each edition, kept on this device, and the cards they became (lib/news.ts addCards).
+const newsTaps = (() => { try { return JSON.parse(readPreference('echo.news-taps', '{}')); } catch { return {}; } })();
+const saveNewsTaps = () => savePreference('echo.news-taps', JSON.stringify(newsTaps));
+function tapNewsWord(fr) {
+  const held = newsTaps[newsView.date] ??= { taps: [], cards: [] };
+  if (held.taps.includes(fr)) return;
+  held.taps.push(fr);
+  saveNewsTaps();
+  redrawNewsWords();
+}
+// Only the editions still kept keep their taps.
+function pruneNewsTaps(dates) {
+  const kept = new Set(dates);
+  let changed = false;
+  for (const date of Object.keys(newsTaps)) if (!kept.has(date)) { delete newsTaps[date]; changed = true; }
+  if (changed) saveNewsTaps();
+}
+let newsAdding = false;
+// The server takes at most this many words in one go (lib/news.ts MAX_TAPPED); the rest wait for the next press.
+const NEWS_BATCH = 40;
+function newsWordsHTML() {
+  const held = newsTaps[newsView.date];
+  if (!held?.taps.length) return '<div class="news-words" hidden></div>';
+  const carded = new Set(held.cards.flatMap((card) => card.from));
+  const waiting = held.taps.filter((fr) => !carded.has(fr));
+  const entry = (fr) => newsPlaces().flatMap(({ line }) => line.words).find((word) => word.fr === fr);
+  const rows = [
+    ...held.cards.map((card) => `<li><span lang="${languageTag}">${frEsc(card.fr)}</span><small>${esc(card.en)}</small><em>${card.status === 'known' ? 'Already yours' : 'In Cards'}</em></li>`),
+    ...waiting.map((fr) => `<li><span lang="${languageTag}">${frEsc(fr)}</span><small>${esc(entry(fr)?.en ?? '')}</small></li>`),
+  ].join('');
+  const label = waiting.length === 1 ? 'Add it to Cards' : waiting.length > NEWS_BATCH ? `Add ${NEWS_BATCH} to Cards` : `Add all ${waiting.length} to Cards`;
+  const add = waiting.length ? `<button class="primary dialog-action" data-action="news-cards" ${newsAdding ? 'disabled' : ''}>${newsAdding ? 'Adding…' : label}</button>` : '';
+  return `<div class="news-words"><h2>The words you tapped</h2><ul>${rows}</ul>${add}</div>`;
+}
+function redrawNewsWords() {
+  const node = main.querySelector('.news-words');
+  if (screen === 'news-edition' && node) node.outerHTML = newsWordsHTML();
+}
+async function addNewsCards() {
+  const date = newsView.date;
+  const held = newsTaps[date];
+  const carded = new Set(held.cards.flatMap((card) => card.from));
+  const words = held.taps.filter((fr) => !carded.has(fr)).slice(0, NEWS_BATCH);
+  if (!words.length || newsAdding) return;
+  newsAdding = true; redrawNewsWords();
+  try {
+    const result = await api(`api/news/${date}/cards`, { method: 'POST', body: JSON.stringify({ words }), limit: 120000 });
+    held.cards.push(...result.cards);
+    saveNewsTaps();
+  } catch (error) { notice = { message: error.message }; }
+  newsAdding = false;
+  if (screen === 'news-edition' && newsView?.date === date) { if (notice) render(); else redrawNewsWords(); }
+}
+// While it plays and the line playing is out of sight, a button above the bar takes you back to it.
+function updateNewsReturn() {
+  const pill = main.querySelector('.news-return');
+  if (!pill || screen !== 'news-edition') return;
+  const line = main.querySelector(`.news-line[data-index="${newsAt}"]`);
+  const player = main.querySelector('.news-bar');
+  const box = line?.getBoundingClientRect();
+  const bottom = window.innerHeight - (player?.offsetHeight ?? 0) - 20;
+  const away = newsPlaying() && !!box && (box.bottom < 0 || box.top > bottom);
+  pill.hidden = !away;
+  if (away) pill.textContent = `${box.top > bottom ? '↓' : '↑'} Back to line ${newsAt + 1}`;
+}
+let newsScrollFrame = 0;
+window.addEventListener('scroll', () => { if (screen === 'news-edition' && !newsScrollFrame) newsScrollFrame = requestAnimationFrame(() => { newsScrollFrame = 0; updateNewsReturn(); }); }, { passive: true });
+// The story the line playing (or left on) belongs to, lit in the row of stories over the bar and kept in sight there.
+function newsStoryAt() {
+  const stories = newsView?.stories ?? [];
+  let current = -1;
+  for (let at = 0; at < stories.length && newsAt >= 0 && stories[at].line <= newsAt; at++) current = at;
+  return current;
+}
+function centreNewsChip() {
+  const row = main.querySelector('.news-chips');
+  const chip = row?.querySelector('.on');
+  if (row && chip) row.scrollLeft = chip.offsetLeft - (row.clientWidth - chip.offsetWidth) / 2;
+}
+// English under every line, or only where › was tapped; the line at the top of the screen stays where it was.
+function toggleNewsEnglish() {
+  newsEnglish = !newsEnglish;
+  savePreference('echo.news-english', newsEnglish ? 'on' : 'off');
+  const anchor = [...main.querySelectorAll('.news-line')].find((line) => line.getBoundingClientRect().bottom > 0);
+  const index = anchor?.dataset.index;
+  const offset = anchor?.getBoundingClientRect().top ?? 0;
+  render();
+  const again = index !== undefined && main.querySelector(`.news-line[data-index="${index}"]`);
+  if (again) window.scrollBy(0, again.getBoundingClientRect().top - offset);
 }
 // The text stays plain; a tapped word takes its colour and its note opens under its line, without covering the page.
 // Tapping anywhere else, or Escape, closes it.
@@ -1068,8 +1168,11 @@ function showNewsGloss(fr, button) {
   const before = newsGloss;
   if (before?.index === index && before.fr === fr && before.nth === nth) { closeNewsGloss(); return; }
   newsGloss = { index, fr, nth };
-  if (before && before.index !== index) redrawNewsLine(before.index);
+  const touched = newsTouched;
+  newsTouched = index;
+  for (const at of new Set([before?.index, touched])) if (at !== undefined && at >= 0 && at !== index) redrawNewsLine(at);
   redrawNewsLine(index);
+  tapNewsWord(fr);
 }
 function closeNewsGloss() {
   const before = newsGloss;
@@ -1118,7 +1221,10 @@ function newsPlayerHTML() {
   const timed = !!view.starts;
   const hint = !timed ? 'The lines are being timed; it plays from the start meanwhile.' : newsAt >= 0 ? `Line ${newsAt + 1} of ${newsPlaces().length}` : '';
   const move = (action, label, icon) => `<button class="news-control" data-action="${action}" aria-label="${label}" ${timed ? '' : 'disabled'}>${icon}</button>`;
-  return `<div class="news-player"><div class="news-bar"><span class="news-progress" aria-hidden="true"><span style="width:${(newsShare() * 100).toFixed(2)}%"></span></span><div class="news-controls"><button class="news-speed" data-action="news-speed" aria-label="Speed: ${speed === 1 ? 'normal' : 'slower'}">${speed === 1 ? '1×' : '0.8×'}</button>${move('news-back', 'Back a line', newsBackIcon)}<button class="news-toggle" data-action="news-play" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button>${move('news-next', 'Next line', newsNextIcon)}${move('news-again', 'This line again', newsAgainIcon)}</div><div class="news-meta"><span id="news-progress" role="status">${esc(hint)}</span><span id="news-time">${newsClock()}</span></div></div></div>`;
+  const lit = newsStoryAt();
+  const chips = view.stories.length ? `<div class="news-chips" role="group" aria-label="Stories">${view.stories.map((story, at) => `<button class="${at === lit ? 'on' : ''}" data-action="news-story" data-line="${story.line}" lang="${languageTag}">${esc(story.title)}</button>`).join('')}</div>` : '';
+  const english = `<button class="news-english" data-action="news-english" aria-pressed="${newsEnglish}">English</button>`;
+  return `<div class="news-player"><button class="news-return" data-action="news-return" hidden></button><div class="news-bar">${chips}<span class="news-progress" aria-hidden="true"><span style="width:${(newsShare() * 100).toFixed(2)}%"></span></span><div class="news-controls"><button class="news-speed" data-action="news-speed" aria-label="Speed: ${speed === 1 ? 'normal' : 'slower'}">${speed === 1 ? '1×' : '0.8×'}</button>${move('news-back', 'Back a line', newsBackIcon)}<button class="news-toggle" data-action="news-play" aria-label="${playing ? 'Pause' : 'Play'}">${playing ? pauseIcon : playIcon}</button>${move('news-next', 'Next line', newsNextIcon)}${move('news-again', 'This line again', newsAgainIcon)}</div><div class="news-meta"><span id="news-progress" role="status">${esc(hint)}</span>${english}<span id="news-time">${newsClock()}</span></div></div></div>`;
 }
 function renderNewsEdition() {
   const header = `<div class="section-top">${back('News', 'news')}<div>${infoButton('listen')}</div></div>`;
@@ -1137,8 +1243,10 @@ function renderNewsEdition() {
     return `${story ? `<p class="news-story" id="news-story-${index}" lang="${languageTag}">${esc(story.title)}</p>` : ''}${newsLineHTML({ line, s, l }, index++)}`;
   }).join('')}</div>`).join('');
   const headline = (text, at) => announced.has(at) ? `<li><button class="news-jump" data-action="news-story" data-line="${announced.get(at)}">${esc(text)}</button></li>` : `<li>${esc(text)}</li>`;
-  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${view.headlines.length ? `<ul class="news-headlines" lang="${languageTag}">${view.headlines.map(headline).join('')}</ul>` : ''}${status}<div class="lyric-lines">${lines}</div>${newsPlayerHTML()}</section>`;
+  main.innerHTML = `${noticeHTML()}<section class="topics songs lyrics news">${header}<p class="reading-kicker">RFI · Journal en français facile</p><h1>${esc(newsDay(view.date))}</h1>${view.headlines.length ? `<ul class="news-headlines" lang="${languageTag}">${view.headlines.map(headline).join('')}</ul>` : ''}${status}<div class="lyric-lines">${lines}</div>${newsWordsHTML()}${newsPlayerHTML()}</section>`;
   placeNewsGloss();
+  centreNewsChip();
+  updateNewsReturn();
 }
 // Plays from the start of a line; without line times, on from where it is (the start, at first).
 async function playNews(index = Math.max(0, newsAt)) {
@@ -1201,8 +1309,10 @@ function markNewsLines(before, index) {
   for (const at of new Set([before, index])) { const node = element(at); if (node && places[at]) node.outerHTML = newsLineHTML(places[at], at); }
   if (player) player.outerHTML = newsPlayerHTML();
   placeNewsGloss();
+  centreNewsChip();
   const now = element(index);
   if (following && newsPlaying() && now && !inSight(now)) now.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  updateNewsReturn();
 }
 // The progress line and the clock follow the recording between line changes.
 function tickNews() {
@@ -1321,7 +1431,9 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const zones = `<button class="card-zone left" data-action="again" aria-label="Didn’t know this word" ${locked() ? 'disabled' : ''}><span class="zone-label${verdict && !right ? ' picked' : ''}" aria-hidden="true">← Didn’t know</span></button><button class="card-zone right" data-action="known" aria-label="Knew this word" ${locked() ? 'disabled' : ''}><span class="zone-label${right ? ' picked' : ''}" aria-hidden="true">Knew it →</span></button>`;
   const foot = revealed ? zones : saying ? sayFootHTML() : hidden ? '' : '<span class="card-hint" aria-hidden="true">Tap to reveal</span>';
   const label = revealed ? 'Revealed flashcard. Left: didn’t know. Right: knew it.' : saying && !say.running ? 'Start speaking' : hidden ? 'Reveal the meaning' : 'Reveal the translation';
-  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}"><div class="word-content">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools">${wayChoice}<button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
+  // A turned card can say its French again, in every way of practising, without turning back.
+  const again = revealed && card.audioUrl ? `<button class="card-replay" data-action="replay" aria-label="Hear the ${languageEnglish} again">${speaker}</button>` : '';
+  return `<div class="study-surface ${revealed ? 'revealed' : ''}${verdict ? ` say-${right ? 'right' : 'wrong'}` : ''}" id="flashcard" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${label}" aria-busy="${busy}">${again}<div class="word-content">${face}</div>${foot}</div>${saying ? sayControlsHTML() : ''}<div class="study-tools">${wayChoice}<button class="quiet" data-action="undo" ${!undoable || locked() ? 'disabled' : ''}>Undo</button></div>`;
 }
 // Each new card (or new version after a grade or undo) plays once on its own; re-renders don't replay it.
 function playCardOnce() {
@@ -1915,11 +2027,10 @@ function glossedHTML(text, glosses) {
   let html = '';
   let at = 0;
   for (const mark of marks) {
-    const button = `<button class="gloss${genderClass(mark.gender)}" data-gloss="${esc(mark.fr)}">${frEsc(text.slice(mark.at, mark.end))}</button>`;
-    // A button is an inline block, so the line may break after it; keep a following " ?" or "," with its word.
-    const tail = /^(?: [?!:;»]|[,.…)]+(?: [?!:;»])?)/.exec(text.slice(mark.end))?.[0] || '';
-    html += `${frEsc(text.slice(at, mark.at))}${tail ? `<span class="nowrap">${button}${frEsc(tail)}</span>` : button}`;
-    at = mark.end + tail.length;
+    // An inline span, not a button: a button is an inline block, so a long phrase would wrap as a centred block. The
+    // text after it keeps a French " ?" with the word (frEsc).
+    html += `${frEsc(text.slice(at, mark.at))}<span class="gloss${genderClass(mark.gender)}" role="button" tabindex="0" data-gloss="${esc(mark.fr)}">${frEsc(text.slice(mark.at, mark.end))}</span>`;
+    at = mark.end;
   }
   return html + frEsc(text.slice(at));
 }
@@ -5493,8 +5604,10 @@ document.addEventListener('click', (event) => {
   if (action === 'clips-restart') { toggleClips(true); return; }
   if (action === 'clips-line') { replayLine(); return; }
   if (action === 'grammar-audio') { const clip = activeGrammar()?.session?.current?.audio; if (clip) playFrench(clip); return; }
-  if (button?.dataset.gloss !== undefined) { glossLine = button.closest('[data-line]')?.dataset.line ?? ''; lookupGloss(button.dataset.gloss, button); return; }
+  const word = event.target.closest('[data-gloss]');
+  if (word) { glossLine = word.closest('[data-line]')?.dataset.line ?? ''; lookupGloss(word.dataset.gloss, word); return; }
   if (newsGloss && !event.target.closest('.news-note')) closeNewsGloss();
+  if (!button && screen === 'news-edition') { const line = event.target.closest('.news-line'); if (line) touchNewsLine(Number(line.dataset.index)); }
   if (action === 'add-word') { addWord(); return; }
   if (action === 'vb-accent') { insertAccent(button.dataset.letter); return; }
   if (!button && screen === 'verbs-cards' && event.target.closest('#vb-card')) { revealVerbCard(); return; }
@@ -5622,6 +5735,9 @@ document.addEventListener('click', (event) => {
   else if (action === 'news-again') moveNews(0);
   else if (action === 'news-speed') toggleNewsSpeed();
   else if (action === 'news-story') document.getElementById(`news-story-${button.dataset.line}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  else if (action === 'news-return') main.querySelector(`.news-line[data-index="${newsAt}"]`)?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  else if (action === 'news-english') toggleNewsEnglish();
+  else if (action === 'news-cards') addNewsCards();
   else if (action === 'news-from') playNews(Number(button.dataset.index));
   else if (action === 'news-line') { const key = button.dataset.line; if (newsLines.has(key)) newsLines.delete(key); else newsLines.add(key); render(); }
   else if (action === 'sound-open') openSound(button.dataset.sound);
@@ -5696,6 +5812,8 @@ document.addEventListener('submit', (event) => {
 });
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && newsGloss && !dialog.open) { closeNewsGloss(); return; }
+  // A tappable word is a span (glossedHTML), so Enter and Space open it as they would a button.
+  if ((event.key === 'Enter' || event.key === ' ') && event.target.matches?.('[data-gloss]')) { event.preventDefault(); event.target.click(); return; }
   if (event.defaultPrevented || event.repeat || aboutDialog.open || dialog.open || busy || loading || locked()) return;
   const grammarScreen = grammarOnScreen();
   if (grammarScreen && (event.metaKey || event.ctrlKey) && event.key === 'Enter') { event.preventDefault(); if (activeGrammar()?.session?.current?.settled) grammarMutation('next'); else checkAnswer(); return; }

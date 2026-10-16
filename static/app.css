@@ -289,7 +289,7 @@ main>.practice{flex:1;display:flex;flex-direction:column;width:100%;margin:0 aut
 .speaker{display:block;font-size:12px;color:var(--violet);margin-bottom:3px}
 .fr-text{font-size:clamp(23px,4vw,30px);font-weight:500;line-height:1.45;letter-spacing:-.5px;overflow-wrap:anywhere}
 .stream-question{font-size:19px;line-height:1.5;margin-top:22px}
-.gloss{display:inline;padding:0;font:inherit;color:inherit;border-bottom:1px dotted var(--dim);border-radius:0}
+.gloss{display:inline;padding:0;font:inherit;color:inherit;border-bottom:1px dotted var(--dim);border-radius:0;cursor:pointer}
 .gloss:focus-visible{outline-offset:2px}
 .nowrap{white-space:nowrap}
 .stream-actions{display:flex;justify-content:flex-end;margin-top:22px}
@@ -371,7 +371,9 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .lyric-text p{margin:0;font-size:18px;line-height:1.55;padding:3px 0}.lyric-text .lyric-en{font-size:15px;color:var(--muted);padding:0 0 6px}
 /* News: an edition's lines are lyric lines with a play control at the end; the line playing is tinted, a story's
    heading stands over its first line, and the player bar stays at the bottom of the screen while the transcript
-   scrolls. The text is plain: only a tapped word takes its underline and gender colour. */
+   scrolls. The text is plain: only a tapped word takes its underline and gender colour. The margins are quiet: › and ▶
+   show on the line playing, the line touched, a line whose meaning is open, and on focus; hidden, they still answer a
+   tap. */
 .news-headlines{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:15px;line-height:1.45}
 .news-jump{font:inherit;color:var(--violet);text-align:left;padding:0;background:none;border:0}
 .news-story{margin:26px 0 6px 34px;font-size:12px;font-weight:650;letter-spacing:.4px;text-transform:uppercase;color:var(--violet);scroll-margin-top:24px}
@@ -380,6 +382,8 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .news-from{width:34px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--dim);border-radius:8px}
 .news-from svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
 .news-line.playing .news-from,.news-from:hover{color:var(--violet)}
+.news-line .lyric-start,.news-line .news-from{transition:opacity .2s}
+.news-line:not(.playing):not(.shown):not(:focus-within) .news-from,.news-line:not(.playing):not(.shown):not(:focus-within) .lyric-start:not([aria-expanded="true"]){opacity:0}
 .news .lyric-text .gloss,.genders .news .lyric-text .gloss{color:inherit;border-bottom-color:transparent}
 .news .lyric-text .gloss.on{color:var(--violet);border-bottom:2px solid var(--violet)}
 .genders .news .lyric-text .gloss.on.g-m{color:var(--masc);border-bottom-color:var(--masc)}.genders .news .lyric-text .gloss.on.g-f{color:var(--fem);border-bottom-color:var(--fem)}
@@ -387,6 +391,11 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .news-note p{margin:0;padding:0;font-size:15px}.news-note .news-note-more{color:var(--muted);font-size:14px;margin-top:3px}
 .news-note .gloss-status{margin-top:6px}.news-note-add{margin-top:6px;padding:4px 0;color:var(--violet);font-size:14px}
 .news-player{position:sticky;bottom:0;z-index:5;padding:10px 0 calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to bottom,transparent,var(--page) 30%)}
+.news-return{display:block;margin:0 auto 10px;padding:8px 16px;border-radius:999px;background:var(--violet);color:var(--on-accent);font-size:14px;font-weight:600;box-shadow:0 6px 20px var(--shadow)}
+.news-return[hidden]{display:none}
+.news-chips{display:flex;gap:6px;overflow-x:auto;margin:0 0 8px;scrollbar-width:none}.news-chips::-webkit-scrollbar{display:none}
+.news-chips button{flex:0 0 auto;font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--frame);color:var(--muted);white-space:nowrap}
+.news-chips button.on{border-color:var(--violet);color:var(--violet);background:var(--violet-soft)}
 .news-player .caption{margin:0}
 .news-bar{border:1px solid var(--frame);border-radius:18px;background:var(--card);padding:10px 12px 10px;box-shadow:0 8px 30px var(--shadow)}
 .news-progress{display:block;height:3px;border-radius:2px;background:var(--frame);overflow:hidden;margin-bottom:6px}.news-progress span{display:block;height:100%;background:var(--violet)}
@@ -397,8 +406,18 @@ dialog[data-kind=gloss] .dialog-head h2{font-size:25px;letter-spacing:-.5px}
 .news-speed{font-size:14px;color:var(--muted)}
 .news-toggle{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--violet);color:var(--on-accent)}
 .news-toggle svg{width:24px;height:24px;fill:currentColor;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
-.news-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);margin-top:4px;min-height:16px}
+.news-meta{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;font-size:12px;color:var(--dim);margin-top:4px;min-height:16px}
+.news-meta #news-time{text-align:right}
+.news-english{font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid var(--frame);color:var(--muted)}
+.news-english[aria-pressed="true"]{border-color:var(--violet);color:var(--violet);background:var(--violet-soft)}
+.news-words{margin:28px 0 12px;padding-top:16px;border-top:1px solid var(--frame)}
+.news-words h2{font-size:18px;margin:0 0 8px}.news-words ul{list-style:none;margin:0;padding:0}
+.news-words li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:9px 0;border-bottom:1px solid var(--frame)}
+.news-words li small{color:var(--muted);font-size:14px;text-align:right}.news-words li em{grid-column:1/-1;font-style:normal;font-size:12px;color:var(--violet)}
+.news-words .dialog-action{width:100%;margin-top:14px}
 .song-state.new{color:var(--violet)}.song-state.part{color:var(--peach)}.song-state.finished{color:var(--dim)}
+.card-replay{position:absolute;top:16px;right:16px;z-index:3;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--frame);background:var(--card-hover);color:var(--violet)}
+.card-replay svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .gloss-base{margin:4px 0 0;color:var(--muted);font-size:15px}.gloss-note{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--ink)}
 .genders .g-m{color:var(--masc)}.genders .g-f{color:var(--fem)}.genders .gloss.g-m{border-bottom-color:var(--masc)}.genders .gloss.g-f{border-bottom-color:var(--fem)}
 .gloss-gender{margin:4px 0 0;font-size:14px;color:var(--muted)}.gender-key{display:block;font-size:12px;color:var(--muted)}.gender-key .g-m{color:var(--masc)}.gender-key .g-f{color:var(--fem)}

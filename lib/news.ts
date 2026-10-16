@@ -12,8 +12,10 @@ import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, renameSy
 import { homedir, tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { Ask } from './claude';
+import type { Word } from '../contract';
 import { writeNotes, type SongNotes } from './song-lyrics';
-import { StoreError } from './store';
+import { comparable } from './song-words';
+import { StoreError, type Store } from './store';
 
 export const KEEP = 14;
 const ORIGIN = 'https://francaisfacile.rfi.fr';
@@ -66,11 +68,20 @@ export type NewsSummary = {
 export type NewsView = NewsSummary & { audio: string | null; starts: number[] | null; noted: boolean; stanzas: SongNotes; stories: NewsStory[] };
 export type NewsDeps = {
   dir: string; audioDir: string; ask: Ask;
+  // Where words tapped in an edition become cards: the News deck, like a song's (lib/store.ts).
+  vocabulary?: Pick<Store, 'words' | 'addWords' | 'linkWords'>;
+  onAdded?: (ids: string[]) => void;
   fetchText?: (url: string) => Promise<string>;
   download?: (url: string, file: string) => Promise<void>;
   transcribe?: (file: string) => Promise<HeardWord[]>;
   now?: () => Date;
 };
+// A card made from a word tapped in an edition: the dictionary form in the deck's style, the tapped words it stands
+// for, and whether it was new to Echo or a word already in it.
+export type NewsCard = { fr: string; en: string; from: string[]; status: 'added' | 'known' };
+export const NEWS_CATEGORY = 'news';
+const NEWS_TITLE = 'News';
+const MAX_TAPPED = 40;
 
 const NAMED: Record<string, string> = {
   amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', laquo: '«', raquo: '»', hellip: '…',
@@ -284,6 +295,38 @@ export function parseStories(reply: string, lines: number, headlines: number): N
   return stories;
 }
 
+// The words tapped, each with the line it was tapped in and the note Echo showed for it.
+function cardsPrompt(tapped: { n: number; fr: string; en: string; line: string }[]): string {
+  return `A learner of French (A2, aiming for B1) tapped these words and phrases while reading RFI's "Journal en français facile". Each is shown with the line it is in and its meaning there.
+
+${tapped.map((entry) => `${entry.n}. "${entry.fr}" (${entry.en}) in: ${entry.line}`).join('\n')}
+
+Turn each into a flashcard in its dictionary form, the way a vocabulary deck lists it:
+- a noun in the singular with le, la or l' (les only for a noun that has no singular): "la raffinerie", "l'épidémie";
+- a verb in the infinitive, with se for a reflexive verb; its English starts with "to";
+- an adjective in the masculine singular: "meurtrier";
+- a fixed expression in its base form: "passer inaperçu" (not "ne passe pas inaperçu"); a phrase that is just an article or "la plus" with a word is that word's card.
+The English is the meaning in the line, short, without "the" or "a" before a noun.
+
+Reply with only JSON: {"cards": [{"n": 1, "fr": "...", "en": "..."}]}, one card for each number.`;
+}
+
+// Claude's cards, one per tapped word at most, each with a French and an English of a card's length.
+export function parseCards(reply: string, count: number): Map<number, { fr: string; en: string }> {
+  let value: unknown;
+  try { value = JSON.parse(reply.slice(reply.indexOf('{'), reply.lastIndexOf('}') + 1)); } catch { value = null; }
+  const listed = value && typeof value === 'object' && Array.isArray((value as { cards?: unknown }).cards) ? (value as { cards: unknown[] }).cards : [];
+  const cards = new Map<number, { fr: string; en: string }>();
+  for (const entry of listed) {
+    if (!entry || typeof entry !== 'object') continue;
+    const { n, fr, en } = entry as { n?: unknown; fr?: unknown; en?: unknown };
+    if (typeof n !== 'number' || !Number.isInteger(n) || n < 1 || n > count || cards.has(n)) continue;
+    if (typeof fr !== 'string' || typeof en !== 'string' || !fr.trim() || !en.trim() || fr.length > 60 || en.length > 80) continue;
+    cards.set(n, { fr: fr.trim().replace(/[’‘]/g, "'"), en: en.trim() });
+  }
+  return cards;
+}
+
 export function createNews(deps: NewsDeps) {
   const fetchText = deps.fetchText ?? fetchPage;
   const download = deps.download ?? downloadFile;
@@ -449,5 +492,40 @@ export function createNews(deps: NewsDeps) {
   // The recording's file, for an edition still kept.
   const audio = (date: string): string | null => /^\d{8}$/.test(date) && existsSync(file(date)) && existsSync(recording(date)) ? recording(date) : null;
 
-  return { check, list, view, audio, setProgress };
+  // The words tapped in an edition, as cards in the News deck: Claude gives each its dictionary form; a card Echo
+  // already has joins the deck as it is (keeping its own category and progress), and the rest are added to it.
+  async function addCards(date: string, input: unknown): Promise<NewsCard[]> {
+    if (!deps.vocabulary) throw new StoreError('Words cannot be added from the news here.', 409);
+    const edition = find(date);
+    const words = (input as { words?: unknown } | null)?.words;
+    if (!Array.isArray(words) || !words.length || words.some((word) => typeof word !== 'string')) throw new StoreError('Choose the words to add.');
+    if (words.length > MAX_TAPPED) throw new StoreError(`Add at most ${MAX_TAPPED} words at a time.`);
+    const notes = (edition.notes ?? []).flat();
+    const tapped = [...new Set(words as string[])].map((fr, index) => {
+      const line = notes.find((entry) => entry.words.some((word) => word.fr === fr));
+      if (!line) throw new StoreError(`“${fr}” is not a word of this edition.`);
+      return { n: index + 1, fr, en: line.words.find((word) => word.fr === fr)!.en, line: line.fr };
+    });
+    const reply = await deps.ask(cardsPrompt(tapped), { timeout: STORIES_TIMEOUT, purpose: 'making cards from the news' });
+    const made = parseCards(reply, tapped.length);
+    if (!made.size) throw new StoreError('Claude’s reply had no cards in it. Try again.');
+    // Tapped words that are one card ("raffineries", "une raffinerie") become one.
+    const cards = new Map<string, { fr: string; en: string; from: string[] }>();
+    for (const entry of tapped) {
+      const card = made.get(entry.n);
+      if (!card) continue;
+      const key = comparable(card.fr);
+      const held = cards.get(key);
+      if (held) held.from.push(entry.fr); else cards.set(key, { ...card, from: [entry.fr] });
+    }
+    const deck = new Map(deps.vocabulary.words().map((word: Word) => [comparable(word.fr), word.id]));
+    const known = [...cards].filter(([key]) => deck.has(key));
+    const fresh = [...cards].filter(([key]) => !deck.has(key));
+    if (known.length) deps.vocabulary.linkWords({ category: NEWS_CATEGORY, title: NEWS_TITLE, ids: known.map(([key]) => deck.get(key)!) });
+    const added = fresh.length ? deps.vocabulary.addWords({ category: NEWS_CATEGORY, title: NEWS_TITLE, words: fresh.map(([, card]) => ({ fr: card.fr, en: card.en })) }) : [];
+    if (added.length) deps.onAdded?.(added.map((word) => word.id));
+    return [...known.map(([, card]) => ({ ...card, status: 'known' as const })), ...fresh.map(([, card]) => ({ ...card, status: 'added' as const }))];
+  }
+
+  return { check, list, view, audio, setProgress, addCards };
 }

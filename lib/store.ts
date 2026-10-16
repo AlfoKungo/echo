@@ -1070,9 +1070,12 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
     }).immediate();
   }
 
+  // A deck of chosen words: a song's (song-…) or the words tapped in the news (news). Both come first among new words
+  // when songsFirst is on.
+  const CHOSEN_DECK = /^(?:song-[a-z0-9]+(?:-[a-z0-9]+)*|news)$/;
   function addWords(input: AddWordsInput): Word[] {
     const { category, title } = input;
-    if (typeof category !== 'string' || !/^song-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(category)) throw new StoreError('A song needs a category of its own.');
+    if (typeof category !== 'string' || !CHOSEN_DECK.test(category)) throw new StoreError('A song needs a category of its own.');
     if (typeof title !== 'string' || !title.trim()) throw new StoreError('A song needs a title.');
     if (!Array.isArray(input.words) || !input.words.length) throw new StoreError('Choose at least one word to add.');
     for (const word of input.words) {
@@ -1098,7 +1101,7 @@ export function createStore(baseWords: Word[], options: { dbPath?: string; now?:
 
   function linkWords(input: LinkWordsInput): string[] {
     const { category, title } = input;
-    if (typeof category !== 'string' || !/^song-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(category)) throw new StoreError('A song needs a category of its own.');
+    if (typeof category !== 'string' || !CHOSEN_DECK.test(category)) throw new StoreError('A song needs a category of its own.');
     if (typeof title !== 'string' || !title.trim()) throw new StoreError('A song needs a title.');
     if (!Array.isArray(input.ids)) throw new StoreError('Choose the words to put in the song.');
     const ids = [...new Set(input.ids)].filter((id) => { const word = wordById.get(id); return !!word && word.category !== category; });

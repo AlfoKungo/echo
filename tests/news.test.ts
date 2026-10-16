@@ -217,3 +217,56 @@ describe('the stories in an edition', () => {
     expect(asked).toBe(2);
   });
 });
+
+describe('the words tapped in an edition', () => {
+  function setup(reply: string) {
+    const root = mkdtempSync(join(tmpdir(), 'echo-news-'));
+    directories.push(root);
+    const dir = join(root, 'news');
+    mkdirSync(dir, { recursive: true });
+    const line = (fr: string, words: [string, string][]) => ({ fr, en: 'x', words: words.map(([word, en]) => ({ fr: word, en })) });
+    const notes = [[
+      line('Les raffineries russes sont visées.', [['raffineries', 'refineries']]),
+      line('Une raffinerie a été touchée.', [['une raffinerie', 'a refinery']]),
+      line('Un achat qui ne passe pas inaperçu.', [['ne passe pas inaperçu', 'doesn’t go unnoticed'], ['un achat', 'a purchase']]),
+    ]];
+    writeFileSync(join(dir, '20261015.json'), JSON.stringify({ date: '20261015', page: '', title: 'T', mp3: 'x.mp3', stanzas: [notes[0]!.map((entry) => entry.fr)], starts: [0, 1, 2], notes, stories: [], failure: null }));
+    const deck = [{ id: 'shopping-001', fr: "l'achat", en: 'purchase', category: 'shopping' }];
+    const calls: { add?: unknown; link?: unknown; recorded?: string[] } = {};
+    const prompts: string[] = [];
+    const news = createNews({
+      dir, audioDir: join(root, 'audio'), now: () => new Date('2026-08-01T12:00:00'),
+      ask: async (prompt) => { prompts.push(prompt); return reply; },
+      vocabulary: {
+        words: () => deck as never,
+        addWords: (input) => { calls.add = input; return input.words.map((word, index) => ({ ...word, id: `news-${index + 1}`, category: 'news' })) as never; },
+        linkWords: (input) => { calls.link = input; return input.ids; },
+      },
+      onAdded: (ids) => { calls.recorded = ids; },
+    });
+    return { news, calls, prompts };
+  }
+
+  test('become cards in their dictionary form: new ones added to the News deck, ones Echo has joining it', async () => {
+    const { news, calls, prompts } = setup(`{"cards": [{"n": 1, "fr": "la raffinerie", "en": "refinery"}, {"n": 2, "fr": "la raffinerie", "en": "refinery"},
+      {"n": 3, "fr": "passer inaperçu", "en": "to go unnoticed"}, {"n": 4, "fr": "l’achat", "en": "purchase"}]}`);
+    const cards = await news.addCards('20261015', { words: ['raffineries', 'une raffinerie', 'ne passe pas inaperçu', 'un achat'] });
+    expect(prompts[0]).toContain('"raffineries" (refineries) in: Les raffineries russes sont visées.');
+    expect(cards).toEqual([
+      { fr: "l'achat", en: 'purchase', from: ['un achat'], status: 'known' },
+      { fr: 'la raffinerie', en: 'refinery', from: ['raffineries', 'une raffinerie'], status: 'added' },
+      { fr: 'passer inaperçu', en: 'to go unnoticed', from: ['ne passe pas inaperçu'], status: 'added' },
+    ]);
+    expect(calls.link).toEqual({ category: 'news', title: 'News', ids: ['shopping-001'] });
+    expect(calls.add).toEqual({ category: 'news', title: 'News', words: [{ fr: 'la raffinerie', en: 'refinery' }, { fr: 'passer inaperçu', en: 'to go unnoticed' }] });
+    expect(calls.recorded).toEqual(['news-1', 'news-2']);
+  });
+
+  test('must be words of the edition, and a reply without cards adds nothing', async () => {
+    const { news, calls } = setup('Sorry.');
+    await expect(news.addCards('20261015', { words: ['pomme'] })).rejects.toThrow('not a word of this edition');
+    await expect(news.addCards('20261015', { words: [] })).rejects.toThrow('Choose the words');
+    await expect(news.addCards('20261015', { words: ['raffineries'] })).rejects.toThrow('no cards in it');
+    expect(calls).toEqual({});
+  });
+});

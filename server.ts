@@ -342,7 +342,7 @@ const languageHost = languageSwitch && language.code === 'fr' ? createLanguageHo
 languageHost?.start();
 // News: RFI's Journal en français facile, fetched, timed and noted on this Mac (lib/news.ts), at start and every 30
 // minutes; ECHO_NEWS=off stops the checks, and an Echo without the room (the friends') has none of it.
-const news = roomsOff.includes('news') ? null : createNews({ dir: process.env.ECHO_NEWS_DIR ?? join(dirname(dbPath), 'news'), audioDir: join(root, 'audio/news'), ask });
+const news = roomsOff.includes('news') ? null : createNews({ dir: process.env.ECHO_NEWS_DIR ?? join(dirname(dbPath), 'news'), audioDir: join(root, 'audio/news'), ask, vocabulary: store, onAdded: (ids) => wordAudio.enqueue(ids) });
 if (news && process.env.ECHO_NEWS !== 'off') void news.check();
 const newsChecks = setInterval(() => { if (news && process.env.ECHO_NEWS !== 'off') void news.check(); }, 30 * 60_000);
 // Change it (Verbs → Tape): drills Claude writes ahead for the verbs and tenses on Verbs' Practising line, from the
@@ -825,8 +825,9 @@ async function route(req: Request): Promise<Response> {
         return audioFile(req, Bun.file(recording));
       }
       if (edition && !edition[2] && req.method === 'GET') return json(news.view(edition[1]!));
-      const played = path.match(/^\/api\/news\/(\d{8})\/progress$/);
-      if (played && req.method === 'POST') return json(news.setProgress(played[1]!, await body(req)));
+      const played = path.match(/^\/api\/news\/(\d{8})\/(progress|cards)$/);
+      if (played?.[2] === 'progress' && req.method === 'POST') return json(news.setProgress(played[1]!, await body(req)));
+      if (played?.[2] === 'cards' && req.method === 'POST') return json({ cards: await news.addCards(played[1]!, await body(req)) });
     }
     // A Grammar by ear answer (the question itself comes with Listen's state, under ear).
     if (grammarEar && path === '/api/ear/answer' && req.method === 'POST') return json(grammarEar.answer(await body(req)));
