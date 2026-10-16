@@ -32,7 +32,8 @@ when a request contradicts one, say so and ask.
 7. **Colour means something.** Violet is the accent and the one call to action. Green, violet and peach are
    solid, getting there and shaky progress. `--danger` is only a wrong answer. Masculine and feminine have
    their own blue and pink. No decorative colour.
-8. **Home fits one phone screen.** Every room is one tap from Home.
+8. **Every room is one tap from Home.** Home was meant to fit one phone screen. Today it is about two
+   screens tall at 390×844; either drop that aim or move Hands-free and Study off Home.
 9. **Taps land at once.** 44px minimum targets, no double-tap zoom, a pressed state on anything tappable.
 
 ## References
