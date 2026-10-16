@@ -25,7 +25,8 @@ export type VerbWord = { id: string; fr: string; en: string };
 // One person's form: how it is shown, and every answer accepted for it (participle agreements), without the subject.
 export type Form = { shown: string; accepted: string[] };
 // note: what the row is, where the forms alone don't say it (Swedish present, past, supine); French rows have none.
-export type ParadigmRow = { person: number; label: string; parts: { text: string; lit?: true }[]; note?: string };
+// A part is lit when it is the ending, and marked change when it is where the verb's stems differ (promèn- / promen-).
+export type ParadigmRow = { person: number; label: string; parts: { text: string; lit?: true; change?: true }[]; note?: string };
 
 const REFLEXIVE = /^(se |s’|s')/;
 const IMP_END = ['ais', 'ais', 'ait', 'ions', 'iez', 'aient'];

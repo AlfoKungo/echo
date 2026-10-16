@@ -933,3 +933,24 @@ dialog.sheet .dialog-head{margin:0 4px 18px}
 .vb-stems{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:clamp(30px,9vw,40px)}
 .vb-stem-row{display:flex;align-items:baseline;gap:12px}
 .vb-stem-row small{font-family:system-ui,-apple-system,sans-serif;font-size:14px;font-weight:500;letter-spacing:0;color:var(--muted)}
+/* Where a verb's stems differ (promèn- / promen-), on How it's built cards and their tables: each theme's second
+   accent, so the first stays on the endings. */
+:root{--chg:var(--green)}
+.chg{color:var(--chg)}.vb-para .chg{font-weight:600}
+/* The sound switch beside a verb drill's name. */
+.vb-head-end{display:flex;align-items:center;gap:2px;min-width:0}
+.vb-sound{width:40px;height:40px;color:var(--ink)}.vb-sound[aria-pressed=false]{color:var(--dim)}
+/* How it's built: what sets the verb apart is a small line over the answer, the card is as tall as what it holds, and
+   the table under it is one panel, singular left and plural right. */
+.vb-built .vb-card-differs{display:block;margin:0 0 16px;padding:0;border-radius:0;background:none;color:var(--chg);font:650 11.5px/1.35 system-ui,-apple-system,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.vb-built .study-surface.revealed{height:auto;min-height:0;max-height:none;padding:34px 22px 64px;place-items:start center}
+.vb-built .study-surface.revealed .word-content{width:100%}
+.vb-built .study-surface.revealed .source-word{margin-top:18px;color:var(--dim);font-size:15px}
+:root[data-theme=vice] .vb-built .study-surface{box-shadow:0 0 0 1px #ff2e9724,0 30px 60px -30px #000}
+.vb-built .vb-para{display:grid;grid-template-columns:1fr;background:var(--card);border:1px solid var(--frame);border-radius:18px;padding:10px 16px;margin-top:20px;font-size:17px}
+.vb-built .vb-para.vb-split{grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(3,auto);column-gap:14px}
+.vb-built .vb-para :is(tbody,tr){display:contents}
+.vb-built .vb-para td{display:block;width:auto;padding:9px 0;border:0;color:var(--ink)}
+.vb-built .vb-para tr.vb-next td{padding-top:9px;border-top:1px solid var(--frame)}
+.vb-built .vb-para .end{font-weight:600}
+.vb-built .vb-why.vb-rule{margin-top:14px;color:var(--muted);font-size:14.5px;line-height:1.5}

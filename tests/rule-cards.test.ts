@@ -53,8 +53,14 @@ describe('how it’s built: the deck', () => {
   });
 
   test('each stem is listed with the persons it serves, and the table lights the ending on it', () => {
-    expect(cardFor(all, 'pres', 'revenir')!.stems).toEqual([{ stem: 'revien-', persons: 'je, tu, il' }, { stem: 'reven-', persons: 'nous, vous' }, { stem: 'revienn-', persons: 'ils' }]);
-    expect(cardFor(all, 'pres', 'acheter')!.stems).toEqual([{ stem: 'achèt-', persons: 'je, tu, il, ils' }, { stem: 'achet-', persons: 'nous, vous' }]);
+    // Each stem with the letters where the stems differ in [ ].
+    const marked = (fr: string) => cardFor(all, 'pres', fr)!.stems!.map(({ stem, persons, change }) => `${change ? `${stem.slice(0, change[0])}[${stem.slice(...change)}]${stem.slice(change[1])}` : stem} ${persons}`);
+    expect(marked('revenir')).toEqual(['rev[ie]n- je, tu, il', 'rev[e]n- nous, vous', 'rev[ien]n- ils']);
+    expect(marked('acheter')).toEqual(['ach[è]t- je, tu, il, ils', 'ach[e]t- nous, vous']);
+    expect(marked('prendre')).toEqual(['pren[d]- je, tu, il', 'pren- nous, vous', 'pren[n]- ils']);
+    // The table marks the same letters, and lights the ending after them.
+    const row = (fr: string, person: number) => cardFor(all, 'pres', fr)!.paradigm[person]!.parts.map((part) => part.change ? `[${part.text}]` : part.lit ? `{${part.text}}` : part.text).join('');
+    expect([row('prendre', 0), row('prendre', 3), row('prendre', 5), row('acheter', 0)]).toEqual(['je pren[d]{s}', 'nous pren{ons}', 'ils pren[n]{ent}', 'j’ach[è]t{e}']);
     const lit = (fr: string) => cardFor(all, 'pres', fr)!.paradigm.map((row) => row.parts.find((part) => part.lit)?.text ?? '');
     expect(lit('revenir')).toEqual(['s', 's', 't', 'ons', 'ez', 'ent']);
     expect(lit('dire')).toEqual(['s', 's', 't', 'ons', 'dites', 'ent']);

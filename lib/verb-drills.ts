@@ -15,7 +15,8 @@ export type RoundInput<T extends string = Tense> = { set: VerbSet; verbIds?: str
 export type RoundItem<T extends string = Tense> = { verbId: string; inf: string; en: string; tense: T; tenseName: string; person: number };
 // One way to read a shown form: a verb and tense it belongs to, the persons sharing it there, their forms with subjects.
 export type FormReading<T extends string = Tense> = { verbId: string; inf: string; en: string; tense: T; tenseName: string; persons: number[]; forms: string[] };
-export type VerbCard<T extends string = Tense> = RoundItem<T> & { answer: string; rule: string; paradigm: ParadigmRow[]; hook?: string; form?: string; readings?: FormReading<T>[] };
+// audio: the form said with its subject, where the verb tape or By ear has recorded it (played as the card turns).
+export type VerbCard<T extends string = Tense> = RoundItem<T> & { answer: string; rule: string; paradigm: ParadigmRow[]; hook?: string; form?: string; readings?: FormReading<T>[]; audio?: string | null };
 export type FormResult = { right: boolean; expected: string; why: string; rule: string; paradigm: ParadigmRow[]; hook?: string };
 export type EarItem = { id: string; audio: string; question: string; choices: string[] };
 
@@ -291,7 +292,8 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
       }
       const form = conjugate(verb, item.tense)[item.person]!;
       const hook = hookFor(verb, item.tense, item.person);
-      const card: VerbCard<T> = { ...item, answer: subject(item.person, form.shown, item.tense) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), ...(hook ? { hook } : {}) };
+      const audio = options.earAudio(subject(item.person, form.accepted[0]!, item.tense) + form.accepted[0]);
+      const card: VerbCard<T> = { ...item, answer: subject(item.person, form.shown, item.tense) + form.shown, rule: rule(verb, item.tense), paradigm: paradigm(verb, item.tense), audio, ...(hook ? { hook } : {}) };
       if (!readingsOf) return [card];
       if (shownForms.has(form.shown)) return [];
       shownForms.add(form.shown);

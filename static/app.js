@@ -7,6 +7,7 @@ const homeButton = document.querySelector('#home-button');
 // Rooms this Echo leaves out, from the page (ECHO_ROOMS_OFF on the server).
 const roomsOff = new Set((document.body.dataset.roomsOff || '').split(',').filter(Boolean));
 const speaker = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
+const speakerOff = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 6 6m0-6-6 6"/></svg>';
 const checkIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
 const crossIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6.5 6.5 11 11m0-11-11 11"/></svg>';
 const familyIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5.5" r="2.5"/><circle cx="5.5" cy="18" r="2.5"/><circle cx="18.5" cy="18" r="2.5"/><path d="M11 7.8 6.6 15.8M13 7.8l4.4 8M8 18h8"/></svg>';
@@ -3737,10 +3738,20 @@ const vbSettings = () => verbFormsOverride ?? { set: verbSet, verbIds: verbChose
 const vbVerb = (id) => verbsInfo?.verbs.find((verb) => verb.id === id);
 // hit: the person (or persons) to light. A row's note names what the forms alone don't (Swedish present, past, supine).
 // Persons starting over begin a second table (a verb taking être or avoir), set apart with a gap.
-function paradigmHTML(rows, hit = -1) {
+// A part marked change is where the verb's stems differ (promèn- / promen-). split: the six persons in two columns,
+// singular and plural, where the table is exactly one of each person and every form fits half a phone's width
+// (nous nous promenons does not).
+const VB_SPLIT_CHARS = 18;
+function paradigmHTML(rows, hit = -1, split = false) {
   const hits = [hit].flat();
-  return `<table class="vb-para">${rows.map((row, index) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}${index && row.person <= rows[index - 1].person ? ' vb-next' : ''}"><td lang="${languageTag}">${row.note ? `<small class="vb-key">${esc(row.note)}</small>` : ''}${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
+  const two = split && rows.length === 6 && rows.every((row, index) => row.person === index && row.parts.reduce((length, part) => length + part.text.length, 0) <= VB_SPLIT_CHARS);
+  return `<table class="vb-para${two ? ' vb-split' : ''}">${rows.map((row, index) => `<tr class="${hits.includes(row.person) ? 'hit' : ''}${index && row.person <= rows[index - 1].person ? ' vb-next' : ''}"><td lang="${languageTag}">${row.note ? `<small class="vb-key">${esc(row.note)}</small>` : ''}${row.parts.map((part) => part.lit ? `<span class="end">${esc(part.text)}</span>` : part.change ? `<span class="chg">${esc(part.text)}</span>` : esc(part.text)).join('')}</td></tr>`).join('')}</table>`;
 }
+// Sound in Cards, In sentences and How it's built: whether a card says its French as it turns. One switch for the three,
+// in each one's header; Play again under In sentences still plays.
+let vbSound = readPreference('echo.verbs-sound', 'on') !== 'off';
+const vbSoundButton = () => `<button class="icon vb-sound" data-action="vb-sound" aria-pressed="${vbSound}" aria-label="Sound when a card turns">${vbSound ? speaker : speakerOff}</button>`;
+const vbHeader = (label) => `<div class="section-top">${back('Verbs', 'verbs')}<div class="vb-head-end"><span class="stream-label">${label}</span>${vbSoundButton()}</div></div>`;
 const vbAccentsHTML = () => `<div class="vb-accents" aria-label="Accented letters">${VB_ACCENTS.map((letter) => `<button type="button" data-action="vb-accent" data-letter="${letter}">${letter}</button>`).join('')}</div>`;
 
 function openVerbs() { if (move('verbs', true)) loadVerbs(); }
@@ -3857,6 +3868,11 @@ function verbAction(action, button) {
   else if (action === 'vb-rule-undo') undoRuleCard();
   else if (action === 'vb-sentences') { if (move('verbs-sentences', true)) startVerbSentences(); }
   else if (action === 'vb-sentence-no' || action === 'vb-sentence-yes') markVerbSentence(action === 'vb-sentence-yes');
+  else if (action === 'vb-sound') {
+    vbSound = !vbSound; savePreference('echo.verbs-sound', vbSound ? 'on' : 'off');
+    if (!vbSound) stopAudio();
+    button.setAttribute('aria-pressed', String(vbSound)); button.innerHTML = vbSound ? speaker : speakerOff;
+  }
   else if (action === 'vb-sentence-play') { const card = verbSentences?.items[verbSentences.index]; if (card) playFrench(card.audio); }
   else if (action === 'vb-card-way') { const way = VB.ways.some(([value]) => value === button.dataset.way) ? button.dataset.way : 'produce'; if (way === verbCardsWay || loading) return; verbCardsWay = way; savePreference('echo.vb-cards-way', way); startVerbCards(); }
   else if (action === 'vb-forms') { verbFormsOverride = null; if (move('verbs-forms', true)) startVerbForms(); }
@@ -3980,7 +3996,7 @@ async function topUpVerbStream(stream, path, current, onScreen, body = vbSetting
 const topUpVerbCards = () => topUpVerbStream(verbCards, 'api/verbs/cards', () => verbCards, 'verbs-cards', vbCardsBody);
 function renderVerbCards() {
   const way = `<div class="segmented vb-card-way" role="group" aria-label="Which side of the card comes first">${VB.ways.map(([value, label]) => `<button data-action="vb-card-way" data-way="${value}" aria-pressed="${verbCardsWay === value}" ${loading ? 'disabled' : ''}>${label}</button>`).join('')}</div>`;
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">Cards</span></div>${way}`;
+  const header = `${vbHeader('Cards')}${way}`;
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
   if (loading || !verbCards) { shell(loading ? '<div class="loading-state" role="status">Choosing forms…</div>' : ''); return; }
   const { items, index, revealed } = verbCards;
@@ -4013,6 +4029,8 @@ function renderVerbCards() {
 function revealVerbCard() {
   if (!verbCards || verbCards.revealed || verbCards.index >= verbCards.items.length) return;
   verbCards.revealed = true; render();
+  const audio = verbCards.items[verbCards.index].audio;
+  if (vbSound && audio) playFrench(audio);
 }
 function markVerbCard(knew) {
   const stream = verbCards;
@@ -4021,7 +4039,7 @@ function markVerbCard(knew) {
   // A miss comes back four cards later, once.
   if (!knew && !card.again) stream.items.splice(Math.min(stream.items.length, stream.index + 5), 0, { ...card, again: true });
   stream.index += 1; stream.revealed = false; notice = null;
-  render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
+  stopAudio(); render(); main.querySelector('#vb-card')?.focus({ preventScroll: true });
   api('api/verbs/mark', { method: 'POST', body: JSON.stringify({ requestId: requestId(), verbId: card.verbId, tense: card.tense, person: card.person, knew, ...(card.readings ? { way: 'recognize' } : {}) }) })
     .catch((error) => { notice = { message: `This mark was not saved: ${error.message}` }; if (screen === 'verbs-cards') render(); })
     // The next cards are chosen once this mark counts, so a form just missed is weighed as shaky.
@@ -4044,8 +4062,8 @@ async function startRuleCards() {
 }
 const topUpRuleCards = () => topUpVerbStream(vbRules, 'api/verbs/rules', () => vbRules, 'verbs-rules', vbPractising, (card) => card.id);
 function renderRuleCards() {
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">How it’s built</span></div>`;
-  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards">${header}${body}</section>`; };
+  const header = vbHeader('How it’s built');
+  const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards vb-built">${header}${body}</section>`; };
   if (loading || !vbRules) { shell(loading ? '<div class="loading-state" role="status">Choosing cards…</div>' : ''); return; }
   const { items, index, revealed } = vbRules;
   const tools = `<div class="study-tools vb-rule-tools"><button class="quiet" data-action="vb-rule-undo" ${vbRules.last ? '' : 'disabled'}>Undo</button></div>`;
@@ -4059,16 +4077,18 @@ function renderRuleCards() {
   const again = card.again ? '<p class="caption vb-again-note">Once more, from a few cards ago.</p>' : '';
   // A rule's answer breaks only between its words, never after the hyphen of an ending.
   const answer = rule ? card.answer.split(' ').map((part) => `<span>${frEsc(part)}</span>`).join(' ') : frEsc(card.answer);
-  // A présent with more than one stem lists each with the persons it serves; what sets the verb apart from a regular
-  // one sits under the answer.
+  // More than one stem lists each with the persons it serves, the letters where they differ marked. What sets the verb
+  // apart from a regular one heads the answer; the examples are in the table under the card, so the face doesn't
+  // repeat them (they still play as it turns).
+  const stemHTML = (group) => group.change ? `${frEsc(group.stem.slice(0, group.change[0]))}<span class="chg">${frEsc(group.stem.slice(...group.change))}</span>${frEsc(group.stem.slice(group.change[1]))}` : frEsc(group.stem);
   const heading = card.stems?.length > 1
-    ? `<h1 class="main-word vb-card-answer vb-stems">${card.stems.map((group) => `<span class="vb-stem-row"><span lang="${languageTag}">${frEsc(group.stem)}</span><small>${esc(group.persons)}</small></span>`).join('')}</h1>`
+    ? `<h1 class="main-word vb-card-answer vb-stems">${card.stems.map((group) => `<span class="vb-stem-row"><span lang="${languageTag}">${stemHTML(group)}</span><small>${esc(group.persons)}</small></span>`).join('')}</h1>`
     : `<h1 class="main-word vb-card-answer${rule ? ' vb-rule-answer' : ''}" lang="${rule ? 'en' : languageTag}">${answer}</h1>`;
   const face = revealed
-    ? `${heading}${card.differs ? `<p class="vb-card-differs">${esc(card.differs)}</p>` : ''}<p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>${card.examples.length ? `<p class="vb-card-forms" lang="${languageTag}">${card.examples.map((example) => frEsc(example.text)).join(' · ')}</p>` : ''}`
+    ? `${card.differs ? `<p class="vb-card-differs">${esc(card.differs)}</p>` : ''}${heading}<p class="source-word">${rule ? esc(card.ask) : `<span lang="${languageTag}">${frEsc(card.inf)}</span> · ${esc(card.tenseName)}`}</p>`
     : `<p class="vb-card-who">${esc(card.ask)}</p><h1 class="main-word" lang="${languageTag}">${frEsc(card.inf)}</h1><p class="source-word" lang="${card.clueLang === 'fr' ? languageTag : card.clueLang}">${frEsc(card.clue)}</p>`;
   const zones = revealed ? `<button class="card-zone left" data-action="vb-rule-no" aria-label="Didn’t know it"><span aria-hidden="true">←</span></button><button class="card-zone right" data-action="vb-rule-yes" aria-label="Knew it"><span aria-hidden="true">→</span></button>` : '';
-  const after = revealed ? `${card.paradigm.length ? paradigmHTML(card.paradigm) : ''}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : '<p class="caption vb-card-hint">How is it built? Say it to yourself, then tap the card.</p>';
+  const after = revealed ? `${card.paradigm.length ? paradigmHTML(card.paradigm, -1, true) : ''}<p class="vb-why vb-rule">${frEsc(card.rule)}</p>` : '<p class="caption vb-card-hint">How is it built? Say it to yourself, then tap the card.</p>';
   shell(`${again}<div class="study-surface vb-card${revealed ? ' revealed' : ''}" id="vb-card" role="${revealed ? 'group' : 'button'}" tabindex="${revealed ? '-1' : '0'}" aria-label="${revealed ? 'The answer. Left: didn’t know. Right: knew it.' : 'Turn the card'}"><div class="word-content">${face}</div>${zones}</div>${tools}${after}`);
 }
 function revealRuleCard() {
@@ -4076,7 +4096,7 @@ function revealRuleCard() {
   if (!card || vbRules.revealed) return;
   vbRules.revealed = true; render();
   const urls = card.examples.flatMap((example) => example.audio ? [example.audio] : []);
-  if (urls.length) playClips(urls);
+  if (vbSound && urls.length) playClips(urls);
 }
 function markRuleCard(knew) {
   const stream = vbRules;
@@ -4156,7 +4176,7 @@ function waitForVerbSentences() {
   if (stream && stream.index >= stream.items.length && (stream.writing || stream.recording)) vbSentencePoll = setTimeout(() => { if (screen === 'verbs-sentences') topUpVerbSentences(); }, 5000);
 }
 function renderVerbSentences() {
-  const header = `<div class="section-top">${back('Verbs', 'verbs')}<span class="stream-label">In sentences</span></div>`;
+  const header = vbHeader('In sentences');
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="stream vb vb-cards vb-sentences">${header}${body}</section>`; };
   if (loading || !verbSentences) { shell(loading ? '<div class="loading-state" role="status">Opening In sentences…</div>' : ''); return; }
   const { items, index, revealed, writing, recording, error } = verbSentences;
@@ -4186,7 +4206,7 @@ function revealVerbSentence() {
   const card = verbSentences?.items[verbSentences.index];
   if (!card || verbSentences.revealed) return;
   verbSentences.revealed = true; render();
-  playFrench(card.audio);
+  if (vbSound) playFrench(card.audio);
 }
 function markVerbSentence(knew) {
   const stream = verbSentences;

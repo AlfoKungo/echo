@@ -21,11 +21,11 @@ export type RuleKind = Tense | 'rule';
 // stems, its futur stem, its passé composé); a card about a rule itself has none. regular marks a card that only
 // repeats its tense's pattern (one -er présent stem, an -er imparfait, a futur on the whole infinitive, avoir with a
 // regular participle).
-// stems: on a présent card, each stem with the persons it serves (fini- for je, tu, il; finiss- for nous, vous, ils),
-// so the answer says which stem goes where.
+// stems: on a présent or subjonctif card, each stem with the persons it serves (fini- for je, tu, il; finiss- for nous,
+// vous, ils), so the answer says which stem goes where; change: where in it the stems differ, [from, to).
 export type RuleCard<T extends string = Tense> = {
   id: string; kind: T | 'rule'; tense: T; ask: string; inf: string; clue: string; clueLang: 'fr' | 'en'; answer: string; differs?: string;
-  stems?: { stem: string; persons: string }[];
+  stems?: { stem: string; persons: string; change?: [number, number] }[];
   tenseName: string; examples: string[]; paradigm: ParadigmRow[]; rule: string; value: number; verbId?: string; regular?: boolean;
 };
 export type RuleCardView<T extends string = Tense> = Omit<RuleCard<T>, 'examples' | 'value' | 'regular'> & { examples: { text: string; audio: string | null }[] };
@@ -117,10 +117,32 @@ export function differs(verb: Verb, tense: Tense): string | undefined {
   return entry && entry.model !== verb.base ? entry.label : undefined;
 }
 // Each stem with the persons it serves, in the order they first appear (achèt- for je, tu, il, ils; achet- for nous, vous).
-function stemGroups(stems: [string, string, string]): { stem: string; persons: string }[] {
+function stemGroups(stems: [string, string, string]): { stem: string; persons: string; change?: [number, number] }[] {
   const groups = new Map<string, string[]>();
   PRONOUNS.forEach((pronoun, person) => { const stem = stemOf(stems, person); groups.set(stem, [...groups.get(stem) ?? [], pronoun]); });
-  return [...groups].map(([stem, persons]) => ({ stem: `${stem}-`, persons: persons.join(', ') }));
+  const change = changeOf(stems);
+  return [...groups].map(([stem, persons]) => {
+    const to = stem.length - (change?.end ?? 0);
+    return { stem: `${stem}-`, persons: persons.join(', '), ...(change && to > change.start ? { change: [change.start, to] as [number, number] } : {}) };
+  });
+}
+// Where a verb's stems differ: what is left once the start and the end they all share are taken off (promèn- and
+// promen-: the è and the e; prend-, pren- and prenn-: the d and the second n). Null for a single stem.
+function changeOf(stems: readonly string[]): { start: number; end: number } | null {
+  const unique = [...new Set(stems)];
+  if (unique.length < 2) return null;
+  const first = unique[0]!;
+  let start = 0;
+  while (unique.every((stem) => start < stem.length && stem[start] === first[start])) start++;
+  let end = 0;
+  while (unique.every((stem) => stem.length - end > start && stem[stem.length - 1 - end] === first[first.length - 1 - end])) end++;
+  return { start, end };
+}
+// A stem after what leads up to it, as parts, with the letters where the stems differ marked.
+function stemParts(lead: string, stem: string, change: { start: number; end: number } | null): ParadigmRow['parts'] {
+  const to = stem.length - (change?.end ?? 0);
+  if (!change || to <= change.start) return [{ text: lead + stem }];
+  return [{ text: lead + stem.slice(0, change.start) }, { text: stem.slice(change.start, to), change: true }, ...(to < stem.length ? [{ text: stem.slice(to) }] : [])];
 }
 // The table with each form split at its own person's stem, so what is lit is exactly the ending the card names
 // (je me souvien|s, nous nous souven|ons), not whatever the six forms happen not to share. A form not built on its
@@ -136,7 +158,7 @@ function presentParadigm(verb: Verb, stems: [string, string, string] | null): Pa
     const stem = stemOf(stems, row.person);
     if (!form.startsWith(stem)) return { ...row, parts: [{ text: lead }, { text: form, lit: true as const }] };
     const ending = form.slice(stem.length);
-    return { ...row, parts: [{ text: lead + stem }, ...(ending ? [{ text: ending, lit: true as const }] : [])] };
+    return { ...row, parts: [...stemParts(lead, stem, changeOf(stems)), ...(ending ? [{ text: ending, lit: true as const }] : [])] };
   });
 }
 // A -ger or -cer verb (manger, commencer) has one stem, the infinitive's: nous mangeons only keeps the g soft, so it
@@ -229,7 +251,7 @@ function subjCard(verb: Verb, lean: number): RuleCard {
     answer: byPerson ? [...new Set([one, two])].map((stem) => `${stem}-`).join(' · ') : examples.join(' · '), differs: differs(verb, 'subj'),
     stems: byPerson && one !== two ? stemGroups(byPerson) : undefined,
     tenseName: TENSE_NAMES.subj, examples,
-    paradigm: byPerson ? rows.map((row) => stemRow(row, all[row.person]!.shown, stemOf(byPerson, row.person))) : rows,
+    paradigm: byPerson ? rows.map((row) => stemRow(row, all[row.person]!.shown, stemOf(byPerson, row.person), changeOf(byPerson))) : rows,
     rule: rule(verb, 'subj'), value: lean * (group === 'irregular' ? 3 : group === 'two-stems' ? 2 : verb.base.endsWith('er') ? 0.5 : 1),
     regular: group === 'regular' && verb.base.endsWith('er'),
   };
@@ -248,14 +270,14 @@ function impeCard(verb: Verb, lean: number): RuleCard {
   };
 }
 // A row split at its person's stem, so what is lit is the ending on it (que je prenn|e, que nous pren|ions).
-function stemRow(row: ParadigmRow, form: string, stem: string): ParadigmRow {
+function stemRow(row: ParadigmRow, form: string, stem: string, change: { start: number; end: number } | null): ParadigmRow {
   const full = row.parts.map((part) => part.text).join('');
   if (!full.endsWith(form)) return row;
   const lead = full.slice(0, full.length - form.length);
   const at = form.lastIndexOf(stem);
   if (at < 0) return { ...row, parts: [{ text: lead }, { text: form, lit: true as const }] };
   const ending = form.slice(at + stem.length);
-  return { ...row, parts: [{ text: lead + form.slice(0, at + stem.length) }, ...(ending ? [{ text: ending, lit: true as const }] : [])] };
+  return { ...row, parts: [...stemParts(lead + form.slice(0, at), stem, change), ...(ending ? [{ text: ending, lit: true as const }] : [])] };
 }
 
 // Every card the verbs give: for each picked verb a card per tense it has (présent stems, imparfait stem, futur stem,
