@@ -21,7 +21,7 @@ import { createStory, type StoryFinish } from './lib/story';
 import { createRadio, englishClip, frenchClip, layStory, radioClip, radioClipExists, sentenceClips, storyLineClips, type StoryTapeMode } from './lib/radio';
 import { createVerbTables, TENSE_NAMES, TENSES, type Tense, type Verb } from './lib/verbs';
 import { createVerbDrills, WALKMAN_PERSONS, WALKMAN_PERSONS_SAID } from './lib/verb-drills';
-import { createRuleCards } from './lib/rule-cards';
+import { createRuleCards, foldedTenses } from './lib/rule-cards';
 import { FRENCH, verbClip, type VerbGrammar } from './lib/verb-grammar';
 import { loadPtVerbs, PORTUGUESE } from './lib/verbs-pt';
 import { SWEDISH, svVerbs } from './lib/verbs-sv';
@@ -222,7 +222,7 @@ const TENSE_TOPICS: Record<string, string[]> = language.code === 'pt' ? {
   subj: ['subjunctive'],
   impe: ['imperative'],
 };
-const verbs = createVerbDrills({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), earAudio: phraseAudio });
+const verbs = createVerbDrills({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), earAudio: phraseAudio, folded: language.code === 'fr' ? () => foldedTenses(verbList()) : undefined });
 // How it's built: cards on how each tense is formed, drawn from the same verb tables. A card about one verb counts for
 // that verb's forms in its tense too; a card about a rule counts only for itself.
 const ruleCards = createRuleCards({ dbPath, verbs: verbList, grammar: verbGrammar, vocabulary: () => store.listening(), audio: phraseAudio, onVerbMark: verbs.markBuilt, onVerbUnmark: verbs.unmarkBuilt, schedule: () => { const standings = verbs.standings(); return { standings, newLeft: verbs.newLeft(standings) }; } });

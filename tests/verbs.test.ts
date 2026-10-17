@@ -163,7 +163,7 @@ describe('verb drills', () => {
   const closers: (() => void)[] = [];
   afterEach(() => { for (const close of closers.splice(0)) close(); for (const directory of directories.splice(0)) rmSync(directory, { recursive: true, force: true }); });
   const clock = { value: new Date(2026, 8, 21, 10) };
-  function fixture(recorded: (said: string) => boolean = () => true) {
+  function fixture(recorded: (said: string) => boolean = () => true, folded?: Set<string>) {
     const directory = mkdtempSync(join(tmpdir(), 'echo-verbs-'));
     directories.push(directory);
     let seed = 7;
@@ -174,6 +174,7 @@ describe('verb drills', () => {
       earAudio: (said) => recorded(said) ? `audio/radio/${encodeURIComponent(said)}.mp3` : null,
       random: () => ((seed = (seed * 16807) % 2147483647) / 2147483647),
       now: () => new Date(clock.value),
+      ...(folded ? { folded: () => folded } : {}),
     });
     closers.push(drills.close);
     return drills;
@@ -213,6 +214,15 @@ describe('verb drills', () => {
     expect(run()).toBe(-1);
     drills.mark({ requestId: 'c1', verbId: 'v-parler', tense: 'pres', person: 0, knew: true });
     expect(run()).toBe(1);
+  });
+
+  test('a verb-tense taught by another verb\'s cards keeps its forms\' answers but no place in the schedule', () => {
+    const drills = fixture(undefined, new Set(['v-parler|pres']));
+    drills.mark({ requestId: 'c1', verbId: 'v-parler', tense: 'pres', person: 0, knew: false });
+    drills.mark({ requestId: 'c2', verbId: 'v-parler', tense: 'fut', person: 0, knew: false });
+    expect([drills.standings().has('v-parler|pres'), drills.standings().has('v-parler|fut')]).toEqual([false, true]);
+    const row = drills.summary().verbs.find((entry) => entry.id === 'v-parler')!;
+    expect([Object.keys(row.levels).includes('pres'), row.states.pres[0]]).toEqual([false, 'shaky']);
   });
 
   test('a round takes the forms of due verb-tenses first, then new ones', () => {

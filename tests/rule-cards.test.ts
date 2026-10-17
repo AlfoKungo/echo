@@ -18,6 +18,16 @@ const verbNamed = (fr: string) => verbs.find((verb) => verb.id === idOf(fr))!;
 const everything = { verbs, tenses: [...TENSES] };
 
 describe('how it’s built: the deck', () => {
+  test('a reflexive verb next to its plain verb keeps only the cards where it differs, and brings the plain verb\'s', () => {
+    const reflexive = verbNamed('se réveiller');
+    const withPlain = [...verbs, { ...reflexive, id: 'v-réveiller', inf: 'réveiller', reflexive: false }];
+    const kinds = (cards: RuleCard[], id: string) => cards.filter((card) => card.verbId === id).map((card) => card.kind);
+    expect(kinds(ruleCandidates(verbs, new Set()), reflexive.id)).toContain('pres');
+    const picked = ruleCandidates(withPlain, new Set(), [reflexive]);
+    expect(kinds(picked, reflexive.id)).toEqual(['pc', 'pqp', 'impe']);
+    expect(kinds(picked, 'v-réveiller')).toEqual(['pres', 'imp', 'fut', 'pc', 'cond', 'pqp', 'subj', 'impe']);
+  });
+
   test('a card says what sets its verb apart from a regular one, and nothing for a verb regular in its family', () => {
     const said = Object.fromEntries(['parler', 'finir', 'manger', 'acheter', 'prendre', 'revenir', 'partir', 'pouvoir'].map((fr) => [fr, cardFor(all, 'pres', fr)!.differs]));
     expect(said).toEqual({

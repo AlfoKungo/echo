@@ -82,6 +82,9 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
   vocabulary: () => { id: string; status: string; score: number }[];
   // The recording of a phrase said By ear, or null until it has been made.
   earAudio: (said: string) => string | null;
+  // Each "verbId|tense" another verb's cards teach (a reflexive verb's présent, by its plain verb's;
+  // lib/rule-cards.ts foldedTenses): its answers still count for its forms, but it has no place in the schedule.
+  folded?: () => Set<string>;
   now?: () => Date; random?: () => number;
 }) {
   const now = options.now ?? (() => new Date());
@@ -171,7 +174,9 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     }
     for (const [id, score] of scores) byTense.get(id.slice(0, id.lastIndexOf('|')))?.scores.push(score);
     const out = new Map<string, Standing>();
+    const folded = options.folded?.() ?? new Set<string>();
     for (const [id, entry] of byTense) {
+      if (folded.has(id)) continue;
       const weak = entry.scores.some((score) => score <= SHAKY_AT);
       const mean = entry.scores.reduce((sum, score) => sum + score, 0) / Math.max(1, entry.scores.length);
       const step = weak ? 0 : entry.scores.every((score) => score >= SOLID_AT) ? 3 : mean >= 1 ? 2 : 1;
@@ -179,6 +184,7 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     }
     for (const row of scheduleRows.all()) {
       const id = `${row.verb_id}|${row.tense}`;
+      if (folded.has(id)) continue;
       out.set(id, { step: row.step, due: Date.parse(row.due_at), level: level(row.step), weak: out.get(id)?.weak ?? false, started: Date.parse(row.started_at) });
     }
     return out;
@@ -196,6 +202,7 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
   // One review of a verb-tense, from where it stood before the answer. undoable keeps the row it changed, for a How
   // it's built Undo.
   function review(requestId: string, verbId: string, tense: string, right: boolean, current: ReturnType<typeof prior>, undoable = false) {
+    if (options.folded?.().has(`${verbId}|${tense}`)) return;
     const at = now().getTime();
     if (undoable) { const row = scheduleRow.get(verbId, tense); saveUndo.run(requestId, verbId, tense, row?.step ?? null, row?.due_at ?? null, row?.started_at ?? null); }
     const started = new Date(current?.started ?? at).toISOString();
@@ -585,13 +592,13 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     const verbs = options.verbs();
     const forms = history();
     const words = new Map(options.vocabulary().map((word) => [word.id, word]));
-    const all = standings(), lastRuns = runs();
+    const all = standings(), lastRuns = runs(), folded = options.folded?.() ?? new Set<string>();
     const rows = verbs.map((verb) => {
       const states = Object.fromEntries(TENSES.map((tense) => [tense, [0, 1, 2, 3, 4, 5].map((person) => persons(verb, tense).includes(person) ? stateOf(forms.get(key(verb.id, tense, person))) : null)])) as Record<T, (FormState | null)[]>;
       const word = words.get(verb.id);
       // Each tense's level (0 New, 1 Learning, 2 Known, 3 Solid), whether a form of it is shaky, when it is due, and how
       // its latest reviews went (runs).
-      const levels = Object.fromEntries(TENSES.filter((tense) => persons(verb, tense).length).map((tense) => {
+      const levels = Object.fromEntries(TENSES.filter((tense) => persons(verb, tense).length && !folded.has(`${verb.id}|${tense}`)).map((tense) => {
         const standing = all.get(`${verb.id}|${tense}`);
         const run = lastRuns.get(`${verb.id}|${tense}`) ?? 0;
         return [tense, standing ? { level: standing.level, weak: standing.weak, due: standing.due, run } : { level: 0, weak: false, due: null, run }];
