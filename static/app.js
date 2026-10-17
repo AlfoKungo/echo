@@ -1535,10 +1535,10 @@ function cardHTML(card = snapshot.current, undoable = !!snapshot.undoId) {
   const right = verdict?.verdict === 'right';
   // The noun's gender, in words, wherever the learnt word is showing (the colour alone is optional).
   const gender = card.gender && (revealed || !reverse) ? `<p class="gender-tag${genderClass(card.gender)}">${esc(GENDERS[card.gender]?.[1] ?? card.gender)}</p>` : '';
-  // The word asked stays where it is when the card turns, the same size; the answer and the rest come in under it.
-  // In Listen the word was heard, not shown, so the meaning is what the card answers: it takes the headline, and the
-  // French it was comes in under it.
-  const heard = listening() && revealed && !reverse;
+  // From the learnt language, a turned card answers with the meaning, in every way of practising: it takes the
+  // headline, where the word (or Listen's play button) was, and the word comes in under it. From English, the English
+  // stays and the word comes in under it.
+  const heard = revealed && !reverse;
   const big = heard ? { text: answer, lang: 'en', gendered: false } : { text: prompt, lang: reverse ? 'en' : languageTag, gendered: !reverse };
   const small = heard ? { text: prompt, lang: languageTag, gendered: true } : { text: answer, lang: reverse ? languageTag : 'en', gendered: reverse };
   const shown = `<div class="card-over">${verdict ? sayVerdictHTML() : ''}</div><h1 class="main-word${big.gendered ? genderClass(card.gender) : ''}" lang="${big.lang}">${esc(big.text)}</h1>`;
