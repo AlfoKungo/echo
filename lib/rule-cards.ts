@@ -298,18 +298,16 @@ function stemRow(row: ParadigmRow, form: string, stem: string, change: { start: 
 // Every card the verbs give: for each picked verb a card per tense it has (présent stems, imparfait stem, futur stem,
 // passé composé, conditionnel stem, plus-que-parfait, subjonctif stems, impératif).
 // Phrases built on a verb (avoir peur, se rendre compte) get no cards of their own: their table is their verb's, so a
-// picked phrase stands for the verb with that table. A reflexive verb whose plain verb is here too (se laver, laver)
-// gets only the cards where it differs: the passé composé and plus-que-parfait (être) and the impératif (the pronoun
-// after). In the other tenses it is the plain verb with a pronoun in front, and its table is the plain verb's, so a
-// picked one brings the plain verb's cards.
+// picked phrase stands for the verb with that table. A reflexive verb gets only the cards where it differs from a
+// plain verb: the passé composé and plus-que-parfait (être) and the impératif (the pronoun after). In the other
+// tenses it is a plain verb with a pronoun in front, and its stems follow a pattern the plain verbs' cards teach (se
+// souvenir is venir's, se lever acheter's). Its table is its plain verb's, so a picked one brings that verb's cards.
 // The tenses where a reflexive verb is its plain verb with a pronoun in front.
 const AS_PLAIN: readonly Tense[] = ['pres', 'imp', 'fut', 'cond', 'subj'];
-const plainVerbs = (verbs: Verb[]) => new Set(verbs.filter((verb) => !verb.reflexive && !verb.base.includes(' ')).map((verb) => verb.inf));
-const hasPlain = (verb: Verb, plain: Set<string>) => verb.reflexive && !verb.base.includes(' ') && plain.has(verb.base);
-// Every "verbId|tense" its plain verb's cards teach (see ruleCandidates): it has no card and no schedule of its own.
+// Every reflexive verb's "verbId|tense" in those tenses, a phrase's too (se rendre compte): it has no card (see
+// ruleCandidates) and no schedule of its own.
 export function foldedTenses(verbs: Verb[]): Set<string> {
-  const plain = plainVerbs(verbs);
-  return new Set(verbs.filter((verb) => hasPlain(verb, plain)).flatMap((verb) => AS_PLAIN.map((tense) => `${verb.id}|${tense}`)));
+  return new Set(verbs.filter((verb) => verb.reflexive).flatMap((verb) => AS_PLAIN.map((tense) => `${verb.id}|${tense}`)));
 }
 export function ruleCandidates(verbs: Verb[], started: Set<string>, picked: Verb[] = verbs): RuleCard[] {
   const seen = new Set<string>();
@@ -317,11 +315,10 @@ export function ruleCandidates(verbs: Verb[], started: Set<string>, picked: Verb
   const table = (verb: Verb) => `${verb.pres.join(',')}|${verb.fut}|${verb.pp}`;
   const wanted = new Set(picked.flatMap((verb) => [verb.inf, table(verb)]));
   const cards: RuleCard[] = [];
-  const plain = plainVerbs(usable);
   for (const verb of usable) {
     if (!wanted.has(verb.inf) && !wanted.has(table(verb))) continue;
     const lean = started.has(verb.id) ? STARTED_LEAN : 1;
-    if (hasPlain(verb, plain)) {
+    if (verb.reflexive) {
       cards.push(pcCard(verb, lean), pqpCard(verb, lean));
       if (persons(verb, 'impe').length) cards.push(impeCard(verb, lean));
       continue;

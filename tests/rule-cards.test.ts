@@ -18,11 +18,11 @@ const verbNamed = (fr: string) => verbs.find((verb) => verb.id === idOf(fr))!;
 const everything = { verbs, tenses: [...TENSES] };
 
 describe('how it’s built: the deck', () => {
-  test('a reflexive verb next to its plain verb keeps only the cards where it differs, and brings the plain verb\'s', () => {
+  test('a reflexive verb keeps only the cards where it differs, and brings its plain verb\'s', () => {
     const reflexive = verbNamed('se réveiller');
     const withPlain = [...verbs, { ...reflexive, id: 'v-réveiller', inf: 'réveiller', reflexive: false }];
     const kinds = (cards: RuleCard[], id: string) => cards.filter((card) => card.verbId === id).map((card) => card.kind);
-    expect(kinds(ruleCandidates(verbs, new Set()), reflexive.id)).toContain('pres');
+    expect(kinds(all, idOf('se lever'))).toEqual(['pc', 'pqp', 'impe']);
     const picked = ruleCandidates(withPlain, new Set(), [reflexive]);
     expect(kinds(picked, reflexive.id)).toEqual(['pc', 'pqp', 'impe']);
     expect(kinds(picked, 'v-réveiller')).toEqual(['pres', 'imp', 'fut', 'pc', 'cond', 'pqp', 'subj', 'impe']);
@@ -44,11 +44,11 @@ describe('how it’s built: the deck', () => {
   });
 
   test('a verb outside the named families says what sets it apart, and only être, avoir, aller and faire are irregular', () => {
-    const said = Object.fromEntries(['mettre', 'boire', 'dire', 'courir', 'devoir', 'pouvoir', 'voir', "s'asseoir", 'faire', 'être'].map((fr) => [fr, cardFor(all, 'pres', fr)?.differs]));
+    const said = Object.fromEntries(['mettre', 'boire', 'dire', 'courir', 'devoir', 'pouvoir', 'voir', 'faire', 'être'].map((fr) => [fr, cardFor(all, 'pres', fr)?.differs]));
     expect(said).toEqual({
       mettre: '-re, but the stem changes', boire: '-re, but il takes -t, the stem changes', dire: '-re, but il takes -t, the stem changes · vous dites',
       courir: 'No -iss-', devoir: 'The stem changes', pouvoir: '-x, -x, -t, the stem changes', voir: 'The stem changes',
-      "s'asseoir": '-s, -s, no -t, the stem changes', faire: 'Irregular', être: 'Irregular',
+      faire: 'Irregular', être: 'Irregular',
     });
   });
 
@@ -102,7 +102,6 @@ describe('how it’s built: the deck', () => {
     expect(cardFor(all, 'imp', 'faire')).toMatchObject({ clue: 'nous faisons', answer: 'fais-' });
     // The e kept before -ais shows in the stem; the examples show it go before -ions.
     expect(cardFor(ruleCandidates(verbs, new Set([idOf('manger')])), 'imp', 'manger')).toMatchObject({ answer: 'mange-', examples: ['je mangeais', 'nous mangions', 'ils mangeaient'] });
-    expect(cardFor(ruleCandidates(verbs, new Set([idOf('se lever')])), 'imp', 'se lever')).toMatchObject({ clue: 'nous nous levons', answer: 'lev-' });
     // falloir has no nous form to build on.
     expect(cardFor(all, 'imp', 'falloir')).toBeUndefined();
   });
@@ -111,7 +110,7 @@ describe('how it’s built: the deck', () => {
     const stems = Object.fromEntries(all.filter((card) => card.kind === 'fut').map((card) => [card.inf, card.answer]));
     expect(stems).toMatchObject({
       'être': 'ser-', avoir: 'aur-', faire: 'fer-', aller: 'ir-', venir: 'viendr-', voir: 'verr-', savoir: 'saur-', vouloir: 'voudr-', pouvoir: 'pourr-',
-      devoir: 'devr-', falloir: 'faudr-', envoyer: 'enverr-', mourir: 'mourr-', courir: 'courr-', tenir: 'tiendr-', revenir: 'reviendr-', 's’asseoir': 'assiér-',
+      devoir: 'devr-', falloir: 'faudr-', envoyer: 'enverr-', mourir: 'mourr-', courir: 'courr-', tenir: 'tiendr-', revenir: 'reviendr-',
       acheter: 'achèter-', appeler: 'appeller-', jeter: 'jetter-', payer: 'paier-', prendre: 'prendr-', parler: 'parler-',
     });
     expect(cardFor(all, 'fut', 'envoyer')!.examples).toEqual(['j’enverrai', 'il enverra', 'ils enverront']);
