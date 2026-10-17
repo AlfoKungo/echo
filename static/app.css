@@ -945,21 +945,37 @@ dialog.sheet .dialog-head{margin:0 4px 18px}
 .vb-status{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 2px 12px;font-size:14px;color:var(--muted)}
 .vb-status button{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);text-align:left}
 .vb-status span{flex:none}.vb-status b{color:var(--violet);font-weight:650}
-/* The Verbs tab: the groups, then each verb with its ring, level, when it comes back, and a bar per tense. */
-.vb-lv-chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 6px}
-.vb-lv-chips button{padding:5px 12px;border:1px solid var(--frame);border-radius:999px;font-size:13.5px;color:var(--muted)}
-.vb-lv-chips button[aria-pressed=true]{border-color:var(--violet);color:var(--violet);background:var(--violet-soft)}
-.vb-lv-chips b{margin-left:5px;font-weight:600}
-.vb-lv-list{list-style:none;margin:0;padding:0}
+/* The Verbs tab: every verb by level in one bar, the groups to tap, then each verb with its pattern, stems, how it
+   went, and a mark per tense. A level keeps one colour: Learning violet, Known cyan, Solid white, New an empty ring. */
+.vb-lv-bar{display:flex;gap:2px;height:8px;margin:16px 0 0;border-radius:5px;overflow:hidden}
+.vb-lv-bar i{display:block;min-width:3px}
+.vb-lv-bar i.l0{background:var(--frame)}
+.vb-lv-groups{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:10px 0 6px;padding:3px;border:1px solid var(--frame);border-radius:16px;background:var(--card)}
+.vb-lv-groups button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0 6px;border-radius:13px;font-size:12px;color:var(--muted)}
+.vb-lv-groups button[aria-pressed=true]{background:var(--card-hover);box-shadow:inset 0 0 0 1px var(--violet)}
+.vb-lv-groups b{font-size:17px;font-weight:650;color:var(--ink);font-variant-numeric:tabular-nums}
+.vb-lv-groups [data-filter=due] b{color:var(--violet)}
+.vb-lv-groups span{display:flex;align-items:center;gap:5px}
+.vb-lv-groups span i{width:7px;height:7px;flex:none;border-radius:50%}
+.vb-lv-groups span i.l0{box-shadow:inset 0 0 0 1px var(--muted)}
+:is(.vb-lv-bar,.vb-lv-groups,.vb-lv-t) .l1{background:var(--getting)}
+:is(.vb-lv-bar,.vb-lv-groups,.vb-lv-t) .l2{background:var(--green)}
+:is(.vb-lv-bar,.vb-lv-groups,.vb-lv-t) .l3{background:var(--ink)}
+.vb-lv-list{list-style:none;margin:6px 0 0;padding:0}
 .vb-lv-list li+li{border-top:1px solid var(--frame)}
-.vb-lv-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;width:100%;padding:12px 2px;text-align:left}
+.vb-lv-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:12px 2px;text-align:left}
 .vb-lv-name{min-width:0}.vb-lv-name>span{display:block;font-family:var(--serif);font-size:19px;line-height:1.2;color:var(--ink)}
-.vb-lv-name small{display:block;margin-top:2px;font-size:12.5px;color:var(--dim)}.vb-lv-name .due{color:var(--peach)}
-.vb-lv-tenses{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px 5px;max-width:156px}
-.vb-lv-t{display:flex;flex-direction:column;align-items:center;gap:4px;width:34px}
-.vb-lv-t i{display:flex;gap:2px;width:100%}.vb-lv-t i b{flex:1;height:5px;border-radius:2px;background:var(--frame)}
-.vb-lv-t i b.f{background:var(--green)}.vb-lv-t.weak i b.f{background:var(--peach)}
-.vb-lv-t small{max-width:100%;overflow:hidden;white-space:nowrap;font-size:9px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;color:var(--dim)}
+.vb-lv-name small{display:block;margin-top:2px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px;color:var(--muted)}
+.vb-lv-name small.stems{margin-top:1px;font-family:var(--serif);font-size:15px}
+.vb-lv-name small.went{color:var(--dim)}
+.vb-lv-name .miss{color:var(--peach)}.vb-lv-name .ok{color:var(--green)}
+.vb-lv-name .tn{margin-right:6px;font-size:10.5px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--dim)}
+.vb-lv-tenses{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:162px}
+.vb-lv-t{display:flex;flex-direction:column;align-items:center;gap:4px;width:36px}
+.vb-lv-t i{display:block;width:100%;height:9px;border-radius:5px}
+.vb-lv-t i.l0{box-shadow:inset 0 0 0 1px var(--frame)}
+.vb-lv-t i.l3{box-shadow:0 0 8px var(--green)}
+.vb-lv-t small{max-width:100%;overflow:hidden;white-space:nowrap;font-size:9px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;color:var(--dim)}
 /* A verb's page: its ring beside its name; each tense's level over its table. */
 .vb-lv-head{display:flex;align-items:center;gap:16px;margin:4px 0 6px}.vb-lv-head h1{margin:0}.vb-lv-head .subtitle{margin:2px 0 0}
 .vb-lv-tense{display:flex;align-items:center;gap:8px;margin:0 0 6px;font-size:13px;color:var(--muted)}

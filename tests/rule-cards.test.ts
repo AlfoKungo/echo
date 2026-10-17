@@ -208,6 +208,15 @@ describe('how it’s built: marks', () => {
     expect(round.items[0]).not.toHaveProperty('value');
   });
 
+  test('each verb-tense has its card\'s pattern; a phrase has the pattern of the verb whose table it shares', () => {
+    const { cards } = open();
+    const patterns = cards.patterns(['pres']);
+    expect(patterns[`${idOf('parler')}|pres`]).toEqual(['Regular -er verb', 'parl-']);
+    expect(patterns[`${idOf('avoir peur')}|pres`]).toEqual(patterns[`${idOf('avoir')}|pres`]!);
+    expect(patterns[`${idOf('avoir')}|pres`]![0]).toBe('Irregular');
+    expect(Object.keys(patterns).some((id) => !id.endsWith('|pres'))).toBe(false);
+  });
+
   test('a card known goes away for a day, one missed is due at once and first, and the marks persist; a request counts once', () => {
     const first = open();
     const known = `pc:${idOf('tomber')}`, missed = `fut:${idOf('envoyer')}`;

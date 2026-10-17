@@ -859,6 +859,7 @@ async function route(req: Request): Promise<Response> {
       return audioFile(req, file);
     }
     if (path === '/api/verbs' && req.method === 'GET') return json({ ...verbs.summary(), tables: verbStatus() });
+    if (path === '/api/verbs/patterns' && req.method === 'GET') return json(ruleCards.patterns((url.searchParams.get('tenses') ?? '').split(',')));
     // A tense explained: the grammar guides on it, then the learner's verbs sorted by what is regular about them.
     const tensePage = path.match(/^\/api\/verbs\/tense\/([a-z]+)$/);
     if (tensePage && req.method === 'GET') {

@@ -408,6 +408,21 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
     return { ok: true };
   }
 
+  // Each verb-tense's pattern in the tenses asked for, as its card says it, by "verbId|tense": the label (what sets it
+  // apart, or the regular pattern it follows) and the answer (its stems, or the forms to know). A verb with no card of
+  // its own (a phrase like avoir peur) has the card of the verb whose table it shares.
+  function patterns(tenses: readonly string[]): Record<string, [string, string]> {
+    const verbs = options.verbs(), none = new Set<string>();
+    const wanted = (card: RuleCard<T>) => !!card.verbId && tenses.includes(card.tense);
+    const out: Record<string, [string, string]> = {};
+    for (const card of deck.ruleCandidates(verbs, none).filter(wanted)) out[`${card.verbId}|${card.tense}`] = [card.label ?? card.differs ?? '', card.answer];
+    const own = new Set(Object.keys(out).map((id) => id.slice(0, id.indexOf('|'))));
+    for (const verb of verbs.filter((entry) => !own.has(entry.id))) {
+      for (const card of deck.ruleCandidates(verbs, none, [verb]).filter(wanted)) out[`${verb.id}|${card.tense}`] ??= [card.label ?? card.differs ?? '', card.answer];
+    }
+    return out;
+  }
+
   // Undo: the mark made under this request id is taken back, with what it counted for the verb's forms.
   function unmark(input: { requestId: string }) {
     if (typeof input?.requestId !== 'string' || !input.requestId) throw new StoreError('This undo is missing its request ID.');
@@ -416,5 +431,5 @@ export function createRuleCards<V extends DrillVerb = Verb, T extends string = T
     return { ok: true, removed };
   }
 
-  return { round, mark, unmark, close: () => db.close() };
+  return { round, mark, unmark, patterns, close: () => db.close() };
 }

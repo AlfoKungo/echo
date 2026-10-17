@@ -3921,31 +3921,67 @@ const vbBack = () => trail[depth - 1] === 'verbs-all' ? back('Verbs', 'vb-all-ba
 function renderVerbAll() {
   const shell = (body) => { main.innerHTML = `${noticeHTML()}<section class="topics vb vb-room">${verbsTop()}${body}</section>`; };
   if (loading || !verbsInfo) { shell(loading ? '<div class="loading-state" role="status">Loading…</div>' : ''); return; }
+  loadVerbPatterns();
   shell(`<label class="sr-only" for="vb-search">Find a verb</label><input id="vb-search" class="vb-search" type="search" placeholder="Find a verb, ${languageEnglish} or English…" value="${esc(vbAllQuery)}" autocomplete="off" autocapitalize="off" spellcheck="false"><div id="vb-all-results"></div>`);
   renderVerbAllResults();
 }
-// The list under the search box, redrawn on its own so typing keeps the keyboard up. Each verb sits in one group by
-// where it stands in the tenses on the Practising line: due now, still learning, known (Known and Solid), or new. A
-// search looks through every verb, in alphabetical order.
+// Each verb-tense's pattern in the tenses on the Practising line, as its How it's built card says it (lib/rule-cards.ts
+// patterns): "verbId|tense" → [label, answer]. Loaded once per set of tenses; the list draws without it meanwhile.
+let vbPatterns = { tenses: '', map: null };
+async function loadVerbPatterns() {
+  const tenses = verbTenses.join(',');
+  if (vbPatterns.tenses === tenses) return;
+  vbPatterns = { tenses, map: null };
+  try {
+    const map = await api(`api/verbs/patterns?tenses=${encodeURIComponent(tenses)}`);
+    if (vbPatterns.tenses === tenses) { vbPatterns.map = map; renderVerbAllResults(); }
+  } catch { if (vbPatterns.tenses === tenses) vbPatterns.tenses = ''; }
+}
+// The list under the search box, redrawn on its own so typing keeps the keyboard up. Over it, every verb by level
+// in one bar, and the groups to tap: due now, Learning, Known, Solid, New. A search looks through every verb, in
+// alphabetical order. Each row names the tense furthest behind (the most misses in a row, else the soonest due),
+// when more than one is practised: its pattern, its stems, how its latest reviews went and when it comes back; and
+// on the right one mark per tense, in its level's colour.
+const VB_GROUPS = { due: 'Due', learning: 'Learning', known: 'Known', solid: 'Solid', new: 'New' };
+const VB_GROUP_LEVEL = { learning: 1, known: 2, solid: 3, new: 0 };
 function renderVerbAllResults() {
   const target = document.querySelector('#vb-all-results');
   if (!target || !verbsInfo) return;
   const query = normalized(vbAllQuery.trim());
+  const now = Date.now();
   const rows = verbsInfo.verbs.map((verb) => ({ verb, standing: vbStanding(verb) })).filter((row) => row.standing.tenses.length);
-  const groupOf = ({ standing }) => standing.due ? 'due' : !standing.level ? 'new' : standing.level === 1 ? 'learning' : 'known';
-  const groups = { due: 'Due', learning: 'Learning', known: 'Known', new: 'New' };
-  const counts = Object.fromEntries(Object.keys(groups).map((id) => [id, rows.filter((row) => groupOf(row) === id).length]));
-  const order = { due: (a, b) => a.standing.next - b.standing.next, learning: (a, b) => a.standing.next - b.standing.next, known: (a, b) => a.standing.next - b.standing.next, new: (a, b) => Number(b.verb.started) - Number(a.verb.started) };
+  const groupOf = ({ standing }) => standing.due ? 'due' : ['new', 'learning', 'known', 'solid'][standing.level];
+  const counts = Object.fromEntries(Object.keys(VB_GROUPS).map((id) => [id, rows.filter((row) => groupOf(row) === id).length]));
+  const behind = (verb) => (left, right) => { const a = verb.levels[left], b = verb.levels[right]; return Math.min(0, a.run) - Math.min(0, b.run) || (a.due ?? Infinity) - (b.due ?? Infinity) || a.level - b.level; };
+  const focusOf = ({ verb, standing }) => [...standing.tenses].sort(behind(verb))[0];
+  for (const row of rows) row.focus = focusOf(row);
+  const runOf = (row) => row.verb.levels[row.focus].run;
+  const soonest = (a, b) => a.standing.next - b.standing.next;
+  const order = { due: (a, b) => Math.min(0, runOf(a)) - Math.min(0, runOf(b)) || soonest(a, b), learning: soonest, known: soonest, solid: soonest, new: (a, b) => Number(b.verb.started) - Number(a.verb.started) };
   const list = query
     ? rows.filter(({ verb }) => normalized(verb.inf).includes(query) || normalized(verb.en).includes(query)).sort((a, b) => a.verb.inf.localeCompare(b.verb.inf, languageTag))
     : rows.filter((row) => groupOf(row) === vbAllFilter).sort(order[vbAllFilter]);
-  const bars = (verb, tenses) => tenses.map((tense) => { const entry = verb.levels[tense]; return `<span class="vb-lv-t${entry.weak ? ' weak' : ''}"><i>${[1, 2, 3].map((step) => `<b class="${entry.level >= step ? 'f' : ''}"></b>`).join('')}</i><small>${esc(VB.short?.[tense] ?? VB.columns[tense])}</small></span>`; }).join('');
-  const row = ({ verb, standing }) => {
-    const when = standing.due ? '<span class="due">due</span>' : vbWhen(standing.next);
-    return `<li><button class="vb-lv-row" data-action="vb-verb" data-verb="${esc(verb.id)}">${vbRing(standing.mean / 3, standing.weak)}<span class="vb-lv-name"><span lang="${languageTag}">${frEsc(verb.inf)}</span><small>${[VB_LEVELS[standing.level], when].filter(Boolean).join(' · ')}</small></span><span class="vb-lv-tenses">${bars(verb, standing.tenses)}</span></button></li>`;
+  const short = (tense) => esc(VB.short?.[tense] ?? VB.columns[tense]);
+  const status = (row) => {
+    const { run, due } = row.verb.levels[row.focus];
+    const went = run <= -2 ? `<span class="miss">missed ${-run}× in a row</span>` : run === -1 ? '<span class="miss">missed last time</span>' : run >= 2 ? `<span class="ok">right ${run}× in a row</span>` : run === 1 ? 'right last time' : '';
+    const days = due === null ? 0 : Math.ceil((due - now) / 86_400_000);
+    const back = run < 0 || due === null ? '' : days <= 0 ? 'ready again' : days === 1 ? 'back tomorrow' : `back in ${days} days`;
+    return [went, back].filter(Boolean).join(' · ') || esc(row.verb.en);
   };
-  const chips = Object.entries(groups).map(([id, label]) => `<button data-action="vb-all-filter" data-filter="${id}" aria-pressed="${!query && vbAllFilter === id}">${label}<b>${counts[id]}</b></button>`).join('');
-  target.innerHTML = `<div class="vb-lv-chips">${chips}</div>${list.length ? `<ul class="vb-lv-list">${list.map(row).join('')}</ul>` : `<p class="empty-list">${query ? 'No verb matches.' : 'None right now.'}</p>`}`;
+  const row = (entry) => {
+    const { verb, standing, focus } = entry;
+    const [label, answer] = vbPatterns.map?.[`${verb.id}|${focus}`] ?? [];
+    const named = standing.tenses.length > 1 ? `<span class="tn">${short(focus)}</span>` : '';
+    const pattern = label ? `<small>${named}${esc(label)}</small>` : named ? `<small>${named}</small>` : '';
+    const stems = answer ? `<small class="stems" lang="${languageTag}">${frEsc(answer)}</small>` : '';
+    const marks = standing.tenses.map((tense) => `<span class="vb-lv-t"><i class="l${verb.levels[tense].level}"></i><small>${short(tense)}</small></span>`).join('');
+    return `<li><button class="vb-lv-row" data-action="vb-verb" data-verb="${esc(verb.id)}"><span class="vb-lv-name"><span lang="${languageTag}">${frEsc(verb.inf)}</span>${pattern}${stems}<small class="went">${status(entry)}</small></span><span class="vb-lv-tenses">${marks}</span></button></li>`;
+  };
+  const levels = [3, 2, 1, 0].map((level) => [level, rows.filter((entry) => entry.standing.level === level).length]).filter(([, count]) => count);
+  const bar = `<div class="vb-lv-bar" aria-hidden="true">${levels.map(([level, count]) => `<i class="l${level}" style="flex:${count}"></i>`).join('')}</div>`;
+  const groups = Object.entries(VB_GROUPS).map(([id, label]) => `<button data-action="vb-all-filter" data-filter="${id}" aria-pressed="${!query && vbAllFilter === id}"><b>${counts[id]}</b><span>${id in VB_GROUP_LEVEL ? `<i class="l${VB_GROUP_LEVEL[id]}"></i>` : ''}${label}</span></button>`).join('');
+  target.innerHTML = `${bar}<div class="vb-lv-groups">${groups}</div>${list.length ? `<ul class="vb-lv-list">${list.map(row).join('')}</ul>` : `<p class="empty-list">${query ? 'No verb matches.' : 'None right now.'}</p>`}`;
 }
 let vbLineRestart = 0;
 const vbLineChanged = () => { clearTimeout(vbLineRestart); if (screen === 'verbs-rules') vbLineRestart = setTimeout(() => { if (screen === 'verbs-rules') startRuleCards(); }, 600); };

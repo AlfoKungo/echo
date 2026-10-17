@@ -195,8 +195,24 @@ describe('verb drills', () => {
     drills.mark({ requestId: 'c2', verbId: 'v-parler', tense: 'pres', person: 5, knew: false });
     expect([standing().step, standing().due]).toEqual([0, clock.value.getTime()]);
     const levels = drills.summary().verbs.find((row) => row.id === 'v-parler')!.levels;
-    expect([levels.pres, levels.fut]).toEqual([{ level: 1, weak: false, due: clock.value.getTime() }, { level: 0, weak: false, due: null }]);
+    expect([levels.pres, levels.fut]).toEqual([{ level: 1, weak: false, due: clock.value.getTime(), run: -1 }, { level: 0, weak: false, due: null, run: 0 }]);
     clock.value = start;
+  });
+
+  test('a verb-tense counts its latest reviews in a row: a whole table or a How it\'s built mark is one review, missed when any form is', () => {
+    const drills = fixture();
+    const run = () => drills.summary().verbs.find((row) => row.id === 'v-parler')!.levels.pres!.run;
+    drills.markBuilt({ requestId: 'b1', verbId: 'v-parler', tense: 'pres', knew: true });
+    drills.answer({ requestId: 't1', verbId: 'v-parler', tense: 'pres', person: 3, given: 'parlons' });
+    expect(run()).toBe(2);
+    drills.table({ requestId: 'w1', verbId: 'v-parler', tense: 'pres', answers: ['parle', 'parles', 'parle', 'parlons', 'parlez', 'parle'] });
+    expect(run()).toBe(-1);
+    drills.markBuilt({ requestId: 'b2', verbId: 'v-parler', tense: 'pres', knew: false });
+    expect(run()).toBe(-2);
+    drills.unmarkBuilt('b2');
+    expect(run()).toBe(-1);
+    drills.mark({ requestId: 'c1', verbId: 'v-parler', tense: 'pres', person: 0, knew: true });
+    expect(run()).toBe(1);
   });
 
   test('a round takes the forms of due verb-tenses first, then new ones', () => {

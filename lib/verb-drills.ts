@@ -125,6 +125,7 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
   const written = db.query<{ verb_id: string; tense: T; person: number; right: number }, []>("SELECT verb_id, tense, person, right FROM verb_answers WHERE mode NOT IN ('ear', 'built') ORDER BY sequence DESC");
   const everyScored = db.query<{ verb_id: string; tense: T; person: number; mode: string; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, mode, right, answered_at FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
   const everyWritten = db.query<{ verb_id: string; tense: T; person: number; right: number; answered_at: string }, []>("SELECT verb_id, tense, person, right, answered_at FROM verb_answers WHERE mode NOT IN ('ear', 'built') ORDER BY sequence");
+  const reviewRows = db.query<{ verb_id: string; tense: string; request_id: string; right: number }, []>("SELECT verb_id, tense, request_id, right FROM verb_answers WHERE mode != 'ear' ORDER BY sequence");
   const hookRows = db.query<{ verb_id: string; tense: string; person: number; form: string; hook: string }, []>('SELECT verb_id, tense, person, form, hook FROM verb_hooks');
   const hookRow = db.query<{ form: string; hook: string }, [string, string, number]>('SELECT form, hook FROM verb_hooks WHERE verb_id = ? AND tense = ? AND person = ?');
   const saveHook = db.query('INSERT INTO verb_hooks (verb_id, tense, person, form, hook, written_at) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT (verb_id, tense, person) DO UPDATE SET form = excluded.form, hook = excluded.hook, written_at = excluded.written_at');
@@ -463,6 +464,27 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     removeBuilt.run(`built:${id}:`, `built:${id};`);
     unreview(`built:${id}`);
   }
+  // How the latest reviews of each verb-tense went, by "verbId|tense": the misses in a row (negative) or the rights in
+  // a row (positive). A review is one request, right only when every form in it was: a form typed, a card marked, a
+  // whole table (its cells run <request>:<person>), a How it's built mark (built:<request>:<person>). The forms of one
+  // request are saved together, so they sit next to each other in the answers.
+  function runs(): Map<string, number> {
+    const reviews = new Map<string, { request: string; right: boolean }[]>();
+    for (const row of reviewRows.all()) {
+      const id = `${row.verb_id}|${row.tense}`, request = row.request_id.replace(/:\d+$/, '');
+      const list = reviews.get(id) ?? reviews.set(id, []).get(id)!;
+      const last = list.at(-1);
+      if (last?.request === request) last.right &&= !!row.right; else list.push({ request, right: !!row.right });
+    }
+    const out = new Map<string, number>();
+    for (const [id, list] of reviews) {
+      const right = list.at(-1)!.right;
+      let count = 0;
+      for (let index = list.length - 1; index >= 0 && list[index]!.right === right; index--) count++;
+      out.set(id, right ? count : -count);
+    }
+    return out;
+  }
   // Every practised form's score now, by "verbId|tense|person".
   const formScores = () => scoresAt(now().getTime()).scores;
 
@@ -563,14 +585,16 @@ export function createVerbDrills<V extends DrillVerb = Verb, T extends string = 
     const verbs = options.verbs();
     const forms = history();
     const words = new Map(options.vocabulary().map((word) => [word.id, word]));
-    const all = standings();
+    const all = standings(), lastRuns = runs();
     const rows = verbs.map((verb) => {
       const states = Object.fromEntries(TENSES.map((tense) => [tense, [0, 1, 2, 3, 4, 5].map((person) => persons(verb, tense).includes(person) ? stateOf(forms.get(key(verb.id, tense, person))) : null)])) as Record<T, (FormState | null)[]>;
       const word = words.get(verb.id);
-      // Each tense's level (0 New, 1 Learning, 2 Known, 3 Solid), whether a form of it is shaky, and when it is due.
+      // Each tense's level (0 New, 1 Learning, 2 Known, 3 Solid), whether a form of it is shaky, when it is due, and how
+      // its latest reviews went (runs).
       const levels = Object.fromEntries(TENSES.filter((tense) => persons(verb, tense).length).map((tense) => {
         const standing = all.get(`${verb.id}|${tense}`);
-        return [tense, standing ? { level: standing.level, weak: standing.weak, due: standing.due } : { level: 0, weak: false, due: null }];
+        const run = lastRuns.get(`${verb.id}|${tense}`) ?? 0;
+        return [tense, standing ? { level: standing.level, weak: standing.weak, due: standing.due, run } : { level: 0, weak: false, due: null, run }];
       }));
       return { id: verb.id, inf: verb.inf, en: verb.en, started: !!word && word.status !== 'new', score: word?.score ?? 0, states, levels };
     });
